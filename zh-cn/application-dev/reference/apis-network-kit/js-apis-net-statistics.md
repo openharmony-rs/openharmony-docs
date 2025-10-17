@@ -807,6 +807,62 @@ statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
   console.error(JSON.stringify(err));
 });
 ```
+            
+## statistics.getSelfTrafficStats<sup>22+</sup>
+
+getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
+
+获取指定时间段内，本应用在指定网络中的流量使用情况。使用Promise方式作为异步方法。
+
+> **说明：**
+>
+>本接口只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于当前系统时间31天以上，会抛出错误码2103019。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                     |
+| ------ | ------ | ---- | ---------------------------------------- |
+| networkInfo | [NetworkInfo](#networkinfo22) | 是   | 指定查询的网络信息。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise\<[NetStatsInfo](#netstatsinfo22)> | Promise对象，返回应用历史流量统计信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+
+| 错误码ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 2100001   | Invalid parameter value.                     |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error.                       |
+| 2103017   | Failed to read the database.                      |
+| 2103019   | The timestamp in param is invalid.                      |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { connection, statistics } from '@kit.NetworkKit';
+
+let networkInfo: statistics.NetworkInfo = {
+    type: connection.NetBearType.BEARER_CELLULAR,
+    startTime: Math.floor(Date.now() / 1000) - 86400 * 31,
+    endTime: Math.floor(Date.now() / 1000),
+    simId: 1,
+}
+
+statistics.getSelfTrafficStats(networkInfo).then((stats: statistics.NetStatsInfo) => {
+    console.info('getSelfTrafficStats success : ' + JSON.stringify(stats));
+}).catch((err: BusinessError) => {
+    console.error('getSelfTrafficStats error. code: ' + `${err.code}` + ', message: ' + `${err.message}`);
+});
+```
 
 ## NetBearType<sup>12+</sup>
 
@@ -819,3 +875,29 @@ type NetBearType = connection.NetBearType
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [connection.NetBearType](js-apis-net-connection.md#netbeartype) | 枚举网络类型。    |
+
+## NetworkInfo<sup>22+</sup>
+
+网络信息。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称        | 类型                                                   | 只读 |可选| 说明           |
+|-----------|------------------------------------------------------|----|---|--------------|
+| type      | [NetBearType](#netbeartype12) | 否  | 否|网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
+| startTime | number                                               | 否  |否| 开始时间戳(单位：秒)。 |
+| endTime   | number                                               | 否  |否 |结束时间戳(单位：秒)。 |
+| simId     | number                                               | 否  | 是|SIM 卡 ID。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
+
+## NetStatsInfo<sup>22+</sup>
+
+获取的历史流量信息。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称      | 类型   | 只读 |可选| 说明                      |
+| --------- | ------ | ---- |---| ------------------------ |
+| rxBytes   | number | 否   |否 |流量下行数据(单位：字节)。 |
+| txBytes   | number | 否   |否 |流量上行数据(单位：字节)。 |
+| rxPackets | number | 否   |否 |流量下行包个数。          |
+| txPackets | number | 否   |否 |流量上行包个数。          |
