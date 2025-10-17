@@ -142,23 +142,18 @@ SQL语句中的函数，如下所示：
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
+<!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    import { relationalStore } from '@kit.ArkData'; // 导入模块
-   import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';     
-   // 此处示例在Ability中实现，使用者也可以在其他合理场景中使用
-   class EntryAbility extends UIAbility {
-     async onWindowStageCreate(windowStage: window.WindowStage) {
-        // 判断当前系统是否支持向量数据库
-       let ret = relationalStore.isVectorSupported();
-       if (!ret) {
-         console.error(`vectorDB is not supported .`);
-         return;
-       }
-       // 开库、增删改查等
-     }
-   }
+
+    // 判断当前系统是否支持向量数据库
+    let ret = relationalStore.isVectorSupported();
+    if (!ret) {
+      console.error(`vectorDB is not supported .`);
+      return;
+    }
    ```
 
 2. 若支持向量数据库则需要获取一个RdbStore。通过getRdbStore接口创建数据库，并执行建表操作。
@@ -173,8 +168,11 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
+<!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    let store: relationalStore.RdbStore | undefined = undefined;
+   let context = getContext(); // 获取上下文
    const STORE_CONFIG :relationalStore.StoreConfig= {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
@@ -200,11 +198,13 @@ SQL语句中的函数，如下所示：
    
    示例代码如下：
 
+<!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    try {
      // 使用参数绑定
      const vectorValue: Float32Array = Float32Array.from([1.2, 2.3]);
-     await store!.execute("insert into test VALUES(?, ?);", 0, [0, vectorValue]);
+     await store!.execute('insert into test VALUES(?, ?);', 0, [0, vectorValue]);
      // 不使用参数绑定
      await store!.execute("insert into test VALUES(1, '[1.3, 2.4]');", 0, undefined);
    } catch (err) {
@@ -214,12 +214,14 @@ SQL语句中的函数，如下所示：
 
 4. 获取到RdbStore后，调用execute接口修改或删除数据。示例代码如下：
 
+<!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    // 修改数据
    try {
      // 使用参数绑定
      const vectorValue1: Float32Array = Float32Array.from([2.1, 3.2]);
-     await store!.execute("update test set repr = ? where id = ?", 0, [vectorValue1, 0]);
+     await store!.execute('update test set repr = ? where id = ?', 0, [vectorValue1, 0]);
      // 不使用参数绑定
      await store!.execute("update test set repr = '[5.1, 6.1]' where id = 0", 0, undefined);
    } catch (err) {
@@ -229,9 +231,9 @@ SQL语句中的函数，如下所示：
    // 删除数据
    try {
      // 使用参数绑定
-     await store!.execute("delete from test where id = ?", 0, [0]);
+     await store!.execute('delete from test where id = ?', 0, [0]);
      // 不使用参数绑定
-     await store!.execute("delete from test where id = 0", 0, undefined);
+     await store!.execute('delete from test where id = 0', 0, undefined);
    } catch (err) {
      console.error(`execute delete failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -245,11 +247,13 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
+<!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    // 单表查询
    try {
      // 使用参数绑定
-     const QUERY_SQL = "select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;";
+     const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
      let resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
      while (resultSet!.goToNextRow()) {
@@ -269,9 +273,9 @@ SQL语句中的函数，如下所示：
    // 子查询
    try {
      // 创建第二张表
-     let CREATE_SQL = "CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);";
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);';
      await store!.execute(CREATE_SQL);
-     let resultSet = await store!.querySql("select * from test where id in (select id from test1);");
+     let resultSet = await store!.querySql('select * from test where id in (select id from test1);');
      resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
@@ -297,11 +301,13 @@ SQL语句中的函数，如下所示：
 
 6. 创建视图并执行查询。示例代码如下：
 
+<!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    // 视图查询
    try {
      // 创建视图
-     await store!.execute("CREATE VIEW v1 as select * from test where id > 0;");
+     await store!.execute('CREATE VIEW v1 as select * from test where id > 0;');
      let resultSet = await store!.querySql("select * from v1;");
      resultSet!.close();
    } catch (err) {
@@ -359,13 +365,15 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
+<!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    // 基础用法
    try {
      // 创建的索引名称为diskann_l2_idx，索引列为repr，类型为gsdiskann，距离度量类型为L2
-     await store!.execute("CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2);");
+     await store!.execute('CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2);');
      // 删除表test中的diskann_l2_idx索引
-     await store!.execute("DROP INDEX test.diskann_l2_idx;");
+     await store!.execute('DROP INDEX test.diskann_l2_idx;');
    } catch (err) {
      console.error(`create index failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -373,7 +381,7 @@ SQL语句中的函数，如下所示：
    // 扩展语法
    try {
      // 设置QUEUE_SIZE为20，OUT_DEGREE为50
-     await store!.execute("CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2) WITH (queue_size=20, out_degree=50);");
+     await store!.execute('CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(repr L2) WITH (queue_size=20, out_degree=50);');
    } catch (err) {
      console.error(`create ext index failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -400,10 +408,12 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
+<!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    try {
      // 手动触发异步删除整理，对向量数据库下所有gsdiskann执行磁盘碎片回收
-     await store!.execute("PRAGMA DISKANN_ASYNC_COLLECTING;");
+     await store!.execute('PRAGMA DISKANN_ASYNC_COLLECTING;');
    } catch (err) {
      console.error(`diskann async collecting failed, code is ${err.code}, message is ${err.message}`);
    }
@@ -442,6 +452,8 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
+<!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ```ts
    try {
      // 每隔五分钟执行写操作后，会触发数据老化任务
@@ -465,6 +477,8 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
+<!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
     ```ts
     try {
       // content列配置了数据压缩，并且配置了数据老化。
@@ -477,6 +491,8 @@ SQL语句中的函数，如下所示：
 11. 删除数据库。
 
     调用deleteRdbStore方法，删除数据库及数据库相关文件。示例代码如下：
+
+<!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
 
     ```ts
     try {
