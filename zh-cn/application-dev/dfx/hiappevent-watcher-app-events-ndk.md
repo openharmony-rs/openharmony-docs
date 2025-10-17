@@ -202,6 +202,18 @@ static napi_value RegisterWatcherClick(napi_env env, napi_callback_info info)
 
    <!-- @[AppEvent_Click_C++_WriteAppEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static napi_value WriteAppEvent(napi_env env, napi_callback_info info)
+{
+    auto params = OH_HiAppEvent_CreateParamList();
+    OH_HiAppEvent_AddInt64Param(params, "clickTime", time(nullptr));
+    OH_HiAppEvent_Write("button", "click", EventType::BEHAVIOR, params);
+    OH_HiAppEvent_DestroyParamList(params);
+    OH_LOG_INFO(LogType::LOG_APP, "writeEvent C++ success");
+    return {};
+}
+```
+
 3. 编辑“napi_init.cpp”文件，注册RegisterWatcherCrash()(订阅崩溃事件)、RegisterWatcherClick()（订阅按钮点击事件）、WriteAppEvent()(按钮点击事件打点接口)为ArkTS接口：
 
    <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
