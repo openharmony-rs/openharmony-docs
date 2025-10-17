@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+> **说明：**
+>
+> Ime工具从API version 20开始支持。
+
 **工具用法**<br/>
 
 hdc shell ime [选项] [参数]
