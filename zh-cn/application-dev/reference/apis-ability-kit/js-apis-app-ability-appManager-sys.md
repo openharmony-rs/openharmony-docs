@@ -1309,7 +1309,7 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-查询单个应用是否正在运行。使用Promise异步回调。
+查询所有用户下指定包名的应用是否正在运行。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1327,7 +1327,7 @@ isApplicationRunning(bundleName: string): Promise\<boolean>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<boolean> | Promise对象。返回true表示查询的应用正在运行，返回false表示查询的应用没有运行。 |
+| Promise\<boolean> | Promise对象。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
 
 **错误码**：
 
@@ -1359,7 +1359,7 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-查询单个应用是否正在运行。使用callback异步回调。
+查询所有用户下指定包名的应用是否正在运行。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1371,8 +1371,8 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| bundleName    | string   | 是    | 表示要查询的共享库包名。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示查询的应用正在运行，返回false表示查询的应用没有运行。 |
+| bundleName    | string   | 是    | 表示要查询的应用的包名。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。|
 
 **错误码**：
 

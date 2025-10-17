@@ -745,7 +745,11 @@ try {
 
 isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
-判断指定应用是否在运行中。使用Promise异步回调。
+判断所有用户下指定包名和分身应用索引的应用是否正在运行。使用Promise异步回调。
+
+> **说明：**
+>
+> 如果当前用户未安装该应用，则返回错误码16000073；如果当前用户已安装该应用，则判断所有用户下该指定应用是否正在运行。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -762,7 +766,7 @@ isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
 | 类型           | 说明              |
 | -------------- | ---------------- |
-| Promise\<boolean> | Promise对象。返回true表示应用正在运行，返回false表示应用未运行。 |
+| Promise\<boolean> | Promise对象。返回true表示至少存在一个用户正在运行指定包名和分身应用索引的应用，返回false表示所有用户下指定包名和分身应用索引的应用都没有运行。 |
 
 **错误码**：
 
