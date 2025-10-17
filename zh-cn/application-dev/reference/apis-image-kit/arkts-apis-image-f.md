@@ -1,8 +1,9 @@
 # Functions
 
 > **说明：**
->
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTs-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -17,6 +18,10 @@ createPicture(mainPixelmap : PixelMap): Picture
 通过主图的pixelmap创建一个Picture对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn版本：** 13
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -40,6 +45,7 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -60,6 +66,37 @@ async function CreatePicture(context: Context) {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+import resourceManager from '@ohos.resourceManager'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let picture = CreatePictureFunc(context);
+}
+
+function CreatePictureFunc(context: common.UIAbilityContext): image.Picture | undefined {
+  const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
+  //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  let rawFileDescriptor: resourceManager.RawFileDescriptor = await resourceMgr.getRawFd('test_image.jpg');
+  let sourceOptions: image.SourceOptions = { sourceDensity: 98 };
+  let imageSource = image.createImageSource(rawFileDescriptor, sourceOptions);
+  let pixelMap: image.PixelMap = await imageSource.createPixelMap();
+
+  try {
+    let picture: image.Picture = image.createPicture(pixelMap);
+    return picture;
+  } catch (err) {
+    hilog.info(0x00000, 'CreatePictureFunc', 'CreatePictureFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createPictureFromParcel<sup>13+</sup>
 
 createPictureFromParcel(sequence: rpc.MessageSequence): Picture
@@ -67,6 +104,10 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 从MessageSequence中获取Picture。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn版本：** 13
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -91,6 +132,7 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -141,6 +183,66 @@ async function Marshalling_UnMarshalling(context: Context) {
     data.readParcelable(ret);
   } else {
     console.error('PictureObj is null');
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+import resourceManager from '@ohos.resourceManager'
+import rpc from '@ohos.rpc';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  MarshallingUnMarshallingFunc(context);
+}
+
+class MySequence implements rpc.Parcelable {
+  picture_: image.Picture;
+
+  constructor(conPicture: image.Picture) {
+    this.picture_ = conPicture;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence): boolean {
+    this.picture_.marshalling(messageSequence);
+    hilog.info(0x00000, 'MySequence', 'marshalling success!');
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+    let picture: image.Picture = image.createPictureFromParcel(messageSequence)
+    this.picture_ = picture;
+    hilog.info(0x00000, 'MySequence', 'unmarshalling success!');
+    return true;
+  }
+}
+
+function MarshallingUnMarshallingFunc(context: common.UIAbilityContext): void {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test_image.jpg");
+  let opts: image.SourceOptions = { sourceDensity: 98 };
+  try {
+
+  } catch (err) {
+    let imageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
+    let pixelMap: image.PixelMap = await imageSource.createPixelMap();
+    let picture: image.Picture = image.createPicture(pixelMap);
+    if (picture != null || picture != undefined) {
+      let parcelable: MySequence = new MySequence(picture);
+      let data: rpc.MessageSequence = rpc.MessageSequence.create();
+      // marshalling
+      data.writeParcelable(parcelable);
+
+      let ret: MySequence = new MySequence(picture);
+      // unmarshalling
+      data.readParcelable(ret);
+    } else {
+      hilog.info(0x00000, 'MarshallingUnMarshallingFunc', 'picture is null!');
+    }
   }
 }
 ```
@@ -937,7 +1039,9 @@ async function CreateUnpremultipliedPixelMap() {
 
 ## image.createImageSource
 
-createImageSource(uri: string): ImageSource
+ArkTS-Dyn: createImageSource(uri: string): ImageSource
+
+ArkTS-Sta: createImageSource(uri: string): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
 
@@ -945,6 +1049,10 @@ createImageSource(uri: string): ImageSource
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn版本：** 6
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -956,10 +1064,11 @@ createImageSource(uri: string): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -971,9 +1080,40 @@ const path: string = context.filesDir + "/test.jpg";
 const imageSourceApi: image.ImageSource = image.createImageSource(path);
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageSource = CreateImageSourceFunc(context);
+}
+
+function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageSource: image.ImageSource | undefined;
+  try {
+    //此处'test_image.jpg'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+    const sendBoxPath: string = context.filesDir + "/test_image.jpg";
+    imageSource = image.createImageSource(sendBoxPath);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(uri: string, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(uri: string, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
 
@@ -982,6 +1122,10 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn版本：** 9
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -994,10 +1138,11 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1010,9 +1155,41 @@ const path: string = context.filesDir + "/test.png";
 let imageSourceApi: image.ImageSource = image.createImageSource(path, sourceOptions);
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageSource = CreateImageSourceFunc(context);
+}
+
+function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageSource: image.ImageSource | undefined;
+  try {
+    //此处'test_image.jpg'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+    const sendBoxPath: string = context.filesDir + "/test_image.jpg";
+    let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+    imageSource = image.createImageSource(sendBoxPath, sourceOptions);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageSource<sup>7+</sup>
 
-createImageSource(fd: number): ImageSource
+ArkTS-Dyn: createImageSource(fd: number): ImageSource
+
+ArkTS-Sta: createImageSource(fd: int): ImageSource | undefined
 
 通过传入文件描述符来创建ImageSource实例。
 
@@ -1020,20 +1197,25 @@ createImageSource(fd: number): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
+**ArkTS-Dyn版本：** 7
+
+**ArkTS-Sta版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明          |
 | ------ | ------ | ---- | ------------- |
-| fd     | number | 是   | 文件描述符fd。|
+| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符fd。|
 
 **返回值：**
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -1047,9 +1229,42 @@ let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 const imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import fileIo from '@ohos.file.fs'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageSource = CreateImageSourceFunc(context);
+}
+
+function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageSource: image.ImageSource;
+  try {
+    //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+    const filePath: string = context.filesDir + "/test_image.jpg";
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+    imageSource = image.createImageSource(file.fd);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(fd: number, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(fd: number, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(fd: int, options: SourceOptions): ImageSource | undefined
 
 通过传入文件描述符来创建ImageSource实例。
 
@@ -1059,21 +1274,26 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
+**ArkTS-Dyn版本：** 9
+
+**ArkTS-Sta版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | number                          | 是   | 文件描述符fd。                      |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符fd。                      |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -1088,9 +1308,43 @@ let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
 const imageSourceApi: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import fileIo from '@ohos.file.fs'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageSource = CreateImageSourceFunc(context);
+}
+
+function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageSource: image.ImageSource | undefined;
+  try {
+    //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+    const filePath: string = context.filesDir + "/test_image.jpg";
+    let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+    imageSource = image.createImageSource(file.fd, sourceOptions);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(buf: ArrayBuffer): ImageSource
+ArkTS-Dyn: createImageSource(buf: ArrayBuffer): ImageSource
+
+ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
 
@@ -1099,6 +1353,10 @@ createImageSource(buf: ArrayBuffer): ImageSource
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn版本：** 9
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -1110,19 +1368,45 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
 const imageSourceApi: image.ImageSource = image.createImageSource(buf);
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+let imageSource = CreateImageSourceFunc();
+
+function CreateImageSourceFunc(): image.ImageSource | undefined {
+  let imageSource: image.ImageSource | undefined;
+  try {
+    const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+    imageSource = image.createImageSource(buf);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSource success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
 
@@ -1131,6 +1415,10 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn版本：** 9
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -1143,25 +1431,56 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const data: ArrayBuffer = new ArrayBuffer(112);
 let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
 const imageSourceApi: image.ImageSource = image.createImageSource(data, sourceOptions);
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+let imageSource = CreateImageSourceFunc();
+
+function CreateImageSourceFunc(): image.ImageSource | undefined {
+  let imageSource: image.ImageSource | undefined;
+  try {
+    const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+    let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+    imageSource = image.createImageSource(buf, sourceOptions);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSource success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageSource<sup>11+</sup>
 
-createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource | undefined
 
 通过图像资源文件的RawFileDescriptor创建ImageSource实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn版本：** 11
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -1174,10 +1493,11 @@ createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOp
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { resourceManager } from '@kit.LocalizationKit';
@@ -1195,9 +1515,43 @@ resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFil
 })
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+import resourceManager from '@ohos.resourceManager'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageSource = CreateImageSourceFunc(context);
+}
+
+function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageSource: image.ImageSource | undefined;
+  try {
+    const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
+    //此处'test_image.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+    let rawFileDescriptor: resourceManager.RawFileDescriptor = await resourceMgr.getRawFd('test_image.jpg');
+
+    imageSource = image.createImageSource(rawFileDescriptor);
+    if (imageSource != undefined) {
+      hilog.info(0x00000, 'createImageSourceFunc', 'createImageSource success!');
+    }
+    return imageSource;
+  } catch (err) {
+    hilog.info(0x00000, 'createImageSourceFunc', 'createImageSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-CreateIncrementalSource(buf: ArrayBuffer): ImageSource
+ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer): ImageSource
+
+ArkTS-Sta: createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
@@ -1212,6 +1566,10 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
+**ArkTS-Dyn版本：** 9
+
+**ArkTS-Sta版本：** 20
+
 **参数：**
 
 | 参数名  | 类型        | 必填 | 说明      |
@@ -1222,10 +1580,11 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1250,15 +1609,46 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 })
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+import resourceManager from '@ohos.resourceManager'
+
+function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
+  let buffer: ArrayBuffer = new ArrayBuffer(imageArray.byteLength);
+  try {
+    const imageSourceIncremental = image.createIncrementalSource(buffer);
+    hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource success!');
+    if (imageSourceIncremental != undefined) {
+      return imageSourceIncremental;
+    }
+    hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource failed');
+    return undefined;
+  } catch (err) {
+    hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'CreateIncrementalSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+
+ArkTS-Sta: createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
 此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9)所生成的实例支持的功能相同。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn版本：** 9
+
+**ArkTS-Sta版本：** 20
 
 **参数：**
 
@@ -1271,10 +1661,11 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br/>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1299,6 +1690,32 @@ imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLengt
 }).catch((error : BusinessError) => {
   console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
 })
+```
+
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+import resourceManager from '@ohos.resourceManager'
+
+function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
+  let buffer: ArrayBuffer = new ArrayBuffer(imageArray.byteLength);
+  let sourceOpts: image.SourceOptions = { sourceDensity: 120 };
+  try {
+    const imageSourceIncremental = image.createIncrementalSource(buffer, sourceOpts);
+    hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource success!');
+    if(imageSourceIncremental != undefined) {
+      return imageSourceIncremental;
+    }
+    hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource failed');
+    return undefined;
+  } catch (err) {
+    hilog.info(0x00000, 'CreateIncrementalSourceFunc', 'CreateIncrementalSourceFunc failed: ' + err);
+    return undefined;
+  }
+}
 ```
 
 ## image.getImageSourceSupportedFormats<sup>20+</sup>
@@ -1335,6 +1752,10 @@ createImagePacker(): ImagePacker
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
+**ArkTS-Dyn版本：** 6
+
+**ArkTS-Sta版本：** 20
+
 **返回值：**
 
 | 类型                        | 说明                  |
@@ -1343,8 +1764,16 @@ createImagePacker(): ImagePacker
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const imagePackerApi: image.ImagePacker = image.createImagePacker();
+```
+
+ArkTS-Sta示例:
+```ts
+import image from '@ohos.multimedia.image'
+
+const imagePacker: image.ImagePacker = image.createImagePacker();
 ```
 
 ## image.getImagePackerSupportedFormats<sup>20+</sup>
@@ -1379,6 +1808,10 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn版本：** 13
+
+**ArkTS-Sta版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                            | 必填 | 说明                         |
@@ -1403,6 +1836,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -1426,13 +1860,53 @@ async function CreateAuxiliaryPicture(context: Context) {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import common from '@ohos.app.ability.common'
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+import resourceManager from '@ohos.resourceManager'
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+if (context != undefined) {
+  let imageSource = CreateAuxiliaryPictureFunc(context);
+}
+
+function CreateAuxiliaryPictureFunc(context: common.UIAbilityContext): image.AuxiliaryPicture | undefined {
+  const resourceMgr = context.resourceManager;
+  //此处'hdr_image.jpg'仅作示例，请开发者自行替换支持hdr的图片，否则auxiliaryPicture会创建失败导致后续无法正常执行。
+  const rawFile = await resourceMgr.getRawFileContent("hdr_image.jpg");
+  let auxBuffer: ArrayBuffer = rawFile.buffer as ArrayBuffer;
+  let auxSize: image.Size = {
+    height: 180,
+    width: 240
+  };
+  let auxType: image.AuxiliaryPictureType = image.AuxiliaryPictureType.GAINMAP;
+  try {
+    let auxPicture: image.AuxiliaryPicture = image.createAuxiliaryPicture(auxBuffer, auxSize, auxType);
+    if (auxPicture != undefined) {
+      hilog.info(0x00000, 'CreateAuxiliaryPictureFunc', 'createAuxiliaryPicture success!');
+    }
+    return auxPicture;
+  } catch (err) {
+    hilog.info(0x00000, 'CreateAuxiliaryPictureFunc', 'CreateAuxiliaryPictureFunc failed: ' + err);
+    return undefined;
+  }
+}
+```
+
 ## image.createImageReceiver<sup>11+</sup>
 
-createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
+ArkTS-Dyn: createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
+
+ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1440,7 +1914,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 同时访问的最大图像数。 |
 
 **返回值：**
 
@@ -1458,7 +1932,19 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
+let size: image.Size = {
+  height: 8192,
+  width: 8
+}
+let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+```
+
+ArkTS-Sta示例:
+```ts
+import image from '@ohos.multimedia.image'
+
 let size: image.Size = {
   height: 8192,
   width: 8
@@ -1468,11 +1954,15 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 
 ## image.createImageCreator<sup>11+</sup>
 
-createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
+ArkTS-Dyn示例: createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
+
+ArkTS-Sta示例: createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
 
 通过图片大小、图片格式、容量创建ImageCreator实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1480,7 +1970,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | int    | 是   | 同时访问的最大图像数。 |
 
 **返回值：**
 
@@ -1499,7 +1989,19 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
+let size: image.Size = {
+  height: 8192,
+  width: 8
+}
+let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
+```
+
+ArkTS-Sta示例:
+```ts
+import image from '@ohos.multimedia.image'
+
 let size: image.Size = {
   height: 8192,
   width: 8

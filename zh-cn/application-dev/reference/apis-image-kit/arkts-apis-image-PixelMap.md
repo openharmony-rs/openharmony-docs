@@ -545,6 +545,10 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明           |
@@ -559,6 +563,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -578,6 +583,22 @@ async function WriteBufferToPixels() {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+  try {
+    await pixelMap.writeBufferToPixels(color);
+    hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
+  } catch (err) {
+    hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
+  }
+}
+```
+
 ## writeBufferToPixels<sup>7+</sup>
 
 writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
@@ -590,6 +611,10 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
@@ -599,6 +624,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -617,6 +643,27 @@ async function WriteBufferToPixels() {
         console.info("Succeeded in writing data from a buffer to a PixelMap.");
       }
     })
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function WriteBufferToPixelsFunc(pixelMap: image.PixelMap): void {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+  try {
+    pixelMap.writeBufferToPixels(color, (err: BusinessError | null) => {
+      if (err) {
+        hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels failed: ' + err);
+      } else {
+        hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'writeBufferToPixels success!');
+      }
+    });
+  } catch (err) {
+    hilog.info(0x00000, 'WriteBufferToPixelsFunc', 'WriteBufferToPixelsFunc failed: ' + err);
   }
 }
 ```
@@ -2377,6 +2424,10 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
@@ -2397,6 +2448,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2417,6 +2469,28 @@ async function ApplyColorSpace() {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
+  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  let colorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  try {
+    pixelMap.applyColorSpace(colorSpace, (err: BusinessError | null) => {
+      if (err) {
+        hilog.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace failed: ' + err);
+      } else {
+        hilog.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
+      }
+    });
+  } catch (err) {
+    hilog.info(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
+  }
+}
+```
+
 ## applyColorSpace<sup>11+</sup>
 
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\<void>
@@ -2424,6 +2498,10 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 根据输入的目标色彩空间对图像像素颜色进行色彩空间转换，使用Promise形式返回。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2450,6 +2528,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2467,6 +2546,23 @@ async function ApplyColorSpace() {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function ApplyColorSpaceFunc(pixelMap: image.PixelMap): void {
+  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  let colorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  try {
+    await pixelMap.applyColorSpace(colorSpace);
+    hilog.info(0x00000, 'ApplyColorSpaceFunc', 'applyColorSpace success!');
+  } catch (err) {
+    hilog.info(0x00000, 'ApplyColorSpaceFunc', 'ApplyColorSpaceFunc failed: ' + err);
+  }
+}
+```
+
 ## toSdr<sup>12+<sup>
 
 toSdr(): Promise\<void>
@@ -2474,6 +2570,10 @@ toSdr(): Promise\<void>
 将HDR的图像内容转换为SDR的图像内容，异步使用Promise形式返回。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2491,6 +2591,7 @@ toSdr(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 <!--code_no_check-->
 ```ts
 import image from '@ohos.multimedia.image';
@@ -2517,6 +2618,22 @@ if (pixelmap != undefined) {
   });
 } else {
   console.error('Failed to create pixelMap.');
+}
+```
+
+ArkTS-Sta示例:
+<!--code_no_check-->
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function ToSdrFunc(pixelMap: image.PixelMap): void {
+  try {
+    await pixelMap.toSdr();
+    hilog.info(0x00000, 'ToSdrFunc', 'toSdr success!');
+  } catch (err) {
+    hilog.info(0x00000, 'ToSdrFunc', 'ToSdrFunc failed: ' + err);
+  }
 }
 ```
 

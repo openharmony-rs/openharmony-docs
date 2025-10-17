@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 13开始支持。
 
@@ -20,6 +21,10 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
 获取图像中属性的值，使用Promise形式返回。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -44,6 +49,7 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -71,6 +77,21 @@ async function GetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function GetPropertiesFunc(metadata: image.Metadata): void {
+  try {
+    let properties: Record<string, string | null> = await metadata.getProperties(["ImageWidth", "ImageLength"]);
+    hilog.info(0x00000, 'GetPropertiesFunc', 'getProperties success!');
+  } catch (err) {
+    hilog.info(0x00000, 'GetPropertiesFunc', 'GetPropertiesFunc failed: ' + err);
+  }
+}
+```
+
 ## setProperties<sup>13+</sup>
 
 setProperties(records: Record\<string, string | null>): Promise\<void>
@@ -78,6 +99,10 @@ setProperties(records: Record\<string, string | null>): Promise\<void>
 批量设置图片元数据中的指定属性的值，使用Promise形式返回。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -102,6 +127,7 @@ setProperties(records: Record\<string, string | null>): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -133,22 +159,48 @@ async function SetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function SetPropertiesFunc(metadata: image.Metadata): void {
+  let properties: Record<string, string | null> = {
+    "ImageWidth": "200",
+    "ImageLength": "300"
+  };
+  try {
+    await metadata.setProperties(properties);
+    hilog.info(0x00000, 'SetPropertiesFunc', 'setProperties success!');
+  } catch (err) {
+    hilog.info(0x00000, 'SetPropertiesFunc', 'SetPropertiesFunc failed: ' + err);
+  }
+}
+```
+
 ## getAllProperties<sup>13+</sup>
 
-getAllProperties(): Promise\<Record<string, string | null>>
+ArkTS-Dyn: getAllProperties(): Promise\<Record<string, string | null>>
+
+ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefined>
 
 获取图片中所有元数据的属性和值，使用Promise形式返回。如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                     | 说明                                        |
 | ---------------------------------------- | ------------------------------------------- |
-| Promise\<Record<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
+| ArkTS-Dyn: Promise\<Record<string, string \| null>><br/>ArkTS-Sta: Promise\<Record<string, string | null> \| undefined> | Promise对象，返回元数据拥有的所有属性的值。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -178,22 +230,43 @@ async function GetAllProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function GetAllPropertiesFunc(metadata: image.Metadata): void {
+  try {
+    let properties = await metadata.getAllProperties();
+    hilog.info(0x00000, 'GetAllPropertiesFunc', 'getAllProperties success!');
+  } catch (err) {
+    hilog.info(0x00000, 'GetAllPropertiesFunc', 'GetAllPropertiesFunc failed: ' + err);
+  }
+}
+```
+
 ## clone<sup>13+</sup>
 
-clone(): Promise\<Metadata>
+ArkTS-Dyn: clone(): Promise\<Metadata>
+ArkTS-Sta: clone(): Promise\<Metadata | undefined>
 
 对元数据进行克隆，用Promise形式返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，成功返回元数据实例。 |
+| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)><br/>ArkTS-Sta: Promise\<Metadata \| undefined> | Promise对象，成功返回元数据实例。 |
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -218,6 +291,21 @@ async function clone(context: Context) {
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import hilog from '@ohos.hilog'
+import image from '@ohos.multimedia.image'
+
+function CloneFunc(metadata: image.Metadata): void {
+  try {
+    let newMetadata = await metadata.clone();
+    hilog.info(0x00000, 'CloneFunc', 'clone success!');
+  } catch (err) {
+    hilog.info(0x00000, 'CloneFunc', 'CloneFunc failed: ' + err);
   }
 }
 ```
