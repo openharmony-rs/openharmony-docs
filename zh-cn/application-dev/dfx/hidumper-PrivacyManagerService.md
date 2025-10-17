@@ -18,6 +18,7 @@
 ```shell
 hidumper -s PrivacyManagerService -a '-h'
 ```
+
  **使用样例：**
 ```text
 
@@ -30,12 +31,15 @@ Usage:
        -h: command help
        -t <TOKEN_ID>: according to specific token id dump permission used records
 ```
+
 ## 获取敏感权限使用记录信息
-如果需要查看敏感权限使用记录的信息，可以通过下列命令实现。
+支持通过应用进程的tokenid，查看敏感权限使用记录的信息，可以通过下列命令实现。
 
 ```shell
 hidumper -s PrivacyManagerService -a '-t <tokenId>'
 ```
+命令所需的tokenId可以通过[atm-tool](../tools/atm-tool.md#查询命令)进行查询。
+
  **使用样例：**
 ```text
 hidumper -s PrivacyManagerService -a '-t 536992218'
