@@ -220,7 +220,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_GRID_ITEM | 网格子组件。                               |
 | ARKUI_NODE_CUSTOM_SPAN | 自定义文本段落。                             |
 | ARKUI_NODE_EMBEDDED_COMPONENT | 同应用进程嵌入式组件。 <br>**起始版本：** 20  |
-| ARKUI_NODE_UNDEFINED | undefined。 <br>**起始版本：** 20  |
+| ARKUI_NODE_UNDEFINED | 未定义。 <br>**起始版本：** 20  |
 
 ### ArkUI_NodeAttributeType
 
