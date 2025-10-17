@@ -236,6 +236,12 @@ static napi_value Init(napi_env env, napi_value exports)
 
    <!-- @[AppEvent_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
+``` TypeScript
+export const registerWatcherCrash: () => void;
+export const registerWatcherClick: () => void;
+export const writeAppEvent: () => void;
+```
+
 5. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：
 
    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
