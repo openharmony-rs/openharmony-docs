@@ -412,7 +412,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "折叠态垂直高度度比",
+          label: "折叠态垂直高度比",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -577,7 +577,7 @@ struct Index {
         })
 
         RadioOption({
-          label: "展开态垂直高度度比",
+          label: "展开态垂直高度比",
           value: this.expandedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
