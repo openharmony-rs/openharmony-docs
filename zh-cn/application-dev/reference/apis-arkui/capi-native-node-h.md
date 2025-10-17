@@ -221,7 +221,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_GRID_ITEM | 网格子组件。                               |
 | ARKUI_NODE_CUSTOM_SPAN | 自定义文本段落。                             |
 | ARKUI_NODE_EMBEDDED_COMPONENT | 同应用进程嵌入式组件。 <br>**起始版本：** 20  |
-| ARKUI_NODE_UNDEFINED | undefined。 <br>**起始版本：** 20  |
+| ARKUI_NODE_UNDEFINED | 未定义。 <br>**起始版本：** 20  |
 
 ### ArkUI_NodeAttributeType
 
@@ -3621,7 +3621,7 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 | 参数项 | 描述 |
 | -- | -- |
 | uiContext | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
-| forceDark | 是否使能反色能力。 |
+| forceDark | 是否使用反色能力。 |
 | [ArkUI_NodeType](#arkui_nodetype) | 开发者指定使能反色能力生效组件范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
 | colorInvertFunc | 开发者自定义反色算法。 |
 
