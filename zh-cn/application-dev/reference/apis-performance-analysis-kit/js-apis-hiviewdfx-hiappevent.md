@@ -1129,7 +1129,8 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
-<!--RP1--><!--RP1End-->
+<!--RP5--><!--RP5End-->
+
 
 ## MainThreadJankPolicy<sup>22+</sup>
 
@@ -1148,7 +1149,8 @@ hiAppEvent.configure(config2);
 | reportTimesPerApp | number | 否 | 是   | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
 | autoStopSampling | boolean | 否 | 是   | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
 
-<!--RP2--><!--RP2End-->
+<!--RP6--><!--RP6End-->
+
 
 ## Processor<sup>11+</sup>
 
