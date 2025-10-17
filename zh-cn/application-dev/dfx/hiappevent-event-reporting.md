@@ -176,6 +176,21 @@ struct Index {
 
    <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        Button('removeProcessorTest')
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('60%')
+          .height('5%')
+          .onClick(() => {
+            // 在按钮点击函数中移除数据处理者
+            hiAppEvent.removeProcessor(this.processorId);
+          })
+```
+
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中依次点击按钮“addProcessorTest”、“userIdTest”、“userPropertyTest”、“writeTest”、“removeProcessorTest”，则成功通过数据处理者进行一次事件上报。
 
    最终，事件处理者成功接收到事件数据，并在Log窗口看到按钮点击事件打点成功的日志：
