@@ -146,6 +146,58 @@ static napi_value RegisterWatcherCrash(napi_env env, napi_callback_info info)
 
     <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// 定义变量，用来缓存创建的观察者的指针。
+static HiAppEvent_Watcher *eventWatcherT1;
+// 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
+static void OnTake1(const char *const *events, uint32_t eventLen)
+{
+    Json::Reader reader(Json::Features::strictMode());
+    OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent success to read events with onTrigger callback form C API \n");
+    for (int i = 0; i < eventLen; ++i) {
+        OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo=%{public}s", events[i]);
+        Json::Value eventInfo;
+        if (reader.parse(events[i], eventInfo)) {
+            auto domain = eventInfo["domain_"].asString();
+            auto name = eventInfo["name_"].asString();
+            auto type = eventInfo["type_"].asInt();
+            OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.domain=%{public}s", domain.c_str());
+            OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.name=%{public}s", name.c_str());
+            OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.eventType=%{public}d", type);
+            if (domain == "button" && name == "click") {
+                auto clickTime = eventInfo["clickTime"].asInt64();
+                OH_LOG_INFO(LogType::LOG_APP, "AppEvents HiAppEvent eventInfo.params.clickTime=%{public}lld",
+                    clickTime);
+            }
+        }
+    }
+}
+
+// 开发者可以自行实现订阅回调函数，以便对获取到的事件打点数据进行自定义处理。
+static void OnTrigger1(int row, int size)
+{
+    // 接收回调后，获取指定数量的已接收事件。
+    OH_HiAppEvent_TakeWatcherData(eventWatcherT1, row, OnTake1);
+}
+
+static napi_value RegisterWatcherClick(napi_env env, napi_callback_info info)
+{
+    // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
+    eventWatcherT1 = OH_HiAppEvent_CreateWatcher("ButtonClickWatcher1");
+    // 设置订阅的事件名称为click。
+    const char *names[] = {"click"};
+    // 开发者订阅感兴趣的应用事件，此处订阅了button相关事件。
+    OH_HiAppEvent_SetAppEventFilter(eventWatcherT1, "button", 0, names, 1);
+    // 开发者设置已实现的回调函数，需OH_HiAppEvent_SetTriggerCondition设置的条件满足方可触发。
+    OH_HiAppEvent_SetWatcherOnTrigger(eventWatcherT1, OnTrigger1);
+    // 开发者可以设置订阅触发回调的条件，此处是设置新增事件打点数量为1个时，触发onTrigger回调。
+    OH_HiAppEvent_SetTriggerCondition(eventWatcherT1, 1, 0, 0);
+    // 使观察者开始监听订阅的事件。
+    OH_HiAppEvent_AddWatcher(eventWatcherT1);
+    return {};
+}
+```
+
 2. 编辑“napi_init.cpp”文件，添加按钮点击事件的打点接口：
 
    <!-- @[AppEvent_Click_C++_WriteAppEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
