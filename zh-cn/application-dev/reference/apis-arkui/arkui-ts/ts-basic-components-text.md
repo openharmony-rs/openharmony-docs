@@ -1473,6 +1473,8 @@ maxLineHeight(value: LengthMetrics | undefined)
 
 设置文本的最大行高，设置值不大于0时，最大行高不受限制。
 
+maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
+
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
