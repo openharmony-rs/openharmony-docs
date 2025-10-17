@@ -147,6 +147,13 @@ struct Index {
           this.message = 'pan1'
         })
     )
+    .gesture(
+      PinchGesture()
+        .tag("pinch1")// 设置捏合手势标志
+        .onActionStart(() => {
+          this.message = 'pinch1'
+        })
+    )
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       // 若该手势类型为长按手势，转换为长按手势事件
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
@@ -162,6 +169,11 @@ struct Index {
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
         console.info("velocity " + panEvent.velocity)
+      }
+      // 若该手势类型为捏合手势，转换为捏合手势事件
+      if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
+        let panEvent = event as PinchGestureEvent;
+        console.info("axisPinch " + panEvent.axisPinch)
       }
       // 自定义判定标准
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
