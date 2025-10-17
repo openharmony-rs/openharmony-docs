@@ -1096,7 +1096,7 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431' |
+| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431'，显示为灰色。|
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
