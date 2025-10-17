@@ -9641,7 +9641,7 @@ console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 
 on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
-开启自由窗口模式变化的监听。
+开启自由窗口模式变化事件的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
