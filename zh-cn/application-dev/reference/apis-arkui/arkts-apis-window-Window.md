@@ -9609,7 +9609,7 @@ export default class EntryAbility extends UIAbility {
 
 isInFreeWindowMode(): boolean
 
-查询是否为自由窗口模式。
+查询当前窗口是否为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)模式。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
