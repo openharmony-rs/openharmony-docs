@@ -4,6 +4,8 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
@@ -55,7 +57,9 @@ Navigation(pathInfos: NavPathStack)
 
 ### title
 
-title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions)
+ArkTS-Dyn: title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions)
+
+ArkTS-Sta: title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle | undefined, options?: NavigationTitleOptions)
 
 设置页面标题。
 
@@ -63,16 +67,22 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。 |
+| value   | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup><br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9) \| undefined | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。 |
 | options | [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
 
 ### menus
 
-menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
+ArkTS-Dyn: menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
+
+ArkTS-Sta: menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefined)
 
 > **说明：**
 >
@@ -85,15 +95,21 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 页面右上角菜单。 |
+| value  | ArkTS-Dyn: Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 页面右上角菜单。 |
 
 ### menus<sup>19+</sup>
 
-menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: NavigationMenuOptions)
+ArkTS-Dyn: menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: NavigationMenuOptions)
+
+ArkTS-Sta: menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefined, options?: NavigationMenuOptions)
 
 > **说明：**
 >
@@ -106,16 +122,22 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| items  | Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 页面右上角菜单。 |
+| items  | ArkTS-Dyn: Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 页面右上角菜单。 |
 | options | [NavigationMenuOptions](#navigationmenuoptions19) | 否   | 页面右上角菜单选项。 |
 
 ### titleMode
 
-titleMode(value: NavigationTitleMode)
+ArkTS-Dyn: titleMode(value: NavigationTitleMode)
+
+ArkTS-Sta: titleMode(value: NavigationTitleMode | undefined)
 
 设置页面标题栏显示模式。
 
@@ -123,15 +145,21 @@ titleMode(value: NavigationTitleMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                      |
 | ------ | --------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | [NavigationTitleMode](#navigationtitlemode枚举说明) | 是   | 页面标题栏显示模式。<br/>默认值：NavigationTitleMode.Free |
+| value  | ArkTS-Dyn: [NavigationTitleMode](#navigationtitlemode枚举说明)<br/>ArkTS-Sta: [NavigationTitleMode](#navigationtitlemode枚举说明) \| undefined | 是   | 页面标题栏显示模式。<br/>默认值：NavigationTitleMode.Free |
 
 ### toolbarConfiguration<sup>10+</sup>
 
-toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: NavigationToolbarOptions)
+ArkTS-Dyn: toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: NavigationToolbarOptions)
+
+ArkTS-Sta: toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder | undefined, options?: NavigationToolbarOptions)
 
 > **说明：**
 >
@@ -144,16 +172,22 @@ toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;写法设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>文本超长时，若工具栏选项个数小于5个，优先拓展选项的宽度，最大宽度与屏幕等宽，其次逐级缩小，缩小之后换行，最后截断。<br/>竖屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏规则显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，除均分底部工具栏外不具备以上功能。 |
+| value   | ArkTS-Dyn: &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;写法设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>文本超长时，若工具栏选项个数小于5个，优先拓展选项的宽度，最大宽度与屏幕等宽，其次逐级缩小，缩小之后换行，最后截断。<br/>竖屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏规则显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，除均分底部工具栏外不具备以上功能。 |
 | options | [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> | 否   | 工具栏选项。 包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。                                                |
 
 ### hideToolBar
 
-hideToolBar(value: boolean)
+ArkTS-Dyn: hideToolBar(value: boolean)
+
+ArkTS-Sta: hideToolBar(value: boolean | undefined)
 
 设置是否隐藏工具栏。
 
@@ -161,15 +195,21 @@ hideToolBar(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏工具栏。<br/>默认值：false。<br/>true：隐藏工具栏。<br/>false：显示工具栏。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false。<br/>true：隐藏工具栏。<br/>false：显示工具栏。 |
 
 ### hideToolBar<sup>13+</sup>
 
-hideToolBar(hide: boolean, animated: boolean)
+ArkTS-Dyn: hideToolBar(hide: boolean, animated: boolean)
+
+ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated: boolean | undefined)
 
 设置是否隐藏工具栏。与[hideToolBar](#hidetoolbar)相比，新增工具栏显隐时是否使用动画。
 
@@ -177,16 +217,22 @@ hideToolBar(hide: boolean, animated: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | boolean | 是   | 是否隐藏工具栏。<br/>默认值：false。<br/>true：隐藏工具栏。<br/>false：显示工具栏。 |
-| animated  | boolean | 是   | 设置是否使用动画显隐工具栏。<br/>默认值：false。<br/>true：使用动画显示隐藏工具栏。<br/>false：不使用动画显示隐藏工具栏。 |
+| hide  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false。<br/>true：隐藏工具栏。<br/>false：显示工具栏。 |
+| animated  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐工具栏。<br/>默认值：false。<br/>true：使用动画显示隐藏工具栏。<br/>false：不使用动画显示隐藏工具栏。 |
 
 ### hideTitleBar
 
-hideTitleBar(value: boolean)
+ArkTS-Dyn: hideTitleBar(value: boolean)
+
+ArkTS-Sta: hideTitleBar(value: boolean | undefined)
 
 设置是否隐藏标题栏。
 
@@ -194,15 +240,21 @@ hideTitleBar(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏标题栏。<br/>默认值：false。<br/>true：隐藏标题栏。<br/>false：显示标题栏。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>默认值：false。<br/>true：隐藏标题栏。<br/>false：显示标题栏。 |
 
 ### hideTitleBar<sup>13+</sup>
 
-hideTitleBar(hide: boolean, animated: boolean)
+ArkTS-Dyn: hideTitleBar(hide: boolean, animated: boolean)
+
+ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined)
 
 设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
 
@@ -210,16 +262,22 @@ hideTitleBar(hide: boolean, animated: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | boolean | 是   | 是否隐藏标题栏。<br/>默认值：false。<br/>true：隐藏标题栏。<br/>false：显示标题栏。 |
-| animated  | boolean | 是   | 设置是否使用动画显隐标题栏。<br/>默认值：false。<br/>true：使用动画显示隐藏标题栏。<br/>false：不使用动画显示隐藏标题栏。 |
+| hide  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>默认值：false。<br/>true：隐藏标题栏。<br/>false：显示标题栏。 |
+| animated  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐标题栏。<br/>默认值：false。<br/>true：使用动画显示隐藏标题栏。<br/>false：不使用动画显示隐藏标题栏。 |
 
 ### hideBackButton
 
-hideBackButton(value: boolean)
+ArkTS-Dyn: hideBackButton(value: boolean)
+
+ArkTS-Sta: hideBackButton(value: boolean | undefined)
 
 设置是否隐藏标题栏中的返回键。返回键仅针对[titleMode](#titlemode)为NavigationTitleMode.Mini时才生效。
 
@@ -227,15 +285,21 @@ hideBackButton(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏标题栏中的返回键。 <br/>默认值：false。<br/>true：隐藏返回键。<br/>false：显示返回键。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏中的返回键。 <br/>默认值：false。<br/>true：隐藏返回键。<br/>false：显示返回键。 |
 
 ### navBarWidth<sup>9+</sup>
 
-navBarWidth(value: Length)
+ArkTS-Dyn: navBarWidth(value: Length)
+
+ArkTS-Sta: navBarWidth(value: Length | undefined)
 
 设置导航栏宽度。仅在Navigation组件分栏时生效。
 
@@ -245,15 +309,21 @@ navBarWidth(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                      |
 | ------ | ---------------------------- | ---- | ----------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 导航栏宽度。<br/>默认值：240<br/>单位：vp<br/>undefined：行为不做处理，导航栏宽度与默认值保持一致。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 导航栏宽度。<br/>默认值：240<br/>单位：vp<br/>undefined：行为不做处理，导航栏宽度与默认值保持一致。 |
 
 ### navBarPosition<sup>9+</sup>
 
-navBarPosition(value: NavBarPosition)
+ArkTS-Dyn: navBarPosition(value: NavBarPosition)
+
+ArkTS-Sta: navBarPosition(value: NavBarPosition | undefined)
 
 设置导航栏位置。仅在Navigation组件分栏时生效。
 
@@ -261,15 +331,21 @@ navBarPosition(value: NavBarPosition)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                          |
 | ------ | ------------------------------------------ | ---- | --------------------------------------------- |
-| value  | [NavBarPosition](#navbarposition9枚举说明) | 是   | 导航栏位置。<br/>默认值：NavBarPosition.Start |
+| value  | ArkTS-Dyn: [NavBarPosition](#navbarposition9枚举说明)<br/>ArkTS-Sta: [NavBarPosition](#navbarposition9枚举说明) \| undefined | 是   | 导航栏位置。<br/>默认值：NavBarPosition.Start |
 
 ### mode<sup>9+</sup>
 
-mode(value: NavigationMode)
+ArkTS-Dyn: mode(value: NavigationMode)
+
+ArkTS-Sta: mode(value: NavigationMode | undefined)
 
 设置导航栏的显示模式，支持单栏（Stack）、分栏（Split）和自适应（Auto）。
 
@@ -277,15 +353,21 @@ mode(value: NavigationMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [NavigationMode](#navigationmode9枚举说明) | 是   | 导航栏的显示模式。<br/>默认值：NavigationMode.Auto<br/>自适应：基于组件宽度自适应单栏和双栏。 |
+| value  | ArkTS-Dyn: [NavigationMode](#navigationmode9枚举说明)<br/>ArkTS-Sta: [NavigationMode](#navigationmode9枚举说明) \| undefined | 是   | 导航栏的显示模式。<br/>默认值：NavigationMode.Auto<br/>自适应：基于组件宽度自适应单栏和双栏。 |
 
 ### backButtonIcon<sup>9+</sup>
 
-backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
+ArkTS-Dyn: backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
+
+ArkTS-Sta: backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier | undefined)
 
 > **说明：**
 >
@@ -298,15 +380,21 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                 |
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
-| value  | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-modifier.md)    | 是   | 标题栏中返回键图标。 |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-modifier.md)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined    | 是   | 标题栏中返回键图标。 |
 
 ### backButtonIcon<sup>19+</sup>
 
-backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessibilityText?: ResourceStr)
+ArkTS-Dyn: backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessibilityText?: ResourceStr)
+
+ArkTS-Sta: backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier | undefined, accessibilityText?: ResourceStr)
 
 > **说明：**
 >
@@ -319,16 +407,22 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)  | 是   | 标题栏中返回键图标。 |
+| icon  | ArkTS-Dyn: string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined  | 是   | 标题栏中返回键图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 返回键无障碍播报内容。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ### hideNavBar<sup>9+</sup>
 
-hideNavBar(value: boolean)
+ArkTS-Dyn: hideNavBar(value: boolean)
+
+ArkTS-Sta: hideNavBar(value: boolean | undefined)
 
 设置是否隐藏导航栏。设置为true时，隐藏Navigation的导航栏，包括标题栏、内容区和工具栏。如果此时路由栈中存在NavDestination页面，则直接显示栈顶NavDestination页面，反之显示空白。
 
@@ -338,11 +432,15 @@ hideNavBar(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  | boolean | 是   | 是否隐藏导航栏。<br/>默认值：false。 <br/>true：隐藏导航栏。<br/>false：显示导航栏。|
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏导航栏。<br/>默认值：false。 <br/>true：隐藏导航栏。<br/>false：显示导航栏。|
 
 ### navDestination<sup>10+</sup>
 
@@ -362,7 +460,9 @@ navDestination(builder: (name: string, param: unknown) => void)
 
 ### navBarWidthRange<sup>10+</sup>
 
-navBarWidthRange(value: [Dimension, Dimension])
+ArkTS-Dyn: navBarWidthRange(value: [Dimension, Dimension])
+
+ArkTS-Sta: navBarWidthRange(value: [Dimension, Dimension] | undefined)
 
 设置导航栏最小和最大宽度（双栏模式下生效）。
 
@@ -372,15 +472,21 @@ navBarWidthRange(value: [Dimension, Dimension])
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 是   | 导航栏最小和最大宽度。<br/>默认值：最小默认值 240，最大默认值为组件宽度的40% ，且不大于 432，未正确设置的值按照默认值计算。<br/>单位：vp |
+| value | ArkTS-Dyn: [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)]<br/>ArkTS-Sta: [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] \| undefined | 是   | 导航栏最小和最大宽度。<br/>默认值：最小默认值 240，最大默认值为组件宽度的40% ，且不大于 432，未正确设置的值按照默认值计算。<br/>单位：vp |
 
 ### minContentWidth<sup>10+</sup>
 
-minContentWidth(value: Dimension)
+ArkTS-Dyn: minContentWidth(value: Dimension)
+
+ArkTS-Sta: minContentWidth(value: Dimension | undefined)
 
 设置导航栏内容区最小宽度（双栏模式下生效）。
 
@@ -388,11 +494,15 @@ minContentWidth(value: Dimension)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                 | 必填 | 说明                                                         |
 | ------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | [Dimension](ts-types.md#dimension10) | 是   | 导航栏内容区最小宽度。<br/>默认值：360<br/>单位：vp<br/>undefined：行为不做处理，导航栏内容区最小宽度与默认值保持一致。<br/>Auto模式断点计算：默认600vp，minNavBarWidth(240vp) + minContentWidth (360vp) |
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined | 是   | 导航栏内容区最小宽度。<br/>默认值：360<br/>单位：vp<br/>undefined：行为不做处理，导航栏内容区最小宽度与默认值保持一致。<br/>Auto模式断点计算：默认600vp，minNavBarWidth(240vp) + minContentWidth (360vp) |
 
 >  **说明：**
 >
@@ -584,7 +694,9 @@ toolBar(value: object | CustomBuilder)
 
 ### onTitleModeChange
 
-onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void)
+ArkTS-Dyn: onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void)
+
+ArkTS-Sta: onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void | undefined)
 
 当[titleMode](#titlemode)为NavigationTitleMode.Free时，随着可滚动组件的滑动标题栏模式发生变化时触发此回调。
 
@@ -592,15 +704,21 @@ onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型                                                | 必填 | 说明       |
 | --------- | --------------------------------------------------- | ---- | ---------- |
-| titleMode | [NavigationTitleMode](#navigationtitlemode枚举说明) | 是   | 标题模式。 |
+| titleMode | ArkTS-Dyn: [NavigationTitleMode](#navigationtitlemode枚举说明)<br/>ArkTS-Sta: [NavigationTitleMode](#navigationtitlemode枚举说明) \| undefined | 是   | 标题模式。 |
 
 ### onNavBarStateChange<sup>9+</sup>
 
-onNavBarStateChange(callback: (isVisible: boolean) =&gt; void) 
+ArkTS-Dyn: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void) 
+
+ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undefined)
 
 导航栏显示状态切换时触发该回调。
 
@@ -608,15 +726,21 @@ onNavBarStateChange(callback: (isVisible: boolean) =&gt; void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| isVisible | boolean | 是   | isVisible为true时表示显示，为false时表示隐藏。 |
+| isVisible | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | isVisible为true时表示显示，为false时表示隐藏。 |
 
 ### onNavigationModeChange<sup>11+</sup>
 
-onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void) 
+ArkTS-Dyn: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void) 
+
+ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | undefined)
 
 当Navigation首次显示或者单双栏状态发生变化时触发该回调。
 
@@ -624,21 +748,31 @@ onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| mode | [NavigationMode](#navigationmode9枚举说明) | 是   | NavigationMode.Split：当前Navigation显示为双栏;<br/>NavigationMode.Stack：当前Navigation显示为单栏。|
+| mode | ArkTS-Dyn: [NavigationMode](#navigationmode9枚举说明)<br/>ArkTS-Sta: [NavigationMode](#navigationmode9枚举说明) \| undefined | 是   | NavigationMode.Split：当前Navigation显示为双栏;<br/>NavigationMode.Stack：当前Navigation显示为单栏。 |
 
 ### customNavContentTransition<sup>11+</sup>
 
-customNavContentTransition(delegate:(from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition | undefined)
+ArkTS-Dyn: customNavContentTransition(delegate:(from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition | undefined)
+
+ArkTS-Sta: customNavContentTransition(delegate:((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition | undefined) | undefined)
 
 自定义转场动画回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 

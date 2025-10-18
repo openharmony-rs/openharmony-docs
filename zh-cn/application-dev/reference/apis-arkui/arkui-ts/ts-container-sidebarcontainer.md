@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -54,7 +56,9 @@ SideBarContainer( type?: SideBarContainerType )
 
 ### showSideBar
 
-showSideBar(value: boolean)
+ArkTS-Dyn: showSideBar(value: boolean)
+
+ArkTS-Sta: showSideBar(value: boolean | undefined)
 
 设置是否显示侧边栏。
 
@@ -64,15 +68,21 @@ showSideBar(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否显示侧边栏。<br/>true：显示侧边栏<br/>false：不显示侧边栏<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否显示侧边栏。<br/>true：显示侧边栏<br/>false：不显示侧边栏<br/>默认值：true |
 
 ### controlButton
 
-controlButton(value: ButtonStyle)
+ArkTS-Dyn: controlButton(value: ButtonStyle)
+
+ArkTS-Sta: controlButton(value: ButtonStyle | undefined)
 
 设置侧边栏控制按钮的属性。
 
@@ -80,15 +90,21 @@ controlButton(value: ButtonStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                   |
 | ------ | ----------------------------------- | ---- | ---------------------- |
-| value  | [ButtonStyle](#buttonstyle对象说明) | 是   | 侧边栏控制按钮的属性。 |
+| value  | ArkTS-Dyn: [ButtonStyle](#buttonstyle对象说明)<br/>ArkTS-Sta: [ButtonStyle](#buttonstyle对象说明) \| undefined | 是   | 侧边栏控制按钮的属性。 |
 
 ### showControlButton
 
-showControlButton(value: boolean)
+ArkTS-Dyn: showControlButton(value: boolean)
+
+ArkTS-Sta: showControlButton(value: boolean | undefined)
 
 设置是否显示控制按钮。
 
@@ -96,15 +112,21 @@ showControlButton(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否显示控制按钮。<br/>true：显示控制按钮<br/>false：不显示控制按钮<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否显示控制按钮。<br/>true：显示控制按钮<br/>false：不显示控制按钮<br/>默认值：true |
 
 ### sideBarWidth
 
-sideBarWidth(value: number)
+ArkTS-Dyn: sideBarWidth(value: number)
+
+ArkTS-Sta: sideBarWidth(value: number | undefined)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。
 
@@ -114,15 +136,21 @@ sideBarWidth(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: number \| undefined | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。 |
 
 ### sideBarWidth<sup>9+</sup>
 
-sideBarWidth(value: Length)
+ArkTS-Dyn: sideBarWidth(value: Length)
+
+ArkTS-Sta: sideBarWidth(value: Length | undefined)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。与[sideBarWidth](#sidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
@@ -132,15 +160,21 @@ sideBarWidth(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10的默认值为240vp。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10的默认值为240vp。 |
 
 ### minSideBarWidth
 
-minSideBarWidth(value: number)
+ArkTS-Dyn: minSideBarWidth(value: number)
+
+ArkTS-Sta: minSideBarWidth(value: number | undefined)
 
 设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -150,15 +184,21 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: number \| undefined | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞) |
 
 ### minSideBarWidth<sup>9+</sup>
 
-minSideBarWidth(value: Length)
+ArkTS-Dyn: minSideBarWidth(value: Length)
+
+ArkTS-Sta: minSideBarWidth(value: Length | undefined)
 
 设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
@@ -168,15 +208,21 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞) |
 
 ### maxSideBarWidth
 
-maxSideBarWidth(value: number)
+ArkTS-Dyn: maxSideBarWidth(value: number)
+
+ArkTS-Sta: maxSideBarWidth(value: number | undefined)
 
 设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -186,15 +232,21 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: number \| undefined | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### maxSideBarWidth<sup>9+</sup>
 
-maxSideBarWidth(value: Length)
+ArkTS-Dyn: maxSideBarWidth(value: Length)
+
+ArkTS-Sta: maxSideBarWidth(value: Length | undefined)
 
 设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -204,15 +256,21 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### autoHide<sup>9+</sup>
 
-autoHide(value: boolean)
+ArkTS-Dyn: autoHide(value: boolean)
+
+ArkTS-Sta: autoHide(value: boolean | undefined)
 
 设置当侧边栏拖拽到小于最小宽度后，是否自动隐藏。受minSideBarWidth属性方法影响，minSideBarWidth属性方法未设置值使用默认值。
 
@@ -222,15 +280,21 @@ autoHide(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br/>true：会自动隐藏<br/>false：不会自动隐藏<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean | undefined | 是   | 侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br/>true：会自动隐藏<br/>false：不会自动隐藏<br/>默认值：true |
 
 ### sideBarPosition<sup>9+</sup>
 
-sideBarPosition(value: SideBarPosition)
+ArkTS-Dyn: sideBarPosition(value: SideBarPosition)
+
+ArkTS-Sta: sideBarPosition(value: SideBarPosition | undefined)
 
 设置侧边栏显示位置。
 
@@ -238,15 +302,21 @@ sideBarPosition(value: SideBarPosition)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                         | 必填 | 说明                                               |
 | ------ | -------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [SideBarPosition](#sidebarposition9枚举说明) | 是   | 侧边栏显示位置。<br/>默认值：SideBarPosition.Start |
+| value  | ArkTS-Dyn: [SideBarPosition](#sidebarposition9枚举说明)<br/>ArkTS-Sta: [SideBarPosition](#sidebarposition9枚举说明) \| undefined | 是   | 侧边栏显示位置。<br/>默认值：SideBarPosition.Start |
 
 ### divider<sup>10+</sup>
 
-divider(value: DividerStyle | null)
+ArkTS-Dyn: divider(value: DividerStyle | null)
+
+ArkTS-Sta: divider(value: DividerStyle | null | undefined)
 
 设置分割线的样式。
 
@@ -254,15 +324,21 @@ divider(value: DividerStyle | null)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线的样式。<br/>默认为DividerStyle：显示分割线。<br/>- null或undefined：行为不做处理，分割线样式与默认值保持一致。<br/>**说明：** <br/>API version 11及以下版本，null效果为不显示分割线。|
+| value  | ArkTS-Dyn: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined | 是   | 分割线的样式。<br/>默认为DividerStyle：显示分割线。<br/>- null或undefined：行为不做处理，分割线样式与默认值保持一致。<br/>**说明：** <br/>API version 11及以下版本，null效果为不显示分割线。|
 
 ### minContentWidth<sup>10+</sup>
 
-minContentWidth(value: Dimension)
+ArkTS-Dyn: minContentWidth(value: Dimension)
+
+ArkTS-Sta: minContentWidth(value: Dimension | undefined)
 
 设置SideBarContainer组件内容区可显示的最小宽度。
 
@@ -283,11 +359,15 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Dimension](ts-types.md#dimension10) | 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp |
+| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined | 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp |
 
 ## ButtonStyle对象说明
 
@@ -370,7 +450,9 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 ### onChange
 
-onChange(callback: (value: boolean) =&gt; void)
+ArkTS-Dyn: onChange(callback: (value: boolean) =&gt; void)
+
+ArkTS-Sta: onChange(callback: ((value: boolean) =&gt; void) | undefined)
 
 当侧边栏的状态在显示和隐藏之间切换时触发回调。
 
@@ -386,11 +468,15 @@ onChange(callback: (value: boolean) =&gt; void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                          |
 | ------ | ------- | ---- | ----------------------------- |
-| value  | boolean | 是   | true表示显示，false表示隐藏。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | true表示显示，false表示隐藏。 |
 
 
 ## 示例

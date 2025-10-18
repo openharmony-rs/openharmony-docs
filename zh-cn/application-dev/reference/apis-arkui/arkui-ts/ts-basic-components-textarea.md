@@ -6,7 +6,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -464,7 +466,9 @@ enterKeyType(value: EnterKeyType)
 
 ### enableAutoFill<sup>12+</sup>
 
-enableAutoFill(value: boolean)
+ArkTS-Dyn: enableAutoFill(value: boolean)
+
+ArkTS-Sta: enableAutoFill(value: boolean | undefined)
 
 设置是否启用自动填充。
 
@@ -472,11 +476,15 @@ enableAutoFill(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
 
 ### contentType<sup>12+</sup>
 
