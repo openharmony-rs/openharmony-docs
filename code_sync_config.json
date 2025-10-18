@@ -718,5 +718,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/common_problem_of_application.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"get_fingerprint",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppIdentifier.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"get_app_identifier",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppId.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"get_app_id",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
