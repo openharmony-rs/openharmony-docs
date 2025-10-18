@@ -504,7 +504,7 @@ struct MatrixExample {
 
 ### 示例4（通过transform3D实现图形变换）
 
-该示例通过设置transform3D实现图形变换效果。
+从API version 20开始，该示例通过设置[transform3D](#transform3d20)实现图形变换效果。
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';
@@ -541,7 +541,7 @@ struct Tests {
 
 ### 示例5（按各轴旋转角的方式实现旋转）
 
-该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
+从API version 20开始，该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
 
 ```ts
 // xxx.ets
