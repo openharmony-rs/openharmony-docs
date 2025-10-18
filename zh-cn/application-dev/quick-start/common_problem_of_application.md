@@ -12,23 +12,26 @@
 
 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含fingerprint指纹信息。
 
-```ts
+<!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
+
+``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo:bundleManager.BundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. fingerprint: %{public}s', bundleInfo.signatureInfo.fingerprint);
+    console.info('testTag', 'getBundleInfoForSelf successfully. fingerprint: ', bundleInfo.signatureInfo.fingerprint);
   }).catch((err: BusinessError) => {
-    console.error('testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+    console.error('testTag', 'getBundleInfoForSelf failed. Cause: ', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
   console.error('testTag', 'getBundleInfoForSelf failed: %{public}s', message);
 }
 ```
+
 
 * 通过[bm工具](../tools/bm-tool.md)获取fingerprint指纹信息。
 
@@ -59,23 +62,26 @@ appIdentifier是<!--RP1-->[Profile签名文件](../security/app-provision-struct
 
 * 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
 
-```ts
+<!-- @[get_app_identifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppIdentifier.ets) -->
+
+``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo:bundleManager.BundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. appIdentifier: %{public}s', bundleInfo.signatureInfo.appIdentifier);
+    console.info('testTag', 'getBundleInfoForSelf successfully. appIdentifier:', bundleInfo.signatureInfo.appIdentifier);
   }).catch((err: BusinessError) => {
-    console.error('testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+    console.error('testTag', 'getBundleInfoForSelf failed. Cause:', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
-  console.error('testTag', 'getBundleInfoForSelf failed: %{public}s', message);
+  console.error('testTag', 'getBundleInfoForSelf failed:', message);
 }
 ```
+
 
 * 通过[bm工具](../tools/bm-tool.md)获取。
 
@@ -96,23 +102,26 @@ appId是应用的唯一标识，由包名、下划线和证书公钥的Base64编
 
 * 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appId信息。
 
-```ts
+<!-- @[get_app_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppId.ets) -->
+
+``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo:bundleManager.BundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. appId: %{public}s', bundleInfo.signatureInfo.appId);
+    console.info('testTag', 'getBundleInfoForSelf successfully. appId:', bundleInfo.signatureInfo.appId);
   }).catch((err: BusinessError) => {
-    console.error('testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+    console.error('testTag', 'getBundleInfoForSelf failed. Cause:', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
-  console.error('testTag', 'getBundleInfoForSelf failed: %{public}s', message);
+  console.error('testTag', 'getBundleInfoForSelf failed:', message);
 }
 ```
+
 
 * 通过[bm工具](../tools/bm-tool.md)获取。
 
