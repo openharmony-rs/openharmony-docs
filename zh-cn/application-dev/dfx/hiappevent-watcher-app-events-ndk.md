@@ -289,6 +289,20 @@ import testNapi from 'libentry.so';
 
 <!-- @[AppEvent_CPP_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+        Button('writeEvent C++')
+          .type(ButtonType.Capsule)
+          .margin({
+            top: 20
+          })
+          .backgroundColor('#0D9FFB')
+          .width('80%')
+          .height('5%')
+          .onClick(() => {
+            testNapi.writeAppEvent();
+          })
+```
+
 ## 调测验证
 
 1. 点击DevEco Studio界面中的运行按钮，运行应用工程。在应用界面中点击“WatchAppCrash ArkTS&C++”按钮，触发崩溃事件。应用退出后重新打开应用。
