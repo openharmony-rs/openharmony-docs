@@ -916,6 +916,28 @@ testRunner标签示例：
 
 <!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+{
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
+  "module": {
+	// ···
+    "testRunner": {
+      "name": "myTestRunnerName",
+      "srcPath": "etc/test/TestRunner.ts"
+    },
+	// ···
+    // [EndExclude module_dependencies]
+    // [EndExclude module_proxyData]
+    // [EndExclude module_deviceTypes]
+    // [StartExclude module_extensionAbilities]
+  }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
+}
+```
+
+
 ## atomicService标签
 
 此标签用于支持对原子化服务的配置。此标签仅在app.json中将bundleType设置为atomicService时生效。
@@ -939,6 +961,23 @@ atomicService标签示例：
 
 <!-- @[module_atomicService](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile04/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+	// ···
+    "atomicService": {
+      "preloads":[
+        {
+          "moduleName":"feature"
+        }
+      ],
+      "resizeable": true
+    },
+	// ···
+}
+```
+
+
 ## dependencies标签
 
 此标签标识模块运行时依赖的共享库列表。
@@ -955,6 +994,34 @@ dependencies标签示例：
 
 <!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
+``` JSON5
+// [Start module_testRunner]
+{
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
+  "module": {
+    // [StartExclude module_testRunner]
+    // [StartExclude module_proxyData]
+	// ···
+    "dependencies": [
+      {
+        "bundleName":"com.share.library",
+        "moduleName": "library",
+        "versionCode": 10001
+      }
+    ],
+	// ···
+    // [EndExclude module_proxyData]
+    // [EndExclude module_deviceTypes]
+    // [StartExclude module_extensionAbilities]
+  }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
+}
+// [End module_testRunner]
+```
+
+
 ## proxyData标签
 
 此标签标识模块提供的数据代理列表，仅限entry和feature配置。
@@ -970,6 +1037,38 @@ dependencies标签示例：
 proxyData标签示例：
 
 <!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_dependencies]
+// [Start module_testRunner]
+{
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
+  "module": {
+    // [StartExclude module_testRunner]
+	// ···
+    "proxyData": [
+      {
+        "uri":"datashareproxy://ohos.app.hap.myapplication/event/Meeting",
+        "requiredReadPermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
+        "requiredWritePermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
+        "metadata": {
+          "name": "datashare_metadata",
+          "resource": "$profile:datashare"
+        }
+      }
+    ],
+	// ···
+    // [EndExclude module_deviceTypes]
+    // [StartExclude module_extensionAbilities]
+  }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
+}
+// [End module_testRunner]
+// [End module_dependencies]
+```
+
 
 ## routerMap标签
 
@@ -1096,6 +1195,28 @@ appEnvironments标签示例：
 
 <!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
+``` JSON5
+// [Start module_abilities_metadata]
+{
+  // [StartExclude module_abilities_skills]
+  "module": {
+    // [StartExclude module_abilities_metadata]
+	// ···
+    "appEnvironments": [
+      {
+        "name": "name1",
+        "value": "value1"
+      }
+    ],
+	// ···
+    // [EndExclude module_abilities_metadata]
+  }
+  // [EndExclude module_abilities_skills]
+}
+// [End module_abilities_metadata]
+```
+
+
 
 ## hnpPackages标签
 
@@ -1113,6 +1234,24 @@ hnpPackages示例：
 
 <!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
 
+``` JSON5
+// [Start module_definePermissions]
+{
+  "module": {
+	// ···
+    "hnpPackages": [
+      {
+        "package": "hnpsample.hnp",
+        "type": "public"
+      }
+    ],
+	// ···
+  },
+}
+// [End module_definePermissions]
+```
+
+
 ## fileContextMenu标签
 
 该标签标识当前HAP的右键菜单配置项，是一个profile文件资源，用于指定描述应用注册右键菜单配置文件。仅在PC/2in1设备上生效。仅允许在entry类型模块中配置。
@@ -1120,6 +1259,28 @@ hnpPackages示例：
 fileContextMenu标签示例
 
 <!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
+{
+  // [StartExclude module_abilities_skills]
+  "module": {
+    // [StartExclude module_abilities_metadata]
+    // [StartExclude module_appEnvironments]
+    // [StartExclude module_systemTheme]
+	// ···
+    "fileContextMenu": "$profile:menu",
+	// ···
+    // [EndExclude module_appEnvironments]
+    // [EndExclude module_abilities_metadata]
+  }
+  // [EndExclude module_abilities_skills]
+}
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
+```
+
 
 在开发视图的resources/base/profile下面定义配置文件menu.json，其中文件名“menu.json”可自定义，需要和fileContextMenu标签指定的信息对应。配置文件中描述了当前应用注册的右键菜单的项目和响应行为。
 配置文件根节点名称为fileContextMenu，为对象数组，标识当前module注册右键菜单的数量。（单模块和单应用注册数量不能超过5个，配置超过数量当前只解析随机5个）
@@ -1229,6 +1390,31 @@ systemTheme标签示例：
 
 <!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
+``` JSON5
+// [Start module_fileContextMenu]
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
+{
+  // [StartExclude module_abilities_skills]
+  "module": {
+    // [StartExclude module_abilities_metadata]
+    // [StartExclude module_appEnvironments]
+	// ···
+    "systemTheme": "$profile:theme_config", // 通过profile下的资源文件配置
+    // [EndExclude module_metadata]
+    // [EndExclude module_all]
+    // [EndExclude module_fileContextMenu]
+    // [EndExclude module_appEnvironments]
+    // [EndExclude module_abilities_metadata]
+  }
+  // [EndExclude module_abilities_skills]
+}
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
+// [End module_fileContextMenu]
+```
+
+
 在开发视图的resources/base/profile下面定义配置文件theme_config.json，其中文件名“theme_config.json”可自定义为“theme_config”开头文件名，例如"theme_config"、"theme_config_1"。需要和systemTheme标签指定的信息对应。配置文件中标识当前应用使用的系统主题。
 
   **表29** theme_config.json配置说明
@@ -1267,4 +1453,26 @@ resources/base/profile路径下的theme_config.json资源文件示例如下：
 definePermissions标签示例：
 
 <!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // [StartExclude module_hnpPackages]
+	// ···
+    "definePermissions": [
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH",
+        "grantMode": "system_grant",
+        "availableLevel": "system_core",
+        "provisionEnable": true,
+        "distributedSceneEnable": false,
+        "label": "$string:EntryAbility_label"
+      }
+    ],
+	// ···
+    // [EndExclude module_hnpPackages]
+  },
+}
+```
+
 <!--DelEnd-->
