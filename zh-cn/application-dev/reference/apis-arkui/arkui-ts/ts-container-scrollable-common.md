@@ -493,7 +493,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| event  | (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void | 是 | 滚动组件滑动时的回调。<br/>scrollOffset：每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br/>scrollState：当前滑动状态。|
+| event  | (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void | 是 | 滚动组件滑动时的回调。<br/>scrollOffset：相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。单位vp。<br/>scrollState：当前滑动状态。|
 
 **返回值：**
 
@@ -621,7 +621,7 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滑动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | 是 | 当前滑动操作的来源。 |
 
@@ -629,7 +629,7 @@ type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scr
 
 | 类型                          | 说明                                  |
 | ----------------------------- | ------------------------------------ |
-| void \| [ScrollResult](#scrollresult12对象说明) |  返回ScrollResult时按照开发者指定的偏移量滑动；不返回时按回调参数scrollOffset滑动。  <br/>取值范围：(-∞, +∞)|
+| void \| [ScrollResult](#scrollresult12对象说明) |  返回ScrollResult时按照开发者指定的相对上一帧的偏移量滑动；不返回时按回调参数scrollOffset滑动。  <br/>取值范围：(-∞, +∞)|
 
 ## OnScrollCallback<sup>12+</sup>
 
@@ -647,7 +647,7 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| scrollOffset | number | 是 | 每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
+| scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
 ## ScrollResult<sup>12+</sup>对象说明
