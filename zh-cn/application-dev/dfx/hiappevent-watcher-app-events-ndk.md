@@ -286,20 +286,8 @@ import testNapi from 'libentry.so';
             let result: object = JSON.parse('');
           })
 ```
-``` TypeScript
-Button('writeEvent C++')	
-  .type(ButtonType.Capsule)	
-  .margin({	
-    top: 20	
-  })	
-  .backgroundColor('#0D9FFB')	
-  .width('80%')	
-  .height('5%')	
-  .onClick(() => {	
-    testNapi.writeAppEvent();	
-  })
-<!-- [AppEvent_CPP_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-```
+
+<!-- @[AppEvent_CPP_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
 ## 调测验证
 
