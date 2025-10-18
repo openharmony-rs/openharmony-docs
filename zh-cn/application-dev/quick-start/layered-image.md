@@ -153,6 +153,35 @@
 
       <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
+      {
+		// ···
+        // icon配置为分层图标资源文件的索引
+        "icon": "$media:layered_image",
+        // 需要在entry/src/main/resources/base/element/string.json配置name为EntryAbility_label的资源，已存在可以忽略
+        "label": "$string:EntryAbility_label",
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      }
+    ],
+	// ···
+  }
+}
+```
+
+
 
 >
 > **说明：**

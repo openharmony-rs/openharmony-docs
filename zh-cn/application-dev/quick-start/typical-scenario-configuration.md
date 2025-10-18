@@ -79,6 +79,29 @@
 
     <!-- @[typical_scenario_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/TypicalScenarioConfiguration/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+	// ···
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "metadata": [
+          {
+            "name": "ohos.ability.shortcuts",  // 配置快捷方式，该值固定为ohos.ability.shortcuts
+            "resource": "$profile:shortcuts_config"  // 指定shortcuts信息的资源位置
+          }
+        ],
+		// ···
+      }
+    ],
+	// ···
+  },
+}
+```
+
+
 安装应用后，长按桌面上的应用图标，图标上方会显示开发者配置的快捷方式：“添加收藏”和“分享好友”。点击相应标签，可启动对应的组件。应用配置的静态快捷方式在桌面上的展示效果如下图所示。
 
 <img src="figures/shortcut_display.jpg"/>
