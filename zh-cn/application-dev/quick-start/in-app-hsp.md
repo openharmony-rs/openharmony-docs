@@ -487,4 +487,22 @@ export struct Library_Menu {
 
 <!-- @[in_app_hsp_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "pages": "$profile:main_pages",
+    "routerMap": "$profile:route_map" //新增配置，指向route_map.json文件
+  }
+}
+```
+
+
 页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)。
