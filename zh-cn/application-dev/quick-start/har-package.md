@@ -46,95 +46,39 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 介绍如何导出HAR的ArkUI组件、接口、资源，供其他应用或当前应用的其他模块引用。
 
 Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，统一在Index.ets文件中导出。Index.ets文件是DevEco Studio默认自动生成的，开发者也可以自定义，在模块的oh-package.json5文件中的main字段配置入口声明文件，配置如下所示：
-```json
-{
-  "main": "Index.ets"
-}
-```
+
+<!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
+
 > **说明：**
 >
 > HAR在和宿主应用一起编译时，会把HAR的代码直接编译到宿主应用中，HAR包是一个编译中间态产物，不是最终的运行实体。运行时，HAR运行的身份信息是其宿主应用，系统会以宿主应用的版本做行为区分。如果需要在HAR中区分宿主应用的版本做不同的行为区分，可以调用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口，获取宿主应用的targetVersion，然后根据不同的targetVersion，做不同的逻辑处理。
 
 ### 导出ArkUI组件
 通过`export`导出ArkUI组件，示例如下：
-```ts
-// library/src/main/ets/components/mainpage/MainPage.ets
-@Component
-export struct MainPage {
-  @State message: string = 'HAR MainPage';
 
-  build() {
-    Column() {
-      Row() {
-        Text(this.message)
-          .fontSize(32)
-          .fontWeight(FontWeight.Bold)
-      }
-      .margin({ top: '32px' })
-      .height(56)
-      .width('624px')
+<!-- @[har_package_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/components/mainpage/MainPage.ets) -->
 
-      Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center, alignContent: FlexAlign.Center }) {
-        Column() {
-          Image($r('app.media.pic_empty')).width('33%')
-          Text($r('app.string.empty'))
-            .fontSize(14)
-            .fontColor($r('app.color.text_color'))
-        }
-      }.width('100%')
-      .height('90%')
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor($r('app.color.page_background'))
-  }
-}
-```
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
-```ts
-// library/Index.ets
-export { MainPage } from './src/main/ets/components/mainpage/MainPage';
-```
+
+<!-- @[har_package_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
+
 ### 导出类和方法
 通过`export`导出类和方法，支持导出多个类和方法，示例如下所示：
-```ts
-// library/src/main/ets/test.ets
-export class Log {
-    static info(msg: string) {
-        console.info(msg);
-    }
-}
 
-export function func() {
-  return 'har func';
-}
+<!-- @[har_package_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/test.ets) -->
 
-export function func2() {
-  return 'har func2';
-}
-```
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
-```ts
-// library/Index.ets
-export { Log, func, func2 } from './src/main/ets/test';
-```
+
+<!-- @[har_package_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
 
 ### 导出native方法
 在HAR中也可以包含C++编写的so。对于so中的native方法，HAR通过以下方式导出，以导出liblibrary.so的加法接口add为例：
-```ts
-// library/src/main/ets/utils/nativeTest.ets
-import native from 'liblibrary.so';
 
-export function nativeAdd(a: number, b: number): number {
-  let result: number = native.add(a, b);
-  return result;
-}
-```
+<!-- @[har_package_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/utils/nativeTest.ets) -->
+
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
-```ts
-// library/Index.ets
-export { nativeAdd } from './src/main/ets/utils/nativeTest';
-```
+
+<!-- @[har_package_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
 
 ### 导出资源
 在编译构建HAP时，DevEco Studio会从HAP模块及依赖的模块中收集资源文件，如果不同模块下的资源文件出现重名冲突时，DevEco Studio会按照以下优先级进行覆盖（优先级由高到低）：
@@ -144,15 +88,8 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
 > **说明：**
 > 
 > 如果在AppScope、HAP模块或HAR模块的国际化目录中配置了资源，在相同的国际化限定词下，合并的优先级也遵循上述规则。同时，国际化限定词中配置的优先级高于在base中的配置。例如，在AppScope的base中配置了资源字段，在HAR模块的en_US中配置了同样的资源字段，则在en_US的使用场景中，会更优先使用HAR模块中配置的资源字段。
-```
-// oh-package.json5
-{
-  "dependencies": {
-    "dayjs": "^1.10.4",
-    "lottie": "^2.0.0"
-  }
-}
-```
+
+<!-- @[har_package_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
 ## 使用
 
@@ -163,134 +100,24 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
 ### 引用HAR的ArkUI组件
 
 HAR的依赖配置成功后，可以引用HAR的ArkUI组件。通过`import`引入HAR导出的ArkUI组件，示例如下所示：
-```ts
-// entry/src/main/ets/pages/IndexSec.ets
-import { MainPage } from 'library';
 
-@Entry
-@Component
-struct IndexSec {
-  build() {
-    Row() {
-      // 引用HAR的ArkUI组件
-      MainPage()
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[har_package_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/IndexSec.ets) -->
+
 ### 引用HAR的类和方法
 通过`import`引用HAR导出的类和方法，示例如下所示：
-```ts
-// entry/src/main/ets/pages/Index.ets
-import { Log, func } from 'library';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontFamily('HarmonyHeiTi')
-        .fontWeight(FontWeight.Bold)
-        .fontSize(32)
-
-      //引用HAR的ets类和方法
-      Button($r('app.string.button'))
-        .id('button')
-        .height(48)
-        .width('624px')
-        .margin({ top: '4%' })
-        .type(ButtonType.Capsule)
-        .onClick(() => {
-          // 引用HAR的类和方法
-          Log.info('har msg');
-          this.message = 'func return: ' + func();
-        })
-    }
-    .width('100%')
-    .backgroundColor($r('app.color.page_background'))
-    .height('100%')
-  }
-}
-```
+<!-- @[har_package_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
 ### 引用HAR的native方法
 通过`import`引用HAR导出的native方法，示例如下所示：
-```ts
-// entry/src/main/ets/pages/Index.ets
-import { nativeAdd } from 'library';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontFamily('HarmonyHeiTi')
-        .fontWeight(FontWeight.Bold)
-        .fontSize(32)
-
-      //引用HAR的native方法
-      Button($r('app.string.native_add'))
-        .id('nativeAdd')
-        .height(48)
-        .width('624px')
-        .margin({ top: '4%', bottom: '6%' })
-        .type(ButtonType.Capsule)
-        .onClick(() => {
-          this.message = 'result: ' + nativeAdd(1, 2);
-        })
-    }
-    .width('100%')
-    .backgroundColor($r('app.color.page_background'))
-    .height('100%')
-  }
-}
-```
+<!-- @[har_package_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
 ### 引用HAR的资源
 通过`$r`引用HAR中的资源，例如在HAR模块的`src/main/resources`里添加字符串资源（在string.json中定义，name：hello_har）和图片资源（icon_har.png），然后在Entry模块中引用该字符串和图片资源的示例如下所示：
-```ts
-// entry/src/main/ets/pages/Index.ets
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
 
-  build() {
-    Column() {
-      // 引用HAR的字符串资源
-      Text($r('app.string.hello_har'))
-        .id('stringHar')
-        .fontFamily('HarmonyHeiTi')
-        .fontColor($r('app.color.text_color'))
-        .fontSize(24)
-        .fontWeight(500)
-        .margin({ top: '40%' })
+<!-- @[har_package_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
 
-      List() {
-        ListItem() {
-          // 引用HAR的图片资源
-          Image($r('app.media.icon_har'))
-            .id('iconHar')
-            .borderRadius('48px')
-        }
-        .margin({ top: '5%' })
-        .width('312px')
-      }
-      .alignListItem(ListItemAlign.Center)
-    }
-    .width('100%')
-    .backgroundColor($r('app.color.page_background'))
-    .height('100%')
-  }
-}
-```
 ## 编译
 
 HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
@@ -299,36 +126,7 @@ HAR可以作为二方库和三方库提供给其他应用使用，如果需要�
 
 HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，且编译模块为release时，自动进行简单的代码混淆；**从DevEco Studio 5.0.3.600开始，新建工程默认关闭代码混淆功能**，可以在HAR模块的build-profile.json5文件中的ruleOptions字段下的enable进行开启混淆，详情请见[代码混淆](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation)，配置如下所示：
 
-  ```json
-  {
-    "apiType": "stageMode",
-    "buildOption": {
-    },
-    "buildOptionSet": [
-      {
-        "name": "release",
-        "arkOptions": {
-          "obfuscation": {
-            "ruleOptions": {
-              "enable": true,
-              "files": [
-                "./obfuscation-rules.txt"
-              ]
-            },
-            "consumerFiles": [
-              "./consumer-rules.txt"
-            ]
-          }
-        }
-      },
-    ],
-    "targets": [
-      {
-        "name": "default"
-      }
-    ]
-  }
-  ```
+  <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
 
 ### 编译生成TS文件
 
@@ -348,25 +146,8 @@ HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修�
 > 从DevEco Studio NEXT Beta1（5.0.3.800）版本开始，默认构建字节码HAR，详情参考[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
 >
 
-  ```json
-  {
-    "module": {
-      "name": "TsClosedHar",
-      "type": "har",
-      "deviceTypes": [
-        "default",
-        "tablet",
-        "2in1"
-      ],
-      "metadata": [
-        {
-          "name": "UseTsHar",
-          "value": "true"
-        }
-      ]
-    }
-  }
-  ```
+  <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
+
 
 ## 发布
 
