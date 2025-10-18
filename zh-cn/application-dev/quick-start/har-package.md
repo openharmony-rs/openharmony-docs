@@ -49,6 +49,17 @@ Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，�
 
 <!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
+``` JSON5
+// [Start har_package_008]
+{
+// ···
+  "main": "Index.ets",
+// ···
+}
+// [End har_package_008]
+```
+
+
 > **说明：**
 >
 > HAR在和宿主应用一起编译时，会把HAR的代码直接编译到宿主应用中，HAR包是一个编译中间态产物，不是最终的运行实体。运行时，HAR运行的身份信息是其宿主应用，系统会以宿主应用的版本做行为区分。如果需要在HAR中区分宿主应用的版本做不同的行为区分，可以调用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口，获取宿主应用的targetVersion，然后根据不同的targetVersion，做不同的逻辑处理。
@@ -58,14 +69,73 @@ Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，�
 
 <!-- @[har_package_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/components/mainpage/MainPage.ets) -->
 
+``` TypeScript
+// library/src/main/ets/components/mainpage/MainPage.ets
+@Component
+export struct MainPage {
+  @State message: string = 'HAR MainPage';
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.message)
+          .fontSize(32)
+          .fontWeight(FontWeight.Bold)
+      }
+      .margin({ top: '32px' })
+      .height(56)
+      .width('624px')
+
+      Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center, alignContent: FlexAlign.Center }) {
+        Column() {
+          Image($r('app.media.pic_empty')).width('33%')
+          Text($r('app.string.empty'))
+            .fontSize(14)
+            .fontColor($r('app.color.text_color'))
+        }
+      }.width('100%')
+      .height('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor($r('app.color.page_background'))
+  }
+}
+```
+
+
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
 
 <!-- @[har_package_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
+
+``` TypeScript
+// library/Index.ets
+export { MainPage } from './src/main/ets/components/mainpage/MainPage';
+```
+
 
 ### 导出类和方法
 通过`export`导出类和方法，支持导出多个类和方法，示例如下所示：
 
 <!-- @[har_package_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/test.ets) -->
+
+``` TypeScript
+// library/src/main/ets/test.ets
+export class Log {
+  static info(msg: string) {
+    console.info(msg);
+  }
+}
+
+export function func() {
+  return 'har func';
+}
+
+export function func2() {
+  return 'har func2';
+}
+```
+
 
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
 
@@ -395,7 +465,6 @@ HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修�
     "name": "library",
     "type": "har",
     "deviceTypes": [
-      "default",
       "tablet",
       "2in1"
     ],
