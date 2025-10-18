@@ -9,46 +9,179 @@
 本文主要提供主动刷新的开发指导，刷新流程请参考[主动刷新概述](./arkts-ui-widget-interaction-overview.md#主动刷新)。
 
 ## 卡片提供方主动刷新卡片内容
-
 卡片提供方可以通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)、[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)、[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)接口搭配使用。
 
-```ts
-import { formBindingData, formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+### 开发流程
+下面通过示例来展示主动刷新，通过点击卡片上的按钮，触发卡片信息刷新。
+1. [创建卡片](./arkts-ui-widget-creation.md)。
+2. 实现卡片布局，通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)，触发onFormEvent回调。
+  ```ts
+  // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
+  let storageUpdateByMsg = new LocalStorage();
 
-let storage = new LocalStorage();
+  @Entry(storageUpdateByMsg)
+  @Component
+  struct UpdateByMessageCard {
+    @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+    @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
 
-@Entry(storage)
-@Component
-struct Index {
-  @StorageLink('formId') formId: string = '';
-  @StorageLink('formData') formData: Object | string = '';
-
-  build() {
-    Column() {
+    build() {
       Column() {
-        //...
-        Button() {
-          //...
-        }
-        .onClick(() => {
-          console.info(`click to check updateForm, formId: ${this.formId}`);
-          const formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(this.formData);
-          // formId需要为实际需要刷新的卡片ID
-          formProvider.updateForm(this.formId, formInfo).then(() => {
-            console.info('updateForm success.');
-          }).catch((error: BusinessError) => {
-            console.error(`updateForm fail, code: ${error?.code}, message: ${error?.message}`);
+        Column() {
+          Text(this.title)
+            .fontColor('#FFFFFF')
+            .opacity(0.9)
+            .fontSize(14)
+            .margin({ top: '8%', left: '10%' })
+          Text(this.detail)
+            .fontColor('#FFFFFF')
+            .opacity(0.6)
+            .fontSize(12)
+            .margin({ top: '5%', left: '10%' })
+        }.width('100%').height('50%')
+        .alignItems(HorizontalAlign.Start)
+
+        Row() {
+          Button() {
+            Text($r('app.string.update'))
+              .fontColor('#45A6F4')
+              .fontSize(12)
+          }
+          .width(120)
+          .height(32)
+          .margin({ top: '30%', bottom: '10%' })
+          .backgroundColor('#FFFFFF')
+          .borderRadius(16)
+          .onClick(() => {
+            postCardAction(this, {
+              action: 'message',
+              params: { msgTest: 'messageEvent' }
+            });
           })
-        })
-        .margin(5)
+        }.width('100%').height('40%')
+        .justifyContent(FlexAlign.Center)
       }
-      //...
+      .width('100%')
+      .height('100%')
+      .alignItems(HorizontalAlign.Start)
+      .backgroundImage($r('app.media.CardEvent'))
+      .backgroundImageSize(ImageSize.Cover)
     }
-    //...
   }
-}
-```
+  ```
+
+3. 实现onFormEvent函数，通过updateForm接口去刷新卡片数据。
+  ```ts
+  // entry/src/main/ets/entryformability/EntryFormAbility.ts
+  import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+  import { Configuration, Want } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  const TAG: string = 'EntryFormAbility';
+  const DOMAIN_NUMBER: number = 0xFF00;
+
+  export default class EntryFormAbility extends FormExtensionAbility {
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
+      hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
+      let formData: Record<string, string> = { };
+      return formBindingData.createFormBindingData(formData);
+    }
+
+    onCastToNormalForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
+    }
+
+    onUpdateForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+      // ...
+    }
+
+    onChangeFormVisibility(newStatus: Record<string, number>): void {
+      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
+    }
+
+    onFormEvent(formId: string, message: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
+      class FormDataClass {
+        title: string = 'Title Update.'; // 和卡片布局中对应
+        detail: string = 'Description update success.'; // 和卡片布局中对应
+      }
+
+      let formData = new FormDataClass();
+      let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+      formProvider.updateForm(formId, formInfo).then(() => {
+        hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+      }).catch((error: BusinessError) => {
+        hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+      });
+    }
+
+    onRemoveForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+    }
+
+    onConfigurationUpdate(config: Configuration) {
+      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
+    }
+
+    onAcquireFormState(want: Want): formInfo.FormState {
+      return formInfo.FormState.READY;
+    }
+  }
+  ```
+
+4. 资源文件。
+  ```ts
+  // entry/src/main/resources/zh_CN/element/string.json
+  {
+    "string": [
+      {
+        "name": "module_desc",
+        "value": "module description"
+      },
+      {
+        "name": "EntryAbility_desc",
+        "value": "description"
+      },
+      {
+        "name": "EntryAbility_label",
+        "value": "label"
+      },
+      {
+        "name": "EntryFormAbility_desc",
+        "value": "form_description"
+      },
+      {
+        "name": "EntryFormAbility_label",
+        "value": "form_label"
+      },
+      {
+        "name": "updatebymessage_desc",
+        "value": "This is a service widget."
+      },
+      {
+        "name": "updatebymessage_display_name",
+        "value": "widget"
+      },
+      {
+        "name": "default_title",
+        "value": "Title default"
+      },
+      {
+        "name": "DescriptionDefault",
+        "value": "Description default"
+      },
+      {
+        "name": "update",
+        "value": "刷新"
+      }
+    ]
+  }
+  ```
+### 运行结果
+
 <!--Del-->
 
 ## 卡片使用方主动刷新卡片内容（仅对系统应用开放）
