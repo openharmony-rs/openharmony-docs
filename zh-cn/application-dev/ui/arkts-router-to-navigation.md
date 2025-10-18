@@ -637,7 +637,9 @@ Navigation同样可以通过在observer中实现注册监听。
 ```ts
 // EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIObserver } from '@kit.ArkUI';
+import { UIObserver, window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -723,7 +725,7 @@ struct MyComponent {
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.log('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
   }
 
   build() {
