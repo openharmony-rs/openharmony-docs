@@ -1,4 +1,10 @@
 # Drawing Geometric Shapes (Shape)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 
 The drawing components are used to draw graphs on the page. The **Shape** component is the parent component of the drawing components. The attributes of **Shape** are universal attributes supported by all the drawing components. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
@@ -6,15 +12,15 @@ The drawing components are used to draw graphs on the page. The **Shape** compon
 
 ## Creating a Drawing Component
 
-A drawing component can be created in either of the following ways:
+You can create a drawing component through either of the following approaches:
 
-- Create a drawing component with **Shape** as their parent to implement the effect similar to SVG. The API used is as follows:
+- Using the **Shape** component as the parental container: This can implement SVG-like effects. The API syntax is as follows:
 
   ```ts
   Shape(value?: PixelMap)
   ```
 
-  In the API, the **value** parameter sets the drawing target. You can draw a graph in the specified **PixelMap** object. If the **value** parameter is not set, the graph is drawn in the current drawing target.
+  The optional **value** parameter specifies the drawing target. When it is provided, graphics are rendered to the specified **PixelMap** object. If it is omitted, drawing occurs in the current rendering target.
 
   ```ts
   Shape() {
@@ -23,13 +29,13 @@ A drawing component can be created in either of the following ways:
   ```
 
 
-- Create an independent drawing component to draw a specific shape. Seven shapes are supported: [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md), [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md), [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md), [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md), [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md), [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md), and [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md). The following uses the **Circle** API as an example:
+- Using a standalone drawing component for a specific geometric shape. Seven shapes are supported: [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md), [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md), [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md), [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md), [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md), [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md), and [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md). The following uses the **Circle** API as an example:
 
   ```ts
   Circle(value?: { width?: string | number, height?: string | number })
   ```
 
-    This API draws a circle on a page. The **width** parameter indicates the width of the circle, and the **height** parameter indicates the height of the circle. The diameter of the circle is determined by the minimum width and height.
+    This API draws a circle where the diameter is determined by the smaller of the width and height values.
 
   ```ts
   Circle({ width: 150, height: 150 })
@@ -38,7 +44,7 @@ A drawing component can be created in either of the following ways:
   ![creation-2](figures/creation-2.jpg)
 
 
-## Viewport
+## Shape Viewport
 
 
 ```ts
@@ -47,115 +53,145 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 Creates a viewport, which is a rectangle in the user space that maps to the view boundary established for the associated SVG element. Among the four optional parameters, **x** and **y** represent the coordinates of the upper left corner of the viewport, and **width** and **height** represent the size of the viewport.
 
-The following examples describe how to use the viewport:
+The following examples demonstrate how to use **viewPort**:
 
-- Zoom in or zoom out a graph through the shape viewport.
+- Scale graphics with **viewPort**.
 
   ```ts
-  class tmp{
-    x:number = 0
-    y:number = 0
-    width:number = 75
-    height:number = 75
+  class tmp {
+    x: number = 0
+    y: number = 0
+    width: number = 75
+    height: number = 75
   }
-  let viep:tmp = new tmp()
 
-  class tmp1{
+  class tmp1 {
     x:number = 0
     y:number = 0
     width:number = 300
     height:number = 300
   }
-  let viep1:tmp1 = new tmp1()
 
-  // Draw a circle whose width and height are both 75.
-  Text('Original Size Circle')
-  Circle({width: 75, height: 75}).fill('#E87361')
+  @Entry
+  @Component
+  struct Index {
+    viep: tmp = new tmp();
+    viep1: tmp1 = new tmp1();
 
-  Row({space:10}) {
-    Column() {
-      // Create a shape component whose width and height are both 150, the background color is yellow, and a viewport whose width and height are both 75. Fill the viewport with a blue rectangle and draw a circle with a diameter of 75 in the viewport.
-      // The drawing is complete. The viewport is zoomed in twice based on the width and height of the component.
-      Text('Enlarged Circle')
-      Shape() {
-        Rect().width('100%').height('100%').fill('#0097D4')
-        Circle({width: 75, height: 75}).fill('#E87361')
+    build() {
+      Column() {
+        // Draw a circle whose width and height are both 75.
+        Text('Original Circle')
+        Circle({ width: 75, height: 75 }).fill('#E87361')
+
+        Row({ space: 10 }) {
+          Column() {
+            // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 75 x 75.
+            // Fill the viewport with a blue rectangle and draw a 75-diameter circle in the viewport.
+            // After the drawing is complete, the viewport is scaled up to match the component size.
+            Text('Enlarged Circle')
+            Shape() {
+              Rect().width('100%').height('100%').fill('#0097D4')
+              Circle({ width: 75, height: 75 }).fill('#E87361')
+            }
+            .viewPort(this.viep)
+            .width(150)
+            .height(150)
+            .backgroundColor('#F5DC62')
+          }
+
+          Column() {
+            // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 300 x 300.
+            // Fill the viewport with a green rectangle and draw a 75-diameter circle in the viewport.
+            // After the drawing is complete, the viewport is scaled down to match the component size.
+            Text('Shrunk Circle')
+            Shape() {
+              Rect().width('100%').height('100%').fill('#BDDB69')
+              Circle({width: 75, height: 75}).fill('#E87361')
+            }
+            .viewPort(this.viep1)
+            .width(150)
+            .height(150)
+            .backgroundColor('#F5DC62')
+          }
+        }
       }
-      .viewPort(viep)
-      .width(150)
-      .height(150)
-      .backgroundColor('#F5DC62')
-    }
-    Column() {
-      // Create a shape component whose width and height are both 150, the background color is yellow, and a viewport whose width and height are both 300. Fill the viewport with a green rectangle and draw a circle with a diameter of 75 in the viewport.
-      // After the drawing is complete, the viewport is zoomed out to half its original size based on the width and height of the component.
-      Text('Shrunk Circle')
-      Shape() {
-        Rect().width('100%').height('100%').fill('#BDDB69')
-        Circle({width: 75, height: 75}).fill('#E87361')
-      }
-      .viewPort(viep1)
-      .width(150)
-      .height(150)
-      .backgroundColor('#F5DC62')
     }
   }
   ```
 
   ![2023032401632](figures/2023032401632.jpg)
 
-- Create a shape component whose width and height are both 300, with a yellow background and a viewport whose width and height are both 300. Fill the viewport with a blue rectangle and draw a circle with a radius of 75 in the viewport.
+- Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport.
 
   ```ts
-  class tmp{
-    x:number = 0
-    y:number = 0
-    width:number = 300
-    height:number = 300
+  class tmp {
+    x: number = 0
+    y: number = 0
+    width: number = 300
+    height: number = 300
   }
-  let viep:tmp = new tmp()
 
-  Shape() {
-    Rect().width("100%").height("100%").fill("#0097D4")
-    Circle({ width: 150, height: 150 }).fill("#E87361")
+  @Entry
+  @Component
+  struct Index {
+    viep: tmp = new tmp();
+
+    build() {
+      Column() {
+        Shape() {
+          Rect().width("100%").height("100%").fill("#0097D4")
+          Circle({ width: 150, height: 150 }).fill("#E87361")
+        }
+        .viewPort(this.viep)
+        .width(300)
+        .height(300)
+        .backgroundColor("#F5DC62")
+      }
+    }
   }
-    .viewPort(viep)
-    .width(300)
-    .height(300)
-    .backgroundColor("#F5DC62")
   ```
 
-  ![viewport (2) ](figures/viewport (2) .jpg)
+  ![viewport (2)](figures/viewport (2).jpg)
 
-- Create a shape component whose width and height are both 300, with a yellow background and a viewport whose width and height are both 300. Fill the viewport with a blue rectangle, draw a circle with a radius of 75 in the viewport, and move the viewport 150 to the right and below respectively.
+- Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
 
   ```ts
-  class tmp{
-    x:number = -150
-    y:number = -150
-    width:number = 300
-    height:number = 300
+  class tmp {
+    x: number = -150
+    y: number = -150
+    width: number = 300
+    height: number = 300
   }
-  let viep:tmp = new tmp()
 
-  Shape() {
-    Rect().width("100%").height("100%").fill("#0097D4")
-    Circle({ width: 150, height: 150 }).fill("#E87361")
+  @Entry
+  @Component
+  struct Index {
+    viep: tmp = new tmp();
+
+    build() {
+      Column() {
+        Shape() {
+          Rect().width("100%").height("100%").fill("#0097D4")
+          Circle({ width: 150, height: 150 }).fill("#E87361")
+        }
+        .viewPort(this.viep)
+        .width(300)
+        .height(300)
+        .backgroundColor("#F5DC62")
+      }
+    }
   }
-    .viewPort(viep)
-    .width(300)
-    .height(300)
-    .backgroundColor("#F5DC62")
   ```
 
-  ![viewport (3) ](figures/viewport (3) .jpg)
+  ![viewport (3)](figures/viewport (3).jpg)
 
 
 ## Setting Styles
 
-The drawing component allows you to change the component style through various attributes.
+You can customize the component style by setting various style attributes.
 
-- You can use **fill** to set the color of the filling area of the component.
+- Use the [fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill) attribute to set the fill color of the component.
 
   ```ts
   Path()
@@ -166,9 +202,9 @@ The drawing component allows you to change the component style through various a
     .strokeWidth(0)
   ```
 
-  ![2023022792216(1)](figures/2023022792216(1).jpg)
+  ![2023022792216](figures/2023022792216.jpg)
 
-- You can use **stroke** to set the stroke color of a component.
+- Use the [stroke](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke) attribute to set the stroke color.
 
   ```ts
   Path()
@@ -181,7 +217,7 @@ The drawing component allows you to change the component style through various a
 
   ![stroke](figures/stroke.jpg)
 
-- You can use **strokeOpacity** to set the stroke opacity.
+- Use the [strokeOpacity](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity) attribute to control sroke opacity.
 
   ```ts
   Path()
@@ -196,7 +232,7 @@ The drawing component allows you to change the component style through various a
 
   ![strokeopacity](figures/strokeopacity.jpg)
 
-- You can use **strokeLineJoin** to set the join style of the stroke. Options include **Bevel**, **Miter**, and **Round**.
+- Use [strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) to define the join style of the stroke. Available options include **Bevel**, **Miter**, and **Round**.
 
   ```ts
   Polyline()
@@ -212,8 +248,8 @@ The drawing component allows you to change the component style through various a
 
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
-- **strokeMiterLimit** places a limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.
-  The miter length indicates the distance from the outer tip to the inner corner of the miter. This attribute must be set to a value greater than or equal to 1 and takes effect when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
+- Use [strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit) to set the maximum ratio between the miter length and stroke width.
+  The miter length represents the distance from the outer corner point to the inner corner point, while the stroke width is defined by the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth) attribute. **strokeMiterLimit** requires values greater than or equal to 1 and takes effect when[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) is set to **LineJoinStyle.Miter**.
 
   ```ts
   Polyline()
@@ -225,7 +261,7 @@ The drawing component allows you to change the component style through various a
     .points([[20, 0], [20, 100], [100, 100]])
     // Set the join style of the stroke to Miter.
     .strokeLineJoin(LineJoinStyle.Miter)
-    // Set the limit on the ratio of the miter length to the value of strokeWidth used to draw a miter join.
+    // Set the maximum ratio between the miter length and stroke width.
     .strokeMiterLimit(1/Math.sin(45))
   Polyline()
     .width(100)
@@ -240,7 +276,7 @@ The drawing component allows you to change the component style through various a
 
   ![2023032405917](figures/2023032405917.jpg)
 
-- Use the **antiAlias** attribute to set whether to enable anti-aliasing. The default value is true, indicating that anti-aliasing is enabled.
+- Use [antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias) to control whether to enable anti-aliasing. The default value is **true**, indicating that anti-aliasing is enabled.
 
   ```ts
   // Enable anti-aliasing.
@@ -267,6 +303,162 @@ The drawing component allows you to change the component style through various a
 
   ![2023032411518](figures/2023032411518.jpg)
 
+- Use [mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8) to set the mesh effect, applying localized image deformation.
+
+```ts
+import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
+let ctx = offCanvas.getContext("2d")
+
+class DrawingRenderNode extends RenderNode {
+  verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+
+  setVerts(verts: Array<number>): void {
+    this.verts_ = verts
+  }
+
+  async draw(context: DrawContext) {
+    console.log("Kee draw");
+    const canvas = context.canvas;
+    let pixelMap = ctx.getPixelMap(0, 0, 150, 150)
+    const brush = new drawing.Brush(); // Only brush is supported. There is no drawing effect when pen is used.
+    canvas.attachBrush(brush);
+    let verts: Array<number> = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+    ; // 18
+    canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
+    canvas.detachBrush();
+  }
+}
+
+const renderNode = new DrawingRenderNode();
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  @State showShape: boolean = false;
+  @State pixelMap: image.PixelMap | undefined = undefined
+  @State shapeWidth: number = 150
+  @State strokeWidth: number = 1
+  @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+
+  aboutToAppear(): void {
+    // Replace "common/image/tree.png" with the image resource file you use.
+    let img: ImageBitmap = new ImageBitmap("common/image/tree.png")
+    ctx.drawImage(img, 0, 0, 100, 100)
+    this.pixelMap = ctx.getPixelMap(0, 0, 150, 150)
+  }
+
+  build() {
+    Column() {
+      Image(this.pixelMap)
+        .backgroundColor(Color.Red)
+        .width(150)
+        .height(150)
+        .onClick(() => {
+          // Replace "common/image/foreground.png" with the image resource file you use.
+          let img: ImageBitmap = new ImageBitmap("common/image/foreground.png")
+          ctx.drawImage(img, 0, 0, 100, 100)
+          this.pixelMap = ctx.getPixelMap(1, 1, 150, 150)
+          this.myNodeController.rebuild()
+          this.strokeWidth += 1
+        })
+
+      NodeContainer(this.myNodeController)
+        .width(150)
+        .height(150)
+        .backgroundColor(Color.Grey)
+        .onClick(() => {
+          this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0]
+        })
+      Button("change mesh")
+        .margin(5)
+        .onClick(() => {
+          this.meshArray = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+        })
+      Button("Show Shape")
+        .margin(5)
+        .onClick(() => {
+          this.showShape = !this.showShape
+        })
+
+      if (this.showShape) {
+        Shape(this.pixelMap) {
+          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+        }
+        .fillOpacity(0.2)
+        .backgroundColor(Color.Grey)
+        .width(this.shapeWidth)
+        .height(150)
+        .mesh(this.meshArray, 2, 2)
+        .fill(0x317AF7)
+        .stroke(0xEE8443)
+        .strokeWidth(this.strokeWidth)
+        .strokeLineJoin(LineJoinStyle.Miter)
+        .strokeMiterLimit(5)
+
+        Shape(this.pixelMap) {
+          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+        }
+        .fillOpacity(0.2)
+        .backgroundColor(Color.Grey)
+        .width(this.shapeWidth)
+        .height(150)
+        .fill(0x317AF7)
+        .stroke(0xEE8443)
+        .strokeWidth(this.strokeWidth)
+        .strokeLineJoin(LineJoinStyle.Miter)
+        .strokeMiterLimit(5)
+        .onDragStart(() => {
+        })
+
+        // The mesh attribute only takes effect when a PixelMap object is passed to the Shape component.
+        Shape() {
+          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+        }
+        .fillOpacity(0.2)
+        .backgroundColor(Color.Grey)
+        .width(this.shapeWidth)
+        .height(150)
+        .mesh(this.meshArray, 2, 2)
+        .fill(0x317AF7)
+        .stroke(0xEE8443)
+        .strokeWidth(this.strokeWidth)
+        .strokeLineJoin(LineJoinStyle.Miter)
+        .strokeMiterLimit(5)
+        .onClick(() => {
+          this.pixelMap = undefined;
+        })
+      }
+    }
+  }
+}
+
+```
+![ShapeMeshDemo](figures/ShapeMeshDemo.png)
 
 ## Example Scenario
 
@@ -322,3 +514,27 @@ The drawing component allows you to change the component style through various a
   ```
 
   ![scenario-2](figures/scenario-2.jpg)
+
+### UI Visual Attribute Effects
+
+>  **NOTE**
+>
+> Universal style attributes such as [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md) are applied to the component's background area, not its content area.
+
+
+  ```ts
+  @Entry
+  @Component
+  struct CircleExample {
+    build() {
+      Column({ space: 10 }) {
+        // Draw a circle whose diameter is 150.
+        Circle()
+          .width(150)
+          .height(200)
+          .backgroundColor(Color.Pink) // This applies to 150 x 200 rectangular background, not the circular content area.
+      }.width('100%')
+    }
+  }
+  ```
+  ![scenario-3](figures/VirtualEffect.jpg)
