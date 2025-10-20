@@ -58,6 +58,69 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过fs
 2. 使用获取到的文件URI进行重命名操作。
 
 <!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// [Start import_user_fileAccess]
+// [Start import_get_uri_assets]
+import { BusinessError } from '@kit.BasicServicesKit';
+// [StartExclude import_get_uri_assets]
+import { Want } from '@kit.AbilityKit';
+// [EndExclude import_get_uri_assets]
+import { common } from '@kit.AbilityKit';
+// [StartExclude import_get_uri_assets]
+import { fileAccess} from '@kit.CoreFileKit';
+// [EndExclude import_get_uri_assets]
+// [StartExclude copy_file_uri_example]
+// ···
+// [EndExclude copy_file_uri_example]
+
+// context 是EntryAbility 传过来的context
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// [End import_user_fileAccess]
+
+// [StartExclude copy_file_uri_example]
+// ···
+async function documentURIExample() {
+  let fileAccessHelper: fileAccess.FileAccessHelper;
+  // wantInfos 从getFileAccessAbilityInfo()获取
+  let wantInfos: Want[] = [
+    {
+    bundleName: 'com.ohos.UserFile.ExternalFileManager',
+    abilityName: 'FileExtensionAbility',
+    },
+  ];
+  try {
+    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
+    if (!fileAccessHelper) {
+      console.error('createFileAccessHelper interface returns an undefined object');
+    }
+    // 以内置存储目录为例
+    // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
+    // 开发者应根据自己实际获取的uri进行开发
+    let sourceUri: string = 'file://docs/storage/Users/currentUser/Download';
+    let displayName: string = 'test1.txt';
+    let fileUri: string;
+    try {
+      // 创建文件返回该文件的uri
+      fileUri = await fileAccessHelper.createFile(sourceUri, displayName);
+      if (!fileUri) {
+        console.error('createFile return undefined object');
+      }
+      console.info('createFile success, fileUri: ' + JSON.stringify(fileUri));
+      // 将刚创建的文件进行重命名，返回新文件的uri
+      let renameUri = await fileAccessHelper.rename(fileUri, 'renameFile.txt');
+      console.info('rename success, renameUri: ' + JSON.stringify(renameUri));
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.error('createFile failed, errCode:' + error.code + ', errMessage:' + error.message);
+    }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error('createFileAccessHelper failed, errCode:' + error.code + ', errMessage:' + error.message);
+  }
+}
+```
+
 <!--DelEnd-->
 
 ## 媒体文件URI
