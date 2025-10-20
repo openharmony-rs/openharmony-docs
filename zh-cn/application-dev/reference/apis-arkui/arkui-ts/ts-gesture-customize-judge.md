@@ -172,8 +172,8 @@ struct Index {
       }
       // 若该手势类型为捏合手势，转换为捏合手势事件
       if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
-        let panEvent = event as PinchGestureEvent;
-        console.info("axisPinch " + panEvent.axisPinch)
+        let pinchEvent = event as PinchGestureEvent;
+        console.info("axisPinch " + pinchEvent.axisPinch)
       }
       // 自定义判定标准
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
