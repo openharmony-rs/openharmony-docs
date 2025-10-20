@@ -27,6 +27,7 @@ ArkUI支持在前端使用ArkTS语言创建命令式节点，即[FrameNode](../r
 以下示例描述了如何设置和获取ArkTS命令式节点的跨语言配置。
 
 ```ts
+// Index.ets
 import { NodeController, UIContext, FrameNode, typeNode, BuilderNode } from '@kit.ArkUI';
 
 @Builder
@@ -113,6 +114,7 @@ struct CrossLanguage {
 
 1. 在ArkTS侧创建组件类型为Scroll的命令式节点。
     ```ts
+    // Index.ets
     import nativeNode from 'libentry.so';
     import { NodeController, UIContext, FrameNode, typeNode, BuilderNode, NodeContent } from '@kit.ArkUI';
 
@@ -206,6 +208,7 @@ struct CrossLanguage {
 
 2. 新建`CrossLanguageExample.h`文件，在其中获取到目标节点（该节点在ArkTS侧创建），并设置属性。
     ```c
+    // CrossLanguageExample.h
     #ifndef MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
     #define MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
 
@@ -374,7 +377,27 @@ struct CrossLanguage {
     } // namespace NativeModule
     ```
 
-4. 运行程序，在ArkTS侧点击按钮，设置当前attributeSetting为true，在Native侧点击按钮，设置ArkTS侧Scroll组件滚动条的颜色和粗细属性。
+4. 修改CMakeList.txt，添加链接库。
+   ```
+   // CMakeLists.txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(CAPI_DEMO)
+ 
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+ 
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                     ${NATIVERENDER_ROOT_PATH}/include)
+ 
+   add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so hilog_ndk.z.so)
+   ```
+
+5. 运行程序，在ArkTS侧点击按钮，设置当前attributeSetting为true，在Native侧点击按钮，设置ArkTS侧Scroll组件滚动条的颜色和粗细属性。
 
 ![crossLanguageDemo](figures/crossLanguageDemo.gif)
 
