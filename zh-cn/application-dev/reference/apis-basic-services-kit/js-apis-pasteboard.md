@@ -3089,6 +3089,13 @@ try {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
 ```
+### UpdateCallback <sup>22+</sup>
+
+type UpdateCallback = () => void
+
+表示剪贴板内容变更的回调
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
 
 ### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
 
@@ -3102,7 +3109,7 @@ onRemoteUpdate(callback: UpdateCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | function | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
 
 **错误码：**
 
@@ -3133,8 +3140,8 @@ offRemoteUpdate(callback?: UpdateCallback): void
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                                      |
-| -------- | -------- | -------- |---------------------------------------------------------|                              |
-| callback | function | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
+| -------- | -------- | -------- |---------------------------------------------------------|
+| callback | [UpdateCallback](#updatecallback-22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
 
 **错误码：**
 
