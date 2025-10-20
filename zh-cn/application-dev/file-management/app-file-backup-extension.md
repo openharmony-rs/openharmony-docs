@@ -107,6 +107,53 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 
     <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
 
+``` TypeScript
+// [Start on_release]
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
+// [StartExclude on_release]
+import { BundleVersion } from '@kit.CoreFileKit';
+// [EndExclude on_release]
+// ···
+
+// [StartExclude on_release]
+interface ErrorInfo {
+  type: string,
+  errorCode: number,
+  errorInfo: string
+}
+// [EndExclude on_release]
+
+// ···
+
+class BackupExt extends BackupExtensionAbility {
+  // [StartExclude on_release]
+  //onBackupEx
+  async onBackupEx(backupInfo: string): Promise<string> {
+    console.info('onBackupEx ok');
+    let errorInfo: ErrorInfo = {
+      type: 'ErrorInfo',
+      errorCode: 0,
+      errorInfo: 'app diy error info'       
+    }
+    return JSON.stringify(errorInfo);
+  }
+
+  // onRestoreEx
+  async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
+    console.info(`onRestoreEx begin`);
+    let errorInfo: ErrorInfo = {
+      type: 'ErrorInfo',
+      errorCode: 0,
+      errorInfo: 'app diy error info'
+    }
+    return JSON.stringify(errorInfo);
+  }
+  // [EndExclude on_release]
+// ···
+}
+```
+
+
 4. 从API 20开始，开发者如需在应用备份恢复完成后执行一些特殊操作，例如清理备份或恢复时应用创建的临时文件，可以在`BackupExtension.ets`文件中自定义类继承的`BackupExtensionAbility`，通过重写其`onRelease`方法，当备份或恢复完成时，会执行`onRelease`方法以执行开发者自定义的行为。
 
    `onRelease`具有超时机制，应用若在5秒内未完成`onRelease`操作，将触发备份恢复结束时的应用进程退出流程。
@@ -114,6 +161,50 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
     <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
+
+``` TypeScript
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
+// ···
+// [StartExclude on_backup_restore]
+import { fileIo } from '@kit.CoreFileKit';
+// [EndExclude on_backup_restore]
+
+// ···
+
+// [StartExclude on_backup_restore]
+const SCENARIO_BACKUP: number = 1;
+const SCENARIO_RESTORE: number = 2;
+// 需要清理的临时目录
+let filePath: string = '/data/storage/el2/base/.temp/';
+// [EndExclude on_backup_restore]
+
+class BackupExt extends BackupExtensionAbility {
+// ···
+  // [StartExclude on_backup_restore]
+  // onRelease
+  async onRelease(scenario: number): Promise<void> {
+    try {
+      if (scenario == SCENARIO_BACKUP) {
+        // 备份场景，应用自行实现处理，以清理备份产生的临时文件为例
+        console.info(`onRelease begin`);
+        await fileIo.rmdir(filePath);
+        console.info(`onRelease end, rmdir succeed`);
+      }
+      if (scenario == SCENARIO_RESTORE) {
+        // 恢复场景，应用自行实现处理，以清理恢复产生的临时文件为例
+        console.info(`onRelease begin`);
+        await fileIo.rmdir(filePath);
+        console.info(`onRelease end, rmdir succeed`);
+      }
+    } catch (error) {
+      console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
+    }
+  }
+  // [EndExclude on_backup_restore]
+}
+// [End on_backup_restore]
+```
+
 
 ### 元数据资源配置文件说明
 
