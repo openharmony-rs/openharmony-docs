@@ -6,7 +6,7 @@
 卡片提供方可以通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)、[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)、[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)接口搭配使用。
 
 ### 开发流程
-下面通过示例来展示主动刷新，通过点击卡片上的按钮，触发卡片信息刷新。
+下面给出示例，实现如下功能：新建卡片后，点击卡片上的刷新按钮，刷新卡片信息。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 2. 实现卡片布局，通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)，触发onFormEvent回调。
   ```ts
@@ -126,7 +126,7 @@
   }
   ```
 
-4. 资源文件。
+4. 资源文件如下。
   ```ts
   // entry/src/main/resources/zh_CN/element/string.json
   {
@@ -175,7 +175,7 @@
   }
   ```
 ### 运行结果
-
+![WidgetPrinciple](figures/主动刷新结果.gif)
 <!--Del-->
 
 ## 卡片使用方主动刷新卡片内容（仅对系统应用开放）
