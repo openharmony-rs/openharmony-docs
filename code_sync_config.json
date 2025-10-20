@@ -823,5 +823,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/native-bundle-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":202,
+						"name":"native-bundle-guidelines_003",
+						"start_line":51
+					},
+					{
+						"end_line":379,
+						"name":"native-bundle-guidelines_006",
+						"start_line":204
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"native-bundle-guidelines_001",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
