@@ -115,11 +115,22 @@ libscsi.z.so
 
     <!-- @[driver_scsi_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    // 初始化SCSI Peripheral DDK
+    int32_t ret = OH_ScsiPeripheral_Init();
+```
+
+
 2. 打开设备。
 
     初始化SCSI Peripheral DDK后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Open** 打开SCSI设备。
 
     <!-- @[driver_scsi_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        ret = OH_ScsiPeripheral_Open(g_devHandle, interfaceIndex, &g_scsiPeripheralDevice);
+```
+
 
 3. 创建缓冲区（可选）。
 
@@ -127,17 +138,32 @@ libscsi.z.so
 
     <!-- @[driver_scsi_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+        ret = OH_ScsiPeripheral_CreateDeviceMemMap(g_scsiPeripheralDevice, DEVICE_MEM_MAP_SIZE, &g_scsiDeviceMemMap);
+```
+
+
 4. 检查逻辑单元是否已经准备好（可选）。
 
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_TestUnitReady** 检查逻辑单元是否已经准备好。
 
     <!-- @[driver_scsi_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+        int32_t ret = OH_ScsiPeripheral_TestUnitReady(g_scsiPeripheralDevice, &request, &response);
+```
+
+
 5. 查询SCSI设备的基本信息（可选）。
 
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Inquiry** 获取SCSI设备的基本信息。
 
     <!-- @[driver_scsi_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    int32_t ret = OH_ScsiPeripheral_Inquiry(g_scsiPeripheralDevice, &inquiryRequest, &inquiryInfo, &response);
+```
+
 
 6. 获取SCSI设备的容量信息（可选）。
 
