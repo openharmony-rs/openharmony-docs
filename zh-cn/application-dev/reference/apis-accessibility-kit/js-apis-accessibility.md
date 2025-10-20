@@ -258,7 +258,7 @@ captionsManager.on('enableChange', (data: boolean) => {
 
 ### onEnableChange<sup>22+</sup>
 
-onEnableChange(callback: Callback&lt;boolean&gt;): void
+onEnableChange(callback: Callback\<boolean\>): void
 
 监听字幕配置启用状态变化事件。使用callback异步回调。
 
@@ -348,7 +348,7 @@ captionsManager.on('styleChange', (data: accessibility.CaptionsStyle) => {
 
 ### onStyleChange<sup>22+</sup>
 
-onStyleChange(callback: Callback&lt;CaptionsStyle&gt;): void
+onStyleChange(callback: Callback\<CaptionsStyle\>): void
 
 监听字幕风格变化事件。使用callback异步回调。
 
