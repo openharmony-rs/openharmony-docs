@@ -81,7 +81,7 @@ ArkTS演进为内存天然共享模型，跨线程数据交互无需再依赖Act
 **ArkTS1.1**
 ```typescript
 // Worker.ets
-import { worker, MessageEvent, ThreadWorkerGlobalScope } from '@kit.ArkTS';
+import { worker, MessageEvents, ThreadWorkerGlobalScope } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
@@ -97,7 +97,7 @@ workerPort.postMessage('hello hostThread');
 
 ```typescript
 // Index.ets
-import { worker, MessageEvent } from '@kit.ArkTS';
+import { worker, MessageEvents } from '@kit.ArkTS';
 
 let workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
 
@@ -470,23 +470,29 @@ function testFunc(array: Array<TestClass>) {
 }
 
 let testInstance: TestClass = new TestClass();
-let array1 = new Array<TestClass>();
-array1.push(testInstance);
-// 以拷贝语义传递数组，testFunc内的修改不会作用到array1对象上
-let task1 = new taskpool.Task(testFunc, Array.from(array1));
-taskpool.execute(task1).then((res: Any):void => {
-  console.info('task1 res is: ' + res);
-  console.info('array1 length: ' + array1.length);
-});
-// 使用引用传递数组，testFunc内的修改会作用到array2对象上
-let array2 = new Array<TestClass>();
-array2.push(testInstance);
-let task2 = new taskpool.Task(testFunc, array2);
-taskpool.execute(task2).then((res: Any):void => {
-  console.info('task2 res is: ' + res);
-  console.info('array2 length: ' + array2.length);
-});
-// 执行结果为：
+
+// 以拷贝语义传递数组，testFunc内的修改不会作用到array1对象上。这段代码不应该执行在顶层作用域，注意异步事件环境。
+async function copyTrans() {
+  let array1 = new Array<TestClass>();
+  array1.push(testInstance);
+  let task1 = new taskpool.Task(testFunc, Array.from(array1));
+  taskpool.execute(task1).then((res: Any):void => {
+    console.info('task1 res is: ' + res);
+    console.info('array1 length: ' + array1.length);
+  });
+}
+
+// 使用引用传递数组，testFunc内的修改会作用到array2对象上。这段代码不应该执行在顶层作用域，注意异步事件环境。
+async function referenceTrans() {
+  let array2 = new Array<TestClass>();
+  array2.push(testInstance);
+  let task2 = new taskpool.Task(testFunc, array2);
+  taskpool.execute(task2).then((res: Any):void => {
+    console.info('task2 res is: ' + res);
+    console.info('array2 length: ' + array2.length);
+  });
+}
+// 两个函数的执行结果为：
 // task1 res is: TestClass
 // array1 length: 1
 // task2 res is: TestClass
@@ -555,36 +561,39 @@ function testTransfer(arg1: Uint8Array, arg2: Uint8Array): number {
   return 100.0;
 }
 
-let buffer: ArrayBuffer = new ArrayBuffer(8);
-let view: Uint8Array = new Uint8Array(buffer);
-let buffer1: ArrayBuffer = new ArrayBuffer(16);
-let view1: Uint8Array = new Uint8Array(buffer1);
+// 这段代码不应该执行在顶层作用域，注意异步事件环境。
+async function removeSetTransferList() {
+  let buffer: ArrayBuffer = new ArrayBuffer(8);
+  let view: Uint8Array = new Uint8Array(buffer);
+  let buffer1: ArrayBuffer = new ArrayBuffer(16);
+  let view1: Uint8Array = new Uint8Array(buffer1);
 
-console.info('testTransfer view byteLength: ' + view.byteLength);
-console.info('testTransfer view1 byteLength: ' + view1.byteLength);
-// 执行结果为：
-// testTransfer view byteLength: 8
-// testTransfer view1 byteLength: 16
+  console.info('testTransfer view byteLength: ' + view.byteLength);
+  console.info('testTransfer view1 byteLength: ' + view1.byteLength);
+  // 执行结果为：
+  // testTransfer view byteLength: 8
+  // testTransfer view1 byteLength: 16
 
-let task: taskpool.Task = new taskpool.Task(testTransfer, view, view1);
-taskpool.execute(task).then((res: Any):void => {
-  console.info('test result: ' + res);
-}).catch((e: Error): void => {
-  console.error('test catch: ' + e);
-})
-// 内存共享，此处可直接访问view,view1的内容，不需要使用setTransferList
-// 执行结果为：
-// testTransfer arg1 byteLength: 8
-// testTransfer arg2 byteLength: 16
-// test result: 100
+  let task: taskpool.Task = new taskpool.Task(testTransfer, view, view1);
+  taskpool.execute(task).then((res: Any):void => {
+    console.info('test result: ' + res);
+  }).catch((e: Error): void => {
+    console.error('test catch: ' + e);
+  })
+  // 内存共享，此处可直接访问view,view1的内容，不需要使用setTransferList
+  // 执行结果为：
+  // testTransfer arg1 byteLength: 8
+  // testTransfer arg2 byteLength: 16
+  // test result: 100
 
-// 如果需要保持原有传递语义，需要手动拷贝并清理原数组
-let task2: taskpool.Task = new taskpool.Task(testTransfer, Uint8Array.from(view), Uint8Array.from(view1));
-taskpool.execute(task2).then((res: Any) => {
-  console.info('test result: ' + res);
-})
-view = new Uint8Array(0);
-view1 = new Uint8Array(0);
+  // 如果需要保持原有传递语义，需要手动拷贝并清理原数组
+  let task2: taskpool.Task = new taskpool.Task(testTransfer, Uint8Array.from(view), Uint8Array.from(view1));
+  taskpool.execute(task2).then((res: Any) => {
+    console.info('test result: ' + res);
+  })
+  view = new Uint8Array(0);
+  view1 = new Uint8Array(0);
+}
 ```
 
 ## 删除ISendable接口
@@ -855,7 +864,7 @@ interface PromiseRejectedResult {
   reason: string;
 }
 
-type PromiseSettledResult\<T> = PromiseFulfilledResult\<T> | PromiseRejectedResult;
+type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
 ```
 
 **ArkTS1.2**
@@ -1086,7 +1095,7 @@ let p2 = new Promise<void>((resolve, reject) => {
 **ArkTS1.2**
 ```typescript
 let p1 = new Promise<void>((resolve, reject) => {
-    resolve();
+    resolve(undefined);
 })
 let p2 = new Promise<void>((resolve, reject) => {
     setTimeout(() => {resolve(undefined)}, 10);
