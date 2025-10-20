@@ -387,3 +387,20 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | event_message: content load finished | 页面解析完成。|
 | event_message: page load finished、<br> NWebHandlerDelegate::OnLoadEnd、<br> NWebHandlerDelegate::MainFrame OnLoadEnd、<br> NWebHandlerDelegate::OnFirstMeaningfulPaint | 页面以及子资源加载完成。|
 
+## 通过registerJavaScriptProxy()接口注册方法时白屏
+
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refresh)接口生效。
+
+详细参考：API参考文档[registerJavaScriptProxy()](arkts-basic-components-web-attributes.md#registerjavascriptproxy)与开发指南[前端页面调用应用侧函数](./web-in-page-app-function-invoking.md)
+
+## 设备的WebView默认加载进程不一致导致加载H5页面白屏
+
+问题：用WebView加载H5在Phone上表现正常，但是在Table/PC/2in1上白屏。
+
+原因：Table/PC/2in1的WebView默认是多进程加载，iframe默认是子进程加载，而主进程加载完成，子进程未加载完成，导致白屏。
+
+解决方案：
+通过setRenderProcessMode()接口设置WebView渲染模式为单进程加载。
+   ```
+   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+   ```
