@@ -4576,6 +4576,7 @@
             - [oh_axis_type.h](reference/apis-input-kit/capi-oh-axis-type-h.md)
             - [oh_input_manager.h](reference/apis-input-kit/capi-oh-input-manager-h.md)
             - [oh_key_code.h](reference/apis-input-kit/capi-oh-key-code-h.md)
+            - [oh_pointer_style.h](reference/apis-input-kit/capi-oh-pointer-style-h.md)
           - 结构体<!--input-struct-->
             - [Input_InterceptorEventCallback](reference/apis-input-kit/capi-input-input-interceptoreventcallback.md)
             - [Input_DeviceListener](reference/apis-input-kit/capi-input-input-devicelistener.md)
@@ -4587,6 +4588,8 @@
             - [Input_Hotkey](reference/apis-input-kit/capi-input-input-hotkey.md)
             - [Input_DeviceInfo](reference/apis-input-kit/capi-input-input-deviceinfo.md)
             - [Input_InterceptorOptions](reference/apis-input-kit/capi-input-input-interceptoroptions.md)
+            - [Input_CursorConfig](reference/apis-input-kit/capi-input-input-cursorconfig.md)
+            - [Input_CustomCursor](reference/apis-input-kit/capi-input-input-customcursor.md)
         - 错误码<!--input-arkts-errcode-->
           <!--Del-->
           - [键鼠穿越管理错误码](reference/apis-input-kit/errorcode-cooperator.md)
