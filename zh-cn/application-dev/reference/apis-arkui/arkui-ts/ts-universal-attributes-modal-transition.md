@@ -239,16 +239,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -278,16 +278,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -341,16 +341,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.DEFAULT,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -378,16 +378,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.DEFAULT,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -440,16 +440,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.ALPHA,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.");
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.");
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.");
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.");
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -477,16 +477,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.ALPHA,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.");
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.");
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.");
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.");
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -545,7 +545,7 @@ struct ModalTransitionExample {
             transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("BindContentCover dismiss reason is back pressed");
+                console.info("BindContentCover dismiss reason is back pressed");
               }
               dismissContentCoverAction.dismiss();
             }),
@@ -593,16 +593,16 @@ struct ModalTransitionExample {
             ),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("back pressed");
+                console.info("back pressed");
               }
               dismissContentCoverAction.dismiss();
             }),
             onAppear: () => {
-              console.log("BindContentCover onAppear.");
+              console.info("BindContentCover onAppear.");
             },
             onDisappear: () => {
               this.isShow = false;
-              console.log("BindContentCover onDisappear.");
+              console.info("BindContentCover onDisappear.");
             }
           })
     }
@@ -618,7 +618,7 @@ struct ModalTransitionExample {
 
 ### 示例6（设置全模态适配安全区）
 
-该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets
