@@ -1870,7 +1870,7 @@ struct ListExample {
 
 ### 示例9（设置折行走焦）
 
-该示例通过focusWrapMode接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
 
 ```ts
 @Entry
