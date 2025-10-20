@@ -484,6 +484,8 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
+  - 响应式环境变量<!--arkts-env-property-->
+    - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
@@ -735,6 +737,7 @@
     - [状态管理错误码](errorcode-stateManagement.md)
     - [渲染节点错误码](errorcode-node-render.md)
     - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
+    - [环境变量错误码](errorcode-env.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
