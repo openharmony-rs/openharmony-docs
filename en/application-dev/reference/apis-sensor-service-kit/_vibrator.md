@@ -1,5 +1,10 @@
 # Vibrator
-
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -22,16 +27,16 @@ The **Vibrator** module provides APIs for vibrator services to access the vibrat
 
 | Name| Description|
 | -------- | -------- |
-| [Vibrator_Attribute](_vibrator_attribute.md) | Describes the vibrator attribute. |
-| [Vibrator_FileDescription](_vibrator_file_description.md) | Describes the vibration file description. |
+| [Vibrator_Attribute](_vibrator_attribute.md) | Defines a struct for the vibrator attribute. |
+| [Vibrator_FileDescription](_vibrator_file_description.md) | Defines a struct for the vibration file description. |
 
 
 ### Types
 
 | Name| Description|
 | -------- | -------- |
-| [Vibrator_ErrorCode](#vibrator_errorcode) | Defines an enum for vibrator error codes. |
-| [Vibrator_Usage](#vibrator_usage) | Defines an enum for vibration scenarios.      |
+| [Vibrator_ErrorCode](#vibrator_errorcode) | Enumerates the vibrator error codes. |
+| [Vibrator_Usage](#vibrator_usage) | Enumerates the vibration scenarios.      |
 | [Vibrator_Attribute](#vibrator_attribute) | Defines a struct for the vibrator attribute. |
 | [Vibrator_FileDescription](#vibrator_filedescription) | Defines a struct for the vibration file description. |
 

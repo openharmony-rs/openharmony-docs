@@ -142,3 +142,21 @@ The database is damaged.
 **Solution**
 
 Check whether the database file on the local host is damaged.
+
+## 2103019 Invalid Timestamp
+
+**Error Information**
+
+The timestamp in param is invalid.
+
+**Description**
+
+This error code is reported if the timestamp in the parameter is invalid.
+
+**Possible Causes**
+
+The start timestamp or end timestamp in the parameter is more than 31 days earlier than the current system time.
+
+**Solution**
+
+Modify the timestamp to ensure that the timestamp is not more than 31 days earlier than the current system time.

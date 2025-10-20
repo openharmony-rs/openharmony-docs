@@ -1,5 +1,10 @@
 # oh_sensor_type.h
-
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -21,8 +26,8 @@ The **oh_sensor_type.h** file declares the common sensor attributes.
 
 | Name| Description|
 | -------- | -------- |
-| [Sensor_Type](_sensor.md#sensor_type) | Defines an enum for sensor types. |
-| [Sensor_Result](_sensor.md#sensor_result)                    | Defines an enum for sensor result codes.                |
+| [Sensor_Type](_sensor.md#sensor_type) | Enumerates the sensor types. |
+| [Sensor_Result](_sensor.md#sensor_result)                    | Enumerates the sensor result codes.                |
 | [Sensor_Accuracy](_sensor.md#sensor_accuracy) | Defines an enum for accuracy levels of data reported by a sensor. |
 | [Sensor_Info](_sensor.md#sensor_info) | Defines a struct for the sensor information. |
 | [Sensor_Event](_sensor.md#sensor_event) | Defines a struct for the sensor data information. |
@@ -49,7 +54,7 @@ The **oh_sensor_type.h** file declares the common sensor attributes.
 | [OH_Sensor_DestroyInfos](_sensor.md#oh_sensor_destroyinfos)([Sensor_Info](_sensor.md#sensor_info) **sensors, uint32_t count) | Destroys an array of [Sensor_Info](_sensor.md#sensor_info) instances and reclaims memory.|
 | [OH_SensorInfo_GetName](_sensor.md#oh_sensorinfo_getname)([Sensor_Info](_sensor.md#sensor_info) *sensor, char *sensorName, uint32_t *length) | Obtains the sensor name.                                            |
 | [OH_SensorInfo_GetVendorName](_sensor.md#oh_sensorinfo_getvendorname)([Sensor_Info](_sensor.md#sensor_info) *sensor, char *vendorName, uint32_t *length) | Obtains the sensor's vendor name. |
-| [OH_SensorInfo_GetType](_sensor.md#oh_sensorinfo_gettype)([Sensor_Info](_sensor.md#sensor_info) *sensor, | Obtains the sensor type.                                            |
+| [OH_SensorInfo_GetType](_sensor.md#oh_sensorinfo_gettype)([Sensor_Info](_sensor.md#sensor_info) *sensor, [Sensor_Type](_sensor.md#sensor_type) *sensorType) | Obtains the sensor type.                                            |
 | [OH_SensorInfo_GetResolution](_sensor.md#oh_sensorinfo_getresolution) ([Sensor_Info](_sensor.md#sensor_info) *sensor, float *resolution) | Obtains the sensor resolution. |
 | [OH_SensorInfo_GetMinSamplingInterval](_sensor.md#oh_sensorinfo_getminsamplinginterval) ([Sensor_Info](_sensor.md#sensor_info) *sensor, int64_t *minSamplingInterval) | Obtains the minimum data reporting interval of a sensor. |
 | [OH_SensorInfo_GetMaxSamplingInterval](_sensor.md#oh_sensorinfo_getmaxsamplinginterval) ([Sensor_Info](_sensor.md#sensor_info) *sensor, int64_t *maxSamplingInterval) | Obtains the maximum data reporting interval of a sensor. |
