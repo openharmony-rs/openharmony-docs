@@ -85,6 +85,24 @@
   例如在UIAbility申请相关的访问权限，通过调用requestPermissionsFromUser()方法添加对应的权限类型。
   <!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/entryability/EntryAbility.ts) -->
 
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('Sample_VideoRecorder', 'Ability onCreate,requestPermissionsFromUser');
+    let permissionNames: Array<Permissions> = ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
+      'ohos.permission.WRITE_MEDIA', 'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE', 'ohos.permission.DISTRIBUTED_DATASYNC'];
+    abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, permissionNames).then((data)=> {
+      console.info('testTag', data);
+    })
+      .catch((err : BusinessError) => {
+        console.error('testTag', err.message);
+      });
+  }
+// ···
+}
+```
+
+
 
 **启动分布式相机预览流及拍照流**
 
@@ -94,17 +112,83 @@
 
   <!-- @[init_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
+``` TypeScript
+  async initCamera(): Promise<void> {
+    Logger.info(TAG, 'initCamera called');
+    if (this.cameraManager) {
+      return;
+    }
+    this.cameraManager = camera.getCameraManager(globalThis.abilityContext);
+    this.cameras = this.cameraManager.getSupportedCameras();
+    if (this.cameras) {
+      this.cameraIndex =
+        this.cameras.findIndex(cam => cam.connectionType === camera.ConnectionType.CAMERA_CONNECTION_REMOTE);
+      if (this.cameraIndex !== -1) {
+        this.cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(this.cameras[this.cameraIndex],
+          camera.SceneMode.NORMAL_PHOTO);
+      }
+    }
+  }
+```
+
+
 **2. 创建CameraInput实例**
 
   获取相机管理器实例和支持指定的相机设备对象后，通过createCameraInput()方法创建CameraInput实例。
 
   <!-- @[camera_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
+``` TypeScript
+  async createCameraInput(): Promise<void> {
+    if (!this.cameras || this.cameraIndex === -1 || !this.cameraManager) {
+      Logger.error(TAG, 'createCameraInput failed: prerequisites not met.');
+      return;
+    }
+    const came = this.cameras[this.cameraIndex];
+    this.cameraInput = this.cameraManager.createCameraInput(came);
+
+    if (!this.cameraInput) {
+      Logger.error(TAG, 'createCameraInput failed: cameraManager.createCameraInput returned undefined.');
+      return;
+    }
+    try {
+      await this.cameraInput.open();
+      Logger.info(TAG, 'CameraInput opened successfully.');
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `cameraInput.open() failed with code: ${err.code}, message: ${err.message}`);
+    }
+  }
+```
+
+
 **3. 获取预览输出对象**
 
   通过createPreviewOutput()方法创建预览输出对象。
 
   <!-- @[create_preview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
+
+``` TypeScript
+  async createPreviewOutput(): Promise<void> {
+    // Use optional chaining for a clean prerequisite check
+    if (this.cameraOutputCapability?.previewProfiles && this.cameraManager && this.surfaceId) {
+      // Select the first available preview profile
+      const previewProfile = this.cameraOutputCapability.previewProfiles[0];
+
+      this.previewOutput = this.cameraManager.createPreviewOutput(previewProfile, this.surfaceId);
+
+      // Add a clear check to validate the result of the API call
+      if (!this.previewOutput) {
+        Logger.error(TAG, 'createPreviewOutput failed: cameraManager.createPreviewOutput returned undefined.');
+      } else {
+        Logger.info(TAG, 'PreviewOutput created successfully.');
+      }
+    } else {
+      Logger.error(TAG, 'createPreviewOutput failed: prerequisites not met (capability, manager, or surfaceId missing).');
+    }
+  }
+```
+
 
 
 **4. 获取拍照输出对象**
@@ -113,11 +197,112 @@
 
   <!-- @[create_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
+``` TypeScript
+  async createPhotoOutput() {
+    if (!this.cameraManager || this.photoReceiver) {
+      return;
+    }
+
+    const photoProfile: camera.Profile = {
+      format: camera.CameraFormat.CAMERA_FORMAT_JPEG,
+      size: { 'width': 1280, 'height': 720 }
+    };
+
+    try {
+      this.photoReceiver = image.createImageReceiver(photoProfile.size, image.ImageFormat.JPEG, 8);
+      this.photoReceiver.on('imageArrival', () => {
+        (async () => {
+          if (!this.photoReceiver) {
+            Logger.error(TAG, 'photoReceiver is undefined in imageArrival callback.');
+            return;
+          }
+          let receivedImage: image.Image | undefined = undefined;
+          try {
+            receivedImage = await this.photoReceiver.readNextImage();
+            const component = await receivedImage.getComponent(image.ComponentType.JPEG);
+            await this.getImageFileFd();
+            await fileIo.write(this.mFileAssetId, component.byteBuffer);
+            Logger.info(TAG, 'Photo saved successfully!');
+          } catch (e) {
+            Logger.error(TAG, `Error processing image: ${JSON.stringify(e)}`);
+          } finally {
+            if (receivedImage) {
+              await receivedImage.release();
+            }
+            await this.closeFd();
+          }
+        })();
+      });
+
+      const surfaceId = await this.photoReceiver.getReceivingSurfaceId();
+      this.photoOutput = this.cameraManager.createPhotoOutput(photoProfile);
+    } catch (error) {
+      Logger.error(TAG, `createPhotoOutput failed: ${JSON.stringify(error)}`);
+    }
+  }
+  private mSaveCameraAsset: SaveCameraAsset = new SaveCameraAsset(TAG);
+
+  async getImageFileFd(): Promise<void> {
+    this.mFileAssetId = await this.mSaveCameraAsset.createImageFd();
+  }
+
+  async closeFd(): Promise<void> {
+    if (this.mSaveCameraAsset) {
+      await this.mSaveCameraAsset.closeImageFile();
+    }
+    this.mFileAssetId = undefined;
+  }
+```
+
+
 **5. 创建CaptureSession实例**
 
 通过createCaptureSession()方法创建CaptureSession实例。调用beginConfig()方法开始配置会话，使用addInput()和addOutput()方法将CameraInput()和CameraOutput()加入到会话，最后调用commitConfig()方法提交配置信息，通过Promise获取结果。
 
   <!-- @[create_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
+
+``` TypeScript
+  async createSession(): Promise<void> {
+    Logger.info(TAG, 'createSession called');
+    if (!this.cameraManager) {
+      Logger.error(TAG, 'createSession failed: cameraManager is not initialized.');
+      return;
+    }
+    this.cameraSession = this.cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
+    if (!this.cameraSession) {
+      Logger.error(TAG, 'createSession failed: cameraManager.createSession returned undefined.');
+      return;
+    }
+
+    try {
+      Logger.info(TAG, 'cameraSession beginConfig');
+      this.cameraSession.beginConfig();
+
+      if (this.cameraInput) {
+        Logger.info(TAG, 'cameraSession addInput: cameraInput');
+        this.cameraSession.addInput(this.cameraInput);
+      }
+      if (this.previewOutput) {
+        Logger.info(TAG, 'cameraSession addOutput: previewOutput');
+        this.cameraSession.addOutput(this.previewOutput);
+      }
+      if (this.photoOutput) {
+        Logger.info(TAG, 'cameraSession addOutput: photoOutput');
+        this.cameraSession.addOutput(this.photoOutput);
+      }
+
+      Logger.info(TAG, 'cameraSession commitConfig');
+      await this.cameraSession.commitConfig();
+      Logger.info(TAG, 'cameraSession commitConfig successfully.');
+
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `cameraSession configuration failed with code: ${err.code}, message: ${err.message}`);
+      this.failureCallback(err);
+    }
+  }
+```
+
 
 **6. 开启会话工作**
 
@@ -125,11 +310,85 @@
 
   <!-- @[start_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
+``` TypeScript
+  async startSession(): Promise<void> {
+    Logger.info(TAG, 'startSession called');
+    if (!this.cameraSession) {
+      Logger.error(TAG, 'startSession failed: captureSession does not exist!');
+      return;
+    }
+
+    try {
+      await this.cameraSession.start();
+      Logger.info(TAG, 'cameraSession started successfully.');
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `Failed to start session! Code: ${err.code}, Msg: ${err.message}`);
+    }
+  }
+```
+
+
 **释放分布式相机资源**
 
   业务协同完毕后需及时结束协同状态，释放分布式相机资源。
 
   <!-- @[release_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
+
+``` TypeScript
+  async releaseCamera(): Promise<void> {
+    Logger.info(TAG, '--- STARTING CAMERA RELEASE SEQUENCE ---');
+
+    try {
+      // Step 1: Stop and release the session
+      if (this.cameraSession) {
+        Logger.info(TAG, 'Stopping capture session...');
+        await this.cameraSession.stop();
+        Logger.info(TAG, 'Releasing capture session...');
+        await this.cameraSession.release();
+        this.cameraSession = undefined;
+      }
+
+      // Step 2: Release the preview output
+      if (this.previewOutput) {
+        Logger.info(TAG, 'Releasing preview output...');
+        await this.previewOutput.release();
+        this.previewOutput = undefined;
+      }
+
+      // Step 3: Release the photo output and receiver
+      if (this.photoOutput) {
+        Logger.info(TAG, 'Releasing photo output...');
+        await this.photoOutput.release();
+        this.photoOutput = undefined;
+      }
+      if (this.photoReceiver) {
+        Logger.info(TAG, 'Releasing photo receiver...');
+        await this.photoReceiver.release();
+        this.photoReceiver = undefined;
+      }
+
+      // Step 4: Close the camera input
+      if (this.cameraInput) {
+        Logger.info(TAG, 'Closing camera input...');
+        await this.cameraInput.close();
+        this.cameraInput = undefined;
+      }
+
+      Logger.info(TAG, 'All camera resources released.');
+
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `Error during camera release! Code: ${err.code}, Msg: ${err.message}`);
+    } finally {
+      // Ensure core objects are cleared even if an error occurs
+      this.cameraManager = undefined;
+      this.cameras = undefined;
+      Logger.info(TAG, '--- CAMERA RELEASE SEQUENCE ENDED ---');
+    }
+  }
+```
+
 
 ### 调测验证
 
