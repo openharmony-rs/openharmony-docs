@@ -26,7 +26,6 @@ interface NativeMediaPlayerBridge {
 }
 
 // ArkTS1.1应用代码
-import NativeMediaPlayerBridge from 'xxx'
 class MediaPlayer implements NativeMediaPlayerBridge {
   resumePlayer?(): void { // ArkTS1.2中不支持
   }
@@ -117,10 +116,12 @@ import同名对象时用别名来避免冲突。
 **ArkTS1.1**
 ```typescript
 // ArkTS1.1
-declare interface LinearGradient {}
-declare class LinearGradient {}
+// a.ts
+export declare interface LinearGradient {}
+export declare class LinearGradient {}
 
 // ArkTS1.1应用代码
+import { LinearGradient } from './a'
 const lg: LinearGradient = {};
 const lg2: LinearGradient = new LinearGradient();
 ```
@@ -128,16 +129,16 @@ const lg2: LinearGradient = new LinearGradient();
 **ArkTS1.2**
 ```typescript
 // ArkTS1.2，分别放在两个模块中
-// @ohos.arkui.a.d.ts
+// @ohos.arkui.a.d.ets
 declare interface LinearGradient {}
 export { LinearGradient }
-// @ohos.arkui.b.d.ts
+// @ohos.arkui.b.d.ets
 declare class LinearGradient {}
 export { LinearGradient }
 
 // ArkTS1.2应用代码
-import { LinearGradient } from '@ohos.arkui.a.d.ts';
-import { LinearGradient as LinearGradientClass } from '@ohos.arkui.b.d.ts';
+import { LinearGradient } from '@ohos.arkui.a.d.ets';
+import { LinearGradient as LinearGradientClass } from '@ohos.arkui.b.d.ets';
 const lg: LinearGradient = {};
 const lg2: LinearGradientClass = new LinearGradientClass();
 ```
@@ -162,27 +163,29 @@ ArkTS1.2中，`attributeValue`方法不再需要传入泛型参数。
 
 **ArkTS1.1**
 ```typescript
-// ArkTS1.1API定义
-declare interface ElementAttributeValues {
-    description: string;
-    checkable: boolean;
+// a.ts ArkTS1.1API定义 
+export declare interface ElementAttributeValues {
+  description: string;
+  checkable: boolean;
 }
-declare function attributeValue<T extends keyof ElementAttributeValues>(p: ElementAttributeValues[T]): void;
+export declare function attributeValue<T extends keyof ElementAttributeValues>(p: ElementAttributeValues[T]): void;
 
 // ArkTS1.1应用代码
+import { ElementAttributeValues,attributeValue } from './a'
 attributeValue<'checkable'>(true);
 ```
 
 **ArkTS1.2**
 ```typescript
-// ArkTS1.2API定义
-declare interface ElementAttributeValues {
-    description: string;
+// a.ets ArkTS1.2API定义
+export declare interface ElementAttributeValues {
+    description: string; 
     checkable: boolean;
 }
-declare function attributeValue(p: string | boolean): void;
+export declare function attributeValue(p: string | boolean): void;
 
 // ArkTS1.2应用代码
+import { ElementAttributeValues,attributeValue } from './a.ets'
 attributeValue(true);
 ```
 
@@ -207,7 +210,7 @@ ArkTS1.2中，对象的属性名称必须是有效标识符，不支持使用单
 **ArkTS1.1**
 ```typescript
 // ArkTS1.1API定义
-export interface RequestHeaders {
+interface RequestHeaders {
     'authorization'?: string;
     'content-type': string,
     'x-custom-header': string
@@ -223,7 +226,7 @@ const headers: RequestHeaders = {
 **ArkTS1.2**
 ```typescript
 // ArkTS1.2API定义
-export interface RequestHeaders {
+interface RequestHeaders {
     authorization?: string;
     contentType: string;
     xCustomHeader: string;
@@ -257,25 +260,28 @@ ArkTS1.2不支持构造函数类型，需要将使用构造函数类型的地方
 
 **ArkTS1.1**
 ```typescript
-// ArkTS1.1API定义
-declare class User {}
-declare class DatabaseQuery<T> {
-    constructor(entityClass: new () => T);
+// a.ts ArkTS1.1API定义
+export declare class User {}
+export declare class DatabaseQuery<T> {
+  constructor(entityClass: new () => T) ;
 }
+
 // ArkTS1.1应用代码
+import { User, DatabaseQuery } from './a'
 const userQuery = new DatabaseQuery(User);
 ```
 
 **ArkTS1.2**
 ```typescript
-// ArkTS1.2API定义
-declare class User {}
-declare function createInstence<T>(): T;
-declare class DatabaseQuery<T> {
-  constructor(entityClass: () => T);
+// a.ets ArkTS1.2API定义
+export declare class User {}
+export declare function createInstence<T>(): T;
+export declare class DatabaseQuery<T> {
+  constructor(entityClass: () => T);
 }
 
 // ArkTS1.2应用代码
+import { createInstence, User, DatabaseQuery } from './a.ets';
 const userQuery = new DatabaseQuery<User>(createInstence);
 ```
 
@@ -311,35 +317,36 @@ ArkTS1.2和ArkTS1.1在数字类型系统上存在差异。
 
 ```typescript
 // ArkTS1.1API定义
-Class A {
-    foo(number a): number {
-        return 1;
-    }
+class A {
+  foo(a: number): number {
+    return 1;
+  }
 }
 
 // 应用代码
+const test0: A = new A()
+
 function test() {
-   let a: number = 1;
-   let b: number = 2;
-   let c: number = 3;
-   let d: number = 101 / b;
-   c = 1.2;
-   let e: number = 1.2;
+  let a: number = 1;
+  let b: number = 2;
+  let c: number = 3;
+  let d: number = 101 / b;
+  c = 1.2;
+  let e: number = 1.2;
 
-   let a1: number = foo(a); 
-   let b1: number = foo(b);
-   let c1: number = foo(c);
-   let e1: number = foo(e);
+  let a1: number = test0.foo(a);
+  let b1: number = test0.foo(b);
+  let c1: number = test0.foo(c);
+  let e1: number = test0.foo(e);
 
-   foo(1);
-   foo(1.0);
-   foo(1.1);
- 
-   let x: number = a1;
-   let y: number = b1 / 7;
-   let z: number = c1;
-   z = 1.1;
+  test0.foo(1);
+  test0.foo(1.0);
+  test0.foo(1.1);
 
+  let x: number = a1;
+  let y: number = b1 / 7;
+  let z: number = c1;
+  z = 1.1;
 }
 ```
 
@@ -364,34 +371,36 @@ function test() {
 
 ```typescript
 // ArkTS1.2API定义
-Class A {
-    foo(int a): int {
-        return 1;
-    }
+class A {
+  foo(a: int): int {
+    return 1;
+  }
 }
 
 // 应用代码
+const test0: A = new A();
+
 function test() {
-   let a: int = 1;
-   let b: number = 2;
-   let c: number = 3;
-   let d: number = 101 / b;
-   c = 1.2;
-   let e: number = 1.2;
+  let a: int = 1;
+  let b: number = 2;
+  let c: number = 3;
+  let d: number = 101 / b;
+  c = 1.2;
+  let e: number = 1.2;
 
-   let a1: int = foo(a); 
-   let b1: number = foo(b.toInt());
-   let c1: int = foo(c.toInt());
-   let e1: int = foo(e.toInt());
+  let a1: int = test0.foo(a);
+  let b1: number = test0.foo(b.toInt());
+  let c1: int = test0.foo(c.toInt());
+  let e1: int = test0.foo(e.toInt());
 
-   foo(1);
-   foo(1);
-   foo(1.1.toInt());
+  test0.foo(1);
+  test0.foo(1);
+  test0.foo(1.1.toInt());
 
-   let x: int = a1;
-   let y: number = b1 / 7;
-   let z: number = c1;
-   z = 1.1;
+  let x: int = a1;
+  let y: number = b1 / 7;
+  let z: number = c1;
+  z = 1.1;
 }
 ```
 
@@ -401,7 +410,7 @@ function test() {
 
 ```typescript
 // ArkTS1.1API定义
-Class A {
+class A {
     static x: number = 1;
 }
 
@@ -417,7 +426,7 @@ c = 1.2;
 
 ```typescript
 // ArkTS1.2API定义
-Class A {
+class A {
     static x: int = 1;
 }
 
@@ -444,7 +453,6 @@ interface A {
     b: int;
 }
 
-// ArkTS 1.2 SDK API
 function foo(a: int): int{
     return 1;
 }
@@ -561,9 +569,9 @@ export default class MyUIAbility extends UIAbility {
 ```
 import { UIAbility } from '@kit.AbilityKit';
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms)
+function sleep(ms: double): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(resolve)
   })
 }
 
