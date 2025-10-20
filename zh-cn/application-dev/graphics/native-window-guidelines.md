@@ -88,26 +88,132 @@ libnative_window.so
     3. 定义 OH_NativeXComponent_Callback。
         <!-- @[xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
+``` C++
+void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
+{
+	// ···
+    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+	// ···
+}
+
+void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
+{
+	// ···
+    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+	// ···
+}
+
+void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
+{
+	// ···
+    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+	// ···
+}
+
+void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
+{
+	// ···
+    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+}
+// ···
+    callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+    callback_.OnSurfaceChanged = OnSurfaceChangedCB;
+    callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+    callback_.DispatchTouchEvent = DispatchTouchEventCB;
+```
+
+
    4. 将OH_NativeXComponent_Callback 注册给 NativeXComponent。
         <!-- @[register_xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+``` C++
+    OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
+```
+
 
 2. 设置OHNativeWindowBuffer的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性。
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
+``` C++
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t bufferHeight = static_cast<int32_t>(height_ / 4);
+    int32_t bufferWidth = static_cast<int32_t>(width_ / 2);
+    OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, code, bufferWidth, bufferHeight);
+```
+
+
 3. 从图形队列申请OHNativeWindowBuffer。
     <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+``` C++
+    int fenceFd = -1;
+    OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
+    ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
+    if (ret != 0 || nativeWindowBuffer == nullptr) {
+        return;
+    }
+    BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(nativeWindowBuffer);
+```
+
 
 4. 内存映射mmap。
     <!-- @[map_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
+``` C++
+    void *mappedAddr =
+        mmap(bufferHandle->virAddr, bufferHandle->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle->fd, 0);
+```
+
+
 5. 将生产的内容写入OHNativeWindowBuffer，在这之前需要等待releaseFenceFd可用（注意releaseFenceFd不等于-1才需要调用poll）。如果没有等待releaseFenceFd事件的数据可用（POLLIN），则可能造成花屏、裂屏、HEBC（High Efficiency Bandwidth Compression，高效带宽压缩） fault等问题。releaseFenceFd是消费者进程创建的一个文件句柄，代表消费者消费buffer完毕，buffer可读，生产者可以开始填充buffer内容。
     <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+``` C++
+    int retCode = -1;
+    uint32_t timeout = 3000;
+    if (fenceFd != -1) {
+        struct pollfd pollfds = {0};
+        pollfds.fd = fenceFd;
+        pollfds.events = POLLIN;
+        do {
+            retCode = poll(&pollfds, 1, timeout);
+        } while (retCode == -1 && (errno == EINTR || errno == EAGAIN));
+        close(fenceFd);
+    }
+    uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+    for (uint64_t x = 0; x < bufferHandle->width; x++) {
+        for (uint64_t y = 0; y < bufferHandle->height; y++) {
+            *pixel++ = value;
+        }
+    }
+```
+
 
 6. 提交OHNativeWindowBuffer到图形队列。请注意OH_NativeWindow_NativeWindowFlushBuffer接口的acquireFenceFd不可以和OH_NativeWindow_NativeWindowRequestBuffer接口获取的releaseFenceFd相同，acquireFenceFd可传入默认值-1。acquireFenceFd是生产者需要传入的文件句柄，消费者获取到buffer后可根据生产者传入的acquireFenceFd决定何时去渲染并上屏buffer内容。
     <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
+``` C++
+    struct Region *region = new Region();
+    ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region);
+    if (ret != NATIVE_ERROR_OK) {
+        LOGE("flush failed");
+        (void)OH_NativeWindow_NativeWindowAbortBuffer(nativeWindow, nativeWindowBuffer);
+        return;
+    }
+```
+
+
 7. 使用munmap取消内存映射。
     <!-- @[munmap_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+``` C++
+    if (munmap(mappedAddr, bufferHandle->size) < 0) {
+        OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+        LOGE("munmap failed");
+        return;
+    }
+```
+
 
 ## 相关实例
 
