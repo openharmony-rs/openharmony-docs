@@ -1,7 +1,7 @@
 # @ohos.ai.intelligentVoice (智能语音)(系统接口)
 
 <!--Kit: Basic Services Kit-->
-<!--Subsystem: IntelligentVoice-->
+<!--Subsystem: AI-->
 <!--Owner: @y00416036-->
 <!--Designer: @jinjunwen-->
 <!--Tester: @gx1016-->
