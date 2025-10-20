@@ -146,7 +146,7 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 
 off(type: 'drawChildren', callback?: Callback\<void\>): void
 
-通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
+通过句柄向对应的查询条件取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
