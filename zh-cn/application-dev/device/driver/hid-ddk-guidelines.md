@@ -342,7 +342,27 @@ libhid.z.so
 
     <!-- @[driver_hid_report_step5_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    char dataBuff[DATA_BUFF_SIZE];
+    int32_t ret = OH_Hid_GetPhysicalAddress(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetPhysicalAddress failed, ret:%{public}d", ret);
+        return nullptr;
+    }
+```
+
+
     <!-- @[driver_hid_report_step5_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    uint8_t dataBuff[NUM_SIXTY_FOUR];
+    int32_t ret = OH_Hid_GetRawUniqueId(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetRawUniqueId failed, ret:%{public}d", ret);
+        return nullptr;
+    }
+```
+
 
 6. 获取报告描述符（可选）。
 
@@ -350,14 +370,41 @@ libhid.z.so
 
     <!-- @[driver_hid_report_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    uint8_t dataBuff[DATA_BUFF_SIZE1];
+    uint32_t bytesRead;
+    int32_t ret = OH_Hid_GetReportDescriptor(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff),
+                                             &bytesRead);
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetReportDescriptor failed, ret:%{public}d", ret);
+        return nullptr;
+    }
+```
+
+
 7. 关闭设备。
 
     在所有请求处理完毕后，使用 **hid_ddk_api.h** 的 **OH_Hid_Close** 关闭设备。
 
     <!-- @[driver_hid_report_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    Hid_DeviceHandle *hid = DataParser::GetInstance().getHidObject();
+    int32_t ret1 = OH_Hid_Close(&hid);
+    DataParser::GetInstance().UpdateHid(hid);
+```
+
+
 8. 释放DDK。
 
     在关闭HID设备后，使用 **hid_ddk_api.h** 的 **OH_Hid_Release** 释放HID DDK。
 
     <!-- @[driver_hid_report_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        ret1 = OH_Hid_Release();
+        if (ret1 != HID_DDK_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_Hid_Init() return failed: %{public}d", ret1);
+        }
+```
+
