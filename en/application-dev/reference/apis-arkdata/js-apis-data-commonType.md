@@ -39,15 +39,15 @@ Represents asset (such as a file, image, or video) information. For details, see
 
 **System capability**: SystemCapability.DistributedDataManager.CommonType
 
-| Name      | Type                       | Mandatory| Description                              |
-| ---------- | --------------------------- | ---- | ---------------------------------- |
-| name       | string                      | Yes  | Asset name.                      |
-| uri        | string                      | Yes  | Asset URI, which is an absolute path in the system.   |
-| path       | string                      | Yes  | Application sandbox path of the asset.          |
-| createTime | string                      | Yes  | Time when the asset was created.            |
-| modifyTime | string                      | Yes  | Time when the asset was last modified.        |
-| size       | string                      | Yes  | Size of the asset.              |
-| status     | [AssetStatus](#assetstatus) | No  | Asset status. The default value is **ASSET_NORMAL**.|
+| Name      | Type                       | Read-Only| Optional| Description                              |
+| ---------- | --------------------------- | ---- | ---- | ---------------------------------- |
+| name       | string                      | No  | No  | Asset name.                      |
+| uri        | string                      | No  | No  | Asset URI, which is an absolute path in the system.   |
+| path       | string                      | No  | No  | Application sandbox path of the asset.          |
+| createTime | string                      | No  | No  | Time when the asset was created.            |
+| modifyTime | string                      | No  | No  | Time when the asset was last modified.        |
+| size       | string                      | No  | No  | Size of the asset.              |
+| status     | [AssetStatus](#assetstatus) | No  | Yes  | Asset status. The default value is **ASSET_NORMAL**.|
 
 ## Assets
 
