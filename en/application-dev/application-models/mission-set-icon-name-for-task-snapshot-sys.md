@@ -1,4 +1,11 @@
-# Setting the Icon and Name of a Mission Snapshot
+# Setting the Icon and Name of a Mission Snapshot (for System Applications Only)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 Setting a unique icon and name for each mission snapshot of an application helps you better manage the missions and functions of the application.
 
