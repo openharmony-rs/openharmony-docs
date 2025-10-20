@@ -569,7 +569,7 @@ struct Index {
     captionsManager.onStyleChange(this.callback);
   }
 
-  aboutToDisppear(): void {
+  aboutToDisappear(): void {
     let captionsManager = accessibility.getCaptionsManager();
     captionsManager.offStyleChange(this.callback);
   }
