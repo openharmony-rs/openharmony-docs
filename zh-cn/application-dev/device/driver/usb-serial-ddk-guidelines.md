@@ -103,6 +103,12 @@ libusb_serial_ndk.z.so
 
     <!-- @[driver_serial_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    // 初始化USB Serial DDK
+    OH_UsbSerial_Init();
+```
+
+
 2. 打开USB串口设备。
 
     使用 **usb_serial_api.h** 的 **OH_UsbSerial_Open** 打开设备。
