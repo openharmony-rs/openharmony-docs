@@ -1,4 +1,10 @@
 # Blank
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Blank** component is a spacer in the layout, automatically filling the remaining space along the main axis of its parent container. It works only when the parent component is [Row](ts-container-row.md), [Column](ts-container-column.md), or [Flex](ts-container-flex.md).
 
@@ -16,6 +22,8 @@ Not supported
 
 Blank(min?: number | string)
 
+Creates a **Blank** component.
+
 Since API version 10: 
  - When the **Blank** component is used within a [Row](ts-container-row.md), [Column](ts-container-column.md), or [Flex](ts-container-flex.md) container, it will automatically stretch or shrink along the main axis if it does not have a main axis size specified. If the **Blank** component has a main axis size specified or if the container is set to adapt to the size of its child nodes, the component will not automatically stretch or shrink.
  - Relationship between **size** and **min** of the **Blank** component on the main axis: max(min, size). 
@@ -31,7 +39,7 @@ Since API version 10:
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| min | number \| string | No| Minimum size of the **Blank** component in the container along the main axis.<br>Default value: **0**<br>If the type is number, the default unit is vp. If the type is string, the [pixel unit](ts-pixel-units.md) can be explicitly specified, for example, '**10px'**. If the unit is not specified, the default unit vp is used, in which case **'10'** is equivalent to **10vp**.<br>**NOTE**<br>This parameter cannot be set in percentage. If the value is negative, the default value is used. If the minimum size is larger than the available space of the container, it is used as the component size, and the component extends beyond the container.|
+| min | number \| string | No| Minimum size of the **Blank** component in the container along the main axis.<br>Default value: **0**<br>If the type is number, the default unit is vp. If the type is string, the [pixel unit](ts-pixel-units.md) can be explicitly specified, for example, '**10px'**. If the unit is not specified, the default unit vp is used, in which case **'10'** is equivalent to **10vp**.<br>Invalid values are treated as the default value.<br>**NOTE**<br>This parameter cannot be set in percentage. If the value is negative, the default value is used. If the minimum size is larger than the available space of the container, it is used as the component size, and the component extends beyond the container.|
 
 ## Attributes
 
@@ -41,7 +49,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 color(value: ResourceColor)
 
-Sets the color to fill the blank.
+Sets the fill color of the **Blank** component. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -53,7 +61,7 @@ Sets the color to fill the blank.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceColor](ts-types.md#resourcecolor) | Yes| Color to fill the blank.<br>Default value: **Color.Transparent**|
+| value | [ResourceColor](ts-types.md#resourcecolor) | Yes| Color to fill the blank.<br>Default value: **Color.Transparent**<br>Invalid values are treated as the default value.|
 
 ## Events
 

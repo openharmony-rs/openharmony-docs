@@ -1,4 +1,10 @@
 # RichText
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloCrease-->
 
 The **RichText** component parses and displays HTML text.
 
@@ -16,14 +22,15 @@ The **RichText** component parses and displays HTML text.
 
 - Inapplicable scenarios:
 
-  The **RichText** component is not suitable for scenarios where there is a need for extensive customization of the display effect of the HTML string. For example, the **RichText** component does not allow for changing the background color, font color, font size, or content by setting attributes and events. Under such scenarios, the [Web](../../apis-arkweb/ts-basic-components-web.md) component is recommended.
+  The **RichText** component is not suitable for scenarios where there is a need for extensive customization of the display effect of the HTML string. For example, the **RichText** component does not allow for changing the background color, font color, font size, or content by setting attributes and events. In this case, the [Web component](../../apis-arkweb/arkts-basic-components-web.md) is recommended.
 
-  The **RichText** component can be memory-intensive. If it is reused in scenarios such as lists where multiple instances are created, slow scrolling or rendering may result. Under such scenarios, you may want to use the [RichEditor](../arkui-ts/ts-basic-components-richeditor.md#richeditor) component.
+  The **RichText** component consumes significant memory resources. When **RichText** components are repeatedly used in a **List** loop, issues such as stuttering and sluggish scrolling response may occur.
 
 >  **NOTE**
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component is not able to auto-adapt its width and height to the content. Therefore, you must set the layout when using this component.
+> - This component is no longer updated and maintained. You are advised to use the [Web component](../../apis-arkweb/arkts-basic-components-web.md).
 
 
 ## Child Components
@@ -32,7 +39,7 @@ Not supported
 
 ## APIs
 
-RichText(content:string)
+RichText(content:string  |  Resource)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +47,8 @@ RichText(content:string)
 
 | Name| Type| Mandatory | Description|
 | ------- | -------- | ------------- | -------- |
-| content | string | Yes  | String in HTML format.|
+| content | string \| [Resource](ts-types.md#resource) <sup>20+</sup>   | Yes  | HTML string or local resource file.|
+
 
 
 ## Events
@@ -49,17 +57,25 @@ RichText(content:string)
 
 onStart(callback: () => void)
 
-Triggered when web page loading starts.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory | Description|
+| ------- | -------- | ------------- | -------- |
+|  callback | () => void | Yes  | Callback triggered when a web page is loaded.|
 
 ### onComplete
 
 onComplete(callback: () => void)
 
-Triggered when web page loading is completed.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory | Description|
+| ------- | -------- | ------------- | -------- |
+|  callback | () => void | Yes  | Callback triggered when a web page is loaded.|
 
 ## Attributes
 
@@ -141,3 +157,55 @@ struct RichTextExample {
 ```
 
  ![richText](figures/richText.png)
+
+Loads local resource files.
+
+Loads local resource files using the $rawfile mode.
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct RichTextComponent {
+
+    build() {
+      Column() {
+        // Load a local resource file through $rawfile.
+        RichText($rawfile("index.html"))
+      }
+    }
+  }
+  ```
+
+The following is an example of loading a link with the hash (#) route through the resources protocol in Webview.
+
+When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead. If the URL contains a number sign (#), the content following the number sign is considered as an anchor (fragment).
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct RichTextComponent {
+
+    build() {
+      Column() {
+        // Load local resource files through the resource protocol.
+        RichText("resource://rawfile/index.html#home")
+      }
+    }
+  }
+  ```
+
+Create an **index.html** file in **src/main/resources/rawfile**.
+
+   HTML file to be loaded:
+
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+       <body>
+           <p>Hello World</p>
+       </body>
+   </html>
+   ```

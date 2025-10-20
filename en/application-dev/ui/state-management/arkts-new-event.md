@@ -13,13 +13,13 @@ You can use \@Event, a variable decorator in state management V2, to enable a ch
 
 >**NOTE**
 >
-> The \@Event decorator is supported since API version 12.
+> The \@Event decorator is supported in custom components decorated with \@ComponentV2 since API version 12.
 >
 > This decorator can be used in atomic services since API version 12.
 
 ## Overview
 
-Since the variables decorated with \@Param cannot be changed locally, you can use the \@Event decorator todefine a callback for updating the data source. Combined with the synchronization mechanism of [\@Local](arkts-new-local.md), it allows changes to propagate back to \@Param, achieving active updates to @Param decorated variables.
+Since the variables decorated with \@Param cannot be changed locally, you can use the \@Event decorator todefine a callback for updating the data source. Combined with the synchronization mechanism of [\@Local](arkts-new-local.md), it allows changes to propagate back to \@Param decorated variables, achieving active updates to @Param decorated variables.
 
 \@Event is used to decorate a component's output methods. When using this decorator, note the following:
 
@@ -45,12 +45,12 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
   ```ts
   @ComponentV2
   struct Index {
-    @Event changeFactory: ()=>void = ()=>{}; // Correct usage.
+    @Event changeFactory: () => void = () => {}; // Correct usage.
     @Event message: string = 'abcd'; // Incorrect usage: Decorating a non-function variable, @Event has no effect.
   }
   @Component
   struct Index {
-    @Event changeFactory: ()=>void = ()=>{}; // Incorrect usage. An error is reported during compilation.
+    @Event changeFactory: () => void = () => {}; // Incorrect usage. An error is reported during compilation.
   }
   ```
 
@@ -123,7 +123,7 @@ struct Child {
       Text(`Child index: ${this.index}`)
         .onClick(() => {
           this.changeIndex(20);
-          console.log(`after changeIndex ${this.index}`);
+          console.info(`after changeIndex ${this.index}`);
         })
     }
   }
@@ -139,7 +139,7 @@ struct Index {
   	    index: this.index,
   	    changeIndex: (val: number) => {
   	      this.index = val;
-          console.log(`in changeIndex ${this.index}`);
+          console.info(`in changeIndex ${this.index}`);
   	    }
   	  })
   	}

@@ -46,7 +46,7 @@ Sets the safe area to be expanded to.
 
 >  **NOTE**
 >
->  When using **expandSafeArea** to expand the drawing of a component, avoid setting a fixed width or height for the component (except for percentages). If a fixed width or height is set, the edges for the expanded safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after the expansion.
+>  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **"auto"**), the edges for expanding the safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after safe area expansion.
 >
 >  The safe area does not restrict the layout or size of components inside, nor does it clip the components.
 >
@@ -294,7 +294,7 @@ struct SafeAreaExample3 {
 }
 ```
 
-![expandSafeArea3](figures/expandSafeArea3.png)
+![expandSafeArea3](figures/expandSafeArea3.gif)
 
 ### Example 4: Setting the Keyboard Avoidance Mode to Resize
 
@@ -338,7 +338,7 @@ struct KeyboardAvoidExample1 {
 }
 ```
 
-![keyboardAvoidMode1](figures/keyboardAvoidMode1.jpg)
+![keyboardAvoidMode1](figures/keyboardAvoidMode1.gif)
 
 ### Example 5: Setting Keyboard Avoidance Mode to Offset
 
@@ -382,7 +382,7 @@ struct KeyboardAvoidExample2 {
 }
 ```
 
-![keyboardAvoidMode1](figures/keyboardAvoidMode2.jpg)
+![keyboardAvoidMode1](figures/keyboardAvoidMode2.gif)
 
 ### Example 6: Switching Avoidance Modes
 
@@ -440,17 +440,7 @@ struct KeyboardAvoidExample3 {
   }
 }
 ```
-OFFSET mode
-
-![keyboardAvoidMode3-1](figures/keyboardAvoidMode3-1.jpg)
-
-RESIZE mode
-
-![keyboardAvoidMode3-2](figures/keyboardAvoidMode3-2.jpg)
-
-NONE mode
-
-![keyboardAvoidMode3-3](figures/keyboardAvoidMode3-3.jpg)
+![keyboardAvoidMode3](figures/keyboardAvoidMode3.gif)
 
 ### Example 7: Expanding the Safe Area in Scrollable Containers
 

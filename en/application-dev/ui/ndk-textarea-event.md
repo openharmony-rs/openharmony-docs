@@ -1,18 +1,24 @@
 # Listening for Text Box Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information.
 
-Real-time search: Register the [NODE_TEXT_AREA_ON_CHANGE](../../application-dev/reference/apis-arkui/_ark_u_i___native_module.md) event to receive notifications and obtain the current text content when the text box input changes.
+Real-time search: Register the [NODE_TEXT_AREA_ON_CHANGE](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) event to receive notifications and obtain the current text content when the text box input changes.
 
-Text filtering: Register the [NODE_TEXT_AREA_ON_WILL_INSERT](../../application-dev/reference/apis-arkui/_ark_u_i___native_module.md) event to receive notifications before text is inserted and control whether to insert text through the return value.
+Text filtering: Register the [NODE_TEXT_AREA_ON_WILL_INSERT](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) event to receive notifications before text is inserted and control whether to insert text through the return value.
 
-Layout changes during editing: Register the [NODE_TEXT_AREA_ON_EDIT_CHANGE](../../application-dev/reference/apis-arkui/_ark_u_i___native_module.md) event to receive notifications when the text box editing state changes.
+Layout changes during editing: Register the [NODE_TEXT_AREA_ON_EDIT_CHANGE](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) event to receive notifications when the text box editing state changes.
 
 The following example demonstrates how to listen for text box events and parse data based on the [Integrating with ArkTS Pages](../ui/ndk-access-the-arkts-page.md) section.
 
 - Registering Events
-  
-    Events are registered through a unified API. For details, see [registerNodeEvent](../../application-dev/reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#registernodeevent). For details about the event types supported by the text box, see the [ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/_ark_u_i___native_module.md) section, searching for **NODE_TEXT_AREA_**.
+    
+    Events are registered through a unified API. For details, see [registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent). For details about the event types supported by the text box, see the [ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) section, searching for **NODE_TEXT_AREA_**.
 
     ```c++
     // Create two text components to display the information received in events.
@@ -39,7 +45,7 @@ The following example demonstrates how to listen for text box events and parse d
 
 - Registering Event Callbacks
 
-    Event callbacks are registered through a unified API. For details, see [registerNodeEventReceiver](../../application-dev/reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#registernodeeventreceiver).
+    Event callbacks are registered through a unified API. For details, see [registerNodeEventReceiver](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver).
 
     ```c++
     nodeApi->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
@@ -68,8 +74,13 @@ The following example demonstrates how to listen for text box events and parse d
         }
     });
     ```
-- Sample Code
+- Sample
+
+   This section demonstrates core API usage only. For the complete sample project, see <!--RP1-->[TextAreaEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/TextAreaEventNDK)<!--RP1End-->.
+    
     ```c++
+    #include <arkui/native_interface.h>
+    
     void NodeManager::CreateTextAreaNode() {
         ArkUI_NativeNodeAPI_1 *nodeApi = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));

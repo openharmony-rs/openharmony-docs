@@ -1,4 +1,10 @@
 # ContentSlot
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **ContentSlot** component is a component designed to render and manage components created on the native layer using C APIs.
 
@@ -43,8 +49,8 @@ Defines a base class for **ComponentContent** and **NodeContent**.
 The following example shows the basic usage of **ContentSlot**.
 
 ```ts
-import { nativeNode } from'libNativeNode.so' // .so file you implemented
-import { NodeContent } from '@kit.ArkUI'
+import { nativeNode } from 'libNativeNode.so'; // .so file you implemented
+import { NodeContent } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -65,4 +71,4 @@ struct Parent {
 }
 ```
 
- 
+For details about the implementation of the .so file in the preceding code, see [Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkXComponent).

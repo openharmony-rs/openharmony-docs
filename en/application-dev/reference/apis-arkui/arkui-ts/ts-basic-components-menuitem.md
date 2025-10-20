@@ -1,4 +1,10 @@
 # MenuItem
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Armstrong15-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **MenuItem** component represents an item in a menu.
 
@@ -12,7 +18,7 @@ Not supported
 
 ## APIs
 
-MenuItem(value?: MenuItemOptions| CustomBuilder)
+MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -26,17 +32,19 @@ MenuItem(value?: MenuItemOptions| CustomBuilder)
 
 ## MenuItemOptions
 
+Provides information about the menu item.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                       | Mandatory| Description                            |
-| --------- | ------------------------------------------- | ---- | -------------------------------------- |
-| startIcon | [ResourceStr](ts-types.md#resourcestr)      | No  | Path to the icon displayed on the left of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
-| content   | [ResourceStr](ts-types.md#resourcestr)      | No  | Content of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | No  | Path to the icon displayed on the right of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| labelInfo | [ResourceStr](ts-types.md#resourcestr)      | No  | Information about the ending label, for example, shortcut **Ctrl+C**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| builder   | [CustomBuilder](ts-types.md#custombuilder8) | No  | Builder for a level-2 menu.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
-| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No  | Path to the symbol icon displayed on the left of the menu item. When this parameter is set, the icon set through **startIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No  | Path to the symbol icon displayed on the right of the menu item. When this parameter is set, the icon set through **endIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name     | Type                                       | Read-Only| Optional| Description                            |
+| --------- | ------------------------------------------- | ---- | -------------------------------------- | -------------------------------------- |
+| startIcon | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Start icon of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| content   | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Content of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | End icon of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| labelInfo | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Label information at the end of the menu item, such as shortcut keys like Ctrl+C.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| builder   | [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes | Builder for a level-2 menu.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
+| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| No  | Yes | HMSymbol icon at the start of the menu item. When this parameter is set, the icon set through **startIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| No  | Yes | HMSymbol icon at the end of the menu item. When this parameter is set, the icon set through **endIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
 ## Attributes
@@ -60,7 +68,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the menu item is selected.<br>Default value: **false**<br>**true**: The menu item is selected.<br> **false**: The menu item is not selected.|
+| value  | boolean | Yes  | Whether the menu item is selected.<br>**true**: The menu item is selected. **false**: The menu item is not selected.<br>Default value: **false**.|
 
 ### selectIcon
 
@@ -76,7 +84,7 @@ Sets whether to display the selected icon when the menu item is selected.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean \| [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<sup>12+</sup> | Yes  | Whether to display the selected icon when the menu item is selected.<br>Default value: **false**<br>**true**: When the menu item is selected, the default tick icon is displayed.<br>**false**: When the menu item is selected, no icon is displayed.<br>**ResourceStr**: When the menu item is selected, the specified icon is displayed.<br>**SymbolGlyphModifier**: When the menu item is selected, the specified symbol icon is displayed.|
+| value  | boolean \| [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)<sup>12+</sup> | Yes  | Whether to display the selected icon when the menu item is selected.<br>**true**: The check mark icon is displayed. **false**: No icon is displayed.<br>**ResourceStr**: displays the specified icon.<br>**SymbolGlyphModifier**: displays the specified HMSymbol icon.<br>Default value: **false**.|
 ### contentFont<sup>10+</sup>
 
 contentFont(value: Font)
@@ -157,7 +165,7 @@ Triggered when the selection status of the menu item is changed manually.
 
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| selected | boolean | Yes  | Invoked when the selected status changes.<br>If the return value is **true**, the menu item is selected. If the return value is **false**, the menu item is not selected.|
+| selected | boolean | Yes  | Invoked when the selected status changes.<br>**true**: selected; **false**: unselected.|
 
 ## Example
 

@@ -1,14 +1,20 @@
-# restoreId
+# Distributed Migration Identifier
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
-The **restoreId** attribute identifies a component in hopping scenarios. It can be used to restore the component to a specific state on a remote device.
+The distributed migration identifier **restoreId** identifies a component in distributed migration scenarios. It can be used to restore the component to a specific state on a remote device.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## restoreId
 
-restoreId(value: number)
+restoreId(value: number): T
 
 Sets the ID of the component used for device matching during hopping.
 
@@ -21,6 +27,12 @@ Sets the ID of the component used for device matching during hopping.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | Yes  | ID of the component used for device matching during hopping. This ID must be unique within an application.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## Components with Hopping Support
 
