@@ -90,17 +90,57 @@ libhid.z.so
 
     <!-- @[driver_hid1_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) -->
 
+``` C++
+    Hid_Device hidDevice = {
+        .deviceName = deviceName.c_str(),
+        .vendorId = 0x6006,
+        .productId = 0x6008,
+        .version = 1,
+        .bustype = BUS_USB
+    };
+    std::vector<Hid_EventType> eventType = {HID_EV_KEY};
+    Hid_EventTypeArray eventTypeArray = {.hidEventType = eventType.data(), .length = (uint16_t)eventType.size()};
+    std::vector<Hid_KeyCode> keyCode = {
+        HID_KEY_1,          HID_KEY_SPACE,       HID_KEY_BACKSPACE,   HID_KEY_ENTER,     HID_KEY_ESC, HID_KEY_SYSRQ,
+        HID_KEY_LEFT_SHIFT, HID_KEY_RIGHT_SHIFT, HID_KEY_VOLUME_DOWN, HID_KEY_VOLUME_UP, HID_KEY_0,   HID_KEY_2,
+        HID_KEY_3,          HID_KEY_4,           HID_KEY_5,           HID_KEY_6,         HID_KEY_7,   HID_KEY_8,
+        HID_KEY_9,          HID_KEY_A,           HID_KEY_B,           HID_KEY_C,         HID_KEY_D,   HID_KEY_E,
+        HID_KEY_F,          HID_KEY_G,           HID_KEY_H,           HID_KEY_I,         HID_KEY_J,   HID_KEY_K,
+        HID_KEY_L,          HID_KEY_M,           HID_KEY_N,           HID_KEY_O,         HID_KEY_P,   HID_KEY_Q,
+        HID_KEY_R,          HID_KEY_S,           HID_KEY_T,           HID_KEY_U,         HID_KEY_V,   HID_KEY_W,
+        HID_KEY_X,          HID_KEY_Y,           HID_KEY_Z,           HID_KEY_DELETE};
+    Hid_KeyCodeArray keyCodeArray = {.hidKeyCode = keyCode.data(), .length = (uint16_t)keyCode.size()};
+    Hid_EventProperties hidEventProp = {.hidEventTypes = eventTypeArray, .hidKeys = keyCodeArray};
+    int deviceId = OH_Hid_CreateDevice(&hidDevice, &hidEventProp);
+```
+
+
 2. 向指定deviceId的HID设备发送事件。
 
     使用 **hid_ddk_api.h** 的 **OH_Hid_EmitEvent** 向指定的deviceId的设备发送事件。
 
     <!-- @[driver_hid1_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) -->
 
+``` C++
+            // 向指定deviceId的设备发送事件，事件来源于物理外设，通过InjectEvent方法注入
+            int32_t ret = OH_Hid_EmitEvent(item.first, item.second.data(), (uint16_t)item.second.size());
+            if (ret != HID_DDK_SUCCESS) {
+                OH_LOG_ERROR(LOG_APP, "OH_Hid_EmitEvent failed, deviceId:%{public}d", item.first);
+            }
+```
+
+
 3. 释放资源。
 
     在所有请求处理完毕，程序退出前，使用 **hid_ddk_api.h** 的 **OH_Hid_DestroyDevice** 接口销毁HID设备。
 
     <!-- @[driver_hid1_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) -->
+
+``` C++
+    // 销毁HID设备
+    int32_t res = OH_Hid_DestroyDevice(deviceId);
+```
+
 
 ### HID报文通信驱动能力开发
 
@@ -124,6 +164,16 @@ libhid.z.so
     使用 **hid_ddk_api.h** 的 **OH_Hid_Init** 初始化HID DDK。
 
     <!-- @[driver_hid_report_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) -->
+
+``` C++
+    // 初始化HID DDK
+    int32_t ret = OH_Hid_Init();
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_Init() return failed: %{public}d", ret);
+        return ret;
+    }
+```
+
 
 2. 打开设备。
 
