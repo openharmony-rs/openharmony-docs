@@ -170,7 +170,7 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 onChange(callback: (isChecked: boolean) => void)
 
-单选框选中状态改变时触发回调。
+单选框选中状态改变时触发的回调。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -188,7 +188,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 onChange(callback: Optional\<OnRadioChangeCallback>)
 
-单选框选中状态改变时触发回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+单选框选中状态改变时触发的回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -206,7 +206,7 @@ onChange(callback: Optional\<OnRadioChangeCallback>)
 
 type OnRadioChangeCallback = (isChecked: boolean) => void
 
-单选框选中状态改变时触发回调。
+单选框选中状态改变时触发的回调函数类型定义。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
