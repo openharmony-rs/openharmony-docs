@@ -11,7 +11,7 @@
 
 If complex services are involved in cross-application data access, you can use **DataShareExtensionAbility** to start the application of the data provider to implement data access.
 
-You need to implement flexible service logics via callbacks of the service provider.  
+You need to implement flexible service logics via callbacks of the service provider to achieve data sharing in complex service scenarios across applications.
 
 
 ## Working Principles
@@ -33,7 +33,7 @@ There are two roles in **DataShare**:
 
 - The **ResultSet** module is implemented through shared memory. Shared memory stores the result sets, and interfaces are provided to traverse result sets.
 
-## How to Develop
+## How to Implement
 
 
 ### Data Provider Application Development (Only for System Applications)
@@ -186,14 +186,14 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 
      **Table 1** Fields in module.json5
    
-   | Field| Description| Mandatory|
+   | Name| Description| Mandatory|
    | -------- | -------- | -------- |
    | name | Ability name, corresponding to the **ExtensionAbility** class name derived from **Ability**.| Yes|
    | type | Ability type. The value **dataShare** indicates that the development is based on the **datashare** template.| Yes|
    | uri | Unique identifier for the data consumer to access the data provider.| Yes|
    | exported | Whether it is visible to other applications. Data sharing is allowed only when the value is **true**.| Yes|
-   | readPermission | Permission required for accessing data. If this parameter is not set, read permission verification is not performed by default.<br>**NOTE**: The permission constraints for **DataShareExtensionAbility** are different from that for silent access. It is important to understand the difference and prevent confusion. For details, see [Silent Access via DatamgrService](share-data-by-silent-access.md).| No|
-   | writePermission | Permission required for modifying data. If this parameter is not set, write permission verification is not performed by default.<br>**NOTE**: The permission constraints for **DataShareExtensionAbility** are different from that for silent access. It is important to understand the difference and prevent confusion. For details, see [Silent Access via DatamgrService](share-data-by-silent-access.md).| No|
+   | readPermission | Permission required for accessing data. If this parameter is not set, read permission verification is not performed by default.<br>Note: The permission constraints for **DataShareExtensionAbility** are different from that for silent access. It is important to understand the difference and prevent confusion. For details, see [Silent Access via DatamgrService](share-data-by-silent-access-sys.md).| No|
+   | writePermission | Permission required for modifying data. If this parameter is not set, write permission verification is not performed by default.<br>Note: The permission constraints for **DataShareExtensionAbility** are different from that for silent access. It is important to understand the difference and prevent confusion. For details, see [Silent Access via DatamgrService](share-data-by-silent-access-sys.md).| No|
    | metadata   | Silent access configuration, which includes the following:<br> **name**: identifies the configuration, which has a fixed value of **ohos.extension.dataShare**.<br> **resource**: has a fixed value of **$profile:data_share_config**, which indicates that the profile name is **data_share_config.json**.| **metadata** is mandatory when the ability launch type is **singleton**. For details about the ability launch type, see **launchType** in the [Internal Structure of the abilities Attribute](../quick-start/module-structure.md#internal-structure-of-the-abilities-attribute).|
 
    **module.json5 example**
@@ -219,7 +219,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 
    **Table 2** Fields in the data_share_config.json file
 
-   | Field           | Description                                                    | Mandatory|
+   | Name           | Description                                                    | Mandatory|
    | ------------------- | ------------------------------------------------------------ | ---- |
    | tableConfig         | Configuration label, which includes **uri** and **crossUserMode**.<br>- **uri**: specifies the range for which the configuration takes effect. The URI supports the following formats in descending order by priority:<br> 1. *****: indicates all databases and tables.<br> 2. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}**: specifies a database.<br> 3. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}/{*tableName*}**: specifies a table.<br>If URIs of different formats are configured, only the URI with the higher priority takes effect.<br>- **crossUserMode**: Whether to share data between multiple users.<br>The value **1** means to share data between multiple users, and the value **2** means the opposite.| Yes  |
    | isSilentProxyEnable | Whether to enable silent access for this ExtensionAbility.<br>**false**: Silent access is disabled.<br>**true**: Silent access is enabled.<br>The default value is **true**.<br>If an application has multiple ExtensionAbilities and this field is set to **false** for one of them, silent access is disabled for the application.<br>If the data provider has called **enableSilentProxy** or **disableSilentProxy**, silent access is enabled or disabled based on the API settings. Otherwise, the setting here takes effect.| No  |
@@ -256,7 +256,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 
 ### Data Consumer Application Development
 
-1. Import the dependencies.
+1. Import dependencies.
    
    ```ts
    import { UIAbility } from '@kit.AbilityKit';
@@ -265,10 +265,10 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Define the URI string for communicating with the data provider.<br>The URI is the identifier of the context data provider in set in the configuration file. It can be added with suffix parameters to set the access target. The suffix parameters must start with a question mark (?).<br> - Currently, only the **user** parameter is supported.<br> - The value of **user** must be an integer. It indicates the user ID of the data provider. If It is not specified, the user ID of the data consumer is used. For details about the definition of **user** and how to obtain it, see [user](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9).<br> - Currently, the data consumer in cross-user access must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
+2. Define the URI string for communicating with the data provider.<br> The URI is the identifier of the context data provider in set in the configuration file. It can be added with suffix parameters to set the access target. The suffix parameters must start with a question mark (?).<br> - Currently, only the **user** parameter is supported.<br> - The value of **user** must be an integer. It indicates the user ID of the data provider. If It is not specified, the user ID of the data consumer is used. For details about the definition of **user** and how to obtain it, see [user](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9).<br> - Currently, the data consumer in cross-user access must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
    
    ```ts
-   // Different from the URI defined in the module.json5 file, the URI passed in the parameter has an extra slash (/), because there is a DeviceID parameter between the second and the third slash (/).
+   // Different from the URI defined in the module.json5 file, the URI passed in the parameter has an extra slash (/) because there is a DeviceID parameter between the second and the third slash (/).
    let dseUri = ('datashare:///com.ohos.settingsdata.DataAbility');
    ```
 
@@ -337,7 +337,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
      (dsHelper as dataShare.DataShareHelper).query(dseUri, predicates, valArray, (err:BusinessError, data:DataShareResultSet) => {
        console.info(`dsHelper query result:${data}`);
      });
-     // Delete data.
+     // Delete specified data.
      (dsHelper as dataShare.DataShareHelper).delete(dseUri, predicates, (err:BusinessError, data:number) => {
        console.info(`dsHelper delete result:${data}`);
      });

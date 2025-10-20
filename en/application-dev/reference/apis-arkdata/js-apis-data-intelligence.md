@@ -183,11 +183,11 @@ Represents the configuration an embedded model.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-| Name    | Type             | Mandatory| Description                                                        |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| version    | [ModelVersion](#modelversion)           | Yes  |Version of the model.|
-| isNpuAvailable | boolean                | Yes  | Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.|
-| cachePath | string                | No  | Local directory for model caching if the NPU is used. The value is in the /xxx/xxx/xxx format, for example, **/data**. The path cannot exceed 512 characters. <br>Default value: **""**|
+| Name    | Type             | Read-Only| Optional| Description                                                        |
+| ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
+| version    | [ModelVersion](#modelversion)           | No| No  |Version of the model.|
+| isNpuAvailable | boolean                | No| No  | Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.|
+| cachePath | string                | No | Yes | Local directory for model caching if the NPU is used. The value is in the /xxx/xxx/xxx format, for example, **/data**. The path cannot exceed 512 characters. <br>Default value: **""**|
 
 ## ModelVersion
 
@@ -217,10 +217,10 @@ Represents the configuration for text splitting.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-| Name    | Type             | Mandatory| Description                                                        |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| size    |       number     | Yes  |Maximum size of a block. The value is a non-negative integer.|
-| overlapRatio | number                | Yes  | Overlap ratio between adjacent blocks. <br>Value range: [0,1]<br>The value **0** indicates the lowest overlap ratio, and **1** indicates the highest overlap ratio.|
+| Name    | Type             | Read-Only| Optional| Description                                                        |
+| ---------- | --------------------- | ---- | ----| ------------------------------------------------------------ |
+| size    |       number     | No  | No |Maximum size of a block. The value is a non-negative integer.|
+| overlapRatio | number                | No | No  | Overlap ratio between adjacent blocks. <br>Value range: [0,1]<br>The value **0** indicates the lowest overlap ratio, and **1** indicates the highest overlap ratio.|
 
 
 ## TextEmbedding
