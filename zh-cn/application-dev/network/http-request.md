@@ -178,7 +178,6 @@
     // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
     httpRequest.off('headersReceive');
     ```
-<!-- @[HTTP_case_http_request_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 6. 调用destroy()方法销毁
 
     当该请求使用完毕时，调用destroy()方法销毁。
@@ -187,7 +186,6 @@
     // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
     httpRequest.destroy();
     ```
-<!-- @[HTTP_case_http_request_destroy_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 ## 发起HTTP流式传输请求
 
 HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容的一小部分，而不是一次性将整个响应加载到内存，这对于处理大文件、实时数据流等场景非常有用。
@@ -201,7 +199,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
     import { BusinessError } from '@kit.BasicServicesKit';
     import { common } from '@kit.AbilityKit';
     ```
- <!-- @[HTTP_case_module_import_transfer_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 2. 创建HTTP流式传输HttpRequest对象
 
     调用createHttp()方法，创建HttpRequest对象。
@@ -234,12 +232,12 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
     
     // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
     httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
-      console.info("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
+      console.log("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
     });
 
     // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
     httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
-      console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
+      console.log("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
     });
     ```
 <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
@@ -293,7 +291,6 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
       // 当该请求使用完毕时，调用destroy方法主动销毁。
       httpRequest.destroy();
     }
-    
     ```
 <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 ## 配置证书校验
