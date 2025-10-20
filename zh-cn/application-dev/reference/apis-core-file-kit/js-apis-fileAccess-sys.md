@@ -1872,7 +1872,7 @@ try {
 
 copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback&lt;Array&lt;CopyResult&gt;&gt;) : void
 
-复制文件或目录，含有同名文件时可以选择是否强制覆盖文件，使用 callback 异步回调。
+复制文件或目录，含有同名文件时可以选择是否强制覆盖原文件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
