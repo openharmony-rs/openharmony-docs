@@ -181,19 +181,72 @@ libhid.z.so
 
     <!-- @[driver_hid_report_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) -->
 
+``` C++
+    uint32_t bInterfaceNum1 = 0x00;
+    // 打开deviceId和interfaceIndex1指定的HID设备（一般为/dev/hidraw0设备文件）
+    ret = OH_Hid_Open(deviceID_, bInterfaceNum1, &hid_);
+    if (ret != 0) {
+        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
+            bInterfaceNum1, ret);
+        return ret;
+    }
+    uint32_t bInterfaceNum2 = 0x01;
+    // 打开deviceId和interfaceIndex2指定的HID设备（一般为/dev/hidraw1设备文件）
+    ret = OH_Hid_Open(deviceID_, bInterfaceNum2, &hid2_);
+    if (ret != 0) {
+        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
+            bInterfaceNum2, ret);
+        return ret;
+    }
+```
+
+
 3. 向HID设备写入/发送报告（HID设备与主机之间交换的数据包）（可选）。
     - 当报告类型为HID_OUTPUT_REPORT（输出报告）时，支持如下两种写入/发送方式。
         - 使用 **hid_ddk_api.h** 的 **OH_Hid_Write** 向HID设备写入一个输出报告。
 
             <!-- @[driver_hid_report_step3_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    uint32_t bytesWritten;
+    // 写入报告
+    int32_t ret = OH_Hid_Write(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff), &bytesWritten);
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_Write failed. ret: %{public}u", ret);
+    }
+```
+
+
         - 使用 **hid_ddk_api.h** 的 **OH_Hid_SendReport** 向HID设备发送一个输出报告。
 
             <!-- @[driver_hid_report_step3_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    // 发送输出报告
+    int32_t ret = OH_Hid_SendReport(DataParser::GetInstance().getHidObject(), HID_OUTPUT_REPORT, dataBuff,
+                                    sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_SendReport failed. ret: %{public}u", ret);
+    }
+```
+
+
     - 当报告类型为HID_FEATURE_REPORT（特性报告）时，使用 **hid_ddk_api.h** 的 **OH_Hid_SendReport** 向HID设备发送一个特性报告。
 
         <!-- @[driver_hid_report_step3_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
+    string str(hexFormat);
+    HexStringToUint8Array(str, dataBuff, sizeof(dataBuff));
+    // 发送特性报告
+    int32_t ret = OH_Hid_SendReport(DataParser::GetInstance().getHid2Object(), HID_FEATURE_REPORT, dataBuff,
+                                    sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_SendReport failed. ret: %{public}u", ret);
+    }
+```
+
 
 4. 从HID设备读取报告（可选）。
     - 当报告类型为HID_INPUT_REPORT（输入报告）时，支持如下三种读取方式。
@@ -201,17 +254,63 @@ libhid.z.so
 
             <!-- @[driver_hid_report_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+        // nonblock取值：1启用非阻塞，0禁用非阻塞
+        ret = OH_Hid_SetNonBlocking(DataParser::GetInstance().getHidObject(), nonblockTag);
+        if (ret != HID_DDK_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_Hid_SetNonBlocking failed. ret: %{public}u", ret);
+            return false;
+        }
+```
+
+
         - 使用 **hid_ddk_api.h** 的 **OH_Hid_Read** 或者 **OH_Hid_ReadTimeout** 以非阻塞模式或者阻塞模式从HID设备读取一个输入报告。
 
             <!-- @[driver_hid_report_step4_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+        if (nonblock) {
+            ret = OH_Hid_Read(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff), &bytesRead);
+        } else {
+            ret = OH_Hid_ReadTimeout(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff),
+                                     CONST_TIMEOUT, &bytesRead);
+        }
+```
+
 
         - 使用 **hid_ddk_api.h** 的 **OH_Hid_GetReport** 从HID设备读取一个输入报告。
 
             <!-- @[driver_hid_report_step4_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    uint8_t dataBuff[NUM_NINE] = { 0x00 };
+    // 读取输入报告
+    int32_t ret = OH_Hid_GetReport(DataParser::GetInstance().getHidObject(), HID_INPUT_REPORT, dataBuff,
+                                   sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetReport failed. ret: %{public}u", ret);
+        return nullptr;
+    }
+```
+
+
     - 当报告类型为HID_FEATURE_REPORT（特性报告）时，使用 **hid_ddk_api.h** 的 **OH_Hid_GetReport** 从HID设备读取一个特性报告。
 
         <!-- @[driver_hid_report_step4_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
+    // 指定报告编号
+    dataBuff[0] = 0x07;
+    // 读取特性报告
+    int32_t ret = OH_Hid_GetReport(DataParser::GetInstance().getHid2Object(), HID_FEATURE_REPORT, dataBuff,
+                                   sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetReport failed. ret: %{public}u", ret);
+        return nullptr;
+    }
+```
+
 
 5. 获取设备原始信息、原始名称、物理地址、原始唯一标识符（可选）。
 
@@ -219,7 +318,27 @@ libhid.z.so
 
     <!-- @[driver_hid_report_step5_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
+``` C++
+    Hid_RawDevInfo rawDevInfo;
+    int32_t ret = OH_Hid_GetRawInfo(DataParser::GetInstance().getHidObject(), &rawDevInfo);
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetRawInfo failed, ret:%{public}d", ret);
+        return nullptr;
+    }
+```
+
+
     <!-- @[driver_hid_report_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+    char dataBuff[DATA_BUFF_SIZE];
+    int32_t ret = OH_Hid_GetRawName(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
+    if (ret != HID_DDK_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_Hid_GetRawName failed, ret:%{public}d", ret);
+        return nullptr;
+    }
+```
+
 
     <!-- @[driver_hid_report_step5_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
