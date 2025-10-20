@@ -25,10 +25,10 @@
 - 域名转换(uidna.h)
 - Unicode字符串处理(ustring.h)，从API version 15开始支持
 - ICU文本抽象表示(utext.h)，从API version 15开始支持
-- ICU版本(uversion.h)，从API version 21开始支持
-- Locale ID及Locale各组成部分本地化名称(uldnames.h)，从API version 21开始支持
-- Unicode码点处理(utf.h，utf8.h，utf16.h)，从API version 21开始支持
-- CLDR版本(ulocdata.h)，从API version 21开始支持
+- ICU版本(uversion.h)，从API version 22开始支持
+- Locale ID及Locale各组成部分本地化名称(uldnames.h)，从API version 22开始支持
+- Unicode码点处理(utf.h，utf8.h，utf16.h)，从API version 22开始支持
+- CLDR版本(ulocdata.h)，从API version 22开始支持
 
 ## 引入ICU4C国际化能力
 
