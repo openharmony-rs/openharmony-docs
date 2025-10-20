@@ -1227,7 +1227,7 @@ HTTP 请求方法。
 | BAD_GATEWAY       | 502  | 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | UNAVAILABLE       | 503  | 由于超载或系统维护，服务器暂时无法处理客户端的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | GATEWAY_TIMEOUT   | 504  | 充当网关或代理的服务器，未及时从远端服务器获取请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| VERSION           | 505  | 服务器请求的HTTP协议的版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
+| VERSION           | 505  | 服务器不支持客户端请求中使用的HTTP协议版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
 
 ## HttpResponse
 
