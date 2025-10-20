@@ -1,4 +1,4 @@
-# ServiceExtensionAbility
+# ServiceExtensionAbility (for System Applications Only)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->

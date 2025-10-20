@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -1262,6 +1262,22 @@ Check whether the Want carries a DLP file.
 
 **Error Message**
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 The main window of this ability of this context does not exits.
 
 **Description**
@@ -1891,23 +1907,26 @@ The specified application is not installed under the user with **userId** of 1.
 Install the specified application under the user with **userId** of 1.
 <!--DelEnd-->
 
-## 16000115 Process Is Not Running the Component with isolationProcess Set to true
+## 16000115 Current Process Cannot Be Set as Candidate Master Process
 
 **Error Message**
 
-The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process.
+The current process cannot be set as a candidate master process.
 
 **Description**
 
-This error code is reported when you attempt to set a process, which is not running any component configured with **isolationProcess**, as a candidate master process.
+The current process does not meet the requirements to be configured as a candidate master process.
 
 **Possible Causes**
 
-The current process is not running any component configured with **isolationProcess** and therefore cannot be designated as a candidate master process.
+The process fails to satisfy at least one of the following conditions:
+
+1. It is running a component with **isolationProcess** set to **true**.
+2. It has previously served as the master process.
 
 **Solution**
 
-No action can be taken. Since the current process is not running any component with **isolationProcess** set to **true**, it cannot be set as a candidate master process.
+No workaround is available. A process can only be set as a candidate master process if it is currently running a component with **isolationProcess** set to **true**, or if it has previously functioned as the master process.
 
 ## 16000116 Process Is Already a Master Process
 
@@ -1945,63 +1964,35 @@ The current process is not a candidate master process and cannot be canceled.
 
 No action can be taken. Cancellation is not supported since the current process is not a candidate master process.
 
-## 16000118 Process Is Not the Master Process
-
-**Error Message**
-
-Not a master process.
-
-**Description**
-
-This error code is reported when you attempt to relinquish the master-process role of the current process, which is not the master process.
-
-**Possible Causes**
-
-The current process is not the master process and cannot relinquish its master-process role.
-
-**Solution**
-
-No action can be taken. The current process is not the master process and cannot relinquish its master-process role.
-
-## 16000119 Unfinished onNewProcessRequest Request Exists
-
-**Error Message**
-
-Cannot exit because there is an unfinished onNewProcessRequest.
-
-**Description**
-
-This error code is reported when you attempt to relinquish the master-process role of the current process while it has an unfinished onNewProcessRequest request.
-
-**Possible Causes**
-
-The current process has an unfinished onNewProcessRequest request.
-
-**Solution**
-
-Wait for the onNewProcessRequest request in the current process to complete, and then relinquish the master-process role of the current process.
-
-## 16000205 API Not Called in Main Thread
-
-**Error Message**
-
-The API is not called in the main thread.
-
-**Description**
-
-This error code is reported when the API is not called in the main thread.
-
-**Possible Causes**
-
-The current API is called in a Worker or TaskPool thread, which is not supported.
-
-**Solution**
-
-Move the API call logic to the main thread.
-
 ## 10110000 Incorrect Declaration for Decorator Parameters
 
 **Error Message**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Decorator parameters must be compile-time constants.
 

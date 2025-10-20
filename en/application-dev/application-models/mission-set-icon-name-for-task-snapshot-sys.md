@@ -1,4 +1,4 @@
-# Setting the Icon and Name of a Mission Snapshot
+# Setting the Icon and Name of a Mission Snapshot (for System Applications Only)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

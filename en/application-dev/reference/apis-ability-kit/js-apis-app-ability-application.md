@@ -20,6 +20,10 @@ You can use this module to manage and obtain the application [context](../../app
 import { application } from '@kit.AbilityKit';
 ```
 
+
+
+
+
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
@@ -185,11 +189,16 @@ When the [master process](../../application-models/ability-terminology.md#master
 	- For a UIAbility, the system creates an empty process as the master process.
 	- For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
 
-<!--Del-->
 > **NOTE**
+> 
+> If the current process is already the [master process](../../application-models/ability-terminology.md#master-process), calling this API has no effect and does not generate an error code.
 >
+> A process can be set as a candidate master process only if it is currently running a component with **isolationProcess** set to **true** or has previously as the main process.
+>
+> <!--Del-->
 > The **isolationProcess** field can be set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file, but only for the UIExtensionAbility of the sys/commonUI type.
 <!--DelEnd-->
+
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,7 +223,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message       |
 | -------- | --------------- |
 | 801 | Capability not supported.|
-| 16000115 | The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process. |
+| 16000115 | The current process cannot be set as a candidate master process. |
 
 
 **Example**
@@ -293,53 +302,25 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.exitMasterProcessRole<sup>21+</sup>
 
-exitMasterProcessRole(): Promise\<void>
 
-Relinquishes the [master-process](../../application-models/ability-terminology.md#master-process) role from the current process. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
 
-**Return value**
 
-| Type              | Description               |
-| ------------------ | ------------------- |
-|Promise\<void> | Promise that returns no value.|
 
-**Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
-| ID| Error Message       |
-| -------- | --------------- |
-| 801 | Capability not supported.|
-| 16000118 | Not a master process. |
-| 16000119 | Cannot exit because there is an unfinished onNewProcessRequest. |
 
-**Example**
 
-```ts
-import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    try {
-      application.exitMasterProcessRole()
-        .then(() => {
-          console.info('exitMasterProcessRole succeed');
-        })
-        .catch((err: BusinessError) => {
-          console.error(`exitMasterProcessRole failed, code is ${err.code}, message is ${err.message}`);
-        });
-    } catch (error) {
-      let code: number = (error as BusinessError).code;
-      let message: string = (error as BusinessError).message;
-      console.error(`exitMasterProcessRole failed, error.code: ${code}, error.message: ${message}`);
-    }
-  }
-}
-```
+
+
+
+
+
+	
+
+
+
+

@@ -76,10 +76,10 @@
   - [Thread Model (Stage Model)](thread-model-stage.md)
   <!--Del-->
   - Mission Management (for System Applications Only)<!--mission-management-->
-    - [Mission Management Scenarios](mission-management-overview-sys.md)
-    - [Mission Management and Launch Type](mission-management-launch-type-sys.md)
-    - [Page Stack and Mission List](page-mission-stack-sys.md)
-    - [Setting the Icon and Name of a Mission Snapshot](mission-set-icon-name-for-task-snapshot-sys.md)
+    - [Mission Management Scenarios (for System Applications Only)](mission-management-overview-sys.md)
+    - [Mission Management and Launch Type (for System Applications Only)](mission-management-launch-type-sys.md)
+    - [Page Stack and MissionList (for System Applications Only)](page-mission-stack-sys.md)
+    - [Setting the Icon and Name of a Mission Snapshot (for System Applications Only)](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-stage.md)
   - InsightIntent Framework Development<!--insight-intent-->
@@ -127,8 +127,8 @@
     - [Context](application-context-fa.md)
     - [Want](want-fa.md)
     - [Component Startup Rules (FA Model)](component-startup-rules-fa.md)
-  - [Process Model (Stage Model)](process-model-fa.md)
-  - [Thread Model (Stage Model)](thread-model-fa.md)
+  - [Process Model (FA Model)](process-model-fa.md)
+  - [Thread Model (FA Model)](thread-model-fa.md)
   <!--Del-->
   - [Mission Management (for System Applications Only)](mission-management-fa-sys.md)
   <!--DelEnd-->
