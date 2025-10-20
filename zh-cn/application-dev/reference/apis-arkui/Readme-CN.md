@@ -413,7 +413,7 @@
     <!--DelEnd-->
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md) 
-  - 原子化服务<!--atomic-services-->
+  - AtomicService<!--atomic-services-->
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
     - [AtomicServiceSearch](arkui-ts/ohos-atomicservice-AtomicServiceSearch.md)
     - [AtomicServiceTabs](arkui-ts/ohos-atomicservice-AtomicServiceTabs.md)
