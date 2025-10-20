@@ -774,7 +774,7 @@ struct CustomDialogUser {
 该示例使用maskColor，maskRect和LoadingProgress，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
 ```ts
-import window from '@ohos.window';
+import { window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
@@ -878,7 +878,7 @@ struct CustomDialogUser {
 该示例通过监听键盘变化，调整布局margin的bottom，实现与使用keyboardAvoidDistance调整弹窗与软键盘的间距一样的效果。
 
 ```ts
-import window from '@ohos.window';
+import { window } from '@kit.ArkUI';
 
 @CustomDialog
 @Component
