@@ -216,8 +216,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_property_descriptor desc[] = {
            // 注册NDK根节点。 
            {"createNativeRoot", nullptr, NativeModule::CreateNativeRoot, nullptr, nullptr, nullptr, napi_default, nullptr},
-           // 注册混合模式创建和更新方法。
-           {"registerCreateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh, nullptr,
+           // 注册混合模式创建方法。
+           {"registerCreateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterCreateRefresh, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+           // 注册混合模式更新方法。
+           {"registerUpdateMixedRefreshNode", nullptr, NativeModule::ArkUIMixedRefresh::RegisterUpdateRefresh, nullptr,
             nullptr, nullptr, napi_default, nullptr},
            // 销毁NDK根节点。 
            {"destroyNativeRoot", nullptr, NativeModule::DestroyNativeRoot, nullptr, nullptr, nullptr, napi_default,
@@ -299,48 +302,54 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    ```
 
    ```cpp
-   // CMakeLists.txt
-   // optional依赖C++17
-
-   # the minimum version of CMake.
-   cmake_minimum_required(VERSION 3.4.1)
-   project(testndk)
-
-   set(CMAKE_CXX_STANDARD 17)
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                        ${NATIVERENDER_ROOT_PATH}/include)
-
-   add_library(nativeNode SHARED container.cpp manager.cpp init.cpp)
-   # target_link_libraries(entry PUBLIC libace_napi.z.so, libace_ndk.z.so, libhilog_ndk.z.so)
-
-   find_library(
-        # Sets the name of the path variable.
-        hilog-lib
-        # Specifies the name of the NDK library that
-        # you want CMake to locate.
-        hilog_ndk.z
-    )
-
-   find_library(
-        # Sets the name of the path variable.
-        libace-lib
-        # Specifies the name of the NDK library that
-        # you want CMake to locate.
-        ace_ndk.z
-    )
-
-   find_library(
-        # Sets the name of the path variable.
-        libnapi-lib
-        # Specifies the name of the NDK library that
-        # you want CMake to locate.
-        ace_napi.z
-    )
-
-   target_link_libraries(nativeNode PUBLIC
-        ${hilog-lib} ${libace-lib} ${libnapi-lib} )
+     # CMakeLists.txt
+ 
+     # the minimum version of CMake.
+     cmake_minimum_required(VERSION 3.4.1)
+     project(testndk)
+     
+     # optional依赖C++17
+     set(CMAKE_CXX_STANDARD 17)
+     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+     
+     include_directories(${NATIVERENDER_ROOT_PATH}
+                          ${NATIVERENDER_ROOT_PATH}/include)
+     
+     add_library(entry SHARED NativeEntry.cpp ArkUIMixedRefresh.cpp napi_init.cpp)
+     # target_link_libraries(entry PUBLIC libace_napi.z.so, libace_ndk.z.so, libhilog_ndk.z.so)
+     
+     find_library(
+          # Sets the name of the path variable.
+          hilog-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          hilog_ndk.z
+      )
+     
+     find_library(
+          # Sets the name of the path variable.
+          libace-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_ndk.z
+      )
+     
+     find_library(
+          # Sets the name of the path variable.
+          libnapi-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_napi.z
+      )
+     
+      find_library(
+           # Sets the name of the path variable.
+           libuv-lib
+           uv
+       )
+     
+     target_link_libraries(entry PUBLIC
+          ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} )
    ```
 
 4. 抽象混合模式下组件的基类，用于通用逻辑管理。
@@ -440,7 +449,8 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        // 避免频繁跨语言，在Native侧缓存属性事件，批量通知。
        void FlushMixedModeCmd();
    
-       static napi_value RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info);
+       static napi_value RegisterCreateRefresh(napi_env env, napi_callback_info info);
+       static napi_value RegisterUpdateRefresh(napi_env env, napi_callback_info info);
    
    protected:
        void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override {
@@ -640,17 +650,17 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_call_function(g_env, nullptr, updateRefresh, 3, argv, &result);
    }
    
-   napi_value ArkUIMixedRefresh::RegisterCreateAndUpdateRefresh(napi_env env, napi_callback_info info) {
+   napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
        size_t argc = 1;
        napi_value args[1] = {nullptr};
-   
+
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-   
+
        g_env = env;
        napi_ref refer;
        napi_create_reference(env, args[0], 1, &refer);
-   
-       g_createRefresh = refer;
+
+       g_updateRefresh = refer;
        return nullptr;
    }
    
@@ -830,3 +840,13 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    
    ```
 
+8. 在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。 
+   ```ts
+   // Index.d.ts
+   
+   export const createNativeRoot: (content: Object) => void;
+   export const destroyNativeRoot: () => void;
+
+   export const registerCreateMixedRefreshNode: (content: Object) => void;
+   export const registerUpdateMixedRefreshNode: (content: Object) => void;
+   ```
