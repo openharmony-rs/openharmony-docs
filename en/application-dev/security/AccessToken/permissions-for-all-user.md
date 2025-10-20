@@ -228,9 +228,11 @@ With this permission, the application can perform operations such as taking scre
 
 **Authorization mode**: user_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets | phones
 
 **Valid since**: 14
+
+**Changelog**: The permission is available only to tablets and PCs/2-in-1 devices in API versions 14 to 20. From API version 21, this permission is also available to smartphones.
 
 ## ohos.permission.READ_MEDIA
 
