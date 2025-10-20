@@ -61,7 +61,7 @@ Table 2 Resource group directories
 
 | Directory   | Description                                    | Resource File                                    |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | Element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows:<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
+| element | Indicates element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows:<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
 | media   | Indicates media resources, including non-text files such as images, audios, and videos. (Only files are supported in this directory.)<br>Table 3 and Table 4 describe the types of images, audios, and videos.             | The file name can be customized, for example, **icon.png**.                    |
 | profile  | Indicates a custom configuration file. You can obtain the file content by using the [getProfileByAbility](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) API. (Only JSON files are supported in this directory.)      | The file name can be customized, for example, **test_profile.json**.          |
 
@@ -244,7 +244,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean | Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated. |
+| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated.|
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
@@ -292,7 +292,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
    >
    > For details about how to use native APIs to access raw files, see [Raw File Development](../napi/rawfile-guidelines.md).
 
-[Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows:
+  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows:
 
   ```ts
     // Access through $r('app.type.name').

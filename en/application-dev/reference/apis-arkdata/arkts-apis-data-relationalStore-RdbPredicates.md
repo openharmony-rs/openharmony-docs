@@ -496,7 +496,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
 | field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard: **%** represents any character of any length, and **_** represents a single character.|
+| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
 
 **Return value**
 
@@ -533,7 +533,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | field  | string | Yes  | Column name in the database table.                                          |
-| value  | string | Yes  | Value to match.<br>Wildcards are supported. ***** indicates zero, one, or multiple digits or characters. **?** indicates a single digit or character.|
+| value  | string | Yes  | Value to match.<br>Wildcards are supported. An asterisk (*) indicates zero, one, or multiple digits or characters, and a question mark (?) indicates a single digit or character.|
 
 **Return value**
 
@@ -1016,7 +1016,7 @@ predicates.indexedBy("SALARY");
 
 in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are in the given range in the specified column.
+Creates an **RdbPredicates** object to search for the records that are in the given range in the specified column.
 
 > **NOTE**
 >
@@ -1140,7 +1140,7 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
 | field  | string | Yes  | Column name in the database table.    |
-| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard: **%** represents any character of any length, and **_** represents a single character.|
+| value  | string | Yes  | Condition for fuzzy match. Generally, this parameter is used together with a wildcard. A percent sign (%) represents any character of any length, and an underscore (_) represents a single character.|
 
 **Return value**
 
