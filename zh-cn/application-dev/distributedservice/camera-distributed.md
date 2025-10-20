@@ -83,27 +83,7 @@
   - 多设备协同  ohos.permission.DISTRIBUTED_DATASYNC
 
   例如在UIAbility申请相关的访问权限，通过调用requestPermissionsFromUser()方法添加对应的权限类型。
-  ```ts
-  //EntryAbility.ets
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { abilityAccessCtrl, AbilityConstant, ConfigurationConstant, Permissions,
-    UIAbility, Want } from '@kit.AbilityKit';
-
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-      console.info('Sample_VideoRecorder', 'Ability onCreate,requestPermissionsFromUser');
-      let permissionNames: Array<Permissions> = ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
-        'ohos.permission.WRITE_MEDIA', 'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE', 'ohos.permission.DISTRIBUTED_DATASYNC'];
-      abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, permissionNames).then((data)=> {
-        console.info("testTag", data);
-      })
-        .catch((err : BusinessError) => {
-          console.error("testTag", err.message);
-        });
-    }
-  }
-  ```
+  <!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/entryability/EntryAbility.ts) -->
 
 
 **启动分布式相机预览流及拍照流**
@@ -112,352 +92,44 @@
 
   应用组网成功后，需获取远端设备信息，通过getCameraManager()方法获取相机管理器实例，getSupportedCameras()方法获取支持指定的相机设备对象。
 
-  ```ts
-  private cameras?: Array<camera.CameraDevice>;
-  private cameraManager?: camera.CameraManager;
-  private cameraOutputCapability?: camera.CameraOutputCapability;
-  private cameraIndex: number = 0;
-  private curVideoProfiles?: Array<camera.VideoProfile>;
-
-  initCamera(): void {
-    console.info('init remote camera called');
-    if (this.cameraManager) {
-      console.info('cameraManager already exits');
-      return;
-    }
-    console.info('[camera] case to get cameraManager');
-    this.cameraManager = camera.getCameraManager(globalThis.abilityContext);
-    if (this.cameraManager) {
-      console.info('[camera] case getCameraManager success');
-    } else {
-      console.error('[camera] case getCameraManager failed');
-      return;
-    }
-    this.cameras = this.cameraManager.getSupportedCameras();
-    if (this.cameras) {
-      console.info('[camera] case getCameras success, size ', this.cameras.length);
-      for (let i = 0; i < this.cameras.length; i++) {
-        let came: camera.CameraDevice = this.cameras[i];
-        console.info('[came] camera json:', JSON.stringify(came));
-        if (came.connectionType == camera.ConnectionType.CAMERA_CONNECTION_REMOTE) {
-          this.cameraIndex = i;
-          this.cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(came);
-          this.curVideoProfiles = this.cameraOutputCapability.videoProfiles;
-          console.info('init remote camera done'); //初始化远端摄像头成功
-          break;
-        }
-      }
-    } else {
-      console.error('[camera] case getCameras failed');
-    }
-  }
-  ```
+  <!-- @[init_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 **2. 创建CameraInput实例**
 
   获取相机管理器实例和支持指定的相机设备对象后，通过createCameraInput()方法创建CameraInput实例。
 
-  ```ts
-  // create camera input
-  private cameraInput?: camera.CameraInput;
-
-  async createCameraInput(): Promise<void> {
-    console.info('createCameraInput called');
-    if (this.cameras && this.cameras.length > 0) {
-      let came: camera.CameraDevice = this.cameras[this.cameraIndex];
-      console.info('[came]createCameraInput camera json:', JSON.stringify(came));
-      this.cameraInput = this.cameraManager?.createCameraInput(came);
-      if (this.cameraInput) {
-        console.info('[camera] case createCameraInput success');
-        await this.cameraInput.open().then(() => {
-          console.info('[camera] case cameraInput.open() success');
-        }).catch((err: Error) => {
-          console.error('[camera] cameraInput.open then.error:', JSON.stringify(err));
-        });
-      } else {
-        console.error('[camera] case createCameraInput failed');
-        return;
-      }
-    }
-  }
-  ```
+  <!-- @[camera_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 **3. 获取预览输出对象**
 
   通过createPreviewOutput()方法创建预览输出对象。
 
-  ```ts
-  private previewOutput?: camera.PreviewOutput;
-  private avProfile: media.AVRecorderProfile = {
-    fileFormat: media.ContainerFormatType.CFT_MPEG_4,
-  }
-  private avConfig: media.AVRecorderConfig = {
-    videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-    profile: this.avProfile,
-    url: 'fd://',
-  }
-  private previewProfiles?: Array<camera.Profile>;
-  private surfaceId?: string;
-
-  // create camera preview
-  async createPreviewOutput(): Promise<void> {
-    console.info('createPreviewOutput called');
-    if (this.cameraOutputCapability && this.cameraManager) {
-      this.previewProfiles = this.cameraOutputCapability.previewProfiles;
-      console.info('[camera] this.previewProfiles json ', JSON.stringify(this.previewProfiles));
-      if (this.previewProfiles[0].format === camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP) {
-        console.info('[camera] case format is VIDEO_SOURCE_TYPE_SURFACE_YUV');
-        this.avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV;
-      } else {
-        console.info('[camera] case format is VIDEO_SOURCE_TYPE_SURFACE_ES');
-        this.avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
-      }
-      this.previewOutput = this.cameraManager.createPreviewOutput(this.previewProfiles[0], this.surfaceId);
-      if (!this.previewOutput) {
-        console.error('create previewOutput failed!');
-      }
-      console.info('createPreviewOutput done');
-    }
-  }
-  ```
+  <!-- @[create_preview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 
 **4. 获取拍照输出对象**
 
   通过createPhotoOutput()方法创建拍照输出对象，通过createImageReceiver()方法创建ImageReceiver实例。
 
-  ```ts
-  import { fileIo } from '@kit.CoreFileKit'
-  import { image } from '@kit.ImageKit';
-
-  export default class SaveCameraAsset {
-    private tag: string
-    constructor(tag: string) {
-      this.tag = tag;
-    }
-    public async createImageFd() {
-      //...
-      return 0;
-    }
-    public async closeVideoFile() {
-      //...
-    }
-  }
-  private photoReceiver?: image.ImageReceiver;
-  private photoOutput?: camera.PhotoOutput;
-  private mSaveCameraAsset: SaveCameraAsset = new SaveCameraAsset('Sample_VideoRecorder');
-  private mFileAssetId?: number;
-  private fdPath?: string
-
-  async getImageFileFd(): Promise<void> {
-    console.info('getImageFileFd called');
-    this.mFileAssetId = await this.mSaveCameraAsset.createImageFd();
-    this.fdPath = 'fd://' + this.mFileAssetId.toString();
-    this.avConfig.url = this.fdPath;
-    console.info('ImageFileFd is: ' + this.fdPath);
-    console.info('getImageFileFd done');
-  }
-
-  // close file fd
-  async closeFd(): Promise<void> {
-    console.info('case closeFd called');
-    if (this.mSaveCameraAsset) {
-      await this.mSaveCameraAsset.closeVideoFile();
-      this.mFileAssetId = undefined;
-      this.fdPath = undefined;
-      console.info('case closeFd done');
-    }
-  }
-
-  async createPhotoOutput() {
-    const photoProfile: camera.Profile = {
-      format: camera.CameraFormat.CAMERA_FORMAT_JPEG,
-      size: {
-        "width": 1280,
-        "height": 720
-      }
-    }
-    if (!this.cameraManager) {
-      console.error('createPhotoOutput cameraManager is null')
-    }
-    if (!this.photoReceiver) {
-      this.photoReceiver = image.createImageReceiver(photoProfile.size, image.ImageFormat.YCBCR_422_SP, 8)
-      this.photoReceiver.on("imageArrival",()=>{
-        this.photoReceiver?.readNextImage((err,image)=>{
-          if (err || image === undefined) {
-            console.error('photoReceiver imageArrival on error')
-            return;
-          }
-          image.getComponent(4, async (err, img) => {
-            if (err || img === undefined) {
-              console.error('image getComponent on error')
-              return;
-            }
-            await this.getImageFileFd()
-            fileIo.write(this.mFileAssetId, img.byteBuffer)
-            await this.closeFd()
-            await image.release()
-            console.info('photoReceiver image.getComponent save success')
-          })
-        })
-      })
-        await this.photoReceiver.getReceivingSurfaceId().then((surfaceId: string) => {
-          this.photoOutput = this.cameraManager?.createPhotoOutput(photoProfile)
-          if (!this.photoOutput) {
-            console.error('cameraManager.createPhotoOutput on error')
-          }
-          console.info('cameraManager.createPhotoOutput success')
-          this.photoOutput?.on("captureStart", (err, captureId) => {
-            console.info('photoOutput.on captureStart')
-          })
-        }).catch((err: Error) => {
-          console.error('photoReceiver.getReceivingSurfaceId on error:' + err)
-        })
-      }
-    }
-  ```
+  <!-- @[create_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 **5. 创建CaptureSession实例**
 
 通过createCaptureSession()方法创建CaptureSession实例。调用beginConfig()方法开始配置会话，使用addInput()和addOutput()方法将CameraInput()和CameraOutput()加入到会话，最后调用commitConfig()方法提交配置信息，通过Promise获取结果。
 
-  ```ts
-  private Session?: camera.Session;
-
-  async failureCallback(error: BusinessError): Promise<void> {
-    console.error('case failureCallback called,errMessage is ', JSON.stringify(error));
-  }
-
-  async catchCallback(error: BusinessError): Promise<void> {
-    console.error('case catchCallback called,errMessage is ', JSON.stringify(error));
-  }
-
-  // create camera capture session
-  async createCaptureSession(): Promise<void> {
-    console.info('createCaptureSession called');
-    if (this.cameraManager) {
-      this.Session = this.cameraManager.createSession();
-      if (!this.Session) {
-        console.error('createCaptureSession failed!');
-        return;
-      }
-      try {
-        this.Session.beginConfig();
-        this.Session.addInput(this.cameraInput);
-      } catch (e) {
-        console.error('case addInput error:' + JSON.stringify(e));
-      }
-      try {
-        this.Session.addOutput(this.previewOutput);
-      } catch (e) {
-        console.error('case addOutput error:' + JSON.stringify(e));
-      }
-      await this.Session.commitConfig().then(() => {
-        console.info('captureSession commitConfig success');
-      }, this.failureCallback).catch(this.catchCallback);
-    }
-  }
-  ```
+  <!-- @[create_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 **6. 开启会话工作**
 
   通过CaptureSession实例上的start()方法开始会话工作，通过Promise获取结果。
 
-  ```ts
-  // start captureSession
-  async startCaptureSession(): Promise<void> {
-    console.info('startCaptureSession called');
-    if (!this.captureSession) {
-      console.error('CaptureSession does not exist!');
-      return;
-    }
-
-    try {
-      await this.captureSession.start();
-      console.info('CaptureSession started successfully.');
-    } catch (error) {
-      console.error('Failed to start CaptureSession:', error);
-      if (this.failureCallback) {
-        this.failureCallback(error);
-      }
-    }
-  }
-  ```
+  <!-- @[start_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 **释放分布式相机资源**
 
   业务协同完毕后需及时结束协同状态，释放分布式相机资源。
 
-  ```ts
-  private videoOutput?: camera.VideoOutput;
-  
-  // 释放相机
-  async releaseCameraInput(): Promise<void> {
-    console.info('releaseCameraInput called');
-    if (this.cameraInput) {
-      this.cameraInput = undefined;
-    }
-    console.info('releaseCameraInput done');
-  }
-
-  // 释放预览
-  async releasePreviewOutput(): Promise<void> {
-    console.info('releasePreviewOutput called');
-    if (this.previewOutput) {
-      await this.previewOutput.release().then(() => {
-        console.info('[camera] case main previewOutput release called');
-      }, this.failureCallback).catch(this.catchCallback);
-      this.previewOutput = undefined;
-    }
-    console.info('releasePreviewOutput done');
-  }
-
-  // 释放视频输出
-  async releaseVideoOutput(): Promise<void> {
-    console.info('releaseVideoOutput called');
-    if (this.videoOutput) {
-      await this.videoOutput.release().then(() => {
-        console.info('[camera] case main videoOutput release called');
-      }, this.failureCallback).catch(this.catchCallback);
-      this.videoOutput = undefined;
-    }
-    console.info('releaseVideoOutput done');
-  }
-
-  // 停止拍照任务
-  async stopCaptureSession(): Promise<void> {
-    console.info('stopCaptureSession called');
-    if (this.captureSession) {
-      await this.captureSession.stop().then(() => {
-        console.info('[camera] case main captureSession stop success');
-      }, this.failureCallback).catch(this.catchCallback);
-    }
-    console.info('stopCaptureSession done');
-  }
-
-  // 释放拍照任务
-  async releaseCaptureSession(): Promise<void> {
-    console.info('releaseCaptureSession called');
-    if (this.captureSession) {
-      await this.captureSession.release().then(() => {
-        console.info('[camera] case main captureSession release success');
-      }, this.failureCallback).catch(this.catchCallback);
-      this.captureSession = undefined;
-    }
-    console.info('releaseCaptureSession done');
-  }
-
-  // 释放相机资源
-  async releaseCamera(): Promise<void> {
-    console.info('releaseCamera called');
-    await this.stopCaptureSession();
-    await this.releaseCameraInput();
-    await this.releasePreviewOutput();
-    await this.releaseVideoOutput();
-    await this.releaseCaptureSession();
-    console.info('releaseCamera done');
-  }
-  ```
+  <!-- @[release_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
 ### 调测验证
 
