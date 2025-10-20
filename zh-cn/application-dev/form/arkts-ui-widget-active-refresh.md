@@ -9,171 +9,171 @@
 下面给出示例，实现如下功能：新建卡片后，点击卡片上的刷新按钮，刷新卡片信息。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 2. 实现卡片布局，通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)，触发onFormEvent回调。
-  ```ts
-  // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
-  let storageUpdateByMsg = new LocalStorage();
+    ```ts
+    // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
+    let storageUpdateByMsg = new LocalStorage();
 
-  @Entry(storageUpdateByMsg)
-  @Component
-  struct UpdateByMessageCard {
-    @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
-    @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+    @Entry(storageUpdateByMsg)
+    @Component
+    struct UpdateByMessageCard {
+      @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+      @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
 
-    build() {
-      Column() {
+      build() {
         Column() {
-          Text(this.title)
-            .fontColor('#FFFFFF')
-            .opacity(0.9)
-            .fontSize(14)
-            .margin({ top: '8%', left: '10%' })
-          Text(this.detail)
-            .fontColor('#FFFFFF')
-            .opacity(0.6)
-            .fontSize(12)
-            .margin({ top: '5%', left: '10%' })
-        }.width('100%').height('50%')
-        .alignItems(HorizontalAlign.Start)
-
-        Row() {
-          Button() {
-            Text($r('app.string.update'))
-              .fontColor('#45A6F4')
+          Column() {
+            Text(this.title)
+              .fontColor('#FFFFFF')
+              .opacity(0.9)
+              .fontSize(14)
+              .margin({ top: '8%', left: '10%' })
+            Text(this.detail)
+              .fontColor('#FFFFFF')
+              .opacity(0.6)
               .fontSize(12)
-          }
-          .width(120)
-          .height(32)
-          .margin({ top: '30%', bottom: '10%' })
-          .backgroundColor('#FFFFFF')
-          .borderRadius(16)
-          .onClick(() => {
-            postCardAction(this, {
-              action: 'message',
-              params: { msgTest: 'messageEvent' }
-            });
-          })
-        }.width('100%').height('40%')
-        .justifyContent(FlexAlign.Center)
+              .margin({ top: '5%', left: '10%' })
+          }.width('100%').height('50%')
+          .alignItems(HorizontalAlign.Start)
+
+          Row() {
+            Button() {
+              Text($r('app.string.update'))
+                .fontColor('#45A6F4')
+                .fontSize(12)
+            }
+            .width(120)
+            .height(32)
+            .margin({ top: '30%', bottom: '10%' })
+            .backgroundColor('#FFFFFF')
+            .borderRadius(16)
+            .onClick(() => {
+              postCardAction(this, {
+                action: 'message',
+                params: { msgTest: 'messageEvent' }
+              });
+            })
+          }.width('100%').height('40%')
+          .justifyContent(FlexAlign.Center)
+        }
+        .width('100%')
+        .height('100%')
+        .alignItems(HorizontalAlign.Start)
+        .backgroundImage($r('app.media.CardEvent'))
+        .backgroundImageSize(ImageSize.Cover)
       }
-      .width('100%')
-      .height('100%')
-      .alignItems(HorizontalAlign.Start)
-      .backgroundImage($r('app.media.CardEvent'))
-      .backgroundImageSize(ImageSize.Cover)
     }
-  }
-  ```
+    ```
 
 3. 实现onFormEvent函数，通过updateForm接口去刷新卡片数据。
-  ```ts
-  // entry/src/main/ets/entryformability/EntryFormAbility.ts
-  import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
-  import { Configuration, Want } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+    ```ts
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
+    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+    import { Configuration, Want } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  const TAG: string = 'EntryFormAbility';
-  const DOMAIN_NUMBER: number = 0xFF00;
+    const TAG: string = 'EntryFormAbility';
+    const DOMAIN_NUMBER: number = 0xFF00;
 
-  export default class EntryFormAbility extends FormExtensionAbility {
-    onAddForm(want: Want): formBindingData.FormBindingData {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
-      hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
-      let formData: Record<string, string> = { };
-      return formBindingData.createFormBindingData(formData);
-    }
-
-    onCastToNormalForm(formId: string): void {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
-    }
-
-    onUpdateForm(formId: string): void {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-      // ...
-    }
-
-    onChangeFormVisibility(newStatus: Record<string, number>): void {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
-    }
-
-    onFormEvent(formId: string, message: string): void {
-      hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
-      class FormDataClass {
-        title: string = 'Title Update.'; // 和卡片布局中对应
-        detail: string = 'Description update success.'; // 和卡片布局中对应
+    export default class EntryFormAbility extends FormExtensionAbility {
+      onAddForm(want: Want): formBindingData.FormBindingData {
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
+        hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
+        let formData: Record<string, string> = { };
+        return formBindingData.createFormBindingData(formData);
       }
 
-      let formData = new FormDataClass();
-      let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-      formProvider.updateForm(formId, formInfo).then(() => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
-      }).catch((error: BusinessError) => {
-        hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
-      });
-    }
+      onCastToNormalForm(formId: string): void {
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
+      }
 
-    onRemoveForm(formId: string): void {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
-    }
+      onUpdateForm(formId: string): void {
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+        // ...
+      }
 
-    onConfigurationUpdate(config: Configuration) {
-      hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
-    }
+      onChangeFormVisibility(newStatus: Record<string, number>): void {
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
+      }
 
-    onAcquireFormState(want: Want): formInfo.FormState {
-      return formInfo.FormState.READY;
+      onFormEvent(formId: string, message: string): void {
+        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
+        class FormDataClass {
+          title: string = 'Title Update.'; // 和卡片布局中对应
+          detail: string = 'Description update success.'; // 和卡片布局中对应
+        }
+
+        let formData = new FormDataClass();
+        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+        formProvider.updateForm(formId, formInfo).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        });
+      }
+
+      onRemoveForm(formId: string): void {
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+      }
+
+      onConfigurationUpdate(config: Configuration) {
+        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
+      }
+
+      onAcquireFormState(want: Want): formInfo.FormState {
+        return formInfo.FormState.READY;
+      }
     }
-  }
-  ```
+    ```
 
 4. 资源文件如下。
-  ```ts
-  // entry/src/main/resources/zh_CN/element/string.json
-  {
-    "string": [
-      {
-        "name": "module_desc",
-        "value": "module description"
-      },
-      {
-        "name": "EntryAbility_desc",
-        "value": "description"
-      },
-      {
-        "name": "EntryAbility_label",
-        "value": "label"
-      },
-      {
-        "name": "EntryFormAbility_desc",
-        "value": "form_description"
-      },
-      {
-        "name": "EntryFormAbility_label",
-        "value": "form_label"
-      },
-      {
-        "name": "updatebymessage_desc",
-        "value": "This is a service widget."
-      },
-      {
-        "name": "updatebymessage_display_name",
-        "value": "widget"
-      },
-      {
-        "name": "default_title",
-        "value": "Title default"
-      },
-      {
-        "name": "DescriptionDefault",
-        "value": "Description default"
-      },
-      {
-        "name": "update",
-        "value": "刷新"
-      }
-    ]
-  }
-  ```
+    ```ts
+    // entry/src/main/resources/zh_CN/element/string.json
+    {
+      "string": [
+        {
+          "name": "module_desc",
+          "value": "module description"
+        },
+        {
+          "name": "EntryAbility_desc",
+          "value": "description"
+        },
+        {
+          "name": "EntryAbility_label",
+          "value": "label"
+        },
+        {
+          "name": "EntryFormAbility_desc",
+          "value": "form_description"
+        },
+        {
+          "name": "EntryFormAbility_label",
+          "value": "form_label"
+        },
+        {
+          "name": "updatebymessage_desc",
+          "value": "This is a service widget."
+        },
+        {
+          "name": "updatebymessage_display_name",
+          "value": "widget"
+        },
+        {
+          "name": "default_title",
+          "value": "Title default"
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default"
+        },
+        {
+          "name": "update",
+          "value": "刷新"
+        }
+      ]
+    }
+    ```
 ### 运行结果
 ![WidgetPrinciple](figures/主动刷新结果.gif)
 <!--Del-->
