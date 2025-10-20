@@ -246,15 +246,7 @@ deviceTypes示例：
 
 该标签是一个profile文件资源，用于指定描述页面信息的配置文件。
 
-
-```json
-{
-  "module": {
-    // ...
-    "pages": "$profile:main_pages", // 通过profile下的资源文件配置
-  }
-}
-```
+<!-- @[module_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
 在开发视图的resources/base/profile下面定义配置文件main_pages.json，其中文件名"main_pages"可自定义，需要和pages标签指定的信息对应。配置文件中列举了当前应用组件中的页面信息，包含页面的路由信息和显示窗口相关的配置。
 
@@ -1270,7 +1262,7 @@ fileContextMenu标签示例
     // [StartExclude module_appEnvironments]
     // [StartExclude module_systemTheme]
 	// ···
-    "fileContextMenu": "$profile:menu",
+    "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义配置文件menu.json
 	// ···
     // [EndExclude module_appEnvironments]
     // [EndExclude module_abilities_metadata]
@@ -1400,7 +1392,7 @@ systemTheme标签示例：
     // [StartExclude module_abilities_metadata]
     // [StartExclude module_appEnvironments]
 	// ···
-    "systemTheme": "$profile:theme_config", // 通过profile下的资源文件配置
+    "systemTheme": "$profile:theme_config", // 资源配置，指向profile下面定义配置文件theme_config.json
     // [EndExclude module_metadata]
     // [EndExclude module_all]
     // [EndExclude module_fileContextMenu]
