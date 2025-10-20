@@ -30,6 +30,7 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 - 为了高性能渲染，使用DataChangeListener对象的onDataChange方法更新UI时，需要生成不同于原来的键值来触发组件刷新。
 - LazyForEach和[\@Reusable装饰器](../state-management/arkts-reusable.md)一起使用能触发节点复用。使用方法：将@Reusable装饰在LazyForEach列表的组件上，见[列表滚动配合LazyForEach使用](../state-management/arkts-reusable.md#列表滚动配合lazyforeach使用)。
 - LazyForEach和[\@ReusableV2装饰器](../state-management/arkts-new-reusableV2.md)一起使用能触发节点复用。详见@ReusableV2装饰器指南文档中的[在LazyForEach组件中使用](../state-management/arkts-new-reusableV2.md#在lazyforeach组件中使用)。
+- LazyForEach的子节点在离开可视区域和预加载区域时，不会立即被析构或回收，LazyForEach会在空闲时析构或回收这些节点。
 
 ## 基本用法
 
@@ -59,6 +60,8 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 
 使用LazyForEach时，开发者需要提供数据源、键值生成函数和组件创建函数。**开发者需保证键值生成函数为每项数据生成不同的键值。**</br>
 在LazyForEach首次渲染时，会根据上述键值生成规则为数据源的每个数组项生成唯一键值并创建相应的组件。
+
+对于预加载区域内的节点，若创建耗时较长，框架会分帧执行创建任务。
 
 ```ts
 /** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
@@ -1297,7 +1300,7 @@ struct MyComponent {
           item.message += '00';
           this.data.reloadData();
         })
-      }, (item: StringData, index: number) => item.message)
+      }, (item: StringData, index: number) => item.message) // 修改message属性会导致键值变化
     }.cachedCount(5)
   }
 }
@@ -1306,7 +1309,7 @@ struct MyComponent {
 **图15**  LazyForEach仅改变文字但是图片闪烁问题  
 ![LazyForEach-Image-Flush](figures/LazyForEach-Image-Flush.gif)
 
-单击`ListItem`子组件时，只改变了数据项的`message`属性，但`LazyForEach`的刷新机制会导致整个`ListItem`被重建。由于`Image`组件异步刷新，视觉上图片会闪烁。解决方法是使用`@ObjectLink`和`@Observed`单独刷新子组件`Text`。
+单击`ListItem`子组件时，只改变了数据项的`message`属性，但因为键值发生变化，导致整个`ListItem`被重建。由于`Image`组件异步刷新，视觉上图片会闪烁。解决方法是保持键值不变，并使用`@ObjectLink`和`@Observed`单独刷新子组件`Text`。
 
 修复代码如下。
 
@@ -1363,7 +1366,7 @@ struct MyComponent {
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: StringData, index: number) => index.toString())
+      }, (item: StringData, index: number) => index.toString()) // 键值不受message属性影响
     }.cachedCount(5)
   }
 }
