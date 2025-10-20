@@ -1,4 +1,10 @@
 # \@AnimatableExtend Decorator: Defining Animatable Properties
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @yangfan229-->
+<!--Tester: @lxl007-->
+<!--Adviser: @zhang_yixin13-->
 
 The @AnimatableExtend decorator enables animation capabilities for normally non-animatable component properties. During animation execution, frame-by-frame callbacks are executed to change the values of non-animatable properties to allow them to achieve animation effects. Additionally, you can implement frame-by-frame layout effects by changing the values of animatable properties in the per-frame callback function.
 

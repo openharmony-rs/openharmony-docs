@@ -4753,6 +4753,20 @@
 
 **起始版本**：20
 
+## ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+允许系统应用将播放音频注入到录制音频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：22
+
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
 允许系统应用或系统服务调用内核接口进行代码解密。
@@ -5122,3 +5136,17 @@
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Car
 
 **起始版本**：21
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+允许应用截取屏幕图像，包括隐私窗口。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：13

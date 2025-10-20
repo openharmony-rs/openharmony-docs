@@ -1,4 +1,10 @@
 # @ohos.telephony.esim (eSIM Management) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @yangyannanyangyannan-->
+<!--Designer: @ghxbob-->
+<!--Tester: @weitiantian-->
+<!--Adviser: @zhang_yixin13-->
 
 The **esim** module provides APIs for eSIM management and eSIM services.
 
@@ -55,8 +61,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-let eid: string = eSIM.getEid(0);
-console.log(`the EID is:` + eid);
+try {
+    let eid: string = eSIM.getEid(1);
+    console.info(`the EID is:` + eid);
+} catch (err) {
+    console.err(`getEid, promise: err->${JSON.stringfy(err)}`)
+}
 ```
 
 ## eSIM.getOsuStatus<sup>18+</sup>
@@ -102,9 +112,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getOsuStatus(0).then(() => {
-    console.log(`getOsuStatus invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.getOsuStatus(1).then(() => {
+    console.info(`getOsuStatus invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getOsuStatus, promise: err->${JSON.stringify(err)}`);
 });
 ```
@@ -152,9 +162,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.startOsu(0).then(() => {
-    console.log(`startOsu invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.startOsu(1).then(() => {
+    console.info(`startOsu invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`startOsu, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -216,9 +226,9 @@ let profile: eSIM.DownloadableProfile = {
   }]
 };
 
-eSIM.getDownloadableProfileMetadata(0, 0, profile, true).then((data: eSIM.GetDownloadableProfileMetadataResult) => {
-    console.log(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDownloadableProfileMetadataResult) => {
+    console.info(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: err->${JSON.stringify(err)}`);
 });
 ```
@@ -269,9 +279,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getDownloadableProfiles(0, 0, true).then((data: eSIM.GetDownloadableProfilesResult) => {
-    console.log(`getDownloadableProfiles, GetDownloadableProfilesResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfilesResult) => {
+    console.info(`getDownloadableProfiles, GetDownloadableProfilesResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getDownloadableProfiles, GetDownloadableProfilesResult: err->${JSON.stringify(err)}`);
 });
 ```
@@ -340,9 +350,9 @@ let configuration: eSIM.DownloadConfiguration = {
   isPprAllowed: true,
 };
 
-eSIM.downloadProfile(0, 0, profile, configuration).then((data: eSIM.DownloadProfileResult) => {
-    console.log(`downloadProfile, DownloadProfileResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.downloadProfile(1, 0, profile, configuration).then((data: eSIM.DownloadProfileResult) => {
+    console.info(`downloadProfile, DownloadProfileResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`downloadProfile, DownloadProfileResult: err->${JSON.stringify(err)}`);
 });
 ```
@@ -390,9 +400,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getEuiccProfileInfoList(0).then((data: eSIM.GetEuiccProfileInfoListResult) => {
-    console.log(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getEuiccProfileInfoList(1).then((data: eSIM.GetEuiccProfileInfoListResult) => {
+    console.info(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: err->${JSON.stringify(err)}`);
 });
 ```
@@ -440,9 +450,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getEuiccInfo(0).then((data: eSIM.EuiccInfo) => {
-    console.log(`getEuiccInfo, EuiccInfo: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getEuiccInfo(1).then((data: eSIM.EuiccInfo) => {
+    console.info(`getEuiccInfo, EuiccInfo: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getEuiccInfo, EuiccInfo: err->${JSON.stringify(err)}`);
 });
 ```
@@ -491,9 +501,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.deleteProfile(0, testId).then(() => {
-    console.log(`deleteProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.deleteProfile(1, 'testId').then(() => {
+    console.info(`deleteProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`deleteProfile, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -545,9 +555,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.switchToProfile(0, 0, testId, true).then(() => {
-    console.log(`switchToProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.switchToProfile(1, 0, 'testId', true).then(() => {
+    console.info(`switchToProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`switchToProfile, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -597,9 +607,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.setProfileNickname(0, testId, testName).then(() => {
-    console.log(`setProfileNickname invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.setProfileNickname(1, 'testId', 'testName').then(() => {
+    console.info(`setProfileNickname invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`setProfileNickname, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -648,9 +658,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.resetMemory(0).then(() => {
-    console.log(`resetMemory invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.resetMemory(1).then(() => {
+    console.info(`resetMemory invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`resetMemory, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -698,9 +708,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.reserveProfilesForFactoryRestore(0).then(() => {
-    console.log(`reserveProfilesForFactoryRestore invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.reserveProfilesForFactoryRestore(1).then(() => {
+    console.info(`reserveProfilesForFactoryRestore invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`reserveProfilesForFactoryRestore, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -749,9 +759,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.setDefaultSmdpAddress(0, testAddress).then(() => {
-    console.log(`setDefaultSmdpAddress invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.setDefaultSmdpAddress(1, 'testAddress').then(() => {
+    console.info(`setDefaultSmdpAddress invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`setDefaultSmdpAddress, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -799,9 +809,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getDefaultSmdpAddress(0).then((data: string) => {
-    console.log(`getDefaultSmdpAddress, result: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getDefaultSmdpAddress(1).then((data: string) => {
+    console.info(`getDefaultSmdpAddress, result: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getDefaultSmdpAddress, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
@@ -851,26 +861,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).then((data: string) => {
-    console.log(`cancelSession, result: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+let transactionId = '';
+eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_REJECTION)
+  .then((data: eSIM.ResultCode) => {
+    console.info(`cancelSession, result: data->${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError<void>) => {
     console.error(`cancelSession execution failed: err->${JSON.stringify(err)}`);
-});
+  });
 ```
-
-## AccessRule<sup>18+</sup>
-
-Defines access rules.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Telephony.CoreService.Esim
-
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| certificateHashHexStr | string  |  Yes | Hex string of the certificate hash.|
-| packageName           | string  |  Yes | Package name.|
-| accessType            | number  |  Yes | Rule type.|
 
 ## GetDownloadableProfileMetadataResult<sup>18+</sup>
 
@@ -880,17 +879,17 @@ Obtains the metadata of the downloadable profile.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| downloadableProfile | DownloadableProfile  |  Yes | Downloadable profile.  |
-| pprType             | number               |  Yes | Profile policy rule type.|
-| pprFlag             | boolean              |  Yes | Whether the profile has a policy rule. The value **true** indicates that the the profile has a policy rule, and the value **false** indicates the opposite.|
-| iccid               | string               |  Yes | Profile ICCID.    |
-| serviceProviderName | string               |  Yes | Service provider name.|
-| profileName         | string               |  Yes | Profile name.|
-| profileClass        | ProfileClass         |  Yes | Profile class.  |
-| solvableErrors      | SolvableErrors       |  Yes | Solvable errors.|
-| responseResult      | ResultCode           |  Yes | Operation result code.  |
+| Name| Type                                       | Read-Only| Optional| Description|
+| ----- |-------------------------------------------|---| ---- | -----|
+| downloadableProfile | [DownloadableProfile](./js-apis-esim.md#downloadableprofile18) | No| No| Downloadable profile.  |
+| pprType             | number                     | No| No| Profile policy rule type.|
+| pprFlag             | boolean                    | No| No| Whether the profile has a policy rule. The value **true** indicates that the the profile has a policy rule, and the value **false** indicates the opposite.|
+| iccid               | string                     | No| No| Profile ICCID.   |
+| serviceProviderName | string                     | No| No| Service provider name.|
+| profileName         | string                     | No| No| Profile name.|
+| profileClass        | [ProfileClass](#profileclass18)        | No| No| Profile class. |
+| solvableErrors      | [SolvableErrors](#solvableerrors18)      | No| No| Solvable errors.|
+| responseResult      | [ResultCode](#resultcode18)         | No| No| Operation result code. |
 
 ## GetDownloadableProfilesResult<sup>18+</sup>
 
@@ -900,10 +899,10 @@ Obtains the list of default downloadable profiles.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| responseResult       | ResultCode                   |  Yes | Promise used to return the operation result.    |
-| downloadableProfiles | Array\<DownloadableProfile>  |  Yes | Downloadable file array.|
+| Name| Type                                               | Read-Only| Optional| Description|
+| ----- |---------------------------------------------------|---| ----- | -----|
+| responseResult       | [ResultCode](#resultcode18)                   | No| No| Promise used to return the operation result.    |
+| downloadableProfiles | Array\<[DownloadableProfile](./js-apis-esim.md#downloadableprofile18)\> | No| No| Downloadable file array.|
 
 ## DownloadProfileResult<sup>18+</sup>
 
@@ -913,11 +912,11 @@ Defines the profile download result.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| responseResult | ResultCode     |  Yes | Operation result code.|
-| solvableErrors | SolvableErrors |  Yes | Solvable errors.|
-| cardId         | number         |  Yes | Card ID.  |
+| Name| Type                                 | Read-Only| Optional| Description|
+| ----- |-------------------------------------|----|---| -----|
+| responseResult | [ResultCode](#resultcode18)         | No | No| Operation result code.|
+| solvableErrors | [SolvableErrors](#solvableerrors18) | No | No| Solvable errors.|
+| cardId         | number                | No | No| Card ID.|
 
 ## GetEuiccProfileInfoListResult<sup>18+</sup>
 
@@ -927,11 +926,11 @@ Obtains the profile information list.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| responseResult  |ResultCode            |  Yes | Promise used to return the operation result.   |
-| profiles        | Array\<EuiccProfile> |  Yes | Profile array.     |
-| isRemovable     | boolean              |  Yes | Whether the eUICC is removable. The value **true** indicates that the eUICC is removable, and the value **false** indicates the opposite.|
+| Name| Type                                    | Read-Only| Optional| Description  |
+| ----- |----------------------------------------|---| ---- |------|
+| responseResult  | [ResultCode](#resultcode18)            | No| No| Promise used to return the operation result.   |
+| profiles        | Array\<[EuiccProfile](#euiccprofile18)\> | No| No| Profile array.    |
+| isRemovable     | boolean                      | No| No| Whether the eUICC is removable. The value **true** indicates that the eUICC is removable, and the value **false** indicates the opposite.|
 
 ## OperatorId<sup>18+</sup>
 
@@ -941,12 +940,12 @@ Obtains information about the eUICC chip or device.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| mcc  | string |  Yes | Mobile country code (MCC).|
-| mnc  | string |  Yes | Network code.    |
-| gid1 | string |  Yes | Group ID level 1.  |
-| gid2 | string |  Yes | Group ID level 2.  |
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ----- |---| ----- | -----|
+| mcc  | string | No| No| Mobile country code (MCC).|
+| mnc  | string | No| No| Network code.   |
+| gid1 | string | No| No| Group ID level 1. |
+| gid2 | string | No| No| Group ID level 2. |
 
 ## EuiccProfile<sup>18+</sup>
 
@@ -956,17 +955,17 @@ Profile information.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| iccid               | string             |  Yes | Profile ICCID.|
-| nickName            | string             |  Yes | Profile nickname.|
-| serviceProviderName | string             |  Yes | Service provider name.|
-| profileName         | string             |  Yes | Profile name.  |
-| state               | ProfileState       |  Yes | Profile status.|
-| profileClass        | ProfileClass       |  Yes | Profile class.    |
-| operatorId          | OperatorId         |  Yes | Operation ID of the profile.|
-| policyRules         | PolicyRules        |  Yes | Profile policy rules.  |
-| accessRules         | Array\<AccessRule> |  Yes | Profile access rules.  |
+| Name| Type                                                   | Read-Only| Optional| Description|
+| ----- |-------------------------------------------------------|---|---- |  -----|
+| iccid               | string                                                | No| No| Profile ICCID.|
+| nickName            | string                                                | No| No| Profile nickname.|
+| serviceProviderName | string                                                | No| No| Service provider name.|
+| profileName         | string                                                | No| No| Profile name.  |
+| state               | [ProfileState](#profilestate18)                       | No| No| Profile status.|
+| profileClass        | [ProfileClass](#profileclass18)                       | No| No| Profile class.    |
+| operatorId          | [OperatorId](#operatorid18)                           | No| No| Operation ID of the profile.|
+| policyRules         | [PolicyRules](#policyrules18)                         | No| No| Profile policy rules.  |
+| accessRules         | Array\<[AccessRule](./js-apis-esim.md#accessrule20)\> | No| No| Profile access rules.  |
 
 ## EuiccInfo<sup>18+</sup>
 
@@ -976,9 +975,9 @@ Defines the eUICC information.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-| osVersion | string |  Yes | OS version.|
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ----- |----|----| -----|
+| osVersion | string | No | No | OS version.|
 
 ## ResetOption<sup>18+</sup>
 
@@ -1137,8 +1136,8 @@ Defines the download configuration.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
-| Name| Type| Mandatory| Description|
-| ----- | ----- | ----- | -----|
-|switchAfterDownload | boolean | Yes| Whether to enable the profile after successful download. The value **true** means to enable the default profile, and the value **false** means the opposite.|
-|forceDisableProfile | boolean | Yes| Whether to forcibly deactivate the current profile during profile switching.<br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed.<br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained.|
-|isPprAllowed        | boolean | Yes| Whether user authorization is obtained to implement the profile policy rule. The value **true** indicates that user authorization is obtained, and the value **false** indicates the opposite.|
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ----- |----| ----- | -----|
+|switchAfterDownload | boolean | No | No| Whether to enable the profile after successful download. The value **true** means to enable the default profile, and the value **false** means the opposite.|
+|forceDisableProfile | boolean | No | No| Whether to forcibly deactivate the current profile during profile switching.<br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed.<br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained.|
+|isPprAllowed        | boolean | No | No| Whether user authorization is obtained to implement the profile policy rule. The value **true** indicates that user authorization is obtained, and the value **false** indicates the opposite.|

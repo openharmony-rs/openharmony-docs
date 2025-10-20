@@ -26,7 +26,9 @@
 
 ## AvoidAreaType<sup>7+</sup>
 
-窗口内容需要规避区域的类型枚举。
+窗口内容的避让区域的类型枚举。
+
+窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照AvoidAreaType对应的[AvoidArea](arkts-apis-window-i.md#avoidarea7)做窗口内容避让。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -35,9 +37,9 @@
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
 | TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | 表示刘海屏区域。                                                              |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示手势区域。当前，各设备均无此类型避让区域。                                    |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示软键盘区域。                                                              |
+| TYPE_CUTOUT                      | 1    | 表示挖孔区域。                                                              |
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。                                    |
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。                                                              |
 | TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End-->                             |
 
 ## Orientation<sup>9+</sup>
@@ -234,6 +236,18 @@
 | SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。 |
 | FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
 | PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 |
+
+## OcclusionState<sup>22+</sup>
+
+窗口可见性状态枚举。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称   | 值 | 说明                   |
+| ------ | ---- | --------------------- |
+| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他非透明窗口遮挡）。|
+| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他非透明窗口遮挡）。|
+| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他非透明窗口遮挡，或窗口最小化，或窗口隐藏）。|
 
 ## WindowStageEventType<sup>9+</sup>
 

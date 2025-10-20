@@ -20,6 +20,8 @@ Defines a set of animation APIs of ArkUI on the native side.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+**Sample**: <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->
+
 ## Summary
 
 ### Structs

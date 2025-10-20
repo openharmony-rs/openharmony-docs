@@ -134,7 +134,7 @@ Wearable设备上默认字体大小为18fp。
 
 textAlign(value: TextAlign)
 
-设置文本在搜索框中的对齐方式。目前支持的对齐方式有：Start、Center、End。
+设置文本在搜索框中的对齐方式。目前支持的对齐方式有：TextAlign.Start、TextAlign.Center、TextAlign.End。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -349,6 +349,43 @@ enterKeyType(value: EnterKeyType)
 | 参数名 | 类型                                             | 必填 | 说明                                               |
 | ------ | ------------------------------------------------ | ---- | -------------------------------------------------- |
 | value  | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype枚举说明) | 是   | 输入法回车键类型。<br/>默认值：EnterKeyType.Search |
+
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
+
+### selectedDataDetectorConfig<sup>22+</sup>
+
+selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
+
+设置选中文本的识别配置，可配置识别类型。
+
+需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。相关示例可以参考[示例7设置文本识别](ts-basic-components-text.md#示例7设置文本识别)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
 
 ### lineHeight<sup>12+</sup>
 
@@ -1074,7 +1111,7 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 ## SearchController
 
-Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 ### 导入对象
 ```ts
@@ -1574,7 +1611,7 @@ struct SearchExample {
 
 ### 示例10（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#onpreparemenu20)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```ts
 // xxx.ets
@@ -2078,3 +2115,69 @@ struct SearchExample {
 ```
 
 ![searchEnableAutoSpacing](figures/searchEnableAutoSpacing.png)
+
+### 示例22（设置placeholder富文本样式）
+
+从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SearchExample {
+  styledString: MutableStyledString =
+    new MutableStyledString("输入框富文本：文本",
+      [
+        {
+          start: 0,
+          length: 7,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({
+            fontColor: Color.Orange,
+            fontSize: LengthMetrics.fp(24)
+          })
+        },
+        {
+          start: 7,
+          length: 4,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({
+            fontColor: Color.Gray,
+            fontSize: LengthMetrics.fp(20),
+            strokeWidth: LengthMetrics.px(-5),
+            strokeColor: Color.Black,
+          })
+        },
+        {
+          start: 0,
+          length: 1,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: new ParagraphStyle({
+            textVerticalAlign: TextVerticalAlign.CENTER
+          })
+        }
+      ]);
+  controller: SearchController = new SearchController();
+
+  aboutToAppear() {
+    this.controller.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Text("Search placeholder富文本")
+          .fontSize(8)
+        Search({
+          controller: this.controller
+        })
+          .textFont({ size: 24 })
+          .margin(10)
+      }
+      .width('100%')
+    }
+  }
+}
+```
+![searchPlaceholder](figures/searchPlaceholder.jpg)

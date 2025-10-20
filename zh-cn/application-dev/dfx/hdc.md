@@ -119,7 +119,7 @@ hdc -t connect-key shell echo "Hello world"
 | [-s](#远程连接场景) | 可选参数，指定客户端连接服务器时，服务进程的网络监听参数，格式为IP:port。 |
 | [-p](#快速执行命令) | 可选参数，绕过对服务进程的查询步骤，用于快速执行客户端命令。 |
 | [-m](#前台启动服务) | 可选参数，使用前台启动模式启动服务进程。 |
-| [-e](#创建正向端口转发任务) | 可选参数，指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。<br/>**说明**：从API version 20开始，支持该接口。|
+| [-e](#创建正向端口转发任务) | 可选参数，指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。<br/>使用-e参数指定监听地址时，如果监听地址不是本地回环地址（如127.0.0.1），需注意访问安全问题。<br/>**说明**：从API version 20开始，支持该接口。|
 
 ### 命令列表
 
@@ -632,7 +632,7 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 安装应用文件，命令格式如下：
 
 ```shell
-hdc install [-r|-s] src
+hdc install [-r|-s|-cwd path] src
 ```
 
 **参数**：
@@ -642,6 +642,7 @@ hdc install [-r|-s] src
 | src | 应用安装包的文件名。 |
 | -r | 替换已存在的应用（.hap）。 |
 | -s | 安装一个共享包（.hsp）。 |
+| -cwd path | 修改工作目录。<br>用于在应用安装时，切换src到指定path。例如，初始安装应用为test.hap，所在目录为/data，实际安装应用文件路径为/data/test.hap；如果使用-cwd "/user/"，实际安装应用文件路径为/user/test.hap。 |
 
 **返回信息**：
 
@@ -701,7 +702,7 @@ AppMod finish
 命令格式如下：
 
 ```shell
-hdc file send [-a|-sync|-z|-m|-b bundlename] SOURCE DEST
+hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 ```
 
 **参数**：
@@ -714,6 +715,7 @@ hdc file send [-a|-sync|-z|-m|-b bundlename] SOURCE DEST
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
+| -cwd path | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始发送文件为test，所在目录为/data，实际发送文件路径为/data/test；如果使用-cwd "/user/"，实际发送文件路径为/user/test。 |
 | -b | 3.1.0e版本新增参数（低版本使用会提示[Fail]Unknown file option: -b），用于指定可调试应用包名。<br/>使用方法可参考[通过命令往应用沙箱目录中发送文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
 | bundlename | 指定可调试应用包名。 |
 
@@ -734,7 +736,7 @@ $ hdc file send D:\dest\相机 /mnt/data/100/media_fuse/Photo/ # 媒体库操作
 FileTransfer finish, Size:xxx, File...
 
 $ hdc file send D:\dest\新建目录 /mnt/data/100/media_fuse/Photo/相机/ # 媒体库操作，不支持创建目录
-[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/相机//新建目录
+[Fail][E005005] Error create directory: ..., path:/mnt/data/100/media_fuse/Photo/相机//新建目录
 ```
 
 ### 接收远端设备文件至本地
@@ -742,7 +744,7 @@ $ hdc file send D:\dest\新建目录 /mnt/data/100/media_fuse/Photo/相机/ # �
 命令格式如下：
 
 ```shell
-hdc file recv [-a|-sync|-z|-m|-b bundlename] DEST SOURCE
+hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 ```
 
 **参数**：
@@ -755,6 +757,7 @@ hdc file recv [-a|-sync|-z|-m|-b bundlename] DEST SOURCE
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
+| -cwd path | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始接收文件目录为/data/，如果使用-cwd "/user/"，实际接收文件目录为/user/。 |
 | -b | 3.1.0e版本新增参数，用于传输指定的可调试应用进程应用数据目录下的文件。<br/>使用方法可参考[从沙箱目录中下载文件到本地计算机](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
 | bundlename | 可调试应用进程的包名。 |
 

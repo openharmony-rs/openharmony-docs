@@ -1415,3 +1415,22 @@ The user uses a custom theme (for example, a non-official theme set in the theme
 **Solution**<br>
 1. Check whether the current theme is a custom theme.<br>
 2. Switch to an official theme and retry the API call.<!--DelEnd-->
+
+<!--Del-->
+## 17700351 Invalid File Type
+**Error Message**<br>
+Invalid fileTypes.
+
+**Description**<br>
+The file type configuration is invalid.
+
+**Possible Causes**<br>
+The file type array is invalid. For example:
+1. The array length exceeds 1024.
+2. The array contains empty items.
+3. The length of an individual item exceeds 512 characters.
+4. The array contains wildcard characters or [general.object](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype).
+
+**Solution**<br>
+Verify the file type array configuration. Refer to the parameter specifications and check for the issues listed above.
+<!--DelEnd-->

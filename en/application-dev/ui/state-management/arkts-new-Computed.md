@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-When the same computation logic is repeatedly bound in the UI, the \@Computed decorator helps prevent redundant calculations. A computed property is evaluated only once when its dependent state variables change, addressing performance issues caused by repeated calculations in the UI. Example:
+When the same compute logic is repeatedly bound in the UI, the \@Computed decorator helps prevent redundant calculations. A computed property is evaluated only once when its dependent state variables change, addressing performance issues caused by repeated calculations in the UI. Example:
 
 ```ts
 @Computed
@@ -78,7 +78,7 @@ struct Page {
 
   @Computed
   get fullName() {
-    console.info(`fullName`);
+    console.info('fullName');
     // Avoid assignment logic in @Computed calculations, as @Computed is essentially a getter accessor for optimizing repeated computations.
     // In this example, fullNameRequestCount only represents the number of @Computed recalculations, not the number of times fullName is accessed.
     this.fullNameRequestCount++;
@@ -112,14 +112,14 @@ struct Page {
 
   @Computed
   get fullName1() {
-    console.info(`fullName1`);
+    console.info('fullName1');
     this.lastName += 'a'; // Incorrect usage. The properties involved in computation cannot be changed.
     return this.firstName + ' ' + this.lastName;
   }
 
   @Computed
   get fullName2() {
-    console.info(`fullName2`);
+    console.info('fullName2');
     this.firstName += 'a'; // Incorrect usage. The properties involved in computation cannot be changed.
     return this.firstName + ' ' + this.lastName;
   }
@@ -159,7 +159,7 @@ struct Page {
       return this.count * 2;
     }
   
-    // Custom setters for @Computed decorated properties have no effect and cause compile-time errors.
+    // Custom setters for @Computed decorated properties have no effect and will cause a compile-time error.
     set double(newValue : number) {
       this.count = newValue / 2;
     }
@@ -168,7 +168,7 @@ struct Page {
       Scroll() {
         Column({ space: 3 }) {
           Text(`${this.count}`)
-          // Incorrect usage. @Computed decorated properties are read-only and cannot be used together with two-way binding.
+          // Incorrect usage. @Computed decorated properties are read-only and cannot be used together with two-way binding. A compile-time error will occur.
           Child({ double: this.double!! })
         }
       }
@@ -276,7 +276,7 @@ struct Index {
 ### \@Monitor Can Listen for the Changes of the \@Computed Decorated Properties
 The following example shows how to convert **celsius** to **fahrenheit** and **kelvin** :
 - Clicking **-** decrements **celsius**, updates **fahrenheit**, then updates **kelvin**, which triggers **onKelvinMonitor**.
-- Clicking **+** increments **celsius**, updates **fahrenheit**, then updates **kelvin**, which triggers **onKelvinMonitor**.
+- Clicking **+** increments **celsius++**, updates **fahrenheit**, then updates **kelvin**, which triggers **onKelvinMonitor**.
 
 ```ts
 @Entry
@@ -307,7 +307,7 @@ struct MyView {
             this.celsius--;
           })
 
-        Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(50)
+        Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(40)
 
         Button('+')
           .onClick(() => {
@@ -315,8 +315,8 @@ struct MyView {
           })
       }
 
-      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(50)
-      Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(50)
+      Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(40)
+      Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(40)
     }
     .width('100%')
   }
@@ -357,19 +357,22 @@ struct Index {
 
   build() {
     Column() {
-      Text(`Shopping List: `).fontSize(30)
+      Text(`Shopping List: `)
+        .fontSize(30)
       ForEach(this.shoppingBasket, (item: Article) => {
         Row() {
           Text(`unitPrice: ${item.unitPrice}`)
-          Button('-').onClick(() => {
-            if (item.quantity > 0) {
-              item.quantity--;
-            }
-          })
+          Button('-')
+            .onClick(() => {
+              if (item.quantity > 0) {
+                item.quantity--;
+              }
+            })
           Text(`quantity: ${item.quantity}`)
-          Button('+').onClick(() => {
-            item.quantity++;
-          })
+          Button('+')
+            .onClick(() => {
+              item.quantity++;
+            })
         }
 
         Divider()
@@ -386,8 +389,10 @@ struct Child {
 
   build() {
     Row() {
-      Text(`Total: ${this.total} `).fontSize(30)
-      Text(`Discount: ${this.qualifiesForDiscount} `).fontSize(30)
+      Text(`Total: ${this.total} `)
+        .fontSize(30)
+      Text(`Discount: ${this.qualifiesForDiscount} `)
+        .fontSize(30)
     }
   }
 }

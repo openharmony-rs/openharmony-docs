@@ -36,6 +36,7 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
    import { userStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义回调，函数接受年龄群组检测结果。
 
@@ -44,6 +45,7 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
      console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
    };
    ```
+   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅年龄群组检测功能。
 
@@ -56,6 +58,7 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅年龄群组检测功能。
 
@@ -68,3 +71,4 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->

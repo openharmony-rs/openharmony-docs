@@ -222,7 +222,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 > **NOTE**
 > 
-> fadingEdge is implemented by setting the [overlay](ts-universal-attributes-overlay.md#overlay-1) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: BlendMode.SRC_OVER and BlendApplyType.OFFSCREEN). When fadingEdge takes effect, the overlay() and blendMode() attributes of the original component are overwritten.
+> fadingEdge is implemented by setting the [overlay](ts-universal-attributes-overlay.md#overlay) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: BlendMode.SRC_OVER and BlendApplyType.OFFSCREEN). When fadingEdge takes effect, the overlay() and blendMode() attributes of the original component are overwritten.
 >
 > When fadingEdge is enabled, you are advised not to set background-related attributes for the component with the fadingEdge attribute. Otherwise, the fade effect will be affected.
 >

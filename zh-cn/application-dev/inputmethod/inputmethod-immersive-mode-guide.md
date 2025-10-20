@@ -24,7 +24,6 @@
    ```
 
 2. 输入法应用[订阅编辑框属性变化事件](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10)，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。
-
    ```ts
    import { inputMethodEngine } from '@kit.IMEKit';
 
@@ -58,6 +57,7 @@
        console.error(`Failed to setImmersiveMode, code: ${error.code}, message: ${error.message}`);
      }
    }).catch((err: BusinessError) => {
-     console.log(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
    });
    ```
+

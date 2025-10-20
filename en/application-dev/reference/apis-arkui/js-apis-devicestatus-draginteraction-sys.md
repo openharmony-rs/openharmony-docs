@@ -1,5 +1,12 @@
 # @ohos.deviceStatus.dragInteraction (Drag Interaction) (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Msdp-->
+<!--Owner: @wuliangdong-->
+<!--Designer: @butterls-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
+
 The **dragInteraction** module provides the APIs to enable and disable listening for dragging status changes.
 
 > **NOTE**
@@ -24,9 +31,9 @@ Enumerates dragging states.
 
 | Name                 | Value  | Description          |
 | --------------------- | ---- | -------------- |
-| MSG_DRAG_STATE_START  | 1    | Dragging starts. |
-| MSG_DRAG_STATE_STOP   | 2    | Dragging is ended. |
-| MSG_DRAG_STATE_CANCEL | 3    | Dragging is canceled. |
+| MSG_DRAG_STATE_START  | 1    | Dragging starts.|
+| MSG_DRAG_STATE_STOP   | 2    | Dragging is ended.|
+| MSG_DRAG_STATE_CANCEL | 3    | Dragging is canceled.|
 
 ## Summary<sup>11+</sup>
 
@@ -36,10 +43,10 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name      | Type    | Mandatory | Description              |
+| Name      | Type    | Mandatory| Description              |
 | ---------- | -------- | ---- | ------------------ |
 | dataType   | string   | Yes  | Type of the dragged object.    |
-| dataSize   | number   | Yes  | Data length of the dragged object. |
+| dataSize   | number   | Yes  | Data length of the dragged object.|
 
 ## dragInteraction.on('drag')
 
@@ -53,16 +60,16 @@ Enables listening for dragging status changes.
 
 **Parameters**
 
-| Name  | Type                              | Mandatory | Description                            |
+| Name  | Type                              | Mandatory| Description                            |
 | -------- | ---------------------------------- | ---- | -------------------------------- |
 | type     | string                             | Yes  | Event type. This field has a fixed value of **drag**.   |
-| callback | Callback\<[DragState](#dragstate)> | Yes  | Callback used to return the dragging status. |
+| callback | Callback\<[DragState](#dragstate)> | Yes  | Callback used to return the dragging status.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -91,16 +98,16 @@ Disables listening for dragging status changes.
 
 **Parameters**
 
-| Name  | Type                              | Mandatory | Description                                                                  |
+| Name  | Type                              | Mandatory| Description                                                                  |
 | -------- | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
 | type     | string                             | Yes  | Event type. This field has a fixed value of **drag**.                                         |
-| callback | Callback\<[DragState](#dragstate)> | No  | Callback to be unregistered. If this parameter is not specified, all callbacks registered by the current application will be unregistered. |
+| callback | Callback\<[DragState](#dragstate)> | No  | Callback to be unregistered. If this parameter is not specified, all callbacks registered by the current application will be unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -149,13 +156,13 @@ Obtains the data summary of all dragged objects.
 
 | Type                         | Description                                                |
 | ----------------------------- | ---------------------------------------------------- |
-| Array\<[Summary](#summary11)> | Data summary of all dragged objects, including their type and data length. |
+| Array\<[Summary](#summary11)> | Data summary of all dragged objects, including their type and data length.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message         |
+| ID| Error Message         |
 | -------- | ----------------- |
 | 202 | Not system application. |
 

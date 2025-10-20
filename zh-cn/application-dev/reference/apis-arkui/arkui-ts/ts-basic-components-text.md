@@ -723,6 +723,43 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | config | [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11对象说明) | 是   | 文本识别配置。|
 
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
+
+### selectedDataDetectorConfig<sup>22+</sup>
+
+selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
+
+设置选中文本的识别配置，可配置识别类型。
+
+需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
+
 ### bindSelectionMenu<sup>11+</sup>
 
 bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
@@ -1436,6 +1473,8 @@ maxLineHeight(value: LengthMetrics | undefined)
 
 设置文本的最大行高，设置值不大于0时，最大行高不受限制。
 
+maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
+
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -1914,7 +1953,7 @@ struct TextExample6 {
 
 ### 示例7（设置文本识别）
 
-从API version 11开始，该示例通过[enableDataDetector](#enabledatadetector11)、[dataDetectorConfig](#datadetectorconfig11)接口实现了文本识别的功能。
+从API version 11开始，该示例通过[enableDataDetector](#enabledatadetector11)、[dataDetectorConfig](#datadetectorconfig11)接口实现了文本识别的功能。从API version 22开始，该示例通过[selectedDataDetectorConfig](#selecteddatadetectorconfig22)接口实现了对选中文本进行识别的功能。
 
 ```ts
 // xxx.ets
@@ -1950,6 +1989,34 @@ struct TextExample7 {
           .borderWidth(1)
           .padding(10)
           .width('100%')
+        Text(
+          '电话号码：' + this.phoneNumber + '\n' +
+            '时间：' + this.datetime
+        )
+          .fontSize(16)
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
+          .textAlign(TextAlign.Center)
+          .borderWidth(1)
+          .padding(10)
+          .width('100%')
+        TextInput({ text: 'TextInput这个是输入框内容' })
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
+        TextArea({ text: 'TextArea这个是输入框内容' })
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
+        Search()
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
       }
       .width('100%')
       // 使用parallelGesture中的TapGesture替代onClick属性，达到非冒泡事件类似冒泡
@@ -2258,7 +2325,7 @@ struct TextExample11 {
 
 ### 示例12（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#onpreparemenu20)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```ts
 // xxx.ets

@@ -795,7 +795,9 @@ Injects a key event.
 
 This API does not take effect if the event injection permission is not granted.
 
-Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Since API version 22, if the **KEY_ACTION_DOWN** event of a modifier key (KEYCODE_META_LEFT, KEYCODE_META_RIGHT, KEYCODE_CTRL_LEFT, KEYCODE_CTRL_RIGHT,
+KEYCODE_ALT_LEFT, KEYCODE_ALT_RIGHT, KEYCODE_SHIFT_LEFT, KEYCODE_SHIFT_RIGHT, KEYCODE_CAPS_LOCK, KEYCODE_SCROLL_LOCK, or KEYCODE_NUM_LOCK) is injected,
+ensure that the **KEY_ACTION_UP** event is injected in a timely manner to avoid extra-long press of the key.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -806,7 +808,7 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_inp
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object, which is created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent). You can call [OH_Input_SetKeyEventKeyCode](#oh_input_setkeyeventkeycode) and [OH_Input_SetKeyEventAction](#oh_input_setkeyeventaction) to set the key value and key event type of the key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 **Return value**
 
@@ -3867,7 +3869,7 @@ You are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) t
 
 | Type| Description|
 | -- | -- |
-| int32_t | Operation result.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
+| int32_t | Operation result.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
 
 ### OH_Input_SetMouseEventGlobalX()
 ```

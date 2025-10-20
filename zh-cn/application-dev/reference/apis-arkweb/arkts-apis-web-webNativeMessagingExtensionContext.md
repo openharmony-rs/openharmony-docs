@@ -53,21 +53,28 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                 |
 | -------- | ----------------------------------------|
-| 202      | The application is not system-app, can not use system-api. |
-| 401      | Parameter error. Possible causes: 1. Mandatory Parameters are left unspecified. 2. Incorrect parameter types.      |
+| 201      | The application does not have permission to call the interface. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires.  |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled. |
 | 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. |
-| 16000050 | Internal error. |
-| 16200001 | The caller has been released. |
-
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000055 | Installation-free timed out. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
 
 **示例:**
 
@@ -116,7 +123,7 @@ terminateSelf(): Promise&lt;void&gt;
 | ------- | ------------------------- |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.      |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例:**
 
@@ -164,7 +171,9 @@ stopNativeConnection(connectionId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |---------|----------|
-| 201 | 应用无权调用此接口。 |
+| 201 | The application does not have permission to call the interface. |
+| 16000011 | The context does not exist.      |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例:**
 

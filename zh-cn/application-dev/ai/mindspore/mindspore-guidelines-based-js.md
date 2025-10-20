@@ -52,144 +52,6 @@
 
 如果开发者有其他图像分类的预训练模型，请参考[MindSpore Lite 模型转换](mindspore-lite-converter-guidelines.md)介绍，将原始模型转换成.ms格式。
 
-### 编写图像输入和预处理代码
-
-1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
-
-2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
-
-   ```ts
-   // Index.ets
-   import { photoAccessHelper } from '@kit.MediaLibraryKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { image } from '@kit.ImageKit';
-   import { fileIo } from '@kit.CoreFileKit';
-   
-   @Entry
-   @Component
-   struct Index {
-     @State modelName: string = 'mobilenetv2.ms';
-     @State modelInputHeight: number = 224;
-     @State modelInputWidth: number = 224;
-     @State uris: Array<string> = [];
-   
-     build() {
-       Row() {
-         Column() {
-           Button() {
-             Text('photo')
-               .fontSize(30)
-               .fontWeight(FontWeight.Bold)
-           }
-           .type(ButtonType.Capsule)
-           .margin({
-             top: 20
-           })
-           .backgroundColor('#0D9FFB')
-           .width('40%')
-           .height('5%')
-           .onClick(() => {
-             let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
-             if (resMgr === null || resMgr === undefined){
-               console.error('MS_LITE_ERR: get resMgr failed.');
-               return
-             }
-             resMgr?.getRawFileContent(this.modelName).then(modelBuffer => {
-               // 获取相册图片
-               // 1.创建图片文件选择实例
-               let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-   
-               // 2.设置选择媒体文件类型为IMAGE，设置选择媒体文件的最大数目
-               photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-               photoSelectOptions.maxSelectNumber = 1;
-   
-               // 3.创建图库选择器实例，调用select()接口拉起图库界面进行文件选择。文件选择成功后，返回photoSelectResult结果集。
-               let photoPicker = new photoAccessHelper.PhotoViewPicker();
-               photoPicker.select(photoSelectOptions, async (
-                 err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-                 if (err) {
-                   console.error('MS_LITE_ERR: PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
-                   return;
-                 }
-                 console.info('MS_LITE_LOG: PhotoViewPicker.select successfully, ' +
-                   'photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
-                 this.uris = photoSelectResult.photoUris;
-                 console.info('MS_LITE_LOG: uri: ' + this.uris);
-   
-                 // 预处理图片数据
-                 try {
-                   // 1.使用fileIo.openSync接口，通过uri打开这个文件得到fd
-                   let file = fileIo.openSync(this.uris[0], fileIo.OpenMode.READ_ONLY);
-                   console.info('MS_LITE_LOG: file fd: ' + file.fd);
-   
-                   // 2.通过fd使用fileIo.readSync接口读取这个文件内的数据
-                   let inputBuffer = new ArrayBuffer(4096000);
-                   let readLen = fileIo.readSync(file.fd, inputBuffer);
-                   console.info('MS_LITE_LOG: readSync data to file succeed and inputBuffer size is:' + readLen);
-   
-                   // 3.通过PixelMap预处理
-                   let imageSource = image.createImageSource(file.fd);
-                   if (imageSource == undefined) {
-                     console.error('MS_LITE_ERR: createImageSource failed.')
-                     return
-                   }
-                   imageSource.createPixelMap().then((pixelMap) => {
-                     pixelMap.getImageInfo().then((info) => {
-                       console.info('MS_LITE_LOG: info.width = ' + info.size.width);
-                       console.info('MS_LITE_LOG: info.height = ' + info.size.height);
-                       // 4.根据模型输入的尺寸，将图片裁剪为对应的size，获取图片buffer数据readBuffer
-                       pixelMap.scale(256.0 / info.size.width, 256.0 / info.size.height).then(() => {
-                         pixelMap.crop(
-                           { x: 16, y: 16, size: { height: this.modelInputHeight, width: this.modelInputWidth } }
-                         ).then(async () => {
-                           let info = await pixelMap.getImageInfo();
-                           console.info('MS_LITE_LOG: crop info.width = ' + info.size.width);
-                           console.info('MS_LITE_LOG: crop info.height = ' + info.size.height);
-                           // 需要创建的像素buffer大小
-                           let readBuffer = new ArrayBuffer(this.modelInputHeight * this.modelInputWidth * 4);
-                           await pixelMap.readPixelsToBuffer(readBuffer);
-                           console.info('MS_LITE_LOG: Succeeded in reading image pixel data, buffer: ' +
-                           readBuffer.byteLength);
-                           // 处理readBuffer，转换成float32格式，并进行标准化处理
-                           const imageArr = new Uint8Array(
-                             readBuffer.slice(0, this.modelInputHeight * this.modelInputWidth * 4));
-                           console.info('MS_LITE_LOG: imageArr length: ' + imageArr.length);
-                           let means = [0.485, 0.456, 0.406];
-                           let stds = [0.229, 0.224, 0.225];
-                           let float32View = new Float32Array(this.modelInputHeight * this.modelInputWidth * 3);
-                           let index = 0;
-                           for (let i = 0; i < imageArr.length; i++) {
-                             if ((i + 1) % 4 == 0) {
-                               float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
-                               float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
-                               float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
-                               index += 3;
-                             }
-                           }
-                           console.info('MS_LITE_LOG: float32View length: ' + float32View.length);
-                           let printStr = 'float32View data:';
-                           for (let i = 0; i < 20; i++) {
-                             printStr += ' ' + float32View[i];
-                           }
-                           console.info('MS_LITE_LOG: float32View data: ' + printStr);
-                         })
-                       })
-                     })
-                   })
-                 } catch (err) {
-                   console.error('MS_LITE_LOG: uri: open file fd failed.' + err);
-                 }
-               })
-             })
-           })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
-
 ### 编写推理代码
 
 1. 工程默认设备定义的能力集可能不包含MindSporeLite。需在DevEco Studio工程的entry/src/main目录下，手动创建syscap.json文件，内容如下：
@@ -216,10 +78,13 @@
    2. 加载模型。本文从内存加载模型。
    3. 加载数据。模型执行之前需要先获取输入，再向输入的张量中填充数据。
    4. 执行推理。使用predict接口进行模型推理。
+   
+   <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) -->
 
-   ```ts
+   ```typescript
    // model.ets
    import { mindSporeLite } from '@kit.MindSporeLiteKit'
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    
    export default async function modelPredict(
      modelBuffer: ArrayBuffer, inputsBuffer: ArrayBuffer[]): Promise<mindSporeLite.MSTensor[]> {
@@ -245,104 +110,225 @@
      }
    
      // 4.执行推理。
-     console.info('=========MS_LITE_LOG: MS_LITE predict start=====');
+     hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s', `=========MS_LITE_LOG: MS_LITE predict start=====`);
      let modelOutputs: mindSporeLite.MSTensor[] = await msLiteModel.predict(modelInputs);
      return modelOutputs;
    }
    ```
 
-### 进行推理并输出结果
+### 实现图形输入和预处理，并执行推理
 
-加载模型文件，调用推理函数，对相册选择的图片进行推理，并对推理结果进行处理。
+1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
 
-```ts
-// Index.ets
-import modelPredict from './model';
-import { BusinessError } from '@kit.BasicServicesKit';
+2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 
-@Entry
-@Component
-struct Index {
-  @State modelName: string = 'mobilenetv2.ms';
-  @State modelInputHeight: number = 224;
-  @State modelInputWidth: number = 224;
-  @State max: number = 0;
-  @State maxIndex: number = 0;
-  @State maxArray: Array<number> = [];
-  @State maxIndexArray: Array<number> = [];
+3. 加载模型文件，调用推理函数，对相册选择的图片进行推理，并对推理结果进行处理。
 
-  build() {
-    Row() {
-      Column() {
-        Button() {
-          Text('photo')
-            .fontSize(30)
-            .fontWeight(FontWeight.Bold)
-        }
-        .type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
-        .backgroundColor('#0D9FFB')
-        .width('40%')
-        .height('5%')
-        .onClick(() => {
-          let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
-          if (resMgr === null || resMgr === undefined){
-            console.error('MS_LITE_ERR: get resMgr failed.');
-            return
-          }
-          resMgr?.getRawFileContent(this.modelName).then(modelBuffer => {
-            // 图像输入和预处理。
-            // 完成图像输入和预处理后的buffer数据保存在float32View，具体可见上文图像输入和预处理中float32View的定义和处理。
-            let inputs: ArrayBuffer[] = [float32View.buffer];
-            // predict
-            modelPredict(modelBuffer.buffer.slice(0), inputs).then(outputs => {
-              console.info('=========MS_LITE_LOG: MS_LITE predict success=====');
-              // 结果打印
-              for (let i = 0; i < outputs.length; i++) {
-                let out = new Float32Array(outputs[i].getData());
-                let printStr = outputs[i].name + ':';
-                for (let j = 0; j < out.length; j++) {
-                  printStr += out[j].toString() + ',';
-                }
-                console.info('MS_LITE_LOG: ' + printStr);
-                // 取分类占比的最大值
-                this.max = 0;
-                this.maxIndex = 0;
-                this.maxArray = [];
-                this.maxIndexArray = [];
-                let newArray = out.filter(value => value !== this.max)
-                for (let n = 0; n < 5; n++) {
-                  this.max = out[0];
-                  this.maxIndex = 0;
-                  for (let m = 0; m < newArray.length; m++) {
-                    if (newArray[m] > this.max) {
-                      this.max = newArray[m];
-                      this.maxIndex = m;
-                    }
-                  }
-                  this.maxArray.push(Math.round(this.max * 10000))
-                  this.maxIndexArray.push(this.maxIndex)
-                  // filter数组过滤函数
-                  newArray = newArray.filter(value => value !== this.max)
-                }
-                console.info('MS_LITE_LOG: max:' + this.maxArray);
-                console.info('MS_LITE_LOG: maxIndex:' + this.maxIndexArray);
-              }
-              console.info('=========MS_LITE_LOG END=========');
-            })
-          }).catch((error: BusinessError) => {
-            console.error("getRawFileContent promise error is " + error);
-          });
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ```typescript
+   // Index.ets
+   import modelPredict from './model';
+   import { photoAccessHelper } from '@kit.MediaLibraryKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { image } from '@kit.ImageKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const PERMISSIONS: Permissions[] = ['ohos.permission.READ_IMAGEVIDEO'];
+   
+   @Entry
+   @Component
+   struct Index {
+     @State modelPredict: string = 'MindSporeLite ArkTS Demo';
+     @State modelName: string = 'mobilenetv2.ms';
+     @State modelInputHeight: number = 224;
+     @State modelInputWidth: number = 224;
+     @State uris: Array<string> = [];
+     @State max: number = 0;
+     @State maxIndex: number = 0;
+     @State maxArray: Array<number> = [];
+     @State maxIndexArray: Array<number> = [];
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.modelPredict)
+           Button() {
+             Text('photo')
+               .fontSize(30)
+               .fontWeight(FontWeight.Bold)
+           }
+           .onClick(() => {
+             let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
+             if (resMgr === null || resMgr === undefined){
+               hilog.error(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s', `MS_LITE_ERR: get resMgr failed.`);
+               return
+             }
+             resMgr?.getRawFileContent(this.modelName).then(modelBuffer => {
+   
+               // 获取相册图片
+               // 1.创建图片文件选择实例
+               let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+   
+               // 2.设置选择媒体文件类型为IMAGE，设置选择媒体文件的最大数目
+               photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE; // 过滤选择媒体文件类型为IMAGE
+               photoSelectOptions.maxSelectNumber = 1; // 选择媒体文件的最大数目
+   
+               // 3.创建图库选择器实例，调用select()接口拉起图库界面进行文件选择。文件选择成功后，返回photoSelectResult结果集。
+               let photoPicker = new photoAccessHelper.PhotoViewPicker();
+               photoPicker.select(photoSelectOptions, async (
+                 err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+                 if (err) {
+                   hilog.error(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                     `MS_LITE_ERR: PhotoViewPicker.select failed with err: ${JSON.stringify(err)}`);
+                   return;
+                 }
+                 hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                   `MS_LITE_LOG: PhotoViewPicker.select successfully, uri: ${JSON.stringify(photoSelectResult)}`);
+                 this.uris = photoSelectResult.photoUris;
+                 hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s', `MS_LITE_LOG: uri: ${this.uris}`);
+   
+                 // 预处理图片数据
+                 try {
+                   // 1.使用fileIo.openSync接口，通过uri打开这个文件得到fd
+                   let file = fileIo.openSync(this.uris[0], fileIo.OpenMode.READ_ONLY);
+                   hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s', `MS_LITE_LOG: file fd: ${file.fd}`);
+   
+                   // 2.通过fd使用fileIo.readSync接口读取这个文件内的数据
+                   let inputBuffer = new ArrayBuffer(4096000);
+                   let readLen = fileIo.readSync(file.fd, inputBuffer);
+                   hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                     `MS_LITE_LOG: readSync data to file succeed and inputBuffer size is: ${readLen}`);
+   
+                   // 3.通过PixelMap预处理
+                   let imageSource = image.createImageSource(file.fd);
+                   if (imageSource === undefined) {
+                     hilog.error(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s', `MS_LITE_ERR: createImageSource failed.`);
+                     return
+                   }
+                   imageSource.createPixelMap().then((pixelMap) => {
+                     pixelMap.getImageInfo().then((info) => {
+                       hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                         `MS_LITE_LOG: info.width = ${info.size.width}`);
+                       hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                         `MS_LITE_LOG: info.height = ${info.size.height}`);
+   
+                       // 4.根据模型输入的尺寸，将图片裁剪为对应的size，获取图片buffer数据readBuffer
+                       pixelMap.scale(256.0 / info.size.width, 256.0 / info.size.height).then(() => {
+                         pixelMap.crop(
+                           { x: 16, y: 16, size: { height: this.modelInputHeight, width: this.modelInputWidth } }
+                         ).then(async () => {
+                           let info = await pixelMap.getImageInfo();
+                           hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_LOG: crop info.width = ${info.size.width}`);
+                           hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_LOG: crop info.height = ${info.size.height}`);
+   
+                           // 需要创建的像素buffer大小
+                           let readBuffer = new ArrayBuffer(this.modelInputHeight * this.modelInputWidth * 4);
+                           await pixelMap.readPixelsToBuffer(readBuffer);
+                           hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_LOG: Succeeded in reading image pixel data, buffer: ${readBuffer.byteLength}`);
+                           // 处理readBuffer，转换成float32格式，并进行标准化处理
+                           const imageArr = new Uint8Array(
+                             readBuffer.slice(0, this.modelInputHeight * this.modelInputWidth * 4));
+                           hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_LOG: imageArr length: ${imageArr.length}`);
+   
+                           let means = [0.485, 0.456, 0.406];
+                           let stds = [0.229, 0.224, 0.225];
+                           let float32View = new Float32Array(this.modelInputHeight * this.modelInputWidth * 3);
+                           let index = 0;
+                           for (let i = 0; i < imageArr.length; i++) {
+                             if ((i + 1) % 4 === 0) {
+                               float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
+                               float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
+                               float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
+                               index += 3;
+                             }
+                           }
+                           hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_LOG: float32View length: ${float32View.length}`);
+                           let printStr = 'float32View data:';
+                           for (let i = 0; i < 20; i++) {
+                             printStr += ' ' + float32View[i];
+                           }
+                           hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_LOG: float32View data: ${printStr}`);
+   
+                           let inputs: ArrayBuffer[] = [float32View.buffer];
+   
+                           // predict
+                           modelPredict(modelBuffer.buffer.slice(0), inputs).then(outputs => {
+                             hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                               `=========MS_LITE_LOG: MS_LITE predict success=====`);
+   
+                             // 结果打印
+                             for (let i = 0; i < outputs.length; i++) {
+                               let out = new Float32Array(outputs[i].getData());
+   
+                               let printStr = outputs[i].name + ':';
+                               for (let j = 0; j < out.length; j++) {
+                                 printStr += out[j].toString() + ',';
+                               }
+                               hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s', `MS_LITE_LOG: ${printStr}`);
+   
+                               // 取分类占比的最大值top5
+                               this.max = 0;
+                               this.maxIndex = 0;
+                               this.maxArray = [];
+                               this.maxIndexArray = [];
+                               let newArray = out.filter(value => value !== this.max)
+                               for (let n = 0; n < 5; n++) {
+                                 this.max = out[0];
+                                 this.maxIndex = 0;
+                                 // 取最大值
+                                 for (let m = 0; m < newArray.length; m++) {
+                                   if (newArray[m] > this.max) {
+                                     this.max = newArray[m];
+                                     this.maxIndex = m;
+                                   }
+                                 }
+                                 this.maxArray.push(Math.round(this.max * 10000));
+                                 this.maxIndexArray.push(this.maxIndex);
+                                 // filter数组过滤函数
+                                 newArray = newArray.filter(value => value !== this.max)
+                               }
+                               hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                                 `MS_LITE_LOG: max: ${this.maxArray}`);
+                               hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                                 `MS_LITE_LOG: maxIndex: ${this.maxIndexArray}`);
+                             }
+                             hilog.info(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                               `=========MS_LITE_LOG END=========`);
+                           })
+                         }).catch((error: BusinessError) => {
+                           hilog.error(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                             `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
+                         })
+                       })
+                     })
+                   })
+   
+                   // 5.关闭文件
+                   fileIo.closeSync(file);
+                 } catch (err) {
+                   hilog.error(0xFF00, 'MindSporeLiteArkTSDemo', '%{public}s',
+                     `MS_LITE_ERR: uri: open file fd failed. ${err}`);
+                 }
+               })
+             })
+           })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   
+   ```
 
 ### 调测验证
 
@@ -386,6 +372,6 @@ struct Index {
 
 针对使用MindSpore Lite进行图像分类应用的开发，有以下相关实例可供参考：
 
-- [基于ArkTS接口的MindSpore Lite应用开发（ArkTS）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ApplicationModels/MindSporeLiteArkTSDemo)
+- [基于ArkTS接口的MindSpore Lite应用开发（ArkTS）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo)
 
 <!--RP1--><!--RP1End-->

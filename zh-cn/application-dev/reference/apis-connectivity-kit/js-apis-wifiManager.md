@@ -130,7 +130,7 @@ scan(): void
 启动WLAN扫描，使用前先使能WLAN。
 
 > **说明：**
-> 从 API version 9开始支持，从API version 10开始废弃。替代接口仅向系统应用开放。
+> 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.startScan](#wifimanagerstartscan21)代替。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO、ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1302,13 +1302,14 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **示例：**
 ```ts
-  import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
-  wifiManager.getLinkedInfo().then(data => {
-      console.info("get wifi linked info: " + JSON.stringify(data));
-  }).catch((error) => {
-      console.error("get linked info error");
-  });
+wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
+    console.info("get wifi linked info: " + JSON.stringify(data));
+}).catch((error: Error) => {
+    console.error("get linked info error: ", error);
+});
+
 ```
 
 ## wifiManager.getLinkedInfoSync<sup>18+</sup>
@@ -3434,4 +3435,36 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   
   // Unregister event
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
+```
+
+## wifiManager.startScan<sup>21+</sup>
+
+startScan(): void
+
+启动WLAN扫描。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**示例：**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.startScan();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
 ```

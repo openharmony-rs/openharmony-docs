@@ -7,9 +7,9 @@
 <!--Adviser: @fang-jinxu-->
 
 在很多复杂应用工程中，C++代码工程是通过CMake等构建系统以命令行方式来编译构建的，接下来介绍如何把已有的CMake工程切换到OpenHarmony工具链中，从而使用命令行CMake构建该工程。
-
-
+<!--Del-->
 ## 下载NDK开发包
+<!--DelEnd-->
 <!--RP1-->
 1. 推荐使用OpenHarmony正式发布的SDK包。下载链接请从OpenHarmony正式发布版本的 **版本说明** 中获取。
 
@@ -19,7 +19,6 @@
 
 
 2. 从DevEco Studio的OpenHarmony SDK Manager中下载。
-<!--RP1End-->
 
 ## 解压NDK开发包
 
@@ -33,6 +32,7 @@ mac使用 SDK 包解压完成效果如下图所示：
 
 ![zh-cn_image_20-24-01-16-14-35](figures/zh-cn_image_20-24-01-16-14-35.png)
 
+<!--RP1End-->
 ### 配置环境变量
 如果只是在DevEco Studio中使用，跳过以下步骤：
 1. 将NDK自带的CMake编译工具添加到环境变量中。
@@ -180,7 +180,7 @@ int sum(int a, int b)
 
 **linux 和 mac 系统环境下**
 
-在工程目录下，创建build目录，用来放置CMake构建时产生的中间文件。注意: ohos-sdk是下载下来的SDK的根目录，开发者需要自行替换成实际的下载目录。
+在工程目录的模块目录下，创建build目录，用来放置CMake构建时产生的中间文件。注意: ohos-sdk是下载下来的SDK的根目录，开发者需要自行替换成实际的下载目录。
 
 1. 采用OHOS_STL=c++_shared动态链接c++库方式构建工程，如不指定，默认采用c++_shared；DOHOS_ARCH参数可根据系统架构来决定具体值，例如当DOHOS_ARCH=armeabi-v7a会编译32位动态库，而当DOHOS_ARCH=arm64-v8a会编译64位动态库。
 
@@ -212,7 +212,7 @@ int sum(int a, int b)
 
 ![zh-cn_image_20-24-01-16-14-57](figures/zh-cn_image_20-24-01-16-14-57.png)
 
-Step 1. 同样在工程目录下创建 build 文件夹并执行以下指令：
+Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入build目录并执行以下指令：
 ```
  F:\windows\native\build-tools\cmake\bin\cmake.exe -G "Ninja" -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE=F:\windows\native\build\cmake\ohos.toolchain.cmake ..
 ```

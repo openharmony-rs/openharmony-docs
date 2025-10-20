@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 ## How to Request
 
@@ -299,6 +300,18 @@ This permission is required if you want to obtain the MAC address of the peer de
 
 **Changelog**: The permission level is system_core in API versions 8 to 13, and is changed to system_basic since API version 14.
 
+## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
+
+Allows a carrier application to add eSIM configuration files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Since**: 13
+
+**Changelog**: The permission level is **normal** in API versions 13 and **system_basic** since API versions 14.
+
 ## ohos.permission.kernel.DISABLE_CODE_MEMORY_PROTECTION
 
 Allows an application to disable its runtime code integrity protection.
@@ -453,9 +466,9 @@ Allows an application to use the fraud message Picker to obtain SMS messages.
 
 ## ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-Allows an application to persist the virtual random address corresponding to the MAC address of the peer Bluetooth device.
+Allows an application to persist the virtual address corresponding to the MAC address of the peer Bluetooth device.
 
-With this permission, the application can persist the virtual random address of the peer Bluetooth device obtained via BLE scanning, BR scanning, or listening for connections. The persistent virtual random address can still be used even if Bluetooth is enabled or disabled, or the Bluetooth device is restarted.
+With this permission and the [access.addPersistentDeviceId](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessaddpersistentdeviceid16) method, the application can persist the virtual address of the peer Bluetooth device obtained via BLE scanning, BR scanning, or listening for connections. The persistent virtual address can still be used even if Bluetooth is enabled or disabled, or the Bluetooth device is restarted.
 
 <!--RP36--><!--RP36End-->
 
@@ -517,6 +530,20 @@ Allows an application to call the JITFort API to update the content in MAP_FORT.
 
 **Since**: 16
 
+## ohos.permission.GET_ETHERNET_LOCAL_MAC
+
+Allows an application to obtain the current MAC address of the Ethernet.
+
+<!--RP51--><!--RP51End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Since**: 13
+
+**Changelog**: This permission is available only to MDM applications in API version 13. From API version 14, this permission is available to normal enterprise applications. From API version 16, this permission is available to normal applications on PCs/2-in-1 devices, and is available only to system applications on other devices.
+
 ## ohos.permission.kernel.DISABLE_GOTPLT_RO_PROTECTION
 
 Allows an application to disable the read-only protection on .got.plt.
@@ -555,6 +582,22 @@ This permission can be requested successfully only when:
 **Authorization mode**: system_grant
 
 **Extra data**: Yes. For details about the configuration method, see [UI-based Driver Development](../../device/driver/externaldevice-guidelines.md#application-signing).
+
+**Since**: 18
+
+## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
+
+Allows a peripheral extension driver to access the SCSI DDK APIs to implement development of SCSI extended peripheral drivers.
+
+The APIs can be used to develop the following types of peripheral extension drivers:
+Peripherals connected to the host via a USB bus and:
+
+1. InterfaceClass of the peripheral is Mass Storage (0x08) and InterfaceSubClass is SCSI Transparent Command Set (0x06).
+2. The peripheral can simulate a SCSI device in a way that is transparent to the operating system.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
 
 **Since**: 18
 
@@ -610,7 +653,7 @@ Allows an application to customize the icon and text of **SaveButton**.
 
 ## ohos.permission.GET_ABILITY_INFO
 
-Allows an application to obtain **Ability** information based on a URI or the file type.
+Allows an application to query **Ability** information based on the URI or **FileType**.
 
 <!--RP42--><!--RP42End-->
 
@@ -742,21 +785,45 @@ Allows an application to detect the network and obtain the TraceRoute informatio
 
 **Since**: 20
 
+## ohos.permission.READ_WHOLE_CALENDAR
+
+Allows an application to read all calendar information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Since**: 9
+
+**Changelog**: This permission is available only to system applications in API versions 9 to 19. From API version 20, it's also available to normal applications.
+
+## ohos.permission.WRITE_WHOLE_CALENDAR
+
+Allows an application to add, remove, or change all calendar events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Since**: 9
+
+**Changelog**: This permission is available only to system applications in API versions 9 to 19. From API version 20, it's also available to normal applications.
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
-Allows an application to set the trust list of target applications for system sharing.
+Allows an application to set the trustlist of target applications for system sharing.
 
 With this permission, the application can choose the target applications for system sharing.
 
 <!--RP53--><!--RP53End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Device**：Phone | PC/2in1 | Tablet
+**Device**: phones | PCs/2-in-1 devices | tablets
 
-**Since**：21
+**Since**: 21
 
 ## ohos.permission.HOOK_KEY_EVENT
 
@@ -770,7 +837,7 @@ With this permission, the application can integrate its custom key handling proc
 
 **Authorization mode**: manual_settings
 
-**Device**: PC/2in1 | Tablet
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 21
 
@@ -782,10 +849,24 @@ With this permission, the application can enable communication between browser e
 
 <!--RP54--><!--RP54End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Device**：PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
-**Since**：21
+**Since**: 21
+
+## ohos.permission.SUBSCRIBE_NOTIFICATION
+
+Allows an application to read notifications published by the system or installed applications.
+
+<!--RP55--><!--RP55End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Device**: phones | tablets
+
+**Since**: 22

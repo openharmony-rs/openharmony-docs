@@ -729,10 +729,10 @@ Callback<T,V = void> = (data: T) => V;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名   | 类型     | 描述             |
-| ----- | ------ | -------------- |
-| horizontal | number | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
-| vertical     | number | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
+| 名称      | 类型   | 只读 | 可选 | 说明       |
+| --------- | ------ | ---- | ---- | ---------- |
+| horizontal | number | 否 | 是 | 组件在竖直方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0  |
+| vertical     | number | 否 | 是 | 组件在水平方向的布局权重，设置大于0的数字时生效。 <br> 默认值：0 <br> 异常值：0 |
 
 ## Configuration
 
@@ -758,6 +758,10 @@ Callback<T,V = void> = (data: T) => V;
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false |
+| stateControllerRoleType<sup>22+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
+| stateControllerId<sup>22+</sup> | string | 否 | 是   | 指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
+| actionControllerRoleType<sup>22+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
+| actionControllerId<sup>22+</sup> | string | 否 | 是   |  指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 |
 
 ## ScrollBarMargin<sup>20+</sup>对象说明
 
@@ -771,6 +775,34 @@ Callback<T,V = void> = (data: T) => V;
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
 | start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条起始边距。<br/>默认值：0，单位：vp |
 | end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条末尾边距。<br/>默认值：0，单位：vp |
+
+## ResponsiveFillType<sup>22+</sup>
+
+type ResponsiveFillType = PresetFillType
+
+响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| [PresetFillType](../arkui-ts/ts-appendix-enums.md#presetfilltype22)                | 为不同响应式断点规格指定列数。                    |
+
+## ItemFillPolicy<sup>22+</sup>
+
+定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型 |只读|可选| 说明             |
+| ------ | ---- |------|------| ---------------- |
+| fillType     | [ResponsiveFillType](#responsivefilltype22) |否| 是   | 为不同的响应式断点指定列数。默认值为BREAKPOINT_DEFAULT。 |
 
 ## DirectionalEdgesT\<T><sup>12+</sup>
 

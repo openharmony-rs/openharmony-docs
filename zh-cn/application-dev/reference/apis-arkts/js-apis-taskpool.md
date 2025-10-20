@@ -2662,7 +2662,7 @@ taskpoolExecute();
 ```ts
 // 支持async函数
 @Concurrent
-async function delayExecute(): Promise<Object> {
+async function delayExecute(): Promise<Array<Object>> {
   let ret = await Promise.all<Object>([
     new Promise<Object>(resolve => setTimeout(resolve, 1000, "resolved"))
   ]);

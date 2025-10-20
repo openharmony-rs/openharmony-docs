@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -15,6 +16,10 @@
 **Error Message**
 
 Invalid Parameter. Error message: messageInfo.
+
+**Description**
+
+The input parameter is incorrect.
 
 **Possible Causes**
 
@@ -42,6 +47,10 @@ Check that the input parameters are set to valid values by referring to the [API
 
 TokenId does not exist.
 
+**Description**
+
+The specified token ID does not meet the requirements.
+
 **Possible Causes**
 
 1. The specified **tokenId** does not exist.
@@ -57,6 +66,10 @@ Check the input parameter and confirm that the **tokenId** is the identity of th
 **Error Message**
 
 Permission does not exist.
+
+**Description**
+
+The specified permission name does not meet requirements.
 
 **Possible Causes**
 
@@ -75,6 +88,10 @@ Check and correct input parameters. For details about the valid values, see [Per
 
 The API is not used in pair with others.
 
+**Description**
+
+The API is not used in pair with its counterpart.
+
 **Possible Causes**
 
 1. One of the listener APIs that must be used in pairs is repeatedly called.
@@ -92,6 +109,10 @@ The API is not used in pair with others.
 
 The number of listeners exceeds the limit.
 
+**Description**
+
+The number of listeners exceeds the upper limit.
+
 **Possible Causes**
 
 The number of listeners exceeds 200.
@@ -106,6 +127,10 @@ Release unused listeners in a timely manner.
 **Error Message**
 
 The specified application does not support the permissions granted or ungranted as specified.
+
+**Description**
+
+The specified application cannot be granted or revoked the specified permission.
 
 **Possible Causes**
 
@@ -124,6 +149,10 @@ The specified application does not support the permissions granted or ungranted 
 
 The service is abnormal.
 
+**Description**
+
+The system service is abnormal.
+
 **Possible Causes**
 
 1. The permission management service cannot start properly.
@@ -140,6 +169,10 @@ Try again later or restart the device.
 
 Out of memory.
 
+**Description**
+
+The memory allocation fails.
+
 **Possible Causes**
 
 The system memory is insufficient.
@@ -155,6 +188,10 @@ Try again later or restart the device.
 
 Common inner error.
 
+**Description**
+
+An internal service error occurs.
+
 **Possible Causes**
 
 An internal error occurs in the system service.
@@ -168,6 +205,10 @@ Analyze the fault log to identify the error.
 **Error Message**
 
 The request already exists.
+
+**Description**
+
+An unprocessed request exists.
 
 **Possible Causes**
 
@@ -184,6 +225,10 @@ Wait until the last request is processed.
 
 All permissions in the permission list have been granted.
 
+**Description**
+
+All input permissions have been granted.
+
 **Possible Causes**
 
 All requested permissions have been granted.
@@ -192,12 +237,15 @@ All requested permissions have been granted.
 
 No action is required. If this error code is returned, the permission has been granted and the permission settings dialog box will not be displayed.
 
-
 ## 12100012 Not All Permissions Are Rejected by the User
 
 **Error Message**
 
 The permission list contains the permission that has not been revoked by the user.
+
+**Description**
+
+Some input permissions have not been denied by the user.
 
 **Possible Causes**
 
@@ -207,12 +255,15 @@ The requested permissions include the permissions that are not rejected by the u
 
 Call **requestPermissionsFromUser** to request permissions from the user first.
 
-
 ## 12100013 Global Switch Enabled
 
 **Error Message**
 
 The specific global switch is already open.
+
+**Description**
+
+The global switch is enabled.
 
 **Possible Causes**
 
@@ -221,3 +272,23 @@ The global switch is already turned on.
 **Solution**
 
 No action is required. If this error code is returned, the global switch has been enabled and the dialog box for setting the global switch will not be displayed.
+
+## 12100014 Unexpected Permission
+
+**Error Message**
+
+Unexpected permission.
+
+**Description**
+
+The input permission does not meet the requirements.
+
+**Possible Causes**
+
+1. When the [permission setting dialog box is displayed again](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12), the permission of the manual_settings authorization mode is passed.
+2. During authorization or authorization cancellation, the permission of the non-user_grant or manual_settings authorization mode is passed.
+3. When the [permission setting dialog box is displayed again](js-apis-abilityAccessCtrl.md#openpermissiononsetting22), the permission of the non-manual_settings authorization mode is passed.
+
+**Solution**
+
+Check whether the input permission meets the requirements.

@@ -417,7 +417,7 @@
     <!--DelEnd-->
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
-  - 原子化服务<!--atomic-services-->
+  - AtomicService<!--atomic-services-->
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
     - [AtomicServiceSearch](arkui-ts/ohos-atomicservice-AtomicServiceSearch.md)
     - [AtomicServiceTabs](arkui-ts/ohos-atomicservice-AtomicServiceTabs.md)
@@ -676,6 +676,8 @@
     - [OH_PixelmapNative](capi-struct.md)
     - [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md)
     - [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)
+    - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
+    - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)
@@ -702,6 +704,11 @@
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
     - [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)
+    - [ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)
+    - [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)
+    - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
+    - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
+    - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [动画错误码](errorcode-animator.md)

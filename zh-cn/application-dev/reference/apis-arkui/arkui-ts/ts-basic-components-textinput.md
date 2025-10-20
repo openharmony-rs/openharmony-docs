@@ -330,7 +330,7 @@ textAlign(value: TextAlign)
 
 设置文本在输入框中的水平对齐方式。
 
-支持TextAlign.Start、TextAlign.Center和TextAlign.End。从API version 11开始，新增TextAlign.JUSTIFY选项。
+支持TextAlign.Start、TextAlign.Center和TextAlign.End。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
 
 可通过[align](ts-universal-attributes-location.md#align)属性控制文本段落在垂直方向上的位置。此组件中不可使用align属性控制文本段落在水平方向上的位置。
 
@@ -586,6 +586,43 @@ enableAutoFill(value: boolean)
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
+
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
+
+### selectedDataDetectorConfig<sup>22+</sup>
+
+selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
+
+设置选中文本的识别配置，可配置识别类型。
+
+需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。相关示例可以参考[示例7设置文本识别](ts-basic-components-text.md#示例7设置文本识别)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
 
 ### passwordRules<sup>11+</sup>
 
@@ -1588,7 +1625,7 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 ## TextInputController<sup>8+</sup>
 
-TextInput组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+TextInput组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2570,7 +2607,7 @@ struct TextInputExample {
 
 ### 示例14（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#onpreparemenu20)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```ts
 // xxx.ets
@@ -3065,6 +3102,8 @@ struct TextInputExample {
 从API version 22开始，该示例通过[showCounter](#showcounter11)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
 
 ```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
 // xxx.ets
 @Entry
 @Component
@@ -3094,3 +3133,68 @@ struct TextInputExample {
 ```
 
 ![TextInputShowCounterColor](figures/TextInputShowCounterColor.gif)
+
+### 示例23（设置placeholder富文本样式）
+
+从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextInputExample  {
+  styledString: MutableStyledString =
+    new MutableStyledString("输入框富文本：文本",
+      [
+        {
+          start: 0,
+          length: 7,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({
+            fontColor: Color.Orange,
+            fontSize: LengthMetrics.fp(24)
+          })
+        },
+        {
+          start: 7,
+          length: 4,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({
+            fontColor: Color.Gray,
+            fontSize: LengthMetrics.fp(20),
+            strokeWidth: LengthMetrics.px(-5),
+            strokeColor: Color.Black,
+          })
+        },
+        {
+          start: 0,
+          length: 1,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: new ParagraphStyle({
+            textVerticalAlign: TextVerticalAlign.CENTER
+          })
+        }
+      ]);
+  controllerInput: TextInputController = new TextInputController();
+
+  aboutToAppear() {
+    this.controllerInput.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Text("TextInput placeholder富文本")
+          .fontSize(8)
+        TextInput({
+          controller: this.controllerInput
+        })
+          .fontSize(24)
+          .margin(10)
+      }
+      .width('100%')
+    }
+  }
+}
+```
+![textInputPlaceholder](figures/textInputPlaceholder.jpg)

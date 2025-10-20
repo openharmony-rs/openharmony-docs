@@ -23,41 +23,56 @@
 ## 开发使用说明
 1. 创建方-集成态HSP-工程配置：配置工程级的build-profile.json5文件，将useNormalizedOHMUrl字段设置为true。
 
-    ```json
-    // created_party_project/build-profile.json5
-    {
-      "app": {
-        "products": [
-          {
-            "name": "default",
-            "signingConfig": "default",
-            "compatibleSdkVersion": "5.0.0(12)",
-            "runtimeOS": "HarmonyOS",
-            "buildOption": {
-              "strictMode": {
-                "useNormalizedOHMUrl": true
-              }
-            }
-            // ...
-          }
-        ]
-        // ...
-      }
-    }
-    ```
-2. 创建方-集成态HSP-模块配置：修改模块级构建配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)，将integratedHsp配置项设置为true，指定构建的HSP模块为集成态HSP。
+    <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5) -->
 
-    ```json
-    // created_party_project/library/build-profile.json5
-    {
-      "apiType": "stageMode",
-      "buildOption": {
-        "arkOptions": {
-          "integratedHsp": true
+``` JSON5
+{
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "5.1.1(19)",
+        "compatibleSdkVersion": "5.1.1(19)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+			// ···
+            "useNormalizedOHMUrl": true,
+          }
         }
       }
-    }
-    ```
+    ],
+	// ···
+  },
+// ···
+}
+```
+
+2. 创建方-集成态HSP-模块配置：修改模块级构建配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)，将integratedHsp配置项设置为true，指定构建的HSP模块为集成态HSP。
+
+    <!-- @[integrated_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/library/build-profile.json5) -->
+
+``` JSON5
+// library/build-profile.json5
+{
+  "apiType": "stageMode",
+// ···
+  "buildOptionSet": [
+    {
+	// ···
+      "arkOptions": {
+        "integratedHsp": true,
+		// ···
+      },
+    },
+  ],
+// ···
+}
+```
+
 
 3. 创建方-集成态HSP-打包配置（tgz包）。
 
@@ -73,33 +88,44 @@
 
 5. 使用方-工程依赖配置：在使用方主模块的oh-package.json5配置文件中添加依赖。
 
-    ```json
-    // user_project/entry/oh-package.json5
-      "dependencies": {
-        "hsp": "./libs/library-default.tgz"
-      }
-    ```
+    <!-- @[integrated_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/entry/oh-package.json5) -->
+
+``` JSON5
+  "dependencies": {
+    "library": "file:./libs/library-default.tgz"
+  },
+```
+
 
 6. 使用方-工程配置：在工程级的build-profile.json5文件中，将useNormalizedOHMUrl字段设置为true。
-    ```json
-    // user_project/build-profile.json5
-    {
-      "app": {
-        "products": [
-          {
-            "name": "default",
-            "signingConfig": "default",
-            "compatibleSdkVersion": "5.0.0(12)",
-            "runtimeOS": "HarmonyOS",
-            "buildOption": {
-              "strictMode": {
-                "useNormalizedOHMUrl": true
-              }
-            }
+
+    <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5) -->
+
+``` JSON5
+{
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "5.1.1(19)",
+        "compatibleSdkVersion": "5.1.1(19)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+			// ···
+            "useNormalizedOHMUrl": true,
           }
-        ]
+        }
       }
-    }
-    ```
+    ],
+	// ···
+  },
+// ···
+}
+```
+
     > **说明：** 
     > 安装和运行应用前，必须配置项目签名信息，详见[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。

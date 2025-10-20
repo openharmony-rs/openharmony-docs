@@ -1,4 +1,10 @@
 # Telephony Radio
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 
 ## Overview
@@ -11,19 +17,19 @@ Provides C APIs for the radio module.
 ## Summary
 
 
-### Files
+### File
 
 | Name| Description|
 | -------- | -------- |
-| [telephony_radio.h](telephony__radio_8h.md) | Defines C APIs for the SSL/TLS certificate chain verification module.<br>**File to include**: \<telephony\/core_service\/telephony_radio.h\>|
-| [telephony_radio_type.h](telephony__radio__type_8h.md) | Defines data structures for the C APIs of the SSL/TLS certificate chain verification module.<br>**File to include**: \<telephony\/core_service\/telephony_radio_type.h\>|
+| [telephony_radio.h](capi-telephony-radio-h.md) | Defines C APIs for the SSL/TLS certificate chain verification module.<br>**File to include**: \<telephony\/core_service\/telephony_radio.h\>|
+| [telephony_radio_type.h](capi-telephony-radio-type-h.md) | Defines data structures for the C APIs of the SSL/TLS certificate chain verification module.<br>**File to include**: \<telephony\/core_service\/telephony_radio_type.h\>|
 
 
 ### Structs
 
 | Name| Description|
 | -------- | -------- |
-| [Telephony_NetworkState](_telephony__network_state.md) | Network status structure.|
+| [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) | Network status structure.|
 
 ### Macros
 

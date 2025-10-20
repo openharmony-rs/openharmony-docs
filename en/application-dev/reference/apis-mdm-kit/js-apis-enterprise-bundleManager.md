@@ -1,4 +1,10 @@
 # @ohos.enterprise.bundleManager (Bundle Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **bundleManager** module provides APIs for bundle management, including adding, obtaining, and removing a list of bundles that are allowed to install.
 
@@ -26,13 +32,14 @@ Adds the applications that can be installed by the current or specified user.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.                                                |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: In API version 21 and later versions, [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) can be transferred. [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) is recommended. In API version 20 and earlier versions, only [appId](../../quick-start/common_problem_of_application.md#what-is-appid) can be transferred.|
 | accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -49,13 +56,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
@@ -76,13 +86,14 @@ Removes the applications that can be installed by the current or specified user.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.                                                |
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: Starting from API version 21, elements in the array support the use of both [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). Only the passed **appId** (or **appIdentifier**) will be removed, and the **appIdentifier** (or **appId**) of the same application will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.      |
 | accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -99,13 +110,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
@@ -126,6 +140,7 @@ Obtains the applications that can be installed by the current or specified user.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -138,7 +153,7 @@ Obtains the applications that can be installed by the current or specified user.
 
 | Type               | Description                          |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | Applications that can be installed.|
+| Array&lt;string&gt; | Array of applications that can be installed by the current user.|
 
 **Error codes**
 
@@ -154,11 +169,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -173,18 +190,20 @@ try {
 
 addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
 
-Adds the applications that cannot be installed by the current or specified user.
+Adds the applications that are not allowed to be installed by the current or specified user.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.                                                |
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: In API version 21 and later versions, [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) can be transferred. [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) is recommended. In API version 20 and earlier versions, only [appId](../../quick-start/common_problem_of_application.md#what-is-appid) can be transferred.|
 | accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -201,13 +220,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
@@ -228,12 +250,14 @@ Removes the applications that cannot be installed by the current or specified us
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.                                                |
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: Starting from API version 21, elements in the array support the use of both [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). Only the passed **appId** (or **appIdentifier**) will be removed, and the **appIdentifier** (or **appId**) of the same application will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.              |
 | accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -250,13 +274,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
@@ -277,6 +304,7 @@ Obtains the applications that cannot be installed by the current or specified us
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -289,7 +317,7 @@ Obtains the applications that cannot be installed by the current or specified us
 
 | Type               | Description                          |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | Applications that cannot be installed.|
+| Array&lt;string&gt; | Array of applications that cannot be installed by the current user.|
 
 **Error codes**
 
@@ -305,14 +333,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(wantTemp, 100);
   console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -324,19 +355,20 @@ try {
 
 addDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
 
-Adds the applications that cannot be uninstalled by the current or specified user.
+Adds the applications that are not allowed to be uninstalled by the current or specified user.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.                                                |
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: In API version 21 and later versions, [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) can be transferred. [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) is recommended. In API version 20 and earlier versions, only [appId](../../quick-start/common_problem_of_application.md#what-is-appid) can be transferred.|
 | accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -353,15 +385,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
+  // Replace parameters with actual values.
   bundleManager.addDisallowedUninstallBundlesSync(wantTemp, appIds, 100);
   console.info('Succeeded in adding disallowed uninstall bundles.');
 } catch (err) {
@@ -379,13 +415,14 @@ Removes the applications that cannot be uninstalled by the current or specified 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.                                                |
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: Starting from API version 21, elements in the array support the use of both [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). Only the passed **appId** (or **appIdentifier**) will be removed, and the **appIdentifier** (or **appId**) of the same application will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.                  |
 | accountId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -402,15 +439,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
+  // Replace parameters with actual values.
   bundleManager.removeDisallowedUninstallBundlesSync(wantTemp, appIds, 100);
   console.info('Succeeded in removing disallowed uninstall bundles.');
 } catch (err) {
@@ -422,12 +463,13 @@ try {
 
 getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
 
-Obtains the applications that cannot be uninstalled by the current or specified user.
+Obtains the bundles that cannot be uninstalled by the current or specified user.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -440,7 +482,7 @@ Obtains the applications that cannot be uninstalled by the current or specified 
 
 | Type               | Description                          |
 | ------------------- | ------------------------------ |
-| Array&lt;string&gt; | Applications that cannot be uninstalled by the user.|
+| Array&lt;string&gt; | Array of bundles that cannot be uninstalled by the user.|
 
 **Error codes**
 
@@ -456,14 +498,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let result: Array<String> = bundleManager.getDisallowedUninstallBundlesSync(wantTemp, 100);
   console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -481,13 +526,14 @@ Uninstalls an application of the current or specified user. The **isKeepData** p
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name    | Type                                                   | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                              |
-| bundleName | string                                                  | Yes  | Name of the bundle to uninstall.                                                      |
+| bundleName | string                                                  | Yes  | Bundle name of an application.                                                      |
 | userId     | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> - If **userId** is passed in, this API applies to the specified user.<br> - If **userId** is not passed in, this API applies to the current user.|
 | isKeepData | boolean                                                 | No  | Whether to retain the bundle data. The value **true** means to retain the bundle data; the value **false** means the opposite.             |
 
@@ -511,14 +557,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
+// Replace parameters with actual values.
 bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
   console.info('Succeeded in uninstalling bundles.');
 }).catch((err: BusinessError) => {
@@ -530,11 +579,13 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true).then(() => {
 
 install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam): Promise\<void>
 
-Installs specified applications. This API uses a promise to return the result.<br>The distribution type of the application can only be **enterprise_mdm** or **enterprise_normal**.
+Installs specified applications. This API uses a promise to return the result.<br>This API can be used to install only applications of the **enterprise_mdm** (MDM application) or **enterprise_normal** (common enterprise application) distribution type. You can call the [getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md) of an application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type.
 
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -565,14 +616,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Install the application for the current user.
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
 
 bundleManager.install(wantTemp, hapFilePaths).then(() => {
@@ -583,19 +637,23 @@ bundleManager.install(wantTemp, hapFilePaths).then(() => {
 ```
 
 ```ts
+import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Install the application for all users.
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
 const params: Record<string, string> = {
   'ohos.bms.param.enterpriseForAllUser': 'true'
 };
 let installParam: bundleManager.InstallParam = {
+  // Replace with actual values.
   userId: 100,
   installFlag: 0,
   parameters: params
@@ -616,6 +674,8 @@ Obtains the applications installed by a specified user on a device. This API use
 **Required permissions**: ohos.permission.ENTERPRISE_GET_ALL_BUNDLE_INFO
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -648,9 +708,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let accountId: number = 100;
 bundleManager.getInstalledBundleList(wantTemp, accountId).then((result) => {
   console.info('Succeeded in getting installed bundle list.');
@@ -682,6 +744,8 @@ For details about the distribution type of the application signing certificate, 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                                      | Mandatory| Description                                                        |
@@ -696,7 +760,8 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                     |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
@@ -731,6 +796,8 @@ For details about the distribution type of the application signing certificate, 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                                      | Mandatory| Description                                                        |
@@ -745,7 +812,8 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                     |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
@@ -778,6 +846,8 @@ Obtains the distribution type of the signing certificate used by applications th
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -903,7 +973,7 @@ Defines the application information.
 | dataUnclearable       | boolean                      | Yes  | No  | Whether the application data is unclearable. The value **true** means that the application data is unclearable, and **false** means the opposite.|
 | nativeLibraryPath | string                                                                     | Yes  | No  | Local library file path of the application.                                                 |
 | appIndex    | number    | Yes  | No  | Index of an application clone. It takes effect only for application clones.|
-| installSource    | string    | Yes  | No  | Installation source of the application. The options are as follows:<br> - **pre-installed**: The application is a preset application installed at initial device startup.<br> - **ota**: The application is a preset application added during system upgrade.<br> - **recovery**: The preset application is uninstalled and then restored.<br> - **bundleName**: The application corresponding to the bundle name is installed.<br> - **unknown**: The installation source is unknown.|
+| installSource    | string    | Yes  | No  | Installation source of the application. The options are as follows:<br> - **pre-installed**: The application is a preset application installed at initial device startup.<br> - **ota**: The application is a preset application added during system upgrade.<br> - **recovery**: The preset application is uninstalled and then restored.<br> - **bundleName**: The application is installed using its bundle name.<br> - **unknown**: The installation source is unknown.|
 | releaseType      | string    | Yes  | No  | Release type of the SDK used for application packing. Currently, the SDK release types include Canary, Beta, and Release. Each of the Canary and Beta releases can be distinguished by a sequential number, such as Canary1, Canary2, Beta1, and Beta2. You can compare the SDK release type on which application packaging depends and the OS release type (specified by [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md)) to determine the compatibility.|
 
 

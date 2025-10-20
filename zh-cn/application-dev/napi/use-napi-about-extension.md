@@ -634,7 +634,7 @@ test01();
 
 **注意事项**
 
-对ArkTS对象A调用`napi_coerce_to_native_binding_object`将开发者实现的detach/attach回调和native对象信息加到A上，再将A跨线程传递。跨线程传递需要对A进行序列化和反序列化，在当前线程thread1序列化A得到数据data，序列化阶段执行detach回调。然后将data传给目标线程thread2，在thread2中反序列化data，执行attach回调，最终得到ArkTS对象A。
+对ArkTS对象A调用`napi_coerce_to_native_binding_object`将开发者实现的detach/attach回调和native对象信息加到A上，再将A跨线程传递。跨线程传递需要对A进行序列化和反序列化。此处的序列化与反序列化是人为控制的，需要调用后文介绍的napi_serialize、napi_deserialize接口。过程如下图所示：在当前线程thread1序列化A得到数据data，序列化阶段执行detach回调。然后将data传给目标线程thread2，在thread2中反序列化data，执行attach回调，最终得到ArkTS对象A。此处的detach/attach是告知开发者序列化与反序列执行完毕的回调。
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -1385,3 +1385,48 @@ testNapi.testNapiWrapEnhance();
 **napi_create_ark_context、napi_switch_ark_context、napi_destroy_ark_context**
 
 [使用扩展的Node-API接口创建、切换和销毁上下文环境](use-napi-about-context.md)
+
+## napi提供通过指针访问ArkTS String内存数据的功能
+
+### 接口描述
+
+| 接口                                           | 描述                                         |
+| ---------------------------------------------- | -------------------------------------------- |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取以Utf16编码的ArkTS String的内存数据缓冲区 |
+
+### 使用示例
+
+**napi_get_buffer_string_utf16_in_critical_scope**
+
+[使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+
+## napi实现临界区作用域
+
+### 接口描述
+
+| 接口                      | 描述             |
+| ------------------------- | ---------------- |
+| napi_open_critical_scope  | 打开临界区作用域 |
+| napi_close_critical_scope | 关闭临界区作用域 |
+
+### 使用示例
+
+**napi_open_critical_scope、napi_close_critical_scope**
+
+[使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+
+## napi支持创建轻量级的强引用对象
+
+### 接口描述
+
+| 接口                            | 描述                                  |
+| ------------------------------- | ------------------------------------- |
+| napi_create_strong_reference    | 创建指向ArkTS对象的强引用             |
+| napi_delete_strong_reference    | 删除强引用                            |
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值 |
+
+### 使用示例
+
+**napi_create_strong_reference、napi_delete_strong_reference、napi_get_value_strong_reference**
+
+[使用扩展的Node-API接口创建、销毁和使用强引用对象](use-napi-about-strong-reference.md)

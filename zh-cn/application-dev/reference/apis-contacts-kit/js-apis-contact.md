@@ -102,7 +102,10 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  import { common } from '@kit.AbilityKit';
+  
+  // 获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
       fullName: 'xxx'
@@ -4678,7 +4681,7 @@ let holder: contact.Holder = {
 
 ```js
 let event: contact.Event = {
-    eventDate: "xxxxxx"
+    eventDate: "2000-01-01"
 };
 ```
 
@@ -4686,7 +4689,7 @@ let event: contact.Event = {
 
 ```js
 let event = new contact.Event();
-event.eventDate = "xxxxxx";
+event.eventDate = "2000-01-01";
 ```
 
 ## Group

@@ -3387,3 +3387,82 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+### startSelfUIAbilityInCurrentProcess<sup>22+</sup>
+
+startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise\<void>
+
+在当前进程中启动应用程序自己的UIAbility。
+
+> **说明：**
+>- 只能冷启动目标UIAbility，如果目标UIAbility实例已经启动过，则启动失败。
+>- 通过该接口启动的UIAbility实例，将运行在调用方所在的进程中。其他关于目标UIAbility的进程相关的策略（例如在[module.json5配置文件](../../quick-start/module-configuration-file.md)中通过isolationProcess或isolationMode字段来指定进程），均不会生效。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的必要信息。只支持[显式启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持[隐式启动](../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
+| specifiedFlag | string  | 是 | 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。 <br>**说明：**<br>当通过该接口拉起启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发[onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant)回调。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**示例：**
+
+```ts
+import { UIAbility, StartOptions, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let accountId = 100;
+    let options: StartOptions = {
+      displayId: 0
+    };
+    
+    let instanceFlag = 'instance1';
+
+    try {
+      this.context.startSelfUIAbilityInCurrentProcess(want, instanceFlag, options);
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInCurrentProcess failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```

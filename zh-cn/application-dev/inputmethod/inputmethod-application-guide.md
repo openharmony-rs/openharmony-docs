@@ -46,23 +46,34 @@
 
    在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
-   ```ts
-   import { Want } from '@kit.AbilityKit';
-   import keyboardController from './model/KeyboardController';
-   import { InputMethodExtensionAbility } from '@kit.IMEKit';
-   
-   export default class InputDemoService extends InputMethodExtensionAbility {
-   
-     onCreate(want: Want): void {
-       keyboardController.onCreate(this.context); // 初始化窗口并注册对输入法框架的事件监听
-     }
-   
-     onDestroy(): void {
-       console.info("onDestroy.");
-       keyboardController.onDestroy(); // 销毁窗口并去注册事件监听
-     }
-   }
-   ```
+<!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
+
+``` TypeScript
+
+import { InputMethodExtensionAbility } from '@kit.IMEKit';
+import Log from '../model/Log';
+import { keyboardController } from '../model/KeyboardController';
+import { Want } from '@kit.AbilityKit';
+
+const TAG: string = 'ServiceExtAbility->';
+
+export default class ServiceExtAbility extends InputMethodExtensionAbility {
+  onCreate(want: Want): void {
+    this.addLog(`onCreate want: ${want.abilityName}`);
+    keyboardController.onCreate(this.context);
+  }
+
+  onDestroy(): void {
+    this.addLog('onDestroy');
+    keyboardController.onDestroy();
+  }
+
+  addLog(message: string): void {
+    Log.showInfo(TAG, `kikaInput-new: ${message}`);
+  }
+}
+```
+
 
 <!--RP2-->
 2. KeyboardController.ts文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
@@ -359,6 +370,7 @@
      }
    }
    ```
+
 <!--DelEnd-->
 
 

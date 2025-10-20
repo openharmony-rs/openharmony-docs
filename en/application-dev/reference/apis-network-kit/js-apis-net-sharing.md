@@ -1,5 +1,12 @@
 # @ohos.net.sharing (Network Sharing)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 This module allows you to share your device's network connectivity with other connected devices.
 
 > **NOTE**

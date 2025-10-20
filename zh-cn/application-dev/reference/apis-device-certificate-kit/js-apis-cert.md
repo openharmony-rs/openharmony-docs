@@ -539,13 +539,12 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 表示Cms内容类型的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Cert
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | 签名数据。 |
+| SIGNED_DATA | 0 | 签名数据。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | 封装数据。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## CmsContentDataFormat<sup>18+</sup>
 
@@ -573,6 +572,50 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | PEM  | 0   | 表示PEM格式。      |
 | DER  | 1   | 表示DER格式。      |
 
+## CmsRsaSignaturePadding<sup>22+</sup>
+
+表示RSA类型CMS签名填充方式的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| PKCS1_PADDING      | 0  | PKCS1填充方式。     |
+| PKCS1_PSS_PADDING  | 1  | PKCS1 PSS填充方式。 |
+
+## CmsKeyAgreeRecipientDigestAlgorithm<sup>22+</sup>
+
+CMS KeyAgree类型接收者摘要算法的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| SHA256      | 0  | SHA256 算法     |
+| SHA384      | 1  | SHA384 算法     |
+| SHA512      | 2  | SHA512 算法     |
+
+## CmsRecipientEncryptionAlgorithm<sup>22+</sup>
+
+CMS接收者对称算法的枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称               | 值 | 说明                |
+|--------------------|----|---------------------|
+| AES_128_CBC      | 0  | AES_128_CBC 算法     |
+| AES_192_CBC      | 1  | AES_192_CBC 算法     |
+| AES_256_CBC      | 2  | AES_256_CBC 算法     |
+| AES_128_GCM      | 3  | AES_128_GCM 算法     |
+| AES_192_GCM      | 4  | AES_192_GCM 算法     |
+| AES_256_GCM      | 5  | AES_256_GCM 算法     |
+
 ## PrivateKeyInfo<sup>18+</sup>
 
 表示私钥信息。
@@ -590,16 +633,55 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 表示Cms签名者的配置选项。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Cert
 
 | 名称         | 类型                                                  |  只读  |  可选  |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384", 当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。                 |
-| addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。                             |
-| addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。           |
-| addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。            |
+| mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384", 当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | 否  | 是  |RSA 签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。<br> **说明**：仅当签名者私钥类型为RSA时有效。  <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。             |
+| addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
+| addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
+| addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。            |
+
+## CmsKeyTransRecipientInfo<sup>22+</sup>
+
+CMS封装数据的KeyTrans接收方信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明          |
+| --------------------- | ----------------------------- | ---- | ---- |------------- |
+| cert     | [X509Cert](#x509cert)              | 否   | 否   |RSA证书。   |
+
+## CmsKeyAgreeRecipientInfo<sup>22+</sup>
+
+CMS封装数据的KeyAgree接收方信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明             |
+| --------------------- | ----------------------------- | ---- | ---- |--------------- |
+| cert     | [X509Cert](#x509cert)               | 否   | 否   |EC证书。   |
+| digestAlgorithm             | [CmsKeyAgreeRecipientDigestAlgorithm](#cmskeyagreerecipientdigestalgorithm22)                          | 否   |是   | KDF摘要算法，默认为SHA256。         |
+
+## CmsRecipientInfo<sup>22+</sup>
+
+CMS封装数据的接收者信息。
+
+**说明**：至少需要设置一个接收者。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+| 名称                  | 类型                          | 只读 | 可选 |说明                                                   |
+| --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
+| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | 否   | 是   |keyTrans接收者信息。   |
+| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | 否   |是   | keyAgree接收者信息。         |
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
@@ -12554,7 +12636,11 @@ CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消�
 
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
-用于添加签名者信息。
+用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
+	
+> **说明：**
+>
+> 由于openssl不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12670,7 +12756,9 @@ function testAddSigner() {
 
 addCert(cert: X509Cert): void
 
-用于添加证书，例如签名证书的颁发者证书。
+用于添加内容类型为SIGNED_DATA的CMS的证书，例如签名证书的颁发者证书。
+
+如果未调用addSigner接口，并且仅添加证书后，生成的CMS签名数据将只包含证书。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12750,11 +12838,177 @@ function testAddCert() {
 }
 ```
 
+### setRecipientEncryptionAlgorithm<sup>22+</sup>
+
+setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
+
+为内容类型为ENVELOPED_DATA的CMS设置加密算法。
+
+该方法应在创建ENVELOPED_DATA类型的CmsGenerator后立即调用。如果未调用此方法，则默认使用AES_256_GCM作为加密算法。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型      | 必填 | 说明                     |
+| ------ | --------- | ---- | ------------------------ |
+| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | 是   | 用于CMS封装数据的加密算法。      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+function testSetRecipientEncryptionAlgorithm() {
+  try {
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+    let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_128_CBC;
+    cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
+    console.info(`setRecipientEncryptionAlgorithm success.`);
+  } catch (err) {
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+### addRecipientInfo<sup>22+</sup>
+
+addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
+
+为内容类型为ENVELOPED_DATA的CMS添加接收者信息，使用Promise异步回调。
+
+该方法至少需要设置一个接收者。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**参数：**
+
+| 参数名 | 类型      | 必填 | 说明                     |
+| ------ | --------- | ---- | ------------------------ |
+| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | 是   | 接收者信息。      |
+
+**返回值**：
+
+| 类型           | 说明        |
+| -------------- | ----------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
+  'MQ8wDQYDVQQIDAZodWF3ZWkxDTALBgNVBAcMBHhpYW4xDzANBgNVBAoMBmh1YXdl\n' +
+  'aTENMAsGA1UECwwEdGVzdDENMAsGA1UEAwwEYW5uZTEbMBkGCSqGSIb3DQEJARYM\n' +
+  'dGVzdEAxMjMuY29tMB4XDTI0MTEyNzAzMjQ1MFoXDTM0MTEyNTAzMjQ1MFoweTEL\n' +
+  'MAkGA1UEBhMCY2gxDzANBgNVBAgMBmh1YXdlaTENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDARhbm5lMRswGQYJ\n' +
+  'KoZIhvcNAQkBFgx0ZXN0QDEyMy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\n' +
+  'AARzg16D6tsNHZa7w0tLHFprXg5kUQgXv/vv3KIM21hY+WDYMz1OST4tmTeQWQF8\n' +
+  'kARtjjbHBxtOPufWxMfxf51Wo1MwUTAdBgNVHQ4EFgQUU/P31GCBwyrj3yXkoNaX\n' +
+  'xvPp8uIwHwYDVR0jBBgwFoAUU/P31GCBwyrj3yXkoNaXxvPp8uIwDwYDVR0TAQH/\n' +
+  'BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA/wCfbTorAWEEZcgd0CgfXI+EzXu2\n' +
+  'Y88BmDD5LFlj3N0CIQDB34h77Li0CSpYpS4+7Mug237zbkFjHR3Q4/VWOT1G1A==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let rsaCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGSIb3DQEBCwUAMEgxCzAJBgNVBAYT\n' +
+  'AkNOMQwwCgYDVQQIDANzaGExDTALBgNVBAcMBHhpYW4xDTALBgNVBAoMBHRlc3Qx\n' +
+  'DTALBgNVBAMMBHRlc3QwHhcNMjQxMTIyMDkwNTIyWhcNMzQxMTIwMDkwNTIyWjBI\n' +
+  'MQswCQYDVQQGEwJDTjEMMAoGA1UECAwDc2hhMQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB\n' +
+  'iQKBgQC6nCZTM16Rk2c4P/hwfVm++jqe6GCA/PXXGe4YL218q1dTKMHBGEw8kXi0\n' +
+  'XLDcyyC2yUn8ywN2QSyly6ke9EE6PGfZywStLp4g2PTTWB04sS3aXT2y+fToiTXQ\n' +
+  '3AxfFYRpB+EgSdSCkJs6jKXVwbzu54kEtQTfs8UdBQ9nVKaJLwIDAQABo1MwUTAd\n' +
+  'BgNVHQ4EFgQU6QXnt1smb2HRSO/2zuRQnz/SDxowHwYDVR0jBBgwFoAU6QXnt1sm\n' +
+  'b2HRSO/2zuRQnz/SDxowDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB\n' +
+  'gQBPR/+5xzFG1XlTdgwWVvqVxvhGUkbMTGW0IviJ+jbKsi57vnVsOtFzEA6y+bYx\n' +
+  'xG/kEOcwLtzeVHOQA+ZU5SVcc+qc0dfFiWjL2PSAG4bpqSTjujpuUk+g8ugixbG1\n' +
+  'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
+  '-----END CERTIFICATE-----\n';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function testAddRecipientInfo() {
+  let ecccertEncodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(eccCertData),
+    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let rsacertEncodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(rsaCertData),
+    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+  try {
+    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
+    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+
+    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
+      cert : eccx509Certcert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+    };
+    let rsaCert : cert.CmsKeyTransRecipientInfo = {
+      cert : rsax509Certcert,
+    };
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyTransInfo : rsaCert,
+      keyAgreeInfo : eccCert,
+    };
+    await cmsGenerator.addRecipientInfo(recipientInfo);
+    console.info(`addRecipientInfo success.`);
+  } catch (err) {
+    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ### doFinal<sup>18+</sup>
 
 doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>
 
-用于获取Cms最终数据，例如Cms签名数据。
+用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -12887,7 +13141,7 @@ async function testDoFinalByPromise() {
 
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 
-用于获取Cms最终数据，例如Cms签名数据（同步方法）。
+用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。（同步方法）。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -13010,5 +13264,130 @@ function testDoFinalSync() {
         }
     }
   });
+}
+```
+
+### getEncryptedContentData<sup>22+</sup>
+
+getEncryptedContentData(): Promise\<Uint8Array>
+
+用于获取内容类型为ENVELOPED_DATA的CMS的加密内容数据。使用Promise异步回调。
+
+如果创建了类型为ENVELOPED_DATA的CmsGenerator并使用了数据分离来生成CMS封装数据，使用此方法来获取加密的内容数据。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Cert
+
+**返回值：**
+
+| 类型                              | 说明                 |
+| --------------------------------- | -------------------- |
+| Promise\<Uint8Array> |Promise对象, 返回加密的数据内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书错误码](errorcode-cert.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19030001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+
+let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
+  'MQ8wDQYDVQQIDAZodWF3ZWkxDTALBgNVBAcMBHhpYW4xDzANBgNVBAoMBmh1YXdl\n' +
+  'aTENMAsGA1UECwwEdGVzdDENMAsGA1UEAwwEYW5uZTEbMBkGCSqGSIb3DQEJARYM\n' +
+  'dGVzdEAxMjMuY29tMB4XDTI0MTEyNzAzMjQ1MFoXDTM0MTEyNTAzMjQ1MFoweTEL\n' +
+  'MAkGA1UEBhMCY2gxDzANBgNVBAgMBmh1YXdlaTENMAsGA1UEBwwEeGlhbjEPMA0G\n' +
+  'A1UECgwGaHVhd2VpMQ0wCwYDVQQLDAR0ZXN0MQ0wCwYDVQQDDARhbm5lMRswGQYJ\n' +
+  'KoZIhvcNAQkBFgx0ZXN0QDEyMy5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC\n' +
+  'AARzg16D6tsNHZa7w0tLHFprXg5kUQgXv/vv3KIM21hY+WDYMz1OST4tmTeQWQF8\n' +
+  'kARtjjbHBxtOPufWxMfxf51Wo1MwUTAdBgNVHQ4EFgQUU/P31GCBwyrj3yXkoNaX\n' +
+  'xvPp8uIwHwYDVR0jBBgwFoAUU/P31GCBwyrj3yXkoNaXxvPp8uIwDwYDVR0TAQH/\n' +
+  'BAUwAwEB/zAKBggqhkjOPQQDAgNJADBGAiEA/wCfbTorAWEEZcgd0CgfXI+EzXu2\n' +
+  'Y88BmDD5LFlj3N0CIQDB34h77Li0CSpYpS4+7Mug237zbkFjHR3Q4/VWOT1G1A==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let rsaCertData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIICXjCCAcegAwIBAgIGAXKnJjrAMA0GCSqGSIb3DQEBCwUAMEgxCzAJBgNVBAYT\n' +
+  'AkNOMQwwCgYDVQQIDANzaGExDTALBgNVBAcMBHhpYW4xDTALBgNVBAoMBHRlc3Qx\n' +
+  'DTALBgNVBAMMBHRlc3QwHhcNMjQxMTIyMDkwNTIyWhcNMzQxMTIwMDkwNTIyWjBI\n' +
+  'MQswCQYDVQQGEwJDTjEMMAoGA1UECAwDc2hhMQ0wCwYDVQQHDAR4aWFuMQ0wCwYD\n' +
+  'VQQKDAR0ZXN0MQ0wCwYDVQQDDAR0ZXN0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCB\n' +
+  'iQKBgQC6nCZTM16Rk2c4P/hwfVm++jqe6GCA/PXXGe4YL218q1dTKMHBGEw8kXi0\n' +
+  'XLDcyyC2yUn8ywN2QSyly6ke9EE6PGfZywStLp4g2PTTWB04sS3aXT2y+fToiTXQ\n' +
+  '3AxfFYRpB+EgSdSCkJs6jKXVwbzu54kEtQTfs8UdBQ9nVKaJLwIDAQABo1MwUTAd\n' +
+  'BgNVHQ4EFgQU6QXnt1smb2HRSO/2zuRQnz/SDxowHwYDVR0jBBgwFoAU6QXnt1sm\n' +
+  'b2HRSO/2zuRQnz/SDxowDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOB\n' +
+  'gQBPR/+5xzFG1XlTdgwWVvqVxvhGUkbMTGW0IviJ+jbKsi57vnVsOtFzEA6y+bYx\n' +
+  'xG/kEOcwLtzeVHOQA+ZU5SVcc+qc0dfFiWjL2PSAG4bpqSTjujpuUk+g8ugixbG1\n' +
+  'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
+  '-----END CERTIFICATE-----\n';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function testGetEncryptedContentData() {
+  try {
+    let ecccertEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(eccCertData),
+      // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+
+    let rsacertEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(rsaCertData),
+      // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+
+    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
+    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+
+    let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info(`createCmsGenerator success.`);
+    let algorithm = cert.CmsRecipientEncryptionAlgorithm.AES_256_GCM;
+    cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
+    console.info(`setRecipientEncryptionAlgorithm success.`);
+    let eccCert : cert.CmsKeyAgreeRecipientInfo = {
+      cert : eccx509Certcert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+    };
+    let rsaCert : cert.CmsKeyTransRecipientInfo = {
+      cert : rsax509Certcert,
+    };
+    let recipientInfo: cert.CmsRecipientInfo = {
+      keyTransInfo : rsaCert,
+      keyAgreeInfo : eccCert,
+    };
+    await cmsGenerator.addRecipientInfo(recipientInfo);
+    console.info(`addRecipientInfo success.`);
+    let content = new Uint8Array([1,2,3,4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat : cert.CmsContentDataFormat.BINARY,
+      outFormat : cert.CmsFormat.PEM,
+      isDetached : true
+    };
+    let cms = await cmsGenerator.doFinal(content, optionsFinal);
+    console.info(`doFinal success, cms = %s`, cms);
+    let data = await cmsGenerator.getEncryptedContentData();
+    console.info(`getEncryptedContentData success, data = %s`, data);
+  } catch (err) {
+    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, message: ${err.message}`);
+  }
 }
 ```

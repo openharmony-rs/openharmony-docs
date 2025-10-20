@@ -476,7 +476,7 @@ A system application can connect to a service on another device by calling [conn
 
 2. Display a dialog box to ask for authorization from the user when the application is started for the first time. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 
-3. (Optional) [Implement a background service](serviceextensionability.md#implementing-a-background-service-for-system-applications-only). Perform this operation only if no background service is available. This operation is available only for system applications.
+3. (Optional) [Implement a background service](serviceextensionability-sys.md#implementing-a-background-service-for-system-applications-only). Perform this operation only if no background service is available. This operation is available only for system applications.
 
 4. Connect to the background service.
    - Implement the **IAbilityConnection** class. **IAbilityConnection** provides the following callbacks that you should implement: [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect), [onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect), and [onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed). The **onConnect()** callback is invoked when a service is connected, **onDisconnect()** is invoked when a service is unexpectedly disconnected, and **onFailed()** is invoked when the connection to a service fails.
@@ -586,7 +586,7 @@ A system application can connect to a service on another device by calling [conn
     }
     ```
 
-    For details about how to implement **getRemoteDeviceId()**, see [Starting UIAbility or ServiceExtensionAbility Across Devices (No Data Returned)](#starting-uiability-or-serviceextensionability-across-devices-no-data-returned).
+   For details about how to implement **getRemoteDeviceId()**, see [Starting UIAbility or ServiceExtensionAbility Across Devices (No Data Returned)](#starting-uiability-or-serviceextensionability-across-devices-no-data-returned).
 
 5. Disconnect the connection. Use [disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability) to disconnect from the background service.
 
@@ -665,393 +665,137 @@ The following describes how to implement multi-device collaboration through cros
 
 3. Create the CalleeAbility.
 
-     For the CalleeAbility, implement the callback to receive data and the methods to marshal and unmarshal data. When data needs to be received, use [on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on) to register a listener. When data does not need to be received, use [off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off) to deregister the listener.
+   For the CalleeAbility, implement the callback to receive data and the methods to marshal and unmarshal data. When data needs to be received, use [on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on) to register a listener. When data does not need to be received, use [off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off) to deregister the listener.
 
-    1. Configure the launch type of the UIAbility.
-        Set **launchType** of the CalleeAbility to **singleton** in the [module.json5](../quick-start/module-configuration-file.md) file.
+   1. Configure the launch type of the UIAbility.
 
-        | JSON Field| Description|
-        | -------- | -------- |
-        | "launchType"| UIAbility launch type. Set this parameter to **singleton**.|
+      Set **launchType** of the CalleeAbility to **singleton** in the [module.json5](../quick-start/module-configuration-file.md) file.
 
-        An example of the UIAbility configuration is as follows:
+      | JSON Field| Description|
+      | -------- | -------- |
+      | "launchType"| UIAbility launch type. Set this parameter to **singleton**.|
 
-        ```json
-        "abilities":[{
-            "name": ".CalleeAbility",
-            "srcEntry": "./ets/CalleeAbility/CalleeAbility.ets",
-            "launchType": "singleton",
-            "description": "$string:CalleeAbility_desc",
-            "icon": "$media:icon",
-            "label": "$string:CalleeAbility_label",
-            "exported": true
-        }]
-        ```
-    2. Import the **UIAbility** module.
+      An example of the UIAbility configuration is as follows:
 
-        ```ts
-        import { UIAbility } from '@kit.AbilityKit';
-        ```
-    3. Define the agreed parcelable data.
-        The data formats sent and received by the CallerAbility and CalleeAbility must be consistent. In the following example, the data formats are number and string.
+      ```json
+      "abilities":[{
+         "name": ".CalleeAbility",
+          "srcEntry": "./ets/CalleeAbility/CalleeAbility.ets",
+          "launchType": "singleton",
+          "description": "$string:CalleeAbility_desc",
+          "icon": "$media:icon",
+          "label": "$string:CalleeAbility_label",
+          "exported": true
+      }]
+      ```
 
-        
-        ```ts
-        import { rpc } from '@kit.IPCKit';
-        
-        class MyParcelable {
-          num: number = 0;
-          str: string = '';
-        
-          constructor(num: number, string: string) {
-            this.num = num;
-            this.str = string;
-          }
-        
-          mySequenceable(num: number, string: string): void {
-            this.num = num;
-            this.str = string;
-          }
-        
-          marshalling(messageSequence: rpc.MessageSequence): boolean {
-            messageSequence.writeInt(this.num);
-            messageSequence.writeString(this.str);
-            return true;
-          };
-        
-          unmarshalling(messageSequence: rpc.MessageSequence): boolean {
-            this.num = messageSequence.readInt();
-            this.str = messageSequence.readString();
-            return true;
-          };
-        }
-        ```
-    4. Implement [Callee.on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on) and [Callee.off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off).
-
-          In the following example, the **MSG_SEND_METHOD** listener is registered in [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) of the UIAbility and deregistered in [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy). After receiving parcelable data, the application processes the data and returns the data result. You need to implement processing based on service requirements.
-           
-        ```ts
-        import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
-        import { hilog } from '@kit.PerformanceAnalysisKit';
-        import { rpc } from '@kit.IPCKit';
-
-
-        const TAG: string = '[CalleeAbility]';
-        const MSG_SEND_METHOD: string = 'CallSendMsg';
-        const DOMAIN_NUMBER: number = 0xFF00;
-    
-        class MyParcelable {
-          num: number = 0;
-          str: string = '';
-    
-          constructor(num: number, string: string) {
-            this.num = num;
-            this.str = string;
-          };
-    
-          mySequenceable(num: number, string: string): void {
-            this.num = num;
-            this.str = string;
-          };
-    
-          marshalling(messageSequence: rpc.MessageSequence): boolean {
-            messageSequence.writeInt(this.num);
-            messageSequence.writeString(this.str);
-            return true;
-          };
-    
-          unmarshalling(messageSequence: rpc.MessageSequence): boolean {
-            this.num = messageSequence.readInt();
-            this.str = messageSequence.readString();
-            return true;
-          };
-        }
-    
-        function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
-          hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
-    
-          // Obtain the parcelable data sent by the CallerAbility.
-          let receivedData: MyParcelable = new MyParcelable(0, '');
-          data.readParcelable(receivedData);
-          hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', `receiveData[${receivedData.num}, ${receivedData.str}]`);
-          let num: number = receivedData.num;
-    
-          // Process the data.
-          // Return the parcelable data result to the CallerAbility.
-          return new MyParcelable(num + 1, `send ${receivedData.str} succeed`) as rpc.Parcelable;
-        };
-    
-        export default class CalleeAbility extends UIAbility {
-          caller: Caller | undefined;
-    
-          onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-            try {
-              this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
-            } catch (error) {
-              hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
-            }
-          }
-    
-          //...
-          releaseCall(): void {
-            try {
-              if (this.caller) {
-                this.caller.release();
-                this.caller = undefined;
-              }
-              hilog.info(DOMAIN_NUMBER, TAG, 'caller release succeed');
-            } catch (error) {
-              hilog.error(DOMAIN_NUMBER, TAG, `caller release failed with ${error}`);
-            }
-          }
-    
-          //...
-          onDestroy(): void {
-            try {
-              this.callee.off(MSG_SEND_METHOD);
-              hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Callee OnDestroy');
-              this.releaseCall();
-            } catch (error) {
-              hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
-            }
-          }
-        }
-        ```
-
-4. Obtain the caller object and access the CalleeAbility.
-    1. Import the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) module.
-      
-        ```ts
-        import { UIAbility } from '@kit.AbilityKit';
-        ```
-    2. Obtain the caller object.
-
-        The **context** attribute of the UIAbility implements [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to obtain the [Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller) object for communication. The following example uses **this.context** to obtain the **context** attribute of the UIAbility, uses **startAbilityByCall** to start [Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee), obtain the Caller object, and register the [onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease) and [onRemoteStateChange](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onremotestatechange10) listeners of the CallerAbility. You need to implement processing based on service requirements.
-
-        ```ts
-        import { BusinessError } from '@kit.BasicServicesKit';
-        import { Caller, common } from '@kit.AbilityKit';
-        import { hilog } from '@kit.PerformanceAnalysisKit';
-        import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-        import { promptAction } from '@kit.ArkUI';
-
-
-        const TAG: string = '[Page_CollaborateAbility]';
-        const DOMAIN_NUMBER: number = 0xFF00;
-        let caller: Caller | undefined;
-        let dmClass: distributedDeviceManager.DeviceManager;
-    
-        function getRemoteDeviceId(): string | undefined {
-          if (typeof dmClass === 'object' && dmClass !== null) {
-            let list = dmClass.getAvailableDeviceListSync();
-            hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(dmClass), JSON.stringify(list));
-            if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-              hilog.error(DOMAIN_NUMBER, TAG, 'getRemoteDeviceId err: list is null');
-              return;
-            }
-            if (list.length === 0) {
-              hilog.error(DOMAIN_NUMBER, TAG, `getRemoteDeviceId err: list is empty`);
-              return;
-            }
-            return list[0].networkId;
-          } else {
-            hilog.error(DOMAIN_NUMBER, TAG, 'getRemoteDeviceId err: dmClass is null');
-            return;
-          }
-        };
-    
-        @Entry
-        @Component
-        struct Page_CollaborateAbility {
-          private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          build() {
-            Column() {
-              //...
-              List({ initialIndex: 0 }) {
-                //...
-                ListItem() {
-                  Row() {
-                    //...
-                  }
-                  .onClick(() => {
-                    let caller: Caller | undefined;
-                    let context = this.context;
-    
-                    context.startAbilityByCall({
-                      deviceId: getRemoteDeviceId(),
-                      bundleName: 'com.samples.stagemodelabilityinteraction',
-                      abilityName: 'CalleeAbility'
-                    }).then((data) => {
-                      if (data !== null) {
-                        caller = data;
-                        hilog.info(DOMAIN_NUMBER, TAG, 'get remote caller success');
-                        // Register the onRelease listener of the CallerAbility.
-                        caller.onRelease((msg) => {
-                          hilog.info(DOMAIN_NUMBER, TAG, `remote caller onRelease is called ${msg}`);
-                        });
-                        hilog.info(DOMAIN_NUMBER, TAG, 'remote caller register OnRelease succeed');
-                        promptAction.openToast({
-                          message: 'CallerSuccess'
-                        });
-                        // Register the onRemoteStateChange listener of the CallerAbility.
-                        try {
-                          caller.onRemoteStateChange((str) => {
-                            hilog.info(DOMAIN_NUMBER, TAG, 'Remote state changed ' + str);
-                          });
-                        } catch (error) {
-                          hilog.error(DOMAIN_NUMBER, TAG, `Caller.onRemoteStateChange catch error, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
-                        }
-                      }
-                    }).catch((error: BusinessError) => {
-                      hilog.error(DOMAIN_NUMBER, TAG, `get remote caller failed with ${error}`);
-                    });
-                  })
-                }
-                //...
-              }
-              //...
-            }
-            //...
-          }
-        }
-        ```
-       
-        For details about how to implement **getRemoteDeviceId()**, see [Starting UIAbility or ServiceExtensionAbility Across Devices (No Data Returned)](#starting-uiability-or-serviceextensionability-across-devices-no-data-returned).
-
-5. Sends agreed parcelable data to the CalleeAbility.
-    1. The parcelable data can be sent to the CalleeAbility with or without a return value. The method and parcelable data must be consistent with those of the CalleeAbility. The following example describes how to use [Call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call) to send data to [Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee).
-      
-        ```ts
-        import { UIAbility, Caller } from '@kit.AbilityKit';
-        import { rpc } from '@kit.IPCKit';
-        import { hilog } from '@kit.PerformanceAnalysisKit';
-       
-        const TAG: string = '[CalleeAbility]';
-        const DOMAIN_NUMBER: number = 0xFF00;
-        const MSG_SEND_METHOD: string = 'CallSendMsg';
-       
-        class MyParcelable {
-          num: number = 0;
-          str: string = '';
-       
-          constructor(num: number, string: string) {
-            this.num = num;
-            this.str = string;
-          };
-       
-          mySequenceable(num: number, string: string): void {
-            this.num = num;
-            this.str = string;
-          };
-       
-          marshalling(messageSequence: rpc.MessageSequence): boolean {
-            messageSequence.writeInt(this.num);
-            messageSequence.writeString(this.str);
-            return true;
-          };
-       
-          unmarshalling(messageSequence: rpc.MessageSequence): boolean {
-            this.num = messageSequence.readInt();
-            this.str = messageSequence.readString();
-            return true;
-          };
-        }
-       
-        export default class EntryAbility extends UIAbility {
-          // ...
-          caller: Caller | undefined;
-       
-          async onButtonCall(): Promise<void> {
-            try {
-              let msg: MyParcelable = new MyParcelable(1, 'origin_Msg');
-              if (this.caller) {
-                await this.caller.call(MSG_SEND_METHOD, msg);
-              }
-            } catch (error) {
-              hilog.error(DOMAIN_NUMBER, TAG, `caller call failed with ${error}`);
-            }
-          }
-          // ...
-        }
-        ```
-    2. In the following, [CallWithResult](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callwithresult) is used to send data **originMsg** to the CalleeAbility and assign the data processed by the **CallSendMsg** method to **backMsg**.
-      
-        ```ts
-        import { UIAbility, Caller } from '@kit.AbilityKit';
-        import { rpc } from '@kit.IPCKit';
-        import { hilog } from '@kit.PerformanceAnalysisKit';
-       
-        const TAG: string = '[CalleeAbility]';
-        const DOMAIN_NUMBER: number = 0xFF00;
-       
-        const MSG_SEND_METHOD: string = 'CallSendMsg';
-        let originMsg: string = '';
-        let backMsg: string = '';
-       
-        class MyParcelable {
-          num: number = 0;
-          str: string = '';
-       
-          constructor(num: number, string: string) {
-            this.num = num;
-            this.str = string;
-          };
-       
-          mySequenceable(num: number, string: string): void {
-            this.num = num;
-            this.str = string;
-          };
-       
-          marshalling(messageSequence: rpc.MessageSequence): boolean {
-            messageSequence.writeInt(this.num);
-            messageSequence.writeString(this.str);
-            return true;
-          };
-       
-          unmarshalling(messageSequence: rpc.MessageSequence): boolean {
-            this.num = messageSequence.readInt();
-            this.str = messageSequence.readString();
-            return true;
-          };
-        }
-       
-        export default class EntryAbility extends UIAbility {
-          // ...
-          caller: Caller | undefined;
-       
-          async onButtonCallWithResult(originMsg: string, backMsg: string): Promise<void> {
-            try {
-              let msg: MyParcelable = new MyParcelable(1, originMsg);
-              if (this.caller) {
-                const data = await this.caller.callWithResult(MSG_SEND_METHOD, msg);
-                hilog.info(DOMAIN_NUMBER, TAG, 'caller callWithResult succeed');
-                let result: MyParcelable = new MyParcelable(0, '');
-                data.readParcelable(result);
-                backMsg = result.str;
-                hilog.info(DOMAIN_NUMBER, TAG, `caller result is [${result.num}, ${result.str}]`);
-              }
-            } catch (error) {
-              hilog.error(DOMAIN_NUMBER, TAG, `caller callWithResult failed with ${error}`);
-            }
-          }
-          // ...
-        }
-        ```
-   
-6. Release the caller object.
-
-    When the [Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller) object is no longer required, use [release](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#release) to release it.
+   2. Import the **UIAbility** module.
 
       ```ts
-      import { UIAbility, Caller } from '@kit.AbilityKit';
+      import { UIAbility } from '@kit.AbilityKit';
+      ```
+
+   3. Define the agreed parcelable data.
+
+      The data formats sent and received by the CallerAbility and CalleeAbility must be consistent. In the following example, the data formats are number and string.
+
+      ```ts
+      import { rpc } from '@kit.IPCKit';
+      
+      class MyParcelable {
+        num: number = 0;
+        str: string = '';
+      
+        constructor(num: number, string: string) {
+          this.num = num;
+          this.str = string;
+        }
+      
+        mySequenceable(num: number, string: string): void {
+          this.num = num;
+          this.str = string;
+        }
+      
+        marshalling(messageSequence: rpc.MessageSequence): boolean {
+          messageSequence.writeInt(this.num);
+          messageSequence.writeString(this.str);
+          return true;
+        };
+      
+        unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+          this.num = messageSequence.readInt();
+          this.str = messageSequence.readString();
+          return true;
+        };
+      }
+      ```
+
+   4. Implement [Callee.on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on) and [Callee.off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off).
+
+      In the following example, the **MSG_SEND_METHOD** listener is registered in [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) of the UIAbility and deregistered in [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy). After receiving parcelable data, the application processes the data and returns the data result. You need to implement processing based on service requirements.
+
+      ```ts
+      import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
       import { hilog } from '@kit.PerformanceAnalysisKit';
-
+      import { rpc } from '@kit.IPCKit';
+      
       const TAG: string = '[CalleeAbility]';
+      const MSG_SEND_METHOD: string = 'CallSendMsg';
       const DOMAIN_NUMBER: number = 0xFF00;
-
-      export default class EntryAbility extends UIAbility {
+      
+      class MyParcelable {
+        num: number = 0;
+        str: string = '';
+      
+        constructor(num: number, string: string) {
+          this.num = num;
+          this.str = string;
+        };
+      
+        mySequenceable(num: number, string: string): void {
+          this.num = num;
+          this.str = string;
+        };
+      
+        marshalling(messageSequence: rpc.MessageSequence): boolean {
+          messageSequence.writeInt(this.num);
+          messageSequence.writeString(this.str);
+          return true;
+        };
+      
+        unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+          this.num = messageSequence.readInt();
+          this.str = messageSequence.readString();
+          return true;
+        };
+      }
+      
+      function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
+        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
+      
+        // Obtain the parcelable data sent by the CallerAbility.
+        let receivedData: MyParcelable = new MyParcelable(0, '');
+        data.readParcelable(receivedData);
+        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', `receiveData[${receivedData.num}, ${receivedData.str}]`);
+        let num: number = receivedData.num;
+      
+        // Process the data.
+        // Return the parcelable data result to the CallerAbility.
+        return new MyParcelable(num + 1, `send ${receivedData.str} succeed`) as rpc.Parcelable;
+      };
+      
+      export default class CalleeAbility extends UIAbility {
         caller: Caller | undefined;
-
+      
+        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+          try {
+            this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
+          } catch (error) {
+            hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
+          }
+        }
+      
+        //...
         releaseCall(): void {
           try {
             if (this.caller) {
@@ -1063,6 +807,266 @@ The following describes how to implement multi-device collaboration through cros
             hilog.error(DOMAIN_NUMBER, TAG, `caller release failed with ${error}`);
           }
         }
+      
+        //...
+        onDestroy(): void {
+          try {
+            this.callee.off(MSG_SEND_METHOD);
+            hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Callee OnDestroy');
+            this.releaseCall();
+          } catch (error) {
+            hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
+          }
+        }
       }
       ```
+
+4. Obtain the caller object and access the CalleeAbility.
+   1. Import the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) module.
+
+      ```ts
+      import { UIAbility } from '@kit.AbilityKit';
+      ```
+
+   2. Obtain the caller object.
+
+      The **context** attribute of the UIAbility implements [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to obtain the [Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller) object for communication. The following example uses **this.context** to obtain the **context** attribute of the UIAbility, uses **startAbilityByCall** to start [Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee), obtain the Caller object, and register the [onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease) and [onRemoteStateChange](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onremotestatechange10) listeners of the CallerAbility. You need to implement processing based on service requirements.
+
+      ```ts
+      import { BusinessError } from '@kit.BasicServicesKit';
+      import { Caller, common } from '@kit.AbilityKit';
+      import { hilog } from '@kit.PerformanceAnalysisKit';
+      import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+      import { promptAction } from '@kit.ArkUI';
+      
+      const TAG: string = '[Page_CollaborateAbility]';
+      const DOMAIN_NUMBER: number = 0xFF00;
+      let caller: Caller | undefined;
+      let dmClass: distributedDeviceManager.DeviceManager;
+      
+      function getRemoteDeviceId(): string | undefined {
+        if (typeof dmClass === 'object' && dmClass !== null) {
+          let list = dmClass.getAvailableDeviceListSync();
+          hilog.info(DOMAIN_NUMBER, TAG, JSON.stringify(dmClass), JSON.stringify(list));
+          if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+            hilog.error(DOMAIN_NUMBER, TAG, 'getRemoteDeviceId err: list is null');
+            return;
+          }
+          if (list.length === 0) {
+            hilog.error(DOMAIN_NUMBER, TAG, `getRemoteDeviceId err: list is empty`);
+            return;
+          }
+          return list[0].networkId;
+        } else {
+          hilog.error(DOMAIN_NUMBER, TAG, 'getRemoteDeviceId err: dmClass is null');
+          return;
+        }
+      };
+      
+      @Entry
+      @Component
+      struct Page_CollaborateAbility {
+        private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        build() {
+          Column() {
+            //...
+            List({ initialIndex: 0 }) {
+              //...
+              ListItem() {
+                Row() {
+                  //...
+                }
+                .onClick(() => {
+                  let caller: Caller | undefined;
+                  let context = this.context;
+      
+                  context.startAbilityByCall({
+                    deviceId: getRemoteDeviceId(),
+                    bundleName: 'com.samples.stagemodelabilityinteraction',
+                    abilityName: 'CalleeAbility'
+                  }).then((data) => {
+                    if (data !== null) {
+                      caller = data;
+                      hilog.info(DOMAIN_NUMBER, TAG, 'get remote caller success');
+                      // Register the onRelease listener of the CallerAbility.
+                      caller.onRelease((msg) => {
+                        hilog.info(DOMAIN_NUMBER, TAG, `remote caller onRelease is called ${msg}`);
+                      });
+                      hilog.info(DOMAIN_NUMBER, TAG, 'remote caller register OnRelease succeed');
+                      promptAction.openToast({
+                        message: 'CallerSuccess'
+                      });
+                      // Register the onRemoteStateChange listener of the CallerAbility.
+                      try {
+                        caller.onRemoteStateChange((str) => {
+                          hilog.info(DOMAIN_NUMBER, TAG, 'Remote state changed ' + str);
+                        });
+                      } catch (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG, `Caller.onRemoteStateChange catch error, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
+                      }
+                    }
+                  }).catch((error: BusinessError) => {
+                    hilog.error(DOMAIN_NUMBER, TAG, `get remote caller failed with ${error}`);
+                  });
+                })
+              }
+              //...
+            }
+            //...
+          }
+          //...
+        }
+      }
+      ```
+
+      For details about how to implement **getRemoteDeviceId()**, see [Starting UIAbility or ServiceExtensionAbility Across Devices (No Data Returned)](#starting-uiability-or-serviceextensionability-across-devices-no-data-returned).
+
+5. Sends agreed parcelable data to the CalleeAbility.
+   1. The parcelable data can be sent to the CalleeAbility with or without a return value. The method and parcelable data must be consistent with those of the CalleeAbility. The following example describes how to use [Call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#call) to send data to [Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee).
+
+      ```ts
+      import { UIAbility, Caller } from '@kit.AbilityKit';
+      import { rpc } from '@kit.IPCKit';
+      import { hilog } from '@kit.PerformanceAnalysisKit';
+       
+      const TAG: string = '[CalleeAbility]';
+      const DOMAIN_NUMBER: number = 0xFF00;
+      const MSG_SEND_METHOD: string = 'CallSendMsg';
+      
+      class MyParcelable {
+        num: number = 0;
+        str: string = '';
+       
+        constructor(num: number, string: string) {
+          this.num = num;
+          this.str = string;
+        };
+       
+        mySequenceable(num: number, string: string): void {
+          this.num = num;
+          this.str = string;
+        };
+       
+        marshalling(messageSequence: rpc.MessageSequence): boolean {
+          messageSequence.writeInt(this.num);
+          messageSequence.writeString(this.str);
+          return true;
+        };
+       
+        unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+          this.num = messageSequence.readInt();
+          this.str = messageSequence.readString();
+          return true;
+        };
+      }
+       
+      export default class EntryAbility extends UIAbility {
+        // ...
+        caller: Caller | undefined;
+       
+        async onButtonCall(): Promise<void> {
+          try {
+            let msg: MyParcelable = new MyParcelable(1, 'origin_Msg');
+            if (this.caller) {
+              await this.caller.call(MSG_SEND_METHOD, msg);
+            }
+          } catch (error) {
+            hilog.error(DOMAIN_NUMBER, TAG, `caller call failed with ${error}`);
+          }
+        }
+        // ...
+      }
+      ```
+
+   2. In the following, [CallWithResult](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callwithresult) is used to send data **originMsg** to the CalleeAbility and assign the data processed by the **CallSendMsg** method to **backMsg**.
+
+      ```ts
+      import { UIAbility, Caller } from '@kit.AbilityKit';
+      import { rpc } from '@kit.IPCKit';
+      import { hilog } from '@kit.PerformanceAnalysisKit';
+       
+      const TAG: string = '[CalleeAbility]';
+      const DOMAIN_NUMBER: number = 0xFF00;
+       
+      const MSG_SEND_METHOD: string = 'CallSendMsg';
+      let originMsg: string = '';
+      let backMsg: string = '';
+       
+      class MyParcelable {
+        num: number = 0;
+        str: string = '';
+       
+        constructor(num: number, string: string) {
+          this.num = num;
+          this.str = string;
+        };
+       
+        mySequenceable(num: number, string: string): void {
+          this.num = num;
+          this.str = string;
+        };
+       
+        marshalling(messageSequence: rpc.MessageSequence): boolean {
+          messageSequence.writeInt(this.num);
+          messageSequence.writeString(this.str);
+          return true;
+        };
+       
+        unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+          this.num = messageSequence.readInt();
+          this.str = messageSequence.readString();
+          return true;
+        };
+      }
+       
+      export default class EntryAbility extends UIAbility {
+        // ...
+        caller: Caller | undefined;
+       
+        async onButtonCallWithResult(originMsg: string, backMsg: string): Promise<void> {
+          try {
+            let msg: MyParcelable = new MyParcelable(1, originMsg);
+            if (this.caller) {
+              const data = await this.caller.callWithResult(MSG_SEND_METHOD, msg);
+              hilog.info(DOMAIN_NUMBER, TAG, 'caller callWithResult succeed');
+              let result: MyParcelable = new MyParcelable(0, '');
+              data.readParcelable(result);
+              backMsg = result.str;
+              hilog.info(DOMAIN_NUMBER, TAG, `caller result is [${result.num}, ${result.str}]`);
+            }
+          } catch (error) {
+            hilog.error(DOMAIN_NUMBER, TAG, `caller callWithResult failed with ${error}`);
+          }
+        }
+        // ...
+      }
+      ```
+
+6. Release the caller object.
+
+   When the [Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller) object is no longer required, use [release](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#release) to release it.
+
+    ```ts
+    import { UIAbility, Caller } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+
+    const TAG: string = '[CalleeAbility]';
+    const DOMAIN_NUMBER: number = 0xFF00;
+
+    export default class EntryAbility extends UIAbility {
+      caller: Caller | undefined;
+
+      releaseCall(): void {
+        try {
+          if (this.caller) {
+            this.caller.release();
+            this.caller = undefined;
+          }
+          hilog.info(DOMAIN_NUMBER, TAG, 'caller release succeed');
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `caller release failed with ${error}`);
+        }
+      }
+    }
+    ```
 <!--no_check-->

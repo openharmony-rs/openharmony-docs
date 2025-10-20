@@ -1,4 +1,10 @@
 # Introduction to MDM Kit
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Introduction
 
@@ -7,7 +13,7 @@ MDM Kit provides APIs for enterprise-level Mobile Device Management (MDM) applic
 ## Working Principles
 
 <!--RP1-->
-The framework layer and system ability (SA) layer use the enterprise_device_management component to provide the device administrator application framework and basic device management capabilities. The device administrator application uses an **EnterpriseAdminExtensionAbility** to call APIs in MDM Kit to manage devices.<!--RP1End-->
+The framework layer and system ability (SA) layer use the enterprise_device_management component to provide the device administrator application framework and basic device management capabilities. The device administrator application uses an [EnterpriseAdminExtensionAbility](./mdm-kit-admin.md) to call APIs in MDM Kit to manage devices.<!--RP1End-->
 
 ![intro_arch.png](./figures/intro_arch.png)
 

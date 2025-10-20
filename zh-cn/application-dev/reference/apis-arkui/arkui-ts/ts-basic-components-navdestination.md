@@ -714,10 +714,10 @@ NavDestination通用标题。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型     | 必填   | 说明     |
-| ---- | ------ | ---- | ------ |
-| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | 是    | 设置主标题。 |
-| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | 是    | 设置副标题。 |
+| 名称   | 类型     | 只读 | 可选 | 说明     |
+| ---- | ------ | ---- | ---- | ------ |
+| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | 否    | 否 | 设置主标题。 |
+| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | 否    | 否 | 设置副标题。 |
 
 ## NavDestinationCustomTitle
 
@@ -727,10 +727,10 @@ NavDestination自定义标题。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型                                       | 必填   | 说明       |
-| ------- | ---------------------------------------- | ---- | -------- |
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是    | 设置标题栏内容。 |
-| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 是    | 设置标题栏高度。<br/>取值范围：[0, +∞)。 |
+| 名称      | 类型                                       | 只读 | 可选 | 说明       |
+| ------- | ---------------------------------------- | ---- | ---- | -------- |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 否 | 设置标题栏内容。 |
+| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否 | 设置标题栏高度。<br/>取值范围：[0, +∞)。 |
 
 ## NavDestinationContext<sup>11+</sup>
 
@@ -738,12 +738,12 @@ NavDestination上下文信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型     | 必填   |  说明     |
-| ---- | ------ | ----- | ------ |
-| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 是 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 是 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| navDestinationId<sup>12+</sup> | string | 否 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否   | 当前NavDestination的类型。 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| 名称   | 类型     | 只读 | 可选 |  说明     |
+| ---- | ------ | ----- | ----- | ------ |
+| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 否    | 否 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否    | 否 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| navDestinationId<sup>12+</sup> | string | 否    | 是 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ### getConfigInRouteMap<sup>12+</sup>
 
@@ -770,11 +770,11 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型   |必填 | 说明 |
-| ----  | ---   | ---- |----- |
-| name  | string | 是 | 页面名称。|
-| pageSourceFile| string | 是 | 页面在当前包中的路径。|
-| data | Object | 是 | 页面自定义字段信息。|
+| 名称   | 类型   | 只读 | 可选 | 说明 |
+| ----  | ---   | ---- | ---- |----- |
+| name  | string | 否 | 否 | 页面名称。|
+| pageSourceFile| string | 否 | 否 | 页面在当前包中的路径。|
+| data | Object | 否 | 否 | 页面自定义字段信息。|
 
 ## NestedScrollInfo<sup>14+</sup>
 
@@ -784,10 +784,10 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型   |必填 | 说明 |
-| ----  | ---   | ---- |----- |
-| parent | [Scroller](./ts-container-scroll.md#scroller) | 是 | 可滚动容器组件的控制器。 |
-| child | [Scroller](./ts-container-scroll.md#scroller) | 是 | 可滚动容器组件的控制器，child对应的组件需要是parent对应组件的子组件，且组件间存在嵌套滚动关系。|
+| 名称   | 类型   | 只读 | 可选 | 说明 |
+| ----  | ---   | ---- | ---- |----- |
+| parent | [Scroller](./ts-container-scroll.md#scroller) | 否 | 否 | 可滚动容器组件的控制器。 |
+| child | [Scroller](./ts-container-scroll.md#scroller) | 否 | 否 | 可滚动容器组件的控制器，child对应的组件需要是parent对应组件的子组件，且组件间存在嵌套滚动关系。|
 
 ### NavDestinationActiveReason<sup>17+</sup>
 
@@ -810,7 +810,7 @@ NavDestination激活态或者非激活态变化的原因。
 
 NavDestination可见性发生变化的原因。
 
-**原子化服务API：** 从API version 21始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -828,13 +828,13 @@ NavDestination自定义动画接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型   |必填 | 说明 |
-| ----  | ---   | ---- |----- |
-| onTransitionEnd | Callback\<void> | 否 | 转场动画结束时的回调函数。 |
-| duration | number | 否 | 转场动画的持续时间，默认值为1000（毫秒）。 |
-| curve | [Curve](ts-appendix-enums.md#curve) | 否 | 动画的曲线类型，默认值为[Curve.EaseInOut](ts-appendix-enums.md#curve)。 |
-| delay | number | 否 | 转场动画的延迟。默认值为0（毫秒）。 |
-| event | Callback\<void> | 是 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)中的event。 |
+| 名称   | 类型   | 只读 | 可选 | 说明 |
+| ----  | ---   | ---- | ---- |----- |
+| onTransitionEnd | Callback\<void> | 否 | 是 | 转场动画结束时的回调函数。 |
+| duration | number | 否 | 是 | 转场动画的持续时间，默认值为1000（毫秒）。 |
+| curve | [Curve](ts-appendix-enums.md#curve) | 否 | 是 | 动画的曲线类型，默认值为[Curve.EaseInOut](ts-appendix-enums.md#curve)。 |
+| delay | number | 否 | 是 | 转场动画的延迟。默认值为0（毫秒）。 |
+| event | Callback\<void> | 否 | 否 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)中的event。 |
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 

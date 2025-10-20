@@ -102,7 +102,7 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
         atomicServiceBar.setBackgroundColor(0x88888888);
       } else {
-        hilog.error(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
       }
     });
   }
@@ -135,6 +135,7 @@ setTitleContent(content:string): void
 import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -179,6 +180,7 @@ setTitleFontStyle(font:FontStyle):void
 import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -224,6 +226,7 @@ setIconColor(color:Nullable<Color | number | string>): void
 import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -267,6 +270,7 @@ getBarRect(): Frame
 ```ts
 import { AtomicServiceBar } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
 struct Index {
@@ -277,8 +281,8 @@ struct Index {
         let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
         if (currentBar != undefined) {
           let rect = currentBar.getBarRect();
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:' +
-            rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
+          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:'
+            + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
           hilog.info(0x0000, 'testTag', 'Get AtomServiceBar failed.');
         }

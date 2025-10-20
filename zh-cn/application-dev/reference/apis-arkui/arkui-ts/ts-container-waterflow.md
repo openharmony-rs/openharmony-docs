@@ -280,6 +280,29 @@ columnsTemplate(value: string)
 | ------ | ------ | ---- | ---------------------------------------------- |
 | value  | string | 是   | 当前瀑布流组件布局列的数量。<br/>默认值：'1fr' |
 
+### columnsTemplate<sup>22+</sup>
+
+columnsTemplate(value: string | ItemFillPolicy)
+
+设置当前瀑布流组件布局列的数量，不设置时默认1列。
+
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+
+当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度相当于sm及更小的设备上显示2列，相当于md设备时显示3列，相当于lg及更大的设备时显示5列，且每列均为1fr。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                      |
+| ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
+| value  | string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前瀑布流组件布局列的数量。 |
+
+
 ### rowsTemplate
 
 rowsTemplate(value: string)
@@ -1829,3 +1852,179 @@ struct WaterFlowDemo {
 ```
 
 ![waterFlow_refresh](figures/waterFlow_refresh.gif)
+
+### 示例9（WaterFlow组件基于断点配置列数）
+
+从API version 22开始，该示例展示了WaterFlow组件支持基于断点配置列数效果。
+
+<!--code_no_check-->
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  minSize: number = 80;
+  maxSize: number = 180;
+  colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear() {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 }) {
+      WaterFlow() {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Column() {
+              Text("N" + item).fontSize(12).height('16')
+              // 注意：需要确保对应的jpg文件存在才会正常显示
+              Image('res/waterFlowTest(' + item % 5 + ').jpg')
+                .objectFit(ImageFit.Fill)
+                .width('100%')
+                .layoutWeight(1)
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[item % 100])
+          .backgroundColor(this.colors[item % this.colors.length])
+        }, (item: string) => item)
+      }
+      .key('waterFlow')
+      // 设置WaterFlow按断点决定列数
+      .columnsTemplate({fillType:PresetFillType.BREAKPOINT_SM2MD3LG5})
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .margin('20vp')
+      .width('100%')
+      .height('30%')
+    }
+  }
+}
+```
+WaterFlow宽度相当于sm及以下时显示2列。
+
+![sm_waterflow](figures/waterFlow_itemFillPolicy_SM.png)
+
+WaterFlow宽度相当于md时显示3列。
+
+![md_waterflow](figures/waterFlow_itemFillPolicy_MD.png)
+
+WaterFlow宽度相当于lg及以上时显示5列。
+
+![lg_waterflow](figures/waterFlow_itemFillPolicy_LG.png)
+
+
+### 示例10（WaterFlow组件实现获取内容高度）
+
+从API version 22 开始，该示例通过WaterFlow组件，实现了获取内容高度。
+
+WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+
+<!--code_no_check-->
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowContentSizeDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+  scroller: Scroller = new Scroller();
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear() {
+    this.setItemSizeArray();
+  }
+
+  @Builder
+  itemFoot() {
+    Column() {
+      Text(`到底啦...`)
+        .fontSize(10)
+        .backgroundColor(Color.Red)
+        .width(50)
+        .height(50)
+        .align(Alignment.Center)
+        .margin({ top: 2 })
+    }
+  }
+
+  build() {
+    Column({ space: 2 }) {
+      Button('GetContentSize')
+        .onClick(() => {
+          this.contentWidth = this.scroller.contentSize().width;
+          this.contentHeight = this.scroller.contentSize().height;
+        }).margin(5)
+      Text('Width:' + this.contentWidth)
+        .fontColor(Color.Red)
+        .height(30)
+      Text('Height:' + this.contentHeight)
+        .fontColor(Color.Red)
+        .height(30)
+
+      WaterFlow({ scroller: this.scroller, footer: this.itemFoot() }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Column() {
+              Text("N" + item).fontSize(12).height('16')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[item % 100])
+          .backgroundColor(this.colors[item % this.colors.length])
+        }, (item: string) => item)
+      }
+      .columnsTemplate("1fr 1fr") // 设置2列等宽布局
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('80%')
+    }
+  }
+}
+```
+
+![waterFlow_refresh](figures/waterFlow_contentsize.gif)

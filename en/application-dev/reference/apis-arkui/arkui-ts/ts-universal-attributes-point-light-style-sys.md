@@ -1,4 +1,10 @@
 # Point Light Style (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 You can apply a point light style to components.
 
@@ -16,11 +22,11 @@ You apply a point light style by setting the light source that emits illuminatio
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                                   | Mandatory| Description                                                        |
-| ----------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| lightSource | [LightSource](#lightsource)                         | No  | Light source. The light source affects the surrounding components that are marked as illuminable and creates light effects on those components.<br>Default value: none|
-| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | No  | Whether the current component can be illuminated by the light source and the illuminated type.<br>Default value: **IlluminatedType.NONE**|
-| bloom       | number                                                      | No  | Luminous intensity of the component. The recommended value range is 0-1.<br>Default value: **0**       |
+| Name       | Type                                                   | Read-Only| Optional| Description                                                        |
+| ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
+| lightSource | [LightSource](#lightsource)                         | No  |  Yes  | Light source. The light source affects the surrounding components that are marked as illuminable and creates light effects on those components.<br>Default value: none|
+| illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | No  |  Yes | Whether the current component can be illuminated by the light source and the illuminated type.<br>Default value: **IlluminatedType.NONE**|
+| bloom       | number                                                      | No  |  Yes  | Luminous intensity of the component. The recommended value range is 0-1.<br>Default value: **0**       |
 
 ## LightSource
 
@@ -30,13 +36,13 @@ Each component allows for one light source.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name               | Type                                  | Mandatory| Description                                                    |
-| ------------------- | ------------------------------------------ | ---- | -------------------------------------------------------- |
-| positionX           | [Dimension](ts-types.md#dimension10)       | Yes  | X-coordinate of the light source relative to the current component.                             |
-| positionY           | [Dimension](ts-types.md#dimension10)       | Yes  | Y-coordinate of the light source relative to the current component.                             |
-| positionZ           | [Dimension](ts-types.md#dimension10)       | Yes  | Height of the light source. The higher the light source, the broader the light distribution.                      |
-| intensity           | number                                     | Yes  | Intensity of the light source. The recommended value range is 0-1. When the intensity is **0**, the light source does not emit light.|
-| color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No  | Light source color.<br>Default value: **Color.White**                      |
+| Name               | Type                                  | Read-Only| Optional| Description                                                    |
+| ------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------------- |
+| positionX           | [Dimension](ts-types.md#dimension10)       | No| No  | X-coordinate of the light source relative to the current component.                             |
+| positionY           | [Dimension](ts-types.md#dimension10)       | No| No  | Y-coordinate of the light source relative to the current component.                             |
+| positionZ           | [Dimension](ts-types.md#dimension10)       | No| No  | Height of the light source. The higher the light source, the broader the light distribution.                      |
+| intensity           | number                                     | No| No  | Intensity of the light source. The recommended value range is 0-1. When the intensity is **0**, the light source does not emit light.|
+| color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Light source color.<br>Default value: **Color.White**                      |
 
 ## Example
 

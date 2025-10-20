@@ -96,8 +96,8 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 | Unknown | - | 未知设备。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Mouse | - | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TouchScreen | - | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Key<sup>21+</sup> | 4 | 键盘。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| JoyStick<sup>21+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| KEY<sup>22+</sup> | 4 | 键盘。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 

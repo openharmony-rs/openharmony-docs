@@ -1,4 +1,10 @@
 # EnterpriseAdminExtensionAbility Development
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Introduction
 
@@ -52,7 +58,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-In the [module.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V2/module-configuration-file-0000001427744540-V2) file of the project module, register **EnterpriseAdminAbility** as **ExtensionAbility**, and set type to **enterpriseAdmin** and **srcEntry** to the code path of the **ExtensionAbility** component.
+In the [module.json5](../quick-start/module-configuration-file.md) file of the project module, register **EnterpriseAdminAbility** as **ExtensionAbility**, and set **type** to **enterpriseAdmin** and **srcEntry** to the code path of the **ExtensionAbility** component.
 
 ```ts
 "extensionAbilities": [

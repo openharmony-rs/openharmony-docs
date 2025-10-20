@@ -9,7 +9,7 @@ This topic describes the mixed use of V1 and V2, aiming at guiding you to migrat
 > **NOTE**
 >
 > State management V2 is supported since API version 12.
-> The rules for mixed use described in this topic apply only to API version 17 and earlier. Since API version 18, state management provides new APIs [enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility18) and [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed18) to help you solve the problem of mixed use during the migration from V1 to V2. For details, see [Mixing Use of State Management V1 and V2](./arkts-v1-v2-mixusage.md).
+> The rules for mixed use described in this topic apply only to API version 17 and earlier. Since API version 18, state management provides new APIs [enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19) and [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19) to help you solve the problem of mixed use during the migration from V1 to V2. For details, see [Mixing Use of State Management V1 and V2](./arkts-v1-v2-mixusage.md).
 
 ## Overview
 
@@ -952,7 +952,7 @@ The sample code uses a three-layer nesting to show:
 * The observation capability of the decorator of V1 is to function as a proxy for data. Therefore, when data is nested, the decorator of V1 can only disassemble the child component to observe lower-level data through \@Observed and \@ObjectLink.
 * \@Track is used to prevent the **info** in the **MessageInfo** class from being updated when the **messageId** is changed. You can remove \@Track to observe the change. When the **messageId** is changed, the **info** is also changed. However, this change cannot be observed by \@ObjectLink.
 
-### Using @ObsevedV2 and @Trace to Observe Nested Classes
+### Using @ObservedV2 and @Trace to Observe Nested Classes
 
 ```typescript
 @ObservedV2
@@ -1043,5 +1043,5 @@ struct Index {
 The sample code shows:
 
 * \@ObservedV2 and \@Trace nest the observation capability to the class properties. Therefore, when a class property is marked by @Trace, the change can be observed regardless of the number of nested levels.
-* When \@ObservdV2 and \@Observed are used together, the decorator used by the outermost class determines whether the class object can be decorated by the decorator of V1. For example, the class decorated by \@ObservedV2 in the lower level does not affect the outermost class decorated by the decorator of V1.
+* When \@ObservedV2 and \@Observed are used together, the decorator used by the outermost class determines whether the class object can be decorated by the decorator of V1. For example, the class decorated by \@ObservedV2 in the lower level does not affect the outermost class decorated by the decorator of V1.
 

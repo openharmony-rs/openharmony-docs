@@ -1222,11 +1222,11 @@ type Nullable\<T> = T | undefined
 | END    | 3    | 轴事件结束。 |
 | CANCEL | 4    | 轴事件取消。 |
 
-## AxisType<sup>21+</sup>
+## AxisType<sup>22+</sup>
 
 定义轴事件的轴类型。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -1358,3 +1358,17 @@ type Nullable\<T> = T | undefined
 | ------------------ | - | ---------------------------------------- |
 | FLOATING_ABOVE_MENU| 0 | 悬浮在Menu之上，默认值，不占用高度。      |
 | EMBEDDED_IN_MENU   | 1 | 在Menu中展开，参与布局计算，占用高度。    |
+
+## PresetFillType<sup>22+</sup>
+
+为不同响应式断点规格指定列数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称            | 值   | 说明                                                         |
+| --------------- | ---- | ------------------------------------------------------------ |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度相当于SM及更小的设备时显示1列，相当于MD设备时显示2列，相当于LG及更大的设备时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度相当于SM及更小的设备上显示2列，相当于MD设备时显示3列，相当于LG及更大的设备时显示5列。                                       |
+| BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度相当于SM及更小的设备时显示1列，相当于MD设备时显示2列，相当于LG及更大的设备时显示3列。 |
+| BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度相当于SM及更小的设备时显示2列，相当于MD设备时显示3列，相当于LG及更大的设备时显示5列。 |

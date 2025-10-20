@@ -129,7 +129,7 @@
    // 1. 创建一个剪贴板实例
    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
    // 2. 判断剪贴板中是否有文本类型数据
-   bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, "text/plain");
+   bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, PASTEBOARD_MIMETYPE_TEXT_PLAIN);
    if (hasPlainTextData) {
      // 3. 从剪贴板中获取统一类型数据OH_UdmfData
      int ret = 0;

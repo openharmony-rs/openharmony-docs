@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic uses ECDH as an example to demonstrate how to perform key agreement for HUKS-managed keys. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-generation-overview.md#supported-algorithms).
+This topic uses ECDH as an example to demonstrate how to perform key agreement for HUKS-managed keys. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-agreement-overview.md#supported-algorithms).
 
 ## Add the dynamic library in the CMake script.
 ```txt
@@ -217,7 +217,8 @@ static const char *g_inData = "Hks_ECDH_Agree_Test_00000000000000000000000000000
                                     "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 /* Perform key agreement. */
 OH_Huks_Result HksEcdhAgreeFinish(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_Blob *publicKey,
-    const struct OH_Huks_ParamSet *initParamSet, const struct OH_Huks_ParamSet *finishParamSet, struct OH_Huks_Blob *outData)
+    const struct OH_Huks_ParamSet *initParamSet, const struct OH_Huks_ParamSet *finishParamSet,
+    struct OH_Huks_Blob *outData)
 {
     struct OH_Huks_Blob inData = {
         (uint32_t)strlen(g_inData),
@@ -260,7 +261,8 @@ static napi_value AgreeKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult = InitParamSet(&initParamSet01, g_agreeParamsInit01, sizeof(g_agreeParamsInit01) / sizeof(OH_Huks_Param));
+        ohResult = InitParamSet(&initParamSet01, g_agreeParamsInit01,
+            sizeof(g_agreeParamsInit01) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
@@ -269,7 +271,8 @@ static napi_value AgreeKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult = InitParamSet(&initParamSet02, g_agreeParamsInit02, sizeof(g_agreeParamsInit02) / sizeof(OH_Huks_Param));
+        ohResult = InitParamSet(&initParamSet02, g_agreeParamsInit02,
+            sizeof(g_agreeParamsInit02) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
@@ -331,7 +334,7 @@ static napi_value AgreeKey(napi_env env, napi_callback_info info)
     OH_Huks_FreeParamSet(&finishParamSet01);
     OH_Huks_FreeParamSet(&initParamSet02);
     OH_Huks_FreeParamSet(&finishParamSet02);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;

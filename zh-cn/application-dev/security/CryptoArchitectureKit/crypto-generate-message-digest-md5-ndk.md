@@ -103,6 +103,7 @@ static OH_Crypto_ErrCode doLoopMd()
 
     ret = OH_CryptoDigest_Create("MD5", &ctx);
     if (ret != CRYPTO_SUCCESS) {
+        free(testData);
         return ret;
     }
     do {

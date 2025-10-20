@@ -22,6 +22,7 @@
       - [\@LocalBuilder装饰器：维持组件关系](../ui/state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
       - [wrapBuilder：封装全局@Builder](../ui/state-management/arkts-wrapBuilder.md)
+      - [mutableBuilder: 动态全局@Builder封装](../ui/state-management/arkts-mutableBuilder.md) 
     - [\@Styles装饰器：定义组件重用样式](../ui/state-management/arkts-style.md)
     - [\@Extend装饰器：定义扩展组件样式](../ui/state-management/arkts-extend.md)
     - [stateStyles：多态样式](../ui/state-management/arkts-statestyles.md)
@@ -239,8 +240,8 @@
       - [全屏启动原子化服务 (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [同应用进程嵌入式组件 (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
-    - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components.md)
-    - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components.md)
+    - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
+    - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
     <!--DelEnd-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)

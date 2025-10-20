@@ -242,7 +242,7 @@ zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @luobohua @hu
 
 
 [开发-ArkUI-UI开发]
-zh-cn/application-dev/ui/state-management/ @zhang_yixin13 @TerryTsao @s10021109 @jiyujia926 @seaside_wu
+zh-cn/application-dev/ui/state-management/ @zhang_yixin13 @zhangwenhan12 @s10021109 @jiyujia926 @seaside_wu
 zh-cn/application-dev/ui/rendering-control/ @zhang_yixin13 @liuli0427 @keerecles @liubihao
 zh-cn/application-dev/ui/arkts-advanced-components-arcbutton.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/arkts-animation-smoothing.md	@CCFFWW	@lxl007	@HelloCrease
@@ -401,7 +401,7 @@ zh-cn/application-dev/ui/ndk-waterflow.md	@zcdqs	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/ui/Readme-CN.md			@HelloCrease
 zh-cn/application-dev/ui/theme_skinning.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/ui/ui-dark-light-color-adaptation.md	@lushi871202	@sally__	@HelloCrease
-zh-cn/application-dev/ui/ui-ide-previewer.md	@zhangboren	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/ui/ui-ide-previewer.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/ui/ui-inspector-profiler.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/ui/ui-js-animate-attribute-style.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/ui-js-animate-background-position-style.md	@CCFFWW	@lxl007	@HelloCrease
@@ -450,7 +450,7 @@ zh-cn/application-dev/ui/ui-js-components-swiper.md	@jiangdayuan	@lxl007	@HelloC
 zh-cn/application-dev/ui/ui-js-components-switch.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/ui/ui-js-components-text.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/ui/ui-js-components-toolbar.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/ui/ui-js-overview.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/ui/ui-performance-overview.md	@wild-mucor	@sally__	@HelloCrease
 
@@ -581,17 +581,17 @@ zh-cn/application-dev/telephony/contacts-intro.md @zhang_yixin13 @yanghaoqian @s
 zh-cn/application-dev/file-management/app-file-access.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/app-file-backup.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
+zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/file-management/app-file-overview.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
 zh-cn/application-dev/file-management/app-fs-space-statistics.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/app-sandbox-directory.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
 zh-cn/application-dev/file-management/core-file-kit-intro.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/dev-user-file-manager.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/distributed-fs-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/file-access-across-devices.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/file-copy-across-devices.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/file-persistPermission.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/file-management/manage-external-storage.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/native-environment-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/native-fileio-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/native-fileshare-guidelines.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
@@ -600,7 +600,7 @@ zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @zhuang
 zh-cn/application-dev/file-management/request-dir-permission.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/save-user-file.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/select-user-file.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/send-file-to-app-sandbox.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
+zh-cn/application-dev/file-management/send-file-to-app-sandbox-sys.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
 zh-cn/application-dev/file-management/set-security-label.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
@@ -639,7 +639,7 @@ zh-cn/application-dev/form/  @Brilliantry_Rui @ylsnow  @cmz001   @zhaoshaohua_ei
 zh-cn/application-dev/mechanicManager/camera-tracking-guide.md @hobbycao @saga2025 @zhaodengqi @foryourself
 zh-cn/application-dev/mechanicManager/mechanic-kit-intro.md @hobbycao @saga2025 @zhaodengqi @foryourself
 zh-cn/application-dev/mechanicManager/Readme-CN.md @hobbycao @saga2025 @zhaodengqi @foryourself
-zh-cn/application-dev/mechanicManager/rotation-control-guide.md @hobbycao @saga2025 @zhaodengqi @foryourself
+zh-cn/application-dev/mechanicManager/rotation-control-guide-sys.md @hobbycao @saga2025 @zhaodengqi @foryourself
 
 
 [开发-FFRT]
@@ -667,6 +667,7 @@ zh-cn/application-dev/dfx/crash-detection-overview.md @chenshi51 @Maplestory @yu
 zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/fault-log-extension-app-events-arkts.md @chenshi51 @Maplestory91 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hdc.md @kunsilva @weimingjin @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-event-reporting.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-faq.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
@@ -706,7 +707,7 @@ zh-cn/application-dev/dfx/hilog-guidelines-ndk.md @liuyifeifei@buzhenwang @shenc
 zh-cn/application-dev/dfx/hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @foryourself
 zh-cn/application-dev/dfx/hiperf.md @leiguangyu @Maplestroy @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiprofiler.md @zyxzyx @Maplestroy @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hisysevent.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitracechain-guidelines-arkts.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitracechain-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
@@ -964,6 +965,7 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExt
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md @huipeizi @zhangyafei-echo @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-uripermissionmanager-sys.md @huipeizi @ccllee1 @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-errorObserver.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopObserver.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
@@ -1267,7 +1269,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-snapshot.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/errorcode-styled-string.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-system-resource.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-uicontext.md	@xiang-shouxing	@sally__	@HelloCrease
@@ -1284,15 +1286,15 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Content.md	@xiang-shoux
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-dragController.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md	@weixin_52725220	@xiong0104	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-frameNode.md	@CCFFWW	@lxl007	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-frameNode.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-graphics.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-inspector.md	@lmleon	@fredyuan0912	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-node.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-NodeContent.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-nodeController.md	@xiang-shouxing	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-observer.md	@xiang-shouxing	@fredyuan0912	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-observer.md	@lushi871202	@fredyuan0912	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md	@lushi871202	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md	@lixingchi1	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md	@lixingchi1	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-renderNode.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-resource.md	@fangzhiyuan1	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md	@CCFFWW	@lxl007	@HelloCrease
@@ -1311,7 +1313,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-prompt.md	@houguobiao	@lxl007
 zh-cn/application-dev/reference/apis-arkui/js-apis-promptAction-sys.md	@houguobiao	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-promptAction.md	@houguobiao	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-router.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-apis-StateManagement.md	@s10021109	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-apis-StateManagement.md	@s10021109	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-app.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-mediaquery.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-prompt.md	@houguobiao	@lxl007	@HelloCrease
@@ -1319,8 +1321,8 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-system-router.md	@jiangdayuan
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance-sys.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/Readme-CN.md	@xiang-shouxing	@fredyuan0912	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-button.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-chart.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-divider.md	@lanshouren	@liuli0427	@HelloCrease
@@ -1383,12 +1385,12 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-swip
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-bar.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-content.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tabs.md	@CCFFWW	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-create-elements.md	@shiyu_huang	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-basic-usage.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-create-elements.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-basic-usage.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-lifecycle.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-props.md	@shiyu_huang	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-slot.md	@shiyu_huang	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-style.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-props.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-slot.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-style.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-grid-basic-concepts.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-grid-col.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-grid-container.md	@lanshouren	@liuli0427	@HelloCrease
@@ -1446,11 +1448,11 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/Readme-CN.md	@piggyguy	
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/errorcode-image-analyzer.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcSlider.md	@liyi0309	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md	@youzhi92	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md	@youzhi92	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md	@youzhi92	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md	@youzhi92	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeListItem.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md	@YanSanzo	@ybhou1993	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md	@youzhi92	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md	@youzhi92	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-EditableTitleBar.md	@YanSanzo	@ybhou1993	@HelloCrease
@@ -1464,8 +1466,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNav
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md	@YanSanzo	@ybhou1993	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md	@youzhi92	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md	@youzhi92	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md	@youzhi92	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md	@youzhi92	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectTitleBar.md	@YanSanzo	@ybhou1993	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SplitLayout.md	@YanSanzo	@ybhou1993	@HelloCrease
@@ -1609,8 +1611,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md	@z
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-theme.md	@lushi871202	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-layout.md	@lanshouren	@liuli0427	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md	@zhangboren	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-line.md	@sunbees	@liuli0427	@HelloCrease
@@ -1647,14 +1649,14 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-page-transition-animation
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-particle-animation.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-picker-common.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-pixel-units.md	@xiang-shouxing	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@keerecles	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@keerecles	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@keerecles	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	@s10021109	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109	@TerryTsao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@keerecles	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@keerecles	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@keerecles	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	@s10021109	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109	@zhangwenhan12	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md	@jiangdayuan	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common-sys.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common.md	@pssea	@jiaoaozihao	@HelloCrease
@@ -1717,7 +1719,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popu
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md	@xiang-shouxing	@sally__	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition-sys.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md	@CCFFWW	@lxl007	@HelloCrease
@@ -1731,10 +1733,10 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md	@zhangboren	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-size-change-event.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-entry.md	@s10021109	@TerryTsao	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-entry.md	@s10021109	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-events-axis.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-events-click.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-events-crown.md	@piggyguy	@songyanhong	@HelloCrease
@@ -1750,8 +1752,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-focus-event.md	
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-styled-string-sys.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-styled-string.md	@pssea	@jiaoaozihao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md	@zhangboren	@TerryTsao	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-appendix-types.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-appendix-types.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-button.md	@liyi0309	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-calendar.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-chart.md	@weixin_52725220	@xiong0104	@HelloCrease
@@ -1776,7 +1778,7 @@ zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widge
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-list.md	@yylong	@liuzhenshuo	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-stack.md	@lanshouren	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-swiper.md	@jiangdayuan	@lxl007	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-custom-basic-usage.md	@shiyu_huang	@TerryTsao	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-custom-basic-usage.md	@shiyu_huang	@zhangwenhan12	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-file.md	@piggyguy	@songyanhong	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-multiple-languages.md	@xiang-shouxing	@sally__	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-syntax-css.md	@piggyguy	@songyanhong	@HelloCrease
@@ -2094,6 +2096,20 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-statfs.md    @foryour
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-system-file.md    @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-userFileManager-sys.md @yixiaoff @liweilu1 @xchaosioda @w_Machine_cc
 zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-cloud-disk-error-code-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changedata.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changesresult.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-displaynameinfo.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-failedlist.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-filesyncstate.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-pathinfo.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-resultlist.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-syncfolder.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager.md @yunlanying @liuhonggang123 @foryourself
 
 
 [API参考-mechanicManager]
@@ -2165,6 +2181,8 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace-hitra
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liuyifeifei @buzhenwang @shenchenkai @liyang2235 @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @yufeifei @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
@@ -2173,6 +2191,7 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdf
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @yufeifei @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
@@ -2185,6 +2204,8 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracemet
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionContext.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
 
 
@@ -2204,7 +2225,7 @@ zh-cn/application-dev/reference/apis-distributedservice-kit/js-apis-device-manag
 zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-device-manager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-devicestatus.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-link-enhance.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode_proxyChannelManager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
+zh-cn/application-dev/reference/apis-distributedservice-kit/errorcode-proxyChannelManager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/capi-devicemanager.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/capi-oh-device-manager-h.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-distributedservice-kit/capi-oh-device-manager-err-code-h.md @intermilano @william-ligang @liuhonggang123 @hu-zhiqiong
@@ -2467,3 +2488,6 @@ zh-cn/application-dev/tools/Readme-CN.md @foryourself @lingminghw @RayShih @fory
 zh-cn/application-dev/faqs/faqs-ability.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/faqs/faqs-bundle-management.md @Brilliantry_Rui  @changzheng6   @kongjing2  @small_bricklayer
 zh-cn/application-dev/faqs/faqs-event-notification.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
+zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @zhuangzhuang @gsl_1234	@liuhonggang123	@foryourself
+
