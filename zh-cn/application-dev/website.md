@@ -5406,6 +5406,9 @@
     - ArkGraphics 2D（方舟2D图形服务）<!--arkgraphics-api-->
       - ArkTS API<!--arkgraphics-arkts-->
         - [@ohos.effectKit (图像效果)](reference/apis-arkgraphics2d/js-apis-effectKit.md)
+        <!--Del-->
+        - [@ohos.effectKit (图像效果)(系统接口)](reference/apis-arkgraphics2d/js-apis-effectKit-sys.md)
+        <!--DelEnd-->
         - [@ohos.graphics.colorSpaceManager (色彩管理)](reference/apis-arkgraphics2d/js-apis-colorSpaceManager.md)
         - [@ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)](reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
         - [@ohos.graphics.common2D (2D图形通用数据类型)](reference/apis-arkgraphics2d/js-apis-graphics-common2D.md)
