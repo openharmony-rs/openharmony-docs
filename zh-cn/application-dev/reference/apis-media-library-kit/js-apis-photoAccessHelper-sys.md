@@ -9598,6 +9598,8 @@ async function example(context: Context) {
 | DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | 删除日期（删除文件时间距1970年1月1日的毫秒数值）。**系统接口**：此接口为系统接口。<br>注意：查询照片时，不支持基于该字段排序。 |
 | MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | 动态照片效果模式。**系统接口**：此接口为系统接口。 |
 | CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | 云增强任务标识。**系统接口**：此接口为系统接口。 |
+| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | 缩略图生成标识。**系统接口**：此接口为系统接口。 |
+| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | 缩略图可见标识。**系统接口**：此接口为系统接口。 |
 | SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | 水印可编辑标识。**系统接口**：此接口为系统接口。 |
 | IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | 是否支持自动云增强。**系统接口**：此接口为系统接口。 |
 | OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | 照片所属的相册id。**系统接口**：此接口为系统接口。 |
@@ -10022,7 +10024,7 @@ async function example(context: Context) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| RETAIN_FORCE |  0 |  删除原文件在云端的本地元数据和缩略图。 |
+| RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
