@@ -46,7 +46,7 @@ import { wantConstant } from '@kit.AbilityKit';
 | SUB_PACKAGE_NAME<sup>12+</sup>  | ohos.param.atomicservice.subpackageName | 表示原子化服务的分包名。应用程序包支持多模块开发，每个应用程序包可能包含多个HAP或HSP。原子化服务为了实现快速启动效果，对HAP和HSP文件大小做了限制，并同时优化了启动机制，原子化服务的这种多模块开发方式称为“分包”。<br>打开原子化服务的时候，可以通过设置该参数拉起对应的分包。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
 | APP_INSTANCE_KEY<sup>14+</sup>  | ohos.extra.param.key.appInstance  | 表示具体的应用实例。<br>在[应用创建多实例](../../quick-start/multiInstance.md)时，系统会为每个实例分配唯一的标识。应用跳转时，开发者可以通过设置该参数指定希望跳转到的已创建的应用实例。 |
 | CREATE_APP_INSTANCE_KEY<sup>14+</sup>  | ohos.extra.param.key.createAppInstance  | 表示是否创建新应用实例。默认为false，表示不创建新应用实例。<br>开发者可以通过设置该参数为true拉起新的应用实例。需要注意的是，被拉起的应用需要支持多实例，参考[应用创建多实例](../../quick-start/multiInstance.md)。 |
-| CALLER_APP_CLONE_INDEX<sup>14+</sup>  | ohos.param.callerAppCloneIndex  | 表示被拉起方应用的分身索引。当应用有多个[分身](../../quick-start/app-clone.md)时，可通过设置该参数指定被拉起方的分身。|
+| CALLER_APP_CLONE_INDEX<sup>14+</sup>  | ohos.param.callerAppCloneIndex  | 表示拉起方应用的分身索引。|
 | APP_LAUNCH_TRUSTLIST<sup>17+</sup>  | ohos.params.appLaunchTrustList  | 表示隐式启动时的应用过滤列表。<br>隐式启动时仅匹配列表中的应用，值为string类型的[AppIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)数组，过滤列表最多支持50个应用，传入空数组不生效。<br>**原子化服务API**：从API version 17开始，该接口支持在原子化服务中使用。 |
 | LAUNCH_REASON_MESSAGE<sup>18+</sup>  | ohos.params.launchReasonMessage  | 表示应用拉起的原因。<br>调用方必须为系统应用，且需要申请ohos.permission.SET_LAUNCH_REASON_MESSAGE权限。当前取值支持：<br>"ReasonMessage_SystemShare"：表示系统分享拉起。<br>"ReasonMessage_DesktopShortcut"：表示桌面快捷方式拉起。<br>"ReasonMessage_Notification"：表示通知拉起。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
 | DESTINATION_PLUGIN_ABILITY<sup>19+</sup>  | ohos.params.pluginAbility  | 指示目标Ability是插件Ability。 |
