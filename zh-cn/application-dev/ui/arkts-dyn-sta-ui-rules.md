@@ -2528,7 +2528,9 @@ class MyNodeController extends NodeController {
 
 **适配建议：**
 
-按照示例进行修改。
+使用getFocusedUIContext()方法获取UIContext实例，再通过此实例调用对应方法来作为替代。
+
+对于在自定义组件中使用废弃接口的场景，[UI组件适配（特殊场景）](arkts-sta-deprecated-special-scene.md)中介绍了一种替代的适配方法。
 
 **示例：**
 
