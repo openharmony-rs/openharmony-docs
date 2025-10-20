@@ -64,7 +64,7 @@
        if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
        }
-       // cameras在不使用时，需要调用delete[]释放。
+       // 在不使用cameras时，需要调用delete[]释放。
        for (uint32_t index = 0; index < size; index++) {
           OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", (*cameras)[index].cameraId);              // 获取相机ID。
           OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", (*cameras)[index].cameraPosition);  // 获取相机位置。
