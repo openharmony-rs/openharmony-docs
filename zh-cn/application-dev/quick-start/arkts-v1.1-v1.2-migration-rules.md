@@ -600,7 +600,7 @@ function test() {
 **ArkTS1.1**
 
 ```typescript
-function foo (index: number) {
+function foo(index: number) {
   let array = [1, 2, 3];
   let element = array[index];
 }
@@ -610,21 +610,21 @@ function getIndex(): number {
 }
 
 let array = [1, 2, 3];
-for (let i: number = 0; i < array.length; i++) { // 违反规则
-  console.info(array[i]);
+for (let i: number = 0; i < array.length; i++) {
+  console.info(array[i].toString());
 }
 ```
 
 **ArkTS1.2**
 
 ```typescript
-function foo (index: int) {
+function foo(index: int) {
   let array = [1, 2, 3];
   let element = array[index];
 }
 
 function getIndex(): int {
-  return Math.floor(Math.random() * 10).toInt();  // 转换为 `int`
+  return Math.floor(Math.random() * 10).toInt(); // 转换为 `int`
 }
 
 let array = [1, 2, 3];
@@ -978,27 +978,12 @@ ArkTS1.2是静态类型语言，不支持在函数，方法上动态增加属性
 **ArkTS1.1**
 
 ```typescript
-interface ObjType {
-  foo: (path: string) => void;
-}
-
 function foo(path: string): void {
   console.info(path);
 }
+
 foo.baz = 1;
-
-const obj : ObjType= {
-  foo(path: string): void {
-    console.info(path);
-  }
-};
-obj.foo.baz = 2; // 违反规则
-
-function counter(): number {
-  counter.count = (counter.count || 0) + 1; // 违反规则
-  return counter.count;
-}
-console.info(counter().toString());
+console.info(foo.baz.toString());
 ```
 
 **ArkTS1.2**
@@ -1008,6 +993,7 @@ class T1 {
   static foo(path: string): void {
     console.info(path);
   }
+
   static bar: number = 1;
 }
 
@@ -1018,28 +1004,9 @@ class T2 {
 
   static baz: number = 2;
 }
+
 T2.foo("example");
 console.info(T2.baz);
-
-class Logger {
-  static level = "debug";
-
-  static log(message: string) {
-    console.info(message);
-  }
-}
-Logger.log("test");
-console.info(Logger.level);
-
-class Counter {
-  static count = 0;
-
-  static increment() {
-    Counter.count += 1;
-    return Counter.count;
-  }
-}
-console.info(Counter.increment());
 ```
 
 ## 不支持TS装饰器
@@ -1059,8 +1026,10 @@ ArkTS1.2不支持通过自定义装饰器动态改变类、方法、属性或函
 请参考以下示例修改代码。
 
 **示例1：日志追踪装饰器**
+
+**ArkTS1.1**
+
 ```typescript
-// ArkTS1.1代码：
 // file1.ts
 export function Log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
@@ -1071,8 +1040,11 @@ export function Log(target: any, propertyKey: string, descriptor: PropertyDescri
     return result;
   };
 }
-// file2.ets
-import {Log} from './file1';
+
+// index.ets
+import { Log } from './file1';
+
+@Entry
 @Component
 struct MyCounter {
   @State count: number = 0;
@@ -1089,8 +1061,10 @@ struct MyCounter {
   }
 }
 ```
+
+**ArkTS1.2**
+
 ```typescript
-// ArkTS1.2代码：
 import { Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -1112,9 +1086,12 @@ struct Counter {
   }
 }
 ```
+
 **示例2：防抖装饰器**
+
+**ArkTS1.1**
+
 ```typescript
-// ArkTS1.1代码：
 // file1.ts
 export function Debounce(delay: number = 300) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -1131,8 +1108,11 @@ export function Debounce(delay: number = 300) {
     };
   };
 }
-// file2.ets
-import {Debounce} from './file1';
+
+// index.ets
+import { Debounce } from './file1';
+
+@Entry
 @Component
 struct SearchBox {
   @State keyword: string = '';
@@ -1145,13 +1125,17 @@ struct SearchBox {
   }
 
   build() {
-    TextField({ placeholder: '搜索...' })
-      .onChange((value) => this.onSearchInput(value))
+    Row() {
+      TextInput({ placeholder: '搜索...' })
+        .onChange((value) => this.onSearchInput(value))
+    }
   }
 }
 ```
+
+**ArkTS1.2**
+
 ```typescript
-// ArkTS1.2代码：
 import { Component, Button } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -1177,15 +1161,22 @@ struct SearchBox {
   }
 }
 ```
+
 **示例3：权限校验装饰器**
+
+**ArkTS1.1**
+
 ```typescript
-// ArkTS1.1代码：
 // file1.ts
+const checkUserPermission = (permission: string) => {
+  return true; // 自定义权限检查函数
+}
+
 export function RequiresPermission(permission: string) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     descriptor.value = function (...args: any[]) {
-      if (checkUserPermission(permission)) {  // 自定义权限检查函数
+      if (checkUserPermission(permission)) {
         return originalMethod.apply(this, args);
       } else {
         console.error(`[权限不足] 需要 ${permission} 权限`);
@@ -1194,9 +1185,11 @@ export function RequiresPermission(permission: string) {
     };
   };
 }
-// file2.ets
-import {RequiresPermission} from './file1';
 
+// index.ets
+import { RequiresPermission } from './file1';
+
+@Entry
 @Component
 struct AdminPanel {
   @RequiresPermission('admin')
@@ -1210,8 +1203,10 @@ struct AdminPanel {
   }
 }
 ```
+
+**ArkTS1.2**
+
 ```typescript
-// ArkTS1.2代码：
 import { Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -1231,9 +1226,12 @@ struct AdminPanel {
   }
 }
 ```
+
 **示例4：性能监控装饰器**
+
+**ArkTS1.1**
+
 ```typescript
-// ArkTS1.1代码：
 // file1.ts
 export function PerformanceMonitor(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
@@ -1245,9 +1243,11 @@ export function PerformanceMonitor(target: any, propertyKey: string, descriptor:
     return result;
   };
 }
-// file2.ets
-import {PerformanceMonitor} from './file1';
 
+// index.ets
+import { PerformanceMonitor } from './file1';
+
+@Entry
 @Component
 struct DataLoader {
   @PerformanceMonitor
@@ -1266,8 +1266,10 @@ struct DataLoader {
   }
 }
 ```
+
+**ArkTS1.2**
+
 ```typescript
-// ArkTS1.2代码：
 import { Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 @Component
@@ -1290,25 +1292,28 @@ struct DataLoader {
   }
 }
 ```
+
 **示例5：自动保存装饰器**
+
+**ArkTS1.1**
+
 ```typescript
-// ArkTS1.1代码：
 // file1.ts
 export function AutoSave(key: string) {
   return function (target: any, propertyKey: string) {
     let value = target[propertyKey];
-    
+
     const getter = () => value;
     const setter = (newVal: any) => {
       value = newVal;
       try {
         console.info(`[自动保存] 键: ${key}, 值: ${JSON.stringify(newVal)}`);
-        localStorage.setItem(key, JSON.stringify(newVal));  // 实际项目需使用存储API
+        // localStorage.setItem(key, JSON.stringify(newVal)); // 实际项目需使用存储API
       } catch (e) {
         console.error(`[自动保存失败] ${e}`);
       }
     };
-    
+
     Object.defineProperty(target, propertyKey, {
       get: getter,
       set: setter,
@@ -1317,8 +1322,11 @@ export function AutoSave(key: string) {
     });
   };
 }
-// file2.ets
-import {AutoSave} from './file1';
+
+// index.ets
+import { AutoSave } from './file1';
+
+@Entry
 @Component
 struct Settings {
   @AutoSave('user_settings')
@@ -1332,8 +1340,10 @@ struct Settings {
   }
 }
 ```
+
+**ArkTS1.2**
+
 ```typescript
-// ArkTS1.2代码：
 import { Component, Button, ClickEvent,Row } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -1427,24 +1437,32 @@ ArkTS1.2的switch表达式类型只能为number、string、enum。
 **ArkTS1.1**
 
 ```typescript
-const isTrue = true;
+let isTrue: boolean = Boolean(1);
 switch (isTrue) {
-    case true: // 违反规则
-        console.info('It\'s true'); break;
-    case false:  // 违反规则
-        console.info('It\'s false'); break;
+  case true:
+    console.info('It\'s true');
+    break;
+  case false:
+    console.info('It\'s false');
+    break;
 }
 
-const obj = { value: 1 };
-switch (obj) {  // 违反规则
-    case { value: 1 }:
-        console.info('Matched'); break;
+interface IObj {
+  value: number
+}
+
+const obj: IObj = { value: 1 };
+switch (obj) {
+  case { value: 1 } as IObj:
+    console.info('Matched');
+    break;
 }
 
 const arr = [1, 2, 3];
-switch (arr) {  // 违反规则
-    case [1, 2, 3]: 
-        console.info('Matched'); break;
+switch (arr) {
+  case [1, 2, 3]:
+    console.info('Matched');
+    break;
 }
 ```
 
@@ -1453,91 +1471,26 @@ switch (arr) {  // 违反规则
 ```typescript
 const isTrue = 'true';
 switch (isTrue) {
-    case 'true': 
-        console.info('It\'s true'); break;
-    case 'false': 
-        console.info('It\'s false'); break;
+  case 'true':
+    console.info('It\'s true');
+    break;
+  case 'false':
+    console.info('It\'s false');
+    break;
 }
 
-const objValue = 1;  // 仅存储值
+const objValue = 1; // 仅存储值
 switch (objValue) {
-    case 1:
-        console.info('Matched'); break;
+  case 1:
+    console.info('Matched');
+    break;
 }
 
-const arrValue = '1,2,3';  // 变成字符串
+const arrValue = '1,2,3'; // 变成字符串
 switch (arrValue) {
-    case '1,2,3':
-        console.info('Matched'); break;
-}
-```
-
-## 不支持重复case语句
-
-**规则：** `arkts-case-expr`
-
-**规则解释：**
-
-ArkTS1.2不支持Switch语句的中case重复。
-
-**变更原因：**
- 
-提高代码的可读性。
-
-**适配建议：**
-
-避免出现重复的case。
-
-**示例：**
-
-**ArkTS1.1**
-
-```typescript
-const num = 1;
-switch (num) {
-    case 1:
-        console.info('First match');
-    case 1:
-        console.info('Second match');
-        break;
-    default:
-        console.info('No match');
-}
-
-enum Status {
-    Active,
-    Inactive
-}
-
-const state = Status.Active;
-switch (state) {
-    case Status.Active:
-        console.info('User is active');
-        break;
-    case Status.Active: // 违反规则
-        console.info('Already active');
-        break;
-}
-```
-
-**ArkTS1.2**
-
-```typescript
-const num = 1;
-switch (num) {
-    case 1:
-        console.info('First match');
-        console.info('Second match');
-        break;
-    default:
-        console.info('No match');
-}
-
-switch (state) {
-    case Status.Active:
-        console.info('User is active');
-        console.info('Already active'); // 代码合并
-        break;
+  case '1,2,3':
+    console.info('Matched');
+    break;
 }
 ```
 
@@ -1686,11 +1639,11 @@ ArkTS1.2不支持动态更改对象布局，因此不支持全局作用域和glo
 **ArkTS1.1**
 
 ```typescript
-// 全局文件中
-var abc = 100;
+// globalThis里设置abc
+globalThis.abc = 123;
 
-// 从上面引用'abc'
-let x = globalThis.abc;
+// 从globalThis引用'abc'
+const x: number = globalThis.abc;
 ```
 
 **ArkTS1.2**
@@ -1727,7 +1680,11 @@ ArkTS1.2中的方法会自动捕获上下文中的`this`，因此无需使用`Fu
 
 ```typescript
 class MyClass {
-  constructor(public name: string) {}
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
 
   greet() {
     console.info(`Hello, my name is ${this.name}`);
@@ -1735,7 +1692,7 @@ class MyClass {
 }
 
 const instance = new MyClass("Alice");
-const boundGreet = instance.greet.bind(instance); // 违反规则，不允许使用 Function.bind
+const boundGreet: Function = instance.greet.bind(instance);
 boundGreet();
 ```
 
@@ -1743,11 +1700,15 @@ boundGreet();
 
 ```typescript
 class MyClass {
-    name: string;
-    constructor(name: string) { this.name = name; }
-    greet() {
-        console.info(`Hello, my name is ${this.name}`);
-    }
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  greet() {
+    console.info(`Hello, my name is ${this.name}`);
+  }
 }
 
 const instance = new MyClass("Alice");
@@ -1777,23 +1738,33 @@ boundGreet(); // Hello, my name is Alice
 
 ```typescript
 class MyClass {
-  constructor(public name: string) {}
+  constructor() {
+  }
+
+  static test: string = "test";
 }
 
-let obj = MyClass; // 违反规则
+let obj = MyClass; // obj是类型，并非对象
+
+console.info(MyClass.test); // 输出：test
+console.info((MyClass as object)['test']); // 输出：test
 ```
 
 **ArkTS1.2**
 
 ```typescript
 class MyClass {
-  constructor(name: string) {}
+  constructor() {
+  }
+
+  static test: string = "test";
 }
 
-// 需要通过反射来实现
-let className = "path.to.MyClass";
-let linker = Class.ofCaller()!.getLinker();
-let classType: ClassType | undefined = linker.getType(className) as ClassType;
+// 获取ClassType
+let classType: ClassType | undefined = Type.from<MyClass>() as ClassType;
+
+console.info(MyClass.test); // 输出：test
+// console.info((MyClass as object)['test']) // 违反规则
 ```
 
 ## arkts-limited-stdlib
@@ -1929,35 +1900,19 @@ class A {
 
 let a = A;
 
-class B extends a { // 违反规则
+class B extends a {
   u: number = 0;
 }
 
 function getBase() {
-  return class {
-    w: number = 0;
-  };
+  class C {
+    v: number = 0;
+  }
+
+  return C;
 }
 
-class B extends getBase() { // 违反规则
-  u: number = 0;
-}
-
-interface I {
-  w: number;
-}
-
-let i = I;
-
-class B implements i { // 违反规则
-  w: number = 0;
-}
-
-class A {
-  v: number = 0;
-}
-
-class B extends new A() { // 违反规则
+class D extends getBase() {
   u: number = 0;
 }
 ```
@@ -1970,30 +1925,13 @@ class A {
 }
 
 class B extends A { // 直接继承类
-  u: number = 0;
 }
 
-class Base {
-  w: number = 0;
-}
-
-class B extends Base { // 直接继承类
-  u: number = 0;
-}
-
-interface I {
-  w: number;
-}
-
-class B implements I { // 直接使用接口
-  w: number = 0;
-}
-
-class A {
+class C {
   v: number = 0;
 }
 
-class B extends A { // 直接继承类
+class D extends C { // 直接继承类
   u: number = 0;
 }
 ```
@@ -2020,20 +1958,26 @@ ArkTS1.2不支持TS-like的重载。
 
 ```typescript
 function foo(): void;
+
 function foo(x: string): void;
-function foo(x?: string): void { // 违反规则
-  /*body*/
+
+function foo(x?: string): void {
+  console.info(x);
 }
 
 function sum(x: number, y: number): number;
+
 function sum(x: number, y: number, z: number): number;
-function sum(x: number, y: number, z?: number): number {  // 违反规则
+
+function sum(x: number, y: number, z?: number): number {
   return z ? x + y + z : x + y;
 }
 
-function foo(): string;
-function foo(x: number): number;
-function foo(x?: number): string | number {  // 违反规则
+function foo2(): string;
+
+function foo2(x: number): number;
+
+function foo2(x?: number): string | number {
   return x !== undefined ? x * 2 : "default";
 }
 ```
@@ -2162,15 +2106,20 @@ let b = B.get<string>('param');  // 需要显式指定类型
 **ArkTS1.1**
 
 ```typescript
-function foo(u: object) {
-  u['key']; // 违反规则
+interface Person {
+  name: string;
+  age: number;
 }
 
-const person = { name: "Alice", age: 30 };
-console.info(person['name']); // 违反规则
+function foo(u: object) {
+  u['key'];
+}
 
-const data = JSON.parse('{ "name": "Alice" }');
-console.info(data['name']); // 违反规则
+const person: Person = { name: "Alice", age: 30 };
+console.info((person as object)['name']);
+
+const data: object = JSON.parse('{ "name": "Alice" }');
+console.info(data['name']);
 ```
 
 **ArkTS1.2**
@@ -2216,11 +2165,12 @@ ArkTS1.2中不支持在对象字面量中定义方法。
 
 ```typescript
 class A {
-  foo: () => void = () => {};
+  foo: () => void = () => {
+  };
 }
 
 let a: A = {
-  foo() { // 违反规则
+  foo() {
     console.info('hello');
   }
 }
@@ -2230,18 +2180,8 @@ interface Person {
 }
 
 let p: Person = {
-  sayHello() {  // 违反规则，方法定义方式错误
+  sayHello() {
     console.info('Hi');
-  }
-};
-
-type Handler = {
-  foo(): void; 
-};
-
-let handler: Handler = {
-  foo() {  // 违反规则
-    console.info("Executing handler");
   }
 };
 ```
@@ -2250,7 +2190,8 @@ let handler: Handler = {
 
 ```typescript
 class A {
-  foo : () => void = () => {}
+  foo: () => void = () => {
+  }
 }
 
 let a: A = {
@@ -2264,16 +2205,8 @@ interface Person {
 }
 
 let p: Person = {
-  sayHello: () => {  // 使用属性赋值方式
+  sayHello: () => { // 使用属性赋值方式
     console.info('Hi');
-  }
-};
-
-type Handler = A;
-
-let handler: Handler = {
-  foo: () => {  // 修正方法定义方式
-    console.info("Executing handler");
   }
 };
 ```
@@ -2304,53 +2237,18 @@ class A {
 }
 
 let a: A = { v: 123 }
-console.info('output:'+(a instanceof A));  // 输出：false
-
-class B {
-  v: number = 0;
-  hello() {
-    return "Hello";
-  }
-}
-
-let b: B = { v: 123 };
-console.info(b.hello()); // 报错，没有hello方法
-
-class C {
-  v: number = 0;
-}
-
-let c: C = { v: 123 };
-console.info('output:'+(c instanceof C)); // 输出：false
+console.info((a instanceof A).toString()); // 输出：false
 ```
 
 **ArkTS1.2**
 
 ```typescript
 class A {
-    v: number = 0
+  v: number = 0
 }
 
 let a: A = { v: 123 }
-console.info(a instanceof A)  //  输出：true
-
-class B {
-    v: number = 0;
-    hello() {
-        return "Hello";
-    }
-}
-
-let b: B = { v: 123 };
-console.info(b.hello()); // 输出：Hello
-
-class C {
-    v: number = 0;
-}
-
-let c: C = { v: 123 };
-console.info(c instanceof C); // 输出：true
-
+console.info((a instanceof A).toString()); // 输出：true
 ```
 
 ## 增强对联合类型属性访问的编译时检查
@@ -2375,16 +2273,15 @@ ArkTS1.2在编译时会对联合类型的同名属性进行编译检查，要求
 
 ```typescript
 class A {
-  v: number = 1
+  v: number = 1;
 }
 
 class B {
-  u: string = ''
+  v: string = '';
 }
 
 function foo(a: A | B) {
-  console.info(a.v) // 违反规则
-  console.info(a.u) // 违反规则
+  console.info(a.v.toString());
 }
 ```
 
@@ -2392,19 +2289,19 @@ function foo(a: A | B) {
 
 ```typescript
 class A {
-  v: number = 1
+  v: number = 1;
 }
 
 class B {
-  u: string = ''
+  u: string = '';
 }
 
 function foo(a: A) {
-  console.info(a.v)
+  console.info(a.v);
 }
 
 function foo(a: B) {
-  console.info(a.u)
+  console.info(a.u);
 }
 ```
 
@@ -2429,25 +2326,30 @@ ArkTS1.2遵循null-safety（空安全），需要为类的静态属性赋初始�
 **ArkTS1.1**
 
 ```typescript
-class B {}
-
-class A {
-  static b: B
+class O {
 }
 
 class A {
-  static count: number; // 违反规则，必须初始化
+  static o: O
 }
 
-class A {
-  static config: { theme: string }; // 违反规则，必须初始化
+class B {
+  static count: number;
 }
 
-class A {
-  static name: string;
+interface IConfig {
+  theme: string;
+}
+
+class C {
+  static config: IConfig;
+}
+
+class D {
+  static msg: string;
 
   constructor() {
-    A.name = "default"; // 违反规则，静态属性必须在定义时初始化
+    D.msg = "default";
   }
 }
 ```
@@ -2455,25 +2357,28 @@ class A {
 **ArkTS1.2**
 
 ```typescript
-class B {}
-
-class A {
-  static b? : B
-  static b: B | undefined = undefined
+class O {
 }
 
 class A {
-  static count: number = 0; // 提供初始值
+  static o: O = new O(); // 提供初始值
 }
 
-class A {
-  static config: { theme: string } = { theme: "light" }; // 提供初始值
+class B {
+  static count: number = 1; // 提供初始值
 }
 
-class A {
+interface IConfig {
+  theme: string;
+}
+
+class C {
+  static config: IConfig = { theme: "light" }; // 提供初始值
+}
+
+class D {
   static name: string = "default"; // 在定义时初始化
 }
-
 ```
 
 ## `Function`类型的调用方式与Typescript不同
@@ -2616,31 +2521,30 @@ foo();   // 输出：'a'
 
 ```typescript
 namespace A {
-  export function foo() {  // 错误：命名空间 'A' 中重复导出函数 'foo'
+  function foo() {
     console.info('test1');
   }
 }
 
 namespace A {
-  export function foo() {  // 错误：命名空间 'A' 中重复导出函数 'foo'
+  function foo() {
     console.info('test2');
   }
 }
-
 ```
 
 **ArkTS1.2**
 
 ```typescript
 namespace A {
-  export function foo1() {  // 修改函数名称，避免命名冲突
+  function foo1() {
     console.info('test1');
   }
 }
 
 namespace A {
-  export function foo2() {
-    console.info('test2');
+  function foo2() {
+    console.info('test2'); // 修改函数名称，避免命名冲突
   }
 }
 ```
@@ -2667,18 +2571,15 @@ ArkTS1.2在编译期确定类型布局，运行期不允许修改，以提高性
 
 ```typescript
 class A {
-  constructor(readonly a: string) {
+  a: string
+
+  constructor(a: string) {
+    this.a = a;
   }
 }
 
 class Base {
   readonly b: string = "base";
-}
-
-class A extends Base {
-  constructor(override readonly b: string) {  // 违反规则
-    super();
-  }
 }
 ```
 
@@ -2687,6 +2588,7 @@ class A extends Base {
 ```typescript
 class A {
   readonly a: string
+
   constructor(a: string) {
     this.a = a
   }
@@ -2695,15 +2597,6 @@ class A {
 class Base {
   readonly b: string = "base";
 }
-
-class A extends Base {
-  override readonly b: string;  // 显式声明字段
-  constructor(b: string) {
-    super();
-    this.b = b;
-  }
-}
-
 ```
 
 ## 不支持tagged templates
@@ -2728,45 +2621,45 @@ ArkTS1.2规范函数调用方式，支持字符串相加，但不支持Tagged te
 
 ```typescript
 function myTag(strings: TemplateStringsArray, value: string): string {
-    return strings[0] + value.toUpperCase() + strings[1];
+  return strings[0] + value.toUpperCase() + strings[1];
 }
 
 const name = 'john';
-const result = myTag`Hello, ${name}!`;
-console.info(result);
+const result1 = myTag`Hello, ${name}!`;
+console.info(result1);
 
-function formatTag(strings: TemplateStringsArray, first: string, last: string): string {  
-    return `${strings[0]}${first.toUpperCase()} ${last.toUpperCase()}${strings[1]}`;
+function formatTag(strings: TemplateStringsArray, first: string, last: string): string {
+  return `${strings[0]}${first.toUpperCase()} ${last.toUpperCase()}${strings[1]}`;
 }
 
 const firstName = 'john';
 const lastName = 'doe';
-const result = formatTag`Hello, ${firstName} ${lastName}!`;  // 违反规则
-console.info(result);
+const result2 = formatTag`Hello, ${firstName} ${lastName}!`;
+console.info(result2);
 ```
 
 **ArkTS1.2**
 
 ```typescript
 function myTagWithoutTemplate(strings: string, value: string): string {
-    return strings + value.toUpperCase();
+  return strings + value.toUpperCase();
 }
 
 const name = 'john';
 
 const part1 = 'Hello, ';
 const part2 = '!';
-const result = myTagWithoutTemplate(part1, name) + part2;
-console.info(result);
+const result1 = myTagWithoutTemplate(part1, name) + part2;
+console.info(result1);
 
-function formatWithoutTemplate(greeting: string, first: string, last: string, end: string): string {  
-    return greeting + first.toUpperCase() + ' ' + last.toUpperCase() + end;
+function formatWithoutTemplate(greeting: string, first: string, last: string, end: string): string {
+  return greeting + first.toUpperCase() + ' ' + last.toUpperCase() + end;
 }
 
 const firstName = 'john';
 const lastName = 'doe';
-const result = formatWithoutTemplate('Hello, ', firstName, lastName, '!');  // 直接使用函数参数
-console.info(result);
+const result2 = formatWithoutTemplate('Hello, ', firstName, lastName, '!'); // 直接使用函数参数
+console.info(result2);
 ```
 
 ## 不支持确定赋值断言
@@ -4340,31 +4233,3 @@ let s1: Record<string, number> = {
   'b': 1
 }
 ```
-
-## 逆变和协变
-用来描述类型转换后的继承关系，如果A、B表示类型，f()表示类型转换，≤表示继承关系（A≤B表示A是由B派生出来的子类），则有：
-
-- f()为逆变时，当A≤B时，有f(B)≤f(A)成立。
-
-- f()为协变时，当A≤B时，有f(A)≤f(B)成立。
-
-“逆”为相反的意思，即转换关系与继承关系相反，以下面方法`func1`的参数为例，当Son继承Father时，Son的方法`func1`的参数类型反而比Father更宽泛。
-
-“协”为一致的意思，即转换关系与继承关系相同，以下面方法`func2`的参数为例，当Son继承Father时，Son的方法`func2`的参数类型比Father更具体。
-
-```typescript
-class A { }
-class B { }
-class Father {
-    func1(a: A) { }
-    func2(a: A | B) { }
-}
-class Son extends Father {
-    override func1(a: A | B) { }
-    override func2(a: A) { }
-}
-```
-
-
-## 智能转换
-编译器在特定场景（例如instanceof检查、null检查、上下文类型推导）下能自动识别对象的具体类型，实现变量的自动转换，无需手动操作。
