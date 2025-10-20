@@ -778,5 +778,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hichecker-guidelines-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"HiChecker",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
