@@ -1016,7 +1016,7 @@ predicates.indexedBy("SALARY");
 
 in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column that are in the given range in the specified column.
+Creates an **RdbPredicates** object to search for the records that are in the given range in the specified column.
 
 > **NOTE**
 >
