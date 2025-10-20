@@ -59,7 +59,7 @@ ROI编码接口支持开发者通过字符串形式下发配置参数，参数�
 ### Surface模式
 
 
-调用[OH_VideoEncoder_RegisterParameterCallback()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registerparametercallback)接口注册随帧通路回调。
+调用[OH_VideoEncoder_RegisterParameterCallback()](../../reference/apis-avcodec-kit/_video_encoder.md#oh_videoencoder_registerparametercallback)接口注册随帧通路回调。
 
 ```c++
 // 1. 编码输入参数回调OH_VideoEncoder_OnNeedInputParameter实现。
@@ -81,7 +81,7 @@ OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr); // nullp
 
 ### Buffer模式
    
-调用[OH_AVBuffer_SetParameter()](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_setparameter)接口配置随帧参数。
+调用[OH_AVBuffer_SetParameter()](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_setparameter)接口配置随帧参数。
 
 ```c++
 void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
