@@ -1,4 +1,10 @@
 # Media Library Kit（媒体文件管理服务）
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--media-library-arkts-->
   - @ohos.file.photoAccessHelper (相册管理模块)<!--js-apis-photoaccesshelper-->
