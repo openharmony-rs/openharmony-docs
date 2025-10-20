@@ -4916,12 +4916,12 @@
           - [OH_AVCencInfo](reference/apis-avcodec-kit/capi-multimedia-drm-oh-avcencinfo.md)
         - 已停止维护的接口<!--avcodec-arkts-dep-->
           - 模块<!--avcodec-module-arkts-dep-->
-            - [AudioDecoder](reference/apis-avcodec-kit/_audio_decoder.md)
-            - [AudioEncoder](reference/apis-avcodec-kit/_audio_encoder.md)
+            - [AudioDecoder](reference/apis-avcodec-kit/capi-audiodecoder.md)
+            - [AudioEncoder](reference/apis-avcodec-kit/capi-audioencoder.md)
           - 头文件<!--avcodec-headerfile-arkts-dep-->
             - [avcodec_audio_channel_layout.h](reference/apis-avcodec-kit/capi-avcodec-audio-channel-layout-h.md)
-            - [native_avcodec_audiodecoder.h](reference/apis-avcodec-kit/native__avcodec__audiodecoder_8h.md)
-            - [native_avcodec_audioencoder.h](reference/apis-avcodec-kit/native__avcodec__audioencoder_8h.md)
+            - [native_avcodec_audiodecoder.h](reference/apis-avcodec-kit/capi-native-avcodec-audiodecoder-h.md)
+            - [native_avcodec_audioencoder.h](reference/apis-avcodec-kit/capi-native-avcodec-audioencoder-h.md)
     - AVSession Kit（音视频播控服务）<!--avsession-api-->
       - ArkTS API<!--avsession-arkts-->
         - @ohos.multimedia.avsession (媒体会话管理)<!--js-apis-avsession-->
