@@ -74,7 +74,7 @@ Enumerates the types of ExtensionAbility components.
 | DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md): provides extended capabilities for distributed services and lifecycle callbacks for creation, destruction, and connection of the DistributedExtensionAbility.|
 | APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md): provides backend service capabilities for enterprise common applications.|
 | LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md): provides extended capabilities for interactive widgets, and provides lifecycle callbacks for creating and destroying interactive widgets.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | WebNativeMessagingExtensionAbility: ExtensionAbility for communication between browser extensions and native applications.|
+| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md): provides extended capabilities for web native message communication.|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md): provides extended capabilities for delayed fault notifications.|
 | UNSPECIFIED      | 255 | The ability type is not specified. <!--Del-->It can be used in [queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo) to obtain ExtensionAbility components of all types.<!--DelEnd-->|
 <!--RP2--><!--RP2End-->
@@ -1551,6 +1551,52 @@ import { bundleManager } from '@kit.AbilityKit';
 bundleManager.cleanBundleCacheFilesForSelf().then(() => {
     console.info('cleanBundleCacheFilesForSelf complete.');
 });
+```
+
+## bundleManager.getPluginBundlePathForSelf<sup>22+</sup>
+
+getPluginBundlePathForSelf(pluginBundleName: string): string
+
+Obtains the installation path of a specified plugin in the current [application sandbox](../../file-management/app-sandbox-directory.md).
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
+**Parameters**
+
+| Name           | Type   | Mandatory| Description               |
+| ---------------- | ------ | ---- | ------------------ |
+| pluginBundleName | string | Yes  | Bundle name of the target plugin.|
+
+**Return value**
+
+| Type    | Description                 |
+| ------- | --------------------- |
+| string  | Installation path of the target plugin in the current application sandbox.|
+
+**Error codes**
+
+For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md).
+
+| ID | Error Message                                 |
+| -------- | --------------------------------------- |
+| 17700001 | The specified bundleName is not found. |
+
+**Example**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Use the actual bundle name of the plugin.
+let pluginBundleName = 'com.ohos.pluginDemo';
+try {
+  let path = bundleManager.getPluginBundlePathForSelf(pluginBundleName);
+  hilog.info(0x0000, 'testTag', 'getPluginBundlePathForSelf successfully. path: %{public}s', path);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Cause: %{public}s', message);
+}
 ```
 
 ## ApplicationInfo

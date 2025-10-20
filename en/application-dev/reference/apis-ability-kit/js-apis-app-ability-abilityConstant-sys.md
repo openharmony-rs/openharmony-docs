@@ -25,7 +25,7 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 ## WindowMode<sup>12+</sup>
 
-Enumerates the window modes in which an ability can be displayed at startup. It can be used in **startAbility()** to specify the window mode when the ability is started.
+Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
