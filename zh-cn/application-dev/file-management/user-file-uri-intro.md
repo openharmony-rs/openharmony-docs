@@ -194,6 +194,91 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过ph
 下面为通过临时授权方式使用媒体文件URI进行获取缩略图和读取文件部分信息的示例代码：
 
 <!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// ···
+import { common } from '@kit.AbilityKit';
+// ···
+// [StartExclude copy_file_uri_example]
+// [StartExclude function_example]
+import { dataSharePredicates } from '@kit.ArkData';
+// ···
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// 定义一个uri数组，用于接收PhotoViewPicker选择图片返回的uri
+let uris: string[] = [];
+// [EndExclude function_example]
+// [EndExclude copy_file_uri_example]
+
+// context 是EntryAbility 传过来的context
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// [End import_user_fileAccess]
+
+// [StartExclude copy_file_uri_example]
+// [StartExclude function_example]
+// ···
+
+// 调用PhotoViewPicker.select选择图片
+async function photoPickerGetUri() {
+  try {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    // 设置最多可以选择的图片数量为1
+    photoSelectOptions.maxSelectNumber = 1;
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    // 等待用户选择图片
+    let photoSelectResult: photoAccessHelper.PhotoSelectResult = await photoPicker.select(photoSelectOptions);
+    console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+    uris = photoSelectResult.photoUris;
+  } catch (err) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`PhotoViewPicker failed with err, code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+async function uriGetAssets(): Promise<string> {
+  // 检查uris数组是否为空
+  if (uris.length === 0) {
+    throw new Error('No URIs available');
+  }
+  try {
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    // 配置查询条件，使用PhotoViewPicker选择图片返回的uri进行查询
+    predicates.equalTo('uri', uris[0]);
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT,
+        photoAccessHelper.PhotoKeys.TITLE, photoAccessHelper.PhotoKeys.DURATION],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOption);
+    // 得到uri对应的PhotoAsset对象，读取文件的部分信息
+    const asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    console.info('asset displayName: ', asset.displayName);
+    console.info('asset uri: ', asset.uri);
+    console.info('asset photoType: ', asset.photoType);
+    console.info('asset width: ', asset.get(photoAccessHelper.PhotoKeys.WIDTH));
+    console.info('asset height: ', asset.get(photoAccessHelper.PhotoKeys.HEIGHT));
+    console.info('asset title: ' + asset.get(photoAccessHelper.PhotoKeys.TITLE));
+    // 获取缩略图
+    asset.getThumbnail((err, pixelMap) => {
+      if (err == undefined) {
+        console.info('getThumbnail successful ' + JSON.stringify(pixelMap));
+      } else {
+        console.error('getThumbnail fail', err);
+      }
+    });
+	// ···
+  } catch (error) {
+    console.error(`uriGetAssets failed with err, code is ${error.code}, message is ${error.message}`);
+    return 'ReadMediaUriFail';
+  }
+  return 'ReadMediaUriFail';
+}
+```
+
 <!--Del-->
 ## 通过URI复制文件（仅对系统应用开放）
 
@@ -212,4 +297,66 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过ph
 复制文件代码示例：
 
 <!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// [Start function_example]
+// [Start import_user_fileAccess]
+// [Start import_get_uri_assets]
+import { BusinessError } from '@kit.BasicServicesKit';
+// [StartExclude import_get_uri_assets]
+import { Want } from '@kit.AbilityKit';
+// [EndExclude import_get_uri_assets]
+import { common } from '@kit.AbilityKit';
+// [StartExclude import_get_uri_assets]
+import { fileAccess} from '@kit.CoreFileKit';
+// [EndExclude import_get_uri_assets]
+// ···
+
+// context 是EntryAbility 传过来的context
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// [End import_user_fileAccess]
+
+// ···
+async function copyingFileByUriExample() {
+  let fileAccessHelper: fileAccess.FileAccessHelper;
+  // wantInfos 从getFileAccessAbilityInfo()获取
+  let wantInfos: Want[] = [
+    {
+    bundleName: 'com.ohos.UserFile.ExternalFileManager',
+    abilityName: 'FileExtensionAbility',
+    },
+  ];
+  try {
+    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
+    if (!fileAccessHelper) {
+      console.error('createFileAccessHelper interface returns an undefined object');
+    }
+    // 以内置存储目录为例
+    // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
+    // 开发者应根据自己实际获取的uri进行开发
+    let sourceUri: string = 'file://docs/storage/Users/currentUser/Download/renameFile.txt';
+    // 将文件复制到的位置uri
+    let destUri: string = 'file://docs/storage/Users/currentUser/Documents';
+    // 如果文件名冲突，要使用的文件名
+    let displayName: string = 'file.txt';
+    // 存放返回的uri
+    let fileUri: string;
+    try {
+      // 复制文件返回该文件的uri
+      fileUri = await fileAccessHelper.copyFile(sourceUri, destUri, displayName);
+      if (!fileUri) {
+        console.error('copyFile return undefined object');
+      }
+        console.info('copyFile success, fileUri: ' + JSON.stringify(fileUri));
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.error('copyFile failed, errCode:' + error.code + ', errMessage:' + error.message);
+    }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error('createFileAccessHelper failed, errCode:' + error.code + ', errMessage:' + error.message);
+  }
+}
+```
+
 <!--DelEnd-->
