@@ -793,5 +793,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/input-method-subtype-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"input_case_entry_module_extensionAbilities",
+						"start_line":37
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/inputmethod-application-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"input_case_module_import_InputMethodExtensionAbility",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
