@@ -31,28 +31,9 @@
 
 1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-    ```ts
-    class Sample {
-      data: number = 0;
-    }
-    @ObservedV2
-    class Info {
-      @Type(Sample)
-      @Trace sample: Sample = new Sample(); // 正确用法
-    }
-    @Observed
-    class Info2 {
-      @Type(Sample)
-      sample: Sample = new Sample(); // 错误用法，不能用在@Observed装饰的类中，编译时报错
-    }
-    @ComponentV2
-    struct Index {
-      @Type(Sample)
-      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中，编译时报错
-      build() {
-      }
-    }
-    ```
+```ts
+<!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
+```
 
 2. 不支持collections.Set、collections.Map等类型。
 
@@ -67,37 +48,5 @@
 ### 持久化数据
 
 ```ts
-import { PersistenceV2, Type } from '@kit.ArkUI';
-
-@ObservedV2
-class SampleChild {
-  @Trace childNumber: number = 1;
-}
-
-@ObservedV2
-class Sample {
-  // 对于复杂对象需要@Type修饰，确保反序列化成功，去掉@Type会反序列化值失败。
-  @Type(SampleChild)
-  // 对于没有初值的类属性，经过@Type修饰后，需要手动保存，否则持久化失败。
-  // 无法使用@Type修饰的类属性，必须要有初值才能持久化。
-  @Trace sampleChild?: SampleChild = undefined;
-}
-
-@Entry
-@ComponentV2
-struct TestCase {
-  @Local sample: Sample = PersistenceV2.connect(Sample, () => new Sample)!;
-
-  build() {
-    Column() {
-      Text('childNumber value:' + this.sample.sampleChild?.childNumber)
-        .onClick(() => {
-          this.sample.sampleChild = new SampleChild();
-          this.sample.sampleChild.childNumber = 2;
-          PersistenceV2.save(Sample);
-        })
-        .fontSize(30)
-    }
-  }
-}
+<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
 ```
