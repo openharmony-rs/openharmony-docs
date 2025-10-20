@@ -43,7 +43,7 @@ The following describes how to collect the execution duration and CPU usage of a
 
 1. Define the test metric list.
 
-    Define the list of performance metrics to be tested `metrics`. The type is `Array<PerfMetric>`. <!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP25End--> is the enumeration of performance metrics that can be collected by the framework.
+    Define the list of performance metrics to be tested `metrics`. The type is `Array<PerfMetric>`. <!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End--> is the enumeration of performance metrics that can be collected by the framework.
     ```ts
     let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ];
     ```
