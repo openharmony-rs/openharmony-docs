@@ -1024,6 +1024,40 @@ getItemIndex(x: number, y: number): number
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100004   |The controller not bound to component.                              |
 
+### contentSize<sup>22+</sup>
+
+contentSize(): SizeResult
+
+获取滚动组件内容总大小。
+
+>  **说明：**
+>
+>  Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总大小通过估算得到，估算结果可能会有误差。其中List组件可以通过childrenMainSize属性解决估算不准问题。
+>
+>  Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
+>
+>  当Scroll组件为自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+>
+>  当Scroll组件设置为不可滚动、Grid组件固定行列模板导致不可滚动时，获取到的内容总大小为0。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                     | 说明                                               |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| [SizeResult](ts-custom-component-layout.md#sizeresult10) | 滚动组件内容总大小，包括内容宽度和高度。<br/>单位：vp |
+
+**错误码**：
+
+以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100004   |The controller not bound to component.                              |
+
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
@@ -1812,3 +1846,64 @@ struct ScrollZoomExample {
 }
 ```
 ![free_scroll_zoom](figures/free_scroll_zoom.gif)
+
+### 示例12（获取内容总大小）
+
+从API version 22 开始，该示例实现了获取内容总大小的功能。
+```ts
+@Entry
+@Component
+struct ScrollExample1 {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = []
+
+  aboutToAppear() {
+    for (let j = 0; j < 10; j++) {
+      this.arr.push(j);
+    }
+  }
+
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+
+  build() {
+    Column() {
+      Text('设置scroller控制器和ForEach')
+      Row() {
+        Button('GetContentSize')
+          .onClick(() => {
+            this.contentWidth = this.scroller.contentSize().width;
+            this.contentHeight = this.scroller.contentSize().height;
+          })
+        Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
+          .fontColor(Color.Red)
+          .height(50)
+      }
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+        .scrollBar(BarState.On) // 滚动条常驻显示
+        .scrollBarColor(Color.Gray) // 滚动条颜色
+        .scrollBarWidth(10) // 滚动条宽度
+        .friction(0.6)
+        .edgeEffect(EdgeEffect.None)
+      }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+    }
+  }
+}
+```
+![scrollContentSize](figures/scrollContentSize.gif)
