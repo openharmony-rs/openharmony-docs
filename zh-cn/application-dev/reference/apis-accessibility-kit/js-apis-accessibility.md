@@ -239,7 +239,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -328,7 +328,7 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -418,7 +418,7 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -438,7 +438,7 @@ captionsManager.off('enableChange', (data: boolean) => {
 
 ### offEnableChange<sup>22+</sup>
 
-offEnableChange(callback?: Callback&lt;boolean&gt;): void
+offEnableChange(callback?: Callback\<boolean\>): void
 
 取消监听字幕配置启用状态变化事件。使用callback异步回调。
 
@@ -513,7 +513,7 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -533,7 +533,7 @@ captionsManager.off('styleChange', (data: accessibility.CaptionsStyle) => {
 
 ### offStyleChange<sup>22+</sup>
 
-ooffStyleChange(callback?: Callback&lt;CaptionsStyle&gt;): void
+offStyleChange(callback?: Callback\<CaptionsStyle\>): void
 
 取消字幕风格变化监听事件。使用callback异步回调。
 
