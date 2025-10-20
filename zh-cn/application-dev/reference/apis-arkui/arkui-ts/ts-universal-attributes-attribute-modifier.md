@@ -499,7 +499,7 @@ class CustomModifier implements AttributeModifier<CommonAttribute> {
   }
 
   applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Red)
+    instance.backgroundColor(Color.Gray)
   }
 }
 
@@ -524,7 +524,7 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.Green).fontSize(28).textAlign(TextAlign.Center)
+    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }
