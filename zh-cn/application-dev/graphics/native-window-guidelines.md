@@ -50,8 +50,41 @@ libnative_window.so
 
     1. 在xxx.ets中添加一个XComponent组件。
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+          XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
+            .margin({ bottom: 26 })
+            .onLoad((nativeWindowContext) => {
+              this.nativeWindowContext = nativeWindowContext as NativeWindowContext;
+            })
+```
+
     2. 在 native c++ 层获取 NativeXComponent。
         <!-- @[get_natvie_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+``` C++
+    napi_value exportInstance = nullptr;
+    OH_NativeXComponent *nativeXComponent = nullptr;
+    int32_t ret;
+    char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {};
+    uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+
+    status = napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance);
+    if (status != napi_ok) {
+        return false;
+    }
+
+    status = napi_unwrap(env, exportInstance, reinterpret_cast<void**>(&nativeXComponent));
+    if (status != napi_ok) {
+        return false;
+    }
+
+    ret = OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize);
+    if (ret != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+        return false;
+    }
+```
+
     3. 定义 OH_NativeXComponent_Callback。
         <!-- @[xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 

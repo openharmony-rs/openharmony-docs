@@ -34,11 +34,48 @@ libnative_vsync.so
 1. **首先需要定义一个VSync回调函数**。
     <!-- @[vsync_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
+``` C++
+void RenderEngine::OnVsync(long long timestamp, void *data)
+{
+    OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_PRINT_DOMAIN, "RenderEngine", "OnVsync %{public}lld.", timestamp);
+    auto renderEngine = reinterpret_cast<RenderEngine *>(data);
+    if (renderEngine == nullptr) {
+        return;
+    }
+
+    renderEngine->vSyncCnt_++;
+    renderEngine->wakeUpCond_.notify_one();
+}
+```
+
+
 2. **创建OH_NativeVSync实例**。
     <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+
+``` C++
+    const char* demoName = "NativeImageSample";
+    nativeVsync_ = OH_NativeVSync_Create(demoName, strlen(demoName));
+```
+
 
 3. **通过OH_NativeVSync实例设置VSync回调函数**。
     <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
+``` C++
+    wakeUpCond_.wait(lock, [this]() { return wakeUp_ || vSyncCnt_ > 0; });
+    wakeUp_ = false;
+    if (vSyncCnt_ > 0) {
+        vSyncCnt_--;
+        (void)OH_NativeVSync_RequestFrame(nativeVsync_, &RenderEngine::OnVsync, this);
+        OH_NativeVSync_GetPeriod(nativeVsync_, &period);
+    }
+```
+
+
 4. **销毁OH_NativeVSync实例**。
     <!-- @[destroy_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+
+``` C++
+        OH_NativeVSync_Destroy(nativeVsync_);
+        nativeVsync_ = nullptr;
+```

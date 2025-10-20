@@ -369,11 +369,59 @@ void OHNativeRender::DrawGradient(uint32_t* pixel, uint64_t width, uint64_t heig
 6. **更新内容到OpenGL纹理**。
    <!-- @[update_surfaceimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
+``` C++
+    int32_t ret = OH_NativeImage_UpdateSurfaceImage(nativeImage_);
+    if (ret != 0) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine",
+                     "OH_NativeImage_UpdateSurfaceImage failed, ret: %{public}d, texId: %{public}u",
+                     ret, nativeImageTexId_);
+        return;
+    }
+
+    UpdateTextureMatrix();
+    if (imageRender_) {
+        imageRender_->Render();
+    } else {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine", "ImageRender is null");
+    }
+	// ···
+
+void RenderEngine::UpdateTextureMatrix()
+{
+    float matrix[16];
+    int32_t ret = OH_NativeImage_GetTransformMatrixV2(nativeImage_, matrix);
+    if (ret != 0) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine",
+                     "OH_NativeImage_GetTransformMatrix failed, ret: %{public}d", ret);
+        return;
+    }
+    imageRender_->SetTransformMatrix(matrix);
+}
+```
+
+
 7. **解绑OpenGL纹理，绑定到新的外部纹理上**。
    <!-- @[nativeimage_change_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
+``` C++
+    // 将OH_NativeImage实例从当前OpenGL ES上下文分离
+    OH_NativeImage_DetachContext(nativeImage_);
+    // [Start nativeimage_create]
+    glGenTextures(1, &nativeImageTexId_);
+    // [StartExclude nativeimage_create]
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+	// ···
+    int ret = OH_NativeImage_AttachContext(nativeImage_, nativeImageTexId_);
+```
+
+
 8. **OH_NativeImage实例使用完需要销毁掉**。
    <!-- @[destroy_nativeimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+
+``` C++
+        OH_NativeImage_Destroy(&nativeImage_);
+```
+
 
 ## 相关实例
 
