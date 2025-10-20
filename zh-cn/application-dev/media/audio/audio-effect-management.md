@@ -94,7 +94,7 @@
 
 开启系统音效默认模式：
 
- ```ts
+  ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   if (audioRenderer != undefined) {
