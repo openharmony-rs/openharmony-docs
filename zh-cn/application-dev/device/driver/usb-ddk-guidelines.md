@@ -162,35 +162,35 @@ libusb_ndk.z.so
 
     <!-- @[driver_usb_step4_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
-``` C++
-    uint8_t strDesc[100] = {0};
-    // 获取产品字符串描述符
-    uint32_t len = 100;
-    struct UsbControlRequestSetup strDescSetup;
-    strDescSetup.bmRequestType = 0x80;
-    strDescSetup.bRequest = 0x06;
-    strDescSetup.wValue = (0x03 << BIT_EIGHT) | (iProduct); // desc Index
-    strDescSetup.wIndex = 0x409;                    // language Id
-    strDescSetup.wLength = len;
-    auto ret = OH_Usb_SendControlReadRequest(g_interfaceHandle, &strDescSetup, UINT32_MAX, strDesc, &len);
-```
+    ``` C++
+        uint8_t strDesc[100] = {0};
+        // 获取产品字符串描述符
+        uint32_t len = 100;
+        struct UsbControlRequestSetup strDescSetup;
+        strDescSetup.bmRequestType = 0x80;
+        strDescSetup.bRequest = 0x06;
+        strDescSetup.wValue = (0x03 << BIT_EIGHT) | (iProduct); // desc Index
+        strDescSetup.wIndex = 0x409;                    // language Id
+        strDescSetup.wLength = len;
+        auto ret = OH_Usb_SendControlReadRequest(g_interfaceHandle, &strDescSetup, UINT32_MAX, strDesc, &len);
+    ```
 
 
     <!-- @[driver_usb_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
-``` C++
-    // 设置feature
-    uint32_t timeout = 5000;
-    struct UsbControlRequestSetup strDescSetup;
-    strDescSetup.bmRequestType = 0x21;
-    strDescSetup.bRequest = 0x09;
-    strDescSetup.wValue = ((0x03 << BIT_EIGHT) | 0x02); // desc Index
-    strDescSetup.wIndex = 0x0;
-    strDescSetup.wLength = 0x02;
-    uint8_t data[128] = {0x02, 0x02};
-    uint32_t dataLen = 2;
-    int32_t ret = OH_Usb_SendControlWriteRequest(g_interfaceHandle, &strDescSetup, timeout, data, dataLen);
-```
+    ``` C++
+        // 设置feature
+        uint32_t timeout = 5000;
+        struct UsbControlRequestSetup strDescSetup;
+        strDescSetup.bmRequestType = 0x21;
+        strDescSetup.bRequest = 0x09;
+        strDescSetup.wValue = ((0x03 << BIT_EIGHT) | 0x02); // desc Index
+        strDescSetup.wIndex = 0x0;
+        strDescSetup.wLength = 0x02;
+        uint8_t data[128] = {0x02, 0x02};
+        uint32_t dataLen = 2;
+        int32_t ret = OH_Usb_SendControlWriteRequest(g_interfaceHandle, &strDescSetup, timeout, data, dataLen);
+    ```
 
 
 5. 创建内存映射缓冲区及发送请求（可选）。
@@ -199,24 +199,24 @@ libusb_ndk.z.so
 
     <!-- @[driver_usb_step5_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
-``` C++
-    // 占用接口，同时也会卸载内核键盘驱动
-    // 创建用于存放数据的缓冲区
-    int32_t ret = OH_Usb_CreateDeviceMemMap(g_devHandle, bufferLen, &devMmap);
-```
+    ``` C++
+        // 占用接口，同时也会卸载内核键盘驱动
+        // 创建用于存放数据的缓冲区
+        int32_t ret = OH_Usb_CreateDeviceMemMap(g_devHandle, bufferLen, &devMmap);
+    ```
 
 
     <!-- @[driver_usb_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->
 
-``` C++
-        struct UsbRequestPipe pipe;
-        pipe.interfaceHandle = g_interfaceHandle;
-        pipe.endpoint = g_dataEp;
-        pipe.timeout = 4; //  中断传输超时时间，保持和手写板bInterval保持一致
-        // 读取手写板数据
-        // 通过USB中断传输方式，读取键值
-        ret = OH_Usb_SendPipeRequest(&pipe, devMmap);
-```
+    ``` C++
+            struct UsbRequestPipe pipe;
+            pipe.interfaceHandle = g_interfaceHandle;
+            pipe.endpoint = g_dataEp;
+            pipe.timeout = 4; //  中断传输超时时间，保持和手写板bInterval保持一致
+            // 读取手写板数据
+            // 通过USB中断传输方式，读取键值
+            ret = OH_Usb_SendPipeRequest(&pipe, devMmap);
+    ```
 
 
 6. 释放资源。
