@@ -692,4 +692,52 @@ class MyAbilityStage extends AbilityStage {
 }
 ```
 
+## 重载API变更
 
+**规则：** `sdk-api-static-overload`
+
+**规则解释：**
+
+ArkTS1.2重载实现方式发生变化，ArkTS1.1部分API的名称和使用方式需要变化。
+
+**变更原因：**
+
+为了增强运行时的性能和效率，ArkTS1.2采用静态化方式实现重载。
+
+**适配建议：**
+
+在调用ArkTS1.1相关API时，需同步更新接口名称及参数传递方式。
+
+**示例：**
+
+**ArkTS1.1**
+
+```
+// ArkTS1.1API定义
+on(type: 'update', callback: () => void): void;
+
+// 应用代码
+import { pasteboard } from '@kit.BasicServicesKit';
+
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+  console.info('The system pasteboard has changed.');
+};
+systemPasteboard.on('update', listener);
+```
+
+**ArkTS1.2**
+
+```
+// ArkTS1.2API定义
+onUpdate(callback: UpdateCallback): void
+
+// 应用代码
+import { pasteboard } from '@kit.BasicServicesKit';
+
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+  console.info('The system pasteboard has changed.');
+};
+systemPasteboard.onUpdate(listener);
+```
