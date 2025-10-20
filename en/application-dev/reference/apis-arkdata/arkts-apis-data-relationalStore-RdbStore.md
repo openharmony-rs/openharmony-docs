@@ -2323,7 +2323,7 @@ let resultSet = await store.querySql(querySql, [vectorValue, 1, vectorValue, vec
 
 querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySqlSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
