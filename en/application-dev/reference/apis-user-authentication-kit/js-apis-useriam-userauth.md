@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 The **userAuth** module provides APIs for user authentication, which applies to scenarios such as device unlocking, payment, and application login.
 
@@ -23,6 +24,21 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | Name       | Value  | Description      |
 | ----------- | ---- | ---------- |
 | MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | 300000   | Maximum reuse duration of the unlock authentication result, in milliseconds. The value is **300000**.<br> **System capability**: SystemCapability.UserIAM.UserAuth.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>    | 0x7FFFFFFF | Permanent lockout duration, in milliseconds. The value is 0x7FFFFFFF.<br> **System capability**: SystemCapability.UserIAM.UserAuth.Core<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+
+## AuthLockState<sup>22+</sup>
+
+Enumerates the lockout status of an identity authentication type.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+| Name        | Type   | Read-Only| Optional| Description                |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| isLocked       | boolean | No  |  No| Whether the authentication is locked. **true** means yes; **false** otherwise.|
+| remainingAuthAttempts        | int | No  |  No| Number of remaining attempts before the authentication is locked. The maximum value is **5**.|
+| lockoutDuration        | int | No  |  No| Remaining lockout duration, in milliseconds.<br>If the authentication is permanently locked, the value is **PERMANENT_LOCKOUT_DURATION**. You need to unlock it using the PIN.|
 
 ## UserAuthTipCode<sup>20+</sup>
 
@@ -38,8 +54,9 @@ Enumerates the intermediate authentication status.
 | TIMEOUT            | 2    | The authentication has timed out.|
 | TEMPORARILY_LOCKED | 3    | The authentication is temporarily locked.|
 | PERMANENTLY_LOCKED | 4    | The authentication is permanently locked.|
-| WIDGET_LOADED      | 5    | The user authentication widget has been loaded.|
-| WIDGET_RELEASED    | 6    | The user authentication widget has been released.|
+| WIDGET_LOADED      | 5    | The identity authentication page is loaded.|
+| WIDGET_RELEASED    | 6    | The current identity authentication page is switched to another authentication page or the identity authentication component is closed.|
+| COMPARE_FAILURE_WITH_FROZEN    | 7    | Authentication is locked after a failed attempt.|
 
 ## EnrolledState<sup>12+</sup>
 
@@ -78,10 +95,74 @@ Represents information about the authentication result reuse.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name        | Type  | Mandatory| Description                |
-| ------------ | ---------- | ---- | -------------------- |
-| reuseMode        | [ReuseMode](#reusemode12) | Yes  | Authentication result reuse mode.      |
-| reuseDuration    | number | Yes  | Period for which the authentication result can be reused. The value must be greater than 0 and less than [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
+| Name        | Type  | Read-Only| Optional| Description                |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| reuseMode        | [ReuseMode](#reusemode12) | No| No  | Authentication result reuse mode.      |
+| reuseDuration    | number | No| No| Period for which the authentication result can be reused. The value must be greater than 0 and less than [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
+
+## userAuth.getAuthLockState<sup>22+</sup>
+
+getAuthLockState(authType: UserAuthType): Promise\<AuthLockState>
+
+Queries the lockout state of the specified authentication type. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_BIOMETRIC
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+**Parameters**
+
+| Name        | Type                              | Mandatory| Description                      |
+| -------------- | ---------------------------------- | ---- | -------------------------- |
+| authType       | [UserAuthType](#userauthtype8)     | Yes  | Authentication type.|
+
+**Return value**
+
+| Type                 | Description                                                        |
+| --------------------- | ------------------------------------------------------------ |
+| Promise&lt;[AuthLockState](#authlockstate22)&gt; | Promise used to return the result. An error is reported when the operation fails.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
+
+| ID| Error Message|
+| -------- | ------- |
+| 201 | Permission denied. |
+| 12500002 | General operation error. |
+| 12500005 | The authentication type is not supported. |
+| 12500008 | The parameter is out of range. |
+| 12500010 | The type of credential has not been enrolled. |
+
+**Example**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let queryType = user.UserAuthType.PIN;
+  let authLockState: userAuth.AuthLockState = {
+    isLocked : false,
+    remainingAuthAttempts : 0,
+    lockoutDuration : 0
+  };
+  userAuth.getAuthLockState(queryType).then((val) => {
+    authLockState.isLocked = val.isLocked;
+    authLockState.remainingAuthAttempts = val.remainingAuthAttempts;
+    authLockState.lockoutDuration = val.lockoutDuration;
+    console.info(`get auth lock state success, authLockState = ${JSON.stringify(authLockState)}`);
+  })
+    .catch((e: BusinessError) => {
+      console.error(`getAuthLockState failed, Code is ${e?.code}, message is ${e?.message}`);
+    })
+  console.info('after get auth lock state.');
+} catch (err) {
+  console.error(`get auth lock state failed, Code is ${err?.code}, message is ${err?.message}`);
+};
+```
 
 ## userAuth.getEnrolledState<sup>12+</sup>
 
@@ -140,13 +221,13 @@ Defines the user authentication parameters.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name          | Type                              | Mandatory| Description                                                        |
-| -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| challenge      | Uint8Array                         | Yes  | Random challenge value, which can be used to prevent replay attacks. It cannot exceed 32 bytes and can be passed in **Uint8Array([])** format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| authType       | [UserAuthType](#userauthtype8)[]   | Yes  | Authentication type list, which specifies the types of authentication provided on the user authentication page.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | Yes  | Authentication trust level. For details, see [Principles for Classifying Biometric Authentication Trust Levels](../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) | No  |Information about the authentication result reuse.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| skipLockedBiometricAuth<sup>20+</sup> | boolean | No  | Whether to skip the locked authentication mode and automatically switch to another authentication mode.<br>The value **true** means yes; the value **false** means the opposite. If no alternative mode is available, the user authentication widget is disabled and the error code indicating that the authentication is locked is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| Name          | Type                              | Read-Only| Optional| Description                                                        |
+| -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| challenge      | Uint8Array                         |  No |  No | Random challenge value, which can be used to prevent replay attacks. It cannot exceed 32 bytes and can be passed in **Uint8Array([])** format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| authType       | [UserAuthType](#userauthtype8)[]   |  No |  No | Authentication type list, which specifies the types of authentication provided on the user authentication page.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  No |  No | Authentication trust level. For details, see [Principles for Classifying Biometric Authentication Trust Levels](../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  No |  Yes |Information about the authentication result reuse. By default, the result cannot be reused.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| skipLockedBiometricAuth<sup>20+</sup> | boolean |  No |  Yes | Whether to skip the authentication mode that has been locked and automatically switch to another authentication mode. If no authentication mode can be switched to, the component is disabled and an authentication freezing error code is returned.<br>**true**: When biometric authentication is frozen, the system skips the countdown page and directly switches to another authentication mode.<br>**false** (default): The countdown page is not skipped.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## WidgetParam<sup>10+</sup>
 
@@ -154,11 +235,11 @@ Represents the information presented on the user authentication page.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name                | Type                               | Mandatory| Description                                                        |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| title                | string                              | Yes  | Title of the user authentication page. It cannot exceed 500 characters.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| navigationButtonText | string                              | No  | Text on the navigation button. It cannot exceed 60 characters. It is supported in single fingerprint or facial authentication before API version 18. Since API version 18, it is also supported in combined facial and fingerprint authentication.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| uiContext<sup>18+</sup>            | Context               | No  | Whether to display the authentication dialog box in modal application mode. This mode is applicable only to 2-in-1 devices. If this mode is not used or other types of devices are used, the authentication dialog box is displayed in modal system mode.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
+| Name                | Type                               | Read-Only| Optional| Description                                                        |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| title                | string                              |  No |  No | Title of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set it to the authentication purpose, such as payment or application login.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| navigationButtonText | string                              |  No |  Yes | Text on the navigation button. It cannot exceed 60 characters. It is supported in single fingerprint or facial authentication before API version 18. Since API version 18, it is also supported in combined facial and fingerprint authentication. By default, the custom navigation button is not displayed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| uiContext<sup>18+</sup>            | Context               |  No |  Yes | Whether to display the authentication dialog box in modal application mode. This mode is applicable only to 2-in-1 devices. If this mode is not used or other types of devices are used, the authentication dialog box is displayed in modal system mode. By default, the identity authentication dialog box is displayed in modal system mode.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -168,12 +249,12 @@ Represents the user authentication result. If the authentication is successful, 
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name    | Type                          | Mandatory| Description                                                        |
-| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| result   | number                         | Yes  | User authentication result. If the authentication is successful, **SUCCESS** is returned. Otherwise, an error code is returned. For details, see [UserAuthResultCode](#userauthresultcode9).|
-| token    | Uint8Array                     | No  | Authentication token information.                 |
-| authType | [UserAuthType](#userauthtype8) | No  | Authentication type.                          |
-| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) | No  |  Credential state.|
+| Name    | Type                          | Read-Only| Optional| Description                                                        |
+| -------- | ------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| result   | number                         |  No |  No | User authentication result. If the authentication is successful, **SUCCESS** is returned. Otherwise, an error code is returned. For details, see [UserAuthResultCode](#userauthresultcode9).|
+| token    | Uint8Array                     |  No |  Yes | Authentication token information. The value can contain a maximum of 1024 bytes.|
+| authType | [UserAuthType](#userauthtype8) |  No |  Yes | Authentication type.                          |
+| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) |  No |  Yes |  Credential state.|
 
 ## IAuthCallback<sup>10+</sup>
 
@@ -437,7 +518,7 @@ Before using the APIs of **UserAuthInstance**, you must obtain a **UserAuthInsta
 
 on(type: 'result', callback: IAuthCallback): void
 
-Subscribes to the user authentication result.
+Subscribes to the user authentication result. This API is used to obtain the final identity authentication result after the user completes identity authentication interaction with the authentication component. Before the authentication component disappears, the authentication failure attempts are not returned through this API. To perceive each authentication failure, use the [on('authTip')](#on20) API for subscription.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -674,16 +755,13 @@ For details about the error codes, see [User Authentication Error Codes](errorco
 | -------- | ------------------------------------------------ |
 | 201      | Permission denied. Possible causes:1.No permission to access biometric. 2.No permission to start authentication from background.|
 | 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 12500001 | Authentication failed.                           |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
-| 12500004 | Authentication timeout.                          |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
-| 12500007 | Authentication service is busy.                  |
 | 12500009 | Authentication is locked out.                    |
 | 12500010 | The type of credential has not been enrolled.    |
-| 12500011 | Switched to the custom authentication process.   |
+| 12500011 | Switched to the customized authentication process.   |
 | 12500013 | Operation failed because of PIN expired. |
 
 **Example**
@@ -797,7 +875,7 @@ try {
 
 on(type: 'authTip', callback: AuthTipCallback): void
 
-Subscribes to the event for intermediate authentication status.
+Subscribes to authentication tip information. This API is used to obtain the component startup and exit messages and each authentication failure.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1018,12 +1096,12 @@ Represents the authentication result.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name        | Type  | Mandatory| Description                |
-| ------------ | ---------- | ---- | -------------------- |
-| result        | number | Yes  | Authentication result.      |
-| token        | Uint8Array | No  | Token that has passed the user identity authentication.|
-| remainAttempts  | number     | No  | Number of remaining authentication attempts.|
-| lockoutDuration | number     | No  | Lock duration of the authentication operation, in ms.|
+| Name        | Type  | Read-Only| Optional| Description                |
+| ----------- | ------ | ---- | ---- | -------------------- |
+| result        | number | No| No| Authentication result.      |
+| token        | Uint8Array | No| Yes| Token that has passed the user identity authentication.|
+| remainAttempts  | number     | No| Yes| Number of remaining authentication attempts.|
+| lockoutDuration | number     | No| Yes| Lock duration of the authentication operation, in ms.|
 
 ## TipInfo<sup>(deprecated)</sup>
 
@@ -1034,10 +1112,10 @@ Represents the tip information displayed during the authentication, which is use
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name        | Type  | Mandatory| Description                |
-| ------------ | ---------- | ---- | -------------------- |
-| module        | number | Yes  | ID of the module that sends the tip information.      |
-| tip        | number | Yes  | Tip to be given during the authentication process.      |
+| Name        | Type  | Read-Only| Optional| Description                |
+| ------------ | ----- | ---- | ---- | -------------------- |
+| module        | number | No| No| ID of the module that sends the tip information.      |
+| tip        | number | No| No| Tip to be given during the authentication process.      |
 
 ## EventInfo<sup>(deprecated)</sup>
 
@@ -1492,19 +1570,19 @@ Enumerates the authentication result codes.
 
 | Name                   |   Value  | Description                |
 | ----------------------- | ------ | -------------------- |
-| SUCCESS<sup>9+</sup>    | 12500000      | The operation is successful.          |
-| FAIL<sup>9+</sup>                    | 12500001      | The authentication failed.          |
-| GENERAL_ERROR<sup>9+</sup>           | 12500002      | A general operation error occurred.      |
-| CANCELED<sup>9+</sup>                | 12500003      | The authentication is canceled.          |
-| TIMEOUT<sup>9+</sup>                 | 12500004      | The authentication has timed out.          |
-| TYPE_NOT_SUPPORT<sup>9+</sup>        | 12500005      | The authentication type is not supported.     |
-| TRUST_LEVEL_NOT_SUPPORT<sup>9+</sup> | 12500006      | The authentication trust level is not supported.     |
-| BUSY<sup>9+</sup>                    | 12500007      | The system does not respond.          |
-| INVALID_PARAMETERS<sup>20+</sup>      | 12500008      | Parameter verification failed.          |
-| LOCKED<sup>9+</sup>                  | 12500009      | The authentication executor is locked.      |
-| NOT_ENROLLED<sup>9+</sup>            | 12500010      | The user has not enrolled the specified system identity authentication credential.|
-| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | The user cancels the system authentication and selects a custom authentication of the application. The caller needs to launch the custom authentication page.|
-| PIN_EXPIRED<sup>12+</sup> | 12500013 | The authentication failed because the lock screen password has expired.|
+| SUCCESS                          | 12500000      | The operation is successful.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| FAIL                             | 12500001      | The authentication failed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| GENERAL_ERROR                    | 12500002      | A general operation error occurred.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| CANCELED                         | 12500003      | The authentication is canceled.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| TIMEOUT                          | 12500004      | The authentication has timed out.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| TYPE_NOT_SUPPORT                 | 12500005      | The authentication type is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| TRUST_LEVEL_NOT_SUPPORT          | 12500006      | The authentication trust level is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| BUSY                             | 12500007      | The system does not respond.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
+| INVALID_PARAMETERS<sup>20+</sup> | 12500008      | Parameter verification failed.<br> **Atomic service API**: This API can be used in atomic services since API version 20. |
+| LOCKED                           | 12500009      | The authentication executor is locked.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
+| NOT_ENROLLED                     | 12500010      | The user has not enrolled the specified system identity authentication credential.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | The user cancels the system authentication and selects a custom authentication of the application. The caller needs to launch the custom authentication page.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| PIN_EXPIRED<sup>12+</sup> | 12500013 | The authentication failed because the lock screen password has expired.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## UserAuth<sup>(deprecated)</sup>
 
@@ -1801,11 +1879,11 @@ Represents the authentication result object.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
-| Name        | Type  | Mandatory| Description                |
-| ------------ | ---------- | ---- | -------------------|
-| token        | Uint8Array | No  | Authentication token information.|
-| remainTimes  | number     | No  | Number of remaining authentication operations.|
-| freezingTime | number     | No  | Time for which the authentication operation is frozen.|
+| Name        | Type  | Read-Only| Optional| Description                |
+| ------------ | ---------- | ---- | ---- | -------------------|
+| token        | Uint8Array | No| Yes| Authentication token information.|
+| remainTimes  | number     | No| Yes| Number of remaining authentication operations.|
+| freezingTime | number     | No| Yes| Time for which the authentication operation is frozen.|
 
 ## ResultCode<sup>(deprecated)</sup>
 
