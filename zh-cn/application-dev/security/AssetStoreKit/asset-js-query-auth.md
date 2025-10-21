@@ -92,10 +92,12 @@
 
 查询别名是demo_alias且需要用户认证的关键资产。示例中引入的@ohos.userIAM.userAuth用法详见[userAuth文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)。
 
-```typescript
+<!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
@@ -104,12 +106,12 @@ function stringToArray(str: string): Uint8Array {
 }
 
 function arrayToString(arr: Uint8Array): string {
-  let textDecoder = util.TextDecoder.create("utf-8", { ignoreBOM: true });
-  let str = textDecoder.decodeToString(arr, { stream: false })
+  let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
+  let str = textDecoder.decodeToString(arr, { stream: false });
   return str;
 }
 
-async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
+export async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     const authParam: userAuth.AuthParam = {
       challenge: challenge,
@@ -131,8 +133,9 @@ async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
         }
       });
       userAuthInstance.start();
-    } catch (err) {
-      console.error(`User identity authentication failed. Code is ${err?.code}, message is ${err?.message}`);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`User identity authentication failed. Code is ${err.code}, message is ${err.message}`);
       reject();
     }
   })
@@ -142,14 +145,15 @@ function preQueryAsset(): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     try {
       let query: asset.AssetMap = new Map();
-      query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+      query.set(asset.Tag.ALIAS, stringToArray('user_auth_asset'));
       asset.preQuery(query).then((challenge: Uint8Array) => {
         resolve(challenge);
       }).catch(() => {
         reject();
       })
-    } catch (err) {
-      console.error(`Failed to pre-query Asset. Code is ${err?.code}, message is ${err?.message}`);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
       reject();
     }
   });
@@ -161,24 +165,26 @@ async function postQueryAsset(challenge: Uint8Array) {
   try {
     await asset.postQuery(handle);
     console.info(`Succeeded in post-querying Asset.`);
-  } catch (err) {
-    console.error(`Failed to post-query Asset. Code is ${err?.code}, message is ${err?.message}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to post-query Asset. Code is ${err.code}, message is ${err.message}`);
   }
 }
 
-async function queryAsset() {
+export async function queryUserAuthAsset(): Promise<string> {
+  let result: string = '';
   // step1. 调用asset.preQuery获取挑战值。
-  preQueryAsset().then(async (challenge: Uint8Array) => {
+  await preQueryAsset().then(async (challenge: Uint8Array) => {
     try {
       // step2. 传入挑战值，拉起用户认证框。
       let authToken: Uint8Array = await userAuthenticate(challenge);
       // step3 用户认证通过后，传入挑战值和授权令牌，查询关键资产明文。
       let query: asset.AssetMap = new Map();
-      query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+      query.set(asset.Tag.ALIAS, stringToArray('user_auth_asset'));
       query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
       query.set(asset.Tag.AUTH_CHALLENGE, challenge);
       query.set(asset.Tag.AUTH_TOKEN, authToken);
-      let res: Array<asset.AssetMap> = await asset.query(query);
+      let res: asset.AssetMap[] = await asset.query(query);
       for (let i = 0; i < res.length; i++) {
         // 解析secret。
         let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
@@ -187,12 +193,17 @@ async function queryAsset() {
       }
       // step4. 关键资产明文查询成功后，需要调用asset.postQuery进行查询的后置处理。
       postQueryAsset(challenge);
+      result = 'Succeeded in querying user-auth Asset';
     } catch (error) {
       // step5. preQuery成功，后续操作失败，也需要调用asset.postQuery进行查询的后置处理。
       postQueryAsset(challenge);
+      result = 'Failed to query user-auth Asset';
     }
   }).catch((err: BusinessError) => {
     console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query user-auth Asset';
   })
+  return result;
 }
 ```
+

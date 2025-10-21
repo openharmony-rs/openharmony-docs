@@ -60,7 +60,9 @@
 
 查询别名是demo_alias的关键资产明文。
 
-```typescript
+<!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -71,35 +73,46 @@ function stringToArray(str: string): Uint8Array {
 }
 
 function arrayToString(arr: Uint8Array): string {
-  let textDecoder = util.TextDecoder.create("utf-8", { ignoreBOM: true });
-  let str = textDecoder.decodeToString(arr, { stream: false })
+  let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
+  let str = textDecoder.decodeToString(arr, { stream: false });
   return str;
 }
 
-let query: asset.AssetMap = new Map();
-query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
-query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // 此处表示需要返回关键资产的所有信息，即属性+明文。返回明文需要解密，查询时间较长。
-try {
-  asset.query(query).then((res: Array<asset.AssetMap>) => {
-    for (let i = 0; i < res.length; i++) {
-      // 解析secret。
-      let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
-      // 将Uint8Array转为string类型。
-      let secretStr: string = arrayToString(secret);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
+export async function queryAssetPlaintext(): Promise<string> {
+  let result: string = '';
+  let query: asset.AssetMap = new Map();
+  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
+  query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL); // 此处表示需要返回关键资产的所有信息，即属性+明文。返回明文需要解密，查询时间较长。
+  try {
+    await asset.query(query).then((res: Array<asset.AssetMap>) => {
+      for (let i = 0; i < res.length; i++) {
+        // 解析secret。
+        let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
+        // 将Uint8Array转为string类型。
+        let secretStr: string = arrayToString(secret);
+      }
+      result = 'Succeeded in querying Asset plaintext';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to query Asset plaintext. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to query Asset plaintext';
+    });
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to query Asset plaintext. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query Asset plaintext';
+  }
+  return result;
 }
 ```
+
 
 ### 查询单条关键资产属性
 
 查询别名是demo_alias的关键资产属性。
 
-```typescript
+<!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -109,29 +122,40 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let query: asset.AssetMap = new Map();
-query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 指定了关键资产别名，最多查询到一条满足条件的关键资产。
-query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // 此处表示仅返回关键资产属性，不包含关键资产明文。返回属性不需解密，查询时间较短。
-try {
-  asset.query(query).then((res: Array<asset.AssetMap>) => {
-    for (let i = 0; i < res.length; i++) {
-      // 解析属性。
-      let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
-      console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
+export async function queryAssetAttribute(): Promise<string> {
+  let result: string = '';
+  let query: asset.AssetMap = new Map();
+  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 指定了关键资产别名，最多查询到一条满足条件的关键资产
+  query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // 此处表示仅返回关键资产属性，不包含关键资产明文
+  try {
+    await asset.query(query).then((res: Array<asset.AssetMap>) => {
+      for (let i = 0; i < res.length; i++) {
+        // 解析属性。
+        let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+        console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
+      }
+      result = 'Succeeded in querying Asset attribute';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to query Asset attribute. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to query Asset attribute';
+    });
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to query Asset attribute. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query Asset attribute';
+  }
+  return result;
 }
 ```
+
 
 ### 批量查询关键资产属性
 
 批量查询标签1为demo_label的关键资产属性，从第5条符合条件的结果开始返回，共返回10条，结果按DATA_LABEL_NORMAL_1属性内容排序。
 
-```typescript
+<!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -141,22 +165,32 @@ function stringToArray(str: string): Uint8Array {
   return textEncoder.encodeInto(str);
 }
 
-let query: asset.AssetMap = new Map();
-query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // 此处表示仅返回关键资产属性，不包含关键资产明文。
-query.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-query.set(asset.Tag.RETURN_LIMIT, 10); // 此处表示查询10条满足条件的关键资产。
-query.set(asset.Tag.RETURN_ORDERED_BY, asset.Tag.DATA_LABEL_NORMAL_1); // 此处查询结果以DATA_LABEL_NORMAL_1属性内容排序。
-try {
-  asset.query(query).then((res: Array<asset.AssetMap>) => {
-    for (let i = 0; i < res.length; i++) {
-      // 解析属性。
-      let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
-      console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Asset. Code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`Failed to query Asset. Code is ${err?.code}, message is ${err?.message}`);
+export async function queryBatchAssetAttributes(): Promise<string> {
+  let result: string = '';
+  let query: asset.AssetMap = new Map();
+  query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // 此处表示仅返回关键资产属性，不包含关键资产明文。
+  query.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+  query.set(asset.Tag.RETURN_LIMIT, 10); // 此处表示查询10条满足条件的关键资产。
+  query.set(asset.Tag.RETURN_ORDERED_BY, asset.Tag.DATA_LABEL_NORMAL_1); // 此处查询结果以DATA_LABEL_NORMAL_1属性内容排序。
+  try {
+    await asset.query(query).then((res: Array<asset.AssetMap>) => {
+      for (let i = 0; i < res.length; i++) {
+        // 解析属性。
+        let accessibility: number = res[i].get(asset.Tag.ACCESSIBILITY) as number;
+        console.info(`Succeeded in getting accessibility, which is: ${accessibility}.`);
+      }
+      result = 'Succeeded in querying batch Asset attributes';
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to query batch Asset attributes. Code is ${err.code}, message is ${err.message}`);
+      result = 'Failed to query batch Asset attributes';
+    });
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to query batch Asset attributes. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query batch Asset attributes';
+  }
+  return result;
 }
 ```
+
+
