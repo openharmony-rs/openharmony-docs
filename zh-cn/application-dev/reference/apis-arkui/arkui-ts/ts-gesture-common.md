@@ -382,6 +382,22 @@ getDuration(): number
 | ------ | --------- |
 | number | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
 
+### getAllowableMovement<sup>22+</sup>
+
+getAllowableMovement(): number
+
+获取长按手势识别器识别的手势的最大移动距离。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| number | 长按手势识别器识别的手势的最大移动距离，单位为px。<br/>取值范围：(0, +∞) |
+
 ## SwipeRecognizer<sup>18+</sup>
 
 快滑手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer12)。
