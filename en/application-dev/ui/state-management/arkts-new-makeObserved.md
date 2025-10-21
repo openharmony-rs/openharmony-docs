@@ -227,14 +227,14 @@ struct ObservedSendableTest {
 **NOTE**<br>Data can be constructed and processed in subthreads. However, observable data can be processed only in the main thread. Therefore, in the preceding example, only the **name** attribute of **this.send** is passed to the subthread.
 
 ### Using makeObserved and collections.Array/collections.Set/collections.Map Together
-**collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see @arkts.collections Reference (../../reference/apis-arkts/arkts-apis-arkts-collections.md).
-makeObserved can import observable collections in ArkUI, but cannot be used together with the state variable decorators of the state management V1, such as @State and [@Prop](./arkts-prop.md). Otherwise, a runtime exception is thrown.
+**collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS Collections)](../../reference/apis-arkts/arkts-apis-arkts-collections.md).
+makeObserved enables importing observable collections into ArkUI, but is incompatible with state management V1 decorators like, such as @State and [@Prop](./arkts-prop.md). Combining them will result in runtime exceptions.
 
 **collections.Array**
 
 The following APIs can trigger UI re-rendering:
-- Changing the array length: push, pop, shift, unshift, splice, shrinkTo and extendTo
-- Changing the array items: sort and fill.
+- Changing the array length: push, pop, shift, unshift, splice, shrinkTo, and extendTo
+- Changing the array items: sort and fill
 
 Other APIs do not change the original array. Therefore, the UI re-rendering is not triggered.
 

@@ -10,7 +10,7 @@ You can configure the component transition animations through the **transition**
 
 >  **NOTE**
 >
->  This feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  There are two ways to trigger a component's transition:
 >  1. When a component is inserted or removed (for example, when there are changes in **if** conditions, or when components are added or removed in a **ForEach** loop), the transition effects of all newly inserted/removed components are triggered recursively.
@@ -91,7 +91,7 @@ Defines the transition effect by using the provided APIs, as listed below.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
-### Attributes
+### Properties
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | ---------- | -------- | -------- | -------- |

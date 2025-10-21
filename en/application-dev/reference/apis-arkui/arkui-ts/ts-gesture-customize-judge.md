@@ -207,7 +207,7 @@ struct Index {
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
             .onDragStart(()=>{
-              this.promptAction.showToast({ message: "Drag the lower blue area. The Image component responds." })
+              this.promptAction.showToast({ message: "When the blue area is dragged, the image responds." })
             })
             .width('200vp').height('200vp')
           // The upper half area of the stack is a floating area bound to the long press gesture.
@@ -237,7 +237,7 @@ struct Index {
           .gesture(GestureGroup(GestureMode.Parallel,
             LongPressGesture()
               .onAction((event: GestureEvent) => {
-                this.promptAction.showToast({ message: "Long-press the upper red area. The red area responds." })
+                this.promptAction.showToast({ message: "When long pressed, the red area responds." })
               })
               .tag("tap111")
           ))

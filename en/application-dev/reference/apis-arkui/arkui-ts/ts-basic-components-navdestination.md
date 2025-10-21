@@ -624,7 +624,7 @@ The value **true** means that the back button logic is overridden, and **false**
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   () =&gt; boolean   | Yes  | This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. Triggered when the back button is pressed.|
+| callback   |   () =&gt; boolean   | Yes  | Triggered when the back button is pressed. This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. |
 
 ### onReady<sup>11+</sup>
 

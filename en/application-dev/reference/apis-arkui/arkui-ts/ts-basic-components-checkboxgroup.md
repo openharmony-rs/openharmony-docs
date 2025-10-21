@@ -277,7 +277,7 @@ Triggered when the selected status of the check box group or any check box where
 
 onChange(callback: Optional\<OnCheckboxGroupChangeCallback>)
 
-Triggered when the selected status of the check box group or any check box wherein changes. Compared to [onChange](#onchange), the **callback** parameter supports the **undefined** type.
+Triggered when the selected status of the check box group or any check box wherein changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -745,7 +745,7 @@ struct MyComponent {
         CheckboxGroup({ group: "group" })
           .selectAll(this.isSelectAll)
           .hitTestBehavior(HitTestMode.None)
-        Text ("Select all").fontSize (25)
+        Text("Select all").fontSize(25)
       }.onClick(() => {
         this.isSelectAll = !this.isSelectAll
         this.data.operateData(this.isSelectAll)

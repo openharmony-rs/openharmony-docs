@@ -96,9 +96,9 @@
 | Move   | -    | A finger moves on the screen in pressed state.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
 | Cancel | -    | A touch event is canceled. Examples: 1. touching the home button to return to the home screen while keeping a finger on the screen; 2. folding a foldable phone to switch to the external screen while keeping a finger on the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | HOVER_ENTER<sup>20+</sup> | 9    | A finger is pressed in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
-| HOVER_MOVE<sup>20+</sup>   | 10    | The mouse is moved in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
-| HOVER_EXIT<sup>20+</sup> | 11    | The mouse is lifted in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
-| HOVER_CANCEL<sup>20+</sup> | 12    | The event that is triggered is canceled in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
+| HOVER_MOVE<sup>20+</sup>   | 10    | The mouse pointer moves in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
+| HOVER_EXIT<sup>20+</sup> | 11    | The mouse pointer exits the component in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
+| HOVER_CANCEL<sup>20+</sup> | 12    | The triggered event is canceled in accessibility mode.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
 
 ## MouseButton<sup>8+</sup>
 
@@ -119,13 +119,13 @@
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Description     |
-| ------- | ------- |
-| Press   | The mouse button is pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Release | The mouse button is released.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Move    | The mouse cursor moves.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| Hover   | The mouse pointer is hovered on an element.<br>**NOTE**<br>This value has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| CANCEL<sup>18+</sup>  | The mouse button action is canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| Name     |  Value | Description     |
+| ------- | ----- |  ------- |
+| Press   |   -   | The mouse button is pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Release |   -   | The mouse button is released.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Move    |   -   | The mouse cursor moves.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| Hover   |   -   | The mouse pointer is hovered on an element.<br>Note: This value has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| CANCEL<sup>18+</sup>  |  13  | The mouse button action is canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## ModifierKey<sup>10+</sup>
 
@@ -598,8 +598,8 @@ Enumerated type that supports the align and [layoutGravity](ts-universal-attribu
 
 | Name      | Description                                      |
 | -------- | ---------------------------------------- |
-| Static   | The location of the target page element remains unchanged, and the transparency animation can be configured.<br>Currently, only the static effect configured when the target page is redirected to takes effect.|
-| Exchange | Moves the source page element to the position of the target page element and scales the source page element.                 |
+| Static   | The target page element remains in a fixed position, with configurable opacity animation.<br>Currently, this effect only takes effect when configured for redirection to the target page.|
+| Exchange | The source page element moves to the position of the target page element and scales accordingly.                 |
 
 ## FontStyle
 
@@ -737,10 +737,10 @@ Enumerated type that supports the align and [layoutGravity](ts-universal-attribu
 
 | Name         | Value| Description      |
 | ----------- | --- | -------- |
-| None        | 0 | Copy is not allowed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| InApp       | 1 | Copy and paste only in the current app.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| LocalDevice | 2 | You can copy and paste it in all apps.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | Cross-device copy is allowed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**NOTE**<br>This API is supported since API version 11 and deprecated since API version 12.|
+| None        | 0 | Copy disabled.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| InApp       | 1 | Copy and paste within the current application only.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| LocalDevice | 2 | Copy and paste across all applications on the device.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | Cross-device copy.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>Note: This API is supported since API version 11 and deprecated since API version 12.|
 
 ## HitTestMode<sup>9+</sup>
 
@@ -1222,11 +1222,11 @@ Enumerates the types of axis actions for axis events.
 | END    | 3    | The axis event ends.|
 | CANCEL | 4    | The axis event is canceled.|
 
-## AxisType<sup>21+</sup>
+## AxisType<sup>22+</sup>
 
 Enumerates the axis types for axis events.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1307,7 +1307,7 @@ Enumerates anchor types of the tooltip.
 
 ## AnimationPropertyType<sup>20+</sup>
 
-Attribute type of an animation.
+Enumerates animatable property types for component animations.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1315,10 +1315,10 @@ Attribute type of an animation.
 
 | Name   |  Value  | Description                  |
 | ------  | ---- | -------------------- |
-| ROTATION | 0 | Rotation angle attributes in the x, y, and z directions. The number of parameters corresponding to this attribute is 3, and the unit is degree (°).|
-| TRANSLATION | 1 | Translation attributes in the x and y directions. The number of parameters corresponding to this attribute is 2, and the unit is px.|
-| SCALE | 2 | Scaling attributes in the x and y directions. The number of parameters corresponding to this attribute is 2, and the value range is (–∞, +∞).|
-| OPACITY | 3 | Opacity attribute. The number of parameters corresponding to this attribute is 1, and the value range is [0,1].|
+| ROTATION | 0 | Rotation angles for the x, y, and z axes. Parameters: 3. Unit: degrees (°).|
+| TRANSLATION | 1 | Translation offsets for the x and y axes. Parameters: 2. Unit: px.|
+| SCALE | 2 | Scale factors for the x and y axes. Parameters: 2. Value range: (-∞, +∞).|
+| OPACITY | 3 | Opacity value. Parameters: 1. Value range: [0, 1].|
 
 ## ColorSpace<sup>20+</sup>
 
@@ -1358,3 +1358,17 @@ Enumerates divider modes.
 | ------------------ | - | ---------------------------------------- |
 | FLOATING_ABOVE_MENU| 0 | The divider floats above the menu without affecting the layout height. This is the default mode.     |
 | EMBEDDED_IN_MENU   | 1 | The divider is embedded in the menu and affects the layout height.   |
+
+## PresetFillType<sup>22+</sup>
+
+Enumerates preset column layouts for different responsive breakpoints.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name           | Value  | Description                                                        |
+| --------------- | ---- | ------------------------------------------------------------ |
+| BREAKPOINT_DEFAULT         | 0    | Default responsive layout: **List** or **Swiper**: 1 column (SM), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow**: 2 columns (SM), 3 columns (MD), 5 columns (LG or larger).                                      |
+| BREAKPOINT_SM1MD2LG3 | 1    | 1 column (SM), 2 columns (MD), 3 columns (LG or larger).|
+| BREAKPOINT_SM2MD3LG5 | 2    | 2 columns (SM), 3 columns (MD), 5 columns (LG or larger).|

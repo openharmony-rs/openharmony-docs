@@ -296,7 +296,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke] (#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 

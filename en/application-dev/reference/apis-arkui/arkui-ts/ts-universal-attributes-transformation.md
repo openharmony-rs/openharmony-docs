@@ -64,7 +64,7 @@ Rotates the component. Compared with [rotate](#rotate), this API supports the **
 
 rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 
-Sets the component rotation effect. Compared with [rotate] (#rotate18), the options parameter supports the RotateAngleOptions type.
+Sets the component rotation effect. Compared with [rotate]rotate18), the options parameter supports the RotateAngleOptions type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -206,7 +206,7 @@ Displays the matrix transformation when 2D transformation is performed. If 3D tr
 
 transform(transform: Optional\<object>): T
 
-Displays the matrix transformation when 2D transformation is performed. If 3D transformation is included, the [transform3D](#transform3d20) API is required. Compared with [transform] (#transform), the transform<sup>18+</sup> parameter supports the undefined type.
+Displays the matrix transformation when 2D transformation is performed. If 3D transformation is included, the [transform3D](#transform3d20) API is required. Compared with [transform](#transform), the transform<sup>18+</sup> parameter supports the undefined type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
