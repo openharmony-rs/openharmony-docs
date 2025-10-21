@@ -8,6 +8,7 @@
 ## 场景介绍
 
 NativeBuffer模块提供**共享内存**功能，支持内存的申请、使用、查询和释放等操作。
+
 NativeBuffer的常见开发场景如下：
 
 NativeBuffer的常见开发场景：通过Native API申请OH_NativeBuffer实例，获取内存属性，将ION内存映射到进程空间。
@@ -59,7 +60,6 @@ libnative_buffer.so
     }
 ```
 
-   
 2. **将OH_NativeBuffer对应的ION内存映射到进程空间**。
     应用如需访问buffer内存空间，可通过OH_NativeBuffer_Map接口将ION内存映射到进程空间。
     <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
@@ -77,7 +77,6 @@ libnative_buffer.so
     }
 ```
 
-
 3. **获取内存的属性信息**。
     <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
@@ -86,7 +85,6 @@ libnative_buffer.so
     OH_NativeBuffer_GetConfig(nativeBuffer, &config2);
     uint32_t hwBufferID = OH_NativeBuffer_GetSeqNum(nativeBuffer);
 ```
-
 
 4. **销毁OH_NativeBuffer**。
     <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->

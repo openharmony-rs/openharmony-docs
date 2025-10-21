@@ -48,7 +48,6 @@ void RenderEngine::OnVsync(long long timestamp, void *data)
 }
 ```
 
-
 2. **创建OH_NativeVSync实例**。
     <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
@@ -56,7 +55,6 @@ void RenderEngine::OnVsync(long long timestamp, void *data)
     const char* demoName = "NativeImageSample";
     nativeVsync_ = OH_NativeVSync_Create(demoName, strlen(demoName));
 ```
-
 
 3. **通过OH_NativeVSync实例设置VSync回调函数**。
     <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
@@ -70,7 +68,6 @@ void RenderEngine::OnVsync(long long timestamp, void *data)
         OH_NativeVSync_GetPeriod(nativeVsync_, &period);
     }
 ```
-
 
 4. **销毁OH_NativeVSync实例**。
     <!-- @[destroy_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->

@@ -53,7 +53,6 @@ libnative_fence.so
     int sfd = signalfd(-1, &mask, 0);
 ```
 
-
 2. **判断传入的fenceFd是否合法**。
     <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -64,7 +63,6 @@ libnative_fence.so
     }
 ```
 
-
 3. **调用OH_NativeFence_Wait阻塞接口**。
     <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -72,7 +70,6 @@ libnative_fence.so
 constexpr uint32_t TIMEOUT_MS = 5000;
 // ···
 ```
-
 
 4. **调用OH_NativeFence_WaitForever阻塞接口**。
     <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
@@ -91,7 +88,6 @@ constexpr uint32_t TIMEOUT_MS = 5000;
                 "result2 %{public}d, cost_time: %{public}d", result2, duration);
         }
 ```
-
 
 5. **GPU或CPU发送同步信号(signal)，通知fenceFd解除阻塞**。
 
