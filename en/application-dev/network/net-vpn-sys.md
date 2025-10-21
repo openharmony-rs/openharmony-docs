@@ -11,7 +11,6 @@
 A virtual private network (VPN) is a dedicated network established on a public network. On a VPN, the connection between any two nodes does not have an end-to-end physical link required by the traditional private network. Instead, user data is transmitted over a logical link because a VPN is a logical network deployed over the network platform (such as the Internet) provided by the public network service provider.
 
 > **NOTE**
->
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
 
 The following describes the development procedure specific to each application scenario.
@@ -20,7 +19,7 @@ The following describes the development procedure specific to each application s
 
 For the complete list of APIs and example code, see [API Reference](../reference/apis-network-kit/js-apis-net-vpn-sys.md).
 
-| API                                                           | Description                                         |
+| Name                                                           | Description                                         |
 | ----------------------------------------------------------------- | --------------------------------------------------- |
 | setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void | Establishes a VPN. This API uses an asynchronous callback to return the result.|
 | protect(socketFd: number, callback: AsyncCallback\<void\>): void  | Enables VPN tunnel protection. This API uses an asynchronous callback to return the result.  |
@@ -34,7 +33,7 @@ For the complete list of APIs and example code, see [API Reference](../reference
 4. Process data of the virtual network interface card (vNIC), such as reading or writing data.
 5. Destroy the VPN.
 
-This example shows how to develop an application using native C++ code. For details, see [Simple Native C++ Example (ArkTS) (API9)] (https://gitee.com/openharmony/codelabs/tree/master/NativeAPI/NativeTemplateDemo).
+This example shows how to develop an application using native C++ code. For details, see [Simple Native C++ Example (ArkTS) (API9)] (https://gitcode.com/openharmony/codelabs/tree/master/NativeAPI/NativeTemplateDemo).
 
 The sample application consists of two parts: JS code and C++ code.
 
@@ -398,4 +397,3 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
     napi_module_register(&demoModule);
 }
 ```
-

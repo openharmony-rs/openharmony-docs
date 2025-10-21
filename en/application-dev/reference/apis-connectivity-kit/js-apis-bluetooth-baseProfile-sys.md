@@ -1,5 +1,12 @@
 # @ohos.bluetooth.baseProfile (Bluetooth baseProfile Module) (System API)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 The **baseProfile** module provides APIs for managing basic Bluetooth profiles.
 
 > **NOTE**
@@ -85,7 +92,7 @@ try {
 
 setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&lt;void&gt;
 
-Sets the profile connection strategy for this device. This API uses a promise to return the result. This API uses a promise to return the result.
+Sets the profile connection strategy for this device. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -142,7 +149,7 @@ try {
 
 getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStrategy&gt;): void
 
-Obtains the profile connection strategy. This API uses an asynchronous callback to return the result. This API uses an asynchronous callback to return the result.
+Obtains the profile connection strategy. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -179,7 +186,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError, data: baseProfile.ConnectionStrategy) => {
+    a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: baseProfile.ConnectionStrategy) => {
         console.info('getConnectionStrategy, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
     });
 } catch (err) {
@@ -191,7 +198,7 @@ try {
 
 getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
-Obtains the profile connection strategy. This API uses a promise to return the result. This API uses a promise to return the result.
+Obtains the profile connection strategy. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -233,7 +240,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX', 1).then((data: baseProfile.ConnectionStrategy) => {
+    a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX').then((data: baseProfile.ConnectionStrategy) => {
         console.info('getConnectionStrategy');
     }, (err: BusinessError) => {
         console.error('getConnectionStrategy errCode: ' + err.code + ', errMessage: ' + err.message);
