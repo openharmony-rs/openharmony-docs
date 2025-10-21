@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran; @mr-chencxy-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee; @baotianhao-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Introduction to AVCodec Kit](avcodec-kit-intro.md)
 - [AVCodec Supported Formats](avcodec-support-formats.md)
