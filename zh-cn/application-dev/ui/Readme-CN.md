@@ -106,7 +106,7 @@
       - 状态管理V1和V2混合使用<!--arkts-state-management-v1-v2-migration-->
         - [自定义组件混用场景指导](state-management/arkts-custom-component-mixed-scenarios.md)
         - [状态管理V1V2混用文档](state-management/arkts-v1-v2-mixusage.md)
-      - [优秀实践](state-management/arkts-state-management-best-practices.md)
+      - [状态管理优秀实践](state-management/arkts-state-management-best-practices.md)
       - [开发指导](state-management/properly-use-state-management-to-develope.md)
     - 静态ArkTS的状态管理<!--arkts-state-management-v1-static-->
       - 状态管理（V1）<!--arkts-state-management-v1-->
@@ -145,7 +145,7 @@
           - addMonitor/clearMonitor接口：动态添加/取消监听
       - 状态管理V1向V2迁移指导
       - 状态管理V1和V2混合使用
-      - 优秀实践
+      - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
       - 开发指导
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
   - 渲染控制<!--arkts-rendering-control-->
