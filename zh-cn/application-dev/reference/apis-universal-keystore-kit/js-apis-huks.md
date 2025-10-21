@@ -1602,7 +1602,7 @@ huks.getKeyItemProperties(keyAlias, emptyOptions)
 
 isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
-判断密钥是否存在，使用Callback回调异步返回结果。
+判断密钥是否存在（若密钥不存在则返回HUKS_ERROR_NOT_EXIST），使用callback异步回调。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -1708,7 +1708,7 @@ huks.isKeyItemExist(keyAlias, emptyOptions).then((data) => {
 
 hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
-判断密钥是否存在，使用Callback回调异步返回结果。
+判断密钥是否存在（若密钥不存在则通过callback返回false），使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1763,7 +1763,7 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 
 hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
-判断密钥是否存在，使用Promise回调异步返回结果。
+判断密钥是否存在（若密钥不存在则通过Promise返回false），使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1899,7 +1899,7 @@ initSession操作密钥接口，使用Promise方式异步返回结果。huks.ini
 
 updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-updateSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+updateSession操作密钥接口，使用callback异步回调。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1938,7 +1938,7 @@ updateSession操作密钥接口，使用Callback回调异步返回结果。huks.
 
 updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-updateSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+支持用户身份认证访问控制的updateSession操作密钥接口，使用callback异步回调。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2023,7 +2023,7 @@ updateSession操作密钥接口，使用Promise方式异步返回结果。huks.i
 
 finishSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-finishSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+finishSession操作密钥接口，使用callback异步回调。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2063,7 +2063,7 @@ finishSession操作密钥接口，使用Callback回调异步返回结果。huks.
 
 finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-finishSession操作密钥接口，使用Callback回调异步返回结果。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+支持用户身份认证访问控制的finishSession操作密钥接口，使用callback异步回调。huks.initSession, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3478,7 +3478,7 @@ huks.isKeyExist(keyAlias, emptyOptions, (err, data) => {
 
 isKeyExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 
-判断密钥是否存在，使用Promise回调异步返回结果。
+判断密钥是否存在（若密钥不存在则返回HUKS_ERROR_NOT_EXIST），使用Promise异步回调。
 
 > **说明：**
 >
