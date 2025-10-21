@@ -706,7 +706,7 @@ let emitter1 = new emitter.Emitter();
 
 on(eventId: string, callback:  Callback\<EventData\>): void
 
-**方法介绍：** 持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
+持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -737,7 +737,7 @@ emitter1.on(`eventId`, callback);
 
 on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
-**方法介绍：** 持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
+持续订阅当前Emitter类实例指定的事件，并在接收到该事件时，使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -782,7 +782,7 @@ emitter1.on("eventId", callback);
 
 once(eventId: string, callback: Callback\<EventData\>): void
 
-**方法介绍：** 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完对应的回调函数后，自动取消订阅。使用callback异步回调。
+单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完对应的回调函数后，自动取消订阅。使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -813,7 +813,7 @@ emitter1.once("eventId", callback);
 
 once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
-**方法介绍：** 单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。
+单次订阅当前Emitter类实例指定的事件，在接收到该事件且执行完相应的回调函数后，自动取消订阅。使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -858,7 +858,7 @@ emitter1.once("eventId", callback);
 
 off(eventId: string): void
 
-**方法介绍：**取消当前Emitter类实例事件ID为eventId的所有订阅。
+取消当前Emitter类实例事件ID为eventId的所有订阅。
 
 使用该接口取消某个事件订阅后，已通过[emit](#emit22)接口发布但尚未被执行的事件将被取消。
 
@@ -884,7 +884,7 @@ emitter1.off("eventId");
 
 off(eventId: string, callback: Callback\<EventData\>): void
 
-**方法介绍：** 取消订阅当前Emitter类实例的事件。仅当已使用[on](#on22)或[once](#once22)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
+取消订阅当前Emitter类实例的事件。仅当已使用[on](#on22)或[once](#once22)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
 使用该接口取消事件订阅后，已通过[emit](#emit22)接口发布但尚未执行的事件将被取消。
 
@@ -917,7 +917,7 @@ emitter1.off("eventId", callback);
 
 off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
-**方法介绍：** 取消订阅当前Emitter类实例的事件。仅当已使用[on](#on22-1)或[once](#once22-1)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
+取消订阅当前Emitter类实例的事件。仅当已使用[on](#on22-1)或[once](#once22-1)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。
 
 使用该接口取消事件订阅后，已通过[emit](#emit22-1)接口发布但尚未执行的事件将被取消。
 
@@ -964,7 +964,7 @@ emitter1.off("eventId", callback);
 
 emit(eventId: string, data?: EventData): void
 
-**方法介绍：**发送指定事件到当前Emitter类实例。
+发送指定事件到当前Emitter类实例。
 
 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
@@ -997,7 +997,7 @@ emitter1.emit("eventId", eventData);
 
 emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
-**方法介绍：**发送指定事件到当前Emitter类实例。
+发送指定事件到当前Emitter类实例。
 
 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
@@ -1039,7 +1039,7 @@ emitter1.emit("eventId", eventData);
 
 emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
-**方法介绍：**发送指定优先级事件到当前Emitter类实例。
+发送指定优先级事件到当前Emitter类实例。
 
 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[线程间通信对象](../../arkts-utils/serializable-overview.md)。目前不支持使用[@State装饰器](../../ui/state-management/arkts-state.md)、[@Observed装饰器](../../ui/state-management/arkts-observed-and-objectlink.md)等装饰器修饰的复杂类型数据。
 
@@ -1085,7 +1085,7 @@ emitter1.emit("eventId", options, eventData);
 
 getListenerCount(eventId: string): long
 
-**方法介绍：**获取当前Emitter类实例指定事件的订阅数。
+获取当前Emitter类实例指定事件的订阅数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
