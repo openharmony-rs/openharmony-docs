@@ -9,7 +9,7 @@
 
 ## Overview
 
-UITest Framework provides UI search and operation simulation capabilities to cover key scenarios of UI automation testing, including precise UI control search, UI interaction operations (such as tapping, swiping, and text input), and peripheral behavior simulation (such as keyboard input, mouse operation, touchpad gesture, and stylus operation). It helps you efficiently implement reliable UI automation testing.
+The UI test framework provides you with the capabilities of locating UIs and simulating operations, covering key scenarios of UI automation tests, including precise locating of UI controls, UI interaction operations (such as tapping, sliding, and text input), and peripheral behavior simulation (such as keyboard input, mouse operation, touchpad gesture, and stylus action). This helps you develop efficient and reliable UI automation test cases.
 
 ## Function Categorization
 
@@ -27,8 +27,8 @@ UITest Framework consists of the client and server.
 Includes the cross-language communication layer and IPC module. The main function is to export APIs externally and provide an entry for starting the UI test framework. The client is loaded by the test application and runs in the application process. The cross-language communication layer exports interfaces, processes JSON serialization objects, converts upper-layer ArkTS interfaces and lower-layer C++ interfaces, and parses and verifies parameters. In addition, this module involves the calling of ArkTS callback functions by the C++ layer. Therefore, the cross-language communication layer is responsible for managing and calling ArkTS callback functions.
 
 **Server:**
-Runs as an independent process and communicates with the client through IPC. After the server is started, it establishes a connection with the client through broadcast and ensures that the connection is not disconnected through IPC communication. The server listens to the client process status and starts or stops the client process as required. The server processes the core logic of the UI test framework, which is divided into the following two parts:
-1. General framework running capability: processes IPC messages, manages processes, C++ interfaces, and error codes, and listens to interface calling.
+Runs as an independent process and communicates with the client through IPC. After the server is started, it establishes a connection with the client through broadcast and ensures that the connection is not disconnected through IPC communication. The server listens for the client process status and starts or stops the client process as required. The server processes the core logic of the UI test framework, which is divided into the following two parts:
+1. General framework running capability: processes IPC messages, manages processes, C++ interfaces, and error codes, and listens for interface calling.
 2. UI test capabilities: parsing accessibility nodes to build a page control tree, control matching and search, operation event construction, multimodal event injection, UI event listening, and screen display control.
 
 ## Using ArkTS APIs for UI Testing
@@ -47,8 +47,8 @@ The following provides a simple UI test example to describe how to incrementally
 
 The development procedure is as follows:
 
-1. Write the code of the Index.ets page in the main > ets > pages folder as the test demo.
-  ```ts
+1. Write the Index.ets page code in the main > ets > pages folder as the demo to be tested.
+    ```ts
     @Entry
     @Component
     struct Index {
@@ -76,10 +76,9 @@ The development procedure is as follows:
         .height('100%')
         }
     }
-  ```
-
+    ```
 2. Create the uitest.test.ets file in the ohosTest > ets > test folder and write the test code.
-  ```ts
+    ```ts
     import { describe, it, expect, Level } from '@ohos/hypium';
     // Import the test dependencies.
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
@@ -119,7 +118,7 @@ The development procedure is as follows:
         })
       })
     }
-  ```
+    ```
 
 ### Control Search and Operation
 
@@ -154,7 +153,7 @@ The following provides an example of control search and operation. Before runnin
       })
 
       /**
-       * Search for the control of the Image type and perform the two-finger zoom-in operation on the control.
+       * Search for a control of the Image type and zoom in the control with two fingers.
        */
       it("componentPinch", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
@@ -300,7 +299,7 @@ The following provides examples of text input based on controls and coordinates.
       })
 
       /**
-       * Input text based on coordinates. The text to be input is specified and is injected in copy-paste mode.
+       * Input text based on coordinates. The text is injected in copy-paste mode.
        * Input text in append mode. That is, after the input box is focused by tapping the specified position, the cursor is moved to the end of the original text and then the text is input.
        * If the input content contains Chinese characters or special characters, the text can be input only in copy-paste mode. The paste field does not take effect.
        */
@@ -326,7 +325,7 @@ The following example shows how to take a screenshot, specify the screen ID and 
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // Import the test dependencies.
   import { Driver } from '@kit.TestKit';
-  import display from '@ohos.display';
+  import { display } from '@kit.ArkUI';
 
   export default function abilityTest() {
     describe('screenCaptureTest', () => {
@@ -336,7 +335,7 @@ The following example shows how to take a screenshot, specify the screen ID and 
       it('screenCapture', TestType.FUNCTION, async () => {
         let driver = Driver.create();
         // Application sandbox path. el2 indicates the user-level encryption area, and base indicates the subdirectory for storing persistent data of the application on the device.
-        // Replace it with the actual path.
+        //Replace it with the actual path.
         let savePath = '/data/storage/el2/base/cache/1.png';
         let res = await driver.screenCapture(savePath, {left: 0, top: 0, right: 100, bottom: 100});
       })
@@ -433,9 +432,9 @@ The following provides an example of searching for and operating a window. You c
 
   ```ts
   // ohosTest/ets/test/uitest.test.ets
-  import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
+  import { describe, it, TestType, expect } from '@ohos/hypium';
   // Import the test dependencies.
-  import { Driver, Component, ON, On } from '@kit.TestKit';
+  import { Driver } from '@kit.TestKit';
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
@@ -468,7 +467,7 @@ The following code snippet simulates the touchpad operations of swiping up with 
 
   export default function abilityTest() {
     describe('touchPadOperationTest', () => {
-      // In the PC scenario, simulate the touchpad operations of swiping up with three fingers to return to the home screen and swiping down with three fingers to restore the app window.
+      // In the PC/2-in-1 scenario, simulate the operation of swiping up with three fingers on the touchpad (returning to the home screen) and swiping down with three fingers on the touchpad (restoring the app window).
       it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
         try {
@@ -575,9 +574,9 @@ The following shows how to obtain screen attributes such as the screen size and 
 
 During development, you can use commands to quickly perform test operations such as taking screenshots, recording UI operations, injecting UI simulation operations, and obtaining the control tree, improving test efficiency.
 
-> **Environment requirements:**
->
-> The environment for OpenHarmony Device Connector (hdc) has been set up. For details, see [Environment Setup](../dfx/hdc.md#environment-setup). The devices are properly connected and **hdc shell** is executed.
+### Environment Requirements
+
+The environment for OpenHarmony Device Connector (hdc) has been set up. For details, see <!--RP10-->[Environment Setup](../dfx/hdc.md#environment-setup)<!--RP10End-->. The devices are properly connected and **hdc shell** is executed.
 
 ### Command List
 | Envelope command.           | Parameter  |Description                             |
@@ -611,7 +610,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -i | - | Disables filtering of invisible components and window merging.|
 | -a | - | Saves the BackgroundColor, Content, FontColor, FontSize, and extraAttrs attributes of controls.<br>**Note**: By default, the preceding attributes are not saved. **-a and -i cannot be used at the same time.**|
 | -b | \<bundleName\> | Obtains the control tree information of the target window corresponding to the specified package name.|
-| -w | \<windowId\>  | Obtains the control tree information of the target window with the specified ID.<br> **Note**:<br>You can use the hidumper tool to obtain the application window information, including the WinId of the application window. For details, see <!--RP11-->[Obtaining Application Window Information](../dfx/hidumper.md)<!--RP11End-->. |
+| -w | \<windowId\>  | Obtains the control tree information of the target window with the specified ID.<br> **Note**:<br>You can use the hidumper tool to obtain the application window information, including the ID of the window corresponding to the application. <!--RP11-->[Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information) <!--RP11End-->|
 | -m | \<true\|false\> | Specifies whether to merge window information when obtaining the control tree information. true indicates that window information is merged, and false indicates that window information is not merged. If this parameter is not set, the default value true is used.|
 | -d | \<displayId\>  | Obtains the control tree of the screen with the specified ID in the multi-screen scenario.<br> **Note**:<br> 1. This command is supported since API version 20.<br>2. You can use the hidumper tool to obtain the application window information, including the display ID of the application window. For details, see [Obtaining Application Window Information](../dfx/hidumper.md)<!--RP11End-->.|
 
@@ -728,7 +727,7 @@ hdc shell uitest uiInput longClick 100 100
 | to_x   | Yes               | The x-coordinate of the stop point.|
 | to_y   | Yes               | The y-coordinate of the stop point.|
 | swipeVelocityPps_   | No     | Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600** If the value is out of the range, the default value is used.|
-| stepLength_   | No| Step length. The default value is the swipe distance divided by 50.<br>  To achieve better simulation effect, you are advised to use the default value. |
+| stepLength_   | No| Swipe step, in px. The default value is the swipe distance divided by 50.<br> **NOTE**<br> The swipe distance is calculated based on the start and end coordinates specified by the input parameters.<br> To achieve better simulation effect, you are advised to use the default value. |
 
 
 ```shell  
@@ -758,9 +757,9 @@ hdc shell uitest uiInput drag 10 10 100 100 500
 
 | Parameter            | Mandatory      | Description|
 |-------------------|-------------|----------|
-| direction         | No| Fling direction, which can be **0**, **1**, **2**, or **3**. The default value is **0**.<br> The value **0** indicates leftward fling, **1** indicates rightward fling, **2** indicates upward fling, and **3** indicates downward fling.   |
-| swipeVelocityPps_ | No| Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600** If the value is out of the range, the default value is used.   |
-| stepLength        | No       | Step length.<br> Default value: **Fling distance/50** To achieve better simulation effect, you are advised to use the default value.|
+| direction         | No | Fling direction, which can be **0**, **1**, **2**, or **3**. The default value is **0**.<br> The value **0** indicates leftward fling, **1** indicates rightward fling, **2** indicates upward fling, and **3** indicates downward fling.   |
+| swipeVelocityPps_ | No | Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600** If the value is out of the range, the default value is used.   |
+| stepLength        | No | Swipe step, in px.<br> **Default value**: If the swipe direction is 0 or 1, the default value is the screen width divided by 200. If the swipe direction is 2 or 3, the default value is the screen height divided by 200. To achieve better simulation effect, you are advised to use the default value.|
 
 ```shell  
 # Execute the leftward fling event.
