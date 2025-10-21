@@ -11,7 +11,6 @@
 The Network Sharing module allows you to share your device's Internet connection with other connected devices by means of Wi-Fi hotspot, Bluetooth, and USB sharing. It also allows you to query the network sharing state and shared mobile data volume.
 
 > **NOTE**
->
 > To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-sharing-sys.md).
 
 ## Basic Concepts
@@ -20,7 +19,7 @@ The Network Sharing module allows you to share your device's Internet connection
 - Bluetooth sharing: Shares the network through Bluetooth.
 - USB tethering: Shares the network using a USB flash drive.
 
-## **Constraints**
+## Constraint
 
 - Programming language: JS
 - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -29,7 +28,7 @@ The Network Sharing module allows you to share your device's Internet connection
 
 Typical network sharing scenarios are as follows:
 
-- Enabling Network Sharing
+- Enabling network sharing
 - Disabling network sharing
 - Obtaining the data traffic of the shared network
 
@@ -39,7 +38,7 @@ The following describes the development procedure specific to each application s
 
 For the complete list of APIs and example code, see [Network Sharing](../reference/apis-network-kit/js-apis-net-sharing-sys.md).
 
-| API                                                                  | Description                                                                                                   |
+| Name                                                                  | Description                                                                                                   |
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | isSharingSupported(callback: AsyncCallback\<boolean>): void;    | Checks whether the system supports network sharing. This API uses an asynchronous callback to return the result.                                                      |
 | isSharing(callback: AsyncCallback\<boolean>): void;             | Checks whether network sharing is active. This API uses an asynchronous callback to return the result.                                                                  |
@@ -53,7 +52,7 @@ For the complete list of APIs and example code, see [Network Sharing](../referen
 | getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string>>): void;  | Obtains regular expressions of NICs of a specified type. This API uses an asynchronous callback to return the result.|
 | on(type: 'sharingStateChange', callback: Callback\<boolean>): void;        | Subscribes to network sharing state changes.                                                               |
 | off(type: 'sharingStateChange', callback?: Callback\<boolean>): void;      | Unsubscribes from network sharing state changes.                                                               |
-| unction on(type: 'interfaceSharingStateChange', callback: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void;    | Subscribes to network sharing state changes of the specified NIC.   |
+| function on(type: 'interfaceSharingStateChange', callback: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void;    | Subscribes to network sharing state changes of the specified NIC.   |
 | off(type: 'interfaceSharingStateChange', callback?: Callback\<{ type: SharingIfaceType, iface: string, state: SharingIfaceState }>): void; | Unsubscribes from network sharing state changes of the specified NIC.            |
 | on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void;               | Subscribes to upstream NIC changes.                                                                        |
 | off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void;             | Unsubscribes from upstream NIC changes.                                                                        |
@@ -83,7 +82,7 @@ sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
 });
 ```
 
-## Disabling network sharing
+## Disabling Network Sharing
 
 ### How to Develop
 
@@ -104,13 +103,13 @@ sharing.on('sharingStateChange', (data: boolean) => {
 
 // Call stopSharing to stop network sharing of the specified type.
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('start wifi sharing successful');
+  console.log('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
   console.error('start wifi sharing failed');
 });
 ```
 
-## Obtaining the data traffic of the shared network
+## Obtaining the Data Traffic of the Shared Network
 
 ### How to Develop
 
@@ -140,7 +139,7 @@ sharing.getStatsTotalBytes().then((data: number) => {
 
 // Call stopSharing to stop network sharing of the specified type and clear the data volume of network sharing.
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('start wifi sharing successful');
+  console.log('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
   console.error('start wifi sharing failed');
 });

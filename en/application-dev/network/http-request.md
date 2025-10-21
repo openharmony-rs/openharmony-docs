@@ -418,11 +418,11 @@ The following is an example configuration for overall and host name–based HTTP
         ],
         "cleartextTrafficPermitted": false
       }
-    ]
-  }
-  "component-config": {
-    "Network Kit": true,
-    "ArkWeb": true
+    ],
+    "component-config": {
+    	"Network Kit": true,
+    	"ArkWeb": true
+    }
   }
 }
 ```
@@ -488,3 +488,4 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
+

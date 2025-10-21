@@ -58,6 +58,8 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 > **NOTE**
 >
 > You can listen to **error** events to obtain the operation result. 
+>
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -115,6 +117,8 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 > **NOTE**
 >
 > You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
+>
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -181,6 +185,8 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 > **NOTE**
 >
 > You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
+>
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -248,7 +254,7 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 
 | Name  | Type                    | Mandatory| Description        |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later.|
+| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.  |
 
 **Error codes**
@@ -311,7 +317,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later.|
+| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 
 **Return value**
 
@@ -512,7 +518,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect6) is called to initiate a connection request.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -559,7 +565,7 @@ Disables listening for the **open** events of a WebSocket connection. This API u
 
 | Name  | Type                   | Mandatory| Description                         |
 | -------- | ----------------------- | ---- | ----------------------------- |
-| type     | string                  | Yes  | Type of the event to unsubscribe from. Event type. <br />**open**: event indicating that a WebSocket connection has been opened.|
+| type     | string                  | Yes  | Event type. <br /> **open**: event indicating that a WebSocket connection has been opened.|
 | callback | AsyncCallback\<Object\> | No  | Callback used to return the result.                   |
 
 **Example**
@@ -692,7 +698,7 @@ Disables listening for the **close** events of a WebSocket connection. This API 
 
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                          | Yes  | Type of the event to unsubscribe from. Event type. <br />**close**: event indicating that a WebSocket connection has been closed.|
+| type     | string                                          | Yes  | Event type. <br /> **close**: event indicating that a WebSocket connection has been closed.|
 | callback | AsyncCallback\<CloseResult\> | No  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
@@ -877,11 +883,9 @@ createWebSocketServer(): WebSocketServer
 
 Creates a **WebSocketServer** object, which provides methods to start or stop the WebSocketServer service, send data over the connection, close the connection, list all connections, and enable or disable listening for the **open**, **close**, **message**, and **error** events.
 
-> **NOTE**
->
-> This API can be called on smart TVs but does not work on other devices.
-
 **System capability**: SystemCapability.Communication.NetStack
+
+**Device behavior differences**: This API can be properly called on smart TVs. If it is called on other device types, **nullptr** is returned.
 
 **Return value**
 
@@ -980,7 +984,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | Yes | Data to send, which can be of the string or ArrayBuffer type.|
+| data       | string \| ArrayBuffer                       | Yes | Data to send, which can be of the string or ArrayBuffer type. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information.                             |
 
 **Return value**
@@ -1471,11 +1475,11 @@ Defines the client certificate type.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type  | Mandatory| Description               |
-| ------ | ------ | ---- |-------------------|
-| certPath   | string  | Yes  | Path of the certificate file.            |
-| keyPath | string | Yes  | Path of the certificate key file.         |
-| keyPassword | string | No  | Password of the certificate key file. The default value is an empty string.|
+| Name| Type  | Read Only|Optional| Description               |
+| ------ | ------ | ---- |---|----------------|
+| certPath   | string  | No  |No|Path of the certificate file.            |
+| keyPath | string | No  |No| Path of the certificate key file.         |
+| keyPassword | string | No  |Yes| Password of the certificate key file. The default value is an empty string.|
 
 ## ProxyConfiguration<sup>12+</sup>
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
@@ -1498,10 +1502,10 @@ Defines the optional parameters carried in the request for closing a WebSocket c
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | No  | Error code. Set this parameter based on the actual situation. The input value must be a positive integer. The default value is **1000**.|
-| reason | string | No  | Error cause. Set this parameter based on the actual situation. The default value is an empty string ("").|
+| Name| Type  | Read Only|Optional| Description                                                        |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | No  |Yes|Error code. Set this parameter based on the actual situation. The input value must be a positive integer. The default value is **1000**.|
+| reason | string | No  | Yes|Error cause. Set this parameter based on the actual situation. The default value is an empty string ("").|
 
 ## CloseResult<sup>10+</sup>
 
@@ -1511,10 +1515,10 @@ Represents the result obtained from the **close** event reported when the WebSoc
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | Yes  | Error code for closing the connection.|
-| reason | string | Yes  | Error cause for closing the connection.|
+| Name| Type  | Read Only|Optional| Description                                                        |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | No  |No|Error code for closing the connection.|
+| reason | string | No  |No|Error cause for closing the connection.|
 
 ## ResponseHeaders<sup>12+</sup>
 type ResponseHeaders = {

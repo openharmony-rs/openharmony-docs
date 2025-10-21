@@ -1,4 +1,10 @@
 # @system.sensor (Sensor)
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for querying the sensor list, subscribing to or unsubscribing from sensor data, and executing control commands.
 
@@ -338,7 +344,7 @@ import { Sensor, HeartRateResponse, SubscribeHeartRateOptions } from '@kit.Senso
 
 let subscribeHeartRateOptions: SubscribeHeartRateOptions = {
   success: (ret: HeartRateResponse) => {
-    console.info('Succeeded in subscribing. Get heartrate value:' + ret.heartRate);
+    console.info('Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
   },
   fail: (data: string, code: number) => {
     console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
@@ -556,9 +562,9 @@ Sensor.unsubscribeGyroscope();
 
 Defines the type of data to return for a subscription to data changes of the acceleration sensor.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
-
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Required permissions**: ohos.permission.ACCELEROMETER
 
 | Name    | Type                                           | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -570,9 +576,9 @@ Defines the type of data to return for a subscription to data changes of the acc
 
 Defines the callback invoked when the acceleration sensor data changes. 
 
-**Required permissions**: ohos.permission.ACCELEROMETER
-
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Required permissions**: ohos.permission.ACCELEROMETER
 
 | Name| Type  | Mandatory| Description         |
 | ---- | ------ | ---- | ------------- |
