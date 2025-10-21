@@ -52,7 +52,7 @@ isRunningInStabilityTest(callback: AsyncCallback&lt;boolean&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当函数调用成功，err为undefined，data为当前系统是否处于稳定性测试场景的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。  |
+  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前系统是否处于稳定性测试场景的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。  |
 
 **错误码**：
 
