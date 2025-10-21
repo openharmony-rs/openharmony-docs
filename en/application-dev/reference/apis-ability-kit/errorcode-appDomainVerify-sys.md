@@ -1,5 +1,12 @@
 # Application Domain Name Verification Error Codes
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @hw-xpc-->
+<!--Designer: @xuchuanqi87-->
+<!--Tester: @sl_sunshineGirl-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
