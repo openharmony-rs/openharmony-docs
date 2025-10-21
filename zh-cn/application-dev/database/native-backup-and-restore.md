@@ -64,3 +64,64 @@
     int result2 = OH_Rdb_Restore(store2, "/data/storage/el2/database/RdbTest_bak.db");
     OH_Rdb_CloseStore(store2);
     ```
+
+5. 调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理。
+
+    ```c
+    // 数据库异常后处理的回调函数
+    void CorruptedHandler(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)
+    {
+        const char* restorePath = "/data/storage/el2/database/RdbTest_bak.db";
+        if (store == nullptr) {
+            OH_Rdb_DeleteStoreV2(config);
+        } else {
+            // 用备份的数据库恢复数据库
+            OH_Rdb_Restore(store, restorePath);
+        }
+    }
+    OH_Rdb_ConfigV2* config3 = OH_Rdb_CreateConfig();
+    OH_Rdb_SetDatabaseDir(config3, "/data/storage/el2/database");
+    OH_Rdb_SetArea(config3, RDB_SECURITY_AREA_EL2);
+    OH_Rdb_SetStoreName(config3, "RdbRestoreTest.db");
+    OH_Rdb_SetSecurityLevel(config3, OH_Rdb_SecurityLevel::S3);
+    OH_Rdb_SetBundleName(config3, "com.example.nativedemo");
+    int errCode3 = 0;
+    OH_Rdb_Store *store3 = OH_Rdb_CreateOrOpen(config3, &errCode3);
+
+    // 备份数据库
+    int result = OH_Rdb_Backup(store3, "/data/storage/el2/database/RdbTest_bak.db");
+
+    void *context = nullptr;
+    Rdb_CorruptedHandler handler = CorruptedHandler;
+    // 注册数据库异常处理
+    OH_Rdb_RegisterCorruptedHandler(config3, context, handler);
+    ```
+
+6. 调用OH_Rdb_UnregisterCorruptedHandler接口取消注册数据库异常处理。
+
+    ```c
+    // 数据库异常后处理的回调函数
+    void CorruptedHandler(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)
+    {
+        const char* restorePath = "/data/storage/el2/database/RdbTest_bak.db";
+        if (store == nullptr) {
+            OH_Rdb_DeleteStoreV2(config);
+        } else {
+            // 用备份的数据库恢复数据库
+            OH_Rdb_Restore(store, restorePath);
+        }
+    }
+    OH_Rdb_ConfigV2* config4 = OH_Rdb_CreateConfig();
+    OH_Rdb_SetDatabaseDir(config4, "/data/storage/el2/database");
+    OH_Rdb_SetArea(config4, RDB_SECURITY_AREA_EL2);
+    OH_Rdb_SetStoreName(config4, "RdbRestoreTest.db");
+    OH_Rdb_SetSecurityLevel(config4, OH_Rdb_SecurityLevel::S3);
+    OH_Rdb_SetBundleName(config4, "com.example.nativedemo");
+    int errCode4 = 0;
+    OH_Rdb_Store *store4 = OH_Rdb_CreateOrOpen(config4, &errCode4);
+
+    void *context = nullptr;
+    Rdb_CorruptedHandler handler = CorruptedHandler;
+    // 取消注册数据库异常处理
+    OH_Rdb_UnregisterCorruptedHandler(config4, context, handler);
+    ```
