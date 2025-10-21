@@ -648,7 +648,9 @@ getSuperAdmin(): Promise\<Want>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+ArkTS-Dyn起始版本：12
 
+ArkTS-Sta起始版本：20
 
 **模型约束**: 此接口仅可在Stage模型下使用。
 
@@ -800,7 +802,9 @@ getEnterpriseInfo(admin: Want, callback: AsyncCallback&lt;EnterpriseInfo&gt;): v
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+ArkTS-Dyn起始版本：9
 
+ArkTS-Sta起始版本：20
 
 **模型约束**: 此接口仅可在Stage模型下使用。
 
@@ -848,7 +852,9 @@ getEnterpriseInfo(admin: Want): Promise&lt;EnterpriseInfo&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+ArkTS-Dyn起始版本：9
 
+ArkTS-Sta起始版本：20
 
 **模型约束**: 此接口仅可在Stage模型下使用。
 
