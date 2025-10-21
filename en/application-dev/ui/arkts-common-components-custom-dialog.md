@@ -238,7 +238,7 @@ Custom dialog boxes can be used for data interactions to complete a series of op
    
      build() {
        Column() {
-         Button('click me')
+         Button('Click Me')
            .onClick(() => {
              if (this.dialogController != null) {
                this.dialogController.open();
@@ -640,7 +640,7 @@ struct Index {
     customStyle: false,
     cornerRadius: 30,
     alignment:DialogAlignment.Bottom,
-    Automatically Avoiding the Pop-up Box When the keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // Keyboard Is Displayed
+    keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
     keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the pop-up box is 0 vp.
   })
 

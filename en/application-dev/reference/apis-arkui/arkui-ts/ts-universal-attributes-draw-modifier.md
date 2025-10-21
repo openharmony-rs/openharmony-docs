@@ -1,4 +1,10 @@
 # Drawing Modifier
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 If the drawn content of some components does not meet the requirements, you can use the custom drawing features to draw part or all of the components to achieve the expected effect. For example, you can create buttons in special shapes or icons that mix text and imagery. The drawing modifier offers higher flexibility in your custom drawing.
 
@@ -18,13 +24,13 @@ Creates a drawing modifier.
 
 **Supported components:**
 
-AlphabetIndexer, Badge, Blank, Button, CalendarPicker, Checkbox, CheckboxGroup, Circle, Column, ColumnSplit, Counter, DataPanel, DatePicker, Ellipse, Flex, FlowItem, FolderStack, FormLink, Gauge, Grid, GridCol, GridItem, GridRow, Hyperlink, Image, ImageAnimator, ImageSpan, Line, List, ListItem, ListItemGroup, LoadingProgress, Marquee, Menu, MenuItem, MenuItemGroup, NavDestination, Navigation, Navigator, NavRouter, NodeContainer, Path, PatternLock, Polygon, Polyline, Progress, QRCode, Radio, Rating, Rect, Refresh, RelativeContainer, RichEditor, Row, RowSplit, Scroll, ScrollBar, Search, Select, Shape, SideBarContainer, Slider, Stack, Stepper, StepperItem, Swiper, SymbolGlyph, TabContent, Tabs, Text, TextArea, TextClock, TextInput, TextPicker, TextTimer, TimePicker, Toggle, WaterFlow, XComponent
+[AlphabetIndexer](ts-container-alphabet-indexer.md), [Badge](ts-container-badge.md), [Blank](ts-basic-components-blank.md), [Button](ts-basic-components-button.md), [CalendarPicker](ts-basic-components-calendarpicker.md), [Checkbox](ts-basic-components-checkbox.md), [CheckboxGroup](ts-basic-components-checkboxgroup.md), [Circle](ts-drawing-components-circle.md), [Column](ts-container-column.md), [ColumnSplit](ts-container-columnsplit.md), [Counter](ts-container-counter.md), [DataPanel](ts-basic-components-datapanel.md), [DatePicker](ts-basic-components-datepicker.md), [Ellipse](ts-drawing-components-ellipse.md), [Flex](ts-container-flex.md), [FlowItem](ts-container-flowitem.md), [FolderStack](ts-container-folderstack.md), [FormLink](ts-container-formlink.md), [Gauge](ts-basic-components-gauge.md), [Grid](ts-container-grid.md), [GridCol](ts-container-gridcol.md), [GridItem](ts-container-griditem.md), [GridRow](ts-container-gridrow.md), [Hyperlink](ts-container-hyperlink.md), [Image](ts-basic-components-image.md), [ImageAnimator](ts-basic-components-imageanimator.md), [ImageSpan](ts-basic-components-imagespan.md), [Line](ts-drawing-components-line.md), [List](ts-container-list.md), [ListItem](ts-container-listitem.md), [ListItemGroup](ts-container-listitemgroup.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [Marquee](ts-basic-components-marquee.md), [Menu](ts-basic-components-menu.md), [MenuItem](ts-basic-components-menuitem.md), [MenuItemGroup](ts-basic-components-menuitemgroup.md), [NavDestination](ts-basic-components-navdestination.md), [Navigation](ts-basic-components-navigation.md), [Navigator](ts-container-navigator.md), [NavRouter](ts-basic-components-navrouter.md), [NodeContainer](ts-basic-components-nodecontainer.md), [Path](ts-drawing-components-path.md), [PatternLock](ts-basic-components-patternlock.md), [Polygon](ts-drawing-components-polygon.md), [Polyline](ts-drawing-components-polyline.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [Radio](ts-basic-components-radio.md), [Rating](ts-basic-components-rating.md), [Rect](ts-drawing-components-rect.md), [Refresh](ts-container-refresh.md), [RelativeContainer](ts-container-relativecontainer.md), [RichEditor](ts-basic-components-richeditor.md), [Row](ts-container-row.md), [RowSplit](ts-container-rowsplit.md), [Scroll](ts-container-scroll.md), [ScrollBar](ts-basic-components-scrollbar.md), [Search](ts-basic-components-search.md), [Select](ts-basic-components-select.md), [Shape](ts-drawing-components-shape.md), [SideBarContainer](ts-container-sidebarcontainer.md), [Slider](ts-basic-components-slider.md), [Stack](ts-container-stack.md), [Stepper](ts-basic-components-stepper.md), [StepperItem](ts-basic-components-stepperitem.md), [Swiper](ts-container-swiper.md), [SymbolGlyph](ts-basic-components-symbolGlyph.md), [TabContent](ts-container-tabcontent.md), [Tabs](ts-container-tabs.md), [Text](ts-basic-components-text.md), [TextArea](ts-basic-components-textarea.md), [TextClock](ts-basic-components-textclock.md), [TextInput](ts-basic-components-textinput.md), [TextPicker](ts-basic-components-textpicker.md), [TextTimer](ts-basic-components-texttimer.md), [TimePicker](ts-basic-components-timepicker.md), [Toggle](ts-basic-components-toggle.md), [WaterFlow](ts-container-waterflow.md), [XComponent](ts-basic-components-xcomponent.md)
 
 **Parameters**
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  |  [DrawModifier](#drawmodifier-1) \| undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the FrameNode of the currently bound component, not to its subnodes.|
+| modifier  |  [DrawModifier](#drawmodifier-1) \| undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, not to its subnodes.|
 
 **Return value**
 
@@ -58,13 +64,18 @@ Draws the content foreground. Override this method to implement custom content f
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+
+**Example**
+
+See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-implementing-custom-drawing-through-drawmodifier).
 
 ### drawContent
 
 drawContent?(drawContext: DrawContext): void
 
 Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function.
+Note: The Canvas provided in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) parameter is a temporary command-recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -74,13 +85,17 @@ Draws the content. Override this method to implement custom content drawing, whi
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+
+**Example**
+
+See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-implementing-custom-drawing-through-drawmodifier).
 
 ### drawBehind
 
 drawBehind?(drawContext: DrawContext): void
 
-Draws the background. Override this method to implement custom background drawing.
+Draws the background. Override this method to implement custom background drawing operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -90,13 +105,17 @@ Draws the background. Override this method to implement custom background drawin
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+
+**Example**
+
+See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-implementing-custom-drawing-through-drawmodifier).
 
 ### drawForeground<sup>20+</sup>
 
-drawForeground?(drawContext: DrawContext): void
+drawForeground(drawContext: DrawContext): void
 
-Draws the foreground. Override this method to implement custom foreground drawing.
+Draws the foreground. Override this method to implement custom drawing operations on the foreground layer of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -106,7 +125,11 @@ Draws the foreground. Override this method to implement custom foreground drawin
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+
+**Example**
+
+See [Example 2: Implementing Custom Foreground Drawing for a Container Through DrawModifier](#example-2-implementing-custom-foreground-drawing-for-a-container-through-drawmodifier).
 
 ### invalidate
 
@@ -118,17 +141,34 @@ Triggers redrawing of the bound component. No overloading is allowed or needed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Example**
+
+See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-implementing-custom-drawing-through-drawmodifier).
+
+### DrawContext
+
+type DrawContext = DrawContext
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type                                                     | Description                   |
+| --------------------------------------------------------- | ----------------------- |
+| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Graphics drawing context.|
+
 ## Example
 
 ### Example 1: Implementing Custom Drawing Through DrawModifier
 
-This example shows how to implement custom drawing for a **Text** component using **DrawModifier**.
+This example demonstrates how to implement custom drawing for the [Text](ts-basic-components-text.md) component through **DrawModifier**.
 
 ```ts
 // xxx.ets
 import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
 
+// Implement a custom drawing controller by extending DrawModifier.
 class MyFullDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
@@ -139,6 +179,7 @@ class MyFullDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
+  // Override the drawBehind API for custom background drawing. 
   drawBehind(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -149,7 +190,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     context.canvas.drawRect({
       left: this.uiContext.vp2px(halfWidth - 50 * this.scaleX),
       top: this.uiContext.vp2px(halfHeight - 50 * this.scaleY),
@@ -158,6 +199,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
   }
 
+  // Override the drawContent API for custom content drawing.
   drawContent(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -168,7 +210,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     context.canvas.drawRect({
       left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
       top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
@@ -177,6 +219,7 @@ class MyFullDrawModifier extends DrawModifier {
     });
   }
 
+  // Override the drawFront API for custom foreground drawing.
   drawFront(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -187,12 +230,13 @@ class MyFullDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
     context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
+// Implement a custom drawing controller by extending DrawModifier, supporting only custom foreground drawing.
 class MyFrontDrawModifier extends DrawModifier {
   public scaleX: number = 1;
   public scaleY: number = 1;
@@ -213,7 +257,7 @@ class MyFrontDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
     context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
   }
@@ -228,6 +272,7 @@ struct DrawModifierExample {
   @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
   private count = 0;
 
+  // Create an Animator object and set the animation.
   create() {
     let self = this;
     this.drawAnimator = this.getUIContext().createAnimator({
@@ -245,6 +290,7 @@ struct DrawModifierExample {
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
+      // Manually trigger redraw.
       self.modifier.invalidate();
     };
   }
@@ -308,7 +354,7 @@ struct DrawModifierExample {
 
 ### Example 2: Implementing Custom Foreground Drawing for a Container Through DrawModifier
 
-This example demonstrates how to implement custom foreground drawing for a **Column** container using **DrawModifier**.
+This example demonstrates how to implement custom foreground drawing for a [Column](ts-container-column.md) container using **DrawModifier**.
 
 ```ts
 // xxx.ets
@@ -324,6 +370,7 @@ class MyForegroundDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
+  // Override the drawForeground method to customize foreground drawing.
   drawForeground(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -334,7 +381,7 @@ class MyForegroundDrawModifier extends DrawModifier {
     });
     context.canvas.attachBrush(brush);
     const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
     context.canvas.drawRect({
       left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
       top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
@@ -347,6 +394,7 @@ class MyForegroundDrawModifier extends DrawModifier {
 @Entry
 @Component
 struct DrawModifierExample {
+  // Instantiate the foreground drawing class, passing the UIContext instance.
   private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
 
   build() {
@@ -361,6 +409,7 @@ struct DrawModifierExample {
     .width(280)
     .height(300)
     .backgroundColor(0x87CEEB)
+    // Apply custom foreground drawing by passing the DrawModifier instance.
     .drawModifier(this.foregroundModifier)
   }
 }

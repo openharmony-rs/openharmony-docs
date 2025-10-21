@@ -429,7 +429,7 @@
               - [Overview of Other State Management Features](ui/state-management/arkts-other-state-mgmt-functions-overview.md)
               - [\@Watch Decorator: Getting Notified of State Variable Changes](ui/state-management/arkts-watch.md)
               - [$$ Syntax: Implementing Two-Way Synchronization for Built-in Components](ui/state-management/arkts-two-way-sync.md)
-              - [\@Track Decorator: Class Object Property-level Update](ui/state-management/arkts-track.md)
+              - [\@Track Decorator: Implementing Class Object Property-level Updates](ui/state-management/arkts-track.md)
               - [Freezing a Custom Component](ui/state-management/arkts-custom-components-freeze.md)
             - [MVVM](ui/state-management/arkts-mvvm.md)
             - [Best Practices for State Management](ui/state-management/arkts-state-management-best-practices.md)
@@ -449,7 +449,7 @@
               - [\@ReusableV2 Decorator: Reusing Components](ui/state-management/arkts-new-reusableV2.md)
             - Other State Management Features<!--arkts-new-other-state-mgmt-->
               - [AppStorageV2: Storing Application-wide UI State](ui/state-management/arkts-new-appstoragev2.md)
-              - [PersistenceV2: Persisting Application State](ui/state-management/arkts-new-persistencev2.md)
+              - [PersistenceV2: Persisting UI State](ui/state-management/arkts-new-persistencev2.md)
               - [!! Syntax: Enabling Two-Way Binding](ui/state-management/arkts-new-binding.md)
               - [Freezing a Custom Component](ui/state-management/arkts-custom-components-freezeV2.md)
               - [getTarget API: Obtaining Original Objects](ui/state-management/arkts-new-getTarget.md)
@@ -460,7 +460,7 @@
             - [Mixing Use of Custom Components](ui/state-management/arkts-custom-component-mixed-scenarios.md)
             - [Mixing Use of State Management V1 and V2](ui/state-management/arkts-v1-v2-mixusage.md)
           - Migration from V1 to V2<!--v1v2-migration-->
-            - [Migrating Applications from V1 to V2](ui/state-management/arkts-v1-v2-migration.md)
+            - [V1 to V2 Migration Overview](ui/state-management/arkts-v1-v2-migration.md)
             - [Migration for Component State Variables](ui/state-management/arkts-v1-v2-migration-inner-component.md)
             - [Migration for Data Object State Variables](ui/state-management/arkts-v1-v2-migration-inner-class.md)
             - [Migration for In-Application State Variables and Related Scenarios](ui/state-management/arkts-v1-v2-migration-application-and-others.md)
@@ -2390,7 +2390,7 @@
         - [Bundle Error Codes](reference/apis-ability-kit/errorcode-bundle.md)
         - [Access Control Error Codes](reference/apis-ability-kit/errorcode-access-token.md)
         - [ohos.screenLockFileManager Error Codes](reference/apis-ability-kit/errorcode-screenLockFileManager.md)
-        - [Application Domain Name Verification Error Codes](reference/apis-ability-kit/errorcode-appDomainVerify.md)
+        - [Application Domain Name Verification Error Codes](reference/apis-ability-kit/errorcode-appDomainVerify-sys.md)
     - Accessibility Kit<!--accessibility-api-->
       - ArkTS APIs<!--accessibility-arkts-->
         - [@ohos.accessibility (Accessibility)](reference/apis-accessibility-kit/js-apis-accessibility.md)
@@ -2715,7 +2715,7 @@
             - [Focus Axis Event](reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md)
           - Interaction Response Events<!--interaction-events-->
             - [Click Event](reference/apis-arkui/arkui-ts/ts-universal-events-click.md)
-            - [Drag/Drop Event](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)
+            - [Drag Event](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)
             <!--Del-->
             - [Drag Event (System API)](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop-sys.md)
             <!--DelEnd-->
@@ -2736,31 +2736,31 @@
         - [Universal Attributes](reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)
           - Basic Attributes<!--basic-property-->
             - [Component ID](reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md)
-            - [restoreId](reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md)
+            - [Distributed Migration Identifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md)
             - [Visibility](reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md)
             - [Background](reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)
-            - [Overlay](reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)
+            - [Overlay Control](reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)
             - [Z-order Control](reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)
             - [Obscuring](reference/apis-arkui/arkui-ts/ts-universal-attributes-obscured.md)
           - Layout and Borders<!--layout-property-->
-            - [Size](reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
+            - [Sizing](reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
             - [Location](reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)
             - [Layout Constraints](reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md)
             - [Flex Layout](reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md)
             - [Safe Area](reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)
             - [Component-Level Pixel Rounding](reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
             - [Page-Level Pixel Rounding](reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
-            - [Border](reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md)
+            - [Border Styling](reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md)
             - [Border Image](reference/apis-arkui/arkui-ts/ts-universal-attributes-border-image.md)
           - Visual Effects<!--visual-effect-property-->
-            - [Opacity](reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md)
+            - [Opacity Control](reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md)
             - [Transformation](reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md)
-            - [Image Effect Configuration](reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md)
+            - [Image Effect](reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md)
             - [Shape Clipping](reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md)
             - [Gradient Color](reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md)
             - [Foreground Color](reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-color.md)
             - [Foreground Effect](reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-effect.md)
-            - [Outline](reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md)
+            - [Outline Styling](reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md)
             - [Visual Effect](reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md)
             - [Foreground Blur](reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md)
             - [Motion Blur](reference/apis-arkui/arkui-ts/ts-universal-attributes-motionBlur.md)
@@ -2800,7 +2800,7 @@
             - [Drawing Modifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md)
             - [Content Modifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-content-modifier.md)
             - [Custom Property](reference/apis-arkui/arkui-ts/ts-universal-attributes-custom-property.md)
-            - [SymbolGlyphModifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
+            - [Symbol Glyph Modifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
           - Other<!--other-property-->
             - [Reuse ID](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [Reuse Options](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)

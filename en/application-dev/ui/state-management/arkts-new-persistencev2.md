@@ -1,4 +1,4 @@
-# PersistenceV2: Persisting UI States
+# PersistenceV2: Persisting UI State
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zzq212050299-->

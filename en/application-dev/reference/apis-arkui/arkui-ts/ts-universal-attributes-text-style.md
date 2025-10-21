@@ -233,7 +233,7 @@ Defines custom icon symbol configurations.
 
 | Type | Description      |
 | ----- | -------- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | Returns the current **SymbolGlyphModifier** instance.|
+| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | Returns the current **SymbolGlyphModifier** instance.|
 
 ## TextContentControllerOptions<sup>15+</sup>
 

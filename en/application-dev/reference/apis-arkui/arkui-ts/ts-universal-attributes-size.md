@@ -1,4 +1,4 @@
-# Size
+# Sizing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @HelloCrease-->
 
-The size attributes set the width, height, and margins of a component.
+The sizing attributes set the width, height, and margins of a component.
 
 >  **NOTE**
 >
@@ -314,7 +314,7 @@ Enumerates the layout policies for component width and height.
 >
 > - For **wrapContent** and **fixAtIdealSize**: If the component's size cannot be determined by its content, it uses the default size (if available); otherwise, it calculates the size as (0, 0).
 > 
-> - If a container uses **wrapContent** and has child components set to **matchParent**: (1) The container is first sized by child components with a fixed size. (2) Child components with **matchParent** then match the container's size. (3) If no child components have a fixed size, both the container and its children have a size of (0, 0).
+> - When a container is set to **wrapContent** and contains child components set to **matchParent** (including cases where only one side is set to **matchParent**): (1) The container is first expanded by child components with determinate sizes. (2) Child components set to **matchParent** then adapt to the container's size. (3) If no child components have determinate sizes, both the container and its child components have a zero size.
 >
 > - **LayoutPolicy** has lower priority than **constraintSize**.
 

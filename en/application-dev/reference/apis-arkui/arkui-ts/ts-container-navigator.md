@@ -1,4 +1,10 @@
 # Navigator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **Navigator** component provides redirection.
 
@@ -148,13 +154,11 @@ class TextObject {
 
 ```ts
 // Detail.ets
-import { router } from '@kit.ArkUI'
-
 @Entry
 @Component
 struct DetailExample {
   // Receive the input parameters of Navigator.ets.
-  params: Record<string, NameObject> = router.getParams() as Record<string, NameObject>
+  params: Record<string, NameObject> = this.getUIContext().getRouter().getParams() as Record<string, NameObject>
   @State name: NameObject = this.params.text
 
   build() {

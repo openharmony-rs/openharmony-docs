@@ -1,4 +1,10 @@
 # Listening for Text Box Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information.
 
@@ -11,7 +17,7 @@ Layout changes during editing: Register the [NODE_TEXT_AREA_ON_EDIT_CHANGE](../.
 The following example demonstrates how to listen for text box events and parse data based on the [Integrating with ArkTS Pages](../ui/ndk-access-the-arkts-page.md) section.
 
 - Registering Events
-  
+    
     Events are registered through a unified API. For details, see [registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent). For details about the event types supported by the text box, see the [ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) section, searching for **NODE_TEXT_AREA_**.
 
     ```c++
@@ -68,8 +74,13 @@ The following example demonstrates how to listen for text box events and parse d
         }
     });
     ```
-- Sample Code
+- Sample
+
+   This section demonstrates core API usage only. For the complete sample project, see <!--RP1-->[TextAreaEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/TextAreaEventNDK)<!--RP1End-->.
+    
     ```c++
+    #include <arkui/native_interface.h>
+    
     void NodeManager::CreateTextAreaNode() {
         ArkUI_NativeNodeAPI_1 *nodeApi = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
