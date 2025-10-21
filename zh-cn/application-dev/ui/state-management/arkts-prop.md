@@ -56,41 +56,20 @@
 
 - 当装饰支持类型，可以观察到赋值的变化。
 
-  ```ts
-  // 简单类型
-  @Prop count: number;
-  // 赋值的变化可以被观察到
-  this.count = 1;
-  // 复杂类型
-  @Prop title: Model;
-  // 可以观察到赋值的变化
-  this.title = new Model('Hi');
-  ```
+```ts
+// 简单类型
+@Prop count: number;
+// 赋值的变化可以被观察到
+this.count = 1;
+// 复杂类型
+@Prop title: Model;
+// 可以观察到赋值的变化
+this.title = new Model('Hi');
+```
 
 - 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。
 
-```ts
-class Info {
-  public value: string;
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-class Model {
-  public value: string;
-  public info: Info;
-  constructor(value: string, info: Info) {
-    this.value = value;
-    this.info = info;
-  }
-}
-
-@Prop title: Model;
-// 可以观察到第一层的变化
-this.title.value = 'Hi';
-// 观察不到第二层的变化
-this.title.info.value = 'ArkUI';
-```
+<!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
 
 对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
@@ -140,34 +119,7 @@ this.title.push('3');
 
 以下示例中，当@State装饰的变量message改变时，Father组件会刷新。由于Son组件使用@Prop接收了该变量，因此Father组件刷新的过程中会使用message的最新值去更新@Prop的值。@Prop更新后，会触发Son组件的刷新。
 
-```ts
-@Component
-struct Son {
-  @Prop message: string = 'Hi';
-
-  build() {
-    Column() {
-      Text(this.message)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Father {
-  @State message: string = 'Hello';
-
-  build() {
-    Column() {
-      Text(this.message)
-      Button(`father click`).onClick(() => {
-        this.message += '*';
-      })
-      Son({ message: this.message })
-    }
-  }
-}
-```
+<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) -->
 
 ## 限制条件
 
@@ -181,49 +133,8 @@ struct Father {
 
 ParentComponent的状态变量countDownStartValue的变化将重置CountDownComponent的count。
 
-```ts
-@Component
-struct CountDownComponent {
-  @Prop count: number = 0;
-  costOfOneAttempt: number = 1;
+<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTow.ets) -->
 
-  build() {
-    Column() {
-      if (this.count > 0) {
-        Text(`You have ${this.count} Nuggets left`)
-      } else {
-        Text('Game over!')
-      }
-      // @Prop装饰的变量不会同步给父组件
-      Button(`Try again`).onClick(() => {
-        this.count -= this.costOfOneAttempt;
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct ParentComponent {
-  @State countDownStartValue: number = 10;
-
-  build() {
-    Column() {
-      Text(`Grant ${this.countDownStartValue} nuggets to play.`)
-      // 父组件的数据源的修改会同步给子组件
-      Button(`+1 - Nuggets in New Game`).onClick(() => {
-        this.countDownStartValue += 1;
-      })
-      // 父组件的修改会同步给子组件
-      Button(`-1  - Nuggets in New Game`).onClick(() => {
-        this.countDownStartValue -= 1;
-      })
-
-      CountDownComponent({ count: this.countDownStartValue, costOfOneAttempt: 2 })
-    }
-  }
-}
-```
 
 在上面的示例中：
 
@@ -241,51 +152,7 @@ struct ParentComponent {
 
 父组件中@State如果装饰数组类型的变量，其数组项也可以初始化@Prop。以下示例中，父组件Index中@State装饰数组arr，将其数组项初始化子组件Child中@Prop装饰的value。
 
-```ts
-@Component
-struct Child {
-  @Prop value: number = 0;
-
-  build() {
-    Text(`${this.value}`)
-      .fontSize(50)
-      .onClick(() => {
-        this.value++;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State arr: number[] = [1, 2, 3];
-
-  build() {
-    Row() {
-      Column() {
-        Child({ value: this.arr[0] })
-        Child({ value: this.arr[1] })
-        Child({ value: this.arr[2] })
-
-        Divider().height(5)
-
-        ForEach(this.arr,
-          (item: number) => {
-            Child({ value: item })
-          },
-          (item: number) => item.toString()
-        )
-        Text('replace entire arr')
-          .fontSize(50)
-          .onClick(() => {
-            // 两个数组都包含项“3”。
-            this.arr = this.arr[0] == 1 ? [3, 4, 5] : [1, 2, 3];
-          })
-      }
-    }
-  }
-}
-```
+<!-- @[prop_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFour.ets) -->
 
 初始渲染创建6个子组件实例，每个\@Prop装饰的变量初始化都在本地拷贝了一份数组项。子组件onClick事件处理程序会更改局部变量值。
 
@@ -327,154 +194,13 @@ struct Index {
 
 在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在[从父组件中的\@State数组项到\@Prop class类型的同步](#从父组件中的state数组项到prop-class类型的同步)说明。
 
-```ts
-class Book {
-  public title: string;
-  public pages: number;
-  public readIt: boolean = false;
-
-  constructor(title: string, pages: number) {
-    this.title = title;
-    this.pages = pages;
-  }
-}
-
-@Component
-struct ReaderComp {
-  @Prop book: Book = new Book('', 0);
-
-  build() {
-    Row() {
-      Text(this.book.title)
-      Text(`...has${this.book.pages} pages!`)
-      Text(`...${this.book.readIt ? 'I have read' : 'I have not read it'}`)
-        .onClick(() => this.book.readIt = true)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Library {
-  @State book: Book = new Book('100 secrets of C++', 765);
-
-  build() {
-    Column() {
-      ReaderComp({ book: this.book })
-      ReaderComp({ book: this.book })
-    }
-  }
-}
-```
+<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) -->
 
 ### 从父组件中的\@State数组项到\@Prop class类型的同步
 
 以下示例中，更改了\@State装饰的allBooks数组中Book对象的属性，但点击“Mark read for everyone”时，没有触发UI更新。这是因为该属性是第二层的嵌套属性，\@State装饰器只能观察到第一层属性，不会观察到此属性更改，所以框架不会更新ReaderComp。
 
-```ts
-let nextId: number = 1;
-
-// @Observed
-class Book {
-  public id: number;
-  public title: string;
-  public pages: number;
-  public readIt: boolean = false;
-
-  constructor(title: string, pages: number) {
-    this.id = nextId++;
-    this.title = title;
-    this.pages = pages;
-  }
-}
-
-@Component
-struct ReaderComp {
-  @Prop book: Book = new Book('', 1);
-
-  build() {
-    Row() {
-      Text(` ${this.book ? this.book.title : 'Book is undefined'}`).fontColor('#e6000000')
-      Text(` has ${this.book ? this.book.pages : 'Book is undefined'} pages!`).fontColor('#e6000000')
-      Text(` ${this.book ? this.book.readIt ? 'I have read' : 'I have not read it' : 'Book is undefined'}`)
-        .fontColor('#e6000000')
-        .onClick(() => this.book.readIt = true)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Library {
-  @State allBooks: Book[] = [new Book('C#', 765), new Book('JS', 652), new Book('TS', 765)];
-
-  build() {
-    Column() {
-      Text('library`s all time favorite')
-        .width(312)
-        .height(40)
-        .backgroundColor('#0d000000')
-        .borderRadius(20)
-        .margin(12)
-        .padding({ left: 20 })
-        .fontColor('#e6000000')
-      ReaderComp({ book: this.allBooks[2] })
-        .backgroundColor('#0d000000')
-        .width(312)
-        .height(40)
-        .padding({ left: 20, top: 10 })
-        .borderRadius(20)
-        .colorBlend('#e6000000')
-      Text('Books on loan to a reader')
-        .width(312)
-        .height(40)
-        .backgroundColor('#0d000000')
-        .borderRadius(20)
-        .margin(12)
-        .padding({ left: 20 })
-        .fontColor('#e6000000')
-      ForEach(this.allBooks, (book: Book) => {
-        ReaderComp({ book: book })
-          .margin(12)
-          .width(312)
-          .height(40)
-          .padding({ left: 20, top: 10 })
-          .backgroundColor('#0d000000')
-          .borderRadius(20)
-      },
-        (book: Book) => book.id.toString())
-      Button('Add new')
-        .width(312)
-        .height(40)
-        .margin(12)
-        .fontColor('#FFFFFF')
-        .onClick(() => {
-          this.allBooks.push(new Book('JA', 512));
-        })
-      Button('Remove first book')
-        .width(312)
-        .height(40)
-        .margin(12)
-        .fontColor('#FFFFFF')
-        .onClick(() => {
-          if (this.allBooks.length > 0) {
-            this.allBooks.shift();
-          } else {
-            console.info('length <= 0');
-          }
-        })
-      Button('Mark read for everyone')
-        .width(312)
-        .height(40)
-        .margin(12)
-        .fontColor('#FFFFFF')
-        .onClick(() => {
-          this.allBooks.forEach((book) => book.readIt = true)
-        })
-    }
-  }
-}
-```
+<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) -->
 
 使用\@Observed装饰class Book，Book的属性变化将被观察。需要注意的是，\@Prop在子组件装饰的状态变量和父组件的数据源是单向同步关系，即ReaderComp中的\@Prop book的修改不会同步给父组件Library。而父组件只会在状态变量发生变化的时候，才会触发UI的重新渲染。
 
@@ -508,68 +234,7 @@ class Book {
 
 - \@Prop customCounter2有本地初始化，在这种情况下，\@Prop依旧允许但非强制父组件同步数据源给\@Prop。
 
-```ts
-@Component
-struct MyComponent {
-  @Prop customCounter: number;
-  @Prop customCounter2: number = 5;
-
-  build() {
-    Column() {
-      Row() {
-        Text(`From Main: ${this.customCounter}`).fontColor('#ff6b6565').margin({ left: -110, top: 12 })
-      }
-
-      Row() {
-        Button('Click to change locally!')
-          .width(288)
-          .height(40)
-          .margin({ left: 30, top: 12 })
-          .fontColor('#FFFFFF')
-          .onClick(() => {
-            this.customCounter2++;
-          })
-      }
-
-      Row() {
-        Text(`Custom Local: ${this.customCounter2}`).fontColor('#ff6b6565').margin({ left: -110, top: 12 })
-      }
-    }
-  }
-}
-
-@Entry
-@Component
-struct MainProgram {
-  @State mainCounter: number = 10;
-
-  build() {
-    Column() {
-      Row() {
-        Column() {
-          // customCounter必须从父组件初始化，因为MyComponent的customCounter成员变量缺少本地初始化；此处，customCounter2可以不做初始化。
-          MyComponent({ customCounter: this.mainCounter })
-          // customCounter2也可以从父组件初始化，父组件初始化的值会覆盖子组件customCounter2的本地初始化的值
-          MyComponent({ customCounter: this.mainCounter, customCounter2: this.mainCounter })
-        }
-      }
-
-      Row() {
-        Column() {
-          Button('Click to change number')
-            .width(288)
-            .height(40)
-            .margin({ left: 30, top: 12 })
-            .fontColor('#FFFFFF')
-            .onClick(() => {
-              this.mainCounter++;
-            })
-        }
-      }
-    }
-  }
-}
-```
+<!-- @[prop_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeven.ets) -->
 
 ![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
 
@@ -577,107 +242,11 @@ struct MainProgram {
 
 在嵌套场景下，每一层都要用\@Observed装饰，且每一层都要被\@Prop接收，这样才能观察到嵌套场景。
 
-```ts
-// 以下是嵌套类对象的数据结构。
-@Observed
-class Son {
-  public title: string;
-
-  constructor(title: string) {
-    this.title = title;
-  }
-}
-
-@Observed
-class Father {
-  public name: string;
-  public son: Son;
-
-  constructor(name: string, son: Son) {
-    this.name = name;
-    this.son = son;
-  }
-}
-```
+<!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
 
 以下组件层次结构展示了\@Prop嵌套场景的数据结构。
 
-```ts
-@Entry
-@Component
-struct Person {
-  @State person: Father = new Father('Hello', new Son('world'));
-
-  build() {
-    Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
-        Button('change Father name')
-          .width(312)
-          .height(40)
-          .margin(12)
-          .fontColor('#FFFFFF')
-          .onClick(() => {
-            this.person.name = 'Hi';
-          })
-        Button('change Son title')
-          .width(312)
-          .height(40)
-          .margin(12)
-          .fontColor('#FFFFFF')
-          .onClick(() => {
-            this.person.son.title = 'ArkUI';
-          })
-        Text(this.person.name)
-          .fontSize(16)
-          .margin(12)
-          .width(312)
-          .height(40)
-          .backgroundColor('#ededed')
-          .borderRadius(20)
-          .textAlign(TextAlign.Center)
-          .fontColor('#e6000000')
-          .onClick(() => {
-            this.person.name = 'Bye';
-          })
-        Text(this.person.son.title)
-          .fontSize(16)
-          .margin(12)
-          .width(312)
-          .height(40)
-          .backgroundColor('#ededed')
-          .borderRadius(20)
-          .textAlign(TextAlign.Center)
-          .onClick(() => {
-            this.person.son.title = 'openHarmony';
-          })
-        Child({ child: this.person.son })
-      }
-    }
-  }
-}
-
-
-@Component
-struct Child {
-  @Prop child: Son = new Son('');
-
-  build() {
-    Column() {
-      Text(this.child.title)
-        .fontSize(16)
-        .margin(12)
-        .width(312)
-        .height(40)
-        .backgroundColor('#ededed')
-        .borderRadius(20)
-        .textAlign(TextAlign.Center)
-        .onClick(() => {
-          this.child.title = 'Bye Bye';
-        })
-    }
-  }
-}
-```
+<!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
 
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
@@ -689,54 +258,8 @@ struct Child {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-@Component
-struct Child {
-  @Prop value: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
 
-  build() {
-    Column() {
-      ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
-        Divider()
-      })
-      Button('child init map').onClick(() => {
-        this.value = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-      })
-      Button('child set new one').onClick(() => {
-        this.value.set(4, 'd');
-      })
-      Button('child clear').onClick(() => {
-        this.value.clear();
-      })
-      Button('child replace the first one').onClick(() => {
-        this.value.set(0, 'aa');
-      })
-      Button('child delete the first one').onClick(() => {
-        this.value.delete(0);
-      })
-    }
-  }
-}
-
-
-@Entry
-@Component
-struct MapSample {
-  @State message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-
-  build() {
-    Row() {
-      Column() {
-        Child({ value: this.message })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 
 ### 装饰Set类型变量
 
@@ -746,177 +269,20 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-@Component
-struct Child {
-  @Prop message: Set<number> = new Set([0, 1, 2, 3, 4]);
+<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) -->
 
-  build() {
-    Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Divider()
-      })
-      Button('init set').onClick(() => {
-        this.message = new Set([0, 1, 2, 3, 4]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.add(5);
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(0);
-      })
-    }
-    .width('100%')
-  }
-}
-
-
-@Entry
-@Component
-struct SetSample {
-  @State message: Set<number> = new Set([0, 1, 2, 3, 4]);
-
-  build() {
-    Row() {
-      Column() {
-        Child({ message: this.message })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 
 ### 装饰Date类型变量
 
 在下面的示例中，selectedDate类型为Date，点击Button改变Date的值，视图会随之刷新。
 
-```ts
-@Component
-struct DateComponent {
-  @Prop selectedDate: Date = new Date('');
-
-  build() {
-    Column() {
-      Button('child update the new date')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-09-09');
-        })
-      Button(`child increase the year by 1`).onClick(() => {
-        this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-      })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct ParentComponent {
-  @State parentSelectedDate: Date = new Date('2021-08-08');
-
-  build() {
-    Column() {
-      Button('parent update the new date')
-        .margin(10)
-        .onClick(() => {
-          this.parentSelectedDate = new Date('2023-07-07');
-        })
-      Button('parent increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.parentSelectedDate.setDate(this.parentSelectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.parentSelectedDate
-      })
-
-      DateComponent({ selectedDate: this.parentSelectedDate })
-    }
-
-  }
-}
-```
+<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) -->
 
 ### Prop支持联合类型实例
 
 @Prop支持联合类型和undefined和null，在下面的示例中，animal类型为Animals | undefined，点击父组件Zoo中的Button改变animal的属性或者类型，Child中也会对应刷新。
 
-```ts
-class Animals {
-  public name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-@Component
-struct Child {
-  @Prop animal: Animals | undefined;
-
-  build() {
-    Column() {
-      Text(`Child's animal is  ${this.animal instanceof Animals ? this.animal.name : 'undefined'}`).fontSize(30)
-
-      Button('Child change animals into tigers')
-        .onClick(() => {
-          // 赋值为Animals的实例
-          this.animal = new Animals('Tiger');
-        })
-
-      Button('Child change animal to undefined')
-        .onClick(() => {
-          // 赋值为undefined
-          this.animal = undefined;
-        })
-
-    }.width('100%')
-  }
-}
-
-@Entry
-@Component
-struct Zoo {
-  @State animal: Animals | undefined = new Animals('lion');
-
-  build() {
-    Column() {
-      Text(`Parents' animals are  ${this.animal instanceof Animals ? this.animal.name : 'undefined'}`).fontSize(30)
-
-      Child({animal: this.animal})
-
-      Button('Parents change animals into dogs')
-        .onClick(() => {
-          // 判断animal的类型，做属性的更新
-          if (this.animal instanceof Animals) {
-            this.animal.name = 'Dog';
-          } else {
-            console.info('num is undefined, cannot change property');
-          }
-        })
-
-      Button('Parents change animal to undefined')
-        .onClick(() => {
-          // 赋值为undefined
-          this.animal = undefined;
-        })
-    }
-  }
-}
-```
+<!-- @[prop_thirteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageThirteen.ets) -->
 
 ## 常见问题
 
@@ -969,61 +335,7 @@ struct Parent {
 
 【正例】
 
-```ts
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild1 {
-  @Prop fruit: Commodity; // 未进行本地初始化
-
-  build() {
-    Text(`PropChild1 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Component
-struct PropChild2 {
-  @Prop fruit: Commodity = new Commodity(1); // 进行本地初始化
-
-  build() {
-    Text(`PropChild2 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // @PropChild1本地没有初始化，必须从父组件初始化
-      PropChild1({ fruit: this.fruit[0] })
-      // @PropChild2本地进行了初始化，可以不从父组件初始化，也可以从父组件初始化
-      PropChild2()
-      PropChild2({ fruit: this.fruit[0] })
-    }
-  }
-}
-```
+<!-- @[prop_fourteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFourteen.ets) -->
 
 ### 使用a.b(this.object)形式调用，不会触发UI刷新
 
@@ -1091,61 +403,6 @@ struct Child {
 
 【正例】
 
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
+<!-- @[prop_fifteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFifteen.ets) -->
 
-  static changeScore1(score:Score) {
-    score.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(score:Score) {
-    score.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // 通过赋值添加 Proxy 代理
-          let score1 = this.score;
-          Score.changeScore1(score1);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // 通过赋值添加 Proxy 代理
-          let score2 = this.score;
-          this.changeScore2(score2);
-        })
-    }
-  }
-}
-```
 <!--no_check-->
