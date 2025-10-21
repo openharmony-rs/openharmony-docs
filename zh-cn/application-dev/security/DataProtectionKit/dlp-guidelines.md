@@ -58,7 +58,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 本文档提供接口示例代码，如需要了解工程项目创建方式，可参考[工程创建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-project)。
 
 1. 引入[dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md)模块。
-<!-- [dlp_startDLPManagerForResult]（https://gitcode.com/gcw_RYdx6Zzw/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets） -->
+<!-- [dlp_prepareForOpenDlpFile]（https://gitcode.com/gcw_RYdx6Zzw/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets） -->
 
    ```ts
    import { dlpPermission } from '@kit.DataProtectionKit';
