@@ -2870,7 +2870,7 @@ function SetMemoryNameSync(pixelMap:image.PixelMap) {
 
 getUniqueId(): number
 
-获取PixelMap的唯一标识符(ID)。
+获取PixelMap的唯一ID。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2882,7 +2882,7 @@ getUniqueId(): number
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 唯一标识符(ID)。 |
+| number | 唯一ID。             |
 
 **错误码：**
 
