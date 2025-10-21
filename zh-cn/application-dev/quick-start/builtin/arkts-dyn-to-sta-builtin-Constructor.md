@@ -24,7 +24,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(value: bigint | boolean | number | string): bigint`
 
 **参数：**
@@ -47,7 +47,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static BigInt.invoke(value: bigint | boolean | number | string): bigint`
 
 **参数：**
@@ -87,7 +87,7 @@
 
 **规则：** `arkts-no-any-unknown`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `constructor(value?: any): Boolean`
 
 **参数：**
@@ -100,7 +100,7 @@
   | -------- | -------- |
   | Boolean | 转换后的布尔值。 |
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `constructor(value: Object | null | undefined = undefined): Boolean`
 
 **参数：**
@@ -114,13 +114,13 @@
   | Boolean | 转换后的布尔值。 |
 
 - 适配建议：
-  ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
+  ArkTS-Sta相比ArkTS-Dyn接口签名有变更，但对开发者接口行为无变更。
 
 #### BooleanConstructor-构造函数调用变更
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `<T>(value?: T): boolean`
 
 **参数：**
@@ -143,7 +143,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static Boolean.invoke<T>(value?: T): boolean`
 
 **参数：**
@@ -177,7 +177,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(): string`
 
 **返回值：**
@@ -195,7 +195,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static Date.invoke(): string`
 
 **返回值：**
@@ -224,7 +224,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): Error`
 
 **参数：**
@@ -247,7 +247,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static invoke(message?: string): Error`
 
 **参数：**
@@ -281,7 +281,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): EvalError`
 
 **参数：**
@@ -304,7 +304,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static invoke(message?: string): EvalError`
 
 **参数：**
@@ -338,7 +338,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): RangeError`
 
 **参数：**
@@ -361,7 +361,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static RangeError.invoke(message?: string): RangeError`
 
 **参数：**
@@ -393,7 +393,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): ReferenceError`
 
 **参数：**
@@ -416,7 +416,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static ReferenceError.invoke(message?: string): ReferenceError`
 
 **参数：**
@@ -447,7 +447,7 @@
 ### 变更详情
 
 #### RegExpConstructor-构造函数调用单参数变更
-- ArkTS1.1 版本签名：  
+- ArkTS-Dyn 版本签名：  
   `(pattern: RegExp | string): RegExp`
 
 **参数：**
@@ -470,7 +470,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static RegExp.invoke(pattern: RegExp | string): RegExp`
 
 **参数：**
@@ -495,7 +495,7 @@
 
 
 #### RegExpConstructor-构造函数调用双参数变更
-- ArkTS1.1 版本签名：  
+- ArkTS-Dyn 版本签名：  
   `(pattern: RegExp | string, flags?: string): RegExp`
 
 **参数：**
@@ -519,7 +519,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static RegExp.invoke(pattern: RegExp | string, flags?: string): RegExp`
 
 **参数：**
@@ -545,7 +545,7 @@
 
 
 #### RegExpConstructor-构造函数调用双参数标志可选变更
-- ArkTS1.1 版本签名：  
+- ArkTS-Dyn 版本签名：  
   `(pattern: string, flags?: string): RegExp`
 
 **参数：**
@@ -569,7 +569,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static RegExp.invoke(pattern: string, flags?: string): RegExp`
 
 **参数：**
@@ -604,7 +604,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): SyntaxError`
 
 **参数：**
@@ -629,7 +629,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static SyntaxError.invoke(message?: string): SyntaxError`
 
 **参数：**
@@ -665,7 +665,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): TypeError`
 
 **参数：**
@@ -688,7 +688,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static TypeError.invoke(message?: string): TypeError`
 
 **参数：**
@@ -722,7 +722,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(message?: string): URIError`
 
 **参数：**
@@ -747,7 +747,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static URIError.invoke(message?: string): URIError`
 
 **参数：**

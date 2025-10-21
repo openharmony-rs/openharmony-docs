@@ -1,9 +1,9 @@
-# Uint16Array
+# Int16Array
 
 ## 变更梗概
 - [Symbol.iterator变更](#symboliterator变更)
-- [every方法变更](#every方法变更)
-- [filter方法变更](#filter方法变更) 
+- [every方法变更](#every方法变更) 
+- [filter方法变更](#filter方法变更)
 - [find方法变更](#find方法变更)
 - [findIndex方法变更](#findindex方法变更)
 - [forEach方法变更](#foreach方法变更)
@@ -18,7 +18,7 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<number>`
 
 **返回值：**
@@ -28,11 +28,11 @@
 
 **示例：**  
   ```typescript
-  let a = new Uint16Array(3);
+  let a = new Int16Array(3);
   let iter = Reflect.get(a, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<number>`
 
 **返回值：**
@@ -42,7 +42,7 @@
 
 **示例：**  
   ```typescript
-  let a = new Uint16Array(3);
+  let a = new Int16Array(3);
   let iter = a.$_iterator();
   ```
 
@@ -52,21 +52,21 @@
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `every(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean`
+**ArkTS-Dyn版本签名：**  
+  `every(predicate: (value: number, index: number, array: Int16Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | predicate | function | 是 | 测试函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array对象。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -85,20 +85,20 @@ predicate函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    compare(value: number, index: number, arr: Uint16Array) {
+    compare(value: number, index: number, arr: Int16Array) {
       return value < this.base
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(4);
   arr.every(a.compare, a);
   arr.every(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `every(predicate: (value: number, index: number, array: Uint16Array) => boolean): boolean`
+**ArkTS-Sta版本签名：**  
+  `every(predicate: (value: number, index: number, array: Int16Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -110,7 +110,7 @@ predicate函数参数说明：
   | -------- | -------- | -------- | -------- |
   | value | number | 是 | 当前被遍历的number值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array对象。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -129,11 +129,11 @@ predicate函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    callEvery(arr: Uint16Array) {
-      return arr.every((value: number, index: number, arr: Uint16Array)=>{return value < this.base})
+    callEvery(arr: Int16Array) {
+      return arr.every((value: number, index: number, arr: Int16Array)=>{return value < this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(4);
   a.callEvery(arr); // false
@@ -146,21 +146,21 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `filter(predicate: (value: number, index: number, array: Uint16Array) => any, thisArg?: any): Uint16Array`
+**ArkTS-Dyn版本签名：**  
+  `filter(predicate: (value: number, index: number, array: Int16Array) => any, thisArg?: any): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | predicate | function | 是 | 测试函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -170,29 +170,29 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 通过测试的元素组成的新数组。 |
+  | Int16Array | 通过测试的元素组成的新数组。 |
 
-**示例：**  
+**示例：**
   ```typescript
   class C {
     base: number;
     constructor(base:number) {
       this.base = base;
     }
-    compare(value: number, index: number, arr: Uint16Array) {
+    compare(value: number, index: number, arr: Int16Array) {
       return value < this.base
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   arr.filter(a.compare, a);
   arr.filter(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `filter(predicate: (value: number, index: number, array: Uint16Array) => boolean): Uint16Array`
+**ArkTS-Sta版本签名：**  
+  `filter(predicate: (value: number, index: number, array: Int16Array) => boolean): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -202,9 +202,9 @@ predicate函数返回值说明：
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -214,20 +214,20 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 通过测试的元素组成的新数组。 |
+  | Int16Array | 通过测试的元素组成的新数组。 |
 
-**示例：**  
+**示例：**
   ```typescript
   class C {
     base: number;
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
-      return arr.filter((value: number, index: number, arr: Uint16Array)=>{return value < this.base})
+    call(arr: Int16Array) {
+      return arr.filter((value: number, index: number, arr: Int16Array)=>{return value < this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr); // [1]
@@ -240,21 +240,21 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `find(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number | undefined`
+**ArkTS-Dyn版本签名：**  
+  `find(predicate: (value: number, index: number, obj: Int16Array) => boolean, thisArg?: any): number | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | predicate | function | 是 | 测试函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | obj | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | obj | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -266,27 +266,27 @@ predicate函数返回值说明：
   | -------- | -------- |
   | number \| undefined | 返回第一个符合条件的元素，否则返回undefined。 |
 
-**示例：**  
+**示例：**
   ```typescript
   class C {
     base: number;
     constructor(base:number) {
       this.base = base;
     }
-    compare(value: number, index: number, arr: Uint16Array) {
+    compare(value: number, index: number, arr: Int16Array) {
       return value >= this.base
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   arr.find(a.compare, a);
   arr.find(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `find(predicate: (value: number, index: number, obj: Uint16Array) => boolean): number | undefined`
+**ArkTS-Sta版本签名：**  
+  `find(predicate: (value: number, index: number, obj: Int16Array) => boolean): number | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -296,9 +296,9 @@ predicate函数返回值说明：
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | obj | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | obj | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -310,18 +310,18 @@ predicate函数返回值说明：
   | -------- | -------- |
   | number \| undefined | 返回第一个符合条件的元素，否则返回undefined。 |
 
-**示例：**  
+**示例：**
   ```typescript
   class C {
     base: number;
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
-      return arr.find((value: number, index: number, arr: Uint16Array)=>{return value >= this.base})
+    call(arr: Int16Array) {
+      return arr.find((value: number, index: number, arr: Int16Array)=>{return value >= this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr); // 2
@@ -334,21 +334,21 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number`
+**ArkTS-Dyn版本签名：**  
+  `findIndex(predicate: (value: number, index: number, obj: Int16Array) => boolean, thisArg?: any): number`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | predicate | function | 是 | 测试函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | obj | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | obj | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -367,20 +367,20 @@ predicate函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    compare(value: number, index: number, arr: Uint16Array) {
+    compare(value: number, index: number, arr: Int16Array) {
       return value >= this.base
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   arr.findIndex(a.compare, a);
   arr.findIndex(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean): number`
+**ArkTS-Sta版本签名：**  
+  `findIndex(predicate: (value: number, index: number, obj: Int16Array) => boolean): number`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -390,9 +390,9 @@ predicate函数返回值说明：
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | obj | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | obj | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -411,11 +411,11 @@ predicate函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
-      return arr.findIndex((value: number, index: number, arr: Uint16Array)=>{return value >= this.base})
+    call(arr: Int16Array) {
+      return arr.findIndex((value: number, index: number, arr: Int16Array)=>{return value >= this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr); // 1
@@ -428,21 +428,21 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void, thisArg?: any): void`
+**ArkTS-Dyn版本签名：**  
+  `forEach(callbackfn: (value: number, index: number, array: Int16Array) => void, thisArg?: any): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | callbackfn | function | 是 | 遍历函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 **示例：**
   ```typescript
@@ -451,20 +451,20 @@ callbackfn函数参数说明：
     constructor(base:number) {
       this.base = base;
     }
-    foo(value: number, index: number, arr: Uint16Array) {
+    foo(value: number, index: number, arr: Int16Array) {
       console.info((value + this.base).toString())
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   arr.forEach(a.foo, a);
   arr.forEach(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void): void`
+**ArkTS-Sta版本签名：**  
+  `forEach(callbackfn: (value: number, index: number, array: Int16Array) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -474,9 +474,9 @@ callbackfn函数参数说明：
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 **示例：**
   ```typescript
@@ -485,11 +485,11 @@ callbackfn函数参数说明：
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
-      return arr.forEach((value: number, index: number, arr: Uint16Array)=>{console.info(value + this.base)})
+    call(arr: Int16Array) {
+      return arr.forEach((value: number, index: number, arr: Int16Array)=>{console.info(value + this.base)})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr);
@@ -502,21 +502,21 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `map(callbackfn: (value: number, index: number, array: Uint16Array) => number, thisArg?: any): Uint16Array`
+**ArkTS-Dyn版本签名：**  
+  `map(callbackfn: (value: number, index: number, array: Int16Array) => number, thisArg?: any): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | callbackfn | function | 是 | 映射函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 callbackfn函数返回值说明：
   | 类型 | 说明 |
@@ -526,7 +526,7 @@ callbackfn函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 新数组，每个元素都是回调函数的返回值。 |
+  | Int16Array | 新数组，每个元素都是回调函数的返回值。 |
 
 **示例：**
   ```typescript
@@ -535,20 +535,20 @@ callbackfn函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    foo(value: number, index: number, arr: Uint16Array) {
+    foo(value: number, index: number, arr: Int16Array) {
       return value + this.base
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   arr.map(a.foo, a);
   arr.map(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `map(callbackfn: (value: number, index: number, array: Uint16Array) => number): Uint16Array`
+**ArkTS-Sta版本签名：**  
+  `map(callbackfn: (value: number, index: number, array: Int16Array) => number): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -558,9 +558,9 @@ callbackfn函数返回值说明：
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 callbackfn函数返回值说明：
   | 类型 | 说明 |
@@ -570,7 +570,7 @@ callbackfn函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 新数组，每个元素都是回调函数的返回值。 |
+  | Int16Array | 新数组，每个元素都是回调函数的返回值。 |
 
 **示例：**
   ```typescript
@@ -579,11 +579,11 @@ callbackfn函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
-      return arr.map((value: number, index: number, arr: Uint16Array)=>{return value + this.base})
+    call(arr: Int16Array) {
+      return arr.map((value: number, index: number, arr: Int16Array)=>{return value + this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr);
@@ -596,21 +596,21 @@ callbackfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `some(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean`
+**ArkTS-Dyn版本签名：**  
+  `some(predicate: (value: number, index: number, array: Int16Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | predicate | function | 是 | 测试函数。 |
-  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -629,20 +629,20 @@ predicate函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    foo(value: number, index: number, arr: Uint16Array) {
+    foo(value: number, index: number, arr: Int16Array) {
       return value > this.base
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   arr.some(a.foo, a);
   arr.some(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `some(predicate: (value: number, index: number, array: Uint16Array) => boolean): boolean`
+**ArkTS-Sta版本签名：**  
+  `some(predicate: (value: number, index: number, array: Int16Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -652,9 +652,9 @@ predicate函数返回值说明：
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | value | number | 是 | 当前被遍历的number值。 |
+  | value | number | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | Uint16Array | 是 | 调用的原始Uint16Array对象。 |
+  | array | Int16Array | 是 | 调用的原始Int16Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -673,11 +673,11 @@ predicate函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
-      return arr.some((value: number, index: number, arr: Uint16Array)=>{return value > this.base})
+    call(arr: Int16Array) {
+      return arr.some((value: number, index: number, arr: Int16Array)=>{return value > this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr);
@@ -690,15 +690,15 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Uint16Array`
+**ArkTS-Dyn版本签名：**  
+  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | arrayLike | Iterable\<number> | 是 | 可迭代对象。 |
-  | mapfn | function | 否 | 映射函数，默认值为undefined。 |
-  | thisArg | any | 否 | 执行mapfn时使用的this值，默认值为undefined。 |
+  | mapfn | function | 否 | 映射函数，默认为undefined。 |
+  | thisArg | any | 否 | 执行mapfn时使用的this值，默认为undefined。 |
 
 mapfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
@@ -709,12 +709,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Uint16Array的元素。 |
+  | number | 返回的一个number类型值，作为新Int16Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 新数组。 |
+  | Int16Array | 新数组。 |
 
 **示例：**
   ```typescript
@@ -728,21 +728,21 @@ mapfn函数返回值说明：
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
-  let arr2 = Uint16Array.from(arr, a.foo, a);
-  let arr3 = Uint16Array.from(arr, a.foo, b);
+  let arr2 = Int16Array.from(arr, a.foo, a);
+  let arr3 = Int16Array.from(arr, a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number): Uint16Array`
+**ArkTS-Sta版本签名：**  
+  `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | arrayLike | Iterable\<number> | 是 | 可迭代对象。 |
-  | mapfn | function | 否 | 映射函数，默认值为undefined。 |
+  | mapfn | function | 否 | 映射函数，默认为undefined。 |
 
 mapfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
@@ -753,12 +753,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Uint16Array的元素。 |
+  | number | 返回的一个number类型值，作为新Int16Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 新数组。 |
+  | Int16Array | 新数组。 |
 
 **示例：**
   ```typescript
@@ -767,11 +767,11 @@ mapfn函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    call(arr: Uint16Array) {
+    call(arr: Int16Array) {
       return Array.from(arr, (value: number, index: number)=>{return value + this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr);
@@ -780,19 +780,20 @@ mapfn函数返回值说明：
 
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
+
 ### from静态方法变更2
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Uint16Array`
+**ArkTS-Dyn版本签名：**  
+  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | arrayLike | ArrayLike\<T> | 是 | 类数组对象。 |
-  | mapfn | function | 是 | 映射函数，默认值为undefined。 |
-  | thisArg | any | 否 | 执行mapfn时使用的this值，默认值为undefined。 |
+  | mapfn | function | 是 | 映射函数。 |
+  | thisArg | any | 否 | 执行mapfn时使用的this值，默认为undefined。 |
 
 mapfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
@@ -803,12 +804,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Uint16Array的元素。 |
+  | number | 返回的一个number类型值，作为新Int16Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 新数组。 |
+  | Int16Array | 新数组。 |
 
 **示例：**
   ```typescript
@@ -822,15 +823,15 @@ mapfn函数返回值说明：
     }
   }
   
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
-  let arr2 = Uint16Array.from(arr, a.foo, a);
-  let arr3 = Uint16Array.from(arr, a.foo, b);
+  let arr2 = Int16Array.from(arr, a.foo, a);
+  let arr3 = Int16Array.from(arr, a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
-  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number): Uint16Array`
+**ArkTS-Sta版本签名：**  
+  `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number): Int16Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
@@ -847,12 +848,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回的一个number类型值，作为新Uint16Array的元素。 |
+  | number | 返回的一个number类型值，作为新Int16Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | Uint16Array | 新数组。 |
+  | Int16Array | 新数组。 |
 
 **示例：**
   ```typescript
@@ -861,11 +862,11 @@ mapfn函数返回值说明：
     constructor(base:number) {
       this.base = base;
     }
-    call(arr:Uint16Array) {
+    call(arr:Int16Array) {
       return Array.from(arr, (value: number, index: number)=>{return value + this.base})
     }
   }
-  let arr: Uint16Array = new Uint16Array([1, 2, 3]);
+  let arr: Int16Array = new Int16Array([1, 2, 3]);
   let a = new C(2);
   let b = new C(3);
   a.call(arr);
@@ -873,3 +874,4 @@ mapfn函数返回值说明：
   ```
 
 **适配建议：** 删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
+

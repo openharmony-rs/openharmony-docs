@@ -26,7 +26,7 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 
 **返回值：**
@@ -40,7 +40,7 @@
   Reflect.get(arr, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<T>`
 
 **返回值：**
@@ -62,7 +62,7 @@
 
 **规则：** `arkts-builtin-narrow-types`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `concat(...items: (T | ConcatArray<T>)[]): T[]`
 
 **参数：**
@@ -81,7 +81,7 @@
   arr.concat(2, [3]); // [1, 2, 3]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -97,7 +97,7 @@
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `every(predicate: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): boolean`  
   `every<S extends T>(predicate: (value: T, index: number, array: readonly T[]) => value is S, thisArg?: any): this is readonly S[]`
 
@@ -134,7 +134,7 @@ predicate函数返回值说明：
   arr.every(new C().test, {limit: 2}); // false
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `every(predicate: (value: T, index: number, array: readonly T[]) => boolean): boolean`
 
 **参数：**
@@ -174,7 +174,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   - `filter(predicate: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): T[]`  
   - `filter<S extends T>(predicate: (value: T, index: number, array: readonly T[]) => value is S, thisArg?: any): S[]`
 
@@ -211,7 +211,7 @@ predicate函数返回值说明：
   arr.filter(new Filter().criteria, {min: 1}); // [2, 3]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `filter(predicate: (value: T, index: number, array: readonly T[]) => boolean): T[]`
 
 **参数：**
@@ -251,7 +251,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `find(predicate: (value: T, index: number, obj: readonly T[]) => unknown, thisArg?: any): T | undefined`  
   `find<S extends T>(predicate: (this: void, value: T, index: number, obj: readonly T[]) => value is S, thisArg?: any): S | undefined`
 
@@ -288,7 +288,7 @@ predicate函数返回值说明：
   arr.find(new Matcher().check, {target: 3}); // 3
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `find(predicate: (value: T, index: number, obj: readonly T[]) => boolean): T | undefined`
 
 **参数：**
@@ -328,7 +328,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `findIndex(predicate: (value: T, index: number, obj: readonly T[]) => unknown, thisArg?: any): number`
 
 **参数：**
@@ -364,7 +364,7 @@ predicate函数返回值说明：
   arr.findIndex(new Matcher().check, {limit: 2}); // 2
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `findIndex(predicate: (value: T, index: number, obj: readonly T[]) => boolean): number`
 
 **参数：**
@@ -404,7 +404,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `flat<A, D extends number = 1>(this: A, depth?: D): FlatArray<A, D>[]`
 
 **参数：**
@@ -424,7 +424,7 @@ predicate函数返回值说明：
   arr.flat(); // [1, 2, 3]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -451,7 +451,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `flatMap<U, This = undefined>(callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>, thisArg?: This): U[]`
 
 **参数：**
@@ -484,7 +484,7 @@ callbackfn函数返回值说明：
   arr.flatMap(s => s.split(" ")); // ["a", "b", "c", "d"]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -495,7 +495,7 @@ callbackfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `forEach(callbackfn: (value: T, index: number, array: readonly T[]) => void, thisArg?: any): void`
 
 **参数：**
@@ -521,7 +521,7 @@ callbackfn函数参数说明：
   arr.forEach(new Logger().log, {offset: 20}); // 21    22
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `forEach(callbackfn: (value: T, index: number, array: readonly T[]) => void): void`
 
 **参数：**
@@ -551,7 +551,7 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `map<U>(callbackfn: (value: T, index: number, array: readonly T[]) => U, thisArg?: any): U[]`
 
 **参数：**
@@ -587,7 +587,7 @@ callbackfn函数返回值说明：
   arr.map(new Transformer().transform, {factor: 3}); // [3, 6]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `map<U>(callbackfn: (value: T, index: number, array: readonly T[]) => U): U[]`
 
 **参数：**
@@ -627,7 +627,7 @@ callbackfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `some(predicate: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): boolean`
 
 **参数：**
@@ -663,7 +663,7 @@ predicate函数返回值说明：
   arr.some(new Checker().test, {threshold: 1}); // true
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `some(predicate: (value: T, index: number, array: readonly T[]) => boolean): boolean`
 
 **参数：**
@@ -709,7 +709,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<[K, V]>`
 
 **返回值：**
@@ -723,7 +723,7 @@ predicate函数返回值说明：
   let iter = Reflect.get(m, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<[K, V]>`
 
 **返回值：**
@@ -745,7 +745,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `forEach(callbackfn: (value: V, key: K, map: ReadonlyMap<K, V>) => void, thisArg?: any): void`
 
 **参数：**
@@ -767,7 +767,7 @@ callbackfn函数参数说明：
   m.forEach((value, key) => {}, new Ctx());
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `forEach(callbackfn: (value: V, key: K, map: ReadonlyMap<K, V>) => void): void`
 
 **参数：**
@@ -803,7 +803,7 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 
 **返回值：**
@@ -817,7 +817,7 @@ callbackfn函数参数说明：
   Reflect.get(set, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<T>`
 
 **返回值：**
@@ -839,7 +839,7 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `forEach(callbackfn: (value: T, value2: T, set: ReadonlySet<T>) => void, thisArg?: any): void`
 
 **参数：**
@@ -865,7 +865,7 @@ callbackfn函数参数说明：
   set.forEach(new Printer().print, {suffix: "?"});
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `forEach(callbackfn: (value: T, value2: T, set: ReadonlySet<T>) => void): void`
 
 **参数：**

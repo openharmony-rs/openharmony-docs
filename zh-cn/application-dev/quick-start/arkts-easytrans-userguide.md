@@ -1,28 +1,28 @@
-# ArkTS1.2迁移工具(EasyTrans)用户手册
+# ArkTS-Sta迁移工具(EasyTrans)用户手册
 ## EasyTrans简介
-ArkTS1.2版本引入了静态类型系统、增强的协程并发能力及声明式UI的语法等特性，同时与ArkTS1.1版本存在语法和语义上的差异，这些差异可能导致存量应用或模块在升级后出现不兼容问题。为此，设计并开发了迁移工具EasyTrans，帮助开发者将应用从ArkTS1.1版本迁移到ArkTS1.2版本，提高迁移效率，识别大部分不兼容变更并提供修复建议，同时支持对高频语法变更的自动修复。
+ArkTS-Sta版本引入了静态类型系统、增强的协程并发能力及声明式UI的语法等特性，同时与ArkTS-Dyn版本存在语法和语义上的差异，这些差异可能导致存量应用或模块在升级后出现不兼容问题。为此，设计并开发了迁移工具EasyTrans，帮助开发者将应用从ArkTS-Dyn版本迁移到ArkTS-Sta版本，提高迁移效率，识别大部分不兼容变更并提供修复建议，同时支持对高频语法变更的自动修复。
 
 ## 适用对象
 迁移工具（EasyTrans）面向OpenHarmony生态应用的开发者。<br>
-使用ArkTS1.1进行开发，请参照[ArkTS1.2用户指导](./arkts-v1.2-user-guide.md)。<br>
-ArkTS1.2的基础语法，请参照[ArkTS1.2规范](https://gitee.com/openharmony/arkcompiler_runtime_core/releases)。
+使用ArkTS-Dyn进行开发，请参照[ArkTS-Sta用户指导](./arkts-sta-user-guide.md)。<br>
+ArkTS-Sta的基础语法，请参照[ArkTS-Sta规范](https://gitee.com/openharmony/arkcompiler_runtime_core/releases)。
 
 ## 使用指导
 迁移工具支持两种使用方式：
-- 在命令行中使用（具体请参考：[ArkTS1.2迁移工具使用指导](arkts-easytrans-cli-instructions.md)）。
+- 在命令行中使用（具体请参考：[ArkTS-Sta迁移工具使用指导](arkts-easytrans-cli-instructions.md)）。
 - 在DevEco Studio中使用（待发布）。
 
-由于ArkTS1.2尚未正式发布，对应的DevEco Studio也未发布，推荐用户暂时使用命令行方式。
+由于ArkTS-Sta尚未正式发布，对应的DevEco Studio也未发布，推荐用户暂时使用命令行方式。
 
-## 从ArkTS1.1迁移到ArkTS1.2的语法变更规则
-从ArkTS1.1迁移到ArkTS1.2涉及的语法变更规则如下：
-- 了解ArkTS1.2的基础语法和规则变更：[ArkTS基础规则变更](./arkts-v1.1-v1.2-migration-rules.md)。
-- 了解新的并发特性和使用方法：[并发特性变更](./arkts-v1.1-v1.2-concurrency-rules.md)。
-- 了解与其他系统交互的规则变更：[ArkTS互操作规则变更](./arkts-v1.1-v1.2-interop-rules.md)。
-- 了解builtin的语法和规则变更：[builtin规则变更](./arkts-v1.1-v1.2-builtin-rules.md)。
-- 了解ArkUI的语法和接口变更：[ArkUI迁移规则](./arkts-v1.1-v1.2-ui.md)。
+## 从ArkTS-Dyn迁移到ArkTS-Sta的语法变更规则
+从ArkTS-Dyn迁移到ArkTS-Sta涉及的语法变更规则如下：
+- 了解ArkTS-Sta的基础语法和规则变更：[ArkTS基础规则变更](./arkts-dyn-to-sta-syntax-rules.md)。
+- 了解新的并发特性和使用方法：[并发特性变更](./arkts-dyn-to-sta-concurrency-rules.md)。
+- 了解与其他系统交互的规则变更：[ArkTS互操作规则变更](./arkts-dyn-to-sta-interop-rules.md)。
+- 了解builtin的语法和规则变更：[builtin规则变更](./arkts-dyn-to-sta-builtin-rules.md)。
+- 了解ArkUI的语法和接口变更：[从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](../ui/arkts-dyn-sta-ui-rules.md)。
 
-以上规则详解提供了每条变更规则的讲解和示例，帮助开发者理解ArkTS1.2与ArkTS1.1语法的差异，并根据示例修改代码。
+以上规则详解提供了每条变更规则的讲解和示例，帮助开发者理解ArkTS-Sta与ArkTS-Dyn语法的差异，并根据示例修改代码。
 
 ## 常见问题
 ### 迁移工具的性能表现
