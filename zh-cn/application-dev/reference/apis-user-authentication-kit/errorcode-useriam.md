@@ -17,6 +17,10 @@
 
 Authentication failed.
 
+**错误描述**
+
+认证失败。
+
 **可能原因**
 
 当前凭据与设备里已经录入的凭据比对失败。
@@ -30,6 +34,10 @@ Authentication failed.
 **错误信息**
 
 General operation error.
+
+**错误描述**
+
+操作错误。
 
 **可能原因**
 
@@ -49,6 +57,10 @@ General operation error.
 
 Authentication canceled.
 
+**错误描述**
+
+认证被取消。
+
 **可能原因**
 
 当前的认证操作已经被取消。
@@ -63,6 +75,10 @@ Authentication canceled.
 
 Authentication timeout.
 
+**错误描述**
+
+认证操作超时。
+
 **可能原因**
 
 当前的认证操作超过了设定的时限。
@@ -76,6 +92,10 @@ Authentication timeout.
 **错误信息**
 
 The authentication type is not supported.
+
+**错误描述**
+
+认证类型不支持。
 
 **可能原因**
 
@@ -92,6 +112,10 @@ The authentication type is not supported.
 
 The authentication trust level is not supported.
 
+**错误描述**
+
+认证信任等级不支持。
+
 **可能原因**
 
 1. 调用userAuth模块的getAvailableStatus或getAuthInstance接口时，传入的authTrustLevel参数不在[ATL1, ATL2, ATL3, ATL4]范围内。
@@ -106,6 +130,10 @@ The authentication trust level is not supported.
 **错误信息**
 
 Authentication service is busy.
+
+**错误描述**
+
+认证服务已经繁忙。
 
 **可能原因**
 
@@ -139,6 +167,10 @@ The parameter is out of range.
 
 Authentication is locked out.
 
+**错误描述**
+
+认证被锁定。
+
 **可能原因**
 
 当前认证失败的次数超过了上限，触发防爆模式，认证被锁定。
@@ -152,6 +184,10 @@ Authentication is locked out.
 **错误信息**
 
 The type of credential has not been enrolled.
+
+**错误描述**
+
+该类型的凭据没有录入。
 
 **可能原因**
 
@@ -167,6 +203,10 @@ The type of credential has not been enrolled.
 
 Switched to the custom authentication process.
 
+**错误描述**
+
+切换到自定义认证流程。
+
 **可能原因**
 
 当前的认证操作被用户从控件取消，返回这个错误码，标识使用应用自定义认证。例如用户点击使用自定义认证，返回到应用自定义认证流程。
@@ -180,6 +220,10 @@ Switched to the custom authentication process.
 **错误信息**
 
 Operation failed because of PIN expired.
+
+**错误描述**
+
+密码过期。
 
 **可能原因**
 
@@ -196,6 +240,10 @@ Operation failed because of PIN expired.
 
 Operation failed because of authToken integrity check failed.
 
+**错误描述**
+
+AuthToken完整性校验失败。
+
 **可能原因**
 
 当验证的AuthToken无效时，会返回12500015错误码。
@@ -209,6 +257,10 @@ Operation failed because of authToken integrity check failed.
 **错误信息**
 
 Operation failed because of authToken has expired.
+
+**错误描述**
+
+AuthToken过期。
 
 **可能原因**
 
@@ -242,6 +294,10 @@ Failed to reuse authtication result.
 **错误信息**
 
 The service is unavailable.
+
+**错误描述**
+
+人脸服务不可用。
 
 **可能原因**
 
