@@ -1,4 +1,4 @@
-# Test Kit概述<!--test-api-->
+# Test Kit简介<!--test-api-->
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
@@ -24,6 +24,8 @@ Test Kit为开发者提供了自动化测试框架，框架提供单元、UI和�
   - 提供针对指定代码段执行过程的基础性能数据采集能力，包括执行耗时、执行CPU和内存占用数据等。
   - 提供对应用场景化性能数据的采集，包括应用启动时延、页面切换时延、列表滑动帧率等。
 <!--Del-->
-- SmartPerf性能测试：支持监测性能、功耗相关指标，包括FPS、CPU、GPU、RAM、Temp等，并提供Device hap端和Device daemon端，具体使用方法请参考[SmartPerf性能工具使用指导](smartperf-guidelines.md)
-- wukong稳定性测试：支持Ability的随机事件注入、控件注入、异常捕获、报告生成和对Ability数据遍历截图等特性，具体使用方法请参考[wukong稳定性工具使用指导](wukong-guidelines.md)。
+此外，Test Kit还为开发者提供了如下命令行工具。
+
+- SmartPerf性能测试：支持监测性能、功耗相关指标，包括FPS、CPU、GPU、RAM、Temp等，并提供Device hap端和Device daemon端，具体使用方法请参考SmartPerf性能工具使用指导
+- wukong稳定性测试：支持Ability的随机事件注入、控件注入、异常捕获、报告生成和对Ability数据遍历截图等特性，具体使用方法请参考wukong稳定性工具使用指导。
 <!--DelEnd-->

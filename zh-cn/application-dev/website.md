@@ -1543,6 +1543,7 @@
           - [hisysevent（仅对系统应用开放）](dfx/hisysevent-sys.md)
         <!--DelEnd-->
       - Test Kit（应用测试服务）<!--test-kit-->
+        - [Test Kit简介](test-kit-overview.md)
         - 自动化测试框架使用指导<!--arkxtest-->
           - [单元测试框架使用指导](application-test/unittest-guidelines.md)
           - [UI测试框架使用指导](application-test/uitest-guidelines.md)
