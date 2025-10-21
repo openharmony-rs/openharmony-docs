@@ -47,7 +47,7 @@ The file declares the native APIs used for audio encoding and decoding.
 | [OH_AVErrCode OH_AudioCodec_Reset(OH_AVCodec *codec)](#oh_audiocodec_reset) | Resets an audio codec. The configured parameters and input and output data are cleared.<br> To continue encoding or decoding, you must call **Configure** to configure the codec again.|
 | [OH_AVFormat *OH_AudioCodec_GetOutputDescription(OH_AVCodec *codec)](#oh_audiocodec_getoutputdescription) | Obtains the OH_AVFormat information about the output data of an audio codec.<br> You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to manually release the OH_AVFormat instance in the return value.|
 | [OH_AVErrCode OH_AudioCodec_SetParameter(OH_AVCodec *codec, const OH_AVFormat *format)](#oh_audiocodec_setparameter) | Sets dynamic parameters for an audio codec.<br> This function can be called only after the codec is started. Incorrect parameter settings may cause encoding or decoding failure.|
-| [OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_audiocodec_pushinputbuffer) | Notifies the audio codec that the input data has been written to the buffer identified by **index**.<br> The [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer) callback reports the available input buffer and the index.<br> After being pushed to the codec, a buffer is not accessible until the buffer with the same index is reported again through the [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer) callback.<br> In addition, some codecs require the input of codec-specific data to initialize the encoding or decoding process.<br> Note: If the return value is **AV_ERR_UNKNOWN**, the call does not take effect, and the input buffer is still in the unprocessed state. You need to handle the error according to the specific error code and then call **OH_AudioCodec_PushInputBuffer**.|
+| [OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_audiocodec_pushinputbuffer) | Notifies the audio codec that the input data has been written to the buffer identified by **index**.<br> The [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) callback reports the available input buffer and the index.<br> After being pushed to the codec, a buffer is not accessible until the buffer with the same index is reported again through the [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) callback.<br> In addition, some codecs require the input of codec-specific data to initialize the encoding or decoding process.<br> Note: If the return value is **AV_ERR_UNKNOWN**, the call does not take effect, and the input buffer is still in the unprocessed state. You need to handle the error according to the specific error code and then call **OH_AudioCodec_PushInputBuffer**.|
 | [OH_AVErrCode OH_AudioCodec_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)](#oh_audiocodec_freeoutputbuffer) | Frees an output buffer of an audio codec. You need to call this function to release the output buffer in a timely manner. Otherwise, the encoding or decoding process is blocked.|
 | [OH_AVErrCode OH_AudioCodec_IsValid(OH_AVCodec *codec, bool *isValid)](#oh_audiocodec_isvalid) | Checks whether an audio codec instance is valid.<br> This function is used to detect the codec status when a background fault is rectified or an application is switched from the background.|
 | [OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureAudio)](#oh_audiocodec_setdecryptionconfig) | Sets the decryption information.|
@@ -77,14 +77,14 @@ Creates an audio codec instance based on a MIME type. This function is recommend
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIMETYPE](_codec_base.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIMETYPE](capi-native-avcodec-base-h.md#variables).|
 | bool isEncoder | The value **true** means to create an encoder, and **false** means to create a decoder.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) * | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | Pointer to an OH_AVCodec instance.|
 
 ### OH_AudioCodec_CreateByName()
 
@@ -111,7 +111,7 @@ Creates an audio codec instance based on a codec name. To use this function, you
 
 | Type| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) * | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | Pointer to an OH_AVCodec instance.|
 
 ### OH_AudioCodec_Destroy()
 
@@ -132,7 +132,7 @@ Clears the internal resources of an audio codec and destroys the codec instance.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -159,8 +159,8 @@ Sets an asynchronous callback so that your application can respond to events gen
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
-| [OH_AVCodecCallback](_o_h___a_v_codec_callback.md) callback | Callback function to set. For details, see [OH_AVCodecCallback](_o_h___a_v_codec_callback.md).|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | All callback functions. For details, see [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md).|
 | void *userData | User-specific data.|
 
 **Returns**
@@ -188,7 +188,7 @@ Configures the audio description. The audio codec is usually configured based on
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | [const OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance, which provides the description information about the audio track to be encoded or decoded.|
 
 **Returns**
@@ -216,7 +216,7 @@ Prepares internal resources for an audio codec. This function must be called aft
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -243,7 +243,7 @@ Starts an audio codec after it is prepared successfully. After being started, th
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -270,7 +270,7 @@ Stops an audio codec. After the codec is stopped, you can call **Start** to star
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -297,7 +297,7 @@ Clears the input and output data in the internal buffer of an audio codec. This 
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -324,7 +324,7 @@ Resets an audio codec. The configured parameters and input and output data are c
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -351,7 +351,7 @@ Obtains the OH_AVFormat information about the output data of an audio codec.<br>
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 
 **Returns**
 
@@ -378,7 +378,7 @@ Sets dynamic parameters for an audio codec.<br> This function can be called only
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | const [OH_AVFormat](capi-core-oh-avformat.md) *format | Handle to an OH_AVFormat instance.|
 
 **Returns**
@@ -395,7 +395,7 @@ OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 **Description**
 
-Notifies the audio codec that the input data has been written to the buffer identified by **index**.<br> The [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer) callback reports the available input buffer and the index.<br> After being pushed to the codec, a buffer is not accessible until the buffer with the same index is reported again through the [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer) callback.<br> In addition, some codecs require the input of codec-specific data to initialize the encoding or decoding process.<br> Note: If the return value is **AV_ERR_UNKNOWN**, the call does not take effect, and the input buffer is still in the unprocessed state. You need to handle the error according to the specific error code and then call **OH_AudioCodec_PushInputBuffer**.
+Notifies the audio codec that the input data has been written to the buffer identified by **index**.<br> The [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) callback reports the available input buffer and the index.<br> After being pushed to the codec, a buffer is not accessible until the buffer with the same index is reported again through the [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) callback.<br> In addition, some codecs require the input of codec-specific data to initialize the encoding or decoding process.<br> Note: If the return value is **AV_ERR_UNKNOWN**, the call does not take effect, and the input buffer is still in the unprocessed state. You need to handle the error according to the specific error code and then call **OH_AudioCodec_PushInputBuffer**.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioCodec
 
@@ -406,14 +406,14 @@ Notifies the audio codec that the input data has been written to the buffer iden
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
-| uint32_t index | Index of the [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer).|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
+| uint32_t index | Index of the [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) callback.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input index is used or invalid. Use the index returned by the [OH_AVCodecOnNeedInputBuffer](_codec_base.md#oh_avcodeconneedinputbuffer) callback.<br>         **AV_ERR_INVALID_STATE**: The codec state is incorrect. Before calling **OH_AudioCodec_PushInputBuffer**, ensure that [OH_AudioCodec_Configure](#oh_audiocodec_configure), [OH_AudioCodec_Prepare](#oh_audiocodec_prepare), and [OH_AudioCodec_Start](#oh_audiocodec_start) are successfully called in sequence.<br>         **AV_ERR_UNKNOWN**: The input buffer size is invalid. Ensure that the buffer size and flags are correctly set.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input index is used or invalid. Use the index returned by the [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) callback.<br>         **AV_ERR_INVALID_STATE**: The codec state is incorrect. Before calling **OH_AudioCodec_PushInputBuffer**, ensure that [OH_AudioCodec_Configure](#oh_audiocodec_configure), [OH_AudioCodec_Prepare](#oh_audiocodec_prepare), and [OH_AudioCodec_Start](#oh_audiocodec_start) are successfully called in sequence.<br>         **AV_ERR_UNKNOWN**: The input buffer size is invalid. Ensure that the buffer size and flags are correctly set.|
 
 ### OH_AudioCodec_FreeOutputBuffer()
 
@@ -434,14 +434,14 @@ Frees an output buffer of an audio codec. You need to call this function to rele
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
-| uint32_t index | Index of the [OH_AVCodecOnNewOutputBuffer](_codec_base.md#oh_avcodeconnewoutputbuffer).|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
+| uint32_t index | Index of the [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer) callback.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid. The buffer index is obtained from [OH_AVCodecOnNewOutputBuffer](_codec_base.md#oh_avcodeconnewoutputbuffer).<br>         **AV_ERR_INVALID_STATE**: The codec service is unavailable.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed. This may be because of incorrect state or unsupported operation.<br>         **AV_ERR_UNKNOWN**: An internal error occurs. You are advised to check logs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid. The buffer index is obtained from [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer).<br>         **AV_ERR_INVALID_STATE**: The codec service is unavailable.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed. This may be because of incorrect state or unsupported operation.<br>         **AV_ERR_UNKNOWN**: An internal error occurs. You are advised to check logs.|
 
 ### OH_AudioCodec_IsValid()
 
@@ -462,7 +462,7 @@ Checks whether an audio codec instance is valid.<br> This function is used to de
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | bool *isValid |  Pointer to an instance of the Boolean type. The value **true** means that the codec instance is valid, and **false** means the opposite.|
 
 **Returns**
@@ -490,7 +490,7 @@ Sets the decryption information.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the media key session with the decryption feature.|
 | bool secureAudio | Whether a secure decoder is used. **true** if used, **false** otherwise.<br> Currently, the secure decoder is not supported for audio decryption.|
 
@@ -519,7 +519,7 @@ Obtains the index of an available input buffer for an audio codec within the spe
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | uint32_t *index | Pointer to the index of the input buffer obtained.|
 | int64_t timeoutUs | Timeout period, in microseconds. A negative value means to wait infinitely.|
 
@@ -548,7 +548,7 @@ Obtains the input buffer identified by **index** for an audio codec. Note: This 
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | uint32_t index | Index of the input buffer. It is obtained by calling [OH_AudioCodec_QueryInputBuffer](#oh_audiocodec_queryinputbuffer).|
 
 **Returns**
@@ -576,7 +576,7 @@ Obtains the index of an available output buffer for an audio codec within the sp
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | uint32_t *index | Pointer to the index of the output buffer obtained.|
 | int64_t timeoutUs | Timeout period, in microseconds. A negative value means to wait infinitely.|
 
@@ -605,7 +605,7 @@ Obtains the output buffer identified by **index** for an audio codec. Note: This
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to an OH_AVCodec instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
 | uint32_t index | Index of the output buffer. It is obtained by calling [OH_AudioCodec_QueryOutputBuffer](#oh_audiocodec_queryoutputbuffer).|
 
 **Returns**

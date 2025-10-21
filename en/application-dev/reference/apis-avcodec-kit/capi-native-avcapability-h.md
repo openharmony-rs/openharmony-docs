@@ -134,7 +134,7 @@ Obtains the codec capability recommended by the system.
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](_codec_base.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
 | bool isEncoder | Whether the instance is an encoder. The value **true** means an encoder and **false** means a decoder.|
 
 **Returns**
@@ -162,7 +162,7 @@ Obtains the codec capability by category, which can be a hardware codec or softw
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](_codec_base.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
 | bool isEncoder | Whether the instance is an encoder. The value **true** means an encoder and **false** means a decoder.|
 | [OH_AVCodecCategory](#oh_avcodeccategory) category | Codec category.|
 
@@ -301,7 +301,7 @@ Checks whether an encoder supports a specific bit rate mode.
 | Name| Description|
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the encoder capability. If a pointer to the decoder capability is provided, undefined behavior occurs.|
-| [OH_BitrateMode](_codec_base.md#oh_bitratemode-1) bitrateMode | Bit rate mode.|
+| [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode) bitrateMode | Bit rate mode.|
 
 **Returns**
 

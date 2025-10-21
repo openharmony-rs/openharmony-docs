@@ -44,7 +44,7 @@ Through the VideoDecoder module, your application can implement the following ke
 
 - The two also differ slightly in the API calling modes:
   - In surface mode, you can choose to call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer (without rendering the data). In buffer mode, you must call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer.
-  - In surface mode, you must call **OH_VideoDecoder_SetSurface** to set an OHNativeWindow before the decoder is ready and call **OH_VideoDecoder_RenderOutputBuffer** to render the decoded data after the decoder is started.
+  - In surface mode, you must call [OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface) to set an OHNativeWindow before the decoder is ready. After the decoder starts, you can call [OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer) to display and then release the decoded frame, or call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime) to display the decoded frame at a specified time and then release it. To implement audio-video synchronization or control the display speed, you are advised to call **OH_VideoDecoder_RenderOutputBufferAtTime**.
   - In buffer mode, an application can obtain the shared memory address and data from the output buffer. In surface mode, an application can obtain the data from the output buffer.
 
 - Data transfer performance in surface mode is better than that in buffer mode.
@@ -70,9 +70,9 @@ The following figure shows the interaction between states.
    - When the decoder is in the Error state, you can either call **OH_VideoDecoder_Reset** to switch it to the Initialized state or call **OH_VideoDecoder_Destroy** to switch it to the Released state.
 
 6. The Executing state has three substates: Flushed, Running, and End-of-Stream.
-  - After **OH_VideoDecoder_Start** is called, the decoder enters the Running substate immediately.
-  - When the decoder is in the Executing state, you can call **OH_VideoDecoder_Flush** to switch it to the Flushed substate.
-  - After all data to be processed is transferred to the decoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the decoder transits to the End-of-Stream substate. In this state, the decoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
+   - After **OH_VideoDecoder_Start** is called, the decoder enters the Running substate immediately.
+   - When the decoder is in the Executing state, you can call **OH_VideoDecoder_Flush** to switch it to the Flushed substate.
+   - After all data to be processed is transferred to the decoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the decoder transits to the End-of-Stream substate. In this state, the decoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
 
 7. When the decoder is no longer needed, you must call **OH_VideoDecoder_Destroy** to destroy the decoder instance, which then transitions to the Released state.
 
@@ -244,7 +244,7 @@ The following walks you through how to implement the entire video decoding proce
 
     Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror).
+    - **OH_AVCodecOnError**, a callback used to report a decoder operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
     - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, stream width or height change.
     - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the decoder is ready for receiving data.
     - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that decoding is complete.
@@ -365,7 +365,7 @@ The following walks you through how to implement the entire video decoding proce
 
 5. Call **OH_VideoDecoder_Configure()** to configure the decoder.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     For details about the parameter verification rules, see [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure).
 
@@ -466,7 +466,7 @@ The following walks you through how to implement the entire video decoding proce
 
 9. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the surface parameters of the decoder.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -820,7 +820,7 @@ The following walks you through how to implement the entire video decoding proce
 
     Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror).
+    - **OH_AVCodecOnError**, a callback used to report a decoder operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
     - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, stream width or height change.
     - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the decoder is ready for receiving data.
     - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that decoding is complete.
@@ -1009,7 +1009,7 @@ The following walks you through how to implement the entire video decoding proce
 
 8. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the decoder parameters.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);

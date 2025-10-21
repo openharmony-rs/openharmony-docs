@@ -88,13 +88,13 @@ Creates a video decoder instance based on a MIME type. This function is recommen
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](_codec_base.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) * | Pointer to the video decoder instance.<br> If the decoder type is not supported or the memory is insufficient, NULL is returned.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | Pointer to the video decoder instance.<br> If the decoder type is not supported or the memory is insufficient, NULL is returned.|
 
 ### OH_VideoDecoder_CreateByName()
 
@@ -120,7 +120,7 @@ Creates a video decoder instance based on a decoder name. To use this function, 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) * | Pointer to the video decoder instance.<br> If the decoder name is not supported or the memory is insufficient, NULL is returned.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | Pointer to the video decoder instance.<br> If the decoder name is not supported or the memory is insufficient, NULL is returned.|
 
 ### OH_VideoDecoder_Destroy()
 
@@ -140,7 +140,7 @@ Clears the internal resources of a video decoder and destroys the decoder instan
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -170,15 +170,15 @@ Sets an asynchronous callback so that your application can respond to events gen
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
-| [OH_AVCodecAsyncCallback](_o_h___a_v_codec_async_callback.md) callback | All callback functions.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | All callback functions.|
 | void *userData | Pointer to the data on which the caller depends when executing the callback.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoDecoder_Prepare**.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
 
 ### OH_VideoDecoder_RegisterCallback()
 
@@ -198,15 +198,15 @@ Registers an asynchronous callback so that your application can respond to event
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
-| [OH_AVCodecCallback](_o_h___a_v_codec_callback.md) callback | All callback functions. For details, see [OH_AVCodecCallback](_o_h___a_v_codec_callback.md).|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | All callback functions. For details, see [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md).|
 | void *userData | Pointer to the data on which the caller depends when executing the callback.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoDecoder_Prepare**.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The decoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to a decoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
 
 ### OH_VideoDecoder_SetSurface()
 
@@ -226,8 +226,8 @@ Sets an output surface for a video decoder.<br> In the initialization phase, thi
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
-| [OHNativeWindow](_codec_base.md#ohnativewindow) *window | Pointer to an OHNativeWindow instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
+| [OHNativeWindow](capi-codecbase-nativewindow.md) *window | Pointer to an OHNativeWindow instance.|
 
 **Returns**
 
@@ -250,9 +250,9 @@ Parameter verification rules are as follows:
 | ----------| -------- | -------- | ------ |
 | OH_MD_KEY_WIDTH      | AV_ERR_OK       | AV_ERR_INVALID_VAL      | AV_ERR_INVALID_VAL  |
 | OH_MD_KEY_HEIGHT     | AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_INVALID_VAL     |
-| OH_MD_KEY_PIXEL_FORMAT<br>For details, see [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat).   | AV_ERR_OK       | AV_ERR_UNSUPPORT       | AV_ERR_OK      |
+| OH_MD_KEY_PIXEL_FORMAT [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat)   | AV_ERR_OK       | AV_ERR_UNSUPPORT       | AV_ERR_OK      |
 | OH_MD_KEY_FRAME_RATE | AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_OK     |
-| OH_MD_KEY_ROTATION [OH_MD_KEY_ROTATION](_codec_base.md#variables)| AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_OK      |
+| OH_MD_KEY_ROTATION [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#variables)| AV_ERR_OK       | AV_ERR_INVALID_VAL       | AV_ERR_OK      |
 
 
 > **NOTE**
@@ -267,7 +267,7 @@ Parameter verification rules are as follows:
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | [OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance, which provides the description information about the video track to be decoded.|
 
 **Returns**
@@ -294,7 +294,7 @@ Prepares internal resources for a video decoder. This function must be called af
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -320,7 +320,7 @@ Starts a video decoder. This function should be called after a successful call o
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -346,7 +346,7 @@ Stops a video decoder and releases the input and output buffers. After the video
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -372,7 +372,7 @@ Clears the input and output data and parameters, for example, H.264 PPS/SPS, cac
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -398,7 +398,7 @@ Resets a video decoder. The decoder returns to the initial state. To continue de
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -424,7 +424,7 @@ Obtains the OH_AVFormat information about the output data of a video decoder. Fo
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 
 **Returns**
 
@@ -450,7 +450,7 @@ Sets dynamic parameters for a video decoder.<br> This function can be called onl
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | [OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance.|
 
 **Returns**
@@ -481,7 +481,7 @@ Pushes the input buffer filled with data to a video decoder.<br> The input callb
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an input buffer. The value is provided by [OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata).|
 | OH_AVCodecBufferAttr attr | Description information about the data in the buffer.|
 
@@ -513,7 +513,7 @@ Frees an output buffer of a video decoder and instructs the decoder to render th
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an output buffer. The value is provided by [OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata).|
 
 **Returns**
@@ -544,7 +544,7 @@ Frees an output buffer of a video decoder.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an output buffer. The value is provided by [OH_AVCodecOnNewOutputData](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputdata).|
 
 **Returns**
@@ -571,7 +571,7 @@ Notifies a video decoder that the buffer corresponding to the index has been fil
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an input buffer. The value is provided by [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer).|
 
 **Returns**
@@ -598,7 +598,7 @@ Returns the output buffer corresponding to the index to a video decoder. The buf
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an output buffer. The value is provided by [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer).|
 
 **Returns**
@@ -625,7 +625,7 @@ Returns the output buffer corresponding to the index to a video decoder. The buf
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an output buffer. The value is provided by [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer).|
 | int64_t renderTimestampNs | Timestamp (in nanoseconds) when the output buffer is sent to the surface. The value must be greater than 0 and should be generated by the clock of the std::chrono::steady_clock standard library.|
 
@@ -653,7 +653,7 @@ Frees an output buffer of a video decoder. You need to call this function to rel
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of an output buffer. The value is provided by [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer).|
 
 **Returns**
@@ -680,7 +680,7 @@ Checks whether the decoder service is valid when a decoder instance exists.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | bool *isValid | Pointer of the Boolean type. The value indicates the validity of the decoder service only when the function returns **AV_ERR_OK**. The value **true** means that the decoder service is valid, and **false** means the opposite. It is recommended that you initialize **isValid** to **false**.|
 
 **Returns**
@@ -707,7 +707,7 @@ Sets the decryption configuration. This function can be called prior to **OH_Vid
 
 | Name| Description|
 | -- | -- |
-| [OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | Pointer to a media key session instance with decryption capabilities.|
 | bool secureVideoPath | Whether a secure video channel is used. The value **true** means a secure video channel, and **false** means a non-secure video channel. In [surface mode](../../media/avcodec/video-decoding.md#surface-mode), both secure and non-secure video channels are supported. In [buffer mode](../../media/avcodec/video-decoding.md#buffer-mode), only non-secure video channels are supported.|
 
@@ -735,7 +735,7 @@ Obtains the index of the next available input buffer.<br> After calling this fun
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t *index | Index of an input buffer.|
 | int64_t timeoutUs | Timeout duration, in microseconds. A negative value means to wait infinitely. The value **0** means to return immediately. A positive value means to wait for the specified time before exiting.|
 
@@ -763,7 +763,7 @@ Obtains the instance of the available input buffer.<br> Note that this function 
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of the input buffer. It can be obtained by calling [OH_VideoDecoder_QueryInputBuffer](#oh_videodecoder_queryinputbuffer).|
 
 **Returns**
@@ -790,7 +790,7 @@ Obtains the index of the next available output buffer.<br> You can perform the f
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t *index | Index of an output buffer.|
 | int64_t timeoutUs | Timeout duration, in microseconds. A negative value means to wait infinitely. The value **0** means to return immediately. A positive value means to wait for the specified time before exiting.|
 
@@ -818,7 +818,7 @@ Obtains the instance of the available output buffer. Note that this function wor
 
 | Name| Description|
 | -- | -- |
-| [struct OH_AVCodec](_codec_base.md#oh_avcodec) *codec | Pointer to a video decoder instance.|
+| [struct OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video decoder instance.|
 | uint32_t index | Index of the output buffer. It can be obtained by calling [OH_VideoDecoder_QueryOutputBuffer](#oh_videodecoder_queryoutputbuffer).|
 
 **Returns**

@@ -111,7 +111,7 @@ The following walks you through how to implement the entire video decoding proce
     ```
 2. Call **OH_VideoDecoder_Configure()** to configure the decoder.
 
-    - For details about the configurable options, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    - For details about the configurable options, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
     - For details about the parameter verification rules, see [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure).
     - The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
