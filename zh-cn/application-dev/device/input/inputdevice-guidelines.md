@@ -38,3 +38,67 @@ import { inputDevice } from '@kit.InputKit';
 2. 调用[on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceon9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔掉，则标记没有物理键盘连接。
 
 <!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { inputDevice } from '@kit.InputKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State isPhysicalKeyboardExist: boolean = false;
+  @State message: string = "点击获取设备列表并监听设备热拔插";
+
+// ···
+
+  build() {
+    RelativeContainer() {
+      Column() {
+		// ···
+
+        Text(this.message)
+          .onClick(() => {
+            try {
+              // 1.获取设备列表，判断是否有物理键盘连接
+              inputDevice.getDeviceList().then(data => {
+                for (let i = 0; i < data.length; ++i) {
+                  inputDevice.getKeyboardType(data[i]).then(type => {
+                    if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
+                      // 物理键盘已连接
+                      this.isPhysicalKeyboardExist = true;
+                    }
+                  });
+                }
+              });
+              // 2.监听设备热插拔
+              inputDevice.on("change", (data) => {
+                hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
+                inputDevice.getKeyboardType(data.deviceId).then((type) => {
+                  hilog.info(DOMAIN, 'InputDevice', 'The keyboard type is: %{public}d', type);
+                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
+                    // 物理键盘已插入
+                    this.isPhysicalKeyboardExist = true;
+                  } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
+                    // 物理键盘已拔掉
+                    this.isPhysicalKeyboardExist = false;
+                  }
+                });
+              });
+              this.message = "开启设备监听成功"
+            } catch (error) {
+              hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
+              this.message = `开启设备监听成功失败，点击重试。错误信息为${JSON.stringify(error, ["code", "message"])}`
+            }
+          })
+		// ···
+      }
+	// ···
+    }
+  }
+}
+
+```
+
