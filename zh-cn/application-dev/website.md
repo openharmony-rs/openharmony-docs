@@ -5819,7 +5819,7 @@
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)
     - Vulkan<!--vulkan-guide-->
-      - Vulkan开发指导
+      - Vulkan开发指导<!--vulkan-guides-->
         - [Vulkan开发概述](reference/native-lib/vulkan-overview.md)
         - [Vulkan Surface开发指导](reference/native-lib/vulkan-guidelines.md)
         - [Vulkan External Memory开发指导](reference/native-lib/vulkan-oh-external-memory-guidelines.md)
