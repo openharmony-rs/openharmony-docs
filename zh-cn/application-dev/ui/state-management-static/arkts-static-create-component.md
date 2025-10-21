@@ -443,3 +443,33 @@ struct MyComponent {
   >
   > 在 `build()` 过程中修改 `this.count`，会导致页面渲染异常。
 
+## 自定义组件通用样式
+
+自定义组件通过“.”链式调用设置通用样式。
+
+```typescript
+'use static'
+
+import { Button, Entry, Row, Color, Component } from '@ohos.arkui.component';
+
+@Component
+struct ChildComponent {
+  build() {
+    Button(`Hello World`)
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  build() {
+    Row() {
+      ChildComponent()
+        .width(200)
+        .height(300)
+        .backgroundColor(Color.Red)
+    }
+  }
+}
+```
+在ArkUI中，给自定义组件设置样式时，实际上是将样式应用到一个不可见的容器组件上，而不是直接应用到ChildComponent的Button组件上。因此，背景颜色红色会显示在Button所在的不可见容器组件上。
