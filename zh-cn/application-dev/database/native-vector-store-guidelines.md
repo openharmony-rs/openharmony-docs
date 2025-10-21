@@ -61,7 +61,7 @@ libnative_rdb_ndk.z.so
 
 **头文件**
 
-<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
 ```c++
 #include <database/data/oh_data_values.h>
@@ -71,7 +71,7 @@ libnative_rdb_ndk.z.so
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
-<!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    int numType = 0;
@@ -81,7 +81,7 @@ libnative_rdb_ndk.z.so
 
 2. 当前系统支持向量数据库时，获取OH_Rdb_Store实例。示例代码如下：
 
-<!--@[vector_OH_Rdb_Store](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    // 创建OH_Rdb_Config对象
@@ -115,7 +115,7 @@ libnative_rdb_ndk.z.so
 
    示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_insert](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
@@ -137,7 +137,7 @@ libnative_rdb_ndk.z.so
 
 4. 获取到OH_Rdb_Store后，修改或删除数据。示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_update_and_delete](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    // 不使用参数绑定修改数据
@@ -169,7 +169,7 @@ libnative_rdb_ndk.z.so
 
    示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_query](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    // 不使用参数绑定查询数据
@@ -229,7 +229,7 @@ libnative_rdb_ndk.z.so
 
 6. 创建视图并执行查询。示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_create_view](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    OH_Rdb_ExecuteV2(store_, "CREATE VIEW v1 as select * from test where id > 0;", nullptr, nullptr);
@@ -291,7 +291,7 @@ libnative_rdb_ndk.z.so
 
    示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    // 基础用法，创建的索引名称为diskann_l2_idx，索引列为repr，类型为gsdiskann，距离度量类型为L2
@@ -337,7 +337,7 @@ libnative_rdb_ndk.z.so
 
    示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_data_aging](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_data_aging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    // 每隔五分钟执行写操作后，会触发数据老化任务
@@ -358,7 +358,7 @@ libnative_rdb_ndk.z.so
 
    示例代码如下：
 
-<!--@[vector_OH_Rdb_ExecuteV2_data_compression](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_ExecuteV2_data_compression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
    ```c
    // content列配置了数据压缩，并且配置了数据老化。
@@ -367,7 +367,7 @@ libnative_rdb_ndk.z.so
 
 10. 删除数据库。示例代码如下：
 
-<!--@[vector_OH_Rdb_DeleteStoreV2](https://gitcode.com/openharmony/applications_app_samples_test/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_OH_Rdb_DeleteStoreV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ```c
     OH_Rdb_CloseStore(store_);
