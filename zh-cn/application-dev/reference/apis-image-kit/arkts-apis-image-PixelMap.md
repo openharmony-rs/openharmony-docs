@@ -1408,9 +1408,7 @@ function CreateScaledPixelMapSync(pixelMap:image.PixelMap) {
 
 ## createCroppedAndScaledPixelMap<sup>22+</sup>
 
-ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
-
-ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap>
+createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。使用Promise异步回调。
 
@@ -1448,8 +1446,6 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1472,35 +1468,9 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
-  const imageInfo = pixelMap.getImageInfoSync();
-  const region: image.Region = {
-    size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
-    x: imageInfo.size.width / 4,
-    y: imageInfo.size.height / 4
-  };
-  const scaleX: double = 2.0;
-  const scaleY: double = 2.0;
-  pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH)
-    .then((croppedAndScaled: PixelMap) => {
-      console.info('PixelMap crop and scale succeeded.');
-    })
-    .catch((error: BusinessError) => {
-      console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
-    });
-}
-```
-
 ## createCroppedAndScaledPixelMapSync<sup>22+</sup>
 
-ArkTS-Dyn: createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?: AntiAliasingLevel): PixelMap
-
-ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: double, level?: AntiAliasingLevel): PixelMap
+createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?: AntiAliasingLevel): PixelMap
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。同步返回结果。
 
@@ -1538,8 +1508,6 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1552,29 +1520,6 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
   };
   const scaleX: number = 2.0;
   const scaleY: number = 2.0;
-  try {
-    const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
-  const imageInfo = pixelMap.getImageInfoSync();
-  const region: image.Region = {
-    size: { width: imageInfo.size.width / 2, height: imageInfo.size.height / 2 },
-    x: imageInfo.size.width / 4,
-    y: imageInfo.size.height / 4
-  };
-  const scaleX: double = 2.0;
-  const scaleY: double = 2.0;
   try {
     const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
   } catch (e) {
@@ -2923,9 +2868,7 @@ function SetMemoryNameSync(pixelMap:image.PixelMap) {
 
 ## getUniqueId<sup>22+</sup>
 
-ArkTS-Dyn: getUniqueId(): number
-
-ArkTS-Sta: getUniqueId(): int
+getUniqueId(): number
 
 获取PixelMap的唯一标识符(ID)。
 
@@ -2939,7 +2882,7 @@ ArkTS-Sta: getUniqueId(): int
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 唯一标识符(ID)。 |
+| number | 唯一标识符(ID)。 |
 
 **错误码：**
 
@@ -2951,19 +2894,9 @@ ArkTS-Sta: getUniqueId(): int
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 function DemoGetUniqueId(pixelMap: PixelMap) {
   const uniqueId: number = pixelMap.getUniqueId();
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-function DemoGetUniqueId(pixelMap: PixelMap) {
-  const uniqueId: int = pixelMap.getUniqueId();
 }
 ```
 
