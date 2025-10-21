@@ -331,7 +331,7 @@ let on:On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目
 
 id(id: string): On
 
-指定目标控件id属性和匹配模式，返回On对象自身。
+指定目标控件id属性，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2246,11 +2246,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-当前组件不可被无障碍辅助服务所识别时，通过改接口获取控件对象的文本信息，使用Promise异步回调。
-
-> **说明**
->
-> 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息，使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3914,7 +3910,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
