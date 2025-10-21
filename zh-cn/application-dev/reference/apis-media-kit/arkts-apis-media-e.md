@@ -86,6 +86,18 @@ Codec MIME类型枚举。
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。 |
 
+## AacProfile<sup>3+</sup>
+
+AacProfile类型枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+| 名称         | 值                    | 说明                        |
+| ------------ | --------------------- | -------------------------- |
+| AAC_LC       |     0                 | 表示音频AAC_LC类型。        |
+| AAC_HE       |     1                 | 表示音频AAC_HE类型。        |
+| AAC_HE_V2    |     2                 | 表示音频AAC_HE_V2类型。     |
+
 ## MediaDescriptionKey<sup>8+</sup>
 
 媒体信息描述枚举。
