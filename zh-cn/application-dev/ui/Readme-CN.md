@@ -15,6 +15,7 @@
       - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](arkts-sta-interop-dyn-navigation.md)
     - [状态管理V1互操作](arkts-sta-interop-dyn-statemanager-v1.md)
       - [ArkTS-Sta使用ArkTS-Dyn状态管理互操作](arkts-sta-interop-dyn-statemanagement.md)
+      - [ArkTS-Dyn使用ArkTS-Sta状态管理互操作](arkts-dyn-interop-sta-statemanagement.md)
       - [ArkTS-Sta与ArkTS-Dyn应用间状态存储互操作](arkts-sta-interop-dyn-storages.md)
       - [ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作](arkts-sta-interop-dyn-observed.md)
     - 状态管理V2互操作
