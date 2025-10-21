@@ -6481,6 +6481,7 @@ setHasAppLink(hasAppLink: int): void
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.       |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
 
 **示例：**
 
@@ -6533,6 +6534,7 @@ setAppLinkInfo(appLink: string): void
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.       |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter's length is not within the valid range. |
 
 **示例：**
 
