@@ -339,7 +339,7 @@ lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
 | 参数名               | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应断点类型确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前List组件布局列的数量。<br/> 设置为number类型时，根据number类型的数值确定列数，number类型取值范围：[1, +∞)。<br/>设置为LengthConstrain类型时，根据LengthConstrain中的最大最小值确定列数。<br/>设置为ItemFillPolicy类型时，根据List组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数，该类型只在List滚动方向为垂直方向时才生效。 |
 | gutter | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞)   
 
 ### alignListItem<sup>9+</sup>
@@ -2202,15 +2202,16 @@ struct ListExample {
   }
 }
 ```
-List宽度相当于sm及以下时显示2列。
+
+List宽度属于sm及更小的断点区间时显示2列。
 
 ![sm_list](figures/list_itemFillPolicy_SM.png)
 
-List宽度相当于md及以下时显示3列。
+List宽度属于md断点区间时显示3列。
 
 ![md_list](figures/list_itemFillPolicy_MD.png)
 
-List宽度相当于lg及以下时显示5列。
+List宽度属于lg及更大的断点区间时显示5列。
 
 ![lg_list](figures/list_itemFillPolicy_LG.png)
 
