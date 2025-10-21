@@ -58,142 +58,27 @@
 
 1. 引用头文件。
    
-   ```c
-   #include <database/pasteboard/oh_pasteboard.h>
-   #include <database/udmf/udmf.h>
-   #include <database/udmf/udmf_meta.h>
-   #include <database/udmf/uds.h>
-   ```
+   <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 2. 定义`OH_UdmfRecordProvider`的数据提供函数和实例注销回调函数。
    
-   ```c
-   // 1. 获取数据时触发的提供剪贴板数据的回调函数。
-   void* GetDataCallback(void* context, const char* type) {
-       // 纯文本类型
-       if (strcmp(type, UDMF_META_PLAIN_TEXT) == 0) {
-           // 创建纯文本类型的Uds对象。
-           OH_UdsPlainText* udsText = OH_UdsPlainText_Create();
-           // 设置纯文本内容。
-           OH_UdsPlainText_SetContent(udsText, "hello world");
-           return udsText;
-       }
-       // HTML类型
-       else if (strcmp(type, UDMF_META_HTML) == 0) {
-           // 创建HTML类型的Uds对象。
-           OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-           // 设置HTML内容。
-           OH_UdsHtml_SetContent(udsHtml, "<div>hello world</div>");
-           return udsHtml;
-       }
-       return nullptr;
-   }
-   // 2. OH_UdmfRecordProvider销毁时触发的回调函数。
-   void ProviderFinalizeCallback(void* context) {
-       printf("OH_UdmfRecordProvider finalize.");
-   }
-   ```
+   <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 3. 定义`OH_Pasteboard_SyncDelayedDataAsync`的回调函数。
 
-   ```c
-   // 3. 定义应用退出时调用延迟同步接口触发的回调函数。
-   void SyncCallback(int errorCode)
-   {
-       // 继续退出
-   }
-   ```
+   <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 4. 在剪贴板中准备延迟复制数据。此步骤完成后纯文本类型数据与HTML类型数据并未真正写入剪贴板服务，只有当数据使用者从`OH_UdmfRecord`中获取`OH_UdsPlainText`或`OH_UdsHtml`时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
    
-   ```c
-   // 4. 创建OH_UdmfRecord对象。
-   OH_UdmfRecord* record = OH_UdmfRecord_Create();
-
-   // 5. 创建OH_UdmfRecordProvider对象，并设置用于提供延迟数据、析构的两个回调函数。
-   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-   OH_UdmfRecordProvider_SetData(provider, (void*)record, GetDataCallback, ProviderFinalizeCallback);
-
-   // 6. 将provider绑定到record，并设置支持的数据类型。
-   const char* types[2] = { UDMF_META_PLAIN_TEXT, UDMF_META_HTML };
-   OH_UdmfRecord_SetProvider(record, types, 2, provider);
-
-   // 7. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
-   OH_UdmfData* setData = OH_UdmfData_Create();
-   OH_UdmfData_AddRecord(setData, record);
-
-   // 8. 创建OH_Pasteboard对象，将数据写入剪贴板中。
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   OH_Pasteboard_SetData(pasteboard, setData);
-
-   // 9. 记录当前的剪贴板数据变化次数。
-   uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-   ```
+   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 5. 从剪贴板获取延迟复制数据。
    
-   ```c
-   // 10. 从剪贴板获取OH_UdmfData。
-   int status = -1;
-   OH_UdmfData* getData = OH_Pasteboard_GetData(pasteboard, &status);
-
-   // 11. 获取OH_UdmfData中的所有OH_UdmfRecord。
-   unsigned int recordCount = 0;
-   OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
-   OH_UdsPlainText* udsText = nullptr;
-   OH_UdsHtml* udsHtml = nullptr;
-
-   // 12. 遍历OH_UdmfRecord。
-   for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
-       OH_UdmfRecord* record = getRecords[recordIndex];
-
-       // 13. 查询OH_UdmfRecord中的数据类型。
-       unsigned typeCount = 0;
-       char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-
-       // 14. 遍历数据类型。
-       for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
-           char* recordType = recordTypes[typeIndex];
-
-           // 纯文本类型
-           if (strcmp(recordType, UDMF_META_PLAIN_TEXT) == 0) {
-               // 创建纯文本类型的Uds对象
-               udsText = OH_UdsPlainText_Create();
-               if (udsText != nullptr) {
-                // 从record中获取纯文本类型的Uds对象
-                OH_UdmfRecord_GetPlainText(record, udsText);
-                // 从Uds对象中获取内容
-                const char* content = OH_UdsPlainText_GetContent(udsText);
-               }
-           }
-           // HTML类型
-           else if (strcmp(recordType, UDMF_META_HTML) == 0) {
-               // 创建HTML类型的Uds对象
-               udsHtml = OH_UdsHtml_Create();
-               if (udsHtml != nullptr) {
-                // 从record中获取HTML类型的Uds对象
-                OH_UdmfRecord_GetHtml(record, udsHtml);
-                // 从Uds对象中获取内容
-                const char* content = OH_UdsHtml_GetContent(udsHtml);
-               }
-           }
-       }
-   }
-   ```
+   <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 6. 应用退出时，如果剪贴板内的数据没有变化，则通知剪贴板获取全量数据，等待回调完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
-   ```c
-   // 15. 查询剪贴板内的数据是否变化。
-   uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-   if (newChangeCount == changeCount) {
-       // 16. 通知剪贴板获取全量数据。
-       OH_Pasteboard_SyncDelayedDataAsync(pasteboard, SyncCallback);
-       // 需要等待SyncCallback回调完成再继续退出
-   } else {
-       // 继续退出
-   }
-   ```
+   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 7. 使用完毕后需要及时释放相关对象的内存。
    

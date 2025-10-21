@@ -60,92 +60,20 @@
 
 2. 引用头文件。
 
-   ```c
-   #include <cstdio>
-   #include <database/pasteboard/oh_pasteboard.h>
-   #include <database/udmf/udmf.h>
-   #include <database/udmf/uds.h>
-   ```
+    <!-- @[pasteboard_native2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 3. 定义剪贴板变化监听的回调函数。
 
-   ```c
-   // 定义剪贴板数据内容变更时的通知回调函数
-   static void Pasteboard_Notify_impl2(void* context, Pasteboard_NotifyType type)
-   {
-     printf("Pasteboard_NotifyType, type: %d", type);
-   }
-   // 定义剪贴板数据变更观察者对象销毁时的通知回调函数
-   static void Pasteboard_Finalize_impl2(void* context)
-   {
-     printf("callback: Pasteboard_Finalize");
-   }
-   ```
+    <!-- @[pasteboard_native3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 4. 订阅剪贴板变化。
 
-   ```c
-   // 1. 创建一个剪贴板实例
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   // 2. 创建一个剪贴板数据变更观察者实例
-   OH_PasteboardObserver* observer = OH_PasteboardObserver_Create();
-   // 3. 将两个回调函数设置到观察者实例
-   OH_PasteboardObserver_SetData(observer, (void* )pasteboard, Pasteboard_Notify_impl2, Pasteboard_Finalize_impl2);
-   // 4. 设置对剪贴板本端数据变化的订阅
-   OH_Pasteboard_Subscribe(pasteboard, NOTIFY_LOCAL_DATA_CHANGE, observer);
-   ```
+    <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 5. 向剪贴板写入数据。
 
-   ```c
-   // 1. 创建一个剪贴板实例
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   
-   // 2. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加文本类型数据
-   OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
-   OH_UdsPlainText_SetContent(plainText, "Hello world!");
-   OH_UdsHtml* udsHtml = OH_UdsHtml_Create();
-   OH_UdsHtml_SetContent(udsHtml, "hello world");
-   OH_UdmfRecord* record = OH_UdmfRecord_Create();
-   OH_UdmfRecord_AddPlainText(record, plainText);
-   
-   // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord
-   OH_UdmfData* data = OH_UdmfData_Create();
-   OH_UdmfData_AddRecord(data, record);
-   
-   // 4. 将数据写入剪贴板
-   OH_Pasteboard_SetData(pasteboard, data);
-   
-   // 5. 使用完销毁指针
-   OH_UdsPlainText_Destroy(plainText);
-   OH_UdmfRecord_Destroy(record);
-   OH_UdmfData_Destroy(data);
-   OH_Pasteboard_Destroy(pasteboard);
-   ```
+    <!-- @[pasteboard_native5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
 6. 从剪贴板读取数据。
 
-   ```c
-   // 1. 创建一个剪贴板实例
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   // 2. 判断剪贴板中是否有文本类型数据
-   bool hasPlainTextData = OH_Pasteboard_HasType(pasteboard, PASTEBOARD_MIMETYPE_TEXT_PLAIN);
-   if (hasPlainTextData) {
-     // 3. 从剪贴板中获取统一类型数据OH_UdmfData
-     int ret = 0;
-     OH_UdmfData* udmfData = OH_Pasteboard_GetData(pasteboard, &ret);
-     // 4. 从OH_UdmfData中获取第一个数据记录
-     OH_UdmfRecord* record = OH_UdmfData_GetRecord(udmfData, 0);
-     // 5. 从数据记录中获取文本数据内容
-     OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
-     OH_UdmfRecord_GetPlainText(record, plainText);
-     const char* content = OH_UdsPlainText_GetContent(plainText);
-     if (content != nullptr){
-      printf("Get plain text success.");
-     }
-     // 5. 使用完销毁指针
-     OH_UdsPlainText_Destroy(plainText);
-     OH_UdmfData_Destroy(udmfData);
-   }
-   OH_Pasteboard_Destroy(pasteboard);
-   ```
+    <!-- @[pasteboard_native6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
