@@ -191,6 +191,8 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 5. 调用release()方法销毁实例，释放资源。
 
+    应用需根据实际业务需求合理使用AudioRenderer实例，按需创建并及时释放，避免占用过多音频资源导致异常。
+
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 

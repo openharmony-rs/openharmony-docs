@@ -319,6 +319,8 @@ OH_AudioStreamBuilder_Destroy(builder);
 
     构造器不再使用时，需要释放相关资源。
 
+    应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
+
     ```cpp
     OH_AudioStreamBuilder_Destroy(builder);
     ```
