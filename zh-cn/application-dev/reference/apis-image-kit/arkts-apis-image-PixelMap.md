@@ -1619,13 +1619,17 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽高。 |
-| x        | number | 是   | 宽度的缩放倍数。 |
-| y        | number | 是   | 高度的缩放倍数。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE |
 
 **返回值：**
@@ -1709,13 +1713,17 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽高。 |
-| x        | number | 是   | 宽度的缩放倍数。 |
-| y        | number | 是   | 高度的缩放倍数。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE |
 
 **返回值：**
@@ -3245,6 +3253,10 @@ ArkTS-Sta: getUniqueId(): int
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型   | 说明                 |
@@ -3288,6 +3300,10 @@ isReleased(): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
