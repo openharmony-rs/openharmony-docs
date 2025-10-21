@@ -218,7 +218,7 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 type AdvancedDialogV2ButtonAction = () => void
 
-跟手弹出框显示状态改变事件。
+弹出框操作区按钮的点击事件类型。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
