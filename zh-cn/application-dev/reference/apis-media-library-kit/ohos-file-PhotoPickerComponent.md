@@ -515,18 +515,6 @@ Picker的颜色模式。
 | SAVE_AS     | 0   | 另存为新的图片/视频。  |
 | OVERWRITE  | 1   | 覆盖原有图片/视频，覆盖后支持在图库中将保存内容回退，还原成原始图片/视频。 |
 
-## BadgeType<sup>21+</sup>
-
-表示特殊角标类型的枚举。
-
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| 名称          | 值   | 说明       |
-|-------------|-----|----------|
-| BADGE_UPLOADED     | 0   | 已上传。  |
-
 ## VideoPlayerState<sup>14+</sup>
 
 视频播放状态。
