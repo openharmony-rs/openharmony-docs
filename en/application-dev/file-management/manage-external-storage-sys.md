@@ -1,14 +1,14 @@
 # Managing External Storage Devices (for System Applications Only)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
 Because external storage devices are pluggable, OpenHarmony provides functions for listening for the device insertion/removal events and mounting/unmounting an external storage device.
 
-External storage devices are managed by the StorageManager and StorageDaemon services. StorageDaemon implements underlying listening and mount/unmount functions. StorageManager provides status change notifications and query and management of external storage devices for system applications.
+External storage devices are managed by the StorageManager and StorageDaemon services. StorageDaemon implements underlying listening and mount/unmount features. StorageManager provides status change notifications and query and management of external storage devices for system applications.
 
 **Figure 1** External storage device management 
 
@@ -45,10 +45,10 @@ The following table describes the broadcast related parameters.
 
 You can subscribe to broadcast events to observe the insertion and removal of external storage devices, and query or manage volumes based on the volume information obtained from the broadcast.
 
-1. Apply for permissions.<br> 
+1. Apply for permissions. 
   Apply for the ohos.permission.STORAGE_MANAGER permission if your application needs to subscribe to volume broadcast events. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
-2. Subscribe to broadcast events.<br> 
+2. Subscribe to broadcast events. 
   You can subscribe to the following events:
 
    - "usual.event.data.VOLUME_REMOVED": The device is removed.

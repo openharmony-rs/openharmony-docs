@@ -1,8 +1,8 @@
 # @ohos.file.recent (Latest Access List) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -17,7 +17,7 @@ The **file.recent** module provides APIs for managing the list of recently acces
 ## Modules to Import
 
 ```js
-import recent from '@ohos.file.recent';
+import { recent } from '@kit.CoreFileKit';
 ```
 
 ## recent.add
@@ -28,17 +28,17 @@ Adds the file of the specified URI to the recent file list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| uri   | string | Yes  | URI of the file to add.|
+| uri   | string | Yes  | File URI.|
 
 **Error codes**
 
@@ -59,17 +59,17 @@ Removes the file of the specified URI from the recent file list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| uri   | string | Yes  | URI of the file to remove.|
+| uri   | string | Yes  | File URI.|
 
 **Error codes**
 
@@ -90,11 +90,11 @@ Lists the files that are accessed recently.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Return value**
 
@@ -126,6 +126,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 Represents information about the recent file list.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 

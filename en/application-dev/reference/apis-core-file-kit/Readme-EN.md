@@ -3,13 +3,14 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
+<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
-- ArkTS API<!--core-file-arkts-->
+- ArkTS APIs<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (Backup ExtensionAbility)](js-apis-application-backupExtensionAbility.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync)](js-apis-file-cloudsync.md)
+  - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](js-apis-file-cloudsyncmanager.md)
   - [@ohos.file.environment (Directory Environment Capability)](js-apis-file-environment.md)
   - [@ohos.file.fileuri (File URI)](js-apis-file-fileuri.md)
   - [@ohos.file.fs (File Management)](js-apis-file-fs.md)
@@ -19,10 +20,11 @@
   - [@ohos.file.statvfs (File System Space Statistics)](js-apis-file-statvfs.md)
   - [@ohos.file.storageStatistics (Application Storage Statistics)](js-apis-file-storage-statistics.md)
   - [@ohos.fileshare (File Sharing)](js-apis-fileShare.md)
-  - [@ohos.file.BackupExtensionContext (Backup and Restore Extension Capability](js-apis-file-backupextensioncontext.md)
+  - [@ohos.file.BackupExtensionContext (Backup and Restore Extension Capability)](js-apis-file-backupextensioncontext.md)
   <!--Del-->
-  - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability) (System API)] (js-apis-application-backupExtensionAbility-sys.md)
+  - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability) (System API)](js-apis-application-backupExtensionAbility-sys.md)
   - [@ohos.file.backup (Backup and Restore) (System API)](js-apis-file-backup-sys.md)
+  - [@ohos.file.cloudDiskManager (Cloud Disk Management) (System API)](js-apis-file-clouddiskmanager-sys.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync) (System API)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (Directory Environment Capability) (System API)](js-apis-file-environment-sys.md)
@@ -48,15 +50,29 @@
     - [FileIO](capi-fileio.md)
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
+    - [CloudDisk](capi-clouddisk.md)
   - Header Files<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
     - [oh_fileio.h](capi-oh-fileio-h.md)
     - [oh_file_share.h](capi-oh-file-share-h.md)
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
+    - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
+    - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
   - Structs<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
+    - [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md)
+    - [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)
+    - [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md)
+    - [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md)
+    - [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)
+    - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
+    - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
+    - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
 - Error Codes<!--core-file-arkts-errcode-->
   - [File Management Error Codes](errorcode-filemanagement.md)
+  <!--Del-->
+  - [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md)
+  <!--DelEnd-->
   
