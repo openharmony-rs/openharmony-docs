@@ -589,7 +589,7 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text ('undefineVal:${this.undefineVal}') // Display undefineVal.
+      Text('undefineVal:${this.undefineVal}') // Display undefineVal.
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {

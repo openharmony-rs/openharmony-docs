@@ -65,7 +65,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 alignContent(value: Alignment)
 
-Alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect.
+Sets the alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -83,7 +83,7 @@ Alignment of child components in the container. When both this attribute and the
 
 enableAnimation(value: boolean)
 
-Whether to enable the default animation.
+Sets whether to enable the default animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -230,7 +230,7 @@ Called when the folding state changes. This API takes effect only in landscape m
 
 type WindowStatusType = WindowStatusType
 
-Window mode.
+Enumerates the window modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -305,7 +305,7 @@ struct Index {
         console.info('this appRotation:' + msg.appRotation);
         console.info('this windowStatusType:' + msg.windowStatusType);
       })
-      // If the <folderStack> component does not occupy the full screen, it is used as a common stack.
+      // If the folderStack component does not occupy the full screen, it is used as a common stack.
       .alignContent(Alignment.Bottom)
       .height("100%")
       .width("100%")

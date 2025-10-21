@@ -1093,8 +1093,8 @@ Called when the drag ends for the scroll component.
 
 ## Example
 
-### Example 1 (scrolling gesture supported)
-In this example, the enableScrollInteraction attribute is set to implement the gesture-based scrolling of a vertical list. The index is called back when the current display screen changes.
+### Example 1: Implementing Gesture-Based Scroll
+This example configures the enableScrollInteraction attribute to enable gesture scrolling in a vertical list, with index callbacks triggered during page transitions.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
@@ -1162,8 +1162,8 @@ struct ListExample {
 
 ![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
 
-### Example 2 (Setting the edge fade-out effect)
-This example sets the fadingEdge attribute to enable the edge fade effect for the List component and set the edge fade length.
+### Example 2: Configuring Edge Fade-Out Effects
+This example uses the fadingEdge attribute to enable edge fade effects for the List component and configure fade length.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 

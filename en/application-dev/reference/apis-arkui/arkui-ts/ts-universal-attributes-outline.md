@@ -106,7 +106,7 @@ Sets the style of the outline.
 
 outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 
-Sets the style of the outline. Compared to [outlineStyle](#outlinestyle), this API supports the **undefined** type for the **style** parameter.
+Sets the style of the outline. Compared with [outlineStyle](#outlinestyle), this API supports the **undefined** type for the **style** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -202,7 +202,7 @@ Sets the color of the outline.
 
 outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>): T
 
-Sets the color of the outline. Compared to [outlineColor](#outlinecolor), this API supports the **undefined** type for the **color** parameter.
+Sets the color of the outline. Compared with [outlineColor](#outlinecolor), this API supports the **undefined** type for the **color** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
