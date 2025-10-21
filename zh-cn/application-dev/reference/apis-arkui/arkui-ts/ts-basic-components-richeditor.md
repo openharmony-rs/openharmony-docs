@@ -363,7 +363,7 @@ maxLines(maxLines: Optional\<number\>)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：Infinity，可以无限输入，支持undefined类型。 <br/>取值范围：(0, +∞) |
+| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：UINT32_MAX，可以无限输入，支持undefined类型。 <br/>取值范围：(0, UINT32_MAX] |
 
 ### enableHapticFeedback<sup>13+</sup>
 

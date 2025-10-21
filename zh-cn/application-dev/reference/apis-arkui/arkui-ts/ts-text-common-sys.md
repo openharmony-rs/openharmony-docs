@@ -80,10 +80,10 @@ getText(range?: TextRange): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 键盘的模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
-| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20枚举说明) | 否   | 键盘的流光效果。<br/>默认值：KeyboardFluidLightMode.NONE |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
+| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20枚举说明) | 否   | 是   | 键盘的流光效果。<br/>默认值：KeyboardFluidLightMode.NONE |
 
 ## TextChangeReason<sup>20+</sup>
 
