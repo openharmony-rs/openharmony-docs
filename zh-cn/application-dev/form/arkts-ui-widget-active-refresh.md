@@ -11,7 +11,7 @@
 ## 卡片提供方主动刷新卡片内容
 卡片提供方可以通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)、[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)、[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)接口搭配使用。
 
-### 开发流程
+### 开发步骤
 下面给出一个示例，实现如下功能：卡片添加至桌面后，点击卡片上的刷新按钮，刷新卡片信息。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
@@ -22,7 +22,7 @@
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
-      // 创建两个待刷新的Text，Text初始内容分别为'Title default'、'Description default'。资源文件定义请参见4. 资源文件
+      // 创建两个待刷新的Text，Text初始内容分别为'Title default'、'Description default'。资源文件定义请参见下方步骤4
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
 
@@ -43,7 +43,7 @@
           .alignItems(HorizontalAlign.Start)
 
           Row() {
-            // 添加一个按钮，资源文件定义请参见4. 资源文件
+            // 添加一个按钮，资源文件定义请参见下方步骤4
             Button() {
               Text($r('app.string.update'))
                 .fontColor('#45A6F4')
@@ -143,11 +143,11 @@
         // ...
         {
           "name": "default_title",
-          "value": "Title default"
+          "value": "Title default."
         },
         {
           "name": "DescriptionDefault",
-          "value": "Description default"
+          "value": "Description default."
         },
         {
           "name": "update",
