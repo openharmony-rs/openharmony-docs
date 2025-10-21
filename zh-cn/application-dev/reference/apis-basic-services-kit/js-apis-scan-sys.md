@@ -52,7 +52,7 @@ addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt;vo
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
@@ -97,7 +97,7 @@ deleteScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Promise&lt
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
@@ -136,7 +136,7 @@ getAddedScanners(): Promise&lt;ScannerDevice[]&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
     console.info('get added scanners success: ' + JSON.stringify(scanners));
@@ -161,7 +161,7 @@ on(type: 'scanDeviceAdd', callback: Callback&lt;ScannerDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceAdd' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 扫描仪设备添加事件的回调。 |
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备添加信息。 |
 
 **错误码：**
 
@@ -196,7 +196,7 @@ off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |	
 | type | 'scanDeviceAdd' | 是 | 事件类型。 |	
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 扫描仪设备添加事件的回调。 |
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备添加信息。 |
 
 **错误码：**
 
@@ -233,7 +233,7 @@ on(type: 'scanDeviceDel', callback: Callback&lt;ScannerDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceDel' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 扫描仪设备删除事件的回调。 |
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备删除信息。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ off(type: 'scanDeviceDel', callback?: Callback&lt;ScannerDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceDel' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 否 | 要取消注册的回调函数。 |
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备删除信息。 |
 
 **错误码：**
 
