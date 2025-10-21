@@ -1930,7 +1930,7 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
-通过uid查询对应的bundleId，使用callback异步回调。
+通过uid查询对应的bundleId。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1977,7 +1977,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
 getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
-通过uid查询对应的bundleId，使用Promise异步回调。
+通过uid查询对应的bundleId。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2073,7 +2073,7 @@ getBundleIdForUidSync(uid: number): number
 
 isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询当前进程是否处于主用户，使用callback异步回调。
+查询当前进程是否处于主用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2120,7 +2120,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 isMainOsAccount(): Promise&lt;boolean&gt;;
 
-查询当前进程是否处于主用户，使用Promise异步回调。
+查询当前进程是否处于主用户。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2272,7 +2272,7 @@ getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
 getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
 
-查询指定系统账号的指定约束来源信息，使用callback异步回调。
+查询指定系统账号的指定约束来源信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2324,7 +2324,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 
 getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;;
 
-查询指定系统账号的指定约束来源信息，使用Promise异步回调。
+查询指定系统账号的指定约束来源信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2379,7 +2379,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 
 getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;;
 
-查询指定系统账号的类型，使用Promise异步回调。
+查询指定系统账号的类型。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4241,7 +4241,7 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;boolean&gt;): void
 
-检查是否存在指定的域账号。
+检查是否存在指定的域账号。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4299,7 +4299,7 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
-检查是否存在指定的域账号。
+检查是否存在指定的域账号。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4596,7 +4596,7 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 
 getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-获取当前域账号的业务访问令牌，使用callback异步回调。
+获取当前域账号的业务访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4653,7 +4653,7 @@ getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&l
 
 getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
 
-查询当前域账号的业务访问令牌，使用promise异步回调。
+查询当前域账号的业务访问令牌。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5126,7 +5126,7 @@ cancel(challenge: Uint8Array): void
 
 delUser(token: Uint8Array, callback: IIdmCallback): void
 
-删除具有身份验证令牌的用户，使用callback方式异步返回结果。
+删除具有身份验证令牌的用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
