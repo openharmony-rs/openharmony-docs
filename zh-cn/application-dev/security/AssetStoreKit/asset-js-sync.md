@@ -11,48 +11,7 @@
 
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
-<!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/sync.ets) -->
-
-``` TypeScript
-// [Start query_sync_result]
-import { asset } from '@kit.AssetStoreKit';
-// [StartExclude query_sync_result]
-import { util } from '@kit.ArkTS';
-// [EndExclude query_sync_result]
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// [StartExclude query_sync_result]
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function addSyncAsset(): Promise<string> {
-  let result: string = '';
-  let attr: asset.AssetMap = new Map();
-  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-  attr.set(asset.Tag.SYNC_TYPE, asset.SyncType.TRUSTED_DEVICE); // 需指定在可信设备间同步（如新旧设备间克隆）。
-
-  try {
-    await asset.add(attr).then(() => {
-      console.info(`Succeeded in adding Asset with sync.`);
-      result = 'Succeeded in adding Asset with sync';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to add Asset with sync. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to add Asset with sync';
-    })
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to add Asset with sync. Code is ${err?.code}, message is ${err?.message}`);
-    result = 'Failed to add Asset with sync';
-  }
-  return result;
-}
-// [EndExclude query_sync_result]
-```
-
+<!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
 
 ## 接入备份恢复扩展能力
 
@@ -73,30 +32,7 @@ export async function addSyncAsset(): Promise<string> {
 
 ### 代码示例
 
-<!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/sync.ets) -->
-
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-// ···
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// ···
-// [End add_sync_asset]
-
-export async function querySyncResult(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  await asset.querySyncResult(query).then((res: asset.SyncResult) => {
-    console.info(`Succeeded in querying sync result: ${JSON.stringify(res)}`);
-    result = 'Succeeded in querying sync result';
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to query sync result of Asset';
-  });
-  return result;
-}
-```
-
+<!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
 
 ## 约束和限制
 
