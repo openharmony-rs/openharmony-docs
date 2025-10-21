@@ -131,7 +131,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称         | 类型     | 只读 | 可选  | 说明                                                        |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | 否    | 是 | 最近图片/视频的拍摄时间（距1970年一月一日的毫秒数值），单位为毫秒（ms）。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                     |
+| dateTaken  | number | 否    | 是 | 最近图片/视频的拍摄时间（距1970年1月1日的毫秒数值），单位为毫秒（ms）。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                     |
 | identifier | string | 否    | 是 | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoViewMimeTypeFileSizeFilter<sup>20+</sup>
