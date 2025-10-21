@@ -168,7 +168,7 @@ struct ScrollBarExample {
 
 ## 示例2（不设置子节点）
 
-该示例为ScrollBar组件没有子节点时的滚动条样式。
+从API version 20开始，该示例为ScrollBar组件没有子节点时的滚动条样式。
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
@@ -214,7 +214,7 @@ struct ScrollBarExample {
 
 ## 示例3（支持嵌套滚动）
 
-该示例通过enableNestedScroll属性使ScrollBar组件支持嵌套滚动。
+从API version 20开始，该示例通过[enableNestedScroll](#enablenestedscroll14)属性使ScrollBar组件支持嵌套滚动。
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
 @Entry
