@@ -1,4 +1,10 @@
 # Counter
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **Counter** component provides an operation to increase or decrease the number.
 
@@ -40,7 +46,7 @@ Sets whether to enable the increment button.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the increment button.<br>**true** (default): Enable the increment button.<br>**false**: Disable the increment button.|
+| value  | boolean | Yes  | Whether to enable the increment button.<br>Default value: **true**. **true**: Enable the increment button. **false**: Disable the increment button.|
 
 ### enableDec<sup>10+</sup>
 
@@ -56,7 +62,7 @@ Sets whether to enable the decrement button.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the decrement button.<br>**true** (default): Enable the decrement button.<br>**false**: Disable the decrement button.|
+| value  | boolean | Yes  | Whether to enable the decrement button.<br>Default value: **true**. **true**: Enable the decrement button. **false**: Disable the decrement button.|
 
 ## Events
 
@@ -108,7 +114,7 @@ This example shows the basic usage of the **Counter** component. Users can touch
 @Entry
 @Component
 struct CounterExample {
-  @State value: number = 0
+  @State value: number = 0;
 
   build() {
     Column() {
@@ -116,10 +122,10 @@ struct CounterExample {
         Text(this.value.toString())
       }.margin(100)
       .onInc(() => {
-        this.value++
+        this.value++;
       })
       .onDec(() => {
-        this.value--
+        this.value--;
       })
     }.width("100%")
   }

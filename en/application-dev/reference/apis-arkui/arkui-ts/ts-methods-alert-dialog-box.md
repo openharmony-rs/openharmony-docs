@@ -74,7 +74,7 @@ Defines the display order of the dialog box.
 
 ## AlertDialogParamWithConfirm
 
-Inherits from [AlertDialogParam](#alertdialogparam).
+Inherited from [AlertDialogParam](#alertdialogparam).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -104,7 +104,7 @@ Priorities of the **confirm** parameters: **fontColor** and **backgroundColor** 
 
 ## AlertDialogParamWithButtons
 
-Inherits from [AlertDialogParam](#alertdialogparam).
+Inherited from [AlertDialogParam](#alertdialogparam).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -117,7 +117,7 @@ Inherits from [AlertDialogParam](#alertdialogparam).
 
 ## AlertDialogParamWithOptions<sup>10+</sup>
 
-Inherits from [AlertDialogParam](#alertdialogparam).
+Inherited from [AlertDialogParam](#alertdialogparam).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -423,7 +423,7 @@ struct AlertDialogExample {
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
-This example demonstrates how to configure an action sheet to display outside the main window on a 2-in-1 device by setting **showInSubWindow** to **true**.
+This example demonstrates how to configure a dialog box to display outside the main window on a 2-in-1 device by setting **showInSubWindow** to **true**.
 
 ```ts
 // xxx.ets
@@ -540,7 +540,7 @@ struct AlertDialogExample {
 
 ### Example 4: Setting the Dialog Box Style
 
-This example demonstrates how to set styles of an alert dialog box, including the width, height, background color, and shadow.
+This example defines the style of AlertDialog, including the width, height, background color, and shadow.
 
 ```ts
 // xxx.ets

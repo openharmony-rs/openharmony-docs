@@ -401,7 +401,7 @@ Notes:
 
 3. This event supports the out-of-bounds bounce effect.
 
-This API is deprecated since API version 12. You are advised to use the [onWillScroll] (#onwillscroll12) event instead.
+This API is deprecated since API version 12. You are advised to use the [onWillScroll](#onwillscroll12) event instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1032,7 +1032,7 @@ Provides parameters for customizing scroll animations.
 | ----- | ------ | ------ | -- | ----------------- |
 | duration | number | No| Yes| Scrolling duration.<br>Default value: **1000**<br>**NOTE**<br>A value less than 0 evaluates to the default value.|
 | curve | [Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9) | No| Yes| Scrolling curve.<br>Default value: **Curve.Ease**|
-| canOverScroll | boolean | No| Yes| Sets whether to convert the scrolling animation to an out-of-bounds rebound animation after it scrolls to the boundary.<br>Default value: **false**<br>**NOTE**<br> Only when this attribute is set to true and edgeEffect of the component is set to [EdgeEffect.Spring] (ts-appendix-enums.md#edgeeffect), the animation scrolling to the boundary is converted to the out-of-bounds rebound animation. When this attribute is set to false: Scrolling to the boundary directly stops the animation and does not convert it to an out-of-bounds rebound animation.<br>Since API version 20, if canOverScroll in [ScrollOptions] (#scrolloptions18) is set to true, the scrolling animation can stay at the boundary. After the scrolling animation crosses the boundary, it will not be converted into a rebounding animation.|
+| canOverScroll | boolean | No| Yes| Sets whether to convert the scrolling animation to an out-of-bounds rebound animation after it scrolls to the boundary.<br>Default value: **false**<br>**NOTE**<br> Only when this attribute is set to true and edgeEffect of the component is set to [EdgeEffect.Spring] (ts-appendix-enums.md#edgeeffect), the animation scrolling to the boundary is converted to the out-of-bounds rebound animation. When this attribute is set to false: Scrolling to the boundary directly stops the animation and does not convert it to an out-of-bounds rebound animation.<br>Since API version 20, if canOverScroll in [ScrollOptions](#scrolloptions18) is set to true, the scrolling animation can stay at the boundary. After the scrolling animation crosses the boundary, it will not be converted into a rebounding animation.|
 
 ## ScrollAlign<sup>10+</sup>
 

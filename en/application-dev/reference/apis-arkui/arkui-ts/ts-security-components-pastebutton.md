@@ -71,7 +71,7 @@ Describes the icon, text, and other specific elements for the **PasteButton** co
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| icon | [PasteIconStyle](#pasteiconstyle) | No| Yes| Icon style of the **SaveButton** component.<br>If this parameter is not specified, there is no icon.|
+| icon | [PasteIconStyle](#pasteiconstyle) | No| Yes| Icon style of the **PasteButton** component.<br>If this parameter is not specified, there is no icon.|
 | text | [PasteDescription](#pastedescription) | No| Yes| Text on the **PasteButton** component.<br>If this parameter is not specified, there is no text description.|
 | buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | No| Yes| Background style of the **PasteButton** component.<br>If this parameter is not specified, the system uses a capsule-type button.|
 
@@ -176,7 +176,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 10 }) {
-        // Create a default SaveButton component with an icon, text, and background.
+        // Create a default button with an icon, text, and background.
         PasteButton().onClick(this.handlePasteButtonClick)
         // Whether an element is contained depends on whether the parameter corresponding to the element is specified. If buttonType is not passed in, the button uses the ButtonType.Capsule settings.
         PasteButton({ icon: PasteIconStyle.LINES })

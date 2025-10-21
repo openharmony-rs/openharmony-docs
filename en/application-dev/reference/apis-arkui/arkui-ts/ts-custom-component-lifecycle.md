@@ -82,7 +82,7 @@ Triggered each time a router-managed page (only custom components decorated with
 
 onPageHide?(): void
 
-Triggered each time when a page is hidden, including scenarios such as routing and applications entering the background.
+Triggered each time when a page is hidden, including scenarios such as route redirection and applications entering the background.
 
 > **NOTE**
 >
@@ -146,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-This callback is only effective for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) that serve as router-managed pages. Triggered when a page that previously existed in the router stack is moved to the top of the stack through the [singleton mode](../js-apis-router.md#routermode9).
+Triggered when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -255,7 +255,7 @@ Invoked when a reusable custom component is re-added to the node tree from the r
 
 > **NOTE**
 >
-> * [Avoid reassigning automatically updated state variables like @Link/@ObjectLink/@Prop in aboutToReuse()](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
+> * [Avoid repeatedly updating state variables that are automatically updated, such as @Link, @ObjectLink, and @Prop decorated variables, within aboutToReuse.](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
 > * In scrolling scenarios where component reuse is implemented, this callback is typically required to update the component's state variables. As such, avoid performing time-consuming operations within this callback to prevent frame drops and UI stuttering during scrolling animations. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread: Component Reuse Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -622,7 +622,7 @@ Defines the transition animation to play when the user accesses this page or is 
 
 onFormRecycle?(): string
 
-The onFormRecycle callback function is executed when a card is recycled. The card provider can return the data that needs to be stored by the card management service. The data is passed to the card provider through the [onFormRecover](#onformrecover11) API when the card is restored.
+Triggered when a widget is recycled. The widget provider can return the data that needs to be saved by the widget management service. The data is transferred to the widget provider through the [onFormRecover](#onformrecover11) API when the widget is restored.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -634,10 +634,9 @@ The onFormRecycle callback function is executed when a card is recycled. The car
 
 | Type               | Description       |
 | ------------------- | ---------   |
-| string | Data that the widget provider requires the widget management service to save.|
+| string | Data that needs to be saved by the widget management service.|
 
-
-**Examples:**
+**Example**
 ```ts
 @Entry
 @Component
@@ -688,7 +687,7 @@ struct WidgetCard {
 
 onFormRecover?(statusData: string): void
 
-The onFormRecover callback function is executed when the widget is restored. The widget provider can obtain the data saved by the widget management service during widget recycling. The data can be saved to the widget management service using the [onFormRecycle](#onformrecycle11) callback function.
+The onFormRecover callback function is executed when the widget is recovered. The widget provider can obtain the data saved by the widget management service when the widget is recycled. The data can be saved to the widget management service by using the [onFormRecycle](#onformrecycle11) callback function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -697,7 +696,6 @@ The onFormRecover callback function is executed when the widget is restored. The
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 
 | Name   | Type                                      | Mandatory   | Description        |
 |--------|------------------------------------------|------------|-------------------------|

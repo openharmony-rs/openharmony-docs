@@ -91,7 +91,7 @@ This example shows how to use **ColoringStrategy.INVERT** to set the foreground 
 struct ColoringStrategyExample {
   build() {
     Column({ space: 100 }) {
-      // Draw a circle whose diameter is 150. The default fill color is black.
+      // Draw a circle with a diameter of 15. The default fill color is black.
       Circle({ width: 150, height: 200 })
       // Draw a circle with a diameter of 150 and set its foreground color to the inverse of the component background color.
       Circle({ width: 150, height: 200 })

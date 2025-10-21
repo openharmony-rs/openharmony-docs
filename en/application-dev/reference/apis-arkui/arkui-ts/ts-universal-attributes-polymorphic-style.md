@@ -1,18 +1,28 @@
 # Polymorphic Style
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 You can set state-specific styles for components.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
 >
 >  Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, [fontColor](./ts-universal-attributes-text-style.md) or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
+>
+>  Currently, the multi-state style implementation depends on the refresh mechanism of the custom component node. The builder does not have an independent custom parent node and cannot directly trigger the refresh. As a result, the polymorphic style cannot take effect in the builder. The solution is to encapsulate the polymorphic style into the custom component and place the component in @Builder to indirectly implement the polymorphic style. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
+>  
+>  Polymorphic styles for the focused state are only applied when [focus activation](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is enabled.
 
 ## stateStyles
 
-stateStyles(value: StateStyles)
+stateStyles(value: StateStyles): T
 
 Sets the state-specific styles for the component.
 
@@ -28,20 +38,26 @@ Sets the state-specific styles for the component.
 | ------ | ----------------------------------- | ---- | ------------------------ |
 | value  | [StateStyles](#statestyles) | Yes  | State-specific styles for the component.|
 
-## StateStyles
+**Return value**
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
+## StateStyles
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| normal | ()=&gt;void | No| Style of the component when being stateless.|
-| pressed | ()=&gt;void | No| Style of the component in the pressed state.|
-| disabled | ()=&gt;void | No| Style of the component in the disabled state.|
-| focused | ()=&gt;void | No| Style of the component in the focused state.|
-| clicked | ()=&gt;void | No| Style of the component in the clicked state.|
-| selected<sup>10+</sup> | ()=&gt;void | No| Style of the component in the selected state.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| normal | any | No| Yes| Style of the component when being stateless. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| pressed | any | No| Yes| Style of the component in the pressed state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| disabled | any | No| Yes| Style of the component in the disabled state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| focused | any | No| Yes| Style of the component in the focused state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| clicked | any | No| Yes| Style of the component in the clicked state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 **Notes about the selected state:**
 
@@ -59,6 +75,10 @@ Sets the state-specific styles for the component.
   | [GridItem](ts-container-griditem.md) | selected         | 10          |
   | [MenuItem](ts-basic-components-menuitem.md) | selected         | 10          |
 
+**Notes about pressed and clicked states**
+
+- When both **clicked** and **pressed** are used on the same component, only the last registered state takes effect.
+
 ## Example
 
 ### Example 1: Setting Polymorphic Styles for the Text Component
@@ -72,7 +92,8 @@ This example demonstrates the style changes of the **Text** component when its s
 struct StyleExample {
   @State isEnable: boolean = true
 
-  @Styles pressedStyles():void {
+  @Styles
+  pressedStyles(): void {
     .backgroundColor("#ED6F21")
     .borderRadius(10)
     .borderStyle(BorderStyle.Dashed)
@@ -83,7 +104,8 @@ struct StyleExample {
     .opacity(1)
   }
 
-  @Styles disabledStyles():void {
+  @Styles
+  disabledStyles(): void {
     .backgroundColor("#E5E5E5")
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
@@ -94,7 +116,8 @@ struct StyleExample {
     .opacity(1)
   }
 
-  @Styles normalStyles():void {
+  @Styles
+  normalStyles(): void {
     .backgroundColor("#0A59F7")
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
@@ -151,7 +174,7 @@ struct StyleExample {
       Text("control disabled")
         .onClick(() => {
           this.isEnable = !this.isEnable
-          console.log(`${this.isEnable}`)
+          console.info(`${this.isEnable}`)
         })
     }
     .width(350).height(300)
@@ -226,3 +249,61 @@ struct Index {
 ```
 
 ![selected](figures/selected.gif)
+
+### Example 3: Setting Polymorphic Styles for the Builder Component
+
+This example demonstrates the style changes of the **Builder** component when it is in pressed state.
+
+```ts
+import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Component
+struct Child {
+  build() {
+    Row()
+      .zIndex(10)
+      .width(100)
+      .height(200)
+      .stateStyles({
+        normal: {
+          .backgroundColor(Color.Blue)
+        },
+        pressed: {
+          .backgroundColor(Color.Black)
+        }
+      })
+  }
+}
+
+@Builder
+function
+buildText() {
+  Child()
+}
+
+@Entry
+@Component
+struct Index {
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
+
+  build() {
+    Button().onClick((event: ClickEvent) => {
+      this.getUIContext()
+        .getPromptAction()
+        .openCustomDialog(this.contentNode)
+        .then(() => {
+          console.info('OpenCustomDialog complete.')
+        })
+        .catch((error: BusinessError) => {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+        })
+    })
+  }
+}
+```
+
+![Builder](figures/stateStyles_builder.gif)

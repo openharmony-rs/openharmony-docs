@@ -641,7 +641,7 @@ The **Navigation** component provides default transition animations for switchin
   this.pageStack.pop(false)
   ```
 
-### Customizing a Transition
+### Defining a Custom Transition
 
 You can customize transition animations through the [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) event. Specifically, you can define a custom transition animation in the following steps:
 

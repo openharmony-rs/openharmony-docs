@@ -1,4 +1,10 @@
 # Visibility
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The visibility attribute controls whether a component is visible.
 
@@ -10,7 +16,7 @@ The visibility attribute controls whether a component is visible.
 
 visibility(value: Visibility): T
 
-Sets the visibility of the component.
+Sets the visibility of the component. If **visibility** is not set, the component is displayed by default.
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -22,7 +28,7 @@ Sets the visibility of the component.
 
 | Name| Type                                         | Mandatory| Description                                                        |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Visibility](ts-appendix-enums.md#visibility) | Yes  | Whether the component is visible. When appropriate, consider using [conditional rendering](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) as a substitute.<br>Default value: **Visibility.Visible**|
+| value  | [Visibility](ts-appendix-enums.md#visibility) | Yes  | Whether the component is visible. When appropriate, consider using [conditional rendering](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) as a substitute.|
 
 **Return value**
 
