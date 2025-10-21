@@ -36,17 +36,38 @@ import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let AVSessionController: avSession.AVSessionController;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  AVSessionController = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private AVSessionController?: avSession.AVSessionController;
+  private currentAVSession?: avSession.AVSession;
+  private context = getContext(this) as Context;
+
+  aboutToAppear(): void {
+
+    avSession.createAVSession(this.context, this.tag, "audio").then(async (data: avSession.AVSession) => {
+      this.currentAVSession = data;
+      this.sessionId = this.currentAVSession.sessionId;
+      this.AVSessionController = await this.currentAVSession.getController();
+      console.info('CreateAVSession :  SUCCESS :sessionId = ${this.sessionId}');
+    }).catch((err: BusinessError) => {
+      console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
 ```
 
 ## getAVPlaybackState<sup>10+</sup>
