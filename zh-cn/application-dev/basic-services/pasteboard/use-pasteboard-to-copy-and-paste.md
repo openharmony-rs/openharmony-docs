@@ -51,6 +51,27 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 
 <!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
+``` TypeScript
+// [Start pasteboard_useudc]
+import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
+// ···
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ···
+    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
+    await systemPasteboard.setData(pasteData);
+	// ···
+    //从系统剪贴板中读取数据
+    let data = await systemPasteboard.getData();
+    let recordCount = data.getRecordCount();
+    let result = '';
+    for (let i = 0; i < recordCount; i++) {
+      let record = data.getRecord(i).toPlainText();
+      console.info('Get data success, record:' + record);
+      result = record;
+    }
+```
+
+
 ## 使用统一数据类型进行复制粘贴
 
 为了方便剪贴板与其他应用间进行数据交互，减少数据类型适配的工作量，剪贴板支持使用统一数据对象进行复制粘贴。详细的统一数据对象请见[标准化数据通路](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)文档介绍。
@@ -71,6 +92,48 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 ### 示例代码
 
 <!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
+import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
+// [StartExclude pasteboard_usedata]
+import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+// [End pasteboard_timelaps_PasteData1]
+// ···
+  // 1.构造一条PlainText数据
+  export async function handleUniformData () {
+    let plainText : uniformDataStruct.PlainText = {
+      uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
+      textContent : 'PLAINTEXT_CONTENT',
+      abstract : 'PLAINTEXT_ABSTRACT',
+    }
+
+    let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+    let data = new unifiedDataChannel.UnifiedData();
+    data.addRecord(record);
+    // 2.向系统剪贴板中存入一条PlainText数据
+    systemPasteboard.setUnifiedData(data).then((data: void) => {
+      console.info('Succeeded in setting UnifiedData.');
+      // 存入成功，处理正常场景
+    }).catch((err: BusinessError) => {
+      console.error('Failed to set UnifiedData. Cause: ' + err.message);
+      // 处理异常场景
+    });
+    // 3.从系统剪贴板中读取这条text数据
+    systemPasteboard.getUnifiedData().then((data) => {
+      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+      for (let j = 0; j < records.length; j++) {
+        if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+          let text = records[j].getValue() as uniformDataStruct.PlainText;
+          console.info(`${j + 1}.${text.textContent}`);
+        }
+      }
+    }).catch((err: BusinessError) => {
+      console.error('Failed to get UnifiedData. Cause: ' + err.message);
+      // 处理异常场景
+    });
+  }
+```
+
 
 <!--RP1-->
 <!--RP1End-->
