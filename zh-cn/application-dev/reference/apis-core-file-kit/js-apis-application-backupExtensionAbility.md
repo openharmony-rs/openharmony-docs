@@ -41,7 +41,7 @@ import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
 
 | 名称                  | 类型                                                              | 只读 | 可选 | 说明                                                |
 | --------------------- | ----------------------------------------------------------------- | ---- | --- | --------------------------------------------------- |
-| context<sup>12+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | 否  | 否 | BackupExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
+| context<sup>11+</sup> | [BackupExtensionContext](js-apis-file-backupextensioncontext.md) | 否  | 否 | BackupExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
 
 ### onBackup
 
