@@ -14,7 +14,7 @@
 ## 导入模块
 
 ```ts
-import { ExtraConfig } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
 ```
 
 ## CustomValueType
@@ -31,7 +31,7 @@ type CustomValueType = number | string | boolean
 | number  | 表示值类型为数字。   |
 | boolean | 表示值类型为布尔值。 |
 
-## ExtraConfig
+## InputMethodExtraConfig
 
 输入法扩展信息。
 
