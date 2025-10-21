@@ -63,7 +63,8 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-```c++
+``` C
+#include <hilog/log.h>
 #include <database/data/oh_data_values.h>
 #include <database/rdb/oh_cursor.h>
 #include <database/rdb/relational_store.h>
@@ -73,7 +74,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    int numType = 0;
    // 如果numType为2则支持向量数据库，为1则不支持向量数据库
    OH_Rdb_GetSupportedDbType(&numType);
@@ -83,7 +84,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    // 创建OH_Rdb_Config对象
    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
    // 该路径为应用沙箱路径
@@ -117,7 +118,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
    // 执行建表语句
    OH_Rdb_ExecuteByTrxId(store_, 0, createTableSql);
@@ -139,7 +140,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    // 不使用参数绑定修改数据
    OH_Rdb_ExecuteV2(store_, "update test set data1 = '[5.1, 6.1]' where id = 0;", nullptr, nullptr);
 
@@ -171,7 +172,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    // 不使用参数绑定查询数据
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from test where id = 1;", nullptr);
    if (cursor == NULL) {
@@ -231,7 +232,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    OH_Rdb_ExecuteV2(store_, "CREATE VIEW v1 as select * from test where id > 0;", nullptr, nullptr);
    OH_Cursor *cursor = OH_Rdb_ExecuteQueryV2(store_, "select * from v1;", nullptr);
    if (cursor == NULL) {
@@ -293,7 +294,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    // 基础用法，创建的索引名称为diskann_l2_idx，索引列为repr，类型为gsdiskann，距离度量类型为L2
    OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(data1 L2);", nullptr, nullptr);
 
@@ -339,7 +340,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_data_aging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    // 每隔五分钟执行写操作后，会触发数据老化任务
    OH_Rdb_ExecuteV2(store_, "CREATE TABLE test2(rec_time integer not null) WITH (time_col = 'rec_time', interval = '5 minute');", nullptr, nullptr);
    ```
@@ -360,7 +361,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_ExecuteV2_data_compression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-   ```c
+   ``` C
    // content列配置了数据压缩，并且配置了数据老化。
    OH_Rdb_ExecuteV2(store_, "CREATE TABLE IF NOT EXISTS test3 (time integer not null, content text) with (time_col = 'time', interval = '5 minute', compress_col = 'content');", nullptr, nullptr);
    ```
@@ -369,7 +370,7 @@ libnative_rdb_ndk.z.so
 
 <!--@[vector_OH_Rdb_DeleteStoreV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
 
-    ```c
+    ``` C
     OH_Rdb_CloseStore(store_);
     OH_Rdb_DeleteStoreV2(config);
     ```
