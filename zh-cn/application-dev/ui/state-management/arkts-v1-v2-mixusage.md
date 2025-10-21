@@ -10,7 +10,7 @@
 
 在状态管理框架的演进过程中，分别于API version 7和API version 12推出了状态管理V1和V2两个版本。对于已经使用状态管理V1的应用，如果有诉求向状态管理V2迁移，可参考[状态管理V1和V2迁移文档](./arkts-v1-v2-migration.md)。
 
-对于大型应用，迁移过程中会遇到V1V2混用的场景，在API version 19之前，混用场景有相对严格的校验，主要表现在复杂对象的传递上，具体规则可参考[自定义组件混用场景指导](./arkts-custom-component-mixed-scenarios.md)。为了帮助开发者顺利地向V2迁移，从API version 19开始，减少了对V1V2混用场景的约束。具体变更可参考下表。同时提供新的方法[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)来帮助开发者解决在迁移过程中遇到的混用问题。
+对于大型应用，迁移过程中会遇到V1V2混用的场景，在API version 19之前，混用场景有相对严格的校验，主要表现在复杂对象的传递上，具体规则可参考[自定义组件混用场景指导](./arkts-custom-component-mixed-scenarios.md)。为了帮助开发者顺利地向V2迁移，从API version 19开始，减少了对V1V2混用场景的约束。具体变更可参考[校验规则](#校验规则)。同时提供新的方法[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)来帮助开发者解决在迁移过程中遇到的混用问题。
 
 > **说明：**
 >
@@ -37,12 +37,10 @@
 | V2->V1 built-in类型Array、Map、Set、Date  | 报错 | 不报错 |
 | \@ObjectLink被非\@Observed装饰的class初始化  | 报错 | 不报错 |
 
-依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在\@ComponentV2中使用，也可以独立在\@Component中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[\@ComponentV2](./arkts-new-componentV2.md)中使用，也可以独立在\@Component中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
 
 ## 新增接口
 ### makeV1Observed
-
-static makeV1Observed\<T extends object\>(source: T): T
 
 [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)将不可观察的对象包装成状态管理V1可观察的对象，能力等同于@Observed，其返回值可初始化@ObjectLink。
 
@@ -65,8 +63,6 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 ### enableV2Compatibility
 
-static enableV2Compatibility\<T extends object\>(source: T): T
-
 [enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)将V1的状态变量使能V2的观察能力，即让V1状态变量可以在\@ComponentV2中观察到变化。
 
 >**说明：**
@@ -75,7 +71,7 @@ static enableV2Compatibility\<T extends object\>(source: T): T
 
 **接口说明**
 - 该接口主要应用于V1->V2的场景，V1的状态变量调用该接口后，传递到\@ComponentV2中，则可以在V2中观察到变化，从而实现数据的联动刷新。
-- enableV2Compatibility只能作用于V1的状态变量。V1状态变量为V1装饰器装饰的变量，即\@Observed装饰的变量，或\@State、\@Prop、\@Link、\@Provide、\@Consume和\@ObjectLink（\@ObjectLink需是\@Observed装饰的实例或者makeV1Observed的返回值）装饰的变量。否则，将返回入参自身。
+- enableV2Compatibility只能作用于V1的状态变量。V1状态变量为V1装饰器装饰的变量，即\@Observed装饰的变量，或[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Consume](./arkts-provide-and-consume.md)和[\@ObjectLink](./arkts-observed-and-objectlink.md)（\@ObjectLink需是\@Observed装饰的实例或者makeV1Observed的返回值）装饰的变量。否则，将返回入参自身。
 - enableV2Compatibility会递归遍历class的所有属性，Array/Set/Map的所有子项，直到遇到非V1状态变量的数据，则停止当前分支的遍历。
 
 **限制条件**
@@ -89,7 +85,7 @@ static enableV2Compatibility\<T extends object\>(source: T): T
 基于[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)接口，V1V2混用范式如下：
 
 ### V1->V2
-- V1的状态变量传递给V2的\@Param，调用`UIUtils.enableV2Compatibility`使V1的状态变量可在\@ComponentV2中有观察能力。完整例子见[常见场景](#常见场景)。
+- V1的状态变量传递给V2的[\@Param](./arkts-new-param.md)，调用`UIUtils.enableV2Compatibility`使V1的状态变量可在\@ComponentV2中有观察能力。完整示例见[常见场景](#常见场景)。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 
@@ -134,7 +130,7 @@ struct CompV2 {
 
 ### V2->V1
 
-在V2->V1时，推荐联合使用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`。如果当前对象已经是V1的可观察数据了，则仅调用`UIUtils.enableV2Compatibility`即可，完整例子见[常见场景](#常见场景)。
+在V2->V1时，推荐使用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`。如果当前对象已经是V1的可观察数据了，则仅调用`UIUtils.enableV2Compatibility`即可，完整例子见[常见场景](#常见场景)。
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -156,7 +152,8 @@ struct CompV2 {
 @Component
 struct CompV1 {
   @ObjectLink observedClass: ObservedClass;
-  build() {}
+  build() {
+  }
 }
 ```
 
@@ -181,7 +178,7 @@ SubComponentV2({param: UIUtils.enableV2Compatibility(this.state)})
 // 不推荐，state做整体赋值时，需要再次调用UIUtils.enableV2Compatibility
 // 否则传递给SubComponentV2的V1变量是无法在V2中观察的
 // @State state: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
-// this.state = UIUtils.enableV2Compatibility(new ObservedClass())
+// this.state = UIUtils.enableV2Compatibility(new ObservedClass());
 SubComponentV2({param: this.state})
 ```
 
@@ -191,7 +188,7 @@ SubComponentV2({param: this.state})
 // 推荐
 @Local unObservedClass: UnObservedClass = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new UnObservedClass()));
 
-// 推荐，ObservedClass时@Observed装饰的class
+// 推荐，ObservedClass是@Observed装饰的class
 @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
 ```
 - `UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`不会改变V1和V2本身观察能力。
@@ -205,7 +202,7 @@ arr.push(new ArrayItem()); // 新增数据不是V1状态变量，所以不会具
 arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态变量，默认在V2中可观察
 ```
 - 对于built-in类型，如Array、Map、Set和Date，V1和V2都可以观察自身赋值和其API的调用所带来的变化。虽然开发者在不调用`UIUtils.enableV2Compatibility`时，也可以在一些简单场景下实现数据刷新，但是会带来双重代理导致性能较差的问题，所以推荐开发者使用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`，具体例子见[常见场景](#内置类型)。
-- 对于有\@Track装饰属性的类，非\@Track装饰的属性在\@ComponentV2中使用不会崩溃，在\@Component中使用仍会崩溃。具体例子见[常见场景](#observed装饰的class)。
+- 对于有[\@Track](./arkts-track.md)装饰属性的类，非\@Track装饰的属性在\@ComponentV2中使用不会崩溃，在\@Component中使用仍会崩溃。具体例子见[常见场景](#observed装饰的class)。
 
 开发者在使用这两个接口混用V1V2时，可遵循下图逻辑。
 
@@ -319,7 +316,7 @@ struct CompV2 {
     Column() {
       // @Local原本能力仅可观察自身
       // 但是调用了UIUtils.makeV1Observed使其变成V1的状态变量，V1状态变量可观察第一层变化
-      // 又调用UIUtils.enableV2Compatibility使其在V2中可观察，使其在V2中可观察
+      // 又调用UIUtils.enableV2Compatibility使其在V2中可观察
       // 所以当前可观察第一层属性的变化
       Text(`@Local observedClass: ${this.observedClass.name}`)
         .onClick(() => {
@@ -569,7 +566,7 @@ struct ArrayCompV2 {
   build() {
     Column() {
       Text(`V2 ${this.arr[0]}`).onClick(() => {
-        // V1V2双重代理，可触发ArrayCompV1，也可触发ArrayCompV2的刷新
+        // V1V2双重代理，可触发ArrayCompV1和ArrayCompV2的刷新
         this.arr[0]++;
       })
     }
@@ -788,13 +785,13 @@ struct IndexPage {
 
 **V1->V2**
 
-结合上面的基本场景后，来看下面嵌套场景的例子。
+基于上述基本场景，下面展示一个嵌套场景的示例。
 下面的例子的行为可以总结为：
 - \@State仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
 - 数据源\@State的第二层的改变，虽然不能带来本层的刷新，但会被\@ObjectLink和\@Param观察到，并触发它们关联组件的刷新。
 - \@ObjectLink和\@Param是同一个对象的引用，其属性改变也会带来其他引用的刷新。
-- 开启`enableV2Compatibility`后，V2有了深度观察能力。
-- 如果开发者在传递给V2时没有调用`enableV2Compatibility`，则Param无法观察对象的属性。
+- 在传递给V2子组件`NestedClassV2`时，调用enableV2Compatibility，使其具有V2的观察能力。
+- 如果开发者在传递给V2时没有调用`enableV2Compatibility`，则\@Param无法观察对象的属性。
 ```ts
 // 不推荐写法
 NestedClassV2({ outer: this.outer })
@@ -821,7 +818,7 @@ class Inner {
 }
 
 class Outer {
-  @Track outerValue: string = 'out';
+  @Track outerValue: string = 'outer';
   @Track inner: Inner;
 
   constructor(inner: Inner) {
@@ -922,7 +919,7 @@ struct NestedClassV2 {
 
 **V2->V1**
 
-- 下面的例子中，`NestedClassV2`中`outer`调用了`UIUtils.enableV2Compatibility`，且每一层都是`UIUtils.makeV1Observed`，所以`outer`在V2中有了深度观察的能力。
+- 下面的例子中，`NestedClassV2`中`outer`调用了`UIUtils.enableV2Compatibility`，且每一层都是`UIUtils.makeV1Observed`的返回值，所以`outer`在V2中有了深度观察的能力。
 - V1中仅能观察第一层的变化，所以需要多层自定义组件，且每层都配合使用\@ObjectLink来接收，从而实现深度观察能力。
 
 ```ts
