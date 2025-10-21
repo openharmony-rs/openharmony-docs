@@ -135,8 +135,6 @@ struct MyComponent {
 }
 ```
 
-\@Entry搭配自定义组件装饰器\@ComponentV2使用时，仅接受routeName作为参数。如果\@Entry传入storage或useSharedStorage参数，会编译报错。
-
 ## 成员函数/变量
 
 自定义组件可包含成员变量或成员函数， 如果声明的成员函数或变量是私有的， 不可将成员函数或成员变量声明为静态的。
