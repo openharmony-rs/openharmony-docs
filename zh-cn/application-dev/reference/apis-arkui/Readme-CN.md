@@ -444,6 +444,7 @@
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
       - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
+      - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
   - 组件预览<!--component-preview-->
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
