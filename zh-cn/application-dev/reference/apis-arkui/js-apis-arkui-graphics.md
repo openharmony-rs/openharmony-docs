@@ -968,8 +968,8 @@ type Rect = common2D.Rect
 
 | 名称            | 类型    | 只读 | 可选 | 说明                                                |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> **说明：** fillColor只有透明度通道生效其他通道不生效。  |
-| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>   **说明：** strokeColor只有透明度通道生效其他通道不生效。           |
+| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。  |
+| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。 |
 | strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
 
 ### constructor<sup>12+</sup>
