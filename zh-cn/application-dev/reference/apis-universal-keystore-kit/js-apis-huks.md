@@ -1602,7 +1602,7 @@ huks.getKeyItemProperties(keyAlias, emptyOptions)
 
 isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<boolean>) : void
 
-判断密钥是否存在（若密钥不存在则返回HUKS_ERROR_NOT_EXIST），使用callback异步回调。
+判断密钥是否存在（若密钥不存在，则抛出错误码为12000011的异常），使用callback异步回调。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
