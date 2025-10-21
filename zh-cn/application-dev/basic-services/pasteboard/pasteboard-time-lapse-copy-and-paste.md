@@ -222,6 +222,12 @@ void ProcessRecord(OH_UdmfRecord* record)
 
    <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+    // 15. 查询剪贴板内的数据是否变化。
+    uint32_t newChangeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    // 16. 如果newChangeCount == changeCount通知剪贴板获取全量数据，需要等待SyncCallback回调完成再继续退出
+```
+
 7. 使用完毕后需要及时释放相关对象的内存。
    
    ```c
