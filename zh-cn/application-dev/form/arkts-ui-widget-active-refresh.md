@@ -12,9 +12,9 @@
 卡片提供方可以通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口进行主动刷新。推荐与卡片生命周期回调[onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)、[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)、[onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)接口搭配使用。
 
 ### 开发流程
-下面给出示例，实现如下功能：新建卡片后，点击卡片上的刷新按钮，刷新卡片信息。
+卡片添加至桌面后，点击卡片上的刷新按钮，刷新卡片信息。
 1. [创建卡片](./arkts-ui-widget-creation.md)。
-2. 实现卡片布局，通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)，触发onFormEvent回调。
+2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
     ```ts
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
@@ -22,6 +22,7 @@
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
+      // 创建两个待刷新的Text，Text初始内容分别为'Title default'、'Description default'。资源文件定义请参见4. 资源文件
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
 
@@ -42,6 +43,7 @@
           .alignItems(HorizontalAlign.Start)
 
           Row() {
+            // 添加一个按钮，资源文件定义请参见4. 资源文件
             Button() {
               Text($r('app.string.update'))
                 .fontColor('#45A6F4')
@@ -70,7 +72,7 @@
     }
     ```
 
-3. 实现onFormEvent函数，通过updateForm接口去刷新卡片数据。
+3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
     ```ts
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
     import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -105,8 +107,9 @@
       onFormEvent(formId: string, message: string): void {
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
         class FormDataClass {
-          title: string = 'Title Update.'; // 和卡片布局中对应
-          detail: string = 'Description update success.'; // 和卡片布局中对应
+          // 定义Text刷新后的内容，分别为'Title Update'、'Description update success'
+          title: string = 'Title Update.';
+          detail: string = 'Description update success.';
         }
 
         let formData = new FormDataClass();
@@ -137,34 +140,7 @@
     // entry/src/main/resources/zh_CN/element/string.json
     {
       "string": [
-        {
-          "name": "module_desc",
-          "value": "module description"
-        },
-        {
-          "name": "EntryAbility_desc",
-          "value": "description"
-        },
-        {
-          "name": "EntryAbility_label",
-          "value": "label"
-        },
-        {
-          "name": "EntryFormAbility_desc",
-          "value": "form_description"
-        },
-        {
-          "name": "EntryFormAbility_label",
-          "value": "form_label"
-        },
-        {
-          "name": "updatebymessage_desc",
-          "value": "This is a service widget."
-        },
-        {
-          "name": "updatebymessage_display_name",
-          "value": "widget"
-        },
+        // ...
         {
           "name": "default_title",
           "value": "Title default"
