@@ -248,7 +248,7 @@ void ImageRender::PrintProgramLinkError(GLuint program)
 
 5. **将生产的内容写入OHNativeWindowBuffer**。
 
-   1. 从NativeWindow中获取OHNativeWindowBuffer。
+    1. 从NativeWindow中获取OHNativeWindowBuffer。
       <!-- @[nativewindow_request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
 ``` C++
@@ -264,7 +264,7 @@ void ImageRender::PrintProgramLinkError(GLuint program)
     BufferHandle *handle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
 ```
 
-   2. 将生产的内容写入OHNativeWindowBuffer。
+    2. 将生产的内容写入OHNativeWindowBuffer。
       <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
 ``` C++
@@ -337,7 +337,7 @@ void OHNativeRender::DrawGradient(uint32_t* pixel, uint64_t width, uint64_t heig
 }
 ```
 
-   3. 将OHNativeWindowBuffer提交到NativeWindow。
+    3. 将OHNativeWindowBuffer提交到NativeWindow。
       <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
 ``` C++
@@ -351,7 +351,7 @@ void OHNativeRender::DrawGradient(uint32_t* pixel, uint64_t width, uint64_t heig
     }
 ```
 
-4. 在不再需要使用NativeWindow时，需要销毁它。
+    4. 在不再需要使用NativeWindow时，需要销毁它。
       <!-- @[destroy_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
 ``` C++

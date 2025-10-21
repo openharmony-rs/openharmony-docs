@@ -9,8 +9,6 @@
 
 NativeBuffer模块提供**共享内存**功能，支持内存的申请、使用、查询和释放等操作。
 
-NativeBuffer的常见开发场景如下：
-
 NativeBuffer的常见开发场景：通过Native API申请OH_NativeBuffer实例，获取内存属性，将ION内存映射到进程空间。
 
 ## 接口说明

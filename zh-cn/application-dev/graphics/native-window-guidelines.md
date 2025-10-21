@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 场景介绍
 
-NativeWindow是**系统原生窗口接口**，表示图形队列的生产者端。开发者可以通过`NativeWindow`接口进行申请和提交`Buffer`，配置`Buffer`属性信息。
+NativeWindow是**本地平台化窗口**，表示图形队列的生产者端。开发者可以通过`NativeWindow`接口进行申请和提交`Buffer`，配置`Buffer`属性信息。
 
 针对NativeWindow，常见的开发场景如下：
 
@@ -52,7 +52,7 @@ libnative_window.so
     1. 在xxx.ets中添加一个XComponent组件。
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
+``` C++
           XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
             .margin({ bottom: 26 })
             .onLoad((nativeWindowContext) => {
@@ -61,7 +61,7 @@ libnative_window.so
 ```
 
     2. 在 native c++ 层获取 NativeXComponent。
-        <!-- @[get_natvie_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+        <!-- @[get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
 ``` C++
     napi_value exportInstance = nullptr;
@@ -123,7 +123,7 @@ void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
     callback_.DispatchTouchEvent = DispatchTouchEventCB;
 ```
 
-   4. 将OH_NativeXComponent_Callback 注册给 NativeXComponent。
+    4. 将OH_NativeXComponent_Callback 注册给 NativeXComponent。
         <!-- @[register_xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
 ``` C++

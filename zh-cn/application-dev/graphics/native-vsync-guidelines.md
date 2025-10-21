@@ -17,7 +17,7 @@ NativeVSync模块用于获取系统VSync信号，提供OH_NativeVSync实例的�
 
 ## 开发步骤
 
-以下步骤描述如何：1. 使用`NativeVSync`提供的API接口 2. 创建和销毁`OH_NativeVSync`实例 3. 设置VSync回调函数
+以下步骤描述如何使用NativeVSync提供的Native API接口创建和销毁OH_NativeVSync实例，以及如何设置VSync回调函数。
 
 **添加动态链接库**
 
