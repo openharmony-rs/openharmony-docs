@@ -95,7 +95,7 @@
 ```typescript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
