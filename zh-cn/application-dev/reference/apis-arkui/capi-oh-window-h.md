@@ -48,7 +48,8 @@
 | [typedef void (\*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)](#oh_windowmanager_windowsnapshotcallback) | OH_WindowManager_WindowSnapshotCallback | 接收主窗口截图列表的回调接口。 |
 | [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | 获取一个或多个指定windowId的主窗口截图。 |
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | 释放主窗口截图列表的内存。 |
-
+| [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | 锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随鼠标移动。仅支持获焦窗口调用，失焦之后会自动取消锁定。 |
+| [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | 清除窗口设置的鼠标光标指定的模式。 |
 
 ## 函数说明
 
@@ -606,3 +607,56 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_PixelmapNative](capi-struct.md)* snapshotPixelMapList | 窗口截图列表。 |
+
+### OH_WindowManager_LockCursor()
+
+```
+int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)
+```
+
+**描述**
+
+锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随鼠标移动。仅支持获焦窗口调用，失焦之后会自动取消锁定。
+
+**需要权限：** ohos.permission.LOCK_WINDOW_CURSOR
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 创建窗口时的窗口ID。该参数为整数。 |
+| bool isCursorFollowMovement | 设置鼠标光标的锁定模式，若为true，则光标会跟随鼠标移动；若为false，则光标不会跟随鼠标移动。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_NO_PERMISSION，表示没有权限调用该接口。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示不支持该设备。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL，表示窗口管理器服务异常。 |
+
+### OH_WindowManager_UnlockCursor()
+
+```
+int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
+```
+
+**描述**
+
+清除窗口设置的鼠标光标指定的模式。
+
+**需要权限：** ohos.permission.LOCK_WINDOW_CURSOR
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 创建窗口时的窗口ID。该参数为整数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_NO_PERMISSION，表示没有权限调用该接口。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示不支持该设备。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL，表示窗口管理器服务异常。 |
