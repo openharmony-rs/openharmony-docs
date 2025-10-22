@@ -1,4 +1,4 @@
-# XComponent
+# XComponent (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
@@ -21,8 +21,6 @@
 定义XComponent的具体配置参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
