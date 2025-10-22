@@ -121,7 +121,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    // ArkTS侧调用接口
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
-   nativeModule.asyncWork(1024).then((result) => {
+   testNapi.asyncWork(1024).then((result) => {
        hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```
@@ -224,7 +224,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    // ArkTS侧调用接口
    let num1: number = 123;
    let num2: number = 456;
-   nativeModule.asyncWork(num1, num2, (result) => {
+   testNapi.asyncWork(num1, num2, (result) => {
        hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```
