@@ -428,7 +428,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 **描述：**
 
 
-设置动画延迟播放时间。
+设置动画延迟播放时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -438,7 +438,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| int32_t value | 动画延迟播放时间。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。 |
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
