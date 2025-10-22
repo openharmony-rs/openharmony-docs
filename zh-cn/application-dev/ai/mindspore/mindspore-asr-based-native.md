@@ -36,108 +36,116 @@
 
 ### 编写播放音频代码
 
-1. 调用[@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis-media.md)、[@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md)，实现播放音频的功能。
+调用[@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis-media.md)、[@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md)，实现播放音频的功能。
 
-   ```ts
-   // player.ets
-   import { media } from '@kit.MediaKit';
-   import { common } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { audio } from '@kit.AudioKit';
-   import { UIContext } from '@kit.ArkUI';
-   
-   export default class AVPlayerDemo {
-     private isSeek: boolean = false; // 用于区分模式是否支持seek操作。
-     // 注册avplayer回调函数。
-     setAVPlayerCallback(avPlayer: media.AVPlayer) {
-       // seek操作结果回调函数。
-       avPlayer.on('seekDone', (seekDoneTime: number) => {
-         console.info(`MS_LITE_LOG: AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
-       });
-       // error回调监听函数，当avPlayer在操作过程中出现错误时调用reset接口触发重置流程。
-       avPlayer.on('error', (err: BusinessError) => {
-         console.error(`MS_LITE_LOG: Invoke avPlayer failed, code is ${err.code}, message is ${err.message}`);
-         avPlayer.reset(); // 调用reset重置资源，触发idle状态。
-       });
-       // 状态机变化回调函数。
-       avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
-         switch (state) {
-           case 'idle': // 成功调用reset接口后触发该状态机上报。
-             console.info('MS_LITE_LOG: AVPlayer state idle called.');
-             avPlayer.release(); // 调用release接口销毁实例对象。
-             break;
-           case 'initialized': // avplayer 设置播放源后触发该状态上报。
-             console.info('MS_LITE_LOG: AVPlayer state initialized called.');
-             avPlayer.audioRendererInfo = {
-               usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置。
-               rendererFlags: 0 // 音频渲染器标志。
-             };
-             avPlayer.prepare();
-             break;
-           case 'prepared': // prepare调用成功后上报该状态机。
-             console.info('MS_LITE_LOG: AVPlayer state prepared called.');
-             avPlayer.play(); // 调用播放接口开始播放。
-             break;
-           case 'playing': // play成功调用后触发该状态机上报。
-             console.info('MS_LITE_LOG: AVPlayer state playing called.');
-             if (this.isSeek) {
-               console.info('MS_LITE_LOG: AVPlayer start to seek.');
-               avPlayer.seek(0); // 将播放位置移动到音频的开始。
-             } else {
-               // 当播放模式不支持seek操作时继续播放到结尾。
-               console.info('MS_LITE_LOG: AVPlayer wait to play end.');
-             }
-             break;
-           case 'paused': // pause成功调用后触发该状态机上报。
-             console.info('MS_LITE_LOG: AVPlayer state paused called.');
-             setTimeout(() => {
-               console.info('MS_LITE_LOG: AVPlayer paused wait to play again');
-               avPlayer.play(); // 暂停3s后再次调用播放接口开始播放。
-             }, 3000);
-             break;
-           case 'completed': // 播放结束后触发该状态机上报。
-             console.info('MS_LITE_LOG: AVPlayer state completed called.');
-             avPlayer.stop(); // 调用播放结束接口。
-             break;
-           case 'stopped': // stop接口成功调用后触发该状态机上报。
-             console.info('MS_LITE_LOG: AVPlayer state stopped called.');
-             avPlayer.reset(); // 调用reset接口初始化avplayer状态。
-             break;
-           case 'released':
-             console.info('MS_LITE_LOG: AVPlayer state released called.');
-             break;
-           default:
-             console.info('MS_LITE_LOG: AVPlayer state unknown called.');
-             break;
-         }
-       });
-     }
-   
-     // 使用资源管理接口获取音频文件并通过fdSrc属性进行播放。
-     async avPlayerFdSrcDemo() {
-       // 创建avPlayer实例对象。
-       let avPlayer: media.AVPlayer = await media.createAVPlayer();
-       // 创建状态机变化回调函数。
-       this.setAVPlayerCallback(avPlayer);
-       // 通过UIAbilityContext的resourceManager成员的getRawFd接口获取媒体资源播放地址。
-       // 返回类型为{fd,offset,length},fd为HAP包fd地址，offset为媒体资源偏移量，length为播放长度。
-       let context = new UIContext().getHostContext() as common.UIAbilityContext;
-       let fileDescriptor = await context.resourceManager.getRawFd('zh.wav');
-       let avFileDescriptor: media.AVFileDescriptor =
-         { fd: fileDescriptor.fd, offset: fileDescriptor.offset, length: fileDescriptor.length };
-       this.isSeek = true; // 支持seek操作。
-       // 为fdSrc赋值触发initialized状态机上报。
-       avPlayer.fdSrc = avFileDescriptor;
-     }
-   }
-   ```
+<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) -->
+
+```typescript
+// player.ets
+import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { audio } from '@kit.AudioKit';
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'MindSporeLite';
+
+export default class AVPlayerDemo {
+  private isSeek: boolean = false; // 用于区分模式是否支持seek操作。
+  // 注册avplayer回调函数。
+  setAVPlayerCallback(avPlayer: media.AVPlayer) {
+    // seek操作结果回调函数。
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
+      hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
+    });
+    // error回调监听函数，当avPlayer在操作过程中出现错误时调用reset接口触发重置流程。
+    avPlayer.on('error', (err: BusinessError) => {
+      hilog.error(0xFF00, TAG, '%{public}s',
+        `MS_LITE_ERR: Invoke avPlayer failed, code is ${err.code}, message is ${err.message}`);
+      avPlayer.reset(); // 调用reset重置资源，触发idle状态。
+    });
+    // 状态机变化回调函数。
+    avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
+      switch (state) {
+        case 'idle': // 成功调用reset接口后触发该状态机上报。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state idle called.');
+          avPlayer.release(); // 调用release接口销毁实例对象。
+          break;
+        case 'initialized': // avplayer 设置播放源后触发该状态上报。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state initialized called.');
+          avPlayer.audioRendererInfo = {
+            usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置。
+            rendererFlags: 0 // 音频渲染器标志。
+          };
+          avPlayer.prepare();
+          break;
+        case 'prepared': // prepare调用成功后上报该状态机。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state prepared called.');
+          avPlayer.play(); // 调用播放接口开始播放。
+          break;
+        case 'playing': // play成功调用后触发该状态机上报。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state playing called.');
+          if (this.isSeek) {
+            hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer start to seek.');
+            avPlayer.seek(0); // 将播放位置移动到音频的开始。
+          } else {
+            // 当播放模式不支持seek操作时继续播放到结尾。
+            hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer wait to play end.');
+          }
+          break;
+        case 'paused': // pause成功调用后触发该状态机上报。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state paused called.');
+          setTimeout(() => {
+            hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer paused wait to play again');
+            avPlayer.play(); // 暂停3s后再次调用播放接口开始播放。
+          }, 3000);
+          break;
+        case 'completed': // 播放结束后触发该状态机上报。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state completed called.');
+          avPlayer.stop(); // 调用播放结束接口。
+          break;
+        case 'stopped': // stop接口成功调用后触发该状态机上报。
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state stopped called.');
+          avPlayer.reset(); // 调用reset接口初始化avplayer状态。
+          break;
+        case 'released':
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state released called.');
+          break;
+        default:
+          hilog.info(0xFF00, TAG, '%{public}s', 'MS_LITE_LOG: AVPlayer state unknown called.');
+          break;
+      }
+    });
+  }
+
+  // 使用资源管理接口获取音频文件并通过fdSrc属性进行播放。
+  async avPlayerFdSrcDemo() {
+    // 创建avPlayer实例对象。
+    let avPlayer: media.AVPlayer = await media.createAVPlayer();
+    // 创建状态机变化回调函数。
+    this.setAVPlayerCallback(avPlayer);
+    // 通过UIAbilityContext的resourceManager成员的getRawFd接口获取媒体资源播放地址。
+    // 返回类型为{fd,offset,length},fd为HAP包fd地址，offset为媒体资源偏移量，length为播放长度。
+    let context = new UIContext().getHostContext() as common.UIAbilityContext;
+    let fileDescriptor = await context.resourceManager.getRawFd('zh.wav');
+    let avFileDescriptor: media.AVFileDescriptor =
+      { fd: fileDescriptor.fd, offset: fileDescriptor.offset, length: fileDescriptor.length };
+    this.isSeek = true; // 支持seek操作。
+    // 为fdSrc赋值触发initialized状态机上报。
+    avPlayer.fdSrc = avFileDescriptor;
+  }
+}
+```
 
 
 ### 编写识别音频代码
 
-调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，依次对3个模型进行推理，推理代码流程如下。
+在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，依次对3个模型进行推理，推理代码流程如下。
 
-1. 引用对应的头文件。其中三方库librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，AudioFile.h、base64.h来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)。
+1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h、base64.h、base64.cc来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)，下载后置于entry/src/main/cpp/src目录下。
+
+   <!-- @[napi_asr_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    #include "AudioFile.h"
@@ -163,14 +171,24 @@
 
 2. 读取音频文件、模型文件等，转换为buffer数据。
 
+   <!-- @[napi_asr_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
    ```c++
    #define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    #define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
-   
+   ```
+
+   <!-- @[napi_asr_BinBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    using BinBuffer = std::pair<void *, size_t>;
-   
+   ```
+
+   <!-- @[napi_asr_read_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    BinBuffer ReadBinFile(NativeResourceManager *nativeResourceManager, const std::string &modelName)
    {
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
@@ -198,7 +216,8 @@
        return BinBuffer(buffer, fileSize);
    }
    
-   BinBuffer ReadTokens(NativeResourceManager *nativeResourceManager, const std::string &modelName) {
+   BinBuffer ReadTokens(NativeResourceManager *nativeResourceManager, const std::string &modelName)
+   {
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
        if (rawFile == nullptr) {
            LOGE("MS_LITE_ERR: Open model file failed");
@@ -227,6 +246,8 @@
    ```
 
 3. 创建上下文，设置设备类型，并加载模型。
+
+   <!-- @[napi_asr_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void DestroyModelBuffer(void **buffer)
@@ -271,12 +292,18 @@
        return model;
    }
    ```
-   
+
 4. 设置模型输入数据，执行模型推理。
+
+   <!-- @[napi_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    constexpr int K_NUM_PRINT_OF_OUT_DATA = 20;
-   
+   ```
+
+   <!-- @[napi_asr_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    int FillInputTensor(OH_AI_TensorHandle input, const BinBuffer &bin)
    {
        if (OH_AI_TensorGetDataSize(input) != bin.second) {
@@ -286,7 +313,11 @@
        memcpy(data, (const char *)bin.first, OH_AI_TensorGetDataSize(input));
        return OH_AI_STATUS_SUCCESS;
    }
-   
+   ```
+
+   <!-- @[napi_asr_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    // 执行模型推理
    int RunMSLiteModel(OH_AI_ModelHandle model, std::vector<BinBuffer> inputBins)
    {
@@ -332,8 +363,10 @@
        return OH_AI_STATUS_SUCCESS;
    }
    ```
-   
+
 5. 调用以上方法，实现3个模型的推理流程。
+
+   <!-- @[napi_asr_constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    const float NEG_INF = -std::numeric_limits<float>::infinity();
@@ -347,16 +380,26 @@
    const int WHISPER_N_TEXT_CTX = 448;
    const int WHISPER_N_TEXT_STATE = 384;
    constexpr int WHISPER_SAMPLE_RATE = 16000;
-   
-   BinBuffer GetMSOutput(OH_AI_TensorHandle output) {
+   ```
+
+   <!-- @[napi_asr_GetMSOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```
+   BinBuffer GetMSOutput(OH_AI_TensorHandle output)
+   {
        float *outputData = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(output));
        size_t size = OH_AI_TensorGetDataSize(output);
        return {outputData, size};
    }
-   
-   void SuppressTokens(BinBuffer &logits, bool is_initial) {
+   ```
+
+   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
+   void SuppressTokens(BinBuffer &logits, bool isInitial)
+   {
        auto logits_data = static_cast<float *>(logits.first);
-       if (is_initial) {
+       if (isInitial) {
            logits_data[WHISPER_EOT] = NEG_INF;
            logits_data[WHISPER_BLANK] = NEG_INF;
        }
@@ -367,11 +410,16 @@
        logits_data[WHISPER_NO_SPEECH] = NEG_INF;
        logits_data[WHISPER_TRANSLATE] = NEG_INF;
    }
-   
+   ```
+
+   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
+
+   ```c++
    std::vector<int> LoopPredict(const OH_AI_ModelHandle model, const BinBuffer &n_layer_cross_k,
                                 const BinBuffer &n_layer_cross_v, const BinBuffer &logits_init,
                                 BinBuffer &out_n_layer_self_k_cache, BinBuffer &out_n_layer_self_v_cache,
-                                const BinBuffer &data_embedding, const int loop, const int offset_init) {
+                                const BinBuffer &data_embedding, const int loop, const int offset_init)
+   {
        BinBuffer logits{nullptr, 51865 * sizeof(float)};
        logits.first = malloc(logits.second);
        if (!logits.first) {
@@ -443,7 +491,8 @@
        return output_token;
    }
    
-   std::vector<std::string> ProcessDataLines(const BinBuffer token_txt) {
+   std::vector<std::string> ProcessDataLines(const BinBuffer token_txt)
+   {
        void *data_ptr = token_txt.first;
        size_t data_size = token_txt.second;
        std::vector<std::string> tokens;
@@ -596,8 +645,8 @@
        return out_data;
    }
    ```
-   
-7. 编写CMake脚本，链接MindSpore Lite动态库。
+
+6. 编写CMake脚本，链接MindSpore Lite动态库。
 
    ```c++
    # the minimum version of CMake.
@@ -641,6 +690,8 @@
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
+   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/index.d.ts) -->
+
    ```ts
    export const runDemo: (a: Object) => string;
    ```
@@ -649,15 +700,10 @@
 
    ```json
    {
-     "name": "entry",
+     "name": "libentry.so",
+     "types": "./Index.d.ts",
      "version": "1.0.0",
-     "description": "MindSpore Lite inference module",
-     "main": "",
-     "author": "",
-     "license": "",
-     "dependencies": {
-       "libentry.so": "file:./src/main/cpp/types/libentry"
-     }
+     "description": "MindSpore Lite inference module."
    }
    ```
 
@@ -665,12 +711,16 @@
 
 在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
 
+<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) -->
+
 ```ts
 // Index.ets
-
 import msliteNapi from 'libentry.so'
 import AVPlayerDemo from './player';
 import { transverter, TransverterType, TransverterLanguage } from "@nutpi/chinese_transverter"
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'MindSporeLite';
 
 @Entry
 @Component
@@ -699,7 +749,7 @@ struct Index {
         .height('5%')
         .onClick(async () =>{
           // 通过实例调用类中的函数
-          console.info('MS_LITE_LOG: begin to play wav.');
+          hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: begin to play wav.`);
           let myClass = new AVPlayerDemo();
           myClass.avPlayerFdSrcDemo();
         })
@@ -718,19 +768,20 @@ struct Index {
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
           if (resMgr === undefined || resMgr === null) {
-            console.error('MS_LITE_ERR: get resourceManager failed.');
+            hilog.error(0xFF00, TAG, '%{public}s', `MS_LITE_ERR: get resourceManager failed.`);
             return
           }
           // 调用封装的runDemo函数
-          console.info('MS_LITE_LOG: *** Start MSLite Demo ***');
+          hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: *** Start MSLite Demo ***`);
           let output = msliteNapi.runDemo(resMgr);
           if (output === null || output.length === 0) {
-            console.error('MS_LITE_ERR: runDemo failed.')
+            hilog.error(0xFF00, TAG, '%{public}s', `MS_LITE_ERR: runDemo failed.`);
             return
           }
-          console.info('MS_LITE_LOG: output length = ', output.length, ';value = ', output.slice(0, 20));
+          hilog.info(0xFF00, TAG, '%{public}s',
+            `MS_LITE_LOG: output length = ${output.length}; value = ${output.slice(0, 20)}`);
           this.content = output;
-          console.info('MS_LITE_LOG: *** Finished MSLite Demo ***');
+          hilog.info(0xFF00, TAG, '%{public}s', `MS_LITE_LOG: *** Finished MSLite Demo ***`);
         })
 
         // 显示识别内容
@@ -812,5 +863,5 @@ struct Index {
 
 针对使用MindSpore Lite进行语音识别应用的开发，有以下相关实例可供参考：
 
-- [基于Native接口的MindSpore Lite ASR应用开发（C/C++）（API14）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/AI/MindSporeLiteCDemoASR)
+- [基于Native接口的MindSpore Lite ASR应用开发（C/C++）（API14）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
 
