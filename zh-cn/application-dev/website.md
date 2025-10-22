@@ -5687,9 +5687,11 @@
     - Notification Kit（用户通知服务）<!--notification-api-->
       - ArkTS API<!--notification-arkts-->
         - [@ohos.notificationManager (NotificationManager模块)](reference/apis-notification-kit/js-apis-notificationManager.md)
+        - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md)
         <!--Del-->
         - [@ohos.notificationManager (NotificationManager模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationManager-sys.md)
         - [@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)
+        - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription-sys.md)
         <!--DelEnd-->
         - notification<!--notification-->
           - [NotificationActionButton](reference/apis-notification-kit/js-apis-inner-notification-notificationActionButton.md)
@@ -5702,6 +5704,7 @@
           - [NotificationSlot](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot.md)
           - [NotificationTemplate](reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)
           - [NotificationUserInput](reference/apis-notification-kit/js-apis-inner-notification-notificationUserInput.md)
+          - [NotificationExtensionSubscriptionInfo](reference/apis-notification-kit/js-apis-inner-notificationExtensionSubscriptionInfo.md)
           <!--Del-->
           - [NotificationContent (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationContent-sys.md)
           - [NotificationFlags (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags-sys.md)
