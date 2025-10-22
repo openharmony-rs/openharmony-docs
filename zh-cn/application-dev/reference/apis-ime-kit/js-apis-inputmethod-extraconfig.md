@@ -39,4 +39,4 @@ type CustomValueType = number | string | boolean
 
 | 名称   |类型    |只读    |可选    |说明    |
 |---------|----------|----------|--------|--------|
-| customSettings    |Record\<string, [CustomValueType](#customvaluetype)>\    | 否   | 否    |输入法扩展信息。|
+| customSettings    |Record\<string, [CustomValueType](#customvaluetype)>    | 否   | 否    |输入法扩展信息。|
