@@ -587,6 +587,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
     
     Text('no flexShrink')
+      .flexShrink(0)
       .width(200)
       .height(100)
       .backgroundColor('#D2B48C')
@@ -600,6 +601,10 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   ```
 
   ![zh-cn_image_0000001562820813](figures/zh-cn_image_0000001562820813.png)
+
+  父容器宽度400vp，三个子元素原始宽度为200vp，左右padding为20vp，父容器给子元素的布局空间为380vp，超出父容器空间220vp。
+  
+  将第一个元素和第三个元素以3:2的压缩比例进行压缩，直至不再超出父容器提供的布局空间。第一个元素为200vp - (220vp / 3) * 2=68vp，第三个元素为200vp - (220vp / 5) * 2=112vp。
 
 
 ## 场景示例

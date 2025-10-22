@@ -166,7 +166,7 @@ struct MediaQueryExample {
 
   // 当满足媒体查询条件时，触发回调
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
       this.color = '#FFD700';
       this.text = 'Landscape';
     } else {
@@ -230,7 +230,7 @@ struct MediaQueryExample {
   listener:mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 当设备横屏时条件成立
 
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) { // 当满足媒体查询条件时，触发回调
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
       this.color = '#FFD700';
       this.text = 'Landscape';
     } else {
