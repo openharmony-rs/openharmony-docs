@@ -365,6 +365,18 @@
 
 **起始版本**：8
 
+## ohos.permission.FORCE_FACTORY_RESET
+
+允许调用强制出厂接口。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：23
+
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
 允许拉起升级服务对其他设备做辅助、协同升级。
