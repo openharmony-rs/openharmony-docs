@@ -360,10 +360,10 @@ on(type: 'serviceChange', callback: Callback&lt;ServiceChangeType&gt;): void
 
 **参数：**
 
-| 参数名     | 类型                              | 必填 | 说明                                          |
-| -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     | string                           | 是   | 系统服务变更事件，固定取值为'serviceChange'，表示服务变更事件。 |
-| callback | Callback\<[ServiceChangeType](#servicechangetype)\> | 是   | 服务状态变更对应的处理。|
+| 参数名     | 类型                              | 只读 | 可选 | 说明                                          |
+| -------- | -------------------------------- |----|----| ------------------------------------------- |
+| type     | string                           | 否  | 否  | 系统服务变更事件，固定取值为'serviceChange'，表示服务变更事件。 |
+| callback | Callback\<[ServiceChangeType](#servicechangetype)\> | 否  | 否  | 服务状态变更对应的处理。|
 
 **错误码：**
 
@@ -432,10 +432,10 @@ setParameter(key: string, value: string): Promise\<void\>
 
 **参数：**
 
-| 参数名     | 类型                              | 必填 | 说明                                          |
-| -------- | -------------------------------- | --- | ------------------------------------------- |
-| key     | string                           | 是   | 键，对应的是唤醒词的设置，当前仅支持'wakeup_phrase'。 |
-| value     | string                           | 是   | 值。 |
+| 参数名     | 类型                              | 只读 | 可选 | 说明                                          |
+| -------- | -------------------------------- |----|----| ------------------------------------------- |
+| key     | string                           | 否  | 否  | 键，对应的是唤醒词的设置，当前仅支持'wakeup_phrase'。 |
+| value     | string                           | 否  | 否  | 值。 |
 
 **返回值：**
 
@@ -933,7 +933,7 @@ if (wakeupManager != null) {
 | 名称   | 类型                            | 只读 | 可选 | 说明       |
 | ------ | ----------------------------- |----|----| ---------- |
 | eventId | [WakeupIntelligentVoiceEventType](#wakeupintelligentvoiceeventtype) | 否  | 否  | 唤醒智能语音事件类型。 |
-| isSuccess | boolean | 否  | 否  | 是否唤醒成功，false为唤醒失败，true为唤醒成功。 |
+| isSuccess | boolean | 否  | 否  | 是否唤醒成功，true表示唤醒成功，false表示唤醒失败 |
 | context | string | 否  | 否  | 描述唤醒事件上下文。 |
 
 ## EnrollIntelligentVoiceEngine
@@ -952,9 +952,9 @@ getSupportedRegions(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **参数：**
 
-| 参数名     | 类型                              | 只读 | 可选 | 说明                                          |
-| -------- | -------------------------------- |----|----| ------------------------------------------- |
-| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;         | 否  | 否  | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
+| 参数名     | 类型                              | 必填 | 说明                                          |
+| -------- | -------------------------------- | --- | ------------------------------------------- |
+| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;         | 是   | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
 
 **错误码：**
 
@@ -1899,9 +1899,9 @@ getSupportedRegions(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 参数名     | 类型                              | 只读 | 可选 | 说明                                          |
-| -------- | -------------------------------- |----|----| ------------------------------------------- |
-| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;        | 否  | 否  | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
+| 参数名     | 类型                              | 必填 | 说明                                          |
+| -------- | -------------------------------- | --- | ------------------------------------------- |
+| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;                           | 是   | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
 
 **错误码：**
 
