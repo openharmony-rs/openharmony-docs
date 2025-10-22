@@ -76,7 +76,7 @@ struct WebHeightPage {
 
       }
     }
-    .title ("Title bar")
+    .title("Title bar")
   }
 }
 ```
