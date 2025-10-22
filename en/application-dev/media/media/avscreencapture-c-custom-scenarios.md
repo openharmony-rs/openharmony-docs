@@ -1,4 +1,4 @@
-# AVScreenCapture Custom Scenarios
+# Using AVScreenCapture in Custom Scenarios
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -9,11 +9,11 @@
 
 AVScreenCapture enables applications to implement scenario-based custom configurations. Refer to the guidelines below for specific setup instructions.
 
-## Screen Capture Strategies
+## Setting Screen Capture Strategies
 
-### Cellular Call Settings
+### Cellular Call Handling
 
-Cellular call settings are supported starting from API version 20.
+Starting from API version 20, cellular call handling is supported.
 
 Call [OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall) to set whether screen capture continues during cellular calls.
 
@@ -23,9 +23,9 @@ OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-### B-Frame Encoding
+### B-Frame Encoding Control
 
-B-frame encoding is supported starting from API version 20.
+Starting from API version 20, you can set whether to use B-frame encoding.
 
 Call [OH_AVScreenCapture_StrategyForBFramesEncoding](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforbframesencoding) to enable B-frame encoding, which helps reduce the size of captured files.
 
@@ -35,9 +35,9 @@ OH_AVScreenCapture_StrategyForBFramesEncoding(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-### Screen Capture Picker
+### Screen Capture Picker Control
 
-The screen capture picker is supported starting from API version 20.
+Starting from API version 20, you can set whether the screen capture picker should display.
 
 Call [OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup) to set whether to display the screen capture picker.
 
@@ -47,9 +47,9 @@ OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-## Rotation Adaptation
+## Setting Rotation Adaptation
 
-Rotation adaptation is supported starting from API version 20.
+Starting from API version 20, you can set rotation adaptation.
 
 Call [OH_AVScreenCapture_StrategyForCanvasFollowRotation](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforcanvasfollowrotation) to set whether screen capture automatically follows screen rotation.
 
@@ -62,12 +62,11 @@ OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-## Microphone Control
+## Setting Microphone Control
 
 Call [OH_AVScreenCapture_SetMicrophoneEnabled](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmicrophoneenabled) to enable or disable the microphone during screen capture. The microphone is enabled by default.
 
 > **NOTE**
->
 > To use the microphone during screen capture, you must:
 >
 > - Configure the ohos.permission.MICROPHONE permission. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
@@ -78,9 +77,10 @@ bool isMic = true;
 OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 ```
 
-## Privacy Settings
+## Setting Privacy Mode
 
 Starting from API version 20, you can call [OH_AVScreenCapture_StrategyForPrivacyMaskMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforprivacymaskmode) to set the privacy window masking mode for screen capture.
+
 
 ```c++
 // The value 0 means that the full-screen masking mode is used, and 1 means that the window masking mode is used. The default value is full-screen masking mode.
@@ -90,7 +90,7 @@ OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 ```
 
-Starting from API version 20, you can call [OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode) to set windows exempt from privacy masking during screen capture. Currently, you must pass all privacy child window and main window IDs. Pass an empty array to cancel privacy mode exemptions.
+Starting from API version 12, you can call [OH_AVScreenCapture_SkipPrivacyMode](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_skipprivacymode) to set windows exempt from privacy masking during screen capture. Currently, you must pass all privacy child window and main window IDs. Pass an empty array to cancel privacy mode exemptions.
 
 ```c++
 std::vector<int> windowIdsSkipPrivacy = {};
@@ -98,9 +98,9 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, &windowIdsSkipPrivacy[0],
     static_cast<int32_t>(windowIdsSkipPrivacy.size()));
 ```
 
-## Capture Area
+## Setting the Capture Area
 
-Capture area settings are supported starting from API version 20.
+Starting from API version 20, you can configure the capture area.
 
 Call [OH_AVScreenCapture_SetCaptureArea](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea) to set the coordinates and size of the area to capture. The example below creates a 100 px * 100 px rectangle area starting at (0, 0). This API can be called both before and after capture starts.
 
@@ -114,9 +114,9 @@ uint64_t regionDisplayId = 0; // ID of the display where the rectangle area is l
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 ```
 
-## Cursor Display
+## Setting Cursor Visibility
 
-Setting cursor visibility during capture is supported starting from API version 15.
+Starting from API version 15, you can set cursor visibility during capture.
 
 Call [OH_AVScreenCapture_ShowCursor](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_showcursor) to set cursor visibility during capture. This API can be called both before and after capture starts.
 
@@ -124,9 +124,9 @@ Call [OH_AVScreenCapture_ShowCursor](../../reference/apis-media-kit/capi-native-
 OH_AVScreenCapture_ShowCursor(capture, false);
 ```
 
-## Maximum Frame Rate
+## Setting the Maximum Frame Rate
 
-The maximum frame rate setting is supported starting from API version 14.
+Starting from API version 14, you can set the maximum frame rate.
 
 Call [OH_AVScreenCapture_SetMaxVideoFrameRate](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setmaxvideoframerate) to set the maximum frame rate for screen capture. This API must be called after capture starts.
 
@@ -134,7 +134,7 @@ Call [OH_AVScreenCapture_SetMaxVideoFrameRate](../../reference/apis-media-kit/ca
 OH_AVScreenCapture_SetMaxVideoFrameRate(capture, 20);
 ```
 
-## Screen Resolution
+## Setting Screen Resolution
 
 Call [OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas) to adjust the screen capture resolution. This API must be called after capture starts, and resolution values are constrained to specific ranges.
 
@@ -142,7 +142,7 @@ Call [OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-nativ
 OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);
 ```
 
-## Content Filtering
+## Setting Content Filtering
 
 Filter specific audio and windows during screen capture.
 

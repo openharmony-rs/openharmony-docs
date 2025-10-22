@@ -92,7 +92,7 @@ import { ChildProcess } from '@kit.AbilityKit';
 
 export default class DemoProcess extends ChildProcess {
   onStart() {
-    console.info('DemoProcess OnStart() called');
+    console.log("DemoProcess OnStart() called");
   }
 }
 ```
@@ -109,12 +109,12 @@ try {
   DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
   childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK)
     .then((data) => {
-      console.info(`startChildProcess success, pid: ${data}`);
+      console.log(`startChildProcess success, pid: ${data}`);
     }, (err: BusinessError) => {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     })
 } catch (err) {
-  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}`);
 }
 ```
 
@@ -162,7 +162,7 @@ import { ChildProcess } from '@kit.AbilityKit';
 
 export default class DemoProcess extends ChildProcess {
   onStart() {
-    console.info('DemoProcess OnStart() called');
+    console.log("DemoProcess OnStart() called");
   }
 }
 ```
@@ -179,13 +179,13 @@ try {
   DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
   childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK, (err, data) => {
     if (data) {
-      console.info(`startChildProcess success, pid: ${data}`);
+      console.log(`startChildProcess success, pid: ${data}`);
     } else {
       console.error(`startChildProcess error, errorCode: ${err.code}`);
     }
   });
 } catch (err) {
-  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}`);
 }
 ```
 

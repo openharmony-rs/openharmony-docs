@@ -62,7 +62,7 @@ import { InsightIntentLink, LinkParamCategory } from '@kit.AbilityKit';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+  icon: $r('app.media.app_icon'),
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   uri: 'https://www.example.com/music/',
@@ -307,7 +307,7 @@ export class ClassForFuncDemo {
   intentVersion: '1.0.1',
   displayName: 'Query weather',
   displayDescription: 'Display weather information',
-  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+  icon: $r('app.media.app_icon'),
   llmDescription: 'Get weather of an location',
   parameters: {
     'schema': 'http://json-schema.org/draft-07/schema#',
@@ -369,7 +369,7 @@ const LOG_TAG: string = 'testTag-EntryIntent';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+  icon: $r('app.media.app_icon'),
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   abilityName: 'EntryAbility',
@@ -455,7 +455,7 @@ import { insightIntent, Want, InsightIntentForm } from '@kit.AbilityKit';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+  icon: $r('app.media.app_icon'),
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   parameters: {

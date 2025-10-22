@@ -1262,22 +1262,6 @@ Check whether the Want carries a DLP file.
 
 **Error Message**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 The main window of this ability of this context does not exits.
 
 **Description**
@@ -1967,32 +1951,6 @@ No action can be taken. Cancellation is not supported since the current process 
 ## 10110000 Incorrect Declaration for Decorator Parameters
 
 **Error Message**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Decorator parameters must be compile-time constants.
 
