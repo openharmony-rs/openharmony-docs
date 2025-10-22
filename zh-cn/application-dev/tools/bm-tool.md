@@ -69,7 +69,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 | -p | 可选参数，指定HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认值为覆盖安装。 |
 | -s | 根据场景判断，安装应用间HSP时为必选参数，其他场景为可选参数。安装应用间共享库， 每个路径目录下只能存在一个同包名的HSP。 |
-| -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为5s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
+| -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 
 
@@ -2396,8 +2396,8 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 
 **处理步骤**
 
-1. 重新签名，保证应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->任意一个与预置应用的一致。
-2. 修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的不一致。
+方法一：重新签名，保证应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->任意一个与预置应用的一致。
+方法二：修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的不一致。
 
 ### 9568418 应用设置了卸载处置规则，不允许直接卸载
 **错误信息**
