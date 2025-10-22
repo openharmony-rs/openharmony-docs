@@ -639,7 +639,7 @@ When the [bundleType](../quick-start/app-configuration-file.md#tags-in-the-confi
 
 1. There are more than two [HSP files](../quick-start/in-app-hsp.md). For example, as shown in the following figure, when DevEco Studio is used to build an app, the project contains two HSP files **library** and **library1**. In this case, the APP file fails to be packed.
 
-![alt text](figures/zh_cn_packing_tool_image_10012017_01.png)
+![alt text](figures/en_us_packing_tool_image_10012017_01.png)
 
 2. **dependencies** is configured in **module.json5** of the HSP file.
 
