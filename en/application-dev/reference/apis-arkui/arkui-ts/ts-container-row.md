@@ -1,10 +1,18 @@
 # Row
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @camlostshi-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The **Row** component lays out child components horizontally.
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+>  If the width or height of the row is not set, the row adapts to the size of the child component in the main axis or cross axis direction.
 
 
 ## Child Components
@@ -19,6 +27,10 @@ Row(options?: RowOptions)
 
 Creates a horizontal linear layout container. You can set the spacing between child components, which can be of type number or string.
 
+>  **NOTE**
+>
+>  When multiple components are nested on a complex page, extra overheads will be generated if the number of nested layout components is too large or the nesting depth is too deep. You are advised to remove redundant nodes, reduce layout calculation by using layout boundaries, and properly use rendering control syntax and layout component methods to optimize performance. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -29,16 +41,16 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions](#rowoptions14) | No| Spacing between child components.|
+| options | [RowOptions<sup>18+</sup>](#rowoptions18) | No| Spacing between child components.|
 
-### Row<sup>16+</sup>
+### Row<sup>18+</sup>
 Row(options?: RowOptions | RowOptionsV2)
 
 Creates a horizontal linear layout container. You can set the spacing between child components, which can be of type number, string, or Resource.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 16.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,35 +58,39 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions](#rowoptions14)  \| [RowOptionsV2](#rowoptionsv216) | No| Spacing between child components.|
+| options | [RowOptions](#rowoptions18)  \| [RowOptionsV2](#rowoptionsv218) | No| Spacing between child components.|
 
-## RowOptions<sup>14+</sup>
+## RowOptions<sup>18+</sup>
 
-Defines the spacing properties for child components used for constructing a **Row** component.
+Sets the spacing between child components of the **Row** component.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 14.
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
-**Atomic service API**: This API can be used in atomic services since API version 14.
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| space | number \| string | No| Spacing between child components.<br>Since API version 9, this parameter does not take effect when it is set to a negative number or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround** or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.|
-
-## RowOptionsV2<sup>16+</sup>
-
-Defines the spacing properties for child components used for constructing a **Row** component.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 16.
-
-**Atomic service API**: This API can be used in atomic services since API version 16.
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| space | [SpaceType](ts-container-column.md#spacetype16) | No| Horizontal spacing between two adjacent child components.<br>This parameter does not take effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| space<sup>7+</sup> | string \| number | No| Yes| Spacing between child components.<br>Since API version 9, this parameter does not take effect when it is set to a negative number or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround** or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+
+## RowOptionsV2<sup>18+</sup>
+
+Defines the spacing between child components of the **Row** component. The spacing type SpaceType can be number, string, or Resource.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| space | [SpaceType](ts-container-column.md#spacetype18) | No| Yes| Horizontal spacing between two adjacent child components.<br>This parameter does not take effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**, in vp<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
 
 ## Attributes
 
@@ -118,13 +134,13 @@ Sets the alignment mode of the child components in the horizontal direction.
 
 >  **NOTE**
 >
->  During row layout, child components do not shrink if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for them. In this case, the total size of the child components on the main axis can exceed the size of the container on the main axis.
+>  If [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for child components in the row layout, the child components are not compressed by default. That is, the sum of the main axis sizes of all child components can exceed the main axis size of the container. In this case, FlexAlign.Center and FlexAlign.End do not take effect.
 
 ### reverse<sup>12+</sup>
 
 reverse(isReversed: Optional\<boolean\>)
 
-Sets whether to reverse the arrangement of child components on the main axis (horizontal direction).
+Sets whether to reverse the horizontal arrangement of child components.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -136,7 +152,7 @@ Sets whether to reverse the arrangement of child components on the main axis (ho
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | Yes  | Whether whether to reverse the arrangement of child components on the main axis (horizontal direction).<br>Default value: **true**|
+| isReversed  | Optional\<boolean\> | Yes  | Whether to reverse the horizontal arrangement of child components.<br>Default value: true. If this parameter is set to true, child components are arranged in reverse order in the horizontal direction. If this parameter is set to false, child components are arranged in normal order in the horizontal direction.|
 
 >  **NOTE**
 >

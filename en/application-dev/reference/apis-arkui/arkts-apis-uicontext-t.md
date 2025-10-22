@@ -75,7 +75,7 @@ Defines a callback for gesture events in ArkTS.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-settings.md#gestureevent)| Yes| Information about the gesture event that triggers the callback.|
+| event | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent)| Yes| Information about the gesture event that triggers the callback.|
 | node | [FrameNode](js-apis-arkui-frameNode.md) | No| Component bound to the gesture event.|
 
 ## NodeIdentity<sup>20+</sup>
