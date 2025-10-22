@@ -10316,6 +10316,7 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumType
 
