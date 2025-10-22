@@ -15,7 +15,7 @@
 **示例：**
 
 ```ts
-<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
 ```
 
 ![custom-component-custom-layout](figures/custom-component-custom-layout.png)
