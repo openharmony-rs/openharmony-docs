@@ -141,9 +141,3 @@ struct Index {
 ```
 
 ![XComponentNodeSample](figures/xcomponent_node.jpg)
-
-<!--Del-->
-> **NOTE**
->
-> The native layer compilation output in this example references the [OpenGL Triangular Pyramid (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL) dynamic library. To build the complete example, download that project and copy all files from its **cpp** directory to your current project's **cpp** directory.
-<!--DelEnd-->
