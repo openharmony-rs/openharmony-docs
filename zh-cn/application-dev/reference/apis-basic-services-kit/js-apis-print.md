@@ -26,7 +26,7 @@ import { print } from '@kit.BasicServicesKit';
 
 on(type: 'block', callback: Callback&lt;void&gt;): void
 
-注册打印任务阻塞的监听，使用callback回调。
+注册打印任务阻塞的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -36,7 +36,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：block，<br/>表示打印任务阻塞。 |
-| callback | Callback&lt;void&gt; | 是 | 打印任务阻塞的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务阻塞。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
-注册打印任务成功的监听，使用callback回调。
+注册打印任务成功的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -79,7 +79,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：succeed，<br/>表示打印任务成功。 |
-| callback | Callback&lt;void&gt; | 是 | 打印任务成功的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务成功。 |
 
 **错误码：**
 
@@ -112,7 +112,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'fail', callback: Callback&lt;void&gt;): void
 
-注册打印任务失败的监听，使用callback回调。
+注册打印任务失败的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -122,7 +122,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：fail，<br/>表示打印任务失败。 |
-| callback | Callback&lt;void&gt; | 是 | 打印任务失败的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务失败。 |
 
 **错误码：**
 
@@ -155,7 +155,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
-注册打印任务被取消的监听，使用callback回调。
+注册打印任务被取消的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -165,7 +165,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：cancel，<br/>表示打印任务被取消。 |
-| callback | Callback&lt;void&gt; | 是 | 打印任务被取消的回调。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务被取消。 |
 
 **错误码：**
 
@@ -198,7 +198,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'block', callback?: Callback&lt;void&gt;): void
 
-取消打印任务阻塞的监听。
+取消打印任务阻塞的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -208,7 +208,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：block，<br/>表示打印任务阻塞。 |
-| callback | Callback&lt;void&gt; | 否 | 被取消的相应状态监听回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。 |
 
 **错误码：**
 
@@ -241,7 +241,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
-取消打印任务成功的监听。
+取消打印任务成功的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -251,7 +251,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：succeed，<br/>表示打印任务成功。 |
-| callback | Callback&lt;void&gt; | 否 | 被取消的相应状态监听回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务成功事件订阅。 |
 
 **错误码：**
 
@@ -284,7 +284,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
-取消打印任务失败的监听。
+取消打印任务失败的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -294,7 +294,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：fail，<br/>表示打印任务失败。 |
-| callback | Callback&lt;void&gt; | 否 | 被取消的相应状态监听回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务失败事件订阅。 |
 
 **错误码：**
 
@@ -327,7 +327,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
-取消打印任务被取消的监听。
+取消打印任务被取消的监听，使用callback异步回调。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -337,7 +337,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：cancel，<br/>表示打印任务被取消。 |
-| callback | Callback&lt;void&gt; | 否 | 被取消的相应状态监听回调。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务被取消事件订阅。 |
 
 **错误码：**
 
