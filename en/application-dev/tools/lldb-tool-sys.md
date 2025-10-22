@@ -1,39 +1,47 @@
-# LLDB
-## Overview
-Low Level Debugger (LLDB) is a next-generation, high-performance debugger. Provides functions such as breakpoint setting, variable viewing and modification, memory operation, thread control, expression calculation, and stack backtracking, and supports cross-platform and plug-in extension.
+# LLDB (for System Applications Only)
 
-The LLDB tool in OpenHarmony is evolved based on [llvm15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4). It is the default debugger of the HUAWEI DevEco Studio toolchain and supports debugging of C and C++ applications.
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @Maxi_241437-->
+<!--Designer: @da_wei_li11-->
+<!--Tester: @chenhliang-->
+<!--Adviser: @fang-jinxu-->
+
+## Overview
+Low Level Debugger (LLDB) is a next-generation, high-performance debugger. It can be used to set breakpoints, view and modify variables, perform memory operations, control threads, calculate expressions, backtrack stacks, and support cross-platform and plugin extension.
+
+Developed based on the [llvm15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4), LLDB is the default debugger in HUAWEI DevEco Studio and supports debugging of C and C++ applications.
 
 For details, visit the [LLDB official website](https://lldb.llvm.org/).
 
-## **Features**
+## Features
 
-The LLDB debugger has the following features:
-- **Powerful debugging functions**: Breakpoint setting, variable viewing and modification, memory operations, thread control, expression calculation, and stack backtracking are supported.
-- **Cross-platform support**: Windows, Linux x86_64, OHOS, and Mac platforms.
-- **Plugin scalability**: Plugins can be extended for developers to customize based on requirements.
+LLDB has the following features:
+- **Powerful debugging functionalities**: LLDB supports breakpoint setting, variable viewing and modification, memory operation, thread control, expression calculation, and stack backtracking.
+- **Cross-platform support**: LLDB supports Windows, Linux x86_64, ohos, and macOS.
+- **Plugin extension**: LLDB supports plugin extension, which allows you to customize plugins as required.
 
 ## How to Obtain
 Obtain the OpenHarmony SDK from the following website: http://ci.openharmony.cn/workbench/cicd/dailybuild
 
 Find LLDB in the **\ohos-sdk\[system]\native\llvm** directory of the SDK, where **system** can be **windows**, **linux**, or **darwin**.
 
-- Path of the executable file of the lldb client (Windows):
+- Path of the LLDB client executable file on Windows:
     ```bash
     \ohos-sdk\windows\native\llvm\bin\lldb.exe
     ```
 
-## Functions
+## Functionalities
 
-The following lists some functions supported by LLDB. For more commands, see [LLDB Usage Guide](https://gitcode.com/openharmony/third_party_llvm-project/blob/master/lldb/README.md) and [LLDB official manual](https://lldb.llvm.org/use/map.html#). The LLDB tools on the Windows, Linux x86_64, and Mac platforms are slightly different.
+The following lists some functionalities supported by LLDB. For more commands, see [Introduction to LLDB](https://gitcode.com/openharmony/third_party_llvm-project/blob/master/lldb/README.md) and [GDB to LLDB command map](https://lldb.llvm.org/use/map.html#). LLDB differs slightly on Windows, Linux x86_64, and macOS.
 
 - Logging
 
 ```bash
-# Recording Complete Debugging Sessions to a File
+# Record the complete debugging session to a file.
 (lldb) log enable -F -T -p -f d:\lldb.log lldb all
 (lldb) log enable -F -T -p -f d:\lldbgdbremote.log gdb-remote all
-# Example: Filtering Out Only Breakpoint Events
+# Example: Filter and record only breakpoint events.
 (lldb) log enable -f /tmp/breakpoints.log lldb break
 # View the current log configuration.
 (lldb) log list
@@ -42,30 +50,30 @@ The following lists some functions supported by LLDB. For more commands, see [LL
 - Breakpoint management
 
 ```bash
-# Setting Function Breakpoints (Fuzzy Match Supported)
+# Set a function breakpoint (fuzzy match is supported).
 (lldb) breakpoint -f main.cpp -l 266
-# Sets a conditional breakpoint (triggered when x is greater than 100).
+# Set a conditional breakpoint, which is triggered when x is greater than or equal to 100.
 (lldb) breakpoint set -f main.cpp -l 20 -c '(x > 100)'
 # List all the breakpoints.
 (lldb) breakpoint list
-# Temporarily Disabling Breakpoints
+# Disable the breakpoint temporarily.
 (lldb) breakpoint disable 1
 ```
 
 - Watchpoint management
 
 ```bash
-# Monitoring variable changes
+# Monitor variable changes.
 (lldb) watchpoint set variable global_var
-# Monitoring Memory Address Changes
+# Monitor memory address changes.
 (lldb) watchpoint set expression -w write -- 0x7ffeefbff5d8
-# Viewing the Watchpoint List
+# View watchpoint list.
 (lldb) watchpoint list
 ```
 - Expression processing
 
 ```bash
-# Create variable
+# Create a variable.
 (lldb)print int $value1 = 7
 (lldb)expression int $value2 = 7
 # Print a variable value.
@@ -73,46 +81,46 @@ The following lists some functions supported by LLDB. For more commands, see [LL
 (lldb) expression $value2
 # Calculate a variable.
 (lldb) expression $value1 * 3
-# Formatted output (hexadecimal display)
+# Format the output in hexadecimal.
 (lldb) p/x 12345
 ```
 
 - Viewing variables
 
 ```bash
-# Views the initialized local variables of the current frame.
+# View initialized local variables of the current frame.
 (lldb) frame variable
-# Viewing Global and Static Variables
+# View global and static variables.
 (lldb) frame variable -g
-# Check the register.
+# View registers.
 (lldb) register read
 ```
 
 - Process/Thread management
 
 ```bash
-# Displaying Thread Backtracking (All Threads)
+# Display thread backtraces (of all threads).
 (lldb) thread backtrace all
-# Step over
+# Step over.
 (lldb) thread step-over (or next)
-# Jump out of the currently selected frame (step out)
+# Step out of the current frame.
 (lldb) thread step-out (or finish)
 ```
 
 - Assembly processing
 
 ```bash
-# Check the register.
+# View registers.
 (lldb) register read
-# Modify the PC register.
+# Change the PC register.
 (lldb) register write pc `$pc+8`
-# Check the assembly instruction of the current stack frame.
+# View the assembly instructions of the current stack frame.
 (lldb) disassemble --frame (or dis -f)
-# Check the assembly instruction of the main function.
+# View the assembly instructions of the main function.
 (lldb) disassemble -name main
-# The assembly executes the program step by step (without entering the function body).
+# Single-step through assembly instructions and step over function calls.
 (lldb) nexti
-# Assembly single-step execution program, step in (entering the function body)
+# Single-step through assembly instructions and step in function calls.
 (lldb) stepi
 ```
 
@@ -125,50 +133,50 @@ The following lists some functions supported by LLDB. For more commands, see [LL
 - Signal processing
 
 ```bash
-# Printing Backtracking During Signal Capture
+# Print backtraces when signals are captured.
 (lldb) process handle SIGSEGV -s true
-# Check the current signal processing configuration.
+# View the current signal processing configuration.
 (lldb) process handle
 ```
 
 - Attaching to a process
 
 ```bash
-# Attach to PID (debugging permission required)
+# Attach to a PID, which requires the debugging permission.
 (lldb) process attach -p 1234
 ```
 
-## Environment Setup
-- Local Debugging
-	- You can directly perform debugging on the device without using DevEco IDE.
-    - Select the static lldb path and transfer it to the device using HDC.
+## Environment setup
+- Local debugging
+	- You can debug your application on the device without using DevEco Studio.
+    - Select the static LLDB path and use hdc to transfer it to the device.
     ```bash
     hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb /data/local/tmp/debugserver
 	 ```
-   -  Select the LLDB server path (based on the CPU architecture of the device) and use HDC to transfer the file to the device.
+   -  Select the LLDB server path (select the path based on the device CPU architecture) and use hdc to transfer it to the device.
     
     ```bash
     hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb-server /data/local/tmp/debugserver
     ```
-- Remote Debugging (Main Debugging Mode)
-	- One-click debugging
-    	- Download HUAWEI IDE and perform one-click debugging using DevEco Studio.
-        - OpenHarmony devices can be connected to Windows and Mac, and native C++ applications can be debugged.
-        - Use the debugging function of DevEco Studio. You do not need to manually push lldb or lldb-server.
-    - Manual commissioning:
-       - If you need to manually perform remote debugging (without using DevEco Studio), for example, debugging binary files, ensure that lldb-server is installed on the device and lldb is installed on the PC.
-       - Prepare lldb-server. You are advised to use DevEco IDE to push lldb-server. For manual push, select the lldb-server path and use HDC to transfer the file to the device.
+- Remote debugging (main debugging mode)
+	- One-click debugging:
+    	- Download HUAWEI DevEco Studio and perform one-click debugging on it.
+        - Connect a Windows or macOS computer to an OpenHarmony device and debug native C++ applications.
+        - Use the **Debug** functionality of DevEco Studio. You do not need to manually push lldb or lldb-server.
+    - Manual debugging:
+       - To manually perform remote debugging (not through DevEco Studio), for example, debugging binary files, ensure that the lldb-server exists on the device and the lldb exists on the PC.
+       - Set up lldb-server. You are advised to push it using DevEco Studio. To manually push the lldb-server, select the lldb-server path and use hdc to transfer it to the device.
         ```bash
         hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb-server /data/local/tmp/debugserver
         ```
-        - Prepare the LLDB on the PC. For example, use lldb.exe in the Windows operating system. Later, use the LLDB to remotely connect to the lldb-server on the OH device for debugging.
+        - Set up lldb on the PC. For Windows, use lldb.exe, and connect the lldb to the lldb-server on the OpenHarmony device for debugging.
 
 ## Local Debugging
 
 ### Using LLDB to Start and Debug an Application
 
    The following walks you through on how to debug an executable file named **a.out** in the Linux x86_64 environment. The file contains debugging information and is generated by the Clang compiler, which is of the same version as LLDB.
-   Source file: hello.cpp
+   Source file: **hello.cpp**
 ```cpp
 #include <iostream>
 using namespace std;
@@ -177,12 +185,12 @@ int main() {
     return 0;
 }
 ```
-Compilation
+Compilation:
 ```cpp
 <clang distribution>/bin/clang++ --target=aarch64-linux-ohos --sysroot=<sysroot distribution> -g hello.cpp -o a.out
 ```
    1. Obtain the executable file **a.out**.
-   2. Run the hdc shell command to enter the interactive command environment of the mobile phone and go to the lldb directory.
+   2. Run the **hdc shell** command to enter the interactive command environment of the mobile phone and go to the lldb path.
    3. Run LLDB and specify the file to debug as **a.out**.
 
       ```shell
@@ -227,10 +235,10 @@ Compilation
           (lldb) quit
           ```
 
-Using LLDB to debug a started application
+**Using LLDB to Debug a Started Application**
 
-The following walks you through on how to debug an executable file named **a.out** in the Linux x86_64 environment. The file contains debugging information and is generated by the Clang compiler, which is of the same version as LLDB.
-Source file: hello.cpp
+The following walks you through on how to debug an executable file named **a.out** in the mobile phone environment. The file contains debugging information and is generated by the Clang compiler, which is of the same version as LLDB.
+Source file: **hello.cpp**
 
 ```cpp
 #include <iostream>
@@ -246,13 +254,13 @@ int main() {
 }
 ```
 
-Compilation
+Compilation:
 
 ```cpp
 <clang distribution>/bin/clang++ --target=aarch64-linux-ohos --sysroot=<sysroot distribution> -g hello.cpp -o a.out
 ```
 
-1. Run the hdc shell command to enter the interactive command environment and go to the lldb directory.
+1. Run the **hdc shell** command to enter the interactive command environment and go to the lldb path.
 2. Start the application on Command Line Interface (CLI) 1. (The message "Please input a number of type int" is displayed.)
    ```shell
    ./a.out
@@ -303,20 +311,20 @@ Compilation
 
 > **NOTE**
 >
-> Steps attach and set breakpoints can be performed in different sequences.
+> You can attach to the application and set breakpoints in whichever order you like.
 
 
 ## Remote Debugging
 
 > **NOTE**
-> - Remote debugging refers to cross-device debugging using LLDB. This section describes how to debug OpenHarmony apps across platforms.
+> - Remote debugging refers to cross-device debugging using LLDB. The following describes how to debug applications on OpenHarmony devices across platforms.
 > - During remote debugging, **lldb-server** and **lldb** must be used together.
 > - The remote debugging procedures for Windows, Linux x86_64, and macOS are the same.
 >
 
 ### Remote Debugging
 
-The following walks you through on how to remotely debug an executable file named **a.out** by connecting to an ARM-based OpenHarmony device (for example, RK3568 development board) on the Windows platform.
+The following walks you through on how to remotely debug an executable file named **a.out** by connecting to an ARM-based OpenHarmony device (for example, RK3568 development board) on Windows.
 
 > **NOTE**
 >
@@ -326,7 +334,7 @@ The following walks you through on how to remotely debug an executable file name
 >
 > You must have the execute permission on the **lldb-server** and **a.out** files of the device.
 >
-Source file: hello.cpp
+Source file: **hello.cpp**
 ```cpp
 #include <iostream>
 using namespace std;
@@ -336,7 +344,7 @@ int main() {
 }
 ```
 
-Compilation
+Compilation:
 ```bash
 <clang distribution>/bin/clang++ --target=aarch64-linux-ohos --sysroot=<sysroot distribution> -g hello.cpp -o a.out
 ```
@@ -405,14 +413,14 @@ Compilation
     ```
 
 ## FAQs
-- When the run command is executed in the LLDB debugging environment, if the console returns `error: 'A' packet returned an error: 8` or a similar error code, the debugger cannot create a debugging process. This exception usually indicates that the debugger cannot create a debugging process due to insufficient permission. You are advised to perform the following steps:
+- When the **run** command is executed in the LLDB debugging environment, the console returns **error: 'A' packet returned an error: 8** or a similar error code. What should I do?<br> This usually indicates that the debugger cannot create a debugging process because it has no permission. In this case, you are advised to perform the following steps:
 
-   (1) Check whether debugging authorization has been enabled for the target device.
+   (1) Check whether **Developer options** is enabled on the target device.
 
-   The verification method is `Developer options` in the device settings. If it is not enabled, enable it and try again.
+   If not, enable it and try again.
 
-   (2) Check whether the current user has the debugging permission on the target process.
+   (2) Check whether the current user has the permission to debug the target process.
 
-   The user can only debug applications but cannot debug executable files.
+   **user** can debug only applications, not executable files.
 
-- When lldb-server is run, the error message " `Permission denied`" is displayed. Generally, this problem occurs because the lldb-server does not have executable files. In this case, add the permission.
+- What should I do if the error message "Permission denied" is displayed when I run lldb-server?<br> This is because the lldb-server cannot be executed. You only need to add the permission.

@@ -1,10 +1,10 @@
 # Common Event Manager
 
-The Common Event Manager enables you to print common event information and publish common events. It provides the common event debugging and testing capabilities, for example, printing all public event subscribers, sent public events, and recipients, and simulating public event release.
+Common Event Manager (cem) provides the common event debugging and testing capabilities that enable you to print common event information such as all common event subscribers, sent common events, and recipients, and publish common events.
 
 ## Environment Requirements
 
-Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the hdc shell command.
+Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the **hdc shell** command.
 
 ## cem Commands
 
@@ -54,7 +54,7 @@ Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the hdc 
 
 > **NOTE**
 > 
-> The Common Event Manager has two editions: **eng** and **user**. The **dump** command can be used only in the **eng** edition. If it is used in the **user** edition, the message **error: user version cannot use dump** is reported.
+> Common Event Manager has two editions: **eng** and **user**. The **dump** command can be used only in the **eng** edition. If it is used in the **user** edition, the message **error: user version cannot use dump** is reported.
 
   ```bash
   # Dumps information about common events.

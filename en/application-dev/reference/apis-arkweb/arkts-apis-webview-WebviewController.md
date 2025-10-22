@@ -7513,7 +7513,7 @@ JavaScript resources can also be obtained through [network requests](../apis-net
      build() {
        Column() {
          // Load the Web component used by the service at a proper time. In this example, the button is clicked.
-         Button ("Load Page")
+         Button("Load Page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url:  "https://www.example.com/business.html",
@@ -8095,7 +8095,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
      build() {
        Column() {
          // Load the Web component used by the service at a proper time. In this example, the button is clicked.
-         Button ("Load Page")
+         Button("Load Page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url: "https://www.example.com/business.html",
@@ -8246,7 +8246,7 @@ struct Example{
 
   build(){
     Column(){
-      Button ("Screenshot")
+      Button("Screenshot")
         .onClick(()=>{
           try {
             let surfaceId = this.controller.getSurfaceId();
