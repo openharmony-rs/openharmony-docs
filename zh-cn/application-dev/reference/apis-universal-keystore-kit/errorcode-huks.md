@@ -170,7 +170,7 @@ The authentication token verification failed.
 
 **错误描述**
 
-当前用户令牌无法通过认证。
+用户令牌无法通过认证。
 
 **可能原因**
 
@@ -343,7 +343,7 @@ The input parameter is invalid.
 
 **错误描述**
 
-输入非法参数。
+当前输入的参数无效。
 
 **可能原因**
 
