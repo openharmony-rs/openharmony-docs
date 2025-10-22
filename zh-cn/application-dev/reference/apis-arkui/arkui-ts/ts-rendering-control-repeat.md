@@ -231,21 +231,21 @@ Repeat数据源参数联合类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型   | 必填 | 说明                                         |
-| ------ | ------ | ---- | -------------------------------------------- |
-| item   | T      | 是   | arr中每一个数据项。T为开发者传入的数据类型。 |
-| index  | number | 是   | 当前数据项对应的索引。                       |
+| 名称 | 类型   | 只读 | 可选 | 说明                                         |
+| ------ | ------ | ---- | ---- | -------------------------------------------- |
+| item   | T      | 否 | 否  | arr中每一个数据项。T为开发者传入的数据类型。 |
+| index  | number | 否 | 否  | 当前数据项对应的索引。                       |
 
 ## VirtualScrollOptions
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型   | 必填 | 说明                                                         |
-| ---------- | ------ | ---- | ------------------------------------------------------------ |
-| totalCount | number | 否   | 加载的数据项总数，可以不等于数据源长度。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| reusable<sup>18+</sup> | boolean | 否   | 是否开启复用功能。true代表开启复用，false代表关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| onLazyLoading<sup>19+</sup> | (index: number) => void | 否   | 数据懒加载函数，向指定的数据源index中写入数据。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| onTotalCount<sup>19+</sup> | () => number | 否   | 数据项总数计算函数，返回值可以不等于数据源长度。推荐使用onTotalCount代替totalCount。同时设置totalCount与onTotalCount时，忽略totalCount。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| 名称     | 类型   | 只读 | 可选 | 说明                                                         |
+| ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| totalCount | number | 否 | 是  | 加载的数据项总数，可以不等于数据源长度。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| reusable<sup>18+</sup> | boolean | 否 | 是  | 是否开启复用功能。true代表开启复用，false代表关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| onLazyLoading<sup>19+</sup> | (index: number) => void | 否 | 是  | 数据懒加载函数，向指定的数据源index中写入数据。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| onTotalCount<sup>19+</sup> | () => number | 否 | 是  | 数据项总数计算函数，返回值可以不等于数据源长度。推荐使用onTotalCount代替totalCount。同时设置totalCount与onTotalCount时，忽略totalCount。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 
 ### totalCount：期望加载的数据长度
 
@@ -332,9 +332,9 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型   | 必填 | 说明                                                         |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| cachedCount | number | 否   | 当前template的缓存池中可缓存子组件节点的最大数量。取值范围是[0, +∞)。默认值为屏上节点与预加载节点的个数之和。当屏上节点与预加载节点的个数之和增多时，cachedCount也会对应增长。需要注意cachedCount数量不会减少。|
+| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| cachedCount | number | 否 | 是  | 当前template的缓存池中可缓存子组件节点的最大数量。取值范围是[0, +∞)。默认值为屏上节点与预加载节点的个数之和。当屏上节点与预加载节点的个数之和增多时，cachedCount也会对应增长。需要注意cachedCount数量不会减少。|
 
 当cachedCount值被设置为当前template在屏上显示的最大节点数量时，Repeat会做到最大程度的复用。然而当屏上没有当前template的节点时，缓存池不会释放的同时应用内存增大。需要开发者根据具体情况自行把控，推荐设置成和屏幕上节点个数一致。需要注意，不建议设置cachedCount小于2，因为这会导致在快速滑动场景下创建新的节点，从而造成性能劣化。
 
