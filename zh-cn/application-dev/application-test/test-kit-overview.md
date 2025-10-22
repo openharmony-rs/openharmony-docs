@@ -1,5 +1,4 @@
-# Test Kit简介<!--test-api-->
-
+# Test Kit简介
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
 <!--Owner: @inter515-->
