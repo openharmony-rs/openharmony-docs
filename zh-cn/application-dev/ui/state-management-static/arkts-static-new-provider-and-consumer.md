@@ -321,7 +321,7 @@ struct Child {
 
 ### 装饰字面量类型变量
 
-当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
+当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
 ```ts
 'use static'
@@ -347,7 +347,7 @@ struct Parent {
         })
       Button('parent change interface name')
         .onClick((e: ClickEvent) => {
-          this.info.name += '~'; // 变化可观察
+          this.info.name += '~'; // 变化无法观察
         })
       Child()
     }
@@ -367,7 +367,7 @@ struct Child {
         })
       Button('child change interface name')
         .onClick((e: ClickEvent) => {
-          this.info.name += '*'; // 变化可观察
+          this.info.name += '*'; // 变化无法观察
         })
     }
   }
