@@ -1349,3 +1349,102 @@ struct Index {
 ```
 
 ![](figures/text_tag_case_2.png)
+
+### Text组件如何实现表情与文字一起显示
+
+**问题现象**
+
+emoji表情有时以表情符号的形式表示。如何将表情符号转换为emoji表情，并在Text组件中与文字一同显示？
+
+**解决措施**
+
+使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)来同时展示表情和文字。
+
+```ts
+@Entry
+@Component
+struct TextExample {
+  @State fulltext: string =
+    '你好我是Text[grin]，你好我[rolling_on_the_floor_laughing]是Text，[slightly_smiling_face]你好我是Text[grin]';
+
+  static classifyTextAndEmojis(input: string): Map<string, string[]> {
+    const emojiRegex = /\[([a-zA-Z_]+)\]/g; // 根据实际情况编写正则表达式
+    const resultMap = new Map<string, string[]>(); // 用map记录普通文本和表情
+    resultMap.set('text', []);
+    resultMap.set('emojis', []);
+
+    let lastIndex = 0;
+    let match: RegExpExecArray | null = null;
+
+    while ((match = emojiRegex.exec(input)) !== null) {
+      // 添加普通文本
+      if (match.index > lastIndex) {
+        resultMap.get('text')?.push(input.substring(lastIndex, match.index));
+      }
+      // 添加匹配到的表情
+      resultMap.get('emojis')?.push(match[1]);
+      lastIndex = match.index + match[0].length;
+    }
+    // 添加最后一段文本
+    if (lastIndex < input.length) {
+      resultMap.get('text')?.push(input.substring(lastIndex));
+    }
+    return resultMap;
+  }
+
+  static getEmojiImg(emojis: string[]): Resource[] { // 根据正则匹配结果返回自定义表情资源
+    let emojisImg: Resource[] = []
+    for (let i = 0; i < emojis.length; i++) {
+      switch (emojis[i]) {
+        case 'rolling_on_the_floor_laughing':
+          emojisImg.push($r("app.media.rolling_on_the_floor_laughing"))
+        case 'slightly_smiling_face':
+          emojisImg.push($r("app.media.slightly_smiling_face"))
+        case 'grin':
+          emojisImg.push($r("app.media.grin"))
+        default:
+      }
+    }
+    return emojisImg
+  }
+
+  build() {
+    Column() {
+      TextInput({
+        placeholder: "用户输入带表情的文本，例如：你好[grin]"
+      })
+        .width('80%')
+        .padding(10)
+        .border({ width: 1, color: '#EEEEEE' })
+        .onChange((value: string) => {
+          // 输入变化时，更新 fulltext
+          this.fulltext = value;
+        });
+
+      Text() {
+        ForEach(TextExample.classifyTextAndEmojis(this.fulltext).get('text'),
+          (item: string, index: number) => { // 展示文本和自定义表情资源
+            Span(item)
+              .fontSize(18)
+              .fontColor('#666666')
+              .fontWeight(FontWeight.Regular)
+
+            ImageSpan(TextExample.getEmojiImg(
+              TextExample.classifyTextAndEmojis(this.fulltext).get('emojis'))[index])
+              .verticalAlign(ImageSpanAlignment.BOTTOM)
+              .height(24)
+          })
+      }
+      .width('80%')
+      .padding(15)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .padding(20)
+  }
+}
+```
+
+![](figures/text-emoji.png)
