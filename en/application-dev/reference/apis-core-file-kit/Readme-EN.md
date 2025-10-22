@@ -7,9 +7,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
-- ArkTS API<!--core-file-arkts-->
+- ArkTS APIs<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (Backup ExtensionAbility)](js-apis-application-backupExtensionAbility.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync)](js-apis-file-cloudsync.md)
+  - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](js-apis-file-cloudsyncmanager.md)
   - [@ohos.file.environment (Directory Environment Capability)](js-apis-file-environment.md)
   - [@ohos.file.fileuri (File URI)](js-apis-file-fileuri.md)
   - [@ohos.file.fs (File Management)](js-apis-file-fs.md)
@@ -19,9 +20,9 @@
   - [@ohos.file.statvfs (File System Space Statistics)](js-apis-file-statvfs.md)
   - [@ohos.file.storageStatistics (Application Storage Statistics)](js-apis-file-storage-statistics.md)
   - [@ohos.fileshare (File Sharing)](js-apis-fileShare.md)
-  - [@ohos.file.BackupExtensionContext (Backup and Restore Extension Capability](js-apis-file-backupextensioncontext.md)
+  - [@ohos.file.BackupExtensionContext (Backup and Restore Extension Capability)](js-apis-file-backupextensioncontext.md)
   <!--Del-->
-  - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability) (System API)] (js-apis-application-backupExtensionAbility-sys.md)
+  - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability) (System API)](js-apis-application-backupExtensionAbility-sys.md)
   - [@ohos.file.backup (Backup and Restore) (System API)](js-apis-file-backup-sys.md)
   - [@ohos.file.cloudSync (Device-Cloud Sync) (System API)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)](js-apis-file-cloudsyncmanager-sys.md)
