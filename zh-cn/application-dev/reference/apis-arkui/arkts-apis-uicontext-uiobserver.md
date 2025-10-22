@@ -2104,7 +2104,7 @@ removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListene
 
 on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowSizeLayoutBreakpointInfo\>): void
 
-注册一个回调函数，以便在窗口尺寸布局断点发生改变时调用。
+注册窗口尺寸布局断点变化的回调函数。该方法用于监听窗口尺寸断点变化，可用于根据窗口尺寸自适应调整UI布局。使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -2174,7 +2174,7 @@ struct Index {
 
 off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
 
-取消监听窗口尺寸布局断点变化的回调。
+移除之前注册的窗口尺寸布局断点变化回调函数。如果未提供回调函数参数，将移除指定上下文的所有回调函数。使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
