@@ -1249,7 +1249,7 @@ off(type: 'didClick', callback?: ClickEventListenerCallback): void
 
 on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): void
 
-监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
+监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。相比[on('tabChange')](#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1345,7 +1345,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 
 on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
 
-通过[Tabs](arkui-ts/ts-container-tabs.md)组件的id监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。
+通过[Tabs](arkui-ts/ts-container-tabs.md)组件的id监听[TabContent](arkui-ts/ts-container-tabcontent.md)页面的切换事件。相比[on('tabChange')](#ontabchange22-1)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1438,6 +1438,243 @@ off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Call
 **示例：**
 
 参考[on('tabContentUpdate')](#ontabcontentupdate12-1)接口示例。
+
+## on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
+
+监听[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件，支持多个[Tabs](arkui-ts/ts-container-tabs.md)组件的监听。相比[on('tabContentUpdate')](#ontabcontentupdate12)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 是   | 回调函数。携带[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)，返回[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件的信息。 |
+
+**示例：**
+
+```ts
+// Index.ets
+// 演示监听Tabs组件页签的切换事件。
+// 此用例同时监听id为'tabsId1'、'tabsId2'的两个Tabs组件。
+// 两个Tabs组件初始化时，会监听到第0页页签的显示事件，页签对应id分别为'tabContentId0'、'tabContentId5'。
+// 在id为'tabsId1'的Tabs组件上滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
+import { uiObserver } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // 添加监听
+    observer.on('tabChange', callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // 取消监听
+    observer.off('tabChange', callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId1')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId2')
+    }.width('100%')
+  }
+}
+```
+
+## off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
+
+取消监听所有的[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销所有通过[on('tabChange')](#ontabchange22)接口注册的回调函数。<br/>默认值：undefined |
+
+**示例：**
+
+参考[on('tabChange')](#ontabchange22)接口示例。
+
+## on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
+
+监听指定[Tabs](arkui-ts/ts-container-tabs.md)组件的页签切换事件。相比[on('tabContentUpdate')](#ontabcontentupdate12-1)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)   | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>    | 是   | 回调函数。携带[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)，返回[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件的信息。 |
+
+**示例：**
+
+```ts
+// Index.ets
+// 演示监听id为'tabsId'的Tabs组件页签的切换事件。
+// Tabs组件页签初始化的时候，会监听到第0页页签的显示事件，页签对应id为'tabContentId0'；滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
+import { uiObserver } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // 添加监听，指定Tabs的id
+    observer.on('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // 取消监听
+    observer.off('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+    }.width('100%')
+  }
+}
+```
+
+## off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<observer.TabContentInfo\>): void
+
+取消监听指定[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)        | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
+
+**示例：**
+
+参考[on('tabChange')](#ontabchange22-1)接口示例。
 
 ## on('beforePanStart')<sup>19+</sup>
 
