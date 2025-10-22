@@ -27,7 +27,7 @@ import { mindSporeLite } from '@kit.MindSporeLiteKit';
 
 loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 
-从完整路径加载输入模型用于推理。使用callback异步回调。
+从完整路径加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -120,7 +120,7 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeL
 
 loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 
-从内存加载输入模型用于推理。使用callback异步回调。
+从内存加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
@@ -231,7 +231,7 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
 
 loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 
-从文件描述符加载输入模型用于推理。使用callback异步回调。
+从文件描述符加载输入模型，用于CPU推理。使用callback异步回调。
 
 **系统能力：** SystemCapability.AI.MindSporeLite
 
