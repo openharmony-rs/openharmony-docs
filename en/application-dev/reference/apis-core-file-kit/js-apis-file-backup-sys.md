@@ -696,7 +696,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 updateTimer(bundleName: string, timeout: number): boolean
 
-Called after **onBundleBegin** and before **onBundleEnd** to set the backup or restore timer.
+Sets the duration of application backup or restoration. This method must be called after **onBundleBegin** and before **onBundleEnd**.
 
 **System API**: This is a system API.
 
@@ -752,7 +752,7 @@ Called after **onBundleBegin** and before **onBundleEnd** to set the backup or r
 
 updateSendRate(bundleName: string, sendRate: number): boolean
 
-Called after **onBundleBegin** and before **onBundleEnd** to set the backup or restore timer.
+Updates the rate at which the backup application sends file descriptors (FDs). This method is called after **onBundleBegin** and before **onBundleEnd**.
 
 **System API**: This is a system API.
 
