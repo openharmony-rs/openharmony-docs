@@ -34,6 +34,7 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 | -- | -- |
 | [OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffer, OH_AVBuffer *avBuffer)](#oh_avsamplesbuffer_appendonebuffer) | Appends data from an OH_AVBuffer instance to an OH_AVSamplesBuffer instance.|
 | [int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer)](#oh_avsamplesbuffer_getremainedcapacity) | Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.|
+| [OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()](#oh_lowpoweravsink_getcapability) | Obtains the capability of the low-power player. It mainly helps you find out what the low-power player can do, including the media formats and features it supports.<br> When you call this function, you can learn about the device's capabilities in audio and video processing. For example, you can find out which encoding and decoding formats are supported, as well as the range of bit rates that the device can handle.|
 
 ## Function Description
 
@@ -48,7 +49,6 @@ OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffe
 Appends data from an OH_AVBuffer instance to an OH_AVSamplesBuffer instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -75,7 +75,6 @@ Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -87,3 +86,21 @@ Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.
 | Type| Description|
 | -- | -- |
 | int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data poniter is nullptr or invalid, **-1** is returned.|
+
+### OH_LowPowerAVSink_GetCapability()
+
+```
+OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()
+```
+
+**Description**
+
+Obtains the capability of the low-power player. It mainly helps you find out what the low-power player can do, including the media formats and features it supports.<br> When you call this function, you can learn about the device's capabilities in audio and video processing. For example, you can find out which encoding and decoding formats are supported, as well as the range of bit rates that the device can handle.
+
+**Since**: 21
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_LowPowerAVSink_Capability * | **OH_LowPowerAVSink_Capability**: The low-power player is supported.<br> **nullptr**: The low-power player is not supported or the capability fails to be obtained.|
