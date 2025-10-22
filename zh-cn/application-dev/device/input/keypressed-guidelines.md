@@ -36,9 +36,14 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 在电子书或新闻阅读应用中，用户希望通过音量键控制翻页（例如：音量加键向下翻页，音量减键向上翻页）；在相机或扫码类应用中，用户按音量键可直接拍照，而不跳转系统相机应用。
 
-```js
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import hilog from '@ohos.hilog';
 import { KeyCode } from '@kit.InputKit';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
@@ -76,21 +81,23 @@ struct TestDemo14 {
       inputConsumer.on('keyPressed', options1, this.volumeUpCallBackFunc);
       inputConsumer.on('keyPressed', options2, this.volumeDownCallBackFunc);
     } catch (error) {
-      console.error(`Subscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
+      hilog.error(DOMAIN, 'InputMonitor', `Subscribe execute failed, error: %{public}s`,
+        JSON.stringify(error, ["code", "message"]));
     }
   }
 
   build() {
     Column() {
       Row() {
-        Button('取消监听音量按键上的监听')
+        Button('Cancel monitoring on the volume button')
           .onClick(() => {
             try {
               // 取消指定回调函数
               inputConsumer.off('keyPressed', this.volumeUpCallBackFunc);
               this.getUIContext().getPromptAction().showToast({ message: '取消监听音量按键上的监听事件成功！' })
             } catch (error) {
-              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
+              hilog.error(DOMAIN, 'InputMonitor', `Unsubscribe execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
             }
           })
       }.width('100%')
@@ -98,20 +105,22 @@ struct TestDemo14 {
       .margin({ top: 20, bottom: 50 })
 
       Row() {
-        Button('取消监听音量按键下的监听')
+        Button('Cancel monitoring under the volume button')
           .onClick(() => {
             try {
               // 取消指定回调函数
               inputConsumer.off('keyPressed', this.volumeDownCallBackFunc);
               this.getUIContext().getPromptAction().showToast({ message: '取消监听音量按键下的监听事件成功！' })
             } catch (error) {
-              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
+              hilog.error(DOMAIN, 'InputMonitor', `Unsubscribe execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
             }
           })
       }.width('100%')
       .justifyContent(FlexAlign.Center)
       .margin({ top: 20, bottom: 50 })
-      Row(){
+
+      Row() {
         Text('已默认添加监听音量按键上和下的监听')
       }
       .width('100%')
@@ -119,4 +128,6 @@ struct TestDemo14 {
     }.width('100%').height('100%')
   }
 }
+
 ```
+
