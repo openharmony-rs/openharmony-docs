@@ -142,6 +142,7 @@ function publishSharedConfig() {
 ```
 
 
+
 - 通过调用delete接口删除配置项。
 
 <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
@@ -169,6 +170,7 @@ function deleteSharedConfig() {
 }
 
 ```
+
 
 
 ## 配置访问方
@@ -204,6 +206,7 @@ function getSharedConfig() {
 }
 
 ```
+
 
 
 ### 监听/取消监听配置变化
@@ -247,4 +250,5 @@ function watchConfigChanges() {
 }
 
 ```
+
 
