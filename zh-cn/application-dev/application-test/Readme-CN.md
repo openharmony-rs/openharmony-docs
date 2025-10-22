@@ -1,4 +1,4 @@
-# Test Kit（应用测试服务）
+# Test Kit（应用测试服务）<!--test-api-->
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
 <!--Owner: @inter515-->
