@@ -377,14 +377,14 @@ class C {
   "strictMode": {
     "caseSensitiveCheck": true,
     "useNormalizedOHMUrl": true,
-    "disaleSendableCheckRules": ["arkts-sendable-class-decorator"]
+    "disableSendableCheckRules": ["arkts-sendable-class-decorator"]
   }
 }
 ```
 
 > **说明：**
 >
-> - "disaleSendableCheckRules"字段值为包含Sendable规则的数组。
+> - "disableSendableCheckRules"字段值为包含Sendable规则的数组。
 > 
 >   - 默认为空数组，即默认不支持在Sendable class上叠加使用除@Sendable之外的其他自定义装饰器。
 >   
