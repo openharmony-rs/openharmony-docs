@@ -808,7 +808,7 @@ function registerPhotoOutputFrameShutterEnd(photoOutput: camera.PhotoOutput): vo
 
 off(type: 'frameShutterEnd', callback?: AsyncCallback\<FrameShutterEndInfo\>): void
 
-注销监听拍照帧输出捕获。
+注销监听拍照曝光结束捕获。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
