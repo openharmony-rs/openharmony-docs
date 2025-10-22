@@ -47,103 +47,103 @@ libnative_window.so
 
 1. 获取OHNativeWindow实例。
 
-    可通过[`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-x-component-oh-nativexcomponent-callback.md)接口获取OHNativeWindow。代码示例如下。关于XComponent模块的使用方法，详见[XComponent开发指导](../ui/napi-xcomponent-guidelines.md)。
+    可通过[`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md)接口获取OHNativeWindow。代码示例如下。关于XComponent模块的使用方法，详见[XComponent开发指导](../ui/napi-xcomponent-guidelines.md)。
 
     1. 在xxx.ets中添加一个XComponent组件。
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
 
-``` C++
-          XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
+        ``` C++
+        XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
             .margin({ bottom: 26 })
             .onLoad((nativeWindowContext) => {
-              this.nativeWindowContext = nativeWindowContext as NativeWindowContext;
+            this.nativeWindowContext = nativeWindowContext as NativeWindowContext;
             })
-```
+        ```
 
     2. 在 native c++ 层获取 NativeXComponent。
         <!-- @[get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
-    napi_value exportInstance = nullptr;
-    OH_NativeXComponent *nativeXComponent = nullptr;
-    int32_t ret;
-    char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {};
-    uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+        ``` C++
+        napi_value exportInstance = nullptr;
+        OH_NativeXComponent *nativeXComponent = nullptr;
+        int32_t ret;
+        char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {};
+        uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
 
-    status = napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance);
-    if (status != napi_ok) {
-        return false;
-    }
+        status = napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance);
+        if (status != napi_ok) {
+            return false;
+        }
 
-    status = napi_unwrap(env, exportInstance, reinterpret_cast<void**>(&nativeXComponent));
-    if (status != napi_ok) {
-        return false;
-    }
+        status = napi_unwrap(env, exportInstance, reinterpret_cast<void**>(&nativeXComponent));
+        if (status != napi_ok) {
+            return false;
+        }
 
-    ret = OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize);
-    if (ret != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
-        return false;
-    }
-```
+        ret = OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize);
+        if (ret != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+            return false;
+        }
+        ```
 
     3. 定义 OH_NativeXComponent_Callback。
         <!-- @[xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
-void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
-{
-	// ···
-    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-	// ···
-}
+        ``` C++
+        void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
+        {
+            // ···
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+            // ···
+        }
 
-void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
-{
-	// ···
-    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-	// ···
-}
+        void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
+        {
+            // ···
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+            // ···
+        }
 
-void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
-{
-	// ···
-    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-	// ···
-}
+        void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
+        {
+            // ···
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+            // ···
+        }
 
-void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
-{
-	// ···
-    OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
-}
-// ···
-    callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
-    callback_.OnSurfaceChanged = OnSurfaceChangedCB;
-    callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
-    callback_.DispatchTouchEvent = DispatchTouchEventCB;
-```
+        void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
+        {
+            // ···
+            OHNativeWindow* nativeWindow = static_cast<OHNativeWindow*>(window);
+        }
+        // ···
+        callback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+        callback_.OnSurfaceChanged = OnSurfaceChangedCB;
+        callback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+        callback_.DispatchTouchEvent = DispatchTouchEventCB;
+        ```
 
     4. 将OH_NativeXComponent_Callback 注册给 NativeXComponent。
         <!-- @[register_xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
-    OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
-```
+        ``` C++
+        OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
+        ```
 
 2. 设置OHNativeWindowBuffer的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性。
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
+    ``` C++
     int code = SET_BUFFER_GEOMETRY;
     int32_t bufferHeight = static_cast<int32_t>(height_ / 4);
     int32_t bufferWidth = static_cast<int32_t>(width_ / 2);
     OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, code, bufferWidth, bufferHeight);
-```
+    ```
 
 3. 从图形队列申请OHNativeWindowBuffer。
     <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
+    ``` C++
     int fenceFd = -1;
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
@@ -151,20 +151,20 @@ void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
         return;
     }
     BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(nativeWindowBuffer);
-```
+    ```
 
 4. 内存映射mmap。
     <!-- @[map_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
+    ``` C++
     void *mappedAddr =
         mmap(bufferHandle->virAddr, bufferHandle->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle->fd, 0);
-```
+    ```
 
 5. 将生产的内容写入OHNativeWindowBuffer，在这之前需要等待releaseFenceFd可用（注意releaseFenceFd不等于-1才需要调用poll）。如果没有等待releaseFenceFd事件的数据可用（POLLIN），则可能造成花屏、裂屏、HEBC（High Efficiency Bandwidth Compression，高效带宽压缩） fault等问题。releaseFenceFd是消费者进程创建的一个文件句柄，代表消费者消费buffer完毕，buffer可读，生产者可以开始填充buffer内容。
     <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
+    ``` C++
     int retCode = -1;
     uint32_t timeout = 3000;
     if (fenceFd != -1) {
@@ -182,12 +182,12 @@ void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
             *pixel++ = value;
         }
     }
-```
+    ```
 
 6. 提交OHNativeWindowBuffer到图形队列。请注意OH_NativeWindow_NativeWindowFlushBuffer接口的acquireFenceFd不可以和OH_NativeWindow_NativeWindowRequestBuffer接口获取的releaseFenceFd相同，acquireFenceFd可传入默认值-1。acquireFenceFd是生产者需要传入的文件句柄，消费者获取到buffer后可根据生产者传入的acquireFenceFd决定何时去渲染并上屏buffer内容。
     <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
+    ``` C++
     struct Region *region = new Region();
     ret = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region);
     if (ret != NATIVE_ERROR_OK) {
@@ -195,18 +195,18 @@ void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
         (void)OH_NativeWindow_NativeWindowAbortBuffer(nativeWindow, nativeWindowBuffer);
         return;
     }
-```
+    ```
 
 7. 使用munmap取消内存映射。
     <!-- @[munmap_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
-``` C++
+    ``` C++
     if (munmap(mappedAddr, bufferHandle->size) < 0) {
         OH_NativeWindow_DestroyNativeWindow(nativeWindow);
         LOGE("munmap failed");
         return;
     }
-```
+    ```
 
 ## 相关实例
 
