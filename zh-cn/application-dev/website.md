@@ -2234,6 +2234,8 @@
           - [@ohos.app.appstartup.startupManager (启动框架管理能力)](reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md)
           - [@ohos.app.appstartup.StartupTask (启动框架任务)](reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md)
           - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](reference/apis-ability-kit/js-apis-app-ability-autoStartupManager.md)
+          - [@ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)](reference/apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)
+          - [@ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)](reference/apis-ability-kit/js-apis-application-NotificationSubscriberExtensionContext.md)
           <!--Del-->
           - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-abilityConstant-sys.md)
           - [@ohos.app.ability.application (Application)(系统接口)](reference/apis-ability-kit/js-apis-app-ability-application-sys.md)
@@ -5693,7 +5695,9 @@
           - [NotificationActionButton](reference/apis-notification-kit/js-apis-inner-notification-notificationActionButton.md)
           - [NotificationCommonDef](reference/apis-notification-kit/js-apis-inner-notification-notificationCommonDef.md)
           - [NotificationContent](reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md)
+          - [NotificationExtensionContent](reference/apis-notification-kit/js-apis-inner-notification-notificationExtensionContent.md)
           - [NotificationFlags](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags.md)
+          - [NotificationInfo](reference/apis-notification-kit/js-apis-inner-notification-notificationInfo.md)
           - [NotificationRequest](reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)
           - [NotificationSlot](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot.md)
           - [NotificationTemplate](reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)
