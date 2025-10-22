@@ -940,7 +940,7 @@ showInSubWindow(showInSubWindow:Optional\<boolean>)
 
 onSelect(callback: (index: number, value: string) => void)
 
-下拉菜单选中某一项的回调。
+下拉菜单选中某一项时，会触发回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -957,7 +957,7 @@ onSelect(callback: (index: number, value: string) => void)
 
 onSelect(callback: Optional\<OnSelectCallback> )
 
-下拉菜单选中某一项的回调。与[onSelect](#onselect)相比，callback参数新增了对undefined类型的支持。
+下拉菜单选中某一项时，会触发回调。与[onSelect](#onselect)相比，callback参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -973,7 +973,7 @@ onSelect(callback: Optional\<OnSelectCallback> )
 
 type OnSelectCallback = (index: number, selectStr: string) => void
 
-下拉菜单选中某一项的回调。
+下拉菜单选中某一项时触发的回调函数类型定义。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
