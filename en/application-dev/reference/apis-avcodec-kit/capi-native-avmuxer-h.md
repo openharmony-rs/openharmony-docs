@@ -67,7 +67,7 @@ Creates an OH_AVMuxer instance by using the file descriptor and container format
 | Name| Description|
 | -- | -- |
 | int32_t fd | File descriptor (FD). You must open the file in read/write mode (O_RDWR) and close the file after using it.|
-| [OH_AVOutputFormat](_codec_base.md#oh_avoutputformat) format | Format of the multiplexed output file.|
+| [OH_AVOutputFormat](capi-native-avcodec-base-h.md#oh_avoutputformat) format | Format of the multiplexed output file.|
 
 **Returns**
 

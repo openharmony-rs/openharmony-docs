@@ -17,7 +17,7 @@ The file declares the enums used for audio encoding and decoding.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
-**Since**: 9
+**Since**: 10
 
 **Deprecated from**: 11
 
@@ -29,8 +29,8 @@ The file declares the enums used for audio encoding and decoding.
 
 | Name| Description|
 | -- | -- |
-| [AudioChannelSet](#audiochannelset) | Enumerates the audio channels. Each channel is mapped to a variable of int64.|
-| [AudioChannelLayout](#audiochannellayout) | Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec.|
+| [AudioChannelSet](#audiochannelset) | Enumerates the audio channels. Each channel is mapped to a variable of int64. (It is deprecated from API version 11.)|
+| [AudioChannelLayout](#audiochannellayout) | Enumerates the layouts of audio channels. The output format of the decoder is described using the channel layout of the codec. (It is deprecated from API version 11.)|
 
 ## Enum Description
 

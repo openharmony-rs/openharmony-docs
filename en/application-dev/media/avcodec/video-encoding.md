@@ -21,7 +21,7 @@ The following table lists the video encoding capabilities supported:
 |          Capability                      |                              How to Use                                           |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
 | Layered encoding<br> Setting the LTR frame and reference frame                     | For details, see [Temporally Scalable Video Coding](video-encoding-temporal-scalability.md).       |
-| Repeat encoding of historical frames                   | For details, see [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_frame_after) and<br> [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_max_count).   |
+| Repeat encoding of historical frames                   | For details, see [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables) and [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).   |
 <!--RP4End-->
 
 ## Constraints
@@ -245,7 +245,7 @@ The following walks you through how to implement the entire video encoding proce
 
     Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror).
+    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
     - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, format change.
     - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required. This callback does not take effect, since you input data through the obtained surface.
     - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that encoding is complete.
@@ -338,7 +338,7 @@ The following walks you through how to implement the entire video encoding proce
 
 5. Call **OH_VideoEncoder_Configure()** to configure the encoder.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     For details about the parameter verification rules, see [OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure).
 
@@ -676,7 +676,7 @@ The following walks you through how to implement the entire video encoding proce
 3. Call **OH_VideoEncoder_RegisterCallback()** to register the callback functions.
 
     Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror).
+    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
     - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, format change.
     - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the encoder is ready for receiving YUV/RGB data.
     - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that encoding is complete.
@@ -1038,4 +1038,4 @@ The following walks you through how to implement the entire video encoding proce
 
 The subsequent processes (including refreshing, resetting, stopping, and destroying the encoder) are the same as those in surface mode. For details, see steps 14–17 in [Surface Mode](#surface-mode).
 
- <!--no_check--> 
+<!--no_check-->

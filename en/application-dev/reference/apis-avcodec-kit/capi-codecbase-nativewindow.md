@@ -1,4 +1,4 @@
-# OH_AVCodec
+# NativeWindow
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -9,7 +9,7 @@
 
 ## Overview
 
-The struct describes a native object for the audio and video codec interface.
+The struct describes a native object for the graphics interface.
 
 **Since**: 9
 
