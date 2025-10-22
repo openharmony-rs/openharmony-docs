@@ -1524,7 +1524,7 @@ async function example(mgr: userFileManager.UserFileManager) {
       fetchColumns: [],
       predicates: predicatesForGetAsset
     };
-    // Obtain the uri of the album
+    // Obtain the album URI.
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1535,7 +1535,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let photoFetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await album.getPhotoAssets(fetchOptions);
     let expectIndex = 1;
-    // Obtain the uri of the second file
+    // Obtain the URI of the second file.
     let photoAsset: userFileManager.FileAsset = await photoFetchResult.getPositionObject(expectIndex);
     mgr.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
       if (err == undefined) {
@@ -1600,7 +1600,7 @@ async function example(mgr: userFileManager.UserFileManager) {
       fetchColumns: [],
       predicates: predicatesForGetAsset
     };
-    // Obtain the uri of the album
+    // Obtain the album URI.
     let albumFetchResult: userFileManager.FetchResult<userFileManager.Album> = await mgr.getAlbums(userFileManager.AlbumType.SYSTEM, userFileManager.AlbumSubType.FAVORITE, fetchOp);
     let album: userFileManager.Album = await albumFetchResult.getFirstObject();
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1611,7 +1611,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     };
     let photoFetchResult: userFileManager.FetchResult<userFileManager.FileAsset> = await album.getPhotoAssets(fetchOptions);
     let expectIndex = 1;
-    // Obtain the uri of the second file
+    // Obtain the URI of the second file.
     let photoAsset: userFileManager.FileAsset = await photoFetchResult.getPositionObject(expectIndex);
     mgr.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions).then((index) => {
       console.info(`getPhotoIndex successfully and index is : ${index}`);
@@ -1732,11 +1732,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
   let onCallback1 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something
+    // The image file has been changed. Do something.
   }
   let onCallback2 = (changeData: userFileManager.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something
+    // The image file has been changed. Do something.
   }
   // Register onCallback1.
   mgr.on(fileAsset.uri, false, onCallback1);
@@ -1806,7 +1806,7 @@ async function example(mgr: userFileManager.UserFileManager) {
     mgr.on(fileAsset.uri, false, onCallback1);
     // Register onCallback2.
     mgr.on(fileAsset.uri, false, onCallback2);
-    // Disable the listening of onCallback1.
+    // Unregister the listening of onCallback1.
     mgr.off(fileAsset.uri, onCallback1);  
   }
   fileAsset.favorite(true, (err) => {
@@ -1846,7 +1846,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // Image file changed. Do something.
+    // The image file has been changed. Do something.
   });
   try {
     let testFileName: string = 'testFile' + Date.now() + '.jpg';
@@ -1856,14 +1856,14 @@ async function example(mgr: userFileManager.UserFileManager) {
   } catch (err) {
     console.error('createPhotoAsset failed, message = ' + err);
   }
-  // Sleep 1s.
+  // Sleep for 1s.
   if (count > 0) {
     console.info('onDemo success');
   } else {
     console.error('onDemo fail');
   }
   mgr.off('imageChange', () => {
-    // Unsubscription succeeds.
+    // The listening is stopped successfully.
   });
 }
 ```
@@ -1895,11 +1895,11 @@ async function example(mgr: userFileManager.UserFileManager) {
   let count = 0;
   mgr.on('imageChange', () => {
     count++;
-    // Image file changed. Do something.
+    // The image file has been changed. Do something.
   });
 
   mgr.off('imageChange', () => {
-    // Unsubscription succeeds.
+    // The listening is stopped successfully.
   });
 
   try {
@@ -1910,7 +1910,7 @@ async function example(mgr: userFileManager.UserFileManager) {
   } catch (err) {
     console.error('createPhotoAsset failed, message = ' + err);
   }
-  // Sleep 1s.
+  // Sleep for 1s.
   if (count == 0) {
     console.info('offDemo success');
   } else {
@@ -2736,7 +2736,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains a JSON string consisting of the EXIF tags of the JPG image. This API uses a promise to return the result.
+Obtains a JSON string consisting of the EXIF tags of this JPG image. This API uses an asynchronous callback to return the result.
 
 **NOTE**<br>This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [ImageVideoKey.USER_COMMENT](#imagevideokey). These two fields must be passed in via **fetchColumns**.
 
@@ -4243,7 +4243,7 @@ This API will be deprecated. Use [Album.getPhotoAssets](#getphotoassets-3) inste
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching the image and video assets.|
+| options | [FetchOptions](#fetchoptions) | Yes  | Options for fetching image and video assets.|
 
 **Return value**
 
@@ -4297,7 +4297,7 @@ This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10)
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to delete.|
+| uri | string | Yes  | File URI.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
 
 **Example**
@@ -4345,7 +4345,7 @@ This API will be deprecated. Use [Album.deletePhotoAssets](#deletephotoassets10)
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to delete.|
+| uri | string | Yes  | File URI.|
 
 **Return value**
 
@@ -4397,7 +4397,7 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets1
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to recover.|
+| uri | string | Yes  | File URI.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
 
 **Example**
@@ -4445,7 +4445,7 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](#recoverphotoassets1
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| uri | string | Yes  | URI of the file to recover.|
+| uri | string | Yes  | File URI.|
 
 **Return value**
 
@@ -4483,30 +4483,38 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 ## MemberType
 
-Enumerates the member types.
+type MemberType = number | string | boolean
+
+Represents the type of a file asset member.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name |  Type|  Read-Only |  Optional |  Description |
-| ----- |  ---- |  ---- |  ---- |  ---- |
-| number |  number | Yes| Yes| The member is a number.|
-| string |  string | Yes| Yes| The member is a string.|
-| boolean |  boolean | Yes| Yes| The member is a Boolean value.|
+| Type | Description                     |
+| ----- |  ---- |
+| number | The member is a number.|
+| string | The member is a string.|
+| boolean | The member is a Boolean value.|
 
 ## ChangeEvent
 
+type ChangeEvent = 'deviceChange' | 'albumChange' | 'imageChange' | 'audioChange' | 'videoChange' | 'remoteFileChange'
+
 Enumerates the type of changes to observe.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name  | Type                    | Mandatory| Description                     |
-| -------- | ------------------------- | ---- | ----- |
-| deviceChange | string | Yes   | Device change.|
-| albumChange | string | Yes   | Album change.|
-| imageChange | string | Yes   | Image change.|
-| audioChange | string | Yes   | Audio change.|
-| videoChange | string | Yes   | Video change.|
-| remoteFileChange | string | Yes   | Remote file change.|
+| Type | Description                     |
+| ----- |  ---- |
+| 'deviceChange' | Device. The value is fixed at **'deviceChange'**.|
+| 'albumChange' | Album. The value is fixed at **'albumChange'**.|
+| 'imageChange' | Image. The value is fixed at **'imageChange'**.|
+| 'audioChange' | Audio. The value is fixed at **'audioChange'**.|
+| 'videoChange' | Video. The value is fixed at **'videoChange'**.|
+| 'remoteFileChange' | Remote file. The value is fixed at **'remoteFileChange'**.|
 
 ## PeerInfo
 
@@ -4659,12 +4667,14 @@ Defines the key album information.
 
 Options for creating an image or video asset.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subType           | [PhotoSubType](#photosubtype10) | No | Subtype of the image or video. |
-| cameraShotKey           | string | No | Key for the Ultra Snapshot feature.<br>This parameter is available only for the system camera, and the key value is defined by the system camera. |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
+| subType           | [PhotoSubType](#photosubtype10) | No  | Yes  | Subtype of the image or video.|
+| cameraShotKey           | string | No  | Yes  | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)|
 
 ## FetchOptions
 
