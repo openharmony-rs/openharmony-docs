@@ -75,8 +75,12 @@
         if (store == nullptr) {
             OH_Rdb_DeleteStoreV2(config);
         } else {
-            // 用备份的数据库恢复数据库
-            OH_Rdb_Restore(store, restorePath);
+            // 用备份的数据库恢复数据库，restore在有接口调用时可能会失败，建议调用失败后等待并重试
+            int errCode = OH_Rdb_Restore(store, restorePath);
+            if(errCode != 0){
+                OH_LOG_ERROR(LOG_APP, "restore failed! errCode is: %{public}d", errCode);
+                errCode = OH_Rdb_Restore(store, restorePath);
+            }
         }
     }
     OH_Rdb_ConfigV2* config3 = OH_Rdb_CreateConfig();
@@ -107,8 +111,12 @@
         if (store == nullptr) {
             OH_Rdb_DeleteStoreV2(config);
         } else {
-            // 用备份的数据库恢复数据库
-            OH_Rdb_Restore(store, restorePath);
+            // 用备份的数据库恢复数据库，restore在有接口调用时可能会失败，建议调用失败后等待并重试
+            int errCode = OH_Rdb_Restore(store, restorePath);
+            if(errCode != 0){
+                OH_LOG_ERROR(LOG_APP, "restore failed! errCode is: %{public}d", errCode);
+                errCode = OH_Rdb_Restore(store, restorePath);
+            }
         }
     }
     OH_Rdb_ConfigV2* config4 = OH_Rdb_CreateConfig();
