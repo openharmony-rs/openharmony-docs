@@ -153,12 +153,12 @@ import { Local } from '@ohos.arkui.stateManagement';
   | Map   | set, clear, delete                                           |
   | Set   | add, clear, delete                                           |
 
-- 当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
+- 当装饰interface字面量类型时，仅能观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
   import { Local } from '@ohos.arkui.stateManagement';
   interface Info {
     name: string;
@@ -172,8 +172,14 @@ import { Local } from '@ohos.arkui.stateManagement';
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
+        Text(`info.age: ${this.info.age}`)
+        Button('change info')
           .onClick((e: ClickEvent) => {
-            this.info.name = 'Tom'; // 变化可观察
+            this.info = { name: 'Tom', age: 18 } as Info; // 变化可观察
+          })
+        Button('change info.name')
+          .onClick((e: ClickEvent) => {
+            this.info.name = 'Lucy'; // 变化无法观察
           })
       }
     }
