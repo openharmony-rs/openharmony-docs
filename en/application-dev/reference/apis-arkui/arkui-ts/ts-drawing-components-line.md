@@ -12,7 +12,7 @@ The **Line** component is used to draw a straight line.
 >
 > This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component can use the [updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams) method of the [AttributeUpdater](../js-apis-arkui-AttributeUpdater.md) class to update the construction parameters since API version 20.
+> This component supports dynamic constructor parameter updates using the [updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#properties) API of the [AttributeUpdater](../js-apis-arkui-AttributeUpdater.md) class since API version 20.
 
 ## Child Components
 
@@ -52,7 +52,7 @@ Describes the options for drawing a line.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width.<br>If the value is invalid or the default value is used, the width required for the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height.<br>If the value is abnormal or not specified, the height required by the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height.<br>If the value is invalid or not specified, the height required by the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -62,7 +62,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 startPoint(value: Array&lt;any&gt;)
 
-Sets the start point (relative coordinate) of a line. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) attribute can be dynamically set. If the value is abnormal, the default value is used.
+Sets the coordinates (relative coordinates) of the start point of the line. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) attribute can be dynamically set. If the value is abnormal, the default value is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -80,7 +80,7 @@ Sets the start point (relative coordinate) of a line. The [attributeModifier](ts
 
 endPoint(value: Array&lt;any&gt;)
 
-Sets the end point of a line (relative coordinate). The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. If an exception occurs, the default value is used.
+Sets the coordinates (relative coordinates) of the end point of the line. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. If an exception occurs, the default value is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -98,7 +98,7 @@ Sets the end point of a line (relative coordinate). The [attributeModifier](ts-u
 
 fill(value: ResourceColor)
 
-Sets the color of the filling area. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
+Sets the color of the fill area. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -116,7 +116,7 @@ Sets the color of the filling area. The [attributeModifier](ts-universal-attribu
 
 fillOpacity(value: number | string | Resource)
 
-Sets the transparency of the filling area. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
+Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -188,7 +188,7 @@ Sets the offset of the border drawing start point. The [attributeModifier](ts-un
 
 strokeLineCap(value: LineCapStyle)
 
-Sets the stroke cap style. You can call this method to dynamically set attributes through [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the cap style of the stroke. You can call this method to dynamically set attributes through [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -224,7 +224,7 @@ Sets the join style of the stroke. You can call this method to dynamically set a
 
 strokeMiterLimit(value: number | string)
 
-Sets the maximum value for rendering an acute angle as an oblique angle. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Line component does not support acute angle rendering. This attribute is invalid.
+Sets the limit value when the sharp angle is drawn as a miter. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Line component does not support acute angle rendering. This attribute is invalid.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -242,7 +242,7 @@ Sets the maximum value for rendering an acute angle as an oblique angle. This at
 
 strokeOpacity(value: number | string | Resource)
 
-Sets the stroke opacity. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -296,7 +296,7 @@ Sets whether to enable anti-aliasing. You can call this method to set the attrib
 
 ### Example 1: Drawing a Line
 
-Draw the start point, end point, transparency, line color, border gap, and drawing start point of a line by using the startPoint, endPoint, fillOpacity, stroke, strokeDashArray, and strokeDashOffset attributes, respectively.
+This example demonstrates how to use **startPoint**, **endPoint**, **fillOpacity**, **stroke**, **strokeDashArray**, and **strokeDashOffset** to set the start point, end point, opacity, stroke color, stroke dashes, and stroke offset of a line.
 
 ```ts
 // xxx.ets
@@ -352,7 +352,7 @@ struct LineExample {
 
 ### Example 2: Setting the Stroke Cap Style
 
-Use the strokeLineCap attribute to draw the border endpoint style of a line.
+This example demonstrates how to use **strokeLineCap** to set the stroke cap style of a line.
 
 ```ts
 // xxx.ets
@@ -401,7 +401,7 @@ struct LineExample1 {
 
 ### Example 3: Setting the Stroke Dashes
 
-Draw the border gaps of a line using the strokeDashArray attribute.
+This example demonstrates how to use **strokeDashArray** to set the stroke dashes of a line.
 
 ```ts
 // xxx.ets
@@ -510,7 +510,7 @@ The following example shows how to use attributeModifier to dynamically set the 
 // xxx.ets
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
-    // A line with the start point (10, 10), end point (120, 10), border color #2787D9, border gap [20], left offset 15, line end style as a semicircle, border transparency 0.5, border width 10, and anti-aliasing enabled.
+    // A line with the start point (10, 10), end point (120, 10), stroke color #2787D9, stroke dash [20], left offset 15, line end style as a semicircle, stroke opacity 0.5, stroke width 10, and anti-aliasing enabled.
     instance.startPoint([10,10])
     instance.endPoint([120, 10])
     instance.stroke("#2787D9")
