@@ -206,6 +206,40 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
    编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
    
    <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'clickTime=0';
+  @State clickTime: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Button(this.message)
+          .fontSize(20)
+          .margin(5)
+          .width(350)
+          .height(60)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.clickTime++;
+            this.message = 'clickTime=' + this.clickTime;
+            hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
    
 4. 点击DevEco Studio界面中的运行按钮，运行应用工程。然后点击设备上“clickTime=0”按钮，触发业务逻辑。
 
