@@ -3647,6 +3647,7 @@
       - ArkTS APIs<!--core-file-arkts-->
         - [@ohos.application.BackupExtensionAbility (BackupExtensionAbility)](reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md)
         - [@ohos.file.cloudSync (Device-Cloud Synchronization)](reference/apis-core-file-kit/js-apis-file-cloudsync.md)
+        - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](reference/apis-core-file-kit/js-apis-file-cloudsyncmanager.md)
         - [@ohos.file.environment (Directory Environment Capability)](reference/apis-core-file-kit/js-apis-file-environment.md)
         - [@ohos.file.fileuri (File URI)](reference/apis-core-file-kit/js-apis-file-fileuri.md)
         - [@ohos.file.fs (File Management)](reference/apis-core-file-kit/js-apis-file-fs.md)
