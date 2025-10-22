@@ -933,7 +933,7 @@ if (wakeupManager != null) {
 | 名称   | 类型                            | 只读 | 可选 | 说明       |
 | ------ | ----------------------------- |----|----| ---------- |
 | eventId | [WakeupIntelligentVoiceEventType](#wakeupintelligentvoiceeventtype) | 否  | 否  | 唤醒智能语音事件类型。 |
-| isSuccess | boolean | 否  | 否  | 是否唤醒成功，false为唤醒失败，true为唤醒成功。 |
+| isSuccess | boolean | 否  | 否  | 是否唤醒成功，true表示唤醒成功，false表示唤醒失败 |
 | context | string | 否  | 否  | 描述唤醒事件上下文。 |
 
 ## EnrollIntelligentVoiceEngine
@@ -952,9 +952,9 @@ getSupportedRegions(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **参数：**
 
-| 参数名     | 类型                              | 只读 | 可选 | 说明                                          |
-| -------- | -------------------------------- |----|----| ------------------------------------------- |
-| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;         | 否  | 否  | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
+| 参数名     | 类型                              | 必填 | 说明                                          |
+| -------- | -------------------------------- | --- | ------------------------------------------- |
+| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;         | 是   | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
 
 **错误码：**
 
@@ -1899,9 +1899,9 @@ getSupportedRegions(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
-| 参数名     | 类型                              | 只读 | 可选 | 说明                                          |
-| -------- | -------------------------------- |----|----| ------------------------------------------- |
-| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;        | 否  | 否  | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
+| 参数名     | 类型                              | 必填 | 说明                                          |
+| -------- | -------------------------------- | --- | ------------------------------------------- |
+| callback     | AsyncCallback&lt;Array&lt;string&gt;&gt;                           | 是   | 返回支持区域的数组，当前只支持中国，对应取值为'CN'。 |
 
 **错误码：**
 
