@@ -28,6 +28,7 @@
 
     ```c
     #include "database/rdb/relational_store.h"
+    #include "hilog/log.h"
     ```
 
 3. 调用OH_Rdb_Backup接口实现数据库备份。
