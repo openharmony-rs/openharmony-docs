@@ -1,8 +1,8 @@
 # Developing a File Manager Application (for System Applications Only)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -157,7 +157,7 @@ For details about the APIs for developing the user file manager, see [User File 
        if (!fileUri) {
          console.error("createFile return undefined object");
        }
-       console.info("createFile sucess, fileUri: " + JSON.stringify(fileUri));
+       console.info("createFile success, fileUri: " + JSON.stringify(fileUri));
      } catch (err) {
       let error: BusinessError = err as BusinessError;
       console.error("createFile failed, errCode:" + error.code + ", errMessage:" + error.message);
@@ -196,7 +196,7 @@ You can use **notify()** to observe not only the changes of directories, but als
    ```ts
    const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
      if (NotifyMessageDir != undefined) {
-       console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+       console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
      } else {
       console.error("NotifyMessageDir is undefined");
      }
@@ -214,7 +214,7 @@ You can use **notify()** to observe not only the changes of directories, but als
    // Define the observer callback.
    const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
      if (NotifyMessageDir != undefined) {
-       console.log('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
+       console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
      } else {
       console.error("NotifyMessageDir is undefined");
      }
@@ -245,7 +245,7 @@ You can use **notify()** to observe not only the changes of directories, but als
        console.error("unregisterObserver failed, errCode:" + error.code + ", errMessage:" + error.message);
      }
    }
-   // Pass in DEVICES_URI to unregisterObserver () to cancel the device status listening.
+   // Pass in DEVICES_URI to unregisterObserver() to cancel the device status listening.
    async function UnregisterObserver04() {
      try {
        // Unsubscribe from the device online/offline status.

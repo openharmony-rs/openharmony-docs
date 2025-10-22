@@ -105,40 +105,54 @@ The following table lists the key APIs of the backup and restore extension capab
     }
     ```
 
-    ```ts
-    //onBackupEx && onRestoreEx
-    import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+    <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
 
-    interface ErrorInfo {
-      type: string,
-      errorCode: number,
-      errorInfo: string
+``` TypeScript
+// [Start on_release]
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
+// [StartExclude on_release]
+import { BundleVersion } from '@kit.CoreFileKit';
+// [EndExclude on_release]
+// ···
+
+// [StartExclude on_release]
+interface ErrorInfo {
+  type: string,
+  errorCode: number,
+  errorInfo: string
+}
+// [EndExclude on_release]
+
+// ···
+
+class BackupExt extends BackupExtensionAbility {
+  // [StartExclude on_release]
+  //onBackupEx
+  async onBackupEx(backupInfo: string): Promise<string> {
+    console.info('onBackupEx ok');
+    let errorInfo: ErrorInfo = {
+      type: 'ErrorInfo',
+      errorCode: 0,
+      errorInfo: 'app diy error info'       
     }
+    return JSON.stringify(errorInfo);
+  }
 
-    class BackupExt extends BackupExtensionAbility {
-      //onBackupEx
-      async onBackupEx(backupInfo: string): Promise<string> {
-        console.info(`onBackupEx ok`);
-        let errorInfo: ErrorInfo = {
-          type: "ErrorInfo",
-          errorCode: 0,
-          errorInfo: "app diy error info"       
-        }
-        return JSON.stringify(errorInfo);
-      }
-
-      // onRestoreEx
-      async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
-        console.info(`onRestoreEx begin`);
-        let errorInfo: ErrorInfo = {
-          type: "ErrorInfo",
-          errorCode: 0,
-          errorInfo: "app diy error info"
-        }
-        return JSON.stringify(errorInfo);
-      }
+  // onRestoreEx
+  async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
+    console.info(`onRestoreEx begin`);
+    let errorInfo: ErrorInfo = {
+      type: 'ErrorInfo',
+      errorCode: 0,
+      errorInfo: 'app diy error info'
     }
-    ```
+    return JSON.stringify(errorInfo);
+  }
+  // [EndExclude on_release]
+// ···
+}
+```
+
 
 4. Starting from API version 20, to perform special operations after application data backup and restore, such as cleaning up temporary files created during these processes, you can customize `BackupExtensionAbility` inherited by the class in the `BackupExtension.ets` file and override the `onRelease` method for execution when the backup or restore is complete.
 
@@ -146,35 +160,51 @@ The following table lists the key APIs of the backup and restore extension capab
 
    The following example shows how to implement `onRelease` when the temporary file directory needs to be removed.
 
-    ```ts
-    import { BackupExtensionAbility, fileIo } from '@kit.CoreFileKit';
+    <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
 
-    const SCENARIO_BACKUP: number = 1;
-    const SCENARIO_RESTORE: number = 2;
-    // Temporary directory to be removed.
-    let filePath: string = '/data/storage/el2/base/.temp/';
+``` TypeScript
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
+// ···
+// [StartExclude on_backup_restore]
+import { fileIo } from '@kit.CoreFileKit';
+// [EndExclude on_backup_restore]
 
-    class BackupExt extends BackupExtensionAbility {
-      async onRelease(scenario: number): Promise<void> {
-        try {
-          if (scenario == SCENARIO_BACKUP) {
-            // In the backup scenario, the application implements the processing. The following describes how to delete temporary files generated during backup.
-            console.info(`onRelease begin`);
-            await fileIo.rmdir(filePath);
-            console.info(`onRelease end, rmdir succeed`);
-          }
-          if (scenario == SCENARIO_RESTORE) {
-            // In the restore scenario, the application implements the processing. The following describes how to remove temporary files generated during restoration.
-            console.info(`onRelease begin`);
-            await fileIo.rmdir(filePath);
-            console.info(`onRelease end, rmdir succeed`);
-          }
-        } catch (error) {
-          console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
-        }
+// ···
+
+// [StartExclude on_backup_restore]
+const SCENARIO_BACKUP: number = 1;
+const SCENARIO_RESTORE: number = 2;
+// Temporary directory to be removed.
+let filePath: string = '/data/storage/el2/base/.temp/';
+// [EndExclude on_backup_restore]
+
+class BackupExt extends BackupExtensionAbility {
+// ···
+  // [StartExclude on_backup_restore]
+  // onRelease
+  async onRelease(scenario: number): Promise<void> {
+    try {
+      if (scenario == SCENARIO_BACKUP) {
+        // In the backup scenario, the application implements the processing. The following describes how to delete temporary files generated during backup.
+        console.info(`onRelease begin`);
+        await fileIo.rmdir(filePath);
+        console.info(`onRelease end, rmdir succeed`);
       }
+      if (scenario == SCENARIO_RESTORE) {
+        // In the restore scenario, the application implements the processing. The following describes how to remove temporary files generated during restoration.
+        console.info(`onRelease begin`);
+        await fileIo.rmdir(filePath);
+        console.info(`onRelease end, rmdir succeed`);
+      }
+    } catch (error) {
+      console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
     }
-    ```
+  }
+  // [EndExclude on_backup_restore]
+}
+// [End on_backup_restore]
+```
+
 
 ### Description of the Metadata Profile
 
@@ -224,8 +254,3 @@ The following lists the paths supported by **includes**:
 }
 ```
 
-##  
-
- 
-
--  

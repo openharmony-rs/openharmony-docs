@@ -1,12 +1,12 @@
 # User File URI
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
-As a unique identifier of a user file, the uniform resource identifier (URI) is usually used to specify the user file to be accessed or modified. Avoid using part of an URI for service code development.
+As a unique identifier of a user file, the uniform resource identifier (URI) is usually used to specify the user file to be accessed or modified. Avoid using part of a URI for service code development.
 
 ## URI Types
 
@@ -50,61 +50,77 @@ The following table describes the fields in a document URI.
 
 ### Using a Document URI
 
-Applications of the normal APL can call [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) APIs only to access files based on document URIs. "Permission denied" will be reported if an API of other modules is used. For details about the sample code, see [Selecting Documents](./select-user-file.md#selecting-documents) and [Saving Documents](./save-user-file.md#saving-documents).<!--Del-->
+Applications of the normal APL can call [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) APIs only to access files based on document URIs. For details about the sample code, see [Selecting Documents](./select-user-file.md#selecting-documents) and [Saving Documents](./save-user-file.md#saving-documents).<!--Del-->
 
 Applications of the system_basic or system_core APL can call **@ohos.file.fs** and [@ohos.file.fileAccess](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md) APIs to access files based on the URIs. To call **@ohos.file.fileAccess** APIs, the application must have the ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permissions declared in the **module.json5** file. "Permission denied" will be reported if an API of other modules is used. The following example walks you through on how to use **@ohos.file.fileAccess** APIs to create a document and rename the document based on the URI.
 
 1. Use [@ohos.file.fileAccess](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md) to create a document. The URI of the document is returned.
 2. Rename the document based on its URI.
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { common } from '@kit.AbilityKit';
-import { fileAccess } from '@kit.CoreFileKit';
-// The context is passed from EntryAbility. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+<!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 
-async function example(context: common.UIAbilityContext) {
-    let fileAccessHelper: fileAccess.FileAccessHelper;
-    // Obtain wantInfos by using getFileAccessAbilityInfo().
-    let wantInfos: Array<Want> = [
-      {
-        bundleName: "com.ohos.UserFile.ExternalFileManager",
-        abilityName: "FileExtensionAbility",
-      },
-    ]
+``` TypeScript
+// [Start import_user_fileAccess]
+// [Start import_get_uri_assets]
+import { BusinessError } from '@kit.BasicServicesKit';
+// [StartExclude import_get_uri_assets]
+import { Want } from '@kit.AbilityKit';
+// [EndExclude import_get_uri_assets]
+import { common } from '@kit.AbilityKit';
+// [StartExclude import_get_uri_assets]
+import { fileAccess} from '@kit.CoreFileKit';
+// [EndExclude import_get_uri_assets]
+// [StartExclude copy_file_uri_example]
+// ···
+// [EndExclude copy_file_uri_example]
+
+// context is passed by EntryAbility.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// [End import_user_fileAccess]
+
+// [StartExclude copy_file_uri_example]
+// ···
+async function documentURIExample() {
+  let fileAccessHelper: fileAccess.FileAccessHelper;
+  // Obtain wantInfos by using getFileAccessAbilityInfo().
+  let wantInfos: Want[] = [
+    {
+    bundleName: 'com.ohos.UserFile.ExternalFileManager',
+    abilityName: 'FileExtensionAbility',
+    },
+  ];
+  try {
+    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
+    if (!fileAccessHelper) {
+      console.error('createFileAccessHelper interface returns an undefined object');
+    }
+    // A built-in storage directory is used as an example.
+    // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
+    // Use the URI obtained.
+    let sourceUri: string = 'file://docs/storage/Users/currentUser/Download';
+    let displayName: string = 'test1.txt';
+    let fileUri: string;
     try {
-      fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
-      if (!fileAccessHelper) {
-        console.error("createFileAccessHelper interface returns an undefined object");
+      // Create a document. The URI of the document created is returned.
+      fileUri = await fileAccessHelper.createFile(sourceUri, displayName);
+      if (!fileUri) {
+        console.error('createFile return undefined object');
       }
-      // A built-in storage directory is used as an example.
-      // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
-      // Use the URI obtained.
-      let sourceUri: string = "file://docs/storage/Users/currentUser/Download";
-      let displayName: string = "file1.txt";
-      let fileUri: string;
-      try {
-        // Create a document. The URI of the document created is returned.
-        fileUri = await fileAccessHelper.createFile(sourceUri, displayName);
-        if (!fileUri) {
-          console.error("createFile return undefined object");
-        }
-        console.info("createFile success, fileUri: " + JSON.stringify(fileUri));
-        // Rename the document. The URI of the renamed document is returned.
-        let renameUri = await fileAccessHelper.rename(fileUri, "renameFile.txt");
-        console.info("rename success, renameUri: " + JSON.stringify(renameUri));
-      } catch (err) {
-        let error: BusinessError = err as BusinessError;
-        console.error("createFile failed, errCode:" + error.code + ", errMessage:" + error.message);
-      }
+      console.info('createFile success, fileUri: ' + JSON.stringify(fileUri));
+      // Rename the document. The URI of the renamed document is returned.
+      let renameUri = await fileAccessHelper.rename(fileUri, 'renameFile.txt');
+      console.info('rename success, renameUri: ' + JSON.stringify(renameUri));
     } catch (err) {
       let error: BusinessError = err as BusinessError;
-      console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
+      console.error('createFile failed, errCode:' + error.code + ', errMessage:' + error.message);
     }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error('createFileAccessHelper failed, errCode:' + error.code + ', errMessage:' + error.message);
   }
+}
 ```
+
 <!--DelEnd-->
 
 ## Media File URI
@@ -177,47 +193,67 @@ The following information can be obtained from **PhotoKeys** through temporary a
 
 The following example shows how to obtain the thumbnail and file information based on the media file URI with temporary authorization.
 
-```ts
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
+<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { dataSharePredicates } from '@kit.ArkData';
+// ···
 import { common } from '@kit.AbilityKit';
+// ···
+// [StartExclude copy_file_uri_example]
+// [StartExclude function_example]
+import { dataSharePredicates } from '@kit.ArkData';
+// ···
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 // Define a URI array to receive the URIs returned by PhotoViewPicker.select.
-let uris: Array<string> = [];
-// The context is passed from EntryAbility. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+let uris: string[] = [];
+// [EndExclude function_example]
+// [EndExclude copy_file_uri_example]
+
+// context is passed by EntryAbility.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// [End import_user_fileAccess]
+
+// [StartExclude copy_file_uri_example]
+// [StartExclude function_example]
+// ···
 
 // Call PhotoViewPicker.select to select an image.
-async function photoPickerGetUri(context: common.UIAbilityContext) {
-  try {  
-    let PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-    PhotoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-    PhotoSelectOptions.maxSelectNumber = 1;
+async function photoPickerGetUri() {
+  try {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    // Set the maximum number of images that can be selected to 1.
+    photoSelectOptions.maxSelectNumber = 1;
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(PhotoSelectOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
-      uris = PhotoSelectResult.photoUris;
-    }).catch((err: BusinessError) => {
-      console.error(`PhotoViewPicker.select failed with err, code is ${err.code}, message is ${err.message}`);
-    });
-  } catch (error) {
+    // Wait for the user to select an image.
+    let photoSelectResult: photoAccessHelper.PhotoSelectResult = await photoPicker.select(photoSelectOptions);
+    console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+    uris = photoSelectResult.photoUris;
+  } catch (err) {
     let err: BusinessError = error as BusinessError;
     console.error(`PhotoViewPicker failed with err, code is ${err.code}, message is ${err.message}`);
   }
 }
 
-async function uriGetAssets() {
-try {
+async function uriGetAssets(): Promise<string> {
+  // Check whether the uris array is empty.
+  if (uris.length === 0) {
+    throw new Error('No URIs available');
+  }
+  try {
     let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     // Configure search criteria to query the image based on the URI returned by PhotoViewPicker.select.
     predicates.equalTo('uri', uris[0]);
     let fetchOption: photoAccessHelper.FetchOptions = {
-      fetchColumns: [photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT, photoAccessHelper.PhotoKeys.TITLE, photoAccessHelper.PhotoKeys.DURATION],
+      fetchColumns: [photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT,
+        photoAccessHelper.PhotoKeys.TITLE, photoAccessHelper.PhotoKeys.DURATION],
       predicates: predicates
     };
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOption);
     // Obtain the PhotoAsset object corresponding to the URI. The file information is obtained from the PhotoAsset object.
     const asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('asset displayName: ', asset.displayName);
@@ -234,11 +270,15 @@ try {
         console.error('getThumbnail fail', err);
       }
     });
-  } catch (error){
+	// ···
+  } catch (error) {
     console.error(`uriGetAssets failed with err, code is ${error.code}, message is ${error.message}`);
+    return 'ReadMediaUriFail';
   }
+  return 'ReadMediaUriFail';
 }
 ```
+
 <!--Del-->
 ## Copying a File by URI (for System Applications Only)
 
@@ -256,53 +296,67 @@ To copy a file to the specified directory based on the URI, perform the followin
 
 Sample code:
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { common } from '@kit.AbilityKit';
-import { fileAccess } from '@kit.CoreFileKit';
+<!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 
-// The context is passed from EntryAbility. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-async function example(context: common.UIAbilityContext) {
-    let fileAccessHelper: fileAccess.FileAccessHelper;
-    // Obtain wantInfos by using getFileAccessAbilityInfo().
-    let wantInfos: Array<Want> = [
-      {
-        bundleName: "com.ohos.UserFile.ExternalFileManager",
-        abilityName: "FileExtensionAbility",
-      },
-    ]
+``` TypeScript
+// [Start function_example]
+// [Start import_user_fileAccess]
+// [Start import_get_uri_assets]
+import { BusinessError } from '@kit.BasicServicesKit';
+// [StartExclude import_get_uri_assets]
+import { Want } from '@kit.AbilityKit';
+// [EndExclude import_get_uri_assets]
+import { common } from '@kit.AbilityKit';
+// [StartExclude import_get_uri_assets]
+import { fileAccess} from '@kit.CoreFileKit';
+// [EndExclude import_get_uri_assets]
+// ···
+
+// context is passed by EntryAbility.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// [End import_user_fileAccess]
+
+// ···
+async function copyingFileByUriExample() {
+  let fileAccessHelper: fileAccess.FileAccessHelper;
+  // Obtain wantInfos by using getFileAccessAbilityInfo().
+  let wantInfos: Want[] = [
+    {
+    bundleName: 'com.ohos.UserFile.ExternalFileManager',
+    abilityName: 'FileExtensionAbility',
+    },
+  ];
+  try {
+    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
+    if (!fileAccessHelper) {
+      console.error('createFileAccessHelper interface returns an undefined object');
+    }
+    // A built-in storage directory is used as an example.
+    // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
+    // Use the URI obtained.
+    let sourceUri: string = 'file://docs/storage/Users/currentUser/Download/renameFile.txt';
+    // URI of the directory to which the file is copied.
+    let destUri: string = 'file://docs/storage/Users/currentUser/Documents';
+    // File name to use if a file name conflict occurs.
+    let displayName: string = 'file.txt';
+    // URI of the file to return.
+    let fileUri: string;
     try {
-      fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
-      if (!fileAccessHelper) {
-        console.error("createFileAccessHelper interface returns an undefined object");
+      // Copy a file and return the URI of the file generated.
+      fileUri = await fileAccessHelper.copyFile(sourceUri, destUri, displayName);
+      if (!fileUri) {
+        console.error('copyFile return undefined object');
       }
-      // A built-in storage directory is used as an example.
-      // In the sample code, sourceUri indicates the Download directory. The URI is the URI in fileInfo.
-      // Use the URI obtained.
-      let sourceUri: string = "file://docs/storage/Users/currentUser/Download/one.txt";
-      // URI of the directory to which the file is copied.
-      let destUri: string = "file://docs/storage/Users/currentUser/Documents";
-      // File name to use if a file name conflict occurs.
-      let displayName: string = "file1.txt";
-      // URI of the file to return.
-      let fileUri: string;
-      try {
-        // Copy a file and return the URI of the file generated.
-        fileUri = await fileAccessHelper.copyFile(sourceUri, destUri, displayName);
-        if (!fileUri) {
-          console.error("copyFile return undefined object");
-        }
-        console.info("copyFile success, fileUri: " + JSON.stringify(fileUri));
-      } catch (err) {
-        let error: BusinessError = err as BusinessError;
-        console.error("copyFile failed, errCode:" + error.code + ", errMessage:" + error.message);
-      }
+        console.info('copyFile success, fileUri: ' + JSON.stringify(fileUri));
     } catch (err) {
       let error: BusinessError = err as BusinessError;
-      console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
+      console.error('copyFile failed, errCode:' + error.code + ', errMessage:' + error.message);
     }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error('createFileAccessHelper failed, errCode:' + error.code + ', errMessage:' + error.message);
   }
+}
 ```
+
 <!--DelEnd-->
