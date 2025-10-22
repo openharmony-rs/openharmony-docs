@@ -321,14 +321,12 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).ADD     | 是   | 数据添加类型。         |
-| index  | number                    | 是   | 插入数据索引值。取值范围是[0, 数据源长度-1]。 |
-| count  | number                    | 否   | 插入数量，默认为1。   |
-| key    | string \| Array\<string\> | 否   | 为插入的数据分配键值，默认使用原键值。 |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).ADD     | 否 | 否   | 数据添加类型。         |
+| index  | number                    | 否 | 否   | 插入数据索引值。取值范围是[0, 数据源长度-1]。 |
+| count  | number                    | 否 | 是   | 插入数量，默认为1。   |
+| key    | string \| Array\<string\> | 否 | 是   | 为插入的数据分配键值，默认使用原键值。 |
 
 ### DataDeleteOperation
 
@@ -338,13 +336,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).DELETE     | 是   | 数据删除类型。         |
-| index  | number                    | 是   | 起始删除位置索引值。取值范围是[0, 数据源长度-1]。|
-| count  | number                    | 否   | 删除数据数量，默认为1。    |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).DELETE     | 否 | 否   | 数据删除类型。         |
+| index  | number                    | 否 | 否   | 起始删除位置索引值。取值范围是[0, 数据源长度-1]。|
+| count  | number                    | 否 | 是   | 删除数据数量，默认为1。    |
 
 ### DataChangeOperation
 
@@ -354,13 +350,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).CHANGE     | 是   | 数据改变类型。         |
-| index  | number                    | 是   | 改变的数据的索引值。取值范围是[0, 数据源长度-1]。|
-| key  | string                    | 否   | 为改变的数据分配新的键值，默认使用原键值。    |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).CHANGE     | 否 | 否   | 数据改变类型。         |
+| index  | number                    | 否 | 否   | 改变的数据的索引值。取值范围是[0, 数据源长度-1]。|
+| key  | string                    | 否 | 是   | 为改变的数据分配新的键值，默认使用原键值。    |
 
 ### DataMoveOperation
 
@@ -370,13 +364,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).MOVE     | 是   | 数据移动类型。 |
-| index  | [MoveIndex](#moveindex12)        | 是   | 移动位置。取值范围是[0, 数据源长度-1]。|
-| key | string              | 否   | 为被移动的数据分配新的键值，默认使用原键值。 |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).MOVE     | 否 | 否   | 数据移动类型。 |
+| index  | [MoveIndex](#moveindex12)        | 否 | 否   | 移动位置。取值范围是[0, 数据源长度-1]。|
+| key | string              | 否 | 是   | 为被移动的数据分配新的键值，默认使用原键值。 |
 
 ### DataExchangeOperation
 
@@ -386,13 +378,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明                         |
-| ------ | -------------------------- | ---- | ---------------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).EXCHANGE | 是   | 数据交换类型。                 |
-| index  | [ExchangeIndex](#exchangeindex12)            | 是   | 交换位置。取值范围是[0, 数据源长度-1]。|
-| key    | [ExchangeKey](#exchangekey12)              | 否   | 分配新的键值，默认使用原键值。 |
+| 名称 | 类型                       | 只读 | 可选 | 说明                         |
+| ------ | -------------------------- | ---- | ---- | ---------------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).EXCHANGE | 否 | 否   | 数据交换类型。                 |
+| index  | [ExchangeIndex](#exchangeindex12)            | 否 | 否   | 交换位置。取值范围是[0, 数据源长度-1]。|
+| key    | [ExchangeKey](#exchangekey12)              | 否 | 是   | 分配新的键值，默认使用原键值。 |
 
 ### DataReloadOperation
 
@@ -402,11 +392,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                     | 必填 | 说明             |
-| ------ | ------------------------ | ---- | ---------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).RELOAD | 是   | 数据全部重载类型。 |
+| 名称 | 类型                     | 只读 | 可选 | 说明             |
+| ------ | ------------------------ | ---- | ---- | ---------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).RELOAD | 否 | 否   | 数据全部重载类型。 |
 
 ### DataOperationType枚举说明
 
@@ -431,12 +419,10 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明            |
-| ------ | --------------- | ---- | ------- |
-| from   | number | 是   | 起始移动位置。取值范围是[0, 数据源长度-1]。|
-| to  | number           | 是   | 目的移动位置。取值范围是[0, 数据源长度-1]。|
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| from   | number | 否 | 否   | 起始移动位置。取值范围是[0, 数据源长度-1]。|
+| to  | number           | 否 | 否   | 目的移动位置。取值范围是[0, 数据源长度-1]。|
 
 ## ExchangeIndex<sup>12+</sup>
 
@@ -444,12 +430,10 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明            |
-| ------ | --------------- | ---- | ------- |
-| start   | number | 是   | 第一个交换位置。取值范围是[0, 数据源长度-1]。|
-| end  | number           | 是   | 第二个交换位置。取值范围是[0, 数据源长度-1]。|
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| start   | number | 否 | 否   | 第一个交换位置。取值范围是[0, 数据源长度-1]。|
+| end  | number           | 否 | 否   | 第二个交换位置。取值范围是[0, 数据源长度-1]。|
 
 ## ExchangeKey<sup>12+</sup>
 
@@ -457,9 +441,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明            |
-| ------ | --------------- | ---- | ------- |
-| start   | string | 是   | 为第一个交换的位置分配新的键值，默认使用原键值。        |
-| end  | string   | 是   | 为第二个交换的位置分配新的键值，默认使用原键值。           |
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| start   | string | 否 | 否   | 为第一个交换的位置分配新的键值，默认使用原键值。        |
+| end  | string   | 否 | 否   | 为第二个交换的位置分配新的键值，默认使用原键值。           |
