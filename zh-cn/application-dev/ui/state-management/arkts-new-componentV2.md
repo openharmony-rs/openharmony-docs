@@ -28,13 +28,9 @@
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
-    ```ts
-    @ComponentV2 // 装饰器
-    struct Index { // struct声明的数据结构
-      build() { // build定义的UI
-      }
-    }
-    ```
+
+    <!-- @[ComponentV2_page_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets) -->
+
 
 除非特别说明，\@ComponentV2装饰的自定义组件将与\@Component装饰的自定义组件保持相同的行为。
 
