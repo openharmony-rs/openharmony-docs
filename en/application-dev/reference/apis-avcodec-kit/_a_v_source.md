@@ -35,7 +35,7 @@ The AVSource module provides the functions for constructing media resource objec
 | -------- | -------- |
 | [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithDataSource](#oh_avsource_createwithdatasource) ([OH_AVDataSource](_o_h___a_v_data_source.md) \*dataSource) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling **OH_AVSource_Destroy**. |
 | [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithDataSourceExt](#oh_avsource_createwithdatasourceext) ([OH_AVDataSourceExt](_o_h___a_v_data_source_ext.md) \*dataSource, void *userData) | Creates an OH_AVSource instance with a user-defined data source. You can release the instance by calling **OH_AVSource_Destroy**. User-defined data can be passed to its callback functions through the **userData** parameter. |
-| [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithURI](#oh_avsource_createwithuri) (char \*uri) | Creates an OH_AVSource instance based on a URI. | 
+| [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithURI](#oh_avsource_createwithuri) (char \*uri) | Creates an OH_AVSource instance based on a URI. This function supports only HTTP progressive streaming media, but not HLS/DASH streaming media. For HLS/DASH streaming media playback, use the AVPlayer for development.  | 
 | [OH_AVSource](#oh_avsource) \* [OH_AVSource_CreateWithFD](#oh_avsource_createwithfd) (int32_t fd, int64_t offset, int64_t size) | Creates an OH_AVSource instance based on a file descriptor (FD). | 
 | [OH_AVErrCode](_core.md#oh_averrcode) [OH_AVSource_Destroy](#oh_avsource_destroy) ([OH_AVSource](#oh_avsource) \*source) | Destroys an OH_AVSource instance and clears internal resources. | 
 | [OH_AVFormat](_core.md#oh_avformat) \* [OH_AVSource_GetSourceFormat](#oh_avsource_getsourceformat) ([OH_AVSource](#oh_avsource) \*source) | Obtains the basic information about a media resource file. | 
@@ -206,6 +206,8 @@ OH_AVErrCode OH_AVSource_Destroy (OH_AVSource *source)
 **Description**
 
 Destroys an OH_AVSource instance and clears internal resources. An instance can be destroyed only once. The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.
+
+This function supports only HTTP progressive streaming media, but not HLS/DASH streaming media. For HLS/DASH streaming media playback, use the AVPlayer for development.
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 

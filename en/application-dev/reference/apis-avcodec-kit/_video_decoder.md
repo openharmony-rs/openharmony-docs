@@ -472,8 +472,6 @@ One of the following result codes:
 
 **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.
 
-**AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoDecoder_Prepare**.
-
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
@@ -1001,8 +999,6 @@ One of the following result codes:
 **AV_ERR_UNKNOWN**: An unknown error occurs.
 
 **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.
-
-**AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoDecoder_Prepare**.
 
 
 ### OH_VideoDecoder_RenderOutputData()
