@@ -1816,7 +1816,7 @@ struct StickyNestedScroll {
 
 ### 示例11（自由滚动和缩放）
 
-该示例实现了Scroll组件自由滚动和缩放效果。
+从API version 20开始，该示例实现了Scroll组件自由滚动和缩放效果。
 ```ts
 @Entry
 @Component
