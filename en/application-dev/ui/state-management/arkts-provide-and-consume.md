@@ -150,7 +150,7 @@ The rules of \@State also apply to \@Provide. The difference is that \@Provide a
 
 2. Variables decorated with \@Consume cannot be initialized in constructor parameters. Otherwise, an error will be reported during compilation. \@Consume can match the corresponding \@Provide variable only by key or initialize the \@Provide variable by setting the default value from API version 20.
 
-    [Incorrect usage]
+    **Incorrect Usage**
   
     ```ts
     @Component
@@ -176,7 +176,7 @@ The rules of \@State also apply to \@Provide. The difference is that \@Provide a
     }
     ```
 
-    [Correct usage]
+    **Correct Usage**
   
     ```ts
     @Component
@@ -221,7 +221,7 @@ The rules of \@State also apply to \@Provide. The difference is that \@Provide a
   
 4. In versions earlier than API version 20, if the @Provide variable corresponding to the key is not defined when the @Consume variable is initialized, the framework throws a runtime error, indicating that the @Consume variable fails to be initialized because the @Provide variable corresponding to the key cannot be found. From API version 20 onwards, if the @Provide variable corresponding to the key is not defined and no default value is set when the @Consume variable is initialized, the framework throws a runtime error, indicating that the @Consume variable fails to be initialized because the @Provide variable corresponding to the key cannot be found and no default value is set.
 
-    [Incorrect usage]
+    **Incorrect Usage**
   
     ```ts
     @Component
@@ -250,7 +250,7 @@ The rules of \@State also apply to \@Provide. The difference is that \@Provide a
     }
     ```
 
-    [Correct usage]
+    **Correct Usage**
   
     ```ts
     @Component
@@ -1084,7 +1084,7 @@ struct CustomWidgetChild {
 
 In the **build** method, when the variable decorated by @Provide and @Consume is of the object type and is called using the **a.b(this.object)** format, the original object of **this.object** is passed in the b method. If the property of **this.object** is changed, the UI cannot be re-rendered. In the following example, the UI re-render is not triggered when **this.dog.age** and **this.dog.name** in the component is changed by using a static method or using **this** to call the internal method of the component.
 
-[Incorrect usage]
+**Incorrect Usage**
 
 ```ts
 class Animal {
@@ -1178,7 +1178,7 @@ struct ZooGrandChild {
 
 You can assign a value to this.dog and then invoke the variable to reserve the proxy for this.dog, implementing UI update.
 
-[Correct usage]
+**Correct Usage**
 
 ```ts
 class Animal {

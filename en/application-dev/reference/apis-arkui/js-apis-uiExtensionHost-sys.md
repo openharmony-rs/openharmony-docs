@@ -454,7 +454,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 Sets whether to enable privacy protection for the UIExtension component during non-system screenshots. This API uses a promise to return the result.
 > **NOTE**
 >
-> After screenshot privacy protection is enabled, use the window screenshot [window.snapshot](arkts-apis-window-Window.md#snapshot9) or component screenshot [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12).
+> When privacy protection is enabled, using [window.snapshot](arkts-apis-window-Window.md#snapshot9) or [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will not capture the content of the current component (excluding child windows created under this component).
  
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

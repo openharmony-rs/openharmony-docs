@@ -3299,7 +3299,7 @@ Obtains the attributes of the swiper node. If the node is not created using ArkT
 
 **Example**
 
-For details, see createNode('Swiper')<sup>12+</sup> Example (#createnodeswiper12).
+See the example for [createNode('Swiper')<sup>12+</sup>](#createnodeswiper12).
 
 ### bindController('Swiper')<sup>20+</sup>
 
@@ -3330,7 +3330,7 @@ For details about the error codes, see Custom Node Error Codes.
 
 **Example**
 
-For details, see createNode('Swiper')<sup>12+</sup> example (#createnodeswiper12).
+See the example for [createNode('Swiper')<sup>12+</sup>](#createnodeswiper12).
 
 ### Progress<sup>12+</sup>
 
