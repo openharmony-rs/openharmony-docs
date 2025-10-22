@@ -244,7 +244,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Ability被销毁时的回调函数，包含AbilityResult参数。 |
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | UIAbility被销毁时的回调函数，包含AbilityResult参数。 |
 
 **错误码：**
 

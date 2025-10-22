@@ -40,7 +40,7 @@ import { common } from '@kit.AbilityKit';
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-启动一个Ability。使用callback异步回调。仅支持在主线程调用。
+启动一个UIAbility。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -128,7 +128,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-启动一个Ability。使用callback异步回调。仅支持在主线程调用。
+启动一个UIAbility。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -223,7 +223,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-启动一个Ability。使用Promise异步回调。仅支持在主线程调用。
+启动一个UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
