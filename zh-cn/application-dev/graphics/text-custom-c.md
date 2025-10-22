@@ -1,4 +1,4 @@
-# 独立塑形（C/C++）
+# 自定义文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @KejiePeng-->
@@ -6,9 +6,7 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
-## 场景介绍
-
-在复杂的文本排版场景中，开发者常常需要在不依赖系统排班的前提下，获取文本的字形信息、宽度、方向等底层数据，以便实现自定义的排版逻辑。系统提供了独立的文本塑形能力，允许开发者通过API获取文字的测量信息，从而支持自定义排版、绘制、断行等操作。
+在复杂的文本排版场景中，开发者常常需要在不依赖系统排版的前提下，获取文本的字形信息、宽度、方向等底层数据，以便实现自定义的排版逻辑。系统提供了独立的文本塑形能力，允许开发者通过API获取文字的测量信息，从而支持自定义排版、绘制、断行等操作。
 
 这种能力特别适用于以下场景：
 
@@ -18,9 +16,11 @@
 
 - 精细化排版管理（如艺术排版、动态文字布局）
 
-## 接口说明
+## 独立塑形
 
-独立塑形中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
+### 接口说明
+
+独立塑形中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)和[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -36,7 +36,7 @@
 
 
 
-## 开发步骤
+### 开发步骤
 
 1. 在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
    ```c++
@@ -149,9 +149,9 @@
    OH_Drawing_DestroyRuns(runs);
    ```
 
-## 完整示例
+### 完整示例
 
-完整的文本测量示例如下。
+完整的独立塑形示例如下。
 ```c++
 #include <native_drawing/drawing_font_collection.h>
 #include <native_drawing/drawing_text_typography.h>
@@ -239,5 +239,5 @@ void SampleBitMap::drawIndependentShapingText() {
 }
 ```
 
-### 效果展示
+#### 效果展示
 ![ndk_independent_shaping.png](figures/ndk_independent_shaping.png)
