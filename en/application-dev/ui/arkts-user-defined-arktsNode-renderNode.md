@@ -1,4 +1,10 @@
 # Custom Render Node (RenderNode)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -76,10 +82,10 @@ struct Index {
           const child = renderNode.getChild(1);
           const nextSibling = child!.getNextSibling()
           if (child === null || nextSibling === null) {
-            console.log(TEST_TAG + ' the child or nextChild is null');
+            console.info(TEST_TAG + ' the child or nextChild is null');
           } else {
             // Obtain the position of the child node.
-            console.log(`${TEST_TAG} the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+            console.info(`${TEST_TAG} the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
             `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
           }
         })
@@ -90,7 +96,7 @@ struct Index {
 
 ## Setting and Obtaining Rendering-related Properties
 
-In **RenderNode**, you can set rendering-related properties, including the following: [backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor), [clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe), [opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity), [size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size), [position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position), [frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame), [pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot), [scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale), [translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation), [rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation), [transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform), [shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor), [shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset), [shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha), [shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation), [shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius), [borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12), [borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12), [borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12), [borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12), [shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12), [shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12), [markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12). For details about the supported attributes, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md#rendernode).
+In **RenderNode**, you can set rendering-related properties, including the following: [backgroundColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#backgroundcolor), [clipToFrame](../reference/apis-arkui/js-apis-arkui-renderNode.md#cliptoframe), [opacity](../reference/apis-arkui/js-apis-arkui-renderNode.md#opacity), [size](../reference/apis-arkui/js-apis-arkui-renderNode.md#size), [position](../reference/apis-arkui/js-apis-arkui-renderNode.md#position), [frame](../reference/apis-arkui/js-apis-arkui-renderNode.md#frame), [pivot](../reference/apis-arkui/js-apis-arkui-renderNode.md#pivot), [scale](../reference/apis-arkui/js-apis-arkui-renderNode.md#scale), [translation](../reference/apis-arkui/js-apis-arkui-renderNode.md#translation), [rotation](../reference/apis-arkui/js-apis-arkui-renderNode.md#rotation), [transform](../reference/apis-arkui/js-apis-arkui-renderNode.md#transform), [shadowColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowcolor), [shadowOffset](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowoffset), [shadowAlpha](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowalpha), [shadowElevation](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowelevation), [shadowRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#shadowradius), [borderStyle](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderstyle12), [borderWidth](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderwidth12), [borderColor](../reference/apis-arkui/js-apis-arkui-renderNode.md#bordercolor12), [borderRadius](../reference/apis-arkui/js-apis-arkui-renderNode.md#borderradius12), [shapeMask](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapemask12), [shapeClip](../reference/apis-arkui/js-apis-arkui-renderNode.md#shapeclip12), [markNodeGroup](../reference/apis-arkui/js-apis-arkui-renderNode.md#marknodegroup12). For details about the supported attributes, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md).
 
 > **NOTE**
 > 
@@ -152,31 +158,31 @@ struct Index {
         .width(300)
         .onClick(() => {
           renderNode.position = { x: 10, y: 10 };
-          console.log(TEST_TAG + " position:" + JSON.stringify(renderNode.position));
+          console.info(TEST_TAG + " position:" + JSON.stringify(renderNode.position));
         })
       Button("pivot")
         .width(300)
         .onClick(() => {
           renderNode.pivot = { x: 0.5, y: 0.6 };
-          console.log(TEST_TAG + " pivot:" + JSON.stringify(renderNode.pivot));
+          console.info(TEST_TAG + " pivot:" + JSON.stringify(renderNode.pivot));
         })
       Button("scale")
         .width(300)
         .onClick(() => {
           renderNode.scale = { x: 0.5, y: 1 };
-          console.log(TEST_TAG + " scale:" + JSON.stringify(renderNode.scale));
+          console.info(TEST_TAG + " scale:" + JSON.stringify(renderNode.scale));
         })
       Button("translation")
         .width(300)
         .onClick(() => {
           renderNode.translation = { x: 100, y: 0 };
-          console.log(TEST_TAG + " translation:" + JSON.stringify(renderNode.translation));
+          console.info(TEST_TAG + " translation:" + JSON.stringify(renderNode.translation));
         })
       Button("rotation")
         .width(300)
         .onClick(() => {
           renderNode.rotation = { x: 45, y: 0, z: 0 };
-          console.log(TEST_TAG + " rotation:" + JSON.stringify(renderNode.rotation));
+          console.info(TEST_TAG + " rotation:" + JSON.stringify(renderNode.rotation));
         })
       Button("transform")
         .width(300)
@@ -187,7 +193,7 @@ struct Index {
             0, 0, 1, 0,
             0, 0, 0, 1
           ];
-          console.log(TEST_TAG + " transform:" + JSON.stringify(renderNode.transform));
+          console.info(TEST_TAG + " transform:" + JSON.stringify(renderNode.transform));
         })
       Button("shadow")
         .width(300)
@@ -196,10 +202,10 @@ struct Index {
           renderNode.shadowColor = 0XFF00FF00;
           renderNode.shadowOffset = { x: 10, y: 10 };
           renderNode.shadowAlpha = 0.1;
-          console.log(TEST_TAG + " shadowElevation:" + JSON.stringify(renderNode.shadowElevation));
-          console.log(TEST_TAG + " shadowColor:" + JSON.stringify(renderNode.shadowColor));
-          console.log(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
-          console.log(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
+          console.info(TEST_TAG + " shadowElevation:" + JSON.stringify(renderNode.shadowElevation));
+          console.info(TEST_TAG + " shadowColor:" + JSON.stringify(renderNode.shadowColor));
+          console.info(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
+          console.info(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
         })
       Button("shadowRadius")
         .width(300)
@@ -207,9 +213,9 @@ struct Index {
           renderNode.shadowOffset = { x: 10, y: 10 };
           renderNode.shadowAlpha = 0.7
           renderNode.shadowRadius = 30;
-          console.log(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
-          console.log(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
-          console.log(TEST_TAG + " shadowRadius:" + JSON.stringify(renderNode.shadowRadius));
+          console.info(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
+          console.info(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
+          console.info(TEST_TAG + " shadowRadius:" + JSON.stringify(renderNode.shadowRadius));
         })
       Button("border")
         .width(300)
@@ -238,22 +244,22 @@ struct Index {
             bottomLeft: 32,
             bottomRight: 32
           };
-          console.log(TEST_TAG + " borderWidth:" + JSON.stringify(renderNode.borderWidth));
-          console.log(TEST_TAG + " borderStyle:" + JSON.stringify(renderNode.borderStyle));
-          console.log(TEST_TAG + " borderColor:" + JSON.stringify(renderNode.borderColor));
-          console.log(TEST_TAG + " borderRadius:" + JSON.stringify(renderNode.borderRadius));
+          console.info(TEST_TAG + " borderWidth:" + JSON.stringify(renderNode.borderWidth));
+          console.info(TEST_TAG + " borderStyle:" + JSON.stringify(renderNode.borderStyle));
+          console.info(TEST_TAG + " borderColor:" + JSON.stringify(renderNode.borderColor));
+          console.info(TEST_TAG + " borderRadius:" + JSON.stringify(renderNode.borderRadius));
         })
       Button("shapeMask")
         .width(300)
         .onClick(() => {
           renderNode.shapeMask = mask;
-          console.log(TEST_TAG + " shapeMask:" + JSON.stringify(renderNode.shapeMask));
+          console.info(TEST_TAG + " shapeMask:" + JSON.stringify(renderNode.shapeMask));
         })
       Button("shapeClip")
         .width(300)
         .onClick(() => {
           renderNode.shapeClip = clip;
-          console.log(TEST_TAG + " shapeMask:" + JSON.stringify(renderNode.shapeMask));
+          console.info(TEST_TAG + " shapeClip:" + JSON.stringify(renderNode.shapeClip));
         })
     }
     .padding({
@@ -308,7 +314,7 @@ class MyRenderNode extends RenderNode {
       bottom: 200
     });
     canvas.detachBrush();
-    console.log(`RenderNode draw width = ${this.width}`);
+    console.info(`RenderNode draw width = ${this.width}`);
   }
 }
 
@@ -363,6 +369,158 @@ struct Index {
   }
 }
 ```
+
+## Adjusting the Transformation Matrix of the Custom Drawing Canvas
+
+Since API version 12, you can customize drawing behavior by overriding the [draw](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) method in **RenderNode**.
+
+Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) to adjust the transformation matrix of the custom drawing canvas.
+
+> **NOTE**
+> 
+> - [getTotalMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12) obtains the transformation matrix of the temporary command-recording canvas.
+> 
+> - To apply transformations to the canvas, use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) instead of [setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12). This is because **setMatrix** overwrites the existing transformation matrix inherited from the actual canvas.
+
+**ArkTS API sample code**
+
+```ts
+import { NodeController, UIContext, RenderNode, DrawContext, FrameNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+function drawImage(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  canvas.concatMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 74,
+    blue: 175
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 74,
+    blue: 175
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+function drawImage1(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  // 1. getTotalMatrix obtains the transformation matrix of the temporary command-recording canvas.
+  // 2. Use concatMatrix instead of setMatrix to apply transformations, as setMatrix overwrites the existing transformation matrix inherited from the actual canvas.
+  canvas.getTotalMatrix();
+  canvas.setMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 74,
+    blue: 175
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 74,
+    blue: 175
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+class MyRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    drawImage(context.canvas);
+  }
+}
+
+class MyRenderNode1 extends RenderNode {
+  draw(context: DrawContext): void {
+    drawImage1(context.canvas);
+  }
+}
+
+class MyNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const rootNode: FrameNode = new FrameNode(uiContext);
+    rootNode.commonAttribute.width(300).height(300);
+    const theRenderNode: MyRenderNode = new MyRenderNode();
+    theRenderNode.frame = {
+      x: 10,
+      y: 100,
+      width: 100,
+      height: 50
+    };
+    theRenderNode.backgroundColor = 0xFF2787D9;
+    rootNode.getRenderNode()?.appendChild(theRenderNode);
+    return rootNode;
+  }
+}
+
+class MyNodeController1 extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    const rootNode: FrameNode = new FrameNode(uiContext);
+    rootNode.commonAttribute.width(300).height(300);
+    const theRenderNode: MyRenderNode1 = new MyRenderNode1();
+    theRenderNode.frame = {
+      x: 10,
+      y: 100,
+      width: 100,
+      height: 50
+    };
+    theRenderNode.backgroundColor = 0xFF2787D9;
+    rootNode.getRenderNode()?.appendChild(theRenderNode);
+    return rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  myNodeController: MyNodeController = new MyNodeController();
+  myNodeController1: MyNodeController = new MyNodeController1();
+
+  build() {
+    Row() {
+      Column() {
+        NodeContainer(this.myNodeController)
+      }
+      .height('100%')
+      .width('45%')
+
+      Column() {
+        NodeContainer(this.myNodeController1)
+      }
+      .height('100%')
+      .width('45%')
+    }
+  }
+}
+```
+![RenderNode-canvas](./figures/renderNode-canvas.png)
 
 **Node-API sample code**
 
@@ -476,9 +634,16 @@ import bridge from "libentry.so" // This .so file is written and generated by No
 import { DrawContext, FrameNode, NodeController, RenderNode } from '@kit.ArkUI'
 
 class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
   draw(context: DrawContext) {
     // The width and height in the context need to be converted from vp to px.
-    bridge.nativeOnDraw(0, context, vp2px(context.size.height), vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height), this.uiContext.vp2px(context.size.width));
   }
 }
 
@@ -490,7 +655,7 @@ class MyNodeController extends NodeController {
 
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
-      const renderNode = new MyRenderNode();
+      const renderNode = new MyRenderNode(uiContext);
       renderNode.size = { width: 100, height: 100 }
       rootRenderNode.appendChild(renderNode);
     }
@@ -529,7 +694,7 @@ class MyNodeController extends NodeController {
       renderChildNode.frame = { x: 0, y: 0, width: 100, height: 100 };
       renderChildNode.backgroundColor = 0xffff0000;
       renderChildNode.label = 'customRenderChildNode';
-      console.log('label:', renderChildNode.label);
+      console.info('label:', renderChildNode.label);
       renderNode.appendChild(renderChildNode);
     }
 
@@ -552,3 +717,78 @@ struct Index {
   }
 }
 ```
+
+## Checking RenderNode Reference Status
+
+Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values.
+
+Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20) API to check whether a **RenderNode** object has released its reference to backend entity nodes. This enables verification of node validity before operations to prevent potential issues.
+
+```ts
+import { NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private renderNode: RenderNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.renderNode = new RenderNode();
+    this.renderNode.size = { width: 300, height: 300 };
+    this.renderNode.backgroundColor = 0xffd5d5d5;
+
+    // Mount the RenderNode.
+    this.rootNode.getRenderNode()?.appendChild(this.renderNode);
+    return this.rootNode;
+  }
+
+  disposeRenderNode() {
+    // Release the reference between the RenderNode and backend entity nodes.
+    this.renderNode?.dispose();
+  }
+
+  isDisposed() : string {
+    if (this.renderNode !== null) {
+      // Check RenderNode reference status.
+      if (this.renderNode.isDisposed()) {
+        return 'renderNode isDisposed is true';
+      }
+      else {
+        return 'renderNode isDisposed is false';
+      }
+    }
+    return 'renderNode is null';
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State text: string = ''
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 4 }) {
+      NodeContainer(this.myNodeController)
+      Button('RenderNode dispose')
+        .onClick(() => {
+          this.myNodeController.disposeRenderNode();
+          this.text = '';
+        })
+        .width(200)
+        .height(50)
+      Button('RenderNode isDisposed')
+        .onClick(() => {
+          this.text = this.myNodeController.isDisposed();
+        })
+        .width(200)
+        .height(50)
+      Text(this.text)
+        .fontSize(25)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+<!--no_check-->
