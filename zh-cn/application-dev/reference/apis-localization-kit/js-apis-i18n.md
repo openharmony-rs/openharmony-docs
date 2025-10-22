@@ -7,7 +7,9 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供系统相关的或者增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。
+本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。接口中使用的名词定义如下：
+- 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。
+- 框架字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)自由组合而成的字符串，不支持自定义文本。
 
 >  **说明：**
 >
@@ -863,7 +865,7 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 
 setTime(date: Date): void
 
-设置日历对象内部的时间、日期。
+基于传入的Date对象，设置日历对象内部的时间、日期。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -889,7 +891,7 @@ setTime(date: Date): void
 
 setTime(time: number): void
 
-设置日历对象内部的时间、日期。
+基于传入的时间戳，设置日历对象内部的时间、日期。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3791,7 +3793,7 @@ try {
 
 ## SimpleNumberFormat<sup>18+</sup>
 
-提供数字格式化的能力。
+基于框架字符串提供数字格式化的能力。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
