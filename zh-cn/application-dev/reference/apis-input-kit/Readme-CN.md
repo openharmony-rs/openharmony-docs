@@ -52,6 +52,7 @@
     - [Input_InterceptorOptions](capi-input-input-interceptoroptions.md)
     - [Input_CursorConfig](capi-input-input-cursorconfig.md)
     - [Input_CustomCursor](capi-input-input-customcursor.md)
+    - [Input_CursorInfo](capi-input-input-cursorinfo.md)
 - 错误码<!--input-arkts-errcode-->
   <!--Del-->
   - [键鼠穿越管理错误码](errorcode-cooperator.md)

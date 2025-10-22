@@ -39,6 +39,7 @@
 | [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) | Input_InterceptorOptions | 事件拦截选项。 |
 | [Input_CustomCursor](capi-input-input-customcursor.md) | Input_CustomCursor | 自定义鼠标光标像素图资源。 |
 | [Input_CursorConfig](capi-input-input-cursorconfig.md) | Input_CursorConfig | 自定义鼠标光标配置。 |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | 定义鼠标光标信息。|
 
 ### 枚举
 
@@ -225,6 +226,14 @@
 | [void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)](#oh_input_cursorconfig_destroy) | - | 销毁自定义鼠标光标配置对象。 |
 | [Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)](#oh_input_cursorconfig_isfollowsystem) | - | 查询自定义鼠标光标配置是否跟随系统设置调整光标大小。 |
 | [Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)](#oh_input_setcustomcursor) | - | 设置自定义鼠标光标样式。 |
+| [struct Input_CursorInfo* OH_Input_CursorInfo_Create()](#oh_input_cursorinfo_create) | - | 创建鼠标光标信息对象。|
+| [void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)](#oh_input_cursorinfo_destroy) | - | 销毁鼠标光标信息对象。|
+| [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | 获取指定鼠标光标信息对象对应的光标显示状态。|
+| [Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)](#oh_input_cursorinfo_getstyle) | - |获取指定鼠标光标信息对象对应的光标样式。|
+| [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | 获取指定鼠标光标信息对象对应的光标大小档位。|
+| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | 获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。|
+| [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | 获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。|
+| [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。 |
 
 ## 枚举类型说明
 
@@ -4595,3 +4604,205 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 | 类型 | 说明 |
 | -- | -- |
 | [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+
+### OH_Input_CursorInfo_Create()
+
+```
+struct Input_CursorInfo* OH_Input_CursorInfo_Create()
+```
+
+**描述**
+
+创建鼠标光标信息对象。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| struct Input_CursorInfo* | 创建成功返回一个[Input_CursorInfo](capi-input-input-cursorinfo.md)对象，否则返回空指针，可能原因是内存分配失败。|
+
+### OH_Input_CursorInfo_Destroy()
+
+```
+void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)
+```
+
+**描述**
+
+销毁鼠标光标信息对象。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)** cursorInfo | 鼠标光标信息对象。|
+
+### OH_Input_CursorInfo_IsVisible()
+
+```
+Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)
+```
+
+**描述**
+
+获取指定鼠标光标信息对象对应的光标显示状态。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
+| bool* visible | 鼠标光标显示或隐藏状态。true代表显示状态，false代表隐藏状态。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CursorInfo_IsVisible的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。
+
+### OH_Input_CursorInfo_GetStyle()
+
+```
+Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)
+```
+
+**描述**
+
+获取指定鼠标光标信息对象对应的光标样式。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
+| [Input_PointerStyle](capi-oh-pointer-style-h.md) | 鼠标光标信息的光标样式枚举，具体请参考[Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle)。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CursorInfo_GetStyle的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。|
+
+### OH_Input_CursorInfo_GetSizeLevel()
+
+```
+Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)
+```
+
+**描述**
+
+获取指定鼠标光标信息对象对应的光标大小档位。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
+| int32_t* sizeLevel | 鼠标光标信息的光标大小档位。取值范围为整数1~7，数值越大则光标越大。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图大小为准。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CursorInfo_GetSizeLevel的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。|
+
+### OH_Input_CursorInfo_GetColor()
+
+```
+Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)
+```
+
+**描述**
+
+获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
+| uint32_t* color | 鼠标光标信息的光标颜色, 使用32位ARGB整数表示。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图颜色为准。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_CursorInfo_GetColor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。 |
+
+### OH_Input_GetMouseEventCursorInfo()
+
+```
+Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)
+```
+
+**描述**
+
+获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象。可以通过[OH_Input_AddMouseEventMonitor](#oh_input_addmouseeventmonitor)或者[OH_Input_AddInputEventInterceptor](#oh_input_addinputeventinterceptor)接口的回调函数中获取鼠标事件对象。 |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 鼠标光标信息对象，可以通过[OH_Input_CursorInfo_Create](#oh_input_cursorinfo_create)接口创建鼠标光标信息对象。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_GetMouseEventCursorInfo的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+
+### OH_Input_GetCursorInfo()
+
+```
+Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)
+```
+
+**描述**
+
+查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 鼠标光标信息对象，可以通过[OH_Input_CursorInfo_Create](#oh_input_cursorinfo_create)接口创建鼠标光标信息对象。|
+| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelmap | PixelMap位图对象，如果该参数非空且光标为应用自定义，则会返回光标的PixelMap位图对象，否则不返回PixelMap位图对象。首先通过[OH_PixelmapInitializationOptions_Create](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_create)接口创建OH_PixelmapInitializationOptions对象，然后调用[OH_PixelmapInitializationOptions_SetWidth](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setwidth)接口设置大于0的宽度，调用[OH_PixelmapInitializationOptions_SetHeight](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setheight)接口设置大于0的高度，最后以该OH_PixelmapInitializationOptions对象作为入参调用[OH_PixelmapNative_CreateEmptyPixelmap](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createemptypixelmap)接口创建PixelMap位图对象。<br>使用完需要先调用[OH_PixelmapNative_Release](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放PixelMap位图对象，然后调用[OH_PixelmapNative_Destroy](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)接口销毁PixelMap位图对象。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_GetCursorInfo的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
