@@ -1,5 +1,4 @@
 # lowpower_video_sink.h
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @Saber_e-->
@@ -43,9 +42,10 @@ The file declares the native APIs provided by the LowPowerVideoSink. You can use
 | [OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_reset) | Resets an OH_LowPowerVideoSink instance.<br> To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpowervideosink_configure) to configure the instance again.|
 | [OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)](#oh_lowpowervideosink_destroy) | Clears internal resources of an OH_LowPowerVideoSink instance and destroys the instance. You only need to call the function once.|
 | [OH_AVErrCode OH_LowPowerVideoSink_SetSyncAudioSink(OH_LowPowerVideoSink* videoSink, OH_LowPowerAudioSink* audioSink)](#oh_lowpowervideosink_setsyncaudiosink) | Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_LowPowerVideoSink instance.|
-| [OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs,void* userData)](#oh_lowpowervideosink_settargetstartframe) | Sets the target rendering frame for an OH_LowPowerVideoSink instance.|
+| [OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs, void* userData)](#oh_lowpowervideosink_settargetstartframe) | Sets the target rendering frame for an OH_LowPowerVideoSink instance.|
 | [OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, const float speed)](#oh_lowpowervideosink_setplaybackspeed) | Sets the playback speed for an OH_LowPowerVideoSink instance.|
 | [OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* samples)](#oh_lowpowervideosink_returnsamples) | Provides a buffer to an OH_LowPowerVideoSink instance for procesing.|
+| [OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)](#oh_lowpowervideosink_getlatestpts) | Obtains the Presentation Timestamp (PTS) of the video that is playing.|
 | [OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, OH_LowPowerVideoSinkCallback* callback)](#oh_lowpowervideosink_registercallback) | Registers a callback for an OH_LowPowerVideoSink instance.|
 | [OH_LowPowerVideoSinkCallback* OH_LowPowerVideoSinkCallback_Create(void)](#oh_lowpowervideosinkcallback_create) | Creates an OH_LowPowerVideoSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* callback)](#oh_lowpowervideosinkcallback_destroy) | Destroys an OH_LowPowerVideoSinkCallback instance.|
@@ -70,12 +70,11 @@ Creates an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char* mime | Pointer to the MIME type of the video decoder. For details about the available options, see [AVCODEC_MIME_TYPE](../apis-avcodec-kit/_codec_base.md#variables).|
+| const char* mime | Pointer to the MIME type of the video decoder. For details about the available options, see [AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -94,7 +93,6 @@ OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH
 Configures an OH_LowPowerVideoSink instance. This function must be called before [OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -121,7 +119,6 @@ Sets parameters for an OH_LowPowerVideoSink instance. The parameters can be dyna
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -146,7 +143,6 @@ OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AV
 Obtains the parameters of an OH_LowPowerVideoSink instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -173,13 +169,12 @@ Sets the rendering window for an OH_LowPowerVideoSink instance. This function mu
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const [OHNativeWindow](../apis-avcodec-kit/_codec_base.md#ohnativewindow)* surface | Pointer to the OHNativeWindow instance.|
+| const [OHNativeWindow](../apis-avcodec-kit/capi-codecbase-nativewindow.md)* surface | Pointer to the OHNativeWindow instance.|
 
 **Returns**
 
@@ -198,7 +193,6 @@ OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)
 Prepares an OH_LowPowerVideoSink instance for decoding and rendering. This function must be called after [OH_LowPowerVideoSink_SetSyncAudioSink](#oh_lowpowervideosink_setsyncaudiosink).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -226,7 +220,6 @@ After successful startup, the OH_LowPowerVideoSink instance starts reporting the
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -251,7 +244,6 @@ Renders the first frame decoded by an OH_LowPowerVideoSink instance. This functi
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -275,7 +267,6 @@ OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)
 Starts an OH_LowPowerVideoSink instance for rendering. This function must be called after [OH_LowPowerVideoSink_StartDecoder](#oh_lowpowervideosink_startdecoder).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -303,7 +294,6 @@ After successful pause, the OH_LowPowerVideoSink instance stops reporting the [O
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -329,7 +319,6 @@ Resumes an OH_LowPowerVideoSink instance. This function must be called after[OH_
 After successful resumption, the OH_LowPowerVideoSink instance resumes reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -359,7 +348,6 @@ Note that if the decoder has previously received data, you must input the codec 
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -383,7 +371,6 @@ OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)
 Stops an OH_LowPowerVideoSink instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -411,7 +398,6 @@ To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpow
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -435,7 +421,6 @@ OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)
 Clears internal resources of an OH_LowPowerVideoSink instance and destroys the instance. You only need to call the function once.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -461,7 +446,6 @@ Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_L
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -478,7 +462,7 @@ Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_L
 ### OH_LowPowerVideoSink_SetTargetStartFrame()
 
 ```
-OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink,const int64_t framePts,OH_LowPowerVideoSink_OnTargetArrived onTargetArrived,const int64_t timeoutMs,void* userData)
+OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs, void* userData)
 ```
 
 **Description**
@@ -486,7 +470,6 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 Sets the target rendering frame for an OH_LowPowerVideoSink instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -516,7 +499,6 @@ Sets the playback speed for an OH_LowPowerVideoSink instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -542,13 +524,37 @@ Provides a buffer to an OH_LowPowerVideoSink instance for procesing.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | Pointer to the OH_AVSamplesBuffer instance to be provided. Batch input of samples is supported.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br> **AV_ERR_INVALID_VAL**: An input parameter is nullptr or invalid.<br> **AV_ERR_SERVICE_DIED**: The media server is destroyed.<br> **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not supported.|
+
+### OH_LowPowerVideoSink_GetLatestPts()
+
+```
+OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)
+```
+
+**Description**
+
+Obtains the Presentation Timestamp (PTS) of the video that is playing.
+
+**Since**: 21
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) *sink | Pointer to an OH_LowPowerVideoSink instance.|
+| int64_t *pts | Pointer to the PTS of the video.|
 
 **Returns**
 
@@ -567,7 +573,6 @@ OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, O
 Registers a callback for an OH_LowPowerVideoSink instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -612,7 +617,6 @@ Destroys an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -636,7 +640,6 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetDataNeededListener(OH_LowPowerVideo
 Sets a data needed listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -664,7 +667,6 @@ Sets an error listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -690,7 +692,6 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVide
 Sets a render start listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -718,7 +719,6 @@ Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -736,7 +736,7 @@ Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.
 ### OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener()
 
 ```
-OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback,OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded,void* userData)
+OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)
 ```
 
 **Description**
@@ -744,7 +744,6 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -763,7 +762,7 @@ Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
 ### OH_LowPowerVideoSinkCallback_SetEosListener()
 
 ```
-OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback,OH_LowPowerVideoSink_OnEos onEos, void* userData)
+OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)
 ```
 
 **Description**
@@ -771,7 +770,6 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCal
 Sets an end-of-stream listener for an OH_LowPowerVideoSinkCallback instance.
 
 **Since**: 20
-
 
 **Parameters**
 

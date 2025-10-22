@@ -1815,9 +1815,9 @@ async function test(){
 
 ## setLoudnessGain<sup>21+</sup>
 
-setLoudnessGain(loudnessGain: double): Promise\<void>
+setLoudnessGain(loudnessGain: number): Promise\<void>
 
-Sets the loudness of the AVPlayer. After this API is called, the loudness gain takes effect immediately. This API uses a promise to return the result.
+Sets the loudness gain of the AVPlayer. After this API is called, the loudness gain takes effect immediately. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1831,7 +1831,7 @@ Sets the loudness of the AVPlayer. After this API is called, the loudness gain t
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| loudnessGain | double | Yes  |Loudness, in the range [-90.0, 24.0], in dB. The default value is 0.0 dB.|
+| loudnessGain | number | Yes  |Loudness gain, in the range [-90.0, 24.0], in dB. The default value is 0.0 dB.|
 
 **Return value**
 
@@ -1852,14 +1852,18 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 **Example**
 
 ```ts
-let avPlayer = await media.createAVPlayer();
+import { audio } from '@kit.AudioKit';
 
-let loudnessGain: double = 1.0;
-avPlayer.audioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
-  rendererFlags: 0
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+
+  let loudnessGain: number = 1.0;
+  avPlayer.audioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+    rendererFlags: 0
+  }
+  avPlayer.setLoudnessGain(loudnessGain);
 }
-avPlayer.setLoudnessGain(loudnessGain);
 ```
 
 ## setVolume<sup>9+</sup>
