@@ -49,15 +49,26 @@
     - [FileIO](capi-fileio.md)
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
+    - [CloudDisk](capi-clouddisk.md)
   - 头文件<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
     - [oh_fileio.h](capi-oh-fileio-h.md)
     - [oh_file_share.h](capi-oh-file-share-h.md)
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
+    - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
+    - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
   - 结构体<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
+    - [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md)
+    - [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)
+    - [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md)
+    - [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md)
+    - [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)
+    - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
+    - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
+    - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
   
