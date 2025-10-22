@@ -1,21 +1,26 @@
 # mediatool
 
-mediatool is a lightweight collection of command line utilities, by which you can manage media assets The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
-The mediatool is a built-in tool of the system and does not need to be installed. It is stored in the /bin folder and can be called by the hdc shell.
+You can use [mediatool](#mediatool-1) or [hdc commands](#hdc-commands) to operate media library resources. The media library provides and manages data for the gallery. Images and videos in the media library are displayed on the gallery screen.
 
-## Prerequisites
+## mediatool
 
-- The device is connected properly.
-- The developer mode is enabled.
-- You have run the **hdc shell** command to enter the command line execution mode.
+mediatool is a lightweight command line tool set that built in the **/bin** folder. You can run the **hdc shell** command to invoke it.
 
-## Commands
+### Prerequisites
 
-<!--Del-->
+- The devices are properly connected.
+- **Developer options** is enabled in system settings.
+- The **hdc shell** command is executed to enter the command line execution mode.
 
 ### mediatool send
-  
+
 ```shell
 mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
 ```
@@ -24,7 +29,7 @@ Sends images, audios, and videos in **\<path-to-local-media-file>** of the devic
 
 By default, a thumbnail is generated in synchronous mode when a media file is being saved to the media library, and the source file in **\<path-to-local-media-file>** is deleted once the saving process is complete.
 
-  | Parameter              | Description            |
+| Parameter              | Description            |
 | ---- |--------------- |
 | -ts | Creates a thumbnail in synchronous mode when an image or a video is being saved. The media file is displayed after the thumbnail is generated. However, the saving takes a longer time. This parameter is used by default.|
 | -tas | Creates a thumbnail in asynchronous mode when an image or a video is being saved. This parameter conflicts with **-ts**. The media file is displayed before the thumbnail is generated, and the saving takes a shorter time.|
@@ -49,9 +54,9 @@ For example, if the URI of image A in the media library is **file://media/Photo/
 
 The following resource information is contained:
 
-- uri: URI of the media resource.
-- display_name: name of the media resource.
-- data: path of the source file of the media resource on the device.
+- **uri**: URI of the media resource.
+- **display_name**: name of the media resource.
+- **data**: path of the source file of the media resource on the device.
 
 You can also set **\<resource-uri>** to **all**, which displays the information about all the resource files in the media library.
 
@@ -77,33 +82,35 @@ uri, display_name, data
 mediatool recv <media-target> <dest-path>
 ```
 
-This command is used to export the source file content of the media library resource specified by `<media-target>` to the device path specified by `<dest-path>`.
+Exports the source file specified by **\<media-target>** in the media library to the device path specified by **\<dest-path>**.
 
-`<media-target>` can be in either of the following formats:
-* File path in the system media directory. (You can obtain the value from [mediatool ls -l](#mediatool-ls--l). The folder path cannot be specified.)
-* URI of the media library. (For details, see Media Library URI Description/Obtaining Method.)
+**\<media-target>** can be in either of the following formats:
 
-If `<media-target>` specifies a file path, only the following paths are supported. The following paths have mapping relationships and access the same directory. The system media directory of the current user is accessed.
-* /storage/media/local/files/Photo and lower file paths.
-* /storage/media/\<uid\>/local/files/Photo and lower file paths. \<uid\> must be the ID of the current user. Otherwise, an error message is displayed, indicating that the path is invalid.
+* File path in the system media directory. You can obtain the file path by running the [mediatool ls -l](#mediatool-ls--l) command. The folder path cannot be specified.
+* URI of the media library. (For details, see [Media Library URI Introduction and Obtaining Method](#media-library-uri-introduction-and-obtaining-method).)
 
-`<dest-path>` indicates the path of the file or folder to be created. If the value is a folder path, the file is exported to the folder, and the file name in the media library is retained. If it is set to a file path, do not use the path of an existing file. The <!--Del--> `<dest-path>` parameter must specify a path that can be accessed.<!--DelEnd--><!--RP1--><!--RP1End-->
+If **\<media-target>** specifies a file path, only the following paths are supported; they are mapped to one another and all resolve to the current user's system media directory.
+
+* **/storage/media/local/files/Photo** and lower file paths.
+* **/storage/media/\<uid\>/local/files/Photo** and lower file paths. **\<uid\>** must be the current user ID. Otherwise, an error message is displayed, indicating that the path is invalid.
+
+**\<dest-path>** is the path of the file to be created or the folder path. If it is set to a folder path, the file will be exported to the folder, and the file name remains the same as that in the media library. If it is set to a file path, do not use the path of an existing file. <!--Del-->The **<dest-path>** parameter must specify a path that can be accessed.<!--DelEnd--><!--RP1--><!--RP1End-->
 
 After the file is exported successfully, the path of the exported file is displayed.
 
-If **\<resource-uri>** is set to **all**, all resource files in the media library are exported. If `<media-target>` is set to `all`, `<dest-path>` must be set to a folder path.
+If **\<media-target>** is set to **all**, all resource files in the media library are exported. In this case, **\<dest-path>** must be a folder path.
 
 This command cannot be used to export media assets from hidden albums.
 
 **Example**
 
 ```shell
-# Use the URI to export the corresponding media resource.
+# Export the corresponding media resource based on the URI.
 > mediatool recv file://media/Photo/3 /data/local/tmp/out.jpg
 Table Name: Photos
 /data/local/tmp/out.jpg
 
-# Use the path to export the corresponding media resource.
+# Export the corresponding media resource based on the path.
 > mediatool recv /storage/media/local/files/Photo/16/IMG_1748435796_000.jpg /data/local/tmp/out.jpg
 Table Name: Photos
 /data/local/tmp/out.jpg
@@ -120,7 +127,6 @@ Table Name: Photos
 ...
 
 Table Name: Audios
-
 ```
 
 ### mediatool delete
@@ -131,7 +137,7 @@ mediatool delete <resource-uri>
 
 Deletes a resource file specified by **\<resource-uri>** from the media library. Since the deleted resource cannot be recovered, exercise caution when using this command.
 
-For details about how to obtain the media library resource URI, see Media Library URI Introduction/Obtaining Method.
+For details about how to obtain the media library resource URI, see [Media Library URI Introduction and Obtaining Method](#media-library-uri-introduction-and-obtaining-method).
 
 If **\<resource-uri>** is set to **all**, all resource files in the media library are deleted and all data in the media library is reset.
 
@@ -154,7 +160,7 @@ Queries the path or URI of a resource file specified by **\<display-name>** in t
 
 This command cannot be used to query media assets in hidden albums.
 
-  | Parameter              | Description            |
+| Parameter              | Description            |
 | ---- |--------------- |
 | -p | Obtains the path of the media resource file. This parameter is used by default.|
 | -u | Obtains the URI of the media resource. This parameter conflicts with **-p**.|
@@ -196,16 +202,16 @@ uri
 mediatool ls -l <media-path>
 ```
 
-Lists all the files in the system media path specified by `<media-path>`. The effect is similar to that of the file system `ls -l`.
+Lists all the files in the system media path specified by **\<media-path>**. The effect is similar to that of **ls -l** in the file system.
 
-The `<media-path>` supports only the following paths. The following paths have mapping relationships and access the same directory. That is, the system media directory of the current user is accessed.
+**\<media-path>** supports only the following paths; they are mapped to one another and all resolve to the current user's system media directory.
 
-* /storage/media/local/files/Photo and lower paths.
-* /storage/media/\<uid\>/local/files/Photo or lower. \<uid\> must be the ID of the current user. Otherwise, an error message is displayed, indicating that the path is invalid.
+* **/storage/media/local/files/Photo** and its subdirectories.
+* **/storage/media/\<uid\>/local/files/Photo** and its subdirectories. **\<uid\>** must be the current user ID. Otherwise, an error message is displayed, indicating that the path is invalid.
 
-`-l` is a mandatory option. If `-l` is not specified, an error is reported.
+The **-l** option is mandatory. If **-l** is not specified, an error is reported.
 
-This command cannot be used to hide media assets in the album.
+This command cannot be used to query media assets in hidden albums.
 
 **Example**
 
@@ -223,13 +229,9 @@ drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 05:59 8
 drwxrwx--x 2 user_data_rw user_data_rw 0 2025-05-29 06:00 9
 ```
 
-## Usage Guide
-
-The following describes some common application scenarios of the MediaTool.
-
 ### Exporting a Specific Media Library Asset
 
-Example: Export a JPG image named MyImage from Gallery.
+The following example shows how to export a JPG image named **MyImage** from Gallery.
 
 ```shell
 > hdc shell mediatool query -u MyImage.jpg
@@ -245,7 +247,7 @@ Table Name: Photos
 FileTransfer finish, Size:10015455, File count = 1, time:679ms rate:14750.30kB/s
 ```
 
-The following is an example of exporting media library assets based on the media file path:
+The following example exports media library assets based on the media file path.
 
 ```shell
 > hdc shell mediatool ls -l /storage/media/local/files/Photo
@@ -292,7 +294,7 @@ FileTransfer finish, Size:10017280, File count = 1, time:664ms rate:15086.27kB/s
 
 ### Deleting a Specific Media Library Asset
 
-The following example shows how to delete a JPG image named MyImage from Gallery.
+The following example shows how to delete a JPG image named **MyImage** from Gallery.
 
 ```shell
 > hdc shell mediatool query -u MyImage.jpg
@@ -305,21 +307,118 @@ uri
 ```
 
 ### Deleting All Media Library Databases
+
 ```shell
 > hdc shell mediatool delete all
 ```
 
-## Media Library URI Introduction/Obtaining Method
+### Media Library URI Introduction and Obtaining Method
 
-URI is the unique identifier of a media library asset. Each URI corresponds to a media asset. The mediatool uses the URI to determine the media asset object to be operated.
+The URI uniquely identifies a media library asset. Each URI corresponds to a media asset. mediatool uses the URI to determine the media asset object to be operated.
 
 To obtain the URI, perform the following steps:
-* If the -u option is added to the mediatool query command, the URI of the corresponding media asset can be returned. You need to enter the display name of the corresponding asset (the name displayed in the gallery contains the suffix).
+
+* Add the **-u** option to **mediatool query** to return the URI of the corresponding media asset. You need to enter the display name of the corresponding asset (the name displayed in Gallery contains the extension).
+
 <!--Del-->
-* The mediatool list all command can be used to obtain the URI list of all media library assets and the display names of the assets.
+
+* Run the **mediatool list all** command to obtain the URI list and display names of all media library assets.
+
 <!--DelEnd-->
 
-The media library URI can be used by the mediatool recv command to export a specific media library asset or used by the mediatool delete command to delete a specific media library asset.
+The media library URI can be used in the **mediatool recv** command to export a specific media library asset or in the **mediatool delete** command to delete a specific media library asset.
 
-Example URI: file://media/Photo/1/IMG_1743078145_000/MyImage.jpg.
-When the preceding URIs are used during mediatool operations, the target asset can be correctly located regardless of whether file://media/Photo/1/IMG_1743078145_000/MyImage.jpg or file://media/Photo/1 is used.
+Example URI: **file://media/Photo/1/IMG_1743078145_000/MyImage.jpg**.
+
+When the preceding URIs are used during mediatool operations, the target asset can be correctly located regardless of whether **file://media/Photo/1/IMG_1743078145_000/MyImage.jpg** or **file://media/Photo/1** is used.
+
+## hdc Commands
+
+Since API version 20, the hdc command can be used to access media library file paths, including the **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** indicates the ID of the current user.
+
+### Querying Media Library Files
+
+Images and videos that are not hidden in a specified path can be queried.
+
+Run the following command:
+
+```shell
+hdc shell ls -l DEST
+```
+
+**Use Example**
+
+```shell
+$ hdc shell ls -l /mnt/data/100/media_fuse/Photo # Return the album list.
+drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 Others
+drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 Camera
+
+$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/Camera # List all local images and videos that are not hidden in the camera folder.
+total 32813056
+-rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 1.jpg
+-rw-rw-rw- 1 user_data_rw user_data_rw 6217442 1970-01-01 00:00 2.jpg
+
+$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/Camera/1.jpg # Return the details about 1.jpg.
+-rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 /mnt/data/100/media_fuse/Photo/Camera/1.jpg
+```
+
+### Exporting Media Library Files
+
+You can export all local files and directories that are not hidden in a specified path.
+
+Run the following command:
+
+```shell
+hdc file recv DEST SOURCE
+```
+
+**Use Example**
+
+```shell
+$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera/File A # Export file A.
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file recv /mnt/data/100/media_fuse/Photo/Camera # Export the Camera directory and files in the directory.
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file recv /mnt/data/100/media_fuse/Photo/ # Export the Photo directory and its subfiles.
+FileTransfer finish, Size:xxx, File...
+```
+
+### Importing Media Library Files
+
+You can import files and directories, but cannot create directories. If the directory names are the same, the content is combined (all files with different names are retained). If the file names are the same, the target file is overwritten.
+
+```shell
+hdc file send SOURCE DEST
+```
+
+**Use Example**
+
+```shell
+$ hdc file send D:\dest\Camera/mnt/data/100/media_fuse/Photo/ # Import all files in D:\dest\Camera to /mnt/data/100/media_fuse/Photo/camera/.
+FileTransfer finish, Size:xxx, File...
+
+$ hdc file send D:\dest\New directory/mnt/data/100/media_fuse/Photo/Camera/ # Directory creation is not supported.
+[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/Camera//New directory
+
+$ hdc file send D:\dest\Camera\File A/mnt/data/100/media_fuse/Photo/Camera/ # Import file A to /mnt/data/100/media_fuse/Photo/Camera/.
+FileTransfer finish, Size:xxx, File...
+```
+
+### Deleting Media Library Files
+
+You can delete specified files in an album, but cannot delete directories.
+
+```shell
+hdc shell rm DEST
+```
+
+**Use Example**
+
+```shell
+$ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/ # Return failure.
+rm: /mnt/data/100/media_fuse/Photo/Camera: Is a directory
+
+$ hdc shell rm /mnt/data/100/media_fuse/Photo/Camera/File A # No information is returned, and the deletion is successful.
+```
