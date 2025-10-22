@@ -38,12 +38,13 @@ CanvasRenderingContext2D的drawImage接口
 
 **适配指导**
 
-变更后，使用drawImage接口时，若传入9个参数，且首个参数为PixelMap类型时，要注意第2至第5个参数会以vp为单位进行解析。
+变更后，使用drawImage接口时，若传入9个参数，且首个参数为PixelMap类型时，要注意第2至第5个参数会以vp为单位进行解析，为避免不同API版本之间单位不同，需要进行单位转换，可以考虑使用PixelMap创建ImageBitmap，使用ImageBitmap进行绘制。
 
 **示例**
 
 ```ts
 import { image } from '@kit.ImageKit'
+import { common } from '@kit.AbilityKit'
 
 @Entry
 @Component
@@ -57,14 +58,12 @@ struct Demo {
         .width('100%')
         .height('100%')
         .onReady(() => {
-          let context = getContext(this)
-          let imageSourceApi = image.createImageSource(context.filesDir + "/view.jpg")
-          let pixelmap = imageSourceApi.createPixelMapSync();
-          let imageInfo = pixelmap.getImageInfoSync()
-          let width = px2vp(imageInfo.size.width)
-          let height = px2vp(imageInfo.size.height)
-          this.context.drawImage(pixelmap, 0, 0, width, height, 50, 50, 250, 200)
-          this.context.drawImage(pixelmap, 0, 0, imageInfo.size.width, imageInfo.size.height, 50, 300, 250, 200)
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
+          let imageSource = image.createImageSource(img.buffer.slice(0));
+          let pixelMap = imageSource.createPixelMapSync();
+          let imageBitmap = new ImageBitmap(pixelMap); // 使用pixelMap创建ImageBitmap
+          this.context.drawImage(imageBitmap, 0, 0, imageBitmap.width, imageBitmap.height, 50, 50, 250, 200);
         })
     }
     .width('100%')
