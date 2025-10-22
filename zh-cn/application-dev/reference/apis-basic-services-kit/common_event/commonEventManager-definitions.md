@@ -57,7 +57,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的快速修复事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的安快速修复事件。
+> 三方应用只能监听自身应用的快速修复事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1028,7 +1028,7 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**订阅方需要的权限：** 无
+**订阅者需要的权限：** 无
 
 **取值：** "usual.event.wifi.mplink.STATE_CHANGE"
 
