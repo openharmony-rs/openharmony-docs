@@ -177,6 +177,8 @@ struct TouchExample {
 ArkTS-Sta示例：
 
 ```typescript
+import { Entry, ComponentV2, Column, Button, TouchEvent } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct TouchExample {
@@ -223,6 +225,8 @@ struct MouseExample {
 ArkTS-Sta示例：
 
 ```typescript
+import { Entry, ComponentV2, Column, Button, MouseEvent } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct MouseExample {
