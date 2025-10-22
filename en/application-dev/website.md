@@ -1358,7 +1358,7 @@
             - [USB Serial Configuration Management](basic-services/usb/usbSerial/usbSerial-configuration.md)
             - [USB Serial Communication Management](basic-services/usb/usbSerial/usbSerial-communication.md)
           - [FAQs](basic-services/usb/faqs-usb.md)
-          - [Glossary](basic-services/usb/usb-glossary.md)
+          - [USB Glossary](basic-services/usb/usb-glossary.md)
           <!--Del-->
           - [USB Service Development](basic-services/usb/usb-guidelines.md)
           - [USB Service Development Overview](basic-services/usb/usb-overview.md)
@@ -1785,8 +1785,10 @@
         - Recording<!--media-recording-c-->
           - [Using AVRecorder to Record Audio (C/C++)](media/media/using-ndk-avrecorder-for-audio-recording.md)
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
-          - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
-            - [AVScreenCapture Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
+          - Screen and Stream Capture with AVScreenCapture (C/C++)<!--using-avscreencapture-for-buffer-->
+            - [Using AVScreenCapture in Basic Scenarios](media/media/avscreencapture-c-basic-process.md)
+            - [Using AVScreenCapture in Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
+            - [Screen Capture FAQs](media/media/avscreencapture-faqs.md)
           - [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](media/media/using-avscreencapture-for-file.md)
           - [Capturing the Specified Area on a Screen (C/C++)](media/media/video-supports-rectangular-area-recording.md)
         - Media Information Query<!--media-info-c-->
@@ -2070,7 +2072,7 @@
   - API Reference Overview<!--ref-overview-api-->
     - [Development Description](reference/development-intro-api.md)
     - [SystemCapability](reference/syscap.md)
-    	<!--Del-->	
+    <!--Del-->	
     - SystemCapability List<!--syscap-list-->
         - [Phone](reference/phone-syscap-list.md)
         - [Tablet](reference/tablet-syscap-list.md)
@@ -2390,7 +2392,9 @@
         - [Bundle Error Codes](reference/apis-ability-kit/errorcode-bundle.md)
         - [Access Control Error Codes](reference/apis-ability-kit/errorcode-access-token.md)
         - [ohos.screenLockFileManager Error Codes](reference/apis-ability-kit/errorcode-screenLockFileManager.md)
+        <!--Del-->
         - [Application Domain Name Verification Error Codes](reference/apis-ability-kit/errorcode-appDomainVerify-sys.md)
+        <!--DelEnd-->
     - Accessibility Kit<!--accessibility-api-->
       - ArkTS APIs<!--accessibility-arkts-->
         - [@ohos.accessibility (Accessibility)](reference/apis-accessibility-kit/js-apis-accessibility.md)
@@ -2974,7 +2978,7 @@
           - [Property Animation (animation)](reference/apis-arkui/arkui-ts/ts-animatorproperty.md)
           - [Explicit Animation (animateTo)](reference/apis-arkui/arkui-ts/ts-explicit-animation.md)
           - [Keyframe Animation (keyframeAnimateTo)](reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md)
-          - [Page Transition Animation (Not Recommended)](reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
+          - [Page Transition (pageTransition)](reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
           - [Component Transition (transition)](reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)
           - [Shared Element Transition (sharedTransition)](reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)
           - [Implicit Shared Element Transition (geometryTransition)](reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)
@@ -5231,7 +5235,7 @@
           - [OH_MediaAsset](reference/apis-media-library-kit/capi-mediaassetmanager-oh-mediaasset.md)
           - [MediaLibrary_RequestOptions](reference/apis-media-library-kit/capi-mediaassetmanager-medialibrary-requestoptions.md)
       - Error Codes<!--media-library-errcode-->
-        - [Media Library Error Codes](reference/apis-media-library-kit/errcode-medialibrary.md)
+        - [Media Library Error Codes](reference/apis-media-library-kit/errorcode-medialibrary.md)
   - Graphics<!--graphics-api-->
     - ArkGraphics 2D<!--arkgraphics-api-->
       - ArkTS APIs<!--arkgraphics-arkts-->
@@ -5634,8 +5638,8 @@
     - [Node-API](reference/native-lib/napi.md)
     - [libuv](reference/native-lib/libuv.md)
     - [OpenSL ES](reference/native-lib/opensles.md)
-    - [OpenGL ES](reference/native-lib/opengl.md)
-    - [OpenGL](reference/native-lib/opengles.md)
+    - [OpenGL ES](reference/native-lib/opengles.md)
+    - [OpenGL](reference/native-lib/opengl.md)
     - [EGL](reference/native-lib/egl.md)
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)

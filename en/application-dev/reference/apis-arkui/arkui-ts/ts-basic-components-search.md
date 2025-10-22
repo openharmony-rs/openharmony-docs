@@ -299,7 +299,7 @@ When setting a custom keyboard, you can bind the [onKeyPrelme](ts-universal-even
 
 | Name               | Type                                       | Mandatory| Description                            |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | Yes  | Custom keyboard.                    |
+| value                 | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Custom keyboard.                    |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | No  | Whether to support keyboard avoidance.|
 
 ### type<sup>11+</sup>
