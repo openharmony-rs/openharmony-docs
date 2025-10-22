@@ -20,6 +20,8 @@
   - [使用系统预置CA证书校验证书链](verify-certchain-by-systemca.md)
   - [证书CMS签名](create-cms-sign-object.md)
   - [证书CMS封装](create-cms-enveloped-object.md)
+  - [证书CMS验签](create-cms-verify-object.md)
+  - [证书CMS解封装](create-cms-decapsulation-object.md)
   - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
 - 证书管理<!--certmanager-->
   - [证书管理概述](certManager-overview.md)
