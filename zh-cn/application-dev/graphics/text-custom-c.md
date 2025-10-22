@@ -239,5 +239,5 @@ void SampleBitMap::drawIndependentShapingText() {
 }
 ```
 
-#### 效果展示
+### 效果展示
 ![ndk_independent_shaping.png](figures/ndk_independent_shaping.png)

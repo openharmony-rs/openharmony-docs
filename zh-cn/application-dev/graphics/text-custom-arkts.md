@@ -105,5 +105,5 @@
 完整的独立塑形示例如下。
 <!-- @[arkts_independent_shaping_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
 
-#### 效果展示
+### 效果展示
 ![ts_independent_shaping.png](figures/ts_independent_shaping.png)
