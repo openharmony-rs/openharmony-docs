@@ -795,6 +795,34 @@ Unsupported metadata. Possible causes: Unsupported metadata type.
 
 重新确定辅助图类型和元数据类型是否对应，再进行读写操作。
 
+## 7600204 无效的区域
+
+**错误信息**
+
+Invalid region.
+
+**可能原因**
+
+Region中设置的顶点位置、宽度或高度超出图片尺寸范围。
+
+**处理步骤**
+
+检查Region中设置的顶点位置、宽度或高度，确保在图片尺寸范围之内。
+
+## 7600205 不支持的内存格式或像素格式
+
+**错误信息**
+
+Unsupported memory format or pixel format.
+
+**可能原因**
+
+接口不支持当前PixelMap的内存格式或像素格式。
+
+**处理步骤**
+
+查看接口的规格限制，并检查PixelMap的内存格式或像素格式，使用格式支持的PixelMap调用接口。
+
 ## 7600301 申请内存失败
 
 **错误信息**
