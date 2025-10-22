@@ -54,7 +54,12 @@
 | [OH_NativeImage* OH_ConsumerSurface_Create(void)](#oh_consumersurface_create) | - | 创建一个OH_NativeImage实例，作为surface的消费端。<br>本接口仅用于surface消费端的内存轮转，创建的OH_NativeImage内部不会主动进行内存渲染处理。<br>本接口不能与[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)接口同时使用。<br>本接口与[OH_NativeImage_AcquireNativeWindowBuffer](capi-native-image-h.md#oh_nativeimage_acquirenativewindowbuffer)和[OH_NativeImage_ReleaseNativeWindowBuffer](capi-native-image-h.md#oh_nativeimage_releasenativewindowbuffer)配合使用。<br>本接口需要和[OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage)](#oh_consumersurface_setdefaultusage) | - | 设置默认读写方式。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, int32_t height)](#oh_consumersurface_setdefaultsize) | - | 设置几何图形默认尺寸。<br>本接口为非线程安全类型接口。 |
-| [int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)](#oh_nativeimage_setdropbuffermode) | - | 设置OH_NativeImage是否为渲染丢帧模式。<br>处于此模式时，大部分生产端生产的buffer将会被丢弃，最新的buffer会及时上屏渲染。<br>此模式不能同时保证帧率高的要求。<br>此接口建议在[OH_NativeImage_Create](capi-native-image-h.md#oh_nativeimage_create)接口调用后立即调用。<br>此接口在与[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)接口一起使用的场景下才会生效。<br>本接口为非线程安全类型接口。<br> |
+| [int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)](#oh_nativeimage_setdropbuffermode) | - | 设置OH_NativeImage是否为渲染丢帧模式。<br>处于此模式时，大部分生产端生产的buffer将会被丢弃，最新的buffer会及时上屏渲染。<br>此模式不能同时保证帧率高的要求。<br>此接口建议在[OH_NativeImage_Create](capi-native-image-h.md#oh_nativeimage_create)接口调用后立即调用。<br>此接口在与[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)接口一起使用的场景下才会生效。<br>本接口为非线程安全类型接口。|
+| [OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, uint32_t textureTarget, bool singleBufferMode)](#oh_nativeimage_createwithsinglebuffermode) | - | 使用纹理ID创建一个OH_NativeImage实例，该实例与OpenGL ES的纹理ID和纹理目标相关联，并选择是否设置单buffer模式。<br>本接口需要与[OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
+| [OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)](#oh_consumersurface_createwithsinglebuffermode) | - | 不使用纹理ID创建一个[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)实例，作为surface的消费端，并选择是否设置单buffer模式。<br>本接口仅用于surface消费端的内存轮转，创建的[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)内部不会主动进行内存渲染处理。<br>本接口需要和[OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy)接口配合使用，否则会存在内存泄露。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)](#oh_nativeimage_releasetextimage) | - | 解除SurfaceBuffer与纹理的绑定，将纹理恢复到未使用状态。<br>单buffer模式下，需要调用该接口释放纹理，否则生产者下次无法申请buffer。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_ColorSpace* colorSpace)](#oh_nativeimage_getcolorspace) | - | 获取最近调用[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)的纹理图像的相关色彩空间。<br>本接口为非线程安全类型接口。 |
+
 
 ## 函数说明
 
@@ -598,4 +603,125 @@ int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 | -- | -- |
 | int32_t | 执行成功时返回NATIVE_ERROR_OK。<br> image是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
 
+### OH_NativeImage_CreateWithSingleBufferMode()
 
+```
+OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, uint32_t textureTarget, bool singleBufferMode)
+```
+
+**描述**
+
+使用纹理ID创建一个OH_NativeImage实例，该实例与OpenGL ES的纹理ID和纹理目标相关联，并选择是否设置单buffer模式。
+
+本接口需要与[OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy)接口配合使用，否则会存在内存泄露。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint32_t textureId | OpenGL ES的纹理ID，OH_NativeImage实例会与之相关联。 |
+| uint32_t textureTarget | OpenGL ES的纹理目标。 |
+| bool singleBufferMode | 是否设置单buffer模式。true表示设置为单buffer模式，false表示不设置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_NativeImage*](capi-oh-nativeimage-oh-nativeimage.md) | 创建成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
+
+### OH_ConsumerSurface_CreateWithSingleBufferMode()
+
+```
+OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)
+```
+
+**描述**
+
+不使用纹理ID创建一个[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)实例，作为surface的消费端，并选择是否设置单buffer模式。
+
+本接口仅用于surface消费端的内存轮转，创建的[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)内部不会主动进行内存渲染处理。
+
+本接口需要和[OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy)接口配合使用，否则会存在内存泄露。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| bool singleBufferMode | 是否设置单buffer模式。true表示设置为单buffer模式，false表示不设置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_NativeImage*](capi-oh-nativeimage-oh-nativeimage.md) | 成功则返回一个指向[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)实例的指针，否则返回NULL。 |
+
+### OH_NativeImage_ReleaseTextImage()
+
+```
+int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
+```
+
+**描述**
+
+解除SurfaceBuffer与纹理的绑定，将纹理恢复到未使用状态。
+
+单buffer模式下，需要调用该接口释放纹理，否则生产者下次无法申请buffer。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+
+### OH_NativeImage_GetColorSpace()
+
+```
+int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_ColorSpace* colorSpace)
+```
+
+**描述**
+
+获取最近调用[OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage)的纹理图像的相关色彩空间。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)实例的指针。 |
+| OH_NativeBuffer_ColorSpace* colorSpace | 为[OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)设置的颜色空间，其值从[OH_NativeBuffer_ColorSpace](capi-buffer-common-h.md#oh_nativebuffer_colorspace)获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，colorSpace是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
