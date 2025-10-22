@@ -26,7 +26,7 @@ import { uiAppearance } from '@kit.ArkUI';
 
 setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
-设置系统深色模式。
+设置系统深色模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -73,7 +73,7 @@ try {
 
 setDarkMode(mode: DarkMode): Promise\<void>;
 
-设置系统深色模式。
+设置系统深色模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
