@@ -1418,7 +1418,7 @@ createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: Ant
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽高。 |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素）。 |
 | x        | number | 是   | 宽度的缩放倍数。不能为0。 |
 | y        | number | 是   | 高度的缩放倍数。不能为0。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
@@ -1476,7 +1476,7 @@ createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?:
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽高。 |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素）。 |
 | x        | number | 是   | 宽度的缩放倍数。不能为0。 |
 | y        | number | 是   | 高度的缩放倍数。不能为0。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
@@ -2870,7 +2870,7 @@ getUniqueId(): number
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 唯一ID。格式为正整数。 |
+| number | 唯一ID。取值为正整数。 |
 
 **错误码：**
 
