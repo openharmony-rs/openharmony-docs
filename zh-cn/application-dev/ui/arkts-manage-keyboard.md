@@ -171,7 +171,7 @@ struct Index {
 
 ### 页面发生切换
 
-下面的动图展示了页面切换过程中，软键盘收起的场景。
+以下示例展示了页面切换过程中，软键盘收起的场景。
 
 页面跳转写法请参考[组件导航(Navigation) (推荐)](./arkts-navigation-navigation.md)。
 
