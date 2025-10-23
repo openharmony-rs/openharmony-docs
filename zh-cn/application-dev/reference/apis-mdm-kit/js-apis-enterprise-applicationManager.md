@@ -1330,19 +1330,6 @@ Kiosk模式的特征。
 | ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心。 |
 | ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心。 |
 
-## ApplicationInstance<sup>22+</sup>
-
-应用的实例数据。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
-| ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
-| appIdentifier          | string       | 否   | 否 | 应用的全局唯一标识，由云端分配           |
-| accountId        | number       | 否   | 否 | 操作系统账户标识符            |
-| appIndex        | number       | 否   | 否 | 应用分身索引值            |
-
-
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
 addUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt;): void
