@@ -1,5 +1,12 @@
 # 拉起文件处理类应用（startAbility）
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 ## 使用场景
 
 开发者可以通过调用[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口，由系统从已安装的应用中寻找符合要求的应用，打开特定文件。
