@@ -1332,7 +1332,7 @@ Kiosk模式的特征。
 
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
-addUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt;): void
+addUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
 为指定用户添加不可关停应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
 
@@ -1349,7 +1349,7 @@ addUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，同一用户下，不可关停应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，同一用户下，不可关停应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1374,7 +1374,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
-let UserNonStopApps: Array<common.ApplicationInstance> = [
+let applicationInstances: Array<common.ApplicationInstance> = [
   // 需根据实际情况进行替换
   {
     appIdentifier: '0123456789123456789',
@@ -1384,7 +1384,7 @@ let UserNonStopApps: Array<common.ApplicationInstance> = [
 ];
 
 try {
-  applicationManager.addUserNonStopApps(wantTemp, UserNonStopApps);
+  applicationManager.addUserNonStopApps(wantTemp, applicationInstances);
   console.info('Succeeded in adding UserNonStop applications.');
 } catch(err) {
   console.error(`Failed to add UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
@@ -1393,7 +1393,7 @@ try {
 
 ## applicationManager.removeUserNonStopApps<sup>22+</sup>
 
-removeUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt;): void
+removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
 为指定用户删除不可关停应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
 
@@ -1410,7 +1410,7 @@ removeUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，同一用户下，不可关停应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，同一用户下，不可关停应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1435,7 +1435,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
-let UserNonStopApps: Array<common.ApplicationInstance> = [
+let applicationInstances: Array<common.ApplicationInstance> = [
   // 需根据实际情况进行替换
   {
     appIdentifier: '0123456789123456789',
@@ -1445,7 +1445,7 @@ let UserNonStopApps: Array<common.ApplicationInstance> = [
 ];
 
 try {
-  applicationManager.removeUserNonStopApps(wantTemp, UserNonStopApps);
+  applicationManager.removeUserNonStopApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing UserNonStop applications.');
 } catch(err) {
   console.error(`Failed to remove UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
@@ -1510,7 +1510,7 @@ try {
 
 ## applicationManager.addFreezeExemptedApps<sup>22+</sup>
 
-addFreezeExemptedApps(admin: Want, FreezeExemptedApps: Array&lt;ApplicationInstance&gt;): void
+addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
 添加后台防冻结应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
 
@@ -1527,7 +1527,7 @@ addFreezeExemptedApps(admin: Want, FreezeExemptedApps: Array&lt;ApplicationInsta
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| FreezeExemptedApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1552,7 +1552,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
-let FreezeExemptedApps: Array<common.ApplicationInstance> = [
+let applicationInstances: Array<common.ApplicationInstance> = [
   // 需根据实际情况进行替换
   {
     appIdentifier: '0123456789123456789',
@@ -1562,7 +1562,7 @@ let FreezeExemptedApps: Array<common.ApplicationInstance> = [
 ];
 
 try {
-  applicationManager.addFreezeExemptedApps(wantTemp, UserNonStopApps);
+  applicationManager.addFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in adding FreezeExempted applications.');
 } catch(err) {
   console.error(`Failed to add FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
@@ -1571,7 +1571,7 @@ try {
 
 ## applicationManager.removeFreezeExemptedApps<sup>22+</sup>
 
-removeFreezeExemptedApps(admin: Want, FreezeExemptedApps: Array&lt;ApplicationInstance&gt;): void
+removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
 为指定用户删除后台防冻结应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
 
@@ -1588,7 +1588,7 @@ removeFreezeExemptedApps(admin: Want, FreezeExemptedApps: Array&lt;ApplicationIn
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| FreezeExemptedApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1613,7 +1613,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
-let FreezeExemptedApps: Array<common.ApplicationInstance> = [
+let applicationInstances: Array<common.ApplicationInstance> = [
   // 需根据实际情况进行替换
   {
     appIdentifier: '0123456789123456789',
@@ -1623,7 +1623,7 @@ let FreezeExemptedApps: Array<common.ApplicationInstance> = [
 ];
 
 try {
-  applicationManager.removeFreezeExemptedApps(wantTemp, UserNonStopApps);
+  applicationManager.removeFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing FreezeExempted applications.');
 } catch(err) {
   console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
