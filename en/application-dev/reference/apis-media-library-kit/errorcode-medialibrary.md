@@ -1,10 +1,4 @@
 # Media Library Error Codes
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
-<!--Designer: @liweilu1-->
-<!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -21,7 +15,7 @@ Context is invalid.
 
 This error code is reported if the context object does not exist or is empty.
 
-**Possible causes**
+**Possible Causes**
 
 The context object does not exist.
 
@@ -40,7 +34,7 @@ System inner fail.
 
 This error code is reported if an internal error occurs in the media library.
 
-**Possible causes**
+**Possible Causes**
 
 1. The database is abnormal.
 
@@ -62,7 +56,7 @@ Scene parameter validation failed.
 
 This error code is reported if a parameter is abnormal.
 
-**Possible causes**
+**Possible Causes**
 
 1. Mandatory parameters do not meet the specified range.
 
