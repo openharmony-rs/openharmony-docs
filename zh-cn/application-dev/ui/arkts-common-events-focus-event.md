@@ -163,7 +163,7 @@ struct Index {
 }
 ```
 
-运行后点击Button1，请求焦点给Row组件，Row组件的的第一个可获焦子节点Button2获焦。
+运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
 
 ![Liner_Focus_1](figures/Focus_transfer.gif)
 
