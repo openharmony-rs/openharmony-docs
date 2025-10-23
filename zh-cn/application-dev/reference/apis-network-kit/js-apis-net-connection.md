@@ -157,6 +157,7 @@ getDefaultNetSync(): NetHandle
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **返回值：**
+
 | 类型      | 说明                               |
 | --------- | ---------------------------------- |
 | [NetHandle](#nethandle) | 以同步方式返回默认激活的数据网络。 |
