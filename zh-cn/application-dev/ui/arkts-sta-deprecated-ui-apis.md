@@ -655,7 +655,7 @@ import { image } from '@kit.ImageKit';
 @Entry
 @ComponentV2
 struct OffscreenSnapshotExample {
-  @Local pixmap: image.PixelMap | undefined = undefined
+  @Local pixmap: image.PixelMap | undefined = undefined;
 
   @Builder
   RandomBuilder() {
@@ -704,12 +704,14 @@ struct OffscreenSnapshotExample {
 ArkTS-Sta示例：
 
 ```typescript
+import { Entry, ComponentV2, Local, Builder, Flex, FlexDirection, FlexAlign, ItemAlign, Text, Divider, Column, Image, Button, TextAlign, Color, Margin } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @ComponentV2
 struct OffscreenSnapshotExample {
-  @Local pixmap: image.PixelMap | undefined = undefined
+  @Local pixmap: image.PixelMap | undefined = undefined;
 
   @Builder
   RandomBuilder() {
@@ -733,7 +735,7 @@ struct OffscreenSnapshotExample {
   build() {
     Column() {
       // 用于显示截图结果的图片组件
-      Image(this.pixmap)
+      Image(this.pixmap ? this.pixmap : '')
         .margin(10)
         .height(200)
         .width(200)
@@ -743,15 +745,15 @@ struct OffscreenSnapshotExample {
         .onClick(() => {
           // 使用UIContext同名接口替代
           this.getUIContext().getComponentSnapshot().createFromBuilder(this.RandomBuilder,
-            (error: Error, pixmap: image.PixelMap) => {
-              if (error) {
-                console.log("error: " + JSON.stringify(error))
+            (error: BusinessError | null | undefined, pixmap: image.PixelMap | undefined) => {
+              if (pixmap) {
+                this.pixmap = pixmap;
                 return;
               }
-              this.pixmap = pixmap
+              console.log("error: " + JSON.stringify(error));
             }, 320, true, { scale: 2, waitUntilRenderFinished: true })
         })
-    }.width('100%').margin({ left: 10, top: 5, bottom: 5 }).height(300)
+    }.width('100%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(300)
   }
 }
 ```
@@ -817,7 +819,8 @@ struct OffscreenSnapshotExample {
 ArkTS-Sta示例：
 
 ```typescript
-import { image } from '@kit.ImageKit'
+import { Entry, ComponentV2, Local, Builder, Flex, FlexDirection, FlexAlign, ItemAlign, Text, Divider, Column, Image, Button, TextAlign, Color, Margin } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
 
 @Entry
 @ComponentV2
@@ -859,18 +862,18 @@ struct OffscreenSnapshotExample {
             })
         })
       // 显示截图结果的图片组件
-      Image(this.pixmap)
+      Image(this.pixmap ? this.pixmap : '')
         .margin(10)
         .height(200)
         .width(200)
         .border({ color: Color.Black, width: 2 })
-    }.width('100%').margin({ left: 10, top: 5, bottom: 5 }).height(300)
+    }.width('100%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(300)
   }
 }
 ```
 ## @ohos.arkui.componentUtils
 
-### get
+### getRectangleById
 
 ArkTS-Dyn接口声明：[getRectangleById(id: string): ComponentInfo](../reference/apis-arkui/js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)
 
@@ -924,6 +927,7 @@ struct Utils {
 ArkTS-Sta示例：
 
 ```typescript
+import { Entry, ComponentV2, Local, Column, Image, Button, Text, Margin, $r } from '@kit.ArkUI';
 import { matrix4 } from '@kit.ArkUI';
 
 @Entry
@@ -962,7 +966,7 @@ struct Utils {
         .width(300)
         .height(300)
         .borderWidth(2)
-    }.margin({ left: 50 })
+    }.margin({ left: 50 } as Margin)
   }
 }
 ```
