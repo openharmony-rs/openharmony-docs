@@ -157,7 +157,6 @@ getDefaultNetSync(): NetHandle
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **返回值：**
-
 | 类型      | 说明                               |
 | --------- | ---------------------------------- |
 | [NetHandle](#nethandle) | 以同步方式返回默认激活的数据网络。 |
@@ -188,7 +187,8 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 设置应用级Http代理配置信息。
 
 > **说明：**
-> 若需使用本接口所配置的代理信息，则需主动在[HttpRequestOptions](#httprequestoptions)字段中将usingProxy设置为true以启用代理转发。本接口仅负责配置代理规则，不校验代理服务的有效性。
+
+> 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](#httprequestoptions)字段中将usingProxy设置为true以启用代理转发。本接口仅负责配置代理规则，不校验代理服务的有效性。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -223,18 +223,18 @@ connection.setAppHttpProxy({
 } as connection.HttpProxy);
 let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
-  usingProxy: true, //选择使用网络代理，自API 10开始支持该属性。
+  usingProxy: true, //选择使用网络代理，从API 10开始支持该属性。
 };
-//发起一个HTTP请求。
+// 发起一个HTTP请求。
 httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
   if (!err) {
-    console.info('Result:' + data.result);
-    console.info('code:' + data.responseCode);
-    console.info('type:' + JSON.stringify(data.resultType));
-    console.info('header:' + JSON.stringify(data.header));
-    console.info('cookies:' + data.cookies); // 自API version 8开始支持cookie。
+   console.info(`Result: ${data.result}`);
+   console.info(`code: ${data.responseCode}`);
+   console.info(`type: ${JSON.stringify(data.resultType)}`);
+   console.info(`header: ${JSON.stringify(data.header)}`);
+   console.info(`cookies: ${data.cookies`); // 自API version 8开始支持cookie。
   } else {
-    console.error('error:' + JSON.stringify(err));
+   console.error(`error: ${JSON.stringify(err)}`);
   }
 });
 ```
