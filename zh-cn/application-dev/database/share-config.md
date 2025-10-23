@@ -101,62 +101,77 @@ crossAppSharedConfig字段配置说明：
 
 - 通过调用publish接口发布或修改配置项。
 
-  ```ts
-  import { dataShare } from '@kit.ArkData';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  export function publish() {
-    dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-      const newConfigData: dataShare.ProxyData[] = [{
-        uri: 'datashareproxy://com.example.app1/config1',
+<!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+function publishSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const newConfigData: dataShare.ProxyData[] = [
+      {
+        uri: 'datashareproxy://com.samples.shareconfig/config1',
         value: 'Value1',
-        allowList: ['com.example.app2', 'com.example.app3'],
-      }, {
-        uri: 'datashareproxy://com.example.app1/config2',
+        allowList: [
+          'appIdentifier1',
+          'appIdentifier2'
+        ]
+      },
+      {
+        uri: 'datashareproxy://com.samples.shareconfig/config2',
         value: 'Value2',
-        allowList: ['com.example.app3', 'com.example.app4'],
-      },];
-      const config: dataShare.DataProxyConfig = {
-        type: dataShare.DataProxyType.SHARED_CONFIG,
-      };
-      dsProxyHelper.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
-        results.forEach((result) => {
-          console.info(`URI: ${result.uri}, Result: ${result.result}`);
-        });
-      }).catch((error: BusinessError) => {
-        console.error('Error publishing config:', error);
+        allowList: [
+          'appIdentifier3',
+          'appIdentifier4'
+        ]
+      }
+    ];
+    const config: dataShare.DataProxyConfig = {
+      type: dataShare.DataProxyType.SHARED_CONFIG,
+    };
+    dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+      results.forEach((result) => {
+        console.info(`URI: ${result.uri}, Result: ${result.result}`);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error creating DataProxyHandle:', error);
+      console.error('Error publishing config:', error);
     });
-  }
-  ```
+  }).catch((error: BusinessError) => {
+    console.error('Error creating DataProxyHandle:', error);
+  });
+}
+
+```
+
+
 
 - 通过调用delete接口删除配置项。
 
-  ```ts
-  import { dataShare } from '@kit.ArkData';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  export function deleteShareConfig() {
-    dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-      const urisToDelete: string[] =
-        ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
-      const config: dataShare.DataProxyConfig = {
-        type: dataShare.DataProxyType.SHARED_CONFIG,
-      };
-      dsProxyHelper.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
-        results.forEach((result) => {
-          console.info(`URI: ${result.uri}, Result: ${result.result}`);
-        });
-      }).catch((error: BusinessError) => {
-        console.error('Error deleting config:', error);
+<!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+function deleteSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const urisToDelete: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
+    const config: dataShare.DataProxyConfig = {
+      type: dataShare.DataProxyType.SHARED_CONFIG,
+    };
+    dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+      results.forEach((result) => {
+        console.info(`URI: ${result.uri}, Result: ${result.result}`);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error creating DataProxyHandle:', error);
+      console.error('Error deleting config:', error);
     });
-  }
-  ```
+  }).catch((error: BusinessError) => {
+    console.error('Error creating DataProxyHandle:', error);
+  });
+}
+
+```
+
+
 
 ## 配置访问方
 
@@ -166,18 +181,19 @@ crossAppSharedConfig字段配置说明：
 
 使用get接口获取配置信息。
 
-```ts
-import { dataShare } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[get_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
-export function get() {
-  dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-    const urisToGet: string[] =
-      ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+``` TypeScript
+function getSharedConfig() {
+  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+    const urisToGet: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
     const config: dataShare.DataProxyConfig = {
       type: dataShare.DataProxyType.SHARED_CONFIG,
     };
-    dsProxyHelper.get(urisToGet, config).then((results: dataShare.DataProxyGetResult[]) => {
+    dataProxyHandle.get(urisToGet, config).then((results: dataShare.DataProxyGetResult[]) => {
       results.forEach((result) => {
         console.info(`URI: ${result.uri}, Result: ${result.result}, AllowList: ${result.allowList}`);
       });
@@ -188,20 +204,24 @@ export function get() {
     console.error('Error creating DataProxyHandle:', error);
   });
 }
+
 ```
+
+
 
 ### 监听/取消监听配置变化
 
 使用on接口监听配置变化，使用off接口取消监听配置变化。
 
-```ts
-import { dataShare } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
 
-export function watchConfigChanges() {
+``` TypeScript
+function watchConfigChanges() {
   dataShare.createDataProxyHandle().then((dsProxyHelper) => {
-    const uris: string[] =
-      ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+    const uris: string[] = [
+      'datashareproxy://com.samples.shareconfig/config1',
+      'datashareproxy://com.samples.shareconfig/config2'
+    ];
     const config: dataShare.DataProxyConfig = {
       type: dataShare.DataProxyType.SHARED_CONFIG,
     };
@@ -219,7 +239,7 @@ export function watchConfigChanges() {
     listenResults.forEach((result) => {
       console.info(`URI: ${result.uri}, Result: ${result.result}`);
     });
-    // 取消监听配置变化    
+    // 取消监听配置变化
     const unListenResults: dataShare.DataProxyResult[] = dsProxyHelper.off('dataChange', uris, config, callback);
     unListenResults.forEach((result) => {
       console.info(`URI: ${result.uri}, Result: ${result.result}`);
@@ -228,4 +248,7 @@ export function watchConfigChanges() {
     console.error('Error creating DataProxyHandle:', error);
   });
 }
+
 ```
+
+
