@@ -11,7 +11,6 @@
 ## 输入法子类型的配置与实现
 
 1. 输入法应用开发者只需要注册实现一个InputMethodExtensionAbility，所有的输入法子类型共用该InputMethodExtensionAbility，在[module.json5配置文件](../quick-start/module-configuration-file.md)中添加metadata，name为ohos_extension.input_method，用于配置所有子类型的资源信息。
-<!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
 
 ``` JSON5
     "extensionAbilities": [
@@ -56,31 +55,23 @@
    
 3. 输入法应用中监听子类型事件，根据不同的子类型，可以加载不同的软键盘界面，或者使用状态变量控制界面中的软键盘显示。
 
-   ```ts
-   import { InputMethodSubtype, inputMethodEngine } from '@kit.IMEKit';
-   
-   let panelInfo: inputMethodEngine.PanelInfo = {
-     type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
-     flag: inputMethodEngine.PanelFlag.FLG_FIXED
-   };
-   let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
-   // createPanel需要在InputMethodExtensionAbility的Create声明周期中完成，this.context是InputMethodExtensionAbility中的InputMethodExtensionContext
-   inputMethodAbility.createPanel(this.context, panelInfo).then(async (panel: inputMethodEngine.Panel) => {
-     let inputPanel: inputMethodEngine.Panel = panel;
-     inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-       // 保存当前输入法子类型, 此处也可以改变状态变量的值，布局中判断状态变量，不同的子类型显示不同的布局控件
-       let subType: InputMethodSubtype = inputMethodSubtype;
-       if (inputMethodSubtype.id == 'InputMethodExtAbility') { // 根据不同的子类型，可以加载不同的软键盘界面
-         inputPanel.setUiContent('pages/Index');
-       }
-       if (inputMethodSubtype.id == 'InputMethodExtAbility1') { // 根据不同的子类型，可以加载不同的软键盘界面
-         inputPanel.setUiContent('pages/Index1');
-       }
-     });
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+<!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets) -->
+
+``` TypeScript
+    // 设置监听子类型事件，改变输入法应用界面
+    InputMethodEngine.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+      this.inputHandle.addLog('GJ setSubtype inputMethodSubtype:' + inputMethodSubtype.id);
+      if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+        AppStorage.setOrCreate('subtypeChange', 0);
+        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
+      }
+      if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+        AppStorage.setOrCreate('subtypeChange', 1);
+        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
+      }
+    });
+```
+
 
 ## 输入法子类型相关信息的获取
 
