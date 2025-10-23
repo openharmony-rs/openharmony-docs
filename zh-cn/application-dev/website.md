@@ -2742,6 +2742,7 @@
             - [Class (FocusController)](reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md)
             - [Class (Font)](reference/apis-arkui/arkts-apis-uicontext-font.md)
             - [Class (FrameCallback)](reference/apis-arkui/arkts-apis-uicontext-framecallback.md)
+            - [Class (Magnifier)](reference/apis-arkui/arkts-apis-uicontext-magnifier.md)
             - [Class (MarqueeDynamicSyncScene)](reference/apis-arkui/arkts-apis-uicontext-marqueedynamicsyncscene.md)
             - [Class (MeasureUtils)](reference/apis-arkui/arkts-apis-uicontext-measureutils.md)
             - [Class (MediaQuery)](reference/apis-arkui/arkts-apis-uicontext-mediaquery.md)
