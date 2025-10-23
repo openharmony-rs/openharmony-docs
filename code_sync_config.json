@@ -1988,5 +1988,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/distributedservice/abilityconnectmanager-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"import_abilityConnectionManager",
+						"start_line":17
+					},
+					{
+						"end_line":69,
+						"name":"source_1",
+						"start_line":36
+					},
+					{
+						"end_line":140,
+						"name":"source_2",
+						"start_line":103
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"collab",
+						"start_line":25
+					},
+					{
+						"end_line":93,
+						"name":"abilityconnectionmanager_on",
+						"start_line":70
+					}
+				]
+			}
+		]
 	}
 ]
