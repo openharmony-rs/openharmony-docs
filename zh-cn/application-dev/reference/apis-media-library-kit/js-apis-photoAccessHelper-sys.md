@@ -11016,6 +11016,10 @@ async function example(context: Context) {
 
 枚举，图片的HDR类型。
 
+​**系统接口**​：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认类型。|
