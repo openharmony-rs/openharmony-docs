@@ -1303,7 +1303,7 @@ getParamByIndex(index: number): unknown | undefined
 
 getParamByName(name: string): Array<unknown\>
 
-获取全部名为name的NavDestination页面的参数信息。
+获取所有名为name的NavDestination页面的参数信息，按页面索引从小到大排序。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
