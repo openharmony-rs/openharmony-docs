@@ -114,15 +114,13 @@ SaveButton(options: SaveButtonOptions)
 
 保存控件点击后的授权结果。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SUCCESS | 0 | 保存控件点击后权限授权成功。 |
-| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 |
-| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 |
+| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## SaveButtonCallback<sup>18+</sup>
 
