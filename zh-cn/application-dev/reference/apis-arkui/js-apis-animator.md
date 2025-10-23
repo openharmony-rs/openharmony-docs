@@ -207,7 +207,7 @@ reset(options: AnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -272,7 +272,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
