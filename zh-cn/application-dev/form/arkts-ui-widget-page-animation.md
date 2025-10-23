@@ -28,10 +28,7 @@ ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../refere
 
 
 
-<!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widg  
-
-
- AnimationCard.ets) -->
+<!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widget/pages/AnimationCard.ets) -->
 ## 组件转场动效
 以下示例代码使用[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口实现了在卡片内图片出现与消失的动画效果。
 
