@@ -233,7 +233,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
    console.info(`code: ${data.responseCode}`);
    console.info(`type: ${JSON.stringify(data.resultType)}`);
    console.info(`header: ${JSON.stringify(data.header)}`);
-   console.info(`cookies: ${data.cookies`); // 自API version 8开始支持cookie。
+   console.info(`cookies: ${data.cookies}`); // 从API version 8开始支持cookie。
   } else {
    console.error(`error: ${JSON.stringify(err)}`);
   }
