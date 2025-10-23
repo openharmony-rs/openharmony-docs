@@ -74,7 +74,7 @@ Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requ
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向定位请求参数的指针，该参数用于指定发起定位的场景信息和位置上报间隔。<br> 详细定义请参考[Location_RequestConfig](capi-location-location-requestconfig.md)，可以使用[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建。 |
+| [const Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向定位请求参数的指针，该参数用于指定发起定位的场景信息和位置上报间隔。<br> 详细定义请参考[Location_RequestConfig](capi-location-location-requestconfig.md)，可以使用[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建。 |
 
 **返回：**
 
