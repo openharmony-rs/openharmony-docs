@@ -189,7 +189,7 @@ setAppHttpProxy(httpProxy: HttpProxy): void
 
 > **说明：**
 >
-> 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](#../js-apis-htt.md/httprequestoptions)字段中将usingProxy设置为true以启用代理转发。本接口仅负责配置代理规则，不校验代理服务的有效性。
+> 若需使用本接口所配置的代理信息，则需在[HttpRequestOptions](js-apis-htt.md#httprequestoptions)字段中将usingProxy设置为true以启用代理转发。本接口仅负责配置代理规则，不校验代理服务的有效性。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
