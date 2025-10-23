@@ -234,17 +234,17 @@ async function setVolume(volume: number) {
 }
 
 // 设置音频返听的混响模式。
-async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset): void {
+async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setReverbPreset(preset);
-      Logger.info(`setReverbPreset( ${preset} succeeded.`);
-      currentReverbPreset = this.audioLoopback.getReverbPreset(); // 查询当前的混响模式，防止设置失败。
+      console.info(`setReverbPreset( ${preset} succeeded.`);
+      currentReverbPreset = audioLoopback.getReverbPreset(); // 查询当前的混响模式，防止设置失败。
     } catch (err) {
-      Logger.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
-    Logger.error('Audio loopback not created.');
+    console.error('Audio loopback not created.');
   }
 }
 
@@ -253,13 +253,13 @@ async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setEqualizerPreset(preset);
-      Logger.info(`setEqualizerPreset ${preset} succeeded.`);
-      currentEqualizerPreset = this.audioLoopback.getEqualizerPreset(); // 查询当前的均衡器类型，防止设置失败。
+      console.info(`setEqualizerPreset ${preset} succeeded.`);
+      currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // 查询当前的均衡器类型，防止设置失败。
     } catch (err) {
-      Logger.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
+      console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
     }
   } else {
-    Logger.error('Audio loopback not created.');
+    console.error('Audio loopback not created.');
   }
 }
 
