@@ -72,11 +72,11 @@
     // 数据库异常后处理的回调函数。
     // context为OH_Rdb_RegisterCorruptedHandler调用时传入的指针，生命周期由业务自身管理
     // config为OH_Rdb_RegisterCorruptedHandler调用时拷贝的临时变量，不可在回调函数外部使用
-    // store为发生损坏的DB句柄，如果DB无法打开则为空指针，注意判空。该指针由系统产生，回调函数结束后即刻释放，不可在回调函数外部使用
+    // store为发生异常的DB句柄，如果DB无法打开则为空指针，注意判空。该指针由系统产生，回调函数结束后即刻释放，不可在回调函数外部使用
     void CorruptedHandler(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)
     {
         const char* restorePath = "/data/storage/el2/database/RdbTest_bak.db";
-        // store为空代表非DB文件或者DB文件彻底损坏无法打开
+        // store为空代表非DB文件或者DB文件彻底异常无法打开
         if (store == nullptr) {
             OH_Rdb_DeleteStoreV2(config);
             // 重新创建数据库，如果有备库可以重建后调用恢复接口
@@ -88,7 +88,7 @@
                 OH_LOG_ERROR(LOG_APP, "restore failed! errCode is: %{public}d", errCode);
                 //等待其它线程调用结束，进行重试。不建议重试次数过多或等待时间过长，避免占用太多系统资源。
                 errCode = OH_Rdb_Restore(store, restorePath);
-                // 或采用标记的方式标记数据库损坏，后续在进程重启或业务空闲时进行恢复
+                // 或采用标记的方式标记数据库异常，后续在进程重启或业务空闲时进行恢复
             }
         }
     }
