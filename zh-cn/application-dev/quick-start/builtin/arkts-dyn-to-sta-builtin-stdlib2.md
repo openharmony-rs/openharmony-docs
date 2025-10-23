@@ -31,7 +31,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void`
 
 **参数：**
@@ -51,7 +51,7 @@
   class A{}
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -61,7 +61,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `declare type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void`
 
 **参数：**
@@ -87,7 +87,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -97,7 +97,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `declare type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void`
 
 **参数：**
@@ -117,7 +117,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -127,7 +127,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `declare type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void`
 
 **参数：**
@@ -147,7 +147,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -157,7 +157,7 @@
 
 **规则：** `arkts-builtin-narrow-types`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `declare type PropertyKey = string | number | symbol`
 
 **示例：**  
@@ -165,7 +165,7 @@
   let a: PropertyKey = 1;
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `type PropertyKey = string`
 
 **示例：**  
@@ -180,7 +180,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `type FlatArray<Arr, Depth extends number> = {"done": Arr,"recur": Arr extends ReadonlyArray<infer InnerArr> ? FlatArray<InnerArr, [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20][Depth]>: Arr}[Depth extends -1 ? "done" : "recur"]`
 
 **示例：**  
@@ -189,7 +189,7 @@
   let arr: FlatArray<number[], -1> = arr1.flat();
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -208,7 +208,7 @@
 
 **规则：** `arkts-builtin-new-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `constructor(errors: Iterable<any>, message?: string, options?: ErrorOptions): AggregateError`
 
 **参数：**
@@ -228,7 +228,7 @@
   let err: AggregateError = new AggregateError([1, 2])
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `constructor(errors: Iterable<Error>, message?: string, options?: ErrorOptions): AggregateError`
 
 **参数：**
@@ -255,7 +255,7 @@
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `errors: any[]`
 
 **返回值：**
@@ -269,7 +269,7 @@
   let errors: Object[] = err.errors
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `errors: Error[]`
 
 **返回值：**
@@ -290,7 +290,7 @@
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `(errors: Iterable<any>, message?: string, options?: ErrorOptions): AggregateError`
 
 **参数：**
@@ -315,7 +315,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static AggregateError.invoke (errors: Iterable<Error>, message?: string, options?: ErrorOptions): AggregateError`
 
 **参数：**
@@ -341,13 +341,13 @@
   直接创建对应类型的对象，不直接使用constructor类。
 
 ## Error
-- ArkTS1.2构造函数新增参数options。
+- ArkTS-Sta构造函数新增参数options。
 
 #### Error构造函数入参变更
 
 **规则：** ``
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `constructor(message?: string): Error`
 
 **参数：**
@@ -370,14 +370,14 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `constructor(message?: String, options?: ErrorOptions): Error`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | message | String | 否 | 错误的简要描述。默认值为无。 |
-  | options | ErrorOptions | 否 | Error的属性，指示导致该错误的具体原始原因。其中ErrorOptions为ArkTS1.2版本新增类，只包含一个可选属性cause，表示导致该错误的具体原始原因。默认值为无。 |
+  | options | ErrorOptions | 否 | Error的属性，指示导致该错误的具体原始原因。其中ErrorOptions为ArkTS-Sta版本新增类，只包含一个可选属性cause，表示导致该错误的具体原始原因。默认值为无。 |
 
 **示例：**  
   ```typescript
@@ -387,7 +387,7 @@
   ```
 
 **适配建议：** 
-  ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
+  ArkTS-Sta相比ArkTS-Dyn接口签名有变更，但对开发者接口行为无变更。
 
 ## ArrayBuffer
 - any类型变更为Object，返回值类型为布尔类型。
@@ -396,7 +396,7 @@
 
 **规则：** `arkts-builtin-narrow-types`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `static isView(arg: any): arg is ArrayBufferView`
 
 **参数：**
@@ -419,7 +419,7 @@
   console.info("boolean: "+ ArrayBuffer.isView(undefined)); // false
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static isView(obj: Object): boolean`
 
 **参数：**
@@ -443,7 +443,7 @@
   ```
 
 **适配建议：** 
-  ArkTS1.2相比ArkTS1.1接口签名入参范围缩小，null和undefined不能入参，返回值无行为变更。
+  ArkTS-Sta相比ArkTS-Dyn接口签名入参范围缩小，null和undefined不能入参，返回值无行为变更。
 
 ## ArrayBufferTypes
 
@@ -457,7 +457,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `ArrayBuffer: ArrayBuffer`
 
 **返回值：**
@@ -475,7 +475,7 @@
   c.SharedArrayBuffer;
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持
 
 **适配建议：** 
@@ -485,7 +485,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `SharedArrayBuffer: SharedArrayBuffer`
 
 **返回值：**
@@ -493,7 +493,7 @@
   | -------- | -------- |
   | SharedArrayBuffer | SharedArrayBuffer对象。 |
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -512,7 +512,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<any>`
 
 **返回值：**
@@ -527,17 +527,17 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
-  ArkTS1.2不能使用arguments，因此不需要使用IArguments。
+  ArkTS-Sta不能使用arguments，因此不需要使用IArguments。
 
 #### IArguments-callee属性移除
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `callee: Function`
 
 **返回值：**
@@ -552,17 +552,17 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
-  ArkTS1.2不能使用arguments，因此不需要使用callee。
+  ArkTS-Sta不能使用arguments，因此不需要使用callee。
 
 #### IArguments-length属性移除
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `length: number`
 
 **返回值：**
@@ -577,11 +577,11 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
-  ArkTS1.2不能使用arguments，因此不需要使用length属性。
+  ArkTS-Sta不能使用arguments，因此不需要使用length属性。
 
 ## Intl
 
@@ -595,14 +595,14 @@
 ### 变更详情
 
 #### DateTimeFormat变更
-- ArkTS1.1 版本签名：  
+- ArkTS-Dyn 版本签名：  
   `readonly prototype: DateTimeFormat`
 
 **示例：**  
   ```typescript
   Reflect.get(Intl.DateTimeFormat, "prototype")
   ```
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -612,7 +612,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `interface DateTimeFormatPartTypesRegistry {
     day: any
     dayPeriod: any
@@ -646,7 +646,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -656,7 +656,7 @@
 
 **规则：** `arkts-no-prototype-assignment`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `prototype: DisplayNames`
 
 **示例：**  
@@ -664,7 +664,7 @@
   Reflect.get(Intl.DisplayNames, "prototype")
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -674,7 +674,7 @@
 
 **规则：** `arkts-no-prototype-assignment`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `prototype: ListFormat`
 
 **示例：**  
@@ -682,7 +682,7 @@
   Reflect.get(Intl.ListFormat, "prototype")
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -692,7 +692,7 @@
 
 **规则：** `arkts-no-prototype-assignment`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `readonly prototype: NumberFormat`
 
 **示例：**  
@@ -700,7 +700,7 @@
   Reflect.get(Intl.NumberFormat, "prototype")
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -717,7 +717,7 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): Iterator<T>`
 
 **返回值：**
@@ -732,7 +732,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): Iterator<T>`
 
 **返回值：**
@@ -764,7 +764,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `return?(value?: TReturn): IteratorResult<T, TReturn>`
 
 **参数：**
@@ -803,8 +803,8 @@
   a.return();
   ```
 
-**ArkTS1.2版本签名：**  
-  ArkTs1.2 Iterator中没有return()接口
+**ArkTS-Sta版本签名：**  
+  ArkTS-Sta Iterator中没有return()接口
 
 **适配建议：** 
   不使用return方法。
@@ -813,7 +813,7 @@
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `throw?(e?: any): IteratorResult<T, TReturn>`
 
 **参数：**
@@ -852,8 +852,8 @@
   a.throw(new Error("test"));
   ```
 
-**ArkTS1.2版本签名：**  
-  ArkTs1.2 Iterator中没有throw()接口
+**ArkTS-Sta版本签名：**  
+  ArkTS-Sta Iterator中没有throw()接口
  
 **适配建议：** 
   不使用throw方法。
@@ -866,7 +866,7 @@
 
 **规则：** `arkts-builtin-iterator-result-value`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `type IteratorResult<T, TReturn = any> = IteratorYieldResult<T> | IteratorReturnResult<TReturn>`
 
 **类型：**
@@ -884,7 +884,7 @@
   console.info(res.value[0])
   ```
 
-**ArkTS1.2版本签名：**   
+**ArkTS-Sta版本签名：**   
   ```
   export class IteratorResult<T> {
     done: boolean 
@@ -932,7 +932,7 @@
 
 **规则：** `arkts-builtin-iterator-result-value`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   ```
   interface IteratorReturnResult<TReturn> {
     done: true;
@@ -951,7 +951,7 @@
   let b:IteratorYieldResult<string>;
   ```
 
-**ArkTS1.2版本签名：**   
+**ArkTS-Sta版本签名：**   
   NA
 
 **适配建议：** 
@@ -965,7 +965,7 @@
 
 **规则：** `arkts-builtin-iterator-result-value`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   ```
   interface IteratorYieldResult<TYield> {
     done?: false;
@@ -984,7 +984,7 @@
   let b:IteratorReturnResult<string>;
   ```
 
-**ArkTS1.2版本签名：**   
+**ArkTS-Sta版本签名：**   
   NA
 
 **适配建议：** 
@@ -1002,7 +1002,7 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1 版本签名：**  
+**ArkTS-Dyn 版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 
 **返回值：**
@@ -1017,7 +1017,7 @@
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<T>`
 
 **返回值：**

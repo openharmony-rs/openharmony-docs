@@ -1,4 +1,4 @@
-# BigInt64Array
+# BigUint64Array
 
 ## 变更梗概
 - [Symbol.iterator变更](#symboliterator变更)
@@ -17,34 +17,32 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<bigint>`
 
 **返回值：**
-
   | 类型 | 说明 |
   | -------- | -------- |
-  | `IterableIterator<bigint>` | BigInt64Array的迭代器。 |
+  | IterableIterator\<bigint\> | BigUint64Array的迭代器对象。 |
 
 **示例：**  
   ```typescript
-  let a = new BigInt64Array(3);
+  let a = new BigUint64Array(3);
   let iter = Reflect.get(a, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<bigint>`
 
 **返回值：**
-
   | 类型 | 说明 |
   | -------- | -------- |
-  | `IterableIterator<bigint>` | BigInt64Array的迭代器。 |
+  | IterableIterator\<bigint\> | BigUint64Array的迭代器对象。 |
 
 **示例：**  
   ```typescript
-  let a = new BigInt64Array(3);
-  let iter = a.$_iterator();
+  let arr: BigUint64Array = new BigUint64Array([1n]);
+  let result: IterableIterator<BigInt> = arr.$_iterator();
   ```
 
 - 适配建议：
@@ -54,21 +52,21 @@
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean`
+**ArkTS-Dyn版本签名：**  
+  `every(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean, thisArg?: any): boolean`  
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | function | 是 | 用于测试每个元素的函数。 |
-  | `thisArg` | `any` | 否 | 执行`predicate`时`this`指向的对象，默认值为undefined。 |
+  | predicate | function | 是 | 测试函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的bigint值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array对象。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array对象。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -78,12 +76,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `boolean` | 表示数组中的所有元素是否都满足`predicate`，`true`表示全部满足，`false`表示全部不满足。 |
+  | boolean | 表示是否所有元素都通过测试。true表示通过，false表示不通过。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array): boolean {
+    comp(element: bigint, index: number, array: BigUint64Array) :boolean{
       return element > this.base;
     }
     base: bigint;
@@ -91,24 +89,24 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.every(new C(1n).comp, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.every(new C(1n).comp, new C(2n));  // false
   ```
 
-**ArkTS1.2版本签名：**  
-  `every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): boolean`
+**ArkTS-Sta版本签名：**  
+  `every(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
+  | predicate | function | 是 | 测试函数。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的bigint值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array对象。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array对象。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -118,7 +116,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `boolean` | 表示数组中的所有元素是否都满足`predicate`，`true`表示全部满足，`false`表示全部不满足。 |
+  | boolean | 表示是否所有元素都通过测试。true表示通过，false表示不通过。 |
 
 **示例：**  
   ```typescript
@@ -129,10 +127,10 @@ predicate函数返回值说明：
     }
   }
   let o = new C(2n);
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.every((element: bigint, index: number, array: BigInt64Array) => {
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.every((element: bigint, index: number, array: BigUint64Array) => {
       return element > o.base;
-  });
+  })  // false
   ```
 
 - 适配建议：
@@ -142,21 +140,21 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `filter(predicate: (value: bigint, index: number, array: BigInt64Array) => any, thisArg?: any): BigInt64Array`
+**ArkTS-Dyn版本签名：**  
+  `filter(predicate: (value: bigint, index: number, array: BigUint64Array) => any, thisArg?: any): BigUint64Array`  
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
-  | `thisArg` | `any` | 否 | 执行`predicate`时`this`指向的对象，默认值为undefined。 |
+  | predicate | function | 是 | 测试函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -166,12 +164,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `BigInt64Array` | 包含所有满足`predicate`的元素的新数组。 |
+  | BigUint64Array | 通过测试的元素组成的新数组。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array): boolean {
+    comp(element: bigint, index: number, array: BigUint64Array) :boolean{
       return element > this.base;
     }
     base: bigint;
@@ -179,24 +177,24 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.filter(new C(1n).comp, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.filter(new C(1n).comp, new C(2n));  // 3
   ```
 
-**ArkTS1.2版本签名：**  
-  `filter(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): BigInt64Array`
+**ArkTS-Sta版本签名：**  
+  `filter(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean): BigUint64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
+  | predicate | function | 是 | 测试函数。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -206,7 +204,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `BigInt64Array` | 包含所有满足`predicate`的元素的新数组。 |
+  | BigUint64Array | 通过测试的元素组成的新数组。 |
 
 **示例：**  
   ```typescript
@@ -217,10 +215,10 @@ predicate函数返回值说明：
     }
   }
   let o = new C(2n);
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.filter((element: bigint, index: number, array: BigInt64Array) => {
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.filter((element: bigint, index: number, array: BigUint64Array) => {
       return element > o.base;
-  });
+  })  // 3
   ```
 
 - 适配建议：
@@ -230,21 +228,21 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): bigint | undefined`
+**ArkTS-Dyn版本签名：**  
+  `find(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean, thisArg?: any): bigint | undefined`  
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
-  | `thisArg` | `any` | 否 | 执行`predicate`时`this`指向的对象，默认值为undefined。 |
+  | predicate | function | 是 | 测试函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -254,12 +252,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `bigint \| undefined` | 如果找到满足`predicate`的元素，则返回该元素，否则返回`undefined`。 |
+  | bigint \| undefined | 第一个通过测试的元素，未找到则返回undefined。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array): boolean {
+    comp(element: bigint, index: number, array: BigUint64Array) :boolean{
       return element > this.base;
     }
     base: bigint;
@@ -267,24 +265,24 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.find(new C(1n).comp, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.find(new C(1n).comp, new C(2n));  // 3
   ```
 
-**ArkTS1.2版本签名：**  
-  `find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): bigint | undefined`
+**ArkTS-Sta版本签名：**  
+  `find(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean): bigint | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
+  | predicate | function | 是 | 测试函数。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -294,7 +292,7 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `bigint | undefined` | 如果找到满足`predicate`的元素，则返回该元素，否则返回`undefined`。 |
+  | bigint \| undefined | 第一个通过测试的元素，未找到则返回undefined。 |
 
 **示例：**  
   ```typescript
@@ -305,35 +303,34 @@ predicate函数返回值说明：
     }
   }
   let o = new C(2n);
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.find((element: bigint, index: number, array: BigInt64Array) => {
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.find((element: bigint, index: number, array: BigUint64Array) => {
       return element > o.base;
-  });
+  })  // 3
   ```
 
 - 适配建议：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
-
 ### findIndex方法变更
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): number`
+**ArkTS-Dyn版本签名：**  
+  `findIndex(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean, thisArg?: any): number`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
-  | `thisArg` | `any` | 否 | 执行`predicate`时`this`指向的对象，默认值为undefined。 |
+  | predicate | function | 是 | 测试函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -343,12 +340,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `number` | 如果找到满足`predicate`的元素，则返回该元素的索引，否则返回`-1`表示未找到满足的元素。 |
+  | number | 第一个通过测试元素的索引，未找到返回-1表示未找到满足的元素。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array): boolean {
+    comp(element: bigint, index: number, array: BigUint64Array) :boolean{
       return element > this.base;
     }
     base: bigint;
@@ -356,24 +353,24 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.findIndex(new C(1n).comp, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.findIndex(new C(1n).comp, new C(2n));  // 2
   ```
 
-**ArkTS1.2版本签名：**  
-  `findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): number`
+**ArkTS-Sta版本签名：**  
+  `findIndex(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean): number`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
+  | predicate | function | 是 | 测试函数。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -383,21 +380,21 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `number` | 如果找到满足`predicate`的元素，则返回该元素的索引，否则返回 `-1`表示未找到满足的元素。 |
+  | number | 第一个通过测试元素的索引，未找到返回-1表示未找到满足的元素。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array) :boolean{
-      return element > this.base;
-    }
     base: bigint;
     constructor(base: bigint) {
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.findIndex(new C(1n).comp);
+  let o = new C(2n);
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.findIndex((element: bigint, index: number, array: BigUint64Array) => {
+      return element > o.base;
+  })  // 2
   ```
 
 - 适配建议：
@@ -407,68 +404,59 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void, thisArg?: any): void`
+**ArkTS-Dyn版本签名：**  
+  `forEach(callbackfn: (value: bigint, index: number, array: BigUint64Array) => void, thisArg?: any): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `callbackfn` | `function` | 是 | 为数组中的每个元素执行的函数。 |
-  | `thisArg` | `any` | 否 | 执行`callbackfn`时`this`指向的对象，默认值为undefined。 |
+  | callbackfn | function | 是 | 为每个元素执行的函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 **示例：**  
   ```typescript
-  class C {
-    comp(element: bigint, index: number, array: BigInt64Array): boolean {
-      return element > this.base;
-    }
-    base: bigint;
-    constructor(base: bigint) {
-      this.base = base;
-    }
-  }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.forEach(new C(1n).comp, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  arr.forEach((value, index, array) => {
+    console.info(`${value} ${index}`);
+  });
+  // 1 0
+  // 2 1
+  // 3 2
   ```
 
-**ArkTS1.2版本签名：**  
-  `forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void): void`
+**ArkTS-Sta版本签名：**  
+  `forEach(callbackfn: (value: bigint, index: number, array: BigUint64Array) => void): void`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `callbackfn` | `function` | 是 | 为数组中的每个元素执行的函数。 |
+  | callbackfn | function | 是 | 为每个元素执行的函数。 |
 
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 **示例：**  
   ```typescript
-  class C {
-    base: bigint;
-    constructor(base: bigint) {
-      this.base = base;
-    }
-  }
-
   function main() {
-    let o = new C(2n);
-    let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-    arr.forEach((element: bigint, index: number, array: BigInt64Array) => {
+    let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+    arr.forEach((element: bigint, index: number, array: BigUint64Array) => {
         console.info(element, index);
-    });
+    })
   }
+  // 1 0
+  // 2 1
+  // 3 2
   ```
 
 - 适配建议：
@@ -478,21 +466,21 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint, thisArg?: any): BigInt64Array`
+**ArkTS-Dyn版本签名：**  
+  `map(callbackfn: (value: bigint, index: number, array: BigUint64Array) => bigint, thisArg?: any): BigUint64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `callbackfn` | `function` | 是 | 为数组中的每个元素调用的函数，返回新数组中的元素。 |
-  | `thisArg` | `any` | 否 | 执行`callbackfn`时`this`指向的对象，默认值为undefined。 |
+  | callbackfn | function | 是 | 生成新数组元素的函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 callbackfn函数返回值说明：
   | 类型 | 说明 |
@@ -502,12 +490,12 @@ callbackfn函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `BigInt64Array` | 一个新的 BigInt64Array，包含`callbackfn`对每个元素的调用结果。 |
+  | BigUint64Array | 新数组。 |
 
 **示例：**  
   ```typescript
   class C {
-    map(element: bigint, index: number, array: BigInt64Array): bigint {
+    map(element: bigint, index: number, array: BigUint64Array) :bigint{
       return this.base;
     }
     base: bigint;
@@ -515,24 +503,24 @@ callbackfn函数返回值说明：
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.map(new C(1n).map, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.map(new C(1n).map, new C(2n));  // 2 2 2
   ```
 
-**ArkTS1.2版本签名：**  
-  `map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint): BigInt64Array`
+**ArkTS-Sta版本签名：**  
+  `map(callbackfn: (value: bigint, index: number, array: BigUint64Array) => bigint): BigUint64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `callbackfn` | `function` | 是 | 为数组中的每个元素调用的函数，返回新数组中的元素。 |
+  | callbackfn | function | 是 | 生成新数组元素的函数。 |
 
 callbackfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 callbackfn函数返回值说明：
   | 类型 | 说明 |
@@ -542,7 +530,7 @@ callbackfn函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `BigInt64Array` | 一个新的BigInt64Array，包含`callbackfn`对每个元素的调用结果。 |
+  | BigUint64Array | 新数组。 |
 
 **示例：**  
   ```typescript
@@ -553,35 +541,34 @@ callbackfn函数返回值说明：
     }
   }
   let o = new C(2n);
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.map((element: bigint, index: number, array: BigInt64Array) => {
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.map((element: bigint, index: number, array: BigUint64Array) => {
       return o.base;
-  });
+  })  // 2 2 2
   ```
 
 - 适配建议：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
-
 ### some方法变更
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean`
+**ArkTS-Dyn版本签名：**  
+  `some(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean, thisArg?: any): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
-  | `thisArg` | `any` | 否 | 执行 `predicate` 时 `this` 指向的对象，默认值为undefined。 |
+  | predicate | function | 是 | 测试函数。 |
+  | thisArg | any | 否 | 执行callback时使用的this值，默认值为undefined。 |
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -591,12 +578,12 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `boolean` | 表示数组中至少有一个元素满足`predicate`，`true`表示有，`false`表示没有。 |
+  | boolean | 表示是否至少有一个元素通过测试。true表示有，false表示没有。 |
 
 **示例：**  
   ```typescript
   class C {
-    comp(element: bigint, index: number, array: BigInt64Array): boolean {
+    comp(element: bigint, index: number, array: BigUint64Array) :boolean{
       return element > this.base;
     }
     base: bigint;
@@ -604,24 +591,24 @@ predicate函数返回值说明：
       this.base = base;
     }
   }
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.some(new C(1n).comp, new C(2n));
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result = arr.some(new C(1n).comp, new C(2n));  // true
   ```
 
-**ArkTS1.2版本签名：**  
-  `some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean): boolean`
+**ArkTS-Sta版本签名：**  
+  `some(predicate: (value: bigint, index: number, array: BigUint64Array) => boolean): boolean`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `predicate` | `function` | 是 | 用于测试每个元素的函数。 |
+  | predicate | function | 是 | 测试函数。|
 
 predicate函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | value | bigint | 是 | 当前被遍历的数组元素的值。 |
   | index | number | 是 | 当前元素的索引。 |
-  | array | BigInt64Array | 是 | 调用的原始BigInt64Array数组。 |
+  | array | BigUint64Array | 是 | 调用的原始BigUint64Array数组。 |
 
 predicate函数返回值说明：
   | 类型 | 说明 |
@@ -631,40 +618,30 @@ predicate函数返回值说明：
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `boolean` | 表示数组中至少有一个元素满足`predicate`，`true`表示有，`false`表示没有。 |
+  | boolean | 表示是否至少有一个元素通过测试。true表示有，false表示没有。 |
 
 **示例：**  
   ```typescript
-  class C {
-    base: bigint;
-    constructor(base: bigint) {
-      this.base = base;
-    }
-  }
-  let o = new C(2n);
-  let arr: BigInt64Array = new BigInt64Array([1n, 2n, 3n]);
-  let result = arr.some((element: bigint, index: number, array: BigInt64Array) => {
-      return element > o.base;
-  });
+  let arr: BigUint64Array = new BigUint64Array([1n, 2n, 3n]);
+  let result: BigUint64Array = arr.reverse();  // true
   ```
 
 - 适配建议：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
-
 ### from静态方法变更
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
-  `static from<U>(arrayLike: ArrayLike<U>, mapfn: (v: U, k: number) => bigint, thisArg?: any): BigInt64Array`
+**ArkTS-Dyn版本签名：**  
+  `static from<U>(arrayLike: ArrayLike<U>, mapfn: (v: U, k: number) => bigint, thisArg?: any): BigUint64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `arrayLike` | `ArrayLike<U>` | 是 | 类似数组或可迭代的对象。 |
-  | `mapfn` | `function` | 是 | 为`arrayLike`中的每个元素调用的函数，返回新数组中的元素。 |
-  | `thisArg` | `any` | 否 | 执行`mapfn`时`this`指向的对象，默认值为undefined。 |
+  | arrayLike | ArrayLike\<U\> | 是 | 要转换的对象。 |
+  | mapfn | function | 是 | map函数。 |
+  | thisArg | any | 否 | 执行mapfn时使用的this值。 |
 
 mapfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
@@ -675,36 +652,35 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | bigint | 返回的一个bigint类型值，作为新BigInt64Array的元素 |
+  | bigint | 返回的一个bigint类型值，作为新BigUint64Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `BigInt64Array` | 一个新的BigInt64Array，包含`mapfn`对`arrayLike`中每个元素的调用结果。 |
+  | BigUint64Array | 新数组。 |
 
 **示例：**  
   ```typescript
   class C {
     add(v: number, k: number): bigint {
-      return BigInt(v + this.offset);
+        return BigInt(v + this.offset);
     }
     offset: number;
     constructor(offset: number) {
       this.offset = offset;
     }
   }
-
-  const newArr = BigInt64Array.from<number>([1, 2, 3], new C(1).add, new C(2)); // [3,4,5]
+  const newArr = BigUint64Array.from<number>([1, 2, 3], new C(1).add, new C(2));
+  console.info(newArr.toString())  // 3,4,5
   ```
 
-**ArkTS1.2版本签名：**  
-  `static from<U>(arrayLike: ArrayLike<U>, mapfn: (v: U, k: number) => bigint): BigInt64Array`
+**ArkTS-Sta版本签名：**  
+  `static from(arrayLike: ArrayLike<bigint>): BigUint64Array`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | `arrayLike` | `ArrayLike<U>` | 是 | 类似数组或可迭代的对象。 |
-  | `mapfn` | `function` | 是 | 为`arrayLike`中的每个元素调用的函数，返回新数组中的元素。 |
+  | arrayLike | ArrayLike\<bigint\> | 是 | 要转换的对象。 |
 
 mapfn函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
@@ -715,13 +691,12 @@ mapfn函数参数说明：
 mapfn函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | bigint | 返回的一个bigint类型值，作为新BigInt64Array的元素 |
-
+  | bigint | 返回的一个bigint类型值，作为新BigUint64Array的元素 |
 
 **返回值：**
   | 类型 | 说明 |
   | -------- | -------- |
-  | `BigInt64Array` | 一个新的BigInt64Array，包含`mapfn` 对`arrayLike`中每个元素的调用结果。 |
+  | BigUint64Array | 新数组。 |
 
 **示例：**  
   ```typescript
@@ -731,14 +706,14 @@ mapfn函数返回值说明：
       this.offset = offset;
     }
   }
-
+  
   function main() {
-    const origArr: Array<number> = new Array<number>(1,2,3);
+    const origArr: Array<number> = new Array<number>(1, 2, 3);
     let o = new C(2);
-    const newArr: BigInt64Array = BigInt64Array.from<number>(origArr, (v: number, k: number) => {
-        return new BigInt(v + o.offset);
-    }); // [3,4,5]
-    console.info(newArr);
+    const newArr = BigUint64Array.from<number>(origArr, (v: number, k: number) => {
+      return new BigInt(v + o.offset);
+    });
+    console.info(newArr.toString());  // 3,4,5
   }
   ```
 

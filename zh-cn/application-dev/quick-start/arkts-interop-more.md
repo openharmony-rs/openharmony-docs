@@ -1,13 +1,13 @@
-# ArkTS1.2互操作场景
+# ArkTS-Sta互操作场景
 
-## ArkTS1.2中使用ArkTS1.1或TS
+## ArkTS-Sta中使用ArkTS-Dyn或TS
 
 ### 文件导入
 
-在ArkTS1.2中使用`import`函数导入ArkTS1.1模块的对象。
+在ArkTS-Sta中使用`import`函数导入ArkTS-Dyn模块的对象。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export function foo() {}
 export class A {
   field: number = 0;
@@ -16,17 +16,17 @@ export class A {
 ```
 
 ```typescript
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import { foo, A } from "./file1";
 ```
 
 ### 类实例化
 
-在ArkTS1.2中使用从ArkTS1.1中导入的类，并用new来创建该类的实例。
+在ArkTS-Sta中使用从ArkTS-Dyn中导入的类，并用new来创建该类的实例。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export class A {
   id: number = 0;
   constructor(arg: number) {
@@ -55,7 +55,7 @@ export class C implements Inface {
 ```
 
 ```typescript
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import { A, B, C } from "./file1";
 let a = new A(123);
@@ -65,10 +65,10 @@ let c = new C();
 
 ### 属性读写
 
-在ArkTS1.2中读写ArkTS1.1对象的属性。
+在ArkTS-Sta中读写ArkTS-Dyn对象的属性。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export class Person {
   public id: number = 0;
   private name_: string = "";
@@ -85,7 +85,7 @@ export class Person {
 ```
 
 ```typescript
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import { Person } from "./file1";
 let p = new Person("John");
@@ -98,10 +98,10 @@ console.log(p.id); // Output: 123456
 
 ### 函数调用
 
-在ArkTS1.2中直接调用从ArkTS1.1导入的函数。
+在ArkTS-Sta中直接调用从ArkTS-Dyn导入的函数。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export let say = (msg: string) => {
   console.log(msg);
 };
@@ -113,7 +113,7 @@ export function myAdd(a: number, b: number): number {
 ```
 
 ```typescript
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import { say, myAdd } from "file1";
 say("Hello"); // Output: Hello
@@ -122,10 +122,10 @@ myAdd(3, 4); // Output: 7
 
 ### 对象方法调用
 
-在ArkTS1.2中直接调用ArkTS1.1导入对象的方法。
+在ArkTS-Sta中直接调用ArkTS-Dyn导入对象的方法。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export class A {
   log() {
     console.log("123")
@@ -147,7 +147,7 @@ export let arr = new Array<number>(1, 2, 3);
 ```
 
 ```typescript
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import { A, C, itA, arr } from "file1";
 let a = new A();
@@ -160,10 +160,10 @@ arr.push(4);
 
 ### 参数传递
 
-可以将ArkTS1.2的对象直接作为参数传入到`import`来的ArkTS1.1函数。
+可以将ArkTS-Sta的对象直接作为参数传入到`import`来的ArkTS-Dyn函数。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export function foo(a: Array<string>) {
   console.log(a[0]);
 }
@@ -179,7 +179,7 @@ export interface Iface {
   foo(a: Array<string>): void;
 }
 
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import { foo, C, Iface } from "file1";
 
@@ -194,10 +194,10 @@ function baz(i: Iface) {
 
 ### 异常处理
 
-当在ArkTS1.1中定义一个异常的实例时，可以在ArkTS1.2中捕获这个异常。
+当在ArkTS-Dyn中定义一个异常的实例时，可以在ArkTS-Sta中捕获这个异常。
 
 ```typescript
-// file1.ets ArkTS1.1
+// file1.ets ArkTS-Dyn
 export let err = new Error("123");
 export function foo1() {
   throw err;
@@ -223,7 +223,7 @@ export function foo5() {
   throw err;
 }
 
-// file2.ets ArkTS1.2
+// file2.ets ArkTS-Sta
 'use static'
 import {
   err,

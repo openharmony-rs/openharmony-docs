@@ -25,16 +25,16 @@
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `configurable?: boolean`
 
 **示例：**  
-ArkTs1.1 限制使用标准库, 会有告警提示
+ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```typescript
   Object.defineProperty(obj, "prop", { configurable: true }); // Usage of standard library is restricetd (arkts-limited-stdlib) <ArkTsCheck>
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -44,16 +44,16 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `enumerable?: boolean`
 
 **示例：**  
-ArkTs1.1 限制使用标准库, 会有告警提示
+ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```typescript
   Object.defineProperty(obj, "prop", { enumerable: false }); // Usage of standard library is restricetd (arkts-limited-stdlib) <ArkTsCheck>
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -63,16 +63,16 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `value?: any`
 
 **示例：**  
-ArkTs1.1 限制使用标准库, 会有告警提示
+ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```typescript
   Object.defineProperty(obj, "prop", { value: 1 }); // Usage of standard library is restricetd (arkts-limited-stdlib) <ArkTsCheck>
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -82,16 +82,16 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `writable?: boolean`
 
 **示例：**  
-ArkTs1.1 限制使用标准库, 会有告警提示
+ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```typescript
   Object.defineProperty(obj, "prop", { writable: false }); // Usage of standard library is restricetd (arkts-limited-stdlib) <ArkTsCheck>
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -101,18 +101,18 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `get?(): any`
 
 **示例：**  
-ArkTs1.1 限制使用标准库, 会有告警提示
+ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```typescript
   Object.defineProperty(obj, "prop", { 
     get() { return this._value; }
   }); // Usage of standard library is restricetd (arkts-limited-stdlib) <ArkTsCheck>
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -122,18 +122,18 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `set?(v: any): void`
 
 **示例：**  
-ArkTs1.1 限制使用标准库, 会有告警提示
+ArkTS-Dyn 限制使用标准库, 会有告警提示
   ```typescript
   Object.defineProperty(obj, "prop", {
     set(v) { this._value = v; }
   }); // Usage of standard library is restricetd (arkts-limited-stdlib) <ArkTsCheck>
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 **适配建议：** 
@@ -150,7 +150,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `groups?: { [key: string]: string }`
 
 **返回值：**
@@ -166,7 +166,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   console.info(match!.groups!.year)
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `groups?: Record<string, string>`
 
 **返回值：**
@@ -196,7 +196,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `groups?: { [key: string]: string }`
 
 **返回值：**
@@ -212,7 +212,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   console.info(match!.groups!.year);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `groups?: Record<string, string>`
 
 **返回值：**
@@ -247,7 +247,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `configurable?: boolean`
 
 **返回值：**
@@ -262,7 +262,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   };
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -272,7 +272,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `enumerable?: boolean`
 
 **返回值：**
@@ -287,7 +287,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   };
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -297,7 +297,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `get?: () => T`
 
 **返回值：**
@@ -312,7 +312,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   };
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -322,7 +322,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `set?: (value: T) => void`
 
 **参数：**
@@ -337,7 +337,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   };
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -347,7 +347,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `value?: T`
 
 **返回值：**
@@ -362,7 +362,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   };
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -372,7 +372,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-no-property-descriptor`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `writable?: boolean`
 
 **返回值：**
@@ -387,7 +387,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   };
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
  
 **适配建议：** 
@@ -408,7 +408,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** ``
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `function get<T extends object, P extends PropertyKey>(target: T, propertyKey: P, receiver?: unknown): P extends keyof T ? T[P] : any`
 
 **参数：**
@@ -433,7 +433,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   Reflect.get<C, string>(instance, "x", instance); // 1
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `function get(target: object, propertyKey: string): NullishType`
 
 **参数：**
@@ -463,7 +463,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-narrow-types`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `function has(target: object, propertyKey: PropertyKey): boolean`
 
 **参数：**
@@ -483,7 +483,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   Reflect.has(a, 0);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `function has(target: object, propertyKey: string): boolean`
 
 **参数：**
@@ -513,7 +513,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-narrow-types`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `function ownKeys(target: object): (string | symbol)[]`
 
 **参数：**
@@ -532,7 +532,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   Reflect.ownKeys(a);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `function ownKeys(target: object): string[]`
 
 **参数：**
@@ -561,7 +561,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** ``
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `function set<T extends object, P extends PropertyKey>(target: T, propertyKey: P, value: P extends keyof T ? T[P] : any, receiver?: any): boolean`
 
 **参数：**
@@ -583,7 +583,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   Reflect.set<Array<number>, number>(a, 0, 2);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `function set(target: object, propertyKey: string, value: object): boolean`
 
 **参数：**
@@ -613,7 +613,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 #### Reflect-方法新增
 
-**ArkTS1.2版本签名：**
+**ArkTS-Sta版本签名：**
   `function isLiteralInitializedInterface(target: Object): boolean`
 
 **参数：**
@@ -650,7 +650,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `readonly raw: readonly string[]`
 
 - 类型说明：
@@ -666,7 +666,7 @@ ArkTs1.1 限制使用标准库, 会有告警提示
   f`Hello`;
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   N/A
  
 **适配建议：** 

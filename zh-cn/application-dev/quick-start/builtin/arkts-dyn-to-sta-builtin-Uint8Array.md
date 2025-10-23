@@ -18,7 +18,7 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `[Symbol.iterator](): IterableIterator<number>`
 
 **返回值：**
@@ -32,7 +32,7 @@
   let iter = Reflect.get(a, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<number>`
 
 **返回值：**
@@ -52,7 +52,7 @@
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `every(predicate: (value: number, index: number, array: Uint8Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
@@ -97,7 +97,7 @@ predicate函数返回值说明：
   arr.every(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `every(predicate: (value: number, index: number, array: Uint8Array) => boolean): boolean`
 
 **参数：**
@@ -146,7 +146,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `filter(predicate: (value: number, index: number, array: Uint8Array) => any, thisArg?: any): Uint8Array`
 
 **参数：**
@@ -191,7 +191,7 @@ predicate函数返回值说明：
   arr.filter(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `filter(predicate: (value: number, index: number, array: Uint8Array) => boolean): Uint8Array`
 
 **参数：**
@@ -240,7 +240,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `find(predicate: (value: number, index: number, obj: Uint8Array) => boolean, thisArg?: any): number | undefined`
 
 **参数：**
@@ -285,7 +285,7 @@ predicate函数返回值说明：
   arr.find(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `find(predicate: (value: number, index: number, obj: Uint8Array) => boolean): number | undefined`
 
 **参数：**
@@ -334,7 +334,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `findIndex(predicate: (value: number, index: number, obj: Uint8Array) => boolean, thisArg?: any): number`
 
 **参数：**
@@ -379,7 +379,7 @@ predicate函数返回值说明：
   arr.findIndex(a.compare, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `findIndex(predicate: (value: number, index: number, obj: Uint8Array) => boolean): number`
 
 **参数：**
@@ -428,7 +428,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `forEach(callbackfn: (value: number, index: number, array: Uint8Array) => void, thisArg?: any): void`
 
 **参数：**
@@ -463,7 +463,7 @@ callbackfn函数参数说明：
   arr.forEach(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `forEach(callbackfn: (value: number, index: number, array: Uint8Array) => void): void`
 
 **参数：**
@@ -502,7 +502,7 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `map(callbackfn: (value: number, index: number, array: Uint8Array) => number, thisArg?: any): Uint8Array`
 
 **参数：**
@@ -547,7 +547,7 @@ callbackfn函数返回值说明：
   arr.map(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `map(callbackfn: (value: number, index: number, array: Uint8Array) => number): Uint8Array`
 
 **参数：**
@@ -596,7 +596,7 @@ callbackfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `some(predicate: (value: number, index: number, array: Uint8Array) => unknown, thisArg?: any): boolean`
 
 **参数：**
@@ -641,7 +641,7 @@ predicate函数返回值说明：
   arr.some(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `some(predicate: (value: number, index: number, array: Uint8Array) => boolean): boolean`
 
 **参数：**
@@ -690,7 +690,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Uint8Array`
 
 **参数：**
@@ -735,7 +735,7 @@ mapfn函数返回值说明：
   let arr3 = Uint8Array.from(arr, a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number): Uint8Array`
 
 **参数：**
@@ -784,7 +784,7 @@ mapfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：** 
+**ArkTS-Dyn版本签名：** 
   `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Uint8Array`
 
 **参数：**
@@ -829,7 +829,7 @@ mapfn函数返回值说明：
   let arr3 = Uint8Array.from(arr, a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number): Uint8Array`
 
 **参数：**
