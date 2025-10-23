@@ -48,7 +48,7 @@ Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool* enabled | - bool类型的指针，用于接收位置开关状态值。<br> 等于true表示位置开关开启，false表示位置开关关闭。<br> 需要传入非空指针，否则会返回错误。 |
+| bool* enabled | bool类型的指针，用于接收位置开关状态值。<br> 等于true表示位置开关开启，false表示位置开关关闭。<br> 需要传入非空指针，否则会返回错误。 |
 
 **返回：**
 
@@ -100,7 +100,7 @@ Location_ResultCode OH_Location_StopLocating(const Location_RequestConfig* reque
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向定位请求参数的指针。<br> 该参数需要与[OH_Location_StartLocating](capi-oh-location-h.md#oh_location_startlocating)中的requestConfig是同一个指针。<br> 详细定义请参考[Location_RequestConfig](capi-location-location-requestconfig.md)。<br> 需要传入非空指针，否则会返回错误。 |
+| [const Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向定位请求参数的指针。<br> 该参数需要与[OH_Location_StartLocating](capi-oh-location-h.md#oh_location_startlocating)中的requestConfig是同一个指针。<br> 详细定义请参考[Location_RequestConfig](capi-location-location-requestconfig.md)。<br> 需要传入非空指针，否则会返回错误。 |
 
 **返回：**
 

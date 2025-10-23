@@ -151,7 +151,7 @@ Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_Info](capi-location-location-info.md)* location | - 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
+| [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
 
 **返回：**
 
@@ -175,7 +175,7 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_Info](capi-location-location-info.md)* location | - 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
+| [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
 | char* additionalInfo | - char类型的非空指针；该变量用于保存附加信息字符串，该字符串是JSON格式。<br> 该指针和对应的内存由调用者创建，建议申请大于等于256字节的内存。<br> 如果传入空指针，会返回错误码。 |
 | uint32_t length | - 表示additionalInfo的内存大小。 |
 
@@ -201,7 +201,7 @@ typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_Info](capi-location-location-info.md)* location | - 指向[Location_Info](capi-location-location-info.md)实例的指针，携带最新的位置信息。<br> location实例的内存会在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)结束时回收，请在此之前调用[OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo)等接口获取位置信息。 |
+| [Location_Info](capi-location-location-info.md)* location | 指向[Location_Info](capi-location-location-info.md)实例的指针，携带最新的位置信息。<br> location实例的内存会在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)结束时回收，请在此之前调用[OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo)等接口获取位置信息。 |
 |  void* userData | - 指向调用者数据结构或对象的指针，该参数是通过[OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback)传入的。 |
 
 ### OH_Location_CreateRequestConfig()
@@ -238,7 +238,7 @@ void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
 
 ### OH_LocationRequestConfig_SetUseScene()
 
@@ -256,8 +256,8 @@ void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
-| [Location_UseScene](capi-oh-location-type-h.md#location_usescene) useScene | - 表示位置请求时的用户活动场景。<br> 默认值是[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene)。<br> 详细定义见[Location_UseScene](capi-oh-location-type-h.md#location_usescene)。 |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_UseScene](capi-oh-location-type-h.md#location_usescene) useScene | 表示位置请求时的用户活动场景。<br> 默认值是[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene)。<br> 详细定义见[Location_UseScene](capi-oh-location-type-h.md#location_usescene)。 |
 
 ### OH_LocationRequestConfig_SetPowerConsumptionScene()
 
@@ -275,8 +275,8 @@ void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* r
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
-| [Location_PowerConsumptionScene](capi-oh-location-type-h.md#location_powerconsumptionscene) powerConsumptionScene | - 表示位置请求的功耗场景。<br> 默认值是[LOCATION_LOW_POWER_CONSUMPTION](capi-oh-location-type-h.md#location_powerconsumptionscene)。<br> 详细定义见[Location_PowerConsumptionScene](capi-oh-location-type-h.md#location_powerconsumptionscene)。 |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_PowerConsumptionScene](capi-oh-location-type-h.md#location_powerconsumptionscene) powerConsumptionScene | 表示位置请求的功耗场景。<br> 默认值是[LOCATION_LOW_POWER_CONSUMPTION](capi-oh-location-type-h.md#location_powerconsumptionscene)。<br> 详细定义见[Location_PowerConsumptionScene](capi-oh-location-type-h.md#location_powerconsumptionscene)。 |
 
 ### OH_LocationRequestConfig_SetInterval()
 
@@ -294,8 +294,8 @@ void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
-| int interval | - 表示位置上报时间间隔，单位是“秒”。取值范围为大于等于1，默认值为1。 |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| int interval | 表示位置上报时间间隔，单位是“秒”。取值范围为大于等于1，默认值为1。 |
 
 ### OH_LocationRequestConfig_SetCallback()
 
@@ -313,8 +313,8 @@ void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | - 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
-| [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback) callback | - 指向回调函数的指针，该回调函数用于接收位置信息变化。<br> 详细定义请参考[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)。 |
-| void* userData | - 指向调用者数据结构或对象的指针。这个指针会在回调函数执行时作为入参回传给调用者。 |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback) callback | 指向回调函数的指针，该回调函数用于接收位置信息变化。<br> 详细定义请参考[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)。 |
+| void* userData | 指向调用者数据结构或对象的指针。这个指针会在回调函数执行时作为入参回传给调用者。 |
 
 

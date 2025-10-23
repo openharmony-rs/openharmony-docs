@@ -34,6 +34,6 @@
 | double speedAccuracy | 表示速度信息的精度，单位米每秒。 |
 | double directionAccuracy | 表示航向信息的精度。单位是“度”，取值范围为0到360。 |
 | int64_t uncertaintyOfTimeSinceBoot | 表示位置时间戳的不确定度，单位为纳秒。 |
-| [Location_SourceType](capi-oh-location-type-h.md#location_sourcetype) locationSourceType | 表示定位结果的来源。详细定义请参考[Location_SourceType](capi-oh-location-type-h.md#location_sourcetype). |
+| [Location_SourceType](capi-oh-location-type-h.md#location_sourcetype) locationSourceType | 表示定位结果的来源。详细定义请参考[Location_SourceType](capi-oh-location-type-h.md#location_sourcetype)。|
 
 
