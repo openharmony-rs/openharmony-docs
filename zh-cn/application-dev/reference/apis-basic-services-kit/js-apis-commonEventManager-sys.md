@@ -21,11 +21,11 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 全部系统公共事件枚举定义请参见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。
 
-## commonEventManager.publishAsUser<sup>
+## commonEventManager.publishAsUser
 
-ArkTS-Dyn:publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
 
-ArkTS-Sta:publishAsUser(event: string, userId: int, callback: AsyncCallback\<void>): void
+ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<void>): void
 
 以回调的形式向指定用户发布公共事件。
 
@@ -105,9 +105,9 @@ try {
 
 ## commonEventManager.publishAsUser
 
-ArkTS-Dyn:publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-ArkTS-Sta:publishAsUser(event: string, userId: int, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
+ArkTS-Sta: publishAsUser(event: string, userId: int, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
 以回调形式向指定用户发布公共事件并指定发布信息。
 
@@ -294,7 +294,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application dose not have permission to call the interface.     |  
+| 201      | The application does not have permission to call the interface.     |  
 | 202      | not system app.                     |  
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500004  | A third-party application cannot send system common events.                |
@@ -355,7 +355,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -452,9 +452,9 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 
 ## commonEventManager.setStaticSubscriberState<sup>12+</sup>
 
-ArkTS-Dyn:setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
+ArkTS-Dyn: setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<void>
 
-ArkTS-Sta:setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void>;
+ArkTS-Sta: setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void>
 
 为当前应用设置静态订阅事件的使能状态，并且记录事件名称。使用Promise异步回调。
 
@@ -464,9 +464,9 @@ ArkTS-Sta:setStaticSubscriberState(enable: boolean, events: Array\<string>): Pro
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本**: 12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**: 22
 
 **参数：**
 
@@ -491,6 +491,8 @@ ArkTS-Sta:setStaticSubscriberState(enable: boolean, events: Array\<string>): Pro
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.        |
 | 1500008  | Failed to initialize the common event service. |
+
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts

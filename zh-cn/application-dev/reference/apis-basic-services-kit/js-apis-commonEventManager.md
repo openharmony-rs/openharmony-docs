@@ -348,7 +348,7 @@ commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: 
 
 createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
 
-createSubscriber的同步接口。
+createSubscriberSync的同步接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -769,9 +769,8 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，允许为 null
-let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-
+// 定义订阅者
+let subscriber: commonEventManager.CommonEventSubscriber | undefined | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ["event"]
@@ -781,43 +780,36 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(
     subscribeInfo,
-    (err: BusinessError | null,
-      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+    (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined) => {
       if (err) {
-         console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-      } else {
-        // 检查订阅者对象是否存在
-        if (!commonEventSubscriber) {
-          console.error("Failed to create subscriber: commonEventSubscriber is null or undefined");
-          return;
-        }
-
-        console.info(`Succeeded in creating subscriber.`);
-        subscriber = commonEventSubscriber;
-
-        // 订阅公共事件 - 使用确定的非空对象
-        try {
-          commonEventManager.subscribe(
-            commonEventSubscriber,
-            (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined) => {
-              if (err) {
-                console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
-                return;
-              }
-
-              // 处理 data 可能为 undefined 的情况
-              if (data) {
-                console.info(`Succeeded to receive common event, data is ${JSON.stringify(data)}`);
-              } else {
-                 console.info('Received common event but data is undefined');
-              }
-            }
-          );
-        } catch (error) {
-          const err = error as BusinessError;
-          console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
-        }
+        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+        return;
       }
+
+      // 确保订阅者对象有效
+      if (!commonEventSubscriber) {
+        console.error(`Failed to create subscriber: subscriber is undefined`);
+        return;
+      }
+
+      console.info(`Succeeded in creating subscriber.`);
+      subscriber = commonEventSubscriber;
+
+      // 使用类型断言确保类型正确
+      const validSubscriber = commonEventSubscriber as commonEventManager.CommonEventSubscriber;
+
+      // 订阅公共事件
+      commonEventManager.subscribeToEvent(
+        validSubscriber,
+        (data: commonEventManager.CommonEventData) => {
+          console.info(`Succeeded to receive common event, data is ${JSON.stringify(data)}`);
+        }
+      ).then(() => {
+        console.info(`Succeeded to subscribe.`);
+      }).catch((err: Error) => {
+        const businessErr = err as BusinessError;
+        console.error(`Failed to subscribe. Code is ${businessErr.code}, message is ${businessErr.message}`);
+      });
     }
   );
 } catch (error) {

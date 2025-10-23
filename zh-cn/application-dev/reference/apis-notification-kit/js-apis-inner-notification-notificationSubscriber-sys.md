@@ -25,6 +25,10 @@ onConsume?: (data: SubscribeCallbackData) => void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -863,12 +867,14 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 | sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | 是  | 是  | 通知排序信息。 |
 | reason          | ArkTS-Dyn:number <br/>ArkTS-Sta:int                                | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
-| vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array<long>               | 是  | 是  | 通知震动。 |
+| vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array\<long\>               | 是  | 是  | 通知震动。 |
 
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：8
 
@@ -890,8 +896,8 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 | 名称        | 类型   | 只读 | 可选 | 说明         |
 | ----------- | ------ | ---- | ---- | ------------ |
 | bundle      | string | 是   | 否   | 应用的包名。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
-| uid         | ArkTS-Dyn:number <br/>ArkTS-Sta:int | 是   | 否   | 应用的uid。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
-| badgeNumber | ArkTS-Dyn:number <br/>ArkTS-Sta:int | 是   | 否   | 角标个数。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
+| uid         | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 应用的uid。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
+| badgeNumber | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 角标个数。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
 | instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。   |
 | appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。 <br/> **ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：20 |
 

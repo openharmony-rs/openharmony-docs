@@ -12,6 +12,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 ### 使用说明
 
 在使用CommonEventSubscriber的功能前，需要通过commonEventManager.createSubscriber获取subscriber对象。
@@ -33,13 +37,13 @@ subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
 
 ### getCode
 
-ArkTS-Dyn:getCode(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getCode(callback: AsyncCallback\<number>): void
 
-ArkTS-Sta:getCode(callback: AsyncCallback\<int>): void
+ArkTS-Sta: getCode(callback: AsyncCallback\<int>): void
 
-ArkTS-Dyn:获取有序公共事件传递的数据（number类型）。使用callback异步回调。
+ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。使用callback异步回调。
 
-ArkTS-Sta:获取有序公共事件传递的数据（int类型）。使用callback异步回调。
+ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -53,7 +57,7 @@ ArkTS-Sta:获取有序公共事件传递的数据（int类型）。使用callbac
 
 | 参数名   | 类型                   | 必填 | 说明               |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<int\>| 是   | 回调函数。返回有序公共事件传递的数据（int类型）。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<int\>| 是   | 回调函数。返回有序公共事件传递的数据。 |
 
 **错误码：**
 
@@ -93,23 +97,27 @@ subscriber.getCode((err: BusinessError | null, code: int | undefined | null) => 
 
 ### getCode
 
-ArkTS-Dyn:getCode(): Promise\<number>
+ArkTS-Dyn: getCode(): Promise\<number>
 
-ArkTS-Sta:getCode(): Promise\<int>
+ArkTS-Sta: getCode(): Promise\<int>
 
-ArkTS-Dyn:获取有序公共事件传递的数据（number类型）。使用Promise异步回调。
+ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。使用Promise异步回调。
 
-ArkTS-Sta:获取有序公共事件传递的数据（int类型）。使用Promise异步回调。
+ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| ArkTS-Dyn: Promise\<number><br/>ArkTS-Sta:Promise\<int> | Promise对象。返回有序公共事件传递的数据（int类型）。 |
+| ArkTS-Dyn: Promise\<number><br/>ArkTS-Sta:Promise\<int> | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -128,7 +136,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.getCode().then((code: number) => {
+subscriber.getCode().then((code: int) => {
   console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 }).catch((err: BusinessError) : void => {
   console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
@@ -137,13 +145,13 @@ subscriber.getCode().then((code: number) => {
 
 ### getCodeSync<sup>10+</sup>
 
-ArkTS-Dyn:getCodeSync(): number
+ArkTS-Dyn: getCodeSync(): number
 
-ArkTS-Sta:getCodeSync(): int
+ArkTS-Sta: getCodeSync(): int
 
-ArkTS-Dyn:获取有序公共事件传递的数据（number类型）。
+ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。
 
-ArkTS-Sta:获取有序公共事件传递的数据（int类型）。
+ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -157,7 +165,7 @@ ArkTS-Sta:获取有序公共事件传递的数据（int类型）。
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 表示有序公共事件传递的数据（number类型）。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 表示有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -179,13 +187,13 @@ console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 
 ### setCode
 
-ArkTS-Dyn:setCode(code: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setCode(code: number, callback: AsyncCallback\<void>): void
 
-ArkTS-Sta:setCode(code: int, callback: AsyncCallback\<void>): void
+ArkTS-Sta: setCode(code: int, callback: AsyncCallback\<void>): void
 
-ArkTS-Dyn:设置有序公共事件传递的数据（number类型）。使用callback异步回调。
+ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。使用callback异步回调。
 
-ArkTS-Sta:设置有序公共事件传递的数据（int类型）。使用callback异步回调。
+ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -199,8 +207,8 @@ ArkTS-Sta:设置有序公共事件传递的数据（int类型）。使用callbac
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。   |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（number类型）成功时，err为undefined，否则为错误对象。 |
+| code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。   |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -240,29 +248,33 @@ subscriber.setCode(1, (err: BusinessError | null) => {
 
 ### setCode
 
-ArkTS-Dyn:setCode(code: number): Promise\<void>
+ArkTS-Dyn: setCode(code: number): Promise\<void>
 
-ArkTS-Sta:setCode(code: int): Promise\<void>
+ArkTS-Sta: setCode(code: int): Promise\<void>
 
-ArkTS-Dyn:设置有序公共事件传递的数据（number类型）。使用Promise异步回调。
+ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。使用Promise异步回调。
 
-ArkTS-Sta:设置有序公共事件传递的数据（int类型）。使用Promise异步回调。
+ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。 |
 
 **返回值：**
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -298,13 +310,13 @@ subscriber.setCode(1).then(() => {
 
 ### setCodeSync<sup>10+</sup>
 
-ArkTS-Dyn:setCodeSync(code: number): void
+ArkTS-Dyn: setCodeSync(code: number): void
 
-ArkTS-Sta:setCodeSync(code: int): void
+ArkTS-Sta: setCodeSync(code: int): void
 
-ArkTS-Dyn:设置有序公共事件传递的数据（number类型）。
+ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。
 
-ArkTS-Sta:设置有序公共事件传递的数据（int类型）。
+ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -318,7 +330,7 @@ ArkTS-Sta:设置有序公共事件传递的数据（int类型）。
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。 |
 
 **错误码：**
 
@@ -359,7 +371,7 @@ getData(callback: AsyncCallback\<string>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | 是   | 回调函数。返回有序公共事件传递的数据（string类型）。 |
+| callback | AsyncCallback\<string> | 是   | 回调函数。返回有序公共事件传递的数据。 |
 
 **错误码：**
 
@@ -417,7 +429,7 @@ getData(): Promise\<string>
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| Promise\<string> | Promise对象。返回有序公共事件传递的数据（string类型）。 |
+| Promise\<string> | Promise对象。返回有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -461,7 +473,7 @@ getDataSync(): string
 
 | 类型             | 说明               |
 | ---------------- | ------------------ |
-| string | 有序公共事件传递的数据（string类型）。 |
+| string | 有序公共事件传递的数据。 |
 
 **示例：**
 
@@ -490,8 +502,8 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                 |
 | -------- | -------------------- | ---- | -------------------- |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（string类型）成功时，err为undefined，否则为错误对象。 |
+| data     | string               | 是   | 有序公共事件传递的数据。   |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -547,7 +559,7 @@ setData(data: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据。 |
 
 **返回值：**
 
@@ -605,7 +617,7 @@ setDataSync(data: string): void
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| data   | string | 是   | 有序公共事件传递的数据。 |
 
 **错误码：**
 
@@ -630,9 +642,9 @@ try {
 
 ### setCodeAndData
 
-ArkTS-Dyn:setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
+ArkTS-Dyn: setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
 
-ArkTS-Sta:setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>): void
+ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>): void
 
 设置有序公共事件数据。使用callback异步回调。
 
@@ -640,12 +652,16 @@ ArkTS-Sta:setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>)
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。   |
-| data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
+| code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。   |
+| data     | string               | 是   | 有序公共事件传递的数据。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -686,9 +702,9 @@ subscriber.setCodeAndData(1, 'publish_data_changed', (err: BusinessError | null)
 
 ### setCodeAndData
 
-ArkTS-Dyn:setCodeAndData(code: number, data: string): Promise\<void>
+ArkTS-Dyn: setCodeAndData(code: number, data: string): Promise\<void>
 
-ArkTS-Sta:setCodeAndData(code: int, data: string): Promise\<void>
+ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
@@ -696,12 +712,16 @@ ArkTS-Sta:setCodeAndData(code: int, data: string): Promise\<void>
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（int类型）。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。 |
+| data   | string | 是   | 有序公共事件传递的数据。 |
 
 **返回值：**
 
@@ -741,9 +761,9 @@ subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
 
 ### setCodeAndDataSync<sup>10+</sup>
 
-ArkTS-Dyn:setCodeAndDataSync(code: number, data: string): void
+ArkTS-Dyn: setCodeAndDataSync(code: number, data: string): void
 
-ArkTS-Sta:setCodeAndDataSync(code: int, data: string): void
+ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
 设置有序公共事件传递的数据。
 
@@ -751,12 +771,16 @@ ArkTS-Sta:setCodeAndDataSync(code: int, data: string): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（int类型）。 |
-| data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据。 |
+| data   | string | 是   | 有序公共事件传递的数据。 |
 
 **错误码：**
 
@@ -884,7 +908,7 @@ isOrderedCommonEventSync(): boolean
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：20
 
@@ -1465,9 +1489,9 @@ console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stri
 
 ### getSubscribeInfo
 
-ArkTS-Dyn:getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
+ArkTS-Dyn: getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
-ArkTS-Sta:getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo|null>): void;
+ArkTS-Sta: getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo|null>): void
 
 获取订阅者的订阅信息。使用callback异步回调。
 
@@ -1523,9 +1547,9 @@ subscriber.getSubscribeInfo((err: BusinessError | null, subscribeInfo: commonEve
 
 ### getSubscribeInfo
 
-ArkTS-Dyn:getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
+ArkTS-Dyn: getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
 
-ArkTS-Sta:getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>;
+ArkTS-Sta: getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>
 
 获取订阅者的订阅信息。使用Promise异步回调。
 
@@ -1560,7 +1584,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo) => {
+subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo|null) => {
   console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
 }).catch((err: BusinessError) : void => {
   console.error(`Failed to get subscribe info. Code is ${err.code}, message is ${err.message}`);
@@ -1569,9 +1593,9 @@ subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEven
 
 ### getSubscribeInfoSync<sup>10+</sup>
 
-ArkTS-Dyn:getSubscribeInfoSync(): CommonEventSubscribeInfo
+ArkTS-Dyn: getSubscribeInfoSync(): CommonEventSubscribeInfo
 
-ArkTS-Sta:getSubscribeInfoSync(): CommonEventSubscribeInfo|null
+ArkTS-Sta: getSubscribeInfoSync(): CommonEventSubscribeInfo|null
 
 获取订阅者的订阅信息。
 
@@ -1603,7 +1627,7 @@ ArkTS-Sta示例：
 <!--code_no_check-->
 
 ```ts
-let .getSubscribeInfo = subscriber.getSubscribeInfoSync();
+let getSubscribeInfo = subscriber.getSubscribeInfoSync();
 console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(getSubscribeInfo)}`);
 ```
 

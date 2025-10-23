@@ -1,11 +1,11 @@
-# ArkTS1.2互操作类型映射规则
+# ArkTS-Sta互操作类型映射规则
 
 ## 编译类型检查原则
 
-- 可以使用ArkTS1.1和TS中的类型在ArkTS1.2的源码中用作类型标注，也可以使用ArkTS1.2中的类型在ArkTS1.1的源码中用作类型标注。
+- 可以使用ArkTS-Dyn和TS中的类型在ArkTS-Sta的源码中用作类型标注，也可以使用ArkTS-Sta中的类型在ArkTS-Dyn的源码中用作类型标注。
 - 编译类型检查将会根据源码文件的种类来进行：
-  - ArkTS1.2的文件按照ArkTS1.2的类型检查规则
-  - ArkTS1.1的文件按照ArkTS1.1的类型检查规则
+  - ArkTS-Sta的文件按照ArkTS-Sta的类型检查规则
+  - ArkTS-Dyn的文件按照ArkTS-Dyn的类型检查规则
   - 针对源码中的交互部分，编译器会使用特定的类型映射规则将交互部分的类型映射到所在文件的类型后，再进行编译检查。
 
 ## 类型映射基本原则
@@ -13,12 +13,12 @@
 - 基本类型映射为基本类型（比如`number <-> number`）。
 - 标准库类型映射为标准库类型（比如`Array <-> Array`）。
 - 组合类型映射为组合类型（比如`class <-> class`）。
-- 无法直接映射到ArkTS1.2的ArkTS1.1或TS类型，会被映射为`Any`（比如 TS `symbol -> 1.2 Any`）。
-- 无法直接映射到ArkTS1.1的ArkTS1.2类型，会被映射为空，即交互场景不可用（比如ArkTS1.2的`final class`），如果在代码中对这些类型进行交互，则会出现编译报错；如果通过动态加载能力交互，则会出现运行时报错。
+- 无法直接映射到ArkTS-Sta的ArkTS-Dyn或TS类型，会被映射为`Any`（比如 TS `symbol -> ArkTS-Sta Any`）。
+- 无法直接映射到ArkTS-Dyn的ArkTS-Sta类型，会被映射为空，即交互场景不可用（比如ArkTS-Sta的`final class`），如果在代码中对这些类型进行交互，则会出现编译报错；如果通过动态加载能力交互，则会出现运行时报错。
 
 ## 类型映射详细规则
 
-ArkTS1.2采用递归的方式定义类型映射，例如以下的类型映射。
+ArkTS-Sta采用递归的方式定义类型映射，例如以下的类型映射。
 
 | **T**           | **f(T)**              |
 | --------------- | --------------------- |
@@ -30,11 +30,11 @@ ArkTS1.2采用递归的方式定义类型映射，例如以下的类型映射。
 1. 第一行表示`Number`和`number`都被映射到`number`。
 2. 第二行 lambda 类型`(arg: A) => R`被映射为参数类型为`f(A)`且返回值类型为`f(R)`的 lambda 类型，即`(arg: f(A)) => f(R)`；比如`(arg: number) => Number`被映射到`(arg: f(number)) => f(Number)`，即`(arg: number) => number`。
 
-### ArkTS1.2类型映射到ArkTS1.1类型
+### ArkTS-Sta类型映射到ArkTS-Dyn类型
 
 #### 基本类型
 
-| **1.2 type (T)**      | **1.1 type (f(T))**   |
+| **ArkTS-Sta type (T)**      | **ArkTS-Dyn type (f(T))**   |
 | --------------------- | --------------------- |
 | `number/Number`       | `number`              |
 | `double/Double`       | `number`              |
@@ -57,7 +57,7 @@ ArkTS1.2采用递归的方式定义类型映射，例如以下的类型映射。
 
 #### 标准库
 
-| **1.2 type (T)**    | **1.1 type (f(T))** |
+| **ArkTS-Sta type (T)**    | **ArkTS-Dyn type (f(T))** |
 | ------------------- | ------------------- |
 | `Array`             | `Array`             |
 | `Map`               | `Map`               |
@@ -89,7 +89,7 @@ ArkTS1.2采用递归的方式定义类型映射，例如以下的类型映射。
 
 #### 工具类型
 
-| **1.2 type (T)** | **1.1 type (f(T))** |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))** |
 | ---------------- | ------------------- |
 | `Readonly`       | `Readonly`          |
 | `Record`         | `Record`            |
@@ -98,7 +98,7 @@ ArkTS1.2采用递归的方式定义类型映射，例如以下的类型映射。
 
 #### 函数
 
-| **类别**               | **1.2 type (T)**                               | **1.1 type (f(T))**                                            |
+| **类别**               | **ArkTS-Sta type (T)**                               | **ArkTS-Dyn type (f(T))**                                            |
 | ---------------------- | ---------------------------------------------- | -------------------------------------------------------------- |
 | 普通函数               | `function foo(arg1: K1, arg2: K2): R`          | `function foo(arg1: f(K1), arg2: f(K2)): f(R)`                 |
 | 可选参数               | `function foo(arg1: K1, arg2​?​: K2): R`       | `function foo(arg1: f(K1), arg2​?​: f(K2)): f(R)`              |
@@ -113,7 +113,7 @@ ArkTS1.2采用递归的方式定义类型映射，例如以下的类型映射。
 
 TODO: 美化表格
 
-| **类别**                                 | **1.2 type (T)**                                                                                          | **1.1 type (f(T))**                                                                                                                                       |
+| **类别**                                 | **ArkTS-Sta type (T)**                                                                                          | **ArkTS-Dyn type (f(T))**                                                                                                                                       |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 普通类                                   | class A { field: F1; m(arg: U1): M1; static sf: F2; static sm(arg: U2): M2; get a(): V; set a(v: V): void; } | class A { get field(): f(F1); set field(arg: f(F1)): void; m(arg: f(U1)): f(M1); static sf: f(F2); static sm(arg: f(U2)): f(M2); get a(): f(V); set a(v: f(V)): void; } |
 | public/private/protected/native/readonly | class A { public field: F1; readonly r: F2; private m(arg: U1): M1; protect p(arg: U2): M2; native n(arg: U3): M3; } | class A { public field: f(F1); get r(): f(F2); private m(arg: f(U1)): f(M1); protect p(arg: f(U2)): f(M2); n(arg: U3): M3; // native will be ignored } |
@@ -126,14 +126,14 @@ TODO: 美化表格
 
 TODO: 美化表格
 
-| **类别** | **1.2 type (T)**                                                | **1.1 type (f(T))**                                                         |
+| **类别** | **ArkTS-Sta type (T)**                                                | **ArkTS-Dyn type (f(T))**                                                         |
 | -------- | --------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | 普通接口 | inteface A {field: F1m(arg: U1): M1get a(): Vset a(v: V): void} | class A {field: f(F1)m(arg: f(U1)): f(M1)get a(): f(V)set a(v: f(V)): void} |
 | 继承接口 | interface A extends B { ... }                                   | interface A extends B { ... }                                               |
 
 #### 枚举
 
-| **类别**         | **1.2 type (T)**                     | **1.1 type (f(T))**                  |
+| **类别**         | **ArkTS-Sta type (T)**                     | **ArkTS-Dyn type (f(T))**                  |
 | ---------------- | ------------------------------------ | ------------------------------------ |
 | 枚举值都为整数   | `enum Color {Blue = 0, Red = 1}`     | `enum Color {Blue = 0, Red = 1}`     |
 | 枚举值都为字符串 | `enum Some {A = 'Alice', B = 'Bob'}` | `enum Some {A = 'Alice', B = 'Bob'}` |
@@ -144,33 +144,33 @@ TODO: 美化表格
 
 #### 命名空间
 
-| **1.2 type (T)**     | **1.1 type (f(T))**  |
+| **ArkTS-Sta type (T)**     | **ArkTS-Dyn type (f(T))**  |
 | -------------------- | -------------------- |
 | `namespace NS {...}` | `namespace NS {...}` |
 
 #### 联合类型
 
-| **1.2 type (T)** | **1.1 type (f(T))**       |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))**       |
 | ---------------- | ------------------------- |
 | `T1 \| T2 \| T3` | `f(T1) \| f(T2) \| f(T3)` |
 
 #### 元组类型
 
-| **1.2 type (T)** | **1.1 type (f(T))**     |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))**     |
 | ---------------- | ----------------------- |
 | `[T1, T2, T3]`   | `[f(T1), f(T2), f(T3)]` |
 
 #### 类型别名
 
-| **1.2 type (T)** | **1.1 type (f(T))** |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))** |
 | ---------------- | ------------------- |
 | `type alias = K` | `type alias = f(K)` |
 
-### 1.1类型映射到1.2类型
+### ArkTS-Dyn类型映射到ArkTS-Sta类型
 
 #### 基本类型
 
-| **1.1 type (T)**      | **1.2 type (f(T))**   |
+| **ArkTS-Dyn type (T)**      | **ArkTS-Sta type (f(T))**   |
 | --------------------- | --------------------- |
 | `number/Number`       | `number`              |
 | `string/String`       | `string`              |
@@ -188,7 +188,7 @@ TODO: 美化表格
 
 #### 标准库
 
-| **1.1 type (T)**    | **1.2 type (f(T))** |
+| **ArkTS-Dyn type (T)**    | **ArkTS-Sta type (f(T))** |
 | ------------------- | ------------------- |
 | `Arrays`            | `Arrays`            |
 | `Map`               | `Map`               |
@@ -220,7 +220,7 @@ TODO: 美化表格
 
 #### 工具类型
 
-| **1.1 type (T)** | **1.2 type (f(T))** |
+| **ArkTS-Dyn type (T)** | **ArkTS-Sta type (f(T))** |
 | ---------------- | ------------------- |
 | `Readonly`       | `Readonly`          |
 | `Record`         | `Record`            |
@@ -229,7 +229,7 @@ TODO: 美化表格
 
 #### 函数
 
-| **类别**   | **1.1 type (T)**                               | **1.2 type (f(T))**                                     |
+| **类别**   | **ArkTS-Dyn type (T)**                               | **ArkTS-Sta type (f(T))**                                     |
 | ---------- | ---------------------------------------------- | ------------------------------------------------------- |
 | 普通函数   | `function foo(arg1: K1, arg2: K2): R`          | `function foo(arg1: f(K1), arg2: f(K2)): f(R)`          |
 | 可选参数   | `function foo(arg1: K1, arg2?​: K2): R`        | `function foo(arg1: f(K1), arg2​​: f(K2)): f(R)`        |
@@ -240,7 +240,7 @@ TODO: 美化表格
 
 TODO: 美化表格
 
-| **类别**                          | **1.1 type (T)**                                                                                | **1.2 type (f(T))**                                                                                                     |
+| **类别**                          | **ArkTS-Dyn type (T)**                                                                                | **ArkTS-Sta type (f(T))**                                                                                                     |
 | --------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | 普通类                            | class A {field: F1m(arg: U1): M1static sf: F2static sm(arg: U2): M2get a(): Vset a(v: V): void} | class A {field: f(F1)m(arg: f(U1)): f(M1)static sf: f(F2)static sm(arg: f(U2)): f(M2)get a(): f(V)set a(v: f(V)): void} |
 | public/private/protected/readonly | class A {public field: F1readonly r: F2private m(arg: U1): M1protect p(arg: U2): M2}            | class A {public field: f(F1)get r(): f(F2)private m(arg: f(U1)): f(M1)protect p(arg: f(U2)): f(M2)}                     |
@@ -252,14 +252,14 @@ TODO: 美化表格
 
 TODO: 美化表格
 
-| **类别** | **1.1 type (T)**                                                 | **1.2 type (f(T))**                                                             |
+| **类别** | **ArkTS-Dyn type (T)**                                                 | **ArkTS-Sta type (f(T))**                                                             |
 | -------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | 普通接口 | interface A {field: F1m(arg: U1): M1get a(): Vset a(v: V): void} | interface A {field: f(F1)m(arg: f(U1)): f(M1)get a(): f(V)set a(v: f(V)): void} |
 | 继承接口 | interface A extends B { ... }                                    | interface A extends B { ... }                                                   |
 
 #### 枚举
 
-| **类别**         | **1.1 type (T)**                                  | **1.2 type (f(T))**                  |
+| **类别**         | **ArkTS-Dyn type (T)**                                  | **ArkTS-Sta type (f(T))**                  |
 | ---------------- | ------------------------------------------------- | ------------------------------------ |
 | 枚举值都为整数   | `enum Color {Blue = 0, Red = 1}`                 | `enum Color {Blue = 0, Red = 1}`     |
 | 枚举值都为字符串 | `enum Some {A = 'Alice', B = 'Bob'}`              | `enum Some {A = 'Alice', B = 'Bob'}` |
@@ -270,37 +270,37 @@ TODO: 美化表格
 
 #### 装饰器
 
-装饰器不能用于交互，映射为空。（ArkUI定义的装饰器会被特殊处理，映射为ArkTS1.2的注解）
+装饰器不能用于交互，映射为空。（ArkUI定义的装饰器会被特殊处理，映射为ArkTS-Sta的注解）
 
 #### 命名空间
 
-| **1.2 type (T)**     | **1.1 type (f(T))**  |
+| **ArkTS-Sta type (T)**     | **ArkTS-Dyn type (f(T))**  |
 | -------------------- | -------------------- |
 | `namespace NS {...}` | `namespace NS {...}` |
 
 #### 联合类型
 
-| **1.2 type (T)** | **1.1 type (f(T))**       |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))**       |
 | ---------------- | ------------------------- |
 | `T1 \| T2 \| T3` | `f(T1) \| f(T2) \| f(T3)` |
 
 #### 元组类型
 
-| **1.2 type (T)** | **1.1 type (f(T))**     |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))**     |
 | ---------------- | ----------------------- |
 | `[T1, T2, T3]`   | `[f(T1), f(T2), f(T3)]` |
 
 #### 类型别名
 
-| **1.2 type (T)** | **1.1 type (f(T))** |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))** |
 | ---------------- | ------------------- |
 | `type alias = K` | `type alias = f(K)` |
 
-### TS类型映射到ArkTS1.2类型
+### TS类型映射到ArkTS-Sta类型
 
 #### 基本类型
 
-| **TS type (T)**       | **1.2 type (f(T))**   |
+| **TS type (T)**       | **ArkTS-Sta type (f(T))**   |
 | --------------------- | --------------------- |
 | `number/Number`       | `number`              |
 | `string/String`       | `string`              |
@@ -319,7 +319,7 @@ TODO: 美化表格
 
 #### 标准库
 
-| **TS type (T)**     | **1.2 type (f(T))** |
+| **TS type (T)**     | **ArkTS-Sta type (f(T))** |
 | ------------------- | ------------------- |
 | `Arrays`            | `Arrays`            |
 | `Map`               | `Map`               |
@@ -351,7 +351,7 @@ TODO: 美化表格
 
 #### 工具类型
 
-| **TS type (T)**          | **1.2 type (f(T))** |
+| **TS type (T)**          | **ArkTS-Sta type (f(T))** |
 | ------------------------ | ------------------- |
 | `Readonly`               | `Readonly`          |
 | `Record`                 | `Record`            |
@@ -378,7 +378,7 @@ TODO: 美化表格
 
 #### 函数
 
-| **类别**   | **TS type (T)**                                | **1.2 type (f(T))**                                     |
+| **类别**   | **TS type (T)**                                | **ArkTS-Sta type (f(T))**                                     |
 | ---------- | ---------------------------------------------- | ------------------------------------------------------- |
 | 普通函数   | `function foo(arg1: K1, arg2: K2): R`          | `function foo(arg1: f(K1), arg2: f(K2)): f(R)`          |
 | 可选参数   | `function foo(arg1: K1, arg2​?​: K2): R`       | `function foo(arg1: f(K1), arg2​?​: f(K2)): f(R)`       |
@@ -389,7 +389,7 @@ TODO: 美化表格
 
 TODO: 美化表格
 
-| **类别**                          | **TS type (T)**                                                                                 | **1.2 type (f(T))**                                                                                                     |
+| **类别**                          | **TS type (T)**                                                                                 | **ArkTS-Sta type (f(T))**                                                                                                     |
 | --------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | 普通类                            | class A {field: F1m(arg: U1): M1static sf: F2static sm(arg: U2): M2get a(): Vset a(v: V): void} | class A {field: f(F1)m(arg: f(U1)): f(M1)static sf: f(F2)static sm(arg: f(U2)): f(M2)get a(): f(V)set a(v: f(V)): void} |
 | public/private/protected/readonly | class A {public field: F1readonly r: F2private m(arg: U1): M1protect p(arg: U2): M2}            | class A {public field: f(F1)get r(): f(F2)private m(arg: f(U1)): f(M1)protect p(arg: f(U2)): f(M2)}                     |
@@ -401,14 +401,14 @@ TODO: 美化表格
 
 TODO: 美化表格
 
-| **类别** | **TS type (T)**                                                  | **1.2 type (f(T))**                                                             |
+| **类别** | **TS type (T)**                                                  | **ArkTS-Sta type (f(T))**                                                             |
 | -------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | 普通接口 | interface A {field: F1m(arg: U1): M1get a(): Vset a(v: V): void} | interface A {field: f(F1)m(arg: f(U1)): f(M1)get a(): f(V)set a(v: f(V)): void} |
 | 继承接口 | interface A extends B { ... }                                    | interface A extends B { ... }                                                   |
 
 #### 枚举
 
-| **类别**         | **TS type (T)**                                   | **1.2 type (f(T))**                  |
+| **类别**         | **TS type (T)**                                   | **ArkTS-Sta type (f(T))**                  |
 | ---------------- | ------------------------------------------------- | ------------------------------------ |
 | 枚举值都为整数   | `enum Color {Blue = 0, Red = 1}`                  | `enum Color {Blue = 0, Red = 1}`     |
 | 枚举值都为字符串 | `enum Some {A = 'Alice', B = 'Bob'}`              | `enum Some {A = 'Alice', B = 'Bob'}` |
@@ -416,29 +416,29 @@ TODO: 美化表格
 
 #### 装饰器
 
-装饰器不能用于交互，映射为空（ArkUI定义的装饰器会被特殊处理，映射为ArkTS1.2的注解）。
+装饰器不能用于交互，映射为空（ArkUI定义的装饰器会被特殊处理，映射为ArkTS-Sta的注解）。
 
 #### 命名空间
 
-| **1.2 type (T)**     | **1.1 type (f(T))**  |
+| **ArkTS-Sta type (T)**     | **ArkTS-Dyn type (f(T))**  |
 | -------------------- | -------------------- |
 | `namespace NS {...}` | `namespace NS {...}` |
 
 #### 联合类型
 
-| **1.2 type (T)** | **1.1 type (f(T))**       |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))**       |
 | ---------------- | ------------------------- |
 | `T1 \| T2 \| T3` | `f(T1) \| f(T2) \| f(T3)` |
 
 #### 元组类型
 
-| **1.2 type (T)** | **1.1 type (f(T))**     |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))**     |
 | ---------------- | ----------------------- |
 | `[T1, T2, T3]`   | `[f(T1), f(T2), f(T3)]` |
 
 #### 类型别名
 
-| **1.2 type (T)** | **1.1 type (f(T))** |
+| **ArkTS-Sta type (T)** | **ArkTS-Dyn type (f(T))** |
 | ---------------- | ------------------- |
 | `type alias = K` | `type alias = f(K)` |
 
@@ -446,53 +446,53 @@ TODO: 美化表格
 
 ##### 字面量类型
 
-| **TS type (T)**               | **1.2 type (f(T))** |
+| **TS type (T)**               | **ArkTS-Sta type (f(T))** |
 | ----------------------------- | ------------------- |
 | `{name: string, age: number}` | `Any`          |
 
 ##### 调用签名
 
-| **TS type (T)**              | **1.2 type (f(T))** |
+| **TS type (T)**              | **ArkTS-Sta type (f(T))** |
 | ---------------------------- | ------------------- |
 | `{ (arg: T1): R }`           | `Any`          |
 | `interface X {(arg): T1: R}` | `Any`          |
 
 ##### 构造签名
 
-| **TS type (T)**                  | **1.2 type (f(T))** |
+| **TS type (T)**                  | **ArkTS-Sta type (f(T))** |
 | -------------------------------- | ------------------- |
 | `{ new (arg: T1): R }`           | `Any`          |
 | `interface X {new (arg): T1: R}` | `Any`          |
 
 ##### 索引签名
 
-| **TS type (T)**               | **1.2 type (f(T))** |
+| **TS type (T)**               | **ArkTS-Sta type (f(T))** |
 | ----------------------------- | ------------------- |
 | `{ [index: T]: R }`           | `Any`          |
 | `interface X {[index: T]: R}` | `Any`          |
 
 ##### 相交类型
 
-| **TS type (T)** | **1.2 type (f(T))** |
+| **TS type (T)** | **ArkTS-Sta type (f(T))** |
 | --------------- | ------------------- |
 | `T1 & T2`       | `Any`          |
 
 ##### keyof
 
-| **TS type (T)**                 | **1.2 type (f(T))**  |
+| **TS type (T)**                 | **ArkTS-Sta type (f(T))**  |
 | ------------------------------- | -------------------- |
 | `type My = keyof T`             | `type My = Any` |
 | `interface X { props: keyof T}` | `Any`           |
 
 ##### typeof
 
-| **TS type (T)**  | **1.2 type (f(T))** |
+| **TS type (T)**  | **ArkTS-Sta type (f(T))** |
 | ---------------- | ------------------- |
 | `typeof someVar` | `Any`          |
 
 ##### 索引访问类型
 
-| **TS type (T)**     | **1.2 type (f(T))** |
+| **TS type (T)**     | **ArkTS-Sta type (f(T))** |
 | ------------------- | ------------------- |
 | `someArray[number]` | `Any`          |
 
@@ -503,20 +503,20 @@ TODO: 美化表格
 MyArray = [{ name: "Alice", age: 15 }];
 export type Person = (typeof MyArray)[number];
 
-// declaration in ArkTS 1.2 is
+// declaration in ArkTS-Sta is
 'use static'
 export type Person = Any;
 ```
 
 ##### 条件类型
 
-| **TS type (T)**     | **1.2 type (f(T))** |
+| **TS type (T)**     | **ArkTS-Sta type (f(T))** |
 | ------------------- | ------------------- |
 | `condition ? A : B` | `Any`          |
 
 ##### 映射类型
 
-| **TS type (T)** | **1.2 type (f(T))** |
+| **TS type (T)** | **ArkTS-Sta type (f(T))** |
 | --------------- | ------------------- |
 | `SomeType[Key]` | `Any`          |
 
@@ -526,14 +526,14 @@ export type Person = Any;
 // ts
 export type A<T> = { [K in keyof T]: T[K] };
 
-// declaration in 1.2 is
+// declaration in ArkTS-Sta is
 'use static'
 export type A<T> = Any;
 ```
 
 ##### 模板字面量类型
 
-| **TS type (T)**            | **1.2 type (f(T))** |
+| **TS type (T)**            | **ArkTS-Sta type (f(T))** |
 | -------------------------- | ------------------- |
 | `...${SomeLiteralType}...` | `Any`          |
 
@@ -544,7 +544,7 @@ export type A<T> = Any;
 export type AB = "A" | "B";
 export type AllLocaleIDs = `${AB}_id`;
 
-// declaration in 1.2 is
+// declaration in ArkTS-Sta is
 'use static'
 export type AB = "A" | "B";
 export type AllLocaleIDs = Any;

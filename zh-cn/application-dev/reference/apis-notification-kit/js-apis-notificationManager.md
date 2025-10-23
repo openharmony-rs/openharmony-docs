@@ -135,7 +135,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 | 类型     | 说明 | 
 | ------- |--|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -210,9 +210,9 @@ notificationManager.publish(notificationRequest).then(() => {
 
 ## notificationManager.cancel
 
-ArkTS-Dyn:cancel(id: number, label: string, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: cancel(id: number, label: string, callback: AsyncCallback\<void\>): void
 
-ArkTS-Sta:cancel(id: int, label: string, callback: AsyncCallback\<void\>): void
+ArkTS-Sta: cancel(id: int, label: string, callback: AsyncCallback\<void\>): void
 
 根据通知ID和标签取消已发布的通知。使用callback异步回调。
 
@@ -276,9 +276,9 @@ notificationManager.cancel(0, "label", cancelCallback);
 
 ## notificationManager.cancel
 
-ArkTS-Dyn:cancel(id: number, label?: string): Promise\<void\>
+ArkTS-Dyn: cancel(id: number, label?: string): Promise\<void\>
 
-ArkTS-Sta:cancel(id: int, label?: string): Promise\<void\>
+ArkTS-Sta: cancel(id: int, label?: string): Promise\<void\>
 
 根据通知ID和标签取消已发布的通知，若标签为空，则取消与指定通知ID匹配的已发布通知。使用Promise异步回调。
 
@@ -299,7 +299,7 @@ ArkTS-Sta:cancel(id: int, label?: string): Promise\<void\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -339,9 +339,9 @@ notificationManager.cancel(0).then(() => {
 
 ## notificationManager.cancel
 
-ArkTS-Dyn:cancel(id: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: cancel(id: number, callback: AsyncCallback\<void\>): void
 
-ArkTS-Sta:cancel(id: int, callback: AsyncCallback\<void\>): void
+ArkTS-Sta: cancel(id: int, callback: AsyncCallback\<void\>): void
 
 根据指定的通知ID取消已发布的通知。使用callback异步回调。
 
@@ -478,7 +478,7 @@ cancelAll(): Promise\<void\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。  | 
 
 **错误码：**
 
@@ -599,7 +599,7 @@ addSlot(type: SlotType): Promise\<void\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。  | 
 
 **错误码：**
 
@@ -639,9 +639,9 @@ notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION).t
 
 ## notificationManager.getSlot
 
-ArkTS-Dyn:getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot\>): void
+ArkTS-Dyn: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot\>): void
 
-ArkTS-Sta:getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot|null\>): void;
+ArkTS-Sta: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot|null\>): void
 
 获取指定类型的通知渠道。使用callback异步回调。
 
@@ -709,9 +709,9 @@ notificationManager.getSlot(slotType, getSlotCallback);
 
 ## notificationManager.getSlot
 
-ArkTS-Dyn:getSlot(slotType: SlotType): Promise\<NotificationSlot\>
+ArkTS-Dyn: getSlot(slotType: SlotType): Promise\<NotificationSlot\>
 
-ArkTS-Sta:getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
+ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 
 获取指定类型的通知渠道。使用Promise异步回调。
 
@@ -795,7 +795,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -909,7 +909,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -970,7 +970,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。  | 
 
 **错误码：**
 
@@ -978,7 +978,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1084,7 +1084,7 @@ removeAllSlots(): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -1144,7 +1144,7 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -1274,9 +1274,9 @@ console.info(`isNotificationEnabledSync success, data is : ${JSON.stringify(enab
 
 ## notificationManager.setBadgeNumber<sup>10+</sup>
 
-ArkTS-Dyn:setBadgeNumber(badgeNumber: number): Promise\<void\>
+ArkTS-Dyn: setBadgeNumber(badgeNumber: number): Promise\<void\>
 
-ArkTS-Sta:setBadgeNumber(badgeNumber: int): Promise\<void\>
+ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 
 设定角标个数，在应用的桌面图标上呈现。使用Promise异步回调。
 
@@ -1298,7 +1298,7 @@ ArkTS-Sta:setBadgeNumber(badgeNumber: int): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -1341,9 +1341,9 @@ notificationManager.setBadgeNumber(badgeNumber).then(() => {
 
 ## notificationManager.setBadgeNumber<sup>10+</sup>
 
-ArkTS-Dyn:setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
-ArkTS-Sta:setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): void
+ArkTS-Sta: setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): void
 
 设定角标个数，在应用的桌面图标上呈现。使用callback异步回调。
 
@@ -1409,9 +1409,9 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 
 ## notificationManager.getActiveNotificationCount
 
-ArkTS-Dyn:getActiveNotificationCount(callback: AsyncCallback\<number\>): void
+ArkTS-Dyn: getActiveNotificationCount(callback: AsyncCallback\<number\>): void
 
-ArkTS-Sta:getActiveNotificationCount(callback: AsyncCallback\<long\>): void
+ArkTS-Sta: getActiveNotificationCount(callback: AsyncCallback\<long\>): void
 
 获取当前应用未删除的通知数。使用callback异步回调。
 
@@ -1433,10 +1433,10 @@ ArkTS-Sta:getActiveNotificationCount(callback: AsyncCallback\<long\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -1472,9 +1472,9 @@ notificationManager.getActiveNotificationCount(getActiveNotificationCountCallbac
 
 ## notificationManager.getActiveNotificationCount
 
-ArkTS-Dyn:getActiveNotificationCount(): Promise\<number\>
+ArkTS-Dyn: getActiveNotificationCount(): Promise\<number\>
 
-ArkTS-Sta:getActiveNotificationCount(): Promise\<long\>
+ArkTS-Sta: getActiveNotificationCount(): Promise\<long\>
 
 获取当前应用未删除的通知数。使用Promise异步回调。
 
@@ -1498,7 +1498,7 @@ ArkTS-Sta:getActiveNotificationCount(): Promise\<long\>
 | -------- | ----------------------------------- |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.          |
+| 1600003  | Failed to connect to the service. |
 
 **示例：**
 
@@ -1719,7 +1719,7 @@ cancelGroup(groupName: string): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -1783,7 +1783,7 @@ isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): voi
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1850,7 +1850,7 @@ isSupportTemplate(templateName: string): Promise\<boolean\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      | 
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2009,7 +2009,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+|  Promise\<void\>  |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2017,7 +2017,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2102,7 +2102,7 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2140,7 +2140,7 @@ requestEnableNotification(): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。  | 
 
 **错误码：**
 
@@ -2242,7 +2242,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 | 类型               | 说明                                          |
 | ------------------ | --------------------------------------------- |
-| Promise\<boolean\> | Promise对象。返回true表示支持跨设备协同通知；返回false表示不支持跨设备协同通知。 |
+| Promise\<boolean\> | 返回true表示支持跨设备协同通知；返回false表示不支持跨设备协同通知。 |
 
 **错误码：**
 
@@ -2305,7 +2305,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 | 类型      | 说明        | 
 |---------|-----------|
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 | 
+| Promise\<void\> |  Promise对象，无返回结果。  | 
 
 **错误码：**
 
@@ -2432,19 +2432,15 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：20
-
 | 名称                              | 值          | 说明               |
 | --------------------------------- | ----------- |------------------|
-| NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。          |
-| NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。         |
-| NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。          |
-| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。|
-| NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。        |
-| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。|
-| NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。  |
+| NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。 **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。 **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20|
+| NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。 **ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
 
 ## SlotLevel
 
@@ -2473,19 +2469,15 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：20
-
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
-| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
-| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。 |
-| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。|
-| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
-| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。 |
-| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。  |
-| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 |
+| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
+| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20|
+| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。 **ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：20 |
 
 ## NotificationSetting<sup>20+</sup>
 

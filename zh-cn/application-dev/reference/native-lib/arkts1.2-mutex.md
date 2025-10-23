@@ -4,7 +4,7 @@ Mutex（互斥锁）的作用是为应用程序提供线程同步机制，确保
 
 > **说明：**
 >
-> ArkTS版本：本模块仅适用于ArkTS-Sta。
+> 本模块仅适用于ArkTS-Sta。
 
 ## constructor
 
@@ -22,7 +22,7 @@ let mutexLock = new Mutex();
 
 lock(): void
 
-获取互斥锁。如果锁已被其他线程持有，当前线程将被阻塞，直到锁被释放。
+获取互斥锁。如果锁已被其他线程持有，当前线程将被阻塞，直到锁被释放。请配合[unlock](#unlock)使用防止发生死锁。
 
 **示例：**
 
@@ -47,60 +47,61 @@ unlock(): void
 **示例：**
 
 ```ts
+let mutexLock = new Mutex();
+mutexLock.lock();
+// 临界区资源 
+mutexLock.unlock();
+```
+
+**互斥场景示例：**
+
+```ts
 class SharedJob<T> {
+  private jobs: Array<T>;
+
   constructor(jobs: Array<T>) {
-    this.sharedJob = new CompletableJob<void>();
-    SharedJob.completeJob(jobs, this.sharedJob);
+    this.jobs = jobs;
   }
 
   public Await() {
-    this.sharedJob.Await();
-  }
-
-  private static async completeJob(jobs: Array<T>, sharedJob: CompletableJob<void>) {
-    Coroutine.Schedule();
-    for (let job of jobs) {
+    for (let job of this.jobs) {
       (job as Job<void>).Await();
     }
-    sharedJob.finish();
   }
-
-  private sharedJob: CompletableJob<void>;
 }
 
 function exclusiveMutexLockTestWithEAWorker() {
-    let mutexLock = new Mutex();
-    const coroutines = 10;
-    const workload = 1000;
+  let mutexLock = new Mutex();
+  const coroutines = 10;
+  const workload = 1000;
 
-    let count = 0;
-    let jobs = new Array<Job<void>>(coroutines);
-    let workers = new Array<EAWorker>(coroutines);
+  let count = 0;
+  let jobs = new Array<Job<void>>(coroutines);
+  let workers = new Array<EAWorker>(coroutines);
 
-    for (let i = 0; i < coroutines; ++i) {
-        const id = i.toInt();
-        workers[i] = new EAWorker(`Worker-${id}`);
-        workers[i].start();
+  for (let i = 0; i < coroutines; ++i) {
+    const id = i;
+    workers[i] = new EAWorker(`Worker-${id}`);
+    workers[i].start();
 
-        jobs[id] = workers[i].run<void>(() => {
-            for (let j = 0; j < workload; ++j) {
-                mutexLock.lock();
-                // 临界区资源
-                count++;
-                mutexLock.unlock();
-            }
-        });
-    }
+    jobs[i] = workers[i].run<void>(() => {
+      for (let j = 0; j < workload; ++j) {
+        mutexLock.lock();
+        // 临界区资源
+        count++;
+        mutexLock.unlock();
+      }
+    });
+  }
+  // 等待所有任务完成
+  let sharedJob = new SharedJob<Job<void>>(jobs);
+  sharedJob.Await();
 
-    // 等待所有任务完成
-    let sharedJob = new SharedJob<Job<void>>(jobs);
-    sharedJob.Await();
+  for (let worker of workers) {
+    worker.quitSafely();
+  }
 
-    for (let worker of workers) {
-        worker.quitSafely();
-    }
-
-    console.info("Excepted count 10000, the real output is : " + count);
+  console.info("Excepted count 10000, the real output is : " + count);
 }
 
 exclusiveMutexLockTestWithEAWorker();

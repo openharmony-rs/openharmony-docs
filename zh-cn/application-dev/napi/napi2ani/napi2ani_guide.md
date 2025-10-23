@@ -16,7 +16,7 @@ export interface BundlePackInfo {
     readonly summary: PackageSummary;
 }
 ```
-ArkTS-DT与ArkTS-ST都支持声明文件，语法上有些不一样，具体请参考[ArkTS语法迁移规则](../../quick-start/arkts-v1.1-v1.2-migration-rules.md)；如果不涉及上面的语法差别，可以直接复用ArkTS-DT的声明文件；涉及语法差异时，需要进行小部分调整；如将number改成int等基础类型变更。
+ArkTS-DT与ArkTS-ST都支持声明文件，语法上有些不一样，具体请参考[ArkTS语法迁移规则](../../quick-start/arkts-dyn-to-sta-syntax-rules.md)；如果不涉及上面的语法差别，可以直接复用ArkTS-DT的声明文件；涉及语法差异时，需要进行小部分调整；如将number改成int等基础类型变更。
 
 ### 模块注册
 **ArkTS-DT Node-API模块注册流程**
@@ -201,10 +201,10 @@ ani_status ANI_Constructor(ani_vm* vm, uint32_t* result) {
 ```
 
 ## 参考链接
-1. [ArkTS-ST用户指导](../../quick-start/arkts-v1.2-user-guide.md)
-2. [ArkTS1.2语法迁移规则](../../quick-start/arkts-v1.1-v1.2-migration-rules.md)
-3. [ArkTS1.2并发迁移规则](../../quick-start/arkts-v1.1-v1.2-concurrency-rules.md)
-4. [ArkTS1.2EAWorker迁移指导](../../quick-start/arkts-v1.1-v1.2-worker-migration-guide.md)
-5. [ArkTS1.2builtin迁移规则](../../quick-start/arkts-v1.1-v1.2-builtin-rules.md)
-6. [ArkTS1.2SDK迁移规则](../../quick-start/arkts-v1.1-v1.2-sdk-rules.md)
-7. [ArkTS1.2与ArkTS1.1互操作迁移规则](../../quick-start/arkts-v1.1-v1.2-interop-rules.md)
+1. [ArkTS-Sta用户指导](../../quick-start/arkts-sta-user-guide.md)
+2. [ArkTS-Sta语法迁移规则](../../quick-start/arkts-dyn-to-sta-syntax-rules.md)
+3. [ArkTS-Sta并发迁移规则](../../quick-start/arkts-dyn-to-sta-concurrency-rules.md)
+4. [ArkTS-Sta EAWorker迁移指导](../../quick-start/arkts-dyn-to-sta-worker-migration-guide.md)
+5. [ArkTS-Sta builtin迁移规则](../../quick-start/arkts-dyn-to-sta-builtin-rules.md)
+6. [ArkTS-Sta SDK迁移规则](../../quick-start/arkts-dyn-to-sta-sdk-rules.md)
+7. [ArkTS-Sta与ArkTS-Dyn互操作迁移规则](../../quick-start/arkts-dyn-to-sta-interop-rules.md)

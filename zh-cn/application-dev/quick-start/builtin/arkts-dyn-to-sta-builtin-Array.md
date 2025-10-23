@@ -21,11 +21,11 @@
 ## 变更详情
 
 ### Array初始化变更
-- ArkTS1.2版本Array初始化时需要多加一个参数为初始值。
+- ArkTS-Sta版本Array初始化时需要多加一个参数为初始值。
 
 **规则：** `arkts-builtin-new-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `new Array<T>(arrayLength: number):Array<T>`
 
 **参数：**
@@ -43,7 +43,7 @@
   let a = new Array<number>(100);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `Array.create<T>(arrayLength: number, initialValue: T):Array<T>`
 
 **参数：**
@@ -69,7 +69,7 @@
 
 **规则：** `arkts-builtin-symbol-iterator`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `[Symbol.iterator](): IterableIterator<T>`
 
 **返回值：**
@@ -83,7 +83,7 @@
   let iter = Reflect.get(a, Symbol.iterator);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `$_iterator(): IterableIterator<T>`
 
 **返回值：**
@@ -104,7 +104,7 @@
 
 **规则：** `arkts-builtin-narrow-types`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `concat(...items: (T | ConcatArray<T>)[]): T[]`
 
 **参数：**
@@ -124,7 +124,7 @@
   arr1.concat(1, arr2);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 - 适配建议：
@@ -141,7 +141,7 @@
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   - `every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean`  
   - `every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[]`
 
@@ -187,7 +187,7 @@ predicate函数返回值说明：
   arr.every(a.compare, b); // true
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `every(predicate: (value: T, index: number, array: Array<T>) => boolean): boolean`
 
 **参数：**
@@ -240,7 +240,7 @@ predicate函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   - `filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[]`  
   - `filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[]`  
   - `filter<S extends T>(predicate: (value: T, index: number, array: readonly T[]) => value is S, thisArg?: any): S[]`
@@ -287,7 +287,7 @@ predicate函数返回值说明：
   arr.filter(a.compare, b); // [1, 2]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `filter(fn: (v: T, i: number, self: Array<T>) => boolean): Array<T>`
 
 **参数：**
@@ -336,7 +336,7 @@ fn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   - `find(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): T | undefined`  
   - `find<S extends T>(predicate: (this: void, value: T, index: number, obj: T[]) => value is S, thisArg?: any): S | undefined`
 
@@ -382,7 +382,7 @@ predicate函数返回值说明：
   arr.find(a.compare, b); // 3
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `find(predicate: (value: T, index: number, arr: Array<T>) => boolean): T | undefined`
 
 **参数：**
@@ -438,7 +438,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `findIndex(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): number`
 
 **参数：**
@@ -483,7 +483,7 @@ predicate函数返回值说明：
   arr.findIndex(a.compare, b); // 2
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `findIndex(predicate: (value: T, index: number, array: Array<T>) => boolean): number`
 
 **参数：**
@@ -536,7 +536,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `flat<A, D extends number = 1>(this: A,depth?: D): FlatArray<A, D>[]`
 
 **参数：**
@@ -556,7 +556,7 @@ predicate函数返回值说明：
   arr.flat(2); // [1, 2, 3, 4, 5]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 - 适配建议：
@@ -566,7 +566,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-disable-api`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `flatMap<U, This = undefined> (callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,thisArg?: This): U[]`
 
 **参数：**
@@ -603,7 +603,7 @@ callback函数返回值说明：
   )
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   不支持。
 
 - 适配建议：
@@ -613,7 +613,7 @@ callback函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void`
 
 **参数：**
@@ -649,7 +649,7 @@ callbackfn函数参数说明：
   arr.forEach(a.foo, b);
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `forEach(callbackfn: (value: T, index: number, array: Array<T>) => void): void`
 
 **参数：**
@@ -692,7 +692,7 @@ callbackfn函数参数说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[]`
 
 **参数：**
@@ -737,7 +737,7 @@ callbackfn函数返回值说明：
   arr.map(a.foo, b); // [4, 5, 6]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `map<U>(callbackfn: (value: T, index: number, arr: Array<T>) => U): U[]`
 
 **参数：**
@@ -790,7 +790,7 @@ callbackfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   - `static from<T, U>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: any): U[]`
   - `static from<T, U>(iterable: Iterable<T> | ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: any): U[]`
 
@@ -836,7 +836,7 @@ mapfn函数返回值说明：
   let arr3 = Array.from(arr, a.foo, b); // [4, 5, 6]
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static from<T, U>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => U): U[]`
   `static from<T, U>(iterable: Iterable<T>, mapfn: (v: T, k: number) => U): U[]`
 
@@ -887,7 +887,7 @@ mapfn函数返回值说明：
   删除最后一个参数，不使用显式指定this的语义。若必须使用，可使用闭包。
 
 ### from方法不显示emoji表情修复
-**ArkTS1.1版本：**  
+**ArkTS-Dyn版本：**  
   
 **示例：**  
   ```typescript
@@ -897,7 +897,7 @@ mapfn函数返回值说明：
   console.info('result:', JSON.stringify(result)); // 输出："result:",  "["\ud83d","\ude0a"]"
   ```
 
-**ArkTS1.2版本：**  
+**ArkTS-Sta版本：**  
   
 **示例：**  
   ```typescript
@@ -914,7 +914,7 @@ mapfn函数返回值说明：
 
 **规则：** `arkts-builtin-thisArgs`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean`
 
 **参数：**
@@ -959,7 +959,7 @@ predicate函数返回值说明：
   arr.some(a.foo, b); // false
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `some(predicate: (value: T, index: number, array: T[]) => boolean): boolean`
 
 **参数：**
@@ -1012,7 +1012,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-no-any-unknown`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `static isArray(arg: any): arg is any[]`
 
 **参数：**
@@ -1033,7 +1033,7 @@ predicate函数返回值说明：
   console.info(Array.isArray(num).toString());  // false
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static isArray(o: Object | null | undefined): boolean`
 
 **参数：**
@@ -1055,7 +1055,7 @@ predicate函数返回值说明：
   ```
 
 - 适配建议：
-  ArkTS1.2相比ArkTS1.1接口签名有变更，但对开发者接口行为无变更。
+  ArkTS-Sta相比ArkTS-Dyn接口签名有变更，但对开发者接口行为无变更。
 
 ### 数组构造函数变更
 
@@ -1069,7 +1069,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `<T>(arrayLength?: number): T[]`
 
 **参数：**
@@ -1090,7 +1090,7 @@ predicate函数返回值说明：
   }
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static Array.invoke(arrayLength?: number): T[]`
 
 **参数：**
@@ -1118,7 +1118,7 @@ predicate函数返回值说明：
 
 **规则：** `arkts-builtin-cotr`
 
-**ArkTS1.1版本签名：**  
+**ArkTS-Dyn版本签名：**  
   `<T>(...items: T[]): T[]`
 
 **参数：**
@@ -1140,7 +1140,7 @@ predicate函数返回值说明：
   console.info("Array :"+ JSON.stringify(num)); // "Array :[1,2,3]" 
   ```
 
-**ArkTS1.2版本签名：**  
+**ArkTS-Sta版本签名：**  
   `static Array.invoke(...items: T[]): Array<T>`
 
 **参数：**
@@ -1163,4 +1163,4 @@ predicate函数返回值说明：
   ```
 
 - 适配建议：
-  ArkTS1.2没有ArrayConstructor，不允许使用Constructor类型，建议使用invoke或new的方式直接创建对象。
+  ArkTS-Sta没有ArrayConstructor，不允许使用Constructor类型，建议使用invoke或new的方式直接创建对象。
