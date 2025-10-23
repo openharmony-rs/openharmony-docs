@@ -83,7 +83,7 @@ Invalid ``${messageInfo}``.
 
 - 磁盘空间已满。
 - 无效的文件大小。
-- 无法``${messageInfo}``。
+- 文件无法``${messageInfo}``。
 
 **可能原因**
 
@@ -176,7 +176,6 @@ The authentication token verification failed.
 
 该密钥设置了用户认证访问控制属性，由于challenge参数不正确导致无法通过认证。
 
-
 **处理步骤**
 
 1. 检查userIAM认证的challenge参数组装是否正确。
@@ -208,7 +207,7 @@ The number of key operation sessions has reached the limit.
 
 **错误描述**
 
-进行密钥会话操作的调用方已达到上限。
+密钥操作会话数已达上限。
 
 **可能原因**
 
