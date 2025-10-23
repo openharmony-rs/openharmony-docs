@@ -135,7 +135,7 @@ struct ForEachSort {
 
 ### 示例2（使用OnMove进行拖拽，并设置拖拽事件回调）
 
-以下示例展示了ForEach在List组件设置拖拽效果后触发的回调事件。
+从API version 20开始，以下示例展示了ForEach在List组件设置拖拽效果后触发的回调事件。
 
 ```ts
 // xxx.ets
