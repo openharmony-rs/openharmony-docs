@@ -552,7 +552,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): vo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
+| 6800301 | Audio client call audio service error, System error. |
 
 **示例：**
 
@@ -603,7 +603,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
+| 6800101 | Parameter verification failed, for example, the selected device does not exist. |
 | 6800301 | Audio client call audio service error, System error. |
 
 **示例：**
