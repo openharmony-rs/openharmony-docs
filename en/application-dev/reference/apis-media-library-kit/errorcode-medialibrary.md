@@ -21,7 +21,7 @@ Context is invalid.
 
 This error code is reported if the context object does not exist or is empty.
 
-**Possible causes**
+**Possible Causes**
 
 The context object does not exist.
 
@@ -40,7 +40,7 @@ System inner fail.
 
 This error code is reported if an internal error occurs in the media library.
 
-**Possible causes**
+**Possible Causes**
 
 1. The database is abnormal.
 
@@ -62,7 +62,7 @@ Scene parameter validation failed.
 
 This error code is reported if a parameter is abnormal.
 
-**Possible causes**
+**Possible Causes**
 
 1. Mandatory parameters do not meet the specified range.
 
@@ -84,9 +84,9 @@ The provided member must be a property name of PhotoKey.
 
 This error code is reported if a parameter is abnormal.
 
-**Possible causes**
+**Possible Causes**
 
-This error code is reported if the parameter is not within the range of the [PhotoKeys](js-apis-photoAccessHelper-sys.md#photokeys) enum.
+This error code is reported if the parameter is not within the range of the [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) enum.
 
 
 **Solution**

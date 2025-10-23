@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 When a user needs to share files such as images and videos, use **Picker** to start Gallery for the user to select the files to share. No permission is required when Picker is used. Currently, a UIAbility is used to start Gallery with the window component. The procedure is as follows:
 
@@ -105,11 +105,15 @@ The media library allows **Picker** to select a [media file URI](../../file-mana
 
 2. Call [getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1) to obtain the assets, and call [requestImageData](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestimagedata11) to obtain the specific asset.
 
-   ```ts
+   > **NOTE**
+   >
+   > To protect user privacy, sensitive EXIF metadata, including geographical location and shooting parameters, is automatically anonymized in media files. To retrieve the original, non-anonymized EXIF information, your application must [request the permission](photoAccessHelper-preparation.md#requesting-permissions) ohos.permission.MEDIA_LOCATION from the PhotoAccessHelper module.
+
+   ```ts 
    async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
      let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
      let uri = 'file://media/Photo/1/IMG_datetime_0001/displayName.jpg' // The URI must exist.
-     predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uri.toString());
+     predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uri);
      let fetchOptions: photoAccessHelper.FetchOptions = {
        fetchColumns: [photoAccessHelper.PhotoKeys.TITLE],
        predicates: predicates
