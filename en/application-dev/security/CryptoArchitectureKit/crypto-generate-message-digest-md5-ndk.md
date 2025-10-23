@@ -103,7 +103,7 @@ static OH_Crypto_ErrCode doLoopMd()
 
     ret = OH_CryptoDigest_Create("MD5", &ctx);
     if (ret != CRYPTO_SUCCESS) {
-        return ret;
+           return ret;
     }
     do {
         for (int i = 0; i < 640 / isBlockSize; i++) {
