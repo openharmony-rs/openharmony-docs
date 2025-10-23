@@ -654,7 +654,7 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatisti
 
 queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
-通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Promise异步回调。
+通过指定起始和结束时间，查询应用使用时长的具体信息（包含分身应用），统计的最小颗粒度是天，使用Promise异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
