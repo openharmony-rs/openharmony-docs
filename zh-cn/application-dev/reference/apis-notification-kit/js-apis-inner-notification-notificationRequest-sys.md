@@ -90,17 +90,3 @@
 | content  | string | 否 | 是   | 聚合组摘要正文。              |
 | sceneName          | string        | 否 | 是   | 聚合场景名称。                   |
 | extraInfo  | {[key: string]: any} | 否 |  是   | 其他聚合信息。            |
-
-## DistributedBundleEnableInfo<sup>20+</sup>
-
-描述多设备协同的包信息。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**系统接口**：此接口为系统接口。
-
-| 名称          | 类型                                                       | 只读 | 可选 | 说明              |
-| --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
-| bundleName   | string | 否 | 否 | 包名。          |
-| uid          | number | 否 | 否 | 应用程序的UID。          |
-| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
