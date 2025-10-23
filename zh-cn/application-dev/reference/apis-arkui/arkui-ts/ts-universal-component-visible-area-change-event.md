@@ -103,7 +103,7 @@ type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) =>
 
 ### 示例1 (使用onVisibleAreaChange来监听区域变化)
 
-该示例对组件设置onVisibleAreaChange事件，当组件完全显示或者完全消失时触发回调。
+该示例对组件设置[onVisibleAreaChange](#onvisibleareachange)事件，当组件完全显示或者完全消失时触发回调。
 
 ```ts
 // xxx.ets
@@ -205,7 +205,7 @@ struct ScrollExample {
 
 ### 示例2 (使用onVisibleAreaApproximateChange来监听区域变化)
 
-该示例对组件设置onVisibleAreaApproximateChange事件，当组件完全显示或者完全消失时触发回调。
+从API version 17开始，该示例对组件设置[onVisibleAreaApproximateChange](#onvisibleareaapproximatechange17)事件，当组件完全显示或者完全消失时触发回调。
 
 ```ts
 // xxx.ets

@@ -1,7 +1,7 @@
 # 悬浮事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -79,7 +79,7 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 ### 示例1（使用onHover）
 
-该示例通过按钮设置了悬浮事件 `onHover()`，鼠标悬浮可触发onHover事件修改按钮颜色。
+该示例通过按钮设置了悬浮事件[onHover](#onhover)，鼠标悬浮可触发该事件修改按钮颜色。
 
 ```ts
 // xxx.ets
@@ -127,7 +127,7 @@ struct HoverEventExample {
 
 ### 示例2（使用onHoverMove）
 
-该示例设置了按钮的 `onHoverMove()` 事件。当手写笔悬浮在按钮时，UI界面会显示当前手写笔悬浮状的位置。
+从API version 15开始，该示例设置了按钮的[onHoverMove](#onhovermove15)事件。当手写笔悬浮在按钮时，UI界面会显示当前手写笔悬浮状的位置。
 
 ```ts
 // xxx.ets

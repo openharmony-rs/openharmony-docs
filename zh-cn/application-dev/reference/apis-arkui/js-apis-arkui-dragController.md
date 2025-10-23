@@ -523,7 +523,7 @@ struct DragControllerPage {
 
 **示例2：**
 
-在[DragInfo](#draginfo)中配置dataLoadParams，设置拖起方延迟提供数据。
+从API version 20开始，在[DragInfo](#draginfo)中配置dataLoadParams，设置拖起方延迟提供数据。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
