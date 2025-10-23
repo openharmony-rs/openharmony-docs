@@ -57,63 +57,19 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 本文档提供接口示例代码，如需要了解工程项目创建方式，可参考[工程创建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-project)。
 1. 引入[dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md)模块。
-  <!-- @[pasteboard_permission] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[dlp_include] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。 <br>
+// 使用该接口需要DLP凭据服务器
 
-2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。
-
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { common, Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { UIContext } from '@kit.ArkUI';
-
-    function OpenDlpFile(dlpUri: string, fileName: string, fd: number) {
-      let want: Want = {
-        "action": "ohos.want.action.viewData",
-        "bundleName": "com.example.example_bundle_name",
-        "abilityName": "exampleAbility",
-        "uri": dlpUri,
-        "parameters": {
-          "fileName": {
-            "name": fileName
-          },
-          "keyFd": {
-            "type": "FD",
-            "value": fd
-          }
-        }
-      }
-
-      let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext。
-
-      try {
-        console.info('openDLPFile:' + JSON.stringify(want));
-        console.info('openDLPFile: delegator:' + JSON.stringify(context));
-        context.startAbility(want);
-      } catch (err) {
-        console.error('openDLPFile startAbility failed', (err as BusinessError).code, (err as BusinessError).message);
-        return;
-      }
-    }
-    ```
+  <!-- @[dlp_prepareForOpenDlpFile] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
     以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
-    ```json
-    "skills":[
-      {
-        "entities":[
-          // ...
-        ],
-        "actions":[
-          // ...
-          "ohos.want.action.viewData"
-        ]
-      }
-    ]
-    ```
+  <!-- @[dlp_configurationModule] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
 
-3. 生成DLP文件。
+
+3. 生成DLP文件。 <br>
+// 使用该接口需要DLP凭据服务器
 
     [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
 
@@ -123,234 +79,59 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
     3.3 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。调用以下代码，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { common, Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { UIContext } from '@kit.ArkUI';
+  <!-- @[dlp_generateDlpFiles] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-    try {
-      let fileUri: string = "file://docs/storage/Users/currentUser/test.txt";
-      let fileName: string = "test.txt";
-      let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext。
-      let want: Want = {
-        'uri': fileUri,
-        'parameters': {
-          'displayName': fileName
-        }
-      }; // 请求参数。
-      dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
-        console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
-        console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-      }); // 拉起DLP权限管理应用 设置权限。
-    } catch (err) {
-      console.error('startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
-    }
-    ```
+4. 查询当前应用是否在沙箱中。 <br>
+// 使用该接口需要demo应用打开DLP文件
 
-4. 查询当前应用是否在沙箱中。
-
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    dlpPermission.isInSandbox().then((data)=> {
-      console.log('isInSandbox, result: ' + JSON.stringify(data));
-    }).catch((err:BusinessError) => {
-      console.log('isInSandbox: ' + JSON.stringify(err));
-    });
-    ```
+  <!-- @[dlp_isInSandBox] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    dlpPermission.getDLPPermissionInfo().then((data)=> {
-      console.log('getDLPPermissionInfo, result: ' + JSON.stringify(data));
-    }).catch((err:BusinessError) => {
-      console.log('getDLPPermissionInfo: ' + JSON.stringify(err));
-    });
-    ```
+  <!-- @[dlp_getDLPPermissionInfo] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 6. 获取当前可支持DLP方案的文件扩展名类型列表，用于应用判断能否生成DLP文件，可用在实现类似文件管理器设置DLP权限的场景。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
+  <!-- @[dlp_getDLPSupportedFileTypes] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-    dlpPermission.getDLPSupportedFileTypes((err, result) => {
-      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
-    });
-    ```
+7. 判断当前打开文件是否是DLP文件。 <br>
+// 使用该接口需要访问DLP凭据服务器
 
-7. 判断当前打开文件是否是DLP文件。
-
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { fileIo } from '@kit.CoreFileKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-    let file = fileIo.openSync(uri);
-    try {
-      let res = dlpPermission.isDLPFile(file.fd); // 是否加密DLP文件。
-      console.info('res', res);
-    } catch (err) {
-      console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-    }
-    fileIo.closeSync(file);
-    ```
+  <!-- @[dlp_isCurrentDlpFile] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 8. 订阅、取消订阅DLP打开事件。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    class SubscribeExample {
-      event(info: dlpPermission.AccessedDLPFileInfo) {
-        console.info('openDlpFile event', info.uri, info.lastOpenTime)
-      }
-      unSubscribe() {
-        try {
-          dlpPermission.off('openDLPFile', this.event); // 取消订阅。
-        } catch (err) {
-          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-        }
-      }
-      subscribe() {
-        try {
-          dlpPermission.on('openDLPFile', this.event); // 订阅。
-        } catch (err) {
-          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-        }
-      }
-      onCreate() {
-        this.subscribe();
-      }
-      onDestroy() {
-        this.unSubscribe();
-      }
-    }
-    ```
+  <!-- @[dlp_subscribe] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 9. 获取DLP文件打开记录。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    async function getDLPFileAccessRecords() {
-      try {
-        let res:Array<dlpPermission.AccessedDLPFileInfo> = await dlpPermission.getDLPFileAccessRecords(); // 获取DLP访问列表。
-        console.info('res', JSON.stringify(res))
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-      }
-    }
-    ```
+   <!-- @[dlp_getDLPFileAccessRecords] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 10. 获取DLP文件保留沙箱记录。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    async function getRetentionSandboxList() {
-      try {
-        let res:Array<dlpPermission.RetentionSandboxInfo> = await dlpPermission.getRetentionSandboxList(); // 获取沙箱保留列表。
-        console.info('res', JSON.stringify(res))
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-      }
-    }
-    ```
+   <!-- @[dlp_getRetentionSandboxList] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 11. 设置沙箱应用配置信息。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    async function setSandboxAppConfig() {
-      try {
-        await dlpPermission.setSandboxAppConfig('configInfo'); // 设置沙箱应用配置信息。
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-      }
-    }
-    ```
+   <!-- @[dlp_setSandboxAppConfig] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 12. 清理沙箱应用配置信息。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    async function cleanSandboxAppConfig() {
-      try {
-        await dlpPermission.cleanSandboxAppConfig(); // 清理沙箱应用配置信息。
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-      }
-    }
-    ```
+   <!-- @[dlp_cleanSandboxAppConfig] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 13. 查询沙箱应用配置信息。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    async function getSandboxAppConfig() {
-      try {
-        let res:string = await dlpPermission.getSandboxAppConfig(); // 查询沙箱应用配置信息。
-        console.info('res', JSON.stringify(res))
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-      }
-    }
-    ```
+   <!-- @[dlp_getSandboxAppConfig] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { common, Want } from '@kit.AbilityKit';
-    import { UIContext } from '@kit.ArkUI';
-
-    try {
-      let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext。
-      let want: Want = {
-        "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
-        "parameters": {
-          "displayName": "1.txt"
-        }
-      }; // 请求参数。
-      dlpPermission.startDLPManagerForResult(context, want).then((res) => {
-        console.info('res.resultCode', res.resultCode);
-        console.info('res.want', JSON.stringify(res.want));
-      }); // 打开DLP权限管理应用。
-    } catch (err) {
-      console.error('error', err.code, err.message); // 失败报错。
-    }
-    ```
+   <!-- @[dlp_startDLPManagerForResult] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 15. 查询当前系统是否提供DLP特性。
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[dlp_isDLPFeature] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-    dlpPermission.isDLPFeatureProvided().then((res) => {
-      console.info('res', JSON.stringify(res));
-    }).catch((err: BusinessError) => {
-      console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
-    });
-    ```
-
-16. 设置企业应用防护策略。
+16. 设置企业应用防护策略。 <br>
+// 使用该接口需要访问DLP凭据服务器
     
     16.1 策略格式。
     | 字段名 | 类型 | 说明 |
@@ -381,69 +162,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     | DebugMode | 1 <br> 2 | 整型 | 1：该设备已开启调试模式。<br>2：该设备未开启调试模式。 |
     | AdvancedSecurityMode | 1 <br> 2 | 整型 | 1：该设备已开启高级安全模式。<br>2：该设备未开启高级安全模式。  |
 
-    ```ts
-    import { dlpPermission } from '@kit.DataProtectionKit';
+   <!-- @[dlp_setDLPProtectPolicy] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-    interface Attribute {
-      attributeId: string;
-      attributeValues: Array<string>;
-      valueType: number;
-      opt: number;
-    }
-
-    interface Rule {
-      ruleId: string;
-      attributes: Array<Attribute>;
-    }
-
-    interface Policy {
-      rules: Array<Rule>;
-      policyId: string;
-      ruleConflictAlg: number;
-    }
-
-    try {
-      let attributeValues: Array<string> = [ '1' ];
-      let attribute: Attribute = {
-        attributeId: 'DeviceHealthyStatus',
-        attributeValues: attributeValues,
-        valueType: 0,
-        opt: 2
-      }; // 属性信息。
-      let rule: Rule = {
-        ruleId: 'ruleId',
-        attributes: [ attribute ]
-      }; // 规则。
-      let policy: Policy = {
-        rules: [ rule ],
-        policyId: 'policyId',
-        ruleConflictAlg: 0
-      }; // 策略。
-      let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-        policyString: JSON.stringify(policy)
-      };
-      dlpPermission.setEnterprisePolicy(enterprisePolicy);
-      console.info('set enterprise policy success');
-    } catch (err) {
-      console.error('error:' + err.code + err.message); // 失败报错。
-    }
-    ```
-
-17. （API 21开始支持）识别指定文件中的敏感内容。
-    ```ts
-    import { identifySensitiveContent } from '@kit.DataProtectionKit';
-
-    let filepath = "file://docs/storage/Users/currentUser/Desktop/test.txt";
-    let policies: Array<identifySensitiveContent.Policy> = [
-      {"sensitiveLabel":"1", "keywords":[], "regex":""}
-    ];
-    try {
-      identifySensitiveContent.scanFile(filepath, policies).then(records => {
-        console.info('scanFile finish');
-      }).catch((err:Error) => {
-        console.error('error message', err.message);
-      })
-    } catch (err) {
-      console.error('error message', err.message);
-    }
-    ```
+17. （API 21开始支持）识别指定文件中的敏感内容。 <br>
+// 使用该接口需要访问DLP凭据服务器
+   <!-- @[dlp_scanSensitiveInfo] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
