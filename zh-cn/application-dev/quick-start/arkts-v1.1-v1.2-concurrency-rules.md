@@ -854,17 +854,19 @@ ArkTS1.2不允许多次定义同名interface。
 
 **ArkTS1.1**
 ```typescript
-interface PromiseFulfilledResult<T> {
-  status: "fulfilled";
-  value: T;
-}
+function definePromiseResultTypes() {
+  interface PromiseFulfilledResult<T> {
+    status: "fulfilled";
+    value: T;
+  }
 
-interface PromiseRejectedResult {
-  status: "rejected";
-  reason: string;
-}
+  interface PromiseRejectedResult {
+    status: "rejected";
+    reason: string;
+  }
 
-type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
+  type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
+}
 ```
 
 **ArkTS1.2**
