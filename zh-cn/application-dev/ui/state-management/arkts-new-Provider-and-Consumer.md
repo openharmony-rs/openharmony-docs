@@ -16,6 +16,8 @@
 > \@Provider和\@Consumer装饰器从API version 12开始支持。
 >
 > 从API version 12开始，\@Provider和\@Consumer装饰器支持在原子化服务中使用。
+>
+> 从API version 22开始，通过配置[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)的[BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)参数`enableProvideConsumeCrossing`为true，使得\@Provider和\@Consumer支持跨[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)双向同步。在BuilderNode挂载到自定义组件节点树之后，\@Consumer会重新获取最近的\@Provider数据，与之建立双向同步关系。具体可见[\@Consumer在跨BuilderNode场景下和\@Provider建立双向同步](#consumer在跨buildernode场景下和provider建立双向同步)。
 
 ## 概述
 
@@ -671,4 +673,140 @@ struct Child {
 - Index中\@Provider装饰的变量val与Parent中\@Consumer装饰的变量val建立双向数据绑定。Parent中\@Param装饰的变量val2接收Index中数据源val的数据，并同步其变化。Child中\@Param装饰的变量val接收Parent中数据源val的数据，并同步其变化。
 - 点击Parent中的按钮，触发`@Consumer() val`的变化，变化同步给Index中的`@Provider() val`和Child中的`@Param val`，对应UI刷新。
 - Index中`@Provider() val`的变化同步给Parent中的`@Param val2`，对应UI刷新。
+
+### \@Consumer在跨BuilderNode场景下和\@Provider建立双向同步过程
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+下面给出一个示例，实现如下功能：
+1. BuilderNode通过[全局自定义构建函数](../ui/state-management/arkts-builder.md#全局自定义构建函数)构建组件树，组件树的根[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点可通过[getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode)获取，该节点可直接由[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)返回并挂载于[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)节点下。
+2. 挂载到自定义组件节点树时，BuilderNode会通过addBuilderNode方法挂载在自定义组件下，此时BuilderNode节点下的\@Consumer会向上查找\@Provider，根据key的匹配规则找到最近的\@Provider后，会和\@Provider建立双向同步关系。如果找不到配对的\@Provider，则\@Consumer仍使用默认值。
+3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的\@Monitor方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
+4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
+5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@Builder
+function buildText() {
+  TestRemove();
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      // 构建BuilderNode，TestRemove作为子组件
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  disposeNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      globalBuilderNode.dispose();
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct RemoChildDisconnectProvider {
+  @Provider() content: string = 'Index: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+  controllerIndex: TextNodeController = new TextNodeController();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Provider: ${this.content}`)
+
+      // 添加BuilderNode，@Consumer与@Provider建立双向同步
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+        })
+
+      // 移除BuilderNode，@Consumer与@Provider断开连接，恢复默认值
+      Button('remove child')
+        .onClick(() => {
+          this.controllerIndex.removeBuilderNode();
+        })
+
+      // 释放BuilderNode的子节点TestRemove，随后该子节点销毁，触发子节点的aboutToDisappear回调
+      Button('dispose child')
+        .onClick(() => {
+          this.controllerIndex.disposeNode();
+      })
+
+      // @Provider/@Consumer双向同步更新
+      Button('change Provider')
+        .onClick(() => {
+          this.content += 'Pro';
+        })
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct TestRemove {
+  @Consumer() content: string = 'default value';
+  @Monitor('content') consumerWatch() {
+    console.info(`Consumer change ${this.content}`);
+  }
+
+  aboutToDisappear() {
+    console.info(`TestRemove aboutToDisappear`);
+  }
+
+  build() {
+    Column() {
+      Text('Consumer ' + this.content)
+
+      // @Provider和@Consumer绑定的Text组件刷新，并回调@Provider和@Consumer的@Monitor方法
+      Button('change cc')
+        .onClick(() => {
+          this.content += 'cc';
+        })
+    }
+  }
+}
+```
+
+上面的例子中：
+
+- 点击`add Child`，`TestRemove`中\@Consumer向上找到最近的`RemoChildDisconnectProvider`中的\@Provider，将\@Consumer从默认值更新为\@Provider的值，并回调\@Consumer的\@Monitor方法。
+- \@Provider和\@Consumer配对后，建立双向同步关系。点击`change Provider`和`Text(`change cc`)`，\@Provider和\@Consumer绑定的Text组件刷新，并回调\@Provider和\@Consumer的\@Monitor方法。
+- 点击`remove Child`，BuilderNode子节点从组件树卸载，`TestRemove`中的\@Consumer和`RemoChildDisconnectProvider`中的\@Provider断开连接，`TestRemove`中的\@Consumer恢复成默认值，并回调\@Consumer的\@Monitor方法。
+- 点击`dispose Child`，释放BuilderNode下的子节点`TestRemove`，随后该子节点销毁，执行aboutToDisappear回调。
 <!--no_check-->
