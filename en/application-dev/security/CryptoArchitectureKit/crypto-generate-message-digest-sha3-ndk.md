@@ -1,4 +1,4 @@
-# Generating an MD Using MD5 (C/C++)
+# Generating an MD Using SHA3-256 (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,8 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+
+From API version 22, the crypto algorithm library supports digest operation with SHA3-256.
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
@@ -18,13 +20,13 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 During the MD operation, you can [pass in all the data at a time](#generating-an-md-by-passing-in-full-data) or [pass in data by segment](#generating-an-md-by-passing-in-data-by-segment). For the same piece of data, the result will be the same no matter how the data is passed. Use the appropriate method based on the data size.
 
-The following provides examples of MD operations with different data passing methods.
+The following provides examples with different data passing methods.
 
 ### Generating an MD by Passing In Full Data
 
-1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **MD5** to generate an MD operation instance (**OH_CryptoDigest**).
+1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **SHA3-256** to generate an MD operation instance (**OH_CryptoDigest**).
 
-2. Call [OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update) to pass in the data for generating an MD. The amount of data to be passed in by a single **Md.update()** call is not limited.
+2. Call [OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update) to pass in the data for generating an MD. The amount of data to be passed in by a single **Mac.update()** call is not limited.
 
 3. Call [OH_CryptoDigest_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_final) to generate an MD.
 
@@ -32,7 +34,7 @@ The following provides examples of MD operations with different data passing met
 
 5. Call [OH_DigestCrypto_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_digestcrypto_destroy) to destroy the **OH_CryptoDigest** instance.
 
-**Example**
+The following describes how to obtain the digest calculation result when data is imported at a time.
 
 ```c++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -47,7 +49,7 @@ static OH_Crypto_ErrCode doTestMd()
     Crypto_DataBlob in = {.data = (uint8_t *)(testData), .len = strlen(testData)};
     Crypto_DataBlob out = {.data = nullptr, .len = 0};
     int mdLen = 0;
-    ret = OH_CryptoDigest_Create("MD5", &ctx);
+    ret = OH_CryptoDigest_Create("SHA3-256", &ctx);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
@@ -70,7 +72,7 @@ static OH_Crypto_ErrCode doTestMd()
 
 ### Generating an MD by Passing In Data by Segment
 
-1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **MD5** to generate an MD operation instance (**OH_CryptoDigest**).
+1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **SHA3-256** to generate an MD operation instance (**OH_CryptoDigest**).
 
 2. Call [OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update) multiple times to pass in 20 bytes each time.
 
@@ -80,7 +82,7 @@ static OH_Crypto_ErrCode doTestMd()
 
 5. Call [OH_DigestCrypto_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_digestcrypto_destroy) to destroy the **OH_CryptoDigest** instance.
 
-- **Example**
+**Example**
 
 ```c++
 #include <stdlib.h>
@@ -101,7 +103,7 @@ static OH_Crypto_ErrCode doLoopMd()
     int isBlockSize = 20;
     int offset = 0;
 
-    ret = OH_CryptoDigest_Create("MD5", &ctx);
+    ret = OH_CryptoDigest_Create("SHA3-256", &ctx);
     if (ret != CRYPTO_SUCCESS) {
         free(testData);
         return ret;

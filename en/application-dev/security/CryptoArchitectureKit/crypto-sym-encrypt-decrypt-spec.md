@@ -142,6 +142,16 @@ The SM4 encryption and decryption can be implemented based a string parameter. W
   | CFB128 | 128 | [NoPadding\|PKCS5\|PKCS7] | 10+ | 
   | GCM | 128 | [NoPadding\|PKCS5\|PKCS7] | 12+ | 
 
+## AES-WRAP
+
+The crypto algorithm library provides the AES-WRAP algorithm, which is an encryption algorithm based on [AES](crypto-sym-key-generation-conversion-spec.md#aes) and is used to securely store or transmit symmetric keys. This algorithm is used to protect keys by encrypting them, preventing keys from being disclosed or tampered with during storage or transmission.
+
+| Algorithm| String Parameter| API Version| 
+| -------- | -------- | -------- |
+| AES128_WRAP | AES128_WRAP | 22+ | 
+| AES256_WRAP | AES256_WRAP | 22+ | 
+| AES384_WRAP | AES384_WRAP | 22+ | 
+
 ## Padding Mode
 
 The block cipher algorithm has a fixed block length. If the length of the last block does not meet the requirement, data will be added to extend the block to the required length based on the padding mode. The following padding modes are supported:
