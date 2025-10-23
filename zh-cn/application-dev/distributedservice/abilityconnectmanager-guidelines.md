@@ -121,6 +121,11 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 <!-- @[import_abilityConnectionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
+```
+
+
 **发现设备**
 
 设备A上的应用，需要发现并选择设备B的netWorkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理模块](devicemanager-guidelines.md)进行开发。
@@ -135,7 +140,83 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 应用主动调用createAbilityConnectionSession()接口创建会话，获得sessionId。之后调用connect()方法启动ability会话连接（此时设备B上应用会被拉起）。
 
 <!-- @[source_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+let dmClass: distributedDeviceManager.DeviceManager;
+
+function initDmClass(): void {
+  // 其中createDeviceManager接口为系统API
+  try {
+    dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+  } catch (err) {
+    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
+  }
+}
+
+// 获取设备B的设备ID
+function getRemoteDeviceId(): string | undefined {
+  initDmClass();
+  if (typeof dmClass === 'object' && dmClass !== null) {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
+    let list = dmClass.getAvailableDeviceListSync();
+    if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+      return;
+    }
+    if (list.length === 0) {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      return;
+    }
+    // 弹框选择设备
+    return list[0].networkId;
+  } else {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    return;
+  }
+}
+```
+
 <!-- @[source_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  createSession(): void {
+    // 定义peer信息
+    const peerInfo: abilityConnectionManager.PeerInfo = {
+      deviceId: getRemoteDeviceId()!,
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+    };
+    const myRecord: Record<string, string> = {
+      'newKey1': 'value1',
+    };
+
+    // 定义连接选项
+    const connectOption: abilityConnectionManager.ConnectOptions = {
+      needSendData: true,
+      startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+      parameters: myRecord
+    };
+    console.info(TAG + JSON.stringify(peerInfo))
+    console.info(TAG + JSON.stringify(connectOption))
+    let context = this.getUIContext().getHostContext();
+    try {
+      this.sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOption);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
+      abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
+        if (!connectResult.isConnected) {
+          hilog.info(0x0000, 'testTag', 'connect failed');
+          return;
+        }
+      }).catch(() => {
+        hilog.error(0x0000, 'testTag', 'connect failed');
+      })
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
+  }
+```
+
 
 **2.设备B**
 
@@ -143,11 +224,84 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 <!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onContinue(wantParam: Record<string, Object>): AbilityConstant.OnContinueResult {
+    return 1;
+  }
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
+    this.onCollab(param);
+    return 0;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      return;
+    }
+    this.registerSessionEvent(sessionId);
+    const collabToken = collabParam['ohos.dms.collabToken'] as string;
+    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+      AppStorage.setOrCreate<number>('sessionId', sessionId);
+    }).catch(() => {
+      console.log(TAG + `acceptConnect failed` );
+    })
+  }
+
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
+      return sessionId;
+    }
+    // 定义连接选项
+    const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
+    } catch (error) {
+      console.error(error);
+    }
+    return sessionId;
+  }
+```
+
+
 **注册事件监听**
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
 <!--RP1-->
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+  registerSessionEvent(sessionId: number) {
+    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<boolean>('isConnected', true);
+      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+    });
+    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+      AppStorage.setOrCreate<boolean>('isConnected', false);
+      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+    })
+    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+      if (callbackInfo.msg == 'startStream') {
+        hilog.info(0x0000, 'testTag', 'startStream');
+      }
+    })
+    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+      let decoder = util.TextDecoder.create('utf-8');
+      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
+      AppStorage.setOrCreate<string>('receiveMessage', str);
+    })
+  }
+```
+
 
 <!--RP1End-->  
 <!--Del-->
