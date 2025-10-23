@@ -716,7 +716,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, i
 
 **描述**
 
-获取图片透明通道的类型。
+获取图片透明通道类型。
 
 **起始版本：** 20
 
