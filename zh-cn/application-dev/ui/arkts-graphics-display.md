@@ -55,7 +55,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   在显示网络图片时，Image组件在机制上会依赖[缓存下载模块](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)，开发者可参考[示例3下载与显示网络gif图片](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例3下载与显示网络gif图片)了解具体用法。
   
-  缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免在网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
+  缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
   ```ts
   Image('https://www.example.com/example.JPG') // 实际使用时请替换为真实地址
