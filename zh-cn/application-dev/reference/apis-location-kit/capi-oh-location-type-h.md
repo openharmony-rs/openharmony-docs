@@ -176,8 +176,8 @@ Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, c
 | 参数项 | 描述 |
 | -- | -- |
 | [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
-| char* additionalInfo | - char类型的非空指针；该变量用于保存附加信息字符串，该字符串是JSON格式。<br> 该指针和对应的内存由调用者创建，建议申请大于等于256字节的内存。<br> 如果传入空指针，会返回错误码。 |
-| uint32_t length | - 表示additionalInfo的内存大小。 |
+| char* additionalInfo | char类型的非空指针；该变量用于保存附加信息字符串，该字符串是JSON格式。<br> 该指针和对应的内存由调用者创建，建议申请大于等于256字节的内存。<br> 如果传入空指针，会返回错误码。 |
+| uint32_t length | 表示additionalInfo的内存大小。 |
 
 **返回：**
 
@@ -202,7 +202,7 @@ typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
 | 参数项 | 描述 |
 | -- | -- |
 | [Location_Info](capi-location-location-info.md)* location | 指向[Location_Info](capi-location-location-info.md)实例的指针，携带最新的位置信息。<br> location实例的内存会在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)结束时回收，请在此之前调用[OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo)等接口获取位置信息。 |
-|  void* userData | - 指向调用者数据结构或对象的指针，该参数是通过[OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback)传入的。 |
+|  void* userData | 指向调用者数据结构或对象的指针，该参数是通过[OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback)传入的。 |
 
 ### OH_Location_CreateRequestConfig()
 
