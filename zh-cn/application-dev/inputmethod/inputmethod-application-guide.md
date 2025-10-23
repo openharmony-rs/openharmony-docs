@@ -46,31 +46,7 @@
 
    在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
-``` TypeScript
 
-import { InputMethodExtensionAbility } from '@kit.IMEKit';
-import Log from '../model/Log';
-import { keyboardController } from '../model/KeyboardController';
-import { Want } from '@kit.AbilityKit';
-
-const TAG: string = 'ServiceExtAbility->';
-
-export default class ServiceExtAbility extends InputMethodExtensionAbility {
-  onCreate(want: Want): void {
-    this.addLog(`onCreate want: ${want.abilityName}`);
-    keyboardController.onCreate(this.context);
-  }
-
-  onDestroy(): void {
-    this.addLog('onDestroy');
-    keyboardController.onDestroy();
-  }
-
-  addLog(message: string): void {
-    Log.showInfo(TAG, `kikaInput-new: ${message}`);
-  }
-}
-```
 
 
 <!--RP2-->
