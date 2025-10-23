@@ -1591,7 +1591,7 @@ export default class EntryAbility extends UIAbility {
 4. 通知合并后不能取消合并，已合并的不能更新成不合并。
 5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
 6. 通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
-7. 特殊场景类型<sup>22+</sup>必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊类型，否则返回错误。
+7. 特殊场景类型从API version 22开始支持，必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊类型，否则返回错误。
 
 ### 属性
 
@@ -1656,19 +1656,19 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权，返回callback异步回调。在申请特殊场景类型长时任务时，会发送横幅通知，有提示音。
+请求用户授权。在申请特殊场景类型长时任务时，会发送横幅通知，有提示音。返回callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果 |
+| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -1677,7 +1677,7 @@ requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1707,19 +1707,19 @@ export default class EntryAbility extends UIAbility {
 
 checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
 
-查询用户授权，使用Promise异步回调。
+查询用户授权。使用Promise异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**返回值**：
+**返回值：**
 
 | 类型             | 说明                |
 | -------------- |-------------------|
 | Promise&lt;[UserAuthResult](#userauthresult22)&gt; | 返回授权结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -1728,7 +1728,7 @@ checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1767,7 +1767,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_VOIP                       | 8         | 音视频通话。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | 计算任务（仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。|
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。            |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>**说明：** 1、需使用[requestAuthFromUser](#requestauthfromuser22)请求用户授权。2、对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>1. 需使用[requestAuthFromUser](#requestauthfromuser22)请求用户授权。2. 对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1807,7 +1807,7 @@ export default class EntryAbility extends UIAbility {
 
 授权结果。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：**SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称           | 值 | 说明     |
 | ------------ |---|--------|
