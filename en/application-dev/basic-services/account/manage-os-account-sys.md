@@ -14,6 +14,7 @@ The system provides APIs for managing system accounts. After applying for requir
 ### Account Type
 
 Currently, only the following types of system accounts can be created:
+
 | Name  | Value| Description        |
 | ------ | ------ | ----------- |
 | ADMIN  | 0      | Administrator account.|
@@ -25,7 +26,7 @@ Currently, only the following types of system accounts can be created:
 
 For details about complete system account information, see [OsAccountInfo](../../reference/apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo).
 
-## Before You Start
+## Getting Started
 
 1. Request the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. For details, see [Requesting Permissions for system_basic Applications](../../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
