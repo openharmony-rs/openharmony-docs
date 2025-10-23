@@ -130,7 +130,6 @@ Sets the seed of a random number generator.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -155,7 +154,6 @@ void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 Destroys a random number generator instance.
 
 **Since**: 20
-
 
 **Parameters**
 

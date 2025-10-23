@@ -27,8 +27,8 @@ Defines APIs for encrypting and decrypting asymmetric keys.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) | OH_CryptoAsymCipher | Defines a struct for asymmetric encryption.|
-| [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) | OH_CryptoSm2CiphertextSpec | Defines a struct for SM2 ciphertext specifications.|
+| [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) | OH_CryptoAsymCipher | Defines asymmetric encryption.|
+| [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) | OH_CryptoSm2CiphertextSpec | Defines SM2 ciphertext specifications.|
 
 ### Enums
 
@@ -42,11 +42,11 @@ Defines APIs for encrypting and decrypting asymmetric keys.
 | -- | -- |
 | [OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)](#oh_cryptoasymcipher_create) | Creates an asymmetric encryption instance based on the given algorithm name.|
 | [OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_CipherMode mode, OH_CryptoKeyPair *key)](#oh_cryptoasymcipher_init) | Initializes asymmetric encryption.|
-| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in,Crypto_DataBlob *out)](#oh_cryptoasymcipher_final) | Finalizes asymmetric encryption.|
+| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptoasymcipher_final) | Finalizes asymmetric encryption.|
 | [void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)](#oh_cryptoasymcipher_destroy) | Destroys an asymmetric encryption context.|
 | [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)](#oh_cryptosm2ciphertextspec_create) | Creates SM2 ciphertext specifications.|
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_getitem) | Obtains a specified item in SM2 ciphertext specifications.|
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)](#oh_cryptosm2ciphertextspec_setitem) | Sets a specified item in SM2 ciphertext specifications.|
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_getitem) | Obtains a specified item in SM2 ciphertext specifications.|
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)](#oh_cryptosm2ciphertextspec_setitem) | Sets a specified item in SM2 ciphertext specifications.|
 | [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_encode) | Encodes SM2 ciphertext specifications into DER ciphertext.|
 | [void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)](#oh_cryptosm2ciphertextspec_destroy) | Destroys SM2 ciphertext specifications.|
 
@@ -224,7 +224,7 @@ Obtains a specified item in SM2 ciphertext specifications.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | Pointer to the SM2 ciphertext specifications.|
-| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | SM2 ciphertext specification item.|
+| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | Pointer to the SM2 ciphertext specifications.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | Pointer to the output data.|
 
 **Returns**
@@ -251,7 +251,7 @@ Sets a specified item in SM2 ciphertext specifications.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | Pointer to the SM2 ciphertext specifications.|
-| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | SM2 ciphertext specification item.|
+| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | Pointer to the SM2 ciphertext specifications.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | Pointer to the input data.|
 
 **Returns**
