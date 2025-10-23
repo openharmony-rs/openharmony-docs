@@ -57,6 +57,22 @@
 
 <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets) -->
 
+``` TypeScript
+    // 设置监听子类型事件，改变输入法应用界面
+    InputMethodEngine.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+      this.inputHandle.addLog('GJ setSubtype inputMethodSubtype:' + inputMethodSubtype.id);
+      if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+        AppStorage.setOrCreate('subtypeChange', 0);
+        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
+      }
+      if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+        AppStorage.setOrCreate('subtypeChange', 1);
+        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
+      }
+    });
+```
+
+
 ## 输入法子类型相关信息的获取
 
 1. 开发者可以通过调用[getCurrentInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcurrentinputmethodsubtype9)获取当前输入法应用的当前子类型。
