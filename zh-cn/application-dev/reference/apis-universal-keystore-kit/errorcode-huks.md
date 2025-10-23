@@ -83,7 +83,7 @@ Invalid ``${messageInfo}``.
 
 - 磁盘空间已满。
 - 无效的文件大小。
-- 文件无法``${messageInfo}``。
+- 文件无法访问，具体原因可参考日志中给出的``${messageInfo}``。
 
 **可能原因**
 
@@ -108,7 +108,7 @@ Invalid ``${messageInfo}``.
 可能为以下的其中一种：
 
 - 无法从IPC获取消息。
-- IPC ``${messageInfo}``。
+- IPC 出错，具体原因可参考日志中给出的``${messageInfo}``。
 
 **可能原因**
 
