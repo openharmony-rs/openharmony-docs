@@ -2028,5 +2028,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/use-inputmethod-in-custom-edit-box-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":214,
+						"name":"input_case_input_TextEditorProxy",
+						"start_line":211
+					},
+					{
+						"end_line":227,
+						"name":"input_case_input_attachOptions",
+						"start_line":223
+					},
+					{
+						"end_line":243,
+						"name":"input_case_input_OH_InputMethodController_Attach",
+						"start_line":234
+					},
+					{
+						"end_line":204,
+						"name":"input_case_input_ConstructTextEditorProxy",
+						"start_line":188
+					},
+					{
+						"end_line":262,
+						"name":"input_case_input_OH_InputMethodController_Detach",
+						"start_line":257
+					},
+					{
+						"end_line":206,
+						"name":"input_case_input_CPreview016",
+						"start_line":16
+					},
+					{
+						"end_line":311,
+						"name":"input_case_input_CPreview208",
+						"start_line":208
+					}
+				]
+			}
+		]
 	}
 ]
