@@ -1329,3 +1329,194 @@ Kiosk模式的特征。
 | ----------------------------| ----| ------------------------------- |
 | ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心。 |
 | ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心。 |
+
+## ApplicationInstance<sup>22+</sup>
+
+应用的实例数据。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
+| ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
+| appIdentifier          | string       | 否   | 否 | 应用的全局唯一标识，由云端分配           |
+| accountId        | number       | 否   | 否 | 操作系统账户标识符            |
+| appIndex        | number       | 否   | 否 | 应用分身索引值            |
+
+
+## applicationManager.addUserNonStopApps<sup>22+</sup>
+
+addUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt;): void
+
+为指定用户添加不可关停应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中均可正常使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，数组总长度不超过10. |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+let UserNonStopApps: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: 'com.example.UserNonStopApplication',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.addUserNonStopApps(wantTemp, UserNonStopApps);
+  console.info('Succeeded in adding UserNonStop applications.');
+} catch(err) {
+  console.error(`Failed to add UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeUserNonStopApps<sup>22+</sup>
+
+removeUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt;): void
+
+为指定用户删除不可关停应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中均可正常使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，数组总长度不超过10. |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+let UserNonStopApps: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: 'com.example.UserNonStopApplication',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.removeUserNonStopApps(wantTemp, UserNonStopApps);
+  console.info('Succeeded in removing UserNonStop applications.');
+} catch(err) {
+  console.error(`Failed to remove UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getUserNonStopApps<sup>22+</sup>
+
+getUserNonStopApps(admin: Want): Array&lt;ApplicationInstance&gt;
+
+获取不可关停应用名单。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中均可正常使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 不可关停应用名单数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+try {
+  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(wantTemp);
+  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
