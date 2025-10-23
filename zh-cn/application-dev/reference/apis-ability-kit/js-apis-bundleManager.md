@@ -854,7 +854,7 @@ getLaunchWant(): Want
 
 | 类型                                | 说明                                        |
 | ----------------------------------- | ------------------------------------------- |
-| [Want](js-apis-app-ability-want.md) | 返回包含bundleName和abilityName的Want对象。 |
+| [Want](js-apis-app-ability-want.md) | 返回仅包含bundleName和abilityName的Want对象。 |
 
 **错误码：**
 
