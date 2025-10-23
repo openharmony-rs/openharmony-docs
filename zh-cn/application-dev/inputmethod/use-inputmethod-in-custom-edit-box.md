@@ -24,101 +24,103 @@
 
 2. 在控件中，使用Text组件作为自绘编辑框的文本显示组件，使用状态变量inputText作为Text组件要显示的内容。
 
-   ```ets
-   import { inputMethod } from '@kit.IMEKit';
-   
-   @Component
-   export struct CustomInput {
-     @State inputText: string = ''; // inputText作为Text组件要显示的内容。
-     
-     build() {
-       Text(this.inputText) // Text组件作为自绘编辑框的文本显示组件。
-         .fontSize(16)
-         .width('100%')
-         .lineHeight(40)
-         .id('customInput')
-         .height(45)
-         .border({ color: '#554455', radius: 30, width: 1 })
-         .maxLines(1)
-     }
-   }
-   ```
+<!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
+
+``` TypeScript
+import { inputMethod } from '@kit.IMEKit';
+
+@Component
+export struct CustomInput {
+  @State inputText: string = ''; // inputText作为Text组件要显示的内容
+  private isAttach: boolean = false;
+  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+
+  build() {
+    Text(this.inputText) // Text组件作为自绘编辑框的文本显示组件。
+      .fontSize(16)
+      .width('100%')
+      .lineHeight(40)
+      .id('customInput')
+      .height(45)
+      .border({ color: '#554455', radius: 30, width: 1 })
+      .maxLines(1)
+      .onBlur(() => {
+        this.off();
+      })
+      .onClick(() => {
+        this.attachAndListener(); // 点击控件
+      })
+  }
+```
+
 
 3. 在控件中获取inputMethodController实例，先在文本点击时调用controller实例的attach方法绑定和拉起软键盘，再注册监听输入法插入文本、删除等方法。本示例仅展示插入、删除。
 
-   ```ets
-   import { inputMethod } from '@kit.IMEKit';
-   
-   @Component
-   export struct CustomInput {
-     @State inputText: string = ''; // inputText作为Text组件要显示的内容。
-     private isAttach: boolean = false;
-     private inputController: inputMethod.InputMethodController = inputMethod.getController();
-   
-     build() {
-       Text(this.inputText) // Text组件作为自绘编辑框的文本显示组件。
-         .fontSize(16)
-         .width('100%')
-         .lineHeight(40)
-         .id('customInput')
-         .onBlur(() => {
-           this.off();
-         })
-         .height(45)
-         .border({ color: '#554455', radius: 30, width: 1 })
-         .maxLines(1)
-         .onClick(() => {
-           this.attachAndListener(); // 点击控件
-         })
-     }
+<!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
 
-     async attachAndListener() { // 绑定和设置监听
-       focusControl.requestFocus('CustomInput');
-       try {
-        await this.inputController.attach(true, {
-         inputAttribute: {
-           textInputType: inputMethod.TextInputType.TEXT,
-           enterKeyType: inputMethod.EnterKeyType.SEARCH
-         }
-       });       
-       } catch(err) {
-         console.error(`Failed to attach: code:${err.code}, message:${err.message}`);
-       }
-       if (!this.isAttach) {
-         this.inputController.on('insertText', (text) => {
-           this.inputText += text;
-         })
-         this.inputController.on('deleteLeft', (length) => {
-           this.inputText = this.inputText.substring(0, this.inputText.length - length);
-         })
-         this.isAttach = true;
-       }
-     }
+``` TypeScript
+// [Start input_case_input_CustomInputText]
+import { inputMethod } from '@kit.IMEKit';
 
-     off() {
-       this.isAttach = false;
-       this.inputController.off('insertText');
-       this.inputController.off('deleteLeft');
-     }
-   }
-   ```
+@Component
+export struct CustomInput {
+  @State inputText: string = ''; // inputText作为Text组件要显示的内容
+  private isAttach: boolean = false;
+  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+
+  build() {
+    Text(this.inputText) // Text组件作为自绘编辑框的文本显示组件。
+      .fontSize(16)
+      .width('100%')
+      .lineHeight(40)
+      .id('customInput')
+      .height(45)
+      .border({ color: '#554455', radius: 30, width: 1 })
+      .maxLines(1)
+      .onBlur(() => {
+        this.off();
+      })
+      .onClick(() => {
+        this.attachAndListener(); // 点击控件
+      })
+  }
+  // [End input_case_input_CustomInputText]
+  async attachAndListener() { // 绑定和设置监听
+    focusControl.requestFocus('CustomInput');
+    await this.inputController.attach(true, {
+      inputAttribute: {
+        textInputType: inputMethod.TextInputType.TEXT,
+        enterKeyType: inputMethod.EnterKeyType.SEARCH
+      }
+    });
+    if (!this.isAttach) {
+      this.inputController.on('insertText', (text) => {
+        this.inputText += text;
+      })
+      this.inputController.on('deleteLeft', (length) => {
+        this.inputText = this.inputText.substring(0, this.inputText.length - length);
+      })
+      this.isAttach = true;
+    }
+  }
+
+  off() {
+    this.isAttach = false;
+    this.inputController.off('insertText');
+    this.inputController.off('deleteLeft');
+  }
+}
+```
+
 
 4. 在应用界面布局中引入该控件即可，此处假设使用界面为Index.ets和控件CustomInput.ets在同一目录下。
 
-   ```ets
-   import { CustomInput } from './CustomInput'; // 导入控件
-   
-   @Entry
-   @Component
-   struct Index {
-   
-     build() {
-       Column() {
-         CustomInput() // 使用控件
-       }
-     }
-   }
-   ```
+<!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+
+``` TypeScript
+      CustomInput()
+```
+
 
    ## 示例效果图
   ![示例效果图](./figures/image-1.png)
