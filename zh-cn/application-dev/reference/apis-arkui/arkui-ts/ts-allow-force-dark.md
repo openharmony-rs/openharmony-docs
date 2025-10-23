@@ -1,4 +1,4 @@
-# 反色逃生
+# 禁用反色能力
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lushi871202-->
@@ -6,7 +6,7 @@
 <!--Tester: @demon_coffee-->
 <!--Adviser: @HelloCrease-->
 
-设置组件是否使用反色能力，开发者通过主动设置不使用反色算法，维持深浅色切换时的原有逻辑。
+设置组件是否使用反色能力，反色能力是在深浅色切换时自动对颜色值进行反色或变换，开发者可以通过主动设置不启用反色算法，以保持在深浅色切换时的原有逻辑。
 
 >  **说明：**
 >
@@ -26,7 +26,7 @@ allowForceDark(value: boolean): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value  | boolean   |  是  | 是否使用反色能力。true表示使用反色能力，false表示不使用反色能力。 |
+| value  | boolean   |  是  | 组件是否使用反色能力。true：组件使用反色能力；false：组件不使用反色能力。 |
 
 **返回值：**
 
@@ -36,10 +36,12 @@ allowForceDark(value: boolean): T
 
 > **说明：**
 >
-> 当本节点主动设置不使用反色能力时，本节点及其所有子节点均不使用反色能力，不受父节点或祖先节点主动设置使用反色能力的影响。
+> 当组件主动设置不使用反色能力时，组件及其所有子组件均不使用反色能力，不受父组件或祖先组件主动设置使用反色能力的影响。
 
-**示例:**
+## 示例
+
 ```ts
+// 组件添加allowForceDark(false)属性后，说明对当前组件不使用反色相关能力。
 @Entry
 @Component
 struct ComponentPage {
@@ -53,17 +55,17 @@ struct ComponentPage {
             console.info(`Text is clicked`);
           })
       }
-      .allowForceDark(false) // Column组件及其子组件(Text组件)不生效反色能力，不受父组件(Column)使用反色能力的影响
+      .allowForceDark(false) // Column及其子组件Text不生效反色能力，不受父组件Column使用反色能力的影响。
 
       Row() {
-        Button('TEST BUTTON')
+        Button('BUTTON')
           .backgroundColor(Color.Grey)
           .allowForceDark(true)
           .onClick(() => {
             console.info(`Button is clicked`);
           })
       }
-      .allowForceDark(false) // Row组件及其子组件(Button组件)不生效反色能力，不受父组件(Column)使用反色能力的影响
+      .allowForceDark(false) // Row及其子组件Button不生效反色能力，不受父组件Column使用反色能力的影响。
     }
     .allowForceDark(true)
     .width('100%')
@@ -71,3 +73,4 @@ struct ComponentPage {
   }
 }
 ```
+![forceDark](./figures/force-dark.png)

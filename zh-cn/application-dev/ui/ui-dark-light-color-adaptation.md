@@ -180,7 +180,7 @@ onCreate(): void {
 }
 ```
 
-## 系统默认判断规则
+## 系统判定应用深浅色模式的规则
 
 1. 如果应用调用上述setColorMode接口主动设置了深浅色，则以接口效果优先。
 
@@ -200,7 +200,7 @@ onCreate(): void {
 }
 ```
 
-## 使用建议与限制
+## 深浅色模式的使用建议与注意事项
 
 - 建议方法
 
@@ -230,17 +230,18 @@ onCreate(): void {
 
 ## 优化深浅色模式切换开销
   
-默认情况下，颜色模式的切换，需要执行全量重绘，包括全量执行组件的属性设置代码，性能开销随着应用的UI复杂程度线性增长。
+默认情况下，深浅色模式的切换需要执行全量重绘，包括重新设置所有组件的属性，性能开销会随着应用UI的复杂度线性增加。
 
-从API version 20开始，系统提供了一种高性能的深浅色切换流程，开发者可通过新增metadata配置项开启该特性，从而确保深浅色切换时的开销更小。
+从API version 20开始，系统提供了一种高性能的深浅色切换流程，开发者可通过新增[metadata](../quick-start/module-configuration-file.md#metadata标签)配置项开启该能力，从而确保深浅色切换时的开销更小。
 
 > **说明：**
 >
-> 配置此metadata必须保证属性设置中通过函数适配深浅色变更的行为已全部完成正确的适配。
+> 配置此metadata时，必须确保属性设置中通过函数适配深浅色变更的行为已全部正确完成。
+> <!--RP1--><!--RP1End-->
 
-1. 通过metadata开启优化选项。
+1. 通过metadata开启深浅色切换优化选项。
 
-   开启深浅色切换新方案，需在module.json5文件中新增metadata字段，同时需对部分组件的属性进行适配。
+   优化深浅色模式切换开销，需在module.json5文件中新增metadata字段，同时需对部分组件的属性进行适配。
 
     ```ts
     "metadata": [
@@ -253,12 +254,13 @@ onCreate(): void {
 
 2. 应用的自定义行为需要正确适配。
 
-   新的切换流程不会全量重新执行前端代码和属性设置，仅会更新必要重绘的属性，如果开发者之前在属性设置中通过函数适配深浅色变更将不会生效，这种情况需要开启优化流程前进行正确适配，可参考[使用建议与限制](#使用建议与限制)进行适配。
+   优化深浅色模式切换开销后，深浅色切换不会全量重新执行前端代码和属性设置，仅会更新、重绘必要的属性，如果开发者之前在属性设置中通过函数适配深浅色变更将不会生效，这种情况需要开启优化流程前进行正确适配，可参考[深浅色模式的使用建议与注意事项](#深浅色模式的使用建议与注意事项)进行适配。
 
-### 利用反色能力快速适配深色模式
+## 利用反色能力快速适配深色模式
 
-对于有大量存量代码，通过资源配置模式或主题方式实现深色模式适配，又想快速接入深色模式的应用，可使用系统提供的反色能力，快速适配深色模式。
-这种方式虽然管理上不如资源配置和Theme方式精细可控，但适配工作量更低，应用包也不会因为大量的资源配置而膨胀，同时也能够带来一定程度上可以接受的视觉效果。
+从API version 20开始，对于有大量存量代码，通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式实现深色模式适配，又想快速接入深色模式的应用。可使用系统提供的反色能力，快速适配深色模式。
+
+这种方式虽然管理上不如资源配置和主题方式精细可控，但适配工作量更低，应用包也不会因为大量的资源配置而膨胀，同时也能够带来一定程度上可以接受的视觉效果。
 
 > **说明：**
 >
@@ -272,13 +274,13 @@ onCreate(): void {
 
     > **说明：**
     >
-    > 1.调用本接口前，需确保已加载过arkui native module，即OH_ArkUI_QueryModuleInterfaceByNmae(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")。
+    > 1.调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
     >
-    > 2.当前接口一定要在节点创建前的ui线程中调用。
+    > 2.OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。
     >
-    > 3.当前本接口仅支持进程级生效，暂不支持不同实例使用不同的反色算法。
+    > 3.OH_ArkUI_SetForceDarkConfig接口仅支持进程级生效，暂不支持不同实例使用不同的反色算法。
     >
-    > 4.当前仅支持C-API接口，考虑到反色算法在深浅色切换时会被频繁调用，采用C-API接口可以避免存在大量的跨语言调用开销。
+    > 4.OH_ArkUI_SetForceDarkConfig接口仅支持CAPI接口，考虑到反色算法在深浅色切换时会被频繁调用，采用C-API接口可以避免存在大量的跨语言调用开销。
 
     本示例展示OH_ArkUI_SetForceDarkConfig接口的基础使用方式，自定义反色算法根据开发者实际场景进行设置，便于深浅色切换时展示不同的颜色值。
 
@@ -287,7 +289,7 @@ onCreate(): void {
       ```
 
       ```ts
-      // page1
+      // page1 ArkTs侧创建组件使用反色能力。
       // 前置已默认对所有组件使用默认反色算法，深浅色切换时会对文本的文字颜色进行反色，浅色模式下展示为黑色字体，深色模式下展示为白色字体。
       build() {
         // ... other code ...
@@ -299,6 +301,10 @@ onCreate(): void {
 
     OH_ArkUI_SetForceDarkConfig接口不同入参效果如下：
       ```c++
+      // 开发者自定义的反色算法函数。
+      uint32_t colorInvertFunc(uint32_t color) {
+        return ~color;
+      }
       OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_UNDEFINED, colorInvertFunc); // 对所有组件使用自定义反色算法。
       ```
       ```c++
@@ -308,20 +314,24 @@ onCreate(): void {
       OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_TEXT, nullptr); // 仅对文本组件使用默认反色算法。
       ```
       ```c++
+      // 开发者自定义的反色算法函数。
+      uint32_t colorInvertFunc(uint32_t color) {
+        return ~color;
+      }
       OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_TEXT, colorInvertFunc); // 仅对文本组件使用自定义反色算法。
       ```
 
     > **说明：**
     >
-    > - 不支持全局禁用反色能力的同时仅对某类控件使用反色算法。
+    > - 不支持全局禁用反色能力的同时仅对某类组件使用反色算法。
     >
-    > - 不支持全局使用反色能力的同时仅对某类控件禁用反色算法。
+    > - 不支持全局使用反色能力的同时仅对某类组件禁用反色算法。
 
 2. 反色算法生效优先级说明。
 
-   a. 使用开发者深色模式颜色资源的配置；
+   a. 使用开发者深色模式颜色资源的配置。
    
-   b. 使用开发者为本进程中控件配置的反色算法；
+   b. 使用开发者为本进程中控件配置的反色算法。
    
    c. 使用开发者为本进程中所有组件配置的反色算法。
 
