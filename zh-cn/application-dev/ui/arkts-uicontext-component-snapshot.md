@@ -1,7 +1,7 @@
 # 使用组件截图（ComponentSnapshot）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -16,7 +16,7 @@
 ### 对挂树组件截图
 对已明确挂树的组件进行截图，可通过[get](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12-1)或[getSync](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getsync12)实现，传入组件标识（需提前通过.id通用属性配置）以指定组件根节点。系统在通过指定的ID查找待截图组件时，仅遍历已挂树的组件，不对cache或离屏组件进行查找。系统以首个查找到的结果为准，故应用需**确保组件标识ID的唯一性**。
 
-在已知组件的[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)的情况下，也可以使用[getWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getwithuniqueid15)或[getSyncWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getsyncwithuniqueid15)接口来实现截图，这可以省去查找组件的过程。
+从API version 15开始，在已知组件的[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)的情况下，也可以使用[getWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getwithuniqueid15)或[getSyncWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getsyncwithuniqueid15)接口来实现截图，这可以省去查找组件的过程。
 
 截图仅能获取最近一帧的绘制内容。若在组件触发更新的同时调用截图，更新的渲染内容不会被截取，截图将返回前一帧的绘制内容。
 
@@ -26,7 +26,7 @@
 
 
 ### 对离线组件截图
-离线组件是指通过Builder或ComponentContent封装的、尚未挂载到树上的组件，可以使用[createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)和[createFromComponent](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfromcomponent18)来实现。
+离线组件是指通过Builder或ComponentContent封装的、尚未挂载到树上的组件，可以使用[createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)来实现。从API version 18开始，也可以使用[createFromComponent](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfromcomponent18)实现离线组件截图。
 
 这些组件不参与真实渲染，因此对其截图需要更长的时间，因为系统必须先进行离线构建、布局及资源加载等操作，在这些操作完成前执行的截图所获位图不符合预期。因此，通常需要通过设置delay参数指定足够的时间，确保系统能够完成这些操作。对于图片资源的加载，建议将图片组件的[syncLoad](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#syncload8)属性设为 true，以强制同步加载，确保离线组件构建时图片已加载、下载及解码完成，从而确保截图过程中能够正确呈现图片像素。
 
@@ -228,7 +228,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
 ```
 
 ### 封装全局截图接口
-如前文所述，截图接口必须在UI上下文明确的位置使用。然而，应用有时希望对不同模块封装统一的全局截图方法。例如，在下述示例中，awardBuilder构建的组件是固定结构的。GlobalStaticSnapshot提供了一个getAwardSnapshot全局方法，能够满足不同模块的需求，对同一固定模式的组件进行截图，从而实现全局截图接口的封装。
+如前文所述，截图接口必须在UI上下文明确的位置使用。然而，应用有时希望对不同模块封装统一的全局截图方法。例如，在下述示例中，awardBuilder构建的组件是固定结构的。GlobalStaticSnapshot提供了一个getAwardSnapshot全局方法，能够满足不同模块的需求，对同一固定模式的组件进行截图，从而实现全局截图接口的封装。本示例从API version 18开始支持。
 
 ```ts
 import { image } from '@kit.ImageKit';
