@@ -33,19 +33,27 @@ subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
 
 ### getCode
 
-getCode(callback: AsyncCallback\<number>): void
+ArkTS-Dyn:getCode(callback: AsyncCallback\<number>): void
 
-获取有序公共事件传递的数据（number类型）。使用callback异步回调。
+ArkTS-Sta:getCode(callback: AsyncCallback\<int>): void
+
+ArkTS-Dyn:获取有序公共事件传递的数据（number类型）。使用callback异步回调。
+
+ArkTS-Sta:获取有序公共事件传递的数据（int类型）。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明               |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<number\> | 是   | 回调函数。返回有序公共事件传递的数据（number类型）。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<int\>| 是   | 回调函数。返回有序公共事件传递的数据（int类型）。 |
 
 **错误码：**
 
@@ -57,6 +65,7 @@ getCode(callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -69,11 +78,28 @@ subscriber.getCode((err: BusinessError, code: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getCode((err: BusinessError | null, code: int | undefined | null) => {
+  if (err) {
+    console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
+});
+```
+
 ### getCode
 
-getCode(): Promise\<number>
+ArkTS-Dyn:getCode(): Promise\<number>
 
-获取有序公共事件传递的数据（number类型）。使用Promise异步回调。
+ArkTS-Sta:getCode(): Promise\<int>
+
+ArkTS-Dyn:获取有序公共事件传递的数据（number类型）。使用Promise异步回调。
+
+ArkTS-Sta:获取有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -83,10 +109,11 @@ getCode(): Promise\<number>
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| Promise\<number> | Promise对象。返回有序公共事件传递的数据（number类型）。 |
+| ArkTS-Dyn: Promise\<number><br/>ArkTS-Sta:Promise\<int> | Promise对象。返回有序公共事件传递的数据（int类型）。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -97,24 +124,44 @@ subscriber.getCode().then((code: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getCode().then((code: number) => {
+  console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to get code. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### getCodeSync<sup>10+</sup>
 
-getCodeSync(): number
+ArkTS-Dyn:getCodeSync(): number
 
-获取有序公共事件传递的数据（number类型）。
+ArkTS-Sta:getCodeSync(): int
+
+ArkTS-Dyn:获取有序公共事件传递的数据（number类型）。
+
+ArkTS-Sta:获取有序公共事件传递的数据（int类型）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型             | 说明                 |
 | ---------------- | -------------------- |
-| number | 表示有序公共事件传递的数据（number类型）。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 表示有序公共事件传递的数据（number类型）。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -122,21 +169,37 @@ let code: number = subscriber.getCodeSync();
 console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+let code: int = subscriber.getCodeSync();
+console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
+```
+
 ### setCode
 
-setCode(code: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn:setCode(code: number, callback: AsyncCallback\<void>): void
 
-设置有序公共事件传递的数据（number类型）。使用callback异步回调。
+ArkTS-Sta:setCode(code: int, callback: AsyncCallback\<void>): void
+
+ArkTS-Dyn:设置有序公共事件传递的数据（number类型）。使用callback异步回调。
+
+ArkTS-Sta:设置有序公共事件传递的数据（int类型）。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | number               | 是   | 有序公共事件传递的数据（number类型）。   |
+| code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据（number类型）成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -149,6 +212,7 @@ setCode(code: number, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -161,11 +225,28 @@ subscriber.setCode(1, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.setCode(1, (err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to set code. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in setting code.`);
+});
+```
+
 ### setCode
 
-setCode(code: number): Promise\<void>
+ArkTS-Dyn:setCode(code: number): Promise\<void>
 
-设置有序公共事件传递的数据（number类型）。使用Promise异步回调。
+ArkTS-Sta:setCode(code: int): Promise\<void>
+
+ArkTS-Dyn:设置有序公共事件传递的数据（number类型）。使用Promise异步回调。
+
+ArkTS-Sta:设置有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -175,7 +256,7 @@ setCode(code: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。 |
 
 **返回值：**
 
@@ -193,6 +274,7 @@ setCode(code: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -203,21 +285,40 @@ subscriber.setCode(1).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.setCode(1).then(() => {
+  console.info(`Succeeded in setting code.`);
+}).catch((err: BusinessError) : void  => {
+  console.error(`Failed to set code. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### setCodeSync<sup>10+</sup>
 
-setCodeSync(code: number): void
+ArkTS-Dyn:setCodeSync(code: number): void
 
-设置有序公共事件传递的数据（number类型）。
+ArkTS-Sta:setCodeSync(code: int): void
+
+ArkTS-Dyn:设置有序公共事件传递的数据（number类型）。
+
+ArkTS-Sta:设置有序公共事件传递的数据（int类型）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。 |
 
 **错误码：**
 
@@ -250,6 +351,10 @@ getData(callback: AsyncCallback\<string>): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                 |
@@ -266,11 +371,26 @@ getData(callback: AsyncCallback\<string>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 // 获取有序公共事件传递的数据（string类型）回调
 subscriber.getData((err: BusinessError, data: string) => {
+  if (err) {
+    console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+// 获取有序公共事件传递的数据（string类型）回调
+subscriber.getData((err: BusinessError | null, data: string | undefined | null) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
     return;
@@ -289,6 +409,10 @@ getData(): Promise\<string>
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型             | 说明               |
@@ -297,12 +421,24 @@ getData(): Promise\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.getData().then((data: string) => {
   console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+  console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getData().then((data: string) => {
+  console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) : void => {
   console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -316,6 +452,10 @@ getDataSync(): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -342,6 +482,10 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                 |
@@ -359,10 +503,24 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.setData('publish_data_changed', (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in setting data.`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.setData('publish_data_changed', (err: BusinessError | null) => {
   if (err) {
     console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
     return;
@@ -380,6 +538,10 @@ setData(data: string): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -403,12 +565,24 @@ setData(data: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.setData('publish_data_changed').then(() => {
   console.info(`Succeeded in setting data.`);
 }).catch((err: BusinessError) => {
+  console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.setData('publish_data_changed').then(() => {
+  console.info(`Succeeded in setting data.`);
+}).catch((err: BusinessError) : void => {
   console.error(`Failed to set data. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -422,6 +596,10 @@ setDataSync(data: string): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -452,7 +630,9 @@ try {
 
 ### setCodeAndData
 
-setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
+ArkTS-Dyn:setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
+
+ArkTS-Sta:setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>): void
 
 设置有序公共事件数据。使用callback异步回调。
 
@@ -464,7 +644,7 @@ setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | number               | 是   | 有序公共事件传递的数据（number类型）。   |
+| code     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（number类型）。   |
 | data     | string               | 是   | 有序公共事件传递的数据（string类型）。   |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当设置有序公共事件传递的数据成功时，err为undefined，否则为错误对象。 |
 
@@ -478,6 +658,7 @@ setCodeAndData(code: number, data: string, callback:AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -490,9 +671,24 @@ subscriber.setCodeAndData(1, 'publish_data_changed', (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.setCodeAndData(1, 'publish_data_changed', (err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to set code and data. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in setting code and data.`);
+});
+```
+
 ### setCodeAndData
 
-setCodeAndData(code: number, data: string): Promise\<void>
+ArkTS-Dyn:setCodeAndData(code: number, data: string): Promise\<void>
+
+ArkTS-Sta:setCodeAndData(code: int, data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
@@ -504,7 +700,7 @@ setCodeAndData(code: number, data: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（int类型）。 |
 | data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
 
 **返回值：**
@@ -523,6 +719,7 @@ setCodeAndData(code: number, data: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -533,9 +730,20 @@ subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
+  console.info(`Succeeded in setting code and data.`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to set code and data. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### setCodeAndDataSync<sup>10+</sup>
 
-setCodeAndDataSync(code: number, data: string): void
+ArkTS-Dyn:setCodeAndDataSync(code: number, data: string): void
+
+ArkTS-Sta:setCodeAndDataSync(code: int, data: string): void
 
 设置有序公共事件传递的数据。
 
@@ -547,7 +755,7 @@ setCodeAndDataSync(code: number, data: string): void
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| code   | number | 是   | 有序公共事件传递的数据（number类型）。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 有序公共事件传递的数据（int类型）。 |
 | data   | string | 是   | 有序公共事件传递的数据（string类型）。 |
 
 **错误码：**
@@ -580,6 +788,10 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                               |
@@ -596,10 +808,24 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered:boolean) => {
+  if (err) {
+    console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.isOrderedCommonEvent((err: BusinessError | null, isOrdered:boolean | undefined | null) => {
   if (err) {
     console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -616,6 +842,10 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型              | 说明                             |
@@ -624,12 +854,24 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
 }).catch((err: BusinessError) => {
+  console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
+  console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
+}).catch((err: BusinessError) : void => {
   console.error(`isOrderedCommonEvent failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -641,6 +883,10 @@ isOrderedCommonEventSync(): boolean
 查询当前公共事件是否为有序公共事件。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -665,6 +911,10 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                               |
@@ -681,10 +931,24 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.isStickyCommonEvent((err: BusinessError, isSticky:boolean) => {
+  if (err) {
+    console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.isStickyCommonEvent((err: BusinessError | null, isSticky:boolean | undefined | null) => {
   if (err) {
     console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
     return;
@@ -701,6 +965,10 @@ isStickyCommonEvent(): Promise\<boolean>
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型              | 说明                             |
@@ -709,12 +977,24 @@ isStickyCommonEvent(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
 }).catch((err: BusinessError) => {
+  console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
+  console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
+}).catch((err: BusinessError) : void => {
   console.error(`isStickyCommonEvent failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -726,6 +1006,10 @@ isStickyCommonEventSync(): boolean
 检查当前公共事件是否为一个粘性事件。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -750,6 +1034,10 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                 |
@@ -766,6 +1054,7 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -785,6 +1074,24 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+subscriber.abortCommonEvent((err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to abort common event. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in aborting common event.`);
+});
+subscriber.finishCommonEvent((err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in finishing common event.`);
+});
+```
+
 ### abortCommonEvent
 
 abortCommonEvent(): Promise\<void>
@@ -792,6 +1099,10 @@ abortCommonEvent(): Promise\<void>
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -801,6 +1112,7 @@ abortCommonEvent(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -816,6 +1128,22 @@ subscriber.finishCommonEvent().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.abortCommonEvent().then(() => {
+  console.info(`Succeeded in aborting common event.`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to abort common event. Code is ${err.code}, message is ${err.message}`);
+});
+subscriber.finishCommonEvent().then(() => {
+  console.info(`Succeeded in finishing common event.`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### abortCommonEventSync<sup>10+</sup>
 
 abortCommonEventSync(): void
@@ -824,8 +1152,13 @@ abortCommonEventSync(): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -837,6 +1170,18 @@ subscriber.finishCommonEvent().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.abortCommonEventSync();
+subscriber.finishCommonEvent().then(() => {
+  console.info(`Succeeded in finishing common event.`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### clearAbortCommonEvent
 
 clearAbortCommonEvent(callback: AsyncCallback\<void>): void
@@ -844,6 +1189,10 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -861,6 +1210,7 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -880,6 +1230,26 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.clearAbortCommonEvent((err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to clear abort common event. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in clearing abort common event.`);
+});
+subscriber.finishCommonEvent((err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in finishing common event.`);
+});
+```
+
 ### clearAbortCommonEvent
 
 clearAbortCommonEvent(): Promise\<void>
@@ -887,6 +1257,10 @@ clearAbortCommonEvent(): Promise\<void>
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -896,6 +1270,7 @@ clearAbortCommonEvent(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -911,6 +1286,22 @@ subscriber.finishCommonEvent().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.clearAbortCommonEvent().then(() => {
+  console.info(`Succeeded in clearing abort common event.`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to clear abort common event. Code is ${err.code}, message is ${err.message}`);
+});
+subscriber.finishCommonEvent().then(() => {
+  console.info(`Succeeded in finishing common event.`);
+}).catch((err: BusinessError) : void  => {
+  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### clearAbortCommonEventSync<sup>10+</sup>
 
 clearAbortCommonEventSync(): void
@@ -919,8 +1310,13 @@ clearAbortCommonEventSync(): void
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -932,6 +1328,18 @@ subscriber.finishCommonEvent().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.clearAbortCommonEventSync();
+subscriber.finishCommonEvent().then(() => {
+  console.info(`Succeeded in finishing common event.`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### getAbortCommonEvent
 
 getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
@@ -939,6 +1347,10 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 获取当前有序公共事件是否处于中止状态。使用callback异步回调。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -956,10 +1368,24 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.getAbortCommonEvent((err: BusinessError, abortEvent: boolean) => {
+  if (err) {
+    console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
+    return;
+  } 
+  console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getAbortCommonEvent((err: BusinessError | null, abortEvent: boolean | undefined | null) => {
   if (err) {
     console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
     return;
@@ -976,6 +1402,10 @@ getAbortCommonEvent(): Promise\<boolean>
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型              | 说明                               |
@@ -984,12 +1414,24 @@ getAbortCommonEvent(): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
   console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
 }).catch((err: BusinessError) => {
+  console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
+  console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
+}).catch((err: BusinessError) : void  => {
   console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1001,6 +1443,10 @@ getAbortCommonEventSync(): boolean
 获取当前有序公共事件是否处于中止状态。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -1019,13 +1465,19 @@ console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stri
 
 ### getSubscribeInfo
 
-getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
+ArkTS-Dyn:getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
+
+ArkTS-Sta:getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo|null>): void;
 
 获取订阅者的订阅信息。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -1043,6 +1495,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -1055,15 +1508,34 @@ subscriber.getSubscribeInfo((err: BusinessError, subscribeInfo: commonEventManag
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getSubscribeInfo((err: BusinessError | null, subscribeInfo: commonEventManager.CommonEventSubscribeInfo | undefined | null) => {
+  if (err) {
+    console.error(`Failed to get subscribe info. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+});
+```
+
 ### getSubscribeInfo
 
-getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
+ArkTS-Dyn:getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
+
+ArkTS-Sta:getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>;
 
 获取订阅者的订阅信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -1073,6 +1545,7 @@ getSubscribeInfo(): Promise\<CommonEventSubscribeInfo>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
@@ -1083,15 +1556,32 @@ subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEven
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEventSubscribeInfo) => {
+  console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+}).catch((err: BusinessError) : void => {
+  console.error(`Failed to get subscribe info. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ### getSubscribeInfoSync<sup>10+</sup>
 
-getSubscribeInfoSync(): CommonEventSubscribeInfo
+ArkTS-Dyn:getSubscribeInfoSync(): CommonEventSubscribeInfo
+
+ArkTS-Sta:getSubscribeInfoSync(): CommonEventSubscribeInfo|null
 
 获取订阅者的订阅信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **返回值：**
 
@@ -1101,11 +1591,20 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 let subscribeInfo = subscriber.getSubscribeInfoSync();
 console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+let .getSubscribeInfo = subscriber.getSubscribeInfoSync();
+console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(getSubscribeInfo)}`);
 ```
 
 ### finishCommonEvent<sup>9+</sup>
@@ -1115,6 +1614,10 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 用于订阅者结束对当前有序公共事件的处理。使用callback异步回调。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -1132,10 +1635,24 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.finishCommonEvent((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in finishing common event.`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.finishCommonEvent((err: BusinessError | null) => {
   if (err) {
     console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
     return;
@@ -1152,6 +1669,10 @@ finishCommonEvent(): Promise\<void>
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：20
+
 **返回值：**
 
 | 类型             | 说明                 |
@@ -1160,12 +1681,24 @@ finishCommonEvent(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 
 ```ts
 subscriber.finishCommonEvent().then(() => {
   console.info(`Succeeded in finishing common event.`);
 }).catch((err: BusinessError) => {
+  console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+
+```ts
+subscriber.finishCommonEvent().then(() => {
+  console.info(`Succeeded in finishing common event.`);
+}).catch((err: BusinessError) : void => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
