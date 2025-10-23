@@ -1958,5 +1958,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/share-config.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"publish_shared_config",
+						"start_line":19
+					},
+					{
+						"end_line":79,
+						"name":"delete_shared_config",
+						"start_line":57
+					},
+					{
+						"end_line":103,
+						"name":"get_shared_config",
+						"start_line":81
+					},
+					{
+						"end_line":139,
+						"name":"watch_shared_config",
+						"start_line":105
+					}
+				]
+			}
+		]
 	}
 ]
