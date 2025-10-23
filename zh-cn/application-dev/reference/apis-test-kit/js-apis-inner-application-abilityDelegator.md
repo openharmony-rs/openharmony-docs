@@ -1524,7 +1524,7 @@ abilityDelegator.removeAbilityStageMonitorSync({
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback\<AbilityStage>): void
 
-等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象。使用callback异步回调。
+返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1568,7 +1568,7 @@ abilityDelegator.waitAbilityStageMonitor({
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise\<AbilityStage>
 
-等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象。使用Promise异步回调。
+返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象，支持设置超时最大等待时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1617,7 +1617,7 @@ abilityDelegator.waitAbilityStageMonitor({
 
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback\<AbilityStage>): void
 
-等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象。使用callback异步回调。
+在指定的超时最大等待时间内，返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
