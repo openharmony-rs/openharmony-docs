@@ -706,7 +706,7 @@ struct FatherControlChild {
 
  ### 示例5（自定义手势识别器是否参与手势处理）
 
-该示例通过配置onTouchTestDone指定手势识别器不参与后续手势处理，触发回调时，调用preventBegin()阻止手势识别器参与后续处理。
+从API version 20开始，该示例通过配置[onTouchTestDone](#ontouchtestdone20)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。
 
 ```ts
 // xxx.ets
