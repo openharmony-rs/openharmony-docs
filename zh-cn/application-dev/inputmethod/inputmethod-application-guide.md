@@ -46,8 +46,6 @@
 
    在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
-<!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
-
 ``` TypeScript
 
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
@@ -80,296 +78,34 @@ export default class ServiceExtAbility extends InputMethodExtensionAbility {
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
-   ```ts
-   import { display } from '@kit.ArkUI';
-   import { inputMethodEngine, InputMethodExtensionContext } from '@kit.IMEKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   // 调用输入法框架的getInputMethodAbility方法获取实例，并由此实例调用输入法框架功能接口
-   const inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
-   
-   export class KeyboardController {
-     private mContext: InputMethodExtensionContext | undefined = undefined; // 保存InputMethodExtensionAbility中的context属性
-     private panel: inputMethodEngine.Panel | undefined = undefined; 
-     private textInputClient: inputMethodEngine.InputClient | undefined = undefined; 
-     private keyboardController: inputMethodEngine.KeyboardController | undefined = undefined;
-   
-     constructor() {
-     }
-   
-     public onCreate(context: InputMethodExtensionContext): void
-     {
-       this.mContext = context;
-       this.initWindow(); // 初始化窗口
-       this.registerListener(); // 注册对输入法框架的事件监听
-     }
-   
-     public onDestroy(): void // 应用生命周期销毁
-     {
-       this.unRegisterListener(); // 去注册事件监听
-       if(this.panel) { // 销毁窗口
-         inputMethodAbility.destroyPanel(this.panel);
-       }
-       if(this.mContext) {
-         this.mContext.destroy();
-       }
-     }
-   
-     public insertText(text: string): void {
-       if(this.textInputClient) {
-         this.textInputClient.insertText(text);
-       }
-     }
-   
-     public deleteForward(length: number): void {
-       if(this.textInputClient) {
-         this.textInputClient.deleteForward(length);
-       }
-     }
-   
-     private initWindow(): void // 初始化窗口
-     {
-       if(this.mContext === undefined) {
-         return;
-       }
-       let dis = display.getDefaultDisplaySync();
-       let dWidth = dis.width;
-       let dHeight = dis.height;
-       let keyHeightRate = 0.47;
-       let keyHeight = dHeight * keyHeightRate;
-       let nonBarPosition = dHeight - keyHeight;
-       let panelInfo: inputMethodEngine.PanelInfo = {
-         type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
-         flag: inputMethodEngine.PanelFlag.FLG_FIXED
-       };
-       inputMethodAbility.createPanel(this.mContext, panelInfo).then(async (inputPanel: inputMethodEngine.Panel) => {
-         this.panel = inputPanel;
-         if (this.panel) {
-           await this.panel.resize(dWidth, keyHeight);
-           await this.panel.moveTo(0, nonBarPosition);
-           await this.panel.setUiContent('InputMethodExtensionAbility/pages/Index');
-           // 获取输入法键盘与系统面板偏移区域大小，实际开发中可以根据实际情况判断是否需要实现
-	       let defaultDisplay = display.getDefaultDisplaySync();
-           if (defaultDisplay !== undefined) {
-             this.panel.getSystemPanelCurrentInsets(defaultDisplay.id)
-               .then((insets: inputMethodEngine.SystemPanelInsets) => {
-                 console.info(`getSystemPanelCurrentInsets success, insets is { left: ${insets.left}, right: ${insets.right}, bottom: ${insets.bottom} }`);
-               })
-               .catch((error: BusinessError) => {
-                 console.error(`getSystemPanelCurrentInsets failed, code: ${error.code}, message: ${error.message}`);
-               })
-           }
-         }
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
-       });
-     }
-   
-     private registerListener(): void
-     {
-       this.registerInputListener(); // 注册对输入法框架服务的监听
-       // 注册隐藏键盘事件监听等
-     }
-   
-     private registerInputListener(): void {
-       // 注册开始输入的事件监听
-       inputMethodAbility.on('inputStart', (kbController, textInputClient) => {
-         this.textInputClient = textInputClient; // 此为输入法客户端实例，由此调用输入法框架提供给输入法应用的功能接口
-         this.keyboardController = kbController;
-       })
-       inputMethodAbility.on('inputStop', this.inputStopCallback);
-     }
-   
-     private inputStopCallback(): void {
-       this.onDestroy(); // 销毁KeyboardController
-     }
-   
-     private unRegisterListener(): void {
-       inputMethodAbility.off('inputStart');
-       inputMethodAbility.off('inputStop', this.inputStopCallback);
-     }
-   }
-   
-   const keyboardController = new KeyboardController();
-   
-   export default keyboardController;
-   ```
+<!-- @[input_case_input_KeyboardControler358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets) -->
+
+<!-- @[input_case_input_KeyboardControler507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets) -->
+
+<!-- @[input_case_input_KeyboardControler587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets) -->
+ 
    <!--RP2End-->
 3. KeyboardKeyData.ts文件。
 
    定义软键盘的按键显示内容。
 
-   ```ts
-   export interface sourceListType {
-     content: string,
-   }
-   
-   export const numberSourceListData: sourceListType[] = [
-     {
-       content: '1'
-     },
-     {
-       content: '2'
-     },
-     {
-       content: '3'
-     },
-     {
-       content: '4'
-     },
-     {
-       content: '5'
-     },
-     {
-       content: '6'
-     },
-     {
-       content: '7'
-     },
-     {
-       content: '8'
-     },
-     {
-       content: '9'
-     },
-     {
-       content: '0'
-     }
-   ]
-   ```
 
+<!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+
+ 
 4. Index.ets文件。
 
    主要描绘了具体按键功能。如按下数字键，就会将数字内容在输入框中打印出来，按下删除键，就会将内容删除。
 
    <!--Del-->同时在resources/base/profile/main_pages.json文件的src字段中添加此文件路径。<!--DelEnd-->
 
-   ```ets
-   import { numberSourceListData, sourceListType } from './KeyboardKeyData';
-   import keyboardController from '../model/KeyboardController';
-   
-   @Component
-   struct keyItem {
-     private keyValue: sourceListType = numberSourceListData[0];
-     @State keyBgc: string = "#fff"
-     @State keyFontColor: string = "#000"
-   
-     build() {
-       Column() {
-         Flex({ direction: FlexDirection.Column,
-           alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-           Text(this.keyValue.content).fontSize(20).fontColor(this.keyFontColor)
-         }
-       }
-       .backgroundColor(this.keyBgc)
-       .borderRadius(6)
-       .width("8%")
-       .height("65%")
-       .onClick(() => {
-         keyboardController.insertText(this.keyValue.content);
-       })
-     }
-   }
-   
-   // 删除组件
-   @Component
-   export struct deleteItem {
-     @State keyBgc: string = "#fff"
-     @State keyFontColor: string = "#000"
-   
-     build() {
-       Column() {
-         Flex({ direction: FlexDirection.Column,
-           alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-           Text("删除").fontSize(20).fontColor(this.keyFontColor)
-         }
-       }
-       .backgroundColor(this.keyBgc)
-       .width("13%")
-       .borderRadius(6)
-       .onClick(() => {
-         keyboardController.deleteForward(1);
-       })
-     }
-   }
-   
-   // 数字键盘
-   @Component
-   struct numberMenu {
-     private numberList: sourceListType[] = numberSourceListData;
-   
-     build() {
-       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceEvenly }) {
-         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-           ForEach(this.numberList, (item: sourceListType) => { // 数字键盘第一行
-             keyItem({ keyValue: item })
-           }, (item: sourceListType) => item.content);
-         }
-         .padding({ top: "2%" })
-         .width("96%")
-         .height("25%")
-   
-         Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-           deleteItem()
-         }
-         .width("96%")
-         .height("25%")
-       }
-     }
-   }
-   
-   @Entry
-   @Component
-   struct Index {
-     private numberList: sourceListType[] = numberSourceListData
-   
-     build() {
-       Stack() {
-         Flex({
-           direction: FlexDirection.Column,
-           alignItems: ItemAlign.Center,
-           justifyContent: FlexAlign.End
-         }) {
-               Flex({
-                 direction: FlexDirection.Column,
-                 alignItems: ItemAlign.Center,
-                 justifyContent: FlexAlign.SpaceBetween
-               }) {
-                 numberMenu({
-                   numberList: this.numberList
-                 })
-               }
-               .align(Alignment.End)
-               .width("100%")
-               .height("75%")
-             }
-         .height("100%").align(Alignment.End).backgroundColor("#cdd0d7")
-       }
-       .position({ x: 0, y: 0 }).zIndex(99999)
-     }
-   }
-   ```
+<!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
 
 <!--Del-->
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
-   ```json
-   {
-     "module": {
-       ...
-       "extensionAbilities": [
-         {
-           "description": "inputMethod",
-           "name": "InputMethodExtensionAbility",       
-           "icon": "$media:app_icon",
-           "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ts",
-           "type": "inputMethod",
-           "exported": true
-         }
-       ]
-     }
-   }
-   ```
+
+<!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
 
 <!--DelEnd-->
 
