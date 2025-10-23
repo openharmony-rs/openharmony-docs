@@ -212,7 +212,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_GRID_ITEM | 网格子组件。                               |
 | ARKUI_NODE_CUSTOM_SPAN | 自定义文本段落。                             |
 | ARKUI_NODE_EMBEDDED_COMPONENT | 同应用进程嵌入式组件。 <br>**起始版本：** 20  |
-| ARKUI_NODE_UNDEFINED | 未定义。 <br>**起始版本：** 20  |
+| ARKUI_NODE_UNDEFINED | 组件类型未定义。在反色接口中代表全部组件类型。 <br>**起始版本：** 20  |
 
 ### ArkUI_NodeAttributeType
 
@@ -3309,6 +3309,12 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 
 为组件和实例设置反色算法。详细介绍请参考：[利用反色能力快速适配深色模式](../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
+
+> **说明：**
+>
+> - [DatePickerDialog](./arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](./arkui-ts/ts-methods-timepicker-dialog.md)、[CalendarPickerDialog](./arkui-ts/ts-methods-calendarpicker-dialog.md)、[TextPickerDialog](./arkui-ts/ts-methods-textpicker-dialog.md)由于不存在实体节点，无法使能反色算法。
+>
+> - CAPI相关属性暂不支持反色算法。
 
 **起始版本：** 20
 
