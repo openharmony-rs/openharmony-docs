@@ -1,4 +1,4 @@
-# Account Management Overview
+# Account Management Overview (for System Applications Only)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
