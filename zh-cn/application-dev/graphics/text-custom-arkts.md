@@ -6,17 +6,26 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
-在复杂的文本排版场景中，开发者常常需要在不依赖系统排版的前提下，获取文本的字形信息、宽度、方向等底层数据，以便实现自定义的排版逻辑。系统提供了独立的文本塑形能力，允许开发者通过API获取文字的测量信息，从而支持自定义排版、绘制、断行等操作。
+在复杂的文本排版场景中，当系统提供的标准文本组件无法满足特定的视觉或交互需求时，开发者可以利用ArkGraphics 2D提供的底层文本绘制能力，通过直接控制  
+画布（Canvas）和文本样式，实现对文本外观、布局的精细控制。这种能力特别适用于需要高度定制化文本渲染效果的场景，例如艺术字体、复杂的富文本编排或特殊  
+的动态文字效果。
 
-这种能力特别适用于以下场景：
-
-- 自定义富文本渲染（如社交媒体、新闻客户端）
-
-- 跨平台一致性排版需求应用
-
-- 精细化排版管理（如艺术排版、动态文字布局）
+字体引擎作为图形系统中的核心组件，负责将字符代码转换为可视化的字形，并精确计算每个字形的布局和位置，为自定义文本绘制提供底层支持。通过文本测量接口，  
+开发者可以获取文本的精确尺寸，这是实现精准布局（如居中显示）的基础。
 
 ## 独立塑形
+
+### 场景介绍
+独立塑形是字体引擎提供的一项关键能力，它允许开发者绕过系统默认的文本排版流程，直接获取文本的底层字形信息（如宽度、方向等测量信息）。这使得开发者能够  
+基于这些原始数据，实现完全自定义的排版逻辑、绘制操作以及断行策略。
+
+这种能力适用于以下场景：
+
+- 自定义富文本渲染：例如在社交媒体、新闻客户端等应用中，需要实现图文混排、多样式文本混合显示。
+
+- 跨平台一致性排版需求应用：确保文本在不同平台或设备上呈现一致的视觉效果。
+
+- 精细化排版管理：如实现艺术排版、动态文字布局等系统标准文本组件难以达到的效果。
 
 ### 接口说明
 独立塑形中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)和[@ohos.graphics.drawing (drawing TextBlob)](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md)。
@@ -76,7 +85,8 @@
    let runs: Array<text.Run> = textLine.getGlyphRuns();
    ```
 
-5. 遍历所有字形，创建textBlob对象并重新定义字形位置，通过drawTextBlob接口进行自定义绘制。
+5. 遍历所有字形，创建textBlob对象并重新定义字形位置，通过drawTextBlob接口进行自定义绘制。  
+从API version 20开始，支持通过getAdvances接口获取指定范围字形宽度，以便用于自定义文字布局位置。
 
    ```ts
    for (let index = 0; index < runs.length; index++) {
@@ -105,5 +115,5 @@
 完整的独立塑形示例如下。
 <!-- @[arkts_independent_shaping_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
 
-### 效果展示
+效果展示：  
 ![ts_independent_shaping.png](figures/ts_independent_shaping.png)
