@@ -2413,7 +2413,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 
 ## RingtonePlayer<sup>10+</sup>
 
-type RingtonePlayer = _RingtonePlayer;
+type RingtonePlayer = _RingtonePlayer
 
 系统铃音播放器对象。
 
@@ -2423,11 +2423,11 @@ type RingtonePlayer = _RingtonePlayer;
 
 | 类型              |说明     |
 |-----------------|-------|
-| _RingtonePlayer | 系统铃音播放器。 |
+| [_RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) | 系统铃音播放器。 |
 
 ## SystemTonePlayer<sup>11+</sup>
 
-type SystemTonePlayer = _SystemTonePlayer;
+type SystemTonePlayer = _SystemTonePlayer
 
 系统提示音播放器对象。
 
@@ -2437,11 +2437,11 @@ type SystemTonePlayer = _SystemTonePlayer;
 
 | 类型              | 说明        |
 |-----------------|-----------|
-| _SystemTonePlayer | 系统提示音播放器。 |
+| [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | 系统提示音播放器。 |
 
 ## RingtoneOptions<sup>10+</sup>
 
-type RingtoneOptions = _RingtoneOptions;
+type RingtoneOptions = _RingtoneOptions
 
 系统铃音播放器配置项。
 
@@ -2451,11 +2451,11 @@ type RingtoneOptions = _RingtoneOptions;
 
 | 类型              | 说明          |
 |-----------------|-------------|
-| _RingtoneOptions | 系统铃音播放器配置项。 |
+| [_RingtoneOptions](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneoptions) | 系统铃音播放器配置项。 |
 
 ## SystemToneOptions<sup>11+</sup>
 
-type SystemToneOptions = _SystemToneOptions;
+type SystemToneOptions = _SystemToneOptions
 
 系统提示音播放器配置项。
 
@@ -2465,7 +2465,7 @@ type SystemToneOptions = _SystemToneOptions;
 
 | 类型              | 说明            |
 |-----------------|---------------|
-| _SystemToneOptions | 系统提示音音播放器配置项。 |
+| [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | 系统提示音播放器配置项。 |
 
 
 
