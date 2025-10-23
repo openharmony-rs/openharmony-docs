@@ -502,6 +502,7 @@
           - [图标小符号 (SymbolGlyph/SymbolSpan)](ui/arkts-common-components-symbol.md)
           - [属性字符串 (StyledString/MutableStyledString)](ui/arkts-styled-string.md)
           - [图文混排](ui/arkts-text-image-layout.md)
+          - [管理软键盘](ui/arkts-manage-keyboard.md)
         - 媒体展示<!--arkts-media-display-->
           - [显示图片 (Image)](ui/arkts-graphics-display.md)
           - [视频播放 (Video)](ui/arkts-common-components-video-player.md)

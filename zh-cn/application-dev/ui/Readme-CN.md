@@ -119,6 +119,7 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
+    - [管理软键盘](arkts-manage-keyboard.md)
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
