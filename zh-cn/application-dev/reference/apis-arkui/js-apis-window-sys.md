@@ -289,7 +289,7 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-最小化指定ID的屏幕中的所有主窗口。
+最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -384,7 +384,7 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 ## window.toggleShownStateForAllAppWindows<sup>9+</sup>
 toggleShownStateForAllAppWindows(): Promise&lt;void&gt;
 
-多窗口快速切换时隐藏或者恢复应用窗口。
+多窗口快速切换时隐藏或者恢复应用窗口，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -467,7 +467,7 @@ try {
 ## window.setWindowLayoutMode<sup>9+</sup>
 setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
-设置窗口布局模式。
+设置窗口布局模式，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
