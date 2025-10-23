@@ -1656,7 +1656,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权。在申请特殊场景类型长时任务时，会发送横幅通知，有提示音。
+请求用户授权，返回callback异步回调。在申请特殊场景类型长时任务时，会发送横幅通知，有提示音。
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1707,7 +1707,7 @@ export default class EntryAbility extends UIAbility {
 
 checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
 
-查询用户授权。
+查询用户授权，使用Promise异步回调。
 
 **需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1766,7 +1766,8 @@ export default class EntryAbility extends UIAbility {
 | MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。            |
 | MODE_VOIP                       | 8         | 音视频通话。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | 计算任务（仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。|
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>**说明：** 1、需请求用户授权。2、需申请ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。 |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。            |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>**说明：** 1、需使用[requestAuthFromUser](#requestauthfromuser22)请求用户授权。2、对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1779,7 +1780,12 @@ export default class EntryAbility extends UIAbility {
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型通知。       |
 | SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通通知。                  |
 | SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。            |
-| SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体导出。    |
+| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放通知。            |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | AVSession通知。            |
+| SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音通知。            |
+| SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 屏幕录制通知。            |
+| SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话通知。            |
+| SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理。    |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播。  |
 
 **长时任务主类型与子类型对照表：**
@@ -1794,6 +1800,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_MULTI_DEVICE_CONNECTION      | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
 | MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  |
 
 ## UserAuthResult<sup>22+</sup>
@@ -1804,8 +1811,8 @@ export default class EntryAbility extends UIAbility {
 
 | 名称           | 值 | 说明     |
 | ------------ |---|--------|
-| NOT_SUPPORTED | 0 | 用户未操作。 |
-| NOT_DETERMINED | 1 | 权限未定义。 |
+| NOT_SUPPORTED | 0 | 不支持。 |
+| NOT_DETERMINED | 1 | 用户未操作。 |
 | DENIED  | 2 | 拒绝。    |
 | GRANTED_ONCE | 3 | 本次允许。  |
 | GRANTED_ALWAYS | 4 | 始终允许。  |
