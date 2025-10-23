@@ -93,7 +93,7 @@ class WindowExtAbility extends WindowExtensionAbility {
           return;
         }
         // 执行正常业务
-        console.log('startAbility succeed');
+        console.info('startAbility succeed');
       });
     } catch (paramError) {
       // 处理入参错误异常
@@ -161,7 +161,7 @@ class WindowExtAbility extends WindowExtensionAbility {
       this.context.startAbility(want, options)
         .then(() => {
           // 执行正常业务
-          console.log('startAbility succeed');
+          console.info('startAbility succeed');
         })
         .catch((error: BusinessError) => {
           // 处理业务逻辑错误
