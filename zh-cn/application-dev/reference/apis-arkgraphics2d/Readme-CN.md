@@ -162,6 +162,7 @@
     - [OH_Drawing_TextTab](capi-drawing-oh-drawing-texttab.md)
     - [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)
     - [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)
+    - [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)
     - [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)
     - [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)
     - [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)
