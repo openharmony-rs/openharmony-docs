@@ -108,7 +108,7 @@ Invalid ``${messageInfo}``.
 可能为以下的其中一种：
 
 - 无法从IPC获取消息。
-- IPC 出错，具体原因可参考日志中给出的``${messageInfo}``。
+- IPC出错，具体原因可参考日志中给出的``${messageInfo}``。
 
 **可能原因**
 
