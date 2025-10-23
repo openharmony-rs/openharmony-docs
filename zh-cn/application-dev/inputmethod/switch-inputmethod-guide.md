@@ -18,31 +18,32 @@
 
 1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodsubtype9)接口，传入当前输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)作为参数即可切换当前输入法子类型。
 
-   ```ts
-   import { InputMethodSubtype, inputMethod } from '@kit.IMEKit';
-   
-   export class KeyboardController {
-     async switchCurrentInputMethodSubtype() {
-       try {
-         let subTypes: Array<InputMethodSubtype> =
-           await inputMethod.getSetting().listCurrentInputMethodSubtype(); // 获取当前输入法的所有子类型
-         let currentSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(); // 获取当前输入法当前的子类型
-         if (subTypes.length === 0) {
-           return;
-         }
-         for (let i = 0; i < subTypes.length; i++) {
-           if (subTypes[i].id != currentSubType.id) { // 判断不是当前的子类型时切换，实际开发中可以根据需要填固定子类型
-             await inputMethod.switchCurrentInputMethodSubtype(subTypes[i]);
-             return;
-           }
-         }
-       } catch (err) {
-         let error: BusinessError = err as BusinessError;
-         console.error(`Failed to switchCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-       }
-     }
-   }
-   ```
+<!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
+
+``` TypeScript
+  async switchInputMethod(item: string) {
+    this.a = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
+    let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
+    console.log('onPageShow22', JSON.stringify(currentInputMethod));
+    for (let i = 0; i < this.a.length; i++) {
+      if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+        await inputMethod.switchInputMethod(this.a[i]);
+      }
+    }
+  }
+
+  async switchCurrentInputMethodSubtype(item: InputMethodSubtype) {
+    try {
+      await inputMethod.switchCurrentInputMethodSubtype(item);
+      this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+      console.log('GJ switchCurrentInputMethodSubtype', JSON.stringify(item));
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.log('GJ switchCurrentInputMethodSubtype error', JSON.stringify(error));
+    }
+  }
+```
+
 
 2. 输入法应用中注册子类型变化事件，根据不同子类型加载不同的输入界面。
 
