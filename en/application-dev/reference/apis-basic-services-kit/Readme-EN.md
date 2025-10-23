@@ -10,10 +10,10 @@
   - Account Management<!--account-management-arkts-->
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
-    - [@ohos.account.osAccount (OS Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
-    - [@ohos.account.osAccount (OS Account Management) (System API)](js-apis-osAccount-sys.md)
+    - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
@@ -77,6 +77,7 @@
     - [@ohos.ai.intelligentVoice (Intelligent Voice) (System API)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
     - [@ohos.base (Public Callback Information)](js-apis-base.md)
+    - [@ohos.annotation (Annotation)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (Custom Configurations)](js-apis-customization-customConfig.md)
     - [@ohos.settings (Data Item Settings)](js-apis-settings.md)
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
@@ -111,8 +112,8 @@
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](c-apis-scan.md)
-    - [OH_Print](_o_h___print.md)
+    - [OH_Scan](capi-oh-scan.md)
+    - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
   - Header Files<!--basic-services-headerfile-->
@@ -124,15 +125,10 @@
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [os_account.h](capi-os-account-h.md)
     - [os_account_common.h](capi-os-account-common-h.md)
-    - [ohprint.h](ohprint_8h.md)
-    - [ohscan.h](c-apis-scan.md)
+    - [ohprint.h](capi-ohprint-h.md)
+    - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
   - Structs<!--basic-services-struct-->
-    - [Print_Margin](_print___margin.md)
-    - [Print_PageSize](_print___page_size.md)
-    - [Print_PrintAttributes](_print___print_attributes.md)
-    - [Print_PrintDocCallback](_print___print_doc_callback.md)
-    - [Print_Range](_print___range.md)
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
     - [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)
@@ -140,6 +136,14 @@
     - [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)
     - [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)
     - [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)
+    - [Print_Margin](capi-oh-print-print-margin.md)
+    - [Print_PageSize](capi-oh-print-print-pagesize.md)
+    - [Print_Range](capi-oh-print-print-range.md)
+    - [Print_PrintAttributes](capi-oh-print-print-printattributes.md)
+    - [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md)
+    - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
+    - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
+    - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - Error Codes<!--basic-services-arkts-errcode-->
   - [USB Error Codes](errorcode-usb.md)
   - [Running Lock Error Codes](errorcode-runninglock.md)
@@ -159,7 +163,9 @@
   - [System Parameter Error Codes](errorcode-system-parameterV9.md)
   - [Power Manager Error Codes](errorcode-power.md)
   - [Account Management Error Codes](errorcode-account.md)
+  <!--Del-->
   - [Update Error Codes](errorcode-update.md)
+  <!--DelEnd-->
   - [Print Service Error Codes](errorcode-print.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)

@@ -51,7 +51,7 @@ Adds the device access permission for the application. System applications are g
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -96,7 +96,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -138,7 +138,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ let ret: string = usbManager.usbFunctionsToString(funcs);
 
 setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
-Sets the current USB function list in Device mode.
+Sets the current USB function list in Device mode. This API uses a promise to return the result.
 
 **NOTE**
 
@@ -180,7 +180,7 @@ Sets the current USB function list in Device mode.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -221,7 +221,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -256,7 +256,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -297,7 +297,7 @@ Obtains the mask combination for the supported mode list of a given USB port.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -314,7 +314,7 @@ let ret: number = usbManager.getSupportedModes(0);
 
 setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer).
+Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). This API uses a promise to return the result.
 
 **NOTE**
 
@@ -340,7 +340,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -391,7 +391,7 @@ Adds the device access permission for the application. System applications are g
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -455,7 +455,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -501,7 +501,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -521,7 +521,7 @@ let ret: string = usbManager.getStringFromFunctions(funcs);
 
 setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
-Sets the current USB function list in Device mode.
+Sets the current USB function list in Device mode. This API uses a promise to return the result.
 
 **NOTE**
 
@@ -547,7 +547,7 @@ Sets the current USB function list in Device mode.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -594,7 +594,7 @@ Obtains the numeric mask combination for the USB function list in Device mode. W
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
@@ -633,7 +633,7 @@ Obtains the list of all physical USB ports. When the developer mode is disabled,
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -674,7 +674,7 @@ Obtains the mask combination for the supported mode list of a given USB port.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -694,7 +694,7 @@ let ret: number = usbManager.getPortSupportModes(0);
 
 setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer).
+Sets the role types supported by a specified port, which can be **powerRole** (for charging) and **dataRole** (for data transfer). This API uses a promise to return the result.
 
 **NOTE**
 
@@ -722,7 +722,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -767,7 +767,7 @@ Adds the permission to applications for accessing USB accessories.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -783,9 +783,11 @@ For details about the error codes, see [USB Service Error Codes](errorcode-usb.m
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
+
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+  let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
   let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
   let tokenId: number = bundleInfo.appInfo.accessTokenId
   usbManager.addAccessoryRight(tokenId, accList[0])
@@ -803,11 +805,11 @@ Represents a USB port.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name          | Type                           | Mandatory| Description                               |
-| -------------- | ------------------------------- | ---- | ----------------------------------- |
-| id             | number                          | Yes  | Unique identifier of a USB port.                  |
-| supportedModes | [PortModeType](#portmodetype)   | Yes  | Numeric mask combination for the supported mode list.|
-| status         | [USBPortStatus](#usbportstatus) | Yes  | USB port role.                      |
+| Name          | Type                           | Read-Only| Optional| Description                               |
+| -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
+| id             | number                          | No  | No  | Unique identifier of a USB port.                  |
+| supportedModes | [PortModeType](#portmodetype)   | No  | No  | Numeric mask combination for the supported mode list.|
+| status         | [USBPortStatus](#usbportstatus) | No  | No  | USB port role.                      |
 
 ## USBPortStatus
 
@@ -817,11 +819,11 @@ Enumerates USB port roles.
 
 **System capability**: SystemCapability.USB.USBManager
 
-| Name            | Type  | Mandatory| Description                  |
-| ---------------- | ------ | ---- | ---------------------- |
-| currentMode      | number | Yes  | Current USB mode.       |
-| currentPowerRole | number | Yes  | Current power role.    |
-| currentDataRole  | number | Yes  | Current data role.|
+| Name            | Type  |Read-Only| Optional| Description                  |
+| ---------------- | ------ | ---- | ---- | ---------------------- |
+| currentMode      | number | No  | No  | Current USB mode.       |
+| currentPowerRole | number | No  | No  | Current power role.    |
+| currentDataRole  | number | No  | No  | Current data role.|
 
 ## FunctionType
 

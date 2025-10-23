@@ -1081,7 +1081,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getMimeTypes(): Array&lt;string&gt;
 
-Obtains a list of **mimeTypes** objects in [PasteDataProperty](#pastedataproperty7) from this pasteboard. If the pasteboard is empty, the returned list is also empty.
+Obtains MIME types of [PasteDataProperty](#pastedataproperty7) on the pasteboard. If an exception occurs during API invoking, **undefined** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2898,7 +2898,7 @@ Describes the modes supported by the pasteboard.
 
 detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&gt;
 
-Detects patterns on the **local** pasteboard. This API uses a promise to return the result.
+Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -3088,4 +3088,68 @@ try {
 } catch (err) {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
+```
+
+### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+
+onRemoteUpdate(callback: UpdateCallback): void
+
+Subscribes to the content change events of the pasteboard on a remote device. A callback is triggered when the pasteboard content on the remote device changes.
+
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | function | Yes| Callback invoked when the pasteboard content changes.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 401      | Possible causes: Incorrect parameters types. |
+
+**Example**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.onRemoteUpdate(listener);
+```
+
+### offRemoteUpdate(callback?: UpdateCallback)<sup>22+</sup>
+
+offRemoteUpdate(callback?: UpdateCallback): void
+
+Unsubscribes from the content change events of the pasteboard on a remote device.
+
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
+**Parameters**
+
+| Name| Type| Mandatory| Description                                                     |
+| -------- | -------- | -------- |---------------------------------------------------------|                              |
+| callback | function | No| Callback to be invoked when the pasteboard content on the remote device changes. If this parameter is not specified, remote listening will be disabled for all callbacks registered by the current application.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**Example**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.offRemoteUpdate(listener);
 ```

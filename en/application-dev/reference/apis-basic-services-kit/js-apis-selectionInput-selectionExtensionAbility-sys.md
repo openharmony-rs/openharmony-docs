@@ -82,7 +82,7 @@ Called when the **SelectionExtensionAbility** instance is destroyed (for example
 
 After the **onDisconnect()** lifecycle callback is executed, the application may exit. Consequently, the asynchronous function (for example, asynchronously writing data to the database) in **onDisconnect()** may fail to be executed. Using a Promise for asynchronous callback is recommended to prevent such issues.
 
-The callback is invoked only when the SelectionExtensionAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, due to low memory conditions).
+The callback is invoked only when the SelectionExtensionAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, process termination due to low memory conditions).
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
