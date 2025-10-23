@@ -20,7 +20,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
-Creates a media session. This API uses a promise to return the result. An application process can have only one session, and repeated calling of this API fails.
+Creates an AVSession. This API uses a promise to return the result. An application process can have only one AVSession, and repeated calling of this API fails.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -38,7 +38,7 @@ Creates a media session. This API uses a promise to return the result. An applic
 
 | Type                             | Description                                                        |
 | --------------------------------- | ------------------------------------------------------------ |
-| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the media session obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
 
 **Error codes**
 
@@ -87,7 +87,7 @@ struct Index {
 
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
-Creates a media session. This API uses an asynchronous callback to return the result. An application process can have only one session, and repeated calling of this API fails.
+Creates an AVSession. This API uses an asynchronous callback to return the result. An application process can have only one AVSession, and repeated calling of this API fails.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -98,7 +98,7 @@ Creates a media session. This API uses an asynchronous callback to return the re
 | context| [Context](../apis-ability-kit/js-apis-inner-app-context.md) | Yes| Context of the UIAbility, which is used to obtain information about the application component.    |
 | tag      | string                                  | Yes  | Custom session name.                                          |
 | type     | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)         | Yes  | Session type.                              |
-| callback | AsyncCallback<[AVSession](arkts-apis-avsession-AVSession.md)\> | Yes  | Callback used to return the media session obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
+| callback | AsyncCallback<[AVSession](arkts-apis-avsession-AVSession.md)\> | Yes  | Callback used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
 
 **Error codes**
 
@@ -139,6 +139,72 @@ struct Index {
           });
         })
     }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## avSession.getAVSession<sup>21+</sup>
+
+getAVSession(context: Context): Promise\<AVSession>
+
+Obtains an AVSession object. This API uses a promise to return the result.
+
+This API returns an existing AVSession object that was previously created in the current process. If no AVSession object exists, the call fails and an exception is thrown.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description                          |
+| ------ | ------------------------------- | ---- | ------------------------------ |
+| context| [Context](../apis-ability-kit/js-apis-inner-app-context.md) | Yes| Context of the UIAbility, which is used to obtain information about the application component.|
+
+**Return value**
+
+| Type                             | Description                                                        |
+| --------------------------------- | ------------------------------------------------------------ |
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
+
+**Error codes**
+
+For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession;
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let sessionId: string;  // Used as an input parameter of subsequent functions.
+            let sessionTag: string;
+
+            avSession.getAVSession(context).then(async (data: avSession.AVSession) => {
+              currentAVSession = data;
+              sessionId = currentAVSession.sessionId;
+              sessionTag = currentAVSession.sessionTag;
+              console.info(`GetAVSession : SUCCESS : sessionId=${sessionId}, sessionTag=${sessionTag}`);
+            }).catch((err: BusinessError) => {
+              console.error(`GetAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
     .width('100%')
     .height('100%')
   }

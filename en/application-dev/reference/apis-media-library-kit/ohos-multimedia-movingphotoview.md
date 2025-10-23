@@ -407,19 +407,19 @@ struct MovingPhotoViewDemo {
             .autoPlayPeriod(0, 600)
             .objectFit(ImageFit.Cover)
             .onComplete(() => {
-              console.log('Completed');
+              console.info('Completed');
             })
             .onStart(() => {
-              console.log('onStart')
+              console.info('onStart')
             })
             .onFinish(() => {
-              console.log('onFinish')
+              console.info('onFinish')
             })
             .onStop(() => {
-              console.log('onStop')
+              console.info('onStop')
             })
             .onError(() => {
-              console.log('onError')
+              console.error('onError')
             })
         }
       }
@@ -575,5 +575,3 @@ struct Index {
 ![AutomicEnergy](figures/AutomicEnergy.gif)
 
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->
