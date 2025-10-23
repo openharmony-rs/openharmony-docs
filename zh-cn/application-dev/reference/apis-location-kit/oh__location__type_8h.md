@@ -10,7 +10,7 @@
 
 定义位置服务常用的属性。
 
-\@kit LocationKit
+**引用文件：** <LocationKit/oh_location_type.h>
 
 **库：** liblocation_ndk.so
 
@@ -18,52 +18,303 @@
 
 **起始版本：** 13
 
-**相关模块：**[Location](_location.md)
-
+**相关模块：** [Location](capi-location.md)
 
 ## 汇总
 
-
 ### 结构体
 
-| 名称 | 描述 | 
-| -------- | -------- |
-| struct&nbsp;&nbsp;[Location_BasicInfo](_location___basic_info.md) | 定义位置基本信息的结构体。  | 
-
-
-### 类型定义
-
-| 名称 | 描述 | 
-| -------- | -------- |
-| typedef enum [Location_ResultCode](_location.md#location_resultcode-1) [Location_ResultCode](_location.md#location_resultcode) | 定义位置服务的错误码。  | 
-| typedef enum [Location_UseScene](_location.md#location_usescene-1) [Location_UseScene](_location.md#location_usescene) | 定义位置请求中的用户活动场景类型。  | 
-| typedef enum [Location_PowerConsumptionScene](_location.md#location_powerconsumptionscene-1) [Location_PowerConsumptionScene](_location.md#location_powerconsumptionscene) | 定义位置请求中的功耗场景类型。  | 
-| typedef enum [Location_SourceType](_location.md#location_sourcetype-1) [Location_SourceType](_location.md#location_sourcetype) | 定义位置信息的来源。  | 
-| typedef struct [Location_BasicInfo](_location___basic_info.md) [Location_BasicInfo](_location.md#location_basicinfo) | 定义位置基本信息的结构体。  | 
-| typedef struct [Location_Info](_location.md#location_info) [Location_Info](_location.md#location_info) | 定义位置信息的结构体。  | 
-| typedef void(\* [Location_InfoCallback](_location.md#location_infocallback)) ([Location_Info](_location.md#location_info) \*location, void \*userData) | 用于接收位置上报的回调函数。  | 
-| typedef struct [Location_RequestConfig](_location.md#location_requestconfig) [Location_RequestConfig](_location.md#location_requestconfig) | 定义位置请求参数的结构体。  | 
-
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | Location_BasicInfo | 定义位置基本信息的结构体。 |
+| [Location_Info](capi-location-location-info.md) | Location_Info | 定义位置信息的结构体。 |
+| [Location_RequestConfig](capi-location-location-requestconfig.md) | Location_RequestConfig | 定义位置请求参数的结构体。 |
 
 ### 枚举
 
-| 名称 | 描述 | 
-| -------- | -------- |
-| [Location_ResultCode](_location.md#location_resultcode) {<br/>[LOCATION_SUCCESS](_location.md) = 0, [LOCATION_PERMISSION_DENIED](_location.md) = 201, [LOCATION_INVALID_PARAM](_location.md) = 401, [LOCATION_NOT_SUPPORTED](_location.md) = 801,<br/>[LOCATION_SERVICE_UNAVAILABLE](_location.md) = 3301000, [LOCATION_SWITCH_OFF](_location.md) = 3301100<br/>} | 定义位置服务的错误码。  | 
-| [Location_UseScene](_location.md#location_usescene) { [LOCATION_USE_SCENE_NAVIGATION](_location.md) = 0x0401, [LOCATION_USE_SCENE_SPORT](_location.md) = 0x0402, [LOCATION_USE_SCENE_TRANSPORT](_location.md) = 0x0403, [LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](_location.md) = 0x0404 } | 定义位置请求中的用户活动场景类型。  | 
-| [Location_PowerConsumptionScene](_location.md#location_powerconsumptionscene) { [LOCATION_HIGH_POWER_CONSUMPTION](_location.md) = 0x0601, [LOCATION_LOW_POWER_CONSUMPTION](_location.md) = 0x0602, [LOCATION_NO_POWER_CONSUMPTION](_location.md) = 0x0603 } | 定义位置请求中的功耗场景类型。  | 
-| [Location_SourceType](_location.md#location_sourcetype) { [LOCATION_SOURCE_TYPE_GNSS](_location.md) = 1, [LOCATION_SOURCE_TYPE_NETWORK](_location.md) = 2, [LOCATION_SOURCE_TYPE_INDOOR](_location.md) = 3, [LOCATION_SOURCE_TYPE_RTK](_location.md) = 4 } | 定义位置信息的来源。  | 
-
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Location_ResultCode](#location_resultcode) | Location_ResultCode | 定义位置服务的错误码。 |
+| [Location_UseScene](#location_usescene) | Location_UseScene | 定义位置请求中的用户活动场景类型。 |
+| [Location_PowerConsumptionScene](#location_powerconsumptionscene) | Location_PowerConsumptionScene | 定义位置请求中的功耗场景类型。 |
+| [Location_SourceType](#location_sourcetype) | Location_SourceType | 定义位置信息的来源。 |
 
 ### 函数
 
-| 名称 | 描述 | 
-| -------- | -------- |
-| [Location_BasicInfo](_location___basic_info.md) [OH_LocationInfo_GetBasicInfo](_location.md#oh_locationinfo_getbasicinfo) ([Location_Info](_location.md#location_info) \*location) | 获取位置基本信息。  | 
-| [Location_ResultCode](_location.md#location_resultcode) [OH_LocationInfo_GetAdditionalInfo](_location.md#oh_locationinfo_getadditionalinfo) ([Location_Info](_location.md#location_info) \*location, char \*additionalInfo, uint32_t length) | 获取位置信息中的附加信息。  | 
-| [Location_RequestConfig](_location.md#location_requestconfig) \* [OH_Location_CreateRequestConfig](_location.md#oh_location_createrequestconfig) (void) | 创建一个位置请求参数结构体实例。  | 
-| void [OH_Location_DestroyRequestConfig](_location.md#oh_location_destroyrequestconfig) ([Location_RequestConfig](_location.md#location_requestconfig) \*requestConfig) | 销毁位置请求参数实例并回收内存。  | 
-| void [OH_LocationRequestConfig_SetUseScene](_location.md#oh_locationrequestconfig_setusescene) ([Location_RequestConfig](_location.md#location_requestconfig) \*requestConfig, [Location_UseScene](_location.md#location_usescene) useScene) | 设置位置请求参数中的用户活动场景。<br/>位置请求参数[Location_RequestConfig](_location.md#location_requestconfig)中以useScene优先。<br/>如果设置了useScene，则powerConsumptionScene参数无效。<br/>如果未设置useScene，设置了powerConsumptionScene则该参数生效。<br/>如果两个参数都未设置，则默认useScene为[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](_location.md)，<br/>powerConsumptionScene参数无效。 | 
-| void [OH_LocationRequestConfig_SetPowerConsumptionScene](_location.md#oh_locationrequestconfig_setpowerconsumptionscene) ([Location_RequestConfig](_location.md#location_requestconfig) \*requestConfig, [Location_PowerConsumptionScene](_location.md#location_powerconsumptionscene) powerConsumptionScene) | 设置位置请求参数中的功耗场景。  | 
-| void [OH_LocationRequestConfig_SetInterval](_location.md#oh_locationrequestconfig_setinterval) ([Location_RequestConfig](_location.md#location_requestconfig) \*requestConfig, int interval) | 设置位置请求参数中的位置上报间隔。  | 
-| void [OH_LocationRequestConfig_SetCallback](_location.md#oh_locationrequestconfig_setcallback) ([Location_RequestConfig](_location.md#location_requestconfig) \*requestConfig, [Location_InfoCallback](_location.md#location_infocallback) callback, void \*userData) | 设置回调函数。  | 
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)](#oh_locationinfo_getbasicinfo) | - | 获取位置基本信息。 |
+| [Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)](#oh_locationinfo_getadditionalinfo) | - | 获取位置信息中的附加信息。 |
+| [typedef void (\*Location_InfoCallback)(Location_Info* location, void* userData)](#location_infocallback) | Location_InfoCallback | 用于接收位置上报的回调函数。 |
+| [Location_RequestConfig* OH_Location_CreateRequestConfig(void)](#oh_location_createrequestconfig) | - | 创建一个位置请求参数结构体实例。 |
+| [void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)](#oh_location_destroyrequestconfig) | - | 销毁位置请求参数实例并回收内存。 |
+| [void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene)](#oh_locationrequestconfig_setusescene) | - | 设置位置请求参数中的用户活动场景。<br> 位置请求参数[Location_RequestConfig](capi-location-location-requestconfig.md)中以useScene优先。<br> 如果设置了useScene，则powerConsumptionScene参数无效。<br> 如果未设置useScene，设置了powerConsumptionScene则该参数生效。<br> 如果两个参数都未设置，则默认useScene为[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene)，powerConsumptionScene参数无效。<br> |
+| [void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)](#oh_locationrequestconfig_setpowerconsumptionscene) | - | 设置位置请求参数中的功耗场景。 |
+| [void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)](#oh_locationrequestconfig_setinterval) | - | 设置位置请求参数中的位置上报间隔。 |
+| [void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)](#oh_locationrequestconfig_setcallback) | - | 设置回调函数。 |
+
+## 枚举类型说明
+
+### Location_ResultCode
+
+```
+enum Location_ResultCode
+```
+
+**描述**
+
+定义位置服务的错误码。
+
+**起始版本：** 13
+
+| 枚举项 | 描述 |
+| -- | -- |
+| LOCATION_SUCCESS = 0 | 操作成功。 |
+| LOCATION_PERMISSION_DENIED = 201 | 权限校验失败。 |
+| LOCATION_INVALID_PARAM = 401 | 参数错误。<br> 可能原因：1.输入参数为空指针；2.参数数值超出定义范围。 |
+| LOCATION_NOT_SUPPORTED = 801 | 该功能不支持。由于设备能力有限，无法调用该函数。 |
+| LOCATION_SERVICE_UNAVAILABLE = 3301000 | 位置服务不可用。 |
+| LOCATION_SWITCH_OFF = 3301100 | 位置开关处于关闭状态。 |
+
+### Location_UseScene
+
+```
+enum Location_UseScene
+```
+
+**描述**
+
+定义位置请求中的用户活动场景类型。
+
+**起始版本：** 13
+
+| 枚举项 | 描述 |
+| -- | -- |
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 导航场景。<br> 适用于在户外获取设备实时位置的场景，如车载、步行导航。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
+| LOCATION_USE_SCENE_SPORT = 0x0402 | 表示运动场景。<br> 适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
+| LOCATION_USE_SCENE_TRANSPORT = 0x0403 | 表示出行场景。<br> 适用于用户出行场景，如打车、乘坐公共交通等场景。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
+| LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | 表示日常服务使用场景。<br> 适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。<br> 该场景仅使用网络定位技术提供定位服务，功耗较低。 |
+
+### Location_PowerConsumptionScene
+
+```
+enum Location_PowerConsumptionScene
+```
+
+**描述**
+
+定义位置请求中的功耗场景类型。
+
+**起始版本：** 13
+
+| 枚举项 | 描述 |
+| -- | -- |
+| LOCATION_HIGH_POWER_CONSUMPTION = 0x0601 | 高功耗。<br> 以GNSS定位技术为主。在GNSS提供稳定位置结果之前会使用网络定位技术提供服务。<br> 在持续定位时，如果超过30秒无法获取GNSS定位结果则会使用网络定位技术获取位置。<br> 对设备的硬件资源消耗较大，功耗较大。 |
+| LOCATION_LOW_POWER_CONSUMPTION = 0x0602 | 低功耗。<br> 适用于对用户位置精度要求不高的使用场景，如新闻资讯、网购、点餐类应用。<br> 该场景仅使用网络定位技术提供定位服务，功耗较低。 |
+| LOCATION_NO_POWER_CONSUMPTION = 0x0603 | 无功耗。<br> 这种场景下不会主动触发定位，会在其他应用定位时，才给当前应用返回位置。 |
+
+### Location_SourceType
+
+```
+enum Location_SourceType
+```
+
+**描述**
+
+定义位置信息的来源。
+
+**起始版本：** 13
+
+| 枚举项 | 描述 |
+| -- | -- |
+| LOCATION_SOURCE_TYPE_GNSS = 1 | 表示定位结果来自于GNSS定位技术。 |
+| LOCATION_SOURCE_TYPE_NETWORK = 2 | 表示定位结果来自于网络定位技术。 |
+| LOCATION_SOURCE_TYPE_INDOOR = 3 | 表示定位结果来自于室内高精度定位技术。 |
+| LOCATION_SOURCE_TYPE_RTK = 4 | 表示定位结果来自于室外高精度定位技术。 |
+
+
+## 函数说明
+
+### OH_LocationInfo_GetBasicInfo()
+
+```
+Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)
+```
+
+**描述**
+
+获取位置基本信息。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | 返回位置基本信息结构体。详细定义请参考[Location_BasicInfo](capi-location-location-basicinfo.md)。 |
+
+### OH_LocationInfo_GetAdditionalInfo()
+
+```
+Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)
+```
+
+**描述**
+
+获取位置信息中的附加信息。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_Info](capi-location-location-info.md)* location | 指向位置信息结构体的指针。<br> 需要传入非空指针，该指针可以在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)中获取。 |
+| char* additionalInfo | char类型的非空指针；该变量用于保存附加信息字符串，该字符串是JSON格式。<br> 该指针和对应的内存由调用者创建，建议申请大于等于256字节的内存。<br> 如果传入空指针，会返回错误码。 |
+| uint32_t length | 表示additionalInfo的内存大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Location_ResultCode](capi-oh-location-type-h.md#location_resultcode) | 返回操作结果，详细定义参见[Location_ResultCode](capi-oh-location-type-h.md#location_resultcode)。<br>     [LOCATION_SUCCESS](capi-oh-location-type-h.md#location_resultcode) 获取附加信息成功。<br>     [LOCATION_INVALID_PARAM](capi-oh-location-type-h.md#location_resultcode) 1. 入参location或additionalInfo是空指针。<br>         2. 入参length太小，也就是additionalInfo指向的内存太小导致无法保存完整的附加信息字符串。 |
+
+### Location_InfoCallback()
+
+```
+typedef void (*Location_InfoCallback)(Location_Info* location, void* userData)
+```
+
+**描述**
+
+用于接收位置上报的回调函数。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_Info](capi-location-location-info.md)* location | 指向[Location_Info](capi-location-location-info.md)实例的指针，携带最新的位置信息。<br> location实例的内存会在[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)结束时回收，请在此之前调用[OH_LocationInfo_GetBasicInfo](capi-oh-location-type-h.md#oh_locationinfo_getbasicinfo)等接口获取位置信息。 |
+|  void* userData | 指向调用者数据结构或对象的指针，该参数是通过[OH_LocationRequestConfig_SetCallback](capi-oh-location-type-h.md#oh_locationrequestconfig_setcallback)传入的。 |
+
+### OH_Location_CreateRequestConfig()
+
+```
+Location_RequestConfig* OH_Location_CreateRequestConfig(void)
+```
+
+**描述**
+
+创建一个位置请求参数结构体实例。
+
+**起始版本：** 13
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Location_RequestConfig*](capi-location-location-requestconfig.md) | 返回指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 如果返回NULL表示创建失败，可能的原因是应用地址空间满，导致空间分配不出来。 |
+
+### OH_Location_DestroyRequestConfig()
+
+```
+void OH_Location_DestroyRequestConfig(Location_RequestConfig* requestConfig)
+```
+
+**描述**
+
+销毁位置请求参数实例并回收内存。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+
+### OH_LocationRequestConfig_SetUseScene()
+
+```
+void OH_LocationRequestConfig_SetUseScene(Location_RequestConfig* requestConfig, Location_UseScene useScene)
+```
+
+**描述**
+
+设置位置请求参数中的用户活动场景。<br> 位置请求参数[Location_RequestConfig](capi-location-location-requestconfig.md)中以useScene优先。<br> 如果设置了useScene，则powerConsumptionScene参数无效。<br> 如果未设置useScene，设置了powerConsumptionScene则该参数生效。<br> 如果两个参数都未设置，则默认useScene为[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene)，powerConsumptionScene参数无效。<br>
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_UseScene](capi-oh-location-type-h.md#location_usescene) useScene | 表示位置请求时的用户活动场景。<br> 默认值是[LOCATION_USE_SCENE_DAILY_LIFE_SERVICE](capi-oh-location-type-h.md#location_usescene)。<br> 详细定义见[Location_UseScene](capi-oh-location-type-h.md#location_usescene)。 |
+
+### OH_LocationRequestConfig_SetPowerConsumptionScene()
+
+```
+void OH_LocationRequestConfig_SetPowerConsumptionScene(Location_RequestConfig* requestConfig, Location_PowerConsumptionScene powerConsumptionScene)
+```
+
+**描述**
+
+设置位置请求参数中的功耗场景。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_PowerConsumptionScene](capi-oh-location-type-h.md#location_powerconsumptionscene) powerConsumptionScene | 表示位置请求的功耗场景。<br> 默认值是[LOCATION_LOW_POWER_CONSUMPTION](capi-oh-location-type-h.md#location_powerconsumptionscene)。<br> 详细定义见[Location_PowerConsumptionScene](capi-oh-location-type-h.md#location_powerconsumptionscene)。 |
+
+### OH_LocationRequestConfig_SetInterval()
+
+```
+void OH_LocationRequestConfig_SetInterval(Location_RequestConfig* requestConfig, int interval)
+```
+
+**描述**
+
+设置位置请求参数中的位置上报间隔。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| int interval | 表示位置上报时间间隔，单位是“秒”。取值范围为大于等于1，默认值为1。 |
+
+### OH_LocationRequestConfig_SetCallback()
+
+```
+void OH_LocationRequestConfig_SetCallback(Location_RequestConfig* requestConfig, Location_InfoCallback callback, void* userData)
+```
+
+**描述**
+
+设置回调函数。
+
+**起始版本：** 13
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | 指向[Location_RequestConfig](capi-location-location-requestconfig.md)实例的指针。<br> 该实例是由[OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig)创建的。 |
+| [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback) callback | 指向回调函数的指针，该回调函数用于接收位置信息变化。<br> 详细定义请参考[Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback)。 |
+| void* userData | 指向调用者数据结构或对象的指针。这个指针会在回调函数执行时作为入参回传给调用者。 |
+
+
