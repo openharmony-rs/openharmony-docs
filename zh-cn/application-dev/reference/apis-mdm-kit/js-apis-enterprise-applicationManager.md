@@ -1353,7 +1353,7 @@ addUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中均可正常使用。
+**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1362,7 +1362,7 @@ addUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance&gt
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，数组总长度不超过10. |
+| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，同一用户下，不可关停应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1384,13 +1384,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let UserNonStopApps: Array<common.ApplicationInstance> = [
   // 需根据实际情况进行替换
   {
-    appIdentifier: 'com.example.UserNonStopApplication',
+    appIdentifier: '0123456789123456789',
     accountId: 100,
     appIndex: 0
   }
@@ -1414,7 +1414,7 @@ removeUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中均可正常使用。
+**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1423,7 +1423,7 @@ removeUserNonStopApps(admin: Want, UserNonStopApps: Array&lt;ApplicationInstance
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，数组总长度不超过10. |
+| UserNonStopApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组，同一用户下，不可关停应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1445,13 +1445,13 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let UserNonStopApps: Array<common.ApplicationInstance> = [
   // 需根据实际情况进行替换
   {
-    appIdentifier: 'com.example.UserNonStopApplication',
+    appIdentifier: '0123456789123456789',
     accountId: 100,
     appIndex: 0
   }
@@ -1475,7 +1475,7 @@ getUserNonStopApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中均可正常使用。
+**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1510,7 +1510,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -1520,3 +1520,194 @@ try {
   console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## applicationManager.addFreezeExemptedApps<sup>22+</sup>
+
+addFreezeExemptedApps(admin: Want, FreezeExemptedApps: Array&lt;ApplicationInstance&gt;): void
+
+添加后台防冻结应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| FreezeExemptedApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let FreezeExemptedApps: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.addFreezeExemptedApps(wantTemp, UserNonStopApps);
+  console.info('Succeeded in adding FreezeExempted applications.');
+} catch(err) {
+  console.error(`Failed to add FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeFreezeExemptedApps<sup>22+</sup>
+
+removeFreezeExemptedApps(admin: Want, FreezeExemptedApps: Array&lt;ApplicationInstance&gt;): void
+
+为指定用户删除后台防冻结应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+| FreezeExemptedApps | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let FreezeExemptedApps: Array<common.ApplicationInstance> = [
+  // 需根据实际情况进行替换
+  {
+    appIdentifier: '0123456789123456789',
+    accountId: 100,
+    appIndex: 0
+  }
+];
+
+try {
+  applicationManager.removeFreezeExemptedApps(wantTemp, UserNonStopApps);
+  console.info('Succeeded in removing FreezeExempted applications.');
+} catch(err) {
+  console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getFreezeExemptedApps<sup>22+</sup>
+
+getFreezeExemptedApps(admin: Want): Array&lt;ApplicationInstance&gt;
+
+获取后台防冻结应用名单。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                                                         | 必填 | 说明                                   |
+| ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 后台防冻结应用名单数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(wantTemp);
+  console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## ApplicationInstance<sup>22+</sup>
+
+应用的实例数据。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
+| ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
+| appIdentifier          | string       | 否   | 否 | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。           |
+| accountId        | number       | 否   | 否 | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。            |
+| appIndex        | number       | 否   | 否 | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)等接口来获取。           |
+
