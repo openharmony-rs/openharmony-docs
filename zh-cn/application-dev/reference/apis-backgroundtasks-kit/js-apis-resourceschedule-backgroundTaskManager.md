@@ -1767,7 +1767,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_VOIP                       | 8         | 音视频通话。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | 计算任务（仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。|
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。            |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>1. 需使用[requestAuthFromUser](#requestauthfromuser22)请求用户授权。2. 对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>**说明：**  <br/>1. 需使用[requestAuthFromUser](#requestauthfromuser22)请求用户授权。2. 对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放）。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1805,9 +1805,9 @@ export default class EntryAbility extends UIAbility {
 
 ## UserAuthResult<sup>22+</sup>
 
-授权结果。
+用户授权结果。
 
-**系统能力：**SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称           | 值 | 说明     |
 | ------------ |---|--------|
