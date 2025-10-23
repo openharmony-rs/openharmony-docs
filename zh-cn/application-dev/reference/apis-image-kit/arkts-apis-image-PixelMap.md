@@ -1437,7 +1437,7 @@ createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: Ant
 | ------- | --------------------------------------------|
 | 7600201 | The PixelMap has been released. |
 | 7600204 | Invalid region. |
-| 7600205 | Unsupported pixel format. |
+| 7600205 | Unsupported memory format or pixel format. |
 | 7600301 | Memory alloc failed. |
 
 **示例：**
@@ -1495,7 +1495,7 @@ createCroppedAndScaledPixelMapSync(region: Region, x: number, y: number, level?:
 | ------- | --------------------------------------------|
 | 7600201 | The PixelMap has been released. |
 | 7600204 | Invalid region. |
-| 7600205 | Unsupported pixel format. |
+| 7600205 | Unsupported memory format or pixel format. |
 | 7600301 | Memory alloc failed. |
 
 **示例：**
