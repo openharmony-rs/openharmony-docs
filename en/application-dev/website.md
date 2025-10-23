@@ -1586,6 +1586,7 @@
         - [Using TonePlayer for Audio Playback (for System Applications Only)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
         - [Using OHAudio for Audio Playback (C/C++)](media/audio/using-ohaudio-for-playback.md)
+        - [Low-Power Audio Playback](media/audio/power-saving-for-playback.md)
         - [Using AudioHaptic for Audio-Haptic Playback](media/audio/using-audiohaptic-for-playback.md)
         - [Volume Management](media/audio/volume-management.md)
         - [Enhancing Audio Performance Experience](media/audio/audio-performance.md)

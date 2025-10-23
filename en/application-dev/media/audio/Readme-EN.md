@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Introduction to Audio Kit](audio-kit-intro.md)
 - [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md)
@@ -20,6 +20,7 @@
   - [Using TonePlayer for Audio Playback (for System Applications Only)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
   - [Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
+  - [Low-Power Audio Playback](power-saving-for-playback.md)
   - [Using AudioHaptic for Audio-Haptic Playback](using-audiohaptic-for-playback.md)
   - [Volume Management](volume-management.md)
   - [Enhancing Audio Performance Experience](audio-performance.md)
