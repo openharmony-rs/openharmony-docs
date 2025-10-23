@@ -224,7 +224,7 @@ connection.setAppHttpProxy({
 } as connection.HttpProxy);
 let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
-  usingProxy: true, //选择使用网络代理，从API 10开始支持该属性。
+  usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
 httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
