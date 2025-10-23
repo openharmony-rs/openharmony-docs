@@ -24,6 +24,11 @@
     - [vibrator.h](vibrator_8h.md)
     - [vibrator_type.h](vibrator_type_8h.md)
   - 结构体
+    - [Sensor_Info](capi-sensor-sensor-info.md)
+    - [Sensor_Event](capi-sensor-sensor-event.md)
+    - [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)
+    - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
+    - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
     - [Vibrator_Attribute](_vibrator_attribute.md)
     - [Vibrator_File_Description](_vibrator_file_description.md)
 - 错误码
