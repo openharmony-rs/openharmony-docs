@@ -63,8 +63,8 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   AVSessionController = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error(`CreateController Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -175,8 +175,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('getAVPlaybackState : SUCCESS');
-}).catch((err: Error) => {
-  console.error(`getAVPlaybackState Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -229,8 +229,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getAVMetadata().then((metadata: avSession.AVMetadata) => {
   console.info(`GetAVMetadata : SUCCESS : assetId : ${metadata.assetId}`);
-}).catch((err: Error) => {
-  console.error(`GetAVMetadata Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -341,8 +341,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getAVQueueTitle().then((title: string) => {
   console.info(`GetAVQueueTitle : SUCCESS : title : ${title}`);
-}).catch((err: Error) => {
-  console.error(`GetAVQueueTitle Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -453,8 +453,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
   console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
-}).catch((err: Error) => {
-  console.error(`GetAVQueueItems Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -576,8 +576,8 @@ ArkTS-Sta示例：
 let queueItemId = 0;
 avsessionController.skipToQueueItem(queueItemId).then(() => {
   console.info('SkipToQueueItem successfully');
-}).catch((err: Error) => {
-  console.error(`SkipToQueueItem Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`SkipToQueueItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -693,8 +693,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
   console.info('GetOutputDevice : SUCCESS');
-}).catch((err: Error) => {
-  console.error(`GetOutputDevice Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -825,8 +825,8 @@ let event: KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, a
 
 avsessionController.sendAVKeyEvent(event).then(() => {
   console.info('SendAVKeyEvent Successfully');
-}).catch((err: Error) => {
-  console.error(`SendAVKeyEvent Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -948,8 +948,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getLaunchAbility().then((agent: object) => {
   console.info(`GetLaunchAbility : SUCCESS : wantAgent : ${agent}`);
-}).catch((err: Error) => {
-  console.error(`GetLaunchAbility Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1105,8 +1105,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.isActive().then((isActive: boolean) => {
   console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
-}).catch((err: Error) => {
-  console.error(`IsActive Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1216,8 +1216,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.destroy().then(() => {
   console.info('Destroy : SUCCESS ');
-}).catch((err: Error) => {
-  console.error(`Destroy Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1327,8 +1327,8 @@ ArkTS-Sta示例：
 ```ts
 avsessionController.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
   console.info(`GetValidCommands : SUCCESS : size : ${validCommands.length}`);
-}).catch((err: Error) => {
-  console.error(`GetValidCommands Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1455,8 +1455,8 @@ ArkTS-Sta示例：
 let avCommand: avSession.AVControlCommand = {command:'play'};
 avsessionController.sendControlCommand(avCommand).then(() => {
   console.info('SendControlCommand successfully');
-}).catch((err: Error) => {
-  console.error(`SendControlCommand Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1617,15 +1617,15 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
+}).catch(async(err: BusinessError) => {
+  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
 });
 let commandName = "my_command";
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).sendCommonCommand(commandName, {"command" : "This is my command"}).then(() => {
     console.info('SendCommonCommand successfully');
-  }).catch((err: Error) => {
-    console.error(`SendCommonCommand Error: code: ${err.code}, message: ${err.message}`);
+  }).catch(async(err: BusinessError) => {
+    console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   })
 }
 ```
@@ -1712,8 +1712,8 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
+}).catch(async(err: BusinessError) => {
+  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
 });
 let commandName = "my_command";
 if (controller !== undefined) {
@@ -1801,14 +1801,14 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
+}).catch(async(err: BusinessError) => {
+  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).getExtras().then((extras) => {
     console.info(`getExtras : SUCCESS : ${extras}`);
-  }).catch((err: Error) => {
-    console.error(`getExtras Error: code: ${err.code}, message: ${err.message}`);
+  }).catch(async(err: BusinessError) => {
+    console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -1889,8 +1889,8 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
+}).catch(async(err: BusinessError) => {
+  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).getExtras((err, extras) => {
@@ -1980,19 +1980,19 @@ const COMMON_COMMAND_STRING_3 = 'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_
 if (controller !== undefined) {
   controller.getExtrasWithEvent(COMMON_COMMAND_STRING_1).then(() => {
     console.info(`${[COMMON_COMMAND_STRING_1]}`);
-  }).catch((err: Error) => {
+  }).catch(async(err: BusinessError) => {
     console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
 
   controller.getExtrasWithEvent(COMMON_COMMAND_STRING_2).then(() => {
     console.info(`${[COMMON_COMMAND_STRING_2]}`);
-  }).catch((err: Error) => {
+  }).catch(async(err: BusinessError) => {
     console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
 
   controller.getExtrasWithEvent(COMMON_COMMAND_STRING_3).then(() => {
     console.info(`${[COMMON_COMMAND_STRING_3]}`);
-  }).catch((err: Error) => {
+  }).catch(async(err: BusinessError) => {
     console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
 }
@@ -2151,7 +2151,7 @@ avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (p
 });
 ```
 
-ArkTS-Sta 示例：
+ArkTS-Sta示例：
 
 ```ts
 avsessionController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
@@ -2477,6 +2477,10 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明                                                         |
@@ -2496,6 +2500,14 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('sessionDestroy');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('sessionDestroy');
 ```
@@ -2509,6 +2521,10 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2529,6 +2545,16 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.on('activeStateChange', (isActive: boolean) => {
+  console.info(`on activeStateChange : SUCCESS : isActive ${isActive}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.on('activeStateChange', (isActive: boolean) => {
   console.info(`on activeStateChange : SUCCESS : isActive ${isActive}`);
@@ -2544,6 +2570,10 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2564,6 +2594,14 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('activeStateChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('activeStateChange');
 ```
@@ -2577,6 +2615,10 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2597,6 +2639,17 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
+  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
+  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
   console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
@@ -2613,6 +2666,10 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2633,6 +2690,14 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('validCommandChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('validCommandChange');
 ```
@@ -2646,6 +2711,10 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2666,6 +2735,16 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
+  console.info(`on outputDeviceChange state: ${state}, device : ${device}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
   console.info(`on outputDeviceChange state: ${state}, device : ${device}`);
@@ -2681,6 +2760,10 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2701,6 +2784,14 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('outputDeviceChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('outputDeviceChange');
 ```
@@ -2716,6 +2807,10 @@ ArkTS-Sta: on(type: 'sessionEvent', callback: (sessionEvent: string, args: Recor
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2763,6 +2858,7 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 let tag: string = "createNewSession";
@@ -2773,8 +2869,8 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
+}).catch(async(err: BusinessError) => {
+  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).on('sessionEvent', (sessionEvent, args) => {
@@ -2795,6 +2891,10 @@ ArkTS-Sta: off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Rec
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -2814,6 +2914,14 @@ ArkTS-Sta: off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Rec
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('sessionEvent');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('sessionEvent');
 ```
@@ -2827,6 +2935,10 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2847,6 +2959,16 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
+  console.info(`OnQueueItemsChange, items length is ${items.length}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
   console.info(`OnQueueItemsChange, items length is ${items.length}`);
@@ -2862,6 +2984,10 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2882,6 +3008,14 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('queueItemsChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('queueItemsChange');
 ```
@@ -2895,6 +3029,10 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2915,6 +3053,16 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.on('queueTitleChange', (title: string) => {
+  console.info(`queueTitleChange, title is ${title}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.on('queueTitleChange', (title: string) => {
   console.info(`queueTitleChange, title is ${title}`);
@@ -2930,6 +3078,10 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2950,6 +3102,14 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('queueTitleChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('queueTitleChange');
 ```
@@ -2965,6 +3125,10 @@ ArkTS-Sta: on(type: 'extrasChange', callback: (extras: Record<string, Object>) =
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3012,6 +3176,7 @@ if (controller !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 let tag: string = "createNewSession";
@@ -3022,8 +3187,8 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
   console.info('CreateAVSession : SUCCESS :sessionid = ${sessionid}');
-}).catch((err: Error) => {
-  console.error('CreateAVSession Error:code: ${err.code}, message: ${err.message}')
+}).catch(async(err: BusinessError) => {
+  console.error('CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}')
 });
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).on('extrasChange', (extras) => {
@@ -3044,6 +3209,10 @@ ArkTS-Sta: off(type: 'extrasChange', callback?: (extras: Record<string, Object>)
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
@@ -3063,6 +3232,14 @@ ArkTS-Sta: off(type: 'extrasChange', callback?: (extras: Record<string, Object>)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avsessionController.off('extrasChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avsessionController.off('extrasChange');
 ```
@@ -3076,6 +3253,10 @@ getAVPlaybackStateSync(): AVPlaybackState;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -3094,6 +3275,21 @@ getAVPlaybackStateSync(): AVPlaybackState;
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let playbackState: avSession.AVPlaybackState = avsessionController.getAVPlaybackStateSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getAVPlaybackStateSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3116,6 +3312,10 @@ getAVMetadataSync(): AVMetadata
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                | 说明                          |
@@ -3133,6 +3333,22 @@ getAVMetadataSync(): AVMetadata
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let metaData: avSession.AVMetadata = avsessionController.getAVMetadataSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getAVMetadataSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3151,6 +3367,10 @@ getAVCallState(): Promise\<AVCallState>
 获取通话状态数据。结果通过Promise异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -3185,10 +3405,12 @@ avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => 
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => {
   console.info(`getAVCallState : SUCCESS : state : ${callstate.state}`);
-}).catch((err: Error) => {
-  console.error(`getAVCallState Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -3199,6 +3421,10 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 获取通话状态数据。结果通过callback异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3254,6 +3480,10 @@ getCallMetadata(): Promise\<CallMetadata>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                | 说明                          |
@@ -3287,10 +3517,12 @@ avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) =>
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) => {
   console.info(`getCallMetadata : SUCCESS : name : ${calldata.name}`);
-}).catch((err: Error) => {
-  console.error(`getCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -3301,6 +3533,10 @@ getCallMetadata(callback: AsyncCallback\<CallMetadata>): void
 获取通话会话的元数据。结果通过callback异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3358,6 +3594,10 @@ getAVQueueTitleSync(): string
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型             | 说明                           |
@@ -3375,6 +3615,21 @@ getAVQueueTitleSync(): string
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentQueueTitle: string = avsessionController.getAVQueueTitleSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getAVQueueTitleSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3397,6 +3652,10 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                          | 说明                           |
@@ -3414,6 +3673,21 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentQueueItems: Array<avSession.AVQueueItem> = avsessionController.getAVQueueItemsSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getAVQueueItemsSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3436,6 +3710,10 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                            | 说明                              |
@@ -3452,6 +3730,21 @@ getOutputDeviceSync(): OutputDeviceInfo
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentOutputDevice: avSession.OutputDeviceInfo = avsessionController.getOutputDeviceSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getOutputDeviceSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3474,6 +3767,10 @@ isActiveSync(): boolean
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型              | 说明                                                         |
@@ -3491,6 +3788,21 @@ isActiveSync(): boolean
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isActive: boolean = avsessionController.isActiveSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isActiveSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3513,6 +3825,10 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                         | 说明                              |
@@ -3530,6 +3846,21 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let validCommands: Array<avSession.AVControlCommandType> = avsessionController.getValidCommandsSync();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getValidCommandsSync error, error code: ${error.code}, error message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

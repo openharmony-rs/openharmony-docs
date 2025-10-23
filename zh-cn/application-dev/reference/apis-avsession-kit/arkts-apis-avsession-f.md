@@ -2,8 +2,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 ## 导入模块
@@ -21,6 +21,10 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -84,6 +88,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -103,8 +108,8 @@ struct Index {
             currentAVSession = data;
             sessionId = currentAVSession.sessionId;
             console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
-            }).catch((err: Error) => {
-            console.error(`CreateAVSession Error: code: ${err.code}, message: ${err.message}`);
+            }).catch(async(err: BusinessError) => {
+            console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -121,6 +126,10 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 创建会话对象，一个Ability只能存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -213,4 +222,3 @@ struct Index {
   }
 }
 ```
-

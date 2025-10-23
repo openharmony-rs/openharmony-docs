@@ -82,7 +82,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -117,10 +117,12 @@ aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) =>
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('getAVPlaybackState : SUCCESS');
-}).catch((err: Error) => {
-  console.error(`getAVPlaybackState Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -172,13 +174,15 @@ aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderTyp
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
   console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
     console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
   }
-}).catch((err: Error) => {
-  console.error(`getSupportedDecoders Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -235,11 +239,13 @@ aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLeve: avSession.ResolutionLevel) => {
   console.info('getRecommendedResolutionLevel successfully');
-}).catch((err: Error) => {
-  console.error(`getRecommendedResolutionLevel Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -292,6 +298,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import type hdrCapability from './@ohos.graphics.hdrCapability';
 
 aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
@@ -299,8 +306,8 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
   if (hdrFormats.length > 0 ) {
     console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
   }
-}).catch((err: Error) => {
-  console.error(`getSupportdHdrCapabilities Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getSupportdHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -354,13 +361,15 @@ aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.getSupportedPlaySpeeds().then((nums: double[]) => {
   console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
   if (nums.length > 0 ) {
     console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
   }
-}).catch((err: Error) => {
-  console.error(`getSupportedPlaySpeeds Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -375,7 +384,7 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -420,11 +429,13 @@ aVCastController.sendControlCommand(avCommand).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
 aVCastController.sendControlCommand(avCommand).then(() => {
   console.info('SendControlCommand successfully');
-}).catch((err: Error) => {
-  console.error(`SendControlCommand Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -596,7 +607,7 @@ prepare(item: AVQueueItem): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -657,6 +668,8 @@ aVCastController.prepare(playItem).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -677,8 +690,8 @@ let playItem: avSession.AVQueueItem = {
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
 aVCastController.prepare(playItem).then(() => {
   console.info('prepare successfully');
-}).catch((err: Error) => {
-  console.error(`prepare Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -789,7 +802,7 @@ start(item: AVQueueItem): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -850,6 +863,8 @@ aVCastController.start(playItem).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -870,8 +885,8 @@ let playItem: avSession.AVQueueItem = {
 // 启动播放。
 aVCastController.start(playItem).then(() => {
   console.info('start successfully');
-}).catch((err: Error) => {
-  console.error(`start Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -941,7 +956,7 @@ getCurrentItem(): Promise\<AVQueueItem>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -976,10 +991,12 @@ aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
   console.info('getCurrentItem successfully');
-}).catch((err: Error) => {
-  console.error(`getCurrentItem Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1082,10 +1099,12 @@ aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandT
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
   console.info('getValidCommands successfully');
-}).catch((err: Error) => {
-  console.error(`getValidCommands Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1219,7 +1238,7 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1254,20 +1273,18 @@ aVCastController.release().then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.release().then(() => {
   console.info('release successfully');
-}).catch((err: Error) => {
-  console.error(`release Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-ArkTS-Dyn: on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
-
-ArkTS-Sta: on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
-
-设置播放状态变化的监听事件。
+on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
 
 设置播放状态变化的监听事件。
 
@@ -1275,16 +1292,14 @@ ArkTS-Sta: on(type: 'playbackStateChange', filter: Array\<string> | 'all', callb
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   | ArkTS-Dyn: Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all'<br>ArkTS-Sta: Array\<string\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段变化。 |
+| filter   | Array\<string\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注播放状态所有字段变化；Array\<string\> 表示关注Array中的字段变化。 |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void | 是   | 回调函数，参数state是变化后的播放状态。                      |
 
 **错误码：**
@@ -1311,16 +1326,77 @@ aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSes
 });
 ```
 
+## onPlaybackStateChange<sup>22+</sup>
+
+onPlaybackStateChange(filter: Array\<string>, callback: Callback\<AVPlaybackState>): void;
+
+设置播放状态变化的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| filter   | Array\<string\> | 是   | Array\<string\> 表示关注Array中的字段变化。 |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void | 是   | 回调函数，参数state是变化后的播放状态。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
-  console.info(`on playbackStateChange state : ${playbackState.state}`);
-});
-
 let playbackFilter: Array<string> = ['state', 'speed', 'loopMode'];
-aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
-  console.info(`on playbackStateChange state : ${playbackState.state}`);
+aVCastController.onPlaybackStateChange(playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+  console.info(`onPlaybackStateChange state : ${playbackState.state}`);
+});
+```
+
+## onPlaybackStateChangeAll<sup>22+</sup>
+
+onPlaybackStateChangeAll(callback: Callback\<AVPlaybackState>): void;
+
+设置播放状态变化的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void | 是   | 回调函数，参数state是变化后的播放状态。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+aVCastController.onPlaybackStateChangeAll((playbackState: avSession.AVPlaybackState) => {
+  console.info(`onPlaybackStateChangeAll state : ${playbackState.state}`);
 });
 ```
 
@@ -1334,9 +1410,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1362,10 +1436,39 @@ ArkTS-Dyn示例：
 aVCastController.off('playbackStateChange');
 ```
 
+## offPlaybackStateChange<sup>22+</sup>
+
+offPlaybackStateChange(callback?: Callback\<AVPlaybackState>): void;
+
+媒体控制器取消监听播放状态变化的事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                     |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 否   | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.off('playbackStateChange');
+aVCastController.offPlaybackStateChange();
 ```
 
 ## on('mediaItemChange')<sup>10+</sup>
@@ -1378,9 +1481,7 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1408,11 +1509,39 @@ aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
 });
 ```
 
+## onMediaItemChange<sup>22+</sup>
+
+onMediaItemChange(callback: Callback\<AVQueueItem>): void;
+
+设置投播当前播放媒体内容的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>         | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
-  console.info(`on mediaItemChange state : ${item.itemId}`);
+aVCastController.onMediaItemChange((item: avSession.AVQueueItem) => {
+  console.info(`onMediaItemChange state : ${item.itemId}`);
 });
 ```
 
@@ -1426,9 +1555,7 @@ off(type: 'mediaItemChange'): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1453,10 +1580,33 @@ ArkTS-Dyn示例：
 aVCastController.off('mediaItemChange');
 ```
 
+## offMediaItemChange<sup>22+</sup>
+
+offMediaItemChange(): void;
+
+取消设置投播当前播放媒体内容的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.off('mediaItemChange');
+aVCastController.offMediaItemChange();
 ```
 
 ## on('playNext')<sup>10+</sup>
@@ -1469,9 +1619,7 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1499,11 +1647,39 @@ aVCastController.on('playNext', () => {
 });
 ```
 
+## onPlayNext<sup>22+</sup>
+
+onPlayNext(callback: NoParamCallback): void;
+
+设置播放下一首资源的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>         | 是   | 回调函数。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.on('playNext', () => {
-  console.info('on playNext');
+aVCastController.onPlayNext(() => {
+  console.info('onPlayNext');
 });
 ```
 
@@ -1517,9 +1693,7 @@ off(type: 'playNext'): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1544,10 +1718,32 @@ ArkTS-Dyn示例：
 aVCastController.off('playNext');
 ```
 
+## offPlayNext<sup>22+</sup>
+
+offPlayNext(): void;
+
+取消设置播放下一首资源的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.off('playNext');
+aVCastController.offPlayNext();
 ```
 
 ## on('playPrevious')<sup>10+</sup>
@@ -1560,9 +1756,7 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1590,11 +1784,39 @@ aVCastController.on('playPrevious', () => {
 });
 ```
 
+## onPlayPrevious<sup>22+</sup>
+
+onPlayPrevious(callback: NoParamCallback): void;
+
+设置播放上一首资源的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>         | 是   | 回调函数。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.on('playPrevious', () => {
-  console.info('on playPrevious');
+aVCastController.onPlayPrevious(() => {
+  console.info('onPlayPrevious');
 });
 ```
 
@@ -1608,9 +1830,7 @@ off(type: 'playPrevious'): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1635,10 +1855,33 @@ ArkTS-Dyn示例：
 aVCastController.off('playPrevious');
 ```
 
+## offPlayPrevious<sup>22+</sup>
+
+offPlayPrevious(): void;
+
+取消设置播放上一首资源的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Sta起始版本：** 22
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.off('playPrevious');
+aVCastController.offPlayPrevious();
 ```
 
 ## on('requestPlay')<sup>11+</sup>
@@ -1829,7 +2072,7 @@ ArkTS-Sta: on(type: 'seekDone', callback: Callback\<int>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1877,7 +2120,7 @@ off(type: 'seekDone'): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1918,7 +2161,7 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1969,7 +2212,7 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2042,7 +2285,7 @@ aVCastController.on('videoSizeChange', (width: number, height: number) => {
 });
 ```
 
-ArkTS-Dyn示例：
+ArkTS-Sta示例：
 
 ```ts
 aVCastController.on('videoSizeChange', (width: int, height: int) => {
@@ -2101,7 +2344,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2159,7 +2402,7 @@ off(type: 'error'): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2339,6 +2582,8 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 ArkTS-Dyn示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlGenericError', (error: BusinessError) => {
   console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2347,6 +2592,8 @@ aVCastController.on('castControlGenericError', (error: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlGenericError', (error: BusinessError) => {
   console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2442,6 +2689,8 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 ArkTS-Dyn示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlIoError', (error: BusinessError) => {
   console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2450,6 +2699,8 @@ aVCastController.on('castControlIoError', (error: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlIoError', (error: BusinessError) => {
   console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2533,6 +2784,8 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 ArkTS-Dyn示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlParsingError', (error: BusinessError) => {
   console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2541,6 +2794,8 @@ aVCastController.on('castControlParsingError', (error: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlParsingError', (error: BusinessError) => {
   console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2625,6 +2880,8 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 ArkTS-Dyn示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlDecodingError', (error: BusinessError) => {
   console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2633,6 +2890,8 @@ aVCastController.on('castControlDecodingError', (error: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlDecodingError', (error: BusinessError) => {
   console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2716,6 +2975,8 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 ArkTS-Dyn示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
   console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2724,6 +2985,8 @@ aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
   console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2812,6 +3075,8 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 ArkTS-Dyn示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlDrmError', (error: BusinessError) => {
   console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
@@ -2820,6 +3085,8 @@ aVCastController.on('castControlDrmError', (error: BusinessError) => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 aVCastController.on('castControlDrmError', (error: BusinessError) => {
   console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })

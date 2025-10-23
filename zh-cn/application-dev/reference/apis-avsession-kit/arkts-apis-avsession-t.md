@@ -1,7 +1,7 @@
 # Types
 
 > **说明：**
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
@@ -16,6 +16,10 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型  | 说明 |
 | -----  | ---- |
@@ -34,6 +38,10 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型             | 说明         |
 | ---------------- | ------------ |
@@ -61,6 +69,10 @@ ArkTS-Sta: type ExtraInfo = Record<string, Object>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
 | ArkTS-Dyn: [key: string]: Object<br>ArkTS-Sta: Record<string, Object> | key为远端分布式事件类型。当前支持的事件类型包括：<br>'AUDIO_GET_VOLUME'：获取远端设备音量。<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备。<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包Object对象。 |
@@ -75,6 +87,10 @@ type KeyRequestCallback = (assetId: string, requestData: Uint8Array) => void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                      |
@@ -83,6 +99,16 @@ type KeyRequestCallback = (assetId: string, requestData: Uint8Array) => void
 | requestData |  Uint8Array  | 是   | 媒体许可证请求数据。                            |
 
 **示例：**
+
+ArkTS-Dyn示例：
+<!--code_no_check-->
+```ts
+let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
+}
+```
+
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
@@ -102,6 +128,10 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型             | 说明         |
 | ---------------- | ------------ |

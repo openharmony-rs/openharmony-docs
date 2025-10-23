@@ -8,6 +8,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.avsession (媒体会话管理)](arkts-apis-avsession.md)。
@@ -33,6 +34,10 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -71,6 +76,8 @@ avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescr
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
   if (descriptors.length > 0 ) {
@@ -78,8 +85,8 @@ avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescr
     console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
     console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
   }
-}).catch((err: Error) => {
-  console.error(`GetAllSessionDescriptors Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -164,6 +171,10 @@ ArkTS-Sta: getHistoricalSessionDescriptors(maxSize?: int): Promise\<Array\<Reado
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                             |
@@ -209,6 +220,8 @@ avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessi
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
   console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
   if (descriptors.length > 0 ) {
@@ -218,8 +231,8 @@ avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessi
     console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionId : ${descriptors[0].sessionId}`);
     console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].elementName.bundleName : ${descriptors[0].elementName.bundleName}`);
   }
-}).catch((err: Error) => {
-  console.error(`getHistoricalSessionDescriptors Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -236,6 +249,10 @@ ArkTS-Sta: getHistoricalSessionDescriptors(maxSize: int, callback: AsyncCallback
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -311,6 +328,10 @@ ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int) : Promise\<A
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                             |
@@ -350,10 +371,12 @@ avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueI
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
   console.info(`getHistoricalAVQueueInfos : SUCCESS : avQueueInfos.length : ${avQueueInfos.length}`);
-}).catch((err: Error) => {
-  console.error(`getHistoricalAVQueueInfos Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -370,6 +393,10 @@ ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: As
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -432,6 +459,10 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明     |
@@ -474,12 +505,14 @@ avSession.createController(sessionId).then((avcontroller: avSession.AVSessionCon
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let currentAVcontroller: avSession.AVSessionController | undefined = undefined;
 avSession.createController(sessionId).then((avcontroller: avSession.AVSessionController) => {
   currentAVcontroller = avcontroller;
   console.info('CreateController : SUCCESS ');
-}).catch((err: Error) => {
-  console.error(`CreateController Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -494,6 +527,10 @@ createController(sessionId: string, callback: AsyncCallback\<AVSessionController
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -561,6 +598,10 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型           | 必填 | 说明 |
@@ -617,6 +658,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
 let audioRoutingManager = audioManager.getRoutingManager();
@@ -624,15 +666,15 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
-}).catch((err: Error) => {
-  console.error(`GetDevices Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 
 if (audioDevices !== undefined) {
   avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
     console.info('CreateController : SUCCESS');
-  }).catch((err: Error) => {
-    console.error(`CreateController Error: code: ${err.code}, message: ${err.message}`);
+  }).catch(async(err: BusinessError) => {
+    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -650,6 +692,10 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -712,8 +758,8 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
-}).catch((err: Error) => {
-  console.error(`GetDevices Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 
 if (audioDevices !== undefined) {
@@ -738,6 +784,10 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -782,11 +832,12 @@ ArkTS-Sta示例：
 
 ```ts
 import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('startAVPlayback : SUCCESS');
-}).catch((err: Error) => {
-  console.error(`startAVPlayback Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -801,6 +852,10 @@ getDistributedSessionController(distributedSessionType: DistributedSessionType):
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -842,11 +897,12 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
   console.info(`getDistributedSessionController : SUCCESS : sessionControllers.length : ${sessionControllers.length}`);
-}).catch((err: Error) => {
-  console.error(`getDistributedSessionController Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`getDistributedSessionController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -859,6 +915,10 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称      | 类型   | 必填 | 说明         |
 | :-------- | :----- | :--- | :----------- |
@@ -878,6 +938,10 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
@@ -896,6 +960,18 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 | 6600101  | Session service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
+  console.info(`on sessionCreate : isActive : ${descriptor.isActive}`);
+  console.info(`on sessionCreate : type : ${descriptor.type}`);
+  console.info(`on sessionCreate : sessionTag : ${descriptor.sessionTag}`);
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
@@ -917,6 +993,10 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型            | 必填 | 说明                                                         |
@@ -935,6 +1015,18 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 | 6600101  | Session service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
+  console.info(`on sessionDestroy : isActive : ${descriptor.isActive}`);
+  console.info(`on sessionDestroy : type : ${descriptor.type}`);
+  console.info(`on sessionDestroy : sessionTag : ${descriptor.sessionTag}`);
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
@@ -956,6 +1048,10 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
@@ -974,6 +1070,18 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 | 6600101  | Session service exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
+  console.info(`on topSessionChange : isActive : ${descriptor.isActive}`);
+  console.info(`on topSessionChange : type : ${descriptor.type}`);
+  console.info(`on topSessionChange : sessionTag : ${descriptor.sessionTag}`);
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
@@ -995,6 +1103,10 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明       |
@@ -1014,6 +1126,14 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('sessionCreate');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('sessionCreate');
 ```
@@ -1029,6 +1149,10 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1049,6 +1173,14 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('sessionDestroy');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('sessionDestroy');
 ```
@@ -1064,6 +1196,10 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1084,6 +1220,14 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('topSessionChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('topSessionChange');
 ```
@@ -1097,6 +1241,10 @@ on(type: 'sessionServiceDie', callback: () => void): void
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1117,6 +1265,16 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.on('sessionServiceDie', () => {
+  console.info('on sessionServiceDie  : session is  Died ');
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.on('sessionServiceDie', () => {
   console.info('on sessionServiceDie  : session is  Died ');
@@ -1132,6 +1290,10 @@ off(type: 'sessionServiceDie', callback?: () => void): void
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1152,6 +1314,14 @@ off(type: 'sessionServiceDie', callback?: () => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('sessionServiceDie');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('sessionServiceDie');
 ```
@@ -1168,6 +1338,10 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1188,6 +1362,16 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE, (sessionControllers: Array<avSession.AVSessionController>) => {
+  console.info(`on distributedSessionChange size: ${sessionControllers.length}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE, (sessionControllers: Array<avSession.AVSessionController>) => {
   console.info(`on distributedSessionChange size: ${sessionControllers.length}`);
@@ -1206,6 +1390,10 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1226,6 +1414,14 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
 ```
@@ -1241,6 +1437,10 @@ sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1311,6 +1511,10 @@ sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                            | 必填 | 说明       |
@@ -1357,14 +1561,15 @@ ArkTS-Sta示例：
 ```ts
 import { Key, KeyEvent, Action } from '@ohos.multimodalInput.keyEvent.d.ets';
 import { KeyCode } from '@ohos.multimodalInput.keyCode.d.ets';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: Key = {code:KeyCode.KEYCODE_FN, pressedTime:2, deviceId:0};
 let event: KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:Action.UP, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event).then(() => {
   console.info('SendSystemAVKeyEvent Successfully');
-}).catch((err: Error) => {
-  console.error(`SendSystemAVKeyEvent Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1379,6 +1584,10 @@ sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback\<voi
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1400,6 +1609,36 @@ sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback\<voi
 | 6600107  | Too many commands or events. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let cmd : avSession.AVControlCommandType = 'play';
+// let cmd : avSession.AVControlCommandType = 'pause';
+// let cmd : avSession.AVControlCommandType = 'stop';
+// let cmd : avSession.AVControlCommandType = 'playNext';
+// let cmd : avSession.AVControlCommandType = 'playPrevious';
+// let cmd : avSession.AVControlCommandType = 'fastForward';
+// let cmd : avSession.AVControlCommandType = 'rewind';
+let avcommand: avSession.AVControlCommand = {command:cmd};
+// let cmd : avSession.AVControlCommandType = 'seek';
+// let avcommand = {command:cmd, parameter:10};
+// let cmd : avSession.AVControlCommandType = 'setSpeed';
+// let avcommand = {command:cmd, parameter:2.6};
+// let cmd : avSession.AVControlCommandType = 'setLoopMode';
+// let avcommand = {command:cmd, parameter:avSession.LoopMode.LOOP_MODE_SINGLE};
+// let cmd : avSession.AVControlCommandType = 'toggleFavorite';
+// let avcommand = {command:cmd, parameter:"false"};
+avSession.sendSystemControlCommand(avcommand, (err) => {
+  if (err) {
+    console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('sendSystemControlCommand successfully');
+  }
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 let cmd : avSession.AVControlCommandType = 'play';
@@ -1438,6 +1677,10 @@ sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1496,6 +1739,8 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'pause';
 // let cmd : avSession.AVControlCommandType = 'stop';
@@ -1514,8 +1759,8 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 // let avcommand = {command:cmd, parameter:"false"};
 avSession.sendSystemControlCommand(avcommand).then(() => {
   console.info('SendSystemControlCommand successfully');
-}).catch((err: Error) => {
-  console.error(`SendSystemControlCommand Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1527,7 +1772,7 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| TYPE_CAST_PLUS_MIRROR      | 1    | Cast+的镜像模式。 <br> **系统接口：** 该接口为系统接口。 |
+| TYPE_CAST_PLUS_MIRROR      | 1    | Cast+的镜像模式。 <br> **系统接口：** 该接口为系统接口。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
 
 ## avSession.startCastDeviceDiscovery<sup>10+</sup>
 
@@ -1538,6 +1783,10 @@ startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1583,6 +1832,10 @@ avSession.startCastDeviceDiscovery((err: BusinessError | null) => {
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                                     | 值 | 说明                        |
 |----------------------------------------|---|---------------------------|
 | TYPE_SESSION_REMOTE      | 0 | 远端设备会话。       |
@@ -1600,6 +1853,10 @@ ArkTS-Sta: startCastDeviceDiscovery(filter: int, callback: AsyncCallback\<void>)
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1660,6 +1917,10 @@ ArkTS-Sta: startCastDeviceDiscovery(filter?: int, drmSchemes?: Array\<string>): 
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
@@ -1701,12 +1962,14 @@ avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let filter = 2;
 let drmSchemes = ['3d5e6d35-9b9a-41e8-b843-dd3c6e72c42c'];
 avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
   console.info('startCastDeviceDiscovery successfully');
-}).catch((err: Error) => {
-  console.error(`startCastDeviceDiscovery Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1719,6 +1982,10 @@ stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1766,6 +2033,10 @@ stopCastDeviceDiscovery(): Promise\<void>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型           | 说明                          |
@@ -1789,10 +2060,12 @@ avSession.stopCastDeviceDiscovery().then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avSession.stopCastDeviceDiscovery().then(() => {
   console.info('stopCastDeviceDiscovery successfully');
-}).catch((err: Error) => {
-  console.error(`stopCastDeviceDiscovery Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1805,6 +2078,10 @@ setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1861,6 +2138,10 @@ setDiscoverable(enable: boolean): Promise\<void>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
@@ -1898,10 +2179,12 @@ avSession.setDiscoverable(true).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avSession.setDiscoverable(true).then(() => {
   console.info('setDiscoverable successfully');
-}).catch((err: Error) => {
-  console.error(`setDiscoverable Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1914,6 +2197,10 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1933,6 +2220,18 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+let castDevice: avSession.OutputDeviceInfo;
+avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+  castDevice = device;
+  console.info(`on deviceAvailable  : ${device} `);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 let castDevice: avSession.OutputDeviceInfo;
 avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
@@ -1950,6 +2249,10 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1969,6 +2272,14 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('deviceAvailable');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('deviceAvailable');
 ```
@@ -1982,6 +2293,10 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2000,6 +2315,18 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let castDeviceId: string;
+avSession.on('deviceOffline', (deviceId: string) => {
+  castDeviceId = deviceId;
+  console.info(`on deviceOffline  : ${deviceId} `);
+});
+```
+
+ArkTS-Sta示例：
 
 ```ts
 let castDeviceId: string;
@@ -2021,6 +2348,10 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
@@ -2040,6 +2371,14 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('deviceOffline');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('deviceOffline');
 ```
@@ -2057,6 +2396,10 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2164,6 +2507,10 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型                       | 必填 | 说明                                                         |
@@ -2226,6 +2573,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -2245,8 +2593,8 @@ struct Index {
             avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
             aVCastController = avcontroller;
             console.info('getAVCastController : SUCCESS');
-            }).catch((err: Error) => {
-            console.error(`getAVCastController Error: code: ${err.code}, message: ${err.message}`);
+            }).catch(async(err: BusinessError) => {
+            console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -2267,6 +2615,10 @@ startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCal
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2349,6 +2701,10 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
@@ -2400,6 +2756,8 @@ if (castDevice !== undefined) {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2411,8 +2769,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 if (castDevice !== undefined) {
   avSession.startCasting(myToken, castDevice as avSession.OutputDeviceInfo).then(() => {
     console.info('startCasting successfully');
-  }).catch((err: Error) => {
-    console.error(`startCasting Error: code: ${err.code}, message: ${err.message}`);
+  }).catch(async(err: BusinessError) => {
+    console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2426,6 +2784,10 @@ stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2489,6 +2851,10 @@ stopCasting(session: SessionToken): Promise\<void>
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
@@ -2530,13 +2896,15 @@ avSession.stopCasting(myToken).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 avSession.stopCasting(myToken).then(() => {
   console.info('stopCasting successfully');
-}).catch((err: Error) => {
-  console.error(`stopCasting Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2551,6 +2919,10 @@ ArkTS-Sta: startDeviceLogging(url: string, maxSize?: int): Promise\<void>
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2596,14 +2968,15 @@ avSession.startDeviceLogging(url, 2048).then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 let file = await fileIo.open("filePath");
 let url = file.fd.toString();
 avSession.startDeviceLogging(url, 2048).then(() => {
   console.info('startDeviceLogging successfully');
-}).catch((err: Error) => {
-  console.error(`startDeviceLogging Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`startDeviceLogging BusinessError: code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -2616,6 +2989,10 @@ stopDeviceLogging(): Promise\<void>
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2650,10 +3027,12 @@ avSession.stopDeviceLogging().then(() => {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 avSession.stopDeviceLogging().then(() => {
   console.info('stopCasting successfully');
-}).catch((err: Error) => {
-  console.error(`stopCasting Error: code: ${err.code}, message: ${err.message}`);
+}).catch(async(err: BusinessError) => {
+  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2666,6 +3045,10 @@ on(type: 'deviceLogEvent', callback: Callback\<DeviceLogEventCode>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2687,6 +3070,16 @@ on(type: 'deviceLogEvent', callback: Callback\<DeviceLogEventCode>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
+  console.info(`on deviceLogEvent code : ${eventCode}`);
+});
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
   console.info(`on deviceLogEvent code : ${eventCode}`);
@@ -2702,6 +3095,10 @@ off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2723,6 +3120,14 @@ off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+avSession.off('deviceLogEvent');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 avSession.off('deviceLogEvent');
 ```
@@ -2740,6 +3145,10 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2813,6 +3222,10 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2895,6 +3308,10 @@ ArkTS-Sta: on(type: 'videoSizeChange', callback: (width:int, height:int) => void
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明                                                         |
@@ -2941,6 +3358,10 @@ off(type: 'videoSizeChange'): void
 
 **系统接口：** 该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明      |
@@ -2958,6 +3379,14 @@ off(type: 'videoSizeChange'): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+aVCastController.off('videoSizeChange');
+```
+
+ArkTS-Sta示例：
+
 ```ts
 aVCastController.off('videoSizeChange');
 ```
@@ -2967,6 +3396,10 @@ aVCastController.off('videoSizeChange');
 媒体元数据的相关属性。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称            | 类型                      | 必填 | 说明                                                                  |
 | --------------- |-------------------------| ---- |---------------------------------------------------------------------|
@@ -2979,6 +3412,10 @@ aVCastController.off('videoSizeChange');
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称            | 类型                      | 必填 | 说明                                                                  |
 | --------------- |-------------------------| ---- |--------------------------------------------------------------------- |
@@ -2994,10 +3431,10 @@ aVCastController.off('videoSizeChange');
 
 | 名称       | 类型           | 必填 | 说明                   |
 | ---------- | -------------- | ---- | ---------------------- |
-| ipAddress | string | 否   | 播放设备的ip地址。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
-| providerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备提供商。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
-| authenticationStatus<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
-| networkId<sup>13+</sup> | string | 否   | 播放设备的网络ID。 <br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+| ipAddress | string | 否   | 播放设备的ip地址。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20    |
+| providerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备提供商。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20   |
+| authenticationStatus<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20   |
+| networkId<sup>13+</sup> | string | 否   | 播放设备的网络ID。 <br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：20|
 
 ## AVSessionDescriptor
 
@@ -3006,6 +3443,10 @@ aVCastController.off('videoSizeChange');
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 类型              | 只读 | 可选 | 说明  |
 | --------------| ---------------- | ---------------- | ---------------- |------|
@@ -3024,6 +3465,10 @@ aVCastController.off('videoSizeChange');
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |

@@ -4,14 +4,26 @@ MediaControlExtensionAbility模块提供播放控制的扩展能力，继承自[
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 > **说明：**
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 > - 本模块接口仅可在Stage模型下使用。
 > - 本模块接口为系统接口。
 
 ## 导入模块
+
+ArkTS-Dyn示例：
+
+```js
+import { MediaControlExtensionAbility } from '@kit.AVSessionKit';
+```
+
+ArkTS-Sta示例：
 
 ```js
 import { MediaControlExtensionAbility } from '@kit.AVSessionKit';
