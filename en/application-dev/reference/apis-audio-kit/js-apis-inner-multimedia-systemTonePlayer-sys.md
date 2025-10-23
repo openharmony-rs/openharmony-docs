@@ -455,6 +455,8 @@ Subscribes to the event indicating that the ringtone playback is finished. This 
 
 The object to listen for is an audio stream specified by **streamId**. If **streamId** is set to **0**, this API subscribes to the playback complete event of all audio streams of the player.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -500,6 +502,8 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 Unsubscribes from the event indicating that the ringtone playback is finished. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -540,6 +544,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to error events that occur during ringtone playback. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -573,6 +579,8 @@ systemTonePlayer.on('error', (err: BusinessError) => {
 off(type: 'error', callback?: ErrorCallback): void
 
 Unsubscribes from error events that occur during ringtone playback. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 

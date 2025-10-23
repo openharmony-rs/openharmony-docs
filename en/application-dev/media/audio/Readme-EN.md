@@ -17,9 +17,10 @@
   - [Using AudioRenderer for Audio Playback](using-audiorenderer-for-playback.md)
   - [Responding to Audio Output Device Changes](audio-output-device-change.md)
   <!--Del-->
-  - [Using TonePlayer for Audio Playback (for System Applications Only)](using-toneplayer-for-playback.md)
+  - [Using TonePlayer for Audio Playback (for System Applications Only)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
   - [Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
+  - [Low-Power Audio Playback](power-saving-for-playback.md)
   - [Using AudioHaptic for Audio-Haptic Playback](using-audiohaptic-for-playback.md)
   - [Volume Management](volume-management.md)
   - [Enhancing Audio Performance Experience](audio-performance.md)
@@ -28,12 +29,12 @@
   - [Audio Effect Management](audio-effect-management.md)
   - [Spatial Audio Management](public-audio-spatialization-management.md)
   <!--Del-->
-  - [Spatial Audio Management (for System Applications Only)](audio-spatialization-management.md)
+  - [Spatial Audio Management (for System Applications Only)](audio-spatialization-management-sys.md)
   <!--DelEnd-->
   - [Audio Playback Stream Management](audio-playback-stream-management.md)
   - [Global Audio Output Device Management](audio-output-device-management.md)
   <!--Del-->
-  - [Distributed Audio Playback (for System Applications Only)](distributed-audio-playback.md)
+  - [Distributed Audio Playback (for System Applications Only)](distributed-audio-playback-sys.md)
   <!--DelEnd-->
 - Audio Recording<!--audio-recording-->
   - [Audio Recording Overview](audio-recording-overview.md)

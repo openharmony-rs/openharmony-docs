@@ -53,9 +53,9 @@ Describes the volume panel parameters.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | No| Position of the volume panel.<br>If this parameter is not set, the volume bar appears at the system default location.<br>If this parameter is set to a position within the screen, the volume bar appears at the specified location.<br>If this parameter is set to a position outside the screen, such as (-1, -1), the system volume bar is not displayed. In this case, you should consider implementing a custom volume bar.|
+| Name| Type|Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | No| Yes| Position of the volume panel.<br>If this parameter is not set, the volume bar appears at the system default location.<br>If this parameter is set to a position within the screen, the volume bar appears at the specified location.<br>If this parameter is set to a position outside the screen, such as (-1, -1), the system volume bar is not displayed. In this case, you should consider implementing a custom volume bar.|
 
 ## Events
 

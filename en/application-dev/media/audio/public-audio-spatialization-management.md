@@ -31,11 +31,11 @@ Before using any APIs of AudioSpatializationManager, you must call [getSpatializ
 
 ### Checking Whether a Device Supports Spatial Audio Rendering
 
-Use the **spatializationSupported** property in [AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor) to check whether a specified device supports spatial audio rendering. You need to use other audio APIs to obtain AudioDeviceDescriptor of a connected device or the current audio device.
+Use the **spatializationSupported** property in [AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor) to check whether a specified device supports spatial audio rendering. You need to use other audio APIs to obtain AudioDeviceDescriptor of a connected device or the current audio device. For example, you can use [getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10) of the AudioRoutingManager instance created by [getRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getroutingmanager9) to obtain AudioDeviceDescriptor.
 
   ```ts
   import { audio } from '@kit.AudioKit';
-
+  let audioRoutingManager = audioManager.getRoutingManager();
   let deviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
   console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(deviceDescriptors)}.`);
   ```
