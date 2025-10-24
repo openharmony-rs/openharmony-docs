@@ -79,11 +79,11 @@
     - [@ohos.configPolicy (配置策略)(系统接口)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (设置数据项名称)(系统接口)](js-apis-settings-sys.md)
     - [@ohos.systemDateTime (系统时间、时区)(系统接口)](js-apis-system-date-time-sys.md)
-    - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
     - [@ohos.wallpaper (壁纸)(系统接口)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (系统定时器)(系统接口)](js-apis-system-timer-sys.md)
     <!--DelEnd-->
+    - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
   - 已停止维护的接口<!--basic-services-arkts-dep-->
     - [系统公共事件定义](common_event/commonEvent-definitions.md)
     - [@ohos.commonEvent (公共事件模块)](js-apis-commonEvent.md)
@@ -161,6 +161,6 @@
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
-  - [设置数据项错误码](errorcode-settings.md)
   - [划词服务错误码](errorcode-selection.md)
   <!--DelEnd-->
+  - [设置数据项错误码](errorcode-settings.md)
