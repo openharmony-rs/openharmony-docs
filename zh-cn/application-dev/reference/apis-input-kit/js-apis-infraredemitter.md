@@ -20,7 +20,7 @@
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-## infraredEmitter.transmitInfrared<sup>15+</sup>
+## infraredEmitter.transmitInfrared
 
 transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
@@ -69,7 +69,7 @@ struct Index {
 }
 ```
 
-## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
+## infraredEmitter.getInfraredFrequencies
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
@@ -83,7 +83,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | 红外信号的频率范围，包含多组最大和最小频率。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。 |
 
 **错误码：**
 
@@ -117,7 +117,7 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency<sup>15+</sup>
+##  InfraredFrequency
 
 红外信号的频率范围。
 
