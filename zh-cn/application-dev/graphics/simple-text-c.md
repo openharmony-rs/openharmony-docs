@@ -24,47 +24,7 @@
 
 画布Canvas对象具体可见[画布的获取与绘制结果的显示](canvas-get-result-draw-c.md)。
 
-```c++
-// 创建一个 TypographyStyle 创建 Typography 时需要使用
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-// 设置文本对齐方式为居中
-OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
-
-// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-OH_Drawing_SetTextStyleFontSize(txtStyle, 60);
-OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
-
-// 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-// 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-
-// 将之前创建的 TextStyle 加入 handler 中
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// 设置文本内容，并将文本添加到 handler 中
-const char *text = "Hello World Drawing\n";
-// 此处可以使用 OH_Drawing_TypographyHandlerAddEncodedText 添加不同编码的文本。
-// OH_Drawing_TypographyHandlerAddText 只支持UTF-8编码的文本
-OH_Drawing_TypographyHandlerAddText(handler, text);  
-
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-// 设置排版宽度
-double layoutWidth = 1310;
-OH_Drawing_TypographyLayout(typography, layoutWidth);
-// 设置文本在画布上绘制的起始位置
-double position[2] = {0, 1140};
-// 将文本绘制到画布上
-OH_Drawing_TypographyPaint(typography, canvas, position[0], position[1]);
-
-// 释放内存
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+<!-- @[ndk_drawing_simple_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
 
 ## 效果展示
