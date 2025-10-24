@@ -13,7 +13,7 @@ You can add multiple languages in the **Language & region** area in **Settings**
 
 When you set or switch the system language, the system checks whether the [extended parameter](i18n-locale-culture.md) matches the system language. If they do not match, the system deletes the extended parameter. For example, if the current system language is **ar** and the local numeral system is **arab**, the local numeral system will be changed to **mymr** once you switch the system language to **my**. If you switch the language to Chinese, the Arabic numeral system is used because local numerals are not supported. Meanwhile, the extended parameter associated with the numeral system is removed.
 
-Since API version 21, you can also use the **param get persist.global.language** command of the [param tool](../../tools/param-tool.md#get) to obtain the system language.
+Since API version 21, you can also use the **param get persist.global.language** command of the [param tool](../tools/param-tool.md#get) to obtain the system language.
 
 ## How to Develop
 

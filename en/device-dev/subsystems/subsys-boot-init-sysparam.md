@@ -4,7 +4,7 @@
 
 The parameter management module, namely, sysparam, provides an easy-to-use key-value pair access interface for system services to configure service functions based on their own system parameters.
 
-### System parameter definition
+### System Parameter Definition
 
 Each subsystem defines the system parameters of its own modules, including the system parameter name, default value, and access permission information.
 #### System Parameter Definition File
@@ -538,7 +538,7 @@ You can set specific system parameters as needed to meet your service demand.
 
   1. On the shell side, run **hdc shell** to launch the shell CLI of the device, and then run **param set param.key.***system parameter key* param.value.*system parameter value* to set the system parameter. If the operation is successful, no further processing is required.
 
-  2. On the application side, call **SetParameter** to set the system parameter. For details, see [APIs](#apis).
+  2. On the application side, call **SetParameter** to set the system parameter. For details, see [APIs](#available-apis).
   
   3. If **param set** fails, locate the fault based on the log.
 
@@ -552,7 +552,7 @@ You can set specific system parameters as needed to meet your service demand.
 
   1. On the shell side, run **hdc shell** to launch the shell CLI of the device, and then run **param get param.key.***system parameter key* to obtain the system parameter. If the operation is successful, no further processing is required.
 
-  2. On the application side, call **GetParameter** to obtain the system parameter. For details, see [APIs](#apis).
+  2. On the application side, call **GetParameter** to obtain the system parameter. For details, see [APIs](#available-apis).
 
   3. If **param get** fails, locate the fault based on the log.
 
@@ -566,7 +566,7 @@ You can set specific system parameters as needed to meet your service demand.
 
   1. On the shell side, run **hdc shell** to launch the shell CLI of the device, and then run **param shell** to switch to the parameter shell CLI. Run **watcher parameter param.key.***system parameter key* to subscribe to changes of the system parameter. If there is a change in the system parameter, a message similar to "Receive parameter commit 691 change aaa.aaa 11111" is received.
 
-  2. On the application side, call **WatchParameter** to subscribe to changes of the system parameter. For details, see [APIs](#apis).
+  2. On the application side, call **WatchParameter** to subscribe to changes of the system parameter. For details, see [APIs](#available-apis).
 
   3. If **watcher parameter** fails, locate the fault based on the log.
 

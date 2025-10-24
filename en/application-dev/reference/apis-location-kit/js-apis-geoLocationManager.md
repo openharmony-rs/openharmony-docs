@@ -18,7 +18,7 @@ To use location services, turn on the Location switch on your device. If the swi
 ## Applying for Permissions
 
 <!--RP1-->
-For details, see [Applying for Location Permissions](../../device/location/location-guidelines.md#applying-for-location-permissions).
+For details, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).
 <!--RP1End-->
 
 ## Modules to Import

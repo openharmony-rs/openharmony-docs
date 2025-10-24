@@ -141,7 +141,7 @@ export default class AVPlayerDemo {
 
 ### Writing the Code for Speech Recognition
 
-In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis-mindspore-lite-kit/_mind_spore.md) to perform inference on the three models in sequence. The inference process is as follows:
+In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to perform inference on the three models in sequence. The inference process is as follows:
 
 1. Include the corresponding header files. You need to download third-party libraries. Wherein, **librosa** is accessible in [LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp), and **libsamplerate** is accessible in [libsamplerate](https://github.com/libsndfile/libsamplerate). Download these libraries and save them to the **entry/src/main/cpp/third_party** directory. **AudioFile.h**, **base64.h**, and **base64.cc** are accessible in [whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src). Download these files and save them to the **entry/src/main/cpp/src** directory.
 
@@ -857,5 +857,4 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 |         Initial Page         |  Page with Recognized Content  |
 | :-----------------------: | :-----------------------: |
 | ![asr1](figures/asr1.png) | ![asr2](figures/asr2.png) |
-
 

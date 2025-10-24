@@ -13,7 +13,7 @@ The figure below shows the architecture of the network management subsystem. The
 
 **Figure 1** Architecture of the network management subsystem
 
-![](figures/zh-cn_architecture-of-netmanager-subsystem.png)
+![](figures/en_architecture-of-netmanager-subsystem.png)
 
 ## Directory Structure<a name="section119mcpsimp"></a>
 
