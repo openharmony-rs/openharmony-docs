@@ -1555,6 +1555,7 @@
           - [hilog](dfx/hilog.md)
           - hidumper<!--hidumper-tool-->
             - [hidumper](dfx/hidumper.md)
+            - [PrivacyManagerService](dfx/hidumper-PrivacyManagerService.md)
           - [hitrace](dfx/hitrace.md)
           - [hiperf](dfx/hiperf.md)
           - [hiprofiler](dfx/hiprofiler.md)
