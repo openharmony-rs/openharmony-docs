@@ -6160,8 +6160,7 @@ once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -6205,8 +6204,7 @@ once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -6247,8 +6245,7 @@ onceToastShow(callback: Callback\<UIElementInfo>): void;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6289,8 +6286,7 @@ onceDialogShow(callback: Callback\<UIElementInfo>): void;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
