@@ -1,5 +1,12 @@
 # ArkGraphics 2D（方舟2D图形服务）
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
+<!--Designer: @wangyanglan; @liumingxiang-->
+<!--Tester: @nobuggers; @yhl0101-->
+<!--Adviser: @ge-yafang-->
+
 - ArkTS API<!--arkgraphics-arkts-->
   - [@ohos.effectKit (图像效果)](js-apis-effectKit.md)
   - [@ohos.graphics.colorSpaceManager (色彩管理)](js-apis-colorSpaceManager.md)
