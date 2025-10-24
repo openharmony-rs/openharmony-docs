@@ -49,8 +49,9 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
 开发步骤如下:
 
-1. 在main > ets > pages文件夹下编写Index.ets页面代码，作为被测示例demo。
+1. 在main > ets > pages文件夹下编写clickToAfter.ets页面代码，作为被测示例demo。
     ```ts
+    <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/main/ets/pages/clickToAfter.ets) -->
     @Entry
     @Component
     struct Index {
@@ -81,22 +82,23 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
     ```
 2. 在ohosTest > ets > test文件夹下新建uitest.test.ets文件，并编写具体测试代码。
     ```ts
+    <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/basicExample.test.ets) -->
     import { describe, it, expect, Level } from '@ohos/hypium';
     // 导入测试依赖kit
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
     import { UIAbility, Want } from '@kit.AbilityKit';
-
+    
     const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
     export default function abilityTest() {
       describe('ActsAbilityTest', () => {
         it('testUiExample',Level.LEVEL3, async (done: Function) => {
-          console.info("uitest: TestUiExample begin");        
+          console.info("uitest: TestUiExample begin");
           // 初始化Driver对象
           const driver = Driver.create();
           const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
           // 指定被测应用包名、ability名，请开发者替换为被测应用包名和ability名
           const want: Want = {
-              bundleName: bundleName,
+            bundleName: bundleName,
               abilityName: 'EntryAbility'
           }
           // 拉起被测应用
@@ -107,7 +109,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
           const ability: UIAbility = await delegator.getCurrentTopAbility();
           console.info("get top ability");
           expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
-
+    
           // 依据指定文本“Next”查找目标控件
           const next = await driver.findComponent(ON.text('Next'));
           // 点击目标控件
@@ -129,7 +131,7 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
 如下给出控件查找与操作的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/findComAndOp.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, Component, ON, On } from '@kit.TestKit';
@@ -141,6 +143,7 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
        */
       it("componentSearchAndOperation", TestType.FUNCTION, async () => {
         let driver: Driver = Driver.create();
+        await driver.delayMs(1000);
         let button: Component = await driver.findComponent(ON.type('Button'));
         await button.click();
       })
@@ -173,13 +176,13 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 如下给出触摸屏坐标级的手指操作模拟的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/touchScreenEvent.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
 
   export default function abilityTest() {
-    describe('screenOperationTest', () => {
+    describe('touchScreen_sample', () => {
       /**
        * 基于坐标的触摸屏手指操作
        */
@@ -188,7 +191,7 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
         // 单击
         await driver.click(100,100);
         // 指定屏幕id进行单击
-        await driver.clickAt({ x: 100, y: 100, displayId: 0 });
+            await driver.clickAt({ x: 100, y: 100, displayId: 0 });
         // 滑动
         await driver.swipe(100, 100, 200, 200, 600);
         // 指定屏幕id进行滑动
@@ -219,7 +222,7 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 如下给出页面加载等待的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/waitForCom.test.ets) -->
   import { describe, it, Level, TestType, Size } from '@ohos/hypium';
   // 导入测试依赖kit
   import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
@@ -229,7 +232,7 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
   const bundleName: string = 'com.uitestScene.acts'
   const abilityName: string = 'com.uitestScene.acts.MainAbility'
   export default function abilityTest() {
-    describe('ActsAbilityTest', () => {
+    describe('waitForComp_sample', () => {
       it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
         let driver = Driver.create();
         // 拉起目标应用      
@@ -252,7 +255,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出文本输入的示例，包括基于控件的文本输入和基于坐标的文本输入两种方式。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/inputText.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, ON } from '@kit.TestKit';
@@ -323,14 +326,14 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出屏幕截图的示例，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。多屏场景下，期望对指定屏幕做截图操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/screenCap.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
   import { display } from '@kit.ArkUI';
 
   export default function abilityTest() {
-    describe('screenCaptureTest', () => {
+    describe('screenCap_sample', () => {
       /**
        * 截取指定区域的屏幕，并保存到指定路径
        */
@@ -362,13 +365,13 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出UI界面事件的监听的示例，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/eventObserver.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UIElementInfo } from '@kit.TestKit';
 
   export default function abilityTest() {
-    describe('observerTest', () => {
+    describe('eventObserver_sample', () => {
       // 监听Toast控件出现
       it("toastObserver", TestType.FUNCTION, async () => {
         let driver = Driver.create();
@@ -389,14 +392,14 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出键鼠模拟操作，包括键盘按键、组合键输入操作的示例，包括鼠标点击、移动、拖拽操作和键鼠组合操作等。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/mouseAndKeyOp.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, MouseButton } from '@kit.TestKit';
   import { KeyCode } from '@ohos.multimodalInput.keyCode';
 
   export default function abilityTest() {
-    describe('KeyboardMouseTest', () => {
+    describe('mouseAndKey_sample', () => {
       // 模拟键盘按键输入、组合键输入
       it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -433,14 +436,14 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出窗口查找和操作的示例，根据窗口属性查找窗口，并进行窗口最小化等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
   import { describe, it, TestType, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
-    describe('windowOperationTest', () => {
+    describe('findWindowAndOp_sample', () => {
       // 根据指定条件查找活跃窗口，并对其进行窗口最小化操作
       it("windowSearchAndOperation", TestType.FUNCTION, async () => {
         let driver = Driver.create();
@@ -461,14 +464,14 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出触摸板模拟操作的示例，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/touchPadOp.test.ets) -->
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UiDirection } from '@kit.TestKit';
   const DeviceErrorCode = 17000005;
 
   export default function abilityTest() {
-    describe('touchPadOperationTest', () => {
+    describe('touchPadOp_sample', () => {
       // PC/2in1场景，模拟触摸板三指上滑（界面返回桌面），三指下滑（界面恢复窗口）操作
       it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -492,13 +495,13 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出手写笔模拟操作，包括点击、滑动等操作的示例，支持设置操作时的压力值大小。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/penOp.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
 
   export default function abilityTest() {
-    describe('penOperationTest', () => {
+    describe('penOp_sample', () => {
       // 模拟手写笔单击、双击、长按、滑动操作
       it('penOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -519,14 +522,14 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出表冠模拟操作的示例，包括表冠的顺/逆时针旋转。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/watchOp.test.ets) -->
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
   const CapabilityCode = 801;
 
   export default function abilityTest() {
-    describe('crownRotateTest', () => {
+    describe('watchOp_sample', () => {
       // 手表场景，模拟表冠顺/逆时针旋转
       it('crownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -549,13 +552,13 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 如下给出屏幕显示操作的示例，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
   ```ts
-  // ohosTest/ets/test/uitest.test.ets
+  <!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/displayOp.test.ets) -->
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
-  import { Driver, Point } from '@kit.TestKit';
+  import { DisplayRotation, Driver, Point } from '@kit.TestKit';
   
   export default function abilityTest() {
-    describe('crownRotateTest', () => {
+    describe('displayOp_sample', () => {
       // 屏幕属性获取和屏幕操作
       it('displayOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
         let driver = Driver.create();
@@ -604,7 +607,7 @@ hdc shell uitest screenCap
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
- 
+
 ### 获取控件树
 | 参数    | 二级参数   |  说明       | 
 |---------|---------|-----------|
