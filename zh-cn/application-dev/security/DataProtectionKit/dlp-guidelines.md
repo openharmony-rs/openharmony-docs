@@ -82,11 +82,12 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
   <!-- @[dlp_generateDlpFiles] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 4. 查询当前应用是否在沙箱中。 <br>
-// 使用该接口需要demo应用打开DLP文件
+// 使用该接口需要由demo应用打开DLP文件
 
   <!-- @[dlp_isInSandBox] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。
+5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。 <br>
+// 使用该接口需要由demo应用打开DLP文件
 
   <!-- @[dlp_getDLPPermissionInfo] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
@@ -95,7 +96,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
   <!-- @[dlp_getDLPSupportedFileTypes] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 7. 判断当前打开文件是否是DLP文件。 <br>
-// 使用该接口需要访问DLP凭据服务器
+// 使用该接口 需要dlp文件进行判断
 
   <!-- @[dlp_isCurrentDlpFile] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
@@ -103,11 +104,13 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
   <!-- @[dlp_subscribe] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-9. 获取DLP文件打开记录。
+9. 获取DLP文件打开记录。<br>
+// 使用该接口需要由demo应用打开DLP文件
 
    <!-- @[dlp_getDLPFileAccessRecords] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-10. 获取DLP文件保留沙箱记录。
+10. 获取DLP文件保留沙箱记录。<br>
+// 使用该接口需要由demo应用打开DLP文件
 
    <!-- @[dlp_getRetentionSandboxList] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
@@ -123,11 +126,13 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
    <!-- @[dlp_getSandboxAppConfig] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。
+14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。 <br>
+// 使用该接口需要DLP凭据服务器
 
    <!-- @[dlp_startDLPManagerForResult] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
-15. 查询当前系统是否提供DLP特性。
+15. 查询当前系统是否提供DLP特性。 <br>
+// 使用该接口需要DLP凭据服务器
    <!-- @[dlp_isDLPFeature] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 16. 设置企业应用防护策略。 <br>
