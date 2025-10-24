@@ -895,6 +895,21 @@ No memory allocation type is specified, or an incorrect memory allocation type i
 
 Use a correct memory allocation type.
 
+## 7700202 Unsupported Metadata
+
+**Error Message**
+
+Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+
+**Possible Cause**
+
+1. An unsupported metadata field is entered.
+2. The value of the metadata field is invalid.
+
+**Solution**
+
+Check whether the metadata field is supported or whether the metadata value is valid.
+
 ## 7700203 Unsupported Options
 
 **Error Message**
@@ -939,6 +954,21 @@ Memory allocation failed.
 **Solution**
 
 Check the device memory or input data.
+
+## 7700304 Failed to Write Image Information to the File
+
+**Error Message**
+
+Failed to write image properties to the file.
+
+**Possible Cause**
+
+1. The image data is incorrect.
+2. You do not have the necessary permissions to modify the image file.
+
+**Solution**
+
+Check the image data and confirm that you have the required permissions for the image file.
 
 ## 7800201 Unsupported Options
 
