@@ -190,6 +190,12 @@ index=0的节点滑出了有效加载范围。当UI主线程空闲时，会检�
 
 对于节点数据从`item_7`变为`new_7`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据（即item）是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
 
+### 节点复用情况查看
+
+查看节点是否为复用可以使用[DevEco Testing](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/deveco-testing)工具进行查看，进入DevEco Testing工具后，选择实用工具，界面如下：
+![DevecoTesting_main](figures/DevecoTesting_main.png)
+在实用工具中选择UIViewer，该工具可以获取设备快照、控件树信息及控件节点属性，在右侧的控件树中选择Repeat子节点，右下方的节点属性会显示节点ID等信息，可以通过节点ID是否相同，判断组件复用或者新建的情况。
+
 ## 键值生成函数
 
 Repeat的`.key()`属性为每个子组件生成一个键值。Repeat通过键值识别数组增加、删除哪些数据以及哪些数据改变了位置（索引）。
