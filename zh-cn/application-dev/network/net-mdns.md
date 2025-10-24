@@ -37,6 +37,13 @@ MDNS管理的典型场景有：
     import { featureAbility, common } from '@kit.AbilityKit';
     ```
 <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 从@kit.NetworkKit中导入mdns命名空间。
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+```
 3. 调用addLocalService方法，添加本地服务。
 
     <!--code_no_check-->
@@ -66,6 +73,27 @@ MDNS管理的典型场景有：
     ```
 <!-- @[MDNS_add_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+  // 建立LocalService对象。
+  private localServiceInfo: mdns.LocalServiceInfo = {
+    serviceType: '_print._tcp',
+    serviceName: 'servicename',
+    port: 5555,
+    host: {
+      address: '127.0.0.1'
+    },
+    serviceAttribute: [{ key: '111', value: [1] }]
+  };
+// ···
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // addLocalService添加本地服务。
+    mdns.addLocalService(context, this.localServiceInfo).then((data) => {
+    // ···
+      console.info(`Local Service Added: ${JSON.stringify(data)}`);
+    })
+    // ···
+```
+
 4. 通过resolveLocalService方法，解析本地网络的IP地址（非必要，根据需求使用）。
    
      ```ts
@@ -76,6 +104,14 @@ MDNS管理的典型场景有：
     ```
 <!-- @[MDNS_resolve_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// resolveLocalService解析本地服务对象（非必要，根据需求使用）。
+mdns.resolveLocalService(context, this.localServiceInfo).then((data: mdns.LocalServiceInfo) => {
+// ···
+  console.info(`Resolved Local Service: ${JSON.stringify(data)}`);
+})
+```
+
 5. 通过removeLocalService方法，移除本地服务。
    
     ```ts
@@ -85,6 +121,14 @@ MDNS管理的典型场景有：
     });
     ```
 <!-- @[MDNS_remove_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// removeLocalService移除本地服务。
+mdns.removeLocalService(context, this.localServiceInfo).then((data: mdns.LocalServiceInfo) => {
+// ···
+  console.info(`Local Service Removed: ${JSON.stringify(data)}`);
+})
+```
 
 ## 发现本地服务
 
@@ -99,6 +143,13 @@ MDNS管理的典型场景有：
     import { window } from '@kit.ArkUI';
     ```
 <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 从@kit.NetworkKit中导入mdns命名空间。
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+```
 3. 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
 
     <!--code_no_check-->
