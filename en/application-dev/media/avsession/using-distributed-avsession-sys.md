@@ -33,7 +33,7 @@ To enable a system application that accesses the AVSession service as the contro
    import { audio } from '@kit.AudioKit';
    ```
    
-2. Use **castAudio** in the **AVSessionManager** class to project all sessions of the local device to another device.
+2. Use **castAudio** in **AVSessionManager** to project all sessions of the local device to another device.
 
    ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';

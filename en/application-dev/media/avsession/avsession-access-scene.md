@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 In addition to the implementation of audio and video playback, media applications may need to access AVSession provided by AVSession Kit for display and control purposes. This topic describes typical display and control scenarios of accessing AVSession.
 
@@ -99,21 +99,27 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-          // Set necessary AVSession metadata.
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            artist: 'ARTIST',
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
+          try {
+            let context = this.getUIContext().getHostContext() as Context;
+            // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet above.
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+            // Set necessary AVSession metadata.
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              artist: 'ARTIST',
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            });
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+            }
+          }
         })
     }
     .width('100%')
@@ -691,33 +697,39 @@ Currently, the system does not provide APIs for listening for multimodal key eve
       Column() {
         Text(this.message)
           .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as Context;
-            let type: AVSessionManager.AVSessionType = 'audio';
-            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-            // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
-            let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
-              title: 'TITLE',
-              mediaImage: 'IMAGE',
-              artist: 'ARTIST'
-            };
-            session.setAVMetadata(metadata).then(() => {
-              console.info(`SetAVMetadata successfully`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-            });
-            // Generally, logic processing on the player is implemented in the listener.
-            // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
-            session.on('play', () => {
-              console.info(`on play , do play task`);
-              // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
-              // After the processing is complete, call SetAVPlayState to report the playback state.
-            });
-            session.on('pause', () => {
-              console.info(`on pause , do pause task`);
-              // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
-              // After the processing is complete, call SetAVPlayState to report the playback state.
-            });
+            try {
+              let context = this.getUIContext().getHostContext() as Context;
+              let type: AVSessionManager.AVSessionType = 'audio';
+              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+              // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
+              let metadata: AVSessionManager.AVMetadata = {
+                assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+                title: 'TITLE',
+                mediaImage: 'IMAGE',
+                artist: 'ARTIST'
+              };
+              session.setAVMetadata(metadata).then(() => {
+                console.info(`SetAVMetadata successfully`);
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              });
+              // Generally, logic processing on the player is implemented in the listener.
+              // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
+              session.on('play', () => {
+                console.info(`on play , do play task`);
+                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
+                // After the processing is complete, call setAVPlayState to report the playback state.
+              });
+              session.on('pause', () => {
+                console.info(`on pause , do pause task`);
+                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
+                // After the processing is complete, call setAVPlayState to report the playback state.
+              });
+            } catch (err) {
+              if (err) {
+                console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+              }
+            }
           })
       }
       .width('100%')
