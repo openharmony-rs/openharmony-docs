@@ -6101,7 +6101,7 @@ struct SetOnWillAttachIME {
         })
         .onWillAttachIME((value:IMEClient) => {
           // 给输入法传递自定义消息
-          const inputConfig: ExtraConfig = {
+          const inputConfig: InputMethodExtraConfig = {
             customSettings: {
               component: 'RichEditor',
               id: 8 as number,
