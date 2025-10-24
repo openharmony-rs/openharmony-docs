@@ -128,6 +128,6 @@ try {
 ```shell
 hdc shell
 # 需将com.example.myapplication替换为实际应用的包名
-dump -n ohos.app.hap.myapplication |grep '"appId":'
+bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)
