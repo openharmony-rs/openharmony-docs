@@ -159,134 +159,158 @@ The following requirements must be met:
 
 ## How to Develop
 
-1. Before using the vibrator on a device, you must declare the **ohos.permission.VIBRATE** permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+1. Create a project.
 
-2. Query vibrator information.
+   ![](figures/008.png)
+
+2. Declare the permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
+
+   <!-- @[vibrator_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/module.json5) -->
+
+``` JSON5
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE"
+      }
+    ],
+```
+
+
+3. Import the related modules.
+
+   <!-- @[vibrator_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+```
+
+
+4. Define constants.
+
+   <!-- @[vibrator_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const fileName: string = 'vibrator.json';
+let TAG = 'vibrator:';
+```
+
+
+5. Query vibrator information.
 
   Scenario 1: Query information about all vibrators.
 
-  ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[vibrator_js_get_vibrator_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
-  try {
-    const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
-    console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-  }
-  ```
+``` TypeScript
+              try {
+                const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
+                console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
   Scenario 2: Query information about one or more vibrators of the specified device.
 
-  ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[vibrator_js_get_vibrator_info_sync_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
-  try {
-    const vibratorParam: vibrator.VibratorInfoParam = {
-      deviceId: 1    // The device ID must be the one that actually exists.
-    }
-    const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
-    console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-  }
-  ```
+``` TypeScript
+              try {
+                const vibratorParam: vibrator.VibratorInfoParam = {
+                  deviceId: -1    // The device ID must be the one that actually exists.
+                }
+                const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
+                console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
 
-3. Start vibration with the specified effect and attribute.
+
+6. Start vibration with the specified effect and attribute.
 
    Scenario 1: Trigger vibration with the specified duration.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // Start vibration.
-     vibrator.startVibration({
-       type: 'time',
-       duration: 1000,
-     }, {
-       id: 0,
-       usage: 'alarm'
-     }, (error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in starting vibration');
-     });
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // Start vibration.
+                vibrator.startVibration({
+                  type: 'time',
+                  duration: 1000,
+                }, {
+                  id: 0,
+                  usage: 'alarm'
+                }, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in starting vibration');
+                });
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    Scenario 2: Trigger vibration with a preset effect. You can check whether the preset effect is supported before calling **startVibration()**.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // Check whether 'haptic.effect.soft' is supported.
-     vibrator.isSupportEffect('haptic.effect.soft', (err: BusinessError, state: boolean) => {
-       if (err) {
-         console.error(`Failed to query effect. Code: ${err.code}, message: ${err.message}`);
-         return;
-       }
-       console.info('Succeed in querying effect');
-       if (state) {
-         try {
-           // Start vibration.
-           vibrator.startVibration({
-             type: 'preset',
-             effectId: 'haptic.effect.soft',
-             count: 1,
-             intensity: 50,
-           }, {
-             usage: 'unknown'
-           }, (error: BusinessError) => {
-             if (error) {
-               console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-             } else {
-               console.info('Succeed in starting vibration');
-             }
-           });
-         } catch (error) {
-           let e: BusinessError = error as BusinessError;
-           console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-         }
-       }
-     })
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                vibrator.isSupportEffect(this.realEffectId, (err: BusinessError, state: boolean) => {
+                  if (err) {
+                    console.error(`Failed to query effect. Code: ${err.code}, message: ${err.message}`);
+                    return;
+                  }
+                  console.info('Succeed in querying effect');
+                  if (state) {
+                    try {
+                      // Start vibration.
+                      vibrator.startVibration({
+                        type: 'preset',
+                        effectId: this.realEffectId,
+                        count: 1,
+                        intensity: 50,
+                      }, {
+                        usage: 'unknown'
+                      }, (error: BusinessError) => {
+                        if (error) {
+                          console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
+                        } else {
+                          console.info('Succeed in starting vibration');
+                        }
+                      });
+                    } catch (error) {
+                      let e: BusinessError = error as BusinessError;
+                      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+                    }
+                  }
+                })
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    Scenario 3: Trigger vibration according to a custom vibration configuration file.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { resourceManager } from '@kit.LocalizationKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   const fileName: string = 'xxx.json';
-   
-   @Entry
-   @Component
-   struct Index {
-     uiContext = this.getUIContext();
-   
-     build() {
-       Row() {
-         Column() {
-           Button('alarm-file')
-             .onClick(() => {
+   <!-- @[vibrator_js_vibrator_by_type_file_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
                // Obtain the file descriptor of the vibration configuration file.
                let rawFd: resourceManager.RawFileDescriptor | undefined = this.uiContext.getHostContext()?.resourceManager.getRawFdSync(fileName);
                if (rawFd != undefined) {
@@ -313,143 +337,278 @@ The following requirements must be met:
                    this.uiContext.getHostContext()?.resourceManager.closeRawFdSync(fileName);
                  }
                }
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
+```
 
-4. Stop vibration.
+
+   Scenario 3: Trigger vibration according to the specified pattern.
+
+   Add a short vibration event as a **VibratorPattern** object and trigger vibration.
+
+   <!-- @[vibrator_js_vibrator_by_type_pattern_use_transient_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
+              try {
+                let param: vibrator.TransientParam = {
+                  intensity: 80,
+                  frequency: 70,
+                  index: 0
+                }
+                builder.addTransientEvent(0, param);
+                console.info(`addTransientEvent builder is ${builder.build()}`);
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+              try {
+                vibrator.startVibration({
+                  type: "pattern",
+                  pattern: builder.build()
+                }, {
+                  id: 1,
+                  deviceId: -1,
+                  // The switch control is subject to the selected type.
+                  usage: "alarm"
+                }, (error: BusinessError) => {
+                  if (error) {
+                    let e: BusinessError = error as BusinessError;
+                    console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+                  } else {
+                    console.info(`vibrate success`);
+                  }
+                });
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+   Add a long vibration event as a **VibratorPattern** object and trigger vibration.
+
+   <!-- @[vibrator_js_vibrator_by_type_pattern_use_continuous_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
+              try {
+                // No less than four VibratorCurvePoint objects must be set. The maximum value is 16.
+                let pointsMe: vibrator.VibratorCurvePoint[] = [
+                  { time: 0, intensity: 0, frequency: -7 },
+                  { time: 42, intensity: 1, frequency: -6 },
+                  { time: 128, intensity: 0.94, frequency: -4 },
+                  { time: 217, intensity: 0.63, frequency: -14 },
+                  { time: 763, intensity: 0.48, frequency: -14 },
+                  { time: 1125, intensity: 0.53, frequency: -10 },
+                  { time: 1503, intensity: 0.42, frequency: -14 },
+                  { time: 1858, intensity: 0.39, frequency: -14 },
+                  { time: 2295, intensity: 0.34, frequency: -17 },
+                  { time: 2448, intensity: 0.21, frequency: -14 },
+                  { time: 2468, intensity: 0, frequency: -21 }
+                ]
+                let param: vibrator.ContinuousParam = {
+                  intensity: 97,
+                  frequency: 34,
+                  points: pointsMe,
+                  index: 0
+                }
+                builder.addContinuousEvent(0, 2468, param);
+                console.info(`addContinuousEvent builder is ${builder.build()}`);
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`Exception. Code ${e.code}`);
+              }
+              try {
+                vibrator.startVibration({
+                  type: 'pattern',
+                  pattern: builder.build()
+                }, {
+                  id: 1,
+                  deviceId: -1,
+                  usage:"alarm",
+                }, (error: BusinessError) => {
+                  if (error) {
+                    let e: BusinessError = error as BusinessError;
+                    console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+                  } else {
+                    console.info(`vibrate success`);
+                  }
+                });
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+7. Stop vibration.
 
    Method 1: Stop vibration in the specified mode. This method is invalid for custom vibration.
 
    ​	Stop fixed-duration vibration.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // Stop vibration in VIBRATOR_STOP_MODE_TIME mode.
-     vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_TIME, (error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in stopping vibration');
-     })
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // Stop vibration in VIBRATOR_STOP_MODE_TIME mode.
+                vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_TIME, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in stopping vibration');
+                })
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    ​	Stop preset vibration.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // Stop vibration in VIBRATOR_STOP_MODE_PRESET mode.
-     vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET, (error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in stopping vibration');
-     })
-   } catch (err) {
-     let e: BusinessError = err as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // Stop vibration in VIBRATOR_STOP_MODE_PRESET mode.
+                vibrator.stopVibration(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET, (error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in stopping vibration');
+                })
+              } catch (err) {
+                let e: BusinessError = err as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    Method 2: Stop vibration in all modes, including custom vibration.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   try {
-     // Stop vibration in all modes.
-     vibrator.stopVibration((error: BusinessError) => {
-       if (error) {
-         console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-         return;
-       }
-       console.info('Succeed in stopping vibration');
-     })
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_type_all_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // Stop vibration in all modes.
+                vibrator.stopVibration((error: BusinessError) => {
+                  if (error) {
+                    console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                    return;
+                  }
+                  console.info('Succeed in stopping vibration');
+                })
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    Method 3: Stop vibration of the specified device.
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-    
-   const vibratorInfoParam: vibrator.VibratorInfoParam = {
-     deviceId: 1   // The device ID must be the one that actually exists.
-   }
-   try {
-     vibrator.stopVibration(vibratorInfoParam).then(() => {
-       console.info('Succeed in stopping vibration');
-     }, (error: BusinessError) => {
-       console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
-     });
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_stop_vibrator_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              const vibratorInfoParam: vibrator.VibratorInfoParam = {
+                deviceId: -1   // The device ID must be the one that actually exists.
+              }
+              try {
+                vibrator.stopVibration(vibratorInfoParam).then(() => {
+                  console.info('Succeed in stopping vibration');
+                }, (error: BusinessError) => {
+                  console.error(`Failed to stop vibration. Code: ${error.code}, message: ${error.message}`);
+                });
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
 
 
-5. Enable listening for vibrator status changes. 
+
+8. Enable listening for vibrator status changes. 
 
    Enable listening.
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
 
-   // Callback
-   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
-     console.info('vibrator state callback info:', JSON.stringify(data));
-   }
+   <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
 
-   try {
-     // Subscribe to vibratorStateChange events.
-     vibrator.on('vibratorStateChange', vibratorStateChangeCallback);
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+``` TypeScript
+  // Callback
+  vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+    console.info('vibrator state callback info:', JSON.stringify(data));
+	// ···
+    // [EndExclude vibrator_js_vibrator_off_state_change_example]
+  }
+// ···
+              try {
+                // Subscribe to vibratorStateChange events.
+                vibrator.on('vibratorStateChange', this.vibratorStateChangeCallback);
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
 
    Disable listening. The specified callback must be the same as that passed to the **on** API.
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
 
-   // Callback
-   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
-     console.info('vibrator state callback info:', JSON.stringify(data));
-   }
-   try {
-     // Unsubscribe from specified vibratorStateChange events.
-     vibrator.off('vibratorStateChange', vibratorStateChangeCallback);
-     // Unsubscribe from all vibratorStateChange events.
-     // vibrator.off('vibratorStateChange');
-   } catch (error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+   <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+  // [Start vibrator_js_vibrator_on_state_change_example]
+  // Callback
+  vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+    console.info('vibrator state callback info:', JSON.stringify(data));
+    // [StartExclude vibrator_js_vibrator_on_state_change_example]
+	// ···
+  }
+  // [StartExclude vibrator_js_vibrator_on_state_change_example]
+// ···
+              try {
+                // Unsubscribe from specified vibratorStateChange events.
+                vibrator.off('vibratorStateChange', this.vibratorStateChangeCallback);
+                // Unsubscribe from all vibratorStateChange events.
+                // vibrator.off('vibratorStateChange');
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+9. Obtain the preset vibration effect based on the specified device ID and vibrator ID.
+
+   <!-- @[vibrator_js_vibrator_get_effect_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                const effectInfo: vibrator.EffectInfo = vibrator.getEffectInfoSync('haptic.clock.timer', { deviceId: -1, vibratorId: 1});
+                console.info(`isEffectSupported: ${effectInfo.isEffectSupported}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
+
+
+10. Check whether HD vibration is supported.
+
+   <!-- @[vibrator_js_vibrator_is_hd_haptic_supported_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+              try {
+                // Check whether HD vibration is supported.
+                let ret = vibrator.isHdHapticSupported();
+                console.info(`The query result is ${ret}`);
+				// ···
+              } catch (error) {
+                let e: BusinessError = error as BusinessError;
+                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+              }
+```
 
 

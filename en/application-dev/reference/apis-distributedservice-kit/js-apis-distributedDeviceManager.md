@@ -1,4 +1,10 @@
 # @ohos.distributedDeviceManager (Device Management)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedHardware-->
+<!--Owner: @hwzhangchuang-->
+<!--Designer: @hwzhangchuang-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **distributedDeviceManager** module provides APIs for distributed device management.
 
@@ -106,12 +112,12 @@ Represents the basic information about a distributed device.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-| Name                    | Type                       | Mandatory  | Description      |
-| ---------------------- | ------------------------- | ---- | -------- |
-| deviceId               | string                    | Yes   | Device ID. The value is the result of obfuscating the udid-hash (hash value of the UDID), **appid**, and salt using the SHA-256 algorithm.|
-| deviceName             | string                    | Yes   | Device name.   |
-| deviceType             | string                    | Yes   | [Device type](#getdevicetype).   |
-| networkId              | string                    | No   | Network ID of the device. |
+| Name          | Type | Read-Only| Optional             |  Description   |
+| ---------------------- | ------------------------- | --- | ---- | -------- |
+| deviceId               | string                    | Yes| No | Device ID. The value is the result of obfuscating the udid-hash (hash value of the UDID), **appid**, and salt using the SHA-256 algorithm.|
+| deviceName             | string                    | Yes| No | Device name.   |
+| deviceType             | string                    | Yes| No | [Device type](#getdevicetype).   |
+| networkId              | string                    | Yes| Yes | Network ID of the device. |
 
 ## DeviceStateChange
 
@@ -207,7 +213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.error('getAvailableDeviceList errCode:' + err.code + ',errMessage:' + err.message);
         return;
       }
-      console.log('get available device info: ' + JSON.stringify(data));
+      console.info('get available device info: ' + JSON.stringify(data));
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -247,7 +253,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
   let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
   dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
-    console.log('get available device info: ' + JSON.stringify(data));
+    console.info('get available device info: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
       console.error('getAvailableDeviceList errCode:' + err.code + ',errMessage:' + err.message);
   });
@@ -287,7 +293,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceNetworkId: string = dmInstance.getLocalDeviceNetworkId();
-    console.log('local device networkId: ' + JSON.stringify(deviceNetworkId));
+    console.info('local device networkId: ' + JSON.stringify(deviceNetworkId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceNetworkId errCode:' + e.code + ',errMessage:' + e.message);
@@ -328,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceName: string = dmInstance.getLocalDeviceName();
-    console.log('local device name: ' + JSON.stringify(deviceName));
+    console.info('local device name: ' + JSON.stringify(deviceName));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
@@ -369,7 +375,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceType: number = dmInstance.getLocalDeviceType();
-    console.log('local device type: ' + JSON.stringify(deviceType));
+    console.info('local device type: ' + JSON.stringify(deviceType));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceType errCode:' + e.code + ',errMessage:' + e.message);
@@ -410,7 +416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceId: string = dmInstance.getLocalDeviceId();
-    console.log('local device id: ' + JSON.stringify(deviceId));
+    console.info('local device id: ' + JSON.stringify(deviceId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
@@ -460,7 +466,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     let networkId = 'xxxxxxx';
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceName: string = dmInstance.getDeviceName(networkId);
-    console.log('device name: ' + JSON.stringify(deviceName)); 
+    console.info('device name: ' + JSON.stringify(deviceName)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceName errCode:' + e.code + ',errMessage:' + e.message);
@@ -510,7 +516,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     let networkId = 'xxxxxxx';
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let deviceType: number = dmInstance.getDeviceType(networkId);
-    console.log('device type: ' + JSON.stringify(deviceType)); 
+    console.info('device type: ' + JSON.stringify(deviceType)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error('getDeviceType errCode:' + e.code + ',errMessage:' + e.message);
@@ -616,7 +622,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void
 
-Binds a device.
+Binds a device. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -722,7 +728,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-Subscribes to the device state changes. The application (identified by the bundle name) will be notified when the device state changes.
+Subscribes to the device state changes. The application (identified by the bundle name) will be notified when the device state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -775,7 +781,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
 
-Unsubscribes from the device state changes.
+Unsubscribes from the device state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -828,7 +834,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-Subscribes to the **'discoverSuccess'** event. The application will be notified when a device is successfully discovered.
+Subscribes to the **'discoverSuccess'** event. The application will be notified when a device is successfully discovered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -880,7 +886,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
 
-Unsubscribes from the **'discoverSuccess'** event.
+Unsubscribes from the **'discoverSuccess'** event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -932,7 +938,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;): void
 
-Subscribes to device name changes. The application will be notified when the name of a device is changed.
+Subscribes to device name changes. The application will be notified when the name of a device is changed. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -979,7 +985,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;): void
 
-Unsubscribes from the device name changes.
+Unsubscribes from the device name changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1026,7 +1032,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
-Subscribes to the **'discoverFailure'** event. The application will be notified when a device fails to be discovered. 
+Subscribes to the **'discoverFailure'** event. The application will be notified when a device fails to be discovered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1073,7 +1079,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): void
 
-Unsubscribes from the **'discoverFailure'** event.
+Unsubscribes from the **'discoverFailure'** event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1120,7 +1126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-Subscribes to the dead events of the **DeviceManager** service. The application will be notified when the **DeviceManager** service is terminated unexpectedly. 
+Subscribes to the dead events of the **DeviceManager** service. The application will be notified when the **DeviceManager** service is terminated unexpectedly. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1163,7 +1169,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-Unsubscribes from the dead events of the **DeviceManager** service.
+Unsubscribes from the dead events of the **DeviceManager** service. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
