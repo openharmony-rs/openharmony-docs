@@ -4267,7 +4267,7 @@ Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Input_KeyEventCallback](#input_keyeventcallback) callback | 钩子函数，用于拦截待分发的所有按键事件。<br> 按键事件的优先级可以通过[OH_Input_GetKeyEventId](#oh_input_getkeyeventid)获取，按键事件的Id越小优先级越高。 |
+| [Input_KeyEventCallback](#input_keyeventcallback) callback | 钩子函数，用于拦截待分发的所有按键事件。 |
 
 **返回：**
 
@@ -4294,7 +4294,7 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Input_KeyEventCallback](#input_keyeventcallback) callback | 钩子函数，用于拦截待分发的所有按键事件。<br> 按键事件的优先级可以通过[OH_Input_GetKeyEventId](#oh_input_getkeyeventid)获取，按键事件的Id越小优先级越高。 |
+| [Input_KeyEventCallback](#input_keyeventcallback) callback | 钩子函数，用于拦截待分发的所有按键事件。 |
 
 **返回：**
 
@@ -4313,7 +4313,7 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 
 重新分发按键事件。
 
-只有被钩子拦截的按键事件才能被重新分发，重新分发的事件必须保持原有优先级顺序，按键事件的优先级可以通过[OH_Input_GetKeyEventId](#oh_input_getkeyeventid)获取，按键事件的Id越小优先级越高。<br>
+只有被钩子拦截的按键事件才能被重新分发，重新分发的事件必须保持原有优先级顺序。<br>
 调用该接口后，按键事件可在3秒内重新分发。如果超过3秒，将返回[INPUT_PARAMETER_ERROR](#input_result)。<br>
 重新分发的事件需要保证配对关系。如果重新分发了一个或多个按键按下事件[KEY_ACTION_DOWN](#input_keyeventaction)，再重新分发按键抬起事件[KEY_ACTION_UP](#input_keyeventaction)或按键动作取消事件[KEY_ACTION_CANCEL](#input_keyeventaction)可以成功。<br>
 如果仅分发[KEY_ACTION_UP](#input_keyeventaction)或[KEY_ACTION_CANCEL](#input_keyeventaction)按键事件，接口可以调用成功，但不会执行实际的分发动作。<br>
