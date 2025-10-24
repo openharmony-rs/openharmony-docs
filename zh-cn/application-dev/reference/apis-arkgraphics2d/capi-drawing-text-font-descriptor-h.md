@@ -215,3 +215,4 @@ void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)
 | -- | -- |
 | [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fullNameArray | 表示字体名称数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 
+
