@@ -51,7 +51,7 @@
       console.info(`Macro state: ${macroStatus}`);
    }
 
-   // 注册回调函数
+   // 注册回调函数。
    function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
       photoSession.on('macroStatusChanged', callback);
    }
