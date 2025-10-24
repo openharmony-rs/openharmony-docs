@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides a set of camera service APIs for you to easily develop a camera application. The application can access and operate the camera hardware to implement basic operations, such as preview, taking photos, and recording videos. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
 
@@ -79,7 +79,7 @@ Defines a higher-resolution image object.
 
 | Name  | Type                           | Read-only | Optional      | Description|
 | ------ | ----------------------------- |-----| ---------- | ---------- |
-| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| NA  | Yes  | Raw image.|
+| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| No | Yes  | Raw image.|
 
 ## ExposureMode
 
@@ -154,7 +154,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | --------------- | --------------- |
 | 202                    |  Not System Application.               |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
 
 **Example**
 
@@ -576,7 +575,7 @@ Describes the status indicating whether the camera is occluded.
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | isCameraOccluded                 | boolean              |  Yes | No|Whether the camera is occluded. **true** if occluded, **false** otherwise.       |
 
-## CameraOutputCapability<sup>13+</sup>
+## CameraOutputCapability<sup>10+</sup>
 
 Describes the camera output capability.
 
@@ -598,6 +597,8 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
+| CAMERA_FORMAT_DNG<sup>12+</sup> |   4   | Image in digital negative format.     |
+| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Image in extreme digital format.  |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.     |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.     |
 
@@ -1133,12 +1134,12 @@ Currently, the configuration is used for sensor-level prelaunch. It will be used
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-|            Name                | Type                                              |     Read-only   |     Mandatory    | Description      |
+|            Name                | Type                                              |     Read-only   |     Optional    | Description      |
 | ------------------------------- |--------------------------------------------------| ----------- | ------------ | ---------- |
-| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      No    |       Yes     | Camera device.        |
-| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      No    |       No     | Type of the parameter used for prelaunch.   |
-| activeTime<sup>11+</sup>        | number                                           |      No    |       No     | Activation time, in minutes.|
-| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      No    |       No     | Setting parameter.     |
+| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      No    |       No     | Camera device.        |
+| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      No    |       Yes     | Type of the parameter used for prelaunch.   |
+| activeTime<sup>11+</sup>        | number                                           |      No    |       Yes     | Activation time, in minutes.|
+| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      No    |       Yes     | Setting parameter.     |
 
 ## RestoreParamType<sup>11+</sup>
 
@@ -1201,6 +1202,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
   const cameraManager: camera.CameraManager = camera.getCameraManager(context);
@@ -2283,7 +2285,7 @@ Implements the basic metadata object used for camera detection. It is the data s
 | Name        | Type                                       | Read-only| Optional|Description               |
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
 | objectId<sup>13+</sup>     | number                                      |  Yes |  No | Metadata object ID.|
-| confidence<sup>13+</sup>   | number                                      |  Yes |  No | Confidence of the detection, with a value range of [0,1].|
+| confidence<sup>13+</sup>   | number                                      |  Yes |  No | Confidence of the detection, with a value range of [0, 1].|
 
 ## MetadataFaceObject<sup>13+</sup>
 
@@ -2296,7 +2298,7 @@ Implements the human face metadata object used for camera detection. It inherits
 | leftEyeBoundingBox     | [Rect](arkts-apis-camera-i.md#rect)                             |  Yes |  No | Left eye area.|
 | rightEyeBoundingBox    | [Rect](arkts-apis-camera-i.md#rect)                            |  Yes |  No | Right eye area.|
 | emotion                | [Emotion](#emotion13)             |  Yes |  No | Detected emotion.|
-| emotionConfidence      | number                            |  Yes |  No | Confidence of the emotion detection, with a value range of [0,1].|
+| emotionConfidence      | number                            |  Yes |  No | Confidence of the emotion detection, with a value range of [0, 1].|
 | pitchAngle             | number                            |  Yes |  No | Pitch angle, with a value range of [-90, 90], where downward is positive.|
 | yawAngle               | number                            |  Yes |  No | Yaw angle, with a value range of [-90, 90], where rightward is positive.|
 | rollAngle              | number                            |  Yes |  No | Row angle, with a value range of [-180, 180], where clockwise direction is positive.|
@@ -2611,6 +2613,8 @@ Enumerates the tripod statuses.
 
 Enumerates the scene features.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                           | Value  | Description                       |
@@ -2623,12 +2627,14 @@ Enumerates the scene features.
 
 Describes the scene feature detection result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type       |   Read-only  |   Mandatory  | Description      |
+| Name    | Type       |   Read-only  |   Optional  | Description      |
 | -------- | ---------- | -------- | -------- | ---------- |
-| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   Yes    |    Yes   | Scene feature type. |
-| detected |   boolean   |   Yes    |    Yes   | Check result for whether the specified scene feature is detected. **true** if detected, **false** otherwise.|
+| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   Yes    |    No   | Scene feature type. |
+| detected |   boolean   |   Yes    |    No   | Whether the specified scene feature is detected. **true** if detected, **false** otherwise.|
 
 ## TripodDetectionResult<sup>13+</sup>
 
@@ -2636,11 +2642,13 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 
 Describes the tripod detection result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type                             |   Read-only  |   Mandatory  | Description     |
+| Name    | Type                             |   Read-only  |   Optional  | Description     |
 | -------- |---------------------------------| -------- | -------- |---------|
-| tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    Yes   | Tripod status.|
+| tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    No   | Tripod status.|
 
 ## SceneDetection<sup>12+</sup>
 
@@ -2888,10 +2896,10 @@ Obtains the supported zoom ratio range. The range is [min, max), which includes 
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type          | Read-only| Mandatory| Description        |
+| Name    | Type          | Read-only| Optional| Description        |
 | -------- | ------------- |---- | ---- | -------------|
-| min      | number        | Yes |  N/A  | Minimum value of the zoom ratio range. |
-| max      | number        | Yes |  N/A  | Maximum value of the zoom ratio range.|
+| min      | number        | Yes |  No | Minimum value of the zoom ratio range. |
+| max      | number        | Yes |  No | Maximum value of the zoom ratio range.|
 
 ## Beauty<sup>11+</sup>
 
@@ -4801,10 +4809,11 @@ Defines the PiP status data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name         | Type     | Read-only| Mandatory| Description       |
+| Name         | Type     | Read-only| Optional| Description       |
 | ------------- | -------- | ---- | ---- | ---------- |
-| status        | number   | No  | Yes  | Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).|
-| sketchRatio   | number   | No  | Yes  | Zoom ratio of PiP.|
+| status        | number   | No  | No  | Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).|
+| sketchRatio   | number   | No  | No  | Zoom ratio of PiP.|
+| centerPointOffset<sup>20+</sup> | Point | No | No  | Offset of PiP. |
 
 ## SlowMotionVideoSession<sup>12+</sup>
 
@@ -5379,7 +5388,7 @@ Describes the illumination information.
 
 | Name       | Type   | Read-only| Optional | Description      |
 | ----------- | ------- | ---- |-----| ---------- |
-| lumination  | number  | Yes  | Yes  | Illumination. The value range is [0,1].|
+| lumination  | number  | Yes  | Yes  | Illumination. The value range is [0, 1].|
 
 ## CameraFormat
 
@@ -6524,7 +6533,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6596,7 +6605,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6668,7 +6677,7 @@ function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Aperture value: ${info.aperture}`);
+  console.info(`Aperture value: ${info.aperture}`);
 }
 
 function registerApertureInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -6740,7 +6749,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
@@ -7042,7 +7051,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7114,7 +7123,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7186,7 +7195,7 @@ function apertureInfoCallback(err: BusinessError, info: camera.ApertureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Aperture value: ${info.aperture}`);
+  console.info(`Aperture value: ${info.aperture}`);
 }
 
 function registerApertureInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -7258,7 +7267,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(professionalVideoSession: camera.ProfessionalVideoSession): void {
@@ -8069,7 +8078,7 @@ function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`ISO value: ${info.iso}`);
+  console.info(`ISO value: ${info.iso}`);
 }
 
 function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8141,7 +8150,7 @@ function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): vo
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`exposureTimeValue: ${info.exposureTime}`);
+  console.info(`exposureTimeValue: ${info.exposureTime}`);
 }
 
 function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8213,7 +8222,7 @@ function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo)
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`Lumination: ${info.lumination}`);
+  console.info(`Lumination: ${info.lumination}`);
 }
 
 function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
@@ -8285,7 +8294,7 @@ function tryAEInfoCallback(err: BusinessError, info: camera.TryAEInfo): void {
     console.error(`Callback Error, errorCode: ${err.code}`);
     return;
   }
-  console.log(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
+  console.info(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
 }
 
 function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
