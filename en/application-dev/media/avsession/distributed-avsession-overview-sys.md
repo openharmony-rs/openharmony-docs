@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 With distributed AVSession, OpenHarmony allows users to project locally played media to a distributed device for a better playback effect. For example, users can project audio played on a tablet to a smart speaker.
 
@@ -53,7 +53,7 @@ Projection preemption is supported. If application A initiates a projection to a
 
 The internal logic for the distributed AVSession to implement projection is as follows:
 
-- API related to [distributed audio playback](../audio/distributed-audio-playback-sys.md) are called to project audio streams to the distributed device.
+- APIs related to [distributed audio playback (available only for system applications)](../audio/distributed-audio-playback-sys.md) are called to project audio streams to the distributed device.
 
 - The distributed capability is used to project the session metadata to the distributed device for display.
 

@@ -1,5 +1,12 @@
 # Media Library Kit (Media File Management Service)
 
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xuchangda; @yixiaoff-->
+<!--Designer: @guxinggang; @liweilu1-->
+<!--Tester: @wangbeibei; @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
 - [Introduction to Media Library Kit](photoAccessHelper-overview.md)
 - [Selecting Media Assets Using Picker](photoAccessHelper-photoviewpicker.md)
 - [Saving Media Assets](photoAccessHelper-savebutton.md)
