@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 手电筒模式的使用是通过操作设备启用手电筒功能，使设备的手电筒功能持续保持常亮状态。
 

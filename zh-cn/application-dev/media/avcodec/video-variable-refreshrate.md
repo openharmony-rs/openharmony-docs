@@ -5,7 +5,7 @@
 <!--Owner: @tianjian97861-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 从API 15开始，支持视频可变帧率。
 
