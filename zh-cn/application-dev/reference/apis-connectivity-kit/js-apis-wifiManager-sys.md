@@ -132,9 +132,8 @@ getScanAlwaysAllowed(): boolean
 **示例：**
 **ArkTS-Dyn起始版本：**20
 
-**ArkTS-Sta起始版本：**20**ArkTS-Dyn起始版本：**20
-
 **ArkTS-Sta起始版本：**20
+
 ```ts
 	import { wifiManager } from '@kit.ConnectivityKit';
 
@@ -242,7 +241,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**
+**ArkTS-Dyn起始版本：**9
 
 **ArkTS-Sta起始版本：**20
 
@@ -333,11 +332,15 @@ getSupportedFeatures(): number
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | number | 支持的特性值。 |
+  | number | 支持的特性值。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
 
 **特性ID值枚举：**
 
@@ -372,50 +375,6 @@ getSupportedFeatures(): number
 	try {
 		let ret = wifiManager.getSupportedFeatures();
 		console.info("supportedFeatures:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-
-```
-
-
-## wifiManager.getDeviceMacAddress<sup>15+</sup>
-
-getDeviceMacAddress(): string[]
-
-获取设备的MAC地址。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO，仅系统应用可用。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**返回值：**
-
-  | **类型** | **说明** |
-  | -------- | -------- |
-  | string[] | MAC地址。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
-
-| **错误码ID** | **错误信息** |
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
-
-**示例：**
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		let ret = wifiManager.getDeviceMacAddress();
-		console.info("deviceMacAddress:" + JSON.stringify(ret));
 	}catch(error){
 		console.error("failed:" + JSON.stringify(error));
 	}
@@ -499,6 +458,10 @@ reassociate(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -534,6 +497,10 @@ reconnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -559,7 +526,9 @@ reconnect(): void
 
 ## wifiManager.updateNetwork<sup>9+</sup>
 
-updateNetwork(config: WifiDeviceConfig): number
+ArkTS-Dyn: updateNetwork(config: WifiDeviceConfig): number
+
+ArkTS-Sta: updateNetwork(config: WifiDeviceConfig): int
 
 更新网络配置。
 
@@ -568,6 +537,10 @@ updateNetwork(config: WifiDeviceConfig): number
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -579,7 +552,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | number | 返回更新的网络配置ID，如果值为-1表示更新失败。 |
+  | number | 返回更新的网络配置ID，如果值为-1表示更新失败。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **错误码：**
 
@@ -613,7 +586,9 @@ updateNetwork(config: WifiDeviceConfig): number
 
 ## wifiManager.disableNetwork<sup>9+</sup>
 
-disableNetwork(netId: number): void
+ArkTS-Dyn: disableNetwork(netId: number): void
+
+ArkTS-Sta: disableNetwork(netId: int): void
 
 去使能网络配置。
 
@@ -623,11 +598,15 @@ disableNetwork(netId: number): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | netId | number | 是 | 网络配置ID。 |
+  | netId | number | 是 | 网络配置ID。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **错误码：**
 
@@ -665,6 +644,10 @@ removeAllNetwork(): void
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 

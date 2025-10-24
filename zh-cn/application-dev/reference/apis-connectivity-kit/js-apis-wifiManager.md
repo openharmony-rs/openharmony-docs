@@ -666,7 +666,9 @@ WAPI认证方式的枚举。
 
 ## wifiManager.addCandidateConfig<sup>9+</sup>
 
-addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
+ArkTS-Dyn: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
+
+ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
 
@@ -721,7 +723,9 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 ## wifiManager.addCandidateConfig<sup>9+</sup>
 
-addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
 添加候选网络配置，使用callback异步回调。
 
@@ -769,7 +773,9 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 ## wifiManager.removeCandidateConfig<sup>9+</sup>
 
-removeCandidateConfig(networkId: number): Promise&lt;void&gt;
+ArkTS-Dyn: removeCandidateConfig(networkId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 
 移除候选网络配置，使用Promise异步回调。
 
@@ -787,7 +793,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 网络配置ID。 |
+  | networkId | number | 是 | 网络配置ID。ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **返回值：**
 
@@ -826,7 +832,9 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 ## wifiManager.removeCandidateConfig<sup>9+</sup>
 
-removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: removeCandidateConfig(networkId: int, callback: AsyncCallback&lt;void&gt;): void
 
 移除候选网络配置，使用callback异步回调。
 
@@ -871,7 +879,9 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 
 ## wifiManager.removeDevice<sup>15+</sup>
 
-removeDevice(id: number): void
+ArkTS-Dyn: removeDevice(id: number): void
+
+ArkTS-Sta: removeDevice(id: int): void
 
 移除网络配置。
 
@@ -883,7 +893,7 @@ removeDevice(id: number): void
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | id | number | 是 | 网络配置ID。 |
+  | id | number | 是 | 网络配置ID。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **错误码：**
 
@@ -967,7 +977,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 ## wifiManager.connectToCandidateConfig<sup>9+</sup>
 
-connectToCandidateConfig(networkId: number): void
+ArkTS-Dyn: connectToCandidateConfig(networkId: number): void
+
+ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 应用使用该接口连接到自己添加的候选网络。
 
@@ -976,6 +988,10 @@ connectToCandidateConfig(networkId: number): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1189,6 +1205,10 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -1221,13 +1241,19 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 ## wifiManager.connectToNetwork<sup>15+</sup>
 
-connectToNetwork(networkId: number): void
+ArkTS-Dyn: connectToNetwork(networkId: number): void
+
+ArkTS-Sta: connectToNetwork(networkId: int): void
 
 应用使用该接口连接到热点。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1262,7 +1288,10 @@ connectToNetwork(networkId: number): void
 
 ## wifiManager.getSignalLevel<sup>9+</sup>
 
-getSignalLevel(rssi: number, band: number): number
+ArkTS-Dyn: getSignalLevel(rssi: number, band: number): number
+
+ArkTS-Sta: getSignalLevel(rssi: int, band: int): int
+
 
 查询WLAN信号强度。
 
@@ -1270,18 +1299,22 @@ getSignalLevel(rssi: number, band: number): number
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | rssi | number | 是 | 热点的信号强度(dBm)。 |
-  | band | number | 是 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
+  | rssi | number | 是 | 热点的信号强度(dBm)。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
+  | band | number | 是 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
 
 **返回值：**
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | number | 信号强度，取值范围为[0,&nbsp;4]。 |
+  | number | 信号强度，取值范围为[0,&nbsp;4]。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
 
 **错误码：**
 
@@ -1323,6 +1356,10 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | 类型 | 说明 |
@@ -1353,6 +1390,10 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（该权限仅系统应用可申请），则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1507,6 +1548,10 @@ isConnected(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -1548,6 +1593,10 @@ disconnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -1571,16 +1620,68 @@ disconnect(): void
 
 ```
 
+## wifiManager.getDeviceMacAddress<sup>15+</sup>
+
+getDeviceMacAddress(): string[]
+
+获取设备的MAC地址。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO，仅系统应用可用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
+
+**返回值：**
+
+  | **类型** | **说明** |
+  | -------- | -------- |
+  | string[] | MAC地址。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+| 2501001  | Wi-Fi STA disabled.|
+
+**示例：**
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		let ret = wifiManager.getDeviceMacAddress();
+		console.info("deviceMacAddress:" + JSON.stringify(ret));
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+
+```
 
 ## wifiManager.isFeatureSupported<sup>9+</sup>
 
-isFeatureSupported(featureId: number): boolean
+ArkTS-Dyn: isFeatureSupported(featureId: number): boolean
+
+ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 判断设备是否支持相关WLAN特性。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1645,6 +1746,10 @@ getIpInfo(): IpInfo
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -1700,6 +1805,10 @@ getIpv6Info(): Ipv6Info
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
 | **类型** | **说明** |
@@ -1754,6 +1863,10 @@ getCountryCode(): string
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
