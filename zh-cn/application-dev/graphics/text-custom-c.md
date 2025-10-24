@@ -86,7 +86,8 @@
     OH_Drawing_TypographyHandlerAddText(handler, text);
    ```
 
-5. 创建行对象。获取行中所有文字的塑形结果。
+5. 创建行对象。获取行中所有文字的塑形结果。  
+使用OH_Drawing_LineTypographyCreateLine()方法创建一个单行对象，通过行对象OH_Drawing_TextLineGetGlyphRuns()方法获取相同样式的文字单元。
 
    ```c++
     // 通过 handler 创建一个 Typography
@@ -96,7 +97,9 @@
     OH_Drawing_Array *runs = OH_Drawing_TextLineGetGlyphRuns(textLine);
    ```
 
-6. 遍历所有字形，创建textBlob对象并重新定义字形位置，最后通过drawTextBlob接口进行自定义绘制。  
+6. 遍历所有字形，创建textBlob对象并重新定义字形位置，最后通过OH_Drawing_CanvasDrawTextBlob()方法进行自定义绘制。  
+该步骤为自定义绘制步骤。通过OH_Drawing_GetRunGlyphs()方法获取字形序号，OH_Drawing_GetRunFont()方法获取字体对象，两则结合以确定字形信息。  
+从 API version 20开始，新增OH_Drawing_GetRunGlyphAdvances()方法，以确定每个字形的绘制宽度和高度，依赖这些数据可实现文字位置自定义等功能。
 
    ```c++
    for (int i = 0; i < runsLength; i++) {

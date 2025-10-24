@@ -73,7 +73,8 @@
    paragraphBuilder.addText("Hello World");
    ```
    
-4. 创建行对象。获取行中所有文字的塑形结果。
+4. 创建行对象。获取行中所有文字的塑形结果。  
+使用createLine()方法创建一个单行对象，通过行对象getGlyphRuns()方法获取相同样式的文字单元。
 
    ```ts
    // 从第0个字符开始，获取11个字符，正好是“Hello World”这几个字符的结果。
@@ -83,6 +84,8 @@
    ```
 
 5. 遍历所有字形，创建textBlob对象并重新定义字形位置，最后通过drawTextBlob接口进行自定义绘制。  
+该步骤为自定义绘制步骤。通过getGlyphs()方法获取字形序号，getFont()方法获取字体对象，两则结合以确定字形信息。  
+从 API version 20开始，新增getAdvances()方法，已以定每个字形的绘制宽度和高度，依赖这些数据可实现文字位置自定义等功能。
 
    ```ts
    for (let index = 0; index < runs.length; index++) {
