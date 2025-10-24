@@ -450,6 +450,65 @@ async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
 }
 ```
 
+## modifyImagePropertiesEnhanced<sup>22+</sup>
+
+modifyImagePropertiesEnhanced(records: Record\<PropertyKey, string | null\>): Promise\<void\>
+
+Modifies image properties in batches.
+
+> **NOTE**
+>
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [ImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [ImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
+> - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties12).
+> - This API applies only to images that are in JPEG, PNG, or HEIF format and contain EXIF information. Before modifying properties, use the **supportedFormats** property to check whether the device supports EXIF information read/write in HEIF format.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description        |
+| ------- | ------ | ---- | ------------ |
+| records | Record<[PropertyKey](arkts-apis-image-e.md#propertykey7), string \| null>|Yes| Key-value pairs of image property names and property values.|
+
+**Return value**
+
+| Type          | Description                       |
+| -------------- | --------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7700102 | Unsupported MIME type.             |
+| 7700202 | Unsupported metadata. For example, the property key is not supported, or the property value is invalid.             |
+| 7700304 | Failed to write image properties to the file.             |
+
+**Example**
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource) {
+  let keyValues: Record<PropertyKey, string|null> = {
+    [image.PropertyKey.IMAGE_WIDTH] : "1024",
+    [image.PropertyKey.IMAGE_LENGTH] : "1024"
+  };
+  let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
+  imageSourceObj.modifyImagePropertiesEnhanced(keyValues).then(() => {
+    imageSourceObj.getImageProperties(checkKey).then((data) => {
+      console.info(`Image Width and Image Height:${data}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+  });
+}
+```
+
 ## updateData<sup>9+</sup>
 
 updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number): Promise\<void>
