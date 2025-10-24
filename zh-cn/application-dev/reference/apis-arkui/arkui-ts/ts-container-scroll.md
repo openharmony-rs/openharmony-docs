@@ -1037,9 +1037,12 @@ contentSize(): SizeResult
 >
 >  Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
 >
->  当Scroll组件为自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+>  当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
 >
->  当Scroll组件设置为不可滚动、Grid组件固定行列模板导致不可滚动时，获取到的内容总大小为0。
+>  当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+>
+>  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时，获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
+
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
