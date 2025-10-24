@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 [Worker](../../arkts-utils/worker-introduction.md) is mainly used to offer applications a multithreaded environment. It enables applications to perform time-consuming operations in background threads. This greatly prevents computing-intensive or high-latency tasks from blocking the running of the main thread.
 

@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -195,7 +195,7 @@ struct Index {
     let atManager = abilityAccessCtrl.createAtManager();
     if (this.context) {
       let res = await atManager.requestPermissionsFromUser(this.context, [this.cameraPermission]);
-      for (let i =0; i < res.permissions.length; i++) {
+      for (let i = 0; i < res.permissions.length; i++) {
         if (this.cameraPermission.toString() === res.permissions[i] && res.authResults[i] === 0) {
           this.isShow = true;
         }

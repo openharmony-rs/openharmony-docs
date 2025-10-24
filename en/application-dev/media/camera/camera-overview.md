@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 With the APIs provided by Camera Kit, you can develop a camera application. The application accesses and operates the camera device to implement basic operations, such as preview, photo capture, and video recording. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
 

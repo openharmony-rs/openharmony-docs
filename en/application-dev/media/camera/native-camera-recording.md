@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 As another important function of the camera application, video recording is the process of cyclic frame capture. To smooth video recording, you can follow step 5 in [Photo Capture](native-camera-shooting.md) to set the resolution, flash, focal length, photo quality, and rotation angle.
 

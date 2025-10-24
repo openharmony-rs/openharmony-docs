@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The main process of camera application development includes development preparations, device input management, session management, preview, photo capture, and video recording.
 
