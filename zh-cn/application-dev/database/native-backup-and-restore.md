@@ -82,16 +82,16 @@
         if (store == nullptr) {
             OH_Rdb_DeleteStoreV2(config);
             // 重新创建数据库，如果有备库可以重建后调用恢复接口
-        } else {
-            // 通过store句柄使用备库进行数据库恢复
-            int errCode = OH_Rdb_Restore(store, restorePath);
-            // restore在有其它接口占用写链接时会失败，建议等待其它调用结束后再调用
-            if(errCode != 0){
-                OH_LOG_ERROR(LOG_APP, "restore failed! errCode is: %{public}d", errCode);
-                //等待其它线程调用结束，进行重试。不建议重试次数过多或等待时间过长，避免占用太多系统资源。
-                errCode = OH_Rdb_Restore(store, restorePath);
-                // 或采用标记的方式标记数据库异常，后续在进程重启或业务空闲时进行恢复
-            }
+            return;
+        }
+        // 通过store句柄使用备库进行数据库恢复
+        int errCode = OH_Rdb_Restore(store, restorePath);
+        // restore在有其它接口占用写链接时会失败，建议等待其它调用结束后再调用
+        if (errCode != 0) {
+            OH_LOG_ERROR(LOG_APP, "restore failed! errCode is: %{public}d", errCode);
+            // 等待其它线程调用结束，进行重试。不建议重试次数过多或等待时间过长，避免占用太多系统资源。
+            errCode = OH_Rdb_Restore(store, restorePath);
+            // 或采用标记的方式标记数据库异常，后续在进程重启或业务空闲时进行恢复
         }
     }
     OH_Rdb_ConfigV2* config3 = OH_Rdb_CreateConfig();
