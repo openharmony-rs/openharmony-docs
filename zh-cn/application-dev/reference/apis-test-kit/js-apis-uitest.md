@@ -6308,6 +6308,8 @@ once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -6352,6 +6354,8 @@ once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -6395,6 +6399,8 @@ onceToastShow(callback: Callback\<UIElementInfo>): void;
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Sta起始版本：** 22
@@ -6435,6 +6441,8 @@ async function demo() {
 onceDialogShow(callback: Callback\<UIElementInfo>): void;
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
