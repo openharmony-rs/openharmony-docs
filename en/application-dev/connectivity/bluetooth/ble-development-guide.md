@@ -58,7 +58,7 @@ try {
 }
 ```
 
-- For details about how to parse advertising packets, see [Sample Code](#sample-code).
+- For details about how to parse advertising packets, see the sample code.
 
 **2. Initiating a Scan**<br>
 By scanning BLE advertisements from other nearby devices via BLE, you can discover or find the target devices required by the application.

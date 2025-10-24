@@ -985,7 +985,7 @@ Enables the location switch for the specified system account. This API uses a pr
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account.md#obtaining-all-system-accounts).|
+  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account-sys.md#obtaining-all-system-accounts).|
 
 **Return value**
 
@@ -1040,7 +1040,7 @@ Disables the location switch for the specified system account.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account.md#obtaining-all-system-accounts).|
+  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account-sys.md#obtaining-all-system-accounts).|
 
 **Error codes**
 
@@ -1081,7 +1081,7 @@ Checks whether the location switch is enabled for the specified system account.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account.md#obtaining-all-system-accounts).|
+  | userId | number | Yes| System account ID. For details about how to obtain the system account ID, see [Obtaining All System Accounts](../../basic-services/account/manage-os-account-sys.md#obtaining-all-system-accounts).|
 
 **Return value**
 
