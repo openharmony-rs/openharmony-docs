@@ -11,42 +11,6 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
-## wifiManager.disableWifi<sup>9+</sup>
-
-disableWifi(): void
-
-去使能WLAN，异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否关闭成功。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
-
-| **错误码ID** | **错误信息** |
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-| 2501004  | Operation failed because the service is being opened. |
-
-**示例：**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.disableWifi();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-```
-
 ## wifiManager.enableSemiWifi<sup>12+</sup>
 
 enableSemiWifi(): void
@@ -58,6 +22,10 @@ enableSemiWifi(): void
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION  仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -83,41 +51,6 @@ enableSemiWifi(): void
 	}
 ```
 
-## wifiManager.startScan<sup>10+</sup>
-
-startScan(): void
-
-**系统接口：** 此接口为系统接口。
-
-启动WLAN扫描。
-
-**需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.MANAGE_WIFI_CONNECTION
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
-
-| **错误码ID** | **错误信息** |
-| -------- | -------- |
-| 201 | Permission denied.                 |
-| 202 | System API is not allowed called by Non-system application. |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-
-**示例：**
-
-```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-
-	try {
-		wifiManager.startScan();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-```
-
 ## wifiManager.setScanAlwaysAllowed<sup>10+</sup>
 
 setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
@@ -129,6 +62,10 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -171,6 +108,10 @@ getScanAlwaysAllowed(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
 | **类型** | **说明** |
@@ -189,7 +130,11 @@ getScanAlwaysAllowed(): boolean
 | 2501000  | Operation failed.|
 
 **示例：**
+**ArkTS-Dyn起始版本：**20
 
+**ArkTS-Sta起始版本：**20**ArkTS-Dyn起始版本：**20
+
+**ArkTS-Sta起始版本：**20
 ```ts
 	import { wifiManager } from '@kit.ConnectivityKit';
 
@@ -295,8 +240,11 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG（仅系统应用可申请） 和 ohos.permission.MANAGE_WIFI_CONNECTION（仅系统应用可申请）。
 
-**系统能力：**
-  SystemCapability.Communication.WiFi.STA
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -485,6 +433,10 @@ getWifiDetailState(): WifiDetailState
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 

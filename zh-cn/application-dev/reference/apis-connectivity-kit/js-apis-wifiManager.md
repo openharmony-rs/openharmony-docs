@@ -22,6 +22,10 @@ isWifiActive(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**13
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -60,6 +64,10 @@ enableWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -81,6 +89,45 @@ enableWifi(): void
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }
+```
+## wifiManager.disableWifi<sup>9+</sup>
+
+disableWifi(): void
+
+去使能WLAN，异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否关闭成功。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**20
+
+**ArkTS-Sta起始版本：**20
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+| 2501004  | Operation failed because the service is being opened. |
+
+**示例：**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.disableWifi();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
 ```
 
 ## wifiManager.scan<sup>9+</sup><sup>(deprecated)</sup>
@@ -118,6 +165,44 @@ scan(): void
 	}
 ```
 
+## wifiManager.startScan<sup>10+</sup>
+
+startScan(): void
+
+**系统接口：** 此接口为系统接口。
+
+启动WLAN扫描。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.MANAGE_WIFI_CONNECTION
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**21
+
+**ArkTS-Sta起始版本：**21
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**示例：**
+
+```ts
+	import { wifiManager } from '@kit.ConnectivityKit';
+
+	try {
+		wifiManager.startScan();
+	}catch(error){
+		console.error("failed:" + JSON.stringify(error));
+	}
+```
 
 ## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
 
@@ -292,6 +377,10 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -690,6 +779,10 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
@@ -830,6 +923,10 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -884,7 +981,7 @@ connectToCandidateConfig(networkId: number): void
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 候选网络配置的ID。 |
+  | networkId | number | 是 | 候选网络配置的ID。ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **错误码：**
 
@@ -970,13 +1067,19 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 ## wifiManager.addDeviceConfig<sup>15+</sup>
 
-addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
+ArkTS-Dyn: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
+
+ArkTS-Sta: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 添加网络配置，使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1026,11 +1129,17 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
+
+
 添加网络配置，使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
