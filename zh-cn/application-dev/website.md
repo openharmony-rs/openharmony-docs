@@ -5584,6 +5584,7 @@
           - [OH_Drawing_TextTab](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-texttab.md)
           - [OH_Drawing_TextLine](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textline.md)
           - [OH_Drawing_Run](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-run.md)
+          - [OH_Drawing_FontFullDescriptor](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfulldescriptor.md)
           - [OH_Drawing_Canvas](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md)
           - [OH_Drawing_Pen](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pen.md)
           - [OH_Drawing_Region](reference/apis-arkgraphics2d/capi-drawing-oh-drawing-region.md)
