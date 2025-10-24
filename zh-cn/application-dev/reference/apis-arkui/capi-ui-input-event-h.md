@@ -46,6 +46,7 @@
 | [anonymous6](#anonymous6)                       | - | 定义焦点轴事件的轴类型。 |
 | [ArkUI_InteractionHand](#arkui_interactionhand)     | ArkUI_InteractionHand | 定义触摸事件是左手还是右手。 |
 | [anonymous7](#anonymous7)                       | - | 定义轴事件的操作类型。 |
+| [anonymous8](#anonymous8)                       | - | 定义轴事件的轴类型。 |
 | [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | 定义惯性滚动轴事件的阶段。 |
 
 ### 函数
@@ -380,10 +381,10 @@ enum anonymous7
 | UI_AXIS_EVENT_ACTION_END = 3 | 轴事件结束。 |
 | UI_AXIS_EVENT_ACTION_CANCEL = 4 | 轴事件取消。 |
 
-### AxisType
+### anonymous8
 
 ```
-enum AxisType
+enum anonymous8
 ```
 
 **描述：**
@@ -395,9 +396,9 @@ enum AxisType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_AXIS_EVENT_VERTICAL_AXIS = 0 | 垂直滚动轴。 |
-| UI_AXIS_EVENT_HORIZONTAL_AXIS = 1 | 水平滚动轴。 |
-| UI_AXIS_EVENT_PINCH_AXIS = 2 | 捏合轴。 |
+| UI_AXIS_TYPE_VERTICAL_AXIS = 0 | 垂直滚动轴。 |
+| UI_AXIS_TYPE_HORIZONTAL_AXIS = 1 | 水平滚动轴。 |
+| UI_AXIS_TYPE_PINCH_AXIS = 2 | 捏合轴。 |
 
 ### ArkUI_CoastingAxisEventPhase
 
@@ -1867,7 +1868,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| int32_t axis | 轴事件的轴类型。 |
+| int32_t axis | 表示轴事件的轴类型[UI_AXIS_TYPE_XXX](#anonymous8)。 |
 
 **返回值：**
 
