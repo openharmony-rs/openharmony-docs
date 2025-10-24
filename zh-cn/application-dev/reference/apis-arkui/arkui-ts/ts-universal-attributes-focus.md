@@ -281,7 +281,7 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
-设置当前容器组件的id标识，以及是否为焦点组。
+设置当前容器组件的id标识，以及是否为焦点组。新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
 
 **原子化服务API：**  从API version 14开始，该接口支持在原子化服务中使用。
 
