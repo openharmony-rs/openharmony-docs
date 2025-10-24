@@ -396,7 +396,7 @@ struct CanvasContentUpdate {
 
 可以使用以下两种方式监听Canvas组件可见性，避免不可见时仍在无效绘制。
 
-- 通过RenderingContext获取FrameNode监听onVisibleAreaApproximateChange事件 (API 13)。
+- 通过RenderingContext获取FrameNode监听onVisibleAreaApproximateChange事件（API 13）。
 
    ```ts
   import { ColorMetrics } from '@kit.ArkUI';
@@ -464,7 +464,7 @@ struct CanvasContentUpdate {
   ```
 ![canvas_RenderingContext](figures/Canvas_RenderingContext.jpg)
 
-- 通过声明式方式监听onVisibleAreaApproximateChange事件 (API 17)。
+- 通过声明式方式监听onVisibleAreaApproximateChange事件（API 17）。
 
    ```ts
   import { ColorMetrics } from '@kit.ArkUI';
