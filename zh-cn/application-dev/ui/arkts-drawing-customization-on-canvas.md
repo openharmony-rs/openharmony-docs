@@ -394,12 +394,12 @@ struct CanvasContentUpdate {
 
 ## 监听Canvas组件可见性
 
-可以使用以下两种方式监听Canvas组件可见性，避免不可见时仍在无效绘制
+可以使用以下两种方式监听Canvas组件可见性，避免不可见时仍在无效绘制。
 
-- 通过RenderingContext获取FrameNode监听onVisibleAreaApproximateChange事件 (API 13)
+- 通过RenderingContext获取FrameNode监听onVisibleAreaApproximateChange事件 (API 13)。
 
    ```ts
-  import { ColorMetrics } from '@ohos.arkui.node';
+  import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
   @Component
@@ -417,7 +417,7 @@ struct CanvasContentUpdate {
       // 清空原先内容与画布状态
       this.canvasContext.reset()
 
-      //开始绘制
+      // 开始绘制
       this.canvasContext.fillStyle = color.color
       let path: Path2D = new Path2D()
       path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
@@ -464,10 +464,10 @@ struct CanvasContentUpdate {
   ```
 ![canvas_RenderingContext](figures/Canvas_RenderingContext.jpg)
 
-- 通过声明式方式监听onVisibleAreaApproximateChange事件 (API 17)
+- 通过声明式方式监听onVisibleAreaApproximateChange事件 (API 17)。
 
    ```ts
-  import { ColorMetrics } from '@ohos.arkui.node';
+  import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
   @Component
@@ -485,7 +485,7 @@ struct CanvasContentUpdate {
       // 清空原先内容与画布状态
       this.canvasContext.reset()
 
-      //开始绘制
+      // 开始绘制
       this.canvasContext.fillStyle = color.color
       let path: Path2D = new Path2D()
       path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
