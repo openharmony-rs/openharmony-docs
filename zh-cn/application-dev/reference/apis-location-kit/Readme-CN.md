@@ -7,7 +7,9 @@
 <!--Adviser: @RayShih-->
 - ArkTS API<!--location-arkts-->
   - [@ohos.geoLocationManager (位置服务)](js-apis-geoLocationManager.md)
+  <!--Del-->
   - [@ohos.geoLocationManager (位置服务)(系统接口)](js-apis-geoLocationManager-sys.md)
+  <!--DelEnd-->
   - [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](js-apis-app-ability-FenceExtensionAbility.md)
   - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext)](js-apis-app-ability-FenceExtensionContext.md)
   <!--Del-->
