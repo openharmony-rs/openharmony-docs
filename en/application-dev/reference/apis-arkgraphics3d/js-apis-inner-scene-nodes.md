@@ -105,6 +105,7 @@ Enumerates the node types.
 | GEOMETRY | 2 | Geometry node.|
 | CAMERA | 3 | Camera node.|
 | LIGHT | 4 | Light node.|
+| CUSTOM<sup>21+</sup> | 255 | Custom node, which is usually defined in an extension plugin.|
 
 ## Container\<T>
 Container for defining scene nodes. It provides a way to group scene nodes into a hierarchy.
@@ -415,7 +416,9 @@ Camera node, which inherits from [Node](#node).
 | farPlane | number | No| No| Remote plane. The value must be greater than that of **nearPlane**.|
 | enabled | boolean | No| No| Whether the camera is enabled. **true** if enabled, **false** otherwise.|
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | No| No| Post-processing settings.|
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | Yes| No| Post-processing effects applied to the camera output.|
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | No| No| Color after the render target is cleared.|
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No| Yes| Rendering pipeline type. (If the FORWARD_LIGHTWEIGHT pipeline is selected, some features are unavailable.)|
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
