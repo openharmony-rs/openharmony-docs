@@ -154,7 +154,7 @@ ani_status ANI_Constructor(ani_vm *vm, uint32_t *result)
         return ANI_ERROR;
     }
     std::array methods = {
-        ani_native_function {"grayScale", "Lescompat/ArrayBuffer;:v", reinterpret_cast<void*>(ANI_GrayScale)},
+        ani_native_function {"grayScale", "Lstd/core/ArrayBuffer;:v", reinterpret_cast<void*>(ANI_GrayScale)},
     }
 
     ani_status ret = env->Class_BindNativeMethods(cls, methods.data(), methods.size());
