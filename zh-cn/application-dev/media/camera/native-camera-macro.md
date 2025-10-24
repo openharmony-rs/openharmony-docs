@@ -102,7 +102,7 @@
         return ret;
     }
 
-    // 解注册
+    // 解注册。
     Camera_ErrorCode UnregisterMacroStatusCallback(Camera_CaptureSession* captureSession)
     {
         Camera_ErrorCode ret = OH_CaptureSession_UnregisterMacroStatusChangeCallback(captureSession, MacroStatusCallback);
