@@ -161,6 +161,15 @@ import { common } from '@kit.AbilityKit';
     let discoveryService = mdns.createDiscoveryService(context, serviceType);
     ```
 <!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
+// ···
+// 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
+let serviceType = '_print._tcp';
+let discoveryService = mdns.createDiscoveryService(context, serviceType);
+```
   
 4. 订阅MDNS服务发现相关状态变化。
 
@@ -180,6 +189,24 @@ import { common } from '@kit.AbilityKit';
     });
     ```
  <!-- @[discovery_service_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+ 
+ ``` TypeScript
+ // 订阅MDNS服务发现相关状态变化。
+ discoveryService.on('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
+   console.info(JSON.stringify(data));
+ });
+ discoveryService.on('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
+   console.info(JSON.stringify(data));
+ });
+ discoveryService.on('serviceFound', (data: mdns.LocalServiceInfo) => {
+   console.info(JSON.stringify(data));
+ // ···
+ });
+ discoveryService.on('serviceLost', (data: mdns.LocalServiceInfo) => {
+   console.info(JSON.stringify(data));
+ // ···
+ });
+ ```
 
 5. 启动搜索局域网内的MDNS服务。
 
@@ -188,6 +215,11 @@ import { common } from '@kit.AbilityKit';
     discoveryService.startSearchingMDNS();
     ```
 <!-- @[start_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 启动搜索局域网内的MDNS服务。
+discoveryService.startSearchingMDNS();
+```
 6. 停止搜索局域网内的MDNS服务。
 
     ```ts
@@ -195,6 +227,11 @@ import { common } from '@kit.AbilityKit';
     discoveryService.stopSearchingMDNS();
     ```
 <!-- @[stop_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 停止搜索局域网内的MDNS服务。
+discoveryService.stopSearchingMDNS();
+```
 7. 取消订阅的MDNS服务。
 
     ```ts
@@ -213,6 +250,24 @@ import { common } from '@kit.AbilityKit';
     });
     ```
 <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 取消订阅的MDNS服务。
+discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
+  console.info(JSON.stringify(data));
+});
+discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
+  console.info(JSON.stringify(data));
+});
+discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
+  console.info(JSON.stringify(data));
+  // ···
+});
+discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
+  console.info(JSON.stringify(data));
+  // ···
+});
+```
 ## 相关实例
 
 针对MDNS管理，有以下相关实例可供参考：
