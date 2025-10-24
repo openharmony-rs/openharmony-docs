@@ -19,7 +19,9 @@ The **PrintExtensionAbility** module provides operation APIs of the print extens
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 ```
 
-## PrintExtensionAbility.onCreate
+## PrintExtensionAbility
+
+### onCreate
 
 onCreate(want: Want): void
 
@@ -30,23 +32,23 @@ Called to initialize the print extension when the system connects to the extensi
 **Parameters**
 | **Name**| **Type** | **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| want | Want | Yes| Parameters required for invoking the print page.|
+| want | [Want](../apis-ability-kit/js-apis-application-want.md#want) | Yes| Parameters required for invoking the print page.|
 
 **Example**
 
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
-import Want from '@ohos.app.ability.Want';
+import { Want } from '@kit.AbilityKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onCreate(want: Want): void {
-        console.log('onCreate');
+        console.info('onCreate');
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onStartDiscoverPrinter
+### onStartDiscoverPrinter
 
 onStartDiscoverPrinter(): void
 
@@ -61,13 +63,13 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onStartDiscoverPrinter(): void {
-        console.log('onStartDiscoverPrinter enter');
+        console.info('onStartDiscoverPrinter enter');
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onStopDiscoverPrinter
+### onStopDiscoverPrinter
 
 onStopDiscoverPrinter(): void
 
@@ -82,13 +84,13 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onStopDiscoverPrinter(): void {
-        console.log('onStopDiscoverPrinter enter');
+        console.info('onStopDiscoverPrinter enter');
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onConnectPrinter
+### onConnectPrinter
 
 onConnectPrinter(printerId: number): void
 
@@ -108,13 +110,13 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onConnectPrinter(printerId: number): void {
-        console.log('onConnectPrinter enter');
+        console.info('onConnectPrinter enter');
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onDisconnectPrinter
+### onDisconnectPrinter
 
 onDisconnectPrinter(printerId: number): void
 
@@ -134,13 +136,13 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onDisconnectPrinter(printerId: number): void {
-        console.log('onDisconnectPrinter enter');
+        console.info('onDisconnectPrinter enter');
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onDestroy
+### onDestroy
 
 onDestroy(): void
 
@@ -155,7 +157,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onDestroy(): void {
-        console.log('onDestroy');
+        console.info('onDestroy');
     }
 }
 ```

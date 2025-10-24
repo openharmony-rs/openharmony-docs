@@ -14,7 +14,7 @@ You can use **uploadFile()** in [ohos.request](../../reference/apis-basic-servic
 
 > **NOTE**
 >
-> · Currently, only files in the **cacheDir** directory can be uploaded using **request.uploadFile**; user public files and files in the **cacheDir** directory can be uploaded together using **request.agent**.
+> · Currently, the **request.uploadFile** API can upload only files in the **cacheDir** directory, while the **request.agent** API can upload the user public files and files in the **cacheDir** directory.
 >
 > · The ohos.permission.INTERNET permission is required for using **ohos.request**. For details about how to request the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 >
@@ -229,7 +229,7 @@ struct Index {
 // pages/xxx.ets
 // Download the network resource file to the local application file directory, and read data from the file.
 import { common } from '@kit.AbilityKit';
-import fs from '@ohos.file.fs';
+import fileIo from '@ohos.file.fs';
 import { BusinessError, request } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
 
@@ -265,13 +265,19 @@ struct Index {
             })
             task.on('completed', async () => {
               console.warn(`/Request download completed`);
-              let file = fs.openSync(filesDir + '/xxxx.txt', fs.OpenMode.READ_WRITE);
-              let arrayBuffer = new ArrayBuffer(1024);
-              let readLen = fs.readSync(file.fd, arrayBuffer);
+              let filePath = filesDir + '/xxxx.txt';
+              let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY); // Open the file in read-only mode to obtain the file size.
+
+              // Obtain the file status information, including the file size.
+              let fileStat = fileIo.statSync(filePath);
+              let fileSize = fileStat.size;
+
+              // Create a buffer of sufficient size based on the file size.
+              let arrayBuffer = new ArrayBuffer(fileSize);
+              let readLen = fileIo.readSync(file.fd, arrayBuffer); // Now, all content can be read safely.
               let buf = buffer.from(arrayBuffer, 0, readLen);
               console.info(`The content of file: ${buf.toString()}`);
-              fs.closeSync(file);
-              // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
+              fileIo.closeSync(file);
               request.agent.remove(task.tid);
             })
           }).catch((err: BusinessError) => {
@@ -282,7 +288,6 @@ struct Index {
     }
   }
 }
-
 ```
 
 ## Downloading Network Resource Files to the User File
@@ -623,17 +628,17 @@ struct Index {
                         }
                     };
                     request.agent.create(context, config).then((task: request.agent.Task) => {
+                        // Set the maximum task speed.
+                        task.setMaxSpeed(10 * 1024 * 1024).then(() => {
+                            console.info(`Succeeded in setting the max speed of the task. result: ${task.tid}`);
+                        }).catch((err: BusinessError) => {
+                            console.error(`Failed to set the max speed of the task. result: ${task.tid}`);
+                        });
                         task.start((err: BusinessError) => {
                             if (err) {
                                 console.error(`Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
                                 return;
                             }
-                            // Set the maximum task speed.
-                            task.setMaxSpeed(10 * 1024 * 1024).then(() => {
-                                console.info(`Succeeded in setting the max speed of the task. result: ${task.tid}`);
-                            }).catch((err: BusinessError) => {
-                                console.error(`Failed to set the max speed of the task. result: ${task.tid}`);
-                            });
                         });
                         task.on('progress', async (progress) => {
                             console.warn(`/Request download status ${progress.state}, downloaded ${progress.processed}`);

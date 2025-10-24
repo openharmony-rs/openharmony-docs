@@ -1,5 +1,12 @@
 # Developing a Word Selection Application (for System Applications Only)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 ## Available APIs
 
 For details about the following APIs, see [selectionInput.SelectionManager](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md).
@@ -34,7 +41,9 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
 
 2. Inherit from [SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md) and implement the extended lifecycle functions.
     ```ts
-    import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility } from '@kit.BasicServicesKit';
+    import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
+    import { Want } from '@kit.AbilityKit';
+    import { rpc } from '@kit.IPCKit';
 
     class SelectionAbilityStub extends rpc.RemoteObject {
       constructor(des) {
@@ -59,13 +68,16 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
       panel_: selectionManager.Panel = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
+        // Called when the SelectionExtensionAbility instance is created. You can execute initialization logic (such as defining variables, loading resources, and listening for word selection events) in this callback.
         return new SelectionAbilityStub('remote');
       }
 
       onDisconnect(): void {
+        // Called when the SelectionExtensionAbility instance is destroyed (for example, when the user disables the word selection feature or switches the word selection application). You can clear resources and save data in this callback.
       }
     }
     ```
+    In the preceding code, the [onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#onconnect) callback is triggered when the word selection extension is started. You can listen for word selection events in this callback to create the word selection panel, set the panel content, and move, display, or hide the panel. The [onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#ondisconnect) callback is triggered when the word selection extension is disabled. You can destroy the panel in this callback. For details about some operations, see steps 3, 4, and 5.
 
 3. Listen for the word selection events using the **on** API when SelectionExtensionAbility is started.
     ```ts

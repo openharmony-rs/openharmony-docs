@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 This topic provides a list of common events defined by the system.
 
@@ -253,7 +253,7 @@ APIs related to this event: **activateOsAccount**. This API is a system API. For
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (for system applications only)
+**Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (before API version 21); ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (since API version 21)
 
 **Value**: "usual.event.USER_SWITCHED"
 
@@ -367,7 +367,7 @@ This common event is triggered when the user calls the **unmount** API on a moun
 
 ### COMMON_EVENT_RESTORE_START<sup>13+</sup>
 
-Indicates the common event that an application starts to be restored.
+Indicates that an application starts to be restored.
 
 When a data migration application starts the backup and restore framework to perform a restoration task, the common event service is triggered to publish this event.
 

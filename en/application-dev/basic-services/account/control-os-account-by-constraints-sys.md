@@ -13,14 +13,14 @@ The **account** module provides a role-based access control mechanism. You can s
 
 For details about the predefined account constraints, see [Constraints](../../reference/apis-basic-services-kit/js-apis-osAccount.md#constraints).
 
-## Before You Start
+## Getting Started
 
 1. Request the ohos.permission.MANAGE_LOCAL_ACCOUNTS permission. For details, see [Requesting Permissions for system_basic Applications](../../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
 2. Import the **osAccount** module.
 
    ```ts
-   import { osAccount } from '@kit.BasicServicesKit';
+   import { osAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
 
 3. Obtain an **AccountManager** instance.
@@ -47,9 +47,10 @@ The user can set constraints to restrict the system account behaviors. For examp
    ```ts
    try {
      accountManager.setOsAccountConstraints(localId, constraint, true);
-     console.log('setOsAccountConstraints successfully');
-   } catch (err) {
-     console.error('setOsAccountConstraints failed, error: ' + JSON.stringify(err));
+     console.info('setOsAccountConstraints successfully');
+   } catch (e) {
+     const err = e as BusinessError;
+     console.error(`setOsAccountConstraints failed, error: code is ${err.code}, message is ${err.message}`);
    }
    ```
 
@@ -71,7 +72,7 @@ Before a constraint is enabled for a system account, the application needs to ch
    ```ts
    accountManager.isOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
      if (isEnabled) {
-        // Your business logic
+        // your business logic
      }
    });
    ```

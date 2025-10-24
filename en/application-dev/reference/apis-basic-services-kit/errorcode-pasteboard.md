@@ -3,8 +3,8 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
-<!--Tester: @maxiaorong2-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -178,7 +178,7 @@ The progress is displayed abnormally.
 
 **Solution**
 
-Check whether the pasting is successful. If so, ignore this error; otherwise, contact technical support.
+Check whether the pasting is successful. If yes, ignore this error; otherwise, contact technical support.
 
 ## 12900010 Data Obtaining Failure
 

@@ -200,7 +200,7 @@ Sets the power mode of this device. This API uses an asynchronous callback to re
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | mode     | DevicePowerMode | Yes  | Power mode. The value must be an enum.                                                  |
-| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br> If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br>If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -389,5 +389,44 @@ try {
     power.refreshActivity('refreshActivity_test');
 } catch(err) {
     console.error('refreshActivity failed, err: ' + err);
+}
+```
+
+## power.setPowerKeyFilteringStrategy<sup>21+</sup>
+
+setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void;
+
+Sets the power key filtering strategy. After the power service subscribes to the power key event, this API is used to configure the processing mode of this event.
+For details about the power key filtering strategy, see [power.PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21).
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.POWER_MANAGER
+
+**System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description   |
+| ------ | ------ | ---- | ----- |
+| strategy | PowerKeyFilteringStrategy | Yes   | Power key filtering strategy. The value must be of the enum type.|
+
+**Error codes**
+
+For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message   |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**Example:**
+
+```js
+try {
+    power.setPowerKeyFilteringStrategy(power.PowerKeyFilteringStrategy.LONG_PRESS_FILTERING_ONCE);
+} catch(err) {
+    console.error('setPowerKeyFilteringStrategy failed, err: ' + err);
 }
 ```
