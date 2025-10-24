@@ -69,7 +69,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      console.info(`Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
     });
   }
 };
@@ -114,13 +114,20 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    let promise = windowStage.getMainWindow();
-    promise.then((data) => {
-      windowClass = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        windowStage.loadContent('page/Index', (err) =>{
+      if(err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let promise = windowStage.getMainWindow();
+      promise.then((data) => {
+        windowClass = data;
+        console.info('Succeeded in obtaining the main window.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+      });
     });
   }
 };
@@ -130,7 +137,7 @@ export default class EntryAbility extends UIAbility {
 
 getMainWindowSync(): Window
 
-获取该WindowStage实例下的主窗口。
+获取该WindowStage实例下的主窗口，该接口为同步调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -224,7 +231,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         if (!windowClass) {
           console.info('Failed to load the content. Cause: windowClass is null');
         }
@@ -291,7 +298,7 @@ export default class EntryAbility extends UIAbility {
       let promise = windowStage.createSubWindow('mySubWindow');
       promise.then((data) => {
         windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
         console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
       });
@@ -363,7 +370,7 @@ export default class EntryAbility extends UIAbility {
       let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
       promise.then((data) => {
         windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
         console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
       });
@@ -420,7 +427,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      console.info('Succeeded in obtaining the subwindow. Data: ' + JSON.stringify(data));
+      console.info(`Succeeded in obtaining the subwindow. Data: ${JSON.stringify(data)}`);
     });
   }
 };
@@ -468,7 +475,7 @@ export default class EntryAbility extends UIAbility {
     let promise = windowStage.getSubWindow();
     promise.then((data) => {
       windowClass = data;
-      console.info('Succeeded in obtaining the subwindow. Data: ' + JSON.stringify(data));
+      console.info(`Succeeded in obtaining the subwindow. Data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`Failed to obtain the subwindow. Cause code: ${err.code}, message: ${err.message}`);
     });
@@ -910,7 +917,7 @@ export struct Index {
 
 on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void
 
-开启WindowStage生命周期变化的监听。
+开启WindowStage生命周期变化的监听，会收到当前WindowStage生命周期状态的事件通知。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -948,8 +955,7 @@ export default class EntryAbility extends UIAbility {
     console.info('onWindowStageCreate');
     try {
       windowStage.on('windowStageEvent', (data) => {
-        console.info('Succeeded in enabling the listener for window stage event changes. Data: ' +
-        JSON.stringify(data));
+        console.info(`Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
       });
     } catch (exception) {
       console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -963,6 +969,10 @@ export default class EntryAbility extends UIAbility {
 off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&gt;): void
 
 关闭WindowStage生命周期变化的监听。
+
+用于关闭[on('windowStageEvent')](#onwindowstageevent9)接口对WindowStage生命周期变化的监听。
+
+如果没有调用[on('windowStageEvent')](#onwindowstageevent9)接口开启监听就关闭，程序正常执行不会抛出错误代码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -998,21 +1008,28 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    const callback = (windowStageEventType: window.WindowStageEventType) => {
-      // ...
-    }
-    try {
-      windowStage.on('windowStageEvent', callback);
-    } catch (exception) {
-      console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-    try {
-      windowStage.off('windowStageEvent', callback);
-      // 如果通过on开启多个callback进行监听，同时关闭所有监听：
-      windowStage.off('windowStageEvent');
-    } catch (exception) {
-      console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
+    windowStage.loadContent('page/Index', (err) =>{
+      if(err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      const callback = (windowStageEventType: window.WindowStageEventType) => {
+        // ...
+      }
+      try {
+        windowStage.on('windowStageEvent', callback);
+      } catch (exception) {
+        console.error(`Failed to enable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+      try {
+        windowStage.off('windowStageEvent', callback);
+        // 如果通过on开启多个callback进行监听，同时关闭所有监听
+        windowStage.off('windowStageEvent');
+      } catch (exception) {
+        console.error(`Failed to disable the listener for window stage event changes. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
   }
 };
 ```
@@ -1066,8 +1083,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     const callback = (data: window.WindowStageLifecycleEventType) => {
-      console.info('Succeeded in enabling the listener for window stage event changes. Data: ' +
-        JSON.stringify(data));
+      console.info(`Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
       // 根据事件状态类型选择进行具体的处理
       if (data === window.WindowStageLifecycleEventType.SHOWN) {
         console.info('current window stage event is SHOWN');
