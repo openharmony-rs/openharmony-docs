@@ -96,9 +96,7 @@ disableWifi(): void
 
 去使能WLAN，异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否关闭成功。
 
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -168,8 +166,6 @@ scan(): void
 ## wifiManager.startScan<sup>10+</sup>
 
 startScan(): void
-
-**系统接口：** 此接口为系统接口。
 
 启动WLAN扫描。
 
@@ -1026,7 +1022,9 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 ## wifiManager.connectToCandidateConfigWithUserAction<sup>20+</sup>
 
-connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
+ArkTS-Dyn: connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;void&gt;
 
 应用使用该接口连接到自己添加的候选网络时，会提示用户是否信任并建立连接，使用Promise异步回调用户响应结果。
 
@@ -1039,11 +1037,15 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**20
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 候选网络配置的ID，ID不能小于0。 |
+  | networkId | number | 是 | 候选网络配置的ID，ID不能小于0。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **返回值：**
 
@@ -1626,8 +1628,6 @@ getDeviceMacAddress(): string[]
 
 获取设备的MAC地址。
 
-**系统接口：** 此接口为系统接口。
-
 **需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1909,6 +1909,10 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
@@ -1956,6 +1960,10 @@ isMeteredHotspot(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -1997,6 +2005,10 @@ isHotspotActive(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -2037,6 +2049,10 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，groupOwnerAddr 返回全零地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 

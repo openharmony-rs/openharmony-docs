@@ -674,7 +674,9 @@ removeAllNetwork(): void
 
 ## wifiManager.get5GChannelList<sup>10+</sup>
 
-get5GChannelList(): Array&lt;number&gt;
+ArkTS-Dyn: get5GChannelList(): Array&lt;number&gt;
+
+ArkTS-Sta: get5GChannelList(): Array&lt;int&gt;
 
 获取当前设备支持的5G信道列表。
 
@@ -683,6 +685,10 @@ get5GChannelList(): Array&lt;number&gt;
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -723,6 +729,10 @@ getDisconnectedReason(): DisconnectedReason
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -778,6 +788,10 @@ startPortalCertification(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -813,6 +827,10 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -867,6 +885,10 @@ factoryReset(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**20
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -900,6 +922,10 @@ enableHotspot(): void
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -935,6 +961,10 @@ disableHotspot(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -968,6 +998,10 @@ isHotspotDualBandSupported(): boolean
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPOT，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1051,6 +1085,10 @@ setHotspotConfig(config: HotspotConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
@@ -1119,6 +1157,10 @@ getHotspotConfig(): HotspotConfig
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -1163,6 +1205,10 @@ API 9：ohos.permission.GET_WIFI_INFO、ohos.permission.LOCATION、ohos.permissi
 API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPOT，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1220,6 +1266,10 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
 | **参数名** | **类型** | **必填** | **说明** |
@@ -1268,6 +1318,10 @@ delHotspotBlockList(stationInfo: StationInfo)
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
 | **参数名** | **类型** | **必填** | **说明** |
@@ -1314,6 +1368,10 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPOT，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
