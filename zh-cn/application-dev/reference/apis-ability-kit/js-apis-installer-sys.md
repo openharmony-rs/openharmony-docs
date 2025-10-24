@@ -49,7 +49,7 @@ getBundleInstaller(callback: AsyncCallback\<BundleInstaller>): void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller((err: BusinessError, data: installer.BundleInstaller) => {
@@ -92,7 +92,7 @@ getBundleInstaller(): Promise\<BundleInstaller>
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
@@ -133,7 +133,7 @@ getBundleInstallerSync(): BundleInstaller
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     installer.getBundleInstallerSync();
@@ -213,7 +213,7 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -306,7 +306,7 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -403,7 +403,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -471,7 +471,7 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -537,7 +537,7 @@ uninstall(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -605,7 +605,7 @@ uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -669,7 +669,7 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback&
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -733,7 +733,7 @@ recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 
@@ -797,7 +797,7 @@ recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.demo';
 let installParam: installer.InstallParam = {
@@ -859,7 +859,7 @@ uninstall(uninstallParam: UninstallParam, callback : AsyncCallback\<void\>) : vo
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -924,7 +924,7 @@ uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uninstallParam: installer.UninstallParam = {
     bundleName: "com.ohos.demo",
@@ -990,7 +990,7 @@ addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let filePaths : Array<string> = ['/data/storage/el2/base/a.hsp'];
@@ -1052,7 +1052,7 @@ removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<voi
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName : string = 'com.ohos.demo';
 let moduleNames : Array<string> = ['moduleTest'];
@@ -1124,7 +1124,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam: InstallParam, c
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1201,7 +1201,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, callback: AsyncCallback\<void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 
@@ -1280,7 +1280,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam):
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
 let installParam: installer.InstallParam = {
@@ -1351,7 +1351,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let installParam: installer.InstallParam = {
@@ -1418,7 +1418,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let createAppCloneParam: installer.CreateAppCloneParam = {
@@ -1485,7 +1485,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1551,7 +1551,7 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let index = 1;
@@ -1624,7 +1624,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 **示例：**
 ```ts
 import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.ohos.camera';
 let userId = 100;
