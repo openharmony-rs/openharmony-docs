@@ -1735,7 +1735,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/input/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":120,
+						"end_line":121,
 						"name":"input_device",
 						"start_line":16
 					}
@@ -1770,7 +1770,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/input/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":168,
 						"name":"input_monitor",
 						"start_line":16
 					}
@@ -1820,7 +1820,7 @@
 						"start_line":29
 					},
 					{
-						"end_line":170,
+						"end_line":171,
 						"name":"pointer_style",
 						"start_line":99
 					}
