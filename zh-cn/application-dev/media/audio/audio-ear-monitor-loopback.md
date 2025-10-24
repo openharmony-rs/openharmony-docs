@@ -97,7 +97,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     > **注意：**
     > - 在启用返听前设置混响模式，混响模式将在启用返听成功后生效。
     > - 在启用返听后设置混响模式，混响模式将立即生效。
-    > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式THEATER。
+    > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21)。
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -111,7 +111,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 5. 调用[getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21)方法，查询当前的音频返听的混响模式。
 
     > **注意：**
-    > 若未设置混响模式，查询得到将是默认混响模式THEATER。
+    > 若未设置混响模式，查询得到将是默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21)。
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
     try {
@@ -125,8 +125,8 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
     > **注意：**
     > - 在启用返听前设置均衡器类型，均衡器类型将在启用返听成功后生效。
-    > - 在启用返听后设置均衡器类型，均衡器类型将立即生效。
-    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型FULL。
+    > - 在启用返听后设置均衡器类型，均衡器类型将立即生效。AudioLoopback
+    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,7 +140,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 7. 调用[getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21)方法，查询当前的音频返听的均衡器类型。
 
     > **注意：**
-    > 若未设置均衡器类型，查询得到将是默认均衡器类型FULL。
+    > 若未设置均衡器类型，查询得到将是默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
     try {
