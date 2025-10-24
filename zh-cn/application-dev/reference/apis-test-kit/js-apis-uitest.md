@@ -20,19 +20,19 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
 
 > **说明：**
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 > - 本模块接口适用于手机、平板、PC/2in1、智能穿戴设备、智慧屏、车机。
 
 ## 导入模块
 
-ArkTS-Dyn: 
+ArkTS-Dyn导入模块：
 ```ts
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
 
-ArkTS-Sta: 
+ArkTS-Sta导入模块：
 ```ts
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
@@ -45,12 +45,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                    | 值 | 说明                                                                  |
 |-----------------------|---|---------------------------------------------------------------------|
-| EQUALS                | 0 | 等于给定值。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| CONTAINS              | 1 | 包含给定值。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| STARTS_WITH           | 2 | 以给定值开始。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| ENDS_WITH             | 3 | 以给定值结束。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br> ArkTS-Dyn起始版本：18 <br> ArkTS-Sta起始版本：20 <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br> ArkTS-Dyn起始版本：18 <br> ArkTS-Sta起始版本：20<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| EQUALS                | 0 | 等于给定值。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
+| CONTAINS              | 1 | 包含给定值。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
+| STARTS_WITH           | 2 | 以给定值开始。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| ENDS_WITH             | 3 | 以给定值结束。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br> **ArkTS-Dyn起始版本：**18 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
+| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br> **ArkTS-Dyn起始版本：**18 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ResizeDirection<sup>9+</sup>
 
@@ -60,7 +60,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 | 名称       | 值   | 说明     |
@@ -82,9 +83,9 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| y    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
-| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> ArkTS-Dyn起始版本：20 <br> ArkTS-Sta起始版本：22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| x    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| y    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
+| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **ArkTS-Dyn起始版本：**20 <br> **ArkTS-Sta起始版本：**22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## Rect<sup>9+</sup>
 
@@ -94,11 +95,11 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| right  | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| bottom | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> ArkTS-Dyn起始版本：20 <br> ArkTS-Sta起始版本：22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| left   | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| top    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| right  | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| bottom | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **ArkTS-Dyn起始版本：**20 <br> **ArkTS-Sta起始版本：**22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## WindowMode<sup>9+</sup>
 
@@ -106,7 +107,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20 
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -126,7 +128,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 | 名称         | 值   | 说明                                     |
@@ -144,12 +147,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
-| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> ArkTS-Dyn起始版本：9 <br> ArkTS-Sta起始版本：20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
+| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>从API version 11开始废弃，建议使用active替代。                                                |
-| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> ArkTS-Dyn起始版本：11 <br> ArkTS-Sta起始版本：20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| displayId<sup>20+</sup> | number | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> ArkTS-Dyn起始版本：20 <br> ArkTS-Sta起始版本：20<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **ArkTS-Dyn起始版本：**11 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| displayId<sup>20+</sup> | number | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **ArkTS-Dyn起始版本：**20 <br> **ArkTS-Sta起始版本：**20<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## UiDirection<sup>10+</sup>
 
@@ -159,7 +162,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20 
 
 | 名称  | 值   | 说明   |
@@ -177,7 +181,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20 
 
 | 名称                | 值   | 说明         |
@@ -194,7 +199,8 @@ UI事件的相关信息。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
@@ -212,7 +218,8 @@ UI事件的相关信息。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
@@ -229,7 +236,8 @@ UI事件的相关信息。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                       |
@@ -240,7 +248,8 @@ UI事件的相关信息。
 
 ## On<sup>9+</sup>
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 UiTest框架在API 9中，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
@@ -266,7 +275,8 @@ text(txt: string, pattern?: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -307,7 +317,8 @@ id(id: string): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -348,7 +359,8 @@ id(id: string, pattern: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -394,7 +406,8 @@ type(tp: string): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -438,7 +451,8 @@ type(tp: string, pattern: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -479,7 +493,8 @@ clickable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -519,7 +534,8 @@ longClickable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -559,7 +575,8 @@ scrollable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -599,7 +616,8 @@ enabled(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -639,7 +657,8 @@ focused(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -679,7 +698,8 @@ selected(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -719,7 +739,8 @@ checked(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -759,7 +780,8 @@ checkable(b?: boolean): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -799,7 +821,8 @@ isBefore(on: On): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -841,7 +864,8 @@ isAfter(on: On): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -883,7 +907,8 @@ within(on: On): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -924,7 +949,8 @@ inWindow(bundleName: string): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -964,7 +990,8 @@ description(val: string, pattern?: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -1005,7 +1032,8 @@ hint(val: string, pattern?: MatchPattern): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20 
 
 **参数：**
@@ -1047,7 +1075,8 @@ belongingDisplay(displayId: number): On
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 22
 
 **参数：**
@@ -1080,7 +1109,8 @@ belongingDisplay(displayId: number): On
 
 ## Component<sup>9+</sup>
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
@@ -1096,7 +1126,8 @@ click(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1137,7 +1168,8 @@ doubleClick(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1178,7 +1210,8 @@ longClick(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1219,7 +1252,8 @@ getId(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1264,7 +1298,8 @@ getText(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1305,7 +1340,8 @@ getType(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1346,7 +1382,8 @@ getBounds(): Promise\<Rect>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1387,7 +1424,8 @@ getBoundsCenter(): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1428,7 +1466,8 @@ isClickable(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1471,7 +1510,8 @@ isLongClickable(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1514,7 +1554,8 @@ isChecked(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1557,7 +1598,8 @@ isCheckable(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1600,7 +1642,8 @@ isScrollable(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1644,7 +1687,8 @@ isEnabled(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1687,7 +1731,8 @@ isFocused(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1730,7 +1775,8 @@ isSelected(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1773,7 +1819,8 @@ inputText(text: string): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1821,7 +1868,8 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -1870,7 +1918,8 @@ clearText(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -1912,7 +1961,8 @@ ArkTS-Sta: scrollSearch(on: On): Promise\<Component | null>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -1972,7 +2022,8 @@ ArkTS-Sta: scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Comp
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2033,7 +2084,8 @@ ArkTS-Sta: scrollToTop(speed?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2083,7 +2135,8 @@ ArkTS-Sta: scrollToBottom(speed?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2133,7 +2186,8 @@ dragTo(target: Component): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2184,7 +2238,8 @@ ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2234,7 +2289,8 @@ ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2282,7 +2338,8 @@ getDescription(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -2322,7 +2379,8 @@ getHint(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -2362,7 +2420,8 @@ getDisplayId(): Promise\<number>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -2397,7 +2456,8 @@ async function demo() {
 Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
 该类提供的方法除Driver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 ### create<sup>9+</sup>
@@ -2410,7 +2470,8 @@ static create(): Driver
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -2448,7 +2509,8 @@ ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2494,7 +2556,8 @@ ArkTS-Sta: findComponent(on: On): Promise\<Component \| null>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2549,7 +2612,8 @@ ArkTS-Sta: findComponents(on: On): Promise\<Array\<Component> \| null>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2604,7 +2668,8 @@ ArkTS-Sta: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2659,7 +2724,8 @@ ArkTS-Sta: waitForComponent(on: On, time: int): Promise\<Component | null>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2713,7 +2779,8 @@ assertComponentExist(on: On): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2758,7 +2825,8 @@ pressBack(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -2795,7 +2863,8 @@ pressBack(displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2841,7 +2910,8 @@ ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2885,7 +2955,8 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2933,7 +3004,8 @@ ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -2979,7 +3051,8 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3029,7 +3102,8 @@ ArkTS-Sta: click(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3074,7 +3148,8 @@ clickAt(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3121,7 +3196,8 @@ ArkTS-Sta: doubleClick(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3166,7 +3242,8 @@ doubleClickAt(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3214,7 +3291,8 @@ ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3261,7 +3339,8 @@ ArkTS-Sta: longClickAt(point: Point, duration?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3309,7 +3388,8 @@ ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): P
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3357,7 +3437,8 @@ swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3410,7 +3491,8 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3463,7 +3545,8 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3511,7 +3594,8 @@ screenCap(savePath: string): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3555,7 +3639,8 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3605,7 +3690,8 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3649,7 +3735,8 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -3686,7 +3773,8 @@ getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3735,7 +3823,8 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3779,7 +3868,8 @@ getDisplaySize(): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -3817,7 +3907,8 @@ getDisplaySize(displayId: number): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3862,7 +3953,8 @@ getDisplayDensity(): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -3899,7 +3991,8 @@ getDisplayDensity(displayId: number): Promise\<Point>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -3944,7 +4037,8 @@ wakeUpDisplay(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -3985,7 +4079,8 @@ pressHome(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -4026,7 +4121,8 @@ pressHome(displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4073,7 +4169,8 @@ ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4120,7 +4217,8 @@ ArkTS-Sta: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<voi
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4170,7 +4268,8 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4229,7 +4328,8 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int): Promise\<void>;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4274,7 +4374,8 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4321,7 +4422,8 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4368,7 +4470,8 @@ ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Pro
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4417,7 +4520,8 @@ ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int):
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4464,7 +4568,8 @@ mouseMoveTo(p: Point): Promise\<void>;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -4511,7 +4616,8 @@ createUIEventObserver(): UIEventObserver;
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -4551,7 +4657,8 @@ ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, 
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4603,7 +4710,8 @@ ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4652,7 +4760,8 @@ ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int):
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4699,7 +4808,8 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 22
 
 **参数：**
@@ -4750,7 +4860,8 @@ ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<voi
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4803,7 +4914,8 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4854,7 +4966,8 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 22
 
 **参数：**
@@ -4902,7 +5015,8 @@ inputText(p: Point, text: string): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -4951,7 +5065,8 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5015,7 +5130,8 @@ ArkTS-Sta: touchPadMultiFingerSwipe(fingers: int, direction: UiDirection, option
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5062,7 +5178,8 @@ penClick(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5108,7 +5225,8 @@ ArkTS-Sta: penLongClick(point: Point, pressure?: double): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5153,7 +5271,8 @@ penDoubleClick(point: Point): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5200,7 +5319,8 @@ ArkTS-Sta: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: 
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5249,7 +5369,8 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 18 <br>
+**ArkTS-Dyn起始版本：** 18 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5302,7 +5423,8 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5346,7 +5468,8 @@ async function demo() {
 
 存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 ### create<sup>9+</sup>
@@ -5361,7 +5484,8 @@ ArkTS-Sta: static create(fingers: int, steps: int): PointerMatrix
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5407,7 +5531,8 @@ ArkTS-Sta: setPoint(finger: int, step: int, point: Point): void
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5451,7 +5576,8 @@ async function demo() {
 UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20 
 
 ### getBundleName<sup>9+</sup>
@@ -5464,7 +5590,8 @@ getBundleName(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5506,7 +5633,8 @@ getBounds(): Promise\<Rect>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5547,7 +5675,8 @@ getTitle(): Promise\<string>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5588,7 +5717,8 @@ getWindowMode(): Promise\<WindowMode>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5629,7 +5759,8 @@ isFocused(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5706,7 +5837,8 @@ focus(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5749,7 +5881,8 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5801,7 +5934,8 @@ ArkTS-Sta: resize(wide: int, height: int, direction: ResizeDirection): Promise\<
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **参数：**
@@ -5856,7 +5990,8 @@ split(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5902,7 +6037,8 @@ maximize(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5948,7 +6084,8 @@ minimize(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -5994,7 +6131,8 @@ resume(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -6040,7 +6178,8 @@ close(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 9 <br>
+**ArkTS-Dyn起始版本：** 9 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -6082,7 +6221,8 @@ isActive(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 11 <br>
+**ArkTS-Dyn起始版本：** 11 
+
 **ArkTS-Sta起始版本：** 20
 
 **返回值：**
@@ -6123,7 +6263,8 @@ getDisplayId(): Promise\<number>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**ArkTS-Dyn起始版本：** 20 <br>
+**ArkTS-Dyn起始版本：** 20 
+
 **ArkTS-Sta起始版本：** 22
 
 **返回值：**
@@ -6157,7 +6298,8 @@ async function demo() {
 
 UI事件监听器。
 
-**ArkTS-Dyn起始版本：** 10 <br>
+**ArkTS-Dyn起始版本：** 10 
+
 **ArkTS-Sta起始版本：** 20 
 
 ### once('toastShow')
