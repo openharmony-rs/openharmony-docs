@@ -204,125 +204,12 @@ prop.get() // == 49
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
 @StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
-```ts
-class Data {
-  code: number;
-
-  constructor(code: number) {
-    this.code = code;
-  }
-}
-
-AppStorage.setOrCreate('propA', 47);
-AppStorage.setOrCreate('propB', new Data(50));
-let storage = new LocalStorage();
-storage.setOrCreate('linkA', 48);
-storage.setOrCreate('linkB', new Data(100));
-
-@Entry(storage)
-@Component
-struct Index {
-  @StorageLink('propA') storageLink: number = 1;
-  @StorageProp('propA') storageProp: number = 1;
-  @StorageLink('propB') storageLinkObject: Data = new Data(1);
-  @StorageProp('propB') storagePropObject: Data = new Data(1);
-
-  build() {
-    Column({ space: 20 }) {
-      // @StorageLink与AppStorage建立双向联系，更改数据会同步回AppStorage中key为'propA'的值
-      Text(`storageLink ${this.storageLink}`)
-        .onClick(() => {
-          this.storageLink += 1;
-        })
-
-      // @StorageProp与AppStorage建立单向联系，更改数据不会同步回AppStorage中key为'propA'的值
-      // 但能被AppStorage的set/setorCreate更新值
-      Text(`storageProp ${this.storageProp}`)
-        .onClick(() => {
-          this.storageProp += 1;
-        })
-
-      // AppStorage的API虽然能获取值，但是不具有刷新UI的能力，日志能看到数值更改
-      // 依赖@StorageLink/@StorageProp才能建立起与自定义组件的联系，刷新UI
-      Text(`change by AppStorage: ${AppStorage.get<number>('propA')}`)
-        .onClick(() => {
-          console.info(`Appstorage.get: ${AppStorage.get<number>('propA')}`);
-          AppStorage.set<number>('propA', 100);
-        })
-
-      Text(`storageLinkObject ${this.storageLinkObject.code}`)
-        .onClick(() => {
-          this.storageLinkObject.code += 1;
-        })
-
-      Text(`storagePropObject ${this.storagePropObject.code}`)
-        .onClick(() => {
-          this.storagePropObject.code += 1;
-        })
-    }
-  }
-}
-```
-
+<!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
 ### AppStorage支持联合类型
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-```ts
-@Component
-struct StorageLinkComponent {
-  @StorageLink('linkA') linkA: number | null = null;
-  @StorageLink('linkB') linkB: number | undefined = undefined;
-
-  build() {
-    Column() {
-      Text('@StorageLink接口初始化，@StorageLink取值')
-      Text(`${this.linkA}`).fontSize(20).onClick(() => {
-        this.linkA ? this.linkA = null : this.linkA = 1;
-      })
-      Text(`${this.linkB}`).fontSize(20).onClick(() => {
-        this.linkB ? this.linkB = undefined : this.linkB = 1;
-      })
-    }
-    .borderWidth(3).borderColor(Color.Red)
-  }
-}
-
-@Component
-struct StoragePropComponent {
-  @StorageProp('propA') propA: number | null = null;
-  @StorageProp('propB') propB: number | undefined = undefined;
-
-  build() {
-    Column() {
-      Text('@StorageProp接口初始化，@StorageProp取值')
-      Text(`${this.propA}`).fontSize(20).onClick(() => {
-        this.propA ? this.propA = null : this.propA = 1;
-      })
-      Text(`${this.propB}`).fontSize(20).onClick(() => {
-        this.propB ? this.propB = undefined : this.propB = 1;
-      })
-    }
-    .borderWidth(3).borderColor(Color.Blue)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        StorageLinkComponent()
-        StoragePropComponent()
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
+<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
 ### 装饰Date类型变量
 
 > **说明：**
@@ -331,44 +218,7 @@ struct Index {
 
 在下面的示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
-@Entry
-@Component
-struct DateSample {
-  @StorageLink('date') selectedDate: Date = new Date('2021-08-08');
-
-  build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08')
-        .margin(10)
-        .onClick(() => {
-          AppStorage.setOrCreate('date', new Date('2023-07-08'));
-        })
-      Button('increase the year by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: $$this.selectedDate
-      })
-    }.width('100%')
-  }
-}
-```
-
+<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->
 ### 装饰Map类型变量
 
 > **说明：**
@@ -377,42 +227,7 @@ struct DateSample {
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-@Entry
-@Component
-struct MapSample {
-  @StorageLink('map') message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
-        })
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the existing one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the existing one').onClick(() => {
-          AppStorage.get<Map<number, string>>('map')?.delete(0);
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->
 
 ### 装饰Set类型变量
 
@@ -422,43 +237,7 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-```ts
-@Entry
-@Component
-struct SetSample {
-  @StorageLink('set') memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
-
-  build() {
-    Row() {
-      Column() {
-        ForEach(Array.from(this.memberSet.entries()), (item: [number, number]) => {
-          Text(`${item[0]}`)
-            .fontSize(30)
-          Divider()
-        })
-        Button('init set')
-          .onClick(() => {
-            this.memberSet = new Set([0, 1, 2, 3, 4]);
-          })
-        Button('set new one')
-          .onClick(() => {
-            AppStorage.get<Set<number>>('set')?.add(5);
-          })
-        Button('clear')
-          .onClick(() => {
-            this.memberSet.clear();
-          })
-        Button('delete the first one')
-          .onClick(() => {
-            this.memberSet.delete(0);
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->
 
 ## AppStorage使用建议
 
@@ -470,82 +249,7 @@ struct SetSample {
 
 使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制[@Watch](./arkts-watch.md)函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
 
-```ts
-// xxx.ets
-class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
-
-  constructor(title: string, uri: Resource) {
-    this.title = title;
-    this.uri = uri;
-  }
-}
-
-@Entry
-@Component
-struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
-  scroller: Scroller = new Scroller();
-
-  build() {
-    Column() {
-      Grid(this.scroller) {
-        ForEach(this.dataList, (item: ViewData, index?: number) => {
-          GridItem() {
-            TapImage({
-              uri: item.uri,
-              index: index
-            })
-          }.aspectRatio(1)
-
-        }, (item: ViewData, index?: number) => {
-          return JSON.stringify(item) + index;
-        })
-      }.columnsTemplate('1fr 1fr')
-    }
-
-  }
-}
-
-@Component
-export struct TapImage {
-  @StorageLink('tapIndex') @Watch('onTapIndexChange') tapIndex: number = -1;
-  @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
-    id: 0,
-    type: 0,
-    moduleName: '',
-    bundleName: ''
-  };
-
-  // 判断是否被选中
-  onTapIndexChange() {
-    if (this.tapIndex >= 0 && this.index === this.tapIndex) {
-      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, red`);
-      this.tapColor = Color.Red;
-    } else {
-      console.info(`tapindex: ${this.tapIndex}, index: ${this.index}, black`);
-      this.tapColor = Color.Black;
-    }
-  }
-
-  build() {
-    Column() {
-      Image(this.uri)
-        .objectFit(ImageFit.Cover)
-        .onClick(() => {
-          this.tapIndex = this.index;
-        })
-        .border({ width: 5, style: BorderStyle.Dotted, color: this.tapColor })
-    }
-
-  }
-}
-```
+<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSeven.ets) -->
 
 相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用emit订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
 
@@ -553,216 +257,18 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
-
-```ts
-// xxx.ets
-import { emitter } from '@kit.BasicServicesKit';
-
-let nextId: number = 0;
-
-class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
-  id: number;
-
-  constructor(title: string, uri: Resource) {
-    this.title = title;
-    this.uri = uri;
-    this.id = nextId++;
-  }
-}
-
-@Entry
-@Component
-struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
-  scroller: Scroller = new Scroller();
-  private preIndex: number = -1;
-
-  build() {
-    Column() {
-      Grid(this.scroller) {
-        ForEach(this.dataList, (item: ViewData) => {
-          GridItem() {
-            TapImage({
-              uri: item.uri,
-              index: item.id
-            })
-          }.aspectRatio(1)
-          .onClick(() => {
-            if (this.preIndex === item.id) {
-              return;
-            }
-            let innerEvent: emitter.InnerEvent = { eventId: item.id };
-            // 选中态：黑变红
-            let eventData: emitter.EventData = {
-              data: {
-                'colorTag': 1
-              }
-            };
-            emitter.emit(innerEvent, eventData);
-
-            if (this.preIndex != -1) {
-              console.info(`preIndex: ${this.preIndex}, index: ${item.id}, black`);
-              let innerEvent: emitter.InnerEvent = { eventId: this.preIndex };
-              // 取消选中态：红变黑
-              let eventData: emitter.EventData = {
-                data: {
-                  'colorTag': 0
-                }
-              };
-              emitter.emit(innerEvent, eventData);
-            }
-            this.preIndex = item.id;
-          })
-        }, (item: ViewData) => JSON.stringify(item))
-      }.columnsTemplate('1fr 1fr')
-    }
-
-  }
-}
-
-@Component
-export struct TapImage {
-  @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
-    id: 0,
-    type: 0,
-    moduleName: '',
-    bundleName: ''
-  };
-
-  onTapIndexChange(colorTag: emitter.EventData) {
-    if (colorTag.data != null) {
-      this.tapColor = colorTag.data.colorTag ? Color.Red : Color.Black;
-    }
-  }
-
-  aboutToAppear() {
-    //定义事件ID
-    let innerEvent: emitter.InnerEvent = { eventId: this.index };
-    emitter.on(innerEvent, data => {
-      this.onTapIndexChange(data);
-    });
-  }
-
-  build() {
-    Column() {
-      Image(this.uri)
-        .objectFit(ImageFit.Cover)
-        .border({ width: 5, style: BorderStyle.Dotted, color: this.tapColor })
-    }
-  }
-}
-```
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
 
 以上通知事件逻辑简单，也可以简化成三元表达式。
 
-```ts
-// xxx.ets
-class ViewData {
-  title: string;
-  uri: Resource;
-  color: Color = Color.Black;
-
-  constructor(title: string, uri: Resource) {
-    this.title = title;
-    this.uri = uri;
-  }
-}
-
-@Entry
-@Component
-struct Gallery {
-  // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-  dataList: Array<ViewData> = [new ViewData('flower', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon')), new ViewData('OMG', $r('app.media.icon'))];
-  scroller: Scroller = new Scroller();
-
-  build() {
-    Column() {
-      Grid(this.scroller) {
-        ForEach(this.dataList, (item: ViewData, index?: number) => {
-          GridItem() {
-            TapImage({
-              uri: item.uri,
-              index: index
-            })
-          }.aspectRatio(1)
-
-        }, (item: ViewData, index?: number) => {
-          return JSON.stringify(item) + index;
-        })
-      }.columnsTemplate('1fr 1fr')
-    }
-
-  }
-}
-
-@Component
-export struct TapImage {
-  @StorageLink('tapIndex') tapIndex: number = -1;
-  private index: number = 0;
-  private uri: Resource = {
-    id: 0,
-    type: 0,
-    moduleName: '',
-    bundleName: ''
-  };
-
-  build() {
-    Column() {
-      Image(this.uri)
-        .objectFit(ImageFit.Cover)
-        .onClick(() => {
-          this.tapIndex = this.index;
-        })
-        .border({
-          width: 5,
-          style: BorderStyle.Dotted,
-          color: (this.tapIndex >= 0 && this.index === this.tapIndex) ? Color.Red : Color.Black
-        })
-    }
-  }
-}
-```
-
+<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageNine.ets) -->
 
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
 使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
 示例如下。
 
-```ts
-AppStorage.setOrCreate('propA', false);
-
-@Entry
-@Component
-struct Index {
-  @StorageProp('propA') @Watch('onChange') propA: boolean = false;
-
-  onChange() {
-    console.info(`propA change`);
-  }
-
-  aboutToAppear(): void {
-    this.propA = true;
-  }
-
-  build() {
-    Column() {
-      Text(`${this.propA}`)
-      Button('change')
-        .onClick(() => {
-          AppStorage.setOrCreate('propA', false);
-          console.info(`propA: ${this.propA}`);
-        })
-    }
-  }
-}
-```
+<!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
 
 上述示例，在点击事件之前，propA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新propA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
 
