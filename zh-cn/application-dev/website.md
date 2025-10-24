@@ -2520,7 +2520,9 @@
         - [@ohos.application.AccessibilityExtensionAbility (辅助功能扩展能力)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility.md)
         - [AccessibilityExtensionContext (辅助功能扩展上下文)](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md)
         <!--Del-->
+        - [@ohos.accessibility (辅助功能)(系统接口)](reference/apis-accessibility-kit/js-apis-accessibility-sys.md)
         - [@ohos.accessibility.config (系统辅助功能配置)(系统接口)](reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md)
+        - [@ohos.application.AccessibilityExtensionAbility (辅助功能扩展能力)(系统接口)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility-sys.md)
         - [AccessibilityExtensionContext (辅助功能扩展上下文)(系统接口)](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext-sys.md)
         <!--DelEnd-->
       - 错误码<!--accessibility-arkts-errcode-->
