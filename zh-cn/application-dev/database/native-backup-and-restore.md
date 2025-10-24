@@ -66,9 +66,9 @@
     OH_Rdb_CloseStore(store2);
     ```
 
-从API version 22开始，支持注册数据库异常处理，开发者可根据需要调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理，调用OH_Rdb_UnregisterCorruptedHandler接口取消注册。
-
 5. 调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理。
+
+    从API version 22开始，支持注册数据库异常处理，开发者可根据需要调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理。
 
     ```c
     // 数据库异常后处理的回调函数。
@@ -113,6 +113,8 @@
     ```
 
 6. 调用OH_Rdb_UnregisterCorruptedHandler接口取消注册数据库异常处理。
+
+    从API version 22开始，支持取消注册数据库异常处理，开发者可根据需要调用OH_Rdb_UnregisterCorruptedHandler接口取消注册数据库异常处理。
 
     ```c
     OH_Rdb_ConfigV2* config4 = OH_Rdb_CreateConfig();
