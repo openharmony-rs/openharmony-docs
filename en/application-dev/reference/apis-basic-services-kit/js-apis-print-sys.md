@@ -29,12 +29,12 @@ Defines the page margins for printing.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| top | number | No| Top margin of the page. The default value is **0**.|
-| bottom | number | No| Bottom margin of the page. The default value is **0**.|
-| left | number | No| Left margin of the page. The default value is **0**.|
-| right | number | No| Right margin of the page. The default value is **0**.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| top | number | No| Yes| Top margin of the page. The default value is **0**.|
+| bottom | number | No| Yes| Bottom margin of the page. The default value is **0**.|
+| left | number | No| Yes| Left margin of the page. The default value is **0**.|
+| right | number | No| Yes| Right margin of the page. The default value is **0**.|
 
 ## PrinterRange
 
@@ -45,11 +45,11 @@ Defines the print range.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| startPage | number | No| Start page. The default value is **1**.|
-| endPage | number | No| End page. The default value is the maximum number of pages of the file to be printed.|
-| pages | Array&lt;number&gt; | No| Page range set of the file to print. The default value is empty.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| startPage | number | No| Yes| Start page. The default value is **1**.|
+| endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
+| pages | Array&lt;number&gt; | No| Yes| Page range set of the file to print. The default value is empty.|
 
 ## PreviewAttribute
 
@@ -60,10 +60,10 @@ Defines the print preview attributes.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| previewRange | [PrinterRange](#printerrange) | Yes| Preview page range.|
-| result | number | No| Print preview result. The default value is **-1**.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| previewRange | [PrinterRange](#printerrange) | No| No| Preview page range.|
+| result | number | No| Yes| Print preview result. The default value is **-1**.|
 
 ## PrintResolution
 
@@ -74,11 +74,11 @@ Defines the resolution for printing.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Resolution ID.|
-| horizontalDpi | number | Yes| Horizontal DPI.|
-| verticalDpi | number | Yes| Vertical DPI.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| id | string | No| No| Resolution ID.|
+| horizontalDpi | number | No| No| Horizontal DPI.|
+| verticalDpi | number | No| No| Vertical DPI.|
 
 
 
@@ -91,14 +91,14 @@ Defines the printer capabilities.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| colorMode | number | Yes| Color mode.|
-| duplexMode | number | Yes| Single-sided or double-sided printing mode.|
-| pageSize | Array&lt;[PrintPageSize](./js-apis-print.md#printpagesize11)&gt; | Yes| List of page sizes supported by the printer.|
-| resolution | Array&lt;[PrintResolution](#printresolution)&gt; | No| List of resolutions supported by the printer.|
-| minMargin | [PrintMargin](#printmargin) | No| Minimum margin of the printer.|
-| options<sup>11+</sup> | Object | No| Printer options. The value is a JSON object string.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| colorMode | number | No| No| Color mode.|
+| duplexMode | number | No| No| Single-sided or double-sided printing mode.|
+| pageSize | Array&lt;[PrintPageSize](./js-apis-print.md#printpagesize11)&gt; | No| No| List of page sizes supported by the printer.|
+| resolution | Array&lt;[PrintResolution](#printresolution)&gt; | No| Yes| List of resolutions supported by the printer.|
+| minMargin | [PrintMargin](#printmargin) | No| Yes| Minimum margin of the printer.|
+| options<sup>11+</sup> | Object | No| Yes| Printer options. The value is a JSON object string.|
 
 ## PrinterInfo
 
@@ -109,15 +109,15 @@ Provides the printer information.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| printerId | string | Yes| Printer ID.|
-| printerName | string | Yes| Printer name.|
-| printerState | [PrinterState](./js-apis-print.md#printerstate14) | Yes| Printer state.|
-| printerIcon | number | No| Resource ID of the printer icon. The default value is **-1**.|
-| description | string | No| Printer description.|
-| capability | [PrinterCapability](#printercapability) | No| Printer capability.|
-| options | Object | No| Printer options. The value is a JSON object string.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | No| No| Printer ID.|
+| printerName | string | No| No| Printer name.|
+| printerState | [PrinterState](./js-apis-print.md#printerstate14) | No| No| Printer state.|
+| printerIcon | number | No| Yes| Resource ID of the printer icon. The default value is **-1**.|
+| description | string | No| Yes| Printer description.|
+| capability | [PrinterCapability](#printercapability) | No| Yes| Printer capability.|
+| options | Object | No| Yes| Printer options. The value is a JSON object string.|
 
 ## PrintJob
 
@@ -128,23 +128,23 @@ Defines a print job.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| fdList | Array&lt;number&gt; | Yes| FD list of files to print.|
-| jobId | string | Yes| ID of the print job.|
-| printerId | string | Yes| ID of the printer used for printing.|
-| jobState | [PrintJobState](./js-apis-print.md#printjobstate14) | Yes| State of the print job.|
-| jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | Yes| Substate of the print job.|
-| copyNumber | number | Yes| Copy of the file list.|
-| pageRange | [PrinterRange](#printerrange) | Yes| Print range.|
-| isSequential | boolean | Yes| Whether the printing is sequential. The value **true** means that the printing is sequential; the value **false** means the opposite. The default value is **false**.|
-| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | Yes| Selected page size.|
-| isLandscape | boolean | Yes| Whether the printing is in landscape mode. The value **true** means that the printing is in landscape mode; the value **false** means the printing is in portrait mode The default value is **false**.|
-| colorMode | number | Yes| Color mode.|
-| duplexMode | number | Yes| Single-sided or double-sided printing mode.|
-| margin | [PrintMargin](#printmargin) | No| Current page margin.|
-| preview | [PreviewAttribute](#previewattribute) | No| Preview settings.|
-| options | Object | No| Printer options. The value is a JSON object string.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| fdList | Array&lt;number&gt; | No| No| FD list of files to print.|
+| jobId | string | No| No| ID of the print job.|
+| printerId | string | No| No| ID of the printer used for printing.|
+| jobState | [PrintJobState](./js-apis-print.md#printjobstate14) | No| No| State of the print job.|
+| jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | No| No| Substate of the print job.|
+| copyNumber | number | No| No| Copy of the file list.|
+| pageRange | [PrinterRange](#printerrange) | No| No| Print range.|
+| isSequential | boolean | No| No| Whether the printing is sequential. The value **true** means that the printing is sequential; the value **false** means the opposite. The default value is **false**.|
+| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
+| isLandscape | boolean | No| No| Whether the printing is in landscape mode. The value **true** means that the printing is in landscape mode; the value **false** means the printing is in portrait mode The default value is **false**.|
+| colorMode | number | No| No| Color mode.|
+| duplexMode | number | No| No| Single-sided or double-sided printing mode.|
+| margin | [PrintMargin](#printmargin) | No| Yes| Current page margin.|
+| preview | [PreviewAttribute](#previewattribute) | No| Yes| Preview settings.|
+| options | Object | No| Yes| Printer options. The value is a JSON object string.|
 
 ## PrinterExtensionInfo
 
@@ -155,13 +155,13 @@ Provides the printer extension information.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| extensionId | string | Yes| ID of the printer extension.|
-| vendorId | string | Yes| Vendor ID of the printer extension.|
-| vendorName | string | Yes| Vendor name of the printer extension.|
-| vendorIcon | number | Yes| Vendor icon of the printer extension.|
-| version | string | Yes| Version of the printer extension.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| extensionId | string | No| No| ID of the printer extension.|
+| vendorId | string | No| No| Vendor ID of the printer extension.|
+| vendorName | string | No| No| Vendor name of the printer extension.|
+| vendorIcon | number | No| No| Vendor icon of the printer extension.|
+| version | string | No| No| Version of the printer extension.|
 
 ## print.queryAllPrinterExtensionInfos
 
@@ -193,13 +193,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrinterExtensionInfos((err: BusinessError, extensionInfos: print.PrinterExtensionInfo[]) => {
     if (err) {
         console.error('queryAllPrinterExtensionInfos err ' + JSON.stringify(err));
     } else {
-        console.log('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
+        console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
     }
 })
 ```
@@ -234,10 +234,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensionInfo[]) => {
-    console.log('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
+    console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
     // ...
 }).catch((error: BusinessError) => {
     console.error('failed to get AllPrinterExtension because ' + JSON.stringify(error));
@@ -276,14 +276,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId, (err: BusinessError) => {
     if (err) {
         console.error('failed to disconnect Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('start disconnect Printer success');
+        console.info('start disconnect Printer success');
     }
 })
 ```
@@ -324,11 +324,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId).then(() => {
-    console.log('start disconnect Printer success');
+    console.info('start disconnect Printer success');
 }).catch((error: BusinessError) => {
     console.error('failed to disconnect Printer because : ' + JSON.stringify(error));
 })
@@ -366,14 +366,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId, (err: BusinessError) => {
     if (err) {
         console.error('failed to query Printer Capability because : ' + JSON.stringify(err));
     } else {
-        console.log('start query Printer Capability success');
+        console.info('start query Printer Capability success');
     }
 })
 ```
@@ -414,11 +414,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId).then(() => {
-    console.log('start query Printer success');
+    console.info('start query Printer success');
 }).catch((error: BusinessError) => {
     console.error('failed to query Printer Capability because : ' + JSON.stringify(error));
 })
@@ -456,21 +456,21 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
     jobId : 'jobId_12',
     printerId : 'printerId_32',
-    jobState : PRINT_JOB_COMPLETED,
+    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
     jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
     copyNumber : 1,
     pageRange : {},
     isSequential : false,
     pageSize : {id : '', name : '', width : 10, height : 20},
     isLandscape : false,
-    colorMode : COLOR_MODE_COLOR,
-    duplexMode : DUPLEX_MODE_NONE,
+    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
+    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
     margin : undefined,
     preview : undefined,
     options : undefined
@@ -479,7 +479,7 @@ print.startPrintJob(jobInfo, (err: BusinessError) => {
     if (err) {
         console.error('failed to start Print Job because : ' + JSON.stringify(err));
     } else {
-        console.log('start Print Job success');
+        console.info('start Print Job success');
     }
 })
 ```
@@ -520,27 +520,27 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
     jobId : 'jobId_12',
     printerId : 'printerId_32',
-    jobState : PRINT_JOB_COMPLETED,
+    jobState : print.PrintJobState.PRINT_JOB_COMPLETED,
     jobSubstate : print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS,
     copyNumber : 1,
     pageRange : {},
     isSequential : false,
     pageSize : {id : '', name : '', width : 10, height : 20},
     isLandscape : false,
-    colorMode : COLOR_MODE_COLOR,
-    duplexMode : DUPLEX_MODE_NONE,
+    colorMode : print.PrintColorMode.COLOR_MODE_COLOR,
+    duplexMode : print.PrintDuplexMode.DUPLEX_MODE_NONE,
     margin : undefined,
     preview : undefined,
     options : undefined
 };
 print.startPrintJob(jobInfo).then(() => {
-    console.log('start Print success');
+    console.info('start Print success');
 }).catch((error: BusinessError) => {
     console.error('failed to start Print because : ' + JSON.stringify(error));
 })
@@ -578,14 +578,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId, (err: BusinessError) => {
     if (err) {
         console.error('cancelPrintJob failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('cancelPrintJob success');
+        console.info('cancelPrintJob success');
     }
 })
 ```
@@ -626,11 +626,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId).then(() => {
-    console.log('cancelPrintJob success');
+    console.info('cancelPrintJob success');
 }).catch((error: BusinessError) => {
     console.error('cancelPrintJob failed, because : ' + JSON.stringify(error));
 })
@@ -671,11 +671,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '121212';
 print.restartPrintJob(jobId).then(() => {
-    console.log('restartPrintJob success');
+    console.info('restartPrintJob success');
 }).catch((error: BusinessError) => {
     console.error('restartPrintJob failed, because : ' + JSON.stringify(error));
 })
@@ -732,7 +732,7 @@ let jobInfo : print.PrintJob = {
     options : undefined
 };
 print.requestPrintPreview(jobInfo, (num : number) => {
-    console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
+    console.info('requestPrintPreview success, num : ' + JSON.stringify(num));
 
 })
 ```
@@ -773,7 +773,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -793,7 +793,7 @@ let jobInfo : print.PrintJob = {
     options : undefined
 };
 print.requestPrintPreview(jobInfo).then((num: number) => {
-    console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
+    console.info('requestPrintPreview success, num : ' + JSON.stringify(num));
 }).catch((error: BusinessError) => {
     console.error('requestPrintPreview failed, because : ' + JSON.stringify(error));
 })
@@ -837,8 +837,8 @@ print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterIn
         console.error('printer state changed state is null or info is null');
         return;
     } else {
-        console.log('on printer state changed, state : ' + JSON.stringify(state));
-        console.log('on printer state changed, info : ' + JSON.stringify(info));
+        console.info('on printer state changed, state : ' + JSON.stringify(state));
+        console.info('on printer state changed, info : ' + JSON.stringify(info));
     }
 })
 ```
@@ -859,7 +859,7 @@ Unregisters the listener for printer state change events. This API uses a callba
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'printerStateChange' | Yes| Listening type. The value is fixed at **'printerStateChange'**.|
-| callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the listener for printer state change events is successfully unregistered, and **false** means the opposite.|
+| callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
@@ -877,7 +877,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 
 print.off('printerStateChange', (data: boolean) => {
-    console.log('off printerStateChange data : ' + JSON.stringify(data));
+    console.info('off printerStateChange data : ' + JSON.stringify(data));
 })
 ```
 
@@ -915,7 +915,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 
 print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => {
-    console.log('onJobStateChange, state : ' + JSON.stringify(state) + ', job : ' + JSON.stringify(job));
+    console.info('onJobStateChange, state : ' + JSON.stringify(state) + ', job : ' + JSON.stringify(job));
 })
 ```
 
@@ -935,7 +935,7 @@ Unregisters the listener for print job state change events. This API uses a call
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'jobStateChange' | Yes| Listening type. The value is fixed at **'jobStateChange'**.|
-| callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the listener for print job state change events is successfully unregistered, and **false** means the opposite.|
+| callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
@@ -953,7 +953,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 
 print.off('jobStateChange', (data: boolean) => {
-    console.log('offJobStateChanged data : ' + JSON.stringify(data));
+    console.info('offJobStateChanged data : ' + JSON.stringify(data));
 })
 ```
 
@@ -991,7 +991,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 
 print.on('extInfoChange', (extensionId: string, info: string) => {
-    console.log('onExtInfoChange, entensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
+    console.info('onExtInfoChange, entensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
 })
 ```
 
@@ -1011,7 +1011,7 @@ Unregisters the listener for printer extension information change events. This A
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'extInfoChange' | Yes| Listening type. The value is fixed at **'extInfoChange'**.|
-| callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the listener for printer extension information change events is successfully unregistered, and **false** means the opposite.|
+| callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
@@ -1029,7 +1029,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 
 print.off('extInfoChange', (data: boolean) => {
-    console.log('offExtInfoChange data : ' + JSON.stringify(data));
+    console.info('offExtInfoChange data : ' + JSON.stringify(data));
 })
 ```
 
@@ -1065,7 +1065,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1080,7 +1080,7 @@ print.addPrinters([printerInfo], (err: BusinessError) => {
     if (err) {
         console.error('addPrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('addPrinters success');
+        console.info('addPrinters success');
     }
 })
 ```
@@ -1121,7 +1121,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1133,7 +1133,7 @@ let printerInfo : print.PrinterInfo = {
     options : 'opt'
 };
 print.addPrinters([printerInfo]).then(() => {
-    console.log('add printers success.');
+    console.info('add printers success.');
 }).catch((error: BusinessError) => {
     console.error('add printers error : ' + JSON.stringify(error));
 })
@@ -1171,14 +1171,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 print.removePrinters([printerId], (err: BusinessError) => {
     if (err) {
         console.error('removePrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('removePrinters success');
+        console.info('removePrinters success');
     }
 })
 ```
@@ -1219,11 +1219,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 print.removePrinters([printerId]).then(() => {
-    console.log('remove printers success');
+    console.info('remove printers success');
 }).catch((error: BusinessError) => {
     console.error('remove printers error : ' + JSON.stringify(error));
 })
@@ -1261,7 +1261,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1276,7 +1276,7 @@ print.updatePrinters([printerInfo], (err: BusinessError) => {
     if (err) {
         console.error('updataPrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('updataPrinters success');
+        console.info('updataPrinters success');
     }
 })
 ```
@@ -1317,7 +1317,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1329,7 +1329,7 @@ let printerInfo : print.PrinterInfo = {
     options : 'opt'
 };
 print.updatePrinters([printerInfo]).then(() => {
-    console.log('update printers success');
+    console.info('update printers success');
 }).catch((error: BusinessError) => {
     console.error('update printers error : ' + JSON.stringify(error));
 })
@@ -1368,7 +1368,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
@@ -1376,7 +1376,7 @@ print.updatePrinterState(printerId, state, (err: BusinessError) => {
     if (err) {
         console.error('updatePrinterState failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('updatePrinterState success');
+        console.info('updatePrinterState success');
     }
 })
 ```
@@ -1418,12 +1418,12 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
 print.updatePrinterState(printerId, state).then(() => {
-    console.log('update printer state success');
+    console.info('update printer state success');
 }).catch((error: BusinessError) => {
     console.error('update printer state error : ' + JSON.stringify(error));
 })
@@ -1463,7 +1463,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '3434';
 let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
@@ -1472,7 +1472,7 @@ print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
     if (err) {
         console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('updatePrintJobState success');
+        console.info('updatePrintJobState success');
     }
 })
 ```
@@ -1515,13 +1515,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '3434';
 let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
 let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
 print.updatePrintJobState(jobId, state, subState).then(() => {
-    console.log('update print job state success');
+    console.info('update print job state success');
 }).catch((error: BusinessError) => {
     console.error('update print job state error : ' + JSON.stringify(error));
 })
@@ -1559,14 +1559,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info, (err: BusinessError) => {
     if (err) {
         console.error('updateExtensionInfo failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('updateExtensionInfo success');
+        console.info('updateExtensionInfo success');
     }
 })
 ```
@@ -1607,11 +1607,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info).then(() => {
-    console.log('update print job state success');
+    console.info('update print job state success');
 }).catch((error: BusinessError) => {
     console.error('update print job state error : ' + JSON.stringify(error));
 })
@@ -1650,13 +1650,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrintJobs((err: BusinessError) => {
     if (err) {
         console.error('queryAllPrintJobs failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('queryAllPrintJobs success');
+        console.info('queryAllPrintJobs success');
     }
 })
 ```
@@ -1694,10 +1694,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllPrintJobs().then(() => {
-    console.log('queryAllPrintJobs success');
+    console.info('queryAllPrintJobs success');
 }).catch((error: BusinessError) => {
     console.error('queryAllPrintJobs failed, error : ' + JSON.stringify(error));
 })
@@ -1733,10 +1733,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryAllActivePrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.log('queryPrinqueryAllActivePrintJobListtJobList success, data : ' + JSON.stringify(printJobs));
+    console.info('queryPrinqueryAllActivePrintJobListtJobList success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
     console.error('queryAllActivePrintJobList failed, error : ' + JSON.stringify(error));
 })
@@ -1772,13 +1772,13 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryPrintJobList((err: BusinessError, printJobs : print.PrintJob[]) => {
     if (err) {
         console.error('queryPrintJobList failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
+        console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
     }
 })
 ```
@@ -1813,10 +1813,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.log('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
+    console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
     console.error('queryPrintJobList failed, error : ' + JSON.stringify(error));
 })
@@ -1854,14 +1854,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId, (err: BusinessError, printJob : print.PrintJob) => {
     if (err) {
         console.error('queryPrintJobById failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('queryPrintJobById success, data : ' + JSON.stringify(printJob));
+        console.info('queryPrintJobById success, data : ' + JSON.stringify(printJob));
     }
 })
 ```
@@ -1902,11 +1902,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
-    console.log('queryPrintJobById data : ' + JSON.stringify(printJob));
+    console.info('queryPrintJobById data : ' + JSON.stringify(printJob));
 }).catch((error: BusinessError) => {
     console.error('queryPrintJobById error : ' + JSON.stringify(error));
 })
@@ -1946,7 +1946,6 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
 
 let jobId : string= '1';
 class MyPrintAttributes implements print.PrintAttributes {
@@ -1982,7 +1981,7 @@ printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
 
 let fd : number = 1;
 print.startGettingPrintFile(jobId, printAttributes, fd, (state: print.PrintFileCreationState) => {
-    console.log('onFileStateChanged success, data : ' + JSON.stringify(state));
+    console.info('onFileStateChanged success, data : ' + JSON.stringify(state));
 })
 ```
 
@@ -2019,14 +2018,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started', (err: BusinessError) => {
     if (err) {
         console.error('notifyPrintService failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('notifyPrintService success');
+        console.info('notifyPrintService success');
     }
 })
 ```
@@ -2068,11 +2067,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
-    console.log('notifyPrintService success');
+    console.info('notifyPrintService success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintService error : ' + JSON.stringify(error));
 })
@@ -2114,11 +2113,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1';
 print.getPrinterInfoById(printerId).then((printerInfo : print.PrinterInfo) => {
-    console.log('getPrinterInfoById data : ' + JSON.stringify(printerInfo));
+    console.info('getPrinterInfoById data : ' + JSON.stringify(printerInfo));
 }).catch((error: BusinessError) => {
     console.error('getPrinterInfoById error : ' + JSON.stringify(error));
 })
@@ -2160,11 +2159,11 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 print.notifyPrintServiceEvent(event).then(() => {
-    console.log('notifyPrintServiceEvent success');
+    console.info('notifyPrintServiceEvent success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintServiceEvent error : ' + JSON.stringify(error));
 })
@@ -2206,7 +2205,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let testPageSize : print.PrintPageSize = {
     id : 'ISO_A4',
@@ -2236,7 +2235,7 @@ let printerInformation : print.PrinterInformation = {
     options : 'testOptions'
 };
 print.updatePrinterInformation(printerInformation).then(() => {
-    console.log('updatePrinterInformation success');
+    console.info('updatePrinterInformation success');
 }).catch((error: BusinessError) => {
     console.error('updatePrinterInformation error : ' + JSON.stringify(error));
 })
@@ -2279,14 +2278,14 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = 'testPrinterId';
 let preferences : print.PrinterPreferences = {
     defaultDuplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE
 };
 print.setPrinterPreferences(printerId, preferences).then(() => {
-    console.log('setPrinterPreferences success');
+    console.info('setPrinterPreferences success');
 }).catch((error: BusinessError) => {
     console.error('setPrinterPreferences error : ' + JSON.stringify(error));
 })
@@ -2322,10 +2321,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
-    console.log('discoverUsbPrinters data : ' + JSON.stringify(printers));
+    console.info('discoverUsbPrinters data : ' + JSON.stringify(printers));
 }).catch((error: BusinessError) => {
     console.error('discoverUsbPrinters error : ' + JSON.stringify(error));
 })
@@ -2368,12 +2367,12 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let printerId : string = '1';
 let type : print.DefaultPrinterType = print.DefaultPrinterType.DEFAULT_PRINTER_TYPE_SET_BY_USER;
 print.setDefaultPrinter(printerId, type).then(() => {
-    console.log('setDefaultPrinter success');
+    console.info('setDefaultPrinter success');
 }).catch((error: BusinessError) => {
     console.error('setDefaultPrinter error : ' + JSON.stringify(error));
 })
@@ -2416,12 +2415,12 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 let jobId : string = '1';
 print.notifyPrintServiceEvent(event, jobId).then(() => {
-    console.log('notifyPrintServiceEvent success');
+    console.info('notifyPrintServiceEvent success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintServiceEvent error : ' + JSON.stringify(error));
 })
