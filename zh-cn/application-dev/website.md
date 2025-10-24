@@ -4706,16 +4706,21 @@
           - [@ohos.vibrator(振动)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
         - C API<!--sensor-service-c-->
           - 模块<!--sensor-service-module-->
-            - [Sensor](reference/apis-sensor-service-kit/_sensor.md)
-            - [Vibrator](reference/apis-sensor-service-kit/_vibrator.md)
+            - [Sensor](reference/apis-sensor-service-kit/capi-sensor.md)
+            - [Vibrator](reference/apis-sensor-service-kit/capi-vibrator.md)
           - 头文件<!--sensor-service-headerfile-->
-            - [oh_sensor.h](reference/apis-sensor-service-kit/oh_sensor_8h.md)
-            - [oh_sensor_type.h](reference/apis-sensor-service-kit/oh_sensor_type_8h.md)
-            - [vibrator.h](reference/apis-sensor-service-kit/vibrator_8h.md)
-            - [vibrator_type.h](reference/apis-sensor-service-kit/vibrator_type_8h.md)
+            - [oh_sensor.h](reference/apis-sensor-service-kit/capi-oh-sensor-h.md)
+            - [oh_sensor_type.h](reference/apis-sensor-service-kit/capi-oh-sensor-type-h.md)
+            - [vibrator.h](reference/apis-sensor-service-kit/capi-vibrator-h.md)
+            - [vibrator_type.h](reference/apis-sensor-service-kit/capi-vibrator-type-h.md)
           - 结构体<!--sensor-service-struct-->
-            - [Vibrator_Attribute](reference/apis-sensor-service-kit/_vibrator_attribute.md)
-            - [Vibrator_File_Description](reference/apis-sensor-service-kit/_vibrator_file_description.md)
+            - [Sensor_Info](reference/apis-sensor-service-kit/capi-sensor-sensor-info.md)
+            - [Sensor_Event](reference/apis-sensor-service-kit/capi-sensor-sensor-event.md)
+            - [Sensor_SubscriptionId](reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionid.md)
+            - [Sensor_SubscriptionAttribute](reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionattribute.md)
+            - [Sensor_Subscriber](reference/apis-sensor-service-kit/capi-sensor-sensor-subscriber.md)
+            - [Vibrator_Attribute](reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md)
+            - [Vibrator_File_Description](reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md)
         - 错误码<!--sensor-service-arkts-errcode-->
           - [Sensor错误码](reference/apis-sensor-service-kit/errorcode-sensor.md)
           - [Vibrator错误码](reference/apis-sensor-service-kit/errorcode-vibrator.md)
