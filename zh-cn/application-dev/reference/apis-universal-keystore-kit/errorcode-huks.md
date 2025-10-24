@@ -19,7 +19,7 @@ The ``${messageInfo}`` is not supported.
 
 **错误描述**
 
-不支持``${messageInfo}``的特性（功能）。
+不支持``${messageInfo}``中给出的特性（功能）。
 
 **可能原因**
 
@@ -37,7 +37,7 @@ Failed to obtain the ``${messageInfo}``. It is not set in ParamSet.
 
 **错误描述**
 
-未设置相关参数，无法获取``${messageInfo}``。
+未设置相关参数，无法获取``${messageInfo}``中给出的参数。
 
 **可能原因**
 
@@ -56,7 +56,7 @@ Invalid ``${messageInfo}``.
 
 **错误描述**
 
-使用了无效的``${messageInfo}``。
+使用了无效的参数，具体可见``${messageInfo}``。
 
 **可能原因**
 
