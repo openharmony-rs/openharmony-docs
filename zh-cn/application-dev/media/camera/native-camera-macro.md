@@ -76,9 +76,9 @@
 
 ## 状态监听
 
-在相机应用开发过程中，可以随时监听微距能力是否发生改变
+在相机应用开发过程中，可以随时监听微距能力是否发生改变。
 
-   通过OH_CaptureSession_RegisterMacroStatusChangeCallback函数注册回调，返回监听结果
+通过OH_CaptureSession_RegisterMacroStatusChangeCallback函数注册回调，返回监听结果。
 
    ```c++
    void MacroStatusCallback(Camera_CaptureSession* captureSession, bool isMacroDetected)
