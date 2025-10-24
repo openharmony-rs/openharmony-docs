@@ -42,8 +42,7 @@
 在相机应用开发过程中，可以随时监听微距能力是否发生改变
 
    通过注册macroStatusChanged事件，通过回调返回监听结果，callback打印微距能力状态。
-
-    ```ts
+   ```ts
    function callback(err: BusinessError, macroStatus: boolean): void {
       if (err !== undefined && err.code !== 0) {
          console.error(`Callback Error, errorCode: ${err.code}`);
@@ -61,4 +60,4 @@
    function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
       photoSession.off('macroStatusChanged');
    }
-    ```  
+   ```  
