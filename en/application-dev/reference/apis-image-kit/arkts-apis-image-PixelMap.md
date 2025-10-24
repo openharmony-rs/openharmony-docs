@@ -4,7 +4,7 @@
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -2378,6 +2378,7 @@ async function loadPixelMap(rawFileDescriptor: number): Promise<PixelMap> {
   return pixelMap;
 }
 
+@Entry
 @Component
 struct Demo {
   @State pixelMap: PixelMap | undefined = undefined;
