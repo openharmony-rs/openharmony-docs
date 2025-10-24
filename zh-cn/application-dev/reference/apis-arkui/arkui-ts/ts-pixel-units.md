@@ -42,7 +42,8 @@ ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 
 > **说明：**
 >
-> 直接使用vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx可能存在[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，以上接口从API version 18开始废弃，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，再使用UIContext下的[vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx](../arkts-apis-uicontext-uicontext.md#vp2px12)调用绑定实例的接口。
+> 1. 直接使用vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx可能存在[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，以上接口从API version 18开始废弃，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，再使用UIContext下的[vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx](../arkts-apis-uicontext-uicontext.md#vp2px12)调用绑定实例的接口。
+> 2. 在UI实例未创建时，vp2px/px2vp使用默认屏幕的虚拟像素比进行转换。在该场景下，使用UIContext接口替换时，开发者可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 ## 示例
 
