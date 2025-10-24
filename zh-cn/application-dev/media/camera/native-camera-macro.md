@@ -58,7 +58,7 @@
 
    ```
 
-4. 通过[OH_CaptureSession_EnableMacro()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_enablemacro)方法，开启或关闭微距能力。
+4. 使用[OH_CaptureSession_EnableMacro()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_enablemacro)方法开启或关闭微距能力。
 
    ```c++
    void EnableMacro(Camera_CaptureSession* captureSession, bool enabled)
