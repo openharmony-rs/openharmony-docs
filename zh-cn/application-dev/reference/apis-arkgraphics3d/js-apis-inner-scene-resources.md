@@ -522,5 +522,5 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| enable | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。 |
+| enabled | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。 |
 | effectId | string  | 是 | 否 | 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，用于特效的创建，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。 |
