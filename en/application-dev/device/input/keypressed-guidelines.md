@@ -36,9 +36,14 @@ When an application is started, call [on](../../reference/apis-input-kit/js-apis
 
 In e-book or news reading apps, users can navigate pages via volume buttons—typically, the volume-up button turns to the next page, while the volume-down button returns to the previous page. In camera or barcode scanning apps, pressing a volume button triggers instant photography without switching to the system's camera interface.
 
-```js
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import hilog from '@ohos.hilog';
 import { KeyCode } from '@kit.InputKit';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
@@ -76,21 +81,23 @@ struct TestDemo14 {
       inputConsumer.on('keyPressed', options1, this.volumeUpCallBackFunc);
       inputConsumer.on('keyPressed', options2, this.volumeDownCallBackFunc);
     } catch (error) {
-      console.error(`Subscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
+      hilog.error(DOMAIN, 'InputMonitor', `Subscribe execute failed, error: %{public}s`,
+        JSON.stringify(error, ["code", "message"]));
     }
   }
 
   build() {
     Column() {
       Row() {
-        Button ('Cancel listening for Volume Up button events')
+        Button('Cancel monitoring on the volume button')
           .onClick(() => {
             try {
               // Disable listening for a single callback.
               inputConsumer.off('keyPressed', this.volumeUpCallBackFunc);
               this.getUIContext().getPromptAction().showToast({ message: ''Listening for Volume Up button events is canceled successfully.' });
             } catch (error) {
-              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
+              hilog.error(DOMAIN, 'InputMonitor', `Unsubscribe execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
             }
           })
       }.width('100%')
@@ -98,20 +105,22 @@ struct TestDemo14 {
       .margin({ top: 20, bottom: 50 })
 
       Row() {
-        Button ('Cancel listening for Volume Down button events')
+        Button('Cancel monitoring under the volume button')
           .onClick(() => {
             try {
               // Disable listening for a single callback.
               inputConsumer.off('keyPressed', this.volumeDownCallBackFunc);
               this.getUIContext().getPromptAction().showToast({ message: 'Listening for Volume Down button events is canceled successfully.' });
             } catch (error) {
-              console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
+              hilog.error(DOMAIN, 'InputMonitor', `Unsubscribe execute failed, error: %{public}s`,
+                JSON.stringify(error, ["code", "message"]));
             }
           })
       }.width('100%')
       .justifyContent(FlexAlign.Center)
       .margin({ top: 20, bottom: 50 })
-      Row(){
+
+      Row() {
         Text ('Listening is enabled for Volume Down and Volume Down button events by default.')
       }
       .width('100%')
@@ -119,4 +128,5 @@ struct TestDemo14 {
     }.width('100%').height('100%')
   }
 }
+
 ```

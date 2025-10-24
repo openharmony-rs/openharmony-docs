@@ -1,4 +1,4 @@
-# Device Rotation Control
+# Device Rotation Control (for System Applications Only)
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @hobbycao-->

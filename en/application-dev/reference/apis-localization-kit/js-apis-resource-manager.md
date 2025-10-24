@@ -56,26 +56,29 @@ Obtains the **ResourceManager** object of this application. This API uses an asy
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | Yes   | Callback used to return the **ResourceManager** object.|
 
 **Example**
-
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import  resourceManager  from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
+export default {
+    onCreate() {
+        resourceManager.getResourceManager((error, mgr) => {
+            if (error != null) {
+                console.error("error is " + error);
+                return;
+            }
+            // Replace "test" with the actual resource name.
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("error is " + JSON.stringify(error));
+                } else {
+                    console.info("success is " + value);
+                }
 
-  resourceManager.getResourceManager((error, mgr) => {
-    if (error != null) {
-      console.error("error is " + error);
-      return;
+            });
+        });
     }
-    // Replace 'app.string.test' with the actual resource.
-    mgr.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let str = value;
-      }
-    });
-  });
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -96,18 +99,31 @@ Obtains the **ResourceManager** object of the specified application. This API us
 | callback   | [AsyncCallback](#asynccallbackdeprecated)&lt;[ResourceManager](#resourcemanager)&gt; | Yes   | Callback used to return the **ResourceManager** object.|
 
 **Example**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import  resourceManager  from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
 
-  // Replace "com.example.myapplication" with the actual package name.
-  resourceManager.getResourceManager("com.example.myapplication", (error, mgr) => {
-    if (error != null) {
-      console.error("error is " + error);
-      return;
+// Replace 'com.example.testapp' with the actual application package name.
+const BUNDLE_NAME = 'com.example.testapp';
+export default {
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
+            if (error != null) {
+                console.error("getResourceManager error is " + error);
+                return;
+            }
+            // Replace "test" with the actual resource name.
+            mgr.getStringByName('test', (error, value) => {
+                if (error) {
+                    console.error("getResourceManager error is " + JSON.stringify(error));
+                } else {
+                    console.info("getResourceManager success is " + value);
+                }
+            });
+        });
     }
-  });
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -127,23 +143,25 @@ Obtains the **ResourceManager** object of this application. This API uses a prom
 | Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise used to return the **ResourceManager** object.|
 
 **Example**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  resourceManager.getResourceManager().then((mgr: resourceManager.ResourceManager) => {
-    // Replace 'app.string.test' with the actual resource.
-    mgr.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let str = value;
-      }
-    });
-  }).catch((error: BusinessError) => {
-    console.error("error is " + error);
-  });
+import resourceManager from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
+export default {
+    onCreate() {
+        resourceManager.getResourceManager().then(resMgr => {
+            try {
+                // Replace "test" with the actual resource name.
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
+};
   ```
 
 ## resourceManager.getResourceManager
@@ -169,16 +187,29 @@ Obtains the **ResourceManager** object of the specified application. This API us
 | Promise&lt;[ResourceManager](#resourcemanager)&gt; | Promise used to return the **ResourceManager** object.|
 
 **Example**
-  <!--code_no_check_fa-->
+<!--code_no_check_fa-->
   ```js
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import resourceManager from '@ohos.resourceManager';
+// Use this method to import the module in the FA model.
 
-  // Replace "com.example.myapplication" with the actual package name.
-  resourceManager.getResourceManager("com.example.myapplication").then((mgr: resourceManager.ResourceManager) => {
-  }).catch((error: BusinessError) => {
-    console.error("error is " + error);
-  });
+// Replace 'com.example.testapp' with the actual application package name.
+const BUNDLE_NAME = 'com.example.testapp';
+
+export default {
+    onCreate() {
+        resourceManager.getResourceManager(BUNDLE_NAME).then(resMgr => {
+            try {
+                // Replace "test" with the actual resource name.
+                let testStr = resMgr.getStringByNameSync('test')
+                console.info("getResourceManager success is " + testStr);
+            } catch (error) {
+                console.error("getResourceManager error is " + JSON.stringify(error));
+            }
+        }).catch(error => {
+            console.error("getResourceManager error is " + error);
+        });
+    }
+};
   ```
 
 ## resourceManager.getSysResourceManager<sup>20+</sup>
@@ -405,18 +436,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.string.test' with the actual resource.
-    let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id);
-    console.log(`getStringSync, result: ${testStr}`);
-    // Print the output result: getStringSync, result: I'm a test string resource.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.string.test' with the actual resource.
+            let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id);
+            console.info(`getStringSync, result: ${testStr}`);
+            // Print the output result: getStringSync, result: I'm a test string resource.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getStringSync<sup>10+</sup>
@@ -467,18 +503,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.string.test' with the actual resource.
-    let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id, "format string", 10, 98.78);
-    console.log(`getStringSync, result: ${testStr}`);
-    // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.string.test' with the actual resource.
+            let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id, "format string", 10, 98.78);
+            console.info(`getStringSync, result: ${testStr}`);
+            // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getStringByNameSync<sup>9+</sup>
@@ -527,18 +568,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    let testStr = this.context.resourceManager.getStringByNameSync("test");
-    console.log(`getStringByNameSync, result: ${testStr}`);
-    // Print the output result: getStringByNameSync, result: I'm a test string resource.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let testStr = this.context.resourceManager.getStringByNameSync("test");
+            console.info(`getStringByNameSync, result: ${testStr}`);
+            // Print the output result: getStringByNameSync, result: I'm a test string resource.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getStringByNameSync<sup>10+</sup>
@@ -589,18 +635,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    let testStr = this.context.resourceManager.getStringByNameSync("test", "format string", 10, 98.78);
-    console.log(`getStringByNameSync, result: ${testStr}`);
-    // Print the output result: getStringByNameSync, result: I'm a format string, format int: 10, format float: 98.78.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let testStr = this.context.resourceManager.getStringByNameSync("test", "format string", 10, 98.78);
+            console.info(`getStringByNameSync, result: ${testStr}`);
+            // Print the output result: getStringByNameSync, result: I'm a format string, format int: 10, format float: 98.78.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getStringValue<sup>9+</sup>
@@ -627,7 +678,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001001  | If the module resId invalid.             |
+| 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
 
@@ -644,17 +695,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace 'app.string.test' with the actual resource.
-  this.context.resourceManager.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getStringValue, result: ${value}`);
-      // Print the output result: getStringValue, result: I'm a test string resource.
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.string.test' with the actual resource.
+        this.context.resourceManager.getStringValue($r('app.string.test').id, (error: BusinessError, value: string) => {
+            if (error != null) {
+                console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getStringValue, result: ${value}`);
+                // Print the output result: getStringValue, result: I'm a test string resource.
+            }
+        });
     }
-  });
+}
   ```
 
 ### getStringValue<sup>9+</sup>
@@ -703,15 +759,20 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace 'app.string.test' with the actual resource.
-  this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
-    console.log(`getStringValue, result: ${value}`);
-    // Print the output result: getStringValue, result: I'm a test string resource.
-  }).catch((error: BusinessError) => {
-    console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-  });
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.string.test' with the actual resource.
+        this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
+            console.info(`getStringValue, result: ${value}`);
+            // Print the output result: getStringValue, result: I'm a test string resource.
+        }).catch((error: BusinessError) => {
+            console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    }
+}
   ```
 
 ### getStringByName<sup>9+</sup>
@@ -755,17 +816,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace "test" with the actual resource.
-  this.context.resourceManager.getStringByName("test", (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getStringByName, result: ${value}`);
-      // Print the output result: getStringByName, result: I'm a test string resource.
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringByName("test", (error: BusinessError, value: string) => {
+            if (error != null) {
+                console.error(`callback getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getStringByName, result: ${value}`);
+                // Print the output result: getStringByName, result: I'm a test string resource.
+            }
+        });
     }
-  });
+}
   ```
 
 ### getStringByName<sup>9+</sup>
@@ -814,15 +880,20 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace "test" with the actual resource.
-  this.context.resourceManager.getStringByName("test").then((value: string) => {
-    console.log(`getStringByName, result: ${value}`);
-    // Print the output result: getStringByName, result: I'm a test string resource.
-  }).catch((error: BusinessError) => {
-    console.error(`promise getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-  });
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringByName("test").then((value: string) => {
+            console.info(`getStringByName, result: ${value}`);
+            // Print the output result: getStringByName, result: I'm a test string resource.
+        }).catch((error: BusinessError) => {
+            console.error(`promise getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    }
+}
   ```
 
 ### getStringArrayValueSync<sup>10+</sup>
@@ -875,18 +946,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.strarray.test' with the actual resource.
-    let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync($r('app.strarray.test').id);
-    console.log(`getStringArrayValueSync, result: ${strArray[0]}`);
-    // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.strarray.test' with the actual resource.
+            let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync($r('app.strarray.test').id);
+            console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
+            // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getStringArrayByNameSync<sup>10+</sup>
@@ -939,18 +1015,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    let strArray: Array<string> = this.context.resourceManager.getStringArrayByNameSync("test");
-    console.log(`getStringArrayByNameSync, result: ${strArray[0]}`);
-    // Print the output result: getStringArrayByNameSync, result: I'm one of the array's values.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringArrayByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let strArray: Array<string> = this.context.resourceManager.getStringArrayByNameSync("test");
+            console.info(`getStringArrayByNameSync, result: ${strArray[0]}`);
+            // Print the output result: getStringArrayByNameSync, result: I'm one of the array's values.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringArrayByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getStringArrayValue<sup>9+</sup>
@@ -998,18 +1079,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace 'app.strarray.test' with the actual resource.
-  this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id,
-    (error: BusinessError, value: Array<string>) => {
-      if (error != null) {
-        console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        console.log(`getStringArrayValue, result: ${value[0]}`);
-        // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-      }
-    });
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.strarray.test' with the actual resource.
+        this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id,
+            (error: BusinessError, value: Array<string>) => {
+                if (error != null) {
+                    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    console.info(`getStringArrayValue, result: ${value[0]}`);
+                    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+                }
+            });
+    }
+}
   ```
 
 ### getStringArrayValue<sup>9+</sup>
@@ -1062,17 +1148,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace 'app.strarray.test' with the actual resource.
-  this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id)
-    .then((value: Array<string>) => {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
-      // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.strarray.test' with the actual resource.
+        this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id)
+            .then((value: Array<string>) => {
+                console.info(`getStringArrayValue, result: ${value[0]}`);
+                // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
   ```
 
 ### getStringArrayByName<sup>9+</sup>
@@ -1120,18 +1211,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace "test" with the actual resource.
-  this.context.resourceManager.getStringArrayByName("test", (error: BusinessError, value: Array<string>) => {
-    if (error != null) {
-      console.error(`callback getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      let strArray = value;
-      console.log(`getStringArrayByName, result: ${value[0]}`);
-      // Print the output result: getStringArrayByName, result: I'm one of the array's values.
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringArrayByName("test", (error: BusinessError, value: Array<string>) => {
+            if (error != null) {
+                console.error(`callback getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                let strArray = value;
+                console.info(`getStringArrayByName, result: ${value[0]}`);
+                // Print the output result: getStringArrayByName, result: I'm one of the array's values.
+            }
+        });
     }
-  });
+}
   ```
 
 ### getStringArrayByName<sup>9+</sup>
@@ -1184,17 +1280,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace "test" with the actual resource.
-  this.context.resourceManager.getStringArrayByName("test")
-    .then((value: Array<string>) => {
-      console.log(`getStringArrayByName, result: ${value[0]}`);
-      // Print the output result: getStringArrayByName, result: I'm one of the array's values.
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringArrayByName("test")
+            .then((value: Array<string>) => {
+                console.info(`getStringArrayByName, result: ${value[0]}`);
+                // Print the output result: getStringArrayByName, result: I'm one of the array's values.
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
   ```
 
 ### getIntPluralStringValueSync<sup>18+</sup>
@@ -1205,7 +1306,9 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 
 > **NOTE**
 >
-> Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> - Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> 
+> - In languages such as English and German, singular/plural numbers are classified into cardinal numbers (for example, 1, 2, 3) and ordinal numbers (for example, 1st, 2nd, 3rd). This API applies only to cardinal numbers.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1258,20 +1361,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // If num is 1, the single/plural type is one in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-    // Replace 'app.plural.format_test' with the actual resource.
-    let pluralStr = this.context.resourceManager.getIntPluralStringValueSync($r('app.plural.format_test').id, 1, 1, "basket", 0.3);
-    console.log(`getIntPluralStringValueSync, result: ${pluralStr}`);
-    // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getIntPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // If num is 1, the single/plural type is one in the English environment.
+            // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+            // Replace 'app.plural.format_test' with the actual resource.
+            let pluralStr = this.context.resourceManager.getIntPluralStringValueSync($r('app.plural.format_test').id, 1, 1, "basket", 0.3);
+            console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
+            // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getIntPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getIntPluralStringByNameSync<sup>18+</sup>
@@ -1282,7 +1390,9 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 
 > **NOTE**
 >
-> Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> - Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> 
+> - In languages such as English and German, singular/plural numbers are classified into cardinal numbers (for example, 1, 2, 3) and ordinal numbers (for example, 1st, 2nd, 3rd). This API applies only to cardinal numbers.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1335,20 +1445,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // If num is 1, the single/plural type is one in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-    // Replace "format_test" with the actual resource.
-    let pluralStr = this.context.resourceManager.getIntPluralStringByNameSync("format_test", 1, 1, "basket", 0.3);
-    console.log(`getIntPluralStringByNameSync, result: ${pluralStr}`);
-    // Print the output result: getIntPluralStringByNameSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getIntPluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // If num is 1, the single/plural type is one in the English environment.
+            // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+            // Replace "format_test" with the actual resource.
+            let pluralStr = this.context.resourceManager.getIntPluralStringByNameSync("format_test", 1, 1, "basket", 0.3);
+            console.info(`getIntPluralStringByNameSync, result: ${pluralStr}`);
+            // Print the output result: getIntPluralStringByNameSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getIntPluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getDoublePluralStringValueSync<sup>18+</sup>
@@ -1359,7 +1474,9 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 
 > **NOTE**
 >
-> Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> - Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> 
+> - In languages such as English and German, singular/plural numbers are classified into cardinal numbers (for example, 1, 2, 3) and ordinal numbers (for example, 1st, 2nd, 3rd). This API applies only to cardinal numbers.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1412,20 +1529,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // If num is 2.1, the single/plural type is other in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
-    // Replace 'app.plural.format_test' with the actual resource.
-    let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync($r('app.plural.format_test').id, 2.1, 2, "basket", 0.6);
-    console.log(`getDoublePluralStringValueSync, result: ${pluralStr}`);
-    // Print the output result: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // If num is 2.1, the single/plural type is other in the English environment.
+            // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
+            // Replace 'app.plural.format_test' with the actual resource.
+            let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync($r('app.plural.format_test').id, 2.1, 2, "basket", 0.6);
+            console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+            // Print the output result: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getDoublePluralStringByNameSync<sup>18+</sup>
@@ -1436,7 +1558,9 @@ Obtains a [singular/plural](../../internationalization/l10n-singular-plural.md) 
 
 > **NOTE**
 >
-> Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> - Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
+> 
+> - In languages such as English and German, singular/plural numbers are classified into cardinal numbers (for example, 1, 2, 3) and ordinal numbers (for example, 1st, 2nd, 3rd). This API applies only to cardinal numbers.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1489,20 +1613,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // If num is 2.1, the single/plural type is other in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
-    // Replace "format_test" with the actual resource.
-    let pluralStr = this.context.resourceManager.getDoublePluralStringByNameSync("format_test", 2.1, 2, "basket", 0.6);
-    console.log(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
-    // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDoublePluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // If num is 2.1, the single/plural type is other in the English environment.
+            // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
+            // Replace "format_test" with the actual resource.
+            let pluralStr = this.context.resourceManager.getDoublePluralStringByNameSync("format_test", 2.1, 2, "basket", 0.6);
+            console.info(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
+            // Print the output result: getDoublePluralStringByNameSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDoublePluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContentSync<sup>10+</sup>
@@ -1540,25 +1669,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentSync($r('app.media.test').id); // Default screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentSync($r('app.media.test').id); // Default screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentSync($r('app.media.test').id, 120); // Specified screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentSync($r('app.media.test').id, 120); // Specified screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaByNameSync<sup>10+</sup>
@@ -1596,25 +1730,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaByNameSync("test"); // Default screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaByNameSync("test"); // Default screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaByNameSync("test", 120); // Specified screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaByNameSync("test", 120); // Specified screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContent<sup>9+</sup>
@@ -1646,22 +1785,28 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContent($r('app.media.test').id, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id,
+                (error: BusinessError, value: Uint8Array) => {
+                    if (error != null) {
+                        console.error("error is " + error);
+                    } else {
+                        let media = value;
+                    }
+                });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContent<sup>10+</sup>
@@ -1694,22 +1839,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContent($r('app.media.test').id, 120, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id, 120, (error: BusinessError, value: Uint8Array) => {
+                if (error != null) {
+                    console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContent<sup>9+</sup>
@@ -1746,20 +1896,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContent($r('app.media.test').id).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaContent promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id).then((value: Uint8Array) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error("getMediaContent promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContent<sup>10+</sup>
@@ -1797,20 +1952,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContent($r('app.media.test').id, 120).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id, 120).then((value: Uint8Array) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaByName<sup>9+</sup>
@@ -1842,22 +2002,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaByName("test", (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaByName("test", (error: BusinessError, value: Uint8Array) => {
+                if (error != null) {
+                    console.error("error is " + error);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaByName<sup>10+</sup>
@@ -1890,22 +2055,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaByName("test", 120, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error(`callback getMediaByName failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaByName("test", 120, (error: BusinessError, value: Uint8Array) => {
+                if (error != null) {
+                    console.error(`callback getMediaByName failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaByName<sup>9+</sup>
@@ -1942,20 +2112,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaByName("test").then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaByName promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaByName("test").then((value: Uint8Array) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error("getMediaByName promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaByName<sup>10+</sup>
@@ -1993,20 +2168,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaByName("test", 120).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaByName("test", 120).then((value: Uint8Array) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getMediaByName failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContentBase64Sync<sup>10+</sup>
@@ -2044,25 +2224,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentBase64Sync($r('app.media.test').id); // Default screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64Sync($r('app.media.test').id); // Default screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentBase64Sync($r('app.media.test').id, 120); // Specified screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64Sync($r('app.media.test').id, 120); // Specified screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaBase64ByNameSync<sup>10+</sup>
@@ -2100,25 +2285,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaBase64ByNameSync("test"); // Default screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaBase64ByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaBase64ByNameSync("test"); // Default screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaBase64ByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaBase64ByNameSync("test", 120); // Specified screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaBase64ByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaBase64ByNameSync("test", 120); // Specified screen density
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getMediaBase64ByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContentBase64<sup>9+</sup>
@@ -2150,22 +2340,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, (error: BusinessError, value: string) => {
+                if (error != null) {
+                    console.error("error is " + error);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContentBase64<sup>10+</sup>
@@ -2198,22 +2393,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120, (error: BusinessError, value: string) => {
+                if (error != null) {
+                    console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContentBase64<sup>9+</sup>
@@ -2250,20 +2450,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentBase64($r('app.media.test').id).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaContentBase64 promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id).then((value: string) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error("getMediaContentBase64 promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaContentBase64<sup>10+</sup>
@@ -2301,20 +2506,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.media.test' with the actual resource.
-    this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120).then((value: string) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaBase64ByName<sup>9+</sup>
@@ -2346,22 +2556,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaBase64ByName("test", (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaBase64ByName("test", (error: BusinessError, value: string) => {
+                if (error != null) {
+                    console.error("error is " + error);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaBase64ByName<sup>10+</sup>
@@ -2398,22 +2613,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaBase64ByName("test", 120, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getMediaBase64ByName failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaBase64ByName("test", 120, (error: BusinessError, value: string) => {
+                if (error != null) {
+                    console.error(`callback getMediaBase64ByName failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaBase64ByName<sup>9+</sup>
@@ -2450,20 +2670,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaBase64ByName("test").then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaBase64ByName promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaBase64ByName("test").then((value: string) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error("getMediaBase64ByName promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getMediaBase64ByName<sup>10+</sup>
@@ -2501,20 +2726,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test" with the actual resource.
-    this.context.resourceManager.getMediaBase64ByName("test", 120).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaBase64ByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            this.context.resourceManager.getMediaBase64ByName("test", 120).then((value: string) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getMediaBase64ByName failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaBase64ByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getDrawableDescriptor<sup>10+</sup>
@@ -2553,33 +2783,38 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { DrawableDescriptor } from '@kit.ArkUI';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
 
-  try {
-    // Replace 'app.media.icon' with the actual resource.
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    // Replace 'app.media.icon' with the actual resource.
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 120);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    // Replace 'app.media.icon' with the actual resource.
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 0, 1);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.icon' with the actual resource.
+            let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+        }
+        try {
+            // Replace 'app.media.icon' with the actual resource.
+            let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 120);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+        }
+        try {
+            // Replace 'app.media.icon' with the actual resource.
+            let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor($r('app.media.icon').id, 0, 1);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getDrawableDescriptorByName<sup>10+</sup>
@@ -2618,33 +2853,38 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { DrawableDescriptor } from '@kit.ArkUI';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
 
-  try {
-    // Replace "icon" with the actual resource.
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon');
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    // Replace "icon" with the actual resource.
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 120);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    // Replace "icon" with the actual resource.
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 0, 1);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "icon" with the actual resource.
+            let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon');
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+        }
+        try {
+            // Replace "icon" with the actual resource.
+            let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 120);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+        }
+        try {
+            // Replace "icon" with the actual resource.
+            let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptorByName('icon', 0, 1);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getDrawableDescriptorByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getBoolean<sup>9+</sup>
@@ -2693,18 +2933,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'app.boolean.boolean_test' with the actual resource.
-    let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
-    console.log(`getBoolean, result: ${boolTest}`);
-    // Print the output result: getBoolean, result: true
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.boolean.boolean_test' with the actual resource.
+            let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
+            console.info(`getBoolean, result: ${boolTest}`);
+            // Print the output result: getBoolean, result: true
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getBooleanByName<sup>9+</sup>
@@ -2753,18 +2998,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "boolean_test" with the actual resource.
-    let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
-    console.log(`getBooleanByName, result: ${boolTest}`);
-    // Print the output result: getBooleanByName, result: true
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getBooleanByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "boolean_test" with the actual resource.
+            let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
+            console.info(`getBooleanByName, result: ${boolTest}`);
+            // Print the output result: getBooleanByName, result: true
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getBooleanByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getNumber<sup>9+</sup>
@@ -2825,32 +3075,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { display } from '@kit.ArkUI';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // An integer refers to the original value.
+            // Replace 'app.integer.integer_test' with the actual resource.
+            let intValue = this.context.resourceManager.getNumber($r('app.integer.integer_test').id);
+            console.info(`getNumber, int value: ${intValue}`);
+            // Print the output result: getNumber, int value: 100
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    // An integer refers to the original value.
-    // Replace 'app.integer.integer_test' with the actual resource.
-    let intValue = this.context.resourceManager.getNumber($r('app.integer.integer_test').id);
-    console.log(`getNumber, int value: ${intValue}`);
-    // Print the output result: getNumber, int value: 100
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
-  }
-
-  try {
-    // A float number without a unit indicates the original value, and a float number with the unit of vp or fp indicates the px value (float number with the unit of vp or fp = original value x densityPixels).
-    // Replace 'app.float.float_test' with the actual resource.
-    let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
-    console.log(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-    // Print the output result: getNumber, densityPixels: 3.25, float value: 99.45000457763672
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            // A float number without a unit indicates the original value, and a float number with the unit of vp or fp indicates the px value (float number with the unit of vp or fp = original value x densityPixels).
+            // Replace 'app.float.float_test' with the actual resource.
+            let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
+            console.info(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+            // Print the output result: getNumber, densityPixels: 3.25, float value: 99.45000457763672
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 
@@ -2912,32 +3166,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { display } from '@kit.ArkUI';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // An integer refers to the original value.
+            // Replace "integer_test" with the actual resource.
+            let intValue = this.context.resourceManager.getNumberByName("integer_test");
+            console.info(`getNumberByName, int value: ${intValue}`);
+            // Print the output result: getNumberByName, int value: 100
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    // An integer refers to the original value.
-    // Replace "integer_test" with the actual resource.
-    let intValue = this.context.resourceManager.getNumberByName("integer_test");
-    console.log(`getNumberByName, int value: ${intValue}`);
-    // Print the output result: getNumberByName, int value: 100
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
-  }
-
-  try {
-    // A float number without a unit indicates the original value, and a float number with the unit of vp or fp indicates the px value (float number with the unit of vp or fp = original value x densityPixels).
-    // Replace "float_test" with the actual resource.
-    let floatValue = this.context.resourceManager.getNumberByName("float_test");
-    console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
-    // Print the output result: getNumberByName, densityPixels: 3.25, float value: 99.45000457763672
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            // A float number without a unit indicates the original value, and a float number with the unit of vp or fp indicates the px value (float number with the unit of vp or fp = original value x densityPixels).
+            // Replace "float_test" with the actual resource.
+            let floatValue = this.context.resourceManager.getNumberByName("float_test");
+            console.info(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+            // Print the output result: getNumberByName, densityPixels: 3.25, float value: 99.45000457763672
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getNumberByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getColorSync<sup>10+</sup>
@@ -2986,18 +3244,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace 'app.color.test' with the actual resource.
-    let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
-    console.log(`getColorSync, result: ${colorValue}`);
-    // Print the output result: getColorSync, result: 4294967295
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.color.test' with the actual resource.
+            let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
+            console.info(`getColorSync, result: ${colorValue}`);
+            // Print the output result: getColorSync, result: 4294967295
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 
@@ -3047,18 +3309,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test" with the actual resource.
-    let colorValue = this.context.resourceManager.getColorByNameSync("test");
-    console.log(`getColorByNameSync, result: ${colorValue}`);
-    // Print the output result: getColorByNameSync, result: 4294967295
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getColorByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let colorValue = this.context.resourceManager.getColorByNameSync("test");
+            console.info(`getColorByNameSync, result: ${colorValue}`);
+            // Print the output result: getColorByNameSync, result: 4294967295
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getColorByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getColor<sup>10+</sup>
@@ -3085,7 +3351,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001001  | If the module resId invalid.             |
+| 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
 
@@ -3102,17 +3368,21 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // Replace 'app.color.test' with the actual resource.
-  this.context.resourceManager.getColor($r('app.color.test').id, (error: BusinessError, value: number) => {
-    if (error != null) {
-      console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getColor, result: ${value}`);
-      // Print the output result: getColor, result: 4294967295
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.color.test' with the actual resource.
+        this.context.resourceManager.getColor($r('app.color.test').id, (error: BusinessError, value: number) => {
+            if (error != null) {
+                console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getColor, result: ${value}`);
+                // Print the output result: getColor, result: 4294967295
+            }
+        });
     }
-  });
+}
   ```
 
 ### getColor<sup>10+</sup>
@@ -3161,17 +3431,21 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // Replace 'app.color.test' with the actual resource.
-  this.context.resourceManager.getColor($r('app.color.test').id)
-    .then((value: number) => {
-      console.log(`getColor, result: ${value}`);
-      // Print the output result: getColor, result: 4294967295
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    });
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.color.test' with the actual resource.
+        this.context.resourceManager.getColor($r('app.color.test').id)
+            .then((value: number) => {
+                console.info(`getColor, result: ${value}`);
+                // Print the output result: getColor, result: 4294967295
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
   ```
 
 
@@ -3216,17 +3490,21 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // Replace "test" with the actual resource.
-  this.context.resourceManager.getColorByName("test", (error: BusinessError, value: number) => {
-    if (error != null) {
-      console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getColorByName, result: ${value}`);
-      // Print the output result: getColorByName, result: 4294967295
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getColorByName("test", (error: BusinessError, value: number) => {
+            if (error != null) {
+                console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getColorByName, result: ${value}`);
+                // Print the output result: getColorByName, result: 4294967295
+            }
+        });
     }
-  });
+}
   ```
 
 ### getColorByName<sup>10+</sup>
@@ -3275,17 +3553,21 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   }
   ```
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // Replace "test" with the actual resource.
-  this.context.resourceManager.getColorByName("test")
-    .then((value: number) => {
-      console.log(`getColorByName, result: ${value}`);
-      // Print the output result: getColorByName, result: 4294967295
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getColorByName("test")
+            .then((value: number) => {
+                console.info(`getColorByName, result: ${value}`);
+                // Print the output result: getColorByName, result: 4294967295
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
   ```
 
 ### getRawFileContentSync<sup>10+</sup>
@@ -3321,16 +3603,20 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.getRawFileContentSync("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFileContentSync("test.txt");
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getRawFileContent<sup>9+</sup>
@@ -3361,22 +3647,26 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let rawFile = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError, value: Uint8Array) => {
+                if (error != null) {
+                    console.error("error is " + error);
+                } else {
+                    let rawFile = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getRawFileContent<sup>9+</sup>
@@ -3412,20 +3702,24 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
-      let rawFile = value;
-    }).catch((error: BusinessError) => {
-      console.error("getRawFileContent promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
+                let rawFile = value;
+            }).catch((error: BusinessError) => {
+                console.error("getRawFileContent promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getRawFileListSync<sup>10+</sup>
@@ -3465,19 +3759,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
-    // Replace "" with the actual file path in the rawfile directory.
-    let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
-    console.log(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
-    // Print the output result: getRawFileListSync, result: ["test.txt"]
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
+            // Replace "" with the actual file path in the rawfile directory.
+            let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
+            console.info(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
+            // Print the output result: getRawFileListSync, result: ["test.txt"]
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getRawFileList<sup>10+</sup>
@@ -3512,18 +3810,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
-  // Replace "" with the actual file path in the rawfile directory.
-  this.context.resourceManager.getRawFileList("", (error: BusinessError, value: Array<string>) => {
-    if (error != null) {
-      console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-      // Print the output result: getRawFileListSync, result: ["test.txt"]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
+        // Replace "" with the actual file path in the rawfile directory.
+        this.context.resourceManager.getRawFileList("", (error: BusinessError, value: Array<string>) => {
+            if (error != null) {
+                console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // Print the output result: getRawFileList, result: ["test.txt"].
+            }
+        });
     }
-  });
+}
   ```
 
 ### getRawFileList<sup>10+</sup>
@@ -3563,25 +3865,29 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
-  // Replace "" with the actual file path in the rawfile directory.
-  this.context.resourceManager.getRawFileList("")
-    .then((value: Array<string>) => {
-      console.log(`getRawFileListSync, result: ${JSON.stringify(value)}`);
-      // Print the output result: getRawFileListSync, result: ["test.txt"]
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
-    });
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
+        // Replace "" with the actual file path in the rawfile directory.
+        this.context.resourceManager.getRawFileList("")
+            .then((value: Array<string>) => {
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // Print the output result: getRawFileList, result: ["test.txt"].
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
   ```
 
 ### getRawFdSync<sup>10+</sup>
 
 getRawFdSync(path: string): RawFileDescriptor
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the file descriptor (fd) of the HAP where the rawfile file in the resources/rawfile directory is located. This API is called in synchronous mode.
 
 > **NOTE**
 >
@@ -3614,23 +3920,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.getRawFdSync("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFdSync("test.txt");
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getRawFd<sup>9+</sup>
 
 getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3658,32 +3968,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.getRawFd("test.txt", (error: BusinessError, value: resourceManager.RawFileDescriptor) => {
-      if (error != null) {
-        console.error(`callback getRawFd failed error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let fd = value.fd;
-        let offset = value.offset;
-        let length = value.length;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFd("test.txt", (error: BusinessError, value: resourceManager.RawFileDescriptor) => {
+                if (error != null) {
+                    console.error(`callback getRawFd failed error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let fd = value.fd;
+                    let offset = value.offset;
+                    let length = value.length;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getRawFd<sup>9+</sup>
 
 getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -3716,30 +4030,34 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
-      let fd = value.fd;
-      let offset = value.offset;
-      let length = value.length;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getRawFd error error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
+                let fd = value.fd;
+                let offset = value.offset;
+                let length = value.length;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getRawFd error error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### closeRawFdSync<sup>10+</sup>
 
 closeRawFdSync(path: string): void
 
-Closes the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3758,20 +4076,29 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001005  | The resource not found by path.          |
+| 9001005  | Invalid relative path.          |
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.closeRawFdSync("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`closeRawFd failed, error code: ${code}, message: ${message}.`);
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Replace "test.txt" with the actual resource.
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // Use rawfile resources based on the actual service scenario.
+
+      this.context.resourceManager.closeRawFdSync("test.txt");
+      console.info(`closeRawFdSync test success.`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`closeRawFdSync test failed, error code: ${code}, message: ${message}.`);
+    }
   }
+}
   ```
 
 ### closeRawFd<sup>9+</sup>
@@ -3798,24 +4125,32 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
-| 9001005  | The resource not found by path.          |
+| 9001005  | Invalid relative path.          |
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
-      if (error != null) {
-        console.error("error is " + error);
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Replace "test.txt" with the actual resource.
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // Use rawfile resources based on the actual service scenario.
+      this.context.resourceManager.closeRawFd("test.txt", (error: BusinessError) => {
+        if (error != null) {
+          console.error("error is " + error);
+          return;
+        }
+        console.info('closeRawFd success.');
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`callback closeRawFd failed, error code: ${code}, message: ${message}.`);
+    }
   }
+}
   ```
 
 ### closeRawFd<sup>9+</sup>
@@ -3851,16 +4186,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    // Replace "test.txt" with the actual resource.
-    this.context.resourceManager.closeRawFd("test.txt");
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Replace "test.txt" with the actual resource.
+      let rawfile = this.context.resourceManager.getRawFdSync("test.txt");
+      // Use rawfile resources based on the actual service scenario.
+      this.context.resourceManager.closeRawFd("test.txt");
+      console.info(`closeRawFd test success.`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`promise closeRawFd failed, error code: ${code}, message: ${message}.`);
+    }
   }
+}
   ```
 
 ### getConfigurationSync<sup>10+</sup>
@@ -3881,13 +4223,18 @@ Obtains the device configuration. This API returns the result synchronously.
 
 **Example**
   ```ts
-  try {
-    let value = this.context.resourceManager.getConfigurationSync();
-    let direction = value.direction;
-    let locale = value.locale;
-  } catch (error) {
-    console.error("getConfigurationSync error is " + error);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            let value = this.context.resourceManager.getConfigurationSync();
+            let direction = value.direction;
+            let locale = value.locale;
+        } catch (error) {
+            console.error("getConfigurationSync error is " + error);
+        }
+    }
+}
   ```
 
 ### getConfiguration
@@ -3908,20 +4255,26 @@ Obtains the device configuration. This API uses an asynchronous callback to retu
 
 **Example**
   ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
-      if (error != null) {
-        console.error("getConfiguration callback error is " + error);
-      } else {
-        let direction = value.direction;
-        let locale = value.locale;
-      }
-    });
-  } catch (error) {
-    console.error("getConfiguration callback error is " + error);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            this.context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
+                if (error != null) {
+                    console.error("getConfiguration callback error is " + error);
+                } else {
+                    let direction = value.direction;
+                    let locale = value.locale;
+                }
+            });
+        } catch (error) {
+            console.error("getConfiguration callback error is " + error);
+        }
+    }
+}
   ```
 
 ### getConfiguration
@@ -3942,19 +4295,24 @@ Obtains the device configuration. This API uses a promise to return the result.
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
-      let direction = value.direction;
-      let locale = value.locale;
-    }).catch((error: BusinessError) => {
-      console.error("getConfiguration promise error is " + error);
-    });
-  } catch (error) {
-    console.error("getConfiguration promise error is " + error);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            this.context.resourceManager.getConfiguration().then((value: resourceManager.Configuration) => {
+                let direction = value.direction;
+                let locale = value.locale;
+            }).catch((error: BusinessError) => {
+                console.error("getConfiguration promise error is " + error);
+            });
+        } catch (error) {
+            console.error("getConfiguration promise error is " + error);
+        }
+    }
+}
   ```
 
 ### getDeviceCapabilitySync<sup>10+</sup>
@@ -3975,13 +4333,19 @@ Obtains the device capability. This API returns the result synchronously.
 
 **Example**
   ```ts
-  try {
-    let value = this.context.resourceManager.getDeviceCapabilitySync();
-    let screenDensity = value.screenDensity;
-    let deviceType = value.deviceType;
-  } catch (error) {
-    console.error("getDeviceCapabilitySync error is " + error);
-  }
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            let value = this.context.resourceManager.getDeviceCapabilitySync();
+            let screenDensity = value.screenDensity;
+            let deviceType = value.deviceType;
+        } catch (error) {
+            console.error("getDeviceCapabilitySync error is " + error);
+        }
+    }
+}
   ```
 
 ### getDeviceCapability
@@ -4002,20 +4366,26 @@ Obtains the device capability. This API uses an asynchronous callback to return 
 
 **Example**
   ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getDeviceCapability((error: BusinessError, value: resourceManager.DeviceCapability) => {
-      if (error != null) {
-        console.error("getDeviceCapability callback error is " + error);
-      } else {
-        let screenDensity = value.screenDensity;
-        let deviceType = value.deviceType;
-      }
-    });
-  } catch (error) {
-    console.error("getDeviceCapability callback error is " + error);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            this.context.resourceManager.getDeviceCapability((error: BusinessError, value: resourceManager.DeviceCapability) => {
+                if (error != null) {
+                    console.error("getDeviceCapability callback error is " + error);
+                } else {
+                    let screenDensity = value.screenDensity;
+                    let deviceType = value.deviceType;
+                }
+            });
+        } catch (error) {
+            console.error("getDeviceCapability callback error is " + error);
+        }
+    }
+}
   ```
 
 ### getDeviceCapability
@@ -4036,19 +4406,24 @@ Obtains the device capability. This API uses a promise to return the result.
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getDeviceCapability().then((value: resourceManager.DeviceCapability) => {
-      let screenDensity = value.screenDensity;
-      let deviceType = value.deviceType;
-    }).catch((error: BusinessError) => {
-      console.error("getDeviceCapability promise error is " + error);
-    });
-  } catch (error) {
-    console.error("getDeviceCapability promise error is " + error);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            this.context.resourceManager.getDeviceCapability().then((value: resourceManager.DeviceCapability) => {
+                let screenDensity = value.screenDensity;
+                let deviceType = value.deviceType;
+            }).catch((error: BusinessError) => {
+                console.error("getDeviceCapability promise error is " + error);
+            });
+        } catch (error) {
+            console.error("getDeviceCapability promise error is " + error);
+        }
+    }
+}
   ```
 
 ### addResource<sup>10+</sup>
@@ -4082,17 +4457,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace "/library1-default-signed.hsp" with the actual file path.
-  let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
-  try {
-    this.context.resourceManager.addResource(path);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`addResource failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "/library1-default-signed.hsp" with the actual file path.
+        let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+        try {
+            this.context.resourceManager.addResource(path);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`addResource failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### removeResource<sup>10+</sup>
@@ -4126,17 +4506,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // Replace "/library1-default-signed.hsp" with the actual file path.
-  let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
-  try {
-    this.context.resourceManager.removeResource(path);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "/library1-default-signed.hsp" with the actual file path.
+        let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+        try {
+            this.context.resourceManager.removeResource(path);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getLocales<sup>11+</sup>
@@ -4161,34 +4546,47 @@ Obtains the language list of an application.
 | ------------------------- | ----------- |
 | Array\<string> | Language list. The strings in the list are comprised of the language, script (optional), and region (optional), which are connected by a hyphen (-).|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+
 **Example**
   ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    this.context.resourceManager.getLocales(); // Obtain only the language list of application resources.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            this.context.resourceManager.getLocales(); // Obtain only the language list of application resources.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    resourceManager.getSysResourceManager().getLocales(); // Obtain only the language list of system resources.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            resourceManager.getSysResourceManager().getLocales(); // Obtain only the language list of system resources.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+        }
 
-  try {
-    this.context.resourceManager.getLocales(true); // Obtain the language list of application resources and resources.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
-  }
+        try {
+            this.context.resourceManager.getLocales(true); // Obtain the language list of application resources and resources.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getLocales failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getSymbol<sup>11+</sup>
@@ -4226,18 +4624,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace 'sys.symbol.message' with the actual resource.
-    let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
-    console.log(`getSymbol, result: ${symbolValue}`);
-    // Print the output result: getSymbol, result: 983183
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'sys.symbol.message' with the actual resource.
+            let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
+            console.info(`getSymbol, result: ${symbolValue}`);
+            // Print the output result: getSymbol, result: 983183
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 
@@ -4276,18 +4679,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Replace "message" with the actual resource.
-    let symbolValue = this.context.resourceManager.getSymbolByName("message");
-    console.log(`getSymbolByName, result: ${symbolValue}`);
-    // Print the output result: getSymbolByName, result: 983183
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "message" with the actual resource.
+            let symbolValue = this.context.resourceManager.getSymbolByName("message");
+            console.info(`getSymbolByName, result: ${symbolValue}`);
+            // Print the output result: getSymbolByName, result: 983183
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### isRawDir<sup>12+</sup>
@@ -4323,25 +4731,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
 **Example**
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // Assume that a non-empty folder named sub exists in the root directory (that is, /rawfile). The value of isRawDir is true in the return result.
-    // Replace "sub" with the actual directory.
-    let isRawDir = this.context.resourceManager.isRawDir("sub");
-    // Print the output result: sub isRawDir, result: true
-    console.log(`sub isRawDir, result: ${isRawDir}`);
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Assume that a non-empty folder named sub exists in the root directory (that is, /rawfile). The value of isRawDir is true in the return result.
+            // Replace "sub" with the actual directory.
+            let isRawDir = this.context.resourceManager.isRawDir("sub");
+            // Print the output result: sub isRawDir, result: true
+            console.info(`sub isRawDir, result: ${isRawDir}`);
 
-    // If the test.txt file exists in the root directory, the value of isRawDir is false.
-    // Replace "test.txt" with the actual resource.
-    isRawDir = this.context.resourceManager.isRawDir("test.txt");
-    // Print the output result: test.txt isRawDir, result: false
-    console.log(`test.txt isRawDir, result: ${isRawDir}`);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
-  }
+            // If the test.txt file exists in the root directory, the value of isRawDir is false.
+            // Replace "test.txt" with the actual resource.
+            isRawDir = this.context.resourceManager.isRawDir("test.txt");
+            // Print the output result: test.txt isRawDir, result: false
+            console.info(`test.txt isRawDir, result: ${isRawDir}`);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getOverrideResourceManager<sup>12+</sup>
@@ -4374,24 +4787,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types |
+| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
 
 **Example**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    let resMgr = this.context.resourceManager;
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-    let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            let resMgr = this.context.resourceManager;
+            let overrideConfig = resMgr.getOverrideConfiguration();
+            overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+            let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### getOverrideConfiguration<sup>12+</sup>
@@ -4413,19 +4831,24 @@ Obtains the configuration of differentiated resources. This API returns the resu
 **Example**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    let resMgr = this.context.resourceManager;
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-    let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            let resMgr = this.context.resourceManager;
+            let overrideConfig = resMgr.getOverrideConfiguration();
+            overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+            let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getOverrideResourceManager failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### updateOverrideConfiguration<sup>12+</sup>
@@ -4450,24 +4873,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types |
+| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
 
 **Example**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { resourceManager } from '@kit.LocalizationKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-  try {
-    let resMgr = this.context.resourceManager;
-    let overrideConfig = resMgr.getOverrideConfiguration();
-    overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-    let overrideResMgr = resMgr.updateOverrideConfiguration(overrideConfig);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
-  }
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            let resMgr = this.context.resourceManager;
+            let overrideConfig = resMgr.getOverrideConfiguration();
+            overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+            let overrideResMgr = resMgr.updateOverrideConfiguration(overrideConfig);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
   ```
 
 ### release<sup>(deprecated)</sup>
@@ -4624,7 +5052,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let testStr = this.context.resourceManager.getStringSync(resource);
-    console.log(`getStringSync, result: ${testStr}`);
+    console.info(`getStringSync, result: ${testStr}`);
     // Print the output result: getStringSync, result: I'm a test string resource.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -4697,7 +5125,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
-    console.log(`getStringSync, result: ${testStr}`);
+    console.info(`getStringSync, result: ${testStr}`);
     // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -4764,7 +5192,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringValue, result: ${value}`);
+      console.info(`getStringValue, result: ${value}`);
       // Print the output result: getStringValue, result: I'm a test string resource.
     }
   });
@@ -4823,7 +5251,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringValue, result: ${value}`);
+      console.info(`getStringValue, result: ${value}`);
       // Print the output result: getStringValue, result: I'm a test string resource.
     }
   });
@@ -4965,7 +5393,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
-    console.log(`getStringArrayValueSync, result: ${strArray[0]}`);
+    console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
     // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5036,7 +5464,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
+      console.info(`getStringArrayValue, result: ${value[0]}`);
       // Print the output result: getStringArrayValue, result: I'm one of the array's values.
     }
   });
@@ -5108,7 +5536,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   this.context.resourceManager.getStringArrayValue(resource)
     .then((value: Array<string>) => {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
+      console.info(`getStringArrayValue, result: ${value[0]}`);
       // Print the output result: getStringArrayValue, result: I'm one of the array's values.
     })
     .catch((error: BusinessError) => {
@@ -6017,7 +6445,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
-    console.log(`getIntPluralStringValueSync, result: ${pluralStr}`);
+    console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
     // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6104,7 +6532,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 2.1, the single/plural type is other in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
     let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
-    console.log(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+    console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
     // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6181,7 +6609,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
-    console.log(`getPluralStringValueSync, result: ${pluralValue}`);
+    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
     // Print the output result: getPluralStringValueSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6266,7 +6694,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
-    console.log(`getPluralStringValueSync, result: ${pluralValue}`);
+    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
     // Print the output result: getPluralStringValueSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6343,7 +6771,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
-    console.log(`getPluralStringByNameSync, result: ${pluralValue}`);
+    console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
     // Print the output result: getPluralStringByNameSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6418,7 +6846,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
       if (error != null) {
         console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
       } else {
-        console.log(`getPluralStringValue, result: ${value}`);
+        console.info(`getPluralStringValue, result: ${value}`);
         // Print the output result: getPluralStringValue, result: 1 apple
       }
     });
@@ -6492,7 +6920,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
   this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
     .then((value: string) => {
-      console.log(`getPluralStringValue, result: ${value}`);
+      console.info(`getPluralStringValue, result: ${value}`);
       // Print the output result: getPluralStringValue, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -6574,7 +7002,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
       if (error != null) {
         console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
       } else {
-        console.log(`getPluralStringValue, result: ${value}`);
+        console.info(`getPluralStringValue, result: ${value}`);
         // Print the output result: getPluralStringValue, result: 1 apple
       }
     });
@@ -6656,7 +7084,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
   this.context.resourceManager.getPluralStringValue(resource, 1)
     .then((value: string) => {
-      console.log(`getPluralStringValue, result: ${value}`);
+      console.info(`getPluralStringValue, result: ${value}`);
       // Print the output result: getPluralStringValue, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -6729,7 +7157,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getPluralStringByName, result: ${value}`);
+      console.info(`getPluralStringByName, result: ${value}`);
       // Print the output result: getPluralStringByName, result: 1 apple
     }
   });
@@ -6803,7 +7231,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
   this.context.resourceManager.getPluralStringByName("test", 1)
     .then((value: string) => {
-      console.log(`getPluralStringByName, result: ${value}`);
+      console.info(`getPluralStringByName, result: ${value}`);
       // Print the output result: getPluralStringByName, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -6952,7 +7380,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let boolTest = this.context.resourceManager.getBoolean(resource);
-    console.log(`getBoolean, result: ${boolTest}`);
+    console.info(`getBoolean, result: ${boolTest}`);
     // Print the output result: getBoolean, result: true
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7024,7 +7452,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
   try {
     let intValue = this.context.resourceManager.getNumber(resource);
-    console.log(`getNumber, int value: ${intValue}`);
+    console.info(`getNumber, int value: ${intValue}`);
     // Print the output result: getNumber, int value: 100
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7094,7 +7522,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let colorValue = this.context.resourceManager.getColorSync(resource);
-    console.log(`getColorSync, result: ${colorValue}`);
+    console.info(`getColorSync, result: ${colorValue}`);
     // Print the output result: getColorSync, result: 4294967295
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7161,7 +7589,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getColor, result: ${value}`);
+      console.info(`getColor, result: ${value}`);
       // Print the output result: getColor, result: 4294967295
     }
   });
@@ -7229,7 +7657,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   this.context.resourceManager.getColor(resource)
     .then((value: number) => {
-      console.log(`getColor, result: ${value}`);
+      console.info(`getColor, result: ${value}`);
       // Print the output result: getColor, result: 4294967295
     })
     .catch((error: BusinessError) => {
@@ -7286,7 +7714,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let symbolValue = this.context.resourceManager.getSymbol(resource);
-    console.log(`getSymbol, result: ${symbolValue}`);
+    console.info(`getSymbol, result: ${symbolValue}`);
     // Print the output result: getSymbol, result: 983183
   } catch (error) {
     let code = (error as BusinessError).code;

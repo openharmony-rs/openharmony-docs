@@ -119,9 +119,11 @@ The application on device A starts and connects to the application on device B t
 
 **Importing the AbilityConnectionManager Module File**
 
-   ```ts
-   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-   ```
+<!-- @[import_abilityConnectionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
+```
 
 
 **Discovering Devices**
@@ -137,165 +139,170 @@ During session establishment, the applications on device A and device B perform 
 
 The application calls **createAbilityConnectionSession()** to create a session and obtain the session ID. Then, it calls **connect()** to start the ability session connection. Now, the application on device B is started.
 
-  ```ts
-  import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { common } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[source_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
-  let dmClass: distributedDeviceManager.DeviceManager;
+``` TypeScript
+let dmClass: distributedDeviceManager.DeviceManager;
 
-  function initDmClass(): void {
-    try {
-      dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
-    } catch (err) {
-      hilog.error(0x0000, 'testTag', 'createDeviceManager err: ' + JSON.stringify(err));
-    }
+function initDmClass(): void {
+  // createDeviceManager is a system API.
+  try {
+    dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+  } catch (err) {
+    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
   }
-  // Obtain the ID of device B.
-  function getRemoteDeviceId(): string | undefined {
-    initDmClass();
-    if (typeof dmClass === 'object' && dmClass !== null) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
-      let list = dmClass.getAvailableDeviceListSync();
-      if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-        hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
-        return;
-      }
-      if (list.length === 0) {
-        hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
-        return;
-      }
-      return list[0].networkId;
-    } else {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+}
+
+// Obtain the ID of device B.
+function getRemoteDeviceId(): string | undefined {
+  initDmClass();
+  if (typeof dmClass === 'object' && dmClass !== null) {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
+    let list = dmClass.getAvailableDeviceListSync();
+    if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
+    if (list.length === 0) {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      return;
+    }
+    // Select the target device in the dialog box.
+    return list[0].networkId;
+  } else {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    return;
   }
+}
+```
 
-  @StorageLink('sessionId') sessionId: number = -1;
+<!-- @[source_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
-  // Define the collaboration information of device B.
-  const peerInfo: abilityConnectionManager.PeerInfo = {
-    deviceId: getRemoteDeviceId()!,
-    bundleName: 'com.example.remotephotodemo',
-    moduleName: 'entry',
-    abilityName: 'EntryAbility',
-    serviceName: 'collabTest'
-  };
-  const myRecord: Record<string, string> = {
-    "newKey1": "value1",
-  };
+``` TypeScript
+  createSession(): void {
+    // Define peer device information.
+    const peerInfo: abilityConnectionManager.PeerInfo = {
+      deviceId: getRemoteDeviceId()!,
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+    };
+    const myRecord: Record<string, string> = {
+      'newKey1': 'value1',
+    };
 
-  const options: Record<string, string> = {
-    'ohos.collabrate.key.start.option': 'ohos.collabrate.value.foreground',
-  };
-  // Define connection options.
-  const connectOptions: abilityConnectionManager.ConnectOptions = {
-    needSendData: true,
-    startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
-    parameters: myRecord
-  };
-  let context = this.getUIContext().getHostContext();
-  try {
-    this.sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
-    hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
-
-    abilityConnectionManager.connect(this.sessionId).then((ConnectResult) => {
-      if (!ConnectResult.isConnected) {
-        hilog.info(0x0000, 'testTag', 'connect failed');
-        return;
-      }
-    }).catch(() => {
-      hilog.error(0x0000, 'testTag', "connect failed");
-    })
-
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', error);
+    // Define connection options.
+    const connectOption: abilityConnectionManager.ConnectOptions = {
+      needSendData: true,
+      startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+      parameters: myRecord
+    };
+    console.info(TAG + JSON.stringify(peerInfo))
+    console.info(TAG + JSON.stringify(connectOption))
+    let context = this.getUIContext().getHostContext();
+    try {
+      this.sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOption);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
+      abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
+        if (!connectResult.isConnected) {
+          hilog.info(0x0000, 'testTag', 'connect failed');
+          return;
+        }
+      }).catch(() => {
+        hilog.error(0x0000, 'testTag', 'connect failed');
+      })
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
   }
-  ```
+```
+
 
 **2. Device B**
 
 After the application on device A calls **connect()**, the application on device B is started in collaboration mode, and the collaboration lifecycle function **onCollaborate()** is triggered. You can configure the **createAbilityConnectionSession()** and **acceptConnect()** calls in this API.
 
-  ```ts
-  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+``` TypeScript
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onContinue(wantParam: Record<string, Object>): AbilityConstant.OnContinueResult {
+    return 1;
+  }
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
+    this.onCollab(param);
+    return 0;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      return;
     }
+    this.registerSessionEvent(sessionId);
+    const collabToken = collabParam['ohos.dms.collabToken'] as string;
+    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+      AppStorage.setOrCreate<number>('sessionId', sessionId);
+    }).catch(() => {
+      console.log(TAG + `acceptConnect failed` );
+    })
+  }
 
-    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-      let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-      this.onCollab(param);
-      return 0;
-    }
-
-    onCollab(collabParam: Record<string, Object>) {
-      const sessionId = this.createSessionFromWant(collabParam);
-      if (sessionId == -1) {
-        hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-        return;
-      }
-      const collabToken = collabParam["ohos.dms.collabToken"] as string;
-      abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-        hilog.info(0x0000, 'testTag', 'acceptConnect success');
-      }).catch(() => {
-        hilog.error(0x0000, 'testTag', "failed");
-      })
-    }
-
-    createSessionFromWant(collabParam: Record<string, Object>): number {
-      let sessionId = -1;
-      const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
-      if (peerInfo == undefined) {
-        return sessionId;
-      }
- 
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
-      options.needSendData = true;
-      options.needSendStream = true;
-      options.needReceiveStream = false;
-      try {
-        sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
-        AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', error);
-      }
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
       return sessionId;
     }
+    // Define connection options.
+    const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
+    } catch (error) {
+      console.error(error);
+    }
+    return sessionId;
   }
-  ```
+```
+
 
 **Enabling Event Listening**
 
 After the application creates a session and obtains the session ID, you can call **on()** to listen for the corresponding events and notify the listener through a callback.
 <!--RP1-->
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-  abilityConnectionManager.on("connect", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("disconnect", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("receiveMessage", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session receiveMessage, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("receiveData", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session receiveData, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("receiveImage", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session receiveImage, sessionId is', callbackInfo.sessionId);
-  });
+``` TypeScript
+  registerSessionEvent(sessionId: number) {
+    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<boolean>('isConnected', true);
+      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+    });
+    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+      AppStorage.setOrCreate<boolean>('isConnected', false);
+      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+    })
+    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+      if (callbackInfo.msg == 'startStream') {
+        hilog.info(0x0000, 'testTag', 'startStream');
+      }
+    })
+    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+      let decoder = util.TextDecoder.create('utf-8');
+      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
+      AppStorage.setOrCreate<string>('receiveMessage', str);
+    })
+  }
 ```
+
+
 <!--RP1End-->  
 <!--Del-->
 **Sending Data**
