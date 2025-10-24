@@ -3547,10 +3547,8 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
 | enable  | boolean | 是   | 是否启用Web文本识别，true表示启用，false表示不启用。<br>传入undefined或null时属性重置为默认值。 |
 
 > **说明：** 
-> 
-> 当enableSelectedDataDetector未配置或设置为true，若已配置[selectedDataDetectorConfig](#selecteddatadetectorconfig22)属性，则以其types配置为准。
 >
-> 当enableSelectedDataDetector未配置或设置为true，且未配置[selectedDataDetectorConfig](#selecteddatadetectorconfig22)属性时，将遵循[dataDetectorConfig](#datadetectorconfig20)中types的配置；若[dataDetectorConfig](#datadetectorconfig20)也未配置，则默认识别所有类型。
+> 当enableSelectedDataDetector未配置或设置为true时，将遵循[dataDetectorConfig](#datadetectorconfig20)中types的配置；若[dataDetectorConfig](#datadetectorconfig20)也未配置，则默认识别所有类型。
 > 
 > 当enableSelectedDataDetector设置为false时，不激活实体文本选择AI菜单项。
 
@@ -3584,65 +3582,6 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
   <body>
       <p> 电话：400-123-4567 </p>
       <p> 邮箱：example@example.com </p>
-  </body>
-  </html>
-  ```
-
-## selectedDataDetectorConfig<sup>22+</sup>
-
-selectedDataDetectorConfig(config: selectDataDetectorConfig)
-
-文本选择AI菜单项识别配置。
-
-[enableSelectedDataDetector](#enableselecteddatadetector22)未配置或设置为true时，selectedDataDetectorConfig的配置才能生效。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：** 
-
-| 参数名 | 类型                                                        | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | [selectDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#selectdatadetectorconfig22对象说明) | 是   | 文本识别配置。|
-
-
-**示例：**
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: $rawfile("index.html"), controller: this.controller })
-          .enableSelectedDataDetector(true)
-          .selectedDataDetectorConfig({
-            types: [
-              TextDataDetectorType.PHONE_NUMBER,
-              TextDataDetectorType.EMAIL
-            ]
-            }
-          )
-      }
-    }
-  }
-  ```
-加载的html文件
-  ```html
-  <!-- index.html -->
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>selectedDataDetectorConfig示例</title>
-  </head>
-  <body>
-      <p> 电话：400-123-4567 </p>
-      <p> 邮箱：12345678901@example.com </p>
-      <p> 网址：www.example.com（此项不识别）</p>
   </body>
   </html>
   ```
