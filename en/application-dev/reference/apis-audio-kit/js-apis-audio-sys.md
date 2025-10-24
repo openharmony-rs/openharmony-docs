@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides basic audio management capabilities, including audio volume and audio device management, and audio data collection and rendering.
 
@@ -141,7 +141,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed. |
-| 6800104 | Operation not allowed. |
+| 6800104 | Operation not allowed. e.g. the source type of the input audio capturer is not [SOURCE_TYPE_VOICE_RECOGNITION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_WAKEUP](#sourcetype8),<br>or this audio capturer is already released.|
 
 **Example**
 
@@ -288,7 +288,7 @@ Enumerates the volume-related operations.
 
 ## AsrNoiseSuppressionMode<sup>12+</sup>
 
-Enumerates the noise suppression modes in ASR.
+Enumerates the noise suppression modes of ASR.
 
 **System API**: This is a system API.
 
@@ -303,7 +303,7 @@ Enumerates the noise suppression modes in ASR.
 
 ## AsrAecMode<sup>12+</sup>
 
-Enumerates the Acoustic Echo Cancellation (AEC) modes in ASR.
+Enumerates the Acoustic Echo Cancellation (AEC) modes of ASR.
 
 **System API**: This is a system API.
 
@@ -316,7 +316,7 @@ Enumerates the Acoustic Echo Cancellation (AEC) modes in ASR.
 
 ## AsrWhisperDetectionMode<sup>12+</sup>
 
-Enumerates the ASR whisper detection modes.
+Enumerates the whisper detection modes of ASR.
 
 **System API**: This is a system API.
 
@@ -329,7 +329,7 @@ Enumerates the ASR whisper detection modes.
 
 ## AsrVoiceControlMode<sup>12+</sup>
 
-Enumerates the ASR voice control modes.
+Enumerates the voice control modes of ASR.
 
 **System API**: This is a system API.
 
@@ -344,7 +344,7 @@ Enumerates the ASR voice control modes.
 
 ## AsrVoiceMuteMode<sup>12+</sup>
 
-Enumerates the ASR voice mute modes.
+Enumerates the voice mute modes of ASR.
 
 **System API**: This is a system API.
 
@@ -1058,7 +1058,7 @@ Sets the mute state for an application based on the application ID. This API use
 | Name    | Type                                     | Mandatory| Description                            |
 | ---------- | ---------------------------------------- | ---- |--------------------------------|
 | uid    | number                                   | Yes  | Application ID.                        |
-| owned    | boolean                                   | Yes  | Mute state to set. **true** to mute, **false** otherwise.|
+| muted    | boolean                                   | Yes  | Mute state to set. **true** to mute, **false** otherwise.|
 
 **Return value**
 
@@ -1772,7 +1772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800301 | System error. Return by callback. |
+| 6800301 | System error. |
 
 **Example**
 
@@ -1815,7 +1815,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800301 | System error. Return by callback. |
+| 6800301 | System error. |
 
 **Example**
 
@@ -1857,8 +1857,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800101 | Parameter verification failed. Possible causes: 1.more than one enhanceProps of the same enhanceClass in input Array; 2.input audioEnhanceProperties are not supported by current device. 3.names of enhanceProp or enhanceClass are incorrect.|
-| 6800301 | System error. Return by callback. |
+| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or catergory of the input audioEffectProperties is incorrect.|
+| 6800301 | System error. |
 
 **Example**
 
@@ -2411,8 +2411,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied.      |
+| 202     | Not system application.                             |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -2478,8 +2478,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied. |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -2544,8 +2544,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied. |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -2595,8 +2595,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -3335,7 +3334,7 @@ Unsubscribes from the spatial audio rendering status change event. This API uses
 | Name  | Type                                                | Mandatory| Description                                          |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChangeForAnyDevice'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | Yes  | Callback used to return the device information and the enabled status of spatial audio rendering.|
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | No  | Callback used to return the device information and the enabled status of spatial audio rendering.|
 
 **Error codes**
 
@@ -3485,7 +3484,6 @@ Enables or disables head tracking for a device. This API uses a promise to retur
 
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | Yes  | Descriptor of the device.    |
 | enable                | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
 
 **Return value**
@@ -3782,7 +3780,7 @@ Unsubscribes from the head tracking status change event. This API uses an asynch
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string | Yes  | Event type. The event **'headTrackingEnabledChangeForAnyDevice'** is triggered when the head tracking status is changed.|
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | Yes  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | No  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
 
@@ -4300,7 +4298,7 @@ Implements an ASR processing controller.
 
 setAsrAecMode(mode: AsrAecMode): boolean
 
-Sets an ASR AEC mode. This API returns the result synchronously.
+Sets the AEC mode for ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4310,7 +4308,7 @@ Sets an ASR AEC mode. This API returns the result synchronously.
 
 | Name| Type                        | Mandatory| Description|
 |-------|----------------------------|-------|-------|
-| mode | [AsrAecMode](#asraecmode12) | Yes|ASR AEC mode.|
+| mode | [AsrAecMode](#asraecmode12) | Yes|AEC mode.|
 
 **Return value**
 
@@ -4339,7 +4337,7 @@ let flag = asrProcessingController.setAsrAecMode(audio.AsrAecMode.BYPASS);
 
 getAsrAecMode(): AsrAecMode
 
-Obtains the ASR AEC mode in use. This API returns the result synchronously.
+Obtains the AEC mode of ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4349,7 +4347,7 @@ Obtains the ASR AEC mode in use. This API returns the result synchronously.
 
 | Type| Description|
 |-------|-------|
-| [AsrAecMode](#asraecmode12) |ASR AEC mode.|
+| [AsrAecMode](#asraecmode12) |AEC mode.|
 
 **Error codes**
 
@@ -4371,7 +4369,7 @@ let mode = asrProcessingController.getAsrAecMode();
 
 setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 
-Sets an ASR noise suppression mode. This API returns the result synchronously.
+Sets the noise suppression mode for ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4410,7 +4408,7 @@ let flag = asrProcessingController.setAsrNoiseSuppressionMode(audio.AsrNoiseSupp
 
 getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 
-Obtains the ASR noise suppression mode in use. This API returns the result synchronously.
+Obtains the noise suppression mode of ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4472,7 +4470,7 @@ let flag = asrProcessingController.isWhispering();
 
 setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 
-Sets an ASR whisper detection mode.
+Sets the whisper detection mode for ASR.
 
 **System API**: This is a system API.
 
@@ -4512,7 +4510,7 @@ let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDe
 
 getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 
-Obtains the ASR whisper detection mode. This API returns the result synchronously.
+Obtains the whisper detection mode of ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4584,7 +4582,7 @@ let flag = asrProcessingController.setAsrVoiceControlMode(audio.AsrVoiceControlM
 
 setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 
-Sets an ASR voice mute mode.
+Mutes the audio channel of ASR during a system call.
 
 **System API**: This is a system API.
 

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -342,7 +342,7 @@ Starts this audio capturer to start capturing audio data. This API uses a promis
 
 | Type          | Description                         |
 | :------------- | :---------------------------- |
-| Promise<void\> | Promise object, which indicates that the capturer is started successfully. If the operation fails, an error object with the following error codes is returned:<br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs.|
+| Promise<void\> | Promise object, which indicates that the capturer is started successfully. If the operation fails, an error object with the following error code is returned:<br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs.|
 
 **Example**
 

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 When an application plays or records a sound, conflicts with other audio streams may occur, adversely affecting user experience. For example, when a video starts playing while music is playing in the background, users expect the music to pause to prioritize the video's audio. This is where audio focus comes into play. For applications that provide audio services, it is important to properly manage audio focus, which can significantly improve the audio experience of users.
 
@@ -353,15 +353,15 @@ The currently supported audio session scenes are as follows, and applications ca
 - The focus requested by the audio session is application-level. If an application contains different modules, coordination between modules is necessary to avoid unintended effects caused by one module using AudioSession to request focus while another module's audio stream is controlled by the audio session's focus.
 
 ### Listening for Audio Session Focus State Change events
-The focus requested by AudioSession is equal to that requested by AudioRenderer. If other application audio streams request focus, the system handles the focus according to the [focus strategy](#audio-focus-strategy). If the system determines that the focus of the current audio session has changed and needs to perform operations such as pausing, resuming, lowering volume, or restoring volume, the system automatically executes the necessary actions and notifies the application through the audio session focus state change event (AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)).
+The focus requested by AudioSession is equal to that requested by AudioRenderer. If other application audio streams request focus, the system handles the focus according to the [focus strategy](#audio-focus-strategy). If the system determines that the focus of the current audio session has changed and needs to perform operations such as pausing, resuming, lowering volume, or restoring volume, the system automatically executes the necessary actions and notifies the application through [AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20).
 
 To maintain consistency between the application and system states and ensure a good user experience, applications should listen for the audio session focus state change events and respond as necessary when the focus changes.
 
 > **NOTE**
+> 
 > If an application also listens for audio renderer focus events ([InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)), note the following:
 > 1. The application will receive callbacks for both audio session focus state changes and audio renderer focus changes. Handle these callbacks as needed.
 > 2. If the focus of the audio session is paused, only the audio session will receive the focus resume event when it is resumed, and the audio renderer will not receive the focus resume event.
 
 ### Managing Global Audio Output Devices with AudioSession
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md).
-For details about how to use the APIs, see [Managing Global Audio Output Devices with AudioSession](./audio-output-device-management.md).
+Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md). For details about how to use the APIs, see [Managing Global Audio Output Devices with AudioSession](./audio-output-device-management.md).
