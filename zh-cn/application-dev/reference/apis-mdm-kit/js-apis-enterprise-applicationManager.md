@@ -1334,13 +1334,14 @@ Kiosk模式的特征。
 
 addUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户添加不可关停应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+为指定用户添加不可关停应用名单,仅对已安装应用可设置该策略。若参数列表中存在应用未安装，则返回9200012错误码。若设置策略后，列表中有应用被卸载，则卸载的应用将从列表中移除。
+添加列表中已存在的应用，返回成功，列表中不会重复添加该应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1395,13 +1396,13 @@ try {
 
 removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户删除不可关停应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+为指定用户删除不可关停应用名单，若删除未安装应用，返回成功。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1462,7 +1463,7 @@ getUserNonStopApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1512,13 +1513,14 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-添加后台防冻结应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+为指定用户添加后台防冻结应用名单,仅对已安装应用可设置该策略。若参数列表中存在应用未安装，则返回9200012错误码。若设置策略后，列表中有应用被卸载，则卸载的应用将从列表中移除。
+添加列表中已存在的应用，返回成功，列表中不会重复添加该应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1527,7 +1529,7 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationIns
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1573,13 +1575,13 @@ try {
 
 removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户删除后台防冻结应用名单，仅对已安装应用可设置该策略，应用卸载，联动策略删除。
+为指定用户删除不可关停应用名单。若删除名单中包含未安装应用，删除操作将返回成功。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1588,7 +1590,7 @@ removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;Application
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1640,7 +1642,7 @@ getFreezeExemptedApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone、Tablet中均可正常使用。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
