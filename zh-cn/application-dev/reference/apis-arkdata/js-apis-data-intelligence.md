@@ -241,7 +241,7 @@ type Image = string
 
 loadModel(): Promise&lt;void&gt;
 
-加载嵌入模型。使用Promise异步回调。
+加载文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -280,7 +280,7 @@ textEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-释放嵌入模型。使用Promise异步回调。
+释放文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -429,7 +429,7 @@ textEmbedding.getEmbedding(batchTexts)
 
 loadModel(): Promise&lt;void&gt;
 
-加载嵌入模型。使用Promise异步回调。
+加载图像嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -468,7 +468,7 @@ imageEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-释放嵌入模型。使用Promise异步回调。
+释放图像嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
