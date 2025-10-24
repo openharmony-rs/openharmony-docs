@@ -92,7 +92,7 @@
         
    }
 
-    // 注册回调函数
+    // 注册回调函数。
     Camera_ErrorCode RegisterMacroStatusCallback(Camera_CaptureSession* captureSession)
     {
         Camera_ErrorCode ret = OH_CaptureSession_RegisterMacroStatusChangeCallback(captureSession, MacroStatusCallback);
