@@ -46,7 +46,7 @@
     import { netFirewall } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
-<!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/index.ets) -->
+<!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
 3. 用户调用setNetFirewallPolicy方法，打开防火墙。
 
     ```ts
@@ -76,7 +76,7 @@
       console.error("set firewall policy failed: " + JSON.stringify(error));
     });
     ```
-<!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/index.ets) -->
+<!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
 4. 用户通过addNetFirewallRule方法，添加防火墙规则。
 
     ```ts
@@ -136,7 +136,7 @@
       console.error('add firewall rule failed: ', JSON.stringify(reason));
     });
     ```
-<!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/index.ets) -->
+<!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
 ## 针对域名联网访问控制支持拦截
 
 1. 设备通过硬件接口，插入网线。
@@ -147,7 +147,7 @@
     import { netFirewall } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
-<!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/index.ets) -->
+<!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
 3. 调用setNetFirewallPolicy方法，打开防火墙。
 
     ```ts
@@ -169,7 +169,7 @@
       console.error("set firewall policy failed: " + JSON.stringify(error));
     });
     ```
-<!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/index.ets) -->
+<!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
 4. 通过addNetFirewallRule方法，添加防火墙规则。
 
     ```ts
@@ -200,7 +200,7 @@
       console.error('add firewall rule failed: ', JSON.stringify(reason));
     });
     ```
-<!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/index.ets) -->
+<!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
 <!--Del-->
 ## 查询防火墙拦截记录
 
