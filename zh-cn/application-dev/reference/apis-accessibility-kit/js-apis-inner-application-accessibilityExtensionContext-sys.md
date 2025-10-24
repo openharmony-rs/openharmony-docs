@@ -525,7 +525,7 @@ try {
     }
   }
 } catch (err) {
-  console.info(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
+  console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
 }
 ```
 
