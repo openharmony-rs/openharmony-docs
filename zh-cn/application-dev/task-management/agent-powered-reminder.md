@@ -72,123 +72,94 @@
    - 定义倒计时实例。
      
       ```ts
-      let targetReminderAgent: reminderAgentManager.ReminderRequestTimer = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,   // 提醒类型为倒计时类型
-        triggerTimeInSeconds: 10,
-        actionButton: [ // 设置弹出的提醒通知信息上显示的按钮类型和标题
-          {
-            title: 'close',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
-          }
-        ],
-        wantAgent: {     // 点击提醒通知后跳转的目标UIAbility信息
-          pkgName: 'com.example.myapplication',
+      let timer: reminderAgent.ReminderRequestTimer = {
+        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+        ringDuration: Constant.REMINDER_DURATION,
+        title: context.resourceManager.getStringSync($r('app.string.timer').id),
+        content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),
+        wantAgent: {
+          pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        title: 'this is title', // 指明提醒标题
-        content: 'this is content', // 指明提醒内容
-        expiredContent: 'this reminder has expired', // 指明提醒过期后需要显示的内容
-        notificationId: 100, // 指明提醒使用的通知的ID号，相同ID号的提醒会覆盖
-        slotType: notificationManager.SlotType.SOCIAL_COMMUNICATION // 指明提醒的Slot类型
-      }
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION,
+        triggerTimeInSeconds: this.countdownTime
+      };
+      <!--[timer_reminder]()-->
       ```
 
    - 定义日历实例。
      
       ```ts
-      let targetReminderAgent: reminderAgentManager.ReminderRequestCalendar = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_CALENDAR, // 提醒类型为日历类型
-        dateTime: {   // 指明提醒的目标时间
-          year: 2023,
-          month: 1,
-          day: 1,
-          hour: 11,
-          minute: 14,
-          second: 30
+      let calendar: reminderAgent.ReminderRequestCalendar = {
+        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+        dateTime: {
+          year: date.getFullYear(),
+          month: date.getUTCMonth() + 1,
+          day: date.getDate(),
+          hour: date.getHours(),
+          minute: date.getMinutes(),
         },
-        repeatMonths: [1], // 指明重复提醒的月份
-        repeatDays: [1], // 指明重复提醒的日期
-        actionButton: [ // 设置弹出的提醒通知信息上显示的按钮类型和标题
-          {
-            title: 'close',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
-          },
-          {
-            title: 'snooze',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
-          },
-        ],
-        wantAgent: { // 点击提醒通知后跳转的目标UIAbility信息
-          pkgName: 'com.example.myapplication',
-          abilityName: 'EntryAbility'
-        },
-        ringDuration: 5, // 指明响铃时长（单位：秒）
-        snoozeTimes: 2, // 指明延迟提醒次数
-        timeInterval: 5*60, // 执行延迟提醒间隔（单位：秒）
-        title: 'this is title', // 指明提醒标题
-        content: 'this is content', // 指明提醒内容
-        expiredContent: 'this reminder has expired', // 指明提醒过期后需要显示的内容
-        snoozeContent: 'remind later', // 指明延迟提醒时需要显示的内容
-        notificationId: 100, // 指明提醒使用的通知的ID号，相同ID号的提醒会覆盖
-        slotType: notificationManager.SlotType.SOCIAL_COMMUNICATION // 指明提醒的Slot类型
+        actionButton:
+        [{
+          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),
+          type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+        }],
+        wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
+        ringDuration: Constant.REMINDER_DURATION,
+        title: context.resourceManager.getStringSync($r('app.string.calendar').id),
+        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION
       }
+      <!--[calendar_reminder]()-->
       ```
 
    - 定义闹钟实例。
    
       ```ts
-      let targetReminderAgent: reminderAgentManager.ReminderRequestAlarm = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM, // 提醒类型为闹钟类型
-        hour: 23, // 指明提醒的目标时刻
-        minute: 9, // 指明提醒的目标分钟
-        daysOfWeek: [2], // 指明每周哪几天需要重复提醒
-        actionButton: [ // 设置弹出的提醒通知信息上显示的按钮类型和标题
+      let alarm: reminderAgent.ReminderRequestAlarm = {
+        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
+        hour: time.hour!,
+        minute: time.minute!,
+        actionButton:
+        [
           {
-            title: 'close',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),
+            type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
-            title: 'snooze',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
-          },
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),
+            type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
+          }
         ],
-        wantAgent: { // 点击提醒通知后跳转的目标UIAbility信息
-          pkgName: 'com.example.myapplication',
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION,
+        ringDuration: Constant.REMINDER_DURATION,
+        wantAgent: {
+          pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        ringDuration: 5, // 指明响铃时长（单位：秒）
-        snoozeTimes: 2, // 指明延迟提醒次数
-        timeInterval: 5*60, // 执行延迟提醒间隔（单位：秒）
-        title: 'this is title', // 指明提醒标题
-        content: 'this is content', // 指明提醒内容
-        expiredContent: 'this reminder has expired', // 指明提醒过期后需要显示的内容
-        snoozeContent: 'remind later', // 指明延迟提醒时需要显示的内容
-        notificationId: 99, // 指明提醒使用的通知的ID号，相同ID号的提醒会覆盖
-        slotType: notificationManager.SlotType.SOCIAL_COMMUNICATION // 指明提醒的Slot类型
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),
+        snoozeTimes: 0,
+        timeInterval: 0,
+        daysOfWeek: []
       }
+      <!--[alarm_reminder]()-->
       ```
 
 3. 发布相应的提醒代理。代理发布后，应用即可使用后台代理提醒功能。
    
    ```ts
-    reminderAgentManager.publishReminder(targetReminderAgent).then((res: number) => {
-      console.info('Succeeded in publishing reminder. ');
-      let reminderId: number = res; // 发布的提醒ID
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to publish reminder. Code: ${err.code}, message: ${err.message}`);
-    })
+   let reminderId: number = await reminderAgent.publishReminder(
+     this.calendarReminders[index].reminderRequestCalendar!);
+   this.calendarReminders[index].reminderId = reminderId;
+   <!--[publish_reminder]()-->
    ```
 
 4. 根据需要删除提醒任务。
    
    ```ts
-    let reminderId: number = 1;
-    // reminderId的值从发布提醒代理成功之后的回调中获得
-    reminderAgentManager.cancelReminder(reminderId).then(() => {
-      console.info('Succeeded in canceling reminder.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to cancel reminder. Code: ${err.code}, message: ${err.message}`);
-    });
+   await reminderAgent.cancelReminder(this.calendarReminders[index].reminderId);
+   <!--[cancel_reminder]()-->
    ```
 
 ## 相关实例
