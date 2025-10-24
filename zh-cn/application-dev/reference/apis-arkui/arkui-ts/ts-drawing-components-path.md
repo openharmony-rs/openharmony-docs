@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> -本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
+> -该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> -该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#updateconstructorparams)接口更新构造参数。
 
 
 ## 子组件
@@ -54,7 +56,9 @@ Path(options?: PathOptions)
 
 ### commands
 
-commands(value: [ResourceStr](ts-types.md#resourcestr))
+ArkTS-Dyn: commands(value: ResourceStr)
+
+ArkTS-Sta: commands(value: string | undefined)
 
 设置符合[SVG路径描述规范](ts-drawing-components-path.md#svg路径描述规范)的命令字符串，单位为px。像素单位转换方法请参考[像素单位转换](ts-pixel-units.md)。
 
@@ -64,11 +68,15 @@ commands(value: [ResourceStr](ts-types.md#resourcestr))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                          |
 | ------ | ------ | ---- | ----------------------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 线条绘制的路径。<br/>默认值：空字符串<br/>默认单位：px |
+| value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: string \| undefined  | 是   | 线条绘制的路径。<br/>默认值：空字符串<br/>默认单位：px<br/> |
 
 ### fill
 
