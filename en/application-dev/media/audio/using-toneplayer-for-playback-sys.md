@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 TonePlayer<sup>9+</sup> provides APIs for playing and managing Dual Tone Multi Frequency (DTMF) tones, such as dial tones, ringback tones, supervisory tones, and proprietary tones. The main task of the TonePlayer is to generate sine waves of different frequencies by using the built-in algorithm based on the [ToneType](../../reference/apis-audio-kit/js-apis-audio-sys.md#tonetype9) and add the sine waves to create a sound. The sound can then be played by using the [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md), and the playback task can also be managed by using the [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md). The full process includes loading the DTMF tone configuration, starting DTMF tone playing, stopping the playback, and releasing the resources associated with the TonePlayer object. For details about the APIs, see the [TonePlayer API Reference](../../reference/apis-audio-kit/js-apis-audio-sys.md#toneplayer9).
 
