@@ -56,7 +56,7 @@
       photoSession.on('macroStatusChanged', callback);
    }
 
-   // 解注册
+   // 解注册。
    function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
       photoSession.off('macroStatusChanged');
    }
