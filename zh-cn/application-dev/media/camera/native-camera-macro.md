@@ -1,4 +1,4 @@
-# 微距能力设置(C++)
+# 微距能力设置(C/C++)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
