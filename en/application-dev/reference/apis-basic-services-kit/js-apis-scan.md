@@ -39,7 +39,7 @@ Enumerates the scan error codes.
 | SCAN_ERROR_INVALID | 13100007 | Invalid operation.|
 | SCAN_ERROR_JAMMED | 13100008 | Paper jammed.|
 | SCAN_ERROR_NO_DOCS | 13100009 | Out of paper.|
-| SCAN_ERROR_COVER_OPEN | 13100010 | Lid open.|
+| SCAN_ERROR_COVER_OPEN | 13100010 | Cover open.|
 | SCAN_ERROR_IO_ERROR | 13100011 | I/O error.|
 | SCAN_ERROR_NO_MEMORY | 13100012 | Insufficient memory.|
 
@@ -114,11 +114,11 @@ Defines the range.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Properties**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| minValue | number | Yes| Minimum value.|
-| maxValue | number | Yes| Maximum value.|
-| quantValue | number | Yes| Quantized value.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| minValue | number | No| No| Minimum value.|
+| maxValue | number | No| No| Maximum value.|
+| quantValue | number | No| No| Quantized value.|
 
 ## ScannerParameter
 
@@ -127,18 +127,18 @@ Defines the scanner parameters.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Properties**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| optionName | string | Yes| Option name.|
-| optionIndex | number | Yes| Option index.|
-| optionTitle | string | Yes| Option title.|
-| optionDesc | string | Yes| Option description.|
-| optionType | [OptionValueType](#optionvaluetype) | Yes| Option value type.|
-| optionUnit | [PhysicalUnit](#physicalunit) | Yes| Physical unit of the option.|
-| optionConstraintType | [ConstraintType](#constrainttype) | Yes| Constraint type of the option.|
-| optionConstraintString | string[] | No| String constraints of the option.|
-| optionConstraintInt | number[] | No| Integer constraints of the option.|
-| optionConstraintRange | [Range](#range) | No| Range constraint of the option.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| optionName | string | No| No| Option name.|
+| optionIndex | number | No| No| Option index.|
+| optionTitle | string | No| No| Option title.|
+| optionDesc | string | No| No| Option description.|
+| optionType | [OptionValueType](#optionvaluetype) | No| No| Option value type.|
+| optionUnit | [PhysicalUnit](#physicalunit) | No| No| Physical unit of the option.|
+| optionConstraintType | [ConstraintType](#constrainttype) | No| No| Constraint type of the option.|
+| optionConstraintString | string[] | No| Yes| String constraints of the option.|
+| optionConstraintInt | number[] | No| Yes| Integer constraints of the option.|
+| optionConstraintRange | [Range](#range) | No| Yes| Range constraint of the option.|
 
 ## ScannerOptionValue
 
@@ -147,12 +147,12 @@ Defines the scanner option value.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Properties**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| valueType | [OptionValueType](#optionvaluetype) | Yes| Value type.|
-| numValue | number | No| Value of the number type.|
-| strValue | string | No| Value of the string type.|
-| boolValue | boolean | No| Value of the Boolean type.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| valueType | [OptionValueType](#optionvaluetype) | No| No| Value type.|
+| numValue | number | No| Yes| Value of the number type.|
+| strValue | string | No| Yes| Value of the string type.|
+| boolValue | boolean | No| Yes| Value of the Boolean type.|
 
 ## PictureScanProgress
 
@@ -161,11 +161,11 @@ Defines the progress of scanning pictures.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Properties**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| progress | number | Yes| Progress percentage, whose value ranges from 0 to 100.|
-| pictureFd | number | Yes| File descriptor of the scanned picture.|
-| isFinal | boolean | Yes| Whether the picture is the last one to be scanned.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| progress | number | No| No| Progress percentage, whose value ranges from 0 to 100.|
+| pictureFd | number | No| No| File descriptor of the scanned picture.|
+| isFinal | boolean | No| No| Whether the picture is the last one to be scanned. The value **true** indicates that the picture is the last one to be scanned, and **false** indicates that the picture is not the last one.|
 
 ## ScannerDevice
 
@@ -174,14 +174,14 @@ Defines the scanner.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Properties**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| scannerId | string | Yes| Unique identifier of the scanner.|
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | Yes| Discovery mode of the scanner.|
-| uniqueId | string | Yes| Unique ID of the scanner.|
-| manufacturer | string | Yes| Manufacturer of the scanner.|
-| model | string | Yes| Model of the scanner.|
-| deviceName | string | Yes| Name of the scanner.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| scannerId | string | No| No| Unique identifier of the scanner.|
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | No| No| Discovery mode of the scanner.|
+| uniqueId | string | No| No| Unique ID of the scanner.|
+| manufacturer | string | No| No| Manufacturer of the scanner.|
+| model | string | No| No| Model of the scanner.|
+| deviceName | string | No| No| Name of the scanner.|
 
 ## ScannerSyncDevice
 
@@ -190,13 +190,13 @@ Defines the device to be synced from the scanner.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Properties**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| scannerId | string | Yes| Scanner ID.|
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | Yes| Discovery mode.|
-| uniqueId | string | Yes| Unique ID.|
-| syncMode | [ScannerSyncMode](#scannersyncmode) | Yes| Sync mode.|
-| oldScannerId | string | No| Old scanner ID, which is valid only when **syncMode** is set to **update**.|
+| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+| -------- | -------- | -------- | -------- | -------- |
+| scannerId | string | No| No| Scanner ID.|
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | No| No| Discovery mode.|
+| uniqueId | string | No| No| Unique ID.|
+| syncMode | [ScannerSyncMode](#scannersyncmode) | No| No| Sync mode.|
+| oldScannerId | string | No| Yes| Old scanner ID, which is valid only when **syncMode** is set to **update**.|
 
 ## scan.init
 
@@ -211,22 +211,22 @@ Initializes the scan service. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.init().then(() => {
-    console.log('scan init success');
+    console.info('scan init success');
 }).catch((error: BusinessError) => {
     console.error('scan init failed: ' + JSON.stringify(error));
 })
@@ -245,22 +245,22 @@ Exits the scan service. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.exit().then(() => {
-    console.log('scan exit success');
+    console.info('scan exit success');
 }).catch((error: BusinessError) => {
     console.error('scan exit failed: ' + JSON.stringify(error));
 })
@@ -279,22 +279,22 @@ Starts scanner discovery. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.startScannerDiscovery().then(() => {
-    console.log('start scanner discovery success');
+    console.info('start scanner discovery success');
 }).catch((error: BusinessError) => {
     console.error('start scanner discovery failed: ' + JSON.stringify(error));
 })
@@ -318,23 +318,23 @@ Opens a scanner. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
-    console.log('open scanner success');
+    console.info('open scanner success');
 }).catch((error: BusinessError) => {
     console.error('open scanner failed: ' + JSON.stringify(error));
 })
@@ -358,23 +358,23 @@ Closes a scanner. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
-    console.log('close scanner success');
+    console.info('close scanner success');
 }).catch((error: BusinessError) => {
     console.error('close scanner failed: ' + JSON.stringify(error));
 })
@@ -398,23 +398,23 @@ Obtains scanner parameters. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | Promise used to return the scanner parameters obtained.|
+| Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | Promise used to return the scanner parameters.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
-    console.log('get scanner parameters success: ' + JSON.stringify(parameters));
+    console.info('get scanner parameters success: ' + JSON.stringify(parameters));
 }).catch((error: BusinessError) => {
     console.error('get scanner parameters failed: ' + JSON.stringify(error));
 })
@@ -440,19 +440,19 @@ Sets scanner parameters. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -461,7 +461,7 @@ let value: scan.ScannerOptionValue = {
     numValue: 100
 };
 scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
-    console.log('set scanner parameter success');
+    console.info('set scanner parameter success');
 }).catch((error: BusinessError) => {
     console.error('set scanner parameter failed: ' + JSON.stringify(error));
 })
@@ -486,24 +486,24 @@ Sets the scan option to auto mode. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.setScanAutoOption(scannerId, optionIndex).then(() => {
-    console.log('set scan auto option success');
+    console.info('set scan auto option success');
 }).catch((error: BusinessError) => {
     console.error('set scan auto option failed: ' + JSON.stringify(error));
 })
@@ -528,24 +528,24 @@ Obtains the current scanner settings. This API uses a promise to return the resu
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | Promise used to return the scanner settings obtained.|
+| Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | Promise used to return the scanner option value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerOptionValue) => {
-    console.log('get scanner current setting success: ' + JSON.stringify(value));
+    console.info('get scanner current setting success: ' + JSON.stringify(value));
 }).catch((error: BusinessError) => {
     console.error('get scanner current setting failed: ' + JSON.stringify(error));
 })
@@ -570,24 +570,24 @@ Starts scanning. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
 scan.startScan(scannerId, batchMode).then(() => {
-    console.log('start scan success');
+    console.info('start scan success');
 }).catch((error: BusinessError) => {
     console.error('start scan failed: ' + JSON.stringify(error));
 })
@@ -611,23 +611,23 @@ Cancels scanning. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
-    console.log('cancel scan success');
+    console.info('cancel scan success');
 }).catch((error: BusinessError) => {
     console.error('cancel scan failed: ' + JSON.stringify(error));
 })
@@ -637,7 +637,7 @@ scan.cancelScan(scannerId).then(() => {
 
 getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 
-Obtains the progress of scanning pictures. This API uses a promise to return the result.
+Obtains the progress of scanning a picture. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -651,23 +651,23 @@ Obtains the progress of scanning pictures. This API uses a promise to return the
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | Promise used to return the progress obtained.|
+| Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | Promise used to return the progress.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
-    console.log('get picture scan progress success: ' + JSON.stringify(progress));
+    console.info('get picture scan progress success: ' + JSON.stringify(progress));
 }).catch((error: BusinessError) => {
     console.error('get picture scan progress failed: ' + JSON.stringify(error));
 })
@@ -677,7 +677,7 @@ scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress)
 
 on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 
-Subscribes to the scanner discovery events. This API uses a callback to return the result.
+Registers a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -687,13 +687,13 @@ Subscribes to the scanner discovery events. This API uses a callback to return t
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | Yes| Event type.|
-| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | Yes| Callback to be invoked when a scanner is discovered.|
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | Yes| Callback used to return the discovered scanner.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
@@ -701,7 +701,7 @@ Subscribes to the scanner discovery events. This API uses a callback to return t
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.log('scan device found: ' + JSON.stringify(device));
+    console.info('scan device found: ' + JSON.stringify(device));
 })
 ```
 
@@ -709,7 +709,7 @@ scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 
-Unsubscribes from the scanner discovery events. This API uses a callback to return the result.
+Unregisters a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -725,7 +725,7 @@ Unsubscribes from the scanner discovery events. This API uses a callback to retu
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
@@ -733,7 +733,7 @@ Unsubscribes from the scanner discovery events. This API uses a callback to retu
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device found: ' + JSON.stringify(device));
+    console.info('scan device found: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceFound', callback);
 // Unregister the callback.
@@ -744,7 +744,7 @@ scan.off('scanDeviceFound', callback);
 
 on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
-Subscribers to the scanner sync events. This API uses a callback to return the result.
+Registers a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB
 
@@ -754,13 +754,13 @@ Subscribers to the scanner sync events. This API uses a callback to return the r
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | Yes| Event type.|
-| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | Yes| Callback to be invoked when a scanner sync event occurs.|
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | Yes| Callback used to return the synced scanner.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
@@ -768,7 +768,7 @@ Subscribers to the scanner sync events. This API uses a callback to return the r
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.log('scan device sync: ' + JSON.stringify(device));
+    console.info('scan device sync: ' + JSON.stringify(device));
 })
 ```
 
@@ -776,7 +776,7 @@ scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
 
 off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
-Unsubscribes from the scanner sync events. This API uses a callback to return the result.
+Unregisters a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB
 
@@ -792,7 +792,7 @@ Unsubscribes from the scanner sync events. This API uses a callback to return th
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | Permission denied. |
 
 **Example**
 
@@ -800,7 +800,7 @@ Unsubscribes from the scanner sync events. This API uses a callback to return th
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerSyncDevice) => {
-    console.log('scan device sync: ' + JSON.stringify(device));
+    console.info('scan device sync: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceSync', callback);
 // Unregister the callback.

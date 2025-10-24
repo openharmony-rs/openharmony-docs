@@ -8,7 +8,7 @@
 
 ## When to Use
 
-A static subscriber is started once it receives a target event published by the system or application. At the same time, [onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent) is triggered, in which you can implement the service logic.<br>
+A static subscriber is started once it receives a target event published by the system or application. At the same time, [onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent) is triggered, in which you can implement the service logic.
 
 For example, if an application needs to execute some initialization tasks during device power-on, the application can subscribe to the power-on event in static mode. After receiving the power-on event, the application is started to execute the initialization tasks.
 
@@ -20,7 +20,7 @@ Subscribing to a common event in static mode is achieved by configuring a declar
 
 ## Lifecycle
 
-The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md) module is destroyed 15 seconds after [`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent) is executed.
+The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md) module is destroyed 15 seconds after [onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent) is executed.
 
 ## How to Develop
 
@@ -125,10 +125,10 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
 
    | **Name**| **Description**                                                    | **Data Type**| **Initial Value Allowed**            |
    | ------------ | ------------------------------------------------------------ | ------------ | -------------------------- |
-   | name         | Name of the ExtensionAbility, which must be the same as the name of **extensionAbility** declared in **module.json5**.| String      | No          |
-   | permission   | Permissions required by the publisher.                      | String      | Yes (initial value: left empty)|
-   | events       | List of subscribed target events.                                    | String array  | No          |
-   | filter       | Filter criteria for static events. This attribute is supported since API version 18.<br>For details about the values, see the following table.| Object array    | Yes (initial value: left empty)|
+   | name         | Name of the ExtensionAbility, which must be the same as the name of **extensionAbility** declared in **module.json5**.| String      | Mandatory          |
+   | permission   | Permissions required by the publisher.                      | String      | Optional, defaults to an empty array|
+   | events       | List of subscribed target events.                                    | String array  | Mandatory          |
+   | filter       | Filter criteria for static events. This attribute is supported since API version 18.<br>For details about the values, see the following table.| Object array    | Optional, defaults to an empty array|
 
    The **filter** tag identifies the static subscription events that can be filtered by the subscriber as required. The tag value is of the object array type and contains two subtags: **event** and **conditions**.
 
@@ -136,8 +136,8 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
 
    | **Name**| **Description**                                                    | **Data Type**| **Initial Value Allowed**  |
    | ------------ | ------------------------------------------------------------ | ------------ | ---------------- |
-   | event        | Name of the event to be filtered out for static subscription events. The event name should match with the event list; otherwise, the configuration is invalid.| String      | No|
-   | conditions   | Filter criteria of an event, which is obtained from [CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md).| Object        | No|
+   | event        | Name of the event to be filtered out for static subscription events. The event name should match with the event list; otherwise, the configuration is invalid.| String      | Mandatory|
+   | conditions   | Filter criteria of an event, which is obtained from [CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md).| Object        | Mandatory|
 
    The **conditions** tag identifies the condition configuration for filtering static subscription events. The tag value is of the object type and contains three subtags: **code**, **data**, and **parameters**.
 
@@ -145,9 +145,9 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
 
    | **Name**| **Description**                                  | **Data Type**      | **Initial Value Allowed**            |
    | ------------ | ------------------------------------------ | ------------------ | -------------------------- |
-   | code         | Result code to filter.      | Integer          | Yes (initial value: left empty)|
-   | data         | Custom result data to filter.| String            | Yes (initial value: left empty)|
-   | parameters   | Additional information to filter for a static subscription event. Only data of the Boolean, number, or string type can be configured.| Object| Yes (initial value: left empty)|
+   | code         | Result code to filter.      | Integer          | Optional, defaults to an empty array|
+   | data         | Custom result data to filter.| String            | Optional, defaults to an empty array|
+   | parameters   | Additional information to filter for a static subscription event. Only data of the Boolean, number, or string type can be configured.| Object| Optional, defaults to an empty array|
 
 
 4. Modify the [preset configuration file](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json) of the device, that is, the **/system/variant/phone/base/etc/app/install_list_capability.json** file. When the device is started, this file is read. During application installation, the common event type specified by **allowCommonEvent** in the file is authorized. The **install_list_capability.json** file contains the following fields:

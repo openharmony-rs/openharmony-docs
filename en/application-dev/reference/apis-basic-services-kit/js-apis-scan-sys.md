@@ -39,25 +39,25 @@ Adds a scanner. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.addScanner(uniqueId, discoveryMode).then(() => {
-    console.log('add scanner success');
+    console.info('add scanner success');
 }).catch((error: BusinessError) => {
     console.error('add scanner failed: ' + JSON.stringify(error));
 })
@@ -84,25 +84,25 @@ Deletes a scanner. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let uniqueId: string = 'unique_scanner_001';
 let discoveryMode: scan.ScannerDiscoveryMode = scan.ScannerDiscoveryMode.TCP_STR;
 scan.deleteScanner(uniqueId, discoveryMode).then(() => {
-    console.log('delete scanner success');
+    console.info('delete scanner success');
 }).catch((error: BusinessError) => {
     console.error('delete scanner failed: ' + JSON.stringify(error));
 })
@@ -123,23 +123,23 @@ Obtains the added scanners. This API uses a promise to return the result.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)[]&gt; | Promise used to return the added scanners obtained.|
+| Promise&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)[]&gt; | Promise used to return the array of added scanners.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
-    console.log('get added scanners success: ' + JSON.stringify(scanners));
+    console.info('get added scanners success: ' + JSON.stringify(scanners));
 }).catch((error: BusinessError) => {
     console.error('get added scanners failed: ' + JSON.stringify(error));
 })
@@ -149,7 +149,7 @@ scan.getAddedScanners().then((scanners: scan.ScannerDevice[]) => {
 
 on(type: 'scanDeviceAdd', callback: Callback&lt;ScannerDevice&gt;): void
 
-Subscribes to the scanner addition events. This API uses a callback to return the result.
+Registers a callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB
 
@@ -161,14 +161,14 @@ Subscribes to the scanner addition events. This API uses a callback to return th
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceAdd' | Yes| Event type.|
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | Yes| Callback to be invoked when a scanner addition event occurs.|
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | Yes| Callback used to return the added scanner.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
@@ -176,7 +176,7 @@ Subscribes to the scanner addition events. This API uses a callback to return th
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
-    console.log('scan device add: ' + JSON.stringify(device));
+    console.info('scan device add: ' + JSON.stringify(device));
 })
 ```
 
@@ -184,7 +184,7 @@ scan.on('scanDeviceAdd', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 
-Unsubscribes from the scanner addition events. This API uses a callback to return the result.
+Unregisters the callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB
 
@@ -194,16 +194,16 @@ Unsubscribes from the scanner addition events. This API uses a callback to retur
 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| type | 'scanDeviceAdd' | Yes| Event type.|
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | No| Callback to unregister.|
+| -------- | -------- | -------- | -------- |	
+| type | 'scanDeviceAdd' | Yes| Event type.|	
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | Yes| Callback used to return the added scanner.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
@@ -211,7 +211,7 @@ Unsubscribes from the scanner addition events. This API uses a callback to retur
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device add: ' + JSON.stringify(device));
+    console.info('scan device add: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceAdd', callback);
 // Unregister the callback.
@@ -222,7 +222,7 @@ scan.off('scanDeviceAdd', callback);
 
 on(type: 'scanDeviceDel', callback: Callback&lt;ScannerDevice&gt;): void
 
-Subscribes to the scanner deletion events. This API uses a callback to return the result.
+Registers a callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB
 
@@ -230,18 +230,17 @@ Subscribes to the scanner deletion events. This API uses a callback to return th
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceDel' | Yes| Event type.|
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | Yes| Callback to be invoked when a scanner deletion event occurs.|
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | Yes| Callback used to return the deleted scanner.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
@@ -249,7 +248,7 @@ Subscribes to the scanner deletion events. This API uses a callback to return th
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
-    console.log('scan device delete: ' + JSON.stringify(device));
+    console.info('scan device delete: ' + JSON.stringify(device));
 })
 ```
 
@@ -257,7 +256,7 @@ scan.on('scanDeviceDel', (device: scan.ScannerDevice) => {
 
 off(type: 'scanDeviceDel', callback?: Callback&lt;ScannerDevice&gt;): void
 
-Unsubscribes from the scanner deletion events. This API uses a callback to return the result.
+Unregisters the callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_PRINT_JOB
 
@@ -269,14 +268,14 @@ Unsubscribes from the scanner deletion events. This API uses a callback to retur
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceDel' | Yes| Event type.|
-| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | No| Callback to unregister.|
+| callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | No| Callback used to return the deleted scanner.|
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application. |
+| 201 | Permission denied. |
+| 202 | Not system application. |
 
 **Example**
 
@@ -284,7 +283,7 @@ Unsubscribes from the scanner deletion events. This API uses a callback to retur
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device delete: ' + JSON.stringify(device));
+    console.info('scan device delete: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceDel', callback);
 // Unregister the callback.
