@@ -132,7 +132,7 @@ getId(): string
 
 getEventTargetInfo(): EventTargetInfo
 
-返回当前手势识别器对应组件的信息。
+返回当前触摸识别器对应组件的信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -142,13 +142,13 @@ getEventTargetInfo(): EventTargetInfo
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [EventTargetInfo](#eventtargetinfo12) | 当前手势识别器对应组件的信息。 |
+| [EventTargetInfo](#eventtargetinfo12) | 当前触摸识别器对应组件的信息。 |
 
 ### cancelTouch<sup>20+</sup>
 
 cancelTouch(): void
 
-向当前手势识别器发送触摸取消事件的信息。
+向当前触摸识别器发送触摸取消事件的信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
