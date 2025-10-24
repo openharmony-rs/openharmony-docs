@@ -886,3 +886,19 @@ With this permission, the application can record the screen without showing a pr
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 22
+
+## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
+
+Allows an application to use external native programs.
+
+With this permission, the application can load external dynamic link libraries(.so), binary files(.bin), etc
+
+<!--RP57--><!--RP57End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Device**: PCs/2-in-1 devices
+
+**Since**: 22
