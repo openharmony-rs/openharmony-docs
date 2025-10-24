@@ -65,9 +65,9 @@
     {
         if (IsMacroSupported(captureSession)) {
             Camera_ErrorCode ret = OH_CaptureSession_EnableMacro(captureSession, enabled);
-        }
-        if (ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_EnableMacro failed.");
+            if (ret != CAMERA_OK) {
+            	OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_EnableMacro failed.");
+            }
         }
     }
 
