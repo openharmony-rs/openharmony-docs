@@ -16,7 +16,7 @@
   - [@ohos.vibrator(振动)(已废弃接口)](js-apis-system-vibrate.md)
 - C API
   - 模块
-    - [Sensor](_sensor.md)
+    - [Sensor](capi-sensor.md)
     - [Vibrator](_vibrator.md)
   - 头文件
     - [oh_sensor.h](oh_sensor_8h.md)
