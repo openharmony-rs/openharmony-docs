@@ -392,11 +392,11 @@ struct CanvasContentUpdate {
 
 ![data_drive_update](figures/data_drive_update.gif)
 
-## 控制在Canvas组件不可见时不进行绘制
+## 控制在画布组件不可见时不进行绘制
 
 可以使用以下两种方式监听Canvas组件可见性，避免不可见时仍在无效绘制。
 
-- 使用[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)接口。
+- 从API version 13开始，使用[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)接口监听Canvas组件可见性。
 
    ```ts
   import { ColorMetrics } from '@kit.ArkUI';
@@ -462,9 +462,9 @@ struct CanvasContentUpdate {
     }
   }
   ```
-![canvas_RenderingContext](figures/Canvas_RenderingContext.jpg)
+![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
-- 使用[onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)接口。
+- 从API version 17开始，使用[onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)接口监听Canvas组件可见性。
 
    ```ts
   import { ColorMetrics } from '@kit.ArkUI';
@@ -527,7 +527,7 @@ struct CanvasContentUpdate {
     }
   }
   ```
-![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.jpg)
+![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## 场景示例
 
