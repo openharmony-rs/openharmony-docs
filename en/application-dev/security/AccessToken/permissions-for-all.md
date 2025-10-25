@@ -595,6 +595,20 @@ This permission applies only to independent binary programs, not to HAPs.
 
 **Valid since**: 20
 
+## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
+
+Allows an application to turn off the screen but keep it unlocked after a timeout.
+
+With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 22
+
 ## ohos.permission.LOCK_WINDOW_CURSOR
 
 Allows an application to lock the mouse cursor when the window gains focus.
