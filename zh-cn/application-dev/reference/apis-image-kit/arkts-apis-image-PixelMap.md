@@ -1607,15 +1607,11 @@ async function CreateScaledPixelMapSync() {
 
 ## createCroppedAndScaledPixelMap<sup>22+</sup>
 
-ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
+ArkTS-Dyn: createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap\>
 
-ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap>
+ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise\<PixelMap\>
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。使用Promise异步回调。
-
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1627,16 +1623,16 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽高。 |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。 |
-| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素）。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。不能为0。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。不能为0。 |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
 
 **返回值：**
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -1646,7 +1642,7 @@ ArkTS-Sta: createCroppedAndScaledPixelMap(region: Region, x: double, y: double, 
 | ------- | --------------------------------------------|
 | 7600201 | The PixelMap has been released. |
 | 7600204 | Invalid region. |
-| 7600205 | Unsupported pixel format. |
+| 7600205 | Unsupported memory format or pixel format. |
 | 7600301 | Memory alloc failed. |
 
 **示例：**
@@ -1707,10 +1703,6 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 
 根据指定的裁剪区域、宽高的缩放倍数和缩放算法，创建一个新的裁剪并缩放后的图片。同步返回结果。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 22
@@ -1721,10 +1713,10 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 
 | 参数名   | 类型                 | 必填 | 说明                          |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽高。 |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。 |
-| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE |
+| region   | [Region](arkts-apis-image-i.md#region8) | 是   | 裁剪的区域。取值范围不能超过图片的宽和高（单位：像素）。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。不能为0。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。不能为0。 |
+| level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
 
 **返回值：**
 
@@ -1740,7 +1732,7 @@ ArkTS-Sta: createCroppedAndScaledPixelMapSync(region: Region, x: double, y: doub
 | ------- | --------------------------------------------|
 | 7600201 | The PixelMap has been released. |
 | 7600204 | Invalid region. |
-| 7600205 | Unsupported pixel format. |
+| 7600205 | Unsupported memory format or pixel format. |
 | 7600301 | Memory alloc failed. |
 
 **示例：**
@@ -3245,11 +3237,7 @@ ArkTS-Dyn: getUniqueId(): number
 
 ArkTS-Sta: getUniqueId(): int
 
-获取PixelMap的唯一标识符(ID)。
-
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+获取PixelMap的唯一ID。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -3261,7 +3249,7 @@ ArkTS-Sta: getUniqueId(): int
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 唯一标识符(ID)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 唯一ID。取值为正整数。 |
 
 **错误码：**
 
@@ -3295,10 +3283,6 @@ isReleased(): boolean
 
 检查PixelMap的内存持有关系是否已断开。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 22
@@ -3309,14 +3293,14 @@ isReleased(): boolean
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| boolean | 如果内存持有关系已断开则返回true，否则返回false。 |
+| boolean | PixelMap的内存持有关系是否已断开。返回true表示已断开，否则返回false。 |
 
 **示例：**
 
 ```ts
-async function DemoIsReleased(pixelMap: PixelMap) { // 未释放的PixelMap
-  pixelMap.isReleased(); // false
+async function DemoIsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
+  pixelMap.isReleased(); // 返回false。
   await pixelMap.release();
-  pixelMap.isReleased(); // true
+  pixelMap.isReleased(); // 返回true。
 }
 ```
