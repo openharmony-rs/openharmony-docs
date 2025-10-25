@@ -87,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 ## dataShare.createDataShareHelper<sup>10+</sup>
 createDataShareHelper(context: Context, uri: string, options: DataShareHelperOptions, callback: AsyncCallback&lt;DataShareHelper&gt;): void 
 
-创建DataShareHelper实例。使用callback异步回调。
+创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。
 
 > **说明：**
 >
@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 
 createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOptions): Promise&lt;DataShareHelper&gt;
 
-创建DataShareHelper实例。使用Promise异步回调。
+创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用Promise异步回调。
 
 > **说明：**
 >
@@ -519,7 +519,7 @@ if (dataShareHelper !== undefined) {
 
 off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 
-取消订阅指定URI下指定callback对应的数据资源的变更通知。
+取消订阅指定URI下指定callback对应的数据资源的变更通知。与订阅接口[on](#ondatachange)相对应。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -559,7 +559,7 @@ if (dataShareHelper != undefined) {
 
 off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCallback&lt;ChangeInfo&gt;): void
 
-取消订阅指定URI下指定callback对应的数据资源的变更通知。
+取消订阅指定URI下指定callback对应的数据资源的变更通知。与订阅接口[on](#ondatachange12)相对应。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -906,7 +906,7 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。需传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用callback异步回调。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -955,7 +955,7 @@ try {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。仅支持静默访问。使用callback异步回调。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -999,7 +999,7 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number): Promise&lt;Array&lt;OperationResult&gt;&gt;
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。可以选择传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1044,7 +1044,7 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string, callback: AsyncCallback&lt;Array&lt;PublishedItem&gt;&gt;): void
 
-获取给定的APP和模板指定的数据。仅支持静默访问。
+获取给定的APP和模板指定的数据。仅支持静默访问。使用callback异步回调。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1083,7 +1083,7 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 
-获取给定的APP和模板指定的数据。仅支持静默访问。
+获取给定的APP和模板指定的数据。仅支持静默访问。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
