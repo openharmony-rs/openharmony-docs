@@ -430,7 +430,7 @@ struct Demo {
         } else {
           this.fontSize = 15;
         }
-        console.log('updateConfiguration success.');
+        console.info('updateConfiguration success.');
         this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, updateConfiguration success.` });
       }
     });
