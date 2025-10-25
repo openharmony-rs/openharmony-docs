@@ -41,13 +41,13 @@ import {
 **示例：**
 
 ```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
+import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
 let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options)
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
 try {
     // 可以提前手动加载动图资源到内存中。
-    let result: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
     console.info(`load result = ${JSON.stringify(result)}`)
 } catch(e) {
     console.error("load failed")
