@@ -2456,6 +2456,12 @@ zh-cn/application-dev/reference/apis-tesk-kit/js-apis-app-ability-abilityDelegat
 zh-cn/application-dev/reference/apis-tesk-kit/js-apis-uitest.md  @Brilliantry_Rui @inter515 @laonie666 @lv_yu_peng @yangyuyan-yyy
 zh-cn/application-dev/reference/apis-tesk-kit/errorcode-uitest.md @Brilliantry_Rui @inter515 @laonie666 @lv_yu_peng @yangyuyan-yyy
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-deviceAttest-sys.md @Brilliantry_Rui @jiyong 
+zh-cn/application-dev/reference/apis-test-kit/js-apis-app-ability-abilityDelegatorRegistry.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-application-abilityDelegatorRegistry.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-application-testRunner.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-inner-application-abilityDelegatorArgs.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-inner-application-shellCmdResult.md @huipeizi @li-weifeng2024 @lixueqing513
 
 [API参考-剪贴板]
 
