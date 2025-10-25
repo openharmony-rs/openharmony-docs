@@ -114,5 +114,80 @@
 完整的独立塑形示例如下。
 <!-- @[arkts_independent_shaping_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
 
+``` TypeScript
+import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI'
+import { text } from '@kit.ArkGraphics2D'
+import { drawing } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+
+@Builder
+export function PageBuilder(_: string) {
+  Index();
+}
+
+
+@Entry
+@Component
+export default struct Index {
+  @State message: string = 'Hello World';
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Row() {
+          NodeContainer(this.myNodeController)
+            .height('100%')
+            .width('100%')
+        }
+        .width('100%')
+      }
+    }
+  }
+}
+
+// 绘制代码逻辑写在这里
+function drawText(canvas: drawing.Canvas) {
+  let myTextStyle: text.TextStyle = {
+    // 文本大小
+    fontSize: 60
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle,
+  };
+  let fontCollection = text.FontCollection.getGlobalInstance();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  // 添加文本
+  paragraphBuilder.addText('Hello World');
+  // 生成行
+  let lineTypeSet: text.LineTypeset = paragraphBuilder.buildLineTypeset()
+  let textLine: text.TextLine = lineTypeSet.createLine(0, 11);
+
+  // 获取塑形结果
+  let runs: text.Run[] = textLine.getGlyphRuns();
+  let x: number = 0;
+  let y: number = 0;
+  for (let index = 0; index < runs.length; index++) {
+    const run = runs[index];
+    // 绘制字形
+    let glyphs: number[] = run.getGlyphs();
+    let font: drawing.Font = run.getFont();
+    let advances: common2D.Point[] = run.getAdvances({ start: 0, end: 0 });
+
+    // 创建字形buffer，通过drawing接口进行字形独立绘制
+    let runBuffer: drawing.TextBlobRunBuffer[] = [];
+    for (let i = 0; i < glyphs.length; i++) {
+      runBuffer.push({ glyph: glyphs[i], positionX: x, positionY: y });
+      x += advances[i].x + 10;
+      y += advances[i].y + 30
+      0;
+    }
+    let textBlob: drawing.TextBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, null);
+    // 自定义绘制一串具有相同属性的一系列连续字形
+    canvas.drawTextBlob(textBlob, 20, 100);
+  }
+```
+
 效果展示：  
 ![ts_independent_shaping.png](figures/ts_independent_shaping.png)
