@@ -1821,7 +1821,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
 
 createImageData(width: number, height: number): ImageData
 
-创建新的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
+创建新的、空白的、指定大小的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1861,7 +1861,7 @@ createImageData(width: number, height: number): ImageData
 
 createImageData(imageData: ImageData): ImageData
 
-创建新的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
+根据一个现有的ImageData对象，重新创建一个宽、高相同但不会复制图像数据的ImageData对象，请参考[ImageData对象](js-components-canvas-imagedata.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1943,7 +1943,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 putImageData(imageData: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void
 
-使用ImageData数据填充新的矩形区域。
+使用ImageData数据裁剪后填充至新的矩形区域。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
