@@ -83,6 +83,7 @@
         - [组件内状态变量迁移指导](state-management/arkts-v1-v2-migration-inner-component.md)
         - [数据对象状态变量的迁移指导](state-management/arkts-v1-v2-migration-inner-class.md)
         - [应用内状态变量和其他场景迁移指导](state-management/arkts-v1-v2-migration-application-and-others.md)
+        - [组件复用迁移指导](state-management/arkts-v1-v2-migration-reusable.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
       - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
       - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
