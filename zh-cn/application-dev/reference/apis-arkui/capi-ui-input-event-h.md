@@ -2424,7 +2424,7 @@ int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, i
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| int32_t* pressedButtons | 指示按下按钮的列表。需要先创建一个int数组，用来储存按下的按钮。 |
+| int32_t* pressedButtons | 指示按下按钮的列表。需要先创建一个int数组，用来储存按下的按钮(按钮的值参考：[anonymous5](#anonymous5))。 |
 | int32_t* length | 指示列表数组的总长度。 |
 
 **返回：**
