@@ -45,7 +45,7 @@
     import { connection } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
-
+<!-- @[NetConnection_manage_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/connectNetworkBtn.ets) -->
 3. 调用[createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection)方法，指定网络能力、网络类型和超时时间(可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成)，创建一个NetConnection对象。
 
     ```ts
@@ -64,30 +64,31 @@
     // 创建NetConnection对象。
     let conn = connection.createNetConnection(netSpecifier, timeout);
     ```
-    
-4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback参数，订阅关心的事件。
+<!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/connectNetworkBtn.ets) -->
 
-    ```ts
-    // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
-    conn.on('netAvailable', ((data: connection.NetHandle) => {
-      console.info("net is available, netId is " + data.netId);
-    }));
-
-    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
-    conn.on('netUnavailable', ((data: void) => {
-      console.info("net is unavailable, data is " + JSON.stringify(data));
-    }));
-    ```
-    
-5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知，此接口要在调用on后调用。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
+4. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
 
     ```ts
     // 订阅指定网络状态变化的通知。
     conn.register((err: BusinessError, data: void) => {
-      console.info(JSON.stringify(err));
+      console.log(JSON.stringify(err));
     });
     ```
-    
+<!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/connectNetworkBtn.ets) -->
+5. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
+
+    ```ts
+    // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
+    conn.on('netAvailable', ((data: connection.NetHandle) => {
+      console.log("net is available, netId is " + data.netId);
+    }));
+
+    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
+    conn.on('netUnavailable', ((data: void) => {
+      console.log("net is unavailable, data is " + JSON.stringify(data));
+    }));
+    ```
+    <!-- @[notification_network_netAvailable_netUnavailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/connectNetworkBtn.ets) -->
 6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
     ```ts
@@ -95,7 +96,7 @@
     conn.unregister((err: BusinessError, data: void) => {
     });
     ```
-
+<!-- @[notification_network_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/connectNetworkBtn.ets) -->
 ## 监控默认网络变化并主动重建网络连接
 
 根据当前网络状态及网络质量情况，默认网络可能会发生变化，如下所示。
@@ -107,19 +108,23 @@
 6. 在蜂窝网络状态差的情况下，默认网络可能会切换到其他蜂窝(存在跨网情况)。
 
 本节旨在介绍监控默认网络的变化后，应用报文能够快速迁移到新默认网络上，具体做法如下。
-
-### 监控默认网络变化
+### 从@kit.NetworkKit中导入connection命名空间。
 
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+<!-- @[net_Connection_create_connection_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
+### 监控默认网络变化
 
+```ts
 const netConnection = connection.createNetConnection();
 // 监听默认网络改变。
 netConnection.on('netAvailable', (data: connection.NetHandle) => {
- console.info(JSON.stringify(data));
+ console.log(JSON.stringify(data));
 })
 ```
-
+<!-- @[monitor_default_network_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 ### 默认网络变化后重新建立网络连接
 
 <!--RP1-->
@@ -128,9 +133,6 @@ netConnection.on('netAvailable', (data: connection.NetHandle) => {
 
 **原网络连接使用Socket模块建立连接**
 ```ts
-import { connection, socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 创建socket对象。
 let sock: socket.TCPSocket = socket.constructTCPSocketInstance();
 
@@ -150,7 +152,7 @@ function useSocket() {
       console.error('connect fail');
       return;
     }
-    console.info('connect success');
+    console.log('connect success');
     let tcpSendOptions: socket.TCPSendOptions = {
       data: 'Hello, server!'
     }
@@ -161,7 +163,7 @@ function useSocket() {
 // 通过socket发送数据。
 function socketSend(tcpSendOptions: socket.TCPSendOptions) {
   sock.send(tcpSendOptions).then(() => {
-    console.info('send success');
+    console.log('send success');
   }).catch((err: BusinessError) => {
     console.error('send fail');
   });
@@ -189,6 +191,7 @@ function socketTest() {
   });
 }
 ```
+<!-- @[original_network_connection_uses_socket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
 **原网络连接使用Socket Library建立网络连接**
 
@@ -213,7 +216,7 @@ function socketTest() {
       }
     });
     ```
-
+<!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/getAllNets.ets) -->
 ## 查询默认网络或者指定网络的连接信息
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
@@ -233,7 +236,7 @@ function socketTest() {
       // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)。
       connection.getDefaultNet().then((data:connection.NetHandle) => {
         if (data.netId == 0) {
-          console.info("don't have defaultNet");
+          console.log("don't have defaultNet");
           // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理。
           return;
         }
@@ -249,13 +252,13 @@ function socketTest() {
             for (let item of bearerTypesNum) {
               if (item == 0) {
                 // 蜂窝网络。
-                console.info(JSON.stringify("BEARER_CELLULAR"));
+                console.log(JSON.stringify("BEARER_CELLULAR"));
               } else if (item == 1) {
                 // Wi-Fi网络。
-                console.info(JSON.stringify("BEARER_WIFI"));
+                console.log(JSON.stringify("BEARER_WIFI"));
               } else if (item == 3) {
                 // 以太网网络。
-                console.info(JSON.stringify("BEARER_ETHERNET"));
+                console.log(JSON.stringify("BEARER_ETHERNET"));
               }
             }
     
@@ -265,19 +268,19 @@ function socketTest() {
             for (let item of dataNumber) {
               if (item == 0) {
                 // 表示网络可以访问运营商的MMSC(Multimedia Message Service，多媒体短信服务)发送和接收彩信。
-                console.info(JSON.stringify("NET_CAPABILITY_MMS"));
+                console.log(JSON.stringify("NET_CAPABILITY_MMS"));
               } else if (item == 11) {
                 // 表示网络流量未被计费。
-                console.info(JSON.stringify("NET_CAPABILITY_NOT_METERED"));
+                console.log(JSON.stringify("NET_CAPABILITY_NOT_METERED"));
               } else if (item == 12) {
                 // 表示该网络应具有访问Internet的能力，该能力由网络提供者设置。
-                console.info(JSON.stringify("NET_CAPABILITY_INTERNET"));
+                console.log(JSON.stringify("NET_CAPABILITY_INTERNET"));
               } else if (item == 15) {
                 // 表示网络不使用VPN(Virtual Private Network，虚拟专用网络)。
-                console.info(JSON.stringify("NET_CAPABILITY_NOT_VPN"));
+                console.log(JSON.stringify("NET_CAPABILITY_NOT_VPN"));
               } else if (item == 16) {
                 // 表示该网络访问Internet的能力被网络管理成功验证，该能力由网络管理模块设置。
-                console.info(JSON.stringify("NET_CAPABILITY_VALIDATED"));
+                console.log(JSON.stringify("NET_CAPABILITY_VALIDATED"));
               }
             }
           })
@@ -290,6 +293,8 @@ function socketTest() {
       })
     }
     ```
+    <!-- @[get_default_network_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/defaultNetworkBtn.ets) -->
+    
 3. 查询所有网络连接信息代码示例
    
    通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
@@ -321,6 +326,7 @@ function socketTest() {
       })
     }
     ```
+ <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/allNetworksBtn.ets) -->
 
 ## 判断默认网络是否可以访问互联网
 
@@ -364,7 +370,7 @@ function socketTest() {
       }
     }
     ```
-
+ <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/defaultNetSyncBtn.ets) -->
 ## 使用默认网络解析域名，获取所有IP
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO
@@ -382,7 +388,8 @@ function socketTest() {
       console.info("Succeeded to get data: " + JSON.stringify(data));
     });
     ```
-
+ <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/defaultNetworkIPBtn.ets) -->
+     
 ## 相关实例
 
 针对网络连接的开发，有以下相关实例可供参考：
