@@ -43,7 +43,7 @@
 
 在相机应用开发过程中，可以随时监听微距能力是否发生改变。
 
-注册macroStatusChanged事件监听微距能力变化。
+注册macroStatusChanged事件监听微距能力变化，事件监听可参考[on('macroStatusChanged')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onmacrostatuschanged20)。
    ```ts
    function callback(err: BusinessError, macroStatus: boolean): void {
       if (err !== undefined && err.code !== 0) {
