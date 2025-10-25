@@ -44,15 +44,27 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 本章节提供键值型数据库的E类加密数据库使用方式，提供[Mover](#mover)类、[Store](#store)类、[SecretKeyObserver](#secretkeyobserver)类和[ECStoreManager](#ecstoremanager)类的具体实现，并在[EntryAbility](#entryability)和[index按键事件](#index按键事件)中展示这几个类的使用方式。
 
-> **说明**：
->
-> * Logger封装示例参考[Logger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/common/Logger.ts)。
-
 ### Mover
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中存在数据，使用该接口将数据迁移到E类数据库。
 
 <!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
+
+``` TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+// Logger为hilog封装后实现的打印功能
+import Logger from '../common/Logger';
+
+export class Mover {
+  async move(eStore: distributedKVStore.SingleKVStore, cStore: distributedKVStore.SingleKVStore): Promise<void> {
+    if (eStore != null && cStore != null) {
+      let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
+      await eStore.putBatch(entries);
+      Logger.info(`ECDB_Encry move success`);
+    }
+  }
+}
+```
 
 ### Store
 
@@ -60,11 +72,170 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 <!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) -->
 
+``` TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+// Logger为hilog封装后实现的打印功能
+import Logger from '../common/Logger';
+
+let kvManager: distributedKVStore.KVManager;
+
+export class StoreInfo {
+  kvManagerConfig: distributedKVStore.KVManagerConfig;
+  storeId: string;
+  option: distributedKVStore.Options;
+}
+
+export class Store {
+  async getECStore(storeInfo: StoreInfo): Promise<distributedKVStore.SingleKVStore> {
+    try {
+      kvManager = distributedKVStore.createKVManager(storeInfo.kvManagerConfig);
+      Logger.info('Succeeded in creating KVManager');
+    } catch (e) {
+      let error = e as BusinessError;
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+    if (kvManager !== undefined) {
+      let kvStore: distributedKVStore.SingleKVStore | null;
+      try {
+        kvStore = await kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeInfo.storeId, storeInfo.option);
+        if (kvStore != undefined) {
+          Logger.info(`ECDB_Encry succeeded in getting store : ${storeInfo.storeId}`);
+          return kvStore;
+        }
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+      }
+    }
+  }
+
+  putOnedata(kvStore: distributedKVStore.SingleKVStore): void {
+    if (kvStore != undefined) {
+      const KEY_TEST_STRING_ELEMENT = 'key_test_string' + String(Date.now());
+      const VALUE_TEST_STRING_ELEMENT = 'value_test_string' + String(Date.now());
+      try {
+        kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
+          if (err !== undefined) {
+            Logger.error(`Failed to put data. Code:${err.code},message:${err.message}`);
+            return;
+          }
+          Logger.info(`ECDB_Encry Succeeded in putting data.${KEY_TEST_STRING_ELEMENT}`);
+        });
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    }
+  }
+
+  getDataNum(kvStore: distributedKVStore.SingleKVStore): void {
+    if (kvStore != undefined) {
+      let resultSet: distributedKVStore.KVStoreResultSet;
+      kvStore.getResultSet('key_test_string').then((result: distributedKVStore.KVStoreResultSet) => {
+        Logger.info(`ECDB_Encry Succeeded in getting result set num ${result.getCount()}`);
+        resultSet = result;
+        if (kvStore != null) {
+          kvStore.closeResultSet(resultSet).then(() => {
+            Logger.info('Succeeded in closing result set');
+          }).catch((err: BusinessError) => {
+            Logger.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          });
+        }
+      }).catch((err: BusinessError) => {
+        Logger.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }
+
+  deleteOnedata(kvStore: distributedKVStore.SingleKVStore): void {
+    if (kvStore != undefined) {
+      kvStore.getEntries('key_test_string', (err: BusinessError, entries: distributedKVStore.Entry[]) => {
+        if (err != undefined) {
+          Logger.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        if (kvStore != null && entries.length != 0) {
+          kvStore.delete(entries[0].key, (err: BusinessError) => {
+            if (err != undefined) {
+              Logger.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+              return;
+            }
+            Logger.info('ECDB_Encry Succeeded in deleting');
+          });
+        }
+      });
+    }
+  }
+
+  updateOnedata(kvStore: distributedKVStore.SingleKVStore): void {
+    if (kvStore != undefined) {
+      kvStore.getEntries('key_test_string', async (err: BusinessError, entries: distributedKVStore.Entry[]) => {
+        if (err != undefined) {
+          Logger.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        if (kvStore != null && entries.length != 0) {
+          Logger.info(`ECDB_Encry old data:${entries[0].key},value :${entries[0].value.value.toString()}`);
+          await kvStore.put(entries[0].key, 'new value_test_string' + String(Date.now()) + 'new').then(() => {
+          }).catch((err: BusinessError) => {
+            Logger.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+          });
+          Logger.info(`ECDB_Encry update success`);
+        }
+      });
+    }
+  }
+}
+```
+
 ### SecretKeyObserver
 
 该类提供了获取当前密钥状态的接口，在密钥销毁后，关闭E类数据库。
 
 <!-- @[SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/SecretKeyObserver.ts) -->
+
+``` TypeScript
+import { ECStoreManager } from './ECStoreManager';
+
+export enum SecretStatus {
+  Lock,
+  UnLock
+}
+
+export class SecretKeyObserver {
+  onLock(): void {
+    this.lockStatus = SecretStatus.Lock;
+    this.storeManager.closeEStore();
+  }
+
+  onUnLock(): void {
+    this.lockStatus = SecretStatus.UnLock;
+  }
+
+  getCurrentStatus(): number {
+    return this.lockStatus;
+  }
+
+  initialize(storeManager: ECStoreManager): void {
+    this.storeManager = storeManager;
+  }
+
+  updateLockStatus(code: number) {
+    if (code === SecretStatus.Lock) {
+      this.onLock();
+    } else {
+      this.lockStatus = code;
+    }
+  }
+
+  // 初始获取锁屏状态
+  private lockStatus: number = SecretStatus.UnLock;
+  private storeManager: ECStoreManager;
+}
+
+export let lockObserve = new SecretKeyObserver();
+```
 
 ### ECStoreManager
 
@@ -72,17 +243,313 @@ ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配�
 
 <!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) -->
 
+``` TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+import { Mover } from './Mover';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { StoreInfo, Store } from './Store';
+import { SecretStatus } from './SecretKeyObserver';
+// Logger为hilog封装后实现的打印功能
+import Logger from '../common/Logger';
+
+let store = new Store();
+
+export class ECStoreManager {
+  config(cInfo: StoreInfo, other: StoreInfo): void {
+    this.cInfo = cInfo;
+    this.eInfo = other;
+  }
+
+  configDataMover(mover: Mover): void {
+    this.mover = mover;
+  }
+
+  async getCurrentStore(screenStatus: number): Promise<distributedKVStore.SingleKVStore> {
+    Logger.info(`ECDB_Encry GetCurrentStore start screenStatus: ${screenStatus}`);
+    if (screenStatus === SecretStatus.UnLock) {
+      try {
+        this.eStore = await store.getECStore(this.eInfo);
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+      }
+      // 解锁状态 获取e类库
+      if (this.needMove) {
+        if (this.eStore != undefined && this.cStore != undefined) {
+          await this.mover.move(this.eStore, this.cStore);
+        }
+        this.deleteCStore();
+        Logger.info(`ECDB_Encry Data migration is complete. Destroy cstore`);
+        this.needMove = false;
+      }
+      return this.eStore;
+    } else {
+      // 加锁状态 获取c类库
+      this.needMove = true;
+      try {
+        this.cStore = await store.getECStore(this.cInfo);
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+      }
+      return this.cStore;
+    }
+  }
+
+  closeEStore(): void {
+    try {
+      let kvManager = distributedKVStore.createKVManager(this.eInfo.kvManagerConfig);
+      Logger.info('Succeeded in creating KVManager');
+      if (kvManager != undefined) {
+        kvManager.closeKVStore(this.eInfo.kvManagerConfig.bundleName, this.eInfo.storeId);
+        this.eStore = null;
+        Logger.info(`ECDB_Encry close EStore success`);
+      }
+    } catch (e) {
+      let error = e as BusinessError;
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+  }
+
+  deleteCStore(): void {
+    try {
+      let kvManager = distributedKVStore.createKVManager(this.cInfo.kvManagerConfig);
+      Logger.info('Succeeded in creating KVManager');
+      if (kvManager != undefined) {
+        kvManager.deleteKVStore(this.cInfo.kvManagerConfig.bundleName, this.cInfo.storeId);
+        this.cStore = null;
+        Logger.info('ECDB_Encry delete cStore success');
+      }
+    } catch (e) {
+      let error = e as BusinessError;
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+  }
+
+  private eStore: distributedKVStore.SingleKVStore = null;
+  private cStore: distributedKVStore.SingleKVStore = null;
+  private cInfo: StoreInfo | null = null;
+  private eInfo: StoreInfo | null = null;
+  private needMove: boolean = false;
+  private mover: Mover | null = null;
+}
+```
+
 ### EntryAbility
 
 模拟应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
 <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { distributedKVStore } from '@kit.ArkData';
+import { ECStoreManager } from './ECStoreManager';
+import { StoreInfo } from './Store';
+import { Mover } from './Mover';
+import { SecretKeyObserver } from './SecretKeyObserver';
+import { commonEventManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// Logger为hilog封装后实现的打印功能
+import Logger from '../common/Logger';
+
+export let storeManager = new ECStoreManager();
+export let e_secretKeyObserver = new SecretKeyObserver();
+let mover = new Mover();
+let subscriber: commonEventManager.CommonEventSubscriber;
+
+export function createCB(err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) {
+  if (!err) {
+    Logger.info('ECDB_Encry createSubscriber');
+    subscriber = commonEventSubscriber;
+    try {
+      commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        if (err) {
+          Logger.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          Logger.info(`ECDB_Encry SubscribeCB ${data.code}`);
+          e_secretKeyObserver.updateLockStatus(data.code);
+        }
+      });
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+    }
+  } else {
+    Logger.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+let cInfo: StoreInfo | null = null;
+let eInfo: StoreInfo | null = null;
+
+export default class EntryAbility extends UIAbility {
+  async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): Promise<void> {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    let cContext = this.context;
+    cInfo = {
+      'kvManagerConfig': {
+        context: cContext,
+        bundleName: 'com.example.ecstoresamples'
+      },
+      'storeId': 'cstore',
+      'option': {
+        createIfMissing: true,
+        encrypt: false,
+        backup: false,
+        autoSync: false,
+        // kvStoreType不填时，默认创建多设备协同数据库
+        kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+        // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
+        securityLevel: distributedKVStore.SecurityLevel.S3
+      }
+    }
+    let eContext = await application.createModuleContext(this.context,'entry');
+    eContext.area = contextConstant.AreaMode.EL5;
+    eInfo = {
+      'kvManagerConfig': {
+        context: eContext,
+        bundleName: 'com.example.ecstoresamples'
+      },
+      'storeId': 'estore',
+      'option': {
+        createIfMissing: true,
+        encrypt: false,
+        backup: false,
+        autoSync: false,
+        // kvStoreType不填时，默认创建多设备协同数据库
+        kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+        // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION
+        securityLevel: distributedKVStore.SecurityLevel.S3
+      }
+    }
+    Logger.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
+    // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
+    try {
+      commonEventManager.createSubscriber({
+        events: [ 'COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED' ]
+      }, createCB);
+      Logger.info(`ECDB_Encry success subscribe`);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+    }
+    storeManager.config(cInfo, eInfo);
+    storeManager.configDataMover(mover);
+    e_secretKeyObserver.initialize(storeManager);
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+```
+
 ### Index按键事件
 
 使用Button按钮，通过点击按钮来模拟应用操作数据库，如插入数据、删除数据、更新数据和获取数据数量的操作等，展示数据库基本的增删改查能力。
 
 <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
+import { distributedKVStore } from '@kit.ArkData';
+import { Store } from '../entryability/Store';
+
+let storeOption = new Store();
+let lockStatus: number = 1;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Button('加锁/解锁').onClick((event: ClickEvent) => {
+          if (lockStatus) {
+            e_secretKeyObserver.onLock();
+            lockStatus = 0;
+          } else {
+            e_secretKeyObserver.onUnLock();
+            lockStatus = 1;
+          }
+          lockStatus ? this.message = '解锁' : this.message = '加锁';
+        }).margin(5)
+          .width(100) // 宽度，单位默认vp（可视像素）
+          .height(40) // 高度
+
+        Button('StoreType').onClick(async (event: ClickEvent) => {
+          e_secretKeyObserver.getCurrentStatus() ? this.message = 'estore' : this.message = 'cstore';
+        }).margin(5)
+          .width(100) // 宽度，单位默认vp（可视像素）
+          .height(40) // 高度
+
+        Button('Put').onClick(async (event: ClickEvent) => {
+          let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+          storeOption.putOnedata(store);
+        }).margin(5)
+          .width(100) // 宽度，单位默认vp（可视像素）
+          .height(40) // 高度
+
+        Button('Get').onClick(async (event: ClickEvent) => {
+          let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+          storeOption.getDataNum(store);
+        }).margin(5)
+          .width(100) // 宽度，单位默认vp（可视像素）
+          .height(40) // 高度
+
+        Button('Delete').onClick(async (event: ClickEvent) => {
+          let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+          storeOption.deleteOnedata(store);
+        }).margin(5)
+          .width(100) // 宽度，单位默认vp（可视像素）
+          .height(40) // 高度
+
+        Button('Update').onClick(async (event: ClickEvent) => {
+          let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+          storeOption.updateOnedata(store);
+        }).margin(5)
+          .width(100) // 宽度，单位默认vp（可视像素）
+          .height(40) // 高度
+
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## 关系型数据库E类加密
 
