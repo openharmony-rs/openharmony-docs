@@ -78,7 +78,7 @@
 
 在相机应用开发过程中，可以随时监听微距能力是否发生改变。
 
-通过OH_CaptureSession_RegisterMacroStatusChangeCallback函数注册回调，返回监听结果。
+通过[OH_CaptureSession_RegisterMacroStatusChangeCallback()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_registermacrostatuschangecallback)函数注册回调，返回监听结果。
 
    ```c++
    void MacroStatusCallback(Camera_CaptureSession* captureSession, bool isMacroDetected)
