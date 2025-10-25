@@ -710,6 +710,10 @@ bindSelectionMenu的长按响应时长为600ms，bindContextMenu的长按响应�
 
 自定义菜单超长时，建议内部嵌套使用[Scroll](./ts-container-scroll.md)组件，避免键盘被遮挡。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -978,6 +982,10 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
+
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
