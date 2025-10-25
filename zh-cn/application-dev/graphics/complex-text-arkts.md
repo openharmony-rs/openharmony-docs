@@ -390,7 +390,7 @@ let myParagraphStyle: text.ParagraphStyle = {
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
 
-+<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
 
 
 具体示意效果如下所示：
