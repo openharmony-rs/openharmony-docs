@@ -161,19 +161,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":49,
 						"name":"specify_nickname_and_type_information_to_create_system_account",
 						"start_line":31
 					},
 					{
-						"end_line":63,
+						"end_line":67,
 						"name":"query_the_full_account",
-						"start_line":51
+						"start_line":53
 					},
 					{
-						"end_line":80,
+						"end_line":86,
 						"name":"query_information_of_the_specified_account",
-						"start_line":67
+						"start_line":71
 					},
 					{
 						"end_line":149,
