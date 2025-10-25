@@ -21,61 +21,33 @@
 
 具体接口及功能，可见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 
-```ts
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { distributedKVStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+> **说明**：
+>
+> Logger封装示例参考[Logger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/common/Logger.ets)。
+>
+> getContext参考EntryAbility.ets文件中的[getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets)接口。
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let kvManager: distributedKVStore.KVManager | undefined = undefined;
-    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-    let context = this.context;
-    const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-      context: context,
-      bundleName: 'com.example.datamanagertest',
-    }
-    try {
-      kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-      console.info('Succeeded in creating KVManager.');
-    } catch (e) {
-      let error = e as BusinessError;
-      console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-    }
-    if (kvManager !== undefined) {
-      try {
-        const options: distributedKVStore.Options = {
-          createIfMissing: true,
-          // 设置数据库加密
-          encrypt: true,
-          backup: false,
-          autoSync: false,
-          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-          securityLevel: distributedKVStore.SecurityLevel.S3
-        };
-        kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-          if (err) {
-            console.error(`Fail to get KVStore. Code:${err.code},message:${err.message}`);
-            return;
-          }
-          console.info('Succeeded in getting KVStore.');
-          kvStore = store;
-          if (kvStore !== undefined) {
-            //进行后续操作
-            //...
-          }
-        });
-      } catch (e) {
-        let error = e as BusinessError;
-        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-      }
-    }
-  }
-}
-```
+   ```js
+   // 导入模块
+   // 在pages目录下新建KvStoreInterface.ets
+   import { distributedKVStore } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   import Logger from '../common/Logger';
+
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
+
+   // 下面所有接口的代码都实现在KvInterface中
+   export class KvInterface {
+   }
+   ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 ## 关系型数据库加密
 
