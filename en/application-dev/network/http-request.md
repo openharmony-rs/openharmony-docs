@@ -177,12 +177,12 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     httpRequest.off('headersReceive');
     ```
 
-6. Destroy the **httpRequest** object.
+6. Call **destroy()** to destroy the **httpRequest** object when it is no longer needed.
 
-    Call **destroy()** to destroy the **httpRequest** object when it is no longer needed.
+    Call **httpRequest.destroy()** to release resources after the request is processed.
 
     ```ts
-    // Call destroy() to destroy the httpRequest when it is no longer needed. For details about how to use the API, see the sample code in step 4.
+    // Call destroy to destroy the httpRequest when it is no longer needed. For details about how to use the API, see the sample code in step 4.
     httpRequest.destroy();
     ```
 
@@ -264,11 +264,11 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
    httpRequest.requestInStream("EXAMPLE_URL", streamInfo).then((data: number) => {
       console.info("requestInStream OK!");
       console.info('ResponseCode :' + JSON.stringify(data));
-      // Unsubscribe from the events subscribed in step 3, and call destroy() to destroy the httpRequest object.
+      // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
       this.destroyRequest(httpRequest);
     }).catch((err: Error) => {
       console.error("requestInStream ERROR : err = " + JSON.stringify(err));
-      // Unsubscribe from the events subscribed in step 3, and call destroy() to destroy the httpRequest object.
+      // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
       this.destroyRequest(httpRequest); 
    });
     ```
@@ -418,11 +418,11 @@ The following is an example configuration for overall and host name–based HTTP
         ],
         "cleartextTrafficPermitted": false
       }
-    ]
-  }
-  "component-config": {
-    "Network Kit": true,
-    "ArkWeb": true
+    ],
+    "component-config": {
+    	"Network Kit": true,
+    	"ArkWeb": true
+    }
   }
 }
 ```
@@ -488,4 +488,3 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
-

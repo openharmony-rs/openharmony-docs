@@ -146,12 +146,10 @@ The following table describes the APIs used in this topic.
 
 7. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
 
-### Obtaining the IP Address of the Peer Device
+### Obtaining the IP Address of the Peer Device and Performing Socket Communication
 1. Import the Wi-Fi module.
 2. Enable Wi-Fi on the device.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
-4. Obtain the P2P connection status, and check whether **ConnectSate** is **1**.
-5. Obtain the IP address of the peer device from **goIpAddress()** and **gcIpAddress()** in **wifiP2pGroupInfo**.
-
-### Socket Communication
-1. For details about socket communication, see [Socket Connection](../../reference/apis-network-kit/js-apis-socket.md).
+4. Call [wifiP2pLinkedInfo.connectState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#p2pconnectstate9) to check whether the P2P connection status is **CONNECTED**.
+5. Call [wifiP2pGroupInfo.goIpAddress](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifip2pgroupinfo9) to obtain the P2P group IP address for socket communication.
+6. Perform socket communication. For details, see [Using Socket for Network Access](../../../application-dev/network/socket-connection.md).

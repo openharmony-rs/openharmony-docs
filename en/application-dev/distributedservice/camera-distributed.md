@@ -83,27 +83,25 @@
   - For multi-device collaboration: ohos.permission.DISTRIBUTED_DATASYNC
 
   For example, you can call **requestPermissionsFromUser()** to request the corresponding permissions for the UIAbility.
-  ```ts
-  //EntryAbility.ets
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { abilityAccessCtrl, AbilityConstant, ConfigurationConstant, Permissions,
-    UIAbility, Want } from '@kit.AbilityKit';
+  <!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/entryability/EntryAbility.ts) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-      console.info('Sample_VideoRecorder', 'Ability onCreate,requestPermissionsFromUser');
-      let permissionNames: Array<Permissions> = ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
-        'ohos.permission.WRITE_MEDIA', 'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE', 'ohos.permission.DISTRIBUTED_DATASYNC'];
-      abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, permissionNames).then((data)=> {
-        console.info("testTag", data);
-      })
-        .catch((err : BusinessError) => {
-          console.error("testTag", err.message);
-        });
-    }
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('Sample_VideoRecorder', 'Ability onCreate,requestPermissionsFromUser');
+    let permissionNames: Array<Permissions> = ['ohos.permission.MEDIA_LOCATION', 'ohos.permission.READ_MEDIA',
+      'ohos.permission.WRITE_MEDIA', 'ohos.permission.CAMERA', 'ohos.permission.MICROPHONE', 'ohos.permission.DISTRIBUTED_DATASYNC'];
+    abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context, permissionNames).then((data)=> {
+      console.info('testTag', data);
+    })
+      .catch((err : BusinessError) => {
+        console.error('testTag', err.message);
+      });
   }
-  ```
+// ···
+}
+```
+
 
 
 **Initiating the Preview Stream and Photo Stream on the Distributed Camera**
@@ -112,352 +110,285 @@
 
   After the application networking is successful, you can use **getCameraManager()** to obtain the camera manager instance and **getSupportedCameras()** to obtain the supported camera device object.
 
-  ```ts
-  private cameras?: Array<camera.CameraDevice>;
-  private cameraManager?: camera.CameraManager;
-  private cameraOutputCapability?: camera.CameraOutputCapability;
-  private cameraIndex: number = 0;
-  private curVideoProfiles?: Array<camera.VideoProfile>;
+  <!-- @[init_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
-  initCamera(): void {
-    console.info('init remote camera called');
+``` TypeScript
+  async initCamera(): Promise<void> {
+    Logger.info(TAG, 'initCamera called');
     if (this.cameraManager) {
-      console.info('cameraManager already exits');
       return;
     }
-    console.info('[camera] case to get cameraManager');
     this.cameraManager = camera.getCameraManager(globalThis.abilityContext);
-    if (this.cameraManager) {
-      console.info('[camera] case getCameraManager success');
-    } else {
-      console.error('[camera] case getCameraManager failed');
-      return;
-    }
     this.cameras = this.cameraManager.getSupportedCameras();
     if (this.cameras) {
-      console.info('[camera] case getCameras success, size ', this.cameras.length);
-      for (let i = 0; i < this.cameras.length; i++) {
-        let came: camera.CameraDevice = this.cameras[i];
-        console.info('[came] camera json:', JSON.stringify(came));
-        if (came.connectionType == camera.ConnectionType.CAMERA_CONNECTION_REMOTE) {
-          this.cameraIndex = i;
-          this.cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(came);
-          this.curVideoProfiles = this.cameraOutputCapability.videoProfiles;
-          console.info('init remote camera done'); // The remote camera is successfully initialized.
-          break;
-        }
+      this.cameraIndex =
+        this.cameras.findIndex(cam => cam.connectionType === camera.ConnectionType.CAMERA_CONNECTION_REMOTE);
+      if (this.cameraIndex !== -1) {
+        this.cameraOutputCapability = this.cameraManager.getSupportedOutputCapability(this.cameras[this.cameraIndex],
+          camera.SceneMode.NORMAL_PHOTO);
       }
-    } else {
-      console.error('[camera] case getCameras failed');
     }
   }
-  ```
+```
+
 
 **2. Create a CameraInput instance.**
 
   After obtaining the **CameraManager** instance and the supported camera device object, call **createCameraInput()** to create a **CameraInput** instance.
 
-  ```ts
-  // create camera input
-  private cameraInput?: camera.CameraInput;
+  <!-- @[camera_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
+``` TypeScript
   async createCameraInput(): Promise<void> {
-    console.info('createCameraInput called');
-    if (this.cameras && this.cameras.length > 0) {
-      let came: camera.CameraDevice = this.cameras[this.cameraIndex];
-      console.info('[came]createCameraInput camera json:', JSON.stringify(came));
-      this.cameraInput = this.cameraManager?.createCameraInput(came);
-      if (this.cameraInput) {
-        console.info('[camera] case createCameraInput success');
-        await this.cameraInput.open().then(() => {
-          console.info('[camera] case cameraInput.open() success');
-        }).catch((err: Error) => {
-          console.error('[camera] cameraInput.open then.error:', JSON.stringify(err));
-        });
-      } else {
-        console.error('[camera] case createCameraInput failed');
-        return;
-      }
+    if (!this.cameras || this.cameraIndex === -1 || !this.cameraManager) {
+      Logger.error(TAG, 'createCameraInput failed: prerequisites not met.');
+      return;
+    }
+    const came = this.cameras[this.cameraIndex];
+    this.cameraInput = this.cameraManager.createCameraInput(came);
+
+    if (!this.cameraInput) {
+      Logger.error(TAG, 'createCameraInput failed: cameraManager.createCameraInput returned undefined.');
+      return;
+    }
+    try {
+      await this.cameraInput.open();
+      Logger.info(TAG, 'CameraInput opened successfully.');
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `cameraInput.open() failed with code: ${err.code}, message: ${err.message}`);
     }
   }
-  ```
+```
+
 
 **3. Obtain the PreviewOutput object.**
 
   Use **createPreviewOutput()** to create a **PreviewOutput** object.
 
-  ```ts
-  private previewOutput?: camera.PreviewOutput;
-  private avProfile: media.AVRecorderProfile = {
-    fileFormat: media.ContainerFormatType.CFT_MPEG_4,
-  }
-  private avConfig: media.AVRecorderConfig = {
-    videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-    profile: this.avProfile,
-    url: 'fd://',
-  }
-  private previewProfiles?: Array<camera.Profile>;
-  private surfaceId?: string;
+  <!-- @[create_preview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
-  // create camera preview
+``` TypeScript
   async createPreviewOutput(): Promise<void> {
-    console.info('createPreviewOutput called');
-    if (this.cameraOutputCapability && this.cameraManager) {
-      this.previewProfiles = this.cameraOutputCapability.previewProfiles;
-      console.info('[camera] this.previewProfiles json ', JSON.stringify(this.previewProfiles));
-      if (this.previewProfiles[0].format === camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP) {
-        console.info('[camera] case format is VIDEO_SOURCE_TYPE_SURFACE_YUV');
-        this.avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV;
-      } else {
-        console.info('[camera] case format is VIDEO_SOURCE_TYPE_SURFACE_ES');
-        this.avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
-      }
-      this.previewOutput = this.cameraManager.createPreviewOutput(this.previewProfiles[0], this.surfaceId);
+    // Use optional chaining for a clean prerequisite check
+    if (this.cameraOutputCapability?.previewProfiles && this.cameraManager && this.surfaceId) {
+      // Select the first available preview profile
+      const previewProfile = this.cameraOutputCapability.previewProfiles[0];
+
+      this.previewOutput = this.cameraManager.createPreviewOutput(previewProfile, this.surfaceId);
+
+      // Add a clear check to validate the result of the API call
       if (!this.previewOutput) {
-        console.error('create previewOutput failed!');
+        Logger.error(TAG, 'createPreviewOutput failed: cameraManager.createPreviewOutput returned undefined.');
+      } else {
+        Logger.info(TAG, 'PreviewOutput created successfully.');
       }
-      console.info('createPreviewOutput done');
+    } else {
+      Logger.error(TAG, 'createPreviewOutput failed: prerequisites not met (capability, manager, or surfaceId missing).');
     }
   }
-  ```
+```
+
 
 
 **4. Obtain the PhotoOutput object.**
 
   Use **createPhotoOutput()** to create a **PhotoOutput** object and **createImageReceiver()** to create an **ImageReceiver** instance.
 
-  ```ts
-  import { fileIo } from '@kit.CoreFileKit'
-  import { image } from '@kit.ImageKit';
+  <!-- @[create_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
-  export default class SaveCameraAsset {
-    private tag: string
-    constructor(tag: string) {
-      this.tag = tag;
-    }
-    public async createImageFd() {
-      //...
-      return 0;
-    }
-    public async closeVideoFile() {
-      //...
-    }
-  }
-  private photoReceiver?: image.ImageReceiver;
-  private photoOutput?: camera.PhotoOutput;
-  private mSaveCameraAsset: SaveCameraAsset = new SaveCameraAsset('Sample_VideoRecorder');
-  private mFileAssetId?: number;
-  private fdPath?: string
-
-  async getImageFileFd(): Promise<void> {
-    console.info('getImageFileFd called');
-    this.mFileAssetId = await this.mSaveCameraAsset.createImageFd();
-    this.fdPath = 'fd://' + this.mFileAssetId.toString();
-    this.avConfig.url = this.fdPath;
-    console.info('ImageFileFd is: ' + this.fdPath);
-    console.info('getImageFileFd done');
-  }
-
-  // close file fd
-  async closeFd(): Promise<void> {
-    console.info('case closeFd called');
-    if (this.mSaveCameraAsset) {
-      await this.mSaveCameraAsset.closeVideoFile();
-      this.mFileAssetId = undefined;
-      this.fdPath = undefined;
-      console.info('case closeFd done');
-    }
-  }
-
+``` TypeScript
   async createPhotoOutput() {
+    if (!this.cameraManager || this.photoReceiver) {
+      return;
+    }
+
     const photoProfile: camera.Profile = {
       format: camera.CameraFormat.CAMERA_FORMAT_JPEG,
-      size: {
-        "width": 1280,
-        "height": 720
-      }
-    }
-    if (!this.cameraManager) {
-      console.error('createPhotoOutput cameraManager is null')
-    }
-    if (!this.photoReceiver) {
-      this.photoReceiver = image.createImageReceiver(photoProfile.size, image.ImageFormat.YCBCR_422_SP, 8)
-      this.photoReceiver.on("imageArrival",()=>{
-        this.photoReceiver?.readNextImage((err,image)=>{
-          if (err || image === undefined) {
-            console.error('photoReceiver imageArrival on error')
+      size: { 'width': 1280, 'height': 720 }
+    };
+
+    try {
+      this.photoReceiver = image.createImageReceiver(photoProfile.size, image.ImageFormat.JPEG, 8);
+      this.photoReceiver.on('imageArrival', () => {
+        (async () => {
+          if (!this.photoReceiver) {
+            Logger.error(TAG, 'photoReceiver is undefined in imageArrival callback.');
             return;
           }
-          image.getComponent(4, async (err, img) => {
-            if (err || img === undefined) {
-              console.error('image getComponent on error')
-              return;
+          let receivedImage: image.Image | undefined = undefined;
+          try {
+            receivedImage = await this.photoReceiver.readNextImage();
+            const component = await receivedImage.getComponent(image.ComponentType.JPEG);
+            await this.getImageFileFd();
+            await fileIo.write(this.mFileAssetId, component.byteBuffer);
+            Logger.info(TAG, 'Photo saved successfully!');
+          } catch (e) {
+            Logger.error(TAG, `Error processing image: ${JSON.stringify(e)}`);
+          } finally {
+            if (receivedImage) {
+              await receivedImage.release();
             }
-            await this.getImageFileFd()
-            fileIo.write(this.mFileAssetId, img.byteBuffer)
-            await this.closeFd()
-            await image.release()
-            console.info('photoReceiver image.getComponent save success')
-          })
-        })
-      })
-        await this.photoReceiver.getReceivingSurfaceId().then((surfaceId: string) => {
-          this.photoOutput = this.cameraManager?.createPhotoOutput(photoProfile)
-          if (!this.photoOutput) {
-            console.error('cameraManager.createPhotoOutput on error')
+            await this.closeFd();
           }
-          console.info('cameraManager.createPhotoOutput success')
-          this.photoOutput?.on("captureStart", (err, captureId) => {
-            console.info('photoOutput.on captureStart')
-          })
-        }).catch((err: Error) => {
-          console.error('photoReceiver.getReceivingSurfaceId on error:' + err)
-        })
-      }
+        })();
+      });
+
+      const surfaceId = await this.photoReceiver.getReceivingSurfaceId();
+      this.photoOutput = this.cameraManager.createPhotoOutput(photoProfile);
+    } catch (error) {
+      Logger.error(TAG, `createPhotoOutput failed: ${JSON.stringify(error)}`);
     }
-  ```
+  }
+  private mSaveCameraAsset: SaveCameraAsset = new SaveCameraAsset(TAG);
+
+  async getImageFileFd(): Promise<void> {
+    this.mFileAssetId = await this.mSaveCameraAsset.createImageFd();
+  }
+
+  async closeFd(): Promise<void> {
+    if (this.mSaveCameraAsset) {
+      await this.mSaveCameraAsset.closeImageFile();
+    }
+    this.mFileAssetId = undefined;
+  }
+```
+
 
 **5. Create a CaptureSession instance.**
 
 Use **createCaptureSession()** to create a **CaptureSession** instance. You can call **beginConfig()** to configure a session, call **addInput()** and **addOutput()** to add **CameraInput()** and **CameraOutput()** to the session, call **commitConfig()** to submit the configuration information, and use a promise to return the result.
 
-  ```ts
-  private Session?: camera.Session;
+  <!-- @[create_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
-  async failureCallback(error: BusinessError): Promise<void> {
-    console.error('case failureCallback called,errMessage is ', JSON.stringify(error));
-  }
+``` TypeScript
+  async createSession(): Promise<void> {
+    Logger.info(TAG, 'createSession called');
+    if (!this.cameraManager) {
+      Logger.error(TAG, 'createSession failed: cameraManager is not initialized.');
+      return;
+    }
+    this.cameraSession = this.cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
+    if (!this.cameraSession) {
+      Logger.error(TAG, 'createSession failed: cameraManager.createSession returned undefined.');
+      return;
+    }
 
-  async catchCallback(error: BusinessError): Promise<void> {
-    console.error('case catchCallback called,errMessage is ', JSON.stringify(error));
-  }
+    try {
+      Logger.info(TAG, 'cameraSession beginConfig');
+      this.cameraSession.beginConfig();
 
-  // create camera capture session
-  async createCaptureSession(): Promise<void> {
-    console.info('createCaptureSession called');
-    if (this.cameraManager) {
-      this.Session = this.cameraManager.createSession();
-      if (!this.Session) {
-        console.error('createCaptureSession failed!');
-        return;
+      if (this.cameraInput) {
+        Logger.info(TAG, 'cameraSession addInput: cameraInput');
+        this.cameraSession.addInput(this.cameraInput);
       }
-      try {
-        this.Session.beginConfig();
-        this.Session.addInput(this.cameraInput);
-      } catch (e) {
-        console.error('case addInput error:' + JSON.stringify(e));
+      if (this.previewOutput) {
+        Logger.info(TAG, 'cameraSession addOutput: previewOutput');
+        this.cameraSession.addOutput(this.previewOutput);
       }
-      try {
-        this.Session.addOutput(this.previewOutput);
-      } catch (e) {
-        console.error('case addOutput error:' + JSON.stringify(e));
+      if (this.photoOutput) {
+        Logger.info(TAG, 'cameraSession addOutput: photoOutput');
+        this.cameraSession.addOutput(this.photoOutput);
       }
-      await this.Session.commitConfig().then(() => {
-        console.info('captureSession commitConfig success');
-      }, this.failureCallback).catch(this.catchCallback);
+
+      Logger.info(TAG, 'cameraSession commitConfig');
+      await this.cameraSession.commitConfig();
+      Logger.info(TAG, 'cameraSession commitConfig successfully.');
+
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `cameraSession configuration failed with code: ${err.code}, message: ${err.message}`);
+      this.failureCallback(err);
     }
   }
-  ```
+```
+
 
 **6. Start the session.**
 
   Use **start()** of the **CaptureSession** instance to start the session and use a promise to return the result.
 
-  ```ts
-  // start captureSession
-  async startCaptureSession(): Promise<void> {
-    console.info('startCaptureSession called');
-    if (!this.captureSession) {
-      console.error('CaptureSession does not exist!');
+  <!-- @[start_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
+
+``` TypeScript
+  async startSession(): Promise<void> {
+    Logger.info(TAG, 'startSession called');
+    if (!this.cameraSession) {
+      Logger.error(TAG, 'startSession failed: captureSession does not exist!');
       return;
     }
 
     try {
-      await this.captureSession.start();
-      console.info('CaptureSession started successfully.');
+      await this.cameraSession.start();
+      Logger.info(TAG, 'cameraSession started successfully.');
     } catch (error) {
-      console.error('Failed to start CaptureSession:', error);
-      if (this.failureCallback) {
-        this.failureCallback(error);
-      }
+      const err = error as BusinessError;
+      Logger.error(TAG, `Failed to start session! Code: ${err.code}, Msg: ${err.message}`);
     }
   }
-  ```
+```
+
 
 **Releasing Distributed Camera Resources**
 
   After the service collaboration is complete, the collaboration status needs to be ended in a timely manner to release distributed camera resources.
 
-  ```ts
-  private videoOutput?: camera.VideoOutput;
-  
-  // Release the camera.
-  async releaseCameraInput(): Promise<void> {
-    console.info('releaseCameraInput called');
-    if (this.cameraInput) {
-      this.cameraInput = undefined;
-    }
-    console.info('releaseCameraInput done');
-  }
+  <!-- @[release_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/hapAppDcameraSample/entry/src/main/ets/recorder/VideoRecorder.ets) -->
 
-  // Release the preview.
-  async releasePreviewOutput(): Promise<void> {
-    console.info('releasePreviewOutput called');
-    if (this.previewOutput) {
-      await this.previewOutput.release().then(() => {
-        console.info('[camera] case main previewOutput release called');
-      }, this.failureCallback).catch(this.catchCallback);
-      this.previewOutput = undefined;
-    }
-    console.info('releasePreviewOutput done');
-  }
-
-  // Release the video output.
-  async releaseVideoOutput(): Promise<void> {
-    console.info('releaseVideoOutput called');
-    if (this.videoOutput) {
-      await this.videoOutput.release().then(() => {
-        console.info('[camera] case main videoOutput release called');
-      }, this.failureCallback).catch(this.catchCallback);
-      this.videoOutput = undefined;
-    }
-    console.info('releaseVideoOutput done');
-  }
-
-  // Stop the capture session.
-  async stopCaptureSession(): Promise<void> {
-    console.info('stopCaptureSession called');
-    if (this.captureSession) {
-      await this.captureSession.stop().then(() => {
-        console.info('[camera] case main captureSession stop success');
-      }, this.failureCallback).catch(this.catchCallback);
-    }
-    console.info('stopCaptureSession done');
-  }
-
-  // Release the capture session.
-  async releaseCaptureSession(): Promise<void> {
-    console.info('releaseCaptureSession called');
-    if (this.captureSession) {
-      await this.captureSession.release().then(() => {
-        console.info('[camera] case main captureSession release success');
-      }, this.failureCallback).catch(this.catchCallback);
-      this.captureSession = undefined;
-    }
-    console.info('releaseCaptureSession done');
-  }
-
-  // Release the camera resource.
+``` TypeScript
   async releaseCamera(): Promise<void> {
-    console.info('releaseCamera called');
-    await this.stopCaptureSession();
-    await this.releaseCameraInput();
-    await this.releasePreviewOutput();
-    await this.releaseVideoOutput();
-    await this.releaseCaptureSession();
-    console.info('releaseCamera done');
+    Logger.info(TAG, '--- STARTING CAMERA RELEASE SEQUENCE ---');
+
+    try {
+      // Step 1: Stop and release the session
+      if (this.cameraSession) {
+        Logger.info(TAG, 'Stopping capture session...');
+        await this.cameraSession.stop();
+        Logger.info(TAG, 'Releasing capture session...');
+        await this.cameraSession.release();
+        this.cameraSession = undefined;
+      }
+
+      // Step 2: Release the preview output
+      if (this.previewOutput) {
+        Logger.info(TAG, 'Releasing preview output...');
+        await this.previewOutput.release();
+        this.previewOutput = undefined;
+      }
+
+      // Step 3: Release the photo output and receiver
+      if (this.photoOutput) {
+        Logger.info(TAG, 'Releasing photo output...');
+        await this.photoOutput.release();
+        this.photoOutput = undefined;
+      }
+      if (this.photoReceiver) {
+        Logger.info(TAG, 'Releasing photo receiver...');
+        await this.photoReceiver.release();
+        this.photoReceiver = undefined;
+      }
+
+      // Step 4: Close the camera input
+      if (this.cameraInput) {
+        Logger.info(TAG, 'Closing camera input...');
+        await this.cameraInput.close();
+        this.cameraInput = undefined;
+      }
+
+      Logger.info(TAG, 'All camera resources released.');
+
+    } catch (error) {
+      const err = error as BusinessError;
+      Logger.error(TAG, `Error during camera release! Code: ${err.code}, Msg: ${err.message}`);
+    } finally {
+      // Ensure core objects are cleared even if an error occurs
+      this.cameraManager = undefined;
+      this.cameras = undefined;
+      Logger.info(TAG, '--- CAMERA RELEASE SEQUENCE ENDED ---');
+    }
   }
-  ```
+```
+
 
 ### Debugging and Verification
 

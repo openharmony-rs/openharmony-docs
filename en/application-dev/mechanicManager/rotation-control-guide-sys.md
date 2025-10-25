@@ -6,9 +6,9 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @foryourself-->
 
-Mechanic Manager is supported since API version 20. In application scenarios such as video recording and live streaming, you may want to provide users with mechanic devices more enriched photography experiences, including professional photography functions like intelligent camera tracking and automatic composition.
+Mechanic Kit is supported since API version 20, providing a richer photography experience, such as device rotation control (only for system apps).
 
-With the device rotation control function, you can use a mobile phone as the control terminal to adjust the angle and motion trajectory of mechanic devices like gimbals or robotic arms, facilitating the rapid development of mechanic device control applications.
+Using a mobile phone as the control terminal, you can adjust the angle and motion trajectory of mechanic devices like gimbals or robotic arms through precise parameter settings, facilitating the rapid development of mechanic device control applications.
 
 ## Available APIs
 
@@ -39,13 +39,14 @@ For details about how to use the system APIs of Mechanic Manager, see [@ohos.dis
 
 ### Getting Started
 
-1. Prepare a mechanic device that supports MechanicKit.
-
-2. Ensure that the mechanic device is connected to the development device via Bluetooth.
+1. Prepare a mechanic device that supports Mechanic Kit.
+2. To verify the intelligent camera tracking function, check that the camera driver of the main device supports face detection.
+3. Update the SDK to API version 20 or later. For details, see [Downloading and Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install).
+4. Connect the mechanic device to the control device through Bluetooth.
 
 ### Managing the Device Connection Status
 
-Dynamic device connection status management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
+Device connection status management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
 
 1. Import the **mechanicManager** module.
 
@@ -82,7 +83,7 @@ Dynamic device connection status management helps to ensure that the application
     }
     ```
 
-3. Listen for device connection state changes.
+3. Listen for the connection state changes of the device.
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
@@ -119,7 +120,7 @@ Dynamic device connection status management helps to ensure that the application
     }
     ```
 
-5. Disable listening for tracking state change events.
+5. Cancel listening for device connection state changes.
 
     ```ts
     // Cancel listening for device connection state changes.
@@ -130,7 +131,7 @@ Dynamic device connection status management helps to ensure that the application
 
 Precise rotation control, such as angle adjustment and motion trajectory control, helps you to implement flexible operation functions for mechanic devices.
 
-1. Query the current status and restrictions of a mechanic device.
+1. Query the current status and restrictions of a device.
 
     ```ts
     try {
@@ -173,10 +174,10 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     }
     ```
 
-2. Rotate the mechanic device relative to the current angle.
+2. Rotate the device by a relative angle.
 
     ```ts
-    // Disable the camera tracking function before rotating the mechanic device.
+    // Disable the camera tracking function before rotating the device.
     mechanicManager.setCameraTrackingEnabled(false);
 
     async function rotateByRelativeAngles() {
@@ -191,7 +192,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
         return;
         }
 
-        // Obtain the rotation limit of the mechanic device.
+        // Obtain the rotation limit of the device.
         const rotationLimits = mechanicManager.getRotationLimits(mechId);
         if (!rotationLimits || rotationLimits.negativeYawMax === undefined || rotationLimits.positiveYawMax === undefined ||
         rotationLimits.negativePitchMax === undefined || rotationLimits.positivePitchMax === undefined ||
@@ -232,7 +233,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     }
     ```
 
-3. Rotate the mechanic device at the specified speed.
+3. Perform rotation at the specified speed until the task is complete.
 
     ```ts
     async function rotateBySpeed() {
@@ -243,7 +244,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
         const maxTime = mechanicManager.getMaxRotationTime(mechId);
         console.info('Maximum spin time:', maxTime);
 
-        // Obtain the maximum rotation speed of the device.
+        // Obtain the maximum rotation speed.
         const maxSpeed = mechanicManager.getMaxRotationSpeed(mechId);
         if (!maxSpeed || maxSpeed.yawSpeed === undefined || maxSpeed.pitchSpeed === undefined || maxSpeed.rollSpeed === undefined) {
         console.error('Failed to retrieve maximum rotation speed or speed values are undefined.');
@@ -256,7 +257,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
         pitchSpeed: maxSpeed.pitchSpeed / 2, // Pitch speed: half of the maximum speed
         rollSpeed: maxSpeed.rollSpeed / 2    // Roll speed: half of the maximum speed
         };
-        const duration = Math.min(maxTime, 5000); // Duration: no more than 5 seconds
+        const duration = Math.min(maxTime, 5000); // Duration: 5 seconds at most
 
         // Perform rotation.
         const result = await mechanicManager.rotateBySpeed(mechId, speed, duration);
@@ -271,7 +272,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
 
     ```ts
     const rotationAxesCallback = (info: mechanicManager.RotationAxesStateChangeInfo) => {
-    console.info('Rotating Axes state change:', info);
+    console.info('Rotation Axes state change:', info);
     const mechId = info.mechId;
     const status = info.status;
 
@@ -285,7 +286,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     }
     };
 
-    // Register a listener for attachStateChange events.
+    // Register a listener for rotationAxesStatusChange events.
     mechanicManager.on('rotationAxesStatusChange', rotationAxesCallback);
     ```
 
@@ -296,7 +297,7 @@ Precise rotation control, such as angle adjustment and motion trajectory control
     try {
         const mechId = savedMechanicIds[0];
         await mechanicManager.stopMoving(mechId);
-        console.info('The device has stopped moving');
+        console.info('The device has ceased moving.');
     } catch (err) {
         console.error('Failed to stop device movement:', err);
     }
@@ -320,4 +321,4 @@ To ensure proper functioning of Mechanic Manager, perform the following steps fo
 **Test Result Description**
 
 - If a list containing all mechanic device is returned after `getAttachedMechDevices` is called, the device identification is normal.
-- If the device starts to rotate as expected after `rotate` or `rotateBySpeed` is called, the rotation control is normal.
+- If the device starts to rotate as expected after `rotate` or `rotateBySpeed` is called, the device rotation is normal.
