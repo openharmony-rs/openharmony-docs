@@ -126,14 +126,15 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     ```ts
     <!-- @[utils_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/main/ets/utils/Utils.ets) -->
     export class Utils {
-      static num: number = 0
+      static num: number = 0;
+      static maxNum: number = 10000;
       public static CalculateTest() {
-        for (let index = 0; index < 10000; index++) {
+        for (let index = 0; index < Utils.maxNum; index++) {
           Utils.num++;
         }
       }
       public static Reset() {
-        Utils.num = 0
+        Utils.num = 0;
       }
     }
     ```
@@ -189,7 +190,6 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
             expect(res1.average).assertLessOrEqual(1000); // 断言性能测试结果
             expect(res2.average).assertLessOrEqual(30); // 断言性能测试结果
           } catch (error) {
-            console.error(`Failed to execute perftest. Cause:${JSON.stringify(error)}`);
             expect(false).assertTrue()
           }
           done()
@@ -242,7 +242,7 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 2. 在ohosTest > ets > test文件夹下 slideFps.test.ets 文件中编写具体测试代码。
 
     ```ts
-    <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/slideFps.test.ets) -->
+    <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets) -->
     import { describe, it, expect, Level } from '@ohos/hypium';
     import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.TestKit';
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
