@@ -249,7 +249,7 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
-  console.log(`Opening resource: ${request.url}`);
+  console.info(`Opening resource: ${request.url}`);
   // 成功打开资源，返回唯一的句柄, 保证uuid和request对应。
   uuid += 1;
   requests.set(uuid, request);
@@ -282,7 +282,7 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 
 ```ts
 let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
-  console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+  console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
   // 判断uuid是否合法、存储read请求，不要在read请求阻塞去推送数据和头信息。
 };
 ```
