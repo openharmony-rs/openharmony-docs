@@ -6,11 +6,11 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Bundle Manager (bm) is a tool for installing, uninstalling, updating, and querying bundles. It provides basic capabilities for debugging application installation packages.
+Bundle Manager (bm) is a tool for installing, uninstalling, updating, and querying bundles. It provides basic capabilities for debugging application installation bundles.
 
 ## Environment Requirements (hdc)
 
-Before using this tool, you need to obtain the [hdc tool](../dfx/hdc.md) and run the hdc shell.
+Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the **hdc shell** command.
 
 ## bm Commands
 
@@ -20,7 +20,7 @@ Before using this tool, you need to obtain the [hdc tool](../dfx/hdc.md) and run
 | install | Installs a bundle.|
 | uninstall | Uninstalls a bundle.|
 | dump | Displays bundle information.|
-| clean | Clears the cache and data of a bundle. <!--Del--> This command is available in the root version and <!--DelEnd--&gt. This command is available in the user version when the developer mode is enabled.|
+| clean | Clears the cache and data of a bundle. This command is available in the user version when **Developer options** is enabled. <!--Del-->It is also available in the root version.<!--DelEnd-->|
 | <!--DelRow-->enable | Enables a bundle. A bundle can be used after being enabled. This command is available in the root version but not in the user version.|
 | <!--DelRow-->disable | Disables a bundle. A bundle cannot be used after being disabled. This command is available in the root version but not in the user version.|
 | get | Obtains the UDID of a device.|
@@ -31,8 +31,8 @@ Before using this tool, you need to obtain the [hdc tool](../dfx/hdc.md) and run
 | dump-shared | Displays the HSP information of a bundle.|
 | dump-overlay | Displays **overlayModuleInfo** of an overlay bundle.|
 | dump-target-overlay | Displays **overlayModuleInfo** of all overlay bundles associated with a target bundle.|
-| install-plugin | Installs a plug-in.|
-| uninstall-plugin | This command is used to uninstall a plug-in.|
+| install-plugin | Installs a plugin.|
+| uninstall-plugin | Uninstalls a plugin.|
 
 
 ## help
@@ -41,6 +41,17 @@ Before using this tool, you need to obtain the [hdc tool](../dfx/hdc.md) and run
 # Display the help information.
 bm help
 ```
+## Description
+
+### userId
+
+ID of the current system account. For details about the APIs related to system accounts, see [@ohos.account.osAccount (System Account Management)](../reference/apis-basic-services-kit/js-apis-osAccount.md). The following lists several common system accounts.
+
+- **userId = 100**: System account with ID 100. This is the default system account, which is created by the system account management module when the device is started for the first time after delivery. After the account is created, all pre-installed bundles are installed for ID 100.
+
+- **userId = 102**: System account with ID 102. This account is created by the system account management module. <!--Del-->You can create an account using the [createOsAccountForDomain](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md) API. <!--DelEnd-->Only system bundles can create accounts. Bundles installed for account 100 are not displayed for account 102. If necessary, reinstall the bundles for account 102. When account 102 is created, the system installs the pre-installed system bundles for account 102.
+
+- **userId = 0**: Shared system account, also called account 0. Unlike the system account, the shared system account is not created by the system account management module. Bundles installed for account 0 are shared by all system accounts and are displayed for each system account. All third-party bundles cannot be installed for account 0.
 
 
 ## install
@@ -54,19 +65,19 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -p | Installs a HAP in a specified path or multiple HAPs in a specified directory. This parameter is mandatory.|
-| -r | Installs a HAP in overwrite mode. This parameter is optional. By default, the HAP is installed in overwrite mode.|
-| -s |  Installs an HSP. Each directory can have only one HSP with the same bundle name. This parameter is mandatory only for the HSP installation.|
-| -w | Waits for a specified time before installing a HAP. The minimum waiting time is 5s, and the maximum waiting time is 600s. The default waiting time is 5s. This parameter is optional.|
-| -u | (Optional) Specified user. By default, the app is installed under the current active user. The installation can be performed only by the current active user or user 0.<br>**NOTE**<br> If the number of current active users is 100, the application is installed only under the current active user 100 when the `bm install -p /data/local/tmp/ohos.app.hap -u 102` command is used for installation.|
+| -h | Used to display help information.|
+| -p | Used to specify the path of the HAP or HSP file. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder paths of the HAPs or HSPs.|
+| -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. By default, the HAP is installed in overwrite mode.|
+| -s |  Used to install an HSP. Each directory can have only one HSP with the same bundle name. This parameter is mandatory only for the HSP installation.|
+| -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 5s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
+| -u | Used to specify the [user](#userid). By default, the bundle is installed for the current active user. This parameter is optional. The bundle can be installed only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the bundle is installed only for user 100 after the **bm install -p /data/local/tmp/ohos.app.hap -u 102** command is executed.|
 
 
 Example
 ```bash
 # Install a HAP.
 bm install -p /data/local/tmp/ohos.app.hap
-# Install a HAP for 100 users.
+# Install a HAP for user 100.
 bm install -p /data/local/tmp/ohos.app.hap -u 100
 # Install a HAP in overwrite mode.
 bm install -p /data/local/tmp/ohos.app.hap -r
@@ -74,7 +85,7 @@ bm install -p /data/local/tmp/ohos.app.hap -r
 bm install -s xxx.hsp
 # Install a HAP and its dependent HSP.
 bm install -p aaa.hap -s xxx.hsp yyy.hsp
-# Install both the HAP and in-app shared library.
+# Install a HAP and an intra-application shared library simultaneously.
 bm install -p /data/local/tmp/hapPath/
 # Install a HAP. The waiting time is 10s.
 bm install -p /data/local/tmp/ohos.app.hap -w 180
@@ -90,13 +101,13 @@ bm uninstall [-h] [-n bundleName] [-m moduleName] [-k] [-s] [-v versionCode] [-u
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -n | Uninstalls a bundle. This parameter is mandatory.|
-| -m | Specifies the name of an application module to be uninstalled. This parameter is optional. By default, all modules are uninstalled.|
-| -k | Uninstalls a bundle with or without retaining the bundle data. This parameter is optional. By default, the bundle data is deleted along the uninstall.|
-| -s |  Uninstalls an HSP. This parameter is mandatory only for the HSP installation.|
-| -v | Uninstalls an HSP of a given version number. This parameter is optional. By default, all shared bundles with the specified bundle name are uninstalled.|
-| -u | (Optional) Specified user. By default, the app is uninstalled under the current active user. The app can be uninstalled only by the current active user or 0 user.<br>**NOTE**<br> If the number of current active users is 100, the `bm uninstall -n com.ohos.app -u 102` command uninstalls applications only under the current active user 100.|
+| -h | Used to display help information.|
+| -n | Used to uninstall a bundle. This parameter is mandatory.|
+| -m | Used to specify the name of an application module to be uninstalled. This parameter is optional. By default, all modules are uninstalled.|
+| -k | Used to uninstall a bundle with or without retaining the bundle data. This parameter is optional. By default, the bundle data is deleted along the uninstall.|
+| -s |  Used to uninstall an HSP. This parameter is mandatory only for the HSP uninstallation.|
+| -v | Used to uninstall an HSP of a given version number. This parameter is optional. By default, all shared bundles with the specified bundle name are uninstalled.|
+| -u | Used to specify the [user](#userid). By default, the bundle is uninstalled for the current active user. This parameter is optional. The bundle can be uninstalled only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the bundle will be uninstalled only for the current active user 100 when the **bm uninstall -n com.ohos.app -u 102** command is executed.|
 
 
 Example
@@ -104,7 +115,7 @@ Example
 ```bash
 # Uninstall a bundle.
 bm uninstall -n com.ohos.app
-# Uninstall an application under the user 100
+# Uninstall a bundle for the user 100.
 bm uninstall -n com.ohos.app -u 100
 # Uninstall a module of a bundle.
 bm uninstall -n com.ohos.app -m entry
@@ -127,14 +138,14 @@ bm dump [-h] [-a] [-g] [-n bundleName] [-s shortcutInfo] [-d deviceId] [-l label
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -a | Displays all bundles installed in the system. This parameter is optional.|
-| -g | Displays the names of bundles whose signatures are of the debug type. This parameter is optional.|
-| -n | Displays the details of a bundle. This parameter is optional.|
-| -s | Displays the shortcut information of a bundle. This parameter is optional.|
-| -d | Displays the bundle information on a given device, which is the current device by default. This parameter is optional.  |
-| -l | (Optional) Queries the label value (application name) of a specified bundle name. This parameter must be used together with `-n` or `-a`.<br>**Note:**<br>This command is supported since API version 20. If the command output in the Windows environment contains special characters or garbled Chinese characters, run the `chcp 65001` command on the CLI to change the CLI code to UTF-8.|
-| -u | (Optional) Queries application information of a specified user. By default, application information of the current active user is queried. The query can be performed only by the current active user or user 0.<br>**NOTE**<br> If the number of current active users is 100, applications are queried only under the current active user 100 when the `bm dump -n com.ohos.app -u 102` command is used for uninstallation.|
+| -h | Used to display help information.|
+| -a | Used to display all bundles installed in the system. This parameter is optional.|
+| -g | Used to display the names of bundles whose signatures are of the debug type. This parameter is optional.|
+| -n | Used to display the details of a bundle. This parameter is optional.|
+| -s | Used to display the shortcut information of a bundle. This parameter is optional.|
+| -d | Used to display the bundle information on a given device, which is the current device by default. This parameter is optional.  |
+| -l | Used to display the label value (bundle name) of a bundle. This parameter is optional. It must be used together with the **-n** or **-a** parameter.<br>**Note**:<br>This command is supported since API version 20. If the command output on Windows contains special characters or garbled Chinese characters, run the **chcp 65001** command on the CLI to change the CLI code to UTF-8.|
+| -u | Used to display bundle information of a specified [user](#userid). By default, bundle information of the current active user is displayed. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the **bm dump -n com.ohos.app -u 102** command can be used to query only the bundle information of user 100.|
 
 
 Example
@@ -146,15 +157,15 @@ bm dump -a
 bm dump -g
 # Display the details of a bundle.
 bm dump -n com.ohos.app
-# Query detailed information about the application under the user 100.
+# Display the details of a bundle as user 100.
 bm dump -n com.ohos.app -u 100
 # Display the shortcut information of a bundle.
 bm dump -s -n com.ohos.app
 # Display cross-device bundle information.
 bm dump -n com.ohos.app -d xxxxx
-# Query the label value (application name) of the application.
+# Display the label value of a bundle (bundle name).
 bm dump -n com.ohos.app -l
-# Displays the bundle names and label values (application names) of all installed applications.
+# Display the bundle names and label values of all installed bundles.
 bm dump -a -l
 ```
 
@@ -167,11 +178,11 @@ bm clean [-h] [-c] [-n bundleName] [-d] [-i appIndex] [-u userId]
 
 | Parameter| Description|
 | -------- | --------- |
-| -h | Displays help information.|
-| -c -n | **-n** is mandatory, and **-c** is optional. Clears the cache data of a specified bundle.|
-| -d -n | **-n** is mandatory, and **-d** is optional. Clears the data directory of a specified bundle.|
-| -i | Clears the data directory of an application clone. This parameter is optional. The default value is 0.|
-| -u | (Optional) Clears data of a specified user. By default, data of the current active user is cleared. Data can be deleted only for the current active user or user 0.<br>**NOTE**<br> If the number of current active users is 100, the `bm clean -c -n com.ohos.app -u 102` command deletes data only of the current active user 100.|
+| -h | Used to display help information.|
+| -c -n | **-n** is mandatory, and **-c** is optional. Used to clear the cache data of a specified bundle.|
+| -d -n | **-n** is mandatory, and **-d** is optional. Used to clear the data directory of a specified bundle.|
+| -i | Used to clear the data directory of a bundle clone. This parameter is optional. The default value is 0.|
+| -u | Used to clear the data of a specified [user](#userid). By default, the data of the current active user is cleared. Data can be deleted only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the data will be cleared only for the current active user 100 when you run the **bm clean -c -n com.ohos.app -u 102** command.|
 
 
 Example
@@ -179,7 +190,7 @@ Example
 ```bash
 # Clear the cache data of a bundle.
 bm clean -c -n com.ohos.app
-# Clear the cache data of the application under the user 100
+# Clear the cache data of a bundle for user 100.
 bm clean -c -n com.ohos.app -u 100
 # Clear the user data of a bundle.
 bm clean -d -n com.ohos.app
@@ -199,10 +210,10 @@ bm enable [-h] [-n bundleName] [-a abilityName] [-u userId]
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -n | Enables a specified bundle. This parameter is mandatory.|
-| -a | Enables an ability with a specified bundle name. This parameter is optional.|
-| -u | (Optional) Enables the application of a specified user. By default, the application is enabled for the current active user. Applications can be enabled only for active users or 0 users.<br>**NOTE**<br> If the number of current active users is 100 and the `bm enable -n com.ohos.app -u 102` command is run to enable an application, the application is enabled only for the current active user 100.|
+| -h | Used to display help information.|
+| -n | Used to enable a specified bundle. This parameter is mandatory.|
+| -a | Used to enable an ability with a specified bundle name. This parameter is optional.|
+| -u | Used to enable a bundle of a specified [user](#userid). This parameter is optional. By default, the bundle is enabled for the current active user. The bundle can be enabled only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the bundle can be enabled only for the current active user 100 when you run the **bm enable -n com.ohos.app -u 102** command.|
 
 
 Example
@@ -210,7 +221,7 @@ Example
 ```bash
 # Enable a bundle.
 bm enable -n com.ohos.app -a com.ohos.app.EntryAbility
-# Enable the application under the user 100.
+# Enable the bundle for user 100.
 bm enable -n com.ohos.app -u 100
 # Execution result
 enable bundle successfully.
@@ -228,10 +239,10 @@ bm disable [-h] [-n bundleName] [-a abilityName] [-u userId]
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -n | Disables a specified bundle. This parameter is mandatory.|
-| -a | Disables an ability with a specified bundle name. This parameter is optional.|
-| -u | (Optional) Disables applications of a specified user. By default, applications of the current active user are disabled. Applications can be disabled only by the current active user or user 0.<br>**NOTE**<br> If the current active user is 100 and the `bm disable -n com.ohos.app -u 102` command is used to disable an application, the application is disabled only under the current active user 100.|
+| -h | Used to display help information.|
+| -n | Used to disable a specified bundle. This parameter is mandatory.|
+| -a | Used to disable an ability with a specified bundle name. This parameter is optional.|
+| -u | Used to disable a bundle for a specified [user](#userid). By default, the bundle is disabled for the current active user. This parameter is optional. The bundle can be disabled only for the current active user or user 0.<br>**NOTE**<br> If the current active user is user 100, when you run the **bm disable -n com.ohos.app -u 102** command to disable a bundle, the bundle is disabled only for user 100.|
 
 
 Example
@@ -239,7 +250,7 @@ Example
 ```bash
 # Disable a bundle.
 bm disable -n com.ohos.app -a com.ohos.app.EntryAbility
-# Disable the application under the user 100.
+# Disable the bundle for user 100.
 bm disable -n com.ohos.app -u 100
 # Execution result
 disable bundle successfully.
@@ -257,8 +268,8 @@ bm get [-h] [-u]
 
 | Parameter| Description|
 | -------- | -------- |
-| -h |Displays help information.|
-| -u | Obtains the UDID of a device. This parameter is mandatory.|
+| -h |Used to display help information.|
+| -u | Used to obtain the UDID of a device. This parameter is mandatory.|
 
 
 Example
@@ -283,13 +294,13 @@ Note: For details about how to create an .hqf file, see [HQF Packing Command](pa
   **Parameters**
 |   Parameter | Description|
 | -------- | -------- |
-| -h | Displays help information.|
+| -h | Used to display help information.|
 | -a -f | **-a** is optional, and **-f** is mandatory when **-a** is specified. Executes the quick fix patch installation command. **file-path** corresponds to an .hqf file. You can pass in one or more .hqf files or the directory where the .hqf file is located.|
-| -q -b | **-q** is optional, and **-b** is mandatory when **-q** is specified. Displays the patch information based on the bundle name.|
-| -r&nbsp;-b | **-r** is optional, and **-b** is mandatory when **-r** is specified. Uninstalls a disabled patch based on the bundle name.|
-| -t | Fixes a bundle to a specified path. This parameter is optional.|
-| -d | Selects the debug mode for quick fix. This parameter is optional.|
-| -o | Selects the overwrite mode for quick fix. In this mode, the .so file is decompressed and overwritten in the .so directory of the bundle. This parameter is optional.|
+| -q -b | **-q** is optional, and **-b** is mandatory when **-q** is specified. Used to display the patch information based on the bundle name.|
+| -r&nbsp;-b | **-r** is optional, and **-b** is mandatory when **-r** is specified. Used to uninstall a disabled patch based on the bundle name.|
+| -t | Used to fix a bundle to a specified path. This parameter is optional.|
+| -d | Used to select the debug mode for quick fix. This parameter is optional.|
+| -o | Used to select the overwrite mode for quick fix. In this mode, the .so file is decompressed and overwritten in the .so directory of the bundle. This parameter is optional.|
 
 
 
@@ -323,17 +334,16 @@ delete quick fix successfully
 ## dump-shared
 
 ```bash
-bm dump-shared [-h] [-a] [-n bundleName] [-m moduleName]
+bm dump-shared [-h] [-a] [-n bundleName]
 ```
 
   **Parameters**
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -a | Displays all HSPs in the system. This parameter is optional.|
-| -n | Displays detailed information about the shared library with a specified bundle name. This parameter is optional.|
-| -m | Displays detailed information about the shared library with a specified bundle name and module name. This parameter is optional.|
+| -h | Used to display help information.|
+| -a | Used to display all HSPs in the system. This parameter is optional.|
+| -n | Used to display detailed information about the shared library with a specified bundle name. This parameter is optional.|
 
 
 Example
@@ -343,8 +353,6 @@ Example
 bm dump-shared -a
 # Display the details about the specified shared library.
 bm dump-shared -n com.ohos.lib
-# Display information about the shared library on which a specified module of a bundle depends.
-bm dump-dependencies -n com.ohos.app -m entry
 ```
 
 ## dump-dependencies
@@ -356,9 +364,9 @@ bm dump-dependencies [-h] [-n bundleName] [-m moduleName]
 **Parameters**
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -n | Displays information about the shared library on which a specified bundle depends. This parameter is mandatory.|
-| -m | Displays information about the shared library on which a specified module of a bundle depends. This parameter is optional.|
+| -h | Used to display help information.|
+| -n | Used to display information about the shared library on which a specified bundle depends. This parameter is mandatory.|
+| -m | Used to display information about the shared library on which a specified module of a bundle depends. This parameter is optional.|
 
 Example
 ```Bash
@@ -376,10 +384,10 @@ bm compile [-h] [-m mode] [-r bundleName] [-a]
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -a | Compiles all bundles. This parameter is optional.|
-| -m |  Compiles a bundle based on the bundle name. The value can be **partial** or **full**. This parameter is optional.|
-| -r | Checks whether a bundle is removed. This parameter is optional.|
+| -h | Used to display help information.|
+| -a | Used to compile all bundles. This parameter is optional.|
+| -m |  Used to compile a bundle based on the bundle name. The value can be **partial** or **full**. This parameter is optional.|
+| -r | Used to check whether a bundle is removed. This parameter is optional.|
 
 Example
 
@@ -400,9 +408,9 @@ bm copy-ap [-h] [-a] [-n bundleName]
 
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -a |  Copies the .ap files related to all bundles. By default, .ap files related to all bundles are copied. This parameter is optional.|
-| -n |  Copies the .ap file related to a specified bundle, which is the current bundle by default. This parameter is optional.|
+| -h | Used to display help information.|
+| -a |  Used to copy the .ap files related to all bundles. By default, .ap files related to all bundles are copied. This parameter is optional.|
+| -n |  Used to copy the .ap file related to a specified bundle, which is the current bundle by default. This parameter is optional.|
 
 Example
 
@@ -414,16 +422,17 @@ bm copy-ap -n com.example.myapplication
 ## dump-overlay
 
 ```bash
-bm dump-overlay [-h] [-b bundleName] [-m moduleName] [-u userId]
+bm dump-overlay [-h] [-b bundleName] [-m moduleName] [-t targetModuleName] [-u userId]
 ```
 
 **Parameters**
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -b | Displays all **OverlayModuleInfo** about a specified overlay bundle. This parameter is mandatory.|
-| -m | By default, the name of the main module of the current overlay bundle is used. This parameter is optional. Displays **OverlayModuleInfo** about a specified overlay bundle based on the bundle name and module name.|
-| -u | (Optional) Specifies the user whose OverlayModuleInfo information is to be queried. By default, the information is queried by the current active user. The query can be performed only by the current active user or user 0.<br>**NOTE**<br> If the number of current active users is 100, run the `bm dump-overlay -b com.ohos.app -u 102` command to query the OverlayModuleInfo information. Only the OverlayModuleInfo information of the current active user 100 is returned.|
+| -h | Used to display help information.|
+| -b | Used to display all **OverlayModuleInfo** about a specified overlay bundle. This parameter is mandatory.|
+| -m | Used to query **OverlayModuleInfo** based on the name of the module with the overlay feature. By default, the name of the main module of the current overlay bundle is used. This parameter is optional.|
+| -t | Used to query **OverlayModuleInfo** information based on the name of the target module. By default, this parameter is left empty. This parameter is optional.|
+| -u | Used to query **OverlayModuleInfo** of a specified user(#userid). By default, the information is queried by the current active user. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the **bm dump-overlay -b com.ohos.app -u 102** command can be used to query **OverlayModuleInfo** of user 100 only.|
 
 Example
 
@@ -431,14 +440,14 @@ Example
 # Display OverlayModuleInfo of an overlay bundle named com.ohos.app.
 bm dump-overlay -b com.ohos.app
 
-# Under the user 100, obtain all OverlayModuleInfo information in the overlay application com.ohos.app based on the bundle name.
+# Display OverlayModuleInfo of an overlay bundle named com.ohos.app as user 100.
 bm dump-overlay -b com.ohos.app -u 100
 
-# Display OverlayModuleInfo of the overlay module named entry in an overlay bundle named com.ohos.app.
-bm dump-overlay -b com.ohos.app -m entry
+# Display OverlayModuleInfo of overlay module libraryModuleName of an overlay bundle named com.ohos.app.
+bm dump-overlay -b com.ohos.app -m libraryModuleName
 
-# Display OverlayModuleInfo of the overlay module named feature in an overlay bundle named com.ohos.app.
-bm dump-overlay -b com.ohos.app -m feature
+# Display overlayModuleInfo of overlay module entryModuleName of an overlay bundle named com.ohos.app.
+bm dump-overlay -b com.ohos.app -t entryModuleName
 ```
 
 ## dump-target-overlay
@@ -452,10 +461,10 @@ bm dump-target-overlay [-h] [-b bundleName] [-m moduleName] [-u userId]
 **Parameters**
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -b | Displays all **OverlayBundleInfo** about a specified bundle. This parameter is mandatory.|
-| -m |  Displays **OverlayModuleInfo** based on a specified bundle name and module name. By default, **OverlayModuleInfo** of the main module of the current bundle is displayed. This parameter is optional.|
-| -u | (Optional) Specifies the user whose OverlayModuleInfo information is to be queried. By default, the information is queried by the current active user. The query can be performed only by the current active user or user 0.<br>**NOTE**<br> If the number of current active users is 100, run the `bm dump-target-overlay -b com.ohos.app -u 102` command to query all associated OverlayBundleInfo information in the target application com.ohos.app. Only the OverlayModuleInfo information of the current active user 100 is returned.|
+| -h | Used to display help information.|
+| -b | Used to display all **OverlayBundleInfo** about a specified bundle. This parameter is mandatory.|
+| -m |  Used to display **OverlayModuleInfo** based on a specified bundle name and module name. By default, **OverlayModuleInfo** of the main module of the current bundle is displayed. This parameter is optional.|
+| -u | Used to query **OverlayModuleInfo** of a specified user(#userid). By default, the information is queried by the current active user. This parameter is optional. The bundle can be queried only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, when you run the **bm dump-target-overlay -b com.ohos.app -u 102** command to query all associated **OverlayBundleInfo** in the target bundle **com.ohos.app**, only the **OverlayModuleInfo** of the current active user 100 is returned.|
 
 Example
 
@@ -463,56 +472,56 @@ Example
 # Display OverlayBundleInfo of an overlay bundle named com.ohos.app.
 bm dump-target-overlay -b com.ohos.app
 
-# Under the user 100, obtain all associated OverlayBundleInfo information in the target application com.ohos.app based on the bundle name
+# Display OverlayBundleInfo of an overlay bundle named com.ohos.app as user 100.
 bm dump-target-overlay -b com.ohos.app -u 100
 
 # Display OverlayModuleInfo of the overlay module named entry in an overlay bundle named com.ohos.app.
 bm dump-target-overlay -b com.ohos.app -m entry
 ```
 
-## Installing a Plug-in (install-plugin)
+## install-plugin
 
 ```bash
 bm install-plugin [-h] [-n hostBundleName] [-p filePath]
 ```
 
-**Parameters in the install-plugin command**
+**Parameters**
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -n | Specifies the app bundle name of the plug-in to be installed. This parameter is mandatory.|
-| -p | Specifies the plug-in file path. This parameter is mandatory.|
+| -h | Used to display help information.|
+| -n | Used to specify the bundle name of the bundle for which the plugin is installed. This parameter is mandatory.|
+| -p | Used to specify the plugin file path. This parameter is mandatory.|
 
 Example
 
 ```bash
-# Install a plug-in.
+# Install a plugin.
 bm install-plugin -n com.ohos.app -p /data/plugin.hsp
 ```
 > **NOTE**
 >
-> If the same plug-in is installed in the same application, the plug-in version is updated and the plug-in cannot be downgraded. After the plug-in version is updated, you need to restart the application plug-in for the update to take effect.
+> Within the same bundle, installing an identical plugin is treated as an upgrade; downgrades are not supported. After the upgrade, the bundle must be restarted for the new plugin version to take effect.
 >
-> You are not advised to install a plugin with the same name as the host application module. Currently, this plugin is not supported in the runtime state.
+> Installing a plugin with the same name as the host bundle module is not recommended. This operation is not supported currently.
 
 
-## Uninstalling a Plug-in (uninstall-plugin)
+## uninstall-plugin
 
 ```bash
 bm uninstall-plugin [-h] [-n hostBundleName] [-p pluginBundleName]
 ```
 
-**Parameters in the uninstall-plugin command**
+**Parameters**
 | Parameter| Description|
 | -------- | -------- |
-| -h | Displays help information.|
-| -n | Specifies the app bundle name. This parameter is mandatory.|
-| -p | Specifies the bundle name of a plug-in. This parameter is mandatory.|
+| -h | Used to display help information.|
+| -n | Used to specify the bundle name of a bundle. This parameter is mandatory.|
+| -p | Used to specify the bundle name of a plugin. This parameter is mandatory.|
 
 Example
 
 ```bash
-# Uninstall a plug-in.
+# Uninstall a plugin.
 bm uninstall-plugin -n com.ohos.app -p com.ohos.plugin
 ```
 
@@ -530,34 +539,34 @@ The system account does not exist.
 
 **Possible Causes**
 
-The system account ID does not exist during application installation.
+The system account ID does not exist during bundle installation.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 hdc file recv /data/log/hilog/
 ```
 
-### 304 The HAP Package Is Not Installed for the Current System Account
+### 304 The HAP File Is Not Installed for the Current System Account
 **Error Message**
 
 error: user does not install the hap.
 
 **Symptom**
 
-During the uninstallation, the HAP package is not installed for the current system account.
+During the uninstallation, the HAP file is not installed for the current system account.
 
 **Possible Causes**
 
-No HAP package is installed under the current system account.
+No HAP file is installed for the current system account.
 
 **Solution**
 
-No HAP package is installed under the current system account. Do not uninstall the app.
+Do not uninstall the bundle when no HAP file is installed for the current system account.
 
 ### 9568319 Signature File Exception
 **Error Message**
@@ -566,16 +575,16 @@ error: cannot open signature file.
 
 **Symptom**
 
-During application installation, the signature file fails to be opened. As a result, the installation fails.
+During bundle installation, the signature file fails to be opened. As a result, the installation fails.
 
 **Possible Causes**
 
-The signature file of the HAP package is abnormal.
+The signature file of the HAP file is abnormal.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568320 The Signature File Does Not Exist
 **Error Message**
@@ -592,8 +601,8 @@ The HAP file is not signed.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568321 Failed to Parse the Signature File
 **Error Message**
@@ -606,12 +615,12 @@ Failed to parse the signature file during installation.
 
 **Possible Causes**
 
-The signature file of the HAP package is abnormal.
+The signature file of the HAP file is abnormal.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568323 Signature Digest Verification Failed
 **Error Message**
@@ -620,16 +629,16 @@ error: signature verification failed due to not bad digest.
 
 **Symptom**
 
-Signature verification failed during installation.
+The signature verification fails during the installation.
 
 **Possible Causes**
 
-The signature of the HAP package is incorrect.
+The signature of the HAP file is incorrect.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568324 Signature Integrity Verification Failed
 **Error Message**
@@ -638,34 +647,34 @@ error: signature verification failed due to out of integrity.
 
 **Symptom**
 
-Signature verification failed during installation.
+The signature verification fails during the installation.
 
 **Possible Causes**
 
-The signature of the HAP package is incorrect.
+The signature of the HAP file is incorrect.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
-### 9568326 The Signature Public Key Is Abnormal
+### 9568326 Abnormal Signature Public Key
 **Error Message**
 
 error: signature verification failed due to bad public key.
 
 **Symptom**
 
-Signature verification failed during installation. The signature public key is abnormal.
+The signature verification fails during installation because the signature public key is abnormal.
 
 **Possible Causes**
 
-The signature of the HAP package is incorrect.
+The signature of the HAP file is incorrect.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568327 Failed to Obtain the Signature
 **Error Message**
@@ -674,34 +683,34 @@ error: signature verification failed due to bad bundle signature.
 
 **Symptom**
 
-Failed to verify the signature during installation. The signature cannot be obtained.
+The signature verification fails during the installation because the signature cannot be obtained.
 
 **Possible Causes**
 
-The signature of the HAP package is incorrect.
+The signature of the HAP file is incorrect.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
-### 9568328 The Configuration File Block Is Not Found
+### 9568328 No Configuration File Block Found
 **Error Message**
 
 error: signature verification failed due to no profile block.
 
 **Symptom**
 
-Failed to verify the signature during installation. The configuration file block is not found.
+The signature verification fails during installation because the configuration file block is not found.
 
 **Possible Causes**
 
-The signature of the HAP package is incorrect.
+The signature of the HAP file is incorrect.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568330 Failed to Initialize the Signature Source
 **Error Message**
@@ -710,18 +719,18 @@ error: signature verification failed due to init source failed.
 
 **Symptom**
 
-Failed to verify the signature during installation and failed to initialize the signature source.
+The signature verification fails during installation because the signature source fails to be initialized.
 
 **Possible Causes**
 
-The signature of the HAP package is incorrect.
+The signature of the HAP file is incorrect.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
-### 9568257 Failed to Verify the Signature File Pkcs7
+### 9568257 Failed to Verify the Signature File PKCS#7
 
 **Error Message**
 
@@ -729,7 +738,7 @@ error: fail to verify pkcs7 file.
 
 **Symptom**
 
-The signature PKCS7 verification fails when the user installs the app.
+The signature PKCS#7 verification fails during bundle installation.
 
 **Possible Causes**
 
@@ -741,8 +750,8 @@ The signature PKCS7 verification fails when the user installs the app.
 
 **Solution**
 
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. Manual signature. For details, see [Manual Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+2. Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 
 ### 9568344 The Configuration File Fails to Be Parsed
@@ -768,7 +777,7 @@ When you start debugging or run an application, the error message "error: instal
 **Solution**
 1. Modify the **bundleName** field in the app.json5 configuration file and the **name** field in the module.json5 file based on the naming rule.
 <!--Del-->
-2. If the **type** field in **extensionAbilities** is set to **service** or **dataShare**, set [allowAppUsePrivilegeExtension](../../device-dev/subsystems/subsys-app-privilege-config-guide.md) for the application as follows:
+2. If the **type** field in **extensionAbilities** is set to **service** or **dataShare**, set [allowAppUsePrivilegeExtension](../../device-dev/subsystems/subsys-app-privilege-config-guide.md) for the bundle as follows:
 
     1. Obtain the new signature fingerprint.
 
@@ -784,7 +793,7 @@ When you start debugging or run an application, the error message "error: instal
           ```
           keytool -printcert -file xxx.cer
           ```
-        d. Remove colons (:\) from the SHA-256 content in the certificate fingerprint. What you get is the signature fingerprint.
+        d. Remove the colon from the SHA-256 content in the certificate fingerprint. What you get is the signature fingerprint.
 
         The following figure shows an example.
 
@@ -819,33 +828,35 @@ When you start debugging or run an application, the error message "error: instal
         hdc shell chmod 644 /system/etc/app/install_list_capability.json
         hdc shell reboot
         ```
-    5. Reinstall the application.<!--DelEnd-->
+    5. Reinstall the bundle.<!--DelEnd-->
 
 
 ### 9568305 The Dependent Module Does Not Exist
 **Error Message**
 
-error: dependent module does not exist.
-
-![Example](figures/en-us_image_0000001560338986.png)
+error: Failed to install the HAP or HSP because the dependent module does not exist.
 
 **Symptom**
 
-When you start debugging or run an application, the error message "error: dependent module does not exist" is displayed during the installation of the HAP.
+When an application or service is being debugged or is running, the error message "error: Failed to install the HAP or HSP because the dependent module does not exist." is displayed during the installation of the HAP.
 
 **Possible Causes**
 
-The SharedLibrary module on which the application depends is not installed.
+The SharedLibrary module on which the bundle depends is not installed.
 
 **Solution**
 
-1. Install the dependent SharedLibrary module. On the **Run/Debug Configurations** page of DevEco Studio, select **Keep Application Data** on the **General** tab page, and click **OK** to save the configuration. Then run or debug the application again.
+Scenario 1: When the HSP and HAP are in the same project, perform the following steps:
+1. Install the dependent SharedLibrary module. On the **Run/Debug Configurations** page of DevEco Studio, select **Keep Bundle Data** on the **General** tab page, and click **OK** to save the configuration. Then run or debug the bundle again.
 ![Example](figures/en-us_image_0000001560201786.png)
-2. On the **Run/Debug Configurations** page of DevEco Studio, click the **Deploy Multi Hap** tab, select **Deploy Multi Hap Packages**, select the dependent module SharedLibrary, and click **OK** to save the configuration. Then run or debug the application again.
+2. On the **Run/Debug Configurations** page of DevEco Studio, click the **Deploy Multi Hap** tab, select **Deploy Multi Hap Packages**, select the dependent module SharedLibrary, and click **OK** to save the configuration. Then run or debug the bundle again.
 ![Example](figures/en-us_image_0000001610761941.png)
 3. Choose **Run** > **Edit Configurations**. On the **General** tab page, select **Auto Dependencies**. Click **OK** to save the configuration, and then run or debug the project.
 ![Example](figures/en-us_image_9568305.png)
 
+Scenario 2: When the HSP and HAP are not in the same project, perform the following operations:
+Before installing the HAP, run the [bm install](#install) command to install the dependent HSP.
+  
 ### 9568259 Some Fields Are Missing in the Configuration File
 **Error Message**
 
@@ -873,10 +884,10 @@ Mandatory fields are missing in the **app.json5** and **module.json5** files.
 
     Disk location: **/data/log/hilog**
 
-    Open the log file and find **profile prop %{public}s is mission**. For example, **profile prop icon is mission** indicates that the **icon** field is missing.
+    Open the log and check whether the message "profile prop %{public}s is missing" is displayed. For example, if the message "profile prop icon is missing" is displayed, the **icon** field is missing.
 
 
-### 9568258 The Release Types of the New Application and Existing Application Are Different
+### 9568258 The Release Types of the New Bundle and Existing Bundle Are Different
 **Error Message**
 
 error: install releaseType target not same.
@@ -890,7 +901,7 @@ When you start debugging or run an application, the error message "error: instal
 **Possible Causes**
 
 * Scenario 1: The value of **releaseType** in the SDK used by the existing HAP is different from that used by the new HAP.
-* Scenario 2: When the application has multiple HAPs, the **releaseType** values in the SDK used by each HAP are different.
+* Scenario 2: When the bundle has multiple HAPs, the **releaseType** values in the SDK used by each HAP are different.
 
 **Solution**
 
@@ -909,7 +920,7 @@ An internal error occurs during the installation.
 
 **Possible Causes**
 
-An internal service exception occurs during the installation.
+An internal service error occurs during the installation.
 
 **Solution**
 
@@ -923,34 +934,34 @@ error: install entry already exist.
 
 **Symptom**
 
-The entry module of the application to be installed already exists.
+The entry module of the bundle to be installed already exists.
 
 **Possible Causes**
 
-The entry module must be unique for multi-module application installation. The name of the module package to be installed is different from that of the installed module package, but both are of the entry type, which violates the entry uniqueness. As a result, the installation fails.
+The entry module must be unique for multi-module bundle installation. The name of the module package to be installed is different from that of the existing module package, but both are of the entry type, which violates the entry uniqueness. As a result, the installation fails.
 
 **Solution**
 
 1. Uninstall the existing HAP on the device, and then install the new HAP.
-2. Ensure that the name of the entry module in the installation package is the same as that of the installed entry module, or change the type of the module to be installed to feature and try again.
+2. Ensure that the name of the entry module to be installed is the same as that of the existing entry module, or change the type of the entry module to be installed to feature and try again.
 
 
-### 9568268 Incorrect Installation Status
+### 9568268 Installation State Error
 **Error Message**
 
 error: install state error.
 
 **Symptom**
 
-Failed to update the application installation status.
+The bundle installation state fails to be updated.
 
 **Possible Causes**
 
-The previous app installation package is too large and takes a long time. During app installation, the previous app installation task is not complete. As a result, the installation status fails to be updated.
+The previous bundle installation package is too large and is not complete when this bundle is installed. As a result, the installation state fails to be updated.
 
 **Solution**
 
-Wait until the previous app is installed and try again.
+Wait until the previous bundle is installed and try again.
 
 
 ### 9568269 Invalid File Path
@@ -960,7 +971,7 @@ error: install file path invalid.
 
 **Symptom**
 
-The installation package path input during installation is invalid.
+The passed-in installation package path is invalid.
 
 **Possible Causes**
 
@@ -970,9 +981,9 @@ The installation package path input during installation is invalid.
 **Solution**
 
 1. Check whether the path of the installation package exists and whether you have the permission to access the path.
-2. Verify that the length of the installation package path does not exceed 256 bytes.
+2. Ensure that the length of the installation package path does not exceed 256 bytes.
 
-### 9568322 The Signature Verification Fails Because the Application Source Is Untrusted
+### 9568322 Signature Verification Fails Because the Bundle Source Is Untrusted
 **Error Message**
 
 error: signature verification failed due to not trusted app source.
@@ -993,9 +1004,9 @@ When you start debugging or run an application, the error message "error: signat
 **Solution**
 
 <!--RP9-->
-<!--RP9End-->
-1. Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237). after the device is connected.
-2. If manual signature is used, add the UDID of the device to the **UnsgnedDebugProfileTemplate.json** file. For details, see <!--RP2-->[hapsigner Guide](https://gitee.com/openharmony/docs/blob/master/en/application-dev/security/hapsigntool-guidelines.md)<!--RP2End-->.
+<!--RP9End--><!--Del-->1. <!--DelEnd-->Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+<!--Del-->
+2. If manual signing is used, for OpenHarmony bundles, add the **UDID** of the debugging device to the **UnsgnedDebugProfileTemplate.json** file. For details, see [hapsigner Guide](../security/hapsigntool-guidelines.md).
 
     1. Obtain the UDID of the device.
 
@@ -1015,25 +1026,27 @@ When you start debugging or run an application, the error message "error: signat
 
     3. Add the UDID of the device to the **device-ids** field in the **UnsgnedDebugProfileTemplate.json** file.
 
-3. Use the text editor to open the signed HAP and search for device-ids to check whether the signature contains the UDID of the debugging device.
+3. Use a text editor to open the signed HAP file, and search for **device-ids** to check whether the signature contains the UDID of the debugging device.
+<!--DelEnd-->
 
-### 9568286 The Type of the Signing Certificate Profile of the New Application Is Different from That of the Existing Application
+
+### 9568286 The Type of the Signing Certificate Profile of the New Bundle Is Different from That of the Existing Bundle
 **Error Message**
 
 error: install provision type not same.
 
 **Symptom**
 
-When you start debugging or run an app/service, the type in the <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--> of the installed app is different from that of the installed app. As a result, an error occurs during HAP installation.
+When an application or service is being debugged or is running, the HAP fails to be installed because the type of the <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> of the new bundle is different from that of the existing bundle.
 
 **Possible Causes**
 
-The type in the signing certificate profile of the new application is different from that of the existing application.
+The type in the signing certificate profile of the new bundle is different from that of the existing bundle.
 
 **Solution**
 
-1. Ensure that the type of the signing certificate profile of the new application is the same as that of the existing application, and install the new HAP.
-2. Uninstall the existing application and install the new HAP.
+1. Ensure that the type of the signing certificate profile of the new bundle is the same as that of the existing bundle, and install the new HAP.
+2. Uninstall the existing bundle and install the new HAP.
 
 
 ### 9568288 Installation Failure Due to Insufficient Disk Space
@@ -1043,15 +1056,15 @@ error: install failed due to insufficient disk memory.
 
 **Symptom**
 
-During app installation, a file or directory is created. However, the file or directory fails to be created due to insufficient storage space. As a result, the app fails to be installed.
+Due to insufficient storage space, a file or directory cannot be created during bundle installation.
 
 **Possible Causes**
 
-Failed to create the file or directory due to insufficient storage space.
+The file or directory cannot be created due to insufficient storage space.
 
 **Solution**
 
-Check the storage space on your device and clear it to ensure that the space is sufficient for installing the app. Then install the app again.
+Check the device storage and free up enough space to meet the installation requirements, then try installing the bundle again.
 <!--RP4-->
 ```bash
 # Check the disk space usage.
@@ -1061,44 +1074,44 @@ hdc shell df -h /data
 <!--RP4End-->
 
 
-### 9568289 The Installation Fails Because the Permission Request Fails
+### 9568289 Installation Fails Because the Permission Request Fails
 **Error Message**
 
-error: install failed due to grant request permissions failed.
+error: install failed due to grant request permissions failed.<br>
 
-![Example](figures/en-us_image_0000001585201996.png)
+![Example](figures/en-us_image_9568289.png)
 
 **Symptom**
 
-When you start debugging or run an application, the error message "error: install failed due to grant request permissions failed" is displayed during the installation of the HAP.
+When an application or service is being debugged or running, an error occurs during the installation of the HAP, and the system displays a message indicating that the request permission fails to be granted. Since API version 18, the specific permission name is printed following the request failure information.
 
 **Possible Causes**
 
-The application uses the default Ability Privilege Level (APL), which is normal, and requires the system_basic or system_core permission.
+The bundle uses the default Ability Privilege Level (APL), which is normal, and requires the system_basic or system_core permission.
 
 **Solution**
 
-Apply for restricted ACL permissions for the application by referring to [ACL Signature Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section157591551175916).
+Apply for ACL permissions for the bundle by referring to [Requesting ACL Permissions and Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section26216104250).
 
 
-### 9568290 Installation Failed Because the HAP Token Fails to Be Updated
+### 9568290 Installation Failure Due to HAP Token Update Failure
 **Error Message**
 
 error: install failed due to update hap token failed.
 
 **Symptom**
 
-During application installation, the application token fails to be authorized when HAP is updated.
+During bundle installation, the bundle token fails to be authorized when HAP is updated.
 
 **Possible Causes**
 
-During application installation or update, the token update API of the ability is called, but the API returns a failure message.
+During bundle installation or update, the token update API of the ability is called, but the API returns a failure message.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 hdc file recv /data/log/hilog/
@@ -1113,38 +1126,38 @@ error: install failed due to singleton not same.
 
 **Symptom**
 
-During application update, the singleton configuration (discarded since API version 9) in the HAP package installed for the application is inconsistent with that in the app.json5 configuration file of the update package.
+During bundle update, the singleton configuration in the **app.json5** file of the existing HAP file is inconsistent with that of the update package. (The singleton configuration is deprecated since API version 9.)
 
 **Possible Causes**
 
-The singleton configuration (discarded since API version 9) in the app.json5 configuration file of the installed HAP package is inconsistent with that in the app.json5 configuration file of the update package.
+The singleton configuration in the **app.json5** file of the existing HAP file is inconsistent with that of the update package. (The singleton configuration is deprecated since API version 9.)
 
 **Solution**
 
-Solution 1: Uninstall the existing application package and install a new one.
+Solution 1: Uninstall the existing bundle package and install a new one.
 
-Solution 2: Adjust the singleton configuration in the update package to be the same as that in the existing installation package. Package the app again and then update the app package.<!--DelEnd-->
+Solution 2: Change the singleton configuration in the update package to be the same as that in the existing package, repack and update the bundle package.<!--DelEnd-->
 
 <!--Del-->
-### 9568294 Installation Failure Due to Inconsistent Application Types
+### 9568294 Installation Failure Due to Inconsistent Bundle Types
 **Error Message**
 
 error: install failed due to apptype not same.
 
 **Symptom**
 
-During application installation, the [app-feature](../security/app-provision-structure.md) configuration in the signature file of the installed HAP package is inconsistent with that in the signature file of the HAP package to be installed. As a result, the installation fails.
+The [app-feature](../security/app-provision-structure.md) configuration in the existing HAP's signature does not match that of the new HAP, causing the installation failure.
 
 **Possible Causes**
 
-The name of the installed HAP package is the same as that of the to-be-installed HAP package, but the app-feature configuration in the signature file is different.
+The name of the existing HAP is the same as that of the new HAP, but the **app-feature** configuration in the signature file is different.
 
 **Solution**
 
-* Solution 1: Uninstall the existing HAP package and install the new HAP package.
-* Solution 2: Modify the app-feature column in the signature file of the HAP package to be installed to ensure that the configuration of the app-feature column is the same as that of the existing installation package. Then, package and sign the [app/service signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing) again, and install the package again.<!--DelEnd-->
+* Solution 1: Uninstall the existing HAP and install the new HAP.
+* Solution 2: Change the **app-feature** field in the new HAP's signature file to match that of the existing HAP. Then, repack and [sign the bundle or atomic service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing), and install the HAP again.<!--DelEnd-->
 
-### 9568297 The Installation Fails Because the SDK Version of the Device Is Too Early
+### 9568297 Installation Failed Due to an Earlier SDK Version
 **Error Message**
 
 error: install failed due to older sdk version in the device.
@@ -1165,31 +1178,31 @@ The SDK version used for build and packing does not match the device image versi
   ```
   hdc shell param get const.ohos.apiversion
   ```
-  If the API version provided by the image is 10 and the SDK version used for application build is also 10, the possible cause is that the image version is too early to be compatible with the SDK verification rules of the new version. In this case, update the image version to the latest version.
+  If the API version provided by the image is 10 and the SDK version used for bundle build is also 10, the possible cause is that the image version is too early to be compatible with the SDK verification rules of the new version. In this case, update the image version to the latest version.
 
-* Scenario 2: For applications that need to run on OpenHarmony devices, ensure that runtimeOS has been changed to OpenHarmony.
+* Scenario 2: For bundles that need to run on OpenHarmony devices, ensure that runtimeOS has been changed to OpenHarmony.
 
 
-### 9568300 Installation Failed Because the Application Module Name Is Not Unique
+### 9568300 Installation Failed Due to Duplicate Bundle Module Names
 **Error Message**
 
 error: moduleName is not unique.
 
 **Symptom**
 
-During the installation of a multi-module application, the module name conflict occurs, and the module uniqueness verification fails. As a result, the installation fails.
+During the installation of a multi-module bundle, duplicate module names cause the uniqueness check to fail, so installation is aborted.
 
 **Possible Causes**
 
-During the installation of a multi-module application, a module name conflict occurs.
+During the installation of a multi-module bundle, a module name conflict occurs.
 
 **Solution**
 
-Check the names of all modules of the current app and compare them with the names in the module.json5 file of each module. If they are inconsistent, package the app again and install it.
+Check the name in the **module.json5** file of each module and ensure that the names are different. Then, pack the bundle again and install it.
 
 
 
-### 9568332 The Installation Fails Due to Inconsistent Signatures
+### 9568332 Installation Fails Due to Inconsistent Signatures
 **Error Message**
 
 error: install sign info inconsistent.
@@ -1202,15 +1215,15 @@ When you start debugging or run an application, the error message "error: instal
 
 **Possible Causes**
 
-1. The signatures of the existing application and new application are different, or the signatures of HAPs and HSPs are different. If at least one of the signature [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) or <!--RP7--&gt of two applications and the app-identifier<!--RP7End--&gt in the [profile signature file](../security/app-provision-structure.md) of the two applications is the same, the signatures of the two applications are considered to be the same. **Keep Application Data** is selected in **Edit Configurations** (the application installation is overwritten) and the application is re-signed.
-2. If an application is uninstalled but its data is kept, and a new application with the same bundle name is later installed, it is necessary to check whether the identity details match. This error is reported if the values of [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) and <!--RP7--&gt in the signature information and the value of app-identifier<!--RP7End--&gt in the [profile signature file](../security/app-provision-structure.md) are different.
+1. The signatures of the existing bundle and new bundle are different, or the signatures of HAPs and HSPs are different. (If the [keys](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) or <!--RP7-->**app-identifier**s in the bundle [profiles](../security/app-provision-structure.md)<!--RP7End--> of two bundles are the same, their signatures are the same.) However, **Keep Bundle Data** (the bundle installation is overwritten) is selected in **Edit Configurations** of DevEco Studio and the bundle is re-signed.
+2. If a bundle is uninstalled but its data is kept, and a new bundle with the same bundle name is later installed, it is necessary to check whether the signature details match. This error is reported if the values of [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the signature information and <!--RP7-->the values of **app-identifier** in the [profiles](../security/app-provision-structure.md)<!--RP7End--> of the bundles are different.
 
 
 **Solution**
 
-1. Uninstall the application, or deselect **Keep Application Data**. Then install the new application.
+1. Uninstall the bundle, or deselect **Keep Bundle Data**. Then install the new bundle.
 2. If the signature inconsistency is caused by HSPs provided by different teams, use [integrated HSP](../quick-start/integrated-hsp.md). If there are multiple HAPs, ensure that their signatures are the same.
-3. If an application is uninstalled but its data is kept, a new application with the same bundle name but different signature information fails to be installed. To install the new application, you must first reinstall the uninstalled application and uninstall it without retaining the data.
+3. If a bundle is uninstalled but its data is kept, a new bundle with the same bundle name but different signature information fails to be installed. To install the new bundle, you must first reinstall the uninstalled bundle and uninstall it without retaining the data.
 
 ### 9568329 The Signature Information Fails to Be Verified
 **Error Message**
@@ -1221,7 +1234,7 @@ error: verify signature failed.
 
 **Symptom**
 
-The **bundleName** in the signature information is different from that of the application.
+The **bundleName** in the signature information is different from that of the bundle.
 
 **Possible Causes**
 
@@ -1232,12 +1245,12 @@ The **bundleName** in the signature information is different from that of the ap
 
 **Solution**
 
-* Scenario 1: Use an HSP only for the application with the same bundle name; use an integrated HSP for applications with different bundle names. Ask the third party to provide an integrated HSP or an HSP with the same bundle name.
+* Scenario 1: Use an HSP only for the bundle with the same bundle name; use an integrated HSP for bundles with different bundle names. Ask the third party to provide an integrated HSP or an HSP with the same bundle name.
 
-* Scenario 2: Check the signing process and signing certificate. For details, see [App/FA Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
+* Scenario 2: Check the signing process and signing certificate. For details, see [Configuring a Debug Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
 
 
-### 9568266 The Installation Permission Is Denied
+### 9568266 Installation Permission Denied
 **Error Message**
 
 error: install permission denied.
@@ -1250,31 +1263,31 @@ When you run the **hdc install** command to install the HAP file, the error mess
 
 **Possible Causes**
 
-The **hdc install** command cannot be used to install the enterprise application with a release signature.
+The **hdc install** command cannot be used to install the enterprise bundle with a release signature.
 
 **Solution**
 
-1. Run the **hdc install** command to install and debug the enterprise application with a debug signature.
+1. Run the **hdc install** command to install and debug the enterprise bundle with a debug signature.
 
 
-### 9568337 The Installation Parsing Fails
+### 9568337 Installation Parsing Fails
 **Error Message**
 
 error: install parse unexpected.
 
 **Symptom**
 
-When an application is pushed to a device, an error message is displayed, indicating that the HAP file fails to be opened.
+When a bundle is pushed to a device, an error message is displayed, indicating that the HAP file fails to be opened.
 
 **Possible Causes**
 
-* Scenario 1: The storage space of the system partition is full. As a result, when you run the **hdc file send** command, files on the device are damaged due to insufficient storage space.
+* Scenario 1: When you run the **hdc file send** command, files on the device are damaged due to insufficient storage space.
 
 * Scenario 2: The HAP file is damaged when it is pushed to the device.
 
 **Solution**
 
-* 1. Check the storage space allocated to the system partition. If the storage space is full, clear the storage space to install the HAP file.
+* Scenario 1: Check the device storage usage. If the storage space is insufficient, free it up.
 <!--RP4-->
   ```bash
   hdc shell df -h /system
@@ -1295,11 +1308,11 @@ error: apl of required permission in proxy data is too low.
 
 **Possible Causes**
 
-**requiredReadPermission** and **requiredWritePermission** can be configured only when the application has the permission level of **system_basic** or **system_core**.
+**requiredReadPermission** and **requiredWritePermission** can be configured only when the bundle has the permission level of **system_basic** or **system_core**.
 
 **Solution**
 
-1. Check whether the **proxyData** content defined by the application meets the requirements. For details, see [proxyData](../quick-start/module-configuration-file.md#proxydata).
+1. Check whether the **proxyData** content defined by the bundle meets the requirements. For details, see [proxyData](../quick-start/module-configuration-file.md#proxydata).
 
 
 ### 9568315 The URI in Proxy Data Is Incorrect
@@ -1317,25 +1330,25 @@ The format of **uri** does not meet the requirement.
 
 **Solution**
 
-1. Check whether the **proxyData** content defined by the application meets the requirements. For details, see [proxyData](../quick-start/module-configuration-file.md#proxydata).
+1. Check whether the **proxyData** content defined by the bundle meets the requirements. For details, see [proxyData](../quick-start/module-configuration-file.md#proxydata).
 
 
-### 9568336 The Debugging Type of the Application Is Different From That of the Installed Application
+### 9568336 The Debugging Type of the Bundle Is Different From That of the Installed Bundle
 **Error Message**
 
 error: install debug type not same.
 
 **Symptom**
 
-The debugging type (the **debug** field in the **app.json** file) of the application is different from that of the installed application.
+The debugging type (the **debug** field in the **app.json** file) of the bundle is different from that of the installed bundle.
 
 **Possible Causes**
 
-You have installed the application using the **Debug** button of DevEco Studio, and then you install the HAP file of the application by running the **hdc install** command.
+You have installed the bundle using the **Debug** button of DevEco Studio, and then you install the HAP file of the bundle by running the **hdc install** command.
 
 **Solution**
 
-1. Uninstall the existing application and install the new application.
+1. Uninstall the existing bundle and install the new bundle.
 
 
 ### 9568296 The Bundle Type Is Incorrect
@@ -1349,89 +1362,89 @@ The installation fails because the **bundleType** tag is incorrect.
 
 **Possible Causes**
 
-The **bundleType** of the application to be installed is different from that of an existing application with the same **bundleName**.
+The **bundleType** of the bundle to be installed is different from that of an existing bundle with the same **bundleName**.
 
 **Solution**
 
-* Method 1. Uninstall the existing application and install the application again.
+* Method 1. Uninstall the existing bundle and install the bundle again.
 
-* Method 2: Set the **bundleType** of the application to the same as that of the existing application.
+* Method 2: Set the **bundleType** of the bundle to the same as that of the existing bundle.
 
 
-### 9568292 The User With UserID 0 Can Install Only the Singleton Application
+### 9568292 User 0 Can Install Only the Singleton Bundle
 **Error Message**
 
 error: install failed due to zero user can only install singleton app.
 
 **Symptom**
 
-The UserID 0 user can install only the singleton permission application.
+User 0 can install only bundles with the singleton permission.
 
 **Possible Causes**
 
-The UserID 0 user has installed an application that does not have the singleton permission.
+User 0 installs an application with the non-singleton permission.
 
 **Solution**
 
-1. If the application does not have the singleton permission, you do not need to specify a user and can directly install the application.
+1. If the bundle does not have the singleton permission, you can directly install the bundle without specifying a user.
 	```bash
-	hdc shell bm install -p /data/hap name.hap
+	hdc shell bm install -p /data/HAP name.hap
 	```
 
 
-### 9568263 The Installation Version Cannot Be Downgraded
+### 9568263 Installation Version Cannot Be Downgraded
 **Error Message**
 
 error: install version downgrade.
 
 **Symptom**
 
-The installation fails because **versionCode** of the application to be installed is earlier than that of the existing application.
+The installation fails because **versionCode** of the bundle to be installed is earlier than that of the existing bundle.
 
 **Possible Causes**
 
-The **versionCode** of the application to be installed is earlier than that of the existing application.
+The **versionCode** of the bundle to be installed is earlier than that of the existing bundle.
 
 **Solution**
 
-1. Uninstall the existing application and install the new application.
+1. Uninstall the existing bundle and install the new bundle.
 
 
-### 9568301 Module Type Inconsistent
+### 9568301 Inconsistent Module Type
 **Error Message**
 
 error: moduleName is inconsistent.
 
 **Symptom**
 
-The name of the module that is being installed already exists in the system, but the module name is inconsistent. As a result, the installation fails.
+The name of the module that is being installed already exists in the system, but the module type is inconsistent. As a result, the installation fails.
 
 **Possible Causes**
 
-The name of the application module to be installed already exists in the system, but the module type is inconsistent. As a result, the installation fails.
+The name of the new bundle already exists in the system, but the module type is inconsistent. As a result, the installation fails.
 
 **Solution**
 
-Check whether the module name of the installed application is the same as the name of the module to be installed. If the module names are the same but the types are different, modify the type attribute in the module.json5 file of the corresponding module.
+Check whether the module name of the new bundle is the same as that of the existing bundle. If they are the same but their types are different, change the value of **type** in the **module.json5** file.
 
 
 <!--Del-->
-### 9568302 Installation Failure Due to Inconsistent singletons of Multiple Modules of the Application
+### 9568302 Installation Failure Due to Inconsistent Singletons of Multiple Modules
 **Error Message**
 
 error: install failed due to singleton not same.
 
 **Symptom**
 
-The singleton configurations (API 9 is marked as discarded) of multiple modules of the application are inconsistent. As a result, the installation fails.
+The singleton configurations (deprecated in API version 9) of multiple modules of the bundle are inconsistent. As a result, the installation fails.
 
 **Possible Causes**
 
-When multiple application modules are installed, the singleton configurations are different. As a result, the singleton consistency check fails, and the installation fails.
+The singleton configurations of the bundle modules are different. As a result, the singleton consistency check fails and the installation fails.
 
 **Solution**
 
-Adjust the singleton configuration of all modules to ensure that the configuration is consistent before the installation.<!--DelEnd-->
+Ensure all modules have the same singleton configuration before installation.<!--DelEnd-->
 
 
 ### 9568303 Enterprise Device Management Forbidden
@@ -1441,119 +1454,119 @@ error: Failed to install the HAP because the installation is forbidden by enterp
 
 **Symptom**
 
-Installation failed because an application control policy exists.
+The installation failed due to an application control policy.
 
 **Possible Causes**
 
-An application control policy exists.
+There is an application control policy.
 
 **Solution**
 
-Due to enterprise management and control, no solution is available. Submit an online [service ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+No solution is available for enterprise control. You can submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 
-### 9568304 The Application Does Not Support the Current Device Type
+### 9568304 Current Device Type Not Supported
 **Error Message**
 
 error: device type is not supported.
 
 **Symptom**
 
-The installation fails because the application does not support the current device type.
+The installation fails because the bundle does not support the current device type.
 
 **Possible Causes**
 
-The application does not support the current device type.
+The bundle does not support the current device type.
 
 **Solution**
 
-1. To adapt to the current device, add the current device type to the value of **deviceTypes** of the application. The value of **deviceTypes** can be any of the following: phone, tablet, 2in1, tv, wearable, and car.
+1. To adapt to the current device, add the current device type to the value of **deviceTypes** of the bundle. The value of **deviceTypes** can be any of the following: phone, tablet, 2in1, tv, wearable, and car.
 
 
-### 9568308 Inconsistent App Package Type
+### 9568308 Inconsistent Bundle Type
 **Error Message**
 
 error: install bundleType not same.
 
 **Symptom**
 
-The application package types are inconsistent. As a result, the installation fails.
+The installation fails because the bundle types are inconsistent.
 
 **Possible Causes**
 
-When a multi-HAP application is installed, the bundleType attributes of two modules are inconsistent.
+When a multi-HAP bundle is installed, the **bundleType** properties of two modules are inconsistent.
 
 **Solution**
 
-Check and ensure that the bundleType attributes in the app.json5 file of each module in the multi-HAP application are the same.
+Check and ensure that the **bundleType** properties in the **app.json5** file of each module in the multi-HAP bundle are the same.
 
 
 <!--Del-->
-### 9568309 Unable to Install Inter-App HSP
+### 9568309 Failed to Install Inter-App HSP
 **Error Message**
 
 error: Failed to install the HSP due to the lack of required permission.
 
 **Symptom**
 
-The inter-application HSP installation fails due to lack of privileges.
+The inter-bundle HSP installation fails because the required permission is not granted.
 
 **Possible Causes**
 
-Lack of privileges when installing the inter-application HSP.
+You do not have the permission to install the inter-bundle HSP.
 
 **Solution**
 
-Check whether the application in the install_list_capability.json file on the device has the AllowAppShareLibrary permission. For details about how to configure the permission, see [Application Privilege Configuration Guide](../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
+In the **install_list_capability.json** file, check whether the bundle has the **AllowAppShareLibrary** permission. For details about how to configure the permission, see [Bundle Privilege Configuration](../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
 
 
-### 9568311 The Inter-Application HSP to Be Uninstalled Does Not Exist
+### 9568311 The Inter-Bundle HSP to Be Uninstalled Does Not Exist
 **Error Message**
 
 error: shared bundle is not exist.
 
 **Symptom**
 
-Failed to uninstall the inter-application HSP because the specified package does not exist.
+Failed to uninstall the inter-bundle HSP because the specified bundle does not exist.
 
 **Possible Causes**
 
-When the inter-application HSP is uninstalled, the specified package does not exist.
+When the inter-bundle HSP is uninstalled, the specified bundle does not exist.
 
 **Solution**
 
-Check whether the inter-application HSP to be uninstalled exists.
+Check whether the inter-bundle HSP to be uninstalled exists.
 ```
 hdc shell bm dump-shared -n com.xxx.xxx.demo
 ```
 
 
-### 9568312 The Uninstalled Application HSP Is Dependent
+### 9568312 Dependency on Uninstalled Inter-Bundle HSP
 **Error Message**
 
 error: The version of the shared bundle is dependent on other applications.
 
 **Symptom**
 
-When the inter-application HSP is uninstalled, the specified package is depended on by another application. As a result, the uninstallation fails.
+The HSP fails to be uninstalled because it is depended on by another bundle.
 
 **Possible Causes**
 
-When the inter-application HSP is uninstalled, the specified package is depended on by other applications.
+The inter-bundle HSP is depended on by another bundle.
 
 **Solution**
 
-Check whether other applications depend on the HSP of the application to be uninstalled. If yes, uninstall the applications that depend on the HSP first.<!--DelEnd-->
+Check whether the HSP to be uninstalled is depended on by other bundles. If yes, uninstall the bundles.<!--DelEnd-->
 
 
-### 9568317 The Multi-Process Configuration of the Application Does Not Match the System Configuration
+### 9568317 The Multi-Process Configuration of the Bundle Does Not Match the System Configuration
 **Error Message**
 
 error: isolationMode does not match the system.
 
 **Symptom**
 
-The installation fails because **isolationMode** of the application is not supported by the system.
+The installation fails because **isolationMode** of the bundle is not supported by the system.
 
 **Possible Causes**
 
@@ -1652,11 +1665,11 @@ error: copy file failed.
 
 **Symptom**
 
-Files fail to be copied during application installation.
+The file copy operation fails during bundle installation.
 
 **Possible Causes**
 
-1. The source file path or destination path to be copied is invalid.
+1. The source file path or target path is invalid.
 2. Failed to open the source file.
 3. Failed to obtain the source file status.
 4. The size of the source file is invalid.
@@ -1668,7 +1681,7 @@ Files fail to be copied during application installation.
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 hdc file recv /data/log/hilog/
@@ -1691,7 +1704,7 @@ Developer mode is not enabled on the device.
 
 1. Choose **Settings** > **System** and check whether **Developer options** is available. If not, go to **Settings** > **About** and touch the version number for seven consecutive times until the message "Enable developer mode?" is displayed. Touch **OK** and enter the PIN (if set). Then the device will automatically restart.
 2. Connect the device to the PC using a USB cable. Choose **Settings** > **System** > **Developer options** and enable USB debugging. In the displayed dialog box, touch **Allow**.
-3. Start debugging or run the application.
+3. Start debugging or run the bundle.
 
 ### 9568404 Failed to Transfer the Signature Configuration File
 
@@ -1701,7 +1714,7 @@ error: delivery sign profile failed.
 
 **Symptom**
 
-During the installation, an exception occurs when the code signature configuration file is transferred. As a result, the installation fails.
+The installation fails because an exception occurs when the code signature configuration file is transferred.
 
 **Possible Causes**
 
@@ -1716,7 +1729,7 @@ During the installation, an exception occurs when the code signature configurati
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 hdc file recv /data/log/hilog/
@@ -1730,19 +1743,19 @@ error: remove sign profile failed.
 
 **Symptom**
 
-An exception occurs when the signature configuration file is deleted during app uninstallation. As a result, the app fails to be uninstalled.
+The bundle fails to be uninstalled because the signature configuration file fails to be deleted.
 
 **Possible Causes**
 
 1. The file path does not exist.
 2. Failed to load the configuration file data.
-3. The file permission is not writable.
+3. You do not have the write permission on the file.
 
 **Solution**
 
-1. Restart your phone and uninstall the app again.
+1. Restart your phone and uninstall the bundle again.
 
-2. If the uninstallation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online service ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the uninstallation still fails after repeating the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 hdc file recv /data/log/hilog/
@@ -1789,7 +1802,7 @@ error: unknown.
 
 **Symptom**
 
-This error code is reported if an unknown error occurs.
+An unknown error occurs.
 
 **Possible Causes**
 
@@ -1799,9 +1812,9 @@ The installation fails due to an unknown system error.
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-### 9568284 The Installation Version Is Not Compatible
+### 9568284 Installation Version Not Compatible
 **Error Message**
 
 error: install version not compatible.
@@ -1823,7 +1836,7 @@ When an HSP is installed, the following information is verified:
 1. Uninstall the HAP whose version does not match and then install the HSP.
 2. Change the HSP version to be the same as that of the HAP and install the HSP again.
 
-### 9568287 The Number of Entry Modules in the Installation Package Is Invalid
+### 9568287 Invalid Number of Entry Modules in the Installation Package
 **Error Message**
 
 error: install invalid number of entry hap.
@@ -1834,14 +1847,14 @@ The number of entry modules in the installation package is invalid.
 
 **Possible Causes**
 
-There are multiple entry modules in the installation package. An application can have only one entry module but multiple feature modules.
+There are multiple entry modules in the installation package. An bundle can have only one entry module but multiple feature modules.
 
 **Solution**
 
 1. Retain one entry module and change the other entry modules to feature modules (by modifying the **type** field in **module.json5**).
 
 
-### 9568281 The vendor Field of the Installation Package Is Inconsistent
+### 9568281 Inconsistent vendor of Installation Bundles
 **Error Message**
 
 error: install vendor not same.
@@ -1852,14 +1865,14 @@ The **vendor** field of the installation package is inconsistent.
 
 **Possible Causes**
 
-The **vendor** field of the application in the **app.json5** file is inconsistent.
+The **vendor** field of the bundle in the **app.json5** file is inconsistent.
 
 **Solution**
 
-1. If only a HAP is involved, the **vendor** field of the HAP must be the same as that of the installed application. In this case, uninstall and reinstall the HAP.
+1. If only a HAP is involved, the **vendor** field of the HAP must be the same as that of the installed bundle. In this case, uninstall and reinstall the HAP.
 2. If an integrated HSP is included, the **vendor** field of the integrated HSP must be the same as that of the HAP.
 
-### 9568272 Invalid Installation Package Size
+### 9568272 Invalid Installation Bundle Size
 **Error Message**
 
 error: install invalid hap size.
@@ -1876,22 +1889,22 @@ The size of the installation package exceeds 4 GB.
 
 Split the package and ensure that the size of each installation package does not exceed 4 GB.
 
-### 9568273 Failed to Install the Application Because the UID Fails to Be Generated
+### 9568273 Installation Fails Because the Bundle Cannot Generate the UID
 **Error Message**
 
 error: install generate uid error.
 
 **Symptom**
 
-The application fails to generate the UID. As a result, the installation fails.
+The installation fails because the bundle cannot to generate the UID.
 
 **Possible Causes**
 
-The number of applications installed on the device exceeds 65,535. As a result, the UID fails to be allocated during application installation.
+The number of bundles installed on the device exceeds 65,535. As a result, the UID fails to be allocated during bundle installation.
 
 **Solution**
 
-Uninstall unnecessary apps and try again.
+Uninstall unnecessary bundles and try again.
 
 ### 9568274 An Error Occurs During Service Installation
 **Error Message**
@@ -1911,7 +1924,7 @@ An exception occurs during service installation.
 1. Clear the cache and restart the device.
 
 
-### 9568275 Package Management Service Error
+### 9568275 Bundle Manager Service Error
 
 **Error Message**
 
@@ -1919,17 +1932,17 @@ error: install bundle mgr service error.
 
 **Symptom**
 
-Package management service error.
+A bundle manager service error occurs.
 
 **Possible Causes**
 
-The package management service is abnormal. For example, a null pointer occurs.
+An exception occurs in the bundle manager service. For example, an exception occurs due to a null pointer.
 
 **Solution**
 
 Restart the device or try again later.
 
-### 9568277 Installation Failure Due to Inconsistent Package Names
+### 9568277 Installation Failure Due to Inconsistent Bundle Names
 
 **Error Message**
 
@@ -1937,15 +1950,15 @@ error: install bundle name not same.
 
 **Symptom**
 
-The package names are inconsistent. As a result, the installation fails.
+The installation fails due to inconsistent bundle names.
 
 **Possible Causes**
 
-The names of multiple installation packages in the installation path are different.
+The names of installation bundles in the installation path are different.
 
 **Solution**
 
-Check the names of the installation packages in the installation path and ensure that the values of bundleName in the app.json5 configuration files of all installation packages are the same.
+Check the names of the installation bundles and ensure that the values of **bundleName** in the **app.json5** configuration files of all installation bundles are the same.
 
 
 ### 9568279 Installation Failure Due to Version Inconsistency
@@ -1956,15 +1969,15 @@ error: install version name not same.
 
 **Symptom**
 
-The versions (versionName column) are inconsistent. As a result, the installation fails.
+The installation fails because the versions (values of the **versionName** field) are inconsistent.
 
 **Possible Causes**
 
-The version names of multiple installation packages in the installation path are different.
+The version names of installation bundles are different.
 
 **Solution**
 
-Check the versions of the installation packages in the installation path and ensure that the values of versionName in the app.json5 configuration files of all installation packages are the same.
+Check the versions of the installation bundles and ensure that the values of **versionName** in the **app.json5** configuration files of all installation bundles are the same.
 
 ### 9568280 Installation Failure Due to Inconsistent minCompatibleVersionCode
 
@@ -1974,17 +1987,17 @@ error: install min compatible version code not same.
 
 **Symptom**
 
-The minCompatibleVersionCode column is inconsistent. As a result, the installation fails.
+The installation fails because the values of the **minCompatibleVersionCode** fields are inconsistent.
 
 **Possible Causes**
 
-The minCompatibleVersionCode values of multiple installation packages in the installation path are different.
+The **minCompatibleVersionCode** values of multiple installation bundles are different.
 
 **Solution**
 
-Check the installation packages in the installation path and ensure that the minCompatibleVersionCode values in the app.json5 configuration files of all installation packages are the same.
+Check the installation bundles and ensure that the values of **minCompatibleVersionCode** in the **app.json5** configuration files of all installation bundles are the same.
 
-### 9568282 Installation Failed Due to Inconsistent targetAPIVersions
+### 9568282 Installation Failure Due to Inconsistent targetAPIVersions
 
 **Error Message**
 
@@ -1992,15 +2005,15 @@ error: install releaseType target not same.
 
 **Symptom**
 
-The targetAPIVersion column is inconsistent. As a result, the installation fails.
+The installation fails because the values of the **targetAPIVersion** fields are inconsistent.
 
 **Possible Causes**
 
-The targetAPIVersion values of multiple installation packages in the installation path are different.
+The **targetAPIVersion** values of multiple installation bundles are different.
 
 **Solution**
 
-Check the installation packages in the installation path and ensure that the targetAPIVersion values in the app.json5 configuration files of all installation packages are the same.
+Check the installation bundles and ensure that the values of **targetAPIVersion** in the **app.json5** configuration files of all installation bundles are the same.
 
 ### 9568314 The HSP Fails to Be Installed
 **Error Message**
@@ -2020,24 +2033,24 @@ The HSP is installed by running the **hdc app install ***** command.
 1. Run the **hdc install -s ***** command to install the HSP.
 
 
-### 9568349 Input Parameter Error During File Operation
+### 9568349 Passed-in Parameter Error During File Operation
 **Error Message**
 
 error: installd param error.
 
 **Symptom**
 
-The input parameter is abnormal during file operation. As a result, the installation fails.
+The installation fails because the passed-in parameter is abnormal during file operation.
 
 **Possible Causes**
 
-During the installation, the input parameter is invalid or the input directory is empty.
+The passed-in parameter is invalid or the passed-in directory is empty during the installation.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
@@ -2045,14 +2058,14 @@ hdc file recv /data/log/hilog/
 ```
 
 
-### 9568351 Installation Failure Due to an Exception in Creating a File Directory
+### 9568351 Installation Failure Due to a File Directory Creation Exception
 **Error Message**
 
 error: installd create dir failed.
 
 **Symptom**
 
-An exception occurs during file directory creation. As a result, the installation fails.
+The installation fails because the file directory cannot be created.
 
 **Possible Causes**
 
@@ -2062,7 +2075,7 @@ You do not have the write permission when creating a file directory.
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
@@ -2070,24 +2083,24 @@ hdc file recv /data/log/hilog/
 ```
 
 
-### 9568354 Installation Failed Due to an Exception in Deleting a File Directory
+### 9568354 Installation Failure Due to a File Directory Deletion Exception
 **Error Message**
 
 error: installd remove dir failed.
 
 **Symptom**
 
-The installation fails because the file directory fails to be deleted.
+The installation fails because the file directory cannot be deleted.
 
 **Possible Causes**
 
-The directory to be deleted does not exist, or the current directory does not have the write permission.
+The directory to be deleted does not exist, or you do not have the write permission on the directory.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
@@ -2095,24 +2108,24 @@ hdc file recv /data/log/hilog/
 ```
 
 
-### 9568355 Failed to Extract Files from the Installation Package
+### 9568355 Failed to Extract Files from the Installation Bundle
 **Error Message**
 
 error: installd extract files failed.
 
 **Symptom**
 
-Files fail to be extracted from the installation package. As a result, the installation fails.
+The installation fails because files cannot be extracted from the installation bundle.
 
 **Possible Causes**
 
-During the installation, the directory for decompressing the .so file fails to be created. As a result, the .so file fails to be extracted from the HAP package.
+During the installation, the .so file fails to be extracted from the HAP file because the directory for decompressing the .so file cannot be created.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
@@ -2127,41 +2140,41 @@ error: installd rename dir failed.
 
 **Symptom**
 
-The installation fails because the directory name fails to be renamed.
+The installation fails because the directory name cannot be renamed.
 
 **Possible Causes**
 
-During the installation, the directory name contains more than 260 characters, or the current directory does not have the write permission.
+The directory name contains more than 260 characters, or you do not have the write permission on the directory.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
 hdc file recv /data/log/hilog/
 ```
 
-### 9568357 Failed to Delete Files
+### 9568357 Failed to Clear Files
 **Error Message**
 
 error: installd clean dir failed.
 
 **Symptom**
 
-The installation fails because files fail to be deleted.
+The installation fails because files cannot to be cleared.
 
 **Possible Causes**
 
-During the installation, the files to be deleted do not have the write permission. As a result, the files fail to be deleted.
+You do not have the write permission on the files to be cleared.
 
 **Solution**
 
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
@@ -2192,42 +2205,43 @@ The **apl** field in the signature configuration file is incorrect. It can be **
 
     ![Example](figures/en_image_9568359_2.png)
 
-### 9568398 The Enterprise Bundle Is Not Allowed to Be Installed on Non-Enterprise Devices
+### 9568398 Installation of Enterprise MDM Bundles and Standard Enterprise Bundles Not Allowed
 **Error Message**
 
 error: Failed to install the HAP because an enterprise normal/MDM bundle cannot be installed on non-enterprise device.
 
 **Symptom**
 
-Do not install applications of the enterprise_mdm or enterprise_normal type in <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End--> on non-enterprise devices.
+The current device prohibits the installation of enterprise MDM bundles or standard enterprise bundles.
 
 **Possible Causes**
 
-The device is not an enterprise device.
+The following two types of bundles in <!--RP5-->[the profile](../security/app-provision-structure.md)<!--RP5End--> cannot be installed on the current device: **enterprise_mdm** (enterprise MDM bundle) and **enterprise_normal** (standard enterprise bundle).
+For details about the distribution types, see [BundleInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#bundleinfo-1).
 
 **Solution**
 
-1. Install the enterprise bundle on the enterprise device.
+Change the distribution type in the profile signing file.
 
-### 9568402 The release Bundle of the app_gallery Type Cannot Be Installed
+### 9568402 Installation of the Release Bundle of the app_gallery Type in the Profile Not Allowed
 **Error Message**
 
 error: Release bundle can not be installed.
 
 **Symptom**
 
-Do not run the bm command to install apps whose type is app_gallery and signature certificate type is release in <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End-->.
+Do not run the bm command to install release bundles whose type of <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> is **app_gallery**.
 
 **Possible Causes**
 
-Install the app. The type in <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End--> is app_gallery and the signature certificate type is release.
+The new bundle is a release bundle whose type of <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> is **app_gallery**.
 
 **Solution**
 
-1. Use a file whose type is not app_gallery in <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--> to re-sign the app.
+1. Use the <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> whose type is not **app_gallery** to re-sign the bundle.
 2. Use the **debug** certificate to re-sign the bundle.
 
-### 9568403 The Encryption Check Fails During the Installation
+### 9568403 Encryption Check Fails During Installation
 **Error Message**
 
 error: check encryption failed.
@@ -2260,7 +2274,7 @@ The native software package to be installed in the HAP is damaged.
 
 **Solution**
 
-1. Check the native software package in the HAP, replace the native software package with the correct one, and re-sign and package the software package. For details, see [Native Software Package Development Guide](https://gitee.com/openharmony/startup_appspawn/tree/master/service/hnp).
+1. Check the native software package in the HAP, replace the native software package with the correct one, and re-sign and package the software package. For details, see [Native Bundle Development](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
 
 ### 9568408 Failed to Uninstall the Native Software Package
 **Error Message**
@@ -2277,7 +2291,7 @@ The native software package to be uninstalled is occupied.
 
 **Solution**
 
-1. Check whether any process occupies the native software package. If yes, stop the process and uninstall the native software package again. For details, see [Native Software Package Development Guide](https://gitee.com/openharmony/startup_appspawn/tree/master/service/hnp).
+1. Check whether any process occupies the native software package. If yes, stop the process and uninstall the native software package again. For details, see [Native Bundle Development](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
 
 ### 9568409 Failed to Extract the Native Software Package
 **Error Message**
@@ -2294,7 +2308,7 @@ The native software package configured in **module.json5** does not exist in the
 
 **Solution**
 
-1. Check the native software package directory in the HAP, input the native software package to be installed again and sign the package, or delete the missing native software package configuration from the **module.json5** file. For details, see [Native Software Package Development Guide](https://gitee.com/openharmony/startup_appspawn/tree/master/service/hnp).
+1. Check the native software package directory in the HAP, input the native software package to be installed again and sign the package, or delete the missing native software package configuration from the **module.json5** file. For details, see [Native Bundle Development](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md).
 
 ### 9568410 Failed To Install the HAP Because the Device Is Under Control
 **Error Message**
@@ -2314,7 +2328,7 @@ The device is activated through an unauthorized channel.
 1. Check whether the device is obtained from unauthorized channels.
 2. Activate the device through the normal process.
 
-### 9568413 The Application Device Type Does Not Support the Current Device
+### 9568413 Current Device Not Supported
 
 **Error Message**
 
@@ -2322,15 +2336,15 @@ error: check syscap filed and device type is not supported.
 
 **Symptom**
 
-The [device type](../quick-start/module-configuration-file.md) configured for the application does not support installation.
+The [device types](../quick-start/module-configuration-file.md#devicetypes) configured for the bundle are not supported.
 
 **Possible Causes**
 
-The [device type](../quick-start/module-configuration-file.md) configured for the application is different from that of the device where the application is installed.
+The [device types](../quick-start/module-configuration-file.md#devicetypes) configured for the bundle are inconsistent with the device.
 
 **Solution**
 
-Correct the [device type](../quick-start/module-configuration-file.md).
+Correct the [device types](../quick-start/module-configuration-file.md#devicetypes).
 
 ### 9568415 The Encrypted Bundle Whose Signing Certificate Is Debug or Debug Is True in Configuration File Cannot Be Installed
 **Error Message**
@@ -2339,7 +2353,7 @@ error: debug encrypted bundle is not allowed to install.
 
 **Symptom**
 
-The encrypted application whose signing certificate is of the **debug** type or whose **debug** attribute of the configuration file is **true** cannot be installed.
+The encrypted bundle whose signing certificate is of the **debug** type or whose **debug** attribute of the configuration file is **true** cannot be installed.
 
 **Possible Causes**
 
@@ -2374,50 +2388,50 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 
 **Symptom**
 
-If a pre-installed app is uninstalled and then an app with the same bundle name is installed, the app cannot be installed due to inconsistent signature information.
+The new bundle cannot be installed because its bundle name matches that of the uninstalled bundle and its signature information differs.
 
 **Possible Causes**
 
-The [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) and <!--RP7--&gt in the app signature information and the app-identifier<!--RP7End--&gt in the app [profile signature file](../security/app-provision-structure.md) are different from those of the uninstalled pre-installed app.
+The [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information and <!--RP7-->the **app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> are different from those of the uninstalled pre-installed bundle.
 
 **Solution**
 
-1. Re-sign the app to ensure that the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) and <!--RP7--&gt in the app signature information and the app-identifier<!--RP7End--&gt in the [app profile signature file](../security/app-provision-structure.md) are the same as those of the pre-installed app.
-2. Modify [bundleName](../quick-start/app-configuration-file.md) of the installed application to ensure that it is different from that of the preset application.
+1. Re-sign the bundle to ensure that either the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information or <!--RP7-->the **app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> is the same as that of the pre-installed bundle.
+2. Modify the [bundleName](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) of the new bundle to ensure it is different from the pre-installed bundle's bundle name.
 
-### 9568418 Failed to Uninstall an Application Configured with an Uninstallation Disposed Rule
+### 9568418 Failed to Uninstall a Bundle Configured with an Uninstallation Disposed Rule
 **Error Message**
 
 error: Failed to uninstall the app because the app is locked.
 
 **Symptom**
 
-The application cannot be directly uninstalled because it is configured with an uninstallation disposed rule.
+The bundle cannot be directly uninstalled because it is configured with an uninstallation disposed rule.
 
 **Possible Causes**
 
-The application to uninstall is configured with an uninstallation disposed rule.
+The bundle to be uninstalled is configured with an uninstallation disposed rule.
 
 **Solution**
 
-1. Check whether the application is configured with an uninstallation disposed rule. The entity that set the rule is responsible for canceling the rule.
+1. Check whether the bundle is configured with an uninstallation disposed rule. The entity that set the rule is responsible for canceling the rule.
 
-### 9568420 Do Not Use the bm Tool to Install Pre-installed Bundles of the Release Version
+### 9568420 Installation of Pre-installed Release Bundles Using bm Not Allowed
 **Error Message**
 
 error: os_integration Bundle is not allowed to install for shell.
 
 **Symptom**
 
-The pre-installed bundles of the release version cannot be installed.
+The pre-installed release bundles cannot be installed.
 
 **Possible Causes**
 
-The bundles are installed using the bm tool.
+The release bundles are installed using the bm tool.
 
 **Solution**
 
-1. Check whether the bundle is a pre-installed bundle of the release version.
+Check whether the bundle is a pre-installed release bundle. If yes, change the type of the bundle's <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End-->, re-sign the bundle, and install it.
 
 ### 9568278 Version Codes of Bundles Are Inconsistent
 **Error Message**
@@ -2432,58 +2446,58 @@ error: install version code not same.
 1. Change the version code of the new bundle to be the same as that of the existing bundle, or uninstall the existing bundle and install the new bundle.
 2. Ensure that the version codes of all new bundles are the same.
 
-### 9568421 The Application Fails to Be Installed on the Device Because the Type of the Signing Certificate Profile Is Not Supported 
+### 9568421 The Bundle Fails to Be Installed on the Device Because the Type of the Signing Certificate Profile Is Not Supported 
 **Error Message**
 
 error: Failed to install the HAP or HSP because the app distribution type is not allowed.
 
 **Symptom**
 
-The application fails to be installed on the device because the distribution type in the signing certificate profile is not supported.
+The bundle fails to be installed on the device because the distribution type in the signing certificate profile is not supported.
 
 **Possible Causes**
 
-The type in the <!--RP5--> [signature profile file](../security/app-provision-structure.md)<!--RP5End--> is restricted and cannot be installed on the current device.
+The type of the <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> is not allowed to be installed on the current device.
 
 **Solution**
 
 Change the type of the signing certificate profile.
 
-### 9568423 The Signature Certificate Profile File Does Not Contain the UDID Configuration of the Current Device and Cannot Be Installed on the Current Device
+### 9568423 Installation Failed Because Profile Does Not Contain UDID Configuration of Current Device
 **Error Message**
 
 error: Failed to install the HAP because the device is unauthorized, make sure the UDID of your device is configured in the signing profile.
 
 **Symptom**
 
-The profile file of the signature certificate does not contain the UDID configuration of the current device and cannot be installed on the current device.
+The HAP cannot be installed on the current device because its profile does not contain the UDID configuration of the current device.
 
 **Possible Causes**
 
-The <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--&gt of the application is of the debugging type, and the UDID of the current device is not configured.
+The bundle's <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> is of the debug type, and the UDID of the current device is not configured.
 
 **Solution**
 
 <!--RP6-->
-<!--RP6End-->Use [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237).
+<!--RP6End-->Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file.
 
 
-### 9568380 Failed to Uninstall System Applications
+### 9568380 Failed to Uninstall System Bundles
 **Error Message**
 
 error: uninstall system app error.
 
 **Symptom**
 
-Failed to uninstall the system application.
+Failed to uninstall the system bundle.
 
 **Possible Causes**
 
-Some system apps cannot be uninstalled.
+Some system bundles cannot be uninstalled.
 
 **Solution**
 
-Apps that cannot be uninstalled cannot be uninstalled.
+Do not uninstall bundles that cannot be uninstalled.
 
 ### 9568387 Failed to Uninstall a Module That Is Not Installed
 **Error Message**
@@ -2492,68 +2506,68 @@ error: uninstall missing installed module.
 
 **Symptom**
 
-Uninstall the modules that are not installed.
+The modules that are not installed are being uninstalled.
 
 **Possible Causes**
 
-Uninstall the modules that are not installed.
+The modules being uninstalled are not currently installed.
 
 **Solution**
 
-Run the bm dump -n command to check the application configuration and ensure that the module to be uninstalled has been installed.
-### 9568432 Installation Fails Because the pluginDistributionIDs Verification Between the Plug-in and Application Fails
+Run the [bm dump -n](#dump) to check the bundle configuration and ensure that the module to be uninstalled has been installed.
+### 9568432 Installation Fails Because the pluginDistributionIDs Verification Between Plug-in and Bundle Fails
 **Error Message**
 
 error: Check pluginDistributionID between plugin and host application failed.
 
 **Symptom**
 
-Failed to verify pluginDistributionIDs between the application and plug-in.
+Failed to verify **pluginDistributionIDs** between the bundle and plugin.
 
 **Possible Causes**
 
-The pluginDistributionIDs of the application and plug-in do not have the same value. As a result, the verification fails.
+The values of **pluginDistributionIDs** of the bundle and plugin are different.
 
 **Solution**
 
-Reconfigure pluginDistributionIDs in <!--RP5--> [signature certificate profile file](../security/app-provision-structure.md)<!--RP5End--> of the application or plug-in. as follows:
+Reconfigure **pluginDistributionIDs** in the <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> of the bundle or plugin as follows:
 ```
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
     }
 }
-```
+``` 
 
-### 9568433 The Application Does Not Have the ohos.permission.SUPPORT_PLUGIN Permission
+### 9568433 ohos.permission.SUPPORT_PLUGIN Not Granted
 **Error Message**
 
 error: Failed to install the plugin because host application check permission failed.
 
 **Symptom**
 
-Failed to verify the application permission when installing the plug-in.
+The bundle permission verification fails during plugin installation.
 
 **Possible Causes**
 
-The app does not have the ohos.permission.SUPPORT_PLUGIN permission.
+The bundle does not have the **ohos.permission.SUPPORT_PLUGIN** permission.
 
 **Solution**
 
 1. Request the [ohos.permission.kernel.SUPPORT_PLUGIN permission](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) by referring to [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 <!--Del-->
-2. The permission APL is system_basic. If the [application APL](../security/AccessToken/app-permission-mgmt-overview.md) is lower than system_basic, request the permission by referring to [Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).
+2. The permission APL is system_basic. If the [bundle APL](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) is lower than system_basic, request the permission by referring to [Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).
 <!--DelEnd-->
 
 
-### 9568333 The Module Name Is Empty
+### 9568333 Empty Module Name
 **Error Message**
 
 error: Install failed due to hap moduleName is empty.
 
 **Symptom**
 
-The module name is empty. As a result, the installation fails.
+The installation fails because the module name is empty.
 
 **Possible Causes**
 
@@ -2561,24 +2575,24 @@ The module name is empty.
 
 **Solution**
 
-Check whether the name field of [module.json5](../quick-start/module-configuration-file.md) is empty.
+Check whether the **name** field of [module.json5](../quick-start/module-configuration-file.md) is empty.
 
-### 9568331 The Signature Information Is Inconsistent
+### 9568331 Inconsistent Signature Information
 **Error Message**
 
 error: Install incompatible signature info.
 
 **Symptom**
 
-The signature information is inconsistent. As a result, the installation fails.
+The installation fails due to inconsistent signature information.
 
 **Possible Causes**
 
-When an application with multiple HAP packages is installed, the signature information of the HAP packages is inconsistent.
+The signatures of the bundle's HAPs are inconsistent.
 
 **Solution**
 
-Re-sign the HAP package to ensure that the signature information of multiple HAP packages is the same. For details, see [App/Service Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
+Re-sign the HAPs to ensure their signatures are consistent. For details, see [Configuring a Debug Signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
 
 ### 9568334 Duplicate Module Name
 **Error Message**
@@ -2587,34 +2601,34 @@ error: Install failed due to hap moduleName duplicate.
 
 **Symptom**
 
-The module name is duplicate. As a result, the installation fails.
+The installation fails due to duplicate module names.
 
 **Possible Causes**
 
-When multiple modules are installed for an application at the same time, the module names are duplicate.
+Duplicate module names are detected when multiple modules are installed for the same bundle.
 
 **Solution**
 
-The names of multiple modules of the same application must be unique.
+The names of multiple modules of the same bundle must be the same.
 
 
 <!--Del-->
-### 9568335 Failed to Verify the Installation Parameter hashParams
+### 9568335 Failed to Verify hashParams
 **Error Message**
 
 error: Install failed due to check hap hash param failed.
 
 **Symptom**
 
-During installation, the InstallParam.hashParams parameter fails to be verified.
+Failed to verify the **InstallParam.hashParams** parameter during installation.
 
 **Possible Causes**
 
-The [InstallParam.hashParams](../reference/apis-ability-kit/js-apis-installer-sys.md#installparam) parameter contains redundant module names.
+The [InstallParam.hashParams](../reference/apis-ability-kit/js-apis-installer-sys.md#installparam) parameter contains unnecessary module names.
 
 **Solution**
 
-Verify that the value of InstallParam.hashParams does not contain redundant module names.<!--DelEnd-->
+Check the **InstallParam.hashParams** parameter and ensure that the parameter does not contain unnecessary module names.<!--DelEnd-->
 
 
 ### 9568340 Configuration File Missing
@@ -2624,7 +2638,7 @@ error: Install parse no profile.
 
 **Symptom**
 
-The HAP package does not contain a configuration file. As a result, the installation fails.
+The installation fails because the HAP does not have the configuration file.
 
 **Possible Causes**
 
@@ -2632,7 +2646,7 @@ Configuration files such as [module.json](../quick-start/module-configuration-fi
 
 **Solution**
 
-Use DevEco Studio to rebuild, package, and install the app.
+Use DevEco Studio to rebuild, pack, and install the bundle.
 
 ### 9568341 Failed to Parse the Configuration File During Installation
 **Error Message**
@@ -2648,7 +2662,7 @@ Failed to parse the configuration file during installation.
 The formats of configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build#section43931054115513) are incorrect.
 
 **Solution**
-Use DevEco Studio to rebuild, package, and install the app.
+Use DevEco Studio to rebuild, pack, and install the bundle.
 
 
 ### 9568342 Incorrect Data Type in the Configuration File
@@ -2658,36 +2672,36 @@ error: Install parse profile prop type error.
 
 **Symptom**
 
-The data type is incorrect when the configuration file is parsed during installation. As a result, the installation fails.
+The installation fails because the data type in the configuration file is incorrect.
 
 
 **Possible Causes**
 
-The configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build#section43931054115513) contain fields with incorrect data types.
+Configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build#section43931054115513) contain fields with incorrect data types.
 
 **Solution**
 
-Use DevEco Studio to rebuild, package, and install the app.
+Use DevEco Studio to rebuild, pack, and install the bundle.
 
-### 9568345 Too Long String or Array Size in the Configuration File
+### 9568345 Excessive String Length or Array Size in Configuration File
 **Error Message**
 
 error: too large size of string or array type element in the profile.
 
 **Symptom**
 
-When the configuration file is parsed during installation, the string length or array size is too large. As a result, the installation fails.
+The installation fails because the configuration file contains strings or arrays that exceed the allowed length or size.
 
 **Possible Causes**
 
-The configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build#section43931054115513) contain fields whose string length or array size is too large.
+Configuration files such as [module.json](../quick-start/module-configuration-file.md) and [pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build#section43931054115513) contain strings or arrays that exceed the allowed length or size.
 
 **Solution**
 
-Use DevEco Studio to rebuild, package, and install the app.
+Use DevEco Studio to rebuild, pack, and install the bundle.
 
 
-### 9568347 The Local .so File Fails to Be Parsed
+### 9568347 Failed to Parse Native SO Files
 **Error Message**
 
 error: install parse native so failed.
@@ -2698,7 +2712,7 @@ When you start debugging or running a C++ app/service, the error message "error:
 
 **Possible Causes**
 
-The Application Binary Interface (ABI) supported by the device does not match that configured in the C++ project.
+The Bundle Binary Interface (ABI) supported by the device does not match that configured in the C++ project.
 
 > **NOTE**
 >
@@ -2710,13 +2724,13 @@ The Application Binary Interface (ABI) supported by the device does not match th
 
 1. Connect the device or Emulator to DevEco Studio. For details, please refer to [Running an App/FA](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-device).
 
-2. Run the hdc command on the CLI to query the list of Abis supported by the device.
+2. Run the [hdc command](#environment-requirements-hdc) to query ABIs supported on this device.
 
     ```
     hdc shell
     param get const.product.cpu.abilist
     ```
-3. Based on the query result, check the configuration in the ["abiFilters"](../napi/ohos-abi.md) in the [module-level build-profile.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile) file. The rules are as follows:
+3. Based on the query result, check the ["abiFilters"](../napi/ohos-abi.md) configuration of the [module-level build-profile.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile) file. The rules are as follows:
 
     <!--Del-->
     * If the list includes only **default**, run the following command to check whether the **lib64** folder exists:
@@ -2732,7 +2746,7 @@ The Application Binary Interface (ABI) supported by the device does not match th
 
     * If the list includes one or more of the following, add at least one of them to **abiFilters**: armeabi-v7a, armeabi, arm64-v8a, x86, and x86_64.
 
-### 9568348 Failed to Parse the ark Native SO File
+### 9568348 Failed to Parse the Ark Native SO File
 
 **Error Message**
 
@@ -2744,11 +2758,11 @@ Failed to parse the ark native SO file during installation.
 
 **Possible Causes**
 
-When multiple HAPs are installed, the ABIs are inconsistent and do not match the ABIs supported by the current device.
+The ABIs of the HAPs being installed are inconsistent and do not match those supported by the current device.
 
 **Solution**
 
-Check whether the Abi of multiple HAPs is consistent. For details, see Error Code 9568347.
+Check whether the ABIs of HAPs are consistent. For details, see [9568347 Failed to Parse Native SO Files](#9568347-failed-to-parse-native-so-files).
 
 
 ### 9568350 Failed to Obtain the Proxy Object During Installation
@@ -2762,70 +2776,70 @@ Failed to obtain the proxy object during installation.
 
 **Possible Causes**
 
-The package management service or other services are abnormal. As a result, the proxy fails to be obtained.
+The bundle manager or other services are abnormal.
 
 **Solution**
 1. Restart the phone and try again.
 
-2. If the installation still fails after you repeat the preceding steps for three to five times, export the log file and submit an [online work order](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
 ```
 # Export the log file.
 hdc file recv /data/log/hilog/
 ```
 
-### 9568434 The Device Does Not Have the Plug-in Capability
+### 9568434 Plug-in Capability Unavailable on Device
 **Error Message**
 
 error: Failed to install the plugin because current device does not support plugin.
 
 **Symptom**
 
-Failed to install the plug-in because the device does not have the plug-in capability.
+Failed to install the plugin because the device does not have the plugin capability.
 
 **Possible Causes**
 
-The device does not have the plug-in capability.
+The device does not have the plugin capability.
 
 **Solution**
 
-Use [param tool](./param-tool.md) to set const.bms.support_plugin to true, that is, run hdc shell param set const.bms.support_plugin true.
+Use the [param tool](./param-tool.md) to set **const.bms.support_plugin** to **true**, that is, run the **hdc shell param set const.bms.support_plugin true** command.
 
 
-### 9568435 The Application Bundle Name Does Not Exist
+### 9568435 Bundle Name Does Not Exist
 **Error Message**
 
 error: Host application is not found.
 
 **Symptom**
 
-The app bundle name does not exist.
+The passed-in bundle name does not exist.
 
 **Possible Causes**
 
-The app is not installed.
+The bundle is not installed.
 
 **Solution**
 
-Check whether the input app exists.
+Check whether the passed-in bundle exists.
 
 
-### 9568436 Information of Multiple HSP Packages Is Inconsistent
+### 9568436 Inconsistent HSP Information
 **Error Message**
 
 error: Failed to install the plugin because they have different configuration information.
 
 **Symptom**
 
-The bundle information is inconsistent among multiple HSPs. As a result, the installation fails.
+The installation fails because the HSPs have inconsistent bundle information.
 
 **Possible Causes**
 
-When multiple HSPs are installed, the bundle information of multiple HSP files is inconsistent.
+The HSPs of the plugin have different bundle information.
 
 **Solution**
 
-Check whether the bundle information of multiple HSPs is consistent, including the bundleName, bundleType, versionCode, and apiReleaseType fields in the [app.json5 configuration file](../quick-start/app-configuration-file.md).
+Check whether the bundle information of HSPs is consistent, including the **bundleName**, **bundleType**, **versionCode**, and **apiReleaseType** fields in the [**app.json5** file](../quick-start/app-configuration-file.md).
 
 ### 9568437 Plugin Installation Failure Because of Plugin ID Parsing Failure
 **Error Message**
@@ -2834,15 +2848,15 @@ error: Failed to install the plugin because the plugin id failed to be parsed.
 
 **Symptom**
 
-The pluginDistributionIDs of the plug-in fails to be parsed. As a result, the installation fails.
+The installation fails because **pluginDistributionIDs** of the plugin cannot be parsed.
 
 **Possible Causes**
 
-The pluginDistributionIDs configuration in the plug-in signature information does not comply with the specifications. As a result, the parsing fails.
+The **pluginDistributionIDs** configuration in the plugin signature information does not meet the specifications.
 
 **Solution**
 
-Reconfigure the app-services-capabilities field in <!--RP5--> [signature certificate profile file](../security/app-provision-structure.md)<!--RP5End--> by referring to the following format:
+Reconfigure the **app-services-capabilities** field in <!--RP5-->[the profile](../security/app-provision-structure.md)<!--RP5End--> by referring to the following format:
 ```
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
@@ -2858,52 +2872,52 @@ error: The plugin is not found.
 
 **Symptom**
 
-The plug-in does not exist.
+The plugin does not exist.
 
 **Possible Causes**
 
-The plug-in is not installed in the current application.
+The plugin is not installed in the current bundle.
 
 **Solution**
 
-Run the bm dump -n command to query application information and check whether the input plug-in is installed.
+Run the [bm dump -n command](#dump) to query bundle information and check whether the passed-in plugin is installed.
 
-### 9568439 The Plug-in Name Is the Same as the Application Package Name
+### 9568439 Plug-in Has Same Bundle Name as Bundle
 **Error Message**
 
 error: The plugin name is same as host bundle name.
 
 **Symptom**
 
-The plug-in bundle name is the same as the app bundle name.
+The plugin has the same bundle name as the bundle.
 
 **Possible Causes**
 
-The plug-in bundle name is the same as the application bundle name. As a result, the plug-in fails to be installed.
+The plugin has the same bundle name as the bundle.
 
 **Solution**
 
-Reconfigure the plugin bundle name.
+Change the plugin's bundle name.
 
-### 9568441 U1Enabled Cannot Be Changed for Applications
+### 9568441 U1Enabled Cannot Be Changed for Bundles
 **Error Message**
 
 error: install failed due to U1Enabled can not change.
 
 **Symptom**
 
-The installation fails because the value of U1Enabled in the signature information is changed.
+The installation fails because the value of **U1Enabled** in the signature information is changed.
 
 **Possible Causes**
 
-The U1Enabled configuration of the allowed-acls field in <!--RP5--> [profile signature file](../security/app-provision-structure.md)<!--RP5End--> is changed. For example:
-1. The installed application is configured with U1Enabled in allowed-acls, but the application to be installed is not configured with U1Enabled in allowed-acls.
-2. U1Enabled is not configured in allowed-acls for the installed application, but is configured in allowed-acls for the to-be-installed application.
+The **U1Enabled** configuration of the **allowed-acls** field in the bundle's <!--RP5-->[profile](../security/app-provision-structure.md)<!--RP5End--> is changed. For example:
+1. The existing bundle has **U1Enabled** in **allowed-acls**, but the new bundle does not.
+2. The existing bundle does not have **U1Enabled** in **allowed-acls**, but the new bundle has.
 
 **Solution**
 
-Solution 1: Re-sign the signature. During the signing, configure the ACL permission by referring to [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section9786111152213) or [Manual signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section157591551175916) to ensure that the configuration of the app to be installed is the same as that of the installed app.<br>
-Solution 2: Uninstall the app that has been installed on the device, and then install the app to be installed.
+Solution 1: Re-sign the bundle by referring to the ACL permission in [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or the ACL permission configuration guide in [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233). Ensure that the configuration of the new bundle is the same as that of the existing bundle.<br>
+Solution 2: Uninstall the existing bundle, and then install the new bundle.
 
 ### 9568442 Inconsistent U1Enable Configurations
 **Error Message**
@@ -2912,28 +2926,28 @@ error: Install failed due to the U1Enabled is not same in all haps.
 
 **Symptom**
 
-The U1Enabled configuration in the signature information is inconsistent. As a result, the installation fails.
+The installation fails because **U1Enabled** in the signature information differs between the bundles.
 
 **Possible Causes**
 
-The <!--RP5--> [Profile signature file](../security/app-provision-structure.md)<!--RP5End--&gt used for signing the multi-HAP package is inconsistent. As a result, the U1Enabled configurations of allowed-acls in the signature information are inconsistent.
+The <!--RP5-->[profiles](../security/app-provision-structure.md)<!--RP5End--> used for signing the bundle's HAPs are inconsistent. As a result, the **U1Enabled** in **allowed-acls** of the signatures are inconsistent.
 
 **Solution**
 
-Re-sign the signature. During the signature, configure the ACL permission by referring to [Automatic signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section9786111152213) or [Manual signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section157591551175916) to ensure that the U1Enabled information of allowed-acls in the signature information of multiple HAP packages is the same.
+Re-sign the HAPs by referring to the ACL permission in [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or the ACL permission configuration guide in [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233). Ensure that **U1Enabled** in **allowed-acls** of the HAPs is consistent.
 
 <!--Del-->
 ## FAQs
 
-### 1. The pre-installed system app has been uninstalled. When the app is reinstalled, an error message is displayed, indicating that the app is downgraded or the signature information is inconsistent.
+### 1. The pre-installed system bundle has been uninstalled. When the new bundle is installed, an error message is displayed, indicating that the bundle is downgraded or the signature information is inconsistent. What should I do?
 
-**Issue Details**
+**Symptom**
 
-When I reinstall an application that has been uninstalled, an error message is displayed indicating that the application is downgraded or the signature information is inconsistent. However, the corresponding application icon is displayed on the home screen and can be started properly. What should I do?
+When a new bundle is installed after the existing bundle is uninstalled, an error message is displayed indicating that the bundle is downgraded or the signature information is inconsistent. However, the corresponding bundle icon is displayed on the home screen and can be started properly.
 
 **Possible Causes**
 
-The security control capability is enhanced for pre-installed apps that have been uninstalled. When an app with the same bundle name is installed, the system restores the app in the pre-installed image version and then installs the app.
+The security control capability is enhanced for pre-installed bundles that have been uninstalled. When an application with the same bundle name is installed, the system restores the bundle in the pre-installed image version and then installs the new bundle.
 
 **Solution**
 

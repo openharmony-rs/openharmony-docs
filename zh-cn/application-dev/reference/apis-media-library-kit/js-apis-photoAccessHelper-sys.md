@@ -6481,6 +6481,7 @@ setHasAppLink(hasAppLink: int): void
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.       |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
 
 **示例：**
 
@@ -6533,6 +6534,7 @@ setAppLinkInfo(appLink: string): void
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.       |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter's length is not within the valid range. |
 
 **示例：**
 
@@ -10314,6 +10316,7 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumType
 
@@ -10382,6 +10385,8 @@ async function example(context: Context) {
 | DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | 删除日期（删除文件时间距1970年1月1日的毫秒数值）。**系统接口**：此接口为系统接口。<br>注意：查询照片时，不支持基于该字段排序。 |
 | MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | 动态照片效果模式。**系统接口**：此接口为系统接口。 |
 | CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | 云增强任务标识。**系统接口**：此接口为系统接口。 |
+| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | 缩略图生成标识。**系统接口**：此接口为系统接口。 |
+| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | 缩略图可见标识。**系统接口**：此接口为系统接口。 |
 | SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | 水印可编辑标识。**系统接口**：此接口为系统接口。 |
 | IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | 是否支持自动云增强。**系统接口**：此接口为系统接口。 |
 | OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | 照片所属的相册id。**系统接口**：此接口为系统接口。 |
@@ -10390,7 +10395,9 @@ async function example(context: Context) {
 | EXIF_ROTATE<sup>21+</sup>  | 'exif_rotate' | 文件的旋转角度信息。**系统接口**：此接口为系统接口。 |
 | HAS_APPLINK<sup>21+</sup>  | 'has_applink' | 文件记忆链接的状态信息。**系统接口**：此接口为系统接口。 |
 | APPLINK<sup>21+</sup>  | 'applink' | 文件记忆链接的信息。**系统接口**：此接口为系统接口。 |
+| HDR_MODE<sup>21+</sup>  | 'hdr_mode' | 文件的HDR模式。**系统接口**：此接口为系统接口。 |
 | EXIST_COMPATIBLE_DUPLICATE<sup>22+</sup>  | 'exist_compatible_duplicate' | 兼容副本的状态信息。**系统接口**：此接口为系统接口。 |
+| CLOUD_ID<sup>22+</sup>  | 'cloud_id' | 文件在云端的唯一标识。**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
@@ -10811,7 +10818,8 @@ async function example(context: Context) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| RETAIN_FORCE |  0 |  删除原文件在云端的本地元数据和缩略图。 |
+| RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
+| HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  删除原文件在家庭存储设备的本地元数据和缩略图。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 

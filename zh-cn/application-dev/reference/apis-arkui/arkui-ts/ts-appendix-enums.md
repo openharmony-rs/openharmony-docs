@@ -1361,7 +1361,7 @@ type Nullable\<T> = T | undefined
 
 ## PresetFillType<sup>22+</sup>
 
-为不同响应式断点规格指定列数。
+为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1369,6 +1369,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度相当于SM及更小的设备时显示1列，相当于MD设备时显示2列，相当于LG及更大的设备时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度相当于SM及更小的设备上显示2列，相当于MD设备时显示3列，相当于LG及更大的设备时显示5列。                                       |
-| BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度相当于SM及更小的设备时显示1列，相当于MD设备时显示2列，相当于LG及更大的设备时显示3列。 |
-| BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度相当于SM及更小的设备时显示2列，相当于MD设备时显示3列，相当于LG及更大的设备时显示5列。 |
+| ARKUI_ITEMFILLPOLICY_NONE | -1    | 没有设置响应式断点规格。 |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
+| BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |

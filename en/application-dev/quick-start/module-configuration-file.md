@@ -125,7 +125,7 @@ As shown above, the **module.json5** file contains several tags.
 | [extensionAbilities](#extensionabilities) | ExtensionAbility configuration of the module. The setting is effective only for the current ExtensionAbility.| Object array| Yes (initial value: left empty)|
 | <!--DelRow-->[definePermissions](#definepermissions)| Permissions defined for the system resource HAP. Custom permissions are not supported.| Object array| Yes (initial value: left empty)|
 | [requestPermissions](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file)| A set of permissions that the application needs to request from the system for running correctly.| Object array| Yes (initial value: left empty)|
-| [testRunner](#testrunner) | Test runner of the module. For details, see [test Command](../tools/aa-tool.md#test-command).| Object| Yes (initial value: left empty)|
+| [testRunner](#testrunner) | Test runner of the module. For details, see the [test](../tools/aa-tool.md#test) command.| Object| Yes (initial value: left empty)|
 | [atomicService](#atomicservice)| Atomic service configuration.| Object| Yes (initial value: left empty) |
 | [dependencies](#dependencies)| List of shared libraries on which the module depends during running.| Object array| Yes (initial value: left empty)<br> This tag is automatically generated during compilation and build. Manual configuration does not take effect. |
 | targetModuleName | Target module name. The value is a string with a maximum of 128 bytes. The module that has this tag set provides the overlay feature. This tag is applicable only to HSPs.|String|Yes (initial value: left empty)|

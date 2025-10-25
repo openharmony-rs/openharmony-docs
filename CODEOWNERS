@@ -1254,7 +1254,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomp
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-styled-string-h.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-ui-input-event-h.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/errorcode-animator.md	@CCFFWW	@lxl007	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/errorcode-internal.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-bindSheet.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-canvas.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-drag-event.md	@piggyguy	@songyanhong	@HelloCrease
@@ -1500,7 +1500,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containe
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-divider.md	@lanshouren	@liuli0427	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md	@weixin_52725220	@xiong0104	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md	@xiangyuan6	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-image-sys.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-image.md	@weixin_52725220	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md	@weixin_52725220	@xiong0104	@HelloCrease
@@ -1533,7 +1533,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-symbolGl
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md	@pssea	@jiaoaozihao	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md	@weixin_52725220	@xiong0104	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md	@xiangyuan6	@xiong0104	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput-sys.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md	@weixin_52725220	@xiong0104	@HelloCrease
@@ -2456,6 +2456,12 @@ zh-cn/application-dev/reference/apis-tesk-kit/js-apis-app-ability-abilityDelegat
 zh-cn/application-dev/reference/apis-tesk-kit/js-apis-uitest.md  @Brilliantry_Rui @inter515 @laonie666 @lv_yu_peng @yangyuyan-yyy
 zh-cn/application-dev/reference/apis-tesk-kit/errorcode-uitest.md @Brilliantry_Rui @inter515 @laonie666 @lv_yu_peng @yangyuyan-yyy
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-deviceAttest-sys.md @Brilliantry_Rui @jiyong 
+zh-cn/application-dev/reference/apis-test-kit/js-apis-app-ability-abilityDelegatorRegistry.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-application-abilityDelegatorRegistry.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-application-testRunner.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-inner-application-abilityDelegatorArgs.md @huipeizi @li-weifeng2024 @lixueqing513
+zh-cn/application-dev/reference/apis-test-kit/js-apis-inner-application-shellCmdResult.md @huipeizi @li-weifeng2024 @lixueqing513
 
 [API参考-剪贴板]
 

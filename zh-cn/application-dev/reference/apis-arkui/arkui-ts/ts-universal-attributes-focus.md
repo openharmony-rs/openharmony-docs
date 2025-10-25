@@ -1,7 +1,7 @@
 # 焦点控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -281,7 +281,7 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
-设置当前容器组件的id标识，以及是否为焦点组。
+设置当前容器组件的id标识，以及是否为焦点组。新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
 
 **原子化服务API：**  从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -376,7 +376,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 ### 示例1（设置组件获焦和走焦的效果）
 
-该示例通过配置defaultFocus可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置groupDefaultFocus可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置focusOnTouch可以使绑定的组件点击后立即获焦。
+该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](#groupdefaultfocus9)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](#focusontouch9)可以使绑定的组件点击后立即获焦。
 
 ```ts
 // focusTest.ets
@@ -527,7 +527,7 @@ struct FocusableExample {
 
 ### 示例2（设置指定组件获焦）
 
-该示例通过配置focusControl.requestFocus使指定组件获取焦点。
+该示例通过配置[focusControl.requestFocus](#requestfocus9)使指定组件获取焦点。
 
 ```ts
 // requestFocus.ets
@@ -610,7 +610,7 @@ struct RequestFocusExample {
 
 ### 示例3（设置焦点框样式）
 
-该示例通过配置focusBox修改组件的焦点框样式。
+该示例通过配置[focusBox](#focusbox12)修改组件的焦点框样式。
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -643,7 +643,7 @@ struct RequestFocusExample {
 
 ### 示例4（设置焦点组走焦）
 
-该示例通过配置focusScopePriority，可以使绑定的组件在所属容器首次获焦时成为焦点，配置focusScopeId，可以使绑定的容器组件成为焦点组。
+该示例通过配置[focusScopePriority](#focusscopeid12)，可以使绑定的组件在所属容器首次获焦时成为焦点，配置[focusScopeId](#focusscopeid12)，可以使绑定的容器组件成为焦点组。
 
 ```ts
 // focusTest.ets
@@ -791,7 +791,7 @@ struct FocusableExample {
 
 ### 示例5（设置tab走焦停留）
 
-该示例通过配置tabStop实现使用tab走焦停留在组件上。
+该示例通过配置[tabStop](#tabstop14)实现使用tab走焦停留在组件上。
 
 ```ts
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -878,8 +878,8 @@ struct TabStop {
 
 ### 示例6（设置自定义走焦）
 
-该示例通过配置nextFocus实现自定义走焦规则。
-如果不配置nextFocus，默认的点击tab的走焦顺序为：M->A->B->C；配置了nextFocus以后，走焦顺序变更为：M->D->F->B。
+从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
+如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {

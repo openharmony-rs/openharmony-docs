@@ -34,6 +34,7 @@ Enumerates the scene resource types, which are used to classify resources in a s
 | SHADER | 6 | Shader resource.|
 | IMAGE | 7 | Image resource.|
 | MESH_RESOURCE<sup>18+</sup> | 8 | Mesh resource.|
+| EFFECT<sup>21+</sup> | 9 | Post-processing effect resource.|
 
 ## SceneResource
 Describes a resource in a scene.
@@ -513,3 +514,14 @@ Image resource, which inherits from [SceneResource](#sceneresource-1).
 | ---- | ---- | ---- | ---- | ---- |
 | width | number | Yes| No| Image width, in px. The value must be greater than 0.|
 | height | number | Yes| No| Image height, in px. The value must be greater than 0.|
+
+## Effect<sup>21+</sup>
+
+Effect resource, which inherits from [SceneResource](#sceneresource-1).
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| enable | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
+| effectId | string  | Yes| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**. It is used to create an effect.|

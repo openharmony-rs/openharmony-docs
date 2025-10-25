@@ -1,5 +1,12 @@
-# Contacts Kit
+# Contacts Kit<!--contacts-->
 
-- ArkTS API 
-  - [@ohos.contact (Contact)](js-apis-contact.md)
-
+<!--Kit: Contacts Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @librahCode-->
+<!--Designer: @yanghaoqian-->
+<!--Tester: @shangzhijie-->
+<!--Adviser: @zhang_yixin13-->
+- ArkTS API<!--contacts-arkts-->
+  - [@ohos.contact (Contacts)](js-apis-contact.md)
+- Error Codes
+  - [Contact Error Codes](errorcode-contacts.md)

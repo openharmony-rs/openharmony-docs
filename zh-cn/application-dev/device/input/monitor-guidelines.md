@@ -54,9 +54,9 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+<!-- @[key_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct KeyEvent {
     int32_t action;
     int32_t keyCode;
@@ -71,22 +71,28 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
+	// ···
 }
 
-void TestKeyEventMonitor()
+static napi_value AddKeyEventMonitor(napi_env env, napi_callback_info info)
 {
-    //添加按键事件监听
     Input_Result ret = OH_Input_AddKeyEventMonitor(OnKeyEventCallback);
-    //移除按键事件监听
-    ret = OH_Input_RemoveKeyEventMonitor(OnKeyEventCallback);
+	// ···
+}
+
+static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveKeyEventMonitor(OnKeyEventCallback);
+	// ···
 }
 ```
 
+
 - **鼠标事件**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+<!-- @[mouse_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct MouseEvent {
     int32_t action;
     int32_t displayX;
@@ -109,22 +115,28 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     event.axisType = OH_Input_GetMouseEventAxisType(mouseEvent);
     event.axisValue = OH_Input_GetMouseEventAxisValue(mouseEvent);
     event.actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
+	// ···
 }
 
-void TestMouseEventMonitor()
+static napi_value AddMouseEventMonitor(napi_env env, napi_callback_info info)
 {
-    //添加鼠标事件监听
     Input_Result ret = OH_Input_AddMouseEventMonitor(OnMouseEventCallback);
-    //移除鼠标事件监听
-    ret = OH_Input_RemoveMouseEventMonitor(OnMouseEventCallback);
+	// ···
+}
+
+static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveMouseEventMonitor(OnMouseEventCallback);
+	// ···
 }
 ```
 
+
 - **触摸事件**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+<!-- @[touch_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct TouchEvent {
     int32_t action;
     int32_t id;
@@ -133,7 +145,6 @@ struct TouchEvent {
     int64_t actionTime { -1 };
 };
 
-//定义触摸事件回调函数
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
@@ -143,23 +154,28 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
     event.displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
     event.actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
+	// ···
 }
 
-void TestTouchEventMonitor()
+static napi_value AddTouchEventMonitor(napi_env env, napi_callback_info info)
 {
-    //添加触摸事件监听
     Input_Result ret = OH_Input_AddTouchEventMonitor(OnTouchEventCallback);
-    //移除触摸事件监听
-    ret = OH_Input_RemoveTouchEventMonitor(OnTouchEventCallback);
+	// ···
+}
+
+static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveTouchEventMonitor(OnTouchEventCallback);
+	// ···
 }
 ```
 
+
 - **轴事件**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
-#include <map>
+<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct AxisEvent {
     int32_t axisAction;
     float displayX;
@@ -170,11 +186,9 @@ struct AxisEvent {
     int32_t axisEventType { -1 };
 };
 
-//定义所有类型轴事件回调函数
 void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    
     //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
@@ -201,13 +215,13 @@ void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
         ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
         event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
     }
+	// ···
 }
 
 //定义捏合类型轴事件回调函数
 void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    
     //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
@@ -226,13 +240,12 @@ void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
     event.axisValues.insert(std::make_pair(AXIS_TYPE_PINCH, value));
     ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_ROTATE, &value);
     event.axisValues.insert(std::make_pair(AXIS_TYPE_ROTATE, value));
+	// ···
 }
 
-//定义滚轮类型轴事件回调函数
 void OnScrollAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    
     //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
@@ -251,23 +264,43 @@ void OnScrollAxisEventCallback(const Input_AxisEvent* axisEvent)
     event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_VERTICAL, value));
     ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
     event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
+	// ···
 }
 
-void TestAxisEventMonitor()
+static napi_value AddAxisEventMonitorForAll(napi_env env, napi_callback_info info)
 {
-    //添加所有类型轴事件监听
     Input_Result ret = OH_Input_AddAxisEventMonitorForAll(OnAllAxisEventCallback);
-    //移除所有类型轴事件监听
-    ret = OH_Input_RemoveAxisEventMonitorForAll(OnAllAxisEventCallback);
+	// ···
+}
 
-    //添加捏合类型轴事件监听
-    ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
-    //移除捏合类型轴事件监听
-    ret = OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
+static napi_value RemoveAxisEventMonitorForAll(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveAxisEventMonitorForAll(OnAllAxisEventCallback);
+	// ···
+}
 
-    //添加滚轮类型轴事件监听
-    ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
-    //移除滚轮类型轴事件监听
-    ret = OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
+static napi_value AddPinchAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
+	// ···
+}
+
+static napi_value RemovePinchAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_PINCH, OnPinchAxisEventCallback);
+	// ···
+}
+
+static napi_value AddScrollAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_AddAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
+	// ···
+}
+
+static napi_value RemoveScrollAxisEventMonitor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret =  OH_Input_RemoveAxisEventMonitor(AXIS_EVENT_TYPE_SCROLL, OnScrollAxisEventCallback);
+	// ···
 }
 ```
+

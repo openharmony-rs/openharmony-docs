@@ -3,8 +3,8 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
-<!--Designer: @comicchang-->
-<!--Tester: @gcw_fsLqk7gL-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供组件效果的一些基础能力，包括模糊、边缘像素扩展、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
@@ -320,15 +320,16 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
 ```ts
 import uiEffect from '@ohos.graphics.uiEffect'
-import {common2D} from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+
 @Entry
 @Component
 struct BezierWarpExample {
   @State valueBezier: Array<common2D.Point> = [
-    {x: 0, y: 0}, {x: 1/3, y: 0}, {x: 2/3, y: 0},     // top edge
-    {x: 0.5, y: 0}, {x: 0.5, y: 1/3}, {x: 1, y: 2/3}, // right edge
-    {x: 1, y: 1}, {x: 2/3, y: 1}, {x: 1/3, y: 1},     // bottom edge
-    {x: 0, y: 1}, {x: 0, y: 2/3}, {x: 0, y: 1/3}]     // left edge
+    { x: 0, y: 0 }, { x: 1 / 3, y: 0 }, { x: 2 / 3, y: 0 }, // top edge
+    { x: 0.5, y: 0 }, { x: 0.5, y: 1 / 3 }, { x: 1, y: 2 / 3 }, // right edge
+    { x: 1, y: 1 }, { x: 2 / 3, y: 1 }, { x: 1 / 3, y: 1 }, // bottom edge
+    { x: 0, y: 1 }, { x: 0, y: 2 / 3 }, { x: 0, y: 1 / 3 }] // left edge
 
   build() {
     Column() {
@@ -435,16 +436,20 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 
 ```ts
 import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+
 @Entry
 @Component
 struct Index {
-  @State point2:common2D.Point3d = {
-    x:0,y:0,z:2
+  @State point2: common2D.Point3d = {
+    x: 0, y: 0, z: 2
   }
-  @State color2:common2D.Color = {
-    red:1,green:1,blue:1,alpha:1
+  @State color2: common2D.Color = {
+    red: 1,
+    green: 1,
+    blue: 1,
+    alpha: 1
   }
-  @State lightIntentsity2:number = 1
+  @State lightIntentsity2: number = 1
 
   build() {
     Column() {
@@ -533,7 +538,7 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| mask  | [Mask](#mask20) | 是   | 指定扭曲程度。与factor相乘后共同决定扭曲程度。|
+| displacementMap | [Mask](#mask20) | 是   | 指定扭曲程度。与factor相乘后共同决定扭曲程度。|
 | factor  | [number, number] | 否   | 指定水平、竖直方向扭曲程度系数，系数的绝对值越大，扭曲程度越明显，建议取值范围为[-10.0, 10.0]。不设置时，默认值为1.0。设置为0时，无扭曲效果。与mask相乘后共同决定扭曲程度。 |
 
 **返回值：**
@@ -621,7 +626,7 @@ struct MaskDispersion {
 
   onPageShow(): void {
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext
-    context.resourceManager.getMediaContent($r("app.media.mask_alpha")).then(val => {
+    context.resourceManager.getMediaByName("mask_alpha").then(val => {
       let buffer = val.buffer.slice(0, val.buffer.byteLength)
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {

@@ -4074,7 +4074,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](js-apis-inner-notification-notificationRequest-sys.md#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
+| bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
 | deviceType | string | 是   | 设备类型。|
 
 
@@ -5515,6 +5515,20 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | USER_MODIFIED_ON    | 1   | 表示用户设置的开启状态。                 |
 | SYSTEM_DEFAULT_OFF  | 2   | 表示在用户设置前的初始关闭状态。            |
 | SYSTEM_DEFAULT_ON   | 3   | 表示在用户设置前的初始开启状态。                 |
+
+## DistributedBundleEnableInfo<sup>20+</sup>
+
+描述多设备协同的包信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称          | 类型                                                       | 只读 | 可选 | 说明              |
+| --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
+| bundleName   | string | 否 | 否 | 包名。          |
+| uid          | number | 否 | 否 | 应用程序的UID。          |
+| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>22+</sup>
 

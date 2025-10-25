@@ -223,7 +223,7 @@ init(): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.init().then(() => {
     console.info('scan init success');
@@ -257,7 +257,7 @@ exit(): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.exit().then(() => {
     console.info('scan exit success');
@@ -291,7 +291,7 @@ startScannerDiscovery(): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.startScannerDiscovery().then(() => {
     console.info('start scanner discovery success');
@@ -330,7 +330,7 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
@@ -370,7 +370,7 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
@@ -410,7 +410,7 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
@@ -452,7 +452,7 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -498,7 +498,7 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -540,7 +540,7 @@ getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;Sca
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -582,7 +582,7 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
@@ -623,7 +623,7 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
@@ -663,7 +663,7 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 
 ```ts
 import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
@@ -687,7 +687,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 是 | 扫描仪设备发现事件的回调。 |
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
 
@@ -719,7 +719,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 | **参数名 | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 要取消注册的回调函数。 |
+| callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
 
@@ -754,7 +754,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 是 | 扫描仪设备同步事件的回调。 |
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 是 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
 
@@ -786,7 +786,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
-| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 否 | 要取消注册的回调函数。 |
+| callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 否 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
 

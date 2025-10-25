@@ -40,6 +40,7 @@ struct BlurEffectsExample {
         .fontColor(Color.White)
         .textAlign(TextAlign.Center)
         .backdropBlur(10)// 对背景进行模糊
+        // $r('app.media.share')需要替换为开发者所需的图像资源文件
         .backgroundImage($r('app.media.share'))
         .backgroundImageSize({ width: 400, height: 300 })
     }
@@ -79,6 +80,7 @@ struct Index1 {
         .fontWeight(FontWeight.Bold)
         .fontFamily("cursive")
         .fontStyle(FontStyle.Italic)
+      // $r("app.media.wall")需要替换为开发者所需的图像资源文件
       Image($r("app.media.wall"))
         .blur(this.radius)// 使用blur接口为照片组件添加内容模糊效果
         .height('100%')
@@ -131,6 +133,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
 
           Text('原图')
@@ -156,6 +159,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
@@ -190,6 +194,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -220,6 +225,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -250,6 +256,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -280,6 +287,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -310,6 +318,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -340,6 +349,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -394,6 +404,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
 
           Text('原图')
@@ -419,6 +430,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
@@ -453,6 +465,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -483,6 +496,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -513,6 +527,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -543,6 +558,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -573,6 +589,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -603,6 +620,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
+          // $r('app.media.share')需要替换为开发者所需的图像资源文件
           .backgroundImage($r('app.media.share'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -652,6 +670,7 @@ struct motionBlurTest {
   build() {
     Column() {
       Column() {
+        // $r('app.media.testImg')需要替换为开发者所需的图像资源文件
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)

@@ -1,4 +1,10 @@
 # @ohos.telephony.observer (Observer)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **observer** module provides event subscription management functions. You can register or unregister an observer that listens for the following events: network status change, signal status change, call status change, cellular data connection status, uplink and downlink data flow status of cellular data services, and SIM status change.
 
@@ -87,7 +93,7 @@ Enumerates call states.
 
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
-| [call.CallState](js-apis-call.md#callstate) | Call state.|
+| [call.CallState](js-apis-call.md#callstate) | Call state. (Only the **CALL_STATE_OFFHOOK** state is reported during an outgoing call.)|
 
 
 ## CardType
@@ -115,6 +121,18 @@ SIM card state.
 | ---------------- | --------------------------- |
 | [sim.SimState](js-apis-sim.md#simstate) | SIM card state.|
 
+## TelCallState<sup>21+</sup>
+
+type TelCallState = call.TelCallState
+
+Enumerates call states.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|       Type      |            Description            |
+| ---------------- | --------------------------- |
+| [call.TelCallState](js-apis-call.md#telcallstate21) | Call state. (**TEL_CALL_STATE_OFFHOOK** and **TEL_CALL_STATE_CONNECTED** are used to report the dialed number status and the call connection status respectively during an outgoing call.)|
+
 
 ## observer.on('networkStateChange')
 
@@ -131,7 +149,7 @@ Registers an observer for network status change events. This API uses an asynchr
 | Name  | Type                                                     | Mandatory| Description                                                             |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | Yes  | Network status change event. This field has a fixed value of **networkStateChange**.                |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the result. For details, see [NetworkState](js-apis-radio.md#networkstate).|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the result, which is the [NetworkState](js-apis-radio.md#networkstate) object.|
 
 **Error codes**
 
@@ -398,7 +416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 observer.on('callStateChange', (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -409,10 +427,6 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 
 Registers an observer for call status change events. This API uses an asynchronous callback to return the execution result.
 
-> **NOTE**
->
-> Before using this API, you must declare the **ohos.permission.READ_CALL_LOG** permission (a system permission).
-
 **System capability**: SystemCapability.Telephony.StateRegistry
 
 **Parameters**
@@ -421,7 +435,7 @@ Registers an observer for call status change events. This API uses an asynchrono
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Call status change event. This field has a fixed value of **callStateChange**.              |
 | options  | [ObserverOptions](#observeroptions11)                        | Yes  | Event subscription parameters.                                 |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | Yes  | Callback used to return the result. For details, see [CallState](js-apis-call.md#callstate).<br>**number**: phone number.|
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | Yes  | Callback used to return the result,<br>which is the **CallStateInfo** object. In this object:<br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications.|
 
 **Error codes**
 
@@ -442,7 +456,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -482,12 +496,100 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 }
 observer.on('callStateChange', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
 observer.off('callStateChange', callback);
 observer.off('callStateChange');
+```
+
+
+## observer.on('callStateChangeEx')<sup>21+</sup>
+
+on(type: 'callStateChangeEx', callback: Callback\<TelCallState\>, options?: ObserverOptions): void
+
+Registers an observer for extended call status change events. This API uses an asynchronous callback to return the execution result.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+**Parameters**
+
+| Name  | Type                                          | Mandatory| Description                                                       |
+| -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
+| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChange**.               |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | Yes  | Callback used to return the result,<br>which is the **TelCallState** object.<br>|
+| options  | [ObserverOptions](#observeroptions11)                              | No| Event subscription parameters.               |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**Example**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+
+observer.on('callStateChangeEx', callback, options);
+observer.on('callStateChangeEx', callback);
+```
+
+
+## observer.off('callStateChangeEx')<sup>21+</sup>
+
+off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
+
+Unregisters the observer for extended call status change events. This API uses an asynchronous callback to return the execution result.
+
+> **NOTE**
+>
+> You can pass the callback of the **on** function if you want to cancel listening for a certain type of event. If you do not pass the callback, you will cancel listening for all events.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| type     | string                                                       | Yes  | Call status change event. This field has a fixed value of **callStateChange**.              |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | No  | Callback used to return the result. For details, see [TelCallState](js-apis-call.md#telcallstate21).<br>|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**Example**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+observer.on('callStateChangeEx', callback);
+// You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
+observer.off('callStateChangeEx', callback);
+observer.off('callStateChangeEx');
 ```
 
 
@@ -743,6 +845,10 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 Registers an observer for SIM card status change events. This API uses an asynchronous callback to return the result.
 
+>**NOTE**
+>
+> The return result of this API does not contain the activation status of the SIM card. For details, see [sim.isSimActive](js-apis-sim.md#simissimactive7).
+
 **System capability**: SystemCapability.Telephony.StateRegistry
 
 **Parameters**
@@ -978,10 +1084,10 @@ Defines information about the call status.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type                   | Mandatory| Description    |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | Yes  | Call type.|
-| number              | string                                 | Yes  | Phone number.|
+|     Name           |                 Type                   | Read-Only| Optional| Description    |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | No  | No  | Call type.|
+| number              | string                                 | No  | No  | Phone number.|
 
 
 ## DataConnectionStateInfo<sup>11+</sup>
@@ -990,11 +1096,11 @@ Defines information about the data connection status.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type                                           | Mandatory| Description        |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | Yes  | Data connection status.|
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | Yes  | Network type.    |
 
+| Name| Type                                  |  Read-Only| Optional| Description|
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  No |  No | Data connection status.|
+| network | [RatType](js-apis-radio.md#radiotechnology)  |  No |  No | Network type.|
 
 ## ObserverOptions<sup>11+</sup>
 
@@ -1002,6 +1108,6 @@ Defines event subscription parameters.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |         Type     | Mandatory | Description                                   |
-| ------------------- | ------------------| ---- | --------------------------------------- |
-| slotId              | number            | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |
+|     Name           |         Type     | Read-Only| Optional| Description                                   |
+| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+| slotId              | number            | No  | No  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |

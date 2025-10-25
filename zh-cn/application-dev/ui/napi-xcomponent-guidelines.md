@@ -126,18 +126,18 @@ Native侧
     // 重写XComponentController，设置生命周期回调
     class MyXComponentController extends XComponentController {
         onSurfaceCreated(surfaceId: string): void {
-            console.log(`onSurfaceCreated surfaceId: ${surfaceId}`)
+            console.info(`onSurfaceCreated surfaceId: ${surfaceId}`)
             nativeRender.SetSurfaceId(BigInt(surfaceId));
         }
     
         onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-            console.log(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`)
+            console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`)
             // 在onSurfaceChanged中调用ChangeSurface绘制内容
             nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight)
         }
     
         onSurfaceDestroyed(surfaceId: string): void {
-            console.log(`onSurfaceDestroyed surfaceId: ${surfaceId}`)
+            console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`)
             nativeRender.DestroySurface(BigInt(surfaceId))
         }
     }

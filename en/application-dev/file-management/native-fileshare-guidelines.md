@@ -48,79 +48,102 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 #include <iostream>
 ```
 1. Create a **FileShare_PolicyInfo** instance, and use **OH_FileShare_PersistPermission** to persist the permissions on files based on their URI. The maximum value of **policyNum** is **500**.
-    ```c++
-    static const uint32_t POLICY_NUM = 2;
+<!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+    static const uint32_t policyNum = 2;
     char strTestPath1[] = "file://com.example.fileshare/data/storage/el2/base/files/test1.txt";
     char strTestPath2[] = "file://com.example.fileshare/data/storage/el2/base/files/test2.txt";
-    FileShare_PolicyInfo policy[POLICY_NUM] = {
+    FileShare_PolicyInfo policy[policyNum] = {
         {strTestPath1, static_cast<unsigned int>(strlen(strTestPath1)), FileShare_OperationMode::READ_MODE},
         {strTestPath2, static_cast<unsigned int>(strlen(strTestPath2)), FileShare_OperationMode::WRITE_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
-    auto ret = OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
+    napi_value napiResult;
+    std::string resultStr;
+    auto ret = OH_FileShare_PersistPermission(policy, policyNum, &result, &resultNum);
     if (ret != ERR_OK) {
         if (ret == ERR_EPERM && result != nullptr) {
-            for(uint32_t i = 0; i < resultNum; i++) {
+            for (uint32_t i = 0; i < resultNum; i++) {
                 std::cout << "error uri: " <<  result[i].uri << std::endl;
                 std::cout << "error code: " <<  result[i].code << std::endl;
                 std::cout << "error message: " << result[i].message << std::endl;
+				// ···
             }
         }
     }
     OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-    ```
+```
+
 2. Call **OH_FileShare_ActivatePermission** to activate the persistent permissions on files. The maximum value of **policyNum** is **500**.
-    ```c++
-    auto ret = OH_FileShare_ActivatePermission(policy, POLICY_NUM, &result, &resultNum);
+<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+    auto ret = OH_FileShare_ActivatePermission(policy, policyNum, &result, &resultNum);
     if (ret != ERR_OK) {
         if (ret == ERR_EPERM && result != nullptr) {
-            for(uint32_t i = 0; i < resultNum; i++) {
+            for (uint32_t i = 0; i < resultNum; i++) {
                 std::cout << "error uri: " <<  result[i].uri << std::endl;
                 std::cout << "error code: " <<  result[i].code << std::endl;
                 std::cout << "error message: " << result[i].message << std::endl;
+				// ···
             }
         }
     }
     OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-    ```
+```
+
 3. Call **OH_FileShare_DeactivatePermission** to deactivate the persistent permissions on files. The maximum value of **policyNum** is **500**.
-    ```c++
-    auto ret = OH_FileShare_DeactivatePermission(policy, POLICY_NUM, &result, &resultNum);
+<!-- @[deactivate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+    auto ret = OH_FileShare_DeactivatePermission(policy, policyNum, &result, &resultNum);
     if (ret != ERR_OK) {
         if (ret == ERR_EPERM && result != nullptr) {
-            for(uint32_t i = 0; i < resultNum; i++) {
+            for (uint32_t i = 0; i < resultNum; i++) {
                 std::cout << "error uri: " <<  result[i].uri << std::endl;
                 std::cout << "error code: " <<  result[i].code << std::endl;
                 std::cout << "error message: " << result[i].message << std::endl;
+				// ···
             }
         }
     }
     OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-    ```
+```
+
 4. Call **OH_FileShare_RevokePermission** to revoke the persistent permissions from files. The maximum value of **policyNum** is **500**.
-    ```c++
-    auto ret = OH_FileShare_RevokePermission(policy, POLICY_NUM, &result, &resultNum);
+<!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+    auto ret = OH_FileShare_RevokePermission(policy, policyNum, &result, &resultNum);
     if (ret != ERR_OK) {
         if (ret == ERR_EPERM && result != nullptr) {
-            for(uint32_t i = 0; i < resultNum; i++) {
+            for (uint32_t i = 0; i < resultNum; i++) {
                 std::cout << "error uri: " <<  result[i].uri << std::endl;
                 std::cout << "error code: " <<  result[i].code << std::endl;
                 std::cout << "error message: " << result[i].message << std::endl;
+				// ···
             }
         }
     }
     OH_FileShare_ReleasePolicyErrorResult(result, resultNum);
-    ```
+```
+
 5. Call **OH_FileShare_CheckPersistentPermission** to check the persistent permissions on files. The maximum value of **policyNum** is **500**.
-    ```c++
+<!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
     bool *result = nullptr;
-    auto ret = OH_FileShare_CheckPersistentPermission(policy, POLICY_NUM, &result, &resultNum);
-    if (result != nullptr && resultNum > 0) {
-        for(uint32_t i = 0; i < resultNum && resultNum <= POLICY_NUM; i++) {
-            std::cout << "uri: " <<  policy[i].uri << std::endl;
-            std::cout << "result: " <<  result[i] << std::endl;
+    auto ret = OH_FileShare_CheckPersistentPermission(policy, policyNum, &result, &resultNum);
+    if (ret != ERR_OK) {
+        if (ret == ERR_EPERM && result != nullptr) {
+            for (uint32_t i = 0; i < resultNum && resultNum <= policyNum; i++) {
+                std::cout << "uri: " <<  policy[i].uri << std::endl;
+                std::cout << "result: " <<  result[i] << std::endl;
+				// ···
+            }
         }
     }
     std::cout << "retCode: " <<  ret << std::endl;
     free(result);
-    ```
+```

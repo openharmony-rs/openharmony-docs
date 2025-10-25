@@ -219,7 +219,7 @@ type ImageModifier = ImageModifier
 ## 示例
 ### 示例1（允许拖拽和落入）
 
-示例1通过配置allowDrop设置组件是否可落入，通过配置draggable设置组件是否可拖拽。
+示例1通过配置[allowDrop](#allowdrop)设置组件是否可落入，通过配置[draggable](#draggable)设置组件是否可拖拽。
 
 ```ts
 // xxx.ets
@@ -339,7 +339,7 @@ struct ImageExample {
 
 ### 示例2（设置预览图）
 
-示例2通过配置dragPreview设置拖拽过程的预览图。
+示例2通过配置[dragPreview](#dragpreview11)设置拖拽过程的预览图。
 
 ```ts
 // xxx.ets
@@ -404,7 +404,7 @@ struct DragPreviewDemo{
 
 ### 示例3（设置背板图样式）
 
-示例3通过配置dragPreviewOptions为ENABLE_DEFAULT_SHADOW、ENABLE_DEFAULT_RADIUS和ENABLE_DRAG_ITEM_GRAY_EFFECT设置默认阴影、统一圆角效果与灰显效果。
+示例3通过配置[dragPreviewOptions](#dragpreviewoptions11)为ENABLE_DEFAULT_SHADOW、ENABLE_DEFAULT_RADIUS设置默认阴影和统一圆角效果。从API version 18开始，通过配置[dragPreviewOptions](#dragpreviewoptions11)为ENABLE_DRAG_ITEM_GRAY_EFFECT设置灰显效果。
 
 ```ts
 // xxx.ets
@@ -441,7 +441,7 @@ struct dragPreviewOptionsDemo{
 
 ### 示例4（设置多选拖拽）
 
-示例4通过配置isMultiSelectionEnabled实现Grid组件的多选拖拽效果。
+示例4通过配置[isMultiSelectionEnabled](#draginteractionoptions12)实现Grid组件的多选拖拽效果。
 
 ```ts
 @Entry
@@ -481,7 +481,7 @@ struct Example {
 
 ### 示例5（设置默认点按效果）
 
-示例5通过配置defaultAnimationBeforeLifting实现Grid组件的默认点按效果。
+示例5通过配置[defaultAnimationBeforeLifting](#draginteractionoptions12)实现Grid组件的默认点按效果。
 
 ```ts
 @Entry
@@ -521,7 +521,7 @@ struct Example {
 
 ### 示例6（自定义背板图样式）
 
-示例6通过配置ImageModifier实现Image组件的自定义背板图样式。
+示例6通过配置[ImageModifier](#imagemodifier12)实现Image组件的自定义背板图样式。
 
 ```ts
 // xxx.ets
@@ -794,7 +794,7 @@ struct ImageDrag {
 ![imageDrag.gif](figures/imageDrag.gif)
 
 ### 示例8（设置图片拖拽震动）
-示例8通过设置enableHapticFeedback实现图片拖拽的震动效果。
+从API version 18开始，示例8通过设置[enableHapticFeedback](#draginteractionoptions12)实现图片拖拽的震动效果。
 ```ts
 // xxx.ets
 @Entry
@@ -842,7 +842,7 @@ struct DragPreviewDemo{
 ```
 
 ### 示例9（自定义预览图）
-示例9通过配置onlyForLifting实现自定义预览图，仅用于浮起效果以及配置isLiftingDisabled实现禁用浮起效果。
+从API version 15开始，示例9通过配置[onlyForLifting](./ts-universal-events-drag-drop.md#previewconfiguration15)实现自定义预览图，仅用于浮起效果以及配置[isLiftingDisabled](#draginteractionoptions12)实现禁用浮起效果。
 ```ts
 // xxx.ets
 @Entry
@@ -940,7 +940,7 @@ struct LiftingExampleDemo {
 ![isLiftingDisabled.gif](figures/isLiftingDisabled.gif)
 
 ### 示例10（以拖拽预览图初始尺寸计算跟手点位置）
-示例10通过配置DragPreviewMode.ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现根据拖拽预览图的初始尺寸来计算拖拽过程中跟手点位置。当设置DragPreviewMode.ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
+从API version 19开始，示例10通过配置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现根据拖拽预览图的初始尺寸来计算拖拽过程中跟手点位置。当设置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
 ```ts
 @Entry
 @Component
@@ -1020,7 +1020,7 @@ struct Index {
 ![touchPointer.gif](figures/touchPointer.gif)
 
 ### 示例11（长按浮起预览图与拖拽预览图过渡动效）
-示例11通过配置DraggingSizeChangeEffect实现不同拖拽过渡效果。
+从API version 19开始，示例11通过配置[DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)实现不同拖拽过渡效果。
 ```ts
 @Entry
 @Component

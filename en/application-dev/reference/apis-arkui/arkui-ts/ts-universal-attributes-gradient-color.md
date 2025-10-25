@@ -191,7 +191,7 @@ Creates a radial gradient.
 
 radialGradient(options: Optional\<RadialGradientOptions>): T
 
-Creates a radial gradient. Compared to [radialGradient](#radialgradient), this API supports the **undefined** type for the **options** parameter.
+Creates a radial gradient. Compared with [radialGradient](#radialgradient), this API supports the **undefined** type for the **options** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

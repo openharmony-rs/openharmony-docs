@@ -146,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-Triggered when a page in the routing stack is moved to the top of the stack in single-instance mode (../js-apis-router.md#routermode9). This callback takes effect only for custom components that are decorated by [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) and exist on the [router] (../js-apis-router.md) page.
+Triggered when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -622,7 +622,7 @@ Defines the transition animation to play when the user accesses this page or is 
 
 onFormRecycle?(): string
 
-Called when a card is recycled. The card provider can return the data that needs to be saved by the card management service. The data is transferred to the card provider through the [onFormRecover](#onformrecover11) API when the card is restored.
+Triggered when a widget is recycled. The widget provider can return the data that needs to be saved by the widget management service. The data is transferred to the widget provider through the [onFormRecover](#onformrecover11) API when the widget is restored.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -634,7 +634,7 @@ Called when a card is recycled. The card provider can return the data that needs
 
 | Type               | Description       |
 | ------------------- | ---------   |
-| string | Returns the data that needs to be saved by the card management service.|
+| string | Data that needs to be saved by the widget management service.|
 
 **Example**
 ```ts
@@ -687,7 +687,7 @@ struct WidgetCard {
 
 onFormRecover?(statusData: string): void
 
-The onFormRecover callback function is executed when the widget is recovered. The widget provider can obtain the data saved by the widget management service when the widget is recycled. The data can be saved to the widget management service by using the [onFormRecycle] (#onformrecycle11) callback function.
+The onFormRecover callback function is executed when the widget is recovered. The widget provider can obtain the data saved by the widget management service when the widget is recycled. The data can be saved to the widget management service by using the [onFormRecycle](#onformrecycle11) callback function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -699,7 +699,7 @@ The onFormRecover callback function is executed when the widget is recovered. Th
 
 | Name   | Type                                      | Mandatory   | Description        |
 |--------|------------------------------------------|------------|-------------------------|
-| statusData | string | Yes    | Data saved by the card management service during card recycling.|
+| statusData | string | Yes    | Data stored by the Widget Manager service when the widget is recycled.|
 
 **Example**
 ```ts

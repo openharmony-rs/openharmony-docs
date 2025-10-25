@@ -20,6 +20,8 @@
 
 当前指导仅介绍如何实现媒体资源播放，在应用开发过程中可能会涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
 
+- 由于硬件差异，Lpp播放器能力仅在部分手机上支持。建议通过[OH_LowPowerAVSink_GetCapability](../../reference/apis-media-kit/capi-lowpower-avsink-base-h.md#oh_lowpoweravsink_getcapability)查询Lpp播放器能力是否支持。如果不支持，使用[AvCodec](../avcodec/avcodec-kit-intro.md)能力实现播放。
+
 - 当应用在播放过程中时，播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)事件）可知这会被其他应用打断，建议通过[OH_LowPowerAudioSinkCallback_SetInterruptListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setinterruptlistener)主动监听音频打断事件，根据其回调参数提示做出相应的处理，避免出现应用状态与预期效果不一致的问题。
 
 - 当设备同时连接多个音频输出设备时，建议通过[OH_LowPowerAudioSinkCallback_SetDeviceChangeListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setdevicechangelistener)主动监听音频输出设备改变事件，并做出相应处理。

@@ -43,6 +43,8 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 >- 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](ts-container-stack.md)、[Z序控制](ts-universal-attributes-z-order.md)、[rotate](ts-universal-attributes-transformation.md#rotate)等。
 >
 >- 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](ts-universal-attributes-overlay.md#overlay)能力挂载的自定义节点。
+>
+>- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如果想要支持[scale](ts-universal-attributes-transformation.md#scale)，则需使用[onVisibleAreaChange<sup>21+</sup>](#onvisibleareachange21)，将measureFromViewport设置为true。
 
 ## onVisibleAreaChange<sup>21+</sup>
 
@@ -60,7 +62,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
 | event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
-| measureFromViewport  | boolean | 是  | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。 |
+| measureFromViewport  | boolean | 是  | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。 |
 
 **返回值：**
 
@@ -101,6 +103,8 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 >- 当前接口的可见区域回调阈值默认包含0。例如，开发者设置回调阈值为[0.5]，实际生效的阈值为[0.0, 0.5]。
 >
 >- 从API version 18开始，支持在自定义组件中调用该接口。
+>
+>- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如果想要支持[scale](ts-universal-attributes-transformation.md#scale)，则需将[VisibleAreaEventOptions](#visibleareaeventoptions12)的measureFromViewport设置为true。
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
@@ -112,7 +116,7 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
 | ratios | Array&lt;number&gt;                                 | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | expectedUpdateInterval | number | 否 | 是 | 定义了开发者期望的计算间隔，单位为ms。<br/>默认值：1000 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| measureFromViewport<sup>21+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| measureFromViewport<sup>21+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false <br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 
 ## VisibleAreaChangeCallback<sup>12+</sup>
 
@@ -135,7 +139,7 @@ type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) =>
 
 ### 示例1 (使用onVisibleAreaChange来监听区域变化)
 
-该示例对组件设置onVisibleAreaChange事件，当组件完全显示或者完全消失时触发回调。
+该示例对组件设置[onVisibleAreaChange](#onvisibleareachange)事件，当组件完全显示或者完全消失时触发回调。
 
 ```ts
 // xxx.ets
@@ -237,7 +241,7 @@ struct ScrollExample {
 
 ### 示例2 (使用onVisibleAreaApproximateChange来监听区域变化)
 
-该示例对组件设置onVisibleAreaApproximateChange事件，当组件完全显示或者完全消失时触发回调。
+从API version 17开始，该示例对组件设置[onVisibleAreaApproximateChange](#onvisibleareaapproximatechange17)事件，当组件完全显示或者完全消失时触发回调。
 
 ```ts
 // xxx.ets
@@ -337,3 +341,145 @@ struct ScrollExample {
 }
 ```
 ![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change.gif)
+
+### 示例3 (设置measureFromViewport子组件超出父组件显示)
+
+从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有有微小差异。
+
+```ts
+@Entry
+@Component
+struct OnVisibleAreaChangeSample {
+  @State ratio1: number = 0.0;
+  @State ratio2: number = 0.0;
+
+  build() {
+    Column() {
+      Text(`onVisibleChange with measureFromViewport \nratio: ${this.ratio1}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // measureFromViewport设置为true，父组件未设置clip(true)，超出父组件的区域被视为可见区域。
+          // .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio1 = currentRatio
+          }, true)
+        }
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+
+      Text(`onVisibleChange without measureFromViewport \nratio: ${this.ratio2}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // 不设置measureFromViewport，measureFromViewport默认为false，父组件未设置clip(true)，超出父组件的区域被视为不可见区域。
+          // .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio2 = currentRatio
+          })
+        }
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change1.jpg)
+
+### 示例4 (设置measureFromViewport子组件被父组件裁切超出父组件不显示)
+
+从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有有微小差异。
+
+```ts
+@Entry
+@Component
+struct OnVisibleAreaChangeSample {
+  @State ratio1: number = 0.0;
+  @State ratio2: number = 0.0;
+
+  build() {
+    Column() {
+      Text(`onVisibleChange with measureFromViewport \nratio: ${this.ratio1}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // measureFromViewport设置为true，父组件设置clip(true)，超出父组件的区域被视为不可见区域。
+          // .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio1 = currentRatio
+          }, true)
+        }
+        .clip(true)
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+
+      Text(`onVisibleChange without measureFromViewport \nratio: ${this.ratio2}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // 不设置measureFromViewport，measureFromViewport默认为false，父组件设置clip(true)，超出父组件的区域被视为不可见区域。
+          // .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio2 = currentRatio
+          })
+        }
+        .clip(true)
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change2.jpg)

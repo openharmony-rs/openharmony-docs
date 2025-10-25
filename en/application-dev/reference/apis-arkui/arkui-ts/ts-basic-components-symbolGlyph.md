@@ -643,7 +643,7 @@ struct Index {
         }
 
         Column() {
-          Text ("Layered mode")
+          Text("Layered mode")
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)

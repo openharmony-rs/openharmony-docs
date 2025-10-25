@@ -1021,7 +1021,7 @@ struct BackGroundBlur {
 
 ### 示例8（设置P3色域背景效果）
 
-该示例通过backgroundColor设置P3色域背景效果。
+从API version 20开始，该示例通过[backgroundColor](#backgroundcolor20)设置P3色域背景效果。
 
 ```ts
 // xxx.ets
@@ -1048,7 +1048,7 @@ struct P3BackgroundDemo {
 
 ### 示例9（设置组件背景扩展）
 
-该示例通过background实现组件背景扩展到父组件的安全区。
+从API version 20开始，该示例通过[background](#background10)实现组件背景扩展到父组件的安全区。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';

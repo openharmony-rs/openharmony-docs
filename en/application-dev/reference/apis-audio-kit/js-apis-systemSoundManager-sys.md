@@ -32,6 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | Notification tone.|
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | Alarm tone.|
 | TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | Contacts tone.|
+| TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | number | 32  | Application-level notification tone.|
 
 ## RingtoneType
 
@@ -164,7 +165,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -228,7 +229,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -321,7 +322,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
@@ -615,12 +616,103 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 toneHapticsAttrs.getFileName();
 ```
+### getGentleUri<sup>22+</sup>
+
+getGentleUri(): string | null
+
+Obtains the URI of the gentle haptics resource.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description |
+|--------|-----|
+| string \| null | URI of the gentle haptics resource (for example, '/data/storage/el2/base/haptics/synchronized/alarms/test.json'). If no gentle haptics resource exists, null is returned. A gentle haptic effect has a weaker motor vibration than the standard one.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneHapticsAttrs.getGentleUri();
+```
+
+### getGentleTitle<sup>22+</sup>
+
+getGentleTitle(): string | null
+
+Obtains the title of the gentle haptics resource.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description |
+|--------|-----|
+| string \| null | Title of the gentle haptics resource. If no gentle haptics resource exists, null is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneHapticsAttrs.getGentleTitle();
+```
+
+### getGentleFileName<sup>22+</sup>
+
+getGentleFileName(): string | null
+
+Obtains the file name of the gentle haptics resource.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.SystemSound.Core
+
+**Return value**
+
+| Type   | Description |
+|--------|-----|
+| string \| null | File name of the gentle haptics resource, in JSON format. If no gentle haptics resource exists, null is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message             |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**Example**
+
+```ts
+toneHapticsAttrs.getGentleFileName();
+```
 
 ## ToneHapticsAttrsArray<sup>14+</sup>
 
 type ToneHapticsAttrsArray = Array&lt;ToneHapticsAttrs&gt;
 
 Describes the haptics attribute array of a tone.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -1264,7 +1356,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1315,7 +1407,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1366,7 +1458,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1417,7 +1509,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1467,7 +1559,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1489,7 +1581,7 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
 
 ### setAlarmToneUri<sup>12+</sup>
 
-setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
+setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 Sets a URI for an alarm tone. This API uses a promise to return the result.
 
@@ -1501,7 +1593,7 @@ Sets a URI for an alarm tone. This API uses a promise to return the result.
 
 | Name  | Type       | Mandatory| Description  |
 | -------- | --------- | ---- |--------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                          |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.                                                                          |
 | uri      | string    | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
@@ -1530,7 +1622,7 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
 
 ### getAlarmToneUri<sup>12+</sup>
 
-getAlarmToneUri(context: Context): Promise&lt;string&gt;
+getAlarmToneUri(context: BaseContext): Promise&lt;string&gt;
 
 Obtains the URI of the current alarm tone. This API uses a promise to return the result.
 
@@ -1542,7 +1634,7 @@ Obtains the URI of the current alarm tone. This API uses a promise to return the
 
 | Name  | Type     | Mandatory| Description             |
 | -------- | --------| ---- |-----------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context. |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context. |
 
 **Return value**
 
@@ -1596,7 +1688,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1618,7 +1710,7 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
 
 ### openAlarmTone<sup>12+</sup>
 
-openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
+openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 Enables an alarm tone. This API uses a promise to return the result.
 
@@ -1630,7 +1722,7 @@ Enables an alarm tone. This API uses a promise to return the result.
 
 | Name  | Type      | Mandatory| Description                                                                                 |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.                                                                          |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.                                                                          |
 | uri      | string   | Yes  | URI of the alarm tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
@@ -1646,7 +1738,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
@@ -1697,7 +1789,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1752,7 +1844,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700004 | Data size exceeds the limit. |
@@ -1822,7 +1914,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700004 | Data size exceeds the limit. |
@@ -1891,8 +1983,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102     | Operation is not allowed, e.g. ringtone of this uri is not customized. |
 | 5400103 | I/O error. |
 
 **Example**
@@ -1943,7 +2035,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -1996,8 +2088,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not valid. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2053,7 +2145,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2104,8 +2196,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID  | Error Message             |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not used for tones. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2129,7 +2221,7 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 
 ### openToneHaptics<sup>14+</sup>
 
-openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
+openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 Enables haptics for the tone. This API uses a promise to return the result.
 
@@ -2141,7 +2233,7 @@ Enables haptics for the tone. This API uses a promise to return the result.
 
 | Name  | Type      | Mandatory| Description                                                                                 |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context.          |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.          |
 | hapticsUri      | string   | Yes  | URI of the haptics resource. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
 
 **Return value**
@@ -2157,7 +2249,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message             |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
@@ -2331,6 +2423,8 @@ type RingtonePlayer = _RingtonePlayer;
 
 Defines a ringtone player.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 | Type             |Description    |
@@ -2342,6 +2436,8 @@ Defines a ringtone player.
 type SystemTonePlayer = _SystemTonePlayer;
 
 Defines a system tone player.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -2355,6 +2451,8 @@ type RingtoneOptions = _RingtoneOptions;
 
 Defines the configuration of a ringtone player.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 | Type             | Description         |
@@ -2366,6 +2464,8 @@ Defines the configuration of a ringtone player.
 type SystemToneOptions = _SystemToneOptions;
 
 Defines the configuration of a system tone player.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 

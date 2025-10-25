@@ -81,7 +81,7 @@ Called when the visible area of the component changes. You can use measureFromVi
 
 onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 
-Sets the callback parameter of the onVisibleAreaApproximateChange event to limit the execution interval.
+Configures a callback for the **onVisibleAreaApproximateChange** event, with options to limit the callback execution interval.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -91,34 +91,34 @@ Sets the callback parameter of the onVisibleAreaApproximateChange event to limit
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | Yes  | Options of visible area changes.|
+| options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | Yes  | Visible area change configuration options.|
 | event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | Yes  | Callback for the **onVisibleAreaChange** event. This callback is triggered when the ratio of the component's visible area to its total area approaches the threshold set in **options**.|
 
 >**NOTE**
 >
->- The difference between this interface and the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) interface is as follows: The onVisibleAreaChange interface calculates the proportion of visible areas in each frame. If too many nodes are registered, the system power consumption deteriorates. This API reduces the frequency of calculating the visible area ratio. The calculation interval is determined by the expectedUpdateInterval parameter in [VisibleAreaEventOptions](#visibleareaeventoptions12).
+>- Compared with [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange), this API reduces calculation frequency to optimize performance when many nodes are registered. The calculation interval is controlled by the **expectedUpdateInterval** parameter in [VisibleAreaEventOptions](#visibleareaeventoptions12).
 >
 >- By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
 >
->- Since API version 18, this API can be called in custom components.
+>- This API can be called in custom components since API version 18.
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
-Describes visible area changes.
+Describes visible area change configuration options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type                                               | Read-Only| Optional| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
 | ratios | Array&lt;number&gt;                                 | No| No  | Threshold array. Each threshold represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| expectedUpdateInterval | number | No| Yes| Defines the expected calculation interval, in milliseconds.<br>Default value: **1000**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| measureFromViewport<sup>21+</sup> | boolean | No| Yes| Sets the visible region calculation mode.<br>When measureFromViewport is set to true, the system considers the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute of the parent component when calculating the visible area of the component. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) of the parent component is false, it is considered that the child components in the parent component can be displayed beyond the area of the parent component. Therefore, the area beyond the parent component is also considered as a visible area for calculation. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) of the parent component is set to true, the area that exceeds the parent component is cropped and cannot be displayed. Therefore, the area is considered as an invisible area for calculation. When measureFromViewport is set to false, the part that exceeds the parent component is regarded as an invisible area without considering the impact of [clip](./ts-universal-attributes-sharp-clipping.md#clip12).<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| expectedUpdateInterval | number | No| Yes| Expected calculation interval, in ms.<br>Default value: **1000**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| measureFromViewport<sup>21+</sup> | boolean | No| Yes| Visible area calculation mode.<br>**true**: considers parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, treating areas beyond the parent's bounds as invisible.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 
 ## VisibleAreaChangeCallback<sup>12+</sup>
 
 type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void
 
-The **VisibleAreaChangeCallback** type is used to represent a callback for visible area changes of the component.
+Represents a callback for visible area changes of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

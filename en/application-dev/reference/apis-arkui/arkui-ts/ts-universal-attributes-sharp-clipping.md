@@ -16,7 +16,7 @@ Shape clipping changes the visible portion of a component through clipping or ma
 
 clip(value: boolean): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 clip(clip: Optional\<boolean>): T
 
-Sets whether to clip the areas of child components that extend beyond this component's boundaries, that is, whether to perform clipping based on the edge contour of the parent container Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type for the **clip** parameter.
+Sets whether to clip the areas of child components that extend beyond this component's boundaries, that is, whether to perform clipping based on the edge contour of the parent container. Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type for the **clip** parameter.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +124,7 @@ Clips this component according to the specified shape (which may include positio
 
 clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-Clips this component according to the specified shape (which may include position information). Compared to [clipShape<sup>12+</sup>](#clipshape12), the **shape** parameter supports the **undefined** type.
+Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape12), this API supports the **undefined** type for the **shape** parameter.
 
 > **NOTE** 
 >
@@ -338,7 +338,7 @@ Adds a mask of the specified shape to the component. Compared with [maskShape<su
 
 ## ProgressMask<sup>10+</sup>
 
-Sets the progress, maximum value, and color for a mask.
+Implements a **ProgressMask** object to set the progress, maximum value, and color of the mask.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

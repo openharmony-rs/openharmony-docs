@@ -393,9 +393,7 @@
 
 手势识别基于[触摸测试](./arkts-interaction-basic-principles.md#触摸测试)的响应链结果进行，因此在用户按下时，通过控制响应链中手势识别器的参与状态，实现高效的动态干预手势处理。
 
-这需要结合[onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20)接口来实现：
-
-完成触摸测试后，系统通过该接口回调返回所有手势识别器对象。应用可根据类型、组件标识或关联组件信息筛选识别器，并通过调用[preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20)接口主动禁用特定识别器。
+从API version 20开始，可以结合[onTouchTestDone](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ontouchtestdone20)接口来阻止手势参与识别。完成触摸测试后，系统通过该接口回调返回所有手势识别器对象。应用可根据类型、组件标识或关联组件信息筛选识别器，并通过调用[preventBegin](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#preventbegin20)接口主动禁用特定识别器。
 
 根据手势类型进行禁用：
 

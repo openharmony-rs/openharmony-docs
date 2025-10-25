@@ -73,12 +73,12 @@ Codec MIME类型枚举。
 | 名称         | 值                    | 说明                     |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | 表示视频/h263类型。      |
-| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。       |
+| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/mpeg2类型。     |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/mpeg4类型。     |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/vp8类型。       |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。      |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。      |
@@ -247,8 +247,8 @@ Codec MIME类型枚举。
 
 | 名称        | 值    | 说明                  |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 |
-| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CFT_MP3<sup>12+</sup>  | 'mp3' | 音频的容器格式，MP3。 |
 | CFT_WAV<sup>12+</sup>  | 'wav' | 音频的容器格式，WAV。 |
 | CFT_AMR<sup>18+</sup>  | 'amr' | 音频的容器格式，AMR。 |

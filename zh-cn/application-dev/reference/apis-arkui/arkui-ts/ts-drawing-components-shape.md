@@ -83,7 +83,7 @@ viewPort(value: ViewportRect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br/>异常值undefined按照默认值处理。 |
+| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。<br/>默认值：{ x: 0, y: 0, width: Shape组件的宽度, height: Shape组件的高度 }<br/>异常值undefined按照默认值处理。 |
 
 ### fill
 
@@ -155,7 +155,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 边框间隙。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。|
+| value  | Array&lt;any&gt; | 是   | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -265,7 +265,7 @@ strokeWidth(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                     |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1<br/>默认单位：vp<br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 边框宽度，取值范围≥0。<br/>默认值：1 <br/>默认单位：vp<br/>异常值undefined、null和NaN按照默认值处理，Infinity按0处理。 |
 
 ### antiAlias
 
@@ -556,3 +556,43 @@ struct ShapeModifierDemo {
 ```
 
 ![](figures/shapeModifier.png)
+
+### 示例4（使用mesh实现图像局部扭曲）
+
+以下示例展示了如何使用mesh属性设置网格效果，实现图像局部扭曲。
+
+```ts
+// xxx.ets
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Index {
+  private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  private meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+  @State pixelMap: image.PixelMap | undefined = undefined
+
+  aboutToAppear(): void {
+    // "resources/base/media/img.png"需要替换为开发者所需的图像资源文件。
+    let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
+    this.context.drawImage(img, 0, 0, 200, 200)
+    this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
+  }
+
+  build() {
+    Column() {
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+      .mesh(this.meshArray, 2, 2)
+
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+    }
+  }
+}
+```
+![](figures/shapeMesh.png)

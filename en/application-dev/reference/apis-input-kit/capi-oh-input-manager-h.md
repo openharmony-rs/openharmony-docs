@@ -34,9 +34,12 @@ Provides functions such as event injection and status query.
 | [Input_MouseEvent](capi-input-input-mouseevent.md) | Input_MouseEvent | Mouse event object.|
 | [Input_TouchEvent](capi-input-input-touchevent.md) | Input_TouchEvent | **TouchEvent** object.|
 | [Input_AxisEvent](capi-input-input-axisevent.md) | Input_AxisEvent | Axis event object.|
-| [Input_Hotkey](capi-input-input-hotkey.md) | Input_Hotkey | Defines the shortcut key structure.|
+| [Input_Hotkey](capi-input-input-hotkey.md) | Input_Hotkey | Defines the hotkey structure.|
 | [Input_DeviceInfo](capi-input-input-deviceinfo.md) | Input_DeviceInfo | Defines the input device information.|
 | [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) | Input_InterceptorOptions | Defines event interception options.|
+| [Input_CustomCursor](capi-input-input-customcursor.md) | Input_CustomCursor | Defines the pixel map resource of the custom mouse pointer object.|
+| [Input_CursorConfig](capi-input-input-cursorconfig.md) | Input_CursorConfig | Defines the custom mouse pointer configuration.|
+| [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | Defines the mouse pointer information.|
 
 ### Enums
 
@@ -57,7 +60,7 @@ Provides functions such as event injection and status query.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*Input_HotkeyCallback)(Input_Hotkey* hotkey)](#input_hotkeycallback) | Input_HotkeyCallback | Defines the callback used to return shortcut key events.|
+| [typedef void (\*Input_HotkeyCallback)(Input_Hotkey* hotkey)](#input_hotkeycallback) | Input_HotkeyCallback | Defines the callback used to return hotkey events.|
 | [typedef void (\*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)](#input_keyeventcallback) | Input_KeyEventCallback | Defines a lifecycle callback for **keyEvent**. If the callback is triggered, **keyEvent** will be destroyed.|
 | [typedef void (\*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)](#input_mouseeventcallback) | Input_MouseEventCallback | Defines a lifecycle callback for **mouseEvent**. If the callback is triggered, **mouseEvent** will be destroyed.|
 | [typedef void (\*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)](#input_toucheventcallback) | Input_TouchEventCallback | Defines the lifecycle callback for **TouchEvent**. If the callback is triggered, **TouchEvent** will be destroyed.|
@@ -160,19 +163,19 @@ Provides functions such as event injection and status query.
 | [Input_Result OH_Input_RemoveKeyEventInterceptor(void)](#oh_input_removekeyeventinterceptor) | - | Removes the interceptor for key events.|
 | [Input_Result OH_Input_RemoveInputEventInterceptor(void)](#oh_input_removeinputeventinterceptor) | - | Removes the interceptor for input events, including mouse, touch, and axis events.|
 | [Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)](#oh_input_getintervalsincelastinput) | - | Obtains the interval since the last system input event.|
-| [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | Creates a shortcut key object.|
-| [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | Destroys a shortcut key object.|
+| [Input_Hotkey *OH_Input_CreateHotkey(void)](#oh_input_createhotkey) | - | Creates a hotkey object.|
+| [void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)](#oh_input_destroyhotkey) | - | Destroys a hotkey object.|
 | [void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)](#oh_input_setprekeys) | - | Sets the modifier key.|
 | [Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, int32_t *preKeyCount)](#oh_input_getprekeys) | - | Obtains the modifier key.|
 | [void OH_Input_SetFinalKey(Input_Hotkey* hotkey, int32_t finalKey)](#oh_input_setfinalkey) | - | Sets the modified key.|
 | [Input_Result OH_Input_GetFinalKey(const Input_Hotkey* hotkey, int32_t *finalKeyCode)](#oh_input_getfinalkey) | - | Obtains the modified key.|
 | [Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)](#oh_input_createallsystemhotkeys) | - | Creates an [Input_Hotkey](capi-input-input-hotkey.md) array.|
 | [void OH_Input_DestroyAllSystemHotkeys(Input_Hotkey **hotkeys, int32_t count)](#oh_input_destroyallsystemhotkeys) | - | Destroys an [Input_Hotkey](capi-input-input-hotkey.md) array and reclaims the memory.|
-| [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | Obtains all configured shortcut keys.|
+| [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | Obtains all configured hotkeys.|
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | Specifies whether to report repeated key events.|
 | [Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)](#oh_input_getrepeat) | - | Checks whether to report repeated key events.|
-| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | Subscribes to shortcut key events. This API is not applicable to wearables and lite wearables.|
-| [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | Unsubscribes from shortcut key events.|
+| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | Subscribes to hotkey events. This API is not applicable to wearables and lite wearables.|
+| [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | Unsubscribes from hotkey events.|
 | [Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)](#oh_input_registerdevicelistener) | - | Registers a listener for device hot swap events.|
 | [Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)](#oh_input_unregisterdevicelistener) | - | Unregisters the listener for device hot swap events.|
 | [Input_Result OH_Input_UnregisterDeviceListeners()](#oh_input_unregisterdevicelisteners) | - | Unregisters the listener for all device hot swap events.|
@@ -212,6 +215,25 @@ Provides functions such as event injection and status query.
 | [Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)](#oh_input_addkeyeventhook) | - | Adds a hook function for key event interception.|
 | [Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)](#oh_input_removekeyeventhook) | - | Removes the hook function for key event interception.|
 | [Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)](#oh_input_dispatchtonexthandler) | - | Redispatches key events.|
+| [Input_Result OH_Input_SetPointerVisible(bool visible)](#oh_input_setpointervisible) | - | Sets the visible status of the mouse pointer in the current window.|
+| [Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)](#oh_input_getpointerstyle) | - | Obtains the mouse pointer style of the specified window.|
+| [Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)](#oh_input_setpointerstyle) | - | Sets the mouse pointer style of the specified window.|
+| [Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)](#oh_input_customcursor_create) | - | Creates a custom mouse pointer object.|
+| [void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)](#oh_input_customcursor_destroy) | - | Destroys a custom mouse pointer object.|
+| [Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative** pixelMap)](#oh_input_customcursor_getpixelmap) | - | Obtains the pixel map of a custom mouse pointer object.|
+| [Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, int32_t* anchorX, int32_t* anchorY)](#oh_input_customcursor_getanchor) | - | Obtains the focus coordinates of a custom mouse pointer object.|
+| [Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)](#oh_input_cursorconfig_create) | - | Creates a custom mouse pointer configuration object.|
+| [void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)](#oh_input_cursorconfig_destroy) | - | Destroys a custom mouse pointer configuration object.|
+| [Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)](#oh_input_cursorconfig_isfollowsystem) | - | Queries whether the custom mouse pointer configuration follows the system setting to adjust the pointer size.|
+| [Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)](#oh_input_setcustomcursor) | - | Sets the custom mouse pointer style.|
+| [struct Input_CursorInfo* OH_Input_CursorInfo_Create()](#oh_input_cursorinfo_create) | - | Creates a mouse pointer information object.|
+| [void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)](#oh_input_cursorinfo_destroy) | - | Destroys the mouse pointer information object.|
+| [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | Obtains the pointer visible status of the specified mouse pointer information object.|
+| [Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)](#oh_input_cursorinfo_getstyle) | - |Obtains the pointer style of the specified mouse pointer information object.|
+| [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | Obtains the pointer size level of the specified mouse pointer information object.|
+| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | Obtains the pointer color of the specified mouse pointer information object, which is represented by a 32-bit ARGB integer.|
+| [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.|
+| [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.|
 
 ## Enum Description
 
@@ -431,7 +453,7 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 
 **Description**
 
-Defines the callback used to return shortcut key events.
+Defines the callback used to return hotkey events.
 
 **Since**: 14
 
@@ -2222,7 +2244,7 @@ Obtains the Y coordinate of the axis event in the relative coordinate system wit
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** or **displayX** is null.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** or **displayY** is null.|
 
 ### OH_Input_SetAxisEventAxisValue()
 
@@ -2993,7 +3015,7 @@ Input_Hotkey *OH_Input_CreateHotkey(void)
 
 **Description**
 
-Creates a shortcut key object.
+Creates a hotkey object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3013,7 +3035,7 @@ void OH_Input_DestroyHotkey(Input_Hotkey **hotkey)
 
 **Description**
 
-Destroys a shortcut key object.
+Destroys a hotkey object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3024,7 +3046,7 @@ Destroys a shortcut key object.
 
 | Parameter| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) **hotkey | Shortcut key object.|
+| [Input_Hotkey](capi-input-input-hotkey.md) **hotkey | Hotkey object.|
 
 ### OH_Input_SetPreKeys()
 
@@ -3045,7 +3067,7 @@ Sets the modifier keys.
 
 | Parameter| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Shortcut key object.|
+| [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Hotkey object.|
 | int32_t *preKeys | List of modifier keys.|
 | int32_t size | Number of modifier keys. One or two modifier keys are supported.|
 
@@ -3068,7 +3090,7 @@ Obtains the modifier key.
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Shortcut key object.|
+| const [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Hotkey object.|
 | int32_t **preKeys | List of modifier keys.|
 | int32_t *preKeyCount | Number of modifier keys.|
 
@@ -3097,7 +3119,7 @@ Sets the modified key.
 
 | Parameter| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Shortcut key object.|
+| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
 | int32_t finalKey | Modifier key value. Only one modifier key value is allowed.|
 
 ### OH_Input_GetFinalKey()
@@ -3119,7 +3141,7 @@ Obtains the modified key.
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Shortcut key object.|
+| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
 | int32_t *finalKeyCode | Modified key.|
 
 **Return value**
@@ -3185,7 +3207,7 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 
 **Description**
 
-Obtains all configured shortcut keys.
+Obtains all configured hotkeys.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3197,7 +3219,7 @@ Obtains all configured shortcut keys.
 | Parameter| Description|
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) **hotkey | [Input_Hotkey](capi-input-input-hotkey.md) array. When calling this API for the first time, you can pass **NULL** to obtain the array length.|
-| int32_t *count | Number of supported shortcut keys.|
+| int32_t *count | Number of supported hotkeys.|
 
 **Return value**
 
@@ -3224,7 +3246,7 @@ Specifies whether to report repeated key events.
 
 | Parameter| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Shortcut key object.|
+| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
 | bool isRepeat | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite.|
 
 ### OH_Input_GetRepeat()
@@ -3246,7 +3268,7 @@ Checks whether to report repeated key events.
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Shortcut key object.|
+| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
 | bool *isRepeat | Whether the reported key event is repeated.|
 
 **Return value**
@@ -3263,7 +3285,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 **Description**
 
-Subscribes to shortcut key events. This API is not applicable to wearables and lite wearables.
+Subscribes to hotkey events. This API is not applicable to wearables and lite wearables.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3274,14 +3296,14 @@ Subscribes to shortcut key events. This API is not applicable to wearables and l
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Shortcut key object.|
-| [Input_HotkeyCallback](#input_hotkeycallback) callback | Defines the callback used to return shortcut key events.|
+| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
+| [Input_HotkeyCallback](#input_hotkeycallback) callback | Defines the callback used to return hotkey events.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_AddHotkeyMonitor status code, specifically,<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if parameter verification fails;<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) if the shortcut key has been occupied by the system (you can use [OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys) to query allsystem shortcut keys);<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) if the shortcut key has been occupied by another application;<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported.|
+| [Input_Result](#input_result) | OH_Input_AddHotkeyMonitor status code, specifically,<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if parameter verification fails;<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) if the hotkey has been occupied by the system (you can use [OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys) to query allsystem hotkeys);<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) if the hotkey has been occupied by another application;<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported.|
 
 ### OH_Input_RemoveHotkeyMonitor()
 
@@ -3291,7 +3313,7 @@ Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_Hotk
 
 **Description**
 
-Unsubscribes from shortcut key events.
+Unsubscribes from hotkey events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3302,8 +3324,8 @@ Unsubscribes from shortcut key events.
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Shortcut key object.|
-| [Input_HotkeyCallback](#input_hotkeycallback) callback | Defines the callback used to return shortcut key events.|
+| const [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
+| [Input_HotkeyCallback](#input_hotkeycallback) callback | Defines the callback used to return hotkey events.|
 
 **Return value**
 
@@ -3842,7 +3864,7 @@ Queries the maximum number of touch points supported by the device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Operation result.<br>[INPUT_SUCCESS](#input_result) if the operation is successful;<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Operation result:<br>[INPUT_SUCCESS](#input_result) if the operation is successful;<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
 
 ### OH_Input_InjectMouseEventGlobal()
 ```
@@ -3869,7 +3891,7 @@ You are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) t
 
 | Type| Description|
 | -- | -- |
-| int32_t | Operation result.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
+| int32_t | Operation result:<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
 
 ### OH_Input_SetMouseEventGlobalX()
 ```
@@ -3982,7 +4004,7 @@ You are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) t
 
 | Type| Description|
 | -- | -- |
-| int32_t | Operation result.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
+| int32_t | Operation result:<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
 
 ### OH_Input_SetTouchEventGlobalX()
 
@@ -4194,7 +4216,7 @@ Obtains the coordinates of the mouse pointer on the current screen.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result.<br>      [INPUT_SUCCESS](#input_result) if the operation is successful;<br>      [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>      [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs;<br>      [INPUT_APP_NOT_FOCUSED](#input_result) if the current application is not in focus;<br>      [INPUT_DEVICE_NO_POINTER](#input_result) if no mouse device is available.|
+| [Input_Result](#input_result) | Operation result:<br>      [INPUT_SUCCESS](#input_result) if the operation is successful;<br>      [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>      [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs;<br>      [INPUT_APP_NOT_FOCUSED](#input_result) if the current application is not in focus;<br>      [INPUT_DEVICE_NO_POINTER](#input_result) if no mouse device is available.|
 
 
 ### OH_Input_GetKeyEventId()
@@ -4220,7 +4242,7 @@ Obtains the ID of a key event.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result.<br> [INPUT_SUCCESS](#input_result) if the operation is successful;<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Operation result:<br> [INPUT_SUCCESS](#input_result) if the operation is successful;<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
 
 
 ### OH_Input_AddKeyEventHook()
@@ -4251,7 +4273,7 @@ You can call [OH_Input_RemoveKeyEventHook](#oh_input_removekeyeventhook) to remo
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result.<br> [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported;<br>  [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails;<br>  [INPUT_REPEAT_INTERCEPTOR](#input_result) if the hook function is set repeatedly (only one hook function can be set for a process);<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Operation result:<br> [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported;<br>  [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails;<br>  [INPUT_REPEAT_INTERCEPTOR](#input_result) if the hook function is set repeatedly (only one hook function can be set for a process);<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 
 ### OH_Input_RemoveKeyEventHook()
@@ -4278,7 +4300,7 @@ This API is usually used together with [OH_Input_AddKeyEventHook](#oh_input_addk
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful (if a hook is not added, a success message is also returned when the hook is removed);<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful (if a hook is not added, a success message is also returned when the hook is removed);<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 
 ### OH_Input_DispatchToNextHandler()
@@ -4309,4 +4331,478 @@ If the redispatched event is not intercepted by the hook function, the API call 
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails (you can call [OH_Input_GetKeyEventId](#oh_input_getkeyeventid) to check whether the input eventId is correct);<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails (you can call [OH_Input_GetKeyEventId](#oh_input_getkeyeventid) to check whether the input eventId is correct);<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+
+
+### OH_Input_SetPointerVisible()
+
+```
+Input_Result OH_Input_SetPointerVisible(bool visible)
+```
+
+**Description**
+
+Sets the visible status of the mouse pointer in the current window.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| bool visible | Whether the mouse pointer is visible. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+
+
+### OH_Input_GetPointerStyle()
+
+```
+Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
+```
+
+**Description**
+
+Obtains the mouse pointer style of the specified window.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window.<br> Only the ID of the current window or global window can be specified. If any other ID is specified, the default pointer style of the global window is returned. You can obtain the ID of the current window through [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).|
+| int32_t* pointerStyle | Mouse pointer style.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+
+
+### OH_Input_SetPointerStyle()
+
+```
+Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
+```
+
+**Description**
+
+Sets the mouse pointer style of the specified window.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID. The value is an integer greater than or equal to 0.<br> Only the ID of the current window can be specified. If any other ID is specified, the API call is successful, but the setting does not take effect. You can obtain the ID of the current window through [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).|
+| int32_t pointerStyle | Mouse pointer style. The value is an enumerated value of [Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+
+
+### OH_Input_CustomCursor_Create()
+
+```
+Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)
+```
+
+**Description**
+
+Creates a custom mouse pointer object.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| OH_PixelmapNative* pixelMap | Pixel map of the custom mouse pointer object. For details, see [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md). The minimum value is the minimum size of the resource image. The maximum value is 256 x 256 px.|
+| int32_t anchorX | Horizontal coordinate of the mouse pointer's focus. The coordinates are subject to the size of the custom mouse pointer. The minimum value is **0** and the maximum value is the maximum width of the resource image, in px.|
+| int32_t anchorY | Vertical coordinate of the mouse pointer's focus. The coordinates are subject to the size of the custom mouse pointer. The minimum value is **0** and the maximum value is the maximum height of the resource image, in px.|
+
+**Return value**
+| Type| Description|
+| -- | -- |
+| Input_CustomCursor* | [Input_CustomCursor](./capi-input-input-customcursor.md) object. The pointer to the custom mouse pointer object is returned if the operation is successful, and a null pointer is returned if an exception occurs.|
+
+
+### OH_Input_CustomCursor_Destroy()
+
+```
+void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)
+```
+
+**Description**
+
+Destroys a custom mouse pointer object.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| Input_CustomCursor** customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
+
+
+### OH_Input_CustomCursor_GetPixelMap()
+
+```
+Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative** pixelMap)
+```
+
+**Description**
+
+Obtains the pixel map of a custom mouse pointer object.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| Input_CustomCursor* customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
+| OH_PixelmapNative** pixelMap | Pixel map of the custom mouse pointer object. For details, see [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+
+
+### OH_Input_CustomCursor_GetAnchor()
+
+```
+Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, int32_t* anchorX, int32_t* anchorY)
+```
+
+**Description**
+
+Obtains the focus coordinates of a custom mouse pointer object.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| Input_CustomCursor* customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
+| int32_t* anchorX | Horizontal coordinate of the custom mouse pointer object's focus, in px.|
+| int32_t* anchorY | Vertical coordinate of the custom mouse pointer object's focus, in px.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+
+
+### OH_Input_CursorConfig_Create()
+
+```
+Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
+```
+
+**Description**
+
+Creates a custom mouse pointer configuration object.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| bool followSystem | Whether to adjust the pointer size based on the system setting. The value **true** means to adjust the pointer size based on the system setting, and the value **false** means to use the size of the custom mouse pointer. The adjustable range is [size of the pointer image, 256 x 256].|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| Input_CursorConfig* | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
+
+
+### OH_Input_CursorConfig_Destroy()
+
+```
+void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)
+```
+
+**Description**
+
+Destroys a custom mouse pointer configuration object.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| Input_CursorConfig** cursorConfig | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
+
+
+### OH_Input_CursorConfig_IsFollowSystem()
+
+```
+Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConfig, bool *followSystem)
+```
+
+**Description**
+
+Queries whether the custom mouse pointer configuration follows the system setting to adjust the pointer size.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| Input_CursorConfig* cursorConfig | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
+| bool* followSystem | Whether to adjust the pointer size based on the system setting. The value **true** means to adjust the pointer size based on the system setting, and the value **false** means to use the size of custom mouse pointer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+
+
+### OH_Input_SetCustomCursor()
+
+```
+Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* customCursor, Input_CursorConfig* cursorConfig)
+```
+
+**Description**
+
+Sets the custom mouse pointer style.
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID. The value must be an integer greater than or equal to **0**. Only the poiner style of the current window can be specified. If the ID of any other window is specified, the API call is successful, but the setting does not take effect.|
+| Input_CustomCursor* customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
+| Input_CursorConfig* cursorConfig | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+
+### OH_Input_CursorInfo_Create()
+
+```
+struct Input_CursorInfo* OH_Input_CursorInfo_Create()
+```
+
+**Description**
+
+Creates a mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| struct Input_CursorInfo* | An [Input_CursorInfo](capi-input-input-cursorinfo.md) object if the operation is successful; a null pointer otherwise (possibly because of a memory allocation failure).|
+
+### OH_Input_CursorInfo_Destroy()
+
+```
+void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)
+```
+
+**Description**
+
+Destroys the mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)** cursorInfo | Mouse pointer information object.|
+
+### OH_Input_CursorInfo_IsVisible()
+
+```
+Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)
+```
+
+**Description**
+
+Obtains the visible status of the specified mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](#oh_input_getcursorinfo) to query the current mouse pointer information.|
+| bool* visible | Visible status of the mouse pointer. The value **true** indicates that the mouse pointer is visible, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.
+
+### OH_Input_CursorInfo_GetStyle()
+
+```
+Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)
+```
+
+**Description**
+
+Obtains the style of the specified mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](#oh_input_getcursorinfo) to query the current mouse pointer information.|
+| [Input_PointerStyle](capi-oh-pointer-style-h.md) | Pointer style. For details, see [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails or the pointer is invisible.|
+
+### OH_Input_CursorInfo_GetSizeLevel()
+
+```
+Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)
+```
+
+**Description**
+
+Obtains the pointer size level of the specified mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](#oh_input_getcursorinfo) to query the current mouse pointer information.|
+| int32_t* sizeLevel | Pointer size level of the mouse pointer information object. The value is an integer ranging from 1 to 7. A larger value indicates a higher pointer size level. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual bitmap size.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails or the pointer is invisible.|
+
+### OH_Input_CursorInfo_GetColor()
+
+```
+Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)
+```
+
+**Description**
+
+Obtains the pointer color of the specified mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](#oh_input_getcursorinfo) to query the current mouse pointer information.|
+| uint32_t* color | Pointer color of the mouse pointer information object, which is represented by a 32-bit ARGB integer. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual bitmap color.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails or the pointer is invisible.|
+
+### OH_Input_GetMouseEventCursorInfo()
+
+```
+Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)
+```
+
+**Description**
+
+Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| const [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse event object. You can obtain the mouse event object from the callback of [OH_Input_AddMouseEventMonitor](#oh_input_addmouseeventmonitor) or [OH_Input_AddInputEventInterceptor](#oh_input_addinputeventinterceptor).|
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_CursorInfo_Create](#oh_input_cursorinfo_create) to create a mouse pointer information object.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+
+### OH_Input_GetCursorInfo()
+
+```
+Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)
+```
+
+**Description**
+
+Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_CursorInfo_Create](#oh_input_cursorinfo_create) to create a mouse pointer information object.|
+| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelmap | **PixelMap** object. If this parameter is not empty and the pointer is a custom one, the **PixelMap** object of the pointer is returned. Otherwise, the **PixelMap** object is not returned. Firstly, create an **OH_PixelmapInitializationOptions** object through [OH_PixelmapInitializationOptions_Create](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_create). Then, set the width to a value greater than **0** through [OH_PixelmapInitializationOptions_SetWidth](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setwidth), set the height to a value greater than **0** through [OH_PixelmapInitializationOptions_SetHeight](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setheight). Finally, create a **PixelMap** object by calling [OH_PixelmapNative_CreateEmptyPixelmap](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createemptypixelmap) with the **OH_PixelmapInitializationOptions** object passed in.<br>When the **PixelMap** object is no longer needed, you need to call [OH_PixelmapNative_Release](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release the object and then call [OH_PixelmapNative_Destroy](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to destroy it.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|

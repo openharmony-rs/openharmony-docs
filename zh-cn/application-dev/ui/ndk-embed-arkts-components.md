@@ -649,6 +649,20 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        napi_value result = nullptr;
        napi_call_function(g_env, nullptr, updateRefresh, 3, argv, &result);
    }
+
+   napi_value ArkUIMixedRefresh::RegisterCreateRefresh(napi_env env, napi_callback_info info) {
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+        g_env = env;
+        napi_ref refer;
+        napi_create_reference(env, args[0], 1, &refer);
+
+        g_createRefresh = refer;
+        return nullptr;
+    }
    
    napi_value ArkUIMixedRefresh::RegisterUpdateRefresh(napi_env env, napi_callback_info info) {
        size_t argc = 1;
@@ -731,7 +745,6 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
                        delete handle;
                        delete customData;
                    }
-                   delete callbackData;
                },
                4000, 4000);
            uv_run(loop, UV_RUN_DEFAULT);

@@ -3258,7 +3258,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UI上下文](errorcode-uicontext.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                        |
 | ------ | ---------------------------------- |
@@ -3589,3 +3589,23 @@ struct Index {
   }
 }
 ```
+
+## getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取[Magnifier](arkts-apis-uicontext-magnifier.md)对象，可控制放大镜显示和隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+|[Magnifier](arkts-apis-uicontext-magnifier.md)| Magnifier对象，可用于控制放大镜的显示和隐藏。|
+
+**示例：**
+
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。

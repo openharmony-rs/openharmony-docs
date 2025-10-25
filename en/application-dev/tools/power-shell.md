@@ -33,7 +33,7 @@ power-shell help
 power-shell setmode
 ```
 
-**Parameters**
+**Commands**
 
 | Command                               | Description                      |
 | ----------------------------------- | -------------------------- |
@@ -62,7 +62,7 @@ power-shell setmode 603
 power-shell wakeup
 ```
 
-**Parameters**
+**Commands**
 
 | Command                         | Description                    |
 | ----------------------------- | ------------------------ |
@@ -84,7 +84,7 @@ power-shell suspend
 ```
 
 
-**Parameters**
+**Commands**
 
 | Command      | Description                      |
 | ---------- | -------------------------- |
@@ -107,7 +107,7 @@ power-shell timeout
 **Parameters**
 | Parameter      | Description                      |
 | ---------- | -------------------------- |
-| -o \<time\> | Sets the automatic screen-off time. This parameter is mandatory. in milliseconds.|
+| -o \<time\> | Sets the automatic screen-off time, in milliseconds. This parameter is mandatory. |
 | -r | Restores the automatic screen-off time in the current system settings. This parameter is mandatory.|
 
 Example:

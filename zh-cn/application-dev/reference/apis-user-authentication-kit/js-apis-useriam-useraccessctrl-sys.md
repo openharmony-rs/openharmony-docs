@@ -23,9 +23,9 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 认证令牌类型。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                      | 值   | 说明       |
 | ------------------------ | ---- | ---------- |
@@ -37,9 +37,9 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 表示校验通过返回解析的AuthToken数据结果。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                       |
 | -------------- | ---------------------------------- | ----- | ----- |------------------------------------------------------------ |
@@ -60,11 +60,11 @@ verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<Auth
 
 验证认证令牌。
 
-**需要权限**：ohos.permission.USE_USER_ACCESS_MANAGER
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -81,13 +81,13 @@ verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<Auth
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
 | 201      | Permission denied.        |
 | 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |

@@ -1,5 +1,12 @@
 # @ohos.nfc.controller (Standard NFC)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 The **nfcController** module provides APIs for opening and closing Near-Field Communication (NFC) and reading the NFC state.
 
 > **NOTE**
@@ -159,7 +166,7 @@ Obtains the NFC state.
 
 on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): void
 
-Subscribes to NFC state changes. A callback will be invoked to return the NFC state when the NFC state changes.
+Enables listening for NFC state changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NFC.Core
 
@@ -176,7 +183,7 @@ Subscribes to NFC state changes. A callback will be invoked to return the NFC st
 
 off(type: 'nfcStateChange', callback?: Callback&lt;[NfcState](#nfcstate)&gt;): void
 
-Unsubscribes from the NFC state changes. The subscriber will not receive NFC state change notifications.
+Unsubscribes from the NFC state changes. Upon successful unsubscription, the subscriber will not receive NFC state change notifications. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NFC.Core
 
@@ -196,7 +203,7 @@ import { nfcController } from '@kit.ConnectivityKit';
 
 // Register a callback for NFC status change events.
 nfcController.on("nfcStateChange", (nfcState : number)=> {
-  console.log("nfcController on callback nfcState: " + nfcState);
+  console.info("nfcController on callback nfcState: " + nfcState);
 });
 
 // Declare the ohos.permission.MANAGE_SECURE_SETTINGS permission for enabling NFC. This permission is available only for system applications.
@@ -204,12 +211,12 @@ if (!nfcController.isNfcOpen()) {
   // Use enableNfc to enable NFC since API version 9.
   try {
     nfcController.enableNfc();
-    console.log("nfcController enableNfc success");
+    console.info("nfcController enableNfc success");
   } catch (businessError) {
     console.error("nfcController enableNfc businessError: " + businessError);
   }
 } else {
-  console.log("nfcController NFC has been opened");
+  console.info("nfcController NFC has been opened");
 }
 
 // Declare the ohos.permission.MANAGE_SECURE_SETTINGS permission for disabling NFC. This permission is available only for system applications.
@@ -217,12 +224,12 @@ if (nfcController.isNfcOpen()) {
   // Use disableNfc to disable NFC since API version 9.
   try {
     nfcController.disableNfc();
-    console.log("nfcController disableNfc success");
+    console.info("nfcController disableNfc success");
   } catch (businessError) {
     console.error("nfcController disableNfc businessError: " + businessError);
   }
 } else {
-  console.log("nfcController NFC has been closed");
+  console.info("nfcController NFC has been closed");
 }
 
 // Unregister the callback for NFC status change events.

@@ -1,4 +1,4 @@
-# @ohos.account.osAccount (System Account) (System API)
+# @ohos.account.osAccount (System Account  Management) (System API)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -58,8 +58,10 @@ Activates a system account. This API uses an asynchronous callback to return the
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
 **Example**: Activate system account 100.
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -115,8 +117,10 @@ Activates a system account. This API uses a promise to return the result.
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
 **Example**: Activate system account 100.
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -176,8 +180,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 Activate the system account 100 on the logical screen 0.
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let displayId: number = 0;
@@ -230,8 +236,10 @@ Deactivates (logs out of) a system account. This API uses a promise to return th
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 
 **Example**: Deactivate system account 100.
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -284,6 +292,7 @@ Checks whether a system account is activated. This API uses a promise to return 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -337,6 +346,7 @@ Checks whether a constraint is enabled for a system account. This API uses a pro
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -390,6 +400,7 @@ Checks whether a system account has been verified. This API uses a promise to re
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -440,6 +451,7 @@ Removes a system account. This API uses an asynchronous callback to return the r
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let accountName: string = 'testAccountName';
   try {
@@ -500,6 +512,7 @@ Removes a system account. This API uses a promise to return the result.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let accountName: string = 'testAccountName';
   try {
@@ -508,7 +521,7 @@ Removes a system account. This API uses a promise to return the result.
         accountManager.removeOsAccount(osAccountInfo.localId).then(() => {
           console.info('removeOsAccount successfully');
         }).catch((err: BusinessError) => {
-            console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
         });
     });
   } catch (e) {
@@ -554,6 +567,7 @@ Sets or removes constraints for a system account. This API uses an asynchronous 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
@@ -613,6 +627,7 @@ Sets or removes constraints for a system account. This API uses a promise to ret
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -663,6 +678,7 @@ Sets the name of a system account. This API uses an asynchronous callback to ret
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let name: string = 'demoName';
@@ -721,6 +737,7 @@ Sets the name of a system account. This API uses a promise to return the result.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let name: string = 'testName';
@@ -764,6 +781,7 @@ Queries the maximum number of system accounts that can be created. This API uses
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxOsAccountNumber((err: BusinessError, maxCnt: number) => {
@@ -806,6 +824,7 @@ Queries the maximum number of system accounts that can be created. This API uses
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxOsAccountNumber().then((maxCnt: number) => {
@@ -846,6 +865,7 @@ Queries the maximum number of system accounts allowed to log in to the system. T
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryMaxLoggedInOsAccountNumber().then((maxNum: number) => {
@@ -897,6 +917,7 @@ Obtains all the enabled constraints of a system account. This API uses a promise
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -942,6 +963,7 @@ Queries information about all the system accounts created. This API uses an asyn
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
@@ -987,6 +1009,7 @@ Queries information about all the system accounts created. This API uses a promi
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryAllCreatedOsAccounts().then((accountArr: osAccount.OsAccountInfo[]) => {
@@ -1038,6 +1061,7 @@ Creates a system account. This API uses an asynchronous callback to return the r
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.createOsAccount('testName', osAccount.OsAccountType.NORMAL,
@@ -1099,6 +1123,7 @@ Creates a system account. This API uses a promise to return the result.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let options: osAccount.CreateOsAccountOptions = {
     shortName: 'myShortName',
@@ -1157,6 +1182,7 @@ Creates a system account and associates it with the specified domain account. Th
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'testAccountName'};
@@ -1221,6 +1247,7 @@ Creates a system account and associates it with the specified domain account. Th
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'testAccountName'};
@@ -1270,6 +1297,7 @@ Obtains information about the system account to which the current process belong
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
@@ -1317,6 +1345,7 @@ Queries information about the system account of the given ID. This API uses an a
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1372,6 +1401,7 @@ Queries information about the system account of the given ID. This API uses a pr
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1420,6 +1450,7 @@ Obtains the profile photo of a system account. This API uses an asynchronous cal
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1475,6 +1506,7 @@ Obtains the profile photo of a system account. This API uses a promise to return
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -1525,6 +1557,7 @@ Sets a profile photo for a system account. This API uses an asynchronous callbac
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let photo: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
@@ -1586,6 +1619,7 @@ Sets a profile photo for a system account. This API uses a promise to return the
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let photo: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
@@ -1637,10 +1671,14 @@ Subscribes to the system account activation states, including the states of the 
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function onCallback(receiveLocalId: number){
     console.info('receive localId:' + receiveLocalId);
   }
+
   try {
     accountManager.on('activating', 'osAccountOnOffNameA', onCallback);
   } catch (e) {
@@ -1682,10 +1720,14 @@ Unsubscribes from the system account activation states, including the states of 
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function offCallback(){
     console.info('off enter')
   }
+
   try {
     accountManager.off('activating', 'osAccountOnOffNameA', offCallback);
   } catch (e) {
@@ -1728,10 +1770,14 @@ Subscribes to the switchover between a foreground system account and a backgroun
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function onSwitchingCallback(eventData: osAccount.OsAccountSwitchEventData){
     console.info('receive eventData:' + JSON.stringify(eventData));
   }
+
   try {
     accountManager.on('switching', onSwitchingCallback);
   } catch (e) {
@@ -1774,6 +1820,8 @@ Unsubscribes from the switchover between a foreground system account and a backg
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.off('switching');
@@ -1817,10 +1865,14 @@ Subscribes to the end of a switchover between a foreground system account and a 
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+
   function onSwitchedCallback(eventData: osAccount.OsAccountSwitchEventData){
     console.info('receive eventData:' + JSON.stringify(eventData));
   }
+
   try {
     accountManager.on('switched', onSwitchedCallback);
   } catch (e) {
@@ -1863,6 +1915,8 @@ Unsubscribes from the end of a switchover between a foreground system account an
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.off('switched');
@@ -1876,7 +1930,7 @@ Unsubscribes from the end of a switchover between a foreground system account an
 
 getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the bundle ID based on the UID. This API uses an asynchronous callback to return the result.
+Obtains the bundle ID based on the specified UID. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1902,6 +1956,7 @@ Obtains the bundle ID based on the UID. This API uses an asynchronous callback t
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let testUid: number = 1000000;
   try {
@@ -1922,7 +1977,7 @@ Obtains the bundle ID based on the UID. This API uses an asynchronous callback t
 
 getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
-Obtains the bundle ID based on the UID. This API uses a promise to return the result.
+Obtains the bundle ID based on the specified UID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1953,6 +2008,7 @@ Obtains the bundle ID based on the UID. This API uses a promise to return the re
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let testUid: number = 1000000;
   try {
@@ -2000,6 +2056,8 @@ Obtains the bundle ID based on the specified UID. The API returns the result syn
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let testUid: number = 1000000;
   try {
@@ -2042,6 +2100,7 @@ Checks whether the current process belongs to the main system account. This API 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isMainOsAccount((err: BusinessError,result: boolean)=>{
@@ -2087,6 +2146,7 @@ Checks whether the current process belongs to the main system account. This API 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isMainOsAccount().then((result: boolean) => {
@@ -2116,7 +2176,7 @@ Obtains the ID of the foreground system account running on a specified logical d
 
 | Name   | Type  | Mandatory| Description        |
 | --------- | ------ | ---- | ------------ |
-| displayId | number | Yes  | Logical screen ID.|
+| displayId | number | Yes  | Logical display ID.|
 
 **Return value**
 
@@ -2136,8 +2196,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12300017 | The foreground OS account is not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let displayId: number = 0;
   try {
@@ -2188,8 +2250,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12300017 | The foreground OS account is not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
@@ -2239,6 +2303,7 @@ Obtains the constraint source information of a system account. This API uses an 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi',
@@ -2295,6 +2360,7 @@ Obtains the constraint source information of a system account. This API uses a p
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountConstraintSourceTypes(100, 'constraint.wifi').then(
@@ -2313,7 +2379,7 @@ Obtains the constraint source information of a system account. This API uses a p
 
 getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;;
 
-Obtains the type of a system account. This API uses a promise to return the result.
+Obtains the type of a specified system account. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -2347,6 +2413,7 @@ Obtains the type of a system account. This API uses a promise to return the resu
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     let localId: number = 100;
@@ -2407,11 +2474,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     let localId: number = 100;
     let domainInfo: osAccount.DomainAccountInfo =
-      {domain: 'testDomain', accountName: 'testAccountName'};
+      { domain: 'testDomain', accountName: 'testAccountName' };
     accountManager.bindDomainAccount(localId, domainInfo).then(() => {
       console.info('bindDomainAccount success.');
     }).catch((error: BusinessError) => {
@@ -2431,7 +2499,7 @@ Provides APIs for user authentication.
 
 ### constructor<sup>8+</sup>
 
- 
+constructor()
 
 A constructor used to create an instance for user authentication.
 
@@ -2446,6 +2514,7 @@ A constructor used to create an instance for user authentication.
 | 202 | Not system application.|
 
 **Example**
+
   ```ts
   let userAuth = new osAccount.UserAuth();
   ```
@@ -2454,7 +2523,7 @@ A constructor used to create an instance for user authentication.
 
 getVersion(): number;
 
-Obtains the version number.
+Obtains a version number.
 
 **System API**: This is a system API.
 
@@ -2473,6 +2542,7 @@ Obtains the version number.
 | 202 | Not system application.|
 
 **Example**
+
   ```ts
   let userAuth = new osAccount.UserAuth();
   let version: number = userAuth.getVersion();
@@ -2515,7 +2585,10 @@ Obtains the available status of the authentication capability corresponding to t
 | 12300002 | Invalid authType or authTrustLevel. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
   let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
@@ -2559,8 +2632,10 @@ Obtains the executor property based on the request. This API uses an asynchronou
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let keys: Array<osAccount.GetPropertyType>  = [
     osAccount.GetPropertyType.AUTH_SUB_TYPE,
@@ -2621,8 +2696,10 @@ Obtains the executor property based on the request. This API uses a promise to r
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let keys: Array<osAccount.GetPropertyType> = [
     osAccount.GetPropertyType.AUTH_SUB_TYPE,
@@ -2682,8 +2759,10 @@ Obtains the specified property information of the associated executor based on t
 | 12300102 | The credential does not exist. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let credInfo: osAccount.EnrolledCredInfo[] = [];
   async function getProperty() {
@@ -2748,8 +2827,10 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
 | 12300002 | Invalid request. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let request: osAccount.SetPropertyRequest = {
     authType: osAccount.AuthType.PIN,
@@ -2805,8 +2886,10 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 | 12300002 | Invalid request. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let request: osAccount.SetPropertyRequest = {
     authType: osAccount.AuthType.PIN,
@@ -2863,6 +2946,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 | 12300111 | Operation timeout. |
 
 **Example**
+
   ```ts
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2941,7 +3025,10 @@ Performs authentication of the current user. This API uses an asynchronous callb
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let challenge: Uint8Array = new Uint8Array([0]);
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
@@ -2949,8 +3036,8 @@ Performs authentication of the current user. This API uses an asynchronous callb
   try {
     userAuth.auth(challenge, authType, authTrustLevel, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-          console.info('auth result = ' + result);
-          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+        console.info('auth result = ' + result);
+        console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
@@ -3016,7 +3103,10 @@ Starts user authentication based on the specified challenge value, authenticatio
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let challenge: Uint8Array = new Uint8Array([0]);
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
@@ -3027,8 +3117,8 @@ Starts user authentication based on the specified challenge value, authenticatio
   try {
     userAuth.auth(challenge, authType, authTrustLevel, options, {
       onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-          console.info('auth result = ' + result);
-          console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
+        console.info('auth result = ' + result);
+        console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
       }
     });
   } catch (e) {
@@ -3094,7 +3184,10 @@ Performs authentication of the specified user. This API uses an asynchronous cal
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let userID: number = 100;
   let challenge: Uint8Array = new Uint8Array([0]);
@@ -3142,7 +3235,10 @@ Cancels an authentication.
 | 12300002 | Invalid contextId. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userAuth = new osAccount.UserAuth();
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   let challenge = new Uint8Array([0]);
@@ -3168,7 +3264,7 @@ Provides APIs for PIN authentication.
 
 ### constructor<sup>8+</sup>
 
- 
+constructor()
 
 Creates a PIN authentication instance.
 
@@ -3183,6 +3279,7 @@ Creates a PIN authentication instance.
 | 202 | Not system application.|
 
 **Example**
+
   ```ts
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   ```
@@ -3217,14 +3314,17 @@ Registers a PIN inputer.
 | 12300103 | The credential inputer already exists. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   let password = new Uint8Array([0, 0, 0, 0, 0]);
   try {
     pinAuth.registerInputer({
-        onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-          callback.onSetData(authSubType, password);
-        }
+      onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+        callback.onSetData(authSubType, password);
+      }
     });
     console.info('registerInputer success.');
   } catch (e) {
@@ -3253,6 +3353,7 @@ Unregisters this PIN inputer.
 | 202 | Not system application.|
 
 **Example**
+
   ```ts
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   pinAuth.unregisterInputer();
@@ -3294,14 +3395,17 @@ Registers a credential inputer.
 | 12300106 | The authentication type is not supported. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0]);
   try {
     osAccount.InputerManager.registerInputer(authType, {
-        onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-          callback.onSetData(authSubType, password);
-        }
+      onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+        callback.onSetData(authSubType, password);
+      }
     });
     console.info('registerInputer success.');
   } catch (e) {
@@ -3314,7 +3418,7 @@ Registers a credential inputer.
 
 static unregisterInputer(authType: AuthType): void
 
-Unregisters this credential inputer.
+Unregisters a credential inputer.
 
 **System API**: This is a system API.
 
@@ -3338,12 +3442,16 @@ Unregisters this credential inputer.
 | 12300002  | Invalid authType. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
   try {
     osAccount.InputerManager.unregisterInputer(authType);
     console.info('unregisterInputer success.');
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`unregisterInputer code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -3373,8 +3481,10 @@ Authenticates a domain account.
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
 
 **Example**
+
   ```ts
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {
@@ -3438,8 +3548,10 @@ Authenticates a domain account in a pop-up window.
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3489,8 +3601,10 @@ Authenticates a domain account by the authorization token.
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3539,8 +3653,10 @@ Obtains information about a domain account.
 | callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Yes  | Callback used to return the result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3594,8 +3710,10 @@ Obtains the authentication status of a domain account.
 | callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | Yes  | Callback used to return the result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3647,8 +3765,10 @@ Binds a domain account.
 | callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3697,8 +3817,10 @@ Unbinds a domain account.
 | callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3748,8 +3870,10 @@ Checks whether the specified domain account token is valid.
 | callback   | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means that the specified domain account token is valid; the value **false** means the opposite.|
 
 **Example**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3798,8 +3922,10 @@ Obtains the domain access token based on the specified conditions.
 | callback   | AsyncCallback&lt;Uint8Array&gt; | Yes  | Callback used to return the result.|
 
 **Example**
+
   ```ts
   import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
           callback: osAccount.IUserAuthCallback) => {},
@@ -3832,6 +3958,7 @@ Obtains the domain access token based on the specified conditions.
   ```
 
 ## DomainAccountManager <sup>9+</sup>
+
 Provides APIs for domain account management.
 
 ### registerPlugin<sup>9+</sup>
@@ -3863,8 +3990,10 @@ Registers a domain plug-in.
 | 12300201 | The domain plugin has been registered. |
 
 **Example**
+
   ```ts
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
   let plugin: osAccount.DomainPlugin = {
     auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
          callback: osAccount.IUserAuthCallback) => {},
@@ -3886,7 +4015,8 @@ Registers a domain plug-in.
   try {
     osAccount.DomainAccountManager.registerPlugin(plugin);
     console.info('registerPlugin success.');
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -3912,11 +4042,15 @@ Unregisters this domain plug-in.
 | 801 | Capability not supported.|
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     osAccount.DomainAccountManager.unregisterPlugin();
     console.info('unregisterPlugin success.');
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`unregisterPlugin code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -3963,7 +4097,10 @@ Authenticates a domain account.
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4023,7 +4160,10 @@ No permission is required since API version 11. Use the SDK of the latest versio
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     osAccount.DomainAccountManager.authWithPopup({
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
@@ -4080,7 +4220,10 @@ No permission is required since API version 11. Use the SDK of the latest versio
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     osAccount.DomainAccountManager.authWithPopup(100, {
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
@@ -4098,7 +4241,7 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a domain account exists.
+Checks whether a domain account exists. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4130,8 +4273,10 @@ Checks whether a domain account exists.
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4154,7 +4299,7 @@ Checks whether a domain account exists.
 
 hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
-Checks whether a domain account exists.
+Checks whether a domain account exists. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -4191,8 +4336,10 @@ Checks whether a domain account exists.
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4241,8 +4388,10 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan',
@@ -4300,8 +4449,10 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.DomainAccountInfo = {
     domain: 'CHINA',
     accountName: 'zhangsan',
@@ -4312,7 +4463,7 @@ Updates the token of a domain account. An empty token means an invalid token. Th
     osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
       console.info('updateAccountToken successfully');
     }).catch((err: BusinessError) => {
-        console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+      console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -4356,8 +4507,10 @@ Obtains information about a specified domain account. This API uses an asynchron
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4418,8 +4571,10 @@ Obtains information about a specified domain account. This API uses a promise to
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
     domain: 'CHINA',
     accountName: 'zhangsan'
@@ -4441,7 +4596,7 @@ Obtains information about a specified domain account. This API uses a promise to
 
 getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains the service access token of this domain account. This API uses an asynchronous callback to return the result.
+Obtains the service access token of a domain account. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4471,8 +4626,10 @@ Obtains the service access token of this domain account. This API uses an asynch
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let businessParams: Record<string, Object> = {
     'clientId': 'xxx',
     'secretId': 'yyy'
@@ -4496,7 +4653,7 @@ Obtains the service access token of this domain account. This API uses an asynch
 
 getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
 
-Obtains the service access token of this domain account. This API uses a promise to return the result.
+Obtains the service access token of a domain account. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -4531,8 +4688,10 @@ Obtains the service access token of this domain account. This API uses a promise
 | 12300211 | Server unreachable. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let businessParams: Record<string, Object> = {
     'clientId': 'xxx',
     'secretId': 'yyy'
@@ -4586,8 +4745,10 @@ Checks whether the authentication of a domain account has expired. This API uses
 | 12300003 | Domain account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'testAccountName'};
   try {
@@ -4610,7 +4771,7 @@ Provides APIs for user IDM.
 
 ### constructor<sup>8+</sup>
 
- 
+constructor()
 
 A **constructor()** used to create an instance for user IDM.
 
@@ -4625,6 +4786,7 @@ A **constructor()** used to create an instance for user IDM.
 | 202 | Not system application.|
 
 **Example**
+
   ```ts
   let userIDM = new osAccount.UserIdentityManager();
   ```
@@ -4657,8 +4819,10 @@ Opens a session to obtain the challenge value. This API uses an asynchronous cal
 | 12300001 | The system service works abnormally. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -4710,15 +4874,17 @@ Opens a session. This API returns a challenge value, which can be used to determ
 | 12300008 | Restricted account. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let accountId = 100;
   try {
     userIDM.openSession(accountId).then((challenge: Uint8Array) => {
-        console.info('openSession challenge = ' + JSON.stringify(challenge));
+      console.info('openSession challenge = ' + JSON.stringify(challenge));
     }).catch((err: BusinessError) => {
-        console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
+      console.error(`openSession error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -4764,8 +4930,10 @@ Adds credential information, including the credential type, subtype, and token (
 | 12300116 | Credential complexity verification failed. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
   pinAuth.registerInputer({
@@ -4831,8 +4999,10 @@ Updates credential information. This API uses an asynchronous callback to return
 | 12300116 | Credential complexity verification failed. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
   let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
@@ -4859,8 +5029,8 @@ Updates credential information. This API uses an asynchronous callback to return
         try {
           userIDM.updateCredential(credentialInfo, {
             onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-                console.info('updateCredential result = ' + result);
-                console.info('updateCredential extraInfo = ' + extraInfo);
+              console.info('updateCredential result = ' + result);
+              console.info('updateCredential extraInfo = ' + extraInfo);
             }
           });
         } catch (e) {
@@ -4902,6 +5072,7 @@ Closes this session to terminate IDM.
 | 12300008 | Restricted account. |
 
 **Example**
+
   ```ts
   let userIDM = new osAccount.UserIdentityManager();
   let accountId = 100;
@@ -4937,12 +5108,16 @@ Cancels an entry based on the challenge value.
 | 12300002 | Invalid challenge. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let challenge: Uint8Array = new Uint8Array([0]);
   try {
     userIDM.cancel(challenge);
-  } catch(err) {
+  } catch (e) {
+    const err = e as BusinessError;
     console.error(`cancel code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -4951,7 +5126,7 @@ Cancels an entry based on the challenge value.
 
 delUser(token: Uint8Array, callback: IIdmCallback): void
 
-Deletes a user based on the authentication token. This API uses a callback to return the result.
+Deletes a user with an authentication token. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4977,7 +5152,10 @@ Deletes a user based on the authentication token. This API uses a callback to re
 | 12300101 | The token is invalid. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let token: Uint8Array = new Uint8Array([0]);
   try {
@@ -5026,7 +5204,10 @@ Deletes user credential information.
 | 12300102 | The credential does not exist. |
 
 **Example**
+
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let credentialId: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0]);
   let token: Uint8Array = new Uint8Array([0]);
@@ -5071,8 +5252,10 @@ Obtains authentication information. This API uses an asynchronous callback to re
 | 12300001 | The system service works abnormally. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo((err: BusinessError, result: osAccount.EnrolledCredInfo[]) => {
@@ -5118,8 +5301,10 @@ Obtains authentication information of the specified type. This API uses an async
 | 12300002 | Invalid authType. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo(osAccount.AuthType.PIN,
@@ -5171,8 +5356,10 @@ Obtains authentication information. This API uses a promise to return the result
 | 12300002 | Invalid authType. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   try {
     userIDM.getAuthInfo(osAccount.AuthType.PIN).then((result: osAccount.EnrolledCredInfo[]) => {
@@ -5222,8 +5409,10 @@ Obtains authentication information. This API uses a promise to return the result
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let options: osAccount.GetAuthInfoOptions = {
     authType: osAccount.AuthType.PIN,
@@ -5280,16 +5469,18 @@ Obtains the ID of the enrolled credential based on the credential type and accou
 | 12300106 | The authentication type is not supported. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let userIDM = new osAccount.UserIdentityManager();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
   let accountId = 100;
   try {
     userIDM.getEnrolledId(authType, accountId).then((enrolledId: Uint8Array) => {
-        console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
+      console.info('getEnrolledId enrolledId = ' + JSON.stringify(enrolledId));
     }).catch((err: BusinessError) => {
-        console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
+      console.error(`getEnrolledId error = code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -5329,6 +5520,7 @@ Called to notify the caller the data is set.
 | 12300002 | Invalid pinSubType. |
 
 **Example**
+
   ```ts
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let passwordNumber: Uint8Array = new Uint8Array([1, 2, 3, 4]);
@@ -5368,6 +5560,7 @@ Called to notify the caller that data is obtained.
 | options | [GetInputDataOptions](#getinputdataoptions12) | Yes| Optional parameters for the callback function.|
 
 **Example**
+
   ```ts
   let password: Uint8Array = new Uint8Array([0, 0, 0, 0, 0, 0]);
   let passwordNumber: Uint8Array = new Uint8Array([1, 2, 3, 4]);
@@ -5410,6 +5603,7 @@ Called to return the result code and authentication result.
 | extraInfo | [AuthResult](#authresult8)  | Yes  | Specific authentication result information. If the authentication is successful, the authentication token is returned in **extrainfo**. If the authentication fails, the remaining authentication time is returned. If the authentication executor is locked, the freezing time is returned.|
 
 **Example**
+
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
@@ -5438,6 +5632,7 @@ Called to acquire identity authentication information.
 | extraInfo | Uint8Array     | Yes  | Reserved.                    |
 
 **Example**
+
   ```ts
   let authCallback: osAccount.IUserAuthCallback = {
     onResult: (result: number, extraInfo: osAccount.AuthResult) => {
@@ -5476,6 +5671,7 @@ Called to return the result code and request result information.
 | extraInfo | [RequestResult](#requestresult8)  | Yes  | Specific information to be transferred.|
 
 **Example**
+
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: osAccount.RequestResult) => {
@@ -5504,6 +5700,7 @@ Called to acquire IDM information.
 | extraInfo | Uint8Array | Yes  | Reserved.                    |
 
 **Example**
+
   ```ts
   let idmCallback: osAccount.IIdmCallback = {
     onResult: (result: number, extraInfo: Object) => {

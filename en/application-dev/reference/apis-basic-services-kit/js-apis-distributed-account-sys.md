@@ -164,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 let accountInfo: distributedAccount.DistributedInfo =
-  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError) => {
     if (err) {
@@ -174,8 +174,8 @@ try {
     }
   });
 } catch (e) {
-    const err = e as BusinessError;
-    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -223,15 +223,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 let accountInfo: distributedAccount.DistributedInfo =
-  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
-      console.info('setOsAccountDistributedInfoByLocalId successfully');
+    console.info('setOsAccountDistributedInfoByLocalId successfully');
   }).catch((err: BusinessError) => {
-      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
-    const err = e as BusinessError;
-    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  const err = e as BusinessError;
+  console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```

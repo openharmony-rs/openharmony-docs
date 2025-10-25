@@ -321,7 +321,6 @@ class DrawingRenderNode extends RenderNode {
   }
 
   async draw(context: DrawContext) {
-    console.log("Kee draw");
     const canvas = context.canvas;
     let pixelMap = ctx.getPixelMap(0, 0, 150, 150)
     const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。

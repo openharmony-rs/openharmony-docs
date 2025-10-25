@@ -582,13 +582,14 @@ off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
 **示例：**
 
 ```ts
+import { call } from '@kit.TelephonyKit';
 let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
     console.info("on callStateChangeEx, data:" + JSON.stringify(data));
 }
 observer.on('callStateChangeEx', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-observer.off('callStateChange', callback);
-observer.off('callStateChange');
+observer.off('callStateChangeEx', callback);
+observer.off('callStateChangeEx');
 ```
 
 
@@ -1083,10 +1084,10 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                    | 必填 | 说明     |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 是   | 通话类型。 |
-| number              | string                                 | 是   | 电话号码。 |
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话类型。 |
+| number              | string                                 | 否   | 否   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>

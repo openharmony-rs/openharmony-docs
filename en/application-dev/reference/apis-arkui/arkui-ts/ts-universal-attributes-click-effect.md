@@ -10,7 +10,7 @@ You can set the click feedback effect for a component to define its visual respo
 
 >  **NOTE**
 >
-> This attribute is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> The APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## clickEffect
 

@@ -20,7 +20,7 @@
 >
 > - 调用文本计算接口时，不推荐同时用[ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)设置应用字体大小缩放比例。为了确保时序正确性，建议开发者自行监听字体缩放变化，以保证测算结果的准确性。
 >
-> - 在测算裁剪后的文本时，由于某些Unicode字符（如emoji）的码位长度大于1，直接按字符串长度裁剪会导致不准确的结果。建议基于Unicode码点进行迭代处理，避免错误截断字符，确保测算结果准确。
+> - 在测算裁剪后的文本时，由于某些Unicode字符（如emoji）的码位长度大于1，直接按字符串长度裁剪会导致不准确的结果。建议基于Unicode码点进行迭代处理，避免错误截断字符，确保测算结果准确，请参考[measureTextSize方法的示例2](#measuretextsize12)。
 
 ## measureText<sup>12+</sup>
 
@@ -101,7 +101,7 @@ measureTextSize(options: MeasureOptions): SizeOptions
 | [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | 返回文本所占布局宽度和高度。<br/>**说明:**<br/>没有传参constraintWidth的情况下，文本宽度返回值浮点数会向上取整。<br/>文本宽度以及高度返回值单位均为px。 |
 
 
-**示例：** 
+**示例1：** 
 
 通过MeasureUtils的measureTextSize方法获取"Hello World"文字的宽度和高度。
 
@@ -130,6 +130,118 @@ struct Index {
 }
 ```
 
+**示例2：** 
+
+通过MeasureUtils的measureTextSize方法和unicode码点计算，手动实现文本截断。与设置[maxLines](./arkui-ts/ts-basic-components-text.md#maxlines)、[textOverflow](./arkui-ts/ts-basic-components-text.md#textoverflow)实现同样的效果。
+
+```ts
+@Entry
+@Component
+struct TextDemo {
+  @State isExpanded: boolean = false;
+  @State displayedText: string = '';
+  @State defaultFontSize: number = 16;
+  @State textWidth: number = 150;
+  @State numLenghth: number = 0;
+  @State numUnocde: number = 0;
+  private fullText: string =
+    '这是一个超长文本示例，当文本内容超过三行时，超出部😀😀分会显示省略号。点击省略号可展开全部内容。此处为测试文本，用于验证多行文本截断效果。';
+  private maxLines: number = 3;
+
+  aboutToAppear() {
+    const codePoints = this.getCodePoints(this.fullText);
+    this.numLenghth = this.fullText.length;
+    this.numUnocde = codePoints.length;
+    this.calculateText(this.maxLines, this.fullText);
+  }
+
+  getCodePoints(text: string): number[] { // 使用codePonitsAt分割文本
+    const codePoints: number[] = [];
+    let index = 0;
+    while (index < text.length) {
+      const codePoint = text.codePointAt(index);
+      if (codePoint === undefined) {
+        break;
+      }
+      codePoints.push(codePoint);
+      index += codePoint > 0xFFFF ? 2 : 1; // 处理四字节字符
+    }
+    return codePoints;
+  }
+
+  lastUnicodeLength(str:string) { // 获得字符串最后一个字符的unicode长度
+    if (!str || str.length < 1) {
+      return 0;
+    }
+    if (str.length < 2) {
+      return 1;
+    }
+    let lastCodePoint = str.codePointAt(str.length - 2);
+    if (lastCodePoint == undefined) {
+      return 1;
+    }
+    let lastStr = String.fromCodePoint(lastCodePoint);
+    return lastStr.length;
+  }
+
+  calculateText(maxLines: number, fullText: string) { // 计算文本是否需要截断
+    const noMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
+      textContent: fullText,
+      constraintWidth: this.textWidth
+    });
+    const hasMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
+      textContent: fullText,
+      constraintWidth: this.textWidth,
+      maxLines: this.maxLines
+    });
+
+    this.displayedText = this.displayedText = this.fullText;
+    if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // 存在截断
+      while (this.displayedText.length > 0) {
+        this.displayedText =
+          this.displayedText.slice(0,
+            this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // 删掉几个字
+        let textAfterCut = this.displayedText + "..."; // 加上省略号
+        let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
+          textContent: textAfterCut,
+          constraintWidth: this.textWidth
+        });
+        if (Number(sizeAfteCut.height) <= Number(hasMaxLinesSize.height)) {
+          break;
+        } else {
+          console.info("displayedText: " + this.displayedText);
+        }
+      }
+      this.displayedText = this.displayedText + '...';
+    }
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(`用length计算的文本长度 ${this.numLenghth}`)
+      Text(`用codePointAt计算的文本长度 ${this.numUnocde}`)
+      Text('下面是需要截断的文本')
+      Text(this.fullText)
+        .borderWidth(1)
+
+      Text('下面是设置了maxLines和texOverflow')
+      Text(this.fullText)
+        .maxLines(this.maxLines)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .width(this.textWidth)
+        .borderWidth(1)
+
+      Text('下面是计算后分割的文本')
+      Text(this.displayedText)
+        .width(this.textWidth)
+        .borderWidth(1)
+    }
+    .padding(20)
+  }
+}
+```
+
+![](figures/unicodeTextLength.png)
 
 ## getParagraphs<sup>20+</sup>
 

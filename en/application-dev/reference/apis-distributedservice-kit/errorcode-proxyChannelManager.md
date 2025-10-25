@@ -1,5 +1,10 @@
 # Proxy Channel Management Error Codes
-
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @wangJE-->
+<!--Designer: @lee_jet520-->
+<!--Tester: @Ytt-test-->
+<!--Adviser: @w_Machine_cc-->
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -91,7 +96,7 @@ Internal error.
 
 **Description**
 
-This error code is reported if an internal error occurs.
+Internal error.
 
 **Possible Causes**
 

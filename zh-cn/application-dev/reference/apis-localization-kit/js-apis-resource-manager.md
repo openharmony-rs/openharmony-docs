@@ -3887,7 +3887,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFdSync(path: string): RawFileDescriptor
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。
 
 > **说明**
 >
@@ -3940,7 +3940,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd）。
+获取resources/rawfile目录下对应rawfile文件所在HAP的文件描述符（fd），使用callback异步回调。
 
 > **说明**
 >
@@ -3997,7 +3997,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
-获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。
+获取resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用Promise异步回调。
 
 > **说明**
 >
@@ -4057,7 +4057,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFdSync(path: string): void
 
-关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd）。
+关闭resources/rawfile目录下rawfile文件所在HAP的文件描述符（fd），使用同步方式返回。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

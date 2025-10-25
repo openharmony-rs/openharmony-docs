@@ -30,6 +30,7 @@
       - [Class (FocusController)](arkts-apis-uicontext-focuscontroller.md)
       - [Class (Font)](arkts-apis-uicontext-font.md)
       - [Class (FrameCallback)](arkts-apis-uicontext-framecallback.md)
+      - [Class (Magnifier)](arkts-apis-uicontext-magnifier.md)
       - [Class (MarqueeDynamicSyncScene)](arkts-apis-uicontext-marqueedynamicsyncscene.md)
       - [Class (MeasureUtils)](arkts-apis-uicontext-measureutils.md)
       - [Class (MediaQuery)](arkts-apis-uicontext-mediaquery.md)
@@ -287,6 +288,7 @@
     - [Toggle](arkui-ts/ts-basic-components-toggle.md)
     - [Checkbox](arkui-ts/ts-basic-components-checkbox.md)
     - [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)
+    - [Picker](arkui-ts/ts-container-picker.md)
     - [CalendarPicker](arkui-ts/ts-basic-components-calendarpicker.md)
     - [DatePicker](arkui-ts/ts-basic-components-datepicker.md)
     - [TextPicker](arkui-ts/ts-basic-components-textpicker.md)
@@ -374,7 +376,9 @@
     - [XComponent](arkui-ts/ts-basic-components-xcomponent.md)
     - [Component3D](arkui-ts/ts-basic-components-component3d.md)
     - [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)
-    - [XComponent(系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
+    <!--Del-->
+    - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
+    <!--DelEnd-->
   - 菜单<!--menus-->
     - [Menu](arkui-ts/ts-basic-components-menu.md)
     - [MenuItem](arkui-ts/ts-basic-components-menuitem.md)
@@ -484,6 +488,8 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
+  - 响应式环境变量<!--arkts-env-property-->
+    - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
@@ -711,7 +717,7 @@
     - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
-    - [动画错误码](errorcode-animator.md)
+    - [接口调用异常错误码](errorcode-internal.md)
     - [弹窗错误码](errorcode-promptAction.md)
     - [页面路由错误码](errorcode-router.md)
     - [拖拽事件错误码](errorcode-drag-event.md)
@@ -735,6 +741,7 @@
     - [状态管理错误码](errorcode-stateManagement.md)
     - [渲染节点错误码](errorcode-node-render.md)
     - [DrawableDescriptor错误码](errorcode-drawable-descriptor.md)
+    - [环境变量错误码](errorcode-env.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)

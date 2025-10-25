@@ -35,7 +35,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 ## Attributes
 
-The attribute is inherited from [BaseSpan](ts-basic-components-span.md#basespan). The common attribute method supports size setting (ts-universal-attributes-size.md), background setting (ts-universal-attributes-background.md), and border setting (ts-universal-attributes-border.md).
+The attributes inherit from [BaseSpan](ts-basic-components-span.md#basespan). Among the universal attributes, [size](ts-universal-attributes-size.md), [background](ts-universal-attributes-background.md), and [border](ts-universal-attributes-border.md) are supported.
 
 ### verticalAlign
 
@@ -83,7 +83,7 @@ Sets the placeholder image displayed during image loading.
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Sets the placeholder image displayed during image loading. The [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type is supported.<br>Default value: **null**|
+| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Placeholder image displayed during image loading. The [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type is supported.<br>Default value: **null**|
 
 ### colorFilter<sup>14+</sup>
 

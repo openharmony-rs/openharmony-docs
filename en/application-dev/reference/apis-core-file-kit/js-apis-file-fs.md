@@ -168,10 +168,6 @@ Checks whether the file or directory exists or has the operation permission. Thi
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
-| ID                    | Error Message       |
-| ---------------------------- | ---------- |
-| 401 | 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
-| 13900020 | Invalid parameter value.|
 
 **Example**
 
@@ -189,7 +185,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-## fs.access
+## fs.access<sup>12+</sup>
 
 access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boolean&gt;
 
@@ -214,11 +210,6 @@ Checks whether the file or directory is stored locally or has the operation perm
 **Error codes**
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
-
-| ID                    | Error Message       |
-| ---------------------------- | ---------- |
-| 401 | 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
-| 13900020 | Invalid parameter value.|
 
 **Example**
 
@@ -257,10 +248,6 @@ Checks whether a file or directory exists. This API uses an asynchronous callbac
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
-| ID                    | Error Message       |
-| ---------------------------- | ---------- |
-| 401 | 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
-| 13900020 | Invalid parameter value.|
 
 **Example**
 
@@ -307,11 +294,6 @@ Checks whether a file or directory exists or has the operation permission. This 
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
-| ID                    | Error Message       |
-| ---------------------------- | ---------- |
-| 401 | 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
-| 13900020 | Invalid parameter value.|
-
 **Example**
 
   ```ts
@@ -330,7 +312,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   }
   ```
 
-## fs.accessSync
+## fs.accessSync<sup>12+</sup>
 
 accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
@@ -355,11 +337,6 @@ Checks whether a file or directory is stored locally or has the operation permis
 **Error codes**
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
-
-| ID                    | Error Message       |
-| ---------------------------- | ---------- |
-| 401 | 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
-| 13900020 | Invalid parameter value.|
 
 **Example**
 
@@ -1510,7 +1487,7 @@ This API supports the use of a URI.
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | path     | string                          | Yes  | Application sandbox path or URI of a file or directory.                                  |
 | mode  | number | Yes  | [Mode](#openmode) for opening the file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.<br>- **OpenMode.READ_ONLY(0o0)**: Open the file in read-only mode.<br>- **OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.|
-| callback     | AsyncCallback&lt;void&gt;                          | Yes  | Callback used to return the result.                                  |
+| callback     | AsyncCallback&lt;[File](#file)&gt;                          | Yes  | Callback used to return the result.                                  |
 
 **Error codes**
 
@@ -1546,7 +1523,7 @@ Opens a file or directory. This API uses an asynchronous callback to return the 
 | Name  | Type                           | Mandatory| Description                                                        |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | path     | string                          | Yes  | Application sandbox path or URI of a file or directory.                                  |
-| callback     | AsyncCallback&lt;void&gt;                          | Yes  | Callback used to return the result.                                  |
+| callback     | AsyncCallback&lt;[File](#file)&gt;                          | Yes  | Callback used to return the result.                                  |
 
 **Error codes**
 
@@ -1735,7 +1712,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 rmdir(path: string): Promise&lt;void&gt;
 
-Removes a directory. This API uses a promise to return the result.
+Removes a directory and all its subdirectories and files. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1777,7 +1754,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-Removes a directory. This API uses an asynchronous callback to return the result.
+Removes a directory and all its subdirectories and files. This API uses a synchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1816,7 +1793,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 rmdirSync(path: string): void
 
-Removes a directory. This API returns the result synchronously.
+Removes a directory and all its subdirectories and files synchronously.
 
 > **NOTE**
 >
@@ -2311,7 +2288,7 @@ Obtains the **ReaderIterator** result.
 
   | Type                   | Description        |
   | --------------------- | ---------- |
-  | [ReaderIteratorResult](#readeriteratorresult) | **ReaderIteratorResult** object obtained.|
+  | [ReaderIteratorResult](#readeriteratorresult11) | **ReaderIteratorResult** object obtained.|
 
 **Error codes**
 
@@ -2339,7 +2316,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-## ReaderIteratorResult
+## ReaderIteratorResult<sup>11+</sup>
 
 Represents the information obtained by the **ReaderIterator** object.
 
@@ -3621,7 +3598,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 utimes(path: string, mtime: number): void
 
-Updates the latest access timestamp of a file.
+Changes the time when the file was last modified.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -3629,7 +3606,7 @@ Updates the latest access timestamp of a file.
 |    Name   | Type    | Mandatory  | Description                         |
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 | path  | string  |  Yes   | Application sandbox path of the file.|
-| mtime  | number  |  Yes  | New timestamp. The value is the number of milliseconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970). Only the last access time of a file can be modified.|
+| mtime  | number  |  Yes  | New timestamp. The value is the number of milliseconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970). Only the time when the file was last modified can be changed.|
 
 **Error codes**
 
@@ -3663,7 +3640,7 @@ Creates a **RandomAccessFile** instance based on the specified file path or file
 
   | Type                               | Description       |
   | --------------------------------- | --------- |
-  | Promise&lt;[RandomAccessFile](#randomaccessfile)&gt; | Promise used to return the **RandomAccessFile** instance created.|
+  | Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise used to return the **RandomAccessFile** instance created.|
 
 **Error codes**
 
@@ -3698,7 +3675,7 @@ Creates a **RandomAccessFile** object in read-only mode based on a file path or 
 |  Name   | Type    | Mandatory  | Description                         |
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 |     file     | string \| [File](#file) | Yes   | Application sandbox path of the file or an opened file object.|
-| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile)&gt; | Yes  | Callback used to return the **RandomAccessFile** instance created.                                  |
+| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Yes  | Callback used to return the **RandomAccessFile** instance created.                                  |
 
 **Error codes**
 
@@ -3734,7 +3711,7 @@ Creates a **RandomAccessFile** instance based on a file path or file object. Thi
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 |     file     | string \| [File](#file) | Yes   | Application sandbox path of the file or an opened file object.|
 |     mode     | number | Yes  | [Mode](#openmode) for creating the **RandomAccessFile** instance. This parameter is valid only when the application sandbox path of the file is passed in. One of the following options must be specified:<br>- **OpenMode.READ_ONLY(0o0)**: Create the file in read-only mode. This is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: Create the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Create the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the **RandomAccessFile** object already exists and is created in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Create the file in append mode. New data will be added to the end of the **RandomAccessFile** object. <br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the created file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Create a **RandomAccessFile** instance in synchronous I/O mode.|
-| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile)&gt; | Yes  | Callback used to return the **RandomAccessFile** instance created.                                  |
+| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Yes  | Callback used to return the **RandomAccessFile** instance created.                                  |
 
 **Error codes**
 
@@ -3776,7 +3753,7 @@ Creates a **RandomAccessFile** instance based on the specified file path or file
 
   | Type                               | Description       |
   | --------------------------------- | --------- |
-  | Promise&lt;[RandomAccessFile](#randomaccessfile)&gt; | Promise used to return the **RandomAccessFile** instance created.|
+  | Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise used to return the **RandomAccessFile** instance created.|
 
 **Error codes**
 
@@ -3815,7 +3792,7 @@ Creates a **RandomAccessFile** instance based on a file path or file object.
 
   | Type               | Description       |
   | ------------------ | --------- |
-  | [RandomAccessFile](#randomaccessfile) | **RandomAccessFile** instance created.|
+  | [RandomAccessFile](#randomaccessfile10) | **RandomAccessFile** instance created.|
 
 **Error codes**
 
@@ -3851,7 +3828,7 @@ Creates a **RandomAccessFile** instance based on a file path or file object.
 
   | Type               | Description       |
   | ------------------ | --------- |
-  | [RandomAccessFile](#randomaccessfile) | **RandomAccessFile** instance created.|
+  | [RandomAccessFile](#randomaccessfile10) | **RandomAccessFile** instance created.|
 
 **Error codes**
 
@@ -4464,8 +4441,8 @@ let pathDir = context.filesDir;
 
 let file = new fs.AtomicFile(`${pathDir}/write.txt`);
 try {
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('AtomicFile write succeed!');
   })
 } catch (err) {
@@ -4741,7 +4718,7 @@ Represents detailed file information. Before calling any API of the **Stat()** c
 | Name    | Type  | Read-Only  | Optional  | Description                                      |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
 | ino    | bigint | Yes   | No   | File ID. Different files on the same device have different **ino**s.|                 |
-| mode   | number | Yes   | No   | File permissions. The meaning of each bit is as follows:<br>**NOTE**<br>The following values are in octal format. The return values are in decimal format. You need to convert the values.<br>- **0o400**: The user has the read permission on a regular file or a directory entry.<br>- **0o200**: The user has the permission to write a regular file or create and delete a directory entry.<br>- **0o100**: The user has the permission to execute a regular file or search for the specified path in a directory.<br>- **0o040**: The user group has the read permission on a regular file or a directory entry.<br>- **0o020**: The user group has the permission to write a regular file or create and delete a directory entry.<br>- **0o010**: The user group has the permission to execute a regular file or search for the specified path in a directory.<br>- **0o004**: Other users have the permission to read a regular file or read a directory entry.<br>- **0o002**: Other users have the permission to write a regular file or create and delete a directory entry.<br>- **0o001**: Other users have the permission to execute a regular file or search for the specified path in a directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| mode   | number | Yes   | No   | File permissions. The meaning of each bit is as follows:<br>Note: The following values are in octal format. The return values are in decimal format. You need to convert the values.<br>- **0o400**: The user has the read permission on a regular file or a directory entry.<br>- **0o200**: The user has the permission to write a regular file or create and delete a directory entry.<br>- **0o100**: The user has the permission to execute a regular file or search for the specified path in a directory.<br>- **0o040**: The user group has the read permission on a regular file or a directory entry.<br>- **0o020**: The user group has the permission to write a regular file or create and delete a directory entry.<br>- **0o010**: The user group has the permission to execute a regular file or search for the specified path in a directory.<br>- **0o004**: Other users have the permission to read a regular file or read a directory entry.<br>- **0o002**: Other users have the permission to write a regular file or create and delete a directory entry.<br>- **0o001**: Other users have the permission to execute a regular file or search for the specified path in a directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | uid    | number | Yes   | No   | ID of the file owner.|
 | gid    | number | Yes   | No   | ID of the user group of the file.|
 | size   | number | Yes   | No   | File size, in bytes. This parameter is valid only for regular files.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -4751,7 +4728,7 @@ Represents detailed file information. Before calling any API of the **Stat()** c
 | atimeNs<sup>15+</sup>  | bigint | Yes   | Yes   | Time of the last access to the file. The value is the number of nanoseconds elapsed since 00:00:00 on January 1, 1970.<br>**Note**: Currently, user data partitions are mounted in **noatime** mode by default, and **atime** update is disabled.     |
 | mtimeNs<sup>15+</sup>  | bigint | Yes   | Yes   | Time of the last modification to the file. The value is the number of nanoseconds elapsed since 00:00:00 on January 1, 1970.     |
 | ctimeNs<sup>15+</sup>  | bigint | Yes   | Yes   | Time of the last status change of the file. The value is the number of nanoseconds elapsed since 00:00:00 on January 1, 1970.     |
-| location<sup>11+</sup> | [LocaltionType](#locationtype11)| Yes|No| File location, which indicates whether the file is stored in a local device or in the cloud.
+| location<sup>11+</sup> | [LocationType](#locationtype11)| Yes|No| File location, which indicates whether the file is stored in a local device or in the cloud.
 
 > **NOTE**
 >
@@ -5589,7 +5566,7 @@ Called to return the specified status. Its parameters are passed in by [connectD
   | networkId   | string | Yes   | Network ID of the device.                            |
   | status | number | Yes   | Status code of the distributed file system. The status code is the error code returned by **onStatus** invoked by **connectDfs**. If the device is abnormal when **connectDfs()** is called, **onStatus** will be called to return the error code:<br>- [13900046](errorcode-filemanagement.md#13900046-connection-interrupted-by-software): The connection is interrupted by software.
 
-## RandomAccessFile
+## RandomAccessFile<sup>10+</sup>
 
 Provides APIs for randomly reading and writing a stream. Before invoking any API of **RandomAccessFile**, you need to use **createRandomAccessFile()** to create a **RandomAccessFile** instance synchronously or asynchronously.
 
@@ -6187,7 +6164,7 @@ The data obtained by **ReadStream** is a decoded string. Currently, only the UTF
 | bytesRead    | number | Yes   | No   | Number of bytes read by the readable stream.|
 | path    | string | Yes   | No   | Path of the file corresponding to the readable stream.|
 
-### Seek
+### Seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
 
@@ -6223,7 +6200,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   rs.close();
   ```
 
-### close
+### close<sup>12+</sup>
 
 close(): void
 
@@ -6254,7 +6231,7 @@ Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewrit
 | bytesWritten    | number | Yes   | No   | Number of bytes written to the writable stream.|
 | path    | string | Yes   | No   | Path of the file corresponding to the writeable stream.|
 
-### Seek
+### Seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number;
 
@@ -6289,7 +6266,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ws.close();
   ```
 
-### close
+### close<sup>12+</sup>
 
 close(): void
 

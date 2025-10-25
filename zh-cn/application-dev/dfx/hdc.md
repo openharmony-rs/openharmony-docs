@@ -2363,3 +2363,21 @@ Operation not allowed.
 **处理步骤**
 
 检查输入是否为合法的IP格式，并确认该IP地址属于本机。
+
+### E00C001 hdc client/server调试拦截
+
+**错误信息**
+
+Operation restricted by the organization.
+
+**错误描述**
+
+操作被组织拦截。
+
+**可能原因**
+
+PC/2in1形态设备的hdc client/server调试功能被组织禁用。
+
+**处理步骤**
+
+请联系组织设备管理员查询PC/2in1设备hdc调试策略配置。

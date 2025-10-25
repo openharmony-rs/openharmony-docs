@@ -48,9 +48,9 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct KeyEvent {
     int32_t action;
     int32_t keyCode;
@@ -61,27 +61,32 @@ struct KeyEvent {
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    //Input_KeyEvent的生命周期仅在回调函数内，出了回调函数会被销毁
+    //Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
+	// ···
 }
 
-void TestKeyEventInterceptor()
+static napi_value AddKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
-    //添加按键事件拦截
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
-    //移除按键事件监听
-    ret = OH_Input_RemoveKeyEventInterceptor();
+	// ···
+}
+
+static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveKeyEventInterceptor();
+	// ···
 }
 ```
 
+
 - **输入拦截（鼠标、触摸和轴事件）**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
-#include <map>
+<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct MouseEvent {
     int32_t action;
     int32_t displayX;
@@ -122,6 +127,7 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     event.axisType = OH_Input_GetMouseEventAxisType(mouseEvent);
     event.axisValue = OH_Input_GetMouseEventAxisValue(mouseEvent);
     event.actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
+	// ···
 }
 
 //定义触摸事件回调函数
@@ -134,6 +140,7 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
     event.displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
     event.actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
+	// ···
 }
 
 //定义轴事件回调函数
@@ -167,12 +174,13 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
         ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
         event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
     }
+	// ···
 }
 
 //输入事件回调函数结构体
 Input_InterceptorEventCallback g_eventCallback;
 
-void TestInputEventInterceptor()
+static napi_value AddEventInterceptor(napi_env env, napi_callback_info info)
 {
     //设置鼠标事件回调函数
     g_eventCallback.mouseCallback = OnMouseEventCallback;
@@ -180,10 +188,14 @@ void TestInputEventInterceptor()
     g_eventCallback.touchCallback = OnTouchEventCallback;
     //设置轴事件回调函数
     g_eventCallback.axisCallback = OnAxisEventCallback;
-
-    //添加输入事件拦截
     Input_Result ret = OH_Input_AddInputEventInterceptor(&g_eventCallback, nullptr);
-    //移除输入事件监听
-    ret = OH_Input_RemoveInputEventInterceptor();
+	// ···
+}
+
+static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveInputEventInterceptor();
+	// ···
 }
 ```
+

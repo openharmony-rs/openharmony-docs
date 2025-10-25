@@ -1652,6 +1652,12 @@ struct TextBuilder {
 
 参见[示例代码](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例5buildernode支持内部consume接收外部的provide数据)。
 
+## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据
+
+从API version 22开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consumer](./state-management/arkts-new-Provider-and-Consumer.md)支持接收所在页面的[@Provider](./state-management/arkts-new-Provider-and-Consumer.md)数据。
+    
+参见[示例代码](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例6buildernode支持内部consumer接收外部的provider数据)。
+
 ## BuilderNode结合ArkWeb组件实现预渲染页面
 
 预渲染适用于Web页面启动与跳转等场景。通过结合BuilderNode，可以将ArkWeb组件提前进行离线预渲染，组件不会即时挂载至页面，而是在需要时通过NodeController动态挂载与显示。此举能够提高页面切换的流畅度及用户体验。

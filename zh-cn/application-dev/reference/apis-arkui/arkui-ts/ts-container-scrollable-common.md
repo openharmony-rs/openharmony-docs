@@ -63,7 +63,7 @@ scrollBarColor(color: Color | number | string): T
 
 scrollBarColor(color: Color | number | string | Resource): T
 
-设置滚动条的颜色。
+设置滚动条的颜色。与[scrollBarColor<sup>11+</sup>](#scrollbarcolor11)相比，color参数开始支持Resource类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1269,7 +1269,7 @@ struct ScrollExample {
 ![clipContent_scroll](figures/clipContent_scroll.gif)
 
 ### 示例4（设置滚动条边距）
-该示例通过设置scrollBarMargin属性，调整滚动组件的滚动条边距。
+从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
 

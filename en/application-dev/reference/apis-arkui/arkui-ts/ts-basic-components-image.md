@@ -301,9 +301,10 @@ fitOriginalSize(value: boolean)
 
 Specifies whether the image display size follows the size of the image source.
 
-This attribute does not take effect when:<br>The component has the **width** and **height** attributes set.
+This attribute does not take effect when:
 
-The parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
+- The component has the **width** and **height** attributes set.
+- The parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2122,7 +2123,7 @@ struct Example {
     try {
       const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
       // Obtain the content of the resource file with EXIF data as Uint8Array.
-      // Replace 'hello.jpg' with the image resource file required by the developer.
+      // Replace 'hello.jpg' with the image resource file you use.
       const fileData: Uint8Array = await resourceMgr.getRawFileContent('hello.jpg');
       console.info('Successfully get RawFileContent');
       // Convert the array to an ArrayBuffer and return the ArrayBuffer.
@@ -2166,7 +2167,7 @@ struct Example {
     Column({ space: 40 }) {
       Column({ space: 10 }) {
         Text('before').fontSize(20).fontWeight(700)
-        // Replace 'hello.jpg' with the image resource file required by the developer.
+        // Replace 'hello.jpg' with the image resource file you use.
         Image($rawfile('hello.jpg'))
           .width(100)
           .height(100)

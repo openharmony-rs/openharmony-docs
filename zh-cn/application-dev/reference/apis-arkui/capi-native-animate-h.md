@@ -47,17 +47,17 @@
 | -- | -- |
 | [ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()](#oh_arkui_animateoption_create) | 创建动画效果参数。 |
 | [void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_dispose) | 销毁动画效果参数指针。 |
-| [uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getduration) | 获取动画持续时间，单位为ms(毫秒)。 |
+| [uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getduration) | 获取动画持续时间，单位为ms（毫秒）。 |
 | [float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_gettempo) | 获取动画播放速度。 |
 | [ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getcurve) | 获取动画曲线。 |
-| [int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getdelay) | 获取动画延迟播放时间，单位为ms(毫秒)。 |
+| [int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getdelay) | 获取动画延迟播放时间，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getiterations) | 获取动画播放次数。 |
 | [ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getplaymode) | 获取动画播放模式。 |
 | [ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_getexpectedframeraterange) | 获取动画的期望帧率。 |
-| [void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setduration) | 设置动画持续时间。 |
+| [void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setduration) | 设置动画持续时间，单位为ms（毫秒）。 |
 | [void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)](#oh_arkui_animateoption_settempo) | 设置动画播放速度。 |
 | [void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_AnimationCurve value)](#oh_arkui_animateoption_setcurve) | 设置动画曲线。 |
-| [void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setdelay) | 设置动画延迟播放时间。 |
+| [void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setdelay) | 设置动画延迟播放时间，单位为ms（毫秒）。 |
 | [void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t value)](#oh_arkui_animateoption_setiterations) | 设置动画播放次数。 |
 | [void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_AnimationPlayMode value)](#oh_arkui_animateoption_setplaymode) | 设置动画播放模式。 |
 | [void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* option, ArkUI_ExpectedFrameRateRange* value)](#oh_arkui_animateoption_setexpectedframeraterange) | 设置动画的期望帧率。 |
@@ -65,22 +65,22 @@
 | [ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)](#oh_arkui_animateoption_geticurve) | 获取动画的动画曲线。 |
 | [ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)](#oh_arkui_keyframeanimateoption_create) | 获取关键帧动画参数。 |
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | 销毁关键帧动画参数。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms(毫秒)，默认不延时播放。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | 设置关键帧动画的动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当keyframe动画所有次数播放完成后调用。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | 设置关键帧动画期望帧率。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | 设置关键帧动画某段关键帧动画的持续时间，单位为毫秒。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | 设置关键帧动画某段关键帧动画的持续时间，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | 设置关键帧动画某段关键帧使用的动画曲线。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*event)(void* userData), int32_t index)](#oh_arkui_keyframeanimateoption_registeroneventcallback) | 设置关键帧时刻状态的闭包函数，即在该关键帧时刻要达到的状态。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getdelay) | 获取关键帧整体延时时间。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getdelay) | 获取关键帧整体延时时间，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getiterations) | 获取关键帧动画播放次数。 |
 | [ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_getexpectedframerate) | 获取关键帧动画参数的期望帧率。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* option, int32_t index)](#oh_arkui_keyframeanimateoption_getduration) | 获取关键帧动画某段状态持续时间。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* option, int32_t index)](#oh_arkui_keyframeanimateoption_getduration) | 获取关键帧动画某段状态持续时间，单位为ms（毫秒）。 |
 | [ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateOption* option, int32_t index)](#oh_arkui_keyframeanimateoption_getcurve) | 获取关键帧动画某段状态动画曲线。 |
 | [ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)](#oh_arkui_animatoroption_create) | 创建animator动画对象参数。 |
 | [void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_dispose) | 销毁animator动画对象参数。 |
-| [int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setduration) | 设置animator动画播放的时长，单位毫秒。 |
-| [int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setdelay) | 设置animator动画延时播放时长，单位毫秒。 |
+| [int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setduration) | 设置animator动画播放的时长，单位为ms（毫秒）。 |
+| [int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setdelay) | 设置animator动画延时播放时长，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setiterations) | 设置animator动画播放次数。设置为0时不播放，设置为-1时无限次播放。 |
 | [int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_AnimationFillMode value)](#oh_arkui_animatoroption_setfill) | 设置animator动画执行后是否恢复到初始状态。 |
 | [int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI_AnimationDirection value)](#oh_arkui_animatoroption_setdirection) | 设置animator动画播放方向。 |
@@ -99,7 +99,7 @@
 | [float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getbegin) | 获取animator动画插值起点。 |
 | [float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getend) | 获取animator动画插值终点。 |
 | [ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getexpectedframeraterange) | 获取animator动画期望的帧率范围。 |
-| [float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframetime) | 获取animator动画关键帧时间。 |
+| [float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframetime) | 获取animator动画关键帧时间，单位为ms（毫秒）。 |
 | [float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframevalue) | 获取animator动画关键帧数值。 |
 | [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframecurve) | 获取animator动画关键帧动画插值曲线。 |
 | [void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)](#oh_arkui_animatorevent_getuserdata) | 获取动画事件对象中的用户自定义对象。 |
@@ -183,7 +183,7 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 **描述：**
 
 
-获取动画持续时间，单位为ms(毫秒)。
+获取动画持续时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -261,7 +261,7 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 **描述：**
 
 
-获取动画延迟播放时间，单位为ms(毫秒)。
+获取动画延迟播放时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -354,7 +354,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(A
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 动画的期望帧率。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 动画的期望帧率，单位为帧/秒（fps）。 |
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
@@ -365,7 +365,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 **描述：**
 
 
-设置动画持续时间。
+设置动画持续时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -375,7 +375,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| int32_t value | 持续时间，单位为ms(毫秒)。 |
+| int32_t value | 持续时间，单位为ms（毫秒）。 |
 
 ### OH_ArkUI_AnimateOption_SetTempo()
 
@@ -428,7 +428,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 **描述：**
 
 
-设置动画延迟播放时间。
+设置动画延迟播放时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -438,7 +438,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| int32_t value | 动画延迟播放时间。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。 |
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
@@ -501,7 +501,7 @@ void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* optio
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 动画的期望帧率。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 动画的期望帧率，单位为帧/秒（fps）。 |
 
 ### OH_ArkUI_AnimateOption_SetICurve()
 
@@ -609,7 +609,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 **描述：**
 
 
-设置关键帧动画的整体延时时间，单位为ms(毫秒)，默认不延时播放。
+设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。
 
 **起始版本：** 12
 
@@ -619,7 +619,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t value | 延时时间, 单位为ms(毫秒)。 |
+| int32_t value | 延时时间, 单位为ms（毫秒）。 |
 
 **返回：**
 
@@ -718,7 +718,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 **描述：**
 
 
-设置关键帧动画某段关键帧动画的持续时间，单位为毫秒。
+设置关键帧动画某段关键帧动画的持续时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -728,7 +728,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t value | 持续时间。单位为毫秒。 |
+| int32_t value | 持续时间，单位为ms（毫秒）。 |
 | int32_t index | 状态索引值。 |
 
 **返回：**
@@ -807,7 +807,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 **描述：**
 
 
-获取关键帧整体延时时间。
+获取关键帧整体延时时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -822,7 +822,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 整体延时时间。 |
+| int32_t | 整体延时时间，单位为ms（毫秒）。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetIterations()
 
@@ -885,7 +885,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 **描述：**
 
 
-获取关键帧动画某段状态持续时间。
+获取关键帧动画某段状态持续时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -901,7 +901,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 持续时间。单位为毫秒。 |
+| int32_t | 持续时间，单位为ms（毫秒）。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetCurve()
 
@@ -1009,7 +1009,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 **描述：**
 
 
-设置animator动画延时播放时长，单位毫秒。
+设置animator动画延时播放时长，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -1019,7 +1019,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| int32_t value | 延时播放时长，单位毫秒。 |
+| int32_t value | 延时播放时长，单位为ms（毫秒）。 |
 
 **返回：**
 
@@ -1536,7 +1536,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 **描述：**
 
 
-获取animator动画关键帧时间。
+获取animator动画关键帧时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -1552,7 +1552,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 关键帧时间。 |
+| float | 关键帧时间，单位为ms（毫秒）。 |
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeValue()
 

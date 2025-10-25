@@ -39,7 +39,7 @@ onMove(handler: Optional\<OnMoveHandler\>): T
 
 onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler): T
 
-拖拽排序数据移动回调。当父容器组件为[List](./ts-container-list.md)，并且ForEach/LazyForEach/Repeat每次迭代都生成一个ListItem组件时才生效。设置拖拽排序时可以定义不同的拖拽操作，并在响应事件发生时响应。
+拖拽排序数据移动回调。当父容器组件为[List](./ts-container-list.md)，并且ForEach/LazyForEach/Repeat每次迭代都生成一个ListItem组件时才生效。设置拖拽排序时可以定义不同的拖拽操作，并在响应事件发生时响应。与[onMove](#onmove)相比，新增eventHander参数，可以监听拖拽时上报的回调事件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -135,7 +135,7 @@ struct ForEachSort {
 
 ### 示例2（使用OnMove进行拖拽，并设置拖拽事件回调）
 
-以下示例展示了ForEach在List组件设置拖拽效果后触发的回调事件。
+从API version 20开始，以下示例展示了ForEach在List组件设置拖拽效果后触发的回调事件。
 
 ```ts
 // xxx.ets

@@ -7,11 +7,11 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-The **ble** module provides Bluetooth Low Energy (BLE) capabilities, including BLE scan, BLE advertising, and Generic Attribute Profile (GATT)-based connection and data transmission.
+The **ble** module provides [Bluetooth Low Energy (BLE)](../../connectivity/terminology.md#ble) capabilities, including BLE scan, BLE advertising, and [Generic Attribute Profile (GATT)](../../connectivity/terminology.md#ble)-based connection and data transmission.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - You can use [util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9) to generate a UUID wherever necessary.
+> - You can use [util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9) to generate a [UUID](../../connectivity/terminology.md#uuid) wherever necessary.
 
 
 
@@ -122,7 +122,7 @@ Obtains the BLE devices that have been connected to the local device via GATT.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;string&gt; | Addresses of BLE devices that have been connected to the local device via GATT.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
+| Array&lt;string&gt; | Addresses of BLE devices that have been connected to the local device via GATT.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
 
 **Error codes**
 
@@ -142,6 +142,57 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## ble.getConnectedBLEDevices<sup>21+</sup>
+
+getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
+
+Obtains the BLE devices that have been connected to the local device via GATT according to the specified profile type.
+- If the local device is specified as the client, the addresses of all servers that are connected to the local device are returned.
+- If the local device is specified as the server, the addresses of all clients that are connected to the local device are returned.
+- If the local device is specified as both the client and server, the addresses of all clients and servers that are connected to the local device are returned.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name    | Type                                    | Mandatory  | Description                                 |
+| ------- | -------------------------------------- | ---- | ----------------------------------- |
+| profile | [BleProfile](#bleprofile21) | Yes   | Profile type of the local device, which indicates the communication role of the device in the GATT link.<br>- GATT_CLIENT indicates that the local device is specified as the client, and all peer devices that are connected to the local device via GATT are servers.|
+
+**Return value**
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| Array&lt;string&gt; | Addresses of BLE devices that have been connected to the local device via GATT.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    let result: Array<string> = ble.getConnectedBLEDevices(ble.BleProfile.GATT_CLIENT);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -1561,6 +1612,7 @@ Sends a characteristic change notification or indication from the server to the 
 - You are advised to enable the notification or indication function for the Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) of the characteristic.
 - According to the Bluetooth protocol, the data length of the Client Characteristic Configuration descriptor is 2 bytes. Bit 0 and bit 1 indicate whether notification and indication are enabled, respectively. For example, **bit 0 = 1** indicates that notification is enabled.
 - This API is called when the properties of a GATT characteristic change.
+- By default, the data length of **characteristicValue** in [notifyCharacteristic](#notifycharacteristic) is limited to (MTU – 3) bytes. The MTU size can be obtained from the [on('BLEMtuChange')](#onblemtuchange) callback.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2167,14 +2219,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-let Connected = (bleConnectionChangeState: ble.BLEConnectionChangeState) => {
+import { constant } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+let connected = (bleConnectionChangeState: ble.BLEConnectionChangeState) => {
     let deviceId: string = bleConnectionChangeState.deviceId;
     let status: constant.ProfileConnectionState = bleConnectionChangeState.state;
 }
 try {
     let gattServer: ble.GattServer = ble.createGattServer();
-    gattServer.on('connectionStateChange', Connected);
+    gattServer.on('connectionStateChange', connected);
 } catch (err) {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
@@ -2671,7 +2724,8 @@ readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallba
 
 Reads the value of the specified characteristic. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the read operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **BLECharacteristic** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2749,7 +2803,8 @@ readCharacteristicValue(characteristic: BLECharacteristic): Promise&lt;BLECharac
 
 Reads the value of the specified characteristic. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the read operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **BLECharacteristic** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2823,7 +2878,8 @@ readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;BLEDes
 
 Reads data from the specified descriptor. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the read operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **BLEDescriptor** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2894,7 +2950,8 @@ readDescriptorValue(descriptor: BLEDescriptor): Promise&lt;BLEDescriptor&gt;
 
 Reads data from the specified descriptor. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the read operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **BLEDescriptor** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2961,7 +3018,8 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 
 Writes a value to the specified characteristic. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the write operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- By default, the length of characteristic data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3036,7 +3094,8 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 
 Writes a value to the specified characteristic. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the write operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- By default, the length of characteristic data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3110,7 +3169,9 @@ writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;void&
 
 Writes data to the specified descriptor. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the write operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- By default, the length of descriptor data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).<br>
+- The Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) and Server Characteristic Configuration descriptor (UUID: 00002903-0000-1000-8000-00805f9b34fb) are exceptional cases. As per the Bluetooth standard, their data length is 2 bytes, and therefore the length of the content to be written must be set to 2 bytes.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3178,7 +3239,9 @@ writeDescriptorValue(descriptor: BLEDescriptor): Promise&lt;void&gt;
 
 Writes data to the specified descriptor. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the write operation will fail.<br>
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
+- By default, the length of descriptor data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).<br>
+- The Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) and Server Characteristic Configuration descriptor (UUID: 00002903-0000-1000-8000-00805f9b34fb) are exceptional cases. As per the Bluetooth standard, their data length is 2 bytes, and therefore the length of the content to be written must be set to 2 bytes.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3247,7 +3310,6 @@ getRssiValue(callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the RSSI of a GATT connection. This API uses an asynchronous callback to return the result.<br>
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3298,7 +3360,6 @@ getRssiValue(): Promise&lt;number&gt;
 
 Obtains the RSSI of a GATT connection. This API uses a promise to return the result.<br>
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3310,7 +3371,7 @@ Obtains the RSSI of a GATT connection. This API uses a promise to return the res
 
 | Type                   | Description                               |
 | --------------------- | --------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. used to return the signal strength, in dBm.|
+| Promise&lt;number&gt; | Promise used to return the signal strength, in dBm.|
 
 **Error codes**
 
@@ -3345,9 +3406,10 @@ try {
 
 setBLEMtuSize(mtu: number): void
 
-Negotiates the MTU between the client and server.<br>
+Negotiates the MTU size between the client and server. For details, see [MTU](../../connectivity/terminology.md#mtu).<br>
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).<br>
-- You can call [on('BLEMtuChange')](#onblemtuchange-1) to subscribe to the MTU negotiation result.
+- You can call [on('BLEMtuChange')](#onblemtuchange-1) to subscribe to the MTU negotiation result.<br>
+- If no negotiation is performed, the MTU size is 23 bytes by default.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3397,7 +3459,7 @@ Sets whether to enable the client to receive characteristic change notifications
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change notification function.<br>
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change notifications of the server.<br>
 - The client does not need to send a response when receiving a characteristic change notification from the server.
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3470,7 +3532,7 @@ Sets whether to enable the client to receive characteristic change notifications
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change notification function.<br>
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change notifications of the server.<br>
 - The client does not need to send a response when receiving a characteristic change notification from the server.
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3483,7 +3545,7 @@ Sets whether to enable the client to receive characteristic change notifications
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>**true** to enable, **false** otherwise.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>The value **true** means to enable characteristic change notification, and the value **false** means the opposite.|
 
 **Return value**
 
@@ -3542,7 +3604,7 @@ Sets whether to enable the client to receive characteristic change indications f
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change indication function.<br>
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change indications of the server.<br>
 - When receiving a characteristic change indication from the server, the client does not need to send a response as this will be done by the Bluetooth service.
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3555,7 +3617,7 @@ Sets whether to enable the client to receive characteristic change indications f
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable the application, and **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable characteristic change indication, and the value **false** means the opposite.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -3615,7 +3677,7 @@ Sets whether to enable the client to receive characteristic change indications f
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change indication function.<br>
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change indications of the server.<br>
 - When receiving a characteristic change indication from the server, the client does not need to send a response as this will be done by the Bluetooth service.
-- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [getRssiValue](#getrssivalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
+- You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3628,13 +3690,13 @@ Sets whether to enable the client to receive characteristic change indications f
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>**true** to enable, **false** otherwise.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable characteristic change notification, and the value **false** means the opposite.|
 
 **Return value**
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result. that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -3989,14 +4051,14 @@ Starts BLE scanning. This API uses a promise to return the result.<br>
 
 | Name    | Type                                    | Mandatory  | Description                                 |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
-| filters | Array&lt;[ScanFilter](#scanfilter)&gt; | Yes   | Filter criteria for BLE advertising. Devices that meet the filter criteria will be reported.<br>If this parameter is set to **null**, all discoverable BLE devices nearby will be scanned. However, this method is not recommended as it may pick up unexpected devices and increase power consumption.|
+| filters | Array&lt;[ScanFilter](#scanfilter)&gt; | Yes   | Filter criteria for BLE advertising. Devices that meet the filter criteria will be reported.<br>- If this parameter is set to **null**, all discoverable BLE devices nearby will be scanned. However, this method is not recommended as it may pick up unexpected devices and increase power consumption.<br>- In geofence scan reporting mode (that is, [ScanReportMode](#scanreportmode15) is set to **FENCE_SENSITIVITY_LOW** or **FENCE_SENSITIVITY_HIGH**), this parameter cannot be set to **null**; that is, non-null filters must be passed.<br>- Filter resources are shared by all applications. It is recommended that an application use no more than three filters. If filter resources are exhausted, the scan will fail and error code 2900009 will be returned.|
 | options | [ScanOptions](#scanoptions)            | No   | Defines the scan configuration parameters.                    |
 
 **Return value**
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result. that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -4060,7 +4122,7 @@ Stops an ongoing BLE scan.<br>
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result. that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -4345,14 +4407,13 @@ Defines the structure of server response to a read/write request from the client
 
 Defines the connection status of the GATT profile.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name    | Type                                         | Read-Only| Optional| Description                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | --------------------------------------------- |
-| deviceId | string                                            | No| No  | Peer Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.|
-| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | No| No  | Connection status of the GATT profile.                      |
+| deviceId | string                                            | No| No  | Peer Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | No| No  | Connection status of the GATT profile.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| reason<sup>20+</sup>    | [GattDisconnectReason](#gattdisconnectreason20) | No| Yes  | Reason why the GATT connection is disconnected. This parameter is available only when the connection status is [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate). Otherwise, the default value **undefined** is used.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 
 ## ScanResult
@@ -4365,7 +4426,7 @@ Defines the scan result to be reported upon scanning advertising packets that me
 
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | No| No   | Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
+| deviceId | string      | No| No   | Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
 | rssi     | number      | No| No   | Signal strength, in dBm.                   |
 | data     | ArrayBuffer | No| No   | Advertising data sent by the discovered device.                   |
 | deviceName | string | No| No   | Device name.                   |
@@ -4562,7 +4623,7 @@ Enumerates GATT characteristic write modes.
 | Name                                  | Value   | Description             |
 | ------------------------------------| ------ | --------------- |
 | WRITE               | 1 | The peer Bluetooth device needs to send a confirmation after the write operation is complete.  |
-| WRITE_NO_RESPONSE   | 2 | The peer Bluetooth device does ot need to send a confirmation after the write operation is complete. |
+| WRITE_NO_RESPONSE   | 2 | The peer Bluetooth device does not need to send a confirmation after the write operation is complete. |
 
 
 ## ScanDuty
@@ -4643,6 +4704,35 @@ Enumerates scan report types.
 | ON_FOUND  | 1    | Triggers reporting when BLE advertising packets that meet the filter criteria are found. It applies to both the conventional and geofence reporting modes.<br> **Atomic service API**: This API can be used in atomic services since API version 15.     |
 | ON_LOST | 2    | Triggers reporting when no BLE advertising packets that meet the filter criteria are found. It applies only to the geofence reporting mode.<br> **Atomic service API**: This API can be used in atomic services since API version 15.   |
 | ON_BATCH<sup>19+</sup> | 3    | Triggers reporting when BLE advertising packets that meet the filter criteria are found. The reporting interval is the value of **interval** in [ScanOptions](#scanoptions).<br> **Atomic service API**: This API can be used in atomic services since API version 19.   |
+
+## GattDisconnectReason<sup>20+</sup>
+
+Enumerates the reasons of GATT disconnection.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name     | Value   | Description                          |
+| --------  | ---- | ------------------------------ |
+| CONN_TIMEOUT   | 1    | The connection times out.      |
+| CONN_TERMINATE_PEER_USER   | 2    | The peer device proactively closes the connection.   |
+| CONN_TERMINATE_LOCAL_HOST   | 3    | The local device proactively closes the connection.   |
+| CONN_UNKNOWN   | 4    | Unknown reason.   |
+
+## BleProfile<sup>21+</sup>
+
+Enumerates the profile types of the local device.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name     | Value   | Description                          |
+| --------  | ---- | ------------------------------ |
+| GATT   | 1    | The local device serves as both the client and server in the GATT link.      |
+| GATT_CLIENT   | 2    | The local device serves as the client in the GATT link.   |
+| GATT_SERVER   | 3    | The local device serves as the server in the GATT link.   |
 
 ## ScanReportMode<sup>15+</sup>
 

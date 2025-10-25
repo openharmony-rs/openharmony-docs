@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The custom component decorated by @Entry is used as the entry of the UI page.
+The custom component decorated with @Entry is used as the entry of the UI page.
 
 > **NOTE**
 >
@@ -39,19 +39,13 @@ struct Index {
 
 Describes the named route options.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name                        | Type                                                        | Mandatory| Description                                                        |
-| ------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| routeName                      | string                                                       | No  | Name of the target named route.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| storage                        | [LocalStorage](../../../ui/state-management/arkts-localstorage.md) | No  | Stores page-level UI status.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| useSharedStorage<sup>12+</sup> | boolean                                                      | No  | Whether to use the LocalStorage instance passed by [LocalContent](../arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared LocalStorage instance. **false**: Do not use the shared LocalStorage instance.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name                        | Type                                                        | Read-Only| Optional| Description                                                        |
+| ------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| routeName                      | string                                                       | No | Yes| Name of the target named route.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| storage                        | [LocalStorage](../../../ui/state-management/arkts-localstorage.md) | No| Yes | Stores page-level UI status.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| useSharedStorage<sup>12+</sup> | boolean                                                      | No | Yes| Whether to use the LocalStorage instance passed by [loadContent](../arkts-apis-window-WindowStage.md#loadcontent9). The default value is **false**. **true**: Use the shared LocalStorage instance. **false**: Do not use the shared LocalStorage instance.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 **Example**
 

@@ -2245,13 +2245,13 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。仅在支持跟随sensor旋转的设备上生效，子窗口调用后不生效。
+设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。子窗口调用后不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -2310,13 +2310,13 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置主窗口的显示方向属性，使用Promise异步回调。仅在支持跟随sensor旋转的设备上生效，子窗口调用后不生效。
+设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -2950,7 +2950,7 @@ try {
 
 on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 
-开启窗口尺寸变化的监听。
+开启窗口尺寸变化的监听。仅在主线程调用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2987,7 +2987,7 @@ try {
 
 off(type: 'windowSizeChange', callback?: Callback&lt;Size&gt;): void
 
-关闭窗口尺寸变化的监听。
+关闭窗口尺寸变化的监听。仅在主线程调用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5156,7 +5156,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -5226,7 +5226,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
