@@ -151,20 +151,23 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+**ArkTS-Sta起始版本：**20
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | 是 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| disableReason | number | 是 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 |
-| netId | number | 是 | 是 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacType | number | 是 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 是 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
-| ipType | [IpType](#iptype9) | 是 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
-| staticIp | [IpConfig](#ipconfig9) | 是 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
-| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 是 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
-| configStatus<sup>12+</sup> | number | 是 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 是 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
-| isSecureWifi<sup>20+</sup> | boolean | 是 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
+| creatorUid | number | 否 | 是 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| disableReason | number | 否 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| netId | number | 否 | 是 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 22|
+| randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| ipType | [IpType](#iptype9) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| staticIp | [IpConfig](#ipconfig9) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。<br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。<br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br><br>ArkTS-Dyn起始版本： 17<br><br>ArkTS-Sta起始版本： 20|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。<br><br>ArkTS-Dyn起始版本： 20<br><br>ArkTS-Sta起始版本： 20|
 
 ## IpType<sup>9+</sup>
 
@@ -174,12 +177,15 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| STATIC | 0 | 静态IP。 |
-| DHCP | 1 | 通过DHCP获取。 |
-| UNKNOWN | 2 | 未指定。 |
+| STATIC | 0 | 静态IP。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| DHCP | 1 | 通过DHCP获取。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| UNKNOWN | 2 | 未指定。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## IpConfig<sup>9+</sup>
@@ -190,13 +196,17 @@ IP配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 是 | 否 | IP地址。 |
-| gateway | number | 是 | 否 | 网关。 |
-| prefixLength | number | 是 | 否 | 掩码。 |
-| dnsServers | number[] | 是 | 否 | DNS服务器。 |
-| domains | Array&lt;string&gt; | 是 | 否 | 域信息。 |
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| gateway | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网关。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| prefixLength | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 掩码。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| dnsServers | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 否 | DNS服务器。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| domains | Array&lt;string&gt; | 否 | 否 | 域信息。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## WifiProxyConfig<sup>10+</sup>
@@ -287,12 +297,16 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
+| 名称 | 类型 | 可读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | 是 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
-| chload | number | 是 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 |
-| snr | number | 是 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 |
-| suppState | [SuppState](#suppstate9) | 是 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
+| networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| suppState | [SuppState](#suppstate9) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 
@@ -304,20 +318,24 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DISCONNECTED | 0 | 已断开。 |
-| INTERFACE_DISABLED | 1 | 接口禁用。 |
-| INACTIVE | 2 | 未激活。 |
-| SCANNING | 3 | 扫描中。 |
-| AUTHENTICATING | 4 | 认证中。 |
-| ASSOCIATING | 5 | 关联中。 |
-| ASSOCIATED | 6 | 已关联。 |
-| FOUR_WAY_HANDSHAKE | 7 | 四次握手。 |
-| GROUP_HANDSHAKE | 8 | 组握手。 |
-| COMPLETED | 9 | 所有认证已完成。 |
-| UNINITIALIZED | 10 | 连接建立失败。 |
-| INVALID | 11 | 无效值。 |
+| DISCONNECTED | 0 | 已断开。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| INTERFACE_DISABLED | 1 | 接口禁用。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| INACTIVE | 2 | 未激活。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| SCANNING | 3 | 扫描中。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| AUTHENTICATING | 4 | 认证中。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| ASSOCIATING | 5 | 关联中。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| ASSOCIATED | 6 | 已关联。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| FOUR_WAY_HANDSHAKE | 7 | 四次握手。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| GROUP_HANDSHAKE | 8 | 组握手。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| COMPLETED | 9 | 所有认证已完成。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| UNINITIALIZED | 10 | 连接建立失败。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| INVALID | 11 | 无效值。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.getSupportedFeatures<sup>9+</sup>
@@ -1139,15 +1157,19 @@ setHotspotConfig(config: HotspotConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
+| **名称** | **类型** | **可读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
-| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 是 | 否 | 加密类型。 |
-| band | number | 是 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
-| channel<sup>10+</sup> | number | 是 | 是 | 热点的信道（2.4G：1~14,5G：7~196）。 |
-| preSharedKey | string | 否 | 否 | 热点的密钥。 |
-| maxConn | number | 是 | 否 | 最大设备连接数。 |
-| ipAddress | string | 是 | 是 | DHCP服务器的IP地址。|
+| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 否 | 否 | 加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| band | number | 否 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4G：1~14,5G：7~196）。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| preSharedKey | string | 否 | 否 | 热点的密钥。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| maxConn | number | 否 | 否 | 最大设备连接数。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| ipAddress | string | 否 | 是 | DHCP服务器的IP地址。<br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.getHotspotConfig<sup>9+</sup>
 
@@ -1251,12 +1273,16 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
+| **名称** | **类型** | **可读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | 是 | 否 | 设备名称。 |
-| macAddress | string | 是 | 否 | MAC地址。 |
-| macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 是 | 是 | MAC地址类型。 |
-| ipAddress | string | 是 | 否 | IP地址。 |
+| name | string | 否 | 否 | 设备名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| macAddress | string | 否 | 否 | MAC地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 否 | 是 | MAC地址类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| ipAddress | string | 否 | 否 | IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
