@@ -62,7 +62,9 @@ You can export the ArkUI components, APIs, and other resources of an HSP for oth
 
 ### Exporting ArkUI Components
 Use **export** to export ArkUI components. The sample code is as follows:
-```ts
+<!-- @[in_app_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/components/MyTitleBar.ets) -->
+
+``` TypeScript
 // library/src/main/ets/components/MyTitleBar.ets
 @Component
 export struct MyTitleBar {
@@ -79,16 +81,25 @@ export struct MyTitleBar {
   }
 }
 ```
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+<!-- @[in_app_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// [StartExclude in_app_hsp_010]
 ```
+
 
 
 ### Exporting Classes and Methods
 Use **export** to export classes and methods. The sample code is as follows:
-```ts
+
+<!-- @[in_app_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/test.ets) -->
+
+``` TypeScript
 // library/src/main/ets/utils/test.ets
 export class Log {
   static info(msg: string): void {
@@ -104,14 +115,24 @@ export function minus(a: number, b: number): number {
   return a - b;
 }
 ```
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+
+<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { Log, add, minus } from './src/main/ets/utils/test';
+// [StartExclude in_app_hsp_010]
 ```
+
 ### Exporting Native Methods
 The HSP can contain .so files compiled in C++. The HSP indirectly exports the native method in the .so file. In this example, the **multi** API in the **liblibrary.so** file is exported.
-```ts
+
+<!-- @[in_app_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/nativeTest.ets) -->
+
+``` TypeScript
 // library/src/main/ets/utils/nativeTest.ets
 import native from 'liblibrary.so';
 
@@ -121,11 +142,17 @@ export function nativeMulti(a: number, b: number): number {
 }
 ```
 
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+
+<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
+
 
 ### Accessing Resources in an HSP Through $r
 More often than not, you may need to use resources, such as strings and images, in components. For components in an HSP, such resources are typically placed in the HSP package, rather than in the package where the HSP is invoked, for the purpose of complying with the principle of high cohesion and low coupling.
@@ -135,17 +162,21 @@ In a project, application resources are referenced in the $r/$rawfile format. Yo
 To avoid reference errors, do not use relative paths. For example,
 if you use **Image("../../resources/base/media/example.png")**, the image actually used will be the one in the directory of the module that invokes the HSP. That is, if the module that invokes the HSP is **entry**, then the image used will be **entry/src/main/resources/base/media/example.png**.
 
-```ts
-// library/src/main/ets/pages/Index.ets
-// Correct
-Image($r('app.media.example'))
-  .id('example')
-  .borderRadius('48px')
-// Incorrect
-Image("../../resources/base/media/example.png")
-  .id('example')
-  .borderRadius('48px')
+
+<!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+        // library/src/main/ets/pages/Index.ets
+        // Correct case
+        Image($r('app.media.example'))
+          .id('example')
+          .borderRadius('48px')
+        // // Incorrect case
+        Image("../../resources/base/media/example.png")
+          .id('example')
+          .borderRadius('48px')
 ```
+
 
 ### Exporting Resources from HSP
 When resources in an HSP need to be exported for cross-package access, it is recommended that a resource manager class be implemented to encapsulate the exported resources. In this way:
@@ -155,7 +186,10 @@ When resources in an HSP need to be exported for cross-package access, it is rec
 The implementation is as follows:
 
 Encapsulate the resources that need to be published into a resource management class.  
-```ts
+
+<!-- @[in_app_hsp_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/ResManager.ets) -->
+
+``` TypeScript
 // library/src/main/ets/ResManager.ets
 export class ResManager{
   static getPic(): Resource{
@@ -167,10 +201,16 @@ export class ResManager{
 }
 ```
 
+
 Declare the APIs exposed to external systems in the entry file **index.ets**.
-```ts
+
+<!-- @[in_app_hsp_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
 // library/index.ets
+// [EndExclude in_app_hsp_010]
 export { ResManager } from './src/main/ets/ResManager';
+// [StartExclude in_app_hsp_010]
 ```
 
 
@@ -190,8 +230,26 @@ export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
 export { ResManager } from './src/main/ets/ResManager';
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
+<!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+
+``` TypeScript
+// library/index.ets
+// ···
+export { Log, add, minus } from './src/main/ets/utils/test';
+// ···
+export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
+// ···
+export { ResManager } from './src/main/ets/ResManager';
+// ···
+export { nativeMulti } from './src/main/ets/utils/nativeTest';
+// [End in_app_hsp_006]
+```
+
 The APIs can be used as follows in the code of the invoking module:
-```ts
+
+<!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
 import { BusinessError } from "@kit.BasicServicesKit";
@@ -271,7 +329,7 @@ struct Index {
         .onClick(() => {
           // Obtain the context of the HSP module through application.createModuleContext and the resourceManager object of the HSP module, and call the API of resourceManager to obtain resources.
           application.createModuleContext(this.getUIContext()?.getHostContext(), "library").then((context:Context)=>{
-              context.resourceManager.getStringValue(ResManager.getDesc().id)
+            context.resourceManager.getStringValue(ResManager.getDesc().id)
               .then(value => {
                 console.info('getStringValue is ' + value);
                 this.message = 'getStringValue is ' + value;
@@ -313,12 +371,14 @@ struct Index {
 }
 ```
 
+
 ### Page Redirection and Return
 
 To add a button in the **entry** module to jump to the menu page (**library/src/main/ets/pages/library_menu.ets**) in the **library** module, write the following code in the **entry/src/main/ets/pages/Index.ets** file of the **entry** module:
-```ts
-// entry/src/main/ets/pages/Index.ets
 
+<!-- @[in_app_hsp_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
@@ -358,15 +418,18 @@ struct Index {
       .width('100%')
       .backgroundColor($r('app.color.page_background'))
       .height('100%')
-    }.title("Navigation_index")
+    }.title("Navigation_Index")
     .mode(NavigationMode.Stack)
   }
 }
 ```
 
+
 Add a page file (**library/src/main/ets/pages/library_menu.ets**) to the **library** module. The **back_to_index** button on the page can be used to return to the previous page.
-```
-// library/src/main/ets/pages/library_menu.ets
+
+<!-- @[in_app_hsp_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/ets/pages/library_menu.ets) -->
+
+``` TypeScript
 @Builder
 export function PageOneBuilder() {
   Library_Menu()
@@ -388,7 +451,7 @@ export struct Library_Menu {
             .onClick(() => {
               this.message = 'Welcome';
             })
-          Button("back_to_index").fontSize(50).onClick(() => {
+          Button('back_to_index').fontSize(50).onClick(() => {
             this.pathStack.pop();
           })
         }
@@ -397,11 +460,12 @@ export struct Library_Menu {
       .height('100%')
     }.title('Library_Menu')
     .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack
+      this.pathStack = context.pathStack;
     })
   }
 }
 ```
+
 
 Add the **route_map.json** file (**library/src/main/resources/base/profile/route_map.json**) to the **library** module.
 ```
@@ -420,14 +484,16 @@ Add the **route_map.json** file (**library/src/main/resources/base/profile/route
 ```
 
 Configure the **route_map.json** file in the **library/src/main/module.json5** file of the **library** module.
-```
+
+<!-- @[in_app_hsp_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
     "name": "library",
     "type": "shared",
     "description": "$string:shared_desc",
     "deviceTypes": [
-      "phone",
       "tablet",
       "2in1"
     ],
@@ -437,5 +503,6 @@ Configure the **route_map.json** file in the **library/src/main/module.json5** f
   }
 }
 ```
+
 
 The navigation feature is used for page redirection and return. For details, see [Page Navigation](../ui/arkts-navigation-navigation.md#routing-operations).

@@ -6,19 +6,22 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **deviceConfig** tag contains device-specific configuration of the application, including attributes such as **default**, **tv**, **car**, and **wearable**. The configuration in the **default** tag applies to all common devices. If a specific configuration is required for other device types, you need to configure in the corresponding tag.
+The **deviceConfig** tag contains device-specific configuration of the application, including attributes such as **default**, **tv**, **car**, and **wearable**.
 
 ## Internal Structure of the deviceConfig Tag
 
 **Table 1** Internal structure of the deviceConfig tag
 
+<!--RP1-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| default | Application configuration that provides full access to system capabilities.| Object| Yes (initial value: left empty)|
+| default | Default application configuration. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).| Object| Yes (initial value: left empty)|
 | tablet | Application configuration specific to tablets.| Object| Yes (initial value: left empty)|
 | tv | Application configuration specific to smart TVs.| Object| Yes (initial value: left empty)|
 | car | Application configuration specific to telematics devices.| Object| Yes (initial value: left empty)|
 | wearable | Application configuration specific to wearables.| Object| Yes (initial value: left empty)|
+| 2in1 | Application configuration specific to PCs, mainly used for multi-window and multi-task interactions, and keyboard and mouse operations. It fully showcases the device productivity.| Object| Yes (initial value: left empty)|
+<!--RP1End-->
 
 
 For details about the attributes of the **deviceConfig** tag, see [Internal Structure of the deviceConfig Attributes](#internal-structure-of-the-deviceconfig-attributes).
