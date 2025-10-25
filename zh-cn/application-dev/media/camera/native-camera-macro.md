@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-微距能力是指通过光学设计与算法优化，实现近距离对焦并清晰捕捉微小物体细节的相机功能。
+从API version 19开始，支持设置微距能力。。微距能力是指通过光学设计与算法优化，实现近距离对焦并清晰捕捉微小物体细节的相机功能。
 
 ## 开发步骤
 
@@ -76,7 +76,7 @@
 
 ## 状态监听
 
-在相机应用开发过程中，可以随时监听微距能力是否发生改变。
+从API version 20开始，支持监听微距能力是否发生改变。
 
 通过[OH_CaptureSession_RegisterMacroStatusChangeCallback()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_registermacrostatuschangecallback)函数注册回调，返回监听结果。
 
