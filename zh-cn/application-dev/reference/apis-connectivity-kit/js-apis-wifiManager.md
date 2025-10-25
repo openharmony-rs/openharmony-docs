@@ -2136,7 +2136,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。|
-| groupOwnerAddr | string | 是 | 否 | 群组IP地址。**ArkTS-Dyn起始版本：**20**ArkTS-Sta起始版本：**20| 
+| groupOwnerAddr | string | 是 | 否 | 群组IP地址。<br><br>**ArkTS-Dyn起始版本：** 20<br><br>**ArkTS-Sta起始版本：** 20| 
 
 
 ## P2pConnectState<sup>9+</sup>
