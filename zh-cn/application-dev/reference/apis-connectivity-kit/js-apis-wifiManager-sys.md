@@ -1044,6 +1044,10 @@ isOpenSoftApAllowed(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
+**ArkTS-Dyn起始版本：**18
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | **类型** | **说明** |
@@ -1406,7 +1410,9 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 ## wifiManager.deletePersistentGroup<sup>9+</sup>
 
-deletePersistentGroup(netId: number): void
+ArkTS-Dyn: deletePersistentGroup(netId: number): void
+
+ArkTS-Sta: deletePersistentGroup(netId: int): void
 
 删除永久组。
 
@@ -1416,12 +1422,16 @@ deletePersistentGroup(netId: number): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
 
   | **参数名** | **类型** | 必填 | **说明** |
   | -------- | -------- | -------- | -------- |
-  | netId | number | 是 | 组的ID。 |
+  | netId | number | 是 | 组的ID。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
 
 **错误码：**
 
@@ -1463,6 +1473,10 @@ API 9：ohos.permission.GET_WIFI_INFO、ohos.permission.LOCATION 和 ohos.permis
 API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1516,6 +1530,10 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1545,6 +1563,10 @@ setDeviceName(devName: string): void
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 

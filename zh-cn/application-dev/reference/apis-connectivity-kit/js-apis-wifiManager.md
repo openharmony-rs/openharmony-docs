@@ -1448,6 +1448,10 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**18
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
   | 类型 | 说明 |
@@ -2083,6 +2087,10 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -2128,7 +2136,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 |
 | isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。|
-| groupOwnerAddr | string | 是 | 否 | 群组IP地址。| 
+| groupOwnerAddr | string | 是 | 否 | 群组IP地址。**ArkTS-Dyn起始版本：**20**ArkTS-Sta起始版本：**20| 
 
 
 ## P2pConnectState<sup>9+</sup>
@@ -2153,6 +2161,10 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -2181,6 +2193,10 @@ getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -2227,6 +2243,10 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -2254,6 +2274,10 @@ getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -2311,6 +2335,10 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CONNECTED | 0 | 连接状态。 |
@@ -2331,6 +2359,10 @@ getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 API 11起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -2359,6 +2391,10 @@ getP2pLocalDevice(callback: AsyncCallback&lt;WifiP2pDevice&gt;): void
 API 11起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -2401,6 +2437,10 @@ createGroup(config: WifiP2PConfig): void
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -2461,6 +2501,10 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | GO_BAND_AUTO | 0 | 自动模式。 |
@@ -2511,6 +2555,10 @@ p2pConnect(config: WifiP2PConfig): void
 API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -2607,6 +2655,10 @@ p2pCancelConnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -2641,6 +2693,10 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -2672,6 +2728,10 @@ stopDiscoverDevices(): void
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -2708,6 +2768,10 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（该权限仅系统应用可申请），则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：**18
+
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
