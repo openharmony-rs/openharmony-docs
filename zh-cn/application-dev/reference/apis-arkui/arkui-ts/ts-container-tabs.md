@@ -350,6 +350,10 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 设置TabBar的背景模糊材质。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -398,6 +402,10 @@ barGridAlign(value: BarGridColumnOptions)
 edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 设置边缘回弹效果。
+
+>**说明：**
+>
+> 从API version 17开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -685,6 +693,10 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 7. 当使用自定义动画时，参与动画的页面布局方式会改为Stack布局。如果开发者未主动设置相关页面的zIndex属性，那么所有页面的zIndex值是一样的，页面的渲染层级会按照在组件树上的顺序（即页面的index值顺序）确定。因此，开发者需要主动修改页面的zIndex属性，来控制页面的渲染层级。
 8. 此属性不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -713,6 +725,10 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 4、通过点击TabBar页签切换新页面时触发。
 
 5、TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
