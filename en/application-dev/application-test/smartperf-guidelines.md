@@ -8,11 +8,11 @@
 
 ## Introduction
 
-SmartPerf Device is a reliable, easy-to-use performance and power consumption test tool. In this tool, you can monitor the performance and power consumption of your application and device with quantitative indicators, such as FPS, CPU, GPU, RAM, and Temp.
+SmartPerf Device is a reliable, easy-to-use performance and power consumption test tool. In this tool, you can monitor the performance and power consumption of your application and device with quantitative metrics, such as FPS, CPU, GPU, RAM, and Temp.
 
 Targeted at devices with or without screens, SmartPerf Device provides two modes: Device-hap and Device-daemon. Device-hap is applicable to devices with screens and provides a visualized, intuitive UI that simplifies your operations. You can start and pause a test with a floating window, view performance data in real time, and save the test results for further analysis. Device-daemon is applicable to devices with and without screens and works with shell commands.
 
-### Indicators
+### Metrics
 
 - CPU: The tool reads the frequencies and usage of CPU cores on the test device on a per second basis to measure the CPU usage of the target application. Sustained high CPU may lead to overheating.
 - GPU: The tool reads the GPU frequency and load information of the test device on a per second basis to measure the GPU usage of the target application. High GPU usage can lead to performance drops and application slowdowns.
@@ -21,7 +21,7 @@ Targeted at devices with or without screens, SmartPerf Device provides two modes
 - RAM: The tool reads the RAM usage of the target application on a per second basis.
 - snapshot: The tool takes a screenshot of the application UI every 2 seconds.
 
-## Principles
+## Implementation Principles
 
 The figure below demonstrates the main functions of SmartPerf Device. Set data collection items and parameters on Device-hap, start the application, and then send data requests for KPIs (such as FPS, RAM, and Trace) from Device-hap to Device-daemon through messages. Device-daemon collects, persists, and analyzes data as requested, and then sends the data to Device-hap for display.
 
@@ -50,7 +50,7 @@ Start SmartPerf Device-hap. On the home screen, click **Select an app**.
 
 ### Setting Collection Parameters
 
-After the target application is selected, return to the start page and set the test indicators. You can also change the test name (which includes the name of the target application and the test time and will be displayed in the report), and specify whether to capture traces and whether to enable the screenshot feature. When you are done, click the **Start** button at the bottom.
+After the target application is selected, return to the start page and set the test metrics. You can also change the test name (which includes the name of the target application and the test time and will be displayed in the report), and specify whether to capture traces and whether to enable the screenshot feature. When you are done, click the **Start** button at the bottom.
 
 ### Using the Floating Window to Manage Data Collection
 
@@ -198,7 +198,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
     $
   ```
 
-- Collect twice the frequency and usage of CPU cores.
+- Collect the frequency and usage of CPU cores twice.
 
   ```
     $ SP_daemon -N 2 -c
@@ -531,7 +531,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
   >
   >- When the collection is complete, you can view the screenshots in **data/local/tmp/capture**.
   >
-  >- To export the screenshots to drive D, open a new CLI and run the **hdc file recv data/local/tmp/capture/screenCap_1700725192774.png D:\\** command.
+  >- To export the screenshots to drive D, open a new CLI and run the `hdc file recv data/local/tmp/capture/screenCap_1700725192774.png D:\\` command.
 
 - Collect the network speeds twice.
 
@@ -570,7 +570,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
     $
   ```
  
-- Collect the frame rate of the specified view layer for 10 times.
+- Collect the frame rate of the specified view layer 10 times.
 
   ```
     $ SP_daemon -N 10 -VIEW DisplayNode -f
@@ -823,13 +823,13 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 **2. On-demand start and stop**
 
-Run the start command to start data collection. After operating the device or application, run the stop command to stop data collection.
+Run the **start** command to start the collection. After operating the device or application, run the **stop** command to stop the collection.
 
 | Command  |Mandatory| Description                  |
 | :-----|:-----| :--------------------- |
-| -start |Yes| Starts data collection. You can add basic collection commands after this command. Data is collected once per second.           |
-| -stop |Yes| Stops data collection and generates a collection report.             |
-| -print |No| Prints the start and stop collection information per second.             |
+| -start |Yes| Starts collection. You can add a basic collection command after this command parameter. The collection is performed every second.           |
+| -stop |Yes| Stops collection and generates a report.             |
+| -print |No| Prints the collection start and stop information every second.             |
 
   
 - Start and stop collecting the frequency and usage of CPU cores.
@@ -913,15 +913,15 @@ Run the start command to start data collection. After operating the device or ap
    >
    >- Example 1: Run the **SP_daemon -start -c -g -t -r -d -net -snapshot** command to collect the CPU, GPU, temperature, frame rate, memory, DDR, network rate, and screenshot information of the system.
    >
-   >- Example 2 of starting collection (collecting the CPU load, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device and process): SP_daemon -start -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads -fds.
+   >- Example 2: Run the **SP_daemon -start -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads -fds** command to collect the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
    >
-   >- Example 3 of starting collection (collecting the CPU load, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device and process): SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds.
+   >- Example 3: Run the **SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds** command to collect the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
    >
-   >- Example 4 of starting collection (collecting the CPU, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device, and printing the collected information): SP_daemon -start -c -g -t -r -d -net -snapshot -threads -fds -print.
+   >- Example 4: Run the **SP_daemon -start -c -g -t -r -d -net -snapshot -threads -fds -print** command to collect and print the CPU, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system.
    >
-   >- Example 5 of starting collection (collecting the CPU load, GPU, temperature, FPS, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the entire device and process, and printing the collected information): SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds -print.
+   >- Example 5: Run the **SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds -print** command to collect and print the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
    >
-   >- The output path of the service startup and stop file is data/local/tmp/smartperf/1/t_index_info.csv. You can run the hdc file recv command to export and view the report. For details, see the CSV collection result.
+   >- The service start and stop file is stored in **data/local/tmp/smartperf/1/t_index_info.csv**. You can run the **hdc file recv** command to export the report. For details, see CSV output.
 
 **3. CSV output**
 
@@ -929,7 +929,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
 
   - By default, the collection results are saved to **/data/local/tmp/data.csv**.
 
-  - To check the path to the test result file:
+  - Check the path to the result file.
 
     ```
     C:\Users\issusser>hdc shell
@@ -939,7 +939,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
     $
     ```
 
-  - Exporting the file to a specified path
+  - Export the file to the specified path.
     ```
     C:\Users\issusser>hdc file recv data/local/tmp/data.csv D:\
     [I][2023-11-08 16:16:41] HdcFile::TransferSummary success
@@ -947,7 +947,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
 
     C:\Users\issusser>
     ```
-  - Opening the data.csv file to view the collected data
+  - Open the **data.csv** file to view the collected data.
 
     The table below describes the data fields in the **data.csv** file.
 
@@ -1029,14 +1029,14 @@ If the collection result is saved in a CSV file, perform the following steps to 
 
 ### Scenario Collection
 
-In addition to basic collection, response and completion delays can be collected. The scenario collection result is displayed in the CLI instead of being written into the **data.csv** file.
+In addition to basic collection, the response and completion latency can be collected. The scenario collection result is displayed in the CLI instead of being written into the **data.csv** file.
 
 | Command  |Mandatory| Description                  |
 | :-----|:-----| :--------------------- |
 | -editor|Yes|    Identifies scenario collection. Parameter options can be added after.        |
 | -responseTime|No|    Collects the response latency.        |
 | -completeTime|No|    Collects the completion delay.        |
-| -fpsohtest|No|    A validator used to collect the frame rate every second. The frame rate is collected 10 times by default.      |
+| -fpsohtest|No|    Collects the frame rate every second. The frame rate is collected 10 times by default.      |
 
 - Collect the application response latency. (This command supports only the RK3568 device.)
 
@@ -1201,7 +1201,7 @@ The power collection result of the current device can be written into the **data
   >
   >- **recordTime** indicates the timestamp, and **recordPower** indicates the current battery level.
   >
-  >- This command needs to be executed separately. The collection result is written into the **/data/local/tmp/powerLeftRecord.csv** file and can be exported to the local PC by running the **hdc file recv** command. For details, see Viewing CSV Collection Results.
+  >- This command needs to be executed separately. The collection result is written into the **/data/local/tmp/powerLeftRecord.csv** file and can be exported to the local PC by running the **hdc file recv** command. For details, see CSV output.
 
 - Collect the frame rate of the current page.
 

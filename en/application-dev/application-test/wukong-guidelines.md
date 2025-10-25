@@ -65,7 +65,7 @@ The following figure shows the wukong component architecture and the responsibil
   #If you are testing one device, run **hdc shell**.
   C:\Users>hdc shell
   $
-  #To connect to multiple devices at the same time, obtain the SNs first by running the hdc list targets command, and then enter the shell mode.
+  #If you are testing multiple devices, obtain the SNs first by running **hdc list targets**. Then, enter the shell.
   C:\Users>hdc list targets
   15xxx424axxxx345209d94xxxx8fxx900
   C:\Users>hdc -t 15xxx424axxxx345209d94xxxx8fxx900 shell
@@ -136,7 +136,7 @@ The following figure shows the wukong component architecture and the responsibil
     -k, --spec_insomnia        power on/off event
     -T, --time                 total time of test
     -C, --component            component event
-    -p, --screenshot           get screenshot(only in compoment input)
+    -p, --screenshot           get screenshot(only in component input)
     -r, --record               record user operation
     -R, --replay               replay user operation
     -u, --uitest               uitest dumpLayout
@@ -304,7 +304,7 @@ After the test commands are executed, the test result is automatically generated
 | wukong_report.csv                    | Stores the test report summary.      |
 | wukong.log                | Indicates the test operation history.      |
 
-### View operation logs
+### Viewing Operation Logs
 
 You can run the hdc command to obtain logs to the local host and view the operation history.
 
@@ -324,10 +324,10 @@ FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 ```
 
 ## FAQs
-### failed to connect to AAMS
+### What should I do if "failed to connect to AAMS" is displayed?
  **Symptom**
 
-failed to connect to AAMS.
+The error message "failed to connect to AAMS" is displayed.
 
  **Possible Cause**
 
@@ -336,10 +336,10 @@ AAMS is occupied by Hypium or the UIViewer of DevEco Testing. AAMS can be connec
  **Solution**
 
 Stop the process that occupies AAMS or restart the device.
-### Errorcode:(4005)
+### What should I do if "Errorcode:(4005)" is displayed?
  **Symptom**
 
-Errorcode:(4005).
+The error message "Errorcode:(4005)" is displayed.
 
  **Possible Cause**
 
@@ -348,10 +348,10 @@ The size of the screen display area changes. As a result, the page information f
  **Solution**
 
 This error does not affect the test process and does not need to be handled.
-### Errorcode:(4007)
+### What should I do if "Errorcode:(4007)" is displayed?
  **Symptom**
 
-Errorcode:(4007).
+The error message "Errorcode:(4007)" is displayed.
 
  **Possible Cause**
 
