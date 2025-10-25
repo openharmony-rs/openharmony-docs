@@ -206,7 +206,7 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -244,7 +244,7 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -281,7 +281,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -319,7 +319,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Ca
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
