@@ -81,7 +81,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 ## onVisibleAreaApproximateChange<sup>17+</sup>
 
-onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
+onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T
 
 设置onVisibleAreaApproximateChange事件的回调参数，限制它的执行间隔。
 
@@ -96,6 +96,12 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 | options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | 是   | 可见区域变化相关的参数。 |
 | event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
 >**说明：**
 >
 >- 此接口与[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)接口存在如下差异：onVisibleAreaChange在每一帧都会进行可见区域比例的计算，如果注册节点太多，系统功耗存在劣化。而此接口降低了可见区域比例计算的频度，计算间隔由[VisibleAreaEventOptions](#visibleareaeventoptions12)的expectedUpdateInterval参数决定。
@@ -105,6 +111,8 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 >- 从API version 18开始，支持在自定义组件中调用该接口。
 >
 >- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如果想要支持[scale](ts-universal-attributes-transformation.md#scale)，则需将[VisibleAreaEventOptions](#visibleareaeventoptions12)的measureFromViewport设置为true。
+>
+>- 从API version 21开始，返回值类型由void改为T。
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
@@ -344,7 +352,7 @@ struct ScrollExample {
 
 ### 示例3 (设置measureFromViewport子组件超出父组件显示)
 
-从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有有微小差异。
+从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有微小差异。
 
 ```ts
 @Entry
@@ -414,7 +422,7 @@ struct OnVisibleAreaChangeSample {
 
 ### 示例4 (设置measureFromViewport子组件被父组件裁切超出父组件不显示)
 
-从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有有微小差异。
+从API version 21开始，该示例展示onVisibleAreaChange事件设置measureFromViewport参数效果对比，主要差异体现在回调返回值组件可见比例（currentRatio）的不同，设置measureFromViewport为true时，返回的组件可见比例（currentRatio）更符合实际效果。该示例在不同设备上currentRatio会有微小差异。
 
 ```ts
 @Entry
