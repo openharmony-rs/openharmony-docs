@@ -318,7 +318,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
   2.使用字面量`[模块名].type.name`或变量获取资源。其中，模块名为hsp模块的名称，type为资源类型，name为资源名称，示例如下：
 
-   <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
 
   > **说明** 
   >
