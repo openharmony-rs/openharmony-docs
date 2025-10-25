@@ -2132,11 +2132,15 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 |
-| isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。|
-| groupOwnerAddr | string | 是 | 否 | 群组IP地址。<br><br>**ArkTS-Dyn起始版本：** 20<br><br>**ArkTS-Sta起始版本：** 20| 
+| connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| groupOwnerAddr | string | 是 | 否 | 群组IP地址。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## P2pConnectState<sup>9+</sup>
@@ -2145,10 +2149,14 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DISCONNECTED | 0 | 断开状态。 |
-| CONNECTED | 1 | 连接状态。 |
+| DISCONNECTED | 0 | 断开状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| CONNECTED | 1 | 连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.getCurrentGroup<sup>9+</sup>
 
@@ -2341,11 +2349,11 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CONNECTED | 0 | 连接状态。 |
-| INVITED | 1 | 邀请状态。 |
-| FAILED | 2 | 失败状态。 |
-| AVAILABLE | 3 | 可用状态。 |
-| UNAVAILABLE | 4 | 不可用状态。 |
+| CONNECTED | 0 | 连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| INVITED | 1 | 邀请状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| FAILED | 2 | 失败状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| AVAILABLE | 3 | 可用状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| UNAVAILABLE | 4 | 不可用状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.getP2pLocalDevice<sup>9+</sup>
@@ -2507,9 +2515,9 @@ createGroup(config: WifiP2PConfig): void
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| GO_BAND_AUTO | 0 | 自动模式。 |
-| GO_BAND_2GHZ | 1 | 2.4GHZ。 |
-| GO_BAND_5GHZ | 2 | 5GHZ。 |
+| GO_BAND_AUTO | 0 | 自动模式。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| GO_BAND_2GHZ | 1 | 2.4GHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| GO_BAND_5GHZ | 2 | 5GHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.removeGroup<sup>9+</sup>
@@ -2808,17 +2816,21 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
+**ArkTS-Dyn起始版本：**9
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isP2pGo | boolean | 是 | 否 | 是否是群主。true:是群主，false:不是群主。 |
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 是 | 否 | 群组的设备信息。 |
-| passphrase | string | 是 | 否 | 群组密钥。 |
-| interface | string | 是 | 否 | 接口名称。 |
-| groupName | string | 是 | 否 | 群组名称。 |
-| networkId | number | 是 | 否 | 网络ID。 |
-| frequency | number | 是 | 否 | 群组的频率。 |
-| clientDevices | [WifiP2pDevice[]](#wifip2pdevice9) | 是 | 否 | 接入的设备列表信息。 |
-| goIpAddress | string | 是 | 否 | 群组IP地址。 |
+| isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 |
+| passphrase | string | 否 | 否 | 群组密钥。 |
+| interface | string | 否 | 否 | 接口名称。 |
+| groupName | string | 否 | 否 | 群组名称。 |
+| networkId | number | 否 | 否 | 网络ID。 |
+| frequency | number | 否 | 否 | 群组的频率。 |
+| clientDevices | [WifiP2pDevice[]](#wifip2pdevice9) | 否 | 否 | 接入的设备列表信息。 |
+| goIpAddress | string | 否 | 否 | 群组IP地址。 |
 
 
 ## wifiManager.on('wifiStateChange')<sup>9+</sup>
