@@ -526,6 +526,10 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 设置旋转表冠的灵敏度。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
