@@ -44,13 +44,106 @@
 
 <!-- @[scroll_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
 
+``` TypeScript
+// src/main/ets/view/ScrollSnapshot.ets
+@Component
+export struct ScrollSnapshot {
+  private scroller: Scroller = new Scroller();
+  private listComponentWidth: number = 0; // 组件宽度，默认值为0
+  private listComponentHeight: number = 0; // 组件高度，默认值为0
+  // list组件的当前偏移量
+  private curYOffset: number = 0;
+  // 每次滚动距离
+  private scrollHeight: number = 0;
+
+// ···
+  build() {
+    // ···
+        Stack() {
+        // ···
+          // 1.1 绑定滚动控制器，并通过`.id`配置组件唯一标识。
+          List({ space: 12, scroller: this.scroller }) {
+              LazyForEach(this.dataSource, (item: number) => {
+              ListItem() {
+                NewsItem({ index: item })
+              }
+            }, (item: number) => item.toString())
+          }
+        // ···
+          .id(LIST_ID)
+          // 1.2 通过回调获取滚动偏移量。
+          .onDidScroll(() => {
+            this.curYOffset = this.scroller.currentOffset().yOffset;
+          })
+          .onAreaChange((oldValue, newValue) => {
+            // 1.3 获取组件的宽高。
+            this.listComponentWidth = newValue.width as number;
+            this.listComponentHeight = newValue.height as number;
+            this.scrollHeight = this.listComponentHeight;
+          })
+        // ···
+    }
+  }
+}
+```
+
 **步骤2：循环滚动截图并缓存**
 
 通过实现一个递归方法滚动循环截图，并在滚动过程配合一些动效实现。
 
 <!-- @[scroll_snapand_merge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
 
+``` TypeScript
+/**
+ * 归滚动截图，直到滚动到底，最后合并所有截图
+ */
+async scrollSnapAndMerge() {
+  try {
+    // 记录滚动偏移
+    this.scrollYOffsets.push(this.curYOffset - this.yOffsetBefore);
+    // 调用组件截图接口，获取list组件的截图
+    const pixelMap = await this.getUIContext().getComponentSnapshot().get(LIST_ID);
+    // 获取位图像素字节，并保存在数组中
+    let area: image.PositionArea =
+      await ImageUtils.getSnapshotArea(pixelMap, this.scrollYOffsets, this.listComponentWidth,
+        this.listComponentHeight)
+    this.areaArray.push(area);
+
+    // 判断是否滚动到底以及用户是否已经强制停止
+    if (!this.scroller.isAtEnd() && !this.isClickStop) {
+      // 如果没有到底或被停止，则播放一个滚动动效，延迟一段时间后，继续递归截图
+      CommonUtils.scrollAnimation(this.scroller, 1000, this.scrollHeight);
+      await CommonUtils.sleep(1500);
+      await this.scrollSnapAndMerge();
+    } else {
+      // 当滚动到底时，调用`mergeImage`将所有保存的位图数据进行拼接，返回长截图位图对象
+      this.mergedImage =
+        await ImageUtils.mergeImage(this.areaArray, this.scrollYOffsets[this.scrollYOffsets.length - 1],
+          this.listComponentWidth, this.listComponentHeight);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error mesage: ${error.message}`);
+  }
+}
+```
+
 <!-- @[scroll_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/CommonUtils.ets) -->
+
+``` TypeScript
+// src/main/ets/common/CommonUtils.ets
+static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: number): void {
+  scroller.scrollTo({
+    xOffset: 0,
+    yOffset: (scroller.currentOffset().yOffset + scrollHeight),
+    animation: {
+      duration: duration,
+      curve: Curve.Smooth,
+      canOverScroll: false
+    }
+  });
+}
+```
 
 **步骤3：拼接长截图**
 
@@ -58,13 +151,101 @@
 
 <!-- @[merge_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/ImageUtils.ets) -->
 
+``` TypeScript
+static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth: number,
+  listHeight: number): Promise<PixelMap> {
+  // 创建一个长截图位图对象
+  let opts: image.InitializationOptions = {
+    editable: true,
+    pixelFormat: 4,
+    size: {
+      width: uiContext?.vp2px(listWidth) || 0,
+      height: uiContext?.vp2px(lastOffsetY + listHeight) || 0
+    }
+  };
+  let longPixelMap = image.createPixelMapSync(opts);
+  let imgPosition: number = 0;
+
+  for (let i = 0; i < areaArray.length; i++) {
+    let readArea = areaArray[i];
+    let area: image.PositionArea = {
+      pixels: readArea.pixels,
+      offset: 0,
+      stride: readArea.stride,
+      region: {
+        size: {
+          width: readArea.region.size.width,
+          height: readArea.region.size.height
+        },
+        x: 0,
+        y: imgPosition
+      }
+    }
+    imgPosition += readArea.region.size.height;
+    try {
+      longPixelMap.writePixelsSync(area);
+    } catch (err) {
+      let error = err as BusinessError;
+      Logger.error(TAG, `writePixelsSync err, code: ${error.code}, mesage: ${error.message}`);
+    }
+  }
+  return longPixelMap;
+}
+```
+
 **步骤4：保存截图**
 
 使用安全控件SaveButton实现截图保存到相册。
 
 <!-- @[save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
 
+``` TypeScript
+// src/main/ets/view/SnapshotPreview.ets
+SaveButton({
+  icon: SaveIconStyle.FULL_FILLED,
+  text: SaveDescription.SAVE_IMAGE,
+  buttonType: ButtonType.Capsule
+})
+  // ···
+  .onClick((event, result) => {
+    this.saveSnapshot(result);
+  })
+```
+
 <!-- @[save_snapshot1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
+async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
+  try {
+    if (result === SaveButtonOnClickResult.SUCCESS) {
+      const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
+      const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
+      const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+      const imagePackerApi: image.ImagePacker = image.createImagePacker();
+      const packOpts: image.PackingOption = {
+        format: 'image/png',
+        quality: 100,
+      };
+      imagePackerApi.packToData(this.mergedImage, packOpts).then((data) => {
+        fileIo.writeSync(file.fd, data);
+        fileIo.closeSync(file.fd);
+        Logger.info(TAG, `Succeeded in packToFile`);
+        this.getUIContext().getPromptAction().showToast({
+          // $r('app.string.save_album_success')需要替换为开发者所需的资源文件
+          message: $r('app.string.save_album_success'),
+          duration: 1800
+        })
+      }).catch((error: BusinessError) => {
+        Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
+      });
+    }
+  // ···
+  } catch (err) {
+    let error = err as BusinessError;
+    Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error mesage: ${error.message}`);
+  }
+}
+```
 
 **步骤5：保存完成后释放位图**
 
@@ -72,10 +253,69 @@
 
 <!-- @[close_and_clean_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
 
+``` TypeScript
+closeSnapPopup(): void {
+  // 关闭弹窗
+  this.isShowPreview = false;
+  // 释放位图对象
+  this.mergedImage = undefined;
+  // 重置相关参数
+  this.snapPopupWidth = 100;
+  this.snapPopupHeight = 200;
+  this.snapPopupPosition =
+    PopupUtils.calcPopupCenter(this.screenWidth, this.screenHeight, this.snapPopupWidth, this.snapPopupHeight);
+  this.isLargePreview = false;
+}
+```
+
 ### 封装全局截图接口
 如前文所述，截图接口必须在UI上下文明确的位置使用。然而，应用有时希望对不同模块封装统一的全局截图方法。例如，在下述示例中，awardBuilder构建的组件是固定结构的。GlobalStaticSnapshot提供了一个getAwardSnapshot全局方法，能够满足不同模块的需求，对同一固定模式的组件进行截图，从而实现全局截图接口的封装。
 
 <!-- @[global_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/GlobalScreenshot.ets) -->
+
+``` TypeScript
+import { image } from '@kit.ImageKit';
+import { ComponentContent } from '@kit.ArkUI';
+
+export class Params {
+  public text: string | undefined | null = '';
+
+  constructor(text: string | undefined | null) {
+    this.text = text;
+  }
+}
+
+@Builder
+function awardBuilder(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(90)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+      .width('100%')
+      .height('100%')
+  }.backgroundColor('#FFF0F0F0')
+}
+
+export class GlobalStaticSnapshot {
+  /**
+   * 一个可以获取固定对象截图的静态方法
+   */
+  static async getAwardSnapshot(uiContext: UIContext, textParam: Params): Promise<image.PixelMap | undefined> {
+    let resultPixmap: image.PixelMap | undefined = undefined
+    let contentNode = new ComponentContent(uiContext, wrapBuilder(awardBuilder), textParam);
+    await uiContext.getComponentSnapshot()
+      .createFromComponent(contentNode, 320, true, { scale: 1, waitUntilRenderFinished: true })
+      .then((pixmap: image.PixelMap) => {
+        resultPixmap = pixmap;
+      })
+      .catch((err: Error) => {
+        console.error('error: ' + err);
+      })
+    return resultPixmap;
+  }
+}
+```
 
 **完整示例：**
 
