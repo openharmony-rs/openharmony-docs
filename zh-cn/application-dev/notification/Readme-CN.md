@@ -28,5 +28,4 @@
     <!--Del-->
   - [通知消息跨设备协同管理（仅对系统应用开放）](notification-distributed-notdistributed-sys.md)
   <!--DelEnd-->
-  - [为跨设备协同通知添加快捷回复](notification-quickreply.md)
   - [清除跨设备场景下的重复通知](notification-distributed-messageid.md)
