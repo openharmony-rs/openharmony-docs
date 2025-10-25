@@ -30,6 +30,12 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - 对齐方式：通过对齐方式，设置当前元素是基于锚点的上中下对齐，还是基于锚点的左中右对齐。
 
+- 链：将一系列组件以首尾相连的方式对齐，可以形成一条链。通过设置链的模式，可以指定链上元素的排列方式。
+
+- 辅助线：辅助线是在容器内虚拟出的额外水平或垂直锚点，便于统一对齐至某个偏移位置。
+
+- 屏障：屏障是指容器内一组指定组件在特定方向上的共同最远边界，例如，一组组件下方的屏障，是指这些组件底部边缘中最底部的那个边界。
+
 
 ## 设置依赖关系
 
@@ -664,3 +670,119 @@ struct Index {
 }
 ```
 ![relative container](figures/relativecontainer6.png)
+
+## 使用辅助线辅助定位子组件
+
+辅助线（guideLine）是在容器内虚拟出的额外水平或垂直锚点，便于统一对齐到特定偏移位置，从而避免为每个组件单独编写重复的偏移设置。
+
+辅助线分为垂直（Vertical）和水平（Horizontal）两种：垂直辅助线通过start和end属性指定其距离容器左侧和右侧的距离；水平辅助线通过start和end属性指定其距离容器顶部和底部的距离。
+* 如果同时设置了start和end，当两者规则冲突时，仅start属性生效。
+* 若容器在某个方向的尺寸被声明为"auto"，则该方向上的guideLine位置只能使用start属性声明（不允许使用百分比）。
+
+在以下示例代码中，定义了一条垂直辅助线guideline1，距离容器左侧50vp，以及另一条水平辅助线guideline2，距离容器顶部50vp。组件row1通过这两条辅助线来定位自身位置，无需设置bias。
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor('#a3cf62')
+          .alignRules({
+            left: { anchor: "guideline1", align: HorizontalAlign.End },
+            top: { anchor: "guideline2", align: VerticalAlign.Top }
+          })
+          .id("row1")
+      }
+      .width(300)
+      .height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: "#6699FF" })
+      .guideLine([{ id: "guideline1", direction: Axis.Vertical, position: { start: 50 } },
+        { id: "guideline2", direction: Axis.Horizontal, position: { start: 50 } }])
+    }
+    .height('100%')
+  }
+}
+```
+![relative container](figures/relativecontainer4.png)
+
+## 多个组件的屏障
+
+屏障（barrier）是容器内一组指定组件在指定方向上的公共最远边界。例如，一组组件下方的屏障是它们底部最靠下的位置，可以理解为坐标取min/max。使用屏障可以实现组件不与一组参考组件中的任何一个重叠等效果。
+
+屏障可以有上下左右四个方向。垂直方向（TOP，BOTTOM）的屏障仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的屏障仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。
+
+如下代码定义了两个屏障，分别是参考组件row1和row2各自右侧边界与底部边界。使用这两个屏障作为row3和row4的锚点，可以方便地避免组件间出现不必要的重叠。
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#a3cf62')
+        .id("row1")
+
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          middle: { anchor: "row1", align: HorizontalAlign.End },
+          top: { anchor: "row1", align: VerticalAlign.Bottom }
+        })
+        .id("row2")
+
+        Row() {
+          Text('row3')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "barrier1", align: HorizontalAlign.End },
+          top: { anchor: "row1", align: VerticalAlign.Top }
+        })
+        .id("row3")
+
+        Row() {
+          Text('row4')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(50)
+        .height(50)
+        .backgroundColor('#2ca9e0')
+        .alignRules({
+          left: { anchor: "row1", align: HorizontalAlign.Start },
+          top: { anchor: "barrier2", align: VerticalAlign.Bottom }
+        })
+        .id("row4")
+      }
+      .width(300)
+      .height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: "#6699FF" })
+      .barrier([{ id: "barrier1", direction: BarrierDirection.RIGHT, referencedId: ["row1", "row2"] },
+        { id: "barrier2", direction: BarrierDirection.BOTTOM, referencedId: ["row1", "row2"] }])
+    }
+    .height('100%')
+  }
+}
+```
+![relative container](figures/relativecontainer5.png)

@@ -6,29 +6,32 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-## How do I obtain the fingerprint in the signature information
+## How do I obtain the fingerprint in the signature information?
 
 * Call an API.
 
 You can call [bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the bundle information, which contains the signature information, and signature information in turn contains fingerprint information.
 
-```ts
+<!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
+
+``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo:bundleManager.BundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. fingerprint: %{public}s', bundleInfo.signatureInfo.fingerprint);
+    console.info('testTag', 'getBundleInfoForSelf successfully. fingerprint: ', bundleInfo.signatureInfo.fingerprint);
   }).catch((err: BusinessError) => {
-    console.error('testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+    console.error('testTag', 'getBundleInfoForSelf failed. Cause: ', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
   console.error('testTag', 'getBundleInfoForSelf failed: %{public}s', message);
 }
 ```
+
 
 * Use [Bundle Manager](../tools/bm-tool.md) (bm).
 
@@ -42,7 +45,7 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 * Use the **keytool**. For details, see [Generating a Signing Certificate Fingerprint](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/appgallerykit-preparation-game-0000001055356911#section147011294331).
 
-## What is appIdentifier
+## What is appIdentifier?
 
 **appIdentifier**, generated during application signing, is a field in the <!--RP1-->[profile](../security/app-provision-structure.md)<!--RP1End--> and is the unique identifier of an application. There are two ways to generate an application identifier:
 
@@ -53,27 +56,30 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 Therefore, manual signing is recommended in scenarios where **appIdentifier** must remain unchanged, such as cross-device debugging, cross-application interaction debugging, or multi-user development with a shared key. For details, see [Use Cases for Automatic and Manual Signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section54361623194519).
 
-## How do I obtain appIdentifier from application information
+## How do I obtain appIdentifier from application information?
 
 * You can call [bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the bundle information, which contains the signature information, and signature information in turn contains the **appIdentifier**.
 
-```ts
+<!-- @[get_app_identifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppIdentifier.ets) -->
+
+``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo:bundleManager.BundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. appIdentifier: %{public}s', bundleInfo.signatureInfo.appIdentifier);
+    console.info('testTag', 'getBundleInfoForSelf successfully. appIdentifier:', bundleInfo.signatureInfo.appIdentifier);
   }).catch((err: BusinessError) => {
-    console.error('testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+    console.error('testTag', 'getBundleInfoForSelf failed. Cause:', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
-  console.error('testTag', 'getBundleInfoForSelf failed: %{public}s', message);
+  console.error('testTag', 'getBundleInfoForSelf failed:', message);
 }
 ```
+
 
 * Use the [bm](../tools/bm-tool.md) tool.
 
@@ -86,37 +92,40 @@ bm dump -n com.example.myapplication | grep appIdentifier
 ![alt text](figures/get_appIdentifier.png)
 
 
-## What Is appId
+## What Is appId?
 
 **appId**, the unique identifier of an application, consists of a bundle name, underscore (_), and Base64-encoded public key of the certificate. Since it changes with the public key of the signing certificate, you are advised to use [appIdentifier](#what-is-appidentifier) as the unique identifier of an application.
 
-## How do I obtain appId from application information
+## How do I obtain appId from application information?
 
 * You can call [bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the bundle information, which contains the signature information, and signature information in turn contains the **appId**.
 
-```ts
+<!-- @[get_app_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppId.ets) -->
+
+``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo:bundleManager.BundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. appId: %{public}s', bundleInfo.signatureInfo.appId);
+    console.info('testTag', 'getBundleInfoForSelf successfully. appId:', bundleInfo.signatureInfo.appId);
   }).catch((err: BusinessError) => {
-    console.error('testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', err.message);
+    console.error('testTag', 'getBundleInfoForSelf failed. Cause:', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
-  console.error('testTag', 'getBundleInfoForSelf failed: %{public}s', message);
+  console.error('testTag', 'getBundleInfoForSelf failed:', message);
 }
 ```
+
 
 * Use the [bm](../tools/bm-tool.md) tool.
 
 ```shell
 hdc shell
 # Replace **com.example.myapplication** with the actual bundle name.
-dump -n ohos.app.hap.myapplication |grep '"appId":'
+bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)

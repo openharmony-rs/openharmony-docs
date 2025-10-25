@@ -26,5 +26,5 @@
 
 ## 规格约束
 
-* 建议<!--Del-->在除[ServiceExtensionAbility](../../application-dev/application-models/serviceextensionability.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。其他规格约束可参考[openBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)、[updateBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#updatebindsheet12)、[closeBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#closebindsheet12)说明。
+* 建议<!--Del-->在除[ServiceExtensionAbility](../../application-dev/application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。其他规格约束可参考[openBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)、[updateBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#updatebindsheet12)、[closeBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#closebindsheet12)说明。
 

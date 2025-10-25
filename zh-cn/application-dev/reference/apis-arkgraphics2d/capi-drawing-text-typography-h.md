@@ -279,10 +279,10 @@
 | [OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)](#oh_drawing_gettextstyleattributedouble) | 获取double类型文本样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](#oh_drawing_settextstyleattributeint) | 设置int类型文本样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)](#oh_drawing_gettextstyleattributeint) | 获取int类型文本样式的属性。 |
-| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](#oh_drawing_settypographystyleattributedouble) | 设置double类型排版样式的属性。 |
-| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)](#oh_drawing_gettypographystyleattributedouble) | 获取double类型排版样式的属性。 |
-| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](#oh_drawing_settypographystyleattributeint) | 设置int类型排版样式的属性。 |
-| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | 获取int类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](#oh_drawing_settypographystyleattributedouble) | 设置double类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)](#oh_drawing_gettypographystyleattributedouble) | 获取double类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)](#oh_drawing_settypographystyleattributeint) | 设置int类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | 获取int类型排版样式的属性。 |
 
 ## 枚举类型说明
 
@@ -5899,7 +5899,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* s
 ### OH_Drawing_SetTypographyStyleAttributeDouble()
 
 ```
-OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)
 ```
 
 **描述**
@@ -5914,8 +5914,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_Tex
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
-| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 排版样式属性id。 |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
 | double value | 待设置属性值。 |
 
 **返回：**
@@ -5927,7 +5927,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_Tex
 ### OH_Drawing_GetTypographyStyleAttributeDouble()
 
 ```
-OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)
 ```
 
 **描述**
@@ -5942,8 +5942,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_Tex
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
-| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 排版样式属性id。 |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
 | double* value | 指向double类型属性的指针。作为出参使用。 |
 
 **返回：**
@@ -5955,7 +5955,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_Tex
 ### OH_Drawing_SetTypographyStyleAttributeInt()
 
 ```
-OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)
 ```
 
 **描述**
@@ -5970,8 +5970,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TextSt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
-| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 排版样式属性id。 |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
 | int value | 待设置属性值。 |
 
 **返回：**
@@ -5983,7 +5983,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TextSt
 ### OH_Drawing_GetTypographyStyleAttributeInt()
 
 ```
-OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)
 ```
 
 **描述**
@@ -5998,8 +5998,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TextSt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
-| [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid) id | 排版样式属性id。 |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
 | int* value | 指向int类型属性的指针。作为出参使用。 |
 
 **返回：**

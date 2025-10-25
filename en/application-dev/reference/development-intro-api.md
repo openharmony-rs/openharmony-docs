@@ -1,5 +1,12 @@
 # Document Description
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 API references provide the description of APIs used for application development. This topic describes common fields in the API references to help you better use the reference document.
 
 ## Version Description
@@ -26,7 +33,7 @@ The following description is provided for each API in the reference document to 
 ## Service Widget Description
 
 A [service widget](../form/formkit-overview.md) (also called widget) is a set of UI components that display important information or operations specific to an application or atomic service. It provides users with direct access to a desired service, without the need to open the application first.
-- For APIs that can be used in ArkTS widgets, the following description will be added: "Widget capability: This API can be used on the ArkTS widget UI since API version *x*."
+- For APIs that can be used in ArkTS widgets, a description about the widget capability will be added. Example: "Widget capability: This API can be used on the ArkTS widget UI since API version 12."
 - For APIs that cannot be used on the ArkTS widget UI, no special description is provided.
 
 ## Permission Description

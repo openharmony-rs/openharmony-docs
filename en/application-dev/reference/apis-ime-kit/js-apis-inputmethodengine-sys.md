@@ -117,7 +117,7 @@ Enumerates the fluid light modes of the input method.
 | Name        | Value| Description              |
 | ------------ | -- | ------------------ |
 | NONE | 0 | The fluid light mode is not used.|
-| BACKGROUND_FLUID_LIGHT  | 1 | The background fluid light mode is used.|
+| BACKGROUND_FLUID_LIGHT  | 1 | When the background fluid light mode is enabled, the system panel turns transparent. The fluid light effect must be implemented by the host application of the edit box.|
 
 ## EditorAttribute
 

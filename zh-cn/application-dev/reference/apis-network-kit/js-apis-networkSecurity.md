@@ -68,10 +68,10 @@ networkSecurity.certVerification(cert, caCert)
 
 **系统能力**: SystemCapability.Communication.NetStack
 
-| 名称  | 类型                   | 必填      | 说明           |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | 是      | 证书编码类型。  |
-| data  | string \| ArrayBuffer | 是       | 证书内容。      |
+| 名称  | 类型                   | 只读      |可选| 说明           |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | 否    |否 |证书编码类型。  |
+| data  | string \| ArrayBuffer | 否    | 否|证书内容。      |
 
 
 ## networkSecurity.certVerification

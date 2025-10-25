@@ -35,12 +35,12 @@ GridContainer(value?: GridContainerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| columns | number&nbsp;\|&nbsp;'auto' | 否 | 当前布局总列数。<br/>默认值：'auto' |
-| sizeType | SizeType | 否 | 选用设备宽度类型。<br/>默认值：SizeType.Auto |
-| gutter | number&nbsp;\|&nbsp;string | 否 | 栅格布局列间距，不支持百分比。 |
-| margin | number&nbsp;\|&nbsp;string | 否 | 栅格布局两侧间距，不支持百分比。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| columns | number&nbsp;\|&nbsp;'auto' | 否 | 是 | 当前布局总列数。<br/>默认值：'auto' |
+| sizeType | SizeType | 否 | 是 | 选用设备宽度类型。<br/>默认值：SizeType.Auto |
+| gutter | number&nbsp;\|&nbsp;string | 否 | 是 | 栅格布局列间距，不支持百分比。 |
+| margin | number&nbsp;\|&nbsp;string | 否 | 是 | 栅格布局两侧间距，不支持百分比。 |
 
 ## SizeType枚举说明
 

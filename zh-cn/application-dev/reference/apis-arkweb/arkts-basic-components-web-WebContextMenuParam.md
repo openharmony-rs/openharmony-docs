@@ -92,7 +92,7 @@ getSourceUrl(): string
 
 | 类型     | 说明                       |
 | ------ | ------------------------ |
-| string | 如果选中的元素有src属性，返回src的url。 |
+| string | 如果选中的元素有src属性，返回src的url。返回url的最大上限为2M，超出上限时返回空字符串。 |
 
 ## existsImageContents<sup>9+</sup>
 

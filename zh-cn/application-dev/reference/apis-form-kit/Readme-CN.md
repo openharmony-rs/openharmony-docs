@@ -27,6 +27,7 @@
     - [LiveFormExtensionContext](js-apis-application-LiveFormExtensionContext.md)
     <!--Del-->
     - [FormExtensionContext(系统接口)](js-apis-inner-application-formExtensionContext-sys.md)
+    - [LiveFormExtensionContext（仅对系统应用开放）](js-apis-application-LiveFormExtensionContext-sys.md)
    <!--DelEnd-->
 - 已停止维护的接口<!--form-arkts-dep-->
   - [@ohos.application.formBindingData (卡片数据绑定类)](js-apis-application-formBindingData.md)

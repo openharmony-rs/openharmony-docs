@@ -17,7 +17,7 @@
 - [anm工具](anm-tool.md)
 - [edm工具](edm-tool.md)
 - [restool工具](restool.md)<!--Del-->
-- [LLDB工具](lldb-tool.md)<!--DelEnd-->
+- [LLDB工具（仅对系统应用开放）](lldb-tool-sys.md)<!--DelEnd-->
 - [param工具](param-tool.md)
 - [power-shell工具](power-shell.md)
 - [OpenHarmony SDK升级助手](openharmony_sdk_upgrade_assistant.md)

@@ -11,9 +11,17 @@
 
 先通过一个示例，整体认识一下app.json5配置文件。
 
-```json
+<!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
+// [Start app_json5_appEnvironments]
+// [Start app_json5_multiAppMode]
+// [Start app_json5_configuration]
 {
   "app": {
+    // [StartExclude app_json5_appEnvironments]
+    // [StartExclude app_json5_multiAppMode]
+    // [StartExclude app_json5_configuration]
     "bundleName": "com.application.myapplication",
     "vendor": "example",
     "versionCode": 1000000,
@@ -27,33 +35,45 @@
     "car": {
       "minAPIVersion": 8
     },
-    "targetBundleName": "com.application.test",
-    "targetPriority": 50,
+    // [EndExclude app_json5_appEnvironments]
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
+    // [StartExclude app_json5_appEnvironments]
     "maxChildProcess": 5,
+    // [EndExclude app_json5_multiAppMode]
     "multiAppMode": {
-      "multiAppModeType": "multiInstance",
+      "multiAppModeType": "appClone",
       "maxCount": 5
     },
+    // [StartExclude app_json5_multiAppMode]
     "hwasanEnabled": false,
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
+    // [EndExclude app_json5_configuration]
     "configuration": "$profile:configuration",
+    // [StartExclude app_json5_configuration]
     "assetAccessGroups": [
       "com.ohos.photos",
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
-    "startMode": "mainTask"
+    "startMode": "mainTask",
+    // [EndExclude app_json5_configuration]
+    // [EndExclude app_json5_appEnvironments]
+    // [EndExclude app_json5_multiAppMode]
   }
 }
+// [End app_json5_configuration]
+// [End app_json5_multiAppMode]
+// [End app_json5_appEnvironments]
 ```
+
+
 ## 配置文件标签
 
 app.json5配置文件包含以下标签。
@@ -113,18 +133,28 @@ app.json5配置文件包含以下标签。
 
 appEnvironments标签示例：
 
-```json
+<!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
+// [Start app_json5_multiAppMode]
+// [Start app_json5_configuration]
 {
   "app": {
+	// ···
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
-    ]
+    ],
+	// ···
+    // [EndExclude app_json5_multiAppMode]
   }
 }
+// [End app_json5_configuration]
+// [End app_json5_multiAppMode]
 ```
+
 
 ## multiAppMode标签
 
@@ -139,16 +169,24 @@ appEnvironments标签示例：
 
 multiAppMode标签示例：
 
-```json
+<!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
+// [Start app_json5_configuration]
 {
   "app": {
+    // [StartExclude app_json5_appEnvironments]
+	// ···
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
-    }
+    },
+	// ···
   }
 }
+// [End app_json5_configuration]
 ```
+
 
 ## configuration标签
 
@@ -156,13 +194,22 @@ multiAppMode标签示例：
 
 configuration标签示例：
 
-```json
+<!-- @[app_json5_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
-    "configuration": "$profile:configuration"  
+    // [StartExclude app_json5_appEnvironments]
+    // [StartExclude app_json5_multiAppMode]
+	// ···
+    "configuration": "$profile:configuration",
+	// ···
+    // [EndExclude app_json5_appEnvironments]
+    // [EndExclude app_json5_multiAppMode]
   }
 }
 ```
+
 
 在开发视图的AppScope/resources/base/profile下面定义配置文件configuration.json，其中文件名"configuration"可自定义，需要和configuration标签指定的文件资源对应。配置文件中列举了设置当前应用字体大小跟随系统变化所需要的属性。
 

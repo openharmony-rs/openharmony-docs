@@ -2377,7 +2377,7 @@ struct TabsExample {
 
 ### 示例15（页签超出TabBar区域显示）
 
-本示例通过使用barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
+从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
 
 ```ts
 // xxx.ets
@@ -2467,7 +2467,7 @@ struct TabsBarModifierExample {
 
 ### 示例16（页签对齐布局）
 
-本示例通过使用barModifier设置tabBar的align属性实现页签对齐布局效果。
+从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的align属性实现页签对齐布局效果。
 
 ```ts
 // xxx.ets
@@ -2570,7 +2570,7 @@ struct TabsBarModifierExample {
 
 ### 示例17（Tabs与TabBar联动切换）
 
-该示例通过onSelected接口，实现了Tabs与TabBar联动切换。
+从API version 18开始，该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar联动切换。
 
 ```ts
 // xxx.ets
@@ -2645,7 +2645,7 @@ struct TabsExample {
 
 ### 示例18（释放Tabs子组件）
 
-该示例通过设置cachedMaxCount属性，实现了Tabs子组件的释放。
+从API version 19开始，该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
 
 ```ts
 @Entry
@@ -2699,7 +2699,7 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过barBackgroundBlurStyle和barBackgroundEffect设置TabsBar页签栏的背景模糊效果。
+该示例分别通过barBackgroundBlurStyle和[barBackgroundEffect](#barbackgroundeffect18)（从API version 18开始）设置TabsBar页签栏的背景模糊效果。
 
 ```ts
 // xxx.ets
@@ -2824,7 +2824,7 @@ struct TabsExample {
 
 ### 示例21（Tabs设置翻页动画曲线）
 
-该示例展示了如何通过animationCurve接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
+该示例展示了如何通过[animationCurve](#animationcurve20)（从API version 20开始）接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
 
 ```ts
 import { curves } from '@kit.ArkUI';

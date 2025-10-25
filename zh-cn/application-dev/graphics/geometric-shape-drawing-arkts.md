@@ -50,6 +50,7 @@
 简单示例如下：
 
 ```ts
+// ShapeDrawing.ets
 // 设置画笔
 let pen = new drawing.Pen();
 // 设置颜色
@@ -67,6 +68,7 @@ canvas.drawPoint(1000, 1000);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
 
@@ -79,21 +81,33 @@ canvas.detachPen();
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 ```ts
+// ShapeDrawing.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色
-pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
+pen.setColor({
+  alpha: 0xFF,
+  red: 0xFF,
+  green: 0x00,
+  blue: 0x00
+});
 // 设置线宽
 pen.setStrokeWidth(20);
 // 设置画笔描边效果
 canvas.attachPen(pen);
 // 创建矩形对象
-const rect: common2D.Rect = {left:100, top:200, right:1000, bottom:600};
-// 绘制圆弧
+const rect: common2D.Rect = {
+  left: 100,
+  top: 200,
+  right: 1000,
+  bottom: 600
+};
+// 绘制矩形
 canvas.drawArc(rect, 0, 180);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![zh-cn_image_0000002194025289](figures/zh-cn_image_0000002194025289.png)
 
@@ -106,10 +120,16 @@ canvas.detachPen();
 
 此处以使用画笔绘制圆为例，简单示例如下：
 ```ts
+// ShapeDrawing.ets
 // 创建画笔
 let pen = new drawing.Pen();
 // 设置颜色
-pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
+pen.setColor({
+  alpha: 0xFF,
+  red: 0xFF,
+  green: 0x00,
+  blue: 0x00
+});
 // 设置线宽
 pen.setStrokeWidth(20);
 // 设置画笔描边效果
@@ -119,6 +139,7 @@ canvas.drawCircle(630, 630, 500);
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
@@ -138,6 +159,7 @@ canvas.detachPen();
 此处以使用画笔和画刷绘制五角星为例，简单示例如下：
 
 ```ts
+// ShapeDrawing.ets
 let height_ = 1800;
 let width_ = 1800;
 let len = height_ / 4;
@@ -187,6 +209,7 @@ canvas.detachBrush();
 // 去除描边效果
 canvas.detachPen();
 ```
+<!-- [arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
@@ -200,10 +223,11 @@ canvas.detachPen();
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
 ```ts
+// ShapeDrawing.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色
-brush.setColor(0xFF, 0xFF,  0x00, 0x00);
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 创建左上角的region1
@@ -219,6 +243,7 @@ canvas.drawRegion(region1);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
@@ -230,10 +255,11 @@ canvas.detachBrush();
 此处以使用画刷绘制矩形为例，简单示例如下：
 
 ```ts
+// ShapeDrawing.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色
-brush.setColor(0xFF, 0xFF,  0x00, 0x00);
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 绘制矩形
@@ -241,6 +267,7 @@ canvas.drawRect(200, 200, 1000, 700);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![zh-cn_image_0000002194110921](figures/zh-cn_image_0000002194110921.png)
 
@@ -260,6 +287,7 @@ canvas.detachBrush();
 此处以使用画刷绘制圆角矩形为例，简单示例代码如下：
 
 ```ts
+// ShapeDrawing.ets
 // 创建画刷
 let brush = new drawing.Brush();
 // 设置颜色
@@ -267,7 +295,13 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // 设置画刷填充效果
 canvas.attachBrush(brush);
 // 创建矩形对象
-let rect: common2D.Rect = { left: 200, top: 200, right: 1000, bottom: 700 };
+let rect: common2D.Rect = {
+  left: 200,
+  top: 200,
+  right: 1000,
+  bottom: 700
+};
+console.info('rect:', rect.right);
 // 创建圆角矩形对象
 let rrect = new drawing.RoundRect(rect, 30, 30);
 // 绘制圆角矩形
@@ -275,6 +309,7 @@ canvas.drawRoundRect(rrect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+<!-- [arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ![zh-cn_image_0000002158584406](figures/zh-cn_image_0000002158584406.png)
 

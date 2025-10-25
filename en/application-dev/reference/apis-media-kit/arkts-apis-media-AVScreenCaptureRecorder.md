@@ -4,7 +4,7 @@
 <!--Owner: @zzs_911-->
 <!--Designer: @stupig001-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -71,7 +71,7 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
 avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
     console.info('Succeeded in initing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to init avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -79,7 +79,7 @@ avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
 
 startRecording(): Promise\<void>
 
-Starts screen capture. This API uses a promise to return the result.
+Starts screen recording. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -106,7 +106,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.startRecording().then(() => {
     console.info('Succeeded in starting avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to start avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -114,7 +114,7 @@ avScreenCaptureRecorder.startRecording().then(() => {
 
 stopRecording(): Promise\<void>
 
-Stops screen capture. This API uses a promise to return the result.
+Stops screen recording. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -141,7 +141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.stopRecording().then(() => {
     console.info('Succeeded in stopping avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to stop avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -184,7 +184,7 @@ let windowIDs = [];
 avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
     console.info('Succeeded in skipping privacy mode');
 }).catch((err: BusinessError) => {
-    console.info('Failed to skip privacy mode, error: ' + err.message);
+    console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -225,7 +225,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 avScreenCaptureRecorder.setMicEnabled(true).then(() => {
     console.info('Succeeded in setMicEnabled avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.info('Failed to setMicEnabled avScreenCaptureRecorder, error: ' + err.message);
+    console.error(`Failed to setMicEnabled avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -277,7 +277,7 @@ Subscribes to screen capture state changes. An application can subscribe to only
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case.           |
-| callback | function | Yes  | Callback invoked when the event is triggered. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state.|
+| callback | Callback\<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | Yes  | Callback invoked when the event is triggered. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state.|
 
 **Example**
 
@@ -316,7 +316,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 avScreenCaptureRecorder.on('error', (err: BusinessError) => {
-    console.error('avScreenCaptureRecorder error:' + err.message);
+    console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -333,7 +333,7 @@ Unsubscribes from screen capture state changes. You can specify a callback to ca
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case.           |
-| callback | function | No  | Callback used for unsubscription. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state. If this parameter is not specified, the last subscription is canceled.|
+| callback | Callback\<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | No  | Callback used for unsubscription. [AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12) indicates the new state. If this parameter is not specified, the last subscription is canceled.|
 
 **Example**
 

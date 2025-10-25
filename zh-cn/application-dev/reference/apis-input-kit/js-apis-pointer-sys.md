@@ -44,6 +44,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -100,10 +101,11 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](../apis-distributedservice-kit/errorcode-devicestatus.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -203,6 +205,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -250,6 +253,14 @@ getPointerSpeed(): Promise&lt;number&gt;
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
 | Promise&lt;number&gt; | Promise实例，异步返回鼠标移动速度。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
 
 **示例**：
 

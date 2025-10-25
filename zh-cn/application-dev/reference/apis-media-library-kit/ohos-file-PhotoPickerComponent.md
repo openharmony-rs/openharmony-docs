@@ -74,7 +74,7 @@ PhotoPickerComponent({
 | onExceedMaxSelected<sup>13+</sup>     | [ExceedMaxSelectedCallback](#exceedmaxselectedcallback13)                          | 否   | - | 选择达到最大选择数量（最大图片选择数量或者是最大视频选择数量亦或是总的最大选择数量）之后再次点击勾选时产生的回调。<br>- 若选择的数量达到了最大图片选择数量且未达到总的最大选择数量则回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).PHOTO_MAX_COUNT。<br>- 若选择的数量达到了最大视频选择数量且未达到总的最大选择数量则回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).VIDEO_MAX_COUNT。<br>- 只要选择的数量达到了总的最大选择数量则回调的参数exceedMaxCountType为[MaxCountType](#maxcounttype).TOTAL_MAX_COUNT。<br>**原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。 |
 | onCurrentAlbumDeleted<sup>13+</sup>   | [CurrentAlbumDeletedCallback](#currentalbumdeletedcallback13)                    | 否   | - | 当前相册被删除时产生的回调。<br>当前相册是指通过pickerController.[setData](#setdata)([DataType](#datatype).SET_ALBUM_URI, currentAlbumUri)接口设置给宫格组件的相册，即“currentAlbumUri”。<br>当前相册被删除后若使用方刷新自己的相册标题栏，使用方可以设置自己的标题栏名称为默认的相册名例如“图片和视频”、“图片”或“视频”，然后通过pickerController.[setData](#setdata)([DataType](#datatype).SET_ALBUM_URI, '')接口传空串去刷新宫格页为默认相册。<br>**原子化服务API**：从API version 13开始，该接口支持在原子化服务中使用。                                  |
 | onVideoPlayStateChanged<sup>14+</sup>   | [videoPlayStateChangedCallback](#videoplaystatechangedcallback14)                    | 否   | - | 大图页视频播放状态改变时回调。<br>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。                                  |
-| pickerController        | [PickerController](#pickercontroller)                                            | 否   | @ObjectLink | 应用可通过PickerController向Picker组件发送数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                             |
+| pickerController        | [PickerController](#pickercontroller)                                            | 否   | @ObjectLink | 应用可通过PickerController向Picker组件发送数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                              |
 
 ## PickerOptions
 
@@ -82,29 +82,29 @@ Picker配置选项，继承自[BaseSelectOptions](arkts-apis-photoAccessHelper-c
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                              | 类型                                      | 必填  | 说明                                                                       |
-|---------------------------------|-----------------------------------------|-----|--------------------------------------------------------------------------|
-| checkBoxColor                   | string                                  | 否   | 勾选框的背景色。格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
-| backgroundColor                 | string                                  | 否   | picker宫格页面背景色。格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                             |
-| isRepeatSelectSupported         | boolean                                 | 否   | 是否支持单张图片重复选择。true表示支持。默认不支持。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
-| checkboxTextColor               | string                                  | 否   | 勾选框内文本颜色。格式为8位十六进制颜色代码。 （该能力暂不支持）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
-| photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode)     | 否   | 大图背景颜色。包括跟随系统、浅色模式以及深色模式，默认为跟随系统。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
-| maxSelectedReminderMode         | [ReminderMode](#remindermode)           | 否   | 选择数量达到最大时的提示方式。包括弹toast提示、不提示以及蒙层提示，默认为弹toast提示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
-| orientation                     | [PickerOrientation](#pickerorientation) | 否   | 宫格页面滑动预览方向，包括水平和竖直两个方向，默认为竖直方向。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                 |
-| selectMode                      | [SelectMode](#selectmode)               | 否   | 选择模式。包括多选和单选，默认为多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                      |
-| maxPhotoSelectNumber            | number                                  | 否   | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。默认为500。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| maxVideoSelectNumber            | number                                  | 否   | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否   | 是否支持滑动多选，true表示支持。默认不支持。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
-| photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否   | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围0-1，代表距离组件左上角0%-100%的偏移量。默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否   | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否   | 设置组件大图页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | 否   | 设置组件宫格页单行显示模式。单行模式下，组件不提供打开大图浏览相关功能。组件不支持大图相关回调，PickerController不支持大图相关的接口，接口调用将无效。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |  
-| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | 否   | Picker的颜色模式。Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性一般设置PickerColorMode.LIGHT时不与深颜色的backgroundColor搭配；设置PickerColorMode.DARK时不与浅颜色的backgroundColor搭配，否则会出现组件背景或文字无法看清楚的问题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| gridStartOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图第一行与组件顶部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| gridEndOffset<sup>20+</sup>    | number                              | 否   | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| pickerIndex<sup>21+</sup>    | number                              | 否   | 通过设置唯一序号来区分不同的pickerComponent。默认值为-1，-1时不做区分。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标，详见[BadgeType](#badgetype21)。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| 名称                              | 类型                                      | 只读 | 可选  | 说明                                                                       |
+|---------------------------------|-----------------------------------------|-----|-----|--------------------------------------------------------------------------|
+| checkBoxColor                   | string                                  | 否  | 是 | 勾选框的背景色。格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
+| backgroundColor                 | string                                  | 否  | 是 | picker宫格页面背景色。格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                             |
+| isRepeatSelectSupported         | boolean                                 | 否  | 是 | 是否支持单张图片重复选择。true表示支持。默认不支持。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
+| checkboxTextColor               | string                                  | 否  | 是 | 勾选框内文本颜色。格式为8位十六进制颜色代码（该能力暂不支持）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
+| photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode)     | 否  | 是 | 大图背景颜色。包括跟随系统、浅色模式以及深色模式，默认为跟随系统。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
+| maxSelectedReminderMode         | [ReminderMode](#remindermode)           | 否  | 是 | 选择数量达到最大时的提示方式。包括弹toast提示、不提示以及蒙层提示，默认为弹toast提示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| orientation                     | [PickerOrientation](#pickerorientation) | 否  | 是 | 宫格页面滑动预览方向，包括水平和竖直两个方向，默认为竖直方向。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                 |
+| selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 选择模式。包括多选和单选，默认为多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                      |
+| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。默认为500。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持。默认不支持。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
+| photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否  | 是 | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围0-1，代表距离组件左上角0%-100%的偏移量。默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否  | 是 | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否  | 是 | 设置组件大图页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | 否  | 是 | 设置组件宫格页单行显示模式。单行模式下，组件不提供打开大图浏览相关功能。组件不支持大图相关回调，PickerController不支持大图相关的接口，接口调用将无效。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |  
+| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | 否  | 是 | Picker的颜色模式。Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性一般设置PickerColorMode.LIGHT时不与深颜色的backgroundColor搭配；设置PickerColorMode.DARK时不与浅颜色的backgroundColor搭配，否则会出现组件背景或文字无法看清楚的问题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| gridStartOffset<sup>20+</sup>    | number                              | 否  | 是  | 组件宫格缩略图第一行与组件顶部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| gridEndOffset<sup>20+</sup>    | number                              | 否  | 是 | 组件宫格缩略图最后一行与组件底部的预留空间。默认值0，单位vp。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| pickerIndex<sup>21+</sup>    | number                              | 否  | 是  | 通过设置唯一序号来区分不同的pickerComponent。默认值为-1，-1时不做区分。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 是 | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 是 | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标，详见[BadgeType](#badgetype21)。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -328,17 +328,17 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称     | 类型    | 必填  | 说明                                                |
-|----------|--------|-----|---------------------------------------------------|
-| uri      | string                | 否   | 图片、视频的uri（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
-| mimeType | string                | 否   | 图片、视频的mimeType（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| width    | number                | 否   | 图片、视频的宽（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| height   | number                | 否   | 图片、视频的高（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| size     | number                | 否   | 图片、视频的大小（单位：字节）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
-| duration   | number                | 否   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| photoSubType<sup>21+</sup>   | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否   | 图片类型，见[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)定义，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
-| dynamicRangeType<sup>21+</sup>   | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否   | 媒体文件动态范围模型，见[DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)定义，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-| orientation<sup>21+</sup>   | number             | 否   | 图片/视频方向信息。<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| 名称     | 类型    | 只读 | 可选  | 说明                                                |
+|----------|--------|-----|-----|---------------------------------------------------|
+| uri      | string                | 否 | 是   | 图片、视频的uri（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。</br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。            |
+| mimeType | string                | 否 | 是   | 图片、视频的mimeType（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| height   | number                | 否 | 是   | 图片、视频的高（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
+| size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
+| duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| photoSubType<sup>21+</sup>   | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，见[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)定义，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| dynamicRangeType<sup>21+</sup>   | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，见[DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)定义，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 ## ItemInfo
 
@@ -350,9 +350,9 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称     | 类型    | 必填  | 说明                                                |
-|----------|--------|-----|---------------------------------------------------|
-| itemType | [ItemType](#itemtype) | 否   | 被点击的item类型。包括缩略图item和相机item。                      |
+| 名称     | 类型    | 只读 | 可选  | 说明                                                |
+|----------|--------|-----|-----|---------------------------------------------------|
+| itemType | [ItemType](#itemtype) | 否 | 是   | 被点击的item类型。包括缩略图item和相机item。                      |
 
 ## PhotoBrowserInfo
 
@@ -362,9 +362,9 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称     | 类型    | 必填  | 说明     |
-|----------|--------|-----|---------|
-| animatorParams | [AnimatorParams](#animatorparams) | 否   | 进入、退出大图界面时的动效参数。 |
+| 名称     | 类型    | 只读  | 可选 | 说明     |
+|----------|--------|-----|-----|---------|
+| animatorParams | [AnimatorParams](#animatorparams) | 否 |  是  | 进入、退出大图界面时的动效参数。 |
 
 ## AnimatorParams
 
@@ -374,10 +374,10 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称     | 类型    | 必填  | 说明           |
-|----------|--------|-----|--------------|
-| duration | number  | 否            | 动效时长（单位：毫秒）。 |
-| curve      | [Curve](../apis-arkui/js-apis-curve.md#curve) &verbar; [ICurve](../apis-arkui/js-apis-curve.md#icurve9) &verbar; string | 否   | 动效曲线。        |
+| 名称     | 类型    | 只读 | 可选  | 说明           |
+|----------|--------|-----|-----|--------------|
+| duration | number  | 否  | 是 | 动效时长（单位：毫秒）。 |
+| curve      | [Curve](../apis-arkui/js-apis-curve.md#curve) &verbar; [ICurve](../apis-arkui/js-apis-curve.md#icurve9) &verbar; string | 否   | 是 | 动效曲线。        |
 
 ## MaxSelected
 
@@ -387,9 +387,9 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称     | 类型    | 必填  | 说明     |
-|----------|--------|-----|---------|
-| data | Map&lt;[MaxCountType](#maxcounttype), number&gt; | 否             | 最大选择数量（包含图片的最大选择数量、视频的最大选择数量以及总的最大选择数量） |
+| 名称     | 类型    | 只读  | 可选 | 说明     |
+|----------|--------|-----|-----|---------|
+| data | Map&lt;[MaxCountType](#maxcounttype), number&gt; | 否             | 是 | 最大选择数量（包含图片的最大选择数量、视频的最大选择数量以及总的最大选择数量）。 |
 
 ## SingleLineConfig<sup>20+</sup>
 
@@ -399,11 +399,11 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称 | 类型                                             | 必填 | 说明                                                                           |
-| ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
-| itemDisplayRatio | [ItemDisplayRatio](#itemdisplayratio20) | 否   | 宫格显示宽高比，支持1:1，原图宽高比两种模式，默认为宽高比1:1显示。 |
-| itemBorderRadius | [Length](../apis-arkui/arkui-ts/ts-types.md#length) &verbar; [BorderRadiuses](../apis-arkui/arkui-ts/ts-types.md#borderradiuses9) &verbar; [LocalizedBorderRadiuses](../apis-arkui/arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 宫格圆角属性。 |
-| itemGap | [Length](../apis-arkui/arkui-ts/ts-types.md#length) | 否   | 宫格间距。 |
+| 名称 | 类型                                             | 只读 | 可选 | 说明                                                                           |
+| ---- | ------------------------------------------------ | ---- | ---- | ------------------------------------------------------------------------------ |
+| itemDisplayRatio | [ItemDisplayRatio](#itemdisplayratio20) | 否   | 是 | 宫格显示宽高比，支持1:1，原图宽高比两种模式，默认为宽高比1:1显示。 |
+| itemBorderRadius | [Length](../apis-arkui/arkui-ts/ts-types.md#length) &verbar; [BorderRadiuses](../apis-arkui/arkui-ts/ts-types.md#borderradiuses9) &verbar; [LocalizedBorderRadiuses](../apis-arkui/arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 是 |宫格圆角属性。 |
+| itemGap | [Length](../apis-arkui/arkui-ts/ts-types.md#length) | 否   | 是 | 宫格间距。 |
 
 ## BadgeConfig<sup>21+</sup>
 
@@ -413,10 +413,10 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称 | 类型                                             | 必填 | 说明                                                                           |
-| ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
-| badgeType | [BadgeType](#badgetype21) | 是   | 特殊角标的类型。 |
-| uris | Array&lt;string&gt;  | 是   | 显示角标的资产uri数据。 |
+| 名称 | 类型                                             | 只读 | 可选 | 说明                                                                           |
+| ---- | ------------------------------------------------ | ---- | ---- | ------------------------------------------------------------------------------ |
+| badgeType | [BadgeType](#badgetype21) | 否   | 是 | 特殊角标的类型。 |
+| uris | Array&lt;string&gt;  | 否   | 是 | 显示角标的资产uri数据。 |
 
 ## PreselectedInfo<sup>21+</sup>
 
@@ -426,10 +426,10 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称 | 类型                                             | 必填 | 说明                                                                           |
-| ---- | ------------------------------------------------ | ---- | ------------------------------------------------------------------------------ |
-| uri | string | 是   | 选中媒体文件的uri。 |
-| preselectablePickerIndex | number | 否   | 限制仅在指定序号的PhotoPickerComponent中进行自动选中；默认为-1，即可支持在任意序号的PhotoPickerComponent中自动选中。 |
+| 名称 | 类型                                             | 只读 | 可选 | 说明                                                                           |
+| ---- | ------------------------------------------------ | ---- | ---- | ------------------------------------------------------------------------------ |
+| uri | string | 否   | 否 |选中媒体文件的uri。 |
+| preselectablePickerIndex | number | 否   | 是 | 限制仅在指定序号的PhotoPickerComponent中进行自动选中；默认为-1，即可支持在任意序号的PhotoPickerComponent中自动选中。 |
 
 ## DataType
 

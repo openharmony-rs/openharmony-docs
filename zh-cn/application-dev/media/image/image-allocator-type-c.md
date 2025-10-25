@@ -208,3 +208,26 @@ OH_PixelmapNative* TestStrideWithAllocatorType() {
     return newPixelmap;
 }
 ```
+
+## 解码单张图片的内存限制
+
+为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
+
+图片框架对解码单张图片设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)时及时释放，以避免进程被系统终止。
+
+应用可使用[onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
+
+PixelMap申请像素内存的计算规则如下所示。
+```
+pixels_size(像素内存大小) = stride(图片像素存储宽度) * height(图片像素高度)
+```
+
+对于支持下采样解码的图片，设置desiredSize（期望输出大小）后，解码器将以基准梯度为1/8的最优下采样率计算PixelMap的像素内存，即按照7/8、6/8、...、1/8的采样率，逐次递减取一个清晰度最高的采样数。
+
+对于原始像素内存超过2GB且支持下采样的图片，建议开发者使用[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)或[OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)接口，并在[OH_DecodingOptions（解码参数）](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md)中设置desiredSize（期望输出大小）进行下采样解码。
+
+图片框架内，不同图片格式的下采样解码支持情况如下所示。
+| 是否支持下采样 | 图片格式                                                  |
+| ------------ | --------------------------------------------------------- |
+| 支持          | .jpg .png .heic（具体支持情况请参考设备规格文档。） |
+| 不支持        | .gif .bmp .webp .dng .svg .ico |

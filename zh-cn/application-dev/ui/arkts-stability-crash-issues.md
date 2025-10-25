@@ -1,4 +1,10 @@
 # UI相关应用崩溃常见问题
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @caoruihong-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 本文档收集整理了一些常见的会导致应用崩溃的ArkUI API错误用法，旨在帮助开发者了解一些常见的会导致应用崩溃问题的错误用法，从而避免在实际应用开发过程中犯类似错误。
 

@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 If an application [requests user authorization](request-user-authorization.md) via a dialog box using [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) and the user denies it, the application cannot show the same dialog box again with this API. The user needs to manually grant the permission in **Settings**.
 
@@ -23,6 +24,8 @@ Alternatively, start the permission settings dialog box by using [requestPermiss
 
 The following sample code shows how to open the dialog box again to request ohos.permission.APPROXIMATELY_LOCATION.
 
+<!-- [second_request_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondpages/Index.ets) -->
+
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -30,8 +33,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionOnSetting(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
-  console.info('data:' + JSON.stringify(data));
+  console.info(`requestPermissionOnSetting success, result: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error('data:' + JSON.stringify(err));
+  console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```

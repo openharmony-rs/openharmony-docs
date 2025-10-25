@@ -10,6 +10,9 @@
 
 声明用于访问Native Accessibility的API，提供无障碍相关能力。
 
+
+**相关示例：** <!--RP1-->[AccessibilityCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)<!--RP1End-->
+
 **引用文件：** <arkui/native_interface_accessibility.h>
 
 **库：** libace_ndk.z.so

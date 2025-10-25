@@ -100,7 +100,7 @@ Creates a **DataShareHelper** instance. This API uses an asynchronous callback t
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)        | Yes  | Context of the application.                                          |
 | uri      | string                                                   | Yes  | URI of the server application to connect.                              |
-| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
+| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
 | callback | AsyncCallback&lt;[DataShareHelper](#datasharehelper)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DataShareHelper** instance created. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -159,7 +159,7 @@ Creates a **DataShareHelper** instance. This API uses a promise to return the re
 | ------- | ------------------------------------------------- | ---- | ------------------------------ |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context of the application.            |
 | uri     | string                                            | Yes  | URI of the server application to connect.|
-| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | No| Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned. |
+| options<sup>10+</sup> | [DataShareHelperOptions](#datasharehelperoptions10) | No| Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
 
 **Return value**
 
@@ -212,7 +212,7 @@ Enables silent access. This API uses a promise to return the result.
 
 Observe the following when using this API:
  - The data provider calls this API to enable silent access.
- - Whether silent access is enabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability.md) file together.
+ - Whether silent access is enabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability-sys.md) file together.
  - If silent access is enabled for a URI using this API, the setting takes effect when the related **datashareHelper** API is called. Otherwise, the setting of **isSilentProxyEnable** in the **data_share_config.json** file is used to determine whether to enable silent access.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -267,7 +267,7 @@ Disables silent access. This API uses a promise to return the result.
 
 Observe the following when using this API:
  - The data provider calls this API to disable silent access.
- - Whether silent access is disabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability.md) file together.
+ - Whether silent access is disabled is determined based on the return value of this API and the **isSilentProxyEnable** field in the [data_share_config.json](../../database/share-data-by-datashareextensionability-sys.md) file together.
  - If silent access is disabled for a URI using this API, the setting takes effect when the related **datashareHelper** API is called. Otherwise, the setting of **isSilentProxyEnable** in the **data_share_config.json** file is used to determine whether to disable silent access.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -1198,7 +1198,7 @@ Inserts a single data record into the database. This API uses a promise to retur
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the index of the inserted data record.<br>The data index is not returned if the APIs of the database in use (for example, KVDB) do not support the return of indexes.|
+| Promise&lt;number&gt; | Promise used to return the index of the inserted data record.<br>The data index is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
 
 **Error codes**
 
@@ -1355,6 +1355,7 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void
 
 Queries data in the database. This API uses an asynchronous callback to return the result.
+In non-silent scenarios, the size of the **predicates** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1409,6 +1410,7 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;): Promise&lt;DataShareResultSet&gt;
 
 Queries data in the database. This API uses a promise to return the result.
+In non-silent scenarios, the size of the **predicates** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1686,6 +1688,7 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
 Batch inserts data into the database. This API uses an asynchronous callback to return the result. Silent access is not supported currently.
+In non-silent scenarios, the size of the **values** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1740,6 +1743,7 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
 Batch inserts data into the database. This API uses a promise to return the result. Silent access is not supported currently.
+In non-silent scenarios, the size of the **values** parameter passed to this API cannot exceed 128 MB. Otherwise, the API fails to be called.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1754,7 +1758,7 @@ Batch inserts data into the database. This API uses a promise to return the resu
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the number of data records inserted.<br>The number of inserted data records is not returned if the APIs of the database (for example, KVDB) in use do not the return of the number of data records.|
+| Promise&lt;number&gt; | Promise used to return the number of data records inserted.<br>The number of inserted data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
 
 **Error codes**
 

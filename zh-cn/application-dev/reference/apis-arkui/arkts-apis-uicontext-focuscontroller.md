@@ -28,6 +28,8 @@ clearFocus(): void
 
 **示例：**
 
+在该示例中，按钮"button2"默认获焦，点击按钮"clearFocus"后，焦点回到该页面的根容器节点"column1"，此时按下键盘TAB键，按钮"button2"重新获焦。可通过点击"button1"使该按钮获焦，点击按钮"clearFocus"后，焦点同样回到该页面的根容器节点"column1"，此时按下键盘TAB键，由按钮"button1"重新获焦。
+
 ```ts
 @Entry
 @Component
@@ -66,7 +68,9 @@ struct ClearFocusExample {
             this.getUIContext().getFocusController().clearFocus();
           })
       }
+      .id('column2')
     }
+    .id('column1')
     .width('100%')
     .height('100%')
   }
@@ -248,9 +252,9 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
           .onClick(()=> {
-            console.log("button1 onClick");
+            console.info("button1 onClick");
             this.getUIContext().getFocusController().activate(true);
-            console.log("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info("focus status " + this.getUIContext().getFocusController().isActive());
           })
         Button('button2')
           .width(200)
@@ -260,9 +264,9 @@ struct ClearFocusExample {
           .backgroundColor(this.btColor)
           .defaultFocus(true)
           .onClick(()=> {
-            console.log("button2 onClick");
+            console.info("button2 onClick");
             this.getUIContext().getFocusController().activate(false);
-            console.log("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info("focus status " + this.getUIContext().getFocusController().isActive());
           })
           .onFocus(() => {
             this.btColor = Color.Red;
@@ -377,11 +381,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.log("Button1");
+          console.info("Button1");
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.log("Button2");
+          console.info("Button2");
           return true;
         })
       }

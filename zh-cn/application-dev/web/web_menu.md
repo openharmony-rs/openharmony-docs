@@ -57,19 +57,19 @@ Web组件的文本选中菜单是一种通过自定义元素实现的上下文�
     onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
       if (menuItem.id.equals(TextMenuItemId.CUT)) {
         // 用户自定义行为
-        console.log("拦截 id：CUT")
+        console.info("拦截 id：CUT")
         return true; // 返回true不执行系统回调
       } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
         // 用户自定义行为
-        console.log("不拦截 id：COPY")
+        console.info("不拦截 id：COPY")
         return false; // 返回false执行系统回调
       } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
         // 用户自定义行为
-        console.log("拦截 id：customItem1")
+        console.info("拦截 id：customItem1")
         return true;// 用户自定义菜单选项返回true时点击后不关闭菜单，返回false时关闭菜单
       } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))){
         // 用户自定义行为
-        console.log("拦截 id：customItem2")
+        console.info("拦截 id：customItem2")
         return true;
       }
       return false;// 返回默认值false

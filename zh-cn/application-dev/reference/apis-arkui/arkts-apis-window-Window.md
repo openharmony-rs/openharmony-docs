@@ -1188,7 +1188,7 @@ export default class EntryAbility extends UIAbility {
 
 getGlobalRect(): Rect
 
-获取窗口在屏幕上的真实显示区域，同步接口。
+获取窗口在其所在物理屏幕上的真实显示区域，同步接口。
 
 在某些设备上，窗口显示时可能经过了缩放，此接口可以获取缩放后窗口在屏幕上的真实位置和大小。
 
@@ -1227,13 +1227,16 @@ try {
 
 getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
-获取当前应用窗口避让区。避让区指系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
+获取当前窗口避让区域。
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，当前窗口调用该接口获取到空的避让区。
+[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，调用此接口获取避让区域为空。
 
-非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区并返回，否则直接返回空的避让区。
+非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用此接口才能获取准确的避让区域，否则获取避让区域为空。其他类型窗口可以获取准确的避让区域。
 
-该接口一般适用于三种场景：1、在onWindowStageCreate方法中，获取应用启动时的初始布局避让区域时可调用该接口；2、当应用内子窗需要临时显示，对显示内容做布局避让时可调用该接口；3、创建悬浮窗、模态窗或WindowType窗口类型为系统窗口时，调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，该接口对此类窗口亦生效。
+该接口一般适用于三种场景：
+- 在[onWindowStageCreate()](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中，获取应用启动时的初始布局避让区域时可调用该接口。
+- 当应用内子窗需要临时显示，对显示内容做布局避让时可调用该接口。
+- 全局悬浮窗、模态窗或系统窗口，调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能调用此接口获取正确的避让区域。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1243,13 +1246,13 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- |----------------------------------| -- | ------------------------------------------------------------ |
-| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示规避区类型。 |
+| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区域类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |--------------------------| ----------------- |
-| [AvoidArea](arkts-apis-window-i.md#avoidarea7) | 窗口内容规避区域。 |
+| [AvoidArea](arkts-apis-window-i.md#avoidarea7) | 窗口内容避让区域。 |
 
 **错误码：**
 
@@ -1266,6 +1269,52 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
   let avoidArea = windowClass.getWindowAvoidArea(type);
+} catch (exception) {
+  console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## getWindowAvoidAreaIgnoringVisibility<sup>22+</sup>
+
+getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
+
+获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。
+
+[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，当前窗口调用该接口获取到空的避让区域。
+
+非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区域并返回，否则直接返回空的避让区域。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- |----------------------------------| -- | ------------------------------------------------------------ |
+| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区域类型。不支持获取软键盘类型的避让区域，传入TYPE_KEYBOARD时，返回1300016错误码。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|--------------------------| ----------------- |
+| [AvoidArea](arkts-apis-window-i.md#avoidarea7) | 窗口内容避让区域。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Parameter verification failed. |
+
+**示例：**
+
+```ts
+let type = window.AvoidAreaType.TYPE_SYSTEM;
+try {
+  let avoidArea = windowClass.getWindowAvoidAreaIgnoringVisibility(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -1309,35 +1358,51 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-let windowClass: window.Window | undefined = undefined;
-let config: window.Configuration = {
-  name: "test",
-  windowType: window.WindowType.TYPE_DIALOG,
-  decorEnabled: true,
-  ctx: this.context
-};
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    windowClass = data;
-    windowClass.setUIContent("pages/Test");
-    let enabled = true;
-    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
-    promise.then(() => {
-      let type = window.AvoidAreaType.TYPE_SYSTEM;
-      let avoidArea = windowClass?.getWindowAvoidArea(type);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain the system window avoid area. Cause code: ${err.code}, message: ${err.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let config: window.Configuration = {
+        name: "test",
+        windowType: window.WindowType.TYPE_DIALOG,
+        decorEnabled: true,
+        ctx: this.context
+      };
+      try {
+        window.createWindow(config, (err: BusinessError, data) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          windowClass = data;
+          windowClass.setUIContent("pages/Test");
+          let enabled = true;
+          let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+          promise.then(() => {
+            let type = window.AvoidAreaType.TYPE_SYSTEM;
+            let avoidArea = windowClass?.getWindowAvoidArea(type);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to obtain the system window avoid area. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        });
+      } catch (exception) {
+        console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
     });
-  });
-} catch (exception) {
-  console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -2180,13 +2245,13 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。仅在支持跟随sensor旋转的设备上生效，子窗口调用后不生效。
+设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。子窗口调用后不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -2245,13 +2310,13 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置主窗口的显示方向属性，使用Promise异步回调。仅在支持跟随sensor旋转的设备上生效，子窗口调用后不生效。
+设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -2885,7 +2950,7 @@ try {
 
 on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 
-开启窗口尺寸变化的监听。
+开启窗口尺寸变化的监听。仅在主线程调用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2922,7 +2987,7 @@ try {
 
 off(type: 'windowSizeChange', callback?: Callback&lt;Size&gt;): void
 
-关闭窗口尺寸变化的监听。
+关闭窗口尺寸变化的监听。仅在主线程调用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4045,11 +4110,94 @@ try {
 }
 ```
 
+## on('occlusionStateChanged')<sup>22+</sup>
+
+on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
+
+开启窗口可见性状态变化事件的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件，固定为'occlusionStateChanged'，即窗口可见性变化事件。 |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  windowClass.on('occlusionStateChanged', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## off('occlusionStateChanged')<sup>22+</sup>
+
+off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): void
+
+关闭窗口可见性状态变化事件的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件，固定为'occlusionStateChanged'，即窗口可见性变化事件。 |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 否   | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口可见性变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  // 通过on接口开启监听
+  windowClass.on('occlusionStateChanged', callback);
+  // 关闭指定callback的监听
+  windowClass.off('occlusionStateChanged', callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.off('occlusionStateChanged');
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('systemDensityChange')<sup>15+</sup>
 
 on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 开启本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。比如，当调整窗口所处屏幕的显示大小缩放系数时，可以从此接口监听到这个行为。
+
+在接口回调函数中，建议直接使用返回值进行vp和px的转换。例如，若返回值为density，计算px可使用vp * density = px。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -4078,6 +4226,9 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 ```ts
 const callback = (density: number) => {
   console.info('System density changed, density=' + JSON.stringify(density));
+  // 通过回调返回值计算px
+  let vp = 100;
+  let px = vp * density;
 }
 try {
   windowClass.on('systemDensityChange', callback);
@@ -4090,6 +4241,8 @@ try {
 off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 关闭本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。
+
+在接口回调函数中，建议直接使用返回值进行vp和px的转换。例如，若返回值为density，计算px可使用vp * density = px。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -5003,7 +5156,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -5073,7 +5226,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -5402,7 +5555,11 @@ try {
 
 setWindowBackgroundColor(color: string | ColorMetrics): void
 
-设置窗口的背景色。Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+设置窗口的背景色。
+
+未调用该接口时，窗口在浅色模式默认背景色为`'#FFF0F0F0'`，在深色模式默认背景色为`'#FF1A1A1A'`。
+
+Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5438,7 +5595,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
     return;
   }
   console.info('Succeeded in loading the content.');
-  let color1: string = '#00ff33';
+  let color1: string = '#00FF33';
   let color2: ColorMetrics = ColorMetrics.numeric(0xff112233);
   try {
     windowClass?.setWindowBackgroundColor(color1);
@@ -5868,7 +6025,11 @@ try {
 
 setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口是否为隐私模式，使用callback异步回调。设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置窗口是否为隐私模式，使用callback异步回调。
+
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+
+未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5880,7 +6041,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ------------------------- | -- | ------------------------------------------------------ |
-| isPrivacyMode | boolean                   | 是 | 窗口是否为隐私模式。true表示模式开启；false表示模式关闭。  |
+| isPrivacyMode | boolean                   | 是 | 窗口是否为隐私模式。true表示为隐私模式，false表示为非隐私模式。  |
 | callback      | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                              |
 
 **错误码：**
@@ -5917,7 +6078,11 @@ try {
 
 setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
-设置窗口是否为隐私模式，使用Promise异步回调。设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+设置窗口是否为隐私模式，使用Promise异步回调。
+
+设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。此接口可用于禁止截屏/录屏的场景。
+
+未调用此接口时，窗口默认不开启隐私模式，可以被截屏或录屏。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5929,7 +6094,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ------- | -- | ----------------------------------------------------- |
-| isPrivacyMode | boolean | 是 | 窗口是否为隐私模式。true表示模式开启；false表示模式关闭。 |
+| isPrivacyMode | boolean | 是 | 窗口是否为隐私模式。true表示为隐私模式，false表示为非隐私模式。 |
 
 **返回值：**
 
@@ -8823,7 +8988,7 @@ export default class EntryAbility extends UIAbility {
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
-设置当前窗口是否禁用返回手势功能，仅主窗全屏模式下生效，2in1设备下不生效。
+设置当前窗口是否启用返回手势功能，仅主窗全屏模式下生效，2in1设备下不生效。
 禁用返回手势功能后，当前应用会禁用手势热区，侧滑返回功能失效；切换到其他应用或者回到桌面后，手势热区恢复，侧滑返回功能正常。
 开启返回手势功能后，当前应用会恢复手势热区，侧滑返回功能正常。
 
@@ -8897,7 +9062,7 @@ export default class EntryAbility extends UIAbility {
 
 isGestureBackEnabled(): boolean
 
-获取当前窗口是否禁用返回手势功能，仅主窗全屏模式下生效，2in1设备不生效。
+获取当前窗口是否启用返回手势功能，仅主窗全屏模式下生效，2in1设备不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8907,7 +9072,7 @@ isGestureBackEnabled(): boolean
 
 | 类型                | 说明                                           |
 | ------------------- | --------------------------------------------- |
-| boolean             | 是否已经禁用返回手势。true表示未禁用返回手势功能，false表示已禁用返回手势功能。 |
+| boolean             | 是否已经启用返回手势。true表示已启用返回手势功能，false表示已禁用返回手势功能。 |
 
 **错误码：**
 
@@ -9683,6 +9848,119 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## isInFreeWindowMode<sup>22+</sup>
+
+isInFreeWindowMode(): boolean
+
+查询当前窗口是否为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)模式。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean | 返回true表示在自由窗口模式，false表示非自由窗口模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
+console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
+```
+
+## on('freeWindowModeChange')<sup>22+</sup>
+
+on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
+
+开启自由窗口模式变化事件的监听。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件，固定为'freeWindowModeChange'，即自由窗口模式变化事件。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前窗口是否在自由窗口模式，true表示是自由窗口模式，false表示非自由窗口模式。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+try {
+  windowClass.on('freeWindowModeChange', (data) => {
+    console.info('Succeeded in enabling the listener for free window mode changes. Data: ' + JSON.stringify(data));
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for free window mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## off('freeWindowModeChange')<sup>22+</sup>
+
+off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
+
+关闭自由窗口模式变化事件的监听。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| type     | string                        | 是   | 监听事件，固定为'freeWindowModeChange'，即自由窗口模式变化事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否在自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化事件的监听。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+const callback = (isInFreeWindowMode: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.on('freeWindowModeChange', callback);
+  // 关闭指定callback的监听
+  windowClass.off('freeWindowModeChange', callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  windowClass.off('freeWindowModeChange');
+} catch (exception) {
+  console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## setWindowSystemBarProperties<sup>(deprecated)</sup>
 

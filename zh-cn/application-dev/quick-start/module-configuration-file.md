@@ -9,9 +9,23 @@
 ## 配置文件示例
 
 通过一个示例，整体了解module.json5配置文件。
-```json
+<!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_metadata]
+// [Start module_abilities_skills]
+// [Start module_systemTheme]
+// [Start module_fileContextMenu]
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
 {
+  // [StartExclude module_abilities_skills]
   "module": {
+    // [StartExclude module_abilities_metadata]
+    // [StartExclude module_appEnvironments]
+    // [StartExclude module_systemTheme]
+    // [StartExclude module_fileContextMenu]
+    // [StartExclude module_metadata]
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
@@ -21,19 +35,30 @@
       "tablet"
     ],
     "deliveryWithInstall": true,
+    // [Start module_pages]
     "pages": "$profile:main_pages",
+    // [End module_pages]
     "appStartup": "$profile:app_startup_config",
+    // [EndExclude module_metadata]
     "metadata": [
+      // [StartExclude module_metadata]
       {
         "name": "string",
         "value": "string",
         "resource": "$profile:distributionFilter_config"
-      }
+      },
+      // [EndExclude module_metadata]
+	// ···
     ],
+    // [StartExclude module_metadata]
+    // [EndExclude module_abilities_metadata]
+    // [EndExclude module_abilities_skills]
     "abilities": [
       {
+        // [StartExclude module_abilities_skills]
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
+        // [StartExclude module_abilities_metadata]
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
@@ -41,7 +66,10 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        // [EndExclude module_abilities_skills]
         "skills": [
+		// ···
+          // [EndExclude module_abilities_metadata]
           {
             "entities": [
               "entity.system.home"
@@ -50,16 +78,23 @@
               "ohos.want.action.home"
             ]
           }
+          // [EndExclude module_abilities_skills]
         ],
+        // [StartExclude module_abilities_skills]
+		// ···
         "continueType": [
           "continueType1"
         ],
         "continueBundleName": [
           "com.example.myapplication1",
           "com.example.myapplication2"
-        ]
+        ],
+        // [EndExclude module_abilities_metadata]
       }
+      // [EndExclude module_abilities_skills]
     ],
+    // [StartExclude module_abilities_skills]
+    // [StartExclude module_abilities_metadata]
     "requestPermissions": [
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH",
@@ -77,23 +112,33 @@
       "app2Scheme"
     ],
     "routerMap": "$profile:router_map",
+    // [EndExclude module_appEnvironments]
     "appEnvironments": [
       {
         "name": "name1",
         "value": "value1"
       }
     ],
-    "hnpPackages": [
-      {
-        "package": "hnpsample.hnp",
-        "type": "public"
-      }
-    ],
+    // [StartExclude module_appEnvironments]
+    // [EndExclude module_fileContextMenu]
     "fileContextMenu": "$profile:menu",
-    "crossAppSharedConfig": "$profile:shared_config"
+    // [StartExclude module_fileContextMenu]
+    "crossAppSharedConfig": "$profile:shared_config",
+	// ···
+    // [EndExclude module_fileContextMenu]
+    // [EndExclude module_appEnvironments]
+    // [EndExclude module_abilities_metadata]
   }
+  // [EndExclude module_abilities_skills]
 }
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
+// [End module_fileContextMenu]
+// [End module_systemTheme]
+// [End module_abilities_skills]
+// [End module_metadata]
 ```
+
 
 ## 配置文件标签
 
@@ -161,18 +206,40 @@ module.json5配置文件包含以下标签。
 
 deviceTypes示例：
 
+<!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
-```json
+``` JSON5
+// [Start module_abilities]
+// [Start module_extensionAbilities]
+// [Start module_proxyData]
+// [Start module_dependencies]
+// [Start module_testRunner]
 {
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
   "module": {
+    // [StartExclude module_testRunner]
+    // [StartExclude module_proxyData]
+    // [StartExclude module_dependencies]
     "name": "myHapName",
     "type": "feature",
-    "deviceTypes" : [
-       "tablet"
-    ]
+    "deviceTypes": [
+      "tv",
+      "tablet"
+    ],
+	// ···
+    // [StartExclude module_extensionAbilities]
   }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
 }
+// [End module_testRunner]
+// [End module_dependencies]
+// [End module_proxyData]
+// [End module_extensionAbilities]
+// [End module_abilities]
 ```
+
 
 
 ## pages标签
@@ -209,10 +276,7 @@ deviceTypes示例：
 ```json
 {
   "src": [
-    "pages/index/mainPage",
-    "pages/second/payment",
-    "pages/third/shopping_cart",
-    "pages/four/owner"
+    "pages/Index"
   ],
   "window": {
     "designWidth": 720,
@@ -234,17 +298,47 @@ deviceTypes示例：
 | value | 标识数据项的值，取值为长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | resource | 标识了用户自定义数据，取值为长度不超过255字节的字符串，内容为该数据的资源索引，例如配置成$profile:shortcuts_config，表示指向了/resources/base/profile/shortcuts_config.json配置文件。| 字符串 | 该标签可缺省，缺省值为空。 |
 
-```json
+<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_abilities_skills]
+// [Start module_systemTheme]
+// [Start module_fileContextMenu]
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
 {
+  // [StartExclude module_abilities_skills]
   "module": {
-    "metadata": [{
-      "name": "module_metadata",
-      "value": "a test demo for module metadata",
-      "resource": "$profile:shortcuts_config"
-    }]
+    // [StartExclude module_abilities_metadata]
+    // [StartExclude module_appEnvironments]
+    // [StartExclude module_systemTheme]
+    // [StartExclude module_fileContextMenu]
+	// ···
+    "metadata": [
+	// ···
+      // [StartExclude module_all]
+      {
+        "name": "module_metadata",
+        "value": "a test demo for module metadata",
+        "resource": "$profile:shortcuts_config"
+      }
+      // [EndExclude module_all]
+    ],
+	// ···
+    // [EndExclude module_all]
+    // [EndExclude module_fileContextMenu]
+    // [EndExclude module_appEnvironments]
+    // [EndExclude module_abilities_metadata]
   }
+  // [EndExclude module_abilities_skills]
 }
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
+// [End module_fileContextMenu]
+// [End module_systemTheme]
+// [End module_abilities_skills]
 ```
+
 
 ## abilities标签
 
@@ -256,7 +350,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | -------- | -------- | -------- | -------- |
 | name | 标识当前UIAbility组件的名称，确保该名称在整个应用中唯一。取值为长度不超过127字节的字符串，以字母开头，可包含字母、数字、下划线（_）或点号（.）。 | 字符串 | 该标签不可缺省。 |
 | srcEntry | 标识当前UIAbility的代码路径，取值为长度不超过127字节的字符串。 | 字符串 | 该标签不可缺省。 |
-| [launchType](../application-models/uiability-launch-type.md) | 标识当前UIAbility组件的启动模式，支持的取值如下：<br/>-&nbsp;multiton：多实例模式，每次启动创建一个新实例。<br/>-&nbsp;singleton：单实例模式，仅第一次启动创建新实例。<br/>-&nbsp;specified：指定实例模式，运行时由开发者决定是否创建新实例。<br/>-&nbsp;standard：multiton的曾用名，效果与多实例模式一致。 | 字符串 | 该标签可缺省，该标签缺省为“singleton”。 |
+| [launchType](../application-models/uiability-launch-type.md) | 标识当前UIAbility组件的启动模式，支持的取值如下：<br/>-&nbsp;multiton：多实例模式，每次启动创建一个新实例。<br/>-&nbsp;singleton：单实例模式，仅第一次启动创建新实例。<br/>-&nbsp;specified：指定实例模式，运行时由开发者决定是否创建新实例。<br/>-&nbsp;standard：multiton的曾用名，效果与多实例模式一致。<!--RP1--><!--RP1End--> | 字符串 | 该标签可缺省，该标签缺省为“singleton”。 |
 | description | 标识当前UIAbility组件的描述信息，开发者可以通过该标签描述当前组件的功能与作用，取值为长度不超过255字节的字符串。建议采用描述信息的资源索引，以支持多语言。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | icon | 标识当前UIAbility组件的[图标](layered-image.md)，取值为图标资源文件的索引。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | label | 标识当前UIAbility组件对用户显示的[名称](layered-image.md)，取值为字符串资源的索引，以支持多语言，长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
@@ -283,7 +377,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | recoverable | 标识当前UIAbility组件是否支持在检测到应用故障后，恢复到应用原界面。<br/>-&nbsp;true：支持检测到出现故障后，恢复到原界面。<br/>-&nbsp;false：不支持检测到出现故障后，恢复到原界面。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | <!--DelRow-->unclearableMission | 标识当前UIAbility组件是否支持从最近任务列表中移除。<br/>-&nbsp;true：表示在任务列表中不可移除。<br/>-&nbsp;false：表示在任务列表中可以移除。<br/>**说明：**<br/>三方应用的配置不生效，当前配置仅在系统应用中有效，若要使系统应用配置生效，需申请应用特权AllowMissionNotCleared，详见[应用特权配置指导](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | isolationProcess | 标识组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅2in1和tablet设备支持将UIAbility设置为独立进程。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| excludeFromDock | 标识当前UIAbility组件是否支持从dock区域隐藏图标。<br/>-&nbsp;true：表示在dock区域隐藏。<br/>-&nbsp;false：表示不能在dock区域隐藏。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| excludeFromDock | 标识当前UIAbility组件是否支持从dock区域隐藏图标。<br/>-&nbsp;true：表示在dock区域隐藏。<br/>-&nbsp;false：表示不能在dock区域隐藏。<br/>**说明：**<br/>该标签配置不生效。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | preferMultiWindowOrientation | 标识当前UIAbility组件多窗布局方向：<br/>-&nbsp;default：缺省值，参数不配置默认值，建议其他应用类配置。<br/>-&nbsp;portrait：多窗布局方向为竖向，建议竖向游戏类应用配置。<br/>-&nbsp;landscape：多窗布局方向为横向，配置后支持横屏悬浮窗和上下分屏，建议横向游戏类应用配置。<br/>-&nbsp;landscape_auto：多窗布局动态可变为横向，需要配合API enableLandScapeMultiWindow/disableLandScapeMultiWindow使用，建议视频类应用配置。 | 字符串 | 该标签可缺省，缺省值为default。 |
 | continueType | 标识当前UIAbility组件的跨端迁移类型。 | 字符串数组 | 该标签可缺省，缺省值为当前组件的名称。 |
 | continueBundleName | 标识当前应用支持跨端迁移的其它应用名称列表。<br/>**说明：**<br/>不能配置为本应用包名，仅为了做异包名迁移使用。<br/>从API version 13开始，支持该标签。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
@@ -291,53 +385,79 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 
 abilities示例：
 
-```json
+<!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_extensionAbilities]
+// [Start module_proxyData]
+// [Start module_dependencies]
+// [Start module_testRunner]
 {
-  "abilities": [{
-    "name": "EntryAbility",
-    "srcEntry": "./ets/entryability/EntryAbility.ets",
-    "launchType":"singleton",
-    "description": "$string:description_main_ability",
-    "icon": "$media:layered_image",
-    "label": "$string:EntryAbility_label",
-    "permissions": [],
-    "metadata": [],
-    "exported": true,
-    "continuable": true,
-    "skills": [{
-      "actions": ["ohos.want.action.home"],
-      "entities": ["entity.system.home"],
-      "uris": []
-    }],
-    "backgroundModes": [
-      "dataTransfer"
+// ···
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "launchType": "singleton",
+        "description": "$string:description_main_ability",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "permissions": [],
+        "metadata": [],
+        "exported": true,
+        "continuable": true,
+        "skills": [
+          {
+            "actions": [
+              "ohos.want.action.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": []
+          }
+        ],
+        "backgroundModes": [
+          "dataTransfer"
+        ],
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:red",
+        "removeMissionAfterTerminate": true,
+        "orientation": "$string:orientation",
+        "supportWindowMode": [
+          "fullscreen",
+          "split",
+          "floating"
+        ],
+        "maxWindowRatio": 3.5,
+        "minWindowRatio": 0.5,
+        "maxWindowWidth": 2560,
+        "minWindowWidth": 1400,
+        "maxWindowHeight": 300,
+        "minWindowHeight": 200,
+        "excludeFromMissions": false,
+        "preferMultiWindowOrientation": "default",
+        "isolationProcess": false,
+        "continueType": [
+          "continueType1",
+          "continueType2"
+        ],
+        "continueBundleName": [
+          "com.example.myapplication1",
+          "com.example.myapplication2"
+        ],
+        "process": ":processTag"
+      }
     ],
-    "startWindowIcon": "$media:icon",
-    "startWindowBackground": "$color:red",
-    "removeMissionAfterTerminate": true,
-    "orientation": "$string:orientation",
-    "supportWindowMode": ["fullscreen", "split", "floating"],
-    "maxWindowRatio": 3.5,
-    "minWindowRatio": 0.5,
-    "maxWindowWidth": 2560,
-    "minWindowWidth": 1400,
-    "maxWindowHeight": 300,
-    "minWindowHeight": 200,
-    "excludeFromMissions": false,
-    "preferMultiWindowOrientation": "default",
-    "isolationProcess": false,
-    "continueType": [
-      "continueType1",
-      "continueType2"
-    ],
-    "continueBundleName": [
-      "com.example.myapplication1",
-      "com.example.myapplication2"
-    ],
-    "process": ":processTag"
-  }]
+	// ···
+  // [EndExclude module_extensionAbilities]
 }
+// [End module_testRunner]
+// [End module_dependencies]
+// [End module_proxyData]
+// [End module_extensionAbilities]
 ```
+
 
 ## skills标签
 
@@ -373,37 +493,52 @@ abilities示例：
 
 skills示例：
 
+<!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
+// [Start module_systemTheme]
+// [Start module_fileContextMenu]
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
 {
-  "abilities": [
-    {
-      "skills": [
-        {
-          "actions": [
-            "ohos.want.action.home"
-          ],
-          "entities": [
-            "entity.system.home"
-          ],
-          "uris": [
-            {
-              "scheme":"http",
-              "host":"example.com",
-              "port":"80",
-              "path":"path",
-              "type": "text/*",
-              "linkFeature": "Login"
-            }
-          ],
-          "permissions": [],
-          "domainVerify": false
-        }
-      ]
-    }
-  ]
+// ···
+    "abilities": [
+      {
+		// ···
+        "skills": [
+          // [StartExclude module_all]
+          {
+            "actions": [
+              "ohos.want.action.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": [
+              {
+                "scheme":"http",
+                "host":"example.com",
+                "port":"80",
+                "path":"path",
+                "type": "text/*",
+                "linkFeature": "Login"
+              }
+            ],
+            "permissions": [],
+            "domainVerify": false
+          },
+		// ···
+        ],
+		// ···
+    ],
+	// ···
 }
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
+// [End module_fileContextMenu]
+// [End module_systemTheme]
 ```
+
 
 ## extensionAbilities标签
 
@@ -418,7 +553,7 @@ skills示例：
 | description | 标识当前ExtensionAbility组件的描述，开发者可以通过该标签描述当前组件的功能与作用，取值为长度不超过255字节的字符串，可以是对描述内容的资源索引，用于支持多语言。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | icon | 标识当前ExtensionAbility组件的图标，取值为资源文件的索引。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | label | 标识当前ExtensionAbility组件对用户显示的名称，取值为该名称的资源索引，以支持多语言，字符串长度不超过255字节。 | 字符串 | 该标签可缺省，缺省值为空。 |
-| type | 标识当前ExtensionAbility组件的类型，支持的取值如下：<br/>-&nbsp;form：卡片的ExtensionAbility。<br/>-&nbsp;workScheduler：延时任务的ExtensionAbility。<br/>-&nbsp;inputMethod：输入法的ExtensionAbility。<!--Del--><br/>-&nbsp;service：后台运行的service组件。<!--DelEnd--><br/>-&nbsp;accessibility：辅助能力的ExtensionAbility。<!--Del--><br/>-&nbsp;fileAccess：公共数据访问的ExtensionAbility，允许应用程序提供文件和文件夹给文件管理类应用展示。<br/>-&nbsp;dataShare：数据共享的ExtensionAbility。<br/>-&nbsp;staticSubscriber：静态广播的ExtensionAbility。<!--DelEnd--><br/>-&nbsp;wallpaper：壁纸的ExtensionAbility。<br/>-&nbsp;backup：数据备份的ExtensionAbility。<br/>-&nbsp;enterpriseAdmin：[企业设备管理](../mdm/mdm-kit-admin.md)的ExtensionAbility。企业设备管理应用必须拥有此类型的ExtensionAbility。<!--Del--><br/>-&nbsp;window：该ExtensionAbility会在启动过程中创建一个window，为开发者提供界面开发。开发者开发出来的界面将通过UIExtensionComponent控件组合到其他应用的窗口中。<!--DelEnd--><br/>-&nbsp;thumbnail：获取文件缩略图的ExtensionAbility，开发者可以对自定义文件类型的文件提供缩略。<br/>-&nbsp;preview：该ExtensionAbility会将文件解析后在一个窗口中显示，开发者可以通过将此窗口组合到其他应用窗口中。<br/>-&nbsp;print：打印框架的ExtensionAbility。<br/>-&nbsp;push：推送的ExtensionAbility。<br/>-&nbsp;driver：驱动框架的ExtensionAbility。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。<br/>-&nbsp;remoteNotification：远程通知的ExtensionAbility。<br/>-&nbsp;remoteLocation：远程定位的ExtensionAbility。<br/>-&nbsp;voip：网络音视频通话的ExtensionAbility。<br/>-&nbsp;action：自定义操作业务模板的ExtensionAbility，为开发者提供基于UIExtension的自定义操作业务模板。<!--Del--><br/>-&nbsp;adsService：广告业务的ExtensionAbility，提供广告业务框架。<!--DelEnd--><br/>-&nbsp;embeddedUI：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。<br/>-&nbsp;insightIntentUI：为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。<br/>-&nbsp;ads：广告业务的ExtensionAbility，与AdComponent控件组合使用，将广告页面展示到其他应用中。仅支持设备厂商使用。<br/>-&nbsp;photoEditor：图片编辑业务的ExtensionAbility，为开发者提供基于UIExtension的图片编辑业务模版。<br/>-&nbsp;appAccountAuthorization：应用账号授权扩展能力的ExtensionAbility，用于处理账号授权请求，比如账号登录授权。<br/>-&nbsp;autoFill/password：用于账号和密码自动填充业务的ExtensionAbility，支持数据的保存、填充能力。<br/>-&nbsp;hms/account：应用账号管理能力的ExtensionAbility。<!--Del--><br/>-&nbsp;sysDialog/atomicServicePanel：提供构建原子化服务服务面板的基础能力的ExtensionAbility，使用时基于UIExtensionAbility实现。<br/>-&nbsp;sysDialog/userAuth：本地用户鉴权的ExtensionAbility。<br/>-&nbsp;sysDialog/common：通用弹窗的ExtensionAbility。<br/>-&nbsp;sysDialog/power：关机重启弹窗的ExtensionAbility。<br/>-&nbsp;sysDialog/print：打印模态弹窗的ExtensionAbility。<br/>-&nbsp;sysDialog/meetimeCall：畅连通话的ExtensionAbility。<br/>-&nbsp;sysDialog/meetimeContact：畅连联系人的ExtensionAbility。<br/>-&nbsp;sysPicker/meetimeMessage：畅连消息的ExtensionAbility。<br/>-&nbsp;sysPicker/meetimeContact：畅连联系人列表的ExtensionAbility。<br/>-&nbsp;sysPicker/meetimeCallLog：畅连通话记录列表的ExtensionAbility。<br/>-&nbsp;sysPicker/share：系统分享的ExtensionAbility。<br/>-&nbsp;sysPicker/mediaControl：投播组件的ExtensionAbility。<br/>-&nbsp;sysPicker/photoPicker：三方应用通过对应的UIExtensionType拉起图库picker界面。<br/>-&nbsp;sysPicker/filePicker：文件下载弹窗的ExtensionAbility。<br/>-&nbsp;sysPicker/audioPicker：音频管理弹窗的ExtensionAbility。<br/>-&nbsp;sysPicker/photoEditor：图片编辑弹窗的ExtensionAbility。<br/>-&nbsp;sys/commonUI：非通用的ExtensionAbility，提供业务属性强相关的嵌入式显示或弹框。<!--DelEnd--><br/>-&nbsp;autoFill/smart：用于情景化场景自动填充业务的ExtensionAbility，支持数据的保存、填充能力。<!--Del--><br/>-&nbsp;uiService：弹窗服务组件，在启动过程中会创建window，并支持双向通信。<!--DelEnd--> <!--RP9--><!--RP9End--><br/>-&nbsp;recentPhoto：最近照片推荐的ExtensionAbility。<br/>-&nbsp;fence：地理围栏的ExtensionAbility。<br/>-&nbsp;callerInfoQuery：企业联系人查询的ExtensionAbility。<br/>-&nbsp;assetAcceleration：资源预下载的ExtensionAbility。<br/>-&nbsp;formEdit：卡片编辑的ExtensionAbility。<br/>-&nbsp;distributed：分布式扩展的ExtensionAbility。<br/>-&nbsp;liveForm：互动卡片的[ExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)。从API version 20开始，支持该标签。<br/>-&nbsp;appService：为应用提供后台服务相关扩展能力[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)，包括后台服务的创建、销毁、连接、断开等生命周期回调。从API version 20开始，支持该标签。<br/>-&nbsp;webNativeMessaging：为开发者提供Web原生消息通信能力的[ExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)。从API version 21开始，支持该标签。<br/>-&nbsp;faultLog：故障延迟通知的[ExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。从API version 21开始，支持该标签。<!--Del--><br/>-&nbsp;awc/webpage：通用网页浏览的ExtensionAbility。<br/>-&nbsp;awc/newsfeed：信息流资讯业务的ExtensionAbility。<br/>-&nbsp;selection：划词扩展的[ExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)。从API version 20开始，支持该标签。<br/>**说明：**<br/>其中service、adsService、staticSubscriber、window、sys/commonUI、fileAccess、selection、sysDialog类型、sysPicker类型、dataShare类型和uiService类型，三方应用的配置不生效，当前配置仅在系统应用中有效。<!--DelEnd--> | 字符串 | 该标签不可缺省。 |
+| type | 标识当前ExtensionAbility组件的类型，支持的取值如下：<br/>-&nbsp;form：卡片的ExtensionAbility。<br/>-&nbsp;workScheduler：延时任务的ExtensionAbility。<br/>-&nbsp;inputMethod：输入法的ExtensionAbility。<!--Del--><br/>-&nbsp;service：后台运行的service组件。<!--DelEnd--><br/>-&nbsp;accessibility：辅助能力的ExtensionAbility。<!--Del--><br/>-&nbsp;fileAccess：公共数据访问的ExtensionAbility，允许应用程序提供文件和文件夹给文件管理类应用展示。<br/>-&nbsp;dataShare：数据共享的ExtensionAbility。<br/>-&nbsp;staticSubscriber：静态广播的ExtensionAbility。<!--DelEnd--><br/>-&nbsp;wallpaper：壁纸的ExtensionAbility。<br/>-&nbsp;backup：数据备份的ExtensionAbility。<br/>-&nbsp;enterpriseAdmin：[企业设备管理](../mdm/mdm-kit-admin.md)的ExtensionAbility。企业设备管理应用必须拥有此类型的ExtensionAbility。<!--Del--><br/>-&nbsp;window：该ExtensionAbility会在启动过程中创建一个window，为开发者提供界面开发。开发者开发出来的界面将通过UIExtensionComponent控件组合到其他应用的窗口中。<!--DelEnd--><br/>-&nbsp;thumbnail：获取文件缩略图的ExtensionAbility，开发者可以对自定义文件类型的文件提供缩略。<br/>-&nbsp;preview：该ExtensionAbility会将文件解析后在一个窗口中显示，开发者可以通过将此窗口组合到其他应用窗口中。<br/>-&nbsp;print：打印框架的ExtensionAbility。<br/>-&nbsp;push：推送的ExtensionAbility。<br/>-&nbsp;driver：驱动框架的ExtensionAbility。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。<br/>-&nbsp;remoteNotification：远程通知的ExtensionAbility。<br/>-&nbsp;remoteLocation：远程定位的ExtensionAbility。<br/>-&nbsp;voip：网络音视频通话的ExtensionAbility。<br/>-&nbsp;action：自定义操作业务模板的ExtensionAbility，为开发者提供基于UIExtension的自定义操作业务模板。<!--Del--><br/>-&nbsp;adsService：广告业务的ExtensionAbility，提供广告业务框架。<!--DelEnd--><br/>-&nbsp;embeddedUI：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。<br/>-&nbsp;insightIntentUI：为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。<br/>-&nbsp;ads：广告业务的ExtensionAbility，与AdComponent控件组合使用，将广告页面展示到其他应用中。仅支持设备厂商使用。<br/>-&nbsp;photoEditor：图片编辑业务的ExtensionAbility，为开发者提供基于UIExtension的图片编辑业务模版。<br/>-&nbsp;appAccountAuthorization：应用账号授权扩展能力的ExtensionAbility，用于处理账号授权请求，比如账号登录授权。<br/>-&nbsp;autoFill/password：用于账号和密码自动填充业务的ExtensionAbility，支持数据的保存、填充能力。<br/>-&nbsp;hms/account：应用账号管理能力的ExtensionAbility。<!--Del--><br/>-&nbsp;sysDialog/atomicServicePanel：提供构建原子化服务服务面板的基础能力的ExtensionAbility，使用时基于UIExtensionAbility实现。<br/>-&nbsp;sysDialog/userAuth：本地用户鉴权的ExtensionAbility。<br/>-&nbsp;sysDialog/common：通用弹窗的ExtensionAbility。<br/>-&nbsp;sysDialog/power：关机重启弹窗的ExtensionAbility。<br/>-&nbsp;sysDialog/print：打印模态弹窗的ExtensionAbility。<br/>-&nbsp;sysDialog/meetimeCall：畅连通话的ExtensionAbility。<br/>-&nbsp;sysDialog/meetimeContact：畅连联系人的ExtensionAbility。<br/>-&nbsp;sysPicker/meetimeMessage：畅连消息的ExtensionAbility。<br/>-&nbsp;sysPicker/meetimeContact：畅连联系人列表的ExtensionAbility。<br/>-&nbsp;sysPicker/meetimeCallLog：畅连通话记录列表的ExtensionAbility。<br/>-&nbsp;sysPicker/share：系统分享的ExtensionAbility。<br/>-&nbsp;sysPicker/mediaControl：投播组件的ExtensionAbility。<br/>-&nbsp;sysPicker/photoPicker：三方应用通过对应的UIExtensionType拉起图库picker界面。<br/>-&nbsp;sysPicker/filePicker：文件下载弹窗的ExtensionAbility。<br/>-&nbsp;sysPicker/audioPicker：音频管理弹窗的ExtensionAbility。<br/>-&nbsp;sysPicker/photoEditor：图片编辑弹窗的ExtensionAbility。<br/>-&nbsp;sys/commonUI：非通用的ExtensionAbility，提供业务属性强相关的嵌入式显示或弹框。<!--DelEnd--><br/>-&nbsp;autoFill/smart：用于情景化场景自动填充业务的ExtensionAbility，支持数据的保存、填充能力。<!--Del--><br/>-&nbsp;uiService：弹窗服务组件，在启动过程中会创建window，并支持双向通信。<!--DelEnd--> <!--RP9--><!--RP9End--><br/>-&nbsp;recentPhoto：最近照片推荐的ExtensionAbility。<br/>-&nbsp;fence：地理围栏的ExtensionAbility。<br/>-&nbsp;callerInfoQuery：企业联系人查询的ExtensionAbility。<br/>-&nbsp;assetAcceleration：资源预下载的ExtensionAbility。<br/>-&nbsp;formEdit：卡片编辑的ExtensionAbility。<br/>-&nbsp;distributed：分布式扩展的ExtensionAbility。<br/>-&nbsp;liveForm：互动卡片的[ExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)。从API version 20开始，支持该标签。<br/>-&nbsp;appService：为应用提供后台服务相关扩展能力[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)，包括后台服务的创建、销毁、连接、断开等生命周期回调。从API version 20开始，支持该标签。<br/>-&nbsp;webNativeMessaging：为开发者提供Web原生消息通信能力的[ExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)。从API version 21开始，支持该标签。<br/>-&nbsp;faultLog：故障延迟通知的[ExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。从API version 21开始，支持该标签。<!--Del--><br/>-&nbsp;awc/webpage：通用网页浏览的ExtensionAbility。<br/>-&nbsp;awc/newsfeed：信息流资讯业务的ExtensionAbility。<br/>-&nbsp;selection：划词扩展的[ExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)。从API version 20开始，支持该标签。<br/>-&nbsp;crypto：UKey驱动应用拓展的ExtensionAbility。<br/>**说明：**<br/>其中service、adsService、staticSubscriber、window、sys/commonUI、fileAccess、selection、sysDialog类型、sysPicker类型、dataShare类型和uiService类型，三方应用的配置不生效，当前配置仅在系统应用中有效。<!--DelEnd--> | 字符串 | 该标签不可缺省。 |
 | permissions | 标识当前ExtensionAbility组件的权限信息。当其他应用访问该ExtensionAbility时，需要申请相应的权限。<br/>一个数组元素为一个权限名称。不超过255字节，取值请参考[应用权限列表](../security/AccessToken/app-permissions.md)。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | appIdentifierAllowList | 标识允许启动此ExtensionAbility的应用程序列表。<br/>一个数组元素为一个应用程序的appIdentifier，appIdentifier信息可参考[什么是appIdentifier](../quick-start/common_problem_of_application.md#什么是appidentifier)。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为appService时支持配置该标签。<br/>从API version 20开始，支持该标签。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | readPermission | 标识读取当前ExtensionAbility组件数据所需的权限，取值为长度不超过255字节的字符串。仅当预置的系统应用ExtensionAbility的type配置为dataShare时，该标签生效。dataShare类型仅支持系统应用支持配置，三方应用配置不生效。 | 字符串 | 该标签可缺省，缺省值为空。 |
@@ -434,40 +569,55 @@ skills示例：
 
 extensionAbilities示例：
 
+<!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
-```json
+``` JSON5
+// [Start module_proxyData]
+// [Start module_dependencies]
+// [Start module_testRunner]
 {
-  "extensionAbilities": [
-    {
-      "name": "FormName",
-      "srcEntry": "./form/MyForm.ts",
-      "icon": "$media:icon",
-      "label" : "$string:extension_name",
-      "description": "$string:form_description",
-      "type": "form",
-      "permissions": ["ohos.permission.ACCESS_BLUETOOTH"],
-      "exported": true,
-      "uri":"scheme://authority/path/query",
-      "skills": [{
-        "actions": [],
-        "entities": [],
-        "uris": [],
-        "permissions": []
-      }],
-      "metadata": [
-        {
-          "name": "ohos.extension.form",
-          "resource": "$profile:form_config",
-        }
-      ],
-      "extensionProcessMode": "instance",
-      "dataGroupIds": [
-        "testGroupId1"
-      ]
-    }
-  ]
+  // [StartExclude module_abilities]
+// ···
+    "extensionAbilities": [
+      {
+        "name": "FormName",
+        "srcEntry": "./ets/form/MyForm.ets",
+        "icon": "$media:icon",
+        "label" : "$string:extension_name",
+        "description": "$string:form_description",
+        "type": "form",
+        "permissions": ["ohos.permission.ACCESS_BLUETOOTH"],
+        "exported": true,
+        "uri":"scheme://authority/path/query",
+        "skills": [{
+          "actions": [],
+          "entities": [],
+          "uris": [],
+          "permissions": []
+        }],
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:form_config",
+          }
+        ],
+        "extensionProcessMode": "instance",
+        "dataGroupIds": [
+          "testGroupId1"
+        ]
+      }
+    ],
+    // [EndExclude module_testRunner]
+    // [EndExclude module_dependencies]
+    // [EndExclude module_proxyData]
+    // [EndExclude module_deviceTypes]
+	// ···
 }
+// [End module_testRunner]
+// [End module_dependencies]
+// [End module_proxyData]
 ```
+
 
 ## shortcuts标签
 
@@ -517,36 +667,49 @@ shortcuts标识应用的快捷方式信息。标签值为数组，包含四个�
 
 2. 在module.json5配置文件的abilities标签中，针对需要添加快捷方式的UIAbility进行配置metadata标签，使shortcut配置文件对该UIAbility生效。
 
-   ```json
-   {
-     "module": {
-       // ...
-       "abilities": [
-         {
-           "name": "EntryAbility",
-           "srcEntry": "./ets/entryability/EntryAbility.ets",
-           // ...
-           "skills": [
-             {
-               "entities": [
-                 "entity.system.home"
-               ],
-               "actions": [
-                 "ohos.want.action.home"
-               ]
-             }
-           ],
-           "metadata": [
-             {
-               "name": "ohos.ability.shortcuts",
-               "resource": "$profile:shortcuts_config"
-             }
-           ]
-         }
-       ]
-     }
-   }
-   ```
+   <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  // [StartExclude module_abilities_skills]
+  "module": {
+	// ···
+    // [EndExclude module_abilities_skills]
+    "abilities": [
+      {
+        // [StartExclude module_abilities_skills]
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+		// ···
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+          // [EndExclude module_abilities_skills]
+        ],
+        // [StartExclude module_abilities_skills]
+        // [StartExclude module_all]
+        "metadata": [
+          {
+            "name": "ohos.ability.shortcuts",
+            "resource": "$profile:shortcuts_config"
+          }
+        ],
+		// ···
+      }
+      // [EndExclude module_abilities_skills]
+    ],
+    // [StartExclude module_abilities_skills]
+	// ···
+  }
+  // [EndExclude module_abilities_skills]
+}
+```
+
 ### wants标签
 
 此标签用于标识快捷方式内定义的目标wants信息集合。
@@ -585,32 +748,43 @@ data标签示例：
 > 该标签从API10及以后版本开始生效，API9及以前版本使用distroFilter标签。
 
 - **适用场景：** 当一个工程中存在多个Entry，且多个Entry配置的deviceTypes存在交集时，则需要通过该标签进行区分。比如下面的两个Entry都支持tablet类型，就需要通过该标签进行区分。
-  ```json
-  // entry1支持的设备类型
-  {
-    "module": {
-      "name": "entry1",
-      "type": "entry",
-      "deviceTypes" : [
-        "tv",
-        "tablet"
-      ]
-    }
-  }
-  ```
-  ```json
-  // entry2支持的设备类型
-  {
-    "module": {
-      "name": "entry2",
-      "type": "entry",
-      "deviceTypes" : [
-        "car",
-        "tablet"
-      ]
-    }
-  }
-  ```
+
+  <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
+
+``` JSON5
+// entry1支持的设备类型
+// [Start module_distributionFilter_metadata]
+{
+  "module": {
+    // [StartExclude module_distributionFilter_metadata]
+    "name": "entry1",
+    "type": "entry",
+    "deviceTypes": [
+      "tv",
+      "tablet"
+    ],
+	// ···
+}
+// [End module_distributionFilter_metadata]
+```
+
+
+  <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
+
+``` JSON5
+// entry2支持的设备类型
+{
+  "module": {
+    "name": "entry2",
+    "type": "entry",
+    "deviceTypes": [
+      "tv",
+      "tablet"
+    ],
+	// ···
+}
+```
+
 
 - **配置规则：** 该标签支持配置四个属性，包括屏幕形状([screenShape](#screenshape标签))、窗口分辨率([screenWindow](#screenwindow标签))、屏幕像素密度([screenDensity](#screendensity标签) )、设备所在国家与地区([countryCode](#countrycode标签))。详见下表。
 
@@ -709,20 +883,22 @@ data标签示例：
 
 2. 在module.json5配置文件的module标签中定义metadata信息。
 
+  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
 
-    ```json
-    {
-      "module": {
-        // ...
-        "metadata": [
-          {
-            "name": "ohos.module.distribution",
-            "resource": "$profile:distributionFilter_config",
-          }
-        ]
+``` JSON5
+{
+  "module": {
+	// ···
+    "metadata": [
+      {
+        "name": "ohos.module.distribution",
+        "resource": "$profile:distributionFilter_config",
       }
-    }
-    ```
+    ],
+	// ···
+  // [EndExclude module_distributionFilter_01]
+}
+```
 
 
 ## testRunner标签
@@ -738,18 +914,29 @@ data标签示例：
 
 testRunner标签示例：
 
+<!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
   "module": {
-    // ...
+	// ···
     "testRunner": {
       "name": "myTestRunnerName",
       "srcPath": "etc/test/TestRunner.ts"
-    }
+    },
+	// ···
+    // [EndExclude module_dependencies]
+    // [EndExclude module_proxyData]
+    // [EndExclude module_deviceTypes]
+    // [StartExclude module_extensionAbilities]
   }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
 }
 ```
+
 
 ## atomicService标签
 
@@ -772,9 +959,12 @@ testRunner标签示例：
 
 atomicService标签示例：
 
-```json
+<!-- @[module_atomicService](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile04/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+	// ···
     "atomicService": {
       "preloads":[
         {
@@ -782,10 +972,11 @@ atomicService标签示例：
         }
       ],
       "resizeable": true
-    }
-  }
+    },
+	// ···
 }
 ```
+
 
 ## dependencies标签
 
@@ -801,19 +992,35 @@ atomicService标签示例：
 
 dependencies标签示例：
 
-```json
+<!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_testRunner]
 {
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
   "module": {
+    // [StartExclude module_testRunner]
+    // [StartExclude module_proxyData]
+	// ···
     "dependencies": [
       {
         "bundleName":"com.share.library",
         "moduleName": "library",
         "versionCode": 10001
       }
-    ]
+    ],
+	// ···
+    // [EndExclude module_proxyData]
+    // [EndExclude module_deviceTypes]
+    // [StartExclude module_extensionAbilities]
   }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
 }
+// [End module_testRunner]
 ```
+
 
 ## proxyData标签
 
@@ -829,23 +1036,39 @@ dependencies标签示例：
 
 proxyData标签示例：
 
-```json
+<!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_dependencies]
+// [Start module_testRunner]
 {
+  // [StartExclude module_abilities]
+  // [StartExclude module_extensionAbilities]
   "module": {
+    // [StartExclude module_testRunner]
+	// ···
     "proxyData": [
       {
-        "uri":"datashareproxy://com.ohos.datashare/event/Meeting",
-        "requiredReadPermission": "ohos.permission.ACCESS_BLUETOOTH",
-        "requiredWritePermission": "ohos.permission.ACCESS_BLUETOOTH",
+        "uri":"datashareproxy://ohos.app.hap.myapplication/event/Meeting",
+        "requiredReadPermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
+        "requiredWritePermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
         "metadata": {
           "name": "datashare_metadata",
           "resource": "$profile:datashare"
         }
       }
-    ]
+    ],
+	// ···
+    // [EndExclude module_deviceTypes]
+    // [StartExclude module_extensionAbilities]
   }
+  // [EndExclude module_abilities]
+  // [EndExclude module_extensionAbilities]
 }
+// [End module_testRunner]
+// [End module_dependencies]
 ```
+
 
 ## routerMap标签
 
@@ -970,18 +1193,29 @@ customData标签示例：
 
 appEnvironments标签示例：
 
-```json
+<!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_abilities_metadata]
 {
+  // [StartExclude module_abilities_skills]
   "module": {
+    // [StartExclude module_abilities_metadata]
+	// ···
     "appEnvironments": [
       {
-        "name":"name1",
+        "name": "name1",
         "value": "value1"
       }
-    ]
+    ],
+	// ···
+    // [EndExclude module_abilities_metadata]
   }
+  // [EndExclude module_abilities_skills]
 }
+// [End module_abilities_metadata]
 ```
+
 
 
 ## hnpPackages标签
@@ -998,18 +1232,25 @@ appEnvironments标签示例：
 hnpPackages示例：
 
 
-```json
+<!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_definePermissions]
 {
-  "module" : {
+  "module": {
+	// ···
     "hnpPackages": [
       {
         "package": "hnpsample.hnp",
         "type": "public"
       }
-    ]
-  }
+    ],
+	// ···
+  },
 }
+// [End module_definePermissions]
 ```
+
 
 ## fileContextMenu标签
 
@@ -1017,14 +1258,29 @@ hnpPackages示例：
 
 fileContextMenu标签示例
 
-```json
+<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
 {
+  // [StartExclude module_abilities_skills]
   "module": {
-    // ...
-    "fileContextMenu": "$profile:menu" // 通过profile下的资源文件配置
+    // [StartExclude module_abilities_metadata]
+    // [StartExclude module_appEnvironments]
+    // [StartExclude module_systemTheme]
+	// ···
+    "fileContextMenu": "$profile:menu",
+	// ···
+    // [EndExclude module_appEnvironments]
+    // [EndExclude module_abilities_metadata]
   }
+  // [EndExclude module_abilities_skills]
 }
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
 ```
+
 
 在开发视图的resources/base/profile下面定义配置文件menu.json，其中文件名“menu.json”可自定义，需要和fileContextMenu标签指定的信息对应。配置文件中描述了当前应用注册的右键菜单的项目和响应行为。
 配置文件根节点名称为fileContextMenu，为对象数组，标识当前module注册右键菜单的数量。（单模块和单应用注册数量不能超过5个，配置超过数量当前只解析随机5个）
@@ -1132,14 +1388,32 @@ resources/base/profile路径下的start_window.json资源文件示例如下：
 
 systemTheme标签示例：
 
-```json
+<!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
+// [Start module_fileContextMenu]
+// [Start module_appEnvironments]
+// [Start module_abilities_metadata]
 {
+  // [StartExclude module_abilities_skills]
   "module": {
-    // ...
+    // [StartExclude module_abilities_metadata]
+    // [StartExclude module_appEnvironments]
+	// ···
     "systemTheme": "$profile:theme_config", // 通过profile下的资源文件配置
+    // [EndExclude module_metadata]
+    // [EndExclude module_all]
+    // [EndExclude module_fileContextMenu]
+    // [EndExclude module_appEnvironments]
+    // [EndExclude module_abilities_metadata]
   }
+  // [EndExclude module_abilities_skills]
 }
+// [End module_abilities_metadata]
+// [End module_appEnvironments]
+// [End module_fileContextMenu]
 ```
+
 
 在开发视图的resources/base/profile下面定义配置文件theme_config.json，其中文件名“theme_config.json”可自定义为“theme_config”开头文件名，例如"theme_config"、"theme_config_1"。需要和systemTheme标签指定的信息对应。配置文件中标识当前应用使用的系统主题。
 
@@ -1169,7 +1443,7 @@ resources/base/profile路径下的theme_config.json资源文件示例如下：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | name | 标识权限的名称，该标签最大长度为255字节。 | 字符串 | 不可缺省。 |
-| grantMode | 标识权限的授予方式，支持如下两种授予模式如下：<br/>-&nbsp;system_grant：安装后系统自动授予该权限。<br/>-&nbsp;user_grant：使用时动态申请，用户授权后才可使用。 | 字符串 | 可缺省，缺省值为system_grant。 |
+| grantMode | 标识权限的授予方式，支持如下三种授予模式：<br/>-&nbsp;system_grant：安装后系统自动授予该权限。<br/>-&nbsp;user_grant：使用时动态申请，用户授权后才可使用。<br/>-&nbsp;manual_settings：需用户手动到系统设置页面授权后才可使用。从API version 21开始支持配置。 | 字符串 | 可缺省，缺省值为system_grant。 |
 | availableLevel | 标识权限限制类别，可选值如下：<br/>-&nbsp;system_core：系统核心权限。<br/>-&nbsp;system_basic：系统基础权限。<br/>-&nbsp;normal：普通权限。所有应用允许申请的权限。 | 字符串 | 可缺省，缺省值为normal。 |
 | provisionEnable | 标识权限是否支持证书方式申请权限，包括高级别的权限。配置为true表示开发者可以通过证书方式申请权限。配置为false表示开发者不可以通过证书方式申请权限。 | 布尔值 | 可缺省，缺省值为true。 |
 | distributedSceneEnabled | 标识权限是否支持分布式场景下使用该权限。配置为true表示开发者可以在分布式场景下使用该权限。配置为false表示开发者不可以在分布式场景下使用该权限。 | 布尔值 | 可缺省，缺省值为false。 |
@@ -1178,9 +1452,13 @@ resources/base/profile路径下的theme_config.json资源文件示例如下：
 
 definePermissions标签示例：
 
-```json
+<!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-  "module" : {
+  "module": {
+    // [StartExclude module_hnpPackages]
+	// ···
     "definePermissions": [
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH",
@@ -1190,8 +1468,11 @@ definePermissions标签示例：
         "distributedSceneEnable": false,
         "label": "$string:EntryAbility_label"
       }
-    ]
-  }
+    ],
+	// ···
+    // [EndExclude module_hnpPackages]
+  },
 }
 ```
+
 <!--DelEnd-->

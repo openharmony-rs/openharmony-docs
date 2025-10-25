@@ -1,4 +1,10 @@
 # makeObserved API: Changing Unobservable Data to Observable Data
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 To change the unobservable data to observable data, you can use the [makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved) API.
 
@@ -62,12 +68,12 @@ To change the unobservable data to observable data, you can use the [makeObserve
   // Incorrect usage. The input object is the proxy data encapsulated by makeObserved, which is not processed this time.
   let observedInfo2: Info2 = UIUtils.makeObserved(observedInfo1);
   ```
-- **makeObserved** can be used in custom components decorated by @Component, but cannot be used together with the state variable decorator in state management V1. If they are used together, a runtime exception is thrown.
+- makeObserved can be used in custom components decorated with [@Component](./arkts-create-custom-components.md#component), but cannot be used together with the state variable decorator of the V1 state management. If they are used together, a runtime exception is thrown.
   ```ts
   // Incorrect usage. An exception occurs during running.
   @State message: Info = UIUtils.makeObserved(new Info(20));
   ```
-  The following **message2** does not throw an exception because **this.message** is decorated by @State and its implementation is the same as @Observed, while the input parameter of **UIUtils.makeObserved** is the @Observed decorated class, which is returned directly. Therefore, the initial value of **message2** is not the return value of **makeObserved**, but a variable decorated by @State.
+  The following message2 writing does not throw an exception because this.message is decorated with [@State](./arkts-state.md) and is equivalent to @Observed. The input parameter of UIUtils.makeObserved is a class decorated with @Observed, which directly returns itself. Therefore, the initial value of **message2** is not the return value of **makeObserved**, but a variable decorated by @State.
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   class Person {
@@ -95,7 +101,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
   ```
 ### makeObserved Is Used Only for Input Parameters and Return Value Still Has Observation Capability
 
- - **message** is decorated by @Local and has the capability of observing its own value changes. Its initial value is the return value of **makeObserved**, which supports in-depth observation.
+ - message is decorated with [@Local](./arkts-new-local.md) and has the capability of observing its own assignment. Its initial value is the return value of **makeObserved**, which supports in-depth observation.
  - Click **change id** to re-render the UI.
  - Click **change Info** to set **this.message** to unobservable data. Click **change id** again, UI cannot be re-rendered.
  - Click **change Info1** to set **this.message** to observable data. Click **change id** again, UI can be re-rendered.
@@ -130,10 +136,10 @@ To change the unobservable data to observable data, you can use the [makeObserve
 
 ## Supported Types and Observed Changes
 
-### Supported Types
+### Supported File Format
 
-- Classes that are not decorated by @Observed or @ObserveV2.
-- Array, Map, Set, and Date types.
+- Classes that are not decorated with @Observed or @ObservedV2.
+- Array, Map, Set, and Date types are supported.
 - collections.Array, collections.Set, and collections.Map.
 - Object returned by JSON.parse.
 - @Sendable decorated class.
@@ -142,7 +148,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
 
 - When an instance of the built-in type or collections type is passed by **makeObserved**, you can observe the changes.
 
-  | Type | APIs that Can Observe Changes                                             |
+  | Type | Change-Triggering API                                             |
   | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort|
   | collections.Array | push, pop, shift, unshift, splice, fill, reverse, sort, shrinkTo, extendTo|
@@ -157,10 +163,10 @@ To change the unobservable data to observable data, you can use the [makeObserve
 [@Sendable](../../arkts-utils/arkts-sendable.md) is used to process concurrent tasks in application scenarios. The **makeObserved** and @Sendable are used together to meet the requirements of big data processing in the sub-thread and **ViewModel** display and data observation in the UI thread in common application development. For details about @Sendable, see [Multithreaded Concurrency Overview (TaskPool and Worker)](../../arkts-utils/multi-thread-concurrency-overview.md).
 
 This section describes the following scenarios:
-- **makeObserved** has the observation capability after data of the @Sendable type is passed in, and the change of the data can trigger UI re-rendering.
-- Obtain an entire data from the subthread and replace the entire observable data of the UI thread.
-- Re-execute **makeObserved** from the data obtained from the subthread to change the data to observable data.
-- When data is passed from the main thread to a subthread, only unobservable data is passed. The return value of **makeObserved** cannot be directly passed to a subthread.
+- When **makeObserved** is used with @Sendable data, it enables observability of changes that can trigger UI refreshes.
+- A complete set of data is fetched from a child thread and used to replace the observable data in the UI thread entirely.
+- The data fetched from the child thread is reprocessed with **makeObserved** to become observable.
+- When data is passed from the main thread to a subthread, only unobservable data is passed. The return value of **makeObserved** is not directly passed to child threads.
 
 Example:
 
@@ -185,10 +191,10 @@ import { UIUtils } from '@kit.ArkUI';
 
 @Concurrent
 function threadGetData(param: string): SendableData {
-  // Process data in the subthread.
+  // Process data in the child thread.
   let ret = new SendableData();
   console.info(`Concurrent threadGetData, param ${param}`);
-  ret.name = param + "-o";
+  ret.name = param + '-o';
   ret.age = Math.floor(Math.random() * 40);
   ret.likes = Math.floor(Math.random() * 100);
   return ret;
@@ -197,20 +203,20 @@ function threadGetData(param: string): SendableData {
 @Entry
 @ComponentV2
 struct ObservedSendableTest {
-  // Use makeObserved to add the observation capability to a common object or a @Sendable decorated object.
+  // Use makeObserved to add observation to a regular object or a @Sendable object.
   @Local send: SendableData = UIUtils.makeObserved(new SendableData());
   build() {
     Column() {
       Text(this.send.name)
-      Button("change name").onClick(() => {
+      Button('change name').onClick(() => {
         // Change of the attribute can be observed.
-        this.send.name += "0";
+        this.send.name += '0';
       })
 
-      Button("task").onClick(() => {
-        // Places a function to be executed in the internal queue of the task pool. The function will be distributed to the worker thread for execution.
+      Button('task').onClick(() => {
+        // Enqueue the function to be executed in the task pool, waiting to be dispatched to a worker thread.
         taskpool.execute(threadGetData, this.send.name).then(val => {
-          // Used together with @Local to observe the change of this.send.
+          // Used together with @Local to observe changes to 'this.send'.
           this.send = UIUtils.makeObserved(val as SendableData);
         })
       })
@@ -221,13 +227,14 @@ struct ObservedSendableTest {
 **NOTE**<br>Data can be constructed and processed in subthreads. However, observable data can be processed only in the main thread. Therefore, in the preceding example, only the **name** attribute of **this.send** is passed to the subthread.
 
 ### Using makeObserved and collections.Array/collections.Set/collections.Map Together
-**collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS Collections)](../../reference/apis-arkts/js-apis-arkts-collections.md).
-makeObserved can be used to import an observable **colletions** container to ArkUI. However, makeObserved cannot be used together with the state variable decorators of V1, such as @State and @Prop. Otherwise, a runtime exception will be thrown.
+**collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS Collections)](../../reference/apis-arkts/arkts-apis-arkts-collections.md).
+makeObserved enables importing observable collections into ArkUI, but is incompatible with state management V1 decorators like, such as @State and [@Prop](./arkts-prop.md). Combining them will result in runtime exceptions.
 
-#### collections.Array
+**collections.Array**
+
 The following APIs can trigger UI re-rendering:
-- Changing the array length: push, pop, shift, unshift, splice, shrinkTo and extendTo
-- Changing the array items: sort and fill.
+- Changing the array length: push, pop, shift, unshift, splice, shrinkTo, and extendTo
+- Changing the array items: sort and fill
 
 Other APIs do not change the original array. Therefore, the UI re-rendering is not triggered.
 
@@ -266,7 +273,7 @@ struct Index {
       Divider()
         .color('blue')
       if (this.arrCollect.length > 0) {
-        Text(`the first one ${this.arrCollect[this.arrCollect.length - this.arrCollect.length].id}`)
+        Text(`the first one ${this.arrCollect[0].id}`)
         Text(`the last one ${this.arrCollect[this.arrCollect.length - 1].id}`)
       }
       Divider()
@@ -349,7 +356,8 @@ struct Index {
   }
 }
 ```
-#### collections.Map
+
+**collections.Map**
 
 The following APIs can trigger UI re-rendering: set, clear, and delete.
 ```ts
@@ -373,7 +381,7 @@ struct CollectionMap {
 
   build() {
     Column() {
-      // this.mapCollect.keys() returns an iterator which is not supported by Foreach. Therefore, Array.from is used to generate data in shallow copy mode.
+      // this.mapCollect.keys() returns an iterator, which is not supported by ForEach. Therefore, Array.from is used to generate data in shallow copy mode.
       ForEach(Array.from(this.mapCollect.keys()), (item: string) => {
         Text(`${this.mapCollect.get(item)?.id}`).onClick(() => {
           let value: Info|undefined = this.mapCollect.get(item);
@@ -404,7 +412,8 @@ struct CollectionMap {
 }
 ```
 
-#### collections.Set
+**collections.Set**
+
 The following APIs can trigger UI re-rendering: add, clear, and delete.
 
 ```ts
@@ -438,7 +447,7 @@ struct Index {
       // add
       Button('add').onClick(() => {
         this.set.add(new Info(30));
-        console.log('size:' + this.set.size);
+        console.info('size:' + this.set.size);
       })
       // delete
       Button('delete').onClick(() => {
@@ -471,9 +480,9 @@ class Info {
   }
 }
 
-let test: Record<string, number> = { "a": 123 };
+let test: Record<string, number> = { 'a': 123 };
 let testJsonStr: string = JSON.stringify(test);
-let test2: Record<string, Info> = { "a": new Info(20) };
+let test2: Record<string, Info> = { 'a': new Info(20) };
 let test2JsonStr: string = JSON.stringify(test2);
 
 @Entry
@@ -502,7 +511,7 @@ struct Index {
 ```
 
 ### Using makeObserved and Decorators of V2 Together
-**makeObserved** can be used with the decorators of V2. For @Monitor and @Computed, the class instance decorated by @Observed or ObservedV2 passed by makeObserved returns itself. Therefore, @Monitor or @Computed cannot be defined in a class but in a custom component.
+**makeObserved** can be used with the decorators of V2. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-Computed.md) cannot be defined in a class because makeObserved returns the class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed can be defined only in custom components.
 
 Example:
 ```ts
@@ -524,12 +533,12 @@ struct Index {
 
   @Monitor('message.id')
   onStrChange(monitor: IMonitor) {
-    console.log(`name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    console.info(`name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   @Computed
   get ageId() {
-    console.info("---------Computed----------");
+    console.info('---------Computed----------');
     return this.message.id + ' ' + this.message.age;
   }
 

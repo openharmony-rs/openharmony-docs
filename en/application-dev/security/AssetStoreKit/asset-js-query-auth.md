@@ -1,5 +1,12 @@
 # Querying an Asset with User Authentication (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 The following table describes the APIs used for querying an asset with user authentication. For more information, see the API reference.
@@ -14,7 +21,7 @@ The following table describes the attributes of **AssetMap** used for querying a
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 - **preQuery()** parameters
 
@@ -124,9 +131,8 @@ async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
         }
       });
       userAuthInstance.start();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`User identity authentication failed. Code is ${err.code}, message is ${err.message}`);
+    } catch (err) {
+      console.error(`User identity authentication failed. Code is ${err?.code}, message is ${err?.message}`);
       reject();
     }
   })
@@ -142,9 +148,8 @@ function preQueryAsset(): Promise<Uint8Array> {
       }).catch(() => {
         reject();
       })
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
+    } catch (err) {
+      console.error(`Failed to pre-query Asset. Code is ${err?.code}, message is ${err?.message}`);
       reject();
     }
   });
@@ -156,19 +161,18 @@ async function postQueryAsset(challenge: Uint8Array) {
   try {
     await asset.postQuery(handle);
     console.info(`Succeeded in post-querying Asset.`);
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to post-query Asset. Code is ${err.code}, message is ${err.message}`);
+  } catch (err) {
+    console.error(`Failed to post-query Asset. Code is ${err?.code}, message is ${err?.message}`);
   }
 }
 
 async function queryAsset() {
-  // step1. Call asset.preQuery to obtain the challenge value.
+  // Step 1. Call asset.preQuery to obtain the challenge value.
   preQueryAsset().then(async (challenge: Uint8Array) => {
     try {
       // Step 2. Pass in the challenge value to start the user authentication dialog box.
       let authToken: Uint8Array = await userAuthenticate(challenge);
-      // Step 3 After the user authentication is successful, pass in the challenge value and authorization token to query the plaintext of the asset.
+      // Step 3. After the user authentication is successful, pass in the challenge value and authorization token to query the plaintext of the asset.
       let query: asset.AssetMap = new Map();
       query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
       query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
@@ -176,9 +180,9 @@ async function queryAsset() {
       query.set(asset.Tag.AUTH_TOKEN, authToken);
       let res: Array<asset.AssetMap> = await asset.query(query);
       for (let i = 0; i < res.length; i++) {
-        // parse the secret.
+        // Parse the secret.
         let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
-        // parse uint8array to string
+        // Convert Uint8Array into the string type.
         let secretStr: string = arrayToString(secret);
       }
       // Step 4. After the plaintext is obtained, call asset.postQuery to perform postprocessing.
@@ -187,7 +191,7 @@ async function queryAsset() {
       // Step 5. If the operation after preQuery() fails, call asset.postQuery to perform postprocessing.
       postQueryAsset(challenge);
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
   })
 }

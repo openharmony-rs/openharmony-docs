@@ -133,8 +133,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 **示例：**
 
 ```ts
-import { lang } from '@kit.ArkTS';
-import { collections } from '@kit.ArkTS';
+import { ArkTSUtils, collections, lang} from '@kit.ArkTS';
 
 type ISendable = lang.ISendable;
 let jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';

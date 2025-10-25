@@ -119,13 +119,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明      |
-| ------- | ------- |
-| Press   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| 名称      |  值  | 说明      |
+| ------- | ----- |  ------- |
+| Press   |   -   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
@@ -1222,11 +1222,11 @@ type Nullable\<T> = T | undefined
 | END    | 3    | 轴事件结束。 |
 | CANCEL | 4    | 轴事件取消。 |
 
-## AxisType<sup>21+</sup>
+## AxisType<sup>22+</sup>
 
 定义轴事件的轴类型。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -1358,3 +1358,18 @@ type Nullable\<T> = T | undefined
 | ------------------ | - | ---------------------------------------- |
 | FLOATING_ABOVE_MENU| 0 | 悬浮在Menu之上，默认值，不占用高度。      |
 | EMBEDDED_IN_MENU   | 1 | 在Menu中展开，参与布局计算，占用高度。    |
+
+## PresetFillType<sup>22+</sup>
+
+为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称            | 值   | 说明                                                         |
+| --------------- | ---- | ------------------------------------------------------------ |
+| ARKUI_ITEMFILLPOLICY_NONE | -1    | 没有设置响应式断点规格。 |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
+| BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |

@@ -1,4 +1,10 @@
 # @ohos.enterprise.wifiManager (Wi-Fi Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **wifiManager** module provides Wi-Fi management capabilities for enterprise devices, including obtaining the Wi-Fi status.
 
@@ -28,6 +34,7 @@ Queries the Wi-Fi status of the current device.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -56,7 +63,9 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
+
 let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility',
@@ -64,9 +73,9 @@ let wantTemp: Want = {
 
 try {
   let result: boolean = wifiManager.isWifiActiveSync(wantTemp);
-  console.info(`Succeeded in query is wifi active or not, result : ${result}`);
+  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
 } catch (err) {
-  console.error(`Failed to query is wifi active or not. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -80,6 +89,7 @@ Configures Wi-Fi for the current device to connect to a specified network.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -103,14 +113,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility',
 };
 let profile: wifiManager.WifiProfile = {
+  // Replace it as required.
   'ssid': 'name',
   'preSharedKey': 'passwd',
   'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
@@ -139,6 +152,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -146,7 +160,7 @@ A policy conflict is reported when this API is called in the following scenarios
 | Name      | Type                                                      | Mandatory| Description                                                        |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                   | Yes  | A list of allowed Wi-Fi networks. The maximum length of the array is 200. For example, if there are already 100 Wi-Fi networks, a maximum of 100 more can be added.|
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                   | Yes  | Array of allowed Wi-Fi networks. The maximum length of the array is 200. For example, if there are already 100 Wi-Fi networks, a maximum of 100 more can be added.|
 
 **Error codes**
 
@@ -162,6 +176,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -186,12 +201,13 @@ try {
 
 removeAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-Removes allowed Wi-Fi networks. If some Wi-Fi networks are removed from the allowed list, the current device can only connect to the remaining ones; if all Wi-Fi networks are removed from the allowed list, the current device can connect to any Wi-Fi network.
+Removes Wi-Fi networks from the allowed list. If some Wi-Fi networks are removed from the allowed list, the current device can only connect to the remaining ones; if all Wi-Fi networks are removed from the allowed list, the current device can connect to any Wi-Fi network.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -199,7 +215,7 @@ Removes allowed Wi-Fi networks. If some Wi-Fi networks are removed from the allo
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | List of allowed Wi-Fi networks to remove. The maximum length of the array is 200.                                           |
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | Array of Wi-Fi networks to be removed from the allowed list. The maximum length of the array is 200.                                           |
 
 **Error codes**
 
@@ -214,6 +230,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -238,12 +255,13 @@ try {
 
 getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
-Obtains the allowed Wi-Fi networks.
+Obtains Wi-Fi networks from the allowed list.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -256,7 +274,7 @@ Obtains the allowed Wi-Fi networks.
 
 | Type                              | Description                     |
 | ---------------------------------- | ------------------------- |
-| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Allowed Wi-Fi networks.|
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Array of allowed Wi-Fi networks.|
 
 **Error codes**
 
@@ -271,6 +289,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -301,6 +320,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -308,7 +328,7 @@ A policy conflict is reported when this API is called in the following scenarios
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | A list of disallowed Wi-Fi networks. The maximum length of the array is 200. For example, if there are already 100 Wi-Fi networks, a maximum of 100 more can be added.|
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | Array of disallowed Wi-Fi networks. The maximum length of the array is 200. For example, if there are already 100 Wi-Fi networks, a maximum of 100 more can be added.|
 
 **Error codes**
 
@@ -324,6 +344,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -354,6 +375,7 @@ Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the d
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -361,7 +383,7 @@ Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the d
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | List of disallowed Wi-Fi networks to remove. The maximum length of the array is 200.                     |
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | Array of Wi-Fi networks to be removed. The maximum length of the array is 200.                     |
 
 **Error codes**
 
@@ -376,6 +398,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -406,6 +429,7 @@ Obtains disallowed Wi-Fi networks.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -418,7 +442,7 @@ Obtains disallowed Wi-Fi networks.
 
 | Type                              | Description                     |
 | ---------------------------------- | ------------------------- |
-| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Disallowed Wi-Fi networks.|
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Array of disallowed Wi-Fi networks.|
 
 **Error codes**
 
@@ -433,6 +457,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -459,7 +484,7 @@ Represents Wi-Fi access information containing Service Set Identifier (SSID) and
 | Name         | Type                            | Read-Only| Optional| Description                                                       |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | No  | No| Name of the Wi-Fi hotspot. The encoding format is UTF-8 and the maximum length is 32 bytes (three bytes for each Chinese character and one byte for each English character).          |
-| bssid         | string                           | No  | Yes| MAC address of the Wi-Fi hotspot, for example, **00:11:22:33:44:55**.<br>This field is mandatory when [addAllowedWifiList](#wifimanageraddallowedwifilist19) and [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19) are called.<br>This field is optional (the default value is an empty string) when [addDisallowedWifiList](#wifimanageradddisallowedwifilist19) and [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19) are called.           |
+| bssid         | string                           | No  | Yes| MAC address of the Wi-Fi hotspot, for example, **00:11:22:33:44:55**.<br>This property is optional when the [addDisallowedWifiList](#wifimanageradddisallowedwifilist19) and [removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19) APIs are called. The default value is an empty string.<br>This property is optional (available since API version 21) when the [addAllowedWifiList](#wifimanageraddallowedwifilist19) and [removeAllowedWifiList](#wifimanagerremoveallowedwifilist19) APIs are called. The default value is an empty string. However, this property is mandatory in API version 20 and earlier versions.           |
 
 ## WifiProfile
 
@@ -528,13 +553,13 @@ Represents IP configuration information.
 
 
 
-| Name        | Type               | Mandatory| Description       |
-| ------------ | ------------------- | ---- | ----------- |
-| ipAddress    | number              | Yes  | IP address.   |
-| gateway      | number              | Yes  | Gateway.     |
-| prefixLength | number              | Yes  | Subnet mask.     |
-| dnsServers   | number[]            | Yes  | Domain name server (DNS) information.|
-| domains      | Array&lt;string&gt; | Yes  | Domain information.   |
+| Name        | Type               | Read-Only| Optional| Description       |
+| ------------ | ------------------- | ---- | ----| ----------- |
+| ipAddress    | number              | No  | No | IP address.   |
+| gateway      | number              | No  | No | Gateway.     |
+| prefixLength | number              | No  | No | Subnet mask.     |
+| dnsServers   | number[]            | No  | No | Domain name server (DNS) information.|
+| domains      | Array&lt;string&gt; | No  | No | Domain information.   |
 
 ## WifiEapProfile
 
@@ -642,8 +667,9 @@ import { Want } from '@kit.AbilityKit';
 import { wifiManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -694,8 +720,9 @@ import { Want } from '@kit.AbilityKit';
 import { wifiManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {

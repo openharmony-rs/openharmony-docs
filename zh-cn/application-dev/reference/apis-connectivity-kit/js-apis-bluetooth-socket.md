@@ -34,19 +34,22 @@ import { socket } from '@kit.ConnectivityKit';
 
 sppListen(name: string, options: SppOptions, callback: AsyncCallback&lt;number&gt;): void
 
-创建一个服务端监听Socket。使用Callback异步回调。
+服务端使用，创建一个服务端监听套接字。使用Callback异步回调。
+- 通过入参[socket.SppOptions](#sppoptions)的type参数，可以创建不同链路类型的服务端套接字，适用于不同的场景。该操作会在蓝牙子系统中注册对应的服务，表示服务端支持的能力。
+- 客户端可通过[socket.sppConnect](#socketsppconnect)向该服务端发起连接请求。
+- 当应用不再需要该服务端套接字时，需通过[socket.sppCloseServerSocket](#socketsppcloseserversocket)主动关闭创建时获取到的套接字，蓝牙子系统会删除此前注册的服务。如果此时客户端发起连接，就会连接失败。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明                      |
 | -------- | --------------------------- | ---- | ----------------------- |
 | name     | string                      | 是    | 服务的名称，该字符串的字符个数范围为[0, 256]。                  |
-| options   | [SppOptions](#sppoptions)     | 是    | spp监听配置参数。              |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当创建服务端socket成功，err为undefined，data为获取到的服务端socket的id；否则为错误对象。 |
+| options   | [SppOptions](#sppoptions)     | 是    | 用于监听的套接字配置参数。              |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当创建服务端套接字成功，err为undefined，data为获取到的服务端套接字的id，有效值为非负值；否则为错误对象。 |
 
 **错误码**：
 
@@ -78,7 +81,8 @@ let serverSocket = (code: BusinessError, number: number) => {
   }
 }
 
-let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+// 以RFCOMM链路类型套接字为例
+let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
     socket.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
@@ -126,17 +130,20 @@ try {
 
 sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
-服务端监听socket等待客户端连接。使用Callback异步回调。
+服务端使用，接受客户端的套接字连接请求。使用Callback异步回调。
+- 须在调用[socket.sppListen](#socketspplisten)创建服务端套接字成功后，才能调用该接口监听客户端的连接请求。
+- 客户端可通过[socket.sppConnect](#socketsppconnect)向该服务端发起连接请求。
+- 连接建立成功后，即可通过[socket.sppWrite](#socketsppwrite)、[socket.sppWriteAsync](#socketsppwriteasync18)、[socket.sppReadAsync](#socketsppreadasync18)等接口，同客户端进行数据传输。
+- 当服务端不再需要已建立的连接时，可通过[socket.sppCloseClientSocket](#socketsppcloseclientsocket)主动断开指定的客户端套接字连接。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名          | 类型                          | 必填   | 说明                      |
 | ------------ | --------------------------- | ---- | ----------------------- |
-| serverSocket | number                      | 是    | 服务端socket的id。<br>该值是调用[sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
-| callback     | AsyncCallback&lt;number&gt; | 是    | 回调函数。当收到客户端的连接时，err为undefined，data为该客户端socket的id；否则为错误对象。 |
-
+| serverSocket | number                      | 是    | 服务端套接字的id。<br>该值是调用[socket.sppListen](#socketspplisten)接口后，通过其异步callback获取到的。           |
+| callback     | AsyncCallback&lt;number&gt; | 是    | 回调函数。当收到客户端的连接请求且连接建立成功时，err为undefined，data是用于标识发起此次连接请求的客户端套接字id，有效值为非负值；否则err为错误对象。 |
 **错误码**：
 
 以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -178,19 +185,23 @@ try {
 
 sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;number&gt;): void
 
-客户端向远端设备发起spp连接。使用Callback异步回调。
+客户端使用，创建一个客户端套接字，并向服务端的特定服务发起连接请求。
+- 通过[SppOptions](#sppoptions)参数的type表示需要连接的服务类型。
+- 需确保服务端设备已具备需要连接的服务。服务端可通过[socket.sppListen](#socketspplisten)注册并监听连接请求。
+- 连接建立成功后，即可通过[socket.sppWrite](#socketsppwrite)或[socket.sppWriteAsync](#socketsppwriteasync18)接口，同服务端进行数据传输。
+- 当客户端不再需要已建立的连接时，可通过[socket.sppCloseclientSocket](#socketsppcloseclientsocket)主动断开连接。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core。
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明                             |
 | -------- | --------------------------- | ---- | ------------------------------ |
-| deviceId | string                      | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| options   | [SppOptions](#sppoptions)     | 是    | spp客户端连接配置参数。                  |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当客户端发起连接成功，err为undefined，data为当前客户端socket的id；否则为错误对象。        |
+| deviceId | string                      | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+| options   | [SppOptions](#sppoptions)     | 是    | 客户端套接字连接配置参数。                  |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当客户端发起连接成功，err为undefined，data为当前客户端套接字的id，有效值为非负值；否则为错误对象。        |
 
 **错误码**：
 
@@ -220,7 +231,9 @@ let clientSocket = (code: BusinessError, number: number) => {
     console.info('bluetooth clientSocket Number: ' + number);
   }
 }
-let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: 0};
+
+// 以RFCOMM链路类型套接字为例
+let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
     socket.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {

@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Media Kit is used to develop audio and video playback or recording features. The Media Kit development guide provides comprehensive instructions on how to develop various audio and video modules, assisting you in utilizing the system's audio and video APIs to achieve desired functionalities. For example, you can use the SoundPool to implement simple prompt tones so that a drip sound is played upon the receipt of a new message; you can use the AVPlayer to develop a music player, which can loop a piece of music.
 
@@ -111,6 +111,7 @@ The table below lists the supported audio playback formats.
 | mp3 | Audio format: MP3| 
 | ogg | Audio format: VORBIS | 
 | wav | Audio format: PCM| 
+| flac | Audio format: FLAC| 
 | amr | Audio format: AMR| 
 | ape | Audio format: APE |
 

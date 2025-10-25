@@ -997,7 +997,7 @@ off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitch
 
 on(type: 'willClick', callback: GestureEventListenerCallback): void
 
-监听点击事件指令下发情况。回调类型为[GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
+监听点击事件指令下发情况，所注册回调将于点击事件触发前触发。回调类型为[GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1102,7 +1102,7 @@ struct ClickExample {
 
 off(type: 'willClick', callback?: GestureEventListenerCallback): void
 
-取消监听点击事件指令下发情况。从API version 20开始支持屏幕朗读触控模式。
+取消监听[on('willClick')](#onwillclick12)中的点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1123,7 +1123,7 @@ off(type: 'willClick', callback?: GestureEventListenerCallback): void
 
 on(type: 'didClick', callback: GestureEventListenerCallback): void
 
-监听点击事件指令下发情况。回调类型为[GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
+监听点击事件指令下发情况，所注册回调将于点击事件触发后触发。回调类型为[GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1144,7 +1144,7 @@ on(type: 'didClick', callback: GestureEventListenerCallback): void
 
 off(type: 'didClick', callback?: GestureEventListenerCallback): void
 
-取消监听点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
+取消监听[on('didClick')](#ondidclick12)中的点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1165,7 +1165,7 @@ off(type: 'didClick', callback?: GestureEventListenerCallback): void
 
 on(type: 'willClick', callback: ClickEventListenerCallback): void
 
-监听点击事件指令下发情况。回调类型为[ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
+监听点击事件指令下发情况，所注册回调将于点击事件触发前触发。回调类型为[ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1186,7 +1186,7 @@ on(type: 'willClick', callback: ClickEventListenerCallback): void
 
 off(type: 'willClick', callback?: ClickEventListenerCallback): void
 
-取消监听点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
+取消监听[on('willClick')](#onwillclick12-1)中的点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1207,7 +1207,7 @@ off(type: 'willClick', callback?: ClickEventListenerCallback): void
 
 on(type: 'didClick', callback: ClickEventListenerCallback): void
 
-监听点击事件指令下发情况。回调类型为[ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
+监听点击事件指令下发情况，所注册回调将于点击事件触发后触发。回调类型为[ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1228,7 +1228,7 @@ on(type: 'didClick', callback: ClickEventListenerCallback): void
 
 off(type: 'didClick', callback?: ClickEventListenerCallback): void
 
-取消监听点击事件指令下发情况。从API version 20开始支持屏幕朗读触控模式。
+取消监听[on('didClick')](#ondidclick12-1)中的点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2099,3 +2099,94 @@ removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListene
 **示例：**
 
 参考[addGlobalGestureListener](#addglobalgesturelistener20)接口示例。
+
+## on('windowSizeLayoutBreakpointChange')<sup>22+</sup>
+
+on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowSizeLayoutBreakpointInfo\>): void
+
+注册窗口尺寸布局断点变化的回调函数。该方法用于监听窗口尺寸断点变化，可用于根据窗口尺寸自适应调整UI布局。使用callback异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名       | 类型                                                         | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type         | string                                                       | 是   | 监听事件，固定为'windowSizeLayoutBreakpointChange'，用于监听窗口尺寸布局断点发生改变。 |
+| callback     | Callback\<observer.[WindowSizeLayoutBreakpointInfo](js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)> | 是   | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽度和高度所在的布局断点枚举。 |
+
+**示例：**
+
+该示例展示添加和取消监听窗口尺寸布局断点变化的方法。
+
+```ts
+import { uiObserver, window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  private changeOrientation(isLandscape: boolean) {
+    let context = getContext(this) as common.UIAbilityContext;
+    window.getLastWindow(context).then((lastWindow) => {
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+    });
+  }
+
+  @State message: string = '';
+  @State widthBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_SM;
+  @State heightBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
+  winSizeLayoutBreakpointCallback = (info: uiObserver.WindowSizeLayoutBreakpointInfo) => {
+    this.widthBreakpoint = info.widthBreakpoint;
+    this.heightBreakpoint = info.heightBreakpoint;
+    this.message = 'widthBpt:' + this.widthBreakpoint.toString() + 'heightBpt:' + this.heightBreakpoint.toString();
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+      Button('注册窗口尺寸布局断点变化监听')
+        .onClick(() => {
+          this.getUIContext()
+            .getUIObserver()
+            .on('windowSizeLayoutBreakpointChange', this.winSizeLayoutBreakpointCallback);
+        })
+      Button('解除窗口尺寸布局断点变化监听')
+        .onClick(() => {
+          this.getUIContext()
+            .getUIObserver()
+            .off('windowSizeLayoutBreakpointChange', this.winSizeLayoutBreakpointCallback);
+        })
+      Button("竖屏").onClick(() => {
+        this.changeOrientation(false)
+      })
+      Button("横屏").onClick(() => {
+        this.changeOrientation(true)
+      })
+    }
+  }
+}
+```
+
+## off('windowSizeLayoutBreakpointChange')<sup>22+</sup>
+
+off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
+
+移除之前注册的窗口尺寸布局断点变化回调函数。如果未提供回调函数参数，将移除指定上下文的所有回调函数。使用callback异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名       | 类型                                           | 必填 | 说明                                                         |
+| ------------ | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type         | string                                         | 是   | 监听事件，固定为'windowSizeLayoutBreakpointChange'，用于监听窗口尺寸布局断点发生改变。 |
+| callback     | Callback\<observer.[WindowSizeLayoutBreakpointInfo](js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)>    | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](arkts-apis-uicontext-uicontext.md)下所有窗口尺寸布局断点变化事件监听。 |
+
+**示例：**
+
+参考[on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22)接口示例。

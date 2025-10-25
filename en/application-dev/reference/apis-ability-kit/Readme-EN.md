@@ -320,4 +320,6 @@
   - [Bundle Error Codes](errorcode-bundle.md)
   - [Access Control Error Codes](errorcode-access-token.md)
   - [ohos.screenLockFileManager Error Codes](errorcode-screenLockFileManager.md)
-  - [Application Domain Name Verification Error Codes](errorcode-appDomainVerify.md)
+  <!--Del-->
+  - [Application Domain Name Verification Error Codes](errorcode-appDomainVerify-sys.md)
+  <!--DelEnd-->

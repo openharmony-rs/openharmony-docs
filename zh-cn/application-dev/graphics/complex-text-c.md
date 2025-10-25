@@ -218,6 +218,10 @@ OH_Drawing_DestroyTypography(typography);
 
 - **高对比度文字绘制：** 主要通过将深色文字变黑、浅色文字变白，增强文本的对比效果。
 
+- **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
+
+- **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
+
 ### 装饰线
 
 **装饰线**是指在文本上方、下方或中间添加的装饰性线条，当前支持上划线、下划线、删除线。
@@ -780,6 +784,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
+效果如下（黑框仅为展示文本绘制区域，实际不绘制）:
 ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
 
 ### 上下标
@@ -879,6 +884,154 @@ OH_Drawing_DestroyTypography(typography);
 | -------- | -------- |
 | 不开启高对比度 | ![zh-cn_image_highContrast_1](figures/zh-cn_image_highContrast_1.png) | 
 | 开启高对比度 | ![zh-cn_image_highContrast_2](figures/zh-cn_image_highContrast_2.png) | 
+
+### 行高调整
+
+调整行高可以改变文本行的垂直间距，行间距将变的更松散或更紧凑，可以显著改善文本垂直方向截断问题，使文本更易读。
+
+当前行高调整方式包括两种：设置行高上限/下限和使用行高缩放系数。
+
+**行高调整（方式一）**
+
+从API version 21开始，支持为文本行设置行高上限与下限。
+
+| 接口定义 | 描述 | 
+| -------- | -------- |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
+
+示例及效果如下所示：
+```c++
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字大小
+OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+// 设置文字颜色
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+// 设置行高上限
+OH_Drawing_SetTextStyleAttributeDouble(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM, 65);
+// 设置行高下限
+OH_Drawing_SetTextStyleAttributeDouble(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM, 65);
+// 创建排版对象，并绘制
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text = "Hello World!";
+OH_Drawing_TypographyHandlerAddText(handler, badgeText);
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+OH_Drawing_TypographyLayout(typography, 1000);
+OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
+
+// 释放对象
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTextStyle(badgeTxtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
+具体效果如下所示：
+
+| 行高上限值 | 行高下限值 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- | -------- |
+| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
+| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
+
+**行高调整（方式二）**
+
+设置行高缩放系数。
+
+| 接口定义 | 描述 | 
+| -------- | -------- |
+| [void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) | 使能行高缩放。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
+
+示例及效果如下所示：
+```c++
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字大小
+OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+// 设置文字颜色
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+// 设置行高缩放系数
+OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
+// 设置行高缩放样式（1代表行高缩放以字形高度作为缩放基数）
+OH_Drawing_SetTextStyleAttributeInt(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
+// 创建排版对象，并绘制
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text = "Hello World!";
+OH_Drawing_TypographyHandlerAddText(handler, badgeText);
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+OH_Drawing_TypographyLayout(typography, 1000);
+OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
+
+// 释放对象
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTextStyle(badgeTxtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
+具体效果如下所示：
+
+| 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- |
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
+
+
+### 行间距调整
+
+从API version 21开始，支持设置行间距可以改善文本行之间的距离，提高阅读体验。
+
+| 接口定义 | 描述 | 
+| -------- | -------- |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
+
+示例及效果如下所示：
+```c++
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置行间距
+OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle, OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100);
+// 设置禁用段落上升部下降部
+OH_Drawing_TypographyTextSetHeightBehavior(typoStyle, OH_Drawing_TextHeightBehavior::TEXT_HEIGHT_DISABLE_ALL);
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字大小
+OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
+// 设置文字颜色
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+// 创建排版对象，并绘制
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text = "Hello World!";
+OH_Drawing_TypographyHandlerAddText(handler, badgeText);
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+OH_Drawing_TypographyLayout(typography, 200);
+OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
+
+// 释放对象
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTextStyle(badgeTxtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
+具体效果如下所示：
+
+| 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- |
+| TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
+| TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
 
 ## 样式的拷贝、绘制与显示
 支持拷贝文本样式、段落样式、阴影样式，以便快速复制相关样式作用到不同文字上。

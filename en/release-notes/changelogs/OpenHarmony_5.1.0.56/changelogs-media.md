@@ -28,7 +28,7 @@ OpenHarmony SDK 5.1.0.56
 
 **Key API/Component Changes**
 
-No API or component change is involved.
+- [media.createSoundPool](../../../application-dev/reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10)
 
 **Adaptation Guide**
 
@@ -150,3 +150,5 @@ setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void\>
 **Adaptation Guide**
 
 No adaptation is required.
+
+ <!--no_check--> 

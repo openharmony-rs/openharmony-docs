@@ -134,7 +134,7 @@ OH_AVCapability *OH_AVCodec_GetCapability(const char *mime, bool isEncoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](_codec_base.md#变量)。 |
+| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#变量)。 |
 | bool isEncoder | 编码器为true，解码器为false。 |
 
 **返回：**
@@ -162,7 +162,7 @@ OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEnc
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](_codec_base.md#变量)。 |
+| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#变量)。 |
 | bool isEncoder | 编码器为true，解码器为false。 |
 | [OH_AVCodecCategory](#oh_avcodeccategory) category | 编解码器类别。 |
 
@@ -301,7 +301,7 @@ bool OH_AVCapability_IsEncoderBitrateModeSupported(OH_AVCapability *capability, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 编码器能力指针。如果给的是解码器能力指针，会导致未定义行为。 |
-| [OH_BitrateMode](_codec_base.md#oh_bitratemode-1) bitrateMode | 比特率模式。 |
+| [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode) bitrateMode | 比特率模式。 |
 
 **返回：**
 

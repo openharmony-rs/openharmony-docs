@@ -1,5 +1,10 @@
 # Location
-
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 ## Overview
 
@@ -11,7 +16,7 @@ Provides APIs for querying the location switch status, and starting and stopping
 ## Summary
 
 
-### Files
+### File
 
 | Name| Description| 
 | -------- | -------- |
@@ -298,7 +303,7 @@ Checks whether the location switch is enabled.
 
 Operation result. For details, see [Location_ResultCode](#location_resultcode).
 
-**LOCAION_SUCCESS**: The location switch status is successfully queried.
+**LOCATION_SUCCESS**: The location switch status is successfully obtained.
 
 **LOCATION_INVALID_PARAM**: The input parameter is a null pointer.
 
@@ -325,7 +330,7 @@ Starts locating and subscribes to location changes.
 
 Operation result. For details, see [Location_ResultCode](#location_resultcode).
 
-**LOCAION_SUCCESS**: The location function is started successfully.
+**LOCATION_SUCCESS**: The location function is started successfully.
 
 **LOCATION_INVALID_PARAM**: The input parameter **requestConfig** is a null pointer.
 
@@ -362,7 +367,7 @@ Stops locating and unsubscribes from location changes.
 
 Operation result. For details, see [Location_ResultCode](#location_resultcode).
 
-**LOCAION_SUCCESS**: The location function is stopped successfully.
+**LOCATION_SUCCESS **: The location function is stopped successfully.
 
 **LOCATION_INVALID_PARAM**: The input parameter is a null pointer or is different from the **requestConfig** pointer of [OH_Location_StartLocating](#oh_location_startlocating).
 

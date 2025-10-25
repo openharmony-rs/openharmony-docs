@@ -10,7 +10,7 @@
 
 请求动画帧时通过requestAnimationFrame函数逐帧回调，在调用该函数时传入一个回调函数。
 
-runframe在调用requestAnimationFrame时传入带有timestamp参数的回调函数step，将step中的timestamp赋予起始的startTime。当timestamp与startTime的差值小于规定的时间时将再次调用requestAnimationFrame，最终动画将会停止。
+runframe在调用requestAnimationFrame时传入带有timestamp参数的回调函数step，将step中的timestamp赋予起始的startTime。当timestamp与startTime的差值小于规定的时间时，会再次调用requestAnimationFrame，最终动画将会停止。
 
 ```html
 <!-- xxx.hml -->

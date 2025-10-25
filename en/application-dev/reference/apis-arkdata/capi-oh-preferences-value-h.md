@@ -1,8 +1,8 @@
 # oh_preferences_value.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 

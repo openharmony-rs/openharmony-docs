@@ -69,7 +69,13 @@ getCalendarManager(context: Context): CalendarManager
 // 该文件为系统生成，目录：entry/src/main/ets/entryability/EntryAbility.ets
 import {
   abilityAccessCtrl,
-  AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
+  AbilityConstant, 
+  common, 
+  PermissionRequestResult, 
+  Permissions, 
+  UIAbility, 
+  Want 
+} from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
 import { window } from '@kit.ArkUI';
@@ -855,6 +861,8 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 删除指定id的日程，使用callback异步回调。
 
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
@@ -961,6 +969,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 根据日程id，批量删除日程，使用callback异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 

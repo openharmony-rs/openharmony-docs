@@ -104,7 +104,7 @@ struct NavigationExample {
   }
 
   onPageShow(): void {
-    console.log("NavigationExample " + this.customComponentCount);
+    console.info("NavigationExample " + this.customComponentCount);
   }
 
   build() {
@@ -180,7 +180,7 @@ export struct pageOneTmp {
     }.title("NavDestinationTitle1")
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
-      console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
       return true;
     })
   }
@@ -223,7 +223,7 @@ export struct pageTwoTmp {
     }.title("NavDestinationTitle2")
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
-      console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
       return true;
     })
   }
@@ -268,7 +268,7 @@ export struct pageThreeTmp {
     }.title("NavDestinationTitle3")
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
-      console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
       return true;
     })
   }

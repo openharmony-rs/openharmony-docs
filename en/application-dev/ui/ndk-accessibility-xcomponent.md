@@ -1,22 +1,29 @@
 # Integrating Accessibility Through XComponent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghangkai10241-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 The NDK provides third-party platforms accessed through **XComponent** with APIs for integrating accessibility, allowing components of these platforms to be accessible within ArkUI.
 
-First, you need to use the [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/_o_h___native_x_component.md#oh_nativexcomponent_getnativeaccessibilityprovider) API of the **XComponent** to obtain the accessibility provider. Then, call [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_accessibilityproviderregistercallback) to register the required callback functions for accessibility: [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/arkui_native_interface_accessibility.md#arkui_accessibilityprovidercallbacks).
+First, use the [OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider) of XComponent to obtain the accessibility access provider. Then, call [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) to register the required callback functions for accessibility: [ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md).
 
-To deliver a smooth accessibility service experience, third-party applications must adapt to the [actions](../reference/apis-arkui/arkui_native_interface_accessibility.md#arkui_accessibility_actiontype) sent by the accessibility subsystem and send [accessibility events](../reference/apis-arkui/arkui_native_interface_accessibility.md#arkui_accessibilityeventtype) to the accessibility subsystem in response to component interactions.
+To deliver a smooth accessibility service experience, third-party applications must adapt to the [actions](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype) sent by the accessibility subsystem and send [accessibility events](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) to the accessibility subsystem in response to component interactions.
 
 > **NOTE**
 >
-> - When implementing the callback query API of [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_accessibilityproviderregistercallback), each accessibility node information found is created and allocated memory with [OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_addandgetaccessibilityelementinfo) and added to the specified element list.
-> - When sending events with [OH_ArkUI_SendAccessibilityAsyncEvent](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_sendaccessibilityasyncevent), you need to create [ArkUI_AccessibilityEventInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#arkui_accessibilityeventinfo) with [OH_ArkUI_CreateAccessibilityEventInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_createaccessibilityeventinfo) and [ArkUI_AccessibilityElementInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#arkui_accessibilityelementinfo) with [OH_ArkUI_CreateAccessibilityElementInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_createaccessibilityelementinfo). After usage, you must call [OH_ArkUI_DestoryAccessibilityEventInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_destoryaccessibilityeventinfo) and [OH_ArkUI_DestoryAccessibilityElementInfo](../reference/apis-arkui/arkui_native_interface_accessibility.md#oh_arkui_destoryaccessibilityelementinfo) to release memory.
+> - Accessibility capability: refers to the capability of developers to create accessible app UIs to meet the requirements of users with visual, auditory, motor, and cognitive disabilities.
+> - When the [OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback) callback query API is implemented, the element memory is allocated for each accessibility node information queried through [OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_addandgetaccessibilityelementinfo) and added to the specified element list.
+> - When using [OH_ArkUI_SendAccessibilityAsyncEvent](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_sendaccessibilityasyncevent) to send events, you need to use [OH_ArkUI_CreateAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityeventinfo) to create [ArkUI_AccessibilityEventInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityeventinfo.md), use [OH_ArkUI_CreateAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityelementinfo) to create [ArkUI_AccessibilityElementInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md), and call [OH_ArkUI_DestoryAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityeventinfo) and [OH_ArkUI_DestoryAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityelementinfo) to destroy the memory.
 > - When logging within callback functions, include the provided **requestId** parameter to link logs to a specific interaction process. This practice facilitates indexing and querying and aids in troubleshooting and pinpointing issues.
 
 ## Integrating Accessibility
 
 The following example shows how to integrate accessibility capabilities. After integration, when accessibility features are enabled, third-party rendering components of the **XComponent** can be integrated to achieve accessible interactions.
 
-1. Follow the instructions in [Custom Rendering (XComponent)](napi-xcomponent-guidelines.md) to create the prerequisite project.
+1. Create a pre-engineering project based on the scenario of using OH_ArkUI_SurfaceHolder to manage the surface lifecycle of the customized rendering (XComponent). For details, see napi-xcomponent-guidelines.md#use-oh_arkui_surfaceholder-to-manage-the-surface-lifecycle.
 
 2. Implement callback functions based on the API definition.
 
@@ -165,9 +172,9 @@ void SendAccessibilityAsyncEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_
     // 2. Callback
     auto callback = [](int32_t errorCode){
          OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
-    }
+    };
     // 3. Call the API to send the event to the OpenHarmony side.
-    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback)
+    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback);
 }
 ```
 
@@ -181,7 +188,7 @@ int32_t ClearFocusedFocusAccessibilityNode()
     // Accessibility focus state
     node.accessibilityFocused = false;
     // Component focus state
-    node.foucsed = false;
+    node.focused = false;
     // ...
 }
 ```
@@ -230,7 +237,7 @@ void PluginRender::RegisterAccessibility(OH_NativeXComponent* nativeXComponent)
 
 
 
-4. When components change, proactively send events. For details, see [ArkUI_AccessibilityEventType](../reference/apis-arkui/arkui_native_interface_accessibility.md#arkui_accessibilityeventtype).
+4. When components change, proactively send events. For details, see the [ArkUI_AccessibilityEventType](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype) description.
 
 If a touch event causes a page change, send the following events: **ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_STATE_UPDATE** (page change event) and **ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_FOCUS_NODE_UPDATE** (focus position change event).
 
@@ -316,9 +323,9 @@ void SendAccessibilityAsyncEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_
     // 2. Create a callback function to obtain the event sending result.
     auto callback = [](int32_t errorCode){
          OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
-    }
+    };
     // 3. Call the API to send the event to the accessibility subsystem.
-    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback)
+    OH_ArkUI_SendAccessibilityAsyncEvent(provider_, eventInfo, callback);
 }
 ```
 

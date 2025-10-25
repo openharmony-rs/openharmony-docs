@@ -511,9 +511,9 @@ export default class EntryAbility extends UIExtensionAbility {
 
 **系统接口**：此接口为系统接口。
 
-| 名称                         | 类型        | 必填      | 说明                             |
-| ------------------------------ | ----------- | -------------------------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | UIExtensionComponent的位置和宽高。 |
+| 名称                         | 类型        | 只读  | 可选    | 说明                             |
+| ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | 否 |UIExtensionComponent的位置和宽高。 |
 
 ## 完整示例
 

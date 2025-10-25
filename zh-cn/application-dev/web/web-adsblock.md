@@ -237,10 +237,10 @@ struct WebComponent {
       Web({ src: 'https://www.example.com', controller: this.controller })
         .onAdsBlocked((details: AdsBlockedDetails) => {
           if (details) {
-            console.log(' Blocked ' + details.adsBlocked.length + ' in ' + details.url);
+            console.info(' Blocked ' + details.adsBlocked.length + ' in ' + details.url);
             let adList: Array<string> = Array.from(new Set(details.adsBlocked));
             this.totalAdsBlockCounts += adList.length;
-            console.log('Total blocked counts :' + this.totalAdsBlockCounts);
+            console.info('Total blocked counts :' + this.totalAdsBlockCounts);
           }
         })
     }

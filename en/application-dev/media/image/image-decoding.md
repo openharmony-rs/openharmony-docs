@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Image decoding refers to the process of decoding an image in a supported format into a [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) for image display or processing. Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, and HEIF. The supported formats may vary depending on the hardware.
 

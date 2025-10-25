@@ -1909,7 +1909,7 @@ Describes the parameters used for destroying an application clone.
 | Name       | Type  | Read-Only |  Optional| Description                                                         |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
 | userId      | number | No| Yes | ID of the user for whom the clone is to be destroyed. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.            |
-| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null.           |
+| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null. The options of **Parameters.key** are as follows:<br> - "ohos.bms.param.clone.isKeepData": This parameter is supported since API version 21. If the value of this parameter is **true**, the user data of the clone will be retained when the clone is destroyed. Otherwise, the user data will not be retained.           |
 
 ## PluginParam<sup>19+</sup>
 

@@ -5,7 +5,7 @@
 <!--Owner: @pxh123456-->
 <!--Designer: @gongzheng92-->
 <!--Tester: @gongzheng92-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides the capabilities for enhancing the clarity and scaling of image content.
 

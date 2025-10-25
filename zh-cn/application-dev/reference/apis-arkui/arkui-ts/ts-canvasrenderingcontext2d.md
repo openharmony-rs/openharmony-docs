@@ -334,6 +334,10 @@ struct MiterLimit {
 
 ### font
 
+> **说明：**
+>
+> 自定义字体注册有以下两种方式。一种是通过ArkUI的异步接口this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont)注册，调用后立即绘制可能会导致自定义字体不生效。另一种是直接调用字体引擎的fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。如果使用其他实例，可能会导致自定义字体不生效。
+
 ```ts
 // xxx.ets
 import { text } from '@kit.ArkGraphics2D';
@@ -4307,6 +4311,10 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 
 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
 
+> **说明：**
+>
+> RenderingContextSettings的抗锯齿效果对文本绘制无影响。
+
 ### constructor
 
 constructor(antialias?: boolean)
@@ -4323,7 +4331,7 @@ constructor(antialias?: boolean)
 
 | 参数名       | 类型    | 必填   | 说明                          |
 | --------- | ------- | ---- | ----------------------------- |
-| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>默认值：false，表示不开启抗锯齿功能。 |
+| antialias | boolean | 否    | 表明canvas是否开启抗锯齿。<br>异常值undefined按默认值处理。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |
 
 ### 属性
 
@@ -4335,4 +4343,4 @@ constructor(antialias?: boolean)
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>默认值：false，表示不开启抗锯齿功能。 |
+| antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>false：表示不开启抗锯齿功能，true：表示开启抗锯齿。<br>默认值：false |

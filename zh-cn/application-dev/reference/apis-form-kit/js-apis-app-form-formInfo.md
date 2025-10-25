@@ -87,10 +87,10 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| formState  | [FormState](#formstate)               | 是    | 否     | 卡片状态。                          |
-| want  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)         | 是    | 否     | Want文本内容。    |
+| formState  | [FormState](#formstate)               | 否    | 否     | 卡片状态。                          |
+| want  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)         | 否    | 否     | Want文本内容。    |
 
 ## FormState
 
@@ -169,9 +169,9 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称        | 类型   | 必填         |说明         |
-| ----------- | ---- | ------------ |------------ |
-| moduleName    | string    |否    | 选填，仅保留含moduleName与提供值相符的卡片信息，<br>未填写时则不通过moduleName进行过滤。   |
+| 名称        | 类型   | 只读         | 可选         |说明         |
+| ----------- | ---- | ------------ | ------------ |------------ |
+| moduleName    | string    |否  |是    | 选填，仅保留含moduleName与提供值相符的卡片信息，<br>未填写时则不通过moduleName进行过滤。   |
 
 
 
@@ -255,7 +255,7 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力：** SystemCapability.Ability.Form
 
-| 名称        | 类型                 | 可读    | 可写    | 说明                                                         |
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | formId  | string               | 是    | 否     | 卡片标识。                   |
 | bundleName  | string               | 是    | 否     | 卡片提供方所属包的Bundle名称。                   |

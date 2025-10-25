@@ -133,6 +133,8 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 文本的编码类型枚举。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称                   | 值   | 说明                           |
@@ -212,6 +214,8 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 字型边缘效果类型枚举。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称                  | 值    | 说明      |
@@ -223,6 +227,8 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 ## FontHinting<sup>12+</sup>
 
 字型轮廓效果类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -236,6 +242,8 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 ## FontMetricsFlags<sup>12+</sup>
 
 字体度量标志枚举，指示字体度量中的各字段数据是否有效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

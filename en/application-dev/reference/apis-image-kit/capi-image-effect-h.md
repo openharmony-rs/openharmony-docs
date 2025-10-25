@@ -5,7 +5,7 @@
 <!--Owner: @zyj208-->
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -875,4 +875,5 @@ Deserializes an image effector.
 | Type| Description|
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) * | OH_ImageEffect instance. If the deserialization fails, a null pointer is returned.|
+
 <!--no_check-->

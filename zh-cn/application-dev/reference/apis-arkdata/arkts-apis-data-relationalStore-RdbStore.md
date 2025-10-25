@@ -3226,7 +3226,7 @@ if (store != undefined) {
 
 commit(txId : number):Promise&lt;void&gt;
 
-提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用。
+提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
 该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -3363,7 +3363,7 @@ if (store != undefined) {
 
 rollback(txId : number):Promise&lt;void&gt;
 
-回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用。
+回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
 该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -5301,7 +5301,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。若无cursor参数，将全部清理。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据，使用Promise异步回调。若无cursor参数，将全部清理。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5363,7 +5363,7 @@ if (store != undefined) {
 
 attach(fullPath: string, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
 数据库文件来自文件，且此API不支持附加加密数据库。调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。
 
@@ -5435,7 +5435,7 @@ if (store != undefined) {
 
 attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
 此API不支持加密数据库附加非加密数据库。调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。
 
@@ -5550,7 +5550,7 @@ relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: r
 
 detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将附加的数据库从当前数据库中分离。
+将附加的数据库从当前数据库中分离，使用Promise异步回调。
 
 当所有的附加的数据库被分离后，数据库会重新切换为WAL模式。
 
@@ -5834,7 +5834,7 @@ close(): Promise&lt;void&gt;
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

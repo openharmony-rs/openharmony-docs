@@ -21,7 +21,7 @@ Using data rather than intuition to guide optimizations is key to efficiency. De
 When analyzing performance issues, first identify bottlenecks with the CPU Profiler, and then optimize in a targeted manner.
 
 ### Lazy Loading Prioritization
-Deferring resource consumption in non-visible areas can significantly speed up application startup and page transitions. ArkUI provides the [LazyForEach](state-management/arkts-rendering-control-lazyforeach.md) component to facilitate lazy data loading in applications.
+Deferring resource consumption in non-visible areas can significantly speed up application startup and page transitions. ArkUI provides the [LazyForEach](rendering-control/arkts-rendering-control-lazyforeach.md) component to facilitate lazy data loading in applications.
 
 ### Layout Computation Simplification
 UI layout is a critical part of user interaction. More complex or nested layouts increase the time required for view creation, layout, and rendering. Reducing nesting levels or using high-performance layout nodes can minimize frame drops and stuttering. For guidance, see <!--RP4-->[Improving Layout Performance](../performance/reduce-view-nesting-levels.md)<!--RP4End-->.

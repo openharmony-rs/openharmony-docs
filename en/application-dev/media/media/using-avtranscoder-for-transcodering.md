@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can check whether the current device supports the AVTranscoder by calling [canIUse](../../reference/common/js-apis-syscap.md#caniuse). If the return value of canIUse("SystemCapability.Multimedia.Media.AVTranscoder") is **true**, the transcoding capability can be used.
 

@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 To request permissions for your application, declare all the permissions one by one in the project configuration file.<!--RP2--><!--RP2End-->
 
@@ -25,32 +26,35 @@ Declare the permissions required by your application under **requestPermissions*
 ## Example
 
 > **NOTE**<br>
-> The values **ohos.permission.PERMISSION1** and **ohos.permission.PERMISSION2** are only examples and do not exist. Set permissions to match your case.
+>
+> ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION in the following example are for reference only. Set permissions to match your case.
+
+<!-- [request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 
 ```json
 {
   "module" : {
     // ...
-    "requestPermissions":[
+    "requestPermissions": [
       {
-        "name" : "ohos.permission.PERMISSION1",
-        "reason": "$string:reason",
+        "name": "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:approximately_location_permission_reason",
         "usedScene": {
           "abilities": [
             "FormAbility"
           ],
-          "when":"inuse"
+          "when": "inuse"
         }
       },
       {
-        "name" : "ohos.permission.PERMISSION2",
-        "reason": "$string:reason",
+        "name": "ohos.permission.LOCATION",
+        "reason": "$string:location_permission_reason",
         "usedScene": {
           "abilities": [
             "FormAbility"
           ],
-          "when":"always"
-        }
+          "when": "inuse"
+        },
       }
     ]
   }

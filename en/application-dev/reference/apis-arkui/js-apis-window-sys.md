@@ -233,13 +233,13 @@ Describes the window parameters during application startup.
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
-Minimizes all windows on a display. This API uses an asynchronous callback to return the result.
+Minimizes all main windows on a display. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: When this API is called on phones, error code 801 is returned. However, it can be called properly on other devices.
+**Device behavior differences**: <!--RP1-->This API can be properly called on phones. If it is called on other device types, error code 801 is returned.<!--RP1End-->
 
 **Parameters**
 
@@ -289,13 +289,13 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-Minimizes all windows on a display. This API uses a promise to return the result.
+Minimizes all main windows on a display. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: When this API is called on phones, error code 801 is returned. However, it can be called properly on other devices.
+**Device behavior differences**: <!--RP1-->This API can be properly called on phones. If it is called on other device types, error code 801 is returned.<!--RP1End-->
 
 **Parameters**
 

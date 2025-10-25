@@ -207,7 +207,7 @@ reset(options: AnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -272,7 +272,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -699,6 +699,10 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 | 参数名           | 类型                                       | 必填 | 说明                          |
 | --------------- | ------------------------------------------ | ---- | -----------------------------|
 | rateRange       | [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11)| 是   | 设置期望的帧率范围。|
+
+> **说明：**
+>
+> 开发者通过设置有效的期望帧率后，系统会收集设置的请求帧率，进行决策和分发，在渲染管线上进行分频，尽量能够满足开发者的期望帧率。开发者设置的期望帧率值不能代表最终实际效果，会受限于系统能力和屏幕刷新率。
 
 **示例：**
 

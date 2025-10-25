@@ -27,6 +27,6 @@ Defines the custom component parameters used to configure whether component free
 > Since API version 12, this parameter can be used to configure component freezing for [@ComponentV2](../../../ui/state-management/arkts-new-componentV2.md). For implementation examples, see [Freezing a Custom Component](../../../ui/state-management/arkts-custom-components-freezeV2.md).
 >
 
-| Name| Type| Mandatory| Description    |
-| ------ | ---- | ---- | ------------ |
-|freezeWhenInactive|boolean|Yes|Whether to enable component freezing. The value **true** means to enable component freezing, and **false** means the opposite.|
+| Name| Type| Read-Only| Optional    | Description  |
+| ------ | ---- | ---- | ------------ | ------------ |
+|freezeWhenInactive|boolean| No  | No  |Whether to enable component freezing. The value **true** means to enable component freezing, and **false** means the opposite. If **ComponentOptions** is not specified, the default value **false** is used.|

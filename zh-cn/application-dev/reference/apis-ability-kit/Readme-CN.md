@@ -36,6 +36,8 @@
     - [@ohos.app.ability.InsightIntentDecorator (意图装饰器定义)](js-apis-app-ability-InsightIntentDecorator.md)
     - [@ohos.app.ability.InsightIntentEntryExecutor (@InsightIntentEntry的意图执行基类)](js-apis-app-ability-InsightIntentEntryExecutor.md)
     - [@ohos.app.ability.InsightIntentExecutor (意图执行基类)](js-apis-app-ability-insightIntentExecutor.md)
+    - [@ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)](js-apis-application-NotificationSubscriberExtensionAbility.md)
+    - [@ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)](js-apis-application-NotificationSubscriberExtensionContext.md)
     - [@ohos.app.ability.PhotoEditorExtensionAbility (支持图片编辑能力的ExtensionAbility组件)](js-apis-app-ability-photoEditorExtensionAbility.md)
     - [@ohos.app.ability.OpenLinkOptions (openLink的可选参数)](js-apis-app-ability-openLinkOptions.md)
     - [@ohos.app.ability.ShareExtensionAbility (支持分享详情页接入的ExtensionAbility组件)](js-apis-app-ability-shareExtensionAbility.md)
@@ -320,4 +322,6 @@
   - [包管理子系统通用错误码](errorcode-bundle.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
-  - [应用域名校验错误码](errorcode-appDomainVerify.md)
+  <!--Del-->
+  - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
+  <!--DelEnd-->

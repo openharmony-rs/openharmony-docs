@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-## Introduction
+## Overview
 
 The network firewall module provides the following functions:
 - Basic firewall management functions, such as enabling and disabling of firewalls and firewall rules, and audit.
@@ -14,6 +14,7 @@ The network firewall module provides the following functions:
 - DNS policy configuration, including the domain names allowed or not allowed for resolution and the DNS server (active or standby) used for resolution (application level).
 
 > **NOTE**
+>
 > To maximize the application running efficiency, all APIs are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-netfirewall.md).
 
 ## When to Use

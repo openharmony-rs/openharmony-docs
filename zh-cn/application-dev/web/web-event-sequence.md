@@ -32,7 +32,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
 - [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)事件：当Web组件加载url之前触发该回调，用于拦截url并返回响应数据。
 
-- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin)事件：网页开始加载时触发该回调，且只在主frame（表示一个HTML元素，用于展示HTML页面的HTML元素）触发。如果是iframe或者frameset（用于包含frame的HTML标签）的内容加载时则不会触发此回调。多frame页面可能同时加载，主frame加载结束时子frame可能仍在加载。同一页面导航或失败的导航不会触发该回调。
+- [onPageBegin](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagebegin)事件：网页开始加载时触发该回调，且只在主frame（表示一个用于展示HTML页面的元素）触发。如果是iframe或者frameset（用于包含frame的HTML标签）的内容加载时则不会触发此回调。多frame页面可能同时加载，主frame加载结束时子frame可能仍在加载。同一页面导航或失败的导航不会触发该回调。
 
 - [onProgressChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprogresschange)事件：告知开发者当前页面加载的进度。多frame页面或者子frame可能还在继续加载而主frame已经加载结束，所以在[onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend)事件后仍可能收到该事件。
 
@@ -83,15 +83,15 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
         Web({ src: 'www.example.com', controller: this.controller })
           .onControllerAttached(() => {
             // 推荐在此loadUrl、设置自定义用户代理、注入JS对象等
-            console.log('onControllerAttached execute')
+            console.info('onControllerAttached execute')
           })
           .onLoadIntercept((event) => {
             if (event) {
-              console.log('onLoadIntercept url:' + event.data.getRequestUrl())
-              console.log('url:' + event.data.getRequestUrl())
-              console.log('isMainFrame:' + event.data.isMainFrame())
-              console.log('isRedirect:' + event.data.isRedirect())
-              console.log('isRequestGesture:' + event.data.isRequestGesture())
+              console.info('onLoadIntercept url:' + event.data.getRequestUrl())
+              console.info('url:' + event.data.getRequestUrl())
+              console.info('isMainFrame:' + event.data.isMainFrame())
+              console.info('isRedirect:' + event.data.isRedirect())
+              console.info('isRequestGesture:' + event.data.isRequestGesture())
             }
             // 返回true表示阻止此次加载，否则允许此次加载
             return false;
@@ -104,7 +104,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
           })
           .onInterceptRequest((event) => {
             if (event) {
-              console.log('url:' + event.request.getRequestUrl());
+              console.info('url:' + event.request.getRequestUrl());
             }
             let head1: Header = {
               headerKey: "Connection",
@@ -117,7 +117,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
             // 将新元素追加到数组的末尾，并返回数组的新长度。
             let length = this.heads.push(head1);
             length = this.heads.push(head2);
-            console.log('The response header result length is :' + length);
+            console.info('The response header result length is :' + length);
             this.responseWeb.setResponseHeader(this.heads);
             this.responseWeb.setResponseData(this.webData);
             this.responseWeb.setResponseEncoding('utf-8');
@@ -129,33 +129,33 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
           })
           .onPageBegin((event) => {
             if (event) {
-              console.log('onPageBegin url:' + event.url);
+              console.info('onPageBegin url:' + event.url);
             }
           })
           .onFirstContentfulPaint(event => {
             if (event) {
-              console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+              console.info("onFirstContentfulPaint:" + "[navigationStartTick]:" +
               event.navigationStartTick + ", [firstContentfulPaintMs]:" +
               event.firstContentfulPaintMs);
             }
           })
           .onProgressChange((event) => {
             if (event) {
-              console.log('newProgress:' + event.newProgress);
+              console.info('newProgress:' + event.newProgress);
             }
           })
           .onPageEnd((event) => {
             // 推荐在此事件中执行JavaScript脚本
             if (event) {
-              console.log('onPageEnd url:' + event.url);
+              console.info('onPageEnd url:' + event.url);
             }
           })
           .onPageVisible((event) => {
-            console.log('onPageVisible url:' + event.url);
+            console.info('onPageVisible url:' + event.url);
           })
           .onRenderExited((event) => {
             if (event) {
-              console.log('onRenderExited reason:' + event.renderExitReason);
+              console.info('onRenderExited reason:' + event.renderExitReason);
             }
           })
           .onDisAppear(() => {
@@ -227,14 +227,14 @@ struct WebComponent {
               // 设置重试次数上限保护，避免必现问题导致页面被循环加载。
               return;
             }
-            console.log('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
+            console.info('renderReloadCountForCrashed: ' + this.renderReloadCountForCrashed);
             this.renderReloadCountForCrashed++;
           } else {
             if (this.renderReloadCountForOthers >= this.renderReloadMaxForOthers) {
               // 设置重试次数上限保护, 避免必现问题导致页面被循环加载。
               return;
             }
-            console.log('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
+            console.info('renderReloadCountForOthers: ' + this.renderReloadCountForOthers);
             this.renderReloadCountForOthers++;
           }
           if (this.webIsVisible) {

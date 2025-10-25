@@ -18,7 +18,8 @@
   - [证书集合及证书吊销列表集合对象的创建和获取](create-get-cert-crl-object.md)
   - [证书链对象的创建和校验](create-verify-certchain-object.md)
   - [使用系统预置CA证书校验证书链](verify-certchain-by-systemca.md)
-  - [证书PKCS7签名](create-pkcs7-sign-object.md)
+  - [证书CMS签名](create-cms-sign-object.md)
+  - [证书CMS封装](create-cms-enveloped-object.md)
   - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
 - 证书管理<!--certmanager-->
   - [证书管理概述](certManager-overview.md)

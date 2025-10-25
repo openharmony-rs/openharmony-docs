@@ -14,7 +14,7 @@
 
 目前系统提供了ServiceExtensionAbility供系统应用使用。切换步骤和PageAbility基本一致。
 
-1. 在Stage应用中[创建ServiceExtensionAbility](serviceextensionability.md)。
+1. 在Stage应用中[创建ServiceExtensionAbility](serviceextensionability-sys.md)。
 
 2. 将FA应用中ServiceAbility的业务代码迁移到新创建的ServiceExtensionAbility中。
    ServiceAbility和ServiceExtensionAbility生命周期对比见下表。
@@ -37,4 +37,4 @@ Stage模型下三方应用不能对其他三方提供服务，应用可以根据
 | -------- | -------- |
 | 对其他三方应用提供服务 | 需根据业务场景匹配到系统对应的场景化[ExtensionAbility](extensionability-overview.md)。 | 
 | 应用内：前台运行时公共使用 | 可以将该组件代码抽取成公共模块供其他组件使用。 | 
-| 应用内：进入后台时继续运行 | 可以将此服务切换为[后台任务](serviceextensionability.md)。 | 
+| 应用内：进入后台时继续运行 | 可以将此服务切换为[后台任务](serviceextensionability-sys.md)。 | 

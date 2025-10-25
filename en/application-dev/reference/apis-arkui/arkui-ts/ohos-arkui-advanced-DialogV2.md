@@ -608,7 +608,7 @@ struct Index {
   dialogBuilder(): void {
     WithTheme({ theme: new CustomThemeImpl(new CustomThemeColors()) }) {
       LoadingDialogV2({
-        content: 'This is where content is displayed.',
+        content: 'Text text text text text text...',
       })
     }
   }

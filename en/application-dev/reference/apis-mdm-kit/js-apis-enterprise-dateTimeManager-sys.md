@@ -1,4 +1,10 @@
 # @ohos.enterprise.dateTimeManager (System Time Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **dateTimeManager** module provides APIs for system time management.
 
@@ -8,7 +14,7 @@ The **dateTimeManager** module provides APIs for system time management.
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
 > - The APIs provided by this module are system APIs.
 
@@ -28,6 +34,7 @@ Sets the system time. This API uses an asynchronous callback to return the resul
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -52,13 +59,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { dateTimeManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
+// Replace with actual values.
 dateTimeManager.setDateTime(wantTemp, 1526003846000, (err) => {
   if (err) {
     console.error(`Failed to set date time. Code is ${err.code}, message is ${err.message}`);
@@ -78,6 +88,9 @@ Sets the system time. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -107,14 +120,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { dateTimeManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
+// Replace with actual values.
 dateTimeManager.setDateTime(wantTemp, 1526003846000).then(() => {
   console.info('Succeeded in setting date time');
 }).catch((err: BusinessError) => {
@@ -132,6 +148,9 @@ Disallows the device to modify the system time. This API uses an asynchronous ca
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -156,11 +175,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { dateTimeManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 dateTimeManager.disallowModifyDateTime(wantTemp, true, (err) => {
@@ -182,6 +203,9 @@ Disallows the device to modify the system time. This API uses a promise to retur
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -211,12 +235,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { dateTimeManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 dateTimeManager.disallowModifyDateTime(wantTemp, true).then(() => {
@@ -236,6 +262,9 @@ Queries whether the system time of a device can be modified. This API uses an as
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -259,11 +288,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { dateTimeManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 dateTimeManager.isModifyDateTimeDisallowed(wantTemp, (err, result) => {
@@ -285,6 +316,9 @@ Queries whether the system time of a device can be modified. This API uses a pro
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -313,12 +347,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { dateTimeManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 dateTimeManager.isModifyDateTimeDisallowed(wantTemp).then((result) => {

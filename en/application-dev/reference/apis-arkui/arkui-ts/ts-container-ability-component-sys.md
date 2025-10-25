@@ -1,4 +1,11 @@
 # AbilityComponent (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
+<!--deprecated_code_no_check-->
 
 **AbilityComponent** is a container for independently displaying an ability.
 
@@ -27,7 +34,11 @@ Not supported
 
 ## APIs
 
-AbilityComponent(want: Want)
+AbilityComponent(value: {want: Want})
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -44,11 +55,19 @@ onConnect(callback:() =&gt; void)
 
 Called when this **AbilityComponent** is started. You can then use APIs in the **AbilityComponent**.
 
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 ### onDisconnect
 
 onDisconnect(callback:() =&gt; void)
 
 Called when this **AbilityComponent** is destroyed.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## Example
 

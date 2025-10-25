@@ -1,7 +1,7 @@
 # 设置事件回调
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -199,9 +199,9 @@ setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: Visib
 
 ## HoverCallback
 
-hover事件的回调类型。
-
 type HoverCallback = (isHover: boolean, event: HoverEvent)=> void
+
+hover事件的回调类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

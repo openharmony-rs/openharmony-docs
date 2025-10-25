@@ -22,7 +22,7 @@ Context is the context base class of the stage model. It is used to access appli
 - Holding relationships among different types of context
 
   ![context-holding](../../application-models/figures/context-holding.png)
-  
+
 > **NOTE**
 >
 > [UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) refers to the context of a UI instance, which is used to associate windows with UI pages. It is not directly related to the application context discussed in this topic and does not involve inheritance or holding relationships.
@@ -54,6 +54,7 @@ Represents the context for the ability or application. It allows access to appli
 | bundleCodeDir       | string | No   | No   | Bundle code directory. Do not access resource files using concatenated paths. Use [resource manager APIs](../apis-localization-kit/js-apis-resource-manager.md) instead. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | distributedFilesDir | string | No   | No   | Distributed file directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | cloudFileDir<sup>12+</sup>        | string | No   | No   | Cloud file directory.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| logFileDir<sup>22+</sup>        | string | No   | No   | Directory for storing log files.<br>**Atomic service API**: This API can be used in atomic services since API version 22.   |
 | eventHub            | [EventHub](js-apis-inner-application-eventHub.md) | No   | No   | Event hub that implements event subscription, unsubscription, and triggering.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | area                | contextConstant.[AreaMode](js-apis-app-ability-contextConstant.md#areamode) | No   | No   | Information about file partitions, which are divided according to the encryption level specified by [AreaMode](js-apis-app-ability-contextConstant.md#areamode).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | processName<sup>18+</sup> | string | No  | No| Process name of the current application.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|

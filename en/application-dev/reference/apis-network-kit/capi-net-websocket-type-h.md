@@ -1,5 +1,12 @@
 # net_websocket_type.h
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## Overview
 
 Defines data structures for the C APIs of the WebSocket client module.

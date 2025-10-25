@@ -100,7 +100,7 @@ struct FocusActiveExample {
 
 焦点传递是指当用户首次激活应用焦点系统时，焦点如何从根节点逐级向下传递到具体组件的过程。
 
-在焦点链上的组件，都会处于获焦状态。同时，获焦状态会继续向下递归传递，每次传递给第一个子组件，直到叶子节点。
+在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
 
 ```ts
 @Entry
@@ -115,7 +115,7 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Button("button 1")
+          Button("Button 1")
             .margin(20)
             .onClick(() => {
               this.logText = '获焦信息：\n';
@@ -126,7 +126,7 @@ struct Index {
 
       Column() {
         Row() {
-          Button("button 2")
+          Button("Button 2")
             .margin(20)
             .onFocus(() => {
               this.addText("Button 2 获得焦点");
@@ -163,7 +163,7 @@ struct Index {
 }
 ```
 
-点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
+运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
 
 ![Liner_Focus_1](figures/Focus_transfer.gif)
 

@@ -1,4 +1,10 @@
 # Gesture Modifier
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 With the gesture modifier, you can dynamically set gestures bound to components, complete with the **if/else** syntax.
 
@@ -39,19 +45,23 @@ You need a custom class to implement the **GestureModifier** API.
 ### applyGesture
 applyGesture(event: UIGestureEvent): void
 
-Binds a gesture to this component.
+Applies a gesture.
 
-You can customize this API as required. Dynamic configuration using the **if/else** syntax is supported. If gesture switching is triggered during an active gesture operation, the new configuration will take effect in the subsequent gesture interaction after all fingers are lifted from the current gesture.
+You can customize this API as required. Dynamic configuration using the **if/else** syntax is supported. If gesture switching is triggered during an active gesture operation, the change takes effect in the next gesture operation after the current one completes (when all fingers are lifted).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name           | Type                                       | Description                                      |
-| ------------- | ----------------------------------------  | ---------------------------------------- |
-| event        | [UIGestureEvent](./ts-uigestureevent.md#uigestureevent) |  **UIGestureEvent** object, which is used to set the gesture to be bound to the component.     |
+| Name           | Type                                      |          Mandatory       | Description                                      |
+| ------------- | ----------------------------------------  | ---------------------------------------- |-------------------------------- |
+| event        | [UIGestureEvent](./ts-uigestureevent.md#uigestureevent) |  Yes         |**UIGestureEvent** object, which is used to set the gesture to be bound to the component.     |
 
 ## Example
+
+### Example 1: Dynamically Binding a Gesture
 
 This example demonstrates how to dynamically set the gestures bound to a component using **gestureModifier**.
 
@@ -66,14 +76,15 @@ class MyButtonModifier implements GestureModifier {
         new TapGestureHandler({ count: 2, fingers: 1 })
           .tag("aaa")
           .onAction((event: GestureEvent) => {
-            console.log("button tap ")
+            console.info('Gesture Info is', JSON.stringify(event));
+            console.info('button tap');
           })
       )
     } else {
       event.addGesture(
         new PanGestureHandler()
-          .onActionStart(()=>{
-            console.log("Pan start");
+          .onActionStart(() => {
+            console.info('Pan start');
           })
       )
     }
@@ -83,7 +94,7 @@ class MyButtonModifier implements GestureModifier {
 @Entry
 @Component
 struct Index {
-  @State modifier: MyButtonModifier = new MyButtonModifier()
+  @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {
     Row() {
@@ -92,12 +103,12 @@ struct Index {
           .gestureModifier(this.modifier)
           .width(500)
           .height(500)
-          .backgroundColor(Color.Blue)
+          .backgroundColor(Color.Gray)
         Button('changeGesture')
           .onClick(() => {
             this.modifier.supportDoubleTap = !this.modifier.supportDoubleTap;
           })
-          .margin({top: 10})
+          .margin({ top: 10 })
       }
       .width('100%')
     }
@@ -105,3 +116,81 @@ struct Index {
   }
 }
 ```
+![gesture_moodifier_1](figures/gesture_modifier_1.png)
+
+### Example 2: Dynamically Binding a Gesture Group
+
+This example demonstrates how to dynamically set the gesture group bound to a component using **gestureModifier**.
+
+```ts
+class MyButtonModifier implements GestureModifier {
+  isExclusive: boolean = true;
+
+  applyGesture(event: UIGestureEvent): void {
+    if (this.isExclusive) {
+      // Bind a mutually exclusive gesture group.
+      event.addGesture(new GestureGroupHandler({
+        mode: GestureMode.Exclusive,
+        gestures: [new TapGestureHandler({ count: 2, fingers: 1 }).onAction((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ExclusiveGroupGesture TapGesture is called');
+        }), new LongPressGestureHandler({ repeat: true, fingers: 1 }).onAction((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ExclusiveGroupGesture LongPressGesture is called');
+        }), new PanGestureHandler({ fingers: 1 }).onActionStart((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ExclusiveGroupGesture PanGesture onActionStart is called');
+        }).onActionEnd((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ExclusiveGroupGesture PanGesture onActionEnd is called');
+        })]
+      }))
+    } else {
+      // Bind a parallel gesture group.
+      event.addGesture(new GestureGroupHandler({
+        mode: GestureMode.Parallel,
+        gestures: [new TapGestureHandler({ count: 2, fingers: 1 }).onAction((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ParallelGroupGesture TapGesture is called');
+        }), new LongPressGestureHandler({ repeat: true, fingers: 1 }).onAction((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ParallelGroupGesture LongPressGesture is called');
+        }), new PanGestureHandler({ fingers: 1 }).onActionStart((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ParallelGroupGesture PanGesture onActionStart is called');
+        }).onActionEnd((event) => {
+          console.info('event info is', JSON.stringify(event));
+          console.info('ParallelGroupGesture PanGesture onActionEnd is called');
+        })]
+      }))
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Column()
+          .gestureModifier(this.modifier)
+          .width(500)
+          .height(500)
+          .backgroundColor(Color.Gray)
+
+        Button('changeGestureGroupType')
+          .onClick(() => {
+            this.modifier.isExclusive = !this.modifier.isExclusive;
+          })
+          .margin({ top: 10 })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![gesture_moodifier_2](figures/gesture_modifier_2.png)

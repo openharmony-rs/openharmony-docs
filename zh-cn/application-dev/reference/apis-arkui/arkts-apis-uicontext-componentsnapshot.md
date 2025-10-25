@@ -41,7 +41,7 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -119,7 +119,7 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -197,7 +197,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -294,7 +294,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -387,7 +387,7 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -465,7 +465,7 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -520,7 +520,7 @@ struct SnapshotExample {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.log("error: " + err);
+                console.error("error: " + err);
               })
           } catch (error) {
             console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
@@ -563,7 +563,7 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -654,7 +654,7 @@ createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: nu
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -686,11 +686,11 @@ struct ReusableChildComponent {
   @Prop text: string | undefined | null = "";
 
   aboutToReuse(params: Record<string, object>) {
-    console.error('ReusableChildComponent Reusable ${JSON.stringify(error)}');
+    console.info(`ReusableChildComponent Reusable ${JSON.stringify(params)}`);
   }
 
   aboutToRecycle(): void {
-    console.log("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info("ReusableChildComponent aboutToRecycle " + this.text);
   }
 
   build() {

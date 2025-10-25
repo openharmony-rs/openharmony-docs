@@ -1,6 +1,12 @@
 # Foreground Color
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
-The foreground color attributes set the foreground color of a component.
+The foreground color attributes set the foreground color of a component. Corresponds to the background color. The foreground color affects the color of the component content. The color of the text and the fill color of the shape drawing component are affected.
 
 >  **NOTE**
 >
@@ -8,7 +14,7 @@ The foreground color attributes set the foreground color of a component.
 
 ## foregroundColor
 
-foregroundColor(value: ResourceColor | ColoringStrategy)
+foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 Sets the foreground color of the component. If the component does not have a foreground color set, it inherits the color from its parent component by default.
 
@@ -20,13 +26,19 @@ Sets the foreground color of the component. If the component does not have a for
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10) | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are supported.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10) | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.|
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
 
 ## foregroundColor<sup>18+</sup>
 
-foregroundColor(color: Optional\<ResourceColor | ColoringStrategy>)
+foregroundColor(color: Optional\<ResourceColor | ColoringStrategy>): T
 
-Sets the foreground color of the component. If the component does not have a foreground color set, it inherits the color from its parent component by default. Compared with [foregroundColor](#foregroundcolor), this API supports the **undefined** type for the **color** parameter.
+Sets the foreground color of the component. If the component does not have a foreground color set, it inherits the color from its parent component by default. Compared to [foregroundColor](#foregroundcolor), the **color** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -36,7 +48,13 @@ Sets the foreground color of the component. If the component does not have a for
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are supported.<br>If **color** is set to **undefined**, the previous value is retained.|
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the value of color is undefined, the previous value or the default value of the component is retained. The specific behavior may vary depending on the component. You are advised to use a determined color or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
 
 ## Example
 
@@ -51,11 +69,11 @@ This example demonstrates how to set the foreground color using **foregroundColo
 struct ForegroundColorExample {
   build() {
     Column({ space: 100 }) {
-      // Draw a circle with a diameter of 150 and the default fill color black.
-      Circle({ width: 150, height: 200 })
-      // Draw a circle with a diameter of 150.
-      Circle({ width: 150, height: 200 }).foregroundColor(Color.Red)
-    }.width('100%').backgroundColor(Color.Blue)
+      // Draw a circle with a diameter of 150. The default fill color is black.
+      Circle({ width: 150, height: 200 }).margin(20)
+      // Draw a circle with a diameter of 150 and set the foreground color to orange.
+      Circle({ width: 150, height: 200 }).foregroundColor(Color.Orange)
+    }.width('100%').backgroundColor(Color.Gray)
   }
 }
 ```
@@ -73,7 +91,7 @@ This example shows how to use **ColoringStrategy.INVERT** to set the foreground 
 struct ColoringStrategyExample {
   build() {
     Column({ space: 100 }) {
-      // Draw a circle with a diameter of 150 and the default fill color black.
+      // Draw a circle with a diameter of 15. The default fill color is black.
       Circle({ width: 150, height: 200 })
       // Draw a circle with a diameter of 150 and set its foreground color to the inverse of the component background color.
       Circle({ width: 150, height: 200 })
@@ -93,15 +111,15 @@ This example compares the effects of setting both foreground and background colo
 // xxx.ets
 @Entry
 @Component
-struct foregroundColorInherit {
+struct ForegroundColorInherit {
   build() {
     Column() {
       Button('Foreground Color: Set to Orange').fontSize(20).foregroundColor(Color.Orange).backgroundColor(Color.Gray)
       Divider()
       Button('Foreground Color: Inherited from Parent Component When Not Set').fontSize(20).backgroundColor(Color.Gray)
-    }.foregroundColor(Color.Red)
+    }.foregroundColor(Color.Pink)
   }
 }
 ```
 
-![foregroundColor_circle](figures/foregroundColorInherit.jpg)
+![foregroundColor_circle](figures/foregroundColorInherit.png)

@@ -1,5 +1,12 @@
 # @ohos.net.networkSecurity (Network Security)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **networkSecurity** module provides the network security verification capability. Specifically, it provides APIs for applications to verify the certificates in use.
 
 > **NOTE**
@@ -61,10 +68,10 @@ Defines the certificate data.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name | Type                  | Mandatory     | Description          |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | Yes     | Certificate type. |
-| data  | string \| ArrayBuffer | Yes      | Certificate data.     |
+| Name | Type                  | Read-Only     |Optional| Description          |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | No   |No|Certificate type. |
+| data  | string \| ArrayBuffer | No   | No|Certificate data.     |
 
 
 ## networkSecurity.certVerification

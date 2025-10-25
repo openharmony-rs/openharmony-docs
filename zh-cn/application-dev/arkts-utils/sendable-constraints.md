@@ -365,6 +365,33 @@ class C {
 }
 ```
 
+### 支持在Sendable class上叠加自定义装饰器
+
+从API version 22开始，支持在Sendable class上叠加使用除@Sendable装饰器之外的其他自定义装饰器。 
+
+通过在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)的"buildOption"字段下的"strictMode"中增加"disableSendableCheckRules"字段，配置该能力。
+"disableSendableCheckRules"字段及其具体取值示例如下： 
+
+```json5
+"buildOption": {
+  "strictMode": {
+    "caseSensitiveCheck": true,
+    "useNormalizedOHMUrl": true,
+    "disableSendableCheckRules": ["arkts-sendable-class-decorator"]
+  }
+}
+```
+
+> **说明：**
+>
+> - "disableSendableCheckRules"字段值为包含Sendable规则的数组。
+> 
+>   - 默认为空数组，即默认不支持在Sendable class上叠加使用除@Sendable之外的其他自定义装饰器。
+>   
+>   - 当数组中配置了"arkts-sendable-class-decorator"规则时，支持在Sendable class上叠加除@Sendable之外的其他自定义装饰器。
+>   
+> - @Sendable和其他自定义装饰器叠加使用可能造成运行时异常，需要开发者适配装饰器函数的实现。
+
 ## 初始化规则
 
 ### 禁止使用对象字面量/数组字面量初始化Sendable对象

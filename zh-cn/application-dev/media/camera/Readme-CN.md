@@ -34,10 +34,10 @@
   - [压力管控(ArkTS)](camera-system-pressure.md)
   - [相机控制器(ArkTS)](camera-control-center.md)
   <!--Del-->
-  - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo.md)
-  - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case.md)
-  - [深度信息(仅对系统应用开放)(ArkTS)](camera-depth-data.md)
-  - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement.md)
+  - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)
+  - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case-sys.md)
+  - [深度信息(仅对系统应用开放)(ArkTS)](camera-depth-data-sys.md)
+  - [性能提升实践(仅对系统应用开放)(ArkTS)](camera-performance-improvement-sys.md)
   <!--DelEnd-->
 - 开发相机应用必选能力(C/C++)<!--camera-dev-native-mandatory-->
   - [相机管理(C/C++)](native-camera-device-management.md)

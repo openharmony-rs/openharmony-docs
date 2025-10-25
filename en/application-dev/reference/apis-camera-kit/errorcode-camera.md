@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -170,7 +170,7 @@ Two applications attempt to open the same camera simultaneously.
 
 **Solution**
 
-N/A
+Close the camera that is currently open.
 
 ## 7400110 Configuration Conflicts
 

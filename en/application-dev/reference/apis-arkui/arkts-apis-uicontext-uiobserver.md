@@ -11,7 +11,7 @@ Provides APIs for listening for UI component behavior changes.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 11.
 >
@@ -23,7 +23,7 @@ Provides APIs for listening for UI component behavior changes.
 
 on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo\>): void
 
-Subscribes to status changes of the **NavDestination** component.
+Listens to the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -33,15 +33,15 @@ Subscribes to status changes of the **NavDestination** component.
 
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the current state of the **NavDestination** component.                |
+| type     | string                                                | Yes  | Event to listen to. The value is fixed at navDestinationUpdate, which indicates the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component status.                |
 
 **Example**
 
 <!--code_no_check-->
 ```ts
 // Index.ets
-// Example usage of uiObserver.on('navDestinationUpdate', callback)
+// Demonstrate uiObserver.on('navDestinationUpdate', callback).
 // uiObserver.off('navDestinationUpdate', callback)
 
 @Component
@@ -64,12 +64,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // Add event listeners.
     this.getUIContext().getUIObserver().on('navDestinationUpdate', (info) => {
       console.info('NavDestination state update', JSON.stringify(info));
     });
   }
 
   aboutToDisappear() {
+    // Cancel the listener. If no callback is selected, all listeners are canceled.
     this.getUIContext().getUIObserver().off('navDestinationUpdate');
   }
 
@@ -77,6 +79,7 @@ struct Index {
     Column() {
       Navigation(this.stack) {
         Button("push").onClick(() => {
+          // Push the NavDestination of PageOne to the stack.
           this.stack.pushPath({ name: "pageOne" });
         })
       }
@@ -93,7 +96,7 @@ struct Index {
 
 off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationInfo\>): void
 
-Unsubscribes from status changes of the **NavDestination** component.
+Cancels listening to the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -103,18 +106,18 @@ Unsubscribes from status changes of the **NavDestination** component.
 
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback to unregister. If no callback is provided, all registered listener callbacks for the component will be unregistered.                |
+| type     | string                                                | Yes  | Listening event. The value is fixed at navDestinationUpdate, that is, the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Listening callback to be canceled. If this parameter is not passed, all [Navigation](arkui-ts/ts-basic-components-navigation.md) listening callbacks are canceled.                |
 
 **Example**
 
-See the example for [uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11).
+See the example for [on('navDestinationUpdate')](#onnavdestinationupdate11).
 
 ## on('navDestinationUpdate')<sup>11+</sup>
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<observer.NavDestinationInfo\>): void
 
-Subscribes to status changes of the **NavDestination** component.
+Listens for the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component through the [Navigation](arkui-ts/ts-basic-components-navigation.md) ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -124,17 +127,18 @@ Subscribes to status changes of the **NavDestination** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the **Navigation** component that contains the target **NavDestination** component.                                  |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the current state of the **NavDestination** component.                |
+| type     | string                                                       | Yes  | Listening event. The value is fixed at navDestinationUpdate, that is, the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.|
+| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the [Navigation](arkui-ts/ts-basic-components-navigation.md) to be listened on.                                  |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the Returns the current status of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.                |
 
 **Example**
 
 <!--code_no_check-->
 ```ts
 // Index.ets
-// Example usage of uiObserver.on('navDestinationUpdate', navigationId, callback)
-// uiObserver.off('navDestinationUpdate', navigationId, callback)
+// Demonstrate uiObserver.on('navDestinationUpdate', options, callback).
+// uiObserver.off('navDestinationUpdate', options, callback)
+
 @Component
 struct PageOne {
   build() {
@@ -155,12 +159,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // Add a listener and specify the navigation ID.
     this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
       console.info('NavDestination state update', JSON.stringify(info));
     });
   }
 
   aboutToDisappear() {
+    // Cancel the listener. If no callback is selected, all listener callbacks are canceled.
     this.getUIContext().getUIObserver().off('navDestinationUpdate', { navigationId: "testId" });
   }
 
@@ -168,6 +174,7 @@ struct Index {
     Column() {
       Navigation(this.stack) {
         Button("push").onClick(() => {
+          // Push NavDestination of PageOne to the stack.
           this.stack.pushPath({ name: "pageOne" });
         })
       }
@@ -185,7 +192,7 @@ struct Index {
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<observer.NavDestinationInfo\>): void
 
-Unsubscribes from status changes of the **NavDestination** component.
+Cancels the listening on the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component by [Navigation](arkui-ts/ts-basic-components-navigation.md) ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -195,19 +202,19 @@ Unsubscribes from status changes of the **NavDestination** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the status change event of the **NavDestination** component.|
-| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the **Navigation** component that contains the target **NavDestination** component.                                  |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | No  |Callback to unregister. If no callback is provided, all registered listener callbacks for the component will be unregistered.                |
+| type     | string                                                       | Yes  | Listening event. The value is fixed at navDestinationUpdate, that is, the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.|
+| options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the [Navigation](arkui-ts/ts-basic-components-navigation.md) to be listened on.                                  |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | No  |Listening callback to be canceled. If this parameter is not passed, all listening callbacks on the [Navigation](arkui-ts/ts-basic-components-navigation.md) are canceled.                |
 
 **Example**
 
-See the example for [uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11-1).
+See the example for [on('navDestinationUpdate')](#onnavdestinationupdate11-1).
 
 ## on('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
 on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
 
-Subscribes to status changes of a **NavDestination** component using a **Navigation** component's unique ID, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).
+Listens to the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component through the uniqueId of the [Navigation](arkui-ts/ts-basic-components-navigation.md). The uniqueId can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -217,33 +224,37 @@ Subscribes to status changes of a **NavDestination** component using a **Navigat
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdateByUniqueId'**, which indicates the status change event of the **NavDestination** component.|
-| navigationUniqueId  | number | Yes  | Unique ID of the target **Navigation** component, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the current state of the **NavDestination** component.                            |
+| type     | string                                                               | Yes  | Listening event. The value is fixed at navDestinationUpdateByUniqueId, that is, the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.|
+| navigationUniqueId  | number | Yes  | Unique ID of the [Navigation](arkui-ts/ts-basic-components-navigation.md) to be listened to, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the Returns the current status of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.                            |
 
 **Example**
 
-This example demonstrates how to trigger status change listening for a **NavDestination** component using a **Navigation** component's unique ID.
+You can trigger the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component by using the uniqueId of the [Navigation](arkui-ts/ts-basic-components-navigation.md).
 
 ```ts
 // Index.ets
-// Demonstrate on('navDestinationUpdateByUniqueId', navigationUniqueId, callback)
+// Demonstrate on('navDestinationUpdateByUniqueId', navigationUniqueId, callback).
 // off('navDestinationUpdateByUniqueId', navigationUniqueId, callback)
+
 @Component
 struct PageOne {
   private text = '';
   private uniqueid = -1;
   aboutToAppear() {
+    // Obtain the uniqueId of the Navigation.
     let navigationUniqueId = this.queryNavigationInfo()?.uniqueId;
     if (navigationUniqueId) {
       this.uniqueid = navigationUniqueId.valueOf();
     }
     this.text = JSON.stringify(this.uniqueid);
+    // Add a listener and specify the uniqueId of the Navigation.
     this.getUIContext().getUIObserver().on('navDestinationUpdateByUniqueId', this.uniqueid, (info) => {
       console.info('NavDestination state update navigationId', JSON.stringify(info));
     });
   }
   aboutToDisappear() {
+    // Cancel the listener. If no callback is selected, all listening callbacks are canceled.
     this.getUIContext().getUIObserver().off('navDestinationUpdateByUniqueId', this.uniqueid);
   }
   build() {
@@ -272,6 +283,7 @@ struct Index {
     Column() {
       Navigation(this.stack) {
         Button("push").onClick(() => {
+          // Push the NavDestination of PageOne to the stack.
           this.stack.pushPath({ name: "pageOne" });
         })
       }
@@ -289,7 +301,7 @@ struct Index {
 
 off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
 
-Unsubscribes from status changes of a **NavDestination** component, where the subscription was originally established using the unique ID of a specified **Navigation** component.
+Cancel the listening on the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component change by using the uniqueId of [Navigation](arkui-ts/ts-basic-components-navigation.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -299,13 +311,13 @@ Unsubscribes from status changes of a **NavDestination** component, where the su
 
 | Name  | Type                                                                | Mandatory| Description                                                                    |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdateByUniqueId'**, which indicates the status change event of the **NavDestination** component.|
-| navigationUniqueId  | number | Yes  | Unique ID of the target **Navigation** component, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | No  | Callback to unregister. If no callback is provided, all registered listener callbacks for the component will be unregistered.                            |
+| type     | string                                                               | Yes  | Listens for the event, which is fixed to 'navDestinationUpdateByUniqueId', that is, the status change of the [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component.|
+| navigationUniqueId  | number | Yes  | Unique ID of the [Navigation](arkui-ts/ts-basic-components-navigation.md) to be listened on, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | No  | Callback for canceling the listening. If this parameter is not passed, all listening callbacks on the [Navigation](arkui-ts/ts-basic-components-navigation.md) are canceled.                            |
 
 **Example**
 
-See the example for [uiObserver.on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20).
+See the example for [on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20).
 
 ## on('scrollEvent')<sup>12+</sup>
 
@@ -326,72 +338,13 @@ Subscribes to the start and end of scroll events of all scrollable components, i
 
 **Example**
 
-See the example for [off('scrollEvent')](#offscrollevent12-1).
-
-## off('scrollEvent')<sup>12+</sup>
-
-off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
-
-Unsubscribes from the start and end of scroll events of all scrollable components, including [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type                                                 | Mandatory| Description                                                        |
-| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the Callback used to return the information about the scroll event.  |
-
-**Example**
-
-See the example for [off('scrollEvent')](#offscrollevent12-1).
-
-## on('scrollEvent')<sup>12+</sup>
-
-on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<observer.ScrollEventInfo\>): void
-
-Subscribes to the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type                                                        | Mandatory| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the Callback used to return the information about the scroll event.                |
-
-**Example**
-
-See the example for [off('scrollEvent')](#offscrollevent12-1).
-
-## off('scrollEvent')<sup>12+</sup>
-
-off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\<observer.ScrollEventInfo\>): void
-
-Unsubscribes from the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type                                                        | Mandatory| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the Callback used to return the information about the scroll event.                |
-
-**Example**
-
 ```ts
+// Index.ets
+// Demonstrate the uiObserver.on ('scrollEvent', callback) function.
+// uiObserver.off('scrollEvent', callback)
+// uiObserver.on('scrollEvent', options, callback)
+// uiObserver.off('scrollEvent', options, callback)
+
 import { UIObserver } from '@kit.ArkUI';
 
 @Entry
@@ -426,12 +379,14 @@ struct Index {
       Row() {
         Button('UIObserver on')
           .onClick(() => {
+            // Add event listeners.
             this.observer.on('scrollEvent', (info) => {
               console.info('scrollEventInfo', JSON.stringify(info));
             });
           })
         Button('UIObserver off')
           .onClick(() => {
+            // Cancel all listeners. If no callback is specified, no listener is canceled.
             this.observer.off('scrollEvent');
           })
       }
@@ -439,12 +394,14 @@ struct Index {
       Row() {
         Button('UIObserverWithId on')
           .onClick(() => {
+            // Add a listener and specify the ID of the scroll component.
             this.observer.on('scrollEvent', { id: 'testId' }, (info) => {
               console.info('scrollEventInfo', JSON.stringify(info));
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
+            // Cancel all listeners. If no callback is specified, no listener is canceled.
             this.observer.off('scrollEvent', { id: 'testId' });
           })
       }
@@ -454,11 +411,32 @@ struct Index {
 }
 ```
 
-## on('routerPageUpdate')<sup>11+</sup>
+## off('scrollEvent')<sup>12+</sup>
 
-on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): void
+off(type: 'scrollEvent', callback?: Callback\<observer.ScrollEventInfo\>): void
 
-Subscribes to state changes of the page during routing.
+Unsubscribes from the start and end of scroll events of all scrollable components, including [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                        |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the Callback used to return the information about the scroll event. If no parameter is passed, the callback for listening to all scrolling events is canceled.  |
+
+**Example**
+
+See the example of [on('scrollEvent')](#onscrollevent12).
+
+## on('scrollEvent')<sup>12+</sup>
+
+on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<observer.ScrollEventInfo\>): void
+
+Subscribes to the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -468,28 +446,109 @@ Subscribes to state changes of the page during routing.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing.|
-| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | Yes  | Callback used to return the If **pageInfo** is passed, the current page state is returned.                |
+| type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
+| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the Callback used to return the information about the scroll event.                |
 
 **Example**
 
-See the example for [on('navDestinationUpdate')](#onnavdestinationupdate11).
+See the example of [on('scrollEvent')](#onscrollevent12).
+
+## off('scrollEvent')<sup>12+</sup>
+
+off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\<observer.ScrollEventInfo\>): void
+
+Unsubscribes from the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](./arkui-ts/ts-container-list.md), [Grid](./arkui-ts/ts-container-grid.md), [Scroll](./arkui-ts/ts-container-scroll.md), [WaterFlow](./arkui-ts/ts-container-waterflow.md), and [ArcList](./arkui-ts/ts-container-arclist.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
+| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the Callback used to return the information about the scroll event. If no parameter is passed, the callback for listening to all scrolling events is canceled.                |
+
+**Example**
+
+See the example of [on('scrollEvent')](#onscrollevent12).
+
+## on('routerPageUpdate')<sup>11+</sup>
+
+on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): void
+
+Listens to the status change of the page in [Router](arkts-apis-uicontext-router.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Listening event, which is fixed to 'routerPageUpdate', that is, the status change of the page in [Router](arkts-apis-uicontext-router.md).|
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | Yes  | Callback used to return the The [RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) object is carried, and the status of the current page is returned.                |
+
+**Example**
 
 <!--code_no_check-->
 ```ts
-import { UIContext, UIObserver } from '@kit.ArkUI';
+// PageOne.ets
 
-let observer:UIObserver = this.getUIContext().getUIObserver();
-observer.on('routerPageUpdate', (info) => {
-    console.info('RouterPage state updated, called by ' + `${info.name}`);
-});
+@Entry
+@Component
+struct PageOne {
+  build() {
+    Column() {
+      Text("pageOne")
+    }
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+// Index.ets
+// Demonstrate uiObserver.on('routerPageUpdate', callback).
+// uiObserver.off('routerPageUpdate', callback)
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear() {
+    // Add event listeners.
+    this.getUIContext().getUIObserver().on('routerPageUpdate', (info) => {
+      console.info('router page update', JSON.stringify(info));
+    });
+  }
+
+  aboutToDisappear() {
+    // Remove the observer. If no callback is passed, all observers are removed.
+    this.getUIContext().getUIObserver().off('routerPageUpdate');
+  }
+
+  build() {
+    Column() {
+      Button("pushUrl").onClick(() => {
+        // Redirect to PageOne.ets using router.
+        this.getUIContext().getRouter().pushUrl({ url: 'pages/PageOne' })
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## off('routerPageUpdate')<sup>11+</sup>
 
 off(type: 'routerPageUpdate', callback?: Callback\<observer.RouterPageInfo\>): void
 
-Unsubscribes to state changes of the page during routing.
+Removes the observer for the page state change in [Router](arkts-apis-uicontext-router.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -499,22 +558,12 @@ Unsubscribes to state changes of the page during routing.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing.|
-| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | No  | Callback to be unregistered.                |
+| type     | string                                                       | Yes  | Listens for the page status change of the [Router](arkts-apis-uicontext-router.md).|
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | No  | Callback to be unregistered. If this parameter is not passed, the callback for listening to the page status change of all [Router](arkts-apis-uicontext-router.md) is canceled.                |
 
 **Example**
 
-See the example for [on('navDestinationUpdate')](#onnavdestinationupdate11).
-
-<!--code_no_check-->
-```ts
-import { UIContext, UIObserver } from '@kit.ArkUI';
-
-let observer:UIObserver = this.getUIContext().getUIObserver();
-function callbackFunc(info:observer.RouterPageInfo) {};
-// callbackFunc is defined and used before
-observer.off('routerPageUpdate', callbackFunc);
-```
+For details, see the example of the [on('routerPageUpdate')](#onrouterpageupdate11) API.
 
 ## on('densityUpdate')<sup>12+</sup>
 
@@ -531,9 +580,15 @@ Subscribes to the pixel density changes of the screen.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'densityUpdate'** indicates the pixel density changes of the screen.|
-| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | Yes  | Callback used to return the screen pixel density after the change.                |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | Yes  | Callback used to return the [DensityInfo](./js-apis-arkui-observer.md#densityinfo12) is carried, and the changed screen pixel density is returned.                |
+
+**Example**
 
 ```ts
+// Index.ets
+// Demonstrate uiObserver.on('densityUpdate', callback).
+// uiObserver.off('densityUpdate', callback)
+
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -542,6 +597,7 @@ struct Index {
   @State density: number = 0;
   @State message: string = 'Listener not registered';
 
+  // Define callbacks for event listeners.
   densityUpdateCallback = (info: uiObserver.DensityInfo) => {
     this.density = info.density;
     this.message = 'DPI after change:' + this.density.toString();
@@ -553,9 +609,17 @@ struct Index {
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
       Button ('Subscribe to Screen Pixel Density Changes')
+        .margin({ bottom: 10 })
         .onClick(() => {
           this.message = 'Listener registered';
+          // Add event listeners.
           this.getUIContext().getUIObserver().on('densityUpdate', this.densityUpdateCallback);
+        })
+      Button ('Unsubscribe from Screen Pixel Density Changes')
+        .onClick(() => {
+          this.message = 'Listener not registered';
+          // Remove event listeners.
+          this.getUIContext().getUIObserver().off('densityUpdate', this.densityUpdateCallback);
         })
     }
   }
@@ -577,42 +641,11 @@ Unsubscribes from the pixel density changes of the screen.
 | Name  | Type                                                                | Mandatory| Description                                                                                        |
 | -------- | -------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------- |
 | type     | string                                                               | Yes  | Event type. The value **'densityUpdate'** indicates the pixel density changes of the screen.                                       |
-| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\> | No  | Callback to be unregistered. If this parameter is not specified, this API unregisters all callbacks for the **densityUpdate** event under the current UI context.|
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\> | No  | Callback to be unregistered. If no callback is specified, all screen pixel density change event listeners of the [UIContext](arkts-apis-uicontext-uicontext.md) are unregistered.|
 
-```ts
-import { uiObserver } from '@kit.ArkUI';
+**Example**
 
-@Entry
-@Component
-struct Index {
-  @State density: number = 0;
-  @State message: string = 'Listener not registered';
-
-  densityUpdateCallback = (info: uiObserver.DensityInfo) => {
-    this.density = info.density;
-    this.message = 'DPI after change:' + this.density.toString();
-  }
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(24)
-        .fontWeight(FontWeight.Bold)
-      Button ('Subscribe to Screen Pixel Density Changes')
-        .margin({ bottom: 10 })
-        .onClick(() => {
-          this.message = 'Listener registered';
-          this.getUIContext().getUIObserver().on('densityUpdate', this.densityUpdateCallback);
-        })
-      Button ('Unsubscribe from Screen Pixel Density Changes')
-        .onClick(() => {
-          this.message = 'Listener not registered';
-          this.getUIContext().getUIObserver().off('densityUpdate', this.densityUpdateCallback);
-        })
-    }
-  }
-}
-```
+For details, see the example of the [on('densityUpdate')](#ondensityupdate12) API.
 
 ## on('willDraw')<sup>12+</sup>
 
@@ -631,20 +664,33 @@ Subscribes to the dispatch of drawing instructions in each frame.
 | type     | string                                                       | Yes  | Event event. The value **'willDraw'** indicates whether drawing is about to occur.|
 | callback | Callback\<void\>        | Yes  | Callback used to return the                |
 
+**Example**
+
 ```ts
-import { uiObserver } from '@kit.ArkUI';
+// Index.ets
+// Demonstrate uiObserver.on('willDraw', callback).
+// uiObserver.off('willDraw', callback)
 
 @Entry
 @Component
 struct Index {
+  // Define callbacks for event listeners.
   willDrawCallback = () => {
     console.info("willDraw instruction dispatched.");
   }
+
   build() {
     Column() {
       Button('Subscribe to Drawing Instruction Dispatch')
+        .margin({ bottom: 10 })
         .onClick(() => {
+          // Add event listeners.
           this.getUIContext().getUIObserver().on('willDraw', this.willDrawCallback);
+        })
+      Button('Unsubscribe from Drawing Instruction Dispatch')
+        .onClick(() => {
+          // Remove event listeners.
+          this.getUIContext().getUIObserver().off('willDraw', this.willDrawCallback);
         })
     }
   }
@@ -666,33 +712,11 @@ Unsubscribes from the dispatch of drawing instructions in each frame.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event event. The value **'willDraw'** indicates whether drawing is about to occur.|
-| callback | Callback\<void\>        | No  | Callback to be unregistered.                 |
+| callback | Callback\<void\>        | No  | Callback to be unregistered. If no parameter is passed, the listening callback of all drawing command delivery events is canceled.                 |
 
-```ts
-import { uiObserver } from '@kit.ArkUI';
+**Example**
 
-@Entry
-@Component
-struct Index {
-  willDrawCallback = () => {
-    console.info("willDraw instruction dispatched.")
-  }
-
-  build() {
-    Column() {
-      Button('Subscribe to Drawing Instruction Dispatch')
-        .margin({ bottom: 10 })
-        .onClick(() => {
-          this.getUIContext().getUIObserver().on('willDraw', this.willDrawCallback);
-        })
-      Button('Unsubscribe from Drawing Instruction Dispatch')
-        .onClick(() => {
-          this.getUIContext().getUIObserver().off('willDraw', this.willDrawCallback);
-        })
-    }
-  }
-}
-```
+See the example of [on('willDraw')](#onwilldraw12).
 
 ## on('didLayout')<sup>12+</sup>
 
@@ -711,20 +735,33 @@ Subscribes to layout completion status in each frame.
 | type     | string                                                       | Yes  | Event type. The value **'didLayout'** indicates whether the layout has been completed.|
 | callback | Callback\<void\>        | Yes  | Callback used to return the                |
 
+**Example**
+
 ```ts
-import { uiObserver } from '@kit.ArkUI';
+// Index.ets
+// Demonstrate uiObserver.on('didLayout', callback).
+// uiObserver.off('didLayout', callback)
 
 @Entry
 @Component
 struct Index {
+  // Define callbacks for event listeners.
   didLayoutCallback = () => {
     console.info("Layout completed.");
   }
+
   build() {
     Column() {
       Button('Subscribe to Layout Completion')
+        .margin({ bottom: 10 })
         .onClick(() => {
+          // Add event listeners.
           this.getUIContext().getUIObserver().on('didLayout', this.didLayoutCallback);
+        })
+      Button('Unsubscribe from Layout Completion')
+        .onClick(() => {
+          // Remove event listeners.
+          this.getUIContext().getUIObserver().off('didLayout', this.didLayoutCallback);
         })
     }
   }
@@ -746,39 +783,18 @@ Unsubscribes from layout completion status in each frame.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'didLayout'** indicates whether the layout has been completed.|
-| callback | Callback\<void\>        | No  | Callback to be unregistered.                 |
+| callback | Callback\<void\>        | No  | Callback to be unregistered. If no parameter is passed, all layout completion listener callbacks are canceled.                 |
 
-```ts
-import { uiObserver } from '@kit.ArkUI';
 
-@Entry
-@Component
-struct Index {
-  didLayoutCallback = () => {
-    console.info("Layout completed.");
-  }
+**Example**
 
-  build() {
-    Column() {
-      Button('Subscribe to Layout Completion')
-        .margin({ bottom: 10 })
-        .onClick(() => {
-          this.getUIContext().getUIObserver().on('didLayout', this.didLayoutCallback);
-        })
-      Button('Unsubscribe from Layout Completion')
-        .onClick(() => {
-          this.getUIContext().getUIObserver().off('didLayout', this.didLayoutCallback);
-        })
-    }
-  }
-}
-```
+See the example of [on('didLayout')](#ondidlayout12).
 
 ## on('navDestinationSwitch')<sup>12+</sup>
 
 on(type: 'navDestinationSwitch', callback: Callback\<observer.NavDestinationSwitchInfo\>): void
 
-Subscribes to the page switching event of the **Navigation** component.
+Listens for the page switching event of [Navigation](arkui-ts/ts-basic-components-navigation.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -788,15 +804,16 @@ Subscribes to the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the information about the page switching event.                |
+| type     | string                                                       | Yes  | Listening event, which is fixed to 'navDestinationSwitch', that is, the page switching event of [Navigation](arkui-ts/ts-basic-components-navigation.md).|
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the Carries [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) and returns the page switching event information.                |
 
 **Example**
 
 ```ts
 // Index.ets
-// UIObserver.on('navDestinationSwitch', callback) demo
+// Demonstrate UIObserver.on('navDestinationSwitch', callback).
 // UIObserver.off('navDestinationSwitch', callback)
+
 import { uiObserver } from '@kit.ArkUI';
 
 @Component
@@ -808,6 +825,7 @@ struct PageOne {
   }
 }
 
+// Define callbacks for event listeners.
 function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`);
 }
@@ -824,11 +842,13 @@ struct Index {
 
   aboutToAppear() {
     let obs = this.getUIContext().getUIObserver();
+    // Add event listeners.
     obs.on('navDestinationSwitch', callbackFunc);
   }
 
   aboutToDisappear() {
     let obs = this.getUIContext().getUIObserver();
+    // Remove event listeners.
     obs.off('navDestinationSwitch', callbackFunc);
   }
 
@@ -836,7 +856,8 @@ struct Index {
     Column() {
       Navigation(this.stack) {
         Button("push").onClick(() => {
-          this.stack.pushPath({name: "pageOne"});
+          // Push NavDestination of PageOne to the stack.
+          this.stack.pushPath({ name: "pageOne" });
         })
       }
       .title("Navigation")
@@ -852,7 +873,7 @@ struct Index {
 
 off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSwitchInfo\>): void
 
-Unsubscribes from the page switching event of the **Navigation** component.
+Removes the listener for the page switch event of [Navigation](arkui-ts/ts-basic-components-navigation.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -862,16 +883,18 @@ Unsubscribes from the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | No  | Callback to be unregistered.                |
+| type     | string                                                       | Yes  | Listener event. The value is fixed at navDestinationSwitch, that is, the page switch event of [Navigation](arkui-ts/ts-basic-components-navigation.md).|
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | No  | Callback to be unregistered. If this parameter is not passed, all listening callbacks on the [Navigation](arkui-ts/ts-basic-components-navigation.md) are canceled.                |
 
-For the sample code, see the example for **UIObserver.on('navDestinationSwitch')**.
+**Example**
+
+For details, see the example of the [on('navDestinationSwitch')](#onnavdestinationswitch12) API.
 
 ## on('navDestinationSwitch')<sup>12+</sup>
 
 on(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchObserverOptions, callback: Callback\<observer.NavDestinationSwitchInfo\>): void
 
-Subscribes to the page switching event of the **Navigation** component.
+Listens for the page switch event of the [Navigation](arkui-ts/ts-basic-components-navigation.md) through listening options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -881,16 +904,17 @@ Subscribes to the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
+| type     | string                                                       | Yes  | Listening event. The value is fixed at 'navDestinationSwitch', that is, the page switch event of the [Navigation](arkui-ts/ts-basic-components-navigation.md).|
 | observerOptions | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12)        | Yes  | Observer options.  |
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the information about the page switching event.                |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the Carries [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) and returns the page switching event information.                |
 
 **Example**
 
 ```ts
 // Index.ets
-// Demo UIObserver.on('navDestinationSwitch', NavDestinationSwitchObserverOptions, callback)
-// UIObserver.off('navDestinationSwitch', NavDestinationSwitchObserverOptions, callback)
+// Demonstrate UIObserver.on('navDestinationSwitch', observerOptions, callback).
+// UIObserver.off('navDestinationSwitch', observerOptions, callback)
+
 import { uiObserver } from '@kit.ArkUI';
 
 @Component
@@ -902,6 +926,7 @@ struct PageOne {
   }
 }
 
+// Define callbacks for event listeners.
 function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`);
 }
@@ -918,11 +943,13 @@ struct Index {
 
   aboutToAppear() {
     let obs = this.getUIContext().getUIObserver();
+    // Add the listener and specify the navigation ID.
     obs.on('navDestinationSwitch', { navigationId: "myNavId" }, callbackFunc);
   }
 
   aboutToDisappear() {
     let obs = this.getUIContext().getUIObserver();
+    // Remove event listeners.
     obs.off('navDestinationSwitch', { navigationId: "myNavId" }, callbackFunc);
   }
 
@@ -930,7 +957,8 @@ struct Index {
     Column() {
       Navigation(this.stack) {
         Button("push").onClick(() => {
-          this.stack.pushPath({name: "pageOne"});
+          // Pushing NavDestination of PageOne to the stack
+          this.stack.pushPath({ name: "pageOne" });
         })
       }
       .id("myNavId")
@@ -947,7 +975,7 @@ struct Index {
 
 off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitchObserverOptions, callback?: Callback\<observer.NavDestinationSwitchInfo\>): void
 
-Unsubscribes from the page switching event of the **Navigation** component.
+Cancels listening on page switching events of [Navigation](arkui-ts/ts-basic-components-navigation.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -957,11 +985,13 @@ Unsubscribes from the page switching event of the **Navigation** component.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'navDestinationSwitch'** indicates the page switching event of the **Navigation** component.|
+| type     | string                                                       | Yes  | Listening event, which is fixed to 'navDestinationSwitch', that is, the page switching event of [Navigation](arkui-ts/ts-basic-components-navigation.md).|
 | observerOptions | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12)        | Yes  | Observer options.  |
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | No  | Callback to be unregistered.                |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | No  | Callback to be unregistered. If this parameter is not passed, all listening callbacks on the [Navigation](arkui-ts/ts-basic-components-navigation.md) are canceled.                |
 
-For the sample code, see the example for **UIObserver.on('navDestinationSwitch')**.
+**Example**
+
+For details, see the example of the [on('navDestinationSwitch')](#onnavdestinationswitch12-1) API.
 
 ## on('willClick')<sup>12+</sup>
 
@@ -978,11 +1008,17 @@ Subscribes to the dispatch of click event instructions. The callback type is [Ge
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions. The registered callback is triggered when the click event is about to occur.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes  | Callback used to return the **GestureEvent** object of the click event and the FrameNode of the component. |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes  | Callback used to return the Obtains the [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) of the click event and the [FrameNode](js-apis-arkui-frameNode.md) of the component. |
 
 **Example**
 
 ```ts
+// Index.ets
+// Demonstrate uiObserver.on('willClick', callback).
+// uiObserver.off('willClick', callback)
+// uiObserver.off('didClick', callback)
+// uiObserver.off('didClick', callback)
+
 // Define callbacks for event listeners.
 function willClickGestureCallback(event: GestureEvent, node?: FrameNode) {
   console.info('Example willClickCallback GestureEvent is called');
@@ -1077,11 +1113,11 @@ Unsubscribes from the dispatch of click event instructions. The screen reader to
 | Name  | Type                                                        | Mandatory| Description                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No  | Callback to be unregistered.                               |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No  | Callback to be unregistered. If no parameter is passed, all click event instruction delivery listening callbacks are canceled.                               |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## on('didClick')<sup>12+</sup>
 
@@ -1098,11 +1134,11 @@ Subscribes to the dispatch of click event instructions. The callback type is [Ge
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'didClick'** indicates the dispatch of click event instructions. The registered callback is triggered after the click event is about to occur.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes  | Callback used to return the **GestureEvent** object of the click event and the FrameNode of the component. |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes  | Callback used to return the You can obtain the [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) of the click event and the [FrameNode](js-apis-arkui-frameNode.md) of the component. |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## off('didClick')<sup>12+</sup>
 
@@ -1119,11 +1155,11 @@ Unsubscribes from the dispatch of click event instructions. The screen reader to
 | Name  | Type                                                        | Mandatory| Description                                                |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type. The value **'didClick'** indicates the dispatch of click event instructions.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No  | Callback to be unregistered.                              |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No  | Callback to be unregistered. If no parameter is passed, all click event instruction delivery listening callbacks are canceled.                              |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## on('willClick')<sup>12+</sup>
 
@@ -1140,11 +1176,11 @@ Subscribes to the dispatch of click event instructions. The callback type is [Cl
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions. The registered callback is triggered when the click event is about to occur.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes  | Callback used to return the **ClickEvent** object and the FrameNode of the component.   |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes  | Callback used to return the You can obtain the [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) of the click event and the [FrameNode](js-apis-arkui-frameNode.md) of the component.   |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## off('willClick')<sup>12+</sup>
 
@@ -1161,11 +1197,11 @@ Unsubscribes from the dispatch of click event instructions. The screen reader to
 | Name  | Type                                                       | Mandatory| Description                                                 |
 | -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No  | Callback to be unregistered.                               |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No  | Callback to be unregistered. If no parameter is passed, the callback for canceling all click event command delivery is invoked.                               |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## on('didClick')<sup>12+</sup>
 
@@ -1182,11 +1218,11 @@ Subscribes to the dispatch of click event instructions. The callback type is [Cl
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value **'didClick'** indicates the dispatch of click event instructions. The registered callback is triggered after the click event is about to occur.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes  | Callback used to return the **ClickEvent** object and the FrameNode of the component.   |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes  | Callback used to return the You can obtain the [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) of the click event and the [FrameNode](js-apis-arkui-frameNode.md) of the component.   |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## off('didClick')<sup>12+</sup>
 
@@ -1203,17 +1239,17 @@ Unsubscribes from the dispatch of click event instructions. The screen reader to
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value **'didClick'** indicates the dispatch of click event instructions.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No  | Callback to be unregistered.                              |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No  | Callback to be unregistered. If no parameter is passed, all click event instruction delivery listening callbacks are canceled.                              |
 
 **Example**
 
-See the example for [on('willClick')](#onwillclick12).
+See the example of [on('willClick')](#onwillclick12).
 
 ## on('tabContentUpdate')<sup>12+</sup>
 
 on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): void
 
-Subscribes to the **TabContent** switching event.
+Listens for the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1223,14 +1259,19 @@ Subscribes to the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
-| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | Yes  | Callback used to return the information about the **TabContent** switching event.|
+| type     | string                                                       | Yes  | Listening event. The value is fixed at tabContentUpdate, which indicates the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | Yes  | Callback used to return the Carries [TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12) and returns the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event information.|
 
 **Example**
 
 ```ts
+// Index.ets
+// Demonstrate the uiObserver.on ('tabContentUpdate', callback) function.
+// uiObserver.off('tabContentUpdate', callback)
+
 import { uiObserver } from '@kit.ArkUI';
 
+// Define callbacks for event listeners.
 function callbackFunc(info: uiObserver.TabContentInfo) {
   console.info('tabContentUpdate', JSON.stringify(info));
 }
@@ -1241,11 +1282,13 @@ struct TabsExample {
 
   aboutToAppear(): void {
     let observer = this.getUIContext().getUIObserver();
+    // Add event listeners.
     observer.on('tabContentUpdate', callbackFunc);
   }
 
   aboutToDisappear(): void {
     let observer = this.getUIContext().getUIObserver();
+    // Remove event listeners.
     observer.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1281,7 +1324,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): void
 
-Unsubscribes from the **TabContent** switching event.
+Cancels the listening on the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1291,8 +1334,8 @@ Unsubscribes from the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
-| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | No  | Callback to be unregistered.|
+| type     | string                                                       | Yes  | Listening event. The value is fixed to tabContentUpdate, that is, the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | No  | Callback to be unregistered. If no parameter is passed, all listening callbacks on the [Tabs](arkui-ts/ts-container-tabs.md) are canceled.|
 
 **Example**
 
@@ -1302,7 +1345,7 @@ See the example of [on('tabContentUpdate')](#ontabcontentupdate12).
 
 on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
 
-Subscribes to the **TabContent** switching event.
+Listens to the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event by using the ID of the [Tabs](arkui-ts/ts-container-tabs.md) component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1312,15 +1355,20 @@ Subscribes to the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
-| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the target **Tabs** component.|
-| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | Yes  | Callback used to return the information about the **TabContent** switching event.|
+| type     | string                                                       | Yes  | Listening event. The value is fixed at tabContentUpdate, that is, the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event.|
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the [Tabs](arkui-ts/ts-container-tabs.md) component to be listened to.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | Yes  | Callback used to return the The TabContentInfo parameter is carried, and the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event information is returned.|
 
 **Example**
 
 ```ts
+// Index.ets
+// Demonstrate uiObserver.on('tabContentUpdate', options, callback).
+// uiObserver.off('tabContentUpdate', options, callback)
+
 import { uiObserver } from '@kit.ArkUI';
 
+// Define callbacks for event listeners.
 function callbackFunc(info: uiObserver.TabContentInfo) {
   console.info('tabContentUpdate', JSON.stringify(info));
 }
@@ -1331,11 +1379,13 @@ struct TabsExample {
 
   aboutToAppear(): void {
     let observer = this.getUIContext().getUIObserver();
+    //Add a listener and specify the tab ID.
     observer.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
     let observer = this.getUIContext().getUIObserver();
+    // Remove event listeners.
     observer.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
@@ -1371,7 +1421,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Callback\<observer.TabContentInfo\>): void
 
-Unsubscribes from the **TabContent** switching event.
+Cancels the listening on the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event by using the ID of the [Tabs](arkui-ts/ts-container-tabs.md) component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1381,9 +1431,9 @@ Unsubscribes from the **TabContent** switching event.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type. The value **'tabContentUpdate'** indicates the **TabContent** switching event.|
-| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the target **Tabs** component.|
-| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | No  | Callback to be unregistered.|
+| type     | string                                                       | Yes  | Listening event. The value is fixed to tabContentUpdate, that is, the [TabContent](arkui-ts/ts-container-tabcontent.md) page switching event.|
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the [Tabs](arkui-ts/ts-container-tabs.md) component to be listened on.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\> | No  | Callback to be unregistered. If no parameter is passed, all listening callbacks on the [Tabs](arkui-ts/ts-container-tabs.md) component are canceled.|
 
 **Example**
 
@@ -1393,7 +1443,7 @@ See the example of [on('tabContentUpdate')](#ontabcontentupdate12-1).
 
 on(type: 'beforePanStart', callback: PanListenerCallback): void
 
-Subscribes to the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#events) event for the pan gesture, executing the callback before the **onActionStart** event is triggered. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the pan gesture and executes the callback before the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event is executed. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1403,15 +1453,26 @@ Subscribes to the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#event
 
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'beforePanStart'**, which triggers the callback before the **onActionStart** event of the pan gesture.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the **GestureEvent** and **GestureRecognizer** of the pan gesture event and the FrameNode of the component.  |
+| type     | string                                                      | Yes  | Listening event. The value is fixed at beforePanStart, which is used to listen to the instruction delivery before the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the pan gesture is executed. The registered callback will be triggered before the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the pan gesture is triggered.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the You can obtain the [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent), [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12), and [FrameNode](js-apis-arkui-frameNode.md) of the component.  |
 
 **Example**
 
 ```ts
+// Index.ets
+// Demonstrate uiObserver.on('beforePanStart', callback).
+// uiObserver.off('beforePanStart', callback)
+// uiObserver.on('afterPanStart', callback)
+// uiObserver.off('afterPanStart', callback)
+// uiObserver.on('beforePanEnd', callback)
+// uiObserver.off('beforePanEnd', callback)
+// uiObserver.on('afterPanEnd', callback)
+// uiObserver.off('afterPanEnd', callback)
+
 // Used in page components.
 let TEST_TAG: string = 'node';
 
+// Define callbacks for event listeners.
 function callbackFunc() {
   console.info('on == beforePanStart');
 }
@@ -1454,6 +1515,7 @@ struct PanExample {
 
   aboutToAppear(): void {
     let observer = this.getUIContext().getUIObserver();
+    // Add event listeners.
     observer.on('beforePanStart', callbackFunc);
     observer.on('beforePanStart', panGestureCallBack);
     observer.on('beforePanStart', beforeStartCallBack);
@@ -1464,12 +1526,14 @@ struct PanExample {
 
   aboutToDisappear(): void {
     let observer = this.getUIContext().getUIObserver();
+    // Remove event listeners.
     observer.off('beforePanStart', callbackFunc);
     observer.off('beforePanStart');
     observer.off('afterPanStart', afterPanCallBack);
     observer.off('beforePanEnd');
     observer.off('afterPanEnd');
   }
+
   build() {
     Column(){
       Column(){
@@ -1507,7 +1571,7 @@ struct PanExample {
 
 off(type: 'beforePanStart', callback?: PanListenerCallback): void
 
-Unsubscribes from the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#events) event for the pan gesture. This cancels the callback registered using [on('beforePanStart')](#onbeforepanstart19).
+Unsubscribes from the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event for the pan gesture. This cancels the callback registered using [on('beforePanStart')](#onbeforepanstart19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1517,8 +1581,8 @@ Unsubscribes from the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#e
 
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'beforePanStart'**.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered.                              |
+| type     | string                                                      | Yes  | Listens for the instruction delivery before the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the Pan gesture is executed.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered. If this parameter is not passed, the instruction delivery listening callback before all [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) events of the Pan gesture is executed is canceled.                              |
 
 **Example**
 
@@ -1528,7 +1592,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 on(type: 'afterPanStart', callback: PanListenerCallback): void
 
-Subscribes to the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#events) event for the pan gesture, executing the callback after the **afterPanStart** event is triggered. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for the instruction delivery after the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the Pan gesture is executed. The callback is executed after the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event is executed. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1538,8 +1602,8 @@ Subscribes to the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#event
 
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'afterPanStart'**, which triggers the callback after the **onActionStart** event of the pan gesture.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the **GestureEvent** and **GestureRecognizer** of the pan gesture event and the FrameNode of the component.  |
+| type     | string                                                      | Yes  | Listens for the instruction delivery after the Pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event is executed. The registered callback is triggered after the Pan gesture [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event is triggered.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the The [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent), [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12), and [FrameNode](js-apis-arkui-frameNode.md) of the component can be obtained.  |
 
 **Example**
 
@@ -1559,8 +1623,8 @@ Unsubscribes from the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#e
 
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'afterPanStart'**.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered.                              |
+| type     | string                                                      | Yes  | Listens for the instruction delivery after the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the Pan gesture is executed.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered. If this parameter is not passed, the callback for listening to the instruction delivery after the [onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart) event of the Pan gesture is executed is canceled.                              |
 
 **Example**
 
@@ -1570,7 +1634,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 on(type: 'beforePanEnd', callback: PanListenerCallback): void
 
-Subscribes to the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#events) event for the pan gesture, executing the callback before the **onActionEnd** event is triggered. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for the instruction delivery before the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture is executed. The callback is executed before the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event is executed. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1580,8 +1644,8 @@ Subscribes to the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#events)
 
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'beforePanEnd'**, which triggers the callback before the **onActionEnd** event of the pan gesture.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the **GestureEvent** and **GestureRecognizer** of the pan gesture event and the FrameNode of the component.  |
+| type     | string                                                      | Yes  | Listens for the instruction delivery before the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture. The registered callback is triggered before the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture is triggered.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the Obtains the [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent), [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12), and [FrameNode](js-apis-arkui-frameNode.md) of the component.  |
 
 **Example**
 
@@ -1591,7 +1655,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 
-Unsubscribes from the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#events) for the pan gesture. This cancels the callback registered using [on('beforePanEnd')](#onbeforepanend19).
+Unsubscribes from the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) for the pan gesture. This cancels the callback registered using [on('beforePanEnd')](#onbeforepanend19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1601,8 +1665,8 @@ Unsubscribes from the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#eve
 
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'beforePanEnd'**.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered.                              |
+| type     | string                                                      | Yes  | Listens for the instruction delivery before the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture is executed.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered. If this parameter is not passed, the callback for listening to the instruction delivery before the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture is executed is canceled.                              |
 
 **Example**
 
@@ -1612,7 +1676,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 on(type: 'afterPanEnd', callback: PanListenerCallback): void
 
-Subscribes to the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#events) event for the pan gesture, executing the callback after the **onActionEnd** event is triggered. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
+Listens for the instruction delivery after the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture is executed. The callback is executed after the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event is executed. It works for finger swiping, mouse dragging, mouse wheel scrolling, and touchpad movements, but not for screen reader touch mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1622,8 +1686,8 @@ Subscribes to the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#events)
 
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'beforePanEnd'**, which triggers the callback after the **onActionEnd** event of the pan gesture.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the **GestureEvent** and **GestureRecognizer** of the pan gesture event and the FrameNode of the component.  |
+| type     | string                                                      | Yes  | Listens for the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the Pan gesture. The callback function is triggered after the Pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event is triggered.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the Obtains the [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent), [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12), and [FrameNode](js-apis-arkui-frameNode.md) of the component.  |
 
 **Example**
 
@@ -1633,7 +1697,7 @@ See the example for [on('beforePanStart')](#onbeforepanstart19).
 
 off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 
-Unsubscribes from the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#events) for the pan gesture. This cancels the callback registered using [on('afterPanEnd')](#onafterpanend19).
+Unsubscribes from the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) for the pan gesture. This cancels the callback registered using [on('afterPanEnd')](#onafterpanend19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1643,8 +1707,8 @@ Unsubscribes from the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#eve
 
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'afterPanEnd'**.|
-| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered.                              |
+| type     | string                                                      | Yes  | Listens for the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event after the pan gesture is complete.|
+| callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | No  | Callback to be unregistered. If no parameter is passed, the callback for listening to the instruction delivery after the [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event of the pan gesture is executed is canceled.                              |
 
 **Example**
 
@@ -1669,8 +1733,8 @@ Typically, a **RENDER_OUT** notification is received when a component moves off-
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value is fixed at **'nodeRenderState'**, indicating rendering state changes.|
-| nodeIdentity | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes  | Component ID.  |
-| callback | [NodeRenderStateChangeCallback](arkts-apis-uicontext-t.md#noderenderstatechangecallback20) | Yes  | Callback used to return the It provides access to the **NodeRenderState** of the component rendering state change event and the component's FrameNode.  |
+| nodeIdentity | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes  | Node ID.  |
+| callback | [NodeRenderStateChangeCallback](arkts-apis-uicontext-t.md#noderenderstatechangecallback20) | Yes  | Callback used to return the Obtains the [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20) and [FrameNode](js-apis-arkui-frameNode.md) of the component from the node rendering status change event.  |
 
 **Error codes**
 
@@ -1685,18 +1749,22 @@ For details about the error codes, see [Render State Listening Error Codes](erro
 This example demonstrates how to add and remove listeners for a target component. When the user swipes left, the target component disappears from the screen, triggering a **RENDER_OUT** notification. When the user swipes right, the component reappears on the screen, triggering a **RENDER_IN** notification.
 
 ```ts
+// Index.ets
+// Demonstrate uiObserver.on('nodeRenderState', nodeIdentity, callback).
+// uiObserver.off('nodeRenderState', nodeIdentity, callback)
+
 // Used in page components.
-import { NodeRenderState } from '@ohos.arkui.UIContext';
+import { NodeRenderState } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
-  @State fontColor: string = '#182431'
-  @State selectedFontColor: string = '#007DFF'
-  @State currentIndex: number = 0
-  @State selectedIndex: number = 0
-  @State notice: string = ""
-  private controller: TabsController = new TabsController()
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: number = 0;
+  @State selectedIndex: number = 0;
+  @State notice: string = "";
+  private controller: TabsController = new TabsController();
 
   @Builder
   tabBuilder(index: number, name: string) {
@@ -1725,16 +1793,15 @@ struct Index {
                 let node: FrameNode | null = this.getUIContext().getFrameNodeById("button_1");
                 if (node) {
                   let observer = this.getUIContext().getUIObserver();
+                  // Add event listeners.
                   observer.on("nodeRenderState", node?.getUniqueId(), (state: NodeRenderState, node?: FrameNode) => {
-                    if (state === 0)
-                    {
+                    // Modify the notification information based on the node status.
+                    if (state === 0) {
                       this.notice = "RENDER_IN";
-                    }
-                    else
-                    {
+                    } else {
                       this.notice = "RENDER_OUT";
                     }
-                    console.log("Node state changed, current state:", state)
+                    console.info ("Node status changed. Current status: ", state);
                   })
                 }
               })
@@ -1742,7 +1809,8 @@ struct Index {
                 let node: FrameNode | null = this.getUIContext().getFrameNodeById("button_1");
                 if (node) {
                   let observer = this.getUIContext().getUIObserver();
-                  observer.off("nodeRenderState", node?.getUniqueId())
+                  //Cancel listening. If no callback is selected, all listening callbacks are canceled.
+                  observer.off("nodeRenderState", node?.getUniqueId());
                 }
                 this.notice = "";
               })
@@ -1751,7 +1819,7 @@ struct Index {
         }.tabBar(this.tabBuilder(0, 'green'))
 
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
         }.tabBar(this.tabBuilder(1, 'blue'))
 
         TabContent() {
@@ -1768,14 +1836,14 @@ struct Index {
       .barHeight(56)
       .animationDuration(400)
       .onChange((index: number) => {
-        this.currentIndex = index
-        this.selectedIndex = index
+        this.currentIndex = index;
+        this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
         if (index === targetIndex) {
-          return
+          return;
         }
-        this.selectedIndex = targetIndex
+        this.selectedIndex = targetIndex;
       })
       .width(360)
       .height(296)
@@ -1789,7 +1857,7 @@ struct Index {
   }
 }
 ```
-![example](figures/node_render_status.gif)
+
 
 ## off('nodeRenderState')<sup>20+</sup>
 
@@ -1806,8 +1874,8 @@ Unregisters the callback for listening for node rendering state changes.
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value is fixed at **'nodeRenderState'**.|
-| nodeIdentity | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes  | Component ID.  |
-| callback | [NodeRenderStateChangeCallback](arkts-apis-uicontext-t.md#noderenderstatechangecallback20) | No  | Callback to be unregistered.  |                               |
+| nodeIdentity | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | Yes  | Node ID.  |
+| callback | [NodeRenderStateChangeCallback](arkts-apis-uicontext-t.md#noderenderstatechangecallback20) | No  | Callback to be unregistered. If this parameter is not passed, all callbacks for listening to the delivery of node rendering state change instructions are canceled.  |
 
 **Example**
 
@@ -1831,30 +1899,14 @@ Registers a callback to listen for gesture triggerring information.
 | option | [GestureObserverConfigs](arkts-apis-uicontext-i.md#gestureobserverconfigs20) | Yes  |  Configuration options for binding the global listener. |
 | callback | [GestureListenerCallback](arkts-apis-uicontext-t.md#gesturelistenercallback20) | Yes  |  Callback triggered when the gesture state updates. |  
 
-## removeGlobalGestureListener<sup>20+</sup>
-
-removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListenerCallback): void
-
-Unregisters the callback for a specific gesture listener type.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type    | Mandatory| Description      |
-| -------- | ---------- | ---- | --------- |
-| type     | [GestureListenerType](arkts-apis-uicontext-e.md#gesturelistenertype20)    | Yes  | Event type.|
-| callback | [GestureListenerCallback](arkts-apis-uicontext-t.md#gesturelistenercallback20) | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for this gesture type.  |  
-
 **Example**
 
 This example uses global gesture listeners to track the trigger status of three independent areas (**Tap**, **Pan**, and **LongPress**) in real-time, records the trigger count and last operation information for each gesture, and automatically manages the registration and unregistration of listeners during the component's lifecycle.
 
 ```ts
-
-// xxx.ets
+// Index.ets
+//Demonstrate the uiObserver.addGlobalGestureListener(type, option, callback).
+// uiObserver.removeGlobalGestureListener(type, callback)
 
 import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureListenerCallback } from '@kit.ArkUI';
 
@@ -2026,3 +2078,24 @@ struct Index {
 }
 ```
 ![example](figures/pangesture_uiobserver_listener.gif)
+
+## removeGlobalGestureListener<sup>20+</sup>
+
+removeGlobalGestureListener(type: GestureListenerType, callback?: GestureListenerCallback): void
+
+Unregisters the callback for a specific gesture listener type.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description      |
+| -------- | ---------- | ---- | --------- |
+| type     | [GestureListenerType](arkts-apis-uicontext-e.md#gesturelistenertype20)    | Yes  | Event type.|
+| callback | [GestureListenerCallback](arkts-apis-uicontext-t.md#gesturelistenercallback20) | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for this gesture type.  |  
+
+**Example**
+
+See the example for the [addGlobalGestureListener](#addglobalgesturelistener20) API .

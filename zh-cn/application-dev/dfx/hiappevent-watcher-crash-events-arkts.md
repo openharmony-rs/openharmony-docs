@@ -108,6 +108,10 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
             // 开发者可以获取到崩溃事件发生时日志信息
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+            // 开发者可以获取到崩溃事件的故障进程存活时间
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
+            // 开发者可以获取到崩溃事件发生时内存信息
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
             // 开发者可以获取到崩溃事件发生时的崩溃日志文件
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
@@ -195,6 +199,8 @@ HiAppEvent eventInfo.params.uid=20010043
 HiAppEvent eventInfo.params.uuid=b1e953ba0022c112e4502e28e8b3ad6d95cf3c87bae74068038f03b38ce7f66a
 HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON","name":"SyntaxError","stack":"at anonymous (entry/src/main/ets/pages/Index.ets:55:34)"}
 HiAppEvent eventInfo.params.hilog.size=90
+HiAppEvent eventInfo.params.process_life_time=1
+HiAppEvent eventInfo.params.memory={"rss":150748,"sys_avail_mem":5387264,"sys_free_mem":218902,"sys_total_mem":11679236}
 HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1711440614112_2043.log"]
 HiAppEvent eventInfo.params.log_over_limit=false
 HiAppEvent eventInfo.params.test_data=100

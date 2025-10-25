@@ -286,7 +286,7 @@ struct DrawModifierExample {
       end: 2
     });
     this.drawAnimator.onFrame = (value: number) => {
-      console.log('frame value =', value);
+      console.info('frame value =', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
@@ -335,10 +335,10 @@ struct DrawModifierExample {
           .onClick(() => {
             this.count += 1;
             if (this.count % 2 === 1) {
-              console.log('change to full modifier');
+              console.info('change to full modifier');
               this.modifier = this.fullModifier;
             } else {
-              console.log('change to front modifier');
+              console.info('change to front modifier');
               this.modifier = this.frontModifier;
             }
           })

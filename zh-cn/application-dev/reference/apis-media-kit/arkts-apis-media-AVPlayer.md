@@ -1815,7 +1815,7 @@ async function test(){
 
 ## setLoudnessGain<sup>21+</sup>
 
-setLoudnessGain(loudnessGain: double): Promise\<void>
+setLoudnessGain(loudnessGain: number): Promise\<void>
 
 设置播放器的响度。调用该接口后，响度增益立即生效。使用Promise异步回调。
 
@@ -1831,7 +1831,7 @@ setLoudnessGain(loudnessGain: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| loudnessGain | double | 是   |设置播放器的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。|
+| loudnessGain | number | 是   |设置播放器的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。|
 
 **返回值：**
 
@@ -1852,14 +1852,18 @@ setLoudnessGain(loudnessGain: double): Promise\<void>
 **示例：**
 
 ```ts
-let avPlayer = await media.createAVPlayer();
+import { audio } from '@kit.AudioKit';
 
-let loudnessGain: double = 1.0;
-avPlayer.audioRendererInfo = {
-  usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
-  rendererFlags: 0
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+
+  let loudnessGain: number = 1.0;
+  avPlayer.audioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+    rendererFlags: 0
+  }
+  avPlayer.setLoudnessGain(loudnessGain);
 }
-avPlayer.setLoudnessGain(loudnessGain);
 ```
 
 ## setVolume<sup>9+</sup>

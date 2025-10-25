@@ -1,4 +1,10 @@
 # FormComponent (System API)
+<!--Kit: Form Kit-->	
+<!--Subsystem: Ability-->	
+<!--Owner: @cx983299475-->	
+<!--Designer: @xueyulong-->	
+<!--Tester: @chenmingze-->	
+<!--Adviser: @Brilliantry_Rui-->
 
 The **FormComponent** is used to display widgets.
 
@@ -45,9 +51,10 @@ Provides the widget information.
 | bundle    | string                          | Yes  | Bundle name of the widget.                                                         |
 | ability   | string                          | Yes  | Ability name of the widget.                                                  |
 | module    | string                          | Yes  | Module name of the widget.                                                         |
-| dimension | [FormDimension](#formdimension) | No  | Dimensions of the widget. The widgets in the 2 x 2, 4 x 4, and 4 x 2 dimensions are supported.<br>Default value: **Dimension_2_2**|
-| temporary | boolean                         | No  | Whether the widget is a temporary one.                                                   |
+| dimension | [FormDimension](#formdimension) | No  | Dimensions of the widget. The 2 x 2, 4 x 4, 4 x 2, and more options are available.<br>Default value: **Dimension_2_2**|
+| temporary | boolean                         | No  | Whether the widget is a temporary widget. The value true indicates that the widget is a temporary widget, and the value false indicates that the widget is not a temporary widget.<br>Default value: **false**.|
 | renderingMode | [FormRenderingMode](#formrenderingmode11) | No  | Widget rendering mode. The options are as follows:<br>- **FULL_COLOR** (default): full color mode, where the widget framework does not change the widget effect, which means that the widget is displayed in the effect as you set it.<br>- **SINGLE_COLOR**: single color mode, where the widget framework sets the widget background to transparent. In this mode you need to set the widget style based on the best practices.<br>**NOTE**<br>If the system does not support unified rendering, the widget framework does not set the widget background to transparent in single color mode.|
+| exemptAppLock<sup>20+</sup> |boolean        | No  | Whether the widget is exempted from the app lock. If the value is true, the widget is not managed by the app lock and the app lock mask is not displayed when the app lock is added to the app to which the widget belongs. If the value is false, the widget is managed by the app lock and the app lock mask is displayed when the app lock is added to the app to which the widget belongs.<br>Default value: **false**.|
 
 ## FormCallbackInfo<sup>12+</sup>
 
@@ -57,7 +64,24 @@ Represents the parameters for obtaining a widget ID (**formId**) when querying o
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | id        | number                 | Yes  | Widget ID of the number type.<br>**NOTE**<br>If the obtained ID is **-1**, the ID is greater than or equal to 2^53. In this case, you need to use **idString** to obtain the ID.                                       |
 | idString      | string            | Yes          | Widget ID of the string type.                            |
-| isLocked<sup>18+</sup>  |boolean  | Yes          | Whether the widget is [locked](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18). The value **true** means that the widget is locked, and **false** means the opposite.    |
+
+## FormSize<sup>18+</sup>
+
+Widget size information.
+
+| Name   | Type                       | Mandatory| Description   |
+| --------- | ------------------------------- | ---- |---------|
+| width        | number                 | Yes  | Width of the widget, in vp.|
+| height      | number            | Yes          | Height of the widget, in vp.|
+
+## ErrorInformation<sup>18+</sup>
+
+Card error information.
+
+| Name   | Type                       | Mandatory| Description                                                               |
+| --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
+| errcode        | number                 | Yes  | [Error code](../../apis-form-kit/errorcode-form.md).                                       |
+| msg      | string            | Yes          | Error message.                            |
 
 ## FormDimension
 
@@ -67,7 +91,7 @@ Represents the parameters for obtaining a widget ID (**formId**) when querying o
 | Dimension_2_2              | 2 x 2 widget.|
 | Dimension_2_4              | 2 x 4 widget.|
 | Dimension_4_4              | 4 x 4 widget.|
-| Dimension_2_1<sup>9+</sup> | 2 x 1 widget.|
+| Dimension_2_1<sup>(deprecated)</sup> | 2 x 1 widget.<br>Note: This field is supported since API version 9 and deprecated since API version 20.|
 | Dimension_1_1<sup>11+</sup> | 1 x 1 widget.|
 | Dimension_6_4<sup>12+</sup> | 6 x 4 widget.|
 | Dimension_2_3<sup>18+</sup> | 2 x 3 widget. Available for wearable devices.|
@@ -81,9 +105,9 @@ Represents the parameters for obtaining a widget ID (**formId**) when querying o
 
 ## Attributes
 
-### size
+### size<sup>18+</sup>
 
-size(value: { width: number; height: number })
+size(formSize: FormSize)
 
 Sets the size for the widget.
 
@@ -95,7 +119,7 @@ Sets the size for the widget.
 
 | Name| Type                                                     | Mandatory| Description      |
 | ------ | --------------------------------------------------------- | ---- | ---------- |
-| value  | {<br>width?: number,<br>height?: number<br>} | Yes  | Width and height.|
+| formSize  | [FormSize](#formsize18) | Yes  | Width and height.|
 
 ### moduleName
 
@@ -117,7 +141,7 @@ Sets the module name for the widget.
 
 dimension(value: FormDimension)
 
-Sets the dimensions for the widget. The 2 x 2, 4 x 4, and 4 x 2 options are available.
+Sets the dimensions for the widget. The 2 x 2, 4 x 4, 4 x 2, and more options are available.
 
 **System API**: This is a system API.
 
@@ -143,7 +167,7 @@ Sets whether to allow the widget to update.
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether to allow the widget to update.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether the widget can be updated. true: The widget can be updated. false: The widget cannot be updated.<br>Default value: **true**.|
 
 ### visibility
 
@@ -165,9 +189,9 @@ Sets whether the widget is visible.
 
 ### onAcquired
 
-onAcquired(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)): FormComponentAttribute
+onAcquired(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)) 
 
-Called when the widget is obtained.
+Triggered when the widget is obtained.
 
 **System API**: This is a system API.
 
@@ -177,13 +201,13 @@ Called when the widget is obtained.
 
 | Name| Type                               | Mandatory| Description      |
 | ------ | ----------------------------------- | ---- | ---------- |
-| Callback | [FormCallbackInfo](#formcallbackinfo12) | Yes  | Widget ID.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback function, which is used to obtain the FormCallbackInfo object.|
 
-### onError
+### onError<sup>18+</sup>
 
-onError(callback: (info: { errcode: number; msg: string }) => void)
+onError(callback: Callback\<ErrorInformation\>)
 
-Called when an error occurs during component loading.
+Called when a widget loading error occurs.
 
 **System API**: This is a system API.
 
@@ -193,13 +217,13 @@ Called when an error occurs during component loading.
 
 | Name| Type                                                        | Mandatory| Description                                           |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| info   |  { errcode: number, msg: string } | Yes  | **errcode**: error code.<br>**msg**: error message.|
+| callback   | Callback<[ErrorInformation](#errorinformation18)> | Yes  | **errcode**: error code.<br>**msg**: error message.|
 
-### onRouter
+### onRouter<sup>18+</sup>
 
-onRouter(callback: (info: any) =&gt; void)
+onRouter(callback: Callback\<object\>)
 
-Called when routing occurs for the widget. This API returns information in [routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#event-binding).
+Triggered when the widget is tapped.
 
 **System API**: This is a system API.
 
@@ -207,15 +231,15 @@ Called when routing occurs for the widget. This API returns information in [rout
 
 **Parameters**
 
-| Name| Type| Mandatory| Description                                                        |
-| ------ | ---- | ---- | ------------------------------------------------------------ |
-| info   | any  | Yes  | Information in [routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#event-binding).|
+| Name | Type| Mandatory| Description                                                        |
+|------| - | ---- | ------------------------------------------------------------ |
+| callback | Callback\<object\>  | Yes  | [routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#event-binding) object obtained.|
 
 ### onUninstall
 
-onUninstall(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)): FormComponentAttribute
+onUninstall(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)) 
 
-Called when the widget is uninstalled. This API returns the ID of the uninstalled widget.
+Triggered when the widget is uninstalled.
 
 **System API**: This is a system API.
 
@@ -223,10 +247,41 @@ Called when the widget is uninstalled. This API returns the ID of the uninstalle
 
 **Parameters**
 
-| Name| Type                               | Mandatory| Description      |
-| ------ | ----------------------------------- | ---- | ---------- |
-| Callback   | [FormCallbackInfo](#formcallbackinfo12) | Yes  | Widget ID.|
+| Name     | Type                               | Mandatory| Description      |
+|----------| ----------------------------------- | ---- | ---------- |
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the FormCallbackInfo object.|
 
+### onLoad<sup>18+</sup>
+
+onLoad(callback: VoidCallback)
+
+Triggered when the widget is loaded.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name     | Type                               | Mandatory| Description      |
+|----------| ----------------------------------- | ---- | ---------- |
+| callback | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Promise that returns no value.|
+
+### onUpdate<sup>18+</sup>
+
+onUpdate(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)) 
+
+Triggered when the widget is updated.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name     | Type                               | Mandatory| Description      |
+|----------| ----------------------------------- | ---- | ---------- |
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the FormCallbackInfo object.|
 
 ## Example
 
@@ -276,6 +331,9 @@ struct CardExample {
           } else {
             this.formId = form.id.toString();
           }
+        })
+        .onUpdate((form: FormCallbackInfo)=>{
+          console.log(`form update done : ${JSON.stringify(form)}`);
         })
     }
     .width('100%')

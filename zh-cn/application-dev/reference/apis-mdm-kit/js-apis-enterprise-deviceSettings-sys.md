@@ -612,5 +612,5 @@ try {
 | NONE | 0 | 不执行动作。 |
 | AUTO_SUSPEND | 1 | 自动进入睡眠。 |
 | FORCE_SUSPEND | 2 | 强制进入睡眠。 |
-| HIBERNATE | 3 | 进入休眠。（当前电源子系统暂不支持） |
+| HIBERNATE | 3 | 进入休眠，该策略暂不生效。 |
 | SHUTDOWN | 4 | 关机。 |

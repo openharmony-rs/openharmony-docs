@@ -57,7 +57,7 @@ The access control mechanism ensures secure data storage and sync across devices
 
 ## Setting the Security Level for a KV Store
 
-When a KV store is created, the **securityLevel** parameter specifies the security level of the KV store. The following example shows how to create a KV store with security level of S3.
+When a KV store is created, the **securityLevel** parameter specifies the security level of the KV store. For details about the security level, see [SecurityLevel](../reference/apis-arkdata/js-apis-distributedKVStore.md#securitylevel). The following example shows how to create a KV store with security level of S3.
 
 For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 > **NOTE**
@@ -119,7 +119,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Setting the Security Level for an RDB Store 
 
-When an RDB store is created, the **securityLevel** parameter specifies the security level of the RDB store. The following example shows how to create an RDB store with security level of S3.
+When an RDB store is created, the **securityLevel** parameter specifies the security level of the RDB store. For details about the security levels, see [SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel). The following example shows how to create an RDB store with security level of S3.
 
 For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 

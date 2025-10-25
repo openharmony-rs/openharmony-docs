@@ -27,3 +27,7 @@ ArkUI使用@Builder装饰器为开发者提供代码精简方案。该装饰器�
 ## wrapBuilder机制
 
 当页面中存在多个不同UI结构的全局@Builder函数时，维护成本较高。框架提供了[wrapBuilder](./arkts-wrapBuilder.md)机制来简化代码维护工作。
+
+## mutableBuilder机制
+
+当前[wrapBuilder](./arkts-wrapBuilder.md)不支持二次赋值， 即动态切换\@Builder, UI不会发生变化。框架提供[mutableBuilder](./arkts-mutableBuilder.md)用于支持\@Builder动态切换。

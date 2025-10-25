@@ -17,7 +17,7 @@
 ## 导入模块
 
 ```ts
-import deviceStandby from '@ohos.resourceschedule.deviceStandby';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 ```
 
 ## deviceStandby.getExemptedApps
@@ -56,7 +56,8 @@ getExemptedApps(resourceTypes: number, callback: AsyncCallback<Array&lt;Exempted
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resourceTypes: deviceStandby.ResourceType  = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
 deviceStandby.getExemptedApps(resourceTypes, (err: BusinessError, res: Array<deviceStandby.ExemptedAppInfo>) => {
@@ -112,7 +113,8 @@ getExemptedApps(resourceTypes: number): Promise<Array&lt;ExemptedAppInfo&gt;>
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { deviceStandby } from '@kit.BackgroundTasksKit';
 
 let resourceTypes: deviceStandby.ResourceType = deviceStandby.ResourceType.TIMER | deviceStandby.ResourceType.NETWORK;
 deviceStandby.getExemptedApps(resourceTypes).then( (res: Array<deviceStandby.ExemptedAppInfo>) => {
@@ -160,6 +162,8 @@ requestExemptionResource(request: ResourceRequest): void
 **示例**：
 
 ```ts
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
 let resRequest: deviceStandby.ResourceRequest = {
   resourceTypes: deviceStandby.ResourceType.TIMER,
   uid:10003,
@@ -205,6 +209,8 @@ releaseExemptionResource(request: ResourceRequest): void
 **示例**：
 
 ```ts
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+
 let resRequest: deviceStandby.ResourceRequest = {
   resourceTypes: deviceStandby.ResourceType.TIMER,
   uid:10003,
@@ -239,11 +245,11 @@ deviceStandby.releaseExemptionResource(resRequest);
 **系统能力:** SystemCapability.ResourceSchedule.DeviceStandby
 
 
-|名称  |类型   | 必填   |说明   |
-| ------------ | ------------ |------------ | ------------ |
-|resourceTypes   | number  | 是   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
-|name   |string   | 是   |  应用名。  |
-|duration   | number  | 是   | 豁免时长。 |
+|名称  |类型   | 只读   | 可选   |说明   |
+| ------------ | ------------ |------------ |------------ | ------------ |
+|resourceTypes   | number  | 否   | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
+|name   |string   | 否   | 否   |  应用名。  |
+|duration   | number  | 否   | 否   | 豁免时长。 |
 
 ## ResourceRequest
 
@@ -252,10 +258,10 @@ deviceStandby.releaseExemptionResource(resRequest);
 **系统能力:** SystemCapability.ResourceSchedule.DeviceStandby
 
 
-|名称   |类型   | 必填   |说明   |
-| ------------ | ------------ |------------| ------------ |
-|resourceTypes   | number  | 是   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
-|uid   | number  | 是   |应用uid。   |
-|name   |string   | 是   | 应用名称。  |
-|duration   | number  | 是   | 豁免时长。 |
-|reason   |string   | 是   |  申请原因。  |
+|名称   |类型   | 只读  | 可选   |说明   |
+| ------------ | ------------ |------------ |------------| ------------ |
+|resourceTypes   | number  | 否 | 否   |资源类型，类型具体说明请参考[ResourceType](#resourcetype)。   |
+|uid   | number  | 否  | 否   |应用uid。   |
+|name   |string   | 否 | 否    | 应用名称。  |
+|duration   | number    | 否 | 否    | 豁免时长。 |
+|reason   |string   | 否  | 否   |  申请原因。  |

@@ -58,6 +58,8 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -115,6 +117,8 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -181,6 +185,8 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -248,7 +254,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 | 参数名   | 类型                     | 必填 | 说明         |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 | callback | AsyncCallback\<boolean\> | 是   | 回调函数。true:发送请求创建成功；false:发送请求创建失败。   |
 
 **错误码：**
@@ -311,7 +317,7 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 
 **返回值：**
 
@@ -512,7 +518,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-订阅WebSocket的打开事件，使用callback方式作为异步方法。
+订阅WebSocket的打开事件，使用callback方式作为异步方法。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect6)发起连接请求前调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -978,7 +984,7 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。 |
+| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 | connection | [WebSocketConnection](#websocketconnection19) | 是  | 发送的客户端信息。                              |
 
 **返回值：**
@@ -1460,8 +1466,8 @@ localServer.off('error');
 | proxy<sup>12+</sup> | ProxyConfiguration |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。 |
 | protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。              |
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
-| pingInterval<sup>21+</sup> | int | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
-| pongTimeout<sup>21+</sup> | int | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
+| pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
+| pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
 
 ## ClientCert<sup>11+</sup>
 

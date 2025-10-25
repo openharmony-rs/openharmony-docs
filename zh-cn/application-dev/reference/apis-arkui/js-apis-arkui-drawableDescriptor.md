@@ -44,7 +44,7 @@ import {
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
 let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($('app.media.gif'), this.options)
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options)
 try {
     // 可以提前手动加载动图资源到内存中。
     let result: DrawableDescriptorLoadedResult = this.drawable.loadSync()
@@ -519,14 +519,14 @@ struct Index {
 | :--------- | :----- | :----| :----| :-------------------------------------- |
 | duration   | number | 否   | 是  | 设置图片数组播放总时间。<br/>PixelMap数组的默认值是每张图片播放1秒。本地图片或者应用资源的默认值是图片资源中携带的播放时延。<br/>单位：毫秒<br/> 取值范围：[0, +∞)<br>设置负数取默认值。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | iterations | number | 否   | 是 |设置图片数组播放次数。<br/>值为-1时表示无限播放，值为0时表示不播放，值大于0时表示有限的播放次数。<br/>默认值为1。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| frameDurations<sup>21+</sup> | Array\<number> | 否 | 是 |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| frameDurations<sup>21+</sup> | Array\<number> | 否 | 是 |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | autoPlay<sup>21+</sup> | boolean | 否  | 是 |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
 ```ts
 import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
-import image from '@kit.ImageKit';
+import { image } from '@kit.ImageKit';
 
 @Entry
 @Component
@@ -542,9 +542,13 @@ struct Example {
   @State animated?: DrawableDescriptor = undefined;
 
   aboutToAppear() {
+    // $r('app.media.png1')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png1')));
+     // $r('app.media.png2')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png2')));
+     // $r('app.media.png3')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png3')));
+     // $r('app.media.png4')需要替换为开发者所需的图像资源文件。
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png4')));
     this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
   }
@@ -674,6 +678,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } fro
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -707,6 +712,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } fro
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -760,6 +766,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -796,6 +803,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -832,7 +840,8 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
-  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($('app.media.gif'), this.options);
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
     Column() {
@@ -868,6 +877,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -910,6 +920,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   statusToString(status: AnimationStatus): string {

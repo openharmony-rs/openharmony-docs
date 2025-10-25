@@ -1,4 +1,4 @@
-# SystemCapability List
+# Wearable
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->

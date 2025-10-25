@@ -4,7 +4,7 @@
 <!--Owner: @zyj208-->
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 ## When to Use
 
 The **ImageEffect** class provides a series of APIs for editing an image. You can use the APIs to implement various filter effects on images of different input types (pixel map, native window, native buffer, or URI).
@@ -136,7 +136,7 @@ Add the following dynamic link libraries based on the image type: **libpixelmap.
     	OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputTextureId fail!");
         return;
     }
-    
+
     // Set the output texture ID. Note that the output texture ID cannot be the same as the input texture ID. Otherwise, rendering exceptions may occur.
     errorCode = OH_ImageEffect_SetOutputTextureId(imageEffect, outputTex);
     if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
@@ -167,10 +167,10 @@ Add the following dynamic link libraries based on the image type: **libpixelmap.
      .onLoad(() => {
          // Obtain the surface ID of the XComponent.
          this.mSurfaceId = this.mXComponentController.getXComponentSurfaceId()
-     
+ 
          // Obtain the input surface ID.
          this.mSurfaceId = imageEffect.getSurfaceId(this.mSurfaceId)
-     
+ 
          // Call the camera API to start preview and transfer the input surface ID to the camera framework.
          // ...
      })

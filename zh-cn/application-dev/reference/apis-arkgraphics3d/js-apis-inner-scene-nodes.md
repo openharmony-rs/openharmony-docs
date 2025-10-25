@@ -105,6 +105,7 @@ function layerMask(): void {
 | GEOMETRY | 2 | 几何类型结点。 |
 | CAMERA | 3 | 相机类型结点。 |
 | LIGHT | 4 | 灯光类型结点。 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
 
 ## Container\<T>
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
@@ -391,9 +392,21 @@ function getNode(): void {
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
 ## SpotLight
-点光源类型，继承自[Light](#light)。
+聚光灯类型，继承自[Light](#light)。
+
+聚光灯会朝某个方向发出锥形光，强度随着圆锥角度的衰减由innerAngle和outerAngle两个参数定义。另外与点光源类似，强度也会随着距离光源位置的增加而衰减。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| innerAngle<sup>22+</sup> | number | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。 |
+| outerAngle<sup>22+</sup> | number | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 |
+
+> **注意：** 
+> 
+> 用户需要保证设置的innerAngle与outerAngle值是合理的。当outerAngle设置的值大于PI/2时，内部会强制其等于PI/2。当outerAngle设置的值小于innerAngle时，内部会强制其等于innerAngle。
+
 
 ## DirectionalLight
 平行光类型，继承自[Light](#light)。
@@ -415,7 +428,9 @@ function getNode(): void {
 | farPlane | number | 否 | 否 | 远平面，取值大于nearPlane。 |
 | enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。 |
 | clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。） |
 
 ### raycast<sup>20+</sup>
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>

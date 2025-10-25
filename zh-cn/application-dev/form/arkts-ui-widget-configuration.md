@@ -81,7 +81,7 @@
    | updateDuration | 表示[卡片定时刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)的更新周期，单位为30分钟，取值为自然数。<br/>当取值为0时，表示该参数不生效。<br/>当取值为正整数N时，表示刷新周期为30\*N分钟。<br/>**说明：**<br/>updateDuration参数优先级高于scheduledUpdateTime，两者同时配置时，以updateDuration配置的刷新时间为准。 | 数值 | 可缺省，缺省值为0。 |
    | formConfigAbility | 表示桌面点击编辑后，需要拉起的ability路径，采用URI格式。| 字符串 | 可缺省，缺省值为空。 |
    | metadata | 表示卡片的自定义信息，参考[Metadata](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)数组标签。 | 对象 | 可缺省，缺省值为空。 |
-   | <!--DelRow-->dataProxyEnabled | 表示卡片是否支持[卡片代理刷新](./arkts-ui-widget-update-by-proxy.md)，取值范围：<br/>-&nbsp;true：表示支持代理刷新。<br/>-&nbsp;false：表示不支持代理刷新。<br/>设置为true时，[定时刷新和下次刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)不生效，但不影响[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)。 | 布尔类型 | 可缺省，缺省值为false。 |
+   | <!--DelRow-->dataProxyEnabled | 表示卡片是否支持[卡片代理刷新](./arkts-ui-widget-update-by-proxy-sys.md)，取值范围：<br/>-&nbsp;true：表示支持代理刷新。<br/>-&nbsp;false：表示不支持代理刷新。<br/>设置为true时，[定时刷新和下次刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)不生效，但不影响[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)。 | 布尔类型 | 可缺省，缺省值为false。 |
    | isDynamic | 表示此卡片是否为动态卡片（仅针对ArkTS卡片生效）。 <br/>-&nbsp;true：为[动态卡片](./arkts-form-overview.md#动态卡片) 。<br/>-&nbsp;false：为[静态卡片](./arkts-form-overview.md#静态卡片)。<br/>| 布尔类型 | 可缺省，缺省值为true。 |
    | fontScaleFollowSystem | 表示卡片使用方设置此卡片的字体是否支持跟随系统变化。 <br/>-&nbsp;true：支持跟随系统字体大小变化。<br/>-&nbsp;false：不支持跟随系统字体大小变化。<br/>| 布尔类型 | 可缺省，缺省值为true。 |
    | supportShapes | 表示卡片的显示形状，取值范围如下：<br/>-&nbsp;rect：表示矩形卡片。<br/>-&nbsp;circle：表示圆形卡片。| 字符串数组 | 可缺省，缺省值为“rect”。 |
@@ -89,7 +89,7 @@
    | <!--DelRow-->formVisibleNotify | 表示是否通知卡片提供方可见状态变化（仅对系统应用的卡片生效）。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 | 布尔类型 | 可缺省，缺省值为false。 |
    | <!--DelRow-->transparencyEnabled | 表示是否为透明卡片（仅对系统应用的ArkTS卡片生效）。 <br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。<br/>| 布尔类型 | 可缺省，缺省值为false。 |
    |enableBlurBackground|表示卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|布尔类型|可缺省，缺省值为false。|
-   |renderingMode|表示卡片的渲染模式，取值范围如下：<br/>-&nbsp;autoColor：自动模式，呈现效果可以根据卡片使用方确定最终是全彩模式还是单色模式。<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到桌面或锁屏上。<br/>-&nbsp;fullColor：全彩模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片不允许被卡片使用方修改，卡片配置了该模式就可以添加到桌面上。<br/>-&nbsp;单色模式，通过透明度和模糊区分元素，不使用任何色相<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到锁屏上<br/>**说明：**<br/>从API version 15开始，支持该字段。	|字符串|可缺省，缺省值为“fullColor”。|
+   |renderingMode|表示卡片的渲染模式，取值范围如下：<br/>-&nbsp;autoColor：自动模式，呈现效果可以根据卡片使用方确定最终是全彩模式还是单色模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到桌面或锁屏上。<br/>-&nbsp;fullColor：全彩模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片不允许被卡片使用方修改，卡片配置了该模式就可以添加到桌面上。<br/>-&nbsp;singleColor：单色模式，通过透明度和模糊区分元素，不使用任何色相<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到锁屏上。<br/>**说明：**<br/>从API version 15开始，支持该字段。	|字符串|可缺省，缺省值为“fullColor”。|
    |multiScheduledUpdateTime|表示卡片的多定点刷新的时刻，作为单点刷新的一个附加参数，采用24小时制，精确到分钟，多个时间用英文逗号分隔，最多写24个时间。<br/>**说明：**<br/>multiScheduledUpdateTime需要配合scheduledUpdateTime使用。|字符串|可缺省，缺省时不进行多定点刷新。|
    |conditionUpdate|表示卡片的支持的条件刷新（仅对系统应用的ArkTS卡片生效）。取值范围如下：<br/>-&nbsp;network：表示支持网络刷新。|字符串|可缺省，缺省值为空字符串。|
    |[funInteractionParams](#funinteractionparams标签)| 趣味交互类型互动卡片扩展字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|

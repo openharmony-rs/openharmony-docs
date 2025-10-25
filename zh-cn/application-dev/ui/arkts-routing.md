@@ -42,17 +42,26 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景一：有一个主页（Home）和一个详情页（Detail），希望从主页点击一个商品，跳转到详情页。同时，需要保留主页在页面栈中，以便返回时恢复状态。这种场景下，可以使用pushUrl方法，并且使用Standard实例模式（或者省略）。
 
   ```ts
-  // 在Home页面中
-  onJumpClick(): void {
-    this.getUIContext().getRouter().pushUrl({
-      url: 'pages/Detail' // 目标url
-    }, router.RouterMode.Standard, (err) => {
-      if (err) {
-        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke pushUrl succeeded.');
-    });
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // 在Home页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().pushUrl({
+        url: 'pages/Detail' // 目标url
+      }, router.RouterMode.Standard, (err) => {
+        if (err) {
+          console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke pushUrl succeeded.');
+      });
+    }
+
+    build() {
+    }
   }
   ```
 
@@ -63,17 +72,26 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景二：有一个登录页（Login）和一个个人中心页（Profile），希望从登录页成功登录后，跳转到个人中心页。同时，销毁登录页，在返回时直接退出应用。这种场景下，可以使用replaceUrl方法，并且使用Standard实例模式（或者省略）。
 
   ```ts
-  // 在Login页面中
-  onJumpClick(): void {
-    this.getUIContext().getRouter().replaceUrl({
-      url: 'pages/Profile' // 目标url
-    }, router.RouterMode.Standard, (err) => {
-      if (err) {
-        console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke replaceUrl succeeded.');
-    })
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // 在Login页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().replaceUrl({
+        url: 'pages/Profile' // 目标url
+      }, router.RouterMode.Standard, (err) => {
+        if (err) {
+          console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke replaceUrl succeeded.');
+      })
+    }
+
+    build() {
+    }
   }
   ```
 
@@ -84,34 +102,52 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景三：有一个设置页（Setting）和一个主题切换页（Theme），希望从设置页点击主题选项，跳转到主题切换页。同时，需要保证每次只有一个主题切换页存在于页面栈中，在返回时直接回到设置页。这种场景下，可以使用pushUrl方法，并且使用Single实例模式。
 
   ```ts
-  // 在Setting页面中
-  onJumpClick(): void {
-    this.getUIContext().getRouter().pushUrl({
-      url: 'pages/Theme' // 目标url
-    }, router.RouterMode.Single, (err) => {
-      if (err) {
-        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke pushUrl succeeded.');
-    });
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // 在Setting页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().pushUrl({
+        url: 'pages/Theme' // 目标url
+      }, router.RouterMode.Single, (err) => {
+        if (err) {
+          console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke pushUrl succeeded.');
+      });
+    }
+
+    build() {
+    }
   }
   ```
 
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
 
   ```ts
-  // 在SearchResult页面中
-  onJumpClick(): void {
-    this.getUIContext().getRouter().replaceUrl({
-      url: 'pages/SearchDetail' // 目标url
-    }, router.RouterMode.Single, (err) => {
-      if (err) {
-        console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke replaceUrl succeeded.');
-    })
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // 在SearchResult页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().replaceUrl({
+        url: 'pages/SearchDetail' // 目标url
+      }, router.RouterMode.Single, (err) => {
+        if (err) {
+          console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke replaceUrl succeeded.');
+      })
+    }
+
+    build() {
+    }
   }
   ```
 

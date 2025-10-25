@@ -132,9 +132,9 @@ struct Index {
         additionFilters: this.additionParam,
         filterType: FilterType.MULTI_LINE_FILTER,
         onFilterChanged: (select: Array<FilterResult>) => {
-          console.log('rec filter change');
+          console.info('rec filter change');
           for (let filter of select) {
-            console.log('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
+            console.info('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
           }
         }
       }) {

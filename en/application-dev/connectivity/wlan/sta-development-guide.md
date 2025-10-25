@@ -6,7 +6,6 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-
 ## Introduction
 The Wi-Fi STA mode (that is, station mode) enables wireless devices to connect to a wireless local area network (WLAN) as clients. In this mode, devices such as mobile phones, computers, and tablets can access the network by connecting to an access point (AP) or wireless router.
 
@@ -46,41 +45,42 @@ The following table describes the related APIs.
 5. Sample code:
 
 ```ts
-   import { wifiManager } from '@kit.ConnectivityKit';
-   try {
-   let recvPowerNotifyFunc = (result:number) => {
-     let wifiState = "";
-       switch (result) {
-       case 0:
-       wifiState += 'DISABLING';
-       break;
-       case 1:
-       wifiState += 'DISABLED';
-       break;
-       case 2:
-       wifiState += 'ENABLING';
-       break;
-       case 3:
-       wifiState += 'ENABLED';
-       break;
-       default:
-       wifiState += 'UNKNOWN STATUS';
-       break;
-     }
-   }
-     // Subscribe to Wi-Fi connection state changes.
-     wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
-     // Check whether Wi-Fi is enabled.
-     let isWifiActive = wifiManager.isWifiActive();
-     if (!isWifiActive) {
-       console.info("Wi-Fi not enabled"); // Enable Wi-Fi manually.
-       return;
-     }
+import { wifiManager } from '@kit.ConnectivityKit';
 
-     wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
-   } catch (error) {
-     console.error(`WiFi state monitor failed. ${error.message}`);
-   }
+try {
+  let recvPowerNotifyFunc = (result: number) => {
+    let wifiState = "";
+    switch (result) {
+      case 0:
+        wifiState += 'DISABLING';
+        break;
+      case 1:
+        wifiState += 'DISABLED';
+        break;
+      case 2:
+        wifiState += 'ENABLING';
+        break;
+      case 3:
+        wifiState += 'ENABLED';
+        break;
+      default:
+        wifiState += 'UNKNOWN STATUS';
+        break;
+    }
+  }
+  // Subscribe to Wi-Fi connection state changes.
+  wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
+  // Check whether Wi-Fi is enabled.
+  let isWifiActive = wifiManager.isWifiActive();
+  if (!isWifiActive) {
+    console.info("Wi-Fi not enabled"); // Enable Wi-Fi manually.
+    return;
+  }
+
+  wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
+} catch (error) {
+  console.error(`WiFi state monitor failed. ${error.message}`);
+}
 ```
 
 ### Establishing a Wi-Fi Connection
@@ -94,27 +94,27 @@ The following table describes the related APIs.
    import { wifiManager } from '@kit.ConnectivityKit';
 
    try {
-       let recvWifiConnectionChangeFunc = (result:number) => {
+     let recvWifiConnectionChangeFunc = (result: number) => {
        console.info("Receive wifi connection change event: " + result);
      }
 
-     let config:wifiManager.WifiDeviceConfig = {
-       ssid : "****",
-       bssid : "****",
-       preSharedKey : "****",
-       securityType : 0
-	   }
+     let config: wifiManager.WifiDeviceConfig = {
+       ssid: "****",
+       bssid: "****",
+       preSharedKey: "****",
+       securityType: 0
+     }
 
-       // Update the current Wi-Fi connection status.
+     // Update the current Wi-Fi connection status.
      wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
-       // Add candidate network configurations.
-	   wifiManager.addCandidateConfig(config).then(result => {
+     // Add candidate network configurations.
+     wifiManager.addCandidateConfig(config).then(result => {
        // Connect to the specified network.
        wifiManager.connectToCandidateConfig(result);
      });
 
      if (!wifiManager.isConnected()) {
-         console.info("Wi-Fi not connected");
+       console.info("Wi-Fi not connected");
      }
      // Obtain link information.
      wifiManager.getLinkedInfo().then(data => {
@@ -123,7 +123,7 @@ The following table describes the related APIs.
      // Query the signal strength.
      let rssi = -88;
      let band = 1;
-     let level = wifiManager.getSignalLevel(rssi,band);
+     let level = wifiManager.getSignalLevel(rssi, band);
      console.info("level:" + JSON.stringify(level));
 
      // Unsubscribe from Wi-Fi connection state changes.

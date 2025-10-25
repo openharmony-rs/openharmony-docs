@@ -35,7 +35,7 @@
 | [BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)](#oh_nativebundle_getbundlename) | 获取组件的包名。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。 |
 | [BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)](#oh_nativebundle_getmodulename) | 获取组件的模块名。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。 |
 | [BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)](#oh_nativebundle_getabilityname) | 获取组件名。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。 |
-| [BundleManager_ErrorCode OH_NativeBundle_GetIcon(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** icon)](#oh_nativebundle_geticon) | 获取组件的图标资源。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。 |
+| [BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)](#oh_nativebundle_getdrawabledescriptor) | 获取组件图标资源对应的[DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象。在使用该接口之后，为了防止内存泄漏，需要手动调用[OH_AbilityResourceInfo_Destroy](#oh_abilityresourceinfo_destroy)释放接口返回的指针。 |
 | [BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)](#oh_nativebundle_getlabel) | 获取组件的应用名称。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。 |
 | [BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)](#oh_nativebundle_getappindex) | 获取组件的分身索引。 |
 | [BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)](#oh_nativebundle_checkdefaultapp) | 查询组件所属的应用是否为默认应用。 |
@@ -68,7 +68,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityRes
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果获取成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果获取失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_NativeBundle_GetModuleName()
 
@@ -94,7 +94,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityRes
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果获取成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果获取失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_NativeBundle_GetAbilityName()
 
@@ -120,17 +120,17 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityRe
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果获取成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果获取失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
-### OH_NativeBundle_GetIcon()
+### OH_NativeBundle_GetDrawableDescriptor()
 
 ```
-BundleManager_ErrorCode OH_NativeBundle_GetIcon(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** icon)
+BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
 ```
 
 **描述**
 
-获取组件的图标资源。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
+获取组件图标资源对应的[DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象。在使用该接口之后，为了防止内存泄漏，需要手动调用[OH_AbilityResourceInfo_Destroy](#oh_abilityresourceinfo_destroy)释放接口返回的指针。
 
 **起始版本：** 21
 
@@ -140,13 +140,13 @@ BundleManager_ErrorCode OH_NativeBundle_GetIcon(OH_NativeBundle_AbilityResourceI
 | 参数项 | 描述 |
 | -- | -- |
 | OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo | 指定组件资源信息。 |
-| char** icon | 图标资源对应的base64编码。 |
+| ArkUI_DrawableDescriptor** drawableIcon | 组件图标资源对应的[DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果获取成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果获取失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_NativeBundle_GetLabel()
 
@@ -172,7 +172,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResource
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果获取成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果获取失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_NativeBundle_GetAppIndex()
 
@@ -198,7 +198,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResou
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果获取成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果获取失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_NativeBundle_CheckDefaultApp()
 
@@ -224,7 +224,7 @@ BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityR
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果查询成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果查询失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_AbilityResourceInfo_Destroy()
 
@@ -250,7 +250,7 @@ BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityRe
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果操作成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果abilityResourceInfo为空指针，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。 |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | 执行结果。<br>         如果释放成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。<br>         如果释放失败，返回[BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID](capi-bundle-manager-common-h.md#bundlemanager_errorcode)，这是由于abilityResourceInfo为空指针所致。 |
 
 ### OH_NativeBundle_GetSize()
 

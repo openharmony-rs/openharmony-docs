@@ -194,7 +194,10 @@ Common inner error.
 
 **可能原因**
 
-系统服务内部错误。
+1. 系统服务内部错误。
+2. 数据库错误。
+3. 创建弹窗失败或者获取用户选择结果失败。
+4. 查询用户下的所有应用失败。
 
 **处理步骤**
 
@@ -287,6 +290,7 @@ Unexpected permission.
 
 1. [再次拉起权限设置弹框](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)时，传入了manual_settings授权方式的权限。
 2. 授权或取消授权时，传入了非user_grant和manual_settings授权方式的权限。
+3. [拉起跳转设置页弹窗](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)时，传入了非manual_settings授权方式的权限。
 
 **处理步骤**
 

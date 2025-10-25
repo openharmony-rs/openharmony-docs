@@ -1,4 +1,10 @@
 # Custom Component Lifecycle
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @seaside_wu1; @huyisuo-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 The lifecycle callbacks of a custom component are used to notify users of the lifecycle of the component. These callbacks are private and are invoked by the development framework at a specified time at runtime. They cannot be manually invoked from applications. Do not reuse the same custom component node across multiple windows, as otherwise its lifecycle may become disrupted.
 
@@ -7,12 +13,23 @@ The lifecycle callbacks of a custom component are used to notify users of the li
 >- The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >- Promise and asynchronous callback functions can be used in lifecycle functions, for example, network resource getters and timer setters.
 
+## build
+
+build(): void
+
+The **build()** function is used to define the declarative UI description of a custom component. Every custom component must define a **build()** function.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToAppear
 
 aboutToAppear?(): void
 
-Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change state variables in **aboutToAppear**. The change will take effect when you execute the **build()** function next time. The **aboutToAppear** lifecycle callback of a custom component with a custom layout is invoked during the layout process.
+Triggered after a new instance of the custom component is created and before its **build()** function is executed. You can change state variables in **aboutToAppear**. The change will take effect when you execute the **build()** function next time. The **aboutToAppear** lifecycle callback of a custom component with a [custom layout](./ts-custom-component-layout.md) is invoked during the layout process.
 
 > **NOTE**
 >
@@ -65,7 +82,7 @@ Triggered each time a router-managed page (only custom components decorated with
 
 onPageHide?(): void
 
-Triggered each time a router-managed page (only custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is hidden, including scenarios such as route navigation and the application moving to background.
+Triggered each time when a page is hidden, including scenarios such as route redirection and applications entering the background.
 
 > **NOTE**
 >
@@ -129,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-Triggered when a page previously existing in the navigation stack is brought to the top through navigation in [single-instance](../js-apis-router.md#routermode9) mode. It is only effective for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) that serve as [router-managed](../js-apis-router.md) pages.
+Triggered when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -137,9 +154,9 @@ Triggered when a page previously existing in the navigation stack is brought to 
 
 **Parameters**
 
-| Name| Type    |              Description        |
-|-------|----------|---------------------------|
-| param | ESObject | Data passed to the target page during redirection.|
+| Name| Type    | Mandatory    |             Description        |
+|-------|----------|----------|---------------------------|
+| param | ESObject |Yes| Data passed to the target page during redirection.|
 
 ```ts
 // pages/Index.ets
@@ -157,11 +174,11 @@ export class routerParam {
 @Component
 struct Index {
   aboutToAppear(): void {
-    console.log('onNewParam', 'Index aboutToAppear');
+    console.info('onNewParam', 'Index aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'Index onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -198,11 +215,11 @@ import { routerParam } from './Index';
 @Component
 struct PageOne {
   aboutToAppear(): void {
-    console.log('onNewParam', 'PageOne aboutToAppear');
+    console.info('onNewParam', 'PageOne aboutToAppear');
   }
 
   onNewParam(param: ESObject) {
-    console.log('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
+    console.info('onNewParam', 'PageOne onNewParam, param: ' + JSON.stringify(param));
   }
 
   build() {
@@ -238,7 +255,7 @@ Invoked when a reusable custom component is re-added to the node tree from the r
 
 > **NOTE**
 >
-> * Avoid repeatedly updating state variables that are automatically updated, such as @Link, @ObjectLink, and @Prop decorated variables, within **aboutToReuse**. For best practices, see [Component Reuse: Avoiding Repeated Assignment of Automatically Updated State Variables in aboutToReuse()](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
+> * [Avoid repeatedly updating state variables that are automatically updated, such as @Link, @ObjectLink, and @Prop decorated variables, within aboutToReuse.](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
 > * In scrolling scenarios where component reuse is implemented, this callback is typically required to update the component's state variables. As such, avoid performing time-consuming operations within this callback to prevent frame drops and UI stuttering during scrolling animations. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread: Component Reuse Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -247,9 +264,9 @@ Invoked when a reusable custom component is re-added to the node tree from the r
 
 **Parameters**
 
-| Name | Type                                     | Description               |
-|--------|-------------------------------------------|---------------------|
-| params | Record\<string, Object \| undefined \| null> | Construction parameters of the custom component.|
+| Name | Type                                     | Mandatory| Description               |
+|--------|-------------------------------------------|-----|---------------------|
+| params | Record\<string, Object \| undefined \| null> |   Yes  | Construction parameters of the custom component.|
 
 ```ts
 // xxx.ets
@@ -335,7 +352,7 @@ struct Index {
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
   aboutToReuse() {
-    console.log('ReusableV2Component aboutToReuse'); // Called when a component is reused.
+    console.info('ReusableV2Component aboutToReuse'); // Called when a component is reused.
   }
   build() {
     Column() {
@@ -430,9 +447,21 @@ Invoked before the **build()** function of a new instance of the custom componen
 
 **Parameters**
 
-| Name   | Type                                      | Description        |
-|--------|------------------------------------------|------------|
-| theme | [Theme](../js-apis-arkui-theme.md#theme) | Current theme object of the custom component.|
+| Name   | Type                                      | Mandatory   | Description        |
+|--------|------------------------------------------|------------|-------------------------|
+| theme | [Theme](#theme12) | Yes    | Current theme object of the custom component.|
+
+## Theme<sup>12+</sup>
+
+type Theme = Theme
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type                                                     | Description                   |
+| --------------------------------------------------------- | ----------------------- |
+| [Theme](../js-apis-arkui-theme.md#theme) | Current theme object of the custom component.|
 
 V1:
 
@@ -578,3 +607,143 @@ struct IndexComponent {
 ```
 
 ![onWillApplyTheme_V2](figures/onWillApplyTheme_V2.png)
+
+## pageTransition<sup>9+</sup>
+
+pageTransition?(): void
+
+Defines the transition animation to play when the user accesses this page or is redirected from this page to another page.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+## onFormRecycle<sup>11+</sup>
+
+onFormRecycle?(): string
+
+Triggered when a widget is recycled. The widget provider can return the data that needs to be saved by the widget management service. The data is transferred to the widget provider through the [onFormRecover](#onformrecover11) API when the widget is restored.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type               | Description       |
+| ------------------- | ---------   |
+| string | Data that needs to be saved by the widget management service.|
+
+**Example**
+```ts
+@Entry
+@Component
+struct WidgetCard {
+  readonly title: string = 'Hello World';
+  readonly actionType: string = 'router';
+  readonly abilityName: string = 'EntryAbility';
+  readonly message: string = 'add detail';
+  readonly fullWidthPercent: string = '100%';
+  readonly fullHeightPercent: string = '100%';
+
+  onFormRecycle(): string {
+    let formId: string = "1859635745"
+    console.info("card is recycled, formID: " + formId);
+    return formId;
+  }
+
+  onFormRecover(statusData: string): void {
+    console.info("card has been restored, formID: " + statusData);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.title)
+          .fontSize($r('app.float.font_size'))
+          .fontWeight(FontWeight.Medium)
+          .fontColor($r('sys.color.font'))
+      }
+      .width(this.fullWidthPercent)
+    }
+    .height(this.fullHeightPercent)
+    .backgroundColor($r('sys.color.comp_background_primary'))
+    .onClick(() => {
+      postCardAction(this, {
+        action: this.actionType,
+        abilityName: this.abilityName,
+        params: {
+          message: this.message
+        }
+      });
+    })
+  }
+}
+```
+
+## onFormRecover<sup>11+</sup>
+
+onFormRecover?(statusData: string): void
+
+The onFormRecover callback function is executed when the widget is recovered. The widget provider can obtain the data saved by the widget management service when the widget is recycled. The data can be saved to the widget management service by using the [onFormRecycle](#onformrecycle11) callback function.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type                                      | Mandatory   | Description        |
+|--------|------------------------------------------|------------|-------------------------|
+| statusData | string | Yes    | Data stored by the Widget Manager service when the widget is recycled.|
+
+**Example**
+```ts
+@Entry
+@Component
+struct WidgetCard {
+  readonly title: string = 'Hello World';
+  readonly actionType: string = 'router';
+  readonly abilityName: string = 'EntryAbility';
+  readonly message: string = 'add detail';
+  readonly fullWidthPercent: string = '100%';
+  readonly fullHeightPercent: string = '100%';
+
+  onFormRecycle(): string {
+    let formId: string = "1859635745"
+    console.info("card is recycled, formID: " + formId);
+    return formId;
+  }
+
+  onFormRecover(statusData: string): void {
+    console.info("card has been restored, formID: " + statusData);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.title)
+          .fontSize($r('app.float.font_size'))
+          .fontWeight(FontWeight.Medium)
+          .fontColor($r('sys.color.font'))
+      }
+      .width(this.fullWidthPercent)
+    }
+    .height(this.fullHeightPercent)
+    .backgroundColor($r('sys.color.comp_background_primary'))
+    .onClick(() => {
+      postCardAction(this, {
+        action: this.actionType,
+        abilityName: this.abilityName,
+        params: {
+          message: this.message
+        }
+      });
+    })
+  }
+}
+```

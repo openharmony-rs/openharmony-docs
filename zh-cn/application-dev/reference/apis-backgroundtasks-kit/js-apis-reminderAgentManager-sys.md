@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import reminderAgentManager from '@ohos.reminderAgentManager';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
 ## ActionButtonType
@@ -46,7 +46,7 @@ import reminderAgentManager from '@ohos.reminderAgentManager';
 ## DataShareUpdate<sup>11+</sup>
 
 更新数据库需要的参数信息。<br/>
-数据提供方需要在module.json5中的proxyDatas节点定义要共享的表的标识，读写权限和基本信息。配置方式请见[数据代理](../../database/share-data-by-silent-access.md)。
+数据提供方需要在module.json5中的proxyDatas节点定义要共享的表的标识，读写权限和基本信息。配置方式请见[数据代理](../../database/share-data-by-silent-access-sys.md)。
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 

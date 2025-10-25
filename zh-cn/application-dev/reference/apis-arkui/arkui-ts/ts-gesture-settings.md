@@ -1,7 +1,7 @@
 # 绑定手势方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -29,7 +29,7 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势类型。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -56,7 +56,7 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -79,7 +79,7 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | 是   | 绑定的手势对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br/>默认值：GestureMask.Normal |
 
 **返回值：**
 
@@ -96,8 +96,8 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 | Unknown | - | 未知设备。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Mouse | - | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TouchScreen | - | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Key<sup>21+</sup> | 4 | 键盘。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| JoyStick<sup>21+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| KEY<sup>22+</sup> | 4 | 键盘。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 

@@ -468,19 +468,28 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 - 从API version 20开始，支持通过[contentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#contenttransition20)属性设置数字翻牌效果。
 
   ```ts
-  @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @Entry
+  @Component
+  struct demo {
+    @State number: number = 98;
+    @State numberTransition: NumericTextTransition =
+      new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
-  Column() {
-    Text(this.number + "")
-      .borderWidth(1)
-      .fontSize(40)
-      .contentTransition(this.numberTransition)
-    Button("chang number")
-      .onClick(() => {
-        this.number++
-      })
-      .margin(10)
+    build() {
+      Column() {
+        Text(this.number + "")
+          .borderWidth(1)
+          .fontSize(40)
+          .contentTransition(this.numberTransition)
+        Button("chang number")
+          .onClick(() => {
+            this.number++
+          })
+          .margin(10)
+      }
+      .width('100%')
+      .height('100%')
+    }
   }
   ```
   ![Text_content_transition](figures/Text_content_transition.gif)
@@ -581,25 +590,33 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   ```
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
-- 从API version 20开始，支持通过[ShaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
+- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20)设置渐变色。
 
   ```ts
-  @State message: string = 'Hello World';
-  @State linearGradientOptions: LinearGradientOptions =
-    {
-      direction: GradientDirection.LeftTop,
-      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
-      repeating: true,
-    };
+  @Entry
+  @Component
+  struct demo {
+    @State message: string = 'Hello World';
+    @State linearGradientOptions: LinearGradientOptions =
+      {
+        direction: GradientDirection.LeftTop,
+        colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+        repeating: true,
+      };
 
-  Column({ space: 5 }) {
-    Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
-      .margin({ top: 40, left: 40 })
-    Text(this.message)
-      .fontSize(50)
-      .width('80%')
-      .height(50)
-      .shaderStyle(this.linearGradientOptions)
+    build() {
+      Column({ space: 5 }) {
+        Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
+          .margin({ top: 40, left: 40 })
+        Text(this.message)
+          .fontSize(50)
+          .width('80%')
+          .height(50)
+          .shaderStyle(this.linearGradientOptions)
+      }
+      .height('100%')
+      .width('100%')
+    }
   }
   ```
   ![Text_shader_style](figures/Text_shader_style.png)
@@ -907,7 +924,7 @@ struct Index {
 
 ### 默认菜单支持自定义刷新能力
 
-从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)回调，可在该回调中进行菜单数据设置。
+从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
 
 ```ts
 // xxx.ets
@@ -1021,7 +1038,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 - 如果需要调整菜单的位置，可以通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)实现，具体可以参考示例[文本扩展自定义菜单](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例12文本扩展自定义菜单)。 
 <!--RP2--><!--RP2End-->
 
-## 场景示例
+## 实现热搜榜
 
 该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
 
@@ -1212,3 +1229,285 @@ struct Index {
 }
 ```
 ![](figures/EllipsisDemo2.gif)
+
+### 在文本前后添加自定义标签
+
+**问题现象**
+
+如何在文本的前后各添加一个标签，例如“专题”或“Top1”。这些标签的[背景样式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
+
+**解决措施一**
+
+如果标签和中间的长文本需在同一行显示，开发者可能会考虑使用[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)实现，但是Span不支持设置尺寸。此时，可以在[弹性布局 (Flex)](./arkts-layout-development-flex-layout.md)或者[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)中放置标签和长文本，并为长文本设置[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性，以确保文本超长时能够自适应截断，显示在一行之内。
+
+实现步骤：
+
+1.将标签和长文本放在同一个沿水平方向布局的容器Row中。
+
+2.中间长文本设置textOverflow属性为TextOverflow.Ellipsis，空间不足时截断文本，显示省略号。
+
+实现案例可以参考[实现热搜榜](#实现热搜榜)，该示例中，文字“1”、“爆”就是“我是热搜词条”的两个标签。这种实现方式写法简便，适合单行文本添加标签的场景。
+
+**解决措施二**
+
+如果需求是在多行文本前后添加标签，并且不截断文本，上面的方案会导致三个Text中的文本不能对齐。此时，可以在[层叠布局 (Stack)](./arkts-layout-development-stack-layout.md)中放置标签和长文本，给中间多行文本设置首行文本缩进距离[textIndent](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textindent10)。多行文本后面的标签则需要通过[offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)属性调整位置。这种实现方式，可以让三个Text组件中的文字水平对齐。
+
+实现步骤：
+
+1.将标签和长文本放在Stack中。
+
+2.在显示之前的回调[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
+
+3.通过[getparagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<sup>20+</sup>计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
+
+4.设置后标签相对于Stack左上角的偏移量。
+
+示例代码如下：
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '这是一段长文本，超长部分折行，前后添加标签';
+  @State frontTag: string = '前标签';
+  @State backTag: string = '后标签';
+  @State frontPaddingVp: number = 20;
+  @State backPaddingVp: number = 10;
+  @State fontTagWidthVp: Length = 0;
+  @State backTagWidthVp: Length = 0;
+  @State backOffsetVpX: Length = 0;
+  @State backOffsetVpY: Length = 0;
+  @State messageLines: number = 0;
+  @State stackWidthVp: number = 300;
+
+  // 显示之前，测算前后标签的位置，中间文本的缩进距离
+  aboutToAppear(): void {
+    // 计算前标签的宽度fontTagWidthVp，作为message的首行缩进距离
+    let frontTagSize: SizeOptions = this.getUIContext().getMeasureUtils().measureTextSize({
+      textContent: this.frontTag,
+    });
+    this.fontTagWidthVp = this.getUIContext().px2vp(Number(frontTagSize.width)) + this.frontPaddingVp * 2
+
+    // 计算frontTag+message占据的行数
+    let linesFrontTagPlusMessage = 0;
+    let mutableStr = new MutableStyledString(this.message,
+      [{
+        start: 0,
+        length: 1,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({ textIndent: LengthMetrics.vp(this.fontTagWidthVp) })
+      }]
+    )
+    let paragraphArr = this.getUIContext()
+      .getMeasureUtils()
+      .getParagraphs(mutableStr, { constraintWidth: LengthMetrics.vp(this.stackWidthVp) });
+    for (let i = 0; i < paragraphArr.length; ++i) {
+      linesFrontTagPlusMessage += paragraphArr[i].getLineCount();
+    }
+
+    // 后标签offsetX的偏移量backOffsetVpX=frontTag+message最后一行的宽度
+    this.backOffsetVpX =
+      this.getUIContext().px2vp((paragraphArr[paragraphArr.length-1].getLineWidth(linesFrontTagPlusMessage - 1)))
+    // 后标签offsetY的偏移量backOffsetVpY=frontTag+message总高度-最后一行的高度。
+    let heightFrontTagPlusMessageVp = 0;
+    for (let i = 0; i < paragraphArr.length; ++i) {
+      heightFrontTagPlusMessageVp += this.getUIContext().px2vp(paragraphArr[i].getHeight());
+    }
+    let lastLineHeight =
+      this.getUIContext().px2vp(paragraphArr[paragraphArr.length-1].getLineHeight(linesFrontTagPlusMessage - 1))
+    this.backOffsetVpY = heightFrontTagPlusMessageVp - lastLineHeight
+  }
+
+  build() {
+    Column({ space: 20 }) {
+      Blank()
+        .height(200)
+      Stack() {
+        Text(this.frontTag)
+          .padding({ left: this.frontPaddingVp, right: this.frontPaddingVp })
+          .backgroundColor('rgb(39, 135, 217)')
+        Text(this.message)
+          .textIndent(this.fontTagWidthVp)
+          .padding(0)
+        Text(this.backTag)
+          .padding({ left: this.backPaddingVp, right: this.backPaddingVp })
+          .backgroundColor('rgb(0, 74, 175)')
+          .offset({
+            x: this.backOffsetVpX,
+            y: this.backOffsetVpY
+          })
+      }
+      .alignContent(Alignment.TopStart) // 顶部起始端对齐
+      .width(this.stackWidthVp)
+    }
+    .height('100%')
+    .width('90%')
+    .padding('5%')
+  }
+}
+```
+
+![](figures/text_tag_case_2.png)
+
+### Text组件如何实现表情与文字一起显示
+
+**问题现象**
+
+emoji表情有时以表情符号的形式表示。如何将表情符号转换为emoji表情，并在Text组件中与文字一同显示？
+
+**解决措施**
+
+使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)来同时展示表情和文字。
+
+```ts
+@Entry
+@Component
+struct TextExample {
+  @State fulltext: string =
+    '你好我是Text[grin]，你好我[rolling_on_the_floor_laughing]是Text，[slightly_smiling_face]你好我是Text[grin]';
+
+  static classifyTextAndEmojis(input: string): Map<string, string[]> {
+    const emojiRegex = /\[([a-zA-Z_]+)\]/g; // 根据实际情况编写正则表达式
+    const resultMap = new Map<string, string[]>(); // 用map记录普通文本和表情
+    resultMap.set('text', []);
+    resultMap.set('emojis', []);
+
+    let lastIndex = 0;
+    let match: RegExpExecArray | null = null;
+
+    while ((match = emojiRegex.exec(input)) !== null) {
+      // 添加普通文本
+      if (match.index > lastIndex) {
+        resultMap.get('text')?.push(input.substring(lastIndex, match.index));
+      }
+      // 添加匹配到的表情
+      resultMap.get('emojis')?.push(match[1]);
+      lastIndex = match.index + match[0].length;
+    }
+    // 添加最后一段文本
+    if (lastIndex < input.length) {
+      resultMap.get('text')?.push(input.substring(lastIndex));
+    }
+    return resultMap;
+  }
+
+  static getEmojiImg(emojis: string[]): Resource[] { // 根据正则匹配结果返回自定义表情资源
+    let emojisImg: Resource[] = []
+    for (let i = 0; i < emojis.length; i++) {
+      switch (emojis[i]) {
+        case 'rolling_on_the_floor_laughing':
+          emojisImg.push($r("app.media.rolling_on_the_floor_laughing"))
+        case 'slightly_smiling_face':
+          emojisImg.push($r("app.media.slightly_smiling_face"))
+        case 'grin':
+          emojisImg.push($r("app.media.grin"))
+        default:
+      }
+    }
+    return emojisImg
+  }
+
+  build() {
+    Column() {
+      TextInput({
+        placeholder: "用户输入带表情的文本，例如：你好[grin]"
+      })
+        .width('80%')
+        .padding(10)
+        .border({ width: 1, color: '#EEEEEE' })
+        .onChange((value: string) => {
+          // 输入变化时，更新 fulltext
+          this.fulltext = value;
+        });
+
+      Text() {
+        ForEach(TextExample.classifyTextAndEmojis(this.fulltext).get('text'),
+          (item: string, index: number) => { // 展示文本和自定义表情资源
+            Span(item)
+              .fontSize(18)
+              .fontColor('#666666')
+              .fontWeight(FontWeight.Regular)
+
+            ImageSpan(TextExample.getEmojiImg(
+              TextExample.classifyTextAndEmojis(this.fulltext).get('emojis'))[index])
+              .verticalAlign(ImageSpanAlignment.BOTTOM)
+              .height(24)
+          })
+      }
+      .width('80%')
+      .padding(15)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .padding(20)
+  }
+}
+```
+
+![](figures/text-emoji.png)
+
+### 文本超长时如何展示
+
+**问题现象**
+
+Text组件中内容太多，超出父组件容器[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)的高度，导致显示混乱。如何让文本显示在父组件容器的区域内。
+
+**解决措施一**
+
+Text文本是自动折行的，当没有限制Text高度[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性来指定截断方式。
+
+以下示例展示了限制Text组件不超过三行的场景。
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State message: string = '这是一段超长文本'.repeat(50);
+
+  build() {
+    Column() {
+      Text(this.message)
+        .height('auto')
+        .maxLines(3)
+    }
+    .height(200)
+    .width('80%')
+    .margin('10%')
+    .borderWidth(1)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_too_long_maxLines.png)
+
+**解决措施二**
+
+解决措施一的缺点是有部分文本被裁剪掉，如果开发者想要全部文本可以被阅读，可以把Text组件放在滚动容器[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)里面，通过手势滑动来浏览全部文本。
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State message: string = '这是一段超长文本'.repeat(50);
+
+  build() {
+    Column() {
+      Scroll() {
+        Text(this.message)
+      }
+      .scrollBar(BarState.Off)
+    }
+    .height(200)
+    .width('80%')
+    .margin('10%')
+    .borderWidth(1)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_too_long_scroll.gif)

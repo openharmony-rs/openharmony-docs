@@ -503,7 +503,7 @@ requestInStream(url: string, callback: AsyncCallback\<number\>): void
 | 参数名   | 类型                                           | 必填 | 说明                                            |
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | 是   | 发起网络请求的URL地址。                         |
-| callback | AsyncCallback\<number\>       | 是   | 回调函数。                                      |
+| callback | AsyncCallback\<number\>       | 是   | 回调函数。当请求成功，err为undefined，返回HTTP请求响应错误码；否则为错误对象。                                      |
 
 **错误码：**
 
@@ -580,7 +580,7 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | 是   | 发起网络请求的URL地址。                         |
 | options  | HttpRequestOptions                             | 是   | 参考[HttpRequestOptions](#httprequestoptions)。 |
-| callback | AsyncCallback\<[number](#responsecode)\>       | 是   | 回调函数。                                      |
+| callback | AsyncCallback\<[number](#responsecode)\>       | 是   | 回调函数。当请求成功，err为undefined，返回HTTP请求响应错误码；否则为错误对象。                                    |
 
 **错误码：**
 
@@ -1143,7 +1143,7 @@ httpRequest.off("dataSendProgress");
 | expectDataType<sup>9+</sup>  | [HttpDataType](#httpdatatype9)  | 否  | 是  | 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。当指定其类型为Object时，最大长度为65536字符数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | usingCache<sup>9+</sup>      | boolean                         | 否  | 是  | 是否使用缓存，true表示请求时优先读取缓存，false表示不使用缓存；默认为true，请求时优先读取缓存。缓存跟随当前进程生效，新缓存会替换旧缓存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | priority<sup>9+</sup>        | number                          | 否  | 是  | HTTP/HTTPS请求并发优先级，值越大优先级越高，范围[1,1000]，默认为1。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| header                       | Object                          | 否  | 是  | HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br />如果head中包含number类型的字段，最大支持int64的整数。<br />header字段不支持传入map对象。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| header                       | Object                          | 否  | 是  | HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br />如果head中包含number类型的字段，最大支持int64的整数。<br />header字段支持JSON格式如 [完整示例](js-apis-http.md#完整示例) 和Record<string, string>格式输入。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | readTimeout                  | number                          | 否  | 是  | 读取超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br />设置为0表示不会出现超时情况。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | connectTimeout               | number                          | 否  | 是  | 连接超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否  | 是  | 使用协议。默认值由系统自动指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -1227,7 +1227,7 @@ HTTP 请求方法。
 | BAD_GATEWAY       | 502  | 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | UNAVAILABLE       | 503  | 由于超载或系统维护，服务器暂时无法处理客户端的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | GATEWAY_TIMEOUT   | 504  | 充当网关或代理的服务器，未及时从远端服务器获取请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| VERSION           | 505  | 服务器请求的HTTP协议的版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
+| VERSION           | 505  | 服务器不支持客户端请求中使用的HTTP协议版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
 
 ## HttpResponse
 
@@ -1316,7 +1316,7 @@ request方法回调函数的返回值类型。
 | contentType | string | 否 | 否 | 数据类型，如'text/plain'，'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4'等。 |
 | remoteFileName | string | 否 | 是 | 上传到服务器保存为文件的名称。<br>**说明**：指定该字段后，请求头中会添加filename字段，表示上传到服务器文件的名称。<br>（1）当上传数据为文件时，若通过data字段指定文件内容，通常需要设置remoteFileName字段，用以指定上传到服务器文件的名称（实际结果与服务器具体行为有关）；若通过filePath字段指定文件路径，请求头中会自动添加filename字段，其默认值为filePath中的文件名称，如需特殊指定，也可通过本字段对filename重新设置。<br>（2）当上传数据为二进制格式时，则必须设置remoteFileName字段。                                                 |
 | data | string \| Object \| ArrayBuffer | 否 | 是 | 表单数据内容。                                               |
-| filePath | string | 否 | 是 | 此参数根据文件的内容设置mime部件的正文内容。用于代替data将文件数据设置为数据内容，如果data为空，则必须设置filePath。如果data有值，则filePath不会生效。|
+| filePath | string | 否 | 是 | 此参数将文件路径指向的文件内容设置为表单数据，如果未指定data内容，则必须设置filePath。<br>**说明**：需传入文件管理模块支持的格式，可以通过文件管理的[access](../apis-core-file-kit/js-apis-file-fs.md#fsaccess)接口，验证文件是否存在且可访问。|
 
 ## http.createHttpResponseCache<sup>9+</sup>
 
@@ -1534,7 +1534,7 @@ let httpRequest = http.createHttp();
 httpRequest.request("EXAMPLE_URL").then(data => {
   const httpResponseCache = http.createHttpResponseCache();
   httpResponseCache.delete().then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((err: BusinessError) => {
     console.error("fail");
   });

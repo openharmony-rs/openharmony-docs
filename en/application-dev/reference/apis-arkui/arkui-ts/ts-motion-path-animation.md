@@ -1,4 +1,10 @@
 # Motion Path Animation (motionPath)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The motion path animation is used to animate a component along a custom path.
 
@@ -7,7 +13,7 @@ The motion path animation is used to animate a component along a custom path.
 > The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## motionPath
-motionPath(value: MotionPathOptions)
+motionPath(value: MotionPathOptions): T
 
 Sets a path animation for the component.
 
@@ -21,18 +27,24 @@ Sets a path animation for the component.
 | ----- | --------------------------------- | ---- | ------------------------------------- |
 | value | [MotionPathOptions](#motionpathoptions) | Yes   | Motion path of the component.            |
 
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
 ## MotionPathOptions
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | ---- | -------- |
-| path                         | string                     | Yes  | Motion path of the translation animation. The **svg** path string is used. In the value, **start** and **end** can be used in place of the start point and end point, for example, **'Mstart.x start.y L50 50 Lend.x end.y Z'**. For details, see [Path Drawing](../../../ui/ui-js-components-svg-path.md).<br>If this parameter is set to an empty string, the path animation is not set.      |
-| from                         | number                     | No  | Start point of the motion path.<br>Default value: **0.0**<br>Value range: [0, 1]<br>A value less than 0 or greater than 1 evaluates to the default value **0**.  |
-| to                           | number                     | No  | End point of the motion path.<br>Default value: **1.0**<br>Value range: [0, 1]<br>A value less than 0 or greater than 1 evaluates to the default value **1**, provided that the value of **to** is greater than or equal to the value of **from**.  |
-| rotatable                     | boolean                    | No  | Whether to rotate along the path. The value **true** means to rotate along the path, and **false** means the opposite.<br>Default value: **false**  |
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | -------- |
+| path                         | string                     | No| No | Motion path of the translation animation. The **svg** path string is used. In the value, **start** and **end** can be used in place of the start point and end point, for example, **'Mstart.x start.y L50 50 Lend.x end.y Z'**. For details, see [Path Drawing](../../../ui/ui-js-components-svg-path.md).<br>If this parameter is set to an empty string, the path animation is not set.      |
+| from                         | number                     | No| Yes  | Start point of the motion path.<br>Default value: **0.0**<br>Value range: [0, 1]<br>A value less than 0 or greater than 1 evaluates to the default value **0**.  |
+| to                           | number                     | No|  Yes | End point of the motion path.<br>Default value: **1.0**<br>Value range: [0, 1]<br>A value less than 0 or greater than 1 evaluates to the default value **1**, provided that the value of **to** is greater than or equal to the value of **from**.  |
+| rotatable                     | boolean                    | No| Yes  | Whether to rotate along the path. The value **true** means to rotate along the path, and **false** means the opposite.<br>Default value: **false**  |
 
 
 ## Example

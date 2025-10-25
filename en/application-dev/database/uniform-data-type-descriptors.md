@@ -273,7 +273,7 @@ The following walks you through on how to obtain the file name extensions based 
 
 1. Import the **uniformTypeDescriptor** module.
 2. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **text/plain**.
-3. Use getTypeDescriptor() to obtain the MIME types based on the UTD type ID.
+3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
 
 ```ts
 // 1. Import the module.

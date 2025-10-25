@@ -3387,3 +3387,82 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+### startSelfUIAbilityInCurrentProcess<sup>22+</sup>
+
+startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise\<void>
+
+Starts the application's own UIAbility within the current process.
+
+> **NOTE**
+>- The target UIAbility can only be cold-started. If an instance of the target UIAbility has already been launched, the startup fails.
+>- The UIAbility instance started through this API runs in the same process as the caller. Other process-related policies for the target UIAbility (such as those specified via the **isolationProcess** or **isolationMode** fields in the [module.json5](../../quick-start/module-configuration-file.md) file) does not take effect.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Mandatory information for starting the ability. Only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported. [Implicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported.|
+| specifiedFlag | string  | Yes| ID of the UIAbility. This ID must not duplicate that of any already running UIAbility instance; otherwise, an error is returned.<br>**NOTE**<br>When this API is used to start a UIAbility instance in [specified](../../application-models/uiability-launch-type.md#specified) mode, the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback is not triggered.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**Example**
+
+```ts
+import { UIAbility, StartOptions, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let accountId = 100;
+    let options: StartOptions = {
+      displayId: 0
+    };
+    
+    let instanceFlag = 'instance1';
+
+    try {
+      this.context.startSelfUIAbilityInCurrentProcess(want, instanceFlag, options);
+    } catch (err) {
+      // Process input parameter errors.
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInCurrentProcess failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```

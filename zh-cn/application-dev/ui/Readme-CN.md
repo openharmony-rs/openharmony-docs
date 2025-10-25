@@ -22,6 +22,7 @@
       - [\@LocalBuilder装饰器：维持组件关系](../ui/state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](../ui/state-management/arkts-builderparam.md)
       - [wrapBuilder：封装全局@Builder](../ui/state-management/arkts-wrapBuilder.md)
+      - [mutableBuilder: 动态全局@Builder封装](../ui/state-management/arkts-mutableBuilder.md) 
     - [\@Styles装饰器：定义组件重用样式](../ui/state-management/arkts-style.md)
     - [\@Extend装饰器：定义扩展组件样式](../ui/state-management/arkts-extend.md)
     - [stateStyles：多态样式](../ui/state-management/arkts-statestyles.md)
@@ -88,8 +89,10 @@
       - [ForEach：循环渲染](rendering-control/arkts-rendering-control-foreach.md)
       - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
       - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
-      - [LazyForEach迁移Repeat指导文档](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
+      - [LazyForEach迁移Repeat指南](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
       - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
+  - 学习响应式环境变量<!--arkts-env-property-->
+      - [\@Env：环境变量](arkts-env-system-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - [组件导航(Navigation) (推荐)](arkts-navigation-navigation.md)
@@ -118,6 +121,7 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
+    - [管理软键盘](arkts-manage-keyboard.md)
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
@@ -239,8 +243,8 @@
       - [全屏启动原子化服务 (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [同应用进程嵌入式组件 (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
-    - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components.md)
-    - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components.md)
+    - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
+    - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
     <!--DelEnd-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)

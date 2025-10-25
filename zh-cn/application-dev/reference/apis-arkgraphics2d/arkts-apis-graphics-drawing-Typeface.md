@@ -93,6 +93,8 @@ static makeFromFile(filePath: string): Typeface
 
 从指定字体文件构造字体。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -140,6 +142,8 @@ static makeFromRawFile(rawfile: Resource): Typeface
 
 使用指定的字体文件构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
@@ -177,6 +181,8 @@ class TextRenderNode extends RenderNode {
 static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface
 
 根据字体文件路径和字体属性构造新的字体。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -218,6 +224,8 @@ class TextRenderNode extends RenderNode {
 static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface
 
 使用指定的字体文件和字体属性构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

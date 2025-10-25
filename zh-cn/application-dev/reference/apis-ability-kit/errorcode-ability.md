@@ -1258,6 +1258,42 @@ Want中传入了DLP文件。
 检查Want是否携带了DLP文件。
 <!--DelEnd-->
 
+## 16000130 UIAbility不属于调用方
+
+**错误信息**
+
+The UIAbility not belong to caller.
+
+**错误描述**
+
+目标UIAbility不属于调用方。
+
+**可能原因**
+
+启动了一个非自身应用的UIAbility。
+
+**处理步骤**
+
+检查目标UIAbility信息是否属于自身应用。
+
+## 16000131 UIAbility已启动
+
+**错误信息**
+
+The UIAbility is already exist, can not start again.
+
+**错误描述**
+
+UIAbility已启动，无法重新启动。
+
+**可能原因**
+
+startSelfUIAbilityInCurrentProcess用于冷启动一个新的UIAbility实例，如果拉起一个已经启动过的UIAbility实例，报该异常。
+
+**处理步骤**
+
+检查UIAbility是否已启动过。
+
 ## 16000135 UIAbility的主窗不存在
 
 **错误信息**

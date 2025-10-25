@@ -5,7 +5,7 @@
 <!--Owner: @xjtu_liushang-->
 <!--Designer: @yangwang01-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -163,7 +163,7 @@ Checks whether a single-layer HDR image can be converted into a dual-layer HDR i
 
 | Type| Description|
 | -- | -- |
-| bool | Check result for support of a conversion from a single-layer HDR image into a dual-layer HDR image. **true** if supported, **false** otherwise.|
+| bool | Check result for the support of a conversion from a single-layer HDR image into a dual-layer HDR image. **true** if supported, **false** otherwise.|
 
 ### OH_ImageProcessing_IsMetadataGenerationSupported()
 
@@ -291,7 +291,7 @@ Obtains a parameter of the image processing module. This function obtains the pa
 
 | Type| Description|
 | -- | -- |
-| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | **IMAGE_PROCESSING_SUCCESS**: The parameters fail to be obtained.<br> **IMAGE_PROCESSING_ERROR_INVALID_INSTANCE**: The instance is null or is not an image processing instance.<br> **IMAGE_PROCESSING_ERROR_INVALID_PARAMETER**: **parameter** is empty.|
+| [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | **IMAGE_PROCESSING_SUCCESS**: The operation is successful.<br> **IMAGE_PROCESSING_ERROR_INVALID_INSTANCE**: The instance is null or is not an image processing instance.<br> **IMAGE_PROCESSING_ERROR_INVALID_PARAMETER**: **parameter** is empty.|
 
 ### OH_ImageProcessing_ConvertColorSpace()
 

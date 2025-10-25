@@ -89,7 +89,7 @@ build的可选参数。
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder进行使用。其中，true表示支持，false表示不支持。默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 是   | 给当前BuilderNode设置LocalStorage，挂载在此BuilderNode下的自定义组件共享该LocalStorage。如果自定义组件构造函数同时也传入LocalStorage，优先使用构造函数中传入的LocalStorage。默认值：null <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内自定义组件的@Consume是否与BuilderNode外部的@Provide状态互通。true表示支持，false表示不支持。默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内状态管理V1自定义组件的@Consume是否与BuilderNode外部的@Provide状态互通，BuilderNode内状态管理V2自定义组件的@Consumer是否与BuilderNode外部的@Provider状态互通。<br/>从API version 20开始支持状态管理V1自定义组件的状态互通，从API version 22开始支持状态管理V2自定义组件的状态互通。<br/>true表示支持，false表示不支持。默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## InputEventType<sup>20+</sup>
 
@@ -2089,3 +2089,905 @@ struct Index {
 ```
 
 ![enableProvideConsumeCrossing](figures/BuilderNode_Consume.gif)
+
+### 示例6（BuilderNode支持内部@Consumer接收外部的@Provider数据）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consumer与所在自定义组件的@Provider数据互通。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@Builder
+function buildText() {
+  // @Consumer挂载在BuilderNode下
+  addChildChild();
+}
+
+class TextNodeControllerAdd extends NodeController {
+  builderNode: BuilderNode<[]> | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    console.info('TextNodeControllerAdd makeNode');
+    this.builderNode = new BuilderNode(context);
+    // 构建builderNode，enableProvideConsumeCrossing设置为true
+    this.builderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    return this.builderNode.getFrameNode();
+  }
+}
+
+@ComponentV2
+struct addChildChild {
+  @Consumer() content: string = 'default value';
+  @Monitor('content') consumeWatch() {
+    console.info(`Consumer change ${this.content}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Test: ${this.content}`);
+      Button('change consumer')
+        .onClick(() => {
+          // 修改@Consumer的变量
+          this.content += ' Consumer';
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct AddChild {
+  // 与@Consumer的数据互通
+  @Provider() content: string = 'Index: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+
+  controllerIndex: TextNodeControllerAdd = new TextNodeControllerAdd();
+
+  build() {
+    Column() {
+      Text(`Provider: ${this.content}`)
+      Button('change Provider')
+        .onClick(() => {
+          // 修改@Provider的变量
+          this.content += ' Provider';
+        })
+      // 通过NodeContainer连接BuilderNode节点
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![enableProvideConsumeCrossing](figures/BuilderNode_Consumer.gif)
+
+### 示例7（BuilderNode上下树时的同步关系变化）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+该示例演示了BuilderNode挂载到组件树和从组件树卸载时，@Consumer与@Provider的同步关系变化。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@Builder
+function buildText() {
+  TestRemove();
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  disposeNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      globalBuilderNode.dispose();
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct RemoChildDisconnectProvider {
+  @Provider() content: string = 'Index: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+  controllerIndex: TextNodeController = new TextNodeController();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Provider: ${this.content}`)
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+        })
+
+      Button('remove child')
+        .onClick(() => {
+          this.controllerIndex.removeBuilderNode();
+        })
+
+      Button('dispose child')
+        .onClick(() => {
+          this.controllerIndex.disposeNode();
+      })
+
+      Button('change Provider')
+        .onClick(() => {
+          // 修改@Provider的变量
+          this.content += 'Pro';
+        })
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct TestRemove {
+  @Consumer() content: string = 'default value';
+  @Monitor('content') consumerWatch() {
+    console.info(`Consumer change ${this.content}`);
+  }
+
+  aboutToDisappear() {
+    console.info(`TestRemove aboutToDisappear`);
+  }
+
+  build() {
+    Column() {
+      Text(`Consumer ${this.content}`)
+
+      Button('change content')
+        .onClick(() => {
+          // 修改@Consumer的变量
+          this.content += 'content';
+        })
+    }
+  }
+}
+```
+
+### 示例8（BuilderNode上树后再上另一棵树时的同步关系变化）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+该示例演示了BuilderNode挂载到组件树后，再挂载到另一个组件树时，@Consumer与@Provider的同步关系变化。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@Builder
+function buildText() {
+  ConsumerChild();
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct AddRemoveAddToAnother {
+  @Provider() content: string = 'Index: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+  controllerIndex: TextNodeController = new TextNodeController();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Index Provider: ${this.content}`)
+
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+      })
+
+      Button('change Index Provide')
+        .onClick(() => {
+          // 修改@Provider的变量
+          this.content += 'Pro';
+        })
+
+      NodeContainer(this.controllerIndex);
+      ChildHasProvide({controllerIndex: this.controllerIndex});
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct ChildHasProvide {
+  @Provider('content') content: string = 'Child: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+  @Param private controllerIndex: TextNodeController | undefined = undefined;
+  controllerIndexChild: TextNodeController = new TextNodeController();
+
+  build() {
+    Column() {
+      Text(`Child Provider: ${this.content}`)
+
+      Button('change Child Provide')
+        .onClick(() => {
+          // 修改@Provider的变量
+          this.content += 'Pro';
+        })
+
+      Button('change View')
+        .onClick(() => {
+          this.controllerIndex?.removeBuilderNode();
+          this.controllerIndexChild.addBuilderNode();
+      })
+      NodeContainer(this.controllerIndexChild);
+    }
+  }
+}
+
+@ComponentV2
+struct ConsumerChild {
+  @Consumer() content: string = 'default value';
+  @Monitor('content') consumerWatch() {
+    console.info(`Consumer change ${this.content}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Consumer: ${this.content}`)
+
+      Button('change content')
+        .onClick(() => {
+          // 修改@Consumer的变量
+          this.content += 'content';
+        })
+    }
+  }
+}
+```
+
+### 示例9（BuilderNode互相嵌套的场景下的同步关系变化）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+该示例演示了BuilderNode互相嵌套场景下@Consumer和@Provider的同步关系变化。
+
+```ts
+import { BuilderNode, FrameNode, NodeContent, NodeController } from '@kit.ArkUI';
+
+let content: NodeContent = new NodeContent();
+@Builder
+function buildText() {
+  Column() {
+    BuildNodeToBuildNodeChild().border({width: 2, color: Color.Pink, radius: 5});
+    ContentSlot(content);
+  }
+}
+
+@Builder
+function buildText2() {
+  Column() {
+    BuildNodeToBuildNodeChild().border({width: 2, color: Color.Pink, radius: 5});
+  }
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+let globalBuilderNode2: BuilderNode<[]> | null = null;
+
+class TextNodeControllerAdd extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    // 仅返回FrameNode，未执行build
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct BuildNodeToBuildNode {
+  @Provider() content: string = 'Index: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+  controllerIndex: TextNodeControllerAdd = new TextNodeControllerAdd();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Provider: ${this.content}`)
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+      })
+      // builderNode嵌套builderNode
+      Button('add to NodeContent')
+        .onClick(() => {
+          globalBuilderNode2 = new BuilderNode(this.getUIContext());
+          globalBuilderNode2.build(wrapBuilder<[]>(buildText2), undefined, {enableProvideConsumeCrossing: true});
+          content.addFrameNode(globalBuilderNode2.getFrameNode());
+      })
+      Button('change Provider')
+        .onClick(() => {
+          // 修改@Provider的变量
+          this.content += 'Pro';
+        })
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct BuildNodeToBuildNodeChild {
+  // 在未上树的时候，Test组件无View的父亲，该节点为离屏节点。@Consumer找不到对应@Provider，使用默认值
+  @Consumer() content: string = 'default value';
+  @Monitor('content') consumerWatch() {
+    console.info(`Consumer change ${this.content}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Test: ${this.content}`)
+
+      Button('change content')
+        .onClick(() => {
+          // 修改@Consumer的变量
+          this.content += 'content';
+        })
+    }
+  }
+}
+```
+
+### 示例10（BuilderNode下的@Consumer所在组件还有其他子组件时的同步关系）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+该示例演示了当@Consumer所在的自定义组件在BuilderNode下且该自定义组件存在子组件时，@Consumer和@Provider之间的同步关系。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@Builder
+function buildText() {
+  NestedComponentChild();
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  disposeNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      globalBuilderNode.dispose();
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct NestedComponent {
+  @Provider() content: string = 'Index: hello world';
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content}`);
+  }
+  controllerIndex: TextNodeController = new TextNodeController();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Provider: ${this.content}`)
+
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+      })
+
+      Button('remove child')
+        .onClick(() => {
+          this.controllerIndex.removeBuilderNode();
+      })
+
+      Button('dispose child')
+        .onClick(() => {
+          this.controllerIndex.disposeNode();
+      })
+
+      Button('change Provider')
+        .onClick(() => {
+          // 修改@Provider的变量
+          this.content += 'Pro';
+        })
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct NestedComponentChild {
+  @Consumer() content: string = 'default value';
+  @Monitor('content') consumerWatch() {
+    console.info(`Consumer change ${this.content}`);
+  }
+
+  aboutToDisappear() {
+    console.info(`TestRemove aboutToDisappear`);
+  }
+
+  build() {
+    Column() {
+      Text(`Consumer: ${this.content}`)
+
+      Button('change content')
+        .onClick(() => {
+          // 修改@Consumer的变量
+          this.content += 'content';
+        })
+      NestedComponentChildChld({content: this.content, addContent: () => this.content += 'content'});
+    }
+  }
+}
+
+@ComponentV2
+struct NestedComponentChildChld {
+  // 在未上树的时候，Test组件无View的父亲，该节点为离屏节点。@Consumer找不到对应@Provider，使用默认值
+  @Param@Require content: string;
+  @Event addContent: () => void;
+  @Monitor('content') paramEventWatch() {
+    console.info(`ParamEvent change ${this.content}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Param: ${this.content}`)
+
+      Button('change content')
+        .onClick(() => {
+          this.addContent();
+        })
+    }
+  }
+}
+```
+
+### 示例11（组件树为@Provider-@Consumer-BuilderNode-@Consumer时的同步关系）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+该示例演示了组件树为@Provider-@Consumer-BuilderNode-@Consumer的情况时，@Consumer和@Provider之间的同步关系。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@ObservedV2
+class Ob {
+  @Trace a: number = 0;
+}
+
+@Builder
+function buildText() {
+  NestedComponentChild();
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  disposeNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      globalBuilderNode.dispose();
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+// 与@Consumer的数据互通
+struct ProvideConsumeBuilderNodeConsume {
+  @Provider() content : Ob = new Ob();
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content.a}`);
+  }
+
+  build() {
+    Column({space: 8}) {
+      Text(`Provide: ${this.content.a}`)
+
+      Button('Change Provider a')
+        .onClick(() => {
+          this.content.a++;
+        })
+      Button('Change Provider Whole')
+        .onClick(() => {
+          this.content.a = 0;
+        })
+      ProvideConsumeBuilderNodeConsumeChild();
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+// 组件树为@Provider-@Consumer-BuilderNode-@Consumer结构
+@ComponentV2
+struct ProvideConsumeBuilderNodeConsumeChild{
+  @Consumer() content: Ob = new Ob();
+  @Monitor('content') consumerWatch() {
+    console.info(`ProvideConsumeBuilderNodeConsumeChild change ${this.content.a}`);
+  }
+  controllerIndex : TextNodeController = new TextNodeController();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Consumer: ${this.content.a}`)
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+      })
+
+      Button('remove child')
+        .onClick(() => {
+          this.controllerIndex.removeBuilderNode();
+      })
+
+      Button('dispose child')
+        .onClick(() => {
+          this.controllerIndex.disposeNode();
+      })
+
+      Button('change consumer a')
+        .onClick(() => {
+          this.content.a++;
+        })
+      Button('change consumer whole')
+        .onClick(() => {
+          this.content.a = 0;
+        })
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+@ComponentV2
+struct NestedComponentChild {
+  @Consumer() content: Ob = new Ob();
+  @Monitor('content') consumer1Watch() {
+    console.info(`Consumer change ${this.content.a}`);
+  }
+
+  aboutToDisappear() {
+    console.info(`TestRemove aboutToDisappear`);
+  }
+
+  build() {
+    Column({space: 8}) {
+      Text(`Consumer under builder node: ${this.content.a}`)
+
+      Button('Consumer change content')
+        .onClick(() => {
+          this.content.a++;
+        })
+    }
+  }
+}
+```
+
+### 示例12（组件树为@Provider-BuilderNode-@Provider-@Consumer时的同步关系）
+
+> **说明：**
+>
+> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+
+该示例演示了组件树为@Provider-BuilderNode-@Provider-@Consumer的情况时，@Consumer和@Provider之间的同步关系。
+
+```ts
+import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+@ObservedV2
+class Ob {
+  @Trace a: number = 0;
+}
+
+@Builder
+function buildText() {
+  Provider2();
+}
+
+let globalBuilderNode: BuilderNode<[]> | null = null;
+
+class TextNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.uiContext = context;
+    return this.rootNode;
+  }
+
+  addBuilderNode(): void {
+    if (globalBuilderNode === null && this.uiContext) {
+      globalBuilderNode = new BuilderNode(this.uiContext);
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    }
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.appendChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  removeBuilderNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      this.rootNode.removeChild(globalBuilderNode.getFrameNode());
+    }
+  }
+
+  disposeNode(): void {
+    if (this.rootNode && globalBuilderNode) {
+      globalBuilderNode.dispose();
+    }
+  }
+}
+
+// 组件树为@Provider-BuilderNode-@Provider-@Consumer结构
+@Entry
+@ComponentV2
+struct Provider1 {
+  // 与@Consumer的数据互通
+  @Provider() content : Ob = new Ob();
+  @Monitor('content') providerWatch() {
+    console.info(`Provider change ${this.content.a}`);
+  }
+  controllerIndex : TextNodeController = new TextNodeController();
+
+  build() {
+    Column({space: 8}) {
+      Text(`Provider1: ${this.content.a}`)
+
+      Button('Change Provider1 a')
+        .onClick(() => {
+          this.content.a++;
+        })
+      Button('Change Provider1 Whole')
+        .onClick(() => {
+          this.content.a = 0;
+        })
+      Button('add child')
+        .onClick(() => {
+          this.controllerIndex.addBuilderNode();
+      })
+
+      Button('remove child')
+        .onClick(() => {
+          this.controllerIndex.removeBuilderNode();
+      })
+
+      Button('dispose child')
+        .onClick(() => {
+          this.controllerIndex.disposeNode();
+      })
+      NodeContainer(this.controllerIndex);
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct Provider2{
+  @Provider() content: Ob = new Ob();
+  @Monitor('content') consumerWatch() {
+    console.info(`Provider2 change ${this.content.a}`);
+  }
+  controllerIndex : TextNodeController = new TextNodeController();
+
+  build() {
+    Column() {
+      Text(`Provider2: ${this.content.a}`)
+
+      Button('change Provider2 a')
+        .onClick(() => {
+          this.content.a++;
+        })
+      Button('change Provider2 whole')
+        .onClick(() => {
+          this.content.a = 0;
+        })
+      defaultConsumer();
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct defaultConsumer {
+  @Consumer() content: Ob = new Ob();
+  @Monitor('content') consumer1Watch() {
+    console.info(`Consumer change ${this.content.a}`);
+  }
+
+  aboutToDisappear() {
+    console.info(`TestRemove aboutToDisappear`);
+  }
+
+  build() {
+    Column() {
+      Text(`Consumer under builder node:: ${this.content.a}`)
+
+      Button('Consumer change ++')
+        .onClick(() => {
+          this.content.a++;
+        })
+    }
+  }
+}
+```

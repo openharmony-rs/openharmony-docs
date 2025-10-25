@@ -4,7 +4,7 @@
 <!--Owner: @shiwei75-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can use the AVRecorder to develop the audio and video recording service. The AVRecorder supports audio capture, audio encoding, video encoding, audio encapsulation, and video encapsulation. It is applicable to simple video recording scenarios and can be used to generate local media files directly.
 
@@ -29,7 +29,7 @@ Before your development, configure the following permissions for your applicatio
 
 > **NOTE**
 >
-> To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
+> To clone, back up, or synchronize images and videos in users' public directory, request the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions for reading and writing audio/video files. For details, see <!--RP1-->[Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md)<!--RP1End-->.
 
 
 ## How to Develop
@@ -41,7 +41,7 @@ Before your development, configure the following permissions for your applicatio
 > For details about how to create and save a file, see [Accessing Application Files](../../file-management/app-file-access.md). By default, files are saved in the sandbox path of the application. To save them to Gallery, use the [security components](../medialibrary/photoAccessHelper-savebutton.md).
 
 
-You can use C/C++ APIs related to video recording by including the header files [avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md), [avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/native__averrors_8h.md).
+You can use C/C++ APIs related to video recording by including the header files [avrecorder.h](../../reference/apis-media-kit/capi-avrecorder-h.md), [avrecorder_base.h](../../reference/apis-media-kit/capi-avrecorder-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 
 Read [AVRecorder](../../reference/apis-media-kit/capi-avrecorder.md) for the API reference.
 
@@ -50,7 +50,7 @@ Link the dynamic libraries in the CMake script.
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-To use [OH_AVFormat](../../reference/apis-avcodec-kit/_core.md#oh_avformat) APIs, include the following header file:
+To use [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md) APIs, include the following header file:
 ```
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -250,7 +250,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
         }
       
-        // Release the memory.
+        // 4. Release the memory.
         delete config->metadata.videoOrientation;
         delete config;
         config = nullptr;

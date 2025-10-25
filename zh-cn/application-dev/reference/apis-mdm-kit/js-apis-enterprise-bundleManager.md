@@ -920,7 +920,7 @@ try {
 | versionName                       | string                                                       | 是   | 否   | 应用包的版本文本描述信息，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的versionName字段。 |
 | minCompatibleVersionCode          | number                                                       | 是   | 否   | 分布式场景下的应用包兼容的最低版本，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的minCompatibleVersionCode字段。 |
 | targetVersion                     | number                                                       | 是   | 否   | 应用运行目标版本，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的targetAPIVersion字段。 |
-| appInfo                           | [ApplicationInfo](#applicationinfo20)                        | 是   | 否   | 应用程序信息，包括应用程序名称、应用程序的安装目录等。 |
+| appInfo                           | [ApplicationInfo](#applicationinfo20)                        | 是   | 否   | 应用程序的配置信息。 |
 | signatureInfo                     | [SignatureInfo](#signatureinfo20)                            | 是   | 否   | 应用包的签名信息。 |
 | installTime                       | number                                                       | 是   | 否   | 应用包安装时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒。 |
 | updateTime                        | number                                                       | 是   | 否   | 应用包更新时间戳，表示从1970-01-01 08:00:00 UTC+8逝去的毫秒数，单位毫秒。 |
@@ -936,9 +936,9 @@ try {
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| appId     | string         | 是   | 否   | 应用的appId。                 |
-|fingerprint| string         | 是   | 否   | 应用包的指纹信息。使用的签名证书发生变化，该字段会发生变化。          |
-|appIdentifier| string         | 是   | 否   | 应用的唯一标识，是AppGallery Connect创建应用时分配的[APP ID](https://developer.huawei.com/consumer/cn/doc/app/agc-help-createharmonyapp-0000001945392297)，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。          |
+| appId     | string         | 是   | 否   | 应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common_problem_of_application.md#什么是appid)。                 |
+|fingerprint| string         | 是   | 否   | 应用包的指纹信息，由签名证书通过SHA-256算法计算哈希值生成。使用的签名证书发生变化时，该字段也会发生变化。          |
+|appIdentifier| string         | 是   | 否   | 应用的唯一标识。详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)。          |
 |certificate| string         | 是   | 是   | 应用的证书公钥。           |
 
 
@@ -950,30 +950,30 @@ try {
 
 | 名称                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| name                       | string                                                       | 是   | 否   | 应用的Bundle名称。                                                 |
-| description                | string                                                       | 是   | 否   | 应用的描述信息，使用示例：`"description": $string: mainability_description"`。关于description的详细信息可参见descriptionResource字段说明。 |
-| descriptionId              | number                                                       | 是   | 否   | 应用的描述信息的资源id。 |
-| enabled                    | boolean                                                      | 是   | 否   | 判断应用程序是否可以使用，true表示可以使用，false表示不可使用。 |
-| label                      | string                                                       | 是   | 否   | 应用的名称，使用示例：`"label": "$string: mainability_description"`。关于label的详细信息可参见labelResource字段说明。 |
-| labelId                    | number                                                       | 是   | 否   | 应用名称的资源id。 |
-| icon                       | string                                                       | 是   | 否   | 应用程序的图标，使用示例：`"icon": "$media:icon"`。关于icon的详细信息可参见iconResource字段说明。 |
-| iconId                     | number                                                       | 是   | 否   | 应用程序图标的资源id。 |
+| name                       | string                                                       | 是   | 否   | 应用包的名称，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的bundleName字段。                                                 |
+| description                | string                                                       | 是   | 否   | 标识应用的描述信息，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的description字段。关于description的详细信息详见本表中的descriptionResource字段说明。 |
+| descriptionId              | number                                                       | 是   | 否   | 标识应用的描述信息的资源id，是编译构建时根据应用配置的description自动生成的资源id。 |
+| enabled                    | boolean                                                      | 是   | 否   | 判断应用程序是否可以使用，取值为true表示可以使用，取值为false表示不可使用。 |
+| label                      | string                                                       | 是   | 否   | 标识应用的名称。 |
+| labelId                    | number                                                       | 是   | 否   | 标识应用名称的资源id，是编译构建时根据应用配置的label自动生成的资源id。 |
+| icon                       | string                                                       | 是   | 否   | 应用程序的图标，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的icon字段。关于icon的详细信息详见本表中的iconResource字段说明。 |
+| iconId                     | number                                                       | 是   | 否   | 应用程序图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。 |
 | process                    | string                                                       | 是   | 否   | 应用程序的进程名称。 |
 | codePath                   | string                                                       | 是   | 否   | 应用程序的安装目录。 |
-| removable                  | boolean                                                      | 是   | 否   | 应用程序是否可以被移除，true表示可以被移除，false表示不可以被移除。 |
-| accessTokenId             | number                                                       | 是   | 否   | 应用程序的accessTokenId。 |
-| uid                       | number                                                       | 是   | 否   | 应用程序的Uid。 |
+| removable                  | boolean                                                      | 是   | 否   | 应用程序是否可以被移除，取值为true表示可以被移除，取值为false表示不可以被移除。 |
+| accessTokenId             | number                                                       | 是   | 否   | 应用程序的accessTokenId，应用的身份标识，在[程序访问控制校验接口](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。 |
+| uid                       | number                                                       | 是   | 否   | 应用程序的UID。 |
 | iconResource              | [Resource](#resource20) | 是 | 否 | 应用程序的图标资源信息，包含了该资源的信息的bundleName、moduleName和id。 |
 | labelResource             | [Resource](#resource20) | 是 | 否 | 应用程序的标签资源信息，包含了该资源的信息的bundleName、moduleName和id。 |
 | descriptionResource       | [Resource](#resource20) | 是 | 否 | 应用程序的描述资源信息，包含了该资源的信息的bundleName、moduleName和id。 |
-| appDistributionType       | string                                                       | 是   | 否   | 应用程序签名证书的分发类型，分为： <br/> - app_gallery：应用市场分发的应用。 <br/> -  enterprise：企业应用，可以安装到个人设备上。<br/> -  enterprise_mdm：企业MDM应用，只能安装在企业设备上。需要设备管理特权，比如远程锁定，安装普通企业应用等。 <br/> - enterprise_normal：普通企业应用，只能通过企业MDM应用安装在企业设备上。无需设备管理特权。<br/> - os_integration：系统预置应用。<br/> - crowdtesting：众包测试应用。<br/> - internaltesting：应用市场内测的应用。<br/> - none：其他。 |
-| appProvisionType          | string                                                       | 是   | 否   | 应用程序签名证书文件的类型，支持的取值如下：<br/> - debug：调试类型。<br/> - release：发布类型。 |
-| systemApp          | boolean                                                       | 是   | 否   | 应用是否为系统应用，true表示系统应用，false表示非系统应用。 |
-| debug       | boolean                                | 是   | 否   | 标识应用是否处于调试模式，true表示应用处于调试模式，false表示应用处于非调试模式。 |
+| appDistributionType       | string                                                       | 是   | 否   | 应用程序签名证书的分发类型，详细信息请参考[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的appProvisionType字段。|
+| appProvisionType          | string                                                       | 是   | 否   | 应用程序签名证书文件的类型，分为debug和release两种类型。 |
+| systemApp          | boolean                                                       | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。 |
+| debug       | boolean                                | 是   | 否   | 标识应用是否处于调试模式，取值为true表示应用处于调试模式，取值为false表示应用处于非调试模式。 |
 | dataUnclearable       | boolean                      | 是   | 否   | 标识应用数据是否可被删除。true表示不可删除，false表示可以删除。 |
-| nativeLibraryPath | string                                                                     | 是   | 否   | 应用程序的本地库文件路径。                                                  |
+| nativeLibraryPath | string                                                                     | 是   | 否   | 应用程序的本地库文件路径。|
 | appIndex    | number    | 是   | 否   | 应用包的分身索引标识，仅在分身应用中生效。 |
-| installSource    | string    | 是   | 否   | 应用程序的安装来源，支持的取值如下：<br/> - pre-installed表示应用为第一次开机时安装的预置应用。<br/> - ota表示应用为系统升级时新增的预置应用。<br/> - recovery表示卸载后再恢复的预置应用。<br/> - bundleName表示应用由此应用包名对应的应用安装。<br/> - unknown表示应用安装来源未知。 |
+| installSource    | string    | 是   | 否   | 应用程序的安装来源，支持的取值如下：<br/> - pre-installed表示应用为第一次开机时安装的预置应用。<br/> - ota表示应用为系统升级时新增的预置应用。<br/> - recovery表示卸载后再恢复的预置应用。<br/> - bundleName表示应用由此包名对应的应用安装。<br/> - unknown表示应用安装来源未知。 |
 | releaseType      | string    | 是   | 否   | 标识应用打包时使用的SDK的发布类型。当前SDK的发布类型可能为Canary、Beta、Release，其中Canary和Beta可能通过序号进一步细分，例如Canary1、Canary2、Beta1、Beta2等。开发者可通过对比应用打包依赖的SDK发布类型和OS的发布类型（[deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md)）来判断兼容性。 |
 
 

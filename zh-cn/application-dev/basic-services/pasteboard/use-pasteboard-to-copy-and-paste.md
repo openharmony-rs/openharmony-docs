@@ -48,35 +48,29 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 | getDataSync(): PasteData | 读取系统剪贴板内容, 此接口为同步接口，不能与SetData同线程调用。 |
 
 ### 示例代码
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): Promise<void> {
-    // 获取系统剪贴板对象
-    let text = "test";
-    // 创建一条纯文本类型的剪贴板内容对象
-    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
-    // 将数据写入系统剪贴板
-    let systemPasteboard = pasteboard.getSystemPasteboard();
+<!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
+// [Start pasteboard_useudc]
+import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
+// ···
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ···
+    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
+	// ···
     //从系统剪贴板中读取数据
-    systemPasteboard.getData().then((data) => {
-      let outputData = data;
-      // 从剪贴板数据中获取条目数量
-      let recordCount = outputData.getRecordCount();
-      // 从剪贴板数据中获取对应条目信息
-      for (let i = 0; i < recordCount; i++) {
-        let record = outputData.getRecord(i).toPlainText();
-        console.info('Get data success, record:' + record);
-      }
-    }).catch((error: BusinessError) => {
-      // 处理异常场景
-    })
-  }
-}
+    let data = await systemPasteboard.getData();
+    let recordCount = data.getRecordCount();
+    let result = '';
+    for (let i = 0; i < recordCount; i++) {
+      let record = data.getRecord(i).toPlainText();
+      console.info('Get data success, record:' + record);
+      result = record;
+    }
 ```
+
 
 ## 使用统一数据类型进行复制粘贴
 
@@ -96,44 +90,50 @@ export default class EntryAbility extends UIAbility {
 | getUnifiedDataSync(): udc.UnifiedData | 从系统剪贴板中读取统一数据对象的数据，此接口为同步接口。
 
 ### 示例代码
-```ts
+
+<!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+
+``` TypeScript
 import {BusinessError, pasteboard} from '@kit.BasicServicesKit';
-import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-
-// 构造一条PlainText数据
-let plainText : uniformDataStruct.PlainText = {
-    uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
-    textContent : 'PLAINTEXT_CONTENT',
-    abstract : 'PLAINTEXT_ABSTRACT',
-}
-let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-let data = new unifiedDataChannel.UnifiedData();
-data.addRecord(record);
-
-// 向系统剪贴板中存入一条PlainText数据
-const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.setUnifiedData(data).then((data: void) => {
-    console.info('Succeeded in setting UnifiedData.');
-    // 存入成功，处理正常场景
-}).catch((err: BusinessError) => {
-    console.error('Failed to set UnifiedData. Cause: ' + err.message);
-    // 处理异常场景
-});
-
-// 从系统剪贴板中读取这条text数据
-systemPasteboard.getUnifiedData().then((data) => {
-    let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-    for (let j = 0; j < records.length; j++) {
-        if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-            let text = records[j].getValue() as uniformDataStruct.PlainText;
-            console.info(`${j + 1}.${text.textContent}`);
-        }
+// [StartExclude pasteboard_usedata]
+import {unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+// [End pasteboard_timelaps_PasteData1]
+// ···
+  // 1.构造一条PlainText数据
+  export async function handleUniformData () {
+    let plainText : uniformDataStruct.PlainText = {
+      uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
+      textContent : 'PLAINTEXT_CONTENT',
+      abstract : 'PLAINTEXT_ABSTRACT',
     }
-}).catch((err: BusinessError) => {
-    console.error('Failed to get UnifiedData. Cause: ' + err.message);
-    // 处理异常场景
-});
+
+    let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+    let data = new unifiedDataChannel.UnifiedData();
+    data.addRecord(record);
+    // 2.向系统剪贴板中存入一条PlainText数据
+    systemPasteboard.setUnifiedData(data).then((data: void) => {
+      console.info('Succeeded in setting UnifiedData.');
+      // 存入成功，处理正常场景
+    }).catch((err: BusinessError) => {
+      console.error('Failed to set UnifiedData. Cause: ' + err.message);
+      // 处理异常场景
+    });
+    // 3.从系统剪贴板中读取这条text数据
+    systemPasteboard.getUnifiedData().then((data) => {
+      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+      for (let j = 0; j < records.length; j++) {
+        if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+          let text = records[j].getValue() as uniformDataStruct.PlainText;
+          console.info(`${j + 1}.${text.textContent}`);
+        }
+      }
+    }).catch((err: BusinessError) => {
+      console.error('Failed to get UnifiedData. Cause: ' + err.message);
+      // 处理异常场景
+    });
+  }
 ```
+
 
 <!--RP1-->
 <!--RP1End-->

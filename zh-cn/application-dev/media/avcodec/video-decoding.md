@@ -243,7 +243,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     注册回调函数指针集合OH_AVCodecCallback，包括：
 
-    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror)；
+    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
     - OH_AVCodecOnStreamChanged 码流信息变化，如码流宽、高变化；
     - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
     - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即解码完成。
@@ -362,7 +362,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 5. 调用OH_VideoDecoder_Configure()配置解码器。
 
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     参数校验规则请参考[OH_VideoDecoder_Configure() 参考文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)。
 
@@ -463,7 +463,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
 9. （可选）OH_VideoDecoder_SetParameter()动态配置解码器surface参数。
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -816,7 +816,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     注册回调函数指针集合OH_AVCodecCallback，包括：
 
-    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror)；
+    - OH_AVCodecOnError 解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
     - OH_AVCodecOnStreamChanged 码流信息变化，如码流宽、高变化；
     - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
     - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即解码完成。
@@ -1006,7 +1006,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
 8. （可选）OH_VideoDecoder_SetParameter()动态配置解码器参数。
-    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);

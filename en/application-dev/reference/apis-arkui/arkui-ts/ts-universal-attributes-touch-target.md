@@ -1,19 +1,25 @@
 # Touch Target
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
-You can set the touch target for components that support universal click events, touch events, and gestures.
+You can set the touch target for components. When handling a touch event, ArkUI performs a [hit test](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered to determine the components targeted by the event. Then ArkUI dispatches the event based on the test result. This affects the dispatch of [click](ts-universal-events-click.md), [touch](ts-universal-events-touch.md), [drag](ts-universal-events-drag-drop.md), [mouse](ts-universal-mouse-key.md), [axis](ts-universal-events-axis.md), [hover](ts-universal-events-hover.md), [accessibility hover](ts-universal-accessibility-hover-event.md), and [gesture](ts-gesture-settings.md) events.
 
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## responseRegion
 
-responseRegion(value: Array&lt;Rectangle&gt; | Rectangle)
+responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
 Sets one or more touch targets.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -23,8 +29,35 @@ Sets one or more touch targets.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle)&gt; \| [Rectangle](#rectangle) | Yes  | One or more touch targets, including their location and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| value  | Array&lt;[Rectangle](#rectangle)&gt; \| [Rectangle](#rectangle) | Yes  | Touch target, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br>|
 
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
+## mouseResponseRegion<sup>10+</sup>
+
+mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
+
+Sets one or more mouse touch hotspots.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | Array&lt;[Rectangle](#rectangle)&gt; \| [Rectangle](#rectangle) | Yes  | Mouse touch hotspot, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## Rectangle
 
@@ -32,12 +65,14 @@ Sets one or more touch targets.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name       | Type                      | Mandatory  | Description                            |
-| ------ | ----------------------------- | -----| -------------------------------- |
-| x      | [Length](ts-types.md#length)  | No  | X coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **0vp**|
-| y      | [Length](ts-types.md#length)  | No  | Y coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **0vp**|
-| width  | [Length](ts-types.md#length)  | No  | Width of the touch target.<br>Default value: **'100%'**|
-| height | [Length](ts-types.md#length) | No  | Height of the touch target.<br>Default value: **'100%'**|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name       | Type                       | Read-Only   |  Optional  |  Description                            |
+| ------ | ----------------------------- | -----| -----|-------------------------------- |
+| x      | [Length](ts-types.md#length)  | No  | Yes  |X coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **0vp**|
+| y      | [Length](ts-types.md#length)  | No  | Yes  |Y coordinate of the touch point relative to the upper left corner of the component.<br>Default value: **0vp**|
+| width  | [Length](ts-types.md#length)  | No  | Yes  |Width of the touch target.<br>Default value: **'100%'**|
+| height | [Length](ts-types.md#length) | No  | Yes  |Height of the touch target.<br>Default value: **'100%'**|
 
   >  **NOTE**
   >
@@ -46,7 +81,10 @@ Sets one or more touch targets.
   >  **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the touch target is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the touch target is also 100 vp. when **height** is set to **'100%'**, the height of the touch target is equal to that of the component.
   >
   >  The percentage is measured relative to the component itself.
-
+  >
+  >  When [clip](ts-universal-attributes-sharp-clipping.md#clip12)(true) is set for the parent component, the response of the child component is affected by the touch hotspot of the parent component. The child component that is not in the touch hotspot of the parent component cannot respond to gestures and events.
+  >
+  >  width and height do not support dynamic calculation of calc().
 
 ## Example
 
@@ -57,7 +95,7 @@ This example demonstrates how to set a touch target for a button using **respons
 @Entry
 @Component
 struct TouchTargetExample {
-  @State text: string = ""
+  @State text: string = "";
 
   build() {
     Column({ space: 20 }) {

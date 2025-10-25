@@ -40,10 +40,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | 对所选择的多个文件或目录URI持久化授权。 |
-| [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | 对所选择的多个文件或目录URI取消持久化授权。 |
-| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | 使能多个已经持久化授权的文件或目录。 |
-| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | 取消使能持久化授权过的多个文件或目录。 |
+| [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | 对所选择的多个文件或目录URI持久化授权。 |
+| [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | 对所选择的多个文件或目录URI取消持久化授权。 |
+| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | 使能多个已经持久化授权的文件或目录。 |
+| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | 取消使能持久化授权过的多个文件或目录。 |
 | [FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)](#oh_fileshare_checkpersistentpermission) | 校验所选择的多个文件或目录URI的持久化授权。 |
 | [void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)](#oh_fileshare_releasepolicyerrorresult) | 释放FileShare_PolicyErrorResult指针指向的内存资源。 |
 
@@ -91,7 +91,7 @@ enum FileShare_PolicyErrorCode
 ### OH_FileShare_PersistPermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -101,7 +101,6 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -121,7 +120,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 ### OH_FileShare_RevokePermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -131,7 +130,6 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -146,12 +144,12 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         E_PERMISSION 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_ActivatePermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -161,7 +159,6 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -181,7 +178,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 ### OH_FileShare_DeactivatePermission()
 
 ```
-FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum,FileShare_PolicyErrorResult **result, unsigned int *resultNum)
+FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
 **描述**
@@ -191,7 +188,6 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -206,7 +202,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>          ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK - 接口调用成功。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。<br>         ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。<br>         ERR_PERMISSION_ERROR 201 - 接口权限校验失败。<br>         ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。<br>         ERR_EPERM 13900001 - 操作不被允许。<br>         ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -221,7 +217,6 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -249,7 +244,6 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 释放FileShare_PolicyErrorResult指针指向的内存资源。
 
 **起始版本：** 12
-
 
 **参数：**
 

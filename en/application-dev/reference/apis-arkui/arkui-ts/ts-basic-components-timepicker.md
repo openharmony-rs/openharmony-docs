@@ -556,7 +556,7 @@ struct TimePickerExample {
 
   build() {
     Column() {
-      Button ('Switch Time Format')
+      Button('Switch Time Format')
         .margin(30)
         .onClick(() => {
           this.isMilitaryTime = !this.isMilitaryTime;
@@ -613,7 +613,7 @@ struct TimePickerExample {
 
 ![timePicker](figures/TimePickerDemo3.gif)
 
-### Example 4: Setting Loopable Scrolling
+### Example 4: Setting Loop Scrolling
 
 This example demonstrates how to set whether to enable loop scrolling using [loop](#loop11).
 

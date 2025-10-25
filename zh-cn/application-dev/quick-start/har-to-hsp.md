@@ -17,17 +17,20 @@
 ## HAR转HSP的操作步骤
 
 1. 修改HAR模块下的module.json5文件，将type字段设置为shared，并新增deliveryWithInstall和pages字段。
-    ```json
-    // MyApplication\library\src\main\module.json5
-    {
-      "module": {
-        "type": "shared",
-        "deliveryWithInstall": true,
-        "pages": "$profile:main_pages"
-        // ...
-      }
-    }
-    ```
+    <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+	// ···
+    "type": "shared",
+    "deliveryWithInstall": true,
+    "pages": "$profile:main_pages",
+	// ···
+  }
+}
+```
+
 
 2. 在resources\base下新增profile文件夹，在profile下新增一个main_pages.json文件，并配置如下内容。
     ```json
@@ -40,63 +43,78 @@
     ```
 
 3. 在ets目录下新增pages目录，并在pages目录下新增PageIndex.ets文件，配置如下内容。
-    ```ts
-    // MyApplication\library\src\main\ets\pages\PageIndex.ets
-    @Entry
-    @Component
-    struct PageIndex {
-      @State message: string = 'hello world';
 
-      build() {
-        Row() {
-          Column() {
-            Text(this.message)
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
-          }
-          .width('100%')
-        }
-        .height('100%')
+    <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct PageIndex {
+  @State message: string = 'hello world';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
       }
+      .width('100%')
     }
-    ```
+    .height('100%')
+  }
+}
+```
+
 
 4. 删除HAR模块的build-profile.json5文件中的consumerFiles字段配置。
 
 5. 修改HAR模块的hvigorfile.ts文件，将以下内容替换文件内容。
-    ```ts
-    // MyApplication\library\hvigorfile.ts
-    import { hspTasks } from '@ohos/hvigor-ohos-plugin';
 
-    export default {
-      system: hspTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
-      plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
-    }
-    ```
+    <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
+
+``` TypeScript
+// library\hvigorfile.ts
+import { hspTasks } from '@ohos/hvigor-ohos-plugin';
+
+export default {
+  system: hspTasks,  // 编译修改成hsp的任务
+  plugins:[]
+}
+```
+
 
 6. 修改oh-package.json5文件，新增packageType配置。
-    ```json
-    // MyApplication\library\oh-package.json5
-    {
-      "packageType": "InterfaceHar"
-    }
-    ```
+
+    <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
+
+``` JSON5
+{
+// ···
+  "packageType": "InterfaceHar"
+}
+```
+
 
 7. 修改项目根目录下的build-profile.json5文件，在modules标签下找到library的配置，新增targets标签。
 
-    ```json
-    // MyApplication\build-profile.json5
-    "modules": [
-      {
-        "name": "library",
-        "srcPath": "./library",
-        "targets": [
-          {
-            "name": "default",
-            "applyToProducts": [
-              "default"
-            ]
-          }
-        ]
-      }
-    ]
+    <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
+
+``` JSON5
+  "modules": [
+	// ···
+    {
+      "name": "library",
+      "srcPath": "./library",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ],
+```
+

@@ -862,7 +862,7 @@ struct ColorMetricsSample {
 
 ## Corners\<T><sup>12+</sup>
 
-用于设置四个角的圆角度数。
+用于设置四个角的圆角属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -879,7 +879,7 @@ struct ColorMetricsSample {
 
 type CornerRadius = Corners\<Vector2>
 
-设置四个角的圆角度数。
+设置四个角的圆角x轴与y轴的半轴长。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -887,13 +887,13 @@ type CornerRadius = Corners\<Vector2>
 
 | 类型                                         | 说明               |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角度数。 |
+| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角x轴与y轴的半轴长。 |
 
 ## BorderRadiuses<sup>12+</sup>
 
 type BorderRadiuses = Corners\<number>
 
-设置四个角的圆角度数。
+设置四个角的圆角半径。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -901,7 +901,7 @@ type BorderRadiuses = Corners\<number>
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | 四个角的圆角度数。 |
+| [Corners\<number>](#cornerst12) | 四个角的圆角半径。 |
 
 ## Rect<sup>12+</sup>
 
@@ -968,8 +968,8 @@ type Rect = common2D.Rect
 
 | 名称            | 类型    | 只读 | 可选 | 说明                                                |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> **说明：** fillColor只有透明度通道生效其他通道不生效。  |
-| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>   **说明：** strokeColor只有透明度通道生效其他通道不生效。           |
+| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。  |
+| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。 |
 | strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
 
 ### constructor<sup>12+</sup>

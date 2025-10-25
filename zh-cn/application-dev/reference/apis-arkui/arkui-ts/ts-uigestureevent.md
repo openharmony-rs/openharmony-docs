@@ -1,7 +1,7 @@
 # 设置组件绑定的手势
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -34,7 +34,7 @@ addGesture\<T>(gesture: GestureHandler\<T>, priority?: GesturePriority, mask?: G
 | ------ | ------ | ---- | -------------------------- |
 | gesture  |  [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert) | 是   | 手势处理器对象。 |
 | priority  |  [GesturePriority](./ts-gesturehandler.md#gesturepriority枚举说明) | 否   | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### addParallelGesture
 
@@ -51,7 +51,7 @@ addParallelGesture\<T>(gesture: GestureHandler\<T>, mask?: GestureMask): void
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | gesture  |  [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert) | 是   | 手势处理器对象。 |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask11枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### removeGestureByTag
 

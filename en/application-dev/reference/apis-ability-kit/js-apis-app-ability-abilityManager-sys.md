@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -178,6 +178,10 @@ Obtains the UIAbility running information. This API uses an asynchronous callbac
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+> **NOTE**
+>
+> This API does not return error code 202 since API version 14.
 
 | ID| Error Message|
 | ------- | -------- |

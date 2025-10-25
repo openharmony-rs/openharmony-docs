@@ -8,11 +8,9 @@
 
 ## When to Use
 
-You may need to restore a database in any of the following cases:
+If an error occurs during the operation or storage, you can restore the database to the previous state and continue the operation.
 
-An important operation being performed by an application is interrupted.
-
-The database is unavailable due to data loss or corruption, or dirty data.
+If a database is tampered with, deleted, or powered off, the database may be unavailable due to data loss, data corruption, or dirty data. In this case, you can use the backup and restore capability to restore the database to the available state.
 
 Currently, only RDB stores (C/C++) supports database backup and restore.
 

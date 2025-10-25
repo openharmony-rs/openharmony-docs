@@ -87,11 +87,25 @@ type MajorMinorClass = constant.MajorMinorClass
 | [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | 蓝牙设备的子类型。 |
 
 
+## BluetoothAddress<sup>21+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+描述蓝牙设备地址信息的参数结构，包括地址与地址类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 蓝牙设备的地址信息。 |
+
+
 ## connection.pairDevice
 
 pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 主动发起与对端蓝牙设备的配对流程。使用Callback异步回调。
+- 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -141,6 +155,7 @@ try {
 pairDevice(deviceId: string): Promise&lt;void&gt;
 
 主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 若开发者不知道目标设备的[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
 - 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -186,6 +201,64 @@ try {
         console.error('pairDevice: errCode:' + error.code + ',errMessage' + error.message);
     })
 
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## connection.pairDevice<sup>21+</sup>
+
+pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
+
+主动发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+- 若开发者已知目标设备的MAC地址及[地址类型](js-apis-bluetooth-common.md#bluetoothaddresstype)，建议调用此接口发起配对。
+- 蓝牙配对状态通过[on('bondStateChange')](#connectiononbondstatechange)的回调结果获取。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 是    | 需要配对的对端蓝牙设备地址信息，包括地址与地址类型。 |
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |              |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
+// promise
+try {
+    let btAddr: common.BluetoothAddress = {
+        "address": '11:22:33:44:55:66', // 目标设备的实际MAC地址或虚拟MAC地址
+        "addressType": common.BluetoothAddressType.REAL, // 相应的地址类型
+    }
+    connection.pairDevice(btAddr).then(() => {
+        console.info('pairDevice');
+    }, (error: BusinessError) => {
+        console.error('errCode: ' + error.code + ', errMessage' + error.message);
+    });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -529,7 +602,7 @@ getPairedDevices(): Array&lt;string&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 | 
+| Array&lt;string&gt; | 已配对蓝牙设备的地址集合。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 已配对的地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 |
 
 **错误码**：
 
@@ -619,13 +692,13 @@ getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 
 | 参数名       | 类型        | 必填   | 说明                                    |
 | --------- | --------- | ---- | ------------------------------------- |
-| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | 否    | 表示Profile协议的枚举值。如果携带ProfileId，则返回指定Profile协议的连接状态。如果未携带ProfileId，则检查所有支持的Profile连接状态，按如下优先级顺序检查并返回：<br>- 存在已连接的Profile协议，则返回[STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在连接的Profile协议，则返回[STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在断连的Profile协议，则返回[STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 以上条件均不满足，则返回[STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。 | 
+| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | 否    | 表示Profile协议的枚举值。如果携带ProfileId，则返回指定Profile协议的连接状态。如果未携带ProfileId，则检查所有支持的Profile连接状态，按如下优先级顺序检查并返回：<br>- 存在已连接的Profile协议，则返回[STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在连接的Profile协议，则返回[STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 存在正在断连的Profile协议，则返回[STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate)。<br>- 以上条件均不满足，则返回[STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate)。 |
 
 **返回值：**
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Profile协议的连接状态。 | 
+| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Profile协议的连接状态。 |
 
 **错误码**：
 
@@ -669,7 +742,7 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------   | ------- | ---- | -------------------------------- |
-| deviceId | string | 是 | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 | 
+| deviceId | string | 是 | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | accept   | boolean | 是    | 是否接受对端设备的配对请求。true表示接受，false表示不接受。       |
 
 **错误码**：
@@ -1808,7 +1881,7 @@ try {
 | TRANSPORT_BR_EDR   | 0 | 传统蓝牙（Basic Rate/Enhanced Data Rate，BR/EDR）设备传输方式。  |
 | TRANSPORT_LE  | 1 | 低功耗蓝牙（Bluetooth Low Energy，BLE）设备传输方式。  |
 | TRANSPORT_DUAL<sup>20+</sup>  | 2 | 同时支持传统蓝牙（BR/EDR）和低功耗蓝牙（BLE）的双模设备传输方式。设备可以根据需要选择使用传统蓝牙（BR/EDR）或低功耗蓝牙（BLE）进行通信。  |
-| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | 未知的设备传输方式。  | 
+| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | 未知的设备传输方式。  |
 
 
 ## ScanMode

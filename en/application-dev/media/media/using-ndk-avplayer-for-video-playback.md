@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) is used to play raw media assets in an end-to-end manner. In this topic, you will learn how to use the AVPlayer to play a complete video.
 
@@ -49,7 +49,7 @@ In addition, link the following dynamic libraries in the CMake script:
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
-You can use C/C++ APIs related to video playback by including the header files [avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md), [avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/native__averrors_8h.md).
+You can use C/C++ APIs related to video playback by including the header files [avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md), [avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 
 Read [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) for the API reference.
 

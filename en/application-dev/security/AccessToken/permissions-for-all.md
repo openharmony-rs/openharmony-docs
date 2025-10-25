@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 All the permissions in this topic are available to all applications and granted by the system.
 
@@ -578,7 +579,7 @@ With this permission, the application can be started when the screen is locked. 
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 21
+**Since**: 21
 
 ## ohos.permission.kernel.IGNORE_LIBRARY_VALIDATION
 
@@ -593,3 +594,29 @@ This permission applies only to independent binary programs, not to HAPs.
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
+
+## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
+
+Allows an application to turn off the screen but keep it unlocked after a timeout.
+
+With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 22
+
+## ohos.permission.LOCK_WINDOW_CURSOR
+
+Allows an application to lock the mouse cursor when the window gains focus.
+
+With this permission, the application can lock the mouse cursor within the window when focused, preventing it from moving outside. It also controls if the cursor moves with the window and releases the cursor when the window loses focus.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Since**: 22

@@ -119,7 +119,7 @@
 
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
-  
+
   ```ts
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 
@@ -131,9 +131,9 @@
     }
   }
   ```
-  
+
 - 在页面中获取UIAbility实例的上下文信息。
-  
+
   ```ts
   import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
 
@@ -159,7 +159,7 @@
 
   也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
-  
+
   ```ts
   import { common, Want } from '@kit.AbilityKit';
 
@@ -240,7 +240,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
-  
+
 
 ## Context的典型使用场景
 
@@ -302,6 +302,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   | distributedFilesDir | 分布式文件目录。 | <路径前缀>/el2/distributedFiles | <路径前缀>/el2/distributedFiles/ |
   | resourceDir<sup>11+<sup> | 资源目录。<br/>**说明：**<br/> 需要开发者手动在`\<module-name>\resource`路径下创建`resfile`目录。 | 不涉及 | <路径前缀>/el1/bundle/**\<module-name>**/resources/resfile |
   | cloudFileDir<sup>12+</sup> | 云文件目录。 | <路径前缀>/el2/cloud | <路径前缀>/el2/cloud/ |
+  | logFileDir<sup>22+</sup> | 日志文件目录。 | <路径前缀>/el2/log | <路径前缀>/el2/log/ |
 
 本节以使用ApplicationContext获取cacheDir和filesDir为例，分别介绍如何获取应用缓存目录，以及如何获取应用文件目录，并用于新建文件和读写文件。
 
@@ -343,7 +344,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   ```
 
 - **获取应用文件目录**
-  
+
   ```ts
   import { common } from '@kit.AbilityKit';
   import { buffer } from '@kit.ArkTS';
@@ -499,7 +500,7 @@ struct Page_Context {
 ```
 
 ### 监听应用前后台变化
-  
+
 开发者可以使用[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)的相关能力，监听应用的前后台变化。当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
 
 以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。

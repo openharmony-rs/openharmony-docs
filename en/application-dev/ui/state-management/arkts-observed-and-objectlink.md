@@ -1,9 +1,14 @@
 # \@Observed and \@ObjectLink Decorators: Observing Property Changes in Nested Class Objects
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
+The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), [\@Provide and \@Consume](./arkts-provide-and-consume.md) can only observe the top-layer changes. However, in actual application development, the application encapsulates its own data model based on the requirements. In the case of multi-layer nesting, such as two-dimensional arrays, object arrays, and nested classes, attribute changes at the second layer cannot be observed. Therefore, to observe changes of deep attributes in nested data structures, the \@Observed and \@ObjectLink decorators are introduced.
 
-The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), [\@Provide and \@Consume](./arkts-provide-and-consume.md) can only observe the top-layer changes. However, in actual application development, the application encapsulates its own data model based on the requirements. In this case, for multi-layer nesting, for example, a two-dimensional array, an array item class, or a class inside another class as a property, the property changes at the second layer cannot be observed. This is where the \@Observed and \@ObjectLink decorators come in handy.
-
-\@Observed and \@ObjectLink are used together to observe nested scenarios, aiming at offsetting the limitation that the decorator can observe only one layer. You are advised to have a basic understanding of the observation capability of the decorators before reading this topic. For details, see [\@State](./arkts-state.md).
+\@Observed and \@ObjectLink are used to observe changes of nested object attributes. You need to understand the basic observation capabilities of the decorators before reading this document. For details, see [\@State](./arkts-state.md). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
 
 > **NOTE**
 >
@@ -15,11 +20,11 @@ The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md),
 
 \@ObjectLink and \@Observed class decorators are used for two-way data synchronization in scenarios involving nested objects or arrays:
 
-- Use **new** to create a class decorated by \@Observed so that the property changes can be observed.
+- Use new to create a class decorated with \@Observed to observe changes of attributes in the class.
 
 - The \@ObjectLink decorated state variable in the child component is used to accept the instance of the \@Observed decorated class and establish two-way data binding with the corresponding state variable in the parent component. The instance can be an \@Observed decorated item in the array or an \@Observed decorated property in the class object.
 
-- Using \@Observed alone has no effect in nested classes. To observe changes of class properties, it must be used with a custom component. (For examples, see [Nested Object](#nested-object)). To create a two-way or one-way synchronization, it must be used with \@ObjectLink or with \@Prop. (For details, see [Differences Between \@Prop and \@ObjectLink](#differences-between-prop-and-objectlink).)
+- \@Observed is used to observe object attribute changes in nested scenarios. It must be used together with custom components. For details, see [Nested Object](#nested-object). To perform bidirectional or unidirectional data synchronization, use it together with \@ObjectLink or \@Prop, for details, see [Differences Between \@Prop and \@ObjectLink](#differences-between-prop-and-objectlink).
 
 
 ## Decorator Description
@@ -32,10 +37,10 @@ The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md),
 | \@ObjectLink Decorator| Description                                      |
 | ----------------- | ---------------------------------------- |
 | Decorator parameters            | None.                                      |
-| Allowed variable types        | In versions earlier than API version 18, @ObjectLink must be initialized with an \@Observed decorated class instance.<br>Since API version 18, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed18).<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).<br>It supports class instances that inherit from Date, [Array](#two-dimensional-array), [Map](#extended-map-class), and [Set](#extended-set-class) (the latter two are supported since API version 11). For an example, see [Observed Changes](#observed-changes).<br>Since API version 11, @ObjectLink supports union types of @Observed decorated classes and **undefined** or **null**, for example, **ClassA \| ClassB**, **ClassA \| undefined**, or **ClassA \| null**. For details, see [Union Type @ObjectLink](#union-type-objectlink).<br>An @ObjectLink decorated variable accepts changes to its properties, but the variable itself is read-only.|
-| Initial value for the decorated variable        | Not allowed.                                    |
+| Allowed variable types        | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>API version 11 and later support the class instances of [Map](#extended-map-class) and [Set](#extended-set-class), and the union type consisting of \@Observed decorated class and undefined or null, for example, **ClassA \| ClassB**, **ClassA \| undefined**, or **ClassA \| null. For an example, see [Union Type @ObjectLink](#union-type-objectlink).<br>In versions earlier than API version 19, @ObjectLink must be initialized with an \@Observed decorated class instance.<br>Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
+| Initial value for the decorated variable        | Disable local initialization.                                    |
 
-Example of a read-only \@ObjectLink decorated variable:
+An @ObjectLink decorated variable accepts changes to its properties, but the variable itself is read-only.
 
 
 ```ts
@@ -51,8 +56,7 @@ this.objLink= ...
 >
 > - \@Prop creates a one-way synchronization from the data source to the decorated variable. It takes a copy of its source to enable changes to remain local. When \@Prop observes a change to its source, the local value of the \@Prop decorated variable is overwritten.
 >
-> - \@ObjectLink creates a two-way synchronization between the data source and the decorated variable. An \@ObjectLink decorated variable can be considered as a pointer to the source object inside the parent component. Do not assign values to \@ObjectLink decorated variables, as doing so will interrupt the synchronization chain. \@ObjectLink decorated variables are initialized through data source (Object) references. Assigning a value to them is equivalent to updating the array items or class properties in the parent component, which is not supported in TypeScript/JavaScript and will result in a runtime error.
-
+> - \@ObjectLink creates a two-way synchronization between the data source and the decorated variable. An \@ObjectLink decorated variable can be considered as a pointer to the source object inside the parent component. Do not assign values to \@ObjectLink decorated variables, as doing so will interrupt the synchronization chain.
 
 ## Variable Transfer/Access Rules
 
@@ -74,7 +78,7 @@ this.objLink= ...
 
 ### Observed Changes
 
-If the property of an \@Observed decorated class is not of the simple type, such as class, object, or array, it must be decorated by \@Observed. Otherwise, the property changes cannot be observed.
+If the attribute of the class decorated with \@Observed is not a simple type, such as class, Object, or array, the attribute must also be decorated with \@Observed. Otherwise, the changes of the attribute cannot be observed.
 
 
 ```ts
@@ -98,7 +102,7 @@ class Parent {
 }
 ```
 
-In the preceding example, **Parent** is decorated by \@Observed, and the value changes of its member variables can be observed. In contrast, **Child** is not decorated by \@Observed, and therefore its property changes cannot be observed.
+In the preceding example, **Parent** is decorated by \@Observed, and the value changes of its member variables can be observed. In contrast, **Child** is not decorated by \@Observed, and therefore its property changes cannot be observed. To observe the attribute changes of Child, see [Nested Object](#nested-object).
 
 
 ```ts
@@ -118,7 +122,7 @@ this.parent.child.num = 5;
 
 - Replacement of array items for the data source of an array and changes of class properties for the data source of a class. For details, see [Object Array](#object-array).
 
-For an instance of the class that extends **Date**, the value changes of **Date** properties can be observed. In addition, you can call the following APIs to update **Date** properties: **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, and **setUTCMilliseconds**.
+When \@ObjectLink decorates a class inherited from Date, the overall value assignment of Date can be observed. In addition, the setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds interface of Date can be called to update the attributes of Date.
 
 ```ts
 @Observed
@@ -144,7 +148,7 @@ struct Child {
 
   build() {
     Column() {
-      Button(`child increase the day by 1`)
+      Button('child increase the day by 1')
         .onClick(() => {
           this.data.setDate(this.data.getDate() + 1);
         })
@@ -166,7 +170,7 @@ struct Parent {
     Column() {
       Child({ label: 'date', data: this.newData.data })
 
-      Button(`parent update the new date`)
+      Button('parent update the new date')
         .onClick(() => {
           this.newData.data = new DateClass('2023-07-07');
         })
@@ -179,9 +183,9 @@ struct Parent {
 }
 ```
 
-For a class that extends **Map**, the value changes of the **Map** instance can be observed. In addition, you can call the following APIs to update the instance: **set**, **clear**, and **delete**. For details, see [Extended Map Class](#extended-map-class).
+When \@ObjectLink decorates a class that extends Map, it enables observation of the entire Set instance's value assignments. Additionally, calling Map APIs like set, clear, and delete triggers updates to the observed Map value. For details, see [Extended Map Class](#extended-map-class).
 
-For a class that extends **Set**, the value changes of the **Set** instance can be observed. In addition, you can call the following APIs to update the instance: **add**, **clear**, and **delete**. For details, see [Extended Set Class](#extended-set-class).
+When \@ObjectLink decorates a class that extends Set, it enables observation of the entire Set instance's value assignments. Additionally, calling Set APIs like add, clear, and delete triggers updates to the observed Set value. For details, see [Extended Set Class](#extended-set-class).
 
 
 ### Framework Behavior
@@ -190,7 +194,7 @@ For a class that extends **Set**, the value changes of the **Set** instance can 
 
    a. \@Observed causes all instances of the decorated class to be wrapped with an opaque proxy object, which takes over the **setter** and **getter** methods of the properties of the class.
 
-   b. The \@ObjectLink decorated variable in the child component is initialized from the parent component and accepts the instance of the \@Observed decorated class. The \@ObjectLink decorated wrapped object registers itself with the \@Observed decorated class.
+   b. The \@ObjectLink decorated variable in the child component is initialized from the parent component and accepts the instance of the \@Observed decorated class. The \@ObjectLink decorated wrapped object registers itself with the \@Observed decorated class. The registration behavior here means that the \@ObjectLink wrapper class provides its own reference to the \@Observed instance, so that the \@Observed instance can add it to the dependency list so that it can be notified when the attribute changes.
 
 2. Property update: When the property of the \@Observed decorated class is updated, the framework executes **setter** and **getter** methods of the proxy, traverses the \@ObjectLink decorated wrapped objects that depend on it, and notifies the data update.
 
@@ -199,238 +203,150 @@ For a class that extends **Set**, the value changes of the **Set** instance can 
 
 1. Using \@Observed to decorate a class changes the original prototype chain of the class. Using \@Observed and other class decorators to decorate the same class may cause problems.
 
-2. The \@ObjectLink decorator cannot be used in custom components decorated by \@Entry.
+2. The \@ObjectLink decorator cannot be used in custom components decorated by [\@Entry](./arkts-create-custom-components.md#entry).
 
 3. The \@ObjectLink decorator must be used with complex types. Otherwise, an error is reported during compilation.
 
-4. In versions earlier than API version 18, the type of the variable decorated by \@ObjectLink must be a class explicitly decorated by @Observed. If the type is not specified or is not a class decorated by \@Observed, an error is reported during compilation.
-Since API version 18, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed18). If it is not properly initialized, an error is reported during runtime.
+4. For API version 19 or earlier, the variable type decorated by \@ObjectLink must be the class explicitly decorated by @Observed. If the type is not specified or is not a class decorated by \@Observed, an error is reported during compilation.
+  Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). If it is not properly initialized, an error is reported during runtime.
 
-  ```ts
-  @Observed
-  class Info {
-    count: number;
-
-    constructor(count: number) {
-      this.count = count;
+    ```ts
+    @Observed
+    class Info {
+      count: number;
+    
+      constructor(count: number) {
+        this.count = count;
+      }
     }
-  }
-
-  class Test {
-    msg: number;
-
-    constructor(msg: number) {
-      this.msg = msg;
+    
+    class Test {
+      msg: number;
+    
+      constructor(msg: number) {
+        this.msg = msg;
+      }
     }
-  }
-
-  // Incorrect format. The count type is not specified, leading to a compilation error.
-  @ObjectLink count;
-  // Incorrect format. Test is not decorated by @Observed, leading to a compilation error.
-  @ObjectLink test: Test;
-
-  // Correct format.
-  @ObjectLink count: Info;
-  ```
-
+    
+    // Incorrect format. The count type is not specified, leading to a compilation error.
+    @ObjectLink count;
+    // Incorrect format. Test is not decorated by @Observed, leading to a compilation error.
+    @ObjectLink test: Test;
+    
+    // Correct format.
+    @ObjectLink count: Info;
+    ```
+  
 5. Variables decorated by \@ObjectLink cannot be initialized locally. You can only pass in the initial value from the parent component through construction parameters. Otherwise, an error is reported during compilation.
 
-  ```ts
-  @Observed
-  class Info {
-    count: number;
-
-    constructor(count: number) {
-      this.count = count;
+    ```ts
+    @Observed
+    class Info {
+      count: number;
+    
+      constructor(count: number) {
+        this.count = count;
+      }
     }
-  }
-
-  // Incorrect format. An error is reported during compilation.
-  @ObjectLink count: Info = new Info(10);
-
-  // Correct format.
-  @ObjectLink count: Info;
-  ```
+    
+    // Incorrect format. An error is reported during compilation.
+    @ObjectLink count: Info = new Info(10);
+    
+    // Correct format.
+    @ObjectLink count: Info;
+    ```
 
 6. The variables decorated by \@ObjectLink are read-only and cannot be assigned values. Otherwise, an error "Cannot set property when setter is undefined" is reported during runtime. If you need to replace all variables decorated by \@ObjectLink, you can replace them in the parent component.
 
-  [Incorrect Usage]
-
-  ```ts
-  @Observed
-  class Info {
-    count: number;
-
-    constructor(count: number) {
-      this.count = count;
-    }
-  }
-
-  @Component
-  struct Child {
-    @ObjectLink num: Info;
-
-    build() {
-      Column() {
-        Text(`Value of num: ${this.num.count}`)
-          .onClick(() => {
-            // Incorrect format. The variable decorated by @ObjectLink cannot be assigned a value.
-            this.num = new Info(10);
-          })
+    **Incorrect Usage**
+  
+    ```ts
+    @Observed
+    class Info {
+      count: number;
+    
+      constructor(count: number) {
+        this.count = count;
       }
     }
-  }
-
-  @Entry
-  @Component
-  struct Parent {
-    @State num: Info = new Info(10);
-
-    build() {
-      Column() {
-        Text(`Value of count: ${this.num.count}`)
-        Child({num: this.num})
+    
+    @Component
+    struct Child {
+      @ObjectLink num: Info;
+    
+      build() {
+        Column() {
+          Text(`Value of num: ${this.num.count}`)
+            .onClick(() => {
+              // Incorrect. The variables decorated with @ObjectLink cannot be assigned a value. An error is reported during running.
+              this.num = new Info(10);
+            })
+        }
       }
     }
-  }
-  ```
-
-  [Correct Usage]
-
-  ```ts
-  @Observed
-  class Info {
-    count: number;
-
-    constructor(count: number) {
-      this.count = count;
-    }
-  }
-
-  @Component
-  struct Child {
-    @ObjectLink num: Info;
-
-    build() {
-      Column() {
-        Text(`Value of num: ${this.num.count}`)
-          .onClick(() => {
-            // Correct format, which is used to change the member property of the @ObjectLink decorated variables.
-            this.num.count = 20;
-          })
+    
+    @Entry
+    @Component
+    struct Parent {
+      @State num: Info = new Info(10);
+    
+      build() {
+        Column() {
+          Text(`Value of count: ${this.num.count}`)
+          Child({num: this.num})
+        }
       }
     }
-  }
-
-  @Entry
-  @Component
-  struct Parent {
-    @State num: Info = new Info(10);
-
-    build() {
-      Column() {
-        Text(`Value of count: ${this.num.count}`)
-        Button('click')
-          .onClick(() => {
-            // Replace the variable in the parent component.
-            this.num = new Info(30);
-          })
-        Child({num: this.num})
+    ```
+  
+    **Correct Usage**
+  
+    ```ts
+    @Observed
+    class Info {
+      count: number;
+    
+      constructor(count: number) {
+        this.count = count;
       }
     }
-  }
-  ```
+    
+    @Component
+    struct Child {
+      @ObjectLink num: Info;
+    
+      build() {
+        Column() {
+          Text(`Value of num: ${this.num.count}`)
+            .onClick(() => {
+              // Correct format, which is used to change the member property of the @ObjectLink decorated variables.
+              this.num.count = 20;
+            })
+        }
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Parent {
+      @State num: Info = new Info(10);
+    
+      build() {
+        Column() {
+          Text(`Value of count: ${this.num.count}`)
+          Button('click')
+            .onClick(() => {
+              // Replace the variable in the parent component.
+              this.num = new Info(30);
+            })
+          Child({num: this.num})
+        }
+      }
+    }
+    ```
 
 
 ## Use Scenarios
-
-### Inheritance Object
-
-```ts
-@Observed
-class Animal {
-  name: string;
-  age: number;
-
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-}
-
-@Observed
-class Dog extends Animal {
-  kinds: string;
-
-  constructor(name: string, age: number, kinds: string) {
-    super(name, age);
-    this.kinds = kinds;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State dog: Dog = new Dog('Molly', 2, 'Husky');
-
-  @Styles
-  pressedStyles() {
-    .backgroundColor('#ffd5d5d5')
-  }
-
-  @Styles
-  normalStyles() {
-    .backgroundColor('#ffffff')
-  }
-
-  build() {
-    Column() {
-      Text(`${this.dog.name}`)
-        .width(320)
-        .margin(10)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .stateStyles({
-          pressed: this.pressedStyles,
-          normal: this.normalStyles
-        })
-        .onClick(() => {
-          this.dog.name = 'DouDou';
-        })
-
-      Text(`${this.dog.age}`)
-        .width(320)
-        .margin(10)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .stateStyles({
-          pressed: this.pressedStyles,
-          normal: this.normalStyles
-        })
-        .onClick(() => {
-          this.dog.age = 3;
-        })
-
-      Text(`${this.dog.kinds}`)
-        .width(320)
-        .margin(10)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .stateStyles({
-          pressed: this.pressedStyles,
-          normal: this.normalStyles
-        })
-        .onClick(() => {
-          this.dog.kinds = 'Samoyed';
-        })
-    }
-  }
-}
-```
-
-![Observed_ObjectLink_inheritance_object](figures/Observed_ObjectLink_inheritance_object.gif)
-
-In the preceding example, some properties (**name** and **age**) in the **Dog** class are inherited from the **Animal** class. You can directly change **name** and **age** in the **dog** variable decorated by \@State to trigger UI re-rendering.
 
 ### Nested Object
 
@@ -501,15 +417,18 @@ struct Index {
 
 ![Observed_ObjectLink_nested_object](figures/Observed_ObjectLink_nested_object.gif)
 
-In the preceding example, the **Text** component in the **Index** component is not re-rendered because the change belongs to the second layer and \@State cannot observe the change at the second layer. However, **Book** is decorated by \@Observed, and the **name** property of **Book** can be observed by \@ObjectLink. Therefore, no matter which button is clicked, the **Text** component in the **BookCard** component is re-rendered.
+In the preceding example:
+
+- Click change bag.book.name. The Text component in the Index component is not refreshed because this change is a change at the second layer and cannot be observed by \@State. However, Book is decorated with \@Observed, and the name attribute of Book can be observed by \@ObjectLink. Therefore, the Text component in the BookCard component can be refreshed.
+- Click change book.name. The Text component in the Bookcard component is refreshed because this change is a change at the first layer in BooKCard and can also be observed by \@ObjectLink.
 
 ### Object Array
 
-An object array is a frequently used data structure. The following example shows the usage of array objects.
+An object array is a frequently used data structure. The following example shows how to use an object array.
 
 > **NOTE**
 >
-> **NextID** is used to generate a unique, persistent key for each array item during [ForEach rendering](./arkts-rendering-control-foreach.md) to identify the corresponding component.
+> NextID is used to generate a unique and persistent key value for each array element during the [ForEach loop rendering](../rendering-control/arkts-rendering-control-foreach.md) process to identify the corresponding component.
 
 ```ts
 let NextID: number = 1;
@@ -533,7 +452,7 @@ struct Child {
 
   build() {
     Row() {
-      Button(`ViewChild [${this.label}] this.info.info = ${this.info ? this.info.info : "undefined"}`)
+      Button(`ViewChild [${this.label}] this.info.info = ${this.info ? this.info.info : 'undefined'}`)
         .width(320)
         .margin(10)
         .onClick(() => {
@@ -558,38 +477,38 @@ struct Parent {
         (item: Info): string => item.id.toString()
       )
       // Initialize the @ObjectLink decorated variable using the @State decorated array, whose items are instances of @Observed decorated Info.
-      Child({ label: `ViewChild this.arrA[first]`, info: this.arrA[0] })
-      Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })
+      Child({ label: 'ViewChild this.arrA[first]', info: this.arrA[0] })
+      Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] })
 
-      Button(`ViewParent: reset array`)
+      Button('ViewParent: reset array')
         .width(320)
         .margin(10)
         .onClick(() => {
           this.arrA = [new Info(0), new Info(0)];
         })
-      Button(`ViewParent: push`)
+      Button('ViewParent: push')
         .width(320)
         .margin(10)
         .onClick(() => {
           this.arrA.push(new Info(0));
         })
-      Button(`ViewParent: shift`)
+      Button('ViewParent: shift')
         .width(320)
         .margin(10)
         .onClick(() => {
           if (this.arrA.length > 0) {
             this.arrA.shift();
           } else {
-            console.log("length <= 0");
+            console.info('length <= 0');
           }
         })
-      Button(`ViewParent: item property in middle`)
+      Button('ViewParent: item property in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
           this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
-      Button(`ViewParent: item property in middle`)
+      Button('ViewParent: item property in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
@@ -608,7 +527,7 @@ struct Parent {
 
 - **this.arrA.push(new Info(0))**: The change of this state variable triggers two updates with different effects.
   1. **ForEach**: The newly added **Info** object is unknown to the **ForEach** [itemGenerator](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md). The item builder of **ForEach** will be executed to create a **Child** component instance.
-  2. **Child({ label: ViewChild this.arrA[last], info: this.arrA[this.arrA.length-1] })**: The last item of the array is changed. As a result, the second **Child** component instance is changed. **Child({ label: ViewChild this.arrA[first], info: this.arrA[0] })**: The change to the array does not trigger a change to the array item, so the first **Child** component instance is not re-rendered.
+  2. Child ({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] }): The last item of the array is changed, which causes the change of the second child instance. **Child({ label: ViewChild this.arrA[first], info: this.arrA[0] })**: The change to the array does not trigger a change to the array item, so the first **Child** component instance is not re-rendered.
 
 - **this.arrA[Math.floor(this.arrA.length/2)].info**: @State cannot observe changes at the second layer. However, as **Info** is decorated by \@Observed, the change of its properties will be observed by \@ObjectLink.
 
@@ -624,7 +543,7 @@ class ObservedArray<T> extends Array<T> {
 }
 ```
 
-Declare a class **ObservedArray\<T\>** inherited from Array and use **new** to create an instance of **ObservedArray\<string\>**, and then the property changes can be observed.
+Declare a class ObservedArray\<T\> that inherits from Array and use the new operator to create an instance of ObservedArray\<string\>. The instance can observe attribute changes.
 
 The following example shows how to use \@Observed to observe the changes of a two-dimensional array.
 
@@ -689,7 +608,7 @@ struct IndexPage {
 }
 ```
 
-Since API version 18, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed18). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
+Since API version 19, \@ObjectLink can also be initialized with the return value of makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
 
 A complete example is as follows:
 
@@ -780,7 +699,7 @@ export class MyMap<K, V> extends Map<K, V> {
 
   constructor(name?: string, args?: [K, V][]) {
     super(args);
-    this.name = name ? name : "My Map";
+    this.name = name ? name : 'My Map';
   }
 
   getName() {
@@ -791,7 +710,7 @@ export class MyMap<K, V> extends Map<K, V> {
 @Entry
 @Component
 struct MapSampleNested {
-  @State message: Info = new Info(new MyMap("myMap", [[0, "a"], [1, "b"], [3, "c"]]));
+  @State message: Info = new Info(new MyMap('myMap', [[0, 'a'], [1, 'b'], [3, 'c']]));
 
   build() {
     Row() {
@@ -821,7 +740,7 @@ struct MapSampleNestedChild {
           .width(200)
           .margin(10)
           .onClick(() => {
-            this.myMap.set(4, "d");
+            this.myMap.set(4, 'd');
           })
         Button('clear')
           .width(200)
@@ -833,7 +752,7 @@ struct MapSampleNestedChild {
           .width(200)
           .margin(10)
           .onClick(() => {
-            this.myMap.set(0, "aa");
+            this.myMap.set(0, 'aa');
           })
         Button('delete the first one')
           .width(200)
@@ -876,7 +795,7 @@ export class MySet<T> extends Set<T> {
 
   constructor(name?: string, args?: T[]) {
     super(args);
-    this.name = name ? name : "My Set";
+    this.name = name ? name : 'My Set';
   }
 
   getName() {
@@ -887,7 +806,7 @@ export class MySet<T> extends Set<T> {
 @Entry
 @Component
 struct SetSampleNested {
-  @State message: Info = new Info(new MySet("Set", [0, 1, 2, 3, 4]));
+  @State message: Info = new Info(new MySet('Set', [0, 1, 2, 3, 4]));
 
   build() {
     Row() {
@@ -939,9 +858,9 @@ struct SetSampleNestedChild {
 
 ![Observed_ObjectLink_inherit_set](figures/Observed_ObjectLink_inherit_set.gif)
 
-## Union Type @ObjectLink
+### Union Type @ObjectLink
 
-@ObjectLink supports union types of @Observed decorated classes and **undefined** or **null**. In the following example, the type of **count** is **Source | Data | undefined**. If the property or type of **count** is changed when the button in the **Parent** component is clicked, the change will be synchronized to the **Child** component.
+\@ObjectLink supports the union type of \@Observed decorated classes and undefined or null. In the following example, the count type is Source | Data | undefined. Click the button in the parent component Parent to change the count attribute or type. The Text component in the Child component is updated.
 
 ```ts
 @Observed
@@ -1030,111 +949,13 @@ struct Child {
 
 ## FAQs
 
-### Assigning Value to @ObjectLink Decorated Variable in Child Component
-
-It is not allowed to assign a value to an @ObjectLink decorated variable in the child component.
-
-[Incorrect Usage]
-
-```ts
-@Observed
-class Info {
-  public info: number = 0;
-
-  constructor(info: number) {
-    this.info = info;
-  }
-}
-
-@Component
-struct ObjectLinkChild {
-  @ObjectLink testNum: Info;
-
-  build() {
-    Text(`ObjectLinkChild testNum ${this.testNum.info}`)
-      .onClick(() => {
-        // The @ObjectLink decorated variable cannot be assigned a value here.
-        this.testNum = new Info(47);
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State testNum: Info[] = [new Info(1)];
-
-  build() {
-    Column() {
-      Text(`Parent testNum ${this.testNum[0].info}`)
-        .onClick(() => {
-          this.testNum[0].info += 1;
-        })
-
-      ObjectLinkChild({ testNum: this.testNum[0] })
-    }
-  }
-}
-```
-
-In this example, an attempt is made to assign a value to the @ObjectLink decorated variable by clicking **ObjectLinkChild**.
-
-```
-this.testNum = new Info(47); 
-```
-
-This is not allowed. For @ObjectLink that implements two-way data synchronization, assigning a value is equivalent to updating the array item or class property in the parent component, which is not supported in TypeScript/JavaScript and will result in a runtime error.
-
-[Correct Usage]
-
-```ts
-@Observed
-class Info {
-  public info: number = 0;
-
-  constructor(info: number) {
-    this.info = info;
-  }
-}
-
-@Component
-struct ObjectLinkChild {
-  @ObjectLink testNum: Info;
-
-  build() {
-    Text(`ObjectLinkChild testNum ${this.testNum.info}`)
-      .onClick(() => {
-        // You can assign values to the properties of the ObjectLink decorated object.
-        this.testNum.info = 47;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State testNum: Info[] = [new Info(1)];
-
-  build() {
-    Column() {
-      Text(`Parent testNum ${this.testNum[0].info}`)
-        .onClick(() => {
-          this.testNum[0].info += 1;
-        })
-
-      ObjectLinkChild({ testNum: this.testNum[0] })
-    }
-  }
-}
-```
-
 ### UI Not Updated on property Changes in Simple Nested Objects
 
 If you find your application UI not updating after a property in a nested object is changed, you may want to check the decorators in use.
 
-Each decorator has its scope of observable changes, and only those observed changes can cause the UI to update. The \@Observed decorator can observe the property changes of nested objects, while other decorators can observe only the changes at the first layer.
+Each decorator has the observation capability, but not all changes can be observed. Only the changes that can be observed trigger UI update. The \@Observed decorator can observe the property changes of nested objects, while other decorators can observe only the changes at the first layer.
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 In the following example, some UI components are not updated.
 
@@ -1207,19 +1028,19 @@ struct MyView {
   build() {
     Column({ space: 10 }) {
       Text(`parentId: ${this.cousin.parentId}`)
-      Button("Change Parent.parent")
+      Button('Change Parent.parent')
         .onClick(() => {
           this.cousin.parentId += 1;
         })
 
       Text(`cousinId: ${this.cousin.cousinId}`)
-      Button("Change Cousin.cousinId")
+      Button('Change Cousin.cousinId')
         .onClick(() => {
           this.cousin.cousinId += 1;
         })
 
       Text(`childId: ${this.cousin.child.childId}`)
-      Button("Change Cousin.Child.childId")
+      Button('Change Cousin.Child.childId')
         .onClick(() => {
           // The Text component is not updated when clicked.
           this.cousin.child.childId += 1;
@@ -1235,7 +1056,7 @@ struct MyView {
   - Construct a child component for separate rendering of the **Child** instance. This child component can use \@ObjectLink **child : Child** or \@Prop **child : Child**. \@ObjectLink is generally used, unless local changes to the **Child** object are required.
   - The nested **Child** object must be decorated by \@Observed. When a **Child** object is created in **Cousin** (**Cousin(10, 20, 30)** in this example), it is wrapped in the ES6 proxy. When the **Child** property changes to **this.cousin.child.childId += 1**, the \@ObjectLink decorated variable is notified of the change.
 
-[Correct Usage]
+**Correct Usage**
 
 The following example uses \@Observed/\@ObjectLink to observe property changes for nested objects.
 
@@ -1308,7 +1129,7 @@ struct ViewChild {
   build() {
     Column({ space: 10 }) {
       Text(`childId: ${this.child.getChildId()}`)
-      Button("Change childId")
+      Button('Change childId')
         .onClick(() => {
           this.child.setChildId(this.child.getChildId() + 1);
         })
@@ -1324,19 +1145,19 @@ struct MyView {
   build() {
     Column({ space: 10 }) {
       Text(`parentId: ${this.cousin.parentId}`)
-      Button("Change Parent.parentId")
+      Button('Change Parent.parentId')
         .onClick(() => {
           this.cousin.parentId += 1;
         })
 
       Text(`cousinId: ${this.cousin.cousinId}`)
-      Button("Change Cousin.cousinId")
+      Button('Change Cousin.cousinId')
         .onClick(() => {
           this.cousin.cousinId += 1;
         })
 
       ViewChild({ child: this.cousin.child }) // Alternative format of Text(`childId: ${this.cousin.child.childId}`).
-      Button("Change Cousin.Child.childId")
+      Button('Change Cousin.Child.childId')
         .onClick(() => {
           this.cousin.child.childId += 1;
         })
@@ -1347,7 +1168,7 @@ struct MyView {
 
 ### UI Not Updated on property Changes in Complex Nested Objects
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 The following example creates a child component with an \@ObjectLink decorated variable to render **ParentCounter** with nested properties. Specifically, **SubCounter** nested in **ParentCounter** is decorated with \@Observed.
 
@@ -1445,13 +1266,13 @@ struct ParentComp {
 
 For the **onClick** event of **Text('Parent: incr counter[0].counter')**, **this.counter[0].incrSubCounter(10)** calls the **incrSubCounter** method to increase the **counter** value of **SubCounter** by 10. The UI is updated to reflect the change.
 
-However, when **this.counter[0].setSubCounter(10)** is called in **onClick** of **Text('Parent: set.counter to 10')**, the **counter** value of **SubCounter** cannot be reset to **10**.
+However, when this.counter[0].setSubCounter(10) is invoked in onClick of Text('Parent: set.counter to 10'), the counter value of SubCounter cannot be reset to 10.
 
 **incrSubCounter** and **setSubCounter** are functions of the same **SubCounter**. The UI can be correctly updated when **incrSubCounter** is called for the first click event. However, the UI is not updated when **setSubCounter** is called for the second click event. Actually neither **incrSubCounter** nor **setSubCounter** can trigger an update of **Text('${this.value.subCounter.counter}')**. This is because \@ObjectLink **value: ParentCounter** can only observe the properties of **ParentCounter**. **this.value.subCounter.counter** is a property of **SubCounter** and therefore cannot be observed.
 
-However, when **this.counter[0].incrCounter()** is called for the first click event, it marks \@ObjectLink **value: ParentCounter** in the **CounterComp** component as changed. In this case, an update of **Text('${this.value.subCounter.counter}')** is triggered. If **this.counter[0].incrCounter()** is deleted from the first click event, the UI cannot be updated.
+In addition, the first click event invokes this.counter[0].incrCounter() to mark the \@ObjectLink value: ParentCounter in the CounterComp custom component as changed, which triggers the update of Text('${this.value.subCounter.counter}'). If **this.counter[0].incrCounter()** is deleted from the first click event, the UI cannot be updated.
 
-[Correct Usage]
+**Correct Usage**
 
 To solve the preceding problem, you can use the following method to directly observe the properties in **SubCounter** so that the **this.counter[0].setSubCounter(10)** API works:
 
@@ -1579,278 +1400,72 @@ struct ParentComp {
 
 ### Differences Between \@Prop and \@ObjectLink
 
-In the following example, the \@ObjectLink decorated variable is a reference to the data source. That is, **this.value.subCounter** and **this.subValue** are different references to the same object. Therefore, when the click handler of **CounterComp** is clicked, both **this.value.subCounter.counter** and **this.subValue.counter** change, and the corresponding component **Text(this.subValue.counter: ${this.subValue.counter})** is re-rendered.
+Both @Prop and @ObjectLink can receive instances of the class decorated with @Observed. @Prop performs a deep copy on the object. Modifying the copied object does not affect the original object or its associated components. @ObjectLink obtains the reference of the object. Modifying the referenced object affects the original object and its associated components.
 
+In the following example, the UserChild component uses both @Prop and @ObjectLink to receive the class object instance decorated with @Observed from the parent component as the data source. Modifying the data source object affects the variables decorated with @Prop and @ObjectLink. Click the change @ObjectLink value and change @Prop value buttons in sequence.
+
+1. Modifying the object content decorated with @ObjectLink affects the data source object and synchronizes the modification to @Prop. Therefore, the two Text components are refreshed.
+2. Modifying the object content decorated with @Prop affects only the Text2 component that uses the object, and does not affect the data source object.
 
 ```ts
-let nextId = 1;
+let nextId = 0;
 
 @Observed
-class SubCounter {
-  counter: number;
-
-  constructor(c: number) {
-    this.counter = c;
-  }
-}
-
-@Observed
-class ParentCounter {
+class User {
   id: number;
-  counter: number;
-  subCounter: SubCounter;
 
-  incrCounter() {
-    this.counter++;
-  }
-
-  incrSubCounter(c: number) {
-    this.subCounter.counter += c;
-  }
-
-  setSubCounter(c: number): void {
-    this.subCounter.counter = c;
-  }
-
-  constructor(c: number) {
+  constructor() {
     this.id = nextId++;
-    this.counter = c;
-    this.subCounter = new SubCounter(c);
-  }
-}
-
-@Component
-struct CounterComp {
-  @ObjectLink value: ParentCounter;
-
-  build() {
-    Column({ space: 10 }) {
-      CountChild({ subValue: this.value.subCounter })
-      Text(`this.value.counter: increase 7 `)
-        .fontSize(30)
-        .onClick(() => {
-          // Text(`this.subValue.counter: ${this.subValue.counter}`) is re-rendered after clicking.
-          this.value.incrSubCounter(7);
-        })
-      Divider().height(2)
-    }
-  }
-}
-
-@Component
-struct CountChild {
-  @ObjectLink subValue: SubCounter;
-
-  build() {
-    Text(`this.subValue.counter: ${this.subValue.counter}`)
-      .fontSize(30)
   }
 }
 
 @Entry
 @Component
-struct ParentComp {
-  @State counter: ParentCounter[] = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
+struct Index {
+  @State users: User[] = [new User(), new User(), new User()];
 
   build() {
-    Row() {
-      Column() {
-        CounterComp({ value: this.counter[0] })
-        CounterComp({ value: this.counter[1] })
-        CounterComp({ value: this.counter[2] })
-        Divider().height(5)
-        ForEach(this.counter,
-          (item: ParentCounter) => {
-            CounterComp({ value: item })
-          },
-          (item: ParentCounter) => item.id.toString()
-        )
-        Divider().height(5)
-        Text('Parent: reset entire counter')
-          .fontSize(20).height(50)
-          .onClick(() => {
-            this.counter = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
-          })
-        Text('Parent: incr counter[0].counter')
-          .fontSize(20).height(50)
-          .onClick(() => {
-            this.counter[0].incrCounter();
-            this.counter[0].incrSubCounter(10);
-          })
-        Text('Parent: set.counter to 10')
-          .fontSize(20).height(50)
-          .onClick(() => {
-            this.counter[0].setSubCounter(10);
-          })
-      }
+    Column() {
+      UserChild({ firstUserByObjectLink: this.users[0], firstUserByProp: this.users[0] })
+    }
+  }
+}
+
+@Component
+struct UserChild {
+  @ObjectLink firstUserByObjectLink: User;
+  @Prop firstUserByProp: User;
+
+  build() {
+    Column() {
+      // If the comparison result is false, the object obtained after deep copy of @Prop is not the same as the original object.
+      Text(`firstUserByObjectLink equals firstUserByProp? : ${this.firstUserByObjectLink === this.firstUserByProp}`)
+      Text(`UserChild firstUserByObjectLink.id: ${this.firstUserByObjectLink.id}`) // Text1
+      Text(`UserChild firstUserByProp.id: ${this.firstUserByProp.id}`) // Text2
+      Button('change @ObjectLink value')
+        .onClick(() => {
+          this.firstUserByObjectLink.id++;
+        })
+      Button('change @Prop value')
+        .onClick(() => {
+          this.firstUserByProp.id++;
+        })
     }
   }
 }
 ```
 
-The following figure shows how \@ObjectLink works.
+The preceding example relationship is shown in the following figure.
 
-![en-us_image_0000001651665921](figures/en-us_image_0000001651665921.png)
+![en-us_image_0000001653949465](figures/en-us_image_0000001653949465.jpg)
 
-[Incorrect Usage]
+### Member Variable Changes in the \@Observed Decorated Class Constructor Not Taking Effect
 
-\@Prop is used instead of \@ObjectLink. Click **Text(this.subValue.counter: ${this.subValue.counter})**, and the UI is re-rendered properly. However, when you click **Text(this.value.counter: increase 7)**, \@Prop makes a local copy of the variable, and the first **Text** of **CounterComp** is not re-rendered.
-
-  **this.value.subCounter** and **this.subValue** are not the same object. Therefore, the change of **this.value.subCounter** does not change the copy object of **this.subValue**, and **Text(this.subValue.counter: ${this.subValue.counter})** is not re-rendered.
-
-```ts
-@Component
-struct CounterComp {
-  @Prop value: ParentCounter = new ParentCounter(0);
-  @Prop subValue: SubCounter = new SubCounter(0);
-  build() {
-    Column({ space: 10 }) {
-      Text(`this.subValue.counter: ${this.subValue.counter}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.subValue.counter += 7;
-        })
-      Text(`this.value.counter: increase 7 `)
-        .fontSize(20)
-        .onClick(() => {
-          this.value.incrSubCounter(7);
-        })
-      Divider().height(2)
-    }
-  }
-}
-```
-
-The following figure shows how \@Prop works.
-
-![en-us_image_0000001602146116](figures/en-us_image_0000001602146116.png)
-
-[Correct Usage]
-
-Make only one copy of \@Prop value: ParentCounter from **ParentComp** to **CounterComp**. Do not make another copy of **SubCounter**.
-
-- Use only one \@Prop **counter: Counter** in the **CounterComp** component.
-
-- Add another child component **SubCounterComp** that contains \@ObjectLink **subCounter: SubCounter**. This \@ObjectLink ensures that changes to the **SubCounter** object properties are observed and the UI is updated properly.
-
-- \@ObjectLink **subCounter: SubCounter** shares the same **SubCounter** object with **this.counter.subCounter** of \@Prop **counter: Counter** in **CounterComp**.
-
-  
-
-```ts
-let nextId = 1;
-
-@Observed
-class SubCounter {
-  counter: number;
-  constructor(c: number) {
-    this.counter = c;
-  }
-}
-
-@Observed
-class ParentCounter {
-  id: number;
-  counter: number;
-  subCounter: SubCounter;
-  incrCounter() {
-    this.counter++;
-  }
-  incrSubCounter(c: number) {
-    this.subCounter.counter += c;
-  }
-  setSubCounter(c: number): void {
-    this.subCounter.counter = c;
-  }
-  constructor(c: number) {
-    this.id = nextId++;
-    this.counter = c;
-    this.subCounter = new SubCounter(c);
-  }
-}
-
-@Component
-struct SubCounterComp {
-  @ObjectLink subValue: SubCounter;
-  build() {
-    Text(`SubCounterComp: this.subValue.counter: ${this.subValue.counter}`)
-      .onClick(() => {
-        this.subValue.counter = 7;
-      })
-  }
-}
-@Component
-struct CounterComp {
-  @Prop value: ParentCounter;
-  build() {
-    Column({ space: 10 }) {
-      Text(`this.value.incrCounter(): this.value.counter: ${this.value.counter}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.value.incrCounter();
-        })
-      SubCounterComp({ subValue: this.value.subCounter })
-      Text(`this.value.incrSubCounter()`)
-        .onClick(() => {
-          this.value.incrSubCounter(77);
-        })
-      Divider().height(2)
-    }
-  }
-}
-@Entry
-@Component
-struct ParentComp {
-  @State counter: ParentCounter[] = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
-  build() {
-    Row() {
-      Column() {
-        CounterComp({ value: this.counter[0] })
-        CounterComp({ value: this.counter[1] })
-        CounterComp({ value: this.counter[2] })
-        Divider().height(5)
-        ForEach(this.counter,
-          (item: ParentCounter) => {
-            CounterComp({ value: item })
-          },
-          (item: ParentCounter) => item.id.toString()
-        )
-        Divider().height(5)
-        Text('Parent: reset entire counter')
-          .fontSize(20).height(50)
-          .onClick(() => {
-            this.counter = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
-          })
-        Text('Parent: incr counter[0].counter')
-          .fontSize(20).height(50)
-          .onClick(() => {
-            this.counter[0].incrCounter();
-            this.counter[0].incrSubCounter(10);
-          })
-        Text('Parent: set.counter to 10')
-          .fontSize(20).height(50)
-          .onClick(() => {
-            this.counter[0].setSubCounter(10);
-          })
-      }
-    }
-  }
-}
-```
-
-
-The following figure shows the copy relationship.
-
-
-![en-us_image_0000001653949465](figures/en-us_image_0000001653949465.png)
-
-### Member Variable Changes in the @Observed Decorated Class Constructor Not Taking Effect
-
-In state management, @Observed decorated classes are wrapped with a proxy. When a member variable of a class is changed in a component, the proxy intercepts the change. When the value in the data source is changed, the proxy notifies the bound component of the change. In this way, the change can be observed and trigger UI re-rendering.
+In state management, \@Observed decorated classes are wrapped with a proxy. When a member variable of a class is changed in a component, the proxy intercepts the change. When the value in the data source is changed, the proxy notifies the bound component of the change. In this way, the change can be observed and trigger UI re-rendering.
 
 If the value change of a member variable occurs in the class constructor, the change does not pass through the proxy (because the change occurs in the data source). Therefore, even if the change is successful with a timer in the class constructor, the UI cannot be re-rendered.
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 ```ts
 @Observed
@@ -1860,7 +1475,7 @@ class RenderClass {
   constructor() {
     setTimeout(() => {
       this.waitToRender = true;
-      console.log("Change the value of waitToRender to" + this.waitToRender);
+      console.info('The value of waitToRender is changed to: ' this.waitToRender);
     }, 1000)
   }
 }
@@ -1872,16 +1487,16 @@ struct Index {
   @State textColor: Color = Color.Black;
 
   renderClassChange() {
-    console.log("The value of renderClass is changed to" + this.renderClass.waitToRender);
+    console.info('The value of renderClass is changed to: ' + this.renderClass.waitToRender);
   }
 
   build() {
     Row() {
       Column() {
-        Text("The value of renderClass is" + this.renderClass.waitToRender)
+        Text('The value of renderClass is' + this.renderClass.waitToRender)
           .fontSize(20)
           .fontColor(this.textColor)
-        Button("Show")
+        Button('Show')
           .onClick(() => {
             // It is not recommended to use other state variables to forcibly re-render the UI. This example is used to check whether the value of waitToRender is updated.
             this.textColor = Color.Red;
@@ -1896,7 +1511,7 @@ struct Index {
 
 In the preceding example, a timer is used in the constructor of **RenderClass**. Though the value of **waitToRender** changes 1 second later, the UI is not re-rendered. After the button is clicked to forcibly refresh the **Text** component, you can see that the value of **waitToRender** is changed to **true**.
 
-[Correct Usage]
+**Correct Usage**
 
 ```ts
 @Observed
@@ -1913,13 +1528,12 @@ struct Index {
   @State @Watch('renderClassChange') renderClass: RenderClass = new RenderClass();
 
   renderClassChange() {
-    console.log("The value of renderClass is changed to" + this.renderClass.waitToRender);
+    console.info('The value of renderClass is changed to: ' + this.renderClass.waitToRender);
   }
 
   onPageShow() {
     setTimeout(() => {
       this.renderClass.waitToRender = true;
-      console.log("Change the value of renderClass to" + this.renderClass.waitToRender);
     }, 1000)
   }
 
@@ -1969,7 +1583,7 @@ struct Parent {
   @State @Watch('onChange01') info: Info = new Info(new Person('Bob', 10));
 
   onChange01() {
-    console.log(':::onChange01:' + this.info.person.name); // 2
+    console.info(':::onChange01:' + this.info.person.name); // 2
   }
 
   build() {
@@ -1977,9 +1591,9 @@ struct Parent {
       Text(this.info.person.name).height(40)
       Child({
         per: this.info.person, clickEvent: () => {
-          console.log(':::clickEvent before', this.info.person.name); // 1
+          console.info(':::clickEvent before', this.info.person.name); // 1
           this.info.person = new Person('Jack', 12);
-          console.log(':::clickEvent after', this.info.person.name); // 3
+          console.info(':::clickEvent after', this.info.person.name); // 3
         }
       })
     }
@@ -1992,7 +1606,7 @@ struct Child {
   clickEvent?: () => void;
 
   onChange02() {
-    console.log(':::onChange02:' + this.per.name); // 5
+    console.info(':::onChange02:' + this.per.name); // 5
   }
 
   build() {
@@ -2009,7 +1623,7 @@ struct Child {
     if (this.clickEvent) {
       this.clickEvent();
     }
-    console.log(':::-------- this.per.name in Child is still:' + this.per.name); // 4
+    console.info(':::--------this.per.name in Child is still: ' + this.per.name); // 4
   }
 }
 ```
@@ -2029,16 +1643,16 @@ The meaning of the log is as follows:
 
 - Log 5: The next VSync triggers **Child** re-rendering. **@ObjectLink @Watch('onChange02') per: Person** is re-rendered and its @Watch method is triggered. In this case, the new value of the **@ObjectLink @Watch('onChange02') per: Person** is **Jack**.
 
-The parent-child synchronization principle of \@Prop is the same as that of \@ObjectLink.
+The synchronization principle of \@Prop is the same as that of \@ObjectLink.
 
 When **this.info.person.name** is changed in **clickEvent**, this change takes effect immediately. In this case, the value of log 4 is **Jack**.
 
 ```ts
 Child({
   per: this.info.person, clickEvent: () => {
-    console.log(':::clickEvent before', this.info.person.name); // 1
+    console.info(':::clickEvent before', this.info.person.name); // 1
     this.info.person.name = 'Jack';
-    console.log(':::clickEvent after', this.info.person.name); // 3
+    console.info(':::clickEvent after', this.info.person.name); // 3
   }
 })
 ```
@@ -2047,9 +1661,9 @@ The **Text** component in **Parent** is not re-rendered because **this.info.pers
 
 ### Using the a.b(this.object) Format Fails to Trigger UI Re-render
 
-In the **build** method, when the variable decorated by @Observed and @ObjectLink is of the object type and is called using the **a.b(this.object)** format, the original object of **this.object** is passed in the b method. If the property of **this.object** is changed, the UI cannot be re-rendered. In the following example, the UI re-render is not triggered when **this.weather.temperature** in the component is changed by using a static method or using **this** to call the internal method of the component.
+In the **build** method, when the variable decorated by \@Observed and \@ObjectLink is of the object type and is called using the **a.b(this.object)** format, the original object of **this.object** is passed in the b method. If the property of **this.object** is changed, the UI cannot be re-rendered. In the following example, the UI re-render is not triggered when **this.weather.temperature** in the component is changed by using a static method or using **this** to call the internal method of the component.
 
-[Incorrect Usage]
+**Incorrect Usage**
 
 ```ts
 @Observed
@@ -2119,7 +1733,7 @@ struct Child {
 
 You can add a proxy for **this.weather** to re-render the UI by assigning a value to the variable and then calling the variable.
 
-[Correct Usage]
+**Correct Usage**
 
 ```ts
 @Observed

@@ -1,5 +1,12 @@
 # Resource
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 Provides resource information, such as the application bundle name, application module name, and resource ID.
 
 > **NOTE**

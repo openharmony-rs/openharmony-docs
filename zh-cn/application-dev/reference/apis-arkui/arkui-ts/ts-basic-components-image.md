@@ -636,7 +636,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| contentTransition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 是   | 内容变换动效的类型。<br/>对动态图片资源不生效。<br/>默认值：无动效，ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -1209,9 +1209,9 @@ struct ImageExample4 {
         .width(200)
         .height(200)
         .margin({bottom:10})
-      Button('getTypes')
-        .width(80)
-        .height(80)
+      Button('getTypes', { type: ButtonType.Circle, stateEffect: false })
+        .width(100)
+        .height(100)
         .onClick(() => {
           this.aiController.getImageAnalyzerSupportTypes();
         })
@@ -1556,8 +1556,8 @@ struct ImageContentExample {
       Image(this.imageSrcList[this.imageSrcIndex])
         .width(100)
         .height(100)
-      Button('点击切换Image的src')
-        .padding(20)
+      Button('点击切换Image的src', { type: ButtonType.Capsule, stateEffect: false })
+        .height(50)
         .onClick(() => {
           this.imageSrcIndex = (this.imageSrcIndex + 1) % this.imageSrcList.length;
         })

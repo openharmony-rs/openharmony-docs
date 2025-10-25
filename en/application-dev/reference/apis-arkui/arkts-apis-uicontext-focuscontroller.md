@@ -1,10 +1,16 @@
 # Class (FocusController)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 Provides capabilities to control focus, including features such as clearing, moving, and activating focus.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
 >

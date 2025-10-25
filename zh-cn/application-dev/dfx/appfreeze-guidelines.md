@@ -115,6 +115,9 @@ PreInstalled:No
 Foreground:Yes
 Pid:13680
 Uid:20020177
+Process life time:18s
+Process Memory(kB):163819(Rss)
+Device Memory(kB):Total 11679272, Free 3697424, Available 5814272
 Reason:THREAD_BLOCK_6S
 appfreeze: com.samples.freezedebug THREAD_BLOCK_6S at 20250628140837
 DisplayPowerInfo:powerState:UNKNOWN
@@ -140,7 +143,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 
 从API version 20开始，当整机资源告警（如整机低内存或热限频）时，会输出NOTE行。出现此行时，开发者可以忽略应用冻屏故障。在之前的API版本中，无论整机资源状态如何，均无此行输出。
 
-从API verrsion 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 三种AppFreeze事件都包含以下几部分信息，具体解释如下：
 
@@ -150,6 +153,9 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 | PID | 发生故障时的pid。 |
 | PACKAGE_NAME | 应用进程包名。 |
 |[Page switch history](./cppcrash-guidelines.md#有页面切换轨迹的故障场景日志规格)| 从API 20开始，维测进程会记录应用切换历史。应用发生故障后，生成的故障文件将包含页面切换历史轨迹。如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段。|
+| Process life time | 故障进程存活时间。单位：s。<br>**说明**：从API 22开始支持。|
+| Process Memory(kB) | 故障进程内存占用。<br>**说明**：从API 22开始支持。|
+| Device Memory(kB) | 整机内存状态。<br>**说明**：从API 22开始支持。|
 
 ### 日志主干通用信息
 
@@ -530,6 +536,7 @@ external_log是字符串数组，第一个元素为应用冻屏事件生成的�
 | ThreadInfos Tid | 线程号。 | 21 |
 | Name | 线程名。 | 21 |
 | Stack | 主线程调用栈。 | 21 |
+| SubmitterStacktrace | 任务提交者调用栈。 | 21 | 
 
 ### 增强日志规格
 
@@ -574,25 +581,40 @@ cpu3 Usage 23.5%, 1430MHZ 21.04%
 end time: 2021-01-01 20:06:00:888  <- 计算CPU使用率结束时间
 #ThreadInfos Tid: 2204, Name: com.example.freeze  <- 故障线程号，线程名
 SnapshotTime: 2021-01-01-20-05-58.292875  <- 获取主线程的时间
-#00 pc 002d0bf9 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::RunInternal(panda::ecmascript::JSThread*, unsigned char const*, unsigned long long*)+87512)(8b74cdc906ea6b2eba95d891bc91c72a)
-#01 at wait50s (entry|entry|1.0.0|src/main/ets/pages/Index.ts:31:17) <- 主线程调用栈
-#02 pc 00378c27 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::JSFunction::Call(panda::ecmascript::EcmaRuntimeCallInfo*)+394)(8b74cdc906ea6b2eba95d891bc91c72a)
-#03 pc 004ee3b3 /system/lib/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+1502)(8b74cdc906ea6b2eba95d891bc91c72a)
-#04 pc 00057a61 /system/lib/platformsdk/libace_napi.z.so(napi_call_function+156)(f92c9293cda4e381a836ba134d7e7c0a)
-#05 pc 00007873 /system/lib/platformsdk/libtimer.z.so(c2f75213ee12fdf08da323fe546923ff)
-#06 pc 0000e6c3 /system/lib/platformsdk/libuv.so(366b4d7f2eba693ad06f14469b08943b)
-#07 pc 000122f7 /system/lib/platformsdk/libuv.so(uv_run+106)(366b4d7f2eba693ad06f14469b08943b)
-#08 pc 0009ce21 /system/lib/platformsdk/libruntime.z.so(OHOS::AbilityRuntime::OHOSLoopHandler::OnTriggered()+160)(bc1c64aabbe5c7d4db2282a6137443e1)
-#09 pc 0009d4bf /system/lib/platformsdk/libruntime.z.so(bc1c64aabbe5c7d4db2282a6137443e1)
-#10 pc 00014355 /system/lib/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::EventHandler::DistributeEvent(std::__h::unique_ptr<OHOS::AppExecFwk::InnerEvent, void (*)(OHOS::AppExecFwk::InnerEvent*)> const&)+904)(630c45ae565e7a94cb8ea1c4f4e0d3ef)
+#00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72) <- 主线程调用栈
+#01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
+#02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
+#03 pc 0000000000007e2c /data/storage/el1/bundle/libs/arm64/libsample.so(WaitSomeTime()+76)(8b74cdc906ea6b2eba95d891bc91c72a)
+#04 pc 0000000000009b2c /data/storage/el1/bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#05 pc 00000000000a0500 /system/lib64/platformsdk/libruntime.z.so(c2f75213ee12fdf08da323fe546923ff)
+#06 pc 0000000000017b04 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(366b4d7f2eba693ad06f14469b08943b)
+#07 pc 0000000000016f38 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(366b4d7f2eba693ad06f14469b08943b)
+#08 pc 000000000003e160 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::EventRunner::Run()+396)(366b4d7f2eba693ad06f14469b08943b)
+.......
+========SubmitterStacktrace======== <- 任务提交者调用栈(最多抓取16层调用栈)
+#00 pc 0000000000013108 /system/lib64/platformsdk/libuv.so(uv_queue_work+292)(366b4d7f2eba693ad06f14469b08943b)
+#01 pc 0000000000008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 000000000005ae00 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+#06 pc 00000000001e5c8c /system/lib64/platformsdk/libark_jsruntime.so(ce0b05d90b9fae02e7abf8e9f1e5a0f3)
 .......
 
 SnapshotTime: 2021-01-01-20-05-58.549685
-#00 pc 0000186c [shmm](__kernel_gettimeofday+72)
-#01 pc 002bb407 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+1126)(8b74cdc906ea6b2eba95d891bc91c72a)
-#02 pc 00378c27 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::JSFunction::Call(panda::ecmascript::EcmaRuntimeCallInfo*)+394)(8b74cdc906ea6b2eba95d891bc91c72a)
-#03 pc 004ee3b3 /system/lib/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+1502)(8b74cdc906ea6b2eba95d891bc91c72a)
-#04 pc 00057a61 /system/lib/platformsdk/libace_napi.z.so(napi_call_function+156)(f92c9293cda4e381a836ba134d7e7c0a)
-#05 at wait50s (entry|entry|1.0.0|src/main/ets/pages/Index.ts:31:17)
+#00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72)
+#01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
+#02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
+#03 pc 0000000000007e2c /data/storage/el1/bundle/libs/arm64/libsample.so(WaitSomeTime()+76)(8b74cdc906ea6b2eba95d891bc91c72a)
+#04 pc 0000000000009b2c /data/storage/el1/bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#05 pc 00000000000a0500 /system/lib64/platformsdk/libruntime.z.so(c2f75213ee12fdf08da323fe546923ff)
+.......
+========SubmitterStacktrace========
+#00 pc 0000000000013108 /system/lib64/platformsdk/libuv.so(uv_queue_work+292)(366b4d7f2eba693ad06f14469b08943b)
+#01 pc 0000000000008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 000000000005ae00 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 .......
 ```

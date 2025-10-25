@@ -30,6 +30,6 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 | labelId<sup>8+</sup>    | number                                     | Yes  | No  | Name ID of the shortcut.            |
 | disableMessage          | string                                     | Yes  | No  | Message displayed when the shortcut is disabled.          |
 | wants                   | Array&lt;<!--Del-->[<!--DelEnd-->ShortcutWant<!--Del-->](js-apis-bundle-ShortcutInfo-sys.md#shortcutwantdeprecated)<!--DelEnd-->&gt; | Yes  | No  | Want list for the shortcut.        |
-| isStatic                | boolean                                    | Yes  | No  | Whether the shortcut is static. **true** if static, **false** otherwise.         |
-| isHomeShortcut          | boolean                                    | Yes  | No  | Whether the shortcut is a home shortcut. **true** if the shortcut is a home shortcut, **false** otherwise.|
-| isEnabled               | boolean                                    | Yes  | No  | Whether the shortcut is enabled. **true** if enabled, **false** otherwise.            |
+| isStatic                | boolean                                    | Yes  | Yes  | Whether the shortcut is static. **true** if static, **false** otherwise.         |
+| isHomeShortcut          | boolean                                    | Yes  | Yes  | Whether the shortcut is a home shortcut. **true** if the shortcut is a home shortcut, **false** otherwise.|
+| isEnabled               | boolean                                    | Yes  | Yes  | Whether the shortcut is enabled. **true** if enabled, **false** otherwise.            |

@@ -128,7 +128,7 @@ napi_handle_scope数据类型是用来管理ArkTS/JS对象的生命周期的。�
 
 - 用于napi_escape_handle接口，将ArkTS/JS对象逃逸到父scope，以便在外部作用域使用。
 
-**napi_ref **
+**napi_ref**
 
 指向napi_value，允许用户管理ArkTS/JS值的生命周期。
 
@@ -152,6 +152,18 @@ typedef struct {
 **napi_async_cleanup_hook_handle**
 
 napi_async_cleanup_hook_handle是Node-API中用于管理异步资源生命周期的一种机制。它允许注册一个清理钩子（cleanup hook），该钩子仅在当前napi_env环境生命周期结束时被调用。通过使用 napi_async_cleanup_hook_handle，可以确保某些异步资源在环境销毁前得到妥善释放，从而避免资源泄漏。此外，在Node-API实现中，只要该结构未被释放，会延迟整个 napi_env 环境的销毁。在OpenHarmony中，该接口的行为基本等同于env生命周期相关的清理钩子，除了支持重复注册相同的上下文数据（data）外，其余行为与标准的env清理钩子一致。
+
+**napi_critical_scope（扩展能力）**
+
+napi_critical_scope是Node-API中，用于创建临界接口执行环境的机制。它由napi_open_critical_scope接口创建，由napi_close_critical_scope接口关闭。
+
+临界接口：需要在临界区作用域内执行的接口，通常接口名中含有`critical`关键字。
+
+**napi_strong_ref（扩展能力）**
+
+指向napi_value，允许用户管理ArkTS对象的生命周期。
+
+**提示：** `napi_strong_ref`与`napi_ref`相比，具有更高的创建效率，但支持的功能受限（如：不支持强弱引用转换等）。
 
 ### 回调类型
 
@@ -546,6 +558,12 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 |napi_create_ark_context| 创建一个新的上下文环境。|
 |napi_switch_ark_context| 切换到指定的运行时上下文环境。|
 |napi_destroy_ark_context| 销毁通过napi_create_ark_context创建的上下文环境。|
+| napi_open_critical_scope | 打开临界区作用域 |
+| napi_close_critical_scope | 关闭临界区作用域 |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据 |
+| napi_create_strong_reference | 创建指向ArkTS对象的强引用 |
+| napi_delete_strong_reference | 删除强引用 |
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值 |
 
 **napi_queue_async_work_with_qos**
 
@@ -780,6 +798,45 @@ napi_status napi_switch_ark_context(napi_env env);
 **napi_destroy_ark_context**
 ```c
 napi_status napi_destroy_ark_context(napi_env env);
+```
+
+**napi_open_critical_scope**
+
+```c
+napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
+```
+
+**napi_close_critical_scope**
+
+```c
+napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
+```
+
+**napi_close_critical_scope**
+
+```c
+napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
+                                                           napi_value value,
+                                                           const char16_t** buffer,
+                                                           size_t* length);
+```
+
+**napi_create_strong_reference**
+
+```c
+napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result);
+```
+
+**napi_delete_strong_reference**
+
+```c
+napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
+```
+
+**napi_get_strong_reference_value**
+
+```c
+napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
 ```
 
 ### 其他实用工具

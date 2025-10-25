@@ -1964,7 +1964,7 @@ Sets nested scrolling options.
     build() {
       Scroll(){
         Column() {
-          Text ("Nested Web")
+          Text("Nested Web")
             .height("25%")
             .width("100%")
             .fontSize(30)
@@ -3205,6 +3205,54 @@ Sets the gesture focus mode of the **Web** component.
   </head>
   <body>
     <input type="text" placeholder="Text">
+  </body>
+  </html>
+  ```
+
+## rotateRenderEffect<sup>21+</sup>
+
+rotateRenderEffect(effect: WebRotateEffect)
+
+Set up the rotation effect for the **Web** component. When this property is not explicitly called, the content area is drawn in top-left of the node.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name             | Type                             | Mandatory  | Description         |
+| ------------------- | ------------------------------   | ------ | ------------- |
+| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect21) | Yes    | Set up the rotation effect of **Web**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State effect: WebRotateEffect = WebRotateEffect.TOPLEFT_EFFECT;
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .rotateRenderEffect(this.effect)
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Test Web Page</title>
+  </head>
+  <body>
+    <p> Test Web Page </p>
   </body>
   </html>
   ```

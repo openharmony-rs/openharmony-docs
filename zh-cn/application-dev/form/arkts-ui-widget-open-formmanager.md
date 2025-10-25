@@ -66,5 +66,6 @@ struct Index {
   ]
 }
 ```
+
 3. 用户可在卡片管理页面，点击“添加至桌面”，此时在桌面即可看到新添加的卡片。结果示例如下。<br>
 ![WidgetPrinciple](figures/应用内加卡.gif)

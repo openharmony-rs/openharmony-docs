@@ -753,8 +753,8 @@ try {
 
 | 名称      | 类型           |只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
-| networkId | string         | 是   | 否   | 键鼠穿越目标设备描述符。 |
-| state     | CooperateState | 是   | 否   | 键鼠穿越的状态。         |
+| networkId | string         | 否   | 否   | 键鼠穿越目标设备描述符。 |
+| state     | CooperateState | 否   | 否   | 键鼠穿越的状态。         |
 
 
 ## MouseLocation<sup>12+</sup>
@@ -765,10 +765,10 @@ try {
 
 | 名称           | 类型            | 只读 | 	可选 | 说明                           |
 | ---------      | -------------- | ---- | ---- | ------------------------       |
-| displayX       | number         | 是   | 否   | 鼠标指针位于屏幕的X坐标上的位置。 |
-| displayY       | number         | 是   | 否   | 鼠标指针位于屏幕的Y坐标上的位置。 |
-| displayWidth   | number         | 是   | 否   | 屏幕宽度，单位：px。                      |
-| displayHeight  | number         | 是   | 否   | 屏幕高度，单位：px。                      |
+| displayX       | number         | 否   | 否   | 鼠标指针位于屏幕的X坐标上的位置。 |
+| displayY       | number         | 否   | 否   | 鼠标指针位于屏幕的Y坐标上的位置。 |
+| displayWidth   | number         | 否   | 否   | 屏幕宽度，单位：px。                      |
+| displayHeight  | number         | 否   | 否   | 屏幕高度，单位：px。                      |
 
 ## CooperateState<sup>11+</sup>
 

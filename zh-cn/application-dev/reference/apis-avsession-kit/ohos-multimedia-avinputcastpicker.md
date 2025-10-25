@@ -46,9 +46,9 @@ AVInputCastPicker({
 
 **参数：**
 
-| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |
+| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |	
+| -------- | -------- | -------- | -------- | -------- |	
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | @Prop | 自定义样式。建议应用自定义组件样式，可有效提升组件显示速度。 |	
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | 否 | - | 设备列表状态变更回调。 |
 
 ## OnPickerStateCallback
@@ -79,7 +79,7 @@ import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 @Component
 struct Index {
 
-  @State pickerImage: ResourceStr = $r('app.media.castPicker'); // 自定义资源。
+  @State pickerImage: ResourceStr = $r('app.media.layered_image'); // 自定义资源。
 
   private onStateChange(state: AVCastPickerState) {
     if (state == AVCastPickerState.STATE_APPEARING) {

@@ -1,4 +1,10 @@
 # Image (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **Image** component is usually used to display images in applications.
 
@@ -24,7 +30,7 @@ Sets the AI image analysis types, including subject recognition and character re
 
 | Name| Type                                         | Mandatory| Description        |
 | ------ | --------------------------------------------- | ---- | ------------ |
-| config | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig) | Yes  | AI image analysis types.|
+| config | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | Yes  | AI image analysis types.|
 
 ### edgeAntialiasing<sup>11+</sup>
 
@@ -42,7 +48,7 @@ This attribute can be used to optimize jagged edges in SVG images on devices wit
 
 | Name| Type  | Mandatory| Description                               |
 | ------ | ------ | ---- | ----------------------------------- |
-| value  | number | Yes  | Antialiasing strength of the image.<br>Default value: **0.0**.|
+| value  | number | Yes  | Antialiasing strength of the SVG image.<br>Default value: **0.0**.|
 
 ### pointLight<sup>11+</sup>
 
@@ -86,8 +92,8 @@ Enumerates the image resolutions used for decoding the image.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Description                     |
-| ------ | --------------------------  |
-| Low   | Low resolution, with moderate decoding time.  |
-| Medium | Medium resolution, with moderate decoding time. |
-| High   | High resolution, with long decoding time.   |
+| Name    | Value                    | Description                   |
+| ------ | --------------------------  | --------------------------  |
+| Low   | 1  | Low resolution, with moderate decoding time.  |
+| Medium | 2 | Medium resolution, with moderate decoding time. |
+| High   | 3   | High resolution, with long decoding time.   |

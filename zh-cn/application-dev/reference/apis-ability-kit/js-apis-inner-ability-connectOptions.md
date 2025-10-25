@@ -32,8 +32,8 @@ onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 
 | 参数名       | 类型                     | 必填   | 说明            |
 | -------- | ---------------------- | ---- | ------------- |
-| elementName | [ElementName](js-apis-bundleManager-elementName.md) | 是    | Ability的elementName。 |
-| remote | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 是    | IRemoteObject实例。 |
+| elementName | [ElementName](js-apis-bundleManager-elementName.md) | 是    | 目标Ability的elementName。 |
+| remote | [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 是    | 用于与目标Ability进行IPC通信的IRemoteObject实例。 |
 
 **示例：**
 
@@ -78,7 +78,7 @@ onDisconnect(elementName: ElementName): void
 
 | 参数名       | 类型                     | 必填   | 说明            |
 | -------- | ---------------------- | ---- | ------------- |
-| elementName | [ElementName](js-apis-bundleManager-elementName.md) | 是    | Ability的elementName。 |
+| elementName | [ElementName](js-apis-bundleManager-elementName.md) | 是    | 目标Ability的elementName。 |
 
 **示例：**
 
@@ -123,7 +123,8 @@ onFailed(code: number): void
 
 | 参数名       | 类型                     | 必填   | 说明            |
 | -------- | ---------------------- | ---- | ------------- |
-| code | number | 是    | 连接指定Ability返回的结果code。<br>值为0表示连接成功，值为-1表示参数错误，值为-2表示未找到对应Ability。 |
+| code | number | 是    | 连接指定Ability失败返回的错误码。<br>错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。<br> 201 - The application does not have permission to call the interface.<br> 16000001 - The specified ability does not exist.<br> 16000002 - Incorrect ability type.<br> 16000004 - Cannot start an invisible component.<br> 16000005 - The specified process does not have the permission.<br> 16000006 - Cross-user operations are not allowed.<br> 16000008 - The crowdtesting application expires.<br> 16000053 - The ability is not on the top of the UI.<br> 16000055 - Installation-free timed out.<br> 16000050 - Internal error. |
+
 
 **示例：**
 

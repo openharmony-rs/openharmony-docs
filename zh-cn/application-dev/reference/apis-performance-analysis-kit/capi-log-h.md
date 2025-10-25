@@ -11,7 +11,7 @@
 
 HiLog模块日志接口定义，通过这些接口实现日志打印相关功能。用户输出日志时，先定义日志所属业务领域、日志TAG，然后按照类型、级别选择对应API，指定参数隐私标识输出日志内容。<br> 业务领域：指定日志所对应的业务领域，用户自定义使用，用于标识业务的子系统、模块。16进制整数，范围0x0~0xFFFF，超出范围则日志无法打印。<br> 日志TAG：字符串常量，用于标识调用所在的类或者业务。<br> 日志级别：DEBUG、INFO、WARN、ERROR、FATAL。<br> 参数格式：类printf的%方式，包括格式字符串（包括参数类型标识）和变参。<br> 隐私参数标识：在格式字符串每个参数中%符号后类型前增加{public}、{private}标识。注意：每个参数未指定隐私标识时，缺省为隐私。
 
-**引用文件：**  <hilog/log.h>
+**引用文件：** <hilog/log.h>
 
 **库：** libhilog_ndk.z.so
 
@@ -35,11 +35,11 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | DEBUG级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
-| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | INFO级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
-| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | WARN级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
-| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | ERROR级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
-| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__)) | FATAL级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
+| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | DEBUG级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
+| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | INFO级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
+| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | WARN级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
+| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | ERROR级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br>**起始版本：** 8 |
+| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | FATAL级别写日志，宏封装接口。使用时需要先定义日志业务领域、日志TAG，一般在源文件起始处统一定义一次。<br><br>**起始版本：** 8 |
 
 ### 函数
 
@@ -47,7 +47,7 @@ HiLog模块日志接口定义，通过这些接口实现日志打印相关功能
 | -- | -- | -- |
 | [int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)](#oh_log_print) | - | 写日志接口。指定日志类型、日志级别、业务领域、TAG，按照类printf格式类型和隐私指示确定需要输出的变参。 |
 | [int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *message)](#oh_log_printmsg) | - | 写日志接口。输出指定type、level、domain、tag的常量日志字符串。 |
-| [int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen,const char *message, size_t messageLen)](#oh_log_printmsgbylen) | - | 写日志接口。输出指定domain、tag和日志级别的常量日志字符串，需要指定tag及字符串长度，和OH_LOG_PrintMsg区别是可以接受不带结束符的字符串。 |
+| [int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)](#oh_log_printmsgbylen) | - | 写日志接口。输出指定domain、tag和日志级别的常量日志字符串，需要指定tag及字符串长度，和OH_LOG_PrintMsg区别是可以接受不带结束符的字符串。 |
 | [int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)](#oh_log_vprint) | - | 写日志接口。指定日志类型、日志级别、业务领域、TAG，按照类printf格式类型和隐私指示确定需要输出的变参，变参为va_list类型。 |
 | [bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)](#oh_log_isloggable) | - | 检查指定业务领域、TAG、级别的日志是否可以打印。 |
 | [typedef void (\*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)](#logcallback) | LogCallback | 函数指针，开发者自定义回调函数内容，在回调函数中，可自行对hilog日志进行处理。 |
@@ -181,7 +181,7 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 ### OH_LOG_PrintMsgByLen()
 
 ```
-int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen,const char *message, size_t messageLen)
+int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)
 ```
 
 **描述**
@@ -399,7 +399,7 @@ FATAL级别写日志，宏封装接口。使用时需要先定义日志业务领
 ### LogCallback()
 
 ```
-typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)
+typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)
 ```
 
 **描述**

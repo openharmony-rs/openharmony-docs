@@ -126,6 +126,8 @@ The corresponding operation does not support nodes created by ArkTS.
 
 **错误信息**
 
+The node not mounted to component tree.
+
 **错误描述**
 
 传入的节点未挂载到组件树上。

@@ -372,7 +372,7 @@ You can set **data** to customize the parameter type of the information returned
 **Parameters**
 
 | Name| Type| Mandatory| Description|
-| ---- | ---- | ---- | -------------------------- |	
+| ---- | ---- | ---- | -------------------------- |
 | data | T    | Yes  | Parameter of type T that needs to be passed when the callback function is called.|
 
 **Return value**
@@ -417,7 +417,7 @@ There are limitations on the size of application windows and system windows. For
 
 ### (info: T)<sup>19+</sup>
 
-(info: T): U;
+(info: T): U
 
 Describes a generic callback function for rotation event notifications.
 
@@ -429,8 +429,8 @@ In this callback function, the parameter type is [RotationChangeInfo](arkts-apis
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|	
-| ---- | ---- | ---- | -------------------------- |	
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | -------------------------- |
 | info | T    | Yes  | Parameter of type [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19) passed by the system when the callback function is called.|
 
 **Return value**

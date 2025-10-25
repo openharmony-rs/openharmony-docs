@@ -1,4 +1,10 @@
 # ToolBar
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @HelloCrease-->
 
 
 The **Toolbar** component is designed to present a set of action options related to the current screen, displayed at the bottom of the screen. It can display up to five child components. If there are six or more child components, the first four are shown directly, and the additional ones are grouped under a **More** item on the rightmost side of the toolbar.
@@ -8,7 +14,6 @@ The **Toolbar** component is designed to present a set of action options related
 >
 > This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
 
 
 ## Modules to Import
@@ -33,12 +38,14 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name                         | Type                                                        | Mandatory| Decorator | Description                                                                                                                                                            |
 | ----------------------------- | ------------------------------------------------------------ | ---- | ----------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | toolBarList                   | [ToolBarOptions](#toolbaroptions)                            | Yes  | @ObjectLink | Toolbar list.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                    |
 | activateIndex                 | number                                                       | No  | @Prop       | Index of the active item.<br>The value must be greater than or equal to -1.<br>The default value is **-1**, indicating that there is no active item. Values less than -1 are treated as no active item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                          |
 | controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | Yes  | -           | Toolbar controller, which cannot be used for controlling individual toolbar items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                        |
-| dividerModifier<sup>13+</sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md) | No  | @Prop       | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>Default value: system default value<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                   |
+| dividerModifier<sup>13+</sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No  | @Prop       | Modifier for the toolbar header divider, which can be used to customize the divider's height, color, and other attributes.<br>Default value: system default value<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                   |
 | toolBarModifier<sup>13+</sup> | [ToolBarModifier](#toolbarmodifier13)                        | No  | @Prop       | Modifier for the toolbar, which can be used to set the toolbar's height, background color, padding (which only takes effect when there are fewer than five toolbar items), and whether to display the pressed state.<br>Default value:<br>Height of the toolbar: **56vp**<br>Background color: **ohos_id_toolbar_bg**<br>Padding: **24vp**<br>Whether to display the pressed state: yes<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 
 ## ToolBarOptions
@@ -51,33 +58,38 @@ Inherits Array<[ToolBarOption](#toolbaroption)>.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 ## ToolBarOption
 
 **Decorator Type**: \@Observed
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                    | Type                                                       | Mandatory| Description                                                                                                                                                                                                                                                    |
-|----------------------------------------|-----------------------------------------------------------| -------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                                | [ResourceStr](ts-types.md#resourcestr)                    | Yes| Text of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                         |
-| action                                 | () =&gt; void                                   | No| Click event of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                        |
-| icon                                   | [Resource](ts-types.md#resource)                          | No| Icon of the toolbar item.<br>If **toolBarSymbolOptions** has input parameters, **icon** is ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                 |
-| state                                  | [ItemState](#itemstate)                                   | No| State of the toolbar item.<br>Default value: **ENABLE**<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                          |
-| iconColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Icon fill color of the toolbar item.<br>Default value: **$r('sys.color.icon_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                               |
-| activatedIconColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Icon fill color of the toolbar option in the activated state.<br>Default value: **$r('sys.color.icon_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                          |
-| textColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                 |
-| activatedTextColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                            |
-| toolBarSymbolOptions<sup>13+</sup>     | [ToolBarSymbolGlyphOptions](#toolbarsymbolglyphoptions13) | No| Icon symbol options of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                                              |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                            |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                   |
-| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name                                    | Type                                                       | Read-Only| Optional| Description                                                                                                                                                                                                                                                    |
+|----------------------------------------|-----------------------------------------------------------|---|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| content                                | [ResourceStr](ts-types.md#resourcestr)                    | No| No| Text of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                         |
+| action                                 | () =&gt; void                                   | No| Yes| Click event of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                        |
+| icon                                   | [Resource](ts-types.md#resource)                          | No| Yes| Icon of the toolbar item.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>If **toolBarSymbolOptions** has input parameters, **icon** is ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                  |
+| state                                  | [ItemState](#itemstate)                                   | No| Yes| State of the toolbar item.<br>Default value: **ItemState.ENABLE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                |
+| iconColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Icon fill color of the toolbar item.<br>Default value: **$r('sys.color.icon_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                               |
+| activatedIconColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Icon fill color of the toolbar option in the activated state.<br>Default value: **$r('sys.color.icon_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                          |
+| textColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                 |
+| activatedTextColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                            |
+| toolBarSymbolOptions<sup>13+</sup>     | [ToolBarSymbolGlyphOptions](#toolbarsymbolglyphoptions13) | No| Yes| Icon symbol options of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                                            |
+| toolBarSymbolOptions<sup>13+</sup>     | [ToolBarSymbolGlyphOptions](#toolbarsymbolglyphoptions13) | No| Yes| Icon symbol options of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                                            |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                             |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes| Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## ToolBarModifier<sup>13+</sup>
 Provides APIs for setting the height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which only takes effect when there are fewer than five items) of the toolbar, and whether to display the pressed state effect (**stateEffect**).
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
-### backgroundColor
+### backgroundColor<sup>13+</sup>
 
 backgroundColor(backgroundColor: ResourceColor): ToolBarModifier
 
@@ -86,6 +98,8 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -99,7 +113,7 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 |---------------------------------------|---------------------------------------|
 | [ToolBarModifier](#toolbarmodifier13) | **ToolBarModifier** object after the background color is set.|
 
-### padding
+### padding<sup>13+</sup>
 
 padding(padding: LengthMetrics): ToolBarModifier
 
@@ -109,11 +123,13 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name | Type    | Mandatory| Description                                                                                 |
 | ------- |--------| ---- |-------------------------------------------------------------------------------------|
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | Yes  | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br>By default, the padding is 24 vp when there are fewer than five items and 0 when there are five or more items.|
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Left and right padding of the toolbar, which is effective only when there are fewer than five items.<br>By default, the padding is 24 vp when there are fewer than five items and 0 when there are five or more items.|
 
 **Return value**
 
@@ -121,7 +137,7 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 |---------------------------------------|---------------------------------------|
 | [ToolBarModifier](#toolbarmodifier13) | **ToolBarModifier** object after the padding is set.|
 
-### height
+### height<sup>13+</sup>
 
 height(height: LengthMetrics): ToolBarModifier
 
@@ -131,11 +147,13 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 | Name | Type                             | Mandatory| Description                                |
 | ------- |---------------------------------| ---- |------------------------------------|
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | Yes  | Height of the toolbar.<br>The default height of the toolbar is 56 vp, which does not include the divider.|
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Height of the toolbar.<br>The default height of the toolbar is 56 vp, which does not include the divider.|
 
 **Return value**
 
@@ -144,7 +162,7 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 | [ToolBarModifier](#toolbarmodifier13) | **ToolBarModifier** object after the height is set.|
 
 
-### stateEffect
+### stateEffect<sup>13+</sup>
 
 stateEffect(stateEffect: boolean): ToolBarModifier
 
@@ -153,6 +171,8 @@ Sets whether to display the pressed state effect.
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -172,6 +192,8 @@ Sets whether to display the pressed state effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | ENABLE | 1 | The toolbar item is enabled.|
@@ -186,10 +208,12 @@ Defines the icon symbol options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type      | Mandatory| Description                                                                                      |
-| ------ | ---------- | ---- |------------------------------------------------------------------------------------------|
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No  | Icon symbol of the toolbar item in normal state.<br>Default value: **fontColor: $r('sys.color.icon_primary'), fontSize: 24vp** |
-| activated| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No  | Icon symbol of the toolbar item in activated state.<br>Default value: **fontColor: $r('sys.color.icon_emphasize'), fontSize: 24vp**|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name  | Type      | Read-Only| Optional| Description                                                                                      |
+| ------ | ---------- |---|---|------------------------------------------------------------------------------------------|
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Icon symbol of the toolbar item in normal state.<br>Default value: **fontColor: $r('sys.color.icon_primary'), fontSize: 24vp** |
+| activated| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Icon symbol of the toolbar item in activated state.<br>Default value: **fontColor: $r('sys.color.icon_emphasize'), fontSize: 24vp**|
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.

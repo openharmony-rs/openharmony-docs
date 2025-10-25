@@ -100,7 +100,7 @@ The following walks you through how to implement the entire video encoding proce
 
     - **videoEnc**: pointer to the video encoder instance.
     - **capability**: pointer to the encoder's capability.
-    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodec_mimetype_video_avc): video codec in AVC format.
+    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables): AVC video codec.
 
     ```c++
     // Create a hardware encoder instance.
@@ -115,7 +115,7 @@ The following walks you through how to implement the entire video encoding proce
 
 2. Call **OH_VideoEncoder_Configure()** to configure the encoder.
 
-    - For details about the configurable options, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    - For details about the configurable options, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
     - For details about the parameter verification rules, see [OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure).
     - The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
 

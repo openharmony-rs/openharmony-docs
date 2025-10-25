@@ -1,8 +1,8 @@
-# Multimodal Input ChangeLog
+# Multimodal Input Subsystem Changelog
 
-## cl.multimodalinput.1 Error Information Return Method Change of APIs
+## cl.multimodalinput.1 Error Information Return Method Change
 
-The internal APIs of the following modules used service logic return values to indicate error information, which did not comply with the error code specifications of OpenHarmony. Therefore, they are modified in API version 9 and later.
+The internal APIs of the following modules used service logic return values to indicate error information, which does not comply with the error code specifications of OpenHarmony. Therefore, they are modified in API version 9 and later.
  - Input device management module (**@ohos.multimodalInput.inputDevice.d.ts**): third-party APIs
 
  - Input consumer module (**@ohos.multimodalInput.inputConsumer.d.ts**): system APIs
@@ -17,45 +17,45 @@ The internal APIs of the following modules used service logic return values to i
 
 Asynchronous APIs in the preceding modules have the following changes: A parameter check error is returned synchronously; a service logic error is returned via **AsyncCallback** or the **error** object of **Promise**. No change is made to synchronous APIs.
 
-**Change Impacts**
+**Impact of the Change**
 
 The application developed based on earlier versions needs to adapt the method for returning API error information. Otherwise, the original service logic will be affected.
 
 **Key API/Component Changes**
 
   - supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void; 
-  - supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;boolean&gt;&gt;; 
-  - getKeyboardType(deviceId: number, callback: AsyncCallback&lt;KeyboardType&gt;): void; &gt;
-  - getKeyboardType(deviceId: number): Promise&lt;KeyboardType&gt;; 
-  - setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void; 
-  - setPointerSpeed(speed: number): Promise&lt;void&gt;; 
-  - getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void; 
-  - getPointerSpeed(): Promise&lt;number&gt;; 
-  - setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void; 
-  - setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;; 
-  - getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void; 
-  - getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;; 
-  - setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void; 
-  - setPointerVisible(visible: boolean): Promise&lt;void&gt;; 
-  - isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void; 
-  - isPointerVisible(): Promise&lt;boolean&gt;; 
-  - on(type:"touch", receiver:TouchEventReceiver):void; 
-  - on(type:"mouse", receiver:Callback&lt;MouseEvent&gt;):void; 
-  - off(type:"touch", receiver?:TouchEventReceiver):void; 
-  - off(type:"mouse", receiver?:Callback&lt;MouseEvent&gt;):void; 
-  - injectEvent({KeyEvent: KeyEvent}): void; 
-  - enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void; 
-  - enable(enable: boolean): Promise&lt;void&gt;; 
-  - start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void; 
-  - start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise&lt;void&gt;; 
-  - stop(callback: AsyncCallback&lt;void&gt;): void; 
-  - stop(): Promise&lt;void&gt;; 
-  - getState(deviceDescriptor: string, callback: AsyncCallback&lt;{ state: boolean }&gt;): void; 
-  - getState(deviceDescriptor: string): Promise&lt;{ state: boolean }&gt;; 
-  - on(type: 'cooperation', callback: AsyncCallback&lt;{ deviceDescriptor: string, eventMsg: EventMsg }&gt;): void; 
-  - off(type: 'cooperation', callback?: AsyncCallback&lt;void&gt;): void; 
-  - on(type: "key", keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void; 
-  - off(type: "key", keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void; 
+  -  supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;boolean&gt;&gt;; 
+  -  getKeyboardType(deviceId: number, callback: AsyncCallback&lt;KeyboardType&gt;): void; &gt;
+  -  getKeyboardType(deviceId: number): Promise&lt;KeyboardType&gt;; 
+  -  setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void; 
+  -  setPointerSpeed(speed: number): Promise&lt;void&gt;; 
+  -  getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void; 
+  -  getPointerSpeed(): Promise&lt;number&gt;; 
+  -  setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void; 
+  -  setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;; 
+  -  getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void; 
+  -  getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;; 
+  -  setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void; 
+  -  setPointerVisible(visible: boolean): Promise&lt;void&gt;; 
+  -  isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void; 
+  -  isPointerVisible(): Promise&lt;boolean&gt;; 
+  -  on(type:"touch", receiver:TouchEventReceiver):void; 
+  -  on(type:"mouse", receiver:Callback&lt;MouseEvent&gt;):void; 
+  -  off(type:"touch", receiver?:TouchEventReceiver):void; 
+  -  off(type:"mouse", receiver?:Callback&lt;MouseEvent&gt;):void; 
+  -  injectEvent({KeyEvent: KeyEvent}): void; 
+  -  enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void; 
+  -  enable(enable: boolean): Promise&lt;void&gt;; 
+  -  start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void; 
+  -  start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise&lt;void&gt;; 
+  -  stop(callback: AsyncCallback&lt;void&gt;): void; 
+  -  stop(): Promise&lt;void&gt;; 
+  -  getState(deviceDescriptor: string, callback: AsyncCallback&lt;{ state: boolean }&gt;): void; 
+  -  getState(deviceDescriptor: string): Promise&lt;{ state: boolean }&gt;; 
+  -  on(type: 'cooperation', callback: AsyncCallback&lt;{ deviceDescriptor: string, eventMsg: EventMsg }&gt;): void; 
+  -  off(type: 'cooperation', callback?: AsyncCallback&lt;void&gt;): void; 
+  -  on(type: "key", keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void; 
+  -  off(type: "key", keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void; 
 
 Deprecated APIs:
    - getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void; 

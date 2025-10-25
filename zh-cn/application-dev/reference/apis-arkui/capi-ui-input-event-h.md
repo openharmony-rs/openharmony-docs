@@ -1,7 +1,7 @@
 # ui_input_event.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
-**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->
+**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->、<!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
 
 ## 汇总
 
@@ -29,6 +29,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent | UI输入事件定义。 |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | 定义惯性滚动轴事件。  |
 
 ### 枚举
 
@@ -45,6 +46,8 @@
 | [anonymous6](#anonymous6)                       | - | 定义焦点轴事件的轴类型。 |
 | [ArkUI_InteractionHand](#arkui_interactionhand)     | ArkUI_InteractionHand | 定义触摸事件是左手还是右手。 |
 | [anonymous7](#anonymous7)                       | - | 定义轴事件的操作类型。 |
+| [anonymous8](#anonymous8)                       | - | 定义轴事件的轴类型。 |
+| [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | 定义惯性滚动轴事件的阶段。 |
 
 ### 函数
 
@@ -76,7 +79,7 @@
 | [float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getglobaldisplayybyindex) | 从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取相对于全局显示的Y坐标。只能从指针事件中获取位置信息，对于鼠标和轴事件，当给定的pointerIndex大于0时，始终返回默认值0.0f。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressure) | 从带有指向性的输入事件（如触摸事件）中获取触屏压力。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettiltx) | 从指向性输入事件（如触摸事件）中获取相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。仅适用于支持倾角上报的触控笔操作产生的触控事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | 从指向性输入事件（如触摸事件）中获取相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。仅适用于支持倾角上报的触控笔操作产生的触控事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | 从指向性输入事件（如触摸事件）中获取相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。仅适用于支持倾角上报的触控笔操作产生的触控事件。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, double* rollAngle)](#oh_arkui_pointerevent_getrollangle) | 获取触控笔绕Z轴旋转的角度。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareawidth) | 从指向性输入事件（如触摸事件）中获取触屏区域的宽度。仅适用于手指操作产生的触控事件，这通常是一个圆形区域的半径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | [float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareaheight) | 从指向性输入事件（如触摸事件）中获取触屏区域的高度。仅适用于手指操作产生的触控事件，这通常是一个圆形区域的半径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -136,6 +139,12 @@
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)](#oh_arkui_pointerevent_setclonedeventfingeridbyindex) | 设置带有指向性的克隆输入事件特定接触点的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_postclonedevent) | 转发克隆事件到特定节点。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | 调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_Arkui_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。                                                                                                                                                                                                                              |
+| [ArkUI_CoastingAxisEvent OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getcoastingaxisevent) | 获取惯性滚动轴事件的指针。  |
+| [int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_geteventtime) | 获取惯性滚动轴事件发生的时间。  |
+| [ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getphase) | 获取惯性滚动轴事件发生时的滚动阶段。  |
+| [float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltay) | 获取惯性滚动轴事件垂直方向的增量值。  |
+| [float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltax) | 获取惯性滚动轴事件水平方向的增量值。  |
+| [int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent event, bool propagation)](#oh_arkui_coastingaxisevent_setpropagation) | 设置是否启用惯性滚动轴事件冒泡。|
 
 ## 枚举类型说明
 
@@ -220,8 +229,8 @@ enum anonymous3
 | UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 不支持的来源类型。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
-| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 21 |
-| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 21 |
+| UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
+| UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 22 |
 
 ### HitTestMode
 
@@ -372,10 +381,10 @@ enum anonymous7
 | UI_AXIS_EVENT_ACTION_END = 3 | 轴事件结束。 |
 | UI_AXIS_EVENT_ACTION_CANCEL = 4 | 轴事件取消。 |
 
-### AxisType
+### anonymous8
 
 ```
-enum AxisType
+enum anonymous8
 ```
 
 **描述：**
@@ -383,14 +392,33 @@ enum AxisType
 
 定义轴事件的轴类型。
 
-**起始版本：** 21
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_AXIS_EVENT_VERTICAL_AXIS = 0 | 垂直滚动轴。 |
-| UI_AXIS_EVENT_HORIZONTAL_AXIS = 1 | 水平滚动轴。 |
-| UI_AXIS_EVENT_PINCH_AXIS = 2 | 捏合轴。 |
+| UI_AXIS_TYPE_VERTICAL_AXIS = 0 | 垂直滚动轴。 |
+| UI_AXIS_TYPE_HORIZONTAL_AXIS = 1 | 水平滚动轴。 |
+| UI_AXIS_TYPE_PINCH_AXIS = 2 | 捏合轴。 |
 
+### ArkUI_CoastingAxisEventPhase
+
+```
+enum ArkUI_CoastingAxisEventPhase
+```
+
+**描述：**
+
+
+定义惯性滚动轴事件的阶段。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_NONE = 0 | 非惯性轴事件阶段，异常默认值，可以通过检查惯性轴阶段值不为该值来判断当前惯性轴事件是有效的。  |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_BEGIN = 1 | 惯性滚动轴事件开始，此为惯性阶段的第一个事件。  |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_UPDATE = 2 | 惯性滚动轴事件更新，此阶段可以获取惯性轴值增量来处理滚动偏移。  |
+| ARKUI_COASTING_AXIS_EVENT_PHASE_END = 3 | 惯性滚动轴事件结束，此值在惯性被刹停（惯性滚动阶段用户重新触摸触控板或通过鼠标及触屏与组件产生交互等）或惯性衰减至自然停止时发送，到达此阶段时，应立即停止惯性滚动效果。  |
 
 ## 函数说明
 
@@ -1832,7 +1860,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 
 检测此轴事件是否包含指定的轴类型。
 
-**起始版本：** 21
+**起始版本：** 22
 
 
 **参数：**
@@ -1840,7 +1868,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| int32_t axis | 轴事件的轴类型。 |
+| int32_t axis | 表示轴事件的轴类型[UI_AXIS_TYPE_XXX](#anonymous8)。 |
 
 **返回值：**
 
@@ -2695,4 +2723,147 @@ ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回最近一次调用UIInput方法产生的结果代码。 |
 
+### OH_ArkUI_UIInputEvent_GetCoastingAxisEvent()
 
+```
+ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)
+```
+**描述：**
+
+从组件事件中获取惯性滚动轴事件，仅当用户在触摸板上使用双指滑动一定距离并快速抬手，且指针位置下存在注册了[NODE_ON_COASTING_AXIS_EVENT](capi-native-node-h.md#arkui_nodeeventtype)事件的组件时，才能获取到有效事件。在从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象获取到[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象后调用此方法。
+
+惯性滚动轴事件仅在双指抛滑并离开触控板时触发，因此仅支持触控板。惯性滚动轴事件会在手指离开触控板后，根据抛滑速度产生轴值逐渐衰减的事件。由于刷新频率和性能的影响，当前事件轴值可能高于或低于上一个事件值。在惯性滚动轴事件期间，以下四种行为会中断事件，并立即收到`ARKUI_COASTING_AXIS_EVENT_PHASE_END`。
+1. 手指触摸触控板。
+2. 滚动鼠标滚轮。
+3. 手指或鼠标点击注册了惯性滚动轴事件的节点。需要注意的是，点击未注册此事件的节点不会产生任何效果。例如，A节点注册了惯性滚动轴事件，当事件发生时，让B节点滚动，但点击B节点不会中断此事件。点击事件的中断行为受[HitTest模式](#oh_arkui_pointerevent_setintercepthittestmode)的影响。
+4. 应用休眠（例如最小化、锁屏）。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | 返回指向惯性滚动轴事件的指针，如果未发生任何惯性滚动轴事件则返回空。|
+
+### OH_ArkUI_CoastingAxisEvent_GetEventTime()
+
+```
+int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
+```
+**描述：**
+
+获取惯性滚动轴事件发生的时间。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | ArkUI_CoastingAxisEvent事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int64_t | 返回UI输入事件发生的时间；如果发生任何参数错误则返回0。|
+
+### OH_ArkUI_CoastingAxisEvent_GetPhase()
+
+```
+ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent* event)
+```
+**描述：**
+
+获取惯性滚动轴事件发生时的滚动阶段。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | ArkUI_CoastingAxisEvent事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | 返回事件阶段，参见[ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase)。<br>    如果发生任何参数错误则返回ARKUI_COASTING_AXIS_EVENT_PHASE_NONE。|
+
+### OH_ArkUI_CoastingAxisEvent_GetDeltaY
+
+```
+float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
+```
+**描述：**
+
+获取惯性滚动轴事件垂直方向的增量值。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | ArkUI_CoastingAxisEvent事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回Y轴增量值，以px为单位；如果发生任何参数错误则返回0.0f。|
+
+### OH_ArkUI_CoastingAxisEvent_GetDeltaX
+
+```
+float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
+```
+**描述：**
+
+获取惯性滚动轴事件水平方向的增量值。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | ArkUI_CoastingAxisEvent事件指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 返回X轴增量值，以px为单位；如果发生任何参数错误则返回0.0f。|
+
+### OH_ArkUI_CoastingAxisEvent_SetPropagation()
+
+```
+int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event, bool propagation)
+```
+**描述：**
+
+设置是否启用惯性滚动轴事件冒泡。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)* event | ArkUI_CoastingAxisEvent事件指针。 |
+| bool propagation | 是否启用事件冒泡。true表示启用，false表示禁用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         |

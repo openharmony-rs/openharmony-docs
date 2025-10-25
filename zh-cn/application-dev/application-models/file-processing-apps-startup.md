@@ -1,5 +1,12 @@
 # 拉起文件处理类应用（startAbility）
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 ## 使用场景
 
 开发者可以通过调用[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口，由系统从已安装的应用中寻找符合要求的应用，打开特定文件。
@@ -21,7 +28,7 @@
 | type     | string | 否       | 表示打开文件的类型，推荐使用[UTD类型](../database/uniform-data-type-descriptors.md)，比如：'general.plain-text'、'general.image'。目前也可以兼容使用[MIME type类型](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)，如：'text/xml' 、 'image/*'等。<br>**说明：** <br>1. type为可选字段，如果不传type，系统会尝试根据uri后缀名判断文件类型进行匹配；如果传入type，必须确保与uri的文件类型一致，否则会导致无法匹配到合适的应用。文件后缀与文件类型的映射关系参见[Uniform Type Descriptor(UTD)预置列表](../database/uniform-data-type-list.md)。<br>2. 不支持传\*/\*。
 | parameters | Record<string, Object>       | 否         | 表示由系统定义，由开发者按需赋值的自定义参数，文件打开场景请参考表2。                                                                                                                                                                                       |
 | flags | number | 否 | 表示处理方式，文件打开场景请参考表3。                                                                                                                                                                                       |
-
+| action | string | 是 | 表示要执行的通用操作。文件打开场景固定值：'ohos.want.action.viewData' ，表示查看数据的操作。                                                                                                                                                                                      |
 
 **表2** [parameters](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params)相关参数说明
 

@@ -141,7 +141,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed. |
-| 6800104 | Operation not allowed. |
+| 6800104 | Operation not allowed. e.g. the source type of the input audio capturer is not [SOURCE_TYPE_VOICE_RECOGNITION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_WAKEUP](#sourcetype8),<br>or this audio capturer is already released.|
 
 **Example**
 
@@ -288,7 +288,7 @@ Enumerates the volume-related operations.
 
 ## AsrNoiseSuppressionMode<sup>12+</sup>
 
-Enumerates the noise suppression modes in ASR.
+Enumerates the noise suppression modes of ASR.
 
 **System API**: This is a system API.
 
@@ -303,7 +303,7 @@ Enumerates the noise suppression modes in ASR.
 
 ## AsrAecMode<sup>12+</sup>
 
-Enumerates the Acoustic Echo Cancellation (AEC) modes in ASR.
+Enumerates the Acoustic Echo Cancellation (AEC) modes of ASR.
 
 **System API**: This is a system API.
 
@@ -316,7 +316,7 @@ Enumerates the Acoustic Echo Cancellation (AEC) modes in ASR.
 
 ## AsrWhisperDetectionMode<sup>12+</sup>
 
-Enumerates the ASR whisper detection modes.
+Enumerates the whisper detection modes of ASR.
 
 **System API**: This is a system API.
 
@@ -329,7 +329,7 @@ Enumerates the ASR whisper detection modes.
 
 ## AsrVoiceControlMode<sup>12+</sup>
 
-Enumerates the ASR voice control modes.
+Enumerates the voice control modes of ASR.
 
 **System API**: This is a system API.
 
@@ -344,7 +344,7 @@ Enumerates the ASR voice control modes.
 
 ## AsrVoiceMuteMode<sup>12+</sup>
 
-Enumerates the ASR voice mute modes.
+Enumerates the voice mute modes of ASR.
 
 **System API**: This is a system API.
 
@@ -1085,7 +1085,7 @@ Sets the mute state for an application based on the application ID. This API use
 | Name    | Type                                     | Mandatory| Description                            |
 | ---------- | ---------------------------------------- | ---- |--------------------------------|
 | uid    | number                                   | Yes  | Application ID.                        |
-| owned    | boolean                                   | Yes  | Mute state to set. **true** to mute, **false** otherwise.|
+| muted    | boolean                                   | Yes  | Mute state to set. **true** to mute, **false** otherwise.|
 
 **Return value**
 
@@ -1799,7 +1799,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800301 | System error. Return by callback. |
+| 6800301 | System error. |
 
 **Example**
 
@@ -1842,7 +1842,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800301 | System error. Return by callback. |
+| 6800301 | System error. |
 
 **Example**
 
@@ -1884,8 +1884,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800101 | Parameter verification failed. Possible causes: 1.more than one enhanceProps of the same enhanceClass in input Array; 2.input audioEnhanceProperties are not supported by current device. 3.names of enhanceProp or enhanceClass are incorrect.|
-| 6800301 | System error. Return by callback. |
+| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or catergory of the input audioEffectProperties is incorrect.|
+| 6800301 | System error. |
 
 **Example**
 
@@ -2438,8 +2438,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied.      |
+| 202     | Not system application.                             |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -2505,8 +2505,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied. |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -2571,8 +2571,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 201     | Permission denied. |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -2622,8 +2622,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Permission denied. Return by callback.      |
-| 202     | Not system App.                             |
+| 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
 **Example**
@@ -3362,7 +3361,7 @@ Unsubscribes from the spatial audio rendering status change event. This API uses
 | Name  | Type                                                | Mandatory| Description                                          |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChangeForAnyDevice'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | Yes  | Callback used to return the device information and the enabled status of spatial audio rendering.|
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | No  | Callback used to return the device information and the enabled status of spatial audio rendering.|
 
 **Error codes**
 
@@ -3512,7 +3511,6 @@ Enables or disables head tracking for a device. This API uses a promise to retur
 
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
-| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | Yes  | Descriptor of the device.    |
 | enable                | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
 
 **Return value**
@@ -3809,7 +3807,7 @@ Unsubscribes from the head tracking status change event. This API uses an asynch
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string | Yes  | Event type. The event **'headTrackingEnabledChangeForAnyDevice'** is triggered when the head tracking status is changed.|
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | Yes  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | No  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
 
@@ -4327,7 +4325,7 @@ Implements an ASR processing controller.
 
 setAsrAecMode(mode: AsrAecMode): boolean
 
-Sets an ASR AEC mode. This API returns the result synchronously.
+Sets the AEC mode for ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4337,7 +4335,7 @@ Sets an ASR AEC mode. This API returns the result synchronously.
 
 | Name| Type                        | Mandatory| Description|
 |-------|----------------------------|-------|-------|
-| mode | [AsrAecMode](#asraecmode12) | Yes|ASR AEC mode.|
+| mode | [AsrAecMode](#asraecmode12) | Yes|AEC mode.|
 
 **Return value**
 
@@ -4366,7 +4364,7 @@ let flag = asrProcessingController.setAsrAecMode(audio.AsrAecMode.BYPASS);
 
 getAsrAecMode(): AsrAecMode
 
-Obtains the ASR AEC mode in use. This API returns the result synchronously.
+Obtains the AEC mode of ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4376,7 +4374,7 @@ Obtains the ASR AEC mode in use. This API returns the result synchronously.
 
 | Type| Description|
 |-------|-------|
-| [AsrAecMode](#asraecmode12) |ASR AEC mode.|
+| [AsrAecMode](#asraecmode12) |AEC mode.|
 
 **Error codes**
 
@@ -4398,7 +4396,7 @@ let mode = asrProcessingController.getAsrAecMode();
 
 setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean
 
-Sets an ASR noise suppression mode. This API returns the result synchronously.
+Sets the noise suppression mode for ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4437,7 +4435,7 @@ let flag = asrProcessingController.setAsrNoiseSuppressionMode(audio.AsrNoiseSupp
 
 getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode
 
-Obtains the ASR noise suppression mode in use. This API returns the result synchronously.
+Obtains the noise suppression mode of ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4499,7 +4497,7 @@ let flag = asrProcessingController.isWhispering();
 
 setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 
-Sets an ASR whisper detection mode.
+Sets the whisper detection mode for ASR.
 
 **System API**: This is a system API.
 
@@ -4539,7 +4537,7 @@ let flag = asrProcessingController.setAsrWhisperDetectionMode(audio.AsrWhisperDe
 
 getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 
-Obtains the ASR whisper detection mode. This API returns the result synchronously.
+Obtains the whisper detection mode of ASR. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -4611,7 +4609,7 @@ let flag = asrProcessingController.setAsrVoiceControlMode(audio.AsrVoiceControlM
 
 setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 
-Sets an ASR voice mute mode.
+Mutes the audio channel of ASR during a system call.
 
 **System API**: This is a system API.
 
@@ -4645,4 +4643,177 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
+```
+
+## RenderTarget<sup>22+</sup>
+
+Enumerates the rendering targets of the audio renderer.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                              |  Value    | Description                      |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | Playback mode (default mode of the audio renderer).<br>In this mode, audio is played properly through the audio renderer.|
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | Injection mode. In this mode, when the source type of the recording stream is [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8) and the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), the output of the audio renderer is injected into the VoIP recording stream.|
+
+### setTarget<sup>22+</sup>
+
+setTarget(target: RenderTarget): Promise&lt;void&gt;
+
+Sets a rendering target for the audio renderer. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only when the audio renderer is not in the running or released state; otherwise, an error is returned.
+> - After the rendering target is changed to a mode other than [PLAYBACK](#rendertarget22):
+>   - The audio routing and interruption policies of the audio renderer cannot be managed using the [AudioSessionManager](arkts-apis-audio-AudioSessionManager.md) APIs.
+>   - The device type of the audio renderer will be set to [SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype).
+>   - If [Start](arkts-apis-audio-AudioRenderer.md#start8) is called and the audio scene is not [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
+>   - If [getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8) or [getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
+>   - If [getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
+>   - If [setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
+
+**Required permissions**: ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+This permission is required only when you set the rendering target to [INJECT_TO_VOICE_COMMUNICATION_CAPTURE](#rendertarget22).
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Renderer
+
+**Parameters**
+
+| Name                | Type                                                        | Mandatory| Description                     |
+| ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| target | [RenderTarget](#rendertarget22) | Yes| Rendering target.|
+
+**Return value**
+
+| Type                 | Description                        |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Permission denied.      |
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at running and release state. |
+| 6800104 | Current renderer is not supported to set target. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+    channels: audio.AudioChannel.CHANNEL_2, // Channel.
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+  };
+
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
+    rendererFlags: 0 // Audio renderer flag.
+  };
+
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+
+  try {
+    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+
+    // Set the injection mode.
+    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
+
+    // Set the playback mode.
+    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
+    console.info('setTarget PLAYBACK');
+
+  } catch (err) {
+    console.error(AudioFrameworkRenderLog: Error : ${err.message});
+  }
+}
+```
+
+### getTarget<sup>22+</sup>
+
+getTarget(): RenderTarget
+
+Obtains the current rendering target of the audio renderer.
+
+> **NOTE**
+>
+> - If no rendering target has been configured, the default value [PLAYBACK](#rendertarget22) is returned.
+> - If [SetTarget](#settarget22) has been called before this API is called, ensure that the Promise object returned by [SetTarget](#settarget22) has been successfully parsed. Otherwise, the return value may be inaccurate.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Renderer
+
+**Return value**
+
+| Type                                          | Description                         |
+|----------------------------------------------| ----------------------------- |
+| [RenderTarget](#rendertarget22) | Rendering target.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------ | -------------------------|
+| 202 | Caller is not a system application. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example() {
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+    channels: audio.AudioChannel.CHANNEL_2, // Channel.
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+  };
+
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
+    rendererFlags: 0 // Audio renderer flag.
+  };
+
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+
+  try {
+    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+
+    // (Optional) Set the injection mode.
+    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+    console.info('setTarget success');
+
+    // Obtain the current rendering target of the audio renderer.
+    let renderTarget = audioRenderer.getTarget();
+  } catch (err) {
+    console.error(AudioFrameworkRenderLog: Error : ${err.message});
+  }
+}
 ```

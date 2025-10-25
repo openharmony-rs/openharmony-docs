@@ -31,6 +31,7 @@ uinput <option> <command> <arg> ...
 | -T       | --touch    | 注入触摸事件。  |
 | -P       | --touchpad | 注入触控板事件。|
 | -?       | --help     | 帮助命令。      | 
+| enable_key_status | enable_key_status | [修饰键状态管理](#修饰键状态管理)。| 
 
 > **说明：**
 >
@@ -228,6 +229,28 @@ uinput -M -c 0 -i 500 -c 0
 | 6  | 鼠标后退键 |
 | 7  | 鼠标任务键 |
 
+### 查询鼠标光标信息
+查询当前鼠标光标信息。
+
+如果鼠标光标为显示状态，则输出鼠标光标的显示状态和[鼠标光标样式](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。此时如果传入filePath，会同时将鼠标光标样式图片资源以二进制数据保存在指定文件，且只保存三方自定义光标（其鼠标光标样式枚举值为-100），该文件由用户自己创建，缺省则不保存。如果鼠标光标为隐藏状态，则不输出鼠标光标样式、且不保存光标样式图片。
+
+**命令**
+```bash
+uinput -M -q [filePath]
+
+# [filePath] 指定鼠标光标图片的保存路径，可选参数，仅支持传入当前设备内的绝对路径。
+```
+
+**使用示例**
+```bash
+# 输出当前鼠标光标的显示或隐藏状态和鼠标光标样式id
+uinput -M -q
+
+# [filePath] 是用户自己创建的文件保存路径，例如：/data/test。
+# 输出当前鼠标光标的显示或隐藏状态和鼠标光标样式id，并将查到的鼠标光标样式图片二进制写入到用户自建的test文件中。
+uinput -M -q /data/test
+```
+
 ## 键盘事件
 
 模拟键盘按键输入。
@@ -320,6 +343,49 @@ uinput --keyboard --text <text>
 ```bash
 # 模拟输入一段文本"Hello,World!"
 uinput -K -t Hello,World!
+```
+
+## 修饰键状态管理
+
+启动或禁用键盘事件修饰键状态管理，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+
+### 启动修饰键状态管理
+
+启动修饰键状态管理并设置维持时间。需要与uinput键盘按键按下事件配合使用，启动后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
+
+**命令**
+```bash
+uinput enable_key_status <enable> [duration]
+
+# <enabal> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
+# [duration] 修饰键状态管理持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
+```
+
+**使用示例**
+```bash
+# 启动修饰键状态管理，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
+uinput enable_key_status 1
+uinput -K -d 2047
+
+# 启动修饰键状态管理并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
+uinput enable_key_status 1 5
+uinput -K -d 2047
+```
+
+### 禁用修饰键状态管理
+
+禁用修饰键状态管理功能，直到下次启用恢复该功能。
+
+**命令**
+```bash
+# <enabal> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
+uinput enable_key_status <enable>
+```
+
+**使用示例**
+```bash
+# 禁用修饰键状态管理。
+uinput enable_key_status 0
 ```
 
 ## 触控笔事件

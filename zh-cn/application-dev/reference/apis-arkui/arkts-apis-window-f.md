@@ -844,7 +844,7 @@ setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt
 
 | 错误码 ID | 错误信息                                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 
@@ -925,12 +925,192 @@ import { ColorMetrics, window } from '@kit.ArkUI';
 try {
   let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
   promise.then(() => {
-    console.log('Succeeded in setting the starting window color.');
+    console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the starting window color. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to set the starting window color. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.getAllMainWindowInfo<sup>21+</sup>
+
+getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
+
+获取全部主窗口信息，使用Promise异步回调。
+
+**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[MainWindowInfo](arkts-apis-window-i.md#mainwindowinfo21)&gt;&gt; | Promise对象。返回主窗口信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Succeeded in loading the content');
+    });
+    try {
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
+## window.getMainWindowSnapshot<sup>21+</sup>
+
+getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfiguration): Promise&lt;Array&lt;image.PixelMap | undefined&gt;&gt;
+
+获取一个或多个指定windowId的主窗口截图，使用Promise异步回调。
+
+**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型    | 必填 | 说明                                          |
+| --------- | ------- | ---- | --------------------------------------------- |
+| windowId | Array&lt;number&gt; | 是   | 需要获取截图的主窗口ID列表。可通过[window.getAllMainWindowInfo()](#windowgetallmainwindowinfo21)获取到主窗口windowId。|
+| config | [WindowSnapshotConfiguration](arkts-apis-window-i.md#windowsnapshotconfiguration21) | 是 | 获取窗口截图时的配置信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------ |
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined&gt;&gt; | Promise对象。截图的PixelMap列表，按传入的窗口ID数组的顺序排列。当窗口ID合法但无法找到对应的主窗口时，返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+      }
+      reqPermissionsFromUser(permissions, this.context);
+      console.info('Success in loading the content');
+    });
+    try {
+      let windowIds: number[] = [];
+      let configs: window.WindowSnapshotConfiguration = {
+        useCache: false
+      }
+      let windowInfoPromise = window.getAllMainWindowInfo();
+      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
+        console.info('Get all main window info success.');
+        for (let i = 0; i < list.length; i++) {
+          windowIds[i] = list[i].windowId;
+          console.info('Get all main window info id: ' + windowIds[i]);
+        }
+        let promise = window.getMainWindowSnapshot(windowIds, configs);
+        promise.then((list: Array<image.PixelMap>) => {
+          for (let i = 0; i < list.length; i++) {
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i].getBytesNumberPerRow()}`);
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+        });
+      }).catch((err: BusinessError) => {
+        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+      });
+    } catch (err) {
+      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+    }
+  }
+}
+
+const permissions: Array<Permissions> = ['ohos.permission.CUSTOM_SCREEN_CAPTURE'];
+function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+    console.info('requestPermissionsFromUser');
+    let grantStatus: Array<number> = data.authResults;
+    let length: number = grantStatus.length;
+    for (let i = 0; i < length; i++) {
+      if (grantStatus[i] === 0) {
+        // 用户授权
+      } else {
+        // 用户拒绝授权
+        return;
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to request permission from user. Code is ${err.code}, message is ${err.message}`);
+  })
 }
 ```
 

@@ -1,7 +1,7 @@
 # 手势公共接口
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -132,7 +132,7 @@ getId(): string
 
 getEventTargetInfo(): EventTargetInfo
 
-返回当前手势识别器对应组件的信息。
+返回当前触摸识别器对应组件的信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -142,13 +142,13 @@ getEventTargetInfo(): EventTargetInfo
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [EventTargetInfo](#eventtargetinfo12) | 当前手势识别器对应组件的信息。 |
+| [EventTargetInfo](#eventtargetinfo12) | 当前触摸识别器对应组件的信息。 |
 
 ### cancelTouch<sup>20+</sup>
 
 cancelTouch(): void
 
-向当前手势识别器发送触摸取消事件的信息。
+向当前触摸识别器发送触摸取消事件的信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -382,6 +382,22 @@ getDuration(): number
 | ------ | --------- |
 | number | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
 
+### getAllowableMovement<sup>22+</sup>
+
+getAllowableMovement(): number
+
+获取长按手势识别器识别的手势的最大移动距离。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| number | 长按手势识别器识别的手势的最大移动距离，单位为px。<br/>取值范围：(0, +∞) |
+
 ## SwipeRecognizer<sup>18+</sup>
 
 快滑手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer12)。
@@ -570,7 +586,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | velocity<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
-## GestureMask<sup>11+</sup>枚举说明
+## GestureMask枚举说明
 
 定义是否屏蔽子组件手势。
 
@@ -583,7 +599,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | Normal | - |不屏蔽子组件的手势，按照默认手势识别顺序进行识别。 |
 | IgnoreInternal | - | 屏蔽子组件的手势，包括子组件上系统内置的手势，如子组件为List组件时，内置的滑动手势同样会被屏蔽。 若父子组件区域存在部分重叠，则只会屏蔽父子组件重叠的部分。|
 
-## GestureJudgeResult<sup>12+</sup>
+## GestureJudgeResult<sup>11+</sup>
 
 定义手势竞争结果。
 
@@ -650,7 +666,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 ## GestureType<sup>11+</sup>
 
-declare type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | SwipeGesture | RotationGesture | GestureGroup
+type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | SwipeGesture | RotationGesture | GestureGroup
 
 定义手势类型。取值类型为下表类型中的并集。
 

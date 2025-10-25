@@ -170,7 +170,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: Async
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleResourceInfo数值；否则为错误对象。 |
+| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -225,7 +225,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<
 
 | 类型                                                         | 说明                             |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Promise对象，返回BundleResourceInfo数值。 |
+| Promise\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Promise对象，返回BundleResourceInfo数组。 |
 
 **错误码：**
 
@@ -273,7 +273,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callba
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的LauncherAbilityResourceInfo数值；否则为错误对象。 |
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -328,7 +328,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promi
 
 | 类型                                                         | 说明                             |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Promise对象，返回LauncherAbilityResourceInfo数值。 |
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Promise对象，返回LauncherAbilityResourceInfo数组。 |
 
 **错误码：**
 
@@ -526,6 +526,59 @@ try {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
+}
+```
+
+### bundleResourceManager.getAllUninstalledBundleResourceInfo<sup>21+</sup>
+
+getAllUninstalledBundleResourceInfo(resourceFlags: number): Promise\<Array\<BundleResourceInfo>>
+
+根据给定的resourceFlags获取所有已卸载且保留数据的应用的BundleResourceInfo。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                |
+| ----------- | ------ | ---- | --------------------- |
+| resourceFlags | number | 是   | 指定返回的BundleResourceInfo所包含的信息，取值请参考[ResourceFlag枚举值](#resourceflag)。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                             |
+| ------------------------------------------------------------ | -------------------------------- |
+| Promise\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Promise对象，返回BundleResourceInfo数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                              |
+| -------- | ------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+    bundleResourceManager.getAllUninstalledBundleResourceInfo(resourceFlag).then(data=> {
+        hilog.info(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed. err: %{public}s', err.message);
+    })
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed: %{public}s', message);
 }
 ```
 

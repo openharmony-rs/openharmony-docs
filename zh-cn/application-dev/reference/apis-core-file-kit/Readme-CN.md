@@ -24,6 +24,7 @@
   <!--Del-->
   - [@ohos.application.BackupExtensionAbility (备份恢复扩展能力)(系统接口)](js-apis-application-backupExtensionAbility-sys.md)
   - [@ohos.file.backup (备份恢复)(系统接口)](js-apis-file-backup-sys.md)
+  - [@ohos.file.cloudDiskManager (云盘管理)(系统接口)](js-apis-file-clouddiskmanager-sys.md)
   - [@ohos.file.cloudSync (端云同步能力)(系统接口)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (端云同步管理)(系统接口)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (目录环境能力)(系统接口)](js-apis-file-environment-sys.md)
@@ -49,15 +50,29 @@
     - [FileIO](capi-fileio.md)
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
+    - [CloudDisk](capi-clouddisk.md)
   - 头文件<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
     - [oh_fileio.h](capi-oh-fileio-h.md)
     - [oh_file_share.h](capi-oh-file-share-h.md)
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
+    - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
+    - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
   - 结构体<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
+    - [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md)
+    - [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)
+    - [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md)
+    - [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md)
+    - [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)
+    - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
+    - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
+    - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
+  <!--Del-->
+  - [云盘管理错误码](errorcode-clouddiskmanager-sys.md)
+  <!--DelEnd-->
   
