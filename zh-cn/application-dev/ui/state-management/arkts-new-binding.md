@@ -29,15 +29,12 @@
 
    双向绑定语法糖。
 
-   ```
    <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
-   ```
+
 2. 点击Index中的Button改变value值，父组件Index和子组件Star中的Text将同步更新。
 3. 点击子组件Star中的Button，调用`this.$value(10)`方法，父组件Index和子组件Star中的Text将同步更新。
 
-   ```ts
    <!-- @[ArkUI_Star_binding2](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
-   ```
 
 **使用限制**
 - `!!`双向绑定语法不支持多层父子组件传递。
@@ -51,9 +48,8 @@
 
 内部状态的含义由组件决定。例如：[bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)组件的isShow参数。
 
-```ts
 <!-- @[ArkUI_Sys_binding](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Sys_Binding.ets) -->
-```
+
 
 ![bindMenu](figures/bindmenu_doublebind.gif)
 
