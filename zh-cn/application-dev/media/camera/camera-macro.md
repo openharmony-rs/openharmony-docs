@@ -21,13 +21,13 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
-2. 通过[isMacroSupported](../../reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md#isMacroSupported19)接口，查询当前设备是否支持微距能力。
+2. 通过[isMacroSupported](../../reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md#ismacrosupported19)接口，查询当前设备是否支持微距能力。
 
     ```ts
    let isSupported: boolean = photoSession.isMacroSupported();
     ```
     
-3. 通过[enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enableMacro19)接口，开启或关闭微距能力。
+3. 通过[enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19)接口，开启或关闭微距能力。
 
     ```ts
    function EnableMacro(photoSession: camera.PhotoSession): void {
