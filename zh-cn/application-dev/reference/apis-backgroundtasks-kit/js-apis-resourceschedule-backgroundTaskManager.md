@@ -1591,7 +1591,7 @@ export default class EntryAbility extends UIAbility {
 4. 通知合并后不能取消合并，已合并的不能更新成不合并。
 5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
 6. 通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
-7. 特殊场景类型从API version 22开始支持，必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊类型，否则返回错误。
+7. 从API version 22开始支持[特殊场景类型的长时任务](#backgroundtaskmode21)。，必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
 
 ### 属性
 
@@ -1717,7 +1717,7 @@ checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
 
 | 类型             | 说明                |
 | -------------- |-------------------|
-| Promise&lt;[UserAuthResult](#userauthresult22)&gt; | 返回授权结果的Promise对象。 |
+| Promise&lt;[UserAuthResult](#userauthresult22)&gt; | Promise对象，返回用户授权结果。 |
 
 **错误码：**
 
@@ -1765,9 +1765,9 @@ export default class EntryAbility extends UIAbility {
 | MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务<br/>使用场景举例：通过蓝牙传输文件时退后台。            |
 | MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联<br/>使用场景举例：分布式业务连接、投播。          |
 | MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
-| MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放|
+| MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。            |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>使用场景举例：应用在后台进行导出媒体文件、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 需要请求用户授权，支持应用在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过checkSpecialScenarioAuth接口查询授权。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊类型，否则返回错误。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型。<br/>使用场景举例：应用在后台进行导出媒体文件、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 需要请求用户授权，支持应用在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过checkSpecialScenarioAuth接口查询授权。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1780,11 +1780,11 @@ export default class EntryAbility extends UIAbility {
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。       |
 | SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。                  |
 | SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。            |
-| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。            |
-| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入AVSession的音视频播放场景，通知类型为普通文本类型。            |
-| SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，通知类型为普通文本通知。            |
-| SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，通知类型为普通文本通知。            |
-| SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。            |
+| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，例如：应用在后台进行音频、视频播放，音视频投播，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。            |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 音视频播放，例如：应用在后台进行音频、视频播放，音视频投播，通知类型为普通文本通知。已接入[AVSession](../../media/avsession/avsession-overview.md)的场景。            |
+| SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，例如：应用在后台进行录音，通知类型为普通文本通知。            |
+| SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，例如：应用在后台进行屏幕录制，通知类型为普通文本通知。            |
+| SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，例如：应用在后台进行音视频通话，通知类型为普通文本通知。            |
 | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理，例如：应用在后台进行导出媒体文件，通知类型为普通文本通知。    |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播，例如：应用使用三方投播组件在后台进行投播，通知类型为普通文本通知。  |
 
