@@ -2339,6 +2339,123 @@ export function frameNodeTrans(frameNode:Object) {
 }
 
 ```
+ 
+### convertPoint<sup>22+</sup>
+
+convertPoint(position: NodePosition, targetNode: FrameNode): NodePosition
+
+将点的坐标从当前节点的坐标系转换为目标节点的坐标系。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| position | [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点局部坐标系中的点坐标。 |
+| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点局部坐标系中的坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 目标节点局部坐标系中的转换坐标。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100024   | The current FrameNode and the target FrameNode do not have a common ancestor node. |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'targetNode' is invalid: it cannot be disposed." |
+
+**示例：**
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  UIContext,
+  State,
+  $r
+} from '@kit.ArkUI';
+
+import { NodePosition } from '@ohos.arkui.node';
+
+@Entry
+@Component
+struct ConvertPointTest {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+  @State nodeAOk: boolean = false;
+  @State nodeBOK: boolean = false;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size'))
+        .onAppear(() => {
+          this.nodeAOk = true;
+        })
+      Column() {
+        Text('testNodeB')
+          .id('testNodeB')
+          .fontSize($r('app.float.page_text_font_size'))
+          .onAppear(() => {
+            this.nodeBOK = true;
+          })
+
+      }
+
+      Button('运行convertPoint测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    if (!this.nodeAOk || !this.nodeBOK) {
+      return;
+    }
+
+    if (!this.uiContext) {
+      return;
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+    const nodeB = this.uiContext.getAttachedFrameNodeById('testNodeB');
+
+    if (!nodeA || !nodeB) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint: NodePosition = { x: 10, y: 10 } as NodePosition;
+    const result: NodePosition | undefined = nodeA.convertPoint({ x: 30, y: 10 }, nodeB);
+    if (result === undefined) {
+      console.info("convertPoint 转换失败");
+      return;
+    }
+    console.info(`输出: (${result.x}, ${result.y})`);
+  }
+}
+```
 
 ## TypedFrameNode<sup>12+</sup>
 
