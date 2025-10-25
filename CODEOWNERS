@@ -1254,7 +1254,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomp
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-styled-string-h.md	@pssea	@jiaoaozihao	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/capi-ui-input-event-h.md	@piggyguy	@songyanhong	@HelloCrease
-zh-cn/application-dev/reference/apis-arkui/errorcode-animator.md	@CCFFWW	@lxl007	@HelloCrease
+zh-cn/application-dev/reference/apis-arkui/errorcode-internal.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-bindSheet.md	@CCFFWW	@lxl007	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-canvas.md	@sunbees	@liuli0427	@HelloCrease
 zh-cn/application-dev/reference/apis-arkui/errorcode-drag-event.md	@piggyguy	@songyanhong	@HelloCrease

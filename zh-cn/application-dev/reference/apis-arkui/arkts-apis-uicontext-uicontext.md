@@ -3258,7 +3258,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UI上下文](errorcode-uicontext.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                        |
 | ------ | ---------------------------------- |

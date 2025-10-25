@@ -3601,7 +3601,7 @@
           - [ArkUI_GridLayoutOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
-          - [动画错误码](reference/apis-arkui/errorcode-animator.md)
+          - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
           - [弹窗错误码](reference/apis-arkui/errorcode-promptAction.md)
           - [页面路由错误码](reference/apis-arkui/errorcode-router.md)
           - [拖拽事件错误码](reference/apis-arkui/errorcode-drag-event.md)
