@@ -9846,7 +9846,7 @@ async function example(context: Context) {
 }
 ```
 
-### startDownloadSpecificCloudMedia<sup>22+</sup>
+### startDownloadSpecificCloudMedia<sup>21+</sup>
 
 startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, CloudAssetDownloadCode\>\>
 
@@ -9868,7 +9868,7 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, Clou
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<Map\<string, [CloudAssetDownloadCode](#cloudassetdownloadcode22)\>\> | Promise对象，返回uri列表对应的下载任务是否添加成功。 |
+| Promise\<Map\<string, [CloudAssetDownloadCode](#cloudassetdownloadcode21)\>\> | Promise对象，返回uri列表对应的下载任务是否添加成功。 |
 
 **错误码：**
 
@@ -9899,7 +9899,7 @@ async function example(context: Context) {
 }
 ```
 
-### pauseDownloadSpecificCloudMedia<sup>22+</sup>
+### pauseDownloadSpecificCloudMedia<sup>21+</sup>
 
 pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
@@ -9952,7 +9952,7 @@ async function example(context: Context) {
 }
 ```
 
-### resumeDownloadSpecificCloudMedia<sup>22+</sup>
+### resumeDownloadSpecificCloudMedia<sup>21+</sup>
 
 resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
@@ -10005,7 +10005,7 @@ async function example(context: Context) {
 }
 ```
 
-### cancelDownloadSpecificCloudMedia<sup>22+</sup>
+### cancelDownloadSpecificCloudMedia<sup>21+</sup>
 
 cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
@@ -10058,7 +10058,7 @@ async function example(context: Context) {
 }
 ```
 
-### queryDownloadSpecificCloudMediaDetails<sup>22+</sup>
+### queryDownloadSpecificCloudMediaDetails<sup>21+</sup>
 
 queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataSharePredicates): Promise\<CloudAssetDownloadStatus\>
 
@@ -10080,7 +10080,7 @@ queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataShare
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<[CloudAssetDownloadStatus](#cloudassetdownloadstatus22)\> | Promise对象，返回下载任务信息。 |
+| Promise\<[CloudAssetDownloadStatus](#cloudassetdownloadstatus21)\> | Promise对象，返回下载任务信息。 |
 
 **错误码：**
 
@@ -10110,7 +10110,7 @@ async function example(context: Context) {
 }
 ```
 
-### queryDownloadSpecificCloudMediaTaskCount<sup>22+</sup>
+### queryDownloadSpecificCloudMediaTaskCount<sup>21+</sup>
 
 queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSharePredicates): Promise\<number\>
 
@@ -10162,7 +10162,7 @@ async function example(context: Context) {
 }
 ```
 
-### onDownloadProgressChange<sup>22+</sup>
+### onDownloadProgressChange<sup>21+</sup>
 
 onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): void
 
@@ -10178,7 +10178,7 @@ onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): 
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo22)\> | 是   | 注册指定的callback监听，回调返回批量下载进度相关通知。 |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | 是   | 注册指定的callback监听，回调返回批量下载进度相关通知。 |
 
 
 **错误码：**
@@ -10210,7 +10210,7 @@ async function example(context: Context) {
 }
 ```
 
-### offDownloadProgressChange<sup>22+</sup>
+### offDownloadProgressChange<sup>21+</sup>
 
 offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>): void
 
@@ -10226,7 +10226,7 @@ offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>)
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo22)\> | 否   | 取消监听[onDownloadProgressChange](#ondownloadprogresschange22)注册指定的callback监听；不填时，则取消所有进度相关监听。|
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | 否   | 取消监听[onDownloadProgressChange](#ondownloadprogresschange21)注册指定的callback监听；不填时，则取消所有进度相关监听。|
 
 
 **错误码：**
@@ -11709,7 +11709,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-## CloudAssetDownloadNotifyType<sup>22+</sup>
+## CloudAssetDownloadNotifyType<sup>21+</sup>
 
 枚举，下载进度通知事件类型。
 
@@ -11727,7 +11727,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | DOWNLOAD_AUTO_RESUMED |  5 |  下载自动恢复通知。  |
 | DOWNLOAD_REFRESHED |  6 |  下载刷新通知。  |
 
-## CloudAssetDownloadCode<sup>22+</sup>
+## CloudAssetDownloadCode<sup>21+</sup>
 
 枚举，批量下载添加返回值类型。
 
@@ -11740,7 +11740,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ADD_DOWNLOAD_TASK_SUCCESS |  0 |  添加下载任务成功。|
 | DOWNLOAD_ASSET_NOT_EXIST |  1 |  添加下载任务时，资源不存在。  |
 
-## CloudAssetDownloadProgressInfo<sup>22+</sup>
+## CloudAssetDownloadProgressInfo<sup>21+</sup>
 
 批量下载进度信息。
 
@@ -11750,12 +11750,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
-| downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype22)  | 是 | 否 | 批量下载事件类型。 |
+| downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype21)  | 是 | 否 | 批量下载事件类型。 |
 | fileId  | number  |是 |是 | 批量下载文件id。  |
 | percent  | number  |是 |是 | 下载进度信息。  |
 | autoPauseReason       | number  |是 |是 | 自动通知原因。  |
 
-## CloudAssetDownloadStatus<sup>22+</sup>
+## CloudAssetDownloadStatus<sup>21+</sup>
 
 批量下载任务信息。
 
