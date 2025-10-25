@@ -233,7 +233,7 @@ avScreenCaptureRecorder.setMicEnabled(true).then(() => {
 
 setPickerMode(pickerMode: PickerMode): Promise\<void>
 
-设置Picker显示模式。使用Promise异步回调。
+设置Picker显示模式，在下一次显示Picker时生效。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -275,7 +275,7 @@ avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
 
 excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 
-设置Picker显示模式。使用Promise异步回调。
+设置在Picker中隐藏的窗口列表，在下一次显示Picker时生效。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -283,7 +283,7 @@ excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| excludedWindows | Array\<number> | 是   | 需要在Picker中隐藏的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[窗口API引用](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| excludedWindows | Array\<number> | 是   | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[窗口API引用](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 

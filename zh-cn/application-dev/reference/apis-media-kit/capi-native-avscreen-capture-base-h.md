@@ -59,7 +59,6 @@
 | [OH_AVScreenCaptureFilterableAudioContent](#oh_avscreencapturefilterableaudiocontent) | OH_AVScreenCaptureFilterableAudioContent | 枚举，表示可过滤的音频类型。 |
 | [OH_AVScreenCaptureContentChangedEvent](#oh_avscreencapturecontentchangedevent) | OH_AVScreenCaptureContentChangedEvent | 枚举，表示录屏内容变更事件。 |
 | [OH_AVScreenCapture_FillMode](#oh_avscreencapture_fillmode) | OH_AVScreenCapture_FillMode | 图像填充模式。 |
-| [OH_CapturePickerMode](#oh_capturepickermode) | OH_CapturePickerMode | 录屏Picker显示模式。 |
 
 ### 函数
 
@@ -328,24 +327,6 @@ enum OH_AVScreenCapture_FillMode
 | -- | -- |
 | OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0 | 保持图像原始宽高比匹配目标图像大小，若比例不一致可能存在黑边。 |
 | OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | 图像拉伸匹配目标图像大小，若比例不一致图像变形。 |
-
-### OH_CapturePickerMode
-
-```
-enum OH_CapturePickerMode
-```
-
-**描述**
-
-录屏Picker显示模式。
-
-**起始版本：** 22
-
-| 枚举项 | 描述 |
-| -- | -- |
-| OH_CAPTURE_PICKER_MODE_WINDOW_ONLY = 0 | 仅显示窗口列表。 |
-| OH_CAPTURE_PICKER_MODE_SCREEN_ONLY = 1 | 仅显示屏幕列表。 |
-| OH_CAPTURE_PICKER_MODE_SCREEN_AND_WINDOW = 2 | 同时显示屏幕列表和窗口列表。 |
 
 
 ## 函数说明

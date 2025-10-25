@@ -365,7 +365,7 @@ Codec MIME类型枚举。
 
 ## PickerMode<sup>22+</sup>
 
-进行屏幕录制时Picker界面显示模式的枚举。
+表示屏幕录制Picker模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
