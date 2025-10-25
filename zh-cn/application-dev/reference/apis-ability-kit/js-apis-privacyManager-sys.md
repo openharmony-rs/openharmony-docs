@@ -62,6 +62,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **示例：**
 
@@ -121,6 +122,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **示例：**
 
@@ -170,10 +172,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest): Promise&lt;PermissionUs
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
-| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **示例：**
 
@@ -226,10 +225,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
-| 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100007 | The service is abnormal. |
-| 12100008 | Out of memory. |
 
 **示例：**
 
@@ -291,7 +287,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100007 | The service is abnormal. |
-| 12100009 | Common inner error. |
+| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
 
 **示例：**
 
@@ -385,7 +381,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
+| 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -446,7 +442,6 @@ startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number,
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or usedType is invalid. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -519,7 +514,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, callback: Asy
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
+| 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
 | 12100007 | The service is abnormal. |
@@ -574,7 +569,6 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -630,7 +624,6 @@ pid需要与startUsingPermission传入的pid相同。
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -689,7 +682,6 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, callback: Asyn
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
-| 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
 | 12100007 | The service is abnormal. |
@@ -845,6 +837,7 @@ getPermissionUsedTypeInfos(tokenId?: number | null, permissionName?: Permissions
 | 12100001 | Invalid parameter. PermissionName exceeds 256 characters. |
 | 12100002 | The input tokenId does not exist. |
 | 12100003 | The input permissionName does not exist. |
+| 12100009 | Common inner error. A database error occurs. |
 
 **示例：**
 
