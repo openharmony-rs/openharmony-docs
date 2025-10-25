@@ -26,146 +26,56 @@
 
    (3) 创建kvStore。
 
+   > **说明**：
+   >
+   > 在单设备使用场景下，KV数据库支持修改securityLevel开库参数进行安全等级升级。数据库安全等级升级操作需要注意以下几点：
+   > * 该操作不支持需要进行跨设备同步的数据库，不同安全等级的数据库之间不能进行数据同步，需要跨设备同步的数据库如果要升级安全等级，建议重新创建更高安全等级的数据库。
+   > * 该操作需在关闭当前数据库之后，通过修改securityLevel开库参数重新设置数据库的安全等级，再进行开库操作。
+   > * 该操作只支持升级，不支持降级。例如支持S2->S3的升级，不支持S3->S2的降级。
+   > * Logger封装示例参考[Logger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/common/Logger.ets)。
+   > * getContext参考EntryAbility.ets文件中的[getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets)接口。
 
-   ```ts
-   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```js
+   // 导入模块
+   // 在pages目录下新建KvStoreInterface.ets
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   import Logger from '../common/Logger';
 
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-       let kvManager: distributedKVStore.KVManager;
-       let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-       let context = this.context;
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         context: context,
-         bundleName: 'com.example.datamanagertest'
-       }
-       try {
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         console.info('Succeeded in creating KVManager.');
-         try {
-           const options: distributedKVStore.Options = {
-             createIfMissing: true,
-             encrypt: true,
-             backup: false,
-             autoSync: false,
-             kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-             securityLevel: distributedKVStore.SecurityLevel.S3
-           };
-           kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-             if (err) {
-               console.error(`Failed to get KVStore. Code:${err.code},message:${err.message}`);
-               return;
-             }
-             console.info('Succeeded in getting KVStore.');
-             kvStore = store;
-             if (kvStore !== undefined) {
-               // 进行后续操作
-               // ...
-             }
-           });
-         } catch (e) {
-           let error = e as BusinessError;
-           console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-         }
-       } catch (e) {
-         let error = e as BusinessError;
-         console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-       }
-     }
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
+
+   // 下面所有接口的代码都实现在KvInterface中
+   export class KvInterface {
    }
    ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 2. 使用put()方法插入数据。
-     
-   ```ts
-   const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-   const VALUE_TEST_STRING_ELEMENT = 'value_test_string';
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Fail to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
-   ```
+
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 3. 使用backup()方法备份数据。
-     
-   ```ts
-   let backupFile = 'BK001';
-   try {
-     kvStore.backup(backupFile, (err) => {
-       if (err) {
-         console.error(`Fail to backup data.code:${err.code},message:${err.message}`);
-       } else {
-         console.info('Succeeded in backing up data.');
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
-   ```
+
+   <!-- @[kv_store7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 4. 使用delete()方法删除数据（模拟意外删除、篡改场景）。
-     
-   ```ts
-   try {
-     kvStore.delete(KEY_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Fail to delete data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in deleting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
-   ```
+
+   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 5. 使用restore()方法恢复数据。
-     
-   ```ts
-   try {
-     kvStore.restore(backupFile, (err) => {
-       if (err) {
-         console.error(`Fail to restore data. Code:${err.code},message:${err.message}`);
-       } else {
-         console.info('Succeeded in restoring data.');
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
-   ```
+
+   <!-- @[kv_store8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 6. 当本地设备存储空间有限或需要重新备份时，还可使用deleteBackup()方法删除备份，释放存储空间。
-     
-   ```ts
-   let files = [backupFile];
-   try {
-     kvStore.deleteBackup(files).then((data) => {
-       console.info(`Succeed in deleting Backup. Data:filename is ${data[0]},result is ${data[1]}.`);
-     }).catch((err: BusinessError) => {
-       console.error(`Fail to delete Backup. Code:${err.code},message:${err.message}`);
-     })
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
-   ```
+
+   <!-- @[kv_store9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 ## 关系型数据库备份
 
