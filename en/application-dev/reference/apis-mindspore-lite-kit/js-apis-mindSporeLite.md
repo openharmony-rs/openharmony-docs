@@ -27,7 +27,7 @@ import { mindSporeLite } from '@kit.MindSporeLiteKit';
 
 loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 
-Loads the input model from the full path for model inference. This API uses an asynchronous callback to return the result.
+Loads the input model from the full path for CPU inference. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.AI.MindSporeLite
 
@@ -120,7 +120,7 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeL
 
 loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 
-Loads the input model from the memory for inference. This API uses an asynchronous callback to return the result.
+Loads the input model from the memory for CPU inference. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.AI.MindSporeLite
 
@@ -231,7 +231,7 @@ globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFil
 
 loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 
-Loads the input model based on the specified file descriptor for inference. This API uses an asynchronous callback to return the result.
+Loads the input model based on the specified file descriptor for CPU inference. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.AI.MindSporeLite
 

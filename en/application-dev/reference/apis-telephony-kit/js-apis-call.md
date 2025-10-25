@@ -811,9 +811,9 @@ Provides an option for determining whether a call is a video call.
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|        Name             | Type                              | Mandatory| Description                                                                                            |
-| ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| extras                   | boolean                            | No  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  | 
+|        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
+| ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
+| extras                   | boolean                            | No  | Yes  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  | 
 
 ## CallState
 
@@ -835,9 +835,9 @@ Provides an option for determining whether a number is an emergency number for t
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|  Name | Type  | Mandatory| Description                                          |
-| ------ | ------ | ---- | ---------------------------------------------- |
-| slotId | number | No  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+|  Name | Type  | Read-Only| Optional| Description                                          |
+| ------ | ------ | ---- | ---- | ---------------------------------------------- |
+| slotId | number | No  | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
 
 ## NumberFormatOptions<sup>7+</sup>
 
@@ -845,6 +845,6 @@ Provides an option for number formatting.
 
 **System capability**: SystemCapability.Telephony.CallManager
 
-|    Name    | Type  | Mandatory| Description                                                      |
-| ----------- | ------ | ---- | ---------------------------------------------------------- |
-| countryCode | string | No  | Country code, for example, **CN** (China). All country codes are supported. The default value is **CN**.|
+|    Name    | Type  | Read-Only| Optional| Description                                                      |
+| ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| countryCode | string | No  | Yes  | Country code, for example, **CN** (China). All country codes are supported. The default value is **CN**.|

@@ -444,7 +444,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace 'app.string.test' with the actual resource.
             let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id);
-            console.log(`getStringSync, result: ${testStr}`);
+            console.info(`getStringSync, result: ${testStr}`);
             // Print the output result: getStringSync, result: I'm a test string resource.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -511,7 +511,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace 'app.string.test' with the actual resource.
             let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id, "format string", 10, 98.78);
-            console.log(`getStringSync, result: ${testStr}`);
+            console.info(`getStringSync, result: ${testStr}`);
             // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -576,7 +576,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace "test" with the actual resource.
             let testStr = this.context.resourceManager.getStringByNameSync("test");
-            console.log(`getStringByNameSync, result: ${testStr}`);
+            console.info(`getStringByNameSync, result: ${testStr}`);
             // Print the output result: getStringByNameSync, result: I'm a test string resource.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -643,7 +643,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace "test" with the actual resource.
             let testStr = this.context.resourceManager.getStringByNameSync("test", "format string", 10, 98.78);
-            console.log(`getStringByNameSync, result: ${testStr}`);
+            console.info(`getStringByNameSync, result: ${testStr}`);
             // Print the output result: getStringByNameSync, result: I'm a format string, format int: 10, format float: 98.78.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -705,7 +705,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getStringValue, result: ${value}`);
+                console.info(`getStringValue, result: ${value}`);
                 // Print the output result: getStringValue, result: I'm a test string resource.
             }
         });
@@ -766,7 +766,7 @@ export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Replace 'app.string.test' with the actual resource.
         this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
-            console.log(`getStringValue, result: ${value}`);
+            console.info(`getStringValue, result: ${value}`);
             // Print the output result: getStringValue, result: I'm a test string resource.
         }).catch((error: BusinessError) => {
             console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
@@ -826,7 +826,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getStringByName, result: ${value}`);
+                console.info(`getStringByName, result: ${value}`);
                 // Print the output result: getStringByName, result: I'm a test string resource.
             }
         });
@@ -887,7 +887,7 @@ export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Replace "test" with the actual resource.
         this.context.resourceManager.getStringByName("test").then((value: string) => {
-            console.log(`getStringByName, result: ${value}`);
+            console.info(`getStringByName, result: ${value}`);
             // Print the output result: getStringByName, result: I'm a test string resource.
         }).catch((error: BusinessError) => {
             console.error(`promise getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
@@ -954,7 +954,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace 'app.strarray.test' with the actual resource.
             let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync($r('app.strarray.test').id);
-            console.log(`getStringArrayValueSync, result: ${strArray[0]}`);
+            console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
             // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1023,7 +1023,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace "test" with the actual resource.
             let strArray: Array<string> = this.context.resourceManager.getStringArrayByNameSync("test");
-            console.log(`getStringArrayByNameSync, result: ${strArray[0]}`);
+            console.info(`getStringArrayByNameSync, result: ${strArray[0]}`);
             // Print the output result: getStringArrayByNameSync, result: I'm one of the array's values.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1090,7 +1090,7 @@ export default class EntryAbility extends UIAbility {
                 if (error != null) {
                     console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
                 } else {
-                    console.log(`getStringArrayValue, result: ${value[0]}`);
+                    console.info(`getStringArrayValue, result: ${value[0]}`);
                     // Print the output result: getStringArrayValue, result: I'm one of the array's values.
                 }
             });
@@ -1156,7 +1156,7 @@ export default class EntryAbility extends UIAbility {
         // Replace 'app.strarray.test' with the actual resource.
         this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id)
             .then((value: Array<string>) => {
-                console.log(`getStringArrayValue, result: ${value[0]}`);
+                console.info(`getStringArrayValue, result: ${value[0]}`);
                 // Print the output result: getStringArrayValue, result: I'm one of the array's values.
             })
             .catch((error: BusinessError) => {
@@ -1222,7 +1222,7 @@ export default class EntryAbility extends UIAbility {
                 console.error(`callback getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
                 let strArray = value;
-                console.log(`getStringArrayByName, result: ${value[0]}`);
+                console.info(`getStringArrayByName, result: ${value[0]}`);
                 // Print the output result: getStringArrayByName, result: I'm one of the array's values.
             }
         });
@@ -1288,7 +1288,7 @@ export default class EntryAbility extends UIAbility {
         // Replace "test" with the actual resource.
         this.context.resourceManager.getStringArrayByName("test")
             .then((value: Array<string>) => {
-                console.log(`getStringArrayByName, result: ${value[0]}`);
+                console.info(`getStringArrayByName, result: ${value[0]}`);
                 // Print the output result: getStringArrayByName, result: I'm one of the array's values.
             })
             .catch((error: BusinessError) => {
@@ -1371,7 +1371,7 @@ export default class EntryAbility extends UIAbility {
             // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
             // Replace 'app.plural.format_test' with the actual resource.
             let pluralStr = this.context.resourceManager.getIntPluralStringValueSync($r('app.plural.format_test').id, 1, 1, "basket", 0.3);
-            console.log(`getIntPluralStringValueSync, result: ${pluralStr}`);
+            console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
             // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1455,7 +1455,7 @@ export default class EntryAbility extends UIAbility {
             // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
             // Replace "format_test" with the actual resource.
             let pluralStr = this.context.resourceManager.getIntPluralStringByNameSync("format_test", 1, 1, "basket", 0.3);
-            console.log(`getIntPluralStringByNameSync, result: ${pluralStr}`);
+            console.info(`getIntPluralStringByNameSync, result: ${pluralStr}`);
             // Print the output result: getIntPluralStringByNameSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1539,7 +1539,7 @@ export default class EntryAbility extends UIAbility {
             // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
             // Replace 'app.plural.format_test' with the actual resource.
             let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync($r('app.plural.format_test').id, 2.1, 2, "basket", 0.6);
-            console.log(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+            console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
             // Print the output result: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -1623,7 +1623,7 @@ export default class EntryAbility extends UIAbility {
             // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
             // Replace "format_test" with the actual resource.
             let pluralStr = this.context.resourceManager.getDoublePluralStringByNameSync("format_test", 2.1, 2, "basket", 0.6);
-            console.log(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
+            console.info(`getDoublePluralStringByNameSync, result: ${pluralStr}`);
             // Print the output result: getDoublePluralStringByNameSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -2941,7 +2941,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace 'app.boolean.boolean_test' with the actual resource.
             let boolTest = this.context.resourceManager.getBoolean($r('app.boolean.boolean_test').id);
-            console.log(`getBoolean, result: ${boolTest}`);
+            console.info(`getBoolean, result: ${boolTest}`);
             // Print the output result: getBoolean, result: true
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3006,7 +3006,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace "boolean_test" with the actual resource.
             let boolTest = this.context.resourceManager.getBooleanByName("boolean_test");
-            console.log(`getBooleanByName, result: ${boolTest}`);
+            console.info(`getBooleanByName, result: ${boolTest}`);
             // Print the output result: getBooleanByName, result: true
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3084,7 +3084,7 @@ export default class EntryAbility extends UIAbility {
             // An integer refers to the original value.
             // Replace 'app.integer.integer_test' with the actual resource.
             let intValue = this.context.resourceManager.getNumber($r('app.integer.integer_test').id);
-            console.log(`getNumber, int value: ${intValue}`);
+            console.info(`getNumber, int value: ${intValue}`);
             // Print the output result: getNumber, int value: 100
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3096,7 +3096,7 @@ export default class EntryAbility extends UIAbility {
             // A float number without a unit indicates the original value, and a float number with the unit of vp or fp indicates the px value (float number with the unit of vp or fp = original value x densityPixels).
             // Replace 'app.float.float_test' with the actual resource.
             let floatValue = this.context.resourceManager.getNumber($r('app.float.float_test').id);
-            console.log(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+            console.info(`getNumber, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
             // Print the output result: getNumber, densityPixels: 3.25, float value: 99.45000457763672
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3175,7 +3175,7 @@ export default class EntryAbility extends UIAbility {
             // An integer refers to the original value.
             // Replace "integer_test" with the actual resource.
             let intValue = this.context.resourceManager.getNumberByName("integer_test");
-            console.log(`getNumberByName, int value: ${intValue}`);
+            console.info(`getNumberByName, int value: ${intValue}`);
             // Print the output result: getNumberByName, int value: 100
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3187,7 +3187,7 @@ export default class EntryAbility extends UIAbility {
             // A float number without a unit indicates the original value, and a float number with the unit of vp or fp indicates the px value (float number with the unit of vp or fp = original value x densityPixels).
             // Replace "float_test" with the actual resource.
             let floatValue = this.context.resourceManager.getNumberByName("float_test");
-            console.log(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
+            console.info(`getNumberByName, densityPixels: ${display.getDefaultDisplaySync().densityPixels}, float value: ${floatValue}`);
             // Print the output result: getNumberByName, densityPixels: 3.25, float value: 99.45000457763672
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3251,7 +3251,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace 'app.color.test' with the actual resource.
             let colorValue = this.context.resourceManager.getColorSync($r('app.color.test').id);
-            console.log(`getColorSync, result: ${colorValue}`);
+            console.info(`getColorSync, result: ${colorValue}`);
             // Print the output result: getColorSync, result: 4294967295
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3316,7 +3316,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace "test" with the actual resource.
             let colorValue = this.context.resourceManager.getColorByNameSync("test");
-            console.log(`getColorByNameSync, result: ${colorValue}`);
+            console.info(`getColorByNameSync, result: ${colorValue}`);
             // Print the output result: getColorByNameSync, result: 4294967295
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3377,7 +3377,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getColor, result: ${value}`);
+                console.info(`getColor, result: ${value}`);
                 // Print the output result: getColor, result: 4294967295
             }
         });
@@ -3438,7 +3438,7 @@ export default class EntryAbility extends UIAbility {
         // Replace 'app.color.test' with the actual resource.
         this.context.resourceManager.getColor($r('app.color.test').id)
             .then((value: number) => {
-                console.log(`getColor, result: ${value}`);
+                console.info(`getColor, result: ${value}`);
                 // Print the output result: getColor, result: 4294967295
             })
             .catch((error: BusinessError) => {
@@ -3499,7 +3499,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getColorByName failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getColorByName, result: ${value}`);
+                console.info(`getColorByName, result: ${value}`);
                 // Print the output result: getColorByName, result: 4294967295
             }
         });
@@ -3560,7 +3560,7 @@ export default class EntryAbility extends UIAbility {
         // Replace "test" with the actual resource.
         this.context.resourceManager.getColorByName("test")
             .then((value: number) => {
-                console.log(`getColorByName, result: ${value}`);
+                console.info(`getColorByName, result: ${value}`);
                 // Print the output result: getColorByName, result: 4294967295
             })
             .catch((error: BusinessError) => {
@@ -3767,7 +3767,7 @@ export default class EntryAbility extends UIAbility {
             // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
             // Replace "" with the actual file path in the rawfile directory.
             let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
-            console.log(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
+            console.info(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
             // Print the output result: getRawFileListSync, result: ["test.txt"]
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -3820,7 +3820,7 @@ export default class EntryAbility extends UIAbility {
             if (error != null) {
                 console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
             } else {
-                console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
                 // Print the output result: getRawFileList, result: ["test.txt"].
             }
         });
@@ -3873,7 +3873,7 @@ export default class EntryAbility extends UIAbility {
         // Replace "" with the actual file path in the rawfile directory.
         this.context.resourceManager.getRawFileList("")
             .then((value: Array<string>) => {
-                console.log(`getRawFileList, result: ${JSON.stringify(value)}`);
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
                 // Print the output result: getRawFileList, result: ["test.txt"].
             })
             .catch((error: BusinessError) => {
@@ -3887,7 +3887,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFdSync(path: string): RawFileDescriptor
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the file descriptor (fd) of the HAP where the rawfile file in the resources/rawfile directory is located. This API is called in synchronous mode.
 
 > **NOTE**
 >
@@ -3940,7 +3940,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3997,7 +3997,7 @@ export default class EntryAbility extends UIAbility {
 
 getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
-Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -4057,7 +4057,7 @@ export default class EntryAbility extends UIAbility {
 
 closeRawFdSync(path: string): void
 
-Closes the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located.
+Obtains the fd of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4632,7 +4632,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace 'sys.symbol.message' with the actual resource.
             let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
-            console.log(`getSymbol, result: ${symbolValue}`);
+            console.info(`getSymbol, result: ${symbolValue}`);
             // Print the output result: getSymbol, result: 983183
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -4687,7 +4687,7 @@ export default class EntryAbility extends UIAbility {
         try {
             // Replace "message" with the actual resource.
             let symbolValue = this.context.resourceManager.getSymbolByName("message");
-            console.log(`getSymbolByName, result: ${symbolValue}`);
+            console.info(`getSymbolByName, result: ${symbolValue}`);
             // Print the output result: getSymbolByName, result: 983183
         } catch (error) {
             let code = (error as BusinessError).code;
@@ -4741,13 +4741,13 @@ export default class EntryAbility extends UIAbility {
             // Replace "sub" with the actual directory.
             let isRawDir = this.context.resourceManager.isRawDir("sub");
             // Print the output result: sub isRawDir, result: true
-            console.log(`sub isRawDir, result: ${isRawDir}`);
+            console.info(`sub isRawDir, result: ${isRawDir}`);
 
             // If the test.txt file exists in the root directory, the value of isRawDir is false.
             // Replace "test.txt" with the actual resource.
             isRawDir = this.context.resourceManager.isRawDir("test.txt");
             // Print the output result: test.txt isRawDir, result: false
-            console.log(`test.txt isRawDir, result: ${isRawDir}`);
+            console.info(`test.txt isRawDir, result: ${isRawDir}`);
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
@@ -5052,7 +5052,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let testStr = this.context.resourceManager.getStringSync(resource);
-    console.log(`getStringSync, result: ${testStr}`);
+    console.info(`getStringSync, result: ${testStr}`);
     // Print the output result: getStringSync, result: I'm a test string resource.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5125,7 +5125,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
-    console.log(`getStringSync, result: ${testStr}`);
+    console.info(`getStringSync, result: ${testStr}`);
     // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5192,7 +5192,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringValue, result: ${value}`);
+      console.info(`getStringValue, result: ${value}`);
       // Print the output result: getStringValue, result: I'm a test string resource.
     }
   });
@@ -5251,7 +5251,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringValue, result: ${value}`);
+      console.info(`getStringValue, result: ${value}`);
       // Print the output result: getStringValue, result: I'm a test string resource.
     }
   });
@@ -5393,7 +5393,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
-    console.log(`getStringArrayValueSync, result: ${strArray[0]}`);
+    console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
     // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -5464,7 +5464,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
+      console.info(`getStringArrayValue, result: ${value[0]}`);
       // Print the output result: getStringArrayValue, result: I'm one of the array's values.
     }
   });
@@ -5536,7 +5536,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   this.context.resourceManager.getStringArrayValue(resource)
     .then((value: Array<string>) => {
-      console.log(`getStringArrayValue, result: ${value[0]}`);
+      console.info(`getStringArrayValue, result: ${value[0]}`);
       // Print the output result: getStringArrayValue, result: I'm one of the array's values.
     })
     .catch((error: BusinessError) => {
@@ -6445,7 +6445,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
-    console.log(`getIntPluralStringValueSync, result: ${pluralStr}`);
+    console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
     // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6532,7 +6532,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 2.1, the single/plural type is other in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
     let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
-    console.log(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+    console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
     // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6609,7 +6609,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
-    console.log(`getPluralStringValueSync, result: ${pluralValue}`);
+    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
     // Print the output result: getPluralStringValueSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6694,7 +6694,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
-    console.log(`getPluralStringValueSync, result: ${pluralValue}`);
+    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
     // Print the output result: getPluralStringValueSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6771,7 +6771,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     // If num is 1, the single/plural type is one in the English environment.
     // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
     let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
-    console.log(`getPluralStringByNameSync, result: ${pluralValue}`);
+    console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
     // Print the output result: getPluralStringByNameSync, result: 1 apple
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -6846,7 +6846,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
       if (error != null) {
         console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
       } else {
-        console.log(`getPluralStringValue, result: ${value}`);
+        console.info(`getPluralStringValue, result: ${value}`);
         // Print the output result: getPluralStringValue, result: 1 apple
       }
     });
@@ -6920,7 +6920,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
   this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
     .then((value: string) => {
-      console.log(`getPluralStringValue, result: ${value}`);
+      console.info(`getPluralStringValue, result: ${value}`);
       // Print the output result: getPluralStringValue, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -7002,7 +7002,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
       if (error != null) {
         console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
       } else {
-        console.log(`getPluralStringValue, result: ${value}`);
+        console.info(`getPluralStringValue, result: ${value}`);
         // Print the output result: getPluralStringValue, result: 1 apple
       }
     });
@@ -7084,7 +7084,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
   this.context.resourceManager.getPluralStringValue(resource, 1)
     .then((value: string) => {
-      console.log(`getPluralStringValue, result: ${value}`);
+      console.info(`getPluralStringValue, result: ${value}`);
       // Print the output result: getPluralStringValue, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -7157,7 +7157,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getPluralStringByName, result: ${value}`);
+      console.info(`getPluralStringByName, result: ${value}`);
       // Print the output result: getPluralStringByName, result: 1 apple
     }
   });
@@ -7231,7 +7231,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
   this.context.resourceManager.getPluralStringByName("test", 1)
     .then((value: string) => {
-      console.log(`getPluralStringByName, result: ${value}`);
+      console.info(`getPluralStringByName, result: ${value}`);
       // Print the output result: getPluralStringByName, result: 1 apple
     })
     .catch((error: BusinessError) => {
@@ -7380,7 +7380,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let boolTest = this.context.resourceManager.getBoolean(resource);
-    console.log(`getBoolean, result: ${boolTest}`);
+    console.info(`getBoolean, result: ${boolTest}`);
     // Print the output result: getBoolean, result: true
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7452,7 +7452,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 
   try {
     let intValue = this.context.resourceManager.getNumber(resource);
-    console.log(`getNumber, int value: ${intValue}`);
+    console.info(`getNumber, int value: ${intValue}`);
     // Print the output result: getNumber, int value: 100
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7522,7 +7522,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let colorValue = this.context.resourceManager.getColorSync(resource);
-    console.log(`getColorSync, result: ${colorValue}`);
+    console.info(`getColorSync, result: ${colorValue}`);
     // Print the output result: getColorSync, result: 4294967295
   } catch (error) {
     let code = (error as BusinessError).code;
@@ -7589,7 +7589,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
     if (error != null) {
       console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
     } else {
-      console.log(`getColor, result: ${value}`);
+      console.info(`getColor, result: ${value}`);
       // Print the output result: getColor, result: 4294967295
     }
   });
@@ -7657,7 +7657,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   this.context.resourceManager.getColor(resource)
     .then((value: number) => {
-      console.log(`getColor, result: ${value}`);
+      console.info(`getColor, result: ${value}`);
       // Print the output result: getColor, result: 4294967295
     })
     .catch((error: BusinessError) => {
@@ -7714,7 +7714,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
   };
   try {
     let symbolValue = this.context.resourceManager.getSymbol(resource);
-    console.log(`getSymbol, result: ${symbolValue}`);
+    console.info(`getSymbol, result: ${symbolValue}`);
     // Print the output result: getSymbol, result: 983183
   } catch (error) {
     let code = (error as BusinessError).code;
