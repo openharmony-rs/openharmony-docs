@@ -335,7 +335,7 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 801 | Capability not supported. |
 | 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000050 | Internal error. |
 
 **示例:**
 ```ts
