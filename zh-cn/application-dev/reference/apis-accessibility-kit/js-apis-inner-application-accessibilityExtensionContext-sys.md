@@ -167,7 +167,7 @@ let windowId: number = 10;
 let elementId: number = 10;
 
 axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -211,7 +211,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: number = 10;
 
 axContext.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-  console.log(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
 });
@@ -431,7 +431,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.log(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+  console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -475,7 +475,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: number = 0;
 
 axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.log(`Succeeded in get root inactive window element, ${element.bundleName}`);
+  console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -521,11 +521,11 @@ try {
   let windowList = context?.getAccessibilityWindowsSync(displayId);
   if (windowList) {
     for (let window of windowList) {
-      console.log(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+      console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
     }
   }
 } catch (err) {
-  console.log(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
+  console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
 }
 ```
 
@@ -622,7 +622,7 @@ axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) =
   console.info("AccessibilityElement.description: " + element.description)
   // ....
 }).catch((err) => {
-  console.log(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -685,9 +685,9 @@ export default class AccessibilityManager {
       return;
     }
     this.context.getWindowRootElement().then((rootElement: AccessibilityElement) => {
-      console.log(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
+      console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
-      console.log(`Succeeded in enableScreenCurtain`);
+      console.info(`Succeeded in enableScreenCurtain`);
     }).catch((err: BusinessError) => {
       console.error(`failed to enableScreenCurtain, Code is ${err.code}, message is ${err.message}`);
     });
@@ -734,7 +734,7 @@ let condition = 10;
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -779,7 +779,7 @@ let condition = 'location';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -961,14 +961,14 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.log(`element parent id: ${element.parentId}`);
+  console.info(`element parent id: ${element.parentId}`);
   element.getParent().then((parent: AccessibilityElement) => {
-    console.log(`parent element's parent id: ${parent.parentId}`);
+    console.info(`parent element's parent id: ${parent.parentId}`);
   }).catch((err) => {
-    console.log(`getParent failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getParent failed, code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1004,14 +1004,14 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.log(`element childrenIds: ${element.childrenIds}`);
+  console.info(`element childrenIds: ${element.childrenIds}`);
   element.getChildren().then((children: AccessibilityElement[]) => {
-    console.log(`children element's size: ${children.length}`);
+    console.info(`children element's size: ${children.length}`);
   }).catch((err) => {
-    console.log(`getChildren failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getChildren failed, code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1048,11 +1048,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let windows: AccessibilityWindow[] = axContext.getAccessibilityWindowsSync()
 for (let window of windows) {
-  console.log(`window id: ${window.windowId}`);
+  console.info(`window id: ${window.windowId}`);
   window.getRoot().then((root: AccessibilityElement) => {
-    console.log(`root element's componentId: ${root.componentId}`);
+    console.info(`root element's componentId: ${root.componentId}`);
   }).catch((err) => {
-    console.log(`getRoot failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getRoot failed, code: ${err.code}, message: ${err.message}`);
   })
 }
 ```
@@ -1108,12 +1108,12 @@ let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementByContent('connect').then((elements: AccessibilityElement[]) => {
-        console.log("findElementByContent size=" + elements.length)
+        console.info("findElementByContent size=" + elements.length)
     }).catch((err) => {
-        console.log(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1171,12 +1171,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
-        console.log("findElementByFocusDirection UP componentId: " + element.componentId);
+        console.info("findElementByFocusDirection UP componentId: " + element.componentId);
     }).catch((err) => {
-        console.log(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1236,12 +1236,12 @@ let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementsByAccessibilityHintText('location').then((elements: AccessibilityElement[]) => {
-        console.log("findElementsByAccessibilityHintText size=" + elements.length)
+        console.info("findElementsByAccessibilityHintText size=" + elements.length)
     }).catch((err) => {
-        console.log(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
@@ -1299,11 +1299,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementById(0).then((element: AccessibilityElement) => {
-        console.log("findElementById componentId: " + element.componentId);
+        console.info("findElementById componentId: " + element.componentId);
     }).catch((err) => {
-        console.log(`findElementById failed, code: ${err.code}, message: ${err.message}`);
+        console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err) => {
-  console.log(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
