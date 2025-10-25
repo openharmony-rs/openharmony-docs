@@ -30,12 +30,12 @@
 | -------- | -------- |
 | buildLineTypeset(): LineTypeset | 构建行排版器。 | 
 | createLine(startIndex: number, count: number): TextLine | 根据指定的排版区间生成文本行对象。 | 
-| getGlyphRuns(): Array<Run> | 获取文本行的排版单元数组。 | 
-| getGlyphs(): Array<number> | 获取该排版单元中每个字符的字形序号。 | 
+| getGlyphRuns(): Array&lt;Run&gt; | 获取文本行的排版单元数组。 | 
+| getGlyphs(): Array&lt;number&gt; | 获取该排版单元中每个字符的字形序号。 | 
 | getFont(): drawing.Font | 获取排版单元的字体属性对象。 | 
-| getAdvances(range: Range): Array<common2D.Point> | 获取该排版单元指定范围内每个字形的字形宽度数组。 | 
-| static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
-| static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
+| getAdvances(range: Range): Array&lt;common2D.Point&gt; | 获取该排版单元指定范围内每个字形的字形宽度数组。 | 
+| static makeFromRunBuffer(pos: Array&lt;TextBlobRunBuffer&gt;, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
+| static makeFromRunBuffer(pos: Array&lt;TextBlobRunBuffer&gt;, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
 | drawTextBlob(blob: TextBlob, x: number, y: number): void | 绘制一段文字。若构造blob的字体不支持待绘制字符，则该部分字符无法绘制。 | 
 
 
