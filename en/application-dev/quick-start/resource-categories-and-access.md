@@ -244,7 +244,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated.|
+| translatable |  boolean | Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated. |
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
