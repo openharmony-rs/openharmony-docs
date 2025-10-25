@@ -2823,9 +2823,9 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 |
-| passphrase | string | 否 | 否 | 群组密钥。 |
-| interface | string | 否 | 否 | 接口名称。 |
+| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| passphrase | string | 否 | 否 | 群组密钥。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| interface | string | 否 | 否 | 接口名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>|
 | groupName | string | 否 | 否 | 群组名称。 |
 | networkId | number | 否 | 否 | 网络ID。 |
 | frequency | number | 否 | 否 | 群组的频率。 |
