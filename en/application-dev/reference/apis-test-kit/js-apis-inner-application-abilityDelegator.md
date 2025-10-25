@@ -1,22 +1,24 @@
 # AbilityDelegator
 
-The **AbilityDelegator** module provides capabilities of monitoring and managing the lifecycle of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md). You can use the [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instance to obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the onForeground state), start a specified UIAbility, and set the timeout mechanism.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024; @xuzhihao666-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The **AbilityDelegator** module can listen for and manage the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
+
+You can obtain **AbilityDelegator** by calling [getAbilityDelegator](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetabilitydelegator).
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ## Modules to Import
 
-```ts
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-```
-
-## Usage
-
-An **AbilityDelegator** object is obtained by calling **getAbilityDelegator** in **abilityDelegatorRegistry**.
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
@@ -58,7 +60,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
@@ -114,7 +116,7 @@ function onAbilityCreateCallback(data: UIAbility) {
 }
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -162,7 +164,7 @@ function onAbilityCreateCallback(data: UIAbility) {
 }
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
@@ -210,7 +212,7 @@ function onAbilityCreateCallback(data: UIAbility) {
 }
 
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-    abilityName: 'abilityname',
+    abilityName: 'abilityName',
     onAbilityCreate: onAbilityCreateCallback
 };
 
@@ -259,7 +261,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
@@ -306,7 +308,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
@@ -353,12 +355,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
 function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}`);
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -366,7 +368,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
   if (error) {
     console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -408,12 +410,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let timeout = 100;
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
 function onAbilityCreateCallback(data: UIAbility) {
-  console.info('onAbilityCreateCallback');
+  console.info(`onAbilityCreateCallback, data: ${JSON.stringify(data)}.`);
 }
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -421,7 +423,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
   if (error && error.code !== 0) {
     console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -468,7 +470,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityname',
+  abilityName: 'abilityName',
   onAbilityCreate: onAbilityCreateCallback
 };
 
