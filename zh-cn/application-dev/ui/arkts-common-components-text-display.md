@@ -1448,3 +1448,66 @@ struct TextExample {
 ```
 
 ![](figures/text-emoji.png)
+
+### 文本超长时如何展示
+
+**问题现象**
+
+Text组件中内容太多，超出父组件容器[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)的高度，导致显示混乱。如何让文本显示在父组件容器的区域内。
+
+**解决措施一**
+
+Text文本是自动折行的，当没有限制Text高度[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性来指定截断方式。
+
+以下示例展示了限制Text组件不超过三行的场景。
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State message: string = '这是一段超长文本'.repeat(50);
+
+  build() {
+    Column() {
+      Text(this.message)
+        .height('auto')
+        .maxLines(3)
+    }
+    .height(200)
+    .width('80%')
+    .margin('10%')
+    .borderWidth(1)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_too_long_maxLines.png)
+
+**解决措施二**
+
+解决措施一的缺点是有部分文本被裁剪掉，如果开发者想要全部文本可以被阅读，可以把Text组件放在滚动容器[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)里面，通过手势滑动来浏览全部文本。
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State message: string = '这是一段超长文本'.repeat(50);
+
+  build() {
+    Column() {
+      Scroll() {
+        Text(this.message)
+      }
+      .scrollBar(BarState.Off)
+    }
+    .height(200)
+    .width('80%')
+    .margin('10%')
+    .borderWidth(1)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_too_long_scroll.gif)
