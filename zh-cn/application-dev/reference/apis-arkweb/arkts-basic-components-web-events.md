@@ -1812,6 +1812,18 @@ struct Index {
     }
     ```
 
+onVerifyPin(callback: OnVerifyPinCallback): WebAttribute;
+
+通知用户需要进行pin码认证事件。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-i.md#onverifypincallback22) | 是 | 当需要用户进行pin码认证时触发的回调。  |
+
 ## onPermissionRequest<sup>9+</sup>
 
 onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)

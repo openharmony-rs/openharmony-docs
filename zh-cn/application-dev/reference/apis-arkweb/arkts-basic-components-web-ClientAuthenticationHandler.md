@@ -74,6 +74,27 @@ confirm(authUri : string): void
 | SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 | 
 | SSL_SIGN_ECDSA_SECP521R1_SHA512 | 521 | 
 
+## confirm<sup>22+</sup>
+
+confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string): void;
+
+通知Web组件使用指定的凭据与凭证类型(从证书管理模块获得)。
+
+> **说明：**
+>
+> 需要配置权限：ohos.permission.ACCESS_CERT_MANAGER。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填   | 说明    |
+| ------- | ------ | ---- | ------- |
+| identity | string | 是    | 凭据的关键值。 |
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) 或 string | 是    | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭证类型；类型为string时，与接口[confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm9)<sup>9+</sup>功能一致。 |
+
+支持的证书签名算法以及秘钥长度详见下表。
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
