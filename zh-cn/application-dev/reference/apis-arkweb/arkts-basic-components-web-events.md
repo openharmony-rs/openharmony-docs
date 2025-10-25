@@ -1812,6 +1812,7 @@ struct Index {
     }
     ```
 
+## onVerifyPin<sup>22+</sup>
 onVerifyPin(callback: OnVerifyPinCallback): WebAttribute;
 
 通知用户需要进行pin码认证事件。
@@ -1822,7 +1823,7 @@ onVerifyPin(callback: OnVerifyPinCallback): WebAttribute;
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-i.md#onverifypincallback22) | 是 | 当需要用户进行pin码认证时触发的回调。  |
+| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | 是 | 当需要用户进行pin码认证时触发的回调。  |
 
 ## onPermissionRequest<sup>9+</sup>
 
