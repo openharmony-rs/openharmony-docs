@@ -21,6 +21,8 @@
 >
 >  子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
 >  自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
+>  
+>  不影响子组件布局，即不会主动规避子组件内容。
 
 
 ## 接口
