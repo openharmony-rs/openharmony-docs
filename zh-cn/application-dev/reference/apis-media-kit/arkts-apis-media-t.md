@@ -314,7 +314,7 @@ import HashMap from '@ohos.util.HashMap';
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
-  console.log(`Closing resource with handle ${uuid}`);
+  console.info(`Closing resource with handle ${uuid}`);
   // 清除当前uuid相关资源。
   requests.remove(uuid);
 };
