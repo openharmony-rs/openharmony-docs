@@ -889,6 +889,108 @@ try {
 }
 ```
 
+## securityManager.setExternalSourceExtensionPolicy<sup>22+</sup>
+
+setExternalSourceExtensionPolicy(admin: Want, policy: common.ManagedPolicy): void
+
+设置来自外部源的扩展策略。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
+| policy     | [ManagedPolicy](#managedpolicy)                     | 是   | 管控策略。                                                                                                                                                    |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { securityManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+try {
+    securityManager.setExternalSourceExtensionPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+    console.info(`Succeeded in setting managed policy.`);
+} catch(err) {
+    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getExternalSourceExtensionPolicy<sup>22+</sup>
+
+getExternalSourceExtensionPolicy(admin: Want): common.ManagedPolicy
+
+获取已设置的外部源的扩展策略。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                                                                                       
+
+**返回值：**
+
+| 类型                                  | 说明       |
+| ----------------------------------- | -------- |
+| ManagedPolicy | 返回ManagedPolicy枚举类型的外部源扩展策略。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { securityManager, common } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+try {
+    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionPolicy(wantTemp);
+    console.info(`Succeeded in getting managed policy, result : ${result}`);
+} catch(err) {
+    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -952,3 +1054,16 @@ try {
 | DEFAULT | 1  | 默认由用户授予。 |
 | GRANTED | 0  | 已静默授予。 |
 | DENIED | -1  | 已静默拒绝。 |
+
+## ManagedPolicy
+
+管理策略。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| DEFAULT | 0  | 默认，表示无管控策略。 |
+| DISALLOW | 1  | 禁用设备的功能 |
+| FORCE_OPEN | 2  | 强制打开设备的功能 |
+
