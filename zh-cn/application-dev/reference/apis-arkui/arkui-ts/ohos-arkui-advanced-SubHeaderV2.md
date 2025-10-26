@@ -155,7 +155,7 @@ select内容以及事件。
 | options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] |  否  | 否  | 下拉选项内容。<br/>装饰器类型：@Trace                                                                   |
 | selectedIndex | number                                                           |  否  | 是  | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。<br/>装饰器类型：@Trace |
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：'' 。从API version 20开始，支持Resource类型。<br/>装饰器类型：@Trace                             |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  否  | 是  | @Trace | 下拉菜单选中某一项的回调。 <br />默认值：undefined<br/>装饰器类型：@Trace                                               |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  否  | 是  | 下拉菜单选中某一项的回调。 <br />默认值：undefined<br/>装饰器类型：@Trace                                               |
 | defaultFocus | boolean |  否  | 是  |下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace                                  |
 
 ### constructor
