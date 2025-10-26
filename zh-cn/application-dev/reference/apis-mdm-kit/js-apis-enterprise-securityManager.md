@@ -891,9 +891,9 @@ try {
 
 ## securityManager.setExternalSourceExtensionPolicy<sup>22+</sup>
 
-setExternalSourceExtensionPolicy(admin: Want, policy: common.ManagedPolicy): void
+setExternalSourceExtensionPolicy(admin: Want, policy: ManagedPolicy): void
 
-设置来自外部源的扩展策略。
+设置来自外部源扩展的管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -939,9 +939,9 @@ try {
 
 ## securityManager.getExternalSourceExtensionPolicy<sup>22+</sup>
 
-getExternalSourceExtensionPolicy(admin: Want): common.ManagedPolicy
+getExternalSourceExtensionPolicy(admin: Want): ManagedPolicy
 
-获取已设置的外部源的扩展策略。
+获取已设置的外部源扩展的管控策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -959,7 +959,7 @@ getExternalSourceExtensionPolicy(admin: Want): common.ManagedPolicy
 
 | 类型                                  | 说明       |
 | ----------------------------------- | -------- |
-| ManagedPolicy | 返回ManagedPolicy枚举类型的外部源扩展策略。 |
+| ManagedPolicy | 返回ManagedPolicy枚举类型的外部源扩展管控策略。 |
 
 **错误码**：
 
