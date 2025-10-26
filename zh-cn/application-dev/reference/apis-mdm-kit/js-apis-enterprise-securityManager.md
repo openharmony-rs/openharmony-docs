@@ -889,9 +889,9 @@ try {
 }
 ```
 
-## securityManager.setExternalSourceExtensionPolicy<sup>22+</sup>
+## securityManager.setExternalSourceExtensionsPolicy<sup>22+</sup>
 
-setExternalSourceExtensionPolicy(admin: Want, policy: ManagedPolicy): void
+setExternalSourceExtensionsPolicy(admin: Want, policy: ManagedPolicy): void
 
 设置来自外部源扩展的管控策略。
 
@@ -930,16 +930,16 @@ let wantTemp: Want = {
   abilityName: 'EntryAbility'
 };
 try {
-    securityManager.setExternalSourceExtensionPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
     console.info(`Succeeded in setting managed policy.`);
 } catch(err) {
     console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-## securityManager.getExternalSourceExtensionPolicy<sup>22+</sup>
+## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
 
-getExternalSourceExtensionPolicy(admin: Want): ManagedPolicy
+getExternalSourceExtensionsPolicy(admin: Want): ManagedPolicy
 
 获取已设置的外部源扩展的管控策略。
 
@@ -984,7 +984,7 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionPolicy(wantTemp);
+    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
     console.info(`Succeeded in getting managed policy, result : ${result}`);
 } catch(err) {
     console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
