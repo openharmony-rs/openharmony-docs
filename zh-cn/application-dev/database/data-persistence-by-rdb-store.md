@@ -73,92 +73,93 @@
 
    Stage模型示例：
      
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
    import { relationalStore } from '@kit.ArkData'; // 导入模块
-   import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { window } from '@kit.ArkUI';
-
-   // 此处示例在Ability中实现，使用者也可以在其他合理场景中使用
-   export default class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage) {
-       // 若希望使用分词器，可调用isTokenizerSupported检查希望使用的分词器是否支持当前平台。
-       let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
-       let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
-       if (!tokenTypeSupported) {
-         console.error(`ICU_TOKENIZER is not supported on this platform.`);
-       }
-       const STORE_CONFIG: relationalStore.StoreConfig = {
-         // 数据库文件名
-         name: 'RdbTest.db',
-         // 数据库安全级别
-         securityLevel: relationalStore.SecurityLevel.S3,
-         // 可选参数，指定数据库是否加密，默认不加密
-         encrypt: false,
-         // 可选参数，数据库自定义路径。默认在本应用沙箱目录下创建RdbStore实例。
-         customDir: 'customDir/subCustomDir',
-         // 可选参数，指定数据库是否以只读方式打开。默认为false，表示数据库可读可写。为true时，只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。
-         isReadOnly: false,
-         // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
-         tokenizer: tokenType
-       };
-
-       // 判断数据库版本，如果不匹配则需进行升降级操作
-       // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
-       // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
-       const SQL_CREATE_TABLE =
-         'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT)';
-
-       relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err, store) => {
-         if (err) {
-           console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-           return;
-         }
-         console.info('Succeeded in getting RdbStore.');
-         let storeVersion = store.version;
-         // 当数据库创建时，数据库默认版本为0
-         if (storeVersion === 0) {
-           try {
-             await store.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
-             storeVersion = 3;
-             // 设置数据库的版本，入参为大于0的整数
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-
-         // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
-         // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
-         if (storeVersion === 1) {
-           // version = 1：表结构：EMPLOYEE (NAME, SALARY, CODES, ADDRESS) => version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
-           try {
-             await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
-             console.info("Upgrade store version from 1 to 2 success.")
-             storeVersion = 2;
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-
-         // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
-         if (storeVersion === 2) {
-           // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS) => version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES)
-           try {
-             await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
-             storeVersion = 3;
-             console.info("Upgrade store version from 2 to 3 success.")
-           } catch (e) {
-             const err = e as BusinessError;
-             console.error(`Failed to execute sql. Code:${err.code}, message:${err.message}`);
-           }
-         }
-         store.version = storeVersion;
-         // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
-       });
-     }
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0x0000;
+   
+   let store: relationalStore.RdbStore | undefined = undefined;
+   let context = getContext();
+   let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
+   let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
+   if (!tokenTypeSupported) {
+     hilog.error(DOMAIN, 'rdbDataPersistence', `ICU_TOKENIZER is not supported on this platform.`);
    }
+   const STORE_CONFIG: relationalStore.StoreConfig = {
+     // 数据库文件名
+     name: 'RdbTest.db',
+     // 数据库安全级别
+     securityLevel: relationalStore.SecurityLevel.S3,
+     // 可选参数，指定数据库是否加密，默认不加密
+     encrypt: false,
+     // 可选参数，数据库自定义路径。默认在本应用沙箱目录下创建RdbStore实例。
+     customDir: 'customDir/subCustomDir',
+     // 可选参数，指定数据库是否以只读方式打开。默认为false，表示数据库可读可写。为true时，只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。
+     isReadOnly: false,
+     // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
+     tokenizer: tokenType
+   };
+   // [StartExclude persistence_get_store]
+   export async function rdbDataPersistence() {
+     // [EndExclude persistence_get_store]
+     // 判断数据库版本，如果不匹配则需进行升降级操作
+     // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+     // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
+     const SQL_CREATE_TABLE =
+       'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT)';
+   
+     relationalStore.getRdbStore(context, STORE_CONFIG, async (err, store) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
+       let storeVersion = store.version;
+       // 当数据库创建时，数据库默认版本为0
+       if (storeVersion === 0) {
+         try {
+           await store.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
+           storeVersion = 3;
+           // 设置数据库的版本，入参为大于0的整数
+         } catch (e) {
+           const err = e as BusinessError;
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         }
+       }
+   
+       // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
+       // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
+       if (storeVersion === 1) {
+         // version = 1：表结构：EMPLOYEE (NAME, SALARY, CODES, ADDRESS)
+         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
+         try {
+           await store.execute('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER');
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.')
+           storeVersion = 2;
+         } catch (e) {
+           const err = e as BusinessError;
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         }
+       }
+   
+       // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
+       if (storeVersion === 2) {
+         // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
+         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES)
+         try {
+           await store.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
+           storeVersion = 3;
+           hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
+         } catch (e) {
+           const err = e as BusinessError;
+           hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         }
+       }
+       store.version = storeVersion;
+       // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
+     });
    ```
 
    FA模型示例：
@@ -240,8 +241,9 @@
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
 2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
-     
+    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 插入数据
    let value1 = 'Lisa';
    let value2 = 18;
    let value3 = 100.5;
@@ -273,8 +275,9 @@
 3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
-
+    <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 修改数据、删除数据
    let value6 = 'Rose';
    let value7 = 22;
    let value8 = 200.5;
@@ -318,8 +321,9 @@
 4. 根据谓词指定的查询条件查找数据。
 
    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
-
+    <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 查找数据
    let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
    predicates2.equalTo('NAME', 'Rose');
    if (store !== undefined) {
@@ -351,8 +355,9 @@
    当前RDB还支持进行FTS全文检索，可以根据中文或者英文进行文本检索，针对中文分词器支持ICU分词器。
 
    以中文关键字检索为例：
-
+    <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 中文关键字检索，查找数据
    if (store !== undefined) {
      // 创建全文检索表
      const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
@@ -385,8 +390,9 @@
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
    具体信息请参见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
-
+    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 使用事务对象执行数据的插入、删除和更新操作
    if (store !== undefined) {
      // 创建事务对象
      try {
@@ -443,8 +449,9 @@
 6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
 
    此处以手动备份为例：
-
+   <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 在同路径下备份数据库
    if (store !== undefined) {
      // "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。也可指定路径：customDir + "backup.db"
      (store as relationalStore.RdbStore).backup("Backup.db", (err: BusinessError) => {
@@ -460,8 +467,9 @@
 7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
 
    此处以调用[restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
-
+    <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 备份数据库中恢复数据
    if (store !== undefined) {
      (store as relationalStore.RdbStore).restore("Backup.db", (err: BusinessError) => {
        if (err) {
@@ -478,8 +486,9 @@
    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
    Stage模型示例：
-
+    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 删除数据库
    relationalStore.deleteRdbStore(this.context, 'RdbTest.db', (err: BusinessError) => {
     if (err) {
        console.error(`Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
