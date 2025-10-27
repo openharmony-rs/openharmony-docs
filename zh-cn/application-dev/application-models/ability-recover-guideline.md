@@ -46,6 +46,57 @@
 
 <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onSaveState]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
+    this.context.setRestoreEnabled(true);
+    // ···
+  }
+
+// ···
+  // [EndExclude onSaveState]
+}
+```
+
 开发者主动保存数据，在UIAbility启动时恢复。
 
 <!-- @[onSaveState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onCreate');
+    this.context.setRestoreEnabled(true);
+    // [StartExclude onCreate]
+    if (want && want.parameters) {
+      let recoveryMyData = want.parameters['myData'];
+    }
+    // [EndExclude onCreate]
+  }
+
+  // [StartExclude onCreate]
+  onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>): AbilityConstant.OnSaveResult {
+    // 保存应用数据。
+    hilog.info(DOMAIN, 'EntryAbility', '[Demo] EntryAbility onSaveState');
+    wantParam['myData'] = 'my1234567';
+    return AbilityConstant.OnSaveResult.ALL_AGREE;
+  }
+
+// ···
+}
+// [End onCreate]
+```

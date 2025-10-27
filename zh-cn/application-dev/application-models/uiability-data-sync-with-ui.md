@@ -24,9 +24,98 @@
 
 <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onDestroy]
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onDestroy]
+// ···
+
+const DOMAIN = 0x0000;
+const TAG: string = '[EventAbility]';
+// [EndExclude onDestroy]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onDestroy]
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 获取eventHub
+    let eventhub = this.context.eventHub;
+    // 执行订阅操作
+    eventhub.on('event1', this.eventFunc);
+    eventhub.on('event1', (data: string) => {
+      // 触发事件，完成相应的业务操作
+    });
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  eventFunc(argOne: object, argTwo: object): void {
+    hilog.info(DOMAIN, TAG, '1. ' + `${argOne}, ${argTwo}`);
+    return;
+  }
+  // [EndExclude onDestroy]
+
+// ···
+  // [EndExclude onDestroy]
+}
+```
+
 2. 在UI中通过[eventHub.emit()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubemit)方法触发该事件，在触发事件的同时，根据需要传入参数信息。
 
 <!-- @[EventHubPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/pages/EventHubPage.ets) -->
+
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Page_EventHub {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  eventHubFunc(): void {
+    // 不带参数触发自定义“event1”事件
+    this.context.eventHub.emit('event1');
+    // 带1个参数触发自定义“event1”事件
+    this.context.eventHub.emit('event1', 1);
+    // 带2个参数触发自定义“event1”事件
+    this.context.eventHub.emit('event1', 2, 'test');
+    // 开发者可以根据实际的业务场景设计事件传递的参数
+  }
+
+  build() {
+    Column() {
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            this.eventHubFunc();
+            this.getUIContext().getPromptAction().showToast({
+              message: 'EventHubFuncA'
+            });
+          })
+        // ···
+        }
+
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            this.context.eventHub.off('event1');
+            this.getUIContext().getPromptAction().showToast({
+              message: 'EventHubFuncB'
+            });
+          })
+        // ···
+        }
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
 
 3. 在UIAbility的注册事件回调中可以得到对应的触发事件结果，运行日志结果如下所示。
 
@@ -39,6 +128,25 @@
 4. 在自定义事件“event1”使用完成后，可以根据需要调用[eventHub.off()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhuboff)方法取消该事件的订阅。
 
 <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
+
+export default class EntryAbility extends UIAbility {
+// ···
+
+  // [StartExclude onCreate]
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+    this.context.eventHub.off('event1');
+  }
+
+// ···
+}
+// [End onCreate]
+```
 
 ## 使用AppStorage/LocalStorage进行数据同步
 

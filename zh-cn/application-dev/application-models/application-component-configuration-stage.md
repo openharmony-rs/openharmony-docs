@@ -37,3 +37,12 @@ Module访问系统或其他应用受保护部分所需的权限信息需要在[m
 
 
 <!-- @[app_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/AppScope/app.json5) -->
+
+``` JSON5
+{
+  "app": {
+    "startMode": "mainTask",
+    // ···
+  }
+}
+```
