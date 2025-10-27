@@ -50,8 +50,10 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 开发步骤如下:
 
 1. 在main > ets > pages文件夹下编写clickToAfter.ets页面代码，作为被测示例demo。
-    ```ts
+    
     <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets) -->
+    
+    ```TypeScript
     @Entry
     @Component
     struct Index {
@@ -80,9 +82,12 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
         }
     }
     ```
+    
 2. 在ohosTest > ets > test文件夹下新建测试文件，并编写具体测试代码。
-    ```ts
+    
     <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
+    
+    ```TypeScript
     import { describe, it, expect, Level } from '@ohos/hypium';
     // 导入测试依赖kit
     import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
@@ -128,9 +133,9 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
 
 如下给出控件查找与操作的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
-  import { describe, it, TestType, Size, Level } from '@ohos/hypium';
+
+  ```TypeScript
   // 导入测试依赖kit
   import { Driver, Component, ON, On } from '@kit.TestKit';
 
@@ -173,8 +178,9 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 
 如下给出触摸屏坐标级的手指操作模拟的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, PointerMatrix, UiDirection } from '@kit.TestKit';
@@ -219,8 +225,9 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 
 如下给出页面加载等待的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets) -->
+
+  ```TypeScript
   import { describe, it, Level, TestType, Size } from '@ohos/hypium';
   // 导入测试依赖kit
   import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
@@ -251,8 +258,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 如下给出文本输入的示例，包括基于控件的文本输入和基于坐标的文本输入两种方式。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, ON } from '@kit.TestKit';
@@ -322,8 +330,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 如下给出屏幕截图的示例，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。多屏场景下，期望对指定屏幕做截图操作时，可以调用display模块的接口<!--RP8-->[获取Display对象](../displaymanager/screenProperty-guideline.md#获取display对象)<!--RP8End-->，实现<!--RP9-->[屏幕相关属性获取](../displaymanager/screenProperty-guideline.md#获取屏幕相关属性)<!--RP9End-->。
 
-  ```ts
 <!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -361,8 +370,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 如下给出UI界面事件的监听的示例，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UIElementInfo } from '@kit.TestKit';
@@ -388,8 +398,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 如下给出键鼠模拟操作，包括键盘按键、组合键输入操作的示例，包括鼠标点击、移动、拖拽操作和键鼠组合操作等。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, MouseButton } from '@kit.TestKit';
@@ -432,8 +443,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ### 窗口查找与操作
 如下给出窗口查找和操作的示例，根据窗口属性查找窗口，并进行窗口最小化等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -460,8 +472,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ### 模拟触摸板操作
 如下给出触摸板模拟操作的示例，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver, UiDirection } from '@kit.TestKit';
@@ -491,8 +504,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ### 模拟手写笔操作
 如下给出手写笔模拟操作，包括点击、滑动等操作的示例，支持设置操作时的压力值大小。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -518,8 +532,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ### 模拟表冠操作
 如下给出表冠模拟操作的示例，包括表冠的顺/逆时针旋转。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
 <!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level, expect } from '@ohos/hypium';
   // 导入测试依赖kit
   import { Driver } from '@kit.TestKit';
@@ -548,8 +563,9 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 ### 屏幕显示操作
 如下给出屏幕显示操作的示例，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-  ```ts
-  <!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) -->
+<!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) -->
+
+  ```TypeScript
   import { describe, it, TestType, Size, Level } from '@ohos/hypium';
   // 导入测试依赖kit
   import { DisplayRotation, Driver, Point } from '@kit.TestKit';
