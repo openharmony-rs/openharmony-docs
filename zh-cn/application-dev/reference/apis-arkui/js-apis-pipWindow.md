@@ -210,7 +210,6 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
