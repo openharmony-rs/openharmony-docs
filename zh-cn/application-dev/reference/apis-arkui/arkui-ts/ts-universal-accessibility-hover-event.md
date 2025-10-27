@@ -4,12 +4,17 @@
 
 >  **说明：**
 >
+>  -  本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
 >  - 目前仅支持通过开启无障碍模式触发。
 
 ## onAccessibilityHover
 
-onAccessibilityHover(callback: AccessibilityCallback): T
+ArkTS-Dyn: onAccessibilityHover(callback: AccessibilityCallback): T
+
+ArkTS-Sta: onAccessibilityHover(callback: AccessibilityCallback | undefined): this
 
 开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。
 
@@ -17,17 +22,21 @@ onAccessibilityHover(callback: AccessibilityCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [AccessibilityCallback](#accessibilitycallback) | 是   |  提供开启无障碍模式后的无障碍悬浮回调事件，当开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。 |
+| callback      | ArkTS-Dyn: [AccessibilityCallback](#accessibilitycallback)<br/> ArkTS-Sta: [AccessibilityCallback](#accessibilitycallback) \| undefined | 是   |  提供开启无障碍模式后的无障碍悬浮回调事件，当开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## AccessibilityCallback
 
