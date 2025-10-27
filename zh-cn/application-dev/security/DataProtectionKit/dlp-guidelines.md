@@ -318,7 +318,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 10. 获取DLP文件保留沙箱记录。<br>
 // 使用该接口需要由demo应用打开DLP文件
 
-   <!-- @[dlp_getRetentionSandboxList] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 11. 设置沙箱应用配置信息。
 
