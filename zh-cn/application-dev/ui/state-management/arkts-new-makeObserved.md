@@ -78,18 +78,20 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   - UIUtils.makeObserved的入参如果是@Observed装饰的class的实例，会直接返回自身。
   
   因此`message2`的初始值不是makeObserved返回的代理对象，而是@State装饰的`this.message`。
-  ```ts
+  <!-- @[UI_will_not_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page1.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
   class Person {
-    age: number = 10;
+    public age: number = 10;
   }
   class Info {
-    id: number = 0;
-    person: Person = new Person();
+    public id: number = 0;
+    public person: Person = new Person();
   }
   @Entry
   @Component
-  struct Index {
+  struct Page1 {
     @State message: Info = new Info();
     @State message2: Info = UIUtils.makeObserved(this.message); // 不会抛异常
     build() {
@@ -103,24 +105,26 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
     }
   }
   ```
+
 ### makeObserved仅对入参对象进行深度观察
 
  - `message`被[@Local](./arkts-new-local.md)装饰，本身具有观察自身赋值的能力。其初始值为makeObserved的返回值，具有深度观察能力。需要注意，makeObserved仅对`message`进行深度观察，而`message`自身赋值的变化，则是由@Local观察的。
  - 点击`change id`可以触发UI刷新。
  - 点击`change Info`，将`this.message`重新赋值为不可观察数据后，再次点击`change id`，无法触发UI刷新。
  - 再次点击`change Info1`，将`this.message`重新赋值为可观察数据，再次点击`change id`，可以触发UI刷新。
-
-  ```ts
+  <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
   class Info {
-    id: number = 0;
+    public id: number = 0;
     constructor(id: number) {
       this.id = id;
     }
   }
   @Entry
   @ComponentV2
-  struct Index {
+  struct Page2 {
     @Local message: Info = UIUtils.makeObserved(new Info(20));
     build() {
       Column() {
@@ -137,6 +141,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
     }
   }
   ```
+
 
 ## 支持类型和观察变化
 
@@ -173,31 +178,35 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 - 将数据从主线程传递回子线程时，仅传递不可观察的数据。makeObserved的返回值不可直接传给子线程。
 
 例子如下：
+<!-- @[SendableData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/Model/modelView.ets) -->
 
-```ts
-// SendableData.ets
+``` TypeScript
 @Sendable
 export class SendableData  {
-  name: string = 'Tom';
-  age: number = 20;
-  gender: number = 1;
+  public name: string = 'Tom';
+  public age: number = 20;
+  public gender: number = 1;
   // ....更多其他属性
-  likes: number = 1;
-  follow: boolean = false;
+  public likes: number = 1;
+  public follow: boolean = false;
 }
 ```
 
-```ts
-import { taskpool } from '@kit.ArkTS';
-import { SendableData } from './SendableData';
-import { UIUtils } from '@kit.ArkUI';
+<!-- @[function threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->
 
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+import { SendableData } from '../Model/modelView';
+import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Concurrent
 function threadGetData(param: string): SendableData {
+  const DOMAIN = 0xF811;
+  const TAG = '[Sample_MakeObserved]';
   // 在子线程处理数据
   let ret = new SendableData();
-  console.info(`Concurrent threadGetData, param ${param}`);
+  hilog.info(DOMAIN, TAG, `Concurrent threadGetData, param ${param}`);
   ret.name = param + '-o';
   ret.age = Math.floor(Math.random() * 40);
   ret.likes = Math.floor(Math.random() * 100);
@@ -206,9 +215,10 @@ function threadGetData(param: string): SendableData {
 
 @Entry
 @ComponentV2
-struct ObservedSendableTest {
-  // 通过makeObserved给普通对象或是Sendable对象添加可观察能力
+struct Page3 {
+  // 通过makeObserved给普通对象或是SendableData对象添加可观察能力
   @Local send: SendableData = UIUtils.makeObserved(new SendableData());
+
   build() {
     Column() {
       Text(this.send.name)
@@ -228,6 +238,7 @@ struct ObservedSendableTest {
   }
 }
 ```
+
 需要注意：数据的构建和处理可以在子线程中完成，但有观察能力的数据不能传给子线程，只有在主线程里才可以操作可观察的数据。所以上述例子中只是将`this.send`的属性`name`传给子线程操作。
 
 ### makeObserved和collections.Array/Set/Map配合使用
@@ -241,15 +252,16 @@ collections.Array可以触发UI刷新的API有：
 - 改变数组项本身：sort、fill
 
 其他API不会改变原始数组，所以不会触发UI刷新。
+<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
 
-```ts
+``` TypeScript
 import { collections } from '@kit.ArkTS';
 import { UIUtils } from '@kit.ArkUI';
 
 @Sendable
 class Info {
-  id: number = 0;
-  name: string = 'cc';
+  public id: number = 0;
+  public name: string = 'cc';
 
   constructor(id: number) {
     this.id = id;
@@ -259,7 +271,7 @@ class Info {
 
 @Entry
 @ComponentV2
-struct Index {
+struct Page4 {
   scroller: Scroller = new Scroller();
   @Local arrCollect: collections.Array<Info> =
     UIUtils.makeObserved(new collections.Array<Info>(new Info(1), new Info(2)));
@@ -331,7 +343,7 @@ struct Index {
 
           /*****************************不会改变数组本身API***************************/
           // slice：返回新的数组，根据start end对原数组的拷贝，不会改变原数组，所以直接调用slice不会触发UI刷新
-          // 可以构建用例为返回的浅拷贝的数据赋值给this.arrCollect,需要注意这里依然要调用makeObserved，否则this.arr被普通变量赋值后，会丧失观察能力
+          // 可以构建用例为返回的浅拷贝的数据赋值给this.arrCollect,需要注意这里依然要调用makeObserved，否则this.arrCollect被普通变量赋值后，会丧失观察能力
           Button('slice').onClick(() => {
             this.arrCollect = UIUtils.makeObserved(this.arrCollect.slice(0, 1));
           })
@@ -353,7 +365,7 @@ struct Index {
             this.arrCollect = UIUtils.makeObserved(this.arrCollect.concat(array1));
           })
         }.height('200%')
-      }.height('60%')
+      }.height('100%')
     }
     .height('100%')
     .width('100%')
@@ -361,16 +373,19 @@ struct Index {
 }
 ```
 
+
 **collections.Map**
 
 collections.Map可以触发UI刷新的API有：set、clear、delete。
-```ts
+<!-- @[foreach_mapCollect_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets) -->
+
+``` TypeScript
 import { collections } from '@kit.ArkTS';
 import { UIUtils } from '@kit.ArkUI';
 
 @Sendable
 class Info {
-  id: number = 0;
+  public id: number = 0;
 
   constructor(id: number) {
     this.id = id;
@@ -380,7 +395,7 @@ class Info {
 
 @Entry
 @ComponentV2
-struct CollectionMap {
+struct Page5 {
   mapCollect: collections.Map<string, Info> = UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
 
   build() {
@@ -416,16 +431,23 @@ struct CollectionMap {
 }
 ```
 
+
 **collections.Set**
 
 collections.Set可以触发UI刷新的API有：add、clear、delete。
+<!-- @[Array_rom_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page6.ets) -->
 
-```ts
+``` TypeScript
 import { collections } from '@kit.ArkTS';
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+const TAG = '[Sample_MakeObserved]';
+
 @Sendable
 class Info {
-  id: number = 0;
+  public id: number = 0;
 
   constructor(id: number) {
     this.id = id;
@@ -435,7 +457,7 @@ class Info {
 
 @Entry
 @ComponentV2
-struct Index {
+struct Page6 {
   set: collections.Set<Info> = UIUtils.makeObserved(new collections.Set<Info>([new Info(10), new Info(20)]));
 
   build() {
@@ -451,7 +473,7 @@ struct Index {
       // add
       Button('add').onClick(() => {
         this.set.add(new Info(30));
-        console.info('size:' + this.set.size);
+        hilog.info(DOMAIN, TAG, ('size:' + this.set.size));
       })
       // delete
       Button('delete').onClick(() => {
@@ -469,15 +491,17 @@ struct Index {
 }
 ```
 
+
 ### makeObserved的入参为JSON.parse的返回值
 JSON.parse返回Object，无法使用@Trace装饰其属性，可以使用makeObserved使其变为可观察数据。
+<!-- @[makeObserved_JSON.parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page7.ets) -->
 
-```ts
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
 import { UIUtils } from '@kit.ArkUI';
 
 class Info {
-  id: number = 0;
+  public id: number = 0;
 
   constructor(id: number) {
     this.id = id;
@@ -491,18 +515,22 @@ let test2JsonStr: string = JSON.stringify(test2);
 
 @Entry
 @ComponentV2
-struct Index {
-  message: Record<string, number> = UIUtils.makeObserved<Record<string, number>>(JSON.parse(testJsonStr) as Record<string, number>);
-  message2: Record<string, Info> = UIUtils.makeObserved<Record<string, Info>>(JSON.parse(test2JsonStr) as Record<string, Info>);
+struct Page7 {
+  message: Record<string, number> = 
+        UIUtils.makeObserved<Record<string, number>>(JSON.parse(testJsonStr) as Record<string, number>);
+  message2: Record<string, Info> = 
+        UIUtils.makeObserved<Record<string, Info>>(JSON.parse(test2JsonStr) as Record<string, Info>);
 
   build() {
     Column() {
       Text(`${this.message.a}`)
+        .id('textId1')
         .fontSize(50)
         .onClick(() => {
           this.message.a++;
         })
       Text(`${this.message2.a.id}`)
+        .id('textId2')
         .fontSize(50)
         .onClick(() => {
           this.message2.a.id++;
@@ -514,16 +542,23 @@ struct Index {
 }
 ```
 
+
 ### makeObserved和V2装饰器配合使用
 makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-Computed.md)，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
 
 例子如下：
-```ts
+<!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+const TAG = '[Sample_MakeObserved]';
 
 class Info {
-  id: number = 0;
-  age: number = 20;
+  public id: number = 0;
+  public age: number = 20;
 
   constructor(id: number) {
     this.id = id;
@@ -532,29 +567,31 @@ class Info {
 
 @Entry
 @ComponentV2
-struct Index {
+struct Page8 {
   @Local message: Info = UIUtils.makeObserved(new Info(20));
 
   @Monitor('message.id')
   onStrChange(monitor: IMonitor) {
-    console.info(`name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(DOMAIN, TAG, `name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   @Computed
   get ageId() {
-    console.info('---------Computed----------');
+    hilog.info(DOMAIN, TAG, '---------Computed----------');
     return this.message.id + ' ' + this.message.age;
   }
 
   build() {
     Column() {
       Text(`id: ${this.message.id}`)
+        .id('textIdMessage')
         .fontSize(50)
         .onClick(() => {
           this.message.id++;
         })
 
       Text(`age: ${this.message.age}`)
+        .id('textAgeMessageAge')
         .fontSize(50)
         .onClick(() => {
           this.message.age++;
@@ -563,7 +600,9 @@ struct Index {
       Text(`Computed age+id: ${this.ageId}`)
         .fontSize(50)
 
-      Button('change Info').onClick(() => {
+      Button('change Info')
+        .id('buttonChangeInfo')
+        .onClick(() => {
         this.message = UIUtils.makeObserved(new Info(200));
       })
 
@@ -583,13 +622,15 @@ struct Child {
 }
 ```
 
+
 ### makeObserved在@Component内使用
 makeObserved不能和V1的状态变量装饰器一起使用，但可以在@Component装饰的自定义组件里使用。
+<!-- @[makeObserved_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page9.ets) -->
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 class Info {
-  id: number = 0;
+  public id: number = 0;
 
   constructor(id: number) {
     this.id = id;
@@ -599,13 +640,14 @@ class Info {
 
 @Entry
 @Component
-struct Index {
+struct Page9 {
   // 如果和@State一起使用会抛出运行时异常
   message: Info = UIUtils.makeObserved(new Info(20));
 
   build() {
     RelativeContainer() {
       Text(`${this.message.id}`)
+        .id('textNumber')
         .onClick(() => {
           this.message.id++;
         })
@@ -616,6 +658,7 @@ struct Index {
 }
 ```
 
+
 ## 常见问题
 ### getTarget后的数据可以正常赋值，但是无法触发UI刷新
 [getTarget](./arkts-new-getTarget.md)可以获取状态管理框架代理前的原始对象。
@@ -625,20 +668,22 @@ makeObserved封装的观察对象，可以通过getTarget获取到其原始对�
 如下面例子：
 1. 先点击第一个Text组件，通过getTarget获取其原始对象，此时修改原始对象的属性不会触发UI刷新，但数据会正常赋值。
 2. 再点击第二个Text组件，此时修改`this.observedObj`的属性会触发UI刷新，Text显示21。
+<!-- @[getTarget_observedObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page10.ets) -->
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 class Info {
-  id: number = 0;
+  public id: number = 0;
 }
 
 @Entry
 @Component
-struct Index {
+struct Page10 {
   observedObj: Info = UIUtils.makeObserved(new Info());
   build() {
     Column() {
       Text(`${this.observedObj.id}`)
+        .id('textobservedObj1')
         .fontSize(50)
         .onClick(() => {
           // 通过getTarget获取其原始对象，将this.observedObj赋值为不可观察的数据
@@ -648,6 +693,7 @@ struct Index {
         })
 
       Text(`${this.observedObj.id}`)
+        .id('textobservedObj2')
         .fontSize(50)
         .onClick(() => {
           // 触发UI刷新，Text显示21
