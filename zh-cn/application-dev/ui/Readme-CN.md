@@ -23,7 +23,8 @@
       - [ArkTS-Sta使用ArkTS-Dyn状态管理V2组件内互操作](arkts-sta-interop-dyn-statemanagement-v2.md)
       - [ArkTS-Dyn使用ArkTS-Sta状态管理V2组件内互操作](arkts-dyn-interop-sta-statemanagement-v2.md)
       - [ArkTS-Sta与ArkTS-Dyn应用间V2状态存储互操作](arkts-sta-interop-dyn-storages-v2.md)
-      - [ArkTS-Sta与ArkTS-Dyn@ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
+      - [ArkTS-Sta使用ArkTS-Dyn @ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
+      - [ArkTS-Dyn使用ArkTS-Sta @ObservedV2数据和@Trace数据互操作](arkts-dyn-interop-sta-observedv2.md)
     - 状态管理V1V2混用互操作
     - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
     - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](arkts-dyn-partial-features-using-sta.md)
