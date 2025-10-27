@@ -33,6 +33,17 @@
 
 <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
 
+``` TypeScript
+class Sample {
+  private data: number = 0;
+}
+@ObservedV2
+class Info {
+  @Type(Sample)
+  @Trace public sample: Sample = new Sample(); // 正确用法
+}
+```
+
 2. 不支持collections.Set、collections.Map等类型。
 
 3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
@@ -46,4 +57,40 @@
 ### 持久化数据
 
 <!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { PersistenceV2, Type } from '@kit.ArkUI';
+
+@ObservedV2
+class SampleChild {
+  @Trace childNumber: number = 1;
+}
+
+@ObservedV2
+class Sample {
+  // 对于复杂对象需要@Type修饰，确保反序列化成功，去掉@Type会反序列化值失败。
+  @Type(SampleChild)
+  // 对于没有初值的类属性，经过@Type修饰后，需要手动保存，否则持久化失败。
+  // 无法使用@Type修饰的类属性，必须要有初值才能持久化。
+  @Trace sampleChild?: SampleChild = undefined;
+}
+
+@Entry
+@ComponentV2
+struct TestCase {
+  @Local sample: Sample = PersistenceV2.connect(Sample, () => new Sample)!;
+
+  build() {
+    Column() {
+      Text('childNumber value:' + this.sample.sampleChild?.childNumber)
+        .onClick(() => {
+          this.sample.sampleChild = new SampleChild();
+          this.sample.sampleChild.childNumber = 2;
+          PersistenceV2.save(Sample);
+        })
+        .fontSize(30)
+    }
+  }
+}
+```
 
