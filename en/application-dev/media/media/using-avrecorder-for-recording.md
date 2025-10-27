@@ -99,7 +99,6 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
      audioBitrate: 112000, // Audio bit rate.
      audioChannels: 2, // Number of audio channels.
      audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported.
-     aacProfile: media.AacProfile.AAC_HE, // Audio encoding extension format. Currently, AAC_HE,AAC_HE_V2
      audioSampleRate: 48000, // Audio sampling rate.
      fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.
    };

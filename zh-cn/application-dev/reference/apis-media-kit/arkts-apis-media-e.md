@@ -86,17 +86,19 @@ Codec MIME类型枚举。
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。 |
 
-## AacProfile<sup>3+</sup>
+## AacProfile<sup>22+</sup>
 
-AacProfile类型枚举。
+ AAC profile类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 | 名称         | 值                    | 说明                        |
-| ------------ | --------------------- | -------------------------- |
-| AAC_LC       |     0                 | 表示音频AAC_LC类型。        |
-| AAC_HE       |     1                 | 表示音频AAC_HE类型。        |
-| AAC_HE_V2    |     2                 | 表示音频AAC_HE_V2类型。     |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | 表示音频AAC_LC（Low Complexity）类型。        |
+| AAC_HE       |     1                 | 表示音频AAC_HE（High Efficiency）类型。        |
+| AAC_HE_V2    |     2                 | 表示音频AAC_HE_V2 (High Efficiency with Parametric Stereo coding) 类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
