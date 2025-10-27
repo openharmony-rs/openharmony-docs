@@ -32,7 +32,7 @@ ArkTS-Sta初始化NavDestination页面属性，其使用规格限制与非互操
   ```TypeScript
   // library/src/main/ets/components/MainPage.ets
   'use static'
-  import { Component, NavDestination, Text } from '@ohos.arkui.component';
+  import { Component, NavDestination, Text } from '@kit.ArkUI';
 
   @Component
   export struct PageOne {
