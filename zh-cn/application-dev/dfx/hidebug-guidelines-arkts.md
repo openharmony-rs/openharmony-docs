@@ -16,6 +16,7 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
 1. 使用DevEco Studio新建工程，选择“Empty Ability”。
 
 2. 在Project窗口单击entry > src > main > ets > pages，打开并编辑Index.ets文件：
+
    导入所需依赖：
    <!-- @[TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
@@ -55,8 +56,8 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
 
 3. 点击运行，然后在设备上点击“testHiDebugArk”按钮，触发接口调用。
 
-4. 若接口调用存在日志输出，在DevEco Studio的底部，切换到“Log”窗口，即可查看相关日志。
+4. 在DevEco Studio底部切换到“Log”窗口，设置日志过滤条件为“testTag”，即可查看相关日志：
 
    ```Text
-   **-** **:**:**.***   *****-*****   A00000/com.sam...gtool/testTag  com.sampl...ebugtool  I     getSystemCpuUsage: 0.2878989952876323
+   10-22 15:46:04.587   19261-19261   A00000/com.sam...gtool/testTag  com.sampl...ebugtool  I     getSystemCpuUsage: 0.2878989952876323
    ```
