@@ -830,7 +830,7 @@
       - [延迟任务(ArkTS)](task-management/work-scheduler.md)
       - [代理提醒(ArkTS)](task-management/agent-powered-reminder.md)<!--Del-->
       - [能效资源申请(ArkTS)（仅对系统特权应用开放）](task-management/efficiency-resource-request-sys.md)
-      - 设备使用信息统计（ArkTS）<!--device-usage-statistics--
+      - 设备使用信息统计（ArkTS）<!--device-usage-statistics-->
         - [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-overview-sys.md)
         - [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics/device-usage-statistics-use-guide-sys.md)
       <!--DelEnd-->
