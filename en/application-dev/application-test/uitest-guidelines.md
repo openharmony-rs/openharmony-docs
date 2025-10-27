@@ -21,7 +21,7 @@ UITest provides simple and easy-to-use APIs for various test scenarios. It suppo
 **Command line testing**:
 UITest supports diversified test operations through commands, including obtaining the current screen screenshot, obtaining the component tree, recording the screen operation process, and easily injecting UI simulation events.
 
-![arkxtest-uitest](figures/UITest.PNG)
+![arkxtest-uitest](figures/Uitest.PNG)
 
 UITest consists of the client and server.
 
@@ -593,7 +593,7 @@ The environment for OpenHarmony Device Connector (hdc) has been set up. For deta
 
 ### Obtaining a Screenshot
 
-| Parameter   |   Level-2 Parameter  |Description      | 
+| Parameter   |   Level-2 Parameter  |Description      |
 |---------|---------|------------|
 | -p | \<savePath\> | Used to specify storage path and file name, which must be **/data/local/tmp/**. The default path is **/data/local/tmp**, and the file name format is **Timestamp+.png**.|
 | -d | \<displayId\> | Used to specify the ID of the display to capture in the multi-display scenario.<br> **Note**: This command is supported since API version 20.|
@@ -604,13 +604,13 @@ hdc shell uitest screenCap
 # Specify the file name and save the file in /data/local/tmp/.
 hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
- 
+
 ### Obtaining the Component Tree
-| Parameter   | Level-2 Parameter  |  Description      | 
+| Parameter   | Level-2 Parameter  |  Description      |
 |---------|---------|-----------|
 | -p | \<savePath\> | Used to specify storage path and file name, which must be **/data/local/tmp/**. The default path is **/data/local/tmp**, and the file name format is **Timestamp+.json**.|
 | -i | - | Used to disable filtering of invisible components and window merging.|
-| -a | - | Used to save the **BackgroundColor**, **Content**, **FontColor**, **FontSize**, and **extraAttrs** attributes of the component.<br>**Note**: By default, the preceding attributes are not saved. The **-a** and **-i** parameters cannot be used at the same time.| 
+| -a | - | Used to save the **BackgroundColor**, **Content**, **FontColor**, **FontSize**, and **extraAttrs** attributes of the component.<br>**Note**: By default, the preceding attributes are not saved. The **-a** and **-i** parameters cannot be used at the same time.|
 | -b | \<bundleName\> | Used to obtain the component tree information of the target window based on the specified bundle name.|
 | -w | \<windowId\>  | Used to obtain the component tree information of the target window based on the specified window ID.<br> **Note**:<br>You can use hidumper to obtain the window ID of an application. For details, see [Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information).|
 | -m | \<true\|false\> | Used to specify whether to merge the window information when the component tree information is obtained. The value **true** means to merge window information, and **false** means the opposite. If this parameter is not set, the default value **true** is used.|
@@ -627,11 +627,11 @@ hdc shell uitest dumpLayout -p /data/local/tmp/1.json
 > During the recording, you should perform the next operation after the recognition result of the current operation is displayed in the CLI.
 
 **Parameters**
-| Parameter  | Level-2 Parameter   |   Description             | 
+| Parameter  | Level-2 Parameter   |   Description             |
 |-------|--------------|-----------------|
 | -W    | \<true/false> |  Used to specify whether to save the component information corresponding to the operation coordinates to the **/data/local/tmp/record.csv** file during recording. The value **true** means to save the component information, and **false** means to record only the coordinate information. The default value is **true**.<br> **Note**: This command is supported since API version 20.|
-| -l    | - |  Used to save the current layout information after each operation. The file storage path is **/data/local/tmp/layout_Recording start timestamp_Operation ID.json**.<br> **Note**: This command is supported since API version 20.| 
-| -c    | \<true/false> | Used to specify whether to print the recorded operation event information to the console. The value **true** means to print the information, and **false** means the opposite. The default value is **true**.<br> **Note**: This command is supported since API version 20.| 
+| -l    | - |  Used to save the current layout information after each operation. The file storage path is **/data/local/tmp/layout_Recording start timestamp_Operation ID.json**.<br> **Note**: This command is supported since API version 20.|
+| -c    | \<true/false> | Used to specify whether to print the recorded operation event information to the console. The value **true** means to print the information, and **false** means the opposite. The default value is **true**.<br> **Note**: This command is supported since API version 20.|
 
 ```bash
 # Record the current UI operations to /data/local/tmp/record.csv and press Ctrl+C to stop the recording.
@@ -687,19 +687,19 @@ The fields in the record data are as follows:
  ```
 ### Injecting UI Simulation Operations
 
-| Parameter  |  Description             | 
+| Parameter  |  Description             |
 |------|----------------|
 | help   |Used to display the help information about the uiInput command.|
-| click   |  Used to simulate a click. For details, see **Examples of Running the uiInput-click/doubleClick/longClick Command**.     | 
-| doubleClick   |  Used to simulate a double-click. For details, see **Examples of Running the uiInput click/doubleClick/longClick Command**.     | 
-| longClick   |Used to simulate a long-click. For details, see **Examples of Running the uiInput click/doubleClick/longClick Command**.    | 
-| fling   | Used to simulate a fling. That is, the page scrolls inertially after the operation is complete. For details, see **Examples of Running the uiInput fling Command**.  | 
-| swipe   |  Used to simulate a swipe. For details, see **Examples of Running the uiInput swipe/drag Command**.    | 
-| drag   | Used to simulate a drag. For details, see **Examples of Running the uiInput swipe/drag Command**.    | 
+| click   |  Used to simulate a click. For details, see **Examples of Running the uiInput-click/doubleClick/longClick Command**.     |
+| doubleClick   |  Used to simulate a double-click. For details, see **Examples of Running the uiInput click/doubleClick/longClick Command**.     |
+| longClick   |Used to simulate a long-click. For details, see **Examples of Running the uiInput click/doubleClick/longClick Command**.    |
+| fling   | Used to simulate a fling. That is, the page scrolls inertially after the operation is complete. For details, see **Examples of Running the uiInput fling Command**.  |
+| swipe   |  Used to simulate a swipe. For details, see **Examples of Running the uiInput swipe/drag Command**.    |
+| drag   | Used to simulate a drag. For details, see **Examples of Running the uiInput swipe/drag Command**.    |
 | dircFling   |  Used to simulate a directional fling. For details, see **Examples of Running the uiInput dircFling Command**.    |
 | inputText   |  Used to simulate text input in a text box at specified coordinates. For details, see **Examples of Running the uiInput inputText Command**.                  |
 | text   |  Used to simulate text input in a text box at the focused position without specified coordinates. For details, see **Examples of Running the uiInput text Command**.<br> **Note**: This command is supported since API version 18.|
-| keyEvent   | Used to simulate a physical key event (such as pressing a keyboard key, pressing the power key, returning to the previous page, and returning to the home screen) or a combination key operation. For details, see **Examples of Running the uiInput keyEvent Command**.    | 
+| keyEvent   | Used to simulate a physical key event (such as pressing a keyboard key, pressing the power key, returning to the previous page, and returning to the home screen) or a combination key operation. For details, see **Examples of Running the uiInput keyEvent Command**.    |
 
 
 - Example of Running the **click**/**doubleClick**/**longClick** Command
@@ -722,14 +722,14 @@ hdc shell uitest uiInput longClick 100 100
 
 - Example of Running the **uiInput fling** Command
 
-| Parameter | Mandatory            | Description              |      
+| Parameter | Mandatory            | Description              |
 |------|------------------|-----------------|
-| from_x   | Yes               | X-coordinate of the start point.| 
-| from_y   | Yes               | Y-coordinate of the start point.| 
+| from_x   | Yes               | X-coordinate of the start point.|
+| from_y   | Yes               | Y-coordinate of the start point.|
 | to_x   | Yes               | X-coordinate of the end point.|
 | to_y   | Yes               | Y-coordinate of the end point.|
-| swipeVelocityPps_   | No     | Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600**. If the value is out of the range, the default value is used.| 
-| stepLength_   | No| Step length, in pixels. The default value is the swipe distance divided by 50.<br> **Note**:<br> The swipe distance is calculated based on the specified start and end coordinates.<br> To achieve better simulation effect, you are advised to use the default value. | 
+| swipeVelocityPps_   | No     | Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600**. If the value is out of the range, the default value is used.|
+| stepLength_   | No| Step length, in pixels. The default value is the swipe distance divided by 50.<br> **Note**:<br> The swipe distance is calculated based on the specified start and end coordinates.<br> To achieve better simulation effect, you are advised to use the default value. |
 
 
 ```shell  
@@ -759,8 +759,8 @@ hdc shell uitest uiInput drag 10 10 100 100 500
 
 | Parameter            | Mandatory      | Description|
 |-------------------|-------------|----------|
-| direction         | No | Swipe direction, which can be **0**, **1**, **2**, or **3**. The default value is **0**.<br> The value **0** indicates leftward, **1** indicates rightward, **2** indicates upward, and **3** indicates downward.   | 
-| swipeVelocityPps_ | No | Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600**. If the value is out of the range, the default value is used.   | 
+| direction         | No | Swipe direction, which can be **0**, **1**, **2**, or **3**. The default value is **0**.<br> The value **0** indicates leftward, **1** indicates rightward, **2** indicates upward, and **3** indicates downward.   |
+| swipeVelocityPps_ | No | Swipe speed, in px/s. The value ranges from 200 to 40000.<br> Default value: **600**. If the value is out of the range, the default value is used.   |
 | stepLength        | No | Step length, in pixels.<br> Default value: When the swipe direction is **0** or **1**, the default value is the screen width divided by 200. When the swipe direction is **2** or **3**, the default value is the screen height divided by 200. To achieve better simulation effect, you are advised to use the default value.|
 
 ```shell  
@@ -776,9 +776,9 @@ hdc shell uitest uiInput dircFling 3
 
 - Example of Running the **uiInput inputText** Command
 
-| Parameter            | Mandatory      | Description|       
+| Parameter            | Mandatory      | Description|
 |------|------------------|----------|
-| point_x   | Yes               | X-coordinate of the text box.| 
+| point_x   | Yes               | X-coordinate of the text box.|
 | point_y   | Yes               | Y-coordinate of the text box.|
 | text      | Yes               | Text in the text box. |
 
@@ -789,7 +789,7 @@ hdc shell uitest uiInput inputText 100 100 hello
 
 - Example of Running the **uiInput text** Command
 
-| Parameter            | Mandatory      | Description|       
+| Parameter            | Mandatory      | Description|
 |--------|-------------------|----------------|
 | text   | Yes               | Text in the text box. |
 
@@ -800,9 +800,9 @@ hdc shell uitest uiInput text hello
 
 - Example of Running the **uiInput keyEvent** Command
 
-| Parameter            | Mandatory      | Description                                                                                                                             |                
+| Parameter            | Mandatory      | Description                                                                                                                             |
 |------|------|---------------------------------------------------------------------------------------------------------------------------------|
-| keyID1   | Yes   | ID of a physical key, which can be **Back**, **Home**, **Power**, or <!--RP12-->[a keycode value](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->.<br>When the value is set to **Back**, **Home**, or **Power**, combination keys are not supported.<br>Currently, the Caps Lock key (**KeyCode** = **2074**) does not take effect. Use composition keys to input uppercase letters. For example, press **Shift+V** to input uppercase letter V.| 
+| keyID1   | Yes   | ID of a physical key, which can be **Back**, **Home**, **Power**, or <!--RP12-->[a keycode value](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->.<br>When the value is set to **Back**, **Home**, or **Power**, combination keys are not supported.<br>Currently, the Caps Lock key (**KeyCode** = **2074**) does not take effect. Use composition keys to input uppercase letters. For example, press **Shift+V** to input uppercase letter V.|
 | keyID2    | No   | ID of the physical key. For details about the value range, see <!--RP12-->[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->. This parameter is left empty by default.|
 | keyID3    | No   | ID of the physical key. For details about the value range, see <!--RP12-->[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)<!--RP12End-->. This parameter is left empty by default.|
 
