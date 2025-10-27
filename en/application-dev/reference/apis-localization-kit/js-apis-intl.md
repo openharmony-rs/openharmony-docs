@@ -444,7 +444,7 @@ Defines the options for a **DateTimeOptions** object. Since API version 9, the *
 
 ## NumberFormat
 
-Performs number formatting.
+Performs standard number formatting.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -454,7 +454,7 @@ Performs number formatting.
 
 constructor()
 
-Creates a **NumberFormat** object for the specified locale.
+Creates a **NumberFormat** object for the current system locale.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -473,7 +473,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: NumberOptions)
 
-Creates a **NumberFormat** object for the specified locale.
+Creates a **NumberFormat** object based on the specified locale and options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -639,7 +639,7 @@ Performs string collation.
 
 constructor()
 
-Creates a **Collator** object.
+Creates a **Collator** object for the current system locale.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -658,7 +658,7 @@ let collator = new intl.Collator();
 
 constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
 
-Creates a **Collator** object.
+Creates a **Collator** object based on the specified locale and options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

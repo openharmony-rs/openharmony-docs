@@ -230,8 +230,8 @@ Provides functions such as event injection and status query.
 | [void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)](#oh_input_cursorinfo_destroy) | - | Destroys the mouse pointer information object.|
 | [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | Obtains the pointer visible status of the specified mouse pointer information object.|
 | [Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)](#oh_input_cursorinfo_getstyle) | - |Obtains the pointer style of the specified mouse pointer information object.|
-| [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | Obtains the pointer size level of the specified mouse pointer information object.|
-| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | Obtains the pointer color of the specified mouse pointer information object, which is represented by a 32-bit ARGB integer.|
+| [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | Obtains the pointer size level of the specified mouse pointer information object, which is represented by a 32-bit ARGB integer.|
+| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | Obtains the pointer color of the specified mouse pointer information object.|
 | [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.|
 | [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.|
 
@@ -474,7 +474,7 @@ Defines a lifecycle callback for **keyEvent**. If the callback is triggered, **k
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 ### Input_MouseEventCallback()
 
@@ -830,7 +830,7 @@ ensure that the **KEY_ACTION_UP** event is injected in a timely manner to avoid 
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object, which is created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent). You can call [OH_Input_SetKeyEventKeyCode](#oh_input_setkeyeventkeycode) and [OH_Input_SetKeyEventAction](#oh_input_setkeyeventaction) to set the key value and key event type of the key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent). You can call [OH_Input_SetKeyEventKeyCode](#oh_input_setkeyeventkeycode) and [OH_Input_SetKeyEventAction](#oh_input_setkeyeventaction) to set the key value and key event type of the key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 **Return value**
 
@@ -898,7 +898,7 @@ Sets the key event type.
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 | int32_t action | Key event type. For details, see [Input_KeyEventAction](#input_keyeventaction).|
 
 ### OH_Input_GetKeyEventAction()
@@ -947,7 +947,7 @@ Sets the key code value for a key event.
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 | int32_t keyCode | Key value.|
 
 ### OH_Input_GetKeyEventKeyCode()
@@ -969,7 +969,7 @@ Obtains the key code value of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 **Return value**
 
@@ -996,7 +996,7 @@ Sets the time when a key event occurs.
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 | int64_t actionTime | Key event timestamp, which is measured as the number of milliseconds that have elapsed since the Unix epoch.|
 
 ### OH_Input_GetKeyEventActionTime()
@@ -1018,7 +1018,7 @@ Obtains the time when a key event occurs.
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 **Return value**
 
@@ -1045,7 +1045,7 @@ Sets the window ID of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 | int32_t windowId | Window ID of the key event.|
 
 ### OH_Input_GetKeyEventWindowId()
@@ -1067,7 +1067,7 @@ Obtains the window ID of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 **Return value**
 
@@ -1094,7 +1094,7 @@ Obtains the screen ID of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 
 **Return value**
 
@@ -1121,7 +1121,7 @@ Sets the screen ID of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 | int32_t displayId | Screen ID of the key event.|
 
 ### OH_Input_CreateMouseEvent()
@@ -4235,7 +4235,7 @@ Obtains the ID of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can call [OH_Input_CreateKeyEvent](#oh_input_createkeyevent) to create a key event object.<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
+| [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent).|
 | int32_t* eventId | ID of the key event.|
 
 **Return value**
@@ -4267,7 +4267,7 @@ You can call [OH_Input_RemoveKeyEventHook](#oh_input_removekeyeventhook) to remo
 
 | Parameter| Description|
 | -- | -- |
-| [Input_KeyEventCallback](#input_keyeventcallback) callback | Hook function, which is used to intercept all key events to be distributed.<br> You can call [OH_Input_GetKeyEventId](#oh_input_getkeyeventid) to obtain the priority of a key event. A smaller key event ID indicates a higher priority.|
+| [Input_KeyEventCallback](#input_keyeventcallback) callback | Hook function, which is used to intercept all key events to be distributed.|
 
 **Return value**
 
@@ -4294,7 +4294,7 @@ This API is usually used together with [OH_Input_AddKeyEventHook](#oh_input_addk
 
 | Parameter| Description|
 | -- | -- |
-| [Input_KeyEventCallback](#input_keyeventcallback) callback | Hook function, which is used to intercept all key events to be distributed.<br> You can call [OH_Input_GetKeyEventId](#oh_input_getkeyeventid) to obtain the priority of a key event. A smaller key event ID indicates a higher priority.|
+| [Input_KeyEventCallback](#input_keyeventcallback) callback | Hook function, which is used to intercept all key events to be distributed.|
 
 **Return value**
 
@@ -4313,7 +4313,7 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 
 Redispatches key events.
 
-Only key events intercepted by the hook function can be redispatched, and these events must maintain the original priority sequence. You can obtain the priority of a key event via [OH_Input_GetKeyEventId](#oh_input_getkeyeventid). A smaller event ID indicates a higher priority.<br>
+Only key events intercepted by the hook function can be redispatched, and these events must maintain the original priority sequence.<br>
 After this API is called, key events will be redispatched within 3 seconds. If the redispatch is not completed within 3 seconds, [INPUT_PARAMETER_ERROR](#input_result) is reported.<br>
 Successful redispatch requires correct mapping of events. If one or more [KEY_ACTION_DOWN](#input_keyeventaction) events are redispatched, the [KEY_ACTION_UP](#input_keyeventaction) or [KEY_ACTION_CANCEL](#input_keyeventaction) event can be redispatched.<br>
 If only the [KEY_ACTION_UP](#input_keyeventaction) or [KEY_ACTION_CANCEL](#input_keyeventaction) key events are redispatched, the API call is successful, but the dispatch is not actually performed.<br>
@@ -4595,7 +4595,7 @@ Sets the custom mouse pointer style.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The value must be an integer greater than or equal to **0**. Only the poiner style of the current window can be specified. If the ID of any other window is specified, the API call is successful, but the setting does not take effect.|
+| int32_t windowId | Window ID. The value must be an integer greater than or equal to **0**. Only the pointer style of the current window can be specified. If the ID of any other window is specified, the API call is successful, but the setting does not take effect.|
 | Input_CustomCursor* customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
 | Input_CursorConfig* cursorConfig | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
 
