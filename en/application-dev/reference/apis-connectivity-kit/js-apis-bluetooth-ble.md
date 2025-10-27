@@ -3472,7 +3472,7 @@ Sets whether to enable the client to receive characteristic change notifications
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>The value **true** means to enable the application, and **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>The value **true** means to enable characteristic change notification, and the value **false** means the opposite.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -3670,7 +3670,7 @@ try {
 
 setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise&lt;void&gt;
 
-Sets whether to enable the client to receive characteristic change indications from the server. This API uses an asynchronous callback to return the result.<br>
+Sets whether to enable the client to receive characteristic change indications from the server. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included.<br>
 - The server can send change indications only if the specified characteristic contains the UUID (00002902-0000-1000-8000-00805f9b34fb) of the Client Characteristic Configuration descriptor.<br>
 - If **enable** is set to **true**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to enable the change indication function.<br>
@@ -3690,7 +3690,7 @@ Sets whether to enable the client to receive characteristic change indications f
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable characteristic change notification, and the value **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable characteristic change indication, and the value **false** means the opposite.|
 
 **Return value**
 

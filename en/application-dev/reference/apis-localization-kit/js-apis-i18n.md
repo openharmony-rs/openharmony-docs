@@ -7,7 +7,9 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-This module provides system-related or enhanced [i18n](../../internationalization/i18n-l10n.md) capabilities, such as locale management, phone number formatting, and calendar, through supplementary I18N APIs that are not defined in [ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/). The [intl](js-apis-intl.md) module provides basic i18n capabilities through the standard i18n APIs defined in ECMA 402. It works with the **i18n** module to provide a complete suite of i18n capabilities.
+This module provides system-related and enhanced [i18n](../../internationalization/i18n-l10n.md) capabilities, such as locale management, phone number formatting, and calendar, through supplementary i18n APIs that are not defined in [ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/). The [intl](js-apis-intl.md) module provides basic i18n capabilities through the standard i18n APIs defined in ECMA 402. It works with the **i18n** module to provide a complete suite of i18n capabilities. The terms used in the APIs are defined as follows:
+- Pattern string, which is a string consisting of [Unicode date field symbols](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table) and custom text enclosed by single quotation marks.
+- Skeleton string: a string that consists of [Unicode date field symbols](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table) and does not support custom text.
 
 >  **NOTE**
 >
@@ -863,7 +865,7 @@ Provides calendar management capabilities, such as calendar name retrieval and d
 
 setTime(date: Date): void
 
-Sets the date and time for a **Calendar** object.
+Sets the date and time for a **Calendar** object based on the input **Date** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -889,7 +891,7 @@ Sets the date and time for a **Calendar** object.
 
 setTime(time: number): void
 
-Sets the date and time for a **Calendar** object.
+Sets the date and time for a **Calendar** object based on the input timestamp.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3791,7 +3793,7 @@ try {
 
 ## SimpleNumberFormat<sup>18+</sup>
 
-Performs number formatting.
+Formats a number based on the specified skeleton string.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
