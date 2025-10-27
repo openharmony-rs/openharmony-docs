@@ -1591,7 +1591,7 @@ export default class EntryAbility extends UIAbility {
 4. 通知合并后不能取消合并，已合并的不能更新成不合并。
 5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
 6. 通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
-7. 从API version 22开始支持[特殊场景类型的长时任务](#backgroundtaskmode21)。，必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
+7. 从API version 22开始支持[特殊场景类型的长时任务](#backgroundtaskmode21)。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
 
 ### 属性
 
@@ -1695,7 +1695,7 @@ export default class EntryAbility extends UIAbility {
     let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
     continuousTaskRequest.backgroundTaskSubmodes = subModeList;
     try {
-      continuousTaskRequest.requestAuthFromUser(this.callbackAuth);
+      continuousTaskRequest.requestAuthFromUser(callbackAuth);
     } catch (error) {
       console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
