@@ -28,18 +28,11 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 - 创建不包含子组件的Toggle。
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
   
-  
-    ```ts
-  Toggle({ type: ToggleType.Checkbox, isOn: false })
-  Toggle({ type: ToggleType.Checkbox, isOn: true })
-    ```
+  <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
 
   ![zh-cn_image_0000001562940485](figures/zh-cn_image_0000001562940485.png)
   
-  ```ts
-  Toggle({ type: ToggleType.Switch, isOn: false })
-  Toggle({ type: ToggleType.Switch, isOn: true })
-  ```
+  <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
     ![zh-cn_image_0000001511421228](figures/zh-cn_image_0000001511421228.png)
   
@@ -47,18 +40,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
   当ToggleType为Button时，只能包含一个子组件，如果子组件有文本设置，则相应的文本内容会显示在按钮上。
 
-  ```ts
-  Toggle({ type: ToggleType.Button, isOn: false }) {
-    Text('status button')
-      .fontColor('#182431')
-      .fontSize(12)
-  }.width(100)
-  Toggle({ type: ToggleType.Button, isOn: true }) {
-    Text('status button')
-      .fontColor('#182431')
-      .fontSize(12)
-  }.width(100)
-  ```
+  <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
 
     ![zh-cn_image_0000001511900404](figures/zh-cn_image_0000001511900404.png)
 
@@ -67,28 +49,13 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 - 通过selectedColor属性设置Toggle打开选中后的背景颜色。
 
-  ```ts
-  Toggle({ type: ToggleType.Button, isOn: true }) {
-    Text('status button')
-    .fontColor('#182431')
-    .fontSize(12)
-  }.width(100).selectedColor(Color.Pink)
-  Toggle({ type: ToggleType.Checkbox, isOn: true })
-    .selectedColor(Color.Pink)
-  Toggle({ type: ToggleType.Switch, isOn: true })
-    .selectedColor(Color.Pink)
-  ```
+  <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
 
   ![zh-cn_image_0000001563060657](figures/zh-cn_image_0000001563060657.png)
 
 - 通过switchPointColor属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
 
-  ```ts
-  Toggle({ type: ToggleType.Switch, isOn: false })
-    .switchPointColor(Color.Pink)
-  Toggle({ type: ToggleType.Switch, isOn: true })
-    .switchPointColor(Color.Pink)
-  ```
+  <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
 
   ![zh-cn_image_0000001511421232](figures/zh-cn_image_0000001511421232.png)
 
@@ -98,64 +65,15 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定onChange事件来响应操作后的自定义行为。
 
 
-```ts
-Toggle({ type: ToggleType.Switch, isOn: false })
-  .onChange((isOn: boolean) => {
-      if(isOn) {
-        // 需要执行的操作
-      }
-  })
-```
+<!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
 
 
 ## 场景示例
 
 Toggle用于切换蓝牙开关状态。
 
-```ts
-// xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ToggleExample {
-  @State bOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' };
-  @State bOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' };
-
-  build() {
-    Column() {
-      Row() {
-        Text("Bluetooth Mode")
-          .height(50)
-          .fontSize(16)
-      }
-
-      Row() {
-        Text("Bluetooth")
-          .height(50)
-          .padding({ left: 10 })
-          .fontSize(16)
-          .textAlign(TextAlign.Start)
-          .backgroundColor(0xFFFFFF)
-        Toggle({ type: ToggleType.Switch })
-          .margin({ left: 200, right: 10 })
-          .onChange((isOn: boolean) => {
-            if (isOn) {
-              this.getUIContext().getPromptAction().showToast(this.bOnSt);
-            } else {
-              this.getUIContext().getPromptAction().showToast(this.bOffSt);
-            }
-          })
-      }
-      .backgroundColor(0xFFFFFF)
-    }
-    .padding(10)
-    .backgroundColor(0xDCDCDC)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[the_example_of_bluetooth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCaseExample.ets) --> 
 
 
 ![zh-cn_image_0000001511740448](figures/zh-cn_image_0000001511740448.gif)
+  
