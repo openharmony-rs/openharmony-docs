@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 导航点组件，提供圆点导航点以及数字导航点两种导航点样式。
 

@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 提供XComponent节点XComponentNode，表示组件树中的[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件，用于[EGL](../native-lib/egl.md)/[OpenGLES](../native-lib/opengles.md)和媒体数据写入，并支持动态修改节点渲染类型。

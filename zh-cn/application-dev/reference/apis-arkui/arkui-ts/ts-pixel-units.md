@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 

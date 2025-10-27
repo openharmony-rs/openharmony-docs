@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于渲染并管理Native层使用C-API创建的组件。
 

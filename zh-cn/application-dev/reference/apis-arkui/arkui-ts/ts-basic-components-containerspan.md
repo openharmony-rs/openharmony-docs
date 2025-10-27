@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 [Text](ts-basic-components-text.md)组件的子组件，用于统一管理多个[Span](ts-basic-components-span.md)、[ImageSpan](ts-basic-components-imagespan.md)的背景色及圆角弧度。
 
