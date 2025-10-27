@@ -48,7 +48,9 @@ Repeat子组件由`.each()`和`.template()`属性定义，只允许包含一个�
 
 `.each()`适用于只需要循环渲染一种子组件的场景。下列示例代码使用Repeat组件进行简单的循环渲染。
 
-```ts
+<!-- @[repeat_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatExample.ets) -->
+
+``` TypeScript
 // 在List容器组件中使用Repeat
 @Entry
 @ComponentV2 // 推荐使用V2装饰器
@@ -93,11 +95,13 @@ Repeat提供渲染模板（template）能力，可以在同一个数据源中渲
 
 下列示例代码中使用Repeat组件进行循环渲染，并使用了多个渲染模板。
 
-```ts
+<!-- @[repeat_example_with_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatExample2.ets) -->
+
+``` TypeScript
 // 在List容器组件中使用Repeat
 @Entry
 @ComponentV2 // 推荐使用V2装饰器
-struct RepeatExampleWithTemplates {
+struct RepeatExample2 {
   @Local dataArr: Array<string> = []; // 数据源
 
   aboutToAppear(): void {
@@ -223,10 +227,12 @@ Repeat的`.key()`属性为每个子组件生成一个键值。Repeat通过键值
 
 数据源总长度较长，在首次渲染、滑动屏幕、跳转显示区域时，动态加载对应区域内的数据。
 
-```ts
+<!-- @[repeat_lazy_loading_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading1.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading {
+struct RepeatLazyLoading1 {
   // 假设数据源总长度较长，为1000。初始数组未提供数据。
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
@@ -268,10 +274,12 @@ struct RepeatLazyLoading {
 
 数据加载耗时长，在onLazyLoading方法中，首先为数据项创建占位符，再通过异步任务加载数据。
 
-```ts
+<!-- @[repeat_lazy_loading_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading {
+struct RepeatLazyLoading2 {
   @Local arr: Array<string> = [];
   build() {
     Column({ space: 5 }) {
@@ -317,10 +325,12 @@ struct RepeatLazyLoading {
 > - 若与Swiper-Loop模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
 > - 开发者需要关注内存消耗情况，避免因数据持续加载而导致内存过量消耗。
 
-```ts
+<!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading {
+struct RepeatLazyLoading3 {
   @Local arr: Array<string> = [];
   // 提供首屏显示所需的初始数据。
   aboutToAppear(): void {
@@ -371,7 +381,9 @@ struct RepeatLazyLoading {
 
 示例代码：
 
-```ts
+<!-- @[repeat_scroll_on_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScrollOnMove.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct RepeatVirtualScrollOnMove {
@@ -387,7 +399,7 @@ struct RepeatVirtualScrollOnMove {
     Column() {
       List() {
         Repeat<string>(this.simpleList)
-          // 通过设置onMove，使能拖拽排序。
+        // 通过设置onMove，使能拖拽排序。
           .onMove((from: number, to: number) => {
             let temp = this.simpleList.splice(from, 1);
             this.simpleList.splice(to, 0, temp[0]);
@@ -428,7 +440,9 @@ struct RepeatVirtualScrollOnMove {
 
 **示例代码**
 
-```ts
+<!-- @[repeat_pre_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/PreInsert.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct PreInsertDemo {
@@ -498,10 +512,13 @@ struct PreInsertDemo {
 
 下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个数据项可以进行交换。
 
-```ts
+
+<!-- @[repeat_scroll_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Repeat006Clazz {
-  @Trace message: string = '';
+  @Trace public message: string = '';
 
   constructor(message: string) {
     this.message = message;
@@ -579,13 +596,13 @@ struct RepeatVirtualScroll2T {
             this.reloadSelectOptions();
           })
       }
-      Button('Update array length to 5.')
+      Button('Update array length to 5')
         .onClick(() => {
           this.simpleList = this.simpleList.slice(0, 5);
           this.reloadSelectOptions();
         })
 
-      Text('Click on two items to exchange.')
+      Text('Click on two items to exchange')
         .fontSize(15)
         .fontColor(Color.Gray)
 
@@ -644,11 +661,13 @@ struct RepeatVirtualScroll2T {
 
 Repeat支持嵌套使用，示例代码如下：
 
-```ts
+<!-- @[repeat_nest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NestedRepeat.ets) -->
+
+``` TypeScript
 // Repeat嵌套
 @Entry
 @ComponentV2
-struct RepeatNest {
+struct NestedRepeat {
   @Local outerList: string[] = [];
   @Local innerList: number[] = [];
 
@@ -661,7 +680,7 @@ struct RepeatNest {
 
   build() {
     Column({ space: 20 }) {
-      Text('Repeat virtualScroll嵌套')
+      Text('Nested Repeat with virtualScroll')
         .fontSize(15)
         .fontColor(Color.Gray)
       List() {
@@ -716,10 +735,12 @@ struct RepeatNest {
 
 在List容器组件中使用Repeat，示例代码如下：
 
-```ts
+<!-- @[repeat_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoList.ets) -->
+
+``` TypeScript
 class DemoListItemInfo {
-  name: string;
-  icon: Resource;
+  public name: string;
+  public icon: Resource;
 
   constructor(name: string, icon: Resource) {
     this.name = name;
@@ -735,15 +756,15 @@ struct DemoList {
   aboutToAppear(): void {
     for (let i = 0; i < 10; i++) {
       // 此处app.media.listItem0、app.media.listItem1、app.media.listItem2仅作示例，请开发者自行替换
-      this.videoList.push(new DemoListItemInfo('视频' + i,
+      this.videoList.push(new DemoListItemInfo('Video' + i,
         i % 3 == 0 ? $r('app.media.listItem0') :
-        i % 3 == 1 ? $r('app.media.listItem1') : $r('app.media.listItem2')));
+          i % 3 == 1 ? $r('app.media.listItem1') : $r('app.media.listItem2')));
     }
   }
 
   @Builder
   itemEnd(index: number) {
-    Button('删除')
+    Button('Delete')
       .backgroundColor(Color.Red)
       .onClick(() => {
         this.videoList.splice(index, 1);
@@ -752,7 +773,7 @@ struct DemoList {
 
   build() {
     Column({ space: 10 }) {
-      Text('List容器组件中包含Repeat组件')
+      Text('List Contains the Repeat Component')
         .fontSize(15)
         .fontColor(Color.Gray)
 
@@ -776,7 +797,6 @@ struct DemoList {
               }
             })
             .onAppear(() => {
-              console.info('AceTag', obj.item.name);
             })
           })
           .key((item: DemoListItemInfo) => item.name)
@@ -795,11 +815,11 @@ struct DemoList {
       })
 
       Row({ space: 10 }) {
-        Button('删除第1项')
+        Button('Delete No.1')
           .onClick(() => {
             this.videoList.splice(0, 1);
           })
-        Button('删除第5项')
+        Button('Delete No.5')
           .onClick(() => {
             this.videoList.splice(4, 1);
           })
@@ -820,10 +840,12 @@ struct DemoList {
 
 在Grid容器组件中使用Repeat，示例如下：
 
-```ts
+<!-- @[repeat_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoGrid.ets) -->
+
+``` TypeScript
 class DemoGridItemInfo {
-  name: string;
-  icon: Resource;
+  public name: string;
+  public icon: Resource;
 
   constructor(name: string, icon: Resource) {
     this.name = name;
@@ -846,15 +868,15 @@ struct DemoGrid {
   aboutToAppear(): void {
     for (let i = 0; i < 10; i++) {
       // 此处app.media.gridItem0、app.media.gridItem1、app.media.gridItem2仅作示例，请开发者自行替换
-      this.itemList.push(new DemoGridItemInfo('视频' + i,
+      this.itemList.push(new DemoGridItemInfo('Video' + i,
         i % 3 == 0 ? $r('app.media.gridItem0') :
-        i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
+          i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
     }
   }
 
   build() {
     Column({ space: 10 }) {
-      Text('Grid容器组件中包含Repeat组件')
+      Text('Grid Contains the Repeat Component')
         .fontSize(15)
         .fontColor(Color.Gray)
 
@@ -864,7 +886,7 @@ struct DemoGrid {
             .each((obj: RepeatItem<DemoGridItemInfo>) => {
               if (obj.index === 10 ) {
                 GridItem() {
-                  Text('先前浏览至此，点击刷新')
+                  Text('Last viewed here. Touch to refresh.')
                     .fontSize(20)
                 }
                 .height(30)
@@ -874,7 +896,6 @@ struct DemoGrid {
                   this.isRefreshing = true;
                 })
                 .onAppear(() => {
-                  console.info('AceTag', obj.item.name);
                 })
               } else {
                 GridItem() {
@@ -893,7 +914,6 @@ struct DemoGrid {
                 .borderRadius(16)
                 .backgroundColor(Color.White)
                 .onAppear(() => {
-                  console.info('AceTag', obj.item.name);
                 })
               }
             })
@@ -914,21 +934,20 @@ struct DemoGrid {
           this.itemList.unshift(new DemoGridItemInfo('refresh', $r('app.media.gridItem0'))); // 此处app.media.gridItem0仅作示例，请开发者自行替换
           for (let i = 0; i < 10; i++) {
             // 此处app.media.gridItem0、app.media.gridItem1、app.media.gridItem2仅作示例，请开发者自行替换
-            this.itemList.unshift(new DemoGridItemInfo('新视频' + this.num,
+            this.itemList.unshift(new DemoGridItemInfo('New video' + this.num,
               i % 3 == 0 ? $r('app.media.gridItem0') :
-              i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
+                i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
             this.num++;
           }
           this.isRefreshing = false;
         }, 1000);
-        console.info('AceTag', 'onRefreshing');
       })
       .refreshOffset(64)
       .pullToRefresh(true)
       .width('100%')
       .height('85%')
 
-      Button('刷新')
+      Button('Refresh')
         .onClick(() => {
           this.gridScroller.scrollToIndex(0);
           this.isRefreshing = true;
@@ -949,23 +968,17 @@ struct DemoGrid {
 
 在Swiper容器组件中使用Repeat，示例如下：
 
-```ts
-const remotePictures: Array<string> = [
-  'https://www.example.com/xxx/0001.jpg', // 请填写具体的网络图片地址
-  'https://www.example.com/xxx/0002.jpg',
-  'https://www.example.com/xxx/0003.jpg',
-  'https://www.example.com/xxx/0004.jpg',
-  'https://www.example.com/xxx/0005.jpg',
-  'https://www.example.com/xxx/0006.jpg',
-  'https://www.example.com/xxx/0007.jpg',
-  'https://www.example.com/xxx/0008.jpg',
-  'https://www.example.com/xxx/0009.jpg'
+<!-- @[repeat_swiper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoSwiper.ets) -->
+
+``` TypeScript
+const remotePictures: string[] = [
+  'www.example.com/xxx/0001.jpg', // 请填写具体的网络图片地址
 ];
 
 @ObservedV2
 class DemoSwiperItemInfo {
-  id: string;
-  @Trace url: string = 'default';
+  public id: string;
+  @Trace public url: string = 'default';
 
   constructor(id: string) {
     this.id = id;
@@ -988,12 +1001,12 @@ struct DemoSwiper {
 
   build() {
     Column() {
-      Text('Swiper容器组件中包含Repeat组件')
+      Text('Swiper Contains the Repeat Component')
         .fontSize(15)
         .fontColor(Color.Gray)
 
       Stack() {
-        Text('图片加载中')
+        Text('Loading...')
           .fontSize(15)
           .fontColor(Color.Gray)
         Swiper() {
@@ -1001,7 +1014,6 @@ struct DemoSwiper {
             .each((obj: RepeatItem<DemoSwiperItemInfo>) => {
               Image(obj.item.url)
                 .onAppear(() => {
-                  console.info('AceTag', obj.item.id);
                 })
             })
             .key((item: DemoSwiperItemInfo) => item.id)
@@ -1070,16 +1082,18 @@ struct DemoSwiper {
 
 ### 示例
 
-```ts
+<!-- @[repeat_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NodeUpdateMechanism.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct Parent {
+struct NodeUpdateMechanism {
   @Local simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
     Row() {
       Column() {
-        Text('点击修改第3个数组项的值')
+        Text('Click to change the value of the third array item')
           .fontSize(24)
           .fontColor(Color.Red)
           .onClick(() => {
@@ -1087,11 +1101,11 @@ struct Parent {
           })
 
         Repeat<string>(this.simpleList)
-            .each((obj: RepeatItem<string>)=>{
-              ChildItem({ item: obj.item })
-                .margin({top: 20})
-            })
-            .key((item: string) => item)
+          .each((obj: RepeatItem<string>)=>{
+            ChildItem({ item: obj.item })
+              .margin({top: 20})
+          })
+          .key((item: string) => item)
       }
       .justifyContent(FlexAlign.Center)
       .width('100%')
@@ -1124,12 +1138,14 @@ struct ChildItem {
 以下示例中，屏幕外的数据源变化将影响屏幕中List列表Scroller停留的位置：
 在List组件中声明Repeat组件，实现key值生成逻辑和each逻辑（如下示例代码），点击按钮“insert”，在屏幕显示的第一个元素前面插入一个元素，屏幕出现向下滚动。
 
-```ts
+<!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
+
+``` TypeScript
 // 定义一个类，标记为可观察的
 // 类中自定义一个数组，标记为可追踪的
 @ObservedV2
 class ArrayHolder {
-  @Trace arr: Array<number> = [];
+  @Trace public arr: Array<number> = [];
 
   // constructor，用于初始化数组个数
   constructor(count: number) {
@@ -1190,13 +1206,26 @@ struct RepeatTemplateSingle {
 
 示例代码仅对增加数据的情况进行展示。
 
-```ts
-// ...ArrayHolder的定义和上述demo代码一致
+<!-- @[repeat_single_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle1.ets) -->
 
+``` TypeScript
+// 定义一个类，标记为可观察的
+// 类中自定义一个数组，标记为可追踪的
+@ObservedV2
+class ArrayHolder1 {
+  @Trace public arr: Array<number> = [];
+
+  // constructor，用于初始化数组个数
+  constructor(count: number) {
+    for (let i = 0; i < count; i++) {
+      this.arr.push(i);
+    }
+  }
+}
 @Entry
 @ComponentV2
-struct RepeatTemplateSingle {
-  @Local arrayHolder: ArrayHolder = new ArrayHolder(100);
+struct RepeatTemplateSingle1 {
+  @Local arrayHolder: ArrayHolder1 = new ArrayHolder1(100);
   @Local totalCount: number = this.arrayHolder.arr.length;
   scroller: Scroller = new Scroller();
 
@@ -1257,11 +1286,13 @@ totalCount > array.length时，在父组件容器滚动过程中，应用需要�
 
 上述规范可以通过实现父组件List/Grid的[onScrollIndex](../arkts-layout-development-create-list.md#响应滚动位置)属性的回调函数完成。示例代码如下：
 
-```ts
+<!-- @[repeat_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/EntryCompSucc.ets) -->
+
+``` TypeScript
 @ObservedV2
 class VehicleData {
-  @Trace name: string;
-  @Trace price: number;
+  @Trace public name: string;
+  @Trace public price: number;
 
   constructor(name: string, price: number) {
     this.name = name;
@@ -1326,7 +1357,6 @@ struct EntryCompSucc {
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
       .onScrollIndex((start, end) => {
-        console.log('onScrollIndex', start, end);
         // 数据懒加载
         if (this.vehicleItems.length < 50) {
           for (let i = 0; i < 10; i++) {
@@ -1409,6 +1439,8 @@ struct RepeatBuilderPage {
   }
 }
 ```
+
+<!-- [repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
 
 @Builder传参方式依次为makeBinding()、地址传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
 

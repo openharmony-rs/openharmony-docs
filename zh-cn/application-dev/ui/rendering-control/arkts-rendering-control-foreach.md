@@ -39,17 +39,19 @@ ArkUI框架对于`ForEach`的键值生成有一套特定的判断规则，这主
 
 在ForEach首次渲染时，会根据前述键值生成规则为数据源的每个数组项生成唯一键值，并创建相应的组件。
 
-```ts
+<!-- [foreach_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach1.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Parent {
+struct Parent4 {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
     Row() {
       Column() {
         ForEach(this.simpleList, (item: string) => {
-          ChildItem({ item: item })
+          ChildItem4({ item: item })
         }, (item: string) => item)
       }
       .width('100%')
@@ -61,7 +63,7 @@ struct Parent {
 }
 
 @Component
-struct ChildItem {
+struct ChildItem4 {
   @Prop item: string;
 
   build() {
@@ -80,17 +82,19 @@ struct ChildItem {
 
 当不同数组项生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项`two`时，只创建了一个`ChildItem`组件，而没有创建多个具有相同键值的组件。
 
-```ts
+<!-- @[foreach_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach2.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Parent {
+struct Parent5 {
   @State simpleList: Array<string> = ['one', 'two', 'two', 'three'];
 
   build() {
     Row() {
       Column() {
         ForEach(this.simpleList, (item: string) => {
-          ChildItem({ item: item })
+          ChildItem5({ item: item })
         }, (item: string) => item)
       }
       .width('100%')
@@ -102,7 +106,7 @@ struct Parent {
 }
 
 @Component
-struct ChildItem {
+struct ChildItem5 {
   @Prop item: string;
 
   build() {
@@ -110,7 +114,7 @@ struct ChildItem {
       .fontSize(50)
   }
 }
- ```
+```
 
 运行效果如下图所示。
 
@@ -123,16 +127,18 @@ struct ChildItem {
 
 在ForEach组件进行非首次渲染时，它会检查新生成的键值是否在上次渲染中已经存在。如果键值不存在，则会创建一个新的组件；如果键值存在，则不会创建新的组件，而是直接渲染该键值所对应的组件。例如，在以下的代码示例中，通过点击事件修改了数组的第三项值为"new three"，这将触发ForEach组件进行非首次渲染。
 
-```ts
+<!-- @[foreach_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach3.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Parent {
+struct Parent6 {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
     Row() {
       Column() {
-        Text('点击修改第3个数组项的值')
+        Text('Click to change the value of the third array item')
           .fontSize(24)
           .fontColor(Color.Red)
           .onClick(() => {
@@ -140,7 +146,7 @@ struct Parent {
           })
 
         ForEach(this.simpleList, (item: string) => {
-          ChildItem({ item: item })
+          ChildItem6({ item: item })
             .margin({ top: 20 })
         }, (item: string) => item)
       }
@@ -154,7 +160,7 @@ struct Parent {
 }
 
 @Component
-struct ChildItem {
+struct ChildItem6 {
   @Prop item: string;
 
   build() {
@@ -183,7 +189,9 @@ ForEach组件在开发过程中的主要应用场景包括：[数据源不变](#
 
 在数据源保持不变的场景中，数据源可以直接采用基本数据类型。例如，页面加载状态时，可以使用骨架屏列表进行渲染展示。
 
-```ts
+<!-- @[article_skeleton_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleSkeletonView.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ArticleList {
@@ -248,11 +256,13 @@ struct ArticleSkeletonView {
 
 在数据源数组项发生变化的场景下，如数组插入、删除操作或者数组项索引位置交换时，数据源应为对象数组类型，并使用对象的唯一ID作为键值。
 
-```ts
-class Article {
-  id: string;
-  title: string;
-  brief: string;
+<!-- @[article_list_view_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView.ets) -->
+
+``` TypeScript
+class Article1 {
+  public id: string;
+  public title: string;
+  public brief: string;
 
   constructor(id: string, title: string, brief: string) {
     this.id = id;
@@ -263,30 +273,30 @@ class Article {
 
 @Entry
 @Component
-struct ArticleListView {
+struct ArticleListView1 {
   @State isListReachEnd: boolean = false;
-  @State articleList: Array<Article> = [
-    new Article('001', '第1篇文章', '文章简介内容'),
-    new Article('002', '第2篇文章', '文章简介内容'),
-    new Article('003', '第3篇文章', '文章简介内容'),
-    new Article('004', '第4篇文章', '文章简介内容'),
-    new Article('005', '第5篇文章', '文章简介内容'),
-    new Article('006', '第6篇文章', '文章简介内容')
+  @State articleList: Array<Article1> = [
+    new Article1('001', 'Article 1', 'Abstract'),
+    new Article1('002', 'Article 2', 'Abstract'),
+    new Article1('003', 'Article 3', 'Abstract'),
+    new Article1('004', 'Article 4', 'Abstract'),
+    new Article1('005', 'Article 5', 'Abstract'),
+    new Article1('006', 'Article 6', 'Abstract')
   ];
 
   loadMoreArticles() {
-    this.articleList.push(new Article('007', '加载的新文章', '文章简介内容'));
+    this.articleList.push(new Article1('007', 'New Article', 'Abstract'));
   }
 
   build() {
     Column({ space: 5 }) {
       List() {
-        ForEach(this.articleList, (item: Article) => {
+        ForEach(this.articleList, (item: Article1) => {
           ListItem() {
-            ArticleCard({ article: item })
+            ArticleCard1({ article: item })
               .margin({ top: 20 })
           }
-        }, (item: Article) => item.id)
+        }, (item: Article1) => item.id)
       }
       .onReachEnd(() => {
         this.isListReachEnd = true;
@@ -310,13 +320,13 @@ struct ArticleListView {
 }
 
 @Component
-struct ArticleCard {
-  @Prop article: Article;
+struct ArticleCard1 {
+  @Prop article: Article1;
 
   build() {
     Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
+      // 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      Image($r('app.media.startIcon'))
         .width(80)
         .height(80)
         .margin({ right: 20 })
@@ -358,14 +368,16 @@ struct ArticleCard {
 
 当数据源的数组项为对象数据类型，并且只修改某个数组项的属性值时，由于数据源为复杂数据类型，ArkUI框架无法监听到`@State`装饰器修饰的数据源数组项的属性变化，从而无法触发`ForEach`的重新渲染。为实现`ForEach`重新渲染，需要结合[\@Observed和\@ObjectLink](../state-management/arkts-observed-and-objectlink.md)装饰器使用。例如，在文章列表卡片上点击“点赞”按钮，从而修改文章的点赞数量。
 
-```ts
+<!-- @[article_list_view_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView2.ets) -->
+
+``` TypeScript
 @Observed
-class Article {
-  id: string;
-  title: string;
-  brief: string;
-  isLiked: boolean;
-  likesCount: number;
+class Article2 {
+  public id: string;
+  public title: string;
+  public brief: string;
+  public isLiked: boolean;
+  public likesCount: number;
 
   constructor(id: string, title: string, brief: string, isLiked: boolean, likesCount: number) {
     this.id = id;
@@ -378,26 +390,26 @@ class Article {
 
 @Entry
 @Component
-struct ArticleListView {
-  @State articleList: Array<Article> = [
-    new Article('001', '第0篇文章', '文章简介内容', false, 100),
-    new Article('002', '第1篇文章', '文章简介内容', false, 100),
-    new Article('003', '第2篇文章', '文章简介内容', false, 100),
-    new Article('004', '第4篇文章', '文章简介内容', false, 100),
-    new Article('005', '第5篇文章', '文章简介内容', false, 100),
-    new Article('006', '第6篇文章', '文章简介内容', false, 100),
+struct ArticleListView2 {
+  @State articleList: Array<Article2> = [
+    new Article2('001', 'Article 0', 'Abstract', false, 100),
+    new Article2('002', 'Article 1', 'Abstract', false, 100),
+    new Article2('003', 'Article 2', 'Abstract', false, 100),
+    new Article2('004', 'Article 4', 'Abstract', false, 100),
+    new Article2('005', 'Article 5', 'Abstract', false, 100),
+    new Article2('006', 'Article 6', 'Abstract', false, 100),
   ];
 
   build() {
     List() {
-      ForEach(this.articleList, (item: Article) => {
+      ForEach(this.articleList, (item: Article2) => {
         ListItem() {
-          ArticleCard({
+          ArticleCard2({
             article: item
           })
             .margin({ top: 20 })
         }
-      }, (item: Article) => item.id)
+      }, (item: Article2) => item.id)
     }
     .padding(20)
     .scrollBar(BarState.Off)
@@ -406,8 +418,8 @@ struct ArticleListView {
 }
 
 @Component
-struct ArticleCard {
-  @ObjectLink article: Article;
+struct ArticleCard2 {
+  @ObjectLink article: Article2;
 
   handleLiked() {
     this.article.isLiked = !this.article.isLiked;
@@ -416,8 +428,8 @@ struct ArticleCard {
 
   build() {
     Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
+      // 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      Image($r('app.media.startIcon'))
         .width(80)
         .height(80)
         .margin({ right: 20 })
@@ -470,7 +482,9 @@ struct ArticleCard {
 ### 拖拽排序
 在List组件下使用ForEach，并设置[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果数据位置发生变化，将触发onMove事件，上报数据移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
 
-```ts
+<!-- @[foreach_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEachSort.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ForEachSort {
@@ -544,23 +558,25 @@ struct ForEachSort {
 
 在本示例中，通过设置`ForEach`的第三个参数`KeyGenerator`函数，自定义键值生成规则为数据源的索引`index`的字符串类型值。当点击父组件`Parent`中“在第1项后插入新项”文本组件后，界面会出现非预期的结果。
 
-```ts
+<!-- @[foreach_abnormal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/AbnormalExample.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Parent {
+struct Parent1 {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
     Column() {
       Button() {
-        Text('在第1项后插入新项').fontSize(30)
+        Text('Insert Item After First Item').fontSize(30)
       }
       .onClick(() => {
         this.simpleList.splice(1, 0, 'new item');
       })
 
       ForEach(this.simpleList, (item: string) => {
-        ChildItem({ item: item })
+        ChildItem1({ item: item })
       }, (item: string, index: number) => index.toString())
     }
     .justifyContent(FlexAlign.Center)
@@ -571,7 +587,7 @@ struct Parent {
 }
 
 @Component
-struct ChildItem {
+struct ChildItem1 {
   @Prop item: string;
 
   build() {
@@ -598,24 +614,25 @@ struct ChildItem {
 
 在本示例中，`ForEach`的第三个参数`KeyGenerator`函数缺省。根据上述[键值生成规则](#键值生成规则)，此例使用框架默认的键值，即最终键值为字符串`index + '__' + JSON.stringify(item)`。点击文本组件“在第1项后插入新项”后，`ForEach`将为第2个数组项及后面的所有数据项重新创建组件。
 
-```ts
+<!-- @[bad_performance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/BadPerformance.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Parent {
+struct Parent2 {
   @State simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
     Column() {
       Button() {
-        Text('在第1项后插入新项').fontSize(30)
+        Text('Insert Item After First Item').fontSize(30)
       }
       .onClick(() => {
         this.simpleList.splice(1, 0, 'new item');
-        console.info(`[onClick]: simpleList is [${this.simpleList.join(', ')}]`);
       })
 
       ForEach(this.simpleList, (item: string) => {
-        ChildItem({ item: item })
+        ChildItem2({ item: item })
       })
     }
     .justifyContent(FlexAlign.Center)
@@ -626,11 +643,10 @@ struct Parent {
 }
 
 @Component
-struct ChildItem {
+struct ChildItem2 {
   @Prop item: string;
 
   aboutToAppear() {
-    console.info(`[aboutToAppear]: item is ${this.item}`);
   }
 
   build() {
@@ -659,24 +675,30 @@ struct ChildItem {
 尽管本例中界面渲染结果符合预期，但在每次向数组中间插入新数组项时，`ForEach`会为该数组项及其后面的所有数组项重新创建组件。当数据源数据量较大或组件结构复杂时，组件无法复用会导致性能下降。因此，不建议省略第三个参数`KeyGenerator`函数，也不建议在键值中使用数据项索引`index`。
 
 正确渲染并保证效率的`ForEach`写法是：
-```ts
+
+<!-- @[foreach_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach1.ets) -->
+
+``` TypeScript
 ForEach(this.simpleList, (item: string) => {
-  ChildItem({ item: item })
-}, (item: string) => item)  // 需要保证key唯一
+  ChildItem4({ item: item })
+}, (item: string) => item) // 需要保证key唯一
 ```
+
 提供了第三个参数`KeyGenerator`，在这个例子中，对数据源的不同数据项生成不同的key，并且对同一个数据项每次生成相同的key。
 
 ### 数据变化不渲染
 点击按钮`Like/UnLike first article`，第一个组件会切换点赞手势和后面的点赞数量，但是点击按钮`Replace first article`之后再点击按钮`Like/UnLike first article`就不生效了。原因是替换`articleList[0]`之后，`articleList`状态变量发生变化，触发ForEach重新渲染，但是新的`articleList[0]`生成的key没有变，ForEach不会将数据更新同步给子组件，因此第一个组件仍然绑定旧的`articleList[0]`。新`articleList[0]`的属性发生变更，第一个组件感知不到，不会重新渲染。点击点赞手势，会触发渲染。因为变更的是跟组件绑定的数组项的属性，组件会感知并重新渲染。
 
-```ts
+<!-- @[article_list_view_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView3.ets) -->
+
+``` TypeScript
 @Observed
-class Article {
-  id: string;
-  title: string;
-  brief: string;
-  isLiked: boolean;
-  likesCount: number;
+class Article3 {
+  public id: string;
+  public title: string;
+  public brief: string;
+  public isLiked: boolean;
+  public likesCount: number;
 
   constructor(id: string, title: string, brief: string, isLiked: boolean, likesCount: number) {
     this.id = id;
@@ -689,21 +711,21 @@ class Article {
 
 @Entry
 @Component
-struct ArticleListView {
-  @State articleList: Array<Article> = [
-    new Article('001', '第0篇文章', '文章简介内容', false, 100),
-    new Article('002', '第1篇文章', '文章简介内容', false, 100),
-    new Article('003', '第2篇文章', '文章简介内容', false, 100),
-    new Article('004', '第4篇文章', '文章简介内容', false, 100),
-    new Article('005', '第5篇文章', '文章简介内容', false, 100),
-    new Article('006', '第6篇文章', '文章简介内容', false, 100),
+struct ArticleListView3 {
+  @State articleList: Array<Article3> = [
+    new Article3('001', 'Article 0', 'Abstract', false, 100),
+    new Article3('002', 'Article 1', 'Abstract', false, 100),
+    new Article3('003', 'Article 2', 'Abstract', false, 100),
+    new Article3('004', 'Article 4', 'Abstract', false, 100),
+    new Article3('005', 'Article 5', 'Abstract', false, 100),
+    new Article3('006', 'Article 6', 'Abstract', false, 100),
   ];
 
   build() {
     Column() {
       Button('Replace first article')
         .onClick(() => {
-          this.articleList[0] = new Article('001', '第0篇文章', '文章简介内容', false, 100);
+          this.articleList[0] = new Article3('001', 'Article 0', 'Abstract', false, 100);
         })
         .width(300)
         .margin(10)
@@ -718,14 +740,14 @@ struct ArticleListView {
         .margin(10)
 
       List() {
-        ForEach(this.articleList, (item: Article) => {
+        ForEach(this.articleList, (item: Article3) => {
           ListItem() {
-            ArticleCard({
+            ArticleCard3({
               article: item
             })
               .margin({ top: 20 })
           }
-        }, (item: Article) => item.id)
+        }, (item: Article3) => item.id)
       }
       .padding(20)
       .scrollBar(BarState.Off)
@@ -735,8 +757,8 @@ struct ArticleListView {
 }
 
 @Component
-struct ArticleCard {
-  @ObjectLink article: Article;
+struct ArticleCard3 {
+  @ObjectLink article: Article3;
 
   handleLiked() {
     this.article.isLiked = !this.article.isLiked;
@@ -745,8 +767,8 @@ struct ArticleCard {
 
   build() {
     Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
+      // 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+      Image($r('app.media.startIcon'))
         .width(80)
         .height(80)
         .margin({ right: 20 })
@@ -785,16 +807,19 @@ struct ArticleCard {
   }
 }
 ```
+
 **图13** 数据变化不渲染  
 ![ForEach-StateVarNoRender](figures/ForEach-StateVarNoRender.PNG)
 
 ### 非必要内存消耗
 如果开发者没有定义`keyGenerator`函数，则ArkUI框架会使用默认的键值生成函数，即`(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }`。当`item`是复杂对象时，将其JSON序列化会得到长字符串，占用更多的内存。
 
-```ts
-class Data {
-  longStr: string;
-  key: string;
+<!-- @[non_necessary_mem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/NonNecessaryMem.ets) -->
+
+``` TypeScript
+class Data3 {
+  public longStr: string;
+  public key: string;
 
   constructor(longStr: string, key: string) {
     this.longStr = longStr;
@@ -804,8 +829,8 @@ class Data {
 
 @Entry
 @Component
-struct Parent {
-  @State simpleList: Array<Data> = [];
+struct Parent7 {
+  @State simpleList: Array<Data3> = [];
 
   aboutToAppear(): void {
     let longStr = '';
@@ -813,20 +838,20 @@ struct Parent {
       longStr += i.toString();
     }
     for (let index = 0; index < 3000; index++) {
-      let data: Data = new Data(longStr, 'a' + index.toString());
+      let data: Data3 = new Data3(longStr, 'a' + index.toString());
       this.simpleList.push(data);
     }
   }
 
   build() {
     List() {
-      ForEach(this.simpleList, (item: Data) => {
+      ForEach(this.simpleList, (item: Data3) => {
         ListItem() {
           Text(item.key)
         }
       }
         // 如果不定义下面的keyGenerator函数，则ArkUI框架会使用默认的键值生成函数
-        , (item: Data) => {
+        , (item: Data3) => {
           return item.key;
         }
       )
@@ -847,9 +872,11 @@ struct Parent {
 ### 键值生成失败
 如果开发者没有定义`keyGenerator`函数，则ArkUI框架会使用默认的键值生成函数，即`(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }`。然而，`JSON.stringify`序列化在某些数据结构上会失败，导致应用发生jscrash并退出。例如，`bigint`无法被`JSON.stringify`序列化：
 
-```ts
-class Data {
-  content: bigint;
+<!-- @[crash_normal_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/CrashNormalExample.ets) -->
+
+``` TypeScript
+class Data1 {
+  public content: bigint;
 
   constructor(content: bigint) {
     this.content = content;
@@ -858,18 +885,18 @@ class Data {
 
 @Entry
 @Component
-struct Parent {
-  @State simpleList: Array<Data> = [new Data(1234567890123456789n), new Data(2345678910987654321n)];
+struct Parent3 {
+  @State simpleList: Array<Data1> = [new Data1(1234567890123456789n), new Data1(2345678910987654321n)];
 
   build() {
     Row() {
       Column() {
-        ForEach(this.simpleList, (item: Data) => {
-          ChildItem({ item: item.content.toString() })
+        ForEach(this.simpleList, (item: Data1) => {
+          ChildItem3({ item: item.content.toString() })
         }
           // 如果不定义下面的keyGenerator函数，则ArkUI框架会使用默认的键值生成函数
           // Data中的content: bigint在JSON序列化时失败
-          , (item: Data) => item.content.toString()
+          , (item: Data1) => item.content.toString()
         )
       }
       .width('100%')
@@ -881,7 +908,7 @@ struct Parent {
 }
 
 @Component
-struct ChildItem {
+struct ChildItem3 {
   @Prop item: string;
 
   build() {
