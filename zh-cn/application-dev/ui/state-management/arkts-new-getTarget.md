@@ -32,47 +32,11 @@
 ## 限制条件
 
 - getTarget仅支持对象类型传参。
+<!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/modelView1.ets) -->
 
-  ```ts
-  import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // 非对象类型入参，错误用法
-  @Observed
-  class Info {
-    name: string = "Tom";
-  }
-  let info: Info = new Info();
-  let rawInfo: Info = UIUtils.getTarget(info); // 正确用法
-  ```
 
 - 更改getTarget获取的原始对象中的内容不会被观察到变化，也不会触发UI刷新。
-
-  ```ts
-  import { UIUtils } from '@kit.ArkUI';
-  @Observed
-  class Info {
-    name: string = "Tom";
-  }
-  @Entry
-  @Component
-  struct Index {
-    @State info: Info = new Info();
-    
-    build() {
-      Column() {
-        Text(`info.name: ${this.info.name}`)
-        Button(`更改代理对象的属性`)
-          .onClick(() => {
-            this.info.name = "Alice"; // Text组件能够刷新
-          })
-        Button(`更改原始对象的属性`)
-          .onClick(() => {
-            let rawInfo: Info = UIUtils.getTarget(this.info);
-            rawInfo.name = "Bob"; // Text组件不能刷新
-          })
-      }
-    }
-  }
-  ```
+<!-- @[Changes_to_the_content_in_the_original](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/Page1.ets) -->
 
 ## 使用场景
 
@@ -81,7 +45,6 @@
 状态管理V1有两种场景会给对象增加代理：
 
 【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该过程发生在new对象的过程中，没有经过new操作符创建的对象是不被代理的。
-
 ```ts
 @Observed
 class ObservedClass {
@@ -95,152 +58,18 @@ let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
 ```
 
 【2】状态变量装饰器装饰的复杂类型对象。使用\@State、[\@Prop](./arkts-prop.md)等状态变量装饰器装饰Class、Map、Set、Date、Array时，会添加代理。若该对象已经是代理对象，则不会重复创建代理。
-
-```ts
-@Observed
-class ObservedClass {
-  name: string = "Tom";
-}
-class NonObservedClass {
-  name: string = "Tom";
-}
-let observedClass: ObservedClass = new ObservedClass(); // 被代理
-let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
-@Entry
-@Component
-struct Index {
-  @State observedObject: ObservedClass = observedClass; // 已被代理数据不会重复创建代理
-  @State nonObservedObject: NonObservedClass = nonObservedClass; // 创建代理
-  @State numberList: number[] = [1, 2, 3]; // Array类型创建代理
-  @State sampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // Map类型创建代理
-  @State sampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // Set类型创建代理
-  @State sampleDate: Date = new Date(); // Date类型创建代理
-  
-  build() {
-    Column() {
-      Text(`this.observedObject === observedClass: ${this.observedObject === observedClass}`) // true
-      Text(`this.nonObservedObject === nonObservedClass: ${this.nonObservedObject === nonObservedClass}`) // false
-    }
-  }
-}
-```
+<!-- @[nonObservedObject_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/Page2.ets) -->
 
 使用UIUtils.getTarget接口可以获取代理前的原始对象。
-
-```ts
-import { UIUtils } from '@kit.ArkUI';
-@Observed
-class ObservedClass {
-  name: string = "Tom";
-}
-class NonObservedClass {
-  name: string = "Tom";
-}
-let observedClass: ObservedClass = new ObservedClass(); // 被代理
-let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
-let globalNumberList: number[] = [1, 2, 3]; // 不被代理
-let globalSampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // 不被代理
-let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
-let globalSampleDate: Date = new Date(); // 不被代理
-@Entry
-@Component
-struct Index {
-  @State observedObject: ObservedClass = observedClass; // 已被代理数据不会重复创建代理
-  @State nonObservedObject: NonObservedClass = nonObservedClass; // 创建代理
-  @State numberList: number[] = globalNumberList; // Array类型创建代理
-  @State sampleMap: Map<number, string> = globalSampleMap; // Map类型创建代理
-  @State sampleSet: Set<number> = globalSampleSet; // Set类型创建代理
-  @State sampleDate: Date = globalSampleDate; // Date类型创建代理
-  
-  build() {
-    Column() {
-      Text(`this.observedObject === observedClass: ${this.observedObject ===
-           observedClass}`) // true
-      Text(`UIUtils.getTarget(this.nonObservedObject) === nonObservedClass: ${UIUtils.getTarget(this.nonObservedObject) ===
-           nonObservedClass}`) // true
-      Text(`UIUtils.getTarget(this.numberList) === globalNumberList: ${UIUtils.getTarget(this.numberList) ===
-           globalNumberList}`) // true
-      Text(`UIUtils.getTarget(this.sampleMap) === globalSampleMap: ${UIUtils.getTarget(this.sampleMap) ===
-           globalSampleMap}`) // true
-      Text(`UIUtils.getTarget(this.sampleSet) === globalSampleSet: ${UIUtils.getTarget(this.sampleSet) ===
-           globalSampleSet}`) // true
-      Text(`UIUtils.getTarget(this.sampleDate) === globalSampleDate: ${UIUtils.getTarget(this.sampleDate) ===
-           globalSampleDate}`) // true
-    }
-  }
-}
-```
+<!-- @[nonObservedClass_out](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/Page3.ets) -->
 
 ### 获取状态管理V2代理前的原始对象
 
 状态管理V2会给状态变量装饰器如\@Trace、\@Local装饰的Map、Set、Date、Array添加一层代理。和V1不同的是，状态管理V2不会对类对象实例进行代理。
-
-```ts
-@ObservedV2
-class ObservedClass {
-  @Trace name: string = "Tom";
-}
-let globalObservedObject: ObservedClass = new ObservedClass(); // 不被代理
-let globalNumberList: number[] = [1, 2, 3]; // 不被代理
-let globalSampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // 不被代理
-let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
-let globalSampleDate: Date = new Date(); // 不被代理
-@Entry
-@ComponentV2
-struct Index {
-  @Local observedObject: ObservedClass = globalObservedObject; // V2中对象不被代理
-  @Local numberList: number[] = globalNumberList; // Array类型创建代理
-  @Local sampleMap: Map<number, string> = globalSampleMap; // Map类型创建代理
-  @Local sampleSet: Set<number> = globalSampleSet; // Set类型创建代理
-  @Local sampleDate: Date = globalSampleDate; // Date类型创建代理
-  
-  build() {
-    Column() {
-      Text(`this.observedObject === globalObservedObject ${this.observedObject === globalObservedObject}`) // true
-      Text(`this.numberList === globalNumberList ${this.numberList === globalNumberList}`) // false
-    }
-  }
-}
-```
+<!-- @[observedObject_globalObservedObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/Page4.ets) -->
 
 使用UIUtils.getTarget接口可以获取代理前的原始对象。
-
-```ts
-import { UIUtils } from '@kit.ArkUI';
-@ObservedV2
-class ObservedClass {
-  @Trace name: string = "Tom";
-}
-let globalObservedObject: ObservedClass = new ObservedClass(); // 不被代理
-let globalNumberList: number[] = [1, 2, 3]; // 不被代理
-let globalSampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // 不被代理
-let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
-let globalSampleDate: Date = new Date(); // 不被代理
-@Entry
-@ComponentV2
-struct Index {
-  @Local observedObject: ObservedClass = globalObservedObject; // V2中对象不被代理
-  @Local numberList: number[] = globalNumberList; // Array类型创建代理
-  @Local sampleMap: Map<number, string> = globalSampleMap; // Map类型创建代理
-  @Local sampleSet: Set<number> = globalSampleSet; // Set类型创建代理
-  @Local sampleDate: Date = globalSampleDate; // Date类型创建代理
-  
-  build() {
-    Column() {
-      Text(`this.observedObject === globalObservedObject ${this.observedObject ===
-           globalObservedObject}`) // true
-      Text(`UIUtils.getTarget(this.numberList) === globalNumberList: ${UIUtils.getTarget(this.numberList) ===
-           globalNumberList}`) // true
-      Text(`UIUtils.getTarget(this.sampleMap) === globalSampleMap: ${UIUtils.getTarget(this.sampleMap) ===
-           globalSampleMap}`) // true
-      Text(`UIUtils.getTarget(this.sampleSet) === globalSampleSet: ${UIUtils.getTarget(this.sampleSet) ===
-           globalSampleSet}`) // true
-      Text(`UIUtils.getTarget(this.sampleDate) === globalSampleDate: ${UIUtils.getTarget(this.sampleDate) ===
-           globalSampleDate}`) // true
-    }
-  }
-}
-```
+<!-- @[NonObservedClass_outs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/Page5.ets) -->
 
 状态管理V2装饰器会为装饰的变量生成getter和setter方法，同时为原有变量名添加"\_\_ob\_"的前缀。出于性能考虑，getTarget接口不会对V2装饰器生成的前缀进行处理，因此向getTarget接口传入\@ObservedV2装饰的类对象实例时，返回的对象依旧为对象本身，且被\@Trace装饰的属性名仍有"\_\_ob\_"前缀。
 
