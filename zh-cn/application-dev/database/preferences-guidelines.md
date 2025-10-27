@@ -170,4 +170,55 @@ if (preference == nullptr || errCode != PREFERENCES_OK) {
 
 <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
+``` C++
+// 3. 对key_int、key_bool和key_string注册数据变更订阅。
+const char *keys[] = {"key_int", "key_bool", "key_string"};
+int ret = OH_Preferences_RegisterDataObserver(preference, nullptr, DataChangeObserverCallback, keys, 3);
+if (ret != PREFERENCES_OK) {
+    (void)OH_Preferences_Close(preference);
+    // 错误处理
+}
+    
+// 4. 设置Preferences实例中的KV数据。
+ret = OH_Preferences_SetInt(preference, keys[0], 0);
+if (ret != PREFERENCES_OK) {
+    (void)OH_Preferences_Close(preference);
+    // 错误处理
+}
+ret = OH_Preferences_SetBool(preference, keys[1], true);
+if (ret != PREFERENCES_OK) {
+    (void)OH_Preferences_Close(preference);
+    // 错误处理
+}
+int32_t stringIndex = 2;
+ret = OH_Preferences_SetString(preference, keys[stringIndex], "string value");
+if (ret != PREFERENCES_OK) {
+    (void)OH_Preferences_Close(preference);
+    // 错误处理
+}
+    
+// 5. 获取Preferences实例中的KV数据。
+int intValue = 0;
+ret = OH_Preferences_GetInt(preference, keys[0], &intValue);
+if (ret == PREFERENCES_OK) {
+    // 业务逻辑
+}
+    
+bool boolValue = false;
+ret = OH_Preferences_GetBool(preference, keys[1], &boolValue);
+if (ret == PREFERENCES_OK) {
+    // 业务逻辑
+}
+    
+char *stringValue = nullptr;
+uint32_t valueLen = 0;
+ret = OH_Preferences_GetString(preference, keys[stringIndex], &stringValue, &valueLen);
+if (ret == PREFERENCES_OK) {
+    // 业务逻辑
+    // 使用完OH_Preferences_GetString接口后，需要对字符串进行释放。
+    OH_Preferences_FreeString(stringValue);
+    stringValue = nullptr;
+}
+```
+
 <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
