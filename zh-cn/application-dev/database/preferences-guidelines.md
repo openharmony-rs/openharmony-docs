@@ -113,6 +113,61 @@ void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, 
 
 <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
+``` C++
+// 1. 创建Preferences配置选项。
+OH_PreferencesOption *option = OH_PreferencesOption_Create();
+if (option == nullptr) {
+    // 错误处理
+}
+// 设置Preferences配置选项的文件名称。
+int ret = OH_PreferencesOption_SetFileName(option, "testdb");
+if (ret != PREFERENCES_OK) {
+    (void)OH_PreferencesOption_Destroy(option);
+    // 错误处理
+}
+// 设置Preferences配置选项的应用组ID。
+ret = OH_PreferencesOption_SetDataGroupId(option, "");
+if (ret != PREFERENCES_OK) {
+    (void)OH_PreferencesOption_Destroy(option);
+    // 错误处理
+}
+// 设置Preferences配置选项的包名称。
+ret = OH_PreferencesOption_SetBundleName(option, "com.example");
+if (ret != PREFERENCES_OK) {
+    (void)OH_PreferencesOption_Destroy(option);
+    // 错误处理
+}
+// 设置Preferences配置选项的存储模式，需要注意的是，设置之前需要调用OH_Preferences_IsStorageTypeSupported接口判断当前平台是否支持需要选择的模式。
+bool isGskvSupported = false;
+ret = OH_Preferences_IsStorageTypeSupported(Preferences_StorageType::PREFERENCES_STORAGE_GSKV, &isGskvSupported);
+if (ret != PREFERENCES_OK) {
+    (void)OH_PreferencesOption_Destroy(option);
+    // 错误处理
+}
+if (isGskvSupported) {
+    ret = OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV);
+    if (ret != PREFERENCES_OK) {
+        (void)OH_PreferencesOption_Destroy(option);
+        // 错误处理
+    }
+} else {
+    ret = OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_XML);
+    if (ret != PREFERENCES_OK) {
+        (void)OH_PreferencesOption_Destroy(option);
+        // 错误处理
+    }
+}
+// 2. 打开一个Preferences实例。
+int errCode = PREFERENCES_OK;
+OH_Preferences *preference = OH_Preferences_Open(option, &errCode);
+// option使用完毕后可直接释放，释放后需要将指针置空。
+(void)OH_PreferencesOption_Destroy(option);
+option = nullptr;
+if (preference == nullptr || errCode != PREFERENCES_OK) {
+    // 错误处理
+}
+```
+
 <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 
 <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
