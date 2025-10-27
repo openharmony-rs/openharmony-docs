@@ -42,3 +42,62 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
 
 
 <!-- @[module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // [StartExclude exclude_module]
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    // [EndExclude  exclude_module]
+    "abilities": [
+      {
+        "name": "EntryAbility", // UIAbility组件的名称
+        "srcEntry": "./ets/entryability/EntryAbility.ets", // UIAbility组件的代码路径
+        "description": "$string:EntryAbility_desc", // UIAbility组件的描述信息
+        "icon": "$media:layered_image", // UIAbility组件的图标
+        "label": "$string:EntryAbility_label", // UIAbility组件的标签
+        "startWindowIcon": "$media:startIcon", // UIAbility组件启动页面图标资源文件的索引
+        "startWindowBackground": "$color:start_window_background", // UIAbility组件启动页面背景颜色资源文件的索引
+        // [StartExclude exclude_abilities]
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+        // [EndExclude exclude_abilities]
+      }
+    ],
+    // [StartExclude exclude_abilities]
+    "extensionAbilities": [
+      {
+        "name": "EntryBackupAbility",
+        "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
+        "type": "backup",
+        "exported": false,
+        "metadata": [
+          {
+            "name": "ohos.extension.backup",
+            "resource": "$profile:backup_config"
+          }
+        ],
+      }
+    ]
+    // [EndExclude exclude_abilities]
+  }
+}
+```
