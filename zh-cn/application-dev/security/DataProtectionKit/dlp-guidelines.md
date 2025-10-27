@@ -262,6 +262,38 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 8. 订阅、取消订阅DLP打开事件。
 
   <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 8 订阅、取消订阅DLP打开事件。
+  event(info: dlpPermission.AccessedDLPFileInfo) {
+    console.info('openDlpFile event', info.uri, info.lastOpenTime);
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDlpFile event' + info.uri + info.lastOpenTime);
+  }
+  
+  unSubscribe() {
+    try {
+      dlpPermission.off('openDLPFile', this.event); // 取消订阅
+      this.result = 'unSubscribe result: 已取消注册';
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'unSubscribe result: 已取消注册');
+    } catch (err) {
+      console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+      this.result = 'unSubscribe error: 取消注册失败';
+    }
+  }
+    
+  subscribe() {
+    try {
+      dlpPermission.on('openDLPFile', this.event); // 订阅
+      this.result = 'subscribe result: 已注册';
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: 已注册');
+    } catch (err) {
+      console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+      this.result = 'subscribe error: 注册失败';
+    }
+  }
+  ```
 
 9. 获取DLP文件打开记录。<br>
 // 使用该接口需要由demo应用打开DLP文件
