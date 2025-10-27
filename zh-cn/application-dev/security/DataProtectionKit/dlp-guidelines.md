@@ -142,6 +142,34 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     3.3 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。调用以下代码，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
 
   <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  //3 生成DLP文件
+  generateDlpFiles() {
+    try {
+      let fileUri: string = this.uri;
+      let fileName: string = this.fileName;
+      let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+      let want: Want = {
+        'uri': fileUri,
+        'parameters': {
+          'displayName': fileName
+        }
+      };// 请求参数
+      dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
+        this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
+        console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
+        console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
+      });
+    } catch (err) {
+      this.result = 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message;
+      console.error('startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
+    }
+  }
+  ```
 
 4. 查询当前应用是否在沙箱中。 <br>
 // 使用该接口需要由demo应用打开DLP文件
