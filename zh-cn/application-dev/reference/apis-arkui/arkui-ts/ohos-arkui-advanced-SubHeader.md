@@ -449,7 +449,7 @@ struct SubHeaderExample {
           value: 'selectDemo',
           selected: 0,
           onSelect: (index: number, value?: string) => {
-            console.log(`SubHeader onSelect index : ${index}, value: ${value}`);
+            console.info(`SubHeader onSelect index : ${index}, value: ${value}`);
           }
         },
         operationType: OperationType.ICON_GROUP,
