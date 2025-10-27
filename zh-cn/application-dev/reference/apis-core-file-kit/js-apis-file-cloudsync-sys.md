@@ -83,7 +83,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-云图同步对象移除'progress'类型的指定callback回调。
+云图同步对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -414,7 +414,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-云图下载对象移除'progress'类型的指定callback回调。
+云图下载对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
