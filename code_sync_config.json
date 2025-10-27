@@ -1075,32 +1075,32 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":182,
+						"end_line":186,
 						"name":"module_all",
 						"start_line":16
 					},
 					{
-						"end_line":181,
+						"end_line":185,
 						"name":"module_metadata",
 						"start_line":17
 					},
 					{
-						"end_line":180,
+						"end_line":184,
 						"name":"module_abilities_skills",
 						"start_line":18
 					},
 					{
-						"end_line":177,
+						"end_line":181,
 						"name":"module_appEnvironments",
 						"start_line":21
 					},
 					{
-						"end_line":178,
+						"end_line":182,
 						"name":"module_fileContextMenu",
 						"start_line":20
 					},
 					{
-						"end_line":179,
+						"end_line":183,
 						"name":"module_systemTheme",
 						"start_line":19
 					}
