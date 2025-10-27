@@ -27,49 +27,7 @@
 
 状态管理V1中\@State等装饰器默认支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，下面的例子就展示了这一限制：
 
-```ts
-class Info {
-  name: string = 'Jack';
-  age: number = 12;
-}
-
-@Entry
-@Component
-struct Index {
-  @State info: Info = new Info();
-
-  // 借助getFontSize的日志打印，可以分辨哪个组件触发了渲染
-  getFontSize(id: number): number {
-    console.info(`Component ${id} render`);
-    return 30;
-  }
-
-  build() {
-    Column() {
-      Text(`name: ${this.info.name}`)
-        .fontSize(this.getFontSize(1))
-      Text(`age: ${this.info.age}`)
-        .fontSize(this.getFontSize(2))
-
-      // 点击当前Button，可以发现当前虽然仅改变了name属性
-      // 但是依旧会触发两个Text的刷新
-      // Text(`age: ${this.info.age}`)是冗余刷新
-      Button('change name').onClick(() => {
-        this.info.name = 'Jane';
-      })
-
-      // 点击当前Button，可以发现当前虽然仅改变了age属性
-      // 但是依旧会触发两个Text的刷新
-      // Text(`name: ${this.info.name}`)是冗余刷新
-      Button('change age').onClick(() => {
-        this.info.age++;
-      })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+<!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) -->
 
 > **说明：**
 >
@@ -113,68 +71,7 @@ Component 2 render
 
 使用\@Track装饰器可以避免冗余刷新。
 
-```ts
-class LogTrack {
-  @Track str1: string;
-  @Track str2: string;
-
-  constructor(str1: string) {
-    this.str1 = str1;
-    this.str2 = 'World';
-  }
-}
-
-class LogNotTrack {
-  str1: string;
-  str2: string;
-
-  constructor(str1: string) {
-    this.str1 = str1;
-    this.str2 = '世界';
-  }
-}
-
-@Entry
-@Component
-struct AddLog {
-  @State logTrack: LogTrack = new LogTrack('Hello');
-  @State logNotTrack: LogNotTrack = new LogNotTrack('你好');
-
-  isRender(index: number) {
-    console.log(`Text ${index} is rendered`);
-    return 50;
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.logTrack.str1) // Text1
-          .fontSize(this.isRender(1))
-          .fontWeight(FontWeight.Bold)
-        Text(this.logTrack.str2) // Text2
-          .fontSize(this.isRender(2))
-          .fontWeight(FontWeight.Bold)
-        Button('change logTrack.str1')
-          .onClick(() => {
-            this.logTrack.str1 = 'Bye';
-          })
-        Text(this.logNotTrack.str1) // Text3
-          .fontSize(this.isRender(3))
-          .fontWeight(FontWeight.Bold)
-        Text(this.logNotTrack.str2) // Text4
-          .fontSize(this.isRender(4))
-          .fontWeight(FontWeight.Bold)
-        Button('change logNotTrack.str1')
-          .onClick(() => {
-            this.logNotTrack.str1 = '再见';
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[AddLog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) -->
 
 在上面的示例中：
 
@@ -205,55 +102,7 @@ struct AddLog {
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track装饰的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
 
-```ts
-class Log {
-  @Track logInfo: string;
-  owner: string;
-  id: number;
-  time: Date;
-  location: string;
-  reason: string;
-
-  constructor(logInfo: string) {
-    this.logInfo = logInfo;
-    this.owner = 'OH';
-    this.id = 0;
-    this.time = new Date();
-    this.location = 'CN';
-    this.reason = 'NULL';
-  }
-}
-
-@Entry
-@Component
-struct AddLog {
-  @State log: Log = new Log('origin info.');
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.log.logInfo)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            // 没有被@Track装饰的属性可以在点击事件中使用。
-            console.log('owner: ' + this.log.owner +
-              ' id: ' + this.log.id +
-              ' time: ' + this.log.time +
-              ' location: ' + this.log.location +
-              ' reason: ' + this.log.reason);
-            this.log.time = new Date();
-            this.log.id++;
-
-            this.log.logInfo += ' info.';
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[addLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) -->
 
 处理步骤：
 
