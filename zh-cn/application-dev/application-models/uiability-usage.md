@@ -17,6 +17,34 @@
 
 <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onCreate]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCreate]
+import { window } from '@kit.ArkUI';
+// ···
+// [EndExclude onCreate]
+
+export default class EntryAbility extends UIAbility {
+// ···
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+// ···
+  // [EndExclude onCreate]
+}
+// [End onCreate]
+```
+
 > **说明：**
 > 在DevEco Studio中创建的UIAbility中，该UIAbility实例默认会加载Index页面，根据需要将Index页面路径替换为需要的页面路径即可。
 
@@ -29,19 +57,134 @@
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
 <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onWindowStageCreate]
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 获取UIAbility实例的上下文
+    let context = this.context;
+  }
+// ···
+}
+```
   
 - 在页面中获取UIAbility实例的上下文信息，包括导入依赖资源context模块和在组件中定义一个context变量两个部分。
 
 <!-- @[Page_EventHub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/EventHubPage.ets) -->
+
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Page_EventHub {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  startAbilityTest(): void {
+    let want: Want = {
+      // Want参数信息
+    // ···
+    };
+    this.context.startAbility(want);
+  }
+
+  // 页面展示
+  build() {
+    // ···
+  }
+}
+```
 
   也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
   
 <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
 
+``` TypeScript
+// [Start terminateSelf]
+import { common, Want } from '@kit.AbilityKit';
+// ···
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Page_UIAbilityComponentsBasicUsage {
+  // [StartExclude terminateSelf]
+  startAbilityTest(): void {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let want: Want = {
+      // Want参数信息
+    // ···
+    };
+    context.startAbility(want);
+  }
+  // [EndExclude terminateSelf]
+
+  // 页面展示
+  build() {
+    // ···
+  }
+}
+// [End terminateSelf]
+```
+
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
 <!-- @[terminateSelf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
+
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+// [StartExclude basicUsage]
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// [EndExclude basicUsage]
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Page_UIAbilityComponentsBasicUsage {
+// ···
+
+  // 页面展示
+  build() {
+    // [StartExclude basicUsage]
+    // ···
+
+      Button('FuncAbilityB')
+        .onClick(() => {
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          try {
+            context.terminateSelf((err: BusinessError) => {
+              if (err.code) {
+                // 处理业务逻辑错误
+                hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                return;
+              }
+              // 执行正常业务
+              hilog.info(DOMAIN, 'terminateSelf', `terminateSelf succeed.`);
+            });
+          } catch (err) {
+            // 捕获同步的参数错误
+            let code = (err as BusinessError).code;
+            let message = (err as BusinessError).message;
+            hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
+          }
+        })
+        .width('60%')
+        .margin({top: 8})
+    }
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    // [EndExclude basicUsage]
+  }
+}
+```
 
 
 ## 获取UIAbility拉起方的信息
@@ -53,6 +196,93 @@
 
 <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Scroll() {
+      Column() {
+        Text(this.message)
+          .id('HelloWorld')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .alignRules({
+            center: { anchor: '__container__', align: VerticalAlign.Center },
+            middle: { anchor: '__container__', align: HorizontalAlign.Center }
+          })
+          .onClick(() => {
+            this.message = 'Welcome';
+          })
+
+        Button('terminateSelf').onClick(() => {
+          this.context.terminateSelf();
+        })
+          .width('60%')
+          .margin({top: 8})
+
+        Button($r('app.string.Start_UIAbilityB')).onClick((event: ClickEvent) => {
+          let want: Want = {
+            bundleName: this.context.abilityInfo.bundleName,
+            abilityName: 'UIAbilityB',
+          };
+          this.context.startAbility(want, (err: BusinessError) => {
+            if (err.code) {
+              hilog.error(DOMAIN, 'Index', `Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
+            }
+          });
+        })
+          .width('60%')
+          .margin({top: 8})
+      }
+    // ···
+    }
+  }
+}
+```
+
 2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取并打印UIAbilityA的Pid、BundleName和AbilityName。
 
 <!-- @[UIAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/UIAbilityB.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+export default class UIAbilityB extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 调用方无需手动传递parameters参数，系统会自动向Want对象中传递调用方信息。
+    hilog.info(DOMAIN, 'UIAbilityB', `onCreate, callerPid: ${want.parameters?.['ohos.aafwk.param.callerPid']}.`);
+    hilog.info(DOMAIN, 'UIAbilityB', `onCreate, callerBundleName: ${want.parameters?.['ohos.aafwk.param.callerBundleName']}.`);
+    hilog.info(DOMAIN, 'UIAbilityB', `onCreate, callerAbilityName: ${want.parameters?.['ohos.aafwk.param.callerAbilityName']}.`);
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'UIAbilityB', `UIAbilityB onDestroy.`);
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'UIAbilityB', `Ability onWindowStageCreate.`);
+
+    windowStage.loadContent('context/BasicUsage', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'UIAbilityB', `Failed to load the content, error code: ${err.code}, error msg: ${err.message}.`);
+        return;
+      }
+      hilog.info(DOMAIN, 'UIAbilityB', `Succeeded in loading the content.`);
+    });
+  }
+}
+```
