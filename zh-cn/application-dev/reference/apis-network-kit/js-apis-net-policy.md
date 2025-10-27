@@ -32,5 +32,49 @@ type NetBearType = connection.NetBearType
 | ------ | ------------------------------------------------------------ |
 | [connection.NetBearType](./js-apis-net-connection.md#netbeartype) | 网络类型。 |
 
+## policy.showAppNetPolicySettings<sup>22+</sup>
+
+showAppNetPolicySettings(context: Context): Promise\<void>;
+
+打开当前应用的联网设置界面。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| context    | number | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。Stage模型的应用Context定义见Context。 |
+
+**返回值：**
+
+| 类型                                                    | 说明                          |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<void>  |形式返回设定结果。 |
+
+**错误码：**
+
+| 错误码 ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 2100001       | Invalid parameter value.                           |
+| 2100003       | System internal error.     |
+
+
+
+**示例：**
+
+```ts
+import { policy } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+const context: common.UIAbilityContext = getContext() as common.UIAbilityContext;
+policy.showAppNetPolicySettings(context).then(() => {
+    console.info("showAppNetPolicySettings success");
+}).catch(() => {
+    console.error("showAppNetPolicySettings failed");}
+)
+```
+
 
 
