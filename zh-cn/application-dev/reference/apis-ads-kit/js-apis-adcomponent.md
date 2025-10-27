@@ -20,15 +20,7 @@ import { AdComponent } from '@kit.AdsKit';
 
 ## AdComponent
 
-```ts
-AdComponent({
-  ads: advertising.Advertisement[],
-  displayOptions: advertising.AdDisplayOptions,
-  interactionListener: advertising.AdInteractionListener,
-  @BuilderParam adRenderer?: () => void,
-  @Prop rollPlayState?: number
-})
-```
+AdComponent({ads: advertising.Advertisement[], displayOptions: advertising.AdDisplayOptions, interactionListener: advertising.AdInteractionListener, @BuilderParam adRenderer?: () => void, @Prop rollPlayState?: number})
 
 **装饰器类型：** @Component
 
