@@ -116,6 +116,11 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
          <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+         
+         ``` TypeScript
+         let options: preferences.Options = { name: 'myStore' };
+         dataPreferences = preferences.getPreferencesSync(context, options);
+         ```
      }
    }
    ```
