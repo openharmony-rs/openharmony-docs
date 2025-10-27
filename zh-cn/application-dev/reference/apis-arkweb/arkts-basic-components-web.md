@@ -301,7 +301,7 @@ Web组件指定共享渲染进程。
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // 通过在GlobalContext对象上绑定filesDir，可以实现UIAbility组件与UI之间的数据同步。
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```
