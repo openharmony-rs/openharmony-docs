@@ -396,6 +396,17 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 }
 ```
 
+## CameraParameters
+
+相机创建参数配置，用于定义相机创建的额外选项。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 相机是否使能MSAA，true表示使能MSAA，false表示不使能MSAA。默认值为false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否   | 是   | 选择初始渲染管线类型，默认为轻量级前向渲染管线类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 22 |
+
 ## SceneResourceFactory
 用于创建3D场景中资源的接口，例如相机、光源等，继承自[RenderResourceFactory](#renderresourcefactory20)。
 
@@ -433,6 +444,54 @@ function createCameraPromise(): Promise<Camera> {
       let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      resolve(camera);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
+### createCamera<sup>21+</sup>
+
+createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise\<Camera>
+
+根据结点参数与相机参数创建相机，使用Promise异步回调。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| cameraParams | [CameraParameters](#cameraparameters) | 是 | 相机参数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<[Camera](js-apis-inner-scene-nodes.md#camera)> | Promise对象，返回相机对象。 |
+
+**示例：**
+```ts
+import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, CameraParameters,
+  RenderingPipelineType } from '@kit.ArkGraphics3D';
+
+function createCameraPromise(): Promise<Camera> {
+  return new Promise((resolve, reject) => {
+    // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+    let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+    scene.then(async (result: Scene) => {
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let nodeParameter: SceneNodeParameters = { name: "camera1" };
+      let camParameter: CameraParameters = {renderingPipeline: RenderingPipelineType.FORWARD};
+      // 创建相机
+      let camera: Camera = await sceneFactory.createCamera(nodeParameter, camParameter);
       resolve(camera);
     }).catch((error: Error) => {
       console.error('Scene load failed:', error);

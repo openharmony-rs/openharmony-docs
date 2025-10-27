@@ -139,6 +139,21 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | PLANE | 2 | 平面类型。 |
 | SPHERE | 3 | 球体类型。 |
 
+## RenderingPipelineType<sup>21+</sup>
+
+渲染管线类型枚举。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| FORWARD_LIGHTWEIGHT | 0 | 轻量级前向渲染管线，直接渲染到后缓冲区。该管线只能在着色器中实现逐像素效果（例如色调映射），不支持复杂效果（例如光晕）。 |
+| FORWARD | 1 | 高质量前向渲染管线，用于复杂的视觉效果（例如光晕）。 |
+
 ## GeometryDefinition<sup>18+</sup>
 几何类型定义抽象类，用于解释特定几何类型的属性。
 
