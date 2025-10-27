@@ -52,9 +52,9 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     定义所需测试的性能指标列表`metrics`，类型为`Array<PerfMetric>`，其中<!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End-->为框架支持采集的性能指标枚举。
 
     <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
-
-    ```TypeScript
-    let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ];
+    
+    ``` TypeScript
+    let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ]; // 定义待测指标
     ```
 
 2. 定义被测代码段和环境复位代码段
@@ -62,11 +62,11 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     被测代码段`actionCode`是一个类型为`Callback<Callback<boolean>>`的回调函数，框架在测试期间会自动调用此回调函数，并采集性能数据。执行结束时需调用入参`Callback<boolean>`函数通知框架执行完成，否则会导致代码段执行超时。例如测试`Utils.CalculateTest`方法性能时，通过调用`finish(true)`通知框架代码段执行完成。
 
     <!-- @[callbackDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
-
-    ```TypeScript
-    let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => {
-        Utils.CalculateTest();
-        finish(true);
+    
+    ``` TypeScript
+    let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => {  // 定义被测代码段
+      Utils.CalculateTest();
+      finish(true);
     };
     ```
 
@@ -87,14 +87,14 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     
     <!-- @[strategyDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
-    ```TypeScript
+    ``` TypeScript
     let perfTestStrategy: PerfTestStrategy = {  // 定义测试策略
-            metrics: metrics,
-            actionCode: actionCode,
-            resetCode: resetCode,
-            bundleName: "com.samples.test.perftest", // 定义被测应用包名，请开发者替换为实际包名
-            iterations: 10,  // 定义测试迭代次数
-            timeout: 20000  // 定义代码段单次执行超时时间
+      metrics: metrics,
+      actionCode: actionCode,
+      resetCode: resetCode,
+      bundleName: "com.samples.test.perftest", // 定义被测应用包名，请开发者替换为实际包名
+      iterations: 10,  // 定义测试迭代次数
+      timeout: 20000  // 定义代码段单次执行超时时间
     };
     ```
 
@@ -104,10 +104,10 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 
 <!-- @[startTest_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
 
-  ```TypeScript
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
-  await perfTest.run();
-  ```
+``` TypeScript
+let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 创建测试任务对象PerfTest
+await perfTest.run(); // 执行测试，异步函数需使用await同步等待完成
+```
 
 ### 获取测试结果
 
@@ -115,10 +115,10 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 
 <!-- @[getResult_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
 
-  ```TypeScript
-  let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION);
-  let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE);
-  ```
+``` TypeScript
+let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取耗时指标的测试结果
+let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE); // 获取CPU使用率指标的测试结果
+```
 
 ### 销毁创建的对象
 
@@ -126,9 +126,9 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 
 <!-- @[exit_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
 
-  ```TypeScript
-  perfTest.destroy();
-  ```
+``` TypeScript
+perfTest.destroy(); // 销毁PerfTest对象
+```
 
 ## 完整示例
 
@@ -139,8 +139,8 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 1. 在 main > ets > utils 文件夹下新增 Utils.ets 文件，在文件中编写自定义的函数。
 
     <!-- @[utils_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/main/ets/utils/Utils.ets) -->
-
-    ```TypeScript
+    
+    ``` TypeScript
     export class Utils {
       static num: number = 0;
       static maxNum: number = 10000;
