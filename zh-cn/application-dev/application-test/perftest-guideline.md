@@ -73,11 +73,11 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     此外，框架支持定义环境复位代码段`resetCode`，用于在单次测试后进行环境复位，类型和使用方法与`actionCode`相同。`resetCode`会在`actionCode`执行完成后执行，但执行期间不会采集应用性能数据。
 
     <!-- @[resetCodeDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
-
-    ```TypeScript
-    let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => {
-        Utils.Reset();
-        finish(true);
+    
+    ``` TypeScript
+    let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => {  // 定义环境复位代码段
+      Utils.Reset();
+      finish(true);
     };
     ```
 
