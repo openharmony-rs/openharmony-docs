@@ -224,6 +224,7 @@ struct BindContentCoverDemo {
 ArkTS1.2示例：
 
 ```ts
+'use static'
 import { Entry, Component, Column, Builder, Row, Text, ForEach, Color, Margin, TextAlign, Padding, HorizontalAlign, ClickEvent,
   $$, BorderOptions, ShadowOptions, SheetSize, EdgeWidths, ContentCoverOptions, FontWeight, TransitionEffect
 } from '@ohos.arkui.component';
@@ -275,7 +276,7 @@ struct BindContentCoverDemo {
       }
 
       Column() {
-        ForEach(this.personList, (item: PersonList, index: number) => {
+        ForEach(this.personList, (item: PersonList, index: int) => {
           Row() {
             Column() {
               if (index % 2 == 0) {
