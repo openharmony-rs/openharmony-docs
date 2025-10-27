@@ -5821,7 +5821,7 @@ Updates the MD digest status. This API returns the result synchronously. **updat
 
 > **NOTE**
 >
-> For details about the code for calling **updateSync** multiple times in an MD operation, see [MD (Passing In Data by Segment)](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#md-passing-in-data-by-segment).
+> For details about the code for calling **updateSync** multiple times in an MD operation, see [MD (Passing In Data by Segment)](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#generating-an-md-by-passing-in-data-by-segment).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7154,4 +7154,3 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
     }
   }
   ```
-<!--no_check-->
