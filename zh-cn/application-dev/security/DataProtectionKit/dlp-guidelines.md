@@ -342,6 +342,21 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 12. 清理沙箱应用配置信息。
 
    <!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 12 清理沙箱应用配置信息
+   cleanSandboxAppConfig() {
+     dlpPermission.cleanSandboxAppConfig().then(() => {
+       this.result = 'cleanSandboxAppConfig result: 清理沙箱成功';
+       console.info('res', '清理沙箱成功');
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'cleanSandboxAppConfig result: 清理沙箱成功');
+     }).catch((err: BusinessError) => {
+       this.result = 'cleanSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+       console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     });
+   }
+   ```
 
 13. 查询沙箱应用配置信息。
 
