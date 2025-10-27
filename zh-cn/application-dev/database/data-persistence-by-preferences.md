@@ -135,7 +135,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    针对GSKV存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
-    若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
+   若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
    <!--Del-->Stage模型示例：<!--DelEnd-->
 
 <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
