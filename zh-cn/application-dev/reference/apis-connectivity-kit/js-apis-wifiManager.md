@@ -456,12 +456,16 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
-| RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 |
-| REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 |
+| RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
 
 ## WifiSecurityType<sup>9+</sup>
 
@@ -649,17 +653,21 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| EAP_NONE | 0 | 不指定。 |
-| EAP_PEAP | 1 | PEAP类型。 |
-| EAP_TLS | 2 | TLS类型。 |
-| EAP_TTLS | 3 | TTLS类型。 |
-| EAP_PWD | 4 | PWD类型。 |
-| EAP_SIM | 5 | SIM类型。 |
-| EAP_AKA | 6 | AKA类型。 |
-| EAP_AKA_PRIME | 7 | AKA Prime类型。 |
-| EAP_UNAUTH_TLS | 8 | UNAUTH TLS类型。 |
+| EAP_NONE | 0 | 不指定。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_PEAP | 1 | PEAP类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_TLS | 2 | TLS类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_TTLS | 3 | TTLS类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_PWD | 4 | PWD类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_SIM | 5 | SIM类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_AKA | 6 | AKA类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_AKA_PRIME | 7 | AKA Prime类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_UNAUTH_TLS | 8 | UNAUTH TLS类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 
 ## Phase2Method<sup>10+</sup>
 
@@ -667,16 +675,20 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PHASE2_NONE | 0 | 不指定。 |
-| PHASE2_PAP | 1 | PAP类型。 |
-| PHASE2_MSCHAP | 2 | MSCHAP类型。 |
-| PHASE2_MSCHAPV2 | 3 | MSCHAPV2类型。 |
-| PHASE2_GTC | 4 | GTC类型。 |
-| PHASE2_SIM | 5 | SIM类型。 |
-| PHASE2_AKA | 6 | AKA类型。 |
-| PHASE2_AKA_PRIME | 7 | AKA Prime类型。 |
+| PHASE2_NONE | 0 | 不指定。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_PAP | 1 | PAP类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_MSCHAP | 2 | MSCHAP类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_MSCHAPV2 | 3 | MSCHAPV2类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_GTC | 4 | GTC类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_SIM | 5 | SIM类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_AKA | 6 | AKA类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_AKA_PRIME | 7 | AKA Prime类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 
 ## WifiCategory<sup>12+</sup>
 
@@ -684,13 +696,17 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 |
-| WIFI6 | 2 | Wifi6。 |
-| WIFI6_PLUS | 3 | Wifi6+。 |
-| WIFI7<sup>15+</sup> | 4 | Wifi7。 |
-| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
+| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| WIFI6 | 2 | Wifi6。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| WIFI6_PLUS | 3 | Wifi6+。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| WIFI7<sup>15+</sup> | 4 | Wifi7。 <br><br>ArkTS-Dyn起始版本： 15<br><br>ArkTS-Sta起始版本： 20|
+| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 <br><br>ArkTS-Dyn起始版本： 15<br><br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.addCandidateConfig<sup>9+</sup>
 
@@ -706,23 +722,27 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。表示网络配置ID。 |
+  | ArkTS-Dyn:Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。表示网络配置ID。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -765,10 +785,10 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。err为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> err为非0值时：操作出现错误。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;number&gt; | 是 | 回调函数。err为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> err为非0值时：操作出现错误。 |
 
 **错误码：**
 
@@ -819,13 +839,13 @@ ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 网络配置ID。ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 网络配置ID。|
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | Promise&lt;void&gt; | Promise对象。 |
 
@@ -874,16 +894,16 @@ ArkTS-Sta: removeCandidateConfig(networkId: int, callback: AsyncCallback&lt;void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 网络配置ID。 |
+  | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 网络配置ID。 |
   | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当操作成功时，err为0。如果error为非0，表示处理出现错误。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -917,11 +937,15 @@ ArkTS-Sta: removeDevice(id: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**15
+
+**ArkTS-Sta起始版本：**20
+
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | id | number | 是 | 网络配置ID。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | id | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 网络配置ID。|
 
 **错误码：**
 
@@ -1023,9 +1047,9 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 候选网络配置的ID。ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 候选网络配置的ID。|
 
 **错误码：**
 
@@ -1075,13 +1099,13 @@ ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;vo
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 候选网络配置的ID，ID不能小于0。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 候选网络配置的ID，ID不能小于0。 |
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -1133,21 +1157,21 @@ ArkTS-Sta: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。表示网络配置ID。 |
+  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt;| Promise对象。表示网络配置ID。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -1179,8 +1203,6 @@ ArkTS-Sta: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-
-
 添加网络配置，使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
@@ -1193,16 +1215,16 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。如果bssidType无指定值，则bssidType默认为随机设备地址类型。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当操作错误，err为非0值。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是 | 回调函数。当操作成功时，err为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当操作错误，err为非0值。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -1245,7 +1267,7 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig9)&gt; | 网络配置数组。 |
 
@@ -1253,7 +1275,7 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1291,15 +1313,15 @@ ArkTS-Sta: connectToNetwork(networkId: int): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | networkId | number | 是 | 候选网络配置的ID。 |
+  | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 候选网络配置的ID。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1339,22 +1361,22 @@ ArkTS-Sta: getSignalLevel(rssi: int, band: int): int
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | rssi | number | 是 | 热点的信号强度(dBm)。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
-  | band | number | 是 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
+  | rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 热点的信号强度(dBm)。|
+  | band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。|
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
-  | number | 信号强度，取值范围为[0,&nbsp;4]。 ArkTS-Dyn: number<br>ArkTS-Sta: int|
+  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 信号强度，取值范围为[0,&nbsp;4]。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
@@ -1552,13 +1574,17 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**18
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT_LINK | 0 | 默认连接类型。 |
-| WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 |
-| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路多天线）连接。 |
-| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 |
-| WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 |
+| DEFAULT_LINK | 0 | 默认连接类型。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
+| WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
+| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路多天线）连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
+| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
+| WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
 
 ## ConnState<sup>9+</sup>
 
@@ -1967,7 +1993,7 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | bandType | [WifiBandType](#wifibandtype10) | 是 | Wifi 频段类型。 |
 
@@ -2504,7 +2530,7 @@ createGroup(config: WifiP2PConfig): void
 
 **参数：**
 
-| **参数名** | **类型** | 必填 | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiP2PConfig](#wifip2pconfig9) | 是 | 群组配置信息。如果DeviceAddressType未指定值，则DeviceAddressType默认为随机设备地址类型。 |
 
@@ -2801,7 +2827,7 @@ stopDiscoverDevices(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |

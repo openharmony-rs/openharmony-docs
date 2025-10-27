@@ -200,7 +200,7 @@ IP配置信息。
 
 **ArkTS-Sta起始版本：**20
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| 名称 | 类型 | 可读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | gateway | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网关。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -217,13 +217,17 @@ Wifi 代理配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
+| 名称 | 类型 | 可读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | 是 | 是 | 代理方法。 |
-| pacWebAddress | string | 是 | 是 | 自动配置代理的PAC web 地址。 |
-| serverHostName | string | 是 | 是 | 手动配置代理的服务器主机名。 |
-| serverPort | number | 是 | 是 | 手动配置代理的服务器端口。 |
-| exclusionObjects | string | 是 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
+| proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| serverPort | number | 否 | 是 | 手动配置代理的服务器端口。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| exclusionObjects | string | 否 | 是 | 手动配置代理的排除对象，对象用“,”分隔。<br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 
 ## ProxyMethod<sup>10+</sup>
 
@@ -233,11 +237,15 @@ Wifi 代理配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| METHOD_NONE  | 0 | 不使用代理。 |
-| METHOD_AUTO  | 1 | 使用自动配置的代理。 |
-| METHOD_MANUAL  | 2 | 使用手动配置的代理。 |
+| METHOD_NONE  | 0 | 不使用代理。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| METHOD_AUTO  | 1 | 使用自动配置的代理。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| METHOD_MANUAL  | 2 | 使用手动配置的代理。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.connectToDevice<sup>9+</sup>
 
@@ -453,15 +461,19 @@ getWifiDetailState(): WifiDetailState
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| UNKNOWN | -1 | 未指定。 |
-| INACTIVE | 0 | 已关闭。 |
-| ACTIVATED | 1 | 已激活。 |
-| ACTIVATING | 2 | 激活中。 |
-| DEACTIVATING | 3 | 关闭中。 |
-| SEMI_ACTIVATING | 4 | 半关闭中。 |
-| SEMI_ACTIVE | 5 | 已半关闭。 |
+| UNKNOWN | -1 | 未指定。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| INACTIVE | 0 | 已关闭。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| ACTIVATED | 1 | 已激活。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| ACTIVATING | 2 | 激活中。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| DEACTIVATING | 3 | 关闭中。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| SEMI_ACTIVATING | 4 | 半关闭中。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| SEMI_ACTIVE | 5 | 已半关闭。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.reassociate<sup>9+</sup>
@@ -562,21 +574,21 @@ ArkTS-Sta: updateNetwork(config: WifiDeviceConfig): int
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。 |
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
-  | number | 返回更新的网络配置ID，如果值为-1表示更新失败。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回更新的网络配置ID，如果值为-1表示更新失败。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -622,9 +634,9 @@ ArkTS-Sta: disableNetwork(netId: int): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | netId | number | 是 | 网络配置ID。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | netId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 网络配置ID。 |
 
 **错误码：**
 
@@ -710,7 +722,7 @@ ArkTS-Sta: get5GChannelList(): Array&lt;int&gt;
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | &nbsp;Array&lt;number&gt; | 设备支持的5G信道列表。 |
 
@@ -788,11 +800,15 @@ getDisconnectedReason(): DisconnectedReason
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DISC_REASON_DEFAULT  | 0 | 默认原因。 |
-| DISC_REASON_WRONG_PWD  | 1 | 密码错误。 |
-| DISC_REASON_CONNECTION_FULL  | 2 | 路由器的连接数已达到最大数量限制。 |
+| DISC_REASON_DEFAULT  | 0 | 默认原因。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| DISC_REASON_WRONG_PWD  | 1 | 密码错误。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| DISC_REASON_CONNECTION_FULL  | 2 | 路由器的连接数已达到最大数量限制。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.startPortalCertification<sup>11+</sup>
 
@@ -1455,9 +1471,9 @@ ArkTS-Sta: deletePersistentGroup(netId: int): void
 **参数：**
 
 
-  | **参数名** | **类型** | 必填 | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | netId | number | 是 | 组的ID。 ArkTS-Dyn: number<br>ArkTS-Sta: int |
+  | netId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 组的ID。|
 
 **错误码：**
 
@@ -1596,7 +1612,7 @@ setDeviceName(devName: string): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | devName | string | 是 | 设备名称。 |
 
