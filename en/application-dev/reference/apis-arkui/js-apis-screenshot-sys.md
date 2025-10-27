@@ -73,7 +73,7 @@ Takes a screenshot. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -115,7 +115,7 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 };
 screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , messgae : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -133,7 +133,7 @@ Takes a screenshot. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -159,7 +159,7 @@ import { image } from '@kit.ImageKit';
 
 screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -177,7 +177,7 @@ Takes a screenshot. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -225,13 +225,14 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 try {
   let promise = screenshot.save(screenshotOptions);
   promise.then((pixelMap: image.PixelMap) => {
-    console.log('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    let pixelNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
     pixelMap.release(); // Release the memory in time after the PixelMap is used.
   }).catch((err: BusinessError) => {
-    console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , messgae : ${err.message}`);
   });
 } catch (exception) {
-  console.error('Failed to save screenshot. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to save screenshot. Code: ${exception.code} , message : ${exception.message}`);
 };
 ```
 
@@ -248,7 +249,7 @@ Takes a screenshot. This API uses a promise to return the result. SDR stands for
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only to system applications)
+**Required permissions**: ohos.permission.CAPTURE_SCREEN (available only for system applications)
 
 **Parameters**
 
@@ -295,9 +296,9 @@ try {
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {
-    console.error('Failed to save SDR and HDR screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save SDR and HDR screenshot. Code: ${err.code} , message : ${err.message}`);
   });
 } catch (exception) {
-  console.error('Failed to save SDR and HDR screenshot. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code} , message : ${exception.message}`);
 };
 ```
