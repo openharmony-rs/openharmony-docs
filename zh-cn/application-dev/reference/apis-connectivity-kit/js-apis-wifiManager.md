@@ -100,7 +100,7 @@ disableWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：20**
 
 **ArkTS-Sta起始版本：20**
 
@@ -173,9 +173,9 @@ startScan(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**21
+**ArkTS-Dyn起始版本：21**
 
-**ArkTS-Sta起始版本：**21
+**ArkTS-Sta起始版本：21**
 
 **错误码：**
 
@@ -374,7 +374,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -432,7 +432,7 @@ WLAN热点信息。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
@@ -456,7 +456,7 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -473,7 +473,7 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -497,7 +497,7 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -515,7 +515,7 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -536,7 +536,7 @@ WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -552,7 +552,7 @@ WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -572,7 +572,7 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -593,11 +593,11 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | eapMethod | [EapMethod](#eapmethod10) | 否 | 否 | EAP认证方式。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 | phase2Method | [Phase2Method](#phase2method10) | 否 | 否 | 第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
@@ -622,11 +622,11 @@ WAPI身份验证协议配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
 | wapiAsCert | string | 否 | 否 | As证书。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
@@ -638,7 +638,7 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -653,7 +653,7 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -675,7 +675,7 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -696,7 +696,7 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -722,7 +722,7 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -833,7 +833,7 @@ ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -985,7 +985,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1041,7 +1041,7 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1093,7 +1093,7 @@ ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;vo
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：20**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1209,7 +1209,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1355,7 +1355,7 @@ ArkTS-Sta: getSignalLevel(rssi: int, band: int): int
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1412,7 +1412,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1447,7 +1447,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1502,7 +1502,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：18**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1540,11 +1540,11 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 9|
 | bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
@@ -1574,7 +1574,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：18**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1592,7 +1592,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1620,7 +1620,7 @@ isConnected(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1708,7 +1708,7 @@ getDeviceMacAddress(): string[]
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | string[] | MAC地址。 |
 
@@ -1716,7 +1716,7 @@ getDeviceMacAddress(): string[]
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1749,7 +1749,7 @@ ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1816,7 +1816,7 @@ getIpInfo(): IpInfo
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1854,11 +1854,11 @@ IPV4信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
-| **名称** | **类型** | **可读** | **可选** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | gateway | number | 否 | 否 | 网关。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -1879,7 +1879,7 @@ getIpv6Info(): Ipv6Info
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1916,11 +1916,11 @@ Ipv6信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
-| **名称** | **类型** | **可读** | **可选** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 | globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
@@ -1942,7 +1942,7 @@ getCountryCode(): string
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1987,7 +1987,7 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2128,7 +2128,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2161,7 +2161,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2206,7 +2206,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2223,7 +2223,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2244,7 +2244,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2276,7 +2276,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2325,7 +2325,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2357,7 +2357,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2401,11 +2401,11 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceName | string | 否 | 否 | 设备名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | deviceAddress | string | 否 | 否 | 设备MAC地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -2421,7 +2421,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2524,7 +2524,7 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2571,11 +2571,11 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceAddress | string | 否 | 否 | 设备地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -2591,7 +2591,7 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2646,7 +2646,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2745,7 +2745,7 @@ p2pCancelConnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2783,7 +2783,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2819,7 +2819,7 @@ stopDiscoverDevices(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2859,7 +2859,7 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：18**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2898,7 +2898,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
 **ArkTS-Sta起始版本：20**
 

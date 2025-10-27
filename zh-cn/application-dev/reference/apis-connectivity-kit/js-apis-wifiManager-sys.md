@@ -23,15 +23,15 @@ enableSemiWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -63,13 +63,13 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isScanAlwaysAllowed | boolean | 是 | 是否始终允许扫描。true:允许扫描，&nbsp;false:不允许扫描 |
 
@@ -77,7 +77,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -108,13 +108,13 @@ getScanAlwaysAllowed(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | boolean| 是否始终允许扫描。 true 表示允许触发扫描，false表示在禁用wifi时不允许触发扫描。|
 
@@ -122,7 +122,7 @@ getScanAlwaysAllowed(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -130,9 +130,9 @@ getScanAlwaysAllowed(): boolean
 | 2501000  | Operation failed.|
 
 **示例：**
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：20**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 ```ts
 	import { wifiManager } from '@kit.ConnectivityKit';
@@ -151,9 +151,9 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -177,9 +177,9 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -196,11 +196,11 @@ IP配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | gateway | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网关。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -217,11 +217,11 @@ Wifi 代理配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
 | pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
@@ -237,9 +237,9 @@ Wifi 代理配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -259,13 +259,13 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
@@ -273,7 +273,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -305,11 +305,11 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
-| 名称 | 类型 | 可读 | 可选 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
 | chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -326,9 +326,9 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -358,9 +358,9 @@ getSupportedFeatures(): number
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -419,9 +419,9 @@ getWifiDetailState(): WifiDetailState
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -461,9 +461,9 @@ getWifiDetailState(): WifiDetailState
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -488,9 +488,9 @@ reassociate(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -527,9 +527,9 @@ reconnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -568,9 +568,9 @@ ArkTS-Sta: updateNetwork(config: WifiDeviceConfig): int
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -628,9 +628,9 @@ ArkTS-Sta: disableNetwork(netId: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -675,9 +675,9 @@ removeAllNetwork(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -716,9 +716,9 @@ ArkTS-Sta: get5GChannelList(): Array&lt;int&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -760,9 +760,9 @@ getDisconnectedReason(): DisconnectedReason
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -800,9 +800,9 @@ getDisconnectedReason(): DisconnectedReason
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -824,7 +824,7 @@ startPortalCertification(): void
 
 **ArkTS-Dyn起始版本：**11
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -862,9 +862,9 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：12**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -919,9 +919,9 @@ factoryReset(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：20**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -957,9 +957,9 @@ enableHotspot(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -995,9 +995,9 @@ disableHotspot(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **错误码：**
 
@@ -1033,9 +1033,9 @@ isHotspotDualBandSupported(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -1080,7 +1080,7 @@ isOpenSoftApAllowed(): boolean
 
 **ArkTS-Dyn起始版本：**18
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -1123,9 +1123,9 @@ setHotspotConfig(config: HotspotConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -1173,11 +1173,11 @@ setHotspotConfig(config: HotspotConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
-| **名称** | **类型** | **可读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| 否 | 否 | 加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -1199,9 +1199,9 @@ getHotspotConfig(): HotspotConfig
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -1248,9 +1248,9 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -1289,11 +1289,11 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
-| **名称** | **类型** | **可读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | 否 | 否 | 设备名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
 | macAddress | string | 否 | 否 | MAC地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
@@ -1314,11 +1314,11 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 **ArkTS-Dyn起始版本：**11
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | stationInfo | [StationInfo](#stationinfo9) | 是 | 将添加到热点的阻止列表中的设备。 |
 
@@ -1326,7 +1326,7 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1366,11 +1366,11 @@ delHotspotBlockList(stationInfo: StationInfo)
 
 **ArkTS-Dyn起始版本：**11
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | stationInfo | [StationInfo](#stationinfo9) | 是 | 将从热点的阻止列表中删除的设备。 |
 
@@ -1417,11 +1417,11 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 **ArkTS-Dyn起始版本：**11
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | 热点的阻止列表。 |
 
@@ -1429,7 +1429,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1464,9 +1464,9 @@ ArkTS-Sta: deletePersistentGroup(netId: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -1516,9 +1516,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **返回值：**
 
@@ -1572,9 +1572,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -1606,9 +1606,9 @@ setDeviceName(devName: string): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**9
+**ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：20**
 
 **参数：**
 
@@ -1687,7 +1687,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
@@ -1696,7 +1696,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1733,7 +1733,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"deviceConfigChange"字符串。 |
 | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。 |
@@ -1742,7 +1742,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1764,7 +1764,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"deviceConfigChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回值为 0: 添加配置。1: 更改配置。2: 删除配置。|
@@ -1773,7 +1773,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1811,7 +1811,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
 | callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
@@ -1820,7 +1820,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1842,7 +1842,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
 | callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
@@ -1851,7 +1851,7 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1889,7 +1889,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
   | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
@@ -1898,7 +1898,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1920,7 +1920,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
 | callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
@@ -1929,7 +1929,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
