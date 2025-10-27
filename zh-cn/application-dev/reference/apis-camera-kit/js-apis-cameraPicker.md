@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import { cameraPicker as cameraPicker } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
 ```
 
 ## cameraPicker.pick
@@ -49,7 +49,7 @@ pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: Pick
 **示例：**
 
 ```ts
-import { cameraPicker as cameraPicker } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
