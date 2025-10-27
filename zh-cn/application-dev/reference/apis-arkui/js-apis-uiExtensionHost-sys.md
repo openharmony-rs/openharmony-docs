@@ -236,39 +236,6 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-<<<<<<< HEAD
-### properties
-
-properties: UIExtensionHostWindowProxyProperties
-
-宿主应用窗口和UIExtensionComponent组件的信息。
-
-**系统能力**：SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口**：此接口为系统接口。
-
-| 参数名     | 类型                                 | 说明                             |
-| ---------- | ------------------------------------ | -------------------------------- |
-| properties | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) | UIExtensionComponent组件以及宿主窗口的信息。 |
-
-**示例：**
-
-```ts
-// ExtensionProvider.ts
-import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIExtensionAbility {
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 获取UIExtensionComponent位置和大小信息
-    const rect = extensionHostWindow.properties.uiExtensionHostWindowProxyRect;
-    console.info(`Rect Info: ${JSON.stringify(rect)}`);
-  }
-}
-```
-
-=======
->>>>>>> upgrade/master
 ### hideNonSecureWindows
 
 hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
