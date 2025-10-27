@@ -5254,7 +5254,7 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
 | title | string | 是    | 转换后文件标题 。|
-| imageFormat | [SupportedImageFormat](#SupportedImageFormat20) | 是    | 支持的目标格式类型。 |
+| imageFormat | [SupportedImageFormat](#supportedimageformat20) | 是    | 支持的目标格式类型。 |
 
 **返回值：**
 
