@@ -275,7 +275,7 @@ struct DisplayPriorityExample {
     { text: '4\n(priority:1)', priority: 1 } as ChildInfo,
     { text: '5\n(priority:2)', priority: 2 } as ChildInfo
   ]
-  @State currentIndex: number = 0;
+  @State currentIndex: int = 0;
 
   build() {
     Column({ space: 10 } as ColumnOptions) {

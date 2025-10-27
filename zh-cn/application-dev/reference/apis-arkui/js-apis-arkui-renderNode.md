@@ -4,11 +4,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
-> 当前不支持在预览器中使用RenderNode。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 不建议对BuilderNode中的RenderNode进行修改操作。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 当前不支持在预览器中使用RenderNode。
+>
+> - 不建议对BuilderNode中的RenderNode进行修改操作。
 
 ## 导入模块
 
@@ -2051,7 +2053,9 @@ struct Index {
 
 ### borderStyle<sup>12+</sup>
 
-set borderStyle(style: Edges\<BorderStyle>)
+ArkTS-Dyn: set borderStyle(style: Edges\<BorderStyle>)
+
+ArkTS-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 设置当前RenderNode的边框样式。
 
@@ -2059,13 +2063,19 @@ set borderStyle(style: Edges\<BorderStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                                                                                   | 必填 | 说明                   |
 | ------ | ------------------------------------------------------------------------------------------------------ | ---- | ---------------------- |
-| style  | [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式。 |
+| style  |ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | 是   | RenderNode的边框样式。|
 
-get borderStyle(): Edges\<BorderStyle>
+ArkTS-Dyn: get borderStyle(): Edges\<BorderStyle>
+
+ArkTS-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 获取当前RenderNode的边框样式。
 
@@ -2073,13 +2083,20 @@ get borderStyle(): Edges\<BorderStyle>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                                                                   | 说明                   |
 | ------------------------------------------------------------------------------------------------------ | ---------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | RenderNode的边框样式。 |
+| ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> \| undefined | RenderNode的边框样式，默认undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -2124,9 +2141,58 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+renderNode.borderStyle = {
+  left: BorderStyle.Solid,
+  top: BorderStyle.Dotted,
+  right: BorderStyle.Dashed,
+  bottom: BorderStyle.Solid
+}
+const borderStyle = renderNode.borderStyle!;
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
 ### borderWidth<sup>12+</sup>
 
-set borderWidth(width: Edges\<number>)
+ArkTS-Dyn: set borderWidth(width: Edges\<number>)
+
+ArkTS-Sta: set borderWidth(width: NodeEdges\<number>)
 
 设置当前RenderNode的边框宽度。
 
@@ -2134,13 +2200,19 @@ set borderWidth(width: Edges\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框宽度，单位为vp。 |
+| width  |ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框宽度，单位为vp。 |
 
-get borderWidth(): Edges\<number>
+ArkTS-Dyn: get borderWidth(): Edges\<number>
+
+ArkTS-Sta: get borderWidth(): NodeEdges\<number> | undefined
 
 获取当前RenderNode的边框宽度。
 
@@ -2148,13 +2220,19 @@ get borderWidth(): Edges\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | RenderNode的边框宽度，默认所有边框宽度为0vp。 |
+|ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) \| undefined| RenderNode的边框宽度，默认所有边框宽度为0vp，默认undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -2164,7 +2242,6 @@ renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
 const borderWidth = renderNode.borderWidth;
-
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -2194,9 +2271,52 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+const borderWidth = renderNode.borderWidth!;
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
 ### borderColor<sup>12+</sup>
 
-set borderColor(color: Edges\<number>)
+ArkTS-Dyn: set borderColor(color: Edges\<number>)
+
+ArkTS-Sta: set borderColor(color: NodeEdges\<number>)
 
 设置当前RenderNode的边框颜色。
 
@@ -2204,13 +2324,19 @@ set borderColor(color: Edges\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | 是   | RenderNode的边框颜色。 |
+| color  |ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框颜色。 |
 
-get borderColor(): Edges\<number>
+ArkTS-Dyn: get borderColor(): Edges\<number>
+
+ArkTS-Sta: get borderColor(): NodeEdges\<number> | undefined
 
 获取当前RenderNode的边框颜色。
 
@@ -2218,13 +2344,19 @@ get borderColor(): Edges\<number>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | RenderNode的边框颜色，默认所有边框颜色为0XFF000000。 |
+|ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](./js-apis-arkui-graphics.md#nodeedgest20) \| undefined | RenderNode的边框颜色，默认undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -2265,6 +2397,49 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.component';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+const borderColor = renderNode.borderColor!;
+
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
 ### borderRadius<sup>12+</sup>
 
 set borderRadius(radius: BorderRadiuses)
@@ -2282,7 +2457,9 @@ set borderRadius(radius: BorderRadiuses)
 | radius | [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | 是   | RenderNode的边框圆角，单位为vp。 |
 
 
-get borderRadius(): BorderRadiuses
+ArkTS-Dyn: get borderRadius(): BorderRadiuses
+
+ArkTS-Sta: get borderRadius(): BorderRadiuses | undefined
 
 获取当前RenderNode的边框圆角。
 
@@ -2290,13 +2467,19 @@ get borderRadius(): BorderRadiuses
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | RenderNode的边框圆角，默认所有边框圆角为0vp。 |
+| ArkTS-Dyn: [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) <br> ArkTS-Sta: [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) \| undefined | RenderNode的边框圆角，默认undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -2307,6 +2490,47 @@ renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
 const borderRadius = renderNode.borderRadius;
 
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
+const borderRadius = renderNode.borderRadius!;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -2352,19 +2576,27 @@ set shapeMask(shapeMask: ShapeMask)
 | --------- | -------------------------------------------------- | ---- | ------------------ |
 | shapeMask | [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | 是   | RenderNode的遮罩。 |
 
-get shapeMask(): ShapeMask
+ArkTS-Dyn: get shapeMask(): ShapeMask
+
+ArkTS-Sta: get shapeMask(): ShapeMask | undefined
 
 获取当前RenderNode的遮罩。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | RenderNode的边框遮罩。 |
+| ArkTS-Dyn: [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) <br> ArkTS-Sta: [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) \| undefined | RenderNode的边框遮罩，默认undefined。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
@@ -2381,6 +2613,52 @@ renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
 const shapeMask = renderNode.shapeMask;
 
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, FrameNode, NodeController, ShapeMask } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component';
+
+const mask = new ShapeMask();
+mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
+mask.fillColor = 0X55FF0000;
+mask.strokeColor = 0XFFFF0000;
+mask.strokeWidth = 24;
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.shapeMask = mask;
+const shapeMask = renderNode.shapeMask!;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -2865,3 +3143,139 @@ struct Index {
 ```
 
 ![](figures/RenderNode_isDisposed.gif)
+
+### 使用@ohos.transfer进行RenderNode类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
+
+- 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录提供创建ArkTS-DynRenderNode的方法。
+  
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // library/src/main/ets/components/MainPage.ets
+
+  import { RenderNode } from '@ohos.arkui.node';
+  import transfer from '@ohos.transfer';
+
+  export function renderNodeTest(): Object {
+    let renderNodeTest =new RenderNode();
+    renderNodeTest.position = { x: 0, y: 0 };
+    renderNodeTest.size = { width: 80, height: 80 }
+    renderNodeTest.backgroundColor = 0xff0000ff;
+    let renderNodeDynamic = transfer.transferDynamic(renderNodeTest, 'ArkUI.RenderNode');
+    let ret = renderNodeDynamic! as Object;
+    return ret;
+  }
+  ```
+
+- 在ArkTS-Dyn主模块中使用ArkTS-Sta子模块创建RenderNode对象的方法。
+  
+  ArkTS-Dyn示例：
+  
+  ```TypeScript
+  // entry/src/main/ets/pages/Index.ets
+  
+  import { FrameNode, RenderNode, NodeController } from '@kit.ArkUI';
+  import { renderNodeTest } from 'library2';
+  
+  function renderNodeTrans(): RenderNode{
+    let renderNode = renderNodeTest();
+    let renderNodeDynamic = renderNode as RenderNode;
+    return renderNodeDynamic;
+  }
+  
+  class TestNodeController extends NodeController {
+    makeNode(uiContext: UIContext): FrameNode | null {
+      let rootNode = new FrameNode(uiContext);
+      rootNode.commonAttribute.width(100);
+      rootNode.commonAttribute.height(100);
+  
+      const rootRenderNode = rootNode?.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode?.appendChild(renderNodeTrans());
+      }
+      return rootNode;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct MyStateSample {
+    nodeController: TestNodeController = new TestNodeController();
+  
+    build() {
+      Column(undefined) {
+        NodeContainer(this.nodeController).width(100).height(100)
+      }
+    }
+  }
+  ```
+  ![image](figures/renderNodeTransfer.png) 
+
+ArkTS-Sta中使用ArkTS-Dyn的RenderNode对象。
+
+ - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录创提供建ArkTS-DynRenderNode的方法。
+    
+    ArkTS-Dyn示例：
+    
+    ```TypeScript
+    // library/src/main/ets/components/MainPage.ets
+  
+    import { RenderNode } from '@kit.ArkUI';
+  
+    export function renderNodeTest():Object {
+      let shapeMaskTestNode =new RenderNode();
+      shapeMaskTestNode.position = { x: 0, y: 0 };
+      shapeMaskTestNode.size = { width: 80, height: 80 }
+      shapeMaskTestNode.backgroundColor = 0xff0000ff;
+      return shapeMaskTestNode;
+    }
+    ```
+  
+- 在ArkTS-Sta主模块中引入ArkTS-Dyn创建RenderNoded的方法。
+    
+    ArkTS-Sta示例：
+
+    ```TypeScript
+    'use static'
+    // entry/src/main/ets/pages/Index.ets
+  
+    import { Entry, Text, Column, Component, NodeContainer, Resource, Button } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import transfer from '@ohos.transfer';
+    import { UIContext } from '@ohos.arkui.UIContext';
+    import { FrameNode, RenderNode, NodeController } from '@ohos.arkui.node';
+    import { renderNodeTest } from 'library';
+  
+    function renderNodeTrans(): RenderNode{
+      let renderNode = renderNodeTest();
+      let renderNodeStatic = transfer.transferStatic(renderNode, 'ArkUI.RenderNode')! as RenderNode;
+      return renderNodeStatic;
+    }
+  
+    class TestNodeController extends NodeController {
+      makeNode(uiContext: UIContext): FrameNode | null {
+        let rootNode = new FrameNode(uiContext);
+        const rootRenderNode = rootNode?.getRenderNode();
+        if (rootRenderNode !== null) {
+          rootRenderNode?.appendChild(renderNodeTrans());
+        }
+        return rootNode;
+      }
+    }
+  
+    @Entry
+    @Component
+    struct MyStateSample {
+      nodeController: TestNodeController = new TestNodeController();
+  
+      build() {
+        Column(undefined) {
+          NodeContainer(this.nodeController)
+        }
+      }
+    }
+    ```
+    ![image](figures/renderNodeTransfer.png) 

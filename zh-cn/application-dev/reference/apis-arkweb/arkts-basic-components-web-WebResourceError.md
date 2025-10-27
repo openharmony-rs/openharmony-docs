@@ -18,19 +18,29 @@ WebResourceError的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 ## getErrorCode
 
-getErrorCode(): number
+ArkTS-Dyn: getErrorCode(): number
+
+ArkTS-Sta: getErrorCode(): int
 
 获取加载资源的错误码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| number | 返回加载资源的错误码。错误码的含义可以参考[WebNetErrorList](arkts-apis-netErrorList.md) |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回加载资源的错误码。错误码的含义可以参考[WebNetErrorList](arkts-apis-netErrorList.md) |
 
 ## getErrorInfo
 
@@ -39,6 +49,10 @@ getErrorInfo(): string
 获取加载资源的错误信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

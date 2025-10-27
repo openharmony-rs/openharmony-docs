@@ -58,7 +58,7 @@ transferStatic(input: Any, inputName: string): Object
 import { dyamic2Static } from 'har2';
 let dynamic_obj = new ArrayBuffer(8);
 dyamic2Static(dynamic_obj); // 调用ArkTS1.2环境中的dyamic2Static方法
-    
+
 // ArkTS1.2环境
 import { transfer } from '@kit.ArkTS'
 function dyamic2Static(dynamic_obj: Any) {
@@ -108,7 +108,7 @@ let static_obj = new ArrayBuffer(8);
 let dynamic_obj = transfer.transferDynamic(static_obj, 'InteropTransferHelper')
 // 调用1.0中的har1func方法处理dynamic_obj
 let moduleName = ESValue.load('@nomalized:....');
-let har1func = moduleName.getProperty('har1func');  
+let har1func = moduleName.getProperty('har1func');
 har1func.invoke(ESObject.wrap(dynamic_obj));
 
 
@@ -124,5 +124,43 @@ export function har1func(dynamic_obj: Any) {
 |"InteropTransferHelper" | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md)|
 | "ArkUI.NavDestinationInfo" | [uiObserver.NavDestinationInfo](../apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)|
 | "ArkUI.NavigationInfo" | [uiObserver.NavigationInfo](../apis-arkui/js-apis-arkui-observer.md#navigationinfo12)|
-| "ArkUI.RouterPageInfo" | [uiObserver.RouterPageInfo](../apis-arkui/js-apis-arkui-observer.md#routerpageinfo)| 
-| "AbilityKit.UIAbilityContext" | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)|   
+| "ArkUI.RouterPageInfo" | [uiObserver.RouterPageInfo](../apis-arkui/js-apis-arkui-observer.md#routerpageinfo)|
+| "AbilityKit.UIAbilityContext" | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)|
+| "ArkUI.DrawableDescriptor" | [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor.md) |
+| "ArkUI.DragEvent" | [DragEvent](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)|
+| "ArkUI.KeyEvent" | [KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)|
+| "ArkUI.TouchEvent" | [TouchEvent](../apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)|
+| "ArkUI.MouseEvent" | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)|
+| "ArkUI.AxisEvent" | [AxisEvent](../apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)|
+| "ArkUI.ClickEvent" | [ClickEvent](../apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent对象说明)|
+| "ArkUI.HoverEvent" | [HoverEvent](../apis-arkui/arkui-ts/ts-universal-events-hover.md#hoverevent10对象说明)|
+| "ArkUI.EventTargetInfo" | [EventTargetInfo](../apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#eventtargetinfo)|
+| "ArkUI.TouchTestInfo" | [TouchTestInfo](../apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md#touchtestinfo)|
+| "ArkUI.ScrollableTargetInfo" | [ScrollableTargetInfo](../apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#scrollabletargetinfo)|
+|"ArkUI.FrameNode" | [FrameNode](../apis-arkui/js-apis-arkui-frameNode.md)|
+|"ArkUI.RenderNode" | [RenderNode](../apis-arkui/js-apis-arkui-renderNode.md)|
+|"ArkUI.UIContext" | [UIContext](../apis-arkui/js-apis-arkui-UIContext.md)|
+|"ArkUI.LengthMetrics" | [LengthMetrics](../apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)|
+|"ArkUI.ShapeClip" | [ShapeClip](../apis-arkui/js-apis-arkui-graphics.md#shapeclip12)| 
+|"ArkUI.ColorMetrics" | [ColorMetrics](../apis-arkui/js-apis-arkui-graphics.md#colormetrics12)|   
+|"ArkUI.ShapeMask" | [ShapeMask](../apis-arkui/js-apis-arkui-graphics.md#shapemask12)|
+| "ArkUI.ColorFilter" | [ColorFilter](../apis-arkui/arkui-ts/ts-types.md#colorfilter9) |
+|"Global.Resource" | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|
+| "ImageKit.AuxiliaryPicture" | [AuxiliaryPicture](../apis-image-kit/arkts-apis-image-AuxiliaryPicture.md) |
+| "ImageKit.ImageCreator" | [ImageCreator](../apis-image-kit/arkts-apis-image-ImageCreator.md) |
+| "ImageKit.ImagePacker" | [ImagePacker](../apis-image-kit/arkts-apis-image-ImagePacker.md) |
+| "ImageKit.ImageReceiver" | [ImageReceiver](../apis-image-kit/arkts-apis-image-ImageReceiver.md) |
+| "ImageKit.ImageSource" | [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md) |
+| "ImageKit.Picture" | [Picture](../apis-image-kit/arkts-apis-image-Picture.md) |
+| "ImageKit.PixelMap" | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |
+| "ArkGraphics3D.Animation" | [Animation](../apis-arkgraphics3d/js-apis-inner-scene-resources.md#animation)|
+| "ArkGraphics3D.Environment" | [Environment](../apis-arkgraphics3d/js-apis-inner-scene-resources.md#environment)|
+| "ArkGraphics3D.Camera" | [Camera](../apis-arkgraphics3d/js-apis-inner-scene-nodes.md#camera)|
+| "ArkGraphics3D.Node" | [Node](../apis-arkgraphics3d/js-apis-inner-scene-nodes.md#node)|
+| "ArkGraphics3D.Scene" | [Scene](../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1)|
+| "ArkGraphics3D.SceneResourceFactory" | [SceneResourceFactory](../apis-arkgraphics3d/js-apis-inner-scene.md#sceneresourcefactory)|
+| "ArkWeb.FileSelectorParam" | [FileSelectorParam](../apis-arkweb/arkts-basic-components-web-FileSelectorParam.md)|
+| "ArkWeb.FileSelectorResult" | [FileSelectorResult](../apis-arkweb/arkts-basic-components-web-FileSelectorResult.md)|
+| "ArkWeb.JsResult" | [JsResult](../apis-arkweb/arkts-basic-components-web-JsResult.md)|
+| "ArkWeb.WebContextMenuParam" | [WebContextMenuParam](../apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md)|
+| "ArkWeb.WebContextMenuResult" | [WebContextMenuResult](../apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md)|

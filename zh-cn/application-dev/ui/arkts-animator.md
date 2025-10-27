@@ -66,8 +66,18 @@
 
 1. 引入相关依赖。
 
+  ArkTS1.1示例：
+
    ```ts
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
+   ```
+
+  ArkTS1.2示例：
+
+   ```ts
+   import { Entry, Component, Column, Text, Stack, Button, ClickEvent, ColumnOptions, Alignment } from '@ohos.arkui.component';
+   import { State } from '@ohos.arkui.stateManagement';
+   import Animator, { AnimatorResult, animatorOptions } from '@ohos.animator';
    ```
 
 2. 定义要做动画的组件。
@@ -80,6 +90,8 @@
    ```
 
 3. 在onPageShow中创建AnimatorResult对象。
+
+  ArkTS1.1示例：
 
    ```ts
    onPageShow(): void {
@@ -106,7 +118,45 @@
    }
    ```
 
+  ArkTS1.2示例：
+
+  ```ts
+  onPageShow(): void {
+    //创建animatorResult对象
+    this.animatorOptions = Animator.create({
+      duration: 4000,
+      delay: 0,
+      easing: 'linear',
+      iterations: 1,
+      fill: "forwards",
+      direction: 'normal',
+      begin: this.begin,
+      end: this.end
+    } as animatorOptions)
+    this.animatorOptions.onFrame = (progress: number) => {
+      this.translateX = progress;
+      if (progress > this.topWidth && this.translateY < this.bottomHeight) {
+        this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
+      }
+    }
+    //动画取消时执行方法
+    this.animatorOptions.onCancel = () => {
+      this.animatorStatus = '取消';
+    }
+    //动画完成时执行方法
+    this.animatorOptions.onFinish = () => {
+      this.animatorStatus = '完成';
+    }
+    //动画重复播放时执行方法
+    this.animatorOptions.onRepeat = () => {
+      console.log("动画重复播放");
+    }
+  }
+   ```
+
 4. 定义动画播放，重置，暂停的按钮。
+
+  ArkTS1.1示例：
 
    ```ts
    Button('播放').onClick(() => {
@@ -122,7 +172,28 @@
      this.animatorStatus = '暂停'
    }).width(80).height(35)
    ```
+
+  ArkTS1.2示例：
+
+   ```ts
+   Button('播放').onClick((e: ClickEvent) => {
+     this.animatorOptions?.play();
+     this.animatorStatus = '播放中'
+   }).width(80).height(35)
+   Button("重置").onClick((e: ClickEvent) => {
+     this.translateX = 0;
+     this.translateY = 0;
+   }).width(80).height(35)
+   Button("暂停").onClick((e: ClickEvent) => {
+     this.animatorOptions?.pause();
+     this.animatorStatus = '暂停'
+   }).width(80).height(35)
+   ```
+
 5. 在页面隐藏或销毁的生命周期中释放动画对象，避免内存泄漏。
+
+  ArkTS1.1示例：
+
    ```ts
    onPageHide(): void {
      this.animatorOptions = undefined;
@@ -130,6 +201,8 @@
    ```
 
 完整示例如下。
+
+ArkTS1.1示例：
 
 ```ts
 import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
@@ -199,6 +272,99 @@ struct Index {
 
       Stack() {
         Button()
+          .width(60)
+          .height(60)
+          .translate({ x: this.translateX, y: this.translateY })
+      }
+      .width("100%")
+      .height('45%')
+      .align(Alignment.Start)
+
+      Text("当前动画状态为:" + this.animatorStatus)
+    }.width("100%").height('100%')
+  }
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+import { Entry, Component, Column, Text, Stack, Button, ClickEvent, ColumnOptions, Alignment } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import Animator, { AnimatorResult, AnimatorOptions } from '@ohos.animator';
+
+@Entry
+@Component
+struct Index {
+  @State animatorStatus: string = '创建';
+  begin: number = 0;
+  end: number = 300;
+  topWidth: number = 150;
+  bottomHeight: number = 100;
+  g: number = 0.18;
+  private animatorOptions: AnimatorResult  = Animator.create({
+    duration: 4000,
+    delay: 0,
+    easing: 'linear',
+    iterations: 1,
+    fill: "forwards",
+    direction: 'normal',
+    begin: this.begin,
+    end: this.end
+  } as AnimatorOptions)
+  @State translateX: number = 0;
+  @State translateY: number = 0;
+
+  onPageShow(): void {
+    this.animatorOptions = Animator.create({
+      duration: 4000,
+      delay: 0,
+      easing: 'linear',
+      iterations: 1,
+      fill: "forwards",
+      direction: 'normal',
+      begin: this.begin,
+      end: this.end
+    } as AnimatorOptions)
+    this.animatorOptions.onFrame = (progress: number) => {
+      this.translateX = progress;
+      if (progress > this.topWidth && this.translateY < this.bottomHeight) {
+        this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
+      }
+    }
+    this.animatorOptions.onCancel = () => {
+      this.animatorStatus = '取消';
+    }
+    this.animatorOptions.onFinish = () => {
+      this.animatorStatus = '完成';
+    }
+    this.animatorOptions.onRepeat = () => {
+      console.log("动画重复播放");
+    }
+  }
+
+  onPageHide(): void {
+  }
+
+  build() {
+    Column() {
+      Column({ space: 30 } as ColumnOptions) {
+        Button('播放').onClick((e: ClickEvent) => {
+          this.animatorOptions?.play();
+          this.animatorStatus = '播放中';
+        }).width(80).height(35)
+        Button("重置").onClick((e: ClickEvent) => {
+          this.translateX = 0;
+          this.translateY = 0;
+        }).width(80).height(35)
+        Button("暂停").onClick((e: ClickEvent) => {
+          this.animatorOptions?.pause();
+          this.animatorStatus = '暂停';
+        }).width(80).height(35)
+      }.width("100%").height('25%')
+
+      Stack() {
+        Button("")
           .width(60)
           .height(60)
           .translate({ x: this.translateX, y: this.translateY })

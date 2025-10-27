@@ -34,13 +34,25 @@
 1. 创建ComponentContent。
    
    ComponentContent用于定义自定义弹出框的内容。其中，wrapBuilder(buildText)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
+
+   ArkTS-Dyn示例：
    
    ```ts
    private contentNode: ComponentContent<Object> = new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
    ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   import { ComponentContent, wrapBuilder } from '@ohos.arkui.component';
+   private contentNode: ComponentContent<Params> = new ComponentContent<Params>(this.ctx, wrapBuilder(buildText), new Params(this.message));
+   ```
+
 2. 打开自定义弹出框。
    
    调用openCustomDialog接口打开的弹出框默认customStyle为true，即弹出框的内容样式完全按照contentNode自定义样式显示。
+
+   ArkTS-Dyn示例：
    
    ```ts
    PromptActionClass.ctx.getPromptAction().openCustomDialog(PromptActionClass.contentNode, PromptActionClass.options)
@@ -53,11 +65,30 @@
        console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
      })
    ```
+
+   ArkTS-Sta示例：
+   
+   ```ts
+   import { BusinessError } from '@ohos.arkui.component';
+
+   PromptActionClass.ctx!.getPromptAction().openCustomDialog(PromptActionClass.contentNode!, PromptActionClass.options!)
+     .then(() => {
+       console.info('OpenCustomDialog complete.');
+     })
+     .catch((error: Error) => {
+       let message = (error as BusinessError).message;
+       let code = (error as BusinessError).code;
+       console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+     })
+   ```
+
 3. 关闭自定义弹出框。
    
    由于closeCustomDialog接口需要传入待关闭弹出框对应的ComponentContent。因此，如果需要在弹出框中设置关闭方法，则可参考完整示例封装静态方法来实现。
    
    关闭弹出框之后若需要释放对应的ComponentContent，则需要调用ComponentContent的[dispose](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#dispose)方法。
+
+   ArkTS-Dyn示例：
    
    ```ts
 
@@ -69,6 +100,22 @@
         }
      })
      .catch((error: BusinessError) => {
+       let message = (error as BusinessError).message;
+       let code = (error as BusinessError).code;
+       console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
+     })
+   ```
+
+   ArkTS-Sta示例：
+   
+   ```ts
+   import { BusinessError } from '@ohos.arkui.component';
+
+   PromptActionClass.ctx!.getPromptAction().closeCustomDialog(PromptActionClass.contentNode!)
+     .then(() => {
+       console.info('CloseCustomDialog complete.');
+     })
+     .catch((error: Error) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
        console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
@@ -89,8 +136,26 @@ this.contentNode.update(new Params('update'))
 
 更新属性时，未设置的属性会恢复为默认值。例如，初始设置{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }，更新时设置{ alignment: DialogAlignment.Bottom }，则初始设置的offset: { dx: 0, dy: 50 }不会保留，会恢复为默认值。
 
+ArkTS-Dyn示例：
+
 ```ts
 PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.contentNode, options)
+  .then(() => {
+    console.info('UpdateCustomDialog complete.');
+  })
+  .catch((error: BusinessError) => {
+    let message = (error as BusinessError).message;
+    let code = (error as BusinessError).code;
+    console.error(`UpdateCustomDialog args error code is ${code}, message is ${message}`);
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.arkui.component';
+
+PromptActionClass.ctx!.getPromptAction().updateCustomDialog(PromptActionClass.contentNode!, options)
   .then(() => {
     console.info('UpdateCustomDialog complete.');
   })
@@ -108,6 +173,8 @@ PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.con
 > **说明：** 
 >
 > 当isModal为true时，蒙层将显示，此时可以设置蒙层的动画效果；否则，maskTransition将不生效。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -163,11 +230,71 @@ struct Index {
 
  ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
 
+ 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Text, Column, RowOptions, Row, Component, Button, Builder, Color, Rectangle, AnimateParam, TransitionEffect, Curve } from '@ohos.arkui.component';
+import promptAction from '@ohos.promptAction';
+
+@Entry
+@Component
+struct Index {
+  private customDialogComponentId: number = 0;
+  @Builder
+  customDialogComponent() {
+    Row({ space: 50 } as RowOptions) {
+      Button("这是一个弹窗")
+    }.height(200).padding(5)
+  }
+
+  build() {
+    Row() {
+      Row({ space: 20 } as RowOptions) {
+        Text('打开弹窗')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.customDialogComponent()
+              },
+              isModal:true,
+              showInSubWindow:false,
+              maskRect:{ x: 20, y: 20, width: '90%', height: '90%' } as Rectangle,
+              dialogTransition: // 设置弹窗内容显示的过渡效果
+              TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                .animation({ duration: 4000, curve: Curve.Smooth } as AnimateParam),// 四秒钟的偏移渐变动画
+
+              maskTransition: // 设置蒙层显示的过渡效果
+              TransitionEffect.opacity(0)
+                .animation({ duration: 4000, curve: Curve.Smooth } as AnimateParam) // 四秒钟的透明渐变动画
+
+            } as promptAction.CustomDialogOptions).then((dialogId: number) => {
+              this.customDialogComponentId = dialogId
+            })
+              .catch((error: Error) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![UIContextPromptAction](figures/UIContextPromptActionDialogMask1.gif)
+
 ## 设置弹出框避让软键盘的距离
 
 为显示弹出框的独立性，弹出框弹出时会与周边进行避让，包括状态栏、导航条以及键盘等留有间距。故当软键盘弹出时，默认情况下，弹出框会自动避开软键盘，并与之保持16vp的距离。从API version 15开始，开发者可以利用[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)中的keyboardAvoidMode和keyboardAvoidDistance这两个配置项，来设置弹出框在软键盘弹出时的行为，包括是否需要避开软键盘以及与软键盘之间的距离。
 
 设置软键盘间距时，需要将keyboardAvoidMode值设为KeyboardAvoidMode.DEFAULT。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -213,8 +340,56 @@ struct Index {
 
  ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
+ ArkTS-Sta示例：
+
+ ```ts
+'use static'
+
+import { Entry, Text, Column, RowOptions, Row, Component, Builder, KeyboardAvoidMode, LengthMetrics, TextInput,
+  DialogAlignment, Margin, TextInputOptions } from '@ohos.arkui.component';
+import promptAction from '@ohos.promptAction';
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  customDialogComponent() {
+      Column() {
+        Text('keyboardAvoidDistance: 0vp')
+          .fontSize(20)
+          .margin({ bottom: 36 } as Margin)
+        TextInput({ placeholder: '' } as TextInputOptions)
+      }.backgroundColor('#FFF0F0F0')
+  }
+
+  build() {
+    Row() {
+      Row({ space: 20 } as RowOptions) {
+        Text('打开弹窗')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.customDialogComponent()
+              },
+              alignment:DialogAlignment.Bottom,
+              keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
+              keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
+            } as promptAction.CustomDialogOptions).catch((error: Error) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+ ```
 
 ## 完整示例
+
+ArkTS-Dyn示例：
 
 ```ts
 // PromptActionClass.ets
@@ -356,6 +531,157 @@ struct Index {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptAction.gif)
+ArkTS-Sta示例：
 
+```ts
+'use static'
+// PromptActionClass.ets
+
+import { ComponentContent, BusinessError } from '@ohos.arkui.component';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+export class PromptActionClass {
+  static ctx: UIContext | undefined = undefined;
+  static contentNode: ComponentContent<Params> | undefined = undefined;
+  static options: promptAction.BaseDialogOptions | undefined = undefined;
+
+  static setContext(context: UIContext) {
+    PromptActionClass.ctx = context;
+  }
+
+  static setContentNode(node: ComponentContent<Params>) {
+    PromptActionClass.contentNode = node;
+  }
+
+  static setOptions(options: promptAction.BaseDialogOptions) {
+    PromptActionClass.options = options;
+  }
+
+  static openDialog() {
+    if (PromptActionClass.contentNode !== null) {
+      PromptActionClass.ctx!.getPromptAction().openCustomDialog(
+        PromptActionClass.contentNode!, PromptActionClass.options!)
+        .then(() => {
+          console.info('OpenCustomDialog complete.');
+        })
+        .catch((error: Error) => {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+        })
+    }
+  }
+
+  static closeDialog() {
+    if (PromptActionClass.contentNode !== null) {
+      PromptActionClass.ctx!.getPromptAction().closeCustomDialog(PromptActionClass.contentNode!)
+        .then(() => {
+          console.info('CloseCustomDialog complete.');
+        })
+        .catch((error: Error) => {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
+        })
+    }
+  }
+
+  static updateDialog(options: promptAction.BaseDialogOptions) {
+    if (PromptActionClass.contentNode !== null) {
+      PromptActionClass.ctx!.getPromptAction().updateCustomDialog(PromptActionClass.contentNode!, options)
+        .then(() => {
+          console.info('UpdateCustomDialog complete.');
+        })
+        .catch((error: Error) => {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          console.error(`UpdateCustomDialog args error code is ${code}, message is ${message}`);
+        })
+    }
+  }
+}
+```
+
+```ts
+'use static'
+// Index.ets
+
+import { Entry, Text, Column, ColumnOptions, Row, Component, Button, Builder, FontWeight, ComponentContent,
+  DialogAlignment, Margin, wrapBuilder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+import { PromptActionClass, Params } from './PromptActionClass';
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 } as Margin)
+    Button('Close')
+      .onClick(() => {
+        PromptActionClass.closeDialog();
+      })
+  }.backgroundColor('#FFF0F0F0')
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = "hello";
+  private ctx: UIContext = this.getUIContext();
+  private contentNode: ComponentContent<Params> =
+    new ComponentContent<Params>(this.ctx, wrapBuilder(buildText), new Params(this.message));
+
+  aboutToAppear(): void {
+    PromptActionClass.setContext(this.ctx);
+    PromptActionClass.setContentNode(this.contentNode);
+    PromptActionClass.setOptions({ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } });
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button("open dialog and update options")
+          .margin({ top: 50 } as Margin)
+          .onClick(() => {
+            PromptActionClass.openDialog();
+
+            setTimeout(() => {
+              PromptActionClass.updateDialog({
+                alignment: DialogAlignment.Bottom,
+                offset: { dx: 0, dy: -50 }
+              });
+            }, 1500)
+          })
+        Button("open dialog and update content")
+          .margin({ top: 50 } as Margin)
+          .onClick(() => {
+            PromptActionClass.openDialog();
+
+            setTimeout(() => {
+              this.contentNode.update(new Params('update'));
+            }, 1500)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ ![UIContextPromptAction](figures/UIContextPromptAction.gif)
 

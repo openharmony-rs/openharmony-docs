@@ -24,8 +24,13 @@ Response的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -69,6 +74,50 @@ struct WebComponent {
 
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WebNetErrorList } from '@ohos.web.netErrorList';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Button('response').onClick(() => {
+        let response = new webview.WebSchemeHandlerResponse();
+        try {
+          response.setUrl("http://www.example.com")
+          response.setStatus(200)
+          response.setStatusText("OK")
+          response.setMimeType("text/html")
+          response.setEncoding("utf-8")
+          response.setHeaderByName("header1", "value1", false)
+          response.setNetErrorCode(WebNetErrorList.NET_OK)
+          console.log("[schemeHandler] getUrl:" + response.getUrl())
+          console.log("[schemeHandler] getStatus:" + response.getStatus())
+          console.log("[schemeHandler] getStatusText:" + response.getStatusText())
+          console.log("[schemeHandler] getMimeType:" + response.getMimeType())
+          console.log("[schemeHandler] getEncoding:" + response.getEncoding())
+          console.log("[schemeHandler] getHeaderByValue:" + response.getHeaderByName("header1"))
+          console.log("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
+
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setUrl<sup>12+</sup>
 
 setUrl(url: string): void
@@ -76,6 +125,10 @@ setUrl(url: string): void
 给当前的Response设置重定向或因HSTS而更改后的URL，设置了url后会触发请求的跳转。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -103,6 +156,10 @@ setNetErrorCode(code: WebNetErrorList): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
@@ -123,17 +180,23 @@ setNetErrorCode(code: WebNetErrorList): void
 
 ## setStatus<sup>12+</sup>
 
-setStatus(code: number): void
+ArkTS-Dyn: setStatus(code: number): void
+
+ArkTS-Sta: setStatus(code: int): void
 
 给当前的Response设置HTTP状态码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | number | 是   | Http状态码。 |
+|  code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | Http状态码。 |
 
 **错误码：**
 
@@ -154,6 +217,10 @@ setStatusText(text: string): void
 给当前的Response设置状态文本。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -181,6 +248,10 @@ setMimeType(type: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
@@ -207,6 +278,10 @@ setEncoding(encoding: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
@@ -232,6 +307,10 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 给当前的Response设置头信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -280,6 +359,10 @@ getNetErrorCode(): WebNetErrorList
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                     |
@@ -292,17 +375,23 @@ getNetErrorCode(): WebNetErrorList
 
 ## getStatus<sup>12+</sup>
 
-getStatus(): number
+ArkTS-Dyn: getStatus(): number
+
+ArkTS-Sta: getStatus(): int
 
 获取Response的Http状态码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| number | 获取Response的Http状态码。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 获取Response的Http状态码。|
 
 **示例：**
 
@@ -315,6 +404,10 @@ getStatusText(): string
 获取Response的状态文本。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -334,6 +427,10 @@ getMimeType(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                     |
@@ -352,6 +449,10 @@ getEncoding(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型    | 说明                                     |
@@ -369,6 +470,10 @@ getHeaderByName(name: string): string
 获取Response的字符集。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 

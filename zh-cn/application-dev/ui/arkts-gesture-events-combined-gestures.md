@@ -21,6 +21,8 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 在一个Column组件上绑定了translate属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定LongPressGesture和PanGesture组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据拖动手势的回调函数，实现组件的拖动。
 
+ArkTs-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -43,14 +45,14 @@ struct Index {
     .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
     .height(250)
     .width(300)
-    //以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发拖动手势事件
+    // 以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发拖动手势事件
     .gesture(
       // 声明该组合手势的类型为Sequence类型
       GestureGroup(GestureMode.Sequence,
         // 该组合手势第一个触发的手势为长按手势，且长按手势可多次响应
         LongPressGesture({ repeat: true })
           // 当长按手势识别成功，增加Text组件上显示的count次数
-          .onAction((event: GestureEvent|undefined) => {
+          .onAction((event: GestureEvent) => {
             if(event){
               if (event.repeat) {
                 this.count++;
@@ -58,24 +60,24 @@ struct Index {
             }
             console.info('LongPress onAction');
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             console.info('LongPress end');
           }),
         // 当长按之后进行拖动，PanGesture手势被触发
         PanGesture()
-          .onActionStart(() => {
+          .onActionStart((event: GestureEvent) => {
             this.borderStyles = BorderStyle.Dashed;
             console.info('pan start');
           })
             // 当该手势被触发时，根据回调获得拖动的距离，修改该组件的位移距离从而实现组件的移动
-          .onActionUpdate((event: GestureEvent|undefined) => {
+          .onActionUpdate((event: GestureEvent) => {
             if(event){
               this.offsetX = (this.positionX + event.offsetX);
               this.offsetY = this.positionY + event.offsetY;
             }
             console.info('pan update');
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             this.positionX = this.offsetX;
             this.positionY = this.offsetY;
             this.borderStyles = BorderStyle.Solid;
@@ -84,6 +86,75 @@ struct Index {
       .onCancel(() => {
         console.log("sequence gesture canceled")
       })
+    )
+  }
+}
+```
+ArkTs-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Column, Component, Text, GestureEvent, BorderStyle, GestureMode, GestureGroup, LongPressGesture, PanGesture } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State offsetX: number = 0;
+  @State offsetY: number = 0;
+  @State count: number = 0;
+  @State positionX: number = 0;
+  @State positionY: number = 0;
+  @State borderStyles: BorderStyle = BorderStyle.Solid;
+
+  build() {
+    Column() {
+      Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+        .fontSize(28)
+    }.margin(10)
+    .borderWidth(1)
+    // 绑定translate属性可以实现组件的位置移动
+    .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+    .height(250)
+    .width(300)
+    // 以下组合手势为顺序识别，当长按手势事件未正常触发时不会触发拖动手势事件
+    .gesture(
+      // 声明该组合手势的类型为Sequence类型
+      GestureGroup(GestureMode.Sequence,
+        // 该组合手势第一个触发的手势为长按手势，且长按手势可多次响应
+        LongPressGesture({ repeat: true })
+          // 当长按手势识别成功，增加Text组件上显示的count次数
+          .onAction((event: GestureEvent) => {
+            if(event){
+              if (event.repeat) {
+                this.count++;
+              }
+            }
+            console.info('LongPress onAction');
+          })
+          .onActionEnd((event: GestureEvent) => {
+            console.info('LongPress end');
+          }),
+        // 当长按之后进行拖动，PanGesture手势被触发
+        PanGesture()
+          .onActionStart((event: GestureEvent) => {
+            this.borderStyles = BorderStyle.Dashed;
+            console.info('pan start');
+          })
+            // 当该手势被触发时，根据回调获得拖动的距离，修改该组件的位移距离从而实现组件的移动
+          .onActionUpdate((event: GestureEvent) => {
+            if(event){
+              this.offsetX = (this.positionX + event.offsetX);
+              this.offsetY = this.positionY + event.offsetY;
+            }
+            console.info('pan update');
+          })
+          .onActionEnd((event: GestureEvent) => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.borderStyles = BorderStyle.Solid;
+          })
+      )
     )
   }
 }
@@ -104,6 +175,8 @@ struct Index {
 
 以在一个Column组件上绑定点击手势和双击手势组成的并行识别手势为例，由于单击手势和双击手势是并行识别，因此两个手势可以同时进行识别，二者互不干涉。
 
+ArkTs-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -123,11 +196,48 @@ struct Index {
     .gesture(
       GestureGroup(GestureMode.Parallel,
         TapGesture({ count: 1 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.count1++;
           }),
         TapGesture({ count: 2 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
+            this.count2++;
+          })
+      )
+    )
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Column, Component, Text, GestureGroup, TapGesture, GestureEvent, GestureMode } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State count1: number = 0;
+  @State count2: number = 0;
+
+  build() {
+    Column() {
+      Text('Parallel gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+        .fontSize(28)
+    }
+    .height(200)
+    .width('100%')
+    // 以下组合手势为并行并别，单击手势识别成功后，若在规定时间内再次点击，双击手势也会识别成功
+    .gesture(
+      GestureGroup(GestureMode.Parallel,
+        TapGesture({ count: 1 })
+          .onAction((event: GestureEvent) => {
+            this.count1++;
+          }),
+        TapGesture({ count: 2 })
+          .onAction((event: GestureEvent) => {
             this.count2++;
           })
       )
@@ -157,6 +267,8 @@ struct Index {
 
 以在一个Column组件上绑定单击手势和双击手势组合而成的互斥识别组合手势为例。若先绑定单击手势后绑定双击手势，由于单击手势只需要一次点击即可触发而双击手势需要两次，每次的点击事件均被单击手势消费而不能积累成双击手势，所以双击手势无法触发。若先绑定双击手势后绑定单击手势，则触发双击手势不触发单击手势。
 
+ArkTs-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -172,15 +284,52 @@ struct Index {
     }
     .height(200)
     .width('100%')
-    //以下组合手势为互斥并别，单击手势识别成功后，双击手势会识别失败
+    // 以下组合手势为互斥并别，单击手势识别成功后，双击手势会识别失败
     .gesture(
       GestureGroup(GestureMode.Exclusive,
         TapGesture({ count: 1 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.count1++;
           }),
         TapGesture({ count: 2 })
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
+            this.count2++;
+          })
+      )
+    )
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Column, Component, Text, GestureGroup, TapGesture, GestureEvent, GestureMode } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  @State count1: number = 0;
+  @State count2: number = 0;
+
+  build() {
+    Column() {
+      Text('Exclusive gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+        .fontSize(28)
+    }
+    .height(200)
+    .width('100%')
+    // 以下组合手势为互斥并别，单击手势识别成功后，双击手势会识别失败
+    .gesture(
+      GestureGroup(GestureMode.Exclusive,
+        TapGesture({ count: 1 })
+          .onAction((event: GestureEvent) => {
+            this.count1++;
+          }),
+        TapGesture({ count: 2 })
+          .onAction((event: GestureEvent) => {
             this.count2++;
           })
       )

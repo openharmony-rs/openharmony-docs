@@ -17,7 +17,9 @@
 
 **起始版本：** 20
 
-**相关模块：**[ArkUI_NativeModule](_ark_u_i___native_module.md)
+**相关模块：** [ArkUI_NativeModule](_ark_u_i___native_module.md)
+
+**相关示例：** [NDKSample](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/NDKSample)
 
 
 ## 汇总
@@ -29,3 +31,5 @@
 | -------- | -------- |
 | int32_t [OH_ArkUI_NativeModule_GetNodeHandleFromAniValue](_ark_u_i___native_module.md#oh_arkui_nativemodule_getnodehandlefromanivalue) (ani_env* env, ani_object frameNode, [ArkUI_NodeHandle](_ark_u_i___native_module.md#arkui_nodehandle) \*handle) | 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。  | 
 | int32_t [OH_ArkUI_NativeModule_GetContextFromAniValue](_ark_u_i___native_module.md#oh_arkui_nativemodule_getcontextfromanivalue) (ani_env* env, ani_object context, [ArkUI_ContextHandle](_ark_u_i___native_module.md#arkui_contexthandle-12) \*handle) | 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。  | 
+| int32_t [OH_ArkUI_NativeModule_GetNodeContentFromAniValue](_ark_u_i___native_module.md#oh_arkui_nativemodule_getnodecontentfromanivalue) (ani_env* env, ani_object nodeContent, [ArkUI_NodeContentHandle](_ark_u_i___native_module.md#arkui_nodecontenthandle) \*content) | 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。  | 
+| ArkUI_ErrorCode [OH_ArkUI_NativeModule_GetNavDestinationAniParam](_ark_u_i___native_module.md#oh_arkui_nativemodule_getnavdestinationaniparam) (ArkUI_NodeHandle node, ani_env* env, ani_value* param) | 获取指定节点所在的NavDestination页面的参数。  | 

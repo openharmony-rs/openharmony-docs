@@ -1,12 +1,18 @@
 # @StorageLink
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 20开始，支持该装饰器。
 
 @StorageLink用于状态管理V1中，与AppStorage中对应的属性建立双向数据同步。
 
-在静态语言上下文中使用时，开发指南参考：[AppStorage：应用全局的UI状态存储（ArkTS-ST）](../../../ui/state-management/arkts-static-appstorage.md)。
+在ArkTS-Sta中使用时，开发指南参考：[AppStorage：应用全局的UI状态存储（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-appstorage.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,6 +25,8 @@
 **示例：**
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
 import { StorageLink } from '@ohos.arkui.stateManagement';
 

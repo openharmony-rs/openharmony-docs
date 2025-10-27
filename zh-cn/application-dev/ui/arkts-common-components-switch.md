@@ -23,11 +23,23 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
   
   
+    ArkTS-Dyn示例：
+
     ```ts
   Toggle({ type: ToggleType.Checkbox, isOn: false })
   Toggle({ type: ToggleType.Checkbox, isOn: true })
     ```
 
+    ArkTS-Sta示例：
+  
+    在ArkTS-Sta上创建Toggle时，需先导入Toggle和ToggleType，以及用来指定参数类型的ToggleOptions。
+
+    ```ts
+  import { Toggle, ToggleType, ToggleOptions } from '@ohos.arkui.component';
+  
+  Toggle({ type: ToggleType.Switch, isOn: false } as ToggleOptions)
+  ```
+  
   ![zh-cn_image_0000001562940485](figures/zh-cn_image_0000001562940485.png)
   
   ```ts
@@ -106,6 +118,8 @@ Toggle({ type: ToggleType.Switch, isOn: false })
 
 Toggle用于切换蓝牙开关状态。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { promptAction } from '@kit.ArkUI';
@@ -153,3 +167,66 @@ struct ToggleExample {
 
 
 ![zh-cn_image_0000001511740448](figures/zh-cn_image_0000001511740448.gif)
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Row,
+  ToggleType,
+  FlexAlign,
+  ToggleOptions,
+  Toggle,
+  Margin,
+  Padding,
+  TextAlign
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import promptAction from '@ohos.promptAction';
+
+@Entry
+@Component
+struct ToggleExample {
+  @State BOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' } as promptAction.ShowToastOptions;
+  @State BOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' } as promptAction.ShowToastOptions;
+
+  build() {
+    Column() {
+      Row() {
+        Text("Bluetooth Mode")
+          .height(50)
+          .fontSize(16)
+      }
+
+      Row() {
+        Text("Bluetooth")
+          .height(50)
+          .padding({ left: 10 } as Padding)
+          .fontSize(16)
+          .textAlign(TextAlign.Start)
+          .backgroundColor(0xFFFFFF)
+        Toggle({ type: ToggleType.Switch } as ToggleOptions)
+          .margin({ left: 200, right: 10 } as Margin)
+          .onChange((isOn: boolean) => {
+            if (isOn) {
+              this.getUIContext().getPromptAction().showToast(this.BOnSt);
+            } else {
+              this.getUIContext().getPromptAction().showToast(this.BOffSt);
+            }
+          })
+      }
+      .backgroundColor(0xFFFFFF)
+    }
+    .padding(10)
+    .backgroundColor(0xDCDCDC)
+    .width('100%')
+    .height('100%')
+  }
+}
+```

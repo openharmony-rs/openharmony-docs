@@ -12,6 +12,8 @@
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 >
 >  - 从API version 12开始，本模块全接口支持在原子化服务中使用。
+>
+>  - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 
 ## 导入模块
@@ -217,11 +219,13 @@ minimize(): Locale
 >
 >  - hourCycle：不同取值的显示效果请参考[时间日期国际化表5](../../internationalization/i18n-time-date.md)。
 
-## DateTimeFormat
+## DateTimeFormat<sup>(deprecated)</sup>
 
-### constructor<sup>8+</sup>
+### constructor<sup>(deprecated)</sup>
 
 constructor()
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
 
 创建时间、日期格式化对象。
 
@@ -237,9 +241,11 @@ constructor()
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
 
-### constructor
+### constructor<sup>(deprecated)</sup>
 
 constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
 
 创建时间、日期格式化对象。
 
@@ -254,7 +260,7 @@ constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 | 参数名                  | 类型                                   | 必填   | 说明                           |
 | -------------------- | ------------------------------------ | ---- | ---------------------------- |
 | locale               | string \| Array&lt;string&gt;        | 是    | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options              | [DateTimeOptions](#datetimeoptions) | 否    | 创建时间、日期格式化对象时可设置的配置项。<br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 |
+| options              | [DateTimeOptions](#datetimeoptionsdeprecated) | 否    | 创建时间、日期格式化对象时可设置的配置项。<br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 |
 
 **示例：**
 ```ts
@@ -262,12 +268,14 @@ constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('zh-CN', { dateStyle: 'full', timeStyle: 'medium' });
 
 // 使用区域ID列表创建DateTimeFormat对象，因为ban为非法区域ID，因此使用zh区域ID创建DateTimeFormat对象
-formatter = new intl.DateTimeFormat(new Array<string>('ban', 'zh'), { dateStyle: 'full', timeStyle: 'medium' });
+formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyle: 'medium' });
 ```
 
-### format
+### format<sup>(deprecated)</sup>
 
 format(date: Date): string
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format)替代。
 
 对时间、日期进行格式化。
 
@@ -301,9 +309,11 @@ formatter = new intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'me
 formattedDate = formatter.format(date); // formattedDate "Friday, 17 December 2021, 03:24:00"
 ```
 
-### formatRange
+### formatRange<sup>(deprecated)</sup>
 
 formatRange(startDate: Date, endDate: Date): string
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.formatRange()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange)替代。
 
 对时间段、日期段进行格式化。
 
@@ -335,9 +345,11 @@ let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
 let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = "17/12/2021 - 18/12/2021"
 ```
 
-### resolvedOptions
+### resolvedOptions<sup>(deprecated)</sup>
 
 resolvedOptions(): DateTimeOptions
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)替代。
 
 获取创建时间、日期格式化对象时设置的配置项。
 
@@ -351,7 +363,7 @@ resolvedOptions(): DateTimeOptions
 
 | 类型                                   | 说明                            |
 | ------------------------------------ | ----------------------------- |
-| [DateTimeOptions](#datetimeoptions) | 时间、日期格式化对象设置的配置项。 |
+| [DateTimeOptions](#datetimeoptionsdeprecated) | 时间、日期格式化对象设置的配置项。 |
 
 **示例：**
 ```ts
@@ -363,7 +375,9 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 ```
 
 
-## DateTimeOptions
+## DateTimeOptions<sup>(deprecated)</sup>
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用Intl.DateTimeFormatOptions和Intl.ResolvedDateTimeFormatOptions替代。用法参考[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)和[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)。
 
 时间、日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。
 
@@ -439,7 +453,9 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 
 ### format
 
-format(number: number): string
+ArkTS-Dyn: format(num: number): string
+
+ArkTS-Sta: format(num: double): string
 
 对数字进行格式化。
 
@@ -451,7 +467,7 @@ format(number: number): string
 
 | 参数名    | 类型     | 必填   | 说明   |
 | ------ | ------ | ---- | ---- |
-| number | number | 是    | 数字对象。 |
+| num | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 数字对象。 |
 
 **返回值：**
 
@@ -463,7 +479,7 @@ format(number: number): string
 **示例：**
 ```ts
 // 使用区域ID列表创建NumberFormat对象，因为en-GB为合法的区域ID，因此使用en-GB创建NumberFormat对象
-let formatter: intl.NumberFormat = new intl.NumberFormat(new Array<string>('en-GB', 'zh'), { style: 'decimal', notation: 'scientific' });
+let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 let formattedNumber: string = formatter.format(1223); // formattedNumber = 1.223E3
 let options : intl.NumberOptions = {
   roundingPriority: "lessPrecision",
@@ -476,7 +492,9 @@ let result: string = formatter.format(1.23456); // result = 1.23
 
 ### formatRange<sup>18+</sup>
 
-formatRange(startRange: number, endRange: number): string
+ArkTS-Dyn: formatRange(startRange: number, endRange: number): string
+
+ArkTS-Sta: formatRange(startRange: double, endRange: double): string
 
 对数字范围进行格式化。
 
@@ -488,8 +506,8 @@ formatRange(startRange: number, endRange: number): string
 
 | 参数名    | 类型     | 必填   | 说明   |
 | ------ | ------ | ---- | ---- |
-| startRange | number | 是    | 开始数字。 |
-| endRange | number | 是    | 结束数字。 |
+| startRange | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 开始数字。 |
+| endRange | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 结束数字。 |
 
 **返回值：**
 
@@ -524,7 +542,7 @@ resolvedOptions(): NumberOptions
 
 **示例：**
 ```ts
-let formatter: intl.NumberFormat = new intl.NumberFormat(new Array<string>('en-GB', 'zh'), { style: 'decimal', notation: 'scientific' });
+let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 // 获取NumberFormat对象配置项
 let options: intl.NumberOptions = formatter.resolvedOptions();
 let style: string | undefined = options.style; // style = 'decimal'
@@ -553,13 +571,13 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 | style                    | string  | 否    | 是    | 数字的显示格式，取值包括："decimal",&nbsp;"currency",&nbsp;"percent",&nbsp;"unit"。<br>默认值：decimal。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | numberingSystem          | string  | 否    | 是    | 数字系统，取值包括：<br>"adlm",&nbsp;"ahom",&nbsp;"arab",&nbsp;"arabext",&nbsp;"bali",&nbsp;"beng",&nbsp;"bhks",&nbsp;"brah",&nbsp;"cakm",&nbsp;"cham",&nbsp;"deva",&nbsp;"diak",&nbsp;"fullwide",&nbsp;"gong",&nbsp;"gonm",&nbsp;"gujr",&nbsp;"guru",&nbsp;"hanidec",&nbsp;"hmng",&nbsp;"hmnp",&nbsp;"java",&nbsp;"kali",&nbsp;"khmr",&nbsp;"knda",&nbsp;"lana",&nbsp;"lanatham",&nbsp;"laoo",&nbsp;"latn",&nbsp;"lepc",&nbsp;"limb",&nbsp;"mathbold",&nbsp;"mathdbl",&nbsp;"mathmono",&nbsp;"mathsanb",&nbsp;"mathsans",&nbsp;"mlym",&nbsp;"modi",&nbsp;"mong",&nbsp;"mroo",&nbsp;"mtei",&nbsp;"mymr",&nbsp;"mymrshan",&nbsp;"mymrtlng",&nbsp;"newa",&nbsp;"nkoo",&nbsp;"olck",&nbsp;"orya",&nbsp;"osma",&nbsp;"rohg",&nbsp;"saur",&nbsp;"segment",&nbsp;"shrd",&nbsp;"sind",&nbsp;"sinh",&nbsp;"sora",&nbsp;"sund",&nbsp;"takr",&nbsp;"talu",&nbsp;"tamldec",&nbsp;"telu",&nbsp;"thai",&nbsp;"tibt",&nbsp;"tirh",&nbsp;"vaii",&nbsp;"wara",&nbsp;"wcho"。<br>默认值：区域的默认数字系统。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | useGrouping              | boolean | 否    | 是    | true表示分组显示，false表示不分组显示。<br>默认值：true。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                  |
-| minimumIntegerDigits     | number  | 否    | 是    | 表示要使用的最小整数位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
-| minimumFractionDigits    | number  | 否    | 是    | 表示要使用的最小分数位数，取值范围：0~20。<br>默认值：0。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
-| maximumFractionDigits    | number  | 否    | 是    | 表示要使用的最大分数位数，取值范围：1~21。<br>默认值：3。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
-| minimumSignificantDigits | number  | 否    | 是    | 表示要使用的最小有效位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
-| maximumSignificantDigits | number  | 否    | 是    | 表示要使用的最大有效位数，取值范围：1~21。<br>默认值：21。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
+| minimumIntegerDigits     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最小整数位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
+| minimumFractionDigits    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最小分数位数，取值范围：0~20。<br>默认值：0。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
+| maximumFractionDigits    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最大分数位数，取值范围：1~21。<br>默认值：3。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
+| minimumSignificantDigits | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最小有效位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
+| maximumSignificantDigits | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最大有效位数，取值范围：1~21。<br>默认值：21。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                  |
 | roundingPriority<sup>18+</sup>   | string  | 否    | 是    | 最大分数位数和最大有效位数同时设置时的舍入优先级，取值包括："auto"，"morePrecision"&nbsp;取最大分数位数，"lessPrecision"&nbsp;取最大有效位数。<br>默认值：auto。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                  |
-| roundingIncrement<sup>18+</sup>  | number  | 否    | 是    | 表示舍入增量，取值范围：1，2，5，10，20，25，50，100，200，250，500，1000，2000，2500，5000。<br>默认值：1。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                  |
+| roundingIncrement<sup>18+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示舍入增量，取值范围：1，2，5，10，20，25，50，100，200，250，500，1000，2000，2500，5000。<br>默认值：1。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                  |
 | roundingMode<sup>18+</sup>       | string  | 否    | 是    | 表示舍入模式，取值包括：<br>"ceil"：向上取整。<br>"floor"：向下取整。<br>"expand"：远离零取整。<br>"trunc"：向零取整。<br>"halfCeil"：半向上取整，大于等于增量的一半时向上取整，小于增量的一半时向下取整。<br>"halfFloor"：半向下取整，大于增量的一半时向上取整，小于等于增量的一半时向下取整。<br>"halfExpand"：半远离零取整，大于等于增量的一半时远离零取整，小于增量的一半时向零取整。<br>"halfTrunc"：半向零取整，大于增量的一半时远离零取整，小于等于增量的一半时向零取整。<br>"halfEven"：半向偶数取整，大于增量的一半时 远离零取整，小于增量的一半时向零取整，等于增量的一半时向最近的偶数位舍入。<br>默认值：halfExpand。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
@@ -568,11 +586,9 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 ## Collator<sup>8+</sup>
 
-### constructor<sup>(deprecated)</sup>
+### constructor<sup>8+</sup>
 
 constructor()
-
-从API version 8开始支持，从API version 20开始不再维护，建议使用[Intl.Collator() constructor](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator)代替。
 
 创建排序对象。
 
@@ -587,11 +603,9 @@ constructor()
   ```
 
 
-### constructor<sup>(deprecated)</sup>
+### constructor<sup>8+</sup>
 
 constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
-
-从API version 8开始支持，从API version 20开始不再维护，建议使用[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator)代替。
 
 创建排序对象。
 
@@ -613,11 +627,11 @@ constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
   ```
 
 
-### compare<sup>(deprecated)</sup>
+### compare<sup>8+</sup>
 
-compare(first: string, second: string): number
+ArkTS-Dyn: compare(first: string, second: string): number
 
-从API version 8开始支持，从API version 20开始不再维护，建议使用[Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare)代替。
+ArkTS-Sta: compare(first: string, second: string): int
 
 根据配置项的排序规则，比较两个字符串。
 
@@ -636,7 +650,7 @@ compare(first: string, second: string): number
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 比较结果。<br>- number为负数时，表示first排序在second之前。<br>- number为0时，表示first与second排序相同。<br>- number为正数，表示first排序在second之后。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 比较结果。<br>- 返回值为负数时，表示first排序在second之前。<br>- 返回值为0时，表示first与second排序相同。<br>- 返回值为正数，表示first排序在second之后。 |
 
 **示例：**
   ```ts
@@ -647,11 +661,9 @@ compare(first: string, second: string): number
   ```
 
 
-### resolvedOptions<sup>(deprecated)</sup>
+### resolvedOptions<sup>8+</sup>
 
 resolvedOptions(): CollatorOptions
-
-从API version 8开始支持，从API version 20开始不再维护，建议使用[Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/resolvedOptions)代替。
 
 获取创建排序对象时设置的配置项。
 
@@ -687,13 +699,13 @@ resolvedOptions(): CollatorOptions
 
 | 名称                | 类型      | 只读   | 可选   | 说明                                       |
 | ----------------- | ------- | ---- | ---- | ---------------------------------------- |
-| localeMatcher<sup>(deprecated)</sup>     | string  | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.localeMatcher替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>区域匹配算法，取值范围：<br>"lookup"：模糊匹配。<br>"best fit"：准确匹配。<br>默认值："best fit"。 |
-| usage<sup>(deprecated)</sup>             | string  | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.usage替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>比较的用途，取值范围：<br>"sort"：用作排序。<br>"search"：用作查找匹配的字符串。<br>默认值："sort"。        |
-| sensitivity<sup>(deprecated)</sup>       | string  | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.sensitivity替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>表示字符串中的哪些差异会导致非零结果值，取值范围：<br>"base"：不同的字母比较不相等，比如：'a' ≠ 'b', 'a' = 'á', 'a' = 'A'。<br>"accent"：不同的字母或不同读音的相同字母比较不相等，比如'a' ≠ 'b', 'a' ≠ 'á', 'a' = 'A'。<br>"case"：不同的字母或相同字母大小写比较不相等，比如：'a' ≠ 'b', 'a' = 'á', 'a' ≠ 'A'。<br>"variant"：不同的字母或读音及其它有区别的标志或大小写都是不相等的，比如：'a' ≠ 'b', 'a' ≠ 'á', 'a' ≠ 'A'。<br>默认值："variant"。        |
-| ignorePunctuation<sup>(deprecated)</sup> | boolean | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.ignorePunctuation替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>true表示忽略标点符号，false表示考虑标点符号。<br>默认值：false。        |
-| collation<sup>(deprecated)</sup>         | string  | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.collation替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>区域的排序规则，取值包括：<br>"big5han"：拉丁字母使用的拼音排序。<br>"compat"：兼容性排序，仅用于阿拉伯语。<br>"dict"：词典风格排序，仅用于僧伽罗语。<br>"direct"：二进制码点排序。<br>"ducet"：按Unicode排序元素表排序。<br>"eor"：按欧洲排序规则排序。<br>"gb2312"：拼音排序，仅用于中文排序。<br>"phonebk"：电话本风格排序。<br>"phonetic"：发音排序。<br>"pinyin"：拼音排序。<br>"reformed"：瑞典语排序。<br>"searchjl"：韩语初始辅音搜索的特殊排序。<br>"stroke"：汉语的笔画排序。<br>"trad"：传统风格排序，如西班牙语。<br>"unihan"：统一汉字排序，用于日语、韩语、中文等汉字排序。<br>"zhuyin"：注音排序，仅用于中文排序。<br>默认值："default"。 |
-| numeric<sup>(deprecated)</sup>           | boolean | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.numeric替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>数字排序，取值包括：<br>true：使用数字排序，比如：'1' &lt; '2' &lt; '10' &lt; '11'。<br>false：不使用数字排序，比如：'1' &lt; '10' &lt; '11' &lt; '2'。<br>默认值：false。          |
-| caseFirst<sup>(deprecated)</sup>         | string  | 否    | 是    | 从API version 8开始支持，从API version 20开始不再维护，建议使用Intl.CollatorOptions.caseFirst替代，用法参考[Intl.Collator](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)。<br>区域的排序规则是否考虑大小写，取值包括：<br>"upper"：大写排前面。<br>"lower"：小写排前面。<br>"false"：使用区域默认的大小写排序规则。<br>默认值："false"。 |
+| localeMatcher     | string  | 否    | 是    | 区域匹配算法，取值范围：<br>"lookup"：模糊匹配。<br>"best fit"：准确匹配。<br>默认值："best fit"。 |
+| usage             | string  | 否    | 是    | 比较的用途，取值范围：<br>"sort"：用作排序。<br>"search"：用作查找匹配的字符串。<br>默认值："sort"。        |
+| sensitivity       | string  | 否    | 是    | 表示字符串中的哪些差异会导致非零结果值，取值范围：<br>"base"：不同的字母比较不相等，比如：'a' ≠ 'b', 'a' = 'á', 'a' = 'A'。<br>"accent"：不同的字母或不同读音的相同字母比较不相等，比如'a' ≠ 'b', 'a' ≠ 'á', 'a' = 'A'。<br>"case"：不同的字母或相同字母大小写比较不相等，比如：'a' ≠ 'b', 'a' = 'á', 'a' ≠ 'A'。<br>"variant"：不同的字母或读音及其它有区别的标志或大小写都是不相等的，比如：'a' ≠ 'b', 'a' ≠ 'á', 'a' ≠ 'A'。<br>默认值："variant"。        |
+| ignorePunctuation | boolean | 否    | 是    | true表示忽略标点符号，false表示考虑标点符号。<br>默认值：false。        |
+| collation         | string  | 否    | 是    | 区域的排序规则，取值包括：<br>"big5han"：拉丁字母使用的拼音排序。<br>"compat"：兼容性排序，仅用于阿拉伯语。<br>"dict"：词典风格排序，仅用于僧伽罗语。<br>"direct"：二进制码点排序。<br>"ducet"：按Unicode排序元素表排序。<br>"eor"：按欧洲排序规则排序。<br>"gb2312"：拼音排序，仅用于中文排序。<br>"phonebk"：电话本风格排序。<br>"phonetic"：发音排序。<br>"pinyin"：拼音排序。<br>"reformed"：瑞典语排序。<br>"searchjl"：韩语初始辅音搜索的特殊排序。<br>"stroke"：汉语的笔画排序。<br>"trad"：传统风格排序，如西班牙语。<br>"unihan"：统一汉字排序，用于日语、韩语、中文等汉字排序。<br>"zhuyin"：注音排序，仅用于中文排序。<br>默认值："default"。 |
+| numeric           | boolean | 否    | 是    | 数字排序，取值包括：<br>true：使用数字排序，比如：'1' &lt; '2' &lt; '10' &lt; '11'。<br>false：不使用数字排序，比如：'1' &lt; '10' &lt; '11' &lt; '2'。<br>默认值：false。          |
+| caseFirst         | string  | 否    | 是    | 区域的排序规则是否考虑大小写，取值包括：<br>"upper"：大写排前面。<br>"lower"：小写排前面。<br>"false"：使用区域默认的大小写排序规则。<br>默认值："false"。 |
 
 
 ## PluralRules<sup>8+</sup>

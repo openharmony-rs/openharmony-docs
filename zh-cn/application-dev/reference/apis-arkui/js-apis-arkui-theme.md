@@ -124,7 +124,11 @@ ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随
 
 setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 
-将用户自定义Theme设置应用级默认主题，实现应用风格跟随Theme切换。建议在onWindowStageCreate阶段里windowStage.loadContent的完成时回调中使用，详细代码可参考[设置应用内组件自定义主题色](../../ui/theme_skinning.md#设置应用内组件自定义主题色)。
+将用户自定义Theme设置应用级默认主题，实现应用风格跟随Theme切换。
+
+ArkTS-Dyn：需确保在页面build前执行。若在UIAbility中调用该接口设置应用级默认主题，建议在onWindowStageCreate阶段里windowStage.loadContent的完成时回调中使用，详细代码可参考[设置应用内组件自定义主题色](../../ui/theme_skinning.md#设置应用内组件自定义主题色)。
+
+ArkTS-Sta：需确保在页面build前执行。因运行于静态类型上下文中的ArkTS不存在全局作用域，因此需要在入口组件的static闭包或aboutToAppear生命周期函数中调用该接口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -135,6 +139,8 @@ setDefaultTheme(theme: [CustomTheme](#customtheme)): void
 | theme | [CustomTheme](#customtheme)  | 是    | 表示设置的自定义主题风格。 |
 
 **示例**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
@@ -156,4 +162,38 @@ class PageCustomTheme implements CustomTheme {
 const BlueColorsTheme = new PageCustomTheme(new BlueColors());
 // 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为BlueColorsTheme。
 ThemeControl.setDefaultTheme(BlueColorsTheme);
+```
+
+ArkTS-Sta示例：
+```ts
+import { Text, Column, Component, $r, Entry, Color } from '@kit.ArkUI';
+import { CustomColors, ThemeControl, CustomTheme } from '@ohos.arkui.theme';
+
+class PageCustomTheme implements CustomTheme {
+  colors?: CustomColors;
+  constructor(colors: CustomColors) {
+    this.colors = colors;
+  }
+}
+
+const globalTheme = new PageCustomTheme({ fontPrimary: Color.Red } as CustomColors);
+
+@Entry
+@Component
+struct MyStateSample {
+  blueColorsTheme: PageCustomTheme = new PageCustomTheme({ fontPrimary: Color.Red } as CustomColors);
+  static {
+    // 在static闭包中调用setDefaultTheme
+    ThemeControl.setDefaultTheme(globalTheme);
+  }
+  aboutToAppear() {
+    // 在aboutToAppear中调用setDefaultTheme
+    ThemeControl.setDefaultTheme(this.blueColorsTheme);
+  }
+  build() {
+    Column() {
+      Text("Hello World")
+    }
+  }
+}
 ```

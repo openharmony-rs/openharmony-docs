@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
@@ -22,6 +24,10 @@ XComponent(params: NativeXComponentParameters)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                | 必填 | 说明                           |
@@ -38,6 +44,10 @@ XComponent(options: XComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                | 必填 | 说明                           |
@@ -52,9 +62,13 @@ XComponent(value: {id: string, type: XComponentType, libraryname?: string, contr
 
 该接口从API version 12开始不再演进，推荐使用[XComponent(options: XComponentOptions)](#xcomponent12)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
@@ -65,6 +79,24 @@ XComponent(value: {id: string, type: XComponentType, libraryname?: string, contr
 | libraryname | string                                        | 否   | 用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅类型为SURFACE或TEXTURE时有效。 |
 | controller  | [XComponentController](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
 
+### XComponent<sup>20+</sup>
+
+XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentParameters )
+
+创建XComponent组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名  | 类型                                | 必填 | 说明                           |
+| ------- | --------------------------------------- | ---- | ------------------------------ |
+| params | [XComponentParameters](#xcomponentparameters20) \| [XComponentOptions](#xcomponentoptions12) \| [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
+
 ### XComponent<sup>(deprecated)</sup>
 
 XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})
@@ -73,7 +105,11 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：** 
 
@@ -92,6 +128,10 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | 否 | 否   | 用于指定XComponent组件类型。 |
@@ -106,10 +146,49 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | 否 | 否   | 用于指定XComponent组件类型。 |
 | imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
+
+## XComponentParameters<sup>20+</sup>
+
+定义XComponent的具体配置参数，支持Native侧触发XComponent生命周期回调。
+
+推荐使用[XComponentOptions](#xcomponentoptions12)和[NativeXComponentParameters](#nativexcomponentparameters19)配置XComponent构造参数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| id          | string       | 否    | 否   | 组件的唯一标识，支持最大的字符串长度128。                    |
+| type        | [XComponentType](ts-appendix-enums.md#xcomponenttype10)   | 否 |否  | 用于指定XComponent组件类型。                                 |
+| nativeXComponentHandler | Callback&lt;[NativeXComponentPointer](#nativexcomponentpointer20)&gt;                           |否           | 否   | 用于处理NativeXComponent实例的回调。 |
+| controller  | [XComponentController](#xcomponentcontroller) | 否 |是   | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
+
+## NativeXComponentPointer<sup>20+</sup>
+
+type NativeXComponentPointer = long
+
+NativeXComponent指针类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+|类型 | 说明 |
+| ---- | ---- |
+|long |  表示NativeXComponent指针类型。|
 
 ## 属性
 除支持通用属性外，还支持以下属性：
@@ -136,6 +215,10 @@ enableAnalyzer(enable: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -155,6 +238,10 @@ enableSecure(isSecure: boolean)
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -177,6 +264,10 @@ hdrBrightness(brightness: number)
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -202,7 +293,9 @@ hdrBrightness(brightness: number)
 
 ### onLoad
 
-onLoad(callback: OnNativeLoadCallback )
+ArkTS-Dyn: onLoad(callback: OnNativeLoadCallback )
+
+ArkTS-Sta: onLoad(callback: VoidCallback )
 
 插件加载完成时回调事件。
 
@@ -210,11 +303,15 @@ onLoad(callback: OnNativeLoadCallback )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | [OnNativeLoadCallback](#onnativeloadcallback18) | 是    | XComponent持有的Surface创建后回调事件。 |
+| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) | 是    | XComponent持有的Surface创建后回调事件。 |
 
 > **说明：**
 > 
@@ -230,6 +327,10 @@ onDestroy(event: VoidCallback )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                                       |
@@ -242,9 +343,13 @@ type OnNativeLoadCallback = (event?: object) =\> void
 
 XComponent持有的Surface创建后回调事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -260,6 +365,10 @@ XComponent组件的控制器，可以将此对象绑定至XComponent组件，然
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 ### constructor
 
 constructor()
@@ -274,6 +383,10 @@ xcomponentController: XComponentController = new XComponentController();
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 ### getXComponentSurfaceId<sup>9+</sup>
 
 getXComponentSurfaceId(): string
@@ -283,6 +396,10 @@ getXComponentSurfaceId(): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -299,7 +416,11 @@ setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): 
 
 该接口从API version 12开始废弃，建议使用[setXComponentSurfaceRect](#setxcomponentsurfacerect12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -315,9 +436,13 @@ getXComponentContext(): Object
 
 获取XComponent实例对象的context，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -334,6 +459,10 @@ setXComponentSurfaceRect(rect: SurfaceRect): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -359,6 +488,10 @@ getXComponentSurfaceRect(): SurfaceRect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                 | 描述                                  |
@@ -374,6 +507,10 @@ onSurfaceCreated(surfaceId: string): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -394,6 +531,10 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -416,6 +557,10 @@ onSurfaceDestroyed(surfaceId: string): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名    | 类型 | 必填 | 说明                                              |
@@ -437,9 +582,13 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 > 分析类型不支持动态修改。
 > 该特性依赖设备能力，不支持该能力的情况下，将返回错误码。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -474,9 +623,13 @@ stopImageAnalyzer(): void
 > 在startImageAnalyzer方法未返回结果时调用本方法，会触发其错误回调。
 > 该特性依赖设备能力。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 ### setXComponentSurfaceRotation<sup>12+</sup>
 
@@ -487,6 +640,10 @@ setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -514,6 +671,10 @@ getXComponentSurfaceRotation(): Required\<SurfaceRotationOptions>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                 | 描述                                  |
@@ -526,9 +687,13 @@ lockCanvas(): DrawingCanvas | null
 
 返回可用于向XComponent上绘制内容的画布对象。具体绘制方法请参考[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
 
 **返回值：**
 | 类型                                 | 说明                                  |
@@ -555,9 +720,13 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 
 将画布对象中的内容绘制在XComponent区域，并释放该画布对象。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -582,6 +751,10 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
 | lock       | boolean | 否 | 是   | Surface在屏幕旋转时是否锁定方向，未设置时默认取值为false，即不锁定方向。<br/>true：锁定方向；false：不锁定方向。 |
@@ -593,6 +766,10 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -623,6 +800,8 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 >
 > 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTSXComponent示例](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)
 <!--RP1End-->
+
+ArkTS-Dyn示例:
 
 ```ts
 // xxx.ets
@@ -755,6 +934,8 @@ struct XComponentExample {
 >
 > 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTSXComponent示例](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)<!--RP2End-->
 
+ArkTS-Dyn示例:
+
 ```ts
 // xxx.ets
 import nativeRender from 'libnativerender.so';
@@ -809,9 +990,101 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+'use static'
+
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  FlexDirection,
+  ItemAlign,
+  VerticalAlign,
+  Row,
+  State,
+  SurfaceRect,
+  SurfaceRotationOptions,
+  Text,
+  XComponent,
+  XComponentType,
+  XComponentOptions,
+  XComponentController
+} from '@kit.ArkUI';
+
+class NativeRender {
+    static {
+        loadLibrary('nativerender');
+    }
+    native SetSurfaceId(id: long): void;
+    native ChangeSurface(id: long, w: double, h: double): void;
+    native DrawPattern(id: long): void;
+    native DestroySurface(id: long): void;
+};
+
+class MyXComponentController extends XComponentController {
+  nativeRender: NativeRender = new NativeRender();
+  onSurfaceCreated(surfaceId: string): void {
+    console.log(`onSurfaceCreated surfaceId: ${surfaceId}`);
+    this.nativeRender.SetSurfaceId(bigint(surfaceId).getLong());
+  }
+
+  onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+    console.log(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    this.nativeRender.ChangeSurface(bigint(surfaceId).getLong(), rect.surfaceWidth, rect.surfaceHeight);
+  }
+
+  onSurfaceDestroyed(surfaceId: string): void {
+    console.log(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+    this.nativeRender.DestroySurface(bigint(surfaceId).getLong());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State isLock: boolean = true;
+  @State xc_width: number = 500;
+  @State xc_height: number = 700;
+  myXComponentController: MyXComponentController = new MyXComponentController();
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start } as FlexOptions) {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.myXComponentController
+      } as XComponentOptions)
+        .onLoad(() => {
+          let surfaceRotation: SurfaceRotationOptions = { lock: this.isLock } as SurfaceRotationOptions;
+          this.myXComponentController.setXComponentSurfaceRotation(surfaceRotation);
+          console.log("Surface getXComponentSurfaceRotation lock = " +
+          this.myXComponentController.getXComponentSurfaceRotation().lock);
+        })
+        .width(this.xc_width)
+        .height(this.xc_height)
+      Button("Draw")
+        .onClick((e:ClickEvent) => {
+          let surfaceId = this.myXComponentController.getXComponentSurfaceId();
+          this.myXComponentController.nativeRender.DrawPattern(bigint(surfaceId).getLong());
+        })
+    }
+  }
+}
+```
+
+
 ### 示例3（使用画布对象在XComponent上绘制内容）
 
 应用调用lockCanvas返回画布对象，然后通过画布对象调用对应的绘制接口，最后调用unlockCanvasAndPost在XComponent上绘制内容。
+
+ArkTS-Dyn示例:
 
 ```ts
 // xxx.ets

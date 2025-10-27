@@ -39,9 +39,9 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 | 名称 | 类型 | 必填 | 装饰器类型        | 说明     |
 | -------- | -------- | -------- |---------------|--------|
 | mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。  |
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | @Prop         | 标题内容。  |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 副标题内容。 |
-| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 辅助文本。  |
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef         | 标题内容。<br/>原子化服务仅ArkTS1.1支持。  |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef         | 副标题内容。<br/>原子化服务仅ArkTS1.1支持。 |
+| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef         | 辅助文本。<br/>原子化服务仅ArkTS1.1支持。  |
 | container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。 |
 
 ## 事件

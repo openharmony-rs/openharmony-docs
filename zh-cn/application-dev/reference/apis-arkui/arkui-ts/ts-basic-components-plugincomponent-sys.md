@@ -123,7 +123,7 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 | 参数       | 类型   | 描述                        |
 | ---------- | ------ | -------------------------- |
-| errcode<sup>9+</sup>    | number | 错误码。                    |
+| errcode    | ArkTS1.1: number <br>ArkTS1.2: int | 错误码。                    |
 | msg<sup>9+</sup>        | string | 错误信息。                  |
 
 错误码1为默认错误码，错误信息和处理建议详见下表：

@@ -1,12 +1,18 @@
 # @Consume
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 7开始，支持该装饰器。
 
 \@Provide和\@Consume配套使用，用于状态管理V1中，实现跨组件层级的双向同步。@Consume修饰的变量作为数据消费方，获取数据源的数据。
 
-在动态语言上下文中使用时，开发指南参考：[\@Provide装饰器和\@Consume装饰器：与后代组件双向同步（ArkTS-DT）](../../../ui/state-management/arkts-provide-and-consume.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[\@Provide装饰器和\@Consume装饰器：与后代组件双向同步（ArkTS-Dyn）](../../../ui/state-management/arkts-provide-and-consume.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

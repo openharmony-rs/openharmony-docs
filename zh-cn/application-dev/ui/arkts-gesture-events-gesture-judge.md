@@ -33,7 +33,7 @@
    ```ts
    Image($r('sys.media.ohos_app_icon'))
      .draggable(true)
-     .onDragStart(()=>{
+     .onDragStart((event: DragEvent)=>{
        promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
      })
      .width('200vp').height('200vp')
@@ -73,62 +73,125 @@
 
 4. 代码完整示例。
 
-   ```ts
-   import { PromptAction } from '@kit.ArkUI';
-   
-   @Entry
-   @Component
-   struct Index {
-     scroller: Scroller = new Scroller();
-     promptAction: PromptAction = this.getUIContext().getPromptAction();
-   
-     build() {
-       Scroll(this.scroller) {
-         Column({ space: 8 }) {
-           Text("包括上下两层组件，上层组件绑定长按手势，下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。").width('100%').fontSize(20).fontColor('0xffdd00')
-           Stack({ alignContent: Alignment.Center }) {
-             Column() {
-               // 模拟上半区和下半区
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
-             }.width('200vp').height('200vp')
-             // Stack的下半区是绑定了拖动手势的图像区域。
-             Image($r('sys.media.ohos_app_icon'))
-               .draggable(true)
-               .onDragStart(()=>{
-                 this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
-               })
-               .width('200vp').height('200vp')
-             // Stack的上半区是绑定了长按手势的浮动区域。
-             Stack() {
-             }
-             .width('200vp')
-             .height('200vp')
-             .hitTestBehavior(HitTestMode.Transparent)
-             .gesture(GestureGroup(GestureMode.Parallel,
-               LongPressGesture()
-                 .onAction((event: GestureEvent) => {
-                   this.promptAction.showToast({ message: "LongPressGesture 长按上半区 红色区域，红色区域响应" });
-                 })
-                 .tag("longpress")
-             ))
-             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-               // 如果是长按类型手势，判断点击的位置是否在上半区
-               if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-                 if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
-                   return GestureJudgeResult.CONTINUE;
-                 } else {
-                   return GestureJudgeResult.REJECT;
-                 }
-               }
-               return GestureJudgeResult.CONTINUE;
-             })
-           }.width('100%')
-         }.width('100%')
-       }
-     }
-   }
-   ```
+    ArkTs-Dyn示例：
+
+    ```ts
+    import { PromptAction } from '@kit.ArkUI';
+    
+    @Entry
+    @Component
+    struct Index {
+      scroller: Scroller = new Scroller();
+      promptAction: PromptAction = this.getUIContext().getPromptAction();
+    
+      build() {
+        Scroll(this.scroller) {
+          Column({ space: 8 }) {
+            Text("包括上下两层组件，上层组件绑定长按手势，下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。").width('100%').fontSize(20).fontColor('0xffdd00')
+            Stack({ alignContent: Alignment.Center }) {
+              Column() {
+                // 模拟上半区和下半区
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
+              }.width('200vp').height('200vp')
+              // Stack的下半区是绑定了拖动手势的图像区域。
+              Image($r('sys.media.ohos_app_icon'))
+                .draggable(true)
+                .onDragStart((event: DragEvent)=>{
+                  this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
+                })
+                .width('200vp').height('200vp')
+              // Stack的上半区是绑定了长按手势的浮动区域。
+              Stack() {
+              }
+              .width('200vp')
+              .height('200vp')
+              .hitTestBehavior(HitTestMode.Transparent)
+              .gesture(GestureGroup(GestureMode.Parallel,
+                LongPressGesture()
+                  .onAction((event: GestureEvent) => {
+                    this.promptAction.showToast({ message: "LongPressGesture 长按上半区 红色区域，红色区域响应" });
+                  })
+                  .tag("longpress")
+              ))
+              .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+                // 如果是长按类型手势，判断点击的位置是否在上半区
+                if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+                  if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+                    return GestureJudgeResult.CONTINUE;
+                  } else {
+                    return GestureJudgeResult.REJECT;
+                  }
+                }
+                return GestureJudgeResult.CONTINUE;
+              })
+            }.width('100%')
+          }.width('100%')
+        }
+      }
+    }
+    ```
+
+    ArkTs-Sta示例：
+
+    ```ts
+    import { Entry, Column, Component, Text, GestureEvent, Color, DragEvent, LongPressGesture, Scroller, Scroll, GestureInfo, GestureJudgeResult, BaseGestureEvent, ColumnOptions, Stack, Alignment, Image, HitTestMode, GestureMode, GestureControl, $r, DragItemInfo, GestureGroup } from '@ohos.arkui.component';
+    import { PromptAction } from '@ohos.arkui.UIContext';
+    
+    @Entry
+    @Component
+    struct Index {
+      scroller: Scroller = new Scroller();
+      promptAction: PromptAction = this.getUIContext().getPromptAction();
+    
+      build() {
+        Scroll(this.scroller) {
+          Column({ space: 8 } as ColumnOptions) {
+            Text("包括上下两层组件，上层组件绑定长按手势，下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。").width('100%').fontSize(20).fontColor('0xffdd00')
+            Stack({ alignContent: Alignment.Center }) {
+              Column() {
+                // 模拟上半区和下半区
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
+                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
+              }.width('200vp').height('200vp')
+              // Stack的下半区是绑定了拖动手势的图像区域。
+              Image($r('sys.media.ohos_app_icon'))
+                .draggable(true)
+                .onDragStart((event: DragEvent)=>{
+                  this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" });
+                  return {} as DragItemInfo;
+                })
+                .width('200vp').height('200vp')
+              // Stack的上半区是绑定了长按手势的浮动区域。
+              Stack() {
+              }
+              .width('200vp')
+              .height('200vp')
+              .hitTestBehavior(HitTestMode.Transparent)
+              .gesture(GestureGroup(GestureMode.Parallel,
+                LongPressGesture()
+                  .onAction((event: GestureEvent) => {
+                    this.promptAction.showToast({ message: "LongPressGesture 长按上半区 红色区域，红色区域响应" });
+                  })
+                  .tag("longpress")
+              ))
+              .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+                // 如果是长按类型手势，判断点击的位置是否在上半区
+                if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+                  if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+                    return GestureJudgeResult.CONTINUE;
+                  } else {
+                    return GestureJudgeResult.REJECT;
+                  }
+                }
+                return GestureJudgeResult.CONTINUE;
+              })
+            }.width('100%')
+          }.width('100%')
+        }
+      }
+    }
+    ```
 
 ## 手势并行动态控制
 
@@ -244,140 +307,281 @@
 
 4. 代码完整示例。
 
-   ```ts
-   // xxx.ets
-   @Entry
-   @Component
-   struct FatherControlChild {
-     scroller: Scroller = new Scroller();
-     scroller2: Scroller = new Scroller();
-     private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-     private childRecognizer: GestureRecognizer = new GestureRecognizer();
-     private currentRecognizer: GestureRecognizer = new GestureRecognizer();
-     private lastOffset: number = 0;
-   
-     build() {
-       Stack({ alignContent: Alignment.TopStart }) {
-         Scroll(this.scroller) { // 外部滚动容器
-           Column() {
-             Text("Scroll Area")
-               .width('90%')
-               .height(150)
-               .backgroundColor(0xFFFFFF)
-               .borderRadius(15)
-               .fontSize(16)
-               .textAlign(TextAlign.Center)
-               .margin({ top: 10 })
-             Scroll(this.scroller2) { // 内部滚动容器
-               Column() {
-                 Text("Scroll Area2")
-                   .width('90%')
-                   .height(150)
-                   .backgroundColor(0xFFFFFF)
-                   .borderRadius(15)
-                   .fontSize(16)
-                   .textAlign(TextAlign.Center)
-                   .margin({ top: 10 })
-                 Column() {
-                   ForEach(this.arr, (item: number) => {
-                     Text(item.toString())
-                       .width('90%')
-                       .height(150)
-                       .backgroundColor(0xFFFFFF)
-                       .borderRadius(15)
-                       .fontSize(16)
-                       .textAlign(TextAlign.Center)
-                       .margin({ top: 10 })
-                   }, (item: string) => item)
-                 }.width('100%')
-               }
-             }
-             .id("inner")
-             .width('100%')
-             .height(800)
-           }.width('100%')
-         }
-         .id("outer")
-         .height(600)
-         .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
-         .scrollBar(BarState.On) // 滚动条常驻显示
-         .scrollBarColor(Color.Gray) // 滚动条颜色
-         .scrollBarWidth(10) // 滚动条宽度
-         .edgeEffect(EdgeEffect.None)
-         .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
-           for (let i = 0; i < others.length; i++) {
-             let target = others[i].getEventTargetInfo();
-             if (target.getId() == "inner" && others[i].isBuiltIn() && others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
-               this.currentRecognizer = current; // 保存当前组件的识别器
-               this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
-               return others[i]; // 返回和当前手势将要组成并行手势的识别器
-             }
-           }
-           return undefined;
-         })
-         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态        
-           let target = current.getEventTargetInfo();
-           if (target.getId() == "outer" && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
-             for (let i = 0; i < others.length; i++) {
-               let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
-               if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
-                 let panEvent = event as PanGestureEvent;
-                 this.childRecognizer.setEnabled(true);
-                 this.currentRecognizer.setEnabled(false);
-                 if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
-                   if (panEvent && panEvent.offsetY < 0) {
-                     this.childRecognizer.setEnabled(false);
-                     this.currentRecognizer.setEnabled(true);
-                   }
-                 } else if (target.isBegin()) {
-                   if (panEvent.offsetY > 0) {
-                     this.childRecognizer.setEnabled(false);
-                     this.currentRecognizer.setEnabled(true);
-                   }
-                 }
-               }
-             }
-           }
-           return GestureJudgeResult.CONTINUE;
-         })
-         .parallelGesture( // 绑定一个Pan手势作为动态控制器
-           PanGesture()
-             .onActionUpdate((event: GestureEvent)=>{
-               if (this.childRecognizer.getState() != GestureRecognizerState.SUCCESSFUL || this.currentRecognizer.getState() != GestureRecognizerState.SUCCESSFUL) { // 如果识别器状态不是SUCCESSFUL，则不做控制
-                 return;
-               }
-               let target = this.childRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
-               let currentTarget = this.currentRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
-               if (target instanceof ScrollableTargetInfo && currentTarget instanceof ScrollableTargetInfo) {
-                 this.childRecognizer.setEnabled(true);
-                 this.currentRecognizer.setEnabled(false);
-                 if (target.isEnd()) { // 在移动过程中实时根据当前组件状态，控制识别器的开闭状态
-                   if ((event.offsetY - this.lastOffset) < 0) {
-                     this.childRecognizer.setEnabled(false);
-                     if (currentTarget.isEnd()) {
-                       this.currentRecognizer.setEnabled(false);
-                     } else {
-                       this.currentRecognizer.setEnabled(true);
-                     }
-                   }
-                 } else if (target.isBegin()) {
-                   if ((event.offsetY - this.lastOffset) > 0) {
-                     this.childRecognizer.setEnabled(false)
-                     if (currentTarget.isBegin()) {
-                       this.currentRecognizer.setEnabled(false);
-                     } else {
-                       this.currentRecognizer.setEnabled(true);
-                     }
-                   }
-                 }
-               }
-               this.lastOffset = event.offsetY;
-             })
-         )
-       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-     }
-   }
-   ```
+    ArkTs-Dyn示例：
+
+    ```ts
+    // xxx.ets
+    @Entry
+    @Component
+    struct FatherControlChild {
+      scroller: Scroller = new Scroller();
+      scroller2: Scroller = new Scroller();
+      private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      private childRecognizer: GestureRecognizer = new GestureRecognizer();
+      private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+      private lastOffset: number = 0;
+    
+      build() {
+        Stack({ alignContent: Alignment.TopStart }) {
+          Scroll(this.scroller) { // 外部滚动容器
+            Column() {
+              Text("Scroll Area")
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+              Scroll(this.scroller2) { // 内部滚动容器
+                Column() {
+                  Text("Scroll Area2")
+                    .width('90%')
+                    .height(150)
+                    .backgroundColor(0xFFFFFF)
+                    .borderRadius(15)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .margin({ top: 10 })
+                  Column() {
+                    ForEach(this.arr, (item: number) => {
+                      Text(item.toString())
+                        .width('90%')
+                        .height(150)
+                        .backgroundColor(0xFFFFFF)
+                        .borderRadius(15)
+                        .fontSize(16)
+                        .textAlign(TextAlign.Center)
+                        .margin({ top: 10 })
+                    }, (item: string) => item)
+                  }.width('100%')
+                }
+              }
+              .id("inner")
+              .width('100%')
+              .height(800)
+            }.width('100%')
+          }
+          .id("outer")
+          .height(600)
+          .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+          .scrollBar(BarState.On) // 滚动条常驻显示
+          .scrollBarColor(Color.Gray) // 滚动条颜色
+          .scrollBarWidth(10) // 滚动条宽度
+          .edgeEffect(EdgeEffect.None)
+          .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+            for (let i = 0; i < others.length; i++) {
+              let target = others[i].getEventTargetInfo();
+              if (target.getId() == "inner" && others[i].isBuiltIn() && others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+                this.currentRecognizer = current; // 保存当前组件的识别器
+                this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+                return others[i]; // 返回和当前手势将要组成并行手势的识别器
+              }
+            }
+            return undefined;
+          })
+          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态        
+            let target = current.getEventTargetInfo();
+            if (target.getId() == "outer" && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              for (let i = 0; i < others.length; i++) {
+                let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
+                if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                  let panEvent = event as PanGestureEvent;
+                  this.childRecognizer.setEnabled(true);
+                  this.currentRecognizer.setEnabled(false);
+                  if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                    if (panEvent && panEvent.offsetY < 0) {
+                      this.childRecognizer.setEnabled(false);
+                      this.currentRecognizer.setEnabled(true);
+                    }
+                  } else if (target.isBegin()) {
+                    if (panEvent.offsetY > 0) {
+                      this.childRecognizer.setEnabled(false);
+                      this.currentRecognizer.setEnabled(true);
+                    }
+                  }
+                }
+              }
+            }
+            return GestureJudgeResult.CONTINUE;
+          })
+          .parallelGesture( // 绑定一个Pan手势作为动态控制器
+            PanGesture()
+              .onActionUpdate((event: GestureEvent)=>{
+                if (this.childRecognizer.getState() != GestureRecognizerState.SUCCESSFUL || this.currentRecognizer.getState() != GestureRecognizerState.SUCCESSFUL) { // 如果识别器状态不是SUCCESSFUL，则不做控制
+                  return;
+                }
+                let target = this.childRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
+                let currentTarget = this.currentRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
+                if (target instanceof ScrollableTargetInfo && currentTarget instanceof ScrollableTargetInfo) {
+                  this.childRecognizer.setEnabled(true);
+                  this.currentRecognizer.setEnabled(false);
+                  if (target.isEnd()) { // 在移动过程中实时根据当前组件状态，控制识别器的开闭状态
+                    if ((event.offsetY - this.lastOffset) < 0) {
+                      this.childRecognizer.setEnabled(false);
+                      if (currentTarget.isEnd()) {
+                        this.currentRecognizer.setEnabled(false);
+                      } else {
+                        this.currentRecognizer.setEnabled(true);
+                      }
+                    }
+                  } else if (target.isBegin()) {
+                    if ((event.offsetY - this.lastOffset) > 0) {
+                      this.childRecognizer.setEnabled(false)
+                      if (currentTarget.isBegin()) {
+                        this.currentRecognizer.setEnabled(false);
+                      } else {
+                        this.currentRecognizer.setEnabled(true);
+                      }
+                    }
+                  }
+                }
+                this.lastOffset = event.offsetY;
+              })
+          )
+        }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+      }
+    }
+    ```
+
+    ArkTs-Sta示例：
+
+    ```ts
+    // xxx.ets
+    import { Entry, Column, Component, Text, Scroller, GestureRecognizer, TextAlign, BaseGestureEvent, ScrollableTargetInfo, PanGestureEvent, GestureEvent, Stack, Alignment, Scroll, Margin, ForEach, ScrollDirection, BarState, Color, EdgeEffect, GestureControl, GestureJudgeResult, PanGesture, GestureRecognizerState } from '@ohos.arkui.component';
+
+    @Entry
+    @Component
+    struct FatherControlChild {
+      scroller: Scroller = new Scroller();
+      scroller2: Scroller = new Scroller();
+      private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as Array<number>;
+      private childRecognizer: GestureRecognizer = new GestureRecognizer();
+      private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+      private lastOffset: number = 0;
+    
+      build() {
+        Stack({ alignContent: Alignment.TopStart }) {
+          Scroll(this.scroller) { // 外部滚动容器
+            Column() {
+              Text("Scroll Area")
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 } as Margin)
+              Scroll(this.scroller2) { // 内部滚动容器
+                Column() {
+                  Text("Scroll Area2")
+                    .width('90%')
+                    .height(150)
+                    .backgroundColor(0xFFFFFF)
+                    .borderRadius(15)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .margin({ top: 10 } as Margin)
+                  Column() {
+                    ForEach(this.arr, (item: number) => {
+                      Text(item.toString())
+                        .width('90%')
+                        .height(150)
+                        .backgroundColor(0xFFFFFF)
+                        .borderRadius(15)
+                        .fontSize(16)
+                        .textAlign(TextAlign.Center)
+                        .margin({ top: 10 } as Margin)
+                    }, (item: number) => item.toString())
+                  }.width('100%')
+                }
+              }
+              .id("inner")
+              .width('100%')
+              .height(800)
+            }.width('100%')
+          }
+          .id("outer")
+          .height(600)
+          .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+          .scrollBar(BarState.On) // 滚动条常驻显示
+          .scrollBarColor(Color.Gray) // 滚动条颜色
+          .scrollBarWidth(10) // 滚动条宽度
+          .edgeEffect(EdgeEffect.None)
+          .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+            for (let i = 0; i < others.length; i++) {
+              let target = others[i].getEventTargetInfo();
+              if (target.getId() == "inner" && others[i].isBuiltIn() && others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+                this.currentRecognizer = current; // 保存当前组件的识别器
+                this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+                return others[i]; // 返回和当前手势将要组成并行手势的识别器
+              }
+            }
+            return {} as GestureRecognizer;
+          })
+          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态        
+            let target = current.getEventTargetInfo();
+            if (target.getId() == "outer" && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              for (let i = 0; i < others.length; i++) {
+                let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
+                if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                  let panEvent = event as PanGestureEvent;
+                  this.childRecognizer.setEnabled(true);
+                  this.currentRecognizer.setEnabled(false);
+                  if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                    if (panEvent && panEvent.offsetY < 0) {
+                      this.childRecognizer.setEnabled(false);
+                      this.currentRecognizer.setEnabled(true);
+                    }
+                  } else if (target.isBegin()) {
+                    if (panEvent.offsetY > 0) {
+                      this.childRecognizer.setEnabled(false);
+                      this.currentRecognizer.setEnabled(true);
+                    }
+                  }
+                }
+              }
+            }
+            return GestureJudgeResult.CONTINUE;
+          }, false)
+          .parallelGesture( // 绑定一个Pan手势作为动态控制器
+            PanGesture()
+              .onActionUpdate((event: GestureEvent)=>{
+                if (this.childRecognizer.getState() != GestureRecognizerState.SUCCESSFUL || this.currentRecognizer.getState() != GestureRecognizerState.SUCCESSFUL) { // 如果识别器状态不是SUCCESSFUL，则不做控制
+                  return;
+                }
+                let target = this.childRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
+                let currentTarget = this.currentRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
+                if (target instanceof ScrollableTargetInfo && currentTarget instanceof ScrollableTargetInfo) {
+                  this.childRecognizer.setEnabled(true);
+                  this.currentRecognizer.setEnabled(false);
+                  if (target.isEnd()) { // 在移动过程中实时根据当前组件状态，控制识别器的开闭状态
+                    if ((event.offsetY - this.lastOffset) < 0) {
+                      this.childRecognizer.setEnabled(false);
+                      if (currentTarget.isEnd()) {
+                        this.currentRecognizer.setEnabled(false);
+                      } else {
+                        this.currentRecognizer.setEnabled(true);
+                      }
+                    }
+                  } else if (target.isBegin()) {
+                    if ((event.offsetY - this.lastOffset) > 0) {
+                      this.childRecognizer.setEnabled(false)
+                      if (currentTarget.isBegin()) {
+                        this.currentRecognizer.setEnabled(false);
+                      } else {
+                        this.currentRecognizer.setEnabled(true);
+                      }
+                    }
+                  }
+                }
+                this.lastOffset = event.offsetY;
+              })
+          )
+        }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+      }
+    }
+    ```
 
 ## 阻止手势参与识别
 
@@ -458,13 +662,13 @@
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000  // 初始进度，秒
-  @Local total: number = 27490000   // 总时长，秒
-  @Local currentWidth: string = '100%'
-  @Local currentHeight: string = '100%'
-  private currentPosX: number = 0
-  private currentPosY: number = 0
-  private currentFullScreenState: boolean = true
+  @Local progress: number = 496000;  // 初始进度，秒
+  @Local total: number = 27490000;   // 总时长，秒
+  @Local currentWidth: string = '100%';
+  @Local currentHeight: string = '100%';
+  private currentPosX: number = 0;
+  private currentPosY: number = 0;
+  private currentFullScreenState: boolean = true;
   private normalPlayTimer: number = -1;
   private isPlaying: boolean = true;
   private fastForwardTimer: number = -1;
@@ -626,27 +830,27 @@ struct Index {
       GestureGroup(GestureMode.Exclusive,
         PanGesture({ direction: PanDirection.Vertical, distance: 10 })
           .tag('pan_for_brightness_control')
-          .onActionStart((event) => {
+          .onActionStart((event: GestureEvent) => {
             this.updateBrightness(true, event)
           })
-          .onActionUpdate((event) => {
+          .onActionUpdate((event: GestureEvent) => {
             this.updateBrightness(false, event)
           }),
         PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
           .tag('pan_for_play_progress_control')
-          .onActionStart((event) => {
+          .onActionStart((event: GestureEvent) => {
             this.updateProgress(true, event)
           })
-          .onActionUpdate((event) => {
+          .onActionUpdate((event: GestureEvent) => {
             this.updateProgress(false, event)
           }),
 
         LongPressGesture()
           .tag('long_press_for_fast_forward_control')
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.doFastForward(true) // 开始快进
           })
-          .onActionEnd(() => {
+          .onActionEnd((event: GestureEvent) => {
             this.doFastForward(false) // 停止快进
           })
           .onActionCancel(() => {
@@ -655,13 +859,13 @@ struct Index {
 
         TapGesture({ count: 2 })
           .tag('double_tap_on_video')
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.toggleFullScreenState()
           }),
 
         TapGesture()
           .tag('single_tap_on_video')
-          .onAction(() => {
+          .onAction((event: GestureEvent) => {
             this.togglePlayAndPause()
           })
       )

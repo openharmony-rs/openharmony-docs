@@ -137,7 +137,7 @@ build(builder: WrappedBuilder\<Args>, arg: Object, options: [BuildOptions](#buil
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | builder | [WrappedBuilder\<Args>](../../ui/state-management/arkts-wrapBuilder.md) | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder](../../ui/state-management/arkts-builder.md)。   |
 | arg     | Object                                                          | 是   | builder的入参。当前仅支持一个入参，且入参对象类型与@Builder定义的入参类型保持一致。                                                            |
-| options | BuildOptions                                                    | 是   | build的配置参数，判断是否支持@Builder中嵌套@Builder的行为。                                         |
+| options | BuildOptions                                                    | 是   | build的配置参数，包括是否支持嵌套@Builder和使用并行创建等选项。                                         |
 
 **示例：**
 ```ts
@@ -209,6 +209,97 @@ build的可选参数。
 | ------------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported |boolean | 否   | 是否支持Builder嵌套Builder进行使用。其中，false表示Builder使用的入参一致，true表示Builder使用的入参不一致。默认值：false<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | localStorage<sup>20+</sup> |[LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 给当前builderNode设置localStorage，挂载在此builderNode下的自定义组件共享该localStorage，如果自定义组件构造函数同时也传入localStorage，优先使用构造函数中传入的localStorage。默认值：null<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务
+| useParallel<sup>20+</sup> | boolean | 否   | 定义build方法是否以并行的方式创建组件，true表示启用并行，false表示不启用并行。默认值：false<br/>**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**示例：**
+
+该示例演示了BuilderNode的build方法设置useParallel为true，BuildTextWithParams中Column组件和Text组件会以并行的方式创建。并行创建成功后会显示`Build with Params`等参数，Update按钮可以更新该参数。
+
+```ts
+import { UIContext } from '@ohos.arkui.component'
+import {BuilderNode, FrameNode, NodeController, NodeRenderType, RenderOptions, Size } from '@ohos.arkui.node'
+
+class Params {
+  text1: string;
+  constructor(text: string) {
+    this.text1 = text;
+  }
+}
+
+// builder组件
+@Builder
+function BuildTextWithParams(params: Params) {
+  Column() {
+    Text(params.text1).fontSize(20)
+    Text("this is a CustomNode with ProxyNode").fontSize(20)
+  }
+}
+
+class MyNodeController extends NodeController {
+  private builderNode ?: BuilderNode<Params>;
+  private uiContext?: UIContext;
+  private params: string = "update with Params";
+
+  // 创建节点时调用
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    this.addBuilderNode();
+    return this.builderNode? this.builderNode!.getFrameNode()!:null;
+  }
+
+  // 更新节点内容
+  updateNode() {
+    this.params += "~"
+    this.builderNode?.update(new Params(this.params));
+  }
+
+  addBuilderNode(){
+    if ( this.builderNode === undefined ) {
+      let renderOptions: RenderOptions =
+        { selfIdealSize: { width: 100, height: 100 } as Size, type: NodeRenderType.RENDER_TYPE_DISPLAY }
+      // 创建BuilderNode
+      let builderNode: BuilderNode<Params> = new BuilderNode<Params>(this.uiContext!, renderOptions);
+      // useParallel设置为true，并行执行wrapBuilder，创建UI
+      builderNode.build(wrapBuilder(BuildTextWithParams), new Params("Build with Params"), {useParallel: true});
+      this.builderNode = builderNode;
+    }
+  }
+}
+
+@Entry
+@Component
+struct MyStateSample {
+  private nodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      Column() {
+        Text('NodeContainer')
+        NodeContainer(this.nodeController)
+          .borderWidth(1)
+          .height("80%")
+          .width("100%")
+      }
+      .height("40%")
+      Button('addBuilderNode')
+        .onClick((e: ClickEvent) => {
+          this.nodeController.addBuilderNode();
+        })
+        .width(200)
+        .height(50)
+        .margin({botton: 10} as Margin)
+      Button("Update")
+        .onClick((e: ClickEvent) => {
+          this.nodeController?.updateNode();
+        })
+        .width(200)
+        .height(50)
+    }
+  }
+}
+```
+![useParallel](figures/builderNode_useParallel.gif)
+
 
 ### InputEventType<sup>20+</sup>
 

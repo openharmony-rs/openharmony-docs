@@ -274,6 +274,8 @@ struct Home {
 
 - [onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)：当用户点击返回按钮时触发。
 
+ArkTS1.1示例：
+
 ```ts
 // Index.ets
 @Entry
@@ -352,6 +354,90 @@ struct Page {
   }
 }
 ```
+
+ArkTS1.2示例：
+
+```ts
+// Index.ets 
+import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct MyComponent {
+  // 只有被@Entry装饰的组件才可以调用页面的生命周期 
+  onPageShow() {
+    console.info('Index onPageShow');
+  }
+  // 只有被@Entry装饰的组件才可以调用页面的生命周期 
+  onPageHide() {
+    console.info('Index onPageHide');
+  }
+  // 只有被@Entry装饰的组件才可以调用页面的生命周期 
+  onBackPress() {
+    console.info('Index onBackPress');
+    // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑，不设置返回值按照false处理 
+    return true;
+  }
+
+  build() {
+    Column() {
+      // push到Page页面，执行onPageHide 
+      Button('push to next page').onClick((e: ClickEvent) => {
+        this.getUIContext().getRouter().pushUrl({ url: 'pages/Page' });
+      })
+    }
+  }
+}
+```
+```ts
+// Page.ets 
+import { Entry, Component, Column, Text, Button, ClickEvent, FontWeight, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Page {
+  @State textColor: Color = Color.Black;
+  @State num: number = 0;
+  // 只有被@Entry装饰的组件才可以调用页面的生命周期 
+  onPageShow() {
+    console.info('Page onPageShow');
+    this.num = 5;
+  }
+  // 只有被@Entry装饰的组件才可以调用页面的生命周期 
+  onPageHide() {
+    console.info('Page onPageHide');
+  }
+  // 只有被@Entry装饰的组件才可以调用页面的生命周期 
+  onBackPress() {
+    // 不设置返回值按照false处理 
+    console.info('Page onBackPress');
+    this.textColor = Color.Grey;
+    this.num = 0;
+    return false;
+  }
+
+  build() {
+    Column() {
+      Text(`num 的值为：${this.num}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .fontColor(this.textColor)
+        .margin(20)
+        .onClick((e: ClickEvent) => {
+          this.num += 5;
+        })
+      Button('pop to previous page').onClick((e: ClickEvent) => {
+        this.getUIContext().getRouter().back();
+      })
+    }
+
+    .width('100%')
+  }
+}
+```
+
+
 ![router_2025-07-02_152548](figures/router_2025-07-02_152548.gif)
 
 ## 页面返回前增加一个询问框
@@ -373,8 +459,34 @@ struct Page {
 
 如果想要在目标界面开启页面返回询问框，需要在调用[back](../reference/apis-arkui/js-apis-arkui-UIContext.md#back)方法之前，通过调用[showAlertBeforeBackPage](../reference/apis-arkui/js-apis-arkui-UIContext.md#showalertbeforebackpage)方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
 
+
+ArkTS1.1示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义一个返回按钮的点击事件处理函数
+function onBackClick(): void {
+  // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
+  try {
+    this.getUIContext().getRouter().showAlertBeforeBackPage({
+      message: '您还没有完成支付，确定要返回吗？' // 设置询问框的内容
+    });
+  } catch (err) {
+    let message = (err as BusinessError).message;
+    let code = (err as BusinessError).code;
+    console.error(`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
+  }
+
+  // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
+  this.getUIContext().getRouter().back();
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+ import { BusinessError } from '@ohos.base';
 
 // 定义一个返回按钮的点击事件处理函数
 function onBackClick(): void {
@@ -409,9 +521,49 @@ message：string类型，表示询问框的内容。
 
 在事件回调中，调用弹窗的[showDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#showdialog-1)方法：
 
+ArkTS1.1示例：
+
 ```ts
 import { promptAction} from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+onBackClick() {
+  // 弹出自定义的询问框
+  this.getUIContext().getPromptAction().showDialog({
+    message: '您还没有完成支付，确定要返回吗？',
+    buttons: [
+      {
+        text: '取消',
+        color: '#FF0000'
+      },
+      {
+        text: '确认',
+        color: '#0099FF'
+      }
+    ]
+  }).then((result: promptAction.ShowDialogSuccessResponse) => {
+    if (result.index === 0) {
+      // 用户点击了“取消”按钮
+      console.info('User canceled the operation.');
+    } else if (result.index === 1) {
+      // 用户点击了“确认”按钮
+      console.info('User confirmed the operation.');
+      // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
+      this.getUIContext().getRouter().back();
+    }
+  }).catch((err: Error) => {
+    let message = (err as BusinessError).message;
+    let code = (err as BusinessError).code;
+    console.error(`Invoke showDialog failed, code is ${code}, message is ${message}`);
+  })
+}
+```
+
+ArkTS1.2示例：
+
+```ts
+ import { BusinessError } from '@ohos.base';
+ import promptAction from '@ohos.promptAction';
 
 onBackClick() {
   // 弹出自定义的询问框
@@ -457,9 +609,16 @@ onBackClick() {
 
 在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
 
+ArkTS1.1示例：
 
 ```ts
 import { router } from '@kit.ArkUI';
+```
+
+ArkTS1.2示例：
+
+```ts
+import router from '@ohos.router';
 ```
 
 在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给@Entry修饰的自定义组件[EntryOptions](../ui/state-management/arkts-create-custom-components.md#entryoptions10)命名：

@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -14,7 +16,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 ## launcherBundleManager.getLauncherAbilityInfoSync<sup>18+</sup>
 
-getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>
+ArkTS-Dyn: getLauncherAbilityInfoSync(bundleName: string, userId: number): Array\<LauncherAbilityInfo\><br>
+ArkTS-Sta: getLauncherAbilityInfoSync(bundleName: string, userId: int): Array\<LauncherAbilityInfo\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
@@ -22,12 +25,16 @@ getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[Launche
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -70,6 +77,10 @@ LauncherAbilityInfo信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) | 桌面应用的Ability信息。 |
@@ -81,6 +92,10 @@ type ShortcutInfo = _ShortcutInfo
 应用[module.json5配置文件](../../quick-start/module-configuration-file.md#shortcuts标签)中定义的快捷方式信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -94,6 +109,10 @@ type ShortcutWant = _ShortcutWant
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_ShortcutWant](./js-apis-bundleManager-shortcutInfo.md#shortcutwant) | 快捷方式内定义的目标[wants](../../quick-start/module-configuration-file.md#wants标签)信息集合。 |
@@ -105,6 +124,10 @@ type ParameterItem = _ParameterItem
 快捷方式配置信息中的自定义数据。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 20
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

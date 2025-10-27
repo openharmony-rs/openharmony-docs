@@ -1,12 +1,18 @@
 # @Track
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 11开始，支持该装饰器。
 
 @Track用于状态管理V1中，观测class对象的属性级更新。
 
-在动态语言上下文中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-DT）](../../../ui/state-management/arkts-track.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Dyn）](../../../ui/state-management/arkts-track.md)。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 

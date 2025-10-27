@@ -1,6 +1,6 @@
 # @ohos.util (util工具函数)
 
-该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）等功能。
+该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)，[ScopeHelper&lt;T&gt;<sup>20+</sup>](#scopehelpert20)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）等功能。
 
 > **说明：**
 >
@@ -35,13 +35,17 @@ format(format: string,  ...args: Object[]): string
 | ------ | -----------------|
 | string | 格式化后的字符串。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **格式说明符：**
 
@@ -133,6 +137,8 @@ errnoToString(errno: number): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -190,6 +196,8 @@ callbackWrapper(original: Function): (err: Object, value: Object )=&gt;void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -234,17 +242,19 @@ promisify(original: (err: Object, value: Object) =&gt; void): Function
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 回调函数中第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。  |
+| original | Function | 是 | Function为带有两个参数的函数，其中第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Function | 返回一个&nbsp;Promise&nbsp;的函数。 |
+| Function | 返回一个Promise的函数。 |
 
 **错误码：**
 
@@ -270,6 +280,42 @@ const addCall = util.promisify(util.callbackWrapper(fn));
     console.info(err);
   }
 })();
+```
+
+## util.promisify<sup>20+</sup>
+
+promisify(original: Function): PromisifiedFunc
+
+处理异步函数并返回一个Promise函数。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| original | Function | 是 | 回调函数中第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [PromisifiedFunc](#promisifiedfunc20) | 返回一个&nbsp;Promise&nbsp;的函数。 |
+
+**示例：**
+
+```ts
+let func: Function =
+  (val: Any, callback: (err: Error | null, ...value: FixedArray<Any>) => void) => {
+  callback(null, val);
+}
+let val = util.promisify(func);
+let res = await val(42);
+console.info(new String(res)); // 输出结果：42
 ```
 
 ## util.generateRandomUUID<sup>9+</sup>
@@ -320,6 +366,8 @@ generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -339,6 +387,38 @@ generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**示例：**
+
+```ts
+let uuid = util.generateRandomBinaryUUID(true);
+console.info(JSON.stringify(uuid));
+// 输出随机生成的UUID
+```
+
+## util.generateRandomBinaryUUID<sup>20+</sup>
+
+generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array | undefined
+
+使用加密安全随机数生成器生成随机的RFC 4122版本4的Uint8Array类型UUID。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| entropyCache | boolean | 否 | 是否使用已缓存的UUID，true表示使用缓存的UUID，false表示不使用缓存的UUID，默认为true。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Uint8Array \| undefined | 表示此UUID的Uint8Array值，失败则返回undefined。 |
 
 **示例：**
 
@@ -370,13 +450,21 @@ parseUUID(uuid: string): Uint8Array
 | -------- | -------- |
 | Uint8Array | 返回表示此UUID的Uint8Array，如果解析失败，则抛出SyntaxError。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 10200002 | Invalid uuid string. |
+
+**ArkTS1.2版本错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
 | 10200002 | Invalid uuid string. |
 
 **示例：**
@@ -398,6 +486,8 @@ printf(format: string,  ...args: Object[]): string
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[util.format<sup>9+</sup>](#utilformat9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -433,6 +523,8 @@ getErrorString(errno: number): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -466,6 +558,8 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -488,6 +582,8 @@ getHash(object: object): number
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -524,6 +620,45 @@ console.info('result2 is ' + result2);
 // 输出结果：result1 与 result2 的值相等，且为随机的Hash值。
 ```
 
+## util.getHash<sup>20+</sup>
+
+getHash(obj: RecordData): number
+
+获取对象的Hash值。首次获取时，则计算Hash值并保存到对象的Hash域（返回随机的Hash值）；后续获取时，直接从Hash域中返回Hash值（同一对象多次返回值保持不变）。
+
+**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| obj | [RecordData](#recorddata20) | 是 | 需要获取Hash值的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 返回Hash值。 |
+
+**示例：**
+
+```ts
+interface Person {
+  name: string,
+  age: number
+}
+let obj: Person = { name: 'Jack', age: 20 };
+let result1 = util.getHash(obj);
+console.info('result1 is ' + result1);
+let result2 = util.getHash(obj);
+console.info('result2 is ' + result2);
+// 输出结果：result1 与 result2 的值相等，且为随机的Hash值。
+```
+
 ## util.getMainThreadStackTrace<sup>20+</sup>
 
 getMainThreadStackTrace(): string
@@ -533,6 +668,8 @@ getMainThreadStackTrace(): string
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **返回值：**
 
@@ -547,6 +684,48 @@ let stack = util.getMainThreadStackTrace();
 console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
+
+## PromisifiedFunc<sup>20+</sup>
+
+type PromisifiedFunc = (...args: FixedArray&lt;Any&gt;) => Promise&lt;Any&gt;
+
+表示[promisify](#utilpromisify20)函数的返回值类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| args | FixedArray&lt;Any&gt; | 否 | 可变参数，传递给原始回调函数。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Any&gt; | 返回一个Promise的函数。 |
+
+## RecordData<sup>20+</sup>
+
+type RecordData = undefined | null | Object | Record&lt;string, RecordData&gt; | Array&lt;RecordData&gt;
+
+表示[getHash](#utilgethash20)函数入参object的类型。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+| 类型 | 说明 |
+| ---------------------------------------------- | ----------------------------------- |
+| undefined                               | 表示值为undefined。                 |
+| null | 表示值为null。      |
+| Object    | 表示值为Object类型。 |
+| Record&lt;string, RecordData&gt;    | 表示值为一个记录（对象），其键为字符串，值为RecordData类型，支持嵌套对象。 |
+| Array&lt;RecordData&gt;    | 表示值为一个数组，其元素为RecordData类型，支持嵌套数组。 |
 
 ## TextDecoderOptions<sup>11+</sup>
 
@@ -581,6 +760,8 @@ console.info(stack);
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | stream | boolean | 否 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
@@ -598,6 +779,8 @@ static addBefore(targetClass: Object, methodName: string, isStatic: boolean, bef
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -691,6 +874,8 @@ static addAfter(targetClass: Object, methodName: string, isStatic: boolean, afte
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                   |
@@ -773,6 +958,8 @@ static replace(targetClass: Object, methodName: string, isStatic: boolean, inste
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -885,13 +1072,17 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 | ---------- | ------------------ |
 | [TextDecoder](#textdecoder) | 返回一个TextDecoder对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -929,13 +1120,17 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 | -------- | -------- |
 | string | 解码后的数据。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -967,6 +1162,8 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1025,6 +1222,8 @@ TextDecoder的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1056,6 +1255,8 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[decodeToString<sup>12+</sup>](#decodetostring12)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1105,9 +1306,8 @@ console.info("retStr = " + retStr);
 
 | 名称      | 类型 | 只读  |可选  | 说明               |
 | --------- | -------- | -------- |-------- |------------------ |
-| read     | number  | 是 | 否 |已读取的字符数。 |
-| written | number   | 是 |否 |已写入的字节数。  |
-
+| read     | ArkTS1.1: number<br>ArkTS1.2: int  | 是 | 否 |已读取的字符数。 |
+| written | ArkTS1.1: number<br>ArkTS1.2: int   | 是 |否 |已写入的字节数。  |
 
 ## TextEncoder
 
@@ -1135,6 +1335,8 @@ TextEncoder的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **示例：**
 
 ```ts
@@ -1157,13 +1359,17 @@ TextEncoder的构造函数。
 | ----- | ---- | ---- | ---- |
 | encoding | string | 否 | 编码格式，默认值为'utf-8'。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1193,13 +1399,17 @@ static create(encoding?: string): TextEncoder
 | ---------- | ------------------ |
 | [TextEncoder](#textencoder) | 返回一个TextEncoder对象。|
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1229,13 +1439,17 @@ encodeInto(input?: string): Uint8Array
 | ---------- | ------------------ |
 | Uint8Array | 返回编码后的Uint8Array对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1269,13 +1483,17 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 | ---------- | ------------------ |
 | [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | 返回一个对象，read表示已编码的字符数，write表示编码字符所占用的字节数。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1303,6 +1521,8 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[encodeIntoUint8Array<sup>9+</sup>](#encodeintouint8array9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1339,6 +1559,8 @@ encode(input?: string): Uint8Array
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[encodeInto<sup>9+</sup>](#encodeinto9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1408,13 +1630,17 @@ static parseRationalNumber(numerator: number,denominator: number): RationalNumbe
 | -------- | -------- |
 | [RationalNumber](#rationalnumber8) | RationalNumber对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1448,13 +1674,17 @@ static createRationalFromString(rationalString: string): RationalNumber​
 | -------- | -------- |
 | [RationalNumber](#rationalnumber8)​ | RationalNumber对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | The type of rationalString must be string. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1484,13 +1714,17 @@ compare(another: RationalNumber): number​
 | ------ | ------------------------------------------------------------ |
 | number | 两个对象相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1601,13 +1835,17 @@ static getCommonFactor(number1: number, number2: number): number
 | ------ | ------------------------------ |
 | number | 返回两个给定数字的最大公约数。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1821,6 +2059,8 @@ RationalNumber的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1845,6 +2085,8 @@ compareTo(another: RationalNumber): number​
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[compare<sup>9+</sup>](#compare9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1879,6 +2121,8 @@ static getCommonDivisor(number1: number,number2: number): number
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getCommonFactor<sup>9+</sup>](#getcommonfactor9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -1936,13 +2180,17 @@ constructor(capacity?: number)
 | -------- | ------ | ---- | ---------------------------- |
 | capacity | number | 否   | 指示要为缓冲区自定义的容量，不传默认值为64，最大值不能超过2147483647。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -1967,13 +2215,17 @@ updateCapacity(newCapacity: number): void
 | ----------- | ------ | ---- | ---------------------------- |
 | newCapacity | number | 是   | 指示要为缓冲区自定义的容量，最大值不能超过2147483647。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -2253,13 +2505,17 @@ get(key: K): V | undefined
 | ------------------------ | ------------------------------------------------------------ |
 | V \| undefined | 如果指定的键存在于缓冲区中，则返回与键关联的值；否则返回createDefault创建的值。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -2280,6 +2536,8 @@ put(key: K,value: V): V
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -2311,6 +2569,41 @@ console.info('result = ' + result);
 // 输出结果：result = 10
 ```
 
+### put<sup>20+</sup>
+
+put(key: K, value: V): V | undefined
+
+将键值对添加到缓冲区，返回与添加的键关联的值。当缓冲区中值的总数超过容量时，执行删除操作。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                       |
+| ------ | ---- | ---- | -------------------------- |
+| key    | K    | 是   | 要添加的键。             |
+| value  | V    | 是   | 指示与要添加的键关联的值。 |
+
+**返回值：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| V \| undefined  | 返回与添加的键关联的值。如果要添加的键已经存在，则返回原始值，否则返回undefined。 |
+
+**示例：**
+
+```ts
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+let result = pro.put(2, 8);
+console.info('result = ' + result);
+// 输出结果：result = 10
+```
+
 ### values<sup>9+</sup>
 
 values(): V[]
@@ -2320,6 +2613,8 @@ values(): V[]
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **返回值：**
 
@@ -2339,6 +2634,36 @@ console.info('result = ' + result);
 // 输出结果：result = anhu,grfb
 ```
 
+### values<sup>20+</sup>
+
+values(): Array&lt;V&gt;
+
+获取当前缓冲区中所有值，从最近访问到最近最少访问的顺序列表。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+| 类型     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| Array&lt;V&gt; | 按从最近访问到最近最少访问的顺序返回当前缓冲区中所有值的列表。 |
+
+**示例：**
+
+```ts
+let pro = new util.LRUCache<int|string,int|string>();
+pro.put(2, 10);
+pro.put(2, "anhu");
+pro.put("afaf", "grfb");
+let result = pro.values();
+console.info('result = ' + result);
+// 输出结果：result = anhu,grfb
+```
+
 ### keys<sup>9+</sup>
 
 keys(): K[]
@@ -2348,6 +2673,8 @@ keys(): K[]
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **返回值：**
 
@@ -2359,6 +2686,35 @@ keys(): K[]
 
 ```ts
 let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.put(3, 1);
+let result = pro.keys();
+console.info('result = ' + result);
+// 输出结果：result = 2,3
+```
+
+### keys<sup>20+</sup>
+
+keys(): Array&lt;K&gt;
+
+获取当前缓冲区中所有键从最近访问到最近最少访问的升序列表。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+| 类型     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| Array&lt;K&gt; | 按升序返回当前缓冲区中所有键的列表，从最近访问到最近最少访问。 |
+
+**示例：**
+
+```ts
+let pro = new util.LRUCache<int, int>();
 pro.put(2, 10);
 pro.put(3, 1);
 let result = pro.keys();
@@ -2388,13 +2744,17 @@ remove(key: K): V | undefined
 | ------------------------ | ------------------------------------------------------------ |
 | V&nbsp;\|&nbsp;undefined | 返回一个包含已删除键值对的Optional对象；如果key不存在，则返回undefined，如果key为null，则抛出异常。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -2425,13 +2785,17 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | value    | V       | 是   | 表示删除的值。                                               |
 | newValue | V       | 是   | 如果已调用put方法并且要添加的键已经存在，则参数值是关联的新值。其他情况下参数值为空。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -2480,13 +2844,17 @@ contains(key: K): boolean
 | ------- | ------------------------------------------ |
 | boolean | 如果缓冲区包含指定的键，则返回&nbsp;true。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -2507,6 +2875,8 @@ createDefault(key: K): V
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -2532,6 +2902,47 @@ createDefault(key: K): V
 
 ```ts
 let pro = new util.LRUCache<number, number>();
+let result = pro.createDefault(50);
+console.info('result = ' + result);
+// 输出结果：result = undefined
+```
+
+### createDefault<sup>20+</sup>
+
+createDefault(key: K): V | undefined
+
+如果在缓冲区未匹配到键，则执行后续操作，参数表示未匹配的键，返回与键关联的值，默认返回undefined。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明           |
+| ------ | ---- | ---- | -------------- |
+| key    | K    | 是   | 表示未匹配的键。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| V \| undefined   | 返回与键关联的值，默认返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
+
+```ts
+let pro = new util.LRUCache<int, int>();
 let result = pro.createDefault(50);
 console.info('result = ' + result);
 // 输出结果：result = undefined
@@ -2579,6 +2990,8 @@ for (let value of arrayValue) {
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型        | 说明                           |
@@ -2601,11 +3014,47 @@ for (let value of arrayValue) {
 }
 ```
 
+### $_iterator<sup>20+</sup>
+
+\$_iterator\(): IterableIterator&lt;[K, V]&gt;
+
+返回键值对形式的二维数组。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+| 类型        | 说明                           |
+| ----------- | ------------------------------ |
+| IterableIterator&lt;[K, V]&gt; | 返回一个键值对形式的二维数组。 |
+
+**示例：**
+
+```ts
+let pro = new util.LRUCache<int, int>();
+pro.put(2, 10);
+pro.put(3, 15);
+let pair:Iterable<[int, int]> = pro.$_iterator();
+let arrayValue = Array.from(pair);
+for (let value of arrayValue) {
+  console.info(value[0]+ ', '+ value[1]);
+  // 输出结果：
+  // 2, 10
+  // 3, 15
+}
+```
+
 ## ScopeComparable<sup>8+</sup>
 
 ScopeComparable类型的值需要实现compareTo方法，确保传入的数据具有可比性。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 ### compareTo<sup>8+</sup>
 
@@ -2616,6 +3065,8 @@ compareTo(other: ScopeComparable): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -2655,6 +3106,64 @@ class Temperature implements util.ScopeComparable {
 }
 ```
 
+## ScopeComparable&lt;T&gt;<sup>20+</sup>
+
+ScopeComparable&lt;T&gt;类型的值需要实现compareTo方法，确保传入的数据具有可比性。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+### compareTo<sup>20+</sup>
+
+compareTo(other: T): boolean
+
+比较两个值的大小，返回一个布尔值。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明           |
+| ------ | ---- | ---- | -------------- |
+| other  | T | 是  | 表示要比较的值。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| boolean | 调用compareTo的值大于等于传入的值返回true，否则返回false。|
+
+**示例：**
+
+构造新类，实现compareTo方法。后续示例代码中，均以此Temperature类为例。
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+```
+
 ## ScopeType<sup>8+</sup>
 
 type ScopeType = ScopeComparable | number
@@ -2665,14 +3174,34 @@ type ScopeType = ScopeComparable | number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 | 类型 | 说明 |
 | -------- | -------- |
 | number | 表示值的类型为数字。 |
 | [ScopeComparable](#scopecomparable8) | 表示值的类型为ScopeComparable。|
 
+## ScopeType&lt;T&gt;<sup>20+</sup>
+
+type ScopeType&lt;T&gt; = ScopeComparable&lt;T&gt;
+
+表示范围中的值的类型。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ScopeComparable&lt;T&gt;](#scopecomparablet20) | 表示值的类型为ScopeComparable&lt;T&gt;。|
+
 ## ScopeHelper<sup>9+</sup>
 
 ScopeHelper接口用于描述一个字段的有效范围。构造函数用于创建具有指定下限和上限的对象，并要求这些对象必须具有可比性。
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 ### constructor<sup>9+</sup>
 
@@ -2683,6 +3212,8 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -2738,6 +3269,8 @@ toString(): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型   | 说明                                   |
@@ -2784,6 +3317,8 @@ intersect(range: ScopeHelper): ScopeHelper
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -2846,6 +3381,8 @@ intersect(lowerObj:ScopeType,upperObj:ScopeType):ScopeHelper
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -2911,6 +3448,8 @@ getUpper(): ScopeType
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型                     | 说明                   |
@@ -2958,6 +3497,8 @@ getLower(): ScopeType
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型                     | 说明                   |
@@ -3004,6 +3545,8 @@ expand(lowerObj: ScopeType,upperObj: ScopeType): ScopeHelper
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -3069,6 +3612,8 @@ expand(range: ScopeHelper): ScopeHelper
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型                         | 必填 | 说明               |
@@ -3133,6 +3678,8 @@ expand(value: ScopeType): ScopeHelper
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明             |
@@ -3195,6 +3742,8 @@ contains(value: ScopeType): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明             |
@@ -3256,6 +3805,8 @@ contains(range: ScopeHelper): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -3321,6 +3872,8 @@ clamp(value: ScopeType): ScopeType
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明           |
@@ -3373,6 +3926,665 @@ console.info("result = " + result);
 // 输出结果：result = 35
 ```
 
+## ScopeHelper&lt;T&gt;<sup>20+</sup>
+
+ScopeHelper&lt;T&gt;接口用于描述一个字段的有效范围。构造函数用于创建具有指定下限和上限的对象，并要求这些对象必须具有可比性。
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+### constructor<sup>20+</sup>
+
+constructor(lowerObj: T, upperObj: T)
+
+创建指定下限和上限的作用域实例，返回一个ScopeHelper对象。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                   |
+| -------- | ------------------------ | ---- | ---------------------- |
+| lowerObj | T | 是   | 指定作用域实例的下限。 |
+| upperObj | T | 是   | 指定作用域实例的上限。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+console.info("range = " + range);
+// 输出结果：range = [30, 40]
+```
+
+### toString<sup>20+</sup>
+
+toString(): string
+
+该字符串化方法返回当前范围的字符串表示形式。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| string | 返回当前范围的字符串表示形式。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.toString();
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
+
+### intersect<sup>20+</sup>
+
+intersect(range: ScopeHelper&lt;T&gt;): ScopeHelper&lt;T&gt;
+
+获取给定范围和当前范围的交集。当交集为空集时，抛出异常。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型                            | 必填 | 说明           |
+| ------ | ------------------------------- | ---- | -------------- |
+| range  | [ScopeHelper&lt;T&gt;](#scopehelpert20) | 是   | 传入给定范围。 |
+
+**返回值：**
+
+| 类型                            | 说明                           |
+| ------------------------------- | ------------------------------ |
+| [ScopeHelper&lt;T&gt;](#scopehelpert20) | 返回给定范围和当前范围的交集。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let tempMiDF = new Temperature(35);
+let tempMidS = new Temperature(39);
+let rangeFir = new util.ScopeHelper<Temperature>(tempMiDF, tempMidS);
+let result = range.intersect(rangeFir);
+console.info("result = " + result);
+// 输出结果：result = [35, 39]
+```
+
+### intersect<sup>20+</sup>
+
+intersect(lowerObj: T, upperObj: T): ScopeHelper&lt;T&gt;
+
+获取当前范围与指定下限和上限范围的交集。当交集为空集时，抛出异常。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明             |
+| -------- | ------------------------ | ---- | ---------------- |
+| lowerObj | T | 是   | 给定范围的下限。 |
+| upperObj | T | 是   | 给定范围的上限。 |
+
+**返回值：**
+
+| 类型                         | 说明                                     |
+| ---------------------------- | ---------------------------------------- |
+| [ScopeHelper&lt;T&gt;](#scopehelpert20) | 返回当前范围与给定下限和上限范围的交集。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let tempMiDF = new Temperature(35);
+let tempMidS = new Temperature(39);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.intersect(tempMiDF, tempMidS);
+console.info("result = " + result);
+// 输出结果：result = [35, 39]
+```
+
+### getUpper<sup>20+</sup>
+
+getUpper(): T
+
+获取当前范围的上限。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+| 类型                     | 说明                   |
+| ------------------------ | ---------------------- |
+| T | 返回当前范围的上限值。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.getUpper();
+console.info("result = " + result);
+// 输出结果：result = 40
+```
+
+### getLower<sup>20+</sup>
+
+getLower(): T
+
+获取当前范围的下限。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**返回值：**
+
+| 类型                     | 说明                   |
+| ------------------------ | ---------------------- |
+|  T | 返回当前范围的下限值。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.getLower();
+console.info("result = " + result);
+// 输出结果：result = 30
+```
+
+### expand<sup>20+</sup>
+
+expand(lowerObj: T, upperObj: T): ScopeHelper&lt;T&gt;
+
+创建并返回当前范围与给定下限和上限的并集。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明             |
+| -------- | ------------------------ | ---- | ---------------- |
+| lowerObj | T | 是   | 给定范围的下限。 |
+| upperObj | T | 是   | 给定范围的上限。 |
+
+**返回值：**
+
+| 类型                         | 说明                                 |
+| ---------------------------- | ------------------------------------ |
+| [ScopeHelper&lt;T&gt;](#scopehelpert20) | 返回当前范围和给定下限和上限的并集。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let tempMiDF = new Temperature(35);
+let tempMidS = new Temperature(39);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.expand(tempMiDF, tempMidS);
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
+
+### expand<sup>20+</sup>
+
+expand(range: ScopeHelper&lt;T&gt;): ScopeHelper&lt;T&gt;
+
+创建并返回当前范围和给定范围的并集。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型                            | 必填 | 说明               |
+| ------ | ------------------------------- | ---- | ------------------ |
+| range  | [ScopeHelper&lt;T&gt;](#scopehelpert20) | 是   | 传入一个给定范围。 |
+
+**返回值：**
+
+| 类型                            | 说明                               |
+| ------------------------------- | ---------------------------------- |
+| [ScopeHelper&lt;T&gt;](#scopehelpert20) | 返回包括当前范围和给定范围的并集。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let tempMiDF = new Temperature(35);
+let tempMidS = new Temperature(39);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let rangeFir = new util.ScopeHelper<Temperature>(tempMiDF, tempMidS);
+let result = range.expand(rangeFir);
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
+
+### expand<sup>20+</sup>
+
+expand(value: T): ScopeHelper&lt;T&gt;
+
+创建并返回当前范围和给定值的并集。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型                     | 必填 | 说明             |
+| ------ | ------------------------ | ---- | ---------------- |
+| value  | T | 是   | 传入一个给定值。 |
+
+**返回值：**
+
+| 类型                         | 说明                             |
+| ---------------------------- | -------------------------------- |
+| [ScopeHelper&lt;T&gt;](#scopehelpert20) | 返回包括当前范围和给定值的并集。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let tempMiDF = new Temperature(35);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.expand(tempMiDF);
+console.info("result = " + result);
+// 输出结果：result = [30, 40]
+```
+
+### contains<sup>20+</sup>
+
+contains(value: T): boolean
+
+检查给定value是否在当前范围内。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型                     | 必填 | 说明             |
+| ------ | ------------------------ | ---- | ---------------- |
+| value  | T | 是   | 传入一个给定值。 |
+
+**返回值：**
+
+| 类型    | 说明                                                |
+| ------- | --------------------------------------------------- |
+| boolean | 如果给定值包含在当前范围内返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let tempMiDF = new Temperature(35);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.contains(tempMiDF);
+console.info("result = " + result);
+// 输出结果：result = true
+```
+
+### contains<sup>20+</sup>
+
+contains(range: ScopeHelper&lt;T&gt;): boolean
+
+检查给定range是否在当前范围内。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型           | 必填 | 说明               |
+| ------ | -------------- | ---- | ------------------ |
+| range  | [ScopeHelper&lt;T&gt;](#scopehelpert20) | 是   | 传入一个给定范围。 |
+
+**返回值：**
+
+| 类型    | 说明                                                |
+| ------- | --------------------------------------------------- |
+| boolean | 如果给定范围在当前范围内则返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let tempLess = new Temperature(20);
+let tempMore = new Temperature(45);
+let rangeSec = new util.ScopeHelper<Temperature>(tempLess, tempMore);
+let result = range.contains(rangeSec);
+console.info("result = " + result);
+// 输出结果：result = false
+```
+
+### clamp<sup>20+</sup>
+
+clamp(value: T): T
+
+将值限定到当前范围内。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：**
+
+| 参数名 | 类型                     | 必填 | 说明           |
+| ------ | ------------------------ | ---- | -------------- |
+| value  | T | 是   | 传入的给定值。 |
+
+**返回值：**
+
+| 类型                     | 说明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| T | 如果传入的value小于下限，返回lowerObj；如果大于上限值，返回upperObj；如果在当前范围内，返回value。 |
+
+**示例：**
+
+```ts
+class Temperature implements util.ScopeComparable<Temperature> {
+  private readonly _temp: int;
+
+  constructor(value: int) {
+    this._temp = value;
+  }
+
+  compareTo(value: Temperature) {
+    return this._temp >= value.getTemp();
+  }
+
+  getTemp(): int {
+    return this._temp;
+  }
+
+  toString(): string {
+    return this._temp.toString();
+  }
+}
+
+let tempLower = new Temperature(30);
+let tempUpper = new Temperature(40);
+let tempMiDF = new Temperature(35);
+let range = new util.ScopeHelper<Temperature>(tempLower, tempUpper);
+let result = range.clamp(tempMiDF);
+console.info("result = " + result);
+// 输出结果：result = 35
+```
+
 ## Base64Helper<sup>9+</sup>
 
 Base64Helper类提供Base64编解码和Base64URL编解码功能。Base64编码表包含A-Z、a-z、0-9这62个字符，以及"+"和"/"这两个特殊字符。在编码时，将原始数据按3个字节一组进行划分，得到若干个6位的数字，然后使用Base64编码表中对应的字符来表示这些数字。如果最后剩余1或2个字节，则需要使用"="字符进行补齐。Base64URL编码表包含A-Z、a-z、0-9以及"-"和"_"64个字符，Base64URL编码结果不含"="。
@@ -3416,13 +4628,17 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 | ---------- | ----------------------------- |
 | Uint8Array | 返回编码后的Uint8Array对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3458,13 +4674,17 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 | ------ | -------------------- |
 | string | 返回编码后的字符串。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此版本在ArkTS1.2无错误码
 
 **示例：**
 
@@ -3560,13 +4780,17 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 | ---------- | ----------------------------- |
 | Uint8Array | 返回解码后新分配的Uint8Array对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3604,13 +4828,17 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 | ------------------------- | --------------------------------- |
 | Promise&lt;Uint8Array&gt; | 返回异步编码后新分配的Uint8Array对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3647,13 +4875,17 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 | --------------------- | ------------------------ |
 | Promise&lt;string&gt; | 返回异步编码后的字符串。 |
 
-**错误码：**
+**ArkTS1.1错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3695,13 +4927,17 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
 | ------------------------- | --------------------------------- |
 | Promise&lt;Uint8Array&gt; | 返回异步解码后新分配的Uint8Array对象。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3736,13 +4972,17 @@ StringDecoder的构造函数。
 | ------ | ------------------------------ | ---- | --------------------------------- |
 | encoding  | string | 否   | 输入数据的编码类型。默认值：'utf-8'。 |
 
-**错误码：**
+**ArkTS1.1错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3772,13 +5012,17 @@ write(chunk: string | Uint8Array): string
 | ---------- | ----------------------------- |
 | string | 返回解码后的字符串。 |
 
-**错误码：**
+**ArkTS1.1错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3812,13 +5056,17 @@ end(chunk?: string | Uint8Array): string
 | ---------- | ----------------------------- |
 | string | 返回解码后的字符串。 |
 
-**错误码：**
+**ArkTS1.1版本错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**ArkTS1.2版本错误码：**
+
+此接口在ArkTS1.2无错误码。
 
 **示例：**
 
@@ -3861,6 +5109,8 @@ Types的构造函数。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **示例：**
 
@@ -3945,6 +5195,8 @@ isArgumentsObject(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4012,6 +5264,8 @@ isAsyncFunction(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4048,6 +5302,8 @@ isBooleanObject(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4083,6 +5339,8 @@ isBoxedPrimitive(value: Object): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -4180,6 +5438,8 @@ isExternal(value: Object): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -4317,6 +5577,8 @@ isGeneratorFunction(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4356,6 +5618,8 @@ isGeneratorObject(value: Object): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -4596,6 +5860,8 @@ isNumberObject(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4659,6 +5925,8 @@ isProxy(value: Object): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -4798,6 +6066,8 @@ isStringObject(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4833,6 +6103,8 @@ isSymbolObject(value: Object): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -5165,6 +6437,8 @@ isModuleNamespaceObject(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5207,6 +6481,8 @@ isSharedArrayBuffer(value: Object): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5238,6 +6514,8 @@ isSharedArrayBuffer(value: Object): boolean
 
 **系统能力：** 以下各项对应的系统能力均为SystemCapability.Utils.Lang。
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | 是 | 否 | 当前缓冲区中值的总数。 |
@@ -5265,6 +6543,8 @@ constructor(capacity?: number)
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5288,6 +6568,8 @@ updateCapacity(newCapacity: number): void
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.updateCapacity<sup>9+</sup>](#updatecapacity9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -5313,6 +6595,8 @@ toString(): string
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.toString<sup>9+</sup>](#tostring9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **返回值：**
 
@@ -5344,6 +6628,8 @@ getCapacity(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5371,6 +6657,8 @@ clear(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **示例：**
 
   ```ts
@@ -5391,6 +6679,8 @@ getCreateCount(): number
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.getCreateCount<sup>9+</sup>](#getcreatecount9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **返回值：**
 
@@ -5420,6 +6710,8 @@ getMissCount(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5448,6 +6740,8 @@ getRemovalCount(): number
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.getRemovalCount<sup>9+</sup>](#getremovalcount9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **返回值：**
 
@@ -5479,6 +6773,8 @@ getMatchCount(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5508,6 +6804,8 @@ getPutCount(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5536,6 +6834,8 @@ isEmpty(): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5563,6 +6863,8 @@ get(key: K): V | undefined
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.get<sup>9+</sup>](#get9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -5598,6 +6900,8 @@ put(key: K,value: V): V
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5632,6 +6936,8 @@ values(): V[]
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5662,6 +6968,8 @@ keys(): K[]
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5689,6 +6997,8 @@ remove(key: K): V | undefined
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.remove<sup>9+</sup>](#remove9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -5723,6 +7033,8 @@ afterRemoval(isEvict: boolean,key: K,value: V,newValue: V): void
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.afterRemoval<sup>9+</sup>](#afterremoval9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -5771,6 +7083,8 @@ contains(key: K): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5805,6 +7119,8 @@ createDefault(key: K): V
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -5836,6 +7152,8 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5862,6 +7180,8 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5882,6 +7202,8 @@ entries(): IterableIterator&lt;[K, V]&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[ScopeHelper<sup>9+</sup>](#scopehelper9)替代。
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 ### constructor<sup>(deprecated)</sup>
 
 constructor(lowerObj: ScopeType, upperObj: ScopeType)
@@ -5894,6 +7216,8 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -5943,6 +7267,8 @@ toString(): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -5991,6 +7317,8 @@ intersect(range: Scope): Scope
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[ScopeHelper.intersect<sup>9+</sup>](#intersect9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -6050,6 +7378,8 @@ intersect(lowerObj:ScopeType,upperObj:ScopeType):Scope
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6108,6 +7438,8 @@ getUpper(): ScopeType
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -6157,6 +7489,8 @@ getLower(): ScopeType
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -6205,6 +7539,8 @@ expand(lowerObj: ScopeType,upperObj: ScopeType): Scope
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[ScopeHelper.expand<sup>9+</sup>](#expand9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -6264,6 +7600,8 @@ expand(range: Scope): Scope
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6322,6 +7660,8 @@ expand(value: ScopeType): Scope
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6378,6 +7718,8 @@ contains(value: ScopeType): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6433,6 +7775,8 @@ contains(range: Scope): boolean
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[ScopeHelper.contains<sup>9+</sup>](#contains9-2)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -6493,6 +7837,8 @@ clamp(value: ScopeType): ScopeType
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6544,6 +7890,8 @@ console.info("result = " + result);
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[Base64Helper<sup>9+</sup>](#base64helper9)替代。
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 ### constructor<sup>(deprecated)</sup>
 
 constructor()
@@ -6555,6 +7903,8 @@ Base64的构造函数。
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[Base64Helper.constructor<sup>9+</sup>](#constructor9-5)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **示例：**
 
@@ -6573,6 +7923,8 @@ encodeSync(src: Uint8Array): Uint8Array
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[Base64Helper.encodeSync<sup>9+</sup>](#encodesync9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -6608,6 +7960,8 @@ encodeToStringSync(src: Uint8Array): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6642,6 +7996,8 @@ decodeSync(src: Uint8Array | string): Uint8Array
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6675,6 +8031,8 @@ encode(src: Uint8Array): Promise&lt;Uint8Array&gt;
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[Base64Helper.encode<sup>9+</sup>](#encode9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 
@@ -6711,6 +8069,8 @@ encodeToString(src: Uint8Array): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6746,6 +8106,8 @@ decode(src: Uint8Array | string): Promise&lt;Uint8Array&gt;
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[Base64Helper.decode<sup>9+</sup>](#decode9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
 
 **参数：**
 

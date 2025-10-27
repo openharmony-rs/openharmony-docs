@@ -1,4 +1,4 @@
-# UI性能优化概览
+# UI高性能开发
 
 优化应用的性能对于提升用户体验至关重要。当发现性能问题后，一般可按照以下步骤进行分析：
 1. 复现问题：开发者根据用户的反馈复现性能问题是分析的第一步，开发者可在通过回访用户或在应用中增加自己的性能监测埋点来获得性能问题的发生场景和复现步骤。
@@ -25,3 +25,12 @@
 
 ### 状态精确控制
 [状态管理](state-management/arkts-state-management-overview.md)是ArkUI声明式的核心机制，它负责将数据与UI联系起来，在UI刷新的过程中会反复执行状态管理的相关逻辑，状态变量的创建和与UI组件的绑定关系是影响刷新效率的关键。开发者需要根据实际的场景[正确使用状态管理](state-management/properly-use-state-management-to-develope.md)，同时在使用的过程中应注意[状态管理的使用技巧](state-management/arkts-state-management-best-practices.md)。
+
+### 利用并行化创建UI组件
+在构建包含大量或复杂UI组件的界面时，组件的创建可能成为性能瓶颈。传统的串行创建方式需要依次处理每个组件，耗时较长。从API version 20开始，为了提升页面创建效率，ArkUI提供多种并行化能力：
+
+- [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)：支持在C/C++层面通过多线程构建UI节点，有效提升性能和复杂场景下的渲染效率。
+- [UI并行化创建组件树](ui-parallel-components.md)：支持将可独立创建的UI子树标记为可并行构建，有效加快页面加载速度。
+- [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui-parallel-buildernode.md)：支持并行构建和更新节点，有效提升页面切换流畅度和交互响应速度。
+- [setUIStates](../reference/apis-arkui/js-apis-arkui-UIContext.md#setuistates20)：提供在非UI线程中安全更新状态变量的能力。
+

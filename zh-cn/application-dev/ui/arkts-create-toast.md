@@ -45,6 +45,8 @@
 | 是否避让软键盘 | 软键盘抬起时，必定上移软键盘的高度 | 软键盘抬起时，只有toast被遮挡时，才会避让，且避让后toast底部距离软键盘高度为80vp |
 | UIExtension内布局 | 以UIExtension为主窗中布局，对齐方式与UIExtension对齐 | 以宿主窗口为主窗中布局，对齐方式与宿主窗口对齐 |
 
+ArkTS-Dyn示例：
+
 ```ts
 import { promptAction } from '@kit.ArkUI';
 
@@ -90,9 +92,67 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+在ArkTS1.2上弹出Toast时，需先导入promptAction，即可指定showToast的参数类型为promptAction.ShowToastOptions。
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Button,
+  Column,
+  ClickEvent,
+  Text,
+  ColumnOptions,
+  TextInput,
+  FontWeight,
+  promptAction
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      TextInput()
+      Button('DEFAULT类型Toast')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .width('100%')
+        .onClick((event: ClickEvent) => {
+          this.getUIContext().getPromptAction().showToast({
+            message: "ok，我是DEFAULT toast",
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.DEFAULT,
+            bottom: 80
+          } as promptAction.ShowToastOptions);
+        })
+
+      Button('TOPMOST类型Toast')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .width('100%')
+        .onClick((event: ClickEvent) => {
+          this.getUIContext().getPromptAction().showToast({
+            message: "ok，我是TOP_MOST toast",
+            duration: 2000,
+            showMode: promptAction.ToastShowMode.TOP_MOST,
+            bottom: 85
+          } as promptAction.ShowToastOptions);
+        })
+    }
+  }
+}
+```
+
 ## 创建即时反馈
 
 适用于短时间内提示框自动消失的场景。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { PromptAction } from '@kit.ArkUI';
@@ -123,12 +183,60 @@ struct toastExample {
   }
 }
 ```
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Button,
+  Column,
+  ClickEvent,
+  FlexAlign,
+  Blank,
+  ButtonType,
+  State,
+} from '@kit.ArkUI';
+import { PromptAction, UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct toastExample {
+  private uiContext: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.uiContext.getPromptAction();
+
+  build() {
+    Column() {
+      Button('Show toast').fontSize(20)
+        .onClick((click: ClickEvent) => {
+          try {
+            this.promptAction.showToast({
+              message: 'Hello World',
+              duration: 2000
+            } as promptAction.ShowToastOptions)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showToast args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ![image](figures/UIToast1.gif)
 
 ## 显示关闭即时反馈
 
 适用于提示框提留时间较长，用户操作可以提前关闭提示框的场景。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { LengthMetrics, PromptAction } from '@kit.ArkUI';
@@ -178,6 +286,72 @@ struct toastExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Button,
+  Column,
+  ClickEvent,
+  FlexAlign,
+  Blank,
+  ButtonType,
+  State,
+} from '@kit.ArkUI';
+import { PromptAction, UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct toastExample {
+  @State toastId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.uiContext.getPromptAction();
+
+  build() {
+    Column() {
+      Button('Open Toast')
+        .type(ButtonType.Capsule)
+        .height(100)
+        .onClick((event: ClickEvent) => {
+          try {
+            this.promptAction.openToast({
+              message: 'Toast Massage',
+              duration: 10000,
+            } as promptAction.ShowToastOptions)
+              .then((toastId: number) => {
+              this.toastId = toastId;
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`OpenToast error code is ${code}, message is ${message}`);
+          };
+        })
+      Blank().height(50);
+      Button('Close Toast')
+        .height(100)
+        .type(ButtonType.Capsule)
+        .onClick((event: ClickEvent) => {
+          try {
+            this.promptAction.closeToast(this.toastId);
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`CloseToast error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ![image](figures/UIToast.gif)
+
 
 

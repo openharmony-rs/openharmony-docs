@@ -22,7 +22,22 @@ ArkUI的弹出框默认设置为全局级别，弹窗节点作为页面根节点
 
 当弹出框弹出时，会自动获取当前显示的Page页面并将弹出框节点挂载在此页面下。此时弹出框的显示层级高于此Page页面下的所有Navigation页面。
 
+ArkTS-Dyn示例：
+
 ```ts
+this.getUIContext().getPromptAction().openCustomDialog({
+  builder: () => {
+    this.customDialogComponent();
+  },
+  levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { LevelMode } from '@ohos.promptAction';
+
 this.getUIContext().getPromptAction().openCustomDialog({
   builder: () => {
     this.customDialogComponent();
@@ -37,7 +52,28 @@ this.getUIContext().getPromptAction().openCustomDialog({
 
 如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById](../reference/apis-arkui/js-apis-arkui-UIContext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
 
+ArkTS-Dyn示例：
+
 ```ts
+Text(this.message).id("test_text")
+  .onClick(() => {
+    const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
+    this.getUIContext().getPromptAction().openCustomDialog({
+      builder: () => {
+        this.customDialogComponent();
+      },
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+      levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+    })
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Text, FrameNode } from '@ohos.arkui.component';
+import { LevelMode } from '@ohos.promptAction';
+
 Text(this.message).id("test_text")
   .onClick(() => {
     const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
@@ -55,7 +91,29 @@ Text(this.message).id("test_text")
 
 如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将[immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#immersivemode15枚举说明)参数的值设为ImmersiveMode.EXTEND。
 
+ArkTS-Dyn示例：
+
 ```ts
+Text(this.message).id("test_text")
+  .onClick(() => {
+    const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
+    this.getUIContext().getPromptAction().openCustomDialog({
+      builder: () => {
+        this.customDialogComponent();
+      },
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+      levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+      immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
+    })
+  })
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Text, FrameNode } from '@ohos.arkui.component';
+import { LevelMode, ImmersiveMode } from '@ohos.promptAction';
+
 Text(this.message).id("test_text")
   .onClick(() => {
     const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
@@ -79,6 +137,9 @@ Text(this.message).id("test_text")
 2. 点击弹出框的蒙层，默认会关闭弹出框，点击蒙层以外的区域则不会。
 
 ## 完整示例
+
+ArkTS-Dyn示例：
+
 ```ts
 // Index.ets
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -162,4 +223,100 @@ struct Next {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// Index.ets
+
+import { Entry, Component, Builder, FontWeight, ComponentContent, UIContext, Text, Row, Column, Button, Blank,
+  FrameNode } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { PromptAction } from '@ohos.arkui.UIContext';
+import promptAction, { LevelMode, ImmersiveMode } from '@ohos.promptAction';
+
+let customDialogId: number = 0;
+
+@Builder
+function customDialogBuilder(uiContext: UIContext) {
+  Column() {
+    Text('Custom dialog Message').fontSize(10).height(100)
+    Row() {
+      Button("Next").onClick(() => {
+        uiContext.getRouter().pushUrl({ url: 'pages/Next' });
+      })
+      Blank().width(50)
+      Button("Close").onClick(() => {
+        uiContext.getPromptAction().closeCustomDialog(customDialogId);
+      })
+    }
+  }.padding(20)
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  customDialogComponent() {
+    customDialogBuilder(this.uiContext)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message).id("test_text")
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            const node: FrameNode | null = this.uiContext.getFrameNodeById("test_text") || null;
+            this.uiContext.getPromptAction().openCustomDialog({
+              builder: this.customDialogComponent,
+              levelMode: LevelMode.EMBEDDED,
+              levelUniqueId: node?.getUniqueId(),
+              immersiveMode: ImmersiveMode.DEFAULT,
+            } as promptAction.CustomDialogOptions).then((dialogId: number) => {
+              customDialogId = dialogId;
+            })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+```ts
+'use static'
+// Next.ets
+
+import { Entry, Component, Builder, Column, Button, FontWeight, Row } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Next {
+  @State message: string = 'Back';
+
+  build() {
+    Row() {
+      Column() {
+        Button(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.getUIContext().getRouter().back();
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![embedded_dialog](figures/embedded_dialog.gif)

@@ -32,17 +32,23 @@ ConsoleMessage的构造函数。
 
 ## getLineNumber
 
-getLineNumber(): number
+ArkTS-Dyn: getLineNumber(): number
+
+ArkTS-Sta: getLineNumber(): int
 
 获取ConsoleMessage的行数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回ConsoleMessage的行数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回ConsoleMessage的行数。 |
 
 ## getMessage
 
@@ -51,6 +57,10 @@ getMessage(): string
 获取ConsoleMessage的日志信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -65,6 +75,10 @@ getMessageLevel(): MessageLevel
 获取ConsoleMessage的信息级别。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

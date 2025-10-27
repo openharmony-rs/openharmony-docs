@@ -2,11 +2,13 @@
 
 窗口动画管理器，可以监听应用启动退出时应用的动画窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。
 
->  **说明：**
+> **说明：**
 >
->  - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  - 本模块接口为系统接口。
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -24,6 +26,10 @@ setController(controller: WindowAnimationController): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -37,7 +43,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.log('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-	  },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.log('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -80,6 +86,10 @@ minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget, callback: Async
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -98,7 +108,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
         console.log('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
-	  },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.log('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
@@ -159,6 +169,10 @@ minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise&lt;Win
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -171,7 +185,6 @@ minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise&lt;Win
 | -------------------------------- | --------------------------------------- |
 | Promise&lt;[WindowAnimationFinishedCallback](#windowanimationfinishedcallback)&gt; | Promise对象，返回动画完成的回调。 |
 
-
 **示例：**
 
 ```ts
@@ -182,7 +195,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.log('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-	  },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.log('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -231,64 +244,53 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-### onStartAppFromLauncher
+**ArkTS-Dyn起始版本：** 9
 
-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,finishCallback: WindowAnimationFinishedCallback): void
+**ArkTS-Sta起始版本：** 22
 
-从桌面启动应用时的回调。
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ------ | ------ | ------ |
+| onStartAppFromLauncher | [AppStartCallback](#appstartcallback) | 否 | 是 | 从桌面启动应用时的回调。不填该参数则无桌面启动应用动效。 |
+| onStartAppFromRecent | [AppStartCallback](#appstartcallback) | 否 | 是 | 从最近任务列表启动应用时的回调。不填该参数则无最近任务列表启动应用动效。 |
+| onStartAppFromOther | [AppStartCallback](#appstartcallback) | 否 | 是 | 从除了桌面和最近任务列表以外其他地方启动应用时的回调。不填该参数则无对应场景动效。 |
+| onAppTransition | [AppTransitionCallback](#apptransitioncallback) | 否 | 是 | 应用转场时的回调。不填该参数则无应用间转场动效。 |
+| onMinimizeWindow | [WindowMinimizationCallback](#windowminimizationcallback) | 否 | 是 | 最小化窗口时的回调。不填该参数则无最小化窗口动效。 |
+| onCloseWindow | [WindowCloseCallback](#windowclosecallback) | 否 | 是 | 关闭窗口时的回调。不填该参数则无关闭窗口动效。 |
+| onScreenUnlock | [ScreenUnlockCallback](#screenunlockcallback) | 否 | 是 | 屏幕解锁时的回调。不填该参数则无屏幕解锁动效。 |
+| onWindowAnimationTargetsUpdate | [WindowAnimationTargetsUpdationCallback](#windowanimationtargetsupdationcallback) | 否 | 是 | 动画目标窗口更新时的回调。不填该参数则无动画目标窗口更新动效。 |
+
+## AppStartCallback<sup>22+</sup>
+
+type AppStartCallback = (startingWindowTarget: WindowAnimationTarget, finishCallback: WindowAnimationFinishedCallback) => void
+
+应用启动时的回调。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
 | startingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)              | 是   | 动画目标窗口。     |
 | finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
 
-**示例：**
+## AppTransitionCallback<sup>22+</sup>
 
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
+type AppTransitionCallback = (fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: WindowAnimationFinishedCallback) => void
 
-### onStartAppFromRecent
-
-onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,finishCallback:WindowAnimationFinishedCallback): void
-
-从最近任务列表启动应用时的回调。
+应用间转场时的回调。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-| 参数名               | 类型                                                         | 必填 | 说明               |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
-| startingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)              | 是   | 动画目标窗口。     |
-| finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
+**ArkTS-Dyn起始版本：** 22
 
-**示例：**
+**ArkTS-Sta起始版本：** 22
 
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
-### onStartAppFromOther
-
-onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,finishCallback: WindowAnimationFinishedCallback): void
-
-从除了桌面和最近任务列表以外其他地方启动应用时的回调。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-| 参数名               | 类型                                                         | 必填 | 说明               |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
-| startingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)              | 是   | 动画目标窗口。     |
-| finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
-
-**示例：**
-
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
-### onAppTransition
-
-onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowAnimationTarget,finishCallback: WindowAnimationFinishedCallback): void
-
-应用转场时的回调。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -296,113 +298,132 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 | toWindowTarget       | [WindowAnimationTarget](#windowanimationtarget) | 是   | 转场后的动画窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
 
-**示例：**
+## WindowMinimizationCallback<sup>22+</sup>
 
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
-### onMinimizeWindow
-
-onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,finishCallback: WindowAnimationFinishedCallback): void
+type WindowMinimizationCallback = (minimizingWindowTarget: WindowAnimationTarget, finishCallback: WindowAnimationFinishedCallback) => void
 
 最小化窗口时的回调。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
 | minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | 是   | 动画目标窗口。    |
 | finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
 
-**示例：**
+## WindowCloseCallback<sup>22+</sup>
 
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
-### onCloseWindow
-
-onCloseWindow(closingWindowTarget: WindowAnimationTarget,finishCallback: WindowAnimationFinishedCallback): void
+type WindowCloseCallback = (closingWindowTarget: WindowAnimationTarget, finishCallback: WindowAnimationFinishedCallback) => void
 
 关闭窗口时的回调。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
 | closingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | 是   | 动画目标窗口。    |
 | finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
 
-**示例：**
+## ScreenUnlockCallback<sup>22+</sup>
 
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
-### onScreenUnlock
-
-onScreenUnlock(finishCallback: [WindowAnimationFinishedCallback](#windowanimationfinishedcallback)): void
+type ScreenUnlockCallback = (finishCallback: WindowAnimationFinishedCallback) => void
 
 屏幕解锁时的回调。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
 | 参数名         | 类型                                                         | 必填 | 说明               |
 | -------------- | ------------------------------------------------------------ | ---- | ------------------ |
 | finishCallback | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | 是   | 动画完成后的回调。 |
 
-**示例：**
+## WindowAnimationTargetsUpdationCallback<sup>22+</sup>
 
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
-### onWindowAnimationTargetsUpdate
-
-onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget, floatingWindowTargets: Array&lt;WindowAnimationTarget&gt;): void
+type WindowAnimationTargetsUpdationCallback = (fullScreenWindowTarget: WindowAnimationTarget, floatingWindowTargets: Array&lt;WindowAnimationTarget&gt;) => void
 
 动画目标窗口更新时的回调。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
 | fullScreenWindowTarget | [WindowAnimationTarget](#windowanimationtarget) | 是   | 全屏状态的动画目标窗口。|
 | floatingWindowTargets| Array&lt;[WindowAnimationTarget](#windowanimationtarget)&gt; | 是   | 悬浮状态的动画目标窗口。 |
 
-**示例：**
-
-请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
-
 ## WindowAnimationFinishedCallback
+
 动画完成后的回调。
 
 ### onAnimationFinish
 
-onAnimationFinish():void
+onAnimationFinish(): void
 
 结束本次动画。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **示例：**
 
 请参考[windowAnimationManager.setController](#windowanimationmanagersetcontroller)的示例代码。
 
 ## WindowAnimationTarget
+
 动画目标窗口，用来实现动画。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-| 名称      | 类型     | 必填 | 说明 |
-| ------- | ------ | ------ | ----------------------- |
-| bundleName  | string | 是 |动画目标窗口所对应的包名。 |
-| abilityName | string | 是 |动画目标窗口所对应的Ability名称。 |
-| windowBounds | [RRect](#rrect) | 是 |动画目标窗口所对应的实际大小。 |
-| missionId  | number | 是 |任务ID，多任务中用于与ability进行匹配。|
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
+| 名称      | 类型     | 只读 | 可选 | 说明 |
+| ------- | ------ | ------ |  ------ |----------------------- |
+| bundleName  | string | 是 | 否 | 动画目标窗口所对应的包名。 |
+| abilityName | string | 是 | 否 | 动画目标窗口所对应的Ability名称。 |
+| windowBounds | [RRect](#rrect) | 是 | 否 | 动画目标窗口所对应的实际大小。 |
+| missionId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 任务ID，多任务中用于与ability进行匹配。|
 
 ## RRect
+
 圆角矩形。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-| 名称      | 类型     | 必填 | 说明 |
-| ------- | ------ | ------|----------------------- |
-| left  | number | 是 |动画目标窗口左上角相对于屏幕的横坐标。 |
-| top | number | 是 |动画目标窗口左上角相对于屏幕的纵坐标。 |
-| width | number | 是 |动画目标窗口的宽度大小。 |
-| height | number | 是 |动画目标窗口的高度大小。 |
-| radius | number | 是 |动画目标窗口的圆角大小。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
+| 名称      | 类型     | 只读 | 可选 | 说明 |
+| ------- | ------ | ------ | ------ |----------------------- |
+| left  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 动画目标窗口左上角相对于屏幕的横坐标。 |
+| top | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 动画目标窗口左上角相对于屏幕的纵坐标。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 动画目标窗口的宽度大小。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 动画目标窗口的高度大小。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 动画目标窗口的圆角大小。 |

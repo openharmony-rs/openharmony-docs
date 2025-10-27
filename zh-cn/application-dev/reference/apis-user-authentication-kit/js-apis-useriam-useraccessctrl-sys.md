@@ -1,10 +1,18 @@
 # @ohos.userIAM.userAccessCtrl (用户访问控制)(系统接口)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 提供用户访问控制能力，用于应用查询和配置用户身份认证策略、校验用户身份认证结果。
 
 > **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -16,9 +24,13 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 认证令牌类型。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口：** 此接口为系统接口。
 
 | 名称                      | 值   | 说明       |
 | ------------------------ | ---- | ---------- |
@@ -30,9 +42,13 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 表示校验通过返回解析的AuthToken数据结果。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口：** 此接口为系统接口。
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                       |
 | -------------- | ---------------------------------- | ----- | ----- |------------------------------------------------------------ |
@@ -40,7 +56,7 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 | authTrustLevel | [userAuth.AuthTrustLevel](js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 否 |认证信任等级。|
 | authType | [userAuth.UserAuthType](js-apis-useriam-userauth.md#userauthtype8) | 否 | 否  |身份认证的凭据类型。|
 | tokenType | [AuthTokenType](#authtokentype) | 否 | 否 |认证令牌类型。|
-| userId | ArkTS1.1: number <br/> ArkTS1.2: int | 否 | 否  |用户ID。|
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  |用户ID。|
 | timeInterval | bigint | 否  | 否  |自AuthToken签发至当前的时间，以毫秒表示。|
 | secureUid | bigint    | 否  | 是  |安全用户ID。|
 | enrolledId | bigint   | 否  | 是  |凭据注册ID。|
@@ -49,24 +65,28 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 ## userAccessCtrl.verifyAuthToken
 
-ArkTS1.1: verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
+ArkTS-Dyn: verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
-ArkTS1.2: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promise\<AuthToken>
+ArkTS-Sta: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promise\<AuthToken>
 
 验证认证令牌。
 
-**需要权限**：ohos.permission.USE_USER_ACCESS_MANAGER
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名     | 类型                        | 必填 | 说明       |
 | ---------- | --------------------------- | ---- | ---------- |
 | authToken | Uint8Array | 是   | 需要被验证的AuthToken。最大长度为1024。 |
-| allowableDuration  | ArkTS1.1: number <br/> ArkTS1.2: int | 是   | 从AuthToken签发起允许认证的时间间隔，以毫秒表示。有效时长值应大于0，最大值为86400000毫秒。 |
+| allowableDuration  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 从AuthToken签发起允许认证的时间间隔，以毫秒表示。有效时长值应大于0，最大值为86400000毫秒。 |
 
 **返回值：**
 
@@ -76,20 +96,21 @@ ArkTS1.2: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission verification failed.         |
-| 202      | The caller is not a system application. |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 201      | Permission denied.        |
+| 202      | Permission denied. Called by non-system application. |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.    |
 | 12500002 | General operation error.                |
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |
 
 **示例：**
 
-ArkTS1.1示例:
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -100,7 +121,18 @@ try {
   const rand = cryptoFramework.createRandom();
   const allowableDuration: number = 5000;
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -119,15 +151,21 @@ try {
             console.error('userAuthInstance callback result.token is null');
             return;
         }
-        // 发起AuthToken验证请求。
-        userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
-            .then((retAuthToken: userAccessCtrl.AuthToken) => {
-                Object.keys(retAuthToken).forEach((key) => {
-                    console.info(`retAuthToken key:${key}, value:${retAuthToken[key]}`);
-                })
-            }).catch ((error: BusinessError) => {
-                console.error(`verify authToken error. Code is ${error?.code}, message is ${error?.message}`);
-            })
+        try {
+          // 发起AuthToken验证请求。
+          userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
+              .then((retAuthToken: userAccessCtrl.AuthToken) => {
+                  Object.keys(retAuthToken).forEach((key) => {
+                      // 处理业务逻辑。
+                      console.info(`retAuthToken key:${key}`);
+                  })
+              }).catch ((error: BusinessError) => {
+                  console.error(`verify authToken error. Code is ${error?.code}, message is ${error?.message}`);
+              })
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          console.error(`verify authToken error. Code is ${err?.code}, message is ${err?.message}`);
+        }
     }
   });
   console.info('auth on success');
@@ -139,9 +177,11 @@ try {
   console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
-ArkTS1.2示例:
+
+ArkTS-Sta示例：
+
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -149,7 +189,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   const rand = cryptoFramework.createRandom();
   const allowableDuration: int = 5000;
-  const len: number = 16;
+  const len: int = 16;
   const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
   const authParam: userAuth.AuthParam = {
     challenge: randData,

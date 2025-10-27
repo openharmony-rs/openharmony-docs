@@ -1,5 +1,11 @@
 # @Watch
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 7开始，支持该装饰器。
@@ -7,7 +13,7 @@
 
 @Watch装饰器用于状态管理V1中，监听状态变量的变化。
 
-在动态语言上下文中使用时，开发指南参考：[@Watch装饰器：状态变量更改通知（ArkTS-DT）](../../../ui/state-management/arkts-watch.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Watch装饰器：状态变量更改通知（ArkTS-Dyn）](../../../ui/state-management/arkts-watch.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

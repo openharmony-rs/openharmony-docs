@@ -34,6 +34,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 - 当装饰boolean、string、number时，可以观察到对变量赋值的变化。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { Local } from '@ohos.arkui.stateManagement';
   @Entry
@@ -62,6 +64,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 - 当装饰类对象时，仅能观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化。对类成员属性的观察依赖\@ObservedV2与\@Trace装饰器。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
   class RawObject {
@@ -107,6 +111,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
   import { Local } from '@ohos.arkui.stateManagement';
   @Entry
@@ -147,10 +153,12 @@ import { Local } from '@ohos.arkui.stateManagement';
   | Map   | set, clear, delete                                           |
   | Set   | add, clear, delete                                           |
 
-- 当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
+- 当装饰interface字面量类型时，仅能观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
   ```ts
-  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
+  'use static'
+  
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
   import { Local } from '@ohos.arkui.stateManagement';
   interface Info {
     name: string;
@@ -164,8 +172,14 @@ import { Local } from '@ohos.arkui.stateManagement';
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
+        Text(`info.age: ${this.info.age}`)
+        Button('change info')
           .onClick((e: ClickEvent) => {
-            this.info.name = 'Tom'; // 变化可观察
+            this.info = { name: 'Tom', age: 18 } as Info; // 变化可观察
+          })
+        Button('change info.name')
+          .onClick((e: ClickEvent) => {
+            this.info.name = 'Lucy'; // 变化无法观察
           })
       }
     }
@@ -177,6 +191,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 - \@Local装饰器仅能在\@ComponentV2装饰的自定义组件中使用。
 
   ```ts
+  'use static'
+  
   import { Entry, Component, ComponentV2 } from '@ohos.arkui.component';
   import { Local } from '@ohos.arkui.stateManagement';
   @Entry
@@ -197,6 +213,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 - \@Local装饰的变量表示组件内部状态，不支持从父组件传入初始化。
 
   ```ts
+  'use static'
+  
   import { Entry, ComponentV2, Column } from '@ohos.arkui.component';
   import { Local } from '@ohos.arkui.stateManagement';
   @ComponentV2
@@ -233,6 +251,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 
 被\@ObservedV2与\@Trace装饰的类对象实例，具有深度观察对象属性的能力。但当类对象整体赋值时，UI却无法刷新。使用\@Local装饰对象，可以达到观察对象本身变化的效果。
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 @ObservedV2
@@ -268,6 +288,8 @@ struct Index {
 当装饰Array类型时，可以观察到Array整体及其元素的变化。通过API操作更改数组内容也能被观察到。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
 @Entry
@@ -302,6 +324,8 @@ struct Index {
 当装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
 @Entry
@@ -342,6 +366,8 @@ struct DateExample {
 当装饰Map类型时，可以观察到Map整体及其API操作带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
 @Entry
@@ -385,6 +411,8 @@ struct MapSample {
 当装饰Set类型时，可以观察到Set整体及其API操作带来的变化。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
 @Entry
@@ -424,6 +452,8 @@ struct SetSample {
 \@Local支持null、undefined以及联合类型。在下面的示例中，count类型为number | undefined，点击改变count的类型，UI会随之刷新。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local } from '@ohos.arkui.stateManagement';
 @Entry

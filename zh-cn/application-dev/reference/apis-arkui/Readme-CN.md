@@ -16,7 +16,7 @@
     - [@ohos.arkui.UIContext (UIContext)](js-apis-arkui-UIContext.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
     - [@ohos.arkui.StateManagement (状态管理)](js-apis-StateManagement.md)
-    - [@ohos.arkui.stateManagement (状态管理ArkTS1.2)](js-apis-stateManagement-1.2.md)
+    - [@ohos.arkui.stateManagement (状态管理ArkTS1.2)](js-apis-stateManagement-static.md)
     - [@ohos.curves (插值计算)](js-apis-curve.md)
     - [@ohos.font (注册自定义字体)](js-apis-font.md)
     - [@ohos.matrix4 (矩阵变换)](js-apis-matrix4.md)
@@ -28,6 +28,7 @@
     - [@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
+    - [@ohos.arkui.Parallelize (UI并行化创建)](js-apis-arkui-Parallelize.md)
     <!--Del-->
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)  
@@ -41,7 +42,9 @@
     <!--DelEnd-->
     - arkui<!--ui-interface-arkui-->
       - [BuilderNode](js-apis-arkui-builderNode.md)
+      - [BuilderNode.static](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
+      - [ComponentContent.static](js-apis-arkui-ComponentContent-static.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
       - [NodeController](js-apis-arkui-nodeController.md)
@@ -411,8 +414,11 @@
       - @ReusableV2
       - @Styles（ArkTS-DT）
   - 互操作
-    - [compatibleComponent (ArkTS1.2)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
-    - [compatibleWrappedBuilder (ArkTS1.2)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+    - [compatibleComponent (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-component.md)
+    - [compatibleState (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-state.md)
+    - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](arkui-ts/ts-interop-compatible-builder.md)
+    - [compatibleWrappedBuilder (ArkTS-Sta)](arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+    - [enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)](arkui-ts/ts-interop-compatible-ObservedV2.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
     - [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
@@ -444,6 +450,7 @@
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
+    - [应用级变量的状态管理(ArkTS1.2)](arkui-ts/ts-state-management-1.2.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [组件双向绑定（ArkTS1.2）](js-apis-twoWayBinding1.2.md)
     - [ForEach](arkui-ts/ts-rendering-control-foreach.md)

@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -18,11 +20,15 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：** 此接口为系统接口。
 
 | 名称                      | 类型   | 只读 | 可选 | 说明                 |
 | ------------------------- | ------ | ---- | ---- | -------------------- |
-| versionCode              | number | 是   | 否   | 配置文件的版本号。 |
+| versionCode              | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的版本号。 |
 | versionName              | string | 是   | 否   | 配置文件的版本名称。  |
 | uuid                     | string | 是   | 否   | 配置文件中的uuid。 |
 | type                     | string | 是   | 否   | 配置文件的类型，为debug或者release。 |
@@ -39,9 +45,13 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **系统接口：** 此接口为系统接口。
 
 | 名称                      | 类型   | 只读 | 可选 | 说明                 |
 | ------------------------- | ------ | ---- | ---- | -------------------- |
-| notBefore                 | number | 是   | 否   | 配置文件的最早有效日期的时间戳。 |
-| notAfter                  | number | 是   | 否   | 配置文件的最晚有效日期的时间戳。 |
+| notBefore                 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的最早有效日期的时间戳。 |
+| notAfter                  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的最晚有效日期的时间戳。 |

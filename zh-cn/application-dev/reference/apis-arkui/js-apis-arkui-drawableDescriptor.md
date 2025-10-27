@@ -2,6 +2,8 @@
 
 本模块提供获取pixelMap的能力，包括前景、背景、蒙版和分层图标。
 
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
+
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -464,3 +466,157 @@ struct Example {
 }
 
 ```
+
+### 使用@ohos.transfer进行DrawableDescriptor类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的DrawableDescriptor对象。
+
+- 在ArkTS-Sta主模块中创建ArkTS-Dyn DrawableDescriptor，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets
+  import { Entry, Column, Component, Button, PixelMap, $r, FlexAlign } from '@ohos.arkui.component';
+  import { PixelMapDrawableDescriptor, DrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+  import transfer from '@ohos.transfer';
+  import { MyChild, createPixelMapDrawDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct Index {
+    aboutToAppear() {
+      let resManager = this.getUIContext().getHostContext()?.resourceManager;
+      if (resManager) {
+        let drawableDescriptor: DrawableDescriptor = resManager.getDrawableDescriptor($r('app.media.startIcon').id);
+        let pixelMap = drawableDescriptor.getPixelMap() as PixelMap;
+        let pixelMapDraw = new PixelMapDrawableDescriptor(pixelMap);
+        try {
+          let pixelMapDrawDynamic = transfer.transferDynamic(pixelMapDraw, "ArkUI.DrawableDescriptor") as Object;
+          let moduleName = ESValue.load("@normalized:N&entry&com.example.myApplication&library/Index&1.0.0");
+          let pixelMapFunc = moduleName.getProperty('createPixelMapDrawDynamic');
+          pixelMapFunc.invoke(pixelMapDrawDynamic);
+        } catch (e: Error) {
+          console.log('transferDynamic catch error：-----------' + e.message);
+        }
+      }
+    }
+
+    build() {
+      Column() {
+        MyChild()
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn DrawableDescriptor的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+    
+  import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+  let g_pixelMapDraw: PixelMapDrawableDescriptor = null;
+
+  export function createPixelMapDrawDynamic(pixelMapDraw: any) {
+    g_pixelMapDraw = pixelMapDraw;
+  }
+
+  @Component
+  export struct MyChild {
+    @State pixelMapDraw_: any = null;
+
+    build() {
+      Column({ space: 5 }) {
+        Button('更新图片')
+          .onClick(() => {
+            let pixelMapDraw = g_pixelMapDraw;
+            if (pixelMapDraw) {
+              this.pixelMapDraw_ = pixelMapDraw;
+            }
+          })
+        Image(this.pixelMapDraw_)
+          .width(100)
+          .height(100)
+      }
+    }
+  }
+  ```
+  ![image](figures/drawableTransferDyn.png)
+
+ArkTS-Sta中使用ArkTS-Dyn的DrawableDescriptor对象。
+
+- 在ArkTS-Sta主模块得到ArkTS-Dyn子模块`library`创建的ArkTS-Dyn DrawableDescriptor对象。
+
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // entry/src/main/ets/pages/Index.ets  
+  import { Entry, Column, Component, Button, Image, Row, FlexAlign } from '@ohos.arkui.component';
+  import { PixelMapDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+  import transfer from '@ohos.transfer';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { getPixelMapDrawDynamic } from 'library';
+
+  @Entry
+  @Component
+  struct Index {
+    @State pixelMapDrawableDescriptor_: PixelMapDrawableDescriptor = new PixelMapDrawableDescriptor();
+
+    aboutToAppear() {
+      let resPixelMap = getPixelMapDrawDynamic();
+      try {
+        let PixelMapDrawStatic = transfer.transferStatic(resPixelMap, "ArkUI.DrawableDescriptor");
+        this.pixelMapDrawableDescriptor_ = PixelMapDrawStatic as PixelMapDrawableDescriptor;
+      } catch (e: Error) {
+        console.log('transferStatic catch error：-----------' + e.message);
+      }
+    }
+
+    build() {
+      Column() {
+        Image(this.pixelMapDrawableDescriptor_)
+          .width(100)
+          .height(100)
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  ```
+  
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-Dyn DrawableDescriptor的方法。
+
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // library/src/main/ets/components/MainPage.ets
+  import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+  import { image } from '@kit.ImageKit';
+
+  export function getPixelMapDrawDynamic() {
+    let opts: image.SourceOptions = {
+      sourcePixelFormat: image.PixelMapFormat.BGRA_8888,
+      sourceDensity: 0
+    };
+    let imageSourceApi: image.ImageSource =
+      image.createImageSource("/data/storage/el2/base/haps/entry/files/startIcon.png", opts);
+    if (imageSourceApi == undefined) {
+      return undefined;
+    }
+    let option: image.DecodingOptions = { desiredPixelFormat: 4 };
+    let pixelMap = imageSourceApi.createPixelMapSync(option);
+    let pixelMapDraw: PixelMapDrawableDescriptor = new PixelMapDrawableDescriptor(pixelMap);
+    return pixelMapDraw;
+  }
+  ```
+  ![image](figures/drawableTransferSta.png)

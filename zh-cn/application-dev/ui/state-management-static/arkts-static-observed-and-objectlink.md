@@ -52,6 +52,8 @@ this.objLink= ...
 
 
 ```ts
+'use static'
+
 import { Observed } from '@ohos.arkui.statemanagement';
 
 class Child {
@@ -101,6 +103,8 @@ this.parent.child.num = 5;
 2. \@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译期会报错。
 
     ```ts
+    'use static'
+
     import { Component, Text } from '@ohos.arkui.component';
     import { ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 
@@ -140,7 +144,9 @@ this.parent.child.num = 5;
 3. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译期会报错。
 
     ```ts
-    import { Column, Component, Text } from '@ohos.arkui.component';
+    'use static'
+
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
     import { State, ObjectLink, Observed } from '@ohos.arkui.stateManagement';
 
     @Observed
@@ -165,6 +171,7 @@ this.parent.child.num = 5;
       }
     }
 
+    @Entry
     @Component
     struct Parent {
       @State info: Info = new Info(0)
@@ -182,6 +189,8 @@ this.parent.child.num = 5;
     【反例】
   
     ```ts
+    'use static'
+
     import { Column, Component, Text, Entry } from '@ohos.arkui.component';
     import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -226,6 +235,8 @@ this.parent.child.num = 5;
     【正例】
   
     ```ts
+    'use static'
+
     import { Button, Column, Component, Text, Entry } from '@ohos.arkui.component';
     import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -277,6 +288,8 @@ this.parent.child.num = 5;
 ### 继承对象
 
 ```ts
+'use static'
+
 import { Button, Column, CommonMethod, Component, Entry, Text, TextAlign, TextAttribute } from '@ohos.arkui.component';
 import { Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -359,6 +372,8 @@ struct Index {
 ### 嵌套对象
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, Text, TextAlign } from '@ohos.arkui.component';
 import { Observed, ObjectLink, State } from '@ohos.arkui.stateManagement';
 
@@ -437,6 +452,8 @@ struct Index {
 > NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, ForEach, Row } from '@ohos.arkui.component';
 import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -515,13 +532,13 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          this.arrA[Math.floor(this.arrA.length / 2) as int].info = 10;
         })
       Button(`ViewParent: item property in middle`)
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[Math.floor(this.arrA.length / 2)] = new Info(11);
+          this.arrA[Math.floor(this.arrA.length / 2) as int] = new Info(11);
         })
     }
   }
@@ -539,11 +556,109 @@ struct Parent {
 
 - this.arrA[Math.floor(this.arrA.length/2)].info：@State无法观察到第二层的变化，但是Info被\@Observed装饰，Info的属性的变化将被\@ObjectLink观察到。
 
+### 序列化和反序列化
+
+使用无参构造函数的@Observed装饰的类可以使用JSON.stringify序列化和JSON.parse反序列化。
+
+使用有参构造函数的@Observed装饰的类可以使用JSON.stringify进行序列化，但在反序列化时，需要先使用JSON.parseJsonElement创建JsonElement实例，并且需要开发者实现从JsonElement实例到@Observed装饰类的转换。
+
+**无参构造**
+
+```ts
+'use static'
+
+import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
+import { State, Observed } from '@ohos.arkui.stateManagement';
+
+@Observed
+class Source {
+  public source: int = 123;
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State source: Source = new Source();
+
+  build() {
+    Column() {
+      Text(`Source ${this.source.source} and message ${this.message}`)
+      Button('+1')
+        .onClick((e) => {
+          this.source.source += 1;
+        })
+      Button('Serialize')
+        .onClick((e) => {
+          this.message = JSON.stringify(this.source);
+        })
+      Button('Deserialize')
+        .onClick((e) => {
+          // 反序列化生成@Observed类并赋值
+          this.source = JSON.parse<Source>('{"source": 123}', Type.from<Source>())!;
+        })
+    }
+  }
+}
+```
+
+**有参构造**
+
+```ts
+'use static'
+
+import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component'
+import { State, Observed } from '@ohos.arkui.stateManagement'
+
+@Observed
+class Source {
+  public source: int;
+
+  constructor(s: int) {
+    // 有参构造
+    this.source = s;
+  }
+
+  // 用户自定义静态函数
+  static FromJSON(e: jsonx.JsonElement): Source {
+    return new Source(e.getInteger('source'))
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State source: Source = new Source(1);
+
+  build() {
+    Column() {
+      Text(`Source ${this.source.source} and message ${this.message}`)
+      Button('+1')
+        .onClick((e) => {
+          this.source.source += 1;
+        })
+      Button('Serialize')
+        .onClick((e) => {
+          this.message = JSON.stringify(this.source);
+        })
+      Button('Deserialize')
+        .onClick((e) => {
+          // 使用JSON.parseJsonElement反序列生成JSONElement，再传入静态方法构建实例
+          this.source = Source.FromJSON(JSON.parseJsonElement('{"source": 123}'))!;
+        })
+    }
+  }
+}
+```
+
 ## ObjectLink支持联合类型
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child中也会对应刷新。
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, Text } from '@ohos.arkui.component';
 import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
 

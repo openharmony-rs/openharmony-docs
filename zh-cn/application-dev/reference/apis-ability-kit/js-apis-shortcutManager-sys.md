@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
@@ -17,7 +19,8 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.addDesktopShortcutInfo<sup>12+</sup>
 
-addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
+ArkTS-Dyn: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void><br>
+ArkTS-Sta: addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise\<void>
 
 增加指定用户的快捷方式信息。
 
@@ -27,12 +30,16 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
-| userId     | number | 是   | 用户id。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。 |
 
 **返回值：**
 
@@ -57,6 +64,7 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 
 **示例：**
 
+ArkTS-Dyn: 
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -99,10 +107,43 @@ struct ShortcutExample {
   }
 }
 ```
+ArkTS-Sta: 
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的shortcutInfo、useId需为应用实际设置的快捷方式信息、用户ID。
+let data: shortcutManager.ShortcutInfo = {
+  id: "test1",
+  bundleName: "com.example.myapplication",
+  moduleName: "hello",
+  hostAbility: "hello",
+  icon: "hello",
+  iconId: 1,
+  label: "hello",
+  labelId: 1,
+  wants: [],
+  appIndex: 0,
+  sourceType: 0,
+}
+try {
+  shortcutManager.addDesktopShortcutInfo(data, 100)
+    .then(() => {
+      console.info("addDesktopShortcutInfo success");
+    }).catch((err: Error) => {
+    console.error(`addDesktopShortcutInfo errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`addDesktopShortcutInfo error is errCode:${code}  message:${message}`);
+}
+```
 
 ## shortcutManager.deleteDesktopShortcutInfo<sup>12+</sup>
 
-deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
+ArkTS-Dyn: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<void><br>
+ArkTS-Sta: deleteDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise\<void>
 
 删除指定用户的快捷方式信息。
 
@@ -112,12 +153,16 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 快捷方式信息。 |
-| userId     | number | 是   | 用户id。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。 |
 
 **返回值：**
 
@@ -138,6 +183,7 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -180,10 +226,43 @@ struct ShortcutExample {
   }
 }
 ```
+ArkTS-Sta:
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的shortcutInfo、useId需为应用实际设置的快捷方式信息、用户ID。
+let data: shortcutManager.ShortcutInfo = {
+  id: "test1",
+  bundleName: "com.example.myapplication",
+  moduleName: "",
+  hostAbility: "",
+  icon: "",
+  iconId: 1,
+  label: "hello",
+  labelId: 1,
+  wants: [],
+  appIndex: 0,
+  sourceType: 0,
+}
+try {
+  shortcutManager.deleteDesktopShortcutInfo(data, 100)
+    .then(() => {
+      console.info("deleteDesktopShortcutInfo success");
+    }).catch((err: Error) => {
+    console.error(`deleteDesktopShortcutInfo errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`deleteDesktopShortcutInfo error is errCode:${code}  message:${message}`);
+}
+```
 
 ## shortcutManager.getAllDesktopShortcutInfo<sup>12+</sup>
 
-getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>>
+ArkTS-Dyn: getAllDesktopShortcutInfo(userId: number) : Promise<Array\<ShortcutInfo>><br>
+ArkTS-Sta: getAllDesktopShortcutInfo(userId: int) : Promise<Array\<ShortcutInfo>>
 
 查询指定用户的所有快捷方式信息。
 
@@ -193,11 +272,15 @@ getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-api
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| userId     | number | 是   | 被查询的用户id。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户id。 |
 
 **返回值：**
 
@@ -218,6 +301,7 @@ getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-api
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -247,6 +331,22 @@ struct ShortcutExample {
   }
 }
 ```
+ArkTS-Sta:
+```ts
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-
-
+// 代码中使用的useId需为应用实际的用户ID。
+try {
+  shortcutManager.getAllDesktopShortcutInfo(100);
+    .then((data: shortcutManager.ShortcutInfo[]) => {
+      console.info("getAllDesktopShortcutInfo Shortcut data is " + JSON.stringify(data));
+    }).catch((err: Error) => {
+    console.error(`getAllDesktopShortcutInfo errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getAllDesktopShortcutInfo error is errCode:${code}  message:${message}`);
+}
+```

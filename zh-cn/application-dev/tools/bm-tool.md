@@ -2882,6 +2882,23 @@ error: Install failed due to the U1Enabled is not same in all haps.
 
 重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section9786111152213)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section157591551175916)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
 
+### 9568444 原子化服务不允许安装到当前设备
+**错误信息**
+
+error: Atomic services that include static modules cannot be installed.
+
+**错误描述**
+
+当前设备不支持安装基于ArkTS1.2的原子化服务。
+
+**可能原因**
+
+当前所有设备均不支持安装基于ArkTS1.2的原子化服务。
+
+**处理步骤**
+
+请避免在设备上安装基于ArkTS1.2的原子化服务，或切换至ArkTS1.1后重新开发构建该原子化服务。
+
 <!--Del-->
 ## 常见问题
 

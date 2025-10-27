@@ -28,9 +28,9 @@ Web媒体策略的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
-| resumeInterval | number  | 否    | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。|
-| audioExclusive | boolean | 否    | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。                       |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否    | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。|
+| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 20<br>|
+| audioExclusive | boolean | 否    | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。   <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 20<br>                    |
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否    | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 20<br>|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -191,6 +191,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | 是 | 网页请求的封装信息。      |
@@ -219,7 +223,7 @@ Web同层渲染的配置。
 | userAgent          | string | 是 | 用于下载的用户代理。                          |
 | contentDisposition | string | 是 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 是 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 是 | 服务器返回文件的长度。                         |
+| contentLength      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 服务器返回文件的长度。                         |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
@@ -269,10 +273,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| oldScale | number | 是 | 变化前的显示比例百分比。 |
-| newScale | number | 是 | 变化后的显示比例百分比。 |
+| oldScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 变化前的显示比例百分比。 |
+| newScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 变化后的显示比例百分比。 |
 
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
@@ -335,8 +343,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| activeMatchOrdinal | number  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
-| numberOfMatches    | number  | 是 | 所有匹配到的关键词的个数。                            |
+| activeMatchOrdinal | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 当前匹配的查找项的序号（从0开始）。                       |
+| numberOfMatches    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 所有匹配到的关键词的个数。                            |
 | isDoneCounting     | boolean | 是 | 当次页内查找操作是否结束。<br>true表示当次页内查找操作结束，false表示当次页内查找操作未结束。<br>该方法可能会回调多次，直到isDoneCounting为true为止。 |
 
 ## OnScrollEvent<sup>12+</sup>
@@ -345,10 +353,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| xOffset | number | 是 | 以网页最左端为基准，水平滚动条滚动所在位置。<br>单位：vp。 |
-| yOffset | number | 是 | 以网页最上端为基准，竖直滚动条滚动所在位置。<br>单位：vp。 |
+| xOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最左端为基准，水平滚动条滚动所在位置。<br>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最上端为基准，竖直滚动条滚动所在位置。<br>单位：vp。 |
 
 ## OnSslErrorEventReceiveEvent<sup>12+</sup>
 
@@ -389,7 +401,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ---------------------------------------- |
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 是 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 是 | 请求证书服务器的主机名。    |
-| port     | number                                   | 是 | 请求证书服务器的端口号。    |
+| port     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是 | 请求证书服务器的端口号。    |
 | keyTypes | Array<string\>                           | 是 | 可接受的非对称秘钥类型。    |
 | issuers  | Array<string\>                           | 是 | 与私钥匹配的证书可接受颁发者。 |
 
@@ -484,10 +496,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| xOffset | number | 是 | 以网页最左端为基准，水平过度滚动的偏移量。<br>单位：vp。 |
-| yOffset | number | 是 | 以网页最上端为基准，竖直过度滚动的偏移量。<br>单位：vp。 |
+| xOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最左端为基准，水平过度滚动的偏移量。<br>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 以网页最上端为基准，竖直过度滚动的偏移量。<br>单位：vp。 |
 
 ## JavaScriptProxy<sup>12+</sup>
 
@@ -497,7 +513,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| object     | object                                   | 是    | 参与注册的对象。只能声明方法，不能声明属性。                   |
+| ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 是    | 参与注册的对象。只能声明方法，不能声明属性。                   |
 | name       | string                                   | 是    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 是    | 参与注册的应用侧JavaScript对象的同步方法。                 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 是    | -    | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
@@ -530,9 +546,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | ArkTS1.1: number<br>ArkTS1.2: int | 是 | 新的加载进度，取值范围为0到100的整数。                       |
+| newProgress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 新的加载进度，取值范围为0到100的整数。                       |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
@@ -573,10 +594,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称                     | 类型   | 必填 | 说明                                   |
 | ------------------------ | ------ | ---- | -------------------------------------- |
 | jsStack      | string | 是  | 网页的javaScript调用栈信息。       |
-| pid | ArkTS1.1: number <br> ArkTS1.2: int | 是   | 网页的进程id。 |
+| pid | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 是   | 触发渲染进程无响应回调的原因。 |
 
 ## FullScreenEnterEvent<sup>12+</sup>
@@ -651,10 +676,14 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ------- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 是    | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
-| enterKeyType | ArkTS1.1: number <br> ArkTS1.2: int | 否    | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
+| enterKeyType | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
 | customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否    | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
 
 

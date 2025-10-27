@@ -13,7 +13,9 @@ PlainArray和[LightWeightMap](js-apis-lightweightmap.md)都是用来存储键值
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -31,9 +33,13 @@ import { PlainArray } from '@kit.ArkTS';
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| length | number | 是 | 否 | PlainArray的元素个数。 |
+| length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | PlainArray的元素个数。 |
 
 
 ### constructor
@@ -46,6 +52,10 @@ PlainArray的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
@@ -57,7 +67,7 @@ PlainArray的构造函数。
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 ```
 
 
@@ -70,6 +80,10 @@ isEmpty(): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -88,7 +102,7 @@ isEmpty(): boolean
 **示例：**
 
 ```ts
-const plainArray: PlainArray<string> = new PlainArray();
+const plainArray: PlainArray<string> = new PlainArray<string>();
 let result = plainArray.isEmpty();
 console.info("result = ", result); // result = true
 ```
@@ -96,7 +110,9 @@ console.info("result = ", result); // result = true
 
 ### has
 
-has(key: number): boolean
+ArkTS-Dyn: has(key: number): boolean
+
+ArkTS-Sta: has(key: int): boolean
 
 判断容器中是否包含指定key。
 
@@ -104,11 +120,15 @@ has(key: number): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | number | 是 | 指定key。需要小于等于int32_max即2147483647。 |
+| key | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定key。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -118,6 +138,8 @@ has(key: number): boolean
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -125,10 +147,18 @@ has(key: number): boolean
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The has method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200011 | The has method cannot be bound. |
+
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 let result = plainArray.has(1);
 console.info("result = ", result); // result = true
@@ -143,7 +173,11 @@ get(key: number): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -175,10 +209,54 @@ plainArray.add(2, "sparrow");
 let result = plainArray.get(1);
 ```
 
+### get<sup>20+</sup>
+
+get(key: int): T \| undefined
+
+获取指定key所对应的value值。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | int | 是 | 查找的指定key。需要小于等于int32_max（即2147483647）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T \| undefined | 返回key映射的value值，key不存在返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+
+**示例：**
+
+```ts
+let plainArray: PlainArray<string> = new PlainArray<string>();
+plainArray.add(1, "squirrel");
+plainArray.add(2, "sparrow");
+let result = plainArray.get(1);
+```
 
 ### getIndexOfKey
 
-getIndexOfKey(key: number): number
+ArkTS-Dyn: getIndexOfKey(key: number): number
+
+ArkTS-Sta: getIndexOfKey(key: int): int
 
 查找指定key对应的下标值，如果未找到则返回-1。
 
@@ -186,19 +264,25 @@ getIndexOfKey(key: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | number | 是 | 指定key。需要小于等于int32_max即2147483647。 |
+| key | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定key。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定key对应的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定key对应的下标值，查找失败返回-1。 |
 
 **错误码：**
+
+ArkTS-Dyn错误码：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
@@ -207,10 +291,18 @@ getIndexOfKey(key: number): number
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The getIndexOfKey method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200011 | The getIndexOfKey method cannot be bound. |
+
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getIndexOfKey(2);
@@ -220,13 +312,19 @@ console.info("result = ", result); // result = 1
 
 ### getIndexOfValue
 
-getIndexOfValue(value: T): number
+ArkTS-Dyn: getIndexOfValue(value: T): number
+
+ArkTS-Sta: getIndexOfValue(value: T): int
 
 查找指定value元素第一次出现的下标值，如果未找到则返回-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -238,7 +336,7 @@ getIndexOfValue(value: T): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定value元素第一次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定value元素第一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -251,7 +349,7 @@ getIndexOfValue(value: T): number
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getIndexOfValue("squirrel");
@@ -260,7 +358,9 @@ let result = plainArray.getIndexOfValue("squirrel");
 
 ### getKeyAt
 
-getKeyAt(index: number): number
+ArkTS-Dyn: getKeyAt(index: number): number
+
+ArkTS-Sta: getKeyAt(index: int): int
 
 查找指定下标元素键值对中的key值。
 
@@ -268,19 +368,25 @@ getKeyAt(index: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回该下标元素键值对中的key值，失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回该下标元素键值对中的key值，失败返回-1。 |
 
 **错误码：**
+
+ArkTS-Dyn错误码：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
@@ -289,19 +395,28 @@ getKeyAt(index: number): number
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The getKeyAt method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200011 | The getKeyAt method cannot be bound. |
+
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getKeyAt(1);
-console.info("result = ", result); // result = 2
 ```
 
 ### getValueAt
 
-getValueAt(index: number): T
+ArkTS-Dyn: getValueAt(index: number): T
+
+ArkTS-Sta: getValueAt(index: int): T
 
 查找指定下标元素键值对中的Value值，失败则返回undefined。
 
@@ -309,11 +424,15 @@ getValueAt(index: number): T
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -323,6 +442,8 @@ getValueAt(index: number): T
 
 **错误码：**
 
+ArkTS-Dyn错误码：
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -331,10 +452,19 @@ getValueAt(index: number): T
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getValueAt method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+| 10200011 | The getValueAt method cannot be bound. |
+
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getValueAt(1);
@@ -349,6 +479,10 @@ clone(): PlainArray&lt;T&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -367,7 +501,7 @@ clone(): PlainArray&lt;T&gt;
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let newPlainArray = plainArray.clone();
@@ -376,7 +510,9 @@ let newPlainArray = plainArray.clone();
 
 ### add
 
-add(key: number, value: T): void
+ArkTS-Dyn: add(key: number, value: T): void
+
+ArkTS-Sta: add(key: int, value: T): void
 
 向容器中添加一组数据。
 
@@ -384,14 +520,20 @@ add(key: number, value: T): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| key | number | 是 | 添加成员数据的键名。需要小于等于int32_max即2147483647。 |
+| key | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 添加成员数据的键名。需要小于等于int32_max即2147483647。 |
 | value | T | 是 | 添加成员数据的值。 |
 
 **错误码：**
+
+ArkTS-Dyn错误码：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
@@ -400,10 +542,18 @@ add(key: number, value: T): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The add method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200011 | The add method cannot be bound. |
+
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 ```
 
@@ -416,7 +566,11 @@ remove(key: number): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -457,7 +611,11 @@ removeAt(index: number): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -489,10 +647,97 @@ plainArray.add(2, "sparrow");
 let result = plainArray.removeAt(1);
 ```
 
+### remove<sup>20+</sup>
+
+remove(key: int): T \| undefined
+
+删除指定key所对应的键值对。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | int | 是 | 指定key。需要小于等于int32_max（即2147483647）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T \| undefined | 返回所删除的键值对中的value值，key不存在则返回undefined。 |
+
+  **错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+
+**示例：**
+
+```ts
+let plainArray: PlainArray<string> = new PlainArray<string>();
+plainArray.add(1, "squirrel");
+plainArray.add(2, "sparrow");
+let result = plainArray.remove(2);
+```
+
+### removeAt<sup>20+</sup>
+
+removeAt(index: int): T \| undefined
+
+删除指定下标所对应的元素。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| index | int | 是 | 指定元素下标。需要小于等于int32_max（即2147483647）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T \| undefined | 返回删除的元素，删除失败则返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+
+**示例：**
+
+```ts
+let plainArray: PlainArray<string> = new PlainArray<string>();
+plainArray.add(1, "squirrel");
+plainArray.add(2, "sparrow");
+let result = plainArray.removeAt(1);
+```
 
 ### removeRangeFrom
 
-removeRangeFrom(index: number, size: number): number
+ArkTS-Dyn: removeRangeFrom(index: number, size: number): number
+
+ArkTS-Sta: removeRangeFrom(index: int, size: int): int
 
 删除指定范围内的元素。
 
@@ -500,20 +745,26 @@ removeRangeFrom(index: number, size: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 删除元素的起始下标。需要小于等于int32_max即2147483647。 |
-| size | number | 是 | 期望删除元素个数。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 删除元素的起始下标。需要小于等于int32_max即2147483647。 |
+| size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 期望删除元素个数。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 实际删除元素个数。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 实际删除元素个数。 |
 
 **错误码：**
+
+ArkTS-Dyn错误码：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
@@ -523,10 +774,19 @@ removeRangeFrom(index: number, size: number): number
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeRangeFrom method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+| 10200011 | The removeRangeFrom method cannot be bound. |
+
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.removeRangeFrom(1, 3);
@@ -535,7 +795,9 @@ let result = plainArray.removeRangeFrom(1, 3);
 
 ### setValueAt
 
-setValueAt(index: number, value: T): void
+ArkTS-Dyn: setValueAt(index: number, value: T): void
+
+ArkTS-Sta: setValueAt(index: int, value: T): void
 
 替换容器中指定下标对应键值对中的键值。
 
@@ -543,14 +805,20 @@ setValueAt(index: number, value: T): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定替换数据下标。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定替换数据下标。需要小于等于int32_max即2147483647。 |
 | value | T | 是 | 替换键值对中的值。 |
 
 **错误码：**
+
+ArkTS-Dyn错误码：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
@@ -560,10 +828,30 @@ setValueAt(index: number, value: T): void
 | 10200001 | The value of index is out of range. |
 | 10200011 | The setValueAt method cannot be bound. |
 
+ArkTS-Sta错误码：
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+| 10200011 | The setValueAt method cannot be bound. |
+
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-let plainArray: PlainArray<string | number> = new PlainArray();
+let plainArray: PlainArray<string | number> = new PlainArray<string | number>();
+plainArray.add(1, "squirrel");
+plainArray.add(2, "sparrow");
+plainArray.setValueAt(1, 3546);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let plainArray: PlainArray<string | int> = new PlainArray<string | int>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 plainArray.setValueAt(1, 3546);
@@ -579,6 +867,10 @@ toString(): String
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -597,7 +889,7 @@ toString(): String
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.toString();
@@ -614,6 +906,10 @@ clear(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 20
+
 **错误码：**
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
@@ -625,7 +921,7 @@ clear(): void
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 plainArray.clear();
@@ -640,7 +936,11 @@ forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray&lt;T&gt;)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -668,7 +968,7 @@ callbackFn的参数说明：
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 plainArray.forEach((value: string, index?: number) => {
@@ -677,7 +977,7 @@ plainArray.forEach((value: string, index?: number) => {
 ```
 ```ts
 // 不建议在forEach中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 for(let i = 0;i < 10;i++) {
   plainArray.add(i,"123");
 }
@@ -685,6 +985,40 @@ for(let i = 0;i < 10;i++) {
 for(let i = 0;i < 10;i++) {
   plainArray.remove(i);
 }
+```
+
+### forEach<sup>20+</sup>
+
+forEach(callbackFn: PlainArrayForEachCb\<T\>): void
+
+通过回调函数遍历实例对象上的元素以及元素对应的下标值。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [PlainArrayForEachCb\<T\>](#plainarrayforeachcbt20) | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+
+let plainArray: PlainArray<string> = new PlainArray<string>();
+plainArray.add(1, "squirrel");
+plainArray.add(2, "sparrow");
+let plainArrayCb: PlainArrayForEachCb<string> = (value: string, key: int, PlainArray: PlainArray<string>) => {
+  console.info("value: " + value, " key: " + key);
+}
+plainArray.forEach(plainArrayCb);
 ```
 
 ### [Symbol.iterator]
@@ -695,7 +1029,11 @@ for(let i = 0;i < 10;i++) {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -714,7 +1052,7 @@ for(let i = 0;i < 10;i++) {
 **示例：**
 
 ```ts
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 
@@ -728,7 +1066,7 @@ while(!temp.done) {
 ```
 ```ts
 // 不建议在Symbol.iterator中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
-let plainArray: PlainArray<string> = new PlainArray();
+let plainArray: PlainArray<string> = new PlainArray<string>();
 for(let i = 0;i < 10;i++) {
   plainArray.add(i,"123");
 }
@@ -737,3 +1075,61 @@ for(let i = 0;i < 10;i++) {
   plainArray.remove(i);
 }
 ```
+
+### \$_iterator<sup>20+</sup>
+
+\$_iterator\(): IterableIterator&lt;[int, T]&gt;
+
+返回一个包含key-value键值对的迭代器对象，其中key是int类型。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| IterableIterator&lt;[int, T]&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let plainArray: PlainArray<string> = new PlainArray<string>();
+plainArray.add(1, "squirrel");
+plainArray.add(2, "sparrow");
+
+let iter = plainArray.$_iterator();
+let temp: IteratorResult<[int, string]> = iter.next();
+while(!temp.done) {
+  console.info("key:" + temp.value![0]);
+  console.info("value:" + temp.value![1]);
+  temp = iter.next();
+}
+```
+
+### PlainArrayForEachCb\<T\><sup>20+</sup>
+
+type PlainArrayForEachCb\<T\> = (value: T, key: int, PlainArray: PlainArray\<T\>) => void
+
+PlainArray中forEach方法的回调函数。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到元素的值。 |
+| key | int | 是 | 当前遍历到元素的键。 |
+| PlainArray | [PlainArray&lt;T&gt;](#plainarray)| 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |

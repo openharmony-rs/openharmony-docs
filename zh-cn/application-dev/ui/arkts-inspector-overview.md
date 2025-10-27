@@ -241,6 +241,7 @@ import {
 } from '@ohos.arkui.component';
 import hilog from '@ohos.hilog';
 import inspector from '@ohos.arkui.inspector';
+import { RecordData } from '@ohos.base';
 
 @Component
 struct MyStateSample {
@@ -277,8 +278,8 @@ struct MyStateSample {
       .onClick(
         (ev: ClickEvent) => {
           hilog.info(0x0000, 'testTag', "begin getInspectorTree");
-          let res = inspector.getInspectorTree() as string;
-          hilog.info(0x0000, 'testTag', res);
+          let res: RecordData = inspector.getInspectorTree();
+          hilog.info(0x0000, 'testTag', JSON.stringify(res));
         }
       )
 

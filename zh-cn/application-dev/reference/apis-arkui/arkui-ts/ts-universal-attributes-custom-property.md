@@ -18,6 +18,8 @@ customProperty(name: string, value: Optional\<Object>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS版本：** 该接口仅适用于ArkTS1.1。
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
@@ -31,6 +33,50 @@ customProperty(name: string, value: Optional\<Object>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
+## CustomProperty<sup>20+</sup>
+
+declare type CustomProperty = Object | undefined | Record<string, CustomProperty>
+
+自定义属性的值。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+| 类型 |说明   |
+| ------ | ------------------- |
+| Object | 自定义属性Object类型。|
+| undefined | 自定义属性值为undefined。|
+| Record<string, CustomProperty> | 自定义属性类型为`Record<string, CustomProperty>`，表示键为字符串、值为CustomProperty类型的对象。|
+
+## customProperty<sup>20+</sup>
+
+customProperty(name: string, value: CustomProperty): this
+
+设置组件的自定义属性。[自定义组件](../../../ui/state-management/arkts-create-custom-components.md#创建自定义组件)不支持设置自定义属性。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                         |
+| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| name  | string | 是   | 自定义属性的名称。 |
+| value  | [CustomProperty](#customproperty20) | 是   | 自定义属性的值。 |
+
+**返回值：**
+
+| 类型                                                           | 说明                                                                  |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| this | 返回当前组件。 |
 
 ## Optional<sup>12+</sup>
 
@@ -47,6 +93,8 @@ Optional\<T>
 ## 示例
 
 在Column组件上设置自定义属性，并在其对应的FrameNode上获取所设置的自定义属性。
+
+ArkTS1.1示例：
 
 ```ts
 // xxx.ets
@@ -82,6 +130,50 @@ struct CustomPropertyExample {
         'value': 100
       }
     })
+    .customProperty('customProperty2', {})
+    .customProperty('customProperty2', undefined)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS1.2示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, CustomProperty  } from '@ohos.arkui.component';
+import { FrameNode, UIContext } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct CustomPropertyExample {
+  build() {
+    Column() {
+      Text('text')
+      Button('print').onClick((e: ClickEvent) => {
+        const uiContext: UIContext = this.getUIContext();
+        if (uiContext) {
+          const node: FrameNode | null = uiContext.getFrameNodeById("Test_Column") || null;
+          if (node) {
+            for (let i = 1; i < 4; i++) {
+              const key = 'customProperty' + i;
+              const property = node.getCustomProperty(key);
+              console.log(key, JSON.stringify(property));
+            }
+          }
+        }
+      })
+    }
+    .id('Test_Column')
+    .customProperty('customProperty1', {
+      'number': 10,
+      'string': 'this is a string',
+      'bool': true,
+      'object': {
+        'name': 'name',
+        'value': 100
+      } as Record<string, CustomProperty>
+    } as Record<string, CustomProperty>)
     .customProperty('customProperty2', {})
     .customProperty('customProperty2', undefined)
     .width('100%')

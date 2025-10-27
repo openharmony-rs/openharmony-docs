@@ -19,16 +19,39 @@
 - 进入激活态：使用外接键盘按下Tab键/使用FocusController的activate(true)方法才会进入焦点的激活态，进入激活态后，才可以使用键盘Tab键/方向键进行走焦。首次用来激活焦点激活态的Tab键不会触发走焦。
 - 退出激活态：当应用收到FocusController的active(false)方法/点击事件时（包括手指触屏的按下事件和鼠标左键的按下事件），焦点的激活态会退出。
 
+ArkTs-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct FocusActiveExample {
   build() {
     Column() {
-      Button('Set Active').width(140).height(45).margin(5).onClick(() => {
+      Button('Set Active').width(140).height(45).margin(5).onClick((event: ClickEvent) => {
         this.getUIContext().getFocusController().activate(true, true);
       })
-      Button('Set Not Active').width(140).height(45).margin(5).onClick(() => {
+      Button('Set Not Active').width(140).height(45).margin(5).onClick((event: ClickEvent) => {
+        this.getUIContext().getFocusController().activate(false, true);
+      })
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct FocusActiveExample {
+  build() {
+    Column() {
+      Button('Set Active').width(140).height(45).margin(5).onClick((event: ClickEvent) => {
+        this.getUIContext().getFocusController().activate(true, true);
+      })
+      Button('Set Not Active').width(140).height(45).margin(5).onClick((event: ClickEvent) => {
         this.getUIContext().getFocusController().activate(false, true);
       })
     }.width('100%')
@@ -134,7 +157,50 @@ Shift+Tab键：与Tab键具有相反的焦点转移效果。
 - 方向键走焦：当使用与容器定义方向垂直的方向键时，容器不接受该方向的走焦请求。例如，在横向的Row容器中，无法使用方向键进行上下移动。
 - 边界处理：当焦点位于容器的首尾子节点时，容器将拒绝与当前焦点方向相反的方向键走焦请求。例如，焦点在一个横向的Row容器的第一个子节点上时，该容器无法处理方向键左的走焦请求。
 
+ArkTs-Dyn示例：
+
 ```ts
+@Entry
+@Component
+struct FocusLinerExample {
+  build() {
+    Column() {
+      Column() {
+        Button("Column Button1")
+          .width(150)
+          .height(45)
+          .fontColor(Color.White)
+          .margin(10)
+        Button("Column Button2")
+          .width(150)
+          .height(45)
+          .fontColor(Color.White)
+          .margin(10)
+      }
+      .margin(10)
+
+      Row() {
+        Button("Row Button1")
+          .width(150)
+          .height(45)
+          .fontColor(Color.White)
+          .margin(10)
+        Button("Row Button2")
+          .width(150)
+          .height(45)
+          .fontColor(Color.White)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, Color, Row } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct FocusLinerExample {
@@ -193,6 +259,8 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 - Tab键走焦时，先使用规格1，按照方向键右进行判定，若找到则成功退出，若无法找到，则将当前获焦子组件的位置模拟往下移动该获焦子组件的高度，然后再按照方向键左进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次Tab键走焦请求。
 - Shift+Tab键走焦时，先使用规格1，按照方向键左进行判定，找到则成功退出。若无法找到，则将当前获焦子组件的位置模拟向上移动该获焦子组件的高度，然后再按照方向键右进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次的Shift+Tab键走焦请求。
 
+ArkTs-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -217,6 +285,34 @@ struct ProjectAreaFocusExample {
 }
 ```
 
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Text, ColumnOptions, Flex, Button, FlexWrap, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ProjectAreaFocusExample {
+  build() {
+    Column() {
+      Column({ space: 5 } as ColumnOptions) {
+        Text('Wrap').fontSize(12).width('90%')
+        // 子组件多行布局
+        Flex({ wrap: FlexWrap.Wrap }) {
+          Button('1').width(140).height(50).margin(5)
+          Button('2').width(140).height(50).margin(5)
+          Button('3').width(140).height(50).margin(5)
+          Button('4').width(140).height(50).margin(5)
+          Button('5').width(140).height(50).margin(5)
+        }
+        .width('90%')
+        .padding(10)
+      }.width('100%').margin({ top: 5 } as Margin)
+    }.width('100%')
+  }
+}
+```
+
 > **说明：**
 >
 > - 这种投影聚焦算法计算的聚焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致聚焦顺序与开发者预期不符。
@@ -225,6 +321,8 @@ struct ProjectAreaFocusExample {
 Flex多行组件布局，组件大小一致，走焦正常。
 
 ![Project_Area_Focus_1](figures/Project_Area_Focus_1.gif)
+
+ArkTs-Dyn示例：
 
 ```ts
 @Entry
@@ -245,6 +343,34 @@ struct ProjectAreaFocusExample2 {
         .width('90%')
         .padding(10)
       }.width('100%').margin({ top: 5 })
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Text, ColumnOptions, Flex, Button, FlexWrap, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ProjectAreaFocusExample2 {
+  build() {
+    Column() {
+      Column({ space: 5 } as ColumnOptions) {
+        Text('Wrap').fontSize(12).width('90%')
+        // 子组件多行布局
+        Flex({ wrap: FlexWrap.Wrap }) {
+          Button('1').width(145).height(50).margin(5)
+          Button('2').width(145).height(50).margin(5)
+          Button('3').width(150).height(50).margin(5)
+          Button('4').width(160).height(50).margin(5)
+          Button('5').width(170).height(50).margin(5)
+        }
+        .width('90%')
+        .padding(10)
+      }.width('100%').margin({ top: 5 } as Margin)
     }.width('100%')
   }
 }
@@ -275,6 +401,8 @@ onBlur(event:() => void)
 失焦事件回调，绑定该接口的组件失焦时，回调响应。
 
 onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
+
+ArkTs-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -334,6 +462,69 @@ struct FocusEventExample {
 }
 ```
 
+ArkTs-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Column, Component, ColumnOptions, Button, Margin, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct FocusEventExample {
+  @State oneButtonColor: Color = Color.Gray;
+  @State twoButtonColor: Color = Color.Gray;
+  @State threeButtonColor: Color = Color.Gray;
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+      Button('First Button')
+        .width(260)
+        .height(70)
+        .backgroundColor(this.oneButtonColor)
+        .fontColor(Color.Black)
+          // 监听第一个组件的获焦事件，获焦后改变颜色
+        .onFocus(() => {
+          this.oneButtonColor = Color.Green;
+        })
+          // 监听第一个组件的失焦事件，失焦后改变颜色
+        .onBlur(() => {
+          this.oneButtonColor = Color.Gray;
+        })
+
+      Button('Second Button')
+        .width(260)
+        .height(70)
+        .backgroundColor(this.twoButtonColor)
+        .fontColor(Color.Black)
+          // 监听第二个组件的获焦事件，获焦后改变颜色
+        .onFocus(() => {
+          this.twoButtonColor = Color.Green;
+        })
+          // 监听第二个组件的失焦事件，失焦后改变颜色
+        .onBlur(() => {
+          this.twoButtonColor = Color.Grey;
+        })
+
+      Button('Third Button')
+        .width(260)
+        .height(70)
+        .backgroundColor(this.threeButtonColor)
+        .fontColor(Color.Black)
+          // 监听第三个组件的获焦事件，获焦后改变颜色
+        .onFocus(() => {
+          this.threeButtonColor = Color.Green;
+        })
+          // 监听第三个组件的失焦事件，失焦后改变颜色
+        .onBlur(() => {
+          this.threeButtonColor = Color.Gray ;
+        })
+    }.width('100%').margin({ top: 20 } as Margin)
+  }
+}
+```
+
 
 ![zh-cn_image_0000001511740584](figures/zh-cn_image_0000001511740584.gif)
 
@@ -347,6 +538,8 @@ struct FocusEventExample {
 父子节点同时存在获焦和失焦事件时，获焦/失焦事件响应顺序为：
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
+
+ArkTs-Dyn示例：
 
 ```ts
 @Entry
@@ -393,6 +586,60 @@ struct FocusAndBlurExample {
           console.log("Row2 onBlur");
         })
       }.width('100%').margin({ top: 5 })
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, ColumnOptions, Button, Margin, Color, Row } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct FocusAndBlurExample {
+  build() {
+    Column() {
+      Column({ space: 5 } as ColumnOptions) {
+        Row() { // 父节点Row1
+          Button('Button1') // 子节点Button1
+            .width(140)
+            .height(45)
+            .margin(5)
+            .onFocus(() => {
+              console.log("Button1 onFocus");
+            })
+            .onBlur(() => {
+              console.log("Button1 onBlur");
+            })
+        }
+        .onFocus(() => {
+          console.log("Row1 onFocus");
+        })
+        .onBlur(() => {
+          console.log("Row1 onBlur");
+        })
+
+        Row() { // 父节点Row2
+          Button('Button2') // 子节点Button2
+            .width(140)
+            .height(45)
+            .margin(5)
+            .onFocus(() => {
+              console.log("Button2 onFocus");
+            })
+            .onBlur(() => {
+              console.log("Button2 onBlur");
+            })
+        }
+        .onFocus(() => {
+          console.log("Row2 onFocus");
+        })
+        .onBlur(() => {
+          console.log("Row2 onBlur");
+        })
+      }.width('100%').margin({ top: 5 } as Margin)
     }.width('100%')
   }
 }
@@ -445,6 +692,8 @@ focusOnTouch(value: boolean)
 >
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
+ArkTs-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -458,6 +707,95 @@ struct FocusableExample {
 
   build() {
     Column({ space: 5 }) {
+      Text('Default Text')    // 第一个Text组件未设置focusable属性，默认不可获焦
+        .borderColor(this.color1)
+        .borderWidth(2)
+        .width(300)
+        .height(70)
+        .onFocus(() => {
+          this.color1 = Color.Blue;
+        })
+        .onBlur(() => {
+          this.color1 = Color.Yellow;
+        })
+      Divider()
+
+      Text('focusable: ' + this.textFocusable)    // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+        .borderColor(this.color2)
+        .borderWidth(2)
+        .width(300)
+        .height(70)
+        .focusable(this.textFocusable)
+        .focusOnTouch(true)
+        .onFocus(() => {
+          this.color2 = Color.Blue;
+        })
+        .onBlur(() => {
+          this.color2 = Color.Yellow;
+        })
+
+      Text('enabled: ' + this.textEnabled)    // 第三个Text设置了focusable为true，enabled初始为true
+        .borderColor(this.color3)
+        .borderWidth(2)
+        .width(300)
+        .height(70)
+        .focusable(true)
+        .enabled(this.textEnabled)
+        .focusOnTouch(true)
+        .onFocus(() => {
+          this.color3 = Color.Blue;
+        })
+        .onBlur(() => {
+          this.color3 = Color.Yellow;
+        })
+
+      Divider()
+
+      Row() {
+        Button('Button1')
+          .width(140).height(70)
+        Button('Button2')
+          .width(160).height(70)
+      }
+
+      Divider()
+      Button('Button3')
+        .width(300).height(70)
+
+      Divider()
+    }.width('100%').justifyContent(FlexAlign.Center)
+    .onKeyEvent((event: KeyEvent) => {
+      // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
+      if (event.keyCode === 2022 && event.type === KeyType.Down) {
+        this.textFocusable = !this.textFocusable;
+      }
+      // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
+      if (event.keyCode === 2023 && event.type === KeyType.Down) {
+        this.textEnabled = !this.textEnabled;
+      }
+    })
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Column, Component, ColumnOptions, Button, Color, Row, Text, Divider, FlexAlign, KeyEvent, KeyType } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct FocusableExample {
+  @State textFocusable: boolean = true;
+  @State textEnabled: boolean = true;
+  @State color1: Color = Color.Yellow;
+  @State color2: Color = Color.Yellow;
+  @State color3: Color = Color.Yellow;
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
       Text('Default Text')    // 第一个Text组件未设置focusable属性，默认不可获焦
         .borderColor(this.color1)
         .borderWidth(2)
@@ -552,6 +890,8 @@ struct FocusableExample {
 > - 容器配置有onClick或是单指单击的Tap手势。
 > - 容器本身未设置focusable属性，或设置在onClick或是单指单击的Tap手势之后。
 
+ArkTs-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -567,7 +907,7 @@ struct ScopeFocusExample {
       .width('80%')
       .height(50)
       .margin({ top: 5, bottom: 5 })
-      .onClick(() => {
+      .onClick((event: ClickEvent) => {
       })
       .focusable(this.scopeFocusState)
 
@@ -575,7 +915,48 @@ struct ScopeFocusExample {
         .width(140)
         .height(45)
         .margin(5)
-        .onClick(() => {
+        .onClick((event: ClickEvent) => {
+          this.scopeFocusState = !this.scopeFocusState;
+          console.log("Button1 onFocus");
+        })
+      Button('Button2')
+        .width(140)
+        .height(45)
+        .margin(5)
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, ColumnOptions, Button, Text, FlexAlign, ClickEvent, Margin, TextAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct ScopeFocusExample {
+  @State scopeFocusState: boolean = true;
+
+  build() {
+    Column() {
+      Column({ space: 5 } as ColumnOptions) {
+        Text("容器获焦").textAlign(TextAlign.Center)
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('80%')
+      .height(50)
+      .margin({ top: 5, bottom: 5 } as Margin)
+      .onClick((event: ClickEvent) => {
+      })
+      .focusable(this.scopeFocusState)
+
+      Button('Button1')
+        .width(140)
+        .height(45)
+        .margin(5)
+        .onClick((event: ClickEvent) => {
           this.scopeFocusState = !this.scopeFocusState;
           console.log("Button1 onFocus");
         })
@@ -603,12 +984,43 @@ tabStop(isTabStop: boolean)
 ```
 设置当前容器组件的[tabStop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabstop14)属性，可决定在走焦时焦点是否会停留在当前容器。
 
+ArkTs-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct TabStopExample {
   build() {
     Column({ space: 20 }) {
+      Button('Button1')
+        .width(140)
+        .height(45)
+        .margin(5)
+      Column() {
+        Button('Button2')
+          .width(140)
+          .height(45)
+          .margin(5)
+        Button('Button3')
+          .width(140)
+          .height(45)
+          .margin(5)
+      }.tabStop(true)
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, ColumnOptions, Button } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct TabStopExample {
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
       Button('Button1')
         .width(140)
         .height(45)
@@ -645,6 +1057,7 @@ defaultFocus(value: boolean)
 
 设置当前组件是否为当前[层级页面](#基础概念)上的默认焦点。
 
+ArkTs-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -706,6 +1119,71 @@ struct morenjiaodian {
 }
 ```
 
+ArkTs-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Column, Component, ColumnOptions, Button, Color, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct morenjiaodian {
+  @State oneButtonColor: Color = Color.Gray;
+  @State twoButtonColor: Color = Color.Gray;
+  @State threeButtonColor: Color = Color.Gray;
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+      Button('First Button')
+        .width(260)
+        .height(70)
+        .backgroundColor(this.oneButtonColor)
+        .fontColor(Color.Black)
+          // 监听第一个组件的获焦事件，获焦后改变颜色
+        .onFocus(() => {
+          this.oneButtonColor = Color.Green;
+        })
+          // 监听第一个组件的失焦事件，失焦后改变颜色
+        .onBlur(() => {
+          this.oneButtonColor = Color.Gray;
+        })
+
+      Button('Second Button')
+        .width(260)
+        .height(70)
+        .backgroundColor(this.twoButtonColor)
+        .fontColor(Color.Black)
+          // 监听第二个组件的获焦事件，获焦后改变颜色
+        .onFocus(() => {
+          this.twoButtonColor = Color.Green;
+        })
+          // 监听第二个组件的失焦事件，失焦后改变颜色
+        .onBlur(() => {
+          this.twoButtonColor = Color.Grey;
+        })
+
+      Button('Third Button')
+        .width(260)
+        .height(70)
+        .backgroundColor(this.threeButtonColor)
+        .fontColor(Color.Black)
+          // 设置默认焦点
+        .defaultFocus(true)
+          // 监听第三个组件的获焦事件，获焦后改变颜色
+        .onFocus(() => {
+          this.threeButtonColor = Color.Green;
+        })
+          // 监听第三个组件的失焦事件，失焦后改变颜色
+        .onBlur(() => {
+          this.threeButtonColor = Color.Gray ;
+        })
+    }.width('100%').margin({ top: 20 } as Margin)
+  }
+}
+```
+
 ![defaultFocus.gif](figures/defaultFocus.gif)
 
 上述示例包含以下2步：
@@ -721,7 +1199,7 @@ struct morenjiaodian {
 
 [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)是用于指定[层级页面](#基础概念)首次展示时的默认获焦节点，[FocusPriority](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focuspriority12)是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，[层级页面](#基础概念)首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。
 
-示例
+ArkTs-Dyn示例：
 
 ```ts
 @Entry
@@ -734,6 +1212,25 @@ struct Index {
       Button('Button2')
         .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
     }.focusScopeId('RowScope')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, Row, FocusPriority } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('Button1')
+        .defaultFocus(true)
+      Button('Button2')
+        .focusScopePriority('RowScope', FocusPriority.PREVIOUS)
+    }.focusScopeId('RowScope', false, false)
   }
 }
 ```
@@ -776,14 +1273,44 @@ focusBox(style: FocusBoxStyle)
 
 设置当前组件系统焦点框样式。
 
+ArkTs-Dyn示例：
+
 ```ts
-import { ColorMetrics, LengthMetrics } from '@kit.ArkUI'
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct RequestFocusExample {
   build() {
     Column({ space: 30 }) {
+      Button("small black focus box")
+        .focusBox({
+          margin: new LengthMetrics(0),
+          strokeColor: ColorMetrics.rgba(0, 0, 0),
+        })
+      Button("large red focus box")
+        .focusBox({
+          margin: LengthMetrics.px(20),
+          strokeColor: ColorMetrics.rgba(255, 0, 0),
+          strokeWidth: LengthMetrics.px(10)
+        })
+    }
+    .alignItems(HorizontalAlign.Center)
+    .width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, ColorMetrics, LengthMetrics, HorizontalAlign, ColumnOptions } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct RequestFocusExample {
+  build() {
+    Column({ space: 30 } as ColumnOptions) {
       Button("small black focus box")
         .focusBox({
           margin: new LengthMetrics(0),
@@ -838,14 +1365,15 @@ struct RequestFocusExample {
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
+ArkTs-Dyn示例：
 
 ```ts
 // focusTest.ets
 @Entry
 @Component
 struct RequestExample {
-  @State btColor: string = '#ff2787d9'
-  @State btColor2: string = '#ff2787d9'
+  @State btColor: string = '#ff2787d9';
+  @State btColor2: string = '#ff2787d9';
 
   build() {
     Column({ space: 20 }) {
@@ -886,21 +1414,99 @@ struct RequestExample {
 
         Button('FocusController.requestFocus')
           .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
+          .onClick((event: ClickEvent) => {
             this.getUIContext().getFocusController().requestFocus("testButton")
           })
           .backgroundColor('#ff2787d9')
 
         Button("focusControl.requestFocus")
           .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
+          .onClick((event: ClickEvent) => {
             focusControl.requestFocus("testButton2")
           })
           .backgroundColor('#ff2787d9')
 
         Button("clearFocus")
           .width(200).height(70).fontColor(Color.White)
-          .onClick(() => {
+          .onClick((event: ClickEvent) => {
+            this.getUIContext().getFocusController().clearFocus()
+          })
+          .backgroundColor('#ff2787d9')
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+// focusTest.ets
+import { Entry, Column, Component, Button, ColumnOptions, Color, Divider, ClickEvent, focusControl } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct RequestExample {
+  @State btColor: string = '#ff2787d9';
+  @State btColor2: string = '#ff2787d9';
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Column({ space: 5 } as ColumnOptions) {
+        Button('Button')
+          .width(200)
+          .height(70)
+          .fontColor(Color.White)
+          .focusOnTouch(true)
+          .backgroundColor(this.btColor)
+          .onFocus(() => {
+            this.btColor = '#ffd5d5d5'
+          })
+          .onBlur(() => {
+            this.btColor = '#ff2787d9'
+          })
+          .id("testButton")
+
+        Button('Button')
+          .width(200)
+          .height(70)
+          .fontColor(Color.White)
+          .focusOnTouch(true)
+          .backgroundColor(this.btColor2)
+          .onFocus(() => {
+            this.btColor2 = '#ffd5d5d5'
+          })
+          .onBlur(() => {
+            this.btColor2 = '#ff2787d9'
+          })
+          .id("testButton2")
+
+        Divider()
+          .vertical(false)
+          .width("80%")
+          .backgroundColor('#ff707070')
+          .height(10)
+
+        Button('FocusController.requestFocus')
+          .width(200).height(70).fontColor(Color.White)
+          .onClick((event: ClickEvent) => {
+            this.getUIContext().getFocusController().requestFocus("testButton")
+          })
+          .backgroundColor('#ff2787d9')
+
+        Button("focusControl.requestFocus")
+          .width(200).height(70).fontColor(Color.White)
+          .onClick((event: ClickEvent) => {
+            focusControl.requestFocus("testButton2")
+          })
+          .backgroundColor('#ff2787d9')
+
+        Button("clearFocus")
+          .width(200).height(70).fontColor(Color.White)
+          .onClick((event: ClickEvent) => {
             this.getUIContext().getFocusController().clearFocus()
           })
           .backgroundColor('#ff2787d9')
@@ -934,7 +1540,40 @@ tabIndex(index: number)
 > 不能同时设置tabIndex与focusScopeId属性。
 > 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 
+ArkTs-Dyn示例：
+
 ```ts
+@Entry
+@Component
+struct TabIndexExample {
+  build() {
+    Column() {
+      Button('Button1')
+        .width(140)
+        .height(45)
+        .margin(5)
+      Button('Focus Button1')
+        .width(140)
+        .height(45)
+        .margin(5).tabIndex(1)
+      Button('Button2')
+        .width(140)
+        .height(45)
+        .margin(5)
+      Button('Focus Button2')
+        .width(140)
+        .height(45)
+        .margin(5).tabIndex(2)
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct TabIndexExample {
@@ -967,7 +1606,38 @@ Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
 tabIndex配置在容器上时，如果容器中的所有组件都没有获焦过，则走到第一个可获焦组件上，否则会走到上次获焦的节点。
 
+ArkTs-Dyn示例：
+
 ```ts
+@Entry
+@Component
+struct TabIndexExample2 {
+  build() {
+    Column() {
+      Button('Button1')
+        .width(140)
+        .height(45)
+        .margin(5).tabIndex(1)
+      Column() {
+        Button('Button2')
+          .width(140)
+          .height(45)
+          .margin(5)
+        Button('Button3')
+          .width(140)
+          .height(45)
+          .margin(5)
+      }.tabIndex(2)
+    }.width('100%')
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct TabIndexExample2 {
@@ -1016,6 +1686,8 @@ focusScopeId(id: string, isGroup?: boolean)
 ```
 
 设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
+
+ArkTs-Dyn示例：
 
 ```ts
 // focusTest.ets
@@ -1140,6 +1812,134 @@ struct FocusableExample {
 }
 ```
 
+ArkTs-Sta示例：
+
+```ts
+// focusTest.ets
+import { Entry, Column, Component, Button, Scroll, Row, RowOptions, ColumnOptions, Color, TextInput, BorderStyle, VerticalAlign, PreviewText, TextChangeOptions, FocusPriority } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct FocusableExample {
+  @State inputValue: string = '';
+
+  build() {
+    Scroll() {
+      Row({ space: 20 } as RowOptions) {
+        Column({ space: 20 } as ColumnOptions) {  // 标记为Column1
+          Column({ space: 5 } as ColumnOptions) {
+            Button('Group1')
+              .width(165)
+              .height(40)
+              .fontColor(Color.White)
+            Row({ space: 5 } as RowOptions) {
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+            Row({ space: 5 } as RowOptions) {
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+          }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+          Column({ space: 5 } as ColumnOptions) {
+            Button('Group2')
+              .width(165)
+              .height(40)
+              .fontColor(Color.White)
+            Row({ space: 5 } as RowOptions) {
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+                .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Column1首次获焦时获焦
+            }
+            Row({ space: 5 } as RowOptions) {
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+              Button('')
+                .width(80)
+                .height(40)
+                .fontColor(Color.White)
+            }
+          }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+        }
+        .focusScopeId('ColumnScope1', false, false)
+        Column({ space: 5 } as ColumnOptions) {  // 标记为Column2
+          TextInput({placeholder: 'input', text: this.inputValue})
+            .onChange((value: string, previewText?: PreviewText, options?: TextChangeOptions) => {
+              this.inputValue = value
+            })
+            .width(156)
+          Button('Group3')
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 } as RowOptions) {
+            Button('')
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button('')
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+          Button('')
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Column2获焦时获焦
+          Row({ space: 5 } as RowOptions) {
+            Button('')
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button('')
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+          Button('')
+            .width(165)
+            .height(40)
+            .fontColor(Color.White)
+          Row({ space: 5 } as RowOptions) {
+            Button('')
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+            Button('')
+              .width(80)
+              .height(40)
+              .fontColor(Color.White)
+          }
+        }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
+        .focusScopeId('ColumnScope2', true, true)  // Column2为焦点组
+      }.alignItems(VerticalAlign.Top)
+    }
+  }
+}
+```
+
 
 ![focus-3](figures/focus-3.gif)
 
@@ -1155,6 +1955,8 @@ struct FocusableExample {
 ```ts
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean)
 ```
+
+ArkTs-Dyn示例：
 
 ```ts
 @Entry
@@ -1211,6 +2013,65 @@ struct FocusScopeIdExample {
 }
 ```
 
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, ColumnOptions, Color, BorderStyle, TextInput, RowOptions, Row } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct FocusScopeIdExample {
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Column() {
+        Button('Group1')
+          .width(165)
+          .height(40)
+          .margin(5)
+          .fontColor(Color.White)
+        Row({ space: 5 } as RowOptions) {
+          Button("Button1")
+            .width(80)
+            .height(40)
+            .margin(5)
+            .fontColor(Color.White)
+          Button("Button2")
+            .width(80)
+            .height(40)
+            .margin(5)
+            .fontColor(Color.White)
+        }
+      }.focusScopeId("1", true, true)
+      .borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
+      TextInput()
+      Column() {
+        Button('Group2')
+          .width(165)
+          .height(40)
+          .margin(5)
+          .fontColor(Color.White)
+        Row({ space: 5 } as RowOptions) {
+          Button("Button3")
+            .width(80)
+            .height(40)
+            .margin(5)
+            .fontColor(Color.White)
+          Button("Button4")
+            .width(80)
+            .height(40)
+            .margin(5)
+            .fontColor(Color.White)
+        }
+      }.focusScopeId("2", true, false)
+      .borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
+
+      TextInput()
+    }.width('100%')
+  }
+}
+```
+
 
 ![FocusScopeId_1](figures/FocusScopeId_1.gif)
 
@@ -1234,12 +2095,45 @@ struct FocusScopeIdExample {
 >  3. 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
 >  4. 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
 
+ArkTs-Dyn示例：
+
 ```ts
 @Entry
 @Component
 struct FocusOnclickExample {
-  @State count: number = 0
-  @State name: string = 'Button'
+  @State count: number = 0;
+  @State name: string = 'Button';
+
+  build() {
+    Column() {
+      Button(this.name)
+        .fontSize(30)
+        .onClick((event: ClickEvent) => {
+          this.count++
+          if (this.count <= 0) {
+            this.name = "count is negative number"
+          } else if (this.count % 2 === 0) {
+            this.name = "count is even number"
+          } else {
+            this.name = "count is odd number"
+          }
+        }).height(60)
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTs-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, ClickEvent, FlexAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct FocusOnclickExample {
+  @State count: number = 0;
+  @State name: string = 'Button';
 
   build() {
     Column() {
@@ -1259,6 +2153,7 @@ struct FocusOnclickExample {
   }
 }
 ```
+
 ![focus-4](figures/focus-4.gif)
 
 ## 组件获焦能力说明

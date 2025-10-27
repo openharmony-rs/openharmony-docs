@@ -11,8 +11,20 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
 - 通过label和[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建不包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
 
+  ArkTS-Dyn示例：
+
   ```ts
   Button(label?: ResourceStr, options?: { type?: ButtonType, stateEffect?: boolean })
+  ```
+
+  ArkTS-Sta示例：
+
+  在ArkTS-Sta上使用[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建该组件时，需要先导入Button以及用来指定参数类型的ButtonOptions。
+
+  ```ts
+  import { Button, ButtonOptions, ButtonType } from '@ohos.arkui.component';
+  
+  Button(label?: ResourceStr, options?: { type?: ButtonType, stateEffect?: boolean } as ButtonOptions )
   ```
 
   其中，label用来设置按钮文字，type用于设置Button类型，stateEffect属性设置Button是否开启点击效果。
@@ -26,7 +38,6 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   ```
 
   ![zh-cn_image_0000001562820757](figures/zh-cn_image_0000001562820757.png)
-
 
 - 通过[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
 
@@ -171,12 +182,13 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   })
 ```
 
-
 ## 场景示例
 
 - 用于启动操作。
 
   可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在List容器里通过点击按钮进行页面跳转。
+
+  ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -295,12 +307,162 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  
+  import {
+    Entry,
+    Component,
+    NavPathStack,
+    Builder,
+    Navigation,
+    List,
+    ListItem,
+    Button,
+    Axis,
+    NavigationMode,
+    Stack,
+    NavDestination,
+    Column,
+    Text,
+    NavDestinationContext,
+    NavPathInfo,
+    PopInfo
+  } from '@kit.ArkUI';
+  
+  interface pams {
+    data: string
+  }
+  
+  class NavigationParam {
+    info_: string = '';
+    params: pams = {
+      data: 'test'
+    }
+    constructor(info: string) {
+      this.info_ = info;
+    }
+  }
+  
+  let pathStack: NavPathStack = new NavPathStack()
+  
+  @Entry
+  @Component
+  struct ButtonCase1 {
+  
+    @Builder
+    PageMap(name: string) {
+      if (name === 'first_page') {
+        pageOneTmp()
+      } else if (name === 'second_page') {
+        pageTwoTmp()
+      } else if (name === 'third_page') {
+        pageThreeTmp()
+      }
+    }
+  
+    build() {
+      Navigation(pathStack) {
+        List({ space: 4 }) {
+          ListItem() {
+            Button('First').onClick(() => {
+              let info: NavPathInfo = new NavPathInfo('first_page', new NavigationParam('this is index pushPath') as object)
+              pathStack.pushPath(info, true)
+            })
+              .width('100%')
+          }
+  
+          ListItem() {
+            Button('Second').onClick(() => {
+              let info: NavPathInfo = new NavPathInfo('second_page', new NavigationParam('this is index pushPath') as object)
+              pathStack.pushPath(info, true)
+            })
+              .width('100%')
+          }
+  
+          ListItem() {
+            Button('Third').onClick(() => {
+              let info: NavPathInfo = new NavPathInfo('third_page', new NavigationParam('this is index pushPath') as object)
+              pathStack.pushPath(info, true)
+            })
+              .width('100%')
+          }
+        }
+        .listDirection(Axis.Vertical)
+        .backgroundColor(0xDCDCDC).padding(20)
+      }
+      .mode(NavigationMode.Stack)
+      .navDestination(this.PageMap)
+    }
+  }
+  
+  // pageOne
+  @Component
+  export struct pageOneTmp {
+    pathStack: NavPathStack = new NavPathStack();
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Text('first_page')
+        }.width('100%').height('100%')
+      }.title("pageOne")
+      .onBackPressed(() => {
+        // 弹出路由栈栈顶元素
+        const popDestinationInfo = pathStack.pop({} as Object, true); 
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        return true
+      })
+    }
+  }
+  
+  // pageTwo
+  @Component
+  export struct pageTwoTmp {
+    build() {
+      NavDestination() {
+        Column() {
+          Text('second_page')
+        }.width('100%').height('100%')
+      }.title('pageTwo')
+      .onBackPressed(() => {
+        // 弹出路由栈栈顶元素
+        const popDestinationInfo = pathStack.pop({} as Object, true); 
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        return true
+      })
+    }
+  }
+  
+  // pageThree
+  @Component
+  export struct pageThreeTmp {
+    build() {
+      NavDestination() {
+        Column() {
+          Text('third_page')
+        }.width('100%').height('100%')
+      }.title('pageThree')
+      .onBackPressed(() => {
+        // 弹出路由栈栈顶元素
+        const popDestinationInfo = pathStack.pop({} as Object, true);
+        console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+        return true
+      })
+    }
+  }
+  ```
+  
   ![zh-cn_image_0000001562700393](figures/zh-cn_image_0000001562940814.gif)
 
 
 - 用于提交表单。
 
   在用户登录/注册页面，使用按钮进行登录或注册操作。
+
+  ArkTS-Dyn示例：
 
   ```ts
   // xxx.ets
@@ -312,6 +474,38 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
         TextInput({ placeholder: 'input your username' }).margin({ top: 20 })
         TextInput({ placeholder: 'input your password' }).type(InputType.Password).margin({ top: 20 })
         Button('Register').width(300).margin({ top: 20 })
+          .onClick(() => {
+            // 需要执行的操作
+          })
+      }.padding(20)
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  // xxx.ets
+  
+  import {
+    Entry,
+    Component,
+    Column,
+    TextInput,
+    InputType,
+    Button,
+    Margin,
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct ButtonCase2 {
+    build() {
+      Column() {
+        TextInput({ placeholder: 'input your username' }).margin({ top: 20 } as Margin)
+        TextInput({ placeholder: 'input your password' }).type(InputType.Password).margin({ top: 20 } as Margin)
+        Button('Register').width(300).margin({ top: 20 } as Margin)
           .onClick(() => {
             // 需要执行的操作
           })

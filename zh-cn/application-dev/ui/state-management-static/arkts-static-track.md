@@ -19,6 +19,8 @@ import { Track } from '@ohos.arkui.stateManagement';
 状态管理V1中\@State结合\@Observed使用支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，如下面例子展示了这一限制：
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, Text } from '@ohos.arkui.component';
 import { Observed, State } from '@ohos.arkui.stateManagement';
 
@@ -71,20 +73,20 @@ struct Index {
 > 当UI刷新时，会执行组件的属性设置方法，利用这一机制可以通过观察`getFontSize`方法是否被调用来判断当前组件是否刷新。
 
 - UI首次渲染完成，观察到输出如下日志：
-```
-Component 1 render
-Component 2 render
-```
+    ```
+    Component 1 render
+    Component 2 render
+    ```
 - 当点击`Button('change name')`时，即使只修改了`info.name`，观察日志发现两个Text组件仍会重新渲染。组件```Text(age: ${this.info.age})```并未使用`name`属性，但仍因为`info.name`改变刷新，因此这次刷新是冗余的。日志输出如下：
-```
-Component 1 render
-Component 2 render
-```
+    ```
+    Component 1 render
+    Component 2 render
+    ```
 -  同理，点击`Button('change age')`，也会触发```Text(`name: ${this.info.name}`)```的刷新。日志输出如下：
-```
-Component 1 render
-Component 2 render
-```
+    ```
+    Component 1 render
+    Component 2 render
+    ```
 
 造成上述冗余刷新的根本原因是：状态管理V1中\@State等装饰器无法精准观察类属性的访问与变更。为了实现类对象属性的精准观察，引入\@Track装饰器。
 
@@ -109,8 +111,10 @@ Component 2 render
 使用\@Track装饰器可以避免冗余刷新。
 
 ```ts
+'use static'
+
 import { Button, Column, Component, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
-import { State, Track } from '@ohos.arkui.stateManagement';
+import { State, Track, Observed } from '@ohos.arkui.stateManagement';
 
 class LogTrack {
   @Track str1: string;
@@ -206,6 +210,8 @@ struct AddLog {
 
 
 ```ts
+'use static'
+
 import { Column, Component, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
 import { State, Track } from '@ohos.arkui.stateManagement';
 

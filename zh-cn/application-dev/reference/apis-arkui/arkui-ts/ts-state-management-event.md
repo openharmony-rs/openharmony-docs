@@ -1,12 +1,18 @@
 # @Event
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--SE: @s10021109-->
+<!--TSE: @TerryTsao-->
+
 > **说明：**
 >
 > 从API version 12开始，支持该装饰器。
 
 @Event装饰回调方法，用于状态管理V2中，作为自定义组件的输出。
 
-在动态语言上下文中使用时，开发指南参考：[@Event：规范组件输出（ArkTS-DT）](../../../ui/state-management/arkts-new-event.md)。
+在ArkTS-Dyn中使用时，开发指南参考：[@Event：规范组件输出（ArkTS-Dyn）](../../../ui/state-management/arkts-new-event.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

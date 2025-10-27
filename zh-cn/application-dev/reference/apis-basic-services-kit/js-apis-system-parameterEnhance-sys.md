@@ -21,6 +21,8 @@ getSync(key: string, def?: string): string
 获取系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -64,6 +66,8 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 获取系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -107,6 +111,8 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 获取系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -152,6 +158,8 @@ get(key: string, def?: string): Promise&lt;string&gt;
 获取系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -201,6 +209,8 @@ setSync(key: string, value: string): void
 设置系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -239,6 +249,8 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 设置系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -283,6 +295,8 @@ set(key: string, value: string): Promise&lt;void&gt;
 设置系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+**ArkTs-Dyn起始版本**：9
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 

@@ -19,6 +19,8 @@
 
 在OverlayManager上[新增指定节点（addComponentContent）](../reference/apis-arkui/js-apis-arkui-UIContext.md#addcomponentcontent12)、[删除指定节点（removeComponentContent）](../reference/apis-arkui/js-apis-arkui-UIContext.md#removecomponentcontent12)、[显示所有节点（showAllComponentContents）](../reference/apis-arkui/js-apis-arkui-UIContext.md#showallcomponentcontents12)和[隐藏所有节点（hideAllComponentContents）](../reference/apis-arkui/js-apis-arkui-UIContext.md#hideallcomponentcontents12)。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
 
@@ -123,9 +125,114 @@ struct OverlayExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Text, Column, Component, Button, FontWeight, ComponentContent, Position,
+  Builder, wrapBuilder } from '@ohos.arkui.component';
+import { State, StorageLink } from '@ohos.arkui.stateManagement';
+import { UIContext, OverlayManager } from '@ohos.arkui.UIContext';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }.offset({ x: 0, y: 80 } as Position)
+}
+
+@Entry
+@Component
+struct OverlayExample {
+  @State message: string = 'ComponentContent';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
+  @StorageLink('componentContentIndex') componentContentIndex: number = 0;
+  @StorageLink('arrayIndex') arrayIndex: Int = 0;
+
+  build() {
+    Column() {
+      Button("++componentContentIndex: " + this.componentContentIndex).onClick(() => {
+        ++this.componentContentIndex;
+      })
+      Button("--componentContentIndex: " + this.componentContentIndex).onClick(() => {
+        --this.componentContentIndex;
+      })
+      Button("增加ComponentContent" + this.contentArray.length).onClick(() => {
+        let componentContent = new ComponentContent<Params>(
+          this.uiContext, wrapBuilder(builderText),
+          new Params(this.message + (this.contentArray.length))
+        );
+        this.contentArray.push(componentContent);
+        this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
+      })
+      Button("++arrayIndex: " + this.arrayIndex).onClick(() => {
+        ++this.arrayIndex;
+      })
+      Button("--arrayIndex: " + this.arrayIndex).onClick(() => {
+        --this.arrayIndex;
+      })
+      Button("删除ComponentContent" + this.arrayIndex).onClick(() => {
+        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+          let componentContent = this.contentArray.splice(this.arrayIndex, 1);
+          this.overlayNode.removeComponentContent(componentContent.pop() as ComponentContent<Params>);
+        } else {
+          console.info("arrayIndex有误");
+        }
+      })
+      Button("显示ComponentContent" + this.arrayIndex).onClick(() => {
+        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+          let componentContent = this.contentArray[this.arrayIndex];
+          this.overlayNode.showComponentContent(componentContent);
+        } else {
+          console.info("arrayIndex有误");
+        }
+      })
+      Button("隐藏ComponentContent" + this.arrayIndex).onClick(() => {
+        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+          let componentContent = this.contentArray[this.arrayIndex];
+          this.overlayNode.hideComponentContent(componentContent);
+        } else {
+          console.info("arrayIndex有误");
+        }
+      })
+      Button("显示所有ComponentContent").onClick(() => {
+        this.overlayNode.showAllComponentContents();
+      })
+      Button("隐藏所有ComponentContent").onClick(() => {
+        this.overlayNode.hideAllComponentContents();
+      })
+
+      Button("跳转页面").onClick(() => {
+        this.getUIContext().getRouter().pushUrl({
+          url: 'pages/Second'
+        });
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![overlayManager-demo1](figures/overlaymanager-demo_1.gif)
 
 显示一个始终在屏幕左侧的悬浮球，点击可以弹出alertDialog弹窗。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
@@ -169,7 +276,6 @@ struct OverlayExample {
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];
-  controller: TextInputController = new TextInputController();
 
   aboutToAppear(): void {
     let uiContext = this.getUIContext();
@@ -194,11 +300,113 @@ struct OverlayExample {
     .height('100%')
   }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  FontWeight,
+  ComponentContent,
+  Position,
+  Builder,
+  wrapBuilder,
+  AlertDialogParamWithConfirm,
+  HitTestMode,
+  Stack,
+  Color,
+  DialogAlignment
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { UIContext, OverlayManager } from '@ohos.arkui.UIContext';
+
+class Params {
+  context: UIContext;
+  offset: Position;
+
+  constructor(context: UIContext, offset: Position) {
+    this.context = context;
+    this.offset = offset;
+  }
+}
+
+@Builder
+function builderOverlay(params: Params) {
+  Column() {
+    Stack() {
+    }
+    .width(50)
+    .height(50)
+    .backgroundColor('#FFF000')
+    .position(params.offset)
+    .borderRadius(50)
+    .onClick(() => {
+      params.context.showAlertDialog(
+        {
+          title: 'title',
+          message: 'Text',
+          autoCancel: true,
+          alignment: DialogAlignment.Center,
+          gridCount: 3,
+          confirm: {
+            value: 'Button',
+            action: () => {
+            }
+          },
+          cancel: () => {
+          }
+        } as AlertDialogParamWithConfirm
+      )
+    })
+  }.focusable(false).width('100%').height('100%').hitTestBehavior(HitTestMode.Transparent)
+}
+
+@Entry
+@Component
+struct OverlayExample {
+  @State message: string = 'ComponentContent';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+  private overlayContent: ComponentContent<Params>[] = [];
+
+  aboutToAppear(): void {
+    let uiContext = this.getUIContext();
+    let componentContent = new ComponentContent<Params>(
+      this.uiContext, wrapBuilder(builderOverlay),
+      new Params(uiContext, { x: 0, y: 100 } as Position)
+    );
+    this.overlayNode.addComponentContent(componentContent, 0);
+    this.overlayContent.push(componentContent);
+  }
+
+  aboutToDisappear(): void {
+    let componentContent = this.overlayContent.pop();
+    this.overlayNode.removeComponentContent(componentContent as ComponentContent<Params>);
+  }
+
+  build() {
+    Column() {
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 
 ```
+
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
 从API version 18开始，可以通过调用UIContext中getOverlayManager方法获取OverlayManager对象，并利用该对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/js-apis-arkui-UIContext.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
@@ -278,4 +486,90 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Text, Component, Button, ComponentContent, Position,
+  Builder, wrapBuilder, ColumnOptions, Column, Color, Alignment, Row, Stack, FontWeight } from '@ohos.arkui.component';
+import { State, StorageLink } from '@ohos.arkui.stateManagement';
+import { UIContext, OverlayManager } from '@ohos.arkui.UIContext';
+import { LevelOrder } from '@ohos.promptAction';
+
+class Params {
+  text: string = "";
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function builderTopText(params: Params) {
+  Column() {
+    Stack(){
+      Text(params.text)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }.width(300).height(200).padding(5).backgroundColor('#F7F7F7').alignContent(Alignment.Top)
+  }.offset({ x: 0, y: 80 } as Position)
+}
+
+@Builder
+function builderNormalText(params: Params) {
+  Column() {
+    Stack(){
+      Text(params.text)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }.width(300).height(400).padding(5).backgroundColor('#D5D5D5').alignContent(Alignment.Top)
+  }.offset({ x: 0, y: 80 } as Position)
+}
+
+@Entry
+@Component
+struct Index {
+  private ctx: UIContext = this.getUIContext();
+  private overlayManager: OverlayManager = this.ctx.getOverlayManager();
+  @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
+  @StorageLink('componentContentIndex') componentContentIndex: number = 0;
+  @StorageLink('arrayIndex') arrayIndex: number = 0;
+  @StorageLink('componentOffset') componentOffset: Position = {x: 0, y: 80};
+
+  build() {
+    Row() {
+      Column({ space: 5 } as ColumnOptions) {
+        Button('点击打开置顶弹窗')
+          .onClick(() => {
+            let componentContent = new ComponentContent<Params>(
+              this.ctx, wrapBuilder(builderTopText),
+              new Params('我是置顶弹窗')
+            );
+            this.contentArray.push(componentContent);
+            this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100000));
+          })
+        Button('点击打开普通弹窗')
+          .onClick(() => {
+            let componentContent = new ComponentContent<Params>(
+              this.ctx, wrapBuilder(builderNormalText),
+              new Params('我是普通弹窗')
+            );
+            this.contentArray.push(componentContent);
+            this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(0));
+          })
+        Button("点击移除弹窗").onClick(()=>{
+          if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+            let componentContent = this.contentArray.splice(this.arrayIndex, 1);
+            this.overlayManager.removeComponentContent(componentContent.pop() as ComponentContent<Params>);
+          } else {
+            console.info("arrayIndex有误");
+          }
+        })
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![overlayManager-demo3](figures/overlaymanager-demo_3.gif)

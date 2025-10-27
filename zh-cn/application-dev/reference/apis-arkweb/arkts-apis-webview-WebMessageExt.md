@@ -18,6 +18,10 @@ getType(): WebMessageType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型           | 说明                                                      |
@@ -31,6 +35,10 @@ getString(): string
 获取数据对象的字符串类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -48,17 +56,23 @@ getString(): string
 
 ## getNumber<sup>10+</sup>
 
-getNumber(): number
+ArkTS-Dyn: getNumber(): number
+
+ArkTS-Sta: getNumber(): double | long
 
 获取数据对象的数值类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| number | 返回数值类型的数据。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 返回数值类型的数据。 |
 
 **错误码：**
 
@@ -75,6 +89,10 @@ getBoolean(): boolean
 获取数据对象的布尔类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -98,6 +116,10 @@ getArrayBuffer(): ArrayBuffer
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型           | 说明          |
@@ -114,17 +136,23 @@ getArrayBuffer(): ArrayBuffer
 
 ## getArray<sup>10+</sup>
 
-getArray(): Array\<string | number | boolean\>
+ArkTS-Dyn: getArray(): Array\<string | number | boolean\>
+
+ArkTS-Sta: getArray(): Array\<string | double | long | boolean\>
 
 获取数据对象的数组类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| Array\<string \| number \| boolean\> | 返回数组类型的数据。 |
+| ArkTS-Dyn: Array\<string \| number \| boolean\><br>ArkTS-Sta: Array\<string \| double \| long \| boolean\> | 返回数组类型的数据。 |
 
 **错误码：**
 
@@ -141,6 +169,10 @@ getError(): Error
 获取数据对象的错误类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -164,6 +196,10 @@ setType(type: WebMessageType): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -185,6 +221,10 @@ setString(message: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -200,17 +240,24 @@ setString(message: string): void
 
 ## setNumber<sup>10+</sup>
 
-setNumber(message: number): void
+ArkTS-Dyn: setNumber(message: number): void
+
+ArkTS-Sta: setNumber(message: double): void
 
 设置数据对象的数值类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | -------------------- |
-| message  | number | 是   | 数值类型数据。 |
+| message  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 数值类型数据。 |
 
 **错误码：**
 
@@ -226,6 +273,10 @@ setBoolean(message: boolean): void
 设置数据对象的布尔类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -248,6 +299,10 @@ setArrayBuffer(message: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -265,17 +320,23 @@ setArrayBuffer(message: ArrayBuffer): void
 
 ## setArray<sup>10+</sup>
 
-setArray(message: Array\<string | number | boolean\>): void
+ArkTS-Dyn: setArray(message: Array\<string | number | boolean\>): void
+
+ArkTS-Sta: setArray(message: Array\<string | double | long | boolean\>): void
 
 设置数据对象的数组类型数据。完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | -------------------- |
-| message  | Array\<string \| number \| boolean\> | 是   | 数组类型数据。 |
+| message  | ArkTS-Dyn: Array\<string \| number \| boolean\><br>ArkTS-Sta: Array\<string \| double \| long \| boolean\> | 是   | 数组类型数据。 |
 
 **错误码：**
 

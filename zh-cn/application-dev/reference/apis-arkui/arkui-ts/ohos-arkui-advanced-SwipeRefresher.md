@@ -39,8 +39,8 @@ SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明                                                                 |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|
-| content | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。从API version 20开始，支持Resource类型。   |
-| isLoading | boolean | 是 | \@Prop | 当前是否正在加载。<br> isLoading为true时，表示正在加载。<br> isLoading为false时，表示未在加载。 |
+| content | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。从API version 20开始，支持Resource类型。<br/>原子化服务仅ArkTS1.1支持。   |
+| isLoading | boolean | 是 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef | 当前是否正在加载。<br> isLoading为true时，表示正在加载。<br> isLoading为false时，表示未在加载。<br/>原子化服务仅ArkTS1.1支持。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

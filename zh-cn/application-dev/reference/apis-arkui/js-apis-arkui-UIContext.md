@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
@@ -902,23 +904,35 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 
 <!--code_no_check-->
 ```ts
-let selectedDate: Date = new Date("2010-1-1");
-uiContext.showDatePickerDialog({
-  start: new Date("2000-1-1"),
-  end: new Date("2100-12-31"),
-  selected: selectedDate,
-  onAccept: (value: DatePickerResult) => {
-    // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
-    selectedDate.setFullYear(Number(value.year), Number(value.month), Number(value.day));
-    console.info("DatePickerDialog:onAccept()" + JSON.stringify(value));
-  },
-  onCancel: () => {
-    console.info("DatePickerDialog:onCancel()");
-  },
-  onChange: (value: DatePickerResult) => {
-    console.info("DatePickerDialog:onChange()" + JSON.stringify(value));
+@Entry
+@Component
+struct DatePickerDialogExample {
+  private selectedDate: Date = new Date('2010-1-1');
+
+  build() {
+    Column() {
+      Button('showDatePickerDialog')
+        .margin(30)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            start: new Date('2000-1-1'),
+            end: new Date('2100-12-31'),
+            selected: this.selectedDate,
+            onDateAccept: (value: Date) => {
+              this.selectedDate = value;
+              console.info('DatePickerDialog:onAccept()' + JSON.stringify(value));
+            },
+            onCancel: () => {
+              console.info('DatePickerDialog:onCancel()');
+            },
+            onDateChange: (value: Date) => {
+              console.info('DatePickerDialog:onChange()' + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%')
   }
-});
+}
 ```
 
 ### showTimePickerDialog
@@ -1004,23 +1018,24 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 // xxx.ets
 
 class SelectedValue{
-  select: number = 2;
+  public selected: number = 2;
   set(val: number){
-    this.select = val;
+    this.selected = val;
   }
 }
 class SelectedArray{
-  select: number[] = [];
+  public selected: number[] = [];
   set(val: number[]){
-    this.select = val;
+    this.selected = val;
   }
 }
 @Entry
 @Component
 struct TextPickerDialogExample {
-  @State selectTime: Date = new Date('2023-12-25T08:30:00');
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  private select: number  = 0;
+  private selectedVal = new SelectedValue();
+  private selectedArr = new SelectedArray();
+
   build() {
     Column() {
       Button('showTextPickerDialog')
@@ -1028,25 +1043,24 @@ struct TextPickerDialogExample {
         .onClick(() => {
           this.getUIContext().showTextPickerDialog({
             range: this.fruits,
-            selected: this.select,
+            selected: Array.isArray(this.fruits[0]) ? this.selectedArr.selected : this.selectedVal.selected,
             onAccept: (value: TextPickerResult) => {
               // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+              if (value.index != null) {
+                value.index instanceof Array ?
+                  this.selectedArr.set(value.index as number[]) : this.selectedVal.set(value.index as number);
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
             },
             onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
+              console.info('TextPickerDialog:onCancel()');
             },
             onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+              console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
             }
           });
         })
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
   }
 }
 ```
@@ -1384,6 +1398,10 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
@@ -1398,18 +1416,26 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)以及[UIExtension错误码](./errorcode-uiextension.md)。
+
+ArkTS-Dyn错误码: 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+
+ArkTS-Sta错误码: 
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100023      | Unable to obtain current ui context. |
 
 **示例：**
 <!--code_no_check-->
 ```ts
 uiContext.getFilteredInspectorTree(['id', 'src', 'content']);
 ```
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // xxx.ets
@@ -1472,7 +1498,7 @@ InsTree ---| type: Column, ID: 15
 InsTree ----| type: Button, ID: 16
 InsTree ----| type: Button, ID: 18
 ```
-ArkTS1.2示例：
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
 import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
@@ -1555,6 +1581,10 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
@@ -1572,11 +1602,20 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)以及[UIExtension错误码](./errorcode-uiextension.md)。
+
+ArkTS-Dyn错误码：
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+
+ArkTS-Sta错误码：
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100023      | Unable to obtain current ui context. |
+| 100024      | The parameter depth must be greater than 0.  |
 
 **示例：**
 
@@ -1584,7 +1623,7 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 ```ts
 uiContext.getFilteredInspectorTreeById('testId', 0, ['id', 'src', 'content']);
 ```
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { UIContext } from '@kit.ArkUI';
@@ -1616,7 +1655,7 @@ struct ComponentPage {
   }
 }
 ```
-ArkTS1.2示例：
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
 import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
@@ -1724,9 +1763,87 @@ getContextMenuController(): ContextMenuController
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
-uiContext.getContextMenuController();
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+    }
+  }
+
+  build() {
+    Column(undefined) {
+      Button('OpenContextMenu')
+        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
+          onAppear: () => {
+            setTimeout(()=>{
+              this.getUIContext().getContextMenuController().close();
+            }, 2000)
+          }
+        })
+        .width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  ButtonType,
+  ResponseType
+} from '@ohos.arkui.component';
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+
+  build() {
+    Column(undefined) {
+      Button('OpenContextMenu')
+        .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
+          onAppear: () => {
+            setTimeout(()=>{
+              this.getUIContext().getContextMenuController().close();
+            }, 2000)
+          }
+        })
+        .width('100%')
+    }
+  }
+}
 ```
 
 ### getMeasureUtils<sup>12+</sup>
@@ -3165,7 +3282,7 @@ static getFocusedUIContext(): UIContext | undefined
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：**  该接口仅适用于ArkTS1.2。
+**ArkTS版本：**  该接口仅适用于ArkTS-Sta。
 
 **返回值：**
 
@@ -3175,21 +3292,7 @@ static getFocusedUIContext(): UIContext | undefined
 
 **示例：**
 ```ts
-import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
-
-import {
-  Text,
-  TextAttribute,
-  Column,
-  Component,
-  Button,
-  ButtonAttribute,
-  ClickEvent,
-  UserView
-} from '@ohos.arkui.component';
-
-import { State, MutableState, stateOf, observableProxy } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
+import { Entry, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { UIContext } from '@ohos.arkui.UIContext';
 
 @Entry
@@ -3199,7 +3302,6 @@ struct MyStateSample {
     Column(undefined) {
       Button("MyButton").backgroundColor("#FFFF00FF")
         .onClick((e: ClickEvent) => {
-          hilog.info(0x0000, 'testTag', 'On Click');
           let uicontext = UIContext.getFocusedUIContext()
           if (uicontext) {
             console.log("MyButton nodeType:" + uicontext.getFrameNodeById('MyButton')?.getNodeType());
@@ -3208,6 +3310,221 @@ struct MyStateSample {
           }
         }).id("MyButton")
     }
+  }
+}
+```
+
+### setUIStates<sup>20+</sup>
+
+setUIStates(callback: VoidCallback): void
+
+提供在非UI线程中安全更新状态变量的能力。在UI线程调用该接口会同步执行回调函数更新状态变量，在非UI线程中调用时，会将回调函数分发到UI线程队列异步执行。
+
+在debug模式下，若检测到未通过setUIStates在非UI线程更新状态变量，系统将输出错误日志（需要使用try-catch捕获异常）。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS版本：**  该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名  |        类型                          | 必填 | 说明               |
+| ------ | ----------------------------- | ---- | ------------------ |
+| callback  | [VoidCallback](arkui-ts/ts-types.md#voidcallback12) |  是   | 用于更新状态变量的回调函数。 |
+
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MyStateSample {
+  @State stateVar: string = "state var";
+  message: string = "var";
+
+  build() {
+    Column() {
+      Text("Hello World").fontSize(20)
+      Button(this.message).backgroundColor("#FFFF00FF")
+        .onClick((e: ClickEvent) => {
+          let uiContext: UIContext = this.getUIContext();
+          taskpool.execute(() => {
+            uiContext.setUIStates(() => {
+              this.stateVar += "~"
+            });
+          });
+
+          // 在非UI线程未使用setUIStates更新状态变量，debug模式下会输出错误日志
+          taskpool.execute(() => {
+            this.stateVar += "~"
+          }).then(() => {}).catch((err: Error) => {
+            console.error("Illegal update detected:", err);
+          });
+        })
+      Text(this.stateVar).fontSize(20)
+    }
+  }
+}
+```
+
+### setImageCacheCount<sup>22+</sup>
+
+ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
+
+ArkTS-Sta: setImageRawDataCacheSize(value: int): void
+
+设置内存中缓存解码后图片的数量上限，提升再次加载同源图片的加载速度。如果不设置则默认为0，不进行缓存。缓存采用内置的LRU策略，新图片加载后，如果超过缓存上限，会删除最久未再次加载的缓存。建议根据应用内存需求，设置合理缓存数量，数字过大可能导致内存使用过高。
+
+setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 内存中解码后图片的缓存数量。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码后图片内存缓存上限为100张
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+import { Entry, Column, Row, Component, Image } from '@ohos.arkui.component';
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码后图片内存缓存上限为100张
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+### setImageRawDataCacheSize<sup>22+</sup>
+
+ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
+
+ArkTS-Sta: setImageRawDataCacheSize(value: int): void
+
+设置内存中缓存解码前图片数据的大小上限，单位为字节，以加快再次加载同源图片的速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载后，若解码前数据超过上限，会删除最久未使用的图片数据缓存。建议根据应用内存需求，设置合理的缓存上限，避免内存使用过高。
+
+setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 内存中解码前图片数据的缓存大小，单位为字节。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+import { Entry, Column, Row, Component, Image } from '@ohos.arkui.component';
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
   }
 }
 ```
@@ -3400,74 +3717,112 @@ createComponentObserver(id: string): inspector.ComponentObserver
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-**ArkTS1.2 示例:**
+**示例：** 
 
-<!--code_no_check-->
+ArkTS-Dyn示例：
+
 ```ts
-import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement'
-import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
-import hilog from '@ohos.hilog';
-import inspector from '@ohos.arkui.inspector';
+import { inspector } from '@kit.ArkUI';
 
+@Entry
 @Component
-struct MyStateSample {
-  private listener: inspector.ComponentObserver|undefined = undefined;
+struct ImageExample {
   build() {
-    Row() {
-      Column() {
-        Text("hello")
-          .width('70%')
-          .height('70%')
-          .id("TEXT1")
-          .onClick(
-            (ev: ClickEvent) => {
-              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
-            }
-          )
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
+    }.height(320).width(360).padding({ right: 10, top: 10 })
   }
+
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
 
   aboutToAppear() {
-    this.listener = this.getUIContext().getUIInspector().createComponentObserver("TEXT1")
     let onLayoutComplete:()=>void=():void=>{
-      hilog.info(0x0000, 'testTag', "TEXT1 layout complete");
+        // 用户自定义回调函数。
     }
     let onDrawComplete:()=>void=():void=>{
-      hilog.info(0x0000, 'testTag', "TEXT1 draw complete");
+        // 用户自定义回调函数。
     }
+    let onDrawChildrenComplete:()=>void=():void=>{
+        // 用户自定义回调函数。
+    }
+    let FuncLayout = onLayoutComplete
+    let FuncDraw = onDrawComplete
+    let FuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayout = onLayoutComplete
+    let OffFuncDraw = onDrawComplete
+    let OffFuncDrawChildren = onDrawChildrenComplete
 
-    if (this.listener != undefined) {
-      this.listener!.on('layout', onLayoutComplete)
-      this.listener!.on('draw', onDrawComplete)
-      // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-      // this.listener.off('layout', onLayoutComplete)
-      // this.listener.off('draw', onDrawComplete)
-    } else {
-      hilog.error(0x0000, 'testTag', "listener is undefined");
-    }
+    this.listener.on('layout', FuncLayout)
+    this.listener.on('draw', FuncDraw)
+    this.listener.on('drawChildren', FuncDrawChildren)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.off('drawChildren', OffFuncDrawChildren)
   }
 }
+```
 
-@Builder
-function ColumChild() {
-  Column() {
-    Text('FullScreenLaunchComponent').width('100%')
-      .height('100%')
+ArkTS-Sta示例：
+
+```ts
+import { inspector } from '@ohos.arkui.inspector';
+import { Column, Row, Image, Flex, FlexDirection, 
+ItemAlign, Image, $r, Text, Component, Entry} from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row() {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360)
   }
-}
 
-export class ComExampleTrivialApplication extends UserView {
-  getBuilder() {
-    hilog.info(0x0000, 'testTag', 'getBuilder');
-    let wrapper = @memo () => {
-      hilog.info(0x0000, 'testTag', 'MyStateSample');
-      MyStateSample(undefined)
+  listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID') as inspector.ComponentObserver
+
+  aboutToAppear() {
+    let onLayoutComplete:()=>void=():void=>{
+        // 用户自定义回调函数。
     }
-    return wrapper
+    let onDrawComplete:()=>void=():void=>{
+        // 用户自定义回调函数。
+    }
+    let onDrawChildrenComplete:()=>void=():void=>{
+        // 用户自定义回调函数。
+    }
+    let FuncLayout = onLayoutComplete
+    let FuncDraw = onDrawComplete
+    let FuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayout = onLayoutComplete
+    let OffFuncDraw = onDrawComplete
+    let OffFuncDrawChildren = onDrawChildrenComplete
+
+    this.listener.onLayout(FuncLayout)
+    this.listener.onDraw(FuncDraw)
+    this.listener.onDrawChildren(onDrawChildrenComplete)
+    
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.offLayout(OffFuncLayout)
+    // this.listener.offDraw(OffFuncDraw)
+    // this.listener.offDrawChildren(OffFuncDrawChildren)
   }
 }
 ```
@@ -5393,7 +5748,7 @@ matchMediaSync(condition: string): mediaQuery.MediaQueryListener
 | ------------------------------------------------------------ | -------------------------------------------- |
 | [mediaQuery.MediaQueryListener](js-apis-mediaquery.md#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
 
-**示例：**
+ArkTS1.1示例：
 
 <!--code_no_check-->
 ```ts
@@ -5401,6 +5756,14 @@ import { MediaQuery } from '@kit.ArkUI';
 
 let mediaquery: MediaQuery = uiContext.getMediaQuery();
 let listener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
+```
+
+ArkTS1.2示例：
+
+```ts
+import mediaquery from '@ohos.mediaquery';
+
+let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
 ## Router
@@ -8320,7 +8683,9 @@ openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, 
 
 **示例：**
 
-该示例通过调用openPopuo、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
+该示例通过调用openPopup、updatePopup和closePopup接口，展示了弹出、更新以及关闭Popup的功能。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
@@ -8397,6 +8762,95 @@ struct Index {
           let context = this.getUIContext();
           const popupParam: PopupParam = {};
           const contentNode = new ComponentContent(context, wrapBuilder(buildText), popupParam);
+          showPopup(context, this.getUniqueId(), contentNode, popupParam);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// xxx.ets
+import { Entry, Component, Builder, wrapBuilder, ComponentContent, UIContext, Text, Row, Column,
+  Button, FrameNode, Color } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { PromptAction } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+interface PopupParam {
+  updateFunc?: () => void;
+  closeFunc?: () => void;
+}
+
+export function showPopup(context: UIContext, uniqueId: number, contentNode: ComponentContent<PopupParam>,
+  popupParam: PopupParam) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let targetId = frameNode?.getFirstChild()?.getUniqueId();
+  promptAction.openPopup(contentNode, { id: targetId as Double }, {
+    radius: 16,
+    mask: { color: Color.Pink },
+    enableArrow: true,
+  })
+    .then(() => {
+      console.info('openPopup success');
+    })
+    .catch((err: Error) => {
+      console.error('openPopup error: ' + err);
+    })
+  popupParam.updateFunc = () => {
+    promptAction.updatePopup(contentNode, {
+      enableArrow: false
+    }, true)
+      .then(() => {
+        console.info('updatePopup success');
+      })
+      .catch((err: Error) => {
+        console.error('updatePopup error: ' + err);
+      })
+  }
+  popupParam.closeFunc = () => {
+    promptAction.closePopup(contentNode)
+      .then(() => {
+        console.info('closePopup success');
+      })
+      .catch((err: Error) => {
+        console.error('closePopup error: ' + err);
+      })
+  }
+}
+
+@Builder
+function buildText(param: PopupParam) {
+  Column() {
+    Text('popup')
+    Button('Update Popup')
+      .fontSize(20)
+      .onClick(() => {
+        param?.updateFunc?.();
+      })
+    Button('Close Popup')
+      .fontSize(20)
+      .onClick(() => {
+        param?.closeFunc?.();
+      })
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Open Popup')
+        .fontSize(20)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const popupParam: PopupParam = {};
+          const contentNode = new ComponentContent<PopupParam>(context, wrapBuilder(buildText), popupParam);
           showPopup(context, this.getUniqueId(), contentNode, popupParam);
         })
     }
@@ -8531,6 +8985,8 @@ openMenu\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, o
 
 该示例通过调用openMenu接口，展示了弹出Menu的功能。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
 
@@ -8566,6 +9022,79 @@ export function showMenu(context: UIContext, uniqueId: number, contentNode: Comp
 struct Index {
   build() {
     Column() {
+      Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
+        .borderRadius('16lpx')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const contentNode = new ComponentContent(context, wrapBuilder(MyMenu));
+          doSomething(context, this.getUniqueId(), contentNode);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  wrapBuilder,
+  ButtonType
+} from '@ohos.arkui.component';
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  showMenu(context, uniqueId, contentNode);
+}
+
+@Builder
+function MyMenu() {
+  Column() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+  .width('80%')
+  .padding('20lpx')
+}
+
+export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let frameNodeTarget = frameNode?.getFirstChild();
+  frameNodeTarget = frameNodeTarget?.getChild(0);
+  if (frameNodeTarget === null) {
+    return;
+  }
+  let targetId = frameNodeTarget!.getUniqueId();
+  promptAction.openMenu(contentNode, { id: targetId }, {
+    enableArrow: true,
+  });
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
       Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
         .borderRadius('16lpx')
         .width('80%')
@@ -8625,6 +9154,8 @@ updateMenu\<T extends Object>(content: ComponentContent\<T>, options: MenuOption
 
 该示例通过调用updateMenu接口，展示了更新Menu箭头样式的功能。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
 
@@ -8678,6 +9209,83 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  wrapBuilder,
+  ButtonType
+} from '@ohos.arkui.component'
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  showMenu(context, uniqueId, contentNode);
+}
+
+@Builder
+function MyMenu() {
+  Column() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+  .width('80%')
+  .padding('20lpx')
+}
+
+export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let frameNodeTarget = frameNode?.getFirstChild();
+  frameNodeTarget = frameNodeTarget?.getChild(0);
+  if (frameNodeTarget === null) {
+    return;
+  }
+  let targetId = frameNodeTarget!.getUniqueId();
+  promptAction.openMenu(contentNode, { id: targetId }, {
+    enableArrow: true,
+  });
+  setTimeout(() => {
+    promptAction.updateMenu(contentNode, {
+      enableArrow: false,
+    });
+  }, 2000);
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
+      Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
+        .borderRadius('16lpx')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const contentNode = new ComponentContent(context, wrapBuilder(MyMenu));
+          doSomething(context, this.getUniqueId(), contentNode);
+        })
+    }
+  }
+}
+```
 
 ### closeMenu<sup>18+</sup>
 
@@ -8714,6 +9322,8 @@ closeMenu\<T extends Object>(content: ComponentContent\<T>): Promise&lt;void&gt;
 **示例：**
 
 该示例通过调用closeMenu接口，展示了关闭Menu的功能。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent, FrameNode } from '@kit.ArkUI';
@@ -8767,6 +9377,81 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+import {
+  Entry,
+  Column,
+  Button,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  Builder,
+  $r,
+  Component,
+  wrapBuilder,
+  ButtonType
+} from '@ohos.arkui.component';
+import { ComponentContent, FrameNode } from '@ohos.arkui.node';
+import { UIContext } from '@ohos.arkui.UIContext';
+import promptAction from '@ohos.promptAction';
+
+export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  showMenu(context, uniqueId, contentNode);
+}
+
+@Builder
+function MyMenu() {
+  Column() {
+    Menu() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' } as MenuItemOptions)
+    }
+  }
+  .width('80%')
+  .padding('20lpx')
+}
+
+export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+  const promptAction = context.getPromptAction();
+  let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
+  let frameNodeTarget = frameNode?.getFirstChild();
+  frameNodeTarget = frameNodeTarget?.getChild(0);
+  if (frameNodeTarget === null) {
+    return;
+  }
+  let targetId = frameNodeTarget!.getUniqueId();
+  promptAction.openMenu(contentNode, { id: targetId }, {
+    enableArrow: true,
+  });
+  setTimeout(() => {
+    promptAction.closeMenu(contentNode);
+  }, 2000);
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
+      Button('OpenMenu', { type: ButtonType.Normal, stateEffect: true })
+        .borderRadius('16lpx')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          let context = this.getUIContext();
+          const contentNode = new ComponentContent(context, wrapBuilder(MyMenu));
+          doSomething(context, this.getUniqueId(), contentNode);
+        })
+    }
+  }
+}
+```
 ## DragController<sup>11+</sup>
 以下API需先使用UIContext中的[getDragController()](js-apis-arkui-UIContext.md#getdragcontroller11)方法获取DragController实例，再通过此实例调用对应方法。
 
@@ -11916,3 +12601,107 @@ struct Index {
   }
 }
 ```
+
+## 使用@ohos.transfer进行UIContext类型转换
+
+
+在ArkTS-Sta中使用ArkTS-Dyn传入的UIContext对象。
+
+- 创建ArkTS-Sta子模块`library2`，在`library2/src/main/ets/components`目录的方法中使用传入的UIContext用于逻辑处理。
+  
+  ArkTS-Sta示例：
+
+  ```TypeScript
+  'use static'
+  // library2/src/main/ets/components/MainPage.ets
+
+  import transfer from '@ohos.transfer';
+  import { UIContext } from '@ohos.arkui.UIContext';
+
+  const vpTest:number = 200;
+  export function uiContextTest(uiContext:Object): number {
+    let uiContextTrans = transfer.transferStatic(uiContext, 'ArkUI.UIContext');
+    let uiContextStatic = uiContextTrans! as UIContext;
+    return uiContextStatic.px2vp(vpTest);
+  }
+  ```
+  
+- 在ArkTS-Dyn主模块中获取UIContext并传递给ArkTS-Sta。
+  
+  ArkTS-Dyn示例：
+
+  ```TypeScript
+  // entry/src/main/ets/pages/Index.ets
+  
+  import { uiContextTest } from 'library2';
+  import { UIContext } from '@kit.ArkUI';
+  
+  // uiContext互操作
+  export function uiContextTrans(uiContext:UIContext): number {
+    return uiContextTest(uiContext);
+  }
+  
+  @Entry
+  @Component
+  struct MyStateSample {
+    build() {
+      Column(undefined) {
+        Column()
+          .backgroundColor('#ff0000ff')
+          .size({width:uiContextTrans(this.getUIContext()), height:uiContextTrans(this.getUIContext())})
+      }
+    }
+  }
+  ```
+  ![image](figures/uiContextTransfer.png)
+
+在ArkTS-Dyn中使用ArkTS-Sta传入的UIContext对象。
+  
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录的方中使用传入的UIContext进行业务处理。
+    
+    ArkTS-Dyn示例：
+
+    ```TypeScript
+    // library/src/main/ets/components/MainPage.ets
+  
+    import { UIContext } from '@kit.ArkUI';
+  
+    const vpTest:number = 200;
+    export function uiContextTest(uiContext:Object): number {
+      let uiContextDynamic = uiContext as UIContext;
+      return uiContextDynamic.px2vp(vpTest);
+    }
+    ```
+    
+- 在ArkTS-Sta主模块中获取UIContext后转换为ArkTS-Dyn对象并传递给ArkTS-Dyn模块。
+    
+    ArkTS-Sta示例：
+    
+    ```TypeScript
+    'use static'
+    // entry/src/main/ets/pages/Index.ets
+  
+    import { Entry, Column, Component, Resource, Image } from '@ohos.arkui.component';
+    import transfer from '@ohos.transfer';
+    import { uiContextTest } from 'library';
+    import { UIContext } from '@ohos.arkui.UIContext';
+    
+    // uiContext互操作
+    export function uiContextTrans(uiContext:UIContext): number {
+      let uiContextDynamic = transfer.transferDynamic(uiContext, 'ArkUI.UIContext');
+      return uiContextTest(uiContextDynamic);
+    }
+  
+    @Entry
+    @Component
+    struct MyStateSample {
+      build() {
+        Column(undefined) {
+          Column()
+            .backgroundColor('#ff0000ff')
+            .size({width:uiContextTrans(this.getUIContext()), height:uiContextTrans(this.getUIContext())})
+        }
+      }
+    }
+    ```
+    ![image](figures/uiContextTransfer.png)

@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -18,10 +20,14 @@ import { resourceManager } from '@kit.LocalizationKit'
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称         | 类型     | 只读   | 可选  |说明          |
 | ---------- | ------ | ----- | ----  | ---------------|
 | bundleName | string | 否    | 否 | 应用的bundle名称。 |
 | moduleName | string | 否    | 否 | 应用的module名称。 |
-| id         | number | 否    | 否 | 资源的id值。      |
-| params     | ArkTS1.1: any[] </br> ArkTS1.2: Array<Object \| undefined>| 否   | 是 | 其他资源参数，包括资源名、格式化接口的替换值、复数接口的量词。      |
-| type       | number | 否    | 是 | 资源的类型。      |
+| id         | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否    | 否 | 资源的id值。      |
+| params     | ArkTS-Dyn: any[]<br>ArkTS-Sta: Array<string \| int \| long \| double \| Resource> | 否   | 是 | 其他资源参数，包括资源名、格式化接口的替换值、复数接口的量词。      |
+| type       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是 | 资源的类型。      |

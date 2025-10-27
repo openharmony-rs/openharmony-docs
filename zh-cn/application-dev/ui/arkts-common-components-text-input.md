@@ -12,6 +12,7 @@ TextInput、TextArea是输入框组件，用于响应用户输入，比如评论
 
 TextInput为单行输入框、TextArea为多行输入框。通过以下接口来创建。
 
+ArkTS1.1示例：
 ```ts
 TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextInputController})
 ```
@@ -20,9 +21,26 @@ TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: Te
 TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextAreaController})
 ```
 
+ArkTS1.2示例：
+```ts
+import { TextInput, ResourceStr, TextInputController } from '@ohos.arkui.component';
+TextInput(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextInputController})
+```
+
+```ts
+import { TextArea, ResourceStr, TextAreaController } from '@ohos.arkui.component';
+TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: TextAreaController})
+```
+
 - 单行输入框。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput } from '@ohos.arkui.component';
   TextInput()
   ```
 
@@ -31,7 +49,13 @@ TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: Tex
 
 - 多行输入框。
 
+  ArkTS1.1示例：
   ```ts
+  TextArea()
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextArea } from '@ohos.arkui.component';
   TextArea()
   ```
 
@@ -40,7 +64,13 @@ TextArea(value?:{placeholder?: ResourceStr, text?: ResourceStr, controller?: Tex
 - 多行输入框文字超出一行时会自动折行。
 
 
+  ArkTS1.1示例：
   ```ts
+  TextArea({ text: "我是TextArea我是TextArea我是TextArea我是TextArea" }).width(300)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextArea } from '@ohos.arkui.component';
   TextArea({ text: "我是TextArea我是TextArea我是TextArea我是TextArea" }).width(300)
   ```
 
@@ -54,7 +84,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 基本输入模式（默认类型）。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.Normal)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.Normal)
   ```
@@ -63,7 +100,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 密码输入模式。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.Password)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.Password)
   ```
@@ -72,7 +116,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 邮箱地址输入模式。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.Email)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.Email)
   ```
@@ -81,7 +132,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 纯数字输入模式。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.Number)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.Number)
   ```
@@ -90,7 +148,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 电话号码输入模式。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.PhoneNumber)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.PhoneNumber)
   ```
@@ -99,7 +164,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 带小数点的数字输入模式。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.NUMBER_DECIMAL)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.NUMBER_DECIMAL)
   ```
@@ -108,7 +180,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 带URL的输入模式。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput()
+    .type(InputType.URL)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, InputType } from '@ohos.arkui.component';
   TextInput()
     .type(InputType.URL)
   ```
@@ -120,7 +199,13 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 - 设置无输入时的提示文本。
 
 
+  ArkTS1.1示例：
   ```ts
+  TextInput({ placeholder: '我是提示文本' })
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput } from '@ohos.arkui.component';
   TextInput({ placeholder: '我是提示文本' })
   ```
 
@@ -129,7 +214,13 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 设置输入框当前的文本内容。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput({ placeholder: '我是提示文本', text: '我是当前文本内容' })
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput } from '@ohos.arkui.component';
   TextInput({ placeholder: '我是提示文本', text: '我是当前文本内容' })
   ```
 
@@ -137,7 +228,14 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 
 - 添加backgroundColor改变输入框的背景颜色。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput({ placeholder: '我是提示文本', text: '我是当前文本内容' })
+    .backgroundColor(Color.Pink)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, Color } from '@ohos.arkui.component';
   TextInput({ placeholder: '我是提示文本', text: '我是当前文本内容' })
     .backgroundColor(Color.Pink)
   ```
@@ -159,6 +257,7 @@ TextInput有以下类型可选择：Normal基本输入模式、Password密码输
 >
 > [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15)的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
 
+ArkTS1.1示例：
 ```ts
 // xxx.ets
 @Entry
@@ -241,6 +340,92 @@ struct Index {
   }
 }
 ```
+ArkTS1.2示例：
+```ts
+import { Entry, Column, Row, Component, Button, ClickEvent, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { Text, TextInput, InputType, TextInputController, EnterKeyType, SubmitEvent, InsertValue, DeleteValue, PreviewText, TextChangeOptions } from '@ohos.arkui.component';
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State text: string = '';
+  @State textStr1: string = '';
+  @State textStr2: string = '';
+  @State textStr3: string = '';
+  @State textStr4: string = '';
+  @State textStr5: string = '';
+  @State textStr6: string = '';
+  @State textStr7: string = '';
+  @State textStr8: string = '';
+  @State textStr9: string = '';
+  @State passwordState: boolean = false;
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Row() {
+      Column() {
+        Text(`${this.textStr1}\n${this.textStr2}\n${this.textStr3}
+        \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
+        \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
+          .fontSize(20)
+        TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+          .type(InputType.Password)
+          .showPassword(this.passwordState)
+          .onChange((value: string, previewText?: PreviewText, options?: TextChangeOptions) => {
+            // 文本内容发生变化时触发该回调
+            console.info('onChange is triggering: ', value);
+            this.textStr1 = `onChange is triggering: ${value}`;
+          })
+          .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
+            // 按下输入法回车键时触发该回调
+            console.info('onSubmit is triggering: ', enterKey, event.text);
+            this.textStr2 = `onSubmit is triggering: ${enterKey} ${event.text}`;
+          })
+          .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+            // 文本选择的位置发生变化或编辑状态下光标位置发生变化时，触发该回调
+            console.info('onTextSelectionChange is triggering: ', selectionStart, selectionEnd);
+            this.textStr3 = `onTextSelectionChange is triggering: ${selectionStart} ${selectionEnd}`;
+          })
+          .onSecurityStateChange((isShowPassword: boolean) => {
+            // 密码显隐状态切换时，触发该回调
+            console.info('onSecurityStateChange is triggering: ', isShowPassword);
+            this.passwordState = isShowPassword;
+            this.textStr4 = `onSecurityStateChange is triggering: ${isShowPassword}`;
+          })
+          .onWillInsert((info: InsertValue) => {
+            // 在将要输入时，触发该回调
+            console.info('onWillInsert is triggering: ', info.insertValue, info.insertOffset);
+            this.textStr5 = `onWillInsert is triggering: ${info.insertValue} ${info.insertOffset}`;
+            return true;
+          })
+          .onDidInsert((info: InsertValue) => {
+            // 在输入完成时，触发该回调
+            console.info('onDidInsert is triggering: ', info.insertValue, info.insertOffset);
+            this.textStr6 = `onDidInsert is triggering: ${info.insertValue} ${info.insertOffset}`;
+          })
+          .onWillDelete((info: DeleteValue) => {
+            // 在将要删除时，触发该回调
+            console.info('onWillDelete is triggering: ', info.deleteValue, info.deleteOffset);
+            this.textStr7 = `onWillDelete is triggering: ${info.deleteValue} ${info.deleteOffset}`;
+            return true;
+          })
+          .onDidDelete((info: DeleteValue) => {
+            // 在删除完成时，触发该回调
+            console.info('onDidDelete is triggering: ', info.deleteValue, info.deleteOffset);
+            this.textStr8 = `onDidDelete is triggering: ${info.deleteValue} ${info.deleteOffset}`;
+          })
+          .onFocus(() => {
+            // 绑定通用事件，输入框获焦时触发该回调
+            console.info('onFocus is triggering')
+            this.textStr9 = `onFocus is triggering`;
+          })
+      }.width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ![text_input_event](figures/text_input_event.gif)
 
@@ -263,6 +448,7 @@ TextArea({text : '这是一段文本，用来展示选中菜单'})
 ## 禁用系统服务类菜单
 
 从API version 20开始，支持使用[disableSystemServiceMenuItems](../reference/apis-arkui/js-apis-arkui-UIContext.md#disablesystemservicemenuitems20)方法屏蔽文本选择菜单中的所有系统服务菜单项。
+ArkTS1.2不支持此设置。
 
   ```ts
   import { TextMenuController } from '@kit.ArkUI';
@@ -309,6 +495,7 @@ TextArea({text : '这是一段文本，用来展示选中菜单'})
   ![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
 从API version 20开始，支持使用[disableMenuItems](../reference/apis-arkui/js-apis-arkui-UIContext.md#disablemenuitems20)方法屏蔽文本选择菜单中指定的系统服务菜单项。
+ArkTS1.2不支持此设置。
 
   ```ts
   import { TextMenuController } from '@kit.ArkUI';
@@ -359,7 +546,17 @@ TextArea({text : '这是一段文本，用来展示选中菜单'})
 输入框可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12)属性设置自动填充类型。
 
 支持的类型请参考[ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12枚举说明)。
+ArkTS1.1示例：
 ```ts
+TextInput({ placeholder: '输入你的邮箱...' })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.EMAIL_ADDRESS)
+```
+ArkTS1.2示例：
+```ts
+import { TextInput, ContentType } from '@ohos.arkui.component';
 TextInput({ placeholder: '输入你的邮箱...' })
   .width('95%')
   .height(40)
@@ -375,7 +572,18 @@ TextInput({ placeholder: '输入你的邮箱...' })
 
   ellipsisMode属性需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
+  ArkTS1.1示例：
   ```ts
+  TextInput({ text: '这是一段文本，用来展示省略模式'})
+    .textOverflow(TextOverflow.Ellipsis)
+    .ellipsisMode(EllipsisMode.END)
+    .style(TextInputStyle.Inline)
+    .fontSize(30)
+    .margin(30)
+  ```
+  ArkTS1.2示例：
+  ```ts
+  import { TextInput, TextOverflow, EllipsisMode, TextInputStyle } from '@ohos.arkui.component';
   TextInput({ text: '这是一段文本，用来展示省略模式'})
     .textOverflow(TextOverflow.Ellipsis)
     .ellipsisMode(EllipsisMode.END)
@@ -388,6 +596,7 @@ TextInput({ placeholder: '输入你的邮箱...' })
 - 设置文本描边属性。 
 
   从API version 20开始，输入框可以通过[strokeWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokewidth20)和[strokeColor](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#strokecolor20)属性设置文本的描边宽度及颜色。
+  ArkTS1.2不支持此设置。
 
   ```ts
   TextInput({ text: 'Text with stroke' })
@@ -403,13 +612,24 @@ TextInput({ placeholder: '输入你的邮箱...' })
 ## 设置文本行间距
 
 从API version 20开始，支持通过[lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20)设置文本的行间距。如果不配置[LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20对象说明)时，首行上方和尾行下方默认会有行间距。如果onlyBetweenLines设置为true时，行间距仅适用于行与行之间，首行上方无额外行间距。
+ArkTS1.2不支持onlyBetweenLines设置。
 
+ArkTS1.1示例：
 ```ts
 TextArea({
         text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
       })
         .fontSize(22)
         .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+```
+ArkTS1.2示例：
+```ts
+import { TextArea, LengthMetrics } from '@ohos.arkui.component';
+TextArea({
+        text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
+      })
+        .fontSize(22)
+        .lineSpacing(LengthMetrics.px(20))
 ```
 
 ![TextInput_line_spacing](figures/TextInput_line_spacing.jpg)
@@ -418,7 +638,32 @@ TextArea({
 
 键盘抬起后，具有滚动能力的容器组件在横竖屏切换时，才会生效键盘避让，若希望无滚动能力的容器组件也生效键盘避让，建议在组件外嵌套一层具有滚动能力的容器组件，比如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)。
 
+ArkTS1.1示例：
 ```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  placeHolderArr: string[] = ['1', '2', '3', '4', '5', '6', '7'];
+
+  build() {
+    Scroll() {
+      Column() {
+        ForEach(this.placeHolderArr, (placeholder: string) => {
+          TextInput({ placeholder: 'TextInput ' + placeholder })
+            .margin(30)
+        })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+ArkTS1.2示例：
+```ts
+import { Entry, Column, Row, Component } from '@ohos.arkui.component';
+import { Scroll, ForEach, TextInput } from '@ohos.arkui.component';
 // xxx.ets
 @Entry
 @Component
@@ -446,6 +691,7 @@ struct Index {
 
 [keyBoardAvoidMode](../reference/apis-arkui/js-apis-arkui-UIContext.md#keyboardavoidmode11)枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次避让。如果想要支持光标位置在点击或者通过接口设置变化后发生二次避让，可以考虑使用OFFSET_WITH_CARET和RESIZE_CARET替换原有的OFFSET和RESIZE模式。<br>
 对于滚动容器更推荐使用RESIZE_WITH_CARET，非滚动容器应该使用OFFSET_WITH_CARET。
+ArkTS1.2不支持设置上述避让模式。
 
 ```ts
 // EntryAbility.ets

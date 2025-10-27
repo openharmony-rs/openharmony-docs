@@ -60,6 +60,8 @@ import { Once } from '@ohos.arkui.stateManagement';
 \@Once用于变量仅初始化同步数据源一次，之后不再继续同步变化的场景。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param, Once } from '@ohos.arkui.stateManagement';
 
@@ -95,6 +97,8 @@ struct MyComponent {
 当\@Once与\@Param结合使用时，可以解除\@Param本地不可修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于\@Local，但\@Param和\@Once还能接收外部传入的初始值。
 
 ```ts
+'use static'
+
 import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Param, Once, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
 

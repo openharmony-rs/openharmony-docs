@@ -124,17 +124,23 @@ struct WebComponent {
 
 ## read<sup>12+</sup>
 
-read(size: number): Promise\<ArrayBuffer\>
+ArkTS-Dyn: read(size: number): Promise\<ArrayBuffer\>
+
+ArkTS-Sta: read(size: int): Promise\<ArrayBuffer\>
 
 读取WebHttpBodyStream中的数据。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  size | number | 是   | 读取WebHttpBodyStream中的字节数。 |
+|  size | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 读取WebHttpBodyStream中的字节数。 |
 
 **返回值：**
 
@@ -156,17 +162,23 @@ read(size: number): Promise\<ArrayBuffer\>
 
 ## getSize<sup>12+</sup>
 
-getSize(): number
+ArkTS-Dyn: getSize(): number
+
+ArkTS-Sta: getSize(): long
 
 获取WebHttpBodyStream中的数据大小，分块传输时总是返回零。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 获取WebHttpBodyStream中的数据大小。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 获取WebHttpBodyStream中的数据大小。 |
 
 **示例：**
 
@@ -174,17 +186,23 @@ getSize(): number
 
 ## getPosition<sup>12+</sup>
 
-getPosition(): number
+ArkTS-Dyn: getPosition(): number
+
+ArkTS-Sta: getPosition(): long
 
 读取WebHttpBodyStream中当前的读取位置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | WebHttpBodyStream中当前的读取位置。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | WebHttpBodyStream中当前的读取位置。 |
 
 **示例：**
 
@@ -197,6 +215,10 @@ isChunked(): boolean
 WebHttpBodyStream是否采用分块传输。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -216,6 +238,10 @@ isEof(): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -233,6 +259,10 @@ isInMemory(): boolean
 判断WebHttpBodyStream中的上传数据是否在内存中。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 

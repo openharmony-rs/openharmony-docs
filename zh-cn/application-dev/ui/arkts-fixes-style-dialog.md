@@ -35,32 +35,81 @@
 
 创建并显示操作菜单后，菜单的响应结果会异步返回选中按钮在buttons数组中的索引。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { PromptAction } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
 
-let uiContext = this.getUIContext();
-let promptAction: PromptAction = uiContext.getPromptAction();
-try {
-  promptAction.showActionMenu({
-    title: 'showActionMenu Title Info',
-    buttons: [
-      {
-        text: 'item1',
-        color: '#666666'
-      },
-      {
-        text: 'item2',
-        color: '#000000'
-      },
-    ]
-  })
-    .then(data => {
-      console.info('showActionMenu success, click button: ' + data.index);
-    })
-    .catch((err: Error) => {
-      console.error('showActionMenu error: ' + err);
-    })
-} catch (error) {
+  build() {
+    Column() {
+      Button('showActionMenu')
+        .onClick(() => {
+          this.promptAction.showActionMenu({
+            title: 'showActionMenu Title Info',
+            buttons: [
+              {
+                text: 'item1',
+                color: '#666666'
+              },
+              {
+                text: 'item2',
+                color: '#000000'
+              },
+            ]
+          })
+            .then(data => {
+              console.info('showActionMenu success, click button: ' + data.index);
+            })
+            .catch((err: Error) => {
+              console.error('showActionMenu error: ' + err);
+            })
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Button, FlexAlign, ClickEvent } from '@ohos.arkui.component';
+import promptAction from '@ohos.promptAction';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('showActionMenu')
+        .onClick((event: ClickEvent) => {
+          this.getUIContext().getPromptAction().showActionMenu({
+            title: 'showActionMenu Title Info',
+            buttons: [
+              {
+                text: 'item1',
+                color: '#666666'
+              },
+              {
+                text: 'item2',
+                color: '#000000'
+              },
+            ] as promptAction.PromptActionDoubleButtons
+          })
+            .then((data: promptAction.ActionMenuSuccessResponse) => {
+              console.info('showActionMenu success, click button: ' + data.index);
+            })
+            .catch((err: Error) => {
+              console.error('showActionMenu error: ' + err);
+            })
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
@@ -74,34 +123,99 @@ try {
 
 创建并显示对话框，对话框响应后异步返回选中按钮在buttons数组中的索引。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let uiContext = this.getUIContext();
-let promptAction: PromptAction = uiContext.getPromptAction();
-try {
-  promptAction.showDialog({
-    title: 'showDialog Title Info',
-    message: 'Message Info',
-    buttons: [
-      {
-        text: 'button1',
-        color: '#000000'
-      },
-      {
-        text: 'button2',
-        color: '#000000'
-      }
-    ]
-  }, (err, data) => {
-    if (err) {
-      console.error('showDialog err: ' + err);
-      return;
-    }
-    console.info('showDialog success callback, click button: ' + data.index);
-  });
-} catch (error) {
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Column() {
+      Button('showDialog')
+        .onClick(() => {
+          try {
+            this.promptAction.showDialog({
+              title: 'showDialog Title Info',
+              message: 'Message Info',
+              buttons: [
+                {
+                  text: 'button1',
+                  color: '#000000'
+                },
+                {
+                  text: 'button2',
+                  color: '#000000'
+                }
+              ]
+            }, (err, data) => {
+              if (err) {
+                console.error('showDialog err: ' + err);
+                return;
+              }
+              console.info('showDialog success callback, click button: ' + data.index);
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showDialog args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Button, BusinessError, FlexAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('showDialog')
+        .onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().showDialog({
+              title: 'showDialog Title Info',
+              message: 'Message Info',
+              buttons: [
+                {
+                  text: 'button1',
+                  color: '#000000'
+                },
+                {
+                  text: 'button2',
+                  color: '#000000'
+                }
+              ]
+            }, (err, data) => {
+              if (err) {
+                console.error('showDialog err: ' + err);
+                return;
+              }
+              if (data) {
+                console.info('showDialog success callback, click button: ' + data.index);
+              }
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showDialog args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
@@ -345,6 +459,8 @@ struct TextPickerDialogExample {
 
 该示例通过配置width、height、transition等接口，定义了弹窗的样式以及弹出动效。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -402,6 +518,62 @@ struct showActionSheetExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Button, DialogAlignment, FlexAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('showActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet title',
+            message: 'message',
+            autoCancel: true,
+            confirm: {
+              value: 'Confirm button',
+              action: () => {
+                console.info('Get ActionSheet handled');
+              }
+            },
+            cancel: () => {
+              console.info('ActionSheet canceled');
+            },
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -10 },
+            sheets: [
+              {
+                title: 'apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ]
+          });
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ![image](figures/UIContextShowactionSheet.gif)
 
 ## 警告弹窗 (AlertDialog)
@@ -416,6 +588,8 @@ struct showActionSheetExample {
 警告弹窗中，title和subtitle字段的字体最大放大倍数为2。
 
 该示例通过配置width、height、transition等接口，定义了多个按钮弹窗的样式以及弹出动效。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -459,6 +633,44 @@ struct showAlertDialogExample {
           );
         })
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Button, DialogAlignment, AlertDialogParamWithConfirm,
+  FlexAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('showAlertDialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog({
+            title: 'title',
+            message: 'text',
+            autoCancel: true,
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -20 },
+            gridCount: 3,
+            confirm: {
+              value: 'button',
+              action: () => {
+                console.info('Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('Closed callbacks');
+            }
+          } as AlertDialogParamWithConfirm);
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
   }
 }
 ```

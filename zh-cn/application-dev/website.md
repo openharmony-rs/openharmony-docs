@@ -46,19 +46,30 @@
       - [ArkTS语法适配背景](quick-start/arkts-migration-background.md)
       - [从TypeScript到ArkTS的适配规则](quick-start/typescript-to-arkts-migration-guide.md)
       - [适配指导案例](quick-start/arkts-more-cases.md)
-    - 从ArkTS1.1到ArkTS1.2的适配指导<!--arkts1.1-to-arkts1.2-migration-->
-      - [ArkTS1.2用户指导](quick-start/arkts-v1.2-user-guide.md)
-      - [ArkTS1.2迁移工具(EasyTrans)用户手册](quick-start/arkts-easytrans-userguide.md)
-      - [ArkTS1.2语法迁移规则](quick-start/arkts-v1.1-v1.2-migration-rules.md)
-      - [ArkTS1.2并发迁移规则](quick-start/arkts-v1.1-v1.2-concurrency-rules.md)
-      - [ArkTS1.2builtin迁移规则](quick-start/arkts-v1.1-v1.2-builtin-rules.md)
-      - [ArkTS1.2SDK迁移规则](quick-start/arkts-v1.1-v1.2-sdk-rules.md)
-      - [ArkTS1.2与ArkTS1.1互操作迁移规则](quick-start/arkts-v1.1-v1.2-interop-rules.md)
-      - [ArkTS1.2互操作概述](quick-start/arkts-interop-overview.md)
-      - [ArkTS1.2互操作类型映射规则](quick-start/arkts-interop-type-mapping.md)
-      - [ArkTS1.2互操作场景](quick-start/arkts-interop-more.md)
-      - [ArkTS1.2互操作特性规范](quick-start/arkts-interop-spec.md)      
-      - [ArkTS1.2UI迁移规则](quick-start/arkts-v1.1-v1.2-ui.md)
+    - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
+      - [ArkTS-Sta用户指导](quick-start/arkts-sta-user-guide.md)
+      - [ArkTS-Sta迁移工具(EasyTrans)用户手册](quick-start/arkts-easytrans-userguide.md)
+      - [ArkTS-Sta语法迁移规则](quick-start/arkts-dyn-to-sta-syntax-rules.md)
+      - [ArkTS-Sta并发迁移规则](quick-start/arkts-dyn-to-sta-concurrency-rules.md)
+      - [ArkTS-Sta builtin迁移规则](quick-start/arkts-dyn-to-sta-builtin-rules.md)
+      - [ArkTS-Sta SDK迁移规则](quick-start/arkts-dyn-to-sta-sdk-rules.md)
+      - [ArkTS-Sta与ArkTS-Dyn互操作迁移规则](quick-start/arkts-dyn-to-sta-interop-rules.md)
+      - [ArkTS-Sta互操作概述](quick-start/arkts-interop-overview.md)
+      - [ArkTS-Sta互操作类型映射规则](quick-start/arkts-interop-type-mapping.md)
+      - [ArkTS-Sta互操作场景](quick-start/arkts-interop-more.md)
+      - [ArkTS-Sta互操作特性规范](quick-start/arkts-interop-spec.md)
+      - ArkTS1.2UI互操作指导
+        - [互操作概述](quick-start/arkts-v1.1-v1.2-ui-interop.md)
+        - [UI构建互操作](quick-start/arkts-v1.2-interop-v1.1-ui-build.md)
+        - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](ui/arkts-dyn-interop-sta-component.md)
+        - [状态管理V1互操作](quick-start/arkts-v1.2-interop-v1.1-statemanager-v1.md)
+        - [ArkTS-Sta与ArkTS-Dyn动态数据和@Observed数据的互操作](ui/arkts-sta-interop-dyn-observed.md)
+        - 状态管理V2互操作
+          - [ArkTS-Sta与ArkTS-Dyn应用间V2状态存储互操作](ui/arkts-sta-interop-dyn-storages-v2.md)
+          - [ArkTS-Sta与ArkTS-Dyn@ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
+        - 状态管理V1V2混用互操作
+        - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
+        - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](ui/arkts-sta-interop-dyn-navigation.md)
     - [ArkTS高性能编程实践](quick-start/arkts-high-performance-programming.md)
     - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
       - [从Java到ArkTS的迁移指导](quick-start/getting-started-with-arkts-for-java-programmers.md)
@@ -388,32 +399,6 @@
       - [ArkUI简介](ui/arkui-overview.md)
       - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
         - [UI开发（ArkTS声明式开发范式）概述](ui/arkts-ui-development-overview.md)
-        - 从ArkTS1.1到ArkTS1.2的UI适配指导<!--ui-arkts-migration-guide-->
-          - ArkTS1.2不再支持的UI接口<!--ui-deprecated-apis-->
-            - [滚动与滑动](ui/arkts-v1.2-deprecated-scrollable-apis.md)
-            - [像素单位转换](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
-            - [页面上下文](arkts-v1.2-deprecated-ts-pixel-units-apis.md)
-            - [绘制组件](ui/arkts-v1.2-deprecated-drawing-apis.md)
-            - [Picker类组件](ui/arkts-v1.2-deprecated-picker-apis.md)
-            - [渲染控制](ui/arkts-v1.2-deprecated-rendering-control-apis.md)
-            - [弹窗类组件](ui/arkts-v1.2-deprecated-dialog-apis.md)
-            - [表单类组件](ui/arkts-v1.2-deprecated-form-apis.md)
-            - [文本类组件](ui/arkts-v1.2-deprecated-text-apis.md)
-            - [布局类组件](arkts-v1.2-deprecated-layout-apis.md)
-            - [布局回调](ui/arkts-v1.2-deprecated-inspector.md)
-            - [路由和导航类接口](ui/arkts-v1.2-deprecated-router-navigation.md)
-            - [动效类接口](ui/arkts-v1.2-deprecated-animation.md)
-            - [视效类接口](ui/arkts-v1.2-deprecated-visual-effect.md)
-            - [Swiper](ui/arkts-v1.2-deprecated-swiper.md)
-            - [Panel](ui/arkts-v1.2-deprecated-panel.md)
-            - [AlphabetIndexer](ui/arkts-v1.2-deprecated-alphabet-indexer.md)
-            - [状态管理](ui/arkts-v1.2-deprecated-state-management-apis.md)
-            - [@ohos.arkui.dragController](ui/arkts-v1.2-deprecated-dragController-apis.md)
-            - [@ohos.arkui.componentSnapshot](ui/arkts-v1.2-deprecated-componentSnapshot-apis.md)
-            - [@ohos.arkui.componentUtils](ui/arkts-v1.2-deprecated-componentUtils-apis.md)
-            - [交互事件字段](ui/arkts-v1.2-deprecated-event-object-apis.md)
-            - [UIExtensionComponent (系统接口)](ui/arkts-v1.2-deprecated-uiextension.md)
-            - [AbilityComponent (系统接口)](ui/arkts-v1.2-deprecated-abilitycomponent.md)
         - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
           - [基本语法概述](ui/state-management/arkts-basic-syntax-overview.md)
           - [声明式UI描述](ui/state-management/arkts-declarative-ui-description.md)
@@ -504,8 +489,8 @@
             - [相对布局 (RelativeContainer)](ui/arkts-layout-development-relative-layout.md)
             - [栅格布局 (GridRow/GridCol)](ui/arkts-layout-development-grid-layout.md)
             - [选项卡 (Tabs)](ui/arkts-navigation-tabs.md)
-        - 列表与宫格<!--arkts-list-and-grid-->
-          - [列表与宫格概述](ui/arkts-list-grid-development-overview.md)
+        - 列表与网格<!--arkts-list-and-grid-->
+          - [列表与网格概述](ui/arkts-list-grid-development-overview.md)
           - [创建列表 (List)](ui/arkts-layout-development-create-list.md)
           - [创建弧形列表 (ArcList)](ui/arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
           - [创建网格 (Grid/GridItem)](ui/arkts-layout-development-create-grid.md)
@@ -562,7 +547,6 @@
           - [几何图形绘制概述](ui/arkts-shape-overview.md)
           - [绘制几何图形 (Shape)](ui/arkts-geometric-shape-drawing.md)
           - [形状裁剪 (clipShape)](ui/arkts-clip-shape.md)
-          - [使用画布绘制自定义图形 (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
         - [添加交互响应](ui/arkts-interaction-development-guide-overview.md)
           - [交互响应概述](ui/arkts-interaction-capability-overview.md)
           - [交互基础机制说明](ui/arkts-interaction-basic-principles.md)
@@ -605,8 +589,6 @@
             - [阴影](ui/arkts-shadow-effect.md)
             - [色彩](ui/arkts-color-effect.md)
           - [帧动画（ohos.animator）](ui/arkts-animator.md)
-        - Modifier机制<!--arkts-modifier-mechanism-->
-          - [ContentModifier (内容修改器)](ui/arkts-common-attributes-content-modifier.md)
         - 使用自定义能力<!--arkts-user-defined-capabilities-->
           - [自定义能力概述](ui/arkts-user-defined.md)
           - [自定义组合](ui/arkts-user-defined-composition.md)
@@ -616,12 +598,16 @@
             - [自定义组件节点 (FrameNode)](ui/arkts-user-defined-arktsNode-frameNode.md)
             - [自定义渲染节点 (RenderNode)](ui/arkts-user-defined-arktsNode-renderNode.md)
             - [自定义声明式节点 (BuilderNode)](ui/arkts-user-defined-arktsNode-builderNode.md)
-          - 自定义扩展<!--arkts-modifier-->
+            - [自定义声明式节点 (BuilderNode)（ArkTS1.2）](ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)
+          - 自定义绘制<!--arkts-draw-->
+            - [使用画布绘制自定义图形 (Canvas)](ui/arkts-drawing-customization-on-canvas.md)
+            - [自定义绘制修改器 (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
+          - Modifier机制<!--arkts-modifier-->
             - [自定义扩展概述](ui/arkts-user-defined-modifier.md)
+            - [内容修改器 (ContentModifier)](ui/arkts-common-attributes-content-modifier.md)
             - [属性修改器 (AttributeModifier)](ui/arkts-user-defined-extension-attributeModifier.md)
             - [属性更新器 (AttributeUpdater)](ui/arkts-user-defined-extension-attributeUpdater.md)
-            - [自定义绘制修改器 (DrawModifier)](ui/arkts-user-defined-extension-drawModifier.md)
-        - [使用镜像能力](ui/arkts-mirroring-display.md)
+        - [UI国际化](ui/arkts-internationalization.md)
         - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
           - [支持无障碍](ui/arkts-universal-attributes-accessibility.md)
           - [支持适老化](ui/arkui-support-for-aging-adaptation.md)
@@ -640,32 +626,54 @@
           - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](ui/arkts-ui-extension-components.md)
           - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)(ArkTS1.1)](ui/arkts-isolated-components.md)
           <!--DelEnd-->
-        - 使用NDK接口构建UI<!--arkts-use-ndk-->
-          - [NDK接口概述](ui/ndk-build-ui-overview.md)
-          - [接入ArkTS页面](ui/ndk-access-the-arkts-page.md)
-          - 添加交互事件<!--arkts-add-event-->
-            - [监听组件事件](ui/ndk-listen-to-component-events.md)
-            - [绑定手势事件](ui/ndk-bind-gesture-events.md)
-            - [拖拽事件](ui/ndk-drag-event.md)
-            - [监听组件布局和绘制送显事件](ui/ndk-inspector-component-observer.md)
-          - [使用动画](ui/ndk-use-animation.md)
-          - 构建布局<!--arkts-build-layout-ndk-->
-            - [使用列表](ui/ndk-loading-long-list.md)
-            - [使用瀑布流](ui/ndk-waterflow.md)
-          - 使用文本<!--arkts-build-text-ndk-->
-            - [Text组件的文本绘制与显示](ui/ndk-styled-string.md)
-            - [输入框文本事件监听](ui/ndk-textarea-event.md)
-          - [构建弹窗](ui/ndk-build-pop-up-window.md)
-          - [构建自定义组件](ui/ndk-build-custom-components.md)
-          - [嵌入ArkTS组件](ui/ndk-embed-arkts-components.md)
-          - [通过XComponent接入无障碍](ui/ndk-accessibility-xcomponent.md)
-          - [自定义绘制](ui/arkts-user-defined-draw.md)
-          - [查询和操作自定义节点](ui/ndk-node-query-operate.md)
-          - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ui/ndk-embedded-component.md)
-          - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
-          - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
-      - UI高性能开发<!--ui-performance-->
-        - [UI性能优化概览](ui/ui-performance-overview.md)
+      - UI开发调试调优<!--ui-debug-optimize-->
+        - [预览](ui-ide-previewer.md)
+        - [UI调优(ArkTs1.2)](ui-inspector-profiler-static.md)
+      - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
+        - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](ui/arkts-dyn-sta-ui-rules.md)
+        - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
+          - [UI接口适配](ui/arkts-sta-deprecated-ui-apis.md)
+          - [UI组件适配（通用信息）](ui/arkts-sta-deprecated-general-information.md)
+          - [UI组件适配（路由与导航）](ui/arkts-sta-deprecated-router-and-navigation.md)
+          - [UI组件适配（滚动与滑动）](ui/arkts-sta-deprecated-scroll-and-swipe.md)
+          - [UI组件适配（布局）](ui/arkts-sta-deprecated-layout.md)
+          - [UI组件适配（文本）](ui/arkts-sta-deprecated-text.md)
+          - [UI组件适配（动效与视效）](ui/arkts-sta-deprecated-animation-and-visual.md)
+          - [UI组件适配（表单与弹窗）](ui/arkts-sta-deprecated-form-and-dialog.md)
+          - [UI组件适配（信息展示）](ui/arkts-sta-deprecated-information-display.md)
+          - [UI组件适配（XComponent）](ui/arkts-sta-deprecated-xcomponent.md)
+          - [UI组件适配（状态管理与渲染控制）](ui/arkts-sta-deprecated-state-management-and-rendering-control.md)
+          - [UI组件适配（特殊场景）](ui/arkts-sta-deprecated-special-scene.md)
+          <!--Del-->
+          - [UI组件适配（系统接口）](ui/arkts-sta-deprecated-sys.md)
+          <!--DelEnd-->
+      - 使用NDK接口构建UI<!--arkts-use-ndk-->
+        - [NDK接口概述](ui/ndk-build-ui-overview.md)
+        - [接入ArkTS页面](ui/ndk-access-the-arkts-page.md)
+        - 添加交互事件<!--arkts-add-event-->
+          - [监听组件事件](ui/ndk-listen-to-component-events.md)
+          - [绑定手势事件](ui/ndk-bind-gesture-events.md)
+          - [拖拽事件](ui/ndk-drag-event.md)
+          - [监听组件布局和绘制送显事件](ui/ndk-inspector-component-observer.md)
+        - [使用动画](ui/ndk-use-animation.md)
+        - 构建布局<!--arkts-build-layout-ndk-->
+          - [使用列表](ui/ndk-loading-long-list.md)
+          - [使用瀑布流](ui/ndk-waterflow.md)
+        - 使用文本<!--arkts-build-text-ndk-->
+          - [Text组件的文本绘制与显示](ui/ndk-styled-string.md)
+          - [输入框文本事件监听](ui/ndk-textarea-event.md)
+        - [构建弹窗](ui/ndk-build-pop-up-window.md)
+        - [构建自定义组件](ui/ndk-build-custom-components.md)
+        - [嵌入ArkTS组件](ui/ndk-embed-arkts-components.md)
+        - [通过XComponent接入无障碍](ui/ndk-accessibility-xcomponent.md)
+        - [自定义绘制](ui/arkts-user-defined-draw.md)
+        - [查询和操作自定义节点](ui/ndk-node-query-operate.md)
+        - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ui/ndk-embedded-component.md)
+        - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
+        - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
+      - [UI高性能开发](ui/ui-performance-overview.md)
+        - [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui/ui-parallel-buildernode.md)
+        - [UI并行化创建组件树](ui/ui-parallel-components.md)
       - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
         - [UI开发 (兼容JS的类Web开发范式)概述](ui/ui-js-overview.md)
         - 框架说明<!--js-framework-overview-->
@@ -2655,6 +2663,7 @@
           - [@ohos.uiAppearance (用户界面外观)](reference/apis-arkui/js-apis-uiappearance.md)
           - [getContext](reference/apis-arkui/js-apis-getContext.md)
           - [postCardAction](reference/apis-arkui/js-apis-postCardAction.md)
+          - [@ohos.arkui.Parallelize (UI并行化创建)](reference/apis-arkui/js-apis-arkui-Parallelize.md)
           <!--Del-->
           - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)
           - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md)
@@ -2668,7 +2677,9 @@
           <!--DelEnd-->
           - arkui<!--ui-interface-arkui-->
             - [BuilderNode](reference/apis-arkui/js-apis-arkui-builderNode.md)
+            - [BuilderNode.static](reference/apis-arkui/js-apis-arkui-builderNode-static.md)
             - [ComponentContent](reference/apis-arkui/js-apis-arkui-ComponentContent.md)
+            - [ComponentContent.static](reference/apis-arkui/js-apis-arkui-ComponentContent-static.md)
             - [FrameNode](reference/apis-arkui/js-apis-arkui-frameNode.md)
             - [Graphics](reference/apis-arkui/js-apis-arkui-graphics.md)
             - [NodeController](reference/apis-arkui/js-apis-arkui-nodeController.md)
@@ -3024,6 +3035,12 @@
           - [自定义组件的生命周期](reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)
           - [自定义组件的自定义布局](reference/apis-arkui/arkui-ts/ts-custom-component-layout.md)
           - [自定义组件内置方法](reference/apis-arkui/arkui-ts/ts-custom-component-api.md)
+        - 互操作
+          - [compatibleComponent (ArkTS-Sta)(系统接口)](reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)
+          - [compatibleState (ArkTS-Sta)(系统接口)](reference/apis-arkui/arkui-ts/ts-interop-compatible-state.md)
+          - [transferCompatibleBuilder (ArkTS-Sta)(系统接口)](reference/apis-arkui/arkui-ts/ts-interop-compatible-builder.md)
+          - [compatibleWrappedBuilder (ArkTS-Sta)](reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)
+          - [enableCompatibleObservedV2ForStatic\<T\> (ArkTS-Sta)](reference/apis-arkui/arkui-ts/ts-interop-compatible-ObservedV2.md)
         - 系统预置UI组件库<!--system-preset-ui-component-library-->
           - [Chip](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)
           - [ChipGroup](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)
@@ -5443,6 +5460,8 @@
     - [EGL](reference/native-lib/egl.md)
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)
+    - [Mutex (互斥锁)](reference/native-lib/arkts1.2-mutex.md)
+    - [RWLock (读写锁)](reference/native-lib/arkts1.2-rwlock.md)
     - Vulkan<!--vulkan-guide-->
       - [Vulkan开发指导](reference/native-lib/vulkan-guidelines.md)
       - [Vulkan支持能力](reference/native-lib/vulkan.md)
@@ -5456,6 +5475,12 @@
         - [VkNativeBufferPropertiesOHOS](reference/native-lib/_vk_native_buffer_properties_o_h_o_s.md)
         - [VkNativeBufferUsageOHOS](reference/native-lib/_vk_native_buffer_usage_o_h_o_s.md)
         - [VkSurfaceCreateInfoOHOS](reference/native-lib/_vk_surface_create_info_o_h_o_s.md)
+    - EAWorker
+        - [EAWorker 独占线程任务执行器（ArkTS）](reference/native-lib/eaworker_managed.md)
+        - [EAWorker 独占线程任务执行器（C/C++）](reference/native-lib/eaworker_native.md)
+        - [Job](reference/native-lib/job.md)
+        - [Message 消息单元](reference/native-lib/message.md)
+        - [MessageHandler 消息处理器](reference/native-lib/message_handler.md)
     - 附录<!--appendixes-->
       - [libc中没有导出的符号列表](reference/native-lib/musl-peculiar-symbol.md)
       - [NDK musl-libc接口受权限影响的说明](reference/native-lib/guidance-on-ndk-libc-interfaces-affected-by-permissions.md)

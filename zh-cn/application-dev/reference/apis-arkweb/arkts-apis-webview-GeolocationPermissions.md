@@ -30,6 +30,10 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -48,6 +52,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -75,6 +80,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "file:///";
+
+  build() {
+    Column() {
+      Button('allowGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.allowGeolocation(this.origin);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## deleteGeolocation
 
 static deleteGeolocation(origin: string, incognito?: boolean): void
@@ -82,6 +116,10 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 清除指定来源的地理位置权限状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -101,6 +139,7 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -128,6 +167,35 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "file:///";
+
+  build() {
+    Column() {
+      Button('deleteGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.deleteGeolocation(this.origin);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getAccessibleGeolocation
 
 static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean>, incognito?: boolean): void
@@ -135,6 +203,10 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 以回调方式异步获取指定源的地理位置权限状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -155,6 +227,7 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -188,6 +261,41 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "file:///";
+
+  build() {
+    Column() {
+      Button('getAccessibleGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
+              if (error) {
+                console.error(`getAccessibleGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                return;
+              }
+              console.log('getAccessibleGeolocationAsync result: ' + result);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getAccessibleGeolocation
 
 static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<boolean>
@@ -195,6 +303,10 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 以Promise方式异步获取指定源的地理位置权限状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -220,6 +332,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -252,6 +365,40 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "file:///";
+
+  build() {
+    Column() {
+      Button('getAccessibleGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
+              .then(result => {
+                console.log('getAccessibleGeolocationPromise result: ' + result);
+              }).catch((error) => {
+              console.error(`getAccessibleGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getStoredGeolocation
 
 static getStoredGeolocation(callback: AsyncCallback\<Array\<string>>, incognito?: boolean): void
@@ -259,6 +406,10 @@ static getStoredGeolocation(callback: AsyncCallback\<Array\<string>>, incognito?
 以回调方式异步获取已存储地理位置权限状态的所有源信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -277,6 +428,7 @@ static getStoredGeolocation(callback: AsyncCallback\<Array\<string>>, incognito?
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -310,6 +462,41 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getStoredGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.getStoredGeolocation((error, origins) => {
+              if (error) {
+                console.error(`getStoredGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                return;
+              }
+              let origins_str: string = origins!.join();
+              console.log('getStoredGeolocationAsync origins: ' + origins_str);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getStoredGeolocation
 
 static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
@@ -317,6 +504,10 @@ static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
 以Promise方式异步获取已存储地理位置权限状态的所有源信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -340,6 +531,7 @@ static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -372,6 +564,40 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getStoredGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.getStoredGeolocation()
+              .then(origins => {
+                let origins_str: string = origins.join();
+                console.log('getStoredGeolocationPromise origins: ' + origins_str);
+              }).catch((error) => {
+              console.error(`getStoredGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
+            });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## deleteAllGeolocation
 
 static deleteAllGeolocation(incognito?: boolean): void
@@ -379,6 +605,10 @@ static deleteAllGeolocation(incognito?: boolean): void
 清除所有来源的地理位置权限状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -388,6 +618,7 @@ static deleteAllGeolocation(incognito?: boolean): void
 
 **示例：**
 
+ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -397,6 +628,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteAllGeolocation')
+        .onClick(() => {
+          try {
+            webview.GeolocationPermissions.deleteAllGeolocation();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
