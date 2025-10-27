@@ -40,11 +40,11 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,callback:As
 
 **参数：**
 
-| 参数名   | 类型                                                         | 只读 | 可选 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ---- |------------------------------------------------------------ |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | 否  |  否   | 拖拽发起后跟手效果所拖拽的对象。<br/>**说明：** <br/>不支持全局builder。如果builder中使用了[Image](arkui-ts/ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
-| dragInfo | [DragInfo](#draginfo)                                        | 否  |  否   | 拖拽信息。                                                   |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | 否  |  否   | 回调函数。当拖拽成功结束，err为undefined，data为获取到的DragEventParam；否则为错误对象。                                    |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
+| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | 是   | 拖拽发起后跟手效果所拖拽的对象。<br/>**说明：** <br/>不支持全局builder。如果builder中使用了[Image](arkui-ts/ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
+| dragInfo | [DragInfo](#draginfo)                                        | 是   | 拖拽信息。                                                   |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | 是   | 回调函数。当拖拽成功结束，err为undefined，data为获取到的DragEventParam；否则为错误对象。                                    |
 
 **错误码：**
 
@@ -153,10 +153,10 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<
 
 **参数：**
 
-| 参数名   | 类型                                                         | 只读  |  可选 | 说明                             |
-| -------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | 否  |  否   | 拖拽发起后跟手效果所拖拽的对象。 |
-| dragInfo | [DragInfo](#draginfo)                                        | 否  |  否   | 拖拽信息。                       |
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | 是   | 拖拽发起后跟手效果所拖拽的对象。 |
+| dragInfo | [DragInfo](#draginfo)                                        | 是   | 拖拽信息。                       |
 
 **返回值：** 
 
@@ -313,10 +313,10 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
 
 **参数：**
 
-| 参数名   | 类型                                                         | 只读  |  可选 | 说明                             |
-| --------      | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
-| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | 否  |  否   | 拖拽发起后跟手效果所拖拽的对象。 |
-| dragInfo | [DragInfo](#draginfo)                                        | 否  |  否   | 拖拽信息。                       |
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| --------      | ------------------------------------------------------------ | ---- | -------------------------------- |
+| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | 是   | 拖拽发起后跟手效果所拖拽的对象。 |
+| dragInfo | [DragInfo](#draginfo)                                        | 是   | 拖拽信息。                       |
 
 **返回值：** 
 
@@ -707,10 +707,10 @@ on(type: 'statusChange', callback: Callback&lt;[DragAndDropInfo](#draganddropinf
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 参数名     | 类型  | 只读  |  可选   | 说明             |
-| ------ | ------ | ------- | ------- | ---------------- |
-|  type  | string | 否  |  否      | 监听事件，固定为'statusChange'，即注册监听拖拽状态改变事件。|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否  |  否      | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
+| 参数名     | 类型  | 必填   | 说明             |
+| ------ | ------ | ------- | ---------------- |
+|  type  | string | 是      | 监听事件，固定为'statusChange'，即注册监听拖拽状态改变事件。|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 是      | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
 
 **示例：**
 
@@ -789,10 +789,10 @@ struct DragControllerPage {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 参数名     | 类型  | 只读  |  可选    | 说明             |
-| ------ | ------ | ------- | ------- | ---------------- |
-|  type  | string | 否  |  否      | 监听事件，固定为'statusChange'，即取消监听拖拽状态改变事件。|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否  |  是    | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
+| 参数名     | 类型  | 必填    | 说明             |
+| ------ | ------ | ------- | ---------------- |
+|  type  | string | 是      | 监听事件，固定为'statusChange'，即取消监听拖拽状态改变事件。|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否    | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
 
 **示例：**
 
@@ -956,9 +956,9 @@ setForegroundColor(color: ResourceColor): void
 
 **参数：**
 
-| 参数名   | 类型                             | 只读  |  可选 | 说明                     |
-| -------- | -------------------------------- | ---- | ---- | ------------------------ |
-| color    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否  |  否   |      背板蒙版颜色。                    |
+| 参数名   | 类型                             | 必填 | 说明                     |
+| -------- | -------------------------------- | ---- | ------------------------ |
+| color    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 是   |      背板蒙版颜色。                    |
 
 **示例：**
 
@@ -976,10 +976,10 @@ animate(options: AnimationOptions, handler: () => void): void
 
 **参数：**
 
-| 参数名   | 类型                             | 只读  |  可选 | 说明                               |
-| -------- | -------------------------------- | ---- | ---- | -----------------------------------|
-| options  | [AnimationOptions](#animationoptions11)                | 否  |  否   | 动效参数。                           |
-| handler  | () => void                         | 否  |  否   | 用于修改背板蒙版颜色等属性的回调方法。  |
+| 参数名   | 类型                             | 必填 | 说明                               |
+| -------- | -------------------------------- | ---- | -----------------------------------|
+| options  | [AnimationOptions](#animationoptions11)                | 是   | 动效参数。                           |
+| handler  | () => void                         | 是   | 用于修改背板蒙版颜色等属性的回调方法。  |
 
 **示例：**
 
@@ -1223,6 +1223,6 @@ updateConfiguration(config: DragSpringLoadingConfiguration): void
 
 **参数：**
 
-| 参数名     | 类型          | 只读  |  可选      | 说明                         |
-| :----- | -------- | ---- | ---- | --------------------------------------------- |
-| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  否  |  否   | 悬停检测配置。   |
+| 参数名     | 类型          | 必填      | 说明                         |
+| :----- | -------- | ---- | --------------------------------------------- |
+| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  是   | 悬停检测配置。   |
