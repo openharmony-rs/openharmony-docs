@@ -381,6 +381,32 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 // 使用该接口需要DLP凭据服务器
 
    <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 14 以无边框形式打开DLP权限管理应用。
+   startDLPManagerForResult() {
+     try {
+       let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+       let want:Want = {
+         'uri': this.uri,
+         'parameters' : {
+           'displayName': this.fileName
+         }
+       }; // 请求参数
+       dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+         this.result = 'startDLPManagerForResult resultCode: ' + res.resultCode;
+         console.info('res.resultCode', res.resultCode);
+         console.info('res.want', JSON.stringify(res.want));
+         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.resultCode' + res.resultCode);
+         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.want' + JSON.stringify(res.want));
+       }); // 打开DLP权限管理应用
+     } catch (err) {
+       this.result = 'startDLPManagerForResult error' + err.code + err.message;
+       console.error('error', err.code, err.message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     }
+   }
+   ```
 
 15. 查询当前系统是否提供DLP特性。 <br>
 // 使用该接口需要DLP凭据服务器
