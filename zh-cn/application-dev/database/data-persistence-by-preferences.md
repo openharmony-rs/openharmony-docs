@@ -232,6 +232,10 @@ Logger.info('The uInt8 value is ' + val);
 
 <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
+``` TypeScript
+dataPreferences.deleteSync('startup');
+```
+
 7. 数据持久化。
 
    应用存入数据到Preferences实例后，可以使用flush()方法实现数据持久化。示例代码如下所示：
