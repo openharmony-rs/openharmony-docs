@@ -114,6 +114,20 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
   <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
+  
+  ``` JSON5
+  "skills": [
+    {
+      "entities": [
+        "entity.system.home"
+      ],
+      "actions": [
+        "action.system.home",
+        "ohos.want.action.viewData"
+      ]
+    }
+  ]
+  ```
 
 
 3. 生成DLP文件。 <br>
