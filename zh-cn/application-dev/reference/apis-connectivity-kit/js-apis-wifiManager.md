@@ -106,7 +106,7 @@ disableWifi(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -179,7 +179,7 @@ startScan(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -1714,7 +1714,7 @@ getDeviceMacAddress(): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2038,7 +2038,7 @@ isMeteredHotspot(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2446,7 +2446,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 
@@ -2478,7 +2478,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 

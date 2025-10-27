@@ -822,7 +822,7 @@ startPortalCertification(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1078,7 +1078,7 @@ isOpenSoftApAllowed(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：18**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1312,7 +1312,7 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1364,7 +1364,7 @@ delHotspotBlockList(stationInfo: StationInfo)
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1415,7 +1415,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：11**
 
 **ArkTS-Sta起始版本：20**
 
@@ -1430,7 +1430,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. |
