@@ -93,20 +93,19 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    若接口返回false，则说明当前平台不支持GSKV模式，请使用XML模式进行数据存储。
 
-  <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-  
-  ``` TypeScript
-  let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
-  Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
-  ```
+<!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
+   ``` TypeScript
+   let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
+   Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
+   ```
 
 3. 获取Preferences实例。
 
    针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
    <!--Del-->Stage模型示例：<!--DelEnd-->
-
-   ```ts
+<!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { window } from '@kit.ArkUI';
@@ -115,12 +114,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
-         <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-         
-         ``` TypeScript
-         let options: preferences.Options = { name: 'myStore' };
-         dataPreferences = preferences.getPreferencesSync(context, options);
-         ```
+       let options: preferences.Options = { name: 'myStore' };
+       dataPreferences = preferences.getPreferencesSync(context, options);
      }
    }
    ```
@@ -143,7 +138,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
     若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
    <!--Del-->Stage模型示例：<!--DelEnd-->
 
-   ```ts
+<!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { window } from '@kit.ArkUI';
@@ -152,12 +148,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
-         <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-         
-         ``` TypeScript
-         let options: preferences.Options = { name: 'myStore', storageType: preferences.StorageType.GSKV };
-         dataPreferences = preferences.getPreferencesSync(context, options);
-         ```
+       let options: preferences.Options = { name: 'myStore', storageType: preferences.StorageType.GSKV };
+       dataPreferences = preferences.getPreferencesSync(context, options);
      }
    }
    ```
@@ -190,22 +182,20 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
    
-   ```ts
-   import { util } from '@kit.ArkTS';
 <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
-``` TypeScript
-if (dataPreferences.hasSync('startup')) {
-  Logger.info('The key startup is contained.');
-} else {
-  Logger.info('The key startup does not contain.');
-  // 此处以此键值对不存在时写入数据为例
-  dataPreferences.putSync('startup', 'auto');
-  // 在XML模式下，当字符串包含非UTF-8格式的字符时，需要将字符串转为Uint8Array类型再存储，长度均不超过16 * 1024 * 1024个字节。
-  let uInt8Array1 = new util.TextEncoder().encodeInto('~！@#￥%……&*（）——+？');
-  dataPreferences.putSync('uInt8', uInt8Array1);
-}
-```
+   ``` TypeScript
+   import { util } from '@kit.ArkTS';
+   if (dataPreferences.hasSync('startup')) {
+     Logger.info('The key startup is contained.');
+   } else {
+     Logger.info('The key startup does not contain.');
+     // 此处以此键值对不存在时写入数据为例
+     dataPreferences.putSync('startup', 'auto');
+     // 在XML模式下，当字符串包含非UTF-8格式的字符时，需要将字符串转为Uint8Array类型再存储，长度均不超过16 * 1024 * 1024个字节。
+     let uInt8Array1 = new util.TextEncoder().encodeInto('~！@#￥%……&*（）——+？');
+     dataPreferences.putSync('uInt8', uInt8Array1);
+   }
    ```
 
 5. 读取数据。
@@ -216,15 +206,15 @@ if (dataPreferences.hasSync('startup')) {
 
 <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
-``` TypeScript
-let val = dataPreferences.getSync('startup', 'default');
-Logger.info('The startup value is ' + val);
-let uInt8Array2 : preferences.ValueType = dataPreferences.getSync('uInt8', new Uint8Array(0));
-// 将获取到的Uint8Array转换为字符串
-let textDecoder = util.TextDecoder.create('utf-8');
-val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
-Logger.info('The uInt8 value is ' + val);
-```
+   ``` TypeScript
+   let val = dataPreferences.getSync('startup', 'default');
+   Logger.info('The startup value is ' + val);
+   let uInt8Array2 : preferences.ValueType = dataPreferences.getSync('uInt8', new Uint8Array(0));
+   // 将获取到的Uint8Array转换为字符串
+   let textDecoder = util.TextDecoder.create('utf-8');
+   val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
+   Logger.info('The uInt8 value is ' + val);
+   ```
 
 6. 删除数据。
 
@@ -232,9 +222,9 @@ Logger.info('The uInt8 value is ' + val);
 
 <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
-``` TypeScript
-dataPreferences.deleteSync('startup');
-```
+   ``` TypeScript
+   dataPreferences.deleteSync('startup');
+   ```
 
 7. 数据持久化。
 
@@ -242,15 +232,15 @@ dataPreferences.deleteSync('startup');
 
 <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
-``` TypeScript
-dataPreferences.flush((err: BusinessError) => {
-  if (err) {
-    Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
-    return;
-  }
-  Logger.info('Succeeded in flushing.');
-})
-```
+   ``` TypeScript
+   dataPreferences.flush((err: BusinessError) => {
+     if (err) {
+       Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
+       return;
+     }
+     Logger.info('Succeeded in flushing.');
+   })
+   ```
 
 8. 订阅数据变更。
 
@@ -262,49 +252,49 @@ dataPreferences.flush((err: BusinessError) => {
 
 <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
-``` TypeScript
-let observer = (key: string) => {
-  Logger.info('The key ' + key + ' changed.');
-}
-dataPreferences.on('change', observer);
-// 数据产生变更，由'auto'变为'manual'
-dataPreferences.put('startup', 'manual', (err: BusinessError) => {
-  if (err) {
-    Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
-    return;
-  }
-  Logger.info('Succeeded in putting the value of startup.');
-  if (dataPreferences !== undefined) {
-    dataPreferences.flush((err: BusinessError) => {
-      if (err) {
-        Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
-        return;
-      }
-      Logger.info('Succeeded in flushing.');
-    })
-  }
-})
-```
+   ``` TypeScript
+   let observer = (key: string) => {
+     Logger.info('The key ' + key + ' changed.');
+   }
+   dataPreferences.on('change', observer);
+   // 数据产生变更，由'auto'变为'manual'
+   dataPreferences.put('startup', 'manual', (err: BusinessError) => {
+     if (err) {
+       Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
+       return;
+     }
+     Logger.info('Succeeded in putting the value of startup.');
+     if (dataPreferences !== null) {
+       dataPreferences.flush((err: BusinessError) => {
+         if (err) {
+           Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in flushing.');
+       })
+     }
+   })
+   ```
 
    针对GSKV存储模式，订阅的Key值发生变更后（无需调用flush），observer被触发回调。
 
    示例代码如下所示：
 <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
-``` TypeScript
-let observer = (key: string) => {
-  Logger.info('The key ' + key + ' changed.');
-}
-dataPreferences.on('change', observer);
-// 数据产生变更，由'auto'变为'manual'
-dataPreferences.put('startup', 'manual', (err: BusinessError) => {
-  if (err) {
-    Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
-    return;
-  }
-  Logger.info('Succeeded in putting the value of startup.');
-})
-```
+   ``` TypeScript
+   let observer = (key: string) => {
+     Logger.info('The key ' + key + ' changed.');
+   }
+   dataPreferences.on('change', observer);
+   // 数据产生变更，由'auto'变为'manual'
+   dataPreferences.put('startup', 'manual', (err: BusinessError) => {
+     if (err) {
+       Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
+       return;
+     }
+     Logger.info('Succeeded in putting the value of startup.');
+   })
+   ```
 9. 删除指定文件。
 
    使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preference存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
@@ -320,6 +310,17 @@ dataPreferences.put('startup', 'manual', (err: BusinessError) => {
    示例代码如下所示：
 
 <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+
+   ``` TypeScript
+   let options: preferences.Options = { name: 'myStore' };
+   preferences.deletePreferences(context, options, (err: BusinessError) => {
+     if (err) {
+       Logger.error(`Failed to delete preferences. Code:${err.code}, message:${err.message}`);
+       return;
+     }
+     Logger.info('Succeeded in deleting preferences.');
+   })
+   ```
 
 ## 相关实例
 

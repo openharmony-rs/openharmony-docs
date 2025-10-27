@@ -108,11 +108,8 @@ void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, 
         }
     }
 }
-
 ```
-
 <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-
 ``` C++
 // 1. 创建Preferences配置选项。
 OH_PreferencesOption *option = OH_PreferencesOption_Create();
@@ -137,6 +134,7 @@ if (ret != PREFERENCES_OK) {
     (void)OH_PreferencesOption_Destroy(option);
     // 错误处理
 }
+
 // 设置Preferences配置选项的存储模式，需要注意的是，设置之前需要调用OH_Preferences_IsStorageTypeSupported接口判断当前平台是否支持需要选择的模式。
 bool isGskvSupported = false;
 ret = OH_Preferences_IsStorageTypeSupported(Preferences_StorageType::PREFERENCES_STORAGE_GSKV, &isGskvSupported);
@@ -157,6 +155,7 @@ if (isGskvSupported) {
         // 错误处理
     }
 }
+
 // 2. 打开一个Preferences实例。
 int errCode = PREFERENCES_OK;
 OH_Preferences *preference = OH_Preferences_Open(option, &errCode);
@@ -167,18 +166,16 @@ if (preference == nullptr || errCode != PREFERENCES_OK) {
     // 错误处理
 }
 ```
-
 <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-
 ``` C++
 // 3. 对key_int、key_bool和key_string注册数据变更订阅。
 const char *keys[] = {"key_int", "key_bool", "key_string"};
-int ret = OH_Preferences_RegisterDataObserver(preference, nullptr, DataChangeObserverCallback, keys, 3);
+ret = OH_Preferences_RegisterDataObserver(preference, nullptr, DataChangeObserverCallback, keys, 3);
 if (ret != PREFERENCES_OK) {
     (void)OH_Preferences_Close(preference);
     // 错误处理
 }
-    
+
 // 4. 设置Preferences实例中的KV数据。
 ret = OH_Preferences_SetInt(preference, keys[0], 0);
 if (ret != PREFERENCES_OK) {
@@ -196,20 +193,20 @@ if (ret != PREFERENCES_OK) {
     (void)OH_Preferences_Close(preference);
     // 错误处理
 }
-    
+
 // 5. 获取Preferences实例中的KV数据。
 int intValue = 0;
 ret = OH_Preferences_GetInt(preference, keys[0], &intValue);
 if (ret == PREFERENCES_OK) {
     // 业务逻辑
 }
-    
+
 bool boolValue = false;
 ret = OH_Preferences_GetBool(preference, keys[1], &boolValue);
 if (ret == PREFERENCES_OK) {
     // 业务逻辑
 }
-    
+
 char *stringValue = nullptr;
 uint32_t valueLen = 0;
 ret = OH_Preferences_GetString(preference, keys[stringIndex], &stringValue, &valueLen);
@@ -220,11 +217,10 @@ if (ret == PREFERENCES_OK) {
     stringValue = nullptr;
 }
 ```
-
 <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-
 ``` C++
 // 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
 (void)OH_Preferences_Close(preference);
 preference = nullptr;
+
 ```
