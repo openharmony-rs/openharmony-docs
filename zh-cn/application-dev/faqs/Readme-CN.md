@@ -25,7 +25,6 @@
 - [图形图像开发常见问题](faqs-graphics.md)
 - [窗口管理开发常见问题](faqs-window-manager.md)
 - [媒体开发常见问题](faqs-multimedia.md)
-- [安全基础能力开发常见问题](faqs-security.md)
 - [程序访问控制开发常见问题](faqs-ability-access-control.md)
 - [数据管理开发常见问题](faqs-distributed-data-management.md)
 - [文件管理开发常见问题](faqs-file-management.md)
