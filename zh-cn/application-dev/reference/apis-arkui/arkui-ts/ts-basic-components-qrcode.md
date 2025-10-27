@@ -4,11 +4,11 @@
 
 >  **说明：**
 >
-> 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 
-> 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
+> - 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
 
 
 ## 子组件
@@ -38,7 +38,9 @@ QRCode(value: ResourceStr)
 
 ### color
 
-color(value: ResourceColor)
+ArkTS-Dyn: color(value: ResourceColor)
+
+ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置二维码颜色。
 
@@ -48,15 +50,21 @@ color(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明         |
 | ------ | ------------------------------------------ | ---- | ------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 二维码颜色。默认值：'#ff000000'，且不跟随系统深浅色模式切换而修改。<br/> |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码颜色。默认值：'#ff000000'，且不跟随系统深浅色模式切换而修改。<br/> |
 
 ### backgroundColor
 
-backgroundColor(value: ResourceColor)
+ArkTS-Dyn: backgroundColor(value: ResourceColor)
+
+ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 设置二维码背景颜色。
 
@@ -66,23 +74,31 @@ backgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 二维码背景颜色。<br/>默认值：Color.White <br/>从API version 11开始，默认值改为'#ffffffff'，且不跟随系统深浅色模式切换而修改。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码背景颜色。<br/>默认值：Color.White <br/>从API version 11开始，默认值改为'#ffffffff'，且不跟随系统深浅色模式切换而修改。 |
 
 ### contentOpacity<sup>11+</sup>
 
 ArkTS-Dyn: contentOpacity(value: number | Resource)
 
-ArkTS-Sta: contentOpacity(value: double | Resource)
+ArkTS-Sta: contentOpacity(value: number | Resource | undefined)
 
 设置二维码内容颜色的不透明度。不透明度最小值为0，最大值为1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -92,7 +108,7 @@ ArkTS-Sta: contentOpacity(value: double | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: number&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |
 
 
 ## 事件

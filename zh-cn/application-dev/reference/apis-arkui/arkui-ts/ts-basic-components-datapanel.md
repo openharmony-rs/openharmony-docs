@@ -4,7 +4,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -73,7 +73,9 @@ DataPanel(options: DataPanelOptions)
 
 ### closeEffect
 
-closeEffect(value: boolean)
+ArkTS-Dyn: closeEffect(value: boolean)
+
+ArkTS-Sta: closeEffect(value: boolean | undefined)
 
 设置是否关闭数据占比图表旋转动效和投影效果。若未设置[trackShadow属性](#trackshadow10)，则由该属性控制投影效果的开关，开启投影的效果为投影的默认效果。若设置了trackShadow属性，则由trackShadow属性值控制投影效果的开关。
 
@@ -83,15 +85,21 @@ closeEffect(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------- | ---- | ------------------------------------------------------ |
-| value  | boolean | 是   | 关闭数据占比图表旋转动效和投影效果。<br/>默认值：false，false表示开启数据占比图表旋转动效和投影效果，true表示关闭数据占比图表旋转动效和投影效果。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 关闭数据占比图表旋转动效和投影效果。<br/>默认值：false，false表示开启数据占比图表旋转动效和投影效果，true表示关闭数据占比图表旋转动效和投影效果。 |
 
 ### valueColors<sup>10+</sup>
 
-valueColors(value: Array<ResourceColor | LinearGradient>)
+ArkTS-Dyn: valueColors(value: Array<ResourceColor | LinearGradient>)
+
+ArkTS-Sta: valueColors(value: Array<ResourceColor | LinearGradient> | undefined)
 
 设置各数据段颜色。
 
@@ -99,15 +107,21 @@ valueColors(value: Array<ResourceColor | LinearGradient>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。 |
+| value  | ArkTS-Dyn: Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> <br/>ArkTS-Sta: Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> \|&nbsp;undefined | 是   | 各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。 |
 
 ### trackBackgroundColor<sup>10+</sup>
 
-trackBackgroundColor(value: ResourceColor)
+ArkTS-Dyn: trackBackgroundColor(value: ResourceColor)
+
+ArkTS-Sta: trackBackgroundColor(value: ResourceColor | undefined)
 
 设置底板颜色。
 
@@ -115,15 +129,21 @@ trackBackgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 底板颜色。<br/>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|&nbsp;undefined | 是   | 底板颜色。<br/>默认值：'#08182431'，格式为十六进制ARGB值，前两位代表透明度。 |
 
 ### strokeWidth<sup>10+</sup>
 
-strokeWidth(value: Length)
+ArkTS-Dyn: strokeWidth(value: Length)
+
+ArkTS-Sta: strokeWidth(value: Length | undefined)
 
 设置圆环粗细。数据面板的类型为DataPanelType.Line时该属性不生效。
 
@@ -131,15 +151,21 @@ strokeWidth(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value | [Length](ts-types.md#length) | 是 | 圆环粗细。<br/>默认值：24<br/>单位：vp<br/>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br/>**说明：**<br/>设置小于0的值时，按默认值显示。<br/>请合理设置圆环粗细，当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
+| value | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: [Length](ts-types.md#length) \|&nbsp;undefined | 是 | 圆环粗细。<br/>默认值：24<br/>单位：vp<br/>设置字符串类型参数时，如果不指定单位，默认单位为px，例如'10'，等同于'10px'。<br/>**说明：**<br/>设置小于0的值时，按默认值显示。<br/>请合理设置圆环粗细，当value大于圆环半径时，圆环粗细会自动设置为圆环半径的12%。如果value过大，圆环可能会消失。 |
 
 ### trackShadow<sup>10+</sup>
 
-trackShadow(value: DataPanelShadowOptions)
+ArkTS-Dyn: trackShadow(value: DataPanelShadowOptions)
+
+ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined)
 
 设置投影样式。
 
@@ -147,15 +173,21 @@ trackShadow(value: DataPanelShadowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                  |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
+| value  | ArkTS-Dyn: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) <br/>ArkTS-Sta: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) \|&nbsp;undefined | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<DataPanelConfiguration> | undefined)
 
 定制DataPanel内容区的方法。
 
@@ -163,11 +195,15 @@ contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn:  [ContentModifier\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) \|&nbsp;undefined | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>对象说明

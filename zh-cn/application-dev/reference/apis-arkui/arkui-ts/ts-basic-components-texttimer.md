@@ -6,7 +6,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -52,7 +52,9 @@ TextTimer(options?: TextTimerOptions)
 
 ### format
 
-format(value: string)
+ArkTS-Dyn: format(value: string)
+
+ArkTS-Sta: format(value: string | undefined)
 
 设置自定义格式，需至少包含一个HH、mm、ss、SS中的关键字。使用yy、MM、dd等日期格式时，使用默认值。
 
@@ -64,16 +66,22 @@ format(value: string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | string | 是   | 自定义格式。<br/>默认值：'HH:mm:ss.SS' |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined | 是   | 自定义格式。<br/>默认值：'HH:mm:ss.SS' |
 
 
 ### fontColor
 
-fontColor(value: ResourceColor)
+ArkTS-Dyn: fontColor(value: ResourceColor)
+
+ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置字体颜色。
 
@@ -83,15 +91,21 @@ fontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;undefined | 是   | 字体颜色。 |
 
 ### fontSize
 
-fontSize(value: Length)
+ArkTS-Dyn: fontSize(value: Length)
+
+ArkTS-Sta: fontSize(value: Length | undefined)
 
 设置字体大小。
 
@@ -101,15 +115,21 @@ fontSize(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。不支持设置百分比字符串。 |
 
 ### fontStyle
 
-fontStyle(value: FontStyle)
+ArkTS-Dyn: fontStyle(value: FontStyle)
+
+ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 设置字体样式。
 
@@ -119,17 +139,21 @@ fontStyle(value: FontStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)&nbsp;<br>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle)&nbsp;\|&nbsp;undefined | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
 
 ### fontWeight
 
 ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
 
-ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr)
+ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 设置文本的字体粗细，设置过大可能会导致不同字体下的文字出现截断。
 
@@ -139,19 +163,21 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型  | 必填 | 说明      |
 | ------ | ---------- | ------ | ----------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，int类型取值范围为[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。int类型取值范围外的默认值为400。[ResourceStr](ts-types.md#resourcestr)类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;undefined | 是   | 文本的字体粗细，number类型取值范围为[100,&nbsp;900]，取值间隔为100，取值越大，字体越粗。number类型取值范围外的默认值为400。[ResourceStr](ts-types.md#resourcestr)类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。 |
 
 ### fontFamily
 
-fontFamily(value: ResourceStr)
+ArkTS-Dyn: fontFamily(value: ResourceStr)
+
+ArkTS-Sta: fontFamily(value: ResourceStr | undefined)
 
 设置字体列表。
 
@@ -161,15 +187,21 @@ fontFamily(value: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体为'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;undefined | 是   | 字体列表。默认字体为'HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 ### textShadow<sup>11+</sup>
 
-textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
+ArkTS-Dyn: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
+
+ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefined)
 
 设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
 
@@ -177,11 +209,15 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&gt;&nbsp;\|&nbsp;undefined | 是   | 文字阴影效果。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -203,9 +239,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 ### onTimer
 
-ArkTS-Dyn: onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
-
-ArkTS-Sta: onTimer(event:&nbsp;(utc:&nbsp;long,&nbsp;elapsedTime:&nbsp;long)&nbsp;=&gt;&nbsp;void)
+onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。
 设置高精度的format（SSS、SS）时，回调间隔可能会出现波动。
@@ -216,16 +250,12 @@ ArkTS-Sta: onTimer(event:&nbsp;(utc:&nbsp;long,&nbsp;elapsedTime:&nbsp;long)&nbs
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 8
-
-**ArkTs-Sta起始版本：** 22
-
 **参数：** 
 
 | 参数名      | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| utc         | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | Linux时间戳，即自1970年1月1日起经过的时间，单位为设置格式的最小单位。 |
-| elapsedTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 计时器经过的时间，单位为设置格式的最小单位。                 |
+| utc         | number  | 是   | Linux时间戳，即自1970年1月1日起经过的时间，单位为设置格式的最小单位。 |
+| elapsedTime | number  | 是   | 计时器经过的时间，单位为设置格式的最小单位。                 |
 
 ## TextTimerController
 
@@ -309,6 +339,26 @@ ContentModifier接口使用的TextTimer配置。
 | isCountDown | boolean| 是 | 是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br> 默认值：false |
 | started | boolean | 是 | 是否已经开始了计时。默认值：false， 表示未开始计时。|
 | elapsedTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 计时器经过的时间，单位为设置格式的最小单位。 |
+
+## TimerCallback<sup>22+</sup>
+
+type TimerCallback = (utc: long, elapsedTime: long) => void
+
+时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。
+设置高精度的format（SSS、SS）时，回调间隔可能会出现波动。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名      | 类型   | 必填 | 说明                                                         |
+| ----------- | ------ | ---- | ------------------------------------------------------------ |
+| utc         | long | 是   | Linux时间戳，即自1970年1月1日起经过的时间，单位为设置格式的最小单位。 |
+| elapsedTime | long | 是   | 计时器经过的时间，单位为设置格式的最小单位。 |
 
 ## 示例
 ### 示例1（支持手动启停的文本计时器）
