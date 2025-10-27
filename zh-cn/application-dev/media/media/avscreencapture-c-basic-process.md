@@ -9,7 +9,7 @@
 
 屏幕录制支持开发者获取屏幕数据，适用于屏幕录制、会议共享、直播等场景。开发者调用录屏[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，采集设备内外的音视频源数据。录屏模块与窗口（Window）、图形（Graphic）等模块协同完成视频采集。
 
-从API 22开始，在2in1/PC设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
+从API 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 ## 流程介绍
 
