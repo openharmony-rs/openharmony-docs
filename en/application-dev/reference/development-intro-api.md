@@ -1,5 +1,12 @@
 # Document Description
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 API references provide the description of APIs used for application development. This topic describes common fields in the API references to help you better use the reference document.
 
 ## Version Description
@@ -16,7 +23,7 @@ System capability refers to a relatively independent feature in the operating sy
 The following description is provided for each API in the reference document to describe the system capability of the API: "**System capability**: SystemCapability.xxx.xxx"
 
 <!--Del-->
-- You can use the [SystemCapability List](syscap-list.md) to query the devices supported by a specific capability set.<!--DelEnd-->
+- You can use the [SystemCapability List](phone-syscap-list.md) to query the devices supported by a specific capability set.<!--DelEnd-->
 - You can call the **canIUse** API to [check whether an API is available](syscap.md#checking-whether-an-api-is-available).
 - The performance of a SysCap may vary by device type. You can [check the differences between devices with a specific SysCap](syscap.md#checking-the-differences-between-devices-with-a-specific-syscap).
 <!--RP2--><!--RP2End-->
@@ -26,8 +33,8 @@ The following description is provided for each API in the reference document to 
 ## Service Widget Description
 
 A [service widget](../form/formkit-overview.md) (also called widget) is a set of UI components that display important information or operations specific to an application or atomic service. It provides users with direct access to a desired service, without the need to open the application first.
-- For APIs that can be used in ArkTS widgets, the following description will be added: "Widget capability: This API can be used in ArkTS widgets since API version *x*."
-- For APIs that cannot be used in ArkTS widgets, no special description is provided.
+- For APIs that can be used in ArkTS widgets, a description about the widget capability will be added. Example: "Widget capability: This API can be used on the ArkTS widget UI since API version 12."
+- For APIs that cannot be used on the ArkTS widget UI, no special description is provided.
 
 ## Permission Description
 

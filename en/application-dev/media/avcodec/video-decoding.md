@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 You can call native APIs to perform video decoding, which decodes media data into a YUV file or renders it.
 
@@ -44,7 +44,7 @@ Through the VideoDecoder module, your application can implement the following ke
 
 - The two also differ slightly in the API calling modes:
   - In surface mode, you can choose to call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer (without rendering the data). In buffer mode, you must call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer.
-  - In surface mode, you must call **OH_VideoDecoder_SetSurface** to set an OHNativeWindow before the decoder is ready and call **OH_VideoDecoder_RenderOutputBuffer** to render the decoded data after the decoder is started.
+  - In surface mode, you must call [OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface) to set an OHNativeWindow before the decoder is ready. After the decoder starts, you can call [OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer) to display and then release the decoded frame, or call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime) to display the decoded frame at a specified time and then release it. To implement audio-video synchronization or control the display speed, you are advised to call **OH_VideoDecoder_RenderOutputBufferAtTime**.
   - In buffer mode, an application can obtain the shared memory address and data from the output buffer. In surface mode, an application can obtain the data from the output buffer.
 
 - Data transfer performance in surface mode is better than that in buffer mode.
@@ -70,15 +70,15 @@ The following figure shows the interaction between states.
    - When the decoder is in the Error state, you can either call **OH_VideoDecoder_Reset** to switch it to the Initialized state or call **OH_VideoDecoder_Destroy** to switch it to the Released state.
 
 6. The Executing state has three substates: Flushed, Running, and End-of-Stream.
-  - After **OH_VideoDecoder_Start** is called, the decoder enters the Running substate immediately.
-  - When the decoder is in the Executing state, you can call **OH_VideoDecoder_Flush** to switch it to the Flushed substate.
-  - After all data to be processed is transferred to the decoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/_core.md#oh_avcodecbufferflags-1) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the decoder transits to the End-of-Stream substate. In this state, the decoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
+   - After **OH_VideoDecoder_Start** is called, the decoder enters the Running substate immediately.
+   - When the decoder is in the Executing state, you can call **OH_VideoDecoder_Flush** to switch it to the Flushed substate.
+   - After all data to be processed is transferred to the decoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the decoder transits to the End-of-Stream substate. In this state, the decoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
 
 7. When the decoder is no longer needed, you must call **OH_VideoDecoder_Destroy** to destroy the decoder instance, which then transitions to the Released state.
 
 ## How to Develop
 
-Read [VideoDecoder](../../reference/apis-avcodec-kit/_video_decoder.md) for the API reference.
+Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md).
 
 The figure below shows the call relationship of video decoding.
 
@@ -244,7 +244,7 @@ The following walks you through how to implement the entire video decoding proce
 
     Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror).
+    - **OH_AVCodecOnError**, a callback used to report a decoder operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
     - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, stream width or height change.
     - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the decoder is ready for receiving data.
     - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that decoding is complete.
@@ -365,9 +365,9 @@ The following walks you through how to implement the entire video decoding proce
 
 5. Call **OH_VideoDecoder_Configure()** to configure the decoder.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
-    For details about the parameter verification rules, see [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_configure).
+    For details about the parameter verification rules, see [OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure).
 
     The parameter value ranges can be obtained through the capability query interface. For details, see [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
@@ -447,13 +447,13 @@ The following walks you through how to implement the entire video decoding proce
 
 7. Call **OH_VideoDecoder_Prepare()** to prepare internal resources for the decoder.
 
-   ```c++
-OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+    ```c++
+    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
     }
     ```
-    
+
 8. Call **OH_VideoDecoder_Start()** to start the decoder.
 
     ```c++
@@ -466,7 +466,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
 
 9. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the surface parameters of the decoder.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -555,10 +555,10 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
 
     In the code snippet below, the following variables are used:
     - **size**, **offset**, **pts**, and **frameData**: size, offset, timestamp, and frame data. For details about how to obtain such information, see step 9 in [Media Data Demultiplexing](./audio-video-demuxer.md).
-    - **flags**: type of the buffer flag. For details, see [OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/_core.md#oh_avcodecbufferflags).
+    - **flags**: type of the buffer flag. For details, see [OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags).
 
     The member variables of **bufferInfo** are as follows:
-    - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the virtual address of the input stream by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_getaddr).
+    - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the virtual address of the input stream by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
     - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
     - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
 
@@ -600,7 +600,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
 
     In the following example, the member variables of **bufferInfo** are as follows:
     - **index**: parameter passed by the callback function **OnNewOutputBuffer**, which uniquely corresponds to the buffer.
-    - **buffer**: parameter passed by the callback function **OnNewOutputBuffer**. In surface mode, you cannot obtain the virtual address of the image by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_getaddr).
+    - **buffer**: parameter passed by the callback function **OnNewOutputBuffer**. In surface mode, you cannot obtain the virtual address of the image by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
     - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
 
     ```c++
@@ -644,7 +644,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     >
     > To obtain the buffer attributes, such as **pixel_format** and **stride**, call [OH_NativeWindow_NativeWindowHandleOpt](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt).
     >
-    > To render the data and free the output buffer, you are advised to call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/_video_decoder.md#oh_videodecoder_renderoutputbufferattime) first.
+    > To render the data and free the output buffer, you are advised to call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime) first.
 
 13. (Optional) Call **OH_VideoDecoder_Flush()** to refresh the decoder.
 
@@ -759,7 +759,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     > **NOTE**
     >
     > This API cannot be called in the callback function.
-    > 
+    >
     > After the call, you must set a null pointer to the decoder to prevent program errors caused by wild pointers.
 
     ```c++
@@ -772,11 +772,8 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     // Call OH_VideoDecoder_Destroy to destroy the decoder.
     OH_AVErrCode ret = AV_ERR_OK;
     if (videoDec != nullptr) {
-        ret = OH_VideoDecoder_Destroy(videoDec);
+        OH_VideoDecoder_Destroy(videoDec);
         videoDec = nullptr;
-    }
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
     }
     inQueue.Flush();
     outQueue.Flush();
@@ -823,7 +820,7 @@ The following walks you through how to implement the entire video decoding proce
 
     Register the **OH_AVCodecCallback** struct that defines the following callback function pointers:
 
-    - **OH_AVCodecOnError**, a callback used to report a codec operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodeconerror).
+    - **OH_AVCodecOnError**, a callback used to report a decoder operation error. For details about the error codes, see [OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror).
     - **OH_AVCodecOnStreamChanged**, a callback used to report a codec stream change, for example, stream width or height change.
     - **OH_AVCodecOnNeedInputBuffer**, a callback used to report input data required, which means that the decoder is ready for receiving data.
     - **OH_AVCodecOnNewOutputBuffer**, a callback used to report output data generated, which means that decoding is complete.
@@ -989,13 +986,13 @@ The following walks you through how to implement the entire video decoding proce
 
 6. Call **OH_VideoDecoder_Prepare()** to prepare internal resources for the decoder.
 
-   ```c++
-OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
+    ```c++
+    OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     if (ret != AV_ERR_OK) {
         // Handle exceptions.
     }
     ```
-    
+
 7. Call **OH_VideoDecoder_Start()** to start the decoder.
 
     ```c++
@@ -1012,7 +1009,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
 
 8. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the decoder parameters.
 
-    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+    For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     ```c++
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
@@ -1128,7 +1125,7 @@ OH_AVErrCode ret = OH_VideoDecoder_Prepare(videoDec);
     In the following example, the member variables of **bufferInfo** are as follows:
 
     - **index**: parameter passed by the callback function **OnNewOutputBuffer**, which uniquely corresponds to the buffer.
-    - **buffer**: parameter passed by the callback function **OnNewOutputBuffer**. You can obtain the virtual address of an image by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/_core.md#oh_avbuffer_getaddr).
+    - **buffer**: parameter passed by the callback function **OnNewOutputBuffer**. You can obtain the virtual address of an image by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
     - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
     
     ```c++
@@ -1241,4 +1238,5 @@ The subsequent processes (including refreshing, resetting, stopping, and destroy
 
 <!--RP5-->
 <!--RP5End-->
+
 <!--no_check-->

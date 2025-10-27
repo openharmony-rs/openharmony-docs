@@ -51,6 +51,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 |cleanSandboxAppConfig(): Promise&lt;void&gt;|清理沙箱应用配置信息。|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br> | 在当前UIAbility界面以无边框形式打开DLP权限管理应用（只支持Stage模式）。 |
 |setEnterprisePolicy(policy: EnterprisePolicy): void|设置企业应用防护策略。|
+| scanFile(filePath: string, identifyPolicysies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| 识别指定文件中的敏感内容。 <br>从API 21开始支持该接口。 |
 
 ## 开发步骤
 
@@ -89,8 +90,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext。
 
       try {
-        console.log('openDLPFile:' + JSON.stringify(want));
-        console.log('openDLPFile: delegator:' + JSON.stringify(context));
+        console.info('openDLPFile:' + JSON.stringify(want));
+        console.info('openDLPFile: delegator:' + JSON.stringify(context));
         context.startAbility(want);
       } catch (err) {
         console.error('openDLPFile startAbility failed', (err as BusinessError).code, (err as BusinessError).message);
@@ -407,26 +408,45 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     try {
       let attributeValues: Array<string> = [ '1' ];
       let attribute: Attribute = {
-        attributeId: 'DeviceHealthyStatus';
-        attributeValues: attributeValues;
-        valueType: 0;
-        opt: 2;
+        attributeId: 'DeviceHealthyStatus',
+        attributeValues: attributeValues,
+        valueType: 0,
+        opt: 2
       }; // 属性信息。
       let rule: Rule = {
-        ruleId: 'ruleId';
-        attributes: [ attribute ];
+        ruleId: 'ruleId',
+        attributes: [ attribute ]
       }; // 规则。
       let policy: Policy = {
-        rules: [ rule ];
-        policyId: 'policyId';
-        ruleConflictAlg: 0;
+        rules: [ rule ],
+        policyId: 'policyId',
+        ruleConflictAlg: 0
       }; // 策略。
       let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-        policyString: JSON.stringify(policy);
+        policyString: JSON.stringify(policy)
       };
       dlpPermission.setEnterprisePolicy(enterprisePolicy);
       console.info('set enterprise policy success');
     } catch (err) {
       console.error('error:' + err.code + err.message); // 失败报错。
+    }
+    ```
+
+17. （API 21开始支持）识别指定文件中的敏感内容。
+    ```ts
+    import { identifySensitiveContent } from '@kit.DataProtectionKit';
+
+    let filepath = "file://docs/storage/Users/currentUser/Desktop/test.txt";
+    let policies: Array<identifySensitiveContent.Policy> = [
+      {"sensitiveLabel":"1", "keywords":[], "regex":""}
+    ];
+    try {
+      identifySensitiveContent.scanFile(filepath, policies).then(records => {
+        console.info('scanFile finish');
+      }).catch((err:Error) => {
+        console.error('error message', err.message);
+      })
+    } catch (err) {
+      console.error('error message', err.message);
     }
     ```

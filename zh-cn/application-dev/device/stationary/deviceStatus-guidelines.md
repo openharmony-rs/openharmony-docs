@@ -24,6 +24,8 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
 
 开发过程中，需要订阅设备静止姿态（支架态）感知，并且通过订阅时传入的回调函数来获取到当前的状态值。
 
+从API version 18开始，支持获取设备静止姿态（支架态）。
+
 ### 约束与限制
 
 设备需要支持加速度计。
@@ -42,6 +44,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
    ```ts
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
+   <!-- @[import_the_device_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. 订阅设备静止姿态（支架态）感知事件。
 
@@ -54,6 +57,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
       console.error('on failed, err = ' + err);
    }
    ```
+   <!-- @[device_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. 取消订阅本客户端订阅的所有设备静止姿态（支架态）感知事件。
 
@@ -64,11 +68,11 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
       console.error('off failed, err = ' + err);
    }
    ```
+   <!-- @[device_status_unsubscribe_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅设备静止姿态（支架态）感知事件的特定回调。
 
    ```ts
-   import { Callback } from '@ohos.base';
    // 定义callback变量
    let callback : Callback<deviceStatus.SteadyStandingStatus> = (data : deviceStatus. SteadyStandingStatus) => {
       console.info('succeed to get status, now status = ' + data);
@@ -86,3 +90,4 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
       console.error('off failed, err = ' + err);
    }
    ```
+   <!-- @[device_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) -->

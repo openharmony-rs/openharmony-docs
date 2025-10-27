@@ -31,6 +31,7 @@ uinput <option> <command> <arg> ...
 | -T       | --touch    | 注入触摸事件。  |
 | -P       | --touchpad | 注入触控板事件。|
 | -?       | --help     | 帮助命令。      | 
+| enable_key_status | enable_key_status | [修饰键状态管理](#修饰键状态管理)。| 
 
 > **说明：**
 >
@@ -171,7 +172,7 @@ uinput -M -m <dx1> <dy1> -s <number>
 uinput --mouse --move <dx1> <dy1> --scroll <number>
 
 # <dx1> <dy1>以屏幕左上角为原点的相对坐标系的位置坐标。
-# <number>鼠标滚动刻度数，正数向后滚动，负数向前滚动，一个刻度是15。
+# <number>鼠标滚动刻度数，正数向后滚动，负数向前滚动，一个刻度是15，仅支持整数。
 ```
 
 **使用示例**
@@ -227,6 +228,28 @@ uinput -M -c 0 -i 500 -c 0
 | 5  | 鼠标前进键 |
 | 6  | 鼠标后退键 |
 | 7  | 鼠标任务键 |
+
+### 查询鼠标光标信息
+查询当前鼠标光标信息。
+
+如果鼠标光标为显示状态，则输出鼠标光标的显示状态和[鼠标光标样式](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。此时如果传入filePath，会同时将鼠标光标样式图片资源以二进制数据保存在指定文件，且只保存三方自定义光标（其鼠标光标样式枚举值为-100），该文件由用户自己创建，缺省则不保存。如果鼠标光标为隐藏状态，则不输出鼠标光标样式、且不保存光标样式图片。
+
+**命令**
+```bash
+uinput -M -q [filePath]
+
+# [filePath] 指定鼠标光标图片的保存路径，可选参数，仅支持传入当前设备内的绝对路径。
+```
+
+**使用示例**
+```bash
+# 输出当前鼠标光标的显示或隐藏状态和鼠标光标样式id
+uinput -M -q
+
+# [filePath] 是用户自己创建的文件保存路径，例如：/data/test。
+# 输出当前鼠标光标的显示或隐藏状态和鼠标光标样式id，并将查到的鼠标光标样式图片二进制写入到用户自建的test文件中。
+uinput -M -q /data/test
+```
 
 ## 键盘事件
 
@@ -322,6 +345,49 @@ uinput --keyboard --text <text>
 uinput -K -t Hello,World!
 ```
 
+## 修饰键状态管理
+
+启动或禁用键盘事件修饰键状态管理，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+
+### 启动修饰键状态管理
+
+启动修饰键状态管理并设置维持时间。需要与uinput键盘按键按下事件配合使用，启动后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
+
+**命令**
+```bash
+uinput enable_key_status <enable> [duration]
+
+# <enabal> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
+# [duration] 修饰键状态管理持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
+```
+
+**使用示例**
+```bash
+# 启动修饰键状态管理，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
+uinput enable_key_status 1
+uinput -K -d 2047
+
+# 启动修饰键状态管理并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
+uinput enable_key_status 1 5
+uinput -K -d 2047
+```
+
+### 禁用修饰键状态管理
+
+禁用修饰键状态管理功能，直到下次启用恢复该功能。
+
+**命令**
+```bash
+# <enabal> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
+uinput enable_key_status <enable>
+```
+
+**使用示例**
+```bash
+# 禁用修饰键状态管理。
+uinput enable_key_status 0
+```
+
 ## 触控笔事件
 
 模拟触控笔点击、滑动等。实际注入效果与[触摸事件](#触摸事件)一致，建议优先使用触摸事件命令。
@@ -402,8 +468,8 @@ uinput --stylus --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 
 # <dx1> <dy1>触控笔拖拽起点以屏幕左上角为原点的相对坐标系的位置坐标。
 # <dx2> <dy2>触控笔拖拽终点以屏幕左上角为原点的相对坐标系的位置坐标。
-# [press time]拖拽移动前的按压持续时间，可选参数，单位：ms，默认值为500，取值范围：[500,14500]，仅支持整数。
-# [total time]拖动时间，可选参数，单位：ms，默认值为1000，取值范围：[1000,15000]，仅支持整数。[total time] - [press time]不能少于500，否则命令报错：total time input is error。
+# [press time]按压时间，可选参数，需要与total time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为500，取值范围：[500,14500]，仅支持整数。
+# [total time]拖动时间，可选参数，需要与press time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为1000，取值范围：[1000,15000]，仅支持整数。[total time] - [press time]不能少于500，否则命令报错：total time input is error。
 ```
 
 **使用示例**
@@ -426,7 +492,7 @@ uinput --stylus --interval <time>
 **使用示例**
 ```bash
 # 模拟触控笔在(100, 100)位置按下后，间隔500ms后在(100, 100)位置抬起。
-uinput -S -d 100 100  -i 500 -u 100 100
+uinput -S -d 100 100 -i 500 -u 100 100
 ```
 
 ## 触摸事件
@@ -512,8 +578,8 @@ uinput --touch --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 
 # <dx1> <dy1>触摸拖拽起点以屏幕左上角为原点的相对坐标系的位置坐标。
 # <dx2> <dy2>触摸拖拽终点以屏幕左上角为原点的相对坐标系的位置坐标。
-# [press time]按压时间，可选参数，单位：ms，默认值为500，取值范围：[500,14500]，仅支持整数。
-# [total time]拖动时间，可选参数，单位：ms，默认值为1000，取值范围：[1000,15000]，仅支持整数。[total time] - [press time]不能少于500ms，否则命令报错：total time input is error。
+# [press time]按压时间，可选参数，需要与total time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为500，取值范围：[500,14500]，仅支持整数。
+# [total time]拖动时间，可选参数，需要与press time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为1000，取值范围：[1000,15000]，仅支持整数。[total time] - [press time]不能少于500，否则命令报错：total time input is error。
 ```
 
 **使用示例**
@@ -536,7 +602,7 @@ uinput --touch --interval <time>
 **使用示例**
 ```bash
 # 模拟手指在(100, 100)位置按下后，间隔500ms后在(100, 100)位置抬起。
-uinput -T -d 100 100  -i 500 -u 100 100
+uinput -T -d 100 100 -i 500 -u 100 100
 ```
 
 ### 触摸屏单指关节双击事件

@@ -6951,12 +6951,12 @@ onRemoteDied(): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
-| 名称    | 类型            | 可读 | 可写 | 说明                                  |
+| 名称    | 类型            | 只读 | 可选 | 说明                                  |
 | ------- | --------------- | ---- | ---- |-------------------------------------- |
-| errCode | number          | 是   | 否   | 错误码。                              |
-| code    | number          | 是   | 否   | 消息代码。                            |
-| data    | [MessageSequence](#messagesequence9) | 是   | 否   | 发送给对端进程的MessageSequence对象。 |
-| reply   | [MessageSequence](#messagesequence9) | 是   | 否   | 对端进程返回的MessageSequence对象。   |
+| errCode | number          | 否   | 否   | 错误码。                              |
+| code    | number          | 否   | 否   | 消息代码。                            |
+| data    | [MessageSequence](#messagesequence9) | 否   | 否   | 发送给对端进程的MessageSequence对象。 |
+| reply   | [MessageSequence](#messagesequence9) | 否   | 否   | 对端进程返回的MessageSequence对象。   |
 
 ## SendRequestResult<sup>(deprecated)</sup>
 
@@ -6968,12 +6968,12 @@ onRemoteDied(): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
-  | 名称    | 类型          | 可读 | 可写 | 说明                                |
+  | 名称    | 类型          | 只读 | 可选 | 说明                                |
   | ------- | ------------- | ---- | ---- | ----------------------------------- |
-  | errCode | number        | 是   | 否   | 错误码。                            |
-  | code    | number        | 是   | 否   | 消息代码。                          |
-  | data    | [MessageParcel](#messageparceldeprecated) | 是   | 否   | 发送给对端进程的MessageParcel对象。 |
-  | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 否   | 对端进程返回的MessageParcel对象。   |
+  | errCode | number        | 否   | 否   | 错误码。                            |
+  | code    | number        | 否   | 否   | 消息代码。                          |
+  | data    | [MessageParcel](#messageparceldeprecated) | 否   | 否   | 发送给对端进程的MessageParcel对象。 |
+  | reply   | [MessageParcel](#messageparceldeprecated) | 否   | 否   | 对端进程返回的MessageParcel对象。   |
 
 ## IRemoteObject
 
@@ -7326,7 +7326,7 @@ isObjectDead(): boolean
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
-  | 名称                  | 类型   | 可读  | 可写 | 说明                                     |
+  | 名称                  | 类型   | 只读  | 可选 | 说明                                     |
   | --------------------- | -------| ------|------|------------------------------------------ |
   | PING_TRANSACTION      | number | 是    | 否   | 内部指令码，用于测试IPC服务是否正常。     |
   | DUMP_TRANSACTION      | number | 是    | 否   | 内部指令码，获取IPC服务相关的状态信息。   |
@@ -8438,12 +8438,12 @@ isObjectDead(): boolean
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
-  | 名称          | 类型   | 可读  | 可写  | 说明                                                                      |
+  | 名称          | 类型   | 只读  | 可选  | 说明                                                                      |
   | ------------- | ------ | ----- | ----- | ------------------------------------------------------------------------ |
   | TF_SYNC       | number | 是    | 否    | 同步调用标识。                                                            |
   | TF_ASYNC      | number | 是    | 否    | 异步调用标识。                                                            |
   | TF_ACCEPT_FDS | number | 是    | 否    | 指示sendMessageRequest<sup>9+</sup>接口可以传递文件描述符。               |
-  | TF_WAIT_TIME  | number | 是    | 是    | RPC等待时间(单位/秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
+  | TF_WAIT_TIME  | number | 是    | 否    | RPC等待时间(单位/秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
 
 ### constructor<sup>9+</sup>
 
@@ -9823,7 +9823,8 @@ getDescriptor(): string
     }
   }
   try {
-    let descriptor = testRemoteObject.getDescriptor();
+    let testObject = new TestRemoteObject("ipcTest");
+    let descriptor = testObject.getDescriptor();
     hilog.info(0x0000, 'testTag', 'RpcServer: descriptor is ' + descriptor);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -9988,7 +9989,7 @@ attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
-  | 名称       | 类型   | 可读  | 可写  | 说明                                     |
+  | 名称       | 类型   | 只读  | 可选  | 说明                                     |
   | ---------- | ------ | ----- | ----- |----------------------------------------- |
   | PROT_EXEC  | number | 是    | 否    | 映射内存保护类型，代表映射的内存可执行。  |
   | PROT_NONE  | number | 是    | 否    | 映射内存保护类型，代表映射的内存不可访问。|

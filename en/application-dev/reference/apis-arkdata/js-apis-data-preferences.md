@@ -1,4 +1,10 @@
 # @ohos.data.preferences (User Preferences)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 The **Preferences** module provides APIs for processing data in the form of key-value (KV) pairs, including querying, modifying, and persisting KV pairs.
 
@@ -44,7 +50,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 | Name  | Type                                            | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context  | Context            | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).                                                |
+| context  | Context            | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).                                                |
 | name     | string                                           | Yes  | Name of the **Preferences** instance.                                     |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and the **Preferences** instance obtained is returned. Otherwise, **err** is an error object.|
 
@@ -116,7 +122,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).           |
+| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
 | name    | string                                | Yes  | Name of the **Preferences** instance.|
 
 **Return value**
@@ -192,7 +198,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 | Name  | Type                                         | Mandatory| Description                                                                                                                                                                          |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                                       | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                                       | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options  | [Options](#options10)                              | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and the **Preferences** instance obtained is returned. Otherwise, **err** is an error object.                                                                                   |
 
@@ -271,7 +277,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 | Name | Type            | Mandatory| Description                                                                                                                                                                          |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options | [Options](#options10) | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
 
 **Return value**
@@ -352,7 +358,7 @@ Obtains a **Preferences** instance. This API returns the result synchronously.
 
 | Name | Type                 | Mandatory| Description                                                        |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | Context               | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context               | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options | [Options](#options10) | Yes  | Configuration options of the **Preferences** instance.                           |
 
 **Return value**
@@ -423,7 +429,7 @@ This API cannot be called concurrently with other **preferences** APIs.
 
 | Name  | Type                                 | Mandatory| Description                                                |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
-| context  | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).                                        |
+| context  | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).                                        |
 | name     | string                                | Yes  | Name of the **Preferences** instance.                             |
 | callback | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
@@ -496,7 +502,7 @@ This API cannot be called concurrently with other **preferences** APIs.
 
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).           |
+| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
 | name    | string                                | Yes  | Name of the **Preferences** instance.|
 
 **Return value**
@@ -572,7 +578,7 @@ This API cannot be called concurrently with other **preferences** APIs.
 
 | Name  | Type                     | Mandatory| Description                                                                                                                                                                          |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options  | [Options](#options10)          | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.                                                                                                                          |
 
@@ -651,7 +657,7 @@ This API cannot be called concurrently with other **preferences** APIs.
 
 | Name | Type            | Mandatory| Description                                                                                                                                                                          |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options | [Options](#options10) | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
 
 **Return value**
@@ -725,6 +731,8 @@ After an application calls [getPreferences](#preferencesgetpreferences) for the 
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -733,7 +741,7 @@ Avoid using a removed **Preferences** instance to perform data operations, which
 
 | Name  | Type                                 | Mandatory| Description                                                |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
-| context  | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).                                        |
+| context  | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).                                        |
 | name     | string                                | Yes  | Name of the **Preferences** instance.                             |
 | callback | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
@@ -796,6 +804,8 @@ After an application calls [getPreferences](#preferencesgetpreferences) for the 
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -804,7 +814,7 @@ Avoid using a removed **Preferences** instance to perform data operations, which
 
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).           |
+| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
 | name    | string                                | Yes  | Name of the **Preferences** instance.|
 
 **Return value**
@@ -870,6 +880,8 @@ After an application calls [getPreferences](#preferencesgetpreferences) for the 
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -878,7 +890,7 @@ Avoid using a removed **Preferences** instance to perform data operations, which
 
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).           |
+| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
 | name    | string                                | Yes  | Name of the **Preferences** instance.|
 
 **Error codes**
@@ -925,6 +937,8 @@ After an application calls [getPreferences](#preferencesgetpreferences) for the 
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -933,7 +947,7 @@ Avoid using a removed **Preferences** instance to perform data operations, which
 
 | Name  | Type                     | Mandatory| Description                                                                                                                                                                          |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options  | [Options](#options10)          | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.                                                                                                                          |
 
@@ -1001,6 +1015,8 @@ After an application calls [getPreferences](#preferencesgetpreferences) for the 
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -1009,7 +1025,7 @@ Avoid using a removed **Preferences** instance to perform data operations, which
 
 | Name | Type            | Mandatory| Description                                                                                                                                                                          |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options | [Options](#options10) | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
 
 **Return value**
@@ -1080,6 +1096,8 @@ After an application calls [getPreferences](#preferencesgetpreferences) for the 
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -1088,7 +1106,7 @@ Avoid using a removed **Preferences** instance to perform data operations, which
 
 | Name | Type                 | Mandatory| Description                                                        |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | Context               | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
+| context | Context               | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | options | [Options](#options10) | Yes  | Configuration options of the **Preferences** instance.                           |
 
 **Error codes**
@@ -1139,8 +1157,8 @@ Enumerates the storage types of preferences.
 
 | Name| Value  | Description|
 | ---- | ---- | ---- |
-| XML |  0    | XML, which is the default storage mode of preferences.<br>In this mode, data is stored in XML format. Data operations are performed in the memory. To persist data, call **flush()**.    |
-| GSKV |  1    |GSKV.<br>Data is stored in GSKV mode. Data operations are flushed on a real-time basis without calling **flush()**.     |
+| XML |  0    | [XML](../../database/data-persistence-by-preferences.md#xml) format, which is the default storage type of **Preferences**.<br>In this mode, data is stored in XML format. Data operations are performed in the memory. To persist data, call **flush()**.    |
+| GSKV |  1    |[GSKV](../../database/data-persistence-by-preferences.md#gskv) format.<br>Data is stored in GSKV mode. Data operations are flushed on a real-time basis without calling **flush()**.     |
 
 
 > **NOTE**
@@ -1196,11 +1214,11 @@ Represents the configuration of a **Preferences** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
-| Name       | Type  | Mandatory| Description                                                        |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| name        | string | Yes  | Name of the **Preferences** instance. It must be longer than 0 bytes and less than or equal to 255 bytes, and cannot contain or end with slashes (/).<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                   |
-| dataGroupId | string\|null\|undefined | No  | Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>This parameter is optional. A **Preferences** instance will be created in the sandbox path corresponding to the specified **dataGroupId**. If this parameter is not specified, the **Preferences** instance is created in the sandbox directory of the application.<br> **Model restriction**: This attribute can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | No | Storage mode to be used by the **Preferences** instance. This parameter is optional. If this parameter is left blank, the XML storage type is used by default. After the storage type is set for a **Preferences** instance, it cannot be changed.<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| Name       | Type  | Read-Only| Optional| Description                                                        |
+| ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
+| name        | string | No | No| Name of the **Preferences** instance. It must be longer than 0 bytes and less than or equal to 255 bytes, and cannot contain or end with slashes (/).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>                                   |
+| dataGroupId | string\|null\|undefined | No | Yes| Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>This parameter is optional. A **Preferences** instance will be created in the sandbox path corresponding to the specified **dataGroupId**. If this parameter is not specified, the **Preferences** instance is created in the sandbox directory of the application.<br> **Model restriction**: This attribute can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>|
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | No| Yes| Storage mode to be used by the **Preferences** instance. This parameter is optional. If this parameter is left blank, the XML storage type is used by default. After the storage type is set for a **Preferences** instance, it cannot be changed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>|
 
 
 ## Preferences
@@ -1224,7 +1242,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses an 
 
 | Name  | Type                                        | Mandatory| Description              |
 | -------- | -------------------------------------------- | ---- |---------------------------|
-| key      | string                                       | Yes  | Key of the data to obtain. It cannot be empty.  |
+| key      | string                                       | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).  |
 | defValue | [ValueType](#valuetype)                      | Yes  | Default value to be returned.|
 | callback | AsyncCallback&lt;[ValueType](#valuetype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the value obtained. Otherwise, **err** is an error object.  |
 
@@ -1265,7 +1283,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses a p
 
 | Name  | Type                   | Mandatory| Description |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | Yes  | Key of the data to obtain. It cannot be empty. |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [ValueType](#valuetype) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -1310,7 +1328,7 @@ Obtains the value of a key from this **Preferences** instance. This API returns 
 
 | Name  | Type                   | Mandatory| Description           |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | Yes  | Key of the data to obtain. It cannot be empty. |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [ValueType](#valuetype) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -1338,7 +1356,7 @@ let value: preferences.ValueType = dataPreferences.getSync('startup', 'default')
 
 getAll(callback: AsyncCallback&lt;Object&gt;): void
 
-Obtains all KV pairs from this **Preferences** instance. This API uses an asynchronous callback to return the result.
+Obtains all KV pairs from a **Preferences** instance. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1489,7 +1507,7 @@ Writes data to this **Preferences** instance. This API uses an asynchronous call
 
 | Name  | Type                     | Mandatory| Description                      |
 | -------- | ------------------------- | ---- |-------------------------|
-| key      | string                    | Yes  | Key of the data. It cannot be empty.|
+| key      | string                    | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 | value    | [ValueType](#valuetype)   | Yes  | Value to write.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
@@ -1537,7 +1555,7 @@ Writes data to this **Preferences** instance. This API uses a promise to return 
 
 | Name| Type                   | Mandatory| Description                        |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | Yes  | Key of the data. It cannot be empty. |
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | value  | [ValueType](#valuetype) | Yes  | Value to write.|
 
 **Return value**
@@ -1589,7 +1607,7 @@ Writes data to this **Preferences** instance. This API returns the result synchr
 
 | Name| Type                   | Mandatory| Description                                                        |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | Yes  | Key of the data. It cannot be empty.|
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 | value  | [ValueType](#valuetype) | Yes  | Value to write.|
 
 **Error codes**
@@ -1622,7 +1640,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | Yes  | Key of the data to check. It cannot be empty.                             |
+| key      | string                       | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                             |
 | callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. If the **Preferences** instance contains the KV pair, **true** will be returned. Otherwise, **false** will be returned.|
 
 **Error codes**
@@ -1667,7 +1685,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the data to check. It cannot be empty.|
+| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1694,7 +1712,7 @@ promise.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
-    console.info("The key 'startup' is not contained.");
+    console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
   console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
@@ -1716,7 +1734,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the data to check. It cannot be empty.|
+| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1740,7 +1758,7 @@ let isExist: boolean = dataPreferences.hasSync('startup');
 if (isExist) {
   console.info("The key 'startup' is contained.");
 } else {
-  console.info("The key 'startup' is not contained.");
+  console.info("The key 'startup' does not contain.");
 }
 ```
 
@@ -1759,7 +1777,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses an asynchron
 
 | Name  | Type                     | Mandatory| Description                                                |
 | -------- | ------------------------- | ---- | ---------------------------------------------------- |
-| key      | string                    | Yes  | Key of the KV pair to delete. It cannot be empty.                     |
+| key      | string                    | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                     |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1800,7 +1818,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the KV pair to delete. It cannot be empty.|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1845,7 +1863,7 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key of the KV pair to delete. It cannot be empty.|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Error codes**
 

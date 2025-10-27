@@ -1,4 +1,10 @@
 # Using OHAudio for Audio Playback (C/C++)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only and are suitable for playback applications that implement audio output at the native layer.
 
@@ -252,8 +258,9 @@ The following walks you through how to implement simple playback:
      callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
      callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
 
-     // (Mandatory) If listening is not required, use a null pointer for initialization.
+     // (Mandatory) For scenarios where no callback is triggered, initialize with a null pointer. Starting from API version 11, if you need to listen for device changes, use OH_AudioRenderer_OutputDeviceChangeCallback instead.
      callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
+     // (Mandatory) If listening is not required, use a null pointer for initialization.
      callbacks.OH_AudioRenderer_OnError = nullptr;
      ```
    
@@ -336,6 +343,7 @@ If the device supports the low-latency channel and the sampling rate is set to 4
 The development process is similar to that in the common playback scenario. The only difference is that you need to set the low-latency mode by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) when creating an audio stream builder.
 
 > **NOTE**
+>
 > - In audio recording scenarios, if [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to **AUDIOSTREAM_USAGE_VOICE_COMMUNICATION** or **AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
 > - The low-latency mode requires robust data processing capabilities. If your application generates data slowly, it may lead to lag. Therefore, for typical music and video playback, this mode is not recommended. It is best suited for applications that are sensitive to latency, such as gaming and karaoke.
 

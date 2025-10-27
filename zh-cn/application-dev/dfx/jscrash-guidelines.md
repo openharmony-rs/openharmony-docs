@@ -2,7 +2,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
-<!--Designer: @Maplestory-->
+<!--Designer: @Maplestory91-->
 <!--Tester: @yufeifei-->
 <!--Adviser: @foryourself-->
 
@@ -64,6 +64,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Version Code | 版本编码 | 8 | 是 | - |
 | Pid | 故障进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
+| Process life time | 故障进程存活时间 | 22 | 是 | - |
 | Process Memory(kB) | 进程占用内存 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[检测原理](#检测原理)。 |
 | Page switch history | 页面切换轨迹 | 20 | 否 | 如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段。 |
@@ -71,6 +72,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Error name | 故障类型 | 8 | 是 | - |
 | Error message | 异常信息 | 8 | 是 | - |
 | Stacktrace | 故障堆栈 | 8 | 是 | - |
+| HybridStack | CPP和JS之间跨语言的故障堆栈 | 22 | 否 | ARM 64位系统下，若Stacktrace为JS栈时，则包含此字段，至多显示256层。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 
 以下是JS Crash崩溃日志规格。
@@ -84,6 +86,7 @@ Version:1.0.0 <- hap版本
 VersionCode:1000000 <- 版本编码
 Pid:579 <- 故障进程号
 Uid:0 <- 用户ID
+Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
 Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
 Page switch history: <- 页面切换轨迹
@@ -100,6 +103,22 @@ Stacktrace:
     at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)  <-异常代码调用堆栈
            ^        ^                              ^
          函数名   模块的包名                   文件行列号位置
+HybridStack: <- CPP和JS之间跨语言的代码调用栈
+#00 pc 00000000004a814c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#01 pc 00000000004a6460 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#02 pc 00000000006a94e0 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#03 pc 0000000000334d38 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#04 pc 0000000000253da8 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::ObjectFactory::GetJSError(panda::ecmascript::base::ErrorType const&, char const*, panda::ecmascript::StackCheck)+292)(173710293c3751dc676d24264bfac393)
+#05 pc 00000000005c25d4 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#06 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#07 pc 000000000044843c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallarg1Imm8V8StwCopy+340)
+#08 at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13) <- 异常发生时执行的JS代码
+#09 pc 00000000001e620c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#10 pc 00000000009ad560 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+456)(173710293c3751dc676d24264bfac393)
+#11 pc 0000000000a63f14 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#12 pc 0000000000d836bc /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#13 pc 000000000111f338 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+...
 
 HiLog:
  ^
@@ -110,7 +129,7 @@ HiLog:
 
 ### Page switch history
 
-从API 20起，使用Page switch history段记录页面切换的历史，故障日日志最多记录最新的10条历史轨迹。单条记录的格式如下：
+从API 20起，使用Page switch history段记录页面切换的历史，故障日志最多记录最新的10条历史轨迹。单条记录的格式如下：
 ```text
   14:08:30:327 /ets/pages/Index:JsError
        ^             ^            ^
@@ -191,7 +210,8 @@ at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 2. 执行方法名：onPageShow表示触发该异常的调用方法名称。
 
 3. 编译产物结构如下：
-   - 编译产物路径：详见[异常堆栈解析原理 sourcemap结构：key字段介绍](https://gitee.com/link?target=https%3A%2F%2Fdeveloper.huawei.com%2Fconsumer%2Fcn%2Fdoc%2Fharmonyos-guides%2Fide-exception-stack-parsing-principle%23section1145914292713)。
+   - 编译产物路径：详见[异常堆栈解析原理 sourcemap结构：key字段介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713)。
+
    - 文件类型：文件扩展名为.ts文件后缀（.js文件无需 SourceMap 映射可直接定位异常）。
 
 4. 行列号：发生异常的具体行数和这一行的列数，以“:”为分隔符分隔。
@@ -228,3 +248,12 @@ at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
    - 文件类型：文件扩展名为.ets。
 
 5. 行列号：发生异常的具体行数和这一行的列数，以“:”为分隔符分隔。
+
+
+### HybridStack格式
+
+从API 22起，在ARM 64位系统下，HybridStack中支持打印CPP和JS之间跨语言的代码调用栈。
+
+CPP代码调用栈详细说明[CPP异常代码调用栈格式规范](cppcrash-guidelines.md#一般故障场景日志规格)。
+
+JS代码调用栈详细说明[JS异常代码调用栈格式规范](#异常代码调用栈格式)。

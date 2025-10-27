@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以AES128、RSA2048和SM2为例，完成加解密。具体的场景介绍及支持的算法规格，请参考[密钥生成支持的算法](huks-encryption-decryption-overview.md#支持的算法)。
+以AES128、RSA2048和SM2为例，完成加解密。具体的场景介绍及支持的算法规格，请参考[加解密支持的算法](huks-encryption-decryption-overview.md#支持的算法)。
 
 ## 开发步骤
 

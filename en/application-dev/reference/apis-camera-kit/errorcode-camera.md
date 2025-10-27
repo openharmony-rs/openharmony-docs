@@ -2,8 +2,9 @@
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
-<!--SE: @leo_ysl-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -57,7 +58,7 @@ An operation that requires session configuration is performed before the session
 
 **Possible Cause**
 
-For example, the **start()** API is called before the session is configured.
+APIs such as [start](arkts-apis-camera-Session.md#start11-1) are called before the session is configured.
 
 **Solution**
 
@@ -75,7 +76,7 @@ An operation that requires a running session is performed before the session run
 
 **Possible Cause**
 
-For example, the **capture()** API is called before the session runs.
+APIs such as [capture](arkts-apis-camera-PhotoOutput.md#capture) are called before the session runs.
 
 **Solution**
 
@@ -169,7 +170,7 @@ Two applications attempt to open the same camera simultaneously.
 
 **Solution**
 
-N/A
+Close the camera that is currently open.
 
 ## 7400110 Configuration Conflicts
 

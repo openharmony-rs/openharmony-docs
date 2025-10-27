@@ -17,7 +17,7 @@ The DataAbility functions as the server. When being started, the DataAbility ver
 
 ```json
 "abilities": [
-  ...
+  // ...
   {
     "name": ".DataAbility",
     "srcLanguage": "ets",
@@ -30,7 +30,7 @@ The DataAbility functions as the server. When being started, the DataAbility ver
     "readPermission": "ohos.permission.READ_CONTACTS",
     "writePermission": "ohos.permission.WRITE_CONTACTS"
   },
-  ...
+  // ...
 ]
 ```
 
@@ -39,9 +39,9 @@ The client permission is configured in **reqPermissions** under **module** in th
 
 ```json
 {
-  ...
+  // ...
   "module": {
-    ...
+    // ...
     "reqPermissions": [
       {
         "name": "ohos.permission.READ_CONTACTS"
@@ -49,9 +49,9 @@ The client permission is configured in **reqPermissions** under **module** in th
       {
         "name": "ohos.permission.WRITE_CONTACTS"
       },
-      ...
+      // ...
     ],
-    ...
+    // ...
   }
 }
 ```

@@ -281,7 +281,7 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 }
 ```
 
-napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生成的对象不可直接在TS/JS中进行读取，需要将其包装为TyppedArray或DataView后方可进行读写。
+napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生成的对象不可直接在TS/JS中进行读取，需要将其包装为TypedArray或DataView后方可进行读写。
 
 **基准性能测试结果如下：**
 
@@ -406,7 +406,7 @@ extern "C" void napi_onLoad()
 
 ## 正确的使用napi_create_external系列接口创建的JS Object
 
-**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。
+**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见[API参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-object#napi_create_external)。
 
 **错误示例**
 
@@ -428,7 +428,7 @@ export const createMyExternal: () => Object;
 
 // 应用代码
 import testNapi from 'libentry.so';
-import worker from '@ohos.worker';
+import { worker } from '@kit.Arkts';
 
 const mWorker = new worker.ThreadWorker('../workers/Worker');
 

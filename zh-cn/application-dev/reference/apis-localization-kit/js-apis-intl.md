@@ -37,18 +37,18 @@ import { intl } from '@kit.LocalizationKit';
 
 **系统能力**：SystemCapability.Global.I18n
 
-| 名称              | 类型      | 必填   | 说明                                       |
-| --------------- | ------- | -------- | ---------------------------------------- |
-| language        | string  | 是    | 与区域设置相关的语言，如：zh。取值遵循ISO&nbsp;639标准。 |
-| script          | string  | 是    | 区域语言的书写方式（脚本），如：Hans。取值遵循Unicode&nbsp;ISO&nbsp;15924标准。 |
-| region          | string  | 是    | 与区域设置相关的国家地区，如：CN。取值遵循ISO&nbsp;3166标准。 |
-| baseName        | string  | 是    | 区域对象的基本信息，由语言、脚本、国家地区组成，如：zh-Hans-CN。  |
-| caseFirst       | string  | 是    | 区域的排序规则是否考虑大小写，取值包括：<br>"upper"：大写排前面。<br>"lower"：小写排前面。<br>"false"：使用区域默认的大小写排序规则。 |
-| calendar        | string  | 是    | 区域的日历信息，取值包括：<br>"buddhist",&nbsp;"chinese",&nbsp;"coptic","dangi",&nbsp;"ethioaa",&nbsp;"ethiopic",&nbsp;"gregory",&nbsp;"hebrew",&nbsp;"indian",&nbsp;"islamic",&nbsp;"islamic-umalqura",&nbsp;"islamic-tbla",&nbsp;"islamic-civil",&nbsp;"islamic-rgsa",&nbsp;"iso8601",&nbsp;"japanese",&nbsp;"persian",&nbsp;"roc",&nbsp;"islamicc"。<br>不同取值表示的含义请参考[设置日历和历法表1](../../internationalization/i18n-calendar.md)。 |
-| collation       | string  | 是    | 区域的排序规则，取值包括：<br>"big5han"：拉丁字母使用的拼音排序。<br>"compat"：兼容性排序，仅用于阿拉伯语。<br>"dict"：词典风格排序，仅用于僧伽罗语。<br>"direct"：二进制码点排序。<br>"ducet"：按Unicode排序元素表排序。<br>"eor"：按欧洲排序规则排序。<br>"gb2312"：拼音排序，仅用于中文排序。<br>"phonebk"：电话本风格排序。<br>"phonetic"：发音排序。<br>"pinyin"：拼音排序。<br>"reformed"：瑞典语排序。<br>"searchjl"：韩语初始辅音搜索的特殊排序。<br>"stroke"：汉语的笔画排序。<br>"trad"：传统风格排序，如西班牙语。<br>"unihan"：统一汉字排序，用于日语、韩语、中文等汉字排序。<br>"zhuyin"：注音排序，仅用于中文排序。 |
-| hourCycle       | string  | 是    | 区域的时制信息，取值包括：<br>"h11"、"h12"、"h23"、"h24"。<br>不同取值的显示效果可参考[附录表5](#附录)。 |
-| numberingSystem | string  | 是    | 区域使用的数字系统，取值包括：<br>"adlm",&nbsp;"ahom",&nbsp;"arab",&nbsp;"arabext",&nbsp;"bali",&nbsp;"beng",&nbsp;"bhks",&nbsp;"brah",&nbsp;"cakm",&nbsp;"cham",&nbsp;"deva",&nbsp;"diak",&nbsp;"fullwide",&nbsp;"gong",&nbsp;"gonm",&nbsp;"gujr",&nbsp;"guru",&nbsp;"hanidec",&nbsp;"hmng",&nbsp;"hmnp",&nbsp;"java",&nbsp;"kali",&nbsp;"khmr",&nbsp;"knda",&nbsp;"lana",&nbsp;"lanatham",&nbsp;"laoo",&nbsp;"latn",&nbsp;"lepc",&nbsp;"limb",&nbsp;"mathbold",&nbsp;"mathdbl",&nbsp;"mathmono",&nbsp;"mathsanb",&nbsp;"mathsans",&nbsp;"mlym",&nbsp;"modi",&nbsp;"mong",&nbsp;"mroo",&nbsp;"mtei",&nbsp;"mymr",&nbsp;"mymrshan",&nbsp;"mymrtlng",&nbsp;"newa",&nbsp;"nkoo",&nbsp;"olck",&nbsp;"orya",&nbsp;"osma",&nbsp;"rohg",&nbsp;"saur",&nbsp;"segment",&nbsp;"shrd",&nbsp;"sind",&nbsp;"sinh",&nbsp;"sora",&nbsp;"sund",&nbsp;"takr",&nbsp;"talu",&nbsp;"tamldec",&nbsp;"telu",&nbsp;"thai",&nbsp;"tibt",&nbsp;"tirh",&nbsp;"vaii",&nbsp;"wara",&nbsp;"wcho"。 |
-| numeric         | boolean | 是    | true表示对数字字符进行特殊的排序规则处理，false表示不对数字字符进行特殊的排序规则处理。<br>默认值：false。                      |
+| 名称              | 类型     | 只读  |  可选  | 说明                                       |
+| --------------- | ------- | -------- | -------- | ---------------------------------------- |
+| language        | string  | 否 | 否 | 与区域设置相关的语言，如：zh。取值遵循ISO&nbsp;639标准。 |
+| script          | string  | 否 | 否 | 区域语言的书写方式（脚本），如：Hans。取值遵循Unicode&nbsp;ISO&nbsp;15924标准。 |
+| region          | string  | 否 | 否 | 与区域设置相关的国家地区，如：CN。取值遵循ISO&nbsp;3166标准。 |
+| baseName        | string  | 否 | 否 | 区域对象的基本信息，由语言、脚本、国家地区组成，如：zh-Hans-CN。  |
+| caseFirst       | string  | 否 | 否 | 区域的排序规则是否考虑大小写，取值包括：<br>"upper"：大写排前面。<br>"lower"：小写排前面。<br>"false"：使用区域默认的大小写排序规则。 |
+| calendar        | string  | 否 | 否 | 区域的日历信息，取值包括：<br>"buddhist",&nbsp;"chinese",&nbsp;"coptic","dangi",&nbsp;"ethioaa",&nbsp;"ethiopic",&nbsp;"gregory",&nbsp;"hebrew",&nbsp;"indian",&nbsp;"islamic",&nbsp;"islamic-umalqura",&nbsp;"islamic-tbla",&nbsp;"islamic-civil",&nbsp;"islamic-rgsa",&nbsp;"iso8601",&nbsp;"japanese",&nbsp;"persian",&nbsp;"roc",&nbsp;"islamicc"。<br>不同取值表示的含义请参考[设置日历和历法表1](../../internationalization/i18n-calendar.md)。 |
+| collation       | string  | 否 | 否 | 区域的排序规则，取值包括：<br>"big5han"：拉丁字母使用的拼音排序。<br>"compat"：兼容性排序，仅用于阿拉伯语。<br>"dict"：词典风格排序，仅用于僧伽罗语。<br>"direct"：二进制码点排序。<br>"ducet"：按Unicode排序元素表排序。<br>"eor"：按欧洲排序规则排序。<br>"gb2312"：拼音排序，仅用于中文排序。<br>"phonebk"：电话本风格排序。<br>"phonetic"：发音排序。<br>"pinyin"：拼音排序。<br>"reformed"：瑞典语排序。<br>"searchjl"：韩语初始辅音搜索的特殊排序。<br>"stroke"：汉语的笔画排序。<br>"trad"：传统风格排序，如西班牙语。<br>"unihan"：统一汉字排序，用于日语、韩语、中文等汉字排序。<br>"zhuyin"：注音排序，仅用于中文排序。 |
+| hourCycle       | string  | 否 | 否 | 区域的时制信息，取值包括：<br>"h11"、"h12"、"h23"、"h24"。<br>不同取值的显示效果可参考[附录表5](#附录)。 |
+| numberingSystem | string  | 否 | 否 | 区域使用的数字系统，取值包括：<br>"adlm",&nbsp;"ahom",&nbsp;"arab",&nbsp;"arabext",&nbsp;"bali",&nbsp;"beng",&nbsp;"bhks",&nbsp;"brah",&nbsp;"cakm",&nbsp;"cham",&nbsp;"deva",&nbsp;"diak",&nbsp;"fullwide",&nbsp;"gong",&nbsp;"gonm",&nbsp;"gujr",&nbsp;"guru",&nbsp;"hanidec",&nbsp;"hmng",&nbsp;"hmnp",&nbsp;"java",&nbsp;"kali",&nbsp;"khmr",&nbsp;"knda",&nbsp;"lana",&nbsp;"lanatham",&nbsp;"laoo",&nbsp;"latn",&nbsp;"lepc",&nbsp;"limb",&nbsp;"mathbold",&nbsp;"mathdbl",&nbsp;"mathmono",&nbsp;"mathsanb",&nbsp;"mathsans",&nbsp;"mlym",&nbsp;"modi",&nbsp;"mong",&nbsp;"mroo",&nbsp;"mtei",&nbsp;"mymr",&nbsp;"mymrshan",&nbsp;"mymrtlng",&nbsp;"newa",&nbsp;"nkoo",&nbsp;"olck",&nbsp;"orya",&nbsp;"osma",&nbsp;"rohg",&nbsp;"saur",&nbsp;"segment",&nbsp;"shrd",&nbsp;"sind",&nbsp;"sinh",&nbsp;"sora",&nbsp;"sund",&nbsp;"takr",&nbsp;"talu",&nbsp;"tamldec",&nbsp;"telu",&nbsp;"thai",&nbsp;"tibt",&nbsp;"tirh",&nbsp;"vaii",&nbsp;"wara",&nbsp;"wcho"。 |
+| numeric         | boolean | 否 | 否 | true表示对数字字符进行特殊的排序规则处理，false表示不对数字字符进行特殊的排序规则处理。<br>默认值：false。                      |
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -65,18 +65,20 @@ constructor()
 **系统能力**：SystemCapability.Global.I18n
 
 **示例：**
-  ```ts
-  // 默认构造函数使用系统当前区域ID创建
-  let locale = new intl.Locale();
-  // 返回系统当前区域ID
-  let localeID = locale.toString();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 默认构造函数使用系统当前区域ID创建
+let locale = new intl.Locale();
+// 返回系统当前区域ID
+let localeID = locale.toString();
+```
 
 ### constructor<sup>(deprecated)</sup>
 
 constructor(locale: string, options?: LocaleOptions)
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.Locale() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)替代。
 
 创建区域对象。
 
@@ -94,18 +96,20 @@ constructor(locale: string, options?: LocaleOptions)
 | options             | [LocaleOptions](#localeoptionsdeprecated) | 否    | 创建区域对象的选项。 |
 
 **示例：**
-  ```ts
-  // 创建zh-CN区域对象
-  let locale = new intl.Locale("zh-CN");
-  let localeID = locale.toString(); // localeID = "zh-CN"
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 创建zh-CN区域对象
+let locale = new intl.Locale('zh-CN');
+let localeID = locale.toString(); // localeID = 'zh-CN'
+```
 
 
 ### toString<sup>(deprecated)</sup>
 
 toString(): string
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString)替代。
 
 获取区域对象的字符串。
 
@@ -122,17 +126,19 @@ toString(): string
 | string | 区域对象的字符串。 |
 
 **示例：**
-  ```ts
-  // 创建en-GB区域对象
-  let locale = new intl.Locale("en-GB");
-  let localeID = locale.toString(); // localeID = "en-GB"
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 创建en-GB区域对象
+let locale = new intl.Locale('en-GB');
+let localeID = locale.toString(); // localeID = 'en-GB'
   ```
 
 ### maximize<sup>(deprecated)</sup>
 
 maximize(): Locale
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.maximize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.maximize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize)替代。
 
 最大化区域信息，补齐区域对象中缺少的脚本、国家地区信息。
 
@@ -149,26 +155,28 @@ maximize(): Locale
 | [Locale](#localedeprecated) | 补齐完脚本、国家地区信息后的区域对象。 |
 
 **示例：**
-  ```ts
-  // 创建zh区域对象
-  let locale = new intl.Locale("zh");
-  // 补齐区域对象的脚本和地区
-  let maximizedLocale = locale.maximize();
-  let localeID = maximizedLocale.toString(); // localeID = "zh-Hans-CN"
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // 创建en-US区域对象
-  locale = new intl.Locale("en-US");
-  // 补齐区域对象的脚本
-  maximizedLocale = locale.maximize();
-  localeID = maximizedLocale.toString(); // localeID = "en-Latn-US"
-  ```
+// 创建zh区域对象
+let locale = new intl.Locale('zh');
+// 补齐区域对象的脚本和地区
+let maximizedLocale = locale.maximize();
+let localeID = maximizedLocale.toString(); // localeID = 'zh-Hans-CN'
+
+// 创建en-US区域对象
+locale = new intl.Locale('en-US');
+// 补齐区域对象的脚本
+maximizedLocale = locale.maximize();
+localeID = maximizedLocale.toString(); // localeID = 'en-Latn-US'
+```
 
 
 ### minimize<sup>(deprecated)</sup>
 
 minimize(): Locale
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.minimize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale.prototype.minimize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize)替代。
 
 最小化区域信息，移除区域对象中的脚本、国家地区信息。
 
@@ -185,23 +193,25 @@ minimize(): Locale
 | [Locale](#localedeprecated) | 移除完脚本、国家地区信息后的区域对象。 |
 
 **示例：**
-  ```ts
-  // 创建zh-Hans-CN区域对象
-  let locale = new intl.Locale("zh-Hans-CN");
-  // 移除区域对象的脚本和地区
-  let minimizedLocale = locale.minimize();
-  let localeID = minimizedLocale.toString(); // localeID = "zh"
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // 创建en-US区域对象
-  locale = new intl.Locale("en-US");
-  // 移除区域对象的地区
-  minimizedLocale = locale.minimize();
-  localeID = minimizedLocale.toString(); // localeID = "en"
-  ```
+// 创建zh-Hans-CN区域对象
+let locale = new intl.Locale('zh-Hans-CN');
+// 移除区域对象的脚本和地区
+let minimizedLocale = locale.minimize();
+let localeID = minimizedLocale.toString(); // localeID = 'zh'
+
+// 创建en-US区域对象
+locale = new intl.Locale('en-US');
+// 移除区域对象的地区
+minimizedLocale = locale.minimize();
+localeID = minimizedLocale.toString(); // localeID = 'en'
+```
 
 ## LocaleOptions<sup>(deprecated)</sup>
 
-> 从API version 8开始支持，从API version 20开始废弃，以calendar为例，建议使用[Intl.Locale.prototype.calendar()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar)替代。
+> 从API version 6开始支持，从API version 20开始废弃，以calendar为例，建议使用[Intl.Locale.prototype.calendar()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar)替代。
 
 区域初始化选项。从API version 9开始，LocaleOptions属性由必填改为可选。
 
@@ -226,6 +236,14 @@ minimize(): Locale
 
 ## DateTimeFormat<sup>(deprecated)</sup>
 
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)替代。
+
+提供日期格式化的能力。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Global.I18n
+
 ### constructor<sup>(deprecated)</sup>
 
 constructor()
@@ -242,6 +260,8 @@ constructor()
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统当前区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
@@ -250,7 +270,7 @@ let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)替代。
 
 创建时间、日期格式化对象。
 
@@ -269,6 +289,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建DateTimeFormat对象，日期风格为full，时间风格为medium
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('zh-CN', { dateStyle: 'full', timeStyle: 'medium' });
 
@@ -280,7 +302,7 @@ formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyl
 
 format(date: Date): string
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format)替代。
 
 对时间、日期进行格式化。
 
@@ -304,6 +326,8 @@ format(date: Date): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let date: Date = new Date(2021, 11, 17, 3, 24, 0); // 时间日期为2021.12.17 03:24:00
 // 使用en-GB区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
@@ -318,7 +342,7 @@ formattedDate = formatter.format(date); // formattedDate "Friday, 17 December 20
 
 formatRange(startDate: Date, endDate: Date): string
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.formatRange()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.formatRange()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange)替代。
 
 对时间段、日期段进行格式化。
 
@@ -343,18 +367,20 @@ formatRange(startDate: Date, endDate: Date): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let startDate: Date = new Date(2021, 11, 17, 3, 24, 0); // 时间日期为2021.12.17 03:24:00
 let endDate: Date = new Date(2021, 11, 18, 3, 24, 0);
 // 使用en-GB区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB');
-let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = "17/12/2021 - 18/12/2021"
+let formattedDateRange: string = formatter.formatRange(startDate, endDate); // formattedDateRange = '17/12/2021 - 18/12/2021'
 ```
 
 ### resolvedOptions<sup>(deprecated)</sup>
 
 resolvedOptions(): DateTimeOptions
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)替代。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)替代。
 
 获取创建时间、日期格式化对象时设置的配置项。
 
@@ -372,7 +398,9 @@ resolvedOptions(): DateTimeOptions
 
 **示例：**
 ```ts
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat("en-GB", { dateStyle: 'full', timeStyle: 'medium' });
+import { intl } from '@kit.LocalizationKit';
+
+let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('en-GB', { dateStyle: 'full', timeStyle: 'medium' });
 // 返回DateTimeFormat对象的配置项
 let options: intl.DateTimeOptions = formatter.resolvedOptions();
 let dateStyle: string | undefined = options.dateStyle; // dateStyle = 'full'
@@ -382,7 +410,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 ## DateTimeOptions<sup>(deprecated)</sup>
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用Intl.DateTimeFormatOptions和Intl.ResolvedDateTimeFormatOptions替代。用法参考[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)和[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)。
+> 从API version 6开始支持，从API version 20开始废弃，建议使用Intl.DateTimeFormatOptions和Intl.ResolvedDateTimeFormatOptions替代。用法参考[Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)和[Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)。
 
 时间、日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。
 
@@ -416,13 +444,17 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 ## NumberFormat
 
-提供数字格式化的能力。
+提供标准的数字格式化的能力。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Global.I18n
 
 ### constructor<sup>8+</sup>
 
 constructor()
 
-创建数字格式化对象。
+使用当前系统区域创建数字格式化对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -430,6 +462,8 @@ constructor()
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统当前区域ID创建NumberFormat对象
 let formatter: intl.NumberFormat = new intl.NumberFormat();
 ```
@@ -439,7 +473,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: NumberOptions)
 
-创建数字格式化对象。
+根据指定的区域和配置项创建数字格式化对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -454,6 +488,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: NumberOptions)
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用en-GB区域ID创建NumberFormat对象，style设置为decimal，notation设置为scientific
 let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'decimal', notation: 'scientific' });
 ```
@@ -462,7 +498,7 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 
 format(num: number): string
 
-对数字进行格式化。
+格式化数字。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -483,11 +519,13 @@ format(num: number): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用区域ID列表创建NumberFormat对象，因为en-GB为合法的区域ID，因此使用en-GB创建NumberFormat对象
 let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 let formattedNumber: string = formatter.format(1223); // formattedNumber = 1.223E3
-let options : intl.NumberOptions = {
-  roundingPriority: "lessPrecision",
+let options: intl.NumberOptions = {
+  roundingPriority: 'lessPrecision',
   maximumFractionDigits: 3,
   maximumSignificantDigits: 3
 }
@@ -521,6 +559,8 @@ formatRange(startRange: number, endRange: number): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let formatter: intl.NumberFormat = new intl.NumberFormat('en-US', { style: 'unit', unit: 'meter' });
 let formattedRange: string = formatter.formatRange(0, 3); // formattedRange: 0–3 m
 ```
@@ -545,6 +585,8 @@ resolvedOptions(): NumberOptions
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 let formatter: intl.NumberFormat = new intl.NumberFormat(['en-GB', 'zh'], { style: 'decimal', notation: 'scientific' });
 // 获取NumberFormat对象配置项
 let options: intl.NumberOptions = formatter.resolvedOptions();
@@ -555,6 +597,8 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 ## NumberOptions
 
 创建数字格式化对象时可设置的配置项。从API version 9开始，NumberOptions的属性由必填改为可选。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -587,28 +631,34 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 提供字符串排序的能力。
 
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Global.I18n
+
 ### constructor<sup>8+</sup>
 
 constructor()
 
-创建排序对象。
+使用当前系统区域创建排序对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
 **示例：**
-  ```ts
-  // 使用系统区域创建Collator对象
-  let collator = new intl.Collator();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建Collator对象
+let collator = new intl.Collator();
+```
 
 
 ### constructor<sup>8+</sup>
 
 constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
 
-创建排序对象。
+根据指定的区域和配置项创建排序对象。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -622,10 +672,12 @@ constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
 | options              | [CollatorOptions](#collatoroptions8) | 否    | 创建排序对象时可设置的配置项。       |
 
 **示例：**
-  ```ts
-  // 使用zh-CN区域ID创建Collator对象，localeMatcher设置为lookup，usage设置为sort
-  let collator = new intl.Collator("zh-CN", {localeMatcher: "lookup", usage: "sort"});
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用zh-CN区域ID创建Collator对象，localeMatcher设置为lookup，usage设置为sort
+let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort'});
+```
 
 
 ### compare<sup>8+</sup>
@@ -652,12 +704,14 @@ compare(first: string, second: string): number
 | number | 比较结果。<br>- number为负数时，表示first排序在second之前。<br>- number为0时，表示first与second排序相同。<br>- number为正数，表示first排序在second之后。 |
 
 **示例：**
-  ```ts
-  // 使用en-GB区域ID创建Collator对象
-  let collator = new intl.Collator("en-GB");
-  // 比较first和second的先后顺序
-  let compareResult = collator.compare("first", "second"); // compareResult = -1
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用en-GB区域ID创建Collator对象
+let collator = new intl.Collator('en-GB');
+// 比较first和second的先后顺序
+let compareResult = collator.compare('first', 'second'); // compareResult = -1
+```
 
 
 ### resolvedOptions<sup>8+</sup>
@@ -677,13 +731,15 @@ resolvedOptions(): CollatorOptions
 | [CollatorOptions](#collatoroptions8) | 返回排序对象的属性。 |
 
 **示例：**
-  ```ts
-  let collator = new intl.Collator("zh-Hans", { usage: 'sort', ignorePunctuation: true });
-  // 获取Collator对象的配置项
-  let options = collator.resolvedOptions();
-  let usage = options.usage; // usage = "sort"
-  let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+let collator = new intl.Collator('zh-Hans', { usage: 'sort', ignorePunctuation: true });
+// 获取Collator对象的配置项
+let options = collator.resolvedOptions();
+let usage = options.usage; // usage = 'sort'
+let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
+```
 
 
 ## CollatorOptions<sup>8+</sup>
@@ -709,6 +765,14 @@ resolvedOptions(): CollatorOptions
 
 ## PluralRules<sup>(deprecated)</sup>
 
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)替代。
+
+提供获取单复数类型的能力。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Global.I18n
+
 ### constructor<sup>(deprecated)</sup>
 
 constructor()
@@ -722,10 +786,12 @@ constructor()
 **系统能力**：SystemCapability.Global.I18n
 
 **示例：**
-  ```ts
-  // 使用系统区域创建PluralRules对象
-  let pluralRules = new intl.PluralRules();
-  ```
+```ts
+import { intl } from '@kit.LocalizationKit';
+
+// 使用系统区域创建PluralRules对象
+let pluralRules = new intl.PluralRules();
+```
 
 
 ### constructor<sup>(deprecated)</sup>
@@ -749,6 +815,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: PluralRulesOptions)
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建PluralRules对象，localeMatcher设置为lookup，type设置为cardinal
 let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatcher: 'lookup', type: 'cardinal' });
 ```
@@ -778,20 +846,24 @@ select(n: number): string
 | string | 单复数类别，取值包括："zero"，"one"，"two",&nbsp;"few",&nbsp;"many",&nbsp;"others"。 <br>不同取值的含义请参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。|
 
 **示例：**
-  ```ts
-  // 使用zh-Hans区域ID创建PluralRules对象
-  let zhPluralRules = new intl.PluralRules("zh-Hans");
-  // 计算zh-Hans区域中数字1对应的单复数类别
-  let plural = zhPluralRules.select(1); // plural = other
+```ts
+import { intl } from '@kit.LocalizationKit';
 
-  // 使用en-US区域ID创建PluralRules对象
-  let enPluralRules = new intl.PluralRules("en-US");
-  // 计算en-US区域中数字1对应的单复数类别
-  plural = enPluralRules.select(1); // plural = one
-  ```
+// 使用zh-Hans区域ID创建PluralRules对象
+let zhPluralRules = new intl.PluralRules('zh-Hans');
+// 计算zh-Hans区域中数字1对应的单复数类别
+let plural = zhPluralRules.select(1); // plural = 'other'
+
+// 使用en-US区域ID创建PluralRules对象
+let enPluralRules = new intl.PluralRules('en-US');
+// 计算en-US区域中数字1对应的单复数类别
+plural = enPluralRules.select(1); // plural = 'one'
+```
 
 
 ## PluralRulesOptions<sup>(deprecated)</sup>
+
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.PluralRulesOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)替代。
 
 创建单复数对象时可设置的配置项。从API version 9开始，PluralRulesOptions的属性由必填改为可选。
 
@@ -812,6 +884,14 @@ select(n: number): string
 
 ## RelativeTimeFormat<sup>(deprecated)</sup>
 
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)替代。
+
+提供相对时间格式化的能力。
+
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Global.I18n
+
 ### constructor<sup>(deprecated)</sup>
 
 constructor()
@@ -826,6 +906,8 @@ constructor()
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用系统区域创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
@@ -852,6 +934,8 @@ constructor(locale: string | Array&lt;string&gt;, options?: RelativeTimeFormatIn
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建RelativeTimeFormat对象，localeMatcher设置为lookup，numeric设置为always，style设置为long
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
   localeMatcher: 'lookup',
@@ -888,6 +972,8 @@ format(value: number, unit: string): string
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用zh-CN区域ID创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN');
 // 计算zh-CN区域中数字3，单位quarter的本地化表示
@@ -922,6 +1008,8 @@ formatToParts(value: number, unit: string): Array&lt;object&gt;
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用en区域ID创建RelativeTimeFormat对象，numeric设置为auto
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('en', { numeric: 'auto' });
 let parts: Array<object> = formatter.formatToParts(10, 'seconds'); // parts = [ {type: 'literal', value: 'in'}, {type: 'integer', value: 10, unit: 'second'}, {type: 'literal', value: 'seconds'} ]
@@ -948,6 +1036,8 @@ resolvedOptions(): RelativeTimeFormatResolvedOptions
 
 **示例：**
 ```ts
+import { intl } from '@kit.LocalizationKit';
+
 // 使用en-GB区域ID创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('en-GB', { style: 'short' });
 // 获取RelativeTimeFormat对象配置项

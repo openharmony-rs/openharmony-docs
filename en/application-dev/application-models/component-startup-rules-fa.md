@@ -1,5 +1,12 @@
 # Component Startup Rules (FA Model)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 
 Component startup refers to the behavior of starting or connecting to an application component.
 
@@ -35,7 +42,7 @@ In view of this, the system formulates a set of component startup rules, as foll
   - An application is considered as a foreground application only when the application process gains focus or its UIAbility component is running in the foreground.
   - Verify the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission, which is available only for system applications.
 
-- **Before starting the ServiceAbility or DataAbility component of an application, verify the AssociateWakeUp field of the target application.**
+- **Before starting the ServiceAbility or DataAbility component of an application in the [FA model](ability-terminology.md#fa-model), verify the AssociateWakeUp field of the target application.**
   - This rule applies only to cross-application scenarios.
   - This rule is valid only when the target component is ServiceAbility or DataAbility.
   - The ServiceAbility and DataAbility of an application can be accessed by other applications only when **AssociateWakeUp** of the target application is set to **true**.

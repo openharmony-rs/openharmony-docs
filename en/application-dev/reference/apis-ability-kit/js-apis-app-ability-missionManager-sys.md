@@ -1,5 +1,12 @@
 # @ohos.app.ability.missionManager (missionManager) (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The missionManager module provides APIs to lock, unlock, and clear missions, and switch a mission to the foreground.
 
 > **NOTE**
@@ -62,13 +69,13 @@ import { window } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 let listener: missionManager.MissionListener = {
-  onMissionCreated: (mission: number) => {console.log('--------onMissionCreated-------');},
-  onMissionDestroyed: (mission: number) => {console.log('--------onMissionDestroyed-------');},
-  onMissionSnapshotChanged: (mission: number) => {console.log('--------onMissionSnapshotChanged-------');},
-  onMissionMovedToFront: (mission: number) => {console.log('--------onMissionMovedToFront-------');},
-  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {console.log('--------onMissionIconUpdated-------');},
-  onMissionClosed: (mission: number) => {console.log('--------onMissionClosed-------');},
-  onMissionLabelUpdated: (mission: number) => {console.log('--------onMissionLabelUpdated-------');}
+  onMissionCreated: (mission: number) => {console.info('--------onMissionCreated-------');},
+  onMissionDestroyed: (mission: number) => {console.info('--------onMissionDestroyed-------');},
+  onMissionSnapshotChanged: (mission: number) => {console.info('--------onMissionSnapshotChanged-------');},
+  onMissionMovedToFront: (mission: number) => {console.info('--------onMissionMovedToFront-------');},
+  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {console.info('--------onMissionIconUpdated-------');},
+  onMissionClosed: (mission: number) => {console.info('--------onMissionClosed-------');},
+  onMissionLabelUpdated: (mission: number) => {console.info('--------onMissionLabelUpdated-------');}
 };
 
 let listenerId = -1;
@@ -77,7 +84,7 @@ let context: common.UIAbilityContext;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log('[Demo] EntryAbility onCreate');
+    console.info('[Demo] EntryAbility onCreate');
     abilityWant = want;
     context = this.context;
   }
@@ -85,8 +92,8 @@ export default class EntryAbility extends UIAbility {
   onDestroy() {
     try {
       if (listenerId !== -1) {
-        missionManager.off('mission', listenerId).catch((err: BusinessError) => {
-          console.log(JSON.stringify(err));
+        missionManager.off('mission', listenerId).catch((error: BusinessError) => {
+          console.info(JSON.stringify(error));
         });
       }
     } catch (paramError) {
@@ -94,12 +101,12 @@ export default class EntryAbility extends UIAbility {
       let message = (paramError as BusinessError).message;
       console.error(`error: ${code}, ${message} `);
     }
-    console.log('[Demo] EntryAbility onDestroy');
+    console.info('[Demo] EntryAbility onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // The main window is created. Set a main page for this ability.
-    console.log('[Demo] EntryAbility onWindowStageCreate');
+    console.info('[Demo] EntryAbility onWindowStageCreate');
     try {
       listenerId = missionManager.on('mission', listener);
     } catch (paramError) {
@@ -124,7 +131,7 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'mission', listenerId: number, callback: AsyncCallback&lt;void&gt;): void
 
-Deregisters a mission status listener.
+Deregisters a mission status listener. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -160,13 +167,27 @@ import { window } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 let listener: missionManager.MissionListener = {
-  onMissionCreated: (mission: number) => {console.log('--------onMissionCreated-------');},
-  onMissionDestroyed: (mission: number) => {console.log('--------onMissionDestroyed-------');},
-  onMissionSnapshotChanged: (mission: number) => {console.log('--------onMissionSnapshotChanged-------');},
-  onMissionMovedToFront: (mission: number) => {console.log('--------onMissionMovedToFront-------');},
-  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {console.log('--------onMissionIconUpdated-------');},
-  onMissionClosed: (mission: number) => {console.log('--------onMissionClosed-------');},
-  onMissionLabelUpdated: (mission: number) => {console.log('--------onMissionLabelUpdated-------');}
+  onMissionCreated: (mission: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (mission: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (mission: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (mission: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (mission: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (mission: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
 };
 
 let listenerId = -1;
@@ -175,7 +196,7 @@ let context: common.UIAbilityContext;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log('[Demo] EntryAbility onCreate');
+    console.info('[Demo] EntryAbility onCreate');
     abilityWant = want;
     context = this.context;
   }
@@ -183,8 +204,12 @@ export default class EntryAbility extends UIAbility {
   onDestroy() {
     try {
       if (listenerId !== -1) {
-        missionManager.off('mission', listenerId, (err: BusinessError) => {
-          console.log(`${err.code}`);
+        missionManager.off('mission', listenerId, (error: BusinessError) => {
+          if (error) {
+            console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}`);
+            return;
+          }
+          console.info(`MissionManager.off success.`);
         });
       }
     } catch (paramError) {
@@ -192,12 +217,12 @@ export default class EntryAbility extends UIAbility {
       let message = (paramError as BusinessError).message;
       console.error(`error: ${code}, ${message} `);
     }
-    console.log('[Demo] EntryAbility onDestroy');
+    console.info('[Demo] EntryAbility onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // The main window is created. Set a main page for this ability.
-    console.log('[Demo] EntryAbility onWindowStageCreate');
+    console.info('[Demo] EntryAbility onWindowStageCreate');
     try {
       listenerId = missionManager.on('mission', listener);
     } catch (paramError) {
@@ -222,7 +247,7 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'mission', listenerId: number): Promise&lt;void&gt;
 
-Deregisters a mission status listener. This API uses a promise to return the result.
+Unregisters a mission status listener. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -241,7 +266,7 @@ Deregisters a mission status listener. This API uses a promise to return the res
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -263,13 +288,27 @@ import { window } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 let listener: missionManager.MissionListener = {
-  onMissionCreated: (mission: number) => {console.log('--------onMissionCreated-------');},
-  onMissionDestroyed: (mission: number) => {console.log('--------onMissionDestroyed-------');},
-  onMissionSnapshotChanged: (mission: number) => {console.log('--------onMissionSnapshotChanged-------');},
-  onMissionMovedToFront: (mission: number) => {console.log('--------onMissionMovedToFront-------');},
-  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {console.log('--------onMissionIconUpdated-------');},
-  onMissionClosed: (mission: number) => {console.log('--------onMissionClosed-------');},
-  onMissionLabelUpdated: (mission: number) => {console.log('--------onMissionLabelUpdated-------');}
+  onMissionCreated: (mission: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (mission: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (mission: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (mission: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (mission: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (mission: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (mission: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
 };
 
 let listenerId = -1;
@@ -278,7 +317,7 @@ let context: common.UIAbilityContext;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log('[Demo] EntryAbility onCreate');
+    console.info('[Demo] EntryAbility onCreate');
     abilityWant = want;
     context = this.context;
   }
@@ -286,8 +325,8 @@ export default class EntryAbility extends UIAbility {
   onDestroy() {
     try {
       if (listenerId !== -1) {
-        missionManager.off('mission', listenerId).catch((err: BusinessError) => {
-          console.log(`${err.code}`);
+        missionManager.off('mission', listenerId).catch((error: BusinessError) => {
+          console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}.`);
         });
       }
     } catch (paramError) {
@@ -295,12 +334,12 @@ export default class EntryAbility extends UIAbility {
       let message = (paramError as BusinessError).message;
       console.error(`error: ${code}, ${message} `);
     }
-    console.log('[Demo] EntryAbility onDestroy');
+    console.info('[Demo] EntryAbility onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // The main window is created. Set a main page for this ability.
-    console.log('[Demo] EntryAbility onWindowStageCreate');
+    console.info('[Demo] EntryAbility onWindowStageCreate');
     try {
       listenerId = missionManager.on('mission', listener);
     } catch (paramError) {
@@ -324,7 +363,7 @@ export default class EntryAbility extends UIAbility {
 
 getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback&lt;MissionInfo&gt;): void
 
-Obtains the information about a given mission. This API uses an asynchronous callback to return the result.
+Obtains the mission information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -358,7 +397,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let testMissionId = 1;
 
-missionManager.getMissionInfos('',10)
+missionManager.getMissionInfos('', 10)
   .then((allMissions: Array<missionManager.MissionInfo>) => {
     try {
       if (allMissions && allMissions.length > 0) {
@@ -369,12 +408,12 @@ missionManager.getMissionInfos('',10)
         if (error) {
           console.error(`getMissionInfo failed, error.code: ${error.code}, error.message: ${error.message}`);
         } else {
-          console.log(`mission.missionId = ${mission.missionId}`);
-          console.log(`mission.runningState = ${mission.runningState}`);
-          console.log(`mission.lockedState = ${mission.lockedState}`);
-          console.log(`mission.timestamp = ${mission.timestamp}`);
-          console.log(`mission.label = ${mission.label}`);
-          console.log(`mission.iconPath = ${mission.iconPath}`);
+          console.info(`mission.missionId = ${mission.missionId}`);
+          console.info(`mission.runningState = ${mission.runningState}`);
+          console.info(`mission.lockedState = ${mission.lockedState}`);
+          console.info(`mission.timestamp = ${mission.timestamp}`);
+          console.info(`mission.label = ${mission.label}`);
+          console.info(`mission.iconPath = ${mission.iconPath}`);
         }
       });
     } catch (paramError) {
@@ -383,14 +422,16 @@ missionManager.getMissionInfos('',10)
       console.error(`error: ${code}, ${message} `);
     }
   })
-  .catch((err: BusinessError) => {console.log(`${err.code}`);});
+  .catch((error: BusinessError) => {
+    console.error(`getMissionInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
+  });
 ```
 
 ## missionManager.getMissionInfo
 
 getMissionInfo(deviceId: string, missionId: number): Promise&lt;MissionInfo&gt;
 
-Obtains the information about a given mission. This API uses a promise to return the result.
+Obtains the mission information. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -430,11 +471,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let testMissionId = 1;
 
 try {
-  missionManager.getMissionInfo('', testMissionId).then((data: missionManager.MissionInfo) => {
-    console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getMissionInfo failed. Cause: ${error.message}`);
-  });
+  missionManager.getMissionInfo('', testMissionId)
+    .then((data: missionManager.MissionInfo) => {
+      console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`getMissionInfo failed. Cause: ${error.message}`);
+    });
 } catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`getMissionInfo failed. Cause: ${err.message}`);
@@ -482,14 +525,14 @@ try {
     if (error) {
       console.error(`getMissionInfos failed, error.code: ${error.code}, error.message: ${error.message}`);
     } else {
-      console.log(`size = ${missions.length}`);
-      console.log(`missions = ${JSON.stringify(missions)}`);
+      console.info(`size = ${missions.length}`);
+      console.info(`missions = ${JSON.stringify(missions)}`);
     }
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message} `);
+  console.error(`getMissionInfos failed, error code: ${code}, error msg: ${message}.`);
 }
 ```
 
@@ -585,7 +628,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let testMissionId = 2;
 
 try {
-  missionManager.getMissionSnapShot('', testMissionId, (err: BusinessError, data: missionManager.MissionSnapshot ) => {
+  missionManager.getMissionSnapShot('', testMissionId, (err: BusinessError, data: missionManager.MissionSnapshot) => {
     if (err) {
       console.error(`getMissionSnapShot failed: ${err.message}`);
     } else {
@@ -690,13 +733,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let testMissionId = 2;
 
 try {
-  missionManager.getLowResolutionMissionSnapShot('', testMissionId, (err: BusinessError, data: missionManager.MissionSnapshot) => {
-    if (err) {
-      console.error(`getLowResolutionMissionSnapShot failed: ${err.message}`);
-    } else {
-      console.info(`getLowResolutionMissionSnapShot successfully: ${JSON.stringify(data)}`);
-    }
-  });
+  missionManager.getLowResolutionMissionSnapShot('', testMissionId,
+    (err: BusinessError, data: missionManager.MissionSnapshot) => {
+      if (err) {
+        console.error(`getLowResolutionMissionSnapShot failed: ${err.message}`);
+      } else {
+        console.info(`getLowResolutionMissionSnapShot successfully: ${JSON.stringify(data)}`);
+      }
+    });
 } catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`getLowResolutionMissionSnapShot failed: ${err.message}`);
@@ -833,7 +877,7 @@ Locks a given mission. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -938,7 +982,7 @@ Unlocks a given mission. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1045,7 +1089,7 @@ Clears a given mission, regardless of whether it is locked. This API uses a prom
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1141,7 +1185,7 @@ Clears all unlocked missions. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1262,7 +1306,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let testMissionId = 2;
 
 try {
-  missionManager.moveMissionToFront(testMissionId, {windowMode : 101}, (err: BusinessError, data: void) => {
+  missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err: BusinessError, data: void) => {
     if (err) {
       console.error(`moveMissionToFront failed: ${err.message}`);
     } else {
@@ -1298,7 +1342,7 @@ Switches a given mission to the foreground, with the startup parameters for the 
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1489,7 +1533,7 @@ Switches a batch of missions to the foreground, and moves the mission with the s
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise used to return the result.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1525,7 +1569,7 @@ try {
       }
     }
     missionManager.moveMissionsToForeground(toShows, toShows[0]).then(() => {
-      console.log(`moveMissionsToForeground is called`);
+      console.info(`moveMissionsToForeground is called`);
     });
   });
 } catch (paramError) {
@@ -1539,7 +1583,7 @@ try {
 
 moveMissionsToBackground(missionIds: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-Switches a batch of missions to the background. This API uses an asynchronous callback to return the result. The mission IDs in the callback are sorted by mission level when the missions are switched.
+Switches a batch of missions to the background. The mission IDs returned are sorted by mission level when the missions are switched. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -1580,7 +1624,7 @@ try {
 
     let toHides = new Array<number>();
     for (let missionInfo of missionInfos) {
-      if (missionInfo.abilityState ==  abilityManager.AbilityState.FOREGROUND) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.FOREGROUND) {
         toHides.push(missionInfo.missionId);
       }
     }
@@ -1603,7 +1647,7 @@ try {
 
 moveMissionsToBackground(missionIds : Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-Switches a batch of missions to the background. This API uses a promise to return the result. The mission IDs in the promise are sorted by mission level when the missions are switched.
+Switches a batch of missions to the background. The mission IDs returned are sorted by mission level when the missions are switched. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -1621,7 +1665,7 @@ Switches a batch of missions to the background. This API uses a promise to retur
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the result.|
+  | Promise&lt;Array&lt;number&gt;&gt; | Promise used to return an array of mission IDs.|
 
 **Error codes**
 
@@ -1649,12 +1693,12 @@ try {
 
     let toHides = new Array<number>();
     for (let missionInfo of missionInfos) {
-      if (missionInfo.abilityState ==  abilityManager.AbilityState.FOREGROUND) {
+      if (missionInfo.abilityState == abilityManager.AbilityState.FOREGROUND) {
         toHides.push(missionInfo.missionId);
       }
     }
     missionManager.moveMissionsToBackground(toHides).then((hideRes: Array<number>) => {
-      console.log(`moveMissionsToBackground is called, res: ${JSON.stringify(hideRes)}`);
+      console.info(`moveMissionsToBackground is called, res: ${JSON.stringify(hideRes)}`);
     });
   });
 } catch (paramError) {

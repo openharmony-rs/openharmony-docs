@@ -37,18 +37,24 @@
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Environment } from '@kit.CoreFileKit';
 
+```
+<!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function getUserDirExample() {
-    try {
-        const downloadPath = Environment.getUserDownloadDir();
-        console.info(`success to getUserDownloadDir: ${downloadPath}`);
-        const documentsPath = Environment.getUserDocumentDir();
-        console.info(`success to getUserDocumentDir: ${documentsPath}`);
-    } catch (error) {
-        const err: BusinessError = error as BusinessError;
-        console.error(`failed to get user dir, Error code: ${err.code}, message: ${err.message}`);
-    }
+  try {
+    const downloadPath = Environment.getUserDownloadDir();
+    console.info(`success to getUserDownloadDir: ${downloadPath}`);
+    const documentsPath = Environment.getUserDocumentDir();
+    console.info(`success to getUserDocumentDir: ${documentsPath}`);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`failed to get user dir, Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
+
+
 
 2.以 Download 目录为例，访问 Download 目录下的文件。
 
@@ -61,31 +67,37 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function readUserDownloadDirExample(context: common.UIAbilityContext) {
-    // 检查是否具有 READ_WRITE_DOWNLOAD_DIRECTORY 权限，无权限则需要向用户申请授予权限。
-    try {
-        // 获取 Download 目录
-        const downloadPath = Environment.getUserDownloadDir();
-        console.info(`success to getUserDownloadDir: ${downloadPath}`);
-        const dirPath = context.filesDir;
-        console.info(`success to get filesDir: ${dirPath}`);
-        // 查看 Download 目录下的文件并拷贝到沙箱目录中
-        let fileList: string[] = fs.listFileSync(downloadPath);
-        fileList.forEach((file, index) => {
-            console.info(`${downloadPath} ${index}: ${file}`);
-            fs.copyFileSync(`${downloadPath}/${file}`, `${dirPath}/${file}`);
-        });
-        // 查看沙箱目录下对应的文件
-        fileList = fs.listFileSync(dirPath);
-        fileList.forEach((file, index) => {
-            console.info(`${dirPath} ${index}: ${file}`);
-        });
-    } catch (error) {
-        const err: BusinessError = error as BusinessError;
-        console.error(`Error code: ${err.code}, message: ${err.message}`);
-    }
+  try {
+    // 获取 Download 目录
+    const downloadPath = Environment.getUserDownloadDir();
+    console.info(`success to getUserDownloadDir: ${downloadPath}`);
+    const dirPath = context.filesDir;
+    console.info(`success to get filesDir: ${dirPath}`);
+    // 查看 Download 目录下的文件并拷贝到沙箱目录中
+    let fileList: string[] = fs.listFileSync(downloadPath);
+    fileList.forEach((file, index) => {
+      console.info(`${downloadPath} ${index}: ${file}`);
+      if (fs.statSync(`${downloadPath}/${file}`).isFile()) {
+        fs.copyFileSync(`${downloadPath}/${file}`, `${dirPath}/${file}`);
+      }
+    });
+    // 查看沙箱目录下对应的文件
+    fileList = fs.listFileSync(dirPath);
+    fileList.forEach((file, index) => {
+      console.info(`${dirPath} ${index}: ${file}`);
+    });
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
+
 
 3.以 Download 目录为例，保存文件到 Download 目录。
 
@@ -94,20 +106,24 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Environment } from '@kit.CoreFileKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 
+```
+<!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function writeUserDownloadDirExample() {
-// 检查是否具有 READ_WRITE_DOWNLOAD_DIRECTORY 权限，无权限则需要向用户申请授予权限。
-    try {
-        // 获取 Download 目录
-        const downloadPath = Environment.getUserDownloadDir();
-        console.info(`success to getUserDownloadDir: ${downloadPath}`);
-        // 保存 temp.txt 到 Download 目录下
-        const file = fs.openSync(`${downloadPath}/temp.txt`, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-        fs.writeSync(file.fd, 'write a message');
-        fs.closeSync(file);
-    } catch (error) {
-        const err: BusinessError = error as BusinessError;
-        console.error(`Error code: ${err.code}, message: ${err.message}`);
-    }
+  // 检查是否具有 READ_WRITE_DOWNLOAD_DIRECTORY 权限，无权限则需要向用户申请授予权限。
+  try {
+    // 获取 Download 目录
+    const downloadPath = Environment.getUserDownloadDir();
+    console.info(`success to getUserDownloadDir: ${downloadPath}`);
+    // 保存 temp.txt 到 Download 目录下
+    const file = fs.openSync(`${downloadPath}/temp.txt`, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    fs.writeSync(file.fd, 'write a message');
+    fs.closeSync(file);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Error code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
@@ -154,6 +170,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 ```c++
 #include <cstdlib>
 
+```
+<!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
 void GetUserDownloadDirExample()
 {
     char *downloadPath = nullptr;
@@ -167,12 +187,17 @@ void GetUserDownloadDirExample()
 }
 ```
 
+
 2.调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，并查看 Download 目录下的文件。示例代码如下所示：
 
 ```c++
 #include <cstdlib>
 #include <dirent.h>
 
+```
+<!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
 void ScanUserDownloadDirPathExample()
 {
     // 获取 download 路径
@@ -192,6 +217,7 @@ void ScanUserDownloadDirPathExample()
         OH_LOG_ERROR(LOG_APP, "Failed to scan dir");
         return;
     }
+
     for (int i = 0; i < num; i++) {
         OH_LOG_INFO(LOG_APP, "%{public}s", namelist[i]->d_name);
     }
@@ -203,11 +229,16 @@ void ScanUserDownloadDirPathExample()
 }
 ```
 
+
 3.调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，并保存 temp.txt 到 Download 目录下。示例代码如下所示：
 
 ```c++
 #include <fstream>
 
+```
+<!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
 void WriteUserDownloadDirPathExample()
 {
     // 获取 download 路径
@@ -234,3 +265,4 @@ void WriteUserDownloadDirPathExample()
     outfile.close();
 }
 ```
+

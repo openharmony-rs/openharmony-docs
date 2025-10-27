@@ -13,7 +13,7 @@ LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参�
 本文仅介绍LocalStorage使用场景和相关的装饰器：\@LocalStorageProp和\@LocalStorageLink。
 
 
-在阅读本文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
+在阅读本文档前，需要开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
 LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
@@ -28,7 +28,7 @@ LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的
 
 - 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过getSharedLocalStorage接口，实现跨页面、跨UIAbility实例共享。
 
-- 组件树的根节点，即被\@Entry装饰的\@Component，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
+- 组件树的根节点，即被[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的[\@Component](./arkts-create-custom-components.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
 
 - \@Component装饰的组件既可以自动继承来自父组件的LocalStorage实例，也可以传入指定的LocalStorage的实例，详见：[自定义组件接收LocalStorage实例](#自定义组件接收localstorage实例)。
 
@@ -65,7 +65,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 | \@LocalStorageProp变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>API version 12及以上还支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。 <br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。 <br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
 | 同步类型                     | 单向同步：从LocalStorage的对应属性到组件的状态变量。组件本地的修改是允许的，但是LocalStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -133,7 +133,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 | \@LocalStorageLink变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API12及以上支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现-1)。<br/>API12及以上还支持上述支持类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。 <br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型。示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现-1)。<br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
 | 同步类型                     | 双向同步：从LocalStorage的对应属性到自定义组件，从自定义组件到LocalStorage对应属性。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -172,7 +172,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 **框架行为**
 
 
-1. 使用\@LocalStorageLink(key)装饰的变量更新时，会同步写回LocalStorage对应的key，还会引起所属的自定义组件的重新渲染。
+1. 使用\@LocalStorageLink(key)装饰的变量更新时，会同步写回LocalStorage对应的key，还会触发当前自定义组件的重新渲染。
 
 2. 当LocalStorage中对应key的值发生变化时，所有绑定该key的数据（包括双向\@LocalStorageLink和单向\@LocalStorageProp）都会同步更新。
 
@@ -413,13 +413,19 @@ struct Child {
   build() {
     Row() {
       Text(this.label)
-        .width(50).height(60).fontSize(12)
+        .width(50)
+        .height(60)
+        .fontSize(12)
       Text(`playCountLink ${this.playCountLink}: inc by 1`)
         .onClick(() => {
           this.playCountLink += 1;
         })
-        .width(200).height(60).fontSize(12)
-    }.width(300).height(60)
+        .width(200)
+        .height(60)
+        .fontSize(12)
+    }
+    .width(300)
+    .height(60)
   }
 }
 
@@ -432,29 +438,43 @@ struct Parent {
     Column() {
       Row() {
         Text('Parent')
-          .width(50).height(60).fontSize(12)
+          .width(50)
+          .height(60)
+          .fontSize(12)
         Text(`playCount ${this.playCount} dec by 1`)
           .onClick(() => {
             this.playCount -= 1;
           })
-          .width(250).height(60).fontSize(12)
-      }.width(300).height(60)
+          .width(250)
+          .height(60)
+          .fontSize(12)
+      }
+      .width(300)
+      .height(60)
 
       Row() {
         Text('LocalStorage')
-          .width(50).height(60).fontSize(12)
+          .width(50)
+          .height(60)
+          .fontSize(12)
         Text(`countStorage ${this.playCount} incr by 1`)
           .onClick(() => {
             storage.set<number | undefined>('countStorage', Number(storage.get<number>('countStorage')) + 1);
           })
-          .width(250).height(60).fontSize(12)
-      }.width(300).height(60)
+          .width(250)
+          .height(60)
+          .fontSize(12)
+      }
+      .width(300)
+      .height(60)
 
       Child({ label: 'ChildA' })
       Child({ label: 'ChildB' })
 
       Text(`playCount in LocalStorage for debug ${storage.get<number>('countStorage')}`)
-        .width(300).height(60).fontSize(12)
+        .width(300)
+        .height(60)
+        .fontSize(12)
     }
   }
 }
@@ -908,12 +928,16 @@ struct LocalStorageLinkComponent {
   build() {
     Column() {
       Text('@LocalStorageLink接口初始化，@LocalStorageLink取值')
-      Text(`${this.LinkA}`).fontSize(20).onClick(() => {
-        this.LinkA ? this.LinkA = null : this.LinkA = 1;
-      })
-      Text(`${this.LinkB}`).fontSize(20).onClick(() => {
-        this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
-      })
+      Text(`${this.LinkA}`)
+        .fontSize(20)
+        .onClick(() => {
+          this.LinkA ? this.LinkA = null : this.LinkA = 1;
+        })
+      Text(`${this.LinkB}`)
+        .fontSize(20)
+        .onClick(() => {
+          this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
+        })
     }
     .borderWidth(3).borderColor(Color.Green)
 
@@ -928,14 +952,19 @@ struct LocalStoragePropComponent {
   build() {
     Column() {
       Text('@LocalStorageProp接口初始化，@LocalStorageProp取值')
-      Text(`${this.PropA}`).fontSize(20).onClick(() => {
-        this.PropA ? this.PropA = null : this.PropA = 1;
-      })
-      Text(`${this.PropB}`).fontSize(20).onClick(() => {
-        this.PropB ? this.PropB = undefined : this.PropB = 1;
-      })
+      Text(`${this.PropA}`)
+        .fontSize(20)
+        .onClick(() => {
+          this.PropA ? this.PropA = null : this.PropA = 1;
+        })
+      Text(`${this.PropB}`)
+        .fontSize(20)
+        .onClick(() => {
+          this.PropB ? this.PropB = undefined : this.PropB = 1;
+        })
     }
-    .borderWidth(3).borderColor(Color.Yellow)
+    .borderWidth(3)
+    .borderColor(Color.Yellow)
 
   }
 }

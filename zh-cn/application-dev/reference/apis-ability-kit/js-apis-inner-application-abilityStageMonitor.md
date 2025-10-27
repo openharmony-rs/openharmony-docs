@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -38,7 +38,7 @@ abilityDelegator.waitAbilityStageMonitor(monitor, (error, data) => {
   if (error) {
     console.error(`waitAbilityStageMonitor fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`waitAbilityStageMonitor success, data: ${JSON.stringify(data)}`);
+    console.info(`waitAbilityStageMonitor success, data: ${JSON.stringify(data)}`);
   }
 });
 ```

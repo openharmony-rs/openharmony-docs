@@ -1,4 +1,11 @@
 # Development References
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 - [Development Description](development-intro-api.md)
 - [SystemCapability](syscap.md)
 <!--Del-->
@@ -10,6 +17,7 @@
     - [Wearable](wearable-syscap-list.md)
 <!--DelEnd-->
 - [Universal Error Codes](errorcode-universal.md)
+- [SDK Compilation Verification Error Codes](errorcode-sdk-compile.md)
 - [Ability Kit API Reference](apis-ability-kit/Readme-EN.md)
 - [Accessibility Kit API Reference](apis-accessibility-kit/Readme-EN.md)
 - [Ads Kit API Reference](apis-ads-kit/Readme-EN.md)

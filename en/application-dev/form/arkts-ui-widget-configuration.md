@@ -6,7 +6,7 @@
 <!--Tester: @chenmingze-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Widget-related configuration includes [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) configuration and widget configuration. An [independent widget package](./arkts-ui-widget-creation.md#creating-an-arkts-widget) includes the [independent widget package configuration](./arkts-ui-widget-configuration.md#independent-widget-package-configuration).
+Widget-related configuration includes [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) configuration and widget configuration. An [independent widget package](./arkts-ui-widget-creation.md) includes the [independent widget package configuration](./arkts-ui-widget-configuration.md#independent-widget-package-configuration).
 
 ## FormExtensionAbility Configuration
 Configure `FormExtensionAbility` information under `extensionAbilities` in the [module.json5 file](../quick-start/module-configuration-file.md). For `FormExtensionAbility`, you must specify `metadata`. Specifically, set **name** to **ohos.extension.form** (fixed), and set **resource** to the [index of the widget configuration information](#widget-configuration).

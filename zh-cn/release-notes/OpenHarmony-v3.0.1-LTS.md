@@ -158,10 +158,10 @@ repo forall -c 'git lfs pull'
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 |
 | -------- | -------- | -------- | -------- |
-| [I4NMXQ](https://gitee.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | 标准系统XTS执行storagefileioperformancejstest和storagefilestabilityjstest测试套无法自动执行 | XTS测试套框架问题，分布式文件子系统自动化x-device无法执行测试套，可以手动执行，对功能无影响 | 2022/1/30 |
+| [I4NMXQ](https://gitcode.com/openharmony/xts_acts/issues/I4NMXQ?from=project-issue) | 标准系统XTS执行storagefileioperformancejstest和storagefilestabilityjstest测试套无法自动执行 | XTS测试套框架问题，分布式文件子系统自动化x-device无法执行测试套，可以手动执行，对功能无影响 | 2022/1/30 |
 | [I4NU92](https://gitee.com/openharmony/communication_wifi/issues/I4NU92) | 轻量系统3516_Linux&nbsp;ActsLwipTest.bin测试套测试存在一条失败项 | 自动化测试用例调用内核读取time_out失败，对通信功能无影响 | 2022/1/15 |
-| [I4NTKG](https://gitee.com/openharmony/xts_acts/issues/I4NTKG) | 执行XTS测试套WeekPluralNumberTest出现两条失败项 | 测试套用例问题，不影响实际功能 | 2022/1/15 |
-| [I4OWWM](https://gitee.com/openharmony/xts_acts/issues/I4OWWM) | WeekPluralNumbertest模块对应json文件配置的有问题，执行用例时报"required&nbsp;device&nbsp;does&nbsp;not&nbsp;exist"导致UN | json文件配置问题，不影响功能 | 2022/1/15 |
-| [I4MSVV](https://gitee.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | 标准系统XTS测试执行测试ActsHiCollieCppTest模块HiCollieCppTest用例3条失败项 | 测试套名称变更导致存在文本校验功能的测试用例不通过，对功能无影响 | 2022/1/15 |
-| [I4MSWM](https://gitee.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | 标准系统XTS测试执行测试ActsFaultLoggerTest模块faultloggertest用例1条失败项 | 测试套名称变更导致存在文本校验功能的测试用例不通过，对功能无影响 | 2022/1/15 |
+| [I4NTKG](https://gitcode.com/openharmony/xts_acts/issues/I4NTKG) | 执行XTS测试套WeekPluralNumberTest出现两条失败项 | 测试套用例问题，不影响实际功能 | 2022/1/15 |
+| [I4OWWM](https://gitcode.com/openharmony/xts_acts/issues/I4OWWM) | WeekPluralNumbertest模块对应json文件配置的有问题，执行用例时报"required&nbsp;device&nbsp;does&nbsp;not&nbsp;exist"导致UN | json文件配置问题，不影响功能 | 2022/1/15 |
+| [I4MSVV](https://gitcode.com/openharmony/xts_acts/issues/I4MSVV?from=project-issue) | 标准系统XTS测试执行测试ActsHiCollieCppTest模块HiCollieCppTest用例3条失败项 | 测试套名称变更导致存在文本校验功能的测试用例不通过，对功能无影响 | 2022/1/15 |
+| [I4MSWM](https://gitcode.com/openharmony/xts_acts/issues/I4MSWM?from=project-issue) | 标准系统XTS测试执行测试ActsFaultLoggerTest模块faultloggertest用例1条失败项 | 测试套名称变更导致存在文本校验功能的测试用例不通过，对功能无影响 | 2022/1/15 |
 | I4NODO| 标准系统3516分布式业务流转端到端测试失败，无法完成流转 | DM组件_重复创建群组失败，影响使用流转功能（按照issue中提到的操作步骤）的业务，对其他应用无影响 | 2022/1/30 |

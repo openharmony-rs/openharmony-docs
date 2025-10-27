@@ -33,6 +33,7 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
 | SHADER | 6 | 着色器类型。 |
 | IMAGE | 7 | 图片类型。 |
 | MESH_RESOURCE<sup>18+</sup> | 8 | 网格资源类型。 |
+| EFFECT<sup>21+</sup> | 9 | 后处理特效类型。 |
 
 ## SceneResource
 用于表示场景中的资源。
@@ -56,12 +57,11 @@ destroy(): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Shader, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
 function destroy(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
@@ -81,8 +81,6 @@ function destroy(): void {
 ## Shader
 着色器，继承自[SceneResource](#sceneresource-1)。
 
-### 属性
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -98,6 +96,7 @@ function destroy(): void {
 | ---- | ---- | ---- |
 | SHADER | 1 | 材质由着色器定义。 |
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。 |
+| UNLIT<sup>22+</sup> | 3 | 不受光照影响的材质。|
 
 ## CullMode<sup>20+</sup>
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
@@ -113,8 +112,6 @@ function destroy(): void {
 ## Blend<sup>20+</sup>
 用于控制材质的透明效果。
 
-### 属性
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -124,8 +121,6 @@ function destroy(): void {
 ## RenderSort<sup>20+</sup>
 定义材质物体的渲染顺序，控制不同物体在渲染管线中的绘制先后。
 
-### 属性
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -133,10 +128,19 @@ function destroy(): void {
 | renderSortLayer | number | 否 | 是 | 渲染图层id，数值越小，渲染顺序越靠前。取值范围[0, 63]，默认图层id为32。|
 | renderSortLayerOrder | number | 否 | 是 | 同一渲染图层内，不同物体的渲染顺序，数值越小，越先渲染。取值范围[0, 255]，默认值为0。|
 
+## PolygonMode<sup>22+</sup>
+控制多边形绘制模式的枚举。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| FILL | 0 | 绘制多边形的每个面。 |
+| LINE | 1 | 仅绘制多边形线框。 |
+| POINT | 2 | 仅绘制多边形顶点。 |
+
 ## Material
 材质类型，继承自[SceneResource](#sceneresource-1)。
-
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -148,11 +152,9 @@ function destroy(): void {
 | blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质是否透明，默认值为false。|
 | alphaCutoff<sup>20+</sup> | number | 否 | 是 | 透明通道阈值，如果像素的alpha值等于或高于此阈值，则渲染该像素；如果低于此阈值，则不会渲染该像素。设置值小于1时，则开启该模式，取值范围为[0, 1]，默认值为1。 |
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | 否 | 是 | 渲染排序设置，用于控制材质在渲染管线中的渲染顺序，渲染图层id默认值为32，同一图层内的渲染顺序默认值为0。 |
-
+| polygonMode<sup>22+</sup> | [PolygonMode](#polygonmode22) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。|
 ## MaterialProperty<sup>20+</sup>
 材质属性接口，用于定义材质所使用的纹理、属性因子及纹理采样器信息。
-
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -164,7 +166,6 @@ function destroy(): void {
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
 用于实现真实感外观的材质资源。采用基于物理渲染（PBR）的金属-粗糙度模型，通过调节金属度和粗糙度参数，可模拟金属、塑料等不同材质的表面光照与反射效果，继承自[Material](#material)。
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -183,13 +184,22 @@ function destroy(): void {
 
 ## ShaderMaterial
 着色器材质，继承自[Material](#material)。
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | colorShader | [Shader](#shader) | 否 | 是 | 着色器，默认值为undefined。 |
+
+## UnlitMaterial<sup>22+</sup>
+
+不受光照影响的材质，其着色值只与设置的基础颜色有关，与光照条件无关，继承自[Material](#material)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 基础颜色属性，用于表达材质的基础颜色信息。|
 
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
@@ -216,8 +226,6 @@ function destroy(): void {
 ## Sampler<sup>20+</sup>
 采样器接口，用于定义纹理贴图采样时的过滤方式。
 
-### 属性
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -230,7 +238,6 @@ function destroy(): void {
 
 ## SubMesh
 子网格类型。
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -243,8 +250,6 @@ function destroy(): void {
 ## Morpher<sup>20+</sup>
 用于控制3D模型的形变，通过调整不同形变目标的权重，实现模型的动态变形效果。
 
-### 属性
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -253,7 +258,6 @@ function destroy(): void {
 
 ## Mesh
 网格类型，继承自[SceneResource](#sceneresource-1)。
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -270,6 +274,7 @@ function destroy(): void {
 
 ## Animation
 动画类型，继承自[SceneResource](#sceneresource-1)。
+
 ### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -296,12 +301,11 @@ onFinished(callback: Callback\<void>): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function onFinished(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -330,12 +334,11 @@ onStarted(callback: Callback\<void>): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function onStarted(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -357,12 +360,11 @@ pause(): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function pause(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -382,12 +384,11 @@ restart(): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function restart(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -412,12 +413,11 @@ seek(position: number): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function seek(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -437,12 +437,11 @@ start(): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function start(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -462,12 +461,11 @@ stop(): void
 
 **示例：**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function stop(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -486,12 +484,11 @@ finish(): void
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Animation, Scene } from '@kit.ArkGraphics3D';
 
 function finish(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"));
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
@@ -516,7 +513,6 @@ function finish(): void {
 
 ## Environment
 环境类型，继承自[SceneResource](#sceneresource-1)。
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -529,10 +525,10 @@ function finish(): void {
 | environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。 |
 | radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。 |
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。 |
+| environmentRotation<sup>22+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。|
 
 ## Image
 图片类型，继承自[SceneResource](#sceneresource-1)。
-### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -540,3 +536,14 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | width | number | 是 | 否 | 图片宽度，单位为像素（px），取值范围大于0。 |
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
+
+## Effect<sup>21+</sup>
+
+特效类型，继承自[SceneResource](#sceneresource-1)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| enabled | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。 |
+| effectId | string  | 是 | 否 | 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，用于特效的创建，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。 |

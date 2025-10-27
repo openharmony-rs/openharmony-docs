@@ -2,8 +2,9 @@
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
-<!--SE: @liweilu1-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 An application needs to obtain a PhotoAccessHelper instance before accessing or modifying the media data in an album. User personal data is involved in the PhotoAccessHelper module. Therefore, the application must also apply for the related read and write permissions from the user. Unless otherwise specified, the APIs of the PhotoAccessHelper module are used in **pages/index.ets** of the project or other customized .ets files.
 
@@ -48,6 +49,7 @@ Before requesting the permissions for the PhotoAccessHelper module, ensure that 
 | ------------------------------ | ------------------------------------------ | ---------- |
 | ohos.permission.READ_IMAGEVIDEO     | Allows an application to read images and videos in the media library.| user_grant |
 | ohos.permission.WRITE_IMAGEVIDEO    | Allows an application to read and write images and videos in the media library.| user_grant |
+| ohos.permission.MEDIA_LOCATION    | Allows an application to access geographical locations in the user's media file.| user_grant |
 
 The required permissions must be authorized by the user. After adding the permissions in the **module.json5** file, use [abilityAccessCtrl.requestPermissionsFromUser](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to check whether the required permissions are granted by the user. If yes, the application can access and manipulate the data. Otherwise, display a dialog box to request user authorization.
 

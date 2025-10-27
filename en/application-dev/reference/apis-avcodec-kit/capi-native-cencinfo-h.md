@@ -1,5 +1,12 @@
 # native_cencinfo.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The file declares the native APIs used to set decryption parameters.
@@ -21,7 +28,7 @@ The file declares the native APIs used to set decryption parameters.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [DrmSubsample](capi-multimedia-drm-drmsubsample.md) | DrmSubsample | Describes the subsample type.|
-| [OH_AVBuffer](_core.md#oh_avbuffer) | OH_AVBuffer | Describes the audio/video buffer.|
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) | OH_AVBuffer | Describes the audio/video buffer.|
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) | OH_AVCencInfo | Describes the audio/video Common Encryption Scheme (CENC) information.|
 
 ### Enums
@@ -31,26 +38,25 @@ The file declares the native APIs used to set decryption parameters.
 | [DrmCencAlgorithm](#drmcencalgorithm) | DrmCencAlgorithm | Enumerates the DRM CENC algorithm types.|
 | [DrmCencInfoMode](#drmcencinfomode) | DrmCencInfoMode | Enumerates the modes for setting the key ID, IV, and subsample in the CENC information.|
 
+### Macros
+
+| Name| Description|
+| -- | -- |
+| DRM_KEY_ID_SIZE 16 | The length of the key ID is 16 bytes.<br>**Since**: 12|
+| DRM_KEY_IV_SIZE 16 | The length of the Initialization Vector (IV) is 16 bytes.<br>**Since**: 12|
+| DRM_KEY_MAX_SUB_SAMPLE_NUM 64 | The maximum number of subsamples is 64.<br>**Since**: 12|
+
 ### Functions
 
 | Name| Description|
 | -- | -- |
 | [OH_AVCencInfo *OH_AVCencInfo_Create()](#oh_avcencinfo_create) | Creates an OH_AVCencInfo instance for setting the CENC information.|
-| [OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)](#oh_avcencinfo_destroy) | Destroys an OH_AVCencInfo instance and clears internal resources. An instance can be destroyed only once. Do not use the instance until it is created again. You are advised to set the instance pointer to nullptr once the instance is destroyed.|
+| [OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)](#oh_avcencinfo_destroy) | Destroys an OH_AVCencInfo instance and clears internal resources.<br> An instance can be destroyed only once. Do not use the instance until it is created again. You are advised to set the instance pointer to nullptr once the instance is destroyed.|
 | [OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)](#oh_avcencinfo_setalgorithm) | Sets an encryption algorithm of the CENC information.|
-| [OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId,uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)](#oh_avcencinfo_setkeyidandiv) | Sets the key ID and IV in the CENC information.|
-| [OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount,uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)](#oh_avcencinfo_setsubsampleinfo) | Sets the subsample information in the CENC information.|
+| [OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)](#oh_avcencinfo_setkeyidandiv) | Sets the key ID and IV in the CENC information.|
+| [OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)](#oh_avcencinfo_setsubsampleinfo) | Sets the subsample information in the CENC information.|
 | [OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)](#oh_avcencinfo_setmode) | Sets the CENC information mode.|
 | [OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)](#oh_avcencinfo_setavbuffer) | Sets the CENC information to an AVBuffer.|
-
-### Macros
-
-| Name| Description|
-| -------- | -------- |
-| DRM_KEY_ID_SIZE   16 | The length of the key ID is 16 bytes.<br>**Since**: 12|
-| DRM_KEY_IV_SIZE   16 | The length of the Initialization Vector (IV) is 16 bytes.<br>**Since**: 12|
-| DRM_KEY_MAX_SUB_SAMPLE_NUM   64 | The maximum number of subsamples is 64.<br>**Since**: 12
- |
 
 ## Enum Description
 
@@ -113,7 +119,7 @@ Creates an OH_AVCencInfo instance for setting the CENC information.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) * | Pointer to the OH_AVCencInfo instance created. If the operation fails, nullptr is returned.<br>The possible causes of an operation failure are as follows: The application address space is full, or the data in the object fails to be initialized.|
+| [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) * | Pointer to the OH_AVCencInfo instance created. If the operation fails, nullptr is returned.<br> The possible causes of an operation failure are as follows: The application address space is full, or the data in the object fails to be initialized.|
 
 ### OH_AVCencInfo_Destroy()
 
@@ -123,7 +129,7 @@ OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 
 **Description**
 
-Destroys an OH_AVCencInfo instance and clears internal resources.<br>An instance can be destroyed only once. Do not use the instance until it is created again. You are advised to set the instance pointer to nullptr once the instance is destroyed.
+Destroys an OH_AVCencInfo instance and clears internal resources.<br> An instance can be destroyed only once. Do not use the instance until it is created again. You are advised to set the instance pointer to nullptr once the instance is destroyed.
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -140,7 +146,7 @@ Destroys an OH_AVCencInfo instance and clears internal resources.<br>An instance
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The value of **cencInfo** is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **cencInfo** is null.|
 
 ### OH_AVCencInfo_SetAlgorithm()
 
@@ -168,12 +174,12 @@ Sets an encryption algorithm of the CENC information.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The value of **cencInfo** is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **cencInfo** is null.|
 
 ### OH_AVCencInfo_SetKeyIdAndIv()
 
 ```
-OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId,uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)
+OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)
 ```
 
 **Description**
@@ -199,12 +205,12 @@ Sets the key ID and IV in the CENC information.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The value of **cencInfo**, **keyId**, or **iv** is null, **keyIdLen** is not equal to **DRM_KEY_ID_SIZE**, **ivLen** is not equal to **DRM_KEY_IV_SIZE**, the key ID or IV fails to be copied.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **cencInfo**, **keyId**, or **iv** is null, **keyIdLen** is not equal to **DRM_KEY_ID_SIZE**, **ivLen** is not equal to **DRM_KEY_IV_SIZE**, the key ID or IV fails to be copied.|
 
 ### OH_AVCencInfo_SetSubsampleInfo()
 
 ```
-OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount,uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)
+OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)
 ```
 
 **Description**
@@ -231,7 +237,7 @@ Sets the subsample information in the CENC information.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The value of **cencInfo** is null, **subsampleCount** is greater than **DRM_KEY_MAX_SUB_SAMPLE_NUM**, or **subsamples** is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **cencInfo** is null, **subsampleCount** is greater than **DRM_KEY_MAX_SUB_SAMPLE_NUM**, or **subsamples** is null.|
 
 ### OH_AVCencInfo_SetMode()
 
@@ -259,7 +265,7 @@ Sets the CENC information mode.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The value of **cencInfo** is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **cencInfo** is null.|
 
 ### OH_AVCencInfo_SetAVBuffer()
 
@@ -281,10 +287,10 @@ Sets the CENC information to an AVBuffer.
 | Name| Description|
 | -- | -- |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) *cencInfo | Pointer to an OH_AVCencInfo instance.|
-| [OH_AVBuffer](_core.md#oh_avbuffer) *buffer | Pointer to the frame buffer that carries data.|
+| [OH_AVBuffer](capi-core-oh-avbuffer.md) *buffer | Pointer to the frame buffer that carries data.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](_core.md#oh_averrcode-1) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The value of **cencInfo**, **buffer**, **buffer->buffer_**, or **buffer->buffer_->meta_** is null.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **cencInfo**, **buffer**, **buffer->buffer_**, or **buffer->buffer_->meta_** is null.|

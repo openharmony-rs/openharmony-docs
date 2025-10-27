@@ -2,8 +2,9 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @liao_qian-->
-<!--SE: @ccfriend-->
-<!--TSE: @chenmingxi1_huawei-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Interaction Process
 
@@ -51,7 +52,6 @@ The code snippet below shows how the provider creates an AVSession object by usi
  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 
 @Entry

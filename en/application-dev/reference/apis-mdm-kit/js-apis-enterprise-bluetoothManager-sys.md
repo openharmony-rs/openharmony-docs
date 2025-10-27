@@ -1,4 +1,10 @@
 # @ohos.enterprise.bluetoothManager (Bluetooth Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **bluetoothManager** module provides Bluetooth management capabilities, including setting and obtaining Bluetooth information.
 
@@ -8,9 +14,9 @@ The **bluetoothManager** module provides Bluetooth management capabilities, incl
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-guide.md#introduction) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md).
 
 ## Modules to Import
 
@@ -28,7 +34,9 @@ Queries whether Bluetooth is disabled.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -57,16 +65,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
   let isDisabled: boolean = bluetoothManager.isBluetoothDisabled(wantTemp);
-  console.info(`Succeeded in query the bluetooth is disabled or not, isDisabled : ${isDisabled}`);
+  console.info(`Succeeded in querying the bluetooth is disabled or not, isDisabled : ${isDisabled}`);
 } catch(err) {
   console.error(`Failed to query the bluetooth is disabled or not. Code: ${err.code}, message: ${err.message}`);
 };
@@ -82,7 +92,9 @@ Sets the policy for disabling Bluetooth.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -106,16 +118,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
   bluetoothManager.setBluetoothDisabled(wantTemp, true);
-  console.info('Succeeded in set the bluetooth disabled.');
+  console.info('Succeeded in setting the bluetooth disabled.');
 } catch(err) {
   console.error(`Failed to set the bluetooth disabled. Code: ${err.code}, message: ${err.message}`);
 };

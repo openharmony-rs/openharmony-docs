@@ -3,7 +3,7 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
-<!--Designer: @li-weifeng2-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -22,7 +22,7 @@ import { wantConstant } from '@kit.AbilityKit';
 
 ## Params
 
-Enumerates the common system-defined keywords for the [Want.parameters](js-apis-app-ability-want.md#want) field. You can use these predefined keywords to set or retrieve additional parameter information carried in application transitions. For example, during the launch phase of a UIAbility, if the value of **ABILITY_RECOVERY_RESTART** obtained from the **want** field in the **onCreate** callback is **true**, the current UIAbility has restarted due to a fault.
+Enumerates the common system-defined keywords for the [Want.parameters](js-apis-app-ability-want.md#want) field. You can use these predefined keywords to set or retrieve additional parameter information carried in application transitions. For example, during the launch phase of a [UIAbility](js-apis-app-ability-uiAbility.md), if the value of **ABILITY_RECOVERY_RESTART** obtained from the **want** field in the **onCreate** callback is **true**, the current UIAbility has restarted due to a fault.
 
 **System capability**: SystemCapability.Ability.AbilityBase
 
@@ -48,7 +48,7 @@ Enumerates the common system-defined keywords for the [Want.parameters](js-apis-
 | CREATE_APP_INSTANCE_KEY<sup>14+</sup>  | ohos.extra.param.key.createAppInstance  | Whether to create an application instance. The default value is **false**, indicating that no new application instance is created.<br>You can set this parameter to **true** to launch a new application instance. Note that the application to be launched must support multiple instances. For details, see [Creating an Application Multi-Instance](../../quick-start/multiInstance.md).|
 | CALLER_APP_CLONE_INDEX<sup>14+</sup>  | ohos.param.callerAppCloneIndex  | Index of the application clone to be launched. When an application has multiple [clones](../../quick-start/app-clone.md), you can use this parameter to specify which clone of the application is being launched.|
 | APP_LAUNCH_TRUSTLIST<sup>17+</sup>  | ohos.params.appLaunchTrustList  | Filter list of applications for implicit launch.<br>Only applications in the list are matched during implicit launch. The value is an array of [AppIdentifiers](js-apis-bundleManager-bundleInfo.md#signatureinfo) of the string type. The filter list supports a maximum of 50 applications. Passing an empty array will have no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
-| LAUNCH_REASON_MESSAGE<sup>18+</sup>  | ohos.params.launchReasonMessage  | Reason for launching the application.<br>The caller must be a system application and must request the ohos.permission.SET_LAUNCH_REASON_MESSAGE permission. Currently, the value can only be **ReasonMessage_SystemShare**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| LAUNCH_REASON_MESSAGE<sup>18+</sup>  | ohos.params.launchReasonMessage  | Reason for launching the application.<br>The caller must be a system application and must request the ohos.permission.SET_LAUNCH_REASON_MESSAGE permission. The following values are supported:<br>**ReasonMessage_SystemShare**: The application is launched through system sharing.<br>**ReasonMessage_DesktopShortcut**: The application is launched through a home screen shortcut.<br>**ReasonMessage_Notification**: The application is launched through a notification.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | DESTINATION_PLUGIN_ABILITY<sup>19+</sup>  | ohos.params.pluginAbility  | The target ability is a plugin ability.|
 | ATOMIC_SERVICE_SHARE_ROUTER<sup>20+</sup>  | ohos.params.atomicservice.shareRouter  | Page stack information of the atomic service being launched. This parameter takes effect only when the caller is a UIAbilityContext and the callee is an atomic service.<br>For example, if an atomic service contains a home page and a second page, and you want to directly launch the second page, you can pass the page stack information of the second page through this field when launching the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | ABILITY_UNIFIED_DATA_KEY<sup>20+</sup>  | ohos.param.ability.udKey  | Unique identifier for file sharing based on [UDMF](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md). This field can only be set by system applications, but third-party applications can read it.<br>If the Want contains a URI authorization flag (for example, [FLAG_AUTH_READ_URI_PERMISSION](#flags) or [FLAG_AUTH_WRITE_URI_PERMISSION](#flags)) and the **PARAMS_STREAM** field is also present, this field does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|

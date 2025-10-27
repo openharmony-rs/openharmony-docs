@@ -1,4 +1,10 @@
 # svg
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 基础容器，主要作为svg的根节点使用，也可以在svg中嵌套使用。
 

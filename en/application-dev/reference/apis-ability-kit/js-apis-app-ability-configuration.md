@@ -1,5 +1,12 @@
 # @ohos.app.ability.Configuration (Environment Variables)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the environment variables for the application runtime, including language, dark/light color mode, screen orientation, and font size. You can subscribe to these environment variables to adapt to different user preferences and enhance the interaction experience.
 
 > **NOTE**
@@ -56,13 +63,13 @@ export default class EntryAbility extends UIAbility {
         let locale = config.locale;
       },
       onMemoryLevel(level) {
-        console.log(`onMemoryLevel level: ${level}`);
+        console.info(`onMemoryLevel level: ${level}`);
       }
     };
     try {
       let applicationContext = this.context.getApplicationContext();
       let callbackId = applicationContext.on('environment', envCallback);
-      console.log(`callbackId: ${callbackId}`);
+      console.info(`callbackId: ${callbackId}`);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }

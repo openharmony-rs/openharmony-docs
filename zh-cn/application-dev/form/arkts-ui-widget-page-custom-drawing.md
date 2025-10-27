@@ -1,5 +1,10 @@
 # ArkTS卡片使用画布组件绘制自定义图形
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkTS卡片开放了自定义绘制的能力，在卡片上可以通过[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件创建一块画布，然后通过[CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象在画布上进行自定义图形的绘制，如下示例代码实现了在画布的中心绘制了一个笑脸。
 

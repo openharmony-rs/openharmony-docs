@@ -106,7 +106,7 @@ factorial(n3)  //  1
 factorial(n4)  //  9.33262154439441e+157 
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
+`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
 
 ```typescript
 
@@ -233,7 +233,7 @@ class Frog { sleep () {}; leap () {} }
 type Animal = Cat | Dog | Frog;
 
 function foo(animal: Animal) {
-  if (animal instanceof Frog) {
+  if (animal instanceof Frog) {  // 判断animal是否是Frog类型
     animal.leap();  // animal在这里是Frog类型
   }
   animal.sleep(); // Animal具有sleep方法
@@ -897,7 +897,7 @@ ArkTS要求所有字段在声明时或构造函数中显式初始化，与标准
 class Person {
   name: string; // undefined
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -919,7 +919,7 @@ jack.getName().length; // 运行时异常：name is undefined
 class Person {
   name: string = '';
   
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
   
@@ -941,7 +941,7 @@ jack.getName().length; // 0, 没有运行时异常
 class Person {
   name?: string; // 可能为`undefined`
 
-  setName(n:string): void {
+  setName(n: string): void {
     this.name = n;
   }
 
@@ -966,7 +966,7 @@ jack.getName()?.length; // 编译成功，没有运行时错误
 
 **getter和setter**
 
-setter和getter可用于提供对对象属性的受控访问。
+setter和getter可用于提供对类属性的受控访问。
 
 在以下示例中，setter用于禁止将`_age`属性设置为无效值：
 
@@ -1315,7 +1315,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
 
 ```typescript
 interface PersonInfo {
@@ -1948,11 +1948,11 @@ class MyClass {
 
 > **注意**
 > 
-> HarmonyOS应用开发中，在[release模式下构建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section19788284410)源码HAR，并同时开启混淆时，由于编译产物为JS文件，而在JS中没有注解的实现机制，因此会在编译过程中被移除，导致无法通过注解实现AOP插桩。
+> 应用开发中，在[release模式下构建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section19788284410)源码HAR，并同时[开启混淆](../../application-dev/arkts-utils/source-obfuscation.md)时，由于编译产物为JS文件，而在JS中没有注解的实现机制，因此会在编译过程中被移除，导致无法通过注解实现AOP插桩。
 >
 > 为避免因此引起的功能异常，禁止在JS HAR(编译产物中存在JS的HAR包)中使用注解。
 >
-> 如果需要在release模式并且开启混淆的情况下构建含有注解的HAR包，可以构建[TS HAR](har-package.md#编译生成ts文件)或者[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)。
+> 如果需要在release模式并且开启混淆的情况下构建含有注解的HAR包，可以构建[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)。
 
 ### 用户自定义注解
 
@@ -1969,7 +1969,7 @@ class MyClass {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持bigint。
+> - 注解字段类型不支持BigInt。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量
@@ -2016,7 +2016,7 @@ class Position { // 编译错误：注解的名称不能与注解定义所在作
 }
 
 @interface ClassAuthor { // 编译错误：注解的名称不能与注解定义所在作用域内可见的其他实体名称相同
-  data: sting;
+  data: string;
 }
 ```
 注解不是类型，把注解当类型使用时会出现编译报错（例如：对注解使用类型别名）。
@@ -2212,53 +2212,53 @@ class C {
 **编译器自动生成的.d.ets文件**<br>
 当编译器根据ets代码自动生成.d.ets文件时，存在以下2种情况。
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
-```typescript
-// a.ets
-export @interface ClassAuthor {}
+   ```typescript
+   // a.ets
+   export @interface ClassAuthor {}
 
-@interface MethodAnno { // 没导出
-  data: number;
-}
+   @interface MethodAnno { // 没导出
+     data: number;
+   }
 
-// a.d.ets 编译器生成的声明文件
-export declare @interface ClassAuthor {}
-```
+   // a.d.ets 编译器生成的声明文件
+   export declare @interface ClassAuthor {}
+   ```
 2. 当下面所有条件成立时，源代码中实体的注解实例会在.d.ets文件中保留。<br>
-    2.1 注解的定义被导出（import的注解也算作被导出）。<br>
-    2.2 如果实体是类，则类被导出。<br>
-    2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
-```typescript
-// a.ets
-import { ClassAuthor } from './author';
+  2.1 注解的定义被导出（import的注解也算作被导出）。<br>
+  2.2 如果实体是类，则类被导出。<br>
+  2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
+   ```typescript
+   // a.ets
+   import { ClassAuthor } from './author';
 
-export @interface MethodAnno {
-  data: number = 0;
-}
+   export @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-class MyClass {
-  @MethodAnno({data: 123})
-  foo() {}
+   @ClassAuthor
+   class MyClass {
+     @MethodAnno({data: 123})
+     foo() {}
 
-  @MethodAnno({data: 456})
-  private bar() {}
-}
+     @MethodAnno({data: 456})
+     private bar() {}
+   }
 
-// a.d.ets 编译器生成的声明文件
-import {ClassAuthor} from "./author";
+   // a.d.ets 编译器生成的声明文件
+   import {ClassAuthor} from "./author";
 
-export declare @interface MethodAnno {
-  data: number = 0;
-}
+   export declare @interface MethodAnno {
+     data: number = 0;
+   }
 
-@ClassAuthor
-export declare class MyClass {
-  @MethodAnno({data: 123})
-  foo(): void;
+   @ClassAuthor
+   export declare class MyClass {
+     @MethodAnno({data: 123})
+     foo(): void;
 
-  bar; // 私有方法不保留注解
-}
-```
+     bar; // 私有方法不保留注解
+   }
+   ```
 
 **开发者生成的.d.ets文件**<br>
 开发者生成的.d.ets文件中的注解信息不会自动应用到实现的源代码中。<br>

@@ -61,7 +61,7 @@ connect(deviceId: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile = hid.createHidHostProfile();
     hidHostProfile.connect('XX:XX:XX:XX:XX:XX');
@@ -107,7 +107,7 @@ disconnect(deviceId: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile = hid.createHidHostProfile();
     hidHostProfile.disconnect('XX:XX:XX:XX:XX:XX');

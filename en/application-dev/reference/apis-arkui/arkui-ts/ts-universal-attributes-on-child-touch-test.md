@@ -1,14 +1,20 @@
 # Custom Event Dispatch
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
-When handling a touch event, ArkUI performs a hit test on the touch point and the component area before the event is triggered – to determine the components targeted by the event – and dispatches the event based on the test result. You can use **onChildTouchTest** on a parent node to specify how to perform the hit test on child nodes and thereby exert an impact on touch event dispatch. For details about the impact, see [TouchTestStrategy](#touchteststrategy).
+When handling a touch event, ArkUI performs [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered – to determine the components targeted by the event – and dispatches the event based on the test result. You can use **onChildTouchTest** on a parent node to specify how to perform the hit test on child nodes and thereby exert an impact on touch event dispatch. For details about the impact, see [TouchTestStrategy](#touchteststrategy11).
 
 >  **NOTE**
 >
->  - The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  - With use of **onChildTouchTest**, the **onClick**, rotation, and pinch gesture events may receive no response due to the touch target not being hit.
 
-## onChildTouchTest
+## onChildTouchTest<sup>11+</sup>
 
 onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
@@ -22,7 +28,7 @@ Allows the current component to customize the hit test and control child compone
 
 | Name| Type                                      | Mandatory| Description                  |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| value  | Array<[TouchTestInfo>](#touchtestinfo) | Yes  | Array of child node information.|
+| event  | (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult | Yes  | Touch event information. **value**: array of child node information.|
 
 **Return value**
 
@@ -32,9 +38,11 @@ Allows the current component to customize the hit test and control child compone
 
 >**NOTE**
 >
->The array of child node information only includes information about named nodes, that is, nodes for which the **id** attribute is explicitly set.
+>- The array of child node information only includes information about named nodes, that is, nodes for which the **id** attribute is explicitly set.
+>
+>- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
-## TouchTestInfo
+## TouchTestInfo<sup>11+</sup>
 
 Provides information about the coordinate system, ID, and size of the component where the current touch point is located.
 
@@ -42,18 +50,33 @@ Provides information about the coordinate system, ID, and size of the component 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type  | Description                                      |
-| ------------- | ------ | ---------------------------------------- |
-| windowX | number | X coordinate of the touch point relative to the upper left corner of the window.<br>Unit: vp.|
-| windowY   | number |Y coordinate of the touch point relative to the upper left corner of the window.<br>Unit: vp.|
-| parentX   | number |X coordinate of the touch point relative to the upper left corner of the parent component.<br>Unit: vp. |
-| parentY   | number |Y coordinate of the touch point relative to the upper left corner of the parent component.<br>Unit: vp. |
-| x   | number | X coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
-| y   | number | Y coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
-| rect   | [RectResult](ts-types.md#rectresult10) |Size of the child component. |
-| [id](ts-universal-attributes-component-id.md)   | string | Component ID.|
+| Name         | Type | Read-Only   | Optional  |  Description                                      |
+| ------------- | ------ | ------ | ------ | ---------------------------------------- |
+| windowX | number | No| No| X-coordinate of the touch point relative to the upper left corner of the window.<br>Unit: vp.|
+| windowY   | number| No|No|Y-coordinate of the touch point relative to the upper left corner of the window.<br>Unit: vp.|
+| parentX   | number| No |No|X-coordinate of the touch point relative to the upper left corner of the parent component.<br>Unit: vp. |
+| parentY   | number| No|No|Y-coordinate of the touch point relative to the upper left corner of the parent component.<br>Unit: vp. |
+| x   | number| No | No|X-coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
+| y   | number| No |No| Y-coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
+| rect   | [RectResult](#rectresult)| No |No|Position, width, and height of the child component. |
+| [id](ts-universal-attributes-component-id.md)   | string| No | No|Unique ID of the child component.|
 
-## TouchResult
+## RectResult
+
+Describes the position, width, and height of a component.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type  | Read-Only| Optional | Description|
+| ------- | ------ | ----- | -------- | ---------- |
+| x     | number | No| No| X-coordinate.|
+| y     | number |  No| No| Y-coordinate.|
+| width | number | No| No| Content width.|
+| height | number | No| No| Content height.|
+
+## TouchResult<sup>11+</sup>
 
 Defines the custom event dispatch result. You can influence event dispatch by returning specific results.
 
@@ -61,24 +84,26 @@ Defines the custom event dispatch result. You can influence event dispatch by re
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                    | Mandatory  | Description                               |
-| --------- | --------- | ---- |--------------------------------------- |
-| strategy  | [TouchTestStrategy](#touchteststrategy) | Yes   | Event dispatch strategy.                    |
-| id  | string | No   | Component ID.<br>If **strategy** is set to **TouchTestStrategy.DEFAULT**, **id** is optional. If **strategy** is set to **TouchTestStrategy.FORWARD_COMPETITION** or **TouchTestStrategy.FORWARD**, **id** is mandatory. If **id** is not returned, the strategy **TouchTestStrategy.DEFAULT** is used.|
+| Name     | Type                                    | Read-Only   | Optional  |  Description                               |
+| --------- | --------- | ---- |--------------------------------------- | ---- |
+| strategy  | [TouchTestStrategy](#touchteststrategy11) | No    | No |Event dispatch strategy.                    |
+| id  | string | No   | Yes |Unique ID of the child component.<br>If **strategy** is set to **TouchTestStrategy.DEFAULT**, **id** is optional. If **strategy** is set to **TouchTestStrategy.FORWARD_COMPETITION** or **TouchTestStrategy.FORWARD**, **id** is mandatory. If **id** is not returned, the strategy **TouchTestStrategy.DEFAULT** is used.|
 
-## TouchTestStrategy
+## TouchTestStrategy<sup>11+</sup>
 
-Enumerates the event dispatch strategies.
+Event dispatch strategy.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 11.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Description                                      |
-| ------------| ----------------------------------------- |
-| DEFAULT     | Custom dispatch has no effect; the system dispatches events based on the hit status of the current node.|
-| FORWARD_COMPETITION       | The event is dispatched to a specified child node, and the system determines whether to dispatch events to other sibling nodes.|
-| FORWARD | The event is dispatched to a specified child node, and the system will not dispatch events to other sibling nodes.|
+| Name         | Value   |Description                                      |
+| ------------| ---------| ----------------------------------------- |
+| DEFAULT   | 0  | Custom dispatch has no effect; the system dispatches events based on the hit status of the current node.|
+| FORWARD_COMPETITION  | 1  | The event is dispatched to a specified child node, and the system determines whether to dispatch events to other sibling nodes.|
+| FORWARD |2 | The event is dispatched to a specified child node, and the system will not dispatch events to other sibling nodes.|
 
 ## Example
 
@@ -110,7 +135,7 @@ struct ListExample {
           }.borderRadius(24)
           .backgroundColor(Color.White)
           .padding({ left: 12, right: 12 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.Off)
@@ -120,7 +145,7 @@ struct ListExample {
         console.info('last' + end)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
       })
       .width('100%')
       .height('65%')
@@ -129,7 +154,7 @@ struct ListExample {
       Button(this.text)
         .width(312)
         .height(40)
-        .id('Mybutton')
+        .id('MyButton')
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
@@ -143,8 +168,8 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchinfo) => {
-      for (let info of touchinfo) {
+    .onChildTouchTest((touchInfo) => {
+      for (let info of touchInfo) {
         if (info.id == 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD_COMPETITION }
         }
@@ -185,7 +210,7 @@ struct ListExample {
           }.borderRadius(24)
           .backgroundColor(Color.White)
           .padding({ left: 12, right: 12 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.Off)
@@ -204,7 +229,7 @@ struct ListExample {
       Button(this.text)
         .width(312)
         .height(40)
-        .id('Mybutton')
+        .id('MyButton')
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
@@ -218,8 +243,8 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchinfo) => {
-      for (let info of touchinfo) {
+    .onChildTouchTest((touchInfo) => {
+      for (let info of touchInfo) {
         if (info.id == 'MyList') {
           return { id: info.id, strategy: TouchTestStrategy.FORWARD }
         }
@@ -260,7 +285,7 @@ struct ListExample {
           }.borderRadius(24)
           .backgroundColor(Color.White)
           .padding({ left: 12, right: 12 })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.Off)
@@ -270,7 +295,7 @@ struct ListExample {
         console.info('last' + end)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
       })
       .width('100%')
       .height('65%')
@@ -279,7 +304,7 @@ struct ListExample {
       Button(this.text)
         .width(312)
         .height(40)
-        .id('Mybutton')
+        .id('MyButton')
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .margin({ top: 80 })
@@ -293,7 +318,7 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchinfo) => {
+    .onChildTouchTest((touchInfo) => {
       return { strategy: TouchTestStrategy.DEFAULT }
     })
   }

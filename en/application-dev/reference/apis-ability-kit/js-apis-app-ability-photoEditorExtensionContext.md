@@ -1,4 +1,12 @@
 # PhotoEditorExtensionContext
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 PhotoEditorExtensionContext provides the context environment for the PhotoEditorExtensionAbility. It inherits from ExtensionContext and provides PhotoEditorExtensionAbility related configuration and APIs for saving images.
 > **NOTE**
 > 
@@ -17,7 +25,7 @@ import { common } from '@kit.AbilityKit';
 
 saveEditedContentWithUri(uri: string): Promise\<AbilityResult\>
 
-Saves an edited image, which is passed in through a URI.
+Saves an edited image, which is passed in through a URI. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -105,7 +113,7 @@ struct Index {
 
 saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
-Saves an edited image, which is passed in through a PixelMap object.
+Saves an edited image, which is passed in through a PixelMap object. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 

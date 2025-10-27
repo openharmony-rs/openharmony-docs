@@ -735,6 +735,24 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 >
 > passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
 
+## X963KdfSpec<sup>22+</sup>
+
+密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为X963KDF密钥派生函数进行密钥派生时的输入。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+| 名称    | 类型   | 只读 | 可选 | 说明                                                         |
+| ------- | ------ | ---- | ---- | ------------ |
+| key | string \| Uint8Array | 否   | 否   | 密钥材料。|
+| info | Uint8Array | 否   | 否   | 附加信息。 |
+| keySize | int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+
+> **说明：**
+>
+> key指的是用户输入的最初的密钥材料。
+
 ## SM2CipherTextSpec<sup>12+</sup>
 
 SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需要用到此对象。可以通过指定此参数，生成符合国密标准的ASN.1格式的SM2密文，反之，也可以从ASN.1格式的SM2密文中获取具体参数。
@@ -1192,6 +1210,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 **示例：**
 
 ```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   let fieldFp: cryptoFramework.ECFieldFp = {
@@ -2227,7 +2246,7 @@ async function TestConvertPemKeyByPromise() {
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
 
-异步获取指定数据生成非对称密钥，通过Promise获取结果。
+获取指定数据生成非对称密钥。支持加密的私钥，同步传入私钥口令解密私钥。使用Promise异步回调。
 
 > **说明：**
 > 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
@@ -2337,7 +2356,6 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string  =
   "-----BEGIN RSA PRIVATE KEY-----\n"
@@ -2380,7 +2398,7 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-同步获取指定数据，生成非对称密钥。
+获取指定数据生成非对称密钥。支持加密的私钥，同步传入私钥口令解密私钥。使用同步方法。
 
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey18)接口说明。
@@ -2416,7 +2434,6 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1EncodingStr : string =
   "-----BEGIN RSA PRIVATE KEY-----\n"
@@ -2790,7 +2807,6 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -5117,7 +5133,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型              | 说明                           |
 | ----------------- | ------------------------------ |
-| Promise\<boolean> | 异步返回值，代表验签是否通过。 |
+| Promise\<boolean> | 异步返回值，代表验签是否通过。true为通过，false为不通过。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
@@ -5150,7 +5166,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 | 类型              | 说明                           |
 | ----------------- | ------------------------------ |
-| boolean | 同步返回值，表示验签是否成功。 |
+| boolean | 同步返回值，表示验签是否通过。true为通过，false为不通过。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
@@ -5302,7 +5318,6 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
@@ -5630,7 +5645,6 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -5669,7 +5683,6 @@ async function testGenerateSecret() {
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecretSync() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -6496,8 +6509,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function  testGetMacLength()
-{
+function testGetMacLength() {
   let mac = cryptoFramework.createMac('SHA256');
   console.info('Mac algName is: ' + mac.algName);
   let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
@@ -6727,6 +6739,49 @@ try {
   let e: BusinessError = error as BusinessError;
   console.error(`sync error, ${e.code}, ${e.message}`);
 }
+```
+
+### enableHardwareEntropy<sup>21+</sup>
+
+enableHardwareEntropy(): void
+
+开启硬件熵源。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+
+**错误码：**
+以下错误码的详细介绍请参见 [crypto framework 错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 801 | this operation is not supported.          |
+| 17620001 | memory operation failed.      |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rand = cryptoFramework.createRandom();
+rand.enableHardwareEntropy();
+rand.generateRandom(12, (err, randData) => {
+  if (err) {
+    console.error("[Callback] err: " + err.code);
+  } else {
+    console.info('[Callback]: generate random result: ' + randData.data);
+    try {
+      rand.setSeed(randData);
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`sync error, ${e.code}, ${e.message}`);
+    }
+  }
+});
 ```
 
 ### setSeed

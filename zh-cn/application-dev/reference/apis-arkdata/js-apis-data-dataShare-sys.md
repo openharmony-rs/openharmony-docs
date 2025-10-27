@@ -212,7 +212,7 @@ enableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 使用规则：
  - 数据提供方调用此接口，来开启静默访问功能。
- - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability.md)。
+ - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability-sys.md)。
  - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有开启过相关uri，那么会按照此接口的配置来开启静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验Datashare的开启状态。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -267,7 +267,7 @@ disableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 使用规则：
  - 数据提供方调用此接口，来关闭静默访问功能。
- - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability.md)。
+ - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability-sys.md)。
  - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验Datashare的关闭状态。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -1355,6 +1355,7 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void
 
 查询数据库中的数据。使用callback异步回调。
+非静默场景下，调用此接口时，传入的predicates参数的大小不能超过128MB，否则接口返回失败。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1409,6 +1410,7 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;): Promise&lt;DataShareResultSet&gt;
 
 查询数据库中的数据。使用Promise异步回调。
+非静默场景下，调用此接口，传入的predicates参数的大小不能超过128MB，否则接口返回失败。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1686,6 +1688,7 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
 将批量数据插入数据库。使用callback异步回调。暂不支持静默访问。
+非静默场景下，调用此接口时，传入的values参数的大小不能超过128M，否则接口返回失败。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1740,6 +1743,7 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
 将批量数据插入数据库。使用Promise异步回调。暂不支持静默访问。
+非静默场景下，调用此接口时，传入的values参数的大小不能超过128M，否则接口返回失败。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 

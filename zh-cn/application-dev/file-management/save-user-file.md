@@ -1,8 +1,8 @@
 # 保存用户文件
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -51,18 +51,21 @@
 
 3. 创建[文件选择器DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
 
-   ```ts
-   let uris: Array<string> = [];
-   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-   const documentViewPicker = new picker.DocumentViewPicker(context);
-   documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-     uris = documentSaveResult;
-     console.info('documentViewPicker.save to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const documentViewPicker = new picker.DocumentViewPicker(context);
+      documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
+        uris = documentSaveResult;
+        console.info('documentViewPicker.save to file succeed and uris are:' + uris);
+		// ···
+      }).catch((err: BusinessError) => {
+        console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+      });
+```
+
 
    > **注意**：
    >
@@ -76,10 +79,12 @@
 4. 待界面从FilePicker返回后，使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
-   const uri = '';
-   //这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
-   let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+   	//这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
+   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
@@ -111,18 +116,21 @@
 
 3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5)接口拉起FilePicker界面进行文件保存。
 
-   ```ts
-   let uri: string = '';
-   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;  
-   const audioViewPicker = new picker.AudioViewPicker(context);
-   audioViewPicker.save(audioSaveOptions).then((audioSelectResult: Array<string>) => {
-     uri = audioSelectResult[0];
-     console.info('audioViewPicker.save to file succeed and uri is:' + uri);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const audioViewPicker = new picker.AudioViewPicker(context);
+      audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
+        uris = audioSelectResult;
+        console.info('audioViewPicker.save to file succeed and uri is:' + uris);
+		// ···
+      }).catch((err: BusinessError) => {
+        console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+      });
+```
+
 
    > **注意**：
    >
@@ -136,9 +144,12 @@
 4. 待界面从FilePicker返回后，可以使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
-   //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-   let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+  	 //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。

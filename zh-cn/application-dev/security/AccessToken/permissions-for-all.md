@@ -595,6 +595,20 @@
 
 **起始版本**：20
 
+## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
+
+允许应用使能超时息屏不锁屏功能。
+
+设备超时息屏后默认锁屏，获取该权限后，应用超时息屏后，不进入锁屏界面。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
 ## ohos.permission.LOCK_WINDOW_CURSOR
 
 允许应用在窗口获焦时锁定鼠标光标。

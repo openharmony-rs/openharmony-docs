@@ -1,8 +1,16 @@
 # avmetadata_extractor_base.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
 The file declares the constants used by the AVMetadataExtractor.
+
+**File to include**: <multimedia/player_framework/avmetadata_extractor_base.h>
 
 **Library**: libavmetadata_extractor.so
 
@@ -31,11 +39,11 @@ The file declares the constants used by the AVMetadataExtractor.
 | static const char* OH_AVMETADATA_EXTRACTOR_HAS_VIDEO = "hasVideo" | Pointer to the key for obtaining the flag indicating whether the media asset contains video. The value type is int32_t.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_MIME_TYPE = "mimeType" | Pointer to the key for obtaining the MIME type of the media asset. The value type is const char*, for example, video/mp4, audio/mp4, and audio/amr wb.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_TRACK_COUNT = "trackCount" | Pointer to the key for obtaining the number of tracks of the media asset. The value type is int32_t.<br>**Since**: 18|
-| static const char* OH_AVMETADATA_EXTRACTOR_SAMPLE_RATE = "sampleRate" | Pointer to the key for obtaining the audio sampling rate, in Hz. The value type is int32_t.<br>**Since**: 18|
+| static const char* OH_AVMETADATA_EXTRACTOR_SAMPLE_RATE = "sampleRate" | Pointer to the key for obtaining the audio sample rate, in Hz. The value type is int32_t.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_TITLE = "title" | Pointer to the key for obtaining the title of the media asset. The value type is const char*.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_VIDEO_HEIGHT = "videoHeight" | Pointer to the key for obtaining the video height, in px. The value type is int32_t.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_VIDEO_WIDTH = "videoWidth" | Pointer to the key for obtaining the video weight, in px. The value type is int32_t.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_VIDEO_ORIENTATION = "videoOrientation" | Pointer to the key for obtaining the video rotation direction, in degrees (°). The value type is int32_t.<br>**Since**: 18|
-| static const char* OH_AVMETADATA_EXTRACTOR_VIDEO_IS_HDR_VIVID = "hdrType" | Pointer to the key for obtaining the flag indicating whether the video is an HDR Vivid video. The value type is int32_t.<br>For details, see [OH_Core_HdrType](../apis-avcodec-kit/_core.md#oh_core_hdrtype-1) in **media_types.h**.<br>**Since**: 18|
+| static const char* OH_AVMETADATA_EXTRACTOR_VIDEO_IS_HDR_VIVID = "hdrType" | Pointer to the key for obtaining the flag indicating whether the video is an HDR Vivid video. The value type is int32_t.<br>For details, see [OH_Core_HdrType](../apis-avcodec-kit/capi-media-types-h.md#oh_core_hdrtype) in **media_types.h**.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_LOCATION_LATITUDE = "latitude" | Pointer to the key for obtaining the latitude in the geographical location. The value type is float.<br>**Since**: 18|
 | static const char* OH_AVMETADATA_EXTRACTOR_LOCATION_LONGITUDE = "longitude" | Pointer to the key for obtaining the longitude in the geographical location. The value type is float.<br>**Since**: 18|

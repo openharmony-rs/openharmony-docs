@@ -11,7 +11,7 @@
 
 ### 功能介绍
 
-应用退至后台后，需要执行实时性要求不高的任务，例如有网络时不定期主动获取邮件等，可以使用延迟任务。当应用满足设定条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用。
+应用退至后台后，需要执行实时性要求不高的任务，例如有网络时不定期主动获取邮件等，可以使用延迟任务。当应用满足设定的触发条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用。
 
 ### 运行原理
 
@@ -75,26 +75,26 @@
 | isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;; | 获取上次任务是否超时（针对RepeatWork，Promise形式） |
 
 **表3** WorkInfo参数
-| 名称             | 类型                                | 必填   | 说明               |
-| --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | number                            | 是    | 延迟任务ID。          |
-| bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
-| abilityName     | string                            | 是    | 包内ability名称。 |
-| networkType     | [NetworkType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#networktype)       | 否    | 网络类型。             |
-| isCharging      | boolean                           | 否    | 是否充电。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
-| chargerType     | [ChargingType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#chargingtype)     | 否    | 充电类型。             |
-| batteryLevel    | number                            | 否    | 电量。              |
-| batteryStatus   | [BatteryStatus](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#batterystatus)   | 否    | 电池状态。             |
-| storageRequest  | [StorageRequest](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#storagerequest) | 否    | 存储状态。             |
-| isRepeat        | boolean                           | 否    | 是否循环任务。<br>- true表示循环任务。<br>- false表示非循环任务。 |
-| repeatCycleTime | number                            | 否    | 循环间隔，单位为毫秒。             |
-| repeatCount     | number                            | 否    | 循环次数。             |
-| isPersisted     | boolean                           | 否    | 注册的延迟任务是否可保存在系统中。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
-| isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | number                            | 否    | 空闲等待时间，单位为毫秒。           |
-| parameters      | [key: string]: number \| string \| boolean  | 否    | 携带参数信息。 |
+| 名称             | 类型                                |  只读   | 可选    | 说明               |
+| --------------- | --------------------------------- | ---- | ---- | ---------------- |
+| workId          | number                            | 否    | 否    | 延迟任务ID。          |
+| bundleName      | string                            | 否    | 否    |  延迟任务所在应用的包名。           |
+| abilityName     | string                            | 否    | 否    | 包内ability名称。 |
+| networkType     | [NetworkType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#networktype)       | 否    | 是    | 网络类型。             |
+| isCharging      | boolean                           | 否    | 是    | 是否充电。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
+| chargerType     | [ChargingType](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#chargingtype)     | 否    | 是    | 充电类型。             |
+| batteryLevel    | number                            | 否    | 是    | 电量。              |
+| batteryStatus   | [BatteryStatus](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#batterystatus)   | 否    | 是    | 电池状态。             |
+| storageRequest  | [StorageRequest](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#storagerequest) | 否    | 是    | 存储状态。             |
+| isRepeat        | boolean                           | 否    | 是    | 是否循环任务。<br>- true表示循环任务。<br>- false表示非循环任务。 |
+| repeatCycleTime | number                            | 否    | 是    | 循环间隔，单位为毫秒。             |
+| repeatCount     | number                            | 否    | 是    | 循环次数。             |
+| isPersisted     | boolean                           | 否    | 是    | 注册的延迟任务是否可保存在系统中。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
+| isDeepIdle      | boolean                           | 否    | 是    | 是否要求设备进入空闲状态。<br>- true表示需要。<br>- false表示不需要。   |
+| idleWaitTime    | number                            | 否    | 是    | 空闲等待时间，单位为毫秒。           |
+| parameters      | [key: string]: number \| string \| boolean  | 否    | 是    | 携带参数信息。 |
 
-WorkInfo参数用于设置应用条件，参数设置时需遵循以下规则：
+WorkInfo参数用于设置延迟任务的触发条件，参数设置时需遵循以下规则：
 
 - workId、bundleName、abilityName为必填项，bundleName需为本应用包名。
 

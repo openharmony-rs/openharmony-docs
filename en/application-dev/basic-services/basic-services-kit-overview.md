@@ -1,4 +1,10 @@
 # Introduction to Basic Services Kit
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 Basic Services Kit provides basic capabilities for application developers, from pasteboard read/write, file upload/download, file compression, file printing, inter-process/inter-thread communication, to device and application account management.
 

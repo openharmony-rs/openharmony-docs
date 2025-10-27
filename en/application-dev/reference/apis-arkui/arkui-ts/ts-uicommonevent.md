@@ -1,16 +1,22 @@
 # Common Event Callbacks
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 >**NOTE**
 >
 >The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## UICommonEvent
-Implements a common event callback. If the input parameter of an API is **undefined**, the corresponding event callback is reset.
+Implements a common event callback. If the method parameter is **undefined**, the corresponding event callback is reset.
 ### setOnClick
 
 setOnClick(callback: Callback\<ClickEvent> | undefined): void
 
-Set the callback for the [click event](./ts-universal-events-click.md#click-event).
+Set the callback for the [click event](./ts-universal-events-click.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -18,15 +24,15 @@ Set the callback for the [click event](./ts-universal-events-click.md#click-even
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)<[ClickEvent](./ts-universal-events-click.md#clickevent)> \| undefined | Yes  | Callback for the click event. |
+| callback  | [Callback](./ts-types.md#callback12)<[ClickEvent](./ts-universal-events-click.md#clickevent)> \| undefined | Yes  | Callback for the click event.|
 
 ### setOnTouch
 
 setOnTouch(callback: Callback\<TouchEvent> | undefined): void
 
-Sets the callback for the [touch event](./ts-universal-events-touch.md#touch-event).
+Sets the callback for the [touch event](./ts-universal-events-touch.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -34,9 +40,9 @@ Sets the callback for the [touch event](./ts-universal-events-touch.md#touch-eve
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)<[TouchEvent](./ts-universal-events-touch.md#touchevent)> \| undefined | Yes  | Callback for the touch event. |
+| callback  | [Callback](./ts-types.md#callback12)<[TouchEvent](./ts-universal-events-touch.md#touchevent)> \| undefined | Yes  | Callback for the touch event.|
 
 
 ### setOnAppear
@@ -51,16 +57,16 @@ Sets the callback for the [onAppear](./ts-universal-events-show-hide.md#onappear
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the **onAppear** event. |
+| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback function for the mounting display event.|
 
 
 ### setOnDisappear
 
 setOnDisappear(callback: Callback\<void> | undefined): void
 
-Sets the callback for the [onDisappear](./ts-universal-events-show-hide.md#ondisappear) event.
+Sets the callback for the [onDisAppear](./ts-universal-events-show-hide.md#ondisappear) event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -68,15 +74,15 @@ Sets the callback for the [onDisappear](./ts-universal-events-show-hide.md#ondis
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the **onDisappear** event. |
+| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the unmounting event.|
 
 ### setOnKeyEvent
 
 setOnKeyEvent(callback: Callback\<KeyEvent> | undefined): void
 
-Sets the callback for the [key event](./ts-universal-events-key.md#key-event).
+Sets the callback for the [key event](./ts-universal-events-key.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -84,9 +90,9 @@ Sets the callback for the [key event](./ts-universal-events-key.md#key-event).
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)<[KeyEvent](./ts-universal-events-key.md#keyevent)> \| undefined | Yes  | Callback for the key event. |
+| callback  | [Callback](./ts-types.md#callback12)<[KeyEvent](./ts-universal-events-key.md#keyevent)> \| undefined | Yes  | Callback for the key event.|
 
 ### setOnFocus
 
@@ -100,9 +106,9 @@ Sets the callback for the [onFocus](./ts-universal-focus-event.md#onfocus) event
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the **onFocus** event. |
+| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the focus event.|
 
 ### setOnBlur
 
@@ -116,15 +122,15 @@ Sets the callback for the [onBlur](./ts-universal-focus-event.md#onblur) event.
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the **onBlur** event. |
+| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the blur event.|
 
 ### setOnHover
 
 setOnHover(callback: HoverCallback | undefined): void
 
-Sets the callback for the [onHover](./ts-universal-mouse-key.md) event.
+Sets the callback for the [onHover](./ts-universal-events-hover.md#onhover) event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -132,9 +138,9 @@ Sets the callback for the [onHover](./ts-universal-mouse-key.md) event.
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [HoverCallback](./ts-types.md#hovercallback12)  \| undefined | Yes  | Callback for the **onHover** event. |
+| callback  | [HoverCallback](#hovercallback)  \| undefined | Yes  | Callback for the hover event.|
 
 ### setOnMouse
 
@@ -148,15 +154,15 @@ Sets the callback for the [onMouse](./ts-universal-mouse-key.md#onmouse) event.
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  |  [Callback](./ts-types.md#callback12)<[MouseEvent](./ts-universal-mouse-key.md#mouseevent)> \| undefined | Yes  | Callback for the **onMouse** event. |
+| callback  |  [Callback](./ts-types.md#callback12)<[MouseEvent](./ts-universal-mouse-key.md#mouseevent)> \| undefined | Yes  | Callback for the mouse event.|
 
 ### setOnSizeChange
 
 setOnSizeChange(callback: SizeChangeCallback | undefined): void
 
-Sets the callback for the [onSizeChange](./ts-universal-component-size-change-event.md#onsizechange) event.
+Sets the callback for the [onSizeChange](./ts-universal-component-size-change-event.md#onsizechange) component area change event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -164,15 +170,15 @@ Sets the callback for the [onSizeChange](./ts-universal-component-size-change-ev
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [SizeChangeCallback](./ts-universal-component-size-change-event.md#sizechangecallback)   \| undefined | Yes  | Callback for the **onSizeChange** event. |
+| callback  | [SizeChangeCallback](./ts-universal-component-size-change-event.md#sizechangecallback)   \| undefined | Yes  | Callback for the component area change event.|
 
 ### setOnVisibleAreaApproximateChange
 
 setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 
-Sets the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) callback that limits the callback interval.
+Sets the callback for the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) visible area change event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -180,12 +186,30 @@ Sets the [onVisibleAreaChange](./ts-universal-component-visible-area-change-even
 
 **Parameters**
 
-| Name | Type  | Mandatory | Description                      |
+| Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](./ts-types.md#visibleareaeventoptions12) | Yes  | Options of visible area changes. |
-| event  | [VisibleAreaChangeCallback](./ts-types.md#visibleareachangecallback12)   \| undefined | Yes  | Callback for the **onVisibleAreaChange** event. Called when the ratio of the component's visible area to its total area is greater than or less than the threshold. |
+| options  | [VisibleAreaEventOptions](./ts-universal-component-visible-area-change-event.md#visibleareaeventoptions12) | Yes  | Options of visible area changes.|
+| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12)   \| undefined | Yes  | Callback function of the visible area change event. Called when the ratio of the component's visible area to its total area is greater than or less than the threshold.|
 
 >**NOTE**
 >
-> This callback is not a real-time callback. The actual callback interval may be different from the expected interval.
-> The interval between **onVisibleAreaChange** callbacks is greater than or equal to the expected update interval. If the expected interval set is too short, the actual callback interval is subject to the system load.
+> This API is different from the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) API in the following ways: onVisibleAreaChange calculates the visible area ratio in each frame. If too many nodes are registered, the system power consumption deteriorates. This API reduces the frequency of calculating the visible area ratio. The calculation interval is determined by the expectedUpdateInterval parameter of [VisibleAreaEventOptions](./ts-universal-component-visible-area-change-event.md#visibleareaeventoptions12).
+>
+> By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
+
+## HoverCallback
+
+The **HoverCallback** type is used to represent the callback for the hover event.
+
+type HoverCallback = (isHover: boolean, event: HoverEvent)=> void
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name           | Type           | Mandatory        | Description                                      |
+| ------------- | ---------------------- |---------------------| --------------------------------------- |
+| isHover | boolean |  Yes |Whether the element is in the hover state. true: yes; false: no.|
+| event | [HoverEvent](ts-universal-events-hover.md#hoverevent10) |  Yes|  Position coordinates of the hovered mouse or stylus.|

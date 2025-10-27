@@ -1,20 +1,27 @@
-# Crown Event (Recommended for Circular Screens)
+# Handling Crown Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The crown event, supported since API version 18, is triggered by the rotation of the watch crown and reports changes in the rotation angle based on the hardware sampling frequency.
 
-The distribution of crown events depends on the application focus. Only the component that currently has focus can receive the event. Therefore, the component that receives the event must manage its focus status. You can customize focus events. Some built-in components already support interaction with the watch crown. For example, rotating the crown scrolls the scrollbar. In addition, applications can be notified of crown events through a specific API. Currently, the following components support crown events by default: [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md), [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md), and [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md).
+The crown event is dispatched based on the focus of components in an application. Only the component with the focus can receive the event. Therefore, the component that receives the event must manage its focus status and monitor the focus status changes through the [onFocus](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus) and [onBlur](../reference/apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur) APIs. When the component that is receiving the crown event loses the focus, the subsequent crown events will not be sent to this component.
+
+Some components already support interaction with the watch crown. For example, rotating the crown scrolls the scrollbar.
+
+Currently, the following components support crown events by default: [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md), [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md), [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md), and [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md).
+
+In addition, the application can also use the [onDigitalCrown](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown) API to detect the reporting of crown events.
+
+The **event** parameter provides the following information: timestamp, rotation angular velocity, rotation angle, and [crown action](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#crownaction18).
 
 >  **NOTE**
 >
->  - Only circular screens support crown events.
-
-When a crown event occurs, the **onDigitalCrown** callback is invoked.
-
-```ts
-onDigitalCrown(event: (event?: CrownEvent) => void)
-```
-
-The **event** parameter provides the following information: timestamp, rotation angular velocity, rotation angle, and [crown action](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#crownaction18).
+>  - Currently, only wearables support crown events.
+>  - The receiving of crown events by a component is affected by its focus status. If the component is unfocused after receiving BEGIN, it cannot receive UPDATE and END.
 
 To enable a component to obtain information such as the rotation angle, use the **onDigitalCrown** API for receiving the crown event. The following example uses the **Text** component to illustrate how to develop a crown event and the precautions to take during development.
 

@@ -545,7 +545,7 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-为设备添加防火墙过滤规则，仅支持IPv4。<br/>
+为设备添加防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -592,7 +592,8 @@ let firewallRule: networkManager.FirewallRule = {
   "appUid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP
+  "protocol": networkManager.Protocol.UDP,
+  "family": 1
 };
 
 try {
@@ -607,7 +608,7 @@ try {
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-移除设备防火墙过滤规则，仅支持IPv4。<br/>
+移除设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addFirewallRule](#networkmanageraddfirewallrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -655,7 +656,8 @@ let firewallRule: networkManager.FirewallRule = {
   "appUid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP
+  "protocol": networkManager.Protocol.UDP,
+  "family": 1
 };
 
 // 移除指定的规则
@@ -679,7 +681,7 @@ try {
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-查询设备防火墙过滤规则，仅支持IPv4。
+查询设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -734,7 +736,7 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-为设备添加域名过滤规则，仅支持IPv4。<br/>
+为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -776,7 +778,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   // 需根据实际情况进行替换
   "domainName": "www.example.com",
   "appUid": "9696",
-  "action": networkManager.Action.DENY
+  "action": networkManager.Action.DENY,
+  "family": 1
 };
 
 try {
@@ -791,7 +794,7 @@ try {
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-移除设备域名过滤规则，仅支持IPv4。<br/>
+移除设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addDomainFilterRule](#networkmanageradddomainfilterrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -834,7 +837,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   // 需根据实际情况进行替换
   "domainName": "www.example.com",
   "appUid": "9696",
-  "action": networkManager.Action.DENY
+  "action": networkManager.Action.DENY,
+  "family": 1
 };
 
 // 移除指定的规则
@@ -858,7 +862,7 @@ try {
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-查询设备域名过滤规则，仅支持IPv4。
+查询设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -1334,7 +1338,7 @@ try {
 
 ## FirewallRule
 
-防火墙过滤规则。
+防火墙过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1349,10 +1353,11 @@ try {
 | direction | [Direction](#direction) | 否   | 是 |规则链。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入空值。 |
 | action    | [Action](#action)       | 否   | 是 |接收或者丢弃数据包。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入空值。 |
 | protocol  | [Protocol](#protocol)   | 否   | 是 |网络协议。当值为ALL或者ICMP时，设置srcPort与destPort无效。 |
+| family<sup>22+</sup>    | number    | 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
 
 ## DomainFilterRule
 
-域名过滤规则。
+域名过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1363,6 +1368,7 @@ try {
 | appUid     | string            | 否   | 是 |应用uid。                                                    |
 | action     | [Action](#action) | 否   | 是 |接收或者丢弃数据包。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且domainName，appUid也必须传入空值。 |
 | direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|
+| family<sup>22+</sup>    | number| 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
 
 ## Direction
 

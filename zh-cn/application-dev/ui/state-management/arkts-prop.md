@@ -97,7 +97,7 @@ this.title.info.value = 'ArkUI';
 - 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
 
 ```ts
-// @State装饰的对象为数组时
+// @Prop装饰的对象为数组时
 @Prop title: string[];
 // 数组自身的赋值可以观察到
 this.title = ['1'];

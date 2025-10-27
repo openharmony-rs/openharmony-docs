@@ -73,7 +73,7 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -115,7 +115,7 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 };
 screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , messgae : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -133,7 +133,7 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -159,7 +159,7 @@ import { image } from '@kit.ImageKit';
 
 screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
   if (err) {
-    console.error('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , message : ${err.message}`);
     return;
   }
   console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -177,7 +177,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -225,13 +225,14 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 try {
   let promise = screenshot.save(screenshotOptions);
   promise.then((pixelMap: image.PixelMap) => {
-    console.log('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    let pixelNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
-    console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save screenshot. Code: ${err.code} , messgae : ${err.message}`);
   });
 } catch (exception) {
-  console.error('Failed to save screenshot. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to save screenshot. Code: ${exception.code} , message : ${exception.message}`);
 };
 ```
 
@@ -248,7 +249,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -295,9 +296,9 @@ try {
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {
-    console.error('Failed to save SDR and HDR screenshot. Code: ' + JSON.stringify(err));
+    console.error(`Failed to save SDR and HDR screenshot. Code: ${err.code} , message : ${err.message}`);
   });
 } catch (exception) {
-  console.error('Failed to save SDR and HDR screenshot. Code: ' + JSON.stringify(exception));
+  console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code} , message : ${exception.message}`);
 };
 ```

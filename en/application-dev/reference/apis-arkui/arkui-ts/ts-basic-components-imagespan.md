@@ -1,4 +1,10 @@
 # ImageSpan
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 As a child of the [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md) components, the **ImageSpan** component is used to display inline images.
 
@@ -24,12 +30,12 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)  | Yes| Image source. Both local and online images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Strings with the **file:///data/storage** prefix are supported, which are used to read image resources in the **files** folder in the installation directory of the application. Ensure that the application has the read permission to the files in the specified path.|
+| value | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes| Image source. Both local and online images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
 
 
 ## Attributes
 
-The attributes inherit from [BaseSpan](ts-basic-components-span.md#basespan). Among the universal attributes, [size](ts-universal-attributes-size.md#size), [background](ts-universal-attributes-background.md#background), and [border](ts-universal-attributes-border.md#border) are supported.
+The attributes inherit from [BaseSpan](ts-basic-components-span.md#basespan). Among the universal attributes, [size](ts-universal-attributes-size.md), [background](ts-universal-attributes-background.md), and [border](ts-universal-attributes-border.md) are supported.
 
 ### verticalAlign
 
@@ -67,7 +73,7 @@ Sets the image scale type.
 
 alt(value: PixelMap)
 
-Sets the placeholder image displayed during loading.
+Sets the placeholder image displayed during image loading.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -77,7 +83,7 @@ Sets the placeholder image displayed during loading.
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) | Yes  | Placeholder image displayed during loading. The [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) type is supported.<br>Default value: **null**|
+| value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Placeholder image displayed during image loading. The [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type is supported.<br>Default value: **null**|
 
 ### colorFilter<sup>14+</sup>
 
@@ -93,7 +99,25 @@ Sets the color filter for the image.
 
 | Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | Yes  | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>The first row of the matrix represents a vector value of R (red), the second row represents a vector value of G (green), the third row represents a vector value of B (blue), and the fourth row represents a vector value of A (alpha). The four rows represent different RGBA vector values.<br>If the matrix contains entries of 1 on the diagonal and entries of 0 in other places, the original color of the image is retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows:<br>![image-matrix-1](figures/image-matrix-1.jpg)<br>Wherein the color is [R, G, B, A].<br>Then the color after filtering is [R', G', B', A'].<br>![image-matrix-2](figures/image-matrix-2.jpg)<br>2. The ColorFilter type of **@ohos.graphics.drawing** can be used as the input parameter.<br>**NOTE**<br>The DrawingColorfilter type can be used in atomic services. The SVG image to set as the source must have the **stroke** attribute.|
+| filter  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | Yes  | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>The first row of the matrix represents a vector value of R (red), the second row represents a vector value of G (green), the third row represents a vector value of B (blue), and the fourth row represents a vector value of A (alpha). The four rows represent different RGBA vector values.<br>If the matrix contains entries of 1 on the diagonal and entries of 0 in other places, the original color of the image is retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows:<br>![image-matrix-1](figures/image_matrix_1.png)<br>And the pixel point is [R, G, B, A] with color values in the [0, 255] range,<br>Then the color after filtering is [R', G', B', A'].<br>![image-matrix-2](figures/image_matrix_2.png)<br>2. The ColorFilter type of **@ohos.graphics.drawing** can be used as the input parameter.<br>**NOTE**<br>The DrawingColorfilter type can be used in atomic services. The SVG image source takes effect only for the stroke attribute.|
+
+### supportSvg2<sup>22+</sup>
+
+supportSvg2(enable: Optional\<boolean>)
+
+Enables or disables the new SVG parsing capability (ts-image-svg2-capabilities.md). After this function is enabled, the display effect of related SVG images changes.
+
+After the **ImageSpan** component is created, the value of this attribute cannot be dynamically changed.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                    | Mandatory| Description                                                        |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| enable  | Optional\<boolean> | Yes  | Controls whether to enable the new SVG parsing capability (ts-image-svg2-capabilities.md).<br>true: The new SVG parsing capability is supported. false: The original SVG parsing capability is retained.<br>Default value: **false**.|
 
 ## Events
 
@@ -141,6 +165,8 @@ Defines the callback triggered when the image is successfully loaded or decoded.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name| Type                      | Mandatory| Description                              |
 | ------ | -------------------------- | ---- | ---------------------------------- |
 | result  | [ImageLoadResult](#imageloadresult12) | Yes  | Object returned after the callback is triggered when an image is successfully loaded or decoded.|
@@ -153,17 +179,17 @@ Object returned after the callback is triggered when an image is successfully lo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Type  | Mandatory| Description                                                        |
-| ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | Yes  | Width of the image.<br>Unit: pixel                                   |
-| height                       | number | Yes  | Height of the image.<br>Unit: pixel                                   |
-| componentWidth               | number | Yes  | Width of the component.<br>Unit: pixel                                   |
-| componentHeight              | number | Yes  | Height of the component.<br>Unit: pixel                                   |
-| loadingStatus                | number | Yes  | Loading status of the image.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.|
-| contentWidth   | number | Yes  | Actual rendered width of the image.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentHeight  | number | Yes  | Actual rendered height of the image.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentOffsetX | number | Yes  | Offset of the rendered content relative to the component on the x-axis.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentOffsetY | number | Yes  | Offset of the rendered content relative to the component on the y-axis<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| Name                      | Type  | Read-Only| Optional| Description                                                        |
+| ---------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| width                        | number | No  | No| Width of the image.<br>Unit: [px](ts-pixel-units.md)                                   |
+| height                       | number | No  | No  | Height of the image.<br>Unit: [px](ts-pixel-units.md)                                   |
+| componentWidth               | number | No  | No  | Width of the component.<br>Unit: [px](ts-pixel-units.md)                                   |
+| componentHeight              | number | No  | No  | Height of the component.<br>Unit: [px](ts-pixel-units.md)                                   |
+| loadingStatus                | number | No  | No  | Loading status of the image.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.|
+| contentWidth   | number | No  | No  | Actual rendered width of the image.<br>Unit: [px](ts-pixel-units.md)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| contentHeight  | number | No  | No  | Actual rendered height of the image.<br>Unit: [px](ts-pixel-units.md)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| contentOffsetX | number | No  | No  | Offset of the rendered content relative to the component on the x-axis.<br>Unit: [px](ts-pixel-units.md)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| contentOffsetY | number | No  | No  | Offset of the rendered content relative to the component on the y-axis<br>Unit: [px](ts-pixel-units.md)<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
 
 
 
@@ -171,7 +197,7 @@ Object returned after the callback is triggered when an image is successfully lo
 
 ### Example 1: Setting the Alignment Mode
 
-This example demonstrates the alignment and scaling effects of the **ImageSpan** component using the **verticalAlign** and **objectFit** attributes.
+This example demonstrates the alignment and scaling effects of the ImageSpan component using the [verticalAlign](#verticalalign) and [objectFit](#objectfit) attributes, available since API version 10.
 
 ```ts
 // xxx.ets
@@ -186,6 +212,7 @@ struct SpanExample {
       }.width('100%').textAlign(TextAlign.Center)
 
       Text() {
+        // Replace $r('app.media.app_icon') with the image resource file you use.
         ImageSpan($r('app.media.app_icon'))
           .width('200px')
           .height('200px')
@@ -222,7 +249,7 @@ struct SpanExample {
 
 ### Example 2: Setting the Background Style
 
-This example demonstrates the effect of setting a background style for text using the **textBackgroundStyle** attribute.
+This example demonstrates how to set the background style for text using the [textBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11) attribute, available since API version 11.
 
 ```ts
 // xxx.ets
@@ -233,7 +260,8 @@ struct Index {
     Row() {
       Column() {
         Text() {
-          ImageSpan($r('app.media.sky'))// You are advised to use a custom local image.
+          // Replace $r('app.media.sky') with the image resource file you use.
+          ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
             .verticalAlign(ImageSpanAlignment.CENTER)
@@ -249,13 +277,14 @@ struct Index {
 
 ### Example 3: Adding Events to an Image
 
-This example demonstrates how to add load success and load error events to the **ImageSpan** component using **onComplete** and **onError**.
+This example demonstrates how to add load success and load error events to the **ImageSpan** component using [onComplete](#oncomplete12) and [onError](#onerror12), available since API version 12.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
+  // Replace $r('app.media.app_icon') with the image resource file you use.
   @State src: ResourceStr = $r('app.media.app_icon');
 
   build() {
@@ -264,10 +293,10 @@ struct Index {
         ImageSpan(this.src)
           .width(100).height(100)
           .onError((err) => {
-            console.log("onError: " + err.message);
+            console.info("onError: " + err.message);
           })
           .onComplete((event) => {
-            console.log("onComplete: " + event.loadingStatus);
+            console.info("onComplete: " + event.loadingStatus);
           })
       }
     }.width('100%').height('100%')
@@ -276,7 +305,7 @@ struct Index {
 ```
 ### Example 4: Setting the Color Filter
 
-This example demonstrates the effect of setting a color filter for the **ImageSpan** component using the **colorFilter** attribute.
+This example demonstrates the effect of setting a color filter for the **ImageSpan** component using the [colorFilter](#colorfilter14) attribute, available since API version 14.
 
 ```ts
 // xxx.ets
@@ -293,7 +322,8 @@ struct SpanExample {
       Column({ space: 10 }) {
         // Use a ColorFilter object to apply a color filter to the image.
         Text() {
-          ImageSpan($r('app.media.sky'))// You are advised to use a custom local image.
+          // Replace $r('app.media.sky') with the image resource file you use.
+          ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
             .colorFilter(this.DrawingColorFilterFirst)
@@ -301,7 +331,8 @@ struct SpanExample {
 
         // Create a color filter using the drawing.ColorFilter API.
         Text() {
-          ImageSpan($r('app.media.sky'))// You are advised to use a custom local image.
+          // Replace $r('app.media.sky') with the image resource file you use.
+          ImageSpan($r('app.media.sky'))
             .width('60vp')
             .height('60vp')
             .colorFilter(drawing.ColorFilter.createBlendModeColorFilter({
@@ -320,7 +351,7 @@ struct SpanExample {
 
 ### Example 5: Setting a Placeholder Image
 
-This example shows how a placeholder image is used in the **ImageSpan** component during the process of loading an image from the Internet.
+From API version 12 onwards, the [alt](#alt12) attribute in this sample shows the effect of setting the placeholder image when an image is loaded from the network.
 
 ```ts
 // xxx.ets
@@ -331,7 +362,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct SpanExample {
-  @State imageAlt: PixelMap | undefined = undefined
+  @State imageAlt: PixelMap | undefined = undefined;
 
   httpRequest() {
     // Enter an image URL.
@@ -339,7 +370,7 @@ struct SpanExample {
       if (error) {
         console.error(`http request failed with. Code: ${error.code}, message: ${error.message}`);
       } else {
-        console.log(`http request success.`);
+        console.info(`http request success.`);
         let imageData: ArrayBuffer = data.result as ArrayBuffer;
         let imageSource: image.ImageSource = image.createImageSource(imageData);
 

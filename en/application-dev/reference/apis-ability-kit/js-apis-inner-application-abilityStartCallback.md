@@ -1,4 +1,17 @@
 # AbilityStartCallback
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The module describes the callback invoked to return the UIExtensionAbility startup result.
 
@@ -17,6 +30,14 @@ import { common } from '@kit.AbilityKit';
 ```
 
 ## AbilityStartCallback
+
+### Properties
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name            | Type                                     | Read-Only| Optional| Description                                      |
+| ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
+| completionHandler<sup>21+</sup>      | [CompletionHandlerForAbilityStartCallback](js-apis-app-ability-CompletionHandlerForAbilityStartCallback.md) | No  | Yes  | Callback invoked when the ability of a specified type is started.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 
 ### onError
 
@@ -49,18 +70,18 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.log(`code:` + code + `name:` + name + `message:` + message);
+        console.info(`code: ${code}, name: ${name}, message: ${message}`);
       },
       onResult: (abilityResult: common.AbilityResult) => {
-        console.log(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
+        console.info(`resultCode: ${abilityResult.resultCode}, bundleName: ${abilityResult.want?.bundleName}`);
       }
     };
 
-    this.context.startAbilityByType("photoEditor", wantParam, abilityStartCallback, (err: BusinessError) => {
+    this.context.startAbilityByType('photoEditor', wantParam, abilityStartCallback, (err: BusinessError) => {
       if (err) {
         console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
       } else {
-        console.log(`success`);
+        console.info(`success`);
       }
     });
   }
@@ -96,18 +117,18 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.log(`code:` + code + `name:` + name + `message:` + message);
+        console.info(`code:` + code + `name:` + name + `message:` + message);
       },
       onResult: (abilityResult: common.AbilityResult) => {
-        console.log(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
+        console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
       }
     };
 
-    this.context.startAbilityByType("photoEditor", wantParam, abilityStartCallback, (err: BusinessError) => {
+    this.context.startAbilityByType('photoEditor', wantParam, abilityStartCallback, (err: BusinessError) => {
       if (err) {
         console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
       } else {
-        console.log(`success`);
+        console.info(`success`);
       }
     });
   }

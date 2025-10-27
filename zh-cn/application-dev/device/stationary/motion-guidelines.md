@@ -12,6 +12,8 @@
 
 详细的接口介绍请参考[Motion接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-motion.md)。
 
+从API version 15开始，支持获取操作手状态。从API version 20开始，支持获取握持手状态。
+
 ## 获取操作手状态开发指导
 
 ### 接口说明
@@ -54,8 +56,8 @@
    ```ts
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@ohos.base';
    ```
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义回调函数接收操作手结果
 
@@ -64,6 +66,7 @@
      console.info('callback succeeded' + data);
    };
    ```
+   <!-- @[motion_subscribe_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅操作手感知
 
@@ -76,6 +79,7 @@
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅操作手感知
 
@@ -88,6 +92,7 @@
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 5. 获取最新操作手状态
 
@@ -100,6 +105,7 @@
       console.error("Failed get and err code is " + error.code);
    }
    ```
+   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 
 ## 获取握持手状态开发指导
@@ -144,8 +150,8 @@
    ```ts
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@ohos.base';
    ```
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义回调函数接收握持手结果
 
@@ -154,6 +160,7 @@
      console.info('callback succeeded' + data);
    };
    ```
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅握持手感知
 
@@ -166,6 +173,7 @@
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅握持手感知
 
@@ -178,3 +186,4 @@
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->

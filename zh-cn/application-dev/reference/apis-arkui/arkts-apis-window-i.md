@@ -82,15 +82,11 @@
 
 ## AvoidArea<sup>7+</sup>
 
-窗口内容规避区域。如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。在规避区无法响应用户点击事件。
+窗口内容的避让区域。
 
-除此之外还需注意规避区域的如下约束，具体为：
+窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让。
 
-- 底部手势区域中非底部导航条区域支持点击、长按事件透传，不支持拖入。
-
-- 左右侧边手势区域支持点击、长按以及上下滑动事件透传，不支持拖入。
-
-- 底部导航条区域支持长按、点击、拖入事件响应，不支持事件向下透传。
+在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -98,11 +94,17 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| visible<sup>9+</sup>    | boolean       | 否   | 否   | 规避区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕左侧的矩形区。 |
-| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕顶部的矩形区。 |
-| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕右侧的矩形区。 |
-| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 屏幕底部的矩形区。 |
+| visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
+| leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。 |
+| topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 |
+| rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 |
+| bottomRect | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区。 |
+
+> **说明：**
+>
+> 示意图展示了leftRect、topRect、rightRect、bottomRect的含义。
+>
+>  ![avoidArea](figures/avoidArea.png)
 
 ## Size<sup>7+</sup>
 
@@ -337,14 +339,14 @@
 
 仅对同应用的不同ability间跳转生效。
 
-仅在手机设备或平板设备的非自由多窗模式下生效。
-
 仅对全屏应用生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type             | [AnimationType](arkts-apis-window-e.md#animationtype20)                 | 否   | 否   | 窗口动画类型。|
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下可正常调用，在其他设备中不生效也不报错。
 
 ## WindowCreateParams<sup>20+</sup>
 
@@ -372,7 +374,7 @@
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | -------------------------- |	
+| ---- | ---- | ---- | -------------------------- |
 | data | T    | 是   | 回调函数调用时需要传入T类型的参数。 |
 
 **返回值：**
@@ -414,7 +416,7 @@
 
 ### (info: T)<sup>19+</sup>
 
-(info: T): U;
+(info: T): U
 
 旋转事件通知通用回调函数。
 
@@ -426,8 +428,8 @@
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |	
-| ---- | ---- | ---- | -------------------------- |	
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | -------------------------- |
 | info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。 |
 
 **返回值：**
@@ -450,8 +452,8 @@
 | modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性时生效。WINDOW_MODALITY表示子窗口模态类型为模窗口子窗，APPLICATION_MODALITY表示子窗口模态类型为模应用子窗。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。       |
 | windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | zLevel<sup>18+</sup>    | number | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数是整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。<!--RP6-->此接口仅可在2in1设备下使用。<!--RP6End-->true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| outlineEnabled<sup>20+</sup>    | boolean | 否 | 是 | 子窗口是否显示描边。此接口仅可在2in1设备下使用。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。|
+| outlineEnabled<sup>20+</sup>    | boolean | 否 | 是 | 子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备中可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。|
 
 ## KeyFramePolicy<sup>20+</sup>
 
@@ -466,3 +468,26 @@
 | distance | number | 否 | 是 | 设置关键帧布局切换的拖拽距离间隔，单位为px，默认值为1000。取值为0或正整数，浮点数向下取整。设置为0时，忽略拖拽距离因素。与interval判断为或的关系：满足其一即开始布局切换。|
 | animationDuration | number | 否 | 是 | 设置关键帧布局的动效切换时间，单位为毫秒，默认值为100。取值为0或正整数，浮点数向下取整。 |
 | animationDelay | number | 否 | 是 | 设置关键帧布局切换动效延迟时间，单位为毫秒，默认值为100。取值为0或正整数，浮点数向下取整。 |
+
+## MainWindowInfo<sup>21+</sup>
+
+主窗口信息。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读  | 可选 | 说明                    |
+| ------ | ---- | ----- | ---- | ----------------------- |
+| displayId | number  | 否 | 否 | 主窗口所在的屏幕ID。 |
+| windowId  | number  | 否 | 否 | 主窗口ID。 |
+| showing   | boolean | 否 | 否 | 主窗口的前后台状态。true表示主窗口在前台，false表示主窗口不在前台。|
+| label     | string  | 否 | 否 | 主窗口的任务名称。 |
+
+## WindowSnapshotConfiguration<sup>21+</sup>
+
+主窗口截图的配置项。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称     | 类型      | 只读 | 可选 | 说明               |
+| -------- | -------- | ---- | ---- | ------------------ |
+| useCache | boolean  | 否   | 是   | 是否使用主窗口的已有截图。默认值为true。 true表示使用主窗口的已有截图，若主窗口无保存的截图，则使用主窗口的最新截图。false表示使用主窗口的最新截图。|

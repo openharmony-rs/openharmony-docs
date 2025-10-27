@@ -8,13 +8,13 @@
 
 The KioskManager module provides APIs to manage kiosk mode, including entering and exiting kiosk mode.
 
-This module applies only to enterprise applications. In kiosk mode, an enterprise application can lock a device to a single application, ensuring that the UI serves only specific interactive scenarios, such as bank ATM terminals, KTV song-selection systems, and restaurant ordering systems.
+Kiosk mode is a dedicated device lockdown mode that ensures the device UI serves only specific interaction scenarios. In this mode, device usage is confined to predetermined applications. A typical example is a bank ATM, where users can only interact with the ATM software and cannot exit it or access any other functions.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> The APIs of this module can be used only in the stage model.
+> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
+> - The APIs of this module are available only to applications that have been configured to support Kiosk mode via [setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20).
 
 ## Modules to Import
 
@@ -28,15 +28,15 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 Enters kiosk mode. This API uses a promise to return the result.
 
-This API applies only to EDM-configured applications that support kiosk mode.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the UIAbility.|
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the UIAbility that needs to enter kiosk mode.|
 
 **Return value**
 
@@ -51,9 +51,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 |---------|---------|
 | 801 | Capability not supported. |
-| 16000050 | Internal error. |
-| 16000110 | Current application is not in kiosk app list, can not enter kiosk mode. |
-| 16000111 | System is already in kiosk mode, can not enter again. |
+| 16000050 | Failed to connect to the system service. |
+| 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
+| 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
 | 16000113 | Current ability is not in foreground. |
 
 **Example**
@@ -98,11 +98,13 @@ This API takes effect only for applications that have entered kiosk mode.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the UIAbility.|
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes| Context of the UIAbility that needs to exit kiosk mode.|
 
 **Return value**
 
@@ -117,9 +119,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 |---------|---------|
 | 801 | Capability not supported. |
-| 16000050 | Internal error. |
-| 16000110 | Current application is not in kiosk app list, can not exit kiosk mode. |
-| 16000112 | Current application is not in kiosk mode, can not exit. |
+| 16000050 | Failed to connect to the system service. |
+| 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
+| 16000112 | The current application is not in Kiosk mode and cannot exit Kiosk mode. |
 
 **Example**
 
@@ -153,7 +155,7 @@ struct Index {
 }
 ```
 
-## KioskStatus<sup>20+</sup>
+## KioskStatus
 
 type KioskStatus = _KioskStatus
 

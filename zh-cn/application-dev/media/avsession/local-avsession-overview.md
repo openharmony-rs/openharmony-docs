@@ -4,7 +4,7 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 交互过程
 
@@ -52,7 +52,6 @@ import { avSession as AVSessionManager } from '@kit.AVSessionKit';
  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 
 @Entry

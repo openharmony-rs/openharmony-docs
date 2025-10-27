@@ -25,7 +25,7 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 ## WindowMode<sup>12+</sup>
 
-Enumerates the window modes in which an ability can be displayed at startup. It can be used in **startAbility()** to specify the window mode when the ability is started.
+Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,7 +54,7 @@ let option: StartOptions = {
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.startAbility(want, option).then(() => {
-      console.log('Succeed to start ability.');
+      console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
     });

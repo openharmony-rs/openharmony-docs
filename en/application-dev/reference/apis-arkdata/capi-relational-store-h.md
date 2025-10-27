@@ -1,4 +1,10 @@
 # relational_store.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -103,8 +109,8 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_SetVersion(OH_Rdb_Store *store, int version)](#oh_rdb_setversion) | - | Sets the RDB store version.|
 | [int OH_Rdb_SetDistributedTables(OH_Rdb_Store *store, const char *tables[], uint32_t count, Rdb_DistributedType type,const Rdb_DistributedConfig *config)](#oh_rdb_setdistributedtables) | - | Sets distributed database tables.|
 | [OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName,OH_VObject *values)](#oh_rdb_findmodifytime) | - | Obtains the last modification time of a table in an RDB store.|
-| [typedef void (\*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count)](#rdb_briefobserver) | Rdb_BriefObserver | Defines a callback used to return the device-cloud data change event. |
-| [typedef void (\*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count)](#rdb_detailsobserver) | Rdb_DetailsObserver | Defines a callback used to return the details about the device-cloud data change. |
+| [typedef void (\*Rdb_BriefObserver)(void *context, const char *values[], uint32_t count)](#rdb_briefobserver) | Rdb_BriefObserver | Defines a callback used to return the device-cloud data change event.|
+| [typedef void (\*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **changeInfo, uint32_t count)](#rdb_detailsobserver) | Rdb_DetailsObserver | Defines a callback used to return the details about the device-cloud data change.|
 | [int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_DataObserver *observer)](#oh_rdb_subscribe) | - | Registers an observer for an RDB store. The registered callback will be invoked when data in a distributed or local RDB store changes.|
 | [int OH_Rdb_Unsubscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_DataObserver *observer)](#oh_rdb_unsubscribe) | - | Unregisters the observer of the specified type.|
 | [Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t version)](#oh_rdb_gettabledetails) | - | Obtains the device-cloud sync statistics of a table.|
@@ -807,7 +813,7 @@ Creates an [OH_VObject](capi-rdb-oh-vobject.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) | Returns the pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_VObject](capi-rdb-oh-vobject.md) | Returns the pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -829,7 +835,7 @@ Creates an [OH_VBucket](capi-rdb-oh-vbucket.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) | Returns the pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_VBucket](capi-rdb-oh-vbucket.md) | Returns the pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -858,7 +864,7 @@ Creates an [OH_Predicates](capi-rdb-oh-predicates.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) | Returns the pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_Predicates](capi-rdb-oh-predicates.md) | Returns the pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -888,7 +894,7 @@ Obtains a related [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance to operate t
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns null otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CreateOrOpen()
 
@@ -914,7 +920,7 @@ Creates or opens an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance based on t
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns null otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CloseStore()
 
@@ -1184,7 +1190,7 @@ Queries data in an RDB store based on specified conditions.
 
 | Type                              | Description|
 |----------------------------------| -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### OH_Rdb_Execute()
 
@@ -1303,7 +1309,7 @@ Queries data in the database using the specified SQL statement. This API support
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -1627,7 +1633,7 @@ Sets distributed database tables.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| onst char *tables[] |  Pointer to the names of the distributed tables to set.|
+| const char *tables[] |  Pointer to the names of the distributed tables to set.|
 | uint32_t count | Number of distributed database tables to be set.|
 | [Rdb_DistributedType](#rdb_distributedtype) type | [Rdb_DistributedType](capi-relational-store-h.md#rdb_distributedtype) of the table.|
 | const [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) *config | Distributed configuration information of a table ([Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)).|
@@ -1668,7 +1674,7 @@ Obtains the last modification time of a table in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.|
 
 ### Rdb_BriefObserver()
 
@@ -1790,7 +1796,7 @@ Obtains the device-cloud sync statistics of a table.
 
 | Type| Description|
 | -- | -- |
-| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Returns a pointer to [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) if the operation is successful; returns null otherwise.|
+| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Returns a pointer to [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -1994,7 +2000,7 @@ Queries the locked data in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### OH_Rdb_CreateTransaction()
 

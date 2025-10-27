@@ -351,9 +351,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型       | 必填 | 说明    |
-|------|----------|----|-------|
-| data | object[] | 是  | 消息列表。 |
+| 名称   | 类型       | 只读 | 可选 | 说明    |
+|------|----------|----|--|-------|
+| data | object[] | 否 | 否 | 消息列表。 |
 
 ## OnErrorReceiveEvent
 
@@ -363,10 +363,10 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型                                                                                    | 必填 | 说明              |
-|---------|---------------------------------------------------------------------------------------|----|-----------------|
-| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 是  | 网页请求的封装信息。      |
-| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | 是  | 网页加载资源错误的封装信息 。 |
+| 名称      | 类型                                                                                    | 只读 | 可选 | 说明              |
+|---------|---------------------------------------------------------------------------------------|----|--|-----------------|
+| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。      |
+| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | 否 | 否 | 网页加载资源错误的封装信息 。 |
 
 ## OnHttpErrorReceiveEvent
 
@@ -376,10 +376,10 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 类型                                                                                      | 必填 | 说明         |
-|----------|-----------------------------------------------------------------------------------------|----|------------|
-| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | 是  | 网页请求的封装信息。 |
-| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | 是  | 资源响应的封装信息。 |
+| 名称       | 类型                                                                                      | 只读 | 可选 | 说明         |
+|----------|-----------------------------------------------------------------------------------------|----|--|------------|
+| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | 否 | 否 | 网页请求的封装信息。 |
+| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | 否 | 否 | 资源响应的封装信息。 |
 
 ## OnPageBeginEvent
 
@@ -388,10 +388,10 @@ Web组件返回的请求/响应头对象。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称  | 类型     | 必填 | 说明        |
-|-----|--------|----|-----------|
-| url | string | 是  | 页面的URL地址。 |
+  
+| 名称  | 类型     | 只读 | 可选 | 说明        |
+|-----|--------|----|--|-----------|
+| url | string | 否 | 否 | 页面的URL地址。 |
 
 ## OnPageEndEvent
 
@@ -401,9 +401,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型     | 必填 | 说明        |
-|-----|--------|----|-----------|
-| url | string | 是  | 页面的URL地址。 |
+| 名称  | 类型     | 只读 | 可选 | 说明        |
+|-----|--------|----|--|-----------|
+| url | string | 否 | 否 | 页面的URL地址。 |
 
 ## OnLoadInterceptEvent
 
@@ -413,9 +413,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 是 | 网页请求的封装信息。 |
+| 名称             | 类型      | 只读 | 可选  | 说明                                       |
+| -------------- | ---- | ---- | -- |-------------------------------------- |
+| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。 |
 
 ## OnProgressChangeEvent
 
@@ -425,9 +425,9 @@ Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型      | 必填   | 说明                                       |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | number | 是 | 新的加载进度，取值范围为0到100的整数。                       |
+| 名称             | 类型      | 只读 | 可选  | 说明                                       |
+| -------------- | ---- | ---- | -- | -------------------------------------- |
+| newProgress | number | 否 | 否 | 新的加载进度，取值范围为0到100的整数。                       |
 
 ## OnLoadInterceptCallback
 

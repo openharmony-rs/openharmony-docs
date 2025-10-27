@@ -147,6 +147,7 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 **描述**
 
 管理loop上的监听事件。
+不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 12
 
@@ -177,6 +178,7 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 **描述**
 
 在ffrt loop上启动定时器。
+不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 12
 

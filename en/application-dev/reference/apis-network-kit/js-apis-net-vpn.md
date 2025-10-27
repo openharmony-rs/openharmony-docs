@@ -1,5 +1,12 @@
 # @ohos.net.vpn (VPN Management)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 This module is the built-in VPN function provided by the OS. It allows users to set up VPN connections through the network settings of the OS. Generally, this module provides only limited functions and is subject to strict restrictions.
 
 > **NOTE**
@@ -47,4 +54,4 @@ type AbilityContext = _AbilityContext
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_AbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Context of the target **UIAbility**. It is inherited from **Context** and provides the **UIAbility** configuration and methods for operating **UIAbility** and **ServiceExtensionAbility**.|
+| [_AbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Context of the target **UIAbility**. It is inherited from [Context](../apis-ability-kit/js-apis-inner-application-context.md) and provides the **UIAbility** configuration and methods for operating **UIAbility** and **ServiceExtensionAbility**.|

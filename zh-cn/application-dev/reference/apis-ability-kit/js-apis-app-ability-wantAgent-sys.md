@@ -1,5 +1,12 @@
 # @ohos.app.ability.wantAgent (WantAgent模块)(系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 app.ability.WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取want信息、比较WantAgent实例和获取bundle名称等能力。该模块将会取代[@ohos.wantAgent](js-apis-wantAgent.md)模块，建议优先使用本模块。
 
 > **说明：**
@@ -18,7 +25,7 @@ import { WantAgent } from '@kit.AbilityKit';
 
 getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 
-获取WantAgent对象的want（callback形式）。
+获取WantAgent对象的want。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -29,7 +36,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 | 参数名     | 类型                  | 必填 | 说明                            |
 | -------- | --------------------- | ---- | ------------------------------- |
 | agent    | [WantAgent](js-apis-app-ability-wantAgent.md#wantagent)             | 是   | WantAgent对象。                   |
-| callback | AsyncCallback\<[Want](js-apis-app-ability-want.md)\> | 是   | 获取WantAgent对象want的回调方法。 |
+| callback | AsyncCallback\<[Want](js-apis-app-ability-want.md)\> | 是   | 回调函数。当获取WantAgent对象want成功，err中code为0，data为获取到的Want数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -87,7 +94,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   }
   //getWant回调
   let getWantCallback = (err: BusinessError, data: Want) => {
-    if(err) {
+    if(err.code) {
       console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
     } else {
       console.info(`getWant success, data: ${JSON.stringify(data)}.`);
@@ -117,7 +124,7 @@ try {
 
 getWant(agent: WantAgent): Promise\<Want\>
 
-获取WantAgent对象的want（Promise形式）。
+获取WantAgent对象的want。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -133,7 +140,7 @@ getWant(agent: WantAgent): Promise\<Want\>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[Want](js-apis-app-ability-want.md)\> | 以Promise形式返回获取WantAgent对象的want。 |
+| Promise\<[Want](js-apis-app-ability-want.md)\> | Promise对象，返回WantAgent对象的want。 |
 
 **错误码：**
 
@@ -320,7 +327,7 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | 以Promise形式返回主动激发WantAgent获得的数据。 |
+| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动激发WantAgent获得的数据。 |
 
 **错误码：**
 
@@ -567,7 +574,7 @@ try {
 
 ## OperationType
 
-表示操作WantAgent类型的枚举。
+表示WantAgent支持的操作类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

@@ -1,4 +1,10 @@
 # Styled String Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -46,7 +52,7 @@ N/A
 
 **Error Message**
 
-Invalid styled string.
+invalid styled string.
 
 **Description**
 

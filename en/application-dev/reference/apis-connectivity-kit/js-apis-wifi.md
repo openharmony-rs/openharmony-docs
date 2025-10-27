@@ -1,4 +1,10 @@
 # @ohos.wifi (WLAN)
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with other devices over WLAN.
 
@@ -27,7 +33,7 @@ Checks whether WLAN is enabled.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
 
@@ -56,7 +62,7 @@ Starts a scan for WLAN.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
 
@@ -85,7 +91,7 @@ available only for system applications)
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&nbsp;&gt; | Promise used to return the detected hotspots.|
 
@@ -103,7 +109,7 @@ available only for system applications)
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the detected hotspots. Otherwise, **err** is a non-zero value and **data** is empty.|
 
@@ -111,27 +117,6 @@ available only for system applications)
 
 ```ts
 import wifi from '@ohos.wifi';
-
-wifi.getScanInfos((err, result) => {
-    if (err) {
-        console.error("get scan info error");
-        return;
-    }
-
-    let len = result.length;
-    console.log("wifi received scan info: " + len);
-    for (let i = 0; i < len; ++i) {
-        console.info("ssid: " + result[i].ssid);
-        console.info("bssid: " + result[i].bssid);
-        console.info("capabilities: " + result[i].capabilities);
-        console.info("securityType: " + result[i].securityType);
-        console.info("rssi: " + result[i].rssi);
-        console.info("band: " + result[i].band);
-        console.info("frequency: " + result[i].frequency);
-        console.info("channelWidth: " + result[i].channelWidth);
-        console.info("timestamp: " + result[i].timestamp);
-    }
-});
 
 wifi.getScanInfos().then(result => {
     let len = result.length;
@@ -158,17 +143,17 @@ Represents WLAN hotspot information.
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
-| bssid | string | Yes| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.|
-| capabilities | string | Yes| No| Hotspot capabilities.|
-| securityType | [WifiSecurityType](#wifisecuritytype) | Yes| No| WLAN security type.|
-| rssi | number | Yes| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
-| band | number | Yes| No| Frequency band of the WLAN access point (AP).|
-| frequency | number | Yes| No| Frequency of the WLAN AP.|
-| channelWidth | number | Yes| No| Channel width of the WLAN AP.|
-| timestamp | number | Yes| No| Timestamp.|
+| ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
+| bssid | string | No| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.|
+| capabilities | string | No| No| Hotspot capabilities.|
+| securityType | [WifiSecurityType](#wifisecuritytype) | No| No| WLAN security type.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
+| band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+| frequency | number | No| No| Frequency of the WLAN AP.|
+| channelWidth | number | No| No| Channel width of the WLAN AP.|
+| timestamp | number | No| No| Timestamp.|
 
 
 ## WifiSecurityType
@@ -178,7 +163,7 @@ Enumerates the WLAN security types.
 **System capability**: SystemCapability.Communication.WiFi.Core
 
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | Invalid security type.|
 | WIFI_SEC_TYPE_OPEN | 1 | Open security type.|
@@ -195,13 +180,13 @@ Represents the WLAN configuration.
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
-| bssid | string | Yes| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
-| preSharedKey | string | Yes| No| PSK of the hotspot. The maximum length is 64 bytes.|
-| isHiddenSsid | boolean | Yes| No| Whether the network is hidden.|
-| securityType | [WifiSecurityType](#wifisecuritytype) | Yes| No| Security type.|
+| ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
+| bssid | string | No| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
+| preSharedKey | string | No| No| PSK of the hotspot. The maximum length is 64 bytes.|
+| isHiddenSsid | boolean | No| No| Whether the network is hidden. The value **true** indicates that the the network is hidden, and the value **false** indicates the opposite.|
+| securityType | [WifiSecurityType](#wifisecuritytype) | No| No| Security type.|
 
 
 
@@ -217,13 +202,13 @@ Adds the configuration of an untrusted network. This API uses a promise to retur
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the operation is successful; the value **false** means the opposite.|
 
@@ -271,7 +256,7 @@ Adds the configuration of an untrusted network. This API uses an asynchronous ca
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
@@ -320,13 +305,13 @@ Removes the configuration of an untrusted network. This API uses a promise to re
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the operation is successful; the value **false** means the opposite.|
 
@@ -376,7 +361,7 @@ Removes the configuration of an untrusted network. This API uses an asynchronous
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration to add.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
@@ -426,14 +411,14 @@ Obtains the WLAN signal level.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | rssi | number | Yes| RSSI of the hotspot, in dBm.|
   | band | number | Yes| Frequency band of the WLAN AP.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | number | Signal level obtained. The value range is [0, 4].|
 
@@ -511,19 +496,19 @@ Represents the WLAN connection information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | Yes| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
-| bssid | string | Yes| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
-| rssi | number | Yes| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
-| band | number | Yes| No| Frequency band of the WLAN AP.|
-| linkSpeed | number | Yes| No| Speed of the WLAN AP.|
-| frequency | number | Yes| No| Frequency of the WLAN AP.|
-| isHidden | boolean | Yes| No| Whether to hide the WLAN AP.|
-| isRestricted | boolean | Yes| No| Whether to restrict data volume at the WLAN AP.|
-| macAddress | string | Yes| No| MAC address of the device.|
-| ipAddress | number | Yes| No| IP address of the device that sets up the WLAN connection.|
-| connState | [ConnState](#connstate) | Yes| No| WLAN connection state.|
+| ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
+| bssid | string | No| No| Hotspot BSSID, for example, **00:11:22:33:44:55**.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
+| band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+| linkSpeed | number | No| No| Speed of the WLAN AP, in Mbit/s.|
+| frequency | number | No| No| Frequency of the WLAN AP.|
+| isHidden | boolean | No| No| Whether to hide the WLAN AP. The value **true** indicates that the the network is hidden, and the value **false** indicates the opposite.|
+| isRestricted | boolean | No| No| Whether to restrict data volume at the WLAN AP. The value **true** means to restrict data volume at the WLAN AP, and the value **false** indicates the opposite.|
+| macAddress | string | No| No| MAC address of the device.|
+| ipAddress | number | No| No| IP address of the device that sets up the WLAN connection.|
+| connState | [ConnState](#connstate) | No| No| WLAN connection state.|
 
 
 ## ConnState
@@ -556,7 +541,7 @@ Checks whether the WLAN is connected.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the WLAN is connected; returns **false** otherwise.|
 
@@ -575,13 +560,13 @@ Checks whether the device supports the specified WLAN feature.
 **Parameters**
 
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | featureId | number | Yes| Feature ID.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the feature is supported; returns **false** otherwise.|
 
@@ -612,7 +597,7 @@ Obtains IP information.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | [IpInfo](#ipinfo7) | IP information obtained.|
 
@@ -634,15 +619,15 @@ Represents IP information.
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
 
-| **Name**| **Type**| **Readable**| **Writable**| **Description**|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | Yes| No| IP address.|
-| gateway | number | Yes| No| Gateway.|
-| netmask | number | Yes| No| Subnet mask.|
-| primaryDns | number | Yes| No| IP address of the preferred DNS server.|
-| secondDns | number | Yes| No| IP address of the alternate DNS server.|
-| serverIp | number | Yes| No| IP address of the DHCP server.|
-| leaseDuration | number | Yes| No| Lease duration of the IP address.|
+| ipAddress | number | No| No| IP address.|
+| gateway | number | No| No| Gateway.|
+| netmask | number | No| No| Subnet mask.|
+| primaryDns | number | No| No| IP address of the preferred DNS server.|
+| secondDns | number | No| No| IP address of the alternate DNS server.|
+| serverIp | number | No| No| IP address of the DHCP server.|
+| leaseDuration | number | No| No| Lease duration of the IP address.|
 
 
 ## wifi.getCountryCode<sup>7+</sup>
@@ -657,7 +642,7 @@ Obtains the country code.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | string | Country code obtained.|
 
@@ -698,11 +683,11 @@ Represents the P2P link information obtained.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| connectState | [P2pConnectState](#p2pconnectstate8) | Yes| No| P2P connection state.|
-| isGroupOwner | boolean | Yes| No| Whether the device is the group owner.|
-| groupOwnerAddr | string | Yes| No| MAC address of the group.
+| connectState | [P2pConnectState](#p2pconnectstate8) | No| No| P2P connection state.|
+| isGroupOwner | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
+| groupOwnerAddr | string | No| No| MAC address of the group.
 
 
 ## P2pConnectState<sup>8+</sup>
@@ -856,13 +841,13 @@ Represents the P2P device information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | Yes| No| Device name.|
-| deviceAddress | string | Yes| No| MAC address of the device.|
-| primaryDeviceType | string | Yes| No| Type of the primary device.|
-| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus8) | Yes| No| Device status.|
-| groupCapabilitys | number | Yes| No| Group capabilities.|
+| deviceName | string | No| No| Device name.|
+| deviceAddress | string | No| No| MAC address of the device.|
+| primaryDeviceType | string | No| No| Type of the primary device.|
+| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus8) | No| No| Device status.|
+| groupCapabilitys | number | No| No| Group capabilities.|
 
 
 ## P2pDeviceStatus<sup>8+</sup>
@@ -892,7 +877,7 @@ Creates a P2P group.
 
 **Parameters**
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiP2PConfig](#wifip2pconfig8) | Yes| Group configuration.|
 
@@ -927,13 +912,13 @@ Represents P2P group configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | Yes| No| Device address.|
-| netId | number | Yes| No| Network ID. The value **-1** indicates a temporary group, and **-2** indicates a persistent group.|
-| passphrase | string | Yes| No| Passphrase of the group.|
-| groupName | string | Yes| No| Group name.|
-| goBand | [GroupOwnerBand](#groupownerband8) | Yes| No| Frequency band of the group.|
+| deviceAddress | string | No| No| Device address.|
+| netId | number | No| No| Network ID. The value **-1** indicates a temporary group, and **-2** indicates a persistent group.|
+| passphrase | string | No| No| Passphrase of the group.|
+| groupName | string | No| No| Group name.|
+| goBand | [GroupOwnerBand](#groupownerband8) | No| No| Frequency band of the group.|
 
 
 ## GroupOwnerBand<sup>8+</sup>
@@ -989,7 +974,7 @@ Sets up a P2P connection.
 **Parameters**
 
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiP2PConfig](#wifip2pconfig8) | Yes| P2P group configuration.|
 
@@ -1023,7 +1008,7 @@ wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
 
 let recvP2pPeerDeviceChangeFunc = (result:wifi.WifiP2pDevice[]) => {
     console.info("p2p peer device change receive event: " + JSON.stringify(result));
-    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice) => {
+    wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice[]) => {
         if (err) {
             console.error('failed to get peer devices: ' + JSON.stringify(err));
             return;
@@ -1135,7 +1120,7 @@ Stops discovering devices.
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
+  | boolean | **true** if the operation is successful; **false** otherwise.|
 
 **Example**
 ```ts
@@ -1154,17 +1139,17 @@ Represents the P2P group information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isP2pGo | boolean | Yes| No| Whether the device is the group owner.|
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice8) | Yes| No| Device information of the group.|
-| passphrase | string | Yes| No| Passphrase of the group.|
-| interface | string | Yes| No| Interface name.|
-| groupName | string | Yes| No| Group name.|
-| networkId | number | Yes| No| Network ID.|
-| frequency | number | Yes| No| Frequency of the group.|
-| clientDevices | [WifiP2pDevice[]](#wifip2pdevice8) | Yes| No| List of connected devices.|
-| goIpAddress | string | Yes| No| IP address of the group.|
+| isP2pGo | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
+| ownerInfo | [WifiP2pDevice](#wifip2pdevice8) | No| No| Device information of the group.|
+| passphrase | string | No| No| Passphrase of the group.|
+| interface | string | No| No| Interface name.|
+| groupName | string | No| No| Group name.|
+| networkId | number | No| No| Network ID.|
+| frequency | number | No| No| Frequency of the group.|
+| clientDevices | [WifiP2pDevice[]](#wifip2pdevice8) | No| No| List of connected devices.|
+| goIpAddress | string | No| No| IP address of the group.|
 
 
 
@@ -1180,14 +1165,14 @@ Subscribes to WLAN state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN state.|
 
 **WLAN states** 
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Deactivated|
 | 1 | Activated|
@@ -1207,7 +1192,7 @@ Unsubscribes from WLAN state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1240,14 +1225,14 @@ Subscribes to WLAN connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
 
 **WLAN connection states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Disconnected.|
 | 1 | Connected.|
@@ -1265,7 +1250,7 @@ Unsubscribes from WLAN connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1297,14 +1282,14 @@ Subscribes to WLAN scan state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN scan state.|
 
 **WLAN scan states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Scan failed.|
 | 1 | Scan successful.|
@@ -1322,7 +1307,7 @@ Unsubscribes from WLAN scan state changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
 | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1354,7 +1339,7 @@ Subscribes to RSSI changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the RSSI, in dBm.|
@@ -1372,7 +1357,7 @@ Unsubscribes from RSSI changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1406,14 +1391,14 @@ Subscribes to hotspot state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the hotspot state.|
 
 **Hotspot states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Deactivated|
 | 1 | Activated|
@@ -1447,7 +1432,7 @@ Unsubscribes from hotspot state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1466,14 +1451,14 @@ Subscribes to P2P state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P state.|
 
 **P2P states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 1 | Available|
 | 2 | Opening|
@@ -1493,7 +1478,7 @@ Unsubscribes from P2P state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1525,7 +1510,7 @@ Subscribes to P2P connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
   | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | Yes| Callback used to return the P2P connection state.|
@@ -1543,7 +1528,7 @@ Unsubscribes from P2P connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
   | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1575,7 +1560,7 @@ Subscribes to P2P device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
   | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice8)&gt; | Yes| Callback used to return the P2P device state.|
@@ -1593,7 +1578,7 @@ Unsubscribes from P2P device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
   | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice8)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1625,7 +1610,7 @@ Subscribes to P2P peer device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
   | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | Yes| Callback used to return the P2P peer device state.|
@@ -1643,7 +1628,7 @@ Unsubscribes from P2P peer device state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
   | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1675,7 +1660,7 @@ Subscribes to P2P persistent group state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
   | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group state.|
@@ -1693,7 +1678,7 @@ Unsubscribes from P2P persistent group state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
   | callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
@@ -1726,14 +1711,14 @@ Subscribes to P2P device discovery state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery state.|
 
 **P2P discovered device states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Initial state.|
 | 1 | Discovered.|
@@ -1751,7 +1736,7 @@ Unsubscribes from P2P device discovery state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|

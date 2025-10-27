@@ -3,8 +3,9 @@
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 User authorization is required when an application needs to access user privacy information (such as Location or Calendar information) or using system abilities (such as the camera ability to take photos or record videos). The permissions that must be authorized by users are user_grant permissions.
 
@@ -25,7 +26,7 @@ This topic elaborates steps 3 and 4.
 
 - For a user_grant permission, show a rationale to the user in a UI element, clearly explaining why your application needs the permission. Based on the rationale, the user then determines whether to grant the permission.
 
-- Frequent pop-up windows may disturb user experience and are not recommended. If a user rejects the authorization, the window for requesting user authorization will not be displayed again. The application needs to provide information to guide the user to manually grant the permission in **Settings**.
+- Frequent pop-up windows may disturb user experience and are not recommended. If a user rejects the authorization, the window for requesting user authorization will not be displayed again. The application needs to provide information to guide the user to manually grant the permission in **Settings**. Alternatively, it shall call [requestPermissionOnSetting](request-user-authorization-second.md) to display the permission settings dialog box.
 
 - The system permission pop-up window cannot be obscured.
 
@@ -59,6 +60,8 @@ The following example steps you through on how to request the location permissio
 
    Call [checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9) to check whether the user has already granted the permissions that your application requires. If yes, the application can perform subsequent operations. Otherwise, user authorization is required.
 
+   <!-- [check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->
+
    ```ts
    import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -75,7 +78,7 @@ The following example steps you through on how to request the location permissio
        tokenId = appInfo.accessTokenId;
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Failed to get bundle info for self. Code is ${err.code}, message is ${err.message}`);
+       console.error(`Failed to get bundle info for self, code: ${err.code}, message: ${err.message}`);
      }
    
      // Check whether the user has granted the permission.
@@ -83,7 +86,7 @@ The following example steps you through on how to request the location permissio
        grantStatus = await atManager.checkAccessToken(tokenId, permission);
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Failed to check access token. Code is ${err.code}, message is ${err.message}`);
+       console.error(`Failed to check access token, code: ${err.code}, message: ${err.message}`);
      }
    
      return grantStatus;
@@ -113,20 +116,21 @@ The following example steps you through on how to request the location permissio
 
    <!--RP1--><!--RP1End-->
 
-   <!--RP2-->
    - Sample code for requesting user authorization using UIAbility
+
+   <!-- [request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->
 
       ```ts
       import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
       import { window } from '@kit.ArkUI';
       import { BusinessError } from '@kit.BasicServicesKit';
       
-      const permissions: Array<Permissions> = ['ohos.permission.LOCATION','ohos.permission.APPROXIMATELY_LOCATION'];
+      const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
       function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
         let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
         // Determine whether to display a user authorization dialog box based on the return value of requestPermissionsFromUser.
         atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-          let grantStatus: Array<number> = data.authResults;
+          let grantStatus: number[] = data.authResults;
           let length: number = grantStatus.length;
           for (let i = 0; i < length; i++) {
             if (grantStatus[i] === 0) {
@@ -138,13 +142,13 @@ The following example steps you through on how to request the location permissio
           }
           // Authorization is successful.
         }).catch((err: BusinessError) => {
-          console.error(`Failed to request permissions from user. Code is ${err.code}, message is ${err.message}`);
+          console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
         })
       }
       export default class EntryAbility extends UIAbility {
         onWindowStageCreate(windowStage: window.WindowStage): void {
           // ...
-          windowStage.loadContent('pages/Index', (err, data) => {
+          windowStage.loadContent('secondpages/Index', (err) => {
             reqPermissionsFromUser(permissions, this.context);
           // ...
           });
@@ -156,16 +160,17 @@ The following example steps you through on how to request the location permissio
 
    - Sample code for requesting user authorization on the UI
 
+      <!-- [request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->
       ```ts
       import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
       import { BusinessError } from '@kit.BasicServicesKit';
       
-      const permissions: Array<Permissions> = ['ohos.permission.LOCATION','ohos.permission.APPROXIMATELY_LOCATION'];
+      const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
       function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
         let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
         // Determine whether to display a user authorization dialog box based on the return value of requestPermissionsFromUser.
         atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-          let grantStatus: Array<number> = data.authResults;
+          let grantStatus: number[] = data.authResults;
           let length: number = grantStatus.length;
           for (let i = 0; i < length; i++) {
             if (grantStatus[i] === 0) {
@@ -177,7 +182,7 @@ The following example steps you through on how to request the location permissio
           }
           // Authorization is successful.
         }).catch((err: BusinessError) => {
-          console.error(`Failed to request permissions from user. Code is ${err.code}, message is ${err.message}`);
+          console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
         })
       }
       
@@ -194,10 +199,14 @@ The following example steps you through on how to request the location permissio
         }
       }
       ```
-   <!--RP2End-->
 
 4. Perform subsequent operations based on the authorization result.
 
-   After [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) is called, the application waits for the user authorization result. If the user grants the permission, the application can perform the subsequent operation. Otherwise, display a message indicating that user authorization is required, and direct the user to set the permission on the **Settings** page.<!--RP3-->
+   After [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) is called, the application waits for the user authorization result.
+   
+   If the user grants the permission, the application can perform the subsequent operation.
+   
+   If the user denies the permission, the application shall notify the user that they must grant the permission to access the features on the current page and guide them to grant the corresponding permission in **Settings**. Alternatively, it shall call [requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) to display the permission setting dialog box.<!--RP3-->
+
 
    Path: **Settings**\> **Privacy**\> **Permission manager**\> **Apps**\> Target app<!--RP3End-->

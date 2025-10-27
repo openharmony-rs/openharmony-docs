@@ -1,4 +1,12 @@
 # Managing Notification Slots
+
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 The system supports a range of notification slots. Different notification slots are assigned different reminder modes. You can choose notification slots for your application and manage them as required, such as creating, querying, and deleting notification slots.
 
 ## Notification Slots
@@ -28,7 +36,7 @@ The main notification slot APIs are as follows. For details about other APIs, se
 | getSlot(slotType: SlotType): Promise\<NotificationSlot\> | Obtains a notification slot.      |
 | removeSlot(slotType: SlotType): Promise\<void\>          | Removes a notification slot for this application. |
 
-In addition to using **addslot()**, you can also create a notification slot by passing **notificationSlotType** in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). If the specified notification slot does not exist, it is automatically created.
+In addition to using **addSlot()**, you can also create a notification slot by passing **notificationSlotType** in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). If the specified notification slot does not exist, it is automatically created.
 
 ## How to Develop
 

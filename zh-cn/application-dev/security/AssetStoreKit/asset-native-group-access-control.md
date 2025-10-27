@@ -16,41 +16,51 @@
 
 ## 前置条件
 
-在应用配置文件app.json5中，配置群组ID：demo_group_id。
+在应用配置文件app.json5中，配置群组ID，如：demo_group_id。群组支持配置多个群组ID。
 
-```json
+```json5
 {
   "app": {
     // 其他配置项此处省略。
     "assetAccessGroups": [
-      "demo_group_id"
+      "demo_group_id",
+      // "another_group_id",
+      // ...
     ]
   }
 }
 ```
 
+引用头文件。
+
+<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+#include "napi/native_api.h"
+#include <string.h>
+#include "asset/asset_api.h"
+```
+
+
 ## 新增群组关键资产
 
-在群组中新增密码为demo_pwd、别名为demo_alias、附属信息为demo_label的关键资产。用户首次解锁设备后，该关键资产可被访问。
+在群组中新增密码为demo_pwd、别名为demo_alias、附属信息为demo_label的关键资产。
 
-```c
-#include <string.h>
+<!-- @[add_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value AddAsset(napi_env env, napi_callback_info info)
+``` C++
+static napi_value AddGroupAsset(napi_env env, napi_callback_info info)
 {
-    static const char *SECRET = "demo_pwd";
-    static const char *ALIAS = "demo_alias";
-    static const char *LABEL = "demo_label";
-    static const char *GROUP_ID = "demo_group_id";
+    const char *secretStr = "demo_pwd";
+    const char *aliasStr = "demo_alias";
+    const char *labelStr = "demo_label";
+    const char *groupIdStr = "demo_group_id";
 
-    Asset_Blob secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
-    Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-    Asset_Blob label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
-    Asset_Blob group_id = { (uint32_t)(strlen(GROUP_ID)), (uint8_t *)GROUP_ID};
+    Asset_Blob secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+    Asset_Blob group_id = { (uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr};
     Asset_Attr attr[] = {
-        {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED},
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
         {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
@@ -64,22 +74,21 @@ static napi_value AddAsset(napi_env env, napi_callback_info info)
 }
 ```
 
+
 ## 删除群组关键资产
 
-在群组中删除别名是demo_alias的关键资产。
+在群组中删除别名为demo_alias的关键资产。
 
-```c
-#include <string.h>
+<!-- @[remove_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value RemoveAsset(napi_env env, napi_callback_info info)
+``` C++
+static napi_value RemoveGroupAsset(napi_env env, napi_callback_info info)
 {
-    static const char *ALIAS = "demo_alias";
-    static const char *GROUP_ID = "demo_group_id";
+    const char *aliasStr = "demo_alias";
+    const char *groupIdStr = "demo_group_id";
 
-    Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-    Asset_Blob group_id = {(uint32_t)(strlen(GROUP_ID)), (uint8_t *)GROUP_ID};
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob group_id = {(uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr};
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 此处指定别名删除单条群组关键资产，也可不指定别名删除多条群组关键资产。
         {.tag = ASSET_TAG_GROUP_ID, .value.blob = group_id},
@@ -92,26 +101,25 @@ static napi_value RemoveAsset(napi_env env, napi_callback_info info)
 }
 ```
 
+
 ## 更新群组关键资产
 
 在群组中更新别名为demo_alias的关键资产，将关键资产的明文更新为demo_pwd_new，附属信息更新为demo_label_new。
 
-```c
-#include <string.h>
+<!-- @[update_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value UpdateAsset(napi_env env, napi_callback_info info)
+``` C++
+static napi_value UpdateGroupAsset(napi_env env, napi_callback_info info)
 {
-    static const char *ALIAS = "demo_alias";
-    static const char *SECRET = "demo_pwd_new";
-    static const char *LABEL = "demo_label_new";
-    static const char *GROUP_ID = "demo_group_id";
+    const char *aliasStr = "demo_alias";
+    const char *secretStr = "demo_pwd_new";
+    const char *labelStr = "demo_label_new";
+    const char *groupIdStr = "demo_group_id";
 
-    Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-    Asset_Blob new_secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
-    Asset_Blob new_label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
-    Asset_Blob group_id = {(uint32_t)(strlen(GROUP_ID)), (uint8_t *)GROUP_ID};
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob new_secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+    Asset_Blob new_label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+    Asset_Blob group_id = {(uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr};
     Asset_Attr query[] = {
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
         {.tag = ASSET_TAG_GROUP_ID, .value.blob = group_id},
@@ -129,21 +137,21 @@ static napi_value UpdateAsset(napi_env env, napi_callback_info info)
 }
 ```
 
+
 ## 查询单条群组关键资产明文
 
 在群组中查询别名为demo_alias的关键资产明文。
 
-```c
-#include <string.h>
+<!-- @[query_group_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value QueryAsset(napi_env env, napi_callback_info info)
+``` C++
+static napi_value QueryGroupAssetPlaintext(napi_env env, napi_callback_info info)
 {
-    static const char *ALIAS = "demo_alias";
-    static const char *GROUP_ID = "demo_group_id";
-    Asset_Blob alias = { (uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS };
-    Asset_Blob group_id = { (uint32_t)(strlen(GROUP_ID)), (uint8_t *)GROUP_ID };
+    const char *aliasStr = "demo_alias";
+    const char *groupIdStr = "demo_group_id";
+    
+    Asset_Blob alias = { (uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr };
+    Asset_Blob group_id = { (uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr };
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了群组关键资产别名，最多查询到一条满足条件的群组关键资产。
         {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // 此处表示需要返回群组关键资产的所有信息，即属性+明文。
@@ -167,21 +175,21 @@ static napi_value QueryAsset(napi_env env, napi_callback_info info)
 }
 ```
 
+
 ## 查询单条群组关键资产属性
 
-查询别名是demo_alias的关键资产属性。
+查询别名为demo_alias的关键资产属性。
 
-```c
-#include <string.h>
+<!-- @[query_group_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
-#include "asset/asset_api.h"
-
-static napi_value QueryAttributes(napi_env env, napi_callback_info info)
+``` C++
+static napi_value QueryGroupAssetAttribute(napi_env env, napi_callback_info info)
 {
-    static const char *ALIAS = "demo_alias";
-    static const char *GROUP_ID = "demo_group_id";
-    Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-    Asset_Blob group_id = {(uint32_t)(strlen(GROUP_ID)), (uint8_t *)GROUP_ID};
+    const char *aliasStr = "demo_alias";
+    const char *groupIdStr = "demo_group_id";
+    
+    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+    Asset_Blob group_id = {(uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr};
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // 指定了群组关键资产别名，最多查询到一条满足条件的群组关键资产。
         {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // 此处表示仅返回群组关键资产属性，不包含群组关键资产明文。
@@ -204,3 +212,4 @@ static napi_value QueryAttributes(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+

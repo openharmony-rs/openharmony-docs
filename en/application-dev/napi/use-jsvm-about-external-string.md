@@ -1,4 +1,10 @@
 # Working with Latin1/UTF16 Strings Using JSVM-API
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
@@ -6,7 +12,7 @@ This topic walks you through on how to create and use external strings using JSV
 
 ## Basic Concepts
 
-By using JSVM-API, you can create JS strings directly in the memory allocated for Latin1/UTF16 strings. This allows you to manipulate these strings like normal JS strings.
+By using JSVM-API, you can create JavaScript strings directly in the memory allocated for Latin1/UTF16 strings. This allows you to manipulate these strings like normal JavaScript strings.
 
 ## Available APIs
 

@@ -1,4 +1,10 @@
 # Indicator
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
 
@@ -207,7 +213,7 @@ Moves to the previous navigation point.
 
 changeIndex(index: number, useAnimation?: boolean): void
 
-Moves to a specific navigation index.
+Navigates to the specified indicator.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 15.
 
@@ -219,7 +225,7 @@ Moves to a specific navigation index.
 
 | Name     | Type      | Mandatory | Description    |
 | -------- | ---------- | ---- | -------- |
-| index| number | Yes   | Target navigation index.|
+| index| number | Yes   | Target indicator index.<br>**NOTE**<br>If the value specified is less than 0 or greater than the maximum indicator index, the value **0** is used.|
 | useAnimation| boolean | No   | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite.<br>Default value: **false**.|
 
 ## Example
@@ -278,7 +284,7 @@ struct DotIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.log("current index: " + index );
+          console.info("current index: " + index );
         })
     }
   }
@@ -339,7 +345,7 @@ struct DigitIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.log("current index: " + index );
+          console.info("current index: " + index );
         })
     }
   }

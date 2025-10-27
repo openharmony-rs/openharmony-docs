@@ -1,7 +1,13 @@
 # Starting a PageAbility from the Stage Model
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-This topic describes how the two application components of the stage model start the PageAbility component of the FA model.
+This topic describes how the two application components of the [stage model](ability-terminology.md#stage-model) start the PageAbility component of the [FA model](ability-terminology.md#fa-model).
 
 
 ## UIAbility Starting a PageAbility

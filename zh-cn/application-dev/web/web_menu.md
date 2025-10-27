@@ -4,7 +4,7 @@
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 菜单作为用户交互的关键组件，其作用是构建清晰的导航体系，通过结构化布局展示功能入口，使用户能够迅速找到目标内容或执行操作。作为人机交互的重要枢纽，它显著提升了Web组件的可访问性和用户体验，是应用设计中必不可少的部分。Web组件菜单类型包括[文本选中菜单](./web_menu.md#文本选中菜单)、[上下文菜单](./web_menu.md#上下文菜单)和[自定义菜单](./web_menu.md#自定义菜单)，应用可根据具体需求灵活选择。
 |菜单类型|目标元素|响应类型|是否支持自定义|
 |----|----|----|----|
@@ -57,19 +57,19 @@ Web组件的文本选中菜单是一种通过自定义元素实现的上下文�
     onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
       if (menuItem.id.equals(TextMenuItemId.CUT)) {
         // 用户自定义行为
-        console.log("拦截 id：CUT")
+        console.info("拦截 id：CUT")
         return true; // 返回true不执行系统回调
       } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
         // 用户自定义行为
-        console.log("不拦截 id：COPY")
+        console.info("不拦截 id：COPY")
         return false; // 返回false执行系统回调
       } else if (menuItem.id.equals(TextMenuItemId.of('customItem1'))) {
         // 用户自定义行为
-        console.log("拦截 id：customItem1")
+        console.info("拦截 id：customItem1")
         return true;// 用户自定义菜单选项返回true时点击后不关闭菜单，返回false时关闭菜单
       } else if (menuItem.id.equals(TextMenuItemId.of('customItem2'))){
         // 用户自定义行为
-        console.log("拦截 id：customItem2")
+        console.info("拦截 id：customItem2")
         return true;
       }
       return false;// 返回默认值false

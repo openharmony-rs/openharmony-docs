@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay-->
-<!--Designer: @altay-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -533,6 +533,7 @@ export default class EntryAbility extends UIAbility {
             .mode(NavigationMode.Stack)
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
@@ -567,6 +568,7 @@ export default class EntryAbility extends UIAbility {
             })
             .height('100%')
             .width('100%')
+            .margin({top:250})
           }
         }
         ```
@@ -968,8 +970,9 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
                     try {
                       caller.release();
                     } catch (releaseErr) {
-                      console.log('Caller.release catch error, error.code: ' + JSON.stringify(releaseErr.code) +
-                        ' error.message: ' + JSON.stringify(releaseErr.message));
+                      let code = (releaseErr as BusinessError).code;
+                      let msg = (releaseErr as BusinessError).message;
+                      console.error(`Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
                     }
                   }
                 }).catch((err: BusinessError) => {
@@ -991,5 +994,5 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 针对UIAbility组件间交互开发，有以下相关实例可供参考：
 
-- [UIAbility内和UIAbility间页面的跳转（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Ability/StageAbility)
-- [UIAbility内页面间的跳转（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Ability/PagesRouter)
+- [UIAbility内和UIAbility间页面的跳转（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Ability/StageAbility)
+- [UIAbility内页面间的跳转（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Ability/PagesRouter)

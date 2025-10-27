@@ -1,4 +1,4 @@
-# @ohos.bundle.installer (installer) (System API)
+# @ohos.bundle.installer (installer Module) (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
@@ -977,7 +977,7 @@ Adds extended resources based on the specified bundle name and HSP file path. Th
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -995,7 +995,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@ohos.base';
 
 let bundleName : string = 'com.ohos.demo';
@@ -1039,7 +1039,7 @@ Removes extended resources based on the specified bundle name and HSP file path.
 
 | Type         | Description                                  |
 | ------------- | -------------------------------------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1057,7 +1057,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { installer } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@ohos.base';
 
 let bundleName : string = 'com.ohos.demo';
@@ -1909,7 +1909,7 @@ Describes the parameters used for destroying an application clone.
 | Name       | Type  | Read-Only |  Optional| Description                                                         |
 | ----------- | ------ | ----| ---- | ------------------------------------------------------------ |
 | userId      | number | No| Yes | ID of the user for whom the clone is to be destroyed. You can obtain the user ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller.            |
-| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null.           |
+| parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extended parameters for destroying the clone. The default value is null. The options of **Parameters.key** are as follows:<br> - "ohos.bms.param.clone.isKeepData": This parameter is supported since API version 21. If the value of this parameter is **true**, the user data of the clone will be retained when the clone is destroyed. Otherwise, the user data will not be retained.           |
 
 ## PluginParam<sup>19+</sup>
 

@@ -35,19 +35,24 @@
 2. 判断设备是否支持安全单元能力。
 3. 访问安全单元，实现数据的读取或写入。
 4. 释放通道资源。
-   
+
+> **注意：**
+>
+> - 从API version 9之后的应用开发新增支持Stage模型，作为目前主推并长期演进的模型。
+> - 由于SE的安全级别较高，必须将构建模式设置为release进行打包，否则应用将无法正常运行。
+
 ```ts
 import { omapi } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-let seService : omapi.SEService;
-let seReaders : omapi.Reader[];
-let seSession : omapi.Session;
-let seChannel : omapi.Channel;
-let testSelectedAid : number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
-let p2 : number = 0x00;
+let seService: omapi.SEService;
+let seReaders: omapi.Reader[];
+let seSession: omapi.Session;
+let seChannel: omapi.Channel;
+let testSelectedAid: number[] = [0xA0, 0x00, 0x00, 0x00, 0x03, 0x10, 0x10];
+let p2: number = 0x00;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -62,7 +67,7 @@ export default class EntryAbility extends UIAbility {
     this.omaTest();
   }
 
-  private async omaTest () {
+  private async omaTest() {
     // 创建安全单元service，用于访问安全单元
     await omapi.createService().then((data) => {
       if (data == undefined || !data.isConnected()) {

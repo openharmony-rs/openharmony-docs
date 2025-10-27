@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Image Kit简介](image-overview.md)
 - 图片开发指导(ArkTS)<!--image-arkts-dev-->
@@ -39,6 +39,7 @@
 - Image Kit常见问题<!--image-faqs-->
   - [如何处理HEIF图片](image-faqs/heif-adapter-faq.md)
   - [如何获取图片的旋转角度信息](image-faqs/image-rotate-faq.md)
+  - [Image Kit异常处理](image-faqs/image-error-faq.md)
 - 图片开发指导(依赖JS对象)(不再推荐)<!--image-native-js-objects-->
     - [图片解码](image-decoding-native.md)
     - [图片编码](image-encoding-native.md)

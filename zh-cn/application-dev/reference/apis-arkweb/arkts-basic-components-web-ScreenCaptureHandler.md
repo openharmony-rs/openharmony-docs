@@ -4,7 +4,7 @@
 <!--Owner: @qq_42700029-->
 <!--Designer: @qiu-gongkai-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Web组件返回授权或拒绝屏幕捕获功能的对象。示例代码参考[onScreenCaptureRequest事件](./arkts-basic-components-web-events.md#onscreencapturerequest10)。
 
@@ -62,4 +62,4 @@ grant(config: ScreenCaptureConfig): void
 
 | 参数名    | 类型                                     | 必填   | 说明    |
 | ------ | ---------------------------------------- | ---- | ------- |
-| config | [ScreenCaptureConfig](./arkts-basic-components-web-ScreenCaptureHandler.md) | 是   | 屏幕捕获配置。 |
+| config | [ScreenCaptureConfig](./arkts-basic-components-web-i.md#screencaptureconfig10) | 是   | 屏幕捕获配置。 |

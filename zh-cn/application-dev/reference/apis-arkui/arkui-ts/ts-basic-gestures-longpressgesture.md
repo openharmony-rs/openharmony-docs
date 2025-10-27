@@ -59,7 +59,7 @@ LongPressGesture(options?: LongPressGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [LongPressGestureHandlerOptions](./ts-uigestureevent.md#longpressgesturehandleroptions) | 否 | 长按手势处理器配置参数。 |
+| options | [LongPressGestureHandlerOptions](./ts-gesturehandler.md#longpressgesturehandleroptions) | 否 | 长按手势处理器配置参数。 |
 
 
 ## 事件
@@ -150,7 +150,8 @@ struct LongPressGestureExample {
       Text('LongPress onAction:' + this.count).fontSize(28)
         // 单指长按文本触发该手势事件
         .gesture(
-        LongPressGesture({ repeat: true })
+        // 设置长按手势识别器识别的手势的最大移动距离为200px
+        LongPressGesture({ repeat: true, allowableMovement: 200 })
           // 由于repeat设置为true，长按动作存在时会连续触发，触发间隔为duration（默认值500ms）
           .onAction((event: GestureEvent) => {
             if (event && event.repeat) {

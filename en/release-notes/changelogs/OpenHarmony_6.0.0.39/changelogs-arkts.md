@@ -21,7 +21,7 @@ For the following code, the expected results do not match the actual execution r
 The reason is that the comparator is lost after capacity expansion, causing **remove(a1)** to fail and subsequent behavior to become abnormal.
 
 ```ts
-import TreeSet from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
 class A {
 time: number;
 constructor(time: number) {
@@ -29,7 +29,7 @@ constructor(time: number) {
 }
 static readonly compared = ((first: A, second: A): number => {
     return second.time - first.time;
-  });
+  }) as Function as (first: A, second: A) => boolean;
 }
 const a1 = new A(1);
 const a2 = new A(2);
@@ -46,13 +46,13 @@ set.add(a5);
 set.add(a6);
 for (let i = 0; i < 5; ++i) {
   set.remove(a1); // Two different comparison rules used before and after the capacity expansion, and the data structure integrity is compromised.
-  console.log(set.has(a1));
+  console.info(set.has(a1).toString());
   // Expected result: false, false, false, false, false
   // Actual result: false, false, true, true, true
   set.add(a1);
 }
 for (let item of set) {
-  console.log(item.time);
+  console.info(item.time.toString());
   // Expected result: 6, 5, 4, 3, 2, and 1
   // Actual result: 6, 1, 1
 }

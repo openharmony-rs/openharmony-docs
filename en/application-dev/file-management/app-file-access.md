@@ -61,13 +61,17 @@ import { buffer } from '@kit.ArkTS';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function createFile(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // Create and open a file if the file does not exist. Open it if the file exists.
   let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   // Write data to the file.
-  let writeLen = fs.writeSync(file.fd, "Try to write str.");
-  console.info("The length of str is: " + writeLen);
+  let writeLen = fs.writeSync(file.fd, 'Try to write str.');
+  console.info('The length of str is: ' + writeLen);
   // Create an ArrayBuffer object whose size is 1024 bytes to store the data read from the file.
   let arrayBuffer = new ArrayBuffer(1024);
   // Set the offset and length to be read.
@@ -79,11 +83,12 @@ function createFile(context: common.UIAbilityContext): void {
   let readLen = fs.readSync(file.fd, arrayBuffer, readOptions);
   // Convert the ArrayBuffer object into a Buffer object and output it as a string.
   let buf = buffer.from(arrayBuffer, 0, readLen);
-  console.info("the content of file: " + buf.toString());
+  console.info('the content of file: ' + buf.toString());
   // Close the file.
   fs.closeSync(file);
 }
 ```
+
 
 ### Copying Data to Another File
 
@@ -97,6 +102,10 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function readWriteFile(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // Open a file.
@@ -126,6 +135,7 @@ function readWriteFile(context: common.UIAbilityContext): void {
 }
 ```
 
+
 > **NOTE**
 >
 > When using **read()** or **write()**, pay attention to the optional parameter **offset**. For a file that has been read or written, **offset** points to the end position of the last read or write operation by default.
@@ -142,12 +152,16 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 async function readWriteFileWithStream(context: common.UIAbilityContext): Promise<void> {
   let filesDir = context.filesDir;
   // Create and open an input file stream.
   let inputStream = fs.createStreamSync(filesDir + '/test.txt', 'r+');
   // Create and open an output file stream.
-  let outputStream = fs.createStreamSync(filesDir + '/destFile.txt', "w+");
+  let outputStream = fs.createStreamSync(filesDir + '/destFile.txt', 'w+');
 
   let bufSize = 4096;
   let readSize = 0;
@@ -172,6 +186,8 @@ async function readWriteFileWithStream(context: common.UIAbilityContext): Promis
 }
 ```
 
+
+
 > **NOTE**
 >
 > Close the stream once it is not required. <br>Comply with the programming specifications for **Stream** APIs in asynchronous mode and avoid mixed use of the APIs in synchronous mode and asynchronous mode. <br>The **Stream** APIs do not support concurrent read and write operations.
@@ -187,14 +203,17 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-// List files that meet the specified conditions.
+```
+<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function getListFile(context: common.UIAbilityContext): void {
   let listFileOption: ListFileOptions = {
     recursion: false,
     listNum: 0,
     filter: {
-      suffix: [".png", ".jpg", ".txt"],
-      displayName: ["test*"],
+      suffix: ['.png', '.jpg', '.txt'],
+      displayName: ['test*'],
       fileSizeOver: 0,
       lastModifiedAfter: new Date(0).getTime()
     }
@@ -206,6 +225,7 @@ function getListFile(context: common.UIAbilityContext): void {
   }
 }
 ```
+
 
 ### Using File Streams
 
@@ -219,12 +239,16 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function copyFileWithReadable(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // Create a readable stream.
-  const rs = fs.createReadStream(`${filesDir}/read.txt`);
+  const rs = fs.createReadStream(`${filesDir}/test.txt`);
   // Create a writable stream.
-  const ws = fs.createWriteStream(`${filesDir}/write.txt`);
+  const ws = fs.createWriteStream(`${filesDir}/destFile.txt`);
   // Copy files in paused mode. Pause file operation and copy the original file data to another location, to ensure data integrity and consistency.
   rs.on('readable', () => {
     const data = rs.read();
@@ -234,13 +258,18 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
     ws.write(data);
   });
 }
+```
 
+
+<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function copyFileWithData(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // Create a readable stream.
-  const rs = fs.createReadStream(`${filesDir}/read.txt`);
+  const rs = fs.createReadStream(`${filesDir}/test.txt`);
   // Create a writable stream.
-  const ws = fs.createWriteStream(`${filesDir}/write.txt`);
+  const ws = fs.createWriteStream(`${filesDir}/destFile.txt`);
   // Copy files in stream mode. Read and write file data while accessing the original data, to ensure data timeliness.
   rs.on('data', (emitData) => {
     const data = emitData?.data;
@@ -251,6 +280,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
   });
 }
 ```
+
 
 ### Using File Hash Streams
 
@@ -265,6 +295,11 @@ import { common } from '@kit.AbilityKit';
 // Obtain the application file path. The context should be obtained in the component.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+
+```
+<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function hashFileWithStream(context: common.UIAbilityContext) {
   let filesDir = context.filesDir;
   const filePath = `${filesDir}/test.txt`;
@@ -282,5 +317,4 @@ function hashFileWithStream(context: common.UIAbilityContext) {
     console.info(`hashResult: ${hashResult}, fileHash: ${fileHash}`);
   });
 }
-
 ```

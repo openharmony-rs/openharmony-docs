@@ -1,4 +1,10 @@
 # Media Library Error Codes
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -67,3 +73,22 @@ This error code is reported if a parameter is abnormal.
 **Solution**
 
 Check the parameter values and ensure they meet the required criteria.
+
+## 23800104 Input Parameter Verification Failure
+
+**Error Message**
+
+The provided member must be a property name of PhotoKey.
+
+**Description**
+
+This error code is reported if a parameter is abnormal.
+
+**Possible causes**
+
+This error code is reported if the parameter is not within the range of the [PhotoKeys](js-apis-photoAccessHelper-sys.md#photokeys) enum.
+
+
+**Solution**
+
+Ensure that the input parameter is within the range of the PhotoKeys enum.

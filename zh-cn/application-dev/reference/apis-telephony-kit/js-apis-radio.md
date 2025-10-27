@@ -1,4 +1,10 @@
 # @ohos.telephony.radio (网络搜索)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 网络搜索模块提供管理网络搜索的一些基础功能，包括获取当前接入的CS域和PS域无线接入技术、获取网络状态、获取当前选网模式、获取注册网络所在国家的ISO国家码、获取主卡所在卡槽的索引号、获取指定SIM卡槽对应的注册网络信号强度信息列表、获取运营商名称，判断当前设备是否支持NR(New Radio)、判断主卡的Radio是否打开等。
 
@@ -1052,10 +1058,10 @@ console.log(`operator name is:` + operatorName);
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-|      名称       |           类型              | 必填 |      说明          |
-| --------------- | --------------------------- | ---- | ------------------ |
-| psRadioTech     | [RadioTechnology](#radiotechnology) | 是   | PS无线接入技术。 |
-| csRadioTech     | [RadioTechnology](#radiotechnology) | 是   | CS无线接入技术。 |
+|      名称       |           类型              | 只读 | 可选 |      说明          |
+| --------------- | --------------------------- | ---- | ---- | ------------------ |
+| psRadioTech     | [RadioTechnology](#radiotechnology) | 否   | 否   | PS无线接入技术。 |
+| csRadioTech     | [RadioTechnology](#radiotechnology) | 否   | 否   | CS无线接入技术。 |
 
 ## RadioTechnology
 
@@ -1086,11 +1092,11 @@ console.log(`operator name is:` + operatorName);
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-|      名称       |           类型              | 必填 |      说明          |
-| --------------- | --------------------------- | ---- | ------------------ |
-| signalType      | [NetworkType](#networktype) | 是   | 网络信号强度类型。 |
-| signalLevel     | number                      | 是   | 网络信号强度等级。 |
-| dBm<sup>9+</sup>| number                      | 是   | 网络信号强度。     |
+|      名称       |           类型              | 只读 | 可选 |      说明          |
+| --------------- | --------------------------- | ---- | ---- | ------------------ |
+| signalType      | [NetworkType](#networktype) | 否   | 否   | 网络信号强度类型。 |
+| signalLevel     | number                      | 否   | 否   | 网络信号强度等级。 |
+| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度。     |
 
 ## NetworkType
 
@@ -1114,17 +1120,17 @@ console.log(`operator name is:` + operatorName);
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-|       名称           |                 类型                | 必填 |                          说明                                |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| longOperatorName     | string                              |  是  | 注册网络的长运营商名称。                                     |
-| shortOperatorName    | string                              |  是  | 注册网络的短运营商名称。                                     |
-| plmnNumeric          | string                              |  是  | 注册网络的PLMN码。                                           |
-| isRoaming            | boolean                             |  是  | 是否处于漫游状态。                                           |
-| regState             | [RegState](#regstate)               |  是  | 设备的网络注册状态。                                         |
-| cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  是  | 设备的无线接入技术。                                         |
-| nsaState             | [NsaState](#nsastate)               |  是  | 设备的NSA网络注册状态。                                      |
-| isCaActive           | boolean                             |  是  | CA的状态。                                                   |
-| isEmergency          | boolean                             |  是  | 此设备是否只允许拨打紧急呼叫。                               |
+|       名称           |                 类型                | 只读 | 可选 |                          说明                                |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| longOperatorName     | string                              |  否  |  否  | 注册网络的长运营商名称。                                     |
+| shortOperatorName    | string                              |  否  |  否  | 注册网络的短运营商名称。                                     |
+| plmnNumeric          | string                              |  否  |  否  | 注册网络的PLMN码。                                           |
+| isRoaming            | boolean                             |  否  |  否  | 是否处于漫游状态。                                           |
+| regState             | [RegState](#regstate)               |  否  |  否  | 设备的网络注册状态。                                         |
+| cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  否  |  否  | 设备的无线接入技术。                                         |
+| nsaState             | [NsaState](#nsastate)               |  否  |  否  | 设备的NSA网络注册状态。                                      |
+| isCaActive           | boolean                             |  否  |  否  | CA的状态。                                                   |
+| isEmergency          | boolean                             |  否  |  否  | 此设备是否只允许拨打紧急呼叫。                               |
 
 
 ## RegState
@@ -1176,8 +1182,8 @@ console.log(`operator name is:` + operatorName);
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称              |                  类型                   | 必填 |                           说明                               |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| networkType       | [NetworkType](#networktype)             |  是  | 获取服务单元的网络类型。                                     |
-| signalInformation | [SignalInformation](#signalinformation) |  是  | 信号信息。                                                   |
+| 名称              |                  类型                   | 只读 | 可选 |                           说明                               |
+| ----------------- | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| networkType       | [NetworkType](#networktype)             |  否  |  否  | 获取服务单元的网络类型。                                     |
+| signalInformation | [SignalInformation](#signalinformation) |  否  |  否  | 信号信息。                                                   |
 

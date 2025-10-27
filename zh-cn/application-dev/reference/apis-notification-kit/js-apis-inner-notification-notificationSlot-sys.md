@@ -4,9 +4,9 @@
 <!--Owner: @michael_woo888-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
-描述通知槽。
+描述通知渠道，不同通知渠道对应的通知提醒方式不同。
 
 > **说明：**
 >

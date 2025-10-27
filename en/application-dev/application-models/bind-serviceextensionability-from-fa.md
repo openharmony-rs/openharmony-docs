@@ -1,7 +1,14 @@
 # Connecting to a ServiceExtensionAbility from the FA Model
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-This topic describes how the three application components of the FA model connect to the ServiceExtensionAbility component of the stage model.
+
+This topic describes how the three application components of the [FA model](ability-terminology.md#fa-model) connect to the ServiceExtensionAbility component of the [stage model](ability-terminology.md#stage-model).
 
 
 ## PageAbility Accessing a ServiceExtensionAbility

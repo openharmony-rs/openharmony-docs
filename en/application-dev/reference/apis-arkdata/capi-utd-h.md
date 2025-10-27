@@ -1,4 +1,10 @@
 # utd.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -317,7 +323,7 @@ Obtains the uniform data types based on the MIME types.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the uniform data types obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | Returns a double pointer to the uniform data types obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs. |
 
 ### OH_Utd_BelongsTo()
 
@@ -414,7 +420,7 @@ Checks whether two UTDs are the same.
 
 | Name                        | Description                                                        |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Utd](capi-udmf-oh-utd.md)* utd1 | Pointer to a [OH_Utd](capi-udmf-oh-utd.md) instance.|
+| [OH_Utd](capi-udmf-oh-utd.md)* utd1 | Pointer to an [OH_Utd](capi-udmf-oh-utd.md) instance.|
 | [OH_Utd](capi-udmf-oh-utd.md)* utd2 | Pointer to another [OH_Utd](capi-udmf-oh-utd.md) instance.|
 
 **Returns**

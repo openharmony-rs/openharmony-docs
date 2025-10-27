@@ -69,7 +69,13 @@ getCalendarManager(context: Context): CalendarManager
 // 该文件为系统生成，目录：entry/src/main/ets/entryability/EntryAbility.ets
 import {
   abilityAccessCtrl,
-  AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
+  AbilityConstant, 
+  common, 
+  PermissionRequestResult, 
+  Permissions, 
+  UIAbility, 
+  Want 
+} from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
 import { window } from '@kit.ArkUI';
@@ -855,6 +861,8 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 删除指定id的日程，使用callback异步回调。
 
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
@@ -961,6 +969,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 deleteEvents(ids: number[], callback: AsyncCallback\<void>): void
 
 根据日程id，批量删除日程，使用callback异步回调。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1204,6 +1214,8 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 查询当前日历下所有日程，使用callback异步回调。
 
+默认查询字段：id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。
+
 **系统能力**： SystemCapability.Applications.CalendarData
 
 **参数**：
@@ -1315,7 +1327,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 | 参数名      | 类型                        | 必填 | 说明       |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | 否   | 查询条件。 |
-| eventKey    | (keyof [Event](#event))[]   | 否   | 查询字段。 |
+| eventKey    | (keyof [Event](#event))[]   | 否   | 查询字段。不填时，默认查询字段为：id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。|
 
 **返回值**：
 
@@ -1531,7 +1543,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | start  | number | 是    | 日程开始时间，类型为13位时间戳。    |
 | end    | number | 是    | 日程结束时间，类型为13位时间戳。    |
 | ids    | number[] | 否    | 需要查询的日程id数组，可为空数组或undefined，id>0。    |
-| eventKey    | (keyof [Event](#event))[]   | 否    | 所有查询日程的字段。 |
+| eventKey    | (keyof [Event](#event))[]   | 否    | 所有查询日程的字段。不填时，默认查询字段为：id、title、startTime、endTime、instanceStartTime、instanceEndTime、isAllDay、description、timeZone、location、service。|
 
 **返回值**：
 
@@ -1597,7 +1609,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | 名称           | 类型     | 只读    | 可选 | 说明                                                         |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | 否     | 是  | 是否打开Calendar下所有Event提醒能力。当取值为true时，该Calendar下所有Event具备提醒能力；当取值为false时，不具备提醒能力，默认具备提醒能力。 |
-| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000000至0xFFFFFF或0x00000000至0xFFFFFFFF，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFFF'。不填时或输入错误数据时，默认值为'#0A59F7'。 |
+| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000000至0xFFFFFF或0x00000000至0xFFFFFFFF，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFFF'。不设置时默认值为0xFF0A59F7，输入undefined或错误值时抛异常。 |
 
 ## Event
 

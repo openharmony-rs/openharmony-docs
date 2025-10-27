@@ -1,5 +1,12 @@
 # OH_AVCodecBufferAttr
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## Overview
 
 The struct describes the description information about the buffer of an OH_AVCodec instance.

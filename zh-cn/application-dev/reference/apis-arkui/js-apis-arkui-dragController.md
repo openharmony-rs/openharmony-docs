@@ -1,7 +1,7 @@
 # @ohos.arkui.dragController (DragController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -10,9 +10,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
-> 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
+>
+> - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
 ## 导入模块
 
@@ -28,9 +30,9 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,callback:As
 
 > **说明：**
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11)。
+> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11)。
 >
-> 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
+> - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -39,7 +41,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,callback:As
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
 | custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | 是   | 拖拽发起后跟手效果所拖拽的对象。<br/>**说明：** <br/>不支持全局builder。如果builder中使用了[Image](arkui-ts/ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片。builder的根组件宽高为0时，无法生成拖拽显示的图片导致拖拽失败。builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
 | dragInfo | [DragInfo](#draginfo)                                        | 是   | 拖拽信息。                                                   |
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | 是   | 回调函数。当拖拽成功结束，err为undefined，data为获取到的DragEventParam；否则为错误对象。                                    |
@@ -63,9 +65,9 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,callback:As
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class Tmp{
-  event:DragEvent|undefined = undefined
-  extraParams:string = ''
+class DragInfo {
+  event: DragEvent | undefined = undefined;
+  extraParams: string = '';
 }
 
 @Entry
@@ -101,7 +103,7 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               }
-              let eve:tmp = new tmp()
+              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(()=>{this.DraggingBuilder()}, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
                 if(eve.event){
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
@@ -141,9 +143,9 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<
 
 > **说明：**
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1)。
+> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1)。
 >
-> 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
+> - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -180,9 +182,9 @@ import { dragController } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { unifiedDataChannel } from '@kit.ArkData';
 
-class Tmp{
-  event:DragResult|undefined = undefined
-  extraParams:string = ''
+class DragInfo {
+  event: DragEvent | undefined = undefined;
+  extraParams: string = '';
 }
 
 @Entry
@@ -243,7 +245,7 @@ struct DragControllerPage {
                 builder: ()=>{this.DraggingBuilder()},
                 extraInfo: "DragItemInfoTest"
               }
-              let eve:tmp = new tmp()
+              let eve: DragInfo = new DragInfo();
               this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口
                 .then((eve) => {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
@@ -299,11 +301,11 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11)。
+> - 从API version 11开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11)。
 >
-> 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
+> - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 >
-> 建议控制传递的拖拽背板数量，传递过多容易导致拖起的效率问题。
+> - 建议控制传递的拖拽背板数量，传递过多容易导致拖起的效率问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -521,7 +523,7 @@ struct DragControllerPage {
 
 **示例2：**
 
-在[DragInfo](#draginfo)中配置dataLoadParams，设置拖起方延迟提供数据。
+从API version 20开始，在[DragInfo](#draginfo)中配置dataLoadParams，设置拖起方延迟提供数据。
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
@@ -705,7 +707,7 @@ on(type: 'statusChange', callback: Callback&lt;[DragAndDropInfo](#draganddropinf
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 参数名     | 类型  | 必填    | 说明             |
+| 参数名     | 类型  | 必填   | 说明             |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | 是      | 监听事件，固定为'statusChange'，即注册监听拖拽状态改变事件。|
 |  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 是      | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
@@ -790,7 +792,7 @@ struct DragControllerPage {
 | 参数名     | 类型  | 必填    | 说明             |
 | ------ | ------ | ------- | ---------------- |
 |  type  | string | 是      | 监听事件，固定为'statusChange'，即取消监听拖拽状态改变事件。|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否      | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否    | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
 
 **示例：**
 
@@ -863,11 +865,11 @@ struct DragControllerPage {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                                   | 必填 | 说明                                     |
-| -----------   | ------------------------------------------------------ | ---- | ---------------------------------------- |
-| status       | [DragStatus](#dragstatus11)                                                 | 是   | 当前拖拽状态（启动和结束）。         |
-| event        | [DragEvent](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) | 是   | 当前状态所对应的拖拽事件。通过dragController发起的dragEvent仅支持获取result和behavior，且用于拖拽结束状态。 |
-| extraParams| string                                                 | 否   | 设置拖拽事件额外信息，具体功能暂未实现。默认值为空。 |
+| 名称          | 类型                                                   | 只读  |  可选 | 说明                                     |
+| -----------   | ------------------------------------------------------ | ---- | ---- |---------------------------------------- |
+| status       | [DragStatus](#dragstatus11)                                                 | 否  |  否   | 当前拖拽状态（启动和结束）。         |
+| event        | [DragEvent](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) | 否  |  否   | 当前状态所对应的拖拽事件。通过dragController发起的dragEvent仅支持获取result和behavior，且用于拖拽结束状态。 |
+| extraParams| string                                                 | 否  |  是   | 设置拖拽事件额外信息，具体功能暂未实现。默认值为空。 |
 
 ## DragStatus<sup>11+</sup>
 
@@ -890,10 +892,10 @@ struct DragControllerPage {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                                   | 必填 | 说明                                     |
-| ----------- | ------------------------------------------------------ | ---- | ---------------------------------------- |
-| duration    | number                                                 | 否   | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明：**<br/>-&nbsp;设置小于0的值时按0处理。<br/>-&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
-| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | 否    | 设置动画曲线。<br/>默认值：Curve.EaseInOut|                          |
+| 名称        | 类型                                                   | 只读  |  可选 | 说明                                     |
+| ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
+| duration    | number                                                 | 否  |  是   | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明：**<br/>-&nbsp;设置小于0的值时按0处理。<br/>-&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
+| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | 否  |  是  | 设置动画曲线。<br/>默认值：Curve.EaseInOut|                          |
 
 ## DragEventParam<sup>12+</sup>
 
@@ -903,10 +905,10 @@ struct DragControllerPage {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                                         | 必填 | 说明                           |
-| ----------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| event<sup>10+</sup>       | [DragEvent](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) | 是   | 拖拽事件信息，仅包括拖拽结果。 |
-| extraParams<sup>10+</sup> | string                                                       | 是   | 拖拽事件额外信息。             |
+| 名称        | 类型                                                         | 只读  |  可选 | 说明                           |
+| ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------ |
+| event<sup>10+</sup>       | [DragEvent](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) | 否  |  否   | 拖拽事件信息，仅包括拖拽结果。 |
+| extraParams<sup>10+</sup> | string                                                       | 否  |  否   | 拖拽事件额外信息。             |
 
 ## dragController.getDragPreview<sup>(deprecated)</sup>
 
@@ -916,9 +918,9 @@ getDragPreview(): DragPreview
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11)。
+> - 从API version 11开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)获取[DragController](arkts-apis-uicontext-dragcontroller.md)实例，再通过此实例调用替代方法[getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11)。
 >
-> 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
+> - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1035,9 +1037,9 @@ import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class Tmp{
-  event:DragEvent|undefined = undefined
-  extraParams:string = ''
+class DragInfo {
+  event: DragEvent | undefined = undefined;
+  extraParams: string = '';
 }
 
 @Entry()
@@ -1101,7 +1103,7 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            let eve:tmp = new tmp()
+            let eve: DragInfo = new DragInfo();
             this.getUIContext().getDragController().executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
               this.DraggingBuilder()
             }, dragInfo, (err , eve) => {
@@ -1127,7 +1129,7 @@ struct DragControllerPage {
 
 ## DragStartRequestStatus<sup>18+</sup>
 
-定义应用是否可以发起拖拽的枚举类型。
+定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](./arkui-ts/ts-universal-events-drag-drop.md#ondragstart)调用时有效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1135,7 +1137,7 @@ struct DragControllerPage {
 
 | 名称     | 值 | 说明                                                         |
 | -------- | -- | ------------------------------------------------------------ |
-| WAITING   | 0 | 应用准备数据中，无法发起拖拽。 |
+| WAITING   | 0 | 应用在准备数据阶段，无法发起拖拽。 |
 | READY | 1 | 应用数据准备完成，可以发起拖拽。 |
 
 ## DragSpringLoadingState<sup>20+</sup>
@@ -1149,14 +1151,14 @@ struct DragControllerPage {
 
 | 名称 | 值|说明                                                          |
 | ------ | --------------------- |--------------------------------------- |
-| BEGIN  | - |拖拽进入组件范围静止一段时间，被识别被悬停状态。                  |
-| UPDATE | - |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。 |
-| END    | - |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。 |
-| CANCEL | - |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。 |
+| BEGIN  | - |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
+| UPDATE | - |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
+| END    | - |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
+| CANCEL | - |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
-定义拖拽的悬停检测配置参数的接口。
+定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](./arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](#updateconfiguration20)方法动态修改的方式以自定义该配置参数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1171,20 +1173,20 @@ struct DragControllerPage {
 
 ## SpringLoadingDragInfos<sup>20+</sup>
 
-定义触发悬停检测时拖拽事件信息的接口。
+定义触发悬停检测时拖拽事件信息的接口。该接口提供了拖拽数据摘要和拖拽事件额外信息，应用程序可以据此决定是否响应悬停检测回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型       | 必填 | 说明                      |
-| :-------- | ------- | ---- |--------------------------------------------- |
-| dataSummary | [unifiedDataChannel.Summary](../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) |否   | 拖拽数据的摘要，默认为null。 |
-| extraInfos  | string    |否   | 拖拽事件额外信息，默认为空字符串。   |
+| 名称      | 类型       | 只读  |  可选 | 说明                      |
+| :-------- | ------- | ---- | ---- | --------------------------------------------- |
+| dataSummary | [unifiedDataChannel.Summary](../apis-arkdata/js-apis-data-unifiedDataChannel.md#summary) |否  |  是   | 拖拽数据的摘要，默认为null。 |
+| extraInfos  | string    | 否  |  是   | 拖拽事件额外信息，默认为空字符串。   |
 
 ## SpringLoadingContext<sup>20+</sup>
 
-定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，使其能访问拖拽状态。
+定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，使其能访问拖拽状态、动态刷新UI效果以及访问拖拽数据以确定是否处理拖拽操作。
 
 ### 属性
 
@@ -1196,14 +1198,14 @@ struct DragControllerPage {
 | :----- | -------- | ---- | ---- | ---------------------------------------- |
 | state                 | [DragSpringLoadingState](#dragspringloadingstate20)    |否     |否   | 当前悬停检测的状态。         |
 | currentNotifySequence | number  |否      |否   |在一次悬停检测流转中的回调通知次数，从0开始。 |
-| dragInfos             | [SpringLoadingDragInfos](#springloadingdraginfos20)  |否    |是   | 拖拽信息，为undefined时取[SpringLoadingDragInfos](#springloadingdraginfos20)默认值。      |
-| currentConfig         | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)   |否    |是   | 当前回调中的配置信息，为undefined时取[DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)默认值。    |
+| dragInfos             | [SpringLoadingDragInfos](#springloadingdraginfos20)  |否    |是   | 拖拽信息，当悬停检测状态为CANCEL时缺失，为undefined时取[SpringLoadingDragInfos](#springloadingdraginfos20)默认值。      |
+| currentConfig         | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)   |否    |是   | 当前回调中的配置信息，当悬停检测状态为CANCEL时缺失，为undefined时取[DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)默认值。    |
 
 ### abort<sup>20+</sup>
 
 abort(): void
 
-终止后续的悬停检测。
+终止后续的悬停检测。本方法不会触发CANCEL状态通知，应用程序需要在执行本方法时进行状态清理。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1213,7 +1215,7 @@ abort(): void
 
 updateConfiguration(config: DragSpringLoadingConfiguration): void
 
-更新后续的悬停检测配置。
+更新悬停检测的配置，仅在悬停检测状态为BEGIN时生效。应用程序通常在绑定[onDragSpringLoading](./arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)时设置悬停检测配置或使用默认配置。本方法不会修改绑定时的原始配置，而是在后续悬停检测中更新动态的配置信息。请谨慎使用本方法，因为不同的拖拽数据类型可能需要不同的UX时间。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1223,4 +1225,4 @@ updateConfiguration(config: DragSpringLoadingConfiguration): void
 
 | 参数名     | 类型          | 必填      | 说明                         |
 | :----- | -------- | ---- | --------------------------------------------- |
-| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |是   | 悬停检测配置。   |
+| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  是   | 悬停检测配置。   |

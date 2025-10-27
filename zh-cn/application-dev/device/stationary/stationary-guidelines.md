@@ -77,43 +77,55 @@
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    let reportLatencyNs = 1000000000;
    try {
       stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-         console.info('data='+ JSON.stringify(data));
+         console.info('data=' + JSON.stringify(data));
       })
    } catch (error) {
       let message = (error as BusinessError).message;
       console.error('stationary on failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 2. 查询绝对静止状态的进入事件。
 
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
       stationary.once('still', (data) => {
-         console.info('data='+ JSON.stringify(data));
+         console.info('data=' + JSON.stringify(data));
       })
    } catch (error) {
       let message = (error as BusinessError).message;
       console.error('stationary once failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 3. 取消订阅绝对静止状态的进入事件。
 
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    try {
       stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-         console.info('data='+ JSON.stringify(data));
+         console.info('data=' + JSON.stringify(data));
       })
    } catch (error) {
       let message = (error as BusinessError).message;
       console.error('stationary off failed:' + message);
    }
    ```
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->

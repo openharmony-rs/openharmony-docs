@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.pointer (鼠标指针)(系统接口)
+# @ohos.multimodalInput.pointer (鼠标光标)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,13 +7,13 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
-鼠标指针管理模块，用于查询和设置鼠标指针相关属性。
+鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
 
 > **说明**：
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标指针)](js-apis-pointer.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
 
 ## 导入模块
 
@@ -44,6 +44,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -65,7 +66,7 @@ struct Index {
                 console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -100,10 +101,11 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](../apis-distributedservice-kit/errorcode-devicestatus.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -121,7 +123,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSpeed(5).then(() => {
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -171,7 +173,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.setPointerSpeedSync(5);
-            console.log(`Set pointer speed success`);
+            console.info(`Set pointer speed success`);
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -203,6 +205,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -224,7 +227,7 @@ struct Index {
                 console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -251,6 +254,14 @@ getPointerSpeed(): Promise&lt;number&gt;
 | --------------------- | ------------------- |
 | Promise&lt;number&gt; | Promise实例，异步返回鼠标移动速度。 |
 
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+
 **示例**：
 
 ```js
@@ -265,7 +276,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSpeed().then(speed => {
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -315,7 +326,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.getPointerSpeedSync();
-            console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+            console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -369,7 +380,7 @@ struct Index {
                 console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -425,7 +436,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setHoverScrollState(true).then(() => {
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -475,7 +486,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState((error: Error, state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -525,7 +536,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState().then((state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -550,7 +561,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 | 参数名    | 类型                      | 必填  | 说明                                    |
 | -------- | ------------------------- | ----  | ------------------------------------- |
-| primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键id。   |
+| primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键类型。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -580,7 +591,7 @@ struct Index {
                 console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -605,7 +616,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| primary | [PrimaryButton](js-apis-pointer.md#primarybutton10) | 是    | 鼠标主键id。 |
+| primary | [PrimaryButton](js-apis-pointer.md#primarybutton10) | 是    | 鼠标主键类型。 |
 
 **返回值**：
 
@@ -636,7 +647,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -686,7 +697,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton((error: Error, primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -736,7 +747,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -791,7 +802,7 @@ struct Index {
                 console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -847,7 +858,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMouseScrollRows(20).then(() => {
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -897,7 +908,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows((error: Error, rows: number) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -947,7 +958,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows().then((rows: number) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1002,7 +1013,7 @@ struct Index {
                 console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1058,7 +1069,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollSwitch(false).then(() => {
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1108,7 +1119,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1158,7 +1169,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch().then((state) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1213,7 +1224,7 @@ struct Index {
                 console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1269,7 +1280,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollDirection (false).then(() => {
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1319,7 +1330,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection ((error: Error, state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1369,7 +1380,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1424,7 +1435,7 @@ struct Index {
                 console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1480,7 +1491,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadTapSwitch(false).then(() => {
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1530,7 +1541,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1580,7 +1591,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1635,7 +1646,7 @@ struct Index {
                 console.error(`setTouchpadPointerSpeedfailed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1691,7 +1702,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1741,7 +1752,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed((error: Error, speed: number) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1791,7 +1802,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed().then((speed: number) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1846,7 +1857,7 @@ struct Index {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1902,7 +1913,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPinchSwitch(false).then(() => {
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1952,7 +1963,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2002,7 +2013,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2057,7 +2068,7 @@ struct Index {
                 console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2113,7 +2124,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadSwipeSwitch(false).then(() => {
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2163,7 +2174,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2213,7 +2224,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2268,7 +2279,7 @@ struct Index {
                 console.error(`setTouchpadRightClickType, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2324,7 +2335,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2374,7 +2385,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType((error: Error, type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2424,7 +2435,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2479,7 +2490,7 @@ struct Index {
                 console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2535,7 +2546,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSize(3).then(() => {
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2585,7 +2596,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSizeSync(5);
-            console.log(`setPointerSizeSync success`);
+            console.info(`setPointerSizeSync success`);
           } catch (error) {
             console.error(`setPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2634,7 +2645,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize((error: Error, size: number) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2684,7 +2695,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize().then((size: number) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2734,7 +2745,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerSize = pointer.getPointerSizeSync();
-            console.log(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
+            console.info(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
           } catch (error) {
             console.error(`getPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2792,7 +2803,7 @@ struct Index {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2852,7 +2863,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColor(0xF6C800).then(() => {
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2906,7 +2917,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColorSync(0xF6C800);
-            console.log(`setPointerColorSync success`);
+            console.info(`setPointerColorSync success`);
           } catch (error) {
             console.error(`setPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2955,7 +2966,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor((error: Error, color: number) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3005,7 +3016,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor().then((color: number) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3055,7 +3066,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerColor = pointer.getPointerColorSync();
-            console.log(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
+            console.info(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
           } catch (error) {
             console.error(`getPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3109,7 +3120,7 @@ struct Index {
                 console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3165,7 +3176,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3215,7 +3226,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState((error: Error, state: boolean) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3264,7 +3275,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState().then((state) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);

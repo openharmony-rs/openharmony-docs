@@ -1,7 +1,7 @@
 # ArkGuard字节码混淆开启指南
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
+<!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
@@ -12,9 +12,13 @@
 
 ## 字节码混淆开启步骤
 
+### 约束与限制
+
+字节码混淆与源码混淆功能无法同时启用，开启字节码混淆后，源码混淆功能将自动关闭。
+
 ### 开启混淆步骤
 
-字节码混淆能力已在系统中集成，可通过以下方式在DevEco Studio开启使用。
+从API version 20开始，字节码混淆能力已在系统中集成，可通过以下方式在DevEco Studio开启使用。
 
 * 开启混淆开关
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
@@ -37,7 +41,9 @@
     -enable-bytecode-obfuscation-debugging  #控制是否输出调试信息，开启后会生成混淆日志，默认不开启。
     ```
 
-    > **注**：字节码har被集成的时候，不会二次混淆。
+    > **注意：**
+    >
+    > 字节码har被集成的时候，不会二次混淆。
 
 * 配置混淆规则
     打开字节码混淆开关，仅开启默认混淆功能，默认混淆范围为非顶层作用域的函数、类。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。

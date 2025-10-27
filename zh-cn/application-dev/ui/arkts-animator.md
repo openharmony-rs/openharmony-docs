@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
@@ -50,7 +50,7 @@
    let result: AnimatorResult = this.getUIContext().createAnimator(options);
    // 设置接收到帧时回调，动画播放过程中每帧会调用onFrame回调
    result.onFrame = (value: number) => {
-     console.log("current value is :" + value);
+     console.info("current value is :" + value);
    }
    ```
 
@@ -107,7 +107,7 @@
      }
      //动画重复播放时执行方法
      this.animatorOptions.onRepeat = () => {
-       console.log("动画重复播放");
+       console.info("动画重复播放");
      }
    }
    ```
@@ -178,7 +178,7 @@ struct Index {
       this.animatorStatus = '完成';
     }
     this.animatorOptions.onRepeat = () => {
-      console.log("动画重复播放");
+      console.info("动画重复播放");
     }
   }
 

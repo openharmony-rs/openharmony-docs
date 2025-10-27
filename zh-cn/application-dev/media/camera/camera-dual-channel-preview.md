@@ -4,9 +4,9 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先参考开发准备[申请相关权限](camera-preparation.md)。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 双路预览，即应用可同时使用两路预览流，一路用于在屏幕上显示，一路用于图像处理等其他操作，提升处理效率。
 
@@ -149,14 +149,6 @@
               }
             } else {
               console.error('byteBuffer is null');
-            }
-            // 确保当前pixelMap没有在使用的情况下，可进行资源释放。
-            if (pixelMap != undefined) {
-              await pixelMap.release().then(() => {
-                console.info('Succeeded in releasing pixelMap object.');
-              }).catch((error: BusinessError) => {
-                console.error(`Failed to release pixelMap object. code is ${error.code}, message is ${error.message}`);
-              })
             }
             // 确保当前buffer没有在使用的情况下，可进行资源释放。
             // 如果对buffer进行异步操作，需要在异步操作结束后再释放该资源（nextImage.release()）。

@@ -48,6 +48,7 @@
 | memory | object | 内存信息，详见memory属性。 |
 | external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| process_life_time | number | 故障进程存活时间。<br>**说明**：从API 22开始支持。 |
 
 ### exception字段说明
 
@@ -96,6 +97,8 @@ Js帧frame字段说明
 | sys_free_mem | number | 空闲内存大小，单位KB。 |
 | sys_avail_mem | number | 可用内存大小，单位KB。 |
 | sys_total_mem | number | 总内存大小，单位KB。 |
+| vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。<br>**说明**：从API 22开始支持。 |
+| vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。<br>**说明**：从API 22开始支持。 |
 
 ## 应用冻屏规格自定义参数设置
 

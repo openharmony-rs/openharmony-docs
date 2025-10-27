@@ -1,12 +1,18 @@
 # Working with Wrapper Objects Using JSVM-API
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
-This topic walks you through on how to use JSVM-API to quickly determine the wrapper object type.
+This topic walks you through on how to use JSVM-API to quickly determine the wrapper object.
 
 ## Basic Concepts
 
-JSVM-API provides APIs for determining five wrapper object types: number, Boolean, BigInt, string, and symbol.
+JSVM-API provides the following APIs to quickly determine five wrapper objects.
 
 ## Available APIs
 
@@ -20,7 +26,7 @@ JSVM-API provides APIs for determining five wrapper object types: number, Boolea
 
 ## Example
 
-If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in manipulating wrapper objects.
+If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in the APIs.
 
 ### Determining a Number Object
 

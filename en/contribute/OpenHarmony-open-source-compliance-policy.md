@@ -14,7 +14,6 @@ This document applies to all contributors to the OpenHarmony community, includin
 - Any addition, modification, or deletion of the specifications mentioned in this document can be traced.
 - The PMC reviews and finalizes the specifications after thorough discussion in the community.
 
-
 ## Terms and Abbreviations
 
   [Open-Source Compliance Terms and Abbreviations]()
@@ -26,28 +25,23 @@ This document applies to all contributors to the OpenHarmony community, includin
 #### License Usage and Review Specifications of Open-Source Software
 
 - [Licenses and Special License Review](licenses-and-special-license-review.md)
-
 - [OpenHarmony License Agreement](https://gitee.com/openharmony#license-agreement)
 
 #### Introduction and Exit Specifications of Open-Source Software
 
 [Introducing Open-Source Software](introducing-open-source-software.md)
 
-
 ### Development Phase
 
 #### License, Copyright, and Metadata Compliance Specifications
 
 - [License and Copyright Specifications](license-and-copyright-specifications.md)
-
-- [SPDX Information Declaration Specifications]()
-
-- [Specifications for README.OpenSource](readme.opensource_design_specification_document_and_usage_guide.md)
+- [SPDX License List](https://spdx.dev/learn/handling-license-info/)
+- [README.OpenSource Design Specification Document and Usage Guide](readme.opensource_design_specification_document_and_usage_guide.md)
 
 #### Gated Check-In Compliance Specifications
 
 - [Gated Check-In Requirements](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E4%BB%A3%E7%A0%81%E9%97%A8%E7%A6%81%E8%A6%81%E6%B1%82.md#codecheck%E6%A3%80%E6%9F%A5)
-
 - [OSS Audit Tool](https://gitee.com/openharmony-sig/tools_oat/blob/master/README.md)
 
 #### Specifications for Participation in Upstream Communities
@@ -56,21 +50,23 @@ This document applies to all contributors to the OpenHarmony community, includin
 
 ### Release Phase
 
+#### Software Bill of Material (SBOM) Specifications
+
+[OpenHarmony SBOM Specifications](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%A4%BE%E5%8C%BASBOM%E8%A7%84%E8%8C%83.md)
+
 #### Open-Source Obligation Fulfillment
 
 [Management Policy for Open-Source Compliance Artifacts](management-policy-for-open-source-compliance-artifacts.md)
 
-#### Software Bill of Material (SBOM) Specifications
+#### Compliance Alarm Clarification Specifications
 
-- [SBOM Generation and Delivery Description]()
-- [SBOM Review and Problem Handling Rules]()
+[Guidelines for Clarifying Open Source Compliance Alerts with FossLicense](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/FossLicense%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%91%8A%E8%AD%A6%E6%BE%84%E6%B8%85%E8%A7%84%E8%8C%83.md)
 
-#### Open-Source Compliance Requirements for Community Version Release and SIG Incubation Graduation
+#### Community Version Release and SIG Graduation Open Source Compliance Review
 
-- [Open-Source Compliance Requirements for SIG Incubation Graduation](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/guidance_for_incubation_project_graduation.md#graduation-review-checklist)
-
-- [Open-Source Compliance Requirements for Community Version Release](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E7%89%88%E6%9C%AC%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82.md)
-
+- [OpenHarmony Community Version Release Open Source Compliance Review Guidelines](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E9%A1%B9%E8%AF%84%E5%AE%A1%E8%A7%84%E8%8C%83.md#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E8%AF%84%E5%AE%A1%E6%B5%81%E7%A8%8B)
+- [Open Source Compliance and Quality Review Criteria for Version Release](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E7%89%88%E6%9C%AC%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82.md)
+- [Graduation Review Participants](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/guidance_for_incubation_project_graduation.md#graduation-review-checklist)
 
 ## Binary Compliance Specifications
 
@@ -91,6 +87,7 @@ This document applies to all contributors to the OpenHarmony community, includin
 ## Consequences of Incompliance
 
 It is important to comply with this policy. Failure to do so may result in:
+
 - Claims raised by copyright holders or intellectual property holders for the code you use
 - Claims raised by the recipient of the code
 - Inadvertently releasing code that is not supposed to be released
@@ -102,8 +99,11 @@ It is important to comply with this policy. Failure to do so may result in:
 Any individual who violates this policy may be subject to disciplinary actions.
 
 ## Response Policies for Negative Events of Open-Source Compliance
+
 For details, see the policy released by OpenHarmony GLA.
 
 ## References
 
 Linux Foundation Compliance Program: Generic FOSS Policy
+
+ <!--no_check--> 

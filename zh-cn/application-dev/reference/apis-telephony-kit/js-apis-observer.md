@@ -1,9 +1,9 @@
 # @ohos.telephony.observer (observer)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
-<!--Owner: @Fanyl8-->
-<!--Designer: @ghxbob-->
-<!--Tester: @weitiantian-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块提供订阅管理功能，可以订阅/取消订阅的事件包括：网络状态变化、信号状态变化、通话状态变化、蜂窝数据链路连接状态、蜂窝数据业务的上下行数据流状态、SIM状态变化。
@@ -93,7 +93,7 @@ type CallState = call.CallState
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| [call.CallState](js-apis-call.md#callstate) | 通话状态码。 |
+| [call.CallState](js-apis-call.md#callstate) | 通话状态码（去电过程仅通知CALL_STATE_OFFHOOK状态）。 |
 
 
 ## CardType
@@ -120,6 +120,18 @@ SIM卡状态。
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [sim.SimState](js-apis-sim.md#simstate) | SIM卡状态。 |
+
+## TelCallState<sup>21+</sup>
+
+type TelCallState = call.TelCallState
+
+通话状态码。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [call.TelCallState](js-apis-call.md#telcallstate21) | 通话状态码（去电过程通知去电号码状态TEL_CALL_STATE_OFFHOOK和去电接通状态TEL_CALL_STATE_CONNECTED）。 |
 
 
 ## observer.on('networkStateChange')
@@ -404,7 +416,7 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 
 ```ts
 observer.on('callStateChange', (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -444,7 +456,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -484,12 +496,100 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 
 ```ts
 let callback: (data: observer.CallStateInfo) => void = (data: observer.CallStateInfo) => {
-    console.log("on callStateChange, data:" + JSON.stringify(data));
+    console.info("on callStateChange, data:" + JSON.stringify(data));
 }
 observer.on('callStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 observer.off('callStateChange', callback);
 observer.off('callStateChange');
+```
+
+
+## observer.on('callStateChangeEx')<sup>21+</sup>
+
+on(type: 'callStateChangeEx', callback: Callback\<TelCallState\>, options?: ObserverOptions): void
+
+订阅通话状态变化拓展事件，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+| 参数名   | 类型                                           | 必填 | 说明                                                        |
+| -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
+| type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChangeEx'。                |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到TelCallState。<br/> |
+| options  | [ObserverOptions](#observeroptions11)                              | 否 | 电话相关事件订阅参数可选项。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+
+observer.on('callStateChangeEx', callback, options);
+observer.on('callStateChangeEx', callback);
+```
+
+
+## observer.off('callStateChangeEx')<sup>21+</sup>
+
+off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
+
+取消订阅通话状态变化拓展事件，使用callback方式作为异步方法。
+
+> **说明：**
+>
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 以callback形式异步返回结果，参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
+    console.info("on callStateChangeEx, data:" + JSON.stringify(data));
+}
+observer.on('callStateChangeEx', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('callStateChangeEx', callback);
+observer.off('callStateChangeEx');
 ```
 
 
@@ -984,10 +1084,10 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                    | 必填 | 说明     |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 是   | 通话类型。 |
-| number              | string                                 | 是   | 电话号码。 |
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话类型。 |
+| number              | string                                 | 否   | 否   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>
@@ -996,11 +1096,11 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |                 类型                                            | 必填 | 说明         |
-| ------------------- | ---------------------------------------------------------------| ---- | ------------ |
-| state               | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) | 是   | 数据连接状态。 |
-| network             | [RatType](js-apis-radio.md#radiotechnology)                    | 是   | 网络类型。     |
 
+| 名称 | 类型                                   |  只读 | 可选 | 说明 |
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  否  |  否  | 数据连接状态。 |
+| network | [RatType](js-apis-radio.md#radiotechnology)  |  否  |  否  | 网络类型。 |
 
 ## ObserverOptions<sup>11+</sup>
 
@@ -1008,7 +1108,7 @@ SIM卡类型和状态。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-|     名称            |         类型      | 必填  | 说明                                    |
-| ------------------- | ------------------| ---- | --------------------------------------- |
-| slotId              | number            | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|     名称            |         类型      | 只读 | 可选 | 说明                                    |
+| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
 

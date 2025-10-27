@@ -78,7 +78,7 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'   |
+| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
 
 ## ScrollBarOptions对象说明
 
@@ -168,7 +168,7 @@ struct ScrollBarExample {
 
 ## 示例2（不设置子节点）
 
-该示例为ScrollBar组件没有子节点时的滚动条样式。
+从API version 20开始，该示例为ScrollBar组件没有子节点时的滚动条样式。
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
@@ -214,7 +214,7 @@ struct ScrollBarExample {
 
 ## 示例3（支持嵌套滚动）
 
-该示例通过enableNestedScroll属性使ScrollBar组件支持嵌套滚动。
+从API version 20开始，该示例通过[enableNestedScroll](#enablenestedscroll14)属性使ScrollBar组件支持嵌套滚动。
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
 @Entry

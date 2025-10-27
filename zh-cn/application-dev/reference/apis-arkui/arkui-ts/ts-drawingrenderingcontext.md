@@ -16,6 +16,8 @@
 
 constructor(unit?: LengthMetricsUnit)
 
+构造使用drawing接口进行绘制的Canvas画布对象，支持配置DrawingRenderingContext对象的单位模式。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,7 +26,7 @@ constructor(unit?: LengthMetricsUnit)
 
 | 参数名      | 类型 | 必填   | 说明 |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用来配置DrawingRenderingContext对象的单位模式，配置后无法更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：DEFAULT <br/>异常值按默认值处理。|
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否    | 用来配置DrawingRenderingContext对象的单位模式，配置后无法更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br/>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT |
 
 ## size
 
@@ -97,7 +99,9 @@ DrawingRenderingContext的尺寸信息。
 
 ## 示例
 
-该示例实现了如何使用DrawingRenderingContext中的方法进行绘制。
+### 示例1（绘制图形）
+
+该示例实现了如何使用DrawingRenderingContext中的方法绘制图形。
 
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -150,9 +154,48 @@ struct CanvasExample {
 ```
 
 图1 绘制圆心为(200, 200)，半径为100的圆，填充色为RGBA(39, 135, 217, 255)
-  
+
   ![canvas_drawingRenderingContext](figures/canvas_drawingRenderingContext.png)
 
 图2 点击Clear按钮清空画布
 
   ![canvas_drawingRenderingContextClear](figures/canvas_drawingRenderingContextClear.png)
+
+### 示例2（绘制文本）
+
+该示例实现了通过[makeFromRawFile](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Typeface.md#makefromrawfile18)（从API version 18开始）加载自定义字体。并使用[drawTextBlob](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawtextblob)绘制文本，drawing接口绘制自定义文字时，不需要调用this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont)或者fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)提前注册字体，而是通过drawing.Typeface.[makeFromRawFile](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Typeface.md#makefromrawfile18)（从API version 18开始）传入rawfile目录下的自定义字体文件。
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+// xxx.ets
+@Entry
+@Component
+struct CanvasExample {
+  private context: DrawingRenderingContext = new DrawingRenderingContext();
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('50%')
+        .backgroundColor('#D5D5D5')
+        .onReady(() => {
+          let font = new drawing.Font();
+          font.setSize(50);
+          // 加载rawfile目录下的自定义字体文件HarmonyOS_Sans_Bold.ttf
+          const myTypeFace = drawing.Typeface.makeFromRawFile($rawfile('HarmonyOS_Sans_Bold.ttf'));
+          font.setTypeface(myTypeFace);
+          const textBlob =
+            drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+          this.context.canvas.drawTextBlob(textBlob, 60, 100);
+          this.context.invalidate();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![canvas_drawingRenderingContext2](figures/canvas_drawingRenderingContext2.png)

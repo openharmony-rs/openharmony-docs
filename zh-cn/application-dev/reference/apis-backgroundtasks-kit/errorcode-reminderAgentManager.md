@@ -1,5 +1,12 @@
 # reminderAgentManager错误码
 
+<!--Kit: Background Tasks Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @cheng-shichang-->
+<!--Designer: @zhouben25-->
+<!--Tester: @fenglili18-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -17,12 +24,12 @@ Notification is not enabled.
 **可能原因**
 
 1. 未申请通知使能权限。
-2. 通知使能被关闭。
+2. 应用的通知开关为关闭状态。
 
 **处理步骤**
 
 1. 申请通知使能权限弹窗[Notification.requestEnableNotification](../apis-notification-kit/js-apis-notification.md#notificationrequestenablenotification8)。
-2. 检查通知使能是否被关闭。
+2. 通知设置里开启应用通知开关。
 
 ## 1700002 提醒数量超出限制
 
@@ -36,8 +43,8 @@ The number of reminders exceeds the limit.
 
 **可能原因**
 <!--RP1-->
-1. 从API version10开始，单个普通应用提醒数量不超过30个，单个系统应用提醒数量不超过10000个。API version 9及之前的版本，单个应用提醒数量均不超过30个。
-2. 从API version10开始，所有应用提醒数量总和不超过12000个。API version 9及之前的版本，提醒数量总和不超过2000个。
+1. 从API version 10开始，单个普通应用提醒数量不超过30个，单个系统应用提醒数量不超过10000个。API version 9及之前的版本，单个应用提醒数量均不超过30个。
+2. 从API version 10开始，所有应用提醒数量总和不超过12000个。API version 9及之前的版本，提醒数量总和不超过2000个。
 
 **处理步骤**
 

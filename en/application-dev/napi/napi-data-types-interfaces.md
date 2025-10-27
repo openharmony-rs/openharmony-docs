@@ -1,10 +1,16 @@
 # Node-API Data Types and APIs
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## Data Types
 
 ### napi_status
 
-Enum indicating the execution status of a Node-API call.
+Defines an enum for the execution statuses of a Node-API call.
 
 Each time a Node-API function is called, a value of **napi_status** is returned indicating the execution result.
 
@@ -39,7 +45,7 @@ typedef enum {
 
 ### napi_extended_error_info
 
-Struct that holds detailed error information when a Node-API call fails.
+Defines a struct that represents detailed error information when a Node-API call fails.
 
 ```c
 typedef struct {
@@ -52,23 +58,23 @@ typedef struct {
 
 ### napi_value
 
-A C struct pointer acting as a reference to a JS object. A **napi_value** holds a JS object. **handle_scope** is used to manage the lifetime of **napi_value** handles. The JS object held by a **napi_value** in the scope will not be released. If the **napi_value** is out of the scope, it becomes invalid and will no longer hold the JS object.
+A C struct pointer acting as a reference to an ArkTS or JS object. A **napi_value** holds a ArkTS/JS object. [napi_handle_scope](#memory-management-types) is used to manage the lifetime of **napi_value** handles. The JS object held by a **napi_value** in the scope will not be released. If the **napi_value** is out of the scope, it becomes invalid and will no longer hold the ArkTS/JS object.
 
 ### napi_env
 
 - Context used by the underlying Node-API implementation. It is passed to the native functions when they are invoked, and must be passed back when Node-API calls are made.
 
-- **napi_env** becomes invalid when the JS thread bound with **napi_env** exits.
+- **napi_env** is bound to the context of the ArkTS/JS thread. Each **napi_env** has an independent runtime context. After an ArkTS/JS thread exits, the corresponding **napi_env** becomes invalid.
 
-- Avoid caching **napi_env** or passing **napi_env** between instances of the same addon running on different worker threads.
+- **napi_env** cannot be cached, nor can it be passed between threads.
 
 ### napi_threadsafe_function
 
-[Pointer](use-napi-thread-safety.md) that represents a JS function that can be called asynchronously from multiple threads. It can be used to pass the asynchronous (async for short) operation result to the JS environment, such as reading data from another thread or performing compute-intensive operations. In addition, it can be used to call functions in C++ code from a JS environment for execution in another thread. By using **napi_threadsafe_function**, you can implement efficient interaction between JS and C++ code while maintaining thread safety.
+[Pointer](use-napi-thread-safety.md) that represents an ArkTS/JS function that can be called asynchronously from multiple threads. It can be used to pass the asynchronous (async for short) operation result to the ArkTS/JS environment, such as reading data from another thread or performing compute-intensive operations. The thread-safe function callback is executed only in the ArkTS thread that creates the thread-safe function. By using **napi_threadsafe_function**, you can implement efficient interaction between ArkTS/JS and C++ code while maintaining thread safety.
 
 ### napi_threadsafe_function_release_mode
 
-Enum that indicates when to release the thread-safe function.
+Defines an enum for two constants that specify how thread-safe functions are released.
 
 ```c
 typedef enum {
@@ -84,14 +90,14 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
                                  napi_threadsafe_function_release_mode mode);
 ```
 
-- If the value is **napi_tsfn_release**, the current thread will not call this thread-safe function.
+- If the **mode** value is **napi_tsfn_release**, the number of threads held by the thread-safe function is reduced by one. When the number of threads is reduced to 0, the thread-safe function is destroyed.
 
 - If the value is **napi_tsfn_abort**, this thread-safe function is disabled and cannot be called.
-  In this case, using **napi_call_threadsafe_function** to call this function will return **napi_closing**, and this function will not be placed in the queue.
+  If **napi_tsfn_abort** is set, calling this thread-safe function using **napi_call_threadsafe_function** may cause a UAF issue. When **napi_tsfn_abort** is set, the thread-safe function is disabled and cannot be called. If **napi_call_threadsafe_function** is called, the system may return **napi_closing**, indicating that the thread-safe function is being disabled, and the data passed to the thread-safe function is not put into the queue. This means that the data may not be correctly processed. If the memory to which data points has been freed (for example, the thread-safe function resources have been freed), but the caller still tries to access or use data, a Use-After-Free(UAF) issue may occur.
 
 ### napi_threadsafe_function_call_mode
 
-Enum that indicates whether the call should be blocked when the queue associated with the thread-safe function is full.
+Defines an enum for whether the call should be blocked when the queue associated with the thread-safe function is full.
 
 The data struct is as follows:
 
@@ -112,7 +118,7 @@ Node-API provides the following memory management types:
 
 **napi_handle_scope**
 
-Data used to manage the lifecycle of JS objects. It allows JS objects to remain active within a certain range for use in JS code. When **napi_handle_scope** is created, all JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management). For details about **napi_handle_scope**, see [Precautions for Lifecycle Issues](../dfx/cppcrash-guidelines.md#case-4-lifecycle-issues).
+Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management). For details about **napi_handle_scope**, see <!--RP1-->Precautions for Lifecycle Management.<!--RP1End-->
 
 **napi_escapable_handle_scope**
 
@@ -120,15 +126,15 @@ Data used to manage the lifecycle of JS objects. It allows JS objects to remain 
 
 - It is a special type of handle range used to return values created within the scope of **escapable_handle_scope** to a parent scope.
 
-- You can use **napi_escape_handle** to promote **escape_handle_scope** to a JS object so that it is valid for the lifetime of the outer scope.
+- It is used by **napi_escape_handle** to escape ArkTS/JS objects to a parent scope so that the objects are valid for the lifetime of the outer scope.
 
-**napi_ref**
+**napi_ref **
 
-Reference to **napi_value**, which allows you to manage the lifecycle of JS values.
+Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS/JS values.
 
 **napi_type_tag**
 
-Struct containing two unsigned 64-bit integers to identify the type of a Node-API value.
+Defines a struct that contains two unsigned 64-bit integers to identify the type of a Node-API value.
 
 ```c
 typedef struct {
@@ -137,7 +143,7 @@ typedef struct {
 } napi_type_tag;
 ```
 
-- It is a 128-bit value stored as two unsigned 64-bit integers. It is used to tag JS objects to ensure that they are of a certain type.
+- It is a 128-bit value stored as two unsigned 64-bit integers. It is used to tag ArkTS/JS objects to ensure that they are of a certain type.
 
 - This is a stronger check than **napi_instanceof** because **napi_instanceof** may report a false positive if the object's prototype is manipulated.
 
@@ -145,7 +151,7 @@ typedef struct {
 
 **napi_async_cleanup_hook_handle**
 
-Value used to add a callback for an async operation. It is mainly used to perform a cleanup operation when an async operation is complete or canceled, for example, releasing a resource or canceling an operation. Using **napi_async_cleanup_hook_handle** ensures that related resources are correctly released and cleaned up when an async operation is complete or canceled, thereby avoiding problems such as memory leaks.
+A mechanism used in Node-API to manage the lifecycle of asynchronous resources. It allows you to register a cleanup hook, which is called only when the lifecycle of the current **napi_env** ends. It ensures that some asynchronous resources are properly released before the environment is destroyed, thereby avoiding resource leaks. In addition, in the Node-API implementation, if the structure is not released, the destruction of the entire **napi_env** is delayed. In OpenHarmony, the behavior of this API is almost the same as that of the cleanup hook related to the env lifecycle, except that it allows the same context data to be repeatedly registered.
 
 ### Callback Types
 
@@ -157,7 +163,7 @@ Data type passed to **napi_get_cb_info** to obtain JS input parameters.
 
 **napi_callback**
 
-User-defined native function, which is exposed to JS via Node-API. Generally, no handle or callback scope is created inside this callback.
+User-defined native function exposed to ArkTS/JS. Specifically, no handle or callback scope is created in this callback.
 
 The basic usage is as follows:
 
@@ -167,15 +173,15 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 **napi_finalize**
 
-Function pointer passed to **napi_create_threadsafe_function** and **napi_set_instance_data**. **napi_finalize** is called when an object is reclaimed.
+Function pointer passed to **napi_create_threadsafe_function**, **napi_set_instance_data**, **napi_wrap** and **napi_add_finalizer**. **napi_finalize** is called when an object is reclaimed.
 
 **napi_async_execute_callback**
 
 Function pointer used in **napi_create_async_work**.
 
-- An async native function is called from a worker pool thread and can be executed in parallel with the main event loop thread.
+- An async native function is called from a worker pool thread and can be executed in parallel with the event loop thread.
 
-- Avoid making Node-API calls that execute JS code or interact with JS objects when implementing this callback.
+- Avoid calling non-thread-safe Node-APIs when implementing this callback.
 
 - Node-API calls should be executed in **napi_async_complete_callback**.
 
@@ -185,7 +191,7 @@ Function pointer used when an async operation is complete. When an async operati
 
 **napi_threadsafe_function_call_js**
 
-Function pointer used in the main thread to interact with the JS code in an independent thread to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env, ..., napi_threadsafe_function_call_js call_js_cb, ...)**.
+Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)**.
 
 **napi_cleanup_hook**
 
@@ -197,14 +203,14 @@ Function pointer used with **napi_add_async_cleanup_hook**. It will be called wh
 
 ### QoS
 
-Enum indicating the thread scheduling priority.
+Defines an enum for the thread scheduling priority.
 
 ```c
 typedef enum {
-  napi_qos_background = 0,
-  napi_qos_utility = 1,
-  napi_qos_default = 2,
-  napi_qos_user_initiated = 3,
+    napi_qos_background = 0,
+    napi_qos_utility = 1,
+    napi_qos_default = 2,
+    napi_qos_user_initiated = 3,
 } napi_qos_t;
 ```
 
@@ -228,7 +234,7 @@ typedef enum {
 
 | Event Loop Mode| Description|
 | -------- | -------- |
-| napi_event_mode_default |  Run the underlying event loop while blocking the current thread, and exit the event loop only when there is no task in the loop.|
+| napi_event_mode_default | Run the underlying event loop while blocking the current thread, and exit the event loop only when there is no active **uv_handle** in the loop.|
 | napi_event_mode_nowait | Run the underlying event loop without blocking the current thread. Process a task and exit the event loop after the task is complete. If there is no task in the event loop, exit the event loop immediately.|
 
 ### Thread-safe Task Priority
@@ -271,9 +277,9 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 
 | API| Description|
 | -------- | -------- |
-| napi_create_buffer | Creates a JS **Buffer** of the specified size.|
-| napi_create_buffer_copy | Creates a JS **Buffer** of the specified size and initializes it with the given data.|
-| napi_create_external_buffer | Creates a JS **Buffer** of the specified size and initializes it with the given data.|
+| napi_create_buffer | Creates an ArkTS Buffer instance of the specified size.|
+| napi_create_buffer_copy | Creates an ArkTS Buffer instance of the specified size, and initializes it with data copied from the passed-in buffer.|
+| napi_create_external_buffer | Creates an ArkTS Buffer instance of the specified size, and uses the specified data as its underlying buffer. You can use this API to add extra data to the buffer. |
 | napi_get_buffer_info | Obtains the underlying data of a JS **Buffer** and its length.|
 | napi_is_buffer | Checks whether the given JS value is a **Buffer** object.|
 | napi_create_external_arraybuffer | Creates a JS **ArrayBuffer** with external data.|
@@ -282,27 +288,27 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 
 | API| Description|
 | -------- | -------- |
-| napi_create_string_utf16 | Creates a JS string from a UTF16-encoded C string.|
-| napi_get_value_string_utf16 | Obtains the UTF16-encoded string corresponding to the given JS value.|
-| napi_create_string_latin1 | Creates a JS string from an ISO-8859-1-encoded C string.|
-| napi_create_string_utf8 | Creates a JS string from a UTF8-encoded C string.|
-| napi_get_value_string_latin1 | Obtains the ISO-8859-1-encoded string corresponding to the given JS value.|
-| napi_get_value_string_utf8 | Obtains the UTF8-encoded string corresponding to the given JS value.|
+| napi_create_string_utf16 | Creates an ArkTS string from a UTF16-encoded C string.|
+| napi_get_value_string_utf16 | Obtains the UTF16-encoded string corresponding to the given ArkTS value.|
+| napi_create_string_latin1 | Creates an ArkTS string from an ISO-8859-1-encoded C string.|
+| napi_create_string_utf8 | Creates an ArkTS string from a UTF8-encoded C string.|
+| napi_get_value_string_latin1 | Obtains the ISO-8859-1-encoded string corresponding to the given ArkTS value.|
+| napi_get_value_string_utf8 | Obtains the UTF8-encoded string corresponding to the given ArkTS value.|
 
 ### Date
 
 | API| Description|
 | -------- | -------- |
-| napi_create_date | Creates a JS **Date** object from C double data.|
-| napi_get_date_value | Obtains the C double equivalent of the given JS **Date** object.|
-| napi_is_date | Checks whether the given JS value is a JS **Date** object.|
+| napi_create_date | Creates an ArkTS Date object from C double data.|
+| napi_get_date_value | Obtains the C double equivalent of the given ArkTS Date object.|
+| napi_is_date | Checks whether an ArkTS value is an ArkTS Date object.|
 
 ### ArrayBuffer
 
 | API| Description|
 | -------- | -------- |
-| napi_get_arraybuffer_info | Obtains the underlying data buffer of an **ArrayBuffer** and its length.|
-| napi_is_arraybuffer | Checks whether the given JS value is an **ArrayBuffer** object.|
+| napi_get_arraybuffer_info | Obtains the underlying buffer of an ArrayBuffer and its length.|
+| napi_is_arraybuffer | Checks whether the given ArkTS value is an ArrayBuffer object.|
 | napi_detach_arraybuffer | Detaches the underlying data of the given **ArrayBuffer**.|
 | napi_is_detached_arraybuffer | Checks whether the given **ArrayBuffer** has been detached.|
 | napi_create_arraybuffer | Creates a JS **ArrayBuffer** object of the specified size.|
@@ -317,44 +323,44 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 
 | API| Description|
 | -------- | -------- |
-| napi_open_handle_scope | Opens a scope. You can use **napi_close_handle_scope** to close it.|
-| napi_close_handle_scope | Closes the scope passed in. After a scope is closed, all references declared in it are closed.|
+| napi_open_handle_scope | Creates a **napi_handle_scope**. You can use **napi_close_handle_scope** to close it.|
+| napi_close_handle_scope | Closes a **napi_handle_scope**. After it is closed, all **napi_value**s generated in it are closed.|
 | napi_open_escapable_handle_scope | Opens an escapable handle scope, from which the declared values can be returned to the parent scope. You can use **napi_close_escapable_handle_scope** to close it.|
 | napi_close_escapable_handle_scope | Closes the escapable handle scope passed in.|
 | napi_escape_handle | Promotes the handle to the JS object so that it is valid for the lifetime of the parent scope.|
-| napi_create_reference | Creates a reference for an object to extend its lifespan. The caller needs to manage the reference lifespan.|
-| napi_delete_reference | Deletes the reference passed in.|
-| napi_reference_ref | Increments the reference count passed in and returns the new count.|
-| napi_reference_unref | Decrements the reference count passed in and returns the new count.|
-| napi_get_reference_value | Obtains the JS object associated with the reference.|
-| napi_add_finalizer | Adds a **napi_finalize** callback, which will be called when the JS object is garbage-collected.|
+| napi_create_reference | Creates a **napi_ref** for an object. The caller needs to manage the **napi_ref** lifespan.|
+| napi_delete_reference | Deletes a **napi_ref**.|
+| napi_reference_ref | Increments the **napi_ref** count passed in and returns the new count.|
+| napi_reference_unref | Decrements the **napi_ref** count passed in and returns the new count.|
+| napi_get_reference_value | Obtains the JS object associated with **napi_ref**.|
+| napi_add_finalizer | Adds a **napi_finalize** callback, which will be called when the ArkTS object is garbage-collected.|
 
 ### Promise
 
 | API| Description|
 | -------- | -------- |
-| napi_create_promise | Creates a deferred object and a JS promise.|
-| napi_resolve_deferred | Resolves a promise by way of the deferred object associated.|
-| napi_reject_deferred | Rejects a promise by way of the deferred object associated.|
-| napi_is_promise | Checks whether the given **napi_value** is a promise object.|
+| napi_create_promise | Creates a **Promise** object.|
+| napi_resolve_deferred | Resolves a promise by using the **deferred** object associated with it.|
+| napi_reject_deferred | Rejects a promise by using the **deferred** object associated with it.|
+| napi_is_promise | Checks whether the given **napi_value** is a **Promise** object.|
 
 ### Array
 
 | API| Description|
 | -------- | -------- |
-| napi_create_array | Creates a JS **Array**.|
-| napi_create_array_with_length | Creates a JS **Array** of the specified length.|
+| napi_create_array | Creates an ArkTS array.|
+| napi_create_array_with_length | Creates an ArkTS array of the specified length.|
 | napi_get_array_length | Obtains the length of an array.|
-| napi_is_array | Checks whether the given JS value is an **Array** object.|
-| napi_set_element | Sets an element at the specified index of the given **Object**.|
+| napi_is_array | Checks whether the given ArkTS value is an array.|
+| napi_set_element | Sets the element value at the specified index of a given object.|
 | napi_get_element | Obtains the element at the specified index of the given **Object**.|
-| napi_has_element | Checks whether the given **Object** has an element at the specified index.|
+| napi_has_element | Checks whether the given object has an element at the specified index.|
 | napi_delete_element | Deletes the element at the specified index of the given **Object**.|
-| napi_create_typedarray | Creates a JS **TypedArray** from an existing **ArrayBuffer**.|
-| napi_is_typedarray | Checks whether a JS value is a **TypeArray** object.|
-| napi_get_typedarray_info | Obtains the properties of a **TypedArray**.|
-| napi_create_dataview | Creates a JS **DataView** from an existing **ArrayBuffer**.|
-| napi_is_dataview | Checks whether a JS value is a **DataView** object.|
+| napi_create_typedarray | Creates an ArkTS TypedArray from an existing ArrayBuffer.|
+| napi_is_typedarray | Checks whether an ArkTS value is a TypeArray object.|
+| napi_get_typedarray_info | Obtains the properties of a TypedArray, such as the type, length, byte offset, and ArrayBuffer.|
+| napi_create_dataview | Creates an ArkTS **DataView** from an existing ArrayBuffer.|
+| napi_is_dataview | Checks whether an ArkTS value is a **DataView** object.|
 | napi_get_dataview_info | Obtains the properties of a **DataView**.|
 
 ### Primitives
@@ -377,7 +383,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_new_instance | Creates an instance based on the given constructor.|
 | napi_get_new_target | Obtains the **new.target** of the constructor call.|
 | napi_define_class | Defines a JS class corresponding to the C++ class.|
-| napi_wrap | Wraps a native object into an ArkTS object. This API allows the methods and properties of a native object to be called from ArkTS.|
+| napi_wrap | Wraps a native object into an ArkTS object. This API allows the native methods and properties to be called from ArkTS.|
 | napi_unwrap | Unwraps the native object from an ArkTS object.|
 | napi_remove_wrap | Removes the wrapping after the native object is unwrapped from an ArkTS object.|
 
@@ -385,17 +391,17 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 
 | API| Description|
 | -------- | -------- |
-| napi_get_prototype | Obtains the prototype of a JS object.|
-| napi_create_object | Creates a default JS object.|
+| napi_get_prototype | Obtains the prototype of an ArkTS object.|
+| napi_create_object | Creates a default ArkTS object.|
 | napi_object_freeze | Freezes an object.|
 | napi_object_seal | Seals an object.|
-| napi_typeof | Obtains the JS type of a JS value.|
+| napi_typeof | Obtains the type of an ArkTS value.|
 | napi_instanceof | Checks whether the given object is an instance of the specified constructor.|
 | napi_type_tag_object | Associates the value of the tag pointer with a JS object.|
-| napi_check_object_type_tag | Checks whether a tag pointer is associated with a JS object.|
-| napi_create_symbol | Creates a JS **Symbol** object.|
-| napi_create_external | Creates a JS external object, which can be used to pass custom data structs or objects in C/C++ to JS so that it can be accessible from JS.|
-| napi_get_value_external | Obtains the JS data from the external object created by **napi_create_external**. This API can be used to pass data between JS and C/C++.|
+| napi_check_object_type_tag | Checks whether a tag pointer is associated with an ArkTS object.|
+| napi_create_symbol | Creates an ArkTS **Symbol** object.|
+| napi_create_external | Creates an ArkTS external object, which can be used to pass custom data structs or objects in C/C++ to JS so that it can be accessible from ArkTS.|
+| napi_get_value_external | Obtains the ArkTS data from the external object created by **napi_create_external**. This API can be used to pass data between ArkTS and C/C++.|
 
 ### Basic Data Types
 
@@ -428,12 +434,12 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | -------- | -------- |
 | napi_throw | Throws a JS value.|
 | napi_throw_error | Throws an ArkTS **Error** object with text information.|
-| napi_throw_type_error | Throws a JS type error with text information.|
-| napi_throw_range_error | Throws a JS range error with text information.|
+| napi_throw_type_error | Throws an ArkTS type error with text information.|
+| napi_throw_range_error | Throws an ArkTS range error with text information.|
 | napi_is_error | Checks whether **napi_value** indicates an error object.|
-| napi_create_error | Creates a JS **Error** with text information.|
-| napi_create_type_error | Creates a JS **TypeError** with text information.|
-| napi_create_range_error | Creates a JS **RangeError** with text information.|
+| napi_create_error | Creates an ArkTS error object with text information.|
+| napi_create_type_error | Creates an ArkTS error object with text information.|
+| napi_create_range_error | Creates an ArkTS error object with text information.|
 | napi_get_and_clear_last_exception | Obtains and clears the latest exception.|
 | napi_is_exception_pending | Checks whether an exception occurs.|
 | napi_fatal_error | Raises a fatal error to terminate the process immediately.|
@@ -513,20 +519,20 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_queue_async_work_with_qos | Adds an async work object to the queue and schedules it based on the QoS passed in.|
 | napi_run_script_path | Runs an .abc file.|
 | napi_load_module | Loads an .abc file as a module. This API returns the namespace of the module.|
-| napi_load_module_with_info | Loads an .abc file as a module. This API returns the namespace of the module, which can be used in the newly created ArkTS runtime environment.|
-| napi_create_object_with_properties | Creates a JS object using the given **napi_property_descriptor**. The key of the descriptor must be a string and cannot be converted into a number.|
+| napi_load_module_with_info | Loads an .abc file as a module. This API returns the namespace of the module, which can be used in the ArkTS runtime environment.|
+| napi_create_object_with_properties | Creates a JS object using the given **napi_property_descriptor**. The key in **napi_property_descriptor** must be a string and cannot be converted into a number.|
 | napi_create_object_with_named_properties | Creates a JS object using the given **napi_value**s and keys. The key must be a string and cannot be converted into a number.|
 | napi_coerce_to_native_binding_object | Forcibly binds a JS object and a native object.|
 | napi_create_ark_runtime|Creates an ArkTS runtime environment.|
 | napi_destroy_ark_runtime|Destroys an ArkTS runtime environment.|
-| napi_run_event_loop | Runs the underlying event loop.|
+| napi_run_event_loop | Starts an underlying event loop.|
 | napi_stop_event_loop | Stops the underlying event loop.|
-| napi_serialize | Converts an ArkTS object into native data.|
-| napi_deserialize | Converts native data into an ArkTS object.|
+| napi_serialize | Serializes an ArkTS object into native data.|
+| napi_deserialize | Deserializes native data into an ArkTS object.|
 | napi_delete_serialization_data | Deletes serialized data.|
-| napi_call_threadsafe_function_with_priority|Calls a task with the specified priority and enqueuing mode into the ArkTS main thread.|
-| napi_is_sendable|Checks whether the given JS value is sendable.|
-| napi_define_sendable_class|Creates a **sendable** class.|
+| napi_call_threadsafe_function_with_priority| Delivers a task to the ArkTS main thread based on the specified priority and enqueuing policy.|
+| napi_is_sendable| Checks whether the given JS value is sendable.|
+| napi_define_sendable_class| Creates a sendable class.|
 | napi_create_sendable_object_with_properties | Creates a sendable object with the given **napi_property_descriptor**.|
 | napi_create_sendable_array | Creates a sendable array.|
 | napi_create_sendable_array_with_length | Creates a sendable array of the specified length.|
@@ -535,10 +541,13 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_wrap_sendable | Wraps a native instance into an ArkTS object.|
 | napi_wrap_sendable_with_size | Wraps a native instance into an ArkTS object with the specified size.|
 | napi_unwrap_sendable | Unwraps the native instance from an ArkTS object.|
-| napi_remove_wrap_sendable | Removes the native instance from an ArkTS object.|
+| napi_remove_wrap_sendable | Removes and obtains the native instance wrapped by an ArkTS object. After removal, the callback will no longer be triggered and must be manually deleted to free memory.|
 | napi_wrap_enhance | Wraps a Node-API instance into an ArkTS object and specifies the instance size. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
+|napi_create_ark_context| Creates a context.|
+|napi_switch_ark_context| Switches to the specified runtime context environment.|
+|napi_destroy_ark_context| Destroys the context created by **napi_create_ark_context**.|
 
-#### napi_queue_async_work_with_qos
+**napi_queue_async_work_with_qos**
 
 ```c
 napi_status napi_queue_async_work_with_qos(napi_env env,
@@ -548,15 +557,15 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
 
 This API has the same usage as **napi_queue_async_work**. The difference is you can specify the QoS for the work to run. For details about how to use **napi_queue_async_work_with_qos**, see "Prioritizing Asynchronous Tasks". For details about QoS, see [QoS Development](qos-guidelines.md).
 
-#### napi_run_script_path
+**napi_run_script_path**
 
 ```c
 napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-
-#### napi_load_module
+**Note**: For details about the restrictions, see [What should I observe when using napi_run_script_path() to execute the abc files in a package](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-65).
+**napi_load_module**
 
 ```c
 napi_status napi_load_module(napi_env env,
@@ -564,7 +573,7 @@ napi_status napi_load_module(napi_env env,
                              napi_value* result);
 ```
 
-#### napi_create_object_with_properties
+**napi_create_object_with_properties**
 
 ```c
 napi_status napi_create_object_with_properties(napi_env env,
@@ -573,7 +582,7 @@ napi_status napi_create_object_with_properties(napi_env env,
                                                const napi_property_descriptor* properties);
 ```
 
-#### napi_create_object_with_named_properties
+**napi_create_object_with_named_properties**
 
 ```c
 napi_status napi_create_object_with_named_properties(napi_env env,
@@ -583,7 +592,7 @@ napi_status napi_create_object_with_named_properties(napi_env env,
                                                      const napi_value* values);
 ```
 
-#### napi_coerce_to_native_binding_object
+**napi_coerce_to_native_binding_object**
 
 ```c
 napi_status napi_coerce_to_native_binding_object(napi_env env,
@@ -594,20 +603,20 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
                                                  void* hint);
 ```
 
-#### napi_create_ark_runtime
+**napi_create_ark_runtime**
 
 ```c
 napi_status napi_create_ark_runtime(napi_env *env);
 ```
 [Creating an ArkTS Runtime Environment Using napi_create_ark_runtime and napi_destroy_ark_runtime](use-napi-ark-runtime.md)
 
-#### napi_destroy_ark_runtime
+**napi_destroy_ark_runtime**
 
 ```c
 napi_status napi_destroy_ark_runtime(napi_env *env);
 ```
 
-#### napi_run_event_loop
+**napi_run_event_loop**
 
 ```c
 napi_status napi_run_event_loop(napi_env env, napi_event_mode mode);
@@ -615,13 +624,13 @@ napi_status napi_run_event_loop(napi_env env, napi_event_mode mode);
 
 You can call the **napi_run_event_loop** and **napi_stop_event_loop** APIs only in the ArkTS runtime environment created using **napi_create_ark_runtime**. For details, see [Running or Stopping an Event Loop in an Asynchronous Thread Using Node-API Extension APIs](use-napi-event-loop.md).
 
-#### napi_stop_event_loop
+**napi_stop_event_loop**
 
 ```c
 napi_status napi_stop_event_loop(napi_env env);
 ```
 
-#### napi_serialize
+**napi_serialize**
 
 ```c
 napi_status napi_serialize(napi_env env,
@@ -631,19 +640,19 @@ napi_status napi_serialize(napi_env env,
                            void** result);
 ```
 
-#### napi_deserialize
+**napi_deserialize**
 
 ```c
 napi_status napi_deserialize(napi_env env, void* buffer, napi_value* object);
 ```
 
-#### napi_delete_serialization_data
+**napi_delete_serialization_data**
 
 ```c
 napi_status napi_delete_serialization_data(napi_env env, void* buffer);
 ```
 
-#### napi_call_threadsafe_function_with_priority
+**napi_call_threadsafe_function_with_priority**
 
 ```c
 napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function func,
@@ -652,13 +661,13 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
                                                         bool isTail);
 ```
 
-#### napi_is_sendable
+**napi_is_sendable**
 
 ```c
 napi_status napi_is_sendable(napi_env env, napi_value value, bool* result);
 ```
 
-#### napi_define_sendable_class
+**napi_define_sendable_class**
 
 ```c
 napi_status napi_define_sendable_class(napi_env env,
@@ -673,7 +682,7 @@ napi_status napi_define_sendable_class(napi_env env,
 
 ```
 
-#### napi_create_sendable_object_with_properties
+**napi_create_sendable_object_with_properties**
 
 ```c
 napi_status napi_create_sendable_object_with_properties(napi_env env,
@@ -682,25 +691,25 @@ napi_status napi_create_sendable_object_with_properties(napi_env env,
                                                         napi_value* result);
 ```
 
-#### napi_create_sendable_array
+**napi_create_sendable_array**
 
 ```c
 napi_status napi_create_sendable_array(napi_env env, napi_value* result);
 ```
 
-#### napi_create_sendable_array_with_length
+**napi_create_sendable_array_with_length**
 
 ```c
 napi_status napi_create_sendable_array_with_length(napi_env env, size_t length, napi_value* result);
 ```
 
-#### napi_create_sendable_arraybuffer
+**napi_create_sendable_arraybuffer**
 
 ```c
 napi_status napi_create_sendable_arraybuffer(napi_env env, size_t byte_length, void** data, napi_value* result);
 ```
 
-#### napi_create_sendable_typedarray
+**napi_create_sendable_typedarray**
 
 ```c
 napi_status napi_create_sendable_typedarray(napi_env env,
@@ -711,7 +720,7 @@ napi_status napi_create_sendable_typedarray(napi_env env,
                                             napi_value* result);
 ```
 
-#### napi_wrap_sendable
+**napi_wrap_sendable**
 
 ```c
 napi_status napi_wrap_sendable(napi_env env,
@@ -721,7 +730,7 @@ napi_status napi_wrap_sendable(napi_env env,
                                void* finalize_hint);
 ```
 
-#### napi_wrap_sendable_with_size
+**napi_wrap_sendable_with_size**
 
 ```c
 napi_status napi_wrap_sendable_with_size(napi_env env,
@@ -732,19 +741,19 @@ napi_status napi_wrap_sendable_with_size(napi_env env,
                                          size_t native_binding_size);
 ```
 
-#### napi_unwrap_sendable
+**napi_unwrap_sendable**
 
 ```c
 napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** result);
 ```
 
-#### napi_remove_wrap_sendable
+**napi_remove_wrap_sendable**
 
 ```c
 napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void** result);
 ```
 
-#### napi_wrap_enhance
+**napi_wrap_enhance**
 
 ```c
 napi_status napi_wrap_enhance(napi_env env,
@@ -757,6 +766,22 @@ napi_status napi_wrap_enhance(napi_env env,
                               napi_ref* result);
 ```
 
+**napi_create_ark_context**
+```c
+napi_status napi_create_ark_context(napi_env env,
+                                    napi_env* newEnv);
+```
+
+**napi_switch_ark_context**
+```c
+napi_status napi_switch_ark_context(napi_env env);
+```
+
+**napi_destroy_ark_context**
+```c
+napi_status napi_destroy_ark_context(napi_env env);
+```
+
 ### Other Utilities
 
 | API| Description|
@@ -764,5 +789,3 @@ napi_status napi_wrap_enhance(napi_env env,
 | napi_get_version | Obtains the latest Node-API version supported by the node runtime.|
 | node_api_get_module_file_name | Obtains the absolute path of the module to be loaded.|
 | napi_strict_equals | Compares whether two values are strictly equal, that is, whether they are of the same type and have the same value.|
-
-<!--no_check-->

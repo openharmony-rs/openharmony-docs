@@ -393,9 +393,9 @@ struct RatingExample {
         .stars(5)
         .stepSize(0.5)
         .starStyle({
-          backgroundUri: '/common/imag1.png', // common目录与pages同级
-          foregroundUri: '/common/imag2.png',
-          secondaryUri: '/common/imag3.png'
+          backgroundUri: '/common/image1.png', // common目录与pages同级
+          foregroundUri: '/common/image2.png',
+          secondaryUri: '/common/image3.png'
         })
         .margin({ top: 24 })
         .onChange((value: number) => {

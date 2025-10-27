@@ -1,5 +1,12 @@
 # OH_AVFormat
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 为OH_AVFormat接口定义native层对象。

@@ -91,5 +91,5 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 | 
 | -------- | -------- |
-| [I4VKNM](https://gitee.com/openharmony/xts_acts/issues/I4VKNM) | 小型系统Hi3518开发板执行testSigtimedwaitBlock用例时概率性失败 | 
+| [I4VKNM](https://gitcode.com/openharmony/xts_acts/issues/I4VKNM) | 小型系统Hi3518开发板执行testSigtimedwaitBlock用例时概率性失败 | 
 | [I4S098](https://gitee.com/openharmony/applications_sample_camera/issues/I4S098) | 小型系统Hi3516开发板点击设置-WiFi，进入WiFi列表界面后退出，重复此操作会使开发板概率性无响应 | 

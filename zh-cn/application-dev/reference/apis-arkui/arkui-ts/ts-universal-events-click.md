@@ -24,7 +24,7 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 点击动作触发该回调。
 
-当触发点击事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown。
+当触发点击事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
 
 新增distanceThreshold参数，设置点击手势移动阈值。手指移动超出阈值时，点击手势识别失败。
 对于无手指移动距离限制的点击场景，建议使用原有接口。若需限制点击时手指移动范围，建议使用该接口。
@@ -45,7 +45,7 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | Callback\<[ClickEvent](#clickevent对象说明)> | 是   | 点击事件的回调函数。 |
+| event  | Callback\<[ClickEvent](#clickevent)> | 是   | 点击事件的回调函数。 |
 | distanceThreshold  | number | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
 
 >  **说明：**
@@ -64,7 +64,7 @@ onClick(event: (event: ClickEvent) => void): T
 
 点击动作触发该回调。
 
-触发点击事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown。
+触发点击事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -82,7 +82,7 @@ onClick(event: (event: ClickEvent) => void): T
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | (event: [ClickEvent](#clickevent对象说明)) => void | 是   | 点击事件的回调函数。 |
+| event  | (event: [ClickEvent](#clickevent)) => void | 是   | 点击事件的回调函数。 |
 
 **返回值：**
 
@@ -90,7 +90,7 @@ onClick(event: (event: ClickEvent) => void): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-## ClickEvent对象说明
+## ClickEvent
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
@@ -107,7 +107,7 @@ onClick(event: (event: ClickEvent) => void): T
 | screenX<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置相对于应用窗口左上角的X坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowX代替。 |
 | screenY<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置相对于应用窗口左上角的Y坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowY代替。 |
 | preventDefault<sup>12+</sup>      | () => void | 否 | 否 | 阻止默认事件。<br/> **说明：**&nbsp;该接口仅支持部分组件使用，当前支持组件：RichEditor、Hyperlink，不支持的组件使用时会抛出异常。暂不支持异步调用和提供Modifier接口。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| hand<sup>15+</sup> | [InteractionHand](./ts-gesture-settings.md#interactionhand枚举说明15) | 否 | 是 | 表示事件是由左手点击还是右手点击触发。<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否 | 是 | 表示事件是由左手点击还是右手点击触发。<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | globalDisplayX<sup>20+</sup> | number | 否 | 是 | 点击位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | globalDisplayY<sup>20+</sup> | number | 否 | 是 | 点击位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -119,7 +119,7 @@ onClick(event: (event: ClickEvent) => void): T
 | --------- | ------- |
 | 100017       | Component does not support prevent function. |
 
-## EventTarget<sup>8+</sup>对象说明
+## EventTarget<sup>8+</sup>
 
 [BaseEvent](ts-gesture-customize-judge.md#baseevent8)中参数target的类型。
 
@@ -154,6 +154,7 @@ struct ClickExample {
                 + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
                 + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
                 + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
+              console.info('sourceType:' + event.source);
             }
           }, 20)
         Button('Click').width(200).height(50).id('click2')
@@ -164,6 +165,7 @@ struct ClickExample {
                 + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\n  width:'
                 + event.target.area.width + '\n  height:' + event.target.area.height + '\n  id:'+ event.target.id
                 + '\ntargetDisplayId:' + event.targetDisplayId + '\ntimestamp' + event.timestamp;
+              console.info('sourceType:' + event.source);
             }
           }, 20)
       }.margin(20)

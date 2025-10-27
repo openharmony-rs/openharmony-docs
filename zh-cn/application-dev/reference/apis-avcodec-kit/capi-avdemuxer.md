@@ -1,5 +1,12 @@
 # AVDemuxer
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 AVDemuxer模块提供从媒体文件码流中提取[sample](../../media/avcodec/audio-video-demuxer.md)的接口。

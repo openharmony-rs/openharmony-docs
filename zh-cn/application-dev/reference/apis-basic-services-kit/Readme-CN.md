@@ -1,4 +1,10 @@
 # Basic Services Kit（基础服务）
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 - ArkTS API<!--basic-services-arkts-->
   - 账号管理<!--account-management-arkts-->
@@ -35,12 +41,14 @@
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)](js-apis-app-ability-PrintExtensionAbility.md)
     - [@ohos.pasteboard (剪贴板)](js-apis-pasteboard.md)
     - [@ohos.print (打印)](js-apis-print.md)
+    - [@ohos.scan (扫描)](js-apis-scan.md)
     - [@ohos.request (上传下载)](js-apis-request.md)
     - [@ohos.request.cacheDownload (缓存下载)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip模块)](js-apis-zlib.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)(系统接口)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (打印)(系统接口)](js-apis-print-sys.md)
+    - [@ohos.scan (扫描)(系统接口)](js-apis-scan-sys.md)
     - [@ohos.request (上传下载)(系统接口)](js-apis-request-sys.md)
     - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)(系统接口)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
     - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)(系统接口)](js-apis-selectionInput-selectionExtensionContext-sys.md)
@@ -69,6 +77,7 @@
     - [@ohos.ai.intelligentVoice (智能语音)(系统接口)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
     - [@ohos.base (公共回调信息)](js-apis-base.md)
+    - [@ohos.annotation (系统注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
@@ -103,8 +112,8 @@
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](c-apis-scan.md)
-    - [OH_Print](_o_h___print.md)
+    - [OH_Scan](capi-oh-scan.md)
+    - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
   - 头文件<!--basic-services-headerfile-->
@@ -116,15 +125,10 @@
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)
     - [os_account.h](capi-os-account-h.md)
     - [os_account_common.h](capi-os-account-common-h.md)
-    - [ohprint.h](ohprint_8h.md)
-    - [ohscan.h](c-apis-scan.md)
+    - [ohprint.h](capi-ohprint-h.md)
+    - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
   - 结构体<!--basic-services-struct-->
-    - [Print_Margin](_print___margin.md)
-    - [Print_PageSize](_print___page_size.md)
-    - [Print_PrintAttributes](_print___print_attributes.md)
-    - [Print_PrintDocCallback](_print___print_doc_callback.md)
-    - [Print_Range](_print___range.md)
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
     - [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md)
@@ -132,6 +136,14 @@
     - [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)
     - [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)
     - [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)
+    - [Print_Margin](capi-oh-print-print-margin.md)
+    - [Print_PageSize](capi-oh-print-print-pagesize.md)
+    - [Print_Range](capi-oh-print-print-range.md)
+    - [Print_PrintAttributes](capi-oh-print-print-printattributes.md)
+    - [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md)
+    - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
+    - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
+    - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
   - [RunningLock锁错误码](errorcode-runninglock.md)
@@ -151,7 +163,10 @@
   - [系统参数错误码](errorcode-system-parameterV9.md)
   - [系统电源管理错误码](errorcode-power.md)
   - [账号管理错误码](errorcode-account.md)
+  <!--Del-->
   - [升级错误码](errorcode-update.md)
+  <!--DelEnd-->
+  - [打印服务错误码](errorcode-print.md)
   <!--Del-->
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)

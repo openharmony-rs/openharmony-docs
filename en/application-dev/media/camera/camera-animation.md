@@ -2,8 +2,9 @@
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
-<!--SE: @leo_ysl-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and ArkUI's [explicit animations](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md) to implement three key scene transitions:
 
@@ -151,9 +152,14 @@ The sample code in the following steps (except step 2) is the internal method or
       * Obtain the snapshot captured by calling doSurfaceShot.
       * @returns
       */
-     public static getSurfaceShot(): image.PixelMap {
-       return BlurAnimateUtil.surfaceShot;
+    public static getSurfaceShot(): image.PixelMap | undefined {
+       if (BlurAnimateUtil.surfaceShot === null || BlurAnimateUtil.surfaceShot === undefined) {
+          console.error("SurfaceShot is null!");
+          return undefined;
+        }
+        return BlurAnimateUtil.surfaceShot;
      }
+  
    }
    ```
 
@@ -165,6 +171,7 @@ The sample code in the following steps (except step 2) is the internal method or
 
    ```ts
    @State isShowBlur: boolean = false; // Whether to show the snapshot component.
+   @State isShowBlack: boolean = false; // Blackout component. You can delete it if it is not needed.
    @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // Entry for triggering the mode switching animation.
    @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0; // Entry for triggering the front/rear camera switching animation.
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // Entry for the fade-out animation.
@@ -212,6 +219,10 @@ The sample code in the following steps (except step 2) is the internal method or
      console.info('showBlurAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // The rear camera is used.
      if (this.curPosition === 0) {
        console.info('showBlurAnim BACK');
@@ -286,6 +297,10 @@ The sample code in the following steps (except step 2) is the internal method or
      console.info('rotateFirstAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // Switch from the rear camera to the front camera.
      if (this.curPosition === 1) {
        console.info('rotateFirstAnim BACK');
@@ -332,6 +347,10 @@ The sample code in the following steps (except step 2) is the internal method or
      console.info('rotateSecondAnim E');
      // Obtain the surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // The rear camera is used.
      if (this.curPosition === 1) {
        // For candy bar phones, a 90° rotation compensation is applied to the content for a snapshot taken with the rear camera.

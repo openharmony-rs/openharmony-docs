@@ -31,6 +31,8 @@
 
 描述字形大小和布局的属性信息，同一种字体中的字符属性大致相同。
 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
@@ -55,6 +57,8 @@
 ## FontFeature<sup>20+</sup>
 
 表示字体特征。字体特征是字体内置的排版规则，用于控制字形的显示效果，具体包括连字、替代字形、上下标等功能。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

@@ -1,41 +1,6 @@
 # Bundle Manager Subsystem Changelog
 
-## cl.bundlemanager.1 Behavior Change in supportWindowModes for Full-screen and Split Window Modes
-
-**Access Level**
-
-Public API
-
-**Reason for Change**
-
-On 2-in-1 devices, when [supportWindowModes](../../../application-dev/quick-start/module-configuration-file.md#abilities) is configured with the values **fullscreen** and **split**, the window starts in a freeform window state, which is not as expected.
-
-**Impact of the Change**
-
-This change requires application adaptation.
-
-Before the change, when **supportWindowModes** is configured with the values **fullscreen** and **split** on a 2-in-1 devices, windows are launched in freeform window mode.
-
-After the change, when **supportWindowModes** is configured with the values **fullscreen** and **split** on a 2-in-1 devices, windows are launched in full-screen mode.
-
-**Start API Level**
-
-API 9
-
-**Change Since**
-
-OpenHarmony 5.1.0.52
-
-**Key API/Component Changes**
-
-**supportWindowModes** in **module.json5**
-
-**Adaptation Guide**
-
-In API version 15 or later, configure windows to launch in full-screen mode when **supportWindowModes** is configured with the values **fullscreen** and **split** on 2-in-1 devices.
-If the intention is to start in a freeform window state, add the **floating** configuration item to the existing **supportWindowModes** configuration.
-
-## cl.bundlemanager.2 Behavior Change in install for Preinstalled System Applications
+## cl.bundlemanager.1 Behavior Change in install for Preinstalled System Applications
 
 **Access Level**
 

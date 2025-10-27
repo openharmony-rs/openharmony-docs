@@ -1,5 +1,12 @@
 # ErrorObserver
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 The ErrorObserver module defines an observer to listen for application errors. It can be used as an input parameter in [ErrorManager.on](js-apis-app-ability-errorManager.md#errormanageronerror) to listen for errors that occur in the current application.
 
 > **NOTE**
@@ -74,10 +81,10 @@ let observer: errorManager.ErrorObserver = {
     console.error('onUnhandledException, errorMsg: ', errorMsg);
   },
   onException(errorObj) {
-    console.log('onException, name: ', errorObj.name);
-    console.log('onException, message: ', errorObj.message);
+    console.error('onException, name: ', errorObj.name);
+    console.error('onException, message: ', errorObj.message);
     if (typeof (errorObj.stack) === 'string') {
-      console.log('onException, stack: ', errorObj.stack);
+      console.error('onException, stack: ', errorObj.stack);
     }
   }
 };

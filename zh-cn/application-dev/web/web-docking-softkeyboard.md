@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 开发者能够通过Web组件对接软键盘，来处理系统软键盘的显示与交互问题，同时实现软键盘的自定义功能。主要有以下场景：
 
@@ -257,9 +257,9 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 | 交叉场景         | 规格                                       |
 | ------------ | ---------------------------------------- |
 | 同层渲染         | 同层Web：软键盘避让方式与普通场景相同。<br></div>同层系统组件：由ArkUI负责软键盘避让模式。 |
-| 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式 在上树前设置其他避让模式可需生效。   |
+| 离屏创建组件       | 默认使用与非离屏创建一致的软键盘避让模式，在上组件树前设置其他避让模式可生效。   |
 | customDialog | customDialog自身避让。                        |
-| 折叠屏          | 软键盘避让行为与普通场景行为一致。软件键盘将根据屏幕开合状态进行调整。    |
+| 折叠屏          | 软键盘避让行为与普通场景行为一致。屏幕软键盘将根据屏幕开合状态进行调整。    |
 | 软键盘托管        | 软键盘避让行为与普通场景行为一致。                        |
 | Web嵌套滚动      | 在嵌套滚动场景下，建议不要使用Web软键盘避让，包括RESIZE_VISUAL和RESIZE_CONTENT。 |
 
@@ -349,13 +349,13 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
           // 遍历attributes
           let attributeKeys = Object.keys(attributes);
           for (let i = 0; i < attributeKeys.length; i++) {
-            console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
+            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
           }
 
           if (attributes) {
             if (attributes['data-keyboard'] == 'customKeyboard') {
               // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
-              console.log('WebCustomKeyboard use custom keyboard');
+              console.info('WebCustomKeyboard use custom keyboard');
               option.useSystemKeyboard = false;
               // 设置自定义键盘builder
               option.customKeyboard = () => {

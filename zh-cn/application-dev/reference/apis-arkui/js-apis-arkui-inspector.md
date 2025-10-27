@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,9 +27,9 @@ createComponentObserver(id: string): ComponentObserver
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)获取[UIInspector](arkts-apis-uicontext-uiinspector.md)实例，再通过此实例调用替代方法[createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver)。
+> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取[UIInspector](arkts-apis-uicontext-uiinspector.md)实例，再通过此实例调用替代方法[createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver)。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -146,7 +146,7 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 
 off(type: 'drawChildren', callback?: Callback\<void\>): void
 
-通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
+通过句柄向对应的查询条件取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -159,59 +159,58 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
 | callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('drawChildren')20+](#ondrawchildren20)方法中的callback为相同对象时才能取消回调成功。 |
 
-**示例：**
+## 示例
 
-> **说明：**
->
-> 推荐通过使用[UIContext](./arkts-apis-uicontext-uicontext.md)中的[getUIInspector](./arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。
 
-  ```ts
-  import { inspector } from '@kit.ArkUI'
+```ts
+import { inspector } from '@kit.ArkUI';
 
-  @Entry
-  @Component
-  struct ImageExample {
-    build() {
-      Column() {
-        Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-          Row({ space: 5 }) {
-            Image($r('app.media.app_icon'))
-              .width(110)
-              .height(110)
-              .border({ width: 1 })
-              .id('IMAGE_ID')
-          }
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
         }
-      }.height(320).width(360).padding({ right: 10, top: 10 })
-    }
-
-    listener:inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
-
-    aboutToAppear() {
-      let onLayoutComplete:()=>void=():void=>{
-          // do something here
       }
-      let onDrawComplete:()=>void=():void=>{
-          // do something here
-      }
-      let onDrawChildrenComplete:()=>void=():void=>{
-          // do something here
-      }
-      let FuncLayout = onLayoutComplete // bind current js instance
-      let FuncDraw = onDrawComplete // bind current js instance
-      let FuncDrawChildren = onDrawChildrenComplete // bind current js instance
-      let OffFuncLayout = onLayoutComplete // bind current js instance
-      let OffFuncDraw = onDrawComplete // bind current js instance
-      let OffFuncDrawChildren = onDrawChildrenComplete // bind current js instance
-
-      this.listener.on('layout', FuncLayout)
-      this.listener.on('draw', FuncDraw)
-      this.listener.on('drawChildren', FuncDrawChildren)
-      
-      // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-      // this.listener.off('layout', OffFuncLayout)
-      // this.listener.off('draw', OffFuncDraw)
-      // this.listener.off('drawChildren', OffFuncDrawChildren)
-    }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
   }
-  ```
+
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    }
+    let onDrawComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    }
+    let onDrawChildrenComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    }
+    // 绑定当前js实例
+    let FuncLayout = onLayoutComplete
+    let FuncDraw = onDrawComplete
+    let FuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayout = onLayoutComplete
+    let OffFuncDraw = onDrawComplete
+    let OffFuncDrawChildren = onDrawChildrenComplete
+
+    this.listener.on('layout', FuncLayout)
+    this.listener.on('draw', FuncDraw)
+    this.listener.on('drawChildren', FuncDrawChildren)
+
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.off('drawChildren', OffFuncDrawChildren)
+  }
+}
+```

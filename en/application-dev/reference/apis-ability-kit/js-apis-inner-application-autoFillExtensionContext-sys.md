@@ -35,7 +35,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 reloadInModal(customData: CustomData): Promise\<void>
 
-Starts a modal page.
+Starts a modal page. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

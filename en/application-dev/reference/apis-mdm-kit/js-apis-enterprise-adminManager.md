@@ -1,4 +1,10 @@
 # @ohos.enterprise.adminManager (Administrator Permission Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **adminManager** module provides administrator permission management capabilities for enterprise MDM applications, including enabling or disabling administrator permissions, subscribing to events, delegating applications, and granting permissions.
 
@@ -20,11 +26,11 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 
 Disables a device administrator application for the specified user. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications)
+**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications) or ohos.permission.START_PROVISIONING_MESSAGE
+<br>- ohos.permission.START_PROVISIONING_MESSAGE is supported since API version 20. This permission can be requested only when the BYOD device administrator application is disabled.
+<br>- ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN is required for API version 19 and earlier. (This permission can be requested only by system applications.)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -32,7 +38,7 @@ Disables a device administrator application for the specified user. This API use
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. When deactivating the BYOD device administrator application, you can pass only the **EnterpriseAdminExtensionAbility** component of the current application.   |
 | userId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> - If **userId** is passed in, this API applies to the specified user.<br> - If **userId** is not passed in, this API applies to the current user.|
 
 **Return value**
@@ -49,22 +55,78 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | -------- | ------------------------------------------------------------ |
 | 9200005  | Failed to deactivate the administrator application of the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 adminManager.disableAdmin(wantTemp, 100).catch((err: BusinessError) => {
   console.error(`Failed to disable admin. Code: ${err.code}, message: ${err.message}`);
 });
+```
+
+## adminManager.isByodAdmin<sup>20+</sup>
+
+isByodAdmin(admin: Want): boolean
+
+Checks whether the current application is activated as a BYOD device administrator application based on the **EnterpriseAdminExtensionAbility** component.
+
+**Required permission**: ohos.permission.START_PROVISIONING_MESSAGE
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type    | Mandatory  | Description       |
+| ---------- | ------ | ---- | --------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. Only the **EnterpriseAdminExtensionAbility** component of the current application can be passed.|
+
+**Return value**
+
+| Type        | Description                |
+| ----------------- | ------------------- |
+| boolean | The value **true** indicates the application is activated as a BYOD device administrator application, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200012      | Parameter verification failed.|
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { adminManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility'
+};
+
+try {
+  let result: boolean = adminManager.isByodAdmin(wantTemp);
+  console.info(`Succeeded in querying admin is byod admin or not : ${result}`);
+} catch (error) {
+  console.error(`Failed to query admin is byod admin or not. Code is ${error.code}, message is ${error.message}`);
+}
 ```
 
 ## adminManager.subscribeManagedEventSync
@@ -76,8 +138,6 @@ Subscribes to system management events.
 **Required permissions**: ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -102,11 +162,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -127,8 +189,6 @@ Unsubscribes from system management events.
 **Required permissions**: ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -153,11 +213,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -179,8 +241,6 @@ Delegates other applications to set device management policies. The applications
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
@@ -188,7 +248,7 @@ Delegates other applications to set device management policies. The applications
 | Name       | Type                                                   | Mandatory| Description              |
 | ------------- | ------------------------------------------------------- | ---- | ------------------ |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
-| bundleName | string                   | Yes  | Bundle name of the delegated application. The distribution type of the application can only be **enterprise_normal** or **enterprise_mdm**. For details about the **app-distribution-type** field, see [Profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-releaseprofile-0000001914714796).|
+| bundleName | string                   | Yes  | Bundle name of the delegated application. The distribution type of the delegated application must be **enterprise_normal** or **enterprise_mdm**. You can call the [getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md) of the application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type.|
 | policies |  Array&lt;string&gt;                   | Yes  | [Delegation Policy List](#delegation-policy-list)|
 
 **Error codes**
@@ -206,15 +266,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let admin: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let policies: Array<string> = ["disabled_hdc"];
 
 try {
+  // Replace parameters with actual values.
   adminManager.setDelegatedPolicies(admin, "com.example.enterprise.xxx", policies);
   console.info('Succeeded in setting delegated policies.');
 } catch (err) {
@@ -232,8 +296,6 @@ Queries the list of policies that can be accessed by the delegated application.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
@@ -241,7 +303,7 @@ Queries the list of policies that can be accessed by the delegated application.
 | Name    | Type                                                   | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
-| bundleName | string                                                  | Yes  | Bundle name of the delegated application. The distribution type of the application can only be **enterprise_normal** or **enterprise_mdm**. For details about the **app-distribution-type** field, see [Profile](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-releaseprofile-0000001914714796).|
+| bundleName | string                                                  | Yes  | Bundle name of the delegated application. The distribution type of the delegated application must be **enterprise_normal** or **enterprise_mdm**. You can call the [getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md) of the application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type.|
 
 
 **Return value**
@@ -264,14 +326,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let admin: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let policies: Array<string> = adminManager.getDelegatedPolicies(admin, "com.example.enterprise.xxx");
   console.info(`Succeeded in getting delegated policies.${JSON.stringify(policies)}`);
 } catch (err) {
@@ -288,8 +353,6 @@ Queries the delegated applications that can access a delegation policy and outpu
 **Required permission**: ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -321,14 +384,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let admin: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let bundleNames: Array<string> = adminManager.getDelegatedBundleNames(admin, "disabled_hdc");
   console.info(`Succeeded in getting delegated bundles.${JSON.stringify(bundleNames)}`);
 } catch (err) {
@@ -345,8 +411,6 @@ Enables the device administrator application to open a page for the BYOD adminis
 **Required permission**: ohos.permission.START_PROVISIONING_MESSAGE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -372,13 +436,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 <!--code_no_check-->
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let recordParameters: Record<string, string> = {
+  // Replace with actual values.
   "activateId": "activateId testValue",
   "customizedInfo": "customizedInfo testValue"
 };
@@ -422,6 +489,19 @@ Enumerates the types of device administrator applications.
 | ----------------- | ---- | ----- |
 | ADMIN_TYPE_BYOD  | 0x02 | BYOD device administrator application.|
 
+## Policy<sup>20+</sup>
+
+Defines the policy type for the trustlist or blocklist.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Value | Description   |
+| ----------------- | ---- | ----- |
+| BLOCK_LIST  | 0 | Blocklist.|
+| TRUST_LIST  | 1 | Trustlist.|
+
 ## Appendix
 ### Delegation Policy List
 | Policy Name| API                                                    | Description|
@@ -429,11 +509,11 @@ Enumerates the types of device administrator applications.
 |disallow_add_local_account| [accountManager.disallowOsAccountAddition](js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)<br>[accountManager.isOsAccountAdditionDisallowed](js-apis-enterprise-accountManager.md#accountmanagerisosaccountadditiondisallowed) | Prevents the device from creating a local user, without needing the **accountId** parameter.<br>Checks whether the device is prevented from creating a local user, without needing the **accountId** parameter.|
 |disallow_add_os_account_by_user| [accountManager.disallowOsAccountAddition](js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)<br>[accountManager.isOsAccountAdditionDisallowed](js-apis-enterprise-accountManager.md#accountmanagerisosaccountadditiondisallowed) | Prevents the specified user from adding accounts, with the **accountId** parameter passed.<br>Checks whether the specified user is prevented from adding accounts, with the **accountId** parameter passed.|
 |disallow_running_bundles|[applicationManager.addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)<br>[applicationManager.removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)<br>[applicationManager.getDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagergetdisallowedrunningbundlessync)|Adds the applications that are not allowed to run by the current or specified user.<br>Removes applications that are not allowed to run.<br>Obtains applications that are not allowed to run by the current user or specified user.|
-|manage_auto_start_apps|[applicationManager.addAutoStartApps](js-apis-enterprise-applicationManager.md#applicationmanageraddautostartapps)<br>[applicationManager.removeAutoStartApps](js-apis-enterprise-applicationManager.md#applicationmanagerremoveautostartapps)<br>[applicationManager.getAutoStartApps](js-apis-enterprise-applicationManager.md#applicationmanagergetautostartapps)|Adds the auto-start applications. Currently, this capability supports only 2-in-1 devices.<br>Removes the auto-start applications. Currently, this capability supports only 2-in-1 devices.<br>Obtains the auto-start applications. Currently, this capability supports only 2-in-1 devices.|
+|manage_auto_start_apps|[applicationManager.addAutoStartApps](js-apis-enterprise-applicationManager.md#applicationmanageraddautostartapps)<br>[applicationManager.removeAutoStartApps](js-apis-enterprise-applicationManager.md#applicationmanagerremoveautostartapps)<br>[applicationManager.getAutoStartApps](js-apis-enterprise-applicationManager.md#applicationmanagergetautostartapps)|Adds the auto-start applications.<br>Removes the auto-start applications.<br>Obtains the auto-start applications.|
 |allowed_bluetooth_devices|[bluetoothManager.addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices)<br>[bluetoothManager.removeAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanagerremoveallowedbluetoothdevices)<br>[bluetoothManager.getAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanagergetallowedbluetoothdevices)|Adds allowed Bluetooth devices.<br>Removes allowed Bluetooth devices.<br>Obtains allowed Bluetooth devices.|
 |set_browser_policies|[browser.setPolicySync](js-apis-enterprise-browser.md#browsersetpolicysync)<br>[browser.getPoliciesSync](js-apis-enterprise-browser.md#browsergetpoliciessync)|Sets the sub-policy for a specified browser.<br>Obtains the policy of a specified browser.|
 |allowed_install_bundles|[bundleManager.addAllowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)<br>[bundleManager.removeAllowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)<br>[bundleManager.getAllowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)|Adds the applications that can be installed by the current or specified user.<br>Removes the applications that can be installed.<br>Obtains the applications that can be installed by the current or specified user.|
-|disallowed_install_bundles|[bundleManager.addDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)<br>[bundleManager.removeDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)<br>[bundleManager.getDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)|Adds the applications that cannot be installed by the current or specified user.<br>Removes the applications that cannot be installed.<br>Obtains the applications that cannot be installed by the current or specified user.|
+|disallowed_install_bundles|[bundleManager.addDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)<br>[bundleManager.removeDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)<br>[bundleManager.getDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)|Adds the applications that are not allowed to be installed by the current or specified user.<br>Removes the applications that are not allowed to be installed.<br>Obtains the applications that cannot be installed by the current or specified user.|
 |disallowed_uninstall_bundles|[bundleManager.addDisallowedUninstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)<br>[bundleManager.removeDisallowedUninstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)<br>[bundleManager.getDisallowedUninstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)|Adds the applications that cannot be uninstalled by the current or specified user.<br>Removes the applications that cannot be uninstalled.<br>Obtains the applications that cannot be uninstalled by the current or specified user.|
 |get_device_info|[deviceInfo.getDeviceInfo](js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)|Obtains device information.|
 |location_policy|[locationManager.setLocationPolicy](js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy)<br>[locationManager.getLocationPolicy](js-apis-enterprise-locationManager.md#locationmanagergetlocationpolicy)|Sets the location service policy.<br>Obtains the location service policy.|
@@ -446,16 +526,22 @@ Enumerates the types of device administrator applications.
 |disable_microphone|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **microphone** as the parameter to disable or enable the microphone capability.<br>Accepts **microphone** as the parameter to query whether the microphone is disabled.|
 |fingerprint_auth|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)<br>[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)<br>[restrictions.getDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicyforaccount14)|Accepts **fingerprint** as the parameter to disable or enable fingerprint authentication.<br>Accepts **fingerprint** as the parameter to query whether fingerprint authentication is disabled.<br>Accepts **fingerprint** as the parameter to disable or enable fingerprint authentication for a specified user.<br>Accepts **fingerprint** as the parameter to query whether fingerprint authentication is disabled for a specified user.|
 |disable_usb|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **usb** as the parameter to disable or enable the USB capability.<br>Accepts **usb** as the parameter to query whether the USB capability is disabled.|
-|disable_wifi|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **wifi** as the parameter to disable or enable the Wi-Fi capability.<br>Accepts **wifi** as the parameter to query whether the Wi-Fi capability is disabled.|
+|disable_wifi|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **wifi** as the parameter to disable or enable the Wi-Fi capability.<br>Accepts **wifi** as the parameter to query whether Wi-Fi is disabled.|
 |disallowed_tethering|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **tethering** as the parameter to disable or enable network sharing.<br>Accepts **tethering** as the parameter to query whether the network sharing capability is disabled.|
 |inactive_user_freeze|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **inactiveUserFreeze** as the parameter to freeze or unfreeze inactive users.<br>Accepts **inactiveUserFreeze** as the parameter to query whether inactive users are frozen.|
 |snapshot_skip|[restrictions.addDisallowedListForAccount](js-apis-enterprise-restrictions.md#restrictionsadddisallowedlistforaccount14)<br>[restrictions.removeDisallowedListForAccount](js-apis-enterprise-restrictions.md#restrictionsremovedisallowedlistforaccount14)<br>[restrictions.getDisallowedListForAccount](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedlistforaccount14)|Accepts **snapshotSkip** as the parameter to add applications with screen snapshot disabled.<br>Accepts **snapshotSkip** as the parameter to remove the applications with screen snapshot disabled.<br>Accepts **snapshotSkip** as the parameter to obtain the applications with screen snapshot disabled.|
 |password_policy|[securityManager.setPasswordPolicy](js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)<br>[securityManager.getPasswordPolicy](js-apis-enterprise-securityManager.md#securitymanagergetpasswordpolicy)|Sets the device password policy.<br>Obtains the device password policy.|
 |clipboard_policy|[securityManager.setAppClipboardPolicy](js-apis-enterprise-securityManager.md#securitymanagersetappclipboardpolicy)<br>[securityManager.getAppClipboardPolicy](js-apis-enterprise-securityManager.md#securitymanagergetappclipboardpolicy)|Sets the device clipboard policy.<br>Obtains the device clipboard policy.|
-|watermark_image_policy|[securityManager.setWatermarkImage](js-apis-enterprise-securityManager.md#securitymanagersetwatermarkimage14)<br>[securityManager.cancelWatermarkImage](js-apis-enterprise-securityManager.md#securitymanagercancelwatermarkimage14)|Sets the watermark policy. Currently, this feature is available only for 2-in-1 devices.<br>Cancels the watermark policy. Currently, this feature is available only for 2-in-1 devices.|
+|watermark_image_policy|[securityManager.setWatermarkImage](js-apis-enterprise-securityManager.md#securitymanagersetwatermarkimage14)<br>[securityManager.cancelWatermarkImage](js-apis-enterprise-securityManager.md#securitymanagercancelwatermarkimage14)|Sets the watermark policy. Currently, this feature is available only for PCs/2-in-1 devices.<br>Cancels the watermark policy. Currently, this feature is available only for PCs/2-in-1 devices.|
 |ntp_server|[systemManager.setNTPServer](js-apis-enterprise-systemManager.md#systemmanagersetntpserver)<br>[systemManager.getNTPServer](js-apis-enterprise-systemManager.md#systemmanagergetntpserver)|Sets the NTP server policy.<br>Obtains the NTP server information.|
 |set_update_policy|[systemManager.setOtaUpdatePolicy](js-apis-enterprise-systemManager.md#systemmanagersetotaupdatepolicy)<br>[systemManager.getOtaUpdatePolicy](js-apis-enterprise-systemManager.md#systemmanagergetotaupdatepolicy)|Sets the update policy.<br>Obtains the update policy.|
 |notify_upgrade_packages|[systemManager.notifyUpdatePackages](js-apis-enterprise-systemManager.md#systemmanagernotifyupdatepackages)<br>[systemManager.getUpdateResult](js-apis-enterprise-systemManager.md#systemmanagergetupdateresult)|Notifies the system of the update packages.<br>Obtains the system update result.|
 |allowed_usb_devices|[usbManager.addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)<br>[usbManager.removeAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanagerremoveallowedusbdevices)<br>[usbManager.getAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanagergetallowedusbdevices)|Adds allowed USB devices.<br>Removes allowed USB devices.<br>Obtains allowed USB devices.|
 |usb_read_only|[usbManager.setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)<br>[usbManager.getUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagergetusbstoragedeviceaccesspolicy)|Sets the USB storage device access policy.<br>Obtains the USB storage device access policy.|
 |disallowed_usb_devices|[usbManager.addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)<br>[usbManager.removeDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanagerremovedisallowedusbdevices14)<br>[usbManager.getDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanagergetdisallowedusbdevices14)|Adds disallowed USB device types.<br>Removes disallowed USB device types.<br>Obtains disallowed USB device types.|
+|disallowed_sms|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **sms** as the parameter to disable or enable the capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.<br>Accepts **sms** as the parameter to check whether the capability to receive and send SMS messages is disabled. Currently, this feature is supported only on smartphones and tablets.|
+|disallowed_mms|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **mms** as the parameter to disable or enable the capability to receive and send MMS messages. Currently, this feature is supported only on smartphones and tablets.<br>Accepts **mms** as the parameter to check whether the capability to receive and send MMS messages is disabled. Currently, this feature is supported only on smartphones and tablets.|
+|disable_backup_and_restore|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **backupAndRestore** as the parameter to disable or enable the backup and restore capability. Currently, this feature is supported only on smartphones and tablets.<br>Accepts **backupAndRestore** as the parameter to check whether the backup and restore capability is disabled. Currently, this feature is supported only on smartphones and tablets.|
+|installed_bundle_info_list|[bundleManager.getInstalledBundleList](js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)|Obtains the applications installed by a specified user on a device.|
+|clear_up_application_data|[applicationManager.clearUpApplicationData](js-apis-enterprise-applicationManager.md#applicationmanagerclearupapplicationdata20)|Clears all application data.|
+|disallow_unmute_device|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **unmuteDevice** as the parameter to disable or enable audio playback of the device.<br>Accepts **unmuteDevice** as the parameter to check whether audio playback of the device is disabled.|

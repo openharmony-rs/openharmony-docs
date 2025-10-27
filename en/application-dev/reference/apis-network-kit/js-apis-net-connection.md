@@ -253,7 +253,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.log("Succeeded to get data" + JSON.stringify(data));
+  console.info("Succeeded to get data" + JSON.stringify(data));
 });
 ```
 
@@ -496,7 +496,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.log("success");
+    console.info("success");
   }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
   })
@@ -865,6 +865,7 @@ For details about the error codes, see [Network Connection Management Error Code
 
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
@@ -971,7 +972,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1007,7 +1008,7 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1080,7 +1081,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1116,7 +1117,7 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.log('data: ' + data);
+  console.info('data: ' + data);
 });
 ```
 
@@ -1237,7 +1238,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1332,7 +1333,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.log(`report success`);
+    console.info(`report success`);
   });
 });
 ```
@@ -1611,7 +1612,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.removeCustomDnsRule("xxxx").then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
@@ -1694,10 +1695,104 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.clearCustomDnsRules().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
+```
+
+## connection.setPacFileUrl<sup>20+</sup>
+
+setPacFileUrl(pacFileUrl: string): void
+
+Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
+
+**Required permissions**: ohos.permission.SET_PAC_URL
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Parameters**
+
+| Name     | Type  | Mandatory| Description                          |
+| ----------- | ------ | ---- | ------------------------------ |
+| pacFileUrl  | string | Yes  | URL of the current PAC script.        |
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message    |
+|---------|----------|
+| 201     | Permission denied.   |
+| 2100002 | Failed to connect to the service. |
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let pacFileUrl = "http://example.com/proxy.pac";
+connection.setPacFileUrl(pacFileUrl);
+```
+## connection.getPacFileUrl<sup>20+</sup>
+
+getPacFileUrl(): string
+
+Obtains the URL of the current PAC script.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Return value**
+
+| Type| Description                                           |
+| -------- | ----------------------------------------------- |
+| string   | URL of the current PAC script. If no PAC script is available, an empty string is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md).
+
+| ID| Error Message                         |
+| -------- | --------------------------------- |
+| 2100002  | Failed to connect to the service.                 |
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let pacFileUrl = connection.getPacFileUrl();
+console.info(pacFileUrl);
+```
+
+## connection.findProxyForUrl<sup>20+</sup>
+
+findProxyForUrl(url: string): string
+
+Searches for PAC proxy information based on the given URL.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description             |
+| ------ | ------ | ---- | ----------------- |
+| url    | string | Yes  | URL used to search for the proxy information.|
+
+**Return value**
+
+| Type| Description                    |
+| -------- | ------------------------ |
+| string   | Proxy information.             |
+
+
+**Example**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let proxyInfo = connection.findProxyForUrl("http://example.com");
+console.info(proxyInfo);
 ```
 
 ## connection.setPacUrl<sup>15+</sup>
@@ -1831,7 +1926,7 @@ setNetExtAttributeSync(netHandle: NetHandle, netExtAttribute: string): void
 Sets extended attributes of the network specified by **netHandle** to indicate its security level. This API returns the result synchronously.
 
 > **NOTE**
-> Currently, this API is available only on PCs.
+> Currently, this API is available only for PCs.
 
 **Required permissions**: ohos.permission.SET_NET_EXT_ATTRIBUTE
 
@@ -1985,7 +2080,7 @@ Represents the network connection handle.
 
 register(callback: AsyncCallback\<void>): void
 
-Registers a listener for network status changes.
+Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
 **Note**: After using this API, you need to call **unregister** to cancel the registration in a timely manner.
 
@@ -2091,14 +2186,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Use the register API to subscribe to netAvailable events.
+// Use the on API to enable listening for netAvailable events.
 netCon.on('netAvailable', (data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to unsubscribe from netAvailable events.
@@ -2131,14 +2226,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netBlockStatusChange events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netBlockStatusChange events.
 netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netBlockStatusChange events.
@@ -2173,14 +2268,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netCapabilitiesChange events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netCapChange events.
 netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Unsubscribe from netCapabilitiesChange events.
@@ -2213,14 +2308,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netConnectionPropertiesChange events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netConnectionChange events.
 netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netConnectionPropertiesChange events.
@@ -2255,14 +2350,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netLost events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netLost events.
 netCon.on('netLost', (data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netLost events.
@@ -2297,14 +2392,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Create a NetConnection object.
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// Use the register API to subscribe to network status change events.
-netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// Subscribe to netUnavailable events. Before that, make sure you have called the register API to add a listener.
+// Use the on API to enable listening for netUnavailable events.
 netCon.on('netUnavailable', () => {
   console.info("Succeeded to get unavailable net event");
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
 });
 
 // Use the unregister API to remove the listener for netUnavailable events.
@@ -2323,9 +2418,9 @@ Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandl
 
 ### Attributes
 
-| Name   | Type  | Mandatory| Description                     |
-| ------ | ------ | --- |------------------------- |
-| netId  | number | Yes |  Network ID. The value **0** indicates no default network. Any other value must be greater than or equal to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netId  | number | No| No |  Network ID. The value **0** indicates no default network. Any other value must be greater than or equal to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ### bindSocket<sup>9+</sup>
 
@@ -2390,7 +2485,7 @@ interface Data {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2481,7 +2576,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.log("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
     }
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2747,13 +2842,13 @@ Represents the HTTP proxy configuration.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name   | Type  | Mandatory| Description                     |
-| ------ | ------ | --- |------------------------- |
-| host  | string | Yes |  Host name of the proxy server.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| port  | number | Yes |  Host port. The value range is \[0, 65535].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| exclusionList  | Array\<string\> | Yes | List of the names of hosts that do not use a proxy. Host names can be domain names, IP addresses, or wildcards. The detailed matching rules are as follows:<br>- Domain name matching:<br>  - Exact match: The host name of the proxy server exactly matches any host name in the list.<br>  - Partial match: The host name of the proxy server contains any host name in the list.<br>For example, if **ample.com** is set in the host name list, **ample.com**, **www.ample.com**, and **ample.com:80** are matched, and **www.example.com** and **ample.com.org** are not matched.<br>- IP address matching: The host name of the proxy server exactly matches any IP address in the list.<br>- Both the domain name and IP address are added to the list for matching.<br>- A single asterisk (*) is the only valid wildcard. If the list contains only wildcards, the wildcards match all host names; that is, the HTTP proxy is disabled. A wildcard can only be added independently. It cannot be added to the list together with other domain names or IP addresses. Otherwise, the wildcard does not take effect.<br>- Host names are case insensitive.<br>- Protocol prefixes such as **http** and **https** are ignored during matching.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| username<sup>12+</sup>  | string | No|  Name of the user who uses the proxy.|
-| password<sup>12+</sup>  | string | No|  Password of the user who uses the proxy.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| host  | string | No | No|Host name of the proxy server.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| port  | number | No |No |Host port. The value range is \[0, 65535].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| exclusionList  | Array\<string\> | No |No|List of the names of hosts that do not use a proxy. Host names can be domain names, IP addresses, or wildcards. The detailed matching rules are as follows:<br>- Domain name matching:<br>  - Exact match: The host name of the proxy server exactly matches any host name in the list.<br>  - Partial match: The host name of the proxy server contains any host name in the list.<br>For example, if **ample.com** is set in the host name list, **ample.com**, **www.ample.com**, and **ample.com:80** are matched, and **www.example.com** and **ample.com.org** are not matched.<br>- IP address matching: The host name of the proxy server exactly matches any IP address in the list.<br>- Both the domain name and IP address are added to the list for matching.<br>- A single asterisk (*) is the only valid wildcard. If the list contains only wildcards, the wildcards match all host names; that is, the HTTP proxy is disabled. A wildcard can only be added independently. It cannot be added to the list together with other domain names or IP addresses. Otherwise, the wildcard does not take effect.<br>- Host names are case insensitive.<br>- Protocol prefixes such as **http** and **https** are ignored during matching.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| username<sup>12+</sup>  | string | No|Yes |Name of the user who uses the proxy.|
+| password<sup>12+</sup>  | string | No| Yes| Password of the user who uses the proxy.|
 
 ## NetSpecifier
 
@@ -2763,10 +2858,10 @@ Provides an instance that bears data network capabilities.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name                    | Type                               | Mandatory | Description                                                        |
-| ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| netCapabilities         | [NetCapabilities](#netcapabilities) |  Yes | Network transmission capabilities and bearer types of the data network.                               |
-| bearerPrivateIdentifier | string                              |  No |  Network identifier. The identifier of the cellular network is **slot0** for SIM card 1 and **slot1** for SIM card 2. Since API version 12, you can pass the registered WLAN hotspot to the API to specify the WLAN network to be activated.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netCapabilities         | [NetCapabilities](#netcapabilities) |  No| No | Network transmission capabilities and bearer types of the data network.                               |
+| bearerPrivateIdentifier | string                              |  No| Yes |  Network identifier. The identifier of the cellular network is **slot0** for SIM card 1 and **slot1** for SIM card 2. Since API version 12, you can pass the registered WLAN hotspot to the API to specify the WLAN network to be activated.|
 
 **Example**
 
@@ -2802,10 +2897,10 @@ Provides an instance that bears data network capabilities.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name                   | Type                                | Mandatory | Description                                                        |
-| ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle               | [NetHandle](#nethandle)              |  Yes | Handle of the data network.                                               |
-| netCap                  |  [NetCapabilities](#netcapabilities) |  Yes |  Network transmission capabilities and bearer types of the data network.                           |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle               | [NetHandle](#nethandle)              |  No| No | Handle of the data network.                                               |
+| netCap                  |  [NetCapabilities](#netcapabilities) |  No| No |  Network transmission capabilities and bearer types of the data network.                           |
 
 ## NetCapabilities
 
@@ -2813,12 +2908,12 @@ Defines the network capability set.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name                 | Type                               | Mandatory| Description                    |
-| --------------------- | ---------------------------------- | --- | ------------------------ |
-| linkUpBandwidthKbps   | number                             |  No|  Uplink (device-to-network) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
-| linkDownBandwidthKbps | number                             |  No|  Downlink (network-to-device) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
-| networkCap            | Array\<[NetCap](#netcap)>           |  No|  Network capability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  Yes|  Network type. The array contains only one network type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| linkUpBandwidthKbps   | number                             |  No| Yes |  Uplink (device-to-network) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
+| linkDownBandwidthKbps | number                             |  No| Yes|  Downlink (network-to-device) bandwidth, in kbit/s. The value **0** indicates that the current network bandwidth cannot be evaluated.|
+| networkCap            | Array\<[NetCap](#netcap)>           |  No| Yes|  Network capability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  No| No|  Network type. The array contains only one network type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
@@ -2828,10 +2923,10 @@ Defines the network connection properties.
 
 ### Attributes
 
-| Name                |                          Type                       | Mandatory|         Description          |
-| -------------------- | --------------------------------------------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | Yes  |Data network handle.|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | Yes  |Network connection properties.          |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)                             | No| No  |Data network handle.|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | No| No  |Network connection properties.          |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -2841,10 +2936,10 @@ Obtains the network block status information.
 
 ### Attributes
 
-| Name                | Type                                 | Mandatory|            Description           |
-| -------------------- | ------------------------------------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | Yes  |Data network handle.  |
-| blocked              | boolean                               | Yes  |The value **true** indicates that the network is congested, and the value **false** indicates the opposite.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| netHandle            | [NetHandle](#nethandle)               | No| No  |Data network handle.  |
+| blocked              | boolean                               | No| No  | Whether the current network is blocked. The value **true** indicates that the network is congested, and the value **false** indicates the opposite.|
 
 ## ConnectionProperties
 
@@ -2852,14 +2947,14 @@ Defines the network connection properties.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name         |                Type                | Mandatory|               Description                    |
-| ------------- | ----------------------------------- | ----|--------------------------------------- |
-| interfaceName | string                              | Yes|Network interface card (NIC) name.                               |
-| domains       | string                              | Yes|Domain name.                                   |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | Yes|Network link information.                               |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | Yes|Network route information.                               |
-| dnses         | Array\<[NetAddress](#netaddress)>   | Yes|Network address. For details, see [NetAddress](#netaddress).|
-| mtu           | number                              | Yes|Maximum transmission unit (MTU).                           |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| interfaceName | string                              | No| No|Network interface card (NIC) name.                               |
+| domains       | string                              | No| No|Domain name.                                   |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No|Network link information.                               |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No|Network route information.                               |
+| dnses         | Array\<[NetAddress](#netaddress)>   | No| No|Network address. For details, see [NetAddress](#netaddress).|
+| mtu           | number                              | No| No|Maximum transmission unit (MTU).                           |
 
 ## RouteInfo
 
@@ -2867,14 +2962,14 @@ Defines network route information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name          | Type                       | Mandatory|     Description     |
-| -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | Yes|NIC name.      |
-| destination    | [LinkAddress](#linkaddress) | Yes|Destination address.      |
-| gateway        | [NetAddress](#netaddress)   | Yes|Gateway address.      |
-| hasGateway     | boolean                     | Yes|Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
-| isDefaultRoute | boolean                     | Yes|Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
-| isExcludedRoute<sup>20+</sup>| boolean                     | No|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| interface      | string                      | No| No|NIC name.      |
+| destination    | [LinkAddress](#linkaddress) | No| No|Destination address.      |
+| gateway        | [NetAddress](#netaddress)   | No| No|Gateway address.      |
+| hasGateway     | boolean                     | No| No| Whether a gateway is present. Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
+| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
+| isExcludedRoute<sup>20+</sup>| boolean                     | No| Yes|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
 
 ## LinkAddress
 
@@ -2882,10 +2977,10 @@ Defines network link information.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name        |           Type           | Mandatory|        Description        |
-| ------------ | ------------------------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | Yes | Link address.          |
-| prefixLength | number                    | Yes |Length of the link address prefix. |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| address      | [NetAddress](#netaddress) | No| No | Link address.          |
+| prefixLength | number                    | No| No |Length of the link address prefix. |
 
 ## NetAddress
 
@@ -2895,11 +2990,11 @@ Defines a network address.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-|  Name  | Type  |Mandatory|            Description             |
-| ------- | ------ | -- |---------------------------- |
-| address | string | Yes|Network address.                      |
-| family  | number | No|Address family identifier. The value is **1** for IPv4 and **2** for IPv6. The default value is **1**.|
-| port    | number | No|Port number. The value range is \[0, 65535]. The default value is **0**. |
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| address | string | No| No|Network address.                      |
+| family  | number | No| Yes|Address family identifier. The value is **1** for IPv4 and **2** for IPv6. The default value is **1**.|
+| port    | number | No| Yes|Port number. The value range is \[0, 65535]. The default value is **0**. |
 
 ## HttpRequest
 

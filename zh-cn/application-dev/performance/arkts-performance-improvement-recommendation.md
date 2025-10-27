@@ -1,5 +1,12 @@
 # 性能提升的其他方法
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 开发者若使用低性能的代码实现功能场景可能不会影响应用的正常运行，但却会对应用的性能造成负面影响。本章节列举出了一些可提升性能的场景供开发者参考，以避免应用实现上带来的性能劣化。
 
 ## 设置List组件的宽高
@@ -14,9 +21,9 @@
 >  
 >  - List设置宽高，会布局List显示区域内的子组件。
 >  
->  - List使用[ForEach](../ui/state-management/arkts-rendering-control-foreach.md)加载子组件时，无论是否设置List的宽高，都会加载所有子组件。
+>  - List使用[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)加载子组件时，无论是否设置List的宽高，都会加载所有子组件。
 >  
->  - List使用[LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md)加载子组件时，没有设置List的宽高，会加载所有子组件，设置了List的宽高，会加载List显示区域内的子组件。
+>  - List使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)加载子组件时，没有设置List的宽高，会加载所有子组件，设置了List的宽高，会加载List显示区域内的子组件。
 
 ```ts
 class BasicDataSource implements IDataSource {
@@ -245,6 +252,7 @@ struct MyComponent {
 @Component
 struct FlexBuild {
   private data: string[] = new Array(20).fill('');
+
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Flex({ direction: FlexDirection.Column }) {
@@ -272,6 +280,7 @@ struct FlexBuild {
 @Component
 struct ColumnAndRowBuild {
   private data: string[] = new Array(20).fill('');
+
   build() {
     Row() {
       Row() {

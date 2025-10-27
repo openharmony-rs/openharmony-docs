@@ -22,7 +22,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 
 > **说明：**
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
+> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 
 ## 导入模块
@@ -164,19 +164,86 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | MOUSE_BUTTON_RIGHT  | 1    | 鼠标右键。   |
 | MOUSE_BUTTON_MIDDLE | 2    | 鼠标中间键。 |
 
-## UIElementInfo<sup>10+</sup>
 
-UI事件的相关信息。
+## WindowChangeType<sup>22+</sup>
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+支持监听的窗口变化事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_ADDED  | 1    | 窗口出现事件。   |
+| WINDOW_REMOVED | 2    | 窗口消失事件。 |
+| WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
+
+
+## ComponentEventType<sup>22+</sup>
+
+支持监听的控件操作事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
+| COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
+| COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
+| COMPONENT_SCROLL_END  | 4    | 控件滚动结束事件。   |
+| COMPONENT_TEXT_CHANGED | 5    | 控件文本变化事件。 |
+| COMPONENT_HOVER_ENTER | 6    | 鼠标悬停进入控件事件。 |
+| COMPONENT_HOVER_EXIT | 7    | 鼠标悬停离开控件事件。 |
+
+
+## WindowChangeOptions<sup>22+</sup>
+
+窗口变化事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| bundleName | string | 是   | 否   | 归属应用的包名。      |
-| type       | string | 是   | 否   | 控件/窗口类型。       |
-| text       | string | 是   | 否   | 控件/窗口的文本信息。 |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| bundleName       | string | 否   | 是   | 监听窗口对应包名，默认监听所有窗口。       |
+
+
+## ComponentEventOptions<sup>22+</sup>
+
+控件操作事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
+
+## UIElementInfo<sup>10+</sup>
+
+UI事件的相关信息。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| bundleName | string | 是   | 否   | 应用包名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| type       | string | 是   | 否   | 控件/窗口类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -302,7 +369,7 @@ let on:On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目�
 
 id(id: string, pattern: MatchPattern): On
 
-指定目标控件id属性，返回On对象自身。
+指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -378,7 +445,7 @@ let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定
 
 type(tp: string, pattern: MatchPattern): On
 
-指定目标控件的控件类型属性，返回On对象自身。
+指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -980,7 +1047,7 @@ belongingDisplay(displayId: number): On
 
 originalText(text: string, pattern?: MatchPattern): On
 
-指定目标控件的文本属性，支持多种匹配模式，返回On对象自身。
+指定控件的文本内容和文本匹配模式，返回On对象自身。
 
 > **说明**
 >
@@ -1809,7 +1876,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2179,11 +2246,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
-
-> **说明**
->
-> 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息，使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3740,7 +3803,7 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000,5000);
 }
 ```
 
@@ -3845,9 +3908,9 @@ async function demo() {
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3889,7 +3952,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3931,7 +3994,7 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
 
@@ -3973,7 +4036,7 @@ async function demo() {
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
@@ -4017,7 +4080,7 @@ async function demo() {
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
@@ -4063,7 +4126,7 @@ async function demo() {
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
 将鼠标光标移到目标点，使用Promise异步回调。
 
@@ -4784,7 +4847,7 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
 | speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
 | pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
@@ -5583,7 +5646,7 @@ UI事件监听器。
 
 ### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
@@ -5625,7 +5688,7 @@ async function demo() {
 
 ### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
 
@@ -5662,6 +5725,113 @@ async function demo() {
     console.info(UIElementInfo.type);
   }
   observer.once('dialogShow', callback);
+}
+```
+
+### once('windowChange')<sup>22+</sup>
+
+once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
+
+开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | 是   | 订阅的事件类型，支持的事件为'windowChange'。当监听到窗口变化时，触发该事件。 |
+| windowChangeType     | [WindowChangeType](#windowchangetype22)   | 是   | 窗口变化事件类型。 |
+| options  | [WindowChangeOptions](#windowchangeoptions22)   | 是   | 窗口变化事件监听的扩展配置，包括监听超时时间和监听窗口对应包名。 |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数，返回事件的相关信息。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let options: WindowChangeOptions = {
+    timeout: 20000,
+    bundleName: "com.example.myapplication"  // 请开发者替换为实际包名
+  }
+  let callback = (UIElementInfo: UIElementInfo)=> {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.windowChangeType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+  }
+  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
+}
+```
+
+### once('componentEventOccur')<sup>22+</sup>
+
+once(type: 'componentEventOccur', componentEventType: ComponentEventType, options: ComponentEventOptions, callback: Callback\<UIElementInfo>): void
+
+开始监听指定类型的控件操作事件，支持设置事件监听的扩展配置，监听到指定控件操作事件时触发callback回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | 是   | 订阅的事件类型，支持的事件为'componentEventOccur'。当监听到控件操作时，触发该事件。 |
+| componentEventType   | [ComponentEventType](#componenteventtype22)   | 是   | 控件操作事件类型。 |
+| options  | [ComponentEventOptions](#componenteventoptions22)  | 是 | 控件操作事件监听的扩展配置，包括监听超时时间和监听控件匹配条件。 |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let option: ComponentEventOptions = {
+    timeout: 20000,
+    on: ON.id('123')  // 请开发者替换为实际存在的控件id值
+  };
+  let callback = (UIElementInfo: UIElementInfo)=> {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.componentEventType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+    console.info(UIElementInfo.componentId);
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.left.toString());
+  };
+  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
 }
 ```
 

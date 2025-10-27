@@ -25,7 +25,7 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 ## WindowMode<sup>12+</sup>
 
-启动Ability时的窗口模式，该类型为枚举，可配合startAbility使用指定启动Ability的窗口模式。
+启动UIAbility时窗口的创建模式，类型为枚举。可配合[startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)方法使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,7 +54,7 @@ let option: StartOptions = {
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.startAbility(want, option).then(() => {
-      console.log('Succeed to start ability.');
+      console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
     });

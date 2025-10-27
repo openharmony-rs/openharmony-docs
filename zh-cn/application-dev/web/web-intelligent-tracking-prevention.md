@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插入到其他网页时，其发送的网络请求将禁止携带cookie。
@@ -27,7 +27,7 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
           .onClick(() => {
             try {
               this.controller.enableIntelligentTrackingPrevention(true);
-              console.log("enableIntelligentTrackingPrevention: true");
+              console.info("enableIntelligentTrackingPrevention: true");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -56,7 +56,7 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
           .onClick(() => {
             try {
               let result = this.controller.isIntelligentTrackingPreventionEnabled();
-              console.log("result: " + result);
+              console.info("result: " + result);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -92,7 +92,7 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
           })
         Web({ src: 'www.example.com', controller: this.controller })
           .onIntelligentTrackingPreventionResult((details) => {
-            console.log("onIntelligentTrackingPreventionResult: [websiteHost]= " + details.host +
+            console.info("onIntelligentTrackingPreventionResult: [websiteHost]= " + details.host +
               ", [trackerHost]=" + details.trackerHost);
           })
       }

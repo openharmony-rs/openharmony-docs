@@ -1,6 +1,12 @@
 # AbilityStateData
 
-The module defines the ability state information, which can be obtained through the **onAbilityStateChanged** lifecycle callback of [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md). The callback can be invoked after a lifecycle change listener is registered through [on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14).
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+The AbilityStateData module defines a struct for ability state information. Once a lifecycle change listener is registered using [on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), you can obtain an instance of this struct from the input parameter of the **onAbilityStateChanged** callback of [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).
 
 > **NOTE**
 > 
@@ -12,7 +18,8 @@ The module defines the ability state information, which can be obtained through 
 import { appManager } from '@kit.AbilityKit';
 ```
 
-## Properties
+## AbilityStateData
+
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -21,42 +28,53 @@ import { appManager } from '@kit.AbilityKit';
 | pid                     | number   | No  | No  | Process ID.                   |
 | bundleName              | string   | No  | No | Bundle name.         |
 | abilityName            | string   | No  | No  | Ability name.              |
-| uid                    | number   | No  | No  | User ID.                 |
-| state                   | number   | No  | No  | Ability state.<br>- In the stage model, the states of a UIAbility are described in [Ability States](#ability-states), and the states of an ExtensionAbility are described in [ExtensionAbility States](#extensionability-states).<br>- In the FA model, the states of an ability are described in [Ability States](#ability-states).               |
-| moduleName | string   | No  | No  | Name of the HAP file to which the ability belongs.   |
-| abilityType | number | No  | No  | [Ability type](#ability-types), which can be **page** or **service**.|
-| isAtomicService | boolean   | No | No | Whether the ability belongs to an atomic service.<br>- **true**: The ability belongs to an atomic service.<br>- **false**: The ability does not belong to an atomic service.    |
-| appCloneIndex          | number   | No  | Yes  | Index of an application clone.                 |
+| uid                    | number   | No  | No  | UID of the application.                 |
+| state                   | number   | No  | No  | Ability state.<br>- [Stage model](../../application-models/ability-terminology.md#stage-model): For the [UIAbility](js-apis-app-ability-uiAbility.md), see [UIAbility States](#uiability-states). For the [ExtensionAbility](js-apis-app-ability-extensionAbility.md), see [ExtensionAbility States](#extensionability-states).<br>- [FA model](../../application-models/ability-terminology.md#fa-model): For the ability, see [Ability States](#ability-states).               |
+| moduleName | string   | No  | No  | Module name to which the ability belongs.   |
+| abilityType | number | No  | No  | [Ability type](#ability-types), which can be [UIAbility](js-apis-app-ability-uiAbility.md) or [ExtensionAbility](js-apis-app-ability-extensionAbility.md).|
+| isAtomicService | boolean | No| No| Whether the ability belongs to an atomic service.<br>**true**: The ability belongs to an atomic service.<br>**false**: The ability does not belong to an atomic service.|
+| appCloneIndex          | number   | No  | Yes  | Index of an [application clone](../../quick-start/app-clone.md).                 |
+
+### UIAbility States
+
+| Value  | State                      | Description                  |
+| ---- | -------------------------- | ---------------------- |
+| 0    | ABILITY_STATE_CREATE       | The UIAbility is being created.     |
+| 1    | ABILITY_STATE_READY        | The UIAbility has been created.     |
+| 2    | ABILITY_STATE_FOREGROUND   | The UIAbility is running in the foreground.       |
+| 3    | ABILITY_STATE_FOCUS        | The UIAbility has gained focus.       |
+| 4    | ABILITY_STATE_BACKGROUND   | The UIAbility is running in the background.       |
+| 5    | ABILITY_STATE_TERMINATED   | The UIAbility is terminated.       |
+
+### ExtensionAbility States
+| Value  | State   | Description                 |
+| ---- | -------------------------- | ---------------------- |
+| 0    | EXTENSION_STATE_CREATE     | The ExtensionAbility is being created. |
+| 1    | EXTENSION_STATE_READY      | The ExtensionAbility has been created. |
+| 2    | EXTENSION_STATE_CONNECTED  | The ExtensionAbility is connected to the client.|
+| 3    | EXTENSION_STATE_DISCONNECTED | The ExtensionAbility is disconnected from the client.|
+| 4    | EXTENSION_STATE_TERMINATED  | The ExtensionAbility is terminated. |
 
 ### Ability States
 
-| State                       | Value | Description                   |
-| --------------------------  | --- | ---------------------- |
-| ABILITY_STATE_CREATE        | 0   |  The ability is being created.   |
-| ABILITY_STATE_READY         | 1   |  The ability has been created.   |
-| ABILITY_STATE_FOREGROUND    | 2   |  The ability is running in the foreground.     |
-| ABILITY_STATE_FOCUS         | 3   |   The ability has focus.    |
-| ABILITY_STATE_BACKGROUND    | 4   |  The ability is running in the background.     |
-| ABILITY_STATE_TERMINATED    | 5   |  The ability is terminated.     |
-| ABILITY_STATE_CONNECTED     | 7   |  The background service is connected to the client.|
-| ABILITY_STATE_DISCONNECTED  | 8   |  The background service is disconnected from the client.|
-
-### ExtensionAbility States
-| State                  | Value| Description                  |
-| ---------------------- | ---- | ---------------------- |
-| EXTENSION_STATE_CREATE | 0   | The ExtensionAbility is being created. |
-| EXTENSION_STATE_READY  | 1   | The ExtensionAbility has been created. |
-| EXTENSION_STATE_CONNECTED | 2  | The ExtensionAbility is connected to the client. |
-| EXTENSION_STATE_DISCONNECTED | 3 | The ExtensionAbility is disconnected from the client.|
-| EXTENSION_STATE_TERMINATED | 4  | The ExtensionAbility is terminated. |
+| Value  | State                      | Description                  |
+| ---- | -------------------------- | ---------------------- |
+| 0    | ABILITY_STATE_CREATE       | The ability is being created.     |
+| 1    | ABILITY_STATE_READY        | The ability has been created.     |
+| 2    | ABILITY_STATE_FOREGROUND   | The ability is running in the foreground.       |
+| 3    | ABILITY_STATE_FOCUS        | The ability has gained focus.      |
+| 4    | ABILITY_STATE_BACKGROUND   | The ability is running in the background.       |
+| 5    | ABILITY_STATE_TERMINATED   | The ability is terminated.       |
+| 7    | ABILITY_STATE_CONNECTED    | The background service is connected to the client.|
+| 8    | ABILITY_STATE_DISCONNECTED | The background service is disconnected from the client.|
 
 ### Ability Types
 
-| State   | Value     | Description                 |
-| ------  | ------- | --------------------- |
-| UNKNOWN | 0 | Unknown type.             |
-| PAGE    | 1 | Ability that has the UI.  |
-| SERVICE | 2 | Ability that provides the background service.|
-| DATA    | 3 | Ability that provides the data service.             |
-| FORM    | 4 | Ability that provides the widget service.  |
-| EXTENSION | 5 | Ability that provides extension capabilities.|
+| Value  | State   | Description                 |
+| ---- | ------- | --------------------- |
+| 0    | UNKNOWN | Unknown type. (System error.)             |
+| 1    | PAGE    | Ability that provides the UI, that is, [UIAbility](js-apis-app-ability-uiAbility.md). |
+| 2    | SERVICE | Ability that provides the background service. (FA model.)|
+| 3    | DATA | Ability that provides the data service. (FA model.)              |
+| 4    | FORM    | Ability that provides the widget service. (FA model.)   |
+| 5    | EXTENSION | Ability that provides the extension service. (stage model.) |

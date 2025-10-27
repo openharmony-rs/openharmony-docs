@@ -44,7 +44,7 @@
 
 从**API version 20**开始支持设置崩溃日志规格自定义设置。
 
-当前系统提供了通用的NativeCrash崩溃日志生成功能。然而，一些应用对NativeCrash崩溃日志打印内容有个性化的需求，因此需要设置崩溃日志配置参数。
+系统提供通用的NativeCrash崩溃日志生成功能，同时给应用提供设置崩溃日志配置参数功能，以满足其对日志内容的个性化需求。
 
 ### **接口说明**
 
@@ -91,7 +91,11 @@ Timestamp:2025-05-17 19:17:07.000
 
 ### params字段说明
 
-崩溃事件信息中params属性的详细描述如下：
+params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventinfo)中事件参数对象，包含每个事件参数的参数名和参数值。
+
+系统事件中params包含的字段已由各系统事件定义。
+
+崩溃事件信息中系统预定义的通用信息如下：
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
@@ -105,6 +109,8 @@ Timestamp:2025-05-17 19:17:07.000
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
 | exception | object | 异常信息, 详见[exception字段说明](#exception字段说明)。包含故障简要信息，全量故障信息见external_log文件。 |
 | hilog | string[] | 日志信息，最多显示100行hilog日志。更多日志见故障日志文件。 |
+| process_life_time | number | 故障进程存活时间，单位为s。<br>**说明**：从API version 22开始支持。 |
+| memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。<br>**说明**：从API version 22开始支持。 |
 | threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。仅在NativeCrash类型的崩溃事件提供。 |
 | external_log<sup></sup> | string[] | 故障日志文件[应用沙箱路径](../file-management/app-sandbox-directory.md)。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
 | log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
@@ -170,6 +176,15 @@ Timestamp:2025-05-17 19:17:07.000
 | symbol | string | 函数名称。 |
 | line | number | 代码行号。 |
 | column | number | 代码列号。 |
+
+### memory字段说明
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | -------- |
+| rss | number | 进程实际占用内存大小，单位KB。 |
+| sys_free_mem | number | 空闲内存大小，单位KB。 |
+| sys_avail_mem | number | 可用内存大小，单位KB。 |
+| sys_total_mem | number | 总内存大小，单位KB。 |
 
 ## 崩溃事件自定义参数设置
 

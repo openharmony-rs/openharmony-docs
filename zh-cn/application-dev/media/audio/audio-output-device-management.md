@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 应用可通过以下两种方式管理全局音频输出设备：
 - 通常情况下，可以通过[AudioRoutingManager管理全局音频输出设备](#通过audioroutingmanager管理全局音频输出设备)。
 - 从API 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持通过[AudioSession管理全局音频输出](#通过audiosession管理全局音频输出设备)，方便在使用AudioSession管理音频焦点的同时管理音频输出。

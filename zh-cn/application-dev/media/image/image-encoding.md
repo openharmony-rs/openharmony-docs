@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 图片编码指将PixelMap编码成不同格式的图片文件，当前支持编码为JPEG、WebP、PNG和 HEIF（不同硬件设备支持情况不同）格式，用于后续处理，如保存、传输等。
 

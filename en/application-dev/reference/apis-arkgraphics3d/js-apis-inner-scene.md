@@ -2,14 +2,15 @@
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
-<!--SE: @zdustc-->
-<!--TSE: @zhangyue283-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
 
 The module is the basic module of ArkGraphics 3D and provides common data types such as **SceneResourceParameters** and **SceneNodeParameters**. It also provides basic methods such as glTF model loading, scene creation, and resource creation.
 
 > **NOTE**
->
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - For details about the .shader file format, see [Requirements on the .shader File Format](../../graphics3d/arkgraphics3D-shader-resource.md).
 
 ## Modules to Import
 ```ts
@@ -21,6 +22,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 Describes the scene resource parameters (**name** and **uri**), which are used to provide the name of a scene resource and the path of the resource file required in the 3D scene.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name of the scene resource. It is customizable.|
@@ -28,20 +30,23 @@ Describes the scene resource parameters (**name** and **uri**), which are used t
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Shader, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
-function createShaderPromise() : Promise<Shader> {
-  return new Promise(() => {
+function createShaderPromise(): Promise<Shader> {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
 
-      // Create a variable of the SceneResourceParameters type and use it to create a shader.
+      // Create shader resources, which are configured through SceneResourceParameters. The path and file name can be customized based on the specific project resources.
       let sceneResourceParameter: SceneResourceParameters = { name: "shaderResource",
         uri: $rawfile("shaders/custom_shader/custom_material_sample.shader") };
-      let shader: Promise<Shader> = sceneFactory.createShader(sceneResourceParameter);
-      return shader;
+      let shader: Shader = await sceneFactory.createShader(sceneResourceParameter);
+      resolve(shader);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
@@ -58,11 +63,11 @@ Describes the scene node parameters, which are used to provide the name and path
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { SceneNodeParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
 
 function createNodePromise() : Promise<Node> {
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
@@ -70,8 +75,11 @@ function createNodePromise() : Promise<Node> {
       // Create a variable of the SceneNodeParameters type and use it to create a node.
       let sceneNodeParameter: SceneNodeParameters = { name: "empty_node",
         path:"/rootNode_/empty_node" };
-      let node: Promise<Node> = sceneFactory.createNode(sceneNodeParameter);
-      return node;
+      let node: Node = await sceneFactory.createNode(sceneNodeParameter);
+      resolve(node);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
@@ -81,11 +89,12 @@ function createNodePromise() : Promise<Node> {
 Describes a result object from raycasting, containing details about the 3D object hit by the ray.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes| No| 3D scene node hit by the ray. You can use this node to manipulate the target object (for example, moving, rotating, or hiding the object).|
-| centerDistance | number | Yes| No| Distance from the center of the bounding box of the hit object to the center of the camera. The value must be greater than 0.|
-| hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | Yes| No| Precise world coordinates ({x: number, y: number, z: number}) of the point where the ray hit the object.|
+| node | [Node](js-apis-inner-scene-nodes.md#node) | No| No| 3D scene node hit by the ray. You can use this node to manipulate the target object (for example, moving, rotating, or hiding the object).|
+| centerDistance | number | No| No| Distance from the center of the bounding box of the hit object to the center of the camera. The value must be greater than 0.|
+| hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | No| No| Precise world coordinates ({x: number, y: number, z: number}) of the point where the ray hit the object.|
 
 
 ## RaycastParameters<sup>20+</sup>
@@ -100,7 +109,7 @@ Describes the configuration parameters for raycasting, defining the behavior of 
 ## RenderResourceFactory<sup>20+</sup>
 Provides APIs to create rendering resources that can be shared among multiple scenes with a shared RenderContext.
 
-### createShader
+### createShader<sup>20+</sup>
 createShader(params: SceneResourceParameters): Promise\<Shader>
 
 Creates a shader based on the scene resource parameters. This API uses a promise to return the result.
@@ -110,7 +119,7 @@ Creates a shader based on the scene resource parameters. This API uses a promise
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| params | [SceneResourceParameters](#sceneresourceparameters) | Yes| Parameters for creating the shader.|
+| params | [SceneResourceParameters](#sceneresourceparameters) | Yes| Parameters for creating the shader. For details about the .shader file format, see [Requirements on the .shader File Format](../../graphics3d/arkgraphics3D-shader-resource.md).|
 
 **Return value**
 | Type| Description|
@@ -119,8 +128,7 @@ Creates a shader based on the scene resource parameters. This API uses a promise
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
+import { Shader, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
 
 function createShaderResource(): Promise<Shader> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
@@ -128,6 +136,7 @@ function createShaderResource(): Promise<Shader> {
     return Promise.reject(new Error("RenderContext is null"));
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
+  // Create shader resources. The path and file name can be customized based on the specific project resources.
   let shaderParams: SceneResourceParameters = {
     name: "custom_shader",
     uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")
@@ -135,7 +144,8 @@ function createShaderResource(): Promise<Shader> {
   return renderResourceFactory.createShader(shaderParams);
 }
 ```
-### createImage
+
+### createImage<sup>20+</sup>
 createImage(params: SceneResourceParameters): Promise\<Image>
 
 Creates an image based on the scene resource parameters. This API uses a promise to return the result.
@@ -154,8 +164,7 @@ Creates an image based on the scene resource parameters. This API uses a promise
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
+import { Image, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
 
 function createImageResource(): Promise<Image> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
@@ -163,6 +172,7 @@ function createImageResource(): Promise<Image> {
     return Promise.reject(new Error("RenderContext is null"));
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
+  // Load image resources. The path and file name can be customized based on the specific project resources.
   let imageParams: SceneResourceParameters = {
     name: "sampleImage",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -171,7 +181,7 @@ function createImageResource(): Promise<Image> {
 }
 ```
 
-### createMesh
+### createMesh<sup>20+</sup>
 createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise\<MeshResource>
 
 Creates a mesh based on the scene resource parameters and geometry definition. This API uses a promise to return the result.
@@ -191,10 +201,8 @@ Creates a mesh based on the scene resource parameters and geometry definition. T
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node }  from '@kit.ArkGraphics3D';
-import { CustomGeometry, PrimitiveTopology, RenderContext, RenderResourceFactory,
-  MeshResource } from '@ohos.graphics.scene';
+import { SceneResourceParameters, Scene, CustomGeometry, PrimitiveTopology, RenderContext, RenderResourceFactory,
+  MeshResource }  from '@kit.ArkGraphics3D';
 
 function createMeshResource(): Promise<MeshResource> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
@@ -252,6 +260,7 @@ function createMeshResource(): Promise<MeshResource> {
     { r: 1, g: 1, b: 1, a: 1 },
     { r: 0, g: 0, b: 0, a: 1 }
   ];
+  // Load image resources. The path and file name can be customized based on the specific project resources.
   let sceneResourceParameter: SceneResourceParameters = {
     name: "cubeMesh",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -260,7 +269,7 @@ function createMeshResource(): Promise<MeshResource> {
 }
 ```
 
-### createSampler
+### createSampler<sup>20+</sup>
 createSampler(params:SceneResourceParameters): Promise\<Sampler>
 
 Creates a sampler based on the scene resource parameters. This API uses a promise to return the result.
@@ -279,9 +288,7 @@ Creates a sampler based on the scene resource parameters. This API uses a promis
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, RenderContext, RenderResourceFactory,
-  Sampler } from '@kit.ArkGraphics3D';
+import { SceneResourceParameters, Scene, RenderContext, RenderResourceFactory, Sampler } from '@kit.ArkGraphics3D';
 
 function createSamplerResource(): Promise<Sampler> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
@@ -289,6 +296,7 @@ function createSamplerResource(): Promise<Sampler> {
     return Promise.reject(new Error("RenderContext is null"));
   }
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
+  // Load image resources. The path and file name can be customized based on the specific project resources.
   let samplerParams: SceneResourceParameters = {
     name: "sampler1",
     uri: $rawfile("image/Cube_BaseColor.png")
@@ -297,7 +305,7 @@ function createSamplerResource(): Promise<Sampler> {
 }
 ```
 
-### createScene
+### createScene<sup>20+</sup>
 createScene(uri?: ResourceStr): Promise\<Scene>
 
 Creates a scene from the specified resource URI. If no URI is specified, an empty scene is created. This API uses a promise to return the result.
@@ -316,9 +324,7 @@ Creates a scene from the specified resource URI. If no URI is specified, an empt
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
-import { RenderContext, RenderResourceFactory } from '@ohos.graphics.scene';
+import { Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
 
 // fromFile=true: loads a scene from the specified GLB file. fromFile=false: creates an empty scene. This parameter illustrates two typical methods for creating scenes.
 function createScenePromise(fromFile: boolean = false): Promise<Scene> {
@@ -329,7 +335,7 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 
   const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
   if (fromFile) {
-    // Create a scene from a file.
+    // Create a scene and load a .gltf or .glb file as the initial content. The path and name can be customized based on the actual project resources.
     return renderResourceFactory.createScene($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   } else {
     // Create an empty scene.
@@ -338,7 +344,28 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 }
 ```
 
+## CameraParameters<sup>21+</sup>
+
+Describes the camera parameters, which are used to define additional configuration options for camera initialization.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| renderingPipeline | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No  | Yes  | Initial rendering pipeline type. The default value is **FORWARD_LIGHTWEIGHT**.|
+
+## EffectParameters<sup>21+</sup>
+
+Describes the effect parameters.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name    | Type  | Read Only| Optional| Description                                                        |
+| ---- | ---- | ---- | ---- | ---- |
+| effectId | string | No| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**.|
+
 ## SceneResourceFactory
+
 Provides APIs for creating resources, such as cameras and light sources, used in 3D scenes. This class inherits from [RenderResourceFactory](#renderresourcefactory20).
 
 ### createCamera
@@ -349,6 +376,7 @@ Creates a camera based on scene node parameters. This API uses a promise to retu
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
@@ -360,24 +388,72 @@ Creates a camera based on scene node parameters. This API uses a promise to retu
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { SceneNodeParameters, Camera, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
-function createCameraPromise() : Promise<Camera> {
-  return new Promise(() => {
+function createCameraPromise(): Promise<Camera> {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
       // Create a camera.
-      let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
-      return camera;
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      resolve(camera);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
+### createCamera<sup>21+</sup>
+
+createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise\<Camera>
+
+Creates a camera based on scene node parameters and camera parameters. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| cameraParams | [CameraParameters](#cameraparameters21) | Yes| Camera parameters.|
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| Promise\<[Camera](js-apis-inner-scene-nodes.md#camera)> | Promise used to return the Camera object created.|
+
+**Example**
+```ts
+import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, CameraParameters,
+  RenderingPipelineType } from '@kit.ArkGraphics3D';
+
+function createCameraPromise(): Promise<Camera> {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+    let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+    scene.then(async (result: Scene) => {
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let nodeParameter: SceneNodeParameters = { name: "camera1" };
+      let camParameter: CameraParameters = {renderingPipeline: RenderingPipelineType.FORWARD};
+      // Create a camera.
+      let camera: Camera = await sceneFactory.createCamera(nodeParameter, camParameter);
+      resolve(camera);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
 ```
 
 ### createLight
+
 createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
 Creates a light based on the scene node parameters and light type. This API uses a promise to return the result.
@@ -397,18 +473,21 @@ Creates a light based on the scene node parameters and light type. This API uses
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { SceneNodeParameters, LightType, Light, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
 function createLightPromise() : Promise<Light> {
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       let sceneLightParameter: SceneNodeParameters = { name: "light" };
       // Create directional light.
-      let light: Promise<Light> = sceneFactory.createLight(sceneLightParameter, LightType.DIRECTIONAL);
-      return light;
+      let light: Light = await sceneFactory.createLight(sceneLightParameter, LightType.DIRECTIONAL);
+      resolve(light);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
@@ -427,25 +506,29 @@ Creates a node. This API uses a promise to return the result.
 | params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
 
 **Return value**
+
 | Type| Description|
 | ---- | ---- |
 | Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise used to return the Node object.|
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { SceneNodeParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
 
-function createNodePromise() : Promise<Node> {
-  return new Promise(() => {
+function createNodePromise(): Promise<Node> {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       let sceneNodeParameter: SceneNodeParameters = { name: "empty_node",
         path:"/rootNode_/empty_node" };
       // Create a node.
-      let node: Promise<Node> = sceneFactory.createNode(sceneNodeParameter);
-      return node;
+      let node: Node = await sceneFactory.createNode(sceneNodeParameter);
+      resolve(node);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
@@ -471,18 +554,21 @@ Creates a material based on the scene resource parameters and material type. Thi
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { MaterialType, Material, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
 function createMaterialPromise() : Promise<Material> {
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       let sceneMaterialParameter: SceneResourceParameters = { name: "material" };
       // Create a material.
-      let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
-      return material;
+      let material: Material = await sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
+      resolve(material);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
@@ -507,18 +593,22 @@ Creates an environment based on the scene resource parameters. This API uses a p
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Environment, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
-function createEnvironmentPromise() : Promise<Environment> {
-  return new Promise(() => {
+function createEnvironmentPromise(): Promise<Environment> {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
     scene.then(async (result: Scene) => {
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // Load environment map resources. The path and file name can be customized based on the specific project resources.
       let sceneEnvironmentParameter: SceneResourceParameters = { name: "env", uri: $rawfile("KTX/quarry_02_2k_radiance.ktx") };
       // Create an environment.
-      let env: Promise<Environment> = sceneFactory.createEnvironment(sceneEnvironmentParameter);
-      return env;
+      let env: Environment = await sceneFactory.createEnvironment(sceneEnvironmentParameter);
+      resolve(env);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
@@ -543,12 +633,12 @@ Creates a geometry object based on the scene node parameters and mesh data. This
 | Promise\<[Geometry](js-apis-inner-scene-nodes.md#geometry)> | Promise used to return the Geometry object created.|
 
 **Example**
+
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Geometry, CubeGeometry, MeshResource} from '@kit.ArkGraphics3D';
+import { SceneResourceFactory, Scene, Geometry, CubeGeometry } from '@kit.ArkGraphics3D';
 
 function createGeometryPromise() : Promise<Geometry> {
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
     let scene: Promise<Scene> = Scene.load();
     scene.then(async (result: Scene | undefined) => {
       if (!result) {
@@ -559,29 +649,75 @@ function createGeometryPromise() : Promise<Geometry> {
       cubeGeom.size = { x: 1, y: 1, z: 1 };
       let meshRes = await sceneFactory.createMesh({ name: "MeshName" }, cubeGeom);
       console.info("TEST createGeometryPromise");
-      let geometry: Promise<Geometry> = sceneFactory.createGeometry({ name: "GeometryName" }, meshRes);
-      return geometry;
+      let geometry: Geometry = await sceneFactory.createGeometry({ name: "GeometryName" }, meshRes);
+      resolve(geometry);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
     });
   });
 }
 ```
 
-## SceneComponent<sup>20+</sup>
-Represents a basic scene component, which is used to describe the component information of a scene node, including the component name and its properties.
+### createEffect<sup>21+</sup>
 
-### Properties
+createEffect(params: EffectParameters): Promise\<Effect>
+
+Creates an effect object based on the effect parameters. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| params | [EffectParameters](#effectparameters21) | Yes| Effect parameters.|
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| Promise\<[Effect](./js-apis-inner-scene-resources.md#effect21)> | Promise used to return the Environment object created.|
+
+**Example**
+```ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function createEffect() : Promise<Effect> {
+  return new Promise((resolve, reject) => {
+    let scene: Promise<Scene> = Scene.load();
+    scene.then(async (result: Scene | undefined) => {
+      if (!result) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
+      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"}
+      let effect: Effect = await sceneFactory.createEffect(params);
+      resolve(effect);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
+
+## SceneComponent<sup>20+</sup>
+
+Represents a basic scene component, which is used to describe the component information of a scene node, including the component name and its properties.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name of the scene component, which is customizable.|
-| property | Record<string, string \| number \| Vec2 \| Vec3 \| Vec4 \| Image \| boolean \| number[] \| string[] \| Image[]> | Yes| No| A set of component properties stored in key-value pairs. It supports various basic and complex types to describe various properties of the scene component.|
+| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | Yes| No| A set of component properties stored in key-value pairs. It supports various basic and complex types to describe various properties of the scene component.|
 
 ## RenderContext<sup>20+</sup>
 Defines the context of all rendering resources. Multiple scenes created within the same render context can share rendering resources.
 
-### getRenderResourceFactory
+### getRenderResourceFactory<sup>20+</sup>
 getRenderResourceFactory() : RenderResourceFactory
 
 Obtains the rendering resource factory, which provides APIs for creating different rendering resources.
@@ -595,9 +731,7 @@ Obtains the rendering resource factory, which provides APIs for creating differe
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, RenderContext,
-  RenderResourceFactory } from '@kit.ArkGraphics3D';
+import { Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
 
 function getRenderResourceFactory(): void {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
@@ -610,7 +744,7 @@ function getRenderResourceFactory(): void {
 }
 ```
 
-### loadPlugin
+### loadPlugin<sup>20+</sup>
 loadPlugin(name: string): Promise\<boolean>
 
 Loads a plugin by name. The API locates and loads the corresponding plugin resource using the provided plugin name. It uses a promise to return the result.
@@ -629,15 +763,13 @@ Loads a plugin by name. The API locates and loads the corresponding plugin resou
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, RenderContext,
-  RenderResourceFactory } from '@kit.ArkGraphics3D';
+import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 
 function loadPlugin(): Promise<boolean> {
   const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
   if (!renderContext) {
     console.error("RenderContext is null");
-    return Promise.resolve(false);
+    return Promise.reject(new Error("RenderContext is null"));
   }
   return renderContext.loadPlugin("pluginName");
 }
@@ -663,11 +795,10 @@ Registers the directory path and retrieval name for asset files, such as shaders
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, RenderContext,
-  RenderResourceFactory } from '@kit.ArkGraphics3D';
+import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 
 function registerResourcePath(): void {
+  // Create shader resources. The path and file name can be customized based on the specific project resources.
   Scene.load($rawfile("shaders/custom_shader/custom_material_sample.shader"))
     .then(scene => {
       const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
@@ -728,11 +859,10 @@ Loads a resource by path. This API uses a promise to return the result.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene } from '@kit.ArkGraphics3D';
 
-function loadModel() : void {
-  // Load the model.
+function loadModel(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {});
 }
@@ -758,10 +888,10 @@ Obtains a node by path.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
-function getNode() : void {
+function getNode(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
@@ -786,10 +916,10 @@ Obtains the scene resource factory.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
-function getFactory() : void {
+function getFactory(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
@@ -809,10 +939,10 @@ Destroys this scene and releases all scene resources.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene } from '@kit.ArkGraphics3D';
 
-function destroy() : void {
+function destroy(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {
     if (result) {
@@ -844,14 +974,14 @@ Imports a node from another scene.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Geometry, CubeGeometry, MeshResource} from '@kit.ArkGraphics3D';
+import { Scene } from '@kit.ArkGraphics3D';
 
 function ImportNodeTest() {
   Scene.load().then(async (result: Scene | undefined) => {
     if (!result) {
       return;
     }
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     Scene.load($rawfile("gltf/AnimatedCube/glTF/AnimatedCube.glb"))
       .then(async (extScene: Scene) => {
         let extNode = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
@@ -886,14 +1016,14 @@ Imports another scene into the current one.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Geometry, CubeGeometry, MeshResource} from '@kit.ArkGraphics3D';
+import { Scene } from '@kit.ArkGraphics3D';
 
 function ImportSceneTest() {
   Scene.load().then(async (result: Scene | undefined) => {
     if (!result) {
       return;
     }
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
     let content = await result.getResourceFactory().createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     console.info("TEST ImportSceneTest");
     result.importScene("helmet", content, null);
@@ -920,10 +1050,10 @@ Renders frames on demand, such as controlling the frame rate.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Geometry, CubeGeometry, MeshResource} from '@kit.ArkGraphics3D';
+import { Scene } from '@kit.ArkGraphics3D';
 
 function RenderFrameTest() {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(async (result: Scene | undefined) => {
       if (!result) {
@@ -955,12 +1085,10 @@ Creates a component and attaches it to a node. This API uses a promise to return
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';
-import { SceneComponent } from '@ohos.graphics.scene';
-
+import { Scene, SceneComponent } from '@kit.ArkGraphics3D';
 
 function createComponentTest(): Promise<SceneComponent> {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   return Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(scene => {
       if (!scene) {
@@ -998,10 +1126,10 @@ Obtains the component instance from a node based on the component name.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Geometry, CubeGeometry, MeshResource, SceneComponent } from '@kit.ArkGraphics3D';
+import { Scene } from '@kit.ArkGraphics3D';
 
 function getComponentTest() {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"))
     .then(async (result: Scene | undefined) => {
       if (!result) {
@@ -1024,6 +1152,8 @@ static getDefaultRenderContext(): RenderContext | null
 
 Obtains the rendering context associated with the current graphics object.
 
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
 **Return value**
 | Type| Description|
 | ---- | ---- |
@@ -1031,8 +1161,7 @@ Obtains the rendering context associated with the current graphics object.
 
 **Example**
 ```ts
-import { Image, Shader, MaterialType, Material, ShaderMaterial, Animation, Environment, Container, SceneNodeParameters,
-  LightType, Light, Camera, SceneResourceParameters, SceneResourceFactory, Scene, Node, Geometry, CubeGeometry, MeshResource, SceneComponent, RenderContext } from '@kit.ArkGraphics3D';
+import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 
 function getDefaultRenderContextTest() {
   console.info("TEST getDefaultRenderContextTest");

@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 在各种终端设备的使用过程中，对于音频相关功能的体验，用户在不同场景下，有多方面的核心性能诉求，包含流畅度、响应速度、省电等，典型的场景如下：
 
@@ -27,7 +27,7 @@
 
 ### 低时延音频播放与录音
 
-时延是指音频数据在系统中处理和传输的时间，播放场景下指系统收到数据到数据被硬件输出的时间，录音场景下指硬件麦克风采集到数据到从系统接口传递给应用的时间。
+时延是指音频数据在系统中处理和传输的时间。播放场景下指从系统收到数据至数据被硬件输出的时间；录音场景下指从硬件麦克风采集到数据至应用收到采集数据的时间。
 
 为支持低时延音频场景，系统专门提供了低时延音频通路，开发者需要显式通过接口参数进行设置，参考：[低时延音频使用](audio-latency.md)。
 
@@ -59,8 +59,8 @@
 
 **使用DevEco Profiler**
 
-DevEco Profiler是一个帮助开发者更高效地进行性能问题的分析的场景化调优工具，它集成在DevEco Studio开发IDE中，可以在应用开发过程中
-直接使用。工具的具体使用方式可参考指南：[DevEco Profiler性能调优概述](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-insight-description-V5)。
+DevEco Profiler是一个帮助开发者更高效地进行性能问题的分析的场景化调优工具，集成在DevEco Studio中，可以在应用开发过程中
+直接使用。工具的具体使用方式可参考指南：[DevEco Profiler性能调优概述](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-description)。
 
 DevEco Profiler主要用于对应用内运行流程进行分析和调优，指南中有详细的分析步骤说明，此文不再赘述。
 

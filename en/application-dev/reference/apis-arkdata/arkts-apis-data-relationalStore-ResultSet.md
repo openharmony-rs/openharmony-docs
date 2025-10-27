@@ -1,10 +1,18 @@
 # Interface (ResultSet)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 Provides APIs to access the result set obtained by querying the RDB store. returned by **query()**.
+
+The **ResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
 
 For the following APIs, you should use either [query](arkts-apis-data-relationalStore-RdbStore.md#query), [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql), [remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery-1), or [queryLockedRow](arkts-apis-data-relationalStore-RdbStore.md#querylockedrow12) to obtain the **ResultSet** instance first, and then use this instance to call the corresponding method.
 
@@ -18,17 +26,17 @@ import { relationalStore } from '@kit.ArkData';
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name        | Type           | Mandatory| Description                            |
-| ------------ | ------------------- | ---- | -------------------------------- |
-| columnNames  | Array&lt;string&gt; | Yes  | Names of all columns in the result set.      |
-| columnCount  | number              | Yes  | Number of columns in the result set.            |
-| rowCount     | number              | Yes  | Number of rows in the result set.            |
-| rowIndex     | number              | Yes  | Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
-| isAtFirstRow | boolean             | Yes  | Whether the result set pointer is in the first row (the row index is **0**). The value **true** means the result set pointer is in the first row.|
-| isAtLastRow  | boolean             | Yes  | Whether the result set pointer is in the last row. The value **true** means the pointer is in the last row.|
-| isEnded      | boolean             | Yes  | Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
-| isStarted    | boolean             | Yes  | Whether the result set pointer is moved. The value **true** means the pointer is moved.            |
-| isClosed     | boolean             | Yes  | Whether the result set is closed. The value **true** means the result set is closed.        |
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set.|
+| columnCount | number | Yes| No| Number of columns in the result set.|
+| rowCount | number | Yes| No| Number of rows in the result set.|
+| rowIndex | number | Yes| No| Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
+| isAtFirstRow | boolean | Yes| No| Whether the result set pointer is in the first row (the row index is **0**). The value **true** means the result set pointer is in the first row.|
+| isAtLastRow | boolean | Yes| No| Whether the result set pointer is in the last row. The value **true** means the pointer is in the last row.|
+| isEnded | boolean | Yes| No| Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
+| isStarted | boolean | Yes| No| Whether the result set pointer is moved. The value **true** means the pointer is moved.|
+| isClosed | boolean | Yes| No| Whether the result set is closed. The value **true** means the result set is closed.|
 
 ## getColumnIndex
 
@@ -59,7 +67,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
@@ -81,10 +89,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 if (resultSet != undefined) {
-  const id = (resultSet as relationalStore.ResultSet).getLong((resultSet as relationalStore.ResultSet).getColumnIndex("ID"));
-  const name = (resultSet as relationalStore.ResultSet).getString((resultSet as relationalStore.ResultSet).getColumnIndex("NAME"));
-  const age = (resultSet as relationalStore.ResultSet).getLong((resultSet as relationalStore.ResultSet).getColumnIndex("AGE"));
-  const salary = (resultSet as relationalStore.ResultSet).getDouble((resultSet as relationalStore.ResultSet).getColumnIndex("SALARY"));
+  const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+  const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+  const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+  const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
 }
 ```
 
@@ -117,7 +125,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
@@ -149,7 +157,7 @@ if (resultSet != undefined) {
 
 getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
-Obtains the column data type based on the specified column index or column name. This API uses a promise to return the result.
+Obtains the column type based on the specified column index or column name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -175,7 +183,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000     | Inner error.                                                 |
 | 14800011     | Failed to open the database because it is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | Resultset is empty or column index is out of bounds.                                        |
+| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
 | 14800014     | The RdbStore or ResultSet is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
@@ -213,7 +221,7 @@ if (resultSet != undefined) {
 
 getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
-Obtains the column data type based on the specified column index or column name. This API returns the result synchronously.
+Obtains the column type based on the specified column index or column name. This API returns the result synchronously.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -239,7 +247,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000     | Inner error.                                                 |
 | 14800011     | Failed to open the database because it is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | Resultset is empty or column index is out of bounds.                                        |
+| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
 | 14800014     | The RdbStore or ResultSet is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
@@ -580,7 +588,7 @@ if (resultSet != undefined) {
 
 getValue(columnIndex: number): ValueType
 
-Obtains the value from the specified column and current row. If the value type is any of **ValueType**, the value of the corresponding type will be returned. Otherwise, **14800000** will be returned.
+Obtains the value from the specified column and current row. If the value type is any of **ValueType**, the value of the corresponding type will be returned. Otherwise, **14800000** will be returned. If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -606,7 +614,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error.      |
 | 14800011  | Failed to open the database because it is corrupted.        |
 | 14800012  | ResultSet is empty or pointer index is out of bounds.       |
-| 14800013  | Resultset is empty or column index is out of bounds.   |
+| 14800013  | ResultSet is empty or column index is out of bounds.   |
 | 14800014  | The RdbStore or ResultSet is already closed.       |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.    |
 | 14800022  | SQLite: Callback routine requested an abort.     |
@@ -626,8 +634,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const codes = (resultSet as relationalStore.ResultSet).getValue((resultSet as relationalStore.ResultSet).getColumnIndex("BIGINT_COLUMN"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("NAME");
+    if (colIndex > -1) {
+      const name = resultSet.getValue(colIndex);
+      console.info(`Get value success, name is ${name}`);
+    }
+  }
 }
 ```
 
@@ -662,7 +676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -717,7 +731,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -738,7 +752,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 if (resultSet != undefined) {
-  const name = (resultSet as relationalStore.ResultSet).getString((resultSet as relationalStore.ResultSet).getColumnIndex("NAME"));
+  const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
 }
 ```
 
@@ -746,7 +760,7 @@ if (resultSet != undefined) {
 
 getLong(columnIndex: number): number
 
-Obtains the value from the specified column and current row, and returns a value of Long type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Long type will be returned. If the column is empty, **0** will be returned. If the value is of any other type, **14800000** will be returned.
+Obtains the value from the specified column and current row, and returns a value of Long type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Long type will be returned. If the column is empty, **0** will be returned. If the value is of any other type, **14800000** will be returned. If the data type in the specified column is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision. If the data type in the specified column is DOUBLE, you are advised to use the [getDouble](#getdouble) API to obtain the value without losing precision.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -760,7 +774,7 @@ Obtains the value from the specified column and current row, and returns a value
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | Value obtained.<br>The value range supported by this API is **Number.MIN_SAFE_INTEGER** to **Number.MAX_SAFE_INTEGER**. If the value is out of this range, use [getDouble](#getdouble).|
+| number | Value obtained.<br>The value range supported by this API is **Number.MIN_SAFE_INTEGER** to **Number.MAX_SAFE_INTEGER**. If the value is out of this range, use [getDouble](#getdouble) for DOUBLE values and [getString](#getstring) for INTEGER values.|
 
 **Error codes**
 
@@ -772,7 +786,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -792,8 +806,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const age = (resultSet as relationalStore.ResultSet).getLong((resultSet as relationalStore.ResultSet).getColumnIndex("AGE"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("AGE");
+    if (colIndex > -1) {
+      const age = resultSet.getLong(colIndex);
+      console.info(`Get long success, age is ${age}`);
+    }
+  }
 }
 ```
 
@@ -827,7 +847,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -847,8 +867,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const salary = (resultSet as relationalStore.ResultSet).getDouble((resultSet as relationalStore.ResultSet).getColumnIndex("SALARY"));
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("SALARY");
+    if (colIndex > -1) {
+      const salary = resultSet.getDouble(colIndex);
+      console.info(`Get double success, salary is ${salary}`);
+    }
+  }
 }
 ```
 
@@ -882,7 +908,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -937,7 +963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -985,7 +1011,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1042,7 +1068,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1108,7 +1134,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800000     | Inner error.                                  |
 | 14800011     | Failed to open the database because it is corrupted.                           |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                            |
-| 14800013     | Resultset is empty or column index is out of bounds.                         |
+| 14800013     | ResultSet is empty or column index is out of bounds.                         |
 | 14800014     | The RdbStore or ResultSet is already closed.                               |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                        |
 | 14800022     | SQLite: Callback routine requested an abort.  |
@@ -1201,7 +1227,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 14800000  | Inner error. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Resultset is empty or column index is out of bounds. |
+| 14800013  | ResultSet is empty or column index is out of bounds. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1221,93 +1247,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-if (resultSet != undefined) {
-  const isColumnNull = (resultSet as relationalStore.ResultSet).isColumnNull((resultSet as relationalStore.ResultSet).getColumnIndex("CODES"));
-}
-```
-
-## getValueForFlutter<sup>20+</sup>
-
-getValueForFlutter(columnIndex: number): ValueType
-
-Obtains the value from the specified column and current row. If the value is a number and exceeds the value range of **number**, the value is returned as a string.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Parameters**
-
-| Name     | Type  | Mandatory| Description                   |
-| ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | Yes  | Index of the target column, starting from 0.|
-
-**Returns**:
-
-| Type      | Description                            |
-| ---------- | -------------------------------- |
-| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | Value obtained.|
-
-**Error codes**
-
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
-
-| **ID**| **Error Message**    |
-|-----------|---------|
-| 14800011  | Failed to open the database because it is corrupted.        |
-| 14800012  | ResultSet is empty or pointer index is out of bounds.       |
-| 14800013  | Resultset is empty or column index is out of bounds.   |
-| 14800014  | The RdbStore or ResultSet is already closed.       |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.    |
-| 14800023  | SQLite: Access permission denied.    |
-| 14800024  | SQLite: The database file is locked.    |
-| 14800025  | SQLite: A table in the database is locked.  |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.    |
-| 14800030  | SQLite: Unable to open the database file.    |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit.    |
-
-**Example**:
-
-```ts
-if (resultSet != undefined) {
-  const codes = (resultSet as relationalStore.ResultSet).getValueForFlutter((resultSet as relationalStore.ResultSet).getColumnIndex("BIGINT_COLUMN"));
-}
-```
-
-## getRowForFlutter<sup>20+</sup>
-
-getRowForFlutter(): ValuesBucket
-
-Obtains the value from the specified column and all rows. If the value is a number and exceeds the value range of **number**, the value is returned as a string.
-
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Returns**:
-
-| Type             | Description                          |
-| ---------------- | ---------------------------- |
-| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Value obtained.|
-
-**Error codes**
-
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
-
-| **ID**| **Error Message**                                                |
-|-----------| ------------------------------------------------------------ |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-
-**Example**:
-
-```ts
-if (resultSet != undefined) {
-  const row = (resultSet as relationalStore.ResultSet).getRowForFlutter();
+if (resultSet !== undefined) {
+  while (resultSet.goToNextRow()) {
+    const colIndex = resultSet.getColumnIndex("CODES");
+    if (colIndex > -1) {
+      const isColumnNull = resultSet.isColumnNull(colIndex);
+      console.info(`Column is null: ${isColumnNull}`);
+    }
+  }
 }
 ```
 

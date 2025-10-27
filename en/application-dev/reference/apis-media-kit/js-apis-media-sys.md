@@ -1,4 +1,10 @@
 # @ohos.multimedia.media (Media) (System API)
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
@@ -12,6 +18,18 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 ```ts
 import { media } from '@kit.MediaKit';
 ```
+
+## AVErrorCode<sup>9+</sup>
+
+Enumerates the [media error codes](errorcode-media.md).
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**System API**: This is a system API.
+
+| Name                                 | Value     | Description                                |
+| :------------------------------------ | ------- | ------------------------------------ |
+| AVERR_SESSION_NOT_EXIST<sup>20+</sup> | 5400109 | The session ID does not exist.                  |
 
 ## media.createVideoRecorder<sup>9+</sup>
 
@@ -28,16 +46,16 @@ Only one VideoRecorder instance can be created per device.
 **Parameters**
 
 | Name  | Type                                           | Mandatory| Description                                                        |
-| -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<[VideoRecorder](#videorecorder9)> | Yes  | Callback used to return the result. If the operation is successful, a VideoRecorder instance is returned; otherwise, **null** is returned. The instance can be used to record video.|
+| -------- | ----------------------------------------------- | ---- |------------------------------------------------------------ |
+| callback | AsyncCallback<[VideoRecorder](#videorecorder9)> | Yes  |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the VideoRecorder instance created; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                      |
 | -------- | ------------------------------ |
-| 202  | Not system App. |
+| 202      | Not system App.                |
 | 5400101  | No memory. Return by callback. |
 
 **Example**
@@ -61,7 +79,6 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 createVideoRecorder(): Promise\<VideoRecorder>
 
 Creates a VideoRecorder instance. This API uses a promise to return the result.
-
 Only one VideoRecorder instance can be created per device.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
@@ -76,10 +93,11 @@ Only one VideoRecorder instance can be created per device.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                     |
 | -------- | ----------------------------- |
+| 202      | Not system App.               |
 | 5400101  | No memory. Return by promise. |
 
 **Example**
@@ -104,7 +122,7 @@ media.createVideoRecorder().then((video: media.VideoRecorder) => {
 
 reportAVScreenCaptureUserChoice(sessionId: number, choice: string): Promise\<void>
 
-Reports the user selection result in the screen capture privacy dialog box to the AVScreenCapture server to determine whether to start screen capture. Screen capture starts only when the user touches a button to continue the operation.
+Reports the user selection result in the screen capture privacy dialog box to the AVScreenCapture server to determine whether to start screen capture. Screen capture starts only when the user touches the **Allow** button to continue the operation. This API uses a promise to return the result.
 
 This API is called by the system application that creates the dialog box.
 
@@ -142,6 +160,8 @@ class JsonData {
   public choice: string = 'true';
   public displayId: number | null = -1;
   public missionId: number | null = -1;
+  public checkBoxSelected: string = 'true';
+  public isInnerAudioBoxSelected: string = 'true';
 }
 let sessionId: number = 0; // Use the ID of the session that starts the process.
 
@@ -150,6 +170,8 @@ try {
     choice: 'true',  // Replace it with the user choice.
     displayId: -1, // Replace it with the ID of the display selected by the user.
     missionId: -1,   // Replace it with the ID of the window selected by the user.
+    checkBoxSelected: 'true',   // Replace it with the enabled status of screen protection.
+    isInnerAudioBoxSelected: 'true',   // Replace it the enabled status of internal audio recording.
   }
   await media.reportAVScreenCaptureUserChoice(sessionId, JSON.stringify(jsonData));
 } catch (error: BusinessError) {
@@ -161,11 +183,11 @@ try {
 
 getAVScreenCaptureConfigurableParameters(sessionId: number): Promise\<string>
 
-Obtains the system privacy protection and application privacy protection settings that can be modified by the user from the server. This API uses a promise to return the result.
+Obtains configuration parameters for system- and application-level privacy protection from the server. This API uses a promise to return the result.
 
 >**NOTE**
 >
-> This API is exclusively for the system application that creates the dialog box.
+> This API is exclusively for the system application that creates the privacy dialog box.
 
 **System API**: This is a system API.
 
@@ -181,7 +203,7 @@ Obtains the system privacy protection and application privacy protection setting
 
 | Type            | Description                            |
 | ---------------- | -------------------------------- |
-| Promise\<string> | Promise that returns no value.|
+| Promise\<string> | Promise used to return the result, which is a string containing the configuration parameters. If the operation fails, an empty string is returned.|
 
 **Error codes**
 
@@ -220,7 +242,7 @@ Obtains a ScreenCaptureMonitor instance. This API uses a promise to return the r
 
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| Promise<[ScreenCaptureMonitor](#screencapturemonitor18)> | Promise used to return the result. The instance can be used to query and monitor the status of the system screen recorder.<br>If the operation is successful, a ScreenCaptureMonitor instance is returned; otherwise, **null** is returned.|
+| Promise<[ScreenCaptureMonitor](#screencapturemonitor18)> | Promise used to return the result. If the operation is successful, a ScreenCaptureMonitor instance is returned; otherwise, **null** is returned.|
 
 **Error codes**
 
@@ -267,7 +289,7 @@ If a SoundPool instance created using [createSoundPool](arkts-apis-media-f.md#me
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                     |
 | -------- | ----------------------------- |
@@ -304,9 +326,9 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 **System capability**: SystemCapability.Multimedia.Media.AVImageGenerator
 
-| Name    | Type  |  Readable  |   Writable   |  Description                  |
+| Name    | Type  |  Read-Only  |   Optional   |  Description                  |
 | -------- | ------ |   ------| ------ | ---------------------- |
-| colorFormat  | [PixelFormat](#pixelformat11) |  Yes  |  Yes  | Color format of the thumbnail.<br>**System API**: This is a system API.     |
+| colorFormat  | [PixelFormat](#pixelformat11) |  No  |  Yes  | Color format of the thumbnail.<br>**System API**: This is a system API.     |
 
 ## PixelFormat<sup>11+</sup>
 
@@ -330,7 +352,7 @@ Provides APIs to obtain metadata from media assets. Before calling any API of AV
 
 getTimeByFrameIndex(index: number): Promise\<number>
 
-Obtains the video timestamp corresponding to a video frame number. Only MP4 video files are supported.
+Obtains the video timestamp corresponding to a video frame number. (Only MP4 video files are supported.) This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -350,7 +372,7 @@ Obtains the video timestamp corresponding to a video frame number. Only MP4 vide
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
@@ -375,7 +397,7 @@ avMetadataExtractor.getTimeByFrameIndex(0).then((timeUs: number) => {
 
 getFrameIndexByTime(timeUs: number): Promise\<number>
 
-Obtains the video frame number corresponding to a video timestamp. Only MP4 video files are supported.
+Obtains the video frame number corresponding to a video timestamp. (Only MP4 video files are supported.) This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -395,7 +417,7 @@ Obtains the video frame number corresponding to a video timestamp. Only MP4 vide
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
@@ -440,7 +462,7 @@ This API can be called after the [prepare()](arkts-apis-media-AVRecorder.md#prep
 
 | Type            | Description                            |
 | ---------------- | -------------------------------- |
-| Promise\<boolean> | Promise used to return the check result. The value **true** means that the device supports the hardware digital watermark, and **false** means the opposite.|
+| Promise\<boolean> | Promise used to return the result, indicating the support for the hardware digital watermark. **true** if supported, **false** otherwise.|
 
 **Example**
 
@@ -518,7 +540,7 @@ This API can be called only after the [prepare()](arkts-apis-media-AVRecorder.md
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                                                               |
-| -------- | -------------------- | ---- |-------------------------------------------------------------------|
+| -------- | -------------------- | ---- | -------------------------------------------------------------------|
 | metadata | [Record<string, string>]  | Yes  | Tag and value of the metadata in key-value pairs.<br>- The first string is the tag.<br>- The second string is the value.|
 
 **Return value**
@@ -554,9 +576,9 @@ Describes the audio and video recording profile.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
-| Name            | Type                                        | Mandatory| Description                                                        |
-| ---------------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enableStableQualityMode<sup>18+</sup>            | boolean                        | No  | Whether to enable stable quality mode for video recording. This parameter is optional for video recording. The default value is **false**. If this parameter is set to **true**, the system will use a video encoding strategy designed to maintain stable quality.<br>**System API**: This is a system API.|
+| Name            | Type                                        | Read-Only| Optional| Description                                                        |
+| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| enableStableQualityMode<sup>18+</sup>            | boolean                        | No  | Yes  | Whether to enable stable quality mode for video recording. This parameter is optional for video recording. The default value is **false**. If this parameter is set to **true**, the system will use a video encoding strategy designed to maintain stable quality.<br>**System API**: This is a system API.|
 
 ## VideoRecorder<sup>9+</sup>
 
@@ -571,7 +593,7 @@ Implements video recording. Before calling any API in the **VideoRecorder** clas
 
 **System API**: This is a system API.
 
-| Name              | Type                                  | Readable| Writable| Description            |
+| Name              | Type                                  | Read-Only| Optional| Description            |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
 | state<sup>9+</sup> | [VideoRecordState](#videorecordstate9) | Yes  | No  | Video recording state.|
 
@@ -592,15 +614,16 @@ Sets video recording parameters. This API uses an asynchronous callback to retur
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
 | config   | [VideoRecorderConfig](#videorecorderconfig9) | Yes  | Video recording parameters to set.           |
-| callback | AsyncCallback\<void>                         | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void>                         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
 | 201      | Permission denied. Return by callback.     |
+| 202      | Not system App.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.          |
@@ -665,15 +688,16 @@ Sets video recording parameters. This API uses a promise to return the result.
 
 | Type          | Description                                    |
 | -------------- | ---------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201      | Permission denied. Return by promise.     |
+| 202      | Not system App.                           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400105  | Service died. Return by promise.          |
@@ -718,7 +742,9 @@ videoRecorder.prepare(videoConfig).then(() => {
 
 getInputSurface(callback: AsyncCallback\<string>): void
 
-Obtains the surface required for recording. This API uses an asynchronous callback to return the result. The caller obtains the **surfaceBuffer** from this surface and fills in the corresponding data.
+Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
+
+The caller obtains the surface buffer from this surface and fills in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
@@ -732,14 +758,15 @@ This API can be called only after [prepare()](#prepare9) is called.
 
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
-| callback | AsyncCallback\<string> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<string> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the obtained surface buffer; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
+| 202      | Not system App.                            |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -765,7 +792,9 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 
 getInputSurface(): Promise\<string>;
 
- Obtains the surface required for recording. This API uses a promise to return the result. The caller obtains the **surfaceBuffer** from this surface and fills in the corresponding data.
+Obtains the surface required for recording. This API uses a promise to return the result.
+
+The caller obtains the **surfaceBuffer** from this surface and fills in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
@@ -779,14 +808,15 @@ This API can be called only after [prepare()](#prepare9-1) is called.
 
 | Type            | Description                            |
 | ---------------- | -------------------------------- |
-| Promise\<string> | Promise used to return the result.|
+| Promise\<string> | Promise used to return the surface.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
+| 202      | Not system App.                           |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -810,7 +840,7 @@ videoRecorder.getInputSurface().then((surfaceId: string) => {
 
 start(callback: AsyncCallback\<void>): void
 
-Starts recording. This API uses an asynchronous callback to return the result.
+Starts video recording. This API uses an asynchronous callback to return the result.
 
 This API can be called only after [prepare()](#prepare9) and [getInputSurface()](#getinputsurface9) are called, because the data source must pass data to the surface first.
 
@@ -822,14 +852,15 @@ This API can be called only after [prepare()](#prepare9) and [getInputSurface()]
 
 | Name  | Type                | Mandatory| Description                        |
 | -------- | -------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
+| 202      | Not system App.                            |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -853,7 +884,7 @@ videoRecorder.start((err: BusinessError) => {
 
 start(): Promise\<void>
 
-Starts recording. This API uses a promise to return the result.
+Starts video recording. This API uses a promise to return the result.
 
 This API can be called only after [prepare()](#prepare9-1) and [getInputSurface()](#getinputsurface9-1) are called, because the data source must pass data to the surface first.
 
@@ -865,14 +896,15 @@ This API can be called only after [prepare()](#prepare9-1) and [getInputSurface(
 
 | Type          | Description                                 |
 | -------------- | ------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
+| 202      | Not system App.                           |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -894,7 +926,7 @@ videoRecorder.start().then(() => {
 
 pause(callback: AsyncCallback\<void>): void
 
-Pauses recording. This API uses an asynchronous callback to return the result.
+Pauses video recording. This API uses an asynchronous callback to return the result.
 
 This API can be called only after [start()](#start9) is called. You can resume recording by calling [resume()](#resume9).
 
@@ -906,14 +938,15 @@ This API can be called only after [start()](#start9) is called. You can resume r
 
 | Name  | Type                | Mandatory| Description                        |
 | -------- | -------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
+| 202      | Not system App.                            |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -937,7 +970,7 @@ videoRecorder.pause((err: BusinessError) => {
 
 pause(): Promise\<void>
 
-Pauses recording. This API uses a promise to return the result.
+Pauses video recording. This API uses a promise to return the result.
 
 This API can be called only after [start()](#start9-1) is called. You can resume recording by calling [resume()](#resume9-1).
 
@@ -949,14 +982,15 @@ This API can be called only after [start()](#start9-1) is called. You can resume
 
 | Type          | Description                                 |
 | -------------- | ------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
+| 202      | Not system App.                           |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -978,7 +1012,7 @@ videoRecorder.pause().then(() => {
 
 resume(callback: AsyncCallback\<void>): void
 
-Resumes recording. This API uses an asynchronous callback to return the result.
+Resumes video recording. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -988,14 +1022,15 @@ Resumes recording. This API uses an asynchronous callback to return the result.
 
 | Name  | Type                | Mandatory| Description                        |
 | -------- | -------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
+| 202      | Not system App.                            |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1019,7 +1054,7 @@ videoRecorder.resume((err: BusinessError) => {
 
 resume(): Promise\<void>
 
-Resumes recording. This API uses a promise to return the result.
+Resumes video recording. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -1029,14 +1064,15 @@ Resumes recording. This API uses a promise to return the result.
 
 | Type          | Description                                 |
 | -------------- | ------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
+| 202      | Not system App.                           |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1058,7 +1094,7 @@ videoRecorder.resume().then(() => {
 
 stop(callback: AsyncCallback\<void>): void
 
-Stops recording. This API uses an asynchronous callback to return the result.
+Stops video recording. This API uses an asynchronous callback to return the result.
 
 To start another recording, you must call [prepare()](#prepare9) and [getInputSurface()](#getinputsurface9) again.
 
@@ -1070,14 +1106,15 @@ To start another recording, you must call [prepare()](#prepare9) and [getInputSu
 
 | Name  | Type                | Mandatory| Description                        |
 | -------- | -------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
+| 202      | Not system App.                            |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1113,14 +1150,15 @@ To start another recording, you must call [prepare()](#prepare9-1) and [getInput
 
 | Type          | Description                                 |
 | -------------- | ------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
+| 202      | Not system App.                           |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1142,7 +1180,7 @@ videoRecorder.stop().then(() => {
 
 release(callback: AsyncCallback\<void>): void
 
-Releases the video recording resources. This API uses an asynchronous callback to return the result.
+Releases video recording resources. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -1152,14 +1190,15 @@ Releases the video recording resources. This API uses an asynchronous callback t
 
 | Name  | Type                | Mandatory| Description                            |
 | -------- | -------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
+| 202      | Not system App.                   |
 | 5400105  | Service died. Return by callback. |
 
 **Example**
@@ -1181,7 +1220,7 @@ videoRecorder.release((err: BusinessError) => {
 
 release(): Promise\<void>
 
-Releases the video recording resources. This API uses a promise to return the result.
+Releases video recording resources. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -1191,14 +1230,15 @@ Releases the video recording resources. This API uses a promise to return the re
 
 | Type          | Description                                     |
 | -------------- | ----------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
+| 202      | Not system App.                   |
 | 5400105  | Service died. Return by callback. |
 
 **Example**
@@ -1230,14 +1270,15 @@ To start another recording, you must call [prepare()](#prepare9) and [getInputSu
 
 | Name  | Type                | Mandatory| Description                        |
 | -------- | -------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
+| 202      | Not system App.                   |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1272,14 +1313,15 @@ To start another recording, you must call [prepare()](#prepare9-1) and [getInput
 
 | Type          | Description                                 |
 | -------------- | ------------------------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
+| 202      | Not system App.                  |
 | 5400103  | I/O error. Return by promise.    |
 | 5400105  | Service died. Return by promise. |
 
@@ -1300,7 +1342,7 @@ videoRecorder.reset().then(() => {
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to video recording error events. After an error event is reported, you must handle the event and exit the recording.
+Subscribes to video recording error events. After an error event is reported, you must handle the event and exit the recording. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -1311,14 +1353,16 @@ Subscribes to video recording error events. After an error event is reported, yo
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | Yes  | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during video recording.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback invoked when the event is triggered.                                      |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return the video recording error event.                                      |
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
+| 201      | permission denied.                |
+| 202      | Not system App.                   |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1360,14 +1404,14 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 
 **System API**: This is a system API.
 
-| Name           | Type                                          | Mandatory| Description                                                        |
-| --------------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)           | No  | Type of the audio source for video recording. This parameter is mandatory for audio recording.                     |
-| videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)           | Yes  | Type of the video source for video recording.                                      |
-| profile         | [VideoRecorderProfile](#videorecorderprofile9) | Yes  | Video recording profile.                                         |
-| rotation        | number                                         | No  | Rotation angle of the recorded video. The value can only be 0 (default), 90, 180, or 270.      |
-| location        | [Location](arkts-apis-media-i.md#location)                          | No  | Geographical location of the recorded video. By default, the geographical location information is not recorded.                |
-| url             | string                                         | Yes  | Video output URL. Supported: fd://xx (fd number)<br>![](figures/en-us_image_url.png) |
+| Name           | Type                                          | Read-Only| Optional| Description                                                        |
+| --------------- | ---------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)           | No  | Yes  | Type of the audio source for video recording. This parameter is mandatory for audio recording.                     |
+| videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)           | No  | No  | Type of the video source for video recording.                                      |
+| profile         | [VideoRecorderProfile](#videorecorderprofile9) | No  | No  | Video recording profile.                                         |
+| rotation        | number                                         | No  | Yes  | Rotation angle of the recorded video. The value can only be 0 (default), 90, 180, or 270.      |
+| location        | [Location](arkts-apis-media-i.md#location)                          | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.                |
+| url             | string                                         | No  | No  | Video output URL. Supported: fd://xx (fd number)<br>![](figures/en-us_image_url.png) |
 
 ## VideoRecorderProfile<sup>9+</sup>
 
@@ -1377,31 +1421,31 @@ Describes the video recording profile.
 
 **System API**: This is a system API.
 
-| Name            | Type                                        | Mandatory| Description            |
-| ---------------- | -------------------------------------------- | ---- | ---------------- |
-| audioBitrate     | number                                       | No  | Audio encoding bit rate. This parameter is mandatory for audio recording.|
-| audioChannels    | number                                       | No  | Number of audio channels. This parameter is mandatory for audio recording.|
-| audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Audio encoding format. This parameter is mandatory for audio recording.  |
-| audioSampleRate  | number                                       | No  | Audio sampling rate. This parameter is mandatory for audio recording.    |
-| fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | Yes  | Container format of a file.|
-| videoBitrate     | number                                       | Yes  | Video encoding bit rate.|
-| videoCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | Yes  | Video encoding format.  |
-| videoFrameWidth  | number                                       | Yes  | Width of the recorded video frame.|
-| videoFrameHeight | number                                       | Yes  | Height of the recorded video frame.|
-| videoFrameRate   | number                                       | Yes  | Video frame rate.  |
+| Name            | Type                                        | Read-Only| Optional| Description            |
+| ---------------- | -------------------------------------------- | ---- | ---- | ---------------- |
+| audioBitrate     | number                                       | Yes  | No  | Audio encoding bit rate. This parameter is mandatory for audio recording.|
+| audioChannels    | number                                       | Yes  | No  | Audio channel count. This parameter is mandatory for audio recording.|
+| audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | Yes  | No  | Audio encoding format. This parameter is mandatory for audio recording.  |
+| audioSampleRate  | number                                       | Yes  | No  | Audio sample rate. This parameter is mandatory for audio recording.    |
+| fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | Yes  | No  | Container format of a file.|
+| videoBitrate     | number                                       | Yes  | No  | Video encoding bit rate.|
+| videoCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | Yes  | No  | Video encoding format.  |
+| videoFrameWidth  | number                                       | Yes  | No  | Width of the recorded video frame.|
+| videoFrameHeight | number                                       | Yes  | No  | Height of the recorded video frame.|
+| videoFrameRate   | number                                       | Yes  | No  | Video frame rate.  |
 
 ## WatermarkConfig<sup>13+</sup>
 
-Describes the watermark configuration set for the AVRecorder. The start point is the upper left corner of the image.
+Describes the watermark configuration set for the AVRecorder. The start point is the upper-left corner of the image.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **System API**: This is a system API.
 
-| Name     | Type  | Mandatory| Description            |
-| --------- | ------ | ---- | ---------------- |
-| top       | number | Yes  | Pixel offset from the top edge of the image.|
-| left      | number | Yes  | Pixel offset from the left edge of the image.|
+| Name     | Type  | Read-Only| Optional| Description            |
+| --------- | ------ | ---- | ---- | ---------------- |
+| top       | number | No  | No  | Pixel offset from the top edge of the image.|
+| left      | number | No  | No  | Pixel offset from the left edge of the image.|
 
 ## ScreenCaptureMonitor<sup>18+</sup>
 
@@ -1413,15 +1457,15 @@ A class that provides APIs to query and monitor the system screen recorder statu
 
 **System API**: This is a system API.
 
-| Name              | Type                                  | Readable| Writable| Description            |
+| Name              | Type                                  | Read-Only| Optional| Description            |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
-| isSystemScreenRecorderWorking<sup>18+</sup> | boolean | Yes  | No  | Whether the system screen recorder is working.|
+| isSystemScreenRecorderWorking<sup>18+</sup> | boolean | Yes  | No  | Whether the system screen recorder is working. **true** if working, **false** otherwise.|
 
 ### on('systemScreenRecorder')<sup>18+</sup>
 
 on(type: 'systemScreenRecorder', callback: Callback\<ScreenCaptureEvent>): void
 
-Subscribes to state change events of the system screen recorder. From the ScreenCaptureEvent event reported, you can determine whether the system screen recorder is working.
+Subscribes to state change events of the system screen recorder. From the ScreenCaptureEvent event reported, you can determine whether the system screen recorder is working. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1432,7 +1476,7 @@ Subscribes to state change events of the system screen recorder. From the Screen
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | Yes  | Event type, which is **'systemScreenRecorder'** in this case.<br>This event is triggered when the state of the system screen recorder changes.|
-| callback | function | Yes  | Callback invoked when the event is triggered, where [ScreenCaptureEvent](#screencaptureevent18) indicates the new state.                                      |
+| callback | function | Yes  | Callback used to return the state of system screen recorder. where [ScreenCaptureEvent](#screencaptureevent18) indicates the new state.                                      |
 
 **Error codes**
 
@@ -1457,7 +1501,7 @@ screenCaptureMonitor.on('systemScreenRecorder', (event: media.ScreenCaptureEvent
 
 off(type: 'systemScreenRecorder', callback?: Callback\<ScreenCaptureEvent>): void
 
-Unsubscribes from state change events of the system screen recorder.
+Unsubscribes from state change events of the system screen recorder. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1468,7 +1512,7 @@ Unsubscribes from state change events of the system screen recorder.
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | Yes  | Event type, which is **'systemScreenRecorder'** in this case.<br>This event is triggered when the state of the system screen recorder changes.|
-| callback | function | No  | Callback invoked when the event is triggered, where [ScreenCaptureEvent](#screencaptureevent18) indicates the new state. If this parameter is not specified, the last subscription event is canceled.|
+| callback | function | No  | Callback used to return the state of system screen recorder. where [ScreenCaptureEvent](#screencaptureevent18) indicates the new state. If this parameter is not specified, the last subscription event is canceled.|
 
 **Error codes**
 
@@ -1509,6 +1553,4 @@ Specifies whether to capture the entire screen or half of the screen when the fo
 
 | Name                     | Type   | Mandatory| Description|
 | ------------------------ | ------- | ---- | ---- |
-| enableDeviceLevelCapture | boolean | No  | The value **true** means to capture the entire screen when the foldable PC is folded, and **false** means to capture half of the screen.|
-
-<!--no_check-->
+| enableDeviceLevelCapture | boolean | No  | Whether to capture the entire screen when the foldable PC is folded. **true** to capture the entire screen, **false** to capture half of the screen.|

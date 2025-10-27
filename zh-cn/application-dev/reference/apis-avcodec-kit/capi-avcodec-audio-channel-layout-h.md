@@ -1,5 +1,12 @@
 # avcodec_audio_channel_layout.h
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 音频编解码枚举的声明。
@@ -10,7 +17,7 @@
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
-**起始版本：** 9
+**起始版本：** 10
 
 **废弃版本：** 11
 
@@ -22,8 +29,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [AudioChannelSet](#audiochannelset) | 音频声道数集合，将每一个声道数映射为int64的变量。 |
-| [AudioChannelLayout](#audiochannellayout) | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。 |
+| [AudioChannelSet](#audiochannelset) | 音频声道数集合，将每一个声道数映射为int64的变量。(API11废弃) |
+| [AudioChannelLayout](#audiochannellayout) | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。(API11废弃) |
 
 ## 枚举类型说明
 
@@ -43,7 +50,7 @@ enum AudioChannelSet : uint64_t
 
 **废弃版本：** 11
 
-**替代接口：** [OH_AudioChannelSet](_core.md#oh_audiochannelset-1)
+**替代接口：** [OH_AudioChannelSet](capi-native-audio-channel-layout-h.md#oh_audiochannelset)
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -114,7 +121,7 @@ enum AudioChannelLayout : uint64_t
 
 **废弃版本：** 11
 
-**替代接口：** [OH_AudioChannelLayout](_core.md#oh_audiochannellayout-1)
+**替代接口：** [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)
 
 | 枚举项 | 描述 |
 | -- | -- |

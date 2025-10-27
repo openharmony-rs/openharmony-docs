@@ -14,6 +14,8 @@ For details about the APIs, see the [userStatus API Reference](../../reference/a
 ### When to Use
 An application can invoke the UserStatus module when it needs to obtain the age group of users. This way, the application can determine, for example, whether the individual interacting with the device is a child or an adult.
 
+The APIs of this module are supported since API version 20.
+
 ### Available APIs
 
 | API                                                      | Description                                  |
@@ -24,6 +26,7 @@ An application can invoke the UserStatus module when it needs to obtain the age 
 ### Constraints
 
  - If the device does not support the age group detection function, error code 801 is returned.
+<!--RP1--> <!--RP1End-->
 
 ### Development Procedure
 
@@ -32,8 +35,8 @@ An application can invoke the UserStatus module when it needs to obtain the age 
    ```ts
    import { userStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@ohos.base';
    ```
+   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. Define the callback used to receive the age group detection result.
 
@@ -42,6 +45,7 @@ An application can invoke the UserStatus module when it needs to obtain the age 
      console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
    };
    ```
+   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. Enable the age group detection function.
 
@@ -54,6 +58,7 @@ An application can invoke the UserStatus module when it needs to obtain the age 
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. Disable the age group detection function.
 
@@ -66,3 +71,4 @@ An application can invoke the UserStatus module when it needs to obtain the age 
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->

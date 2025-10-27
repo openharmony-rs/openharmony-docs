@@ -1,4 +1,10 @@
 # NotificationContent
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationContent** module provides APIs for defining the notification content.
 
@@ -14,7 +20,7 @@ Describes the notification contents.
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This API is deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
 | notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | No | Yes | Notification content type.      |
 | normal         | [NotificationBasicContent](#notificationbasiccontent)                      | No | Yes | Normal text.  |
 | longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | No | Yes | Long text.|
@@ -34,6 +40,7 @@ Describes the normal text notification.
 | text           | string |  No |  No | Notification content. It cannot be empty or exceed 3072 bytes. Excess content will be truncated.        |
 | additionalText | string |  No |  Yes | Additional information of the notification. It cannot exceed 3072 bytes. Excess content will be truncated.  |
 | lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No |  Yes | Picture of a notification displayed on the lock screen. Currently, only the live view notification is supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
+| structuredText<sup>21+</sup> | Map<string, string> |  No |  Yes | Structured notification. Currently, only service reminder messages can be displayed in structured format in the notification center. (The size of key or value cannot exceed 512 bytes; otherwise, the excess part will be truncated. Only a maximum of three pairs of structured data are supported.)  |
 
 ## NotificationLongTextContent
 
@@ -137,12 +144,13 @@ Describes the notification timing information.
 | Name          | Type             | Read-Only| Optional| Description                            |
 | -------------- | ---------------- | --- | --- | -------------------------------- |
 | initialTime    | number           | No | Yes | Start time, in milliseconds.               |
-| isCountDown    | boolean          | No | Yes | Whether to count down. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
-| isPaused       | boolean          | No | Yes | Whether to pause the progress. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No.  |
-| isInTitle      | boolean          | No | Yes | Whether the time is displayed in the title. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
+| isCountDown    | boolean          | No | Yes | Whether to count down. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|
+| isPaused       | boolean          | No | Yes | Whether to pause the progress. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.  |
+| isInTitle      | boolean          | No | Yes | Whether the time is displayed in the title. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|
 
 **Example**:
 
+<!--code_no_check-->
 ```ts
 // The notification counts down from three seconds and the time is displayed in the title.
 time: {
@@ -164,4 +172,4 @@ Describes the notification progress.
 | -------------- | --------------- | --- | --- | -------------------------------- |
 | maxValue        | number         | No | Yes | Maximum progress value.                      |
 | currentValue    | number         | No | Yes | Current progress value.                      |
-| isPercentage    | boolean        | No | Yes | Whether to show the progress in percentage. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
+| isPercentage    | boolean        | No | Yes | Whether to show the progress in percentage. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|

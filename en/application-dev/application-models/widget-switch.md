@@ -1,10 +1,16 @@
 # Widget Switching
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 Widget switching involves the following parts:
 
 
-- Widget UI layout: Both the FA model and stage model use the web-like paradigm to develop the widget UI layout. Therefore, the UI layout of a widget in the FA model can be directly reused in the stage mode.
+- Widget UI layout: Both the [FA model](ability-terminology.md#fa-model) and [stage model](ability-terminology.md#stage-model) use the web-like paradigm to develop the widget UI layout. Therefore, the UI layout of a widget in the FA model can be directly reused in the stage model.
 - Widget configuration file: Widgets are configured in the **config.json** file in the FA model and in **module.json5** and **form_config.json** files in the stage model (as shown in Figure 1 and Figure 2).
 - Widget service logic: The widget entry file and lifecycle of the FA model are slightly different from those of the stage model, as shown in Figure 3 and Figure 4.
 

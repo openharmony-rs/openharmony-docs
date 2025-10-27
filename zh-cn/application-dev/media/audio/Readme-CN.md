@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 - [Audio Kit简介](audio-kit-intro.md)
 - [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
@@ -17,9 +17,10 @@
   - [使用AudioRenderer开发音频播放功能](using-audiorenderer-for-playback.md)
   - [响应音频流输出设备变更](audio-output-device-change.md)
   <!--Del-->
-  - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](using-toneplayer-for-playback.md)
+  - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
   - [使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)
+  - [低功耗音频播放](power-saving-for-playback.md)
   - [使用AudioHaptic开发音振协同播放功能](using-audiohaptic-for-playback.md)
   - [播放音量管理](volume-management.md)
   - [提升音频性能体验](audio-performance.md)
@@ -28,12 +29,12 @@
   - [音效管理](audio-effect-management.md)
   - [空间音频管理](public-audio-spatialization-management.md)
   <!--Del-->
-  - [空间音频管理(仅对系统应用开放)](audio-spatialization-management.md)
+  - [空间音频管理(仅对系统应用开放)](audio-spatialization-management-sys.md)
   <!--DelEnd-->
   - [音频播放流管理](audio-playback-stream-management.md)
   - [管理全局音频输出设备](audio-output-device-management.md)
   <!--Del-->
-  - [分布式音频播放(仅对系统应用开放)](distributed-audio-playback.md)
+  - [分布式音频播放(仅对系统应用开放)](distributed-audio-playback-sys.md)
   <!--DelEnd-->
 - 音频录制<!--audio-recording-->
   - [音频录制开发概述](audio-recording-overview.md)

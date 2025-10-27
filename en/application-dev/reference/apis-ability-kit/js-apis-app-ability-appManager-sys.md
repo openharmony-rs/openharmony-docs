@@ -284,7 +284,7 @@ try {
 
 off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
-Deregisters the observer used to listen for application start or exit events.
+Unregisters the observer used to listen for application start or exit events.
 
 **System API**: This is a system API.
 
@@ -399,6 +399,94 @@ try {
 } catch (e) {
   let code = (e as BusinessError).code;
   let message = (e as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.on('applicationState')<sup>21+</sup>
+
+on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStateFilter): number
+
+Registers an application state observer, which allows you to filter for specific application lifecycle changes by setting filter criteria.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.RUNNING_STATE_OBSERVER
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to listen for application lifecycle changes.|
+| filter | [AppStateFilter](#appstatefilter21) | Yes| Filter for application lifecycle changes.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| number | ID of the observer registered. You can pass this ID to [off](js-apis-app-ability-appManager.md#appmanageroffapplicationstate14) to unregister the observer.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.|
+
+**Example**
+
+```ts
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let applicationStateObserver: appManager.ApplicationStateObserver = {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+  },
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  },
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  },
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  },
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  },
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  },
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  }
+};
+
+/* This example uses the filter to listen for the following application callbacks:
+ * 1. onAbilityStateChanged, a callback function used to listen for ability components in the creating state.
+ * 2. onProcessCreated, a callback function used to listen for processes in the created state.
+ */
+let appStateFilter: appManager.AppStateFilter = {
+    bundleTypes: appManager.FilterBundleType.APP,
+    appStateTypes: appManager.FilterAppStateType.CREATE | appManager.FilterAppStateType.FOREGROUND,
+    processStateTypes: appManager.FilterProcessStateType.CREATE,
+    abilityStateTypes: appManager.FilterAbilityStateType.CREATE,
+    callbacks: appManager.FilterCallback.ON_ABILITY_STATE_CHANGED | appManager.FilterCallback.ON_PROCESS_CREATED
+};
+
+try {
+  const observerId = appManager.on('applicationState', applicationStateObserver, appStateFilter);
+  console.info(`[appManager] observerCode: ${observerId}`);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
   console.error(`[appManager] error: ${code}, ${message}`);
 }
 ```
@@ -1710,7 +1798,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 >
 >- To support keep-alive, **mainElement** in the [module.json5](../../quick-start/module-configuration-file.md) file of the application must be a UIAbility. The system initiates the keep-alive operation only when this mainElement has been launched.
 >- On 2-in-1 devices, the application must appear in the status bar within 5 seconds of launch. Otherwise, the system revokes the application's keep-alive status and terminate the restarted process.
->- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the application's keep-alive status is canceled.
+>- When the kept-alive application process exits, the system attempts to restart it. If three consecutive restart attempts fail, the system stops restarting the process.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1726,7 +1814,7 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 | -------- | -------- | -------- | -------- |
 | bundleName    | string   | Yes   | Bundle name.|
 | userId    | number   | Yes   | User ID.|
-| enable    | boolean   | Yes   | Whether to keep the application alive or cancel its keep-alive status. **true** to keep the application alive,**false** otherwise.|
+| enable    | boolean   | Yes   | Whether to keep the application alive or cancel its keep-alive status. **true** to keep the application alive, **false** otherwise.|
 
 **Return value**
 
@@ -1776,11 +1864,13 @@ try {
 getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
 Obtains information about a specified type of keep-alive application of a user. The application information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14).
-This API uses a promise to return the result. Currently, this API takes effect only on 2-in-1 devices.
+This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1835,11 +1925,13 @@ try {
 
 killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
-Kill processes in batches. Currently, this API takes effect only on 2-in-1 devices.
+Kills processes in batches.
 
 **Required permissions**: ohos.permission.KILL_APP_PROCESSES
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1847,7 +1939,7 @@ Kill processes in batches. Currently, this API takes effect only on 2-in-1 devic
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pids    | Array\<number>   | Yes   | IDs of the processes to kill.|
+| pids    | Array\<number>   | Yes   | Array of process IDs.|
 
 **Return value**
 
@@ -1894,12 +1986,13 @@ setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promis
 Sets or cancels the keep-alive status for an AppServiceExtensionAbility. This API uses a promise to return the result.
 > **NOTE**
 >
-> - Currently, this API takes effect only on 2-in-1 devices.
 > - This API takes effect only when the application is installed under the user with **userId** of 1 and the **mainElement** field in the **module.json5** file of the entry HAP is set to **AppServiceExtensionAbility**.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -1957,11 +2050,12 @@ getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
 Obtains information about all AppServiceExtensionAbility components that are kept alive. The information is defined by [KeepAliveBundleInfo](#keepalivebundleinfo14). This API uses a promise to return the result.
 
-Currently, this API takes effect only on 2-in-1 devices.
 
 **Permission required**: ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -2048,3 +2142,95 @@ Defines the information of an application in multi-app mode in the running state
 | Type| Description|
 | --- | --- |
 | [_RunningMultiAppInfo](js-apis-inner-application-runningMultiAppInfo-sys.md) | Information of the application in multi-app mode in the running state.|
+
+## FilterBundleType<sup>21+</sup>
+
+Enumerates the types of applications to filter. It can be used with [AppStateFilter](#appstatefilter21) to filter the application types you want to listen for.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name       | Value | Description|
+| -------- | ---------- | -------- |
+| APP | 1 | Application.|
+| ATOMIC_SERVICE | 2 | Atomic service.|
+
+## FilterAppStateType<sup>21+</sup>
+
+Enumerates the types of application states to filter. It can be used with [AppStateFilter](#appstatefilter21) to filter the application state types you want to listen for.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name       | Value | Description|
+| -------- | ---------- | -------- |
+| CREATE | 1 | The application is initializing. It corresponds to the state whose value is **0** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
+| FOREGROUND | 2 | The application is running in the foreground. It corresponds to the state whose value is **2** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
+| BACKGROUND | 4 | The application is running in the background. It corresponds to the state whose value is **4** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
+| DESTROY | 8 | The application has exited. It corresponds to the state whose value is **5** in [AppStateData](js-apis-inner-application-appStateData.md#properties).|
+
+## FilterProcessStateType<sup>21+</sup>
+
+Enumerates the types of process states to filter. It can be used with [AppStateFilter](#appstatefilter21) to filter the process state types you want to listen for.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name       | Value | Description|
+| -------- | ---------- | -------- |
+| CREATE | 1 | The process has just been created. It corresponds to the state whose value is **0** in [ProcessData](js-apis-inner-application-processData.md#properties).|
+| FOREGROUND | 2 | The process is running in the foreground. It corresponds to the state whose value is **2** in [ProcessData](js-apis-inner-application-processData.md#properties).|
+| BACKGROUND | 4 | The process is running in the background. It corresponds to the state whose value is **4** in [ProcessData](js-apis-inner-application-processData.md#properties).|
+| DESTROY | 8 | The process has terminated. It corresponds to the state whose value is **5** in [ProcessData](js-apis-inner-application-processData.md#properties).|
+
+## FilterAbilityStateType<sup>21+</sup>
+
+Enumerates the types of ability states to filter. It can be used with [AppStateFilter](#appstatefilter21) to filter the ability state types you want to listen for.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name       | Value | Description|
+| -------- | ---------- | -------- |
+| CREATE | 1 | The ability is being created. It corresponds to the state **ABILITY_STATE_CREATE** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
+| FOREGROUND | 2 | The ability is running in the foreground. It corresponds to the state **ABILITY_STATE_FOREGROUND** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
+| BACKGROUND | 4 | The ability is running in the background. It corresponds to the state **ABILITY_STATE_BACKGROUND** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
+| DESTROY | 8 | The ability has been destroyed. It corresponds to the state **ABILITY_STATE_TERMINATED** in [Ability States](js-apis-inner-application-abilityStateData.md#ability-states).|
+
+## FilterCallback<sup>21+</sup>
+
+Enumerates the callbacks to filter. It can be used with [AppStateFilter](#appstatefilter21) to filter the callbacks you want to listen for.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name       | Value | Description|
+| -------- | ---------- | -------- |
+| ON_FOREGROUND_APPLICATION_CHANGED | 1 | Corresponds to the [ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged) callback, which is executed when the application's foreground/background state changes.|
+| ON_ABILITY_STATE_CHANGED | 2 | Corresponds to the [ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged) callback, which is executed when the ability state changes.|
+| ON_PROCESS_CREATED | 4 | Corresponds to the [ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated) callback, which is executed when a process is created.|
+| ON_PROCESS_DIED | 8 | Corresponds to the [ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied) callback, which is executed when a process is destroyed.|
+| ON_PROCESS_STATE_CHANGED | 16 | Corresponds to the [ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged) callback, which is executed when the process state is updated.|
+| ON_APP_STARTED | 32 | Corresponds to the [ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted) callback, which is executed when the application's first process is created.|
+| ON_APP_STOPPED | 64 | Corresponds to the [ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped) callback, which is executed when the application's last process is destroyed.|
+
+## AppStateFilter<sup>21+</sup>
+
+Describes the filter for application lifecycle change events. It can be used as a parameter of [on](#appmanageronapplicationstate21) to filter application lifecycle change events you want to listen for.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional | Description|
+| ------------------------- | ------ | ---- | ---- | --------- |
+| bundleTypes  | [FilterBundleType](#filterbundletype21) | No| Yes | Type of application to filter. The options are as follows:<br> - **0**: Do not listen for any application type.<br> - A bitwise OR combination of the enumerated values of [FilterBundleType](#filterbundletype21), for example, "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" listens for both applications and atomic services.<br> - If this parameter is not set, all application types are listened for by default.|
+| appStateTypes | [FilterAppStateType](#filterappstatetype21) | No| Yes| Type of application state to filter. The options are as follows:<br> - **0**: Do not listen for any application state.<br> - A bitwise OR combination of the enumerated values of [FilterAppStateType](#filterappstatetype21), for example, "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" listens for both the creating and foreground states of applications.<br> - If this parameter is not set, all application state types are listened for by default.|
+| processStateTypes | [FilterProcessStateType](#filterprocessstatetype21) | No| Yes| Type of process state to filter. The options are as follows:<br> - **0**: Do not listen for any process state.<br> - A bitwise OR combination of the enumerated values of [FilterProcessStateType](#filterprocessstatetype21), for example, "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" listens for both the creating and foreground states of processes.<br> - If this parameter is not set, all process state types are listened for by default.|
+| abilityStateTypes | [FilterAbilityStateType](#filterabilitystatetype21) | No| Yes | Type of ability state to filter. The options are as follows:<br> - **0**: Do not listen for any ability state.<br> - A bitwise OR combination of the enumerated values of [FilterAbilityStateType](#filterabilitystatetype21), for example, "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" listens for both the creating and foreground states of ability components.<br> - If this parameter is not set, all ability state types are listened for by default.|
+| callbacks | [FilterCallback](#filtercallback21) | No| Yes | Callback to filter. The options are as follows:<br> - **0**: Do not listen for any callback.<br> - A bitwise OR combination of the enumerated values of [FilterCallback](#filtercallback21), for example, "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" listens for both [ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged) and [ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged).<br> - If this parameter is not set, all callbacks enumerated in [FilterCallback](#filtercallback21) are listened for by default.|

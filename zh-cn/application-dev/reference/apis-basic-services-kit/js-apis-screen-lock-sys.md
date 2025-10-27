@@ -1,4 +1,10 @@
 # @ohos.screenLock (锁屏管理)（系统接口）
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @jiayunpeng2-->
+<!--Designer: @starrylight; @jiayunpeng2-->
+<!--Tester: @yaoruijiang-->
+<!--Adviser: @zhangaof-->
 
 锁屏管理服务是OpenHarmony中的系统服务，为锁屏应用提供注册亮屏、灭屏、开启屏幕、结束休眠、退出动画、请求解锁结果监听，并提供回调结果给锁屏应用。锁屏管理服务向三方应用提供请求解锁、查询锁屏状态、查询是否设置锁屏密码的能力。
 
@@ -16,13 +22,17 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 ## EventType<sup>9+</sup>
 
+type EventType = beginWakeUp | endWakeUp | beginScreenOn | endScreenOn | beginScreenOff | endScreenOff | unlockScreen |
+lockScreen | beginExitAnimation | beginSleep | endSleep | changeUser | screenlockEnabled | serviceRestart |
+strongAuthChanged | screenLockDisabledChanged
+
 定义系统事件类型。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **系统接口**：此接口为系统接口。
 
-| 事件类型            | 说明                     |
+| 类型            | 说明                     |
 | ------------------ | ------------------------ |
 | beginWakeUp        | 表示设备开始唤醒。 |
 | endWakeUp          | 表示设备结束唤醒。 |
@@ -38,6 +48,8 @@ import { screenLock } from '@kit.BasicServicesKit';
 | changeUser         | 表示切换用户。           |
 | screenlockEnabled  | 表示锁屏是否启用。       |
 | serviceRestart     | 表示锁屏服务进行重启。   |
+| strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
+| screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
 
 ## SystemEvent<sup>9+</sup>
 
@@ -47,10 +59,10 @@ import { screenLock } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 名称    | 类型   | 必填 |       说明        |
-| --------- | ------ | ---- | ------------- |
-| eventType   | [EventType](#eventtype9) | 是   | 系统事件类型。 |
-| params | string | 是   | 系统事件参数。 |
+| 名称    | 类型   | 只读 | 可选 |       说明        |
+| --------- | ------ | ---- | ---- | ------------- |
+| eventType   | [EventType](#eventtype9) | 否   | 否   | 系统事件类型。 |
+| params | string | 否   | 否   | 系统事件参数。 |
 
 ## screenLock.isLocked<sup>9+</sup>
 

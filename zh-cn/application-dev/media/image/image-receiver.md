@@ -4,7 +4,7 @@
 <!--Owner: @aulight02-->
 <!--Designer: @liyang_bryan-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 图片接收类ImageReceiver用于获取组件surface id，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
 
@@ -23,10 +23,11 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
 
     ```ts
     import { image } from '@kit.ImageKit';
+
     let imageWidth: number = 1920; // 请使用设备支持profile的size的宽。
     let imageHeight: number = 1080; // 请使用设备支持profile的size的高。
 
-    async function initImageReceiver():Promise<void>{
+    async function initImageReceiver(): Promise<void> {
       // 创建ImageReceiver对象。createImageReceiver的参数不会对接收到的数据产生实际影响。
       let size: image.Size = { width: imageWidth, height: imageHeight };
       let imageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);

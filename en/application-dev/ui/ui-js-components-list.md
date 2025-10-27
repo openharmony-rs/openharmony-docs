@@ -1,5 +1,11 @@
 # &lt;list&gt; Development
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
 
 The **&lt;list&gt;** component provides a list container that presents a series of list items arranged in a column with the same width. Lists can be used for presenting the same type of data in a multiple and coherent row style. For details, see [list](../reference/apis-arkui/arkui-js/js-components-container-list.md).
 
@@ -40,7 +46,7 @@ Create a **&lt;list&gt;** component in the .hml file under **pages/index**.
 
 > **NOTE**
 > - **&lt;list-item-group&gt;** is a child component of the **&lt;list&gt;** component and is used to group items in a list. It can have a **&lt;list-item&gt;** nested inside, but not **&lt;list&gt;**.
-> 
+>
 > - **&lt;list-item&gt;** is a child component of the **&lt;list&gt;** component and is used to display items in a list.
 
 
@@ -113,7 +119,7 @@ Set a custom **indexer** component to add an index bar at the right boundary of 
 
 > **NOTE**
 > - This **indexer** attribute is valid only when **flex-direction** is set to **column** and **columns** is set to **1**.
-> 
+>
 > - You must include **"\#"** when using a customized indexer.
 
 
@@ -147,8 +153,8 @@ To allow a **&lt;list&gt;** component to collapse and expand, add **groupcollaps
   flex-direction: column;
   background-color: #F1F3F5;
 }
-list-item{
-margin-top:30px;
+.list-item {
+  margin-top:30px;
 }
 .top-list-item {
   width:100%;

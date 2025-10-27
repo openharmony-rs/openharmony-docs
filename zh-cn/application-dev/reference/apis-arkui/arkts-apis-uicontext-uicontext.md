@@ -256,6 +256,39 @@ struct Index {
 }
 ```
 
+## getId<sup>22+</sup>
+
+getId(): number
+
+获取后端实例唯一标识的ID。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------ | ------------------ |
+| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(()=>{
+      console.log(`id:${this.getUIContext()?.getId()}`);
+    })
+  }
+}
+```
+
 ## getMediaQuery
 
 getMediaQuery(): MediaQuery
@@ -1385,21 +1418,13 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 ```ts
 // EntryAbility.ets
 import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
-      // Main window is created, set main page for this ability
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-        if (err.code) {
-          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
       });
     }
 }
@@ -1429,22 +1454,14 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 ```ts
 // EntryAbility.ets
 import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
-      // Main window is created, set main page for this ability
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        hilog.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
-        if (err.code) {
-          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
       });
     }
 }
@@ -1768,7 +1785,7 @@ struct ComponentPage {
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
           console.info(`result3: ${inspectorStr}`);
         } catch(e) {
-          console.info(`getFilteredInspectorTreeById error: ${e}`);
+          console.error(`getFilteredInspectorTreeById error: ${e}`);
         }
       })
     }
@@ -2541,7 +2558,7 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
-| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。 |
+| targetId | number | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。 |
 
 **返回值：**
 
@@ -3241,7 +3258,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UI上下文](errorcode-uicontext.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                        |
 | ------ | ---------------------------------- |
@@ -3382,21 +3399,13 @@ setPixelRoundMode(mode: PixelRoundMode): void
 ```ts
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
-      // Main window is created, set main page for this ability
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
         uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-        if (err.code) {
-          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
       });
     }
 }
@@ -3424,23 +3433,179 @@ getPixelRoundMode(): PixelRoundMode
 ```ts
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
-      // Main window is created, set main page for this ability
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         console.info("pixelRoundMode : " + uiContext.getPixelRoundMode().valueOf());
-        if (err.code) {
-          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-          return;
-        }
-        hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
       });
     }
 }
 ```
 
+## setResourceManagerCacheMaxCountForHSP<sup>21+</sup>
+
+static setResourceManagerCacheMaxCountForHSP(count: number): void
+
+设置HSP资源管理对象缓存个数上限。
+
+>  **说明：**
+>
+> 如果缓存上限设置的太大，有内存开销过大的风险，建议合理配置。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名      | 类型         | 必填   | 说明   |
+| -------- | ---------- | ---- | ---- |
+| count | number | 是    | 设置的资源缓存数量，取值范围为非负整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[UI上下文错误码](errorcode-uicontext.md)。
+
+| 错误码ID  | 错误信息                               |
+| ------ | ---------------------------------- |
+| 100101 | The parameter value cannot be less than 0. |
+| 100102 | The parameter value cannot be a floating-point number. |
+| 100103 | The function cannot be called from a non-main thread. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      UIContext.setResourceManagerCacheMaxCountForHSP(5);
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
+## setImageCacheCount<sup>22+</sup>
+
+setImageCacheCount(value: number): void
+
+设置内存中缓存解码后图片的数量上限，以加快同源图片的再次加载速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载超过上限时，会移除最久未使用的缓存。建议根据应用内存需求，合理设置缓存数量，避免内存使用过高。
+
+setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | number | 是 | 内存中解码后图片的缓存数量。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码后图片内存缓存上限为100张
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## setImageRawDataCacheSize<sup>22+</sup>
+
+setImageRawDataCacheSize(value: number): void
+
+设置内存中缓存解码前图片数据的大小上限，单位为字节，以加快再次加载同源图片的速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载后，若解码前数据超过上限，会删除最久未使用的图片数据缓存。建议根据应用内存需求，设置合理的缓存上限，避免内存使用过高。
+
+setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | number | 是 | 内存中解码前图片数据的缓存大小，单位为字节。<br>取值范围：[0, +∞) |
+
+**示例：**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取[Magnifier](arkts-apis-uicontext-magnifier.md)对象，可控制放大镜显示和隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+|[Magnifier](arkts-apis-uicontext-magnifier.md)| Magnifier对象，可用于控制放大镜的显示和隐藏。|
+
+**示例：**
+
+参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。

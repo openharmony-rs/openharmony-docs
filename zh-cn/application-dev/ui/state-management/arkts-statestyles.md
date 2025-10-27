@@ -15,7 +15,7 @@
 
 ## 概述
 
-stateStyles是属性方法，可以根据UI内部状态来设置样式，类似于css伪类，但语法不同。ArkUI提供以下五种状态：
+stateStyles是属性方法，可以根据UI内部状态来设置样式，类似于css伪类，但语法不同。ArkUI提供以下六种状态：
 
 - focused：获焦态。
 
@@ -24,6 +24,8 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 - pressed：按压态。
 
 - disabled：不可用态。
+
+- clicked：点击态。
 
 - selected<sup>10+</sup>：选中态。
 
@@ -128,8 +130,8 @@ stateStyles可以通过this绑定组件内的常规变量和状态变量。
 @Entry
 @Component
 struct CompWithInlineStateStyles {
-  @State focusedColor: Color = Color.Red;
-  normalColor: Color = Color.Green;
+  @State focusedColor: Color = 0xD5D5D5;
+  normalColor: Color = 0x004AAF;
 
   build() {
     Column() {
@@ -145,7 +147,7 @@ struct CompWithInlineStateStyles {
           }
         })
         .onClick(() => {
-          this.focusedColor = Color.Pink;
+          this.focusedColor = 0x707070;
         })
         .margin('30%')
     }
@@ -153,8 +155,8 @@ struct CompWithInlineStateStyles {
 }
 ```
 
-Button默认normal态显示绿色，第一次按下Tab键让Button获焦显示为focus态的红色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为粉色。
+Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focus态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为深灰色。
 
   **图3** 点击改变获焦态样式  
 
-![Video_2023-03-17_144605](figures/Video_2023-03-17_144605.gif)
+![focus-stateStyles](figures/focus-stateStyles.gif)

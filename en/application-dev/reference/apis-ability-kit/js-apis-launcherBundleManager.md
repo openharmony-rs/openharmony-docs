@@ -1,4 +1,4 @@
-# @ohos.bundle.launcherBundleManager (launcherBundleManager)
+# @ohos.bundle.launcherBundleManager (launcherBundleManager Module)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->

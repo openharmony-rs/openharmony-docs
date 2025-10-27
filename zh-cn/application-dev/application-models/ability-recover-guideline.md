@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @altay; @Luobniz21-->
-<!--Designer: @altay-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -35,7 +35,7 @@
 
 | 接口名称                                                       | 说明                                                 |
 | ------------------------------------------------------------ | ---------------------------------------------------- |
-| setRestoreEnabled(enabled: boolean): void | 设置当[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)从后台切换回前台时是否启用恢复功能。|
+| setRestoreEnabled(enabled: boolean): void | 设置[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)是否启用备份恢复。|
 
 [setRestoreEnabled](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)接口需要在应用初始化阶段调用（[onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)前），比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)调用。
 
@@ -49,7 +49,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
     onCreate() {
-        console.info("[Demo] EntryAbility onCreate");
+        console.info('[Demo] EntryAbility onCreate');
         this.context.setRestoreEnabled(true);
     }
 }
@@ -62,17 +62,17 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
+        console.info('[Demo] EntryAbility onCreate');
         this.context.setRestoreEnabled(true);
         if (want && want.parameters) {
-          let recoveryMyData = want.parameters["myData"];
+          let recoveryMyData = want.parameters['myData'];
         }
     }
 
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // Ability has called to save app data
-        console.log("[Demo] EntryAbility onSaveState");
-        wantParams["myData"] = "my1234567";
+        // 保存应用数据。
+        console.info('[Demo] EntryAbility onSaveState');
+        wantParams['myData'] = 'my1234567';
         return AbilityConstant.OnSaveResult.ALL_AGREE;
     }
 }

@@ -91,8 +91,8 @@ repo forall -c 'git lfs pull'
 | [I4AJI2](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/issues/I4AJI2) | 升级ffmpeg版本到4.3.1版本 |
 | [I3HXIX](https://gitee.com/openharmony/third_party_NuttX/issues/I3HXIX?from=project-issue) | 修复多进程情况下，pipe的内核操作节点存在使用脏私有字段dev，导致系统概率异常的问题 |
 | [I4QO9B](https://gitee.com/openharmony/communication_wifi_lite/issues/I4QO9B?from=project-issue) | 修复WLAN从列表退出到桌面卡住的问题 |
-| [I4EPVL](https://gitee.com/openharmony/xts_acts/issues/I4EPVL?from=project-issue) | CMSIS的代码与第三方芯片不兼容，暂时下架ActsCMSISTest测试用例 |
-| [I4QQU9](https://gitee.com/openharmony/xts_acts/issues/I4QQU9) | 小型设备Hi3516&amp;Hi3518执行xts测试套ActsNetTest时串口日志出现板端IP和mac地址 |
+| [I4EPVL](https://gitcode.com/openharmony/xts_acts/issues/I4EPVL?from=project-issue) | CMSIS的代码与第三方芯片不兼容，暂时下架ActsCMSISTest测试用例 |
+| [I4QQU9](https://gitcode.com/openharmony/xts_acts/issues/I4QQU9) | 小型设备Hi3516&amp;Hi3518执行xts测试套ActsNetTest时串口日志出现板端IP和mac地址 |
 
 
 ## 遗留缺陷列表

@@ -1,6 +1,12 @@
 # NotificationSlot (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
-The **NotificationSlot** module provides APIs for defining the notification slot.
+Describes notification slots. The notification reminder modes vary according to notification slots.
 
 > **NOTE**
 >

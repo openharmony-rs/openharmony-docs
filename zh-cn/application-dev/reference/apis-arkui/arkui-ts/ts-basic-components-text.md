@@ -162,6 +162,30 @@ maxLines(value: number)
 | ------ | ------ | ---- | ---------------- |
 | value  | number | 是   | 文本的最大行数。<br/>**说明：** <br/>取值范围：[0, INT32_MAX]<br/>设置为0时，不显示文本内容。 |
 
+### minLines<sup>22+</sup>
+
+minLines(minLines: Optional\<number>)
+
+设置文本显示的最小行数。
+
+如果实际文本高度小于最小行数对应的高度，最后显示高度为最小行数对应的高度。
+
+与[maxLines](#maxlines)同时配置时，最小行高显示范围不会超过最大行高限制。
+
+如果文本设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，那么组件最后显示高度会在[constraintSize](ts-universal-attributes-size.md#constraintsize)约束内。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                      | 必填 | 说明                                                         |
+| ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
+| minLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 文本最小行数。<br>取值范围：[0, INT32_MAX]<br/>设置的值小于0时按0处理。 |
+
 ### lineHeight
 
 lineHeight(value: number | string | Resource)
@@ -207,6 +231,8 @@ decoration(value: DecorationStyleInterface)
 >  **说明：**
 >
 >  当文字的下边缘轮廓与装饰线位置相交时，会触发下划线避让规则，下划线将在这些字符处避让文字。常见“gjyqp”等英文字符。
+>
+>  当文本装饰线的颜色设置为Color.Transparent时，装饰线颜色设置为跟随每行第一个字的字体颜色。当文本装饰线的颜色设置为透明色16进制对应值“#00FFFFFF”时，装饰线颜色设置为透明色。
 
 ### baselineOffset
 
@@ -416,7 +442,11 @@ fontFamily(value: string | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和注册自定义字体[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。|
+
+> **说明：**
+>
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)注册自定义字体。
 
 ### copyOption<sup>9+</sup>
 
@@ -598,15 +628,15 @@ selection(selectionStart: number, selectionEnd: number)
 
 选中区域高亮且显示手柄和文本选择菜单。
 
-当copyOption设置为CopyOptions.None时，设置selection属性不生效。
+当[copyOption](#copyoption9)设置为CopyOptions.None时，设置selection属性不生效。
 
-当overflow设置为TextOverflow.MARQUEE时，设置selection属性不生效。
+当[textOverflow](#textoverflow)设置为TextOverflow.MARQUEE时，设置selection属性不生效。
 
 当selectionStart大于等于selectionEnd时不选中。可选范围为[0, textSize]，其中textSize为文本内容最大字符数，入参小于0时处理为0，大于textSize时处理为textSize。
 
-当selectionStart或selectionEnd位于截断的不可见区域时，文本不选中。截断为false时，超出父组件的文本选中区域生效。
+当selectionStart或selectionEnd位于截断的不可见区域时，文本不选中。当[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为false时，超出父组件的文本可以被选中。
 
-可通过[onTextSelectionChange](#ontextselectionchange11)接口获取选区位置变化结果。
+可通过[onTextSelectionChange](#ontextselectionchange11)接口获取选中区域位置变化结果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -693,6 +723,43 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | config | [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11对象说明) | 是   | 文本识别配置。|
 
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true，同时不设置[selectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明)属性时，默认识别所有类型的实体。
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。设置为undefined时恢复为true。 |
+
+### selectedDataDetectorConfig<sup>22+</sup>
+
+selectedDataDetectorConfig(config: SelectDataDetectorConfig | undefined)
+
+设置选中文本的识别配置，可配置识别类型。
+
+需配合[enableSelectedDataDetector](#enableselecteddatadetector22)一起使用，设置enableSelectedDataDetector为true时，selectedDataDetectorConfig的配置才能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| config | [SelectDataDetectorConfig](ts-text-common.md#selectdatadetectorconfig22对象说明) \| undefined | 是   | 选中文本识别配置。设置为undefined时恢复默认行为，默认行为是识别所有类型。|
+
 ### bindSelectionMenu<sup>11+</sup>
 
 bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
@@ -764,7 +831,7 @@ fontFeature属性列表：
 >
 >  当多个Text组件在[Row](ts-container-row.md)容器内布局且没有设置具体的布局分配信息时，Text会以Row的最大尺寸进行布局。如果需要子组件主轴累加的尺寸不超过Row容器主轴的尺寸，可以设置[layoutWeight](ts-universal-attributes-size.md#layoutweight)或者是以[Flex](ts-universal-attributes-flex-layout.md)布局来约束子组件的主轴尺寸。
 >
->  系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
+>  系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
 >
 >  文字特性效果与使用的字体文件密切相关。例如，8标点挤压功能在当前系统默认字体中仅对左侧标点符号生效，而右侧标点符号及感叹号、顿号、问号均不生效。
 
@@ -913,7 +980,7 @@ maxFontScale(scale: number | Resource)
 
 halfLeading(halfLeading: boolean)
 
-设置文本是否将行间距平分至行的顶部与底部。
+设置文本是否垂直居中。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -923,7 +990,7 @@ halfLeading(halfLeading: boolean)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | boolean | 是  | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
+| halfLeading | boolean | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
 
 ### font<sup>12+</sup>
 
@@ -1259,7 +1326,7 @@ Text组件的控制器。
 controller: TextController = new TextController()
 ```
 
-### closeSelectionMenu
+### closeSelectionMenu<sup>11+</sup>
 
 closeSelectionMenu(): void
 
@@ -1358,6 +1425,67 @@ Marquee状态回调的返回值。
 | START  | 0  | 跑马灯滚动开始。                     |
 | BOUNCE | 1  | 完成一次跑马灯滚动，如果循环次数不是1，将会多次返回。 |
 | FINISH | 2  | 跑马灯全部循环次数完成。              |
+
+### lineHeightMultiple<sup>22+</sup>
+
+lineHeightMultiple(value: number | undefined)
+
+使用倍数模式设置文本的行高。
+
+设置行高为入参（value）与字高（fontHeight）的乘积。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | number&nbsp;\|&nbsp;undefined | 是   | 使用倍数行高的倍数数值。<br>取值范围：[0, FLOAT64_MAX]<br/>设置的值不大于0时按0处理，设置为0时，使用默认行高高度。 |
+>  **说明：**
+>  
+>  当和lineHeight同时设置时，仅lineHeightMultiple生效。
+
+### minLineHeight<sup>22+</sup>
+
+minLineHeight(value: LengthMetrics | undefined)
+
+设置文本的最小行高，设置值不大于0时，取默认值0。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最小行高，不支持百分比。<br>取值范围：[0, FLOAT32_MAX]<br/>设置的值不大于0时按0处理。 |
+
+### maxLineHeight<sup>22+</sup>
+
+maxLineHeight(value: LengthMetrics | undefined)
+
+设置文本的最大行高，设置值不大于0时，最大行高不受限制。
+
+maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最大行高，不支持百分比。<br>取值范围：[0, FLOAT32_MAX]<br/>设置的值不大于0时按0处理，设置为0时，最大行高不受限制。|
 
 ## 示例
 
@@ -1825,7 +1953,7 @@ struct TextExample6 {
 
 ### 示例7（设置文本识别）
 
-从API version 11开始，该示例通过[enableDataDetector](#enabledatadetector11)、[dataDetectorConfig](#datadetectorconfig11)接口实现了文本识别的功能。
+从API version 11开始，该示例通过[enableDataDetector](#enabledatadetector11)、[dataDetectorConfig](#datadetectorconfig11)接口实现了文本识别的功能。从API version 22开始，该示例通过[selectedDataDetectorConfig](#selecteddatadetectorconfig22)接口实现了对选中文本进行识别的功能。
 
 ```ts
 // xxx.ets
@@ -1861,6 +1989,34 @@ struct TextExample7 {
           .borderWidth(1)
           .padding(10)
           .width('100%')
+        Text(
+          '电话号码：' + this.phoneNumber + '\n' +
+            '时间：' + this.datetime
+        )
+          .fontSize(16)
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
+          .textAlign(TextAlign.Center)
+          .borderWidth(1)
+          .padding(10)
+          .width('100%')
+        TextInput({ text: 'TextInput这个是输入框内容' })
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
+        TextArea({ text: 'TextArea这个是输入框内容' })
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
+        Search()
+          .copyOption(CopyOptions.LocalDevice)
+          .selectedDataDetectorConfig({
+            types: this.types
+          })
       }
       .width('100%')
       // 使用parallelGesture中的TapGesture替代onClick属性，达到非冒泡事件类似冒泡
@@ -1878,7 +2034,7 @@ struct TextExample7 {
 
 ### 示例8（文本绑定自定义菜单）
 
-从API version 11开始，该示例通过[bindSelectionMenu](#bindselectionmenu11)、[onTextSelectionChange](#ontextselectionchange11)、[closeSelectionMenu](#closeselectionmenu)接口实现了文本绑定自定义菜单的功能。
+从API version 11开始，该示例通过[bindSelectionMenu](#bindselectionmenu11)、[onTextSelectionChange](#ontextselectionchange11)、[closeSelectionMenu](#closeselectionmenu11)接口实现了文本绑定自定义菜单的功能。
 
 ```ts
 // xxx.ets
@@ -2169,7 +2325,7 @@ struct TextExample11 {
 
 ### 示例12（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#onpreparemenu20)（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在[onPrepareMenu](ts-text-common.md#属性-1)（从API version 20开始）回调中，进行菜单数据的设置。
 
 ```ts
 // xxx.ets
@@ -2484,3 +2640,79 @@ struct TextContentAlignExample {
 ```
 
 ![Text_Content_Align](figures/TextContentAlign.png)
+
+### 示例20（倍数行高和最大最小行高）
+
+从API version 22开始，该示例通过[lineHeightMultiple](#lineheightmultiple22)属性展示了使用倍数模式设置行高，同时通过[minLineHeight](#minlineheight22)和[maxLineHeight](#maxlineheight22)来设置最小和最大行高值。
+
+```ts
+import { LengthUnit } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello';
+
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Text(this.message)
+            .lineHeight(176)
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeightMultiple(3)
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeight(300)
+            .maxLineHeight({value:176,unit:LengthUnit.FP})
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeight(10)
+            .minLineHeight({value:176,unit:LengthUnit.FP})
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+        }
+      }
+    }.height('100%')
+    .width('100%')
+  }
+}
+```
+![Text_line_height_multiple](figures/Text_line_height_multiple.png)
+
+### 示例21（文本设置显示最小行数）
+
+从API version 22开始，该示例使用[minLines](#minlines22)属性设置文本显示的最小行数。
+
+```ts
+
+@Entry
+@Component
+struct TextExample1 {
+  @State message1: string = 'Hello world!';
+  @State message2: string = 'The minimum number of lines displayed for this text setting is 1';
+
+  build() {
+    Column() {
+      Text(this.message1)
+        .minLines(3)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+      Text(this.message2)
+        .minLines(1)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+    }.height(100).width('90%').margin(10)
+  }
+}
+```
+
+![textMinlines](figures/textMinlines.png)

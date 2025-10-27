@@ -1,4 +1,10 @@
 # ArkUI路由/导航开发常见问题(ArkTS)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 
 ## router中params无法正常传递class对象(API 9)
@@ -23,4 +29,4 @@
 
 **参考链接**
 
-[router.getParams](../reference/apis-arkui/js-apis-router.md#routergetparams)
+[router.getParams](../reference/apis-arkui/js-apis-router.md#routergetparamsdeprecated)

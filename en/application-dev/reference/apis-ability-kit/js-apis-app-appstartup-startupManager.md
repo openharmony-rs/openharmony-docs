@@ -6,7 +6,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The module provides APIs to manage startup tasks in AppStartup. It can be called only in the main thread.
+The module provides the capability to manage startup tasks in [AppStartup](../../application-models/app-startup.md). The APIs of this module can be called only on the main thread.
 
 > **NOTE**
 >
@@ -29,7 +29,7 @@ Runs startup tasks or loads .so files.
 
 > **NOTE**
 >
-> To run startup tasks in a feature HAP, use the [startupManager.run](#startupmanagerrun20) API.
+> This API cannot be used to run startup tasks defined in a feature-type HAP. To run those tasks, use [startupManager.run](#startupmanagerrun20).
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -37,8 +37,8 @@ Runs startup tasks or loads .so files.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| startupTasks | Array\<string\> | Yes| Array of [StartupTask](js-apis-app-appstartup-startupTask.md) names and names of .so files to be preloaded.|
-| config | [StartupConfig](./js-apis-app-appstartup-startupConfig.md) | No| Configuration for the AppStartup timeout and startup task listener.|
+| startupTasks | Array\<string\> | Yes| Array of [StartupTask](js-apis-app-appstartup-startupTask.md) names or names of .so files to be preloaded.|
+| config | [StartupConfig](./js-apis-app-appstartup-startupConfig.md) | No| Configuration for the timeout duration and listener of startup tasks in AppStartup.|
 
 **Return value**
 
@@ -73,7 +73,7 @@ export default class EntryAbility extends UIAbility {
     try {
       // Manually call the run method.
       startupManager.run(startParams).then(() => {
-        console.log(`StartupTest startupManager run then, startParams = ${startParams}.`);
+        console.info(`StartupTest startupManager run then, startParams = ${startParams}.`);
       }).catch((error: BusinessError) => {
         console.error(`StartupTest promise catch failed, error code: ${error.code}, error msg: ${error.message}.`);
       });
@@ -100,9 +100,9 @@ Runs startup tasks or loads .so files. You can specify [AbilityStageContext](js-
 
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| startupTasks | Array\<string\>                                              | Yes  | Array of [StartupTask](js-apis-app-appstartup-startupTask.md) names and names of .so files to be preloaded.|
+| startupTasks | Array\<string\>                                              | Yes  | Array of [StartupTask](js-apis-app-appstartup-startupTask.md) names or names of .so files to be preloaded.|
 | context      | [common.AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | Yes  | AbilityStage context that executes the [StartupTask](js-apis-app-appstartup-startupTask.md). It is passed as an input parameter to [init](js-apis-app-appstartup-startupTask.md#init) of the task.|
-| config       | [StartupConfig](./js-apis-app-appstartup-startupConfig.md)   | Yes  | Configuration for the AppStartup timeout and startup task listener.                      |
+| config       | [StartupConfig](./js-apis-app-appstartup-startupConfig.md)   | Yes  | Configuration for the timeout duration and listener of startup tasks in AppStartup.|
 
 **Return value**
 
@@ -149,7 +149,7 @@ export default class MyAbilityStage extends AbilityStage {
 
     try {
       // Manually call the run method.
-      startupManager.run(["StartupTask_001", "libentry_001"], this.context, config).then(() => {
+      startupManager.run(['StartupTask_001', 'libentry_001'], this.context, config).then(() => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
       }).catch((error: BusinessError<void>) => {
         hilog.error(0x0000, 'testTag', 'startupManager.run promise catch error: %{public}s', JSON.stringify(error));
@@ -178,13 +178,21 @@ If there are preloading tasks for .so files, the corresponding .so files is set 
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    startupManager.run(["StartupTask_001", "libentry_001"]).then(() => {
-      console.info("StartupTask_001 init successful");
-    })
+    try {
+      startupManager.run(['StartupTask_001', 'libentry_001']).then(() => {
+        hilog.info(0x0000, 'testTag', 'StartupTask_001 init successful');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `StartupTask_001 promise catch failed, error: %{public}s`,
+          JSON.stringify(error) ?? '');
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `StartupTask_001.run failed, error: %{public}s`, JSON.stringify(error) ?? '');
+    }
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -213,15 +221,15 @@ Obtains the execution result of a startup task or .so file preloading task.
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description|
-  | -------- | -------- | -------- | -------- |
-  | startupTask | string | Yes| Class name of the [StartupTask](js-apis-app-appstartup-startupTask.md) API implemented by the startup task or .so file name. All the startup tasks must implement the [StartupTask](js-apis-app-appstartup-startupTask.md) API.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| startupTask | string | Yes| Name of the [StartupTask](js-apis-app-appstartup-startupTask.md) or name of the .so file to be preloaded.|
 
 **Return value**
 
-  | Type| Description|
-  | -------- | -------- |
-  | Object | Execution result of the startup task if a startup task name is passed.<br> undefined if a .so file name is passed.|
+| Type| Description|
+| -------- | -------- |
+| Object | Execution result of [init](js-apis-app-appstartup-startupTask.md#init) of the startup task if a startup task name is passed.<br>undefined if a .so file name is passed.|
 
 **Error codes**
 
@@ -237,19 +245,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    startupManager.run(["StartupTask_001"]).then(() => {
-      console.info("StartupTask_001 init successful");
-    })
+    try {
+      startupManager.run(['StartupTask_001']).then(() => {
+        hilog.info(0x0000, 'testTag', 'StartupTask_001 init successful');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `StartupTask_001 promise catch failed, error: %{public}s`,
+          JSON.stringify(error) ?? '');
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `StartupTask_001.run failed, error: %{public}s`, JSON.stringify(error) ?? '');
+    }
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    let result = startupManager.getStartupTaskResult("StartupTask_001"); // Manually obtain the startup task result.
-    console.info("getStartupTaskResult result = " + result);
+    let result = startupManager.getStartupTaskResult('StartupTask_001'); // Manually obtain the startup task result.
+    hilog.info(0x0000, 'testTag', 'getStartupTaskResult result = %{public}s', result);
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -272,9 +288,9 @@ Checks whether a startup task or .so file preloading task is initialized.
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description|
-  | -------- | -------- | -------- | -------- |
-  | startupTask | string | Yes| Class name of the [StartupTask](js-apis-app-appstartup-startupTask.md) API implemented by the startup task or .so file name.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| startupTask | string | Yes| Name of the [StartupTask](js-apis-app-appstartup-startupTask.md) or name of the .so file to be preloaded.|
 
 **Return value**
 
@@ -296,13 +312,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    startupManager.run(["StartupTask_001", "libentry_001"]).then(() => {
-      console.info("StartupTask_001 init successful");
-    })
+    try {
+      startupManager.run(['StartupTask_001', 'libentry_001']).then(() => {
+      hilog.info(0x0000, 'testTag', 'StartupTask_001 init successful');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `StartupTask_001 promise catch failed, error: %{public}s`,
+          JSON.stringify(error) ?? '');
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `StartupTask_001.run failed, error: %{public}s`, JSON.stringify(error) ?? '');
+    }
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -310,14 +334,14 @@ export default class EntryAbility extends UIAbility {
     let result1 = startupManager.isStartupTaskInitialized('StartupTask_001');
     let result2 = startupManager.isStartupTaskInitialized('libentry_001');
     if (result1) {
-      console.info("StartupTask_001 init successful");
+      console.info('StartupTask_001 init successful');
     } else {
-      console.info("StartupTask_001 uninitialized");
+      console.info('StartupTask_001 uninitialized');
     }
     if (result2) {
-      console.info("libentry_001 init successful");
+      console.info('libentry_001 init successful');
     } else {
-      console.info("libentry_001 uninitialized");
+      console.info('libentry_001 uninitialized');
     }
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -345,9 +369,9 @@ Removes the initialization result of a startup task or .so file preloading task.
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description|
-  | -------- | -------- | -------- | -------- |
-  | startupTask | string | Yes| Class name of the [StartupTask](js-apis-app-appstartup-startupTask.md) API implemented by the startup task or .so file name.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| startupTask | string | Yes| Name of the [StartupTask](js-apis-app-appstartup-startupTask.md) or name of the .so file to be preloaded.|
 
 **Error codes**
 
@@ -363,19 +387,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    startupManager.run(["StartupTask_001", "libentry_001"]).then(() => {
-      console.info("StartupTask_001 init successful");
-    })
+    try{
+      startupManager.run(['StartupTask_001', 'libentry_001']).then(() => {
+        hilog.info(0x0000, 'testTag', 'StartupTask_001 init successful');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `StartupTask_001 promise catch failed, error: %{public}s`,
+          JSON.stringify(error) ?? '');
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `StartupTask_001.run failed, error: %{public}s`, JSON.stringify(error) ?? '');
+    }
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    startupManager.removeStartupTaskResult("StartupTask_001");
-    startupManager.removeStartupTaskResult("libentry_001");
+    startupManager.removeStartupTaskResult('StartupTask_001');
+    startupManager.removeStartupTaskResult('libentry_001');
 
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {

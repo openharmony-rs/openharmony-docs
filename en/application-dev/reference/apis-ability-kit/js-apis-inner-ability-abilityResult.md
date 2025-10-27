@@ -1,10 +1,12 @@
 # AbilityResult
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The module defines the result code and data returned when a started ability is terminated.
-
-In the stage model, you can use [startAbilityForResult](js-apis-inner-application-uiAbilityContext.md#startabilityforresult) to obtain the AbilityResult object returned after the started ability is terminated by calling [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult).
-
-In the FA model, you can use [startAbilityForResult](js-apis-ability-featureAbility.md#featureabilitystartabilityforresult7) to obtain the AbilityResult object returned after the started ability is terminated by calling [terminateSelfWithResult](js-apis-ability-featureAbility.md#featureabilityterminateselfwithresult7).
+The module defines the result code and data returned to the caller when a started UIAbility is terminated.
 
 > **NOTE**
 >
@@ -12,15 +14,21 @@ In the FA model, you can use [startAbilityForResult](js-apis-ability-featureAbil
 
 ## Modules to Import
 
-Stage model:
+[Stage model](../../application-models/ability-terminology.md#stage-model):
 ```ts
 import { common } from '@kit.AbilityKit';
 ```
 
-FA model:
+[FA model](../../application-models/ability-terminology.md#fa-model):
 ```ts
 import ability from '@ohos.ability.ability';
 ```
+
+## How to Use
+
+In the stage model, you can use [startAbilityForResult](js-apis-inner-application-uiAbilityContext.md#startabilityforresult) to obtain the AbilityResult object returned when the started UIAbility is terminated by calling [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult).
+
+In the FA model, you can use [startAbilityForResult](js-apis-ability-featureAbility.md#featureabilitystartabilityforresult7) to obtain the AbilityResult object returned after the started UIAbility is terminated by calling [terminateSelfWithResult](js-apis-ability-featureAbility.md#featureabilityterminateselfwithresult7).
 
 ## Attributes
 
@@ -30,5 +38,5 @@ import ability from '@ohos.ability.ability';
 
 | Name       |  Type                | Read-only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| resultCode  | number               | No  | No  | Result code returned by the target party to the caller after the ability of the target party is started and then terminated.<br>- In normal cases, the result code sent by the target party is returned.<br>- In abnormal cases, the value **-1** is returned.                               |
-| want  | [Want](js-apis-app-ability-want.md) | No  | Yes  | Data returned after the started ability is terminated.|
+| resultCode  | number               | No  | No  | Result code returned by the target party to the caller after the UIAbility of the target party is started and then terminated.<br>- In normal cases, the result code sent by the target party is returned.<br>- In abnormal cases, the value **-1** is returned.                               |
+| want  | [Want](js-apis-app-ability-want.md) | No  | Yes  | Data returned after the started UIAbility is terminated.|

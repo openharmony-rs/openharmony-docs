@@ -1,4 +1,10 @@
 # native_drm_err.h
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -6,7 +12,7 @@ The file declares the DRM error codes.
 
 **File to include**: <multimedia/drm_framework/native_drm_err.h>
 
-**Library**: libnative_drm.z.so
+**Library**: libnative_drm.so
 
 **System capability**: SystemCapability.Multimedia.Drm.Core
 

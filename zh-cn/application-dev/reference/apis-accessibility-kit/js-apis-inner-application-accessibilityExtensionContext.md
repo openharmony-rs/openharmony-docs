@@ -174,7 +174,7 @@ setTargetBundleName(targetNames: Array\<string>): Promise\<void>;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -285,7 +285,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getFocusElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.log(`Succeeded in get focus element,${JSON.stringify(data)}`);
+  console.info(`Succeeded in get focus element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
 })
@@ -426,7 +426,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getWindowRootElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.log(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
 });
@@ -564,7 +564,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getWindows().then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
 });
@@ -678,7 +678,7 @@ injectGesture(gesturePath: GesturePath): Promise\<void>;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -826,9 +826,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
-  console.log(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.log(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -911,7 +911,7 @@ let attributeName: ElementAttributeKeys = 'bundleName';
 
 // rootElement是AccessibilityElement的实例
 rootElement.attributeValue(attributeName).then((data: string) => {
-  console.log(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
 });
@@ -989,7 +989,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.actionNames().then((data: string[]) => {
-  console.log(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -1049,7 +1049,7 @@ performAction(actionName: string, parameters?: object): Promise\<void>;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1255,7 +1255,7 @@ let condition = 'keyword';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1265,7 +1265,7 @@ rootElement.findElement('content', condition).then((data: AccessibilityElement[]
 
 findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
 
-根据节点内容查询所有节点元素。
+根据节点内容查询所有节点元素。使用callback异步回调。
 
 > **说明：**
 >
@@ -1349,7 +1349,7 @@ let condition: FocusType = 'normal';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element,${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1444,7 +1444,7 @@ let condition: FocusDirection = 'up';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
-  console.log(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });

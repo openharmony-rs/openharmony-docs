@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
@@ -69,7 +69,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | blurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 半模态面板的模糊背景。默认无模糊背景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 半模态页面的背景蒙层颜色。<br/> 默认值：$r('sys.color.ohos_id_color_mask_thin')。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | title<sup>11+</sup> | [SheetTitleOptions](#sheettitleoptions11) \| [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 半模态面板的标题。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enableOutsideInteractive<sup>11+</sup> | boolean | 否 | 是 | 半模态所在页面是否允许交互。<br/>**说明：**<br/>设置为true时允许交互，不显示蒙层；设置为false时不允许交互，显示蒙层；若不进行设置，默认底部弹窗与居中弹窗不允许交互，跟手弹窗允许交互。当设置为true时，maskColor设置无效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| enableOutsideInteractive<sup>11+</sup> | boolean | 否 | 是 | 半模态页面显示时，其下层页面是否允许交互。<br/>**说明：**<br/>设置为true时允许交互，不显示蒙层；设置为false时不允许交互，显示蒙层；若不进行设置，默认底部弹窗与居中弹窗不允许交互，跟手弹窗允许交互。当设置为true时，maskColor设置无效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | shouldDismiss<sup>11+</sup> | (sheetDismiss: [SheetDismiss](#sheetdismiss11)) => void | 否 | 是 | 半模态页面交互式关闭回调函数。<br/>**说明：**<br/>当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，如果已注册回调函数，模态窗口将不会立即关闭。要关闭半模态，需在回调函数中调用shouldDismiss.dismiss()方法来实现。<br/>如果不注册该回调函数，则用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，正常关闭半模态，无其他行为。<br/>侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。<br/>建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onWillDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[DismissSheetAction](#dismisssheetaction12)> | 否 | 是    | 半模态页面的交互式关闭回调函数。允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。<br/>**说明：**<br />当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数[DismissSheetAction](#dismisssheetaction12)中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。<br/>如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。<br/>侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。<br />在onWillDismiss回调中，不能再做onWillDismiss拦截。<br />建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onWillSpringBackWhenDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[SpringBackAction](#springbackaction12)> | 否 | 是    | 半模态页面交互式关闭前控制回弹函数。允许开发者注册，以控制半模态页面交互式关闭时的回弹效果。<br/>**说明：**<br />当用户触发执行下拉关闭操作并同时注册该回调函数与shouldDismiss或onWillDismiss时，由开发者控制下滑关闭时是否回弹。在回调函数中可以通过调用springBack来实现回弹效果。也可以通过不调用springBack来取消回弹效果。<br />若不注册该回调函数，但注册shouldDismiss或onWillDismiss时，则默认在下拉关闭时，会触发回弹效果，回弹后再根据shouldDismiss或onWillDismiss内的回调行为决定半模态是否关闭。<br />如果不注册该回调函数，且未注册shouldDismiss或onWillDismiss时，默认在下滑关闭时，触发半模态关闭。<br />侧边弹窗样式则是在侧拉关闭场景生效springBack。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -105,8 +105,8 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 | 名称                      | 值    | 说明                         |
 | ------------------------- | ---- | -------------------------------- |
-| MEDIUM                    | 0    | 指定半模态高度为屏幕高度一半。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| LARGE                     | 1    | 指定半模态高度几乎为屏幕高度。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| MEDIUM                    | 0    | 指定半模态高度为半模态所在窗口的60%。<br />在TV设备上半模态高度为半模态所在窗口的50%。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| LARGE                     | 1    | 指定半模态高度几乎为半模态所在窗口的高度。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | FIT_CONTENT<sup>11+</sup> | 2    | 指定半模态高度为适应内容的高度。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**说明：**<br />FIT_CONTENT是半模态容器高度去适应孩子builder根节点的布局。此场景下builder根节点的高度不能使用百分比，两者不能相互依赖彼此的布局。 |
 
 ## HoverModeAreaType<sup>14+</sup>
@@ -177,6 +177,10 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 5. 不支持指定其他显示层级接口，如showInSubWindow = true、mode = SheetMode.EMBEDDED。侧边弹窗的层级同SheetMode.OVERLAY，只支持在当前UIContext内顶层显示，在所有页面之上。和弹窗类组件显示在一个层级。
 
 6. 无悬停态避让能力。
+
+7. SIDE样式的半模态width的默认值规格：
+   - [断点](../../../../application-dev/ui/arkts-layout-development-grid-layout.md#栅格容器断点)为md的场景，默认宽度为窗口的1/2。
+   - [断点](../../../../application-dev/ui/arkts-layout-development-grid-layout.md#栅格容器断点)大于md的场景，默认宽度400vp。
 
 
 **侧边弹窗样式不支持的接口**
@@ -254,9 +258,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型       | 必填 | 说明                                                         |
-| ------- | ---------- | ---- | ------------------------------------------------------------ |
-| dismiss | () => void | 是   | 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
+| 名称    | 类型       | 只读 | 可选 | 说明                                                         |
+| ------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
+| dismiss | () => void | 否   | 否   | 半模态面板关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
 
 ## SheetTitleOptions<sup>11+</sup>
 
@@ -266,10 +270,10 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                                   | 必填 | 说明                 |
-| -------- | -------------------------------------- | ---- | -------------------- |
-| title    | [ResourceStr](ts-types.md#resourcestr) | 是   | 半模态面板的主标题。 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否   | 半模态面板的副标题。 |
+| 名称     | 类型                                   | 只读 | 可选 | 说明                 |
+| -------- | -------------------------------------- | ---- | ---- | -------------------- |
+| title    | [ResourceStr](ts-types.md#resourcestr) | 否   | 否   | 半模态面板的主标题。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 半模态面板的副标题。 |
 
 ## SheetMode<sup>12+</sup>枚举说明
 
@@ -305,10 +309,10 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                       | 必填   | 说明            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| dismiss | [Callback](./ts-types.md#callback12)\<void> | 是    | 半模态页面关闭回调函数。开发者需要退出页面时调用。 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 是    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。|
+| 名称              | 类型                                       | 只读   | 可选   | 说明            |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------- |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭回调函数。开发者需要退出页面时调用。 |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否    | 否    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。|
 
 ## SpringBackAction<sup>12+</sup>
 
@@ -318,9 +322,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                       | 必填   | 说明            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| springBack | [Callback](./ts-types.md#callback12)\<void> | 是    | 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。  |
+| 名称              | 类型                                       | 只读   | 可选   | 说明            |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------- |
+| springBack | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭前控制回弹函数，开发者需要半模态回弹时调用。  |
 
 ## SheetKeyboardAvoidMode<sup>13+</sup>枚举说明
 
@@ -664,7 +668,7 @@ struct ListenKeyboardHeightChange {
         this.windowClass = data;
         try {
           if (this.windowClass !== undefined) {
-            console.log('success in listen height change');
+            console.info('success in listen height change');
             this.windowClass.on('keyboardHeightChange', this.callback);
           }
         } catch (exception) {
@@ -678,7 +682,7 @@ struct ListenKeyboardHeightChange {
   }
 
   callback = (height: number) => {
-    console.log('height change: ' + height);
+    console.info('height change: ' + height);
     if (height !== 0) {
       this.scroller.scrollTo({
         xOffset: 0, yOffset: height + this.scroller.currentOffset().yOffset,
@@ -755,7 +759,7 @@ struct ListenKeyboardHeightChange {
 
 此示例为说明镜像场景而设置了不同的圆角半径，通常不建议开发者设置不同的值，会造成视觉体验不佳。
 
-其中，半模态的radius属性值使用LocalizedBorderRadiuses类型。
+其中，从API version 15开始，半模态的radius属性值使用LocalizedBorderRadiuses类型。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -810,7 +814,7 @@ struct SheetTransitionExample {
 
 ### 示例8（半模态Side侧边样式）
 
-此示例实现半模态侧边样式。
+从API version 20开始，此示例实现半模态侧边样式。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -913,7 +917,7 @@ struct SheetSideExample {
 
 ### 示例9（半模态ContentCover全屏样式）
 
-此示例实现半模态的全屏显示效果。
+从API version 20开始，此示例实现半模态的全屏显示效果。
 
 ```ts
 // xxx.ets

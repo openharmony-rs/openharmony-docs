@@ -564,6 +564,10 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 
 `ffrt_submit_f`接口是`ffrt_submit_base`接口的简化包装形式。当任务不需要销毁回调函数时，接口内部将任务函数及其参数包装成通用任务结构，再调用`ffrt_submit_base`接口提交任务。
 
+> **说明：**
+>
+> 从API version 20开始，支持该接口。
+
 **样例**
 
 ```cpp
@@ -650,6 +654,10 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 **描述**
 
 相比于`ffrt_submit_f`接口，增加了任务句柄的返回值。
+
+> **说明：**
+>
+> 从API version 20开始，支持该接口。
 
 **样例**
 
@@ -1008,6 +1016,7 @@ void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_
 描述
 
 - 设置检测到队列任务超时后执行的回调函数。
+- 不建议在`f`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_queue_attr_get_callback**
 
@@ -1076,7 +1085,7 @@ void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode);
 - 设置队列中的任务是以协程模式还是以线程模式运行。默认以协程模式运行。
 
 > **说明：**
-
+>
 > 从API version 20开始，支持该接口。
 
 **ffrt_queue_attr_get_thread_mode**
@@ -1098,7 +1107,7 @@ bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr);
 - 获取队列中的任务是以协程模式还是以线程模式运行。
 
 > **说明：**
-
+>
 > 从API version 20开始，支持该接口。
 
 **样例**
@@ -1210,6 +1219,10 @@ void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, co
 
 - 当任务不需要销毁回调函数时，提交任务到队列中。
 
+> **说明：**
+>
+> 从API version 20开始，支持该接口。
+
 **ffrt_queue_submit_h**
 
 ```c
@@ -1250,6 +1263,10 @@ ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_function_t fun
 描述
 
 - 当任务不需要销毁回调函数时，提交任务到队列中，并返回任务句柄。
+
+> **说明：**
+>
+> 从API version 20开始，支持该接口。
 
 **ffrt_queue_wait**
 
@@ -1687,6 +1704,10 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 - 初始化读写锁。
 
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
+
 **ffrt_rwlock_wrlock**
 
 ```c
@@ -1704,6 +1725,10 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock);
 描述
 
 - 对指定读写锁加写锁操作。
+
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
 
 **ffrt_rwlock_rdlock**
 
@@ -1723,6 +1748,10 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock);
 
 - 对指定读写锁加读锁操作。
 
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
+
 **ffrt_rwlock_trywrlock**
 
 ```c
@@ -1740,6 +1769,10 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock);
 描述
 
 - 对指定的读写锁进行尝试加写锁操作。
+
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
 
 **ffrt_rwlock_tryrdlock**
 
@@ -1759,6 +1792,10 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock);
 
 - 对指定的读写锁进行尝试加读锁操作。
 
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
+
 **ffrt_rwlock_unlock**
 
 ```c
@@ -1777,6 +1814,10 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock);
 
 - 对指定的读写锁进行解锁操作。
 
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
+
 **ffrt_rwlock_destroy**
 
 ```c
@@ -1794,6 +1835,10 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock);
 描述
 
 - 对指定的读写锁进行销毁操作。
+
+> **说明：**
+>
+> 从API version 18开始，支持该接口。
 
 **样例**
 
@@ -2069,8 +2114,8 @@ FFRT_C_API int ffrt_usleep(uint64_t usec);
 
 **描述**
 
+- 该接口支持在FFRT任务内部调用，也支持在FFRT任务外部调用。
 - FFRT提供的类似C11 sleep和Linux usleep的性能实现。
-- 该接口只能在FFRT任务内部调用，在FFRT任务外部调用存在未定义的行为。
 - 该接口睡眠精度为微秒。
 - 该功能能够避免传统的`sleep`睡眠时陷入内核的问题，在使用得当的条件下将会有更好的性能。
 
@@ -2100,8 +2145,8 @@ FFRT_C_API void ffrt_yield();
 
 **描述**
 
+- 该接口支持在FFRT任务内部调用，也支持在FFRT任务外部调用。
 - 当前任务主动让出CPU执行资源，允许其他可执行的任务运行，如果没有其他可执行的任务，`yield`无效。
-- 该接口只能在 FFRT任务内部调用，在FFRT任务外部调用存在未定义的行为。
 - 此函数的确切行为取决于实现，特别是使用中的FFRT调度程序的机制和系统状态。
 
 **样例**
@@ -2166,6 +2211,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 描述
 
 - 启动一个定时器，定时器到期且未被取消的话，执行回调函数。如果设置`repeat`为`true`，定时器到期后会重复设置。
+- 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_timer_stop**
 
@@ -2365,6 +2411,7 @@ int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void 
 描述
 
 - 管理loop上的监听fd事件，事件的监听和回调执行在loop线程上处理。
+- 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_loop_timer_start**
 
@@ -2389,6 +2436,7 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 描述
 
 - 在loop上启动一个定时器，用法和`ffrt_timer_start`一致，只是定时器的监听和回调执行在loop线程上处理。
+- 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **ffrt_loop_timer_stop**
 
@@ -2601,6 +2649,10 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 
 - 该函数用于初始化纤程，需要传入启动纤程的函数指针和入参，以及运行时使用的栈空间，纤程不管理任何的内存，栈的生命周期由调用方管理。
 
+> **说明：**
+>
+> 从API version 20开始，支持该接口。
+
 **ffrt_fiber_switch**
 
 声明
@@ -2618,3 +2670,7 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to);
 
 - 切换纤程上下文时，调用该函数的线程会暂停当前任务，保存上下文到`from`纤程，并恢复`to`纤程上下文，执行`to`对应的任务。
 - 注意：本接口不校验`from`、`to`的有效性，调用方需自行校验地址有效性，否则会导致该进程崩溃。
+
+> **说明：**
+>
+> 从API version 20开始，支持该接口。

@@ -1,5 +1,12 @@
 # @ohos.application.testRunner (TestRunner)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024; @xuzhihao666-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 TestRunner模块提供了框架测试的能力。包括准备单元测试环境、运行测试用例。
 
 如果您想实现自己的单元测试框架，您必须继承这个类并覆盖它的所有方法。
@@ -8,7 +15,7 @@ TestRunner模块提供了框架测试的能力。包括准备单元测试环境�
 > 
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 本模块接口仅可在<!--RP1-->[自动化测试框架arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。 
+> 本模块接口仅可在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。 
 
 ## 导入模块
 
@@ -33,11 +40,12 @@ import { TestRunner } from '@kit.TestKit';
 
 export default class UserTestRunner implements TestRunner {
   onPrepare() {
-    console.log('Trigger onPrepare');
+    console.info('Trigger onPrepare');
   }
+
   onRun() {
   }
-};
+}
 ```
 
 
@@ -60,8 +68,9 @@ import { TestRunner } from '@kit.TestKit';
 export default class UserTestRunner implements TestRunner {
   onPrepare() {
   }
+
   onRun() {
-    console.log('Trigger onRun');
+    console.info('Trigger onRun');
   }
-};
+}
 ```

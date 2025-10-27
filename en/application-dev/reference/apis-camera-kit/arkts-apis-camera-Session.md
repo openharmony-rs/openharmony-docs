@@ -2,8 +2,9 @@
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
-<!--SE: @leo_ysl-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -67,7 +68,7 @@ Commits the configuration for this session. This API uses an asynchronous callba
 
 | Name    | Type                  | Mandatory| Description                 |
 | -------- | -------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned. For example, if the aspect ratio of the preview stream is different from that of the video output stream, error code 7400201 is returned.|
+| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the configuration is successfully committed, **err** is **undefined**; otherwise, **err** is an error object with an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). For example, if the aspect ratio of the preview stream is different from that of the video output stream, error code 7400201 is returned.|
 
 **Error codes**
 
@@ -159,8 +160,6 @@ Checks whether a CameraInput instance can be added to this session. This API mus
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function canAddInput(session: camera.Session, cameraInput: camera.CameraInput): void {
   let canAdd: boolean = session.canAddInput(cameraInput);
   console.info(`The input canAddInput: ${canAdd}`);
@@ -276,8 +275,6 @@ Determines whether a CameraOutput instance can be added to this session. This AP
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function canAddOutput(session: camera.Session, cameraOutput: camera.CameraOutput): void {
   let canAdd: boolean = session.canAddOutput(cameraOutput);
   console.info(`This addOutput can add: ${canAdd}`);
@@ -382,7 +379,7 @@ Starts this session. This API uses an asynchronous callback to return the result
 
 | Name     | Type                 | Mandatory| Description                |
 | -------- | -------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the session starts successfully, **err** is **undefined**; otherwise, **err** is an error object with an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
 
 **Error codes**
 
@@ -464,7 +461,7 @@ Stops this session. This API uses an asynchronous callback to return the result.
 
 | Name     | Type                 | Mandatory| Description                |
 | -------- | -------------------- | ---- | ------------------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the session stops successfully, **err** is **undefined**; otherwise, **err** is an error object with an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
 
 **Error codes**
 
@@ -542,7 +539,7 @@ Releases this session. This API uses an asynchronous callback to return the resu
 
 | Name     | Type                 | Mandatory| Description                |
 | -------- | -------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the session is released successfully, **err** is **undefined**; otherwise, **err** is an error object with an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
 
 **Error codes**
 

@@ -56,7 +56,7 @@ factoryReset(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     access.factoryReset((err: BusinessError) => {
         if (err) {
@@ -102,7 +102,7 @@ factoryReset(): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     access.factoryReset().then(() => {
         console.info("factoryReset");
@@ -146,7 +146,7 @@ getLocalAddress(): string
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let localAddr = access.getLocalAddress();
 } catch (err) {
@@ -188,7 +188,7 @@ restrictBluetooth(): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     access.restrictBluetooth().then(() => {
         console.info("restrictBluetooth");

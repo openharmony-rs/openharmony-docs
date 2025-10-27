@@ -2,8 +2,9 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend; @liao_qian-->
-<!--SE: @ccfriend-->
-<!--TSE: @chenmingxi1_huawei-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 constructor(context: Context)
 
-Creates an AVCastPickerHelper instance. For details about how to obtain the context, see [getContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
+Creates an AVCastPickerHelper instance. For details about how to obtain the context, see [getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -46,8 +47,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -59,7 +60,7 @@ struct Index {
         Text(this.message)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
-          .onClick(()=>{
+          .onClick(() => {
             let context = this.getUIContext().getHostContext() as Context;
             let avCastPicker = new avSession.AVCastPickerHelper(context);
           })
@@ -106,6 +107,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function avCastPicker(context: common.Context) {
   let avCastPickerOptions : avSession.AVCastPickerOptions = {
@@ -116,6 +118,36 @@ async function avCastPicker(context: common.Context) {
     console.info('select successfully');
   }).catch((err: BusinessError) => {
     console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## resetCommunicationDevice<sup>21+</sup>
+
+resetCommunicationDevice(): Promise\<void>
+
+Restores the communication device of an application to the default device. For example, during a voice call, the communication device of the mobile phone is restored to the earpiece. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Multimedia.AVSession.AVCast
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
   });
 }
 ```
@@ -153,6 +185,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 ```ts
 import { common } from '@kit.AbilityKit';
 import { AVCastPickerState } from '@kit.AVSessionKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
@@ -192,6 +225,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
 
 async function onPickerStateChange(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);

@@ -1,5 +1,12 @@
 # Media Kit（媒体服务）
 
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @chenkun-->
+<!--Designer: @yxc2-->
+<!--Tester: @zengxi_3007-->
+<!--Adviser: @w_Machine_cc-->
+
 - [Media Kit简介](media-kit-intro.md)
 - 媒体开发指导(ArkTS)<!--media-kit-dev--arkts-->
   - 播放<!--media-playback-arkts-->
@@ -28,8 +35,12 @@
   - 录制<!--media-recording-c-->
     - [使用AVRecorder录制音频(C/C++)](using-ndk-avrecorder-for-audio-recording.md)
     - [使用AVRecorder录制视频(C/C++)](using-ndk-avrecorder-for-video-recording.md)
-    - [使用AVScreenCapture录屏取码流(C/C++)](using-avscreencapture-for-buffer.md)
+    - 使用AVScreenCapture录屏取码流(C/C++)<!--using-avscreencapture-for-buffer-->
+      - [AVScreenCapture录屏基础流程](avscreencapture-c-basic-process.md)
+      - [AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)
+      - [录屏常见问题](avscreencapture-faqs.md)
     - [使用AVScreenCapture录屏写文件(C/C++)](using-avscreencapture-for-file.md)
+    - [屏幕录制支持矩形区域录制(C/C++)](video-supports-rectangular-area-recording.md)
   - 媒体信息查询<!--media-info-c-->
     - [使用AVMetadataExtractor获取元数据(C/C++)](using-ndk-avmetadataextractor-for-media.md)
     - [使用AVImageGenerator获取视频帧(C/C++)](using-ndk-avimagegenerator-for-video.md)

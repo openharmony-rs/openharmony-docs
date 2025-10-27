@@ -4,7 +4,7 @@
 <!--Owner: @xushubo; @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -279,7 +279,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 |
-| [OH_AVFormat](../apis-avcodec-kit/_core.md#oh_avformat)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
 | void *userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
 
 ### OH_AVPlayerOnError()
@@ -290,7 +290,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **描述**
 
-在api9以上的版本发生错误时调用
+在API 9以上的版本发生错误时调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -298,7 +298,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **废弃版本：** 12
 
-**替代接口：** [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)
+**替代接口：** [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)
 
 
 **参数：**

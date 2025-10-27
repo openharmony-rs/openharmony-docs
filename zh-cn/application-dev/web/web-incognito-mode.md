@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 
 开发者在创建Web组件时，可以将可选参数[incognitoMode](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)设置为true，来开启Web组件的隐私模式。当使用隐私模式时，浏览网页时的Cookie、Cache Data等数据不会保存在本地的持久化文件，当隐私模式的Web组件被销毁时，Cookie、Cache Data等数据将不被记录下来。
@@ -46,7 +46,7 @@
           .onClick(() => {
             try {
               let result = this.controller.isIncognitoMode();
-              console.log('isIncognitoMode' + result);
+              console.info('isIncognitoMode' + result);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -140,10 +140,10 @@
               // getAccessibleGeolocation第三个参数表示隐私模式（true）或非隐私模式（false）下，以回调方式异步获取指定源的地理位置权限状态。
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.log('getAccessibleGeolocationAsync error: ' + JSON.stringify(error));
+                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
-                console.log('getAccessibleGeolocationAsync result: ' + result);
+                console.info('getAccessibleGeolocationAsync result: ' + result);
               }, true);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -248,7 +248,7 @@
             try {
               // fetchCookieSync第二个参数表示获取隐私模式（true）或非隐私模式（false）下，webview的内存cookies。
               let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', true);
-              console.log("fetchCookieSync cookie = " + value);
+              console.info("fetchCookieSync cookie = " + value);
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -305,7 +305,7 @@
           .onClick(() => {
             // existCookie参数表示隐私模式（true）或非隐私模式（false）下，查询是否存在cookies。
             let result = webview.WebCookieManager.existCookie(true);
-            console.log("result: " + result);
+            console.info("result: " + result);
           })
         Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
       }

@@ -1,4 +1,10 @@
 # Performing Memory Management Using JSVM-API
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
@@ -17,7 +23,7 @@ In JS, memory management and GC are performed automatically. The JSVM is respons
 
 ## Example
 
-If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ and ArkTS code related to memory management.
+If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code and ArkTS code involved in related APIs.
 
 ### OH_JSVM_AdjustExternalMemory
 
@@ -58,19 +64,21 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 ```
 
-// Call the C++ code from JS.
+JS example:
 
 ```c++
 const char *srcCallNative = R"JS(adjustExternalMemory())JS";
 ```
-**Expected result**
-The following information is displayed in the log:
+<!-- @[oh_jsvm_adjust_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/adjustexternalmemory/src/main/cpp/hello.cpp) -->
+Expected result:
+ 
+```cpp
 JSVM OH_JSVM_AdjustExternalMemory: success
 JSVM Allocate memory size: 1048576
-
+```
 ### OH_JSVM_MemoryPressureNotification
 
-Call **OH_JSVM_MemoryPressureNotification** to notify the underlying JSVM that the VM system memory is insufficient and selectively trigger GC.
+Call **OH_JSVM_MemoryPressureNotification** to notify the VM of insufficient system memory and selectively triggers garbage collection.
 
 CPP code:
 
@@ -103,12 +111,15 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 ```
 
-// Call the C++ code from JS.
+JS example:
 
 ```c++
 const char *srcCallNative = R"JS(memoryPressureNotification())JS";
 ```
-**Expected result**
-The following information is displayed in the log:
+<!-- @[oh_jsvm_memory_pressure_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/memorypressurenotification/src/main/cpp/hello.cpp) -->
+Expected result:
+ 
+```cpp
 JSVM OH_JSVM_MemoryPressureNotification: success
 JSVM Current JSVM memory pressure level: 2
+```

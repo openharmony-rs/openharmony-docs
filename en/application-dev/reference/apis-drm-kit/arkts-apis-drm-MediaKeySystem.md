@@ -1,5 +1,10 @@
 # Interface (MediaKeySystem)
-
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -277,7 +282,7 @@ try {
 
 generateKeySystemRequest(): Promise<ProvisionRequest\>
 
-Generates a provision request.
+Generates a provision request. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -307,7 +312,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 // Do not call this API if a DRM certificate already exists on the device.
 mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
-  console.log("generateKeySystemRequest");
+  console.info("generateKeySystemRequest");
 }).catch((err: BusinessError) => {
   console.error(`generateKeySystemRequest: ERROR: ${err}`);
 });
@@ -317,7 +322,7 @@ mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionR
 
 processKeySystemResponse(response: Uint8Array): Promise<void\>
 
-Processes a provision response.
+Processes a provision response. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -355,7 +360,7 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 // keySystemResponse is the response obtained from the DRM service. Pass in the actual data obtained.
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
-  console.log("processKeySystemResponse");
+  console.info("processKeySystemResponse");
 }).catch((err: BusinessError) => {
   console.error(`processKeySystemResponse: ERROR: ${err}`);
 });
@@ -405,7 +410,7 @@ try {
 
 on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
-Subscribes to events indicating that the application requires a DRM certificate.
+Subscribes to events indicating that the application requires a DRM certificate. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -415,8 +420,8 @@ Subscribes to events indicating that the application requires a DRM certificate.
 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created. This event is triggered when the application requests a DRM certificate.|
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | Yes  | Callback used to return the event information. If this event callback is returned, a DRM certificate must be requested.                |
+| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem). This event is triggered when the application requests a DRM certificate.|
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. If this event callback is returned, a DRM certificate must be requested.                |
 
 **Error codes**
 
@@ -434,7 +439,7 @@ import { drm } from '@kit.DrmKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
-  console.log('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
+  console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
 ```
 
@@ -442,7 +447,7 @@ mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
 
 off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
-Unsubscribes from events indicating that the application requests a DRM certificate.
+Unsubscribes from events indicating that the application requests a DRM certificate. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -452,8 +457,8 @@ Unsubscribes from events indicating that the application requests a DRM certific
 
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
-| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created.|
-| callback | (eventInfo: \<[EventInfo](arkts-apis-drm-i.md#eventinfo)\>) => void  | No  | Callback used to return the event information.                 |
+| type     | string               | Yes  | Event type. The event can be listened for when a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem).|
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | No  | Callback used to return the event information.                 |
 
 **Error codes**
 
@@ -467,6 +472,7 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 **Example**
 
 ```ts
+import { drm } from '@kit.DrmKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.off('keySystemRequired');
 ```

@@ -1,7 +1,13 @@
 # FA Model Development Overview
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @ccllee1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-During application development based on the Feature Ability (FA) model, the following tasks are involved in the application model.
+During application development based on the [FA model](ability-terminology.md#fa-model), the following tasks are involved in the application model.
 
 
   **Table 1** FA model development process

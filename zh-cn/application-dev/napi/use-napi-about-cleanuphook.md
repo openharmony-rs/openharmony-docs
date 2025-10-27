@@ -108,7 +108,7 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
         OH_LOG_ERROR(LOG_APP, "Test Node-API napi_add_env_cleanup_hook failed.");
         return nullptr;
     }
-    // 注册环境清理钩子函数，此处不移除环境清理钩子，为了在Java环境被销毁时，这个钩子函数被调用，用来模拟执行一些清理操作，例如释放资源、关闭文件等。
+    // 注册环境清理钩子函数，此处不移除环境清理钩子，为了在ArkTS环境被销毁时，这个钩子函数被调用，用来模拟执行一些清理操作，例如释放资源、关闭文件等。
     status = napi_add_env_cleanup_hook(env, Cleanup, &hookParameter);
     if (status != napi_ok) {
         OH_LOG_ERROR(LOG_APP, "Test Node-API napi_add_env_cleanup_hook failed.");
@@ -137,7 +137,7 @@ ArkTS侧示例代码
 ```ts
 // index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import worker from '@ohos.worker';
+import { worker } from '@kit.ArkTS';
 
 let wk = new worker.ThreadWorker("entry/ets/workers/worker.ts");
 // 发送消息到worker线程
@@ -153,7 +153,7 @@ wk.onmessage = (message) => {
 ```ts
 // worker.ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import worker from '@ohos.worker';
+import { worker } from '@kit.ArkTS';
 import testNapi from 'libentry.so';
 
 let parent = worker.workerPort;
@@ -162,7 +162,7 @@ parent.onmessage = (message) => {
   hilog.info(0x0000, 'testTag', 'Test Node-API message from main thread: %{public}s', JSON.stringify(message));
   // 发送消息到主线程
   parent.postMessage('Test Node-API worker:' + testNapi.napiEnvCleanUpHook());
-}
+};
 ```
 <!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
@@ -284,6 +284,7 @@ ArkTS侧示例代码
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook: %{public}s', testNapi.napiAsyncCleanUpHook());
 } catch (error) {

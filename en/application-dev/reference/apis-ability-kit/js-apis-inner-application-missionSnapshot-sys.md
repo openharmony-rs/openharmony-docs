@@ -1,5 +1,12 @@
 # MissionSnapshot (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the snapshot of a mission. The snapshot can be obtained through [missionManager.getMissionSnapShot](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissionsnapshot).
 
 > **NOTE**
@@ -13,7 +20,7 @@ The module defines the snapshot of a mission. The snapshot can be obtained throu
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-## Attributes
+## MissionSnapshot
 
 **System API**: This is a system API.
 
@@ -22,13 +29,10 @@ import { missionManager } from '@kit.AbilityKit';
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ability | ElementName | No| No| Ability information of the mission.| 
-| snapshot | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| No| Snapshot of the mission.|
-
-## How to Use
-
-The mission snapshot information can be obtained by using **getMissionSnapShot** in missionManager.
+| snapshot | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| No| Snapshot of the mission.|
 
 **Example**
+
 ```ts
 import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

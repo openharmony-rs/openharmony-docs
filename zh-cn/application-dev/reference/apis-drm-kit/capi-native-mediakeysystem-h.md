@@ -5,7 +5,7 @@
 <!--Owner: @qin_wei_jie-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -13,7 +13,7 @@
 
 **引用文件：** <multimedia/drm_framework/native_mediakeysystem.h>
 
-**库：** libnative_drm.z.so
+**库：** libnative_drm.so
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -185,7 +185,8 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持。 |
+| bool | 表示是否支持指定DRM解决方案。true表示支持，false表示不支持。   |
+
 
 ### OH_MediaKeySystem_IsSupported2()
 
@@ -211,7 +212,7 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持。 |
+| bool |  表示是否支持指定DRM解决方案及媒体类型。true表示支持，false表示不支持。    |
 
 ### OH_MediaKeySystem_IsSupported3()
 
@@ -238,7 +239,7 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_C
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持。 |
+| bool |  表示是否支持指定DRM解决方案，媒体类型以及内容保护级别。true表示支持，false表示不支持。    |
 
 ### OH_MediaKeySystem_Create()
 

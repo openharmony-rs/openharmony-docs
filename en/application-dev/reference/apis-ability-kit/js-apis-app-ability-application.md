@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @li-weifeng2-->
-<!--Designer: @li-weifeng2-->
+<!--Owner: @li-weifeng2024-->
+<!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -20,11 +20,24 @@ You can use this module to manage and obtain the application [context](../../app
 import { application } from '@kit.AbilityKit';
 ```
 
+## AppPreloadType<sup>22+</sup>
+
+Enumerates the preloading types of the current application process.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name                | Value | Description                              |
+| -------------------- | --- | --------------------------------- |
+| UNSPECIFIED    | 0   |    No preloading has taken place, or the preloaded data has been cleared.      |
+| TYPE_CREATE_PROCESS          | 1   |    Preloads the process up to the point of process creation completion.     |
+| TYPE_CREATE_ABILITY_STAGE  | 2   |      Preloads the process up to the point of [AbilityStage](./js-apis-app-ability-abilityStage.md) creation completion.  |
+| TYPE_CREATE_WINDOW_STAGE        | 3   |    Preloads the process up to the point of [WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) creation completion.          |
+
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-Creates the context for a module. The [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) in the created module context inherits from the input context, making it convenient for you to access [application resources across HAP/HSP packages](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).
+Creates the context for a module. The [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) in the created module context inherits from the input context, making it convenient for you to access [application resources across HAP/HSP packages](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources). This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -82,7 +95,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-Obtains the application context. This API provides context access independent of the base class **Context**.
+Obtains the application context. This API provides context access independent of the base class **Context**. Each call creates a new ApplicationContext instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -186,13 +199,19 @@ When the [master process](../../application-models/ability-terminology.md#master
 	- For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
 
 > **NOTE**
-> - Currently, only 2-in-1 devices and tablets are supported.
-<!--Del-->
+> 
+> If the current process is already the [master process](../../application-models/ability-terminology.md#master-process), calling this API has no effect and does not generate an error code.
 >
-> - The **isolationProcess** field can be set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file, but only for the UIExtensionAbility of the sys/commonUI type.
+> A process can be set as a candidate master process only if it is currently running a component with **isolationProcess** set to **true** or has previously as the main process.
+>
+> <!--Del-->
+> The **isolationProcess** field can be set to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file, but only for the UIExtensionAbility of the sys/commonUI type.
 <!--DelEnd-->
 
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
 
 **Parameters**
 
@@ -213,7 +232,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message       |
 | -------- | --------------- |
 | 801 | Capability not supported.|
-| 16000115 | The current process is not running a component configured with "isolationProcess" and cannot be set as a candidate master process. |
+| 16000115 | The current process cannot be set as a candidate master process. |
 
 
 **Example**
@@ -247,11 +266,9 @@ demoteCurrentFromCandidateMasterProcess(): Promise\<void>
 
 Removes the current process from the candidate master process list. This API uses a promise to return the result.
 
-> **NOTE**
->
-> Currently, only 2-in-1 devices and tablets are supported.
-
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
@@ -290,6 +307,88 @@ export default class EntryAbility extends UIAbility {
       let message: string = (error as BusinessError).message;
       console.error(`demoteCurrentFromCandidateMasterProcess failed, error.code: ${code}, error.message: ${message}`);
     }
+  }
+}
+```
+
+## application.exitMasterProcessRole<sup>21+</sup>
+
+exitMasterProcessRole(): Promise\<void>
+
+Relinquishes the [master-process](../../application-models/ability-terminology.md#master-process) role from the current process. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+
+**Return value**
+
+| Type              | Description               |
+| ------------------ | ------------------- |
+|Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message       |
+| -------- | --------------- |
+| 801 | Capability not supported.|
+| 16000118 | Not a master process. |
+| 16000119 | Cannot exit because there is an unfinished request. |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      application.exitMasterProcessRole()
+        .then(() => {
+          console.info('exitMasterProcessRole succeed');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`exitMasterProcessRole failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (error) {
+      let code: number = (error as BusinessError).code;
+      let message: string = (error as BusinessError).message;
+      console.error(`exitMasterProcessRole failed, error.code: ${code}, error.message: ${message}`);
+    }
+  }
+}
+```
+
+## application.getAppPreloadType<sup>22+</sup>
+
+getAppPreloadType(): AppPreloadType
+
+Obtains the preloading type of the current application process.
+
+> **NOTE**
+>
+> - This API can return the actual preloading type only after the process creation finishes and during the first execution of [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+> - Once the AbilityStage creation finishes, the preloaded data of the application is cleared. Any subsequent calls will return **UNSPECIFIED** instead of the original preloading type.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+	
+**Return value**
+
+| Type           | Description           |
+| --------------- | --------------- |
+|[AppPreloadType](#apppreloadtype22)  | Obtains the preloading type of the current application process.    |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let appPreloadType = application.getAppPreloadType();
   }
 }
 ```

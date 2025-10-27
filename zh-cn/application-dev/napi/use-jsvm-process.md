@@ -217,7 +217,6 @@
 ## ArkTS侧调用C/C++方法实现
 
 ```ts
-import hilog from '@ohos.hilog';
 // 通过import的方式，引入Native能力。
 import napitest from 'libentry.so';
 

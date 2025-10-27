@@ -2,8 +2,9 @@
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
-<!--SE: @leo_ysl-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -31,7 +32,7 @@ Captures a photo with the default photo capture parameters. This API uses an asy
 
 | Name     | Type                 | Mandatory| Description                |
 | -------- | -------------------- | ---- | ------------------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the photo is successfully captured with the default parameters, **err** is **undefined**; otherwise, **err** is an error object with an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
 
 **Error codes**
 
@@ -234,6 +235,7 @@ Subscribes to events indicating available high-resolution images. This API uses 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
+import { camera } from '@kit.CameraKit';
 
 function callback(err: BusinessError, photo: camera.Photo): void {
   if (err !== undefined && err.code !== 0) {
@@ -633,7 +635,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 ```ts
 function setMovingPhotoVideoCodecTypes(photoOutput: camera.PhotoOutput, videoCodecType: camera.VideoCodecType): void {
-   photoOutput.setMovingPhotoVideoCodecType(videoCodecType);
+  photoOutput.setMovingPhotoVideoCodecType(videoCodecType);
 }
 ```
 
@@ -910,7 +912,7 @@ Subscribes to estimated capture duration events. This API uses an asynchronous c
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | Yes  | Event type. The value is fixed at **'estimatedCaptureDuration'**. The event can be listened for when a photoOutput instance is created. This event is triggered and the corresponding information is returned when the photo capture is complete.|
-| callback | AsyncCallback\<number> | Yes  | Callback used to return the estimated duration when the sensor captures frames at the bottom layer in a single capture. If **–1** is reported, there is no estimated duration.                                |
+| callback | AsyncCallback\<number> | Yes  | Callback used to return the estimated duration when the sensor captures frames at the bottom layer in a single capture, measured in units of milliseconds. If **–1** is reported, there is no estimated duration.                                |
 
 **Example**
 
@@ -1065,7 +1067,7 @@ Obtains the photo rotation degree.
 
 - Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
-- Screen orientation: The upper left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
+- Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1075,7 +1077,7 @@ Obtains the photo rotation degree.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | Yes  | Rotation angle.|
+| deviceDegree | number | Yes  | Device rotation degree, measured in degrees, within the range of [0, 360].<br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360.|
 
 **Return value**
 
@@ -1095,11 +1097,13 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : number): camera.ImageRotation {
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -1173,5 +1177,98 @@ Unsubscribes from capture start events.
 ```ts
 function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
   photoOutput.off('captureStart');
+}
+```
+
+## isPhotoQualityPrioritizationSupported<sup>21+</sup>
+
+isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean
+
+Checks whether the specified photo quality prioritization strategy is supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                   | Mandatory| Description                                      |
+| ----------- | ---------------------- | ---- | ------------------------------------------ |
+| qualityPrioritization | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
+
+**Return value**
+
+| Type           | Description                    |
+| -------------- | ----------------------- |
+| boolean | Check result for the support of the specified photo quality prioritization strategy. **true** if supported, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID     | Error Message    |
+| ------------- | --------------- |
+| 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import camera from '@kit.CameraKit';
+let photoOutput: camera.PhotoOutput;
+
+function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(qualityPrioritization);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The isPhotoQualityPrioritizationSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## setPhotoQualityPrioritization<sup>21+</sup>
+
+setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void
+
+Sets the photo quality prioritization strategy.
+
+Before setting the strategy, you can call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21) to check whether the device supports the specified photo quality prioritization strategy.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                   | Mandatory| Description                                      |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| qualityPrioritization  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID   | Error Message                                          |
+| -------- |----------------------------------------------- |
+| 7400102  | Operation not allowed. |
+| 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import camera from '@kit.CameraKit';
+let photoOutput: camera.PhotoOutput;
+
+function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {
+  try {
+    photoOutput.setPhotoQualityPrioritization(qualityPrioritization);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);
+  }
 }
 ```

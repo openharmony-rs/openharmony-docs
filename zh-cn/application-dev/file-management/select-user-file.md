@@ -1,8 +1,8 @@
 # 选择用户文件
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -39,13 +39,15 @@
    documentSelectOptions.maxSelectNumber = 5;
    // 指定选择的文件或者目录的URI（可选）。
    documentSelectOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
+   // 选择的文档类型，默认值是FILE(文件类型)。该参数在2in1设备中可正常使用，在其他设备中无效果。 
+   documentSelectOptions.selectMode = picker.DocumentSelectMode.FILE;
    // 选择文件的后缀类型['后缀类型描述|后缀类型']（可选，不传该参数，默认不过滤，即显示所有文件），若选择项存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔（可选），后缀类型名不能超过100。此外2in1设备支持通配符方式['所有文件(*.*)|.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。
     documentSelectOptions.fileSuffixFilters = ['图片(.png, .jpg)|.png,.jpg', '文档|.txt', '视频|.mp4', '.pdf']; 
    //选择是否对指定文件或目录授权，true为授权，当为true时，defaultFilePathUri为必选参数，拉起文管授权界面；false为非授权(默认为false)，拉起常规文管界面（可选）。该参数在2in1设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.authMode = false;
-   //批量授权模式，默认为false（非批量授权模式）。当multAuthMode为true时为批量授权模式。当multAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
+   //批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.multiAuthMode = false;
-   //需要传入批量授权的uri数组（仅支持文件，文件夹不生效）。配合multAuthMode使用。当multAuthMode为false时，配置该参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
+   //需要传入批量授权的uri数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
    //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
@@ -55,20 +57,21 @@
 
 3. 创建[文件选择器DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)接口拉起FilePicker应用界面进行文件选择。
 
-   ```ts
-   let uris: Array<string> = [];
-   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-   // 创建文件选择器实例
-   const documentViewPicker = new picker.DocumentViewPicker(context);
-   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
-     //文件选择成功后，返回被选中文档的URI结果集。
-     uris = documentSelectResult;
-     console.info('documentViewPicker.select to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const documentViewPicker = new picker.DocumentViewPicker(context);
+      documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
+        uris = documentSelectResult;
+        Logger.info('documentViewPicker.select to file succeed and uris are:' + uris);
+		// ···
+      }).catch((err: BusinessError) => {
+        Logger.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+      });
+```
+
 
    > **注意：**
    >
@@ -80,10 +83,12 @@
 4. 待界面从FilePicker返回后，使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
-   let uri: string = '';
-   //这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
-   let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+   	//这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
+   	let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. 通过fd使用[fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。
@@ -119,19 +124,19 @@
 
 3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5)接口拉起AudioPicker应用界面进行文件选择。
 
-   ```ts
-   let uris: string = '';
-   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-   const audioViewPicker = new picker.AudioViewPicker(context);
-   audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-     //文件选择成功后，返回被选中音频的URI结果集。
-     uris = audioSelectResult[0];
-     console.info('audioViewPicker.select to file succeed and uri is:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-   })
-   ```
+   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
+      let uris: string[] = [];
+      // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const audioViewPicker = new picker.AudioViewPicker(context);
+      audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+        //文件选择成功后，返回被选中音频的URI结果集。
+        uris = audioSelectResult;
+        console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+```
+
 
    > **注意：**
    >
@@ -142,10 +147,12 @@
 4. 待界面从AudioPicker返回后，可以使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
-   let uri: string = '';
-   //这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
-   let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+   	//这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
+  		let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. 通过fd可以使用[基础文件API的fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。

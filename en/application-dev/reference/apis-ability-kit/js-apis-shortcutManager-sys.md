@@ -25,7 +25,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
 
-Adds a shortcut for the given user.
+Adds a shortcut for the given user. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_SHORTCUTS
 
@@ -110,7 +110,7 @@ struct ShortcutExample {
 
 deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
 
-Deletes a shortcut for the given user.
+Deletes a shortcut for the given user. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_SHORTCUTS
 

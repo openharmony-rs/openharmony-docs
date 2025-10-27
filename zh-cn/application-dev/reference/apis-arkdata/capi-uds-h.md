@@ -798,7 +798,7 @@ const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 
 **描述**
 
-从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中ability名称。
+从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取ability名称。
 
 **起始版本：** 12
 

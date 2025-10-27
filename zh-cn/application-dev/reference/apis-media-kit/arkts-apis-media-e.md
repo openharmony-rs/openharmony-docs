@@ -4,7 +4,7 @@
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -12,7 +12,7 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-[媒体错误码](errorcode-media.md)类型枚举
+[媒体错误码](errorcode-media.md)类型枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -30,8 +30,7 @@
 | AVERR_TIMEOUT                         | 5400104 | 表示系统或网络响应超时。             |
 | AVERR_SERVICE_DIED                    | 5400105 | 表示服务进程死亡。                   |
 | AVERR_UNSUPPORT_FORMAT                | 5400106 | 表示不支持当前媒体资源的格式。       |
-| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | 表示音频焦点被抢占                   |
-| AVERR_SESSION_NOT_EXIST<sup>20+</sup> | 5400109 | 表示传入的会话ID不存在。                   |
+| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | 表示音频焦点被抢占。                  |
 | AVERR_IO_HOST_NOT_FOUND<sup>14+</sup> | 5411001 | 表示解析或链接服务端地址错误。 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。        |
 | AVERR_IO_CONNECTION_TIMEOUT<sup>14+</sup> | 5411002 | 表示网络连接超时。 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。        |
 | AVERR_IO_NETWORK_ABNORMAL<sup>14+</sup> | 5411003 | 表示网络异常导致的数据或链路异常。 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。        |
@@ -74,12 +73,12 @@ Codec MIME类型枚举。
 | 名称         | 值                    | 说明                     |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | 表示视频/h263类型。      |
-| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。       |
+| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/mpeg2类型。     |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/mpeg4类型。     |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/vp8类型。       |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。      |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。      |
@@ -109,6 +108,8 @@ Codec MIME类型枚举。
 | MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | 表示字幕语言，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | 表示track名称，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | 表示视频轨类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | 表示视频原始宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | 表示视频原始高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 
 ## PlaybackInfoKey<sup>12+</sup>
 
@@ -246,8 +247,8 @@ Codec MIME类型枚举。
 
 | 名称        | 值    | 说明                  |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 |
-| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CFT_MP3<sup>12+</sup>  | 'mp3' | 音频的容器格式，MP3。 |
 | CFT_WAV<sup>12+</sup>  | 'wav' | 音频的容器格式，WAV。 |
 | CFT_AMR<sup>18+</sup>  | 'amr' | 音频的容器格式，AMR。 |

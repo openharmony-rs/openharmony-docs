@@ -5,7 +5,7 @@
 <!--Owner: @peixu-->
 <!--Designer: @dongqingran; @wulong158-->
 <!--Tester: @wanghong1997-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @fang-jinxu-->
 
 By default, notifications are published across devices. If an application has implemented notification across devices (for example, SMS notifications are sent to devices such as watches, tablets, and 2-in-1 devices), you need to manage the distributed devices to avoid duplicate notifications.
 
@@ -18,7 +18,6 @@ Since API version 18, a system application is supported to publish notifications
 
 | **API** | **Description**| **Note**|
 | -------- | -------- |-------- |
-| [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)(request: NotificationRequest): Promise\<void\>       | Publishes a notification. | For details, see the description of the **notDistributed** and **forceDistributed** fields in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md) object.|
 | [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request: NotificationRequest, callback: AsyncCallback\<void\>): void | Publishes a notification.| For details, see the description of the **notDistributed** and **forceDistributed** fields in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md) object.|
 
 ## Prerequisites
@@ -87,9 +86,9 @@ Since API version 18, a system application is supported to publish notifications
           additionalText: 'test_additionalText'
         }
       },
-      // If forceDistributed is set to true, it takes effect only when the application is in the device management list and the notDistributed field is not set. If forceDistributed is set to false, the notification is published to the devices according to the device management list.
+      // forceDistributed takes effect only when the application is in the device management list and the notDistributed field is set to false. If forceDistributed is set to false, the notification is published to the devices according to the device management list.
       notDistributed: false,
-      forceDistributed: true
+      forceDistributed: false
     };
     notificationManager.publish(notificationRequest, publishCallback);
     ```

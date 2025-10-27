@@ -1,4 +1,10 @@
 # Creating and Calling JS Functions Using JSVM-API
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
@@ -6,7 +12,7 @@ JSVM-API provides APIs for calling JavaScript (JS) functions and passing paramet
 
 ## Basic Concepts
 
-Functions are blocks of reusable code that performs specific tasks or operations. You can define functions to implement different operations. Functions provide a way to modularize and structure code, helping make your code more organized, reusable, and maintainable.
+Functions are blocks of reusable code that performs specific tasks or operations.
 
 ## Available APIs
 
@@ -46,7 +52,7 @@ Full code for the CPP test. The entry is **TEST_FUNC**.
   }
 
 JSVM_Value NativeCreateFunctionTest(JSVM_Env env, JSVM_CallbackInfo info) {
-    void *data;
+    void *data = nullptr;
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     JSVM_Value thisArg;
@@ -125,7 +131,9 @@ static int32_t TEST_FUNC() {
     return 0;
 }
 ```
-**Expected output**
+<!-- @[jsvm_function_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/functioncall/src/main/cpp/hello.cpp) -->
+
+Expected output:
 ```
 jsvm: jsvm api call function; Hello World!
 jsvm: js source call function; Hello World!

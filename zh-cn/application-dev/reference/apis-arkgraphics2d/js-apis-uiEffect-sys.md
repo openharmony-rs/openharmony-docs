@@ -3,8 +3,8 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
-<!--Designer: @comicchang-->
-<!--Tester: @gcw_fsLqk7gL-->
+<!--Designer: @gaoweihua-->
+<!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供组件效果的一些基础能力，包括模糊、边缘像素扩展、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
@@ -320,15 +320,16 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
 ```ts
 import uiEffect from '@ohos.graphics.uiEffect'
-import {common2D} from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
+
 @Entry
 @Component
 struct BezierWarpExample {
   @State valueBezier: Array<common2D.Point> = [
-    {x: 0, y: 0}, {x: 1/3, y: 0}, {x: 2/3, y: 0},     // top edge
-    {x: 0.5, y: 0}, {x: 0.5, y: 1/3}, {x: 1, y: 2/3}, // right edge
-    {x: 1, y: 1}, {x: 2/3, y: 1}, {x: 1/3, y: 1},     // bottom edge
-    {x: 0, y: 1}, {x: 0, y: 2/3}, {x: 0, y: 1/3}]     // left edge
+    { x: 0, y: 0 }, { x: 1 / 3, y: 0 }, { x: 2 / 3, y: 0 }, // top edge
+    { x: 0.5, y: 0 }, { x: 0.5, y: 1 / 3 }, { x: 1, y: 2 / 3 }, // right edge
+    { x: 1, y: 1 }, { x: 2 / 3, y: 1 }, { x: 1 / 3, y: 1 }, // bottom edge
+    { x: 0, y: 1 }, { x: 0, y: 2 / 3 }, { x: 0, y: 1 / 3 }] // left edge
 
   build() {
     Column() {
@@ -435,16 +436,20 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 
 ```ts
 import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+
 @Entry
 @Component
 struct Index {
-  @State point2:common2D.Point3d = {
-    x:0,y:0,z:2
+  @State point2: common2D.Point3d = {
+    x: 0, y: 0, z: 2
   }
-  @State color2:common2D.Color = {
-    red:1,green:1,blue:1,alpha:1
+  @State color2: common2D.Color = {
+    red: 1,
+    green: 1,
+    blue: 1,
+    alpha: 1
   }
-  @State lightIntentsity2:number = 1
+  @State lightIntentsity2: number = 1
 
   build() {
     Column() {
@@ -533,7 +538,7 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| mask  | [Mask](#mask20) | 是   | 指定扭曲程度。与factor相乘后共同决定扭曲程度。|
+| displacementMap | [Mask](#mask20) | 是   | 指定扭曲程度。与factor相乘后共同决定扭曲程度。|
 | factor  | [number, number] | 否   | 指定水平、竖直方向扭曲程度系数，系数的绝对值越大，扭曲程度越明显，建议取值范围为[-10.0, 10.0]。不设置时，默认值为1.0。设置为0时，无扭曲效果。与mask相乘后共同决定扭曲程度。 |
 
 **返回值：**
@@ -621,7 +626,7 @@ struct MaskDispersion {
 
   onPageShow(): void {
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext
-    context.resourceManager.getMediaContent($r("app.media.mask_alpha")).then(val => {
+    context.resourceManager.getMediaByName("mask_alpha").then(val => {
       let buffer = val.buffer.slice(0, val.buffer.byteLength)
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
@@ -1022,6 +1027,74 @@ struct Index {
     .width('100%')
     .justifyContent(FlexAlign.Center)
     .backgroundColor('#555')
+  }
+}
+```
+
+### colorGradient<sup>20+</sup>
+colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): VisualEffect
+
+此方法为组件添加颜色渐变效果。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+| 参数名         | 类型                  | 必填 | 说明                       |
+| ------------- | --------------------- | ---- | ------------------------- |
+| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，用于实现多颜色渐变。数组长度范围0到12，每个颜色值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的位置。数组长度范围为0到12。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
+| strengths  | Array\<number>         | 是   | 强度数组，表示颜色对应的强度。数组长度范围为0到12，每一个强度值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。|
+| alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha遮罩。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | --------------------------------- |
+| [VisualEffect](#visualeffect) | 返回具有颜色渐变效果的VisualEffect。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+```ts
+import { common2D, uiEffect } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct ColorGradientExample {
+  build() {
+    Stack() {
+      Stack() {}
+      .visualEffect(uiEffect.createEffect()
+        .colorGradient(
+          [
+            {red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0},
+            {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0},
+            {red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0},
+            {red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0},
+          ],
+          [
+            {x: 0.1, y: 0.1},
+            {x: 0.1, y: 0.9},
+            {x: 0.9, y: 0.1},
+            {x: 0.9, y: 0.9},
+          ],
+          [12.4, 7.8, 7.8, 10.0],
+          uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.1)
+        )
+      )
+      .width("1024px")
+      .height("1024px")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 ```

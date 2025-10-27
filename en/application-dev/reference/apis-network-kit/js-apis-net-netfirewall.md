@@ -1,6 +1,13 @@
 # @ohos.net.netFirewall (Network Firewall)
 
-The **netFirewall** module implements the firewall query functionality. It allows applications to query the firewall interception records of the device.
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+The **netFirewall** module implements the network firewall functionality for applications. It allows applications to query the firewall interception records of the device.
 
 
 > **NOTE**
@@ -10,7 +17,7 @@ The **netFirewall** module implements the firewall query functionality. It allow
 ## Modules to Import
 
 ```ts
-import { netfirewall } from '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 ```
 
 
@@ -53,7 +60,7 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolicy) => {
@@ -108,7 +115,7 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let ipRuleUpd: netFirewall.NetFirewallRule = {
@@ -116,7 +123,7 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
   name: "rule1",
   description: "rule1 description update",
   direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action:netFirewall.NetFirewallRuleDirection.RULE_DENY,
+  action:netFirewall.FirewallRuleAction.RULE_DENY,
   type: netFirewall.NetFirewallRuleType.RULE_IP,
   isEnabled: false,
   appUid: 20001,
@@ -155,7 +162,6 @@ Removes a firewall rule.
 
 | Name  | Type                            | Mandatory| Description                                        |
 | -------- | ----------------------------------- | ---- | -------------------------------------------- |
-| rule     | [NetFirewallRule](#netfirewallrule) | Yes  | Firewall rule.                                |
 | userId   | number                              | Yes  | Existing user ID.    |
 | ruleId   | number                              | Yes  | ID of the firewall rule.                              |
 
@@ -182,7 +188,7 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 netFirewall.removeNetFirewallRule(100, 1).then(() => {
@@ -231,7 +237,7 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let ruleParam: netFirewall.RequestParam = {
@@ -240,7 +246,7 @@ let ruleParam: netFirewall.RequestParam = {
   orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
   orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
 };
-netFirewall.getNetFirewallRules(100, ruleParam).then((result: netfirewall.FirewallRulePage) => {
+netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.FirewallRulePage) => {
   console.info("result:", JSON.stringify(result));
 }, (error: BusinessError) => {
   console.error("get firewall rules failed: " + JSON.stringify(error));
@@ -287,7 +293,7 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) => {
@@ -336,7 +342,7 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let policy: netFirewall.NetFirewallPolicy = {
@@ -395,14 +401,14 @@ For details about the error codes, see [Network Connection Management Error Code
 **Example**
 
 ```ts
-import { netFirewall } '@kit.NetworkKit';
+import { netFirewall } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let ipRule: netFirewall.NetFirewallRule = {
   name: "rule1",
   description: "rule1 description",
   direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action:netFirewall.NetFirewallRuleDirection.RULE_DENY,
+  action:netFirewall.FirewallRuleAction.RULE_DENY,
   type: netFirewall.NetFirewallRuleType.RULE_IP,
   isEnabled: true,
   appUid: 20001,
@@ -456,7 +462,7 @@ let domainRule: netFirewall.NetFirewallRule = {
   name: "rule2",
   description: "rule2 description",
   direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action:netFirewall.NetFirewallRuleDirection.RULE_DENY,
+  action:netFirewall.FirewallRuleAction.RULE_DENY,
   type: netFirewall.NetFirewallRuleType.RULE_DOMAIN,
   isEnabled: true,
   appUid: 20002,
@@ -480,12 +486,14 @@ let dnsRule: netFirewall.NetFirewallRule = {
   name: "rule3",
   description: "rule3 description",
   direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action:netFirewall.NetFirewallRuleDirection.RULE_DENY,
+  action:netFirewall.FirewallRuleAction.RULE_DENY,
   type: netFirewall.NetFirewallRuleType.RULE_DNS,
   isEnabled: true,
   appUid: 20003,
-  primaryDns: "4.4.4.4",
-  standbyDns: "8.8.8.8",
+  dns:{
+   primaryDns: "4.4.4.4",
+   standbyDns: "8.8.8.8",
+  },
   userId: 100
 };
 netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
@@ -501,24 +509,24 @@ Defines a firewall rule.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name       | Type                                                       |Mandatory| Description                                                          |
-| ------------|-------------------------------------------------------------|----|--------------------------------------------------------------  |
-| userId      | number                                                      | Yes| Existing user ID.                  |
-| name        | string                                                      | Yes| Rule name. This parameter is mandatory and can contain a maximum of 128 characters.                               |
-| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | Yes| Interception direction, which can be inbound or outbound.                                        |
-| action      | [FirewallRuleAction](#firewallruleaction)                   | Yes| Action.                                                        |
-| type        | [NetFirewallRuleType](#netfirewallruletype)                 | Yes| Rule type.                                                    |
-| isEnabled   | boolean                                                     | Yes| Whether to enable the firewall rule. The value **true** means to enable the firewall rule, and the value **false** means the opposite.                                                    |
-| id          | number                                                      | No| Firewall rule ID.                                                      |
-| description | string                                                      | No| Firewall rule description. This parameter is optional and can contain a maximum of 256 characters.                               |
-| appUid      | number                                                      | No| Application or service UID.                                           |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No| List of local IP addresses. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local IP addresses are supported.        |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No| List of remote IP addresses. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local IP addresses are supported.|
-| protocol    | number                                                      | No| Protocol. The value **6** indicates TCP and value **17** indicates UDP. This parameter is valid only when **ruleType** is set to **RULE_IP**. |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| List of local ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local ports are supported.  |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| List of remote ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 remote ports are supported.  |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No| List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**.        |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No| List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**.                 |
+| Name       | Type                                                       |Read-Only| Optional|Description                                                          |
+| ------------|-------------------------------------------------------------|----|---|-----------------------------------------------------------  |
+| userId      | number                                                      | No|No|Existing user ID.                  |
+| name        | string                                                      | No|No|Rule name. This parameter is mandatory and can contain a maximum of 128 characters.                               |
+| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | No|No|Interception direction, which can be inbound or outbound.                                        |
+| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action.                                                        |
+| type        | [NetFirewallRuleType](#netfirewallruletype)                 | No|No|Rule type.                                                    |
+| isEnabled   | boolean                                                     | No|No|Whether to enable the rule. The value **true** means to enable the rule, and the value **false** means the opposite.                                                    |
+| id          | number                                                      | No|Yes| Firewall rule ID.                                                      |
+| description | string                                                      | No|Yes|Firewall rule description. This parameter is optional and can contain a maximum of 256 characters.                               |
+| appUid      | number                                                      | No|Yes|Application or service UID.                                           |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|List of local IP addresses. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local IP addresses are supported.        |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|List of remote IP addresses. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local IP addresses are supported.|
+| protocol    | number                                                      | No| Yes|Protocol. The value **6** indicates TCP and value **17** indicates UDP. This parameter is valid only when **ruleType** is set to **RULE_IP**. |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|List of local ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local ports are supported.  |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|List of remote ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 remote ports are supported.  |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**.        |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**.                 |
 
 ## RequestParam
 
@@ -526,12 +534,12 @@ Defines query parameters.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name      | Type                                            | Mandatory| Description                       |
-|------------|--------------------------------------------------|------|---------------------------- |
-| page       | number                                           | Yes  | Page number. The value range is [1,1000].   |
-| pageSize   | number                                           | Yes  | Page size. The value range is [1,50]. |
-| orderField | [NetFirewallOrderField](#netfirewallorderfield)  | Yes  | Sorting order field.                 |
-| orderType  | [NetFirewallOrderType](#netfirewallordertype)    | Yes  | Sorting order type.                 |
+| Name      | Type                                            | Read-Only|Optional| Description                       |
+|------------|--------------------------------------------------|------|-----|----------------------- |
+| page       | number                                           | No  |No|Page number. The value range is [1,1000].   |
+| pageSize   | number                                           | No |No|Page size. The value range is [1,50]. |
+| orderField | [NetFirewallOrderField](#netfirewallorderfield)  | No  |No|Sorting order field.                 |
+| orderType  | [NetFirewallOrderType](#netfirewallordertype)    | No  |No|Sorting order type.                 |
 
 
 ## FirewallRulePage
@@ -540,12 +548,12 @@ Defines the pagination structure for firewall rules.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name      | Type                                       | Mandatory| Description         |
-|------------|-------------------------------------------- |------|---------------|
-| page       | number                                      | Yes  | Current page number. The value range is [1,1000].   |
-| pageSize   | number                                      | Yes  | Page size. The value range is [1,50].     |
-| totalPage  | number                                      | Yes  | Total number of pages. The value range is [1,1000].     |
-| data       | Array\<[NetFirewallRule](#netfirewallrule)> | Yes  | Page data.   |
+| Name      | Type                                       | Read-Only|Optional| Description         |
+|------------|-------------------------------------------- |------|----|-----------|
+| page       | number                                      | No |No|Current page number. The value range is [1,1000].   |
+| pageSize   | number                                      | No |No|Page size. The value range is [1,50].     |
+| totalPage  | number                                      | No  |No|Total number of pages. The value range is [1,1000].     |
+| data       | Array\<[NetFirewallRule](#netfirewallrule)> | No  |No|Page data.   |
 
 ## NetFirewallPolicy
 
@@ -553,11 +561,11 @@ Defines a firewall policy.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name      | Type                                      | Mandatory| Description         |
-| -----------| -------------------------------------------|------|-------------- |
-| isOpen     | boolean                                    | Yes  | Whether to enable or disable the firewall. The value **true** means to enable the firewall, and the value **false** means the opposite.|
-| inAction   | [FirewallRuleAction](#firewallruleaction)  | Yes  | Inbound action.   |
-| outAction  | [FirewallRuleAction](#firewallruleaction)  | Yes  | Outbound action.   |
+| Name      | Type                                      | Read-Only|Optional| Description         |
+| -----------| -------------------------------------------|------|----|---------- |
+| isOpen     | boolean                                    | No  |No|Whether to enable the firewall. The value **true** means to enable the firewall, and the value **false** means the opposite.|
+| inAction   | [FirewallRuleAction](#firewallruleaction)  | No  |No|Inbound action.   |
+| outAction  | [FirewallRuleAction](#firewallruleaction)  | No | No|Outbound action.   |
 
 
 ## NetFirewallRuleDirection
@@ -622,14 +630,14 @@ Enumerates firewall rule sorting orders.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name       | Type  |Mandatory| Description                                                       |
-| ----------- | -------|----|------------------------------------------------------------ |
-| type        | number | Yes| IP address type. The value **1** indicates an IP address or subnet. When a single IP address is used, the mask is 32. The value **2** indicates an IP address segment.         |
-| family      | number | No| IP address family. The value **1** indicates IPv4 and value **2** indicates IPv6. The default value is IPv4. Other values are not supported.                 |
-| address     | string | No| IP address. This parameter is valid only when **type** is set to **1**.                  |
-| mask        | number | No| Subnet mask for an IPv4 address and prefix for an IPv6 address. This parameter is valid only when **type** is set to **1**.|
-| startIp     | string | No| Start IP address: This parameter is valid only when **type** is set to **2**.                  |
-| endIp       | string | No| End IP address: This parameter is valid only when **type** is set to **2**.                  |
+| Name       | Type  |Read-Only|Optional| Description                                            |
+| ----------- | -------|----|------|------------------------------------------|
+| type        | number | No|No|**1**: IP address or subnet. When a single IP address is used, the mask is 32.<br>**2**: IP address segment. |
+| family      | number | No| Yes|**1**: The IP address family is **IPv4**.<br>**2**: The IP address family is **IPv6**.<br>The default value is **IPv4**. Other values are not supported currently.     |
+| address     | string | No| Yes|IP address. This parameter is mandatory and valid only when type is set to **1**.                  |
+| mask        | number | No|Yes|IPv4: subnet mask.<br>IPv6: address prefix.<br>This parameter is mandatory and valid only when type is set to **1**.      |
+| startIp     | string | No|Yes|Start IP address. This parameter is mandatory and valid only when type is set to **2**.                        |
+| endIp       | string | No|Yes|End IP address. This parameter is mandatory and valid only when type is set to **2**.                       |
 
 ## NetFirewallPortParams
 
@@ -637,10 +645,10 @@ Defines the port parameters of a firewall rule.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name        | Type  | Mandatory| Description      |
-| ------------ | -------|------|----------- |
-| startPort    | number | Yes  | Start port number.|
-| endPort      | number | Yes  | End port number.|
+| Name        | Type  | Read-Only|Optional| Description      |
+| ------------ | -------|------|-----|------ |
+| startPort    | number | No  |No|Start port number.|
+| endPort      | number | No  |No|End port number.|
 
 ## NetFirewallDomainParams
 
@@ -648,10 +656,10 @@ Defines the domain information of a firewall rule.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name        | Type   | Mandatory| Description                                     |
-| ------------ | --------|------|------------------------------------------ |
-| isWildcard   | boolean | Yes  | Whether to contain wildcards. The value **true** means to contain wildcards, and the value **false** means the opposite.                         |
-| domain       | string  | Yes  | DNS domain. If **isWildcard** is **false**, you need to specify the complete domain name.|
+| Name        | Type   | Read-Only| Optional|Description                                     |
+| ------------ | --------|------|-----|------------------------------------- |
+| isWildcard   | boolean | No | No|Whether to contain wildcards. The value **true** means to contain wildcards; and the value **false** means the opposite.                         |
+| domain       | string  | No |No|DNS domain. If **isWildcard** is **false**, you need to specify the complete domain name.|
 
 ## NetFirewallDnsParams
 
@@ -659,7 +667,7 @@ Defines the DNS information of a firewall rule.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
-| Name        | Type   | Mandatory| Description          |
-| ------------ | --------|------|--------------- |
-| primaryDns   | string  | Yes  | Active DNS server.|
-| standbyDns   | string  | No  | Standby DNS server.     |
+| Name        | Type   | Read-Only| Optional|Description          |
+| ------------ | --------|------|---|------------ |
+| primaryDns   | string  | No  |No| Active DNS server.|
+| standbyDns   | string  | No  | Yes|Standby DNS server.     |

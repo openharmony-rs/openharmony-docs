@@ -2,8 +2,9 @@
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
-<!--SE: @liweilu1-->
-<!--TSE: @xchaosioda-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 The photoAccessHelper module provides APIs for user album management, including creating or deleting a user album, adding images and videos to a user album, and deleting images and videos from a user album.
 
@@ -24,8 +25,8 @@ Use [MediaAlbumChangeRequest.createAlbumRequest](../../reference/apis-media-libr
 
 The album name must meet the following requirements:
 
-- The album name cannot exceed 255 characters.
-- The album name cannot contain any of the following characters:<br>. \ / : * ? " ' ` < > | { } [ ]
+- The total length of the album name must be between 1 and 255 characters.
+- It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
 - The album name is case-insensitive.
 - Duplicate album names are not allowed.
 
@@ -106,10 +107,10 @@ To rename a user album, modify the **Album.albumName** attribute of the album.
 
 Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md) to obtain the user album to rename, use [MediaAlbumChangeRequest.setAlbumName](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#setalbumname11) to set the new name, and then use [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to apply the changes to the database.
 
-The new user album names must comply with the following requirements:
+The new user album names must meet the following requirements:
 
-- The album name cannot exceed 255 characters.
-- The album name cannot contain any of the following characters:<br>. \ / : * ? " ' ` < > | { } [ ]
+- The total length of the album name must be between 1 and 255 characters.
+- It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
 - The album name is case-insensitive.
 - Duplicate album names are not allowed.
 
@@ -317,9 +318,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      albumFetchResult.close();
+      return;
+    }
     console.info('getAlbums successfully, albumName: ' + album.albumName);
     let photoFetchResult = await album.getAssets(photoFetchOptions);
     let photoAsset = await photoFetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      photoFetchResult.close();
+      return;
+    }
     console.info('album getAssets successfully, albumName: ' + photoAsset.displayName);
     let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
     albumChangeRequest.removeAssets([photoAsset]);

@@ -1,4 +1,10 @@
 # oh_data_value.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -411,7 +417,7 @@ Checks whether a value is null.
 | Name                                       | Description                                                      |
 | --------------------------------------------- | ---------------------------------------------------------- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance.|
-| bool *val                                     | Pointer to the check result. The value **true** means the value is null, and the value **false** means the opposite.               |
+| bool *val                                     | Pointer to the check result. The value **true** means the value is empty, and the value **false** means the opposite.               |
 
 **Returns**
 
@@ -628,7 +634,7 @@ Obtains the length of the float array in an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetFloatVector()
 

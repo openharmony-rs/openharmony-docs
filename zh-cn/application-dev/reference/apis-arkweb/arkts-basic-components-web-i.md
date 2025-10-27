@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 > **说明：**
 >
@@ -23,8 +23,9 @@
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件(文件支持html和txt类型)，请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
-| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。 |
+| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。 |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成touch事件。<br> 默认值：false。 |
 
 ## WebMediaOptions<sup>10+</sup>
 
@@ -47,7 +48,7 @@ Web媒体策略的配置。
 | 名称         | 类型           | 只读 | 可选   | 说明           |
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。 |
-| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以"://"结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
+| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议(自定义协议)，不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -109,6 +110,8 @@ Web媒体策略的配置。
 | preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     | 是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。|
 | menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。     |
 | previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | 否     | 是     | 自定义选择预览菜单选项。 |
+| onMenuShow<sup>21+</sup> | Callback\<void\> | 否     | 是     | 自定义选择菜单显示时回调。 |
+| onMenuHide<sup>21+</sup> | Callback\<void\> | 否     | 是     | 自定义选择菜单隐藏时回调。 |
 
 ## PreviewMenuOptions<sup>20+</sup>
 
@@ -237,6 +240,7 @@ Web同层渲染的配置。
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url         | string  | 否 | 否 | 访问的url。                                  |
 | isRefreshed | boolean | 否 | 否 | true表示该页面是被重新加载的（调用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)接口），false表示该页面是新加载的。 |
+| isMainFrame<sup>22+</sup> | boolean | 否 | 是 | 是否是主文档触发。<br>true表示是主文档触发，false表示不是主文档触发。|
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
@@ -508,7 +512,7 @@ Web同层渲染的配置。
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
 | controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
-| permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -629,6 +633,19 @@ Web组件进入全屏回调事件的详情。
 | params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。  |
 | position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签在屏幕坐标系中相对于Web组件的位置信息，此处区别于标准Position，单位为px。 |
 
+## NativeEmbedParamItem<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | 否    | 否    | param元素的状态变化类型。 |
+| id                | string                              | 否    | 否 | param元素的id信息。             |
+| name              | string                              | 否    | 是 | param元素的参数名称。           |
+| value             | string                              | 否    | 是 | param元素的参数值。          |
+
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
 提供智能防跟踪拦截的详细信息。
@@ -677,7 +694,7 @@ Web组件进入全屏回调事件的详情。
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-提供网页绘制页面主要内容的详细信息。
+提供网页绘制页面最大内容的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -726,6 +743,18 @@ Web组件进入全屏回调事件的详情。
 | embedId     | string   | 否    | 是    | 同层标签的唯一id。 |
 | mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)  | 否    | 是    | 鼠标/触摸板点击/长按信息。 |
 | result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否    | 是   | 通知Web组件鼠标事件的消费结果。 |
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+提供同层渲染object标签内嵌param元素变化时同层标签的详细信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型                                  | 只读 | 可选   | 说明                    |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
+| objectAttributeId      | string             | 否    | 是 | 同层标签的id信息。             |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | 否 | 是    | 发生变化的param元素的详细信息，包括每一个param元素的状态变化类型、id、参数名称和参数值。       |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 
@@ -788,3 +817,38 @@ Web屏幕捕获的配置。
 | 名称          | 类型                                      | 只读 | 可选  | 说明         |
 | ----------- | --------------------------------------- | ---- |----| ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | 否 | 否 | Web屏幕捕获模式。 |
+
+## BlankScreenDetectionEventInfo<sup>22+</sup>
+
+定义检测到白屏时的事件信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 检测到白屏时，页面的url。    |
+| blankScreenReason | [DetectedBlankScreenReason](./arkts-basic-components-web-e.md#detectedblankscreenreason22) | 否 | 否 | 本次检测到白屏时，具体原因与检测的方法相关。    |
+| blankScreenDetails | [BlankScreenDetails](./arkts-basic-components-web-i.md#blankscreendetails22) | 否 | 是 | 本次检测白屏的结果的细节。<br>如当发现近似白屏的现象产生，这个细节就包含具体命中了多少点。否则没有该属性。 |
+
+## BlankScreenDetails<sup>22+</sup>
+
+定义检测到白屏时的结果的细节。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| detectedContentfulNodesCount | int | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
+
+## BlankScreenDetectionConfig<sup>22+</sup>
+
+定义白屏检测的策略配置选项。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| enable | boolean | 否 | 否 | 是否使能白屏策略功能。   |
+| detectionTiming | double[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
+| detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
+| contentfulNodesCountThreshold | int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|

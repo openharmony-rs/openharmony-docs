@@ -44,7 +44,7 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

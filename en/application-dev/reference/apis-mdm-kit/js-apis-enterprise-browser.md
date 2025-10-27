@@ -1,4 +1,10 @@
 # @ohos.enterprise.browser (Browser Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **browser** module provides browser management, including setting, canceling, and obtaining browser policies.
 
@@ -28,6 +34,8 @@ Sets the sub-policy for a specified browser.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                                   | Mandatory| Description                                                        |
@@ -51,11 +59,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 // Replace the value of appId with the specified application ID of the browser.
@@ -75,10 +85,11 @@ try {
 
 getPoliciesSync(admin: Want, appId: string): string
 
-Obtains the policy set for a specified browser.
+Obtains the browser policy by app ID.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -105,11 +116,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 // Replace the value of appId with the specified application ID of the browser.
@@ -127,11 +140,13 @@ try {
 
 setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void
 
-Sets the browser policy. After the setting is successful, the system common event [BROWSER_POLICY_CHANGED_EVENT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released.
+Sets the browser policy. After the setting is successful, the system common event [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -156,12 +171,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let bundleName: string = 'com.example.testbrowser';
 let policyName: string = 'InsecurePrivateNetworkRequestsAllowed';
 let policyValue: string = '{"level":"mandatory","scope":"machine","source":"platform","value":true}';
@@ -178,10 +196,11 @@ try {
 
 getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
-Obtains the policy of a specified browser.
+Obtains the browser policy by application bundle name.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -208,13 +227,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { util } from '@kit.ArkTS';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let bundleName: string = 'com.example.testbrowser';
 
 try {
@@ -236,6 +258,7 @@ Obtains the policy version of a specified browser.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -246,6 +269,7 @@ Obtains the policy version of a specified browser.
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 
 try {
   let version: string = browser.getSelfManagedBrowserPolicyVersion();
@@ -259,10 +283,11 @@ try {
 
 getSelfManagedBrowserPolicy(): ArrayBuffer
 
-Obtains the policy of a specified browser.
+Obtains the browser policy of the current device.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -273,6 +298,7 @@ Obtains the policy of a specified browser.
 **Example**
 
 ```ts
+import { browser } from '@kit.MDMKit';
 import { util } from '@kit.ArkTS';
 
 try {

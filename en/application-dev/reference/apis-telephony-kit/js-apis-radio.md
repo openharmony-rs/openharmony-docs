@@ -1,4 +1,10 @@
 # @ohos.telephony.radio (Network Search)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Terence_Super-->
+<!--Designer: @Terence_Super-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **radio** module provides basic network search management functions. Using the APIs provided by this module, you can obtain the radio access technology (RAT) used in the CS and PS domains, network status, current network selection mode, ISO country code of the registered network, ID of the slot in which the primary card is located, list of signal strengths of the registered network for the SIM card in the specified slot, and carrier name. Besides, you can check whether the current device supports New Radio \(NR\) and whether the radio service is enabled on the primary SIM card.
 
@@ -1052,10 +1058,10 @@ Defines the radio access technology for the packet switched (PS) or circuit swit
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-|      Name      |           Type             | Mandatory|      Description         |
-| --------------- | --------------------------- | ---- | ------------------ |
-| psRadioTech     | [RadioTechnology](#radiotechnology) | Yes  | PS.|
-| csRadioTech     | [RadioTechnology](#radiotechnology) | Yes  | CS.|
+|      Name      |           Type             | Read-Only| Optional|      Description         |
+| --------------- | --------------------------- | ---- | ---- | ------------------ |
+| psRadioTech     | [RadioTechnology](#radiotechnology) | No  | No  | PS.|
+| csRadioTech     | [RadioTechnology](#radiotechnology) | No  | No  | CS.|
 
 ## RadioTechnology
 
@@ -1086,11 +1092,11 @@ Defines the signal strength.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-|      Name      |           Type             | Mandatory|      Description         |
-| --------------- | --------------------------- | ---- | ------------------ |
-| signalType      | [NetworkType](#networktype) | Yes  | Signal strength type.|
-| signalLevel     | number                      | Yes  | Signal strength level.|
-| dBm<sup>9+</sup>| number                      | Yes  | Signal strength, in dBm.    |
+|      Name      |           Type             | Read-Only| Optional|      Description         |
+| --------------- | --------------------------- | ---- | ---- | ------------------ |
+| signalType      | [NetworkType](#networktype) | No  | No  | Signal strength type.|
+| signalLevel     | number                      | No  | No  | Signal strength level.|
+| dBm<sup>9+</sup>| number                      | No  | No  | Signal strength, in dBm.    |
 
 ## NetworkType
 
@@ -1114,17 +1120,17 @@ Defines the network status.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-|       Name          |                 Type               | Mandatory|                          Description                               |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| longOperatorName     | string                              |  Yes | Long carrier name of the registered network.                                    |
-| shortOperatorName    | string                              |  Yes | Short carrier name of the registered network.                                    |
-| plmnNumeric          | string                              |  Yes | PLMN code of the registered network.                                          |
-| isRoaming            | boolean                             |  Yes | Whether the user is roaming.                                          |
-| regState             | [RegState](#regstate)               |  Yes | Network registration status of the device.                                        |
-| cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  Yes | RAT of the device.                                        |
-| nsaState             | [NsaState](#nsastate)               |  Yes | NSA network registration status of the device.                                     |
-| isCaActive           | boolean                             |  Yes | CA status.                                                  |
-| isEmergency          | boolean                             |  Yes | Whether only emergency calls are allowed.                              |
+|       Name          |                 Type               | Read-Only| Optional|                          Description                               |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| longOperatorName     | string                              |  No |  No | Long carrier name of the registered network.                                    |
+| shortOperatorName    | string                              |  No |  No | Short carrier name of the registered network.                                    |
+| plmnNumeric          | string                              |  No |  No | PLMN code of the registered network.                                          |
+| isRoaming            | boolean                             |  No |  No | Whether the user is roaming.                                          |
+| regState             | [RegState](#regstate)               |  No |  No | Network registration status of the device.                                        |
+| cfgTech<sup>8+</sup> | [RadioTechnology](#radiotechnology) |  No |  No | RAT of the device.                                        |
+| nsaState             | [NsaState](#nsastate)               |  No |  No | NSA network registration status of the device.                                     |
+| isCaActive           | boolean                             |  No |  No | CA status.                                                  |
+| isEmergency          | boolean                             |  No |  No | Whether only emergency calls are allowed.                              |
 
 
 ## RegState
@@ -1176,7 +1182,7 @@ Defines the cell information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name             |                  Type                  | Mandatory|                           Description                              |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| networkType       | [NetworkType](#networktype)             |  Yes | Network type of the cell.                                    |
-| signalInformation | [SignalInformation](#signalinformation) |  Yes | Signal information.                                                  |
+| Name             |                  Type                  | Read-Only| Optional|                           Description                              |
+| ----------------- | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| networkType       | [NetworkType](#networktype)             |  No |  No | Network type of the cell.                                    |
+| signalInformation | [SignalInformation](#signalinformation) |  No |  No | Signal information.                                                  |

@@ -1,8 +1,8 @@
 # 通过用户首选项实现数据持久化 (C/C++)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @yanhuii-->
-<!--Designer: @houpengtao1-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -59,7 +59,6 @@ libohpreferences.so
 ## 引用头文件
 
 ```c
-#include <cstring>
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
 #include <database/preferences/oh_preferences_option.h>

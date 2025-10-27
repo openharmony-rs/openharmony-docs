@@ -1,8 +1,8 @@
 # Saving User Files
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @zhuangzhuang-->
-<!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
@@ -52,7 +52,7 @@ If the security component cannot be called to save images and videos in your dev
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12) instance, and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save) to start the FilePicker page to save the document.
 
    ```ts
-   let uris: Array<string> = [];
+   let uris: string[] = [];
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
    const documentViewPicker = new picker.DocumentViewPicker(context);
@@ -76,10 +76,12 @@ If the security component cannot be called to save images and videos in your dev
 4. After the application UI is returned from FilePicker, you can call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The FD is returned after the document is opened.
 
    ```ts
-   const uri = '';
-   // Note that the permission specified by the mode parameter of fs.openSync() is fs.OpenMode.READ_WRITE.
-   let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+   	// Note that the permission specified by the mode parameter of fs.openSync() is fs.OpenMode.READ_WRITE.
+   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. Call [fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync) to modify the document based on the FD, and call **fs.closeSync()** to close the FD.
@@ -112,13 +114,13 @@ If the security component cannot be called to save images and videos in your dev
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5) to start the FilePicker page to save the audio clip.
 
    ```ts
-   let uri: string = '';
+   let uris: string[] = [];
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;  
    const audioViewPicker = new picker.AudioViewPicker(context);
    audioViewPicker.save(audioSaveOptions).then((audioSelectResult: Array<string>) => {
-     uri = audioSelectResult[0];
-     console.info('audioViewPicker.save to file succeed and uri is:' + uri);
+     uris = audioSelectResult;
+     console.info('audioViewPicker.save to file succeed and uri is:' + uris);
    }).catch((err: BusinessError) => {
      console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
    })
@@ -136,9 +138,12 @@ If the security component cannot be called to save images and videos in your dev
 4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.
 
    ```ts
-   // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
-   let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   console.info('file fd: ' + file.fd);
+   if (uris.length > 0) {
+   	let uri: string = uris[0];
+  	 // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
+   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+   	console.info('file fd: ' + file.fd);
+    }
    ```
 
 5. Call [fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync) to modify the document based on the FD, and call **fs.closeSync()** to close the FD.
@@ -157,6 +162,10 @@ If the security component cannot be called to save images and videos in your dev
 - The directory is automatically created in `Download/bundle name/`.
 - Files can be directly saved without file selection.
 - You can create files under the returned URI that has persisting permissions.
+
+> **NOTE**
+>
+> Directories created in DOWNLOAD mode are used only to store files. Directories are not isolated from each other. You are not advised to store sensitive application data.
 
 1. Import modules.
 

@@ -76,7 +76,7 @@ hasSerialRight(portId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -117,7 +117,7 @@ if (serialManager.hasSerialRight(portId)) {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
+请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -135,7 +135,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -194,7 +194,7 @@ open(portId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -248,7 +248,7 @@ try {
 
 ## serialManager.getAttribute
 
-getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
+getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 获取指定串口的配置参数。
 
@@ -268,7 +268,7 @@ getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -334,7 +334,7 @@ try {
 
 ## serialManager.setAttribute
 
-setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void
+setAttribute(portId: number, attribute: SerialAttribute): void
 
 设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；据位：8；校验位：0；停止位：1）。
 
@@ -349,7 +349,7 @@ setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): vo
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -419,7 +419,7 @@ try {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-从串口设备异步读取数据。
+从串口设备异步读取数据。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -439,7 +439,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -524,7 +524,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -590,7 +590,7 @@ try {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备异步写入数据。
+向串口设备异步写入数据。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -610,7 +610,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -695,7 +695,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -773,7 +773,7 @@ close(portId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -849,7 +849,7 @@ cancelSerialRight(portId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[USB服务错误码](errorcode-usb.md)。
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -933,36 +933,36 @@ try {
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| BAUDRATE_50  | 50  | 传输波特率为50  |
-| BAUDRATE_75  | 75  | 传输波特率为75  |
-| BAUDRATE_110  | 110  | 传输波特率为110  |
-| BAUDRATE_134  | 134  | 传输波特率为134  |
-| BAUDRATE_150  | 150  | 传输波特率为150  |
-| BAUDRATE_200  | 200  | 传输波特率为200  |
-| BAUDRATE_300  | 300  | 传输波特率为300  |
-| BAUDRATE_600  | 600  | 传输波特率为600  |
-| BAUDRATE_1200  | 1200  | 传输波特率为1200  |
-| BAUDRATE_1800  | 1800  | 传输波特率为1800  |
-| BAUDRATE_2400  | 2400  | 传输波特率为2400  |
-| BAUDRATE_4800  | 4800  | 传输波特率为4800  |
-| BAUDRATE_9600  | 9600  | 传输波特率为9600  |
-| BAUDRATE_19200  | 19200  | 传输波特率为19200  |
-| BAUDRATE_38400  | 38400  | 传输波特率为38400  |
-| BAUDRATE_57600  | 57600  | 传输波特率为57600  |
-| BAUDRATE_115200  | 115200  | 传输波特率为115200  |
-| BAUDRATE_230400  | 230400  | 传输波特率为230400  |
-| BAUDRATE_460800  | 460800  | 传输波特率为460800  |
-| BAUDRATE_500000  | 500000  | 传输波特率为500000  |
-| BAUDRATE_576000  | 576000  | 传输波特率为576000  |
-| BAUDRATE_921600  | 921600  | 传输波特率为921600  |
-| BAUDRATE_1000000  | 1000000  | 传输波特率为1000000  |
-| BAUDRATE_1152000  | 1152000  | 传输波特率为1152000  |
-| BAUDRATE_1500000  | 1500000  | 传输波特率为1500000  |
-| BAUDRATE_2000000  | 2000000  | 传输波特率为2000000  |
-| BAUDRATE_2500000  | 2500000  | 传输波特率为2500000  |
-| BAUDRATE_3000000  | 3000000  | 传输波特率为3000000  |
-| BAUDRATE_3500000  | 3500000  | 传输波特率为3500000  |
-| BAUDRATE_4000000  | 4000000  | 传输波特率为4000000  |
+| BAUDRATE_50  | 50  | 传输波特率为50。  |
+| BAUDRATE_75  | 75  | 传输波特率为75。  |
+| BAUDRATE_110  | 110  | 传输波特率为110。  |
+| BAUDRATE_134  | 134  | 传输波特率为134。  |
+| BAUDRATE_150  | 150  | 传输波特率为150。  |
+| BAUDRATE_200  | 200  | 传输波特率为200。  |
+| BAUDRATE_300  | 300  | 传输波特率为300。  |
+| BAUDRATE_600  | 600  | 传输波特率为600。  |
+| BAUDRATE_1200  | 1200  | 传输波特率为1200。  |
+| BAUDRATE_1800  | 1800  | 传输波特率为1800。  |
+| BAUDRATE_2400  | 2400  | 传输波特率为2400。  |
+| BAUDRATE_4800  | 4800  | 传输波特率为4800。  |
+| BAUDRATE_9600  | 9600  | 传输波特率为9600。  |
+| BAUDRATE_19200  | 19200  | 传输波特率为19200。  |
+| BAUDRATE_38400  | 38400  | 传输波特率为38400。  |
+| BAUDRATE_57600  | 57600  | 传输波特率为57600。  |
+| BAUDRATE_115200  | 115200  | 传输波特率为115200。  |
+| BAUDRATE_230400  | 230400  | 传输波特率为230400。  |
+| BAUDRATE_460800  | 460800  | 传输波特率为460800。  |
+| BAUDRATE_500000  | 500000  | 传输波特率为500000。  |
+| BAUDRATE_576000  | 576000  | 传输波特率为576000。  |
+| BAUDRATE_921600  | 921600  | 传输波特率为921600。  |
+| BAUDRATE_1000000  | 1000000  | 传输波特率为1000000。  |
+| BAUDRATE_1152000  | 1152000  | 传输波特率为1152000。  |
+| BAUDRATE_1500000  | 1500000  | 传输波特率为1500000。  |
+| BAUDRATE_2000000  | 2000000  | 传输波特率为2000000。  |
+| BAUDRATE_2500000  | 2500000  | 传输波特率为2500000。  |
+| BAUDRATE_3000000  | 3000000  | 传输波特率为3000000。  |
+| BAUDRATE_3500000  | 3500000  | 传输波特率为3500000。  |
+| BAUDRATE_4000000  | 4000000  | 传输波特率为4000000。  |
 
 ## DataBits
 
@@ -972,10 +972,10 @@ try {
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| DATABIT_8 | 8 | 报文的有效数据位宽为8比特 |
-| DATABIT_7 | 7 | 报文的有效数据位宽为7比特 |
-| DATABIT_6 | 6 | 报文的有效数据位宽为6比特 |
-| DATABIT_5 | 5 | 报文的有效数据位宽为5比特 |
+| DATABIT_8 | 8 | 报文的有效数据位宽为8比特。 |
+| DATABIT_7 | 7 | 报文的有效数据位宽为7比特。 |
+| DATABIT_6 | 6 | 报文的有效数据位宽为6比特。 |
+| DATABIT_5 | 5 | 报文的有效数据位宽为5比特。 |
 
 ## Parity
 
@@ -985,11 +985,11 @@ try {
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| PARITY_NONE | 0 | 无校验 |
-| PARITY_ODD | 1 | 奇检验 |
-| PARITY_EVEN | 2 | 偶校验 |
-| PARITY_MARK | 3 | 固定为1 |
-| PARITY_SPACE | 4 | 固定为0 |
+| PARITY_NONE | 0 | 无校验。 |
+| PARITY_ODD | 1 | 奇检验。 |
+| PARITY_EVEN | 2 | 偶校验。 |
+| PARITY_MARK | 3 | 固定为1。 |
+| PARITY_SPACE | 4 | 固定为0。 |
 
 ## StopBits
 
@@ -999,5 +999,5 @@ try {
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| STOPBIT_1 | 0 | 报文的有效停止位宽为1比特 |
-| STOPBIT_2 | 1 | 报文的有效停止位宽为2比特 |
+| STOPBIT_1 | 0 | 报文的有效停止位宽为1比特。 |
+| STOPBIT_2 | 1 | 报文的有效停止位宽为2比特。 |

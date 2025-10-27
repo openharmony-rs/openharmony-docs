@@ -58,6 +58,8 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -115,6 +117,8 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -181,6 +185,8 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
+>
+>callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen6)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -248,7 +254,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 | 参数名   | 类型                     | 必填 | 说明         |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 | callback | AsyncCallback\<boolean\> | 是   | 回调函数。true:发送请求创建成功；false:发送请求创建失败。   |
 
 **错误码：**
@@ -311,7 +317,7 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。 |
+| data     | string \| ArrayBuffer | 是   | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 
 **返回值：**
 
@@ -512,7 +518,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-订阅WebSocket的打开事件，使用callback方式作为异步方法。
+订阅WebSocket的打开事件，使用callback方式作为异步方法。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect6)发起连接请求前调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -877,11 +883,9 @@ createWebSocketServer(): WebSocketServer
 
 创建一个WebSocketServer对象，包括启动服务、发送数据、关闭连接、列出客户端信息、停止服务，订阅/取消订阅webSocket连接的连接事件、接收到客户端消息事件、关闭事件和错误事件。
 
-> **说明：**
->
-> 目前该接口在TV中可正常调用，在其他设备中无效果，返回nullptr。
-
 **系统能力**: SystemCapability.Communication.NetStack
+
+**设备行为差异：** 该接口在TV设备中可正常调用，在其他设备中返回nullptr。
 
 **返回值：**
 
@@ -980,7 +984,7 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。 |
+| data       | string \| ArrayBuffer                       | 是  | 服务端发送消息的数据，同时支持string（字符串）和ArrayBuffer（二进制）类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
 | connection | [WebSocketConnection](#websocketconnection19) | 是  | 发送的客户端信息。                              |
 
 **返回值：**
@@ -1462,8 +1466,8 @@ localServer.off('error');
 | proxy<sup>12+</sup> | ProxyConfiguration |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。 |
 | protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。              |
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
-| pingInterval<sup>21+</sup> | int | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md##场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。<br>**ArkTS版本：** 该接口仅适用于ArkTS1.2。 |
-| pongTimeout<sup>21+</sup> | int | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。<br>**ArkTS版本：** 该接口仅适用于ArkTS1.2。|
+| pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
+| pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1471,11 +1475,11 @@ localServer.off('error');
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称 | 类型   | 必填 | 说明                |
-| ------ | ------ | ---- |-------------------|
-| certPath   | string  | 是   | 证书路径。             |
-| keyPath | string | 是   | 证书密钥的路径。          |
-| keyPassword | string | 否   | 证书密钥的密码。缺省为空字符串。 |
+| 名称 | 类型   | 只读 |可选| 说明                |
+| ------ | ------ | ---- |---|----------------|
+| certPath   | string  | 否   |否 |证书路径。             |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
+| keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
@@ -1498,10 +1502,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | 否   | 错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
-| reason | string | 否   | 原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
+| 名称 | 类型   | 只读 |可选| 说明                                                         |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | 否   |是 |错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
+| reason | string | 否   | 是|原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
 
 ## CloseResult<sup>10+</sup>
 
@@ -1511,10 +1515,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | number | 是   | 错误码，订阅close事件得到的关闭连接的错误码。 |
-| reason | string | 是   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
+| 名称 | 类型   | 只读 |可选| 说明                                                         |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | number | 否   |否 |错误码，订阅close事件得到的关闭连接的错误码。 |
+| reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
 type ResponseHeaders = {
@@ -1525,9 +1529,9 @@ type ResponseHeaders = {
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 类型   | 说明                                                         |
-| ------ | ------------------------------------------------------------ |
-| [k:string]:string \| string[] \| undefined | header数据类型为键值对、字符串或者undefined。 |
+| 名称 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+|  [k:string]  | string \| string[] \| undefined | 是   | 键值对形式存储。其键的类型为字符，可取任意值，其值的类型为字符、字符数组或undefined。 |
 
 ## close错误码说明
 
