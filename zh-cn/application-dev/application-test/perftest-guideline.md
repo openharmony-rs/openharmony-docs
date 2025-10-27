@@ -50,6 +50,9 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 1. 定义测试性能指标列表
 
     定义所需测试的性能指标列表`metrics`，类型为`Array<PerfMetric>`，其中<!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End-->为框架支持采集的性能指标枚举。
+
+    <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
+
     ```TypeScript
     let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ];
     ```
