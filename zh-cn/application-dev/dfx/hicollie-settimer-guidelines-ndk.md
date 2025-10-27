@@ -20,7 +20,7 @@
 
 - API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md)。
 
-- 函数执行时间超长故障日志以syswarning-开头，生成在“设备/data/log/faultlog/faultlogger/”路径下。文件名格式为“syswarning-应用包名-应用UID-秒级时间.log”。
+- 函数执行时间超长故障日志以syswarning-开头，生成在“设备/data/log/warninglog/”路径下。文件名格式为“syswarning-应用包名-应用UID-秒级时间.log”。
 
 ## 开发步骤
 
@@ -54,92 +54,32 @@
 
 3. 编辑“napi_init.cpp”文件，导入依赖头文件、定义LOG_TAG与测试方法以及注册TestHiCollieTimerNdk为ArkTS接口。
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hicollie/hicollie.h"
-   #include "hilog/log.h"
-   
-   #include <unistd.h>
-   
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   //定义回调函数
-   void CallBack(void*)
-   {
-     OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // 回调函数中打印日志
-   }
-   
-   static napi_value TestHiCollieTimerNdk(napi_env env, napi_callback_info info)
-   {
-     int id;
-     HiCollie_SetTimerParam param = {"testTimer", 1, CallBack, nullptr, HiCollie_Flag::HICOLLIE_FLAG_LOG};  // 设置HiCollieTimer 参数（Timer任务名，超时时间，回调函数，回调函数参数，超时发生后行为）
-     HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // 注册HiCollieTimer函数执行时长超时检测一次性任务
-     if (errorCode == HICOLLIE_SUCCESS) {  // HiCollieTimer任务注册成功
-       OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // 打印任务id
-       sleep(2);  // 模拟执行耗时函数，在这里简单的将线程阻塞2s
-       OH_HiCollie_CancelTimer(id);  // 根据id取消已注册任务
-     }
-     return nullptr;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr }      // 将TestHiCollieTimerNdk注册为ArkTS接口
-      };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+   引入头文件及定义LOG_TAG。
+
+   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+   <!-- @[Hicollie_Set_Timer_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+   构造任务执行时间超时场景，并使用OH_HiCollie_SetTimer及OH_HiCollie_CancelTimer函数进行监控。
+
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
+   在Init函数中的desc[]数组中将TestHiCollieTimerNdk注册为ArkTS接口。
+
+   <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
 4. 编辑“index.d.ts”文件，定义ArkTS接口。
 
-   ```ts
-   export const TestHiCollieTimerNdk: () => void;
-   ```
+   <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 5. 编辑“Index.ets”文件。
+   引入调用C接口的头文件。
 
-   ```ts
-   import testNapi from 'libentry.so';
-   
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World';
-   
-     build() {
-       Row() {
-         Column() {
-           Button("TestHiCollieTimerNdk")
-             .fontSize(50)
-             .fontWeight(FontWeight.Bold)
-             .onClick(testNapi.TestHiCollieTimerNdk);  //添加点击事件，触发testHiCollieTimerNdk方法。
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
+   <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+   在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
+
+   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程。
 
