@@ -16,16 +16,21 @@
   - [@ohos.vibrator(振动)(已废弃接口)](js-apis-system-vibrate.md)
 - C API
   - 模块
-    - [Sensor](_sensor.md)
-    - [Vibrator](_vibrator.md)
+    - [Sensor](capi-sensor.md)
+    - [Vibrator](capi-vibrator.md)
   - 头文件
-    - [oh_sensor.h](oh_sensor_8h.md)
-    - [oh_sensor_type.h](oh_sensor_type_8h.md)
-    - [vibrator.h](vibrator_8h.md)
-    - [vibrator_type.h](vibrator_type_8h.md)
+    - [oh_sensor.h](capi-oh-sensor-h.md)
+    - [oh_sensor_type.h](capi-oh-sensor-type-h.md)
+    - [vibrator.h](capi-vibrator-h.md)
+    - [vibrator_type.h](capi-vibrator-type-h.md)
   - 结构体
-    - [Vibrator_Attribute](_vibrator_attribute.md)
-    - [Vibrator_File_Description](_vibrator_file_description.md)
+    - [Sensor_Info](capi-sensor-sensor-info.md)
+    - [Sensor_Event](capi-sensor-sensor-event.md)
+    - [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)
+    - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
+    - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
+    - [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)
+    - [Vibrator_File_Description](capi-vibrator-vibrator-attribute.md)
 - 错误码
 
   - [Sensor错误码](errorcode-sensor.md)
