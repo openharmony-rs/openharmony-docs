@@ -17,40 +17,12 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
 
 2. 在Project窗口单击entry > src > main > ets > pages，打开并编辑Index.ets文件：
    导入所需依赖：
-
-   ```typescript
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
-   <!-- [TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
-   ```
+   <!-- @[TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    定义测试方法：
-   ```typescript
-   function testHiDebugArk() {  // 按照需要调用的接口实现
-     try {
-       hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
-     } catch (error) {
-       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
-         error msg: ${(error as BusinessError).message}`);
-     }
-   };
-   <!-- [TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
-   ```
+   <!-- @[TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
 
    添加按钮以触发接口调用：
-
-   ```typescript
-   Button('testHiDebugArk')
-     .type(ButtonType.Capsule)
-     .margin({
-       top: 20
-     })
-     .backgroundColor('#0D9FFB')
-     .width('60%')
-     .height('5%')
-     // 添加点击事件
-     .onClick(testHiDebugArk);
-   <!-- [TestHidebugArk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
-   ```
+   <!-- @[TestHidebugArk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
 
 3. 点击运行，然后在设备上点击“testHiDebugArk”按钮，触发接口调用。
 
