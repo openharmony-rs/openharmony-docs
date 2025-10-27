@@ -52,90 +52,15 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 3. 打开EmbeddedUIExtAbility.ets文件，导入EmbeddedUIExtensionAbility的依赖包，自定义类继承EmbeddedUIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 
-    ```ts
-    import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-
-    const TAG: string = '[ExampleEmbeddedAbility]';
-
-    export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
-      onCreate() {
-        console.info(TAG, `onCreate`);
-      }
-
-      onForeground() {
-        console.info(TAG, `onForeground`);
-      }
-
-      onBackground() {
-        console.info(TAG, `onBackground`);
-      }
-
-      onDestroy() {
-        console.info(TAG, `onDestroy`);
-      }
-
-      onSessionCreate(want: Want, session: UIExtensionContentSession) {
-        console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-        let param: Record<string, UIExtensionContentSession> = {
-          'session': session
-        };
-        let storage: LocalStorage = new LocalStorage(param);
-        session.loadContent('pages/extension', storage);
-      }
-
-      onSessionDestroy(session: UIExtensionContentSession) {
-        console.info(TAG, `onSessionDestroy`);
-      }
-    }
-    ```
+<!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
 
 4. EmbeddedUIExtensionAbility的onSessionCreate中加载了入口页面文件pages/extension.ets内容如下：
 
-    ```ts
-    import { UIExtensionContentSession } from '@kit.AbilityKit';
-
-    @Entry()
-    @Component
-    struct Extension {
-      @State message: string = 'EmbeddedUIExtensionAbility Index';
-      localStorage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-      private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
-
-      build() {
-        Column() {
-          Text(this.message)
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-          Button('terminateSelfWithResult').fontSize(20).onClick(() => {
-            this.session?.terminateSelfWithResult({
-              resultCode: 1,
-              want: {
-                bundleName: 'com.example.embeddeddemo',
-                abilityName: 'ExampleEmbeddedAbility'
-              }});
-          })
-        }.width('100%').height('100%')
-      }
-    }
-    ```
+<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
 
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册EmbeddedUIExtensionAbility，type标签需要设置为“embeddedUI”，srcEntry标签表示当前EmbeddedUIExtensionAbility组件所对应的代码路径。
 
-    ```json
-    {
-      "module": {
-        "extensionAbilities": [
-          {
-            "name": "EmbeddedUIExtAbility",
-            "icon": "$media:icon",
-            "description": "EmbeddedUIExtAbility",
-            "type": "embeddedUI",
-            "srcEntry": "./ets/EmbeddedUIExtAbility/EmbeddedUIExtAbility.ets"
-          },
-        ]
-      }
-    }
-    ```
+<!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
 
 
 
@@ -147,39 +72,5 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstance同时配置时，hostSpecified优先，会运行在指定的进程中。
 如在首页文件：pages/Index.ets中添加如下内容：
-```ts
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Message: '
-  private want: Want = {
-    bundleName: 'com.example.embeddeddemo',
-    abilityName: 'EmbeddedUIExtAbility',
-    parameters: {
-      'ohos.extension.processMode.hostInstance': 'true'
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message).fontSize(30)
-        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info: TerminationInfo) => {
-            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-          })
-          .onError((error: BusinessError) => {
-            this.message = 'Error: code = ' + error.code;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/BasicClass.ets) -->
