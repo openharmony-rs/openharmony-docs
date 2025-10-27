@@ -193,6 +193,19 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    ```ts
    import { util } from '@kit.ArkTS';
 <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+
+``` TypeScript
+if (dataPreferences.hasSync('startup')) {
+  Logger.info('The key startup is contained.');
+} else {
+  Logger.info('The key startup does not contain.');
+  // 此处以此键值对不存在时写入数据为例
+  dataPreferences.putSync('startup', 'auto');
+  // 在XML模式下，当字符串包含非UTF-8格式的字符时，需要将字符串转为Uint8Array类型再存储，长度均不超过16 * 1024 * 1024个字节。
+  let uInt8Array1 = new util.TextEncoder().encodeInto('~！@#￥%……&*（）——+？');
+  dataPreferences.putSync('uInt8', uInt8Array1);
+}
+```
    ```
 
 5. 读取数据。
