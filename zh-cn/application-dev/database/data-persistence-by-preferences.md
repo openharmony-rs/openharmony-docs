@@ -290,6 +290,21 @@ dataPreferences.put('startup', 'manual', (err: BusinessError) => {
 
    示例代码如下所示：
 <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+
+``` TypeScript
+let observer = (key: string) => {
+  Logger.info('The key ' + key + ' changed.');
+}
+dataPreferences.on('change', observer);
+// 数据产生变更，由'auto'变为'manual'
+dataPreferences.put('startup', 'manual', (err: BusinessError) => {
+  if (err) {
+    Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
+    return;
+  }
+  Logger.info('Succeeded in putting the value of startup.');
+})
+```
 9. 删除指定文件。
 
    使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preference存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
