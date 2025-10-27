@@ -1219,7 +1219,7 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-Checks whether an application is running. This API uses a promise to return the result.
+Checks whether the application with the specified bundle name is running across all users. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1237,7 +1237,7 @@ Checks whether an application is running. This API uses a promise to return the 
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<boolean> | Promise used to return the result. **true** if the application is running, **false** otherwise.|
+| Promise\<boolean> | Promise used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 
@@ -1269,7 +1269,7 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-Checks whether an application is running. This API uses an asynchronous callback to return the result.
+Checks whether the application with the specified bundle name is running across all users. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1281,8 +1281,8 @@ Checks whether an application is running. This API uses an asynchronous callback
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| bundleName    | string   | Yes   | Bundle name of the shared library.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** if the application is running, **false** otherwise.|
+| bundleName    | string   | Yes   | Bundle name of the application.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 

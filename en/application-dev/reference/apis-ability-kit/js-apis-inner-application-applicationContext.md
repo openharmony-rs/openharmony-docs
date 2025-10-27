@@ -912,7 +912,11 @@ export default class MyAbility extends UIAbility {
 
 restartApp(want: Want): void
 
-Restarts the application and starts the specified UIAbility. The **onDestroy** callback is not triggered during the restart. This API can be called only by the main thread, and the application to restart must be active.
+Restarts the application and starts the specified UIAbility. This API can be called only by the main thread, and the application to restart must be active.
+
+> **NOTE**
+>
+> When this API is called to restart the application, the **onDestroy** lifecycle callback of the ability in the application is not triggered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -921,7 +925,7 @@ Restarts the application and starts the specified UIAbility. The **onDestroy** c
 **Parameters**
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the UIAbility to start. No verification is performed on the bundle name passed in.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the UIAbility to start. The ability name is verified, but the bundle name is not.|
 
 **Error codes**
 
@@ -938,20 +942,43 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
 
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    let applicationContext = this.context.getApplicationContext();
-    let want: Want = {
-      bundleName: 'com.example.myapp',
-      abilityName: 'EntryAbility'
-    };
-    try {
-      applicationContext.restartApp(want);
-    } catch (error) {
-      console.error(`restartApp fail, error: ${JSON.stringify(error)}`);
+@Entry
+@Component
+struct Index {
+  @State message: string = 'restartApp';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let want: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility'
+          };
+          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
+          if (appcontext) {
+            try {
+              appcontext.restartApp(want);
+            } catch (err) {
+              hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
+            }
+          } else {
+            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+          }
+        })
     }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
