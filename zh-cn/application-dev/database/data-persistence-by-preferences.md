@@ -262,6 +262,30 @@ dataPreferences.flush((err: BusinessError) => {
 
 <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
+``` TypeScript
+let observer = (key: string) => {
+  Logger.info('The key ' + key + ' changed.');
+}
+dataPreferences.on('change', observer);
+// 数据产生变更，由'auto'变为'manual'
+dataPreferences.put('startup', 'manual', (err: BusinessError) => {
+  if (err) {
+    Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
+    return;
+  }
+  Logger.info('Succeeded in putting the value of startup.');
+  if (dataPreferences !== undefined) {
+    dataPreferences.flush((err: BusinessError) => {
+      if (err) {
+        Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
+        return;
+      }
+      Logger.info('Succeeded in flushing.');
+    })
+  }
+})
+```
+
    针对GSKV存储模式，订阅的Key值发生变更后（无需调用flush），observer被触发回调。
 
    示例代码如下所示：
