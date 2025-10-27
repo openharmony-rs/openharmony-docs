@@ -216,6 +216,16 @@ if (dataPreferences.hasSync('startup')) {
 
 <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
+``` TypeScript
+let val = dataPreferences.getSync('startup', 'default');
+Logger.info('The startup value is ' + val);
+let uInt8Array2 : preferences.ValueType = dataPreferences.getSync('uInt8', new Uint8Array(0));
+// 将获取到的Uint8Array转换为字符串
+let textDecoder = util.TextDecoder.create('utf-8');
+val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
+Logger.info('The uInt8 value is ' + val);
+```
+
 6. 删除数据。
 
    使用deleteSync()方法删除指定键值对，示例代码如下所示：
