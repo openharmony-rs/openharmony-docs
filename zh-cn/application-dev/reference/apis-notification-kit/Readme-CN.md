@@ -43,7 +43,7 @@
 - C API<!--notification-c-->
   - 模块<!--notification-module-->
       - [NOTIFICATION](capi-notification.md)
-  - 头文件<!--notification-struct-->
+  - 头文件<!--notification-headerfile-->
       - [notification.h](capi-notification-h.md)
 - 错误码<!--notification-arkts-errcode-->
   - [通知错误码](errorcode-notification.md)
