@@ -1,4 +1,4 @@
-# JS服务卡片UI组件
+# JS服务卡片UI组件<!--arkui-card-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
