@@ -13,6 +13,7 @@
       - [ArkTS-Sta @Builder函数初始化ArkTS-Dyn自定义组件@BuilderParam成员属性](arkts-sta-interop-dyn-builderparam.md)
       - [使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
       - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](arkts-sta-interop-dyn-navigation.md)
+      - [ArkTS-Dyn的Navigation调用ArkTS-Sta的NavDestination页面](arkts-dyn-interop-sta-navigation.md)
     - [状态管理V1互操作](arkts-sta-interop-dyn-statemanager-v1.md)
       - [ArkTS-Sta使用ArkTS-Dyn状态管理互操作](arkts-sta-interop-dyn-statemanagement.md)
       - [ArkTS-Dyn使用ArkTS-Sta状态管理互操作](arkts-dyn-interop-sta-statemanagement.md)
