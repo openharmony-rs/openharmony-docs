@@ -29,6 +29,54 @@ ArkUI框架对于`ForEach`的键值生成有一套特定的判断规则，这主
 >
 > ArkUI框架会对重复的键值发出警告。在UI更新时，如果出现重复的键值，框架可能无法正常工作，具体请参见[渲染结果非预期](#渲染结果非预期)。
 
+键值生成示例:
+
+```ts
+interface ChildItemType {
+  str: string;
+  num: number;
+}
+
+@Entry
+@Component
+struct Index {
+  @State simpleList: Array<ChildItemType> = [
+    { str: 'one', num: 1 },
+    { str: 'two', num: 2 },
+    { str: 'three', num: 3 }
+  ];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.simpleList, (item: ChildItemType, index: number) => {
+          ChildItem({ str: item.str, num: index }) // 组件生成函数中使用index参数
+        }, (item: ChildItemType, index: number) => {
+          return item.str; // 建议在键值生成函数中使用与UI界面相关的数据属性str
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@Component
+struct ChildItem {
+  @Prop str: string = '';
+  @Prop num: number = 0;
+
+  build() {
+    Text(this.str)
+      .fontSize(50)
+  }
+}
+```
+
+在上述示例中，当组件生成函数声明index时，建议键值生成函数也声明index参数，以避免渲染性能降低和渲染结果非预期。同时建议在键值生成函数实现中使用与UI相关的数据属性，在本示例中，数据属性str与UI界面显示相关，因此建议将其作为键值生成函数的返回值。
+
 ## 组件创建规则
 
 在确定键值生成规则后，ForEach的第二个参数`itemGenerator`函数会根据键值生成规则为数据源的每个数组项创建组件。组件的创建包括两种情况：[ForEach首次渲染](#首次渲染)和[ForEach非首次渲染](#非首次渲染)。
