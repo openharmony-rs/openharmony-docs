@@ -3203,7 +3203,7 @@
           <!--Del-->
           - [应用级变量的状态管理（系统接口）](reference/apis-arkui/arkui-ts/ts-state-management-sys.md)
           <!--DelEnd-->
-        - 响应式环境变量<!--arkts-env-property-->
+        - 响应式环境变量<!--arkts-env-system-property-->
           - [\@Env：环境变量](reference/apis-arkui/arkui-ts/ts-env-system-property.md)
         - 公共定义<!--common-definitions-->
           - [基础类型定义](reference/apis-arkui/arkui-ts/ts-types.md)
