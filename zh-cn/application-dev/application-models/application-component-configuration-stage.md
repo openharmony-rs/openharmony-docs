@@ -35,12 +35,5 @@ Module访问系统或其他应用受保护部分所需的权限信息需要在[m
 - 默认值为"mainTask"，表现为点击图标总是启动应用主UIAbility。
 - 可选值"recentTask"，表现为点击图标打开最近使用的UIAbility。
 
-```json
-{
-  ...
-  "app": {
-    "startMode": "mainTask"
-    ...
-  }
-}
-```
+
+<!-- @[app_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/AppScope/app.json5) -->
