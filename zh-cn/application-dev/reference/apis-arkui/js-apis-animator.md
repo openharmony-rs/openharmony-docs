@@ -286,6 +286,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 <!--deprecated_code_no_check-->
 ```ts
 import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOptions } from '@kit.ArkUI';
+
 let options: AnimatorOptions = {
   duration: 1500,
   easing: "ease",
@@ -300,7 +301,7 @@ let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
   .delay(1000)
-let animatorResult:AnimatorResult = animator.create(options);
+let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
 
