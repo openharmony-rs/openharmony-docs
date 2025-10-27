@@ -64,7 +64,6 @@ showAppNetPolicySettings(context: Context): Promise\<void>;
 **示例：**
 
 ```ts
-import { policy } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
