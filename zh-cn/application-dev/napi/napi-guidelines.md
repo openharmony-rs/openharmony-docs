@@ -343,11 +343,11 @@ extern "C" __attribute__((constructor)) void RegisterModule()
 ```
 图一
 
-![demoModule](image.png)
+![demoModule](./figures/image.png)
 
 图二
 
-![CMakeLists](image-1.png)
+![CMakeLists](./figures/image-1.png)
 
 **正确示例**：
 以下代码为模块名为nativerender时的正确示例
