@@ -10,7 +10,7 @@ The **matrix4** module provides APIs for matrix transformation. You can use thes
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -598,7 +598,7 @@ Maps the vertex coordinates of a polygon to those of another polygon.
 | [Matrix4Transit](#matrix4transit) | Matrix object after the mapping.|
 
 > **NOTE**
-> This API must be used with **scale({centerX:0,centerY:0,x:1})** to ensure that the transformation is centered at the upper left corner of the component.
+> This API must be used with **scale({centerX:0,centerY:0,x:1})** to ensure that the transformation is centered in the upper left corner of the component.
 
 **Example**
 
@@ -637,11 +637,11 @@ Describes the translation parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                       |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| x    | number | No  | Translation distance along the x-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
-| y    | number | No  | Translation distance along the y-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
-| z    | number | No  | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| Name| Type  | Read-Only| Optional| Description                                                       |
+| ---- | ------ | ---- | ---------- | ------------------------------------------------- |
+| x    | number | No| Yes  | Translation distance along the x-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| y    | number | No| Yes  | Translation distance along the y-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| z    | number | No| Yes  | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
 
 ## ScaleOption
 
@@ -651,13 +651,13 @@ Describes the scale parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Mandatory| Description                                                        |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| x       | number | No  | Scaling multiple along the x-axis. x > 1: The image is scaled up along the x-axis.<br>0 < x < 1: The image is scaled down along the x-axis.<br>x < 0: The image is scaled in the reverse direction of the x-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| y       | number | No  | Scaling multiple along the y-axis. y > 1: The image is scaled up along the y-axis.<br>0 < y < 1: The image is scaled down along the y-axis.<br>y < 0: The image is scaled in the reverse direction of the y-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| z       | number | No  | Scaling multiple along the z-axis. z > 1: The image is scaled up along the z-axis.<br>0 < z < 1: The image is scaled down along the z-axis.<br>z < 0: The image is scaled in the reverse direction of the z-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| centerX | number | No  | X coordinate of the center point.<br>Unit: px<br>Default value: X-coordinate of the component center<br>Value range: (-∞, +∞)   |
-| centerY | number | No  | Y coordinate of the center point.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)   |
+| Name   | Type  | Read-Only| Optional| Description                                                        |
+| ------- | ------ | ---- | ---------- | -------------------------------------------------- |
+| x       | number | No| Yes | Scaling multiple along the x-axis. x > 1: The image is scaled up along the x-axis.<br>0 < x < 1: The image is scaled down along the x-axis.<br>x < 0: The image is scaled in the reverse direction along the x-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
+| y       | number | No| Yes | Scaling multiple along the y-axis. y > 1: The image is scaled up along the y-axis.<br>0 < y < 1: The image is scaled down along the y-axis.<br>y < 0: The image is scaled in the reverse direction along the y-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
+| z       | number | No| Yes | Scaling multiple along the z-axis. z > 1: The image is scaled up along the z-axis.<br>0 < z < 1: The image is scaled down along the z-axis.<br>z < 0: The image is scaled in the reverse direction along the z-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
+| centerX | number | No| Yes | X-coordinate of the center point.<br>Unit: px<br>Default value: X-coordinate of the component center<br>Value range: (-∞, +∞)   |
+| centerY | number | No| Yes | Y-coordinate of the center point.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)   |
 
 ## RotateOption
 
@@ -667,14 +667,14 @@ Describes the rotation parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Mandatory| Description                                                        |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| x       | number | No  | X coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
-| y       | number | No  | Y coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
-| z       | number | No  | Z coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>**NOTE**<br>The rotation axis vector is valid only when at least one of **x**, **y**, and **z** is not 0.|
-| angle   | number | No  | Rotation angle.<br>Default value: **0**                                    |
-| centerX | number | No  | Additional x-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's x-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
-| centerY | number | No  | Additional y-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's y-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
+| Name   | Type  | Read-Only| Optional| Description                                                        |
+| ------- | ------ | ---- | ---------- | -------------------------------------------------- |
+| x       | number | No| Yes  | X-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
+| y       | number | No| Yes | Y-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
+| z       | number | No| Yes | Z-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>**NOTE**<br>The rotation axis vector is valid only when at least one of **x**, **y**, and **z** is not 0.|
+| angle   | number | No| Yes | Rotation angle.<br>Default value: **0**                                    |
+| centerX | number | No| Yes | Additional x-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's x-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
+| centerY | number | No| Yes | Additional y-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's y-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
 
 ## PolyToPolyOptions<sup>12+</sup>
 
@@ -690,7 +690,7 @@ Describes the configuration options for polygon-to-polygon transformation mappin
 | srcIndex    | number | No  | Yes  | Start index of the source point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
 | dst    |  Array<[Point](#point12)>  | No  | No  | Coordinates of the destination point.|
 | dstIndex    | number | No  | Yes  |  Start index of the destination point coordinates.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
-| pointCount    | number | No  | Yes  | Number of used points. If the number of points to be used is 0, the unit matrix is returned. If the number of points is 1, the translation matrix that changes two points is returned. If the number of points is 2 to 4, a transformation matrix is returned.<br>Default value: **0**.<br> Value range: [0, +∞).|
+| pointCount    | number | No  | Yes  | Number of used points. **0**: returns an identity matrix. **1**: returns a translation matrix. 2-4: returns a transformation matrix.<br>Default value: **0**.<br> Value range: [0, +∞).|
 
 ## Point<sup>12+</sup>
 
@@ -700,10 +700,10 @@ Defines the data structure of a coordinate point.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                                       |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| x    |  number | Yes  | X-coordinate.<br>Value range: (-∞, +∞)|
-| y    | number | Yes  | Y-coordinate.<br>Value range: (-∞, +∞)|
+| Name| Type  | Read-Only| Optional| Description                                                       |
+| ---- | ------ | ---- | -------- | --------------------------------------------------- |
+| x    |  number | No| No  | X-coordinate.<br>Value range: (-∞, +∞)|
+| y    | number | No| No  | Y-coordinate.<br>Value range: (-∞, +∞)|
 
 ## matrix4.copy<sup>(deprecated)</sup>
 

@@ -1,12 +1,18 @@
 # @ohos.arkui.componentUtils (componentUtils)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The **componentUtils** module provides API for obtaining the coordinates and size of the drawing area of a component.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is unclear](../../ui/arkts-global-interface.md). For details, see [UIContext](./js-apis-arkui-UIContext.md#uicontext).
+> - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 
 ## Modules to Import
 
@@ -21,9 +27,9 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 > **NOTE**
 >
-> This API is deprecated since API version 18. You are advised to use [getRectangleById](js-apis-arkui-UIContext.md#getrectanglebyid) instead on the obtained [ComponentUtils](js-apis-arkui-UIContext.md#componentutils) object.
+> - This API is deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead on the obtained [ComponentUtils](arkts-apis-uicontext-componentutils.md) object.
 >
-> Since API version 10, you can use the [getComponentUtils](js-apis-arkui-UIContext.md#getcomponentutils) API in [UIContext](js-apis-arkui-UIContext.md#uicontext) to obtain the [ComponentUtils](js-apis-arkui-UIContext.md#componentutils) object associated with the current UI context. For this API to work correctly, call it after the notification indicating completion of component layout is received through [@ohos.arkui.inspector (layout callback)](js-apis-arkui-inspector.md).
+> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API should be called after the target component's layout is complete to obtain its size information. It is recommended that you use this API within the [layout callback](./js-apis-arkui-inspector.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -58,20 +64,22 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ## ComponentInfo
 
+**ComponentInfo** object, which provides the size, position, translation, scaling, rotation, and affine matrix information of the component.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Type            | Mandatory          | Description                        |
-| ---------------|------------     | -----------------------------| -----------------------------|
-| size           | [Size](#size) | Yes| Component size.                   |
-| localOffset    | [Offset](#offset) | Yes| Offset of the component relative to the parent component.        |
-| windowOffset   | [Offset](#offset) | Yes| Offset of the component relative to the window.          |
-| screenOffset   | [Offset](#offset) | Yes| Offset of the component relative to the screen.          |
-| translate      | [TranslateResult](#translateresult) | Yes| Translation of the component.               |
-| scale          | [ScaleResult](#scaleresult) | Yes| Scaling of the component.               |
-| rotate         | [RotateResult](#rotateresult) | Yes| Rotation of the component.               |
-| transform      | [Matrix4Result](#matrix4result) | Yes| Affine matrix of the component, which is a 4x4 matrix object created based on the input parameter. |
+| Name          | Type            | Read-Only   | Optional          | Description                        |
+| ---------------|------------| --------------- | -----------------------------| -----------------------------|
+| size           | [Size](#size) | No      | No    | Component size.                   |
+| localOffset    | [Offset](#offset) | No      | No   | Offset of the component relative to the parent component.        |
+| windowOffset   | [Offset](#offset) | No      | No   | Offset of the component relative to the window.          |
+| screenOffset   | [Offset](#offset) | No      | No   | Offset of the component relative to the screen.          |
+| translate      | [TranslateResult](#translateresult)| No      | No    | Translation of the component.               |
+| scale          | [ScaleResult](#scaleresult) | No      | No    | Scaling of the component.               |
+| rotate         | [RotateResult](#rotateresult) | No      | No    | Rotation of the component.               |
+| transform      | [Matrix4Result](#matrix4result) | No      | No    | Affine matrix of the component, which is a 4x4 matrix object created based on the input parameter. |
 
 ### Size 
 
@@ -79,10 +87,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Mandatory| Description                              |
-| -------- | ---- | ----------------------------------| ----------------------------------|
-| width    | number | Yes| Component width.<br>Unit: px                     |
-| height   | number | Yes| Component height.<br>Unit: px                     |
+| Name    | Type | Read-Only   | Optional   | Description                              |
+| -------- | ---- | -------------------------| ------------------------| ----------------------------------|
+| width    | number | No      | No    | Component width.<br>Unit: px                     |
+| height   | number | No      | No    | Component height.<br>Unit: px                     |
 
 ### Offset
 
@@ -90,10 +98,10 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Mandatory| Description                              |
-| --------| ---- | -----------------------------------| -----------------------------------|
-| x       | number | Yes| X coordinate.<br>Unit: px                          |
-| y       | number | Yes| Y coordinate.<br>Unit: px                          |
+| Name    | Type | Read-Only   | Optional    | Description                              |
+| --------| ---- | --------------| ------------------------------------| -----------------------------------|
+| x       | number| No      | No    | X-coordinate.<br>Unit: px                          |
+| y       | number| No      | No    | Y-coordinate.<br>Unit: px                          |
 
 ### TranslateResult
 
@@ -101,11 +109,11 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Mandatory| Description                              |
-| --------| ---- | -----------------------------------| -----------------------------------|
-| x       | number | Yes| Translation distance along the x-axis.<br>Unit: px                      |
-| y       | number | Yes| Translation distance along the y-axis.<br>Unit: px                      |
-| z       | number | Yes| Translation distance along the z-axis.<br>Unit: px                      |
+| Name    | Type| Read-Only   | Optional    | Description                              |
+| --------| ---- | -------------------| -------------------------------| -----------------------------------|
+| x       | number | No      | No   | Translation distance along the x-axis.<br>Unit: px                      |
+| y       | number | No      | No   | Translation distance along the y-axis.<br>Unit: px                      |
+| z       | number | No      | No    | Translation distance along the z-axis.<br>Unit: px                      |
 
 ### ScaleResult
 
@@ -113,13 +121,13 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Mandatory| Description                              |
-| --------| ---- | -----------------------------------| -----------------------------------|
-| x       | number | Yes| Scale factor along the x-axis.<br>Unit: px                      |
-| y       | number | Yes| Scale factor along the y-axis.<br>Unit: px                      |
-| z       | number | Yes| Scale factor along the z-axis.<br>Unit: px                      |
-| centerX | number | Yes| X coordinate of the center point.<br>Unit: px                 |
-| centerY | number | Yes| Y coordinate of the center point.<br>Unit: px               |
+| Name    | Type| Read-Only   | Optional  | Description                              |
+| --------| ---- | ---- |-----------------------------------| -----------------------------------|
+| x       | number | No      | No| Scale factor along the x-axis.<br>Unit: px                      |
+| y       | number | No      | No | Scale factor along the y-axis.<br>Unit: px                      |
+| z       | number | No      | No| Scale factor along the z-axis.<br>Unit: px                      |
+| centerX | number | No      | No| X-coordinate of the center point.<br>Unit: px                 |
+| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: px               |
 
 ### RotateResult
 
@@ -127,14 +135,14 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Mandatory| Description                              |
-| --------| ---- | -----------------------------------| -----------------------------------|
-| x       | number | Yes| X coordinate of the rotation vector.<br>Unit: px                  |
-| y       | number | Yes| Y coordinate of the rotation vector.<br>Unit: px                  |
-| z       | number | Yes| Z coordinate of the rotation vector.<br>Unit: px                  |
-| angle   | number | Yes| Rotation angle.<br>Unit: px                         |
-| centerX | number | Yes| X coordinate of the center point.<br>Unit: px                |
-| centerY | number | Yes| Y coordinate of the center point.<br>Unit: px                |
+| Name    | Type | Read-Only   | Optional    | Description                              |
+| --------| ---- | -----------------| ---------------------------------| -----------------------------------|
+| x       | number | No      | No | X-coordinate of the rotation vector.<br>Unit: px                  |
+| y       | number | No      | No | Y-coordinate of the rotation vector.<br>Unit: px                  |
+| z       | number | No      | No | Z coordinate of the rotation vector.<br>Unit: px                  |
+| angle   | number | No      | No | Rotation angle.<br>Unit: px                         |
+| centerX | number | No      | No | X-coordinate of the center point.<br>Unit: px                |
+| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: px                |
 
 ### Matrix4Result
 
@@ -173,7 +181,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 > **NOTE**
 >
-> You are advised to use the [getComponentUtils](./js-apis-arkui-UIContext.md#getcomponentutils) API in [UIContext](js-apis-arkui-UIContext.md#uicontext) to obtain the **ComponentUtils** object associated with the current UI context.
+> You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
 
   ```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
@@ -189,6 +197,7 @@ struct Utils {
 
   build() {
     Column() {
+      // Replace $r("app.media.img") with the image resource file you use.
       Image($r("app.media.img"))
         .transform(this.matrix1)
         .translate({ x: 20, y: 20, z: 20 })
