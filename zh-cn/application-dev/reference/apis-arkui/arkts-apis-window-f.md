@@ -456,6 +456,8 @@ ArkTs-Sta：shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // ets/pages/Index.ets
 import { window } from '@kit.ArkUI';
@@ -481,6 +483,45 @@ struct Index {
                 });
               } catch (exception) {
                 console.error(`Failed to shift app pointer event. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }.width('100%')
+    }.height('100%').width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// ets/pages/Index.ets
+'use static'
+
+import { window } from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Blue)
+          .onTouch((event: TouchEvent) => {
+            if (event.type === TouchType.Down) {
+              try {
+                let sourceWindowId = 1;
+                let targetWindowId = 2;
+                let promise = window.shiftAppWindowPointerEvent(sourceWindowId, targetWindowId);
+                promise.then(() => {
+                  console.info('Succeeded in shifting app window pointer event');
+                }).catch((err) => {
+                  console.error(`Failed to shift app window pointer event. Cause code: ${err.code}, message: ${err.message}`);
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to shift app pointer event. Cause code: ${err.code}, message: ${err.message}`);
               }
             }
           })

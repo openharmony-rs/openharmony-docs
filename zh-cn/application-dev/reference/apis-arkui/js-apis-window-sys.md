@@ -2403,12 +2403,30 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 try {
   windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
     {left: 400, top: 100, width: 200, height:200}]);
 } catch (exception) {
   console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
+try {
+  windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
+    {left: 400, top: 100, width: 200, height:200}]);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set touchable areas. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 

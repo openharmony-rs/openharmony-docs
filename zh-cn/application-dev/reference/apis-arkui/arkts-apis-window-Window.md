@@ -3081,12 +3081,17 @@ onTouchOutside(callback: Callback&lt;void&gt;): void;
 **示例：**
 
 ```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
 try {
   windowClass.onTouchOutside(() => {
     console.info('touch outside');
   });
 } catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3156,6 +3161,10 @@ offTouchOutside(callback?: Callback&lt;void&gt;): void;
 **示例：**
 
 ```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
 const callback = () => {
   // ...
 }
@@ -3165,7 +3174,8 @@ try {
   // 如果通过onTouchOutside开启多个callback进行监听，同时关闭所有监听：
   windowClass.offTouchOutside();
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3388,12 +3398,17 @@ onDialogTargetTouch(callback: Callback&lt;void&gt;): void;
 **示例：**
 
 ```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
 try {
   windowClass.onDialogTargetTouch(() => {
     console.info('touch dialog target');
   });
 } catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3463,6 +3478,10 @@ offDialogTargetTouch(callback?: Callback&lt;void&gt;): void;
 **示例：**
 
 ```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
 const callback = () => {
   // ...
 }
@@ -3472,7 +3491,8 @@ try {
   // 如果通过onDialogTargetTouch开启多个callback进行监听，同时关闭所有监听：
   windowClass.offDialogTargetTouch();
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3887,12 +3907,17 @@ onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void;
 **示例：**
 
 ```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
 try {
   windowClass.onNoInteractionDetected(60, () => {
     console.info('no interaction in 60s');
   });
 } catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -3975,6 +4000,10 @@ offNoInteractionDetected(callback?: Callback&lt;void&gt;): void;
 **示例：**
 
 ```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
 const callback = () => {
   // ...
 }
@@ -3984,7 +4013,8 @@ try {
   // 如果通过onNoInteractionDetected开启多个callback进行监听，同时关闭所有监听：
   windowClass.offNoInteractionDetected();
 } catch (exception) {
-  console.error(`Failed to register or unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5610,6 +5640,8 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5625,6 +5657,28 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
+let isTouchable = true;
+try {
+  windowClass.setWindowTouchable(isTouchable, (err: BusinessError<void> | null) => {
+    if (err & err.code) {
+      console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the window to be touchable.');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5666,6 +5720,8 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5679,6 +5735,27 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
+let isTouchable: boolean = true;
+try {
+  let promise = windowClass.setWindowTouchable(isTouchable);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be touchable.');
+  }).catch((err) => {
+    console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -6658,6 +6735,8 @@ ArkTs-Sta：setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -6675,6 +6754,41 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { BusinessError } from '@ohos.base';
+
+try {
+  let rows = windowClass.getWindowProperties().windowRect.width;
+  let rows = windowClass.getWindowProperties().windowRect.height;
+  let windowMask: Array<Array<long>> = [];
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      windowMask[i][j] = 1;
+    }
+  }
+  for (let i = 0; i < rows / 2; i++) {
+    for (let j = 0; j < cols / 2; j++) {
+      windowMask[i][j] = 0;
+    }
+  }
+
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+  }).catch((err) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -7977,6 +8091,8 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -8033,6 +8149,76 @@ struct Index {
   }
 
   onBackPress(): boolean | void {
+    console.info('Succeeded in setting dialog window to respond back gesture.');
+    return true;
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+'use static'
+
+import { UIAbility } from '@ohos.app.ability.UIAbility';
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError<void> | null, data: window.Window|undefined) => {
+        const errCode: number = err!.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        windowClass.setUIContent("pages/Index");
+        let enabled = true;
+        let promise = windowClass.setDialogBackGestureEnabled(enabled);
+        promise.then(() => {
+          console.info('Succeeded in setting dialog window to respond back gesture.');
+        }).catch((err) => {
+          console.error(`Failed to set dialog window to respond back gesture. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
+```ts
+// ets/pages/Index.ets
+'use static'
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
+  }
+
+  onBackPress(): boolean {
     console.info('Succeeded in setting dialog window to respond back gesture.');
     return true;
   }
