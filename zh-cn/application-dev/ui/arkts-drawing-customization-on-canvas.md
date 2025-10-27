@@ -20,6 +20,33 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
 
 <!-- @[canvasRenderingContext2D_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasRenderingContext2D.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct CanvasExample1 {
+  //用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿，true表明开启抗锯齿。
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  //用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      //在canvas中调用CanvasRenderingContext2D对象。
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#F5DC62')
+        .onReady(() => {
+          //可以在这里绘制内容。
+          this.context.strokeRect(50, 50, 200, 150);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 
   ![2023022793003](figures/2023022793003.jpg)
 
@@ -31,6 +58,37 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
 
 
 <!-- @[offScreenDrawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/OffScreenDrawing.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct CanvasExample2 {
+  //用来配置CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。true表明开启抗锯齿
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  //用来创建OffscreenCanvas对象，width为离屏画布的宽度，height为离屏画布的高度。通过在canvas中调用OffscreenCanvasRenderingContext2D对象来绘制。
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#F5DC62')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext('2d', this.settings);
+          //可以在这里绘制内容
+          offContext.strokeRect(50, 50, 200, 150);
+          //将离屏绘制渲染的图像在普通画布上显示
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 
   ![2023022793003(1)](figures/2023022793003.jpg)
@@ -44,6 +102,10 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
 
 <!-- @[lottie_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/OffScreenDrawing.ets) -->
 
+``` TypeScript
+import lottie from '@ohos/lottie'
+```
+
 
   具体接口请参考[lottie](https://gitcode.com/openharmony-tpc/lottieArkTS)。
 
@@ -54,6 +116,17 @@ onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，
 
 
 <!-- @[initCanvasComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/InitCanvasComponent.ets) -->
+
+``` TypeScript
+Canvas(this.context)
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#F5DC62')
+  .onReady(() => {
+    this.context.fillStyle = '#0097D4';
+    this.context.fillRect(50, 50, 100, 100);
+  })
+```
 
 
 ![2023022793350(1)](figures/2023022793350.jpg)
@@ -68,6 +141,19 @@ onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，
 
 <!-- @[contextCallApi_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
 
+``` TypeScript
+Canvas(this.context)
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#F5DC62')
+  .onReady(() => {
+    this.context.beginPath();
+    this.context.moveTo(50, 50);
+    this.context.lineTo(280, 160);
+    this.context.stroke();
+  })
+```
+
 
   ![2023022793719(1)](figures/2023022793719.jpg)
 
@@ -75,6 +161,18 @@ onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，
 
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
+
+``` TypeScript
+Canvas(this.context2)
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#F5DC62')
+  .onReady(() => {
+    let region = new Path2D();
+    region.arc(100, 75, 50, 0, 6.28);
+    this.context2.stroke(region);
+  })
+```
 
 
   ![2023022794031(1)](figures/2023022794031.jpg)
@@ -90,6 +188,27 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
 <!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
 
+``` TypeScript
+Canvas(this.context)
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#F5DC62')
+  .onReady(() => {
+    //绘制矩形
+    this.context.beginPath();
+    this.context.rect(100, 50, 100, 100);
+    this.context.stroke();
+    //绘制圆形
+    this.context.beginPath();
+    this.context.arc(150, 250, 50, 0, 6.28);
+    this.context.stroke();
+    //绘制椭圆
+    this.context.beginPath();
+    this.context.ellipse(150, 450, 50, 100, Math.PI * 0.25, Math.PI * 0, Math.PI * 2);
+    this.context.stroke();
+  })
+```
+
 
   ![2023022794521(1)](figures/2023022794521.jpg)
 
@@ -99,6 +218,23 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
 
 <!-- @[canvasComponentText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentText.ets) -->
+
+``` TypeScript
+Canvas(this.context)
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#F5DC62')
+  .onReady(() => {
+    // 文本填充
+    this.context.font = '50px bolder sans-serif';
+    this.context.fillText('Hello World!', 50, 100);
+    // 文本描边
+    this.context.strokeStyle = '#ff0000';
+    this.context.lineWidth = 2;
+    this.context.font = '50px bolder sans-serif';
+    this.context.strokeText('Hello World!', 50, 150);
+  })
+```
  
 
   ![2023022795105(1)](figures/2023022795105.jpg)
@@ -110,6 +246,44 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
 <!-- @[canvasComponentTextBorder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentTextBorder.ets) -->
 
+``` TypeScript
+// xxx.ets
+@Entry
+@Component
+struct CanvasComponentTextBorder {
+  drawText: string = 'Hello World'
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#F5DC62')
+        .onReady(() => {
+          // 文本的水平对齐方式为'top'
+          this.context.textBaseline = 'top';
+          // 文本字号为30px，字体系列为monospace
+          this.context.font = '30px monospace';
+          let textWidth = this.context.measureText(this.drawText).width;
+          let textHeight = this.context.measureText(this.drawText).height;
+          this.context.fillText(this.drawText, 20, 100);
+          this.context.strokeRect(20, 100, textWidth, textHeight);
+          // 文本字体粗细为粗体，字号为60px，字体系列为sans-serif
+          this.context.font = 'bold 60px sans-serif';
+          textWidth = this.context.measureText(this.drawText).width;
+          textHeight = this.context.measureText(this.drawText).height;
+          this.context.fillText(this.drawText, 20, 150);
+          this.context.strokeRect(20, 150, textWidth, textHeight);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 
   ![measureTextAndRect](figures/measureTextAndRect.png)
 
@@ -119,6 +293,36 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
 
 <!-- @[canvasComponentCustomFontsDrawText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentCustomFontsDrawText.ets) -->
+
+``` TypeScript
+import { text } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct CustomFont {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#F5DC62')
+        .onReady(() => {
+          //加载自定义字体
+          let fontCollection = text.FontCollection.getGlobalInstance();
+          fontCollection.loadFontSync('customFont', $rawfile('customFont.ttf'));
+          this.context.font = '30vp customFont';
+          this.context.fillText('Hello World!', 20, 50);
+          this.context.strokeText('Hello World!', 20, 100);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 
   ![customFont](figures/customFont.jpeg)
