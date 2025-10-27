@@ -41,17 +41,86 @@
 
 <!-- @[application_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryexampleability/EntryExampleAbility.ets) -->
 
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let applicationContext = this.context.getApplicationContext();
+  }
+}
+```
+
 ### 获取AbilityStageContext（模块级别的上下文）
 
 [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)和基类Context相比，额外提供[HapModuleInfo](../reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md)、[Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)等信息。
 
 <!-- @[abilityStageContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/abilitystagecontextability/MyAbilityStage.ets) -->
 
+``` TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    let abilityStageContext = this.context;
+    //...
+  }
+}
+```
+
 ### 获取本应用中其他Module的Context（模块级别的上下文）
 
 调用[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
 
 <!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
+
+``` TypeScript
+import { common, application } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Page_Context]';
+const DOMAIN = 0xF811;
+
+let storageEventCall = new LocalStorage();
+
+@Entry(storageEventCall)
+@Component
+struct Page_Context {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            let moduleName2: string = 'entry';
+            application.createModuleContext(this.context, moduleName2)
+              .then((data: common.Context) => {
+                hilog.info(DOMAIN, TAG, `CreateModuleContext success, data: ${JSON.stringify(data)}`);
+                if (data !== null) {
+                  this.getUIContext().getPromptAction().showToast({
+                    message: $r('app.string.success_message')
+                  });
+                }
+              })
+              .catch((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `CreateModuleContext failed, err code:${err.code}, err msg: ${err.message}`);
+              });
+          })
+        }
+        // ···
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
 
 ### 获取UIAbilityContext（UIAbility组件的上下文）
 
@@ -62,14 +131,69 @@
 
 <!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
 
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 获取UIAbility实例的上下文
+    let context = this.context;
+  }
+}
+```
+
 - 在页面中获取UIAbility实例的上下文信息。
 
 <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
+
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
+
+@Entry
+@Component
+struct Page_EventHub {
+  // 定义context变量
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  startAbilityTest(): void {
+    let want: Want = {
+      // Want参数信息
+    };
+    this.context.startAbility(want);
+  }
+
+  // 页面展示
+  build() {
+    // ···
+  }
+}
+```
 
   也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
 
 <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
+
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Page_UIAbilityComponentsBasicUsage {
+  startAbilityTest(): void {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let want: Want = {
+      // Want参数信息
+    };
+    context.startAbility(want);
+  }
+
+  // 页面展示
+  build() {
+    // ···
+  }
+}
+```
 
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 

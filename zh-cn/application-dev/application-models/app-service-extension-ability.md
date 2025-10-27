@@ -447,9 +447,132 @@ struct Page_AppServiceExtensionAbility {
 
 <!-- @[app_ext_service_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ClientServerExt.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[Page_AppServiceExtensionAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+const REQUEST_CODE = 1;
+let connectionId: number;
+let want: Want = {
+  deviceId: '',
+  bundleName: 'com.samples.appserviceextensionability',
+  abilityName: 'MyAppServiceExtAbility'
+};
+let options: common.ConnectOptions = {
+  onConnect(elementName, remote): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
+    if (remote === null) {
+      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+      return;
+    }
+    let option = new rpc.MessageOption();
+    let data = new rpc.MessageSequence();
+    let reply = new rpc.MessageSequence();
+
+    // 写入请求数据
+    data.writeInt(1);
+    data.writeInt(2);
+
+    remote.sendMessageRequest(REQUEST_CODE, data, reply, option).then((ret: rpc.RequestResult) => {
+      if (ret.errCode === 0) {
+        hilog.info(DOMAIN_NUMBER, TAG, `sendRequest got result`);
+        let sum = ret.reply.readInt();
+        hilog.info(DOMAIN_NUMBER, TAG, `sendRequest success, sum:${sum}`);
+      } else {
+        hilog.error(DOMAIN_NUMBER, TAG, `sendRequest failed`);
+      }
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `sendRequest failed, ${JSON.stringify(error)}`);
+    });
+  },
+  onDisconnect(elementName): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
+  },
+  onFailed(code): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
+  }
+};
+
+// 调用connectAppServiceExtensionAbility相关代码
+
+@Entry
+@Component
+struct Page_AppServiceExtensionAbility {
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+          // [StartExclude app_ext_service_four_start]
+          .id('clientService')
+          .width('100%')
+          .height('100%')
+          // [EndExclude app_ext_service_four_start]
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            connectionId = context.connectAppServiceExtensionAbility(want, options);
+            hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
+          })
+        }
+      }
+    // ···
+    }
+  }
+}
+```
+
 **服务端**：使用[onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)接口接收客户端发送的消息。
 
 <!-- @[ability_app_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitytwo/MyAppServiceExtAbility.ets) -->
+
+``` TypeScript
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[MyAppServiceExtAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+// 开发者需要在这个类型里对接口进行实现
+class Stub extends rpc.RemoteObject {
+  onRemoteMessageRequest(code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption): boolean | Promise<boolean> {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onRemoteMessageRequest');
+    let sum = data.readInt() + data.readInt();
+    reply.writeInt(sum);
+    return true;
+  }
+}
+
+// 服务端实现
+export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+  onCreate(want: Want): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'MyAppServiceExtAbility onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'MyAppServiceExtAbility onDestroy');
+  }
+
+  onConnect(want: Want): rpc.RemoteObject {
+    hilog.info(DOMAIN_NUMBER, TAG, 'MyAppServiceExtAbility onConnect');
+    return new Stub('test');
+  }
+
+  onDisconnect(): void {
+    hilog.info(DOMAIN_NUMBER, TAG, 'MyAppServiceExtAbility onDisconnect');
+  }
+}
+```
 
 ### 服务端对客户端身份校验
 
@@ -461,6 +584,92 @@ struct Page_AppServiceExtensionAbility {
 通过调用[getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)接口获取客户端的uid，再调用[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14)接口获取uid对应的bundleName，从而识别客户端身份。此处需要注意的是[getBundleNameByUid()](../reference/apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlenamebyuid14)是一个异步接口，因此服务端无法将校验结果返回给客户端，这种校验方式适合客户端向服务端发起执行异步任务请求的场景，示例代码如下：
 
 <!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
+
+``` TypeScript
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { bundleManager } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[MyAppServiceExtAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+class Stub extends rpc.RemoteObject {
+  private validAppIdentifier: string = 'your_valid_app_identifier_here';
+
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption): boolean | Promise<boolean> {
+    this.verifyClientIdentity().then((isValid: boolean) => {
+      if (isValid) {
+        hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
+      } else {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
+      }
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${err.code}, ${err.message}`);
+    });
+    return true;
+  }
+
+  private async verifyClientIdentity(): Promise<boolean> {
+    try {
+      const callerUid: number = rpc.IPCSkeleton.getCallingUid();
+      hilog.info(DOMAIN_NUMBER, TAG, `Caller UID: ${callerUid}`);
+
+      const userId: number = await this.getUserIdByUid(callerUid);
+      hilog.info(DOMAIN_NUMBER, TAG, `User ID: ${userId}`);
+
+      const bundleName: string = await bundleManager.getBundleNameByUid(callerUid);
+      hilog.info(DOMAIN_NUMBER, TAG, `Bundle Name: ${bundleName}`);
+
+      const bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+      const bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfo(bundleName, bundleFlags, userId);
+
+      if (bundleInfo.signatureInfo && bundleInfo.signatureInfo.appIdentifier) {
+        const appIdentifier: string = bundleInfo.signatureInfo.appIdentifier;
+        hilog.info(DOMAIN_NUMBER, TAG, `App Identifier: ${appIdentifier}`);
+        return appIdentifier === this.validAppIdentifier;
+      }
+      return false;
+    } catch (err) {
+      if (err instanceof Error) {
+        hilog.error(DOMAIN_NUMBER, TAG, `Verification failed: ${err.message}`);
+      } else {
+        hilog.error(DOMAIN_NUMBER, TAG, `Verification failed: ${String(err)}`);
+      }
+      return false;
+    }
+  }
+
+  private async getUserIdByUid(uid: number): Promise<number> {
+    try {
+      const accountManager = osAccount.getAccountManager();
+      const userId: number = await accountManager.getOsAccountLocalIdForUid(uid);
+      return userId;
+    } catch (err) {
+      if (err instanceof Error) {
+        hilog.error(DOMAIN_NUMBER, TAG, `Get userId failed: ${err.message}`);
+        throw err;
+      } else {
+        const error = new Error(String(err));
+        hilog.error(DOMAIN_NUMBER, TAG, `Get userId failed: ${error.message}`);
+        throw error;
+      }
+    }
+  }
+}
+
+export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    return new Stub('test');
+  }
+  // 其他生命周期
+}
+```
 <!--DelEnd-->
 
 **通过callerTokenId对客户端进行鉴权**
@@ -468,4 +677,58 @@ struct Page_AppServiceExtensionAbility {
 通过调用[getCallingTokenId()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8)接口获取客户端的tokenID，再调用[verifyAccessTokenSync()](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9)接口判断客户端是否有某个具体权限，由于当前不支持自定义权限，因此只能校验当前[系统所定义的权限](../security/AccessToken/app-permissions.md)。示例代码如下：
 
 <!-- @[ability_app_service_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets) -->
+
+``` TypeScript
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[AppServiceExtImpl]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+// 开发者需要在这个类里进行实现
+
+class Stub extends rpc.RemoteObject {
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption): boolean | Promise<boolean> {
+    // 开发者自行实现业务逻辑
+    hilog.info(DOMAIN_NUMBER, TAG, `onRemoteMessageRequest: ${data}`);
+    let callerUid = rpc.IPCSkeleton.getCallingUid();
+    bundleManager.getBundleNameByUid(callerUid).then((callerBundleName) => {
+      hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
+      // 对客户端包名进行识别
+      if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
+        hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
+        return;
+      }
+      // 识别通过，执行正常业务逻辑
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
+    });
+
+    let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
+    let accessManager = abilityAccessCtrl.createAtManager();
+    // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例
+    let grantStatus = accessManager.verifyAccessTokenSync(callerTokenId, 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED');
+    if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_DENIED) {
+      hilog.error(DOMAIN_NUMBER, TAG, 'PERMISSION_DENIED');
+      return false;
+    }
+    hilog.info(DOMAIN_NUMBER, TAG, 'verify access token success.');
+    return true;
+  }
+}
+
+export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    return new Stub('test');
+  }
+  // 其他生命周期
+}
+```
 
