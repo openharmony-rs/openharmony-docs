@@ -475,7 +475,7 @@
           - [LazyForEach迁移Repeat指南](ui/rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
           - [ContentSlot：混合开发](ui/rendering-control/arkts-rendering-control-contentslot.md)
         - 学习响应式环境变量<!--arkts-env-property-->
-          - [\@Env：环境变量](arkts-env-system-property.md)
+          - [\@Env：环境变量](ui/arkts-env-system-property.md)
         - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
           - [组件导航和页面路由概述](ui/arkts-navigation-introduction.md)
           - [组件导航(Navigation) (推荐)](ui/arkts-navigation-navigation.md)
@@ -3204,7 +3204,7 @@
           - [应用级变量的状态管理（系统接口）](reference/apis-arkui/arkui-ts/ts-state-management-sys.md)
           <!--DelEnd-->
         - 响应式环境变量<!--arkts-env-property-->
-          - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
+          - [\@Env：环境变量](reference/apis-arkui/arkui-ts/ts-env-system-property.md)
         - 公共定义<!--common-definitions-->
           - [基础类型定义](reference/apis-arkui/arkui-ts/ts-types.md)
           - [像素单位](reference/apis-arkui/arkui-ts/ts-pixel-units.md)
