@@ -445,7 +445,6 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 | 名称       | 类型    | 只读 | 可选 | 说明                         |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | showFirstFrame   | boolean | 否 | 是 | 当前视频是否配置首帧送显，当开启首帧送显时，[VideoOptions对象](#videooptions对象说明)中的previewUri字段不生效。<br/>true：开启首帧送显；false：关闭首帧送显。<br/>默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | 否 | 是 | 当前视频的预览图内容变化时的转场动效。配置showFirstFrame为true（即配置开启首帧送显时），或未配置有效的[VideoOptions对象](#videooptions对象说明)的previewUri时，该字段不生效。<br/>默认值：ContentTransitionEffect.IDENTITY<br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。      |
 
 ## VideoController
 
@@ -621,7 +620,7 @@ struct VideoCreateComponent {
         previewUri: this.previewUri, // 设置预览图。
         currentProgressRate: this.curRate, // 设置播放速度。
         controller: this.controller,
-        posterOptions: { showFirstFrame: this.showFirstFrame, contentTransitionEffect: ContentTransitionEffect.OPACITY } // 关闭首帧送显, 设置预览图淡入淡出动效。
+        posterOptions: { showFirstFrame: this.showFirstFrame } // 关闭首帧送显。
       })
         .width('100%')
         .height(600)
