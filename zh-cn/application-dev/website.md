@@ -1697,6 +1697,7 @@
         - [白平衡设置(ArkTS)](media/camera/camera-whitebalance.md)
         - [压力管控(ArkTS)](media/camera/camera-system-pressure.md)
         - [相机控制器(ArkTS)](media/camera/camera-control-center.md)
+        - [微距能力设置(ArkTS)](media/camera/camera-macro.md)
         <!--Del-->
         - [高性能拍照(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-sys.md)
         - [高性能拍照实践(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
@@ -1718,6 +1719,7 @@
         - [元数据(C/C++)](media/camera/native-camera-metadata.md)
         - [手电筒使用(C/C++)](media/camera/native-camera-torch-use.md)
         - [压力管控(C/C++)](media/camera/native-camera-system-pressure.md)
+        - [微距能力设置(C/C++)](media/camera/native-camera-macro.md)
     - DRM Kit（数字版权保护服务）<!--drm-kit-->
       - [DRM Kit 简介](media/drm/drm-overview.md)
       - [数字版权保护(ArkTS)](media/drm/drm-arkts-dev-guide.md)
