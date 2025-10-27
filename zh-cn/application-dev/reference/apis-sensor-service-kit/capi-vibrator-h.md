@@ -51,13 +51,13 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t duration | - 振动时长，单位：毫秒。 |
-| [Vibrator_Attribute](../others/capi-vibrator-vibrator-attribute.md) attribute | - 振动属性，请参考VibrateAttribute。 |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) attribute | - 振动属性，请参考VibrateAttribute。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](../others/capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
 
 ### OH_Vibrator_PlayVibrationCustom()
 
@@ -77,14 +77,14 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Vibrator_FileDescription](../others/capi-vibrator-vibrator-filedescription.md) fileDescription | - 自定义振动效果文件描述符，请参阅 [Vibrator_FileDescription](../others/capi-vibrator-vibrator-filedescription.md)。 |
-| [Vibrator_Attribute](../others/capi-vibrator-vibrator-attribute.md) vibrateAttribute | - 振动属性，请参阅 [Vibrator_Attribute](../others/capi-vibrator-vibrator-attribute.md)。 |
+| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) fileDescription | - 自定义振动效果文件描述符，请参阅 [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md)。 |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) vibrateAttribute | - 振动属性，请参阅 [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](../others/capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
 
 ### OH_Vibrator_Cancel()
 
@@ -104,4 +104,4 @@ int32_t OH_Vibrator_Cancel()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](../others/capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回非零值。请参阅 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
