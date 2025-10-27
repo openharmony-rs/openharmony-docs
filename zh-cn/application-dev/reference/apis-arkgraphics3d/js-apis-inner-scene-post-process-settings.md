@@ -38,7 +38,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | exposure | number | 否 | 是 | 曝光度，取值大于0，默认值为undefined。 |
 
 ## BloomSettings<sup>18+</sup>
-泛光设置接口。
+泛光设置接口。当[RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21)为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -60,7 +60,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | intensity | double | 否 | 是 | 作用强度，取值范围为0到1之间，默认值为0.4。 |
 
 ## ColorFringeSettings<sup>22+</sup>
-色晕设置接口。
+色晕设置接口。当[RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21)为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
