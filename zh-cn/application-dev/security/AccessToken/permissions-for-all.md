@@ -492,6 +492,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone
+
 **起始版本**：20
 
 ## ohos.permission.kernel.NET_RAW
