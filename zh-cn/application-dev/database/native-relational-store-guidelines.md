@@ -324,6 +324,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
    配置谓词以LIKE模式或NOT LIKE模式匹配进行数据查询。示例代码如下：
 
     <!--@[rdb_OH_Rdb_Query_by_like_and_notLike](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_Predicates *likePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (likePredicates == NULL) {
@@ -381,6 +382,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
    配置谓词以GLOB模式或NOTGLOB模式匹配进行数据查询。示例代码如下：
     <!--@[rdb_OH_Rdb_Query_by_glob_and_notGlob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_Predicates *globPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (globPredicates == NULL) {
@@ -436,6 +438,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
    如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用OH_Rdb_SetLocale配置相应规则。
     <!--@[rdb_OH_Rdb_SetLocale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_Rdb_SetLocale(store_, "zh_CN");
     ```
@@ -445,6 +448,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     使用约束详见[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中pluginLibs配置项。
 
     <!--@[rdb_OH_Rdb_SetPlugins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     const char *plugins[] = {
         "/data/storage/el1/bundle/libs/arm64/libtokenizer.so"
@@ -461,6 +465,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
    调用OH_Rdb_CreateTransaction方法创建事务对象，使用该事务对象执行相应事务操作。
 
     <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_RDB_TransOptions *options = OH_RdbTrans_CreateOptions();
     // 配置事务类型
@@ -471,6 +476,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_RdbTrans_DestroyOptions(options);
     ```
     <!--@[rdb_trans_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     char transCreateTableSql[] =
         "CREATE TABLE IF NOT EXISTS transaction_table (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 INTEGER, "
@@ -538,6 +544,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     transValueBucket2->destroy(transValueBucket2);
     ```
     <!--@[rdb_trans_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_VBucket *transValueBucket3 = OH_Rdb_CreateValuesBucket();
     transValueBucket3->putInt64(transValueBucket3, "id", 1); // The value of id is 1
@@ -564,6 +571,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     transUpdatePredicates->destroy(transUpdatePredicates);
     ```
     <!--@[rdb_trans_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("transaction_table");
     if (predicates == NULL) {
@@ -585,6 +593,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     cursor->destroy(cursor);
     ```
     <!--@[rdb_trans_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_Predicates *predicates2 = OH_Rdb_CreatePredicates("transaction_table");
     if (predicates2 == NULL) {
@@ -597,7 +606,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
        predicates2->destroy(predicates2);
        return;
     }
-    valueObject->putText(valueObject, "1");
+    valueObject->putText(valueObject, "1"); // Change the text value of the object to 1
     predicates2->equalTo(predicates2, "data4", valueObject);
     int64_t changes = -1;
     // 通过事务对象执行数据删除
@@ -606,6 +615,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     valueObject->destroy(valueObject);
     ```
     <!--@[rdb_OH_RdbTrans_Commit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     // 提交事务
     OH_RdbTrans_Commit(trans);
@@ -613,6 +623,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_RdbTrans_Destroy(trans);
     ```
     <!--@[rdb_OH_RdbTrans_Rollback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_RDB_TransOptions *options2 = OH_RdbTrans_CreateOptions();
     OH_RdbTransOption_SetType(options2, RDB_TRANS_DEFERRED);
@@ -637,6 +648,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     当不再使用附加数据时，可调用OH_Rdb_Detach分离附加数据库。
 
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     char attachStoreTableCreateSql[] = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
         "NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)";
@@ -732,6 +744,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 7. 向数据库表中插入资产类型数据。
     <!--@[rdb_asset_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     // 列的属性为单个资产类型时，sql语句中应指定为asset，多个资产类型应指定为assets。
     char createAssetTableSql[] = "CREATE TABLE IF NOT EXISTS asset_table (id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -779,6 +792,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 8. 从结果集中读取资产类型数据。
 
     <!--@[rdb_asset_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("asset_table");
     if (predicates == NULL) {
@@ -835,6 +849,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 9. 查询数据的最后修改时间。调用OH_Rdb_FindModifyTime查询指定表中指定列的数据的最后修改时间，该接口返回一个有两列数据的OH_Cursor对象，第一列为传入的主键/RowId，第二列为最后修改时间。示例代码如下所示：
     <!--@[rdb_OH_Rdb_FindModifyTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     constexpr uint32_t  tableCount = 1;
     const char *table[tableCount];
@@ -859,6 +874,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 10. 删除数据库。调用OH_Rdb_DeleteStoreV2方法，删除数据库及数据库相关文件。示例代码如下：
     
     <!--@[rdb_OH_Rdb_CloseStore_and_DeleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+
     ``` C
     // 释放数据库实例
     OH_Rdb_CloseStore(store_);
