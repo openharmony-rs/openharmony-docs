@@ -336,7 +336,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 ### measure<sup>(deprecated)</sup>
 
-measure(childConstraint: ConstraintSizeOptions) : void
+measure(childConstraint: ConstraintSizeOptions)
 
 调用此方法对子组件的尺寸范围进行限制。
 
@@ -356,7 +356,7 @@ measure(childConstraint: ConstraintSizeOptions) : void
 
 ### layout<sup>(deprecated)</sup>
 
-layout(childLayoutInfo: LayoutInfo) : void
+layout(childLayoutInfo: LayoutInfo)
 
 调用此方法对子组件的位置信息进行限制。
 
