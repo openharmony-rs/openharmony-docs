@@ -49,6 +49,25 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | scaleFactor | number | 否 | 是 | 缩放因子，取值范围大于0，默认值为1.0。 |
 | scatter | number | 否 | 是 | 扩散量，取值范围大于0，默认值为1.0。 |
 
+## VignetteSettings<sup>22+</sup>
+边缘暗角设置接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| roundness | double | 否 | 是 | 作用范围，取值范围为0到1之间，默认值为0.707。 |
+| intensity | double | 否 | 是 | 作用强度，取值范围为0到1之间，默认值为0.4。 |
+
+## ColorFringeSettings<sup>22+</sup>
+色晕设置接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| intensity | double | 否 | 是 | 作用强度，取值范围为0到1之间，默认值为0.2。 |
+
 ## PostProcessSettings
 后处理设置。
 
@@ -58,3 +77,5 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | ---- | ---- | ---- | ---- | ---- |
 | toneMapping | [ToneMappingSettings](#tonemappingsettings) | 否 | 是 | 色调映射，默认值为undefined。 |
 | bloom<sup>18+</sup> | [BloomSettings](#bloomsettings18) | 否 | 是 | 泛光，默认值为undefined。 |
+| vignette<sup>22+</sup> | [VignetteSettings](#vignettesettings22) | 否 | 是 | 边缘暗角，默认值为undefined。 |
+| colorFringe<sup>22+</sup> | [ColorFringeSettings](#colorfringesettings22) | 否 | 是 | 色晕，默认值为undefined。 |
