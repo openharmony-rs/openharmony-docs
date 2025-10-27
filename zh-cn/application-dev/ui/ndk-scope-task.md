@@ -23,4 +23,42 @@ API version 20开始，ArkUI开发框架新增了[OH_ArkUI_RunTaskInScope](../re
 
 <!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+//page1
+ArkUI_NodeHandle button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+ArkUI_AttributeItem LABEL_Item = {.string = "pageOneButton"};
+//设置id，用于在第二个页面内通过接口查找
+ArkUI_AttributeItem id = {.string = "pageOneButton"};
+nodeAPI->setAttribute(button, NODE_ID, &id);
+nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
+nodeAPI->addChild(textContainer, button);
+```
+
 <!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+//page2
+//pageOneButton由前置页面创建，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById在第二个页面获取。
+ArkUI_NodeHandle pageOneButton = nullptr;
+auto errorCode = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("pageOneButton", &pageOneButton);
+if (errorCode != ARKUI_ERROR_CODE_NO_ERROR) {
+    OH_LOG_ERROR(LOG_APP, "test Failed to get pageOneButton handle, error code: %{public}d", errorCode);
+    return nullptr;
+}
+auto uiContext = OH_ArkUI_GetContextByNode(pageOneButton);
+if (uiContext == nullptr) {
+    OH_LOG_ERROR(LOG_APP, "test Failed to get UI context for pageOneButton");
+    return nullptr;
+}
+OH_ArkUI_RunTaskInScope(uiContext, pageOneButton, [](void *userData) {
+    auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+    auto pageOneButton = (ArkUI_NodeHandle)userData;
+    ArkUI_NumberValue value[] = {VALUE_3};
+    ArkUI_AttributeItem LABEL_Item = {.string = "success"};
+    value[0].f32 = VALUE_2;
+    ArkUI_AttributeItem button_Item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(pageOneButton, NODE_BUTTON_LABEL, &LABEL_Item);
+    nodeAPI->setAttribute(pageOneButton, NODE_WIDTH, &button_Item);
+});
+```
