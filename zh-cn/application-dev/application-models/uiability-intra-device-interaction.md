@@ -625,10 +625,74 @@ export default class EntryAbility extends UIAbility {
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
     <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Index';
+      pathStack: NavPathStack = new NavPathStack();
+    
+      onPageShow(): void {
+        let somePage = AppStorage.get<string>('nameForNavi')
+        if (somePage) {
+          this.pathStack.pushPath({ name: somePage }, false);
+          AppStorage.delete('nameForNavi');
+        }
+      }
+    
+      build() {
+        Navigation(this.pathStack) {
+          Text(this.message)
+            .id('Index')
+            .fontSize($r('app.float.page_text_font_size'))
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+        }
+        .mode(NavigationMode.Stack)
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
 
     3. 实现Navigation子页面。
 
     <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
+    
+    ``` TypeScript
+    @Builder
+    export function PageOneBuilder() {
+      PageOne();
+    }
+    
+    @Component
+    export struct PageOne {
+      @State message: string = 'PageOne';
+      pathStack: NavPathStack = new NavPathStack();
+    
+      build() {
+        NavDestination() {
+          Text(this.message)
+            .id('PageOne')
+            .fontSize($r('app.float.page_text_font_size'))
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+        }
+        .onReady((context: NavDestinationContext) => {
+          this.pathStack = context.pathStack;
+        })
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
 
     4. 在系统配置文件`route_map.json`中配置子页信息（参考[系统路由表](../ui/arkts-navigation-navigation.md#系统路由表)）。
 
@@ -691,6 +755,81 @@ export default class EntryAbility extends UIAbility {
 示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
 <!-- @[FuncAbility_Window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+
+``` TypeScript
+import { AbilityConstant, bundleManager, common, StartOptions, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct Page_UIAbilityComponentsInteractive {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      List({ initialIndex: 0, space: 8 }) {
+
+        // ···
+
+        // [StartExclude FuncAbility_Hot]
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            let want: Want = {
+              deviceId: '', // deviceId为空表示本设备
+              bundleName: 'com.samples.uiabilityinteraction',
+              moduleName: 'entry', // moduleName非必选
+              abilityName: 'HotStartAbility',
+              parameters: {
+                // 自定义信息
+                info: '来自EntryAbility Index页面'
+              }
+            };
+            let options: StartOptions = {
+              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING,
+            };
+            // context为调用方UIAbility的UIAbilityContext
+            context.startAbility(want, options).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting ability.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${err.code}, message is ${err.message}`);
+            });
+          })
+        }
+        // [EndExclude FuncAbility_Hot]
+        // [EndExclude FuncAbility_Cold]
+        // [EndExclude FuncAbilityA_Result]
+        // [EndExclude FuncAbilityA]
+      }
+      // [StartExclude FuncAbilityA]
+      // [StartExclude FuncAbilityA_Result]
+      // [StartExclude FuncAbility_Cold]
+      // [StartExclude FuncAbility_Hot]
+    // ···
+      // [EndExclude FuncAbility_Hot]
+      // [EndExclude FuncAbility_Cold]
+      // [EndExclude FuncAbilityA_Result]
+      // [EndExclude FuncAbilityA]
+    }
+    // [StartExclude FuncAbilityA]
+    // [StartExclude FuncAbilityA_Result]
+    // [StartExclude FuncAbility_Cold]
+    // [StartExclude FuncAbility_Hot]
+    // ···
+    // [EndExclude FuncAbility_Hot]
+    // [EndExclude FuncAbility_Cold]
+    // [EndExclude FuncAbilityA_Result]
+    // [EndExclude FuncAbilityA]
+  }
+}
+```
 
 效果示意如下图所示。
 
@@ -783,12 +922,134 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 <!-- @[MyParcelable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
 
+``` TypeScript
+import { rpc } from '@kit.IPCKit';
+
+const MSG_SEND_METHOD: string = 'CallSendMsg';
+const DOMAIN_NUMBER: number = 0xFF00;
+const TAG: string = '[CalleeAbility]';
+
+class MyParcelable {
+  public num: number = 0;
+  public str: string = '';
+
+  constructor(num: number, string: string) {
+    this.num = num;
+    this.str = string;
+  }
+
+  mySequenceable(num: number, string: string): void {
+    this.num = num;
+    this.str = string;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence): boolean {
+    messageSequence.writeInt(this.num);
+    messageSequence.writeString(this.str);
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+    this.num = messageSequence.readInt();
+    this.str = messageSequence.readString();
+    return true;
+  }
+}
+```
+
 4. 实现[Callee.on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on)监听及[Callee.off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off)解除监听。
 
    被调用端[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)的监听函数注册时机，取决于应用开发者。注册监听之前的数据不会被处理，取消监听之后的数据不会被处理。如下示例在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)注册'MSG_SEND_METHOD'监听，在[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)取消监听，收到序列化数据后作相应处理并返回，应用开发者根据实际需要做相应处理。具体示例代码如下：
 
 
 <!-- @[CalleeAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/calleeability/CalleeAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want, Caller } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// [Start MyParcelable]
+import { rpc } from '@kit.IPCKit';
+
+const MSG_SEND_METHOD: string = 'CallSendMsg';
+const DOMAIN_NUMBER: number = 0xFF00;
+const TAG: string = '[CalleeAbility]';
+
+class MyParcelable {
+  public num: number = 0;
+  public str: string = '';
+
+  constructor(num: number, string: string) {
+    this.num = num;
+    this.str = string;
+  }
+
+  mySequenceable(num: number, string: string): void {
+    this.num = num;
+    this.str = string;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence): boolean {
+    messageSequence.writeInt(this.num);
+    messageSequence.writeString(this.str);
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+    this.num = messageSequence.readInt();
+    this.str = messageSequence.readString();
+    return true;
+  }
+}
+// [End MyParcelable]
+
+function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
+  hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
+
+  // 获取Caller发送的序列化数据
+  let receivedData: MyParcelable = new MyParcelable(0, '');
+  data.readParcelable(receivedData);
+  hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', `receiveData[${receivedData.num}, ${receivedData.str}]`);
+  let num: number = receivedData.num;
+
+  // 作相应处理
+  // 返回序列化数据result给Caller
+  return new MyParcelable(num + 1, `send ${receivedData.str} succeed`) as rpc.Parcelable;
+}
+
+export default class CalleeAbility extends UIAbility {
+  private caller: Caller | undefined;
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
+    } catch (error) {
+      hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
+    }
+  }
+
+  releaseCall(): void {
+    try {
+      if (this.caller) {
+        this.caller.release();
+        this.caller = undefined;
+      }
+      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'caller release succeed');
+    } catch (error) {
+      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', `caller release failed with ${error}`);
+    }
+  }
+
+  onDestroy(): void {
+    try {
+      this.callee.off(MSG_SEND_METHOD);
+      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Callee OnDestroy');
+      this.releaseCall();
+    } catch (error) {
+      hilog.error(DOMAIN_NUMBER, TAG, '%{public}s', `Failed to register. Error is ${error}`);
+    }
+  }
+}
+```
 
 
 ### 开发步骤（访问Callee被调用端）
@@ -804,6 +1065,84 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
    [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)属性实现了[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)方法，用于获取指定通用组件的Caller通信接口。如下示例通过this.context获取UIAbility实例的context属性，使用startAbilityByCall拉起[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)被调用端并获取Caller通信接口，注册Caller的[onRelease](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onrelease)监听。应用开发者根据实际需要做相应处理。
 
 <!-- @[startAbilityByCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartUIAbilityByCaller/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { common, Want, Caller } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct Page_UIAbilityComponentsInteractive {
+  caller: Caller | undefined = undefined;
+
+  // 注册caller的release监听
+  private regOnRelease(caller: Caller): void {
+    hilog.info(DOMAIN_NUMBER, TAG, `caller is ${caller}`);
+    try {
+      caller.on('release', (msg: string) => {
+        hilog.info(DOMAIN_NUMBER, TAG, `caller onRelease is called ${msg}`);
+      })
+      hilog.info(DOMAIN_NUMBER, TAG, 'succeeded in registering on release.');
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to caller register on release. Code is ${code}, message is ${message}`);
+    }
+  };
+
+  build() {
+    Column() {
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            let want: Want = {
+              bundleName: 'com.samples.uiabilityinteraction',
+              abilityName: 'CalleeAbility',
+              parameters: {
+                // 自定义信息
+                info: 'CallSendMsg'
+              }
+            };
+            context.startAbilityByCall(want).then((caller: Caller) => {
+              hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in starting ability.Code is ${caller}`);
+              if (caller === undefined) {
+                hilog.info(DOMAIN_NUMBER, TAG, 'get caller failed');
+                return;
+              }
+              else {
+                hilog.info(DOMAIN_NUMBER, TAG, 'get caller success');
+                this.regOnRelease(caller);
+                this.getUIContext().getPromptAction().showToast({
+                  message: 'CallerSuccess'
+                });
+                try {
+                  caller.release();
+                } catch (releaseErr) {
+                  let code = (releaseErr as BusinessError).code;
+                  let msg = (releaseErr as BusinessError).message;
+                  hilog.error(DOMAIN_NUMBER, TAG, `Caller.release catch error, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(msg)}.`);
+                }
+              }
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${err.code}, message is ${err.message}`);
+            });
+          })
+        }
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
     
 <!--DelEnd-->
 
