@@ -720,6 +720,7 @@
     - [Video组件错误码](errorcode-video.md)
     - [状态管理错误码](errorcode-stateManagement.md)
     - [渲染节点错误码](errorcode-node-render.md)
+    - [反色能力错误码](errorcode-force-dark.md)
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
