@@ -1,13 +1,13 @@
-# 开发参考<!--api-reference-->
+# API参考<!--api-reference-->
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @RayShih-->
 <!--Designer: @RayShih-->
 <!--Tester: @RayShih-->
 <!--Adviser: @RayShih-->
-
-- [开发说明](development-intro-api.md)
-- [系统能力SystemCapability使用指南](syscap.md)
+- API参考概述<!--ref-overview-api-->
+    - [开发说明](development-intro-api.md)
+    - [系统能力SystemCapability使用指南](syscap.md)
 <!--Del-->
 - 系统能力SystemCapability列表<!--syscap-list-->
     - [Phone](phone-syscap-list.md)
