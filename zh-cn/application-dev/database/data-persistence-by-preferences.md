@@ -242,6 +242,16 @@ dataPreferences.deleteSync('startup');
 
 <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
+``` TypeScript
+dataPreferences.flush((err: BusinessError) => {
+  if (err) {
+    Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
+    return;
+  }
+  Logger.info('Succeeded in flushing.');
+})
+```
+
 8. 订阅数据变更。
 
    应用订阅数据变更需要指定observer作为回调方法。
