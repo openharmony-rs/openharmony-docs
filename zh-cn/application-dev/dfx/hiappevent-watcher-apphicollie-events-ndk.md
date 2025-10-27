@@ -357,7 +357,58 @@
 1. 移除事件观察者。
 
    <!-- @[APP_Hicollie_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // [Start AsanEvent_RemoveWatcher]
+   // [Start PssLeakEvent_RemoveWatcher]
+   // [Start AppKillEvent_RemoveWatcher]
+   static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
+   {
+       // 使观察者停止监听事件
+       // [StartExclude AppKillEvent_RemoveWatcher]
+       // [StartExclude PssLeakEvent_RemoveWatcher]
+       // [StartExclude AsanEvent_RemoveWatcher]
+       // ···
+       // [StartExclude AppEvent_C++_RemoveWatcher]
+       OH_HiAppEvent_RemoveWatcher(appHicollieWatcherR);
+       OH_HiAppEvent_RemoveWatcher(appHicollieWatcherT);
+       // [EndExclude AsanEvent_RemoveWatcher]
+       // ···
+       return {};
+   }
+   // [End AppKillEvent_RemoveWatcher]
+   // [End PssLeakEvent_RemoveWatcher]
+   // [End AsanEvent_RemoveWatcher]
+   ```
 
 2. 销毁事件观察者。
 
    <!-- @[APP_Hicollie_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // [Start AsanEvent_DestroyWatcher]
+   // [Start PssLeakEvent_DestroyWatcher]
+   // [Start AppKillEvent_DestroyWatcher]
+   static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
+   {
+       // 销毁创建的观察者，并置eventWatcher为nullptr。
+       // [StartExclude AppKillEvent_DestroyWatcher]
+       // [StartExclude PssLeakEvent_DestroyWatcher]
+       // [StartExclude AsanEvent_DestroyWatcher]
+       // ···
+       // [StartExclude AppEvent_C++_DestroyWatcher]
+       OH_HiAppEvent_DestroyWatcher(appHicollieWatcherR);
+       OH_HiAppEvent_DestroyWatcher(appHicollieWatcherT);
+       appHicollieWatcherR = nullptr;
+       appHicollieWatcherT = nullptr;
+       // [EndExclude AsanEvent_DestroyWatcher]
+       // ···
+       // [EndExclude AppEvent_C++_DestroyWatcher]
+       // [EndExclude AsanEvent_DestroyWatcher]
+       // [EndExclude PssLeakEvent_DestroyWatcher]
+       return {};
+   }
+   // [End AppKillEvent_DestroyWatcher]
+   // [End PssLeakEvent_DestroyWatcher]
+   // [End AsanEvent_DestroyWatcher]
+   ```
