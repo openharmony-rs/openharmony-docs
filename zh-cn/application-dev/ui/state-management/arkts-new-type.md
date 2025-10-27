@@ -31,9 +31,7 @@
 
 1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-```ts
-<!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
-```
+<!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
 
 2. 不支持collections.Set、collections.Map等类型。
 
@@ -47,6 +45,5 @@
 
 ### 持久化数据
 
-```ts
-<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
-```
+<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
+
