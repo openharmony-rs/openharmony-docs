@@ -214,6 +214,19 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 6. 获取当前可支持DLP方案的文件扩展名类型列表，用于应用判断能否生成DLP文件，可用在实现类似文件管理器设置DLP权限的场景。
 
   <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  //6 获取当前可支持DLP方案的文件拓展名类型列表
+  getDLPSupportedFileTypes() {
+    dlpPermission.getDLPSupportedFileTypes((err, result) => {
+      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
+      this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
+    });
+  }
+  ```
 
 7. 判断当前打开文件是否是DLP文件。 <br>
 // 使用该接口 需要dlp文件进行判断
