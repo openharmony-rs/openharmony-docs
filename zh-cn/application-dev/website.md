@@ -70,6 +70,7 @@
         - 状态管理V1V2混用互操作
         - [UI数据互操作](quick-start/arkts-v1.2-interop-v1.1-ui-data.md)
         - [ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面](ui/arkts-sta-interop-dyn-navigation.md)
+        - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](ui/arkts-dyn-partial-features-using-sta.md)
     - [ArkTS高性能编程实践](quick-start/arkts-high-performance-programming.md)
     - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
       - [从Java到ArkTS的迁移指导](quick-start/getting-started-with-arkts-for-java-programmers.md)

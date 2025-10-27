@@ -25,6 +25,7 @@
       - [ArkTS-Sta与ArkTS-Dyn@ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
     - 状态管理V1V2混用互操作
     - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
+    - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](arkts-dyn-partial-features-using-sta.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](../ui/state-management/arkts-basic-syntax-overview.md)
     - [声明式UI描述](../ui/state-management/arkts-declarative-ui-description.md)
