@@ -247,30 +247,85 @@
    <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
    <!-- @[register_app_hicollie_watcherR](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   { "RegisterAppHicollieWatcherR", nullptr, RegisterAppHicollieWatcherR, nullptr, nullptr, nullptr,
+       napi_default, nullptr },
+   ```
 
    <!-- @[register_app_hicollie_watcherT](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   { "RegisterAppHicollieWatcherT", nullptr, RegisterAppHicollieWatcherT, nullptr, nullptr, nullptr,
+       napi_default, nullptr },
+   ```
 
    编辑“index.d.ts”文件，定义ArkTS接口：
    <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const TestHiCollieTimerNdk: () => void;
+   ```
 
    <!-- @[Register_AppHicollie_WatcherR.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const RegisterAppHicollieWatcherR: () => void;
+   ```
 
    <!-- @[Register_AppHicollie_WatcherT.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const RegisterAppHicollieWatcherT: () => void;
+   ```
 
 8. 编辑“EntryAbility.ets”文件，在onCreate()函数中新增接口调用。
 
    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import testNapi from 'libentry.so';
+   ```
 
    <!-- @[Register_AppHicollie_WatcherR](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // 在onCreate()函数中新增接口调用，启动时注册系统事件观察者R
+   testNapi.RegisterAppHicollieWatcherR();
+   ```
 
    <!-- @[Register_AppHicollie_WatcherT](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // 在onCreate()函数中新增接口调用，启动时注册系统事件观察者T
+   testNapi.RegisterAppHicollieWatcherT();
+   ```
 
 9. 编辑“Index.ets”文件，新增按钮触发任务执行超时事件。
 
    <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import testNapi from 'libentry.so';
+   ```
 
    在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
    <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   //添加点击事件，触发TestHiCollieTimerNdk方法。
+   Button('TestHiCollieTimerNdk')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       testNapi.TestHiCollieTimerNdk();
+     })
+   ```
 
 10. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“testHiCollieTimerNdk”，触发任务执行超时事件。
 
