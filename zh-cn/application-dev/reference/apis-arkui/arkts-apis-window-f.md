@@ -967,6 +967,7 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -1053,6 +1054,7 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -1070,16 +1072,14 @@ export default class EntryAbility extends UIAbility {
         useCache: false
       }
       let windowInfoPromise = window.getAllMainWindowInfo();
-      windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
-        console.info('Get all main window info success.');
-        for (let i = 0; i < list.length; i++) {
-          windowIds[i] = list[i].windowId;
-          console.info('Get all main window info id: ' + windowIds[i]);
+      windowInfoPromise.then((mainWindowInfoList: Array<window.MainWindowInfo>) => {
+        for (let i = 0; i < mainWindowInfoList.length; i++) {
+          windowIds[i] = mainWindowInfoList[i].windowId;
         }
         let promise = window.getMainWindowSnapshot(windowIds, configs);
-        promise.then((list: Array<image.PixelMap>) => {
+        promise.then((list: Array<image.PixelMap | undefined>) => {
           for (let i = 0; i < list.length; i++) {
-            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i].getBytesNumberPerRow()}`);
+            console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
           }
         }).catch((err: BusinessError) => {
           console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
