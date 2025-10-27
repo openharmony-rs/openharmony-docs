@@ -43,9 +43,35 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 <!-- @[my_examole_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
 
+``` TypeScript
+import { AbilityStage, Want } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
+  }
+
+  onAcceptWant(want: Want): string {
+    // 仅specified模式下触发
+    return 'MyAbilityStage';
+  }
+}
+```
+
 4. 在[module.json5配置文件](../quick-start/module-configuration-file.md)中，通过配置 `srcEntry` 参数来指定模块对应的代码路径，以作为HAP加载的入口。
 
 <!-- @[abilityModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "srcEntry": "./ets/myabilitystage/MyAbilityStage.ets",
+    // ···
+  }
+}
+```
 
 ### 监听系统环境变量的变化
 
@@ -58,3 +84,39 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 - 通过关闭应用进程，可以触发AbilityStage的onDestroy()生命周期回调。
 
 <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
+
+``` TypeScript
+import { EnvironmentCallback, AbilityStage } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    console.info('AbilityStage onCreate');
+    let envCallback: EnvironmentCallback = {
+      onConfigurationUpdated(config) {
+        console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+        let language = config.language; //应用程序的当前语言
+        let colorMode = config.colorMode; //深浅色模式
+        let direction = config.direction; //屏幕方向
+        let fontSizeScale = config.fontSizeScale; //字体大小缩放比例
+        let fontWeightScale = config.fontWeightScale; //字体粗细缩放比例
+      },
+      onMemoryLevel(level) {
+        console.info(`onMemoryLevel level: ${level}`);
+      }
+    };
+    try {
+      let applicationContext = this.context.getApplicationContext();
+      let callbackId = applicationContext.on('environment', envCallback);
+      console.info(`callbackId: ${callbackId}`);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+
+  onDestroy(): void {
+    // 通过onDestroy()方法，可以监听到Ability的销毁事件。
+    console.info('AbilityStage onDestroy');
+  }
+}
+```
