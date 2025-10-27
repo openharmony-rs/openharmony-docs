@@ -46,6 +46,164 @@ UIAbility的生命周期示意图如下所示。
 
 <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onWindowStageCreate]
+// [Start onForeground]
+// [Start onBackground]
+// [Start onWindowStageWillDestroy]
+// [Start onWindowStageDestroy]
+// [Start onDestroy]
+// [Start onNewWant]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// [StartExclude onForeground]
+// [StartExclude onBackground]
+// [StartExclude onDestroy]
+// [StartExclude onNewWant]
+import { window } from '@kit.ArkUI';
+// [StartExclude onWindowStageDestroy]
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// [StartExclude onWindowStageCreate]
+import { BusinessError } from '@kit.BasicServicesKit';
+// [EndExclude onWindowStageCreate]
+
+const DOMAIN = 0x0000;
+// [EndExclude onBackground]
+// [EndExclude onForeground]
+// [EndExclude onCrete]
+// [EndExclude onWindowStageDestroy]
+// [EndExclude onDestroy]
+// [EndExclude onNewWant]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+  // [StartExclude onBackground]
+  // [StartExclude onWindowStageDestroy]
+  // [StartExclude onDestroy]
+  // [StartExclude onNewWant]
+  public windowStage: window.WindowStage | undefined = undefined;
+  // [EndExclude onCrete]
+
+  // [StartExclude onWindowStageCreate]
+  // [StartExclude onWindowStageWillDestroy]
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 执行UIAbility整个生命周期中仅发生一次的业务逻辑
+  }
+  // [EndExclude onDestroy]
+
+  // [StartExclude onCrete]
+  onDestroy(): void {
+    // 系统资源的释放、数据的保存等
+  }
+  // [EndExclude onWindowStageCreate]
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onWindowStageDestroy]
+
+  // [StartExclude onDestroy]
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 加载UI资源
+    // [StartExclude onWindowStageDestroy]
+    this.windowStage = windowStage;
+    // [StartExclude onWindowStageWillDestroy]
+    // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
+    try {
+      windowStage.on('windowStageEvent', (data) => {
+        let stageEventType: window.WindowStageEventType = data;
+        switch (stageEventType) {
+          case window.WindowStageEventType.SHOWN: // 切到前台
+            hilog.info(DOMAIN, 'testTag', `windowStage foreground.`);
+            break;
+          case window.WindowStageEventType.ACTIVE: // 获焦状态
+            hilog.info(DOMAIN, 'testTag', `windowStage active.`);
+            break;
+          case window.WindowStageEventType.INACTIVE: // 失焦状态
+            hilog.info(DOMAIN, 'testTag', `windowStage inactive.`);
+            break;
+          case window.WindowStageEventType.HIDDEN: // 切到后台
+            hilog.info(DOMAIN, 'testTag', `windowStage background.`);
+            break;
+          case window.WindowStageEventType.RESUMED: // 前台可交互状态
+            hilog.info(DOMAIN, 'testTag', `windowStage resumed.`);
+            break;
+          case window.WindowStageEventType.PAUSED: // 前台不可交互状态
+            hilog.info(DOMAIN, 'testTag', `windowStage paused.`);
+            break;
+          default:
+            break;
+        }
+      });
+    } catch (exception) {
+      hilog.error(DOMAIN, 'testTag',
+        `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
+    }
+    hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
+    // 设置UI加载
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+    });
+    // [EndExclude onWindowStageWillDestroy]
+    // [EndExclude onWindowStageDestroy]
+  }
+
+  // [StartExclude onWindowStageCreate]
+  // [StartExclude onWindowStageDestroy]
+  onWindowStageWillDestroy(windowStage: window.WindowStage): void {
+    // 释放通过windowStage对象获取的资源
+    // 在onWindowStageWillDestroy()中注销WindowStage事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
+    try {
+      if (this.windowStage) {
+        this.windowStage.off('windowStageEvent');
+      }
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(DOMAIN, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
+    }
+  }
+  // [EndExclude onWindowStageDestroy]
+
+  // [StartExclude onWindowStageWillDestroy]
+  onWindowStageDestroy(): void {
+    // 释放UI资源
+  }
+  // [EndExclude onForeground]
+
+  onForeground(): void {
+    // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
+  }
+  // [EndExclude onBackground]
+
+  // [StartExclude onForeground]
+  onBackground(): void {
+    // 释放UI不可见时无用的资源
+  }
+  // [EndExclude onNewWant]
+
+  // [StartExclude onBackground]
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 更新资源、数据
+  }
+  // [EndExclude onCrete]
+  // [EndExclude onWindowStageCreate]
+  // [EndExclude onForeground]
+  // [EndExclude onBackground]
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onDestroy]
+}
+// [End onNewWant]
+// [End onDestroy]
+// [End onWindowStageDestroy]
+// [End onWindowStageWillDestroy]
+// [End onBackground]
+// [End onForeground]
+// [End onWindowStageCreate]
+```
+
 
 ### onWindowStageCreate()
 
@@ -59,6 +217,110 @@ UIAbility的生命周期示意图如下所示。
 > - 对于不同类型的产品，当应用主窗口从前台进入后台时，UIAbility生命周期的变化也会存在差异。详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
 
   <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  // [Start onForeground]
+  // [Start onBackground]
+  // [Start onWindowStageWillDestroy]
+  // [Start onWindowStageDestroy]
+  // [Start onDestroy]
+  // [Start onNewWant]
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+  // [StartExclude onBackground]
+  // [StartExclude onDestroy]
+  // [StartExclude onNewWant]
+  import { window } from '@kit.ArkUI';
+  // [StartExclude onWindowStageDestroy]
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  // ···
+  
+  const DOMAIN = 0x0000;
+  // [EndExclude onBackground]
+  // [EndExclude onForeground]
+  // [EndExclude onCrete]
+  // [EndExclude onWindowStageDestroy]
+  // [EndExclude onDestroy]
+  // [EndExclude onNewWant]
+  
+  export default class EntryAbility extends UIAbility {
+    // [StartExclude onCrete]
+    // [StartExclude onForeground]
+    // [StartExclude onBackground]
+    // [StartExclude onWindowStageDestroy]
+    // [StartExclude onDestroy]
+    // [StartExclude onNewWant]
+    public windowStage: window.WindowStage | undefined = undefined;
+    // [EndExclude onCrete]
+  
+  // ···
+    // [EndExclude onWindowStageWillDestroy]
+    // [EndExclude onWindowStageDestroy]
+  
+    // [StartExclude onDestroy]
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      // 加载UI资源
+      // [StartExclude onWindowStageDestroy]
+      this.windowStage = windowStage;
+      // [StartExclude onWindowStageWillDestroy]
+      // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
+      try {
+        windowStage.on('windowStageEvent', (data) => {
+          let stageEventType: window.WindowStageEventType = data;
+          switch (stageEventType) {
+            case window.WindowStageEventType.SHOWN: // 切到前台
+              hilog.info(DOMAIN, 'testTag', `windowStage foreground.`);
+              break;
+            case window.WindowStageEventType.ACTIVE: // 获焦状态
+              hilog.info(DOMAIN, 'testTag', `windowStage active.`);
+              break;
+            case window.WindowStageEventType.INACTIVE: // 失焦状态
+              hilog.info(DOMAIN, 'testTag', `windowStage inactive.`);
+              break;
+            case window.WindowStageEventType.HIDDEN: // 切到后台
+              hilog.info(DOMAIN, 'testTag', `windowStage background.`);
+              break;
+            case window.WindowStageEventType.RESUMED: // 前台可交互状态
+              hilog.info(DOMAIN, 'testTag', `windowStage resumed.`);
+              break;
+            case window.WindowStageEventType.PAUSED: // 前台不可交互状态
+              hilog.info(DOMAIN, 'testTag', `windowStage paused.`);
+              break;
+            default:
+              break;
+          }
+        });
+      } catch (exception) {
+        hilog.error(DOMAIN, 'testTag',
+          `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
+      }
+      hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
+      // 设置UI加载
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+          return;
+        }
+        hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+      });
+      // [EndExclude onWindowStageWillDestroy]
+      // [EndExclude onWindowStageDestroy]
+    }
+  
+  // ···
+    // [EndExclude onForeground]
+    // [EndExclude onBackground]
+    // [EndExclude onWindowStageWillDestroy]
+    // [EndExclude onDestroy]
+  }
+  // [End onNewWant]
+  // [End onDestroy]
+  // [End onWindowStageDestroy]
+  // [End onWindowStageWillDestroy]
+  // [End onBackground]
+  // [End onForeground]
+  ```
 
 ### onForeground()
 
@@ -67,6 +329,41 @@ UIAbility的生命周期示意图如下所示。
 例如，应用已获得地理位置权限。在UI显示之前，开发者可以在`onForeground()`回调中开启定位功能，从而获取到当前的位置信息。
 
 <!-- @[onForeground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+// [Start onBackground]
+// [Start onWindowStageWillDestroy]
+// [Start onWindowStageDestroy]
+// [Start onDestroy]
+// [Start onNewWant]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// ···
+// [EndExclude onCrete]
+// [EndExclude onWindowStageDestroy]
+// [EndExclude onDestroy]
+// [EndExclude onNewWant]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+// ···
+
+  onForeground(): void {
+    // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
+  }
+  // [EndExclude onBackground]
+
+// ···
+  // [EndExclude onBackground]
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onDestroy]
+}
+// [End onNewWant]
+// [End onDestroy]
+// [End onWindowStageDestroy]
+// [End onWindowStageWillDestroy]
+// [End onBackground]
+```
 
 
 ### onBackground()
@@ -77,16 +374,186 @@ UIAbility的生命周期示意图如下所示。
 
 <!-- @[onBackground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onWindowStageWillDestroy]
+// [Start onWindowStageDestroy]
+// [Start onDestroy]
+// [Start onNewWant]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// [StartExclude onForeground]
+// ···
+// [EndExclude onForeground]
+// [EndExclude onCrete]
+// [EndExclude onWindowStageDestroy]
+// [EndExclude onDestroy]
+// [EndExclude onNewWant]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+// ···
+
+  // [StartExclude onForeground]
+  onBackground(): void {
+    // 释放UI不可见时无用的资源
+  }
+  // [EndExclude onNewWant]
+
+// ···
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onDestroy]
+}
+// [End onNewWant]
+// [End onDestroy]
+// [End onWindowStageDestroy]
+// [End onWindowStageWillDestroy]
+```
+
 
 ### onWindowStageWillDestroy()
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onWindowStageWillDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagewilldestroy12)回调。该回调在WindowStage销毁前执行，此时WindowStage可以使用。开发者可以在该回调中释放通过WindowStage获取的资源、注销WindowStage事件订阅等。
 
 <!-- @[onWindowStageWillDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onWindowStageDestroy]
+// [Start onDestroy]
+// [Start onNewWant]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// [StartExclude onForeground]
+// [StartExclude onBackground]
+// [StartExclude onDestroy]
+// [StartExclude onNewWant]
+import { window } from '@kit.ArkUI';
+// [StartExclude onWindowStageDestroy]
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// [StartExclude onWindowStageCreate]
+import { BusinessError } from '@kit.BasicServicesKit';
+// [EndExclude onWindowStageCreate]
+
+const DOMAIN = 0x0000;
+// [EndExclude onBackground]
+// [EndExclude onForeground]
+// [EndExclude onCrete]
+// [EndExclude onWindowStageDestroy]
+// [EndExclude onDestroy]
+// [EndExclude onNewWant]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+  // [StartExclude onBackground]
+  // [StartExclude onWindowStageDestroy]
+  // [StartExclude onDestroy]
+  // [StartExclude onNewWant]
+  public windowStage: window.WindowStage | undefined = undefined;
+  // [EndExclude onCrete]
+
+  // [StartExclude onWindowStageCreate]
+// ···
+  // [EndExclude onWindowStageDestroy]
+
+  // [StartExclude onDestroy]
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 加载UI资源
+    // [StartExclude onWindowStageDestroy]
+    this.windowStage = windowStage;
+    // ···
+    // [EndExclude onWindowStageDestroy]
+  }
+
+  // [StartExclude onWindowStageCreate]
+  // [StartExclude onWindowStageDestroy]
+  onWindowStageWillDestroy(windowStage: window.WindowStage): void {
+    // 释放通过windowStage对象获取的资源
+    // 在onWindowStageWillDestroy()中注销WindowStage事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
+    try {
+      if (this.windowStage) {
+        this.windowStage.off('windowStageEvent');
+      }
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(DOMAIN, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
+    }
+  }
+  // [EndExclude onWindowStageDestroy]
+
+// ···
+  // [EndExclude onDestroy]
+}
+// [End onNewWant]
+// [End onDestroy]
+// [End onWindowStageDestroy]
+```
+
 ### onWindowStageDestroy()
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onWindowStageDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)回调，开发者可以在该回调中释放UI资源。该回调在WindowStage销毁后执行，此时WindowStage不可以使用。
 
 <!-- @[onWindowStageDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+// [Start onDestroy]
+// [Start onNewWant]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// [StartExclude onForeground]
+// [StartExclude onBackground]
+// [StartExclude onDestroy]
+// [StartExclude onNewWant]
+import { window } from '@kit.ArkUI';
+// ···
+// [EndExclude onDestroy]
+// [EndExclude onNewWant]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+  // [StartExclude onBackground]
+// ···
+
+  // [StartExclude onDestroy]
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 加载UI资源
+    // ···
+  }
+
+  // [StartExclude onWindowStageCreate]
+// ···
+
+  // [StartExclude onWindowStageWillDestroy]
+  onWindowStageDestroy(): void {
+    // 释放UI资源
+  }
+  // [EndExclude onForeground]
+
+  onForeground(): void {
+    // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
+  }
+  // [EndExclude onBackground]
+
+  // [StartExclude onForeground]
+  onBackground(): void {
+    // 释放UI不可见时无用的资源
+  }
+  // [EndExclude onNewWant]
+
+  // [StartExclude onBackground]
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 更新资源、数据
+  }
+  // [EndExclude onCrete]
+  // [EndExclude onWindowStageCreate]
+  // [EndExclude onForeground]
+  // [EndExclude onBackground]
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onDestroy]
+}
+// [End onNewWant]
+// [End onDestroy]
+```
 
 ### onDestroy()
 
@@ -97,11 +564,69 @@ UIAbility的生命周期示意图如下所示。
 
 <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+// [Start onNewWant]
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// [StartExclude onForeground]
+// [StartExclude onBackground]
+// ···
+// [EndExclude onNewWant]
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+  // [StartExclude onBackground]
+  // [StartExclude onWindowStageDestroy]
+// ···
+
+  // [StartExclude onCrete]
+  onDestroy(): void {
+    // 系统资源的释放、数据的保存等
+  }
+  // [EndExclude onWindowStageCreate]
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onWindowStageDestroy]
+
+// ···
+}
+// [End onNewWant]
+```
+
 ### onNewWant()
 
 当应用的UIAbility实例已创建，再次调用方法启动该UIAbility实例时，系统触发该UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调。开发者可以在该回调中更新要加载的资源和数据等，用于后续的UI展示。
 
 <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// [StartExclude onCrete]
+// [StartExclude onForeground]
+// [StartExclude onBackground]
+// [StartExclude onDestroy]
+// ···
+
+export default class EntryAbility extends UIAbility {
+  // [StartExclude onCrete]
+  // [StartExclude onForeground]
+  // [StartExclude onBackground]
+  // [StartExclude onWindowStageDestroy]
+  // [StartExclude onDestroy]
+// ···
+
+  // [StartExclude onBackground]
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 更新资源、数据
+  }
+  // [EndExclude onCrete]
+  // [EndExclude onWindowStageCreate]
+  // [EndExclude onForeground]
+  // [EndExclude onBackground]
+  // [EndExclude onWindowStageWillDestroy]
+  // [EndExclude onDestroy]
+}
+```
 
 ## 相关实例
 
