@@ -1780,7 +1780,7 @@ Sets the supported window modes of the main window. This API uses a promise to r
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -1844,7 +1844,7 @@ Sets the supported window modes for the main window and optionally disables the 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 

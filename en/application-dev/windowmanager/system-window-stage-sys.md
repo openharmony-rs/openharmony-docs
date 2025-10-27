@@ -1,4 +1,10 @@
-# System Window Development (Stage Model Only)
+# System Window Development (Stage Model Only) (for System Applications Only)
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -6,7 +12,7 @@ In the stage model, system applications are allowed to create and manage system 
 
 When a window is displayed, hidden, or switched, an animation is usually used to smooth the interaction process.
 
-The animation is the default behavior for application windows. You do not need to set or modify the code.
+In OpenHarmony, the animation is the default behavior for application windows. You do not need to set or modify the code.
 
 However, you can customize an animation to be played during the display or hiding of a system window.
 
@@ -144,7 +150,7 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
 
 ## Customizing an Animation to Be Played During the Display or Hiding of a System Window
 
-You can determine whether to play an animation when a system window is showing or hiding.  
+You can determine whether to play an animation when a system window is showing or hiding.
 
 ### How to Develop
 
@@ -343,7 +349,7 @@ struct Index {
         curve: Curve.EaseInOut, // Animation curve.
         delay: 0, // Animation delay.
         iterations: 1, // Number of playback times.
-        playMode: PlayMode.Normal // Animation playback mode.
+        playMode: PlayMode.Normal, // Animation playback mode.
         onFinish: () => {
           console.info('LOCAL-TEST onFinish in show animation');
           context.completeTransition(true);
@@ -381,7 +387,7 @@ struct Index {
         curve: Curve.EaseInOut, // Animation curve.
         delay: 0, // Animation delay.
         iterations: 1, // Number of playback times.
-        playMode: PlayMode.Normal // Animation playback mode.
+        playMode: PlayMode.Normal, // Animation playback mode.
         onFinish: () => {
           console.info('LOCAL-TEST onFinish in hide animation');
           context.completeTransition(true);

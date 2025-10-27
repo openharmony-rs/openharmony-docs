@@ -5,7 +5,7 @@ The WindowExtensionContext module provides the context environment for the Windo
 The module provides the capabilities of the [WindowExtensionAbility](js-apis-application-windowExtensionAbility-sys.md), including starting the ability.
 
 > **NOTE**
->
+> 
 >  - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 >  - The APIs provided by this module are system APIs.
@@ -81,7 +81,7 @@ class WindowExtAbility extends WindowExtensionAbility {
           return;
         }
         // Carry out normal service processing.
-        console.log('startAbility succeed');
+        console.info('startAbility succeed');
       });
     } catch (paramError) {
       // Process input parameter errors.
@@ -145,7 +145,7 @@ class WindowExtAbility extends WindowExtensionAbility {
       this.context.startAbility(want, options)
         .then(() => {
           // Carry out normal service processing.
-          console.log('startAbility succeed');
+          console.info('startAbility succeed');
         })
         .catch((error: BusinessError) => {
           // Process service logic errors.

@@ -736,6 +736,7 @@
         - [Application Window Development (Stage Model)](windowmanager/application-window-stage.md)
         - [Application Window Development (FA Model)](windowmanager/application-window-fa.md)
         - [Window Metadata Configuration](windowmanager/window-config-m.md)
+        - [Window Rotation](windowmanager/window-rotation.md)
         <!--Del-->
         - [System Window Development (Stage Model Only) (for System Applications Only)](windowmanager/system-window-stage-sys.md)
         - [WindowExtensionAbility (for System Applications Only)](windowmanager/windowextensionability-sys.md)
@@ -1527,7 +1528,8 @@
         - Command Line Tools<!--perform-command-line-utilities-->
           - [hdc](dfx/hdc.md)
           - [hilog](dfx/hilog.md)
-          - [hidumper](dfx/hidumper.md)
+          - hidumper<!--hidumper-tool-->
+            - [hidumper](dfx/hidumper.md)
           - [hitrace](dfx/hitrace.md)
           - [hiperf](dfx/hiperf.md)
           - [hiprofiler](dfx/hiprofiler.md)
@@ -1536,6 +1538,7 @@
           - [hisysevent (for System Applications Only)](dfx/hisysevent-sys.md)
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
+        - [Test Kit Overview](application-test/test-kit-overview.md)
         - arkXtest User Guide<!--arkxtest-->
           - [JsUnit User Guide](application-test/unittest-guidelines.md)
           - [UITest User Guide](application-test/uitest-guidelines.md)
@@ -2404,7 +2407,9 @@
         - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility.md)
         - [AccessibilityExtensionContext](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md)
         <!--Del-->
+        - [@ohos.accessibility (Accessibility) (System API)](reference/apis-accessibility-kit/js-apis-accessibility-sys.md)
         - [@ohos.accessibility.config (System Accessibility Configuration) (System API)](reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md)
+        - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility) (System API)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility-sys.md)
         - [AccessibilityExtensionContext (System API)](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext-sys.md)
         <!--DelEnd-->
       - Error Codes<!--accessibility-arkts-errcode-->
@@ -2657,7 +2662,7 @@
           - [postCardAction](reference/apis-arkui/js-apis-postCardAction.md)
           <!--Del-->
           - [@ohos.arkui.drawableDescriptor (DrawableDescriptor) (System API)](reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)
-          - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md)
+          - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) 
           - [@ohos.arkui.uiExtension (uiExtension) (System API)](reference/apis-arkui/js-apis-arkui-uiExtension-sys.md)
           - [@ohos.deviceStatus.dragInteraction (Drag Interaction) (System API)](reference/apis-arkui/js-apis-devicestatus-draginteraction-sys.md)
           - [@ohos.pluginComponent (PluginComponentManager) (System API)](reference/apis-arkui/js-apis-plugincomponent-sys.md)
@@ -3468,7 +3473,6 @@
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
       - Error Codes<!--arkui-arkts-errcode-->
         - UI<!--arkui-ui-arkts-errcode-->
-          - [Animator Error Codes](reference/apis-arkui/errorcode-animator.md)
           - [promptAction Error Codes](reference/apis-arkui/errorcode-promptAction.md)
           - [Router Error Codes](reference/apis-arkui/errorcode-router.md)
           - [Drag Event Error Codes](reference/apis-arkui/errorcode-drag-event.md)
@@ -4353,7 +4357,9 @@
           - [System Parameter Error Codes](reference/apis-basic-services-kit/errorcode-system-parameterV9.md)
           - [Power Manager Error Codes](reference/apis-basic-services-kit/errorcode-power.md)
           - [Account Management Error Codes](reference/apis-basic-services-kit/errorcode-account.md)
+          <!--Del-->
           - [Update Error Codes](reference/apis-basic-services-kit/errorcode-update.md)
+          <!--DelEnd-->
           - [Print Error Codes](reference/apis-basic-services-kit/errorcode-print.md)
           <!--Del-->
           - [Screen Lock Management Error Codes](reference/apis-basic-services-kit/errorcode-screenlock.md)
@@ -5646,7 +5652,10 @@
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)
     - Vulkan<!--vulkan-guide-->
-      - [Vulkan Development](reference/native-lib/vulkan-guidelines.md)
+      - Vulkan Development<!--vulkan-guides-->
+        - [Vulkan Development Overview](reference/native-lib/vulkan-overview.md)
+        - [Vulkan Surface Development](reference/native-lib/vulkan-guidelines.md)
+        - [Vulkan External Memory Development](reference/native-lib/vulkan-oh-external-memory-guidelines.md)
       - [Vulkan Capabilities](reference/native-lib/vulkan.md)
       - Vulkan Extensions<!--vulkan-extensions-->
         - [Vulkan Module](reference/native-lib/capi-vulkan.md)
