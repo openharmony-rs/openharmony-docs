@@ -345,7 +345,7 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 }
 ```
 
-## CameraParameters
+## CameraParameters<sup>21+</sup>
 
 相机创建参数配置，用于定义相机创建的额外选项。
 
