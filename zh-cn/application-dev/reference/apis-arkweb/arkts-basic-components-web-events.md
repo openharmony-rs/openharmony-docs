@@ -4799,13 +4799,13 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 onRenderExited(callback: (event?: { detail: object }) => boolean)
 
-应用渲染进程因错误或崩溃而退出时触发该回调。
+应用渲染进程因错误或崩溃退出时触发回调。
 
 多个Web组件可能共享单个渲染进程，每个受影响的Web组件都会触发该回调。
 
-应用处理该回调时，可以调用绑定的webviewController接口来恢复页面。例如[refresh](./arkts-apis-webview-WebviewController.md#refresh)、[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)等。
+应用处理该回调时，可以调用绑定的WebViewController接口来恢复页面。例如[refresh](./arkts-apis-webview-WebviewController.md#refresh)、[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)等。
 
-组件生命周期回调详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
+详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
 
 从API version 9开始不再维护，建议使用[onRenderExited<sup>9+</sup>](#onRenderExited9)代替。
 
