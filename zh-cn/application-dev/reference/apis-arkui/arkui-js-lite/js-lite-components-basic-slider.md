@@ -1,4 +1,13 @@
 # slider
+<<<<<<< HEAD
+=======
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+>>>>>>> 9f04030... update adviser
 
 滑动条组件，用来快速调节设置值，如音量、亮度等。
 

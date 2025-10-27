@@ -4,7 +4,7 @@
 <!--Owner: @song-song-song-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 自定义组件的自定义布局通过数据计算的方式布局自定义组件内的子组件。
 

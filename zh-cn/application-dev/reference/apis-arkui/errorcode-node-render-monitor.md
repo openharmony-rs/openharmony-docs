@@ -1,4 +1,13 @@
 # 注册节点渲染状态监听错误码
+<<<<<<< HEAD
+=======
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+>>>>>>> 9f04030... update adviser
 
 > **说明：**
 >

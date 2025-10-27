@@ -1,4 +1,13 @@
 # 自定义内容
+<<<<<<< HEAD
+=======
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309; @liyujie43-->
+<!--Designer: @liyi0309; @weixin_52725220-->
+<!--Tester: @lxl007; @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
+>>>>>>> 9f04030... update adviser
 
 支持通过样式builder自定义特定组件的内容区。
 

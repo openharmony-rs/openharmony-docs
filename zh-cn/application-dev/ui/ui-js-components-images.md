@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 image是图片组件，用来渲染展示图片。具体用法请参考[image](../reference/apis-arkui/arkui-js/js-components-basic-image.md)。
 

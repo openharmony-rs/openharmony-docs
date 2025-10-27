@@ -4,7 +4,7 @@
 <!--Owner: @song-song-song-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 如果需要通过测算的方式布局自定义组件内子组件的位置，建议使用以下接口：
 
