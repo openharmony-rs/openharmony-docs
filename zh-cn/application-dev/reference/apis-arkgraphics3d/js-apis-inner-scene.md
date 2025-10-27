@@ -423,7 +423,7 @@ createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
-| cameraParams | [CameraParameters](#cameraparameters) | 是 | 相机参数。 |
+| cameraParams | [CameraParameters](#cameraparameters21) | 是 | 相机参数。 |
 
 **返回值：**
 | 类型 | 说明 |
