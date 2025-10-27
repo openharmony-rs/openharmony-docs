@@ -94,6 +94,11 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    若接口返回false，则说明当前平台不支持GSKV模式，请使用XML模式进行数据存储。
 
   <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+  
+  ``` TypeScript
+  let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
+  Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
+  ```
 
 3. 获取Preferences实例。
 
