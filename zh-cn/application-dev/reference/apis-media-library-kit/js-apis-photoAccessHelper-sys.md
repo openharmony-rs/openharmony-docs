@@ -4908,6 +4908,13 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 
 将文件转换为指定格式另存并返回PhotoAsset，传入新文件标题，目标格式的枚举，使用promise异步回调。
 
+- 支持图片克隆和格式转换，生成后的图片在同相册内。
+- 支持普通图片、动态照片图片部分、连拍照片格式（连拍照片仅针对选择的图片进行转码另存，不包含整个连拍照片），仅支持本地图片。
+- 支持处理80分图片，转换后丢失分段拍照属性，Quality设置为100分；不再支持后续的上云特性。
+- 不支持临时文件和正在变化的文件。当处理的图片为临时文件状态（is_temp）、time_pending不为0状态，返回23800151错误信息。
+- 本身源图片支持的格式为heic、heif。
+- 不支持回收站和隐藏照片。
+
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
