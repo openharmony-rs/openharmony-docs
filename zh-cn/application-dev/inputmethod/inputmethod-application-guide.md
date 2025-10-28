@@ -64,7 +64,7 @@
    }
    ```
 
-<!--RP2-->
+
 2. KeyboardController.ts文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
@@ -183,7 +183,7 @@
    
    export default keyboardController;
    ```
-   <!--RP2End-->
+
 3. KeyboardKeyData.ts文件。
 
    定义软键盘的按键显示内容。
@@ -339,7 +339,7 @@
    }
    ```
 
-<!--Del-->
+
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
    ```json
@@ -359,12 +359,7 @@
      }
    }
    ```
-<!--DelEnd-->
 
-
-<!--RP3-->
-
-<!--RP3End-->
 
 ## 约束与限制
 
