@@ -1537,9 +1537,7 @@
         - 命令行工具<!--perform-command-line-utilities-->
           - [hdc](dfx/hdc.md)
           - [hilog](dfx/hilog.md)
-          - hidumper<!--hidumper-tool-->
-            - [hidumper](dfx/hidumper.md)
-            - [PrivacyManagerService](dfx/hidumper-PrivacyManagerService.md)
+          - [hidumper](dfx/hidumper.md)
           - [hitrace](dfx/hitrace.md)
           - [hiperf](dfx/hiperf.md)
           - [hiprofiler](dfx/hiprofiler.md)
