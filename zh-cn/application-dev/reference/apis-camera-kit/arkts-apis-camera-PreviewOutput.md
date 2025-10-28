@@ -220,7 +220,7 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表，若接口异常，返回undefined。 |
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表，若接口调用失败，返回undefined。 |
 
 **示例：**
 

@@ -350,7 +350,7 @@ isPhysicalCameraOrientationVariable(): boolean
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| boolean    | 查询不同折叠状态下相机物理镜头角度是否可变。true表示可变，false表示不可变。若接口异常，返回undefined。 |
+| boolean    | 查询不同折叠状态下相机物理镜头角度是否可变。true表示可变，false表示不可变。若接口调用失败，返回undefined。 |
 
 **示例：**
 
