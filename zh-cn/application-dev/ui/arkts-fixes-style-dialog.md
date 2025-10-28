@@ -274,42 +274,7 @@ struct DatePickerDialogExample {
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
-```ts
-// xxx.ets
-
-@Entry
-@Component
-struct TimePickerDialogExample {
-  @State selectTime: Date = new Date('2023-12-25T08:30:00');
-
-  build() {
-    Column() {
-      Button('showTimePickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTimePickerDialog({
-            selected: this.selectTime,
-            textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
-            selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
-            acceptButtonStyle: {
-              fontColor: '#2787d9',
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            },
-            cancelButtonStyle: {
-              fontColor: Color.Red,
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-
-```
+<!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
 
 ![image](figures/UIContextShowTimepickerDialog.gif)
 
@@ -321,45 +286,7 @@ struct TimePickerDialogExample {
 
 该示例通过设置range的参数类型为TextCascadePickerRangeContent[]，实现3列文本选择器弹窗。当按下确定按钮时，弹窗会通过onAccept返回目前所选中文本和索引值。如需弹窗再次弹出时显示选中的是上一次确定的文本，就要在回调中重新给select进行赋值。
 
-```ts
-@Entry
-@Component
-struct TextPickerDialogExample {
-  private fruits: TextCascadePickerRangeContent[] = [
-    {
-      text: '辽宁省',
-      children: [{ text: '沈阳市', children: [{ text: '沈河区' }, { text: '和平区' }, { text: '浑南区' }] },
-        { text: '大连市', children: [{ text: '中山区' }, { text: '金州区' }, { text: '长海县' }] }]
-    },
-    {
-      text: '吉林省',
-      children: [{ text: '长春市', children: [{ text: '南关区' }, { text: '宽城区' }, { text: '朝阳区' }] },
-        { text: '四平市', children: [{ text: '铁西区' }, { text: '铁东区' }, { text: '梨树县' }] }]
-    },
-    {
-      text: '黑龙江省',
-      children: [{ text: '哈尔滨市', children: [{ text: '道里区' }, { text: '道外区' }, { text: '南岗区' }] },
-        { text: '牡丹江市', children: [{ text: '东安区' }, { text: '西安区' }, { text: '爱民区' }] }]
-    }
-  ];
-  private select : number  = 0;
-  build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              this.select = value.index as number
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
+<!-- @[text_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets) -->
 
 ![image](figures/UIShowTextPickerDialog.gif)
 
@@ -373,62 +300,8 @@ struct TextPickerDialogExample {
 
 该示例通过配置width、height、transition等接口，定义了弹窗的样式以及弹出动效。
 
-```ts
-@Entry
-@Component
-struct showActionSheetExample {
-  build() {
-    Column() {
-      Button('showActionSheet')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showActionSheet({
-            title: 'ActionSheet title',
-            message: 'message',
-            autoCancel: false,
-            width: 300,
-            height: 300,
-            cornerRadius: 20,
-            borderWidth: 1,
-            borderStyle: BorderStyle.Solid,
-            borderColor: Color.Blue,
-            backgroundColor: Color.White,
-            transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
-              .animation({ duration: 3000, curve: Curve.Sharp })
-              .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
-              TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
-                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }).animation({ duration: 100, curve: Curve.Smooth }))),
-            confirm: {
-              value: 'Confirm button',
-              action: () => {
-                console.info('Get Alert Dialog handled');
-              }
-            },
-            alignment: DialogAlignment.Center,
-            sheets: [
-              {
-                title: 'apples',
-                action: () => {
-                }
-              },
-              {
-                title: 'bananas',
-                action: () => {
-                }
-              },
-              {
-                title: 'pears',
-                action: () => {
-                  console.info('pears');
-                }
-              }
-            ]
-          });
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
+<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
+
 
 ![image](figures/UIContextShowactionSheet.gif)
 
@@ -445,51 +318,7 @@ struct showActionSheetExample {
 
 该示例通过配置width、height、transition等接口，定义了多个按钮弹窗的样式以及弹出动效。
 
-```ts
-@Entry
-@Component
-struct showAlertDialogExample {
-  build() {
-    Column() {
-      Button('showAlertDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showAlertDialog(
-            {
-              title: 'title',
-              message: 'text',
-              autoCancel: true,
-              alignment: DialogAlignment.Center,
-              offset: { dx: 0, dy: -20 },
-              gridCount: 3,
-              transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
-                .animation({ duration: 3000, curve: Curve.Sharp })
-                .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
-                TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
-                  .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
-                    .animation({ duration: 100, curve: Curve.Smooth }))),
-              buttons: [{
-                value: 'cancel',
-                action: () => {
-                  console.info('Callback when the first button is clicked');
-                }
-              },
-                {
-                  enabled: true,
-                  defaultFocus: true,
-                  style: DialogButtonStyle.HIGHLIGHT,
-                  value: 'ok',
-                  action: () => {
-                    console.info('Callback when the second button is clicked');
-                  }
-                }],
-            }
-          );
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
+<!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
 ![image](figures/UIContextShowAlertDialog.gif)
 
