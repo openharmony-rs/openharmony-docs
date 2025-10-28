@@ -99,7 +99,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### 开发步骤
 
-### BREAK_ALL 
+以下以断行策略为 BREAK_ALL 的场景为例，其余策略同理。
 
 <!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
@@ -152,46 +152,6 @@ OH_Drawing_DestroyTextStyle(txtStyle);
 OH_Drawing_DestroyTypographyStyle(typoStyle);
 OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
-```
-
-### BREAK_WORD
-
-<!-- @[complex_text_c_break_word_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-
-```C++
-// 设置断词策略为 WORD_BREAK_TYPE_BREAK_WORD
-OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::WORD_BREAK_TYPE_BREAK_WORD);
-```
-
-### BREAK_HYPHEN
-
-<!-- @[complex_text_c_break_hyphen_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-
-```C++
-// 设置断词策略为 WORD_BREAK_TYPE_BREAK_HYPHEN
-OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::WORD_BREAK_TYPE_BREAK_HYPHEN);
-```
-
-### BREAK_HYPHEN（locale：en-gb）
-
-<!-- @[complex_text_c_break_hyphen_gb_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-
-```C++
-// 设置断词策略为 WORD_BREAK_TYPE_BREAK_HYPHEN
-OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::WORD_BREAK_TYPE_BREAK_HYPHEN);
-// 设置 locale 为 en-gb
-OH_Drawing_SetTextStyleLocale(txtStyle, "en-gb");
-```
-
-### BREAK_HYPHEN（locale：en-us）
-
-<!-- @[complex_text_c_break_hyphen_us_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-
-```C++
-// 设置断词策略为 WORD_BREAK_TYPE_BREAK_HYPHEN
-OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::WORD_BREAK_TYPE_BREAK_HYPHEN);
-// 设置 locale 为 en-us
-OH_Drawing_SetTextStyleLocale(txtStyle, "en-us");
 ```
 
 ### 效果展示
