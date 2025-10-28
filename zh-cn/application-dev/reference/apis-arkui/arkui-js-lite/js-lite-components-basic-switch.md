@@ -1,13 +1,11 @@
 # switch
-<<<<<<< HEAD
-=======
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
->>>>>>> 9f04030... update adviser
 
 开关选择器，通过开关，开启或关闭某个功能。
 
