@@ -40,11 +40,14 @@ showAppNetPolicySettings(context: Context): Promise\<void>;
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**设备行为差异**：该接口在Phone、2in1、Tablet设备中可正常调用，在其他设备调用不生效。
+
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| context    | Context | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context    | Context | 是   | Stage模型的应用上下文（仅支持UIAbilityContext和ExtensionContext），其具体Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **返回值：**
 
