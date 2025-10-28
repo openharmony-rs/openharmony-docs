@@ -586,6 +586,27 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 
 <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
 
+``` TypeScript
+this.pageStack.setInterception({
+  willShow: (from: NavDestinationContext | 'navBar', to: NavDestinationContext | 'navBar',
+    operation: NavigationOperation, animated: boolean) => {
+    if (!this.isUseInterception) {
+      return;
+    }
+    if (typeof to === 'string') {
+      hilog.info(DOMAIN, 'testTag', 'target page is navigation home');
+      return;
+    }
+    // 将跳转到PageTwo的路由重定向到PageOne
+    let target: NavDestinationContext = to as NavDestinationContext;
+    if (target.pathInfo.name === 'pageTwo') {
+      target.pathStack.pop();
+      target.pathStack.pushPathByName('pageOne', null);
+    }
+  }
+})
+```
+
 ### 单例跳转
 
 通过设置[LaunchMode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)为LaunchMode.MOVE_TO_TOP_SINGLETON或LaunchMode.POP_TO_SINGLETON，可以实现Navigation路由栈的单实例跳转。单实例跳转的规则如下：
@@ -612,6 +633,64 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
   NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。弹窗类型的NavDestination显示和消失时不会影响下层标准类型的NavDestination的显示和生命周期，两者可以同时显示。
 
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
+  
+  ``` TypeScript
+  // Dialog NavDestination
+  @Entry
+  @Component
+  struct PageDisplayType {
+    @Provide('NavPathStack') pageStack: NavPathStack = new NavPathStack();
+  
+    @Builder
+    PagesMap(name: string) {
+      if (name == 'DialogPage') {
+        DialogPage();
+      }
+    };
+  
+    build() {
+      Navigation(this.pageStack) {
+        Button('Push DialogPage')
+          .margin(20)
+          .width('80%')
+          .onClick(() => {
+            this.pageStack.pushPathByName('DialogPage', '');
+          })
+      }
+      .mode(NavigationMode.Stack)
+      .title('Main')
+      .navDestination(this.PagesMap)
+    }
+  }
+  
+  @Component
+  export struct DialogPage {
+    @Consume('NavPathStack') pageStack: NavPathStack;
+  
+    build() {
+      NavDestination() {
+        Stack({ alignContent: Alignment.Center }) {
+          Column() {
+            Text('Dialog NavDestination')
+              .fontSize(20)
+              .margin({ bottom: 100 })
+            Button('Close').onClick(() => {
+              this.pageStack.pop();
+            }).width('30%')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor(Color.White)
+          .borderRadius(10)
+          .height('30%')
+          .width('80%')
+        }.height('100%').width('100%')
+      }
+      .backgroundColor('rgba(0,0,0,0.5)')
+      .hideTitleBar(true)
+      .mode(NavDestinationMode.DIALOG)
+    }
+  }
+  ```
 
   ![dialog_navdestination](figures/dialog_navdestination.png)
 
@@ -647,6 +726,28 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
   <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template1/Index.ets) -->
+  
+  ``` TypeScript
+  import { uiObserver } from '@kit.ArkUI';
+  
+  // NavDestination内的自定义组件
+  @Component
+  struct MyComponent {
+    navDesInfo: uiObserver.NavDestinationInfo | undefined;
+  
+    aboutToAppear() {
+      this.navDesInfo = this.queryNavDestinationInfo();
+    }
+  
+    build() {
+      // ···
+        Column() {
+          Text('所属页面Name: ' + this.navDesInfo?.name)
+        }.width('100%').height('100%')
+      // ···
+    }
+  }
+  ```
 
 - 页面状态监听
   
@@ -657,6 +758,22 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   也可以注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听：
   
 <!-- @[callbackFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template3/Index.ets) -->
+
+``` TypeScript
+// 在UIAbility中使用
+import { uiObserver } from '@kit.ArkUI';
+
+// ···
+// callbackFunc是开发者定义的监听回调函数
+function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+// ···
+};
+// ···
+  uiContext: UIContext | null = null;
+// ···
+    uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc)
+    // ···
+```
 
 ## 页面转场
 
@@ -670,13 +787,32 @@ Navigation默认提供了页面切换的转场动画，通过导航控制器操�
 
 <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
 
+``` TypeScript
+private pageStack: NavPathStack = new NavPathStack();
+aboutToAppear(): void {
+  this.pageStack.disableAnimation(true);
+}
+```
+
 - 单次关闭
   
   NavPathStack中提供的Push、Pop、Replace等接口中可以设置animated参数，默认为true表示有转场动画，需要单次关闭转场动画可以置为false，不影响下次转场动画。
 
 <!-- @[PageOnceClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+
+``` TypeScript
+@Provide('pageStack') pageStack: NavPathStack = new NavPathStack();
+```
 <!-- @[PageOnceClose1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+
+``` TypeScript
+this.pageStack.pushPath({ name: 'MyComponent' }, false);
+```
 <!-- @[PageOnceClose2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+
+``` TypeScript
+this.pageStack.pop(false);
+```
 
 ### 自定义转场
 
@@ -711,7 +847,39 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 <!-- @[GeometryTransitionFromPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
 
+``` TypeScript
+// 起始页配置共享元素id
+// [Start GeometryTransitionFromPage1]
+NavDestination() {
+  Column() {
+    // ···
+    // [StartExclude GeometryTransitionFromPage1]
+    // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+    Image($r('app.media.startIcon'))
+      .geometryTransition('sharedId')
+      .width(100)
+      .height(100)
+    // [EndExclude GeometryTransitionFromPage1]
+  }
+}.title('FromPage')
+// [End GeometryTransitionFromPage1]
+```
+
 <!-- @[GeometryTransitionToPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+
+``` TypeScript
+// 目的页配置共享元素id
+NavDestination() {
+  Column() {
+    // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+    Image($r('app.media.startIcon'))
+      .geometryTransition('sharedId')
+      .width(200)
+      .height(200)
+  }
+}
+.title('ToPage')
+```
 
 2. 将页面路由的操作，放到animateTo动画闭包中，配置对应的动画参数以及关闭系统默认的转场。
 
