@@ -19,17 +19,14 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。
 * 验证设备的网络状态，包括是否已连接网络，设备自带的浏览器能否正常访问网页等（在线页面场景）。
 * 确保应用已添加网络权限：ohos.permission.INTERNET（在线页面必需）。
-* 
-<!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
-
-``` JSON5
-"requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-],
-```
-
+  ```
+  // 在module.json5中添加相关权限
+  "requestPermissions":[
+     {
+        "name" : "ohos.permission.INTERNET"
+     }
+  ]
+  ```
 * 开启相关权限：
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
@@ -40,64 +37,56 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
 
 
-<!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .domStorageAccess(true)
-        .fileAccess(true)
-        .imageAccess(true)
-        .onlineImageAccess(true)
-        .javaScriptAccess(true)
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .domStorageAccess(true)
+          .fileAccess(true)
+          .imageAccess(true)
+          .onlineImageAccess(true)
+          .javaScriptAccess(true)
+      }
     }
   }
-}
-```
-
+  ```
 * 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
 
-<!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-const TAG = '[Sample_WebWriteScreenIssue]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'WebWriteScreenIssue_';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State customUserAgent: string = ' DemoApp';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  @State customUserAgent: string = ' DemoApp';
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
         .onControllerAttached(() => {
-          hilog.info(DOMAIN, TAG, BUNDLE, 'onControllerAttached');
+          console.info("onControllerAttached");
           try {
             let userAgent = this.controller.getUserAgent() + this.customUserAgent;
             this.controller.setCustomUserAgent(userAgent);
           } catch (error) {
-            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
+      }
     }
   }
-}
-```
-
+  ```
 ## 使用DevTools工具进行页面内容验证
 在确保网络与权限配置无误后，若仍出现白屏，则应利用DevTools工具调试前端页面以及监听Web相关错误上报接口，来定位具体报错类型。
 
@@ -116,8 +105,67 @@ struct WebComponent {
       开发者应使用http或https协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)方法，对本地资源进行拦截和相应替换。
 
       以下结合示例说明如何使用http或者https等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
-      
-   <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
+    ```ts
+    // main/ets/pages/Index.ets
+    import { webview } from '@kit.ArkWeb';
+
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      // 构造域名和本地文件的映射表
+      schemeMap = new Map([
+        ["https://www.example.com/index.html", "index.html"],
+        ["https://www.example.com/js/script.js", "js/script.js"],
+      ])
+      // 构造本地文件和构造返回的格式mimeType
+      mimeTypeMap = new Map([
+        ["index.html", 'text/html'],
+        ["js/script.js", "text/javascript"]
+      ])
+
+      build() {
+        Row() {
+          Column() {
+            // 针对本地index.html,使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
+            // 本例中构造www.example.com为例。
+            Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
+              .javaScriptAccess(true)
+              .fileAccess(true)
+              .domStorageAccess(true)
+              .geolocationAccess(true)
+              .width("100%")
+              .height("100%")
+              .onInterceptRequest((event) => {
+                if (!event) {
+                  return;
+                }
+                // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
+                if (this.schemeMap.has(event.request.getRequestUrl())) {
+                  let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
+                  let mimeType = this.mimeTypeMap.get(rawfileName);
+                  if (typeof mimeType === 'string') {
+                    let response = new WebResourceResponse();
+                    // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
+                    response.setResponseData($rawfile(rawfileName));
+                    response.setResponseEncoding('utf-8');
+                    response.setResponseMimeType(mimeType);
+                    response.setResponseCode(200);
+                    response.setReasonMessage('OK');
+                    response.setResponseIsReady(true);
+                    return response;
+                  }
+                }
+                return null;
+              })
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
     ```html
     <!-- main/resources/rawfile/index.html -->
@@ -166,8 +214,39 @@ struct WebComponent {
 
     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
-    <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
+    ```ts
+    // main/ets/pages/Index.ets
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: WebviewController = new webview.WebviewController();
+      uiContext: UIContext = this.getUIContext();
+
+      build() {
+        Row() {
+          Web({ src: "", controller: this.controller })
+            .onControllerAttached(() => {
+              try {
+                // 设置允许可以跨域访问的路径列表
+                this.controller.setPathAllowingUniversalAccess([
+                  this.uiContext.getHostContext()!.resourceDir,
+                  this.uiContext.getHostContext()!.filesDir + "/example"
+                ])
+                this.controller.loadUrl("file://" + this.uiContext.getHostContext()!.resourceDir + "/index.html")
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+              }
+            })
+            .javaScriptAccess(true)
+            .fileAccess(true)
+            .domStorageAccess(true)
+        }
+      }
+    }
+    ```
 
     ```html
     <!-- main/resources/resfile/index.html -->

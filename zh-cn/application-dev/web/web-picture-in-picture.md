@@ -100,24 +100,24 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 应用侧ets代码。
 
-<!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct Index {
-  @State videoSrc: Resource = $rawfile('PictureInPicture.html');
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({src: this.videoSrc, controller: this.controller})
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State videoSrc: Resource = $rawfile('PictureInPicture.html');
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Web({src: this.videoSrc, controller: this.controller})
+      }
     }
   }
-}
-```
+  ```
 
 * 前端页面html代码。
 

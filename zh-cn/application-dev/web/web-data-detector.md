@@ -65,7 +65,6 @@ struct Index {
 }
 ```
 
-
 加载的html文件。
 ```html
 <!-- index.html -->
@@ -137,7 +136,6 @@ struct Index {
 }
 ```
 
-```
 在[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
 
 ![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)

@@ -88,7 +88,6 @@ struct Index {
 }
 ```
 
-
 ## Promise方式保存PDF
 通过Promise方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
 
