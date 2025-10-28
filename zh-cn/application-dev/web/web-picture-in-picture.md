@@ -11,6 +11,14 @@ Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Pic
 
 <!-- @[web_picture_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/module.json5) -->
 
+``` JSON5
+"requestPermissions": [
+  {
+    "name": "ohos.permission.INTERNET"
+  }
+]
+```
+
 ## 约束与限制
 1. 当前H264/H265/HLS格式的视频可在创建的画中画窗口中播放。  
 2. 画中画窗口的大小调整依据系统能力，具体参照设计指南中的系统特性与能力部分。
@@ -93,6 +101,23 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 * 应用侧ets代码。
 
 <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  @State videoSrc: Resource = $rawfile('PictureInPicture.html');
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({src: this.videoSrc, controller: this.controller})
+    }
+  }
+}
+```
 
 * 前端页面html代码。
 
