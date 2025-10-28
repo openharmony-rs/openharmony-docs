@@ -63,9 +63,97 @@
 
 <!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local title: string = 'Title One';
+  @Local fontColor: Color = Color.Red;
+
+  build() {
+    Column() {
+      Child({
+        title: this.title,
+        fontColor: this.fontColor,
+        changeFactory: (type: number) => {
+          if (type == 1) {
+            this.title = 'Title One';
+            this.fontColor = Color.Red;
+          } else if (type == 2) {
+            this.title = 'Title Two';
+            this.fontColor = Color.Green;
+          }
+        }
+      })
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param title: string = '';
+  @Param fontColor: Color = Color.Black;
+  @Event changeFactory: (x: number) => void = (x: number) => {};
+
+  build() {
+    Column() {
+      Text(`${this.title}`)
+        .fontColor(this.fontColor)
+      Button('change to Title Two')
+        .onClick(() => {
+          this.changeFactory(2);
+        })
+      Button('change to Title One')
+        .onClick(() => {
+          this.changeFactory(1);
+        })
+    }
+  }
+}
+```
+
 值得注意的是，使用\@Event修改父组件的值是立刻生效的，但从父组件将变化同步回子组件的过程是异步的，即在调用完\@Event的方法后，子组件内的值不会立刻变化。这是因为\@Event将子组件值实际的变化能力交由父组件处理，在父组件实际决定如何处理后，将最终值在渲染之前同步回子组件。
 
 <!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->
+
+``` TypeScript
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_EventDecorator]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'EventDecorator_';
+@ComponentV2
+struct Child2 {
+  @Param index: number = 0;
+  @Event changeIndex: (val: number) => void;
+
+  build() {
+    Column() {
+      Text(`Child index: ${this.index}`)
+        .onClick(() => {
+          this.changeIndex(20);
+          hilog.info(DOMAIN, TAG, BUNDLE, `after changeIndex ${this.index}`);
+        })
+    }
+  }
+}
+@Entry
+@ComponentV2
+struct Index2 {
+  @Local index: number = 0;
+
+  build() {
+    Column() {
+      Child2({
+        index: this.index,
+        changeIndex: (val: number) => {
+          this.index = val;
+          hilog.info(DOMAIN, TAG, BUNDLE, `in changeIndex ${this.index}`);
+        }
+      })
+    }
+  }
+}
+```
 
 在上面的示例中，点击文字触发\@Event函数事件改变子组件的值，打印出的日志为：
 
