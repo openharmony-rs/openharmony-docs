@@ -402,6 +402,7 @@ onChange(callback: (value: boolean) =&gt; void)
 @Entry
 @Component
 struct SideBarContainerExample {
+  // $r("app.media.icon")需要替换为开发者所需要的图像资源文件
   normalIcon: Resource = $r("app.media.icon");
   selectedIcon: Resource = $r("app.media.icon");
   @State arr: number[] = [1, 2, 3];
@@ -434,6 +435,7 @@ struct SideBarContainerExample {
     }
     .controlButton({
       icons: {
+        // $r('app.media.drawer')需要替换为开发者所需要的图像资源文件
         hidden: $r('app.media.drawer'),
         shown: $r('app.media.drawer'),
         switching: $r('app.media.drawer')
