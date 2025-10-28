@@ -3117,5 +3117,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/data-encryption.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"kv_store1",
+						"start_line":29
+					},
+					{
+						"end_line":104,
+						"name":"kv_store3",
+						"start_line":50
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/data-sync-of-kv-store.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"kv_store1",
+						"start_line":29
+					},
+					{
+						"end_line":104,
+						"name":"kv_store3",
+						"start_line":50
+					},
+					{
+						"end_line":311,
+						"name":"kv_store12",
+						"start_line":295
+					},
+					{
+						"end_line":129,
+						"name":"kv_store4",
+						"start_line":106
+					},
+					{
+						"end_line":152,
+						"name":"kv_store5",
+						"start_line":131
+					},
+					{
+						"end_line":348,
+						"name":"kv_store13",
+						"start_line":313
+					}
+				]
+			}
+		]
 	}
 ]
