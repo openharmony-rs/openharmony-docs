@@ -740,7 +740,7 @@ let targetInfo : mechanicManager.TargetInfo = {
 
 ## TargetType
 
-目标人脸信息。
+目标人脸的特征信息，包括但不限于面部轮廓、五官位置等。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -752,7 +752,7 @@ let targetInfo : mechanicManager.TargetInfo = {
 
 ## SearchParams
 
-搜索方向。
+指定搜索结果返回的排序方向（升序或降序）
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -766,7 +766,7 @@ let targetInfo : mechanicManager.TargetInfo = {
 
   ## SearchResult
 
-搜索目标执行结果。
+显示搜索命令的执行结果。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
