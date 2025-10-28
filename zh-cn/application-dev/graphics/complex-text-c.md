@@ -35,7 +35,7 @@
 
 画布Canvas对象具体可见[画布的获取与绘制结果的显示](canvas-get-result-draw-c.md)。
 
-<!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
@@ -101,7 +101,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### BREAK_ALL 
 
-<!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
@@ -156,7 +156,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### BREAK_WORD
 
-<!-- @[complex_text_c_break_word_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_break_word_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 设置断词策略为 WORD_BREAK_TYPE_BREAK_WORD
@@ -165,7 +165,7 @@ OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::W
 
 ### BREAK_HYPHEN
 
-<!-- @[complex_text_c_break_hyphen_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_break_hyphen_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 设置断词策略为 WORD_BREAK_TYPE_BREAK_HYPHEN
@@ -174,7 +174,7 @@ OH_Drawing_SetTypographyTextWordBreakType(typoStyle, OH_Drawing_WordBreakType::W
 
 ### BREAK_HYPHEN（locale：en-gb）
 
-<!-- @[complex_text_c_break_hyphen_gb_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_break_hyphen_gb_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 设置断词策略为 WORD_BREAK_TYPE_BREAK_HYPHEN
@@ -185,7 +185,7 @@ OH_Drawing_SetTextStyleLocale(txtStyle, "en-gb");
 
 ### BREAK_HYPHEN（locale：en-us）
 
-<!-- @[complex_text_c_break_hyphen_us_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_break_hyphen_us_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 设置断词策略为 WORD_BREAK_TYPE_BREAK_HYPHEN
@@ -252,7 +252,7 @@ OH_Drawing_SetTextStyleLocale(txtStyle, "en-us");
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_decoration_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_decoration_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个TypographyStyle创建Typography时需要使用
@@ -329,7 +329,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_font_feature_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_font_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
@@ -406,7 +406,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_font_variation_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_font_variation_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
@@ -490,7 +490,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_shadow_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_shadow_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
@@ -572,7 +572,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_placeholder_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_placeholder_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 设置页面最大宽度
@@ -656,7 +656,7 @@ OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_auto_space_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_auto_space_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个TypographyStyle创建Typography时需要使用
@@ -734,7 +734,7 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 示例及效果如下所示：
 
-<!-- @[complex_text_c_gradient_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -791,7 +791,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
 
-<!-- @[complex_text_c_vertical_alignment_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_vertical_alignment_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -837,7 +837,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
 
-<!-- @[complex_text_c_badge_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_badge_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -891,7 +891,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_high_contrast_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_high_contrast_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 开启APP的文字渲染高对比模式，该模式的优先级要高于系统设置中的高对比度文字配置
@@ -1096,7 +1096,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @[complex_text_c_style_copy_text](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+<!-- @[complex_text_c_style_copy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ```C++
 // 创建一个TypographyStyle，其中创建Typography时需要使用
