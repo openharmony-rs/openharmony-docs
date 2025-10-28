@@ -266,8 +266,6 @@
           <!--Del-->
           - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
           - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
-          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
-          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [应用间配置共享 (ArkTS)](database/share-config.md)
         - 多对多跨应用数据共享<!--many-to-many-data-share-->
