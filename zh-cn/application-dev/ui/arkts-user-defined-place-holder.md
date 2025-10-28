@@ -42,12 +42,250 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 <!-- @[place_holder_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/Common.ets) -->
 
+``` TypeScript
+// common.ets
+import { BuilderNode, UIContext } from '@kit.ArkUI';
+
+class Params {
+  public text: string = 'this is a text';
+}
+
+let buttonNode: BuilderNode<[Params]> | null = null;
+
+@Builder
+function buttonBuilder(params: Params) {
+  Column() {
+    Button(params.text)
+      .fontSize(12)
+      .borderRadius(8)
+      .borderWidth(2)
+      .backgroundColor(Color.Orange)
+  }
+}
+
+export function createNode(uiContext: UIContext) {
+  buttonNode = new BuilderNode<[Params]>(uiContext);
+  buttonNode.build(wrapBuilder(buttonBuilder), { text: 'This is a Button' });
+  return buttonNode;
+}
+
+export function getOrCreateNode(uiContext: UIContext): BuilderNode<[Params]> | null {
+  if (buttonNode?.getFrameNode() && buttonNode?.getFrameNode()?.getUniqueId() != -1) {
+    return buttonNode;
+  } else {
+    return createNode(uiContext);
+  }
+}
+```
+
 <!-- @[place_holder_custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/CustomNode.ets) -->
+
+``` TypeScript
+// Index.ets
+import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI';
+import { getOrCreateNode } from './Common';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811
+const TAG = '[Sample_ArkTSUserPlaceHolder]';
+
+class MyNodeController extends NodeController {
+  private isShow: boolean = false;
+
+  constructor(isShow: boolean) {
+    super();
+    this.isShow = isShow;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    if (!this.isShow) {
+      return null;
+    }
+    let frameNode = getOrCreateNode(uiContext)?.getFrameNode();
+    return frameNode ? frameNode : null;
+  }
+
+  aboutToResize(size: Size) {
+    hilog.info(DOMAIN, TAG,' aboutToResize width : ' + size.width + ' height : ' + size.height);
+  }
+
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG,' aboutToAppear');
+  }
+
+  aboutToDisappear() {
+    hilog.info(DOMAIN, TAG,' aboutToDisappear');
+  }
+
+  onTouchEvent(event: TouchEvent) {
+    hilog.info(DOMAIN, TAG,' onTouchEvent');
+  }
+
+  toShow() {
+    this.isShow = true;
+    this.rebuild();
+  }
+
+  toHide() {
+    this.isShow = false;
+    this.rebuild();
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController1: MyNodeController = new MyNodeController(true);
+  private myNodeController2: MyNodeController = new MyNodeController(false);
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController1)
+        .width('100%')
+        .height('40%')
+        .backgroundColor(Color.Brown)
+      NodeContainer(this.myNodeController2)
+        .width('100%')
+        .height('40%')
+        .backgroundColor(Color.Gray)
+      Button('Change the place of button')
+        .onClick(() => {
+          // 先在原始占位节点中下树
+          // 后在新的占位节点中上树
+          // 保证自定义节点仅作为一个节点的子节点存在
+          this.myNodeController1.toHide();
+          this.myNodeController2.toShow();
+        })
+    }
+    .padding({ left: 35, right: 35, top: 35 })
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## NodeContainer和ContentSlot添加子节点布局差异
 
 [NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)是一个容器节点，布局参考左上角对齐的[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件，不会按照父容器的布局规则进行布局。[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)只是一个语法节点，不参与布局，添加的子节点会按照父容器的布局规则进行布局。
 
 <!-- @[place_holder_layout_diff](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets) -->
+
+``` TypeScript
+import { FrameNode, NodeContent, NodeController, typeNode, UIContext } from '@kit.ArkUI';
+
+class NodeContentCtrl {
+  public content: NodeContent
+  public textNode: Array<typeNode.Text> = [];
+  public uiContext: UIContext
+  public width: number
+
+  constructor(uiContext: UIContext) {
+    this.content = new NodeContent();
+    this.uiContext = uiContext;
+    this.width = Infinity;
+  }
+
+  AddNode() {
+    let node = typeNode.createNode(this.uiContext, 'Text');
+    node.initialize('ContentText:' + this.textNode.length).fontSize(20);
+    this.textNode.push(node);
+    this.content.addFrameNode(node);
+  }
+
+  RemoveNode() {
+    let node = this.textNode.pop();
+    this.content.removeFrameNode(node);
+  }
+
+  RemoveFront() {
+    let node = this.textNode.shift();
+    this.content.removeFrameNode(node);
+  }
+
+  GetContent(): NodeContent {
+    return this.content;
+  }
+}
+
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+  public textNode: Array<typeNode.Text> = [];
+
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext);
+    return this.rootNode;
+  }
+
+  AddNode(frameNode: FrameNode | null, uiContext: UIContext) {
+    let node = typeNode.createNode(uiContext, 'Text');
+    node.initialize('ControllerText:' + this.textNode.length).fontSize(20);
+    this.textNode.push(node);
+    frameNode?.appendChild(node);
+  }
+
+  RemoveNode(frameNode: FrameNode | null) {
+    let node = this.textNode.pop();
+    frameNode?.removeChild(node);
+  }
+
+  RemoveFront(frameNode: FrameNode | null) {
+    let node = this.textNode.shift();
+    frameNode?.removeChild(node);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  controller = new NodeContentCtrl(this.getUIContext());
+  myNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      Column() {
+        ContentSlot(this.controller.GetContent())
+        Button('AddToSlot')
+          .onClick(() => {
+            this.controller.AddNode();
+          })
+          .margin(10)
+        Button('RemoveBack')
+          .onClick(() => {
+            this.controller.RemoveNode();
+          })
+          .margin(10)
+        Button('RemoveFront')
+          .onClick(() => {
+            this.controller.RemoveFront();
+          })
+          .margin(10)
+      }
+      .width('50%')
+
+      Column() {
+        NodeContainer(this.myNodeController)
+        Button('AddToNodeContainer')
+          .onClick(() => {
+            this.myNodeController.AddNode(this.myNodeController.rootNode, this.getUIContext());
+          })
+          .margin(10)
+        Button('RemoveBack')
+          .onClick(() => {
+            this.myNodeController.RemoveNode(this.myNodeController.rootNode);
+          })
+          .margin(10)
+        Button('RemoveFront')
+          .onClick(() => {
+            this.myNodeController.RemoveFront(this.myNodeController.rootNode);
+          })
+          .margin(10)
+      }
+      .width('50%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ![zh-cn_image_user-defined-node-01](figures/user-defined-node-01.gif)
