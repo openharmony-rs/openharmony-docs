@@ -865,7 +865,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.                      |
 | userId       | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                              |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of ability information obtained. Otherwise, **err** is an error object.|
@@ -931,7 +931,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | -------------------------------------------------------|
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.      |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of ability information obtained. Otherwise, **err** is an error object.|
 
@@ -994,7 +994,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.|
 | userId       | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                      |
 
@@ -1086,7 +1086,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.|
 | userId       | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                      |
 
@@ -1173,7 +1173,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Array\<Want>   | Yes  | List of want containing the bundle name to query.                |
+| want         | Array\<[Want](js-apis-app-ability-want.md)>   | Yes  | List of want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.|
 | userId       | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                      |
 
@@ -1246,7 +1246,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | Yes  | Want containing the bundle name to query.                      |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | Yes  | Want containing the bundle name to query.                      |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | Yes  | Type of the ExtensionAbility.                                |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | Yes  | Type of the ExtensionAbility information to obtain.   |
 | userId                | number                                                       | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                                                |
@@ -1313,7 +1313,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | Yes  | Want containing the bundle name to query.                      |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | Yes  | Want containing the bundle name to query.                      |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | Yes  | Type of the ExtensionAbility.                                |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | Yes  | Type of the ExtensionAbility information to obtain.   |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of ExtensionAbility information obtained. Otherwise, **err** is an error object.|
@@ -1377,7 +1377,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                         | Mandatory| Description                                                     |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | Yes  | Want containing the bundle name to query.                   |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | Yes  | Want containing the bundle name to query.                   |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | Yes  | Type of the ExtensionAbility.                             |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | Yes  | Type of the ExtensionAbility information to obtain.|
 | userId                | number                                        | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                                             |
@@ -1472,7 +1472,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                         | Mandatory| Description                                                     |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | Yes  | Want containing the bundle name to query.                   |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | Yes  | Want containing the bundle name to query.                   |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | Yes  | Type of the ExtensionAbility.                             |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | Yes  | Type of the ExtensionAbility information to obtain.|
 | userId                | number                                        | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                                             |
@@ -2250,7 +2250,7 @@ Enables or disables an application or an application clone. This API uses a prom
 | ---------- | ------- | ---- | ------------------------------------- |
 | bundleName | string  | Yes  | Bundle name.           |
 | appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone.             |
-| isEnabled  | boolean | Yes  | Whether to enable the application or application clone. **true** to enable, **false** otherwise.|
+| isEnabled  | boolean | Yes  | Whether to enable the application. **true** to enable, **false** otherwise.|
 
 **Return value**
 
@@ -3273,7 +3273,7 @@ Obtains the Want used to launch the bundle based on the given bundle name and us
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Want | Want object.|
+| [Want](js-apis-app-ability-want.md)| Want object.|
 
 **Error codes**
 
@@ -4481,7 +4481,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                           | Mandatory| Description                                                     |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                            | Yes  | Want containing the bundle name to query.                   |
+| want                  | [Want](js-apis-app-ability-want.md)      | Yes  | Want containing the bundle name to query.                   |
 | extensionAbilityType  | string                          | Yes  | Type of the custom ExtensionAbility.                       |
 | extensionAbilityFlags | [number](#extensionabilityflag) | Yes  | Information flags to be contained in the returned ExtensionAbilityInfo object.|
 | userId                | number                          | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.|
@@ -5535,6 +5535,7 @@ try {
 getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity
 
 Obtains the identity information of an application, including the bundle name and clone index, based on the given sandbox directory name.
+
 
 **System API**: This is a system API.
 

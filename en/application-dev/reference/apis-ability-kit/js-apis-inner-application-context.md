@@ -22,7 +22,7 @@ Context is the context base class of the stage model. It is used to access appli
 - Holding relationships among different types of context
 
   ![context-holding](../../application-models/figures/context-holding.png)
-  
+
 > **NOTE**
 >
 > [UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) refers to the context of a UI instance, which is used to associate windows with UI pages. It is not directly related to the application context discussed in this topic and does not involve inheritance or holding relationships.
@@ -224,7 +224,7 @@ Obtains the shared directory based on a group ID. This API uses an asynchronous 
 | Name      | Type                    | Mandatory  | Description           |
 | -------- | ---------------------- | ---- | ------------- |
 | [dataGroupID](../apis-arkdata/js-apis-data-preferences.md#options10) | string | Yes   | Group ID, which is assigned by the system when an application of the atomic service type is created.|
-| callback | AsyncCallback\<string> | Yes   | Callback used to return the result. If no shared directory exists, null is returned. Only the encryption level EL2 is supported.|
+| callback | AsyncCallback\<string> | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the shared directory obtained (or empty if or is empty if non-existent). Otherwise, an error object is returned.<br>Note: Only the EL2 encryption level is supported.|
 
 **Error codes**
 
