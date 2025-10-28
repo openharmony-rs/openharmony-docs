@@ -164,3 +164,41 @@ import hilog from '@ohos.hilog';
 2. 查询存储在UDMF公共数据通路中的全量统一数据对象。
 
 <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+``` TypeScript
+// 指定要查询数据的数据通路枚举类型
+let options: unifiedDataChannel.Options = {
+  intention: unifiedDataChannel.Intention.DATA_HUB
+};
+
+try {
+  unifiedDataChannel.queryData(options, (err, data) => {
+    if (err === undefined) {
+      hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in querying data. size = ${data.length}`);
+      for (let i = 0; i < data.length; i++) {
+        let records = data[i].getRecords();
+        for (let j = 0; j < records.length; j++) {
+          let types = records[j].getTypes();
+          // 根据业务需要从记录中获取样式数据
+          if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${text.textContent}`);
+          }
+          if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
+            let html =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+            hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${html.htmlContent}`);
+          }
+        }
+      }
+    } else {
+      hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code},message is ${err.message}`);
+    }
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  hilog.error(0xFF00, '[Sample_Udmf]',
+    `Query data throws an exception. code is ${error.code},message is ${error.message}`);
+}
+```
