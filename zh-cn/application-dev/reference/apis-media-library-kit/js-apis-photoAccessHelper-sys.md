@@ -5243,7 +5243,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
 
-复制同一相册（用户创建的相册或应用相册）中的图片，并转换为指定格式。使用promise异步回调。
+复制相册中的图片（用户创建或应用相册）并转换为指定格式。使用promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -5255,7 +5255,7 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| title | string | 是    | 转换后图片标题 。|
+| title | string | 是    | 转换后图片标题。|
 | imageFormat | [SupportedImageFormat](#supportedimageformat20) | 是    | 支持的目标格式类型。 |
 
 **返回值：**
@@ -5273,8 +5273,8 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 | -------- | ---------------------------------------- |
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
-| 23800151     | Scene parameters validate failed, possible causes: 1. The original file does not exist locally in PhotoAsset; 2. The original file format is not within the supported range; 3. The original file is a temporary file or is being edited; 4. The title is the same with an image in the same album; 5. PhotoAsset is a photo in the trash or a hidden photo; 6. The title does not meet the parameter specifications.          |
-| 23800301    | Internal system error.It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out.        |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
+| 23800301    | Internal system error. Recommended actions: retry and check logs. Possible causes: 1. Database corrupted; 2. Abnormal file system; 3. IPC request timeout. |
 
 **示例：**
 
@@ -5292,7 +5292,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let photoAsset = await fetchResult.getFirstObject();
   try {
-    let newPhotoAsset await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
+    let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
     console.error(`convertImageFormat success.`);
   } catch (err) {
     console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
@@ -10843,7 +10843,7 @@ async function example(context: Context) {
 
 ## SupportedImageFormat<sup>20+</sup>
 
-枚举，支持转换的目标图片格式。
+枚举支持转换的图片格式。
 
 **系统接口**：此接口为系统接口。
 
