@@ -28,6 +28,66 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 
 <!-- @[uiContextTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage.ets) --> 
 
+``` TypeScript
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct ComponentPage {
+  loopConsole(inspectorStr: string, i: string) {
+    hilog.info(0x0000, `InsTree ${i}| type: ${JSON.parse(inspectorStr).$type}, ID: ${JSON.parse(inspectorStr).$ID}`,
+      'InsTree');
+    if (JSON.parse(inspectorStr).$children) {
+      i += '-';
+      for (let index = 0; index < JSON.parse(inspectorStr).$children.length; index++) {
+        this.loopConsole(JSON.stringify(JSON.parse(inspectorStr).$children[index]), i);
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(20)
+        .id('TEXT')
+      Button('content').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
+        hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
+        inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
+        this.loopConsole(inspectorStr, '-');
+      })
+      Button('isLayoutInspector').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
+        hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
+        inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
+        this.loopConsole(inspectorStr, '-');
+      })
+      Button('getFilteredInspectorTreeById').onClick(() => {
+        const uiContext: UIContext = this.getUIContext();
+        try {
+          let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['id', 'src']);
+          hilog.info(0x0000,`result1: ${inspectorStr}`, 'result1');
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          hilog.info(0x0000,`result2: ${inspectorStr}`, 'result2');
+          inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['src']);
+          inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
+          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result13');
+        } catch (e) {
+          hilog.error(0x0000, `getFilteredInspectorTreeById error: ${e}`, 'error');
+        }
+      })
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
+
 ## 布局回调
 
 通过[@ohos.arkui.arkui.inspector(布局回调)](../reference/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
@@ -35,6 +95,58 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 下述示例，展示了布局回调的基本用法。
 
 <!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
+
+``` TypeScript
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          // 可以替换成本地存在的图片
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      // 补充待实现的功能
+    };
+    let onDrawComplete: () => void = (): void => {
+      // 补充待实现的功能
+    };
+    let onDrawChildrenComplete: () => void = (): void => {
+      // 补充待实现的功能
+    };
+    let funcLayout = onLayoutComplete; // 绑定当前js对象
+    let funcDraw = onDrawComplete; // 绑定当前js对象
+    let funcDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
+    let offFuncLayout = onLayoutComplete; // 绑定当前js对象
+    let offFuncDraw = onDrawComplete; // 绑定当前js对象
+    let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
+
+    this.listener.on('layout', funcLayout);
+    this.listener.on('draw', funcDraw);
+    this.listener.on('drawChildren', funcDrawChildren);
+
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.off('drawChildren', OffFuncDrawChildren)
+  }
+}
+```
 
 ## 组件标识属性的扩展能力
 
@@ -46,3 +158,34 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(20)
+        .id('TEXT')
+        .onClick(() => {
+          hilog.info(0x0000,`Text is clicked`, 'isClicked');
+        })
+      Button('getInspectorByKey').onClick(() => {
+        let result = getInspectorByKey('TEXT');
+        hilog.info(0x0000,`result is ${result}`, 'result');
+      })
+      Button('getInspectorTree').onClick(() => {
+        let result = getInspectorTree();
+        hilog.info(0x0000,`result is ${JSON.stringify(result)}`, 'result');
+      })
+      Button('sendEventByKey').onClick(() => {
+        sendEventByKey('TEXT', 10, '');
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
