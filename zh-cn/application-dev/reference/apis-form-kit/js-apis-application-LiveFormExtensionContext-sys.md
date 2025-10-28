@@ -37,7 +37,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 
 LiveFormExtensionContext是LiveFormExtensionAbility的上下文环境。
 
-### connectServiceExtensionAbility<sup>22+<sup>
+### connectServiceExtensionAbility<sup>21+<sup>
 
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
@@ -66,7 +66,7 @@ ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability22)传入该连接id来断开连接。 |
+| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability21)传入该连接id来断开连接。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ struct MyLiveFormPage {
 }
 ```
 
-### disconnectServiceExtensionAbility<sup>22+<sup>
+### disconnectServiceExtensionAbility<sup>21+<sup>
 
 disconnectServiceExtensionAbility(connectionId: number): Promise\<void>
 
@@ -177,7 +177,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connectionId | number | 是 | 连接的ServiceExtensionAbility的连接id，即[connectServiceExtensionAbility](#connectserviceextensionability22)返回的connectionId。 |
+| connectionId | number | 是 | 连接的ServiceExtensionAbility的连接id，即[connectServiceExtensionAbility](#connectserviceextensionability21)返回的connectionId。 |
 
 **返回值：**
 
