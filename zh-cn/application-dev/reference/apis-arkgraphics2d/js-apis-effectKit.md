@@ -966,7 +966,7 @@ import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
-function ImageColorFIlter(Image: ArrayBuffer): Promise<image.PixelMap> {
+function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
     let imageSource = image.createImageSource(Image);
     imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
@@ -1012,7 +1012,7 @@ struct Index {
       return;
     }
     // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
-    this.imagePixelMap = await ImageColorFIlter(this.imageBuffer);
+    this.imagePixelMap = await ImageColorFilter(this.imageBuffer);
   }
 
   build() {
