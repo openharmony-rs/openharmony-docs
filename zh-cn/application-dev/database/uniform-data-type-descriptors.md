@@ -190,6 +190,12 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+//  1.导入模块
+import { uniformTypeDescriptor } from '@kit.ArkData';
+import hilog from '@ohos.hilog';
+```
+
 2. 针对“.mp3”文件扩展名，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型，并打印对应UTD数据类型的具体属性。
 3. 针对“audio/mp3”MIMEType，使用getUniformDataTypesByMIMEType()查询对应UTD数据类型，并打印对应UTD数据类型的具体属性。
 4. 比较上述步骤查询的数据类型，确认类型是否相等。
