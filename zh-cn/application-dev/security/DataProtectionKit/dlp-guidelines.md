@@ -67,11 +67,67 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 使用该接口的前置条件：链接DLP凭据服务器
 
   <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  openDlpFile(dlpUri: string, fileName: string, fd: number) {
+    let want:Want = {
+      'action': 'ohos.want.action.viewData',
+      'uri': dlpUri,
+      'parameters' : {
+        'fileName': {
+          'name': fileName
+        },
+        'keyFd': {
+          'type': 'FD',
+          'value': fd
+        }
+      }
+    }
+  
+    let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+  
+    try {
+      console.log('openDLPFile:' + JSON.stringify(want));
+      console.log('openDLPFile: delegator:' + JSON.stringify(context));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile:' + JSON.stringify(want));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile: delegator:' + JSON.stringify(context));
+      context.startAbility(want);
+    } catch (err) {
+      console.error('openDLPFile startAbility failed' + (err as BusinessError).code);
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile startAbility failed' + (err as BusinessError).code);
+      this.result = 'openDLPFile startAbility failed' + (err as BusinessError).code;
+      return;
+    }
+  }
+  
+  prepareForOpenDlpFile() {
+    let file = this.openFile(this.uri);
+    if (!file) {
+      return;
+    }
+    this.openDlpFile(this.uri, this.fileName, file.fd);
+      
+  }
+  ```
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
   <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
+  
+  ``` JSON5
+  "skills": [
+    {
+      "entities": [
+        "entity.system.home"
+      ],
+      "actions": [
+        "action.system.home",
+        "ohos.want.action.viewData"
+      ]
+    }
+  ]
+  ```
   
 3. 生成DLP文件。 <br>
 使用该接口的前置条件：链接DLP凭据服务器
@@ -85,11 +141,52 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     3.3 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。调用以下代码，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
 
   <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  generateDlpFiles() {
+    try {
+      let fileUri: string = this.uri;
+      let fileName: string = this.fileName;
+      let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+      let want: Want = {
+        'uri': fileUri,
+        'parameters': {
+          'displayName': fileName
+        }
+      };// 请求参数
+      dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
+        this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
+        console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
+        console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
+        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
+      });
+    } catch (err) {
+      this.result = 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message;
+      console.error('startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
+    }
+  }
+  ```
 
 4. 查询当前应用是否在沙箱中。 <br>
 使用该接口的前置条件：由demo应用打开DLP文件
 
   <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  isInSandbox() {
+    dlpPermission.isInSandbox().then((data) => {
+      this.result = 'isInSandbox result: ' + JSON.stringify(data);
+      console.log('isInSandbox result: ' + JSON.stringify(data));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
+    }).catch((err:BusinessError) => {
+      this.result = 'isInSandbox error: ' + JSON.stringify(err);
+      console.error('isInSandbox error: ' + JSON.stringify(err));
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox error: ' + JSON.stringify(err));
+    });
+  }
+  ```
 
 
 5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。 <br>
@@ -98,29 +195,139 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 6. 获取当前可支持DLP方案的文件扩展名类型列表，用于应用判断能否生成DLP文件，可用在实现类似文件管理器设置DLP权限的场景。
 
   <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  getDLPSupportedFileTypes() {
+    dlpPermission.getDLPSupportedFileTypes((err, result) => {
+      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
+      this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
+    });
+  }
+  ```
 
 7. 判断当前打开文件是否是DLP文件。 <br>
 使用该接口的前置条件：需要dlp文件进行判断
 
   <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  isCurrentDlpFile() {
+    let file = this.openFile(this.uri);
+    if(!file) {
+      this.result = '请打开一个文件！';
+      return;
+    }
+    dlpPermission.isDLPFile(file.fd).then((res) => {
+      if (res.valueOf()) {
+        this.result = 'isDLPFile result: ' + JSON.stringify(res);
+      } else {
+        this.result = '请打开一个dlp文件! ';
+      }
+      console.info('res', res);
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
+    }).catch((err:BusinessError) => {
+      this.result = 'isDLPFile error: ' + (err as BusinessError).code + (err as BusinessError).message;
+      console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+    }).finally(() => {
+        fs.closeSync(file);
+    });
+  }
+  ```
 
 8. 订阅、取消订阅DLP打开事件。
 
 <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+event(info: dlpPermission.AccessedDLPFileInfo) {
+  console.info('openDlpFile event', info.uri, info.lastOpenTime);
+  hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDlpFile event' + info.uri + info.lastOpenTime);
+}
+
+unSubscribe() {
+  try {
+    dlpPermission.off('openDLPFile', this.event); // 取消订阅
+    this.result = 'unSubscribe result: 已取消注册';
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'unSubscribe result: 已取消注册');
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+    this.result = 'unSubscribe error: 取消注册失败';
+  }
+}
+  
+subscribe() {
+  try {
+    dlpPermission.on('openDLPFile', this.event); // 订阅
+    this.result = 'subscribe result: 已注册';
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: 已注册');
+  } catch (err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+    this.result = 'subscribe error: 注册失败';
+  }
+}
+```
 
 9. 获取DLP文件打开记录。<br>
 使用该接口的前置条件：由demo应用打开DLP文件
 
 <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+getDLPFileAccessRecords() {
+  dlpPermission.getDLPFileAccessRecords().then((res) => {
+    this.result = 'getDLPFileAccessRecords result: ' + JSON.stringify(res);
+    console.info('res', JSON.stringify(res));
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
+  }).catch((err: BusinessError) => {
+    this.result = 'getDLPFileAccessRecords error: ' + (err as BusinessError).code + (err as BusinessError).message;
+    console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+  });
+}
+```
+
 10. 获取DLP文件保留沙箱记录。<br>
 使用该接口的前置条件：由demo应用打开DLP文件
 
    <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   getRetentionSandboxList() {
+     dlpPermission.getRetentionSandboxList().then((res) => {
+       this.result = 'getRetentionSandboxList result: ' + JSON.stringify(res);
+       console.info('res', JSON.stringify(res));
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
+     }).catch((err: BusinessError) => {
+       this.result = 'getRetentionSandboxList error' + (err as BusinessError).code + (err as BusinessError).message;
+       console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     });
+   }
+   ```
 
 11. 设置沙箱应用配置信息。
 
    <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   setSandboxAppConfig() {
+     dlpPermission.setSandboxAppConfig('configInfo').then(() => {
+       this.result = 'setSandboxAppConfig result: 设置沙箱应用配置信息成功';
+       console.info('res', '设置沙箱应用配置信息成功');
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'setSandboxAppConfig result: 设置沙箱应用配置信息成功');
+     }).catch((err: BusinessError) => {
+       this.result = 'setSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+       console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     });
+   }
+   ```
 
 12. 清理沙箱应用配置信息。
 
