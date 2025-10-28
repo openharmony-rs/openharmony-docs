@@ -88,7 +88,7 @@ Codec MIME类型枚举。
 
 ## AacProfile<sup>22+</sup>
 
-AAC规格类型枚举
+AAC规格类型枚举。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
