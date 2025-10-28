@@ -3507,5 +3507,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/text-custom-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets",
+				"functions":[
+					{
+						"end_line":89,
+						"name":"arkts_independent_shaping_text",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/text-custom-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp",
+				"functions":[
+					{
+						"end_line":1171,
+						"name":"complex_text_c_independent_shaping_text",
+						"start_line":1096
+					}
+				]
+			}
+		]
 	}
 ]
