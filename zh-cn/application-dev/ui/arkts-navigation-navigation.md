@@ -1084,7 +1084,7 @@ this.pageStack.setInterception({
           .borderRadius(10)
           .height('30%')
           .width('80%')
-        }.height("100%").width('100%').backgroundColor(Color.White)
+        }.height("100%").width('100%')
       }.backgroundColor('rgba(0,0,0,0.5)').hideTitleBar(true, true).mode(NavDestinationMode.DIALOG)
     }
   }
