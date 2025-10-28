@@ -151,23 +151,30 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
     ```ts
     'use static'
 
-    import { Entry, Column, Component } from '@ohos.arkui.component';
+    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
     import { AppStorage, StoragePropRef, StorageLink } from '@ohos.arkui.stateManagement';
 
-    AppStorage.setOrCreate('PropA', 47);
-    
     @Entry
     @Component
     struct Index {
       // 错误写法，编译报错
-      // @StoragePropRef() storageProp: number = 1;
-      // @StorageLink() storageLink: number = 2;
-    
-      // 正确写法
-      @StoragePropRef('PropA') storageProp: number = 1;
-      @StorageLink('PropA') storageLink: number = 2;
+      // @StoragePropRef() storageProp: int = 1;
+      // @StorageLink() storageLink: int = 2;
 
-      build() {}
+      // 正确写法
+      @StoragePropRef('PropA') storageProp: int = 1;
+      @StorageLink('PropA') storageLink: int = 2;
+      // 在ArkTS-Sta中，写在全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移致static代码块中，以达到与ArkTs-Dyn一样的效果。
+      static {
+        AppStorage.setOrCreate<int>('PropA', 47); 
+      }
+
+      build() {
+        Column() {
+          Text(`storageProp ${this.storageProp}`)
+          Text(`storageLink ${this.storageLink}`)
+        }
+      }
     }
     ```
 
@@ -228,9 +235,6 @@ class Data {
   }
 }
 
-AppStorage.setOrCreate('PropA', 47);
-AppStorage.setOrCreate('PropB', new Data(50));
-
 @Entry
 @Component
 struct Index {
@@ -238,6 +242,10 @@ struct Index {
   @LocalStorageLink('LinkA') localStorageLink: number = 1;
   @StorageLink('PropB') storageLinkObject: Data = new Data(1);
   @LocalStorageLink('LinkB') localStorageLinkObject: Data = new Data(1);
+  static {
+    AppStorage.setOrCreate<Double>('PropA', 47);
+    AppStorage.setOrCreate<Data>('PropB', new Data(50));
+  }
 
   build() {
     Column() {
