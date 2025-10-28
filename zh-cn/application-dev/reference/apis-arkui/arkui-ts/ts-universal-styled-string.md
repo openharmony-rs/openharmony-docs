@@ -130,6 +130,8 @@ getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<
 
 获取指定范围属性字符串的样式集合。不能超出属性字符串的长度。
 
+该接口仅返回开发者设置的样式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
