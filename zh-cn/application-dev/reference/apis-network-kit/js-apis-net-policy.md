@@ -53,7 +53,7 @@ showAppNetPolicySettings(context: Context): Promise\<void>;
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<void>  |形式返回设定结果。 |
+| Promise\<void>  |以 Promise 形式返回设定结果。|
 
 **示例：**
 
