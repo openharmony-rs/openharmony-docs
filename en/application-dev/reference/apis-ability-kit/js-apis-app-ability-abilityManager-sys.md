@@ -179,6 +179,10 @@ Obtains the UIAbility running information. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
+> **NOTE**
+>
+> This API does not return error code 202 since API version 14.
+
 | ID| Error Message|
 | ------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |

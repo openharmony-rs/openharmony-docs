@@ -745,7 +745,11 @@ try {
 
 isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
-Checks whether an application is running. This API uses a promise to return the result.
+Checks whether the application with the specified bundle name and application clone index is running across all users. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> If the application is not installed for the current user, error code 16000073 is returned. If the application is installed for the current user, the system checks whether the application is running across all users.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -762,7 +766,7 @@ Checks whether an application is running. This API uses a promise to return the 
 
 | Type          | Description             |
 | -------------- | ---------------- |
-| Promise\<boolean> | Promise used to return the result. **true** if running, **false** otherwise.|
+| Promise\<boolean> | Promise used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 
