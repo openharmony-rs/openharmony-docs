@@ -126,7 +126,7 @@ TextInput()
 
 ### 带小数点的数字输入模式
 
-带小数点的数字输入模式的输入框，只能输入数字[0-0]和小数点，只能存在一个小数点。
+带小数点的数字输入模式的输入框，只能输入数字[0-9]和小数点，只能存在一个小数点。
   ```ts
   TextInput()
     .type(InputType.NUMBER_DECIMAL)
@@ -146,9 +146,9 @@ TextInput()
 
 ## 设置输入框多态样式
 
-TextInput、TextArea支持设置输入框多态样式，通过style属性进行设置。下面以多行输入框为例进行说明。
+TextInput、TextArea支持设置输入框多态样式，通过[style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10)属性进行设置。下面以多行输入框TextArea为例进行说明。
 
-TextArea有以下类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式,也称内联输入风格，入参是TextContentStyle.INLINE。通过[style](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#style10)属性进行设置。
+TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式，也称内联输入风格，入参是TextContentStyle.INLINE。
 
 ### 默认风格
 

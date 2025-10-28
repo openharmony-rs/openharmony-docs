@@ -832,7 +832,7 @@ Font Feature当前支持的属性见 [fontFeature属性列表](ts-basic-componen
 
 >  **说明：**
 >
->  设置[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，暂时不支持fontFeature设置文本样式。
+>  设置[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，不支持通过fontFeature设置文本样式。
 
 ### wordBreak<sup>12+</sup>
 
