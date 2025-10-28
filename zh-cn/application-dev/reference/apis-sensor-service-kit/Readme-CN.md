@@ -30,7 +30,7 @@
     - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
     - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
     - [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)
-    - [Vibrator_File_Description](capi-vibrator-vibrator-attribute.md)
+    - [Vibrator_File_Description](capi-vibrator-vibrator-filedescription.md)
 - 错误码<!--sensor-service-arkts-errcode-->
   - [Sensor错误码](errorcode-sensor.md)
   - [Vibrator错误码](errorcode-vibrator.md)
