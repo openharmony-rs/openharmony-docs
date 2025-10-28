@@ -27,3 +27,70 @@
 ### 开发示例
 
 <!-- @[components_based_on_uniform_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/ContentForm/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 1. 导入需要的模块
+import { ContentFormCard, FormType, uniformDataStruct } from '@kit.ArkData';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State contentForm: uniformDataStruct.ContentForm = {
+    uniformDataType: 'general.content-form',
+    title: ''
+  };
+  @State startToShow: boolean = false;
+
+  aboutToAppear(): void {
+    // 2. 初始化数据
+    this.initData();
+  }
+
+  async initData() {
+    let context = this.getUIContext().getHostContext();
+    if (!context) {
+      return;
+    }
+    try {
+      let appIcon = await context.resourceManager.getMediaContent($r('app.media.startIcon').id);
+      let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
+      this.contentForm = {
+        uniformDataType: 'general.content-form',
+        title: 'Content form title',
+        thumbData: appIcon,
+        description: 'Content form description',
+        appIcon: thumbImage,
+        appName: 'com.test.demo'
+      };
+    } catch (err) {
+      hilog.error(0xFF00, '[Sample_Udmf]', 'Init data error');
+    }
+  }
+
+  build() {
+    Column() {
+      Button('show card').fontSize(30)
+        .onClick(() => {
+          // 3. 点击后startToShow变为true，页面重新渲染
+          this.startToShow = true;
+        })
+      if (this.startToShow) {
+        // 4. 使用内容卡片，传入对应的参数
+        ContentFormCard({
+          contentFormData: this.contentForm,
+          formType: FormType.TYPE_SMALL,
+          formWidth: 220,
+          formHeight: 100,
+          handleOnClick: () => {
+            hilog.info(0xFF00, '[Sample_Udmf]', 'Clicked card');
+          }
+        })
+      }
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
