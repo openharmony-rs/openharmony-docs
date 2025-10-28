@@ -23,9 +23,9 @@ enableSemiWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**20
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
