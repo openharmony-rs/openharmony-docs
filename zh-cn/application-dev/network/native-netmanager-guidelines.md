@@ -55,7 +55,7 @@ CMakeLists.txt中添加以下lib:
 libace_napi.z.so
 libnet_connection.so
 ```
-<!-- @[CMAKE_list_add_lib_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/CMakeLists.txt) -->
+<!-- [CMAKE_list_add_lib_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/CMakeLists.txt) -->
 **头文件**
 
 ```c

@@ -95,11 +95,9 @@ UDP与TCP流程大体类似，下面以TCP为例：
     ipAddress.port = 1234;
 
       // bind成功后，连接到指定的IP地址和端口。
+      let netAddress: socket.NetAddress = {} as socket.NetAddress;
       netAddress.address = "192.168.xxx.xxx";
       netAddress.port = 5678;
-      let tcpConnect : socket.TCPConnectOptions = {} as socket.TCPConnectOptions;
-      tcpConnect.address = netAddress;
-      tcpConnect.timeout = 6000;
     ```
     ```ts
     // 绑定本地IP地址和端口。
@@ -712,18 +710,15 @@ UDP与TCP流程大体类似，下面以TCP为例：
 3. 绑定本地IP地址和端口，绑定成功后，连接到服务器端IP地址和端口，连接成功后使用该TCPSocket对象创建TLSSocket，配置双向认证上传客户端 CA 证书及数字证书，可以建立TLSSocket连接，连接使用完毕后，主动关闭并取消相关事件的订阅。。
 	```ts
      // 连接到服务器端指定的IP地址和端口。
-     let ipAddress: socket.NetAddress = {} as socket.NetAddress;
-   	 ipAddress.address = "192.168.xxx.xxx";
-  	 ipAddress.port = 443;
+     let serverAddress: socket.NetAddress = {} as socket.NetAddress;
+     serverAddress.address = "192.168.xxx.xxx";
+     serverAddress.port = 1234;
 
-  	 let tcpConnect: socket.TCPConnectOptions = {} as socket.TCPConnectOptions;
-  	 tcpConnect.address = ipAddress;
+     let tcpConnect: socket.TCPConnectOptions = {} as socket.TCPConnectOptions;
+  	 tcpConnect.address = serverAddress;
      tcpConnect.timeout = 6000;
   
      // 配置TLSSocket目的地址、证书等信息。
-     ipAddress.address = "192.168.xxx.xxx";
-     ipAddress.port = 1234;
-
      let tlsSecureOption: socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
      tlsSecureOption.key = "xxxx";
      tlsSecureOption.cert = "xxxx";
@@ -736,7 +731,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
      let tlsTwoWayConnectOption: socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
      tlsSecureOption.key = "xxxx";
-     tlsTwoWayConnectOption.address = ipAddress;
+     tlsTwoWayConnectOption.address = serverAddress;
      tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
      tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
     ```
