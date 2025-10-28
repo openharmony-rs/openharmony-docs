@@ -4807,7 +4807,9 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
 
-从API version 8开始支持，从API version 9开始废弃，建议使用[onRenderExited<sup>9+</sup>](#onrenderexited9)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onRenderExited<sup>9+</sup>](#onrenderexited9)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
