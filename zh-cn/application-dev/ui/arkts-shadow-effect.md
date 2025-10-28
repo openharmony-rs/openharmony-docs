@@ -13,6 +13,49 @@
 
 <!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/Shadow.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct ShadowOptionDemo {
+  build() {
+    Row() {
+      Column() {
+        Column() {
+          Text('shadowOption').fontSize(12);
+        }
+        .width(100)
+        .aspectRatio(1)
+        .margin(10)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor(Color.White)
+        .borderRadius(20)
+        .shadow({ radius: 10, color: Color.Gray });
+
+        Column() {
+          Text('shadowOption').fontSize(12);
+        }
+        .width(100)
+        .aspectRatio(1)
+        .margin(10)
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#a8a888')
+        .borderRadius(20)
+        .shadow({
+          radius: 10,
+          color: Color.Gray,
+          offsetX: 20,
+          offsetY: 20
+        });
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center);
+    }
+    .height('100%');
+  };
+}
+```
+
 
 
 ![zh-cn_image_0000001598502322](figures/zh-cn_image_0000001598502322.png)
