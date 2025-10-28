@@ -411,6 +411,20 @@ startDLPManagerForResult() {
 使用该接口的前置条件：链接DLP凭据服务器。
 <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+isDLPFeature() {
+  dlpPermission.isDLPFeatureProvided().then((res) => {
+    this.result = 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf());
+    console.info('res', JSON.stringify(res.valueOf()));
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf()));
+  }).catch((err: BusinessError) => {
+    this.result = 'isDLPFeatureProvided error: ' + (err as BusinessError).code + (err as BusinessError).message;
+    console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+  });
+}
+```
+
 16. 设置企业应用防护策略。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
     
