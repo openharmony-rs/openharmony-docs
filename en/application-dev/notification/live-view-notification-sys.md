@@ -17,17 +17,17 @@ The live view notification provides real-time progress of long-duration tasks, i
 
 ## Available APIs
 
-The following table describes the APIs for notification publishing. You can specify the notification information – content, ID, slot type, and delivery time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) parameter in the APIs.  
+The following table describes the APIs for notification publishing. You can specify the notification information – content, ID, slot type, and delivery time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) parameter in the APIs. The information can include the notification content, notification ID, notification channel type, and notification sending time.
 
 | **API**| **Description**|
 | -------- | -------- |
 | [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request:&nbsp;NotificationRequest,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Publishes a notification.                |
-| [cancel](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagercancel)(id:&nbsp;number,&nbsp;label:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Cancels a specified notification.     |
+| [cancel](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagercancel)(id:&nbsp;number,&nbsp;label:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Cancels a notification.     |
 
 
 ## How to Develop
 
-1. Import the modules.
+1. Import the related modules.
    
    ```ts
    import { notificationManager } from '@kit.NotificationKit';
@@ -42,7 +42,7 @@ The following table describes the APIs for notification publishing. You can spec
 2. Publish a notification.
 
    In addition to the parameters in the normal text notification, the system live view notification provides the **typeCode**, **capsule**, **button**, **time**, and **progress** parameters. For details, see [NotificationSystemLiveViewContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationsystemliveviewcontent).
-   
+     
       ```ts
       let imagePixelMap: image.PixelMap | undefined = undefined; // Obtain the image pixel map information.
       let color = new ArrayBuffer(4);
