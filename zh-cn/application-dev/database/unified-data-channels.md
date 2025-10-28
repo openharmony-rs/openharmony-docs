@@ -64,7 +64,7 @@ import hilog from '@ohos.hilog';
 
 2. 创建一个统一数据对象并插入到UDMF的公共数据通路中。
 
-2.1导入对应数据对象模块。
+- 2.1 导入对应数据对象模块。
 
 <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
@@ -73,9 +73,61 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 ```
 
-2.2 创建统一数据对象并插入到UDMF的公共数据通路中。
+- 2.2 创建并插入数据。
 
 <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+
+``` TypeScript
+// 准备PlainText文本数据内容
+let plainTextObj: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'Hello world',
+  abstract: 'This is abstract'
+}
+let record =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextObj);
+// 准备HTML数据内容
+let htmlObj: uniformDataStruct.HTML = {
+  uniformDataType: 'general.html',
+  htmlContent: '<div><p>Hello world</p></div>',
+  plainContent: 'Hello world'
+}
+// 为该记录增加一种样式，两种样式存储的是同一个数据，为不同表达形式
+record.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
+let unifiedData = new unifiedDataChannel.UnifiedData(record);
+
+// 准备pixelMap数据内容
+let arrayBuffer = new ArrayBuffer(4 * 3 * 3);
+let opt: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: { height: 3, width: 3 },
+  alphaType: 3
+};
+let pixelMap: uniformDataStruct.PixelMap = {
+  uniformDataType: 'openharmony.pixel-map',
+  pixelMap: image.createPixelMapSync(arrayBuffer, opt)
+}
+unifiedData.addRecord(new unifiedDataChannel.UnifiedRecord(
+  uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap));
+// 指定要插入数据的数据通路枚举类型
+let options: unifiedDataChannel.Options = {
+  intention: unifiedDataChannel.Intention.DATA_HUB
+}
+try {
+  unifiedDataChannel.insertData(options, unifiedData, (err, key) => {
+    if (err === undefined) {
+      hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key}`);
+    } else {
+      hilog.error(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key})`);
+    }
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  hilog.error(0xFF00, '[Sample_Udmf]',
+    `Insert data throws an exception. code is ${error.code},message is ${error.message}`);
+}
+```
 
 3. 更新上一步插入的统一数据对象。
 
