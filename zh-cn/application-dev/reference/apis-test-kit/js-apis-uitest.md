@@ -3539,7 +3539,9 @@ async function demo() {
 
 ### dragBetween<sup>20+</sup>
 
-dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+ArkTS-Dyn: dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+
+ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Promise\<void>
 
 从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
 
@@ -3639,7 +3641,7 @@ async function demo() {
 
 ArkTS-Dyn: screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-ArkTS-Sta: screenCap(savePath: string, displayId: number): Promise\<boolean>
+ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 
 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
 
@@ -3909,7 +3911,8 @@ async function demo() {
 ### getDisplaySize<sup>20+</sup>
 
 ArkTS-Dyn: getDisplaySize(displayId: number): Promise\<Point>
-ArkTS-Sta: getDisplaySize(displayId: number): Promise\<Point>
+
+ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
 获取当前设备指定屏幕的大小，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -4379,7 +4382,9 @@ async function demo() {
 
 ### fling<sup>20+</sup>
 
-fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
+ArkTS-Dyn: fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
+
+ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<void>
 
 指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
@@ -4775,8 +4780,8 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                      | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                     | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -4957,7 +4962,9 @@ async function demo() {
 
 ### mouseDrag<sup>20+</sup>
 
-mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+ArkTS-Dyn: mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
+
+ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
 
@@ -5416,7 +5423,9 @@ async function demo() {
 
 ### crownRotate<sup>20+</sup>
 
-crownRotate(d: number, speed?: number): Promise\<void>
+ArkTS-Dyn: crownRotate(d: number, speed?: number): Promise\<void>
+
+ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 
 注入手表表冠旋转事件，可指定旋转速度，使用Promise异步回调。
 
