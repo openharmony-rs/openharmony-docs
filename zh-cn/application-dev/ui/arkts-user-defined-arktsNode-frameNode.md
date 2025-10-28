@@ -60,9 +60,7 @@ FrameNode提供了节点的增、删、查、改的能力，能够修改非代�
 >
 > 使用自定义组件的场景下，可能查询获得自定义组件的新增节点，节点类型为“\_\_Common\_\_”。
 
-```ts
 <!-- [frameNodeTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTree.ets) --> 
-```
 
 ## 使用moveTo移动命令式节点
 
@@ -80,9 +78,7 @@ FrameNode提供了节点的增、删、查、改的能力，能够修改非代�
 >
 > 当前仅支持根节点为以下类型组件的[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildernode-1)进行移动操作：[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)、[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)、[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。对于其他类型的组件，移动操作不会生效。
 
-```ts
 <!-- [frameNodeMoveTo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeMoveTo.ets) --> 
-```
 
 ![moveToDemo](figures/moveToDemo.gif)
 
@@ -96,9 +92,7 @@ FrameNode提供了[commonAttribute](../reference/apis-arkui/js-apis-arkui-frameN
 > 
 > - 设置的基础事件与系统组件定义的事件平行，参与事件竞争。设置的基础事件不覆盖系统组件事件。同时设置两个事件回调的时候，优先回调系统组件事件。
 
-```ts
 <!-- [frameNodeCommon_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCommon.ets) --> 
-```
 
 ## 自定义测量布局与绘制
 
@@ -116,9 +110,7 @@ FrameNode提供了[commonAttribute](../reference/apis-arkui/js-apis-arkui-frameN
 > 
 > - 通过onDraw方法进行的自定义绘制，绘制内容大小无法超出组件大小。
 
-```ts
 <!-- [frameNodeDraw_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets) --> 
-```
 
 ## 查找节点及获取基础信息
 
@@ -152,17 +144,13 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 
 ![FrameNode-Position-Relation](./figures/frameNode-position-relation.png)
 
-```ts
 <!-- [frameNodePosition_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodePosition.ets) --> 
-```
 
 ## 通过typeNode创建具体类型的FrameNode节点
 
 通过TypeNode创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
 
-```ts
 <!-- [frameNodeTypeNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTypeNode.ets) --> 
-```
 
 ## 解除当前FrameNode对象对实体FrameNode节点的引用关系
 
@@ -174,9 +162,7 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 >
 > 通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体FrameNode节点。
 
-```ts
 <!-- [frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDisposed.ets) --> 
-```
 
 ## 查询当前FrameNode是否解除引用
 
@@ -184,9 +170,7 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-frameNode.md#isdisposed20)接口查询当前FrameNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
-```ts
 <!-- [frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsDisposed.ets) --> 
-```
 
 ## FrameNode的数据懒加载能力
 
@@ -196,9 +180,7 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 >
 > 入参不能为负数，入参为负数时不做处理。
 
-```ts
 <!-- [frameNodeLazyForEach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEach.ets) --> 
-```
 
 ## 查询LazyForEach中的FrameNode节点信息
 
@@ -212,9 +194,7 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 
 可以使用[getFirstChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getfirstchildindexwithoutexpand15)和[getLastChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlastchildindexwithoutexpand15)获取当前节点第一个和最后一个在主节点树上的子节点的序列号，其中子节点序列号按所有子节点计算。
 
-```ts
 <!-- [frameNodeLazyForEachSelect_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEachSelect.ets) --> 
-```
 
 ## 调整自定义绘制Canvas的变换矩阵
 
@@ -230,7 +210,6 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 
 **ArkTS接口调用示例：**
 
-```ts
 <!-- [frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
-```
+
 ![FrameNode-canvas](./figures/frameNode-canvas.png)
