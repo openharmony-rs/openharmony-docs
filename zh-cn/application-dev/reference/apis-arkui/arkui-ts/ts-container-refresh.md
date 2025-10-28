@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  - 该组件从API version 12开始支持与垂直滚动的Swiper和Web的联动。当Swiper设置loop属性为true时，Refresh无法和Swiper产生联动。
@@ -60,7 +62,9 @@ Refresh(value: RefreshOptions)
 
 ### refreshOffset<sup>12+</sup>
 
-refreshOffset(value: number)
+ArkTS-Dyn: refreshOffset(value: number)
+
+ArkTS-Sta: refreshOffset(value: double | undefined)
 
 设置触发刷新的下拉偏移量，当下拉距离小于该属性设置值时离手不会触发刷新。
 
@@ -68,15 +72,21 @@ refreshOffset(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | number |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。 |
 
 ### pullToRefresh<sup>12+</sup>
 
-pullToRefresh(value: boolean)
+ArkTS-Dyn: pullToRefresh(value: boolean)
+
+ArkTS-Sta: pullToRefresh(value: boolean | undefined)
 
 设置当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。
 
@@ -84,15 +94,21 @@ pullToRefresh(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | boolean |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
+| value  |  ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
 
 ### pullDownRatio<sup>12+</sup>
 
-pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number>)
+ArkTS-Dyn: pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number>)
+
+ArkTS-Sta: pullDownRatio(ratio: double | undefined)
 
 设置下拉跟手系数。
 
@@ -100,11 +116,15 @@ pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| ratio  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number> |  是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>有效值为0-1之间的值，小于0的值会被视为0，大于1的值会被视为1。
+| ratio  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number><br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined |  是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>有效值为0-1之间的值，小于0的值会被视为0，大于1的值会被视为1。
 
 ### maxPullDownDistance<sup>20+</sup>
 
@@ -154,7 +174,9 @@ onRefreshing(callback: () => void)
 
 ### onOffsetChange<sup>12+</sup>
 
-onOffsetChange(callback: Callback\<number>)
+ArkTS-Dyn: onOffsetChange(callback: Callback\<number>)
+
+ArkTS-Sta: onOffsetChange(callback: Callback\<double> | undefined)
 
 下拉距离发生变化时触发回调。
 
@@ -162,11 +184,15 @@ onOffsetChange(callback: Callback\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                    | 必填 | 说明       |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | Callback\<number> | 是   | 下拉距离。<br/>单位：vp |
+| callback  | ArkTS-Dyn: Callback\<number><br/>ArkTS-Sta: Callback\<double>&nbsp;\|&nbsp;undefined | 是   | 下拉距离。<br/>单位：vp |
 
 
 ## RefreshStatus枚举说明

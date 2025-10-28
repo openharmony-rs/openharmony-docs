@@ -6,11 +6,13 @@
 
 > **说明：**
 >
-> 该组件从API version 9 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> WaterFlow组件支持展示瀑布流布局，不支持编辑模式和子元素拖动功能。
+> - 该组件从API version 9 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
+> - WaterFlow组件支持展示瀑布流布局，不支持编辑模式和子元素拖动功能。
+>
+> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 ## 子组件
 
 
@@ -243,7 +245,9 @@ type GetItemMainSizeByIndex = (index: number) => number
 
 ### columnsTemplate
 
-columnsTemplate(value: string)
+ArkTS-Dyn: columnsTemplate(value: string)
+
+ArkTS-Sta: columnsTemplate(value: string | undefined)
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列。
 
@@ -255,15 +259,21 @@ columnsTemplate(value: string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | string | 是   | 当前瀑布流组件布局列的数量。<br/>默认值：'1fr' |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 当前瀑布流组件布局列的数量。<br/>默认值：'1fr' |
 
 ### rowsTemplate
 
-rowsTemplate(value: string)
+ArkTS-Dyn: rowsTemplate(value: string)
+
+ArkTS-Sta: rowsTemplate(value: string | undefined)
 
 设置当前瀑布流组件布局行的数量，不设置时默认1行。
 
@@ -275,15 +285,21 @@ rowsTemplate(value: string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | string | 是   | 当前瀑布流组件布局行的数量。<br/>默认值：'1fr' |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 当前瀑布流组件布局行的数量。<br/>默认值：'1fr' |
 
 ### itemConstraintSize
 
-itemConstraintSize(value: ConstraintSizeOptions)
+ArkTS-Dyn: itemConstraintSize(value: ConstraintSizeOptions)
+
+ArkTS-Sta: itemConstraintSize(value: ConstraintSizeOptions | undefined)
 
 设置约束尺寸，子组件布局时，进行尺寸范围限制。
 
@@ -291,15 +307,21 @@ itemConstraintSize(value: ConstraintSizeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                       | 必填 | 说明       |
 | ------ | ---------------------------------------------------------- | ---- | ---------- |
-| value  | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是   | 约束尺寸。设置小于0的值，参数不生效。 <br/>**说明：**<br/>1.同时设置itemConstraintSize和FlowItem的[constraintSize](ts-universal-attributes-size.md#constraintsize)属性时，minWidth/minHeight会取其中的最大值，maxWidth/maxHeight会取其中的最小值，调整后的值作为FlowItem的constraintSize处理。<br/>2.只设置itemConstraintSize时，相当于对WaterFlow所有子组件设置了相同的constraintSize。<br/>3.itemConstraintSize通过以上两种方式转换成FlowItem的constraintSize后的生效规则与通用属性[constraintSize](./ts-universal-attributes-size.md#constraintsize)相同。|
+| value  | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)<br/>ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined | 是   | 约束尺寸。设置小于0的值，参数不生效。 <br/>**说明：**<br/>1.同时设置itemConstraintSize和FlowItem的[constraintSize](ts-universal-attributes-size.md#constraintsize)属性时，minWidth/minHeight会取其中的最大值，maxWidth/maxHeight会取其中的最小值，调整后的值作为FlowItem的constraintSize处理。<br/>2.只设置itemConstraintSize时，相当于对WaterFlow所有子组件设置了相同的constraintSize。<br/>3.itemConstraintSize通过以上两种方式转换成FlowItem的constraintSize后的生效规则与通用属性[constraintSize](./ts-universal-attributes-size.md#constraintsize)相同。 |
 
 ### columnsGap
 
-columnsGap(value: Length)
+ArkTS-Dyn: columnsGap(value: Length)
+
+ArkTS-Sta: columnsGap(value: Length | undefined)
 
 设置列与列的间距。 
 
@@ -307,15 +329,21 @@ columnsGap(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                          |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 列与列的间距。 <br/>默认值：0<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 列与列的间距。 <br/>默认值：0<br/>取值范围：[0, +∞) |
 
 ### rowsGap
 
-rowsGap(value: Length)
+ArkTS-Dyn: rowsGap(value: Length)
+
+ArkTS-Sta: rowsGap(value: Length | undefined)
 
 设置行与行的间距。 
 
@@ -323,15 +351,21 @@ rowsGap(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                          |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 行与行的间距。 <br/>默认值：0<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 行与行的间距。 <br/>默认值：0<br/>取值范围：[0, +∞) |
 
 ### layoutDirection
 
-layoutDirection(value: FlexDirection)
+ArkTS-Dyn: layoutDirection(value: FlexDirection)
+
+ArkTS-Sta: layoutDirection(value: FlexDirection | undefined)
 
 设置布局的主轴方向。
 
@@ -339,11 +373,15 @@ layoutDirection(value: FlexDirection)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                              |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------- |
-| value  | [FlexDirection](ts-appendix-enums.md#flexdirection) | 是   | 布局的主轴方向。<br/>默认值：FlexDirection.Column |
+| value  | ArkTS-Dyn: [FlexDirection](ts-appendix-enums.md#flexdirection)<br/>ArkTS-Sta: [FlexDirection](ts-appendix-enums.md#flexdirection) \| undefined | 是   | 布局的主轴方向。<br/>默认值：FlexDirection.Column |
 
 layoutDirection优先级高于rowsTemplate和columnsTemplate。根据layoutDirection设置情况，分为以下三种设置模式：
 
@@ -361,7 +399,9 @@ layoutDirection优先级高于rowsTemplate和columnsTemplate。根据layoutDirec
 
 ### enableScrollInteraction<sup>10+</sup>
 
-enableScrollInteraction(value: boolean)
+ArkTS-Dyn: enableScrollInteraction(value: boolean)
+
+ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 设置是否支持滚动手势。
 
@@ -369,11 +409,15 @@ enableScrollInteraction(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
 
 > **说明：** 
 >
@@ -381,7 +425,9 @@ enableScrollInteraction(value: boolean)
 
 ### nestedScroll<sup>10+</sup>
 
-nestedScroll(value: NestedScrollOptions)
+ArkTS-Dyn: nestedScroll(value: NestedScrollOptions)
+
+ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。
 
@@ -389,15 +435,21 @@ nestedScroll(value: NestedScrollOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) | 是   | 嵌套滚动选项。 |
+| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| undefined | 是   | 嵌套滚动选项。  |
 
 ### friction<sup>10+</sup>
 
-friction(value: number | Resource)
+ArkTS-Dyn: friction(value: number | Resource)
+
+ArkTS-Sta: friction(value: double | Resource | undefined)
 
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
@@ -405,15 +457,21 @@ friction(value: number | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
 
 ### cachedCount<sup>11+</sup>
 
-cachedCount(value: number)
+ArkTS-Dyn: cachedCount(value: number)
+
+ArkTS-Sta: cachedCount(value: int | undefined)
 
 设置预加载的FlowItem数量。
 
@@ -423,15 +481,21 @@ cachedCount(value: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 预加载的FlowItem的数量。 <br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined| 是   | 预加载的FlowItem的数量。 <br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
 
 ### cachedCount<sup>14+</sup>
 
-cachedCount(count: number, show: boolean)
+ArkTS-Dyn: cachedCount(count: number, show: boolean)
+
+ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
 设置预加载的FlowItem数量，并配置是否显示预加载节点。
 
@@ -443,12 +507,16 @@ cachedCount(count: number, show: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| count | number | 是   | 预加载的FlowItem的数量。 <br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show  | boolean | 是   | 被预加载的FlowItem是否需要显示。设置为true时显示预加载的FlowItem，设置为false时不显示预加载的FlowItem。 <br/> 默认值：false |
+| count | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 预加载的FlowItem的数量。 <br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| show  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 被预加载的FlowItem是否需要显示。设置为true时显示预加载的FlowItem，设置为false时不显示预加载的FlowItem。 <br/> 默认值：false |
 
 ## 事件
 
@@ -511,7 +579,9 @@ onScrollFrameBegin(event: (offset: number, state: ScrollState) => { offsetRemain
 
 ### onScrollIndex<sup>11+</sup>
 
-onScrollIndex(event: (first: number, last: number) => void)
+ArkTS-Dyn: onScrollIndex(event: (first: number, last: number) => void)
+
+ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发。瀑布流初始化时会触发一次。
 
@@ -521,12 +591,16 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| first  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1]  |
+| last   | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1]  |
 
 通过`last`参数可以判断是否“继续加载数据”，参考[示例3使用分组](#示例3使用分组)中"即将触底时提前增加数据"的处理逻辑。
 

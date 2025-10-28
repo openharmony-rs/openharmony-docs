@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - ScrollBar主轴方向不设置大小时，采用父组件[布局约束](../js-apis-arkui-frameNode.md#layoutconstraint12)中的maxSize作为主轴方向大小。如果ScrollBar的父组件存在可滚动组件，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)，建议设置ScrollBar主轴方向大小，否则ScrollBar主轴方向大小可能为无穷大。
 
@@ -35,7 +37,9 @@ ScrollBar(value: ScrollBarOptions)
 
 ### enableNestedScroll<sup>14+</sup>
 
-enableNestedScroll(enabled: Optional\<boolean>)
+ArkTS-Dyn: enableNestedScroll(enabled: Optional\<boolean>)
+
+ArkTS-Sta: enableNestedScroll(enabled: boolean | undefined)
 
 设置滚动条是否嵌套滚动。
 
@@ -43,11 +47,15 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| enabled  | Optional\<boolean> | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false |
+| enabled  | ArkTS-Dyn: Optional\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false |
 
 >  **说明：**
 >

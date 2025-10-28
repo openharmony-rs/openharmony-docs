@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[List](ts-container-list.md)。
 > - ListItemGroup组件不支持设置[通用属性aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)。
@@ -52,7 +54,9 @@ ListItemGroup组件参数。
 
 ### divider
 
-divider(value: [ListDividerOptions](ts-container-list.md#listdivideroptions18对象说明) | null)
+ArkTS-Dyn: divider(value: [ListDividerOptions](ts-container-list.md#listdivideroptions18对象说明) | null)
+
+ArkTS-Sta: divider(value: [ListDividerOptions](ts-container-list.md#listdivideroptions18对象说明) | null | undefined)
 
 设置ListItem分割线样式，默认无分割线。
 
@@ -64,15 +68,21 @@ ListItem设置[多态样式](ts-universal-attributes-polymorphic-style.md)时，
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ListDividerOptions](ts-container-list.md#listdivideroptions18对象说明)&nbsp;\|&nbsp;null | 是   | ListItem分割线样式。<br/> 默认值：null |
+| value  | ArkTS-Dyn: [ListDividerOptions](ts-container-list.md#listdivideroptions18对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [ListDividerOptions](ts-container-list.md#listdivideroptions18对象说明) \| null \| undefined | 是   | ListItem分割线样式。<br/> 默认值：null |
 
 ### childrenMainSize<sup>12+</sup>
 
-childrenMainSize(value: ChildrenMainSize)
+ArkTS-Dyn: childrenMainSize(value: ChildrenMainSize)
+
+ArkTS-Sta: childrenMainSize(value: ChildrenMainSize | undefined)
 
 设置ListItemGroup组件的子组件在主轴方向的大小信息。
 
@@ -84,11 +94,15 @@ childrenMainSize(value: ChildrenMainSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明) | 是   | 该对象用来维护子组件在主轴方向的大小信息。|
+| value | ArkTS-Dyn: [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明)<br/>ArkTS-Sta: [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明) \| undefined | 是   | 该对象用来维护子组件在主轴方向的大小信息。|
 
 ## ListItemGroupStyle<sup>10+</sup>枚举说明
 
