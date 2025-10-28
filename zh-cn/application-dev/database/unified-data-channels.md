@@ -71,6 +71,43 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
+``` TypeScript
+let plainTextUpdate: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'How are you',
+  abstract: 'This is abstract'
+}
+let recordUpdate =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+let htmlUpdate: uniformDataStruct.HTML = {
+  uniformDataType: 'general.html',
+  htmlContent: '<div><p>How are you</p></div>',
+  plainContent: 'How are you'
+}
+recordUpdate.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlUpdate);
+let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(recordUpdate);
+
+// 指定要更新的统一数据对象的URI
+let optionsUpdate: unifiedDataChannel.Options = {
+  // 此处的key值仅为示例，不可直接使用，其值与insertData接口回调函数中key保持一致
+  key: 'udmf://DataHub/com.ohos.test/0123456789'
+};
+
+try {
+  unifiedDataChannel.updateData(optionsUpdate, unifiedDataUpdate, (err) => {
+    if (err === undefined) {
+      hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in updating data.`);
+    } else {
+      hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code},message is ${err.message}`);
+    }
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  hilog.error(0xFF00, '[Sample_Udmf]',
+    `Update data throws an exception. code is ${error.code},message is ${error.message}`);
+}
+```
+
 4. 删除存储在UDMF公共数据通路中的统一数据对象。
 
 <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
