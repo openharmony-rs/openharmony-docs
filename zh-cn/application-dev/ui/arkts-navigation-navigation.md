@@ -25,6 +25,13 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 <!-- @[NavigationModeAuto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeAuto.ets) -->
 
+``` TypeScript
+Navigation() {
+  // ···
+}
+.mode(NavigationMode.Auto)
+```
+
 - 单栏模式
 
   单栏模式适用于窄屏设备，发生路由跳转时，整个页面都会被替换。
@@ -36,6 +43,13 @@ Navigation组件通过mode属性设置页面的显示模式。
   将mode属性设置为NavigationMode.Stack，Navigation组件即可设置为单栏显示模式。
 
 <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
+
+``` TypeScript
+Navigation() {
+  // ···
+}
+.mode(NavigationMode.Stack)
+```
 
   ![导航单栏模式](figures/导航单栏模式.jpg)
 
@@ -50,6 +64,145 @@ Navigation组件通过mode属性设置页面的显示模式。
   将mode属性设置为NavigationMode.Split，Navigation组件即可设置为分栏显示模式。
 
 <!-- @[NavigationModeSplit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeSplit.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct PageDisplayModeSplit {
+  @State toolTmp: ToolbarItem = {
+    'value': 'func',
+    'icon': 'resources/base/media/ic_public_highlights.svg',  // 当前目录image文件夹下的图标资源
+    'action': () => {}
+  };
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  private arr: number[] = [1, 2, 3];
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      pageOneTmp();
+    } else if (name === 'NavDestinationTitle2') {
+      pageTwoTmp();
+    } else if (name === 'NavDestinationTitle3') {
+      pageThreeTmp();
+    }
+  };
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        TextInput({ placeholder: 'search...' })
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('90%')
+        .margin({ top: 12 })
+      }
+      .title('主标题')
+      .mode(NavigationMode.Split)
+      .navDestination(this.pageMap)
+      .menus([
+        {
+          value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
+        }
+        },
+        {
+          value: '', icon: 'resources/base/media/ic_public_add.svg', action: () => {
+        }
+        },
+        {
+          value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
+        }
+        },
+        {
+          value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
+        }
+        },
+        {
+          value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
+        }
+        }
+      ])
+      .toolbarConfiguration([this.toolTmp, this.toolTmp, this.toolTmp])
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+
+@Component
+export struct pageOneTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('NavDestinationContent1')
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
+      hilog.info(DOMAIN, 'testTag', 'pop', '返回值', JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('NavDestinationContent2')
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
+      hilog.info(DOMAIN, 'testTag', 'pop', '返回值', JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageThreeTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('NavDestinationContent3')
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle3')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
+      hilog.info(DOMAIN, 'testTag', 'pop', '返回值', JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
 
   ![导航分栏模式](figures/导航分栏模式.jpg)
 
@@ -71,6 +224,13 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
 
+``` TypeScript
+Navigation() {
+  // ···
+}
+.title(this.NavigationTitle)
+```
+
 - Full模式
 
   强调型标题栏，用于一级页面需要突出标题的场景。
@@ -80,6 +240,13 @@ Navigation组件通过mode属性设置页面的显示模式。
   ![free1](figures/free1.jpg)
 
 <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
+
+``` TypeScript
+Navigation() {
+  // ···
+}
+.titleMode(NavigationTitleMode.Full)
+```
 
 ## 设置菜单栏
 
@@ -91,15 +258,54 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
 
+``` TypeScript
+  @State toolTmp: NavigationMenuItem  = {
+    'value': 'func',
+    'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+    'action': () => {}
+  };
+// ···
+      Navigation(this.pageInfos) {
+        // ···
+      }
+      .menus([this.toolTmp, this.toolTmp, this.toolTmp])
+```
+
 图片也可以引用resources中的资源。
 
 <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
+
+``` TypeScript
+  @State toolTmp: NavigationMenuItem  = {
+    'value': 'func',
+    'icon': 'resources/base/media/ic_public_add.svg',
+    'action': () => {}
+  };
+// ···
+      Navigation(this.pageInfos) {
+        // ···
+      }
+      .menus([this.toolTmp, this.toolTmp, this.toolTmp])
+```
 
 **图6** 设置了4个图标的菜单栏  
 
 ![菜单栏](figures/菜单栏.jpg)
 
 <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
+
+``` TypeScript
+  @State toolTmp: NavigationMenuItem  = {
+    'value': 'func',
+    'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+    'action': () => {}
+  };
+// ···
+      Navigation(this.pageInfos) {
+        // ···
+      }
+      .menus([this.toolTmp, this.toolTmp, this.toolTmp, this.toolTmp])
+```
 
 ## 设置工具栏
 
@@ -111,6 +317,20 @@ Navigation组件通过mode属性设置页面的显示模式。
 ![free3](figures/free3.jpg)
 
 <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
+
+``` TypeScript
+let toolTmp: ToolbarItem = {
+  'value': 'func',
+  'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
+  'action': () => {}
+};
+let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+// ···
+      Navigation(this.pageInfos) {
+        // ···
+      }
+      .toolbarConfiguration(tooBar)
+```
 
 ## 路由操作
 
@@ -125,6 +345,21 @@ Navigation路由相关的操作都是基于导航控制器[NavPathStack](../refe
 > 2.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
 <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  // 创建一个导航控制器对象并传入Navigation
+  pageStack: NavPathStack = new NavPathStack();
+// ···
+  build() {
+    Navigation(this.pageStack) {
+    // ···
+    }.title('Main')
+  }
+}
+```
 
 ### 页面跳转
 
