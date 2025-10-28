@@ -750,7 +750,7 @@ isTorchSupported(): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 返回true表示设备支持手电筒，返回false表示设备不支持手电。 |
+| boolean    | 返回true表示设备支持手电筒，返回false表示设备不支持手电。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -781,7 +781,7 @@ isTorchModeSupported(mode: TorchMode): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 返回true表示设备支持设置的手电筒模式，返回false表示设备不支持的手电筒模式。 |
+| boolean    | 返回true表示设备支持设置的手电筒模式，返回false表示设备不支持的手电筒模式。若接口调用失败，返回undefined。 |
 
 **示例：**
 
