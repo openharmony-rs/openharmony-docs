@@ -112,6 +112,44 @@ try {
 
 <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
+``` TypeScript
+// 指定要删除数据的数据通路枚举类型
+let optionsDelete: unifiedDataChannel.Options = {
+  intention: unifiedDataChannel.Intention.DATA_HUB
+};
+
+try {
+  unifiedDataChannel.deleteData(optionsDelete, (err, data) => {
+    if (err === undefined) {
+      hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in deleting data. size = ${data.length}`);
+      for (let i = 0; i < data.length; i++) {
+        let records = data[i].getRecords();
+        for (let j = 0; j < records.length; j++) {
+          let types = records[j].getTypes();
+          // 根据业务需要从记录中获取样式数据
+          if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${text.textContent}`);
+          }
+          if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
+            let html =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+            hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${html.htmlContent}`);
+          }
+        }
+      }
+    } else {
+      hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code},message is ${err.message}`);
+    }
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  hilog.error(0xFF00, '[Sample_Udmf]',
+    `Delete data throws an exception. code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### 数据访问方
 
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
