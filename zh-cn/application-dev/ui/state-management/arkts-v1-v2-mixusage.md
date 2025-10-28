@@ -610,12 +610,84 @@ struct ArrayCompV2 {
 
 <!-- @[state_mixed_scene_built_type_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ArrayCompV2 {
+  @Local arr: Array<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]));
+
+  build() {
+    Column() {
+      Text(`V2 ${this.arr[0]}`).fontSize(20).onClick(() => {
+        // 点击触发V2变化，且同步给V1 @ObjectLink
+        this.arr[0]++;
+      })
+      ArrayCompV1({ arr: this.arr })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ArrayCompV1 {
+  @ObjectLink arr: Array<number>;
+
+  build() {
+    Column() {
+      Text(`V1 ${this.arr[0]}`).fontSize(20).onClick(() => {
+        // 点击触发V1变化，且双向同步回给V2
+        this.arr[0]++;
+      })
+    }
+  }
+}
+```
+
 **不推荐写法**
 
 在下面的例子中，没有调用enableV2Compatibility和makeV1Observed，且对\@ObjectLink非法初始化，使其无法观察属性的变化。
 但因为传递给\@ObjectLink是V2的状态变量，所以可以触发V2的刷新。
 
 <!-- @[state_mixed_scene_built_type_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1NotRecommend.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct ArrayCompV2 {
+  @Local arr: Array<number> = [1, 2, 3];
+
+  build() {
+    Column() {
+      Text(`V2 ${this.arr[0]}`).fontSize(20).onClick(() => {
+        // 点击触发V2变化
+        this.arr[0]++;
+      })
+      // 传递给@ObjectLink为非@Observed和makeV1Observed数据
+      // 非法操作，@ObjectLink将不能观察属性变化
+      ArrayCompV1({ arr: this.arr })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ArrayCompV1 {
+  @ObjectLink arr: Array<number>;
+
+  build() {
+    Column() {
+      Text(`V1 ${this.arr[0]}`).fontSize(20).onClick(() => {
+        // V1不刷新，但可以触发V2的刷新
+        this.arr[0]++;
+      })
+    }
+  }
+}
+```
 
 ### 二维数组
 
@@ -627,6 +699,63 @@ struct ArrayCompV2 {
 
 <!-- @[state_mixed_scene_two_bit_array_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV1V2.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@ComponentV2
+struct Item {
+  @Require @Param itemArr: Array<string>;
+
+  build() {
+    Row() {
+      ForEach(this.itemArr, (item: string, index: number) => {
+        Text(`${index}: ${item}`)
+      }, (item: string) => item + Math.random())
+
+      Button('@Param push')
+        .onClick(() => {
+          this.itemArr.push('Param');
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct IndexPage {
+  @State arr: Array<Array<string>> =
+    [UIUtils.makeV1Observed(['apple']), UIUtils.makeV1Observed(['banana']), UIUtils.makeV1Observed(['orange'])];
+
+  build() {
+    Column() {
+      ForEach(this.arr, (itemArr: Array<string>) => {
+        Item({ itemArr: UIUtils.enableV2Compatibility(itemArr) })
+      }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
+      Divider()
+      Button('@State push two-dimensional array item')
+        .onClick(() => {
+          this.arr[0].push('strawberry');
+        })
+
+      Button('@State push array item')
+        .onClick(() => {
+          this.arr.push(UIUtils.makeV1Observed(['pear']));
+        })
+
+      Button('@State change two-dimensional array first item')
+        .onClick(() => {
+          this.arr[0][0] = 'APPLE';
+        })
+
+      Button('@State change array first item')
+        .onClick(() => {
+          this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
+        })
+    }
+  }
+}
+```
+
 **V2->V1**
 
 下面的例子中：
@@ -634,6 +763,64 @@ struct ArrayCompV2 {
 - 在V1中，使用\@ObjectLink接收二维数组的内层数组，因为其为makeV1Observed的返回值，所以点击`Button('@ObjectLink push')`，会正常响应刷新。
 
 <!-- @[state_mixed_scene_two_bit_array_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV2V1.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Component
+struct Item {
+  @ObjectLink itemArr: Array<string>;
+
+  build() {
+    Row() {
+      ForEach(this.itemArr, (item: string, index: number) => {
+        Text(`${index}: ${item}`)
+      }, (item: string) => item + Math.random())
+
+      Button('@ObjectLink push')
+        .onClick(() => {
+          this.itemArr.push('ObjectLink');
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct IndexPage {
+  @Local arr: Array<Array<string>> =
+    UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([UIUtils.makeV1Observed(['apple']),
+      UIUtils.makeV1Observed(['banana']), UIUtils.makeV1Observed(['orange'])]));
+
+  build() {
+    Column() {
+      ForEach(this.arr, (itemArr: Array<string>) => {
+        Item({ itemArr: itemArr })
+      }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
+      Divider()
+      Button('@Local push two-dimensional array item')
+        .onClick(() => {
+          this.arr[0].push('strawberry');
+        })
+
+      Button('@Local push array item')
+        .onClick(() => {
+          this.arr.push(UIUtils.makeV1Observed(['pear']));
+        })
+
+      Button('@Local change two-dimensional array first item')
+        .onClick(() => {
+          this.arr[0][0] = 'APPLE';
+        })
+
+      Button('@Local change array first item')
+        .onClick(() => {
+          this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
+        })
+    }
+  }
+}
+```
 
 ### 嵌套类型
 
@@ -654,9 +841,244 @@ NestedClassV2({ outer: this.outer })
 
 <!-- @[state_mixed_scene_nested_type_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV1V2.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+class ArrayItem {
+  public value: number = 0;
+
+  constructor(value: number) {
+    this.value = value;
+  }
+}
+
+class Inner {
+  public innerValue: string = 'inner';
+  public arr: Array<ArrayItem>;
+
+  constructor(arr: Array<ArrayItem>) {
+    this.arr = arr;
+  }
+}
+
+class Outer {
+  @Track public outerValue: string = 'outer';
+  @Track public inner: Inner;
+
+  constructor(inner: Inner) {
+    this.inner = inner;
+  }
+}
+
+@Entry
+@Component
+struct NestedClassV1 {
+  // 需保证每一层都是V1的状态变量
+  @State outer: Outer =
+    UIUtils.makeV1Observed(new Outer(
+      UIUtils.makeV1Observed(new Inner(UIUtils.makeV1Observed([
+        UIUtils.makeV1Observed(new ArrayItem(1)),
+        UIUtils.makeV1Observed(new ArrayItem(2))
+      ])))
+    ));
+
+  build() {
+    Column() {
+      Text(`@State outer.outerValue can update ${this.outer.outerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // @State可以观察第一层的变化
+          // 变化会通知@ObjectLink和@Param刷新
+          this.outer.outerValue += '!';
+        })
+
+      Text(`@State outer.inner.innerValue cannot update ${this.outer.inner.innerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // @State无法观察第二层的变化
+          // 但该变化会被@ObjectLink和@Param观察
+          this.outer.inner.innerValue += '!';
+        })
+      // 将inner传递给@ObjectLink可观察inner属性的变化
+      NestedClassV1ObjectLink({ inner: this.outer.inner })
+      // 将开启enableV2Compatibility的数据传给V2
+      NestedClassV2({ outer: UIUtils.enableV2Compatibility(this.outer) })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct NestedClassV1ObjectLink {
+  @ObjectLink inner: Inner;
+
+  build() {
+    Text(`@ObjectLink inner.innerValue can update ${this.inner.innerValue}`)
+      .fontSize(20)
+      .onClick(() => {
+        // 可以触发刷新，和@Param是同一个对象的引用，@Param也会进行刷新
+        this.inner.innerValue += '!';
+      })
+  }
+}
+
+@ComponentV2
+struct NestedClassV2 {
+  @Require @Param outer: Outer;
+
+  build() {
+    Column() {
+      Text(`@Param outer.outerValue can update ${this.outer.outerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 可以观察第一层的变化
+          this.outer.outerValue += '!';
+        })
+      Text(`@Param outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 可以观察第二层的变化，和@ObjectLink是同一个对象的引用，也会触发刷新
+          this.outer.inner.innerValue += '!';
+        })
+
+      Repeat(this.outer.inner.arr)
+        .each((item: RepeatItem<ArrayItem>) => {
+          Text(`@Param outer.inner.arr index: ${item.index} item: ${item.item.value}`)
+        })
+
+      Button('@Param push').onClick(() => {
+        // outer已经使能了V2观察能力，对于新增加的数据，则默认开启V2观察能力
+        this.outer.inner.arr.push(UIUtils.makeV1Observed(new ArrayItem(20)));
+      })
+
+      Button('@Param change the last Item').onClick(() => {
+        // 可以观察最后一个数组项的属性变化
+        this.outer.inner.arr[this.outer.inner.arr.length - 1].value++;
+      })
+    }
+  }
+}
+```
+
 **V2->V1**
 
 - 下面的例子中，`NestedClassV2`中`outer`调用了`UIUtils.enableV2Compatibility`，且每一层都是`UIUtils.makeV1Observed`的返回值，所以`outer`在V2中有了深度观察的能力。
 - V1中仅能观察第一层的变化，所以需要多层自定义组件，且每层都配合使用\@ObjectLink来接收，从而实现深度观察能力。
 
 <!-- @[state_mixed_scene_nested_type_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV2V1.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+class ArrayItem {
+  public value: number = 0;
+
+  constructor(value: number) {
+    this.value = value;
+  }
+}
+
+class Inner {
+  public innerValue: string = 'inner';
+  public arr: Array<ArrayItem>;
+
+  constructor(arr: Array<ArrayItem>) {
+    this.arr = arr;
+  }
+}
+
+class Outer {
+  @Track public outerValue: string = 'out';
+  @Track public inner: Inner;
+
+  constructor(inner: Inner) {
+    this.inner = inner;
+  }
+}
+
+@Entry
+@ComponentV2
+struct NestedClassV2 {
+  // 需保证每一层都是V1的状态变量
+  @Local outer: Outer = UIUtils.enableV2Compatibility(
+    UIUtils.makeV1Observed(new Outer(
+      UIUtils.makeV1Observed(new Inner(UIUtils.makeV1Observed([
+        UIUtils.makeV1Observed(new ArrayItem(1)),
+        UIUtils.makeV1Observed(new ArrayItem(2))
+      ])))
+    )));
+
+  build() {
+    Column() {
+      Text(`@Local outer.outerValue can update ${this.outer.outerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 可观察第一层的变化
+          this.outer.outerValue += '!';
+        })
+
+      Text(`@Local outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 可观察第二层的变化
+          this.outer.inner.innerValue += '!';
+        })
+      // 将inner传递给@ObjectLink可观察inner属性的变化
+      NestedClassV1ObjectLink({ inner: this.outer.inner })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct NestedClassV1ObjectLink {
+  @ObjectLink inner: Inner;
+
+  build() {
+    Column() {
+      Text(`@ObjectLink inner.innerValue can update ${this.inner.innerValue}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 可以触发刷新
+          this.inner.innerValue += '!';
+        })
+      NestedClassV1ObjectLinkArray({ arr: this.inner.arr })
+    }
+  }
+}
+
+@Component
+struct NestedClassV1ObjectLinkArray {
+  @ObjectLink arr: Array<ArrayItem>;
+
+  build() {
+    Column() {
+      ForEach(this.arr, (item: ArrayItem) => {
+        NestedClassV1ObjectLinkArrayItem({ item: item })
+      }, (item: ArrayItem, index: number) => {
+        return item.value.toString() + index.toString();
+      })
+
+      Button('@ObjectLink push').onClick(() => {
+        this.arr.push(UIUtils.makeV1Observed(new ArrayItem(20)));
+      })
+
+      Button('@ObjectLink change the last Item').onClick(() => {
+        // 在NestedClassV1ObjectLinkArrayItem中可以观察最后一个数组项的属性变化
+        this.arr[this.arr.length - 1].value++;
+      })
+    }
+  }
+}
+
+@Component
+struct NestedClassV1ObjectLinkArrayItem {
+  @ObjectLink item: ArrayItem;
+
+  build() {
+    Text(`@ObjectLink outer.inner.arr item: ${this.item.value}`)
+  }
+}
+```
