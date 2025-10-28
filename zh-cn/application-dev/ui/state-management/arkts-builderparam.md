@@ -92,6 +92,76 @@
 
 <!-- @[builder_param_scene_trailing_closure_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure02.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct ChildPage {
+  @Require @Param message: string = '';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      this.customBuilderParam()
+    }
+  }
+}
+
+const builderValue: string = 'Hello World';
+
+@Builder
+function overBuilder() {
+  Row() {
+    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
+    Text($r('app.string.builder_param_scene_text_01', builderValue))
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  @Local label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
+      Text($r('app.string.builder_param_scene_text_02', this.label))
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      ChildPage({ message: this.label }) {
+        Column() { // 使用局部@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam装饰的方法
+          this.componentBuilder();
+        }
+      }
+
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      ChildPage({ message: this.label }) { // 使用全局@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam装饰的方法
+        Column() {
+          overBuilder();
+        }
+      }
+    }
+  }
+}
+```
+
 
 ### 使用\@BuilderParam隔离多组件对\@Builder跳转逻辑的调用
 
@@ -103,8 +173,114 @@
 
 <!-- @[builder_param_scene_jump_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneJumpLogic.ets) -->
 
+``` TypeScript
+import { HelloWorldPageBuilder } from './helloworld';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+class NavigationParams {
+  public pathStack: NavPathStack = new NavPathStack();
+  public boo: boolean = true;
+}
+
+@Builder
+function navigationAction(params: NavigationParams) {
+  Column() {
+    Navigation(params.pathStack) {
+      Button('router to page', { stateEffect: true, type: ButtonType.Capsule })
+        .width('80%')
+        .height(40)
+        .margin(20)
+        .onClick(() => {
+          // 通过修改@BuilderParam参数决定是否跳转。
+          if (params.boo) {
+            params.pathStack.pushPath({ name: 'HelloWorldPage' });
+          } else {
+            hilog.info(DOMAIN, 'testTag', '%{public}s', '@BuilderParam setting does not jump');
+          }
+        })
+    }
+    .navDestination(HelloWorldPageBuilder)
+    .hideTitleBar(true)
+    .height('100%')
+    .width('100%')
+  }
+  .height('25%')
+  .width('100%')
+}
+
+@Entry
+@Component
+struct ParentPage {
+  @State info: NavigationParams = new NavigationParams();
+
+  build() {
+    Column() {
+      Text('ParentPage')
+      navigationAction({ pathStack: this.info.pathStack, boo: true })
+      ChildPageOne()
+      ChildPage_BuilderParam({ eventBuilder: navigationAction })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ChildPageOne {
+  @State info: NavigationParams = new NavigationParams();
+
+  build() {
+    Column() {
+      Text('ChildPage')
+      navigationAction({ pathStack: this.info.pathStack, boo: true })
+    }
+  }
+}
+
+@Component
+struct ChildPage_BuilderParam {
+  @State info: NavigationParams = new NavigationParams();
+  @BuilderParam eventBuilder: (param: NavigationParams) => void = navigationAction;
+
+  build() {
+    Column() {
+      Text('ChildPage_BuilderParam')
+      // 对传递过来的全局@Builder进行参数修改，可以实现禁用点击跳转的功能。
+      this.eventBuilder({ pathStack: this.info.pathStack, boo: false })
+    }
+  }
+}
+```
+
 
 <!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/helloworld.ets) -->
+
+``` TypeScript
+@Builder
+export function HelloWorldPageBuilder() {
+  HelloWorldPage()
+}
+
+@Component
+struct HelloWorldPage {
+  @State message: string = 'Hello World';
+  @State pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 
 **router_map.json**
@@ -141,6 +317,86 @@
 在自定义组件中，使用\@BuilderParam装饰的变量接收父组件通过\@Builder传递的内容进行初始化，由于父组件的\@Builder可以使用箭头函数改变当前的this指向，因此使用\@BuilderParam装饰的变量会展示不同的内容。
 
 <!-- @[builder_param_scene_global_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneGlobalLocalInit.ets) -->
+
+``` TypeScript
+@Component
+struct ChildPage {
+  label: string = 'Child Page';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+  @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+      this.customChangeThisBuilderParam()
+    }
+  }
+}
+
+const builderValue: string = 'Hello World';
+
+@Builder
+function overBuilder() {
+  Row() {
+    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
+    Text($r('app.string.builder_param_scene_text_01', builderValue))
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@Component
+struct ParentPage {
+  label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
+      Text($r('app.string.builder_param_scene_text_02', this.label))
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为'Parent Page'。
+      this.componentBuilder()
+      ChildPage({
+        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向的是子组件ChildPage，所以label变量的值为'Child Page'。
+        customBuilderParam: this.componentBuilder,
+        // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
+        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent Page'。
+        customChangeThisBuilderParam: (): void => {
+          this.componentBuilder()
+        }
+      })
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为'Hello World'。
+      overBuilder()
+      ChildPage({
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
+        customBuilderParam: overBuilder,
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
+        customChangeThisBuilderParam: overBuilder
+      })
+    }
+  }
+}
+```
 **图6** 示例效果图
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
@@ -150,6 +406,86 @@
 使用全局或局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
 
 <!-- @[builder_param_scene_in_component_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInComponentV2.ets) -->
+
+``` TypeScript
+@ComponentV2
+struct ChildPage {
+  @Param label: string = 'Child Page';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+  @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+      this.customChangeThisBuilderParam()
+    }
+  }
+}
+
+const builderValue: string = 'Hello World';
+
+@Builder
+function overBuilder() {
+  Row() {
+    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
+    Text($r('app.string.builder_param_scene_text_01', builderValue))
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  @Local label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
+      Text($r('app.string.builder_param_scene_text_02', this.label))
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为'Parent Page'。
+      this.componentBuilder()
+      ChildPage({
+        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向的是子组件ChildPage，所以label变量的值为'Child Page'。
+        customBuilderParam: this.componentBuilder,
+        // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderPara
+        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent Page'。
+        customChangeThisBuilderParam: (): void => {
+          this.componentBuilder()
+        }
+      })
+      Line()
+        .width('100%')
+        .height(5)
+        .backgroundColor('#000000').margin(10)
+      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为'Hello World'。
+      overBuilder()
+      ChildPage({
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
+        customBuilderParam: overBuilder,
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
+        customChangeThisBuilderParam: overBuilder
+      })
+    }
+  }
+}
+```
 **图7** 示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
@@ -165,11 +501,106 @@
 
 <!-- @[builder_param_problem_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshOpposite.ets) -->
 
+``` TypeScript
+@Component
+struct ChildPage {
+  @State label: string = 'Child Page';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customChangeThisBuilderParam()
+    }
+  }
+}
+
+@Entry
+@Component
+struct ParentPage {
+  @State label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Builder :${this.label}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      ChildPage({
+        // 当前写法this指向ChildPage组件内
+        customChangeThisBuilderParam: this.componentBuilder
+      })
+      Button('点击改变label内容')
+        .onClick(() => {
+          this.label = 'Hello World';
+        })
+    }
+  }
+}
+```
+
 使用箭头函数将\@Builder传递到自定义组件`ChildPage`中，`this`指向会停留在父组件`ParentPage`里。在父组件中改变`label`的值时，`ChildPage`会感知到并重新渲染UI。
 
 【正例】
 
 <!-- @[builder_param_problem_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshPositive.ets) -->
+
+``` TypeScript
+@Component
+struct ChildPage {
+  @State label: string = 'Child Page';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customChangeThisBuilderParam()
+    }
+  }
+}
+
+@Entry
+@Component
+struct ParentPage {
+  @State label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Builder :${this.label}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      ChildPage({
+        customChangeThisBuilderParam: () => {
+          this.componentBuilder()
+        }
+      })
+      Button('点击改变label内容')
+        .onClick(() => {
+          this.label = 'Hello World';
+        })
+    }
+  }
+}
+```
 
 ### @Require装饰器和@BuilderParam装饰器联合使用
 
@@ -211,6 +642,34 @@ struct ChildPage {
 【正例】
 
 <!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) -->
+
+``` TypeScript
+@Builder
+function globalBuilder() {
+  Text('Hello World')
+}
+
+@Entry
+@Component
+struct CustomBuilderDemo {
+  build() {
+    Column() {
+      ChildPage({ childBuilder: globalBuilder })
+    }
+  }
+}
+
+@Component
+struct ChildPage {
+  @Require @BuilderParam childBuilder: () => void = globalBuilder;
+
+  build() {
+    Column() {
+      this.childBuilder()
+    }
+  }
+}
+```
 
 ### @BuilderParam装饰器初始化的值必须为@Builder
 
@@ -254,3 +713,31 @@ struct ChildPage {
 【正例】
 
 <!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) -->
+
+``` TypeScript
+@Builder
+function globalBuilder() {
+  Text('Hello World')
+}
+
+@Entry
+@Component
+struct CustomBuilderDemo {
+  build() {
+    Column() {
+      ChildPage({ childBuilder: globalBuilder })
+    }
+  }
+}
+
+@Component
+struct ChildPage {
+  @BuilderParam childBuilder: () => void = globalBuilder;
+
+  build() {
+    Column() {
+      this.childBuilder()
+    }
+  }
+}
+```
