@@ -34,7 +34,7 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 
 下述示例，展示了布局回调的基本用法。
 
-<!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImageExample.ets) --> 
+<!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
 
 ## 组件标识属性的扩展能力
 
