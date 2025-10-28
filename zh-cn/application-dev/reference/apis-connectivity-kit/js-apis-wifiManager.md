@@ -22,13 +22,13 @@ isWifiActive(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：13**
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:已使能，&nbsp;false:未使能。 |
 
@@ -36,7 +36,7 @@ isWifiActive(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
@@ -64,15 +64,15 @@ enableWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.          |
 | 801  | Capability not supported.|
@@ -90,7 +90,7 @@ enableWifi(): void
     console.error("failed:" + JSON.stringify(error));
   }
 ```
-## wifiManager.disableWifi<sup>9+</sup>
+## wifiManager.disableWifi<sup>20+</sup>
 
 disableWifi(): void
 
@@ -100,15 +100,15 @@ disableWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：20**
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -145,7 +145,7 @@ scan(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -163,7 +163,7 @@ scan(): void
 	}
 ```
 
-## wifiManager.startScan<sup>10+</sup>
+## wifiManager.startScan<sup>21+</sup>
 
 startScan(): void
 
@@ -173,15 +173,15 @@ startScan(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：21**
+**ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：21**
+**ArkTS-Sta起始版本：** 21
 
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -216,7 +216,7 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;&nbsp;&gt; | Promise对象。返回扫描到的热点列表。 |
 
@@ -224,7 +224,7 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -245,7 +245,7 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;&gt; | 是 | 回调函数。当成功时，err为0，data为扫描到的热点；否则err为非0值，data为空。 |
 
@@ -253,7 +253,7 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -319,7 +319,7 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt; | 扫描结果数组。 |
 
@@ -327,7 +327,7 @@ ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -374,13 +374,13 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt; | 返回扫描到的热点列表。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（仅系统应用可申请），则返回结果中的bssid为真实设备地址，否则为随机设备地址。 |
 
@@ -388,7 +388,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -434,21 +434,21 @@ WLAN热点信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| bssidType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 否 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| capabilities | string | 否 | 否 | 热点能力。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| securityType | [WifiSecurityType](#wifisecuritytype9) | 否 | 否 | WLAN加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| channelWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth9)。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| centerFrequency0 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| centerFrequency1 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | 否 | 否 | 信息元素。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| timestamp | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 时间戳。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true:支持，&nbsp;false:不支持。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| bssidType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 否 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| capabilities | string | 否 | 否 | 热点能力。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| securityType | [WifiSecurityType](#wifisecuritytype9) | 否 | 否 | WLAN加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| channelWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth9)。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| centerFrequency0 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| centerFrequency1 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | 否 | 否 | 信息元素。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| timestamp | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 时间戳。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true:支持，&nbsp;false:不支持。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
 
 ## DeviceAddressType<sup>10+</sup>
 
@@ -456,16 +456,16 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
 
 ## WifiSecurityType<sup>9+</sup>
 
@@ -473,22 +473,22 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIFI_SEC_TYPE_INVALID | 0 | 无效加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_OPEN | 1 | 开放加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_WEP | 2 | Wired&nbsp;Equivalent&nbsp;Privacy&nbsp;(WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_PSK | 3 | Pre-shared&nbsp;key&nbsp;(PSK)加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_SAE | 4 | Simultaneous&nbsp;Authentication&nbsp;of&nbsp;Equals&nbsp;(SAE)加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_EAP | 5 | EAP authentication (EAP)加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_EAP_SUITE_B | 6 | Suite-B 192位加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_OWE | 7 | Opportunistic&nbsp; Wireless&nbsp; Encryption&nbsp;(OWE)机会性无线加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_WAPI_CERT | 8 | WAPI-Cert加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_WAPI_PSK | 9 | WAPI-PSK加密类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_INVALID | 0 | 无效加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_OPEN | 1 | 开放加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_WEP | 2 | Wired&nbsp;Equivalent&nbsp;Privacy&nbsp;(WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_PSK | 3 | Pre-shared&nbsp;key&nbsp;(PSK)加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_SAE | 4 | Simultaneous&nbsp;Authentication&nbsp;of&nbsp;Equals&nbsp;(SAE)加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_EAP | 5 | EAP authentication (EAP)加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_EAP_SUITE_B | 6 | Suite-B 192位加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_OWE | 7 | Opportunistic&nbsp; Wireless&nbsp; Encryption&nbsp;(OWE)机会性无线加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_WAPI_CERT | 8 | WAPI-Cert加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_WAPI_PSK | 9 | WAPI-PSK加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## WifiBandType<sup>10+</sup>
@@ -497,17 +497,17 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIFI_BAND_NONE | 0 | 无效频段类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_2G | 1 | 2.4G频段类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_5G | 2 | 5G频段类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_6G | 3 | 6G频段类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_60G | 4 | 60G频段类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| WIFI_BAND_NONE | 0 | 无效频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_BAND_2G | 1 | 2.4G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_BAND_5G | 2 | 5G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_BAND_6G | 3 | 6G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_BAND_60G | 4 | 60G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 
 ## WifiStandard<sup>10+</sup>
 
@@ -515,20 +515,20 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIFI_STANDARD_UNDEFINED | 0 | 无效WIFI标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11A | 1 | 802.11a WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11B | 2 | 802.11b WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11G | 3 | 802.11g WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11N | 4 | 802.11n WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11AC | 5 | 802.11ac WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11AX | 6 | 802.11ax WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11AD | 7 | 802.11ad WiFi标准类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_UNDEFINED | 0 | 无效WIFI标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11A | 1 | 802.11a WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11B | 2 | 802.11b WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11G | 3 | 802.11g WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11N | 4 | 802.11n WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11AC | 5 | 802.11ac WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11AX | 6 | 802.11ax WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_11AD | 7 | 802.11ad WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 
 ## WifiInfoElem<sup>9+</sup>
 
@@ -536,14 +536,14 @@ WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| eid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 元素ID。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| content | Uint8Array | 否 | 否 | 元素内容。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| eid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 元素ID。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| content | Uint8Array | 否 | 否 | 元素内容。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## WifiChannelWidth<sup>9+</sup>
@@ -552,18 +552,18 @@ WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIDTH_20MHZ | 0 | 20MHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIDTH_40MHZ | 1 | 40MHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIDTH_80MHZ | 2 | 80MHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIDTH_160MHZ | 3 | 160MHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIDTH_80MHZ_PLUS | 4 | 80MHZ<sup>+</sup>。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| WIDTH_INVALID | 5 | 无效值 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| WIDTH_20MHZ | 0 | 20MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIDTH_40MHZ | 1 | 40MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIDTH_80MHZ | 2 | 80MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIDTH_160MHZ | 3 | 160MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIDTH_80MHZ_PLUS | 4 | 80MHZ<sup>+</sup>。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIDTH_INVALID | 5 | 无效值 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## WifiDeviceConfig<sup>9+</sup>
@@ -572,20 +572,20 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| bssid | string | 否 | 是 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| preSharedKey | string | 否 | 否 | 热点的密钥，最大长度为64字节。<br>当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，其他加密类型不能为空串。<br>当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。<br>当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。<br>当securityType为WIFI_SEC_TYPE_PSK时，该字段最小长度为8字节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| isHiddenSsid | boolean | 否 | 是 | 是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| securityType | [WifiSecurityType](#wifisecuritytype9)| 否 | 否 | 加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | 否 | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时需要填写。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| bssid | string | 否 | 是 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| preSharedKey | string | 否 | 否 | 热点的密钥，最大长度为64字节。<br>当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，其他加密类型不能为空串。<br>当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。<br>当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。<br>当securityType为WIFI_SEC_TYPE_PSK时，该字段最小长度为8字节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| isHiddenSsid | boolean | 否 | 是 | 是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| securityType | [WifiSecurityType](#wifisecuritytype9)| 否 | 否 | 加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | 否 | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时需要填写。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
 
 ## WifiEapConfig<sup>10+</sup>
 
@@ -593,27 +593,27 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| eapMethod | [EapMethod](#eapmethod10) | 否 | 否 | EAP认证方式。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| phase2Method | [Phase2Method](#phase2method10) | 否 | 否 | 第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| identity | string | 否 | 否 | 身份信息。当eapMethod为EAP_PEAP、EAP_TLS或EAP_PWD时，该字段不能为空串。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| anonymousIdentity | string | 否 | 否 | 匿名身份。暂未使用。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| password | string | 否 | 否 | 密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| caCertAlias | string | 否 | 否 | CA 证书别名。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| caPath | string | 否 | 否 | CA 证书路径。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| clientCertAlias | string | 否 | 否 | 客户端证书别名。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| certEntry | Uint8Array | 否 | 否 | CA 证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则clientCertAlias不能为空。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| altSubjectMatch | string | 否 | 否 | 替代主题匹配。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| realm | string | 否 | 否 | 通行证凭证的领域。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| eapSubId | number | 否 | 否 | SIM卡的子ID。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| eapMethod | [EapMethod](#eapmethod10) | 否 | 否 | EAP认证方式。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| phase2Method | [Phase2Method](#phase2method10) | 否 | 否 | 第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| identity | string | 否 | 否 | 身份信息。当eapMethod为EAP_PEAP、EAP_TLS或EAP_PWD时，该字段不能为空串。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| anonymousIdentity | string | 否 | 否 | 匿名身份。暂未使用。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| password | string | 否 | 否 | 密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| caCertAlias | string | 否 | 否 | CA 证书别名。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| caPath | string | 否 | 否 | CA 证书路径。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| clientCertAlias | string | 否 | 否 | 客户端证书别名。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| certEntry | Uint8Array | 否 | 否 | CA 证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则clientCertAlias不能为空。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| altSubjectMatch | string | 否 | 否 | 替代主题匹配。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| realm | string | 否 | 否 | 通行证凭证的领域。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| eapSubId | number | 否 | 否 | SIM卡的子ID。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 
 
 ## WifiWapiConfig<sup>12+</sup>
@@ -622,15 +622,15 @@ WAPI身份验证协议配置。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| wapiAsCert | string | 否 | 否 | As证书。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| wapiUserCert | string | 否 | 否 | 用户证书。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| wapiAsCert | string | 否 | 否 | As证书。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| wapiUserCert | string | 否 | 否 | 用户证书。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
 
 ## WapiPskType<sup>12+</sup>
 
@@ -638,14 +638,14 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WAPI_PSK_ASCII | 0 | ASCII类型。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| WAPI_PSK_HEX | 1 | HEX类型。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
+| WAPI_PSK_ASCII | 0 | ASCII类型。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WAPI_PSK_HEX | 1 | HEX类型。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
 
 ## EapMethod<sup>10+</sup>
 
@@ -653,21 +653,21 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| EAP_NONE | 0 | 不指定。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_PEAP | 1 | PEAP类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_TLS | 2 | TLS类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_TTLS | 3 | TTLS类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_PWD | 4 | PWD类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_SIM | 5 | SIM类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_AKA | 6 | AKA类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_AKA_PRIME | 7 | AKA Prime类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| EAP_UNAUTH_TLS | 8 | UNAUTH TLS类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| EAP_NONE | 0 | 不指定。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_PEAP | 1 | PEAP类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_TLS | 2 | TLS类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_TTLS | 3 | TTLS类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_PWD | 4 | PWD类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_SIM | 5 | SIM类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_AKA | 6 | AKA类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_AKA_PRIME | 7 | AKA Prime类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_UNAUTH_TLS | 8 | UNAUTH TLS类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 
 ## Phase2Method<sup>10+</sup>
 
@@ -675,20 +675,20 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PHASE2_NONE | 0 | 不指定。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_PAP | 1 | PAP类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_MSCHAP | 2 | MSCHAP类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_MSCHAPV2 | 3 | MSCHAPV2类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_GTC | 4 | GTC类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_SIM | 5 | SIM类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_AKA | 6 | AKA类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| PHASE2_AKA_PRIME | 7 | AKA Prime类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| PHASE2_NONE | 0 | 不指定。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_PAP | 1 | PAP类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_MSCHAP | 2 | MSCHAP类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_MSCHAPV2 | 3 | MSCHAPV2类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_GTC | 4 | GTC类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_SIM | 5 | SIM类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_AKA | 6 | AKA类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_AKA_PRIME | 7 | AKA Prime类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 
 ## WifiCategory<sup>12+</sup>
 
@@ -696,17 +696,17 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| WIFI6 | 2 | Wifi6。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| WIFI6_PLUS | 3 | Wifi6+。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| WIFI7<sup>15+</sup> | 4 | Wifi7。 <br><br>ArkTS-Dyn起始版本： 15<br><br>ArkTS-Sta起始版本： 20|
-| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 <br><br>ArkTS-Dyn起始版本： 15<br><br>ArkTS-Sta起始版本： 20|
+| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WIFI6 | 2 | Wifi6。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WIFI6_PLUS | 3 | Wifi6+。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WIFI7<sup>15+</sup> | 4 | Wifi7。 <br>ArkTS-Dyn起始版本： 15<br>ArkTS-Sta起始版本： 20|
+| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 <br>ArkTS-Dyn起始版本： 15<br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.addCandidateConfig<sup>9+</sup>
 
@@ -722,9 +722,9 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -794,7 +794,7 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -833,9 +833,9 @@ ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -853,7 +853,7 @@ ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -937,9 +937,9 @@ ArkTS-Sta: removeDevice(id: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -951,7 +951,7 @@ ArkTS-Sta: removeDevice(id: int): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -985,13 +985,13 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig9)&gt; | 候选网络配置数组。 |
 
@@ -999,7 +999,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1041,9 +1041,9 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1055,7 +1055,7 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1093,9 +1093,9 @@ ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;vo
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：20**
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1113,7 +1113,7 @@ ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;vo
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1151,9 +1151,9 @@ ArkTS-Sta: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1209,9 +1209,9 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1261,9 +1261,9 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1307,9 +1307,9 @@ ArkTS-Sta: connectToNetwork(networkId: int): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1355,9 +1355,9 @@ ArkTS-Sta: getSignalLevel(rssi: int, band: int): int
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1412,9 +1412,9 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1426,7 +1426,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1447,9 +1447,9 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1461,7 +1461,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1502,9 +1502,9 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：18**
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1516,7 +1516,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1540,32 +1540,32 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 9|
-| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| linkSpeed | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| rxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| maxSupportedTxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大上行速率，单位Mbps。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| maxSupportedRxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大下行速率，单位Mbps。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络, true：是隐藏网络，false：不是隐藏网络。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true: 限制，false:不限制。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| macType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| macAddress | string | 否 | 否 | 设备的MAC地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN连接的IP地址。<br>1、IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2、ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| connState | [ConnState](#connstate9) | 否 | 否 | WLAN连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth9) | 否 | 否 | 当前连接热点的信道带宽。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前连接热点的Wi-Fi标准。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true:支持，&nbsp;false:不支持。 <br><br>ArkTS-Dyn起始版本： 20<br><br>ArkTS-Sta起始版本： 20|
-| wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。  <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
+| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 9|
+| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| linkSpeed | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| rxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| maxSupportedTxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大上行速率，单位Mbps。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| maxSupportedRxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大下行速率，单位Mbps。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络, true：是隐藏网络，false：不是隐藏网络。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true: 限制，false:不限制。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| macType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| macAddress | string | 否 | 否 | 设备的MAC地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN连接的IP地址。<br>1、IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2、ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| connState | [ConnState](#connstate9) | 否 | 否 | WLAN连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth9) | 否 | 否 | 当前连接热点的信道带宽。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前连接热点的Wi-Fi标准。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true:支持，&nbsp;false:不支持。 <br>ArkTS-Dyn起始版本： 20<br>ArkTS-Sta起始版本： 20|
+| wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。  <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
 
 
 ## WifiLinkType<sup>18+</sup>
@@ -1574,17 +1574,17 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：18**
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT_LINK | 0 | 默认连接类型。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
-| WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
-| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路多天线）连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
-| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
-| WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 <br><br>ArkTS-Dyn起始版本： 18<br><br>ArkTS-Sta起始版本： 20|
+| DEFAULT_LINK | 0 | 默认连接类型。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
+| WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
+| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路多天线）连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
+| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
+| WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
 
 ## ConnState<sup>9+</sup>
 
@@ -1592,20 +1592,20 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SCANNING | 0 | 设备正在搜索可用的AP。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| CONNECTING | 1 | 正在建立WLAN连接。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| AUTHENTICATING | 2 | WLAN连接正在认证中。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| OBTAINING_IPADDR | 3 | 正在获取WLAN连接的IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| CONNECTED | 4 | WLAN连接已建立。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| DISCONNECTING | 5 | WLAN连接正在断开。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| DISCONNECTED | 6 | WLAN连接已断开。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| UNKNOWN | 7 | WLAN连接建立失败。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| SCANNING | 0 | 设备正在搜索可用的AP。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| CONNECTING | 1 | 正在建立WLAN连接。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| AUTHENTICATING | 2 | WLAN连接正在认证中。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| OBTAINING_IPADDR | 3 | 正在获取WLAN连接的IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| CONNECTED | 4 | WLAN连接已建立。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| DISCONNECTING | 5 | WLAN连接正在断开。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| DISCONNECTED | 6 | WLAN连接已断开。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| UNKNOWN | 7 | WLAN连接建立失败。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.isConnected<sup>9+</sup>
@@ -1620,13 +1620,13 @@ isConnected(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:已连接，&nbsp;false:未连接。 |
 
@@ -1634,7 +1634,7 @@ isConnected(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1665,15 +1665,15 @@ disconnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1702,9 +1702,9 @@ getDeviceMacAddress(): string[]
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -1749,13 +1749,13 @@ ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
-  | **参数名** | **类型** | 必填 | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | featureId | number | 是 | 特性ID值。 |
 
@@ -1776,7 +1776,7 @@ ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:支持，&nbsp;false:不支持。 |
 
@@ -1784,7 +1784,7 @@ ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
@@ -1816,13 +1816,13 @@ getIpInfo(): IpInfo
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | [IpInfo](#ipinfo9) | IP信息。 |
 
@@ -1830,7 +1830,7 @@ getIpInfo(): IpInfo
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1854,19 +1854,19 @@ IPV4信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| gateway | number | 否 | 否 | 网关。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| netmask | number | 否 | 否 | 掩码。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| secondDns | number | 否 | 否 | 备DNS服务器IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| serverIp | number | 否 | 否 | DHCP服务端IP地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| ipAddress | number | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| gateway | number | 否 | 否 | 网关。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| netmask | number | 否 | 否 | 掩码。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| secondDns | number | 否 | 否 | 备DNS服务器IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| serverIp | number | 否 | 否 | DHCP服务端IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.getIpv6Info<sup>10+</sup>
@@ -1879,13 +1879,13 @@ getIpv6Info(): Ipv6Info
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-| **类型** | **说明** |
+| 类型 | 说明 |
 | -------- | -------- |
 | [Ipv6Info](#ipv6info10) | Ipv6信息。 |
 
@@ -1893,7 +1893,7 @@ getIpv6Info(): Ipv6Info
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1916,21 +1916,21 @@ Ipv6信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| randomGlobalIpv6Address | string | 否 | 否 | 随机全局Ipv6地址。 预留字段，暂不支持。<br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 12<br><br>ArkTS-Sta起始版本： 20|
-| gateway | string | 否 | 否 | 网关。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| netmask | string | 否 | 否 | 网络掩码。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
+| linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| randomGlobalIpv6Address | string | 否 | 否 | 随机全局Ipv6地址。 预留字段，暂不支持。<br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地Ipv6地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地Ipv6地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| gateway | string | 否 | 否 | 网关。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| netmask | string | 否 | 否 | 网络掩码。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.getCountryCode<sup>9+</sup>
 
@@ -1942,13 +1942,13 @@ getCountryCode(): string
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | string | 国家码。 |
 
@@ -1956,7 +1956,7 @@ getCountryCode(): string
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1987,9 +1987,9 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1999,7 +1999,7 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:支持，&nbsp;false:不支持。 |
 
@@ -2007,7 +2007,7 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -2038,13 +2038,13 @@ isMeteredHotspot(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：11**
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:是手机热点，&nbsp;false:不是手机热点。 |
 
@@ -2052,7 +2052,7 @@ isMeteredHotspot(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2083,13 +2083,13 @@ isHotspotActive(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
-**ArkTS-Dyn起始版本：15**
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true:已使能，&nbsp;false:未使能。|
 
@@ -2097,7 +2097,7 @@ isHotspotActive(): boolean
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2128,9 +2128,9 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2142,7 +2142,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2161,9 +2161,9 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2175,7 +2175,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2206,15 +2206,15 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| groupOwnerAddr | string | 是 | 否 | 群组IP地址。<br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| groupOwnerAddr | string | 是 | 否 | 群组IP地址。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## P2pConnectState<sup>9+</sup>
@@ -2223,14 +2223,14 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DISCONNECTED | 0 | 断开状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| CONNECTED | 1 | 连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| DISCONNECTED | 0 | 断开状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| CONNECTED | 1 | 连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 ## wifiManager.getCurrentGroup<sup>9+</sup>
 
@@ -2244,9 +2244,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2258,7 +2258,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2276,9 +2276,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2290,7 +2290,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2325,9 +2325,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2339,7 +2339,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2357,9 +2357,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2371,7 +2371,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2401,18 +2401,18 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | 否 | 否 | 设备名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| deviceAddress | string | 否 | 否 | 设备MAC地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| deviceAddressType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备MAC地址类型。 <br><br>ArkTS-Dyn起始版本： 10<br><br>ArkTS-Sta起始版本： 20|
-| primaryDeviceType | string | 否 | 否 | 主设备类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus9) | 否 | 否 | 设备状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| groupCapabilities | number | 否 | 否 | 群组能力。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| deviceName | string | 否 | 否 | 设备名称。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| deviceAddress | string | 否 | 否 | 设备MAC地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| deviceAddressType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备MAC地址类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| primaryDeviceType | string | 否 | 否 | 主设备类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus9) | 否 | 否 | 设备状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| groupCapabilities | number | 否 | 否 | 群组能力。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## P2pDeviceStatus<sup>9+</sup>
@@ -2421,17 +2421,17 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CONNECTED | 0 | 连接状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| INVITED | 1 | 邀请状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| FAILED | 2 | 失败状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| AVAILABLE | 3 | 可用状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| UNAVAILABLE | 4 | 不可用状态。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| CONNECTED | 0 | 连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| INVITED | 1 | 邀请状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| FAILED | 2 | 失败状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| AVAILABLE | 3 | 可用状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| UNAVAILABLE | 4 | 不可用状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.getP2pLocalDevice<sup>9+</sup>
@@ -2446,9 +2446,9 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：11**
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -2460,7 +2460,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2478,9 +2478,9 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：11**
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2490,7 +2490,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2524,9 +2524,9 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2538,7 +2538,7 @@ createGroup(config: WifiP2PConfig): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
@@ -2571,18 +2571,18 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | 否 | 否 | 设备地址。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| passphrase | string | 否 | 否 | 群组密钥。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| groupName | string | 否 | 否 | 群组名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| goBand | [GroupOwnerBand](#groupownerband9) | 否 | 否 | 群组带宽。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| deviceAddress | string | 否 | 否 | 设备地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| passphrase | string | 否 | 否 | 群组密钥。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| groupName | string | 否 | 否 | 群组名称。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| goBand | [GroupOwnerBand](#groupownerband9) | 否 | 否 | 群组带宽。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## GroupOwnerBand<sup>9+</sup>
@@ -2591,15 +2591,15 @@ createGroup(config: WifiP2PConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| GO_BAND_AUTO | 0 | 自动模式。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| GO_BAND_2GHZ | 1 | 2.4GHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| GO_BAND_5GHZ | 2 | 5GHZ。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
+| GO_BAND_AUTO | 0 | 自动模式。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| GO_BAND_2GHZ | 1 | 2.4GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| GO_BAND_5GHZ | 2 | 5GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 
 
 ## wifiManager.removeGroup<sup>9+</sup>
@@ -2616,7 +2616,7 @@ removeGroup(): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2646,13 +2646,13 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
-| **参数名** | **类型** | 必填 | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiP2PConfig](#wifip2pconfig9) | 是 | 连接配置信息。如果DeviceAddressType未指定值，则DeviceAddressType默认为随机设备地址类型。 |
 
@@ -2660,7 +2660,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
@@ -2745,15 +2745,15 @@ p2pCancelConnect(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2783,15 +2783,15 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：10**
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2819,9 +2819,9 @@ stopDiscoverDevices(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **错误码：**
 
@@ -2859,13 +2859,13 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：18**
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | &nbsp;Array&lt;[WifiLinkedInfo](#wifilinkedinfo9)&gt; | Wi-Fi连接信息。|
 
@@ -2873,7 +2873,7 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
 | 801 | Capability not supported. |
@@ -2898,16 +2898,16 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| passphrase | string | 否 | 否 | 群组密钥。 <br><br>ArkTS-Dyn起始版本： 9<br><br>ArkTS-Sta起始版本： 20|
-| interface | string | 否 | 否 | 接口名称。 <br><br>ArkTS-Dyn起始版本： 9<br><br>|
+| isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| passphrase | string | 否 | 否 | 群组密钥。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| interface | string | 否 | 否 | 接口名称。 <br>ArkTS-Dyn起始版本： 9<br>|
 | groupName | string | 否 | 否 | 群组名称。 |
 | networkId | number | 否 | 否 | 网络ID。 |
 | frequency | number | 否 | 否 | 群组的频率。 |
@@ -2929,7 +2929,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiStateChange"字符串。 |
   | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
@@ -2938,7 +2938,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2947,7 +2947,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 **状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 未激活。 |
 | 1 | 已激活。 |
@@ -2969,7 +2969,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiStateChange"字符串。 |
   | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -2978,7 +2978,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3015,14 +3015,14 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiConnectionChange"字符串。 |
   | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
 
 **连接状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 已断开。 |
 | 1 | 已连接。 |
@@ -3031,7 +3031,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3052,7 +3052,7 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiConnectionChange"字符串。 |
   | callback | Callback&lt;number&gt; | 否 | 连接状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3061,7 +3061,7 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3097,14 +3097,14 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiScanStateChange"字符串。 |
   | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
 
 **扫描状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 扫描失败。 |
 | 1 | 扫描成功。 |
@@ -3113,7 +3113,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3134,7 +3134,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"wifiScanStateChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3143,7 +3143,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3177,7 +3177,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiRssiChange"字符串。 |
   | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回以dBm为单位的RSSI值。 |
@@ -3186,7 +3186,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3205,7 +3205,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"wifiRssiChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3214,7 +3214,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3248,14 +3248,14 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStateChange"字符串。 |
 | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
 
 **热点状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 未激活。 |
 | 1 | 已激活。 |
@@ -3266,7 +3266,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3285,7 +3285,7 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStateChange"字符串。 |
 | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3294,7 +3294,7 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3329,14 +3329,14 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pStateChange"字符串。 |
 | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
 
 **P2P状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 1 | 空闲。 |
 | 2 | 打开中。 |
@@ -3348,7 +3348,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3367,7 +3367,7 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pStateChange"字符串。 |
   | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3376,7 +3376,7 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3410,7 +3410,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pConnectionChange"字符串。 |
   | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 是 | 状态改变回调函数。 |
@@ -3419,7 +3419,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3438,7 +3438,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pConnectionChange"字符串。 |
   | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3447,7 +3447,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3483,7 +3483,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDeviceChange"字符串。 |
   | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 是 | 状态改变回调函数。 |
@@ -3492,7 +3492,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3509,7 +3509,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDeviceChange"字符串。 |
   | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3518,7 +3518,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201<sup>10+</sup> | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3554,7 +3554,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
 | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | 是 | 状态改变回调函数。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（仅系统应用可申请），则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
@@ -3563,7 +3563,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3580,7 +3580,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
 | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限（仅系统应用可申请），则返回结果中的deviceAddress为真实设备地址，否则为随机设备地址。 |
@@ -3589,7 +3589,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201<sup>10+</sup> | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3623,7 +3623,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pPersistentGroupChange"字符串。 |
   | callback | Callback&lt;void&gt; | 是 | 状态改变回调函数。 |
@@ -3632,7 +3632,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3651,7 +3651,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pPersistentGroupChange"字符串。 |
 | callback | Callback&lt;void&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3660,7 +3660,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3694,14 +3694,14 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDiscoveryChange"字符串。 |
   | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。 |
 
 **发现设备状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 初始状态。 |
 | 1 | 发现成功。 |
@@ -3710,7 +3710,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3729,7 +3729,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDiscoveryChange"字符串。 |
   | callback | Callback&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
@@ -3738,7 +3738,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码 | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
