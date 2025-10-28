@@ -75,23 +75,4 @@
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   ```c++
-   // case1: 获取排版后最长行行宽
-   double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
-   
-   // case2:获取排版后段落行数
-   size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
-   
-   // case3:获取段落每行的度量信息
-   OH_Drawing_LineMetrics* lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
-   int lineMetricsSize = OH_Drawing_LineMetricsGetSize(lineMetrics);
-   for (int i = 0; i < lineMetricsSize; ++i) {
-       // lineMetrics为经过排版测量的文字度量信息
-       double curLineAscender = lineMetrics[i].ascender;
-       double curLineWidth = lineMetrics[i].width;
-   }
-   
-   // case4:获取段落带缩进最长行行宽
-   double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
-   ```
-
+<!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
