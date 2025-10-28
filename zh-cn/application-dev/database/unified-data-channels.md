@@ -57,6 +57,11 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
+``` TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
+import hilog from '@ohos.hilog';
+```
+
 2. 创建一个统一数据对象并插入到UDMF的公共数据通路中。
 
 2.1导入对应数据对象模块。
