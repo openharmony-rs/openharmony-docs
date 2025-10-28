@@ -445,22 +445,62 @@ NavPathStack通过Replace相关接口去实现页面替换功能。
 this.pageStack.replacePath({ name: 'pageTwo', param: 'PageOne Param' });
 ```
 <!-- @[replacePathByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+this.pageStack.replacePathByName('pageTwo', 'PageOne Param');
+```
 <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
+this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageOne Param' })
+  .catch((error: BusinessError) => {
+    hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
+      'error.message = ', error.message);
+  }).then(() => {
+  hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
+})
+```
 
 ### 页面删除
 
 NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的功能。
 
 <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 删除栈中name为pageTwo的所有页面
+this.pageStack.removeByName('pageTwo');
+```
 <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 删除指定索引的页面
+this.pageStack.removeByIndexes([1]);
+```
 <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 删除指定id的页面
+this.pageStack.removeByNavDestinationId('1');
+```
 
 ### 移动页面
 
 NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈顶的功能。
 
 <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 移动栈中name为pageTwo的页面到栈顶
+this.pageStack.moveToTop('pageTwo');
+```
 <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 移动栈中索引为1的页面到栈顶
+this.pageStack.moveIndexToTop(1);
+```
 
 ### 参数获取
 
@@ -468,13 +508,65 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 
 <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
 
+``` TypeScript
+@Component
+struct Page01 {
+  private pathStack: NavPathStack | undefined = undefined;
+// ···
+  private pageParam: string = '';
+  build() {
+    NavDestination() {
+    // ···
+    .title('Page01')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+      this.pageParam = context.pathInfo.param as string;
+    })
+  }
+}
+```
+
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
 <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageTwo.ets) -->
 
+``` TypeScript
+class NavParam {
+  public desc: string = 'navigationOnResult-param'
+};
+// ···
+@Component
+struct DemoNavDestination {
+// ···
+  build() {
+    NavDestination() {
+    // ···
+    }
+    .onResult((param: Object) => {
+      if (param instanceof NavParam) {
+        hilog.info(DOMAIN, 'testTag', 'get NavParam, its desc:', (param as NavParam).desc);
+        return;
+      }
+      hilog.info(DOMAIN, 'testTag', 'param not instance of NavParam');
+    })
+  }
+}
+```
+
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
 <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 获取栈中所有页面name集合
+this.pageStack.getAllPathName();
+// 获取索引为1的页面参数
+this.pageStack.getParamByIndex(1);
+// 获取PageOne页面的参数
+this.pageStack.getParamByName('pageTwo');
+// 获取PageOne页面的索引集合
+this.pageStack.getIndexByName('pageOne');
+```
 
 ### 路由拦截
 
