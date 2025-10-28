@@ -241,7 +241,7 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | 选择Picker模式。<br>定义了在Picker中显示的内容类型：<br>SCREEN_ONLY：仅显示屏幕列表<br>WINDOW_ONLY：仅显示窗口列表<br>SCREEN_AND_WINDOW：同时显示屏幕列表和窗口列表（默认值） |
+| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | 选择Picker模式。<br>定义了在Picker中显示的内容类型：<br>- SCREEN_ONLY：仅显示屏幕列表。<br>- WINDOW_ONLY：仅显示窗口列表。<br>- SCREEN_AND_WINDOW：同时显示屏幕列表和窗口列表（默认值）。 |
 
 **返回值：**
 
