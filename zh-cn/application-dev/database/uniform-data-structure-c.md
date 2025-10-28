@@ -105,3 +105,27 @@ return result;
 5. 使用完成后销毁指针。
 
 <!-- @[use_fileUri_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// 1.创建fileUri类型的数据结构
+const char *uri = "https://xxx/xx/xx.jpg";
+OH_UdsFileUri *fileUri = OH_UdsFileUri_Create();
+// 2. 设置fileUri中的URL和描述信息。
+OH_UdsFileUri_SetFileUri(fileUri, uri);
+OH_UdsFileUri_SetFileType(fileUri, UDMF_META_IMAGE);
+// 3. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加fileUri类型数据。
+OH_UdmfRecord *record = OH_UdmfRecord_Create();
+OH_UdmfRecord_AddFileUri(record, fileUri);
+// 4. 获取fileUri数据。
+OH_UdsFileUri *fileUri1 = OH_UdsFileUri_Create();
+OH_UdmfRecord_GetFileUri(record, fileUri1);
+const char *fileUriStr = OH_UdsFileUri_GetFileUri(fileUri1);
+OH_LOG_INFO(LOG_APP, "fileUri1 = %{public}s.", fileUriStr);
+// 5. 使用完成后销毁指针。
+OH_UdsFileUri_Destroy(fileUri);
+OH_UdmfRecord_Destroy(record);
+OH_UdsFileUri_Destroy(fileUri1);
+napi_value result;
+napi_create_int32(env, Udmf_ErrCode::UDMF_E_OK, &result);
+return result;
+```
