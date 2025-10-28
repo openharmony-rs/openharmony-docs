@@ -30,11 +30,15 @@
     - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
     - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
     - [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)
-<<<<<<< master
     - [Vibrator_File_Description](capi-vibrator-vibrator-filedescription.md)
 - 错误码<!--sensor-service-arkts-errcode-->
-
-======
->>>>>>> master
   - [Sensor错误码](errorcode-sensor.md)
   - [Vibrator错误码](errorcode-vibrator.md)
+- test<!--sensor-service-arkts-test-->
+  - [test1](test1.md)
+  - <!--RP1-->[test2](test2.md)
+  <!--RP1End-->
+  - <!--RP2-->test3<!--sensor-service-arkts-test3-->
+    - [test4](test4.md)
+    - [test5](test5.md)
+    <!--RP2End-->
