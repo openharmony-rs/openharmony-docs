@@ -3177,5 +3177,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-animatable-extend.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"animatable_extend_text",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyExample.ets",
+				"functions":[
+					{
+						"end_line":135,
+						"name":"animatable_extend_example",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-style.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"inner_style",
+						"start_line":30
+					},
+					{
+						"end_line":22,
+						"name":"style_not_parameter",
+						"start_line":16
+					},
+					{
+						"end_line":29,
+						"name":"style_not_if",
+						"start_line":23
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator1.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"global_style",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
