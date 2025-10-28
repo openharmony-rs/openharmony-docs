@@ -10,10 +10,10 @@
 
 字体引擎作为图形系统中的核心组件，负责将字符代码转换为可视化的字形，并精确计算每个字形的布局和位置，为自定义文本绘制提供底层支持。通过文本测量接口，开发者可以获取文本的精确尺寸，这是实现精准布局（如居中显示）的基础。
 
-## 独立塑形
+## 文本塑形
 
 ### 场景介绍
-独立塑形是字体引擎提供的一项关键能力，它允许开发者不经过系统默认的文本排版流程，直接获取文本的底层字形信息（如宽度、方向等测量信息）。这使得开发者能够基于这些原始数据，实现完全自定义的排版逻辑、绘制操作以及断行策略。
+文本塑形是字体引擎提供的一项关键能力，它允许开发者不经过系统默认的文本排版流程，直接获取文本的底层字形信息（如宽度、方向等测量信息）。这使得开发者能够基于这些原始数据，实现完全自定义的排版逻辑、绘制操作以及断行策略。
 
 这种能力适用于以下场景：
 
@@ -25,7 +25,7 @@
 
 ### 接口说明
 
-独立塑形中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)和[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)。
+文本塑形中常用接口如下表所示，详细接口说明参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)和[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -97,7 +97,7 @@
     OH_Drawing_Array *runs = OH_Drawing_TextLineGetGlyphRuns(textLine);
    ```
 
-6. 该步骤是独立塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
+6. 该步骤是文本塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
 从 API version 20 开始，新增的OH_Drawing_GetRunGlyphAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
 
    ```c++
@@ -159,7 +159,7 @@
 
 ### 完整示例
 
-完整的独立塑形示例如下。
+完整的文本塑形示例如下。
 <!-- @[complex_text_c_independent_shaping_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 效果展示：  
