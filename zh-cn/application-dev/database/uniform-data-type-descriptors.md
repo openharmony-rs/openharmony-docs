@@ -223,6 +223,22 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+try {
+  // 2.可根据 “text/plain” MIMEType查询对应UTD数据类型。
+  let mimeType = 'text/plain';
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
+  for (let typeId of typeIds) {
+    // 3. 根据UTD数据类型查询对应的文件后缀列表
+    let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+    let filenameExtensions = typeObj.filenameExtensions;
+    hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
+  }
+} catch (err) {
+  hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+}
+```
+
 ## 相关实例
 
 针对标准化数据定义的开发，有以下相关实例可供参考：
