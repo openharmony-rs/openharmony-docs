@@ -71,6 +71,31 @@ libudmf.so, libhilog_ndk.z.so
 
 <!-- @[use_plaintext_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// 1.创建PlainText对象指针
+OH_UdmfRecord *plainTextRecord = OH_UdmfRecord_Create();
+OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
+char content[] = "hello world";
+
+// 2.添加PlainText内容
+OH_UdsPlainText_SetContent(plainText, content);
+OH_UdmfRecord_AddPlainText(plainTextRecord, plainText);
+
+// 3.获取PlainText数据
+OH_UdsPlainText *plainText2 = OH_UdsPlainText_Create();
+OH_UdmfRecord_GetPlainText(plainTextRecord, plainText2);
+const char *content2 = OH_UdsPlainText_GetContent(plainText2);
+
+OH_LOG_INFO(LOG_APP, "content = %{public}s.", content2);
+// 4.使用完成后销毁指针。
+OH_UdsPlainText_Destroy(plainText);
+OH_UdmfRecord_Destroy(plainTextRecord);
+OH_UdsPlainText_Destroy(plainText2);
+napi_value result;
+napi_create_int32(env, Udmf_ErrCode::UDMF_E_OK, &result);
+return result;
+```
+
 ## fileUri类型的数据结构的使用
 
 1. 创建fileUri类型的数据结构。
