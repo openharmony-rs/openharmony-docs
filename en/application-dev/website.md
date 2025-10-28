@@ -1528,8 +1528,7 @@
         - Command Line Tools<!--perform-command-line-utilities-->
           - [hdc](dfx/hdc.md)
           - [hilog](dfx/hilog.md)
-          - hidumper<!--hidumper-tool-->
-            - [hidumper](dfx/hidumper.md)
+          - [hidumper](dfx/hidumper.md)
           - [hitrace](dfx/hitrace.md)
           - [hiperf](dfx/hiperf.md)
           - [hiprofiler](dfx/hiprofiler.md)
@@ -1780,7 +1779,7 @@
         - Video Transcoding<!--media-transcoder-arkts-->
           - [Using AVTranscoder to Transcode Videos (ArkTS)](media/media/using-avtranscoder-for-transcodering.md)
           - [Creating an Asynchronous Thread for AVTranscoder Video Transcoding (ArkTS)](media/media/avtranscoder-practice.md)
-          - [FAQs About Transcoding](media/media/avtranscoder-faq.md)
+          - [Transcoding FAQs](media/media/avtranscoder-faq.md)
       - Media Development (C/C++)<!--media-kit-dev--c-->
         - Playback<!--media-playback-c-->
           - [Using AVPlayer to Play Audio (C/C++)](media/media/using-ndk-avplayer-for-playback.md)
@@ -1789,7 +1788,7 @@
         - Recording<!--media-recording-c-->
           - [Using AVRecorder to Record Audio (C/C++)](media/media/using-ndk-avrecorder-for-audio-recording.md)
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
-          - Screen and Stream Capture with AVScreenCapture (C/C++)<!--using-avscreencapture-for-buffer-->
+          - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
             - [Using AVScreenCapture in Basic Scenarios](media/media/avscreencapture-c-basic-process.md)
             - [Using AVScreenCapture in Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
             - [Screen Capture FAQs](media/media/avscreencapture-faqs.md)
@@ -1924,7 +1923,6 @@
           <!--Del-->
         - [Cross-Device Notification Management (for System Applications Only)](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
-        - [Enabling Quick Reply for Cross-device Notifications](notification/notification-quickreply.md)
         - [Clearing Repeated Notifications Across Devices](notification/notification-distributed-messageid.md)
   - AI<!--ai-->
     - MindSpore Lite Kit<!--mindspore-lite-kit-->
@@ -3473,6 +3471,7 @@
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
       - Error Codes<!--arkui-arkts-errcode-->
         - UI<!--arkui-ui-arkts-errcode-->
+          - [API Call Error Codes](reference/apis-arkui/errorcode-internal.md)
           - [promptAction Error Codes](reference/apis-arkui/errorcode-promptAction.md)
           - [Router Error Codes](reference/apis-arkui/errorcode-router.md)
           - [Drag Event Error Codes](reference/apis-arkui/errorcode-drag-event.md)
@@ -3495,6 +3494,7 @@
           - [Video Component Error Codes](reference/apis-arkui/errorcode-video.md)
           - [State Management Error Codes](reference/apis-arkui/errorcode-stateManagement.md)
           - [Render Node Error Codes](reference/apis-arkui/errorcode-node-render.md)
+          - [Color Inversion Capability Error Codes](reference/apis-arkui/errorcode-force-dark.md)
         - Graphics<!--arkui-graphics-images-arkts-errcode-->
           - [Display Error Codes](reference/apis-arkui/errorcode-display.md)
           - [Window Error Codes](reference/apis-arkui/errorcode-window.md)
@@ -4354,7 +4354,9 @@
           - [Upload and Download Error Codes](reference/apis-basic-services-kit/errorcode-request.md)
           - [Time and Time Zone Error Codes](reference/apis-basic-services-kit/errorcode-time.md)
           - [Event Error Codes](reference/apis-basic-services-kit/errorcode-CommonEventService.md)
+          <!--Del-->
           - [System Parameter Error Codes](reference/apis-basic-services-kit/errorcode-system-parameterV9.md)
+          <!--DelEnd-->
           - [Power Manager Error Codes](reference/apis-basic-services-kit/errorcode-power.md)
           - [Account Management Error Codes](reference/apis-basic-services-kit/errorcode-account.md)
           <!--Del-->
@@ -5548,7 +5550,7 @@
         - Modules<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
         - Header Files<!--notification-struct-->
-            - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
+          - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - Error Codes<!--notification-arkts-errcode-->
         - [Notification Error Codes](reference/apis-notification-kit/errorcode-notification.md)
   - AI<!--ai-api-->
