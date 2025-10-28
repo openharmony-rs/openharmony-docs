@@ -1103,6 +1103,11 @@
 						"end_line":183,
 						"name":"module_systemTheme",
 						"start_line":19
+					},
+					{
+						"end_line":179,
+						"name":"module_pages",
+						"start_line":23
 					}
 				]
 			},
