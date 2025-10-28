@@ -54,6 +54,14 @@
 3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码的包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
 
    <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_FontConfigInfoErrorCode fontConfigInfoErrorCode;  // 用于接收错误代码
+   OH_Drawing_FontConfigInfo* fontConfigInfo = OH_Drawing_GetSystemFontConfigInfo(&fontConfigInfoErrorCode);
+   if(fontConfigInfoErrorCode != SUCCESS_FONT_CONFIG_INFO) {
+       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "PrintSysFontMetrics", "获取系统信息失败，错误代码为： %{public}d", fontConfigInfoErrorCode);
+   }
+   ```
 
 4. 系统字体的配置信息[OH_Drawing_FontConfigInfo](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md)包含以下几类信息：
 
@@ -72,6 +80,29 @@
    以下示例展示系统字体的一些具体配置信息的获取：
 
    <!-- @[custom_font_c_print_system_font_metrics_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 获取系统字体配置信息示例
+   if (fontConfigInfo != nullptr) {
+       // 获取字体文件路径数量，打印日志
+       size_t fontDirCount = fontConfigInfo->fontDirSize;
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics", "字体文件路径数量为: %{public}zu\n", fontDirCount);
+       // 遍历字体文件路径列表，打印日志
+       for (size_t i = 0; i < fontDirCount; ++i) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics", "字体文件路径为: %{public}s\n",
+                        fontConfigInfo->fontDirSet[i]);
+       }
+       // 获取通用字体集数量，打印日志
+       size_t genericCount = fontConfigInfo->fontGenericInfoSize;
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics", "通用字体集数量为: %{public}zu\n", genericCount);
+       // 遍历获取每个通用字体集中的字体家族名（例如 HarmonyOS Sans），打印日志
+       for (size_t i = 0; i < genericCount; ++i) {
+           OH_Drawing_FontGenericInfo &genericInfo = fontConfigInfo->fontGenericInfoSet[i];
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics",
+                        "获取第%{public}zu个通用字体集中的字体家族名为: %{public}s", i, genericInfo.familyName);
+       }
+   }
+   ```
 
    以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
@@ -122,10 +153,30 @@
 
 5. [获取系统字体信息](#获取系统字体信息)，获取系统字体的字体家族名，并在文本样式中设置为该系统字体。
    <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 情况一：设置系统字体为"HarmonyOS Sans Condensed"
+   const char *myFontFamilies[] = {"HarmonyOS Sans Condensed"};
+   OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   
+   // 情况二：不手动设置，此时使用的是系统默认字体"HarmonyOS Sans"
+   // const char* myFontFamilies[] = {"HarmonyOS Sans Condensed"};
+   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   ```
 
 6. 生成最终段落文本，以便实现最终的文本绘制和显示。
 
    <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 情况一：设置系统字体为"HarmonyOS Sans Condensed"
+   const char *myFontFamilies[] = {"HarmonyOS Sans Condensed"};
+   OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   
+   // 情况二：不手动设置，此时使用的是系统默认字体"HarmonyOS Sans"
+   // const char* myFontFamilies[] = {"HarmonyOS Sans Condensed"};
+   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   ```
 
 
 ## 禁用系统字体
@@ -173,6 +224,29 @@
    > 若不设置字体，文本会默认使用系统字体，而系统字体禁用后若不设置使用自定义字体，文本将无法正常显示。
 
    <!-- @[custom_font_c_disable_system_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
+   // 禁用系统字体后的几种情况如下：
+   // 情况一：如果此时设置使用了自定义字体，文本会正常显示
+   // 该路径是待注册的自定义字体文件在应用设备下的路径，确保该自定义字体文件已正确放置在该路径下
+   // 后续使用自定义字体时，需使用到该字体家族名
+   const char* fontFamily = "HarmonyOS_Sans"; 
+   const char* fontPath = "/system/fonts/HarmonyOS_Sans.ttf"; 
+   // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
+   int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
+   DRAWING_LOGI("errorCode = %{public}d", errorCode);
+   const char *myFontFamilies[] = {"HarmonyOS_Sans"}; // 确保已成功注册自定义字体，填入自定义字体的字体家族名
+   OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   
+   // 情况二：如果此时使用了系统字体，文本将无法显示
+   // const char *myFontFamilies[] = {"HarmonyOS_Sans"};
+   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   
+   // 情况三：如果此时不设置使用字体，文本会默认使用系统默认字体，而此时系统字体已被禁用，因此文本将无法显示
+   // const char *myFontFamilies[] = {"HarmonyOS_Sans"};
+   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   ```
 
 7. 生成最终的段落文本，以便实现最终的文本绘制和显示。
 
