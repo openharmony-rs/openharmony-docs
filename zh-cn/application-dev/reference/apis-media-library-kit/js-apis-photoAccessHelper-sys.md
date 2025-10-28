@@ -4906,14 +4906,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
 
-将文件转换为指定格式另存并返回PhotoAsset，传入新文件标题，目标格式的枚举，使用promise异步回调。
+复制同一相册（用户创建的相册或应用相册）中的图片，并转换为指定格式。使用promise异步回调。
 
-- 支持图片克隆和格式转换，生成后的图片在同相册内。
-- 支持普通图片、动态照片图片部分、连拍照片格式（连拍照片仅针对选择的图片进行转码另存，不包含整个连拍照片），仅支持本地图片。
-- 支持处理质量为80分图片，转换后丢失分段拍照属性，Quality设置为100分；转换后不支持后续的云增强特性。
-- 不支持临时文件和正在变化的文件。当处理的图片为临时文件状态（is_temp）、time_pending不为0状态，返回23800151错误信息。
-- 本身源图片支持的格式为heic、heif。
-- 不支持回收站和隐藏照片。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4923,14 +4918,14 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| title | string | 是    | 转换后文件标题 。|
+| title | string | 是    | 转换后图片标题 。|
 | imageFormat | [SupportedImageFormat](#supportedimageformat20) | 是    | 支持的目标格式类型。 |
 
 **返回值：**
 
 | 类型                            | 说明                    |
 | ----------------------------- | --------------------- |
-| Promise<[PhotoAsset](#photoasset)> | Promise对象，返回转码后文件的PhotoAsset。 |
+| Promise\<[PhotoAsset](#photoasset)> | Promise对象，返回转码后文件的PhotoAsset。 |
 
 **错误码：**
 
@@ -4941,8 +4936,8 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 | -------- | ---------------------------------------- |
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
-| 23800151     | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range.         |
-| 23800301    | Internal system error.It is recommended to retry and check the logs.         |
+| 23800151     | Scene parameters validate failed, possible causes: 1. The original file does not exist locally in PhotoAsset; 2. The original file format is not within the supported range; 3. The original file is a temporary file or is being edited; 4. The title is the same with an image in the same album; 5. PhotoAsset is a photo in the trash or a hidden photo; 6. The title does not meet the parameter specifications.          |
+| 23800301    | Internal system error.It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out.        |
 
 **示例：**
 
@@ -10062,7 +10057,7 @@ async function example(context: Context) {
 
 | 名称                           | 值  | 说明       |
 | :---------------------------- | :- | :------- |
-| AVFILE_FORMAT_JPG         | 'jpg'  | jpg格式    |
+| AVFILE_FORMAT_JPG         | 'jpg'  | jpg格式。    |
 
 ## WatermarkType<sup>14+</sup>
 
