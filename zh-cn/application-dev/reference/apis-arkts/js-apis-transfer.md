@@ -145,6 +145,10 @@ export function har1func(dynamic_obj: Any) {
 |"ArkUI.ColorMetrics" | [ColorMetrics](../apis-arkui/js-apis-arkui-graphics.md#colormetrics12)|   
 |"ArkUI.ShapeMask" | [ShapeMask](../apis-arkui/js-apis-arkui-graphics.md#shapemask12)|
 | "ArkUI.ColorFilter" | [ColorFilter](../apis-arkui/arkui-ts/ts-types.md#colorfilter9) |
+| "ArkUI.Colors" | [Colors](../apis-arkui/js-apis-arkui-theme.md#colors) |
+| "ArkUI.CustomColors" | [CustomColors](../apis-arkui/js-apis-arkui-theme.md#customcolors) |
+| "ArkUI.Theme" | [Theme](../apis-arkui/js-apis-arkui-theme.md#theme) |
+| "ArkUI.CustomTheme" | [CustomTheme](../apis-arkui/js-apis-arkui-theme.md#customtheme) |
 |"Global.Resource" | [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)|
 | "ImageKit.AuxiliaryPicture" | [AuxiliaryPicture](../apis-image-kit/arkts-apis-image-AuxiliaryPicture.md) |
 | "ImageKit.ImageCreator" | [ImageCreator](../apis-image-kit/arkts-apis-image-ImageCreator.md) |
