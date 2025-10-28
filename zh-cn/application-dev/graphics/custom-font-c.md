@@ -62,7 +62,7 @@
 
    > **说明：**
    >
-   > 确保需注册的可用自定义字体文件已正确放置在应用设备的/system/fonts/myFontFile.ttf路径下。
+   > 确保需注册的可用自定义字体文件已正确放置在应用设备的/system/fonts/NotoSerifTamil[wdth,wght].ttf路径下。
 
    <!-- @[custom_font_c_custom_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
@@ -71,7 +71,7 @@
    const char* fontFamily = "myFamilyName"; 
    // 该路径是待注册的自定义字体文件在应用设备下的路径，确保该自定义字体文件已正确放置在该路径下
    const char* fontPath = "/system/fonts/NotoSerifTamil[wdth,wght].ttf"; 
-    ```
+   ```
 
 5. 在字体管理器中使用OH_Drawing_RegisterFont()注册自定义字体。
 
