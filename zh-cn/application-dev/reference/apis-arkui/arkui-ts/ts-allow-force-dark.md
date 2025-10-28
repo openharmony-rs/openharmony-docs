@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @demon_coffee-->
 <!--Tester: @demon_coffee-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件是否使用反色能力，反色能力是在深浅色切换时自动对颜色值进行反色或变换，开发者可以通过主动设置不启用反色算法，以保持在深浅色切换时的原有逻辑。
 
