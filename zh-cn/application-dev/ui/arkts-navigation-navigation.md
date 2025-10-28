@@ -368,15 +368,41 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 1. 普通跳转，通过页面的name去跳转，并可以携带param。
 
 <!-- @[PushPathParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+
+``` TypeScript
+this.pageStack.pushPath({ name: 'pageOne', param: 'PageOne Param' });
+```
 <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+this.pageStack.pushPathByName('pageTwo', 'PageOne Param');
+```
 
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
 
 <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
 
+``` TypeScript
+this.pageInfo.pushPathByName('temp4-pageTwo', 'PageOne Param', (popInfo) => {
+  hilog.info(DOMAIN, 'testTag', 'Pop page name is: ', popInfo.info.name, 'result: ',
+    JSON.stringify(popInfo.result));
+// ···
+});
+```
+
 3. 带错误码的跳转，跳转结束会触发异步回调，返回错误码信息。
 
 <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+this.pageStack.pushDestination({
+  name: 'pageTwo', param: 'PageOne Param'}).catch((error: BusinessError) => {
+  hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
+    'error.message = ', error.message);
+}).then(() => {
+  hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
+});
+```
 <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
 ### 页面返回
@@ -384,15 +410,40 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 NavPathStack通过Pop相关接口去实现页面返回功能。
 
 <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
+
+``` TypeScript
+// 返回到上一页
+this.pathStack.pop();
+```
 <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
+
+``` TypeScript
+// 返回到上一个temp4-pageOne页面
+this.pathStack.popToName('temp4-pageOne');
+```
 <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
+
+``` TypeScript
+// 返回到索引为0的页面
+this.pathStack.popToIndex(0);
+```
 <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 返回到根首页（清除栈中所有页面）
+this.pageStack.clear();
+```
 
 ### 页面替换
 
 NavPathStack通过Replace相关接口去实现页面替换功能。
 
 <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+``` TypeScript
+// 将栈顶页面替换为PageOne
+this.pageStack.replacePath({ name: 'pageTwo', param: 'PageOne Param' });
+```
 <!-- @[replacePathByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
