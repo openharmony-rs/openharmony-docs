@@ -51,8 +51,6 @@ libudmf.so, libhilog_ndk.z.so
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-#include <database/udmf/udmf_err_code.h>
-
 #include <database/udmf/uds.h>
 #include <database/udmf/udmf.h>
 #include <database/udmf/udmf_meta.h>
@@ -91,9 +89,6 @@ OH_LOG_INFO(LOG_APP, "content = %{public}s.", content2);
 OH_UdsPlainText_Destroy(plainText);
 OH_UdmfRecord_Destroy(plainTextRecord);
 OH_UdsPlainText_Destroy(plainText2);
-napi_value result;
-napi_create_int32(env, Udmf_ErrCode::UDMF_E_OK, &result);
-return result;
 ```
 
 ## fileUri类型的数据结构的使用
@@ -125,7 +120,4 @@ OH_LOG_INFO(LOG_APP, "fileUri1 = %{public}s.", fileUriStr);
 OH_UdsFileUri_Destroy(fileUri);
 OH_UdmfRecord_Destroy(record);
 OH_UdsFileUri_Destroy(fileUri1);
-napi_value result;
-napi_create_int32(env, Udmf_ErrCode::UDMF_E_OK, &result);
-return result;
 ```
