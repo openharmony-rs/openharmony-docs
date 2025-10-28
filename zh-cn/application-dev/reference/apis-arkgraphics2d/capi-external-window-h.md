@@ -1155,7 +1155,7 @@ int32_t OH_NativeWindow_PreAllocBuffers(OHNativeWindow *window, uint32_t allocBu
 | 参数项 | 描述 |
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个指向OHNativeWindow的结构体实例的指针。 |
-| uint32_t allocBufferCnt | 提前申请buffer的数量。当allBufferCnt大于bufferQueueSize时，只能提前申请bufferQueueSize数量的buffer。bufferQueueSize可以通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)获取。 |
+| uint32_t allocBufferCnt | 提前申请buffer的数量。当allocBufferCnt大于bufferQueueSize时，只能提前申请bufferQueueSize数量的buffer。bufferQueueSize可以通过[OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)获取。 |
 
 **返回：**
 
