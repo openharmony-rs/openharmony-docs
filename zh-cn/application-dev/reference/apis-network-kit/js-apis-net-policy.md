@@ -52,15 +52,6 @@ showAppNetPolicySettings(context: Context): Promise\<void>;
 | ------------------------------------------------------- | ----------------------------- |
 | Promise\<void>  |形式返回设定结果。 |
 
-**错误码：**
-
-| 错误码 ID | 错误信息                                     |
-| --------- | -------------------------------------------- |
-| 2100001       | Invalid parameter value.                           |
-| 2100003       | System internal error.     |
-
-
-
 **示例：**
 
 ```ts
