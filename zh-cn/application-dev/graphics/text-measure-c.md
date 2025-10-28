@@ -76,6 +76,7 @@
 5. 调用段落测量信息获取接口，获取指定数据。
 
    <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
    ``` c++
    double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
    DRAWING_LOGI("第%{public}d行 longestLine: %{public}f" ,longestLine);

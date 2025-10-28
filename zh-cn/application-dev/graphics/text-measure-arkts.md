@@ -94,6 +94,7 @@
 完整的文本测量示例如下。
 
    <!-- @[ts_text_metrics_total](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
    import { UIContext } from '@kit.ArkUI';

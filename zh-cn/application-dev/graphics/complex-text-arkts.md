@@ -1377,6 +1377,7 @@ struct Font08 {
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
 
   <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
@@ -1513,7 +1514,8 @@ struct Font08 {
 ### 示例七（行高调整方式二）
 这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
 
-   <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
@@ -1651,7 +1653,8 @@ struct Font08 {
 ### 示例八（行间距调整）
 这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
 
-   <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
