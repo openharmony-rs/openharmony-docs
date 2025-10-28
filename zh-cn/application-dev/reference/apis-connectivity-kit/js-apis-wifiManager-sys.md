@@ -23,9 +23,9 @@ enableSemiWifi(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：**12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -65,7 +65,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -110,7 +110,7 @@ getScanAlwaysAllowed(): boolean
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -132,7 +132,7 @@ getScanAlwaysAllowed(): boolean
 **示例：**
 **ArkTS-Dyn起始版本：20**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 ```ts
 	import { wifiManager } from '@kit.ConnectivityKit';
@@ -151,9 +151,9 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：**12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -179,7 +179,7 @@ WLAN配置信息。
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -198,7 +198,7 @@ IP配置信息。
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -219,7 +219,7 @@ Wifi 代理配置。
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -239,7 +239,7 @@ Wifi 代理配置。
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -261,7 +261,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -305,9 +305,9 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：**12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -328,7 +328,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -360,7 +360,7 @@ getSupportedFeatures(): number
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -419,9 +419,9 @@ getWifiDetailState(): WifiDetailState
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：**12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -461,9 +461,9 @@ getWifiDetailState(): WifiDetailState
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：**12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -490,7 +490,7 @@ reassociate(): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -529,7 +529,7 @@ reconnect(): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -568,9 +568,9 @@ ArkTS-Sta: updateNetwork(config: WifiDeviceConfig): int
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：9**
+**ArkTS-Dyn起始版本：**9
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -630,7 +630,7 @@ ArkTS-Sta: disableNetwork(netId: int): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -677,7 +677,7 @@ removeAllNetwork(): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -718,7 +718,7 @@ ArkTS-Sta: get5GChannelList(): Array&lt;int&gt;
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -762,7 +762,7 @@ getDisconnectedReason(): DisconnectedReason
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -802,7 +802,7 @@ getDisconnectedReason(): DisconnectedReason
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -824,7 +824,7 @@ startPortalCertification(): void
 
 **ArkTS-Dyn起始版本：11**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -862,9 +862,9 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：12**
+**ArkTS-Dyn起始版本：**12
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -921,7 +921,7 @@ factoryReset(): void
 
 **ArkTS-Dyn起始版本：20**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -959,7 +959,7 @@ enableHotspot(): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -997,7 +997,7 @@ disableHotspot(): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **错误码：**
 
@@ -1035,7 +1035,7 @@ isHotspotDualBandSupported(): boolean
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1080,7 +1080,7 @@ isOpenSoftApAllowed(): boolean
 
 **ArkTS-Dyn起始版本：18**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1125,7 +1125,7 @@ setHotspotConfig(config: HotspotConfig): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1175,7 +1175,7 @@ setHotspotConfig(config: HotspotConfig): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1201,7 +1201,7 @@ getHotspotConfig(): HotspotConfig
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1250,7 +1250,7 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1291,7 +1291,7 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1314,7 +1314,7 @@ addHotspotBlockList(stationInfo: StationInfo)
 
 **ArkTS-Dyn起始版本：11**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1366,7 +1366,7 @@ delHotspotBlockList(stationInfo: StationInfo)
 
 **ArkTS-Dyn起始版本：11**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1417,7 +1417,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 **ArkTS-Dyn起始版本：11**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1466,7 +1466,7 @@ ArkTS-Sta: deletePersistentGroup(netId: int): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1518,7 +1518,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **返回值：**
 
@@ -1574,7 +1574,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **ArkTS-Dyn起始版本：10**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
@@ -1608,7 +1608,7 @@ setDeviceName(devName: string): void
 
 **ArkTS-Dyn起始版本：9**
 
-**ArkTS-Sta起始版本：20**
+**ArkTS-Sta起始版本：**20
 
 **参数：**
 
