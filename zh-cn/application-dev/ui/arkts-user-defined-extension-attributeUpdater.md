@@ -16,18 +16,7 @@
 
 ## 接口定义
 
-```ts
-export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T> {
-
-  applyNormalAttribute?(instance: T): void;
-
-  initializeModifier(instance: T): void;
-
-  get attribute(): T | undefined;
-
-  updateConstructorParams: C;
-}
-```
+<!-- @[att_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/Common.ets) -->
 
 `AttributeUpdater`实现了`AttributeModifier`接口，并额外提供了`initializeModifier`，可以对组件的属性进行初始化。通过`attribute`属性方法可以获取属性对象，直接更新对应组件的属性。另外也可以直接通过`updateConstructorParams`更新组件的构造参数。
 
@@ -44,39 +33,7 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 
 组件初始化完成之后，开发者可以通过`AttributeUpdater`实例的`attribute`属性方法，获取到属性对象。通过属性对象直接修改属性，会立即触发组件属性的更新。
 
-```ts
-import { AttributeUpdater } from '@kit.ArkUI';
-
-class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
-  // 首次绑定时触发initializeModifier方法，进行属性初始化
-  initializeModifier(instance: ButtonAttribute): void {
-    instance.backgroundColor('#2787D9')
-      .width('50%')
-      .height(30)
-  }
-}
-
-@Entry
-@Component
-struct updaterDemo {
-  modifier: MyButtonModifier = new MyButtonModifier()
-
-  build() {
-    Row() {
-      Column() {
-        Button("Button")
-          .attributeModifier(this.modifier)
-          .onClick(() => {
-            // 通过attribute，直接修改组件属性，并立即触发组件属性更新
-            this.modifier.attribute?.backgroundColor('#17A98D').width('30%')
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[att_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
 ![AttributeUpdater](figures/AttributeUpdater.gif)
 
 
@@ -84,41 +41,5 @@ struct updaterDemo {
 
 可以通过`AttributeUpdater`实例的`updateConstructorParams`方法，直接更新组件的构造参数。
 
-```ts
-import { AttributeUpdater } from '@kit.ArkUI';
-
-class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
-  initializeModifier(instance: TextAttribute): void {
-  }
-}
-
-@Entry
-@Component
-struct updaterDemo {
-  modifier: MyTextModifier = new MyTextModifier()
-
-  build() {
-    Row() {
-      Column() {
-        Text("Text")
-          .attributeModifier(this.modifier)
-          .fontColor(Color.White)
-          .fontSize(14)
-          .border({ width: 1 })
-          .textAlign(TextAlign.Center)
-          .lineHeight(20)
-          .width(200)
-          .height(50)
-          .backgroundColor('#2787D9')
-          .onClick(() => {
-            // 调用updateConstructorParams方法，直接更新组件的构造参数
-            this.modifier.updateConstructorParams('Update');
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[att_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
 ![AttributeUpdater](figures/AttributeUpdater2.gif)
