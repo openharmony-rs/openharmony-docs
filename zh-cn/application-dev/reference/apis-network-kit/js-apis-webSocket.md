@@ -1476,7 +1476,7 @@ localServer.off('error');
 | 名称 | 类型   | 只读 |可选| 说明                |
 | ------ | ------ | ---- |---|----------------|
 | certPath   | string  | 否   |否 |证书路径。             |
-| keyPath | string | 是   |否| 证书密钥的路径。          |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
 | keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
@@ -1529,7 +1529,7 @@ type ResponseHeaders = {
 
 | 名称 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-|  [k:string]  | string \| string[] \| undefined | 是   | 键值对形式存储。其键的类型为字符，可取任意值，其值的类型为字符、字符数组或undefined。 |
+|  [k:string]  | string \| string[] \| undefined | 否   | 键值对形式存储。其键的类型为字符，可取任意值，其值的类型为字符、字符数组或undefined。 |
 
 ## close错误码说明
 
