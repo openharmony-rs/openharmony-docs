@@ -225,6 +225,31 @@ getDLPSupportedFileTypes() {
 
 <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+isCurrentDlpFile() {
+  let file = this.openFile(this.uri);
+  if(!file) {
+    this.result = '请打开一个文件！';
+    return;
+  }
+  dlpPermission.isDLPFile(file.fd).then((res) => {
+    if (res.valueOf()) {
+      this.result = 'isDLPFile result: ' + JSON.stringify(res);
+    } else {
+      this.result = '请打开一个dlp文件! ';
+    }
+    console.info('res', res);
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
+  }).catch((err:BusinessError) => {
+    this.result = 'isDLPFile error: ' + (err as BusinessError).code + (err as BusinessError).message;
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+  }).finally(() => {
+      fs.closeSync(file);
+  });
+}
+```
+
 8. 订阅、取消订阅DLP打开事件。
 
 <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
