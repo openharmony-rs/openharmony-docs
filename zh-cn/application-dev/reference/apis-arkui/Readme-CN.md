@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 - ArkTS API<!--arkui-arkts-->
   - UI界面<!--ui-->
@@ -735,5 +735,5 @@
   - 图形图像<!--arkui-graphics-images-arkts-errcode-->
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
-  - UI编译
+  - UI编译<!--arkui-compile-arkts-errcode-->
     - [编译错误码](_ark_ui_compile.md)

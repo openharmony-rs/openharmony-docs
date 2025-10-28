@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 

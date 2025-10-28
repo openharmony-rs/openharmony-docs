@@ -1,4 +1,13 @@
 # 渐变样式
+<<<<<<< HEAD
+=======
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+>>>>>>> 9f04030... update adviser
 
 组件普遍支持的在style或css中设置的 可以平稳过渡两个或多个指定的颜色。
 
