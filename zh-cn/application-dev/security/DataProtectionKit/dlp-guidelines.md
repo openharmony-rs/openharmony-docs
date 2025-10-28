@@ -208,6 +208,18 @@ getDLPPermissionInfo() {
 
 <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+getDLPSupportedFileTypes() {
+  dlpPermission.getDLPSupportedFileTypes((err, result) => {
+    console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+    console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
+    this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
+  });
+}
+```
+
 7. 判断当前打开文件是否是DLP文件。 <br>
 使用该接口的前置条件：需要dlp文件进行判断。
 
