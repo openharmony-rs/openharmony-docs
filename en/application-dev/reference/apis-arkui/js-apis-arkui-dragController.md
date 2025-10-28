@@ -523,7 +523,7 @@ struct DragControllerPage {
 
 **Example 2**
 
-This example shows how to configure **dataLoadParams** in [DragInfo](#draginfo) to enable deferred data loading from the drag source.
+Since API version 20, you can configure **dataLoadParams** in [DragInfo](#draginfo) to enable deferred data loading from the drag source.
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';

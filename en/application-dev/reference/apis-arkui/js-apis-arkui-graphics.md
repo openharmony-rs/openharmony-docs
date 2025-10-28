@@ -128,7 +128,7 @@ Sets the rotation angle of the component.
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| [Vector3](#vector3) | Rotation angle along the x- and y-axis.<br>Unit: degree|
+| [Vector3](#vector3) | Rotation angle around the x-, y-, and z-axes.<br>Unit: degree|
 
 ## Offset
 
@@ -879,7 +879,7 @@ Describes the four corners.
 
 type CornerRadius = Corners\<Vector2>
 
-Sets the radius for the four corners.
+Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -887,13 +887,13 @@ Sets the radius for the four corners.
 
 | Type                                        | Description              |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | Radius of the four corners.|
+| [Corners](#cornerst12)[\<Vector2>](#vector2) | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
 
 ## BorderRadiuses<sup>12+</sup>
 
 type BorderRadiuses = Corners\<number>
 
-Sets the radius for the four border corners.
+Sets the uniform radius of the four corners.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -901,7 +901,7 @@ Sets the radius for the four border corners.
 
 | Type                           | Description              |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | Radius of the four border corners.|
+| [Corners\<number>](#cornerst12) | Uniform radius of the four corners.|
 
 ## Rect<sup>12+</sup>
 
@@ -968,8 +968,8 @@ Describes the shape mask.
 
 | Name           | Type   | Read Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Note: Only the alpha channel of fillColor takes effect. |
-| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br>   Note: Only the alpha channel of strokeColor takes effect.          |
+| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode). |
+| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode).|
 | strokeWidth     | number | No  | No  | Sets the stroke width for the mask, in px. The default value is **0**.  |
 
 ### constructor<sup>12+</sup>
@@ -1300,7 +1300,7 @@ A constructor used to create a **ShapeClip** object.
 
 setRectShape(rect: Rect): void
 
-Sets a rectangle as the clipping shape.
+Sets a rectangle for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1374,7 +1374,7 @@ struct Index {
 
 setRoundRectShape(roundRect: RoundRect): void
 
-Sets a rectangle with rounded corners for shape clipping.
+Sets a rounded rectangle for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1453,7 +1453,7 @@ struct Index {
 
 setCircleShape(circle: Circle): void
 
-Sets a circle as the clipping shape.
+Sets a circle for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1521,7 +1521,7 @@ struct Index {
 
 setOvalShape(oval: Rect): void
 
-Sets an oval shape as the clipping shape.
+Sets an oval shape for shape clipping.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1779,7 +1779,7 @@ struct Index {
 
 borderStyles(all: BorderStyle): Edges\<BorderStyle>
 
-Generates a **borderStyles** object with the specified border style color for all borders.
+Generates a border style object with the specified border style color for all borders.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
