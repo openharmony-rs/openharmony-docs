@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Picker容器是立体滚轮样式选择器，通过子组件实现选项内容和样式的自定义，支持文本类型、图片类型和图文组合类型。
 

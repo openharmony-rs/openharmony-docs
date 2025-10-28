@@ -196,7 +196,7 @@ Obtains the disposed status of an application. This API uses a promise to return
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -254,7 +254,7 @@ Obtains the disposed status of an application. This API uses an asynchronous cal
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -308,7 +308,7 @@ Obtains the disposed status of an application. This API returns the result synch
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -521,7 +521,7 @@ Obtains the disposed rule of an application or an application clone.
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**Required permissions**: ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.AppControl
 
