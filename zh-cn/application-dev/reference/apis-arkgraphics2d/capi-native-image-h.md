@@ -760,7 +760,7 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
-| [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
+| [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
 **返回：**
