@@ -90,16 +90,16 @@
    playerHandle.setDecryptionConfig(mediaKeySession, svp)
    ```
 
-7. 销毁AVPlayer实例并根据released事件监听销毁MediaKeySession和MediaKeySystem实例。
+   7. 销毁AVPlayer实例并根据released事件监听销毁MediaKeySession和MediaKeySystem实例。
 
-   ```ts
-   playerHandle.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
-      if (state == 'released') {
-    mediaKeySession.destroy();
-    mediaKeySystem.destroy();
-    } else if (state == 'releasing') {  
-    await playerHandle.release();    
-    }
-   })
+      ```ts
+      playerHandle.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
+         if (state == 'released') {
+            mediaKeySession.destroy();
+            mediaKeySystem.destroy();
+         } else if (state == 'releasing') {  
+            await playerHandle.release();    
+         }
+      })
    
-   ```
+      ```
