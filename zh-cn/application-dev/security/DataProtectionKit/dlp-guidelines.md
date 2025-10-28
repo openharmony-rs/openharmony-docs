@@ -332,19 +332,86 @@ getDLPFileAccessRecords() {
 12. 清理沙箱应用配置信息。
 
    <!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   cleanSandboxAppConfig() {
+     dlpPermission.cleanSandboxAppConfig().then(() => {
+       this.result = 'cleanSandboxAppConfig result: 清理沙箱成功';
+       console.info('res', '清理沙箱成功');
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'cleanSandboxAppConfig result: 清理沙箱成功');
+     }).catch((err: BusinessError) => {
+       this.result = 'cleanSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+       console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     });
+   }
+   ```
 
 13. 查询沙箱应用配置信息。
 
    <!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   getSandboxAppConfig() {
+     dlpPermission.getSandboxAppConfig().then((res) => {
+       this.result = 'getSandboxAppConfig result: ' + JSON.stringify(res);
+       console.info('res', JSON.stringify(res));
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getSandboxAppConfig result: ' + JSON.stringify(res));
+     }).catch((err: BusinessError) => {
+       this.result = 'getSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+       console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     });
+   }
+   ```
 
 14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。 <br>
 使用该接口的前置条件：链接DLP凭据服务器
 
    <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   startDLPManagerForResult() {
+     try {
+       let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+       let want:Want = {
+         'uri': this.uri,
+         'parameters' : {
+           'displayName': this.fileName
+         }
+       }; // 请求参数
+       dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+         this.result = 'startDLPManagerForResult resultCode: ' + res.resultCode;
+         console.info('res.resultCode', res.resultCode);
+         console.info('res.want', JSON.stringify(res.want));
+         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.resultCode' + res.resultCode);
+         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.want' + JSON.stringify(res.want));
+       }); // 打开DLP权限管理应用
+     } catch (err) {
+       this.result = 'startDLPManagerForResult error' + err.code + err.message;
+       console.error('error', err.code, err.message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     }
+   }
+   ```
 
 15. 查询当前系统是否提供DLP特性。 <br>
 使用该接口的前置条件：链接DLP凭据服务器
    <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   isDLPFeature() {
+     dlpPermission.isDLPFeatureProvided().then((res) => {
+       this.result = 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf());
+       console.info('res', JSON.stringify(res.valueOf()));
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf()));
+     }).catch((err: BusinessError) => {
+       this.result = 'isDLPFeatureProvided error: ' + (err as BusinessError).code + (err as BusinessError).message;
+       console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     });
+   }
+   ```
 
 16. 设置企业应用防护策略。 <br>
 使用该接口的前置条件：链接DLP凭据服务器
@@ -379,7 +446,65 @@ getDLPFileAccessRecords() {
     | AdvancedSecurityMode | 1 <br> 2 | 整型 | 1：该设备已开启高级安全模式。<br>2：该设备未开启高级安全模式。  |
 
    <!-- @[dlp_setDLPProtectPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   setDLPProtectPolicy() {
+     try {
+       let attributeValues: string[] = [ '1' ];
+       let attribute: Attribute = {
+         attributeId: 'DeviceHealthyStatus',
+         attributeValues: attributeValues,
+         valueType: 0,
+         opt: 2
+       }; // 属性信息。
+       let rule: Rule = {
+         ruleId: 'ruleId',
+         attributes: [ attribute ]
+       }; // 规则。
+       let policy: Policy = {
+         rules: [ rule ],
+         policyId: 'policyId',
+         ruleConflictAlg: 0
+       }; // 策略。
+       let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+         policyString: JSON.stringify(policy)
+       };
+       dlpPermission.setEnterprisePolicy(enterprisePolicy);
+       console.info('set enterprise policy success');
+       this.result = 'set enterprise policy success';
+       hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'set enterprise policy success');
+     } catch (err) {
+       console.error('error:' + err.code + err.message); // 失败报错。
+       this.result = 'error:' + err.code + err.message;
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+     }
+   }
+   ```
 
 17. （API 21开始支持）识别指定文件中的敏感内容。 <br>
 使用该接口的前置条件：链接DLP凭据服务器
    <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   scanSensitiveInfo() {
+     let filepath = this.uri;
+     let policies: identifySensitiveContent.Policy[] = [
+       {'sensitiveLabel':'1', 'keywords':[], 'regex':''}
+     ];
+     try {
+       identifySensitiveContent.scanFile(filepath, policies).then(records => {
+         console.info('scanFile finish');
+         this.result = 'scanFile finish';
+         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'scanFile finish');
+       }).catch((err:Error) => {
+         console.error('error message', err.message);
+         this.result = 'error message' + err.message;
+         hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+       })
+     } catch (err) {
+       console.error('error message', err.message);
+       this.result = 'error message' + err.message;
+       hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+     }
+   }
+   ```
