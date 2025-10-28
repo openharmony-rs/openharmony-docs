@@ -901,35 +901,7 @@ OH_Drawing_DestroyTypography(typography);
 | [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
 
 示例及效果如下所示：
-```c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// 设置文字大小
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// 设置文字颜色
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// 设置行高上限
-OH_Drawing_SetTextStyleAttributeDouble(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM, 65);
-// 设置行高下限
-OH_Drawing_SetTextStyleAttributeDouble(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM, 65);
-// 创建排版对象，并绘制
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, badgeText);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
-
-// 释放对象
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTextStyle(badgeTxtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+<!-- @[complex_text_c_line_height_limit_one_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 具体效果如下所示：
 
@@ -948,35 +920,7 @@ OH_Drawing_DestroyTypography(typography);
 | [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
 
 示例及效果如下所示：
-```c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// 设置文字大小
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// 设置文字颜色
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// 设置行高缩放系数
-OH_Drawing_SetTextStyleFontHeight(txtStyle, 1.5);
-// 设置行高缩放样式（1代表行高缩放以字形高度作为缩放基数）
-OH_Drawing_SetTextStyleAttributeInt(txtStyle, OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE, 1);
-// 创建排版对象，并绘制
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, badgeText);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 1000);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
-
-// 释放对象
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTextStyle(badgeTxtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+<!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 具体效果如下所示：
 
@@ -995,35 +939,7 @@ OH_Drawing_DestroyTypography(typography);
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
 
 示例及效果如下所示：
-```c++
-OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-// 设置行间距
-OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle, OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING, 100);
-// 设置禁用段落上升部下降部
-OH_Drawing_TypographyTextSetHeightBehavior(typoStyle, OH_Drawing_TextHeightBehavior::TEXT_HEIGHT_DISABLE_ALL);
-OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-// 设置文字大小
-OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-// 设置文字颜色
-OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-// 创建排版对象，并绘制
-OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
-OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
-OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-const char *text = "Hello World!";
-OH_Drawing_TypographyHandlerAddText(handler, badgeText);
-OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
-OH_Drawing_TypographyLayout(typography, 200);
-OH_Drawing_TypographyPaint(typography, canvas, 0, 0);
-
-// 释放对象
-OH_Drawing_DestroyFontCollection(fc);
-OH_Drawing_DestroyTextStyle(txtStyle);
-OH_Drawing_DestroyTextStyle(badgeTxtStyle);
-OH_Drawing_DestroyTypographyStyle(typoStyle);
-OH_Drawing_DestroyTypographyHandler(handler);
-OH_Drawing_DestroyTypography(typography);
-```
+<!-- @[complex_text_c_line_spacing_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 具体效果如下所示：
 
