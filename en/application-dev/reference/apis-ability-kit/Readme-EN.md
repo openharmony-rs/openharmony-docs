@@ -36,6 +36,8 @@
     - [@ohos.app.ability.InsightIntentDecorator (Intent Decorator)](js-apis-app-ability-InsightIntentDecorator.md)
     - [@ohos.app.ability.InsightIntentEntryExecutor (Base Class for @InsightIntentEntry Intent Execution)](js-apis-app-ability-InsightIntentEntryExecutor.md)
     - [@ohos.app.ability.InsightIntentExecutor (Base Class for Intent Execution)](js-apis-app-ability-insightIntentExecutor.md)
+    - [@ohos.application.NotificationSubscriberExtensionAbility (ExtensionAbility for Notification Subscription)](js-apis-application-NotificationSubscriberExtensionAbility.md)
+    - [@ohos.application.NotificationSubscriberExtensionContext (ExtensionAbility Context for Notification Subscription)](js-apis-application-NotificationSubscriberExtensionContext.md)
     - [@ohos.app.ability.PhotoEditorExtensionAbility (ExtensionAbility for Image Editing)](js-apis-app-ability-photoEditorExtensionAbility.md)
     - [@ohos.app.ability.OpenLinkOptions (Optional Parameters of openLink)](js-apis-app-ability-openLinkOptions.md)
     - [@ohos.app.ability.ShareExtensionAbility (ExtensionAbility for Share Detail Page Integration)](js-apis-app-ability-shareExtensionAbility.md)
@@ -320,4 +322,6 @@
   - [Bundle Error Codes](errorcode-bundle.md)
   - [Access Control Error Codes](errorcode-access-token.md)
   - [ohos.screenLockFileManager Error Codes](errorcode-screenLockFileManager.md)
-  - [Application Domain Name Verification Error Codes](errorcode-appDomainVerify.md)
+  <!--Del-->
+  - [Application Domain Name Verification Error Codes](errorcode-appDomainVerify-sys.md)
+  <!--DelEnd-->

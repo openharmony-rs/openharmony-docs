@@ -50,7 +50,7 @@ Avoid setting layout-related attributes such as the position and size. They may 
 
 title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource, options?: NavigationTitleOptions)
 
-Sets the page title. When the NavigationCustomTitle type is used to set the height, the [titleMode](ts-basic-components-navigation.md#titlemode) attribute does not take effect. When the title string is too long: (1) If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set, the subtitle is scaled down and then clipped with an ellipsis (...).
+Sets the page title. When the title string is too long: (1) If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set, the subtitle is scaled down and then clipped with an ellipsis (...).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -110,8 +110,8 @@ Sets the content of the toolbar. If this API is not called, the toolbar remains 
 
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| toolbarParam |  Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;  \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar.<br>When configured with Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;, the toolbar follows the rules below:<br>- Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>- If any item contains overlong text and there are fewer than five items, the toolbar will: 1. Increase the item width to accommodate the text until the toolbar spans the screen width; 2. Reduce the text size progressively; 3. Wrap the text over two lines; 4. Clip the text with an ellipsis (...).<br>- In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](ts-basic-components-navigation.md#navigationmode9), the toolbar follows the same rules as in portrait mode. (2) If the display mode is [Stack](ts-basic-components-navigation.md#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules, except for evenly distributing items at the bottom of the toolbar.|
-| options      | [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11) | No  | Toolbar options.                                                |
+| toolbarParam |  Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;  \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar.<br>When configured with Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;, the toolbar follows the rules below:<br>- Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>- In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](ts-basic-components-navigation.md#navigationmode9), the toolbar follows the same rules as in portrait mode. (2) If the display mode is [Stack](ts-basic-components-navigation.md#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules, except for evenly distributing items at the bottom of the toolbar.|
+| options      | [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11) | No  | Toolbar options. Includes the toolbar background color, toolbar background blur style and blur option, toolbar background attribute, toolbar layout mode, whether to hide the toolbar text, and more icons on the toolbar.                                                |
 
 > **NOTE**
 >
@@ -479,7 +479,7 @@ Enumerates the modes of the **NavDestination** component.
 | Name  | Value| Description                                    |
 | ---- | --- | ---------------------------------------- |
 | STANDARD | 0 | Standard mode.                      |
-| DIALOG | 1 | Dialog mode, where the navigation destination is transparent by default, and adding or removing the navigation destination from the routing stack does not affect the lifecycle of the lower-layer navigation destinations.<br>Note: System transition animations are supported since API version 13. |
+| DIALOG | 1 | Dialog mode, where the navigation destination is transparent by default. The entry and exit of the routing stack do not affect the visibility of the lower-layer NavDestination (lifecycles such as onShown and onHidden). Only the onActive and onInactive lifecycles are triggered.<br>Note: System transition animations are supported since API version 13. |
 
 ## NavigationSystemTransitionType<sup>14+</sup>
 
@@ -514,9 +514,9 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onShown<sup>10+</sup>
 
-onShown(callback: () =&gt; void)
+onShown(callback: Callback\<VisibilityChangeReason>)
 
-Triggered when the navigation destination page is displayed.
+Triggered when the navigation destination page is displayed. Since API version 21, visibilityChangeReason can be used to describe the cause of onShown.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -526,13 +526,13 @@ Triggered when the navigation destination page is displayed.
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   () =&gt; void   | Yes  | Called when the navigation destination page is displayed.|
+| callback   |  [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[VisibilityChangeReason](#visibilitychangereason21)><sup>21+</sup> | Yes  | Triggered when the navigation destination page is displayed.<br>In versions earlier than API version 21, the callback is triggered when the NavDestination page is displayed.<br>Since API version 21, the callback provides the input parameter VisibilityChangeReason to describe the reason why onShown is triggered.|
 
 ### onHidden<sup>10+</sup>
 
-onHidden(callback: () =&gt; void)
+onHidden(callback: Callback\<VisibilityChangeReason>)
 
-Triggered when the navigation destination page is hidden.
+Triggered when the navigation destination page is hidden. Since API version 21, visibilityChangeReason can be used to describe the cause of onHidden.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -542,7 +542,7 @@ Triggered when the navigation destination page is hidden.
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   () =&gt; void   | Yes  | Called when the navigation destination page is hidden.|
+| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[VisibilityChangeReason](#visibilitychangereason21)><sup>21+</sup> | Yes  | Triggered when the navigation destination page is hidden.<br>In versions earlier than API version 21, the callback is triggered when the NavDestination page is hidden.<br>Since API version 21, this callback provides the input parameter VisibilityChangeReason to describe the reason why onHidden is triggered.|
 
 ### onWillAppear<sup>12+</sup>
 
@@ -558,7 +558,7 @@ Triggered when the navigation destination is about to be mounted. The routing st
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Called when the navigation destination is about to be mounted. The routing stack can be modified in the callback, and the modification takes effect in the current frame.|
+| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be mounted. The routing stack can be modified in the callback, and the modification takes effect in the current frame.|
 
 ### onWillShow<sup>12+</sup>
 
@@ -574,7 +574,7 @@ Triggered when the navigation destination is about to be displayed.
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Called when the navigation destination is about to be displayed.|
+| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be displayed.|
 
 ### onWillHide<sup>12+</sup>
 
@@ -590,7 +590,7 @@ Triggered when the navigation destination is about to be hidden.
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Called when the navigation destination is about to be hidden.|
+| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be hidden.|
 
 ### onWillDisappear<sup>12+</sup>
 
@@ -606,7 +606,7 @@ Triggered when the navigation destination is about to be unmounted (or when the 
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Called when the navigation destination is about to be unmounted (or when the transition animation, if any, is about to start).|
+| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be unmounted (or when the transition animation, if any, is about to start).|
 
 ### onBackPressed<sup>10+</sup>
 
@@ -624,7 +624,7 @@ The value **true** means that the back button logic is overridden, and **false**
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   () =&gt; boolean   | Yes  | This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. Called when the back button is pressed.|
+| callback   |   () =&gt; boolean   | Yes  | Triggered when the back button is pressed. This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. |
 
 ### onReady<sup>11+</sup>
 
@@ -640,7 +640,7 @@ Triggered when the **NavDestination** component is about to build a child compon
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | Yes  | Called when the **NavDestination** component is about to build a child component.|
+| callback   |   [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | Yes  | Triggered when the **NavDestination** component is about to build a child component.|
 
 ### onResult<sup>15+</sup>
 
@@ -714,10 +714,10 @@ Defines a general title for the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type    | Mandatory  | Description    |
-| ---- | ------ | ---- | ------ |
-| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | Yes   | Main title.|
-| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | Yes   | Subtitle.|
+| Name  | Type    | Read-Only| Optional| Description    |
+| ---- | ------ | ---- | ---- | ------ |
+| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | No   | No| Main title.|
+| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | No   | No| Subtitle.|
 
 ## NavDestinationCustomTitle
 
@@ -727,10 +727,10 @@ Defines a custom title for the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                      | Mandatory  | Description      |
-| ------- | ---------------------------------------- | ---- | -------- |
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Content of the title bar.|
-| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | Yes   | Height of the title bar.<br>Value range: [0, +∞)|
+| Name     | Type                                      | Read-Only| Optional| Description      |
+| ------- | ---------------------------------------- | ---- | ---- | -------- |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | No   | No| Content of the title bar.|
+| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | No   | No| Height of the title bar.<br>Value range: [0, +∞)|
 
 ## NavDestinationContext<sup>11+</sup>
 
@@ -738,15 +738,16 @@ Defines the context information for the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type    | Mandatory  |  Description    |
-| ---- | ------ | ----- | ------ |
-| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | Yes| Path information of the navigation destination page.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | Yes| Navigation controller of the current **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| navDestinationId<sup>12+</sup> | string | No| Unique ID of the current navigation destination page, which is automatically generated by the system and is irrelevant to the universal attribute **id** of the component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name  | Type    | Read-Only| Optional|  Description    |
+| ---- | ------ | ----- | ----- | ------ |
+| pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | No   | No| Path information of the navigation destination page.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | No   | No| Navigation controller of the current **NavDestination** component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| navDestinationId<sup>12+</sup> | string | No   | Yes| Unique ID of the current navigation destination page, which is automatically generated by the system and is irrelevant to the universal attribute **id** of the component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode11) | No   | Yes| Type of the current NavDestination.<br>Atomic service API: This API can be used in atomic services since API version 22.|
 
 ### getConfigInRouteMap<sup>12+</sup>
 
-getConfigInRouteMap(): RouteMapConfig |undefined
+getConfigInRouteMap(): RouteMapConfig | undefined
 
 Obtains the routing configuration of the current **NavDestination** component.
 
@@ -758,8 +759,8 @@ Obtains the routing configuration of the current **NavDestination** component.
 
 | Type| Description|
 | --- | --- |
-| [RouteMapConfig](#routemapconfig12) \|undefined | Routing configuration of the current page.|
-| undefined | **undefined**, returned when the page is not configured through the route table.|
+| [RouteMapConfig](#routemapconfig12) \| undefined | Routing configuration of the current page.<br> **undefined**, returned when the page is not configured through the route table.|
+
 
 ## RouteMapConfig<sup>12+</sup>
 
@@ -769,11 +770,11 @@ Defines the routing configuration.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  |Mandatory| Description|
-| ----  | ---   | ---- |----- |
-| name  | string | Yes| Page name.|
-| pageSourceFile| string | Yes| Path of the page in the current package.|
-| data | Object | Yes| Custom data of the page.|
+| Name  | Type  | Read-Only| Optional| Description|
+| ----  | ---   | ---- | ---- |----- |
+| name  | string | No| No| Page name.|
+| pageSourceFile| string | No| No| Path of the page in the current package.|
+| data | Object | No| No| Custom data of the page.|
 
 ## NestedScrollInfo<sup>14+</sup>
 
@@ -783,10 +784,10 @@ Provides the information about the nested scrollable containers.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  |Mandatory| Description|
-| ----  | ---   | ---- |----- |
-| parent | [Scroller](./ts-container-scroll.md#scroller) | Yes| Controller of the target scrollable container.|
-| child | [Scroller](./ts-container-scroll.md#scroller) | Yes| Controller of the scrollable container nested within the target scrollable container. This scrollable container is a child component of the target scrollable container.|
+| Name  | Type  | Read-Only| Optional| Description|
+| ----  | ---   | ---- | ---- |----- |
+| parent | [Scroller](./ts-container-scroll.md#scroller) | No| No| Controller of the target scrollable container.|
+| child | [Scroller](./ts-container-scroll.md#scroller) | No| No| Controller of the scrollable container nested within the target scrollable container. This scrollable container is a child component of the target scrollable container.|
 
 ### NavDestinationActiveReason<sup>17+</sup>
 
@@ -805,6 +806,20 @@ Enumerates the reasons why the activation state of the **NavDestination** compon
 | OVERLAY | 4   | The activation state changes due to the opening or closing of an overlay using **OverlayManager**.|
 | APP_STATE | 5   | The activation state changes due to switching between foreground and background states of the application.|
 
+### VisibilityChangeReason<sup>21+</sup>
+
+Reason why the visibility of NavDestination changes.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Value| Description                                    |
+| ---- | -- | ---------------------------------------- |
+| TRANSITION | 0   | The visibility of NavDestination is changed through page redirection.                      |
+| CONTENT_COVER | 1   | The visibility of NavDestination is changed by enabling and disabling the full-modal mode. |
+| APP_STATE | 2   | The visibility of NavDestination is changed through the switchover between the foreground and background.|
+
 ## NavDestinationTransition<sup>15+</sup>
 
 Defines a custom transition animation for the **NavDestination** component.
@@ -813,13 +828,13 @@ Defines a custom transition animation for the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  |Mandatory| Description|
-| ----  | ---   | ---- |----- |
-| onTransitionEnd | Callback\<void> | No| Callback triggered when the transition animation ends.|
-| duration | number | No| Duration of the transition animation.<br>Default value: **1000** (in milliseconds)|
-| curve | [Curve](ts-appendix-enums.md#curve) | No| Curve type of the animation.<br>Default value: Curve.EaseInOut](ts-appendix-enums.md#curve)|
-| delay | number | No| Delay of the transition animation. <br>Default value: **0** (in milliseconds)|
-| event | Callback\<void> | Yes| Closure function specifying the transition animation. The system generates the corresponding transition animation based on the modifications to the component's UI state within the closure. For details, see **event** in [animateTo](../arkts-apis-uicontext-uicontext.md#animateto).|
+| Name  | Type  | Read-Only| Optional| Description|
+| ----  | ---   | ---- | ---- |----- |
+| onTransitionEnd | Callback\<void> | No| Yes| Callback triggered when the transition animation ends.|
+| duration | number | No| Yes| Duration of the transition animation.<br>Default value: **1000** (in milliseconds)|
+| curve | [Curve](ts-appendix-enums.md#curve) | No| Yes| Curve type of the animation.<br>Default value: Curve.EaseInOut](ts-appendix-enums.md#curve)|
+| delay | number | No| Yes| Delay of the transition animation. <br>Default value: **0** (in milliseconds)|
+| event | Callback\<void> | No| No| Closure function specifying the transition animation. The system generates the corresponding transition animation based on the modifications to the component's UI state within the closure. For details, see **event** in [animateTo](../arkts-apis-uicontext-uicontext.md#animateto).|
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 
@@ -921,6 +936,7 @@ struct MyPageOne {
     .title('PageOne', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
     .toolbarConfiguration([
       {
+        // Replace $r ('sys.symbol.phone_badge_star') with the resource file required by the developer.
         value: 'item1',
         symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
       }
@@ -961,6 +977,7 @@ struct MyPageTwo {
     .title('PageTwo', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
     .toolbarConfiguration([
       {
+        // Replace $r ('sys.symbol.phone_badge_star') with the resource file required by the developer.
         value: 'item1',
         symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
       }
@@ -1067,24 +1084,24 @@ struct NavDest {
     .customTransition(
       (op: NavigationOperation, isEnter: boolean)
         : Array<NavDestinationTransition> | undefined => {
-        console.log('[NavDestinationTransition]', 'reached delegate in frontend, op: ' + op + ', isEnter: ' + isEnter);
+        console.info('[NavDestinationTransition]', 'reached delegate in frontend, op: ' + op + ', isEnter: ' + isEnter);
 
-        let transitionOneEvent: voidFunc = () => { console.log('[NavDestinationTransition]', 'reached transitionOne, empty now!'); }
-        let transitionOneFinishEvent: voidFunc = () => { console.log('[NavDestinationTransition]', 'reached transitionOneFinish, empty now!'); }
+        let transitionOneEvent: voidFunc = () => { console.info('[NavDestinationTransition]', 'reached transitionOne, empty now!'); }
+        let transitionOneFinishEvent: voidFunc = () => { console.info('[NavDestinationTransition]', 'reached transitionOneFinish, empty now!'); }
         let transitionOneDuration: number = 500;
         if (op === NavigationOperation.PUSH) {
           if (isEnter) {
             // ENTER_PUSH
             this.y = '100%';
             transitionOneEvent = () => {
-              console.log('[NavDestinationTransition]', 'transitionOne, push & isEnter');
+              console.info('[NavDestinationTransition]', 'transitionOne, push & isEnter');
               this.y = '0';
             }
           } else {
             // EXIT_PUSH
             this.y = '0';
             transitionOneEvent = () => {
-              console.log('[NavDestinationTransition]', 'transitionOne, push & !isEnter');
+              console.info('[NavDestinationTransition]', 'transitionOne, push & !isEnter');
               this.y = '0';
             }
             transitionOneDuration = 450;
@@ -1094,19 +1111,19 @@ struct NavDest {
             // ENTER_POP
             this.y = '0';
             transitionOneEvent = () => {
-              console.log('[NavDestinationTransition]', 'transitionOne, pop & isEnter');
+              console.info('[NavDestinationTransition]', 'transitionOne, pop & isEnter');
               this.y = '0';
             }
           } else {
             // EXIT_POP
             this.y = '0';
             transitionOneEvent = () => {
-              console.log('[NavDestinationTransition]', 'transitionOne, pop & !isEnter');
+              console.info('[NavDestinationTransition]', 'transitionOne, pop & !isEnter');
               this.y = '100%';
             }
           }
         } else {
-          console.log('[NavDestinationTransition]', '----- NOT-IMPL BRANCH of NAV-DESTINATION CUSTOM TRANSITION -----');
+          console.info('[NavDestinationTransition]', '----- NOT-IMPL BRANCH of NAV-DESTINATION CUSTOM TRANSITION -----');
         }
 
         let transitionOne: NavDestinationTransition = {
@@ -1117,13 +1134,13 @@ struct NavDest {
           onTransitionEnd: transitionOneFinishEvent
         };
 
-        let transitionTwoEvent: voidFunc = () => { console.log('[NavDestinationTransition]', 'reached transitionTwo, empty now!'); }
+        let transitionTwoEvent: voidFunc = () => { console.info('[NavDestinationTransition]', 'reached transitionTwo, empty now!'); }
         let transitionTwo: NavDestinationTransition = {
           duration: 1000,
           delay: 0,
           curve: Curve.EaseInOut,
           event: transitionTwoEvent,
-          onTransitionEnd: () => { console.log('[NavDestinationTransition]', 'reached Two\'s finish'); }
+          onTransitionEnd: () => { console.info('[NavDestinationTransition]', 'reached Two\'s finish'); }
         };
 
         return [

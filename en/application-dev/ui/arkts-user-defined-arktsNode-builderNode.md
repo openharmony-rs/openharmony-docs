@@ -197,7 +197,7 @@ struct Index {
 
 ## Updating a Component Tree
 
-The **build** API of a **BuilderNode** object constructs a component tree by accepting a **WrappedBuilder** object and maintains a reference to the root node of the created component tree.
+The **build** API of a **BuilderNode** object constructs a component tree. The tree is constructed based on the **WrappedBuilder** object passed in, and the root node of the component tree is retained.
 
 Custom component updates follow the update mechanisms of [state management](../ui/state-management/arkts-state-management-overview.md). For custom components used directly in a **WrappedBuilder** object, their parent component is the **BuilderNode** object. Therefore, to update child components defined in the **WrappedBuilder** objects, you need to define the relevant state variables with the [\@Prop](../ui/state-management/arkts-prop.md) or [\@ObjectLink](../ui/state-management/arkts-observed-and-objectlink.md) decorator, in accordance with the specifications of state management and the needs of your application development.
 
@@ -388,13 +388,13 @@ struct MyComponent {
 }
 ```
 
-## BuilderProxyNode in BuilderNode Causes Changes in the Tree Structure
+## BuilderProxyNode in BuilderNode Causes Tree Structure Changes
 
-If the root node of the input builder is a syntax node (if/else/foreach/...) or a custom component, an additional FrameNode is generated, which is displayed as BuilderProxyNode in the node tree. This causes changes in the tree structure and affects the transfer process of some tests.
+If the root node of the input builder is a syntax node (**if**/**else**/**foreach**/...) or a custom component, an additional FrameNode is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events.
 
-In the following example, the touch event is bound to the column and row, and the [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute of the column is set to [HitTestMode.Transparent](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9). However, BuilderProxyNode is generated, and BuilderProxyNode cannot set attributes. As a result, when the column is touched, the touch test of the column cannot be transferred to the row.
+In the following example, touch events are bound to both the **Column** and **Row** components, with the **Column** component's [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute set to [HitTestMode.Transparent](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9). However, because **BuilderProxyNode** is generated and cannot have attributes set on it, touching the **Column** fails to propagate the hit test to the **Row**.
 
-
+![BuilderNode_BuilderProxyNode_1](figures/BuilderNode_BuilderProxyNode_1.png)
 
 ```ts
 import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -409,7 +409,7 @@ struct BlueRowComponent {
       .height('200vp')
       .backgroundColor(0xFF2787D9)
       .onTouch((event: TouchEvent) => {
-        //Touch the green column. The touch event of the blue row is not triggered.
+        // Touching the green Column does not trigger the blue Row's touch event.
         console.info("blue touched: " + event.type);
       })
     }
@@ -433,13 +433,13 @@ struct GreenColumnComponent {
 
 @Builder
 function buildBlueRow() {
-  // Mount the custom component to BuilderProxyNode.
+  // The custom component is mounted to Builder, generating BuilderProxyNode.
   BlueRowComponent()
 }
 
 @Builder
 function buildGreenColumn() {
-  // Mount the custom component to BuilderProxyNode.
+  // The custom component is mounted to Builder, generating BuilderProxyNode.
   GreenColumnComponent()
 }
 
@@ -453,7 +453,7 @@ class MyNodeController extends NodeController {
     const greenColumnNode = new BuilderNode(uiContext);
     greenColumnNode.build(wrapBuilder(buildGreenColumn));
 
-    // Overlay greenColumnNode on blueRowNode.
+    // Overlay greenColumnNode on top of blueRowNode.
     relativeContainer.appendChild(blueRowNode.getFrameNode());
     relativeContainer.appendChild(greenColumnNode.getFrameNode());
 
@@ -472,9 +472,9 @@ struct Index {
 }
 ```
 
-In the preceding scenario, to transfer touch tests, you can wrap the syntax node or custom component in a container component to avoid generating BuilderProxyNode, and set hitTestBehavior of the container component to HitTestMode.Transparent to transfer touch tests to the sibling node.
+In the preceding scenario, to enable touch event propagation, wrap the syntax node or custom component in a container component to avoid generating BuilderProxyNode. Set the container component's **hitTestBehavior** to **HitTestMode.Transparent** to allow hit tests to propagate to sibling nodes.
 
-
+![BuilderNode_BuilderProxyNode_2](figures/BuilderNode_BuilderProxyNode_2.png)
 
 ```ts
 import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -489,7 +489,7 @@ struct BlueRowComponent {
       .height('200vp')
       .backgroundColor(0xFF2787D9)
       .onTouch((event: TouchEvent) => {
-        // Trigger the touch event of the green column and blue row.
+        // Touching the green Column triggers the blue Row's touch event.
         console.info("blue touched: " + event.type);
       })
     }
@@ -513,13 +513,13 @@ struct GreenColumnComponent {
 
 @Builder
 function buildBlueRow() {
-  // Mount the custom component to Builder to generate BuilderProxyNode.
+  // The custom component is mounted to Builder, generating BuilderProxyNode.
   BlueRowComponent()
 }
 
 @Builder
 function buildGreenColumn() {
-  // The root node of Builder is a container component, and BuilderProxyNode is not generated. You can set attributes.
+  // The Builder's root node is a container component (no BuilderProxyNode generated), allowing attribute settings.
   Stack() {
     GreenColumnComponent()
   }
@@ -536,7 +536,7 @@ class MyNodeController extends NodeController {
     const greenColumnNode = new BuilderNode(uiContext);
     greenColumnNode.build(wrapBuilder(buildGreenColumn));
 
-    // The green column node is overlaid on the blue row node.
+    // Overlay greenColumnNode on top of blueRowNode.
     relativeContainer.appendChild(blueRowNode.getFrameNode());
     relativeContainer.appendChild(greenColumnNode.getFrameNode());
 
@@ -555,9 +555,9 @@ struct Index {
 }
 ```
 
-In addition, for a custom component, you can directly set attributes. In this case, the __Common__ node is generated, and the attributes of the custom component are mounted to the __Common__ node. The above effect can also be achieved.
+Alternatively, for custom components, you can directly set attributes. In this case, a **__Common__** node is generated, and the custom component's attributes are mounted to the **__Common__** node, achieving the same effect.
 
-
+![BuilderNode_BuilderProxyNode_3](figures/BuilderNode_BuilderProxyNode_3.png)
 
 ```ts
 import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -572,7 +572,7 @@ struct BlueRowComponent {
       .height('200vp')
       .backgroundColor(0xFF2787D9)
       .onTouch((event: TouchEvent) => {
-        // Touch the green column node to trigger the touch event of the blue row node.
+        // Touching the green Column triggers the blue Row's touch event.
         console.info("blue touched: " + event.type);
       })
     }
@@ -596,13 +596,13 @@ struct GreenColumnComponent {
 
 @Builder
 function buildBlueRow() {
-  // Mount the custom component to Builder and generate BuilderProxyNode.
+  // The custom component is mounted to Builder, generating BuilderProxyNode.
   BlueRowComponent()
 }
 
 @Builder
 function buildGreenColumn() {
-  // Set attributes for the custom component to generate the __Common__ node. The root node of Builder is __Common__ and BuilderProxyNode is not generated.
+  // Setting attributes directly on the custom component generates a __Common__ node (no BuilderProxyNode).
   GreenColumnComponent()
     .hitTestBehavior(HitTestMode.Transparent)
 }
@@ -1441,7 +1441,7 @@ struct Index {
 
 ArkUI supports [custom component freezing](./state-management/arkts-custom-components-freeze.md), which suspends refresh capabilities for inactive components. When frozen, components will not trigger UI re-rendering even if bound state variables change, reducing refresh load in complex UI scenarios.
 
-Since API version 20, a BuilderNode can inherit freeze policies from its parent custom component (the first custom component found when traversing up from the BuilderNode) using the [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API. When the BuilderNode node inherits the freezing policy of the parent custom component, if the freezing policy of the parent custom component is set to enable component freezing (that is, [freezeWhenInactive](../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions) is set to true), the BuilderNode node is frozen when it is inactive, unfrozen when it is switched to the active state, and updated using the cached data.
+Since API version 20, a BuilderNode can inherit freeze policies from its parent custom component (the first custom component found when traversing up from the BuilderNode) using the [inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API. When freeze inheritance is enabled: If the parent component has freezing enabled ([freezeWhenInactive](../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions) set to **true**), the BuilderNode will freeze when inactive and thaw when active, and update using cached data upon reactivation.
 
 The BuilderNode has its freeze policy updated only during the tree operations listed below.
 
@@ -1651,6 +1651,12 @@ struct TextBuilder {
 Since API version 20, the BuilderNode supports cross-boundary state sharing between [@Consume](./state-management/arkts-provide-and-consume.md) and [@Provide](./state-management/arkts-provide-and-consume.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
 
 For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-5-configuring-the-buildernode-for-cross-boundary-provide-consume-communication).
+
+## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication
+
+Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-Provider-and-Consumer.md) and [@Provider](./state-management/arkts-new-Provider-and-Consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
+
+For details, see [Example 6: Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-6-configuring-the-buildernode-for-cross-boundary-provider-consumer-communication).
 
 ## Implementing Page Pre-Rendering with BuilderNode and Web Components
 

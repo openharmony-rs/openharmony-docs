@@ -1,22 +1,18 @@
 # Page Transition (pageTransition)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
-When performing route switching using the [router](../js-apis-router.md), you can customize entrance and exit transition animations between pages by implementing the **pageTransition** API. For details, see [Page Transition Animation](../../../ui/arkts-page-transition-animation.md).
+When performing route switching using the [router](../js-apis-router.md), you can customize entrance and exit transition animations between pages by implementing the [pageTransition](ts-custom-component-lifecycle.md#pagetransition9) API. For details, see [Page Transition Animation](../../../ui/arkts-page-transition-animation.md).
 
 > **NOTE**
 >
 > This feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > To achieve a better transition effect, you are advised to use the [Navigation](../../../ui/arkts-navigation-navigation.md) component and [modal transition](../../../ui/arkts-modal-transition.md).
-
-## pageTransition
-
-pageTransition?(): void
-
-Defines the transition animation to play when the user accesses this page or is redirected from this page to another page.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## PageTransitionEnter
 
@@ -112,12 +108,12 @@ Invoked on a per-frame basis until the exit animation is complete, with the **pr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type                                                        | Mandatory| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [RouteType](#routetype)                              | No  | Route type for the page transition effect to take effect.<br>Default value: **RouteType.None**   |
-| duration | number                                                       | No  | Animation duration.<br>Unit: ms<br>Default value: **1000**<br>Value range: [0, +∞)                |
-| curve    | [Curve](ts-appendix-enums.md#curve) \| string \| [ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | No  | Animation curve.<br>You are advised to specify the curve using the **Curve** or **ICurve** type.<br>For the string type, this parameter indicates an animation interpolation curve. For available values, see the **curve** parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: **Curve.Linear**|
-| delay    | number                                                       | No  | Animation delay.<br>Unit: ms<br>Default value: **0**<br>**NOTE**<br>If no match is found, the default page transition effect is used (which may vary according to the device). To disable the default page transition effect, set **duration** to **0**.|
+| Name    | Type                                                        | Read-Only| Optional| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| type     | [RouteType](#routetype)                              | No  | Yes  | Route type for the page transition effect to take effect.<br>Default value: **RouteType.None**   |
+| duration | number                                                       | No  | Yes  | Animation duration.<br>Unit: ms<br>Default value: **1000**<br>Value range: [0, +∞)                |
+| curve    | [Curve](ts-appendix-enums.md#curve) \| string \| [ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | No  | Yes  | Animation curve.<br>You are advised to specify the curve using the **Curve** or **ICurve** type.<br>For the string type, this parameter indicates an animation interpolation curve. For available values, see the **curve** parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: **Curve.Linear**|
+| delay    | number                                                       | No  | Yes  | Animation delay.<br>Unit: ms<br>Default value: **0**<br>**NOTE**<br>If no match is found, the default page transition effect is used (which may vary according to the device). To disable the default page transition effect, set **duration** to **0**.|
 
 ## CommonTransition
 
@@ -260,6 +256,7 @@ struct Index {
 
   build() {
     Column() {
+      // Replace $r("app.media.transition_image1") with the image resource file you use.
       Image($r("app.media.transition_image1")).width('100%').height('100%')
     }
     .width('100%')
@@ -300,6 +297,7 @@ struct Page1 {
 
   build() {
     Column() {
+      // Replace $r("app.media.transition_image2") with the image resource file you use.
       Image($r("app.media.transition_image2")).width('100%').height('100%') // Store the image in the media folder.
     }
     .width('100%')
@@ -341,6 +339,7 @@ Method 2: Configure the entrance animation of sliding in from the left and the e
 struct Index {
   build() {
     Column() {
+      // Replace $r('app.media.bg1') with the image resource file you use.
       Image($r('app.media.bg1')).width('100%').height('100%') // The image is stored in the media folder.
     }
     .onClick(() => {
@@ -368,6 +367,7 @@ struct Index {
 struct Page1 {
   build() {
     Column() {
+      // Replace $r('app.media.bg2') with the image resource file you use.
       Image($r('app.media.bg2')).width('100%').height('100%') // The image is stored in the media folder.
     }
     .onClick(() => {

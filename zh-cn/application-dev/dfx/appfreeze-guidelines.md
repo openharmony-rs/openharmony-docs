@@ -115,6 +115,9 @@ PreInstalled:No
 Foreground:Yes
 Pid:13680
 Uid:20020177
+Process life time:18s
+Process Memory(kB):163819(Rss)
+Device Memory(kB):Total 11679272, Free 3697424, Available 5814272
 Reason:THREAD_BLOCK_6S
 appfreeze: com.samples.freezedebug THREAD_BLOCK_6S at 20250628140837
 DisplayPowerInfo:powerState:UNKNOWN
@@ -150,6 +153,9 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 | PID | 发生故障时的pid。 |
 | PACKAGE_NAME | 应用进程包名。 |
 |[Page switch history](./cppcrash-guidelines.md#有页面切换轨迹的故障场景日志规格)| 从API 20开始，维测进程会记录应用切换历史。应用发生故障后，生成的故障文件将包含页面切换历史轨迹。如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段。|
+| Process life time | 故障进程存活时间。单位：s。<br>**说明**：从API 22开始支持。|
+| Process Memory(kB) | 故障进程内存占用。<br>**说明**：从API 22开始支持。|
+| Device Memory(kB) | 整机内存状态。<br>**说明**：从API 22开始支持。|
 
 ### 日志主干通用信息
 

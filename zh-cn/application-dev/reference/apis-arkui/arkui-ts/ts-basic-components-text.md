@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 显示一段文本的组件。
 
@@ -1472,6 +1472,8 @@ minLineHeight(value: LengthMetrics | undefined)
 maxLineHeight(value: LengthMetrics | undefined)
 
 设置文本的最大行高，设置值不大于0时，最大行高不受限制。
+
+maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 

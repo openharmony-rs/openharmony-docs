@@ -1,4 +1,10 @@
 # Image Effect
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 Image effects include blur, shadow, spherical effect, and much more.
 
@@ -170,7 +176,7 @@ Applies a grayscale effect to the component. Compared with [grayscale](#grayscal
 
 | Name   | Type             | Mandatory| Description                                                        |
 | --------- | ----------------- | ---- | ------------------------------------------------------------ |
-| grayscale | Optional\<number> | Yes  | Grayscale conversion ratio of the component. If the value is **1.0**, the component is completely converted to grayscale. If the value is **0.0**, the component remains unchanged. Between **0** and **1**, the value applies a linear multiplier on the grayscale effect. The unit is percentage.<br>Default value: **0.0**<br>Value range: [0.0, 1.0]<br>**NOTE**<br>A value less than **0.0** evaluates to the value **0.0**. A value greater than **1.0** evaluates to the value **1.0**.<br>If **grayscale** is set to **undefined**, the default value is used, which means the component reverts to its original effect with no grayscale.|
+| grayscale | Optional\<number> | Yes  | Grayscale conversion ratio of the component. If the value is **1.0**, the component is completely converted to grayscale. If the value is **0.0**, the component remains unchanged. Between **0** and **1**, the value applies a linear multiplier on the grayscale effect. The unit is percentage.<br>Default value: **0.0**<br>Value range: [0.0, 1.0]<br>**NOTE**<br>A value less than **0.0** evaluates to the value **0.0**. A value greater than **1.0** evaluates to the value **1.0**.<br>If **grayscale** is set to **undefined**, the default value **0.0** is used, which means the component reverts to its original effect with no grayscale.|
 
 **Return value**
 
@@ -194,7 +200,7 @@ Applies a brightness effect to the component.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Brightness of the component. The value **1** indicates no effects. The value **0** indicates the complete darkness. If the value is less than **1**, the brightness decreases. If the value is greater than **1**, the brightness increases. A larger value indicates a higher brightness. A brightness of 2 turns the component completely white.<br>Default value: **1.0**<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| value  | number | Yes  | Brightness of the component. The value **1** indicates no effects. When the value is less than 1, the brightness decreases. When the value is less than or equal to 0, the brightness is completely black. When the value is greater than 1, the brightness increases. The larger the value, the higher the brightness. When the brightness is greater than or equal to 2, the brightness becomes completely white.<br>Default value: **1.0**<br>Value range: [0, +∞)<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 
 **Return value**
 
@@ -218,7 +224,7 @@ Applies a brightness effect to the component. Compared with [brightness](#bright
 
 | Name    | Type             | Mandatory| Description                                                        |
 | ---------- | ----------------- | ---- | ------------------------------------------------------------ |
-| brightness | Optional\<number> | Yes  | Brightness of the component. The value **1** indicates no effects. The value **0** indicates the complete darkness. If the value is less than **1**, the brightness decreases. If the value is greater than **1**, the brightness increases. A larger value indicates a higher brightness. A brightness of 2 turns the component completely white.<br>Default value: **1.0**<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>If **brightness** is **undefined**, the brightness level is reset to **1**.|
+| brightness | Optional\<number> | Yes  | Brightness of the component. The value **1** indicates no effects. When the value is less than 1, the brightness decreases. When the value is less than or equal to 0, the brightness is completely black. When the value is greater than 1, the brightness increases. The larger the value, the higher the brightness. When the brightness is greater than or equal to 2, the brightness becomes completely white.<br>Default value: **1.0**<br>Value range: [0, +∞)<br>Recommended value range: [0, 2]<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>If **brightness** is **undefined**, the brightness level is reset to **1**.|
 
 **Return value**
 
@@ -466,7 +472,7 @@ Rotates the hue of the component. Compared with [hueRotate](#huerotate), this AP
 | ------ | ------------------------ |
 | T | Current component.|
 
-## colorBlend<sup>7+</sup>
+## colorBlend
 
 colorBlend(value: Color | string | Resource): T
 
@@ -482,7 +488,7 @@ Applies a color blend effect to the component.
 
 | Name| Type                                                        | Mandatory| Description                                          |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
-| value  | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource) | Yes  | Color to blend with the component.|
+| value  | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource) | Yes  | Color to blend with the component. The value can be a string, for example, '0x000000' or 'rgba(0,0,0,1)'.|
 
 **Return value**
 
@@ -494,7 +500,7 @@ Applies a color blend effect to the component.
 
 colorBlend(color: Optional\<Color | string | Resource>): T
 
-Applies a color blend effect to the component. Compared with [colorBlend<sup>7+</sup>](#colorblend7), this API supports the **undefined** type for the **color** parameter.
+Applies a color blend effect to the component. Compared with [colorBlend](#colorblend), this API supports the **undefined** type for the **color** parameter.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,7 +512,7 @@ Applies a color blend effect to the component. Compared with [colorBlend<sup>7+<
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | Optional\<[Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)> | Yes  | Color to blend with the component.<br>If **color** is **undefined**, the component reverts to its original effect with no color blending.|
+| color  | Optional\<[Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)> | Yes  | Color to blend with the component. The value can be a string, for example, '0x000000' or 'rgba(0,0,0,1)'.<br>If **color** is **undefined**, the component reverts to its original effect with no color blending.|
 
 **Return value**
 
@@ -528,8 +534,8 @@ Applies a linear gradient foreground blur effect to the component.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | number                                                       | Yes  | Blur radius. A larger value indicates a higher blur degree. If the value is 0, the content is not blurred.<br>Value range: [0, 1000]<br>Linear gradient blur consists of two parts: **fractionStops** and **direction**.|
-| options | [LinearGradientBlurOptions](#lineargradientbluroptions12) | Yes  | Linear gradient blur effect.                                      |
+| value   | number                                                       | Yes  | Blur radius. A larger value indicates a higher blur degree. If the value is 0, the content is not blurred.<br>Value range: [0, 1000]|
+| options | [LinearGradientBlurOptions](#lineargradientbluroptions12) | Yes  | Linear gradient blur effect.<br>Linear gradient blur includes [fractionStops](#lineargradientbluroptions12) and [direction](#lineargradientbluroptions12).                                    |
 
 **Return value**
 
@@ -539,7 +545,7 @@ Applies a linear gradient foreground blur effect to the component.
 
 ## linearGradientBlur<sup>18+</sup> 
 
-linearGradientBlur(value: Optional\<number>, options: Optional\<LinearGradientBlurOptions>): T
+linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradientBlurOptions>): T
 
 Applies a linear gradient foreground blur effect to the component. Compared with [linearGradientBlur<sup>12+</sup>](#lineargradientblur12), the **value** parameter supports the **undefined** type.
 
@@ -551,8 +557,8 @@ Applies a linear gradient foreground blur effect to the component. Compared with
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | Optional\<number>                                            | Yes  | Blur radius. A larger value indicates a higher blur degree. If the value is 0, the content is not blurred.<br>Value range: [0, 1000]<br>Linear gradient blur consists of two parts: **fractionStops** and **direction**.<br>If **color** is **undefined**, the gradient blur effect reverts to **0**.|
-| options | Optional\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | Yes  | Linear gradient blur effect.<br>If **options** is **undefined**, the gradient blur effect reverts to **0**.|
+| blurRadius   | Optional\<number>                                            | Yes  | Blur radius. A larger value indicates a higher blur degree. If the value is 0, the content is not blurred.<br>Value range: [0, 1000]<br>If **blurRadius** is **undefined**, the gradient blur effect reverts to **0**.|
+| options | Optional\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | Yes  | Linear gradient blur effect.<br>If **options** is **undefined**, the gradient blur effect reverts to **0**.<br>Linear gradient blur includes [fractionStops](#lineargradientbluroptions12) and [direction](#lineargradientbluroptions12). |
 
 **Return value**
 
@@ -570,6 +576,8 @@ Sets whether the component and its child components are rendered off the screen 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                                        |
@@ -586,11 +594,13 @@ Sets whether the component and its child components are rendered off the screen 
 
 renderGroup(isGroup: Optional\<boolean>): T
 
-Sets whether the component and its child components are rendered off the screen as a whole before being blended with its parent. Compared with [renderGroup<sup>10+</sup>](#rendergroup10), this API supports the **undefined** type for the **isGroup** parameter.
+Sets whether the component and its child components are rendered off the screen as a whole before being blended with its parent. Compared to [renderGroup<sup>10+</sup>](#rendergroup10), the **isGroup** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Parameters**
 
@@ -604,7 +614,7 @@ Sets whether the component and its child components are rendered off the screen 
 | ------ | ------------------------ |
 | T | Current component.|
 
-## blendMode<sup>11+</sup> 
+## blendMode<sup>11+</sup>
 
 blendMode(value: BlendMode, type?: BlendApplyType): T
 
@@ -621,7 +631,7 @@ Defines how the component's content (including the content of it child component
 | Name| Type                               | Mandatory| Description                                                        |
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [BlendMode](#blendmode11)   | Yes  | Blend mode.<br>Default value: **BlendMode.NONE**<br>**NOTE**<br>When **BlendMode.NONE** is used, the blend effect is **BlendMode.SRC_OVER** by default, and **BlendApplyType** does not take effect.|
-| type   | [BlendApplyType](#blendapplytype11) | No  | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen.<br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as [linearGradientBlur<sup>12+</sup>](#lineargradientblur12), [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), and [brightness](#brightness).|
+| type   | [BlendApplyType](#blendapplytype11) | No  | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen.<br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as [linearGradientBlur<sup>12+</sup>](#lineargradientblur12), [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), [brightness](#brightness), and [blur](#blur).|
 
 **Return value**
 
@@ -646,7 +656,7 @@ Defines how the component's content (including the content of it child component
 | Name| Type                           | Mandatory| Description                                                        |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
 | mode | Optional\<[BlendMode](#blendmode11)> | Yes  | Blend mode.<br>Default value: **BlendMode.NONE**<br>If **mode** is **undefined**, the component reverts to its original effect of not enabling offscreen rendering as a whole before blending with the parent component.<br>**NOTE**<br>When **BlendMode.NONE** is used, the blend effect is **BlendMode.SRC_OVER** by default, and **BlendApplyType** does not take effect.|
-| type   | [BlendApplyType](#blendapplytype11)  |    No   | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen.<br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as [linearGradientBlur<sup>12+</sup>](#lineargradientblur12), [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), and [brightness](#brightness).|
+| type   | [BlendApplyType](#blendapplytype11)  |    No   | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. **BlendApplyType.FAST**: The blend mode is not implemented offscreen.<br>2. **BlendApplyType.OFFSCREEN**: An offscreen canvas of the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode. This approach may cause issues with screen capture for APIs such as [linearGradientBlur<sup>12+</sup>](#lineargradientblur12), [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), [brightness](#brightness), and [blur](#blur).|
 
 **Return value**
 
@@ -664,10 +674,10 @@ Defines how to apply the specified blend mode to the content of a view.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Description                                                            |
-| ---------------| ---------------------------------------------------------------- |
-| FAST           |   The content of the view is blended in sequence on the target image.                       |
-| OFFSCREEN      |   The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas.   |
+| Name          | Value| Description                                                            |
+| ---------------| ------ | ---------------------------------------------------------------- |
+| FAST           | 0 | The content of the view is blended in sequence on the target image.                       |
+| OFFSCREEN      | 1 | The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas.   |
 
 ## useShadowBatching<sup>11+</sup> 
 
@@ -697,7 +707,7 @@ Sets whether to draw shadows of child nodes in the component at the same layer, 
 
 useShadowBatching(use: Optional\<boolean>): T
 
-Sets whether to draw shadows of child nodes in the component at the same layer, so that the shadows of elements at the same layer overlap. Compared with [useShadowBatching<sup>11+</sup>](#useshadowbatching11), this API supports the **undefined** type for the **use** parameter.
+Sets whether to draw shadows of child nodes in the component at the same layer, so that the shadows of elements at the same layer overlap. Compared to [useShadowBatching<sup>11+</sup>](#useshadowbatching11), the **use** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -857,12 +867,12 @@ Describes the pixel stretch effect options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type               | Mandatory  | Description            |
-| ------ | ----------------- | ---- | -------------- |
-| left   | [Length](ts-types.md#length) | No   | Length by which a pixel is stretched towards the left edge of the image.|
-| right  | [Length](ts-types.md#length) | No   | Length by which a pixel is stretched towards the right edge of the image.|
-| top    | [Length](ts-types.md#length) | No   | Length by which a pixel is stretched towards the top edge of the image.|
-| bottom | [Length](ts-types.md#length) | No   | Length by which a pixel is stretched towards the right edge of the image.|
+| Name    | Type               | Read-Only  | Optional  | Description            |
+| ------ | ----------------- | ---- | ---- | -------------- |
+| left   | [Length](ts-types.md#length) | No   | Yes   | Length by which a pixel is stretched towards the left edge of the image.|
+| right  | [Length](ts-types.md#length) | No   | Yes   | Length by which a pixel is stretched towards the right edge of the image.|
+| top    | [Length](ts-types.md#length) | No   | Yes   | Length by which a pixel is stretched towards the top edge of the image.|
+| bottom | [Length](ts-types.md#length) | No   | Yes   | Length by which a pixel is stretched towards the right edge of the image.|
 
 ## systemBarEffect<sup>12+</sup>
 
@@ -888,42 +898,41 @@ Shadow type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Description                                  |
-| -------- | ---------------------------------------- |
-| COLOR    | Color.                                   |
-| BLUR     | Blur.                                   |
+| Name      | Value| Description                                  |
+| -------- | ------ | ---------------------------------- |
+| COLOR    | - | Color.                                   |
+| BLUR     | - | Blur.                                   |
 
 
 ## ShadowOptions
 
 Provides the shadow attributes, including the blur radius, color, and offset along the x-axis and y-axis.
 
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-| Name     | Type                                      | Mandatory  | Description                                      |
-| ------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| radius  | number \| [Resource](ts-types.md#resource) | Yes   | Blur radius of the shadow.<br>Value range: [0, +∞)<br>Unit: px<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **radius** is of the Resource type, its value must be of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| type<sup>10+</sup> | [ShadowType<sup>10+</sup>](#shadowtype10)  |      No   | Shadow type.<br>Default value: **COLOR**<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy<sup>10+</sup> ](ts-appendix-enums.md#coloringstrategy10) | No   | Color of the shadow.<br>The default color is black.<br>**NOTE**<br>Since API version 11, this API supports **ColoringStrategy**, which cannot be used with ArkTS widgets or the [textShadow](ts-basic-components-text.md#textshadow10) attribute.<br>With **ColoringStrategy**, the average color or primary color can be obtained, and the obtained color is applied to the shadow drawing area.<br>The **'average'** string can be used to trigger the mode for obtaining the average color, and the **'primary'** string for obtaining the primary color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| offsetX | number \| [Resource](ts-types.md#resource) | No   | Offset of the shadow along the x-axis.<br>Default value: **0**<br>Unit: px<br>**NOTE**<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **offsetX** is of the Resource type, its value must be of the number type.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| offsetY | number \| [Resource](ts-types.md#resource) | No   | Offset of the shadow along the y-axis.<br>Default value: **0**<br>Unit: px<br>**NOTE**<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **offsetY** is of the Resource type, its value must be of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| fill<sup>11+</sup>     | boolean                                    | No   | Whether to fill the inside of the component with shadow. **true**: Fill the inside of the component with shadow.<br>**false**: Do not fill the inside of the component with shadow.<br>The default value is **false**.<br>**NOTE**<br>This attribute does not take effect in [textShadow](ts-basic-components-text.md#textshadow10).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name     | Type                                      | Read-Only| Optional  | Description                                      |
+| ------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| radius  | number \| [Resource](ts-types.md#resource) | No| No   | Blur radius of the shadow.<br>Value range: [0, +∞)<br>Unit: px<br>**NOTE**<br>A value less than 0 evaluates to the value **0**.<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **radius** is of the Resource type, its value must be of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| type<sup>10+</sup> | [ShadowType](#shadowtype10) |      No| Yes   | Shadow type.<br>Default value: **COLOR**<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
+| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy<sup>11+</sup> ](ts-appendix-enums.md#coloringstrategy10) | No | Yes | Color of the shadow.<br>The default color is black.<br>**NOTE**<br>Since API version 11, this API supports **ColoringStrategy**, which cannot be used with ArkTS widgets or the [textShadow](ts-basic-components-text.md#textshadow10) attribute.<br>With **ColoringStrategy**, the average color or primary color can be obtained, and the obtained color is applied to the shadow drawing area.<br>The **'average'** string can be used to trigger the mode for obtaining the average color, and the **'primary'** string for obtaining the primary color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| offsetX | number \| [Resource](ts-types.md#resource) | No | Yes | Offset of the shadow along the x-axis.<br>Default value: **0**<br>Unit: px<br>**NOTE**<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **offsetX** is of the Resource type, its value must be of the number type.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| offsetY | number \| [Resource](ts-types.md#resource) | No| Yes  | Offset of the shadow along the y-axis.<br>Default value: **0**<br>Unit: px<br>**NOTE**<br>To use a value in the vp unit, call [vp2px](ts-pixel-units.md#pixel-unit-conversion) to convert it into px.<br>If **offsetY** is of the Resource type, its value must be of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| fill<sup>11+</sup>     | boolean                                    | No | Yes | Whether to fill the inside of the component with shadow. **true**: Fill the inside of the component with shadow.<br>**false**: Do not fill the inside of the component with shadow.<br>The default value is **false**.<br>**NOTE**<br>This attribute does not take effect in [textShadow](ts-basic-components-text.md#textshadow10).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## ShadowStyle<sup>10+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-| Name               | Description    |
-| ----------------- | ------ |
-| OUTER_DEFAULT_XS  | Mini shadow. |
-| OUTER_DEFAULT_SM  | Small shadow.  |
-| OUTER_DEFAULT_MD  | Medium shadow.  |
-| OUTER_DEFAULT_LG  | Large shadow.  |
-| OUTER_FLOATING_SM | Floating small shadow.|
-| OUTER_FLOATING_MD | Floating medium shadow.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name               | Value| Description    |
+| ----------------- | ---- | ------ |
+| OUTER_DEFAULT_XS  | - | Mini shadow. |
+| OUTER_DEFAULT_SM  | - | Small shadow.  |
+| OUTER_DEFAULT_MD  | - | Medium shadow.  |
+| OUTER_DEFAULT_LG  | - | Large shadow.  |
+| OUTER_FLOATING_SM | - | Floating small shadow.|
+| OUTER_FLOATING_MD | - | Floating medium shadow.|
 
 ## BlendMode<sup>11+</sup>
 
@@ -935,51 +944,55 @@ Provides the shadow attributes, including the blur radius, color, and offset alo
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name          | Description                                                            |
-| ---------------| ------                                                        |
-| NONE            | The top image is superimposed on the bottom image without any blending.             |
-| CLEAR           | The target pixels covered by the source pixels are erased by being turned to completely transparent.                     |
-| SRC             | r = s: Only the source pixels are displayed.                   |
-| DST             | r = d: Only the target pixels are displayed.                 |
-| SRC_OVER        | r = s + (1 - sa) * d: The source pixels are blended based on opacity and cover the target pixels.                |
-| DST_OVER        | r = d + (1 - da) * s: The target pixels are blended based on opacity and cover on the source pixels.                |
-| SRC_IN          | r = s * da: Only the part of the source pixels that overlap with the target pixels is displayed.                       |
-| DST_IN          | r = d * sa: Only the part of the target pixels that overlap with the source pixels is displayed.                       |
-| SRC_OUT         | r = s * (1 - da): Only the part of the source pixels that do not overlap with the target pixels is displayed.               |
-| DST_OUT         | r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed.               |
-| SRC_ATOP        | r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed.                |
-| DST_ATOP        | r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed.                |
-| XOR             | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels is displayed.                    |
-| PLUS            | r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed.                    |
-| MODULATE        | r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed.                         |
-| SCREEN          | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication.                   |
-| OVERLAY         | The MULTIPLY or SCREEN mode is used based on the target pixels.                                 |
-| DARKEN          | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used.                |
-| LIGHTEN         | rc = s + d - min(s * da, d * sa), ra = kSrcOver: The darker of the pixels (source and target) is used.           |
-| COLOR_DODGE     | The colors of the target pixels are lightened to reflect the source pixels.                    |
-| COLOR_BURN      | The colors of the target pixels are darkened to reflect the source pixels.                    |
-| HARD_LIGHT      | The MULTIPLY or SCREEN mode is used, depending on the source pixels.                 |
-| SOFT_LIGHT      | The LIGHTEN or DARKEN mode is used, depending on the source pixels.                                                            |
-| DIFFERENCE      | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one.                     |
-| EXCLUSION       | rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast.         |
-| MULTIPLY        | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel.                          |
-| HUE             | The resultant image is created with the luminance and saturation of the source image and the hue of the target image.                                  |
-| SATURATION      | The resultant image is created with the luminance and hue of the target image and the saturation of the source image.                               |
-| COLOR           | The resultant image is created with the saturation and hue of the source image and the luminance of the target image.                                  |
-| LUMINOSITY      | The resultant image is created with the saturation and hue of the target image and the luminance of the source image.                                    |
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name          | Value| Description                                                            |
+| ---------------| --- | ------                                                        |
+| NONE            | 0 | The top image is superimposed on the bottom image without any blending.             |
+| CLEAR           | 1 | The target pixels covered by the source pixels are erased by being turned to completely transparent.                     |
+| SRC             | 2 |  r = s: Only the source pixels are displayed.                   |
+| DST             | 3 |  r = d: Only the target pixels are displayed.                 |
+| SRC_OVER        | 4 |  r = s + (1 - sa) * d: The source pixels are blended based on opacity and cover the target pixels.                |
+| DST_OVER        | 5 |  r = d + (1 - da) * s: The target pixels are blended based on opacity and cover on the source pixels.                |
+| SRC_IN          | 6 |  r = s * da: Only the part of the source pixels that overlap with the target pixels is displayed.                       |
+| DST_IN          | 7 |  r = d * sa: Only the part of the target pixels that overlap with the source pixels is displayed.                       |
+| SRC_OUT         | 8 |  r = s * (1 - da): Only the part of the source pixels that do not overlap with the target pixels is displayed.               |
+| DST_OUT         | 9 |  r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed.               |
+| SRC_ATOP        | 10 |  r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed.                |
+| DST_ATOP        | 11 |  r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed.                |
+| XOR             | 12 |  r = s * (1 - da) + d * (1 - sa). The pixel is not displayed where the source pixel overlaps the target pixel, and the source pixel and target pixel are displayed where the source pixel does not overlap the target pixel.                    |
+| PLUS            | 13 |  r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed.                    |
+| MODULATE        | 14 |  r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed.                         |
+| SCREEN          | 15 |  r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication.                   |
+| OVERLAY         | 16 |  The MULTIPLY or SCREEN mode is used based on the target pixels.                                 |
+| DARKEN          | 17 |  rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used.                |
+| LIGHTEN         | 18 |  rc = s + d - min(s * da, d * sa), ra = kSrcOver: The darker of the pixels (source and target) is used.           |
+| COLOR_DODGE     | 19 |  The colors of the target pixels are lightened to reflect the source pixels.                    |
+| COLOR_BURN      | 20 |  The colors of the target pixels are darkened to reflect the source pixels.                    |
+| HARD_LIGHT      | 21 |  The MULTIPLY or SCREEN mode is used, depending on the source pixels.                 |
+| SOFT_LIGHT      | 22 |  The LIGHTEN or DARKEN mode is used, depending on the source pixels.                                                            |
+| DIFFERENCE      | 23 |  rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one.                     |
+| EXCLUSION       | 24 |  rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast.         |
+| MULTIPLY        | 25 |  r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel.                          |
+| HUE             | 26 |  The resultant image is created with the luminance and saturation of the source image and the hue of the target image.                                  |
+| SATURATION      | 27 |  The resultant image is created with the luminance and hue of the target image and the saturation of the source image.                               |
+| COLOR           | 28 |  The resultant image is created with the saturation and hue of the source image and the luminance of the target image.                                  |
+| LUMINOSITY      | 29 |  The resultant image is created with the saturation and hue of the target image and the luminance of the source image.                                    |
 
 ## LinearGradientBlurOptions<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name         | Type                                                       | Mandatory | Description                                                        |
-| ------------- | ----------------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| fractionStops | Array\<[FractionStop](#fractionstop12)>                                    | Yes   | Gradient blur stops. The value is a set of binary arrays, each of which indicates [blur degree, blur position] and consists of numbers ranging from 0 to 1 (those less than 0 are treated as **0**, and those greater than 1 are treated as **1**). The blur positions in the arrays must be in strict ascending order. Noncompliance will be logged. For the blur settings to take effect, the number of binary arrays must be greater than or equal to 2.|
-| direction     | [GradientDirection](ts-appendix-enums.md#gradientdirection) | Yes   | Gradient blur direction.<br>Default value:<br>GradientDirection.Bottom |
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name         | Type                                                       | Read-Only| Optional | Description                                                        |
+| ------------- | ----------------------------------------------------------- | ----- | ----- |------------------------------------------------------------ |
+| fractionStops | [FractionStop](#fractionstop12)[]                          | No| No   | Gradient blur stops. The value is a set of binary arrays, each of which indicates [blur degree, blur position] and consists of numbers ranging from 0 to 1 (those less than 0 are treated as **0**, and those greater than 1 are treated as **1**). The blur positions in the arrays must be in strict ascending order. Noncompliance will be logged. For the blur settings to take effect, the number of binary arrays must be greater than or equal to 2.|
+| direction     | [GradientDirection](ts-appendix-enums.md#gradientdirection) | No| No   | Gradient blur direction.<br>Default value:<br>GradientDirection.Bottom |
 
 ## FractionStop<sup>12+</sup>
 
-FractionStop = [ number, number ]
+type FractionStop = [ number, number ]
 
 Defines a gradient blur stop.
 
@@ -987,10 +1000,9 @@ Defines a gradient blur stop.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Value Range      | Description                                                      |
+| Type     | Description                                                      |
 | ------------- | ---------------------------------------------------------- |
-| number        |   Blur degree, represented by a fraction. The value **1** means opaque, and **0** means completely transparent.<br>Value range: [0, 1]     |
-| number        |   Stop position. The value **1** indicates the end position and **0** the end position.<br> Value range: [0, 1]|
+| [ number, number ]        |   The first number indicates the score. The value 1 indicates opaque, and the value 0 indicates completely transparent.<br>Value range: [0, 1].<br>The second number indicates the stop position. The value 1 indicates the end position of the area, and the value 0 indicates the start position of the area.<br> Value range: [0, 1].    |
 
 ## InvertOptions<sup>11+</sup>
 
@@ -998,16 +1010,20 @@ Describes the options for inverting the foreground color.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name           |  Type | Mandatory | Description                                      |
-| -------------- | ------ | ----- | ------------------------------------------ |
-| low            | number | Yes   | Value when the background color is greater than the grayscale threshold.<br>Value range: [0, 1]                |
-| high           | number | Yes   | Value when the background color is less than the grayscale threshold.<br>Value range: [0, 1]           |
-| threshold      | number | Yes   | Grayscale threshold.<br>Value range: [0, 1]                             |
-| thresholdRange | number | Yes   | Threshold value range.<br>Value range: [0, 1]<br>**NOTE**<br>This range defines the upper and lower bounds of the grayscale threshold. The grayscale value changes linearly from high to low within the range.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name           |  Type | Read-Only | Optional | Description                                      |
+| -------------- | ------ | ----- | ----- | ------------------------------------------ |
+| low            | number | No   | No   | Value when the background color is greater than the grayscale threshold.<br>Value range: [0, 1].                |
+| high           | number | No   | No   | Value when the background color is less than the grayscale threshold.<br>Value range: [0, 1].           |
+| threshold      | number | No   | No   | Grayscale threshold.<br>Value range: [0, 1].                           |
+| thresholdRange | number | No   | No   | Threshold value range.<br>Value range: [0, 1].<br>**NOTE**<br>This range defines the upper and lower bounds of the grayscale threshold. The grayscale value changes linearly from high to low within the range.|
 
 ## BackgroundImageOptions<sup>18+</sup>
 
 Defines the background image options.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1017,10 +1033,10 @@ Defines the background image options.
 >
 >  Synchronously loading background images can lead to potential performance issues. For details, see [Image](ts-basic-components-image.md#image-1).
 
-| Name           |  Type                                          | Mandatory | Description                                                    |
-| -------------- | ------------------------------------------------| ----- | --------------------------------------------------------|
-| syncLoad       | boolean                                         | No   | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**<br>**true**: Load the image synchronously.<br>**false**: Load the image asynchronously.     |
-| repeat         | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | No   | Repeat pattern of the background image.                                  |
+| Name           |  Type                                          | Read-Only | Optional | Description                                                    |
+| -------------- | ------------------------------------------------| ----- | ----- | --------------------------------------------------------|
+| syncLoad       | boolean                                         | No   | Yes   | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**. **true**: Load the image synchronously. **false**: Load the image asynchronously.     |
+| repeat         | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | No   | Yes   | Repeat pattern of the background image. The default value is ImageRepeat.NoRepeat.                    |
 
 ## freeze<sup>12+</sup>
 
@@ -1048,7 +1064,7 @@ Sets whether to freeze the component. When frozen, the component and its childre
 
 freeze(freeze: Optional\<boolean>): T
 
-Sets whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. Compared with [freeze](#freeze12), this API supports the **undefined** type for the **freeze** parameter.
+Sets whether to freeze the component. When frozen, the component and its children are cached for repeated drawing after offscreen rendering, without updating internal attributes. Compared to [freeze](#freeze12), the **freeze** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1079,6 +1095,7 @@ struct ImageEffectsExample {
     Column({ space: 5 }) {
       // Apply the shadow effect.
       Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image'))
         .width('90%')
         .height(30)
@@ -1091,6 +1108,7 @@ struct ImageEffectsExample {
 
       // Add the internal shadow effect.
       Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image'))
         .width('90%')
         .height(30)
@@ -1104,39 +1122,52 @@ struct ImageEffectsExample {
 
       // Apply the grayscale effect. The grayscale value ranges from 0 to 1. The closer the grayscale value is to 1, the more obvious the grayscale effect is.
       Text('grayscale').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).grayscale(0.3)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).grayscale(0.8)
 
       // Apply the brightness effect. The value 1 indicates no effects. If the value is less than 1, the brightness decreases. If the value is greater than 1, the brightness increases.
       Text('brightness').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).brightness(1.2)
 
       // Apply the saturation effect. If the value is 1, the source image is displayed.
       Text('saturate').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).saturate(2.0)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).saturate(0.7)
 
       // Apply the contrast effect. If the value is 1, the source image is displayed. If the value is greater than 1, a larger value indicates a higher contrast and a clearer image. If the value is less than 1, a smaller value indicates a lower contrast is.
       Text('contrast').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).contrast(2.0)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).contrast(0.8)
 
       // Invert the image.
       Text('invert').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).invert(0.2)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).invert(0.8)
 
       // Apply the color blend effect.
       Text('colorBlend').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).colorBlend(Color.Green)
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).colorBlend(Color.Blue)
 
       // Convert the image color to sepia.
       Text('sepia').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).sepia(0.8)
 
       // Apply the hue rotation effect.
       Text('hueRotate').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
       Image($r('app.media.image')).width('90%').height(30).hueRotate(90)
     }.width('100%').margin({ top: 5 })
   }
@@ -1261,6 +1292,7 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+    // Replace $r("app.media.image") with the image resource file you use.
     .backgroundImage($r('app.media.image'))
     .backgroundImageSize(ImageSize.Cover)
   }
@@ -1284,6 +1316,8 @@ struct Index {
     Stack() {
       Column()
       Stack() {
+        // Replace $r("app.media.r") with the image resource file you use.
+        // In this example, the images are arranged from left to right, and the color is from light to dark.
         Image($r('app.media.r')).width('100%')
         Column() {
           Column().width("100%").height(30).invert({
@@ -1528,6 +1562,7 @@ struct Index {
   build() {
     Column() {
       Stack() {
+        // Replace $r("app.media.testImage") with the image resource file you use.
         Image($r('app.media.testImage')).width('100%').height('100%')
         Column()
           .width(150)

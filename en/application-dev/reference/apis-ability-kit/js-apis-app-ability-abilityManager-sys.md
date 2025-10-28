@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @duan-sizhao; @Luobniz21-->
+<!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -51,7 +51,7 @@ Updates the configuration. This API uses an asynchronous callback to return the 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | config    | [Configuration](js-apis-app-ability-configuration.md)   | Yes   | New configuration. You only need to configure the items to be updated.|
-| callback  | AsyncCallback\<void>                   | Yes   | Callback used to return the API call result. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<void>                   | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined**. Otherwise, **err** is an error object. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -173,11 +173,15 @@ Obtains the UIAbility running information. This API uses an asynchronous callbac
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | Yes   | Callback used to return the API call result and the ability running information. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the UIAbility running information obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+> **NOTE**
+>
+> This API does not return error code 202 since API version 14.
 
 | ID| Error Message|
 | ------- | -------- |
@@ -223,7 +227,7 @@ Obtains the ExtensionAbility running information. This API uses an asynchronous 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | upperLimit | number                                   | Yes| Maximum number of messages that can be obtained. The maximum value is 2<sup>31</sup>-1.|
-| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | Yes   | Callback used to return the API call result and the ExtensionAbility running information. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the ExtensionAbility running information obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
@@ -327,7 +331,7 @@ Obtains the top ability, which is the ability that has the window focus. This AP
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | Yes   | Callback used to return the API call result and the element name of the top ability. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the top ability name obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
@@ -407,7 +411,7 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | missionId | number                                   | Yes| Mission ID on the target application. The maximum value is 2<sup>31</sup>-1.|
-| callback  | AsyncCallback\<Record\<string, Object>>  | Yes   | Callback used to return the API call result and the shared data. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<Record\<string, Object>>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the shared data obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
@@ -509,7 +513,7 @@ Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlp
 | --------- | ---------------------------------------- | ---- | -------------- |
 | parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the caller.|
 | requestCode | number                                        | Yes| Request code passed in by the DLP management application.         |
-| callback  | AsyncCallback<void\>                             | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.        |
+| callback  | AsyncCallback<void\>                             | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined**; otherwise, **err** is an error object.        |
 
 **Error codes**
 

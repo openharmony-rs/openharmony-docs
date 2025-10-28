@@ -82,7 +82,7 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 
 ```ts
 import { bundleMonitor } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
   console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
 };
@@ -128,7 +128,7 @@ off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 
 ```ts
 import { bundleMonitor } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 该方法变量需要和bundleMonitor.on方法是同一个，才能移除对应监听的方法，否则注销监听无效
 let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {

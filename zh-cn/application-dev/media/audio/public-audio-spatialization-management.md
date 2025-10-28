@@ -31,11 +31,11 @@ Audio Vivid是基于AI技术的音频编解码标准，由世界超高清视频�
 
 ### 查询设备是否支持空间音频渲染能力
 
-应用开发者可以使用[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)的spatializationSupported属性获取指定设备是否具有空间音频渲染的能力，需要通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。
+应用开发者可以使用[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)的spatializationSupported属性获取指定设备是否具有空间音频渲染的能力，需要通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。例如，可以使用[getRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getroutingmanager9)创建的AudioRoutingManager实例的[getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10)接口获取。
 
   ```ts
   import { audio } from '@kit.AudioKit';
-
+  let audioRoutingManager = audioManager.getRoutingManager();
   let deviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
   console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(deviceDescriptors)}.`);
   ```

@@ -1,4 +1,10 @@
 # @ohos.telephony.sms (SMS)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **sms** module provides basic SMS management functions. With the APIs provided by this module, you can create and send SMS messages, and obtain the ID of the default SIM card used to send and receive SMS messages, and check whether the current device can send and receive SMS messages.
 
@@ -445,19 +451,19 @@ Defines an SMS message instance.
 
 **System capability**: SystemCapability.Telephony.SmsMms
 
-|         Name            |                  Type                  | Mandatory| Description                                                        |
-| ------------------------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| hasReplyPath             | boolean                                 |  Yes | Whether the received SMS contains **TP-Reply-Path**. The default value is **false**.<br>- **true**: The received SMS contains **TP-Reply-Path**.<br>- **false**: The received SMS does not contain **TP-Reply-Path**.<br>TP-Reply-Path: The device returns a response based on the SMSC that sends the SMS message. |
-| isReplaceMessage         | boolean                                 |  Yes | Whether the received SMS message is a **replace short message**. The default value is **false**.<br>- **true**: The received SMS message is a **replace short message**.<br>- **false**: The received SMS message is not a **replace short message**.<br>For details, see [3GPP TS 23.040 9.2.3.9](https://www.3gpp.org/ftp/specs/archive/23_series/23.040).|
-| isSmsStatusReportMessage | boolean                                 |  Yes | Whether the received SMS message is an SMS delivery report. The default value is **false**.<br>- **true**: The received SMS message is an SMS delivery report.<br>- **false**: The received SMS message is not an SMS delivery report.<br>SMS delivery report: a message sent from the SMSC to show the current status of the SMS message you delivered.|
-| messageClass             | [ShortMessageClass](#shortmessageclass) |  Yes | Enumerates SMS message types.                                                  |
-| pdu                      | Array&lt;number&gt;                     |  Yes | PDU in the SMS message.                           |
-| protocolId               | number                                  |  Yes | Protocol identifier used for delivering the SMS message.                                  |
-| scAddress                | string                                  |  Yes | SMSC address.                                |
-| scTimestamp              | number                                  |  Yes | SMSC timestamp.                                                |
-| status                   | number                                  |  Yes | SMS message status sent by the SMSC in the **SMS-STATUS-REPORT** message.|
-| visibleMessageBody       | string                                  |  Yes | SMS message body.                                                  |
-| visibleRawAddress        | string                                  |  Yes | Sender address.                                                |
+|         Name            |                  Type                  | Read-Only | Optional| Description                                                        |
+| ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| hasReplyPath             | boolean                                 |  No |  No | Whether the received SMS contains **TP-Reply-Path**. The default value is **false**.<br>- **true**: The received SMS contains **TP-Reply-Path**.<br>- **false**: The received SMS does not contain **TP-Reply-Path**.<br>TP-Reply-Path: The device returns a response based on the SMSC that sends the SMS message. |
+| isReplaceMessage         | boolean                                 |  No |  No | Whether the received SMS message is a **replace short message**. The default value is **false**.<br>- **true**: The received SMS message is a **replace short message**.<br>- **false**: The received SMS message is not a **replace short message**.<br>For details, see [3GPP TS 23.040 9.2.3.9](https://www.3gpp.org/ftp/specs/archive/23_series/23.040).|
+| isSmsStatusReportMessage | boolean                                 |  No |  No | Whether the received SMS message is an SMS delivery report. The default value is **false**.<br>- **true**: The received SMS message is an SMS delivery report.<br>- **false**: The received SMS message is not an SMS delivery report.<br>SMS delivery report: a message sent from the SMSC to show the current status of the SMS message you delivered.|
+| messageClass             | [ShortMessageClass](#shortmessageclass) |  No |  No | Enumerates SMS message types.                                                  |
+| pdu                      | Array&lt;number&gt;                     |  No |  No | PDU in the SMS message.                           |
+| protocolId               | number                                  |  No |  No | Protocol identifier used for delivering the SMS message.                                  |
+| scAddress                | string                                  |  No |  No | SMSC address.                                |
+| scTimestamp              | number                                  |  No |  No | SMSC timestamp.                                                |
+| status                   | number                                  |  No |  No | SMS message status sent by the SMSC in the **SMS-STATUS-REPORT** message.|
+| visibleMessageBody       | string                                  |  No |  No | SMS message body.                                                  |
+| visibleRawAddress        | string                                  |  No |  No | Sender address.                                                |
 
 
 ## ShortMessageClass
@@ -481,15 +487,15 @@ Provides the options (including callbacks) for sending SMS messages. For example
 
 **System capability**: SystemCapability.Telephony.SmsMms
 
-|       Name      | Type                                                        | Mandatory| Description                                                        |
-| ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId           | number                                                       | Yes  | Slot ID of the SIM card used for sending SMS messages. <br>- **0**: card slot 1.<br>- **1**: card slot 2     |
-| destinationHost  | string                                                       | Yes  | Destination address of the SMS message.                                            |
-| content          | string \| Array&lt;number&gt;                                | Yes  | SMS message type. If the content is composed of character strings, the SMS message is a text message. If the content is composed of byte arrays, the SMS message is a data message.|
-| serviceCenter    | string                                                       | No  | SMSC address. By default, the SMSC address in the SIM card is used.               |
-| destinationPort  | number                                                       | No  | Destination port of the SMS message. This field is mandatory only for a data message. Otherwise, it is optional.  |
-| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; | No  | Callback used to return the SMS message sending result. For details, see [ISendShortMessageCallback](#isendshortmessagecallback). This parameter is mandatory for sending an SMS message.|
-| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; | No  | Callback used to return the SMS message delivery report. For details, see [IDeliveryShortMessageCallback](#ideliveryshortmessagecallback). This parameter is mandatory for sending an SMS message.|
+|       Name      | Type                                                        | Read-Only| Optional| Description                                                        |
+| ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| slotId           | number                                                       |  No |  No | Slot ID of the SIM card used for sending SMS messages. <br>- **0**: card slot 1.<br>- **1**: card slot 2     |
+| destinationHost  | string                                                       |  No |  No | Destination address of the SMS message.                                            |
+| content          | string \| Array&lt;number&gt;                                |  No |  No | SMS message type. If the content is composed of character strings, the SMS message is a text message. If the content is composed of byte arrays, the SMS message is a data message.|
+| serviceCenter    | string                                                       |  No |  Yes | SMSC address. By default, the SMSC address in the SIM card is used.               |
+| destinationPort  | number                                                       |  No |  Yes | Destination port of the SMS message. This field is mandatory only for a data message. Otherwise, it is optional.  |
+| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; |  No |  Yes | Callback used to return the SMS message sending result. For details, see [ISendShortMessageCallback](#isendshortmessagecallback). This parameter is mandatory for sending an SMS message.|
+| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; |  No |  Yes | Callback used to return the SMS message delivery report. For details, see [IDeliveryShortMessageCallback](#ideliveryshortmessagecallback). This parameter is mandatory for sending an SMS message.|
 
 
 
@@ -499,11 +505,11 @@ Provides the callback for the SMS message sending result. It consists of three p
 
 **System capability**: SystemCapability.Telephony.SmsMms
 
-|   Name    | Type                           | Mandatory|                                               Description                                        |
-| ---------- | ------------------------------- | ---- | ----------------------------------------------------------------------------------------- |
-| isLastPart | boolean                         | Yes  | Whether this SMS message is the last part of a long SMS message. The default value is **false**.<br>- **true**: The SMS message is the last part of a long SMS message.<br>- **false**: The SMS message is not the last part of a long SMS message.<br>|
-| result     | [SendSmsResult](#sendsmsresult) | Yes  | SMS message sending result.                                                                            |
-| url        | string                          | Yes  | URI for storing the sent SMS message.                                                                       |
+|   Name    | Type                           | Read-Only| Optional|                                               Description                                        |
+| ---------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------- |
+| isLastPart | boolean                         | No  | No  | Whether this SMS message is the last part of a long SMS message. The default value is **false**.<br>- **true**: The SMS message is the last part of a long SMS message.<br>- **false**: The SMS message is not the last part of a long SMS message.<br>|
+| result     | [SendSmsResult](#sendsmsresult) | No  | No  | SMS message sending result.                                                                            |
+| url        | string                          | No  | No  | URI for storing the sent SMS message.                                                                       |
 
 
 ## IDeliveryShortMessageCallback
@@ -512,9 +518,9 @@ Provides the callback for the SMS message delivery report.
 
 **System capability**: SystemCapability.Telephony.SmsMms
 
-| Name| Type               | Mandatory| Description          |
-| ---- | ------------------- | ---- | -------------- |
-| pdu  | Array&lt;number&gt; | Yes  | SMS message delivery report.|
+| Name| Type               | Read-Only| Optional| Description          |
+| ---- | ------------------- | ---- | ---- | -------------- |
+| pdu  | Array&lt;number&gt; | No  | No  | SMS message delivery report.|
 
 
 ## SendSmsResult

@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -776,6 +776,34 @@ Callback<T,V = void> = (data: T) => V;
 | start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条起始边距。<br/>默认值：0，单位：vp |
 | end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 滚动条末尾边距。<br/>默认值：0，单位：vp |
 
+## ResponsiveFillType<sup>22+</sup>
+
+type ResponsiveFillType = PresetFillType
+
+响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| [PresetFillType](../arkui-ts/ts-appendix-enums.md#presetfilltype22)                | 为不同响应式断点规格指定列数。                    |
+
+## ItemFillPolicy<sup>22+</sup>
+
+定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型 |只读|可选| 说明             |
+| ------ | ---- |------|------| ---------------- |
+| fillType     | [ResponsiveFillType](#responsivefilltype22) |否| 是   | 为不同的响应式断点指定列数。默认值为BREAKPOINT_DEFAULT。 |
+
 ## DirectionalEdgesT\<T><sup>12+</sup>
 
 边缘宽度类型，用于描述组件边缘不同方向的宽度。支持全球化。
@@ -810,3 +838,16 @@ Callback<T,V = void> = (data: T) => V;
 | -------- | -------- | -------- | -------- | -------- |
 | horizontal  | number | &nbsp;否 |是 | 水平方向上的bias值。<br/>当子组件的width属性有正确值并且有2个水平方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：&nbsp;0.5 |
 | vertical  | number | &nbsp;否 |是 | 垂直方向上的bias值。<br/>当子组件的height属性有正确值并且有2个垂直方向的锚点时生效，设置的值必须大于等于0。<br/>默认值：&nbsp;0.5 |
+
+## CacheCountInfo<sup>22+</sup>对象说明
+
+缓存数量信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
+| ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
+| minCount | number | 否   | 否 | 最小缓存数，当实际缓存数小于最小缓存数时，在滚动动画帧间空闲时隙加载缓存。<br/> 取值范围：[0, +∞)，小于0时按1处理。|
+| maxCount   | number | 否   | 否 | 最大缓存数，当实际缓存数大于最大缓存数时，缓存内容会回收或释放，当UI空闲时（无动画或用户操作），会加载缓存到最大缓存数。<br/> 取值范围：[minCount, +∞)，小于minCount时按minCount处理。 |

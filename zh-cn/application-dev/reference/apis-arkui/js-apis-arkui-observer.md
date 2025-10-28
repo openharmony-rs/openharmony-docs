@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 
@@ -1407,7 +1407,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听指定Tabs组件id的TabContent页面切换事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1474,7 +1474,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
 
-取消监听TabContent页面的切换事件。
+取消监听指定Tabs组件id的TabContent页面切换事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

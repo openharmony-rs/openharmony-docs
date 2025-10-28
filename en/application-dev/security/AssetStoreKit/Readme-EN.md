@@ -1,5 +1,12 @@
 # Asset Store Kit (Asset Store Service)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 - [Introduction to Asset Store Kit](asset-store-kit-overview.md)
 - Scenarios<!--asset-scenarios-->
   - [Protecting Asset Data](asset-scenario1.md)

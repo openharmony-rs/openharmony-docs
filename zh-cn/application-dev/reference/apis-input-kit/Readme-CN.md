@@ -38,6 +38,7 @@
     - [oh_axis_type.h](capi-oh-axis-type-h.md)
     - [oh_input_manager.h](capi-oh-input-manager-h.md)
     - [oh_key_code.h](capi-oh-key-code-h.md)
+    - [oh_pointer_style.h](capi-oh-pointer-style-h.md)
   - 结构体<!--input-struct-->
     - [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md)
     - [Input_DeviceListener](capi-input-input-devicelistener.md)
@@ -49,6 +50,9 @@
     - [Input_Hotkey](capi-input-input-hotkey.md)
     - [Input_DeviceInfo](capi-input-input-deviceinfo.md)
     - [Input_InterceptorOptions](capi-input-input-interceptoroptions.md)
+    - [Input_CursorConfig](capi-input-input-cursorconfig.md)
+    - [Input_CustomCursor](capi-input-input-customcursor.md)
+    - [Input_CursorInfo](capi-input-input-cursorinfo.md)
 - 错误码<!--input-arkts-errcode-->
   <!--Del-->
   - [键鼠穿越管理错误码](errorcode-cooperator.md)

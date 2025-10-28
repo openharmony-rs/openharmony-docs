@@ -56,3 +56,11 @@ You can use the following formula to calculate the memory:<br>Memory (in bytes) 
 | KDF Algorithm| String Parameter| API Version| 
 | -------- | -------- | -------- |
 | SCRYPT | SCRYPT | 16+ | 
+
+## X963KDF
+
+X963KDF is a key derivation function (KDF) based on HMAC. It is usually used with elliptic curves to generate keys.
+
+| KDF Algorithm| String Parameter| API Version| 
+| -------- | -------- | -------- |
+| X963KDF | X963KDF | 22+ | 

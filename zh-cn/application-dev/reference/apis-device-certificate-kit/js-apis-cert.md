@@ -499,8 +499,8 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称         | 类型                                              |    只读   | 可选 | 说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| saltLen      | int                                            | 否   | 是   |表示盐值长度。默认为16，最小值为8。 |
-| iterations | int                                          | 否   | 是   |表示迭代次数。默认为2048。                       |
+| saltLen      | number                                            | 否   | 是   |表示盐值长度。默认为16，最小值为8。 |
+| iterations | number                                          | 否   | 是   |表示迭代次数。默认为2048。                       |
 | encryptionAlgorithm    | [PbesEncryptionAlgorithm](#pbesencryptionalgorithm21)                 | 否   | 是   |表示PBES加密算法类型。默认为AES_256_CBC。        |
 
 ## Pkcs12MacDigestAlgorithm<sup>21+</sup>
@@ -531,8 +531,8 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | keyEncParams | [PbesParams](#pbesparams21)                       | 否   | 是   |表示私钥加密的算法参数。                       |
 | encryptCert  | boolean                                           | 否   | 是   |表示是否加密证书。默认为true。true为加密，false为不加密。 |
 | certEncParams | [PbesParams](#pbesparams21)                      | 否   | 是   |表示证书加密的算法参数。 |
-| macSaltLen   | int                                            | 否   | 是   |表示P12 MAC的盐值长度。最小值为8，默认为16。 |
-| macIterations | int                                           | 否   | 是   |表示P12 MAC的迭代次数。默认为2048。 |
+| macSaltLen   | number                                            | 否   | 是   |表示P12 MAC的盐值长度。最小值为8，默认为16。 |
+| macIterations | number                                           | 否   | 是   |表示P12 MAC的迭代次数。默认为2048。 |
 | macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | 否   | 是   |表示P12 MAC的摘要算法。默认为SHA256。 |
 
 ## CmsContentType<sup>18+</sup>

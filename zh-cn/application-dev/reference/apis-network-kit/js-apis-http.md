@@ -1227,7 +1227,7 @@ HTTP 请求方法。
 | BAD_GATEWAY       | 502  | 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | UNAVAILABLE       | 503  | 由于超载或系统维护，服务器暂时无法处理客户端的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | GATEWAY_TIMEOUT   | 504  | 充当网关或代理的服务器，未及时从远端服务器获取请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| VERSION           | 505  | 服务器请求的HTTP协议的版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
+| VERSION           | 505  | 服务器不支持客户端请求中使用的HTTP协议版本。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
 
 ## HttpResponse
 
@@ -1316,7 +1316,7 @@ request方法回调函数的返回值类型。
 | contentType | string | 否 | 否 | 数据类型，如'text/plain'，'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4'等。 |
 | remoteFileName | string | 否 | 是 | 上传到服务器保存为文件的名称。<br>**说明**：指定该字段后，请求头中会添加filename字段，表示上传到服务器文件的名称。<br>（1）当上传数据为文件时，若通过data字段指定文件内容，通常需要设置remoteFileName字段，用以指定上传到服务器文件的名称（实际结果与服务器具体行为有关）；若通过filePath字段指定文件路径，请求头中会自动添加filename字段，其默认值为filePath中的文件名称，如需特殊指定，也可通过本字段对filename重新设置。<br>（2）当上传数据为二进制格式时，则必须设置remoteFileName字段。                                                 |
 | data | string \| Object \| ArrayBuffer | 否 | 是 | 表单数据内容。                                               |
-| filePath | string | 否 | 是 | 此参数根据文件的内容设置mime部件的正文内容。用于代替data将文件数据设置为数据内容，如果data为空，则必须设置filePath。如果data有值，则filePath不会生效。|
+| filePath | string | 否 | 是 | 此参数将文件路径指向的文件内容设置为表单数据，如果未指定data内容，则必须设置filePath。<br>**说明**：需传入文件管理模块支持的格式，可以通过文件管理的[access](../apis-core-file-kit/js-apis-file-fs.md#fsaccess)接口，验证文件是否存在且可访问。|
 
 ## http.createHttpResponseCache<sup>9+</sup>
 

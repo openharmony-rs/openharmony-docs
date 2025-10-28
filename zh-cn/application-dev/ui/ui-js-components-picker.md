@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 picker是滑动选择器组件，类型支持普通选择器、日期选择器、时间选择器、时间日期选择器和多列文本选择器。具体用法请参考[picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md)。
 
@@ -80,9 +80,9 @@ export default {
 > 普通选择器设置取值范围时，需要使用数据绑定的方式。
 
 
-## 设置时间展现格式
+## 设置时间显示格式
 
-picker的hours属性定义时间的展现格式，可选类型有12小时制和24小时制。
+picker的hours属性定义时间的显示格式，可选类型有12小时制和24小时制。
 
 ```html
 <!-- xxx.hml -->

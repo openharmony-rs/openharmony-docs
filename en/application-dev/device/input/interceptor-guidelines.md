@@ -48,9 +48,9 @@ Declare the required permission in the **module.json5** file. For details, see [
 
 - **Key event**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
+<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct KeyEvent {
     int32_t action;
     int32_t keyCode;
@@ -61,27 +61,32 @@ struct KeyEvent {
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    // The lifecycle of Input_KeyEvent is limited to the callback function. Input_KeyEvent will be destroyed if it is called outside of the callback function.
+    // The lifecycle of Input_KeyEvent is limited to the callback function. After the callback function is executed, Input_KeyEvent is automatically destroyed.
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
+	// ···
 }
 
-void TestKeyEventInterceptor()
+static napi_value AddKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
-    // Add the key event interceptor.
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
-    // Remove the key event interceptor.
-    ret = OH_Input_RemoveKeyEventInterceptor();
+	// ···
+}
+
+static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveKeyEventInterceptor();
+	// ···
 }
 ```
 
+
 - **Input Events (Mouse, Touch, and Axis Events)**
 
-```c++
-#include "multimodalinput/oh_input_manager.h"
-#include <map>
+<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 struct MouseEvent {
     int32_t action;
     int32_t displayX;
@@ -122,6 +127,7 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     event.axisType = OH_Input_GetMouseEventAxisType(mouseEvent);
     event.axisValue = OH_Input_GetMouseEventAxisValue(mouseEvent);
     event.actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
+	// ···
 }
 
 // Define the touch event callback function.
@@ -134,6 +140,7 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
     event.displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
     event.actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
+	// ···
 }
 
 // Define the axis event callback function.
@@ -167,12 +174,13 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
         ret = OH_Input_GetAxisEventAxisValue(axisEvent, AXIS_TYPE_SCROLL_HORIZONTAL, &value);
         event.axisValues.insert(std::make_pair(AXIS_TYPE_SCROLL_HORIZONTAL, value));
     }
+	// ···
 }
 
 // Structure of the input event callback function
 Input_InterceptorEventCallback g_eventCallback;
 
-void TestInputEventInterceptor()
+static napi_value AddEventInterceptor(napi_env env, napi_callback_info info)
 {
     // Set the mouse event callback function.
     g_eventCallback.mouseCallback = OnMouseEventCallback;
@@ -180,10 +188,13 @@ void TestInputEventInterceptor()
     g_eventCallback.touchCallback = OnTouchEventCallback;
     // Set the axis event callback function.
     g_eventCallback.axisCallback = OnAxisEventCallback;
-
-    // Add the input event interceptor.
     Input_Result ret = OH_Input_AddInputEventInterceptor(&g_eventCallback, nullptr);
-    // Remove the input event interceptor.
-    ret = OH_Input_RemoveInputEventInterceptor();
+	// ···
+}
+
+static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
+{
+    Input_Result ret = OH_Input_RemoveInputEventInterceptor();
+	// ···
 }
 ```

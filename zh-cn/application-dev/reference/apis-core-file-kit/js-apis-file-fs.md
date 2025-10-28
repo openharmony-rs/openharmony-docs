@@ -50,7 +50,7 @@ stat(file: string | number): Promise&lt;Stat&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | 是   | 文件或目录应用沙箱路径path或已打开的文件描述符fd。 |
+| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -88,7 +88,7 @@ stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
 | 参数名   | 类型                               | 必填 | 说明                           |
 | -------- | ---------------------------------- | ---- | ------------------------------ |
-| file     | string \| number                   | 是   | 文件或目录的应用沙箱路径path或已打开的文件描述符fd。     |
+| file     | string \| number                   | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | 是   | 异步获取文件或目录的信息之后的回调。 |
 
 **错误码：**
@@ -122,7 +122,7 @@ statSync(file: string | number): Stat
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | 是   | 文件或目录应用沙箱路径path或已打开的文件描述符fd。 |
+| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -2464,7 +2464,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| path   | string | 是   | 文件的应用沙箱路径。 |
+| path   | string | 是   | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -2500,7 +2500,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 | 参数名   | 类型                               | 必填 | 说明                                   |
 | -------- | ---------------------------------- | ---- | -------------------------------------- |
-| path     | string                             | 是   | 文件的应用沙箱路径。 |
+| path     | string                             | 是   | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | 是   | 异步获取文件具体信息之后的回调。       |
 
 **错误码：**
@@ -2533,7 +2533,7 @@ lstatSync(path: string): Stat
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| path   | string | 是   | 文件的应用沙箱路径。 |
+| path   | string | 是   | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -4562,9 +4562,9 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 事件类
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
 ### 属性
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 | 名称   | 类型   | 只读   | 可选   | 说明      |
 | ---- | ------ | ---- | ---- | ------- |
@@ -4711,9 +4711,9 @@ copySignal.onCancel();
 
 文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fsstat)方法（同步或异步）构建一个Stat实例。
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
 ### 属性
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 | 名称     | 类型   | 只读   | 可选   | 说明                                       |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
@@ -5378,9 +5378,9 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
 
 由open接口打开的File对象。
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
 ### 属性
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 | 名称   | 类型   | 只读   | 可选   | 说明      |
 | ---- | ------ | ---- | ---- | ------- |
@@ -5570,9 +5570,9 @@ onStatus(networkId: string, status: number): void;
 
 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
 ### 属性
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 | 名称         | 类型   | 只读  | 可选  | 说明              |
 | ----------- | ------ | ----  | ----- | ---------------- |
@@ -6022,14 +6022,14 @@ open接口flags参数常量。文件打开标签。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       | 说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| suffix | Array&lt;string&gt;     | 否 | 文件后缀名完全匹配，各个关键词OR关系。           |
-| displayName    | Array&lt;string&gt;     | 否 | 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。 |
-| mimeType    | Array&lt;string&gt; | 否 | mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。      |
-| fileSizeOver    | number | 否 | 文件大小匹配，大于指定大小的文件。       |
-| lastModifiedAfter    | number | 否 | 文件最近修改时间匹配，在指定时间点及之后的文件。       |
-| excludeMedia    | boolean | 否 | 是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。    |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| suffix    | Array&lt;string&gt; | 否 | 是 | 文件后缀名完全匹配，各个关键词OR关系。 |
+| displayName | Array&lt;string&gt; | 否 | 是 | 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。 |
+| mimeType | Array&lt;string&gt; | 否 | 是 | mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。 |
+| fileSizeOver | number | 否 | 是 | 文件大小匹配，大于指定大小的文件。 |
+| lastModifiedAfter | number | 否 | 是 | 文件最近修改时间匹配，在指定时间点及之后的文件。 |
+| excludeMedia | boolean | 否 | 是 | 是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。 |
 
 ## ConflictFiles<sup>10+</sup>
 
@@ -6108,10 +6108,10 @@ open接口flags参数常量。文件打开标签。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       | 说明                |
-| ----------- | --------------- | ------------------ |------------------ |
-| length | number     | 否 | 期望读取数据的长度，单位为字节。可选，默认缓冲区长度。           |
-|  offset    | number     | 否 | 期望读取文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| length    | number | 否 | 是    | 期望读取数据的长度，单位为字节。可选，默认缓冲区长度。 |
+| offset | number | 否 | 是 | 期望读取文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
 
 ## ReadTextOptions<sup>11+</sup>
 
@@ -6119,11 +6119,11 @@ open接口flags参数常量。文件打开标签。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       | 说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| length | number     | 否 | 期望读取数据的长度，单位为字节。可选，默认文件长度。           |
-|  offset    | number     | 否 | 期望读取文件的位置，单位为字节。可选，默认从当前位置开始读取。 |
-| encoding    | string | 否 | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。   <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。    |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| length    | number | 否 | 是    | 期望读取数据的长度，单位为字节。可选，默认文件长度。 |
+| offset | number | 否 | 是 | 期望读取文件的位置，单位为字节。可选，默认从当前位置开始读取。 |
+| encoding | string | 否 | 是 | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。   <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## WriteOptions<sup>11+</sup>
 
@@ -6131,11 +6131,11 @@ open接口flags参数常量。文件打开标签。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       | 说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| length | number     | 否 | 期望写入数据的长度，单位为字节。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。           |
-|  offset    | number     | 否 | 期望写入文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| encoding    | string | 否 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。       |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| length    | number | 否 | 是    | 期望写入数据的长度，单位为字节。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset | number | 否 | 是 | 期望写入文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| encoding | string | 否 | 是 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 
 ## ListFileOptions<sup>11+</sup>
 
@@ -6145,19 +6145,17 @@ open接口flags参数常量。文件打开标签。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       |  说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| recursion | boolean     | 否 | 是否递归子目录下文件名。可选，默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及目录名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。           |
-|  listNum    | number     | 否 | 列出文件名数量。可选，当设置0时，列出所有文件，默认为0。 |
-| filter    | [Filter](#filter10) | 否 | 文件过滤配置项。 可选，设置过滤条件。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| recursion    | boolean | 否 | 是    | 是否递归子目录下文件名。可选，默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及目录名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。 |
+| listNum | number | 否 | 是 | 列出文件名数量。可选，当设置0时，列出所有文件，默认为0。 |
+| filter | [Filter](#filter10) | 否 | 是 | 文件过滤配置项。 可选，设置过滤条件。 |
 
 ## ReadStream<sup>12+</sup>
 
 文件可读流，需要先通过[fs.createReadStream](#fscreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream](../apis-arkts/js-apis-stream.md#readable)。
 
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
-
-### 属性
 
 | 名称     | 类型   | 只读   | 可选   | 说明                                       |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
@@ -6226,6 +6224,8 @@ close(): void
 
 ### 属性
 
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
 | 名称     | 类型   | 只读   | 可选   | 说明                                       |
 | ------ | ------ | ---- | ---- | ---------------------------------------- |
 | bytesWritten    | number | 是    | 否    | 可写流已经写入的字节数。 |
@@ -6292,10 +6292,10 @@ close(): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       |  说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| start   | number     | 否 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。           |
-| end     | number     | 否 |  表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
+| end | number | 否 | 是 | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
 
 ## ReadStreamOptions<sup>12+</sup>
 
@@ -6303,10 +6303,10 @@ close(): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       |  说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| start   | number     | 否 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。           |
-| end     | number     | 否 |  表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
+| end | number | 否 | 是 | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
 
 ## WriteStreamOptions<sup>12+</sup>
 
@@ -6314,7 +6314,7 @@ close(): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称        | 类型       | 必选       |  说明                |
-| ----------- | --------------- | ------------------ | ------------------ |
-| start   | number     | 否 | 表示期望写入文件的位置，单位为字节。可选，默认文件起始位置。           |
-| mode     | number     | 否 | 创建文件可写流的[选项](#openmode)，必须指定如下选项中的一个，默认只写方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
+| mode | number | 否 | 是 | 创建文件可写流的[选项](#openmode)，必须指定如下选项中的一个，默认只写方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |

@@ -1035,7 +1035,7 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**订阅方需要的权限：** 无
+**订阅者需要的权限：** 无
 
 **取值：** "usual.event.wifi.mplink.STATE_CHANGE"
 

@@ -70,7 +70,7 @@ import { relationalStore } from '@kit.ArkData';
 
 commit(): Promise&lt;void&gt;
 
-Commits the executed SQL statements. When using asynchronous APIs to execute SQL statements, ensure that **commit()** is called after the asynchronous API execution is completed. Otherwise, the SQL operations may be lost. After **commit()** is called, the transaction object and the created **ResultSet** object will be closed.
+Commits this executed SQL statement. This API uses a promise to return the result. When using asynchronous APIs to execute SQL statements, ensure that **commit()** is called after the asynchronous API execution is completed. Otherwise, the SQL operations may be lost. After **commit()** is called, the transaction object and the created **ResultSet** object will be closed.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -121,7 +121,7 @@ if (store != undefined) {
 
 rollback(): Promise&lt;void&gt;
 
-Rolls back the SQL statements that have been executed. After **rollback()** is called, the transaction object and the created **ResultSet** object will be closed.
+Rolls back this executed SQL statement. This API uses a promise to return the result. After **rollback()** is called, the transaction object and the created **ResultSet** object will be closed.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

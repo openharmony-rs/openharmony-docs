@@ -119,7 +119,7 @@ hdc -t connect-key shell echo "Hello world"
 | [-s](#远程连接场景) | 可选参数，指定客户端连接服务器时，服务进程的网络监听参数，格式为IP:port。 |
 | [-p](#快速执行命令) | 可选参数，绕过对服务进程的查询步骤，用于快速执行客户端命令。 |
 | [-m](#前台启动服务) | 可选参数，使用前台启动模式启动服务进程。 |
-| [-e](#创建正向端口转发任务) | 可选参数，指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。<br/>**说明**：从API version 20开始，支持该接口。|
+| [-e](#创建正向端口转发任务) | 可选参数，指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。<br/>使用-e参数指定监听地址时，如果监听地址不是本地回环地址（如127.0.0.1），需注意访问安全问题。<br/>**说明**：从API version 20开始，支持该接口。|
 
 ### 命令列表
 
@@ -736,7 +736,7 @@ $ hdc file send D:\dest\相机 /mnt/data/100/media_fuse/Photo/ # 媒体库操作
 FileTransfer finish, Size:xxx, File...
 
 $ hdc file send D:\dest\新建目录 /mnt/data/100/media_fuse/Photo/相机/ # 媒体库操作，不支持创建目录
-[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/相机//新建目录
+[Fail][E005005] Error create directory: ..., path:/mnt/data/100/media_fuse/Photo/相机//新建目录
 ```
 
 ### 接收远端设备文件至本地
@@ -2363,3 +2363,21 @@ Operation not allowed.
 **处理步骤**
 
 检查输入是否为合法的IP格式，并确认该IP地址属于本机。
+
+### E00C001 hdc client/server调试拦截
+
+**错误信息**
+
+Operation restricted by the organization.
+
+**错误描述**
+
+操作被组织拦截。
+
+**可能原因**
+
+PC/2in1形态设备的hdc client/server调试功能被组织禁用。
+
+**处理步骤**
+
+请联系组织设备管理员查询PC/2in1设备hdc调试策略配置。

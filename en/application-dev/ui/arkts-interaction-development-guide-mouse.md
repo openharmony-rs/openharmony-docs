@@ -1,4 +1,4 @@
-# Supporting Mouse Input Events
+# Handling Mouse Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiangtao92-->
@@ -12,7 +12,7 @@ The mouse is a key input device, especially for 2-in-1 devices. It can perform a
 
 >**NOTE**
 >
->All single-finger touch and gesture events can also be triggered using the left mouse button.
+>All single-finger touch events and gesture events may be triggered and responded to using the left-click.
 > - For example, to implement page redirection invoked by clicking a button with support for finger touches and left-clicks, you just need to bind an **onClick** event.
 > - If you want to implement different effects for the finger touch and the left-click, you can use the **source** parameter in the **onClick** callback to determine whether the current event is triggered by a finger or a mouse device.
 
@@ -51,7 +51,7 @@ struct MouseExample {
         .width(200)
         .height(100)
         .backgroundColor(this.Color)
-        .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the button.
+        .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the Button component.
           if (event) {
             this.buttonText = 'Button onMouse:\n' + '' +
               'button = ' + event.button + '\n' +
@@ -157,7 +157,7 @@ To detect when the mouse pointer enters or exits a component's boundary, use the
 onHover(event: (isHover: boolean) => void)
 ```
 
-Triggered when the mouse pointer enters or leaves the component. The **isHover** parameter indicates whether the mouse pointer hovers over the component. This event supports custom bubbling settings. By default, event bubbling occurs between parent and child components.
+Triggered when the mouse pointer enters or leaves the component. The **isHover** parameter indicates whether the mouse pointer hovers over the component. Event bubbling is supported and can be customized; by default, events bubble between parent and child components.
 
 
 If this API is bound to a component, it is triggered when the mouse pointer enters the component from outside and the value of **isHover** is **true**, or when the mouse pointer leaves the component and the value of **isHover** is **false**.

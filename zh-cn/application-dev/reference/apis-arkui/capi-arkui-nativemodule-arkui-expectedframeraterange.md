@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -22,8 +22,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t min | 期望的最小帧率。 |
-| uint32_t max | 期望的最大帧率。 |
-| uint32_t expected | 期望的最优帧率。 |
+| uint32_t min | 期望的最小帧率，单位为帧/秒（fps）。 |
+| uint32_t max | 期望的最大帧率，单位为帧/秒（fps）。 |
+| uint32_t expected | 期望的最优帧率，单位为帧/秒（fps）。 |
 
 

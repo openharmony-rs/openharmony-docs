@@ -315,6 +315,46 @@ avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
 });
 ```
 
+## presentPicker<sup>22+</sup>
+
+presentPicker(): Promise\<void>
+
+录屏开始后，调用该接口再次弹出Picker，可动态更新录制源（窗口、屏幕）。使用Promise异步回调。
+
+> **说明：**
+>
+> - 更新录制源过程中，原录制流程不中断。
+> - 通过picker动态更新录制源后，按照新的录制源进行录制。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**返回值：**
+
+| 类型           | 说明                              |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avScreenCaptureRecorder.presentPicker().then(() => {
+    console.info('Succeeded in presentPicker avScreenCaptureRecorder');
+}).catch((err: BusinessError) => {
+    console.error('Failed to presentPicker avScreenCaptureRecorder, error: ' + err.message);
+});
+```
+
 ## release<sup>12+</sup>
 
 release(): Promise\<void>

@@ -694,7 +694,7 @@ struct Index {
 
 ## PointerStyle
 
-鼠标样式类型。
+鼠标光标样式类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 

@@ -236,7 +236,7 @@ Enumerates gesture recognizer types.
 | Value| Description                               |
 | -- |-----------------------------------|
 | TAP_GESTURE = 0 | Tap.                            |
-| LONG_PRESS_GESTURE | Long press gesture.                            |
+| LONG_PRESS_GESTURE | Long press.                            |
 | PAN_GESTURE | Pan.                            |
 | PINCH_GESTURE | Pinch.                            |
 | ROTATION_GESTURE | Rotate.                            |
@@ -830,7 +830,7 @@ Obtains the x-coordinate of the center of the pinch gesture, in vp, relative to 
 
 | Type| Description|
 | -- | -- |
-| float | X-coordinate of the center of the pinch gesture, in vp, relative to the upper left corner of the current component.|
+| float | X-coordinate of the center of the pinch gesture, in px, relative to the upper left corner of the current component.|
 
 ### OH_ArkUI_PinchGesture_GetCenterY()
 
@@ -856,7 +856,7 @@ Obtains the y-coordinate of the center of the pinch gesture, in vp, relative to 
 
 | Type| Description|
 | -- | -- |
-| float | Y coordinate of the center of the pinch gesture, in vp, relative to the upper left corner of the current component.|
+| float | Y-coordinate of the center of the pinch gesture, in px, relative to the upper left corner of the current component.|
 
 ### OH_ArkUI_GestureEvent_GetNode()
 

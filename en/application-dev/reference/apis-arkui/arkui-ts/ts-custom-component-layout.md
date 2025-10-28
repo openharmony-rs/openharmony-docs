@@ -247,7 +247,7 @@ Obtains the border widths of the child component.
 
 ## MeasureResult<sup>10+</sup>
 
-Provides the measurement result of the component. This API inherits from [SizeResult] (#sizeresult10).
+Provides the measurement result of the component. This API inherits from [SizeResult](#sizeresult10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -316,7 +316,11 @@ This API is supported since API version 9 and deprecated since API version 10. Y
 
 Child component layout information.
 
-This API is supported since API version 9 and deprecated since API version 10. It is supported in ArkTS widgets.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [Measurable](#measurable10) or [Layoutable](#layoutable10) instead.
+
+### Name
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -329,8 +333,46 @@ This API is supported since API version 9 and deprecated since API version 10. I
 | constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)   | No|No|Constraint size of the child component.                      |
 | borderInfo | [LayoutBorderInfo](#layoutborderinfodeprecated)              | No|No|Provides the border information of the child component.                    |
 | position   | [Position](ts-types.md#position)                             | No|No|Position coordinates of the child component.                      |
-| measure    | (childConstraint: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)) |No|No| Method called to apply the size constraint to the child component.|
-| layout     | (childLayoutInfo: [LayoutInfo](#layoutinfodeprecated)) | No|No|Method called to apply the specified position information to the child component.|
+
+### measure<sup>(deprecated)</sup>
+
+measure(childConstraint: ConstraintSizeOptions) : void
+
+Method called to apply the size constraint to the child component.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [measure](#measure) instead.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name       | Type    |Mandatory| Description              |
+|------------|-----------|------|------------------|
+| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraints on the size range of the child component.|
+
+### layout<sup>(deprecated)</sup>
+
+layout(childLayoutInfo: LayoutInfo) : void
+
+Applies the specified position information to the child component.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [layout](#layout) instead.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name       | Type    |Mandatory| Description              |
+|------------|-----------|------|------------------|
+| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | Yes |Provides the layout information of the child component.|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 

@@ -4791,7 +4791,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | Invalid url.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                      |
 
 **示例：**
 
@@ -10202,40 +10202,6 @@ static getActiveWebEngineVersion(): ArkWebEngineVersion
 
 请参考[setActiveWebEngineVersion](#setactivewebengineversion20)。
 
-## isActiveWebEngineEvergreen<sup>21+</sup>
-
-static isActiveWebEngineEvergreen(): boolean
-
-判断当前系统是否正在使用常青内核。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| ------ | ------ |
-| boolean | 表示是否正在使用常青内核。正在使用返回true，否则返回false。 |
-
-**示例：**
-
-本示例以EntryAbility为例，实现了在Ability创建阶段判断应用是否正在使用常青内核的功能。
-
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { webview } from '@kit.ArkWeb';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate")
-    if (webview.WebviewController.isActiveWebEngineEvergreen()) {
-      console.log("Active Web Engine is Evergreen")
-    }
-    console.log("EntryAbility onCreate done")
-  }
-}
-```
-
 ## setAutoPreconnect<sup>21+</sup>
 
 static setAutoPreconnect(enabled: boolean): void
@@ -10408,7 +10374,7 @@ struct WebComponent {
 
 ## setSocketIdleTimeout<sup>21+</sup>
 
-static setSocketIdleTimeout(timeout: int): void
+static setSocketIdleTimeout(timeout: number): void
 
 设置ArkWeb中已使用过的空闲socket的超时时间，即已使用过的socket可以处于空闲状态的最大时长。如果设置的值与已存在的空闲socket超时时间不同，则根据新的值对已存在的空闲socket进行清理。
 
@@ -10420,7 +10386,7 @@ static setSocketIdleTimeout(timeout: int): void
 
 | 参数名   | 类型    | 必填 | 说明                                                     |
 | -------- | ------- | ---- | -------------------------------------------------------- |
-| timeout | int | 是   | ArkWeb中已经使用过的空闲socket的超时时间。<br>取值范围：[30,300]，单位：s。<br>小于30时生效值为30，大于300时生效值为300。 |
+| timeout | number | 是   | ArkWeb中已经使用过的空闲socket的超时时间。<br>取值范围：[30,300]，单位：s。<br>小于30时生效值为30，大于300时生效值为300。 |
 
 **示例：**
 
@@ -10463,12 +10429,12 @@ struct WebComponent {
 
   build() {
     Column() {
+      Button('Web InActive').onClick(() => {
+        this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
+      })
       Web({ src: 'www.example.com', controller: this.controller })
         .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)
     }
-    Button('Web InActive').onClick(() => {
-      this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
-    })
   }
 }
 ```

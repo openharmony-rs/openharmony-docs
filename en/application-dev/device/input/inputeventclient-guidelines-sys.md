@@ -9,7 +9,7 @@
 
 ## When to Use
 
-The **inputEventClient** module provides the function of injecting input events, such as mouse click events and combination key events. For example, if you need to verify the combination key function of an application, you can listen for combination key events to serve that purpose.
+The **inputEventClient** module enables an application to listen for injected input events, such as mouse click events and combination key events. For example, if you need to verify the combination key function of an application, you can listen for combination key events to serve that purpose.
 
 ## Modules to Import
 

@@ -1,4 +1,10 @@
 # @ohos.enterprise.deviceControl (Device Control)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **deviceControl** module provides APIs for device control.
 
@@ -26,6 +32,7 @@ Allows the specified device administrator application to operate devices.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -49,14 +56,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { deviceControl } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace it as required.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace the parameters as required.
   deviceControl.operateDevice(wantTemp, 'resetFactory');
 } catch (err) {
   console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);

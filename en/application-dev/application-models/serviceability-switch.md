@@ -14,7 +14,7 @@ The ServiceAbility component in the [FA model](ability-terminology.md#fa-model) 
 
 The procedure for switching a ServiceAbility for a system application is similar to the procedure of PageAbility switching.
 
-1. [Create a ServiceExtensionAbility](serviceextensionability.md) in the stage model.
+1. [Create a ServiceExtensionAbility](serviceextensionability-sys.md) in the stage model.
 
 2. Migrate the ServiceAbility code to the ServiceExtensionAbility.
 
@@ -36,6 +36,6 @@ In the stage model, third-party applications cannot provide services for other t
 
 | Service Type| Switching Solution|
 | -------- | -------- |
-| Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).|
-| In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.|
-| In-application: continuing running when it switches to the background| Switch the service to a [background service](serviceextensionability.md).|
+| Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).| 
+| In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.| 
+| In-application: continuing running when it switches to the background| Switch the service to a [background service](serviceextensionability-sys.md).| 

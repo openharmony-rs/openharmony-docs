@@ -17,47 +17,47 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
 
 2. 在Project窗口单击entry > src > main > ets > pages，打开并编辑Index.ets文件：
 
-   ```typescript
-   import { hidebug } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   导入所需依赖：
+   <!-- @[TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
+   定义测试方法：
+   <!-- @[TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    function testHiDebugArk() {  // 按照需要调用的接口实现
      try {
-       let ret = hidebug.getSystemCpuUsage();
-       console.info(`TestTag getSystemCpuUsage: ${ret}`);
+       hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
-       console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
-     } 
-   }
-   
-   @Entry
-   @Component
-   struct Index {
-     build() {
-       Row() {
-         Column() {
-           Button("testHiDebugArk")
-             .type(ButtonType.Capsule)
-             .margin({
-               top: 20
-             })
-             .backgroundColor('#0D9FFB')
-             .width('60%')
-             .height('5%')
-             // 添加点击事件
-             .onClick(testHiDebugArk);
-         }
-         .width('100%')
-       }
-       .height('100%')
+       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
+         error msg: ${(error as BusinessError).message}`);
      }
    }
    ```
 
+   添加按钮以触发接口调用：
+   <!-- @[TestHidebugArk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button('testHiDebugArk')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // 添加点击事件
+     .onClick(testHiDebugArk);
+   ```
+
 3. 点击运行，然后在设备上点击“testHiDebugArk”按钮，触发接口调用。
 
-4. 若接口调用存在日志输出，在DevEco Studio的底部，切换到“Log”窗口，即可查看相关日志。
+4. 在DevEco Studio底部切换到“Log”窗口，设置日志过滤条件为“testTag”，即可查看相关日志：
 
    ```Text
-   06-02 16:53:22.538   31077-31077   A03D00/com.exa...ication/JSAPP  com.examp...lication  I     TestTag getSystemCpuUsage: 0.09963547995139732
+   10-22 15:46:04.587   19261-19261   A00000/com.sam...gtool/testTag  com.sampl...ebugtool  I     getSystemCpuUsage: 0.2878989952876323
    ```

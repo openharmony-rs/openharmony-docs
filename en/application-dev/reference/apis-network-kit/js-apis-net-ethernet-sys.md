@@ -507,7 +507,7 @@ ethernet.off('interfaceStateChange');
 
 getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
-Obtains Ethernet device information. This API uses a promise to return the result.
+Obtains the device information (such as the vendor name, product name, and maximum connection rate) of the local Ethernet NIC. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -555,15 +555,15 @@ Defines the network configuration for the Ethernet connection.
 
 **System capability**: SystemCapability.Communication.NetManager.Ethernet
 
-| Name         | Type                   | Mandatory| Description                                                        |
-| ------------ | ----------------------- | ---|------------------------------------------------------------ |
-| mode         | [IPSetMode](#ipsetmode9) | Yes| Configuration mode of the Ethernet connection.|
-| ipAddr       | string                  | Yes| Static IP address of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in Dynamic Host Configuration Protocol (DHCP) mode.|
-| route        | string                  | Yes| Route of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
-| gateway      | string                  | Yes| Gateway of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
-| netMask      | string                  | Yes| Subnet mask of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
-| dnsServers   | string                  | Yes| DNS server addresses of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode. Multiple addresses are separated by commas (,).|
-| httpProxy<sup>10+</sup> | [HttpProxy](js-apis-net-connection.md#httpproxy10) | No| HTTP proxy of the Ethernet connection. By default, no proxy is configured.|
+| Name         | Type                   | Read-Only|Optional| Description                                                        |
+| ------------ | ----------------------- | ---|-----|------------------------------------------------------- |
+| mode         | [IPSetMode](#ipsetmode9) | No|No|Configuration mode of the Ethernet connection.|
+| ipAddr       | string                  | No|No|Static IP address of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in Dynamic Host Configuration Protocol (DHCP) mode.|
+| route        | string                  | No|No|Route of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
+| gateway      | string                  | No|No|Gateway of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
+| netMask      | string                  | No|No|Subnet mask of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode.|
+| dnsServers   | string                  | No|No|DNS server addresses of the Ethernet connection. The value must be an IPv4 address, which is a 32-bit number displayed in dotted decimal notation and each 8-bit field ranges from 0 to 255. This parameter does not need to be configured in DHCP mode. Multiple addresses are separated by commas (,).|
+| httpProxy<sup>10+</sup> | [HttpProxy](js-apis-net-connection.md#httpproxy10) | No|Yes|HTTP proxy of the Ethernet connection. By default, no proxy is configured.|
 
 ## InterfaceStateInfo<sup>11+</sup>
 
@@ -573,10 +573,10 @@ Listens for status changes of an Ethernet NIC.
 
 **System capability**: SystemCapability.Communication.NetManager.Ethernet
 
-| Name        | Type                   | Mandatory| Description                                                |
-| ------------ | ----------------------- | --- | ---------------------------------------------------- |
-| iface        | string                  |  Yes| Name of the Ethernet NIC.                                       |
-| active       | boolean                 |  Yes| Whether the Ethernet NIC is activated. The value **true** indicates the NIC is activated, and the value **false** indicates the opposite.|
+| Name        | Type                   | Read-Only|Optional| Description                                                |
+| ------------ | ----------------------- | --- | ---|------------------------------------------------- |
+| iface        | string                  |  No|No|Name of the Ethernet NIC.                                       |
+| active       | boolean                 |  No|No|Whether the Ethernet NIC is activated. The value **true** indicates that the Ethernet NIC is activated, and the value **false** indicates the opposite.|
 
 ## IPSetMode<sup>9+</sup>
 

@@ -420,7 +420,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 
 > Currently, data in the GBK character set is converted to UTF-8. If other character sets need to be converted to UTF-8, you must handle the conversion. For details, see [icu4c](../../reference/native-lib/icu4c.md).
 > 
-> For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+> For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
 **Table 1** Supported file-level attributes
 | Name| Description|
@@ -447,7 +447,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
 > The supported attributes of the auxiliary track must match the actual media type (audio or video).
 > 
-> For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/_codec_base.md#media-data-key-value-pairs).
+> For details about the data type and value range, see [Media Data Key-Value Pairs](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
 **Table 2** Supported track-level attributes
 | Name| Description| Supported by Video Tracks| Supported by Audio Tracks| Supported by Subtitle Tracks| Supported by Auxiliary Tracks|

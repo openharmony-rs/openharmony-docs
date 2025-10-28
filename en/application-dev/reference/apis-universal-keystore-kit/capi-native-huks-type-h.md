@@ -49,8 +49,8 @@ The preceding system capability is available since API version 20. From API vers
 | -- | -- |
 | [OH_Huks_KeyPurpose](#oh_huks_keypurpose) | Enumerates the key purposes.|
 | [OH_Huks_KeyDigest](#oh_huks_keydigest) | Enumerates the digest algorithms.|
-| [OH_Huks_KeyPadding](#oh_huks_keypadding) | Enumerates the padding algorithms.|
-| [OH_Huks_CipherMode](#oh_huks_ciphermode) | Cipher mode.|
+| [OH_Huks_KeyPadding](#oh_huks_keypadding) | Enumerates the padding algorithm types.|
+| [OH_Huks_CipherMode](#oh_huks_ciphermode) | Enumerates the cipher modes.|
 | [OH_Huks_KeySize](#oh_huks_keysize) | Enumerates the key sizes of different algorithms.|
 | [OH_Huks_KeyAlg](#oh_huks_keyalg) | Enumerates the algorithms for keys.|
 | [OH_Huks_AlgSuite](#oh_huks_algsuite) | Enumerates the algorithm suites that can be used for importing of a key in cipher text.|
@@ -58,9 +58,9 @@ The preceding system capability is available since API version 20. From API vers
 | [OH_Huks_KeyFlag](#oh_huks_keyflag) | Enumerates the key generation types.|
 | [OH_Huks_KeyStorageType](#oh_huks_keystoragetype) | Enumerates the key storage types.|
 | [OH_Huks_ImportKeyType](#oh_huks_importkeytype) | Enumerates the types of the key to import. By default, a public key is imported. This field is not required when a symmetric key is imported.|
-| [OH_Huks_RsaPssSaltLenType](#oh_huks_rsapsssaltlentype) | Enumerates the formats in which a key is stored.|
+| [OH_Huks_RsaPssSaltLenType](#oh_huks_rsapsssaltlentype) | Enumerates the length types of the salt value in PSS padding mode.|
 | [OH_Huks_ErrCode](#oh_huks_errcode) | Enumerates error codes.|
-| [OH_Huks_TagType](#oh_huks_tagtype) | Enumerates the mask values of the parameter type in a parameter set.|
+| [OH_Huks_TagType](#oh_huks_tagtype) | Enumerates the types of the parameters in a parameter set.|
 | [OH_Huks_UserAuthType](#oh_huks_userauthtype) | Enumerates the user authentication types in key access control.|
 | [OH_Huks_AuthAccessType](#oh_huks_authaccesstype) | Enumerates the rules for invalidating a key.|
 | [OH_Huks_AuthStorageLevel](#oh_huks_authstoragelevel) | Enumerates the security levels for storing the key generated or imported.|
@@ -70,6 +70,27 @@ The preceding system capability is available since API version 20. From API vers
 | [OH_Huks_SecureSignType](#oh_huks_securesigntype) | Enumerates the signature types of the key generated or imported.|
 | [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | Enumerates the wrap type of the key generated or imported.|
 | [OH_Huks_Tag](#oh_huks_tag) | Enumerates the tags contained in a parameter set.|
+
+### Macros
+
+| Name| Description|
+| -- | -- |
+| OH_HUKS_AE_TAG_LEN 16 | Length of the AEAD authentication tag, in bytes.<br>**Since**: 9|
+| OH_HUKS_BITS_PER_BYTE 8 | Number of bits in each byte.<br>**Since**: 9|
+| OH_HUKS_MAX_KEY_SIZE 2048 | Maximum key size, in bytes.<br>**Since**: 9|
+| OH_HUKS_AE_NONCE_LEN 12 | Length of the AEAD one-time random number, in bytes.<br>**Since**: 9|
+| OH_HUKS_MAX_KEY_ALIAS_LEN 128 | Maximum length of a key alias, in bytes.<br>**Since**: 9|
+| OH_HUKS_MAX_PROCESS_NAME_LEN 50 | Maximum length of a process name, in bytes.<br>**Since**: 9|
+| OH_HUKS_MAX_RANDOM_LEN 1024 | Maximum length of a random number, in bytes.<br>**Since**: 9|
+| OH_HUKS_SIGNATURE_MIN_SIZE 64 | Minimum length of the signature result, in bytes.<br>**Since**: 9|
+| OH_HUKS_MAX_OUT_BLOB_SIZE (5 * 1024 * 1024) | Maximum size of the exported data, in bytes.<br>**Since**: 9|
+| OH_HUKS_WRAPPED_FORMAT_MAX_SIZE (1024 * 1024) | Maximum size of the key to be imported, in bytes.<br>**Since**: 9|
+| OH_HUKS_IMPORT_WRAPPED_KEY_TOTAL_BLOBS 10 | Maximum number of data blocks of the key to be imported, in bytes.<br>**Since**: 9|
+| TOKEN_CHALLENGE_LEN 32 | Byte length of the challenge value during access control.<br>**Since**: 9|
+| SHA256_SIGN_LEN 32 | Byte length of the SHA-256 signature.<br>**Since**: 9|
+| TOKEN_SIZE 32 | Byte length of the challenge value during access control.<br>**Since**: 9|
+| MAX_AUTH_TIMEOUT_SECOND 600 | Maximum user authentication timeout.<br>**Since**: 9|
+| SECURE_SIGN_VERSION 0x01000001 | Version of the secure signature data.<br>**Since**: 9|
 
 ## Enum Description
 
@@ -128,18 +149,18 @@ enum OH_Huks_KeyPadding
 
 **Description**
 
-Enumerates the padding algorithms.
+Enumerates the padding algorithm types.
 
 **Since**: 9
 
 | Enum| Description|
 | -- | -- |
 | OH_HUKS_PADDING_NONE = 0 | No padding algorithm.|
-| OH_HUKS_PADDING_OAEP = 1 | Optimal Asymmetric Encryption Padding (OAEP).|
-| OH_HUKS_PADDING_PSS = 2 | Probabilistic Signature Scheme (PSS).|
-| OH_HUKS_PADDING_PKCS1_V1_5 = 3 | Public Key Cryptography Standards (PKCS) #1 v1.5.|
-| OH_HUKS_PADDING_PKCS5 = 4 | PKCS #5.|
-| OH_HUKS_PADDING_PKCS7 = 5 | PKCS #7.|
+| OH_HUKS_PADDING_OAEP = 1 | OAEP.|
+| OH_HUKS_PADDING_PSS = 2 | PSS.|
+| OH_HUKS_PADDING_PKCS1_V1_5 = 3 | PKCS1_V1_5.|
+| OH_HUKS_PADDING_PKCS5 = 4 | PKCS5.|
+| OH_HUKS_PADDING_PKCS7 = 5 | PKCS7.|
 | OH_HUKS_PADDING_ISO_IEC_9796_2 = 6 | ISO IEC 9796-2.<br>**Since**: 18|
 | OH_HUKS_PADDING_ISO_IEC_9797_1 = 7 | ISO IEC 9797-1.<br>**Since**: 18|
 
@@ -157,13 +178,13 @@ Cipher mode.
 
 | Enum| Description|
 | -- | -- |
-| OH_HUKS_MODE_ECB = 1 | Electronic Code Block (ECB) mode.|
-| OH_HUKS_MODE_CBC = 2 | Cipher Block Chaining (CBC) mode.|
-| OH_HUKS_MODE_CTR = 3 | Counter (CTR) mode.|
-| OH_HUKS_MODE_OFB = 4 | Output Feedback (OFB) mode.|
-| OH_HUKS_MODE_CFB = 5 | Cipher Feedback (CFB) mode.<br>**Since**: 12|
-| OH_HUKS_MODE_CCM = 31 | Counter with CBC-MAC (CCM) mode.|
-| OH_HUKS_MODE_GCM = 32 | Galois/Counter (GCM) mode.|
+| OH_HUKS_MODE_ECB = 1 | ECB.|
+| OH_HUKS_MODE_CBC = 2 | CBC.|
+| OH_HUKS_MODE_CTR = 3 | CTR.|
+| OH_HUKS_MODE_OFB = 4 | OFB.|
+| OH_HUKS_MODE_CFB = 5 | CFB.<br>**Since**: 12|
+| OH_HUKS_MODE_CCM = 31 | CCM.|
+| OH_HUKS_MODE_GCM = 32 | GCM.|
 
 ### OH_Huks_KeySize
 
@@ -353,7 +374,7 @@ enum OH_Huks_RsaPssSaltLenType
 
 **Description**
 
-Enumerates the formats in which a key is stored.
+Enumerates the length types of the salt value in PSS padding mode.
 
 **Since**: 10
 
@@ -407,7 +428,7 @@ enum OH_Huks_TagType
 
 **Description**
 
-Enumerates the mask values of the parameter type in a parameter set.
+Enumerates the types of the parameters in a parameter set.
 
 **Since**: 9
 
@@ -543,7 +564,7 @@ Enumerates the signature types of the key generated or imported.
 
 | Enum| Description|
 | -- | -- |
-| OH_HUKS_SECURE_SIGN_WITH_AUTHINFO = 1 | The signature carries authentication information. This field is specified when a key is generated or imported. When the key is used for signing, the data will be added with the authentication information and then be signed.<br>Note: The carried authentication information includes identity information. You need to describe the purpose, retention policy, and destruction method of the identity information in the privacy statement.|
+| OH_HUKS_SECURE_SIGN_WITH_AUTHINFO = 1 | The signature carries authentication information. This field is specified when a key is generated or imported. When the key is used for signing, the data will be added with the authentication information and then be signed. Note: The carried authentication information includes identity information. You need to describe the purpose, retention policy, and destruction method of the identity information in the privacy statement.|
 
 ### OH_Huks_KeyWrapType
 

@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-## Overview
+## Introduction
 
 The Network Connection Management module provides basic network management capabilities, including management of Wi-Fi/cellular/Ethernet connection priorities, network quality evaluation, subscription to network connection status changes, query of network connection information, and DNS resolution.
 
@@ -64,17 +64,8 @@ This permission is of the **normal** level. Before applying for the permission, 
     // Create a NetConnection object.
     let conn = connection.createNetConnection(netSpecifier, timeout);
     ```
-
-4. Call [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) to subscribe to network status changes of the specified network. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
-
-    ```ts
-    // Register an observer for network status changes.
-    conn.register((err: BusinessError, data: void) => {
-      console.info(JSON.stringify(err));
-    });
-    ```
-
-5. Call [on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable) to subscribe to desired events. You must pass in **type** and **callback**.
+    
+4. Call the [on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable) API of the **NetConnection** object to enable listening for desired events. You must pass in **type** and **callback**.
 
     ```ts
     // Subscribe to network status change events. If the network is available, an on_netAvailable event is returned.
@@ -87,6 +78,16 @@ This permission is of the **normal** level. Before applying for the permission, 
       console.info("net is unavailable, data is " + JSON.stringify(data));
     }));
     ```
+    
+5. Call the [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) API of the **NetConnection** object to subscribe to network status change events. This method must be called after the on method is called. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
+
+    ```ts
+    // Register an observer for network status changes.
+    conn.register((err: BusinessError, data: void) => {
+      console.info(JSON.stringify(err));
+    });
+    ```
+    
 6. Call [unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister) to unsubscribe from the network status changes.
 
     ```ts

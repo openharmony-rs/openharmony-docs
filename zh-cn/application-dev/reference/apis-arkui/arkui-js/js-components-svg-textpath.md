@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 沿路径绘制文本。
 
@@ -40,7 +40,7 @@
 | font-size      | &lt;length&gt;                     | 30px   | 设置文本的尺寸。<br/>默认值：30px                            |
 | fill           | &lt;color&gt;                      | black  | 字体填充颜色。<br/>默认值：black                             |
 | by             | number                             | -      | 相对被指定动画的属性偏移值，from默认为原属性值。             |
-| opacity        | number                             | 1      | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。<br/>默认值：0 |
+| opacity        | number                             | 1      | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。<br/>默认值：1 |
 | fill-opacity   | number                             | 1.0    | 字体填充透明度。<br/>默认值：1.0                             |
 | stroke         | &lt;color&gt;                      | black  | 绘制字体边框并指定颜色。<br/>默认值：black                   |
 | stroke-width   | number                             | 1px    | 字体边框宽度。<br/>默认值：1px                               |

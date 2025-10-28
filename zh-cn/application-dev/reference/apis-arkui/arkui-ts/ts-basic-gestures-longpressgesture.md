@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于触发长按手势事件，触发长按手势的最少手指数为1，默认最短长按时间为500毫秒。可配置duration参数控制最短长按时长。
 
@@ -150,7 +150,8 @@ struct LongPressGestureExample {
       Text('LongPress onAction:' + this.count).fontSize(28)
         // 单指长按文本触发该手势事件
         .gesture(
-        LongPressGesture({ repeat: true })
+        // 设置长按手势识别器识别的手势的最大移动距离为200px
+        LongPressGesture({ repeat: true, allowableMovement: 200 })
           // 由于repeat设置为true，长按动作存在时会连续触发，触发间隔为duration（默认值500ms）
           .onAction((event: GestureEvent) => {
             if (event && event.repeat) {

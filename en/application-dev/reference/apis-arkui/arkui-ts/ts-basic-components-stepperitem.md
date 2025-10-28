@@ -1,6 +1,12 @@
 # StepperItem
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
-The **StepperItem** component provides an element for the **Stepper** component.
+The **StepperItem** component represents a page component used within a [Stepper](ts-basic-components-stepper.md) container.
 
 
 >  **NOTE**
@@ -16,6 +22,8 @@ This component supports only one child component.
 ## APIs
 
 StepperItem()
+
+Creates a page component for the [Stepper](ts-basic-components-stepper.md) container.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -77,6 +85,8 @@ Sets the display status of **nextLabel** in the stepper.
 >  - The **StepperItem** component does not support setting of the universal height attribute. Its height is the height of the parent **Stepper** component minus the height of the label button.
 >  - The **StepperItem** component does not support setting of the **aspectRadio** or **constrainSize** attribute, which may affect the length and width.
 ## ItemState
+
+Display status of **nextLabel** in the stepper.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

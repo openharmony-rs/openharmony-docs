@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用来展示列表具体item，必须配合List来使用。
 
@@ -624,7 +624,7 @@ struct ListItemExample {
 ![ListItemStyle](figures/deleteListItem_example04.gif)
 
 ### 示例5（通过ListItemSwipeActionManager管理划出菜单）
-该示例通过ListItemSwipeActionManager管理ListItem的划出菜单。
+从API version 21开始，该示例通过[ListItemSwipeActionManager](#listitemswipeactionmanager21)管理ListItem的划出菜单。
 
 ```ts
 // xxx.ets

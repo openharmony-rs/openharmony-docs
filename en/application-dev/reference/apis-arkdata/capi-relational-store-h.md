@@ -813,7 +813,7 @@ Creates an [OH_VObject](capi-rdb-oh-vobject.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) | Returns the pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_VObject](capi-rdb-oh-vobject.md) | Returns the pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -835,7 +835,7 @@ Creates an [OH_VBucket](capi-rdb-oh-vbucket.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) | Returns the pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_VBucket](capi-rdb-oh-vbucket.md) | Returns the pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -864,7 +864,7 @@ Creates an [OH_Predicates](capi-rdb-oh-predicates.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) | Returns the pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_Predicates](capi-rdb-oh-predicates.md) | Returns the pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -894,7 +894,7 @@ Obtains a related [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance to operate t
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns null otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CreateOrOpen()
 
@@ -920,7 +920,7 @@ Creates or opens an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance based on t
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns null otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CloseStore()
 
@@ -1190,7 +1190,7 @@ Queries data in an RDB store based on specified conditions.
 
 | Type                              | Description|
 |----------------------------------| -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### OH_Rdb_Execute()
 
@@ -1309,7 +1309,7 @@ Queries data in the database using the specified SQL statement. This API support
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -1674,7 +1674,7 @@ Obtains the last modification time of a table in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.|
 
 ### Rdb_BriefObserver()
 
@@ -1796,7 +1796,7 @@ Obtains the device-cloud sync statistics of a table.
 
 | Type| Description|
 | -- | -- |
-| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Returns a pointer to [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) if the operation is successful; returns null otherwise.|
+| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Returns a pointer to [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -2000,7 +2000,7 @@ Queries the locked data in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns null otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### OH_Rdb_CreateTransaction()
 

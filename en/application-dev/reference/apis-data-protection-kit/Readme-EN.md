@@ -2,15 +2,17 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--SE: @lucky-jinduo-->
-<!--TSE: @nacyli-->
+<!--Designer: @lucky-jinduo-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
-- ArkTS API<!--data-protection-arkts-->
+- ArkTS APIs<!--data-protection-arkts-->
   - [@ohos.dlpPermission (DLP)](js-apis-dlppermission.md)
+  - [@ohos.security.identifySensitiveContent (Identifying Sensitive Content)](js-apis-identifySensitiveContent.md)
   <!--Del-->
   - [@ohos.dlpPermission (DLP) (System API)](js-apis-dlppermission-sys.md)
   <!--DelEnd-->
-- C API<!--data-protection-c-->
+- C APIs<!--data-protection-c-->
   - Modules<!--data-protection-module-->
     - [DlpPermissionApi](capi-dlppermissionapi.md)
   - Header Files<!--data-protection-headerfile-->

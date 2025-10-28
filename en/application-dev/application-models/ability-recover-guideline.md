@@ -35,7 +35,7 @@ The [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) 
 
 | API                                                      | Description                                                |
 | ------------------------------------------------------------ | ---------------------------------------------------- |
-| setRestoreEnabled(enabled: boolean): void | Sets whether to enable restore when the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) is switched back to the foreground from the background.|
+| setRestoreEnabled(enabled: boolean): void | Sets whether to enable backup and restore for the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).|
 
 [setRestoreEnabled](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14) must be called during application initialization (before [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground) is invoked). For example, it can be called in the [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) callback of the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
@@ -70,7 +70,7 @@ export default class EntryAbility extends UIAbility {
     }
 
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // Ability has called to save app data
+        // Save the application data.
         console.info('[Demo] EntryAbility onSaveState');
         wantParams['myData'] = 'my1234567';
         return AbilityConstant.OnSaveResult.ALL_AGREE;

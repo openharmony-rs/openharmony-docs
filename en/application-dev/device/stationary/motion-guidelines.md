@@ -57,6 +57,7 @@ To use the motion module to obtain the operating hand, you need to request the *
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 2. Define a callback to receive operating hand change results.
 
@@ -65,6 +66,7 @@ To use the motion module to obtain the operating hand, you need to request the *
      console.info('callback succeeded' + data);
    };
    ```
+   <!-- @[motion_subscribe_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 3. Subscribe to operating hand change results.
 
@@ -77,6 +79,7 @@ To use the motion module to obtain the operating hand, you need to request the *
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 4. Unsubscribe from operating hand change events.
 
@@ -89,6 +92,7 @@ To use the motion module to obtain the operating hand, you need to request the *
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 5. Obtain the latest operating hand status.
 
@@ -101,6 +105,7 @@ To use the motion module to obtain the operating hand, you need to request the *
       console.error("Failed get and err code is " + error.code);
    }
    ```
+   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 
 ## Holding Hand Status Query
@@ -146,6 +151,7 @@ To use the motion module to obtain the holding hand, you need to request the **o
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 2. Define a callback to receive the hand holding status change.
 
@@ -154,6 +160,7 @@ To use the motion module to obtain the holding hand, you need to request the **o
      console.info('callback succeeded' + data);
    };
    ```
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 3. Enable listening for holding hand status changes.
 
@@ -166,6 +173,7 @@ To use the motion module to obtain the holding hand, you need to request the **o
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
 4. Disable listening for holding hand status changes.
 
@@ -178,3 +186,4 @@ To use the motion module to obtain the holding hand, you need to request the **o
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->

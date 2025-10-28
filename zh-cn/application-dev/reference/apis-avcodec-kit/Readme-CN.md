@@ -58,9 +58,9 @@
     - [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md)
   - 已停止维护的接口<!--avcodec-arkts-dep-->
     - 模块<!--avcodec-module-arkts-dep-->
-      - [AudioDecoder](_audio_decoder.md)
-      - [AudioEncoder](_audio_encoder.md)
+      - [AudioDecoder](capi-audiodecoder.md)
+      - [AudioEncoder](capi-audioencoder.md)
     - 头文件<!--avcodec-headerfile-arkts-dep-->
       - [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md)
-      - [native_avcodec_audiodecoder.h](native__avcodec__audiodecoder_8h.md)
-      - [native_avcodec_audioencoder.h](native__avcodec__audioencoder_8h.md)
+      - [native_avcodec_audiodecoder.h](capi-native-avcodec-audiodecoder-h.md)
+      - [native_avcodec_audioencoder.h](capi-native-avcodec-audioencoder-h.md)

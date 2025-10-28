@@ -4,7 +4,7 @@
 <!--Owner: @dutie123-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。如需实现插件模板的显示，请参考[PluginComponent](arkui-ts/ts-basic-components-plugincomponent-sys.md)。
 

@@ -58,15 +58,15 @@ Defines the commands that can be sent by a cast controller.
 
 ## ExtraInfo<sup>18+</sup>
 
-type ExtraInfo = { [key: string]: Object; }
+type ExtraInfo = Record\<string, Object\>  
 
 Defines the custom media packet set by the provider.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Type                               | Description                         |
-| ----------------------------------- | ----------------------------- |
-| [key: string]: Object   | **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**'AUDIO_GET_VOLUME'**: obtains the volume of the remote device.<br>**'AUDIO_GET_AVAILABLE_DEVICES'**: obtains all remote devices that can be connected.<br>**'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
+|Name| Type                               |Mandatory| Description                         |
+|------- | ----------------------------------- | --------| ----------------------------- |
+|ExtraInfo | Record\<string, Object\>  |Yes| **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
 
 ## KeyRequestCallback<sup>12+</sup>
 

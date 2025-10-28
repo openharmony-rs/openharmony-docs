@@ -48,7 +48,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |bluetooth|设备蓝牙能力。当已经通过[addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20)接口或者[addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices)接口设置了蓝牙设备禁用名单或者允许名单，再通过本接口禁用设备蓝牙能力，会优先生效禁用设备蓝牙能力。直到设备蓝牙能力启用后，禁止或允许名单才会生效。|
 |modifyDateTime|设备修改系统时间能力。|
 |printer|设备打印能力，当前仅支持PC/2in1设备使用。本接口禁用了设备打印能力时，通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)接口开启某用户的打印能力，该用户下的打印能力仍然被禁用。|
-|hdc|设备HDC能力。|
+|hdc|被其他设备通过hdc连接、调试的能力。设置禁用后，其他设备无法通过hdc连接、调试此设备。|
 |microphone|设备麦克风能力。|
 |fingerprint|设备指纹认证能力。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)设置了某用户禁用设备指纹认证能力时，再通过本接口启用设备指纹认证能力，会报策略冲突。|
 |usb|设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。<br/>以下四种情况再通过本接口禁用设备USB能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。<br/>4）通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。|
@@ -75,6 +75,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |externalStorageCard<sup>21+</sup> |外置存储能力，禁用后设备无法使用外置存储，并且当前已连接的外置存储会被卸载。如果外置存储卸载时有文件正在被使用，可能会导致卸载失败，返回9200013错误码。<br/>外置存储禁用后重新启用，需要手动重新连接外置存储。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力，设置禁用后，连接Wi-Fi仅能使用设备物理MAC。|
 |unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
+|hdcRemote<sup>22+</sup>|设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。设置禁用后，无法通过hdc调试手机、平板、PC、智能手表等设备。|
 <!--RP1--><!--RP1End-->
 
 **错误码**：
@@ -134,7 +135,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 |bluetooth|设备蓝牙能力。|
 |modifyDateTime|设备修改系统时间能力。|
 |printer|设备打印能力，当前仅支持PC/2in1设备使用。|
-|hdc|设备HDC能力。|
+|hdc|被其他设备通过hdc连接、调试的能力。|
 |microphone|设备麦克风能力。|
 |fingerprint|设备指纹认证能力。|
 |usb|设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。|
@@ -161,6 +162,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 |externalStorageCard<sup>21+</sup> |外置存储能力。|
 |randomMac<sup>21+</sup>|Wi-Fi连接时使用随机MAC能力。|
 |unmuteDevice<sup>22+</sup>|设备媒体播放声音能力，设置禁用后，设备媒体播放将静音，[蜂窝通话](../../media/audio/audio-call-overview.md)能力不受影响。|
+|hdcRemote<sup>22+</sup>|设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。|
 <!--RP2--><!--RP2End-->
 
 **返回值：**

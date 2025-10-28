@@ -33,10 +33,10 @@ Defines the configuration of an RDB store.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name       | Type         | Mandatory| Description                                                     |
-| ------------- | ------------- | ---- | --------------------------------------------------------- |
-| isSearchable<sup>11+</sup> | boolean | No| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
-| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| isSearchable<sup>11+</sup> | boolean | No| Yes| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
+| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| Yes| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.|
 
 ## HAMode<sup>12+</sup>
 
@@ -57,11 +57,11 @@ Represents the reference between tables by field. If table **b** references tabl
 
 **System API**: This is a system API.
 
-| Name      | Type  | Mandatory| Description                                    |
-| ---------- | ------ | ---- | ---------------------------------------- |
-| sourceTable | string | Yes  | Name of the table referenced.  |
-| targetTable | string | Yes  | Name of the table that references the source table.  |
-| refFields   | Record<string, string> | Yes  | Fields referenced. In a KV pair, the key indicates the field in the source table, and the value indicates the field in the target table.      |
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| sourceTable | string | No| No| Name of the table referenced.  |
+| targetTable | string | No| No| Name of the table that references the source table.  |
+| refFields   | Record<string, string> | No| No|Fields referenced. In a KV pair, the key indicates the field in the source table, and the value indicates the field in the target table.      |
 
 ## DistributedConfig<sup>10+</sup>
 
@@ -69,9 +69,9 @@ Defines the configuration of the distributed mode of tables.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| Name    | Type   | Mandatory| Description                                                        |
-| -------- | ------- | ---- | ------------------------------------------------------------ |
-| references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | No  | References between tables. You can reference multiple fields, and their values must be the same in the source and target tables. By default, database tables are not referenced with each other.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
+| Name    | Type   | Read-Only | Optional| Description                                                        |
+| -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
+| references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | No| Yes  | References between tables. You can reference multiple fields, and their values must be the same in the source and target tables. By default, database tables are not referenced with each other.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
 
 ## RdbStore
 

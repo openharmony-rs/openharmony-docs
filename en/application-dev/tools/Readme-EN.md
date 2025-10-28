@@ -6,6 +6,7 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @foryourself-->
 
+- [Command Line Tools](command-line-tools-overview.md)
 - [Ability Assistant](aa-tool.md)
 - [Bundle Manager](bm-tool.md)
 - Packing and Unpacking Tools<!--packing-unpacking-->
@@ -16,11 +17,12 @@
 - [Advanced Notification Manager](anm-tool.md)
 - [Enterprise Device Manager](edm-tool.md)
 - [restool](restool.md)<!--Del-->
-- [Low Level Debugger](lldb-tool.md)<!--DelEnd-->
+- [LLDB (for System Applications Only)](lldb-tool-sys.md)<!--DelEnd-->
 - [param](param-tool.md)
 - [power-shell](power-shell.md)
 - [Access Token Manager](atm-tool.md)
-- [ime](../inputmethod/inputmethod-hdc-commands-guide.md)
+- [network-cfg](network-cfg.md)
+- [IME Tool](../inputmethod/inputmethod-hdc-commands-guide.md)
 <!--Del-->
 - [Account Manager](acm-tool.md)
 <!--DelEnd-->
@@ -29,3 +31,4 @@
   - [mediatool](mediatool.md)
   - [devicedebug](devicedebug-tool.md)
   - [rawheap-translator](rawheap-translator.md)
+- [Binary Sign Tool](binary-sign-tool.md)

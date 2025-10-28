@@ -100,7 +100,7 @@ struct BuilderDemo {
 
 ## 参数传递规则
 
-自定义构建函数的参数传递有[按值传递](#按值传递参数)和[按引用传递](#按引用传递参数)两种，均需遵守以下规则：
+自定义构建函数的参数传递有[按回调传递](#按回调传递参数)，[按引用传递](#按引用传递参数)和[按值传递](#按值传递参数)，均需遵守以下规则：
 
 - \@Builder装饰的函数参数类型不允许为undefined、null和返回undefined、null的表达式。
 
@@ -108,25 +108,51 @@ struct BuilderDemo {
 
 - \@Builder内UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数)。
 
-- 只有当传入一个参数且该参数直接传入对象字面量时，才会按引用传递，其他传递方式均为按值传递。
+- 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
-### 按值传递参数
+- 使用引用传递时，在@Builder函数中不能修改参数的属性，但使用`UIUtils.makeBinding`并传入写回调时，我们可以在@Builder函数内修改属性，并同步到调用@Builder的组件中。
 
-调用\@Builder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@Builder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按引用传递](#按引用传递参数)。
+### 按回调传递参数
+
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详细用例见[\@Builder支持状态变量刷新](#builder支持状态变量刷新)。
+
+使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUTils.makeBinding()`中额外传入写状态变量的回调函数可以进一步将@Builder内对参数改变，传递到调用Builder函数的组件中。
 
 ```ts
-@Builder function overBuilder(paramA1: string) {
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function CustomButton(num1: Binding<number>, num2: MutableBinding<number>) {
   Row() {
-    Text(`UseStateVarByValue: ${paramA1} `)
+    Column() {
+      Text(`number1: ${num1.value}, number2: ${num2.value}`)
+      Button(`only change number2`)
+        .onClick(() => {
+          // 赋值MutableBinding类型传递该修改到父组件中。
+          num2.value += 1;
+        })
+    }
   }
 }
+
 @Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
+@ComponentV2
+struct Single {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+
   build() {
     Column() {
-      overBuilder(this.label)
+      CustomButton(
+        // 使用makeBinding传入参数，需要传入读回调，返回Binding类型，支持@Builder内组件UI刷新。
+        UIUtils.makeBinding<number>(() => this.number1),
+        // makeBinding额外传入写回调时返回MutableBinding类型，支持@Builder内组件UI刷新并且同步属性修改。
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
     }
   }
 }
@@ -162,6 +188,28 @@ struct Parent {
         // 单击Click me后，UI文本从Hello更改为ArkUI。
         this.label = 'ArkUI';
       })
+    }
+  }
+}
+```
+
+### 按值传递参数
+
+调用\@Builder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@Builder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
+
+```ts
+@Builder function overBuilder(paramA1: string) {
+  Row() {
+    Text(`UseStateVarByValue: ${paramA1} `)
+  }
+}
+@Entry
+@Component
+struct Parent {
+  @State label: string = 'Hello';
+  build() {
+    Column() {
+      overBuilder(this.label)
     }
   }
 }

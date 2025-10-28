@@ -88,6 +88,7 @@
   - [hilog](hilog.md)
   - hidumper<!--hidumper-tool-->
     - [hidumper](hidumper.md)
+    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
   - [hitrace](hitrace.md)
   - [hiperf](hiperf.md)
   - [hiprofiler](hiprofiler.md)
