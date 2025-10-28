@@ -902,6 +902,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
     <!-- @[complex_text_c_line_height_limit_one_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+    
     ``` c++
     OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
@@ -950,6 +951,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
     <!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+    
     ``` c++
     OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
@@ -999,6 +1001,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及效果如下所示：
     <!-- @[complex_text_c_line_spacing_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+    
     ``` c++
     OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_SetTypographyStyleAttributeDouble(typoStyle,
