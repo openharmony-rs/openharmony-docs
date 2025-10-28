@@ -26,9 +26,7 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 
 下述示例，展示了getFilteredInspectorTree和getFilteredInspectorTreeById的基本用法。
 
-```ts
 <!-- [uiContextTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage.ets) --> 
-```
 
 ## 布局回调
 
@@ -36,9 +34,7 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 
 下述示例，展示了布局回调的基本用法。
 
-```ts
 <!-- [uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImageExample.ets) --> 
-```
 
 ## 组件标识属性的扩展能力
 
@@ -49,6 +45,4 @@ ArkUI提供@ohos.arkui.UIContext(UIContext)扩展能力，通过[getFilteredInsp
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 
-```ts
 <!-- [componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
-```
