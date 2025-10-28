@@ -10429,12 +10429,12 @@ struct WebComponent {
 
   build() {
     Column() {
+      Button('Web InActive').onClick(() => {
+        this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
+      })
       Web({ src: 'www.example.com', controller: this.controller })
         .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)
     }
-    Button('Web InActive').onClick(() => {
-      this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
-    })
   }
 }
 ```
