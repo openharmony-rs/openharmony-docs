@@ -496,3 +496,27 @@ setDLPProtectPolicy() {
 17. （API 21开始支持）识别指定文件中的敏感内容。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
 <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+scanSensitiveInfo() {
+  let filepath = this.uri;
+  let policies: identifySensitiveContent.Policy[] = [
+    {'sensitiveLabel':'1', 'keywords':[], 'regex':''}
+  ];
+  try {
+    identifySensitiveContent.scanFile(filepath, policies).then(records => {
+      console.info('scanFile finish');
+      this.result = 'scanFile finish';
+      hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'scanFile finish');
+    }).catch((err:Error) => {
+      console.error('error message', err.message);
+      this.result = 'error message' + err.message;
+      hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+    })
+  } catch (err) {
+    console.error('error message', err.message);
+    this.result = 'error message' + err.message;
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+  }
+}
+```
