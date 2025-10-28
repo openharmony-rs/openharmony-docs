@@ -50,6 +50,18 @@ libudmf.so, libhilog_ndk.z.so
 ## 引用头文件
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include <database/udmf/udmf_err_code.h>
+
+#include <database/udmf/uds.h>
+#include <database/udmf/udmf.h>
+#include <database/udmf/udmf_meta.h>
+#include <hilog/log.h>
+
+#undef LOG_TAG
+#define LOG_TAG "MY_LOG"
+```
+
 ## 纯文本类型数据结构的使用
 
 1. 创建PlainText对象指针。
