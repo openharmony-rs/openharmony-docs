@@ -46,6 +46,20 @@ libudmf.so, libhilog_ndk.z.so
 
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include <cstdio>
+#include <cstring>
+#include <database/udmf/utd.h>
+#include <database/udmf/uds.h>
+#include <database/udmf/udmf.h>
+#include <database/udmf/udmf_meta.h>
+#include <database/udmf/udmf_err_code.h>
+#include <hilog/log.h>
+
+#undef LOG_TAG
+#define LOG_TAG "MY_LOG"
+```
+
 ## 通过不同方式获取不同类型数据并且比较它们之间的关系
 
 下面以获取纯文本数据的查询场景为例，说明如何使用UTD。
