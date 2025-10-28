@@ -327,6 +327,20 @@ getRetentionSandboxList() {
 
 <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+setSandboxAppConfig() {
+  dlpPermission.setSandboxAppConfig('configInfo').then(() => {
+    this.result = 'setSandboxAppConfig result: 设置沙箱应用配置信息成功';
+    console.info('res', '设置沙箱应用配置信息成功');
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'setSandboxAppConfig result: 设置沙箱应用配置信息成功');
+  }).catch((err: BusinessError) => {
+    this.result = 'setSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+  });
+}
+```
+
 12. 清理沙箱应用配置信息。
 
 <!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
