@@ -5,7 +5,7 @@
 <!--Owner: @pxh123456-->
 <!--Designer: @gongzheng92-->
 <!--Tester: @gongzheng92-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zengyawen-->
 
 本模块提供图片内容的清晰度增强及缩放能力。
 
