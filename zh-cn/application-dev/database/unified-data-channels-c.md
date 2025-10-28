@@ -149,3 +149,41 @@ libudmf.so, libhilog_ndk.z.so
 5. 使用完成后销毁指针。
 
 <!-- @[unified_data_channels_c_delay_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+int32_t providerSetDataTest()
+{
+    // 为了代码可读性，代码中省略了各个步骤操作结果的校验，实际开发中需要确认每次调用的成功。
+    // 1. 创建一个OH_UdmfRecordProvider，设置它的数据提供函数和销毁回调函数。
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    OH_UdmfRecordProvider_SetData(provider, (void*)provider, GetDataCallback, ProviderFinalizeCallback);
+
+    // 2. 创建OH_UdmfRecord对象，并配置OH_UdmfRecordProvider。
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    const char* types[1] = {UDMF_META_HYPERLINK};
+    OH_UdmfRecord_SetProvider(record, types, 1, provider);
+
+    // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+    OH_UdmfData* data = OH_UdmfData_Create();
+    OH_UdmfData_AddRecord(data, record);
+
+    // 4. 构建数据并写入数据库中，获取返回的Key值。
+    OH_UdmfOptions* options = OH_UdmfOptions_Create();
+    if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Set option error!");
+        OH_UdmfOptions_Destroy(options);
+        return UDMF_ERR;
+    }
+    char key[UDMF_KEY_BUFFER_LEN] = {0};
+    if (OH_Udmf_SetUnifiedDataByOptions(options, data, key, sizeof(key)) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Set data error!");
+    }
+    OH_LOG_INFO(LOG_APP, "key = %{public}s", key);
+
+    // 5. 使用完成后销毁指针。
+    OH_UdmfRecord_Destroy(record);
+    OH_UdmfData_Destroy(data);
+    OH_UdmfOptions_Destroy(options);
+    return UDMF_E_OK;
+}
+```
