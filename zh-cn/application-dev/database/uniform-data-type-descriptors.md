@@ -210,6 +210,22 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+try {
+  // 2.可根据 “.ts” 文件后缀查询对应UTD数据类型。
+  let fileExtension = '.ts';
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
+  for (let typeId of typeIds) {
+    // 3.根据UTD数据类型查询对应的MIMEType列表。
+    let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+    let mimeTypes = typeObj.mimeTypes;
+    hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${mimeTypes}`);
+  }
+} catch (err) {
+  hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+}
+```
+
 ## 如何通过MIMEType获取对应的后缀列表
 
 下面以通过“text/plain”MIMEType获取对应文件后缀列表为例，说明如何通过MIMEType获取对应的后缀列表。
