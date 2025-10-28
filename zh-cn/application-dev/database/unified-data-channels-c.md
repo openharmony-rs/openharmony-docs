@@ -114,6 +114,84 @@ libudmf.so, libhilog_ndk.z.so
 
 <!-- @[unified_data_channels_c_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+int32_t AddHyperlinkToUdmfRecord(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
+{
+    // 设置hyperlink中的URL和描述信息。
+    if (OH_UdsHyperlink_SetUrl(hyperlink, "www.demo2.com") != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Hyperlink set url error!");
+        OH_UdsHyperlink_Destroy(hyperlink);
+        return UDMF_ERR;
+    }
+    if (OH_UdsHyperlink_SetDescription(hyperlink, "This is the new description.") != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Hyperlink set description error!");
+        OH_UdsHyperlink_Destroy(hyperlink);
+        return UDMF_ERR;
+    }
+    // 向OH_UdmfRecord中添加超链接类型数据。
+    if (OH_UdmfRecord_AddHyperlink(record, hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Add hyperlink to record error!");
+        OH_UdsHyperlink_Destroy(hyperlink);
+        OH_UdmfRecord_Destroy(record);
+        return UDMF_ERR;
+    }
+    // 向OH_UdmfData中添加OH_UdmfRecord。
+    if (OH_UdmfData_AddRecord(data, record) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Add record to data error!");
+        OH_UdsHyperlink_Destroy(hyperlink);
+        OH_UdmfRecord_Destroy(record);
+        OH_UdmfData_Destroy(data);
+        return UDMF_ERR;
+    }
+    return UDMF_E_OK;
+}
+
+int32_t updateDataTest()
+{
+    // 创建hyperlink的UDS数据结构。
+    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+    // 创建OH_UdmfRecord对象
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    // 创建OH_UdmfData对象
+    OH_UdmfData* data = OH_UdmfData_Create();
+    if (AddHyperlinkToUdmfRecord(hyperlink, record, data) != UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Fail to create hyperlink!");
+        OH_UdmfRecord_Destroy(record);
+        OH_UdmfData_Destroy(data);
+        return UDMF_ERR;
+    }
+    // 构建数据操作选项。
+    OH_UdmfOptions* options = OH_UdmfOptions_Create();
+    // 此处key为示例，不可直接使用，其值应与OH_Udmf_SetUnifiedDataByOptions接口中获取到的key值保持一致。
+    char key[] = "udmf://DataHub/com.ohos.test/0123456789";
+    if (OH_UdmfOptions_SetIntention(options, Udmf_Intention::UDMF_INTENTION_DATA_HUB) != Udmf_ErrCode::UDMF_E_OK
+        || OH_UdmfOptions_SetKey(options, key) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Set option error!");
+        OH_UdsHyperlink_Destroy(hyperlink);
+        OH_UdmfRecord_Destroy(record);
+        OH_UdmfData_Destroy(data);
+        OH_UdmfOptions_Destroy(options);
+        return UDMF_ERR;
+    }
+    // 更新数据，将数据写入数据库中。
+    if (OH_Udmf_UpdateUnifiedData(options, data) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Update data error!");
+        OH_UdsHyperlink_Destroy(hyperlink);
+        OH_UdmfRecord_Destroy(record);
+        OH_UdmfData_Destroy(data);
+        OH_UdmfOptions_Destroy(options);
+        return UDMF_ERR;
+    }
+    OH_LOG_INFO(LOG_APP, "update data success");
+    // 使用完成后销毁指针。
+    OH_UdsHyperlink_Destroy(hyperlink);
+    OH_UdmfRecord_Destroy(record);
+    OH_UdmfData_Destroy(data);
+    OH_UdmfOptions_Destroy(options);
+    return UDMF_E_OK;
+}
+```
+
 ## 使用UDMF删除UDS数据
 
 下面继续以获取超链接OH_UdsHyperlink类型数据场景为例，说明如何使用UDS与UDMF。
