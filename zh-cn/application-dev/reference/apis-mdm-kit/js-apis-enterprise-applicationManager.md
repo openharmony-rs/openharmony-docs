@@ -1351,7 +1351,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstan
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1412,7 +1412,7 @@ removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationIns
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 不可关停应用名单数组。不可关停应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1478,7 +1478,7 @@ getUserNonStopApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 不可关停应用名单数组。|
+| Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 不可关停应用名单数组。|
 
 **错误码**：
 
@@ -1531,7 +1531,7 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationIns
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用名单数组，后台防冻结应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 后台防冻结应用名单数组，后台防冻结应用名单最多支持包含10个应用，该数量限制不区分用户，即所有用户下添加应用的总和的最大限制为10个。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1592,7 +1592,7 @@ removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;Application
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。                         |
-| applicationInstances | Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 是   | 后台防冻结应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
+| applicationInstances | Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 是   | 后台防冻结应用名单数组，同一用户下，后台防冻结应用最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。 |
 
 **错误码**：
 
@@ -1658,7 +1658,7 @@ getFreezeExemptedApps(admin: Want): Array&lt;ApplicationInstance&gt;
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;[ApplicationInstance](#ApplicationInstance22)&gt; | 后台防冻结应用名单数组。|
+| Array&lt;[ApplicationInstance](#applicationinstance22)&gt; | 后台防冻结应用名单数组。|
 
 **错误码**：
 
@@ -1693,13 +1693,13 @@ try {
 ## ApplicationInstance<sup>22+</sup>
 
 应用的实例数据。
-该接口目前在[addUserNonStopApps](#applicationManageraddUserNonStopApps22)和[removeUserNonStopApps](#applicationManagerremoveUserNonStopApps22)和[addFreezeExemptedApps](#applicationManageraddFreezeExemptedApps22)和[removeFreezeExemptedApps](#applicationManagerremoveFreezeExemptedApps22)接口中作为入参使用。
+该接口目前在[addUserNonStopApps](#applicationmanageraddusernonstopapps22)和[removeUserNonStopApps](#applicationmanagerremoveusernonstopapps22)和[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)和[removeFreezeExemptedApps](#applicationmanagerremovefreezeexemptedapps22)接口中作为入参使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | appIdentifier          | string       | 否   | 否 | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。           |
-| accountId        | number       | 否   | 否 | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)接口来获取。            |
-| appIndex        | number       | 否   | 否 | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)接口来获取。           |
+| accountId        | number       | 否   | 否 | 用户ID。取值范围：大于等于0的整数。<br> accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)接口获取。            |
+| appIndex        | number       | 否   | 否 | 应用分身索引。取值范围：大于等于0的整数。<br> appIndex可以通过[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)接口获取。           |
 
