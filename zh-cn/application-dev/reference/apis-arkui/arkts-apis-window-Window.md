@@ -5634,7 +5634,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.<br>ArkTS模式：该错误码仅适用于ArkTS-Dyn。 |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
 
@@ -8083,7 +8083,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.<br>ArkTS模式：该错误码仅适用于ArkTS-Dyn。 |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300003  | This window manager service works abnormally. |
