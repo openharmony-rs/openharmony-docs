@@ -339,7 +339,7 @@ interface ArrObject {
 
 该示例通过ComponentContent设置Header/Footer。
 
-ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
 
 <!--code_no_check-->
 ```ts
