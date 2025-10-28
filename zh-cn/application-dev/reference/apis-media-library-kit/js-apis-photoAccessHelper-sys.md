@@ -5243,7 +5243,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
 
-复制相册中的图片（用户创建或应用相册）并转换为指定格式。使用promise异步回调。
+复制相册中的图片（用户创建或应用相册）并转换为指定格式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -5274,7 +5274,7 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
-| 23800301    | Internal system error. Recommended actions: retry and check logs. Possible causes: 1. Database corrupted; 2. Abnormal file system; 3. IPC request timeout. |
+| 23800301    | Internal system error. Recommended actions: retry and check logs. Possible causes: 1. Database corrupted. 2. Abnormal file system; 3. IPC request timeout. |
 
 **示例：**
 
