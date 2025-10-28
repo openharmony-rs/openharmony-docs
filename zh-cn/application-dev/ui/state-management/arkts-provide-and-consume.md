@@ -84,7 +84,7 @@
 | 和后代组件同步        | 和\@Consume双向同步。                          |
 | 是否支持组件外访问      | 私有，仅可以在所属组件内访问。                          |
 
-  **图1** \@Provide初始化规则图示  
+**图1** \@Provide初始化规则图示
 
 ![zh-cn_image_0000001552614217](figures/zh-cn_image_0000001552614217.png)
 
@@ -95,7 +95,7 @@
 | 和祖先组件同步        | 和\@Provide双向同步。                          |
 | 是否支持组件外访问      | 私有，仅可以在所属组件内访问                           |
 
-  **图2** \@Consume初始化规则图示  
+**图2** \@Consume初始化规则图示
 
 
 ![zh-cn_image_0000001502094666](figures/zh-cn_image_0000001502094666.png)
@@ -150,8 +150,8 @@
 
 2. \@Consume装饰的变量不能在构造参数中传入初始化，否则编译时会报错。\@Consume仅能通过key来匹配对应的\@Provide变量或者从API version 20开始设置默认值进行初始化。
 
-    【反例】
-  
+   【反例】
+
     ```ts
     @Component
     struct Child {
@@ -176,37 +176,9 @@
     }
     ```
 
-    【正例】
-  
-    ```ts
-    @Component
-    struct Child {
-      @Consume num: number;
-      // 从API version 20开始，@Consume装饰的变量支持设置默认值
-      @Consume num1: number = 17;
-  
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Text(`num1的值：${this.num1}`)
-        }
-      }
-    }
-  
-    @Entry
-    @Component
-    struct Parent {
-      @Provide num: number = 10;
-  
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Child()
-        }
-      }
-    }
-    ```
-  
+   【正例】
+   <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
+
 3. \@Provide的key重复定义时，框架会抛出运行时错误，提醒开发者重复定义key，如果开发者需要重复key，可以使用[allowoverride](#provide支持allowoverride参数)。
 
     ```ts
@@ -218,11 +190,11 @@
     @Provide('a') count: number = 10;
     @Provide('b') num: number = 10;
     ```
-  
+
 4. 在API version 20之前，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量。从API version 20开始，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，同时没有设置默认值，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量同时也没有设置默认值。
 
-    【反例】
-  
+   【反例】
+
     ```ts
     @Component
     struct Child {
@@ -250,42 +222,14 @@
     }
     ```
 
-    【正例】
-  
-    ```ts
-    @Component
-    struct Child {
-      @Consume num: number;
-      // 正确写法 从API version 20开始，@Consume装饰的变量支持设置默认值
-      @Consume num_with_defaultValue: number = 6;
-  
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Text(`num_with_defaultValue的值：${this.num_with_defaultValue}`)
-        }
-      }
-    }
-  
-    @Entry
-    @Component
-    struct Parent {
-      // 正确写法
-      @Provide num: number = 10;
+   【正例】
 
-      build() {
-        Column() {
-          Text(`num的值: ${this.num}`)
-          Child()
-        }
-      }
-    }
-    ```
+   <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
 
 5. \@Provide与\@Consume不支持装饰Function类型的变量，框架会抛出运行时错误。
 
 6. 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。在BuilderNode上树时，\@Consume通过key匹配找到最近的\@Provide，两者类型需要一致，如果不一致，则会抛出运行时错误。
-需要注意类型不相等判断，包括类实例的判断，比如：
+   需要注意类型不相等判断，包括类实例的判断，比如：
 ```ts
 class A {}
 class B {}
@@ -294,116 +238,14 @@ class B {}
 @Consume message: B = new B();
 ```
 在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
-```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
-
-@Builder
-function buildText() {
-  Column() {
-    Child()
-  }
-}
-
-class TextNodeController extends NodeController {
-  private builderNode: BuilderNode<[]> | null = null;
-
-  constructor() {
-    super();
-  }
-
-  makeNode(context: UIContext): FrameNode | null {
-    this.builderNode = new BuilderNode(context);
-    // 配置跨BuilderNode支持@Provide/@Consume
-    this.builderNode.build(wrapBuilder(buildText), undefined,
-      { enableProvideConsumeCrossing: true });
-    // 将BuilderNode的根节点挂载到NodeContainer
-    return this.builderNode.getFrameNode();
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @Provide message: string = 'hello';
-  controller: TextNodeController = new TextNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.controller)
-        .width('100%')
-        .height(100)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-
-@Component
-struct Child {
-  // Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
-  @Consume message: number = 0;
-
-  build() {
-    Column() {
-      Text(`@Consume ${this.message}`)
-    }
-  }
-}
-```
+<!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
 
 ## 使用场景
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击ToDo和ToDoItem组件内的Button时，count的更改会双向同步在ToDo和ToDoItem中。
 
-```ts
-@Component
-struct ToDoItem {
-  // @Consume装饰的变量通过相同的属性名绑定其祖先组件ToDo内的@Provide装饰的变量
-  @Consume count: number;
+<!-- @[provide_consume_bidirectional_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBidirectionalSync.ets) -->
 
-  build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button(`count(${this.count}), count + 1`)
-        .onClick(() => this.count += 1)
-    }
-    .width('50%')
-  }
-}
-
-@Component
-struct ToDoList {
-  build() {
-    Row({ space: 5 }) {
-      ToDoItem()
-      ToDoItem()
-    }
-  }
-}
-
-@Component
-struct ToDoDemo {
-  build() {
-    ToDoList()
-  }
-}
-
-@Entry
-@Component
-struct ToDo {
-  // @Provide装饰的变量count由入口组件ToDo提供其后代组件
-  @Provide count: number = 0;
-
-  build() {
-    Column() {
-      Button(`count(${this.count}), count + 1`)
-        .onClick(() => this.count += 1)
-      ToDoDemo()
-    }
-  }
-}
-```
 ### 装饰Map类型变量
 
 > **说明：**
@@ -412,65 +254,7 @@ struct ToDo {
 
 以下示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-@Component
-struct Child {
-  @Consume message: Map<number, string>
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`)
-          .fontSize(30)
-        Text(`${item[1]}`)
-          .fontSize(30)
-        Divider()
-      })
-      Button('Consume init Map')
-        .onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-      Button('Consume set new one')
-        .onClick(() => {
-          this.message.set(4, 'd');
-        })
-      Button('Consume clear')
-        .onClick(() => {
-          this.message.clear();
-        })
-      Button('Consume replace the first item')
-        .onClick(() => {
-          this.message.set(0, 'aa');
-        })
-      Button('Consume delete the first item')
-        .onClick(() => {
-          this.message.delete(0);
-        })
-    }
-  }
-}
-
-
-@Entry
-@Component
-struct MapSample {
-  @Provide message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']])
-
-  build() {
-    Row() {
-      Column() {
-        Button('Provide init Map')
-          .onClick(() => {
-            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c'], [4, 'd']]);
-          })
-        Child()
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[provide_consume_map_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeMapSync.ets) -->
 
 ### 装饰Set类型变量
 
@@ -480,162 +264,19 @@ struct MapSample {
 
 以下示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-@Component
-struct Child {
-  @Consume message: Set<number>
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`)
-          .fontSize(30)
-        Divider()
-      })
-      Button('Consume init set')
-        .onClick(() => {
-          this.message = new Set([0, 1, 2, 3, 4]);
-        })
-      Button('Consume set new one')
-        .onClick(() => {
-          this.message.add(5);
-        })
-      Button('Consume clear')
-        .onClick(() => {
-          this.message.clear();
-        })
-      Button('Consume delete the first one')
-        .onClick(() => {
-          this.message.delete(0);
-        })
-    }
-    .width('100%')
-  }
-}
-
-
-@Entry
-@Component
-struct SetSample {
-  @Provide message: Set<number> = new Set([0, 1, 2, 3, 4])
-
-  build() {
-    Row() {
-      Column() {
-        Button('Provide init set')
-          .onClick(() => {
-            this.message = new Set([0, 1, 2, 3, 4, 5]);
-          })
-        Child()
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+<!-- @[provide_consume_set_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeSetSync.ets) -->
 
 ### 装饰Date类型变量
 
 以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
-@Component
-struct Child {
-  @Consume selectedDate: Date;
-
-  build() {
-    Column() {
-      Button(`child increase the day by 1`)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      Button('child update the new date')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-09-09');
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @Provide selectedDate: Date = new Date('2021-08-08')
-
-  build() {
-    Column() {
-      Button('parent increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      Button('parent update the new date')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-07-07');
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-      Child()
-    }
-  }
-}
-```
+<!-- @[provide_consume_date_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDateSync.ets) -->
 
 ### Provide和Consume支持联合类型实例
 
 @Provide和@Consume支持联合类型和undefined和null。以下示例中，count类型为string | undefined，当点击父组件Parent中的Button改变count的属性或者类型时，Child中也会对应刷新。
 
-```ts
-@Component
-struct Child {
-  // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
-  @Consume count: string | undefined;
-
-  build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button(`count(${this.count}), Child`)
-        .onClick(() => this.count = 'Ancestors')
-    }
-    .width('50%')
-  }
-}
-
-@Component
-struct Parent {
-  build() {
-    Row({ space: 5 }) {
-      Child()
-    }
-  }
-}
-
-@Entry
-@Component
-struct Ancestors {
-  // @Provide装饰的联合类型count由入口组件Ancestors提供其后代组件
-  @Provide count: string | undefined = 'Child';
-
-  build() {
-    Column() {
-      Button(`count(${this.count}), Child`)
-        .onClick(() => this.count = undefined)
-      Parent()
-    }
-  }
-}
-```
+<!-- @[provide_consume_Provide_Consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeFederation.ets) -->
 
 ### \@Provide支持allowOverride参数
 
@@ -649,65 +290,11 @@ allowOverride：\@Provide重写选项。
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | allowOverride | string | 否 | 是否允许@Provide重写。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的@Provide，运行时会报错。 |
 
-```ts
-@Component
-struct MyComponent {
-  @Provide({allowOverride : 'reviewVotes'}) reviewVotes: number = 10;
-}
-```
+<!-- @[Provide_Consume_Provide_AllowOverride1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
 
 完整示例如下：
 
-```ts
-@Component
-struct GrandSon {
-  // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
-  @Consume('reviewVotes') reviewVotes: number;
-
-  build() {
-    Column() {
-      Text(`reviewVotes(${this.reviewVotes})`) // Text显示10
-      Button(`reviewVotes(${this.reviewVotes}), give +1`)
-        .onClick(() => this.reviewVotes += 1)
-    }
-    .width('50%')
-  }
-}
-
-@Component
-struct Child {
-  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
-
-  build() {
-    Row({ space: 5 }) {
-      GrandSon()
-    }
-  }
-}
-
-@Component
-struct Parent {
-  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
-
-  build() {
-    Child()
-  }
-}
-
-@Entry
-@Component
-struct GrandParent {
-  @Provide('reviewVotes') reviewVotes: number = 40;
-
-  build() {
-    Column() {
-      Button(`reviewVotes(${this.reviewVotes}), give +1`)
-        .onClick(() => this.reviewVotes += 1)
-      Parent()
-    }
-  }
-}
-```
+<!-- @[Provide_Consume_Provide_AllowOverride2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
 
 在上面的示例中：
 - GrandParent声明了@Provide('reviewVotes') reviewVotes: number = 40。
@@ -722,81 +309,11 @@ struct GrandParent {
 >
 > 从API version 20开始，\@Consume装饰的变量支持设置默认值。
 
-```ts
-@Component
-struct MyComponent {
-  @Consume('withDefault') defaultValue: number = 10;
-}
-```
+<!-- @[Provide_Consume_Decorated_Variable1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->
 
 完整示例如下：
 
-```ts
-@Entry
-@Component
-struct Parent {
-  @Provide('firstKey') provideOne: string | undefined = undefined;
-  @Provide('secondKey') provideTwo: string = 'the second provider';
-
-  build(){
-    Column(){
-      Row(){
-        Column() {
-          Text(`${this.provideOne}`)
-          Text(`${this.provideTwo}`)
-        }
-
-        Column(){
-          // 点击change provideOne按钮，provideOne和子组件中的textOne属性会同时变化
-          Button('change provideOne')
-            .onClick(() => {
-              this.provideOne = undefined;
-            })
-          // 点击change provideTwo按钮，provideTwo和子组件中的textTwo属性会同时变化
-          Button('change provideTwo')
-            .onClick(() => {
-              this.provideTwo = 'the next provider';
-            })
-        }
-      }
-
-      Row(){
-        Column() {
-          Child()
-        }
-      }
-    }
-  }
-}
-
-@Component
-struct Child {
-  // @Consume装饰的变量通过相同的别名绑定其祖先内的@Provide装饰的变量，同时设置默认值
-  @Consume('firstKey') textOne: string | undefined = 'child';
-  // @Consume装饰的变量通过相同的别名绑定其祖先内的@Provide装饰的变量，没有设置默认值
-  @Consume('secondKey') textTwo: string;
-  // @Consume装饰的变量在祖先内没有匹配成功的@Provide装饰的变量，但设置了默认值
-  @Consume('thirdKey') textThree: string = 'defaultValue';
-
-  build(){
-    Column() {
-      Text(`${this.textOne}`)
-      Text(`${this.textTwo}`)
-      Text(`${this.textThree}`)
-      // 点击change textOne按钮，textOne和父组件的provideOne会同时变化
-      Button('change textOne')
-        .onClick(() => {
-          this.textOne = 'not undefined';
-        })
-      // 点击change textTwo按钮，textTwo和父组件的provideTwo会同时变化
-      Button('change textTwo')
-        .onClick(() => {
-          this.textTwo = 'change textTwo';
-        })
-    }
-  }
-}
-```
+<!-- @[Provide_Consume_Decorated_Variable2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->
 
 在上面的示例中：
 - Parent声明了@Provide('firstKey') provideOne: string | undefined = undefined 与 @Provide('secondKey') provideTwo: string = 'the second provider'。
@@ -819,136 +336,13 @@ BuilderNode支持\@Provide/\@Consume，需注意：
 
 在下面的例子中：
 1. 点击`add Child`:
-    - 构建BuilderNode下的子节点`Child`，`Child`中\@Consume未找到\@Provide，使用本地默认值`default value`初始化。
-    - BuilderNode上树时，`Child`中\@Consume向上找到最近的`Index`中的\@Provide，将\@Consume从默认值更新为\@Provide的值，并回调\@Consume的\@Watch方法。
+   - 构建BuilderNode下的子节点`Child`，`Child`中\@Consume未找到\@Provide，使用本地默认值`default value`初始化。
+   - BuilderNode上树时，`Child`中\@Consume向上找到最近的`Index`中的\@Provide，将\@Consume从默认值更新为\@Provide的值，并回调\@Consume的\@Watch方法。
 2. \@Provide和\@Consume配对后，建立双向同步关系。点击```Text(`@Provide: ${this.message}`)```和```Text(`@Consume ${this.message}`)```，\@Provide和\@Consume绑定的Text组件刷新，并回调\@Provide和\@Consume的\@Watch方法。
 3. 点击`remove Child`, BuilderNode子节点下树，`Child`中的\@Consume和`Index`中的\@Provide断开连接，`Child`中的\@Consume恢复成默认值，并回调\@Consume的\@Watch方法。
 4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行aboutToDisappear。
 
-```ts
-import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
-
-@Builder
-function buildText() {
-  Column() {
-    Child()
-  }
-}
-
-class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private uiContext: UIContext | null = null;
-  private builderNode: BuilderNode<[]> | null = null;
-
-  constructor() {
-    super();
-  }
-
-  makeNode(context: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(context);
-    this.uiContext = context;
-    // 将rootNode节点挂载在NodeContainer下
-    return this.rootNode;
-  }
-
-  addBuilderNode(): void {
-    if (this.builderNode === null && this.uiContext && this.rootNode) {
-      this.builderNode = new BuilderNode(this.uiContext);
-      // 配置跨BuilderNode支持@Provide/@Consume
-      this.builderNode.build(wrapBuilder(buildText), undefined,
-        { enableProvideConsumeCrossing: true });
-      // 将BuilderNode的根节点挂载到rootNode节点下
-      this.rootNode.appendChild(this.builderNode.getFrameNode());
-    }
-  }
-
-  removeBuilderNode(): void {
-    if (this.rootNode && this.builderNode) {
-      // 从rootNode节点下的BuildNode节点移除
-      this.rootNode.removeChild(this.builderNode.getFrameNode());
-    }
-  }
-
-  disposeNode(): void {
-    if (this.rootNode && this.builderNode) {
-      // 立即释放当前BuilderNode
-      this.builderNode.dispose();
-    }
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @Provide @Watch('onChange') message: string = 'hello';
-  controller: TextNodeController = new TextNodeController();
-
-  onChange() {
-    console.info(`Index Provide change ${this.message}`);
-  }
-
-  build() {
-    Column() {
-      Text(`@Provide: ${this.message}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.message += ' Provide';
-        })
-
-      // 执行BuilderNode的build方法，构造Child自定义组件
-      // 并将BuilderNode挂载在NodeContainer下
-      // Child中@Consume可以和当前Index中的@Provide配对
-      // @Consume装饰的变量message从default value变为hello，并回调@Consume的@Watch方法
-      Button('add Child')
-        .onClick(() => {
-          this.controller.addBuilderNode();
-        })
-      // 将BuilderNode下的节点从NodeContainer上移除
-      // @Consume修饰的变量message从和@Provide配对的值变为default value，并回调@Consume的@Watch方法
-      Button('remove Child')
-        .onClick(() => {
-          this.controller.removeBuilderNode();
-        })
-
-      // 立即释放当前BuilderNode，BuilderNode下节点销毁，Child组件执行aboutToDisappear
-      Button('dispose Child')
-        .onClick(() => {
-          this.controller.disposeNode();
-        })
-      NodeContainer(this.controller)
-        .width('100%')
-        .height(100)
-        .backgroundColor(Color.Pink)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-
-@Component
-struct Child {
-  @Consume @Watch('onChange') message: string = 'default value';
-
-  onChange() {
-    console.info(`Child Consume change ${this.message}`);
-  }
-
-  aboutToDisappear(): void {
-    console.info(`Child aboutToDisappear`);
-  }
-
-  build() {
-    Column() {
-      Text(`@Consume ${this.message}`)
-        .fontSize(20)
-        .onClick(() => {
-          this.message += ' Consume';
-        })
-    }
-  }
-}
-```
+<!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->
 
 ## 常见问题
 
@@ -1022,63 +416,7 @@ struct CustomWidgetChild {
 
 正确示例：
 
-```ts
-class Tmp {
-  name: string = '';
-}
-
-@Entry
-@Component
-struct HomePage {
-  // 修正点1：将@Provide声明在Entry组件（根作用域），确保子组件能正确消费
-  @Provide('name') name: string = 'abc';
-
-  @Builder
-  builder2($$: Tmp) {
-    Text(`${$$.name}测试`)
-  }
-
-  build() {
-    Column() {
-      Button('你好').onClick(() => {
-        if (this.name == 'ddd') {
-          this.name = 'abc';
-        } else {
-          this.name = 'ddd';
-        }
-      })
-      // 修正点2：CustomWidget不再声明@Provide，仅作为容器传递builder
-      CustomWidget() {
-        CustomWidgetChild({ builder: this.builder2 })
-      }
-    }
-  }
-}
-
-@Component
-struct CustomWidget {
-  @BuilderParam
-  builder: () => void;
-
-  build() {
-    this.builder()
-  }
-}
-
-@Component
-struct CustomWidgetChild {
-  // 修正点3：@Consume从根作用域（HomePage）获取@Provide('name')，作用域正确
-  @Consume('name') name: string;
-  @BuilderParam
-  builder: ($$: Tmp) => void;
-
-  build() {
-    Column() {
-      this.builder({ name: this.name })
-    }
-  }
-}
-```
+<!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideError.ets) -->
 
 ### 使用a.b(this.object)形式调用，不会触发UI刷新
 
@@ -1180,96 +518,4 @@ struct ZooGrandChild {
 
 【正例】
 
-```ts
-class Animal {
-  name:string;
-  type:string;
-  age: number;
-
-  constructor(name:string, type:string, age:number) {
-    this.name = name;
-    this.type = type;
-    this.age = age;
-  }
-
-  static changeName(animal:Animal) {
-    animal.name = 'Jack';
-  }
-  static changeAge(animal:Animal) {
-    animal.age += 1;
-  }
-}
-
-@Entry
-@Component
-struct Zoo {
-  @Provide dog:Animal = new Animal('WangCai', 'dog', 2);
-
-  changeZooDogAge(animal:Animal) {
-    animal.age += 2;
-  }
-
-  build() {
-    Column({ space:10 }) {
-      Text(`Zoo: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
-        .fontColor(Color.Red)
-        .fontSize(30)
-      Button('changeAge')
-        .onClick(()=>{
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          Animal.changeAge(newDog);
-        })
-      Button('changeZooDogAge')
-        .onClick(()=>{
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          this.changeZooDogAge(newDog);
-        })
-      ZooChild()
-    }
-  }
-}
-
-@Component
-struct ZooChild {
-
-  build() {
-    Column({ space:10 }) {
-      Text(`ZooChild.`)
-        .fontColor(Color.Blue)
-        .fontSize(30)
-      ZooGrandChild()
-    }
-  }
-}
-
-@Component
-struct ZooGrandChild {
-  @Consume dog:Animal;
-
-  changeZooGrandChildName(animal:Animal) {
-    animal.name = 'Marry';
-  }
-
-  build() {
-    Column({ space:10 }) {
-      Text(`ZooGrandChild: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
-        .fontColor(Color.Yellow)
-        .fontSize(30)
-      Button('changeName')
-        .onClick(()=>{
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          Animal.changeName(newDog);
-        })
-      Button('changeZooGrandChildName')
-        .onClick(()=>{
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          this.changeZooGrandChildName(newDog);
-        })
-    }
-  }
-}
-```
+<!-- @[provide_consume_This_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeThisObject.ets) -->
