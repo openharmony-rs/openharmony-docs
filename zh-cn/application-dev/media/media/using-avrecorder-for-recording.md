@@ -99,7 +99,7 @@
      audioBitrate: 112000, // 音频比特率。
      audioChannels: 2, // 音频声道数。
      audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC，MP3，G711MU。
-     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，当前支持AAC_HE，AAC_HE_V2，从API version 22 开始支持。
+     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22支持AAC_HE，AAC_HE_V2。
      audioSampleRate: 48000, // 音频采样率。
      fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4，M4A，MP3，WAV，AMR，AAC。
    };
@@ -206,7 +206,7 @@ async function audioRecording(context: common.Context): Promise<void> {
     audioBitrate: 112000, // 音频比特率。
     audioChannels: 2, // 音频声道数。
     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC，MP3，G711MU。
-    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，当前支持AAC_HE，AAC_HE_V2，从API version 22 开始支持。
+    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22支持AAC_HE，AAC_HE_V2。
     audioSampleRate: 48000, // 音频采样率。
     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4，M4A，MP3，WAV，AMR，AAC。
   };
