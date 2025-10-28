@@ -459,6 +459,40 @@ isDLPFeature() {
 
 <!-- @[dlp_setDLPProtectPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+setDLPProtectPolicy() {
+  try {
+    let attributeValues: string[] = [ '1' ];
+    let attribute: Attribute = {
+      attributeId: 'DeviceHealthyStatus',
+      attributeValues: attributeValues,
+      valueType: 0,
+      opt: 2
+    }; // 属性信息。
+    let rule: Rule = {
+      ruleId: 'ruleId',
+      attributes: [ attribute ]
+    }; // 规则。
+    let policy: Policy = {
+      rules: [ rule ],
+      policyId: 'policyId',
+      ruleConflictAlg: 0
+    }; // 策略。
+    let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+      policyString: JSON.stringify(policy)
+    };
+    dlpPermission.setEnterprisePolicy(enterprisePolicy);
+    console.info('set enterprise policy success');
+    this.result = 'set enterprise policy success';
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'set enterprise policy success');
+  } catch (err) {
+    console.error('error:' + err.code + err.message); // 失败报错。
+    this.result = 'error:' + err.code + err.message;
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+  }
+}
+```
+
 17. （API 21开始支持）识别指定文件中的敏感内容。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
 <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
