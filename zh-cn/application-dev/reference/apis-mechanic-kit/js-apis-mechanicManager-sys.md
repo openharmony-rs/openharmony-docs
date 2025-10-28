@@ -573,7 +573,7 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 **参数：**
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| target | [TargetInfo](#targetinfo) | 是 | 目标人脸信息。 |
+| target | [TargetType](#targettype) | 是 | 目标人脸信息。 |
 | params | [SearchParams](#searchparams) | 是 | 搜索方向。 |
 
 **返回值：**
