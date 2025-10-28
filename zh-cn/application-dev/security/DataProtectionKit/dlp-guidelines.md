@@ -190,6 +190,20 @@ isInSandbox() {
 使用该接口的前置条件：由demo应用打开DLP文件。
 <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+getDLPPermissionInfo() {
+  dlpPermission.getDLPPermissionInfo().then((data) => {
+    this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
+    console.log('getDLPPermissionInfo, result: ' + JSON.stringify(data));
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
+  }).catch((err:BusinessError) => {
+    this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
+    console.error('getDLPPermissionInfo: ' + JSON.stringify(err));
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo error: ' + JSON.stringify(err));
+  });
+}
+```
+
 6. 获取当前可支持DLP方案的文件扩展名类型列表，用于应用判断能否生成DLP文件，可用在实现类似文件管理器设置DLP权限的场景。
 
 <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
