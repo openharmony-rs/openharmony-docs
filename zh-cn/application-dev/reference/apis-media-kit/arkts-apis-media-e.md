@@ -88,7 +88,7 @@ Codec MIME类型枚举。
 
 ## AacProfile<sup>22+</sup>
 
-AAC规格类型枚举。
+高级音频编码（ACC）类型枚举。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -96,9 +96,9 @@ AAC规格类型枚举。
 
 | 名称         | 值                    | 说明                        |
 | ------------ | --------------------- | --------------------------- |
-| AAC_LC       |     0                 | 表示音频AAC_LC（Low Complexity）类型。        |
-| AAC_HE       |     1                 | 表示音频AAC_HE（High Efficiency）类型。        |
-| AAC_HE_V2    |     2                 | 表示音频AAC_HE_V2 (High Efficiency with Parametric Stereo coding) 类型。     |
+| AAC_LC       |     0                 | 表示低复杂度音频（AAC_LC）类型。        |
+| AAC_HE       |     1                 | 表示高效率音频（AAC_HE）类型。        |
+| AAC_HE_V2    |     2                 | 表示高效率立体声音频 (AAC_HE_V2) 类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
