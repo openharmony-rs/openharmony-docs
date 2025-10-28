@@ -8,13 +8,13 @@
 
 **变更原因**
 
-当drawImage传入9个参数时，若首个参数（image）为PixelMap类型，则第2至第5个参数（sx、sy、sw和sh）以px为单位进行解析。与文档描述不一致，且绘制得到的图片大小存在问题。
+当drawImage传入9个参数时，若首个参数（image）为PixelMap类型，则第2至第5个参数（sx、sy、sw和sh）以px为单位进行解析。与文档描述不一致，且绘制得到的图片大小显示异常。
 
 **变更影响**
 
 该变更涉及应用适配。
 
-当drawImage传入9个参数时，且首个参数为PixelMap类型时：
+当drawImage传入9个参数，且首个参数为PixelMap类型时：
 
 - 变更前：第2至第5个参数都会以px为单位进行解析。
 - 变更后：第2至第5个参数会以vp为单位进行解析。
@@ -38,12 +38,13 @@ CanvasRenderingContext2D的drawImage接口
 
 **适配指导**
 
-变更后，使用drawImage接口时，若传入9个参数，且首个参数为PixelMap类型时，要注意第2至第5个参数会以vp为单位进行解析。
+变更后，使用drawImage接口时，如果传入9个参数，且首个参数为PixelMap类型，需注意第2至第5个参数将以vp为单位进行解析。为了避免不同API版本之间的单位差异而需要进行单位转换，可以考虑通过PixelMap创建ImageBitmap，然后使用ImageBitmap进行绘制。
 
 **示例**
 
 ```ts
-import { image } from '@kit.ImageKit'
+import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -57,14 +58,14 @@ struct Demo {
         .width('100%')
         .height('100%')
         .onReady(() => {
-          let context = getContext(this)
-          let imageSourceApi = image.createImageSource(context.filesDir + "/view.jpg")
-          let pixelmap = imageSourceApi.createPixelMapSync();
-          let imageInfo = pixelmap.getImageInfoSync()
-          let width = px2vp(imageInfo.size.width)
-          let height = px2vp(imageInfo.size.height)
-          this.context.drawImage(pixelmap, 0, 0, width, height, 50, 50, 250, 200)
-          this.context.drawImage(pixelmap, 0, 0, imageInfo.size.width, imageInfo.size.height, 50, 300, 250, 200)
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
+          let imageSource = image.createImageSource(img.buffer.slice(0));
+          let pixelMap = imageSource.createPixelMapSync();
+          // 使用pixelMap创建ImageBitmap
+          let imageBitmap = new ImageBitmap(pixelMap);
+          // 首个参数为ImageBitmap类型时，第2到第9个参数以vp为单位
+          this.context.drawImage(imageBitmap, 0, 0, imageBitmap.width, imageBitmap.height, 50, 50, 250, 200);
         })
     }
     .width('100%')

@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 方便灵活应用文本样式的对象，可通过TextController中的[setStyledString](./ts-basic-components-text.md#setstyledstring12)方法与Text组件绑定，可通过RichEditorStyledStringController中的[setStyledString](ts-basic-components-richeditor.md#setstyledstring12)方法与RichEditor组件绑定。
 
@@ -167,7 +167,7 @@ static fromHtml(html: string): Promise\<StyledString>
 | 标签名称 | 说明                   |
 |-------------|----------------------------|
 | \<p\>       | 段落，分隔文本段落         |
-| \<span\>    | 行内文本，支持样式设置     |
+| \<span\>    | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。     |
 | \<img\>     | 插入图片                   |
 | \<strong\>  | 加粗文本                   |
 | \<br\><sup>20+</sup>      | 换行                       |

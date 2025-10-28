@@ -1,5 +1,4 @@
 # camera.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -39,7 +38,7 @@
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。 |
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | 元数据对象基础。 |
 | [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | 手电筒状态信息。 |
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | 平滑变焦参数信息。 |
@@ -340,10 +339,14 @@ enum Camera_ImageRotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。 |
-| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。 |
-| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。 |
-| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。 |
+| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 21 |
+| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 21 |
+| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 21 |
+| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API 21开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
+| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 21 |
 
 ### Camera_QualityLevel
 
@@ -393,9 +396,12 @@ enum Camera_TorchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFF = 0 | 设备手电筒常关。 |
-| ON = 1 | 设备手电筒常开。 |
-| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。 |
+| OFF = 0 | 设备手电筒常关。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 21 |
+| ON = 1 | 设备手电筒常开。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 21 |
+| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API 21开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
+| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 21 |
 
 ### Camera_SmoothZoomMode
 
@@ -411,7 +417,8 @@ enum Camera_SmoothZoomMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 贝塞尔曲线模式。 |
+| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API 21开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 21 |
 
 ### Camera_SystemPressureLevel
 
@@ -502,9 +509,12 @@ enum Camera_FoldStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NON_FOLDABLE = 0 | 不可折叠。 |
-| EXPANDED = 1 | 展开状态。 |
-| FOLDED = 2 | 折叠状态。 |
+| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 21 |
+| EXPANDED = 1 | 展开状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 21 |
+| FOLDED = 2 | 折叠状态。<br> 从API 21开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
+| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 21 |
 
 ### Camera_QualityPrioritization
 
@@ -611,7 +621,6 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 
 **起始版本：** 11
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -635,7 +644,6 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 删除CameraManager实例。
 
 **起始版本：** 11
-
 
 **参数：**
 

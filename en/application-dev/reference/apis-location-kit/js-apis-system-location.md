@@ -1,4 +1,10 @@
 # @system.geolocation (Geolocation)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 The **geolocation** module provides only basic functions such as GNSS positioning and network positioning.
 
@@ -174,7 +180,7 @@ Obtains coordinate system types supported by the device.
 ```
 export default {    
   getSupportedCoordTypes() {       
-    var types = geolocation.getSupportedCoordTypes();    
+    var types = geolocation.getSupportedCoordTypes();   
   },
 }
 ```

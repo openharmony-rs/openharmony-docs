@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Navigation组件是路由导航的根视图容器，一般作为Page页面的根容器使用，其内部默认包含了标题栏、内容区和工具栏，其中内容区默认首页显示导航内容（Navigation的子组件）或非首页显示（[NavDestination](ts-basic-components-navdestination.md)的子组件），首页和非首页通过路由进行切换。
 
@@ -823,7 +823,7 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -861,7 +861,7 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -900,7 +900,7 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -940,7 +940,7 @@ pushDestinationByName(name: string, param: Object, onPop: Callback\<PopInfo>, an
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -1030,7 +1030,7 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |

@@ -4,7 +4,7 @@
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer:  @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供控制放大镜的显示与隐藏的能力，放大镜会对组件内容进行放大显示，便于查看组件细节。
 

@@ -101,95 +101,119 @@ libusb_serial_ndk.z.so
 
     Use **OH_UsbSerial_Init** in **usb_serial_api.h** to initialize the USB Serial DDK.
 
-    ```c++
+    <!-- @[driver_serial_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // Initialize the USB Serial DDK.
     OH_UsbSerial_Init();
-    ```
+```
+
 
 2. Open the USB serial port device.
 
     Use **OH_UsbSerial_Open** in **usb_serial_api.h** to enable the device.
 
-    ```c++
+    <!-- @[driver_serial_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     UsbSerial_Device *dev = NULL;
-    uint64_t deviceId = 1688858450198529;
+    uint64_t deviceId = 1;
     uint8_t interfaceIndex = 0;
     // Open the USB serial port device specified by deviceId and interfaceIndex.
     OH_UsbSerial_Open(deviceId, interfaceIndex, &dev);
-    ```
+```
+
 
 3. (Optional) Set the parameters of the USB serial port device.
 
     Use **OH_UsbSerial_SetParams** in **usb_serial_api.h** to set the serial port parameters, or directly use **OH_UsbSerial_SetBaudRate** to set the baud rate, and use **OH_UsbSerial_SetTimeout** to set the timeout interval for reading data.
 
-    ```c++
+    <!-- @[driver_serial_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     UsbSerial_Params params;
-    params.baudRate = 9600;
-    params.nDataBits = 8;
+    params.baudRate = NUM_BAUDRATE;
+    params.nDataBits = NUM_EIGHT;
     params.nStopBits = 1;
     params.parity = 0;
     // Set serial port parameters.
     OH_UsbSerial_SetParams(dev, &params);
-
+    
     // Set the baud rate.
-    uint32_t baudRate = 9600;
+    uint32_t baudRate = NUM_BAUDRATE;
     OH_UsbSerial_SetBaudRate(dev, baudRate);
-
+    
     // Set the timeout interval.
     int timeout = 500;
     OH_UsbSerial_SetTimeout(dev, timeout);
-    ```
+```
+
 
 4. (Optional) Set the flow control mode, and flush the buffer.
 
     Use **OH_UsbSerial_SetFlowControl** in **usb_serial_api.h** to set the flow control mode, use **OH_UsbSerial_Flush** to flush the buffer, use **OH_UsbSerial_FlushInput** to flush the input buffer, and use **OH_UsbSerial_FlushOutput** to flush the output buffer.
 
-    ```c++
+    <!-- @[driver_serial_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // Set flow control.
     OH_UsbSerial_SetFlowControl(dev, USB_SERIAL_SOFTWARE_FLOW_CONTROL);
-
+    
     // Flush the buffer.
     OH_UsbSerial_Flush(dev);
-
+    
     // Flush the input buffer.
     OH_UsbSerial_FlushInput(dev);
-
+    
     // Flush the output buffer.
     OH_UsbSerial_FlushOutput(dev);
-    ```
+```
+
+
 5. (Optional) Write data to or read data from a USB serial port device.
 
     Use **OH_UsbSerial_Write** in **usb_serial_api.h** to send data to the device, and use **OH_UsbSerial_Read** to read the data sent by the device.
 
-    ```c++
+    <!-- @[driver_serial_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     uint32_t bytesWritten = 0;
     // Command used by the test device to read data. The command varies depending on the device protocol.
-    uint8_t writeBuff[8] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0xA};
+    uint8_t writeBuff[NUM_EIGHT] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0xA};
     // Send data over the connection.
     OH_UsbSerial_Write(dev, writeBuff, sizeof(writeBuff), &bytesWritten);
-
+    
     // Callback invoked to receive data.
     uint8_t readBuff[100];
     uint32_t bytesRead = 0;
     OH_UsbSerial_Read(dev, readBuff, sizeof(readBuff), &bytesRead);
-    ```
+```
+
 
 6. Close the USB serial port device.
 
     After all requests are processed and before the program exits, use **OH_UsbSerial_Close** in **usb_serial_api.h** to close the device.
-    ```c++
+
+    <!-- @[driver_serial_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // Close the device.
     OH_UsbSerial_Close(&dev);
-    ```
+```
+
 
 7. Release the USB Serial DDK.
 
     After the USB serial port device is closed, use **OH_UsbSerial_Release** in **usb_serial_api.h** to release the USB Serial DDK.
 
-    ```c++
+    <!-- @[driver_serial_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // Release the USB Serial DDK.
     OH_UsbSerial_Release();
-    ```
+```
+
+
 
 ### Debugging and Verification
 

@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 [半模态页面（bindSheet）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)默认是模态形式的非全屏弹窗式交互页面，允许部分底层父视图可见，帮助用户在与半模态交互时保留其父视图环境。
 

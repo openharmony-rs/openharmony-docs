@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
 设置组件是否可以响应点击事件、触摸事件等手指交互事件。
@@ -29,7 +29,7 @@ touchable(value: boolean): T
 
 | 参数名      | 类型| 必填 | 说明                    |
 | ----------- | -------- | ----- | ------------------------ |
-| value   | boolean  |  否   |设置当前组件是否可以响应点击事件、触摸事件等手指交互事件。<br>默认值：true，可以响应交互事件。设置为false时，不可以响应交互事件。 |
+| value   | boolean  |  是   |设置当前组件是否可以响应点击事件、触摸事件等手指交互事件。<br>默认值：true，可以响应交互事件。设置为false时，不可以响应交互事件。 |
 
 **返回值：**
 

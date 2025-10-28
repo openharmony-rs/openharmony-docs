@@ -4,7 +4,7 @@
 <!--Owner: @hehongyang3-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 @AnimatableExtend装饰器用于自定义可动画的属性方法，该装饰器内定义的函数在动画过程中会被逐帧调用，直到动画结束。该装饰器的常见用途有：
 

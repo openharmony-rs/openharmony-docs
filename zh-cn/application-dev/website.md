@@ -474,6 +474,8 @@
           - [Repeat：可复用的循环渲染](ui/rendering-control/arkts-new-rendering-control-repeat.md)
           - [LazyForEach迁移Repeat指南](ui/rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
           - [ContentSlot：混合开发](ui/rendering-control/arkts-rendering-control-contentslot.md)
+        - 学习响应式环境变量<!--arkts-env-property-->
+          - [\@Env：环境变量](ui/arkts-env-system-property.md)
         - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
           - [组件导航和页面路由概述](ui/arkts-navigation-introduction.md)
           - [组件导航(Navigation) (推荐)](ui/arkts-navigation-navigation.md)
@@ -1717,6 +1719,8 @@
         - [白平衡设置(ArkTS)](media/camera/camera-whitebalance.md)
         - [压力管控(ArkTS)](media/camera/camera-system-pressure.md)
         - [相机控制器(ArkTS)](media/camera/camera-control-center.md)
+        - [微距能力设置(ArkTS)](media/camera/camera-macro.md)
+        - [多摄同开(ArkTS)](media/camera/camera-concurrent-open.md)
         <!--Del-->
         - [高性能拍照(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-sys.md)
         - [高性能拍照实践(仅对系统应用开放)(ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
@@ -1738,6 +1742,7 @@
         - [元数据(C/C++)](media/camera/native-camera-metadata.md)
         - [手电筒使用(C/C++)](media/camera/native-camera-torch-use.md)
         - [压力管控(C/C++)](media/camera/native-camera-system-pressure.md)
+        - [多摄同开(C/C++)](media/camera/native-camera-concurrent-open.md)
     - DRM Kit（数字版权保护服务）<!--drm-kit-->
       - [DRM Kit 简介](media/drm/drm-overview.md)
       - [数字版权保护(ArkTS)](media/drm/drm-arkts-dev-guide.md)
@@ -1952,7 +1957,6 @@
         <!--Del-->
         - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
-        - [为跨设备协同通知添加快捷回复](notification/notification-quickreply.md)
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
@@ -2867,6 +2871,7 @@
             - [浮层](reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)
             - [Z序控制](reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)
             - [隐私遮罩](reference/apis-arkui/arkui-ts/ts-universal-attributes-obscured.md)
+            - [禁用反色能力](reference/apis-arkui/arkui-ts/ts-allow-force-dark.md)
           - 布局与边框<!--layout-property-->
             - [尺寸设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
             - [位置设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)
@@ -3001,7 +3006,7 @@
           - [Toggle](reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
           - [Checkbox](reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)
           - [CheckboxGroup](reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md)
-          - [Picker](reference/apis-arkui/arkui-ts/ts-basic-components-picker.md)
+          - [Picker](reference/apis-arkui/arkui-ts/ts-container-picker.md)
           - [CalendarPicker](reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)
           - [DatePicker](reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)
           - [TextPicker](reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)
@@ -3200,6 +3205,8 @@
           <!--Del-->
           - [应用级变量的状态管理（系统接口）](reference/apis-arkui/arkui-ts/ts-state-management-sys.md)
           <!--DelEnd-->
+        - 响应式环境变量<!--arkts-env-system-property-->
+          - [\@Env：环境变量](reference/apis-arkui/arkui-ts/ts-env-system-property.md)
         - 公共定义<!--common-definitions-->
           - [基础类型定义](reference/apis-arkui/arkui-ts/ts-types.md)
           - [像素单位](reference/apis-arkui/arkui-ts/ts-pixel-units.md)
@@ -3601,7 +3608,7 @@
           - [ArkUI_GridLayoutOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
-          - [动画错误码](reference/apis-arkui/errorcode-animator.md)
+          - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
           - [弹窗错误码](reference/apis-arkui/errorcode-promptAction.md)
           - [页面路由错误码](reference/apis-arkui/errorcode-router.md)
           - [拖拽事件错误码](reference/apis-arkui/errorcode-drag-event.md)
@@ -3625,6 +3632,7 @@
           - [状态管理错误码](reference/apis-arkui/errorcode-stateManagement.md)
           - [渲染节点错误码](reference/apis-arkui/errorcode-node-render.md)
           - [DrawableDescriptor错误码](reference/apis-arkui/errorcode-drawable-descriptor.md)
+          - [反色能力错误码](reference/apis-arkui/errorcode-force-dark.md)
         - UI编译<!--arkui-compile-arkts-errcode-->
           - [编译错误码](reference/apis-arkui/_ark_ui_compile.md)
         - 图形图像<!--arkui-graphics-images-arkts-errcode-->
@@ -4512,7 +4520,9 @@
           - [上传下载错误码](reference/apis-basic-services-kit/errorcode-request.md)
           - [时间时区错误码](reference/apis-basic-services-kit/errorcode-time.md)
           - [事件错误码](reference/apis-basic-services-kit/errorcode-CommonEventService.md)
+          <!--Del-->
           - [系统参数错误码](reference/apis-basic-services-kit/errorcode-system-parameterV9.md)
+          <!--DelEnd-->
           - [系统电源管理错误码](reference/apis-basic-services-kit/errorcode-power.md)
           - [账号管理错误码](reference/apis-basic-services-kit/errorcode-account.md)
           <!--Del-->
@@ -4748,16 +4758,21 @@
           - [@ohos.vibrator(振动)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
         - C API<!--sensor-service-c-->
           - 模块<!--sensor-service-module-->
-            - [Sensor](reference/apis-sensor-service-kit/_sensor.md)
-            - [Vibrator](reference/apis-sensor-service-kit/_vibrator.md)
+            - [Sensor](reference/apis-sensor-service-kit/capi-sensor.md)
+            - [Vibrator](reference/apis-sensor-service-kit/capi-vibrator.md)
           - 头文件<!--sensor-service-headerfile-->
-            - [oh_sensor.h](reference/apis-sensor-service-kit/oh_sensor_8h.md)
-            - [oh_sensor_type.h](reference/apis-sensor-service-kit/oh_sensor_type_8h.md)
-            - [vibrator.h](reference/apis-sensor-service-kit/vibrator_8h.md)
-            - [vibrator_type.h](reference/apis-sensor-service-kit/vibrator_type_8h.md)
+            - [oh_sensor.h](reference/apis-sensor-service-kit/capi-oh-sensor-h.md)
+            - [oh_sensor_type.h](reference/apis-sensor-service-kit/capi-oh-sensor-type-h.md)
+            - [vibrator.h](reference/apis-sensor-service-kit/capi-vibrator-h.md)
+            - [vibrator_type.h](reference/apis-sensor-service-kit/capi-vibrator-type-h.md)
           - 结构体<!--sensor-service-struct-->
-            - [Vibrator_Attribute](reference/apis-sensor-service-kit/_vibrator_attribute.md)
-            - [Vibrator_File_Description](reference/apis-sensor-service-kit/_vibrator_file_description.md)
+            - [Sensor_Info](reference/apis-sensor-service-kit/capi-sensor-sensor-info.md)
+            - [Sensor_Event](reference/apis-sensor-service-kit/capi-sensor-sensor-event.md)
+            - [Sensor_SubscriptionId](reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionid.md)
+            - [Sensor_SubscriptionAttribute](reference/apis-sensor-service-kit/capi-sensor-sensor-subscriptionattribute.md)
+            - [Sensor_Subscriber](reference/apis-sensor-service-kit/capi-sensor-sensor-subscriber.md)
+            - [Vibrator_Attribute](reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md)
+            - [Vibrator_File_Description](reference/apis-sensor-service-kit/capi-vibrator-vibrator-attribute.md)
         - 错误码<!--sensor-service-arkts-errcode-->
           - [Sensor错误码](reference/apis-sensor-service-kit/errorcode-sensor.md)
           - [Vibrator错误码](reference/apis-sensor-service-kit/errorcode-vibrator.md)
@@ -5731,7 +5746,7 @@
       - C API<!--notification-c-->
         - 模块<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
-        - 头文件<!--notification-struct-->
+        - 头文件<!--notification-headerfile-->
           - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - 错误码<!--notification-arkts-errcode-->
         - [通知错误码](reference/apis-notification-kit/errorcode-notification.md)

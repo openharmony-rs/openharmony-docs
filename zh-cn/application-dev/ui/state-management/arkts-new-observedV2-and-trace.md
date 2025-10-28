@@ -853,3 +853,108 @@ struct DateSample {
   }
 }
 ```
+
+## 常见问题
+
+### router传递的@ObservedV2类型显示异常
+
+用router传递的@ObservedV2类，由于经过序列化生成的属性名称与类中的原始属性名称不一致，不能直接通过as类型转换成@ObservedV2的实例，需要在反序列化时过滤键值重新生成@ObservedV2实例。
+
+【反例】：
+
+```ts
+// 文件pages/Index.ets内容
+
+@ObservedV2
+export class RouterModel {
+  @Trace id: number = 0;
+  @Trace info: string = 'RouterModel';
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local paramsInfo: RouterModel = new RouterModel();
+  onJumpClick(): void {
+    this.paramsInfo.id = 1;
+    this.paramsInfo.info = 'RouterModel';
+    this.getUIContext().getRouter().pushUrl({
+      url: 'pages/ChildPage',
+      params: this.paramsInfo // 传递@ObservedV2实例到子页面
+    }, (err) => {
+      if (err) {
+        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+      console.info('Invoke pushUrl succeeded.');
+    })
+  }
+
+  build() {
+    Column() {
+      Text('Parent page')
+      Button('Jump')
+        .onClick(() => {
+          this.onJumpClick();
+        })
+    }
+  }
+}
+
+// 文件pages/ChildPage.ets内容
+
+import { RouterModel } from './Index';
+
+@Entry
+@Component
+struct Detail {
+  params?: RouterModel
+  aboutToAppear(): void {
+    // 错误使用方式！@ObservedV2类型通过router传递无法直接类型转换
+    this.params = this.getUIContext().getRouter().getParams() as RouterModel;
+  }
+  build() {
+    Column() {
+      Text(`Detail Page: ${this.params?.id} ${this.params?.info}`) // 由于传递数据失败，这里会显示undefined
+    }
+  }
+}
+
+```
+
+【正例】
+
+```ts
+// 文件pages/Index.ets继承上方反例pages/Index.ets的内容
+
+// 文件pages/ChildPage.ets内容
+
+import { RouterModel } from './Index';
+
+@Entry
+@Component
+struct Detail {
+  params?: RouterModel
+  aboutToAppear(): void {
+    //使用JSON.parse遍历每个属性名称和对应的数值，赋值到新的实例中。
+    this.params = new RouterModel();
+    JSON.parse(JSON.stringify(this.getUIContext().getRouter().getParams()),
+      (key:string , value: number | string): number | string => {
+        if (key === '__ob_id') {
+          this.params!.id = value as number;
+        } else if (key === '__ob_info') {
+          this.params!.info = value as string;
+        }
+        return value;
+      })
+  }
+  build() {
+    Column() {
+      Text(`Detail Page: ${this.params?.id} ${this.params?.info}`)
+    }
+  }
+}
+
+```
+
+![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)

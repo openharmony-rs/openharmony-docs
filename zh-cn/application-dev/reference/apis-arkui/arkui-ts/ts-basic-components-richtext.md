@@ -4,7 +4,7 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 富文本组件，解析并显示HTML格式文本。
 
