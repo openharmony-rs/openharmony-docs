@@ -28,5 +28,4 @@
     <!--Del-->
   - [Cross-Device Notification Management (for System Applications Only)](notification-distributed-notdistributed-sys.md)
   <!--DelEnd-->
-  - [Enabling Quick Reply for Cross-device Notifications](notification-quickreply.md)
   - [Clearing Repeated Notifications Across Devices](notification-distributed-messageid.md)

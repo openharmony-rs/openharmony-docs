@@ -12,7 +12,6 @@ The cross-device notification is designed to implement collaborative interaction
 <!--Del-->
   - [Cross-Device Notification Management (for System Applications Only)](./notification-distributed-notdistributed-sys.md): Configure cross-device notifications for system applications and enable this feature as required.
 <!--DelEnd-->
-  - [Enabling Quick Reply for Cross-Device Notifications](./notification-quickreply.md): Enable quick reply for social communication applications so that users can quickly reply messages across devices.
   - [Clearing Repeated Notifications Across Devices](./notification-distributed-messageid.md): Clear repeated notifications published across devices and by the local device to prevent multiple notifications from disturbing users.
 
 ## Constraints
