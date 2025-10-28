@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zengyawen-->
 
 > **说明：**
 >
@@ -220,11 +220,7 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 
 |      类型      |     说明     |
 | -------------  | ------------ |
-<<<<<<< HEAD
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表 |
-=======
 | Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | 支持的帧率范围列表。若接口调用失败，返回undefined。 |
->>>>>>> 103184e8da4 (push 2)
 
 **示例：**
 
