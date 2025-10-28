@@ -54,6 +54,6 @@
     - [从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)
     - [适配指导案例](arkts-more-cases.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
-  - 面向其他语言的ArkTS迁移指导
+  - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
