@@ -119,7 +119,7 @@
   hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
   if (store !== undefined) {
     let transaction = await store.createTransaction({});
-    let storeVersion = await transaction.execute("PRAGMA user_version");
+    let storeVersion = await transaction.execute('PRAGMA user_version');
     // 当数据库创建时，数据库默认版本为0if (storeVersion === 0) {
     try {
       await transaction.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
@@ -163,7 +163,7 @@
       }
     }
     try {
-      await transaction.execute("PRAGMA user_version = 3");
+      await transaction.execute('PRAGMA user_version = 3');
     }catch (e) {
       const err = e as BusinessError;
       await transaction.rollback();
@@ -253,112 +253,111 @@
    > 
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
-1. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
+2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
     <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
-    // 插入数据
-    let value1 = 'Lisa';
-    let value2 = 18;
-    let value3 = 100.5;
-    let value4 = new Uint8Array([1, 2, 3, 4, 5]);
-    let value5 = BigInt('15822401018187971961171');
-    const valueBucket: relationalStore.ValuesBucket = {
-      NAME: value1,
-      AGE: value2,
-      SALARY: value3,
-      CODES: value4,
-      IDENTITY: value5,
-    };
-
-    if (store !== undefined) {
-      try {
-        const rowId = await store.insert('EMPLOYEE', valueBucket);
-        hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in inserting data. rowId:${rowId}`);
-      } catch (error) {
-        const err = error as BusinessError;
-        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to insert data. Code:${err.code}, message:${err.message}`);
-      }
-    }
+   // 插入数据
+   let value1 = 'Lisa';
+   let value2 = 18;
+   let value3 = 100.5;
+   let value4 = 'teacher';
+   let value5 = 'school';
+   const valueBucket: relationalStore.ValuesBucket = {
+     NAME: value1,
+     AGE: value2,
+     SALARY: value3,
+     CODES: value4,
+     IDENTITY: value5,
+   };
+   if (store !== undefined) {
+     try {
+       const rowId = await store.insert('EMPLOYEE', valueBucket);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in inserting data. rowId:${rowId}`);
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to insert data. Code:${err.code}, message:${err.message}`);
+     }
+   }
    ```
 
    > **说明：**
    >
    > 关系型数据库没有显式的flush操作实现持久化，数据插入即保存在持久化文件。
 
-2. 根据谓词指定的实例对象，对数据进行修改或删除。
+3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
     <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
-    // 修改数据、删除数据
-    let value6 = 'Rose';
-    let value7 = 22;
-    let value8 = 200.5;
-    let value9 = new Uint8Array([1, 2, 3, 4, 5]);
-    let value10 = BigInt('15822401018187971967863');
-    const valueBucket2: relationalStore.ValuesBucket = {
-      NAME: value6,
-      AGE: value7,
-      SALARY: value8,
-      CODES: value9,
-      IDENTITY: value10,
-    };
-
-    // 修改数据
-    let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE'); // 创建表'EMPLOYEE'的predicates
-    predicates1.equalTo('NAME', 'Lisa'); // 匹配表'EMPLOYEE'中'NAME'为'Lisa'的字段
-    if (store !== undefined) {
-      (store as relationalStore.RdbStore).update(valueBucket2, predicates1, (err: BusinessError, rows: number) => {
-        if (err) {
-          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to update data. Code:${err.code}, message:${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in updating data. row count: ${rows}`);
-      })
-    }
-
-    // 删除数据
-    predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
-    predicates1.equalTo('NAME', 'Lisa');
-    if (store !== undefined) {
-      (store as relationalStore.RdbStore).delete(predicates1, (err: BusinessError, rows: number) => {
-        if (err) {
-          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete data. Code:${err.code}, message:${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN, 'rdbDataPersistence', `Delete rows: ${rows}`);
-      })
-    }
+   let value6 = 'Rose';
+   let value7 = 22;
+   let value8 = 200.5;
+   let value9 = 'doctor';
+   let value10 = 'hospital';
+   const valueBucket2: relationalStore.ValuesBucket = {
+     NAME: value6,
+     AGE: value7,
+     SALARY: value8,
+     CODES: value9,
+     IDENTITY: value10,
+   };
+ 
+   // 修改数据
+   let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE'); // 创建表'EMPLOYEE'的predicates
+   predicates1.equalTo('NAME', 'Lisa'); // 匹配表'EMPLOYEE'中'NAME'为'Lisa'的字段
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).update(valueBucket2, predicates1, (err: BusinessError, rows: number) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to update data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in updating data. row count: ${rows}`);
+     })
+   }
+ 
+   // 删除数据
+   predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
+   predicates1.equalTo('NAME', 'Lisa');
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).delete(predicates1, (err: BusinessError, rows: number) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Delete rows: ${rows}`);
+     })
+   }
    ```
 
-3. 根据谓词指定的查询条件查找数据。
+4. 根据谓词指定的查询条件查找数据。
 
    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
     <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
-    // 查找数据
-    let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
-    predicates2.equalTo('NAME', 'Rose');
-    if (store !== undefined) {
-      (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'IDENTITY'], (err: BusinessError, resultSet) => {
-        if (err) {
-          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to query data. Code:${err.code}, message:${err.message}`);
-          return;
-        }
-        hilog.info(DOMAIN, 'rdbDataPersistence', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex('ID'));
-          const name = resultSet.getString(resultSet.getColumnIndex('NAME'));
-          const age = resultSet.getLong(resultSet.getColumnIndex('AGE'));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
-          const identity = resultSet.getValue(resultSet.getColumnIndex('IDENTITY'));
-          hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
-        }
-        // 释放数据集的内存
-        resultSet.close();
-      })
-    }
+   // 查找数据
+   let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
+   predicates2.equalTo('NAME', 'Rose');
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES', 'IDENTITY'], (err: BusinessError, resultSet) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to query data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+       while (resultSet.goToNextRow()) {
+         const id = resultSet.getLong(resultSet.getColumnIndex('ID'));
+         const name = resultSet.getString(resultSet.getColumnIndex('NAME'));
+         const age = resultSet.getLong(resultSet.getColumnIndex('AGE'));
+         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
+         const codes = resultSet.getString(resultSet.getColumnIndex('CODES'));
+         const identity = resultSet.getString(resultSet.getColumnIndex('IDENTITY'));
+         hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, codes=${codes}, identity=${identity}`);
+       }
+       // 释放数据集的内存
+       resultSet.close();
+     })
+   }
    ```
 
    > **说明：**
@@ -397,7 +396,7 @@
     }
    ```
 
-4. 使用事务对象执行数据的插入、删除和更新操作。
+5. 使用事务对象执行数据的插入、删除和更新操作。
    
    调用createTransaction方法创建事务对象并执行相应操作。
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
@@ -405,61 +404,63 @@
    具体信息请参见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
     <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
-    // 使用事务对象执行数据的插入、删除和更新操作
-    if (store !== undefined) {
-      // 创建事务对象
-      try {
-        const transaction = await store.createTransaction();
-        try {
-          // 使用事务对象插入数据
-          const rowId = await transaction.insert(
-            'EMPLOYEE',
-            {
-              NAME: 'Lisa',
-              AGE: 18,
-              SALARY: 100.5,
-              CODES: new Uint8Array([1, 2, 3, 4, 5])
-            },
-            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
-          );
-          hilog.info(DOMAIN, 'rdbDataPersistence', `Insert is successful, rowId = ${rowId}`);
-
-          const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-          predicates.equalTo('NAME', 'Lisa');
-          // 使用事务对象更新数据
-          const rows = await transaction.update(
-            {
-              NAME: 'Rose',
-              AGE: 22,
-              SALARY: 200.5,
-              CODES: new Uint8Array([1, 2, 3, 4, 5])
-            },
-            predicates,
-            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
-          );
-          hilog.info(DOMAIN, 'rdbDataPersistence', `Updated row count: ${rows}`);
-
-          // 使用事务对象删除数据
-          await transaction.execute('DELETE FROM EMPLOYEE WHERE age = ? OR age = ?', [21, 20]);
-          hilog.info(DOMAIN, 'rdbDataPersistence', `execute delete success`);
-
-          // 提交事务
-          await transaction.commit();
-          hilog.info(DOMAIN, 'rdbDataPersistence', 'Transaction commit success.');
-        } catch (error) {
-          const err = error as BusinessError;
-          // 执行失败回滚事务
-          await transaction.rollback();
-          hilog.error(DOMAIN, 'rdbDataPersistence', `Transaction execute failed, code is ${err.code}, message is ${err.message}`);
-        }
-      } catch (error) {
-        const err = error as BusinessError;
-        hilog.error(DOMAIN, 'rdbDataPersistence', `createTransaction failed, code is ${err.code}, message is ${err.message}`);
-      }
-    }
+   // 使用事务对象执行数据的插入、删除和更新操作
+   if (store !== undefined) {
+     // 创建事务对象
+     try {
+       const transaction = await store.createTransaction();
+       try {
+         // 使用事务对象插入数据
+         const rowId = await transaction.insert(
+           'EMPLOYEE',
+           {
+             NAME: 'Lisa',
+             AGE: 18,
+             SALARY: 100.5,
+             CODES: 'student',
+             IDENTITY: 'school'
+           },
+           relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+         );
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Insert is successful, rowId = ${rowId}`);
+ 
+         const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+         predicates.equalTo('NAME', 'Lisa');
+         // 使用事务对象更新数据
+         const rows = await transaction.update(
+           {
+             NAME: 'Rose',
+             AGE: 22,
+             SALARY: 200.5,
+             CODES: 'doctor',
+             IDENTITY: 'school'
+           },
+           predicates,
+           relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+         );
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Updated row count: ${rows}`);
+ 
+         // 使用事务对象删除数据
+         await transaction.execute('DELETE FROM EMPLOYEE WHERE age = ? OR age = ?', [21, 20]);
+         hilog.info(DOMAIN, 'rdbDataPersistence', `execute delete success`);
+ 
+         // 提交事务
+         await transaction.commit();
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Transaction commit success.');
+       } catch (error) {
+         const err = error as BusinessError;
+         // 执行失败回滚事务
+         await transaction.rollback();
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Transaction execute failed, code is ${err.code}, message is ${err.message}`);
+       }
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `createTransaction failed, code is ${err.code}, message is ${err.message}`);
+     }
+   }
    ```
 
-5. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
+6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
 
    此处以手动备份为例：
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -477,7 +478,7 @@
     }
    ```
 
-6. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
+7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
 
    此处以调用[restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
     <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -494,7 +495,7 @@
     }
    ```
 
-7. 删除数据库。
+8. 删除数据库。
 
    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
