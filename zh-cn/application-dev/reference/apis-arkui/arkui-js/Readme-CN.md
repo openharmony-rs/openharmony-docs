@@ -1,4 +1,4 @@
-# 兼容JS的类Web开发范式（ArkUI.Full）
+# 兼容JS的类Web开发范式（ArkUI.Full）<!--arkui-js-full-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
