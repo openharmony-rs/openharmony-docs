@@ -251,4 +251,29 @@
 7. 生成最终的段落文本，以便实现最终的文本绘制和显示。
 
    <!-- @[custom_font_c_disable_system_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 设置其他文本样式
+   OH_Drawing_SetTextStyleColor(textStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   // 设置字体大小为30.0
+   OH_Drawing_SetTextStyleFontSize(textStyle, 30.0);
+   // 创建一个段落样式对象，以设置排版风格
+   OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
+   OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT); // 设置段落样式为左对齐
+   // 创建一个段落生成器
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, textStyle);
+   // 在段落生成器中设置文本内容
+   const char *text = "Hello World.\n以上文字使用了自定义字体";
+   OH_Drawing_TypographyHandlerAddText(handler, text);
+   // 通过段落生成器生成段落
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+       
+   // 设置页面最大宽度
+   double maxWidth = width_;
+   OH_Drawing_TypographyLayout(typography, maxWidth);
+   // 将文本绘制到画布(width_/5.0,height_/2.0)上
+   OH_Drawing_TypographyPaint(typography, cCanvas_, width_ / 5.0, height_ / 2.0);
+   ```
 
