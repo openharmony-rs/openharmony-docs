@@ -89,6 +89,34 @@
 
 <!-- @[state_manage_mixed_paradigm_v1_to_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateManageMixedParadigmV1ToV2.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+}
+
+@Entry
+@Component
+struct CompV1 {
+  @State observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV2 {
+  @Param observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+  }
+}
+```
+
 - V1状态变量可观察第一层属性，在调用`UIUtils.enableV2Compatibility`传递给\@Param后，\@Param也可观察第一层属性的变化。
 
 具体场景能力可见下表。
@@ -109,6 +137,34 @@
 在V2->V1时，推荐使用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`。如果当前对象已经是V1的可观察数据了，则仅调用`UIUtils.enableV2Compatibility`即可，完整例子见[常见场景](#常见场景)。
 
 <!-- @[state_manage_mixed_paradigm_v2_to_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateManageMixedParadigmV2ToV1.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
+
+  build() {
+    Column() {
+      CompV1({ observedClass: this.observedClass })
+    }
+  }
+}
+
+@Component
+struct CompV1 {
+  @ObjectLink observedClass: ObservedClass;
+
+  build() {
+  }
+}
+```
 
 具体场景如下表。
 
@@ -171,11 +227,87 @@ arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态
 
 <!-- @[state_mixed_scene_js_v1_v2_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2Recommend.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+  public name: string = 'Tom';
+}
+
+@Entry
+@Component
+struct CompV1 {
+  @State observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      Text(`@State observedClass: ${this.observedClass.name}`)
+        .onClick(() => {
+          this.observedClass.name += '!'; // 刷新
+        })
+      // 调用UIUtils.enableV2Compatibility使V1的状态变量可在@ComponentV2中有观察能力。
+      CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV2 {
+  @Param observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    // V1状态变量在使能V2观察能力后，可以在V2观察第一层的变化
+    Text(`@Param observedClass: ${this.observedClass.name}`)
+      .onClick(() => {
+        this.observedClass.name += '!'; // 刷新
+      })
+  }
+}
+```
+
 **不推荐写法**
 
 在下面的例子中，V1的状态变量在传递给V2时，未调用`enableV2Compatibility`接口，未使能V2的观察能力，则`observedClass`在CompV2中无法观察属性`name`的变化。同一个状态变量在`CompV1`和`CompV2`中观察能力不一致。
 
 <!-- @[state_mixed_scene_js_v1_v2_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2NotRecommend.ets) -->
+
+``` TypeScript
+@Observed
+class ObservedClass {
+  public name: string = 'Tom';
+}
+
+@Entry
+@Component
+struct CompV1 {
+  @State observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      Text(`@State observedClass: ${this.observedClass.name}`)
+        .onClick(() => {
+          this.observedClass.name += '!'; // 刷新
+        })
+      // 未调用enableV2Compatibility接口，V1的状态变量在CompV2中无观察能力
+      // 在CompV2不可观察name的变化
+      CompV2({ observedClass: this.observedClass })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV2 {
+  @Param observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Text(`@Param observedClass: ${this.observedClass.name}`)
+      .onClick(() => {
+        this.observedClass.name += '!'; // 不刷新
+      })
+  }
+}
+```
 
 **V2->V1**
 
@@ -184,11 +316,100 @@ arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态
 在V2->V1传递的场景中，为了拉齐V2和V1的观察能力，需要在V2中调用makeV1Observed接口，同时也需要使能V2的观察能力，调用enableV2Compatibility接口，所以推荐写法如下。
 
 <!-- @[state_mixed_scene_js_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1Recommend.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+class ObservedClass {
+  public name: string = 'Tom';
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new ObservedClass()));
+
+  build() {
+    Column() {
+      // @Local原本能力仅可观察自身
+      // 但是调用了UIUtils.makeV1Observed使其变成V1的状态变量，V1状态变量可观察第一层变化
+      // 又调用UIUtils.enableV2Compatibility使其在V2中可观察
+      // 所以当前可观察第一层属性的变化
+      Text(`@Local observedClass: ${this.observedClass.name}`)
+        .onClick(() => {
+          this.observedClass.name += '!'; // 刷新
+        })
+      // @ObjectLink可接收@Observed装饰class的实例或者makeV1Observed的返回值
+      CompV1({ observedClass: this.observedClass })
+    }
+  }
+}
+
+@Component
+struct CompV1 {
+  @ObjectLink observedClass: ObservedClass;
+
+  build() {
+    // 在CompV1中可观察第一层的变化
+    Text(`@ObjectLink observedClass: ${this.observedClass.name}`)
+      .onClick(() => {
+        this.observedClass.name += '!'; // 刷新
+      })
+  }
+}
+```
 **不推荐写法**
 
 因为V1和V2观察能力不同，如果不调用`UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())`直接进行数据传递，则会造成不刷新或者刷新行为不一致的问题。
 
 <!-- @[state_mixed_scene_js_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1NotRecommend.ets) -->
+
+``` TypeScript
+class ObservedClass {
+  public name: string = 'Tom';
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      // @Local原本能力仅可观察自身，此处不可观察属性的变化
+      Text(`@Local observedClass: ${this.observedClass.name}`)
+        .onClick(() => {
+          this.observedClass.name += '!'; // 不刷新
+        })
+      // @ObjectLink不可接收非@Observed装饰class的实例或者makeV1Observed的返回值
+      // 日志提示开发者当前ObjectLink被不合法赋值
+      CompV1({ observedClass1: this.observedClass, observedClass2: this.observedClass })
+    }
+  }
+}
+
+@Component
+struct CompV1 {
+  @ObjectLink observedClass1: ObservedClass;
+  @State observedClass2: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      // @ObjectLink被不合法赋值，不会响应UI刷新
+      Text(`@ObjectLink observedClass: ${this.observedClass1.name}`)
+        .onClick(() => {
+          this.observedClass1.name += '!'; // 不刷新
+        })
+
+      // 不同于@ObjectLink，@State会默认将不可观察的对象包装成V1可观察的对象，可观察到自身和属性的变化
+      Text(`@State observedClass: ${this.observedClass2.name}`)
+        .onClick(() => {
+          this.observedClass2.name += '!'; // 刷新
+        })
+    }
+  }
+}
+```
 
 ### \@Observed装饰的class
 
@@ -203,12 +424,97 @@ arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态
 
 <!-- @[state_mixed_scene_observed_class_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV1V2.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+  @Track public name: string = 'a';
+  public count: number = 0;
+}
+
+@Entry
+@Component
+struct CompV1 {
+  @State observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      Text(`name: ${this.observedClass.name}`).onClick(() => {
+        // 触发刷新
+        this.observedClass.name += 'a';
+      })
+
+      CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV2 {
+  @Param observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    // 使用非@Track的变量在V2中不会崩溃，但不会响应更新
+    Text(`count: ${this.observedClass.count}`).onClick(() => {
+      // 不触发刷新
+      this.observedClass.count++;
+    })
+  }
+}
+```
+
 **V2->V1**
 
 - `ObservedClass`是\@Observed装饰的class，所以传递给V1调用`UIUtils.enableV2Compatibility`时，无需再调用`UIUtils.makeV1Observed`。
 - 只有\@Track装饰的变量在V1和V2中可观察。非\@Track的变量在V1中使用在UI上会有运行时报错，在V2中不会报错，但不会响应刷新。
 
 <!-- @[state_mixed_scene_observed_class_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV2V1.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+  @Track public name: string = 'a';
+  public count: number = 0;
+}
+
+@Entry
+@ComponentV2
+struct CompV1 {
+  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
+
+  build() {
+    Column() {
+      Text(`name: ${this.observedClass.name}`).onClick(() => {
+        // 触发刷新
+        this.observedClass.name += 'a';
+      })
+      // 使用非@Track的变量在V2中不会崩溃，但不响应更新
+      Text(`count: ${this.observedClass.count}`).onClick(() => {
+        this.observedClass.count++;
+      })
+
+      CompV2({ observedClass: this.observedClass })
+    }
+  }
+}
+
+@Component
+struct CompV2 {
+  @ObjectLink observedClass: ObservedClass;
+
+  build() {
+    Column() {
+      Text(`count: ${this.observedClass.name}`).onClick(() => {
+        // 触发刷新
+        this.observedClass.name += 'a';
+      })
+    }
+  }
+}
+```
 
 ### 内置类型
 以Array为例。
@@ -219,11 +525,84 @@ arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态
 
 <!-- @[state_mixed_scene_built_type_v1_v2_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2Recommend.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ArrayCompV1 {
+  @State arr: Array<number> = UIUtils.makeV1Observed([1, 2, 3]);
+
+  build() {
+    Column() {
+      Text(`V1 ${this.arr[0]}`).onClick(() => {
+        // 点击触发ArrayCompV1和ArrayCompV2变化
+        this.arr[0]++;
+      })
+      // 传递给V2时，发现当前代理是makeV1Observed包装的，且使能V2观察能力
+      // 在ArrayCompV2中Param不会再次包装代理，避免双重代理的问题
+      ArrayCompV2({ arr: UIUtils.enableV2Compatibility(this.arr) })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@ComponentV2
+struct ArrayCompV2 {
+  @Param arr: Array<number> = [1, 2, 3];
+
+  build() {
+    Column() {
+      Text(`V2 ${this.arr[0]}`).onClick(() => {
+        // 点击触发ArrayCompV1和ArrayCompV2变化
+        this.arr[0]++;
+      })
+    }
+  }
+}
+```
+
 **不推荐写法**
 
 在下面的例子中，没有调用enableV2Compatibility和makeV1Observed，则有V1和V2双重代理的问题。
 
 <!-- @[state_mixed_scene_built_type_v1_v2_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2NotRecommend.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ArrayCompV1 {
+  @State arr: Array<number> = [1, 2, 3];
+
+  build() {
+    Column() {
+      Text(`V1 ${this.arr[0]}`).onClick(() => {
+        // V1代理，可触发ArrayCompV1的刷新并通知ArrayCompV2更新@Param的值
+        this.arr[0]++;
+      })
+      // 传递给ArrayCompV2，被再次包装V2的代理
+      ArrayCompV2({ arr: this.arr })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@ComponentV2
+struct ArrayCompV2 {
+  @Param arr: Array<number> = [1, 2, 3];
+
+  build() {
+    Column() {
+      Text(`V2 ${this.arr[0]}`).onClick(() => {
+        // V1V2双重代理，可触发ArrayCompV1和ArrayCompV2的刷新
+        this.arr[0]++;
+      })
+    }
+  }
+}
+```
 
 **V2->V1**
 
