@@ -967,7 +967,6 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -1054,7 +1053,6 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, UIAbility, common, Permissions } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
