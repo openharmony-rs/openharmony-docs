@@ -2845,7 +2845,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let pageHeight = this.controller.getPageHeight();
-            console.log("pageHeight : " + pageHeight);
+            console.info("pageHeight : " + pageHeight);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -4841,7 +4841,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
     // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
     webview.WebviewController.prefetchResource(
@@ -4856,7 +4856,7 @@ export default class EntryAbility extends UIAbility {
       },],
       "KeyX", 500);
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -7008,7 +7008,7 @@ struct WebComponent {
       Button('getMediaPlaybackState')
         .onClick(() => {
           try {
-            console.log("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
+            console.info("MediaPlaybackState : " + this.controller.getMediaPlaybackState());
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9102,8 +9102,8 @@ struct WebComponent {
         .onClick(() => {
           try {
             let hitValue = this.controller.getLastHitTest();
-            console.log("hitType: " + hitValue.type);
-            console.log("extra: " + hitValue.extra);
+            console.info("hitType: " + hitValue.type);
+            console.info("extra: " + hitValue.extra);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9455,7 +9455,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let hitTestType = this.controller.getHitTest();
-            console.log("hitTestType: " + hitTestType);
+            console.info("hitTestType: " + hitTestType);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9510,8 +9510,8 @@ struct WebComponent {
         .onClick(() => {
           try {
             let hitValue = this.controller.getHitTestValue();
-            console.log("hitType: " + hitValue.type);
-            console.log("extra: " + hitValue.extra);
+            console.info("hitType: " + hitValue.type);
+            console.info("extra: " + hitValue.extra);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9749,7 +9749,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let isEnabled: boolean = webview.WebviewController.isPrivateNetworkAccessEnabled();
-            console.log("isPrivateNetworkAccessEnabled:", isEnabled);
+            console.info("isPrivateNetworkAccessEnabled:", isEnabled);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -9827,7 +9827,7 @@ struct WebComponent {
                   this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
                 }
               } else {
-                console.log('getBlankless info err');
+                console.info('getBlankless info err');
               }
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -9900,7 +9900,7 @@ struct WebComponent {
                   this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
                 }
               } else {
-                console.log('getBlankless info err');
+                console.info('getBlankless info err');
               }
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -9949,7 +9949,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     // 假设应用的Web页面在2025/06/10会进行大幅改动，例如商品促销活动等，该提案清除白屏插帧优化缓存
     webview.WebviewController.initializeWebEngine();
     let pageUpdateTime: number = Date.UTC(2025, 5, 10, 0, 0, 0, 0);
@@ -9964,7 +9964,7 @@ export default class EntryAbility extends UIAbility {
       }
     }
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -10006,7 +10006,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate");
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
     // 设置缓存容量为10MB
     try {
@@ -10015,7 +10015,7 @@ export default class EntryAbility extends UIAbility {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     AppStorage.setOrCreate("abilityWant", want);
-    console.log("EntryAbility onCreate done");
+    console.info("EntryAbility onCreate done");
   }
 }
 ```
@@ -10090,12 +10090,12 @@ import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log("EntryAbility onCreate")
+    console.info("EntryAbility onCreate")
     webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
     if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
-      console.log("Active Web Engine Version set to M114")
+      console.info("Active Web Engine Version set to M114")
     }
-    console.log("EntryAbility onCreate done")
+    console.info("EntryAbility onCreate done")
   }
 }
 ```
@@ -10181,7 +10181,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             let isEnabled: boolean = webview.WebviewController.isAutoPreconnectEnabled();
-            console.log("isAutoPreconnectEnabled:", isEnabled);
+            console.info("isAutoPreconnectEnabled:", isEnabled);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
