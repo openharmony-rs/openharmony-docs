@@ -344,7 +344,7 @@
         - [动画动效](ui-js-animate-dynamic-effects.md)
         - [动画帧](ui-js-animate-frame.md)
   - [自定义组件](ui-js-custom-components.md)
-  - [WebGL](../webgl/Readme-CN.md)
+  - [WebGL](../webgl/Readme-CN.md)<!--ui-js-webgl-->
 - UI开发调试调优<!--ui-debug-optimize-->
   - UI稳定性故障调试<!--ui-stability-->
     - [UI稳定性故障分析概述](arkts-stability-guide.md)
@@ -357,5 +357,5 @@
   - [UI高性能开发](ui-performance-overview.md)
   - UI开发常见问题<!--ui-development-faq-->
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
-- [窗口管理](../windowmanager/Readme-CN.md)
-- [屏幕管理](../displaymanager/Readme-CN.md)
+- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-api-->
+- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-api-->

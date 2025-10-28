@@ -474,6 +474,8 @@
           - [Repeat：可复用的循环渲染](ui/rendering-control/arkts-new-rendering-control-repeat.md)
           - [LazyForEach迁移Repeat指南](ui/rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
           - [ContentSlot：混合开发](ui/rendering-control/arkts-rendering-control-contentslot.md)
+        - 学习响应式环境变量<!--arkts-env-property-->
+          - [\@Env：环境变量](ui/arkts-env-system-property.md)
         - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
           - [组件导航和页面路由概述](ui/arkts-navigation-introduction.md)
           - [组件导航(Navigation) (推荐)](ui/arkts-navigation-navigation.md)
@@ -3203,6 +3205,8 @@
           <!--Del-->
           - [应用级变量的状态管理（系统接口）](reference/apis-arkui/arkui-ts/ts-state-management-sys.md)
           <!--DelEnd-->
+        - 响应式环境变量<!--arkts-env-system-property-->
+          - [\@Env：环境变量](reference/apis-arkui/arkui-ts/ts-env-system-property.md)
         - 公共定义<!--common-definitions-->
           - [基础类型定义](reference/apis-arkui/arkui-ts/ts-types.md)
           - [像素单位](reference/apis-arkui/arkui-ts/ts-pixel-units.md)
@@ -5742,7 +5746,7 @@
       - C API<!--notification-c-->
         - 模块<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
-        - 头文件<!--notification-struct-->
+        - 头文件<!--notification-headerfile-->
           - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - 错误码<!--notification-arkts-errcode-->
         - [通知错误码](reference/apis-notification-kit/errorcode-notification.md)
