@@ -2640,7 +2640,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.baidu.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2697,7 +2697,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.baidu.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2744,7 +2744,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.baidu.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2799,7 +2799,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  let host = "xxxx";
+  let host = "www.baidu.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
