@@ -4,7 +4,7 @@
 <!--Owner: @xieziang-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Chip用于搜索框历史记录、邮件发送列表等场景。
 
