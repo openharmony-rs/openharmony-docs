@@ -4082,7 +4082,7 @@ Sets whether applications enable cross-device collaboration. This API uses a pro
 
 | Type| Description|
 | ---- | ----|
-| Promise\<void\> | Promise Promise that returns no result.|
+| Promise\<void\> | Promise that returns no result.|
 
 **Error codes**
 
