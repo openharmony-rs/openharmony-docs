@@ -71,23 +71,23 @@ AAC、Flac、MP3、G711mu<!--RP3--><!--RP3End-->。
 
 | 媒体格式  | 封装格式                      | 轨道格式                      |
 | -------- | :----------------------------| :----------------------------|
-| 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4、VC1、MJPEG<br>音频轨：AAC、MPEG(MP3)<br>字幕轨：WEBVTT<br>辅助轨：AUXL(AAC、MP3)<br>timed metadata轨<!--RP4End-->|
+| 音视频     | mp4                        |<!--RP4-->视频轨：AVC(H.264)、MPEG4、VC1、MJPEG<br>音频轨：AAC、MPEG(MP3)、ALAC<br>字幕轨：WEBVTT<br>辅助轨：AUXL(AAC、MP3)<br>timed metadata轨<!--RP4End-->|
 | 音视频     | fmp4                       |<!--RP5-->视频轨：AVC(H.264)、VC1<br>音频轨：AAC、MPEG(MP3)<!--RP5End-->|
-| 音视频     | mkv                        |<!--RP6-->视频轨：AVC(H.264)、VC1、MSVIDEO1<br>音频轨：AAC、MPEG(MP3)、OPUS<!--RP6End-->|
+| 音视频     | mkv                        |<!--RP6-->视频轨：AVC(H.264)、VC1、MSVIDEO1<br>音频轨：AAC、MPEG(MP3)、OPUS、ADPCM_YAMAHA、ADPCM_G722、ALAC<!--RP6End-->|
 | 音视频     | mpeg-ts                    |<!--RP7-->视频轨：AVC(H.264)、MPEG2、MPEG4、VC1<br>音频轨：AAC、MPEG(MP3)<!--RP7End-->|
 | 音视频     | flv                        |<!--RP8-->视频轨：AVC(H.264)<br>音频轨：AAC<!--RP8End-->|
 | 音视频     | mpeg-ps                    |视频轨：AVC(H.264)、MPEG2<br>音频轨：MPEG(MP2、MP3)|
-| 音视频     | avi                        |视频轨：H.263、AVC(H.264)、MPEG2、MPEG4、MJPEG、VC1、MSVIDEO1<br>音频轨：AAC、MPEG(MP2、MP3)、PCM、GSM_MS|
+| 音视频     | avi                        |视频轨：H.263、AVC(H.264)、MPEG2、MPEG4、MJPEG、VC1、MSVIDEO1<br>音频轨：AAC、MPEG(MP2、MP3)、PCM、GSM_MS、ADPCM_YAMAHA、ADPCM_G722|
 | 音视频     | 3gp                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | 3g2                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | m4v                        |<!--RP12-->视频轨：AVC(H.264)、MPEG4<!--RP12End--><br>音频轨：AAC、ALAC、AC3|
 | 音视频     | wmv                        |视频轨：AVC(H.264)、WMV3<br>音频轨：WMAV1、WMAV2、WMAPRO|
-| 音频       | m4a                        |<!--RP9-->音频轨：AAC<!--RP9End-->|
+| 音频       | m4a                        |<!--RP9-->音频轨：AAC、ALAC<!--RP9End-->|
 | 音频       | aac                        |音频轨：AAC|
 | 音频       | mp3                        |音频轨：MPEG(MP3)|
 | 音频       | ogg                        |音频轨：Vorbis|
 | 音频       | flac                       |音频轨：Flac|
-| 音频       | wav                        |音频轨：PCM、G711mu、G711a、GSM_MS|
+| 音频       | wav                        |音频轨：PCM、G711mu、G711a、GSM_MS、ADPCM_YAMAHA、ADPCM_G722、ADPCM_G726|
 | 音频       | amr                        |音频轨：AMR(amrnb、amrwb)|
 | 音频       | ape                        |音频轨：APE|
 | 音频       | wma                        |音频轨：AC3、WMAV1、WMAV2、Vorbis、Flac、AMR(amrnb、amrwb)、AAC、MPEG(MP2、MP3)、GSM_MS、G711mu、G711a、PCM、ADPCM_G722、ADPCM_G726、ADPCM_IMA_WAV、ADPCM_MS、ADPCM_YAMAHA|
