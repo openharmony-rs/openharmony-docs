@@ -561,7 +561,7 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
-## searchTarget
+## mechanicManager.searchTarget
 searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 
 旋转机械体一周搜索目标。使用Promise异步回调。
@@ -591,22 +591,20 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 | 202 | Not system application. |
 | 33300001 | Service exception. |
 | 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+| 33300004 | Camera not opened. |
 
 **示例：**
 
 ```ts
 let targetInfo : mechanicManager.TargetInfo = {
-            targetType: mechanicManager.TargetType.HUMAN_FACE
-           };
-           let searchParams : mechanicManager.SearchParams
-= {
-            direction:
-mechanicManager.SearchDirection.DEFAULT
-        }
-        mechanicManager.searchTarget(targetInfo, 
-searchParams, (searchResult).then(searchResult)=>{
-        console.info(`'result:' ${searchResult}`);
-      });
+	targetType: mechanicManager.TargetType.HUMAN_FACE};
+    let searchParams : mechanicManager.SearchParams= {
+    	direction:mechanicManager.SearchDirection.DEFAULT}
+    mechanicManager.searchTarget(targetInfo, 
+		searchParams, (searchResult).then(searchResult)=>{
+       		console.info(`'result:' ${searchResult}`);
+            });
 ```
 ## RotationAngles
 
@@ -740,7 +738,7 @@ searchParams, (searchResult).then(searchResult)=>{
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
 
-## TargetInfo
+## TargetType
 
 目标人脸信息。
 
