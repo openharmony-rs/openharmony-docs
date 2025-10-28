@@ -17,7 +17,9 @@
 
 ## $r
 
-$r(value: string, ...params: (Object | null | undefined)[]): Resource
+ArkTS-Dyn: $r(value: string, ...params: any[]): Resource
+
+ArkTS-Sta: $r(value: string, ...params: RecordData[]): Resource
 
 获取应用资源或系统资源的信息。\$r会在编译期由工具链转换为[Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9)对象。通过\$r访问应用资源或系统资源，可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。
 
@@ -36,7 +38,7 @@ $r(value: string, ...params: (Object | null | undefined)[]): Resource
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                              |
 | ------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | value  | string | 是   | 资源标识符，访问格式为`belonging.type.name`。<br>belonging：表示该资源为系统资源、应用资源或HSP包资源，可选值为sys、app或[hsp_name]。<br>type：资源类型，可选值为boolean，color，float，intarray，integer，pattern，plural，strarray，string或media。<br>name：资源名称，应用资源名称定义在工程resources目录下，系统资源名称获取可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。 |
-| ...params | (Object | null | undefined)[]  | 否   | 开发者传入的剩余参数。                                                                                                                                                                                                                                                                                                                                                                            |
+| params | ArkTS-Dyn: any[]<br/>ArkTS-Sta: RecordData[]  | 否   | 开发者传入的剩余参数。默认为空数组。                                                                                                                                                                                                                                                                                                                                                                            |
 
 **返回值：**
 
@@ -91,6 +93,8 @@ $rawfile(value: string): Resource
 | 类型                              | 说明                                                       |
 | --------------------------------- | ---------------------------------------------------------- |
 | [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) | 资源相关信息，包括应用包名、应用模块名、资源id等。 |
+
+**示例：**
 
 ```ts
 // src/main/resources/rawfile目录下添加startIcon.png。
