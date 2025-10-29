@@ -30,6 +30,25 @@ Stack组件为容器组件，容器内可包含各种子元素。其中子元素
 
 <!-- @[StackLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutExample.ets) -->
 
+``` TypeScript
+// xxx.ets
+let mTop:Record<string,number> = { 'top': 50 }
+
+@Entry
+@Component
+struct StackExample1 {
+  build() {
+    Column(){
+      Stack({ }) {
+        Column(){}.width('90%').height('100%').backgroundColor('#ff58b87c')
+        Text('text').width('60%').height('60%').backgroundColor('#ffc3f6aa')
+        Button('button').width('30%').height('30%').backgroundColor('#ff8ff3eb').fontColor('#000')
+      }.width('100%').height(150).margin(mTop)
+    }
+  }
+}
+```
+
 
 ![stack-layout-sample](figures/stack-layout-sample.png)
 
