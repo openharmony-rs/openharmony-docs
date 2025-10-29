@@ -616,6 +616,49 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[listen_window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ListenWindowStage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG : string = '[Sample_ListenWindowStage]';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // ···
+    try {
+      windowStage.on('windowStageEvent', (data) => {
+        hilog.info(DOMAIN, TAG, `Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
+
+        // 根据事件状态类型选择进行相应的处理
+        if (data === window.WindowStageEventType.SHOWN) {
+          hilog.info(DOMAIN, TAG, `current window stage event is SHOWN`);
+          // 应用进入前台，默认为可交互状态
+          // ...
+        } else if (data === window.WindowStageEventType.HIDDEN) {
+          hilog.info(DOMAIN, TAG, `current window stage event is HIDDEN`);
+          // 应用进入后台，默认为不可交互状态
+          // ...
+        } else if (data === window.WindowStageEventType.PAUSED) {
+          hilog.info(DOMAIN, TAG, `current window stage event is PAUSED`);
+          // 前台应用进入多任务，转为不可交互状态
+          // ...
+        } else if (data === window.WindowStageEventType.RESUMED) {
+          hilog.info(DOMAIN, TAG, `current window stage event is RESUMED`);
+          // 进入多任务后又继续返回前台时，恢复可交互状态
+          // ...
+        }
+
+        // ...
+      });
+    } catch (exception) {
+      hilog.error(DOMAIN, TAG, `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
+    }
+  }
+}
+```
+
 ## 相关实例
 
 针对window开发（Stage模型），有以下相关实例可供参考：
