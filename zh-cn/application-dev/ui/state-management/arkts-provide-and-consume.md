@@ -498,6 +498,61 @@ struct MapSample {
 
 <!-- @[provide_consume_set_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeSetSync.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  @Consume message: Set<number>
+
+  build() {
+    Column() {
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[0]}`)
+          .fontSize(30)
+        Divider()
+      })
+      Button('Consume init set')
+        .onClick(() => {
+          this.message = new Set([0, 1, 2, 3, 4]);
+        })
+      Button('Consume set new one')
+        .onClick(() => {
+          this.message.add(5);
+        })
+      Button('Consume clear')
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('Consume delete the first one')
+        .onClick(() => {
+          this.message.delete(0);
+        })
+    }
+    .width('100%')
+  }
+}
+
+
+@Entry
+@Component
+struct SetSample {
+  @Provide message: Set<number> = new Set([0, 1, 2, 3, 4])
+
+  build() {
+    Row() {
+      Column() {
+        Button('Provide init set')
+          .onClick(() => {
+            this.message = new Set([0, 1, 2, 3, 4, 5]);
+          })
+        Child()
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Date类型变量
 
 以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
