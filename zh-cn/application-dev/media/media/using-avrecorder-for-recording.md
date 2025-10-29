@@ -98,7 +98,7 @@
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
      audioChannels: 2, // 音频声道数。
-     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC，MP3，G711MU。
+     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。
      aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API 22开始支持AAC_HE和AAC_HE_V2。
      audioSampleRate: 48000, // 音频采样率。
      fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
@@ -205,7 +205,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avProfile: media.AVRecorderProfile = {
     audioBitrate: 112000, // 音频比特率。
     audioChannels: 2, // 音频声道数。
-    audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC，MP3，G711MU。
+    audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。
     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API 22开始支持AAC_HE和AAC_HE_V2。
     audioSampleRate: 48000, // 音频采样率。
     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
