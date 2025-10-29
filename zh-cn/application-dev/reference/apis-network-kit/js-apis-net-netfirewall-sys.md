@@ -17,7 +17,7 @@
 ## 导入模块
 
 ```ts
-import netfirewall from '@ohos.net.netFirewall';
+import { netFirewall } from '@kit.NetworkKit';
 ```
 
 ## netFirewall.getInterceptedRecords
