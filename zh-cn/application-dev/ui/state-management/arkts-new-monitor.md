@@ -37,6 +37,54 @@
 
 <!-- @[monitor_watch_decorator_limitations_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/WatchDecoratorLimitationsV1.ets) -->
 
+``` TypeScript
+@Observed
+class Info {
+  public name: string = 'Tom';
+  public age: number = 25;
+}
+
+@Entry
+@Component
+struct Index {
+  @State @Watch('onInfoChange') info: Info = new Info();
+  @State @Watch('onNumArrChange') numArr: number[] = [1, 2, 3, 4, 5];
+
+  onInfoChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `info after change name: ${this.info.name}, age: ${this.info.age} `);
+  }
+
+  onNumArrChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `numArr after change ${this.numArr}`);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('change info name')
+          .onClick(() => {
+            this.info.name = 'Jack';
+          })
+        Button('change info age')
+          .onClick(() => {
+            this.info.age = 30;
+          })
+        Button('change numArr[2]')
+          .onClick(() => {
+            this.numArr[2] = 5;
+          })
+        Button('change numArr[3]')
+          .onClick(() => {
+            this.numArr[3] = 6;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 上述代码中，点击"change info name"更改info中的name属性或点击"change info age"更改age时，均会触发info注册的\@Watch回调。点击"change numArr[2]"更改numArr中的第3个元素或点击"change numArr[3]"更改第4个元素时，均会触发numArr注册的\@Watch回调。在这两个回调中，由于无法获取数据更改前的值，在业务逻辑更加复杂的场景下，无法准确知道是哪一个属性或元素发生了改变从而触发了\@Watch事件，这不便于开发者对变量的更改进行准确监听。因此推出\@Monitor装饰器实现对对象、数组中某一单个属性或数组项变化的监听，并且能够获取到变化之前的值。
 
 ## 装饰器说明
