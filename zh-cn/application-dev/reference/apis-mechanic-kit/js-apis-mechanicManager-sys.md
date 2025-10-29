@@ -561,7 +561,7 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
-## mechanicManager.searchTarget
+## mechanicManager.searchTarget<sup>21+<sup>
 searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 
 旋转机械体一周搜索目标。使用Promise异步回调。
@@ -738,7 +738,7 @@ let targetInfo : mechanicManager.TargetInfo = {
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
 
-## TargetType
+## TargetType<sup>21+<sup>
 
 目标人脸的特征信息，包括但不限于面部轮廓、五官位置等。
 
@@ -750,7 +750,19 @@ let targetInfo : mechanicManager.TargetInfo = {
 | ----------- | ---- | --------------- |
 | HUMAN_FACE | 0 | 人脸信息。 |
 
-## SearchParams
+ ## TargetInfo<sup>21+<sup>
+
+搜索目标的相关信息。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetType | TargetType | 否 | 否 | 搜索目标的相关信息。 |
+ 
+## SearchParams<sup>21+<sup>
 
 指定搜索结果返回的排序方向（升序或降序）
 
@@ -764,7 +776,7 @@ let targetInfo : mechanicManager.TargetInfo = {
 | LEFTWARD | 1 | 左向，也对应顺时针方向。 |
 | RIGHTWARD | 2 | 右向，也对应逆时针方向。 |
 
-  ## SearchResult
+  ## SearchResult<sup>21+<sup>
 
 显示搜索命令的执行结果。
 
