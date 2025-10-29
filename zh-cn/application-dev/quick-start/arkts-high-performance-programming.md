@@ -236,6 +236,7 @@ function div(a: number, b: number): number {
 function sum(num: number): number {
   let sum = 0;
   for (let t = 1; t < 100; t++) {
+    // 直接拦截异常场景，避免频繁抛出异常
     if (num <= 0) {
       console.info('Invalid numbers.');
     }
