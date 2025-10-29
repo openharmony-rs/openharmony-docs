@@ -80,7 +80,7 @@ getFlashMode(): FlashMode
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| [FlashMode](arkts-apis-camera-e.md#flashmode)    | 获取当前设备的闪光灯模式。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| [FlashMode](arkts-apis-camera-e.md#flashmode)    | 获取当前设备的闪光灯模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
