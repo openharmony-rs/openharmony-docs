@@ -96,6 +96,18 @@
 
 
   <!-- @[FlexDirectionColumnReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumnReverse.ets) -->
+  
+  ``` TypeScript
+  Flex({ direction: FlexDirection.ColumnReverse }) {
+    Text('1').width('100%').height(50).backgroundColor('#F5DEB3')
+    Text('2').width('100%').height(50).backgroundColor('#D2B48C')
+    Text('3').width('100%').height(50).backgroundColor('#F5DEB3')
+  }
+  .height(70)
+  .width('90%')
+  .padding(10)
+  .backgroundColor('#AFEEEE')
+  ```
 
   ![zh-cn_image_0000001562940541](figures/zh-cn_image_0000001562940541.png)
 
