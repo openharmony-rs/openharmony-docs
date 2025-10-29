@@ -27,7 +27,7 @@ The choice of channels depends on the scenario, but the system cannot directly p
 
 ### Low-Latency Audio Playback and Recording
 
-Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data to when the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data to when the data is passed to the application through the system interface.
+Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data until the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data until the application receives the captured data.
 
 To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set this through API parameters. For details, see [Audio Latency Management](audio-latency.md).
 
