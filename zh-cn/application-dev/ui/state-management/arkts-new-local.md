@@ -323,6 +323,38 @@
 
 <!-- @[Local_Use_Case_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseObject.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public name: string;
+  @Trace public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info('Tom', 25);
+  @Local localInfo: Info = new Info('Tom', 25);
+
+  build() {
+    Column() {
+      Text(`info: ${this.info.name}-${this.info.age}`) // Text1
+      Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
+      Button('change info&localInfo')
+        .onClick(() => {
+          this.info = new Info('Lucy', 18); // Text1不会刷新
+          this.localInfo = new Info('Lucy', 18); // Text2会刷新
+        })
+    }
+  }
+}
+```
+
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
