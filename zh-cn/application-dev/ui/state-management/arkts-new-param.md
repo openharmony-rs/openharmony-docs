@@ -37,6 +37,66 @@
 
 <!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->
 
+``` TypeScript
+@Observed
+class Region {
+  public x: number;
+  public y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+@Observed
+class Info {
+  public region: Region;
+
+  constructor(x: number, y: number) {
+    this.region = new Region(x, y);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State info: Info = new Info(0, 0);
+
+  build() {
+    Column() {
+      Button('change Info')
+        .onClick(() => {
+          this.info = new Info(100, 100);
+        })
+      Child({
+        region: this.info.region,
+        regionProp: this.info.region,
+        infoProp: this.info,
+        infoLink: this.info,
+        infoState: this.info
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @ObjectLink region: Region;
+  @Prop regionProp: Region;
+  @Prop infoProp: Info;
+  @Link infoLink: Info;
+  @State infoState: Info = new Info(1, 1);
+
+  build() {
+    Column() {
+      Text(`ObjectLink region: ${this.region.x}-${this.region.y}`)
+      Text(`Prop regionProp: ${this.regionProp.x}-${this.regionProp.y}`)
+    }
+  }
+}
+```
+
 在上面的示例中，\@State仅能在初始化时接收info的引用，改变info之后无法同步。\@Prop虽然能够进行单向同步，但是对于较复杂的类型来说，深拷贝性能较差。\@Link能够接受传入的引用进行双向同步，但它必须要求数据源也是状态变量，因此无法接受info中的成员属性region。\@ObjectLink能够接受类成员属性，但是要求该属性类型必须为\@Observed装饰的类。装饰器的不同限制使得父子组件之间的传值规则复杂、不易使用。因此推出\@Param装饰器，表示组件从外部传入的状态。
 
 ## 装饰器说明
