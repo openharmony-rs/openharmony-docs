@@ -1397,7 +1397,7 @@ try {
 
 removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户删除不可关停应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执；已安装的应用将被删除，未安装的应用不影响删除操作。
+为指定用户删除不可关停应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1577,7 +1577,7 @@ try {
 
 removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户删除后台防冻结应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执；已安装的应用将被删除，未安装的应用不影响删除操作。
+为指定用户删除后台防冻结应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
