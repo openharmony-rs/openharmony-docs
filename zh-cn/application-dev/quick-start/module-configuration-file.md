@@ -1398,21 +1398,25 @@ systemTheme标签示例：
 // [Start module_fileContextMenu]
 // [Start module_appEnvironments]
 // [Start module_abilities_metadata]
+// [Start module_pages]
 {
   // [StartExclude module_abilities_skills]
   "module": {
+    // [StartExclude module_pages]
     // [StartExclude module_abilities_metadata]
     // [StartExclude module_appEnvironments]
-	// ···
+    // ···
     "systemTheme": "$profile:theme_config", // 资源配置，指向profile下面定义的配置文件theme_config.json
     // [EndExclude module_metadata]
     // [EndExclude module_all]
     // [EndExclude module_fileContextMenu]
     // [EndExclude module_appEnvironments]
     // [EndExclude module_abilities_metadata]
+    // [EndExclude module_pages]
   }
   // [EndExclude module_abilities_skills]
 }
+// [End module_pages]
 // [End module_abilities_metadata]
 // [End module_appEnvironments]
 // [End module_fileContextMenu]
