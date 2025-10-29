@@ -48,10 +48,9 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
