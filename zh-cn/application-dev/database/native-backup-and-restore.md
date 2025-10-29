@@ -57,6 +57,22 @@ OH_Rdb_CloseStore(store);
 
 <!-- @[rdb_OH_Rdb_Restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+OH_Rdb_ConfigV2 *config2 = OH_Rdb_CreateConfig();
+OH_Rdb_SetDatabaseDir(config2, "/data/storage/el2/database");
+OH_Rdb_SetArea(config2, RDB_SECURITY_AREA_EL2);
+OH_Rdb_SetStoreName(config2, "RdbRestoreTest.db");
+OH_Rdb_SetSecurityLevel(config2, OH_Rdb_SecurityLevel::S3);
+OH_Rdb_SetBundleName(config2, "com.example.nativedemo");
+int errCode2 = 0;
+OH_Rdb_Store *store2 = OH_Rdb_CreateOrOpen(config2, &errCode2);
+    
+// 恢复数据库
+int result2 =
+  OH_Rdb_Restore(store2, "/data/storage/el2/database/RdbTest_bak.db");
+OH_Rdb_CloseStore(store2);
+```
+
 5. 调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理。
 
     从API version 22开始，支持注册数据库异常处理，开发者可根据需要调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理。
