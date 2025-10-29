@@ -488,6 +488,39 @@ struct MapSample {
 
 <!-- @[Local_Use_Case_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseSet.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct SetSample {
+  @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.message.entries()), (item: [number, number]) => { // 遍历Set的元素并渲染UI
+          Text(`${item[0]}`).fontSize(30)
+          Divider()
+        })
+        Button('init set').onClick(() => { // 按钮1：更新Set为初始状态
+          this.message = new Set([0, 1, 2, 3, 4]);
+        })
+        Button('set new one').onClick(() => { // 按钮2：添加新元素5
+          this.message.add(5);
+        })
+        Button('clear').onClick(() => { // 按钮3：清空Set
+          this.message.clear();
+        })
+        Button('delete the first one').onClick(() => { // 按钮4：删除元素0
+          this.message.delete(0);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 联合类型
 
 \@Local支持null、undefined以及联合类型。在下面的示例中，count类型为number | undefined，点击改变count的类型，UI会随之刷新。
