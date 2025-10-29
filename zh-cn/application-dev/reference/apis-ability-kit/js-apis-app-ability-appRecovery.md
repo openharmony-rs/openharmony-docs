@@ -23,9 +23,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -42,9 +42,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -59,9 +59,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -80,9 +80,9 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -127,9 +127,9 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 **示例：**
     
@@ -159,13 +159,13 @@ saveAppState(): boolean
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
-
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Dyn起始版本**：9
 
 **返回值：**
 
@@ -205,9 +205,9 @@ saveAppState(context?: UIAbilityContext): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：10
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
@@ -253,9 +253,9 @@ setRestartWant(want: Want): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTs-Dyn起始版本**：10
 
-**ArkTs-Sta起始版本：** 20
+**ArkTs-Sta起始版本**：20
 
 **参数：**
 
