@@ -778,6 +778,7 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 | -------- | -------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 14000002 | Invalid uri. |
 | 22400004 | Exceed the maximum limit.                                                                                                                                                         |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
