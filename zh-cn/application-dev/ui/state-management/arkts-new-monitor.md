@@ -511,6 +511,44 @@ struct Index {
 
 <!-- @[monitor_decorator_last_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorLastWrite.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Frequency {
+  // 监听的属性值，值的类型为数量
+  @Trace public count: number = 0;
+
+  @Monitor('count')
+  onCountChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `count change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  frequency: Frequency = new Frequency();
+
+  build() {
+    Column() {
+      Button('change count to 1000')
+        .onClick(() => {
+          for (let i = 1; i <= 1000; i++) {
+            this.frequency.count = i;
+          }
+        })
+      Button('change count to 0 then to 1000')
+        .onClick(() => {
+          for (let i = 999; i >= 0; i--) {
+            this.frequency.count = i;
+          }
+          this.frequency.count = 1000; // 最终不触发onCountChange方法
+        })
+    }
+  }
+}
+```
+
 在点击按钮"change count to 1000"后，会触发一次onCountChange方法，并输出日志"count change from 0 to 1000"。在点击按钮"change count to 0 then to 1000"后，由于事件前后属性count的值并没有改变，都为1000，所以不触发onCountChange方法。
 
 ## 限制条件
