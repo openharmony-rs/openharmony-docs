@@ -216,6 +216,74 @@ private:
 
 <!-- @[waterflow_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/waterflow.h) -->
 
+``` C
+// waterflow.h
+#ifndef MYAPPLICATION_WATERFLOW_H
+#define MYAPPLICATION_WATERFLOW_H
+  
+#include "FlowItemAdapter.h"
+#include "WaterflowSection.h"
+#include "ArkUINode.h"
+  
+namespace NativeModule {
+  
+class ArkUIWaterflowNode : public ArkUINode {
+public:
+    ArkUIWaterflowNode()
+        : ArkUINode(CreateWaterflowNode()) {}
+  
+    ~ArkUIWaterflowNode() override
+    {
+        // 先卸载 adapter
+        if (adapter_ && nativeModule_) {
+            nativeModule_->resetAttribute(handle_, NODE_WATER_FLOW_NODE_ADAPTER);
+            adapter_.reset();
+        }
+        // 销毁分段
+        section_.reset();
+        // 基类会自动 dispose handle_
+    }
+
+    void SetLazyAdapter(const std::shared_ptr<FlowItemAdapter> &adapter)
+    {
+        ArkUI_AttributeItem item{nullptr, 0, nullptr, adapter->GetAdapter()};
+        nativeModule_->setAttribute(handle_, NODE_WATER_FLOW_NODE_ADAPTER, &item);
+        adapter_ = adapter;
+    }
+  
+    void SetSection(const std::shared_ptr<WaterflowSection> &section)
+    {
+        if (!section->GetSectionOptions()) {
+            return;
+        }
+        ArkUI_NumberValue start[] = {{.i32 = 0}};
+        ArkUI_AttributeItem optionsItem = {start, 1, nullptr, section->GetSectionOptions()};
+        nativeModule_->setAttribute(handle_, NODE_WATER_FLOW_SECTION_OPTION, &optionsItem);
+        section_ = section;
+    }
+  
+    std::shared_ptr<WaterflowSection> GetWaterflowSection() { return section_; }
+  
+private:
+    static ArkUI_NodeHandle CreateWaterflowNode()
+    {
+        ArkUI_NativeNodeAPI_1* api = nullptr;
+        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, api);
+        if (!api) {
+            return nullptr;
+        }
+        return api->createNode(ARKUI_NODE_WATER_FLOW);
+    }
+  
+    std::shared_ptr<WaterflowSection> section_ = nullptr;
+    std::shared_ptr<FlowItemAdapter> adapter_;
+};
+  
+} // namespace NativeModule
+  
+#endif // MYAPPLICATION_WATERFLOW_H
+```
+
 
 ## 使用瀑布流
 创建一个ArkUIWaterflowNode类的实例，设置其宽高，并绑定NodeAdapter和分段。
