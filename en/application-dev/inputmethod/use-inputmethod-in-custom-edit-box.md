@@ -44,7 +44,7 @@ In the inputmethod framework, use [getController](../reference/apis-ime-kit/js-a
    }
    ```
 
-3. Obtain an **inputMethodController** instance from the component, call the **attach** API of the instance to bind and start the soft keyboard when the text input box is clicked, and register listeners for text input operations, such as listeners for text insertion and removal in this example.
+3. In the component, obtain an **inputMethodController** instance. When the text is clicked, call the **controller** instance's **attach** method to bind and activate the soft keyboard, and register the input method to listen for text insertion and deletion events. This example only demonstrates insertion and deletion.
 
    ```ets
    import { inputMethod } from '@kit.IMEKit';
