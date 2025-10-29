@@ -46,6 +46,13 @@ libchild_process.so
 
 <!-- @[child_process_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
 
+``` C++
+#include <IPCKit/ipc_kit.h>
+// [StartExclude child_process_must_method]
+#include <AbilityKit/native_child_process.h>
+// [EndExclude child_process_must_method]
+```
+
 1. 子进程-实现必要的导出方法。
 
     在子进程中，实现必要的两个函数**NativeChildProcess_OnConnect**及**NativeChildProcess_MainProc**并导出（假设代码所在的文件名为ChildProcessSample.cpp）。其中NativeChildProcess_OnConnect方法返回的OHIPCRemoteStub对象负责与主进程进行IPC通信，具体实现方法请参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述。
