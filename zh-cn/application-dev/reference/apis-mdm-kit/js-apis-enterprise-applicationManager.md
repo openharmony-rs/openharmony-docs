@@ -1336,7 +1336,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstan
 
 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
 若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
-<br>不可关停应用：用户不能在任务中心上划关闭应用，已添加该策略的应用里面强行停止按钮也置灰不可用。
+<br>不可关停应用：用户不能在任务中心上划关闭应用，已添加该策略的应用中强行停止按钮也呈灰色不可用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1397,7 +1397,7 @@ try {
 
 removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户删除不可关停应用名单。执行该删除策略时，若参数列表中存在未安装应用，参数列表中的已安装应用可以正常删除。
+为指定用户删除不可关停应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执；已安装的应用将被删除，未安装的应用不影响删除操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1516,7 +1516,7 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationIns
 
 为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
 若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
-<br>冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗查杀等操作。
+<br>冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1577,7 +1577,7 @@ try {
 
 removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;ApplicationInstance&gt;): void
 
-为指定用户删除后台防冻结应用名单。执行该删除策略时，若参数列表中存在未安装应用，参数列表中的已安装应用可以正常删除。
+为指定用户删除后台防冻结应用名单。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执；已安装的应用将被删除，未安装的应用不影响删除操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
