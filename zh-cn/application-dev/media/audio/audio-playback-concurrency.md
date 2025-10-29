@@ -359,6 +359,6 @@ AudioSession申请的焦点，跟通过AudioRenderer申请的焦点是同等地�
 > 1. 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)），根据需要处理这些回调即可。
 > 2. 如果AudioSession的焦点被暂停，恢复暂停状态时，只会给AudioSession发送焦点恢复事件，不会再给AudioRenderer发送焦点恢复事件。
 
-### 通过AudioSession管理全局音频输出设备
+### 通过AudioSession查询和监听音频输出设备
 应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，无法灵活控制播放设备的选择和设备状态的监听。因此，从API 20开始，AudioSession不仅增加了焦点管理能力，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。具体API接口说明请参考文档[AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)。
-API接口使用指导请参考[通过AudioSession管理全局音频输出设备](./audio-output-device-management.md)。
+API接口使用指导请参考[通过AudioSession查询和监听音频输出设备](./audio-output-device-management.md#通过audiosession查询和监听音频输出设备)。
