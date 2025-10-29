@@ -3787,5 +3787,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/custom-font-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/CustomFont/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":174,
+						"name":"arkts_custom_font",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/theme-font-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":146,
+						"name":"arkts_theme_font_index",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"arkts_theme_font_entry_ability",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
