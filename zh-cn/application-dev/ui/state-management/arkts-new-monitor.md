@@ -344,6 +344,104 @@ struct Index {
 
 <!-- @[monitor_decorator_array_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorArraySupport.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public name: string;
+  @Trace public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@ObservedV2
+class ArrMonitor {
+  @Trace public dimensionTwo: number[][] = [[1, 1, 1], [2, 2, 2], [3, 3, 3]];
+  @Trace public dimensionThree: number[][][] = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]];
+  @Trace public infoArr: Info[] = [new Info('Jack', 24), new Info('Lucy', 18)];
+
+  // dimensionTwo为二维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
+  @Monitor('dimensionTwo.0.0','dimensionTwo.1.1')
+  onDimensionTwoChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `dimensionTwo path: ${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+
+  // dimensionThree为三维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
+  @Monitor('dimensionThree.0.0.0','dimensionThree.1.1.0')
+  onDimensionThreeChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `dimensionThree path: ${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+
+  // Info类中属性name、age均被@Trace装饰，能够监听到变化
+  @Monitor('infoArr.0.name','infoArr.1.age')
+  onInfoArrPropertyChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `infoArr path:${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+
+  // infoArr被@Trace装饰，能够监听到infoArr整体赋值的变化
+  @Monitor('infoArr')
+  onInfoArrChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `infoArr whole change`);
+  }
+
+  // 能够监听到infoArr的长度变化
+  @Monitor('infoArr.length')
+  onInfoArrLengthChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `infoArr length change`);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  arrMonitor: ArrMonitor = new ArrMonitor();
+
+  build() {
+    Column() {
+      Button('Change dimensionTwo')
+        .onClick(() => {
+          // 能够触发onDimensionTwoChange方法
+          this.arrMonitor.dimensionTwo[0][0]++;
+          this.arrMonitor.dimensionTwo[1][1]++;
+        })
+      Button('Change dimensionThree')
+        .onClick(() => {
+          // 能够触发onDimensionThreeChange方法
+          this.arrMonitor.dimensionThree[0][0][0]++;
+          this.arrMonitor.dimensionThree[1][1][0]++;
+        })
+      Button('Change info property')
+        .onClick(() => {
+          // 能够触发onInfoArrPropertyChange方法
+          this.arrMonitor.infoArr[0].name = 'Tom';
+          this.arrMonitor.infoArr[1].age = 19;
+        })
+      Button('Change whole infoArr')
+        .onClick(() => {
+          // 能够触发onInfoArrChange、onInfoArrPropertyChange、onInfoArrLengthChange方法
+          this.arrMonitor.infoArr = [new Info('Cindy', 8)];
+        })
+      Button('Push new info to infoArr')
+        .onClick(() => {
+          // 能够触发onInfoArrPropertyChange、onInfoArrLengthChange方法
+          this.arrMonitor.infoArr.push(new Info('David', 50));
+        })
+    }
+  }
+}
+```
+
 - 对象整体改变，但监听的属性不变时，不触发\@Monitor回调。
 
   下面的示例按照Step1-Step2-Step3的顺序点击，表现为代码注释中的行为。
