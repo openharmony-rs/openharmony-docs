@@ -64,8 +64,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { identifySensitiveContent } from '@kit.DataProtectionKit';
 ```
 
-2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。 <br>
-使用该接口的前置条件：链接DLP凭据服务器。
+2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。  
+使用该接口的前置条件：链接DLP凭据服务器。  
 
 	<!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
@@ -109,12 +109,11 @@ prepareForOpenDlpFile() {
   this.openDlpFile(this.uri, this.fileName, file.fd);
     
 }
-```
+```  
 
+&emsp;&emsp;以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上代码需要在module.json5文件中增加ohos.want.action.viewData：
-
-	<!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
+<!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
 
 ``` JSON5
 "skills": [
@@ -130,7 +129,7 @@ prepareForOpenDlpFile() {
 ]
 ```
   
-3. 生成DLP文件。 <br>
+3. 生成DLP文件。  
 使用该接口的前置条件：链接DLP凭据服务器。
 
    [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
@@ -170,7 +169,7 @@ generateDlpFiles() {
 ```
 
 
-4. 查询当前应用是否在沙箱中。 <br>
+4. 查询当前应用是否在沙箱中。  
 使用该接口的前置条件：由demo应用打开DLP文件。
 
 	<!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -190,7 +189,7 @@ isInSandbox() {
 ```
 
 
-5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。 <br>
+5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。  
 使用该接口的前置条件：由demo应用打开DLP文件。
 	<!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
@@ -226,7 +225,7 @@ getDLPSupportedFileTypes() {
 ```
 
 
-7. 判断当前打开文件是否是DLP文件。 <br>
+7. 判断当前打开文件是否是DLP文件。  
 使用该接口的前置条件：需要dlp文件进行判断。
 
 	<!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -293,7 +292,7 @@ subscribe() {
 ```
 
 
-9. 获取DLP文件打开记录。<br>
+9. 获取DLP文件打开记录。  
 使用该接口的前置条件：由demo应用打开DLP文件。
 
 	<!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -313,7 +312,7 @@ getDLPFileAccessRecords() {
 ```
 
 
-10. 获取DLP文件保留沙箱记录。<br>
+10. 获取DLP文件保留沙箱记录。  
 使用该接口的前置条件：由demo应用打开DLP文件。
 
 	<!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -389,7 +388,7 @@ getSandboxAppConfig() {
 ```
 
 
-14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。 <br>
+14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。  
 使用该接口的前置条件：链接DLP凭据服务器。
 
 	<!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -420,7 +419,7 @@ startDLPManagerForResult() {
 ```
 
 
-15. 查询当前系统是否提供DLP特性。 <br>
+15. 查询当前系统是否提供DLP特性。  
 使用该接口的前置条件：链接DLP凭据服务器。
 	<!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
@@ -439,7 +438,7 @@ isDLPFeature() {
 ```
 
 
-16. 设置企业应用防护策略。 <br>
+16. 设置企业应用防护策略。   
 使用该接口的前置条件：链接DLP凭据服务器。
     
     16.1 策略格式。
@@ -508,7 +507,7 @@ setDLPProtectPolicy() {
 ```
 
 
-17. （API 21开始支持）识别指定文件中的敏感内容。 <br>
+17. （API 21开始支持）识别指定文件中的敏感内容。  
 使用该接口的前置条件：链接DLP凭据服务器。
 	<!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
