@@ -24,139 +24,164 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 1. 导入webSocket以及错误码模块。
 
-    ```js
-    import { webSocket } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
 <!-- @[WebSocket_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
 2. 创建WebSocket连接，返回一个WebSocket对象。
 
-    ```js
-    let defaultIpAddress = "ws://";
-    let ws = webSocket.createWebSocket();
-    ```
 <!-- @[WebSocket_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+let defaultIpAddress = 'wss://echo.websocket.org'; // WebSocket地址
+let ws: webSocket.WebSocket = webSocket.createWebSocket();
+```
+
 3. 订阅WebSocket的打开、消息接收、关闭、Error事件（可选），当收到on('open')事件时，可以通过send()方法与服务器进行通信，当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。。
 
-    ```js
-    ws.on('open', (err: BusinessError, value: Object) => {
-      console.log("on open, status:" + JSON.stringify(value));
-      // 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
-    });
-    ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
-      console.log("on message, message:" + value);
-      // 当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
-      if (value === 'bye') {
-        ws.close((err: BusinessError, value: boolean) => {
-          if (!err) {
-            console.log("Connection closed successfully");
-          } else {
-            console.error("Failed to close the connection. Err: " + JSON.stringify(err));
-          }
-        });
+<!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+ws.on('open', (err: BusinessError, value: Object) => {
+  hilog.info(0x0000, 'testTag', 'on open, status:' + JSON.stringify(value));
+  // 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
+// ···
+});
+
+ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+// ···
+  hilog.info(0x0000, 'testTag', 'on message, message:' + value);
+  // 当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
+  if (value === 'bye') {
+    ws!.close((err: BusinessError) => {
+      if (!err) {
+        // ···
+        hilog.info(0x0000, 'testTag', `WebSocket closed successfully`);
+      } else {
+        // ···
+        hilog.error(0x0000, 'testTag', `WebSocket closing failed: ` + JSON.stringify(err));
       }
     });
-    ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
-      console.log("on close, code is " + value.code + ", reason is " + value.reason);
-    });
-    ws.on('error', (err: BusinessError) => {
-      console.error("on error, error:" + JSON.stringify(err));
-    });
-    ```
-<!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+  }
+})
+
+ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
+ hilog.info(0x0000, 'testTag', 'on close, code is ' + value.code + ', reason is ' + value.reason);
+// ···
+});
+
+ws.on('error', (err: BusinessError) => {
+// ···
+  hilog.error(0x0000, 'testTag', 'WebSocket error: ' + JSON.stringify(err));
+});
+```
+
 4. 根据URL地址，发起WebSocket连接。
 
-    ```js
-    ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
-      if (!err) {
-        console.log("Connected successfully");
-      } else {
-        console.error("Connection failed. Err:" + JSON.stringify(err));
-      }
-    });
-    ```
 <!-- @[webSocket_case_object_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
+  if (!err) {
+    hilog.info(0x0000, 'testTag', 'Connected successfully');
+  } else {
+    // ···
+    hilog.error(0x0000, 'testTag', `WebSocket connection failed: ` + JSON.stringify(err));
+  }
+});
+```
+
 5. 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
 
-    ```js
-      ws.send("Hello, server!", (err: BusinessError, value: boolean) => {
-        if (!err) {
-          console.log("Message send successfully");
-        } else {
-          console.error("Failed to send the message. Err:" + JSON.stringify(err));
-        }
-      });
-    ```
 <!-- @[webSocket_case_send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+ws.send('Hello, server!', (err: BusinessError, value: boolean) => {
+  if (!err) {
+    // ···
+    hilog.info(0x0000, 'testTag', 'Message sent successfully');
+  } else {
+    // ···
+    hilog.error(0x0000, 'testTag', `Message sending failed: ` + JSON.stringify(err));
+  }
+});
+```
+
 ## server端开发步骤
 
 1. 导入webSocket以及错误码模块。
 
-    ```js
+    <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+        
+    ``` TypeScript
     import { webSocket } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
-
-    <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
 
 2. 创建WebSocketServer对象。
 
-    ```js
+    <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+        
+    ``` TypeScript
     let localServer: webSocket.WebSocketServer;
     localServer = webSocket.createWebSocketServer();
     ```
 
-    <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
-
 3. 订阅WebSocketServer的客户端连接事件、消息接收事件、关闭事件、Error事件（可选），在收到客户端连接事件后，服务端可以通过send()方法与客户端进行通信，当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
 
-    ```js
+    <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+      
+    ``` TypeScript
     localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
-      console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+      hilog.info(0x0000, 'testTag', `New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
       // 当收到on('connect')事件时，可以通过send()方法与客户端进行通信。
       localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
         if (success) {
-          console.info('message send successfully');
+          hilog.info(0x0000, 'testTag', 'message send successfully');
         } else {
-          console.error('message send failed');
+          hilog.error(0x0000, 'testTag', 'message send failed');
         }
       }).catch((error: BusinessError) => {
-          console.error(`message send failed, Code: ${error.code}, message: ${error.message}`);
+        hilog.error(0x0000, 'testTag', `message send failed, Code: ${error.code}, message: ${error.message}`);
       });
     });
     
     localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
-      try{
-        console.info(`on message received, client: ${message.clientConnection}, data: ${message.data}`);
+      try {
+        hilog.info(0x0000, 'testTag', `on message received, client: ${message.clientConnection}, data: ${message.data}`);
         // 当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
         if (message.data === 'bye') {
           localServer.close(message.clientConnection).then((success: boolean) => {
             if (success) {
-              console.info('close client successfully');
+              hilog.info(0x0000, 'testTag', 'close client successfully');
             } else {
-              console.error('close client failed');
+              hilog.error(0x0000, 'testTag', 'close client failed');
             }
           });
         }
       } catch (error) {
-        console.error(`on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
+        hilog.error(0x0000, 'testTag', `on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
       }
     });
     
     localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-      console.info(`client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
+      hilog.info(0x0000, 'testTag', `client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
     });
     
     localServer.on('error', (error: BusinessError) => {
-      console.error(`error. Code: ${error.code}, message: ${error.message}`);
+      hilog.error(0x0000, 'testTag', `error. Code: ${error.code}, message: ${error.message}`);
     });
     ```
 
-    <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
-
 4. 配置config参数启动server端服务。
 
-    ```js
+    <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+        
+    ``` TypeScript
     let config: webSocket.WebSocketServerConfig = {
       // 监听端口。
       serverPort: 8080,
@@ -165,48 +190,52 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
     }
     localServer.start(config).then((success: boolean) => {
       if (success) {
-        console.info('webSocket server start success');
+        hilog.info(0x0000, 'testTag', 'WebSocket server started successfully');
       } else {
-        console.error('websocket server start failed');
+        hilog.error(0x0000, 'testTag', 'Failed to start WebSocket server');
       }
     }).catch((error: BusinessError) => {
-      console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
+      hilog.error(0x0000, 'testTag', `Failed to start. Code: ${error.code}, message: ${error.message}`);
     });
     ```
-
-    <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
 
 5. 服务端监听所有客户端连接状态（可选）。
 
-    ```js
-    let connections: webSocket.WebSocketConnection[] = [];
-    try {
-      connections = await localServer.listAllConnections();
-      if (connections.length === 0) {
-        console.info('client list is empty');
-      } else {
-        console.error(`client list cnt: ${connections.length}, client connections list is: ${connections}`);
-      }
-    } catch (error) {
-      console.error(`Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
-    }
-    ```
-
     <!-- @[WebSocket_server_connections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+        
+    ``` TypeScript
+    let connections: webSocket.WebSocketConnection[] = [];
+    
+    // ···
+      try {
+        connections = await localServer.listAllConnections();
+        if (connections.length === 0) {
+          hilog.info(0x0000, 'testTag', 'client list is empty');
+        // ···
+        } else {
+          hilog.info(0x0000, 'testTag', `client list cnt: ${connections.length}, client connections list is: ${connections}`);
+        }
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', `Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
+        // ···
+      }
+    ```
 
 6. 需要关闭WebSocketServer端服务器时，可以通过stop()停止服务。
 
-    ```js
+    <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+        
+    ``` TypeScript
     localServer.stop().then((success: boolean) => {
       if (success) {
-        console.info('server stop service successfully');
+        hilog.info(0x0000, 'testTag', 'server stop service successfully');
+        // ···
       } else {
-        console.error('server stop service failed');
+        hilog.error(0x0000, 'testTag', 'server stop service failed');
+        // ···
       }
     });
     ```
-
-    <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
 
 ## 相关实例
 
