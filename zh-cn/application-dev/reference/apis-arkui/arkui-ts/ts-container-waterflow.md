@@ -1370,7 +1370,7 @@ struct WaterFlowDemo {
 
   // 组件生命周期：初始化数据和恢复上次的列数设置
   aboutToAppear() {
-    // 读取上次最后切换到到列数
+    // 读取上次最后切换到的列数
     let lastCount = AppStorage.get<number>('columnsCount');
     if (typeof lastCount != 'undefined') {
       this.columns = lastCount;
