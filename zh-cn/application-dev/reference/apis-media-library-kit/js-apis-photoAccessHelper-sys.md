@@ -10049,7 +10049,7 @@ async function example(context: Context) {
 
 ## SupportedImageFormat<sup>20+</sup>
 
-枚举支持转换的图片格式。
+枚举,支持转换的图片格式。
 
 **系统接口**：此接口为系统接口。
 
