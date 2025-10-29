@@ -257,6 +257,39 @@
    【正例】
 
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
+   
+   ``` TypeScript
+   @Component
+   struct Child {
+     @Consume num: number;
+     // 正确写法 从API version 20开始，@Consume装饰的变量支持设置默认值
+     @Consume numWithDefaultValue: number = 6;
+   
+     build() {
+       Column() {
+         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
+         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
+         // $r('app.string.provide_consume_proper_demo_text_03') 需要更换为开发者所需的字符串资源文件
+         Text($r('app.string.provide_consume_proper_demo_text_03', this.numWithDefaultValue))
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     // 正确写法
+     @Provide num: number = 10;
+   
+     build() {
+       Column() {
+         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
+         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
+         Child()
+       }
+     }
+   }
+   ```
 
 5. \@Provide与\@Consume不支持装饰Function类型的变量，框架会抛出运行时错误。
 
