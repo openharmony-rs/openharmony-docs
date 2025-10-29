@@ -204,7 +204,7 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像。  |
-|  scale |  number |  是 |  目标缩放比例（在满足[上述分辨率范围](#enhancedetail)的前提下，最高支持32倍放大）。 |
+|  scale |  number |  是 |  目标缩放比例。取值范围(0.0, 32.0]（在满足[上述分辨率范围](#enhancedetail)的前提下，最高支持32倍放大）。 |
 |  level | [QualityLevel](#qualitylevel)| 否  |  算法档位（HIGH、MEDIUM、LOW、NONE），默认为NONE。 |
 
 **返回值：**
@@ -302,7 +302,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | 是  | 输入图像。  |
-|  scale |  number |  是 |  目标缩放比例（在满足[上述分辨率范围](#enhancedetailsync)的前提下，最高支持32倍放大）。 |
+|  scale |  number |  是 |  目标缩放比例。取值范围(0.0, 32.0]（在满足[上述分辨率范围](#enhancedetail)的前提下，最高支持32倍放大）。 |
 |  level | [QualityLevel](#qualitylevel)| 否  |  算法档位（HIGH、MEDIUM、LOW、NONE），默认为NONE。 |
 
 **返回值：**
