@@ -1,5 +1,11 @@
 # Subscribing to Notifications (for System Applications Only)
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 To receive notifications, an application must subscribe to notifications first. The notification subsystem provides two types of subscription APIs, allowing applications to subscribe to notifications from all applications or notifications from a specific application.
 
@@ -25,7 +31,7 @@ The major APIs for notification subscription are described as follows. For detai
 
 **Table 1** Major APIs for notification subscription
 
-| API| Description|
+| **API**| **Description**|
 | -------- | -------- |
 | subscribe(subscriber:&nbsp;NotificationSubscriber,&nbsp;info:&nbsp;NotificationSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Subscribes to notifications from a specific application.|
 | subscribe(subscriber:&nbsp;NotificationSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Subscribes to notifications from all applications.    |
@@ -34,7 +40,7 @@ The major APIs for notification subscription are described as follows. For detai
 
 For details about the API, see [NotificationSubscriber](../reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md).
 
-| API| Description|
+| **API**| **Description**|
 | -------- | -------- |
 | onConsume?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void  | Callback for receiving notifications.              |
 | onCancel?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void   | Callback for canceling notifications.          |
@@ -50,7 +56,7 @@ For details about the API, see [NotificationSubscriber](../reference/apis-notifi
 
 ## How to Develop
 
-1. Request the **ohos.permission.NOTIFICATION_CONTROLLER** permission. For details, see [Requesting Application Permissions](https://gitee.com/openharmony/docs/blob/master/en/application-dev/security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+1. Request the ohos.permission.NOTIFICATION_CONTROLLER permission. For details, see [Requesting Application Permissions](https://gitee.com/openharmony/docs/blob/master/en/application-dev/security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
 2. Import the **notificationSubscribe** module.
    
