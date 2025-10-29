@@ -305,6 +305,64 @@ class B {}
 在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
 
+``` TypeScript
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+
+@Builder
+function buildText() {
+  Column() {
+    Child()
+  }
+}
+
+class TextNodeController extends NodeController {
+  private builderNode: BuilderNode<[]> | null = null;
+
+  constructor() {
+    super();
+  }
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.builderNode = new BuilderNode(context);
+    // 配置跨BuilderNode支持@Provide/@Consume
+    this.builderNode.build(wrapBuilder(buildText), undefined,
+      { enableProvideConsumeCrossing: true });
+    // 将BuilderNode的根节点挂载到NodeContainer
+    return this.builderNode.getFrameNode();
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @Provide message: string = 'hello';
+  controller: TextNodeController = new TextNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.controller)
+        .width('100%')
+        .height(100)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+
+@Component
+struct Child {
+  // Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
+  @Consume message: string = '';
+
+  build() {
+    Column() {
+      Text(`@Consume ${this.message}`)
+    }
+  }
+}
+```
+
 ## 使用场景
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击ToDo和ToDoItem组件内的Button时，count的更改会双向同步在ToDo和ToDoItem中。
