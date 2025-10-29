@@ -3693,6 +3693,71 @@
 						"end_line":1091,
 						"name":"complex_text_c_line_spacing_text",
 						"start_line":1065
+					},
+					{
+						"end_line":84,
+						"name":"complex_text_c_multilingual_text",
+						"start_line":45
+					},
+					{
+						"end_line":138,
+						"name":"complex_text_c_break_all_text",
+						"start_line":89
+					},
+					{
+						"end_line":422,
+						"name":"complex_text_c_decoration_text",
+						"start_line":366
+					},
+					{
+						"end_line":483,
+						"name":"complex_text_c_font_feature_text",
+						"start_line":427
+					},
+					{
+						"end_line":546,
+						"name":"complex_text_c_font_variation_text",
+						"start_line":489
+					},
+					{
+						"end_line":611,
+						"name":"complex_text_c_shadow_text",
+						"start_line":551
+					},
+					{
+						"end_line":680,
+						"name":"complex_text_c_placeholder_text",
+						"start_line":616
+					},
+					{
+						"end_line":741,
+						"name":"complex_text_c_auto_space_text",
+						"start_line":685
+					},
+					{
+						"end_line":786,
+						"name":"complex_text_c_gradient_text",
+						"start_line":746
+					},
+					{
+						"end_line":820,
+						"name":"complex_text_c_vertical_alignment_text",
+						"start_line":791
+					},
+					{
+						"end_line":860,
+						"name":"complex_text_c_badge_text",
+						"start_line":825
+					},
+					{
+						"end_line":901,
+						"name":"complex_text_c_high_contrast_text",
+						"start_line":865
+					},
+					{
+						"end_line":993,
+						"name":"complex_text_c_style_copy_text",
+						"start_line":907
 					}
 				]
 			}
