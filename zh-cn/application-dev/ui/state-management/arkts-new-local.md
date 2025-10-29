@@ -125,6 +125,52 @@
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1V2混用文档](../state-management/arkts-v1-v2-mixusage.md)。
 
   <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
+  
+  ``` TypeScript
+  class RawObject {
+    public name: string;
+  
+    constructor(name: string) {
+      this.name = name;
+    }
+  }
+  
+  @ObservedV2
+  class ObservedObject {
+    @Trace public name: string;
+  
+    constructor(name: string) {
+      this.name = name;
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct Index {
+    @Local rawObject: RawObject = new RawObject('rawObject');
+    @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
+    build() {
+      Column() {
+        Text(`${this.rawObject.name}`)
+        Text(`${this.observedObject.name}`)
+        Button('change object')
+          .onClick(() => {
+            // 对类对象整体的修改均能观察到
+            this.rawObject = new RawObject('new rawObject');
+            this.observedObject = new ObservedObject('new observedObject');
+          })
+        Button('change name')
+          .onClick(() => {
+            // @Local不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
+            this.rawObject.name = 'new rawObject name';
+            // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
+            this.observedObject.name = 'new observedObject name';
+          })
+      }
+    }
+  }
+  ```
 
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
