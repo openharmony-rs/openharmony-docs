@@ -67,7 +67,7 @@ import { identifySensitiveContent } from '@kit.DataProtectionKit';
 2. 打开DLP文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
 
-<!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 openDlpFile(dlpUri: string, fileName: string, fd: number) {
@@ -114,7 +114,7 @@ prepareForOpenDlpFile() {
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
-<!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
+	<!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
 
 ``` JSON5
 "skills": [
@@ -140,7 +140,7 @@ prepareForOpenDlpFile() {
     3.2 首先要有一个DLP权限应用有读写权限的(比如文件管理的文档目录下)并且属于以上文件类型之一的原文件。
 
     3.3 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。调用以下代码，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
-<!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 generateDlpFiles() {
@@ -173,7 +173,7 @@ generateDlpFiles() {
 4. 查询当前应用是否在沙箱中。 <br>
 使用该接口的前置条件：由demo应用打开DLP文件。
 
-<!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 isInSandbox() {
@@ -192,7 +192,7 @@ isInSandbox() {
 
 5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。 <br>
 使用该接口的前置条件：由demo应用打开DLP文件。
-<!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 getDLPPermissionInfo() {
@@ -211,7 +211,7 @@ getDLPPermissionInfo() {
 
 6. 获取当前可支持DLP方案的文件扩展名类型列表，用于应用判断能否生成DLP文件，可用在实现类似文件管理器设置DLP权限的场景。
 
-<!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 getDLPSupportedFileTypes() {
@@ -229,7 +229,7 @@ getDLPSupportedFileTypes() {
 7. 判断当前打开文件是否是DLP文件。 <br>
 使用该接口的前置条件：需要dlp文件进行判断。
 
-<!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 isCurrentDlpFile() {
@@ -259,7 +259,7 @@ isCurrentDlpFile() {
 
 8. 订阅、取消订阅DLP打开事件。
 
-<!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 event(info: dlpPermission.AccessedDLPFileInfo) {
@@ -296,7 +296,7 @@ subscribe() {
 9. 获取DLP文件打开记录。<br>
 使用该接口的前置条件：由demo应用打开DLP文件。
 
-<!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 getDLPFileAccessRecords() {
@@ -316,7 +316,7 @@ getDLPFileAccessRecords() {
 10. 获取DLP文件保留沙箱记录。<br>
 使用该接口的前置条件：由demo应用打开DLP文件。
 
-<!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 getRetentionSandboxList() {
@@ -335,7 +335,7 @@ getRetentionSandboxList() {
 
 11. 设置沙箱应用配置信息。
 
-<!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 setSandboxAppConfig() {
@@ -354,7 +354,7 @@ setSandboxAppConfig() {
 
 12. 清理沙箱应用配置信息。
 
-<!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 cleanSandboxAppConfig() {
@@ -372,7 +372,7 @@ cleanSandboxAppConfig() {
 
 13. 查询沙箱应用配置信息。
 
-<!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 getSandboxAppConfig() {
@@ -392,7 +392,7 @@ getSandboxAppConfig() {
 14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
 
-<!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 startDLPManagerForResult() {
@@ -422,7 +422,7 @@ startDLPManagerForResult() {
 
 15. 查询当前系统是否提供DLP特性。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
-<!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 isDLPFeature() {
@@ -471,7 +471,7 @@ isDLPFeature() {
     | DebugMode | 1 <br> 2 | 整型 | 1：该设备已开启调试模式。<br>2：该设备未开启调试模式。 |
     | AdvancedSecurityMode | 1 <br> 2 | 整型 | 1：该设备已开启高级安全模式。<br>2：该设备未开启高级安全模式。  |
 
-<!-- @[dlp_setDLPProtectPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_setDLPProtectPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 setDLPProtectPolicy() {
@@ -510,7 +510,7 @@ setDLPProtectPolicy() {
 
 17. （API 21开始支持）识别指定文件中的敏感内容。 <br>
 使用该接口的前置条件：链接DLP凭据服务器。
-<!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 scanSensitiveInfo() {
