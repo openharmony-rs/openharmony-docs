@@ -100,7 +100,7 @@ Native side
 
 The following figure shows the core development process.
 
-![Development process](figures/XComponent development process .png)
+![Development process](figures/XComponent-development-process.png)
 
 The following uses the SURFACE type as an example to describe how to use the **XComponent** to pass in **SurfaceId** on the ArkTS side, create a **NativeWindow** instance on the native side, then create an EGL/GLES environment, implement drawing graphics on the main page, and change the graphics color.
 
