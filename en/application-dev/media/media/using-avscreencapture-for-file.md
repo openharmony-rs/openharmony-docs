@@ -294,7 +294,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // Initialize AVScreenCapture.
     int32_t retInit = OH_AVScreenCapture_Init(capture, config);
 
-    // Optional (supported since API version 20) Set the coordinates and size of the area to capture. For example, the following creates a rectangle area starting at (0, 0) with a length of 100 and a width of 100. This API can also be set after screen capture starts.
+    // Optional (supported since API version 20) Set the coordinates and size of the area to capture. The example below creates a 100 px * 100 px rectangle area starting at (0, 0). This API can also be set after screen capture starts.
     OH_Rect* region = new OH_Rect;
     region->x = 0;
     region->y = 0;

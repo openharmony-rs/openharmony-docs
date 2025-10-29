@@ -523,5 +523,5 @@ Effect resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| enable | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
+| enabled | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
 | effectId | string  | Yes| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**. It is used to create an effect.|
