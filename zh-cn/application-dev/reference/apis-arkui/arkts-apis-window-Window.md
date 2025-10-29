@@ -1429,7 +1429,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 
 **系统能力**：SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1508,9 +1508,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 **设备行为差异：** 
 
-API version 14之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+API version 14之前，该接口在所有设备中可正常调用。
 
-从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1581,9 +1581,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **设备行为差异：** 
 
-API version 14之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+API version 14之前，该接口在所有设备中可正常调用。
 
-从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1686,15 +1686,17 @@ try {
 
 setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
-设置窗口是否使能延迟抬升，仅主窗和子窗可设置。<br>
-不调用此接口或传入false，主窗和子窗在鼠标左键按下时，默认立即抬升。<br>
+设置窗口是否使能延迟抬升，仅主窗和子窗可设置。
+
+不调用此接口或传入false，主窗和子窗在鼠标左键按下时，默认立即抬升。
+
 调用此接口使能延迟抬升后，在跨窗拖拽场景，可拖拽组件所在窗口在鼠标左键按下时不会立即抬升，直到鼠标左键抬起。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用； 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码，在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用； 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -1808,9 +1810,9 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **设备行为差异：** 
 
-API version 12之前，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+API version 12之前，该接口在所有设备中可正常调用。
 
-从API version 12开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从API version 12开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1884,9 +1886,9 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **设备行为差异：** 
 
-API version 12之前，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+API version 12之前，该接口在所有设备中可正常调用。
 
-从API version 12开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从API version 12开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1959,7 +1961,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -2094,7 +2096,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -6700,7 +6702,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+**设备行为差异：** 接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -6860,7 +6862,7 @@ recover(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+**设备行为差异：** 接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
 
 **返回值：**
 
@@ -7073,9 +7075,9 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **设备行为差异：** 
 
-API version 19之前，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上（仅2in1设备）可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+API version 19之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从API version 19开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+从API version 19开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -7885,7 +7887,7 @@ try {
 
 createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;Window&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
+创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7893,7 +7895,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备类型中返回undefined。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回undefined。
 
 **参数：**
 
@@ -8122,7 +8124,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **需要权限：** ohos.permission.WINDOW_TOPMOST
 
@@ -8615,7 +8617,7 @@ startMoving(): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在Phone设备、2in1设备和Tablet设备上可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -8709,7 +8711,7 @@ struct Index {
 
 startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于指定鼠标在窗口内的位置并移动窗口，使用Promise异步回调。
+指定鼠标在窗口内的位置并移动窗口，使用Promise异步回调。
 
 在同应用内窗口分合后，且鼠标保持按下状态直接移动新窗口，如果此时鼠标快速移动，窗口移动时鼠标可能会在窗口外。可以使用本接口指定窗口移动时鼠标在窗口内的位置，先移动窗口到鼠标位置，再开始移动窗口。
 
@@ -8719,7 +8721,7 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8823,7 +8825,7 @@ stopMoving(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -9251,7 +9253,7 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备（除Tablet设备）上调用返回801错误码，在Tablet设备且不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时调用不生效也不报错；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备（除Tablet设备）上调用返回801错误码，在不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的Tablet设备上调用不生效也不报错；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -9904,9 +9906,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 **设备行为差异：** 
 
-API version 14之前，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+API version 14之前，该接口在所有设备中可正常调用。
 
-从API version 14开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从API version 14开始，接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
