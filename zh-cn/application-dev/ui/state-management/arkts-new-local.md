@@ -361,6 +361,39 @@ struct Index {
 
 <!-- @[Local_Use_Case_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseArray.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local count: number[] = [1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.count, (item: number) => {
+          Text(`${item}`).fontSize(30)
+          Divider()
+        })
+        Button('init array').onClick(() => {
+          this.count = [9, 8, 7];
+        })
+        Button('push').onClick(() => {
+          this.count.push(0);
+        })
+        Button('reverse').onClick(() => {
+          this.count.reverse();
+        })
+        Button('fill').onClick(() => {
+          this.count.fill(6);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 
 
 ### 装饰Date类型变量
