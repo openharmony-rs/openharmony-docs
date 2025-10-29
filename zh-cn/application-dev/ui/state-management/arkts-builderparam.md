@@ -32,6 +32,38 @@
 
 <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @Builder
+  componentBuilder() {
+    Text(`Parent builder `)
+  }
+
+  build() {
+    Column() {
+      Child({ customBuilderParam: this.componentBuilder })
+    }
+  }
+}
+```
+
 **图1** 示例效果图
 
 ![builderparam-demo1](figures/builderparam-demo1.png)
