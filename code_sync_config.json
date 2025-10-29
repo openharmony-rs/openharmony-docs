@@ -2335,6 +2335,36 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets",
+				"functions":[
+					{
+						"end_line":140,
+						"name":"arkts_complex_style_example6_text",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets",
+				"functions":[
+					{
+						"end_line":142,
+						"name":"arkts_complex_style_example7_text",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets",
+				"functions":[
+					{
+						"end_line":140,
+						"name":"arkts_complex_style_example8_text",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -3608,6 +3638,36 @@
 						"end_line":375,
 						"name":"custom_font_c_disable_system_font_text_step2",
 						"start_line":352
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/text-measure-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/TextMetrics/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":165,
+						"name":"ts_text_metrics_total",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/text-measure-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp",
+				"functions":[
+					{
+						"end_line":224,
+						"name":"c_text_metrics_get_all_case",
+						"start_line":193
 					}
 				]
 			}
