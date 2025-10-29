@@ -18,7 +18,7 @@
       - [自定义组件成员属性访问限定符使用限制](state-management/arkts-custom-components-access-restrictions.md)
       - [自定义组件复用](state-management/arkts-component-reusable.md)   
         - [自定义组件复用（V1）](state-management/arkts-reusable.md)   
-        - [自定义组件复用（V2）](state-management/arkts-component-reusableV2.md) 
+        - [自定义组件复用（V2）](state-management/arkts-new-reusableV2.md) 
       - [自定义组件冻结](state-management/arkts-component-freeze-inactive.md)
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
