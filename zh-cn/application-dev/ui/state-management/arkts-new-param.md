@@ -124,6 +124,52 @@ struct Child {
 - 当装饰的变量类型为boolean、string、number类型时，可观察数据源同步变化。
 
  <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) -->
+ 
+ ``` TypeScript
+ @Entry
+ @ComponentV2
+ struct Index {
+   // 点击的次数
+   @Local count: number = 0;
+   @Local message: string = 'Hello';
+   @Local flag: boolean = false;
+ 
+   build() {
+     Column() {
+       Text(`Local ${this.count}`)
+       Text(`Local ${this.message}`)
+       Text(`Local ${this.flag}`)
+       Button('change Local')
+         .onClick(() => {
+           // 对数据源的更改会同步给子组件
+           this.count++;
+           this.message += ' World';
+           this.flag = !this.flag;
+         })
+       Child({
+         count: this.count,
+         message: this.message,
+         flag: this.flag
+       })
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct Child {
+   @Require @Param count: number;
+   @Require @Param message: string;
+   @Require @Param flag: boolean;
+ 
+   build() {
+     Column() {
+       Text(`Param ${this.count}`)
+       Text(`Param ${this.message}`)
+       Text(`Param ${this.flag}`)
+     }
+   }
+ }
+ ```
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。
 
