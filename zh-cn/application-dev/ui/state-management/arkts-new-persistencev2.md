@@ -520,6 +520,65 @@ struct Page1 {
 
 <!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage2.ets) -->
 
+``` TypeScript
+// 模块2
+import { PersistenceV2, Type } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+// 接受序列化失败的回调
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
+});
+
+@ObservedV2
+class SampleChild {
+  // 不同模块应用持久化Key globalConnect1:点击的数量，默认为0，如果点击后退出再次进入，则默认为持久化的数量
+  @Trace public childId: number = 0;
+  // 不同模块应用持久化Key connect2:点击的数量，默认为1，如果点击后退出再次进入，则默认为持久化的数量
+  public groupId: number = 1;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Type(SampleChild)
+  @Trace public father: SampleChild = new SampleChild();
+}
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // 进入当前页面后点击了多少次
+  @Local a: number = 0;
+  // 使用key:global1连接，传入加密等级为EL1
+  @Local p1: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample() })!;
+  // 使用key:global2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
+  @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
+
+  build() {
+    Column() {
+      /**************************** 显示数据 **************************/
+      Text('Key globalConnect1: ' + this.p1.father.childId.toString())
+        .onClick(() => {
+          this.p1.father.childId += 1;
+        })
+        .fontSize(25)
+        .fontColor(Color.Red)
+      Text('Key connect2: ' + this.p2.father.childId.toString())
+        .onClick(() => {
+          this.p2.father.childId += 1;
+        })
+        .fontSize(25)
+        .fontColor(Color.Red)
+    }
+    .width('100%')
+  }
+}
+```
+
 当开发者对newModule使用不同启动方式会有以下现象：
 
 *   开发者直接启动newModule，分别修改globalConnect1和connect2绑定的变量，例如将childId都改成5。
