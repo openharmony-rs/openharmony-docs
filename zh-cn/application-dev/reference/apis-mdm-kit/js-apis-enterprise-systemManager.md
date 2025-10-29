@@ -313,7 +313,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
-| packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | 是   | 系统更新包信息。 |
+| packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | 是   | 系统更新包信息。<br/>**说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip压缩包，传入其他形式的文件会报9201004错误码。 |
 
 **返回值：**
 
@@ -339,6 +339,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -354,12 +355,36 @@ let description: systemManager.PackageDescription = {
   // 需根据实际情况进行替换
   "notify": notify
 };
-let updatePackages: Array<systemManager.Package> = [{
+let updatePackages: Array<systemManager.Package> = [];
+// 应用沙箱路径，需根据实际情况进行替换
+let fileDir = "/xxxx/xxxx/";
+let path1: string = "update_sd_base.zip";
+let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
+let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
+let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
+let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
+let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let package1: systemManager.Package = {
   // 需根据实际情况进行替换
   "type": systemManager.PackageType.FIRMWARE,
-  "path": "path",
-  "fd": 60
-}];
+  "path": path1,
+  "fd": fd1
+};
+let package2: systemManager.Package = {
+  // 需根据实际情况进行替换
+  "type": systemManager.PackageType.FIRMWARE,
+  "path": path2,
+  "fd": fd2
+};
+let package3: systemManager.Package = {
+  // 需根据实际情况进行替换
+  "type": systemManager.PackageType.FIRMWARE,
+  "path": path3,
+  "fd": fd3
+};
+updatePackages.push(package1);
+updatePackages.push(package2);
+updatePackages.push(package3);
 let updatePackageInfo: systemManager.UpdatePackageInfo = {
   // 需根据实际情况进行替换
   "version" : "1.0",
