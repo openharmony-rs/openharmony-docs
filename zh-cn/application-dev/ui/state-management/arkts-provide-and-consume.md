@@ -943,6 +943,65 @@ struct CustomWidgetChild {
 
 <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideError.ets) -->
 
+``` TypeScript
+class Tmp {
+  public name: string = '';
+}
+
+@Entry
+@Component
+struct HomePage {
+  // 修正点1：将@Provide声明在Entry组件（根作用域），确保子组件能正确消费
+  @Provide('name') name: string = 'abc';
+
+  @Builder
+  builder2($$: Tmp) {
+    // $r('app.string.provide_consume_provide_error_text') 需要更换为开发者所需的字符串资源文件
+    Text($r('app.string.provide_consume_provide_error_text', $$.name))
+  }
+
+  build() {
+    Column() {
+      Button($r('app.string.provide_and_consume_text_1')).onClick(() => {
+        if (this.name == 'ddd') {
+          this.name = 'abc';
+        } else {
+          this.name = 'ddd';
+        }
+      })
+      // 修正点2：CustomWidget不再声明@Provide，仅作为容器传递builder
+      CustomWidget() {
+        CustomWidgetChild({ builder: this.builder2 })
+      }
+    }
+  }
+}
+
+@Component
+struct CustomWidget {
+  @BuilderParam
+  builder: () => void;
+
+  build() {
+    this.builder()
+  }
+}
+
+@Component
+struct CustomWidgetChild {
+  // 修正点3：@Consume从根作用域（HomePage）获取@Provide('name')，作用域正确
+  @Consume('name') name: string;
+  @BuilderParam
+  builder: ($$: Tmp) => void;
+
+  build() {
+    Column() {
+      this.builder({ name: this.name })
+    }
+  }
+}
+```
+
 ### 使用a.b(this.object)形式调用，不会触发UI刷新
 
 在build方法内，当@Provide与@Consume装饰的变量是Object类型、且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法或者使用this调用组件内部方法，修改组件中的this.dog.age与this.dog.name时，UI不会刷新。
