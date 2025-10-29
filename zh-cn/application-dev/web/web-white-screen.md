@@ -22,6 +22,14 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 * 
 <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
 
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
+
 * 开启相关权限：
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
