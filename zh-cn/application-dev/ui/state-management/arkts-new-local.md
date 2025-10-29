@@ -555,6 +555,29 @@ struct Index {
 
 <!-- @[Local_Question_Spark_Update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionSparkUpdate.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  list: string[][] = [['a'], ['b'], ['c']];
+  @Local dataObjFromList: string[] = this.list[0];
+
+  @Monitor('dataObjFromList')
+  onStrChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObjFromList has changed');
+  }
+
+  build() {
+    Column() {
+      Button('change to self').onClick(() => {
+        // 新值和本地初始化的值相同
+        this.dataObjFromList = this.list[0];
+      })
+    }
+  }
+}
+```
+
 以上示例每次点击Button('change to self')，把相同的Array类型常量赋值给一个Array类型的状态变量，都会触发刷新。原因是在状态管理V2中，会给使用状态变量装饰器如@Trace、@Local装饰的Date、Map、Set、Array添加一层代理用于观测API调用产生的变化。  
 当再次赋值`list[0]`时，`dataObjFromList`已经是Proxy类型，而`list[0]`是Array类型。由于类型不相等，会触发赋值和刷新。
 为了避免这种不必要的赋值和刷新，可以使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
