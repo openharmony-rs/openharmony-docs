@@ -472,15 +472,15 @@
             - [V1状态管理合理使用开发指导](ui/state-management/properly-use-state-management-to-develope.md)
             - [状态变量改变不触发组件刷新问题常用定位方法](ui/state-management/troubleshooting-state-manange.md)
         - 学习UI范式渲染控制<!--arkts-rendering-control-->
-          - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
-          - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
-          - [ForEach：循环渲染](rendering-control/arkts-rendering-control-foreach.md)
-          - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
-          - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
-          - [LazyForEach迁移Repeat指南](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
-          - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
+          - [渲染控制概述](ui/rendering-control/arkts-rendering-control-overview.md)
+          - [if/else：条件渲染](ui/rendering-control/arkts-rendering-control-ifelse.md)
+          - [ForEach：循环渲染](ui/rendering-control/arkts-rendering-control-foreach.md)
+          - [LazyForEach：数据懒加载](ui/rendering-control/arkts-rendering-control-lazyforeach.md)
+          - [Repeat：可复用的循环渲染](ui/rendering-control/arkts-new-rendering-control-repeat.md)
+          - [LazyForEach迁移Repeat指南](ui/rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
+          - [ContentSlot：混合开发](ui/rendering-control/arkts-rendering-control-contentslot.md)
         - 学习响应式环境变量<!--arkts-env-property-->
-          - [\@Env：环境变量](arkts-env-system-property.md)
+          - [\@Env：环境变量](ui/arkts-env-system-property.md)
         - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
           - [组件导航和页面路由概述](ui/arkts-navigation-introduction.md)
           - [组件导航(Navigation) (推荐)](ui/arkts-navigation-navigation.md)
