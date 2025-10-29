@@ -739,7 +739,7 @@ struct MyComponent {
       Text('PageInfoExample')
       Button('click').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
-        const uniqueId: number = this.getUniqueId();
+        let uniqueId = this.getUniqueId();
         const pageInfo: PageInfo = uiContext.getPageInfoByUniqueId(uniqueId);
         console.info('pageInfo: ' + JSON.stringify(pageInfo));
         console.info('navigationInfo: ' + JSON.stringify(uiContext.getNavigationInfoByUniqueId(uniqueId)));
@@ -758,7 +758,9 @@ struct MyComponent {
 
 ### getNavigationInfoByUniqueId<sup>12+</sup>
 
-getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
+ArkTS-Dyn: getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
+
+ArkTS-Sta: getNavigationInfoByUniqueId(id: long): observer.NavigationInfo | undefined
 
 提供getNavigationInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Navigation页面信息。
 1. 当uniqueId对应的节点在Navigation节点中，返回其对应的Navigation信息；
@@ -768,11 +770,15 @@ getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| id | number | 是    | 节点对应的UniqueId                          |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 节点对应的UniqueId。                          |
 
 **返回值：**
 
@@ -1505,7 +1511,7 @@ import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateMana
 import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
 import hilog from '@ohos.hilog';
 import inspector from '@ohos.arkui.inspector';
-import { jsonx } from "std/core"
+import { jsonx } from 'std/core';
 
 @Component
 struct ComponentPage {
@@ -1662,7 +1668,7 @@ import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateMana
 import {  Text, TextAttribute, Column, Component, Button, ButtonAttribute, ClickEvent, UserView, $r, Row, Builder } from '@ohos.arkui.component';
 import hilog from '@ohos.hilog';
 import inspector from '@ohos.arkui.inspector';
-import { jsonx } from "std/core"
+import { jsonx } from 'std/core';
 
 @Component
 struct ComponentPage {
@@ -1896,7 +1902,9 @@ uiContext.getComponentSnapshot();
 
 ### vp2px<sup>12+</sup>
 
-vp2px(value : number) : number
+ArkTS-Dyn: vp2px(value : number) : number
+
+ArkTS-Sta: vp2px(value : double) : double
 
 将vp单位的数值转换为以px为单位的数值。
 
@@ -1912,17 +1920,22 @@ vp2px(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将vp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 将vp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -1933,7 +1946,9 @@ uiContext.vp2px(200);
 
 ### px2vp<sup>12+</sup>
 
-px2vp(value : number) : number
+ArkTS-Dyn: px2vp(value : number) : number
+
+ArkTS-Sta: px2vp(value : double) : double
 
 将px单位的数值转换为以vp为单位的数值。
 
@@ -1949,17 +1964,21 @@ px2vp(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -1970,7 +1989,9 @@ uiContext.px2vp(200);
 
 ### fp2px<sup>12+</sup>
 
-fp2px(value : number) : number
+ArkTS-Dyn: fp2px(value : number) : number
+
+ArkTS-Sta: fp2px(value : double) : double
 
 将fp单位的数值转换为以px为单位的数值。
 
@@ -1988,17 +2009,21 @@ fp2px(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2009,7 +2034,9 @@ uiContext.fp2px(200);
 
 ### px2fp<sup>12+</sup>
 
-px2fp(value : number) : number
+ArkTS-Dyn: px2fp(value : number) : number
+
+ArkTS-Sta: px2fp(value : double) : double
 
 将px单位的数值转换为以fp为单位的数值。
 
@@ -2027,17 +2054,21 @@ px2fp(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2048,7 +2079,9 @@ uiContext.px2fp(200);
 
 ### lpx2px<sup>12+</sup>
 
-lpx2px(value : number) : number
+ArkTS-Dyn: lpx2px(value : number) : number
+
+ArkTS-Sta: lpx2px(value : double) : double
 
 将lpx单位的数值转换为以px为单位的数值。
 
@@ -2062,17 +2095,21 @@ lpx2px(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2083,7 +2120,9 @@ uiContext.lpx2px(200);
 
 ### px2lpx<sup>12+</sup>
 
-px2lpx(value : number) : number
+ArkTS-Dyn: px2lpx(value : number) : number
+
+ArkTS-Sta: px2lpx(value : double) : double
 
 将px单位的数值转换为以lpx为单位的数值。
 
@@ -2097,17 +2136,21 @@ px2lpx(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value  | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 **示例：**
 
@@ -2282,6 +2325,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import {FrameCallback } from '@kit.ArkUI';
 
@@ -2311,10 +2355,45 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Row, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import {FrameCallback } from '@ohos.arkui.UIContext';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: long) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('点击触发postFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+        })
+    }
+  }
+}
+```
 
 ### postDelayedFrameCallback<sup>12+</sup>
 
-postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
+ArkTS-Dyn: postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
+
+ArkTS-Sta: postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: long): void
 
 注册一个回调，在延迟一段时间后的下一帧进行渲染时执行。
 
@@ -2322,15 +2401,20 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
 | frameCallback | [FrameCallback](#framecallback12) | 是   | 下一帧需要执行的回调。 |
-| delayTime | number | 是   | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
+| delayTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import {FrameCallback } from '@kit.ArkUI';
 
@@ -2354,7 +2438,40 @@ struct Index {
     Row() {
       Button('点击触发postDelayedFrameCallback')
         .onClick(() => {
-          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("normTask"));
+        })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Row, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import {FrameCallback } from '@ohos.arkui.UIContext';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: long) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('点击触发postDelayedFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("normTask"));
         })
     }
   }
@@ -12008,7 +12125,10 @@ struct Index {
 
 ### onFrame<sup>12+</sup>
 
-onFrame(frameTimeInNano: number): void
+ArkTS-Dyn: onFrame(frameTimeInNano: number): void
+
+ArkTS-Sta: onFrame(frameTimeInNano: long): void
+
 
 在下一帧进行渲染时，该方法将被执行。
 
@@ -12016,14 +12136,19 @@ onFrame(frameTimeInNano: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| frameTimeInNano | number | 是   | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
+| frameTimeInNano | ArkTS-Dyn: number <br> ArkTS-Sta: long| 是   | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { FrameCallback } from '@kit.ArkUI';
 
@@ -12061,6 +12186,40 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, Row, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+import {FrameCallback } from '@ohos.arkui.UIContext';
+
+class MyFrameCallback extends FrameCallback {
+  private tag: string;
+
+  constructor(tag: string) {
+    super();
+    this.tag = tag;
+  }
+
+  onFrame(frameTimeNanos: long) {
+    console.info('MyFrameCallback ' + this.tag + ' ' + frameTimeNanos.toString());
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button('点击触发postFrameCallback')
+        .onClick(() => {
+          this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
+        })
+    }
+  }
+}
+```
+
 
 ### onIdle<sup>12+</sup>
 
