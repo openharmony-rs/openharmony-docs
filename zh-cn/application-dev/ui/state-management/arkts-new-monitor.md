@@ -140,6 +140,48 @@ struct Index {
 
 <!-- @[monitor_decorator_object_trace_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets) -->
 
+``` TypeScript
+class Info {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info('Tom', 25);
+
+  @Monitor('info')
+  infoChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `info change`);
+  }
+
+  @Monitor('info.name')
+  infoPropertyChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `info name change`);
+  }
+
+  build() {
+    Column() {
+      Text(`name: ${this.info.name}, age: ${this.info.age}`)
+      Button('change info')
+        .onClick(() => {
+          this.info = new Info('Lucy', 18); // 能够监听到
+        })
+      Button('change info.name')
+        .onClick(() => {
+          this.info.name = 'Jack'; // 监听不到
+        })
+    }
+  }
+}
+```
+
 ### 在\@ObservedV2装饰的类中使用\@Monitor
 
 使用\@Monitor监听的属性发生变化时，会触发\@Monitor的回调方法。
