@@ -43,6 +43,10 @@ Remote call failed.
 
 服务未启动或崩溃。
 
+**处理步骤**
+
+可以尝试重试。
+
 ## 29800003 无效的timer名称
 
 **错误信息**
@@ -52,6 +56,10 @@ Invalid timer name.
 **错误描述**
 
 timer name是无效的。
+
+**处理步骤**
+
+传入的timer name需为非空字符数指针，且指向非空字符串。
 
 **可能原因**
 
@@ -66,6 +74,10 @@ Invalid timeout value.
 **错误描述**
 
 timeout值是无效的。
+
+**处理步骤**
+
+传入的timeout需大于0。
 
 **可能原因**
 
@@ -85,6 +97,10 @@ Wrong process context.
 
 接入函数执行时长检测定时器的进程是appspawn或nativespawn进程。
 
+**处理步骤**
+
+不要在appspawn和nativespawn进程中接入hicollie检测。
+
 ## 29800006 错误的timer id参数
 
 **错误信息**
@@ -99,3 +115,8 @@ Wrong timer id output param.
 
 - 传入的timer id指针为空；
 - 接入函数执行时长检测机制的进程中hicollie插件同时存在任务数达到最大值128。
+
+**处理步骤**
+
+- 传入的timer id指针不能为空；
+- 可以重试，或减少该进程中hicollie检测机制的在其他地方的调用。
