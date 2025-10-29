@@ -95,6 +95,32 @@
 - 当装饰的变量类型为boolean、string、number时，可以观察到对变量赋值的变化。
 
   <!-- @[Local_Observe_Changes_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesType.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @ComponentV2
+  struct Index {
+    // 点击的次数
+    @Local count: number = 0;
+    @Local message: string = 'Hello';
+    @Local flag: boolean = false;
+  
+    build() {
+      Column() {
+        Text(`${this.count}`)
+        Text(`${this.message}`)
+        Text(`${this.flag}`)
+        Button('change Local')
+          .onClick(() => {
+            // 当@Local装饰简单类型时，能够观测到对变量的赋值
+            this.count++;
+            this.message += ' World';
+            this.flag = !this.flag;
+          })
+      }
+    }
+  }
+  ```
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1V2混用文档](../state-management/arkts-v1-v2-mixusage.md)。
 
