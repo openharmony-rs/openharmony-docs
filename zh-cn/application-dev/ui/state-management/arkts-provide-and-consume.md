@@ -178,6 +178,38 @@
 
    【正例】
    <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
+   
+   ``` TypeScript
+   @Component
+   struct Child {
+     @Consume num: number;
+     // 从API version 20开始，@Consume装饰的变量支持设置默认值
+     @Consume num1: number = 17;
+   
+     build() {
+       Column() {
+         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
+         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
+         // $r('app.string.provide_consume_proper_demo_text_02') 需要更换为开发者所需的字符串资源文件
+         Text($r('app.string.provide_consume_proper_demo_text_02', this.num1))
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     @Provide num: number = 10;
+   
+     build() {
+       Column() {
+         // $r('app.string.provide_consume_proper_demo_text_01') 需要更换为开发者所需的字符串资源文件
+         Text($r('app.string.provide_consume_proper_demo_text_01', this.num))
+         Child()
+       }
+     }
+   }
+   ```
 
 3. \@Provide的key重复定义时，框架会抛出运行时错误，提醒开发者重复定义key，如果开发者需要重复key，可以使用[allowoverride](#provide支持allowoverride参数)。
 
