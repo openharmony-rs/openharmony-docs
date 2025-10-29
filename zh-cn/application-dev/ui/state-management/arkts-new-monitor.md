@@ -559,6 +559,38 @@ struct Index {
 
 <!-- @[monitor_limitation_last_listener_wins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationLastListenerWins.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public name: string = 'Tom';
+
+  @Monitor('name')
+  onNameChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `onNameChange`);
+  }
+
+  @Monitor('name')
+  onNameChangeDuplicate(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `onNameChangeDuplicate`);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change name')
+        .onClick(() => {
+          this.info.name = 'Jack'; // 仅会触发onNameChangeDuplicate方法
+        })
+    }
+  }
+}
+```
+
 - 当@Monitor传入多个路径参数时，以参数的全拼接结果判断是否重复监听。全拼接时会在参数间加空格，以区分不同参数。例如，`'ab', 'c'`的全拼接结果为`'ab c'`，`'a', 'bc'`的全拼接结果为`'a bc'`，二者全拼接不相等。以下示例中，`Monitor 1`、`Monitor 2`与`Monitor 3`都监听了name属性的变化。由于`Monitor 2`与`Monitor 3`的入参全拼接相等（都为`'name position'`），因此`Monitor 2`不生效，仅`Monitor 3`生效。当name属性变化时，将同时触发onNameAgeChange与onNamePositionChangeDuplicate方法。但请注意，`Monitor 2`与`Monitor 3`的写法仍然被视作在一个类中对同一个属性进行多次@Monitor的监听，这是不建议的。
 
 <!-- @[monitor_limitation_multiple_path_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationMultiplePathParams.ets) -->
