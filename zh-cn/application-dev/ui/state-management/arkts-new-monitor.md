@@ -1223,6 +1223,39 @@ struct Index {
 
 <!-- @[monitor_problem_param_counter_example_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample1.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  public name: string = 'John';
+  @Trace public age: number = 24;
+
+  @Monitor('age','name')
+  // 同时监听状态变量age和非状态变量name
+  onPropertyChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `property path:${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change age&name')
+        .onClick(() => {
+          this.info.age = 25; // 同时改变状态变量age和非状态变量name
+          this.info.name = 'Johny';
+        })
+    }
+  }
+}
+```
+
 上面的代码中，当点击按钮同时更改状态变量age和非状态变量name时，会输出以下日志：
 
 ```
