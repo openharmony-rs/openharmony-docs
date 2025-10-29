@@ -49,6 +49,41 @@
     开发标准意图无需开发者自行定义意图的大语言模型描述、意图参数定义和意图执行结果定义，根据"schema"字段和"intentVersion"字段匹配[附录：标准意图接入规范](insight-intent-access-specifications.md)中的标准意图。意图执行器需要从InsightIntentEntryExector\<T>类继承，实现onExecute()方法。
 
     <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
+    
+    ``` TypeScript
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
+    class ViewLogisticsResultDef {
+      public msg?: string = '';
+    }
+    
+    @InsightIntentEntry({
+      intentName: 'ViewLogistics',
+      domain: 'LocalDomain',
+      intentVersion: '1.0.1',
+      displayName: '查询快递',
+      displayDescription: '根据快递单号查询快递信息',
+      schema: 'ViewLogistics',
+      icon: $r('app.media.playMusic'), // $r表示本地图标，需要在资源目录中定义
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
+    })
+    export default class ViewLogisticsImpl extends InsightIntentEntryExecutor<ViewLogisticsResultDef> {
+      public trackingNo?: string = '';
+      public entityId?: string = '';
+    
+      onExecute(): Promise<insightIntent.IntentResult<ViewLogisticsResultDef>> {
+        // 执行查询快递逻辑
+        let result: insightIntent.IntentResult<ViewLogisticsResultDef> = {
+          code: 0,
+          result: {
+            msg: 'the logistics is being delivered'
+          }
+        };
+        return Promise.resolve(result);
+      };
+    }
+    ```
 
 意图执行过程：
 1. 系统入口响应用户“查询单号为12345的快递”的请求，匹配到该应用的"ViewLogistics"意图，通过意图框架触发该应用的"ViewLogistics"意图执行。
