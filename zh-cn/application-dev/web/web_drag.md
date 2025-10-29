@@ -40,7 +40,7 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 
 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（html示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。
 
-  <!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
+<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb'
