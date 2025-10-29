@@ -37,7 +37,7 @@ ArkTS-Sta: $r(value: string, ...params: RecordData[]): Resource
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                              |
 | ------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| value  | string | 是   | 资源标识符，访问格式为`belonging.type.name`。<br>belonging：表示该资源为系统资源、应用资源或HSP包资源，可选值为sys、app或[hsp_name]。<br>type：资源类型，可选值为boolean，color，float，intarray，integer，pattern，plural，strarray，string或media。<br>name：资源名称，应用资源名称定义在工程resources目录下，系统资源名称获取可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。 |
+| value  | string | 是   | 资源标识符，访问格式为`belonging.type.name`。<br>belonging：表示该资源为系统资源、应用资源或HSP包资源，可选值为sys、app或[hsp_name]。<br>type：资源类型，可选值为boolean，color，float，intarray，integer，pattern，plural，strarray，string或media。<br>name：资源名称，应用资源名称定义在工程resources目录下的json文件中，系统资源名称获取可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。 |
 | params | ArkTS-Dyn: any[]<br/>ArkTS-Sta: [RecordData](../apis-arkts/js-apis-util.md#recorddata20)[]  | 否   | 开发者传入的剩余参数。默认为空数组。                                                                                                                                                                                                                                                                                                                                                                            |
 
 **返回值：**
@@ -55,6 +55,7 @@ struct Page {
   build() {
     Row() {
       Column() {
+        // 请开发者替换为实际的资源
         Text($r('app.string.app_name'))
       }
       .width('100%')
@@ -63,8 +64,6 @@ struct Page {
   }
 }
 ```
-
-访问HSP包的资源示例可参考[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。
 
 ## $rawfile
 
@@ -105,6 +104,7 @@ struct Page {
   build() {
     Row() {
       Column() {
+        // 请开发者替换为实际的资源
         Image($rawfile("startIcon.png"))
       }
       .width('100%')
@@ -113,5 +113,3 @@ struct Page {
   }
 }
 ```
-
-访问HSP包资源示例可参考[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。
