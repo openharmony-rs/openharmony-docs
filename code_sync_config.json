@@ -3827,5 +3827,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/connectivity/wlan/p2p-development-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"wifiManager",
+						"start_line":19
+					},
+					{
+						"end_line":61,
+						"name":"createGrop",
+						"start_line":43
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets",
+				"functions":[
+					{
+						"end_line":105,
+						"name":"connectP2p",
+						"start_line":90
+					},
+					{
+						"end_line":88,
+						"name":"discover_p2p_device",
+						"start_line":72
+					}
+				]
+			}
+		]
 	}
 ]
