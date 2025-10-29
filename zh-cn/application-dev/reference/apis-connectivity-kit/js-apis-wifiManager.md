@@ -2562,50 +2562,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 | 2 | 激活中。 |
 | 3 | 去激活中。 |
 
-## wifiManager.onWifiStateChange('wifiStateChange')<sup>12+</sup>
-
-on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
-
-on(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
-
-注册WLAN状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
-
-**需要权限：** ohos.permission.GET_WIFI_INFO
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTs-Dyn。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**ArkTS-Dyn起始版本：** 12
-
-**参数：**
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | callback | ArkTS-Dyn: Callback&lt;number&gt;<br>ArkTS-Sta: Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-| 201 | Permission denied.                 |
-| 801 | Capability not supported.          |
-| 2501000  | Operation failed.|
-
-**状态改变事件的枚举：**
-
-| 枚举值 | 说明 |
-| -------- | -------- |
-| 0 | 未激活。 |
-| 1 | 已激活。 |
-| 2 | 激活中。 |
-| 3 | 去激活中。 |
-
-## wifiManager.off('wifiStateChange')<sup>9+</sup>
+## wifiManager.off('wifiStateChange')<sup>12+</sup>
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -2615,7 +2572,11 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2650,8 +2611,78 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
 ```
 
+## wifiManager.onWifiStateChange<sup>22+</sup>
 
-## wifiManager.on('wifiConnectionChange')<sup>9+</sup>
+onWifiStateChange(callback: Callback&lt;int&gt;): void
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**状态改变事件的枚举：**
+
+| 枚举值 | 说明 |
+| -------- | -------- |
+| 0 | 未激活。 |
+| 1 | 已激活。 |
+| 2 | 激活中。 |
+| 3 | 去激活中。 |
+
+## wifiManager.offWifiStateChange('wifiStateChange')<sup>22+</sup>
+
+offWifiStateChange(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
+
+注册WLAN状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+## wifiManager.on('wifiConnectionChange')<sup>12+</sup>
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
@@ -2661,7 +2692,11 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2688,7 +2723,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiConnectionChange')<sup>9+</sup>
+## wifiManager.off('wifiConnectionChange')<sup>12+</sup>
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
@@ -2698,7 +2733,11 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2733,7 +2772,78 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
-## wifiManager.on('wifiScanStateChange')<sup>9+</sup>
+## wifiManager.onWifiConnectionChange<sup>22+</sup>
+
+onWifiConnectionChange(callback: Callback&lt;int&gt;): void
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**状态改变事件的枚举：**
+
+| 枚举值 | 说明 |
+| -------- | -------- |
+| 0 | 断开连接。 |
+| 1 | 已连接。 |
+
+## wifiManager.offWifiConnectionChange<sup>22+</sup>
+
+offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
+
+取消注册wifi连接改变事件。
+
+如果没有指定回调参数，所有回调函数都将被注销。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+## wifiManager.on('wifiScanStateChange')<sup>12+</sup>
 
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
@@ -2743,7 +2853,11 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2770,7 +2884,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiScanStateChange')<sup>9+</sup>
+## wifiManager.off('wifiScanStateChange')<sup>12+</sup>
 
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
@@ -2780,7 +2894,11 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2815,7 +2933,78 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
   wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
-## wifiManager.on('wifiRssiChange')<sup>9+</sup>
+## wifiManager.onWifiScanStateChange<sup>22+</sup>
+
+onWifiScanStateChange(callback: Callback&lt;int&gt;): void
+
+注册wifi扫描状态改变事件。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**扫描状态改变事件的枚举：**
+
+| **枚举值** | **说明** |
+| -------- | -------- |
+| 0 | 扫描失败。 |
+| 1 | 扫描成功。 |
+
+## wifiManager.offWifiScanStateChange<sup>22+</sup>
+
+offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
+
+取消注册wifi扫描状态改变事件。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;int&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+## wifiManager.on('wifiRssiChange')<sup>22+</sup>
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
@@ -2823,7 +3012,11 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -2843,7 +3036,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiRssiChange')<sup>9+</sup>
+## wifiManager.off('wifiRssiChange')<sup>22+</sup>
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
@@ -2851,7 +3044,11 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2885,7 +3082,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
   // Unregister event
   wifiManager.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
- 
+
 ## wifiManager.on('hotspotStateChange')<sup>9+</sup>
 
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
@@ -2894,7 +3091,11 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
