@@ -356,7 +356,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
    @Component
    struct Second {
      // [library]仅为示例模块名，请替换为实际模块名
-     // 资源名仅作示例，请替换为实际使用的资源
+     // 资源name仅作示例，请替换为实际使用的资源
      text: string = '[library].string.test_string';
      fontSize: string = '[library].float.font_size';
      fontColor: string = '[library].color.font_color';
@@ -366,6 +366,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
      build() {
        Column() {
          // 使用字面量[模块名].type.name获取资源
+         // 资源name仅作示例，请替换为实际使用的资源
          Text($r('[library].string.test_string'))
            .id('hsp_resource_one')
            .fontSize($r('[library].float.font_size'))
