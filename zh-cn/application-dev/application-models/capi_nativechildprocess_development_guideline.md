@@ -410,6 +410,10 @@ libchild_process.so
 
 <!-- @[child_get_start_params_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
 
+``` C++
+#include <AbilityKit/native_child_process.h>
+```
+
 **获取启动参数**
 
 [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)创建子进程后，子进程内的任意so和任意子线程可以通过调用[OH_Ability_GetCurrentChildProcessArgs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)()获取到子进程的启动参数[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)，便于操作相关的文件描述符。
