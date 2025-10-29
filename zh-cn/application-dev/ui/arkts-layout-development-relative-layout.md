@@ -61,6 +61,49 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 - RelativeContainer父组件为锚点，__container__代表父容器的组件标识（id）。
 
   <!-- @[RelativeContainerParentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerParentComponentId.ets) -->
+  
+  ``` TypeScript
+  let alignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
+    'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
+    'left': { 'anchor': '__container__', 'align': HorizontalAlign.Start }
+  }
+  let alignRue: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
+    'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
+    'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
+  }
+  let marginLeft: Record<string, number> = { 'left': 20 }
+  let bwc: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  
+  @Entry
+  @Component
+  struct Index1 {
+    build() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#a3cf62')
+        .alignRules(alignRus)
+        .id('row1')
+  
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#00ae9d')
+        .alignRules(alignRue)
+        .id('row2')
+      }.width(300).height(300)
+      .margin(marginLeft)
+      .border(bwc)
+    }
+  }
+  ```
 
   ![zh-cn_image_0000001562820901](figures/zh-cn_image_0000001562820901.png)
 
