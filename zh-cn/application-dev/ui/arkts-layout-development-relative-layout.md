@@ -702,6 +702,35 @@ struct Index7 {
 
 <!-- @[RelativeContainerComponentGuideLine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentGuideLine.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Index8 {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor('#a3cf62')
+          .alignRules({
+            left: { anchor: 'guideline1', align: HorizontalAlign.End },
+            top: { anchor: 'guideline2', align: VerticalAlign.Top }
+          })
+          .id('row1')
+      }
+      .width(300)
+      .height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: '#6699FF' })
+      .guideLine([{ id: 'guideline1', direction: Axis.Vertical, position: { start: 50 } },
+        { id: 'guideline2', direction: Axis.Horizontal, position: { start: 50 } }])
+    }
+    .height('100%')
+  }
+}
+```
+
 ![relative container](figures/relativecontainer4.png)
 
 ## 多个组件的屏障
