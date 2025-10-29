@@ -183,7 +183,7 @@ import { image, videoProcessingEngine } from '@kit.ImageKit';
 async function enhanceDetail(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  // Width can be 1024. Height can be 1280.
+  // 示例：width可配置为1024，height可配置为1280。
   let enhancedPixelmap: Promise<image.PixelMap> =
     imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
@@ -231,7 +231,7 @@ import { image, videoProcessingEngine } from '@kit.ImageKit';
 async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  // scale can be 2.0
+  // 示例：scale可配置为2.0。
   let enhancedPixelmap: Promise<image.PixelMap> =
     imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
@@ -281,7 +281,7 @@ import { image, videoProcessingEngine } from '@kit.ImageKit';
 async function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  // Width can be 1024. Height can be 1280.
+  // 示例：width可配置为1024，height可配置为1280。
   let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
     sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
@@ -330,7 +330,7 @@ import { image, videoProcessingEngine } from '@kit.ImageKit';
 async function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
-  // scale can be 2.0
+  // 示例：scale可配置为2.0。
   let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
     sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
