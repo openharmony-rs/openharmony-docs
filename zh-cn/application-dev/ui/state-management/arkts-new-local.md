@@ -527,6 +527,28 @@ struct SetSample {
 
 <!-- @[Local_Use_Case_Join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseJoin.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local count: number | undefined = 10; // 使用@Local装饰联合类型变量
+
+  build() {
+    Column() {
+      Text(`count(${this.count})`)
+      Button('change to undefined') // 按钮1：将count设置为undefined
+        .onClick(() => {
+          this.count = undefined;
+        })
+      Button('change to number') // 按钮2：将count更新为数字10
+        .onClick(() => {
+          this.count = 10;
+        })
+    }
+  }
+}
+```
+
 ## 常见问题
 
 ### 复杂类型常量重复赋值给状态变量触发刷新
