@@ -9962,6 +9962,49 @@ try {
 }
 ```
 
+## convertOrientationAndRotation<sup>23+</sup>
+
+convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, value: int): int
+
+转换窗口和屏幕的方向和角度。
+
+窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中各显示模式的方向是一致的，如窗口方向为横屏时，和Orientation设置为LANDSCAPE的方向是一致的。
+屏幕的方向和角度分别为[display](js-apis-display.md#display)对象的orientation和rotation属性。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                    |
+| -------- | ----------------------------- | ---- | ------------------------------------------------------ |
+| from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型 |
+| to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型 |
+| value    | int               | 是   | 待转换的值 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+try {
+  let originalValue: int = 0;
+  let fromType: Window.RotationInfoType = Window.RotationInfoType.WINDOW_ORIENTATION;
+  let toType: Window.RotationInfoType = Window.RotationInfoType.DISPLAY_ORIENTATION;
+  let convertedValue: int = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
+  console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
+} catch (exception) {
+  console.error(`Failed to convert orientation and rotation between window and display. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setWindowSystemBarProperties<sup>(deprecated)</sup>
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
