@@ -1050,6 +1050,86 @@ struct Index {
 
 <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) -->
 
+``` TypeScript
+@ObservedV2
+class InfoWrapper {
+  public info?: Info;
+
+  constructor(info: Info) {
+    this.info = info;
+  }
+}
+
+@ObservedV2
+class Info {
+  @Trace public age: number;
+
+  constructor(age: number) {
+    this.age = age;
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param @Require infoWrapper: InfoWrapper;
+
+  @Monitor('infoWrapper.info.age')
+  onInfoAgeChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  aboutToDisappear(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Child aboutToDisappear', this.infoWrapper.info?.age);
+  }
+
+  build() {
+    Column() {
+      Text(`${this.infoWrapper.info?.age}`)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  dataArray: Info[] = [];
+  @Local showFlag: boolean = true;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new Info(i));
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change showFlag')
+        .onClick(() => {
+          this.showFlag = !this.showFlag;
+        })
+      Button('change number')
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', '%{public}s', 'click to change age');
+          this.dataArray.forEach((info: Info) => {
+            info.age += 100;
+          })
+        })
+      if (this.showFlag) {
+        Column() {
+          Text('Childs')
+          ForEach(this.dataArray, (info: Info) => {
+            Child({ infoWrapper: new InfoWrapper(info) })
+          })
+        }
+        .borderColor(Color.Red)
+        .borderWidth(2)
+      }
+    }
+  }
+}
+```
+
 2、主动置空监听的对象。当自定义组件即将销毁时，主动置空\@Monitor的监听目标，这样\@Monitor无法再监听原监听目标的变化，达到取消\@Monitor监听的效果。
 
 <!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->
