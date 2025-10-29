@@ -35,9 +35,11 @@
     class Sample {
       data: number = 0;
     }
-   ```
-<!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
-   ```ts
+    @ObservedV2
+      class Info {
+      @Type(Sample)
+      @Trace sample: Sample = new Sample(); // 正确用法
+    }
     @Observed
     class Info2 {
       @Type(Sample)
