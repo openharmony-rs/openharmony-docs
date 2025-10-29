@@ -146,6 +146,28 @@ libchild_process.so
 3. 主进程-实现子进程启动结果回调函数。
 
     <!-- @[main_handle_child_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    
+    ``` C++
+    #include <IPCKit/ipc_kit.h>
+    #include "AbilityKit/native_child_process.h"
+    // ···
+    // [EndExclude main_process_launch_native_child]
+    static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
+    {
+        if (errCode != NCP_NO_ERROR) {
+            // 子进程未能正常启动时的异常处理
+            // ...
+            return;
+        }
+    
+        // 保存remoteProxy对象，后续基于IPC Kit提供的API同子进程间进行IPC通信
+        // 耗时操作建议转移到独立线程去处理，避免长时间阻塞回调线程
+        // IPC对象使用完毕后，需要调用OH_IPCRemoteProxy_Destroy方法释放
+        // ...
+        // ···
+        // [EndExclude main_process_launch_native_child]
+    }
+    ```
 
     回调函数传递的第二个参数OHIPCRemoteProxy对象，会与子进程实现的**NativeChildProcess_OnConnect**方法返回的OHIPCRemoteStub对象间建立IPC通道，具体使用方法参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述；OHIPCRemoteProxy对象使用完毕后，需要调用[OH_IPCRemoteProxy_Destroy](../reference/apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)函数释放。
 
