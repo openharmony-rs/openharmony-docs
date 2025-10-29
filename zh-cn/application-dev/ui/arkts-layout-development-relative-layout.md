@@ -159,6 +159,58 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
   <!-- @[RelativeContainerChildComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Index3 {
+    build() {
+      Row() {
+        RelativeContainer() {
+          Row(){Text('row1')}.justifyContent(FlexAlign.Center).width(100).height(100)
+          .backgroundColor('#a3cf62')
+          .alignRules({
+            top: {anchor: '__container__', align: VerticalAlign.Top},
+            left: {anchor: '__container__', align: HorizontalAlign.Start}
+          })
+          .id('row1')
+  
+          Row(){Text('row2')}.justifyContent(FlexAlign.Center).width(100)
+          .backgroundColor('#00ae9d')
+          .alignRules({
+            top: {anchor: '__container__', align: VerticalAlign.Top},
+            right: {anchor: '__container__', align: HorizontalAlign.End},
+            bottom: {anchor: 'row1', align: VerticalAlign.Center},
+          })
+          .id('row2')
+  
+          Row(){Text('row3')}.justifyContent(FlexAlign.Center).height(100)
+          .backgroundColor('#0a59f7')
+          .alignRules({
+            top: {anchor: 'row1', align: VerticalAlign.Bottom},
+            left: {anchor: 'row1', align: HorizontalAlign.Start},
+            right: {anchor: 'row2', align: HorizontalAlign.Start}
+          })
+          .id('row3')
+  
+          Row(){Text('row4')}.justifyContent(FlexAlign.Center)
+          .backgroundColor('#2ca9e0')
+          .alignRules({
+            top: {anchor: 'row3', align: VerticalAlign.Bottom},
+            left: {anchor: 'row1', align: HorizontalAlign.Center},
+            right: {anchor: 'row2', align: HorizontalAlign.End},
+            bottom: {anchor: '__container__', align: VerticalAlign.Bottom}
+          })
+          .id('row4')
+        }
+        .width(300).height(300)
+        .margin({left: 50})
+        .border({width:2, color: '#6699FF'})
+      }
+      .height('100%')
+    }
+  }
+  ```
 
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image1.png)
 
