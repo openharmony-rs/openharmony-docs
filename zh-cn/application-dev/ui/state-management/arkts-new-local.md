@@ -402,6 +402,43 @@ struct Index {
 
 <!-- @[Local_Use_Case_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct DatePickerExample {
+  @Local selectedDate: Date = new Date('2021-08-08'); // 使用@Local装饰Date类型变量
+
+  build() {
+    Column() {
+      Button('set selectedDate to 2023-07-08') // 按钮1：通过创建对象更新日期
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate = new Date('2023-07-08');
+        })
+      Button('increase the year by 1') // 按钮2：直接修改Date年份加1
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1') // 按钮3：直接修改Date月份加1
+        .onClick(() => {
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1') // 按钮4：直接修改Date天数加1
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.selectedDate
+      })
+    }.width('100%')
+  }
+}
+```
+
 ### 装饰Map类型变量
 
 当装饰的对象是Map时，可以观察到对Map整体的赋值，同时可以通过调用Map的接口`set`, `clear`, `delete`更新Map中的数据。
