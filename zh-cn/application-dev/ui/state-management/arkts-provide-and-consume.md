@@ -756,6 +756,19 @@ struct GrandParent {
 
 <!-- @[Provide_Consume_Decorated_Variable1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->
 
+``` TypeScript
+@Component
+struct MyComponent {
+  @Consume('withDefault') defaultValue: number = 10;
+
+  // [StartExclude Provide_Consume_Decorated_Variable]
+  build() {
+  }
+
+  // [EndExclude Provide_Consume_Decorated_Variable]
+}
+```
+
 完整示例如下：
 
 <!-- @[Provide_Consume_Decorated_Variable2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->
