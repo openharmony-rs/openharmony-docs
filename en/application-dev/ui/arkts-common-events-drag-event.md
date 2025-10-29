@@ -1,51 +1,58 @@
 # Implementing Unified Drag and Drop
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-Unified drag and drop refers to a data transfer interaction triggered by a mouse device or gesture. Users can drag data from one component (the drag source) and drop it into another (the drop target) to initiate a response. In this interaction, the drag source provides the data, while the drop target receives and processes it, thereby enabling users to easily move, copy, or delete data.
+Unified drag and drop enables data transfer interactions triggered by mouse devices or gestures. Users can drag data from one component (the drag source) and drop it onto another (the drop target) to trigger responses. In this interaction, the drag source provides the data, while the drop target receives and processes it, enabling users to easily move, copy, or share data.
 
 ## Basic Concepts
 
-* Drag operation: an operation that begins when a user selects a draggable component, continues when the user drags the component on the screen, and ends when the user releases the component on a droppable component.
-* Drag preview (background): a visual representation of the data being dragged. You can set it by using [CustomerBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) or [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) of [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), or by using the universal attribute [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11).
-* Drag data: data being dragged, encapsulated using the UDMF API [UnifiedData](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) to ensure data consistency and security.
-* Drag source: component that initiates the drag operation and provides data, typically with characteristics for responding to dragging.
-* Drop target: component that can receive and process drag data, and is able to perform corresponding actions based on the data being dropped.
-* Drag point: point of contact between the mouse device or finger and the screen. It is used to determine whether data enters a drop target. The determination is based on whether the contact point is within the bounds of the component.
+* **Drag operation**: An interaction that begins when a user selects a draggable component, continues as the user drags it across the screen, and ends when the user releases it over a droppable component.
+* **Drag preview**: A visual representation of the data being dragged. You can customize it using [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8), [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) in [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), or the universal attribute [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11).
+* **Drag data**: The data being transferred, encapsulated using the UDMF API [UnifiedData](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) to ensure consistency and security.
+* **Drag source**: The component that initiates the drag operation and provides data, typically with characteristics that respond to dragging.
+* **Drop target**: The component that can receive and process drag data, performing corresponding actions based on the dropped content.
+* **Drag point**: The contact point between the mouse device/finger and the screen, used to determine whether data enters a drop target based on whether the point is within the component's bounds.
 
-## Drag Process
+## Drag Modes
 
-The drag process encompasses both gesture-based dragging and mouse-based dragging. This distinction helps clarify the timing of callback event triggers.
+Drag operations support both gesture-based and mouse-based interactions, which affect when callback events are triggered.
 
-### ​​Gesture-based Drag Process
+### Gesture-Based Drag
 
-​If a drag operation is triggered by a long press gesture, ArkUI checks whether the current component is draggable before initiating the drag. For components that are draggable by default ([Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)), ArkUI checks whether their [draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable) attribute is set to **true** (the system predefines the default value of this attribute for these components through [system resources](../quick-start/resource-categories-and-access.md#system-resources)); for other components, ArkUI also checks whether the **onDragStart** callback is set. If the attribute or callback is set as required, ArkUI starts dragging once the user has long pressed the component for 500 ms or longer, and displays a drag preview once the user has long pressed the component for 800 ms. When the drag operation is used together with a menu controlled by the **isShow** attribute for visibility, avoid delaying the display of the menu by 800 ms after the user's action. Otherwise, unexpected behavior may occur.
+When dragging is triggered by gestures, ArkUI verifies whether the current component supports dragging before initiating the operation. For components that support drag-out by default ([Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), or [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)), ArkUI checks if [draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable) is set to true. For other components, ArkUI checks if the **onDragStart** callback is set. If the required attribute or callback is configured, ArkUI initiates dragging after the user long-presses the component for 500 ms and displays a drag preview after 800 ms. When combining drag operations with menus controlled by the **isShow** attribute, avoid delaying menu display by 800 ms after user action to prevent unexpected behavior.
 
-Below you can see the drag process initiated by a gesture (finger or stylus).
+The following diagram illustrates the gesture-based drag process (using finger or stylus):
 
 ![en-us_image_0000001562820825](figures/en-us_image_0000001562820825.png)
 
-### ​Mouse-based Drag Process
+### Mouse-Based Drag
 
-When a mouse device is used as the pointer, ArkUI starts dragging once the draggable component has been moved with the left mouse button by more than 1 vp.
+When using a mouse as the pointer, ArkUI initiates dragging once the draggable component is moved with the left mouse button pressed by more than 1 vp. Other aspects of mouse drag are similar to gesture drag. For details, see [Gesture-Based Drag](#gesture-based-drag).
 
-A drag and drop can occur in a single application, or start in one application and end in another. The following callback events are provided for you to detect the dragging status and intervene in the default dragging behavior of the system.
+## Drag Event Callbacks
 
-| Callback Event| Description|
-| ---------------- | ------------------------|
-| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | Triggered when a draggable component is dragged.<br>You can use this callback to detect the initiation of dragging behavior. You can also set the drag data and drag preview in this callback. To avoid extra performance overhead, it is recommended that the drag preview be returned in the form of a pixel map, instead of using **customBuilder**.|
-| [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | Triggered when the drag point enters the bounds of the component. This callback is called only when the component listens for the [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) event.|
-| [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove) | Triggered when the drag point moves within the bounds of the component, but only if the component listens for the **onDrop** event.<br>During the movement, the **setResult** API in[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) can be used to affect the system appearance in some scenarios.<br>1. Set **DragResult.DROP\_ENABLED**.<br>2. Set **DragResult.DROP\_DISABLED**.|
-| [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | Triggered when the drag point leaves the bounds of the component. This callback is called only when the component listens for the **onDrop** event.<br>By default, the **onDragLeave** callback is not called in the following cases:<br>1. An item in a parent component is dragged to one of its child components.<br>2. The layout of the drop target component overlaps that of the drag source component.<br>Since API version 12, the [setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) can be used to trigger the **onDragLeave** event in a strict fashion.|
-| [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) | Triggered when the dragged item is dropped on the component. The drag result must be set in this callback through the **setResult** API in **DragEvent**. Otherwise, the **getResult** API in the **onDragEnd** method of the drag source only returns the default result **DragResult.DRAG\_FAILED**.<br>This callback is where you can intervene in the default drop processing behavior. The system preferentially executes the **onDrop** callback and processes the drag data based on the **setResult** API in the callback function.<br>1. If **DragResult.DRAG\_SUCCESSFUL** is set, you need to process the data on your own; the system does not process the data.<br>2. If **DragResult.DRAG\_FAILED** is set, the system does not process the data.<br>3. If **DragResult.DRAG\_CANCELED** is set, the system does not process the data.<br>4. Setting **DragResult.DROP\_ENABLED** or **DragResult.DROP\_DISABLED** will be ignored, producing the same effect as **DragResult.DRAG\_SUCCESSFUL**.|
-| [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | Triggered when dragging of the component ends.|
-| [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) | Triggered when the component enters a state prior to a drop and drop operation.<br>You can use this callback to listen for the value of [PreDragStatus](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#predragstatus12) to prepare corresponding data.<br>1. **ACTION\_DETECTING\_STATUS**: A drag gesture is being detected. Triggered when the component is long pressed for 50 ms.<br>2. **READY\_TO\_TRIGGER\_DRAG\_ACTION**: The component is ready to be dragged. Triggered when the component is long pressed for 500 ms.<br>3. **PREVIEW\_LIFT\_STARTED**: A lift animation is started. Triggered when the component is long pressed for 800 ms.<br>4. **PREVIEW\_LIFT\_FINISHED**: A lift animation is finished. Triggered at the completion of the lift animation.<br>5. **PREVIEW\_LANDING\_STARTED**: A drop animation is started. Triggered when the drop animation starts.<br>6. **PREVIEW\_LANDING\_FINISHED**: A drop animation is finished. Triggered when the drop animation ends.<br>7. **ACTION\_CANCELED\_BEFORE\_DRAG**: A drop animation is terminated. Triggered when the finger is lifted off the screen after the component enters the **READY_TO_TRIGGER_DRAG_ACTION** state.|
+Drag and drop can occur within a single application or span multiple applications. The following callback events allow you to monitor drag status and intervene in the system's default drag behavior.
 
-[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) provides getters to obtain information about the drag operation. The table below lists whether the getters can return valid data in the corresponding drag callbacks.
+| Callback Event | Description |
+| -------------- | ----------- |
+| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | Triggered when a draggable component starts being dragged.<br>Use this callback to detect drag initiation and set drag data and preview. For better performance, return the drag preview as a pixel map rather than using **customBuilder**. |
+| [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | Triggered when the drag point enters the component's bounds. Only called if the component listens for the [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) event. |
+| [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove) | Triggered when the drag point moves within the component's bounds. Only called if the component listens for the **onDrop** event.<br>During movement, use the **setResult** API in [DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) to affect system appearance:<br>1. Set **DragResult.DROP_ENABLED** to indicate the component can accept drops.<br>2. Set **DragResult.DROP_DISABLED** to indicate the component cannot accept drops. |
+| [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | Triggered when the drag point leaves the component's bounds. Only called if the component listens for the **onDrop** event.<br>By default, **onDragLeave** is not called in these cases:<br>1. Dragging from a parent component to its child component.<br>2. When drop target layout overlaps the drag source component.<br>Since API version 12, use [setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12) in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to enable strict **onDragLeave** event triggering. |
+| [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) | Triggered when a dragged item is dropped on the component. You must set the drag result in this callback using the **setResult** API in **DragEvent**. Otherwise, the **getResult** API in the drag source's **onDragEnd** method will only return the default result **DragResult.DRAG_FAILED**.<br>This callback allows you to intervene in default drop processing. The system prioritizes executing the **onDrop** callback and processes drag data based on the **setResult** API:<br>1. If **DragResult.DRAG_SUCCESSFUL** is set, you must process the data yourself; the system won't process it.<br>2. If **DragResult.DRAG_FAILED** is set, the system won't process the data.<br>3. If **DragResult.DRAG_CANCELED** is set, the system won't process the data.<br>4. Setting **DragResult.DROP_ENABLED** or **DragResult.DROP_DISABLED** is ignored and has the same effect as **DragResult.DRAG_SUCCESSFUL**. |
+| [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | Triggered when the component's dragging ends. |
+| [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12) | Triggered when the component enters a state prior to drag and drop operations.<br>Use this callback to monitor [PreDragStatus](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#predragstatus12) values and prepare corresponding data:<br>1. **ACTION_DETECTING_STATUS**: Drag gesture detection in progress. Triggered at 50 ms of long press.<br>2. **READY_TO_TRIGGER_DRAG_ACTION**: Component ready to be dragged. Triggered at 500 ms of long press.<br>3. **PREVIEW_LIFT_STARTED**: Lift animation started. Triggered at 800 ms of long press.<br>4. **PREVIEW_LIFT_FINISHED**: Lift animation completed. Triggered when lift animation finishes.<br>5. **PREVIEW_LANDING_STARTED**: Drop animation started. Triggered when drop animation begins.<br>6. **PREVIEW_LANDING_FINISHED**: Drop animation completed. Triggered when drop animation ends.<br>7. **ACTION_CANCELED_BEFORE_DRAG**: Drag operation terminated. Triggered when the finger is lifted after entering **READY_TO_TRIGGER_DRAG_ACTION** state.<br>8. **PREPARING_FOR_DRAG_DETECTION**<sup>18+</sup>: Drag preparation complete, drag phase can be initiated. Triggered at 350 ms of button press. |
+| [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) | Triggered when a dragged object hovers over the component bound to this event. Only one target can become the responder, with child components having higher priority.<br>Use [SpringLoadingContext](../reference/apis-arkui/js-apis-arkui-dragController.md#springloadingcontext20) to configure callback context, including hover detection status, notification count, drag information, and configuration.<br>Supported since API version 20. |
+
+## DragEvent Object
+
+The drag callback function receives the [DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) object, which contains detailed information about the drag behavior and data provided by the component when dragged out.
+
+The following table shows which get methods return valid data in each drag callback.
 | Callback Event| onDragStart | onDragEnter | onDragMove | onDragLeave | onDrop | onDragEnd |
 | - | - | - | - | - | - | - |
 | getData         |—|—|—|—| Supported|—|
@@ -56,49 +63,58 @@ A drag and drop can occur in a single application, or start in one application a
 | getWindowX/Y    | Supported| Supported| Supported| Supported| Supported|—|
 | getDisplayX/Y   | Supported| Supported| Supported| Supported| Supported|—|
 | getX/Y          | Supported| Supported| Supported| Supported| Supported|—|
+| getModifierKeyState | Supported| Supported| Supported| Supported| Supported| Supported|
+| startDataLoading    | — | — | — | — | Supported|—|
+| getDisplayId        | Supported| Supported| Supported| Supported| Supported|—|
+| getDragSource       | Supported| Supported| Supported| Supported| Supported| Supported|
+| isRemote            | Supported| Supported| Supported| Supported| Supported| Supported|
+| getGlobalDisplayX/Y | Supported| Supported| Supported| Supported| Supported|—|
 | behavior        |—|—|—|—|—| Supported|
 
-[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) also provides setters to transfer information to the system, which may affect how the system handles UI or data. The table below lists the stages in the callbacks where the setters should be executed for the information to be accepted and processed by the system.
+[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) also provides setters to transfer information to the system, which can affect how the system handles UI or data. The following table shows when set methods are received and processed by the system:
 | Callback Event| onDragStart | onDragEnter | onDragMove | onDragLeave | onDrop |
 | - | - | - | - | - | - |
 | useCustomDropAnimation |—|—|—|—| Supported|
 | setData                | Supported|—|—|—|—|
 | setResult              | Supported; can be used to prevent dragging initiation by setting failed or cancel| Supported; not passed as the final result to **onDragEnd**| Supported; not passed as the final result to **onDragEnd**| Supported; not passed as the final result to **onDragEnd** | Supported; passed as the final result to **onDragEnd**|
+| setDataLoadParams      | Supported|—|—|—|—|
 | behavior               |—| Supported| Supported| Supported| Supported|
 
 ## Drag Preview
 
-The drag preview is an image displayed during the drag and drop operation. It is a visual representation of the drag data, not the component itself. You can set it to any supported image that you want to display to users. The **customBuilder** or **pixelMap** object returned by the **onDragStart** callback can be used to set the drag preview displayed during dragging and moving, with a snapshot of the component being used as the default drag preview during a lift animation. The **customBuilder** or **pixelMap** object set by the **dragPreview** attribute can be used to set the drag preview during a lift animation and dragging. If no custom drag preview is set, the system uses a snapshot of the component by default.
+The drag preview is an image displayed during drag and drop operations, serving as a visual representation of the drag data rather than the component itself. You can set it to any supported image you want to display to users. The **customBuilder** or **pixelMap** object returned by the **onDragStart** callback sets the preview displayed during dragging, while a component snapshot is used as the default preview during lift animation. The **customBuilder** or **pixelMap** object set by the **dragPreview** attribute sets the preview during both lift animation and dragging. If no custom preview is set, the system uses a component snapshot by default.
 
-You can set the opacity, rounded corners, shadow, and blur for the drag preview. For details, see [Drag and Drop Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md).
+You can configure opacity, rounded corners, shadow, and blur effects for the drag preview. For details, see [Drag and Drop Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md).
 
 ![pixelMap](figures/pixelMap.png)
 
 **Constraints**:
 
-* For a container component, if the internal content exceeds the bounds of the component due to **position**, **offset**, or other settings, the component snapshot does not capture the excess content. To show the excess content, you can expand the container scope or customize the container.
+* For container components, if internal content exceeds component bounds due to **position**, **offset**, or other settings, the component snapshot won't capture the excess content. To show it, expand the container scope or use a custom container.
 * Regardless of whether you use a custom builder or rely on the default snapshot mechanism, the snapshot process does not support transformation APIs, including [scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale) and [rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate).
 
-## Drag and Drop Capability
+## Drag and Drop Implementation
 
 ### General Drag and Drop Adaptation
 
-The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component as an example to describe the basic procedure for drag and drop development and the precautions to be taken during development.
+The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component to illustrate basic drag and drop development procedures and key considerations.
 
 1. Make the component draggable.
 
-   Set the **draggable** attribute to **true** and set the **onDragStart** callback function. In the callback function, you can use UDMF to set the drag data and return the custom drag preview.
+   Set the **draggable** attribute to **true** and configure the **onDragStart** callback function. In the callback, use UDMF to set drag data and return a custom drag preview.
 
     ```ts
     import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
+    // Replace $r('app.media.app_icon') with the image resource file you use.
     Image($r('app.media.app_icon'))
         .width(100)
         .height(100)
         .draggable(true)
         .onDragStart((event) => {
             let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-            data.imageUri = 'common/pic/img.png';
+            // Replace 'resources/base/media/app_icon.png' with the image resource file you use.
+            data.imageUri = 'resources/base/media/app_icon.png';
             let unifiedData = new unifiedDataChannel.UnifiedData(data);
             event.setData(unifiedData);
 
@@ -106,7 +122,7 @@ The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-compone
             pixelMap: this.pixmap,
             extraInfo: "this is extraInfo",
             };
-            // The custom drag preview is returned in onDragStart.
+            // Return custom drag preview in onDragStart
             return dragItemInfo;
         })
     ```
@@ -131,16 +147,15 @@ The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-compone
     })
     ```
    
-   To generate a pixel map, you can use [this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12).
+   Generate the specific pixel map by calling [this.getUIContext().getComponentSnapshot().createFromBuilder()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12).
 
       ```ts
       @Builder
       pixelMapBuilder() {
           Column() {
             Image($r('app.media.startIcon'))
-              .width(120)
-              .height(120)
-              .backgroundColor(Color.Yellow)
+              .width(100)
+              .height(100)
           }
         }
         private getComponentSnapshot(): void {
@@ -182,24 +197,24 @@ The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-compone
 
 4. Set the badge displayed during dragging.
 
-   You can set [allowDrop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) to define the allowed data types for dropping, which affects the badge display. The **COPY** badge is displayed when the drag data matches the allowed data types, the **FORBIDDEN** badge is displayed when it does not, and the **MOVE** badge is displayed if **allowDrop** is not set. The following example allows only data of HYPERLINK and PLAIN\_TEXT types defined in UnifiedData.
+   Use [allowDrop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) to define allowed data types for dropping, which affects badge display. When dragged data matches the defined types, a plus sign (+) badge appears. If the data type isn't allowed, you can forcibly disable the badge. If **allowDrop** isn't set, no plus sign appears. This example allows only HYPERLINK and PLAIN_TEXT data types from UnifiedData.
 
     ```ts
     .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK, uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
     ```
 
-   If the **onDrop** callback is implemented, you can control the badge display by setting [DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10) to **DROP_ENABLED** in **onDragMove** and setting [DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10) to **COPY** or **MOVE**. The following code forces the badge to display **MOVE** during a drag operation:
+   If implementing the onDrop callback, you can also set [DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10) to DROP_ENABLED in onDragMove and set [DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10) to COPY or MOVE to control badge display. COPY shows a plus sign (+), while MOVE doesn't.
 
     ```ts
     .onDragMove((event) => {
         event.setResult(DragResult.DROP_ENABLED);
-        event.dragBehavior = DragBehavior.MOVE;
+        event.dragBehavior = DragBehavior.COPY;
     })
     ```
 
 5. Receive drag data.
 
-   Set the **onDrop** callback to handle the drag data and determine the drag result.
+   Set the **onDrop** callback to handle drag data and determine the drag result.
 
     ```ts
     .onDrop((dragEvent?: DragEvent) => {
@@ -216,7 +231,7 @@ The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-compone
     })
     ```
 
-   Data transfer is managed by UDMF, which may experience latency when dealing with large data volumes. Therefore, you are advised to implement a retry mechanism with a 1500 ms delay after the initial data acquisition fails.
+   Data transfer is managed by UDMF, which may experience latency when dealing with large data volumes. Implement a retry mechanism with a 1500 ms delay if initial data acquisition fails.
 
     ```ts
     getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
@@ -247,7 +262,7 @@ The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-compone
     }
     ```
 
-6. The drag initiator can detect the result of the drag operation by setting the **onDragEnd** callback.
+6. The drag source can detect the drag operation result via the **onDragEnd** callback.
 
     ```ts
     import { promptAction } from '@kit.ArkUI';
@@ -266,7 +281,6 @@ The following uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-compone
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
@@ -282,10 +296,10 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
-      Image($r('app.media.startIcon'))
-        .width(120)
-        .height(120)
-        .backgroundColor(Color.Yellow)
+      // Replace $r('app.media.app_icon') with the image resource file you use.
+      Image($r('app.media.app_icon'))
+        .width(100)
+        .height(100)
     }
   }
 
@@ -343,6 +357,7 @@ struct Index {
           .margin(10)
           .backgroundColor('#008888')
         Row() {
+          // Replace $r('app.media.app_icon') with the image resource file you use.
           Image($r('app.media.app_icon'))
             .width(100)
             .height(100)
@@ -355,7 +370,8 @@ struct Index {
             }))
             .onDragStart((event) => {
               let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              data.imageUri = 'common/pic/img.png';
+              // Replace 'resources/base/media/app_icon.png' with the image resource file you use.
+              data.imageUri = 'resources/base/media/app_icon.png';
               let unifiedData = new unifiedDataChannel.UnifiedData(data);
               event.setData(unifiedData);
 
@@ -392,10 +408,10 @@ struct Index {
             .draggable(true)
             .margin({ left: 15 })
             .border({ color: Color.Black, width: 1 })
-            // Set the drag behavior to MOVE, which means no badge is displayed.
+            // Set the badge display type to COPY.
             .onDragMove((event) => {
               event.setResult(DragResult.DROP_ENABLED)
-              event.dragBehavior = DragBehavior.MOVE
+              event.dragBehavior = DragBehavior.COPY
             })
             .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
             .onDrop((dragEvent?: DragEvent) => {
@@ -431,7 +447,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
 
 1. Enable multi-select drag and drop.
 
-   Create **GridItem** child components and bind the **onDragStart** callback to them. In addition, set the **GridItem** components to be selectable.
+   Create **GridItem** child components and bind the **onDragStart** callback to them. In addition, set the **GridItem** components as selectable.
 
     ```ts
     Grid() {
@@ -612,7 +628,7 @@ struct GridEts {
               this.numberBadge--;
             }
           })
-          // Enable multi-select and set the number badge.
+          // Enable multiselect and set the number badge.
           .dragPreviewOptions({numberBadge: this.numberBadge},{isMultiSelectionEnabled:true,defaultAnimationBeforeLifting:true})
           .onDragStart(()=>{
           })
@@ -633,8 +649,9 @@ struct GridEts {
 When you need to create custom drop animations, you can disable the default system animations. Since API version 18, ArkUI provides the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API, which allows you to define your own drop animations. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development.
 
 1. Configure drag and drop settings for the component.
-   Set **draggable** to **true** and configure callbacks such as **onDragStart** and **onDragEnd**.
+   Set **draggable** to **true** and configure callbacks like **onDragStart** and **onDragEnd**.
     ```ts
+    // Replace $r('app.media.app_icon') with the image resource file you use.
     Image($r('app.media.app_icon'))
       .width(100)
       .height(100)
@@ -646,7 +663,7 @@ When you need to create custom drop animations, you can disable the default syst
     ```
 2. Define your custom animation.
 
-   Use the [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to create a custom animation. For example, you can change the size of the component.
+   Use the [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to create custom animations, such as changing component size.
 
     ```ts
       customDropAnimation = () => {
@@ -660,7 +677,7 @@ When you need to create custom drop animations, you can disable the default syst
 
 3. Trigger the custom drop animation.
 
-   Configure the **onDrop** callback to receive the drag data. Execute your custom drop animation using the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API. Set [useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) to **true** to disable the default system animation.
+   Configure the **onDrop** callback to receive drag data. Execute your custom drop animation using [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18). Set [useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) to **true** to disable the default system animation.
 
     ```ts
       Column() {
@@ -687,8 +704,6 @@ When you need to create custom drop animations, you can disable the default syst
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { promptAction } from '@kit.ArkUI';
-
 
 @Entry
 @Component
@@ -710,6 +725,7 @@ struct DropAnimationExample {
   build() {
     Row() {
       Column() {
+        // Replace $r('app.media.app_icon') with the image resource file you use.
         Image($r('app.media.app_icon'))
           .width(100)
           .height(100)
@@ -765,13 +781,13 @@ struct DropAnimationExample {
 ```
 ![executeDropAnimation](figures/executeDropAnimation.gif)
 
-### Handling Large Volumes of Data
+### Handling Large Data Volumes
 
-When dealing with a large number of items or large data volumes during drag and drop operations, processing all the data at once can negatively impact the user experience. The following uses the **Grid** component as an example to provide recommended practices for handling large data volumes during drag and drop operations, along with key points to keep in mind during development.
+When dealing with numerous items or large data volumes during drag and drop, processing all data at once can degrade user experience. The following example uses the **Grid** component to demonstrate recommended practices for handling large data volumes, including proactive drag blocking support since API version 18.
 
 1. Enable multi-select drag and drop.
 
-   Create **GridItem** child components and set their state to be selectable. Enable multi-select drag and drop by setting **isMultiSelectionEnabled** to **true**. Use the selected state to distinguish whether an item is selected.
+   Create **GridItem** child components and set them as selectable. Enable multi-select by setting **isMultiSelectionEnabled** to **true**. Use the selected state to distinguish selected items.
 
     ```ts
     Grid() {
@@ -799,7 +815,7 @@ When dealing with a large number of items or large data volumes during drag and 
     }
     ```
 
-   To maintain performance, limit the maximum number of items for multi-select drag and drop to 500.
+   For performance, limit multi-select drag and drop to a maximum of 500 items.
 
     ```ts
     onPageShow(): void {
@@ -813,13 +829,14 @@ When dealing with a large number of items or large data volumes during drag and 
     ```
 2. Add data incrementally when items are selected.
 
-   When dealing with large data volumes, you are advised to add data records incrementally using [addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord) as items are selected. This avoids significant performance overhead from processing all data at once during the drag operation.
+   For large data volumes, incrementally add data records using [addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord) as items are selected. This avoids performance overhead from processing all data during drag operations.
 
     ```ts
     .onClick(()=>{
       this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
       if (this.isSelectedGrid[idx]) {
         let data: UDC.Image = new UDC.Image();
+        // Replace '/resource/image.jpeg' with the image resource file you use.
         data.uri = '/resource/image.jpeg';
         if (!this.unifiedData) {
           this.unifiedData = new UDC.UnifiedData(data);
@@ -839,6 +856,7 @@ When dealing with a large number of items or large data volumes during drag and 
         for (let i=0; i<this.isSelectedGrid.length; i++) {
           if (this.isSelectedGrid[i] === true) {
             let data: UDC.Image = new UDC.Image();
+            // Replace '/resource/image.jpeg' with the image resource file you use.
             data.uri = '/resource/image.jpeg';
             if (!this.unifiedData) {
               this.unifiedData = new UDC.UnifiedData(data);
@@ -852,7 +870,7 @@ When dealing with a large number of items or large data volumes during drag and 
 
 3. Prepare data in advance.
 
-   Use the **onPreDrag** callback to receive a signal that a drag operation is about to start. If the data volume is large, prepare the data in advance.
+   Use the **onPreDrag** callback to receive signals about impending drag operations. For large data volumes, prepare data in advance.
 
     ```ts
     .onPreDrag((status: PreDragStatus) => {
@@ -862,9 +880,9 @@ When dealing with a large number of items or large data volumes during drag and 
     })
     ```
 
-4. Block the drag operation if data preparation is not complete.
+4. Block drag operations if data preparation is incomplete.
 
-   When initiating a drag operation, check whether the data is ready. If the data is not yet ready, send a [WAITING](../reference/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18) signal to the system to block the drag operation. In this case, if the user performs a drag gesture, the drag preview will remain stationary until the application sends a READY signal or the maximum blocking time limit (5 seconds) is exceeded. If the data is ready, you can directly set it to [dragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7). Note that when using the blocking feature, you need to save the current **dragEvent** and set the data when preparation is complete. In non-blocking scenarios, saving the current **dragEvent** is not recommended.
+   When initiating a drag operation, check whether the data is ready. If the data is not prepared, send the [WAITING](../reference/apis-arkui/js-apis-arkui-dragController.md#dragstartrequeststatus18) signal to the system. In this case, if the user performs a drag gesture, the drag preview will remain stationary until the application sends a READY signal or the maximum blocking time limit (5 seconds) is exceeded. If the data is ready, you can directly set it to [dragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7). Note that when using the blocking feature, you need to save the current **dragEvent** and set the data when preparation is complete. In non-blocking scenarios, saving the current **dragEvent** is not recommended.
 
     ```ts
     .onDragStart((event: DragEvent) => {
@@ -945,6 +963,7 @@ struct GridEts {
               this.numberBadge++;
               this.isSelectedGrid[i] = true;
               let data: UDC.Image = new UDC.Image();
+              // Replace '/resource/image.jpeg' with the image resource file you use.
               data.uri = '/resource/image.jpeg';
               if (!this.unifiedData) {
                 this.unifiedData = new UDC.UnifiedData(data);
@@ -983,6 +1002,7 @@ struct GridEts {
             this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
             if (this.isSelectedGrid[idx]) {
               let data: UDC.Image = new UDC.Image();
+              // Replace '/resource/image.jpeg' with the image resource file you use.
               data.uri = '/resource/image.jpeg';
               if (!this.unifiedData) {
                 this.unifiedData = new UDC.UnifiedData(data);
@@ -1002,6 +1022,7 @@ struct GridEts {
               for (let i=0; i<this.isSelectedGrid.length; i++) {
                 if (this.isSelectedGrid[i] === true) {
                   let data: UDC.Image = new UDC.Image();
+                  // Replace '/resource/image.jpeg' with the image resource file you use.
                   data.uri = '/resource/image.jpeg';
                   if (!this.unifiedData) {
                     this.unifiedData = new UDC.UnifiedData(data);
@@ -1048,16 +1069,16 @@ struct GridEts {
 
 
 ## Spring Loading (Hover Detection) Support
-Spring loading, also known as drag hover detection or spring-loaded navigation, is an enhanced drag and drop capability that allows users to automatically trigger view transitions by hovering over targets during drag operations. This feature significantly improves operational efficiency and is recommended for implementation in all page transition scenarios.
+Spring loading, also known as drag hover detection or spring-loaded navigation, is an enhanced drag and drop capability that automatically triggers view transitions when users hover over targets during drag operations. This feature significantly improves operational efficiency and is recommended for all page transition scenarios.
 
 > This feature is supported since API version 20.
 
 This feature is particularly useful in the following scenarios:
 
-- File management: Dragging a file over a folder automatically expands the folder.
+- File management: Dragging a file over a folder automatically expands it.
 - Home screen launcher: Hovering a file over an application icon automatically launches the application.
 
-Beyond view transitions, spring loading can also activate specific UI elements. For example, when a user drags text and hovers it over a button, a text boxcan be activated. The user can then move the dragged text into this text box and release it to display search results, enabling efficient one-handed operation.
+Beyond view transitions, spring loading can also activate specific UI elements. For example, when a user drags text over a button, a text boxcan be activated. The user can then move the dragged text into this box and release it to display search results, enabling efficient one-handed operation.
 
 ![drag spring loading example](figures/drag_springloading-01.png)
 
@@ -1065,9 +1086,9 @@ Beyond view transitions, spring loading can also activate specific UI elements. 
 
 To implement this feature, register the **onDragSpringLoading** API on a component and pass a callback to handle hover trigger notifications. Once registered, the component acts as a drop target (similar to components using the **onDrop** API) and follows the same hit detection rules: Only the topmost component under the hover position receives the drag event response.
 
-The spring loading process follows three distinct phases: hover detection -> callback notification -> completion. If the user continues dragging before completion, spring loading is automatically canceled, triggering a cancellation notification to the application. However, if dragging is resumed during the hover detection phase before the spring loading state is entered, no cancellation notification is sent.
+The spring loading process has three distinct phases: hover detection -> callback notification -> completion. If the user continues dragging before completion, spring loading is automatically canceled, triggering a cancellation notification to the application. However, if dragging is resumed during the hover detection phase before the spring loading state is entered, no cancellation notification is sent.
 
-![drag spring loading pharse](figures/drag_springloading-02.png)
+![drag spring loading phases](figures/drag_springloading-02.png)
 
 Applications receive state updates through callbacks, enabling dynamic UI adjustments.
 
@@ -1084,7 +1105,7 @@ Applications receive state updates through callbacks, enabling dynamic UI adjust
 >2. A component can support both spring loading and other drag events (for example, **onDrop** and **onDragEnter**).
 
 
-### Triggering Customization
+### Trigger Customization
 
 You can customize spring loading detection parameters to dynamically determine whether to continue triggering.
 
@@ -1098,11 +1119,11 @@ You can customize spring loading detection parameters to dynamically determine w
 
   >**NOTE**
   >
-  >Avoid setting excessively long time intervals or overly frequent trigger counts, as these typically fail to provide meaningful user feedback.
+  >Avoid excessively long time intervals or overly frequent trigger counts, as these typically fail to provide meaningful user feedback.
 
 2. Dynamic termination
 
-  When the system detects sufficient hover duration and invokes the **onDragSpringLoading** callback, you can decide whether to allow the pending spring loading notification to proceed. This is particularly useful when you need to check the type of dragged data and align it with your service logic.
+  When the system detects sufficient hover duration and invokes the **onDragSpringLoading** callback, you can decide whether to allow the pending spring loading notification to proceed. This is particularly useful for checking dragged data types against your service logic.
 
   The following pseudocode demonstrates this dynamic termination functionality:
   ```typescript
@@ -1131,7 +1152,7 @@ You can customize spring loading detection parameters to dynamically determine w
 
 3. Disabling spring loading
 
-  If you no longer need a component to respond to spring loading, you can explicitly disable the feature by passing **null** to **onDragSpringLoading**:
+  If a component no longer needs to respond to spring loading, explicitly disable the feature by passing **null** to **onDragSpringLoading**:
 
   ```typescript
     .onDragSpringLoading(null)
@@ -1139,11 +1160,11 @@ You can customize spring loading detection parameters to dynamically determine w
 
 ### Example
 
-The following example demonstrates how to implement the device search functionality using **onDragSpringLoading**, including visual feedback and view switching triggered by drag hover interactions.
+The following example demonstrates device search functionality using **onDragSpringLoading**, including visual feedback and view switching triggered by drag hover interactions.
 
 1. Prepare components.
 
-  To simplify the example, create two core components: a draggable text component and a button control. The button responds to spring loading to activate a view implemented using **bindSheet**, containing a text box for receiving dragged text and a text component for displaying search results.
+  For simplicity, create two core components: a draggable text component and a button control. The button responds to spring loading to activate a view implemented using **bindSheet**, containing a text box for receiving dragged text and a text component for displaying search results.
 
   ```typescript
     build() {
@@ -1190,9 +1211,9 @@ The following example demonstrates how to implement the device search functional
     }
   ```
 
-3. Add the enter and leave response to the button.
+3. Add enter and leave responses to the button.
 
-  To provide visual feedback, add **onDragEnter** and **onDragLeave** handlers to the target component. When text is dragged over the component, the background color changes to prompt the user.
+  For visual feedback, add **onDragEnter** and **onDragLeave** handlers to the target component. When text is dragged over, the background color changes to prompt the user.
 
   ```typescript
     .onDragEnter(()=>{
@@ -1233,7 +1254,7 @@ The following example demonstrates how to implement the device search functional
     }
   ```
 
-**Complete Code**
+**Sample Code**
 
   ```typescript
   import { dragController } from '@kit.ArkUI';
@@ -1364,4 +1385,3 @@ The following example demonstrates how to implement the device search functional
 
 
 <!--RP1--><!--RP1End-->
-<!--no_check-->
