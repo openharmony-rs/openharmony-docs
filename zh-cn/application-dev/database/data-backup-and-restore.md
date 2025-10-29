@@ -402,6 +402,36 @@ try {
 
 <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
+``` TypeScript
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+if (store != undefined) {
+  (store as relationalStore.RdbStore).query(predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES'])
+    .then((result: relationalStore.ResultSet) => {
+      let resultSet = result;
+      try {
+        /* ...
+           业务的增删改逻辑
+           ...
+        */
+        // 抛出异常
+        if (resultSet?.rowCount == -1) {
+          resultSet ?.isColumnNull(0);
+        }
+        // todo resultSet.goToFirstRow(), resultSet.count等其它接口也会抛异常
+        while (resultSet.goToNextRow()) {
+          hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(resultSet.getRow()));
+        }
+        resultSet.close();
+      } catch (err) {
+        if (err.code === 14800011) {
+          // 执行下文的步骤，即关闭结果集之后进行数据的恢复
+        }
+        hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+      }
+    })
+}
+```
+
 
 2. 关闭所有打开着的结果集。
 
