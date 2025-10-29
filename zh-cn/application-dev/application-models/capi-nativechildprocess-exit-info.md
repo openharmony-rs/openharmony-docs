@@ -30,6 +30,10 @@ libchild_process.so
 
 <!-- @[native_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
 
+``` C++
+#include <AbilityKit/native_child_process.h>
+```
+
 1. 主进程-注册和解注册Native子进程异常退出回调。
 
     调用[OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback)注册Native子进程，如果返回值为NCP_NO_ERROR表示注册成功。
