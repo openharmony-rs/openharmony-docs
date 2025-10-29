@@ -671,6 +671,32 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
 <!-- @[FlexExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexExample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct FlexExample {
+  build() {
+    Column() {
+      Column({ space: 5 }) {
+        Flex({
+          direction: FlexDirection.Row,
+          wrap: FlexWrap.NoWrap,
+          justifyContent: FlexAlign.SpaceBetween,
+          alignItems: ItemAlign.Center
+        }) {
+          Text('1').width('30%').height(50).backgroundColor('#F5DEB3')
+          Text('2').width('30%').height(50).backgroundColor('#D2B48C')
+          Text('3').width('30%').height(50).backgroundColor('#F5DEB3')
+        }
+        .height(70)
+        .width('90%')
+        .backgroundColor('#AFEEEE')
+      }.width('100%').margin({ top: 5 })
+    }.width('100%')
+  }
+}
+```
+
 ![zh-cn_image_0000001511900452](figures/zh-cn_image_0000001511900452.png)
 
 ## 相关实例
