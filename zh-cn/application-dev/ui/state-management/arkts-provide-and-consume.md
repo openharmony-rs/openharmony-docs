@@ -690,6 +690,57 @@ struct MyComponent {
 
 <!-- @[Provide_Consume_Provide_AllowOverride2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
 
+``` TypeScript
+@Component
+struct GrandSon {
+  // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
+  @Consume('reviewVotes') reviewVotes: number;
+
+  build() {
+    Column() {
+      Text(`reviewVotes(${this.reviewVotes})`) // Text显示10
+      Button(`reviewVotes(${this.reviewVotes}), give +1`)
+        .onClick(() => this.reviewVotes += 1)
+    }
+    .width('50%')
+  }
+}
+
+@Component
+struct Child {
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
+
+  build() {
+    Row({ space: 5 }) {
+      GrandSon()
+    }
+  }
+}
+
+@Component
+struct Parent {
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
+
+  build() {
+    Child()
+  }
+}
+
+@Entry
+@Component
+struct GrandParent {
+  @Provide('reviewVotes') reviewVotes: number = 40;
+
+  build() {
+    Column() {
+      Button(`reviewVotes(${this.reviewVotes}), give +1`)
+        .onClick(() => this.reviewVotes += 1)
+      Parent()
+    }
+  }
+}
+```
+
 在上面的示例中：
 - GrandParent声明了@Provide('reviewVotes') reviewVotes: number = 40。
 - Parent是GrandParent的子组件，声明@Provide为allowOverride，重写父组件GrandParent的@Provide('reviewVotes') reviewVotes: number = 40。如果不设置allowOverride，则会抛出运行时报错，提示@Provide重复定义。Child同理。
