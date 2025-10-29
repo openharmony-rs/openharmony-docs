@@ -43,7 +43,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
 ```
 
    
-3. Create an **InputMethod_AttachOptions** instance and set the options for binding the input method. The sample code is as follows:
+2. Create an **InputMethod_AttachOptions** instance and set the options for binding the input method. The sample code is as follows:
 
 <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -54,7 +54,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
 ```
 
 
-4. Call **OH_InputMethodController_Attach** to bind the input method service. After the call is successful, you can obtain **InputMethod_InputMethodProxy** used to interact with the input method. The sample code is as follows:
+3. Call **OH_InputMethodController_Attach** to bind the input method service. After the call is successful, you can obtain **InputMethod_InputMethodProxy** used to interact with the input method. The sample code is as follows:
 
 <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
 
