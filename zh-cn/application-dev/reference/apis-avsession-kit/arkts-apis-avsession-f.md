@@ -22,7 +22,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 

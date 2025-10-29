@@ -15,7 +15,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 

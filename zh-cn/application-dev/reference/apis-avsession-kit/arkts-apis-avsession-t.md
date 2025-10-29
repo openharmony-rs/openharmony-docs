@@ -17,16 +17,12 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 | 类型  | 说明 |
 | -----  | ---- |
-| 'audio' | 音频 |
-| 'video' | 视频 |
-| 'voice_call'<sup>11+<sup> | 音频通话。 |
-| 'video_call'<sup>12+<sup> | 视频通话。 |
+| 'audio' | 音频 <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'video' | 视频 <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'voice_call'<sup>11+<sup> | 音频通话。 <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20 |
+| 'video_call'<sup>12+<sup> | 视频通话。 <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20 |
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -39,7 +35,7 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -111,7 +107,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
-let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+let keyRequestCallback: avSession.KeyRequestCallback = (assetId: string, requestData: Uint8Array) => {
   console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
 }
 ```
@@ -135,20 +131,20 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 
 | 类型             | 说明         |
 | ---------------- | ------------ |
-| 'play'           | 播放。无需传入参数。|
-| 'pause'          | 暂停。无需传入参数。|
-| 'stop'           | 停止。 无需传入参数。 |
-| 'playNext'       | 下一首。无需传入参数。|
-| 'playPrevious'   | 上一首。无需传入参数。|
-| 'fastForward'    | 快进。无需传入参数。 |
-| 'rewind'         | 快退。无需传入参数。 |
-| 'seek'           | 跳转某一节点。对应参数使用number类型。|
-| 'setSpeed'       | 设置播放倍速。对应参数使用number类型。 |
-| 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。 |
-| 'setTargetLoopMode' <sup>18+</sup>   | 设置目标循环模式。对应参数推荐使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。 |
-| 'toggleFavorite' | 是否收藏。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。     |
-| 'playFromAssetId'| 播放指定的assetId。 |
-| 'playWithAssetId' <sup>20+</sup>    | 播放指定的assetId。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)，<br>字符串长度<40960字节。<br> |
-|'answer'          | 接听。无需传入参数。        |
-| 'hangUp'         | 挂断。无需传入参数。        |
-|'toggleCallMute'  | 设置通话静音状态。无需传入参数。 |
+| 'play'           | 播放。无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| 'pause'          | 暂停。无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| 'stop'           | 停止。 无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'playNext'       | 下一首。无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| 'playPrevious'   | 上一首。无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| 'fastForward'    | 快进。无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'rewind'         | 快退。无需传入参数。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'seek'           | 跳转某一节点。对应参数使用number类型。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| 'setSpeed'       | 设置播放倍速。对应参数使用number类型。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| 'setTargetLoopMode' <sup>18+</sup>   | 设置目标循环模式。对应参数推荐使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**ArkTS-Dyn起始版本**：18 <br>**ArkTS-Sta起始版本**：20 |
+| 'toggleFavorite' | 是否收藏。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20     |
+| 'playFromAssetId'| 播放指定的assetId。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20 |
+| 'playWithAssetId' <sup>20+</sup>    | 播放指定的assetId。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)，<br>字符串长度<40960字节。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：20 |
+|'answer'          | 接听。无需传入参数。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20        |
+| 'hangUp'         | 挂断。无需传入参数。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20        |
+|'toggleCallMute'  | 设置通话静音状态。无需传入参数。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20 |

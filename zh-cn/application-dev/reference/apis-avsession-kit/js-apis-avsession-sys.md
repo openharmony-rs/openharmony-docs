@@ -35,7 +35,7 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
 **系统接口：** 该接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -101,6 +101,10 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -171,7 +175,7 @@ ArkTS-Sta: getHistoricalSessionDescriptors(maxSize?: int): Promise\<Array\<Reado
 
 **系统接口：** 该接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -459,7 +463,7 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 **系统接口：** 该接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -600,8 +604,6 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名        | 类型           | 必填 | 说明 |
@@ -654,6 +656,47 @@ if (audioDevices !== undefined) {
 }
 ```
 
+## avSession.castAudioSessionAll
+
+castAudioSessionAll(audioDevices: Array<audio.AudioDeviceDescriptor>): Promise\<void>
+
+投播会话到指定设备列表。结果通过Promise异步回调方式返回。
+
+调用此接口之前，需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\> | 是   | 媒体设备列表。  |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象。当投播成功，无返回结果，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600104  | The remote session connection failed. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
@@ -671,7 +714,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
 });
 
 if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
+  avSession.castAudioSessionAll(audioDevices as audio.AudioDeviceDescriptors).then(() => {
     console.info('CreateController : SUCCESS');
   }).catch(async(err: BusinessError) => {
     console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -695,15 +738,13 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | session      | [SessionToken](#sessiontoken) &#124; 'all'                   | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
 | audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\> | 是   | 媒体设备列表。                                               |
-| callback     | AsyncCallback\<void>                                         | 是   | 回调函数。<br>ArkTS-Dyn：当投播成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当投播成功，err为null，否则返回错误对象。 |
+| callback     | AsyncCallback\<void>                                         | 是   | 回调函数。<br>当投播成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -746,6 +787,43 @@ if (audioDevices !== undefined) {
 }
 ```
 
+## avSession.castAudioSession
+
+castAudioSession(session: SessionToken, audioDevices: Array<audio.AudioDeviceDescriptor>, callback: AsyncCallback\<void>): void
+
+投播会话到指定设备列表。结果通过callback异步回调方式返回。
+
+需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名       | 类型                                                         | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| session      | [SessionToken](#sessiontoken)                    | 是   | 会话令牌。SessionToken表示单个token。 |
+| audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\> | 是   | 媒体设备列表。                                               |
+| callback     | AsyncCallback\<void>                                         | 是   | 回调函数。<br>当投播成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600104  | The remote session connection failed. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
@@ -762,8 +840,12 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
   console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 
+let sessionToken: avSession.SessionToken = {
+  sessionId: 'token'
+};
+
 if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError | null) => {
+  avSession.castAudioSession(sessionToken, audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError | null) => {
     if (err) {
       console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
     } else {
@@ -940,8 +1022,6 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
@@ -971,10 +1051,41 @@ avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
 });
 ```
 
+## avSession.onSessionCreate<sup>22+</sup>
+
+onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
+
+会话的创建监听事件。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVSessionDescriptor](#avsessiondescriptor)> | 是   | 回调函数。参数为会话相关描述。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
+avSession.onSessionCreate((descriptor: avSession.AVSessionDescriptor) => {
   console.info(`on sessionCreate : isActive : ${descriptor.isActive}`);
   console.info(`on sessionCreate : type : ${descriptor.type}`);
   console.info(`on sessionCreate : sessionTag : ${descriptor.sessionTag}`);
@@ -994,8 +1105,6 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 **系统接口：** 该接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1026,10 +1135,41 @@ avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
 });
 ```
 
+## avSession.onSessionDestroy<sup>22+</sup>
+
+onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
+
+会话的销毁监听事件。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | ---------------| ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVSessionDescriptor](#avsessiondescriptor)> | 是   | 回调函数。参数为会话相关描述。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
+avSession.onSessionDestroy((descriptor: avSession.AVSessionDescriptor) => {
   console.info(`on sessionDestroy : isActive : ${descriptor.isActive}`);
   console.info(`on sessionDestroy : type : ${descriptor.type}`);
   console.info(`on sessionDestroy : sessionTag : ${descriptor.sessionTag}`);
@@ -1049,8 +1189,6 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 **系统接口：** 该接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1081,10 +1219,41 @@ avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => 
 });
 ```
 
+## avSession.onTopSessionChange<sup>22+</sup>
+
+onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
+
+最新会话变更的监听事件。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | --------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback<[AVSessionDescriptor](#avsessiondescriptor)> | 是   | 回调函数。参数为会话相关描述。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
+avSession.onTopSessionChange((descriptor: avSession.AVSessionDescriptor) => {
   console.info(`on topSessionChange : isActive : ${descriptor.isActive}`);
   console.info(`on topSessionChange : type : ${descriptor.type}`);
   console.info(`on topSessionChange : sessionTag : ${descriptor.sessionTag}`);
@@ -1105,14 +1274,12 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型       | 必填 | 说明       |
 | -------- | ----------| ---- | ----------|
 | type     | string    | 是   | 事件回调类型，支持的事件为：`'sessionCreate'`。|
-| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1132,10 +1299,41 @@ ArkTS-Dyn示例：
 avSession.off('sessionCreate');
 ```
 
+## avSession.offSessionCreate<sup>22+</sup>
+
+offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
+
+取消会话创建事件监听，取消后，不再进行该事件的监听。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型       | 必填 | 说明       |
+| -------- | ----------| ---- | ----------|
+| callback | Callback<[AVSessionDescriptor](#avsessiondescriptor)> | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('sessionCreate');
+avSession.offSessionCreate();
 ```
 
 ## avSession.off('sessionDestroy')
@@ -1152,14 +1350,12 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型        | 必填 | 说明                      |
 | -------- | -----------| ---- | -------------------------|
 | type     | string     | 是   | 事件回调类型，支持的事件为`'sessionDestroy'`。|
-| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1179,10 +1375,41 @@ ArkTS-Dyn示例：
 avSession.off('sessionDestroy');
 ```
 
+## avSession.offSessionDestroy<sup>22+</sup>
+
+offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
+
+取消会话销毁事件监听，取消后，不再进行该事件的监听。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型        | 必填 | 说明                      |
+| -------- | -----------| ---- | -------------------------|
+| callback | Callback<[AVSessionDescriptor](#avsessiondescriptor)> | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('sessionDestroy');
+avSession.offSessionDestroy();
 ```
 
 ## avSession.off('topSessionChange')
@@ -1199,14 +1426,12 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型              | 必填 | 说明                        |
 | -------- | -----------------| ---- | ---------------------------- |
 | type     | string           | 是   | 事件回调类型，支持的事件为`'topSessionChange'`。|
-| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (session: [AVSessionDescriptor](#avsessiondescriptor)) => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -1226,10 +1451,41 @@ ArkTS-Dyn示例：
 avSession.off('topSessionChange');
 ```
 
+## avSession.offTopSessionChange<sup>22+</sup>
+
+offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
+
+取消最新会话变更事件监听，取消后，不再进行该事件的监听。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型              | 必填 | 说明                        |
+| -------- | -----------------| ---- | ---------------------------- |
+| callback | Callback<[AVSessionDescriptor](#avsessiondescriptor)> | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('topSessionChange');
+avSession.offTopSessionChange();
 ```
 
 ## avSession.on('sessionServiceDie')
@@ -1244,14 +1500,12 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | 是   | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |
-| callback | callback: () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | callback: () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -1273,11 +1527,40 @@ avSession.on('sessionServiceDie', () => {
 });
 ```
 
+## avSession.onSessionServiceDie<sup>22+</sup>
+
+onSessionServiceDie(callback: NoParamCallback): void
+
+监听会话的服务死亡事件。通知应用清理资源。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.on('sessionServiceDie', () => {
-  console.info('on sessionServiceDie  : session is  Died ');
+avSession.onSessionServiceDie(() => {
+  console.info('onSessionServiceDie  : session is  Died ');
 });
 ```
 
@@ -1293,14 +1576,12 @@ off(type: 'sessionServiceDie', callback?: () => void): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | 是    | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件。|
-| callback | callback: () => void   | 否    | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
+| callback | callback: () => void   | 否    | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
 
 **错误码：**
 
@@ -1320,11 +1601,41 @@ ArkTS-Dyn示例：
 avSession.off('sessionServiceDie');
 ```
 
+## avSession.offSessionServiceDie<sup>22+</sup>
+
+offSessionServiceDie(callback?: NoParamCallback): void
+
+取消会话服务死亡监听，取消后，不再进行服务死亡监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                    | 必填  |      说明                                               |
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |
+| callback | NoParamCallback   | 否    | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('sessionServiceDie');
+avSession.offSessionServiceDie();
 ```
+
 
 
 ## avSession.on('distributedSessionChange')<sup>18+</sup>
@@ -1340,8 +1651,6 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 **系统接口：** 该接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1370,11 +1679,43 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
 });
 ```
 
+## avSession.onDistributedSessionChange<sup>22+</sup>
+
+onDistributedSessionChange(distributedSessionType: DistributedSessionType, callback: Callback<Array\<AVSessionController>>): void
+
+最新分布式远端会话变更的监听事件。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                                                  | 必填 | 说明                                                                       |
+| -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|
+| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是   | 远端会话类型。                                                                  |
+| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 是   | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID   | 错误信息                                                                                              |
+|---------|---------------------------------------------------------------------------------------------------|
+| 202     | Not System App. Interface caller is not a system app.                                                                                   |
+| 6600101 | Session service exception.                                                                        |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE, (sessionControllers: Array<avSession.AVSessionController>) => {
-  console.info(`on distributedSessionChange size: ${sessionControllers.length}`);
+avSession.onDistributedSessionChange(avSession.DistributedSessionType.TYPE_SESSION_REMOTE, (sessionControllers: Array<avSession.AVSessionController>) => {
+  console.info(`onDistributedSessionChange size: ${sessionControllers.length}`);
 });
 ```
 
@@ -1392,8 +1733,6 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 **系统接口：** 该接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -1420,10 +1759,42 @@ ArkTS-Dyn示例：
 avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
 ```
 
+## avSession.offDistributedSessionChange<sup>22+</sup>
+
+offDistributedSessionChange(distributedSessionType: DistributedSessionType, callback?: Callback<Array\<AVSessionController>>): void
+
+取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                                                  | 必填 | 说明                                                            |
+| -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
+| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是  | 远端会话类型。                                                       |
+| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID   | 错误信息                                                                                              |
+|---------|---------------------------------------------------------------------------------------------------|
+| 202     | Not System App. Interface caller is not a system app.                                                                                   |
+| 6600101 | Session service exception.                                                                        |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
+avSession.offDistributedSessionChange(avSession.DistributedSessionType.TYPE_SESSION_REMOTE);
 ```
 
 ## avSession.sendSystemAVKeyEvent
@@ -2200,8 +2571,6 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -2230,11 +2599,39 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 });
 ```
 
+## avSession.onDeviceAvailable<sup>22+</sup>
+
+onDeviceAvailable(callback: Callback\<OutputDeviceInfo>): void
+
+设备发现回调监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)> | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
 let castDevice: avSession.OutputDeviceInfo;
-avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+avSession.onDeviceAvailable((device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
 });
@@ -2251,8 +2648,6 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 **系统接口：** 该接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -2278,10 +2673,38 @@ ArkTS-Dyn示例：
 avSession.off('deviceAvailable');
 ```
 
+## avSession.offDeviceAvailable<sup>22+</sup>
+
+offDeviceAvailable(callback?: Callback\<OutputDeviceInfo>): void
+
+取消设备发现回调的监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                    | 必填  |      说明                                               |
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |
+| callback     | Callback<[OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)>                | 否    | 用于返回设备信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('deviceAvailable');
+avSession.offDeviceAvailable();
 ```
 
 ## avSession.on('deviceOffline')<sup>11+</sup>
@@ -2296,14 +2719,12 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | 是   | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |
-| callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。<br>当监听事件注册成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2326,13 +2747,41 @@ avSession.on('deviceOffline', (deviceId: string) => {
 });
 ```
 
+## avSession.onDeviceOffline<sup>22+</sup>
+
+onDeviceOffline(callback: Callback\<string>): void
+
+设备下线回调监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<string> | 是   | 回调函数，参数deviceId是设备的ID。<br>当监听事件注册成功，err为null，否则返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
 let castDeviceId: string;
-avSession.on('deviceOffline', (deviceId: string) => {
+avSession.onDeviceOffline((deviceId: string) => {
   castDeviceId = deviceId;
-  console.info(`on deviceOffline  : ${deviceId} `);
+  console.info(`onDeviceOffline  : ${deviceId} `);
 });
 ```
 
@@ -2350,14 +2799,12 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | 是    | 事件回调类型，支持事件`'deviceOffline'`：设备下线回调。|
-| callback | (deviceId: string) => void | 否   | 回调函数，参数deviceId是设备的ID。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (deviceId: string) => void | 否   | 回调函数，参数deviceId是设备的ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -2377,10 +2824,41 @@ ArkTS-Dyn示例：
 avSession.off('deviceOffline');
 ```
 
+## avSession.offDeviceOffline<sup>22+</sup>
+
+offDeviceOffline(callback?: Callback\<string>): void
+
+取消设备下线回调的监听。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                    | 必填  |      说明                                               |
+| ------   | ---------------------- | ---- | ------------------------------------------------------- |
+| callback | Callback\<string> | 否   | 回调函数，参数deviceId是设备的ID。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.multimedia.avsession(多媒体会话)错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('deviceOffline');
+avSession.offDeviceOffline();
 ```
 
 ## avSession.getAVCastController<sup>10+</sup>
@@ -2480,7 +2958,7 @@ struct Index {
             avSession.getAVCastController(sessionId , (err: BusinessError | null, avcontroller: avSession.AVCastController | undefined) => {
             if (err) {
                 console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+            } else if (avcontroller) {
                 aVCastController = avcontroller;
                 console.info('getAVCastController : SUCCESS ');
             }
@@ -2674,9 +3152,9 @@ let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
-avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+avSession.onDeviceAvailable((device: avSession.OutputDeviceInfo) => {
   castDevice = device;
-  console.info(`on deviceAvailable  : ${device} `);
+  console.info(`onDeviceAvailable : ${device} `);
 });
 if (castDevice !== undefined) {
   avSession.startCasting(myToken, castDevice as avSession.OutputDeviceInfo, (err: BusinessError | null) => {
@@ -2762,9 +3240,9 @@ let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 let castDevice: avSession.OutputDeviceInfo | undefined = undefined;
-avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
+avSession.onDeviceAvailable((device: avSession.OutputDeviceInfo) => {
   castDevice = device;
-  console.info(`on deviceAvailable  : ${device} `);
+  console.info(`onDeviceAvailable  : ${device} `);
 });
 if (castDevice !== undefined) {
   avSession.startCasting(myToken, castDevice as avSession.OutputDeviceInfo).then(() => {
@@ -3048,8 +3526,6 @@ on(type: 'deviceLogEvent', callback: Callback\<DeviceLogEventCode>): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -3078,11 +3554,41 @@ avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
 });
 ```
 
+## avSession.onDeviceLogEvent<sup>22+</sup>
+
+onDeviceLogEvent(callback: Callback\<DeviceLogEventCode>): void
+
+监听日志事件的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[DeviceLogEventCode](#devicelogeventcode13)>        | 是   | 回调函数，参数DeviceLogEventCode是当前设备日志返回值。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202        | Not System App. |
+| 6600101    | Session service exception. |
+| 6600102    | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
-  console.info(`on deviceLogEvent code : ${eventCode}`);
+avSession.onDeviceLogEvent((eventCode: avSession.DeviceLogEventCode) => {
+  console.info(`onDeviceLogEvent code : ${eventCode}`);
 });
 ```
 
@@ -3098,14 +3604,12 @@ off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'deviceLogEvent'`。             |
-| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3126,10 +3630,40 @@ ArkTS-Dyn示例：
 avSession.off('deviceLogEvent');
 ```
 
+## avSession.offDeviceLogEvent<sup>22+</sup>
+
+offDeviceLogEvent(callback?: Callback\<DeviceLogEventCode>): void
+
+取消监听日志事件的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback<[DeviceLogEventCode](#devicelogeventcode13)> | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202        | Not System App. |
+| 6600101    | Session service exception. |
+| 6600102    | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-avSession.off('deviceLogEvent');
+avSession.offDeviceLogEvent();
 ```
 
 ## AVCastController<sup>10+</sup>
@@ -3298,9 +3832,7 @@ aVCastController.setDisplaySurface(surfaceID, (err: BusinessError | null) => {
 
 ### on('videoSizeChange')<sup>12+</sup>
 
-ArkTS-Dyn: on(type: 'videoSizeChange', callback: (width:number, height:number) => void): void
-
-ArkTS-Sta: on(type: 'videoSizeChange', callback: (width:int, height:int) => void): void
+on(type: 'videoSizeChange', callback: (width:number, height:number) => void): void
 
 设置video尺寸更改监听事件。
 
@@ -3310,14 +3842,12 @@ ArkTS-Sta: on(type: 'videoSizeChange', callback: (width:int, height:int) => void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string      | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当video尺寸更改时，触发该事件。 |
-| callback | ArkTS-Dyn: (width:number, height:number) => void<br>ArkTS-Sta: (width:int, height:int) => void | 是   | 回调函数，返回video的宽度和高度。     |
+| callback | (width:number, height:number) => void | 是   | 回调函数，返回video的宽度和高度。     |
 
 **错误码：**
 
@@ -3339,10 +3869,38 @@ aVCastController.on('videoSizeChange', (width: number, height: number) => {
 });
 ```
 
+### onVideoSizeChange<sup>22+</sup>
+
+onVideoSizeChange(callback: VideoSizeEvent): void
+
+设置video尺寸更改监听事件。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| callback | VideoSizeEvent = (width: int, height: int) => void | 是   | 回调函数，返回video的宽度和高度。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.on('videoSizeChange', (width: int, height: int) => {
+aVCastController.onVideoSizeChange((width: int, height: int) => {
   console.info(`width ：${width} `);
   console.info(`height：${height} `);
 });
@@ -3359,8 +3917,6 @@ off(type: 'videoSizeChange'): void
 **系统接口：** 该接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -3385,10 +3941,32 @@ ArkTS-Dyn示例：
 aVCastController.off('videoSizeChange');
 ```
 
+### off('videoSizeChange')<sup>22+</sup>
+
+offVideoSizeChange(): void
+
+取消设置video尺寸更改监听事件。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**系统接口：** 该接口为系统接口。
+
+**ArkTS-Sta起始版本：** 22
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-aVCastController.off('videoSizeChange');
+aVCastController.offVideoSizeChange();
 ```
 
 ## AVMetadata<sup>10+</sup>

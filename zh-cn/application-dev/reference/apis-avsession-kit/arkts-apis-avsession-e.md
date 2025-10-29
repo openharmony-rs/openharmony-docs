@@ -14,8 +14,8 @@
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| TYPE_LOCAL<sup>11+</sup>      | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20 |
-| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20 |
+| TYPE_LOCAL<sup>11+</sup>      | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20 |
+| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20 |
 | TYPE_DLNA<sup>12+</sup>      | 4    | DLNA协议。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20 |
 | TYPE_CAST_PLUS_AUDIO<sup>20+</sup>      | 8    | PCM模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：20 |
 
@@ -44,7 +44,7 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -62,7 +62,7 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 20
 
@@ -136,7 +136,7 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -151,7 +151,7 @@
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -170,17 +170,13 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 | 名称               | 值   | 说明     |
 | ------------------ | ---- | -------- |
-| LOOP_MODE_SEQUENCE | 0    | 顺序播放。 |
-| LOOP_MODE_SINGLE   | 1    | 单曲循环。 |
-| LOOP_MODE_LIST     | 2    | 表单循环。 |
-| LOOP_MODE_SHUFFLE  | 3    | 随机播放。 |
-| LOOP_MODE_CUSTOM<sup>11+</sup>   | 4    | 自定义播放。  |
+| LOOP_MODE_SEQUENCE | 0    | 顺序播放。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| LOOP_MODE_SINGLE   | 1    | 单曲循环。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| LOOP_MODE_LIST     | 2    | 表单循环。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| LOOP_MODE_SHUFFLE  | 3    | 随机播放。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20 |
+| LOOP_MODE_CUSTOM<sup>11+</sup>   | 4    | 自定义播放。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20  |
 
 ## PlaybackState<sup>10+</sup>
 
@@ -190,24 +186,20 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
-
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| PLAYBACK_STATE_INITIAL      | 0    | 初始状态。     |
-| PLAYBACK_STATE_PREPARE      | 1    | 播放准备状态。  |
-| PLAYBACK_STATE_PLAY         | 2    | 正在播放。     |
-| PLAYBACK_STATE_PAUSE        | 3    | 暂停。         |
-| PLAYBACK_STATE_FAST_FORWARD | 4    | 快进。         |
-| PLAYBACK_STATE_REWIND       | 5    | 快退。         |
-| PLAYBACK_STATE_STOP         | 6    | 停止。         |
-| PLAYBACK_STATE_COMPLETED    | 7    | 播放完成。     |
-| PLAYBACK_STATE_RELEASED     | 8    | 释放。         |
-| PLAYBACK_STATE_ERROR        | 9    | 错误。         |
-| PLAYBACK_STATE_IDLE<sup>11+</sup>        | 10    | 空闲。     |
-| PLAYBACK_STATE_BUFFERING<sup>11+</sup>         | 11    | 缓冲。   |
+| PLAYBACK_STATE_INITIAL      | 0    | 初始状态。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20     |
+| PLAYBACK_STATE_PREPARE      | 1    | 播放准备状态。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20  |
+| PLAYBACK_STATE_PLAY         | 2    | 正在播放。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20     |
+| PLAYBACK_STATE_PAUSE        | 3    | 暂停。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20         |
+| PLAYBACK_STATE_FAST_FORWARD | 4    | 快进。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20         |
+| PLAYBACK_STATE_REWIND       | 5    | 快退。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20         |
+| PLAYBACK_STATE_STOP         | 6    | 停止。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20         |
+| PLAYBACK_STATE_COMPLETED    | 7    | 播放完成。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20     |
+| PLAYBACK_STATE_RELEASED     | 8    | 释放。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20         |
+| PLAYBACK_STATE_ERROR        | 9    | 错误。<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20         |
+| PLAYBACK_STATE_IDLE<sup>11+</sup>        | 10    | 空闲。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20     |
+| PLAYBACK_STATE_BUFFERING<sup>11+</sup>         | 11    | 缓冲。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：20   |
 
 ## AVSessionErrorCode<sup>10+</sup>
 
@@ -215,15 +207,15 @@
 
 | 名称                                   | 值      | 说明                             |
 | -------------------------------------- | ------- | ------------------------------- |
-| ERR_CODE_SERVICE_EXCEPTION             | 6600101 | 会话服务端异常。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_SESSION_NOT_EXIST             | 6600102 | 会话不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_CONTROLLER_NOT_EXIST          | 6600103 | 会话控制器不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_REMOTE_CONNECTION_ERR         | 6600104 | 远端会话连接失败。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_COMMAND_INVALID               | 6600105 | 无效会话命令。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_SESSION_INACTIVE              | 6600106 | 会话未激活。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | 命令&消息过载。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | 设备连接失败。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
-| ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | 远端会话不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_SERVICE_EXCEPTION             | 6600101 | 会话服务端异常。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_SESSION_NOT_EXIST             | 6600102 | 会话不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_CONTROLLER_NOT_EXIST          | 6600103 | 会话控制器不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_REMOTE_CONNECTION_ERR         | 6600104 | 远端会话连接失败。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_COMMAND_INVALID               | 6600105 | 无效会话命令。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_SESSION_INACTIVE              | 6600106 | 会话未激活。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | 命令&消息过载。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | 设备连接失败。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
+| ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | 远端会话不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：20|
 | ERR_CODE_CAST_CONTROL_UNSPECIFIED<sup>13+</sup>    | 6611000 | 未被定义的投播错误码。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：20|
 | ERR_CODE_CAST_CONTROL_REMOTE_ERROR<sup>13+</sup>    | 6611001 | 远端播放器中发生不明错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：20|
 | ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW<sup>13+</sup>     | 6611002 | 播放出现延迟。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：20|

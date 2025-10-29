@@ -56,7 +56,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -318,7 +318,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
 let imageSource = image.createImageSource(value.buffer);
-let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+let imagePixel = await imageSource!.createPixelMap({desiredSize:{width: 150, height: 150}});
 let calldata: avSession.CallMetadata = {
   name: "xiaoming",
   phoneNumber: "111xxxxxxxx",
@@ -559,7 +559,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -712,7 +712,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -939,7 +939,7 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>): Pr
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1037,7 +1037,7 @@ struct Index {
                 currentAVSession = data;
             }
             });
-            let eventName = "dynamic_lyric";
+            let eventName = "static_lyric";
             if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {"lyric" : "This is lyric"}).then(() => {
                 console.info('dispatchSessionEvent successfully');
@@ -1063,7 +1063,7 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>, cal
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1157,7 +1157,7 @@ struct Index {
                 currentAVSession = data;
             }
             });
-            let eventName: string = "dynamic_lyric";
+            let eventName: string = "static_lyric";
             if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {"lyric" : "This is lyric"}, (err: BusinessError | null) => {
                 if (err) {
@@ -1183,7 +1183,7 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1265,7 +1265,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function setAVQueueItems() {
   let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
   let imageSource = image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+  let imagePixel = await imageSource!.createPixelMap({desiredSize:{width: 150, height: 150}});
   let queueItemDescription_1: avSession.AVMediaDescription = {
     assetId: '001',
     title: 'music_name',
@@ -1384,7 +1384,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function setAVQueueItems() {
   let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
   let imageSource = image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+  let imagePixel = await imageSource!.createPixelMap({desiredSize:{width: 150, height: 150}});
   let queueItemDescription_1: avSession.AVMediaDescription = {
     assetId: '001',
     title: 'music_name',
@@ -1428,7 +1428,7 @@ setAVQueueTitle(title: string): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1555,7 +1555,7 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1677,7 +1677,7 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<vo
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1794,7 +1794,7 @@ getController(): Promise\<AVSessionController>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -1859,16 +1859,18 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(async ()=>{
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avsessionController: avSession.AVSessionController;
-          currentAVSession.getController().then(async (avcontroller: avSession.AVSessionController) => {
-            avsessionController = avcontroller;
-            console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
-          }).catch(async(err: BusinessError) => {
-            console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
-          });
+        .onClick(() => {
+          (async () => {
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+            let avsessionController: avSession.AVSessionController;
+            currentAVSession.getController().then(async (avcontroller: avSession.AVSessionController) => {
+              avsessionController = avcontroller;
+              console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+            }).catch(async (err: BusinessError) => {
+              console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })();
         })
     }
     .width('100%')
@@ -1954,18 +1956,20 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(async () => {
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avsessionController: avSession.AVSessionController;
-          currentAVSession.getController((err: BusinessError | null, avcontroller: avSession.AVSessionController | undefined) => {
-            if (err) {
-              console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              avsessionController = avcontroller;
-              console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
-            }
-          });
+        .onClick(() => {
+          (async () => {
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+            let avsessionController: avSession.AVSessionController;
+            currentAVSession.getController((err: BusinessError | null, avcontroller: avSession.AVSessionController | undefined) => {
+              if (err) {
+                console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
+              } else if (avcontroller) {
+                avsessionController = avcontroller;
+                console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+              }
+            });
+          })();
         })
     }
     .width('100%')
@@ -1984,7 +1988,7 @@ getAVCastController(): Promise\<AVCastController>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2087,7 +2091,7 @@ let aVCastController: avSession.AVCastController;
 currentAVSession.getAVCastController((err: BusinessError | null, avcontroller: avSession.AVCastController | undefined) => {
   if (err) {
     console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+  } else if (avcontroller) {
     aVCastController = avcontroller;
     console.info('getAVCastController : SUCCESS');
   }
@@ -2104,7 +2108,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2200,7 +2204,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 currentAVSession.getOutputDevice((err: BusinessError | null, outputDeviceInfo: avSession.OutputDeviceInfo | undefined) => {
   if (err) {
     console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
+  } else if (outputDeviceInfo) {
     console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
   }
 });
@@ -2309,7 +2313,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-currentAVSession.activate((err: BusinessError | undefined) => {
+currentAVSession.activate((err: BusinessError | null) => {
   if (err) {
     console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -2328,7 +2332,7 @@ deactivate(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2423,7 +2427,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-currentAVSession.deactivate((err: BusinessError | undefined) => {
+currentAVSession.deactivate((err: BusinessError | null) => {
   if (err) {
     console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -2442,7 +2446,7 @@ destroy(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -2535,7 +2539,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-currentAVSession.destroy((err: BusinessError | undefined) => {
+currentAVSession.destroy((err: BusinessError | null) => {
   if (err) {
     console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
@@ -2556,16 +2560,14 @@ on(type: 'play', callback: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件为`'play'`，当播放命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2587,11 +2589,42 @@ currentAVSession.on('play', () => {
 });
 ```
 
+## onPlay<sup>22+</sup>
+
+onPlay(callback: NoParamCallback): void
+
+设置播放命令监听事件。注册该监听，说明应用支持播放指令。
+
+每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('play', () => {
-  console.info('on play entry');
+currentAVSession.onPlay(() => {
+  console.info('onPlay entry');
 });
 ```
 
@@ -2607,16 +2640,14 @@ on(type: 'pause', callback: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件为`'pause'`，当暂停命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2638,11 +2669,42 @@ currentAVSession.on('pause', () => {
 });
 ```
 
+## onPause<sup>22+</sup>
+
+onPause(callback: NoParamCallback): void
+
+设置暂停命令监听事件。注册该监听，说明应用支持暂停指令。
+
+每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('pause', () => {
-  console.info('on pause entry');
+currentAVSession.onPause(() => {
+  console.info('onPause entry');
 });
 ```
 
@@ -2658,16 +2720,14 @@ on(type:'stop', callback: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'stop'`，当停止命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2689,11 +2749,42 @@ currentAVSession.on('stop', () => {
 });
 ```
 
+## onStop<sup>22+</sup>
+
+onStop(callback: NoParamCallback): void;
+
+设置停止命令监听事件。注册该监听，说明应用支持停止指令。
+
+每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('stop', () => {
-  console.info('on stop entry');
+currentAVSession.onStop(() => {
+  console.info('onStop entry');
 });
 ```
 
@@ -2709,16 +2800,14 @@ on(type:'playNext', callback: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'playNext'`，当播放下一首命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2740,11 +2829,42 @@ currentAVSession.on('playNext', () => {
 });
 ```
 
+## onPlayNext<sup>22+</sup>
+
+onPlayNext(callback: NoParamCallback): void
+
+设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
+
+每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('playNext', () => {
-  console.info('on playNext entry');
+currentAVSession.onPlayNext(() => {
+  console.info('onPlayNext entry');
 });
 ```
 
@@ -2760,16 +2880,14 @@ on(type:'playPrevious', callback: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'playPrevious'`，当播放上一首命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则为错误对象。 |
+| callback | () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2791,11 +2909,42 @@ currentAVSession.on('playPrevious', () => {
 });
 ```
 
+## onPlayPrevious<sup>22+</sup>
+
+onPlayPrevious(callback: NoParamCallback): void
+
+设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
+
+每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('playPrevious', () => {
-  console.info('on playPrevious entry');
+currentAVSession.onPlayPrevious(() => {
+  console.info('onPlayPrevious entry');
 });
 ```
 
@@ -2811,9 +2960,7 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2842,19 +2989,48 @@ currentAVSession.on('fastForward', (time?: number) => {
 });
 ```
 
+## onFastForward<sup>22+</sup>
+
+onFastForward(callback: Callback<long>): void
+
+设置快进命令监听事件。注册该监听，说明应用支持快进指令。
+
+每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | Callback\<long> | 是   | 回调函数。参数time是时间节点，单位为秒。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('fastForward', (time?: number) => {
-  console.info('on fastForward entry');
+currentAVSession.onFastForward((time?: long) => {
+  console.info('onFastForward entry');
 });
 ```
 
 ## on('rewind')<sup>10+</sup>
 
-ArkTS-Dyn: on(type:'rewind', callback: (time?: number) => void): void
-
-ArkTS-Sta: on(type:'rewind', callback: (time?: long) => void): void
+on(type:'rewind', callback: (time?: number) => void): void
 
 设置快退命令监听事件。
 
@@ -2862,16 +3038,14 @@ ArkTS-Sta: on(type:'rewind', callback: (time?: long) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'rewind'`，当快退命令被发送到会话时，触发该事件回调。 |
-| callback | ArkTS-Dyn: (time?: number) => void<br>ArkTS-Sta: (time?: long) => void | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+| callback | (time?: number) => void | 是   | 回调函数。参数time是时间节点，单位为秒。      |
 
 **错误码：**
 
@@ -2893,11 +3067,41 @@ currentAVSession.on('rewind', (time?: number) => {
 });
 ```
 
+## onRewind<sup>22+</sup>
+
+onRewind(callback: Callback\<long>): void
+
+设置快退命令监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | Callback\<long> | 是   | 回调函数。参数time是时间节点，单位为秒。      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('rewind', (time?: long) => {
-  console.info('on rewind entry');
+currentAVSession.onRewind((time?: long) => {
+  console.info('onRewind  entry');
 });
 ```
 
@@ -2982,9 +3186,7 @@ currentAVSession.off('playWithAssetId');
 
 ## on('seek')<sup>10+</sup>
 
-ArkTS-Dyn: on(type: 'seek', callback: (time: number) => void): void
-
-ArkTS-Sta: on(type: 'seek', callback: (time: long) => void): void
+on(type: 'seek', callback: (time: number) => void): void
 
 设置跳转节点监听事件。
 
@@ -2992,16 +3194,14 @@ ArkTS-Sta: on(type: 'seek', callback: (time: long) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | --------- |
 | type     | string                 | 是   | 事件回调类型，支持事件`'seek'`：当跳转节点命令被发送到会话时，触发该事件。 |
-| callback | ArkTS-Dyn: (time: number) => void<br>ArkTS-Sta: (time: long) => void | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
+| callback | (time: number) => void | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
 
 **错误码：**
 
@@ -3023,19 +3223,46 @@ currentAVSession.on('seek', (time: number) => {
 });
 ```
 
+## onSeek<sup>22+</sup>
+
+onSeek(callback: Callback<long>): void
+
+设置跳转节点监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | --------- |
+| callback | Callback\<long> | 是   | 回调函数。参数time是时间节点，单位为毫秒。                   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('seek', (time: long) => {
-  console.info(`on seek entry time : ${time}`);
+currentAVSession.onSeek((time: long) => {
+  console.info(`onSeek entry time : ${time}`);
 });
 ```
 
 ## on('setSpeed')<sup>10+</sup>
 
-ArkTS-Dyn: on(type: 'setSpeed', callback: (speed: number) => void): void
-
-ArkTS-Sta: on(type: 'setSpeed', callback: (speed: double) => void): void
+on(type: 'setSpeed', callback: (speed: number) => void): void
 
 设置播放速率的监听事件。
 
@@ -3043,16 +3270,14 @@ ArkTS-Sta: on(type: 'setSpeed', callback: (speed: double) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明     |
 | -------- | ----------------------- | ---- | --------- |
 | type     | string                  | 是   | 事件回调类型，支持事件`'setSpeed'`：当设置播放速率的命令被发送到会话时，触发该事件。 |
-| callback | ArkTS-Dyn: (speed: number) => void<br>ArkTS-Sta: (speed: double) => void | 是   | 回调函数。参数speed是播放倍速。                              |
+| callback | (speed: number) => void | 是   | 回调函数。参数speed是播放倍速。                              |
 
 **错误码：**
 
@@ -3074,11 +3299,40 @@ currentAVSession.on('setSpeed', (speed: number) => {
 });
 ```
 
+## onSetSpeed<sup>22+</sup>
+
+onSetSpeed(callback: Callback<double>): void;
+
+设置播放速率的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明     |
+| -------- | ----------------------- | ---- | --------- |
+| callback | Callback\<double> | 是   | 回调函数。参数speed是播放倍速。                              |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('setSpeed', (speed: double) => {
-  console.info(`on setSpeed speed : ${speed}`);
+currentAVSession.onSetSpeed((speed: double) => {
+  console.info(`onSetSpeed speed : ${speed}`);
 });
 ```
 
@@ -3092,9 +3346,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3123,11 +3375,40 @@ currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
 });
 ```
 
+## onSetLoopMode<sup>22+</sup>
+
+onSetLoopMode(callback: Callback\<LoopMode>): void
+
+设置循环模式的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                                   | 必填 | 说明  |
+| -------- | ------------------------------------- | ---- | ---- |
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 是   | 回调函数。参数表示目标循环模式。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
-  console.info(`on setLoopMode mode : ${mode}`);
+currentAVSession.onSetLoopMode((mode: avSession.LoopMode) => {
+  console.info(`onSetLoopMode mode : ${mode}`);
 });
 ```
 
@@ -3171,6 +3452,45 @@ currentAVSession.on('setTargetLoopMode', (mode: avSession.LoopMode) => {
 });
 ```
 
+## onSetTargetLoopMode<sup>22+</sup>
+
+onSetTargetLoopMode(callback: Callback\<LoopMode>): void
+
+设置目标循环模式的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                                   | 必填 | 说明  |
+| -------- | ------------------------------------- | ---- | ---- |
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 是   | 回调函数。参数表示目标循环模式。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+currentAVSession.onSetTargetLoopMode((mode: avSession.LoopMode) => {
+  console.info(`onSetTargetLoopMode mode : ${mode}`);
+});
+```
+
 ## on('toggleFavorite')<sup>10+</sup>
 
 on(type: 'toggleFavorite', callback: (assetId: string) => void): void
@@ -3181,9 +3501,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3212,19 +3530,46 @@ currentAVSession.on('toggleFavorite', (assetId: string) => {
 });
 ```
 
+## onToggleFavorite<sup>22+</sup>
+
+onToggleFavorite(callback: Callback\<string>): void
+
+设置是否收藏的监听事件
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明     |
+| -------- | ------------------------- | ---- | --------- |
+| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体ID。                              |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('toggleFavorite', (assetId: string) => {
-  console.info(`on toggleFavorite mode : ${assetId}`);
+currentAVSession.onToggleFavorite((assetId: string) => {
+  console.info(`onToggleFavorite mode : ${assetId}`);
 });
 ```
 
 ## on('skipToQueueItem')<sup>10+</sup>
 
-ArkTS-Dyn: on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
-
-ArkTS-Sta: on(type: 'skipToQueueItem', callback: (itemId: int) => void): void
+on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
 设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
 
@@ -3232,16 +3577,14 @@ ArkTS-Sta: on(type: 'skipToQueueItem', callback: (itemId: int) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------ | ---- | ------------------------------------- |
 | type     | string                   | 是   | 事件回调类型，支持事件`'skipToQueueItem'`：当播放列表选中单项的命令被发送到会话时，触发该事件。 |
-| callback | ArkTS-Dyn: (itemId: number) => void<br>ArkTS-Sta: (itemId: int) => void | 是   | 回调函数。参数itemId是选中的播放列表项的ID。                                                |
+| callback | (itemId: number) => void | 是   | 回调函数。参数itemId是选中的播放列表项的ID。                                                |
 
 **错误码：**
 
@@ -3263,11 +3606,40 @@ currentAVSession.on('skipToQueueItem', (itemId: number) => {
 });
 ```
 
+## onSkipToQueueItem<sup>10+</sup>
+
+onSkipToQueueItem(callback: Callback\<int>): void
+
+设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                   |
+| -------- | ------------------------ | ---- | ------------------------------------- |
+| callback | Callback\<int> | 是   | 回调函数。参数itemId是选中的播放列表项的ID。                                                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('skipToQueueItem', (itemId: int) => {
-  console.info(`on skipToQueueItem id : ${itemId}`);
+currentAVSession.onSkipToQueueItem((itemId: int) => {
+  console.info(`onSkipToQueueItem id : ${itemId}`);
 });
 ```
 
@@ -3281,9 +3653,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3314,12 +3684,41 @@ currentAVSession.on('handleKeyEvent', (event: KeyEvent) => {
 });
 ```
 
+## onHandleKeyEvent<sup>22+</sup>
+
+onHandleKeyEvent(callback: Callback\<KeyEvent>): void
+
+设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明     |
+| -------- | --------- | ---- | --------- |
+| callback | Callback<[KeyEvent](../apis-input-kit/js-apis-keyevent.md)> | 是   | 回调函数。参数event是按键事件。                              |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
 import { KeyEvent } from '@kit.InputKit';
 
-currentAVSession.on('handleKeyEvent', (event: KeyEvent) => {
+currentAVSession.onHandleKeyEvent((event: KeyEvent) => {
   console.info(`on handleKeyEvent event : ${event}`);
 });
 ```
@@ -3334,9 +3733,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3365,19 +3762,46 @@ currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, dev
 });
 ```
 
+## onOutputDeviceChange<sup>22+</sup>
+
+onOutputDeviceChange(callback: ConnectionEvent): void
+
+设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明     |
+| -------- | ------------------------| ---- | --------- |
+| callback | [ConnectionState](arkts-apis-avsession-e.md#connectionstate10) | 是   | 回调函数。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
-  console.info(`on outputDeviceChange device : ${device}`);
+currentAVSession.onOutputDeviceChange((state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
+  console.info(`onOutputDeviceChange device : ${device}`);
 });
 ```
 
 ## on('commonCommand')<sup>10+</sup>
 
-ArkTS-Dyn: on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
-
-ArkTS-Sta: on(type: 'commonCommand', callback: (command: string, args: Record<string, Object>) => void): void
+on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
 
 设置自定义控制命令变化的监听器。
 
@@ -3385,16 +3809,14 @@ ArkTS-Sta: on(type: 'commonCommand', callback: (command: string, args: Record<st
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | ArkTS-Dyn: (command: string, args: {[key: string]: Object}) => void<br>ArkTS-Sta: (command: string, args: Record<string, Object>) => void | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
+| callback | (command: string, args: {[key: string]: Object}) => void | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
 
 **错误码：**
 
@@ -3446,6 +3868,35 @@ struct Index {
 }
 ```
 
+## onCommonCommand<sup>22+</sup>
+
+onCommonCommand(callback: EventProcess): void
+
+设置自定义控制命令变化的监听器。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型  |   必填 | 说明     |
+| -------- | --------- | ---- | --------- |
+| callback | EventProcess = (event: string, args: Record<string, Object>) => void | 是   | 回调函数，event为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
@@ -3472,7 +3923,7 @@ struct Index {
             }
             });
             if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
+            (currentAVSession as avSession.AVSession).onCommonCommand((commonCommand, args) => {
                 console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
             });
             }
@@ -3496,16 +3947,14 @@ off(type: 'play', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'play'`。|
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3525,10 +3974,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('play');
 ```
 
+## offPlay<sup>22+</sup>
+
+offPlay(callback?: NoParamCallback): void
+
+取消会话播放事件监听，关闭后，不再进行该事件回调。
+
+取消回调时，需要更新支持的命令列表。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('play');
+currentAVSession.offPlay();
 ```
 
 ## off('pause')<sup>10+</sup>
@@ -3543,16 +4021,14 @@ off(type: 'pause', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'pause'`。 |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3572,10 +4048,41 @@ ArkTS-Dyn示例：
 currentAVSession.off('pause');
 ```
 
+## offPause<sup>22+</sup>
+
+offPause(callback?: NoParamCallback): void
+
+取消会话暂停事件监听，关闭后，不再进行该事件回调。
+
+取消回调时，需要更新支持的命令列表。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('pause');
+currentAVSession.offPause();
 ```
 
 ## off('stop')<sup>10+</sup>
@@ -3590,16 +4097,14 @@ off(type: 'stop', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'stop'`。 |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3619,10 +4124,41 @@ ArkTS-Dyn示例：
 currentAVSession.off('stop');
 ```
 
+## offStop<sup>22+</sup>
+
+offStop(callback?: NoParamCallback): void
+
+取消会话停止事件监听，关闭后，不再进行该事件回调。
+
+取消回调时，需要更新支持的命令列表。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('stop');
+currentAVSession.offStop();
 ```
 
 ## off('playNext')<sup>10+</sup>
@@ -3637,16 +4173,14 @@ off(type: 'playNext', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是 `'playNext'`。 |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3666,10 +4200,41 @@ ArkTS-Dyn示例：
 currentAVSession.off('playNext');
 ```
 
+## offPlayNext<sup>22+</sup>
+
+offPlayNext(callback?: NoParamCallback): void
+
+取消会话播放下一首事件监听，关闭后，不再进行该事件回调。
+
+取消回调时，需要更新支持的命令列表。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('playNext');
+currentAVSession.offPlayNext();
 ```
 
 ## off('playPrevious')<sup>10+</sup>
@@ -3684,16 +4249,14 @@ off(type: 'playPrevious', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'playPrevious'`。 |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3713,10 +4276,41 @@ ArkTS-Dyn示例：
 currentAVSession.off('playPrevious');
 ```
 
+## offPlayPrevious<sup>22+</sup>
+
+offPlayPrevious(callback?: NoParamCallback): void
+
+取消会话播放上一首事件监听，关闭后，不再进行该事件回调。
+
+取消回调时，需要更新支持的命令列表。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('playPrevious');
+currentAVSession.offPlayPrevious();
 ```
 
 ## off('fastForward')<sup>10+</sup>
@@ -3731,16 +4325,14 @@ off(type: 'fastForward', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'fastForward'`。 |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3760,10 +4352,41 @@ ArkTS-Dyn示例：
 currentAVSession.off('fastForward');
 ```
 
+## offFastForward<sup>22+</sup>
+
+offFastForward(callback?: NoParamCallback): void
+
+取消会话快进事件监听，关闭后，不再进行该事件回调。
+
+取消回调时，需要更新支持的命令列表。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('fastForward');
+currentAVSession.offFastForward();
 ```
 
 ## off('rewind')<sup>10+</sup>
@@ -3776,16 +4399,14 @@ off(type: 'rewind', callback?: () => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'rewind'`。 |
-| callback | () => void | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | () => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3805,17 +4426,44 @@ ArkTS-Dyn示例：
 currentAVSession.off('rewind');
 ```
 
+## offRewind<sup>22+</sup>
+
+offRewind(callback?: NoParamCallback): void
+
+取消会话快退事件监听，关闭后，不再进行该事件回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('rewind');
+currentAVSession.offRewind();
 ```
 
 ## off('seek')<sup>10+</sup>
 
-ArkTS-Dyn: off(type: 'seek', callback?: (time: number) => void): void
-
-ArkTS-Sta: off(type: 'seek', callback?: (time: long) => void): void
+off(type: 'seek', callback?: (time: number) => void): void
 
 取消监听跳转节点事件。
 
@@ -3823,16 +4471,14 @@ ArkTS-Sta: off(type: 'seek', callback?: (time: long) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 关闭对应的监听事件，支持关闭事件`'seek'`。                   |
-| callback | ArkTS-Dyn: (time: number) => void<br>ArkTS-Sta: (time: long) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (time: number) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3852,17 +4498,44 @@ ArkTS-Dyn示例：
 currentAVSession.off('seek');
 ```
 
+## offSeek<sup>22+</sup>
+
+offSeek(callback?: Callback\<long>): void
+
+取消监听跳转节点事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<long> | 否   | 回调函数，参数time是时间节点，单位为毫秒。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('seek');
+currentAVSession.offSeek();
 ```
 
 ## off('setSpeed')<sup>10+</sup>
 
-ArkTS-Dyn: off(type: 'setSpeed', callback?: (speed: number) => void): void
-
-ArkTS-Sta: off(type: 'setSpeed', callback?: (speed: double) => void): void
+off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 取消监听播放速率变化事件。
 
@@ -3870,16 +4543,14 @@ ArkTS-Sta: off(type: 'setSpeed', callback?: (speed: double) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 关闭对应的监听事件，支持关闭事件`'setSpeed'`。               |
-| callback | ArkTS-Dyn: (speed: number) => void<br>ArkTS-Sta: (speed: double) => void | 否   | 回调函数，参数speed是播放倍速。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (speed: number) => void | 否   | 回调函数，参数speed是播放倍速。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3899,10 +4570,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('setSpeed');
 ```
 
+## offSetSpeed<sup>22+</sup>
+
+offSetSpeed(callback: Callback\<double>): void
+
+取消监听播放速率变化事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<double> | 否   | 回调函数，参数speed是播放倍速。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('setSpeed');
+currentAVSession.offSetSpeed();
 ```
 
 ## off('setLoopMode')<sup>10+</sup>
@@ -3915,16 +4615,14 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | ------------------------------------- | ---- | ----- |
 | type     | string | 是   | 关闭对应的监听事件，支持关闭事件`'setLoopMode'`。|
-| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | 否   | 回调函数，参数mode是循环模式。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | 否   | 回调函数，参数mode是循环模式。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3944,10 +4642,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('setLoopMode');
 ```
 
+## offSetLoopMode<sup>22+</sup>
+
+offSetLoopMode(callback?: Callback\<LoopMode>): void
+
+取消监听循环模式变化事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明     |
+| -------- | ------------------------------------- | ---- | ----- |
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数mode是循环模式。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('setLoopMode');
+currentAVSession.offSetLoopMode();
 ```
 
 ## off('setTargetLoopMode')<sup>18+</sup>
@@ -3988,6 +4715,43 @@ ArkTS-Dyn示例：
 currentAVSession.off('setTargetLoopMode');
 ```
 
+## offSetTargetLoopMode<sup>22+</sup>
+
+offSetTargetLoopMode(callback?: Callback<LoopMode>): void
+
+取消监听目标循环模式变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明     |
+| -------- | ------------------------------------- | ---- | ----- |
+| callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数表示目标循环模式。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+currentAVSession.offSetTargetLoopMode();
+```
+
 ## off('toggleFavorite')<sup>10+</sup>
 
 off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
@@ -3998,16 +4762,14 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明     |
 | -------- | ------------------------- | ---- | -------------------------|
 | type     | string                    | 是   | 关闭对应的监听事件，支持关闭事件`'toggleFavorite'`。            |
-| callback | (assetId: string) => void | 否   | 回调函数，参数assetId是媒体ID。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (assetId: string) => void | 否   | 回调函数，参数assetId是媒体ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4027,17 +4789,44 @@ ArkTS-Dyn示例：
 currentAVSession.off('toggleFavorite');
 ```
 
+## offToggleFavorite<sup>22+</sup>
+
+offToggleFavorite(callback?: Callback\<string>): void
+
+取消监听是否收藏的事件
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明     |
+| -------- | ------------------------- | ---- | -------------------------|
+| callback | Callback\<string> | 否   | 回调函数，参数是媒体ID。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('toggleFavorite');
+currentAVSession.offToggleFavorite();
 ```
 
 ## off('skipToQueueItem')<sup>10+</sup>
 
-ArkTS-Dyn: off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
-
-ArkTS-Sta: off(type: 'skipToQueueItem', callback?: (itemId: int) => void): void
+off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 取消监听播放列表单项选中的事件
 
@@ -4045,16 +4834,14 @@ ArkTS-Sta: off(type: 'skipToQueueItem', callback?: (itemId: int) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明    |
 | -------- | ------------------------ | ---- | ----------------------|
 | type     | string                   | 是   | 关闭对应的监听事件，支持关闭事件`'skipToQueueItem'`。    |
-| callback | ArkTS-Dyn: (itemId: number) => void<br>ArkTS-Sta: (itemId: int) => void | 否   | 回调函数，参数itemId是播放列表单项ID。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (itemId: number) => void<br> | 否   | 回调函数，参数itemId是播放列表单项ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4074,10 +4861,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('skipToQueueItem');
 ```
 
+## offSkipToQueueItem<sup>22+</sup>
+
+offSkipToQueueItem(callback?: Callback\<int>): void
+
+取消监听播放列表单项选中的事件
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明    |
+| -------- | ------------------------ | ---- | ----------------------|
+| callback | Callback\<int> | 否   | 回调函数，参数是播放列表单项ID。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('skipToQueueItem');
+currentAVSession.offSkipToQueueItem();
 ```
 
 ## off('handleKeyEvent')<sup>10+</sup>
@@ -4090,16 +4906,14 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 关闭对应的监听事件，支持关闭事件`'handleKeyEvent'`。             |
-| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | 否   | 回调函数，参数event是按键事件。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | 否   | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4119,11 +4933,41 @@ ArkTS-Dyn示例：
 currentAVSession.off('handleKeyEvent');
 ```
 
+## offHandleKeyEvent<sup>22+</sup>
+
+offHandleKeyEvent(callback?: Callback\<KeyEvent>): void
+
+取消监听按键事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型  |   必填 | 说明     |
+| -------- | --------- | ---- | --------- |
+| callback | Callback<[KeyEvent](../apis-input-kit/js-apis-keyevent.md)> | 否   | 回调函数，参数是按键事件。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('handleKeyEvent');
+currentAVSession.offHandleKeyEvent();
 ```
+
 
 ## off('outputDeviceChange')<sup>10+</sup>
 
@@ -4135,16 +4979,14 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明   |
 | -------- | ------------------------| ---- | -----------------------|
 | type     | string                                                  | 是   | 关闭对应的监听事件，支持关闭事件`'outputDeviceChange'`。     |
-| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 否   | 回调函数，参数device是设备相关信息。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 否   | 回调函数，参数device是设备相关信息。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4164,17 +5006,44 @@ ArkTS-Dyn示例：
 currentAVSession.off('outputDeviceChange');
 ```
 
+## offOutputDeviceChange<sup>22+</sup>
+
+offOutputDeviceChange(callback: ConnectionEvent): void
+
+取消监听播放设备变化的事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+| -------- | ------------------------| ---- | -----------------------|
+| callback | ConnectionEvent = (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 否   | 回调函数，参数device是设备相关信息。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('outputDeviceChange');
+currentAVSession.offOutputDeviceChange();
 ```
 
 ## off('commonCommand')<sup>10+</sup>
 
-ArkTS-Dyn: off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
-
-ArkTS-Sta: off(type: 'commonCommand', callback?: (command: string, args: Record<string, Object>) => void): void
+off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
 
 取消监听自定义控制命令的变化。
 
@@ -4182,16 +5051,13 @@ ArkTS-Sta: off(type: 'commonCommand', callback?: (command: string, args: Record<
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型  |   必填 | 说明  |
 | -------- | --------- | ---- | ----------------------|
-| type     | string    | 是   | 取消对应的监听事件，支持事件`'commonCommand'`。    |
-| callback | ArkTS-Dyn: (command: string, args: {[key: string]: Object}) => void<br>ArkTS-Sta: (command: string, args: Record<string, Object>) => void | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
+| callback | (command: string, args: {[key: string]: Object}) => void | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
 
 **错误码：**
 
@@ -4211,10 +5077,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('commonCommand');
 ```
 
+## offCommonCommand<sup>22+</sup>
+
+offCommonCommand(callback?: EventProcess): void
+
+取消监听自定义控制命令的变化。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型  |   必填 | 说明  |
+| -------- | --------- | ---- | ----------------------|
+| callback | EventProcess = (event: string, args: Record<string, Object>) => void | 否   | 回调函数，参数event是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------- |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('commonCommand');
+currentAVSession.offCommonCommand();
 ```
 
 ## on('answer')<sup>11+</sup>
@@ -4227,9 +5122,7 @@ on(type: 'answer', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4258,10 +5151,39 @@ currentAVSession.on('answer', () => {
 });
 ```
 
+## onAnswer<sup>22+</sup>
+
+onAnswer(callback: NoParamCallback): void
+
+设置通话接听的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型   |  必填 | 说明     |
+| -------- | --------- | ---- | --------- |
+| callback | NoParamCallback                                               | 是   | 回调函数。                      |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('answer', () => {
+currentAVSession.onAnswer(() => {
   console.info('on call answer');
 });
 ```
@@ -4276,16 +5198,14 @@ off(type: 'answer', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'answer'`。 |
-| callback | Callback\<void>     | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void>     | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4305,10 +5225,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('answer');
 ```
 
+## offAnswer<sup>22+</sup>
+
+offAnswer(callback?: NoParamCallback): void
+
+取消通话接听事件的监听。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback     | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('answer');
+currentAVSession.offAnswer();
 ```
 
 ## on('hangUp')<sup>11+</sup>
@@ -4321,9 +5270,7 @@ on(type: 'hangUp', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4352,10 +5299,39 @@ currentAVSession.on('hangUp', () => {
 });
 ```
 
+## onHangUp<sup>22+</sup>
+
+onHangUp(callback: NoParamCallback): void
+
+设置通话挂断的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型  |   必填 | 说明     |
+| -------- | --------- | ---- | --------- |
+| callback | NoParamCallback                                               | 是   | 回调函数。                                             |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('hangUp', () => {
+currentAVSession.onHangUp(() => {
   console.info('on call hangUp');
 });
 ```
@@ -4370,16 +5346,14 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'hangUp'`。 |
-| callback | Callback\<void>      | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void>      | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4399,10 +5373,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('hangUp');
 ```
 
+## offHangUp<sup>22+</sup>
+
+offHangUp(callback?: NoParamCallback): void
+
+取消通话挂断事件的监听。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback      | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('hangUp');
+currentAVSession.offHangUp();
 ```
 
 ## on('toggleCallMute')<sup>11+</sup>
@@ -4415,9 +5418,7 @@ on(type: 'toggleCallMute', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4446,10 +5447,39 @@ currentAVSession.on('toggleCallMute', () => {
 });
 ```
 
+## onToggleCallMute<sup>22+</sup>
+
+onToggleCallMute(callback: NoParamCallback): void
+
+设置通话静音的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型  |   必填 | 说明     |
+| -------- | --------- | ---- | --------- |
+| callback | NoParamCallback                                               | 是   | 回调函数。                                             |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.on('toggleCallMute', () => {
+currentAVSession.onToggleCallMute(() => {
   console.info('on call toggleCallMute');
 });
 ```
@@ -4464,16 +5494,14 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'toggleCallMute'`。 |
-| callback | Callback\<void>    | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<void>    | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4493,10 +5521,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('toggleCallMute');
 ```
 
+## offToggleCallMute<sup>22+</sup>
+
+offToggleCallMute(callback?: NoParamCallback): void
+
+取消通话静音事件的监听。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | NoParamCallback    | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('toggleCallMute');
+currentAVSession.offToggleCallMute();
 ```
 
 ## on('castDisplayChange')<sup>12+</sup>
@@ -4510,8 +5567,6 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
 **ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -4546,11 +5601,40 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 });
 ```
 
+## onCastDisplayChange<sup>22+</sup>
+
+onCastDisplayChange(callback: Callback\<CastDisplayInfo>): void
+
+设置扩展屏投播显示设备变化的监听事件。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)>>   | 是   | 回调函数。参数是扩展屏投播显示设备信息。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
 let castDisplay: avSession.CastDisplayInfo;
-currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) => {
+currentAVSession.onCastDisplayChange((display: avSession.CastDisplayInfo) => {
     if (display.state === avSession.CastDisplayState.STATE_ON) {
         castDisplay = display;
         console.info(`Succeeded in castDisplayChange display : ${display.id} ON`);
@@ -4562,7 +5646,7 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
 ## off('castDisplayChange')<sup>12+</sup>
 
- off(type: 'castDisplayChange', callback?: Callback\<CastDisplayInfo>): void
+off(type: 'castDisplayChange', callback?: Callback\<CastDisplayInfo>): void
 
 取消扩展屏投播显示设备变化事件监听，关闭后，不再进行该事件回调。
 
@@ -4572,14 +5656,12 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
-
 **参数：**
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string    | 是   | 关闭对应的监听事件，支持的事件是`'castDisplayChange'`。 |
-| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)   | 否   | 回调函数。<br>ArkTS-Dyn：当监听事件取消成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)   | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -4599,10 +5681,39 @@ ArkTS-Dyn示例：
 currentAVSession.off('castDisplayChange');
 ```
 
+## offCastDisplayChange<sup>22+</sup>
+
+offCastDisplayChange(callback?: Callback\<CastDisplayInfo>): void
+
+取消扩展屏投播显示设备变化事件监听，关闭后，不再进行该事件回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)   | 否   | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
 ArkTS-Sta示例：
 
 ```ts
-currentAVSession.off('castDisplayChange');
+currentAVSession.offCastDisplayChange();
 ```
 
 ## stopCasting<sup>10+</sup>
@@ -4671,7 +5782,7 @@ stopCasting(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
@@ -4725,7 +5836,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 20
 
