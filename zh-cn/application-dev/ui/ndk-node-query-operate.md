@@ -18,6 +18,41 @@ uniqueId是系统分配的唯一标识的节点Id。
 
 <!-- @[ndknodequeryoperate1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp) -->
 
+``` C++
+ArkUI_NativeNodeAPI_1* nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+ArkUI_NodeHandle testNode = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+ArkUI_NumberValue value[] = {VALUE_1};
+ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+value[0].f32 = VALUE_2;
+nodeAPI->setAttribute(testNode, NODE_WIDTH, &item);
+nodeAPI->setAttribute(testNode, NODE_HEIGHT, &item);
+struct IdList {
+    int32_t id = -1;
+};
+IdList *idl = new IdList;
+int32_t uid = -1;
+OH_ArkUI_NodeUtils_GetNodeUniqueId(testNode, &uid);
+idl->id = uid;
+auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+value[0].f32 = VALUE_3;
+nodeAPI->setAttribute(button, NODE_WIDTH, &item);
+nodeAPI->setAttribute(button, NODE_HEIGHT, &item);
+nodeAPI->addChild(testNode, button);
+nodeAPI->registerNodeEvent(button, NODE_ON_CLICK, 1, idl);
+OH_LOG_Print(LOG_APP, LOG_WARN, LOG_PRINT, "GetNodeUniqueId", "GetNodeHandleByUniqueId success1");
+nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+    auto targetId = OH_ArkUI_NodeEvent_GetTargetId(event);
+    if (targetId == 1) {
+        auto idl = (IdList *)OH_ArkUI_NodeEvent_GetUserData(event);
+        ArkUI_NodeHandle Test_Column;
+        auto ec = OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(idl->id, &Test_Column);
+        if (ec == 0) {
+            OH_LOG_Print(LOG_APP, LOG_WARN, LOG_PRINT, "GetNodeUniqueId", "GetNodeHandleByUniqueId success");
+        }
+    }
+});
+```
+
 ## 通过用户id获取节点信息
 
 使用[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)接口，可以通过用户设置的id获取目标节点的指针。
