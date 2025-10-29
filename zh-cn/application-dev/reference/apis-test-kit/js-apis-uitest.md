@@ -20,7 +20,8 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
 
 > **说明：**
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
 > - 本模块接口适用于手机、平板、PC/2in1、智能穿戴设备、智慧屏、车机。
@@ -45,12 +46,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                    | 值 | 说明                                                                  |
 |-----------------------|---|---------------------------------------------------------------------|
-| EQUALS                | 0 | 等于给定值。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| CONTAINS              | 1 | 包含给定值。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
+| EQUALS                | 0 | 等于给定值。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
+| CONTAINS              | 1 | 包含给定值。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
 | STARTS_WITH           | 2 | 以给定值开始。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| ENDS_WITH             | 3 | 以给定值结束。<br> **ArkTS-Dyn起始版本：**8 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br> **ArkTS-Dyn起始版本：**18 <br> **ArkTS-Sta起始版本：**20 <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br> **ArkTS-Dyn起始版本：**18 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| ENDS_WITH             | 3 | 以给定值结束。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 20 <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
+| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 20<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ResizeDirection<sup>9+</sup>
 
@@ -83,9 +84,9 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| y    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
-| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **ArkTS-Dyn起始版本：**20 <br> **ArkTS-Sta起始版本：**20 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| x    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| y    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
+| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 20 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## Rect<sup>9+</sup>
 
@@ -95,11 +96,11 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| right  | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| bottom | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **ArkTS-Dyn起始版本：**20 <br> **ArkTS-Sta起始版本：**22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| left   | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| top    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| right  | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| bottom | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 <br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## WindowMode<sup>9+</sup>
 
@@ -107,11 +108,11 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS-Dyn起始版本：** 11 
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20 
-
-**系统能力**：SystemCapability.Test.UiTest
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -147,12 +148,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
-| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **ArkTS-Dyn起始版本：**9 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
+| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>从API version 11开始废弃，建议使用active替代。                                                |
-| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **ArkTS-Dyn起始版本：**11 <br> **ArkTS-Sta起始版本：**20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **ArkTS-Dyn起始版本：**20 <br> **ArkTS-Sta起始版本：**20<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 20<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 20<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## UiDirection<sup>10+</sup>
 
@@ -247,10 +248,6 @@ UI事件的相关信息。
 
 
 ## On<sup>9+</sup>
-
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 20 
 
 UiTest框架在API 9中，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 On提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
@@ -1110,10 +1107,6 @@ ArkTS-Sta: belongingDisplay(displayId: int): On
 ```
 
 ## Component<sup>9+</sup>
-
-**ArkTS-Dyn起始版本：** 9 
-
-**ArkTS-Sta起始版本：** 20
 
 UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
@@ -2572,12 +2565,12 @@ ArkTS-Sta: findComponent(on: On): Promise\<Component \| null>
 
 **返回值：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn返回值：
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
 
-ArkTS-Sta: 
+ArkTS-Sta返回值：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -2628,12 +2621,12 @@ ArkTS-Sta: findComponents(on: On): Promise\<Array\<Component> \| null>
 
 **返回值：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn返回值：
 | 类型                                       | 说明                                    |
 | ------------------------------------------ | --------------------------------------- |
 | Promise\<Array\<[Component](#component9)>> | Promise对象，返回控件对象的列表。 |
 
-ArkTS-Sta: 
+ArkTS-Sta返回值：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<Array\<[Component](#component9)>\|null\> |  Promise对象，返回找到的控件对象的列表。在未找到目标对象时以Promise形式返回null。 |
@@ -2684,12 +2677,12 @@ ArkTS-Sta: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
 
 **返回值：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn返回值：
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9)> | Promise对象，返回目标窗口对象。 |
 
-ArkTS-Sta: 
+ArkTS-Sta返回值：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9) \| null> | Promise对象，返回找到的目标窗口对象，在未找到目标窗口对象时以Promise形式返回null。 |
@@ -2741,12 +2734,12 @@ ArkTS-Sta: waitForComponent(on: On, time: int): Promise\<Component | null>
 
 **返回值：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn返回值：
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
 
-ArkTS-Sta: 
+ArkTS-Sta返回值：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的控件对象，在未找到目标对象时以Promise形式返回null。 |
@@ -3778,6 +3771,7 @@ async function demo() {
 ArkTS-Dyn: getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
 ArkTS-Sta: getDisplayRotation(displayId: int): Promise\<DisplayRotation>
+
 获取当前设备指定屏幕的显示方向，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -3913,6 +3907,7 @@ async function demo() {
 ArkTS-Dyn: getDisplaySize(displayId: number): Promise\<Point>
 
 ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
+
 获取当前设备指定屏幕的大小，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -4528,15 +4523,17 @@ async function demo() {
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标滚轮滑动动作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**起始版本：** 10 
+**ArkTS-Dyn起始版本：** 10。
 
 **参数：**
 
@@ -4768,11 +4765,13 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 
 在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标长按动作。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**起始版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4920,11 +4919,13 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 >
 > 该接口仅在手机、平板、PC/2in1设备上生效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**起始版本：** 11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -6423,7 +6424,7 @@ onceToastShow(callback: Callback\<UIElementInfo>): void;
 
 | 参数名   | 类型                                         | 必填 | 说明                              |
 | -------- | -------------------------------------------- | ---- | --------------------------------- |
-| callback | Callback\<[UIElementInfo](#uielementinfo)> | 是   | 事件发生时执行的回调函数。          |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。          |
 
 **错误码：**
 
@@ -6466,7 +6467,7 @@ onceDialogShow(callback: Callback\<UIElementInfo>): void;
 
 | 参数名   | 类型                                         | 必填 | 说明                               |
 | -------- | -------------------------------------------- | ---- | ---------------------------------- |
-| callback | Callback\<[UIElementInfo](#uielementinfo)> | 是   | 事件发生时执行的回调函数。           |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。           |
 
 **错误码：**
 
