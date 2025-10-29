@@ -302,6 +302,51 @@ struct Child {
 
 <!-- @[Param_Use_Scene_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child {
+  @Param message: Set<number> = new Set();
+
+  build() {
+    Column() {
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Divider()
+      })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
+
+  build() {
+    Row() {
+      Column() {
+        Child({ message: this.message })
+        Button('init set').onClick(() => {
+          this.message = new Set([0, 1, 2, 3, 4]);
+        })
+        Button('set new one').onClick(() => {
+          this.message.add(5);
+        })
+        Button('clear').onClick(() => {
+          this.message.clear();
+        })
+        Button('delete the first one').onClick(() => {
+          this.message.delete(0);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 联合类型
 
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | undefined，点击改变count的类型时，UI会自动刷新。
