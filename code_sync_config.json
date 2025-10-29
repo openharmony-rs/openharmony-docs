@@ -3862,5 +3862,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-event.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"EventDecoratorTest1",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"EventDecoratorTest2",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
