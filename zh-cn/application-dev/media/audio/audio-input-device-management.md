@@ -1,4 +1,4 @@
-# 管理全局音频输入设备
+# 查询和监听音频输入设备
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
