@@ -451,9 +451,9 @@ async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
 
 ## modifyImagePropertiesEnhanced<sup>22+</sup>
 
-modifyImagePropertiesEnhanced(records: Record\<PropertyKey, string | null\>): Promise\<void\>
+modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise\<void\>
 
-批量修改图片属性。
+批量修改图片属性。使用Promise异步回调。
 
 > **说明：**
 >
@@ -467,7 +467,7 @@ modifyImagePropertiesEnhanced(records: Record\<PropertyKey, string | null\>): Pr
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| records | Record<[PropertyKey](arkts-apis-image-e.md#propertykey7), string \| null>|是| 包含图片属性名和属性值的键值对集合。|
+| records | Record\<string, string \| null>|是| 包含图片属性名和属性值的键值对集合。|
 
 **返回值：**
 
@@ -491,9 +491,9 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource) {
-  let keyValues: Record<PropertyKey, string|null> = {
-    [image.PropertyKey.IMAGE_WIDTH] : "1024",
-    [image.PropertyKey.IMAGE_LENGTH] : "1024"
+  let keyValues: Record<string, string|null> = {
+    "ImageWidth" : "1024",
+    "ImageLength" : "1024"
   };
   let checkKey = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   imageSourceObj.modifyImagePropertiesEnhanced(keyValues).then(() => {
