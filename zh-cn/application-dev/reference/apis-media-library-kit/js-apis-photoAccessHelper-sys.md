@@ -9956,7 +9956,7 @@ async function example(context: Context) {
 
 resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
-恢复云端媒体资产批量下载任务。
+恢复云端媒体资产批量下载任务。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。使用Promise异步回调。
 
