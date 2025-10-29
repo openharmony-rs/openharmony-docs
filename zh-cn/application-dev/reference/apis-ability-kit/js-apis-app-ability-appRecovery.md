@@ -23,7 +23,7 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -42,7 +42,7 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -59,7 +59,7 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -80,7 +80,7 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -127,7 +127,7 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -163,7 +163,7 @@ saveAppState(): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -205,7 +205,7 @@ saveAppState(context?: UIAbilityContext): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
@@ -253,7 +253,7 @@ setRestartWant(want: Want): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本：** 11
+**ArkTs-Dyn起始版本：** 9
 
 **ArkTs-Sta起始版本：** 20
 
