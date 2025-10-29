@@ -1134,6 +1134,87 @@ struct Index {
 
 <!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->
 
+``` TypeScript
+@ObservedV2
+class InfoWrapper {
+  public info?: Info;
+
+  constructor(info: Info) {
+    this.info = info;
+  }
+
+  @Monitor('info.age')
+  onInfoAgeChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+}
+
+@ObservedV2
+class Info {
+  @Trace public age: number;
+
+  constructor(age: number) {
+    this.age = age;
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param @Require infoWrapper: InfoWrapper;
+
+  aboutToDisappear(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Child aboutToDisappear', this.infoWrapper.info?.age);
+    this.infoWrapper.info = undefined; // 使InfoWrapper对info.age的监听失效
+  }
+
+  build() {
+    Column() {
+      Text(`${this.infoWrapper.info?.age}`)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  dataArray: Info[] = [];
+  @Local showFlag: boolean = true;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new Info(i));
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change showFlag')
+        .onClick(() => {
+          this.showFlag = !this.showFlag;
+        })
+      Button('change number')
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', '%{public}s', 'click to change age');
+          this.dataArray.forEach((info: Info) => {
+            info.age += 100;
+          })
+        })
+      if (this.showFlag) {
+        Column() {
+          Text('Childs')
+          ForEach(this.dataArray, (info: Info) => {
+            Child({ infoWrapper: new InfoWrapper(info) })
+          })
+        }
+        .borderColor(Color.Red)
+        .borderWidth(2)
+      }
+    }
+  }
+}
+```
+
 ### 正确设置\@Monitor入参
 
 由于\@Monitor无法对入参做编译时校验，当前存在以下写法不符合\@Monitor监听条件但\@Monitor仍会触发的情况。开发者应当正确传入\@Monitor入参，不传入非状态变量，避免造成功能异常或行为表现不符合预期。
