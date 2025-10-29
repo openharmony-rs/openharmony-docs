@@ -110,6 +110,62 @@
     开发自定义意图需要开发者定义意图的大语言模型描述、意图搜索关键字、意图参数定义和意图执行结果定义。意图执行器需要从InsightIntentEntryExector\<T>类继承，实现onExecute()方法。
 
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
+    
+    ``` TypeScript
+    // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntity, InsightIntentEntry } from '@kit.AbilityKit';
+    
+    // 意图执行返回值数据格式定义
+    class PlayMusicResultDef {
+      public msg?: string = '';
+    }
+    
+    // 意图定义
+    @InsightIntentEntry({
+      intentName: 'PlayMusic',
+      domain: 'MusicDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌曲',
+      displayDescription: '播放音乐意图',
+      icon: $r('app.media.viewLogistics'), // $r表示本地图标，需要在资源目录中定义
+      llmDescription: '支持传递歌曲名称，播放音乐',
+      keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
+      onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
+        // 执行音乐播放逻辑
+        let result: insightIntent.IntentResult<PlayMusicResultDef> = {
+          code: 123,
+          result: {
+            msg: 'play music succeed'
+          }
+        };
+        return Promise.resolve(result);
+      };
+    }
+    ```
 
 意图执行过程：
 1. 系统入口响应用户“播放歌手A的歌曲B”的请求，匹配到该应用的"PlayMusic"意图，通过意图框架触发该应用的"PlayMusic"意图执行。
