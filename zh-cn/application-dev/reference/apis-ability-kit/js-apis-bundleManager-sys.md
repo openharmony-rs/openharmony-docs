@@ -6177,7 +6177,7 @@ try {
 }
 ```
 
-## bundleManager.RecoverBackupBundleData<sup>21+</sup>
+## bundleManager.recoverBackupBundleData<sup>21+</sup>
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
@@ -6239,7 +6239,7 @@ try {
 }
 ```
 
-## bundleManager.RemoveBackupBundleData<sup>21+</sup>
+## bundleManager.removeBackupBundleData<sup>21+</sup>
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 

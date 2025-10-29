@@ -1,4 +1,4 @@
-# Definition of Animatable Properties (@AnimatableExtend)
+# @AnimatableExtend: Animatable Property Definition
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->

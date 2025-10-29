@@ -43,10 +43,10 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name      | Type    | Mandatory| Description              |
-| ---------- | -------- | ---- | ------------------ |
-| dataType   | string   | Yes  | Type of the dragged object.    |
-| dataSize   | number   | Yes  | Data length of the dragged object.|
+| Name          | Type           | Read-Only| 	Optional| Description                          |
+| ---------      | -------------- | ---- | ---- | ------------------------     |
+| dataType     | string          | No  | No  | Type of the dragged object.|
+| dataSize       | number         | No  | No  | Data length of the dragged object.|
 
 ## dragInteraction.on('drag')
 

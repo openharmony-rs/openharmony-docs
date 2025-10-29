@@ -58,6 +58,7 @@ try {
 }
 ```
 
+- For details about how to parse advertising packets, see [Complete Sample Code](#complete-sample-code).
 
 **2. Initiating a Scan**<br>
 By scanning BLE advertisements from other nearby devices via BLE, you can discover or find the target devices required by the application.
@@ -372,7 +373,7 @@ try {
 import { ble } from '@kit.ConnectivityKit';
 import { BusinessError } from '@ohos.base';
 
-const TAG: string = 'BleAdvertisingManager';
+const TAG: string = 'BleScanManager';
 
 // See Core Assigned Numbers in Bluetooth Core Specification.
 const BLE_ADV_TYPE_FLAG = 0x01;

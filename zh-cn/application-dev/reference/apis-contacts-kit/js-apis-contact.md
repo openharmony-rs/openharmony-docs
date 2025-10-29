@@ -4220,6 +4220,44 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
   });
   ```
 
+## contact.queryContactsCount<sup>22+</sup>
+
+queryContactsCount(context: Context): Promise&lt;int&gt;
+
+查询所有联系人的数量，使用Promise异步回调。
+
+**需要权限**：ohos.permission.READ_CONTACTS
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名 | 类型              | 必填 | 说明                   |
+| ------ | ----------------- | ---- | ---------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。   |
+
+**返回值：**
+
+| 类型                  | 说明                                       |
+| --------------------- | ------------------------------------------ |
+| Promise&lt;int&gt; | Promise对象。返回查询到的联系人数量。 |
+
+**示例：**
+
+```js
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取context。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.queryContactsCount(context);
+promise.then((data) => {
+  console.info(`Succeeded in querying ContactsCount. data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query ContactsCount. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## contact.addContactViaUI<sup>15+</sup>
 
 addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
@@ -4784,6 +4822,7 @@ imAddress.imAddress = "imAddress";
 | middleNamePhonetic | string   | 否   | 是   | 联系人的中间名拼音。        |
 | namePrefix         | string   | 否   | 是   | 联系人的姓名前缀。          |
 | nameSuffix         | string   | 否   | 是   | 联系人的姓名后缀。          |
+| hasName<sup>22+</sup>            | boolean  | 否   | 是   | 联系人信息中是否包含姓名。true表示包含，false表示不包含。          |
 
 **对象创建示例：**
 
@@ -4946,6 +4985,9 @@ let portrait: contact.Portrait = {
     uri: "uri"
 };
 ```
+> **说明：**
+>
+>  从API version 22开始，支持通过uri读取联系人头像资源，仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，且无法直接通过uri在Image组件内显示，需读取资源后按照[PixelMap格式](../../ui/arkts-graphics-display.md#多媒体像素图)显示。
 
 ## PostalAddress
 

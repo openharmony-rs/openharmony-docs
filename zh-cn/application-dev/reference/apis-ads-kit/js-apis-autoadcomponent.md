@@ -20,14 +20,7 @@ import { AutoAdComponent } from '@kit.AdsKit';
 
 ## AutoAdComponent
 
-```ts
-AutoAdComponent({
-  adParam: advertising.AdRequestParams,
-  adOptions: advertising.AdOptions,
-  displayOptions: advertising.AdDisplayOptions,
-  interactionListener: advertising.AdInteractionListener
-})
-```
+AutoAdComponent({adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions, displayOptions: advertising.AdDisplayOptions, interactionListener: advertising.AdInteractionListener})
 
 **装饰器类型：** @Component
 

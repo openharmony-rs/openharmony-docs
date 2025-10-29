@@ -4114,7 +4114,7 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-开启窗口可见性状态变化事件的监听。
+开启窗口可见性状态变化事件的监听。对于非主窗，其阴影区域部分也会参与到可见性遮挡计算中。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

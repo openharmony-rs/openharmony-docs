@@ -1,5 +1,10 @@
 # Location Kit<!--location-api-->
-
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 - ArkTS APIs<!--location-arkts-->
   - [@ohos.geoLocationManager (Geolocation Manager)](js-apis-geoLocationManager.md)
   - [@ohos.geoLocationManager (Geolocation Manager) (System API)] (js-apis-geoLocationManager-sys.md)

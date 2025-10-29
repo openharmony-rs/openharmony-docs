@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)。
@@ -531,3 +531,69 @@ struct Index {
 针对文本输入开发，有以下相关实例可供参考：
 
 - [聊天实例应用（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat#%E8%81%8A%E5%A4%A9%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8)
+
+## 常见问题
+
+### 如何设置TextArea的文本最少展示行数并自适应高度
+
+**问题现象**
+
+设置TextArea的初始高度来控制最少文本展示行数，当输入文本超过初始高度时，TextArea的高度自适应。
+
+**解决措施**
+
+设置[minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20)（从API version 20开始），或者设置height为"auto"，并使用[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)自行计算高度。
+
+```ts
+import { MeasureUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  private textAreaPadding = 12;
+  private setMaxLines = 3;
+  @State fullText: string = "我是TextArea";
+  @State originText: string = "我是TextArea";
+  @State uiContext: UIContext = this.getUIContext();
+  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
+  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build() {
+    Column() {
+      TextArea({ text: "minLines: " + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: "constraintSize: " + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height("auto")
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
+        })
+
+      Blank(50)
+
+      Button("增加输入")
+        .onClick(() => {
+          this.fullText += "我是TextArea";
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
+![textinputkeyboardavoid](figures/textareaHeight.gif)

@@ -4,7 +4,7 @@
 <!--Owner: @xieziang-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ChipGroup组件提供操作块群组，用于文件或资源内容的分类等场景。
 

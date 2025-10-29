@@ -67,12 +67,12 @@
     - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(系统接口)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
     - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)(系统接口)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
-    - commonEvent
+    - commonEvent<!--commonevent-->
       - [CommonEventData](js-apis-inner-commonEvent-commonEventData.md)
       - [CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md)
       - [CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md)
       - [CommonEventSubscribeInfo](js-apis-inner-commonEvent-commonEventSubscribeInfo.md)
-  - 其他<!--others-->
+  - 其他<!--basic-services-others-->
     <!--Del-->
     - [@ohos.ai.intelligentVoice (智能语音)(系统接口)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
@@ -160,7 +160,9 @@
   - [上传下载错误码](errorcode-request.md)
   - [时间时区错误码](errorcode-time.md)
   - [事件错误码](errorcode-CommonEventService.md)
+  <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
+  <!--DelEnd-->
   - [系统电源管理错误码](errorcode-power.md)
   - [账号管理错误码](errorcode-account.md)
   <!--Del-->

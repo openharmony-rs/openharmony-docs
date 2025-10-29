@@ -10,7 +10,7 @@ The **Sensor** module provides APIs for obtaining the sensor list and subscribin
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. For details about how to use the API, see [Sensor Development](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sensor-guidelines#how-to-develop). If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
 
 
 ## Modules to Import
@@ -5859,7 +5859,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name        | Type               | Mandatory| Description          |
 | -------------- | ------------------- | ---- | -------------- |
-| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation vector.|
+| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation matrix.|
 
 **Return value**
 
@@ -6553,8 +6553,8 @@ Describes the ambient light sensor data. It extends from [Response](#response).
 | Name                           | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | intensity                       | number | No  | No  | Illumination, in lux.                                      |
-| colorTemperature<sup>12+</sup>  | number | No  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
-| infraredLuminance<sup>12+</sup> | number | No  | Yes  | IR luminance, in cd/m2. This parameter is optional. If this parameter is not supported, **undefined** is returned. If this parameter is supported, a normal value is returned.|
+| colorTemperature<sup>12+</sup>  | number | No  | Yes  | Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.|
+| infraredLuminance<sup>12+</sup> | number | No  | Yes  | Infrared luminance, in cd/m². This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.|
 
 
 ## HallResponse
@@ -8821,7 +8821,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 | Name          | Type                                     | Mandatory| Description                      |
 | ---------------- | ----------------------------------------- | ---- | -------------------------- |
-| inRotationVector | Array&lt;number&gt;                       | Yes  | Rotation vector to rotate.            |
+| inRotationVector | Array&lt;number&gt;                       | Yes  | Rotation vector.            |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | Yes  | Direction of the coordinate system.          |
 | callback         | AsyncCallback&lt;Array&lt;number&gt;&gt;  | Yes  | Callback used to return the rotation vector after being rotated.|
 
@@ -8859,7 +8859,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 | Name             | Type                                      | Mandatory  | Description      |
 | ---------------- | ---------------------------------------- | ---- | -------- |
-| inRotationVector | Array&lt;number&gt;                      | Yes   | Rotation vector to rotate. |
+| inRotationVector | Array&lt;number&gt;                      | Yes   | Rotation vector. |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | Yes   | Direction of the coordinate system.|
 
 **Return value**
@@ -9165,7 +9165,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 | Name                  | Type                 | Mandatory  | Description       |
 | --------------------- | ------------------- | ---- | --------- |
 | currentRotationMatrix | Array&lt;number&gt; | Yes   | Current rotation matrix.|
-| preRotationMatrix     | Array&lt;number&gt; | Yes   | Rotation vector to rotate.  |
+| preRotationMatrix     | Array&lt;number&gt; | Yes   | Peer rotation matrix.  |
 
 **Return value**
 
@@ -9363,7 +9363,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 | Name        | Type                                    | Mandatory| Description                                 |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
-| rotationMatrix | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
+| rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                       |
 | callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
 
 **Example**
@@ -9400,7 +9400,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name           | Type                 | Mandatory  | Description     |
 | -------------- | ------------------- | ---- | ------- |
-| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation vector to rotate.|
+| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation matrix.|
 
 **Return value**
 

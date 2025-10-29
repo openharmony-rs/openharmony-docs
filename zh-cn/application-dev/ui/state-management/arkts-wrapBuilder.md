@@ -15,6 +15,8 @@
 > 从API version 11开始使用。
 >
 > 从API version 12开始，wrapBuilder支持在原子化服务中使用。
+>
+> 从API version 22开始，推荐开发者使用[mutableBuilder](./arkts-mutableBuilder.md)，支持二次赋值后刷新UI。
 
 当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用。
 
@@ -142,6 +144,48 @@ struct Index {
       .width('100%')
     }
     .height('100%')
+  }
+}
+```
+
+## @Builder方法赋值给类或者接口的属性
+
+使用\@Builder装饰器装饰的方法`MyBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给接口`ChildOptions`中的属性，可以以数据的形式传递给其他子组件调用。
+
+```ts
+@Builder
+function MyBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+}
+
+interface ChildOptions {
+  wrappedBuilder: WrappedBuilder<[string, number]>; // 类型为WrappedBuilder的属性可以传递@Builder函数
+}
+
+@Entry
+@Component
+struct Index {
+  childOptions: ChildOptions = {
+    wrappedBuilder: wrapBuilder(MyBuilder)
+  };
+
+  build() {
+    Row() {
+      Column() {
+        Child({ options: this.childOptions })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Component
+struct Child {
+  @Prop options: ChildOptions;
+  build() {
+    this.options.wrappedBuilder.builder('Hello', 20);
   }
 }
 ```

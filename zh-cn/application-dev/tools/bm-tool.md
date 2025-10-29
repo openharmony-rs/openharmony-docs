@@ -842,19 +842,26 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 
 **可能原因**
 
-运行/调试的应用依赖的动态共享包（SharedLibrary）模块未安装导致安装报错。
+运行/调试的应用依赖的动态共享包（HSP）模块未安装导致安装报错。
 
 **处理步骤**
 
 场景一：依赖的HSP与HAP在同一工程内：
-1. 先安装依赖的动态共享包（SharedLibrary）模块，再在应用运行配置页勾选Keep Application Data，点击OK保存配置，再运行/调试。
-![示例图](figures/zh-cn_image_0000001560201786.png)
-2. 在运行配置页，选择Deploy Multi Hap标签页，勾选Deploy Multi Hap Packages，选择依赖的模块，点击OK保存配置，再进行运行/调试。
-![示例图](figures/zh-cn_image_0000001610761941.png)
-3. 单击Run > Edit Configurations，在General中，勾选Auto Dependencies。点击OK保存配置，再运行/调试。
-![示例图](figures/zh-cn_image_9568305.png)
+
+* 方法一：先通过[bm install -p](#安装命令install)命令安装依赖的动态共享包（HSP）模块，再在应用运行配置页勾选Keep Application Data，点击OK保存配置，再运行/调试。
+
+  ![示例图](figures/zh-cn_image_0000001560201786.png)
+
+* 方法二：在运行配置页，选择Deploy Multi Hap标签页，勾选Deploy Multi Hap Packages，选择依赖的模块，点击OK保存配置，再进行运行/调试。
+
+  ![示例图](figures/zh-cn_image_0000001610761941.png)
+
+* 方法三：单击Run > Edit Configurations，在General中，勾选Auto Dependencies。点击OK保存配置，再运行/调试。
+
+  ![示例图](figures/zh-cn_image_9568305.png)
 
 场景二：依赖的HSP与HAP不在同一工程内：
+
 在安装HAP前，使用[bm install](#安装命令install)命令安装依赖的HSP。
   
 ### 9568259 安装解析配置文件缺少字段
@@ -1087,12 +1094,15 @@ error: install failed due to grant request permissions failed.<br>
 
 **可能原因**
 
-默认应用等级为normal，只能使用normal等级的权限，如果使用了system_basic或system_core等级的权限，将导致报错。
+应用APL等级为normal，只能使用APL等级为normal的权限，如果使用了system_basic或system_core等级的权限，将导致报错，具体请参考[权限机制中的基本概念](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。
 
 **处理步骤**
 
-根据[ACL签名指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section26216104250)为应用申请受限ACL权限。
+根据报错描述中的权限名称在[应用权限列表](../security/AccessToken/app-permissions.md)中排查权限是否存在。
 
+* 如果不存在，需要查看需要该权限的API接口的文档说明，以确保权限支持申请。例如：[setDevicePairingConfirmation](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionsetdevicepairingconfirmation)接口所需权限中，ohos.permission.MANAGE_BLUETOOTH仅系统应用支持申请，此时请更换为ohos.permission.ACCESS_BLUETOOTH权限。
+
+* 如果存在，请查看对应的权限文档的要求申请权限，同时请关注权限是否支持申请。例如：[受限开放权限](../security/AccessToken/restricted-permissions.md)请参考文档<!--RP2-->[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)<!--RP2End-->。[企业类应用可用权限](../security/AccessToken/permissions-for-enterprise-apps.md)仅企业类应用支持申请，三方应用不支持。
 
 ### 9568290 更新HAP token失败导致安装失败
 **错误信息**

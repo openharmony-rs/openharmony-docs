@@ -31,7 +31,7 @@ import { common } from '@kit.AbilityKit';
 
 startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncCallback\<AbilityResult>): void
 
-Starts an ability with the account ID specified and returns the result when the ability is terminated. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the account ID specified and returns the result when the UIAbility is terminated. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -48,9 +48,9 @@ Starts an ability with the account ID specified and returns the result when the 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the result code and data when the UIAbility is terminated. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -125,7 +125,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-Starts an ability with the account ID and start options specified and returns the result when the ability is terminated. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the account ID and start options specified and returns the result when the UIAbility is terminated. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -142,10 +142,10 @@ Starts an ability with the account ID and start options specified and returns th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback\<void\> | Yes| Callback invoked when the ability is terminated.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the UIAbility.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -220,7 +220,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<AbilityResult\>
 
-Starts an ability with the account ID specified and returns the result when the ability is terminated. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility with the account ID specified and returns the result when the UIAbility is terminated. This API uses a promise to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -237,9 +237,9 @@ Starts an ability with the account ID specified and returns the result when the 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -330,8 +330,8 @@ Starts a ServiceExtensionAbility. This API uses an asynchronous callback to retu
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for starting the ServiceExtensionAbility.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -401,7 +401,7 @@ Starts a ServiceExtensionAbility. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for starting the ServiceExtensionAbility.|
 
 **Return value**
 
@@ -484,9 +484,9 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses an
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for starting the ServiceExtensionAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -564,7 +564,7 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses a 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for starting the ServiceExtensionAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
 
 **Return value**
@@ -641,8 +641,8 @@ Stops a ServiceExtensionAbility in the same application. This API uses an asynch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for stopping the ServiceExtensionAbility.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -710,7 +710,7 @@ Stops a ServiceExtensionAbility in the same application. This API uses a promise
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for stopping the ServiceExtensionAbility.|
 
 **Return value**
 
@@ -788,9 +788,9 @@ Stops a ServiceExtensionAbility with the account ID specified in the same applic
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for stopping the ServiceExtensionAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -863,7 +863,7 @@ Stops a ServiceExtensionAbility with the account ID specified in the same applic
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ServiceExtensionAbility.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for stopping the ServiceExtensionAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
 
 **Return value**
@@ -927,7 +927,7 @@ export default class EntryAbility extends UIAbility {
 
 connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
 
-Connects this ability to a ServiceExtensionAbility, with the account ID specified. This API can be called only by the main thread.
+Connects this UIAbility to a ServiceExtensionAbility, with the account ID specified. This API can be called only by the main thread.
 
 > **NOTE**
 >
@@ -946,7 +946,7 @@ Connects this ability to a ServiceExtensionAbility, with the account ID specifie
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Instance of the callback function after the connection to the ServiceExtensionAbility is set up.|
 
@@ -954,7 +954,7 @@ Connects this ability to a ServiceExtensionAbility, with the account ID specifie
 
 | Type| Description|
 | -------- | -------- |
-| number | Result code of the ability connection.|
+| number | Result code of the connection.|
 
 **Error codes**
 
@@ -1020,7 +1020,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void\>): void
 
-Starts an ability with want and the account ID specified. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with want and the account ID specified. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -1037,9 +1037,9 @@ Starts an ability with want and the account ID specified. This API uses an async
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1113,7 +1113,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-Starts an ability with want, the account ID, and start options specified. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with want, the account ID, and start options specified. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -1130,10 +1130,10 @@ Starts an ability with want, the account ID, and start options specified. This A
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the UIAbility.|
+| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1208,7 +1208,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void\>
 
-Starts an ability with want, the account ID, and start options specified. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility with want, the account ID, and start options specified. This API uses a promise to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -1225,9 +1225,9 @@ Starts an ability with want, the account ID, and start options specified. This A
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
 | accountId | number | Yes| ID of a system account. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -1309,7 +1309,7 @@ export default class EntryAbility extends UIAbility {
 
 setMissionIcon(icon: image.PixelMap, callback: AsyncCallback\<void>): void
 
-Sets an icon for this ability in the mission. The maximum size of the icon is 600 MB. This API uses an asynchronous callback to return the result.
+Sets an icon for this UIAbility in the mission. The maximum size of the icon is 600 MB. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1319,8 +1319,8 @@ Sets an icon for this ability in the mission. The maximum size of the icon is 60
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| icon | image.PixelMap | Yes| Icon of the ability to set.|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the setting is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| icon | image.PixelMap | Yes| Icon of the UIAbility to set.|
+| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1373,7 +1373,7 @@ export default class EntryAbility extends UIAbility {
 
 setMissionIcon(icon: image.PixelMap): Promise\<void>
 
-Sets an icon for this ability in the mission. The maximum size of the icon is 600 MB. This API uses a promise to return the result.
+Sets an icon for this UIAbility in the mission. The maximum size of the icon is 600 MB. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1383,7 +1383,7 @@ Sets an icon for this ability in the mission. The maximum size of the icon is 60
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| icon | image.PixelMap | Yes| Icon of the ability to set.|
+| icon | image.PixelMap | Yes| Icon of the UIAbility to set.|
 
 **Return value**
 
@@ -1441,15 +1441,15 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability. If the ability has multiple instances, the latest instance is started. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility. If the UIAbility has multiple instances, the latest instance is started. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
 > - For a successful launch in cross-device scenarios, the caller and target must be the same application and the application must have the ohos.permission.DISTRIBUTED_DATASYNC permission.
 >
-> - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
+> - If **visible** of the target UIAbility is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
 >
-> - If the specified ability has multiple instances, the caller must have the ohos.permission.START_RECENT_ABILITY permission (available only for system applications) to start the latest instance.
+> - If the specified UIAbility has multiple instances, the caller must have the ohos.permission.START_RECENT_ABILITY permission (available only for system applications) to start the latest instance.
 >
 > - If the caller is running in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications).
 
@@ -1463,8 +1463,8 @@ For details about the startup rules for the components in the stage model, see [
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
+| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1533,15 +1533,15 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability with the start options specified. If the ability has multiple instances, the latest instance is started.  This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the start options specified. If the UIAbility has multiple instances, the latest instance is started.  This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
 > - For a successful launch in cross-device scenarios, the caller and target must be the same application and the application must have the ohos.permission.DISTRIBUTED_DATASYNC permission.
 >
-> - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
+> - If **visible** of the target UIAbility is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
 >
-> - If the specified ability has multiple instances, the caller must have the ohos.permission.START_RECENT_ABILITY permission (available only for system applications) to start the latest instance.
+> - If the specified UIAbility has multiple instances, the caller must have the ohos.permission.START_RECENT_ABILITY permission (available only for system applications) to start the latest instance.
 >
 > - If the caller is running in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications).
 
@@ -1555,9 +1555,9 @@ For details about the startup rules for the components in the stage model, see [
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the UIAbility.|
+| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1628,15 +1628,15 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts an ability. If the ability has multiple instances, the latest instance is started. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility. If the UIAbility has multiple instances, the latest instance is started. This API uses a promise to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
 > - For a successful launch in cross-device scenarios, the caller and target must be the same application and the application must have the ohos.permission.DISTRIBUTED_DATASYNC permission.
 >
-> - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
+> - If **visible** of the target UIAbility is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
 >
-> - If the specified ability has multiple instances, the caller must have the ohos.permission.START_RECENT_ABILITY permission (available only for system applications) to start the latest instance.
+> - If the specified UIAbility has multiple instances, the caller must have the ohos.permission.START_RECENT_ABILITY permission (available only for system applications) to start the latest instance.
 >
 > - If the caller is running in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications).
 
@@ -1650,8 +1650,8 @@ For details about the startup rules for the components in the stage model, see [
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -1730,14 +1730,14 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
 
-Starts an ability with the account ID specified and obtains the caller object for communicating with the ability. This API can be called only by the main thread. This API uses a promise to return the result.
+Starts a UIAbility with the account ID specified and obtains the caller object for communicating with the UIAbility. This API can be called only by the main thread. This API uses a promise to return the result.
 
 This API cannot be used to start the UIAbility with the launch type set to [specified](../../application-models/uiability-launch-type.md#specified).
 
 Observe the following when using this API:
- - If an application needs to call this API to start an ability that belongs to another user, it must have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permissions.
- - If an application running in the background needs to call this API to start an ability, it must have the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission.
- - If **exported** of the target ability is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
+ - If an application needs to call this API to start a UIAbility that belongs to another user, it must have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permissions.
+ - If an application running in the background needs to call this API to start a UIAbility, it must have the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission.
+ - If **exported** of the target UIAbility is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
  - The rules for using this API in the same-device and cross-device scenarios are different. For details, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
 
 **Required permissions**: ohos.permission.ABILITY_BACKGROUND_COMMUNICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -1750,7 +1750,7 @@ Observe the following when using this API:
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Information about the ability to start, including **abilityName**, **moduleName**, **bundleName**, **deviceId** (optional), and **parameters** (optional). If **deviceId** is left blank or null, the local ability is started. If **parameters** is left blank or null, the ability is started in the background.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Information about the UIAbility to start, including **abilityName**, **moduleName**, **bundleName**, **deviceId** (optional), and **parameters** (optional). If **deviceId** is left blank or null, the local UIAbility is started. If **parameters** is left blank or null, the UIAbility is started in the background.|
 | accountId | number | Yes| ID of a system account. The value **-1** indicates the current user. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9).|
 
 **Return value**
@@ -1831,7 +1831,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
-Starts an ability with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The ability can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start an ability, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -1845,8 +1845,8 @@ Starts an ability with the caller information specified. The caller information 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**. Otherwise, **err** is an error object.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target UIAbility.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1894,7 +1894,7 @@ export default class EntryAbility extends UIAbility {
 
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, (err) => {
-      if (err && err.code != 0) {
+      if (err.code) {
         console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
@@ -1908,7 +1908,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
-Starts an ability with the caller information and start options specified. The caller information is carried in **want** and identified at the system service layer. The ability can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start an ability, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the caller information and start options specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -1922,9 +1922,9 @@ Starts an ability with the caller information and start options specified. The c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**. Otherwise, **err** is an error object.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the UIAbility.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1973,7 +1973,7 @@ export default class EntryAbility extends UIAbility {
 
     // Start a new ability using the caller information.
     this.context.startAbilityAsCaller(localWant, option, (err) => {
-      if (err && err.code != 0) {
+      if (err.code) {
         console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
@@ -1987,7 +1987,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
-Starts an ability with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The ability can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start an ability, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses a promise to return the result. It can be called only by the main thread.
 
 > **NOTE**
 >
@@ -2001,8 +2001,8 @@ Starts an ability with the caller information specified. The caller information 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -2170,7 +2170,7 @@ Before starting the UIExtensionAbility, ensure that the foreground application h
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pickerWant | [Want](js-apis-app-ability-want.md)  | Yes| Want information used to start the UIExtensionAbility.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the UIExtensionAbility is started, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.  If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -2216,6 +2216,76 @@ export default class EntryAbility extends UIAbility {
       let message = (err as BusinessError).message;
       console.error(`requestModalUIExtension failed, code is ${code}, message is ${message}`);
     }
+  }
+}
+```
+
+### setMissionWindowIcon<sup>22+<sup>
+
+setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
+
+Sets the icon for this UIAbility, which is displayed in the application window, application card in the mission center, and window snapshot in the shortcut bar. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> There is no priority relationship among the setMissionWindowIcon, [setMissionIcon](#setmissionicon), and [setAbilityInstanceInfo](./js-apis-inner-application-uiAbilityContext.md#setabilityinstanceinfo15) APIs. The icon set by the last called API takes effect. If these APIs are called sequentially, the icon set by the last call takes precedence and overwrites any previous settings.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| windowIcon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)| Yes| Icon of the UIAbility displayed in the application window, application card in the mission center, and window snapshot in the shortcut bar. The icon must be a square and its size must not exceed 128 MB. Otherwise, error code 401 is returned.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000050 | Internal error. Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
+| 16000135 | The main window of this ability not exist. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let imagePixelMap: image.PixelMap;
+    let color = new ArrayBuffer(4 * 6 * 4); // Create an ArrayBuffer object to store image pixels. The size of the object is (height * width * 4) bytes.
+    let bufferArr = new Uint8Array(color);
+    for (let i = 0; i < bufferArr.length; i += 4) {
+      bufferArr[i] = 255;
+      bufferArr[i+1] = 0;
+      bufferArr[i+2] = 122;
+      bufferArr[i+3] = 255;
+    }
+    image.createPixelMap(color, {
+      editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 }
+    }).then((data) => {
+      imagePixelMap = data;
+      this.context.setMissionWindowIcon(imagePixelMap)
+        .then(() => {
+          console.info('setMissionWindowIcon succeed');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`setMissionWindowIcon failed, code is ${err.code}, message is ${err.message}`);
+        });
+    }).catch((err: BusinessError) => {
+      console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
+    });
   }
 }
 ```

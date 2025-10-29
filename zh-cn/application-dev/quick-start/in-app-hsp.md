@@ -223,13 +223,6 @@ export { ResManager } from './src/main/ets/ResManager';
 要使用HSP中的接口，首先需要在使用方的 `oh-package.json5` 文件中配置对它的依赖。具体配置方法请参考[引用动态共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
 依赖配置成功后，就可以像使用HAR一样调用HSP的对外接口了。例如，上面的library已经导出了下面这些接口：
 
-```ts
-// library/index.ets
-export { Log, add, minus } from './src/main/ets/utils/test';
-export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-export { ResManager } from './src/main/ets/ResManager';
-export { nativeMulti } from './src/main/ets/utils/nativeTest';
-```
 <!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
 
 ``` TypeScript

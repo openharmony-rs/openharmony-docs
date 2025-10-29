@@ -856,7 +856,7 @@ Obtains the **Want** parameters of the [entry UIAbility](../../quick-start/appli
 
 | Type                               | Description                                       |
 | ----------------------------------- | ------------------------------------------- |
-| [Want](js-apis-app-ability-want.md) | Want object that contains the bundle name and ability name.|
+| [Want](js-apis-app-ability-want.md) | Want object that contains only the bundle name and ability name.|
 
 **Error codes**
 
@@ -1864,5 +1864,4 @@ Describes the identity information of an application clone.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |Identity information of an application clone.|
-
 <!--no_check-->

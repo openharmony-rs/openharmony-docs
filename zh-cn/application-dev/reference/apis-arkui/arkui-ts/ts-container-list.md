@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
 
@@ -490,7 +490,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 contentStartOffset(offset: number | Resource)
 
-设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。
+设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。与[contentStartOffset<sup>11+</sup>](#contentstartoffset11)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 
@@ -526,7 +526,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 contentEndOffset(offset: number | Resource)
 
-设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。
+设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。与[contentEndOffset<sup>11+</sup>](#contentendoffset11)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 

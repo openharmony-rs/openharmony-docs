@@ -4161,7 +4161,7 @@ off(event: 'response', callback?: Callback&lt;HttpResponse&gt;): void
 
 off(event: 'faultOccur', callback?: Callback&lt;Faults&gt;): void
 
-取消订阅任务响应头。
+取消订阅任务失败原因相关的事件。
 
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
@@ -4246,7 +4246,7 @@ off(event: 'faultOccur', callback?: Callback&lt;Faults&gt;): void
 
 off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 
-取消订阅任务响应头。
+取消订阅任务等待原因相关的事件。
 
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
