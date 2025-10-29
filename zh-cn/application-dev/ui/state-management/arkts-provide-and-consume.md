@@ -1044,3 +1044,97 @@ struct ZooGrandChild {
 【正例】
 
 <!-- @[provide_consume_This_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeThisObject.ets) -->
+
+``` TypeScript
+class Animal {
+  public name: string;
+  public type: string;
+  public age: number;
+
+  constructor(name: string, type: string, age: number) {
+    this.name = name;
+    this.type = type;
+    this.age = age;
+  }
+
+  static changeName(animal: Animal) {
+    animal.name = 'Jack';
+  }
+
+  static changeAge(animal: Animal) {
+    animal.age += 1;
+  }
+}
+
+@Entry
+@Component
+struct Zoo {
+  @Provide dog: Animal = new Animal('WangCai', 'dog', 2);
+
+  changeZooDogAge(animal: Animal) {
+    animal.age += 2;
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(`Zoo: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
+        .fontColor(Color.Red)
+        .fontSize(30)
+      Button('changeAge')
+        .onClick(() => {
+          // 通过赋值给临时变量保留Proxy代理
+          let newDog = this.dog;
+          Animal.changeAge(newDog);
+        })
+      Button('changeZooDogAge')
+        .onClick(() => {
+          // 通过赋值给临时变量保留Proxy代理
+          let newDog = this.dog;
+          this.changeZooDogAge(newDog);
+        })
+      ZooChild()
+    }
+  }
+}
+
+@Component
+struct ZooChild {
+  build() {
+    Column({ space: 10 }) {
+      Text(`ZooChild.`)
+        .fontColor(Color.Blue)
+        .fontSize(30)
+      ZooGrandChild()
+    }
+  }
+}
+
+@Component
+struct ZooGrandChild {
+  @Consume dog: Animal;
+
+  changeZooGrandChildName(animal: Animal) {
+    animal.name = 'Marry';
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(`ZooGrandChild: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
+        .fontColor(Color.Yellow)
+        .fontSize(30)
+      Button('changeName')
+        .onClick(() => {
+          // 通过赋值给临时变量保留Proxy代理
+          let newDog = this.dog;
+          Animal.changeName(newDog);
+        })
+      Button('changeZooGrandChildName')
+        .onClick(() => {
+          // 通过赋值给临时变量保留Proxy代理
+          let newDog = this.dog;
+          this.changeZooGrandChildName(newDog);
+        })
+    }
+  }
+}
+```
