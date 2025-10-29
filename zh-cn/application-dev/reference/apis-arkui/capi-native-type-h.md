@@ -81,7 +81,7 @@
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|相对容器内容区边界的位置参数。|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|定义组件的像素取整策略结构体。|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|内容过渡效果。|
-|[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)|定义文本输入框的计数器配置。|
+|[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)|ArkUI_ShowCounterConfig|定义文本输入框的计数器配置。|
 |[ArkUI_SelectedDataDetectorConfig](capi-arkui-nativemodule-arkui-selecteddatadetectorconfig.md)|ArkUI_SelectedDataDetectorConfig|定义选中文本识别配置结构体。|
 
 ### 枚举
@@ -10017,7 +10017,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 **描述：**
 
 
-设置文本输入框达到最大字符数时计数器的颜色。
+设置文本输入框未达到最大字符数时计数器的颜色。
 
 **起始版本：** 22
 
@@ -10027,7 +10027,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | 指向文本输入框计数器的配置对象指针。 |
-| uint32_t color | 文本输入框未达到最大字符数时计数器的颜色，格式为OxARGB。 |
+| uint32_t color | 文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB，默认值为0x66182431。 |
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor()
 
@@ -10038,7 +10038,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 **描述：**
 
 
-设置文本输入框达到最大字符数时计数器的颜色。
+设置文本输入框超出最大字符数时计数器的颜色。
 
 **起始版本：** 22
 
@@ -10048,7 +10048,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | 指向文本输入框计数器的配置对象指针。 |
-| uint32_t color | 文本输入框未达到最大字符数时计数器的颜色，格式为OxARGB。 |
+| uint32_t color | 文本输入框超出最大字符数时计数器的颜色，格式为0xARGB，默认值为0x99FA2A2D。 |
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
 
@@ -10074,19 +10074,19 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t  | 返回文本输入框未达到最大字符数时计数器的颜色，格式为OxARGB。 |
+| uint32_t  | 返回文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB。 |
 
 
-### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
+### OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor()
 
 ```
-uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)
+uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)
 ```
 
 **描述：**
 
 
-获取文本输入框达到最大字符数时计数器的颜色。
+获取文本输入框超出最大字符数时计数器的颜色。
 
 **起始版本：** 22
 
@@ -10101,7 +10101,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 返回文本输入框达到最大字符数时计数器的颜色，格式为OxARGB。 |
+| uint32_t | 返回文本输入框超出最大字符数时计数器的颜色，格式为0xARGB。 |
 
 ### OH_ArkUI_SelectedDataDetectorConfig_Create()
 
