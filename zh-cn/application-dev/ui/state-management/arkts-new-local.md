@@ -666,6 +666,46 @@ struct Index {
 
 <!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local w: number = 50; // 宽度
+  @Local h: number = 50; // 高度
+  @Local message: string = 'Hello';
+
+  build() {
+    Column() {
+      Button('change size')
+        .margin(20)
+        .onClick(() => {
+          // 在执行动画前，存在额外的修改
+          this.w = 100;
+          this.h = 100;
+          this.message = 'Hello World';
+          animateToImmediately({
+            duration: 0
+          }, () => {
+          })
+          this.getUIContext().animateTo({
+            duration: 1000
+          }, () => {
+            this.w = 200;
+            this.h = 200;
+            this.message = 'Hello ArkUI';
+          })
+        })
+      Column() {
+        Text(`${this.message}`)
+      }
+      .backgroundColor('#ff17a98d')
+      .width(this.w)
+      .height(this.h)
+    }
+  }
+}
+```
+
 原理为使用一个duration为0的[animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md)将额外的修改先刷新，再执行原来的动画达成预期的效果。
 
 ![arkts-new-local-animateTo-2](figures/arkts-new-local-animateTo-2.gif)
