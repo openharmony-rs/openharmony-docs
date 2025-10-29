@@ -412,6 +412,27 @@
 
 <!-- @[FlexAlignSelf_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSelf.ets) -->
 
+``` TypeScript
+Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器组件设置子元素居中
+  Text('alignSelf Start').width('25%').height(80)
+    .alignSelf(ItemAlign.Start)
+    .backgroundColor('#F5DEB3')
+  Text('alignSelf Baseline')
+    .alignSelf(ItemAlign.Baseline)
+    .width('25%')
+    .height(80)
+    .backgroundColor('#D2B48C')
+  Text('alignSelf Baseline').width('25%').height(100)
+    .backgroundColor('#F5DEB3')
+    .alignSelf(ItemAlign.Baseline)
+  Text('no alignSelf').width('25%').height(100)
+    .backgroundColor('#D2B48C')
+  Text('no alignSelf').width('25%').height(100)
+    .backgroundColor('#F5DEB3')
+
+}.width('90%').height(220).backgroundColor('#AFEEEE')
+```
+
 
 ![zh-cn_image_0000001562940533](figures/zh-cn_image_0000001562940533.png)
 
