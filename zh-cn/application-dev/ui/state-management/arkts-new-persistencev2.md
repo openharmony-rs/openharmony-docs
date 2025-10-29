@@ -593,6 +593,67 @@ struct Page1 {
 
 <!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) -->
 
+``` TypeScript
+// 使用connect存储数据
+import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+// 接受序列化失败的回调
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
+});
+
+@ObservedV2
+class SampleChild {
+  // 应用持久化Key connect2:点击的数量，默认为0，如果点击后退出再次进入，则默认为持久化的数量
+  @Trace public childId: number = 0;
+  // 应用持久化save key Sample:点击的数量，默认为1，如果点击后退出再次进入，则默认为持久化的数量
+  public groupId: number = 1;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Type(SampleChild)
+  @Trace public father: SampleChild = new SampleChild();
+}
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // 进入当前页面后点击了save key Sample:多少次
+  @Local refresh: number = 0;
+  // 使用key:connect2存储
+  @Local p: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
+
+  build() {
+    Column({ space: 5 }) {
+      /**************************** 显示数据 **************************/
+      Text('Key connect2: ' + this.p.father.childId.toString())
+        .onClick(() => {
+          this.p.father.childId += 1;
+        })
+        .fontSize(25)
+        .fontColor(Color.Red)
+
+      /**************************** save接口 **************************/
+      // 非状态变量需要借助状态变量refresh才能刷新
+      Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+        .onClick(() => {
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          this.p.father.groupId += 1;
+          PersistenceV2.save('connect2');
+          this.refresh += 1;
+        })
+        .fontSize(25)
+    }
+    .width('100%')
+  }
+}
+```
+
 <!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) -->
 
 connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect进行存储，之后当自定义组件使用globalConnect连接时，globalConnect绑定的数据即为之前使用connect保存的数据，开发者可以自定义move函数，并将其放在合适位置迁移即可。
