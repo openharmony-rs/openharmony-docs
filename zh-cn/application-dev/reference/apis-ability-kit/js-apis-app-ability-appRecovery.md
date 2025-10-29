@@ -5,6 +5,8 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 > **说明：**
 > 
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
+>
+> 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
 
 ## 导入模块
 ```ts
@@ -17,7 +19,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -34,6 +38,10 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
+
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
 | SAVE_WHEN_ERROR            | 0x0001    | 当发生应用故障时保存。 |
@@ -46,6 +54,10 @@ import { appRecovery } from '@kit.AbilityKit';
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -63,6 +75,10 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 **参数：**
 
@@ -107,6 +123,9 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 **示例：**
     
@@ -139,6 +158,10 @@ saveAppState(): boolean
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 **返回值：**
 
@@ -177,6 +200,10 @@ saveAppState(context?: UIAbilityContext): boolean
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 **参数：**
 
@@ -221,6 +248,10 @@ setRestartWant(want: Want): void
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTs-Dyn起始版本：** 11
+
+**ArkTs-Sta起始版本：** 20
 
 **参数：**
 
