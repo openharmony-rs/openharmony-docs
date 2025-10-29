@@ -673,6 +673,19 @@ allowOverride：\@Provide重写选项。
 
 <!-- @[Provide_Consume_Provide_AllowOverride1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
 
+``` TypeScript
+@Component
+struct MyComponent {
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
+
+  // [StartExclude Provide_Consume_Provide_AllowOverride]
+  build() {
+  }
+
+  // [EndExclude Provide_Consume_Provide_AllowOverride]
+}
+```
+
 完整示例如下：
 
 <!-- @[Provide_Consume_Provide_AllowOverride2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->
