@@ -606,7 +606,7 @@ SVG类型图源不支持该属性。
 
 supportSvg2(enable: boolean)
 
-开启或关闭[SVG新增解析能力](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
 
 Image组件创建后，不支持动态修改该属性的值。
 
@@ -620,7 +620,7 @@ Image组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable | boolean | 是   | 控制是否开启SVG解析新能力。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
+| enable | boolean | 是   | 控制是否开启SVG标签解析能力增强功能。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
 ### contentTransition<sup>21+</sup>
 
@@ -2309,7 +2309,7 @@ struct Index {
 
 ### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
 
-该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG新增解析能力生效。
+该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
 
 ```ts
 @Entry
