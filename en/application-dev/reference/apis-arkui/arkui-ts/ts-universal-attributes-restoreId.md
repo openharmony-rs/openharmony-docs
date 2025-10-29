@@ -1,13 +1,10 @@
 # Distributed Migration Identifier
-<<<<<<< HEAD
-=======
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
->>>>>>> 9f04030... update adviser
 
 The distributed migration identifier **restoreId** identifies a component in distributed migration scenarios. It can be used to restore the component to a specific state on a remote device.
 
