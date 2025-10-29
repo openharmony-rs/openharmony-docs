@@ -563,6 +563,36 @@ struct Index {
 
 <!-- @[Local_Question_UIUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionUIUtils.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@ComponentV2
+struct Index {
+  list: string[][] = [['a'], ['b'], ['c']];
+  @Local dataObjFromList: string[] = this.list[0];
+
+  @Monitor('dataObjFromList')
+  onStrChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObjFromList has changed');
+  }
+
+  build() {
+    Column() {
+      Button('change to self').onClick(() => {
+        // 获取原始对象来和新值做对比
+        if (UIUtils.getTarget(this.dataObjFromList) !== this.list[0]) {
+          this.dataObjFromList = this.list[0];
+        }
+      })
+    }
+  }
+}
+```
+
 ### 在状态管理V2中使用animateTo动画效果异常
 
 在下面的场景中，[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)暂不支持直接在状态管理V2中使用。
