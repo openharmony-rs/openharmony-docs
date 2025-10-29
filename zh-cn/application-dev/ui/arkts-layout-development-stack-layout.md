@@ -86,6 +86,25 @@ Stack容器中兄弟组件显示层级关系可以通过[Z序控制](../referenc
 
 <!-- @[StackLayoutNozIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutNozIndex.ets) -->
 
+``` TypeScript
+Stack({ alignContent: Alignment.BottomStart }) {
+  Column() {
+    //$r('app.string.stack_num1')需要替换为开发者所需的资源文件
+    Text($r('app.string.stack_num1')).textAlign(TextAlign.End).fontSize(20)
+  }.width(100).height(100).backgroundColor(0xffd306)
+
+  Column() {
+    //$r('app.string.stack_num2')需要替换为开发者所需的资源文件
+    Text($r('app.string.stack_num2')).fontSize(20)
+  }.width(150).height(150).backgroundColor(Color.Pink)
+
+  Column() {
+    //$r('app.string.stack_num3')需要替换为开发者所需的资源文件
+    Text($r('app.string.stack_num3')).fontSize(20)
+  }.width(200).height(200).backgroundColor(Color.Grey)
+}.width(350).height(350).backgroundColor(0xe0e0e0)
+```
+
 ![zh-cn_image_0000001511900544](figures/zh-cn_image_0000001511900544.png)
 
 上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1，子元素2的zIndex属性后，可以将元素展示出来。
