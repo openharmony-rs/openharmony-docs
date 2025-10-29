@@ -127,10 +127,10 @@ let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 // ···
 tcp.getSocketFd().then((sockfd: number) => {
   statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-    console.info(JSON.stringify(stats));
+    hilog.info(0x0000, 'testTag', JSON.stringify(stats));
     // ···
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    hilog.error(0x0000, 'testTag', JSON.stringify(err));
     // ···
   });
 })
@@ -138,10 +138,10 @@ tcp.getSocketFd().then((sockfd: number) => {
 // 获取指定socket实时上行流量数据。
 tcp.getSocketFd().then((sockfd: number) => {
   statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
-    console.info(JSON.stringify(stats));
+    hilog.info(0x0000, 'testTag', JSON.stringify(stats));
     // ···
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    hilog.error(0x0000, 'testTag', JSON.stringify(err));
     // ···
   });
 })
