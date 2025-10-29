@@ -18,9 +18,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 > **说明：**
 >
-> websocket支持[心跳检测机制](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2)，在客户端和服务端建立webSocket连接之后，从连接建立或者客户端收到Pong帧开始计时，每间隔pingInterval秒客户端会发送Ping帧给服务器。服务器若支持websocket协议则会在收到Ping帧后自动回复Pong帧，表示连接正常，若服务端异常或服务端不支持websocket协议则不会回复Pong帧；若Ping帧发出去后，pongTimeout秒内没有收到Pong帧，则会主动断开连接。支持开发者关闭心跳检测机制，自定义pingInterval与pongTimeout，详情请参考[WebsocketRequestOptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)。
->
-> 服务端从API version 19开始支持。
+> websocket支持[心跳检测机制](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2)，在客户端和服务端建立webSocket连接之后，从连接建立或者客户端收到Pong帧开始计时，每间隔pingInterval秒客户端会发送Ping帧给服务器。服务器若支持websocket协议则会在收到Ping帧后自动回复Pong帧，表示连接正常，若服务端异常或服务端不支持websocket协议则不会回复Pong帧；若Ping帧发出去后，pongTimeout秒内没有收到Pong帧，则会主动断开连接。支持开发者关闭心跳检测机制，自定义pingInterval与pongTimeout，详情请参考[WebsocketRequestOptions](../reference/apis-network-kit/js-apis-webSocket.md##websocketrequestoptions)。
 
 ## client端开发步骤
 
@@ -30,35 +28,28 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
     import { webSocket } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
-
+<!-- @[WebSocket_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
 2. 创建WebSocket连接，返回一个WebSocket对象。
 
     ```js
     let defaultIpAddress = "ws://";
     let ws = webSocket.createWebSocket();
     ```
-
+<!-- @[WebSocket_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
 3. 订阅WebSocket的打开、消息接收、关闭、Error事件（可选），当收到on('open')事件时，可以通过send()方法与服务器进行通信，当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。。
 
     ```js
     ws.on('open', (err: BusinessError, value: Object) => {
-      console.info("on open, status:" + JSON.stringify(value));
+      console.log("on open, status:" + JSON.stringify(value));
       // 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
-      ws.send("Hello, server!", (err: BusinessError, value: boolean) => {
-        if (!err) {
-          console.info("Message send successfully");
-        } else {
-          console.error("Failed to send the message. Err:" + JSON.stringify(err));
-        }
-      });
     });
     ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
-      console.info("on message, message:" + value);
+      console.log("on message, message:" + value);
       // 当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
       if (value === 'bye') {
         ws.close((err: BusinessError, value: boolean) => {
           if (!err) {
-            console.info("Connection closed successfully");
+            console.log("Connection closed successfully");
           } else {
             console.error("Failed to close the connection. Err: " + JSON.stringify(err));
           }
@@ -66,25 +57,37 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
       }
     });
     ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
-      console.info("on close, code is " + value.code + ", reason is " + value.reason);
+      console.log("on close, code is " + value.code + ", reason is " + value.reason);
     });
     ws.on('error', (err: BusinessError) => {
       console.error("on error, error:" + JSON.stringify(err));
     });
     ```
-
+<!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
 4. 根据URL地址，发起WebSocket连接。
 
     ```js
     ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
       if (!err) {
-        console.info("Connected successfully");
+        console.log("Connected successfully");
       } else {
         console.error("Connection failed. Err:" + JSON.stringify(err));
       }
     });
     ```
+<!-- @[webSocket_case_object_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+5. 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
 
+    ```js
+      ws.send("Hello, server!", (err: BusinessError, value: boolean) => {
+        if (!err) {
+          console.log("Message send successfully");
+        } else {
+          console.error("Failed to send the message. Err:" + JSON.stringify(err));
+        }
+      });
+    ```
+<!-- @[webSocket_case_send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
 ## server端开发步骤
 
 1. 导入webSocket以及错误码模块。
@@ -94,12 +97,16 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
+    <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+
 2. 创建WebSocketServer对象。
 
     ```js
     let localServer: webSocket.WebSocketServer;
     localServer = webSocket.createWebSocketServer();
     ```
+
+    <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅WebSocketServer的客户端连接事件、消息接收事件、关闭事件、Error事件（可选），在收到客户端连接事件后，服务端可以通过send()方法与客户端进行通信，当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
 
@@ -117,7 +124,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
           console.error(`message send failed, Code: ${error.code}, message: ${error.message}`);
       });
     });
-
+    
     localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
       try{
         console.info(`on message received, client: ${message.clientConnection}, data: ${message.data}`);
@@ -135,15 +142,17 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
         console.error(`on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
       }
     });
-
+    
     localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
       console.info(`client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
     });
-
+    
     localServer.on('error', (error: BusinessError) => {
       console.error(`error. Code: ${error.code}, message: ${error.message}`);
     });
     ```
+
+    <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
 
 4. 配置config参数启动server端服务。
 
@@ -165,6 +174,8 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
     });
     ```
 
+    <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+
 5. 服务端监听所有客户端连接状态（可选）。
 
     ```js
@@ -181,6 +192,8 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
     }
     ```
 
+    <!-- @[WebSocket_server_connections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
+
 6. 需要关闭WebSocketServer端服务器时，可以通过stop()停止服务。
 
     ```js
@@ -193,155 +206,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
     });
     ```
 
-## 客户端完整示例
-
-**示例：**
-
-```js
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let defaultIpAddress = "ws://";
-let ws = webSocket.createWebSocket();
-ws.on('open', (err: BusinessError, value: Object) => {
-  console.info("on open, status:" + JSON.stringify(value));
-  // 当收到on('open')事件时，可以通过send()方法与服务器进行通信。
-  ws.send("Hello, server!", (err: BusinessError, value: boolean) => {
-    if (!err) {
-      console.info("Message send successfully");
-    } else {
-      console.error("Failed to send the message. Err:" + JSON.stringify(err));
-    }
-  });
-});
-ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
-  console.info("on message, message:" + value);
-  // 当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
-  if (value === 'bye') {
-    ws.close((err: BusinessError, value: boolean) => {
-      if (!err) {
-        console.info("Connection closed successfully");
-      } else {
-        console.error("Failed to close the connection. Err: " + JSON.stringify(err));
-      }
-    });
-  }
-});
-ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
-  console.info("on close, code is " + value.code + ", reason is " + value.reason);
-});
-ws.on('error', (err: BusinessError) => {
-  console.error("on error, error:" + JSON.stringify(err));
-});
-ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
-  if (!err) {
-    console.info("Connected successfully");
-  } else {
-    console.error("Connection failed. Err:" + JSON.stringify(err));
-  }
-});
-```
-
-## server端完整示例
-
-1. 导入需要的webSocket模块。
-
-2. 创建一个WebSocketServer对象。
-
-3. （可选）订阅WebSocketServer的客户端连接事件、消息接收事件、关闭事件、Error事件。
-
-4. 配置config参数，通过start()启动server端服务。
-
-5. 通过WebSocketServer收发消息、监听事件等。
-
-6. 使用完WebSocketServer端服务器后，通过stop()停止服务。
-
-**示例：**
-
-```js
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let connections: webSocket.WebSocketConnection[] = [];
-let localServer: webSocket.WebSocketServer;
-let config: webSocket.WebSocketServerConfig = {
-  // 监听端口。
-  serverPort: 8080,
-  maxConcurrentClientsNumber: 10,
-  maxConnectionsForOneClient: 10,
-}
-
-localServer = webSocket.createWebSocketServer();
-
-localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
-  console.info(`New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
-  // 当收到on('connect')事件时，可以通过send()方法与客户端进行通信。
-  localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
-    if (success) {
-      console.info('message send successfully');
-    } else {
-      console.error('message send failed');
-    }
-  }).catch((error: BusinessError) => {
-    console.error(`message send failed, Code: ${error.code}, message: ${error.message}`);
-  });
-
-  try {
-    connections = await localServer.listAllConnections();
-    if (connections.length === 0) {
-      console.info('client list is empty');
-    } else {
-      console.info(`client list cnt: ${connections.length}, client connections list is: ${connections}`);
-    }
-  } catch (error) {
-    console.error(`Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
-  }
-});
-
-localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
-  try{
-    console.info(`on message received, client: ${message.clientConnection}, data: ${message.data}`);
-    // 当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
-    if (message.data === 'bye') {
-      localServer.close(message.clientConnection).then((success: boolean) => {
-        if (success) {
-          console.info('close client successfully');
-        } else {
-          console.error('close client failed');
-        }
-      });
-    }
-  } catch (error) {
-    console.error(`on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
-  }
-});
-
-localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-  console.info(`client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
-});
-
-localServer.on('error', (error: BusinessError) => {
-  console.error(`error. Code: ${error.code}, message: ${error.message}`);
-});
-
-localServer.start(config).then((success: boolean) => {
-  if (success) {
-    console.info('webSocket server start success');
-  } else {
-    console.error('websocket server start failed');
-  }
-}).catch((error: BusinessError) => {
-  console.error(`Failed to start. Code: ${error.code}, message: ${error.message}`);
-});
-
-localServer.stop().then((success: boolean) => {
-  if (success) {
-    console.info('server stop service successfully');
-  } else {
-    console.error('server stop service failed');
-  }
-});
-```
+    <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case/entry/src/main/ets/pages/Index.ets) -->
 
 ## 相关实例
 
@@ -349,4 +214,4 @@ localServer.stop().then((success: boolean) => {
 
 - [WebSocket（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/WebSocket)
 
-- [WebSocket连接](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case)
+- [WebSocket连接](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_server_case)

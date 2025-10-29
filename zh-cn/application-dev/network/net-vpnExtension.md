@@ -48,10 +48,11 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
   }
 ]
 ```
+<!-- @[create_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/module.json5) -->
 
 > **注意：**
 >
-> 如果DevEco Studio工具提示不能识别"type": "vpn"，需要您手动在SDK的toolchains\modulecheck\module.json文件中，给extensionAbilities对应的type枚举添加"vpn"定义，并清除build缓存和重启DevEco Studio工具。
+> 如果DevEco Studio工具提示不能识别"type": "vpn"，需要您手动在SDK的toolchains\modulecheck\module.json文件中，给extensionAbilities对应的type枚举添加"vpn"定义，并清除build缓存。
 
 接下来您需要在创建的VpnExtensionAbility中实现VPN的配置、启动和停止操作：
 
@@ -86,16 +87,16 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click")
-        })
+          console.info("btn click") })
         Button('Start Extension').onClick(() => {
           vpnExtension.startVpnExtensionAbility(want);
         }).width('70%').fontSize(45).margin(16)
-      }.width('100%')
+        }.width('100%')
     }.height('100%')
   }
 }
 ```
+<!-- @[start_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StartVpn.ets) -->
 
 如果您的VPN应用未获取用户信任，系统将弹出VPN连接的授权对话框，当获取用户授权后，系统将自动调用并启动您实现的VPN Extension Ability的[onCreate](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityoncreate)方法将被调用。
 
@@ -108,11 +109,12 @@ struct Index {
 当VPN应用需要停止VPN连接时，需要调用stopVpnExtensionAbility接口，携带需要停止的VpnExtensionAbility信息。系统会对调用方做权限校验，stopVpnExtensionAbility的调用方应用必须获取了用户的VPN信任授权，且只允许停止应用自己启动的VpnExtensionAbility，所以接口传入的参数中bundleName需要与您的VPN应用bundleName一致，abilityName为指定停止VPN的VpnExtensionAbility名。
 
 您可参考如下示例：
-
 ```ts
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
-
+```
+<!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+```ts
 let want: Want = {
   deviceId: "",
   bundleName: "com.example.myvpndemo",
@@ -130,8 +132,7 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click")
-        })
+          console.info("btn click") })
         Button('Start Extension').onClick(() => {
           vpnExtension.startVpnExtensionAbility(want);
         }).width('70%').fontSize(45).margin(16)
@@ -140,11 +141,12 @@ struct Index {
           vpnExtension.stopVpnExtensionAbility(want);
         }).width('70%').fontSize(45).margin(16)
 
-      }.width('100%')
+        }.width('100%')
     }.height('100%')
   }
 }
 ```
+<!-- @[stop_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
 
 stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md#vpnextensionabilityondestroy)方法将被调用，您可在此时destroy vpn连接。
 
@@ -154,19 +156,19 @@ import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let context: vpnExtension.VpnExtensionContext;
-
 export default class MyVpnExtAbility extends VpnExtensionAbility {
   onDestroy() {
-    let VpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
+    let VpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(VpnConnection));
     VpnConnection.destroy().then(() => {
       console.info("destroy success.");
-    }).catch((error: BusinessError) => {
+    }).catch((error : BusinessError) => {
       console.error("destroy fail" + JSON.stringify(error));
     });
   }
 }
 ```
+<!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
 
 ### 生成VPN Id
 
@@ -178,11 +180,11 @@ import VpnExtensionAbility from "@ohos.app.ability.VpnExtensionAbility";
 import { vpnExtension } from "@kit.NetworkKit";
 
 export default class VpnTest extends VpnExtensionAbility {
-  vpnId: string = ''
+  vpnId:string = ''
 
-  getVpnId() {
+  getVpnId(){
     let vpnConnection = vpnExtension.createVpnConnection(this.context);
-    vpnConnection?.generateVpnId().then((data) => {
+    vpnConnection?.generateVpnId().then((data)=>{
       if (data) {
         this.vpnId = data;
       }
@@ -190,6 +192,7 @@ export default class VpnTest extends VpnExtensionAbility {
   }
 }
 ```
+<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
 
 ### 断开VPN
 
@@ -202,12 +205,13 @@ export default class VpnTest extends VpnExtensionAbility {
   vpnId: string = 'test_vpn_id'
   vpnConnection: vpnExtension.VpnConnection | undefined
 
-  destroy() {
+  destroy(){
     this.vpnConnection = vpnExtension.createVpnConnection(this.context);
     this.vpnConnection?.destroy(this.vpnId);
   }
 }
 ```
+<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) -->
 
 ## 服务生命周期
 
@@ -218,33 +222,35 @@ export default class VpnTest extends VpnExtensionAbility {
 
 ## VPN Config参数说明
 
-| 名称                | 类型                                                         | 只读 |可选| 说明                                                         |
-| ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
-| addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                        |
-| routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | 否   | 是|VPN虚拟网卡的路由信息(目前最多可配置1024条路由)。            |
-| dnsAddresses        | Array\<string\>                                              | 否   |是 |DNS服务器地址信息。配置DNS服务器地址后，VPN启动状态下，被代理的应用上网时，使用配置的DNS服务器进行DNS查询。 |
-| searchDomains       | Array\<string\>                                              | 否   |是 |DNS的搜索域列表。                                            |
-| mtu                 | number                                                       | 否   |是| 最大传输单元MTU值(单位：字节)。                               |
-| isIPv4Accepted      | boolean                                                      | 否   |是 |是否支持IPV4，默认值为true。true：支持IPV4；false：不支持IPV4。                                 |
-| isIPv6Accepted      | boolean                                                      | 否   |是 |是否支持IPV6，默认值为false。true：支持IPV6；false：不支持IPV6。                                |
-| isInternal          | boolean                                                      | 否   |是| 是否支持内置VPN，默认值为false。true：支持内置VPN；false：不支持内置VPN。                             |
-| isBlocking          | boolean                                                      | 否   |是 |是否阻塞模式，默认值为false。true：是阻塞模式；false：不是阻塞模式。                                |
-| trustedApplications | Array\<string\>                                              | 否   | 是 |受信任的应用信息列表，以string类型表示的包名。配置此列表后，仅列表中的应用数据才能根据routes被VPN代理。<br>注：trustedApplications和blockedApplications列表不能同时配置。              |
-| blockedApplications | Array\<string\>                                              | 否   | 是 |被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。<br>注：trustedApplications和blockedApplications列表不能同时配置。          |
+| 名称                | 类型                                                         | 必填 | 说明                                                         |
+| ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 是   | VPN虚拟网卡的IP地址。                                        |
+| routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | 否   | VPN虚拟网卡的路由信息(目前最多可配置1024条路由)。            |
+| dnsAddresses        | Array\<string\>                                              | 否   | DNS服务器地址信息。配置DNS服务器地址后，VPN启动状态下，被代理的应用上网时，使用配置的DNS服务器进行DNS查询。 |
+| searchDomains       | Array\<string\>                                              | 否   | DNS的搜索域列表。                                            |
+| mtu                 | number                                                       | 否   | 最大传输单元MTU值(单位：字节)。                               |
+| isIPv4Accepted      | boolean                                                      | 否   | 是否支持IPV4，默认值为true。true：支持IPV4；false：不支持IPV4。                                 |
+| isIPv6Accepted      | boolean                                                      | 否   | 是否支持IPV6，默认值为false。true：支持IPV6；false：不支持IPV6。                                |
+| isInternal          | boolean                                                      | 否   | 是否支持内置VPN，默认值为false。true：支持内置VPN；false：不支持内置VPN。                             |
+| isBlocking          | boolean                                                      | 否   | 是否阻塞模式，默认值为false。true：是阻塞模式；false：不是阻塞模式。                                |
+| trustedApplications | Array\<string\>                                              | 否   | 受信任的应用信息列表，以string类型表示的包名。配置此列表后，仅列表中的应用数据才能根据routes被VPN代理。<br>注：trustedApplications和blockedApplications列表不能同时配置。              |
+| blockedApplications | Array\<string\>                                              | 否   | 被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。<br>注：trustedApplications和blockedApplications列表不能同时配置。          |
 
 **示例：**
+```ts
+import { vpnExtension} from '@kit.NetworkKit';
+```
+<!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
 
 ```ts
-import { vpnExtension } from '@kit.NetworkKit';
-
 let vpnConfig: vpnExtension.VpnConfig = {
   // 配置VPN虚拟网卡的IP地址。
   addresses: [{
     address: {
-      address: '192.x.x.5',
-      family: 1
+      address:'192.x.x.5',
+      family:1
     },
-    prefixLength: 24
+    prefixLength:24
   }],
   // 配置路由参数。
   routes: [{
@@ -252,16 +258,16 @@ let vpnConfig: vpnExtension.VpnConfig = {
     interface: 'vpn-tun',
     destination: {
       address: {
-        address: '10.x.x.8',
-        family: 1,
-        port: 8080
+        address:'10.x.x.8',
+        family:1,
+        port:8080
       },
-      prefixLength: 24
+      prefixLength:24
     },
     gateway: {
-      address: '10.x.x.5',
-      family: 1,
-      port: 8080
+      address:'10.x.x.5',
+      family:1,
+      port:8080
     },
     hasGateway: false,
     isDefaultRoute: false,
@@ -275,18 +281,19 @@ let vpnConfig: vpnExtension.VpnConfig = {
   // 不生效VPN黑名单的应用。
   blockedApplications: ['com.test.games'],
 }
+```
+
+```ts
 let context: vpnExtension.VpnExtensionContext;
 
-function vpnCreate() {
+function vpnCreate(){
   let VpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
   VpnConnection.create(vpnConfig).then((data) => {
     console.info("vpn create " + JSON.stringify(data));
   })
 }
 ```
-
-
-
+<!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
 ## VPN Demo示例
 
 OpenHarmony开源项目包含一个名为[VPN](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case)的示例应用。此应用展示了如何设置和连接 VPN 服务。

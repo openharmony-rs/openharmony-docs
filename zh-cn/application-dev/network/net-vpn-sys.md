@@ -172,6 +172,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
   }
 }
 ```
+<!-- @[vpn_control_case_extention_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/VPNExtentionAbility.ets) -->
 
 ## VPN 示例源码(c++部分)
 
@@ -397,7 +398,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
     napi_module_register(&demoModule);
 }
 ```
-
+<!-- @[vpn_control_case_c++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/cpp/napi_init.cpp) -->
 ## 相关实例
 
 针对 VPN 管理的开发，有以下相关实例可供参考：
