@@ -293,6 +293,19 @@ Navigation组件通过mode属性设置页面的显示模式。
 ![菜单栏](figures/菜单栏.jpg)
 
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
+   
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ···
+         Navigation(this.pageInfos) {
+           // ···
+         }
+         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
+   ```
 
 ## 设置工具栏
 
