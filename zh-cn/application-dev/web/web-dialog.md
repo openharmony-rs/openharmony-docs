@@ -289,7 +289,7 @@
 
 - 用[CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog)创建弹框。
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { ConfirmDialog } from '@kit.ArkUI';

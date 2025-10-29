@@ -112,7 +112,7 @@ import web_webview from '@ohos.web.webview';
 @Entry
 @Component
 struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
+  controller: web_webview.WebviewController = new web_webview.WebviewController();
 
   build() {
     Column() {

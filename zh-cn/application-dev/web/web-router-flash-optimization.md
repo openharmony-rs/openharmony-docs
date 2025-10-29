@@ -32,7 +32,7 @@
 以下为设置Web组件背景色的接口示例（示例中将Web组件背景色设置为灰色，若不设置，Web组件背景色默认为白色）：
 
   <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
-
+  
   ``` TypeScript
   Web({ src: $rawfile('xxx.html'),  controller: this.webController})
     .backgroundColor(Color.Gray)
