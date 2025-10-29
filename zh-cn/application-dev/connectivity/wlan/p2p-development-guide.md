@@ -40,9 +40,11 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
 ### 创建/删除P2P群组
 1. import需要的Wi-Fi模块。
+<!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
+<!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
 5. 示例代码：
 
    ```ts
@@ -85,10 +87,13 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
 ### 建立P2P连接
 1. import需要的Wi-Fi模块。
+<!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
 2. 开启设备的Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 注册"p2pPeerDeviceChange"事件回调，并在回调实现中执行P2P连接。
+<!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
 5. 开始P2P设备发现。
+<!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
 6. 示例代码：
 
    ```ts
