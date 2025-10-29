@@ -210,6 +210,73 @@ private:
 
 <!-- @[worterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
 
+``` C
+//WaterflowSection.h
+
+#ifndef MYAPPLICATION_WATERFLOWSECTION_H
+#define MYAPPLICATION_WATERFLOWSECTION_H
+
+#include <arkui/native_node.h>
+#include <hilog/log.h>
+
+namespace NativeModule {
+
+struct SectionOption {
+    int32_t itemsCount = 0;
+    int32_t crossCount;
+    float columnsGap;
+    float rowsGap;
+    // {上外边距，右外边距，下外边距，左外边距}
+    ArkUI_Margin margin{0, 0, 0, 0};
+    float (*onGetItemMainSizeByIndex)(int32_t itemIndex);
+    void *userData;
+};
+
+class WaterflowSection {
+public:
+    WaterflowSection() : sectionOptions_(OH_ArkUI_WaterFlowSectionOption_Create()){};
+    
+    ~WaterflowSection()
+    {
+        OH_ArkUI_WaterFlowSectionOption_Dispose(sectionOptions_);
+    }
+
+    void SetSection(ArkUI_WaterFlowSectionOption *sectionOptions, int32_t index, SectionOption section)
+    {
+        OH_ArkUI_WaterFlowSectionOption_SetItemCount(sectionOptions, index, section.itemsCount);
+        OH_ArkUI_WaterFlowSectionOption_SetCrossCount(sectionOptions, index, section.crossCount);
+        OH_ArkUI_WaterFlowSectionOption_SetColumnGap(sectionOptions, index, section.columnsGap);
+        OH_ArkUI_WaterFlowSectionOption_SetRowGap(sectionOptions, index, section.rowsGap);
+        OH_ArkUI_WaterFlowSectionOption_SetMargin(sectionOptions, index, section.margin.top, section.margin.right,
+                                                  section.margin.bottom, section.margin.left);
+        OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(sectionOptions, index,
+                                                                               section.onGetItemMainSizeByIndex);
+    }
+    
+    ArkUI_WaterFlowSectionOption *GetSectionOptions() const
+    {
+        return sectionOptions_;
+    }
+    
+    void PrintSectionOptions()
+    {
+        int32_t sectionCnt = OH_ArkUI_WaterFlowSectionOption_GetSize(sectionOptions_);
+        for (int32_t i = 0; i < sectionCnt; i++) {
+            ArkUI_Margin margin = OH_ArkUI_WaterFlowSectionOption_GetMargin(sectionOptions_, i);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "CreateWaterflowExample",
+                         "Section[%{public}d].margin:{%{public}f, %{public}f, %{public}f, %{public}f}", i, margin.top,
+                         margin.right, margin.bottom, margin.left);
+        }
+    }
+
+private:
+    ArkUI_WaterFlowSectionOption *sectionOptions_ = nullptr;
+};
+} // namespace NativeModule
+
+#endif // MYAPPLICATION_WATERFLOWSECTION_H
+```
+
 
 ## 创建瀑布流
 使用ArkUIWaterflowNode类管理Waterflow。支持通过SetLazyAdapter为其设置一个FlowItemAdapter，通过SetSection为其设置分段。
