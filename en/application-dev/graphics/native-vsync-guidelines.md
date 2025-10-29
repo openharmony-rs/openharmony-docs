@@ -1,8 +1,13 @@
 # Native VSync Development (C/C++)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @alexci-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+## Overview
 
-## When to Use
-
-The NativeVSync module is used to obtain virtual synchronization (VSync) signals from the system. It provides APIs for creating and destroying an **OH_NativeVSync** instance and setting the VSync callback function, which is triggered when a VSync signal arrives.
+The NativeVSync module is used to obtain the system VSync signal, create and destroy an OH_NativeVSync instance, and set the VSync callback function. When the VSync signal is triggered, the callback function is called.
 
 ## Available APIs
 
@@ -13,15 +18,15 @@ The NativeVSync module is used to obtain virtual synchronization (VSync) signals
 | OH_NativeVSync_FrameCallback (long long timestamp, void \*data) | Sets a callback function. **timestamp** indicates the timestamp, and **data** indicates a pointer to the input parameters of the callback function.| 
 | OH_NativeVSync_RequestFrame (OH_NativeVSync \*nativeVsync, OH_NativeVSync_FrameCallback callback, void \*data) | Requests the next VSync signal. When the signal arrives, a callback function is invoked.| 
 
-For details about the APIs, see [native_vsync](../reference/apis-arkgraphics2d/_native_vsync.md).
+For details about the APIs, see [native_vsync](../reference/apis-arkgraphics2d/capi-nativevsync.md).
 
 ## How to Develop
 
-The following steps describe how to use the native APIs provided by NativeVSync to create and destroy an **OH_NativeVSync** instance and set the VSync callback function.
+The following steps describe how to use Native APIs provided by NativeVSync to create and destroy an OH_NativeVSync instance, and set a VSync callback function.
 
 **Adding Dynamic Link Libraries**
 
-Add the following library to **CMakeLists.txt**:
+Add the following library file to the **CMakeLists.txt** file.
 ```txt
 libnative_vsync.so
 ```
@@ -31,38 +36,48 @@ libnative_vsync.so
 #include <native_vsync/native_vsync.h>
 ```
 
-1. Implement a VSync callback function.
-    ```c++
-    #include <iostream>
+1. **Define a VSync callback function.**
+    <!-- @[vsync_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-    static bool flag = false;
-    static void OnVSync(long long timestamp, void* data)
+    ``` C++
+    void RenderEngine::OnVsync(long long timestamp, void *data)
     {
-        flag = true;
-        std::cout << "OnVSync: " << timestamp << std::endl;
+        OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_PRINT_DOMAIN, "RenderEngine", "OnVsync %{public}lld.", timestamp);
+        auto renderEngine = reinterpret_cast<RenderEngine *>(data);
+        if (renderEngine == nullptr) {
+            return;
+        }
+
+        renderEngine->vSyncCnt_++;
+        renderEngine->wakeUpCond_.notify_one();
     }
-    OH_NativeVSync_FrameCallback callback = OnVSync; // The callback function must be of the OH_NativeVSync_FrameCallback type.
-     ```
+    ```
+
 2. Create an **OH_NativeVSync** instance.
-    ```c++
-    char name[] = "hello_vsync";
-    OH_NativeVSync* nativeVSync = OH_NativeVSync_Create(name, strlen(name));
-     ```
+    <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+
+    ``` C++
+    const char* demoName = "NativeImageSample";
+    nativeVsync_ = OH_NativeVSync_Create(demoName, strlen(demoName));
+    ```
 
 3. Set the VSync callback function through the **OH_NativeVSync** instance.
-    ```c++
-    #include <unistd.h>
-    #include <iostream>
+    <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-    OH_NativeVSync_RequestFrame(nativeVSync, callback, nullptr);
-    while (!flag) { // Check the flag value. The while loop exits only after the VSync callback function is executed, indicating that a VSync signal is received.
-        std::cout << "wait for vsync!\n";
-        sleep(1);
+    ``` C++
+    wakeUpCond_.wait(lock, [this]() { return wakeUp_ || vSyncCnt_ > 0; });
+    wakeUp_ = false;
+    if (vSyncCnt_ > 0) {
+        vSyncCnt_--;
+        (void)OH_NativeVSync_RequestFrame(nativeVsync_, &RenderEngine::OnVsync, this);
+        OH_NativeVSync_GetPeriod(nativeVsync_, &period);
     }
-    std::cout << "vsync come, end this thread\n";
     ```
 
 4. Destroy the **OH_NativeVSync** instance.
-    ```c++
-    OH_NativeVSync_Destroy(nativeVSync); // Destroy the OH_NativeVSync instance when the application does not need to receive VSync signals.
+    <!-- @[destroy_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+
+    ``` C++
+    OH_NativeVSync_Destroy(nativeVsync_);
+    nativeVsync_ = nullptr;
     ```

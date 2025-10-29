@@ -1,4 +1,4 @@
-# Visibility
+# Visibility Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiangtao92-->

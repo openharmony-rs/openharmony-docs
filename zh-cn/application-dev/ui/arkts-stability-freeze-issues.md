@@ -4,7 +4,7 @@
 <!--Owner: @caoruihong-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本文档收集整理了一些常见的会导致应用无响应的ArkUI API错误用法，旨在帮助开发者了解这些错误用法，从而避免在实际应用开发过程中犯类似错误。
 

@@ -4,7 +4,7 @@
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 inspector用于检查页面布局，通过inspector双向定位功能帮助开发者在DevEco Studio中快速定位组件、修改属性和调试组件，以提高开发效率。
 

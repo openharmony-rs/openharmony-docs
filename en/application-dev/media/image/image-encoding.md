@@ -6,7 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image encoding refers to the process of encoding a PixelMap into an image in different formats for subsequent processing, such as storage and transmission. Currently, images can be encoded only into the JPEG, WebP, PNG, or HEIF format (depending on the hardware).
+Image encoding refers to the process of compressing a PixelMap into different image file formats for the purpose of saving and transferring.
+
+You can use [PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1) and [PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2) to encode a PixelMap into JPEG, WebP, PNG, and HEIF images.
+
+Starting from API version 18, you can use [PackToDataFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodatafrompixelmapsequence18) and [PackToFileFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofilefrompixelmapsequence18) to encode multiple PixelMaps into the GIF format.
 
 ## How to Develop
 

@@ -1,4 +1,10 @@
 # System Resource Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -8,7 +14,7 @@
 
 **Error Message**
 
-System resources do not exist
+System resources does not exist.
 
 **Description**
 
@@ -26,7 +32,7 @@ Check the input parameters.
 
 **Error Message**
 
-The format of input color parameter is incorrect.
+The type of system resources is incorrect.
 
 **Description**
 

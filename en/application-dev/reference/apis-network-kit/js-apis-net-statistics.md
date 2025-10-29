@@ -816,7 +816,8 @@ Obtains the traffic statistics of the specified application on the specified net
 
 > **NOTE**
 >
->This API can only obtain the traffic statistics within 31 days. If the timestamp specified by the parameter is more than 31 days earlier than the current system time, the error code 2103019 is reported.
+>- Currently, this API can only obtain the traffic statistics of the cellular and Wi-Fi networks.<br>
+>- This API can only obtain the traffic statistics within 31 days. If the timestamp specified by the parameter is more than 31 days earlier than the current system time, the error code 2103019 is reported.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -887,7 +888,7 @@ Defines the network information.
 | type      | [NetBearType](#netbeartype12) | No | No|Network type.<br>**Note**: If **type** is set to **cellular**, the **simId** field must be specified.      |
 | startTime | number                                               | No |No| Start timestamp, in seconds.|
 | endTime   | number                                               | No |No|End timestamp, in seconds.|
-| simId     | number                                               | No | Yes|SIM card ID.<br>**Note**: If **type** is set to **cellular**, this field must be specified.  |
+| simId     | number                                               | No | Yes|SIM card ID. The default value is the maximum value of the uint32_t type.<br>**Note**: If **type** is set to **cellular**, this field must be specified.  |
 
 ## NetStatsInfo<sup>22+</sup>
 

@@ -42,164 +42,164 @@
 
 1. 若要使用键值型数据库，首先要使用createKVManager()方法获取一个KVManager实例，用于管理数据库对象。示例代码如下所示：
 
-   Stage模型示例：
-
-
-   ```js
+   ```ts
    // 导入模块
+   // 在pages目录下新建KvStoreInterface.ets
    import { distributedKVStore } from '@kit.ArkData';
-
-   // Stage模型
-   import { window } from '@kit.ArkUI';
-   import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   // Logger为hilog封装后实现的打印功能
+   import Logger from '../common/Logger';
 
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
-   let appId: string = 'com.example.datamanagertest';
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   export default class EntryAbility extends UIAbility {
-     onCreate() {
-       let context = this.context;
+   // Stage模型context从EntryAbility.ets中获取
+   const context = EntryAbility.getContext();
+
+   // FA模型获取context
+   import { featureAbility } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   let context = featureAbility.getContext();
+
+   // 下面所有接口的代码都实现在KvInterface中
+   export class KvInterface {
+   }
+   ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public CreateKvManager = (() => {
+     Logger.info('CreateKvManager start');
+     if (typeof (kvManager) === 'undefined') {
        const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         context: context,
-         bundleName: appId
+         bundleName: appId,
+         context: context
        };
        try {
          // 创建KVManager实例
          kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         console.info('Succeeded in creating KVManager.');
-         // 继续创建获取数据库
-         if (kvManager !== undefined) {
-          //进行后续操作
-          //...
-         }
-       } catch (e) {
-         let error = e as BusinessError;
-         console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
+         Logger.info('Succeeded in creating KVManager.');
+       } catch (err) {
+         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
        }
+     } else {
+       Logger.info ('KVManager has created');
      }
-   }
-   ```
-
-   FA模型示例：
-
-
-   ```js
-   // 导入模块
-   import { distributedKVStore } from '@kit.ArkData';
-
-   // FA模型
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let kvManager: distributedKVStore.KVManager | undefined = undefined;
-   let appId: string = 'com.example.datamanagertest';
-   let storeId: string = 'storeId';
-   let context = featureAbility.getContext(); // 获取context
-   const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-     context: context,
-     bundleName: appId
-   };
-   try {
-     kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-     console.info('Succeeded in creating KVManager.');
-     // 继续创建获取数据库
-   } catch (e) {
-      let error = e as BusinessError;
-      console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-   }
-   if (kvManager !== undefined) {
-     //进行后续操作
-     //...
-   }
-
+   })
    ```
 
 2. 使用getKVStore()方法创建并获取键值数据库。示例代码如下所示：
 
-   ```js
-   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-   try {
-     let child1 = new distributedKVStore.FieldNode('id');
-     child1.type = distributedKVStore.ValueType.INTEGER;
-     child1.nullable = false;
-     child1.default = '1';
-     let child2 = new distributedKVStore.FieldNode('name');
-     child2.type = distributedKVStore.ValueType.STRING;
-     child2.nullable = false;
-     child2.default = 'zhangsan';
-
-     let schema = new distributedKVStore.Schema();
-     schema.root.appendChild(child1);
-     schema.root.appendChild(child2);
-     schema.indexes = ['$.id', '$.name'];
-     // 0表示COMPATIBLE模式，1表示STRICT模式。
-     schema.mode = 1;
-     // 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0,4M-2]。
-     schema.skip = 0;
-
-     const options: distributedKVStore.Options = {
-       createIfMissing: true,
-       encrypt: false,
-       backup: false,
-       autoSync: false,
-       // kvStoreType不填时，默认创建多设备协同数据库
-       kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-       // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION,
-       schema: schema,
-       // schema未定义可以不填，定义方法请参考上方schema示例。
-       securityLevel: distributedKVStore.SecurityLevel.S3
-     };
-     kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options, (err, store: distributedKVStore.SingleKVStore) => {
-       if (err) {
-         console.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in getting KVStore.');
-       kvStore = store;
-       // 请确保获取到键值数据库实例后，再进行相关数据操作
-       if (kvStore !== undefined) {
-           //进行后续操作
-           //...
-       }
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public GetKvStore = (() => {
+     Logger.info('GetKvStore start');
+     if (kvManager === undefined) {
+       Logger.info('KvManager not initialized');
+       return;
+     }
+     try {
+       let child1 = new distributedKVStore.FieldNode('id');
+       child1.type = distributedKVStore.ValueType.INTEGER;
+       child1.nullable = false;
+       child1.default = '1';
+       let child2 = new distributedKVStore.FieldNode('name');
+       child2.type = distributedKVStore.ValueType.STRING;
+       child2.nullable = false;
+       child2.default = 'zhangsan';
+   
+       let schema = new distributedKVStore.Schema();
+       schema.root.appendChild(child1);
+       schema.root.appendChild(child2);
+       schema.indexes = ['$.id', '$.name'];
+       // 0表示COMPATIBLE模式，1表示STRICT模式。
+       schema.mode = 1;
+       // 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0,4M-2]。
+       schema.skip = 0;
+   
+       const options: distributedKVStore.Options = {
+         createIfMissing: true,
+         // 设置数据库加密
+         encrypt: true,
+         backup: false,
+         autoSync: false,
+         // kvStoreType不填时，默认创建多设备协同数据库
+         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+         // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION,
+         schema: schema,
+         // schema未定义可以不填，定义方法请参考上方schema示例。
+         securityLevel: distributedKVStore.SecurityLevel.S3
+       };
+       kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options,
+         (err, store: distributedKVStore.SingleKVStore) => {
+           if (err) {
+             Logger.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
+             return;
+           }
+           Logger.info('Succeeded in getting KVStore.');
+           kvStore = store;
+           // 请确保获取到键值数据库实例后，再进行相关数据操作
+         });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。示例代码如下所示：
 
-   ```ts
-   try {
-     kvStore.on('dataChange', distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_ALL, (data) => {
-       console.info(`dataChange callback call data: ${data}`);
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
-   }
+   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public On = (() =>{
+     Logger.info('On start');
+     if(kvStore === undefined) {
+       Logger.info('On: kvStore not initialized');
+       return;
+     }
+     try {
+       kvStore.on('dataChange', distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_ALL, (data) => {
+         Logger.info(`dataChange callback call data: ${data}`);
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 4. 调用put()方法向键值数据库中插入数据。示例代码如下所示：
 
-   ```js
-   const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-   // 如果未定义Schema则Value可以传其他符合要求的值。
-   const VALUE_TEST_STRING_ELEMENT = '{"id":0, "name":"lisi"}';
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Failed to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Put = (() => {
+     Logger.info('Put start');
+     if (kvStore === undefined) {
+       Logger.info('Put: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     // 如果未定义Schema则Value可以传其他符合要求的值。
+     const VALUE_TEST_STRING_ELEMENT = '{"id":0, "name":"lisi"}';
+     try {
+       kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
+         if (err !== undefined) {
+           Logger.error(`Failed to put data. Code:${err.code},message:${err.message}`);
+           return;
+         }
+         Logger.info('Succeeded in putting data.');
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
    > **说明：**
@@ -208,92 +208,112 @@
 
 5. 调用get()方法获取指定键的值。示例代码如下所示：
 
-   ```js
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Failed to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-       kvStore = kvStore as distributedKVStore.SingleKVStore;
+   <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Get = (() => {
+     Logger.info('Get start');
+     if (kvStore === undefined) {
+       Logger.info('Get: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     try {
        kvStore.get(KEY_TEST_STRING_ELEMENT, (err, data) => {
          if (err != undefined) {
-           console.error(`Failed to get data. Code:${err.code},message:${err.message}`);
+           Logger.error(`Failed to get data. Code:${err.code},message:${err.message}`);
            return;
          }
-         console.info(`Succeeded in getting data. Data:${data}`);
+         Logger.info(`Succeeded in getting data. Data:${data}`);
        });
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`Failed to get data. Code:${error.code},message:${error.message}`);
-   }
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`Failed to get data. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 6. 调用delete()方法删除指定键值的数据。示例代码如下所示：
 
-   ```js
-   try {
-     kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
-       if (err !== undefined) {
-         console.error(`Failed to put data. Code:${err.code},message:${err.message}`);
-         return;
-       }
-       console.info('Succeeded in putting data.');
-       kvStore = kvStore as distributedKVStore.SingleKVStore;
+   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public Delete = (() => {
+     Logger.info('DeleteData start');
+     if (kvStore === undefined) {
+       Logger.info('DeleteData: kvStore not initialized');
+       return;
+     }
+     const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+     try {
        kvStore.delete(KEY_TEST_STRING_ELEMENT, (err) => {
          if (err !== undefined) {
-           console.error(`Failed to delete data. Code:${err.code},message:${err.message}`);
+           Logger.error(`Failed to delete data. Code:${err.code},message:${err.message}`);
            return;
          }
-         console.info('Succeeded in deleting data.');
+         Logger.info('Succeeded in deleting data.');
        });
-     });
-   } catch (e) {
-     let error = e as BusinessError;
-     console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-   }
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
    ```
 
 7. 调用closeKVStore()方法通过storeId的值关闭指定的分布式键值数据库。示例代码如下所示：
 
-    ```js
-    try {
-      // appId为应用的bundleName
-      kvManager = kvManager as distributedKVStore.KVManager;
-      kvStore = undefined;
-      kvManager.closeKVStore(appId, storeId, (err: BusinessError)=> {
-        if (err) {
-          console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
-          return;
-        }
-        console.info('Succeeded in closing KVStore');
-      });
-    } catch (e) {
-      let error = e as BusinessError;
-      console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-    }
+    <!-- @[kv_store10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+    
+    ``` TypeScript
+    public CloseKVStore = (()=>{
+      Logger.info('CloseKVStore start');
+      if (kvManager === undefined) {
+        Logger.info('KvManager not initialized');
+        return;
+      }
+      try {
+        // appId为应用的bundleName
+        kvStore = undefined;
+        kvManager.closeKVStore(appId, storeId, (err: BusinessError)=> {
+          if (err) {
+            Logger.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
+            return;
+          }
+          Logger.info('Succeeded in closing KVStore');
+        });
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    })
     ```
 
 8. 调用deleteKVStore()方法通过storeId的值删除指定的分布式键值数据库。示例代码如下所示：
 
-    ```js
-    try {
-      // appId为应用的bundleName
-      kvManager = kvManager as distributedKVStore.KVManager;
-      kvStore = undefined;
-      kvManager.deleteKVStore(appId, storeId, (err: BusinessError)=> {
-        if (err) {
-          console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
-          return;
-        }
-        console.info('Succeeded in deleting KVStore');
-      });
-    } catch (e) {
-      let error = e as BusinessError;
-      console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-    }
+    <!-- @[kv_store11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+    
+    ``` TypeScript
+    public DeleteKvStore = (()=>{
+      Logger.info('DeleteKvStore start');
+      if (kvManager === undefined) {
+        Logger.info('KvManager not initialized');
+        return;
+      }
+      try {
+        // appId为应用的bundleName
+        kvStore = undefined;
+        kvManager.deleteKVStore(appId, storeId, (err: BusinessError)=> {
+          if (err) {
+            Logger.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
+            return;
+          }
+          Logger.info('Succeeded in deleting KVStore');
+        });
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+      }
+    })
     ```
 
 <!--RP1--><!--RP1End-->

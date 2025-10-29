@@ -4,7 +4,7 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件可以设置相应的无障碍属性和事件来更好地使用无障碍能力。
 

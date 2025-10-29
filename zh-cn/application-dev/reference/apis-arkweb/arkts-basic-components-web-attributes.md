@@ -3905,9 +3905,9 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
           })
           .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
-            console.log(`Found blank screen on ${event.url}.`);
-            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
-            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
           })
       }
     }

@@ -43,7 +43,7 @@ constructor()
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-添加同步过程事件监听。
+云图同步对象添加同步过程事件监听。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -83,7 +83,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-移除同步过程事件监听。
+云图同步对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -127,7 +127,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 off(evt: 'progress'): void
 
-移除同步过程事件监听。
+云图同步对象移除'progress'类型的所有回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -168,7 +168,7 @@ off(evt: 'progress'): void
 
 start(): Promise&lt;void&gt;
 
-异步方法启动端云同步，以Promise形式返回结果。
+异步方法启动端云同步。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -216,7 +216,7 @@ start(): Promise&lt;void&gt;
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动端云同步，以callback形式返回结果。
+异步方法启动端云同步。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -262,7 +262,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 stop(): Promise&lt;void&gt;
 
-异步方法停止端云同步，以Promise形式返回结果。
+异步方法停止端云同步。使用Promise异步回调。
 
 > **说明：**
 >
@@ -307,7 +307,7 @@ stop(): Promise&lt;void&gt;
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止端云同步，以callback形式返回结果。
+异步方法停止端云同步。使用callback异步回调。
 
 > **说明：**
 >
@@ -414,7 +414,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-移除云文件下载过程事件监听。
+云图下载对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -458,7 +458,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 off(evt: 'progress'): void
 
-移除云文件下载过程事件监听。
+云图下载对象移除'progress'类型的所有回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -499,7 +499,7 @@ off(evt: 'progress'): void
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云文件下载，以Promise形式返回结果。
+异步方法启动云文件下载。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -553,7 +553,7 @@ start(uri: string): Promise&lt;void&gt;
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云文件下载，以callback形式返回结果。
+异步方法启动云文件下载。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -600,7 +600,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 stop(uri: string): Promise&lt;void&gt;
 
-异步方法停止云文件下载，以Promise形式返回结果。
+异步方法停止云文件下载。使用Promise异步回调。
 
 > **说明：**
 >
@@ -652,7 +652,7 @@ stop(uri: string): Promise&lt;void&gt;
 
 stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云文件下载，以callback形式返回结果。
+异步方法停止云文件下载。使用callback异步回调。
 
 > **说明：**
 >
@@ -791,7 +791,7 @@ cleanCache(uri: string): void
 
 getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt;&gt;
 
-异步方法获取文件同步状态，以promise形式返回结果。
+异步方法获取文件同步状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -844,7 +844,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt;): void
 
-异步方法获取文件同步状态，以callback形式返回结果。
+异步方法获取文件同步状态。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
