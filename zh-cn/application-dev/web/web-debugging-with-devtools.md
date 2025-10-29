@@ -19,39 +19,39 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
    1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
-    
-        ``` TypeScript
-        import { webview } from '@kit.ArkWeb';
-        import { BusinessError } from '@kit.BasicServicesKit';
-        import hilog from '@ohos.hilog';
-        
-        const TAG = '[Sample_DebuggingWireless]'
-        const DOMAIN = 0xF811
-        const BUNDLE = 'TextMenuItem_'
-        const DEBUGGING_PORT: number = 8888;
-        
-        @Entry
-        @Component
-        struct WebComponent {
-          controller: webview.WebviewController = new webview.WebviewController();
-        
-          aboutToAppear(): void {
-            try {
-              // 配置Web开启无线调试模式，指定TCP Socket的端口。
-              webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
-            } catch (error) {
-              hilog.error(DOMAIN, TAG,
-                BUNDLE + `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          }
-        
-          build() {
-            Column() {
-              Web({ src: 'www.example.com', controller: this.controller })
-            }
+      
+      ``` TypeScript
+      import { webview } from '@kit.ArkWeb';
+      import { BusinessError } from '@kit.BasicServicesKit';
+      import hilog from '@ohos.hilog';
+      
+      const TAG = '[Sample_DebuggingWireless]'
+      const DOMAIN = 0xF811
+      const BUNDLE = 'TextMenuItem_'
+      const DEBUGGING_PORT: number = 8888;
+      
+      @Entry
+      @Component
+      struct WebComponent {
+        controller: webview.WebviewController = new webview.WebviewController();
+      
+        aboutToAppear(): void {
+          try {
+            // 配置Web开启无线调试模式，指定TCP Socket的端口。
+            webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
+          } catch (error) {
+            hilog.error(DOMAIN, TAG,
+              BUNDLE + `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         }
-        ```
+      
+        build() {
+          Column() {
+            Web({ src: 'www.example.com', controller: this.controller })
+          }
+        }
+      }
+      ```
 
        > **说明：**
        >
@@ -59,8 +59,8 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
         <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-       
-       ``` JSON5
+        
+        ``` JSON5
         "requestPermissions":[
           {
             "name" : "ohos.permission.INTERNET"

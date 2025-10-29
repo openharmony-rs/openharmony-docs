@@ -101,7 +101,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 * 应用侧ets代码。
 
   <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   
