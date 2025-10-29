@@ -52,7 +52,67 @@ libchild_process.so
 #include <AbilityKit/native_child_process.h>
 // [EndExclude child_process_must_method]
 ```
-
+    <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+    
+    ``` C++
+    // [Start child_process_head_file]
+    #include <IPCKit/ipc_kit.h>
+    // ···
+    // [End child_process_head_file]
+    #include <IPCKit/ipc_cremote_object.h>
+    #include <IPCKit/ipc_cparcel.h>
+    #include <IPCKit/ipc_error_code.h>
+    
+    class IpcCapiStubTest {
+    public:
+        explicit IpcCapiStubTest();
+        ~IpcCapiStubTest();
+        OHIPCRemoteStub *GetRemoteStub();
+        static int OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData);
+    
+    private:
+        OHIPCRemoteStub *stub_{nullptr};
+    };
+    
+    IpcCapiStubTest::IpcCapiStubTest()
+    {
+        // 创建stub对象
+        stub_ = OH_IPCRemoteStub_Create("testIpc", &IpcCapiStubTest::OnRemoteRequest, nullptr, this);
+    }
+    
+    IpcCapiStubTest::~IpcCapiStubTest()
+    {
+        if (stub_ != nullptr) {
+            OH_IPCRemoteStub_Destroy(stub_);
+        }
+    }
+    
+    OHIPCRemoteStub *IpcCapiStubTest::GetRemoteStub() { return stub_; }
+    
+    int IpcCapiStubTest::OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)
+    {
+        return OH_IPC_SUCCESS;
+    }
+    
+    IpcCapiStubTest g_ipcStubObj;
+    
+    extern "C" {
+    OHIPCRemoteStub *NativeChildProcess_OnConnect()
+    {
+        // ipcRemoteStub指向子进程实现的ipc stub对象，用于接收来自主进程的IPC消息并响应
+        // 子进程根据业务逻辑控制其生命周期
+        return g_ipcStubObj.GetRemoteStub();
+    }
+    
+    void NativeChildProcessMainProc()
+    {
+        // 相当于子进程的Main函数，实现子进程的业务逻辑
+        // ...
+        // 函数返回后子进程随即退出
+    }
+    
+    } // extern "C"
+    ```
 1. 子进程-实现必要的导出方法。
 
     在子进程中，实现必要的两个函数**NativeChildProcess_OnConnect**及**NativeChildProcess_MainProc**并导出（假设代码所在的文件名为ChildProcessSample.cpp）。其中NativeChildProcess_OnConnect方法返回的OHIPCRemoteStub对象负责与主进程进行IPC通信，具体实现方法请参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述。
