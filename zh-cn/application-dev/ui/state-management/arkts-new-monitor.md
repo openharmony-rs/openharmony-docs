@@ -291,6 +291,51 @@ struct Index {
 
 <!-- @[monitor_decorator_inheritance_support_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorInheritanceSupportObservedV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Base {
+  @Trace public name: string;
+
+  // 基类监听name属性
+  @Monitor('name')
+  onBaseNameChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Base Class name change`);
+  }
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@ObservedV2
+class Derived extends Base {
+  // 继承类监听name属性
+  @Monitor('name')
+  onDerivedNameChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Derived Class name change`);
+  }
+
+  constructor(name: string) {
+    super(name);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  derived: Derived = new Derived('AAA');
+
+  build() {
+    Column() {
+      Button('change name')
+        .onClick(() => {
+          this.derived.name = 'BBB'; // 能够先后触发onBaseNameChange、onDerivedNameChange方法
+        })
+    }
+  }
+}
+```
+
 ### 通用监听能力
 
 \@Monitor还有一些通用的监听能力。
