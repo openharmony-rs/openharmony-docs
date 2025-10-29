@@ -98,17 +98,17 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
 
   // 查询剪贴板是否存在应用所需数据类型
   try {
-    // (可选)涉及口令等应用自身特殊复制内容的，使用detectPatterns过滤口令格式
-    let data: pasteboard.Pattern[]  = await systemPasteboard.detectPatterns(patterns);
-    if (patterns.sort().join('') != data.sort().join('')) {
-      console.info('Not all needed patterns detected, no need to get data.');
-      return false;
-    }
     // (可选)判断是否有应用需要的数据类型
     let result: boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_TEXT_PLAIN);
     console.info('Succeeded in checking the DataType. Result: ${result}');
     if (!result) {
       // 剪贴板不存在应用所需数据类型，无需申请权限
+      return false;
+    }
+    // (可选)涉及口令等应用自身特殊复制内容的，使用detectPatterns过滤口令格式
+    let data: pasteboard.Pattern[]  = await systemPasteboard.detectPatterns(patterns);
+    if (patterns.sort().join('') != data.sort().join('')) {
+      console.info('Not all needed patterns detected, no need to get data.');
       return false;
     }
   } catch (err) {
@@ -130,8 +130,14 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
               let grantStatus: number[] = data.authResults;
               for (const status of grantStatus) {
                 if (status === 0) {
-                  // 用户授权，可以继续访问目标操作。
-				// ···
+                  // 用户授权，使用get操作读取剪贴板内容。
+                // ···
+                  // 执行判断口令逻辑，如果是本应用口令，建议获取完数据后使用cleardata清除剪贴板口令内容
+                  systemPasteboard.clearData().then((data: void) => {
+                    console.info('Succeeded in clearing the pasteboard.');
+                  }).catch((err: BusinessError) => {
+                    console.error(Failed to clear the pasteboard. Cause: ${err.message});
+                  });
                   // 获取当前 ChangeCount
                   let currentChangeCount: number = systemPasteboard.getChangeCount();
                   console.info('Current ChangeCount: ' + currentChangeCount);
