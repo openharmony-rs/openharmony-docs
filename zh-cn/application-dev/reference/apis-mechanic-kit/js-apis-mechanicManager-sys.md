@@ -599,12 +599,12 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 ```ts
 let targetInfo : mechanicManager.TargetInfo = {
 	targetType: mechanicManager.TargetType.HUMAN_FACE};
-    let searchParams : mechanicManager.SearchParams= {
-    	direction:mechanicManager.SearchDirection.DEFAULT}
-    mechanicManager.searchTarget(targetInfo, 
-		searchParams, (searchResult).then(searchResult)=>{
-       		console.info(`'result:' ${searchResult}`);
-            });
+let searchParams : mechanicManager.SearchParams= {
+	direction:mechanicManager.SearchDirection.DEFAULT}
+mechanicManager.searchTarget(targetInfo, 
+	searchParams, (searchResult).then(searchResult)=>{
+    	console.info(`'result:' ${searchResult}`);
+    });
 ```
 ## RotationAngles
 
@@ -740,7 +740,7 @@ let targetInfo : mechanicManager.TargetInfo = {
 
 ## TargetType<sup>21+<sup>
 
-目标人脸的特征信息，包括但不限于面部轮廓、五官位置等。
+目标人脸信息的枚举。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -764,17 +764,15 @@ let targetInfo : mechanicManager.TargetInfo = {
  
 ## SearchParams<sup>21+<sup>
 
-指定搜索结果返回的排序方向（升序或降序）
+指定搜索的方向。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
 
-| 名称         | 值  | 说明              |
-| ----------- | ---- | --------------- |
-| DEFAULT | 0 | 默认方向。 |
-| LEFTWARD | 1 | 左向，也对应顺时针方向。 |
-| RIGHTWARD | 2 | 右向，也对应逆时针方向。 |
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| direction | SearchDirection | 否 | 否 | 搜索的方向。 |
 
   ## SearchResult<sup>21+<sup>
 
