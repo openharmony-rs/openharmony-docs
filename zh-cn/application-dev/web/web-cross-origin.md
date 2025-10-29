@@ -22,67 +22,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   以下结合示例说明如何使用http或者https等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js置于工程中的rawfile目录下。当使用resource协议访问index.html时，js/script.js将因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原本的resource协议，同时利用onInterceptRequest接口替换资源，使得js/script.js可以成功加载，从而解决了跨域拦截的问题。
 
-  ```ts
-  // main/ets/pages/Index.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'Hello World';
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    // 构造域名和本地文件的映射表
-    schemeMap = new Map([
-      ["https://www.example.com/index.html", "index.html"],
-      ["https://www.example.com/js/script.js", "js/script.js"],
-    ])
-    // 构造本地文件和构造返回的格式mimeType
-    mimeTypeMap = new Map([
-      ["index.html", 'text/html'],
-      ["js/script.js", "text/javascript"]
-    ])
-
-    build() {
-      Row() {
-        Column() {
-          // 针对本地index.html,使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
-          // 本例中构造www.example.com为例。
-          Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
-            .javaScriptAccess(true)
-            .fileAccess(true)
-            .domStorageAccess(true)
-            .geolocationAccess(true)
-            .width("100%")
-            .height("100%")
-            .onInterceptRequest((event) => {
-              if (!event) {
-                return;
-              }
-              // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
-              if (this.schemeMap.has(event.request.getRequestUrl())) {
-                let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
-                let mimeType = this.mimeTypeMap.get(rawfileName);
-                if (typeof mimeType === 'string') {
-                  let response = new WebResourceResponse();
-                  // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
-                  response.setResponseData($rawfile(rawfileName));
-                  response.setResponseEncoding('utf-8');
-                  response.setResponseMimeType(mimeType);
-                  response.setResponseCode(200);
-                  response.setReasonMessage('OK');
-                  response.setResponseIsReady(true);
-                  return response;
-                }
-              }
-              return null;
-            })
-        }
-        .width('100%')
-      }
-      .height('100%')
-    }
-  }
-  ```
+  <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->
+  <!---->
 
   ```html
   <!-- main/resources/rawfile/index.html -->
@@ -95,14 +36,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   </body>
   </html>
   ```
-
-  ```js
-  // main/resources/rawfile/js/script.js
-  const body = document.body;
-  const element = document.createElement('div');
-  element.textContent = 'success';
-  body.appendChild(element);
-  ```
+  <!---->
+  <!-- @[cors_script_raw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/rawfile/js/script.js)-->
 
 - 方法二
 
@@ -131,39 +66,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
-  ```ts
-  // main/ets/pages/index.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: WebviewController = new webview.WebviewController();
-    uiContext: UIContext = this.getUIContext();
-
-    build() {
-      Row() {
-        Web({ src: "", controller: this.controller })
-          .onControllerAttached(() => {
-            try {
-              // 设置允许可以跨域访问的路径列表
-              this.controller.setPathAllowingUniversalAccess([
-                this.uiContext.getHostContext()!.resourceDir,
-                this.uiContext.getHostContext()!.filesDir + "/example"
-              ])
-              this.controller.loadUrl("file://" + this.uiContext.getHostContext()!.resourceDir + "/index.html")
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
-            }
-          })
-          .javaScriptAccess(true)
-          .fileAccess(true)
-          .domStorageAccess(true)
-      }
-    }
-  }
-  ```
+  <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
+  <!---->
 
   ```html
   <!-- main/resources/resfile/index.html -->
@@ -209,11 +113,5 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   </html>
   ```
-
-  ```javascript
-  // main/resources/resfile/js/script.js
-  const body = document.body;
-  const element = document.createElement('div');
-  element.textContent = 'success';
-  body.appendChild(element);
-  ```
+ <!---->
+ <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->
