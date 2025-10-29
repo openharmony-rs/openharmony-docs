@@ -95,6 +95,58 @@ struct Parent {
   示例如下：
 
 <!-- @[builder_param_init_method_demo02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo02.ets) -->
+
+``` TypeScript
+@Component
+struct Child {
+  label: string = 'Child';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @Builder
+  customChangeThisBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+  @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+      this.customChangeThisBuilderParam()
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'Parent';
+
+  @Builder
+  componentBuilder() {
+    Text(`${this.label}`)
+  }
+
+  build() {
+    Column() {
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为'Parent'。
+      this.componentBuilder()
+      Child({
+        // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this指向的是子组件Child，即label变量的值为'Child'。
+        customBuilderParam: this.componentBuilder,
+        // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
+        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent'。
+        customChangeThisBuilderParam: (): void => {
+          this.componentBuilder()
+        }
+      })
+    }
+  }
+}
+```
 **图2** 示例效果图
 
 ![builderparam-demo2](figures/builderparam-demo2.png)
