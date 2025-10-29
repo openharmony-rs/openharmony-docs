@@ -915,6 +915,42 @@ struct Index {
 
 <!-- @[monitor_problem_effect_time_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemEffectTimeClass.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public message: string = 'not initialized';
+
+  constructor() {
+    this.message = 'initialized';
+  }
+
+  @Monitor('message')
+  onMessageChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  aboutToAppear(): void {
+    this.info.message = 'Index aboutToAppear';
+  }
+
+  build() {
+    Column() {
+      Button('change message')
+        .onClick(() => {
+          this.info.message = 'Index click to change message';
+        })
+    }
+  }
+}
+```
+
 上面的例子中，\@Monitor会在info创建完成后生效，这个时机晚于类的constructor，早于自定义组件的aboutToAppear。当界面加载完成后，点击“change message”，修改message变量。此时日志输出信息如下：
 
 ```ts
