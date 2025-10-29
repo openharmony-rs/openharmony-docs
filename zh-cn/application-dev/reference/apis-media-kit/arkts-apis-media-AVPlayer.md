@@ -1301,9 +1301,10 @@ getMediaKeySystemInfos(): Array\<drm.MediaKeySystemInfo>
 
 **返回值：**
 
-| 类型                                                   | 说明                                              |
-| ------------------------------------------------------ | ------------------------------------------------- |
-|  Array<[drm.MediaKeySystemInfo](../apis-drm-kit/arkts-apis-drm-i.md#mediakeysysteminfo)> | MediaKeySystemInfo数组，MediaKeySystemInfo具有uuid和pssh两个属性。 |
+| 类型                                                                                      | 说明                                                                                                      |
+|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| Array<[drm.MediaKeySystemInfo](../apis-drm-kit/arkts-apis-drm-i.md#mediakeysysteminfo)> | MediaKeySystemInfo数组，MediaKeySystemInfo具有uuid和pssh两个属性。当返回值为undefined时，表示mediaKeySystemInfoUpdate事件未触发。 |
+
 
 **示例：**
 
