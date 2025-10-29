@@ -9903,7 +9903,7 @@ async function example(context: Context) {
 
 pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
-暂停云端媒体资产批量下载任务。
+暂停云端媒体资产批量下载任务。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -9958,7 +9958,7 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 恢复云端媒体资产批量下载任务。
 
-**系统接口**：此接口为系统接口。
+**系统接口**：此接口为系统接口。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -10009,7 +10009,7 @@ async function example(context: Context) {
 
 cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
-取消云端媒体资产批量下载任务。
+取消云端媒体资产批量下载任务。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -11751,9 +11751,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype21)  | 是 | 否 | 批量下载事件类型。 |
-| fileId  | number  |是 |是 | 批量下载文件id。  |
-| percent  | number  |是 |是 | 下载进度信息。  |
-| autoPauseReason       | number  |是 |是 | 自动通知原因。  |
+| fileId  | number  |是 |否 | 批量下载文件id。  |
+| percent  | number  |是 |否 | 下载进度信息。  |
+| autoPauseReason       | number  |是 |否 | 自动通知原因。  |
 
 ## CloudAssetDownloadStatus<sup>21+</sup>
 
