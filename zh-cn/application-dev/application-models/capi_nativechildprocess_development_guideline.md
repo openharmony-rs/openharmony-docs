@@ -315,6 +315,61 @@ libchild_process.so
     调用API启动Native子进程，返回值为NCP_NO_ERROR代表成功启动native子进程。
 
     <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
+    
+    ``` C++
+    #include <AbilityKit/native_child_process.h>
+    #include <cstdlib>
+    #include <cstring>
+    #include <fcntl.h>
+    // ···
+    int32_t g_fdNameMaxLength = 4;
+    
+    void StartNativeChildProcess()
+    {
+        // ...
+        NativeChildProcess_Args args;
+        // 设置entryParams，支持传输的最大数据量为150KB
+        const size_t testParamLen = sizeof("testParam") - 1;
+        const size_t entryParamsSize = 10;
+        args.entryParams = (char *)malloc(sizeof(char) * entryParamsSize);
+        if (args.entryParams != nullptr) {
+            (void)strlcpy(args.entryParams, "testParam", testParamLen);
+            args.entryParams[testParamLen] = '\0';
+        }
+    
+        // 插入节点到链表头节点中
+        args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
+        // fd关键字，最多不超过20个字符
+        const size_t fd1Len = sizeof("fd1") - 1;
+        const size_t fdNameSize = 10;
+        args.fdList.head->fdName = (char *)malloc(sizeof(char) * g_fdNameMaxLength);
+        if (args.fdList.head->fdName != nullptr) {
+            (void)strlcpy(args.fdList.head->fdName, "fd1", fdNameSize);
+            args.fdList.head->fdName[fd1Len] = '\0';
+        }
+        // 获取fd逻辑
+        int32_t fd = open("/data/storage/el2/base/haps/entry/files/test.txt", O_RDWR | O_CREAT, 0644);
+        args.fdList.head->fd = fd;
+        // 此处只插入一个fd记录，根据需求可以插入更多fd记录到链表中，最多不超过16个
+        args.fdList.head->next = NULL;
+        NativeChildProcess_Options options = {.isolationMode = NCP_ISOLATION_MODE_ISOLATED};
+    
+        // 第一个参数"libchildprocesssample.so:Main"为实现了子进程Main方法的动态库文件名称和入口方法名
+        int32_t pid = -1;
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_StartNativeChildProcess("libchildprocesssample.so:Main", args, options, &pid);
+        if (ret != NCP_NO_ERROR) {
+            // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
+            // 子进程未能正常启动时的异常处理
+            // ...
+        }
+    
+        // 其他逻辑
+    // ···
+    
+        // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
+    }
+    ```
 
 4. 主进程-添加编译依赖项。
 
