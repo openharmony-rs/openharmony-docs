@@ -508,6 +508,19 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
 
   <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
+  
+  ``` TypeScript
+  Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
+    Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
+    Text('2').width('60%').height(20).backgroundColor('#D2B48C')
+    Text('3').width('40%').height(20).backgroundColor('#D2B48C')
+    Text('4').width('30%').height(20).backgroundColor('#F5DEB3')
+    Text('5').width('20%').height(20).backgroundColor('#D2B48C')
+  }
+  .width('90%')
+  .height(100)
+  .backgroundColor('#AFEEEE')
+  ```
 
   ![zh-cn_image_0000001511900448](figures/zh-cn_image_0000001511900448.png)
 
