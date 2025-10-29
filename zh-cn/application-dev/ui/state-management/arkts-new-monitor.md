@@ -1269,6 +1269,39 @@ property path:name change from John to Johny
 
 <!-- @[monitor_problem_param_positive_example_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample1.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  public name: string = 'John';
+  @Trace public age: number = 24;
+
+  @Monitor('age')
+  // 仅监听状态变量age
+  onPropertyChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `property path:${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change age&name')
+        .onClick(() => {
+          this.info.age = 25; // 状态变量age改变
+          this.info.name = 'Johny';
+        })
+    }
+  }
+}
+```
+
 【反例2】
 
 <!-- @[monitor_problem_param_counter_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample2.ets) -->
