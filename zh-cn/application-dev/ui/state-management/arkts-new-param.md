@@ -307,3 +307,34 @@ struct Child {
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | undefined，点击改变count的类型时，UI会自动刷新。
 
 <!-- @[Param_Use_Scene_Unite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  // 点击的数量，用于传给子组件，值可为undefined
+  @Local count: number | undefined = 0;
+
+  build() {
+    Column() {
+      MyComponent({ count: this.count })
+      Button('change')
+        .onClick(() => {
+          this.count = undefined;
+        })
+    }
+  }
+}
+
+@ComponentV2
+struct MyComponent {
+  // 点击的数量，用于接收父组件传入的值，值可为undefined
+  @Param count: number | undefined = 0;
+
+  build() {
+    Column() {
+      Text(`count(${this.count})`)
+    }
+  }
+}
+```
