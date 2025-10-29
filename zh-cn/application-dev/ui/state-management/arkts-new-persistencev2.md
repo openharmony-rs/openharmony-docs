@@ -103,6 +103,26 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 数据页面
 <!-- @[persistence_v2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/Sample.ets) -->
 
+``` TypeScript
+
+// Sample.ets
+import { Type } from '@kit.ArkUI';
+
+// 数据中心
+@ObservedV2
+class SampleChild {
+  @Trace public p1: number = 0;
+  public p2: number = 10;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Type(SampleChild)
+  @Trace public f: SampleChild = new SampleChild();
+}
+```
+
 页面1
 <!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page1.ets) -->
 
