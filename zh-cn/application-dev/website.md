@@ -397,7 +397,7 @@
             - [自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [自定义组件的自定义布局](ui/state-management/arkts-page-custom-components-layout.md)
             - [自定义组件成员属性访问限定符使用限制](ui/state-management/arkts-custom-components-access-restrictions.md)
-            - [自定义组件复用](ui/state-management/arkts-component-reusable.md)   
+            - [自定义组件复用](ui/state-management/arkts-component-reusable.md)
             - [自定义组件冻结](ui/state-management/arkts-component-freeze-inactive.md)
           - UI装饰器<!--arkts-ui-decorator-->
             - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
