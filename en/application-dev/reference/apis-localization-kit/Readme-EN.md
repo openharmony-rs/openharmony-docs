@@ -1,6 +1,13 @@
 # Localization Kit<!--localization-api-->
 
-- ArkTS APIs<!--localization-arkts-->
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
+- ArkTS API<!--localization-arkts-->
   - [@ohos.i18n (Internationalization)](js-apis-i18n.md)
   - [@ohos.intl (Internationalization)](js-apis-intl.md)
   - [@ohos.resourceManager (Resource Management)](js-apis-resource-manager.md)
@@ -9,7 +16,7 @@
   - [@ohos.fontManager (Font Management) (System API)](js-apis-font-manager-sys.md)
   - [@ohos.i18n (Internationalization) (System API)](js-apis-i18n-sys.md)
   <!--DelEnd-->
-  - Globalization<!--localization-global-arkts-->
+  - global<!--localization-global-arkts-->
     - [RawFileDescriptor](js-apis-rawFileDescriptor.md) 
     - [Resource](js-apis-resource.md)
     - [SendableResource](js-apis-sendableResource.md)

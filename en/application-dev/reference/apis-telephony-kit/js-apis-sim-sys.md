@@ -1,4 +1,10 @@
 # @ohos.telephony.sim (SIM Management) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @Fanyl8-->
+<!--Designer: @ghxbob-->
+<!--Tester: @weitiantian-->
+<!--Adviser: @zhang_yixin13-->
 
 The **sim** module provides basic SIM card management functions. You can obtain the name, number, ISO country code, home PLMN ID, service provider name, SIM card status, type, installation status, activation status, and lock status of the SIM card in the specified slot. Besides, you can set the name, number, and lock status of the SIM card, activate or deactivate the SIM card, and change the PIN or unlock the PIN or PUK of the SIM card.
 
@@ -59,7 +65,7 @@ let slotId : number = 0;
 let operator : sim.OperatorSimCard = sim.OperatorSimCard.CHINA_TELECOM_CARD;
 try {
     let isOperatorSimCard: boolean = sim.isOperatorSimCard(slotId, operator);
-    console.log(`is operator sim card: ` + isOperatorSimCard);
+    console.info(`is operator sim card: ` + isOperatorSimCard);
 } catch (err) {
     console.error("isOperatorSimCard err: " + JSON.stringify(err));
 }
@@ -107,7 +113,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setDefaultVoiceSlotId(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -159,7 +165,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setDefaultVoiceSlotId(0).then(() => {
-    console.log(`setDefaultVoiceSlotId success.`);
+    console.info(`setDefaultVoiceSlotId success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDefaultVoiceSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -208,7 +214,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let name: string = "ShowName";
 sim.setShowName(0, name, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -260,7 +266,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let name: string = "ShowName";
 sim.setShowName(0, name).then(() => {
-    console.log(`setShowName success.`);
+    console.info(`setShowName success.`);
 }).catch((err: BusinessError) => {
     console.error(`setShowName failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -307,7 +313,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowName(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -358,7 +364,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowName(0).then((data: string) => {
-    console.log(`getShowName success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getShowName success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getShowName failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -407,7 +413,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let number: string = '+861xxxxxxxxxx';
 sim.setShowNumber(0, number, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -460,7 +466,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let number: string = '+861xxxxxxxxxx';
 sim.setShowNumber(0, number).then(() => {
-    console.log(`setShowNumber success.`);
+    console.info(`setShowNumber success.`);
 }).catch((err: BusinessError) => {
     console.error(`setShowNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -507,7 +513,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowNumber(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -558,7 +564,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getShowNumber(0).then((data: string) => {
-    console.log(`getShowNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getShowNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getShowNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -605,7 +611,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.activateSim(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -656,7 +662,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.activateSim(0).then(() => {
-    console.log(`activateSim success.`);
+    console.info(`activateSim success.`);
 }).catch((err: BusinessError) => {
     console.error(`activateSim failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -703,7 +709,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.deactivateSim(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -754,7 +760,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.deactivateSim(0).then(() => {
-    console.log(`deactivateSim success.`);
+    console.info(`deactivateSim success.`);
 }).catch((err: BusinessError) => {
     console.error(`deactivateSim failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -808,7 +814,7 @@ let lockInfo: sim.LockInfo = {
     state: sim.LockState.LOCK_OFF
 };
 sim.setLockState(0, lockInfo, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -866,7 +872,7 @@ let lockInfo: sim.LockInfo = {
     state: sim.LockState.LOCK_OFF
 };
 sim.setLockState(0, lockInfo).then((data: sim.LockStatusResponse) => {
-    console.log(`setLockState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`setLockState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`setLockState failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -915,7 +921,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getLockState(0, 1, (err: BusinessError, data: sim.LockState) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -968,7 +974,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getLockState(0, 1).then((data: sim.LockState) => {
-    console.log(`getLockState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getLockState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getLockState failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1018,7 +1024,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1072,7 +1078,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin(0, "1234", "0000").then((data: sim.LockStatusResponse) => {
-    console.log(`alterPin success, promise: data->${JSON.stringify(data)}`);
+    console.info(`alterPin success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`alterPin failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1122,7 +1128,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin2(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1176,7 +1182,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.alterPin2(0, "1234", "0000").then((data: sim.LockStatusResponse) => {
-    console.log(`alterPin2 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`alterPin2 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`alterPin2 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1226,7 +1232,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin: string = '1234';
 sim.unlockPin(0, pin, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1280,7 +1286,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin: string = '1234';
 sim.unlockPin(0, pin).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPin success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPin success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPin failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1332,7 +1338,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk: string = '1xxxxxxx';
 let newPin: string = '1235';
 sim.unlockPuk(0, newPin, puk, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1388,7 +1394,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk: string = '1xxxxxxx';
 let newPin: string = '1235';
 sim.unlockPuk(0, newPin, puk).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPuk success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPuk success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPuk failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1438,7 +1444,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin2: string = '1234';
 sim.unlockPin2(0, pin2, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1492,7 +1498,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let pin2: string = '1234';
 sim.unlockPin2(0, pin2).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPin2 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPin2 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPin2 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1544,7 +1550,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk2: string = '1xxxxxxx';
 let newPin2: string = '1235';
 sim.unlockPuk2(0, newPin2, puk2, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1600,7 +1606,7 @@ import { sim } from '@kit.TelephonyKit';
 let puk2: string = '1xxxxxxx';
 let newPin2: string = '1235';
 sim.unlockPuk2(0, newPin2, puk2).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockPuk2 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockPuk2 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockPuk2 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1647,7 +1653,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimIccId(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1698,7 +1704,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimIccId(0).then((data:string) => {
-    console.log(`getSimIccId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimIccId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimIccId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1745,7 +1751,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailIdentifier(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1796,7 +1802,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailIdentifier(0).then((data: string) => {
-    console.log(`getVoiceMailIdentifier success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoiceMailIdentifier success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getVoiceMailIdentifier failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1843,7 +1849,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailNumber(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1894,7 +1900,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getVoiceMailNumber(0).then((data: string) => {
-    console.log(`getVoiceMailNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoiceMailNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getVoiceMailNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1945,7 +1951,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -1999,7 +2005,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com").then(() => {
-    console.log(`setVoiceMailInfo success.`);
+    console.info(`setVoiceMailInfo success.`);
 }).catch((err: BusinessError) => {
     console.error(`setVoiceMailInfo failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2046,7 +2052,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimTelephoneNumber(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2097,7 +2103,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimTelephoneNumber(0).then((data: string) => {
-    console.log(`getSimTelephoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimTelephoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimTelephoneNumber failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2144,7 +2150,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimGid1(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2195,7 +2201,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimGid1(0).then((data: string) => {
-    console.log(`getSimGid1 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSimGid1 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSimGid1 failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2242,7 +2248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getIMSI(0, (err: BusinessError, data: string) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2293,7 +2299,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getIMSI(0).then((data: string) => {
-    console.log(`getIMSI success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getIMSI success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getIMSI failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2339,7 +2345,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getOperatorConfigs(0, (err: BusinessError, data: Array<sim.OperatorConfig>) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2389,7 +2395,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getOperatorConfigs(0).then((data: Array<sim.OperatorConfig>) => {
-    console.log(`getOperatorConfigs success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getOperatorConfigs success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getOperatorConfigs failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2443,7 +2449,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.queryIccDiallingNumbers(0, 1, (err: BusinessError, data: Array<sim.DiallingNumbersInfo>) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2501,7 +2507,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.queryIccDiallingNumbers(0, 1).then((data:  Array<sim.DiallingNumbersInfo>) => {
-    console.log(`queryIccDiallingNumbers success, promise: data->${JSON.stringify(data)}`);
+    console.info(`queryIccDiallingNumbers success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`queryIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2555,13 +2561,13 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let diallingNumbersInof: sim.DiallingNumbersInfo = {
+let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     alphaTag: "alpha",
     number: "138xxxxxxxx",
     pin2: "1234"
 };
-sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInof, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo, (err: BusinessError) => {
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2619,12 +2625,12 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let diallingNumbersInof: sim.DiallingNumbersInfo = {
+let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     alphaTag: "alpha",
     number: "138xxxxxxxx"
 };
-sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInof).then(() => {
-    console.log(`addIccDiallingNumbers success.`);
+sim.addIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo).then(() => {
+    console.info(`addIccDiallingNumbers success.`);
 }).catch((err: BusinessError) => {
     console.error(`addIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2678,14 +2684,14 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let diallingNumbersInof: sim.DiallingNumbersInfo = {
+let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     alphaTag: "alpha",
     number: "138xxxxxxxx",
     recordNumber: 123,
     pin2: "1234"
 };
-sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInof, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo, (err: BusinessError) => {
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2743,12 +2749,12 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let diallingNumbersInof: sim.DiallingNumbersInfo = {
+let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     alphaTag: "alpha",
     number: "138xxxxxxxx"
 };
-sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInof).then(() => {
-    console.log(`delIccDiallingNumbers success.`);
+sim.delIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo).then(() => {
+    console.info(`delIccDiallingNumbers success.`);
 }).catch((err: BusinessError) => {
     console.error(`delIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2802,14 +2808,14 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let diallingNumbersInof: sim.DiallingNumbersInfo = {
+let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     alphaTag: "alpha",
     number: "138xxxxxxxx",
     recordNumber: 123,
     pin2: "1234"
 };
-sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInof, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo, (err: BusinessError) => {
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2867,13 +2873,13 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let diallingNumbersInof: sim.DiallingNumbersInfo = {
+let diallingNumbersInfo: sim.DiallingNumbersInfo = {
     alphaTag: "alpha",
     number: "138xxxxxxxx",
     recordNumber: 123
 };
-sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInof).then(() => {
-    console.log(`updateIccDiallingNumbers success.`);
+sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbersInfo).then(() => {
+    console.info(`updateIccDiallingNumbers success.`);
 }).catch((err: BusinessError) => {
     console.error(`updateIccDiallingNumbers failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2921,7 +2927,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendEnvelopeCmd(0, "ls", (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2973,7 +2979,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendEnvelopeCmd(0, "ls").then(() => {
-    console.log(`sendEnvelopeCmd success.`);
+    console.info(`sendEnvelopeCmd success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendEnvelopeCmd failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3021,7 +3027,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendTerminalResponseCmd(0, "ls", (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -3073,7 +3079,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.sendTerminalResponseCmd(0, "ls").then(() => {
-    console.log(`sendTerminalResponseCmd success.`);
+    console.info(`sendTerminalResponseCmd success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendTerminalResponseCmd failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3127,7 +3133,7 @@ let persoLockInfo: sim.PersoLockInfo = {
     password: "1234"
 };
 sim.unlockSimLock(0, persoLockInfo, (err: BusinessError, data: sim.LockStatusResponse) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -3184,7 +3190,7 @@ let persoLockInfo: sim.PersoLockInfo = {
     password: "1234"
 };
 sim.unlockSimLock(0, persoLockInfo).then((data: sim.LockStatusResponse) => {
-    console.log(`unlockSimLock success, promise: data->${JSON.stringify(data)}`);
+    console.info(`unlockSimLock success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`unlockSimLock failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3231,7 +3237,7 @@ sim.getDsdsMode((err: BusinessError, data: sim.DsdsMode) => {
     if (err) {
         console.error(`getDsdsMode failed, callback: err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getDsdsMode success, callback: data->${JSON.stringify(data)}`);
+        console.info(`getDsdsMode success, callback: data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3275,7 +3281,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let promise = sim.getDsdsMode();
 promise.then((data: sim.DsdsMode) => {
-    console.log(`getDsdsMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDsdsMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDsdsMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -3330,10 +3336,101 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
 sim.getSimAuthentication(0, sim.AuthType.SIM_AUTH_EAP_SIM_TYPE, "test").then(() => {
-    console.log(`getSimAuthentication success.`);
+    console.info(`getSimAuthentication success.`);
 }).catch((err: BusinessError) => {
     console.error(`getSimAuthentication failed, promise: err->${JSON.stringify(err)}`);
 });
+```
+
+## sim.getAllSimAccountInfoList<sup>20+</sup>
+
+getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): void
+
+Obtains the list of all SIM card accounts. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                    |
+| -------- | ------------------------ | ---- | ---------------------------------------- |
+| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](js-apis-sim.md#iccaccountinfo10)&gt;&gt; | Yes  | Callback used to return the result, which is an **IccAccountInfo** object containing the list of all SIM card accounts.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.|
+| 202 | Non-system applications use system APIs.
+| 8300001 | Invalid parameter value.                 |                    |
+| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300003 | System internal error.                               |
+| 8300004  |Do not have sim card.|
+| 8300999  |Unknown error code.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+async function getAllSimAccountInfoList((err, accountInfoList) => {
+    if (err) {
+      console.error ('Failed to obtain SIM card account information:', err);
+    } else {
+      console.info ('SIM card account information:', accountInfoList);
+    }
+  });
+```
+
+## sim.getAllSimAccountInfoList<sup>20+</sup>
+
+getAllSimAccountInfoList(): Promise\<Array\<IccAccountInfo\>\>
+
+Obtains the list of all SIM card accounts. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type                 | Description                              |
+| --------------------- | ---------------------------------- |
+| Promise\<Array\<[IccAccountInfo](js-apis-sim.md#iccaccountinfo10)\>\>| Promise used to return the result, which is an **IccAccountInfo** object containing the list of all SIM card accounts.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.|
+| 202 | Non-system applications use system APIs.                     |
+| 8300002  | Operation failed. Cannot connect to service.                      |
+| 8300003 | System internal error.                               |
+| 8300004  |Do not have sim card.|
+| 8300999  |Unknown error code.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | null>> {
+    try {
+      const accountInfoList: sim.IccAccountInfo[] =
+        await sim.getAllSimAccountInfoList();
+      return { success: true, code: CommonConstant.DEFAULT_SUCCESS_CODE, data: accountInfoList };
+    } catch (err) {
+      return this.handleError(this.getAllSimAccountInfoList.name, err);
+    }
+  }
 ```
 
 ## LockType<sup>8+</sup>
