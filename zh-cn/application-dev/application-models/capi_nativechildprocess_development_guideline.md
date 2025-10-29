@@ -261,6 +261,32 @@ libchild_process.so
     在子进程中，实现参数为[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
 
     <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+    
+    ``` C++
+    // [Start create_native_child_param_header]
+    #include <AbilityKit/native_child_process.h>
+    // [End create_native_child_param_header]
+    extern "C" {
+    /**
+     * 子进程的入口函数，实现子进程的业务逻辑
+     * 函数名称可以自定义，在主进程调用OH_Ability_StartNativeChildProcess方法时指定，此示例中为Main
+     * 函数返回后子进程退出
+     */
+    void Main(NativeChildProcess_Args args)
+    {
+        // 获取传入的entryPrams
+        char *entryParams = args.entryParams;
+        // 获取传入的fd列表
+        NativeChildProcess_Fd *current = args.fdList.head;
+        while (current != nullptr) {
+            char *fdName = current->fdName;
+            int32_t fd = current->fd;
+            current = current->next;
+            // 业务逻辑..
+        }
+    }
+    } // extern "C"
+    ```
 
 2. 子进程-编译为动态链接库。
 
