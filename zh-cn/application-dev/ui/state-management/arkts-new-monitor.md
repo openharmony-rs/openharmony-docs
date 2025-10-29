@@ -962,6 +962,86 @@ message change from Index aboutToAppear to Index click to change message
 
 <!-- @[monitor_problem_class_delayed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassDelayed.ets) -->
 
+``` TypeScript
+@ObservedV2
+class InfoWrapper {
+  public info?: Info;
+
+  constructor(info: Info) {
+    this.info = info;
+  }
+
+  @Monitor('info.age')
+  onInfoAgeChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+}
+
+@ObservedV2
+class Info {
+  @Trace public age: number;
+
+  constructor(age: number) {
+    this.age = age;
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param @Require infoWrapper: InfoWrapper;
+
+  aboutToDisappear(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Child aboutToDisappear', this.infoWrapper.info?.age);
+  }
+
+  build() {
+    Column() {
+      Text(`${this.infoWrapper.info?.age}`)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  dataArray: Info[] = [];
+  @Local showFlag: boolean = true;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new Info(i));
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change showFlag')
+        .onClick(() => {
+          this.showFlag = !this.showFlag;
+        })
+      Button('change number')
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', '%{public}s', 'click to change age');
+          this.dataArray.forEach((info: Info) => {
+            info.age += 100;
+          });
+        })
+      if (this.showFlag) {
+        Column() {
+          Text('Childs')
+          ForEach(this.dataArray, (info: Info) => {
+            Child({ infoWrapper: new InfoWrapper(info) })
+          })
+        }
+        .borderColor(Color.Red)
+        .borderWidth(2)
+      }
+    }
+  }
+}
+```
+
 在上面的例子中，当点击“change showFlag”切换if组件的条件时，Child组件会被销毁。此时，点击“change number”修改age的值时，可以通过日志观察到InfoWrapper中定义的\@Monitor回调仍然被触发了。这是因为此时自定义组件Child虽然执行了aboutToDisappear，但是其成员变量infoWrapper还没有被立刻回收，当变量发生变化时，依然能够调用到infoWrapper中定义的onInfoAgeChange方法，所以从现象上看\@Monitor回调仍会被触发。
 
 借助垃圾回收机制去取消\@Monitor的监听是不稳定的，开发者可以采用以下两种方式去管理\@Monitor的失效时间：
