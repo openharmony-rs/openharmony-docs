@@ -824,6 +824,80 @@ struct Index {
 
 <!-- @[monitor_problem_effect_time_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemEffectTimeCompV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public message: string = 'not initialized';
+
+  constructor() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'in constructor message change to initialized');
+    this.message = 'initialized';
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param info: Info = new Info();
+
+  @Monitor('info.message')
+  onMessageChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `Child message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  aboutToAppear(): void {
+    this.info.message = 'Child aboutToAppear';
+  }
+
+  aboutToDisappear(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Child aboutToDisappear');
+    this.info.message = 'Child aboutToDisappear';
+  }
+
+  build() {
+    Column() {
+      Text('Child')
+      Button('change message in Child')
+        .onClick(() => {
+          this.info.message = 'Child click to change Message';
+        })
+    }
+    .borderColor(Color.Red)
+    .borderWidth(2)
+
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info();
+  @Local flag: boolean = false;
+
+  @Monitor('info.message')
+  onMessageChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `Index message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Button('show/hide Child')
+        .onClick(() => {
+          this.flag = !this.flag
+        })
+      Button('change message in Index')
+        .onClick(() => {
+          this.info.message = 'Index click to change Message';
+        })
+      if (this.flag) {
+        Child({ info: this.info })
+      }
+    }
+  }
+}
+```
+
 在上面的例子中，可以通过创建和销毁Child组件来观察定义在自定义组件中的\@Monitor的生效和失效时机。推荐按如下顺序进行操作：
 
 - 当Index组件创建Info类实例时，日志输出`in constructor message change to initialized`。此时Index组件的\@Monitor还未初始化成功，因此不会监听到message的变化。
