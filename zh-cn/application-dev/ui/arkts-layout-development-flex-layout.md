@@ -120,6 +120,17 @@
 
 
   <!-- @[FlexWrapNoWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapNoWrap.ets) -->
+  
+  ``` TypeScript
+  Flex({ wrap: FlexWrap.NoWrap }) {
+    Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
+    Text('2').width('50%').height(50).backgroundColor('#D2B48C')
+    Text('3').width('50%').height(50).backgroundColor('#F5DEB3')
+  }
+  .width('90%')
+  .padding(10)
+  .backgroundColor('#AFEEEE')
+  ```
 
   ![zh-cn_image_0000001562700425](figures/zh-cn_image_0000001562700425.png)
 
