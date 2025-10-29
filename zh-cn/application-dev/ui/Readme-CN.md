@@ -74,6 +74,7 @@
       - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
       - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
+      - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
       - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
       - [!!语法：双向绑定](state-management/arkts-new-binding.md)
