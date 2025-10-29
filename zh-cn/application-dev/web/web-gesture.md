@@ -104,34 +104,6 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 
 **示例代码**
 
-<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
-
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct Index {
-  private webController: webview.WebviewController = new webview.WebviewController();
-  build(){
-    Column() {
-      Web({
-        src: 'https://www.example.com',
-        controller: this.webController,
-      }).onControllerAttached(() => {
-        // 自定义User-Agent
-        let customUA = 'Mozilla/5.0 (Phone; Android; HarmonyOS 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36';
-        this.webController.setCustomUserAgent(customUA);
-      })
-    }
-  }
-}
-```
-
-### 为什么Web加载后网页无法交互？
-
-网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在Web组件中设置自定义User-Agent，例如：
-
 <!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
@@ -157,6 +129,34 @@ struct Index {
     } else {
       // 执行系统默认返回逻辑，返回上一个page页
       return false;
+    }
+  }
+}
+```
+
+### 为什么Web加载后网页无法交互？
+
+网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在Web组件中设置自定义User-Agent，例如：
+
+<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  private webController: webview.WebviewController = new webview.WebviewController();
+  build(){
+    Column() {
+      Web({
+        src: 'https://www.example.com',
+        controller: this.webController,
+      }).onControllerAttached(() => {
+        // 自定义User-Agent
+        let customUA = 'Mozilla/5.0 (Phone; Android; HarmonyOS 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36';
+        this.webController.setCustomUserAgent(customUA);
+      })
     }
   }
 }
