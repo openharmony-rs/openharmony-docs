@@ -108,6 +108,34 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 <!-- @[monitor_decorator_multi_watch_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchCompV2.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: string = 'Hello World';
+  @Local name: string = 'Tom';
+  @Local age: number = 24;
+
+  @Monitor('message','name')
+  onStrChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Button('change string')
+        .onClick(() => {
+          this.message += '!';
+          this.name = 'Jack';
+        })
+    }
+  }
+}
+```
+
 - \@Monitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰。
 
 <!-- @[monitor_decorator_object_trace_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets) -->
