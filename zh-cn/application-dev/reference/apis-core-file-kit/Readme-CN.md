@@ -24,6 +24,7 @@
   <!--Del-->
   - [@ohos.application.BackupExtensionAbility (备份恢复扩展能力)(系统接口)](js-apis-application-backupExtensionAbility-sys.md)
   - [@ohos.file.backup (备份恢复)(系统接口)](js-apis-file-backup-sys.md)
+  - [@ohos.file.cloudDiskManager (云盘管理)(系统接口)](js-apis-file-clouddiskmanager-sys.md)
   - [@ohos.file.cloudSync (端云同步能力)(系统接口)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (端云同步管理)(系统接口)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (目录环境能力)(系统接口)](js-apis-file-environment-sys.md)
@@ -71,4 +72,7 @@
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
+  <!--Del-->
+  - [云盘管理错误码](errorcode-clouddiskmanager-sys.md)
+  <!--DelEnd-->
   
