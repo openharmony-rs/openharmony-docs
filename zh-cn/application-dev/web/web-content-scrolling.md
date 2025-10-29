@@ -21,7 +21,7 @@
   返回页面顶部。
 
   <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
-
+  
   ``` TypeScript
   this.webController.scrollTo(0, 0);
   ```
