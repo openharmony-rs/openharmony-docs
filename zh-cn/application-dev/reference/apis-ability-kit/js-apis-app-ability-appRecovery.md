@@ -4,9 +4,11 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
->
 > 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
 
 ## 导入模块
 ```ts
@@ -18,6 +20,8 @@ import { appRecovery } from '@kit.AbilityKit';
 应用重启标志，[enableAppRecovery](#apprecoveryenableapprecovery)接口重启选项参数，该类型为枚举。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTs-Dyn起始版本：** 11
 
