@@ -28,6 +28,27 @@
 
 <!-- @[builder_param_init_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethod.ets) -->
 
+``` TypeScript
+@Builder
+function overBuilder() {
+}
+
+@Component
+struct Child {
+  @Builder
+  doNothingBuilder() {
+  }
+
+  // 使用自定义组件的自定义构建函数初始化@BuilderParam装饰的方法
+  @BuilderParam customBuilderParam: () => void = this.doNothingBuilder;
+  // 使用全局自定义构建函数初始化@BuilderParam装饰的方法
+  @BuilderParam customOverBuilderParam: () => void = overBuilder;
+
+  build() {
+  }
+}
+```
+
 - 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
 <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->
