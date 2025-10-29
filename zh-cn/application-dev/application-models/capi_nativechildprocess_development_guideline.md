@@ -193,7 +193,11 @@ libchild_process.so
     ```
 
 ## 创建支持参数传递的Native子进程
+<!-- @[create_native_child_param_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
 
+``` C++
+#include <AbilityKit/native_child_process.h>
+```
 ### 场景介绍
 
 本章节介绍如何创建Native子进程，并传递参数到子进程。
