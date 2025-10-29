@@ -622,6 +622,42 @@ struct Index {
 
 <!-- @[Local_Question_V2_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV2animateTo.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  @Local w: number = 50; // 宽度
+  @Local h: number = 50; // 高度
+  @Local message: string = 'Hello';
+
+  build() {
+    Column() {
+      Button('change size')
+        .margin(20)
+        .onClick(() => {
+          // 在执行动画前，存在额外的修改
+          this.w = 100;
+          this.h = 100;
+          this.message = 'Hello World';
+          this.getUIContext().animateTo({
+            duration: 1000
+          }, () => {
+            this.w = 200;
+            this.h = 200;
+            this.message = 'Hello ArkUI';
+          })
+        })
+      Column() {
+        Text(`${this.message}`)
+      }
+      .backgroundColor('#ff17a98d')
+      .width(this.w)
+      .height(this.h)
+    }
+  }
+}
+```
+
 上述代码中，开发者预期的动画效果是：绿色矩形从长宽100变为200，字符串从`Hello World`变为`Hello ArkUI`。但由于当前animateTo与V2的刷新机制不兼容，执行动画前的额外修改未生效，实际显示的动画效果是：绿色矩形从长宽50变为200，字符串从`Hello`变为`Hello ArkUI`。
 
 ![arkts-new-local-animateTo-1](figures/arkts-new-local-animateTo-1.gif)
