@@ -559,6 +559,59 @@ struct SetSample {
 
 <!-- @[provide_consume_date_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDateSync.ets) -->
 
+``` TypeScript
+@Component
+struct Child {
+  @Consume selectedDate: Date;
+
+  build() {
+    Column() {
+      Button(`child increase the day by 1`)
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('child update the new date')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate = new Date('2023-09-09');
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.selectedDate
+      })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @Provide selectedDate: Date = new Date('2021-08-08')
+
+  build() {
+    Column() {
+      Button('parent increase the day by 1')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('parent update the new date')
+        .margin(10)
+        .onClick(() => {
+          this.selectedDate = new Date('2023-07-07');
+        })
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.selectedDate
+      })
+      Child()
+    }
+  }
+}
+```
+
 ### Provide和Consume支持联合类型实例
 
 @Provide和@Consume支持联合类型和undefined和null。以下示例中，count类型为string | undefined，当点击父组件Parent中的Button改变count的属性或者类型时，Child中也会对应刷新。
