@@ -321,10 +321,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| isProxy | boolean | 否 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
-| waitTime<sup>18+</sup> | number | 否 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| isProxy | boolean | 否 | 是 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
+| waitTime<sup>18+</sup> | number | 否 | 是 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。 |
 
 ## TemplateId<sup>10+</sup>
 
@@ -332,10 +332,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| subscriberId | string | 是 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
-| bundleNameOfOwner | string | 是 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| subscriberId | string | 否 | 否 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
+| bundleNameOfOwner | string | 否 | 否 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
 
 ## PublishedItem<sup>10+</sup>
 
@@ -343,11 +343,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| key | string | 是 | 指定发布数据的键。 |
-| data | string \| ArrayBuffer | 是 | 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。 |
-| subscriberId | string | 是 | 指定订阅者id。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| key | string | 否 | 否 | 指定发布数据的键。 |
+| data | string \| ArrayBuffer | 否 | 否 | 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。 |
+| subscriberId | string | 否 | 否 | 指定订阅者id。 |
 
 ## RdbDataChangeNode<sup>10+</sup>
 
@@ -355,11 +355,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uri | string | 是 | 指定回调的uri。 |
-| templateId | [TemplateId](#templateid10) | 是 | 处理回调的templateId。 |
-| data | Array&lt;string&gt; | 是 | 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| uri | string | 否 | 否 | 指定回调的uri。 |
+| templateId | [TemplateId](#templateid10) | 否 | 否 | 处理回调的templateId。 |
+| data | Array&lt;string&gt; | 否 | 否 | 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。 |
 
 ## PublishedDataChangeNode<sup>10+</sup>
 
@@ -367,10 +367,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 指定回调的bundleName。 |
-| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | 是 | 指定回调的数据。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| bundleName | string | 否 | 否 | 指定回调的bundleName。 |
+| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | 否 | 否 | 指定回调的数据。 |
 
 ## Template<sup>10+</sup>
 
@@ -378,11 +378,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| predicates | Record<string, string> | 是 | 指定模板的谓词。当调用[on](#onrdbdatachange10)的回调时，谓词用于生成数据。仅适用于rdb存储数据。 |
-| scheduler | string | 是 | 指定模板的调度程序sql。其中嵌入自定义函数处理，目前预置自定义函数remindTimer处理。remindTimer在指定场景触发一次订阅刷新。<br/>触发场景：<br/>1. 修改数据时且有订阅的情况下触发对应的调度程序sql语句。<br/>2. 添加对应库第一个订阅的情况下触发对应的调度程序sql语句。 |
-| update<sup>18+<sup> | string | 否 | 指定模板的update sql语句，未定义时默认值为空字符串。当调用[on](#onrdbdatachange10)的回调时，update参数用于更新数据。仅适用于rdb存储数据。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| predicates | Record<string, string> | 否 | 否 | 指定模板的谓词。当调用[on](#onrdbdatachange10)的回调时，谓词用于生成数据。仅适用于rdb存储数据。 |
+| scheduler | string | 否 | 否 | 指定模板的调度程序sql。其中嵌入自定义函数处理，目前预置自定义函数remindTimer处理。remindTimer在指定场景触发一次订阅刷新。<br/>触发场景：<br/>1. 修改数据时且有订阅的情况下触发对应的调度程序sql语句。<br/>2. 添加对应库第一个订阅的情况下触发对应的调度程序sql语句。 |
+| update<sup>18+<sup> | string | 否 | 是 | 指定模板的update sql语句，未定义时默认值为空字符串。当调用[on](#onrdbdatachange10)的回调时，update参数用于更新数据。仅适用于rdb存储数据。 |
 
 ## OperationResult<sup>10+</sup>
 
@@ -390,20 +390,20 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | ----- | -------- |
-| key | string | 是 | 指定运算结果的键。 |
-| result | number | 是 | 指定运算结果。正常情况下返回0，异常情况下返回错误码。  |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ----- | ----- | -------- |
+| key | string | 否 | 否 | 指定运算结果的键。 |
+| result | number | 否 | 否 | 指定运算结果。正常情况下返回0，异常情况下返回错误码。  |
 ## UpdateOperation<sup>12+</sup>
 
 批量更新操作的参数结构。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称       | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。 |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。     |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明           |
+| ---------- | ------------------------------------------------------------ | ---- |  ---- | -------------- |
+| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 否   | 否   | 要更新的数据。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 筛选条件。     |
 
 ## SubscriptionType<sup>12+</sup>
 
@@ -421,11 +421,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称       | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | 是   | 通知变更的类型。 |
-| uri        | string                                                       | 是   | 指定uri。      |
-| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| 是   | 更新的数据。   |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明           |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------- |
+| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | 否 | 否   | 通知变更的类型。 |
+| uri        | string                                                       | 否 | 否   | 指定uri。      |
+| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| 否 | 否   | 更新的数据。   |
 
 ## DataShareHelper
 
