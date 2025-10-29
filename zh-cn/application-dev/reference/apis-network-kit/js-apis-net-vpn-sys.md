@@ -515,8 +515,8 @@ VPN 配置参数。
 | searchDomains       | Array\<string\>                                                | 否   | 是|DNS 的搜索域列表。                  |
 | mtu                 | number                                                         | 否   |是 |最大传输单元 MTU 值(单位:字节)。     |
 | isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持 IPV4, 默认值为 true。      |
-| isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持 IPV6, 默认值为 flase。     |
-| isLegacy            | boolean                                                        | 否   |是 |是否支持内置 VPN, 默认值为 flase。   |
-| isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式, 默认值为 flase。       |
+| isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持 IPV6, 默认值为 false。     |
+| isLegacy            | boolean                                                        | 否   |是 |是否支持内置 VPN, 默认值为 false。   |
+| isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式, 默认值为 false。       |
 | trustedApplications | Array\<string\>                                                | 否   |是 |白名单信息, string 类型表示的包名。  |
 | blockedApplications | Array\<string\>                                                | 否   |是 |黑名单信息, string 类型表示的包名。  |
