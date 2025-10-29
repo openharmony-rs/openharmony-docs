@@ -635,6 +635,27 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
 
   <!-- @[FlexShrink_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexShrink.ets) -->
+  
+  ``` TypeScript
+  Flex({ direction: FlexDirection.Row }) {
+    Text('flexShrink(3)')
+      .flexShrink(3)
+      .width(200)
+      .height(100)
+      .backgroundColor('#F5DEB3')
+  
+    Text('no flexShrink')
+      .width(200)
+      .height(100)
+      .backgroundColor('#D2B48C')
+  
+    Text('flexShrink(2)')
+      .flexShrink(2)
+      .width(200)
+      .height(100)
+      .backgroundColor('#F5DEB3')
+  }.width(400).height(120).padding(10).backgroundColor('#AFEEEE')
+  ```
 
   ![zh-cn_image_0000001562820813](figures/zh-cn_image_0000001562820813.png)
 
