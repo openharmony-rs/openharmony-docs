@@ -141,6 +141,45 @@ Stack({ alignContent: Alignment.BottomStart }) {
 
 <!-- @[StackLayoutSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutSceneExample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct StackSample3 {
+  private arr: string[] = ['APP1', 'APP2', 'APP3', 'APP4', 'APP5', 'APP6', 'APP7', 'APP8'];
+
+  build() {
+    Stack({ alignContent: Alignment.Bottom }) {
+      Flex({ wrap: FlexWrap.Wrap }) {
+        ForEach(this.arr, (item:string) => {
+          Text(item)
+            .width(100)
+            .height(100)
+            .fontSize(16)
+            .margin(10)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+        }, (item:string):string => item)
+      }.width('100%').height('100%')
+
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        //$r('app.string.contacts')需要替换为开发者所需的资源文件
+        Text($r('app.string.contacts')).fontSize(16)
+        //$r('app.string.setting')需要替换为开发者所需的资源文件
+        Text($r('app.string.setting')).fontSize(16)
+        //$r('app.string.text_message')需要替换为开发者所需的资源文件
+        Text($r('app.string.text_message')).fontSize(16)
+      }
+      .width('50%')
+      .height(50)
+      .backgroundColor('#16302e2e')
+      .margin({ bottom: 15 })
+      .borderRadius(15)
+    }.width('100%').height('100%').backgroundColor('#CFD0CF')
+  }
+}
+```
+
 
 ![zh-cn_image_0000001511421368](figures/zh-cn_image_0000001511421368.png)
 <!--RP1--><!--RP1End-->
