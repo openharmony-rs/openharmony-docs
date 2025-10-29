@@ -63,6 +63,21 @@ Stack组件通过[alignContent参数](../reference/apis-arkui/arkui-ts/ts-contai
 
 <!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
 
+``` TypeScript
+// xxx.ets
+@Entry
+@Component
+struct StackExample2 {
+  build() {
+    Stack({ alignContent: Alignment.TopStart }) {
+      Text('Stack').width('90%').height('100%').backgroundColor('#e1dede').align(Alignment.BottomEnd)
+      Text('Item 1').width('70%').height('80%').backgroundColor(0xd2cab3).align(Alignment.BottomEnd)
+      Text('Item 2').width('50%').height('60%').backgroundColor(0xc1cbac).align(Alignment.BottomEnd)
+    }.width('100%').height(150).margin({ top: 5 })
+  }
+}
+```
+
 ## Z序控制
 
 Stack容器中兄弟组件显示层级关系可以通过[Z序控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)的zIndex属性改变。zIndex值越大，显示层级越高，即zIndex值大的组件会覆盖在zIndex值小的组件上方。
