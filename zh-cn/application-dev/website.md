@@ -397,8 +397,12 @@
             - [自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [自定义组件的自定义布局](ui/state-management/arkts-page-custom-components-layout.md)
             - [自定义组件成员属性访问限定符使用限制](ui/state-management/arkts-custom-components-access-restrictions.md)
-            - [自定义组件复用](ui/state-management/arkts-component-reusable.md)   
+            - [自定义组件复用](ui/state-management/arkts-component-reusable.md)
+              - [自定义组件复用（V1）](ui/state-management/arkts-reusable.md)   
+              - [自定义组件复用（V2）](ui/state-management/arkts-component-reusableV2.md) 
             - [自定义组件冻结](ui/state-management/arkts-component-freeze-inactive.md)
+              - [自定义组件冻结（V1）](ui/state-management/arkts-custom-components-freeze.md)
+              - [自定义组件冻结（V2）](ui/state-management/arkts-custom-components-freezeV2.md)
           - UI装饰器<!--arkts-ui-decorator-->
             - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
           - 组件扩展<!--arkts-extend-components-->
@@ -437,6 +441,7 @@
               - [PersistentStorage：持久化存储UI状态](ui/state-management/arkts-persiststorage.md)
               - [Environment：设备环境查询](ui/state-management/arkts-environment.md)
           - 状态管理（V2）<!--arkts-state-management-v2-->
+            - [\@ComponentV2装饰器：自定义组件](ui/state-management/arkts-new-componentV2.md)
             - 管理组件拥有的状态<!--arkts-v2-manage-component-state-->
               - [\@Local装饰器：组件内部状态](ui/state-management/arkts-new-local.md)
               - [\@Param装饰器：组件外部输入](ui/state-management/arkts-new-param.md)
