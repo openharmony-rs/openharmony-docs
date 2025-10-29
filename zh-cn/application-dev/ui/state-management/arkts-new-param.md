@@ -174,6 +174,69 @@ struct Child {
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。
 
  <!-- @[Param_Observe_Change_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets) -->
+ 
+ ``` TypeScript
+ class RawObject {
+   public name: string;
+ 
+   constructor(name: string) {
+     this.name = name;
+   }
+ }
+ 
+ @ObservedV2
+ class ObservedObject {
+   @Trace public name: string;
+ 
+   constructor(name: string) {
+     this.name = name;
+   }
+ }
+ 
+ @Entry
+ @ComponentV2
+ struct Index {
+   @Local rawObject: RawObject = new RawObject('rawObject');
+   @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+ 
+   build() {
+     Column() {
+       Text(`${this.rawObject.name}`)
+       Text(`${this.observedObject.name}`)
+       Button('change object')
+         .onClick(() => {
+           // 对类对象整体的修改均能观察到
+           this.rawObject = new RawObject('new rawObject');
+           this.observedObject = new ObservedObject('new observedObject');
+         })
+       Button('change name')
+         .onClick(() => {
+           // @Local与@Param均不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
+           this.rawObject.name = 'new rawObject name';
+           // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
+           this.observedObject.name = 'new observedObject name';
+         })
+       Child({
+         rawObject: this.rawObject,
+         observedObject: this.observedObject
+       })
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct Child {
+   @Require @Param rawObject: RawObject;
+   @Require @Param observedObject: ObservedObject;
+ 
+   build() {
+     Column() {
+       Text(`${this.rawObject.name}`)
+       Text(`${this.observedObject.name}`)
+     }
+   }
+ }
+ ```
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
 
