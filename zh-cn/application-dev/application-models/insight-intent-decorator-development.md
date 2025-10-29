@@ -185,6 +185,43 @@
     开发者将歌手信息（包括名称、国家、城市）定义为类，并使用@InsightIntentEntity装饰器将该类定义为意图实体。装饰器的parameters属性列出了类的数据成员、数据格式及每个成员的必选性。
 
     <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistInformationImpl.ets) -->
+    
+    ``` TypeScript
+    import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
+    
+    @InsightIntentEntity({
+      entityCategory: 'artist entity category',
+      parameters: {
+        '$id': '/schemas/ArtistClassDef',
+        'type': 'object',
+        'description': 'Information about the artist',
+        'properties': {
+          'country': {
+            'type': 'string',
+            'description': 'The artist\'s country of origin',
+            'default': 'zh'
+          },
+          'city': {
+            'type': 'string',
+            'description': 'The artist\'s city of origin'
+          },
+          'name': {
+            'type': 'string',
+            'description': 'The name of the artist',
+            'minLength': 1
+          }
+        },
+        // name为必选参数
+        'required': ['name']
+      }
+    })
+    export class ArtistClassDef implements insightIntent.IntentEntity {
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
+    }
+    ```
 
 2. 使用意图实体。添加[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌手信息（ArtistClassDef意图实体）作为播放音乐的入参。
 
