@@ -112,6 +112,25 @@ Stack({ alignContent: Alignment.BottomStart }) {
 
 <!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
 
+``` TypeScript
+Stack({ alignContent: Alignment.BottomStart }) {
+  Column() {
+    //$r('app.string.stack_num1')需要替换为开发者所需的资源文件
+    Text($r('app.string.stack_num1')).fontSize(20)
+  }.width(100).height(100).backgroundColor(0xffd306).zIndex(2)
+
+  Column() {
+    //$r('app.string.stack_num2')需要替换为开发者所需的资源文件
+    Text($r('app.string.stack_num2')).fontSize(20)
+  }.width(150).height(150).backgroundColor(Color.Pink).zIndex(1)
+
+  Column() {
+    //$r('app.string.stack_num3')需要替换为开发者所需的资源文件
+    Text($r('app.string.stack_num3')).fontSize(20)
+  }.width(200).height(200).backgroundColor(Color.Grey)
+}.width(350).height(350).backgroundColor(0xe0e0e0)
+```
+
 ![zh-cn_image_0000001563060797](figures/zh-cn_image_0000001563060797.png)
 
 
