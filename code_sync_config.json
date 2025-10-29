@@ -3762,5 +3762,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/data-sync-of-distributed-data-object.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets",
+				"functions":[
+					{
+						"end_line":141,
+						"name":"data_sync_on_distributed_data_object_cross_device_collaboration",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets",
+				"functions":[
+					{
+						"end_line":181,
+						"name":"data_sync_on_distributed_data_object_cross_device_migration",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
