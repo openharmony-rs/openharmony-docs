@@ -2582,7 +2582,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
 
 **参数：**
 
-  | **参数名** | **类型** | **必填** | **说明** |
+  | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | callback | ArkTS-Dyn: Callback&lt;number&gt;<br>ArkTS-Sta: Callback&lt;int&gt; | 是 | 状态改变回调函数。 |
 
@@ -2590,7 +2590,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
-| **错误码ID** | **错误信息** |
+| 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2598,12 +2598,12 @@ on(type: 'wifiStateChange', callback: Callback&lt;int&gt;): void
 
 **状态改变事件的枚举：**
 
-| **枚举值** | **说明** |
+| 枚举值 | 说明 |
 | -------- | -------- |
 | 0 | 未激活。 |
 | 1 | 已激活。 |
 | 2 | 激活中。 |
-| 3 | 去激活中。 |//////////////////////////////////////////////////////////////
+| 3 | 去激活中。 |
 
 ## wifiManager.off('wifiStateChange')<sup>9+</sup>
 
