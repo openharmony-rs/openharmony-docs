@@ -254,6 +254,39 @@ struct Index {
 
 <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Inner {
+  @Trace public num: number = 0;
+}
+
+@ObservedV2
+class Outer {
+  public inner: Inner = new Inner();
+
+  @Monitor('inner.num')
+  onChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s',
+      `inner.num change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  outer: Outer = new Outer();
+
+  build() {
+    Column() {
+      Button('change num')
+        .onClick(() => {
+          this.outer.inner.num = 100; // 能够触发onChange方法
+        })
+    }
+  }
+}
+```
+
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听。
 
 <!-- @[monitor_decorator_inheritance_support_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorInheritanceSupportObservedV2.ets) -->
