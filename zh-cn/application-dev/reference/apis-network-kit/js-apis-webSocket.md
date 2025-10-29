@@ -23,7 +23,7 @@
 import { webSocket } from '@kit.NetworkKit';
 ```
 
-## webSocket.createWebSocket<sup>6+</sup>
+## webSocket.createWebSocket
 
 createWebSocket(): WebSocket
 
@@ -45,11 +45,11 @@ createWebSocket(): WebSocket
 let ws: webSocket.WebSocket = webSocket.createWebSocket();
 ```
 
-## WebSocket<sup>6+</sup>
+## WebSocket
 
 在调用WebSocket的方法前，需要先通过[webSocket.createWebSocket](#websocketcreatewebsocket6)创建一个WebSocket。
 
-### connect<sup>6+</sup>
+### connect
 
 connect(url: string, callback: AsyncCallback\<boolean\>): void
 
@@ -108,7 +108,7 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 });
 ```
 
-### connect<sup>6+</sup>
+### connect
 
 connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<boolean\>): void
 
@@ -176,7 +176,7 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
 });
 ```
 
-### connect<sup>6+</sup>
+### connect
 
 connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
@@ -238,7 +238,7 @@ promise.then((value: boolean) => {
 });
 ```
 
-### send<sup>6+</sup>
+### send
 
 send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
@@ -301,7 +301,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 >
 > send接口必须在监听到open事件后才可以调用。
 
-### send<sup>6+</sup>
+### send
 
 send(data: string | ArrayBuffer): Promise\<boolean\>
 
@@ -369,7 +369,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 >
 > send接口必须在监听到open事件后才可以调用。
 
-### close<sup>6+</sup>
+### close
 
 close(callback: AsyncCallback\<boolean\>): void
 
@@ -412,7 +412,7 @@ ws.close((err: BusinessError) => {
 });
 ```
 
-### close<sup>6+</sup>
+### close
 
 close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
@@ -462,7 +462,7 @@ ws.close(options, (err: BusinessError) => {
 });
 ```
 
-### close<sup>6+</sup>
+### close
 
 close(options?: WebSocketCloseOptions): Promise\<boolean\>
 
@@ -514,7 +514,7 @@ promise.then((value: boolean) => {
 });
 ```
 
-### on('open')<sup>6+</sup>
+### on('open')
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
@@ -547,7 +547,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
-### off('open')<sup>6+</sup>
+### off('open')
 
 off(type: 'open', callback?: AsyncCallback\<Object\>): void
 
@@ -587,7 +587,7 @@ ws.on('open', callback1);
 ws.off('open', callback1);
 ```
 
-### on('message')<sup>6+</sup>
+### on('message')
 
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 
@@ -620,7 +620,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 });
 ```
 
-### off('message')<sup>6+</sup>
+### off('message')
 
 off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
@@ -651,7 +651,7 @@ let ws = webSocket.createWebSocket();
 ws.off('message');
 ```
 
-### on('close')<sup>6+</sup>
+### on('close')
 
 on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
@@ -680,7 +680,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 });
 ```
 
-### off('close')<sup>6+</sup>
+### off('close')
 
 off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 
@@ -710,7 +710,7 @@ let ws = webSocket.createWebSocket();
 ws.off('close');
 ```
 
-### on('error')<sup>6+</sup>
+### on('error')
 
 on(type: 'error', callback: ErrorCallback): void
 
@@ -739,7 +739,7 @@ ws.on('error', (err: BusinessError) => {
 });
 ```
 
-### off('error')<sup>6+</sup>
+### off('error')
 
 off(type: 'error', callback?: ErrorCallback): void
 
