@@ -218,6 +218,17 @@
 
 
   <!-- @[FlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignEnd.ets) -->
+  
+  ``` TypeScript
+  Flex({ justifyContent: FlexAlign.End }) {
+    Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
+    Text('2').width('20%').height(50).backgroundColor('#D2B48C')
+    Text('3').width('20%').height(50).backgroundColor('#F5DEB3')
+  }
+  .width('90%')
+  .padding({ top: 10, bottom: 10 })
+  .backgroundColor('#AFEEEE')
+  ```
 
   ![zh-cn_image_0000001562820809](figures/zh-cn_image_0000001562820809.png)
 
