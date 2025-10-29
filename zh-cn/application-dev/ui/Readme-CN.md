@@ -364,5 +364,5 @@
   - [UI高性能开发](ui-performance-overview.md)
   - UI开发常见问题<!--ui-development-faq-->
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
-- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-api-->
-- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-api-->
+- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
+- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
