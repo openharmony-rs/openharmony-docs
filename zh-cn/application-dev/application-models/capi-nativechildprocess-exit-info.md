@@ -39,42 +39,42 @@ libchild_process.so
     调用[OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback)注册Native子进程，如果返回值为NCP_NO_ERROR表示注册成功。
     调用[OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_unregisternativechildprocessexitcallback)解注册Native子进程，如果返回值为NCP_NO_ERROR表示解注册成功。
 
-<!-- @[register_native_child_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
+    <!-- @[register_native_child_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
 
-``` C++
-// [Start native_child_process_header]
-#include <AbilityKit/native_child_process.h>
-// [End native_child_process_header]
-#include <hilog/log.h>
+    ``` C++
+    // [Start native_child_process_header]
+    #include <AbilityKit/native_child_process.h>
+    // [End native_child_process_header]
+    #include <hilog/log.h>
 
-// ···
-
-void OnNativeChildProcessExit(int32_t pid, int32_t signal)
-{
-    OH_LOG_INFO(LOG_APP, "pid: %{public}d, signal: %{public}d", pid, signal);
-}
-
-void RegisterNativeChildProcessExitCallback()
-{
-    Ability_NativeChildProcess_ErrCode ret =
-        OH_Ability_RegisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
-    if (ret != NCP_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "register failed.");
-    }
     // ···
-}
 
-void UnregisterNativeChildProcessExitCallback()
-{
-    Ability_NativeChildProcess_ErrCode ret =
-        OH_Ability_UnregisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
-    if (ret != NCP_NO_ERROR) {
-        OH_LOG_ERROR(LOG_APP, "unregister failed.");
+    void OnNativeChildProcessExit(int32_t pid, int32_t signal)
+    {
+        OH_LOG_INFO(LOG_APP, "pid: %{public}d, signal: %{public}d", pid, signal);
     }
-    // ···
-}
 
-```
+    void RegisterNativeChildProcessExitCallback()
+    {
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_RegisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
+        if (ret != NCP_NO_ERROR) {
+            OH_LOG_ERROR(LOG_APP, "register failed.");
+        }
+        // ···
+    }
+
+    void UnregisterNativeChildProcessExitCallback()
+    {
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_UnregisterNativeChildProcessExitCallback(OnNativeChildProcessExit);
+        if (ret != NCP_NO_ERROR) {
+            OH_LOG_ERROR(LOG_APP, "unregister failed.");
+        }
+        // ···
+    }
+
+    ```
 
 2. 主进程-添加编译依赖项。
 
