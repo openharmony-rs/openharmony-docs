@@ -367,6 +367,24 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+try {
+  const STORE_CONFIG: relationalStore.StoreConfig = {
+    name: 'RdbTest.db',
+    securityLevel: relationalStore.SecurityLevel.S3,
+    allowRebuild: true
+  };
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.info(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
+
 
 ## 关系型数据库数据恢复
 
