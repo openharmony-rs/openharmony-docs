@@ -175,6 +175,20 @@ generateDlpFiles() {
 
 <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+isInSandbox() {
+  dlpPermission.isInSandbox().then((data) => {
+    this.result = 'isInSandbox result: ' + JSON.stringify(data);
+    console.log('isInSandbox result: ' + JSON.stringify(data));
+    hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
+  }).catch((err:BusinessError) => {
+    this.result = 'isInSandbox error: ' + JSON.stringify(err);
+    console.error('isInSandbox error: ' + JSON.stringify(err));
+    hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox error: ' + JSON.stringify(err));
+  });
+}
+```
+
 
 5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。 <br>
 使用该接口的前置条件：由demo应用打开DLP文件。
