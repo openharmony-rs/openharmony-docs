@@ -21,7 +21,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 * 确保应用已添加网络权限：ohos.permission.INTERNET（在线页面必需）。
 
     <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     "requestPermissions":[
       {
@@ -40,7 +40,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
 
     <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -66,7 +66,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 * 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
 
     <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
