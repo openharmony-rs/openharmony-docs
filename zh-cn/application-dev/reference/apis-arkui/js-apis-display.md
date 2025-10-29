@@ -846,7 +846,7 @@ display.off('foldAngleChange', callback);
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
-开启当前设备的屏幕显示信息是否存在被获取的监听。
+开启当前设备的屏幕显示信息是否被获取的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -883,7 +883,7 @@ display.on('captureStatusChange', callback);
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭当前设备的屏幕显示信息是否存在被获取的监听。
+关闭当前设备的屏幕显示信息是否被获取的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -922,7 +922,7 @@ display.off('captureStatusChange', callback);
 ## display.isCaptured<sup>12+</sup>
 isCaptured(): boolean
 
-检查当前设备的屏幕显示信息是否存在被获取的情况。
+检查当前设备的屏幕显示信息是否被获取。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -932,7 +932,7 @@ isCaptured(): boolean
 
 | 类型 | 说明 |
 | ----------------------------------------------- | ------------------------------------------------------- |
-| boolean | boolean值，返回当前设备的屏幕显示信息是否存在被获取的情况。返回true表示存在，包括设备正处于截屏、投屏、录屏状态，或已经创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)；返回false则表示不存在。|
+| boolean | boolean值，返回当前设备的屏幕显示信息是否存在被获取的情况。返回true表示存在以下情况：设备正处于截屏、投屏、录屏状态，或已创建虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)；返回false则表示不存在。|
 
 **错误码：**
 
