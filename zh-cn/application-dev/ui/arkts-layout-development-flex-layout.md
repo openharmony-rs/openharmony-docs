@@ -605,6 +605,26 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
   <!-- @[FlexGrow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexGrow.ets) -->
   
+  ``` TypeScript
+  Flex() {
+    Text('flexGrow(2)')
+      .flexGrow(2)
+      .width(100)
+      .height(100)
+      .backgroundColor('#F5DEB3')
+    Text('flexGrow(3)')
+      .flexGrow(3)
+      .width(100)
+      .height(100)
+      .backgroundColor('#D2B48C')
+  
+    Text('no flexGrow')
+      .width(100)
+      .height(100)
+      .backgroundColor('#F5DEB3')
+  }.width(420).height(120).padding(10).backgroundColor('#AFEEEE')
+  ```
+  
   ![zh-cn_image_0000001562700449](figures/zh-cn_image_0000001562700449.png)
   
   父容器宽度420vp，三个子元素原始宽度为100vp，左右padding为20vp，总和320vp，剩余空间100vp根据flexGrow值的占比分配给子元素，未设置flexGrow的子元素不参与“瓜分”。
