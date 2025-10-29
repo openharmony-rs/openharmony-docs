@@ -115,7 +115,7 @@ struct Faq10_1 {
 
 **Symptom**
 
-How do I ensure that an event is subscribed to and triggered only in one UIAbility instance?
+Events need to be subscribed to and triggered only in one UIAbility instance.
 
 **Solution**
 
