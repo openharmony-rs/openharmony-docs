@@ -1,5 +1,12 @@
 # HiCollie错误码
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -38,7 +45,7 @@ Remote call failed.
 
 **处理步骤**
 
-可以尝试重试。
+建议重试。
 
 ## 29800003 无效的timer名称
 
@@ -50,13 +57,13 @@ Invalid timer name.
 
 timer name是无效的。
 
-**处理步骤**
-
-传入的timer name需为非空字符数指针，且指向非空字符串。
-
 **可能原因**
 
-传入的timer name为nullptr或者为空字符。
+传入的字符指针name为nullptr或name指向空字符串。
+
+**处理步骤**
+
+检查传入的name参数，确保其为非空字符指针，且指向非空字符串。
 
 ## 29800004 无效的timeout值
 
@@ -68,13 +75,13 @@ Invalid timeout value.
 
 timeout值是无效的。
 
-**处理步骤**
-
-传入的timeout需大于0。
-
 **可能原因**
 
 传入的timeout的值为0。
+
+**处理步骤**
+
+检查传入的timeout，确保其大于0。
 
 ## 29800005 错误的进程上下文
 
@@ -92,7 +99,7 @@ Wrong process context.
 
 **处理步骤**
 
-不要在appspawn和nativespawn进程中接入hicollie检测。
+请勿在appspawn和nativespawn进程中接入hicollie检测。
 
 ## 29800006 错误的timer id参数
 
@@ -106,10 +113,10 @@ Wrong timer id output param.
 
 **可能原因**
 
-- 传入的timer id指针为空；
+- 传入的整型指针id为nullptr；
 - 接入函数执行时长检测机制的进程中hicollie插件同时存在任务数达到最大值128。
 
 **处理步骤**
 
-- 传入的timer id指针不能为空；
-- 可以重试，或减少该进程中hicollie检测机制的在其他地方的调用。
+- 检查传入的id参数，确保其为非空整型指针；
+- 重试或减少该进程中hicollie检测机制的在其他地方的调用。
