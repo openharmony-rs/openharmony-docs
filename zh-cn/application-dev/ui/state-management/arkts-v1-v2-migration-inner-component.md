@@ -135,6 +135,28 @@ V1实现：
 
 <!-- @[Parent5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child5 {
+  @State value: number = 0;
+
+  build() {
+    Text(this.value.toString())
+  }
+}
+
+@Entry
+@Component
+struct Parent5 {
+  build() {
+    Column() {
+      // @State可以从外部初始化
+      Child5({ value: 30 })
+    }
+  }
+}
+```
+
 V2迁移策略：使用\@Param和\@Once。
 
 <!-- @[Parent6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets) -->
