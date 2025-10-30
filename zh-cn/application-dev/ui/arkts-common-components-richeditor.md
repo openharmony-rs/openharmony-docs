@@ -73,6 +73,41 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 <!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct CreateRichEditor {
+  controllerNoStyledString: RichEditorController = new RichEditorController();
+  optionsNoStyledString: RichEditorOptions = { controller: this.controllerNoStyledString };
+// ···
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        // ···
+          RichEditor(this.optionsNoStyledString)
+            .onReady(() => {
+              this.controllerNoStyledString.addTextSpan(
+                // $r('app.string.CreateRichEditor_Text_2')需要替换为开发者所需的资源文件
+                resource.resourceToString($r('app.string.CreateRichEditor_Text_2')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+            })
+        // ···
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.Create_RichEditor_Component_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
+```
+
 ![alt text](figures/richeditor_image_options.gif)
 
 ## 添加内容
