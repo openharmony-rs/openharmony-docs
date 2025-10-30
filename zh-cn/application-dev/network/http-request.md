@@ -59,7 +59,7 @@
 
 <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
+``` typeScript
 import { http } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -185,19 +185,21 @@ import { common } from '@kit.AbilityKit';
 5. 取消订阅HTTP响应头事件
 
     调用该对象的off()方法，取消订阅HTTP响应头事件。
-
-    ```ts
-    // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
-    httpRequest.off('headersReceive');
-    ```
+    
+```ts
+  // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
+  httpRequest.off('headersReceive');  
+ ```
+   
 6. 调用destroy()方法销毁
 
     当该请求使用完毕时，调用destroy()方法销毁。
 
-    ```ts
-    // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
-    httpRequest.destroy();
-    ```
+```ts
+  // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
+  httpRequest.destroy(); 
+```
+
 ## 发起HTTP流式传输请求
 
 HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容的一小部分，而不是一次性将整个响应加载到内存，这对于处理大文件、实时数据流等场景非常有用。
@@ -446,11 +448,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
         ],
         "cleartextTrafficPermitted": false
       }
-    ]
-  }
-  "component-config": {
-    "Network Kit": true,
-    "ArkWeb": true
+    ],
+    "component-config": {
+    	"Network Kit": true,
+    	"ArkWeb": true
+    }
   }
 }
 ```
@@ -516,7 +518,152 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
   "trust-current-user-ca" : false // 配置是否信任当前用户安装的CA证书，默认为true
 }
 ```
+### HTTP拦截器
 
+HTTP拦截器模块提供了一种强大的、可定制的机制，允许开发者在 HTTP 请求-响应的生命周期中的**关键节点**插入自定义逻辑。通过拦截器，开发者可以无需修改核心网络代码即可实现诸如修改请求头/体、缓存策略、重定向处理、网络监控、响应预处理等全局功能。以下是5个关键拦截点的流程关键点说明：
+
+1. 拦截初始请求（INITIAL_REQUEST）
+
+2. 网络连接拦截点（CONNECT_NETWORK）
+
+3. 缓存拦截点（CACHE_CHECKED）
+
+4. 重定向拦截点（REDIRECTION）
+
+5. 拦截最终响应（FINAL_RESPONSE）
+
+#### 流程关键点说明：
+
+**顺序执行**：拦截器严格按照 **INITIAL_REQUEST** -> **CACHE_CHECKED** -> **NETWORK_CONNECT** -> **(REDIRECTION)** -> **FINAL_RESPONSE** 的顺序被触发调用。
+
+**重定向循环**：这是流程中最关键的一个循环。当 **REDIRECTION** 拦截器被触发后，流程会跳回到**NETWORK_CONNECT**阶段，重新开始一个新的“请求周期”，直到不再发生重定向为止。这确保了重定向后的新请求也能被所有必要的拦截器（如认证头添加、日志记录等）正确处理。
+
+**缓存拦截**：**CACHE_CHECKED** 是一个决策点。如果缓存存在且有效，请求会在此处经过**CACHE_CHECKED**处理后，直接跳转到 **FINAL_RESPONSE** 阶段返回缓存数据，从而避免不必要的网络操作。
+
+1.  导入HTTP请求拦截器所需模块
+
+<!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
+
+```typescript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+2.  创建HttpRequest对象
+
+    调用createHttp()方法，创建HttpRequest对象。
+
+ <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建http请求
+let httpRequest: http.HttpRequest = http.createHttp();
+```
+
+3.  创建拦截器链对象
+
+    调用HttpInterceptorChain()方法，创建拦截器链对象。
+
+<!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建拦截器链
+let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
+```
+
+4.  创建拦截器类实现http.HttpInterceptor接口
+
+<!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+enum InterceptorType {
+  INITIAL_REQUEST = 'INITIAL_REQUEST',
+  REDIRECTION = 'REDIRECTION',
+  CACHE_CHECKED = 'READ_CACHE',
+  NETWORK_CONNECT = 'CONNECT_NETWORK',
+  FINAL_RESPONSE = 'FINAL_RESPONSE'
+}
+
+class TestHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+
+  constructor(interceptorType: InterceptorType) {
+    this.interceptorType = interceptorType;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 命中拦截器后对请求报文与请求响应操作
+    return Promise.resolve(true);
+  }
+}
+```
+
+5.  将需要的拦截器实例加入到拦截器链中
+
+    调用addChain()方法，将拦截器加入到拦截器链中。
+
+<!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
+chain.addChain([
+  new TestHttpInterceptor(InterceptorType.INITIAL_REQUEST),
+  new TestHttpInterceptor(InterceptorType.NETWORK_CONNECT),
+  new TestHttpInterceptor(InterceptorType.FINAL_RESPONSE)
+]);
+```
+
+6.  将请求应用到拦截器链
+
+    调用apply()方法，将拦截器加入到拦截器链中。
+
+<!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 将请求应用到拦截器链中
+chain.apply(httpRequest);
+```
+
+7.  创建请求可选项
+
+<!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 创建请求可选项
+let options: http.HttpRequestOptions = {
+  method: http.RequestMethod.POST,
+  header: { "content-type": "text/html" } as Record<string, string>,
+  extraData: { "context": "BODY_NO_CHANGE" } as Record<string, string>,
+};
+```
+
+8.  发起HTTP请求，解析服务器响应事件
+
+    调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
+
+<!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 发起请求
+httpRequest.request("https://www.baidu.com/", options, (err: BusinessError, res: http.HttpResponse) => {
+  if (err) {
+    console.log(`request fail, error code: ${err.code}, msg: ${err.message}`);
+  } else {
+    console.log(`res:${JSON.stringify(res)}`);
+  }
+});
+```
+
+9.  调用destroy()方法销毁
+
+<!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// 销毁请求
+httpRequest.destroy();
+```
+
+## 
 ## 相关实例
 
 针对HTTP数据请求，有以下相关实例可供参考：
@@ -526,3 +673,5 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 * [Http（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
 
 * [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
+
+* [HTTP_interceptor_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case)
