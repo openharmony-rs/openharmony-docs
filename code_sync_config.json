@@ -4587,5 +4587,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/uniform-data-structure-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":26,
+						"name":"import_module",
+						"start_line":18
+					},
+					{
+						"end_line":50,
+						"name":"use_plaintext_datastructure",
+						"start_line":30
+					},
+					{
+						"end_line":77,
+						"name":"use_fileUri_datastructure",
+						"start_line":58
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/uniform-data-type-descriptors-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":28,
+						"name":"import_module",
+						"start_line":16
+					},
+					{
+						"end_line":77,
+						"name":"uniform_data_type_descriptors_c",
+						"start_line":32
+					}
+				]
+			}
+		]
 	}
 ]
