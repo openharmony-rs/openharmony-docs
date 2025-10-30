@@ -11,6 +11,8 @@
 
 A fiber is a lightweight user mode thread that enables efficient task scheduling and context switching within the user space. The **fiber.h** file declares the related APIs in C.
 
+**File to include**: <ffrt/fiber.h>
+
 **Library**: libffrt.z.so
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core

@@ -48,3 +48,24 @@ The task graph is often used for:
 ![image](figures/ffrt_figure6.png)
 
 For details about the development sample, see [Task Graph (C)](ffrt-concurrency-graph-c.md) or [Task Graph (C++)](ffrt-concurrency-graph-cpp.md).
+
+## Job Partner
+
+Since API version 20, FFRT supports the Job_Partner feature. The job partner is often used for:
+
+1. **Multithreaded collaboration**: In many real-world applications, some functionalities must run in a specific environment, while others can run in any environment. This is when multithreaded collaboration is needed: certain functionalities run in thread A, then switch back to thread B, and finally return to thread A.
+
+    ![image](figures/ffrt_figure8.png)
+
+2. **Dynamic concurrent scheduling**: In some scenarios, the number of concurrent tasks fluctuates dynamically. By adjusting the number of workers dynamically, you can maximize performance and reduce scheduling overhead.
+
+    ![image](figures/ffrt_figure9.png)
+
+    The parameters in the figure are as follows:
+    - `job_num`: number of submitted tasks.
+    - `partner_num`: number of workers.
+    - `threshold`: threshold for starting the worker.
+    - `ratio`: ratio of the number of tasks to the number of workers.
+    - `max`: maximum number of workers.
+
+For details about the development example of the collaborative concurrency paradigm, see [Job Partner (C++)](ffrt-concurrency-job-partner-cpp.md).
