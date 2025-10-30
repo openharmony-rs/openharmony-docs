@@ -176,6 +176,37 @@ export struct AddTextContent {
 
 <!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+            // $r('app.string.xxx')需要替换为开发者所需的资源文件
+            RichEditor(this.options)
+              .onReady(() => {
+                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddImageContent_Text_1')), {
+                  style: {
+                    fontColor: Color.Black,
+                    fontSize: 15
+                  }
+                })
+              })
+              .width(300)
+              .height(100)
+            Button($r('app.string.AddImageContent_Button_1'), {
+              buttonStyle: ButtonStyleMode.NORMAL
+            })
+              .height(30)
+              .fontSize(13)
+              .onClick(() => {
+                // $r('app.media.xxx')需要替换为开发者所需的资源文件
+                this.controller.addImageSpan($r('app.media.startIcon'), {
+                  imageStyle: {
+                    size: ['57px', '57px']
+                  }
+                })
+              })
+```
+
 ![alt text](figures/richeditor_image_add_image.gif)
 
 ### 添加@Builder装饰器修饰的内容
