@@ -317,15 +317,15 @@ let result: Boolean = taskpool.isConcurrent(test);
 
 **规则解释：**
 
-taskpool、process、ArkTSUtils、AsyncLock已基于ArkTS实现提供，不依赖于其他模块，不再需要import，且AsyncLock不需要添加ArkTSUtils.locks.前缀。
+taskpool、process、ArkTSUtils、AsyncLock已基于ArkTS实现提供，不依赖于其他模块，不再需要import，且AsyncLock不需要添加`ArkTSUtils.locks.`前缀。
 
 **变更原因：**
 
-ArkTS演进为taskpool、process、ArkTSUtils、AsyncLock提供原生支持，无需import即可直接使用，且AsyncLock无需ArkTSUtils.locks.前缀。
+ArkTS演进为taskpool、process、ArkTSUtils、AsyncLock提供原生支持，无需import即可直接使用，且AsyncLock无需`ArkTSUtils.locks.`前缀。
 
 **适配建议：**
 
-删除taskpool、process、ArkTSUtils、AsyncLock前的import，删除AsyncLock的ArkTSUtils.locks.前缀，改为直接使用，并且process更名为StdProcess。
+删除taskpool、process、ArkTSUtils、AsyncLock前的import，删除AsyncLock的`ArkTSUtils.locks.`前缀，改为直接使用，并且process更名为StdProcess。
 
 **示例：**
 
