@@ -1163,6 +1163,40 @@ struct Parent2 {
 
 <!-- @[multiple_parameters_in_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleCorrectUsage.ets) -->
 
+``` TypeScript
+class GlobalTmp3 {
+  public strValue: string = 'Hello';
+  public numValue: number = 0;
+}
+@Builder function overBuilder3(param: GlobalTmp3) {
+  Column() {
+    Text(`strValue: ${param.strValue}`)
+    Text(`num: ${param.numValue}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent3 {
+  @State objParam: GlobalTmp3 = new GlobalTmp3();
+  build() {
+    Column() {
+      Text('UI Rendered via @Builder')
+        .fontSize(20)
+      overBuilder3({strValue: this.objParam.strValue, numValue: this.objParam.numValue})
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'Hello World';
+        this.objParam.numValue = 1;
+      })
+    }
+  }
+}
+```
+
 ### 使用@ComponentV2装饰器触发动态刷新
 
 在@ComponentV2装饰的组件中，配合@ObservedV2和@Trace装饰器，通过按值传递实现UI刷新功能。
