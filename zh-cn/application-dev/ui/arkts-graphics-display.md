@@ -78,6 +78,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   调用方式：
 
   <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  $r('app.media.icon') 需要替换为开发者所需的资源文件
+  Image($r('app.media.icon'))
+  ```
 
   还可以将图片放在rawfile文件夹下。
 
