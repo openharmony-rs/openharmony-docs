@@ -38,9 +38,9 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | locale | string | 否 | 是 | 指定位置描述信息的语言，“zh”代表中文，“en”代表英文。默认值从设置中的“语言和地区”获取。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | country<sup>12+</sup> | string | 否 | 是 | 限制查询结果在指定的国家内，采用ISO 3166-1 alpha-2 。“CN”代表中国。默认值从设置中的“语言和地区”获取。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| latitude | number | 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| longitude | number | 否 | 否 | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| maxItems | number | 否 | 是 | 指定返回位置信息的最大个数。取值范围为大于等于0，推荐该值小于10。默认值是1。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double| 否 | 否 | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| maxItems | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 指定返回位置信息的最大个数。取值范围为大于等于0，推荐该值小于10。默认值是1。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## GeoCodeRequest
@@ -58,11 +58,11 @@ import { geoLocationManager } from '@kit.LocationKit';
 | locale | string | 否 | 是 | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。默认值从设置中的“语言和地区”获取。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | country<sup>12+</sup> | string | 否 | 是 | 限制查询结果在指定的国家内，采用ISO 3166-1 alpha-2 。“CN”代表中国。默认值从设置中的“语言和地区”获取。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 | description | string | 否 | 否 | 表示位置信息描述，如“上海市浦东新区xx路xx号”。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| maxItems | number | 否 | 是 | 表示返回位置信息的最大个数。取值范围为大于等于0，推荐该值小于10。默认值是1。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| minLatitude | number | 否 | 是 | 表示最小纬度信息，与下面三个参数一起，表示一个经纬度范围。取值范围为-90到90。仅支持WGS84坐标系。如果该参数有值时，下面三个参数必填。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| minLongitude | number | 否 | 是 | 表示最小经度信息。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| maxLatitude | number | 否 | 是 | 表示最大纬度信息。取值范围为-90到90。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| maxLongitude | number | 否 | 是 | 表示最大经度信息。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| maxItems | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示返回位置信息的最大个数。取值范围为大于等于0，推荐该值小于10。默认值是1。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| minLatitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 表示最小纬度信息，与下面三个参数一起，表示一个经纬度范围。取值范围为-90到90。仅支持WGS84坐标系。如果该参数有值时，下面三个参数必填。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| minLongitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 表示最小经度信息。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| maxLatitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 表示最大纬度信息。取值范围为-90到90。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| maxLongitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 表示最大经度信息。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## GeoAddress
@@ -77,8 +77,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| latitude | number | 否 | 是  | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| longitude | number | 否 | 是  | 表示经度信息，正值表示东经，负值表是西经。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是  | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是  | 表示经度信息，正值表示东经，负值表是西经。取值范围为-180到180。仅支持WGS84坐标系。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | locale | string | 否 | 是  | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | placeName | string | 否 | 是  | 表示详细地址信息。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | countryCode | string | 否 | 是  | 表示国家码信息。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
@@ -94,7 +94,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | phoneNumber | string | 否 | 是 | 表示联系方式信息。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | addressUrl | string | 否 | 是 | 表示位置信息附件的网址信息。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | descriptions | Array&lt;string&gt; | 否 | 是 | 表示附加的描述信息。目前包含城市编码cityCode（Array下标为0）和区划编码adminCode（Array下标为1），例如["025","320114001"]。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| descriptionsSize | number | 否 | 是 | 表示附加的描述信息数量。取值范围为大于等于0，推荐该值小于10。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| descriptionsSize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示附加的描述信息数量。取值范围为大于等于0，推荐该值小于10。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## LocationRequest
@@ -113,9 +113,9 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | priority | [LocationRequestPriority](#locationrequestpriority) | 否 | 是 | 表示优先级信息。当scenario取值为UNSET时，priority参数生效，否则priority参数不生效；当scenario和priority均取值为UNSET时，无法发起定位请求。取值范围见[LocationRequestPriority](#locationrequestpriority)的定义。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
 | scenario | [LocationRequestScenario](#locationrequestscenario) | 否 | 是 | 表示场景信息。当scenario取值为UNSET时，priority参数生效，否则priority参数不生效；当scenario和priority均取值为UNSET时，无法发起定位请求。取值范围见[LocationRequestScenario](#locationrequestscenario)的定义。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
-| timeInterval | number | 否 | 是 |  表示上报位置信息的时间间隔，单位为秒。<br/>取值范围为大于等于0的值。<br/>默认值为对应定位模式下允许的最小时间间隔：<br/>默认值在GNSS定位时为1秒，网络定位时为20秒。<br/>当设置值小于最小间隔时，以最小时间间隔生效。<br/>设置为0时不对时间间隔进行校验，直接上报位置信息。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
-| distanceInterval | number | 否 | 是 | 表示上报位置信息的距离间隔。单位是米，默认值为0，取值范围为大于等于0。等于0时对位置上报距离间隔无限制。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
-| maxAccuracy | number | 否 | 是 |  应用向系统请求位置信息时要求的精度值，单位为米。该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下该字段无意义。<br/>该参数生效的情况下，系统会对比GNSS或网络定位服务上报的位置信息与应用的位置信息申请。当位置信息[Location](#location)中的精度值（accuracy）小于等于应用要求的精度值（maxAccuracy）时，位置信息会返回给应用；否则系统将丢弃本次收到的位置信息。<br/>默认值为0，表示不限制位置信息的精度，取值范围为大于等于0。<br/>当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING或者priority为ACCURACY时建议设置maxAccuracy为大于10的值。<br/>当scenario为DAILY_LIFE_SERVICE/NO_POWER或者priority为LOW_POWER/FIRST_FIX时建议设置maxAccuracy为大于100的值。<br/><br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
+| timeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否 | 是 |  表示上报位置信息的时间间隔，单位为秒。<br/>取值范围为大于等于0的值。<br/>默认值为对应定位模式下允许的最小时间间隔：<br/>默认值在GNSS定位时为1秒，网络定位时为20秒。<br/>当设置值小于最小间隔时，以最小时间间隔生效。<br/>设置为0时不对时间间隔进行校验，直接上报位置信息。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
+| distanceInterval | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 表示上报位置信息的距离间隔。单位是米，默认值为0，取值范围为大于等于0。等于0时对位置上报距离间隔无限制。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
+| maxAccuracy | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 |  应用向系统请求位置信息时要求的精度值，单位为米。该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下该字段无意义。<br/>该参数生效的情况下，系统会对比GNSS或网络定位服务上报的位置信息与应用的位置信息申请。当位置信息[Location](#location)中的精度值（accuracy）小于等于应用要求的精度值（maxAccuracy）时，位置信息会返回给应用；否则系统将丢弃本次收到的位置信息。<br/>默认值为0，表示不限制位置信息的精度，取值范围为大于等于0。<br/>当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING或者priority为ACCURACY时建议设置maxAccuracy为大于10的值。<br/>当scenario为DAILY_LIFE_SERVICE/NO_POWER或者priority为LOW_POWER/FIRST_FIX时建议设置maxAccuracy为大于100的值。<br/><br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## CurrentLocationRequest
@@ -134,8 +134,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | priority | [LocationRequestPriority](#locationrequestpriority) | 否 | 是 | 表示优先级信息。当scenario取值为UNSET时，priority参数生效，否则priority参数不生效；当scenario和priority均取值为UNSET时，无法发起定位请求。取值范围见[LocationRequestPriority](#locationrequestpriority)的定义。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20|
 | scenario | [LocationRequestScenario](#locationrequestscenario) | 否 | 是 | 表示场景信息。当scenario取值为UNSET时，priority参数生效，否则priority参数不生效；当scenario和priority均取值为UNSET时，无法发起定位请求。取值范围见[LocationRequestScenario](#locationrequestscenario)的定义。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
-| maxAccuracy | number | 否 | 是|  应用向系统请求位置信息时要求的精度值，单位为米。该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下该字段无意义。<br/>该参数生效的情况下，系统会对比GNSS或网络定位服务上报的位置信息与应用的位置信息申请。当位置信息[Location](#location)中的精度值（accuracy）小于等于应用要求的精度值（maxAccuracy）时，位置信息会返回给应用；否则系统将丢弃本次收到的位置信息。<br/>默认值为0，表示不限制位置信息的精度，取值范围为大于等于0。<br/>当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING或者priority为ACCURACY时建议设置maxAccuracy为大于10的值。<br/>当scenario为DAILY_LIFE_SERVICE/NO_POWER或者priority为LOW_POWER/FIRST_FIX时建议设置maxAccuracy为大于100的值。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
-| timeoutMs | number | 否 | 是 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
+| maxAccuracy | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是|  应用向系统请求位置信息时要求的精度值，单位为米。该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下该字段无意义。<br/>该参数生效的情况下，系统会对比GNSS或网络定位服务上报的位置信息与应用的位置信息申请。当位置信息[Location](#location)中的精度值（accuracy）小于等于应用要求的精度值（maxAccuracy）时，位置信息会返回给应用；否则系统将丢弃本次收到的位置信息。<br/>默认值为0，表示不限制位置信息的精度，取值范围为大于等于0。<br/>当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING或者priority为ACCURACY时建议设置maxAccuracy为大于10的值。<br/>当scenario为DAILY_LIFE_SERVICE/NO_POWER或者priority为LOW_POWER/FIRST_FIX时建议设置maxAccuracy为大于100的值。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
+| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -152,7 +152,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20|
+| interval | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20|
 | locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 | needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20|
 
@@ -172,7 +172,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | locatingPriority | [LocatingPriority](#locatingpriority12) | 否 | 否 | 表示优先级信息。取值范围见[LocatingPriority](#locatingpriority12)的定义。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20|
-| locatingTimeoutMs | number | 否 | 否 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| locatingTimeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 | needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20|
 
 
@@ -188,14 +188,14 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| satellitesNumber | number | 否 | 否 | 表示卫星个数。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| satelliteIds | Array&lt;number&gt; | 否 | 否 | 表示每个卫星的ID，数组类型。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| carrierToNoiseDensitys | Array&lt;number&gt; | 否 | 否 | 表示载波噪声功率谱密度比，即cn0。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| altitudes | Array&lt;number&gt; | 否 | 否 | 表示卫星高度角信息。单位是“度”，取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| azimuths | Array&lt;number&gt; | 否 | 否 | 表示方位角。单位是“度”，取值范围为0到360。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| carrierFrequencies | Array&lt;number&gt; | 否 | 否 | 表示载波频率。单位是Hz，取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| satellitesNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示卫星个数。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| satelliteIds | Array&lt;ArkTS-Dyn: number<br>ArkTS-Sta: int&gt; | 否 | 否 | 表示每个卫星的ID，数组类型。取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| carrierToNoiseDensitys | Array&lt;ArkTS-Dyn: number<br>ArkTS-Sta: double&gt; | 否 | 否 | 表示载波噪声功率谱密度比，即cn0。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| altitudes | Array&lt;ArkTS-Dyn: number<br>ArkTS-Sta: double&gt; | 否 | 否 | 表示卫星高度角信息。单位是“度”，取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| azimuths | Array&lt;ArkTS-Dyn: number<br>ArkTS-Sta: double&gt; | 否 | 否 | 表示方位角。单位是“度”，取值范围为0到360。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| carrierFrequencies | Array&lt;ArkTS-Dyn: number<br>ArkTS-Sta: double&gt; | 否 | 否 | 表示载波频率。单位是Hz，取值范围为大于等于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | satelliteConstellation<sup>12+</sup> | Array&lt;[SatelliteConstellationCategory](#satelliteconstellationcategory12)&gt; | 否 | 是 | 表示卫星星座类型。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
-| satelliteAdditionalInfo<sup>12+</sup> | Array&lt;number&gt; | 否 | 是 | 表示卫星的附加信息。<br/>每个比特位代表不同含义，具体定义参见[SatelliteAdditionalInfo](#satelliteadditionalinfo12)。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| satelliteAdditionalInfo<sup>12+</sup> | Array&lt;ArkTS-Dyn: number<br>ArkTS-Sta: int&gt; | 否 | 是 | 表示卫星的附加信息。<br/>每个比特位代表不同含义，具体定义参见[SatelliteAdditionalInfo](#satelliteadditionalinfo12)。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## CachedGnssLocationsRequest
@@ -210,7 +210,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| reportingPeriodSec | number | 否 | 否 | 表示GNSS缓存位置上报的周期，单位是毫秒。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| reportingPeriodSec | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示GNSS缓存位置上报的周期，单位是毫秒。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | wakeUpCacheQueueFull | boolean | 否 | 否  | true表示GNSS芯片底层缓存队列满之后会主动唤醒AP芯片，并把缓存位置上报给应用。<br/>false表示GNSS芯片底层缓存队列满之后不会主动唤醒AP芯片，会把缓存位置直接丢弃。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 
 
@@ -226,11 +226,11 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| latitude | number | 否 | 否 |表示纬度。取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| longitude | number | 否 |否 | 表示经度。取值范围为-180到180。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 |表示纬度。取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 |否 | 表示经度。取值范围为-180到180。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 | coordinateSystemType<sup>12+</sup> | [CoordinateSystemType](#coordinatesystemtype12) | 否 |是 | 表示地理围栏圆心坐标的坐标系。<br/>APP应先使用[getGeofenceSupportedCoordTypes](#geolocationmanagergetgeofencesupportedcoordtypes12)查询支持的坐标系，然后传入正确的圆心坐标。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| radius | number | 否 |否 | 表示圆形围栏的半径。单位是米，取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
-| expiration | number | 否 |否 | 围栏存活的时间，单位是毫秒。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 |否 | 表示圆形围栏的半径。单位是米，取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| expiration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 |否 | 围栏存活的时间，单位是毫秒。取值范围为大于0。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## GeofenceRequest
@@ -277,21 +277,21 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| latitude | number| 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
-| longitude | number| 否 | 否 | 表示经度信息，正值表示东经，负值表是西经。取值范围为-180到180。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| altitude | number | 否 | 否 | 表示高度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| accuracy | number | 否 | 否 | 表示精度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| speed | number | 否 | 否 |表示速度信息，单位米每秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| direction | number | 否 | 否 | 表示航向信息。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| timeSinceBoot | number | 否 | 否 | 表示获取位置成功的时间戳，值表示从本次开机到获取位置成功所经过的时间，单位为纳秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double| 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double| 否 | 否 | 表示经度信息，正值表示东经，负值表是西经。取值范围为-180到180。仅支持WGS84坐标系。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| altitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示高度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| accuracy | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示精度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| speed | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 |表示速度信息，单位米每秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| timeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示位置时间戳，UTC格式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| direction | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示航向信息。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| timeSinceBoot | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示获取位置成功的时间戳，值表示从本次开机到获取位置成功所经过的时间，单位为纳秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
 | additions | Array&lt;string&gt;| 否 | 是 | 附加信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
-| additionSize | number| 否 | 是 | 附加信息数量。取值范围为大于等于0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
+| additionSize | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否 | 是 | 附加信息数量。取值范围为大于等于0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 20 | |
 | additionsMap<sup>12+</sup> | Map&lt;string, string&gt;| 否 | 是 | 附加信息。具体内容和顺序与additions一致。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
-| altitudeAccuracy<sup>12+</sup> |number | 否 | 是 | 表示高度信息的精度，单位米。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
-| speedAccuracy<sup>12+</sup> | number| 否 | 是 | 表示速度信息的精度，单位米每秒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
-| directionAccuracy<sup>12+</sup> | number| 否 | 是 | 表示航向信息的精度。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
-| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
+| altitudeAccuracy<sup>12+</sup> |ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 表示高度信息的精度，单位米。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
+| speedAccuracy<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double| 否 | 是 | 表示速度信息的精度，单位米每秒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
+| directionAccuracy<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double| 否 | 是 | 表示航向信息的精度。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
+| uncertaintyOfTimeSinceBoot<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
 | sourceType<sup>12+</sup> | [LocationSourceType](#locationsourcetype12) | 否 | 是 | 表示定位结果的来源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
 | poi<sup>19+</PoiInfo> | [PoiInfo](#poiinfo19) | 否 | 是 | 表示当前位置附近的POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 | |
 
@@ -308,7 +308,7 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| geofenceId | number| 否 | 否 | 表示地理围栏ID。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
+| geofenceId | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否 | 否 | 表示地理围栏ID。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
 | transitionEvent | [GeofenceTransitionEvent](#geofencetransitionevent12) | 否 | 否 | 表示当前发生的地理围栏事件。<br>**ArkTS-Dyn起始版本：** 12 |
 
 
@@ -398,12 +398,16 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| COUNTRY_CODE_FROM_LOCALE | 1 | 从全球化模块的语言配置信息中获取到的国家码。 |
-| COUNTRY_CODE_FROM_SIM | 2 | 从SIM卡中获取到的国家码。 |
-| COUNTRY_CODE_FROM_LOCATION | 3 | 基于用户的位置信息，通过逆地理编码查询到的国家码。 |
-| COUNTRY_CODE_FROM_NETWORK | 4 | 从蜂窝网络注册信息中获取到的国家码。 |
+| COUNTRY_CODE_FROM_LOCALE | 1 | 从全球化模块的语言配置信息中获取到的国家码。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| COUNTRY_CODE_FROM_SIM | 2 | 从SIM卡中获取到的国家码。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| COUNTRY_CODE_FROM_LOCATION | 3 | 基于用户的位置信息，通过逆地理编码查询到的国家码。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
+| COUNTRY_CODE_FROM_NETWORK | 4 | 从蜂窝网络注册信息中获取到的国家码。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## CoordinateSystemType<sup>12+</sup>
@@ -412,10 +416,14 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WGS84 | 1 | World Geodetic System 1984，是为GPS全球定位系统使用而建立的坐标系统。 |
-| GCJ02 | 2 | GCJ-02是由中国国家测绘局制订的地理信息系统的坐标系统。 |
+| WGS84 | 1 | World Geodetic System 1984，是为GPS全球定位系统使用而建立的坐标系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| GCJ02 | 2 | GCJ-02是由中国国家测绘局制订的地理信息系统的坐标系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## GeofenceTransitionEvent<sup>12+</sup>
@@ -424,11 +432,15 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| GEOFENCE_TRANSITION_EVENT_ENTER  | 1 | 该事件表示设备从地理围栏外进入地理围栏内。 |
-| GEOFENCE_TRANSITION_EVENT_EXIT  | 2 | 该事件表示设备从地理围栏内退出到地理围栏外。 |
-| GEOFENCE_TRANSITION_EVENT_DWELL   | 4 | 该事件表示设备在地理围栏范围内，且持续徘徊超过10秒。 |
+| GEOFENCE_TRANSITION_EVENT_ENTER  | 1 | 该事件表示设备从地理围栏外进入地理围栏内。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| GEOFENCE_TRANSITION_EVENT_EXIT  | 2 | 该事件表示设备从地理围栏内退出到地理围栏外。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| GEOFENCE_TRANSITION_EVENT_DWELL   | 4 | 该事件表示设备在地理围栏范围内，且持续徘徊超过10秒。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## SatelliteConstellationCategory<sup>12+</sup>
@@ -437,16 +449,20 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CONSTELLATION_CATEGORY_UNKNOWN   | 0 | 默认值。 |
-| CONSTELLATION_CATEGORY_GPS   | 1 | GPS（Global Positioning System），即全球定位系统，是美国研制发射的一种以人造地球卫星为基础的高精度无线电导航的定位系统。 |
-| CONSTELLATION_CATEGORY_SBAS    | 2 | SBAS（Satellite-Based Augmentation System），即星基增强系统，通过地球静止轨道（GEO）卫星搭载卫星导航增强信号转发器，可以向用户播发星历误差、卫星钟差、电离层延迟等多种修正信息，实现对于原有卫星导航系统定位精度的改进。 |
-| CONSTELLATION_CATEGORY_GLONASS    | 3 | GLONASS（GLOBAL NAVIGATION SATELLITE SYSTEM），是苏联/俄罗斯研制卫星导航系统。 |
-| CONSTELLATION_CATEGORY_QZSS    | 4 | QZSS（Quasi-Zenith Satellite System），即准天顶卫星系统，是以三颗人造卫星透过时间转移完成全球定位系统区域性功能的卫星扩增系统，是日本研发的卫星系统。 |
-| CONSTELLATION_CATEGORY_BEIDOU     | 5 | 北斗卫星导航系统（Beidou Navigation Satellite System）是中国自行研制的全球卫星导航系统。 |
-| CONSTELLATION_CATEGORY_GALILEO     | 6 | GALILEO（Galileo satellite navigation system），即伽利略卫星导航系统，是由欧盟研制和建立的全球卫星导航定位系统。 |
-| CONSTELLATION_CATEGORY_IRNSS     | 7 | IRNSS（Indian Regional Navigation Satellite System），即印度区域导航卫星系统，是一个由印度空间研究组织（ISRO）发展的自由区域型卫星导航系统。 |
+| CONSTELLATION_CATEGORY_GPS   | 1 | GPS（Global Positioning System），即全球定位系统，是美国研制发射的一种以人造地球卫星为基础的高精度无线电导航的定位系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| CONSTELLATION_CATEGORY_SBAS    | 2 | SBAS（Satellite-Based Augmentation System），即星基增强系统，通过地球静止轨道（GEO）卫星搭载卫星导航增强信号转发器，可以向用户播发星历误差、卫星钟差、电离层延迟等多种修正信息，实现对于原有卫星导航系统定位精度的改进。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| CONSTELLATION_CATEGORY_GLONASS    | 3 | GLONASS（GLOBAL NAVIGATION SATELLITE SYSTEM），是苏联/俄罗斯研制卫星导航系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| CONSTELLATION_CATEGORY_QZSS    | 4 | QZSS（Quasi-Zenith Satellite System），即准天顶卫星系统，是以三颗人造卫星透过时间转移完成全球定位系统区域性功能的卫星扩增系统，是日本研发的卫星系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| CONSTELLATION_CATEGORY_BEIDOU     | 5 | 北斗卫星导航系统（Beidou Navigation Satellite System）是中国自行研制的全球卫星导航系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| CONSTELLATION_CATEGORY_GALILEO     | 6 | GALILEO（Galileo satellite navigation system），即伽利略卫星导航系统，是由欧盟研制和建立的全球卫星导航定位系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| CONSTELLATION_CATEGORY_IRNSS     | 7 | IRNSS（Indian Regional Navigation Satellite System），即印度区域导航卫星系统，是一个由印度空间研究组织（ISRO）发展的自由区域型卫星导航系统。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## SatelliteAdditionalInfo<sup>12+</sup>
@@ -455,13 +471,17 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SATELLITES_ADDITIONAL_INFO_NULL  | 0 | 默认值。 |
-| SATELLITES_ADDITIONAL_INFO_EPHEMERIS_DATA_EXIST  | 1 | 表示本卫星具有星历数据。 |
-| SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST   | 2 | 表示本卫星具有年历数据。 |
-| SATELLITES_ADDITIONAL_INFO_USED_IN_FIX   | 4 | 表示在最新的位置解算中使用了本卫星。 |
-| SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST   | 8 | 表示本卫星具有载波频率。 |
+| SATELLITES_ADDITIONAL_INFO_NULL  | 0 | 默认值。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| SATELLITES_ADDITIONAL_INFO_EPHEMERIS_DATA_EXIST  | 1 | 表示本卫星具有星历数据。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST   | 2 | 表示本卫星具有年历数据。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| SATELLITES_ADDITIONAL_INFO_USED_IN_FIX   | 4 | 表示在最新的位置解算中使用了本卫星。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST   | 8 | 表示本卫星具有载波频率。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## PowerConsumptionScenario<sup>12+</sup>
@@ -472,11 +492,15 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| HIGH_POWER_CONSUMPTION  | 0x601 | 高功耗。<br/>以GNSS定位技术为主。我们会在GNSS提供稳定位置结果之前使用网络定位技术提供服务；在持续定位时，如果超过30秒无法获取GNSS定位结果则会使用网络定位技术获取位置。对设备的硬件资源消耗较大，功耗较大。 |
-| LOW_POWER_CONSUMPTION  | 0x602 | 低功耗。<br/>适用于对用户位置精度要求不高的使用场景，如新闻资讯、网购、点餐类应用。<br/>该场景仅使用网络定位技术提供定位服务，功耗较低。 |
-| NO_POWER_CONSUMPTION   | 0x603 | 无功耗。<br/>这种场景下不会主动触发定位，会在其他应用定位时，才给当前应用返回位置。  |
+| HIGH_POWER_CONSUMPTION  | 0x601 | 高功耗。<br/>以GNSS定位技术为主。我们会在GNSS提供稳定位置结果之前使用网络定位技术提供服务；在持续定位时，如果超过30秒无法获取GNSS定位结果则会使用网络定位技术获取位置。对设备的硬件资源消耗较大，功耗较大。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| LOW_POWER_CONSUMPTION  | 0x602 | 低功耗。<br/>适用于对用户位置精度要求不高的使用场景，如新闻资讯、网购、点餐类应用。<br/>该场景仅使用网络定位技术提供定位服务，功耗较低。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| NO_POWER_CONSUMPTION   | 0x603 | 无功耗。<br/>这种场景下不会主动触发定位，会在其他应用定位时，才给当前应用返回位置。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
 
 
 ## UserActivityScenario<sup>12+</sup>
@@ -487,16 +511,20 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 > **说明：**
 >
 > 当使用NAVIGATION/SPORT/TRANSPORT场景进行单次定位或持续定位时，我们会在GNSS提供稳定位置结果之前使用网络定位技术提供服务；在持续定位时，如果超过30秒无法获取GNSS定位结果则会使用网络定位技术获取位置。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| NAVIGATION  | 0x401 | 表示导航场景。<br/>适用于在户外获取设备实时位置的场景，如车载、步行导航。<br/>主要使用GNSS定位技术提供定位服务，功耗较高。 |
-| SPORT  | 0x402 | 表示运动场景。<br/>适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。<br/>主要使用GNSS定位技术提供定位服务，功耗较高。 |
-| TRANSPORT   | 0x403 | 表示出行场景。<br/>适用于用户出行场景，如打车、乘坐公共交通等场景。<br/>主要使用GNSS定位技术提供定位服务，功耗较高。  |
-| DAILY_LIFE_SERVICE   | 0x404 | 表示日常服务使用场景。<br/>适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。<br/>该场景仅使用网络定位技术提供定位服务，功耗较低。  |
+| NAVIGATION  | 0x401 | 表示导航场景。<br/>适用于在户外获取设备实时位置的场景，如车载、步行导航。<br/>主要使用GNSS定位技术提供定位服务，功耗较高。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| SPORT  | 0x402 | 表示运动场景。<br/>适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。<br/>主要使用GNSS定位技术提供定位服务，功耗较高。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| TRANSPORT   | 0x403 | 表示出行场景。<br/>适用于用户出行场景，如打车、乘坐公共交通等场景。<br/>主要使用GNSS定位技术提供定位服务，功耗较高。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
+| DAILY_LIFE_SERVICE   | 0x404 | 表示日常服务使用场景。<br/>适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。<br/>该场景仅使用网络定位技术提供定位服务，功耗较低。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
 
 
 ## LocatingPriority<sup>12+</sup>
@@ -507,10 +535,14 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PRIORITY_ACCURACY  | 0x501 | 表示精度优先。<br/>定位精度优先策略会同时使用GNSS定位和网络定位技术，并把一段时间内精度较好的结果返回给应用；这个时间段长度为[SingleLocationRequest](#singlelocationrequest12).locatingTimeoutMs与“30秒”中的较小者。<br/>对设备的硬件资源消耗较大，功耗较大。  |
-| PRIORITY_LOCATING_SPEED  | 0x502 | 表示快速获取位置优先，如果应用希望快速拿到一个位置，可以将优先级设置为该类型。<br/>快速定位优先策略会同时使用GNSS定位和网络定位技术，以便在室内和户外场景下均可以快速获取到位置结果，我们会把最先拿到的定位结果返回给应用。对设备的硬件资源消耗较大，功耗也较大。 |
+| PRIORITY_ACCURACY  | 0x501 | 表示精度优先。<br/>定位精度优先策略会同时使用GNSS定位和网络定位技术，并把一段时间内精度较好的结果返回给应用；这个时间段长度为[SingleLocationRequest](#singlelocationrequest12).locatingTimeoutMs与“30秒”中的较小者。<br/>对设备的硬件资源消耗较大，功耗较大。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
+| PRIORITY_LOCATING_SPEED  | 0x502 | 表示快速获取位置优先，如果应用希望快速拿到一个位置，可以将优先级设置为该类型。<br/>快速定位优先策略会同时使用GNSS定位和网络定位技术，以便在室内和户外场景下均可以快速获取到位置结果，我们会把最先拿到的定位结果返回给应用。对设备的硬件资源消耗较大，功耗也较大。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## LocationError<sup>12+</sup>
@@ -521,13 +553,17 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| LOCATING_FAILED_DEFAULT   | -1 |  默认值。 |
-| LOCATING_FAILED_LOCATION_PERMISSION_DENIED   | -2 | 表示ohos.permission.APPROXIMATELY_LOCATION权限或ohos.permission.LOCATION权限校验失败导致持续定位失败。 |
-| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | 表示应用在后台时位置权限校验失败导致持续定位失败。<!--RP3-->APP在后台定位时的位置权限申请方式参见[申请位置权限开发指导](../../device/location/location-permission-guidelines.md#开发步骤)。<!--RP3End--> |
-| LOCATING_FAILED_LOCATION_SWITCH_OFF    | -4 | 表示位置信息开关关闭导致持续定位失败。 |
-| LOCATING_FAILED_INTERNET_ACCESS_FAILURE    | -5 | 表示无法访问网络，导致网络定位失败。 |
+| LOCATING_FAILED_DEFAULT   | -1 |  默认值。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| LOCATING_FAILED_LOCATION_PERMISSION_DENIED   | -2 | 表示ohos.permission.APPROXIMATELY_LOCATION权限或ohos.permission.LOCATION权限校验失败导致持续定位失败。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | 表示应用在后台时位置权限校验失败导致持续定位失败。<!--RP3-->APP在后台定位时的位置权限申请方式参见[申请位置权限开发指导](../../device/location/location-permission-guidelines.md#开发步骤)。<!--RP3End--><br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| LOCATING_FAILED_LOCATION_SWITCH_OFF    | -4 | 表示位置信息开关关闭导致持续定位失败。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
+| LOCATING_FAILED_INTERNET_ACCESS_FAILURE    | -5 | 表示无法访问网络，导致网络定位失败。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## LocationSourceType<sup>12+</sup>
@@ -538,12 +574,16 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| GNSS   | 1 |  表示定位结果来自于GNSS定位技术。 |
-| NETWORK    | 2 | 表示定位结果来自于网络定位技术。 |
-| INDOOR     | 3 | 表示定位结果来自于室内高精度定位技术。 |
-| RTK     | 4 | 表示定位结果来自于室外高精度定位技术。 |
+| GNSS   | 1 |  表示定位结果来自于GNSS定位技术。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
+| NETWORK    | 2 | 表示定位结果来自于网络定位技术。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
+| INDOOR     | 3 | 表示定位结果来自于室内高精度定位技术。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
+| RTK     | 4 | 表示定位结果来自于室外高精度定位技术。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 20  |
 
 
 ## BluetoothScanResult<sup>16+</sup>
@@ -552,13 +592,17 @@ GNSS地理围栏请求参数。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceId | string | 是 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi | number | 是 | 否 | 表示扫描到的设备的rssi值。 |
-| data | ArrayBuffer | 是 | 是 | 表示扫描到的设备发送的广播包。 |
-| deviceName | string | 是 | 否 | 表示扫描到的设备名称。 |
-| connectable | boolean | 是 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。 |
+| deviceId | string | 是 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>**ArkTS-Dyn起始版本：** 16  <br>**ArkTS-Sta起始版本：** 20 |
+| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 表示扫描到的设备的rssi值。<br>**ArkTS-Dyn起始版本：** 16  <br>**ArkTS-Sta起始版本：** 20 |
+| data | ArrayBuffer | 是 | 是 | 表示扫描到的设备发送的广播包。<br>**ArkTS-Dyn起始版本：** 16  <br>**ArkTS-Sta起始版本：** 20 |
+| deviceName | string | 是 | 否 | 表示扫描到的设备名称。<br>**ArkTS-Dyn起始版本：** 16  <br>**ArkTS-Sta起始版本：** 20 |
+| connectable | boolean | 是 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。<br>**ArkTS-Dyn起始版本：** 16  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## Poi<sup>19+</sup>
@@ -569,18 +613,22 @@ POI(Point of Interest, 兴趣点)信息。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| id | string | 否 | 否 | 表示POI的ID。 |
-| confidence | number | 否 | 否 | 表示POI信息的置信度。置信度越高，用户离该POI信息点越近。取值范围为0到1。 |
-| name | string | 否 | 否 | 表示POI的名称。 |
-| latitude | number | 否 | 否 | 表示POI所在的纬度。取值范围为-90到90。 |
-| longitude | number | 否 | 否 | 表示POI所在的经度。取值范围为-180到180。 |
-| administrativeArea | string | 否 | 否 | 表示POI所在的国家以下的一级行政区，一般是省/州。 |
-| subAdministrativeArea | string | 否 | 否 | 表示POI所在的国家以下的二级行政区，一般是市。 |
-| locality | string | 否 | 否 | 表示POI所在的城市信息，一般是市。 |
-| subLocality | string | 否 | 否 | 表示POI所在的子城市信息，一般是区/县。 |
-| address | string | 否 | 否 | 表示POI的详细地址。 |
+| id | string | 否 | 否 | 表示POI的ID。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| confidence | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示POI信息的置信度。置信度越高，用户离该POI信息点越近。取值范围为0到1。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| name | string | 否 | 否 | 表示POI的名称。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示POI所在的纬度。取值范围为-90到90。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 表示POI所在的经度。取值范围为-180到180。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| administrativeArea | string | 否 | 否 | 表示POI所在的国家以下的一级行政区，一般是省/州。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| subAdministrativeArea | string | 否 | 否 | 表示POI所在的国家以下的二级行政区，一般是市。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| locality | string | 否 | 否 | 表示POI所在的城市信息，一般是市。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| subLocality | string | 否 | 否 | 表示POI所在的子城市信息，一般是区/县。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| address | string | 否 | 否 | 表示POI的详细地址。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
 
 ## PoiInfo<sup>19+</sup>
 
@@ -590,10 +638,14 @@ POI信息结构体。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| poiArray | Array&lt;[Poi](#poi19)&gt; | 否 | 否 | 表示POI信息列表。 |
-| timestamp | number | 否 | 否 | 表示获取到POI信息时的时间戳，UTC时间，单位毫秒。 |
+| poiArray | Array&lt;[Poi](#poi19)&gt; | 否 | 否 | 表示POI信息列表。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
+| timestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示获取到POI信息时的时间戳，UTC时间，单位毫秒。<br>**ArkTS-Dyn起始版本：** 19  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## SportsType<sup>18+</sup>
@@ -604,11 +656,15 @@ POI信息结构体。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| RUNNING   | 1 |  表示跑步。 |
-| WALKING    | 2 | 表示步行。 |
-| CYCLING     | 3 | 表示骑行。 |
+| RUNNING   | 1 |  表示跑步。<br>**ArkTS-Dyn起始版本：** 18  <br>**ArkTS-Sta起始版本：** 20 |
+| WALKING    | 2 | 表示步行。<br>**ArkTS-Dyn起始版本：** 18  <br>**ArkTS-Sta起始版本：** 20 |
+| CYCLING     | 3 | 表示骑行。<br>**ArkTS-Dyn起始版本：** 18  <br>**ArkTS-Sta起始版本：** 20 |
 
 
 ## geoLocationManager.on('locationChange')
@@ -1443,6 +1499,10 @@ getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, call
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -1515,6 +1575,10 @@ getCurrentLocation(callback: AsyncCallback&lt;Location&gt;): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -1566,6 +1630,10 @@ getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Pr
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -1638,6 +1706,10 @@ getLastLocation(): Location
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值**：
 
   | 类型 | 说明 |
@@ -1678,6 +1750,10 @@ isLocationEnabled(): boolean
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值**：
 
   | 类型 | 说明 |
@@ -1712,6 +1788,10 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback
 调用逆地理编码服务，将坐标转换为地理描述，使用callback异步回调。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -1758,6 +1838,10 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise&lt;Array&lt;Ge
 调用逆地理编码服务，将坐标转换为地理描述，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -1809,6 +1893,10 @@ getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -1854,6 +1942,10 @@ getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAd
 调用地理编码服务，将地理描述转换为具体坐标，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -1904,6 +1996,10 @@ isGeocoderAvailable(): boolean
 
 **系统能力**：SystemCapability.Location.Location.Geocoder
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值**：
 
   | 类型 | 说明 |
@@ -1940,6 +2036,10 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Gnss
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -1988,6 +2088,10 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.Location.Location.Gnss
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值**：
 
   | 类型 | 说明 |
@@ -2032,6 +2136,10 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Gnss
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -2122,6 +2230,10 @@ sendCommand(command: LocationCommand, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -2163,6 +2275,10 @@ sendCommand(command: LocationCommand): Promise&lt;void&gt;
 给位置服务子系统的各个部件发送扩展命令。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -2213,6 +2329,10 @@ getCountryCode(callback: AsyncCallback&lt;CountryCode&gt;): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -2256,6 +2376,10 @@ getCountryCode(): Promise&lt;CountryCode&gt;
 查询当前的国家码。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值**：
 
@@ -2304,6 +2428,10 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
@@ -2418,6 +2546,10 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -2469,6 +2601,10 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值**：
 
   | 类型 | 说明 |
@@ -2506,6 +2642,10 @@ getCurrentWifiBssidForLocating(): string
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值**：
 
@@ -2554,6 +2694,10 @@ on(type: 'bluetoothScanResultChange', callback: Callback&lt;BluetoothScanResult&
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 20
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -2600,6 +2744,10 @@ off(type: 'bluetoothScanResultChange', callback?: Callback&lt;BluetoothScanResul
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 20
 
 **参数**：
 
