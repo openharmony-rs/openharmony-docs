@@ -187,113 +187,141 @@ utd.json5文件需要在类型为entry的HAP中配置。
 下面以媒体类文件的归属类型查询场景为例，说明如何使用UTD。
 
 1. 导入uniformTypeDescriptor模块。
+
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    //  1.导入模块
+    import { uniformTypeDescriptor } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. 针对“.mp3”文件扩展名，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型，并打印对应UTD数据类型的具体属性。
 3. 针对“audio/mp3”MIMEType，使用getUniformDataTypesByMIMEType()查询对应UTD数据类型，并打印对应UTD数据类型的具体属性。
 4. 比较上述步骤查询的数据类型，确认类型是否相等。
 5. 根据上述步骤中查询到的标准数据类型“general.mp3”与表示音频数据的已知标准数据类型“general.audio”做比较查询，确认是否存在归属关系。
 
-```ts
-// 1.导入模块
-import { uniformTypeDescriptor } from '@kit.ArkData';
+    <!-- @[uniform_type_descriptor_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
-function uniformTypeDescriptorTest() {
-  try {
-    // 2.可根据 “.mp3” 文件后缀查询对应UTD数据类型，并查询对应UTD数据类型的具体属性
-    let fileExtension = '.mp3';
-    let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
-    if (typeIds1.length == 0) {
-      return;
-    }
-    let typeObj1 = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
-    console.info('typeId:' + typeObj1.typeId);
-    console.info('belongingToTypes:' + typeObj1.belongingToTypes);
-    console.info('description:' + typeObj1.description);
-    console.info('filenameExtensions:' + typeObj1.filenameExtensions);
-    console.info('mimeTypes:' + typeObj1.mimeTypes);
+    ``` TypeScript
+    function uniformTypeDescriptorTest() {
+      try {
+        // 2.可根据 “.mp3” 文件后缀查询对应UTD数据类型，并查询对应UTD数据类型的具体属性
+        let fileExtension = '.mp3';
+        let typeIds1 = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
+        if (typeIds1.length == 0) {
+          return;
+        }
+        let typeObj1 = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
+        hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj1.typeId}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj1.belongingToTypes}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj1.description}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj1.filenameExtensions}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj1.mimeTypes}`);
 
-    // 3.可根据 “audio/mp3” MIMEType查询对应UTD数据类型，并查询对应UTD数据类型的具体属性。
-    let mimeType = 'audio/mp3';
-    let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
-    if (typeIds2.length == 0) {
-      return;
-    }
-    let typeObj2 = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
-    console.info('typeId:' + typeObj2.typeId);
-    console.info('belongingToTypes:' + typeObj2.belongingToTypes);
-    console.info('description:' + typeObj2.description);
-    console.info('filenameExtensions:' + typeObj2.filenameExtensions);
-    console.info('mimeTypes:' + typeObj2.mimeTypes);
+        // 3.可根据 “audio/mp3” MIMEType查询对应UTD数据类型，并查询对应UTD数据类型的具体属性。
+        let mimeType = 'audio/mp3';
+        let typeIds2 = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
+        if (typeIds2.length == 0) {
+          return;
+        }
+        let typeObj2 = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
+        hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj2.typeId}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj2.belongingToTypes}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj2.description}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${typeObj2.filenameExtensions}`);
+        hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${typeObj2.mimeTypes}`);
 
-    // 4.将数据类型进行比较，确认是否同一种数据类型
-    if (typeObj1 != null && typeObj2 != null) {
-      let ret = typeObj1.equals(typeObj2);
-      console.info('typeObj1 equals typeObj2, ret:' + ret);
-    }
+        // 4.将数据类型进行比较，确认是否同一种数据类型
+        if (typeObj1 != null && typeObj2 != null) {
+          let ret = typeObj1.equals(typeObj2);
+          hilog.info(0xFF00, '[Sample_Udmf]', `typeObj1 equals typeObj2, ret: ${ret}`);
+        }
 
-    // 5.将查询到的标准数据类型“general.mp3”与表示音频数据的已知标准数据类型“general.audio”做比较查询，确认是否存在归属关系。
-    if (typeObj1 != null) {
-      let ret = typeObj1.belongsTo('general.audio');
-      console.info('belongsTo, ret:' + ret);
-      let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
-      ret = mediaTypeObj.isHigherLevelType('general.audio'); // 确认是否存在归属关系
-      console.info('isHigherLevelType, ret:' + ret);
+        // 5.将查询到的标准数据类型“general.mp3”与表示音频数据的已知标准数据类型“general.audio”做比较查询，确认是否存在归属关系。
+        if (typeObj1 != null) {
+          let ret = typeObj1.belongsTo('general.audio');
+          hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
+          let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
+          // 确认是否存在归属关系
+          ret = mediaTypeObj.isHigherLevelType('general.audio');
+          hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
+        }
+      } catch (err) {
+        hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+      }
     }
-  } catch (err) {
-    console.error('err message:' + err.message + ', err code:' + err.code);
-  }
-}
-```
+    ```
 
 ## 如何通过文件后缀获取对应的MIMEType列表
 
 下面以通过“.ts”文件后缀获取对应的MIMEType列表为例，说明如何通过文件后缀获取对应的MIMEType列表。
 
 1. 导入uniformTypeDescriptor模块。
+
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    //  1.导入模块
+    import { uniformTypeDescriptor } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. 针对“.ts”文件后缀，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型。
 3. 针对UTD数据类型，使用getTypeDescriptor()方法查询对应的MIMEType列表。
 
-```ts
-// 1.导入模块
-import { uniformTypeDescriptor } from '@kit.ArkData';
-try {
-  // 2.可根据 “.ts” 文件后缀查询对应UTD数据类型。
-  let fileExtension = '.ts';
-  let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
-  for (let typeId of typeIds) {
-    // 3.根据UTD数据类型查询对应的MIMEType列表。
-    let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
-    let mimeTypes = typeObj.mimeTypes;
-    console.info('mimeTypes:' + mimeTypes);
-  }
-} catch (err) {
-  console.error('err message:' + err.message + ', err code:' + err.code);
-}
-```
+    <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    try {
+      // 2.可根据 “.ts” 文件后缀查询对应UTD数据类型。
+      let fileExtension = '.ts';
+      let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
+      for (let typeId of typeIds) {
+        // 3.根据UTD数据类型查询对应的MIMEType列表。
+        let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        let mimeTypes = typeObj.mimeTypes;
+        hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${mimeTypes}`);
+      }
+    } catch (err) {
+      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+    }
+    ```
+
 ## 如何通过MIMEType获取对应的后缀列表
 
 下面以通过“text/plain”MIMEType获取对应文件后缀列表为例，说明如何通过MIMEType获取对应的后缀列表。
 
 1. 导入uniformTypeDescriptor模块。
+
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    //  1.导入模块
+    import { uniformTypeDescriptor } from '@kit.ArkData';
+    import hilog from '@ohos.hilog';
+    ```
+
 2. 针对“text/plain”MIMEType，使用getUniformDataTypesByMIMEType()方法获取对应UTD数据类型。
 3. 针对UTD数据类型，使用getTypeDescriptor()方法查询对应的MIMEType列表。
 
-```ts
-// 1.导入模块
-import { uniformTypeDescriptor } from '@kit.ArkData';
-try {
-  // 2.可根据 “text/plain” MIMEType查询对应UTD数据类型。
-  let mimeType = 'text/plain';
-  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
-  for (let typeId of typeIds) {
-    // 3. 根据UTD数据类型查询对应的MIMEType列表
-    let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
-    let filenameExtensions = typeObj.filenameExtensions;
-    console.info('filenameExtensions:' + filenameExtensions);
-  }
-} catch (err) {
-  console.error('err message:' + err.message + ', err code:' + err.code);
-}
-```
+    <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    try {
+      // 2.可根据 “text/plain” MIMEType查询对应UTD数据类型。
+      let mimeType = 'text/plain';
+      let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
+      for (let typeId of typeIds) {
+        // 3. 根据UTD数据类型查询对应的文件后缀列表
+        let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        let filenameExtensions = typeObj.filenameExtensions;
+        hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
+      }
+    } catch (err) {
+      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+    }
+    ```
 
 ## 相关实例
 
