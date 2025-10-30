@@ -166,7 +166,11 @@ addRule(rule: bigint): void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTs-Dyn起始版本**：9
 
 **参数：**
 
@@ -195,7 +199,11 @@ removeRule(rule: bigint): void
 
 删除一条或多条规则，删除的规则后续将不再生效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTs-Dyn起始版本**：9
 
 **参数：**
 
@@ -252,7 +260,11 @@ contains(rule: bigint): boolean
 
 当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTs-Dyn起始版本**：9
 
 **参数：**
 
