@@ -1,14 +1,17 @@
 # Native Image Development (C/C++)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+## Overview
 
-## When to Use
+NativeImage is a module that **binds surfaces to OpenGL external textures**. It indicates the consumer of a graphics queue. You can use the `NativeImage` API to receive and use `Buffer` and associate `Buffer` with the bound OpenGL external texture.
 
-The native image module is used for associating a surface with an OpenGL external texture. It functions as the consumer of a graphics queue. You can use the APIs of this module to obtain and use a buffer, and output the buffer content to an OpenGL external texture.
+NativeImage is commonly used in the following scenarios:
 
-The following scenario is common for native image development:
-
-Use the native image APIs to create an **OH_NativeImage** instance as the consumer and obtain the corresponding **OHNativeWindow** instance (functioning as the producer). Use the native window APIs to fill in and flush the buffer, and then use the native image APIs to update the buffer content to an OpenGL ES texture.
-
-The native image module must be used together with the native window, native buffer, EGL, and GLES3 modules.
+* Use the native image APIs to create an **OH_NativeImage** instance as the consumer and obtain the corresponding **OHNativeWindow** instance (functioning as the producer). Use the native window APIs to fill in and flush the buffer, and then use the native image APIs to update the buffer content to an OpenGL ES texture.<br> The native image module must be used together with the native window, native buffer, EGL, and GLES3 modules.
 
 ## Available APIs
 
@@ -20,10 +23,10 @@ The native image module must be used together with the native window, native buf
 | OH_NativeImage_DetachContext (OH_NativeImage \*image)        | Detaches an **OH_NativeImage** instance from the current OpenGL ES context.             |
 | OH_NativeImage_UpdateSurfaceImage (OH_NativeImage \*image)   | Updates the OpenGL ES texture associated with the latest frame through an **OH_NativeImage** instance.     |
 | OH_NativeImage_GetTimestamp (OH_NativeImage \*image)         | Obtains the timestamp of the texture image that recently called the **OH_NativeImage_UpdateSurfaceImage** function.|
-| OH_NativeImage_GetTransformMatrix (OH_NativeImage \*image, float matrix[16]) | Obtains the transformation matrix of the texture image that recently called the **OH_NativeImage_UpdateSurfaceImage** function.|
+| OH_NativeImage_GetTransformMatrixV2 (OH_NativeImage \*image, float matrix[16]) | Obtains the transformation matrix of the texture image that recently called the **OH_NativeImage_UpdateSurfaceImage** function.|
 | OH_NativeImage_Destroy (OH_NativeImage \*\*image)            | Destroys an **OH_NativeImage** instance created by calling **OH_NativeImage_Create**. After the instance is destroyed, the pointer to it is assigned **NULL**.|
 
-For details about the APIs, see [native_image](../reference/apis-arkgraphics2d/_o_h___native_image.md).
+For details about the APIs, see [native_image](../reference/apis-arkgraphics2d/capi-oh-nativeimage.md).
 
 ## How to Develop
 
@@ -31,7 +34,7 @@ The following steps describe how to use the native Image APIs to create an **OH_
 
 **Adding Dynamic Link Libraries**
 
-Add the following libraries to **CMakeLists.txt**:
+Add the following library file to the **CMakeLists.txt** file.
 
 ```txt
 libEGL.so
@@ -58,241 +61,361 @@ libnative_buffer.so
 
 1. Initialize the EGL environment.
 
-   Refer to the code snippet below. For details about how to use the **XComponent**, see [XComponent Development](../ui/napi-xcomponent-guidelines.md).
-   ```c++   
-   using GetPlatformDisplayExt = PFNEGLGETPLATFORMDISPLAYEXTPROC;
-   constexpr const char *EGL_EXT_PLATFORM_WAYLAND = "EGL_EXT_platform_wayland";
-   constexpr const char *EGL_KHR_PLATFORM_WAYLAND = "EGL_KHR_platform_wayland";
-   constexpr int32_t EGL_CONTEXT_CLIENT_VERSION_NUM = 2;
-   constexpr char CHARACTER_WHITESPACE = ' ';
-   constexpr const char *CHARACTER_STRING_WHITESPACE = " ";
-   constexpr const char *EGL_GET_PLATFORM_DISPLAY_EXT = "eglGetPlatformDisplayEXT";
-   EGLContext eglContext_ = EGL_NO_CONTEXT;
-   EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
-   static inline EGLConfig config_;
-   static inline EGLSurface eglSurface_;
-   // OHNativeWindow obtained from the XComponent.
-   OHNativeWindow *eglNativeWindow_;
-   
-   // Check the EGL extension.
-   static bool CheckEglExtension(const char *extensions, const char *extension) {
-       size_t extlen = strlen(extension);
-       const char *end = extensions + strlen(extensions);
-   
-       while (extensions < end) {
-           size_t n = 0;
-           if (*extensions == CHARACTER_WHITESPACE) {
-               extensions++;
-               continue;
-           }
-           n = strcspn(extensions, CHARACTER_STRING_WHITESPACE);
-           if (n == extlen && strncmp(extension, extensions, n) == 0) {
-               return true;
-           }
-           extensions += n;
-       }
-       return false;
-   }
-   
-   // Obtain the display.
-   static EGLDisplay GetPlatformEglDisplay(EGLenum platform, void *native_display, const EGLint *attrib_list) {
-       static GetPlatformDisplayExt eglGetPlatformDisplayExt = NULL;
-   
-       if (!eglGetPlatformDisplayExt) {
-           const char *extensions = eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS);
-           if (extensions && (CheckEglExtension(extensions, EGL_EXT_PLATFORM_WAYLAND) ||
-                              CheckEglExtension(extensions, EGL_KHR_PLATFORM_WAYLAND))) {
-               eglGetPlatformDisplayExt = (GetPlatformDisplayExt)eglGetProcAddress(EGL_GET_PLATFORM_DISPLAY_EXT);
-           }
-       }
-   
-       if (eglGetPlatformDisplayExt) {
-           return eglGetPlatformDisplayExt(platform, native_display, attrib_list);
-       }
-   
-       return eglGetDisplay((EGLNativeDisplayType)native_display);
-   }
-   
-   static void InitEGLEnv() {
-       // Obtain the display.
-       eglDisplay_ = GetPlatformEglDisplay(EGL_PLATFORM_OHOS_KHR, EGL_DEFAULT_DISPLAY, NULL);
-       if (eglDisplay_ == EGL_NO_DISPLAY) {
-           std::cout << "Failed to create EGLDisplay gl errno : " << eglGetError() << std::endl;
-       }
-   
-       EGLint major, minor;
-       // Initialize the EGL display.
-       if (eglInitialize(eglDisplay_, &major, &minor) == EGL_FALSE) {
-           std::cout << "Failed to initialize EGLDisplay" << std::endl;
-       }
-   
-       // Bind the OpenGL ES API.
-       if (eglBindAPI(EGL_OPENGL_ES_API) == EGL_FALSE) {
-           std::cout << "Failed to bind OpenGL ES API" << std::endl;
-       }
-   
-       unsigned int glRet;
-       EGLint count;
-       EGLint config_attribs[] = {EGL_SURFACE_TYPE,
-                                  EGL_WINDOW_BIT,
-                                  EGL_RED_SIZE,
-                                  8,
-                                  EGL_GREEN_SIZE,
-                                  8,
-                                  EGL_BLUE_SIZE,
-                                  8,
-                                  EGL_ALPHA_SIZE,
-                                  8,
-                                  EGL_RENDERABLE_TYPE,
-                                  EGL_OPENGL_ES3_BIT,
-                                  EGL_NONE};
-   
-       // Obtain a valid system configuration.
-       glRet = eglChooseConfig(eglDisplay_, config_attribs, &config_, 1, &count);
-       if (!(glRet && static_cast<unsigned int>(count) >= 1)) {
-           std::cout << "Failed to eglChooseConfig" << std::endl;
-       }
-   
-       static const EGLint context_attribs[] = {EGL_CONTEXT_CLIENT_VERSION, EGL_CONTEXT_CLIENT_VERSION_NUM, EGL_NONE};
-   
-       // Create a context.
-       eglContext_ = eglCreateContext(eglDisplay_, config_, EGL_NO_CONTEXT, context_attribs);
-       if (eglContext_ == EGL_NO_CONTEXT) {
-           std::cout << "Failed to create egl context, error:" << eglGetError() << std::endl;
-       }
-   
-       // Create an eglSurface.
-       eglSurface_ = eglCreateWindowSurface(eglDisplay_, config_, reinterpret_cast<EGLNativeWindowType>(eglNativeWindow_), context_attribs);
-       if (eglSurface_ == EGL_NO_SURFACE) {
-           std::cout << "Failed to create egl surface, error:" << eglGetError() << std::endl;
-       }
-   
-       // Associate the context.
-       eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_);
-   
-       // The EGL environment initialization is complete.
-       std::cout << "Create EGL context successfully, version" << major << "." << minor << std::endl;
-   }
-   ```
+    The following is an example of the code for initializing the EGL environment. For details about how to use the XComponent module, see [XComponent Development Guidelines](../ui/napi-xcomponent-guidelines.md).
+    <!-- @[init_egl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/image_render.cpp) -->
+
+    ``` C++
+    bool ImageRender::InitEGL(EGLNativeWindowType window, uint64_t width, uint64_t height)
+    {
+        window_ = window;
+        width_ = width;
+        height_ = height;
+
+        if (!InitializeEGLDisplay() || !ChooseEGLConfig() || !CreateEGLContext() || !CreateEGLSurface()) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to initialize EGL");
+            return false;
+        }
+
+        if (!MakeCurrentContext()) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to make EGL context current");
+            return false;
+        }
+
+        if (!CompileAndLinkShaders()) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to compile and link shaders");
+            return false;
+        }
+
+        UpdateViewport();
+
+        return true;
+    }
+
+    // ···
+    bool ImageRender::InitializeEGLDisplay()
+    {
+        display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+        if (display_ == EGL_NO_DISPLAY) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to get EGL display");
+            return false;
+        }
+
+        if (!eglInitialize(display_, nullptr, nullptr)) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to initialize EGL");
+            return false;
+        }
+
+        return true;
+    }
+
+    bool ImageRender::ChooseEGLConfig()
+    {
+        const EGLint attribs[] = {
+            EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+            EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+            EGL_RED_SIZE, 8,
+            EGL_GREEN_SIZE, 8,
+            EGL_BLUE_SIZE, 8,
+            EGL_ALPHA_SIZE, 8,
+            EGL_NONE
+        };
+
+        EGLint numConfigs;
+        if (!eglChooseConfig(display_, attribs, &config_, 1, &numConfigs) || numConfigs == 0) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to choose EGL config");
+            return false;
+        }
+        return true;
+    }
+
+    bool ImageRender::CreateEGLContext()
+    {
+        const EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
+        context_ = eglCreateContext(display_, config_, EGL_NO_CONTEXT, contextAttribs);
+        if (context_ == EGL_NO_CONTEXT) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to create EGL context");
+            return false;
+        }
+        return true;
+    }
+
+    bool ImageRender::CreateEGLSurface()
+    {
+        surface_ = eglCreateWindowSurface(display_, config_, window_, nullptr);
+        if (surface_ == EGL_NO_SURFACE) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to create EGL surface");
+            return false;
+        }
+        return true;
+    }
+
+    bool ImageRender::MakeCurrentContext()
+    {
+        if (!eglMakeCurrent(display_, surface_, surface_, context_)) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ImageRender", "Failed to make EGL context current");
+            return false;
+        }
+        return true;
+    }
+
+    void ImageRender::UpdateViewport()
+    {
+        glViewport(0, 0, static_cast<GLsizei>(width_), static_cast<GLsizei>(height_));
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ImageRender",
+                    "Viewport updated to %{public}llu x %{public}llu", width_, height_);
+    }
+
+    bool ImageRender::CompileAndLinkShaders()
+    {
+        GLuint vertexShader = CompileShader(GL_VERTEX_SHADER, g_vertexShaderSource);
+        if (vertexShader == 0) {
+            return false;
+        }
+
+        GLuint fragmentShader = CompileShader(GL_FRAGMENT_SHADER, g_fragmentShaderSource);
+        if (fragmentShader == 0) {
+            glDeleteShader(vertexShader);
+            return false;
+        }
+
+        shaderProgram_ = glCreateProgram();
+        glAttachShader(shaderProgram_, vertexShader);
+        glAttachShader(shaderProgram_, fragmentShader);
+        glLinkProgram(shaderProgram_);
+
+        GLint linked;
+        glGetProgramiv(shaderProgram_, GL_LINK_STATUS, &linked);
+        if (!linked) {
+            PrintProgramLinkError(shaderProgram_);
+            glDeleteProgram(shaderProgram_);
+            glDeleteShader(vertexShader);
+            glDeleteShader(fragmentShader);
+            return false;
+        }
+
+        glUseProgram(shaderProgram_);
+
+        positionAttrib_ = glGetAttribLocation(shaderProgram_, "aPosition");
+        texCoordAttrib_ = glGetAttribLocation(shaderProgram_, "aTexCoord");
+        textureUniform_ = glGetUniformLocation(shaderProgram_, "uTexture");
+
+        glDeleteShader(vertexShader);
+        glDeleteShader(fragmentShader);
+
+        return true;
+    }
+
+    void ImageRender::PrintProgramLinkError(GLuint program)
+    {
+        GLint infoLen = 0;
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLen);
+        if (infoLen > 1) {
+            std::unique_ptr<char[]> infoLog = std::make_unique<char[]>(infoLen);
+            glGetProgramInfoLog(program, infoLen, nullptr, infoLog.get());
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                        "ImageRender", "Error linking program: %{public}s", infoLog.get());
+        }
+    }
+    ```
 
 2. Create an **OH_NativeImage** instance.
-   
-   ```c++
-   // Create an OpenGL ES texture.
-   GLuint textureId;
-   glGenTextures(1, &textureId);
-   // Create an OH_NativeImage instance, which will be associated with an OpenGL ES texture.
-   OH_NativeImage* image = OH_NativeImage_Create(textureId, GL_TEXTURE_EXTERNAL_OES);
-   ```
-   
-3. Obtain the **OHNativeWindow** instance that functions as the producer.
+    <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-   ```c++
-   // Obtain an OHNativeWindow instance.
-   OHNativeWindow* nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
-   ```
+    ``` C++
+    glGenTextures(1, &nativeImageTexId_);
+    // ···
+    nativeImage_ = OH_NativeImage_Create(nativeImageTexId_, GL_TEXTURE_EXTERNAL_OES);
+    ```
+
+3. Obtain the **OHNativeWindow** instance that functions as the producer.
+    <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+
+    ``` C++
+    nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
+    ```
 
 4. Set the width and height of the **OHNativeWindow** instance.
+    <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
-   ```c++
-   int code = SET_BUFFER_GEOMETRY;
-   int32_t width = 800;
-   int32_t height = 600;
-   int32_t ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width, height);
-   ```
+    ``` C++
+    int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
+        static_cast<int32_t>(width_), static_cast<int32_t>(height_));
+    if (result != SUCCESS) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to set buffer geometry.");
+        return false;
+    }
+    ```
 
 5. Write the produced content to the **OHNativeWindowBuffer**.
 
-   1. Obtain an **OHNativeWindowBuffer** instance from the **NativeWindow** instance.
+    1. Obtain an **OHNativeWindowBuffer** instance from the **NativeWindow** instance.
+        <!-- @[nativewindow_request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
-      ```c++
-      OHNativeWindowBuffer *buffer = nullptr;
-      int fenceFd;
-      // Obtain an OHNativeWindowBuffer instance by calling OH_NativeWindow_NativeWindowRequestBuffer.
-      OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &buffer, &fenceFd);
-       
-      BufferHandle *handle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
-      ```
+        ``` C++
+        OHNativeWindowBuffer *buffer = nullptr;
+        int releaseFenceFd = INVALID_FD;
+        int32_t result = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer, &releaseFenceFd);
+        if (result != SUCCESS || buffer == nullptr) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                        "OHNativeRender", "Failed to request buffer, ret : %{public}d.", result);
+            return;
+        }
+        // ···
+        BufferHandle *handle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
+        ```
 
-   2. Write the produced content to the **OHNativeWindowBuffer**.
+    2. Write the produced content to the **OHNativeWindowBuffer**.
+        <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
-      ```c++
-      // Use mmap() to obtain the memory virtual address of buffer handle.
-      void *mappedAddr = mmap(handle->virAddr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
-      if (mappedAddr == MAP_FAILED) {
-          // mmap failed
-      }
-      static uint32_t value = 0x00;
-      value++;
-      uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
-      for (uint32_t x = 0; x < width; x++) {
-          for (uint32_t y = 0; y < height; y++) {
-              *pixel++ = value;
-          }
-      }
-      // Unmap the memory when the memory is no longer required.
-      int result = munmap(mappedAddr, handle->size);
-      if (result == -1) {
-          // munmap failed
-      }
-      ```
+        ``` C++
+        // Use mmap to obtain the virtual address.
+        void *mappedAddr = mmap(nullptr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
+        if (mappedAddr == MAP_FAILED) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to mmap buffer.");
+            return;
+        }
 
-   3. Flush the **OHNativeWindowBuffer** to the **NativeWindow**.
+        // Obtain the pixel pointer.
+        uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
 
-      ```c++
-      // Set the refresh region. If the Rect array in Region is a null pointer or rectNumber is 0, all contents in the OHNativeWindowBuffer are changed.
-      Region region{nullptr, 0};
-      // Flush the buffer to the consumer through OH_NativeWindow_NativeWindowFlushBuffer, for example, by displaying it on the screen.
-      OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, fenceFd, region);
-      ```
+        // Call the encapsulated function to draw gradients.
+        DrawGradient(pixel, handle->stride / BYTES_PER_PIXEL, height_);
 
-   4. Destroy the **OHNativeWindow** instance when it is no longer needed.
+        // Unmap the memory.
+        result = munmap(mappedAddr, handle->size);
+        if (result == FAILURE) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to munmap buffer.");
+        }
+        // ···
+        void OHNativeRender::DrawGradient(uint32_t* pixel, uint64_t width, uint64_t height)
+        {
+            static double time = 0.0;
+            time += ANIMATION_SPEED_INCREMENT;
+            double offset = (sin(time) + MAX_INTENSITY) / INTENSITY_MULTIPLIER;
 
-      ```c++
-      OH_NativeWindow_DestroyNativeWindow(nativeWindow);
-      ```
+            // Arrow parameters
+            const int arrowSize = std::min(width, height) / ARROW_SIZE_DIVISOR;
+            const int arrowX = width / ARROW_SIZE_DIVISOR;
+            const int arrowY = height / ARROW_SIZE_DIVISOR;
+            const int stemWidth = arrowSize / STEM_WIDTH_DIVISOR;
+            const int headWidth = arrowSize / HEAD_WIDTH_DIVISOR;
+            const int headLength = arrowSize / HEAD_LENGTH_DIVISOR;
+            const int stemStart = arrowX - arrowSize / ARROW_SIZE_DIVISOR;
+            const int stemEnd = arrowX + arrowSize / ARROW_SIZE_DIVISOR - headLength;
+
+            for (uint64_t y = 0; y < height; y++) {
+                for (uint64_t x = 0; x < width; x++) {
+                    double normalizedX = static_cast<double>(x) / static_cast<double>(width - 1);
+                    bool isArrow = false;
+
+                    if ((x >= stemStart && x <= stemEnd && y >= arrowY - stemWidth * HEAD_SLOPE_MULTIPLIER &&
+                        y <= arrowY + stemWidth * HEAD_SLOPE_MULTIPLIER) || (x >= stemEnd && x <= stemEnd + headLength &&
+                        fabs(static_cast<int>(y - arrowY)) <= (headWidth * HEAD_SLOPE_MULTIPLIER) *
+                        (1.0 - static_cast<double>(x - stemEnd) / headLength))) {
+                        isArrow = true;
+                    }
+
+                    uint8_t red = static_cast<uint8_t>((1.0 - normalizedX) * MAX_COLOR_VALUE);
+                    uint8_t blue = static_cast<uint8_t>(normalizedX * MAX_COLOR_VALUE);
+                    uint8_t green = 0;
+                    uint8_t alpha = MAX_COLOR_VALUE;
+                    if (isArrow) {
+                        red = green = blue = MAX_COLOR_VALUE;
+                    }
+                    double intensity = fabs(normalizedX - offset);
+                    intensity = MAX_INTENSITY - std::min(INTENSITY_MULTIPLIER * intensity, INTENSITY_LIMIT);
+                    intensity = std::max(intensity, MIN_INTENSITY);
+
+                    red = static_cast<uint8_t>(red * intensity);
+                    green = static_cast<uint8_t>(green * intensity);
+                    blue = static_cast<uint8_t>(blue * intensity);
+
+                    *pixel++ = (static_cast<uint32_t>(alpha) << ALPHA_SHIFT) | (static_cast<uint32_t>(red) << RED_SHIFT) |
+                        (static_cast<uint32_t>(green) << GREEN_SHIFT) | (static_cast<uint32_t>(blue) << BLUE_SHIFT);
+                }
+            }
+        }
+        ```
+
+    3. Flush the **OHNativeWindowBuffer** to the **NativeWindow**.
+        <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+
+        ``` C++
+            // Set the refresh area.
+            Region region{nullptr, 0};
+            // Submit the buffer to the consumer.
+            result = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer, NO_FENCE, region);
+            if (result != SUCCESS) {
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                            "OHNativeRender", "Failed to flush buffer, result : %{public}d.", result);
+            }
+        ```
+
+    4. Destroy NativeWindow when it is no longer needed.
+        <!-- @[destroy_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
+
+        ``` C++
+        (void)OH_NativeWindow_DestroyNativeWindow(nativeWindow_);
+        nativeWindow_ = nullptr;
+        ```
 
 6. Update the content to the OpenGL texture.
+   <!-- @[update_surfaceimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-   ```c++
-   // Update the content to the OpenGL texture.
-   ret = OH_NativeImage_UpdateSurfaceImage(image);
-   if (ret != 0) {
-       std::cout << "OH_NativeImage_UpdateSurfaceImage failed" << std::endl;
-   }
-   // Obtain the timestamp and transformation matrix of the texture image that recently called the **OH_NativeImage_UpdateSurfaceImage** function.
-   int64_t timeStamp = OH_NativeImage_GetTimestamp(image);
-   float matrix[16];
-   ret = OH_NativeImage_GetTransformMatrix(image, matrix);
-   if (ret != 0) {
-       std::cout << "OH_NativeImage_GetTransformMatrix failed" << std::endl;
-   }
-   
-   // Perform OpenGL post-processing on the texture, and then display the texture on the screen.
-   EGLBoolean eglRet = eglSwapBuffers(eglDisplay_, eglSurface_);
-   if (eglRet == EGL_FALSE) {
-       std::cout << "eglSwapBuffers failed" << std::endl;
-   }
-   ```
+    ``` C++
+    int32_t ret = OH_NativeImage_UpdateSurfaceImage(nativeImage_);
+    if (ret != 0) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine",
+                    "OH_NativeImage_UpdateSurfaceImage failed, ret: %{public}d, texId: %{public}u",
+                    ret, nativeImageTexId_);
+        return;
+    }
+
+    UpdateTextureMatrix();
+    if (imageRender_) {
+        imageRender_->Render();
+    } else {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine", "ImageRender is null");
+    }
+    // ···
+
+    void RenderEngine::UpdateTextureMatrix()
+    {
+        float matrix[16];
+        int32_t ret = OH_NativeImage_GetTransformMatrixV2(nativeImage_, matrix);
+        if (ret != 0) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderEngine",
+                        "OH_NativeImage_GetTransformMatrix failed, ret: %{public}d", ret);
+            return;
+        }
+        imageRender_->SetTransformMatrix(matrix);
+    }
+    ```
 
 7. Detach the **OH_NativeImage** from the current OpenGL texture and attach it to a new external texture.
+   <!-- @[nativeimage_change_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-   ```c++
-   // Detach an OH_NativeImage instance from the current OpenGL ES context.
-   ret = OH_NativeImage_DetachContext(image);
-   if (ret != 0) {
-       std::cout << "OH_NativeImage_DetachContext failed" << std::endl;
-   }
-   // Attach an OH_NativeImage instance to the current OpenGL ES context. The OpenGL ES texture will be bound to an GL_TEXTURE_EXTERNAL_OES instance and updated through the OH_NativeImage instance.
-   GLuint textureId2;
-   glGenTextures(1, &textureId2);
-   ret = OH_NativeImage_AttachContext(image, textureId2);
-   ```
+    ``` C++
+    // Detach an OH_NativeImage instance from the current OpenGL ES context.
+    OH_NativeImage_DetachContext(nativeImage_);
+    // [Start nativeimage_create]
+    glGenTextures(1, &nativeImageTexId_);
+    // [StartExclude nativeimage_create]
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, nativeImageTexId_);
+    // ···
+    int ret = OH_NativeImage_AttachContext(nativeImage_, nativeImageTexId_);
+    ```
 
 8. Destroy the **OH_NativeImage** instance when it is no longer needed.
+   <!-- @[destroy_nativeimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
-   ```c++
-   // Destroy the OH_NativeImage instance.
-   OH_NativeImage_Destroy(&image);
-   ```
+    ``` C++
+    OH_NativeImage_Destroy(&nativeImage_);
+    ```
 
+## Samples
+
+The following samples are provided to help you better understand how to use the native image module for development:
+
+- [Native Window (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)
+- [Smooth Gradient Animation Effect Based on NdkNativeImage (API 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)

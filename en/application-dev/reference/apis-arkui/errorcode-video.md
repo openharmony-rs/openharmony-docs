@@ -1,8 +1,14 @@
 # Video Component Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> This topic describes only module-specific error codes. For details about media error codes, see [Media Error Codes](../apis-media-kit/errorcode-media.md). For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 103601 Failed to Create the Player
 

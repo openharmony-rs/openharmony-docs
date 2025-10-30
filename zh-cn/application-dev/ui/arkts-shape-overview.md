@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu; @hehongyang3-->
 <!--Designer: @sunbees; @CCFFWW-->
 <!--Tester: @liuli0427; @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 绘制几何图形有两种方法：一是通过绘制组件[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)直接绘制出几何图形；二是通过形状裁剪属性[clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)将组件裁剪成几何图形。
 

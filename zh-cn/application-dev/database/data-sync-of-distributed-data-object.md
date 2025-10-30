@@ -200,168 +200,135 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 >
 > - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { commonType, distributedDataObject } from '@kit.ArkData';
+<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+
+``` TypeScript
+import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { distributedDataObject } from '@kit.ArkData';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
+import hilog from '@ohos.hilog';
 
 // 业务数据定义
-export class ContentInfo {
-  mainTitle: string | undefined;
-  textContent: string | undefined;
-  imageUriArray: Array<ImageInfo> | undefined;
-  isShowLocalInfo: boolean | undefined;
-  isAddLocalInfo: boolean | undefined;
-  selectLocalInfo: string | undefined;
-  attachments?: commonType.Assets | undefined;
+class Data {
+  public title: string | undefined;
+  public text: string | undefined;
 
-  constructor(
-    mainTitle: string | undefined,
-    textContent: string | undefined,
-    imageUriArray: Array<ImageInfo>| undefined,
-    isShowLocalInfo: boolean | undefined,
-    isAddLocalInfo: boolean | undefined,
-    selectLocalInfo: string | undefined,
-    attachments?: commonType.Assets | undefined
-  ) {
-    this.mainTitle = mainTitle;
-    this.textContent = textContent;
-    this.imageUriArray = imageUriArray;
-    this.isShowLocalInfo = isShowLocalInfo;
-    this.isAddLocalInfo = isAddLocalInfo;
-    this.selectLocalInfo = selectLocalInfo;
-    this.attachments = attachments;
-  }
-
-  flatAssets(): object {
-    let obj: object = this;
-    if (!this.attachments) {
-      return obj;
-    }
-    for (let i = 0; i < this.attachments.length; i++) {
-      obj[`attachments${i}`] = this.attachments[i];
-    }
-    return obj;
+  constructor(title: string | undefined, text: string | undefined) {
+    this.title = title;
+    this.text = text;
   }
 }
 
-export interface ImageInfo {
-  /**
-   * image PixelMap.
-   */
-  imagePixelMap: PixelMap;
+const DOMAIN: number = 0x0000;
+const TAG: string = '[DistributedDataObject]';
 
-  /**
-   * Image name.
-   */
-  imageName: string;
-}
-
-const TAG = '[DistributedDataObject]';
+let sessionId: string;
+let caller: Caller;
 let dataObject: distributedDataObject.DataObject;
+const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
+}
 
 export default class EntryAbility extends UIAbility {
-  private imageUriArray: Array<ImageInfo> = [];
-  private distributedObject: distributedDataObject.DataObject | undefined = undefined;
-  // 1. 迁移发起端在onContinue接口中创建分布式数据对象并保存数据到接收端
-  async onContinue(wantParam: Record<string, Object | undefined>): Promise<AbilityConstant.OnContinueResult> {
-    // 1.1 获取需要设置的分布式对象的资产关键uri
-    try {
-      let sessionId: string = distributedDataObject.genSessionId();
-      wantParam.distributedSessionId = sessionId;
-
-      let distrUriArray: Array<string> = [];
-      let assetUriArray = AppStorage.get<Array<string>>('assetUriArray');
-        if (assetUriArray) {
-          distrUriArray = assetUriArray;
-        }
-      // 1.2 创建分布式数据对象
-      let contentInfo: ContentInfo = new ContentInfo(
-        AppStorage.get('mainTitle'),
-        AppStorage.get('textContent'),
-        AppStorage.get('imageUriArray'),
-        AppStorage.get('isShowLocalInfo'),
-        AppStorage.get('isAddLocalInfo'),
-        AppStorage.get('selectLocalInfo'),
-      );
-      let source = contentInfo.flatAssets();
-      this.distributedObject = distributedDataObject.create(this.context, source);
-
-      // 1.3 将需要设置的分布式对象的资产或资产数组填充完成
-      if (assetUriArray?.length == 1) {
-        this.distributedObject?.setAsset('attachments', distrUriArray[0]). then(() => {
-          console.info('OnContinue setAsset');
-        })
-      } else {
-        this.distributedObject?.setAssets('attachments', distrUriArray). then(() => {
-          console.info('OnContinue setAssets');
-        })
-      }
-      // 1.4 将设置的资产或资产数组保存至迁移发起端
-      this.distributedObject?.setSessionId(sessionId);
-      this.distributedObject?.save(wantParam.targetDevice as string).catch((err: BusinessError) => {
-        console.error('OnContinue failed to save. code: ', err.code);
-        console.error('OnContinue failed to save. message: ', err.message);
-      });
-    } catch (error) {
-      console.error('OnContinue faild code: ', error.code);
-      console.error('OnContinue faild message: ', error.message);
-    }
-    console.info("OnContinue success!");
-    return AbilityConstant.OnContinueResult.AGREE;
-  }
-
-  // 2. 接收端在onCreate和onNewWant接口中创建分布式数据对象并加入组网进行数据恢复
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (launchParam.launchReason == AbilityConstant.LaunchReason.CONTINUATION) {
-      if (want.parameters && want.parameters.distributedSessionId) {
-        this.restoreDistributedObject(want);
-      }
-    }
-  }
-
-  // 2. 接收端在onCreate和onNewWant接口中创建分布式数据对象并加入组网进行数据恢复
-  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (launchParam.launchReason == AbilityConstant.LaunchReason.CONTINUATION) {
-      if (want.parameters && want.parameters.distributedSessionId) {
-        this.restoreDistributedObject(want);
-      }
-    }
-  }
-
-  async restoreDistributedObject(want: Want): Promise<void> {
-    if (!want.parameters || !want.parameters.distributedSessionId) {
-      console.error(TAG + 'missing sessionId');
+  // 1. 调用端调用startAbilityByCall接口拉起对端Ability
+  callRemote() {
+    if (caller) {
+      hilog.error(DOMAIN, TAG, 'call remote already');
       return;
     }
 
-    // 2.1 调用create接口创建并得到一个分布式数据对象实例
-    let mailInfo: ContentInfo = new ContentInfo(undefined, undefined, [], undefined, undefined, undefined, undefined);
-    dataObject = distributedDataObject.create(this.context, mailInfo);
+    // 1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId
+    sessionId = distributedDataObject.genSessionId();
+    hilog.info(DOMAIN, TAG, `gen sessionId: ${sessionId}`);
+    let deviceId = getRemoteDeviceId();
+    if (deviceId === '') {
+      hilog.warn(DOMAIN, TAG, 'no remote device');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, `get remote deviceId: ${deviceId}`);
 
-    // 2.2 注册恢复状态监听。收到状态为'restored'的回调通知时，表示接收端分布式数据对象已恢复发起端保存过来的数据（有资产数据时，对应的文件也迁移过来了）
-    dataObject.on('status', (sessionId: string, networkId: string, status: string) => {
-      console.log(TAG + `status change, sessionId:  ${sessionId}`);
-      console.log(TAG + `status change, networkId:  ${networkId}`);
-      if (status == 'restored') { // 收到'restored'的状态通知表示已恢复发起端保存的数据
-        console.log(TAG + `title: ${dataObject['title']}, text: ${dataObject['text']}`);
-        AppStorage.setOrCreate('mainTitle', dataObject['mainTitle']);
-        AppStorage.setOrCreate('textContent', dataObject['textContent']);
-        AppStorage.setOrCreate('imageUriArray', dataObject['imageUriArray']);
-        AppStorage.setOrCreate('isShowLocalInfo', dataObject['isShowLocalInfo']);
-        AppStorage.setOrCreate('isAddLocalInfo', dataObject['isAddLocalInfo']);
-        AppStorage.setOrCreate('selectLocalInfo', dataObject['selectLocalInfo']);
-        AppStorage.setOrCreate<Array<ImageInfo>>('imageUriArray', this.imageUriArray);
+    // 1.2 组装want，并将sessionId放入want
+    let want: Want = {
+      bundleName: 'com.example.collaboration',
+      abilityName: 'EntryAbility',
+      deviceId: deviceId,
+      parameters: {
+        'ohos.aafwk.param.callAbilityToForeground': true, // 前台启动，非必须
+        'distributedSessionId': sessionId
       }
-    });
+    }
+    try {
+      // 1.3 调用startAbilityByCall接口拉起对端Ability
+      this.context.startAbilityByCall(want).then((res) => {
+        if (!res) {
+          hilog.error(DOMAIN, TAG, 'startAbilityByCall failed');
+        }
+        caller = res;
+      })
+    } catch (e) {
+      let err = e as BusinessError;
+      hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+    }
+  }
 
-    // 2.3 从want.parameters中获取发起端放入的sessionId，调用setSessionId接口设置同步的sessionId
-    let sessionId = want.parameters.distributedSessionId as string;
-    console.log(TAG + `get sessionId: ${sessionId}`);
+  // 2. 拉起对端Ability后创建分布式数据对象
+  createDataObject() {
+    if (!caller) {
+      hilog.error(DOMAIN, TAG, 'call remote first');
+      return;
+    }
+    if (dataObject) {
+      hilog.error(DOMAIN, TAG, 'create dataObject already');
+      return;
+    }
+
+    // 2.1 创建分布式数据对象实例
+    let data = new Data('The title', 'The text');
+    dataObject = distributedDataObject.create(this.context, data);
+
+    // 2.2 注册数据变更监听
+    dataObject.on('change', changeCallBack);
+    // 2.3 设置同步sessionId加入组网
     dataObject.setSessionId(sessionId);
   }
+
+  // 3. 被调用端被拉起后创建和恢复分布式数据对象
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    if (want.parameters && want.parameters.distributedSessionId) {
+      // 3.1 创建分布式数据对象实例
+      let data = new Data(undefined, undefined);
+      dataObject = distributedDataObject.create(this.context, data);
+
+      // 3.2 注册数据变更监听
+      dataObject.on('change', changeCallBack);
+      // 3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网
+      let sessionId = want.parameters.distributedSessionId as string;
+      hilog.info(DOMAIN, TAG, `onCreate get sessionId: ${sessionId}`);
+      dataObject.setSessionId(sessionId);
+    }
+  }
 }
+
+// 获取可信组网中的设备
+function getRemoteDeviceId() {
+  let deviceId = '';
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
+    let devices = deviceManager.getAvailableDeviceListSync();
+    if (devices[0] && devices[0].networkId) {
+      deviceId = devices[0].networkId;
+    }
+  } catch (e) {
+    let err = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+  }
+  return deviceId;
+}
+
 ```
+               
 
 ### 在多端协同中使用分布式数据对象
 
@@ -401,128 +368,173 @@ export default class EntryAbility extends UIAbility {
 
  示例代码如下：
 
-```ts
-import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
-import { distributedDataObject } from '@kit.ArkData';
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { commonType, distributedDataObject } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { JSON } from '@kit.ArkTS';
 
 // 业务数据定义
-class Data {
-  title: string | undefined;
-  text: string | undefined;
+export class ContentInfo {
+  public mainTitle: string | undefined;
+  public textContent: string | undefined;
+  public imageUriArray: Array<ImageInfo> | undefined;
+  public isShowLocalInfo: boolean | undefined;
+  public isAddLocalInfo: boolean | undefined;
+  public selectLocalInfo: string | undefined;
+  public attachments?: commonType.Assets | undefined;
 
-  constructor(title: string | undefined, text: string | undefined) {
-    this.title = title;
-    this.text = text;
+  constructor(
+    mainTitle: string | undefined,
+    textContent: string | undefined,
+    imageUriArray: Array<ImageInfo> | undefined,
+    isShowLocalInfo: boolean | undefined,
+    isAddLocalInfo: boolean | undefined,
+    selectLocalInfo: string | undefined,
+    attachments?: commonType.Assets | undefined
+  ) {
+    this.mainTitle = mainTitle;
+    this.textContent = textContent;
+    this.imageUriArray = imageUriArray;
+    this.isShowLocalInfo = isShowLocalInfo;
+    this.isAddLocalInfo = isAddLocalInfo;
+    this.selectLocalInfo = selectLocalInfo;
+    this.attachments = attachments;
+  }
+
+  flatAssets(): object {
+    let obj: object = this;
+    if (!this.attachments) {
+      return obj;
+    }
+    for (let i = 0; i < this.attachments.length; i++) {
+      obj[`attachments${i}`] = this.attachments[i];
+    }
+    return obj;
   }
 }
 
-const TAG = '[DistributedDataObject]';
+export interface ImageInfo {
+  /**
+   * image PixelMap.
+   */
+  imagePixelMap: PixelMap;
 
-let sessionId: string;
-let caller: Caller;
-let dataObject: distributedDataObject.DataObject;
-const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
-  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
+  /**
+   * Image name.
+   */
+  imageName: string;
 }
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[DistributedDataObject]';
+let dataObject: distributedDataObject.DataObject;
 
 export default class EntryAbility extends UIAbility {
-  // 1. 调用端调用startAbilityByCall接口拉起对端Ability
-  callRemote() {
-    if (caller) {
-      console.error(TAG + 'call remote already');
-      return;
-    }
+  private imageUriArray: Array<ImageInfo> = [];
+  private distributedObject: distributedDataObject.DataObject | undefined = undefined;
 
-    // 1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId
-    sessionId = distributedDataObject.genSessionId();
-    console.log(TAG + `gen sessionId: ${sessionId}`);
-    let deviceId = getRemoteDeviceId();
-    if (deviceId == "") {
-      console.warn(TAG + 'no remote device');
-      return;
-    }
-    console.log(TAG + `get remote deviceId: ${deviceId}`);
+  // 1. 迁移发起端在onContinue接口中创建分布式数据对象并保存数据到接收端
+  async onContinue(wantParam: Record<string, Object | undefined>): Promise<AbilityConstant.OnContinueResult> {
+    // 1.1 获取需要设置的分布式对象的资产关键uri
+    try {
+      let sessionId: string = distributedDataObject.genSessionId();
+      wantParam.distributedSessionId = sessionId;
 
-    // 1.2 组装want，并将sessionId放入want
-    let want: Want = {
-      bundleName: 'com.example.collaboration',
-      abilityName: 'EntryAbility',
-      deviceId: deviceId,
-      parameters: {
-        'ohos.aafwk.param.callAbilityToForeground': true, // 前台启动，非必须
-        'distributedSessionId': sessionId
+      let distrUriArray: string[] = [];
+      let assetUriArray = AppStorage.get<Array<string>>('assetUriArray');
+      if (assetUriArray) {
+        distrUriArray = assetUriArray;
+      }
+      // 1.2 创建分布式数据对象
+      let contentInfo: ContentInfo = new ContentInfo(
+        AppStorage.get('mainTitle'),
+        AppStorage.get('textContent'),
+        AppStorage.get('imageUriArray'),
+        AppStorage.get('isShowLocalInfo'),
+        AppStorage.get('isAddLocalInfo'),
+        AppStorage.get('selectLocalInfo'),
+      );
+      let source = contentInfo.flatAssets();
+      this.distributedObject = distributedDataObject.create(this.context, source);
+
+      // 1.3 将需要设置的分布式对象的资产或资产数组填充完成
+      if (assetUriArray?.length === 1) {
+        this.distributedObject?.setAsset('attachments', distrUriArray[0]).then(() => {
+          hilog.info(DOMAIN, TAG, 'OnContinue setAsset');
+        })
+      } else {
+        this.distributedObject?.setAssets('attachments', distrUriArray).then(() => {
+          hilog.info(DOMAIN, TAG, 'OnContinue setAssets');
+        })
+      }
+      // 1.4 将设置的资产或资产数组保存至迁移发起端
+      this.distributedObject?.setSessionId(sessionId);
+      this.distributedObject?.save(wantParam.targetDevice as string).catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, 'OnContinue failed to save. code: ', err.code);
+        hilog.error(DOMAIN, TAG, 'OnContinue failed to save. message: ', err.message);
+      });
+    } catch (error) {
+      hilog.error(DOMAIN, TAG, 'OnContinue failed code: ', error.code);
+      hilog.error(DOMAIN, TAG, 'OnContinue failed message: ', error.message);
+    }
+    hilog.info(DOMAIN, TAG, 'OnContinue success!');
+    return AbilityConstant.OnContinueResult.AGREE;
+  }
+
+  // 2. 接收端在onCreate和onNewWant接口中创建分布式数据对象并加入组网进行数据恢复
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
+      if (want.parameters && want.parameters.distributedSessionId) {
+        this.restoreDistributedObject(want);
       }
     }
-    try {
-      // 1.3 调用startAbilityByCall接口拉起对端Ability
-      this.context.startAbilityByCall(want).then((res) => {
-        if (!res) {
-          console.error(TAG + 'startAbilityByCall failed');
-        }
-        caller = res;
-      })
-    } catch (e) {
-      let err = e as BusinessError;
-      console.error(TAG + `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+  }
+
+  // 2. 接收端在onCreate和onNewWant接口中创建分布式数据对象并加入组网进行数据恢复
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    if (launchParam.launchReason === AbilityConstant.LaunchReason.CONTINUATION) {
+      if (want.parameters && want.parameters.distributedSessionId) {
+        this.restoreDistributedObject(want);
+      }
     }
   }
 
-  // 2. 拉起对端Ability后创建分布式数据对象
-  createDataObject() {
-    if (!caller) {
-      console.error(TAG + 'call remote first');
-      return;
-    }
-    if (dataObject) {
-      console.error(TAG + 'create dataObject already');
+  async restoreDistributedObject(want: Want): Promise<void> {
+    if (!want.parameters || !want.parameters.distributedSessionId) {
+      hilog.error(DOMAIN, TAG, 'missing sessionId');
       return;
     }
 
-    // 2.1 创建分布式数据对象实例
-    let data = new Data('The title', 'The text');
-    dataObject = distributedDataObject.create(this.context, data);
+    // 2.1 调用create接口创建并得到一个分布式数据对象实例
+    let mailInfo: ContentInfo = new ContentInfo(undefined, undefined, [], undefined, undefined, undefined, undefined);
+    dataObject = distributedDataObject.create(this.context, mailInfo);
 
-    // 2.2 注册数据变更监听
-    dataObject.on('change', changeCallBack);
-    // 2.3 设置同步sessionId加入组网
+    // 2.2 注册恢复状态监听。收到状态为'restored'的回调通知时，表示接收端分布式数据对象已恢复发起端保存过来的数据（有资产数据时，对应的文件也迁移过来了）
+    dataObject.on('status', (sessionId: string, networkId: string, status: string) => {
+      hilog.info(DOMAIN, TAG, `status change, sessionId:  ${sessionId}`);
+      hilog.info(DOMAIN, TAG, `status change, networkId:  ${networkId}`);
+      if (status === 'restored') { // 收到'restored'的状态通知表示已恢复发起端保存的数据
+        hilog.info(DOMAIN, TAG, `title: ${dataObject['title']}, text: ${dataObject['text']}`);
+        AppStorage.setOrCreate('mainTitle', dataObject['mainTitle']);
+        AppStorage.setOrCreate('textContent', dataObject['textContent']);
+        AppStorage.setOrCreate('imageUriArray', dataObject['imageUriArray']);
+        AppStorage.setOrCreate('isShowLocalInfo', dataObject['isShowLocalInfo']);
+        AppStorage.setOrCreate('isAddLocalInfo', dataObject['isAddLocalInfo']);
+        AppStorage.setOrCreate('selectLocalInfo', dataObject['selectLocalInfo']);
+        AppStorage.setOrCreate<Array<ImageInfo>>('imageUriArray', this.imageUriArray);
+      }
+    });
+
+    // 2.3 从want.parameters中获取发起端放入的sessionId，调用setSessionId接口设置同步的sessionId
+    let sessionId = want.parameters.distributedSessionId as string;
+    hilog.info(DOMAIN, TAG, `get sessionId: ${sessionId}`);
     dataObject.setSessionId(sessionId);
   }
-
-  // 3. 被调用端被拉起后创建和恢复分布式数据对象
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (want.parameters && want.parameters.distributedSessionId) {
-      // 3.1 创建分布式数据对象实例
-      let data = new Data(undefined, undefined);
-      dataObject = distributedDataObject.create(this.context, data);
-
-      // 3.2 注册数据变更监听
-      dataObject.on('change', changeCallBack);
-      // 3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网
-      let sessionId = want.parameters.distributedSessionId as string;
-      console.log(TAG + `onCreate get sessionId: ${sessionId}`);
-      dataObject.setSessionId(sessionId);
-    }
-  }
 }
 
-// 获取可信组网中的设备
-function getRemoteDeviceId() {
-  let deviceId = "";
-  try {
-    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
-    let devices = deviceManager.getAvailableDeviceListSync();
-    if (devices[0] && devices[0].networkId) {
-      deviceId = devices[0].networkId;
-    }
-  } catch (e) {
-    let err = e as BusinessError;
-    console.error(TAG + `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-  }
-  return deviceId;
-}
 ```
 
 ## 相关实例

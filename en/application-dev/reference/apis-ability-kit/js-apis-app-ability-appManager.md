@@ -52,7 +52,7 @@ Checks whether the system is undergoing a stability test. This API uses an async
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes|Callback used to return the API call result and the result indicating whether the system is undergoing a stability test. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise. |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the check result for whether the system is undergoing a stability test. Otherwise, **err** is an error object. You can perform error handling or other custom processing.<br>**true** is returned if the system is undergoing a stability test; **false** is returned otherwise. |
 
 **Error codes**
 
@@ -96,7 +96,7 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback. **true** if the system is undergoing a stability test, **false** otherwise.|
+  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback.<br>**true** is returned if the system is undergoing a stability test; **false** is returned otherwise.|
 
 **Error codes**
 
@@ -134,7 +134,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
   | Type| Description| 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise.|
+  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback.<br>**true** is returned if the device is RAM-constrained; **false** is returned otherwise.|
 
 **Error codes**
 
@@ -171,7 +171,7 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | Yes|Callback used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback. **true** if the device is RAM-constrained, **false** otherwise. |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the check result for whether the device is RAM-constrained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.<br>**true** is returned if the device is RAM-constrained; **false** is returned otherwise. |
 
 **Error codes**
 
@@ -247,7 +247,7 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | Yes|Callback used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
+  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the maximum memory (RAM allocation) available to the current application. Otherwise, **err** is an error object. You can perform error handling or other custom processing based on the return value.|
 
 **Error codes**
 
@@ -276,7 +276,7 @@ appManager.getAppMemorySize((err, data) => {
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
-Obtains information about the running processes of this application. This API uses a promise to return the result.
+Obtains information about the running processes of the current application. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -318,7 +318,7 @@ appManager.getRunningProcessInformation().then((data) => {
 
 getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-Obtains information about the running processes of this application. This API uses an asynchronous callback to return the result.
+Obtains information about the running processes of the current application. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -333,7 +333,7 @@ Obtains information about the running processes of this application. This API us
 
   | Name| Type| Mandatory| Description| 
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | Yes|Callback used to return the API call result and the process running information. You can perform error handling or custom processing in this callback.|
+  | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the information about the running processes. Otherwise, **err** is an error object. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -745,7 +745,11 @@ try {
 
 isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
-Checks whether an application is running. This API uses a promise to return the result.
+Checks whether the application with the specified bundle name and application clone index is running across all users. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> If the application is not installed for the current user, error code 16000073 is returned. If the application is installed for the current user, the system checks whether the application is running across all users.
 
 **Required permissions**: ohos.permission.GET_RUNNING_INFO
 
@@ -762,7 +766,7 @@ Checks whether an application is running. This API uses a promise to return the 
 
 | Type          | Description             |
 | -------------- | ---------------- |
-| Promise\<boolean> | Promise used to return the result. **true** if running, **false** otherwise.|
+| Promise\<boolean> | Promise used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
 
 **Error codes**
 

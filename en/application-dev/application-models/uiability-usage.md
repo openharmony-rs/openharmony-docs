@@ -156,32 +156,24 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
     @Entry
     @Component
     struct Index {
-      @State message: string = 'Hello World';
       @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       build() {
-        Scroll() {
-          Column() {
-            Text(this.message)
-              .id('HelloWorld')
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
-              .alignRules({
-                center: { anchor: '__container__', align: VerticalAlign.Center },
-                middle: { anchor: '__container__', align: HorizontalAlign.Center }
-              })
-              .onClick(() => {
-                this.message = 'Welcome';
-              })
+        List({ space: 4 }) {
+          ListItem() {
             Button('terminateSelf').onClick(() => {
               this.context.terminateSelf()
             })
+              .width('100%')
 
+          }
+
+          ListItem() {
             Button('Start UIAbilityB').onClick((event: ClickEvent) => {
               let want: Want = {
                 bundleName: this.context.abilityInfo.bundleName,
                 abilityName: 'UIAbilityB',
-              }
+              };
 
               this.context.startAbility(want, (err: BusinessError) => {
                 if (err.code) {
@@ -189,8 +181,12 @@ When the launcher ability (UIAbilityA) starts the target ability (UIAbilityB) us
                 }
               });
             })
+              .width('100%')
           }
         }
+        .listDirection(Axis.Vertical)
+        .backgroundColor(0xDCDCDC).padding(20)
+        .margin({top:250})
       }
     }
     ```

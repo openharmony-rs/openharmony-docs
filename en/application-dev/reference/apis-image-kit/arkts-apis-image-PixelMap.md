@@ -200,7 +200,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
       console.info('Succeeded in reading the image data in the area.'); // Called if the condition is met.
       console.info('RGBA data is ', new Uint8Array(area.pixels));
     }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`); // Called if no condition is met.
+      console.error("Failed to read the image data in the area. code is ", error);// Called if no condition is met.
     })
   }
 }
@@ -217,7 +217,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
       console.info('Succeeded in reading the image data in the area.'); // Called if the condition is met.
       console.info('YUV data is ', new Uint8Array(area.pixels));
     }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`); // Called if no condition is met.
+      console.error("Failed to read the image data in the area. code is ", error);// Called if no condition is met.
     })
   }
 }
@@ -263,7 +263,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.readPixels(area, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to read pixelmap from the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to read pixelmap from the specified area. code is ", error);
         return;
       } else {
         console.info('Succeeded in reading pixelmap from the specified area.');
@@ -283,7 +283,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.readPixels(area, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to read pixelmap from the specified area. code is ${error.code}, message is ${error.message}`);
+        console.error("Failed to read pixelmap from the specified area. code is ", error);
         return;
       } else {
         console.info('Succeeded in reading pixelmap from the specified area.');

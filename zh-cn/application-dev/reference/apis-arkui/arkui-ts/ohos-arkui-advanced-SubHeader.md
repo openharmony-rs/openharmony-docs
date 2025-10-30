@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
@@ -449,7 +449,7 @@ struct SubHeaderExample {
           value: 'selectDemo',
           selected: 0,
           onSelect: (index: number, value?: string) => {
-            console.log(`SubHeader onSelect index : ${index}, value: ${value}`);
+            console.info(`SubHeader onSelect index : ${index}, value: ${value}`);
           }
         },
         operationType: OperationType.ICON_GROUP,

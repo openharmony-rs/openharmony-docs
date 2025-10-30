@@ -36,7 +36,7 @@ Obtains a WantAgent object. This API uses an asynchronous callback to return the
 | Name    | Type                      | Mandatory| Description                   |
 | -------- | -------------------------- | ---- | ----------------------- |
 | info     | [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)              | Yes  | Configuration information required for creating the WantAgent object, including the target UIAbility, operation type, and request code. In **WantAgentInfo**, a third-party application is only allowed to specify its own UIAbility.|
-| callback | AsyncCallback\<WantAgent\> | Yes  | Callback used to return the WantAgent object.|
+| callback | AsyncCallback\<WantAgent\> | Yes  | Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the WantAgent object obtained. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -87,7 +87,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 // getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
-  if (err) {
+  if (err.code) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
     wantAgentData = data;
@@ -197,7 +197,7 @@ Obtains the bundle name of the application to which the WantAgent object belongs
 | Name    | Type                   | Mandatory| Description                             |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | Yes  | Target WantAgent object.                    |
-| callback | AsyncCallback\<string\> | Yes  | Callback used to return the bundle name.|
+| callback | AsyncCallback\<string\> | Yes  | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the WantAgent object obtained. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 

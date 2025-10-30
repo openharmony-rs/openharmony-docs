@@ -42,7 +42,6 @@ Add the following library to **CMakeLists.txt**.
 libace_napi.z.so
 libnet_websocket.so
 ```
-
 **Including Header Files**
 
 ```c
@@ -50,12 +49,13 @@ libnet_websocket.so
 #include "network/netstack/net_websocket.h"
 #include "network/netstack/net_websocket_type.h"
 ```
-
 ### Building the Project
 
 1. Write the API call code in the source file to allow applications to receive the URL string passed from ArkTS, create a pointer to the **WebSocketClient** object, and check whether the connection to the WebSocket server is successful.
 
-```cpp
+<!-- @[websocket_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "network/netstack/net_websocket.h"
 #include "network/netstack/net_websocket_type.h"
@@ -66,42 +66,40 @@ libnet_websocket.so
 #undef LOG_DOMAIN
 #undef LOG_TAG
 #define LOG_DOMAIN 0x3200 // Global domain, which identifies the service domain.
-#define LOG_TAG "WSDEMO"   // Global tag, which identifies the module log tag.
+#define LOG_TAG "WSDEMO"  // Global tag, which identifies the module log tag.
+
 
 // Global variables of the WebSocket client
-static struct WebSocket *client = nullptr;
+static struct WebSocket *g_client = nullptr;
 
-static void onOpen(struct WebSocket *client, WebSocket_OpenResult openResult)
+static void onOpen(struct WebSocket *wsClient, WebSocket_OpenResult openResult)
 {
-    (void)client;
-    OH_LOG_INFO(LOG_APP, "onOpen: code: %{public}u, reason: %{public}s",
-        openResult.code, openResult.reason);
+    (void)wsClient;
+    OH_LOG_INFO(LOG_APP, "onOpen: code: %{public}u, reason: %{public}s", openResult.code, openResult.reason);
 }
 
-static void onMessage(struct WebSocket *client, char *data, uint32_t length)
+static void onMessage(struct WebSocket *wsClient, char *data, uint32_t length)
 {
-    (void)client;
+    (void)wsClient;
     char *tmp = new char[length + 1];
     for (uint32_t i = 0; i < length; i++) {
         tmp[i] = data[i];
     }
     tmp[length] = '\0';
-    OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s",
-        length, tmp);
+    OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s", length, tmp);
 }
 
-static void onError(struct WebSocket *client, WebSocket_ErrorResult errorResult)
+static void onError(struct WebSocket *wsClient, WebSocket_ErrorResult errorResult)
 {
-    (void)client;
-    OH_LOG_INFO(LOG_APP, "onError: code: %{public}u, message: %{public}s",
-        errorResult.errorCode, errorResult.errorMessage);
+    (void)wsClient;
+    OH_LOG_INFO(LOG_APP, "onError: code: %{public}u, message: %{public}s", errorResult.errorCode,
+                errorResult.errorMessage);
 }
 
-static void onClose(struct WebSocket *client, WebSocket_CloseResult closeResult)
+static void onClose(struct WebSocket *wsClient, WebSocket_CloseResult closeResult)
 {
-    (void)client;
-    OH_LOG_INFO(LOG_APP, "onClose: code: %{public}u, reason: %{public}s",
-        closeResult.code, closeResult.reason);
+    (void)wsClient;
+    OH_LOG_INFO(LOG_APP, "onClose: code: %{public}u, reason: %{public}s", closeResult.code, closeResult.reason);
 }
 
 static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
@@ -109,17 +107,17 @@ static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_value result;
-    
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-    
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
     size_t length = 0;
     napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
     if (status != napi_ok) {
         napi_get_boolean(env, false, &result);
         return result;
     }
-    
-    if (client != nullptr) {
+
+    if (g_client != nullptr) {
         OH_LOG_INFO(LOG_APP, "there is already one websocket client running.");
         napi_get_boolean(env, false, &result);
         return result;
@@ -127,37 +125,38 @@ static napi_value ConnectWebsocket(napi_env env, napi_callback_info info)
     char *buf = new char[length + 1];
     std::memset(buf, 0, length + 1);
     napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
-	// Create a pointer to the WebSocketClient object.
-    client = OH_WebSocketClient_Constructor(onOpen, onMessage, onError, onClose);
-    if (client == nullptr) {
+    // Create a pointer to the WebSocketClient object.
+    g_client = OH_WebSocketClient_Constructor(onOpen, onMessage, onError, onClose);
+    if (g_client == nullptr) {
         delete[] buf;
         napi_get_boolean(env, false, &result);
         return result;
     }
-	// Connect to the WebSocket server identified by the URL stored in the buffer.
-    int connectRet = OH_WebSocketClient_Connect(client, buf, {});
-    
+    // Connect to the WebSocket server identified by the URL stored in the buffer.
+    int connectRet = OH_WebSocketClient_Connect(g_client, buf, {});
+
     delete[] buf;
     napi_get_boolean(env, connectRet == 0, &result);
     return result;
 }
+
 
 static napi_value SendMessage(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_value result;
-    
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-    
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
     size_t length = 0;
     napi_status status = napi_get_value_string_utf8(env, args[0], nullptr, 0, &length);
     if (status != napi_ok) {
         napi_create_int32(env, -1, &result);
         return result;
     }
-    
-    if (client == nullptr) {
+
+    if (g_client == nullptr) {
         OH_LOG_INFO(LOG_APP, "websocket client not connected.");
         napi_create_int32(env, WebSocket_ErrCode::WEBSOCKET_CLIENT_NULL, &result);
         return result;
@@ -165,9 +164,9 @@ static napi_value SendMessage(napi_env env, napi_callback_info info)
     char *buf = new char[length + 1];
     std::memset(buf, 0, length + 1);
     napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
-	// Send the messages in the buffer to the server.
-    int ret = OH_WebSocketClient_Send(client, buf, length);
-    
+    // Send the messages in the buffer to the server.
+    int ret = OH_WebSocketClient_Send(g_client, buf, length);
+
     delete[] buf;
     napi_create_int32(env, ret, &result);
     return result;
@@ -176,23 +175,22 @@ static napi_value SendMessage(napi_env env, napi_callback_info info)
 static napi_value CloseWebsocket(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if (client == nullptr) {
+    if (g_client == nullptr) {
         OH_LOG_INFO(LOG_APP, "websocket client not connected.");
         napi_create_int32(env, -1, &result);
         return result;
     }
-	// Close the WebSocket connection.
-    int ret = OH_WebSocketClient_Close(client, {
-        .code = 0,
-        .reason = "Actively Close",
-    });
-	// Release the WebSocket resources.
-    OH_WebSocketClient_Destroy(client);
-    client = nullptr;
+    // Close the WebSocket connection.
+    int ret = OH_WebSocketClient_Close(g_client, {
+                                                   .code = 0,
+                                                   .reason = "Actively Close",
+                                               });
+    // Release the WebSocket resources.
+    OH_WebSocketClient_Destroy(g_client);
+    g_client = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
-
 ```
 
 On receiving a WebSocket URL, the **ConnectWebsocket** function attempts to connect to the server identified by the URL. If the connection is successful, **true** is returned. Otherwise, **false** is returned. Before creating a pointer to the **WebSocketClient** object, define the **onOpen**, **onMessage**, **onError**, and **onClose** callbacks for the WebSocket connection. In the sample code, functions such as `OH_WebSocketClient_Send` and `OH_WebSocketClient_Close` are also called to send messages to the server and proactively close the WebSocket connection.
@@ -200,12 +198,15 @@ On receiving a WebSocket URL, the **ConnectWebsocket** function attempts to conn
 
 2. Initialize and export the `napi_value` objects encapsulated through **NAPI**, and expose the preceding functions to JavaScript through external function APIs. In the sample code, the `ConnectWebsocket` function is exposed as the external function `Connect`, the `SendMessage` function is exposed as the external function `Send`, and the `CloseWebsocket` function is exposed as the external function `Close`.
 
-```C
+<!-- @[websocket_extern_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
-        {"Connect", nullptr, ConnectWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr },
-        {"Send", nullptr, SendMessage, nullptr, nullptr, nullptr, napi_default, nullptr },
+        {"Connect", nullptr, ConnectWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"Send", nullptr, SendMessage, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"Close", nullptr, CloseWebsocket, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -216,26 +217,27 @@ EXTERN_C_END
 
 3. Register the objects successfully initialized in the previous step into the Node.js file by using the `napi_module_register` function of `RegisterEntryModule`.
 
-```C
+<!-- @[websocket_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 static napi_module demoModule = {
     .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
+    .nm_priv = ((void *)0),
+    .reserved = {0},
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 ```
 
 4. Define the types of the functions in the `index.d.ts` file of the project. For example, the `Connect` function takes a string parameter as the input parameter and returns a Boolean value indicating whether the WebSocket connection is successfully established.
 
-```ts
+<!-- @[websocket_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const Connect: (url: string) => boolean;
 export const Send: (data: string) => number;
 export const Close: () => number;
@@ -243,81 +245,95 @@ export const Close: () => number;
 
 5. Call the encapsulated APIs in the `index.ets` file.
 
-```ts
-import testWebsocket from 'libentry.so'
+<!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import testWebsocket from 'libentry.so';
 
 @Entry
 @Component
 struct Index {
-  @State wsUrl: string = ''
-  @State content: string = ''
-  @State connecting: boolean = false
+  @State wsUrl: string = '';
+  @State content: string = '';
+  @State connecting: boolean = false;
 
   build() {
     Navigation() {
       Column() {
         Column() {
-          Text("WebSocket address: ")
+          Text($r('app.string.WebSocket_address'))
             .fontColor(Color.Gray)
             .textAlign(TextAlign.Start)
             .width('100%')
           TextInput()
             .width('100%')
+            .id('textInput_address')
             .onChange((value) => {
-              this.wsUrl = value
+              this.wsUrl = value;
             })
         }
         .margin({
-          bottom: 16
+          bottom: 16 // Spacing from the bottom
         })
         .padding({
-          left: 16,
-          right: 16
+          left: 16, // Spacing from the left
+          right: 16 // Spacing from the right
         })
 
         Column() {
-          Text("Content: ")
+          Text($r('app.string.Content'))
             .fontColor(Color.Gray)
             .textAlign(TextAlign.Start)
             .width('100%')
           TextInput()
             .width('100%')
+            .id('textInput_content')
             .enabled(this.connecting)
             .onChange((value) => {
-              this.content = value
+              this.content = value;
             })
         }
         .margin({
-          bottom: 16
+          bottom: 16 // Spacing from the bottom
         })
         .padding({
-          left: 16,
-          right: 16
+          left: 16, // Spacing from the left
+          right: 16 // Spacing from the right
         })
 
         Blank()
 
-        Column({ space: 12 }) {
-          Button('Connect')
+        Column({
+          space: 12 // Spacing
+        }) {
+          Button($r('app.string.Connect'))
+            .id('Connect')
             .enabled(!this.connecting)
             .onClick(() => {
-              let connRet = testWebsocket.Connect(this.wsUrl)
+              let connRet = testWebsocket.Connect(this.wsUrl);
               if (connRet) {
                 this.connecting = true;
-              }
+                // ···
+              } 
+            // ···
             })
-          Button('Send')
+          Button($r('app.string.Send'))
+            .id('Send')
             .enabled(this.connecting)
             .onClick(() => {
-              testWebsocket.Send(this.content)
+              testWebsocket.Send(this.content);
+            // ···
             })
-          Button('Close')
+          Button($r('app.string.Close'))
+            .id('Close')
             .enabled(this.connecting)
             .onClick(() => {
-              let closeResult = testWebsocket.Close()
+              let closeResult = testWebsocket.Close();
               if (closeResult != -1) {
-                this.connecting = false
-              }
+                this.connecting = false;
+                // ···
+              } 
+            // ···
             })
         }
       }
@@ -357,4 +373,5 @@ Description of settings:
 ![Demo input](./figures/websocket-demo-2.jpg)
 
 ![Demo log output](./figures/websocket-demo-log.png)
+
 

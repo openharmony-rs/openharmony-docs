@@ -1,4 +1,4 @@
-# @Entry: Page Entry
+# @Entry: Page Entry Declaration
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

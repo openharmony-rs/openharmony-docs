@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 添加图片区域通常用[image](../reference/apis-arkui/arkui-js/js-components-basic-image.md)组件来实现，使用的方法和text组件类似。
 

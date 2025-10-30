@@ -98,7 +98,9 @@
 
 请保证自定义字体文件已放置到设备正确的路径下。
 
-```ts
+<!-- @[arkts_custom_font](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'

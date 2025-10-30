@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本文主要介绍了多UI实例涉及的概念，以及使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的方法替换全局接口的原因，并提供了相应的替换方案。
 
@@ -33,7 +33,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 
 部分多实例替代接口如下表所示，UIContext实例支持的全量接口以[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中描述为准。
 
-本文中所述的全局接口从API version 18开始废弃。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API version 20开始生效，其余接口从API version 18开始生效。
+示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API version 20开始生效，其余接口从API version 18开始生效。
 
 |               全局接口                |               替代接口                |            说明            |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
@@ -214,6 +214,12 @@ export default class EntryAbility extends UIAbility {
     // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
   }
 
+  onWindowStageDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    // 在窗口销毁时需要移除失效的UIContext
+    PixelUtils.removeUIContext();
+  }
+
   // ...
 }
 ```
@@ -255,8 +261,12 @@ const DOMAIN = 0x0000;
 
 export class PixelUtils {
   static uiContext : UIContext | undefined;
-  static setUIContext(uiContext : UIContext) : void {
+  static setUIContext(uiContext : UIContext): void {
     PixelUtils.uiContext = uiContext;
+  }
+
+  static removeUIContext(): void {
+    PixelUtils.uiContext = undefined;
   }
 
   static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
@@ -289,7 +299,7 @@ export class PixelUtils {
 ```
 ```ts
 // entryability/EntryAbility.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { PixelUtils } from '../common/Utils';
@@ -317,6 +327,11 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
+  onWindowStageDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    // 在窗口销毁时需要移除失效的UIContext。
+    PixelUtils.removeUIContext();
+  }
   // ...
 }
 ```
@@ -605,6 +620,10 @@ export class PixelUtils {
     PixelUtils.uiContext = uiContext;
   }
 
+  static removeUIContext(): void {
+    PixelUtils.uiContext = undefined;
+  }
+
  static vp2px(vpValue: number, uiContext?: UIContext): number | undefined {
    let _uiContext = uiContext??PixelUtils.uiContext;
     if (!_uiContext || !_uiContext.isAvailable()) {
@@ -697,6 +716,10 @@ export class ContextUtils {
     ContextUtils.context = context;
   }
 
+  static removeContext(): void {
+    ContextUtils.context = undefined;
+  }
+
   static getContext(uiContext?: UIContext): Context | undefined {
     if (uiContext) {
       return uiContext.getHostContext();
@@ -721,6 +744,11 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
     ContextUtils.setContext(this.context);
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+    ContextUtils.removeContext();
   }
 
   // ...

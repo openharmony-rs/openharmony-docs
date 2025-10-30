@@ -53,13 +53,13 @@ Defines an accessibility event.
 
 type AccessibilityElement = _AccessibilityElement
 
-Accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9).
+Indicates an accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9).
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _AccessibilityElement  | Indicates an accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9).|
+| _AccessibilityElement  | Accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9).|
 
 **Example**
 
@@ -79,7 +79,7 @@ Provides attribute names and value types of a node element. For details, see [El
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _ElementAttributeValues | Provides attribute names and value types of a node element. For details, see [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues).|
+| _ElementAttributeValues | Attribute names and value types of a node element. For details, see [ElementAttributeValues](js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues).|
 
 **Example**
 
@@ -99,7 +99,7 @@ Enumerates the focus directions. For details, see [FocusDirection](js-apis-inner
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _FocusDirection | Enumerates the focus directions. For details, see [FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection).|
+| _FocusDirection | Focus directions. For details, see [FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection).|
 
 **Example**
 
@@ -139,7 +139,7 @@ Enumerates the focus types. For details, see [FocusType](js-apis-inner-applicati
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _FocusType | Enumerates the focus types. For details, see [FocusType](js-apis-inner-application-accessibilityExtensionContext.md#focustype).|
+| _FocusType | Focus types. For details, see [FocusType](js-apis-inner-application-accessibilityExtensionContext.md#focustype).|
 
 **Example**
 
@@ -159,7 +159,7 @@ Enumerates the window types. For details, see [WindowType](js-apis-inner-applica
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _WindowType | Enumerates the window types. For details, see [WindowType](js-apis-inner-application-accessibilityExtensionContext.md#windowtype).|
+| _WindowType | Window types. For details, see [WindowType](js-apis-inner-application-accessibilityExtensionContext.md#windowtype).|
 
 **Example**
 
@@ -179,7 +179,7 @@ Defines a rectangle. For details, see [Rect](js-apis-inner-application-accessibi
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _Rect | Defines a rectangle. For details, see [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect).|
+| _Rect | Rectangle. For details, see [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect).|
 
 **Example**
 
@@ -286,8 +286,8 @@ Enumerates the touch guide event types.
 
 | Type               | Description                 |
 | ---------- | ------------------- |
-| 'touchBegin' | Start of touch in touch guide mode.|
-| 'touchEnd' | End of touch in touch guide mode.|
+| 'touchBegin' | Start of touch.|
+| 'touchEnd' | End of touch.|
 
 ## AccessibilityExtensionAbility.onConnect<sup>(deprecated)</sup>
 
@@ -308,7 +308,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onConnect(): void {
-    console.log('AxExtensionAbility onConnect');
+    console.info('AxExtensionAbility onConnect');
   }
 }
 ```
@@ -332,7 +332,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onDisconnect(): void {
-    console.log('AxExtensionAbility onDisconnect');
+    console.info('AxExtensionAbility onDisconnect');
   }
 }
 ```
@@ -362,9 +362,9 @@ import { AccessibilityExtensionAbility, AccessibilityEvent } from '@kit.Accessib
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityEvent(event: AccessibilityEvent): void {
-    console.log('AxExtensionAbility onAccessibilityEvent');
+    console.info('AxExtensionAbility onAccessibilityEvent');
     if (event.eventType === 'click') {
-      console.log('AxExtensionAbility onAccessibilityEvent: click');
+      console.info('AxExtensionAbility onAccessibilityEvent: click');
     }
   }
 }
@@ -401,9 +401,9 @@ import { KeyEvent } from '@kit.InputKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onKeyEvent(keyEvent: KeyEvent): boolean {
-    console.log('AxExtensionAbility onKeyEvent');
+    console.info('AxExtensionAbility onKeyEvent');
     if (keyEvent.key.code === 16) {
-      console.log('AxExtensionAbility onKeyEvent: intercept 16');
+      console.info('AxExtensionAbility onKeyEvent: intercept 16');
       return true;
     }
     return false;

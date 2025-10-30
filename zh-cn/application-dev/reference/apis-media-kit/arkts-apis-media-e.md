@@ -363,6 +363,18 @@ Codec MIME类型枚举。
 | PRESERVE_ASPECT_RATIO | 0    | 保持与原始图像相同的宽高比例，即与物理屏幕宽高比例一致。 |
 | SCALE_TO_FILL | 1    | 进行图像拉伸填充，适配设置的宽度和高度。 |
 
+## PickerMode<sup>22+</sup>
+
+表示屏幕录制Picker模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+| 名称                              | 值   | 说明                                         |
+| --------------------------------- | ---- | -------------------------------------------- |
+| WINDOW_ONLY | 0    | 仅显示窗口列表。 |
+| SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
+| SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **说明：**

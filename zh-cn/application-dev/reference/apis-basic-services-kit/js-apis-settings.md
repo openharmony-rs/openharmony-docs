@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-获取数据项的值。此方法相较getValue为同步方法。
+获取数据库中DEVICE_SHARED域指定数据项的值。此方法相较getValue为同步方法。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -532,7 +532,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 
 setValueSync(context: Context, name: string, value: string): boolean
 
-设置数据项的值。此方法相较setValue为同步方法。
+将数据项名称及数据项的值保存到DEVICE_SHARED域数据库中。此方法相较setValue为同步方法。
 
 - 如果数据库中已经存在该数据项，setValueSync方法将更新该数据项的值。
 - 如果数据库中不存在该数据项，setValueSync方法将向数据库中插入该数据项。

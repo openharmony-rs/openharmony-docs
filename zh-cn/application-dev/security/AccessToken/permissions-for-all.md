@@ -492,6 +492,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：20
 
 ## ohos.permission.kernel.NET_RAW
@@ -618,5 +620,7 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：General
 
 **起始版本**：22

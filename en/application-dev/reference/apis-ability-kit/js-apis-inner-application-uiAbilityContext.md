@@ -54,8 +54,8 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **message** is an empty string. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -142,9 +142,9 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Mandatory information for starting the ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Mandatory information for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the UIAbility.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **message** is an empty string. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -237,8 +237,8 @@ Starts a UIAbility. This API uses a promise to return the result. It can be call
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -343,8 +343,8 @@ The following situations may be possible for a started UIAbility:
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the ability.|
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result.|
+| want |[Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the result code and data when the UIAbility exits. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -437,9 +437,9 @@ The following situations may be possible for a started UIAbility:
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result.|
+| want |[Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the UIAbility.|
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the result code and data when the UIAbility exits. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -534,8 +534,8 @@ The following situations may be possible for a started UIAbility:
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Mandatory information for starting the UIAbility.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 
 **Return value**
@@ -632,7 +632,7 @@ Terminates this UIAbility. This API uses an asynchronous callback to return the 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -789,7 +789,7 @@ The result is returned to the caller when **terminateSelfWithResult** is called 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the caller.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1083,7 +1083,7 @@ Disconnects from a [ServiceExtensionAbility](../../application-models/extensiona
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | connection | number | Yes| ID of the connected ServiceExtensionAbility, that is, **connectionId** returned by [connectServiceExtensionAbility](#connectserviceextensionability).|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
+| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1195,7 +1195,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-Start an ability in the background.
+Start a UIAbility in the background.
 
 ```ts
 import { UIAbility, Caller, Want } from '@kit.AbilityKit';
@@ -1204,7 +1204,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     let caller: Caller;
-    // Start an ability in the background by not passing parameters.
+    // Start a UIAbility in the background by not passing parameters.
     let wantBackground: Want = {
       bundleName: 'com.example.myapplication',
       moduleName: 'entry',
@@ -1232,7 +1232,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-Start an ability in the foreground.
+Start a UIAbility in the foreground.
 
 ```ts
 import { UIAbility, Caller, Want } from '@kit.AbilityKit';
@@ -1241,7 +1241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     let caller: Caller;
-    // Start an ability in the foreground with 'ohos.aafwk.param.callAbilityToForeground' in parameters set to true.
+    // Start a UIAbility in the foreground with 'ohos.aafwk.param.callAbilityToForeground' in parameters set to true.
     let wantForeground: Want = {
       bundleName: 'com.example.myapplication',
       moduleName: 'entry',
@@ -1287,7 +1287,7 @@ Sets a mission label for this UIAbility on the multitasking screen. This API use
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | label | string | Yes| Mission label.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1380,7 +1380,7 @@ Sets the mission continuation state of this UIAbility. This API uses an asynchro
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | state | [AbilityConstant.ContinueState](js-apis-app-ability-abilityConstant.md#continuestate10) | Yes| Mission continuation state.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1549,7 +1549,7 @@ Starts a ServiceExtensionAbility that supports modal dialog boxes. After the Ser
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want |[Want](js-apis-app-ability-want.md) | Yes| Want information for starting the ServiceExtensionAbility.|
-| result | AsyncCallback&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | Yes| Callback used to return the result.|
+| result | AsyncCallback&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** the result of the request for a modal dialog box. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1705,7 +1705,7 @@ Called when the window content associated with the UIAbility finishes drawing. T
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -1770,7 +1770,7 @@ Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExt
 | type | string | Yes| Type of the UIExtensionAbility to start. For details, see [Starting an Application of the Specified Type](../../application-models/start-intent-panel.md#matching-rules).|
 | wantParam | Record&lt;string,&nbsp;Object&gt; | Yes| Extended parameter.|
 | abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | Yes| Callback used to return the detailed error information if the startup fails.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -2347,7 +2347,7 @@ Returns the startup result to the caller of [startAbilityForResult](#startabilit
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | abilityResult | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Result returned to the caller.|
-| requestCode  |  string | Yes| Request code generated by the system when the target ability is started using [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12). The value can be obtained from the [CALLER_REQUEST_CODE](js-apis-app-ability-wantConstant.md) field in **want**.|
+| requestCode  |  string | Yes| Request code generated by the system when the target UIAbility is started using [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12). The value can be obtained from the [CALLER_REQUEST_CODE](js-apis-app-ability-wantConstant.md) field in **want**.|
 
 **Return value**
 
@@ -2370,7 +2370,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000075 | BackToCaller is not supported. |
 
 **Example**
-The caller uses **startAbilityForResult** to start an ability, and the target ability calls **backToCallerAbilityWithResult** to return the result to the caller.
+The caller uses **startAbilityForResult** to start a UIAbility, and the target UIAbility calls **backToCallerAbilityWithResult** to return the result to the caller.
 
 ```ts
 // Caller
@@ -2400,7 +2400,7 @@ struct Index {
             };
 
             try {
-              // Use startAbilityForResult to start the target ability.
+              // Use startAbilityForResult to start the target UIAbility.
               context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
                 if (err.code) {
                   // Process service logic errors.
@@ -2430,7 +2430,7 @@ struct Index {
 ```
 
 ```ts
-// Target ability
+// Target UIAbility
 // EntryAbility.ets
 import { AbilityConstant, common, UIAbility, Want, wantConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -3406,9 +3406,9 @@ Starts the application's own UIAbility within the current process.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Mandatory information for starting the ability. Only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported. [Implicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Mandatory information for starting the UIAbility. Only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported. [Implicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported.|
 | specifiedFlag | string  | Yes| ID of the UIAbility. This ID must not duplicate that of any already running UIAbility instance; otherwise, an error is returned.<br>**NOTE**<br>When this API is used to start a UIAbility instance in [specified](../../application-models/uiability-launch-type.md#specified) mode, the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback is not triggered.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -3463,6 +3463,89 @@ export default class EntryAbility extends UIAbility {
       let message = (err as BusinessError).message;
       console.error(`startSelfUIAbilityInCurrentProcess failed, code is ${code}, message is ${message}`);
     }
+  }
+}
+```
+
+### restartApp<sup>22+</sup>
+
+restartApp(want: Want): Promise\<void>
+
+Called by a focused UIAbility to restart its own process and launch a specified UIAbility within the same application. This API can be called only by the main thread. This API uses a promise to return the result.
+
+If the target UIAbility is the current one, this action resets the window to its initial state. If it is a different UIAbility, the system navigates to and open a new window for that UIAbility.
+
+> **NOTE**
+>
+> When this API is called to restart the process, the **onDestroy** lifecycle callback of the UIAbility in the process is not triggered.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the UIAbility to start. The bundle name and ability name are verified.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000011 | The context does not exist. |
+| 16000050 | Connect to system server error. |
+| 16000063 | The target to restart does not belong to the caller or is not a UIAbility. |
+| 16000064 | Restart too frequently. |
+| 16000065 | The API can be called only when the ability is focused. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'restartApp with window';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(async () => {
+          let want: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility'
+          };
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          try {
+            await context.restartApp(want);
+          } catch (err) {
+            hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```

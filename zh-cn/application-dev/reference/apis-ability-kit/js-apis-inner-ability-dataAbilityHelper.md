@@ -1346,4 +1346,4 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ---- | ---- | ---- | ---- |
-| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 否 | 数据存储在键值对中。 |
+| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 是 | 数据存储在键值对中。 |

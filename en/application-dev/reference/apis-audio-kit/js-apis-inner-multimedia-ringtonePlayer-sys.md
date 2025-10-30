@@ -29,10 +29,10 @@ Enumerates the ringtone parameters.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
-| Name     | Type           |Mandatory  | Description                             |
-| --------- | -------------- | ---- | --------------------------------- |
-| volume    | number         | Yes  | Relative volume. The value ranges from 0.00 to 1.00. The value **1.00** indicates the maximum volume (100%).|
-| loop      | boolean        | Yes  | Whether to enable loop playback. **true** to enable, **false** otherwise.|
+| Name     | Type           |Read-Only  |Optional  | Description                             |
+| --------- | -------------- | ---- | ---- | --------------------------------- |
+| volume    | number         | No  | No  | Relative volume. The value ranges from 0.00 to 1.00. The value **1.00** indicates the maximum volume (100%).|
+| loop      | boolean        | No  | No  | Whether to enable loop playback. **true** to enable, **false** otherwise.|
 
 ## RingtonePlayer
 

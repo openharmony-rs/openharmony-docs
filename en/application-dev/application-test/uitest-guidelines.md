@@ -21,7 +21,7 @@ UITest provides simple and easy-to-use APIs for various test scenarios. It suppo
 **Command line testing**:
 UITest supports diversified test operations through commands, including obtaining the current screen screenshot, obtaining the component tree, recording the screen operation process, and easily injecting UI simulation events.
 
-![arkxtest-uitest](figures/UITest.PNG)
+![arkxtest-uitest](figures/Uitest.PNG)
 
 UITest consists of the client and server.
 

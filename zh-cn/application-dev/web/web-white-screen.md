@@ -19,14 +19,17 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。
 * 验证设备的网络状态，包括是否已连接网络，设备自带的浏览器能否正常访问网页等（在线页面场景）。
 * 确保应用已添加网络权限：ohos.permission.INTERNET（在线页面必需）。
-  ```
-  // 在module.json5中添加相关权限
-  "requestPermissions":[
-     {
+
+    <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+
+    ``` JSON5
+    "requestPermissions":[
+      {
         "name" : "ohos.permission.INTERNET"
-     }
-  ]
-  ```
+      }
+    ],
+    ```
+
 * 开启相关权限：
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
@@ -36,57 +39,65 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
 
+    <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .domStorageAccess(true)
-          .fileAccess(true)
-          .imageAccess(true)
-          .onlineImageAccess(true)
-          .javaScriptAccess(true)
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .domStorageAccess(true)
+            .fileAccess(true)
+            .imageAccess(true)
+            .onlineImageAccess(true)
+            .javaScriptAccess(true)
+        }
       }
     }
-  }
-  ```
+    ```
+
+
 * 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
+    <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State customUserAgent: string = ' DemoApp';
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-        .onControllerAttached(() => {
-          console.info("onControllerAttached");
-          try {
-            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-            this.controller.setCustomUserAgent(userAgent);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_WebWriteScreenIssue]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'WebWriteScreenIssue_';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+      @State customUserAgent: string = ' DemoApp';
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onControllerAttached(() => {
+              hilog.info(DOMAIN, TAG, BUNDLE, 'onControllerAttached');
+              try {
+                let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+                this.controller.setCustomUserAgent(userAgent);
+              } catch (error) {
+                hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            })
+        }
       }
     }
-  }
-  ```
+    ```
+
 ## 使用DevTools工具进行页面内容验证
 在确保网络与权限配置无误后，若仍出现白屏，则应利用DevTools工具调试前端页面以及监听Web相关错误上报接口，来定位具体报错类型。
 

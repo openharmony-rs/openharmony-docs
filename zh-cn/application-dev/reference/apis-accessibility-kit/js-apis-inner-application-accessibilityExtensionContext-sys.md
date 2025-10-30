@@ -1131,7 +1131,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 | 名称 | 类型 | 必填 | 描述 |
 | -------- | ---- | -------- | ------------------------------------------------------------ |
-| condition | FocusDirection | 是 | 焦点方向。 |
+| condition | [FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection) | 是 | 焦点方向。 |
 
 **返回值：**
 

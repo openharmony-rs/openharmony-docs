@@ -22,6 +22,18 @@ The **NotificationContent** module provides APIs for defining the notification c
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
 | liveView<sup>11+</sup>       | [NotificationLiveViewContent](#notificationliveviewcontent11)              | No | Yes | Common live view.<br>**System API**: This is a system API.|
 
+## NotificationBasicContent
+
+Describes the normal text notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name          | Type                                                                       | Read-Only| Optional| Description              |
+| -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
+| structuredText<sup>21+</sup> | Map<string, string> |  No |  Yes | Structured notification. Currently, only service reminder messages can be displayed in structured format in the notification center. (The size of key or value cannot exceed 512 bytes; otherwise, the excess part will be truncated. Only a maximum of three pairs of structured data are supported.)  |
+
 ## NotificationLiveViewContent<sup>11+</sup>
 
 Describes the common live view.
@@ -39,6 +51,7 @@ Describes the common live view.
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | No | Yes | Whether the live view is updated only locally.  <br> - **true**: Yes.<br> - **false** (default): No.    |
 | liveViewType<sup>18+</sup>  | [LiveViewTypes](#liveviewtypes18)  | No| Yes | Live view types. |
 | cardButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  No |  Yes | Live view buttons (a maximum of three buttons are supported).     |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  No |  Yes | Redirection by tapping in the auxiliary area.     |
 
 ## NotificationCapsule<sup>11+</sup>
 

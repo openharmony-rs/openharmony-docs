@@ -46,8 +46,6 @@ AtomicServiceNavigation({
 })
 ```
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **装饰器类型：** @Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -56,37 +54,35 @@ AtomicServiceNavigation({
 
 | 名称 | 类型 | 必填 | 装饰器类型|说明 |
 | --------------- | ------ | ---- | ----|----------|
-| navPathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否 | @State | 路由栈信息。 |
-| navigationContent | Callback\<void\> | 否 | @BuilderParam | Navigation容器内容。 |
-| title | [ResourceStr](ts-types.md#resourcestr) | 否 |@Prop | 设置页面标题。默认值为空字符串。当titleOptions的titleBarType字段设置为[TitleBarType](#titlebartype18).ROUND_ICON或者[TitleBarType](#titlebartype18).SQUARED_ICON，且设置了titleIcon时，title标题内容将不会显示。 |
-| titleOptions | [TitleOptions](#titleoptions) | 否 | @Prop | 标题栏选项。当titleBarType字段设置为[TitleBarType](#titlebartype18).ROUND_ICON或者[TitleBarType](#titlebartype18).SQUARED_ICON，且设置了titleIcon时，title标题内容将不会显示。 |
-| gradientBackground<sup>18+</sup> | [GradientBackground](#gradientbackground18) | 否 | @Prop | 背景色选项。|
-| hideTitleBar | boolean | 否 | @Prop | 设置是否隐藏标题栏。默认为false。<br>false表示显示标题栏，true表示隐藏标题栏。|
-| navBarWidth | [Length](ts-types.md#length)| 否 | @Prop | 设置导航栏宽度。默认值为240vp。<br>仅在Navigation组件分栏时生效。|
-| mode| [NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明) | 否 | @Prop |设置导航栏的显示模式。<br>支持Stack、Split与Auto模式。|
-| navDestinationBuilder | [NavDestinationBuilder](#navdestinationbuilder) | 否 | @BuilderParam | 创建[NavDestination](ts-basic-components-navdestination.md)组件所需要的Builder数据。 |
-| navBarWidthRange | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 否 | @Prop |设置导航栏最小和最大宽度（双栏模式下生效）。默认值：最小默认值为240vp，最大默认值为组件宽度的40%，且不大于432vp，如果只设置一个值，则未设置的值按照默认值计算。单位：vp。 |
-| minContentWidth | [Dimension](ts-types.md#dimension10) | 否 | @Prop | 设置导航栏内容区最小宽度（双栏模式下生效）。|
-| sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | 否 | @Prop | 侧边栏的功能选项。|
-| sideBarContent<sup>18+</sup> | Callback\<void\> | 否 | @BuilderParam | 侧边栏的内容。|
-| menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | 否 | @BuilderParam | 宽屏场景下用户自定义插入的布局样式。默认为空，不显示任何样式。屏幕宽度低于600vp为非宽屏场景，大于等于600vp为宽屏场景。 |
-| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。|
-| modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)\> | 否 | - | 当Navigation首次显示或者单双栏状态发生变化时触发该回调。|
+| navPathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否 | @State | 路由栈信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| navigationContent | Callback\<void\> | 否 | @BuilderParam | Navigation容器内容。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| title | [ResourceStr](ts-types.md#resourcestr) | 否 |@Prop | 设置页面标题。默认值为空字符串。当titleOptions的titleBarType字段设置为[TitleBarType](#titlebartype18).ROUND_ICON或者[TitleBarType](#titlebartype18).SQUARED_ICON，且设置了titleIcon时，title标题内容将不会显示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| titleOptions | [TitleOptions](#titleoptions) | 否 | @Prop | 标题栏选项。当titleBarType字段设置为[TitleBarType](#titlebartype18).ROUND_ICON或者[TitleBarType](#titlebartype18).SQUARED_ICON，且设置了titleIcon时，title标题内容将不会显示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| gradientBackground<sup>18+</sup> | [GradientBackground](#gradientbackground18) | 否 | @Prop | 背景色选项。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| hideTitleBar | boolean | 否 | @Prop | 设置是否隐藏标题栏。默认为false。<br>false表示显示标题栏，true表示隐藏标题栏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| navBarWidth | [Length](ts-types.md#length)| 否 | @Prop | 设置导航栏宽度。默认值为240vp。<br>仅在Navigation组件分栏时生效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| mode| [NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明) | 否 | @Prop |设置导航栏的显示模式。<br>支持Stack、Split与Auto模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| navDestinationBuilder | [NavDestinationBuilder](#navdestinationbuilder) | 否 | @BuilderParam | 创建[NavDestination](ts-basic-components-navdestination.md)组件所需要的Builder数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| navBarWidthRange | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 否 | @Prop |设置导航栏最小和最大宽度（双栏模式下生效）。默认值：最小默认值为240vp，最大默认值为组件宽度的40%，且不大于432vp，如果只设置一个值，则未设置的值按照默认值计算。单位：vp。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minContentWidth | [Dimension](ts-types.md#dimension10) | 否 | @Prop | 设置导航栏内容区最小宽度（双栏模式下生效）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | 否 | @Prop | 侧边栏的功能选项。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| sideBarContent<sup>18+</sup> | Callback\<void\> | 否 | @BuilderParam | 侧边栏的内容。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | 否 | @BuilderParam | 宽屏场景下用户自定义插入的布局样式。默认为空，不显示任何样式。屏幕宽度低于600vp为非宽屏场景，大于等于600vp为宽屏场景。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| stateChangeCallback | Callback\<boolean\> | 否 | - | 导航栏显示状态切换时触发该回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)\> | 否 | - | 当Navigation首次显示或者单双栏状态发生变化时触发该回调。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## TitleOptions
 标题栏选项。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------------- | ------ | ---- | -- | ---------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景颜色。 |
-| isBlurEnabled | boolean | 否 | 是 | 标题栏是否模糊，默认值：true，表示标题栏模糊。 |
-| barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12枚举说明)  | 否 | 是 | 标题栏样式属性设置。 |
-| titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | 否 | 是 | 设置标题栏类型。默认值为TitleBarType.ROUND_ICON。 |
-| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。 |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景颜色。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| isBlurEnabled | boolean | 否 | 是 | 标题栏是否模糊，默认值：true，表示标题栏模糊。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12枚举说明)  | 否 | 是 | 标题栏样式属性设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | 否 | 是 | 设置标题栏类型。默认值为TitleBarType.ROUND_ICON。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## GradientBackground<sup>18+</sup>
 供开发者设置品牌渐变色。
@@ -99,9 +95,9 @@ AtomicServiceNavigation({
 | --------------- | ------ | ---- | -- | ---------- |
 | primaryColor | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 否 | 单色渐变色彩值和双色渐变第一色彩值。无默认值。|
 | secondaryColor |[ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 |双色渐变色第二色彩值。无默认值。|
-| backgroundTheme |[BackgroundTheme<sup>18+</sup>](#backgroundtheme18)  | 否 | 是 |导航栏背景底色。默认值为DEFAULT。|
-| mixMode | [MixMode<sup>18+</sup>](#mixmode18)  | 否 | 是 |同时设置primaryColor和secondaryColor时此参数生效。代表双色渐变下两种颜色的融合方式。默认值为TOWARDS。|
-| alpha | [GradientAlpha<sup>18+</sup>](#gradientalpha18)  | 否 | 是 |设置渐变色显示区域的透明度。默认值为OPACITY_20。|
+| backgroundTheme |[BackgroundTheme](#backgroundtheme18)  | 否 | 是 |导航栏背景底色。默认值为DEFAULT。|
+| mixMode | [MixMode](#mixmode18)  | 否 | 是 |同时设置primaryColor和secondaryColor时此参数生效。代表双色渐变下两种颜色的融合方式。默认值为TOWARDS。|
+| alpha | [GradientAlpha](#gradientalpha18)  | 否 | 是 |设置渐变色显示区域的透明度。默认值为OPACITY_20。|
 
 ## NavDestinationBuilder
 

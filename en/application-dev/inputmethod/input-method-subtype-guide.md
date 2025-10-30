@@ -11,29 +11,25 @@ The input method subtypes allow the input method to switch to a specific mode or
 ## Configuring and Implementing an Input Method Subtype
 
 1. Implement an **InputMethodExtensionAbility** instance for an input method, which will be shared by all subtypes of the input method. Add **metadata** with the name **ohos_extension.input_method** to the [module.json5](../quick-start/module-configuration-file.md) file to configure resource information for all subtypes.
-   ```ts
-   {
-     "module": {
-       // ...
-       "extensionAbilities": [
-         {
-           "description": "InputMethodExtDemo",
-           "icon": "$media:icon",
-           "name": "InputMethodExtAbility",
-           "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ts",
-           "type": "inputMethod",
-           "exported": true,
-           "metadata": [
-             {
-               "name": "ohos.extension.input_method",
-               "resource": "$profile:input_method_config"
-             }
-           ]
-         }
-       ]
-     }
-   }
-   ```
+
+``` JSON5
+    "extensionAbilities": [
+      {
+        "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ets",
+        "name": "ServiceExtAbility",
+        "label": "$string:MainAbility_label",
+        "description": "$string:extension_ability_descripter",
+        "type": "inputMethod",
+        "exported": true,
+        "metadata": [
+          {
+            "name": "ohos.extension.input_method",
+            "resource": "$profile:input_method_config"
+          }
+        ]
+      }
+    ],
+```
    
 2. Configure the subtype fields. For details about the fields, see [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype). Make sure your configuration is in strict compliance with the configuration file and field specifications. For details about how to configure the **locale** field, see [i18n-locale-culture](.././internationalization/i18n-locale-culture.md#how-it-works).
    ```
@@ -59,21 +55,23 @@ The input method subtypes allow the input method to switch to a specific mode or
    
 3. Register a listener in the input method application for subtype changes, so as to load a subtype-specific soft keyboard UI. You can also use a state variable to change the soft keyboard layout.
 
-   ```ts
-   import { InputMethodSubtype, inputMethodEngine } from '@kit.IMEKit';
-   
-   let panel: inputMethodEngine.Panel;
-   let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
-   inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-     let subType = inputMethodSubtype; // Save the current input method subtype. You can also change the state variable value here, based on which different layouts are displayed.
-     if (inputMethodSubtype.id == 'InputMethodExtAbility') {// Different soft keyboard UIs are loaded according to the subtype.
-       panel.setUiContent('pages/Index'); 
-     }
-     if (inputMethodSubtype.id == 'InputMethodExtAbility1') { // Different soft keyboard UIs are loaded according to the subtype.
-       panel.setUiContent('pages/Index1');
-     }
-   });
-   ```
+<!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets) -->
+
+``` TypeScript
+    // Register a listener in the input method application for subtype changes.
+    InputMethodEngine.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+      this.inputHandle.addLog('GJ setSubtype inputMethodSubtype:' + inputMethodSubtype.id);
+      if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+        AppStorage.setOrCreate('subtypeChange', 0);
+        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
+      }
+      if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+        AppStorage.setOrCreate('subtypeChange', 1);
+        this.inputHandle.addLog('GJ setSubtype subtypeChange:' + AppStorage.get('subtypeChange'));
+      }
+    });
+```
+
 
 ## Obtaining Information About Input Method Subtypes
 

@@ -50,147 +50,168 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
    移动设备默认为单进程渲染，而2in1设备则默认采用多进程渲染。通过调用[getRenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getrenderprocessmode12)可查询当前的渲染子进程模式，其中枚举值0表示单进程模式，枚举值1对应多进程模式。若获取的值不在[RenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-e.md#renderprocessmode12)枚举值范围内，则系统将自动采用多进程渲染模式作为默认设置。
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-
-     build() {
-       Column() {
-         Button('getRenderProcessMode')
-           .onClick(() => {
-             let mode = webview.WebviewController.getRenderProcessMode();
-             console.log("getRenderProcessMode: " + mode);
-           })
-         Button('setRenderProcessMode')
-           .onClick(() => {
-             try {
-               webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
-             } catch (error) {
-               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as     BusinessError).message}`);
-             }
-           })
-         Web({ src: 'www.example.com', controller: this.controller })
-       }
-     }
-   }
-   ```
+    <!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ProcessWeb]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ProcessWeb_';
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Button('getRenderProcessMode')
+            .onClick(() => {
+              let mode = webview.WebviewController.getRenderProcessMode();
+              hilog.info(DOMAIN, TAG, BUNDLE, 'getRenderProcessMode: ' + mode);
+            })
+          Button('setRenderProcessMode')
+            .onClick(() => {
+              try {
+                webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
+              } catch (error) {
+                hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as     BusinessError).message}`);
+              }
+            })
+          Web({ src: 'www.example.com', controller: this.controller })
+        }
+      }
+    }
+    ```
 
 2. 可通过[terminateRenderProcess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#terminaterenderprocess12)来主动关闭渲染进程。若渲染进程尚未启动或已销毁，此操作将不会产生任何影响。此外，销毁渲染进程将同时影响所有与之关联的其他实例。
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Button('terminateRenderProcess')
-         .onClick(() => {
-           let result = this.controller.terminateRenderProcess();
-           console.log("terminateRenderProcess result: " + result);
-         })
-         Web({ src: 'www.example.com', controller: this.controller })
-       }
-     }
-   }
-   ```
+    <!-- @[terminateRenderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ProcessWeb]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ProcessWeb_';
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Button('terminateRenderProcess')
+            .onClick(() => {
+              let result = this.controller.terminateRenderProcess();
+              hilog.info(DOMAIN, TAG, BUNDLE, 'terminateRenderProcess result: ' + result);
+            })
+          Web({ src: 'www.example.com', controller: this.controller })
+        }
+      }
+    }
+    ```
 
 3. 可通过[onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9)来监听渲染进程的退出事件，从而获知退出的具体原因（如内存OOM、crash或正常退出等）。由于多个Web组件可能共用同一个渲染进程，因此，每当渲染进程退出时，每个受此影响的Web组件均会触发相应的回调。
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Web({ src: 'chrome://crash/', controller: this.controller })
-           .onRenderExited((event) => {
-             if (event) {
-               console.log('reason:' + event.renderExitReason);
-             }
-           })
-       }
-     }
-   }
-   ```
+    <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ProcessWeb]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ProcessWeb_';
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'chrome://crash/', controller: this.controller })
+            .onRenderExited((event) => {
+              if (event) {
+                hilog.info(DOMAIN, TAG, BUNDLE, 'reason:' + event.renderExitReason);
+              }
+            })
+        }
+      }
+    }
+    ```
 
 4. 可通过[onRenderProcessNotResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessnotresponding12)、[onRenderProcessResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessresponding12)来监听渲染进程的无响应状态。
 
    当Web组件无法处理输入事件，或未能在预期时间内导航至新URL时，系统会判定网页进程为无响应状态，并触发onRenderProcessNotResponding回调。在网页进程持续无响应期间，该回调可能反复触发，直至进程恢复至正常运行状态，此时将触发onRenderProcessResponding回调。
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller })
-           .onRenderProcessNotResponding((data) => {
-             console.log("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
-               ", [process]=" + data.pid + ", [reason]=" + data.reason);
-           })
-       }
-     }
-   }
-   ```
+    <!-- @[onRenderProcessNotResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ProcessWeb]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ProcessWeb_';
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onRenderProcessNotResponding((data) => {
+              hilog.info(DOMAIN, TAG, BUNDLE, 'onRenderProcessNotResponding: [jsStack]= ' + data.jsStack +
+                ', [process]=' + data.pid + ', [reason]=' + data.reason);
+            })
+        }
+      }
+    }
+    ```
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller })
-           .onRenderProcessResponding(() => {
-             console.log("onRenderProcessResponding again");
-           })
-       }
-     }
-   }
-   ```
+    <!-- @[onRenderProcessResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_ProcessWeb]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'ProcessWeb_';
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onRenderProcessResponding(() => {
+              hilog.info(DOMAIN, TAG, BUNDLE, 'onRenderProcessResponding again');
+            })
+        }
+      }
+    }
+    ```
 
 5. [Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)创建参数涵盖了多进程模型的运用。其中，sharedRenderProcessToken标识了当前Web组件所指定的共享渲染进程的token。在多渲染进程模式下，拥有相同token的Web组件将优先尝试重用与该token绑定的渲染进程。token与渲染进程的绑定关系，在渲染进程的初始化阶段形成。一旦渲染进程不再关联任何Web组件，它与token的绑定关系将被解除。
 
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   
-   @Entry
-   @Component
-   struct WebComponent {
-     controller1: webview.WebviewController = new webview.WebviewController();
-     controller2: webview.WebviewController = new webview.WebviewController();
-   
-     build() {
-       Column() {
-         Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: "111" })
-         Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: "111" })
-       }
-     }
-   }
-   ```
+    <!-- @[WebComponentCreat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/WebComponentCreat.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller1: webview.WebviewController = new webview.WebviewController();
+      controller2: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: '111' })
+          Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: '111' })
+        }
+      }
+    }
+    ```

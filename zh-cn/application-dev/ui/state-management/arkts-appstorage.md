@@ -14,6 +14,12 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合[AppStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
+> **说明：**
+>
+> 多组件间状态共享和同步、状态管理和UI解耦，可以参考解决方案[基于StateStore的全局状态管理开发实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-global-state-management-state-store)。
+>
+> 不涉及UI组件同步的数据处理工作，建议[通过用户首选项实现数据持久化](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/data-persistence-by-preferences)。
+
 ## 概述
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
