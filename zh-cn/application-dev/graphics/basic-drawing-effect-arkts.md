@@ -108,6 +108,11 @@
 1. 创建画笔Pen对象。
 
    <!-- @[arkts_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // 创建画笔
+   let pen = new drawing.Pen();
+   ```
 
 2. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
