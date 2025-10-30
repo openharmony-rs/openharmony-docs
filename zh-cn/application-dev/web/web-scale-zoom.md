@@ -228,9 +228,6 @@ struct WebComponent {
 
 通过`onScaleChange`接口，应用可以得知当前网页的缩放比例，配合`zoom`接口即可实现将页面缩放至指定比例的功能。根据当前页面缩放比例`pageFactor`和目标比例`targetFactor`计算`zoom`入参的公式为：
 
-```
-factor = 100 * targetFactor / pageFactor
-```
 
 <!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
 
