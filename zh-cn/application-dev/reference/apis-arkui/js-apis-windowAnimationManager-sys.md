@@ -22,6 +22,8 @@ setController(controller: WindowAnimationController): void
 
 在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -77,6 +79,8 @@ windowAnimationManager.setController(controller);
 minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget, callback: AsyncCallback&lt;WindowAnimationFinishedCallback&gt;): void
 
 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -157,6 +161,8 @@ minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise&lt;Win
 
 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -229,6 +235,8 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
 
 窗口动画控制器。在创建一个WindowAnimationController对象时，需要实现其中的所有回调函数。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ### onStartAppFromLauncher
@@ -237,7 +245,11 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,finishCallbac
 
 从桌面启动应用时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -254,7 +266,11 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,finishCallback:
 
 从最近任务列表启动应用时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -271,7 +287,11 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,finishCallback: 
 
 从除了桌面和最近任务列表以外其他地方启动应用时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -288,7 +308,11 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 
 应用转场时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -306,7 +330,11 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,finishCallback: W
 
 最小化窗口时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -323,7 +351,11 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget,finishCallback: WindowA
 
 关闭窗口时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -340,7 +372,11 @@ onScreenUnlock(finishCallback: [WindowAnimationFinishedCallback](#windowanimatio
 
 屏幕解锁时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名         | 类型                                                         | 必填 | 说明               |
 | -------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -356,7 +392,11 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget, fl
 
 动画目标窗口更新时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -376,6 +416,8 @@ onAnimationFinish():void
 
 结束本次动画。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **示例：**
@@ -384,6 +426,8 @@ onAnimationFinish():void
 
 ## WindowAnimationTarget
 动画目标窗口，用来实现动画。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -396,6 +440,8 @@ onAnimationFinish():void
 
 ## RRect
 圆角矩形。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

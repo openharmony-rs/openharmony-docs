@@ -25,6 +25,10 @@ RemoteWindow(target: WindowAnimationTarget)
 
 通过窗口动画对象创建组件。
 
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数:**
 
 | 参数名 | 参数类型 | 必填  | 参数描述 |
@@ -34,6 +38,10 @@ RemoteWindow(target: WindowAnimationTarget)
 ## WindowAnimationTarget
 
 目标窗口，用来远程控制实现动画。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | ------- | ------ | ------ | ------ | ----------------------- |
@@ -45,6 +53,10 @@ RemoteWindow(target: WindowAnimationTarget)
 ## RRect
 
 圆角矩形。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | ------- | ------ | ------ | ------ | ----------------------- |
