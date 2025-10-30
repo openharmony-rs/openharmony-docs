@@ -84,7 +84,7 @@
 | 和后代组件同步        | 和\@Consume双向同步。                          |
 | 是否支持组件外访问      | 私有，仅可以在所属组件内访问。                          |
 
-   **图1** \@Provide初始化规则图示 
+  **图1** \@Provide初始化规则图示  
 
 ![zh-cn_image_0000001552614217](figures/zh-cn_image_0000001552614217.png)
 
@@ -95,7 +95,7 @@
 | 和祖先组件同步        | 和\@Provide双向同步。                          |
 | 是否支持组件外访问      | 私有，仅可以在所属组件内访问                           |
 
-   **图2** \@Consume初始化规则图示 
+  **图2** \@Consume初始化规则图示  
 
 
 ![zh-cn_image_0000001502094666](figures/zh-cn_image_0000001502094666.png)
@@ -142,7 +142,7 @@
     // 错误写法，编译报错
     let change: number = 10;
     @Provide(change) message: string = 'Hello';
-  
+    
     // 正确写法
     let change: string = 'change';
     @Provide(change) message: string = 'Hello';
@@ -150,23 +150,23 @@
 
 2. \@Consume装饰的变量不能在构造参数中传入初始化，否则编译时会报错。\@Consume仅能通过key来匹配对应的\@Provide变量或者从API version 20开始设置默认值进行初始化。
 
-   【反例】
-   
+    【反例】
+  
     ```ts
     @Component
     struct Child {
       @Consume msg: string;
-  
+    
       build() {
         Text(this.msg)
       }
     }
-  
+    
     @Entry
     @Component
     struct Parent {
       @Provide message: string = 'Hello';
-  
+    
       build() {
         Column() {
           // 错误写法，不允许外部传入初始化
@@ -178,7 +178,7 @@
 
    【正例】
    <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Child {
@@ -217,7 +217,7 @@
     // 错误写法，a重复定义
     @Provide('a') count: number = 10;
     @Provide('a') num: number = 10;
-  
+    
     // 正确写法
     @Provide('a') count: number = 10;
     @Provide('b') num: number = 10;
@@ -231,20 +231,20 @@
     @Component
     struct Child {
       @Consume num: number;
-  
+    
       build() {
         Column() {
           Text(`num的值: ${this.num}`)
         }
       }
     }
-  
+    
     @Entry
     @Component
     struct Parent {
       // 错误写法，缺少@Provide
       num: number = 10;
-  
+    
       build() {
         Column() {
           Text(`num的值: ${this.num}`)
@@ -257,7 +257,7 @@
    【正例】
 
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Child {
