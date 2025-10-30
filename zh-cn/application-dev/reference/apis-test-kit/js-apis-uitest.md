@@ -1969,7 +1969,7 @@ ArkTS-Sta: scrollSearch(on: On): Promise\<Component | null>
 **返回值：**
 
 ArkTS-Dyn：
-| 类型                               | 说明                                  |s
+| 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
 
