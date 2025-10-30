@@ -49,7 +49,10 @@
 **示例：**  
   ```typescript
   const m: Map<string, string> = new Map<string, string>();
-  let iter = m.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of m) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 
@@ -237,7 +240,10 @@ callbackfn函数参数说明：
 **示例：**  
   ```typescript
   let set = new Set<string>();
-  set.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of set) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 
@@ -339,7 +345,10 @@ callbackfn函数参数说明：
 **示例：**  
   ```typescript
   let str = "hello";
-  str.$_iterator();
+  // 不建议使用$_iterator()方法，应使用for...of替代
+  for (let iter of str) {
+    console.info(iter);
+  }
   ```
 
 **适配建议：** 
@@ -570,7 +579,7 @@ console.log(result); // "kiwi, orange, kiwi, banana"
 
 **示例：**  
   ```typescript
-  String({}); // 需确保参数符合类型
+  new String({}); // 需确保参数符合类型
   ```
 
 **适配建议：** 
@@ -995,12 +1004,8 @@ console.info(String(Number.isNaN(Number.NaN))); // 返回true
 **适配建议：**
 
 ```ts
-// ArkTS-Dyn代码
-let value: unknown = get_value();
-let result: boolean = Number.isNaN(value);
-
 // ArkTS-Sta仅支持（可隐式转换为）float和double类型的参数
-let value = get_value();
+let value = 1.0;
 if (value instanceof Number) {
 	/**
 	 * ArkTS-Sta规定typeof byte/short/int/long/float/double都返回'number'
@@ -1008,9 +1013,9 @@ if (value instanceof Number) {
 	*/
 	let result: boolean = Number.isNaN(Double(value));
 } else if (value instanceof String) {
-	result = Number.isNaN(parseFloat(String(value)));
+	let result = Number.isNaN(parseFloat(String(value)));
 } else {
-	result = false;
+	let result = false;
 }
 ```
 
@@ -1131,18 +1136,14 @@ console.info(String(Number.isInteger(1 + Number.EPSILON))); // 返回false
 **适配建议：**
 
 ```ts
-// ArkTS-Dyn代码
-let value: unknown = get_value();
-let result: boolean = Number.isInteger(value);
-
 // ArkTS-Sta仅支持（可隐式转换为）float和double类型的参数
-let value = get_value();
+let value = 1.0;
 if (value instanceof Number) {
 	let result: boolean = Number.isInteger(Double(value));
 } else if (value instanceof String) {
-	result = Number.isInteger(parseInt(String(value)));
+	let result = Number.isInteger(parseInt(String(value)));
 } else {
-	result = false;
+	let result = false;
 }
 ```
 
@@ -1383,13 +1384,13 @@ reviver函数返回值说明：
   ```
 
 **ArkTS-Sta版本签名：**  
-  `parse<T>(text: string, reviver: ((key: string, value: (Object | null | undefined)) => (Object | null | undefined)) | undefined, type: Type, bigIntMode?: int): T | null | undefined`
+  `parse<T>(text: string, reviver: ((key: string, value: Any) => Any) | undefined, type: Type, bigIntMode?: int): T | null | undefined`
 
 **参数：**
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | text | string | 是 | JSON字符串。 |
-  | reviver | ((key: string, value: (Object \| null \| undefined)) => (Object \| null \| undefined)) \| undefined | 否 | reviver函数用以在返回之前对所得到的对象执行变换。默认值为无。 |
+  | reviver | ((key: string, value: Any) => Any) \| undefined | 否 | reviver函数用以在返回之前对所得到的对象执行变换。默认值为无。 |
   | type | Type | 是 | 要转换JSON字符串的类型。 |
   | bigIntMode | int | 否 | 是否包含bigint（任意精度的大整数），选择开启。默认值为无。 |
 
@@ -1397,12 +1398,12 @@ reviver函数参数说明：
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | key | string | 是 | 正在处理的this对象属性的键名。 |
-  | value | Object \| null \| undefined | 是 | 当前键对应的值。 |
+  | value | Any | 是 | 当前键对应的值。 |
 
 reviver函数返回值说明：
   | 类型 | 说明 |
   | -------- | -------- |
-  | Object \| null \| undefined | 如果返回undefined，该对象属性会从结果中删除；如果返回非undefined，该返回值会替换原始解析值。 |
+  | Any | 如果返回undefined，该对象属性会从结果中删除；如果返回非undefined，该返回值会替换原始解析值。 |
 
 **返回值：**
   | 类型 | 说明 |
@@ -1416,7 +1417,7 @@ reviver函数返回值说明：
   }
   
   const c = new C();
-  let json: C|undefined|null = JSON.parse<C>('{"a": 2}', (k: string, v: Object|null|undefined ) => {
+  let json: C|undefined|null = JSON.parse<C>('{"a": 2}', (k: string, v: Any) => {
     if (k === "") {
       return v;
     }
@@ -1591,7 +1592,7 @@ replacer函数返回值说明：
     lastLogin: new A()
   };
   
-  const filteredJson = JSON.stringify(user, (key: string, value: Object|null|undefined) => {
+  const filteredJson = JSON.stringify(user, (key: string, value: Any) => {
     if (key === "password") {
       return undefined;
     } // 移除密码字段
@@ -1606,7 +1607,7 @@ replacer函数返回值说明：
   ```
 
 **适配建议：** 
-  ArkTS-Sta相比较于ArkTS-Dyn，类型any转为Object|null|undefined，在使用时需要先判断。
+  ArkTS-Sta相比较于ArkTS-Dyn，类型any转为Any，在使用时需要先判断。
 
 ## ALL
 **变更详情**
