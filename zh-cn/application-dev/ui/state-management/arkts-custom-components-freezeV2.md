@@ -446,6 +446,26 @@ struct ChildComponent {
 
 <!-- @[freeze_template4_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/PageB.ets) -->
 
+``` TypeScript
+// 关闭组件冻结
+@ComponentV2({ freezeWhenInactive: false })
+struct ChildComponent1 {
+  @Param @Require message: string = '';
+  @Param @Require bgColor: Color = Color.Pink;
+  @Monitor('bgColor')
+  onBgColorChange(monitor: IMonitor) {
+    // bgColor改变时，缓存池组件也会刷新，并打印日志
+    hilog.info(DOMAIN, 'testTag', `repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  build() {
+    Text(`[a]: ${this.message}`)
+      .fontSize(50)
+      .backgroundColor(this.bgColor)
+  }
+}
+```
+
 
 不开启组件冻结（freezeWhenInactive: false，当未指定freezeWhenInactive参数时默认不开启组件冻结），剩余节点和缓存池节点中@Monitor装饰的方法onBgColorChange都会被触发，即会有7个节点会刷新并打印7条日志。
 
