@@ -35,11 +35,7 @@
 
 1. 创建画刷Brush对象。
 
-   ```ts
-   // BasicEffect.ets
-   const brush = new drawing.Brush();
-   ```
-   <!-- [arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 2. 使用画刷设置基础绘制效果，例如设置填充颜色、开启抗锯齿效果等。
    可使用setColor()接口设置填充颜色。
