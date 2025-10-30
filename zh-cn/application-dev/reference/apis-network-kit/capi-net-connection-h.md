@@ -366,7 +366,7 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 401 - 参数错误。<br>   2100002 - 无法连接到服务。  2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>2100002 - 无法连接到服务。 <br> 2100003 - 内部错误。 |
 
 ### OH_NetConn_RegisterDnsResolver()
 
@@ -393,7 +393,7 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果码。<br>      NETMANAGER_ERR_PERMISSION_DENIED 缺少权限，请添加权限。
+| int32_t | 返回结果码。<br>         NETMANAGER_EXT_SUCCESS 如果操作成功。  <br>         NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
 
 ### OH_NetConn_UnregisterDnsResolver()
 
@@ -413,7 +413,7 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>        2100002 - 无法连接到服务。   2100003 - 内部错误。 |
+| int32_t | 0 - 成功。<br>          2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
