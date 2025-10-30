@@ -337,6 +337,60 @@
 
 <!-- @[dynamic_layout_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DynamicLayoutUpdate.ets) -->
 
+``` TypeScript
+// xxx.ets
+export class Message {
+  public value: string | undefined;
+
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State switch: boolean = true;
+
+  build() {
+    Column() {
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.switch = !this.switch;
+        })
+      if (this.switch) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        Child({ message: new Message('Child') })
+          .reuseId('Child');
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('AboutToReuse');
+
+  aboutToReuse(params: Record<string, ESObject>) {
+    this.message = params.message as Message;
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(30)
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+```
+
 ### 列表滚动配合LazyForEach使用
 
 - 当应用展示大量数据的列表并进行滚动操作时，频繁创建和销毁列表项视图可能导致卡顿和性能问题。使用列表组件的组件复用机制可以重用已创建的列表项视图，提高滚动流畅度。
