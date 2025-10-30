@@ -631,6 +631,43 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 <!-- @[GridRowExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridRowExample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct GridRowExample2 {
+  build() {
+    GridRow({ columns: 12 }) {
+      GridCol({ span: 12 }) {
+        GridRow({ columns: 12 }) {
+          GridCol({ span: 2 }) {
+            Row() {
+              Text('left').fontSize(24)
+            }
+            .justifyContent(FlexAlign.Center)
+            .height('90%')
+          }.backgroundColor('#ff41dbaa')
+
+          GridCol({ span: 10 }) {
+            Row() {
+              Text('right').fontSize(24)
+            }
+            .justifyContent(FlexAlign.Center)
+            .height('90%')
+          }.backgroundColor('#ff4168db')
+        }
+        .backgroundColor('#19000000')
+      }
+
+      GridCol({ span: 12 }) {
+        Row() {
+          Text('footer').width('100%').textAlign(TextAlign.Center)
+        }.width('100%').height('10%').backgroundColor(Color.Pink)
+      }
+    }.width('100%').height(300)
+  }
+}
+```
+
 
 ![zh-cn_image_0000001563060697](figures/zh-cn_image_0000001563060697.png)
 
