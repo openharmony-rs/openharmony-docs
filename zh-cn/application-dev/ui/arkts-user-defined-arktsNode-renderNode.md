@@ -793,3 +793,74 @@ export struct SetLabel {
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
 <!-- @[check_rander_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRanderNodeDisposed.ets) -->
+
+``` TypeScript
+import { NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private renderNode: RenderNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.renderNode = new RenderNode();
+    this.renderNode.size = { width: 300, height: 300 };
+    this.renderNode.backgroundColor = 0xffd5d5d5;
+
+    // 挂载RenderNode
+    this.rootNode.getRenderNode()?.appendChild(this.renderNode);
+    return this.rootNode;
+  }
+
+  disposeRenderNode() {
+    // 解除RenderNode与后端实体节点的引用关系
+    this.renderNode?.dispose();
+  }
+
+  isDisposed(): string {
+    if (this.renderNode !== null) {
+      // 查询RenderNode是否解除引用
+      if (this.renderNode.isDisposed()) {
+        return 'renderNode isDisposed is true';
+      } else {
+        return 'renderNode isDisposed is false';
+      }
+    }
+    return 'renderNode is null';
+  }
+}
+
+@Entry
+@Component
+export struct CheckRanderNodeDisposed {
+  @State text: string = '';
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    // ···
+      Column({ space: 4 }) {
+        NodeContainer(this.myNodeController);
+        Button('RenderNode dispose')
+          .onClick(() => {
+            this.myNodeController.disposeRenderNode();
+            this.text = '';
+          })
+          .width(200)
+          .height(50);
+        Button('RenderNode isDisposed')
+          .onClick(() => {
+            this.text = this.myNodeController.isDisposed();
+          })
+          .width(200)
+          .height(50);
+        Text(this.text)
+          .fontSize(25);
+      }
+      .width('100%')
+      .height('100%');
+
+    // ···
+  }
+}
+
+```
