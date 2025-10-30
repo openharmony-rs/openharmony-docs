@@ -46,6 +46,11 @@
    可使用setColor()接口设置填充颜色。
 
    <!-- @[arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // 填充颜色设为红色
+   brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+   ```
 
    可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
 
