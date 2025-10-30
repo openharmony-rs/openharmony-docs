@@ -1,4 +1,10 @@
 # Kernel Enhance Kit
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @gatieme-->
+<!--Designer: @tanyihua-->
+<!--Tester: @panny060-->
+<!--Adviser: @fang-jinxu-->
 
 - C API<!--kernel-c-->
   - 模块<!--kernel-moudle-->
