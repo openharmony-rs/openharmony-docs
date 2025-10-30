@@ -263,6 +263,37 @@ Symbol内容暂不支持手势、复制、拖拽处理。
 
 <!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+            // $r('app.string.xxx')需要替换为开发者所需的资源文件
+            RichEditor(this.options)
+              .onReady(() => {
+                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddSymbolSpanContent_Text_1')), {
+                  style: {
+                    fontColor: Color.Black,
+                    fontSize: 15
+                  }
+                })
+              })
+              .width(300)
+              .height(100)
+            Button($r('app.string.AddSymbolSpanContent_Button_1'), {
+              buttonStyle: ButtonStyleMode.NORMAL
+            })
+              .height(30)
+              .fontSize(13)
+              .onClick(() => {
+                // $r('sys.symbol.basketball_fill')需要替换为开发者所需的资源文件
+                this.controller.addSymbolSpan($r('sys.symbol.basketball_fill'), {
+                  style: {
+                    fontSize: 30
+                  }
+                })
+              })
+```
+
 ![alt text](figures/richeditor_image_add_SymbolSpan.gif)
 
 ## 管理内容
