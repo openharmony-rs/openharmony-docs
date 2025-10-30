@@ -968,6 +968,44 @@ V1实现：
 
 <!-- @[WatchExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV1.ets) -->
 
+``` TypeScript
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
+@Entry
+@Component
+struct WatchExample2 {
+  @State @Watch('onAppleChange') apple: number = 0;
+  @State @Watch('onOrangeChange') orange: number = 0;
+
+  // @Watch 回调，只能监听单个变量，不能获取变化前的值
+  onAppleChange(): void {
+    hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
+  }
+
+  onOrangeChange(): void {
+    hilog.info(DOMAIN, TAG, 'orange count changed to ' + this.orange);
+  }
+
+  build() {
+    Column() {
+      Text(`apple count: ${this.apple}`)
+      Text(`orange count: ${this.orange}`)
+      Button('add apple')
+        .onClick(() => {
+          this.apple++;
+        })
+      Button('add orange')
+        .onClick(() => {
+          this.orange++;
+        })
+    }
+  }
+}
+```
+
 V2迁移策略：同时监听多个变量，以及获取变化前的值。
 
 <!-- @[MonitorExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets) -->
