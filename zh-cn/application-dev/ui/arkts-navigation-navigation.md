@@ -35,7 +35,14 @@ Navigation组件通过mode属性设置页面的显示模式。
 - 单栏模式
 
   单栏模式适用于窄屏设备，发生路由跳转时，整个页面都会被替换。
-
+  <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
+  
+  ``` TypeScript
+  Navigation() {
+    // ···
+  }
+  .mode(NavigationMode.Stack)
+  ```
     **图1** 单栏布局示意图  
 
   ![zh-cn_image_0000001511740532](figures/zh-cn_image_0000001511740532.png)
