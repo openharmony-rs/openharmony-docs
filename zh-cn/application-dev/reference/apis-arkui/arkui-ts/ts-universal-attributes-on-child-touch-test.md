@@ -20,6 +20,12 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
 
+>**说明：**
+>
+>- 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
+>
+>- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -35,12 +41,6 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
->**说明：**
->
->- 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
->
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 ## TouchTestInfo<sup>11+</sup>
 
