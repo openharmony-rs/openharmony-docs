@@ -225,30 +225,35 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
-    ```ts
-    // main/ets/pages/Index.ets
+    <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
+    
+    ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    import hilog from '@ohos.hilog';
+    const TAG = '[Sample_WebWriteScreenIssue]';
+    const DOMAIN = 0xF811;
+    const BUNDLE = 'WebWriteScreenIssue_';
+    
     @Entry
     @Component
     struct WebComponent {
       controller: WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Row() {
-          Web({ src: "", controller: this.controller })
+          Web({ src: '', controller: this.controller })
             .onControllerAttached(() => {
               try {
                 // 设置允许可以跨域访问的路径列表
                 this.controller.setPathAllowingUniversalAccess([
                   this.uiContext.getHostContext()!.resourceDir,
-                  this.uiContext.getHostContext()!.filesDir + "/example"
+                  this.uiContext.getHostContext()!.filesDir + '/example'
                 ])
-                this.controller.loadUrl("file://" + this.uiContext.getHostContext()!.resourceDir + "/index.html")
+                this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html')
               } catch (error) {
-                console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+                hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
               }
             })
             .javaScriptAccess(true)
@@ -258,6 +263,8 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
       }
     }
     ```
+
+	HTML示例代码：
 
     ```html
     <!-- main/resources/resfile/index.html -->

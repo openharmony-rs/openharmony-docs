@@ -19,14 +19,20 @@ Web组件可通过[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-compo
 
 显隐控制[visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)是ArkUI开发框架提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。
 
+<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
+import hilog from '@ohos.hilog';
+
+const TAG = '[Sample_WebFullScreen]'
+const DOMAIN = 0xF811
+const BUNDLE = 'WebFullScreen_'
 
 @Entry
 @Component
 struct ShortWebPage {
-  controller: webview.WebviewController = new webview.WebviewController()
+  controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
   @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // 自定义标志位isVisible，来控制是否需要显示组件
@@ -38,26 +44,27 @@ struct ShortWebPage {
         .height(this.CONSTANT_HEIGHT)
         .backgroundColor('#e1dede') // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
         .visibility(this.isVisible ? Visibility.Visible :
-        Visibility.None)
+          Visibility.None)
       Web({
-        src: "http://www.example.com", // 示例网址
+        src: $rawfile('FullScreen.html'), // 示例网址
         controller: this.controller
       })
         .onFullScreenEnter((event) => {
-          console.info("onFullScreenEnter...")
+          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenEnter...");
           // 当全屏的时候，isVisible标志位为false，组件状态为不可见，不参与布局、不进行占位
           this.isVisible = false;
         })
         .onFullScreenExit(() => {
-          console.info("onFullScreenExit...")
+          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenExit...");
           // 当退出全屏的时候，isVisible标志位为true，组件状态为可见
           this.isVisible = true;
         })
         .width('100%')
-        .height("100%")
+        .height('100%')
         .zIndex(10)
         .zoomAccess(true)
     }.width('100%').height('100%')
   }
 }
 ```
+
