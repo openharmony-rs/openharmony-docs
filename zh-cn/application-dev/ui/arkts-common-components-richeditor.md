@@ -528,6 +528,84 @@ Symbol内容暂不支持手势、复制、拖拽处理。
 
 <!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
+``` TypeScript
+import { pasteboard } from '@kit.BasicServicesKit';
+// ···
+@Component
+struct on_cut_copy_paste {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+  PopDataFromPasteboard() {
+    let selection = this.controller.getSelection();
+    let start = selection.selection[0];
+    let end = selection.selection[1];
+    if (start == end) {
+      start = this.controller.getCaretOffset();
+      end = this.controller.getCaretOffset();
+    }
+    let moveOffset = 0;
+    let sysBoard = pasteboard.getSystemPasteboard();
+    sysBoard.getData((err, data) => {
+      if (err) {
+        return;
+      }
+      if (start != end) {
+        this.controller.deleteSpans({ start: start, end: end });
+      }
+      let count = data.getRecordCount();
+      for (let i = 0; i < count; i++) {
+        const element = data.getRecord(i);
+        if (element && element.plainText && element.mimeType === pasteboard.MIMETYPE_TEXT_PLAIN) {
+          this.controller.addTextSpan(element.plainText,
+            {
+              style: { fontSize: 26, fontColor: Color.Red },
+              offset: start + moveOffset
+            }
+          )
+          moveOffset += element.plainText.length;
+        }
+      }
+      this.controller.setCaretOffset(start + moveOffset);
+    });
+  }
+
+  build() {
+    Column() {
+      // $r('app.string.xxx')需要替换为开发者所需的资源文件
+      ComponentCard({
+        title: $r('app.string.Add_Event_title_5'),
+        description: $r('app.string.Add_Event_title_5_desc')
+      }) {
+        Column({ space: 3 }) {
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
+                { style: { fontColor: Color.Black, fontSize: 15 } })
+            })
+            .onPaste((event) => {
+              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
+                { style: { fontColor: Color.Gray, fontSize: 10 } })
+              if (event != undefined && event.preventDefault) {
+                event.preventDefault();
+              }
+              this.PopDataFromPasteboard()
+            })
+            .width(300)
+            .height(50);
+          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+          RichEditor(this.infoShowOptions)
+            .width(300)
+            .height(70);
+        }.width('100%').alignItems(HorizontalAlign.Start);
+      }
+    }
+  }
+}
+```
+
 ### 添加完成剪切前可触发的回调
 
 通过[onCut](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncut12)回调，来添加剪切前要处理的流程。
