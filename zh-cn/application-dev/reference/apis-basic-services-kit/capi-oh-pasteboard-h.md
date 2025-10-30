@@ -572,7 +572,7 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。 当不再需要使用指针时，<br> 请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br>  当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_GetDataParams_Destroy()
 
