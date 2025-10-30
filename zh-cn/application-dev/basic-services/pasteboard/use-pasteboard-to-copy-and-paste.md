@@ -76,7 +76,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 为了方便剪贴板与其他应用间进行数据交互，减少数据类型适配的工作量，剪贴板支持使用统一数据对象进行复制粘贴。详细的统一数据对象请见[标准化数据通路](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)文档介绍。
 
-剪贴板支持使用基础数据类型进行复制粘贴，当前支持的基础数据类型有文本、HTML。ArkTS接口与NDK接口支持数据类型不完全一致，使用时须匹配接口支持类型。
+剪贴板支持使用基础数据类型进行复制粘贴，当前支持的基础数据类型有文本、HTML。ArkTS接口与NDK接口支持的数据类型不完全一致，使用时需匹配对应接口所支持的类型。
 
 ### 接口说明
 
