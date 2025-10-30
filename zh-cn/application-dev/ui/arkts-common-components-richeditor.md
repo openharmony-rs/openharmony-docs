@@ -124,6 +124,46 @@ export struct CreateRichEditor {
 
 <!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct AddTextContent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    // ···
+            RichEditor(this.options)
+              .onReady(() => {
+                // $r('app.string.AddTextContent_Text_1')需要替换为开发者所需的资源文件
+                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_1')), {
+                  style: {
+                    fontColor: Color.Black,
+                    fontSize: 15
+                  }
+                })
+              })
+              .border({ width: 1, color: Color.Gray })
+              .constraintSize({
+                maxHeight: 100
+              })
+              .width(300)
+              .margin(10)
+            // $r('app.string.AddTextContent_Button_1')需要替换为开发者所需的资源文件
+            Button($r('app.string.AddTextContent_Button_1'), {
+              buttonStyle: ButtonStyleMode.NORMAL
+            })
+              .height(30)
+              .fontSize(13)
+              .onClick(() => {
+                // $r('app.string.AddTextContent_Text_2')需要替换为开发者所需的资源文件
+                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_2')))
+              })
+            // ···
+  }
+}
+```
+
 ![alt text](figures/richeditor_image_add_text.gif)
 
 ### 添加图片内容
