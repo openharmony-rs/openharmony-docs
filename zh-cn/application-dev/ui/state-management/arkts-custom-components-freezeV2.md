@@ -158,7 +158,35 @@ Trace如下：
 <!-- @[freeze_template5_PageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageA.ets) -->
 
 ``` TypeScript
-// src/main/ets/pages/freeze/template5/PageA.ets
+<!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/freeze/template5/PageB.ets
+@Builder
+function pageBBuilder() {
+  PageB();
+}
+
+@ComponentV2
+struct PageB {
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('This is the PageB')
+
+        Button('Back').fontSize(30)
+          .onClick(() => {
+            this.pathStack.pop();
+          })
+      }
+    }.onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
 @ObservedV2
 class Book {
   @Trace public name: string = 'TS';
