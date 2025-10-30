@@ -1,5 +1,11 @@
 # Connectivity Kit<!--connectivity-kit-->
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 - [Introduction to Connectivity Kit](connectivity-kit-intro.md)
 - Bluetooth<!--bluetooth-->
   - [Bluetooth Overview](bluetooth/bluetooth-overview.md)

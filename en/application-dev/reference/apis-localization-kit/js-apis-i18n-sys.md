@@ -1,5 +1,12 @@
 # @ohos.i18n (Internationalization) (System API)
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
  This module provides system-related or enhanced i18n capabilities, such as locale management, phone number formatting, and calendar, through supplementary i18n APIs that are not defined in ECMA 402. The [intl](js-apis-intl.md) module provides basic i18n capabilities through the standard i18n APIs defined in ECMA 402. It works with the **i18n** module to provide a complete suite of i18n capabilities.
 
 >  **NOTE**
@@ -18,13 +25,13 @@ import { i18n } from '@kit.LocalizationKit';
 
 ## System<sup>9+</sup>
 
+Provides capabilities of obtaining and setting system attributes.
+
 ### setSystemLanguage<sup>9+</sup>
 
 static setSystemLanguage(language: string): void
 
 Sets the system language.
-
-To listen for system language changes, enable listening for [COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed).
 
 **System API**: This is a system API.
 
@@ -36,7 +43,7 @@ To listen for system language changes, enable listening for [COMMON_EVENT_LOCALE
 
 | Name     | Type    | Mandatory  | Description   |
 | -------- | ------ | ---- | ----- |
-| language | string | Yes   | Valid language ID.|
+| language | string | Yes   | [Valid language ID](../../internationalization/i18n-locale-culture.md#how-it-works).<br>**NOTE**<br>You can call [i18n.System.getSystemLanguage()](js-apis-i18n.md#getsystemlanguage9) to obtain the system language.<br>Since API version 21, you can also call **param get persist.global.language** of the [param tool](../../tools/param-tool.md#get) to obtain the system language.|
 
 **Error codes**
 
@@ -50,7 +57,8 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 **Example**
   ```ts
-  import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Set the system language
   try {
@@ -59,25 +67,6 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
     let err: BusinessError = error as BusinessError;
     console.error(`call System.setSystemLanguage failed, error code: ${err.code}, message: ${err.message}.`);
   }
- 
-  // Subscribe to a common event.
-  let subscriber: commonEventManager.CommonEventSubscriber; // Used to save the created subscriber object for subsequent subscription and unsubscription.
-  let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = { // Define subscriber information.
-    events: [commonEventManager.Support.COMMON_EVENT_LOCALE_CHANGED]
-  };
-  commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber:commonEventManager.CommonEventSubscriber) => { // Create a subscriber.
-      console.info("createSubscriber");
-      subscriber = commonEventSubscriber;
-      commonEventManager.subscribe(subscriber, (err, data) => {
-        if (err) {
-          console.error(`Failed to subscribe common event. error code: ${err.code}, message: ${err.message}.`);
-          return;
-        }
-        console.info("the subscribed event has occurred."); // Triggered when the subscribed event occurs.
-      })
-  }).catch((err: BusinessError) => {
-      console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
-  });  
   ```
 
 ### setSystemRegion<sup>9+</sup>
@@ -113,6 +102,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setSystemRegion('CN'); // Set the current system region to CN.
@@ -124,9 +114,11 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 
 
-### setSystemLocale<sup>9+</sup>
+### setSystemLocale<sup>(deprecated)</sup>
 
 static setSystemLocale(locale: string): void
+
+> This API is supported since API version 9 and deprecated since API version 20.
 
 Sets the system locale.
 
@@ -157,6 +149,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setSystemLocale('zh-CN'); // Set the system locale to zh-CN.
@@ -198,6 +191,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Set the system time to the 24-hour clock.
   try {
@@ -224,7 +218,7 @@ Adds a preferred language to the specified position on the preferred language li
 
 | Name     | Type    | Mandatory  | Description        |
 | -------- | ------ | ---- | ---------- |
-| language | string | Yes   | Valid ID of the language to be added as a preferred language. |
+| language | string | Yes   | [Valid language ID](../../internationalization/i18n-locale-culture.md#how-it-works). |
 | index    | number | No   | Position to which the preferred language is added. The default value is the length of the preferred language list.|
 
 **Error codes**
@@ -240,6 +234,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Add zh-CN to the preferred language list.
   let language = 'zh-CN';
@@ -283,6 +278,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Delete the first preferred language from the preferred language list.
   let index: number = 0;
@@ -325,6 +321,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setUsingLocalDigit(true); // Enable the local digit switch.
@@ -370,6 +367,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setTemperatureType(i18n.TemperatureType.CELSIUS); //: Set the temperature unit to °C.
@@ -414,6 +412,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     i18n.System.setFirstDayOfWeek (i18n.WeekDay.MON); // Set the preferred start day of a week to Monday.
@@ -963,6 +962,8 @@ try {
 
 ## SystemLocaleManager<sup>10+</sup>
 
+Provides capabilities of sorting languages, countries/regions, and time zones.
+
 ### constructor<sup>10+</sup>
 
 constructor()
@@ -975,6 +976,8 @@ Creates a **SystemLocaleManager** object.
 
 **Example**
   ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
   ```
 
@@ -993,7 +996,7 @@ Obtains the list of languages after sorting.
 
 |   Name |      Type     | Mandatory|     Description     |
 | --------- | ------------- | ---- | ------------- |
-| languages | Array&lt;string&gt; | Yes  | Valid IDs of the languages to be sorted.|
+| languages | Array&lt;string&gt; | Yes  | List of [valid language IDs](../../internationalization/i18n-locale-culture.md#how-it-works).|
 | options   | [SortOptions](#sortoptions10)   | No  | Language sorting option.|
 
 **Return value**
@@ -1015,6 +1018,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Assume that the system language is zh-Hans, the system region is CN, and the system locale is zh-Hans-CN.
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
@@ -1066,6 +1070,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   // Assume that the system language is zh-Hans, the system region is CN, and the system locale is zh-Hans-CN.
   let systemLocaleManager: i18n.SystemLocaleManager = new i18n.SystemLocaleManager();
@@ -1107,11 +1112,12 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 **Example**
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { i18n } from '@kit.LocalizationKit';
 
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();
     for (let i = 0; i < timeZoneCityItemArray.length; i++) {
-        console.log(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
+        console.info(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
             ", " + timeZoneCityItemArray[i].offset + "\r\n");
     }
   } catch(error) {

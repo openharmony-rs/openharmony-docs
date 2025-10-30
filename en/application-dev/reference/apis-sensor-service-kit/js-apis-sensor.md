@@ -5859,7 +5859,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name        | Type               | Mandatory| Description          |
 | -------------- | ------------------- | ---- | -------------- |
-| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation vector.|
+| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation matrix.|
 
 **Return value**
 
@@ -9165,7 +9165,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 | Name                  | Type                 | Mandatory  | Description       |
 | --------------------- | ------------------- | ---- | --------- |
 | currentRotationMatrix | Array&lt;number&gt; | Yes   | Current rotation matrix.|
-| preRotationMatrix     | Array&lt;number&gt; | Yes   | Rotation vector to rotate.  |
+| preRotationMatrix     | Array&lt;number&gt; | Yes   | Peer rotation matrix.  |
 
 **Return value**
 
@@ -9363,7 +9363,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 | Name        | Type                                    | Mandatory| Description                                 |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
-| rotationMatrix | Array&lt;number&gt;                      | Yes  | Peer rotation matrix.                       |
+| rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                       |
 | callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
 
 **Example**

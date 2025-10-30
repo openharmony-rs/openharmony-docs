@@ -22,7 +22,7 @@ Before developing the HID DDK, you must understand the following basic concepts:
 
 - **DDK**
 
-  It is provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
+  A toolkit provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
 
 ### Implementation Principles
 

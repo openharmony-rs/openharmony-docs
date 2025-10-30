@@ -1,10 +1,10 @@
 # P2P Connection Development
 
-<!--Kit: Connectivity Kit-->	
-<!--Subsystem: Communication-->	
-<!--Owner: @qq_43802146-->	
-<!--Designer: @qq_43802146-->	
-<!--Tester: @furryfurry123-->	
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 ## Introduction
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
@@ -67,7 +67,7 @@ The following table describes the APIs used in this topic.
        passphrase: "12345678",
        groupName: "testGroup",
        goBand: 0
-     }
+   }
      wifiManager.createGroup(config);
    } catch (error) {
      console.error("failed:" + JSON.stringify(error));

@@ -1,7 +1,13 @@
 # SaveButton (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
-The **SaveButton** security component allows you to obtain temporary storage permission from the user by their touching the button, eliminating the need for a permission request dialog box.
+The **SaveButton** security component represents a save button that enables applications to obtain temporary storage permissions through a single tap, eliminating the need for permission request dialog boxes.
 
 
 > **NOTE**
@@ -12,6 +18,8 @@ The **SaveButton** security component allows you to obtain temporary storage per
 ## APIs
 
 ## SaveIconStyle
+
+Enumerates icon styles of the **SaveButton** component.
 
 **System API**: This is a system API.
 

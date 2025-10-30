@@ -1,4 +1,10 @@
 # GridRow
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 The responsive grid layout provides rules for layout design and resolves issues of dynamic layout across devices with different sizes, thereby ensuring layout consistency across layouts on different devices.
 
@@ -17,6 +23,8 @@ This component can contain the **GridCol** child component.
 ## APIs
 GridRow(option?: GridRowOptions)
 
+Grid row layout container.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -30,18 +38,20 @@ GridRow(option?: GridRowOptions)
 
 ## GridRowOptions
 
+Layout options of the grid row layout container.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name|Type|Mandatory|Description|
-|-----|-----|----|----|
-|columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  No |Number of columns in the grid layout.<br>Default value: **12**|
-|gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|   No |Gutter of the grid layout.<br>Default value: **0**|
-|breakpoints|[BreakPoints](#breakpoints)|  No |Array of breakpoints for the breakpoint value and the corresponding reference based on the window or container size.<br>Default value:<br>{<br>value: ["320vp", "600vp", "840vp"],<br>reference: BreakpointsReference.WindowSize<br>} |
-|direction|[GridRowDirection](#gridrowdirection)|   No |Arrangement direction of the grid layout.<br>Default value: **GridRowDirection.Row**|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+|columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  No| Yes |Number of columns in the grid layout.<br>The value is an integer greater than 0.<br>- Before API version 20: The default value is 12.<br>- API version 20 or later: The default value is { xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }.<br>Invalid values are treated as the default value.|
+|gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|  No| Yes |Gutter of the grid layout.<br>Default value: **0**<br>Invalid values are treated as the default value.<br>Unit: vp.|
+|breakpoints|[BreakPoints](#breakpoints)|  No| Yes |Breakpoint values and the corresponding reference based on the application window or container size.<br>Default value:<br>{<br>value: ["320vp", "600vp", "840vp"],<br>reference: BreakpointsReference.WindowSize<br>} <br>Invalid values are treated as the default value.<br>Unit: vp.|
+|direction|[GridRowDirection](#gridrowdirection)|  No| Yes |Arrangement direction of the grid layout.<br>Default value: **GridRowDirection.Row**<br>Invalid values are treated as the default value.|
 
 ## GutterOption
 
@@ -53,10 +63,10 @@ Provides the gutter options for the grid layout to define the spacing between ch
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory  | Description                                    |
-| ----- | ------ | ---- | ---------------------------------------- |
-| x  | [Length](ts-types.md#length) \| [GridRowSizeOption](#gridrowsizeoption) | No  | Horizontal spacing between grid child components.   |
-| y  | [Length](ts-types.md#length) \| [GridRowSizeOption](#gridrowsizeoption) | No  | Vertical spacing between grid child components.   |
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| x  | [Length](ts-types.md#length) \| [GridRowSizeOption](#gridrowsizeoption) | No | Yes | Horizontal spacing between grid child components.   |
+| y  | [Length](ts-types.md#length) \| [GridRowSizeOption](#gridrowsizeoption) | No | Yes  | Vertical spacing between grid child components.   |
 
 ## GridRowColumnOption
 
@@ -68,26 +78,30 @@ Describes the numbers of grid columns for devices with different grid sizes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory  | Description                                    |
-| ----- | ------ | ---- | ---------------------------------------- |
-| xs  | number | No   | Number of grid columns on the device where the grid size is xs.   |
-| sm  | number | No   | Number of grid columns on the device where the grid size is sm.     |
-| md  | number | No   | Number of grid columns on the device where the grid size is md.   |
-| lg  | number | No   | Number of grid columns on the device where the grid size is lg.     |
-| xl  | number | No   | Number of grid columns on the device where the grid size is xl.   |
-| xxl | number | No   | Number of grid columns on the device where the grid size is xxl.   |
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| xs  | number | No  | Yes  | Number of grid columns on the device where the grid size is xs.   |
+| sm  | number | No   | Yes | Number of grid columns on the device where the grid size is sm.     |
+| md  | number | No   | Yes | Number of grid columns on the device where the grid size is md.   |
+| lg  | number | No  | Yes  | Number of grid columns on the device where the grid size is lg.     |
+| xl  | number | No   | Yes | Number of grid columns on the device where the grid size is xl.   |
+| xxl | number | No   | Yes | Number of grid columns on the device where the grid size is xxl.   |
 
 **NOTE**
-
-In the **GridRow** component, you can define the value range of [breakpoints](../../../ui/arkts-layout-development-grid-layout.md#grid-breakpoints). A maximum of six breakpoints are supported, which are xs, sm, md, lg, xl, and xxl. The breakpoint names cannot be modified. Assume that the input array is [n0, n1, n2, n3, n4], then the value ranges of breakpoints are as follows. 
-|Breakpoint|Value Range|
-|---|-----------|
-|xs |[0, n0)    |
-|sm |[n0, n1)   |
-|md |[n1, n2)   |
-|lg |[n2, n3)   |
-|xl |[n3, n4)   |
-|xxl|[n4, INF)  |
+- For versions earlier than API version 20, if the number of columns in the GridRow component is configured only for some breakpoints, the number of columns at the configured smaller breakpoints is used to supplement the number of columns that are not configured. If the number of columns at the smaller breakpoints is not configured, the default number of columns (12) is used to supplement the number of columns that are not configured.
+  <!--code_no_check-->
+  ```ts
+  columns: {xs:2, md:4, lg:8} //equivalent to columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
+  columns: {md:4, lg:8} //equivalent to columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}
+  ```
+- For API version 20 and later, if the number of columns in the GridRow component is configured only for some breakpoints, the number of columns at the configured smaller breakpoints is used to supplement the number of columns that are not configured. If the number of columns at the smaller breakpoints is not configured, the number of columns at the configured larger breakpoints is used to supplement the number of columns that are not configured.
+  <!--code_no_check-->
+  ```ts
+  columns: {xs:2, md:4, lg:8} //equivalent to columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
+  columns: {md:4, lg:8} //equivalent to columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}
+  ```
+- You are advised to manually configure the number of columns in the GridRow component at different breakpoints to avoid unexpected layout effects of the default number of columns.
+- The width of each column is the content area size of the GridRow component minus the gutter of the grid child components, and then divided by the total number of columns. For example, if columns is set to 12, gutter is set to 10px, and padding is set to 20px for a GridRow with a width of 800px, the width of each column is (800 – 20 x 2 – 10 x 11)/12.
 
 ## GridRowSizeOption
 
@@ -99,18 +113,18 @@ Describes the gutter sizes for different device width types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory  | Description                                    |
-| ----- | ------ | ---- | ---------------------------------------- |
-| xs  | [Length](ts-types.md#length) | No   | Gutter size for minimum device width.   |
-| sm  | [Length](ts-types.md#length) | No   | Gutter size for small device width.     |
-| md  | [Length](ts-types.md#length) | No   | Gutter size for medium device width.   |
-| lg  | [Length](ts-types.md#length) | No   | Gutter size for large device width.     |
-| xl  | [Length](ts-types.md#length) | No   | Gutter size for extra large device width.   |
-| xxl | [Length](ts-types.md#length) | No   | Gutter size for extra extra large device width.   |
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| xs  | [Length](ts-types.md#length) | No | Yes  | Gutter size for minimum device width.   |
+| sm  | [Length](ts-types.md#length) | No | Yes  | Gutter size for small device width.     |
+| md  | [Length](ts-types.md#length) | No | Yes  | Gutter size for medium device width.   |
+| lg  | [Length](ts-types.md#length) | No | Yes  | Gutter size for large device width.     |
+| xl  | [Length](ts-types.md#length) | No | Yes  | Gutter size for extra large device width.   |
+| xxl | [Length](ts-types.md#length) | No | Yes  | Gutter size for extra extra large device width.   |
 
 ## BreakPoints
 
-Sets breakpoints for the responsive grid container.
+Sets breakpoints for the responsive grid container. For details about breakpoints, see [Breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -118,10 +132,11 @@ Sets breakpoints for the responsive grid container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Mandatory  | Description                                    |
-| ----- | ------ | ---- | ---------------------------------------- |
-| value  | Array&lt;string&gt; | No | Array of monotonically increasing breakpoints.<br>Default value: **["320vp", "600vp", "840vp"]**   |
-| reference  | [BreakpointsReference](#breakpointsreference) | No   | Breakpoint switching reference.<br>Default value: **BreakpointsReference.WindowSize**|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| value  | Array&lt;string&gt; | No| Yes | Array of monotonically increasing breakpoints.<br>Default value: **["320vp", "600vp", "840vp"]**<br>Invalid values are treated as the default value.<br>Unit: vp.   |
+| reference  | [BreakpointsReference](#breakpointsreference) | No| Yes  | Breakpoint switching reference.<br>Default value: **BreakpointsReference.WindowSize**<br>Invalid values are treated as the default value.|
+<!--code_no_check-->
 ```ts
   // Enable the xs, sm, and md breakpoints.
   breakpoints: {value: ["100vp", "200vp"]}
@@ -132,6 +147,8 @@ Sets breakpoints for the responsive grid container.
 ```
 
 ## BreakpointsReference
+
+Breakpoint reference of the grid container component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -146,6 +163,8 @@ Sets breakpoints for the responsive grid container.
 
 ## GridRowDirection
 
+Grid element arrangement direction.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -159,10 +178,10 @@ Sets breakpoints for the responsive grid container.
 
 **NOTE**
 * Grid elements can be arranged only in the **Row** or **RowReverse** direction, but not in the **Column** or **ColumnReverse** direction.
-* The location and size of a grid child component can be calculated only based on **span** and **offset**. If the **span** values of child components add up to a number greater than the allowed number of columns, the grid will automatically wraps lines.
+* The location and size of a grid child component can be calculated only based on **span** and **offset**. If the **span** values of child components add up to a number greater than the allowed number of columns, the grid will automatically wrap lines.
 * If the **span** value of a single child component exceeds the maximum number of columns, the maximum number of columns is used.
 * If a child component takes up more than the total number of columns according to its **offset** and **span** settings, it will be placed in a new row.
-* Below is the display effect of **Item1: GridCol({span: 6}), Item2: GridCol({ span: 8, offset:11})**. 
+* Example: Item1: GridCol({ span: 6 }), Item2: GridCol({ span: 8, offset:11 }) 
 
 |1      | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | 10    | 11    | 12    |
 | ----- | ------ | ---- | ---- | -----|-----|---------|--------|------|------- |------- |------- |
@@ -190,10 +209,12 @@ Sets the alignment mode of the **GridCol** components along the vertical main ax
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ItemAlign](ts-appendix-enums.md#itemalign) | Yes  | Alignment mode of the **GridCol** components along the vertical main axis of the **GridRow** component.<br>Default value: **ItemAlign.Start**<br>**NOTE**<br>**ItemAlign** supports the following enums: **ItemAlign.Start**, **ItemAlign.Center**, **ItemAlign.End**, and **ItemAlign.Stretch**.|
+| value  | [ItemAlign](ts-appendix-enums.md#itemalign) | Yes  | Alignment mode of the **GridCol** components along the vertical main axis of the **GridRow** component.<br>Default value: **ItemAlign.Start**<br>Invalid values are treated as the default value.<br>**NOTE**<br>**ItemAlign** supports the following enums: **ItemAlign.Start**, **ItemAlign.Center**, **ItemAlign.End**, and **ItemAlign.Stretch**.|
 
 
 ## Events
+
+In addition to the [universal events](ts-component-general-events.md), the following events are supported.
 
 ### onBreakpointChange
 
@@ -211,7 +232,7 @@ Triggered when the breakpoint changes.
 
 | Name  | Type  | Mandatory  | Description  |
 | ----- | ------ | ---- | ---------------------------------------- |
-|breakpoints| string |No|Breakpoint change.<br> The value can be **"xs"**, **"sm"**, **"md"**, **"lg"**, **"xl"**, or **"xxl"**.|
+|callback| (breakpoints: string) => void |Yes|Breakpoints can be xs, sm, md, lg, xl, or xxl.|
 
 ## Example
 

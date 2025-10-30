@@ -143,9 +143,9 @@ Describes the notification timing information.
 | Name          | Type             | Read-Only| Optional| Description                            |
 | -------------- | ---------------- | --- | --- | -------------------------------- |
 | initialTime    | number           | No | Yes | Start time, in milliseconds.               |
-| isCountDown    | boolean          | No | Yes | Whether to count down. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
-| isPaused       | boolean          | No | Yes | Whether to pause the progress. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No.  |
-| isInTitle      | boolean          | No | Yes | Whether the time is displayed in the title. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
+| isCountDown    | boolean          | No | Yes | Whether to count down. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|
+| isPaused       | boolean          | No | Yes | Whether to pause the progress. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.  |
+| isInTitle      | boolean          | No | Yes | Whether the time is displayed in the title. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|
 
 **Example**:
 
@@ -171,4 +171,4 @@ Describes the notification progress.
 | -------------- | --------------- | --- | --- | -------------------------------- |
 | maxValue        | number         | No | Yes | Maximum progress value.                      |
 | currentValue    | number         | No | Yes | Current progress value.                      |
-| isPercentage    | boolean        | No | Yes | Whether to show the progress in percentage. The default value is **false**.<br>- **true**: Yes.<br>- **false**: No. |
+| isPercentage    | boolean        | No | Yes | Whether to show the progress in percentage. The default value is **false**.<br> - **true**: Yes.<br> - **false**: No.|

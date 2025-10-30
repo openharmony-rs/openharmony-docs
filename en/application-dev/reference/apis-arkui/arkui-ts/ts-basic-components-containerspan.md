@@ -1,4 +1,10 @@
 # ContainerSpan
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @HelloCrease-->
 
 As a child of the [Text](ts-basic-components-text.md) component, the **ContainerSpan** component is used to manage the background colors and rounded corners of multiple [Span](ts-basic-components-span.md) and [ImageSpan](ts-basic-components-imagespan.md) components in a unified manner.
 
@@ -61,7 +67,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 ## Example
 ### Example 1: Setting the Background Style
 
-This example demonstrates how to set the background style for text using **textBackgroundStyle**.
+This example demonstrates how to set the background style for text using the [textBackgroundStyle](#textbackgroundstyle) attribute, available since API version 11.
 
 ```ts
 // xxx.ets
@@ -72,6 +78,7 @@ struct Index {
     Column() {
       Text() {
         ContainerSpan() {
+          // Replace $r('app.media.app_icon') with the image resource file you use.
           ImageSpan($r('app.media.app_icon'))
             .width('40vp')
             .height('40vp')
@@ -88,28 +95,28 @@ struct Index {
 
 ### Example 2: Setting the Background Style Using attributeModifier
 
-This example demonstrates how to set the background style for text using **attributeModifier**.
+This example demonstrates how to set the background style for text using the [attributeModifier](#attributemodifier12) attribute, available since API version 12.
 
 ```ts
-// xxx.ets
-import { ContainerSpanModifier } from '@ohos.arkui.modifier'
+import { ContainerSpanModifier } from '@ohos.arkui.modifier';
 
 class MyContainerSpanModifier extends ContainerSpanModifier {
   applyNormalAttribute(instance: ContainerSpanAttribute): void {
     super.applyNormalAttribute?.(instance);
-    this.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" })
+    this.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" });
   }
 }
 
 @Entry
 @Component
 struct ContainerSpanModifierExample {
-  @State containerSpanModifier: ContainerSpanModifier = new MyContainerSpanModifier()
+  @State containerSpanModifier: ContainerSpanModifier = new MyContainerSpanModifier();
 
   build() {
     Column() {
       Text() {
         ContainerSpan() {
+          // Replace $r('app.media.app_icon') with the image resource file you use.
           ImageSpan($r('app.media.app_icon'))
             .width('40vp')
             .height('40vp')

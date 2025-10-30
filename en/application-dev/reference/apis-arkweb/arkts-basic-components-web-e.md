@@ -368,6 +368,17 @@ Enumerates the focus modes.
 | DEFAULT                    | 0 | The **Web** component applies for the focus when it is touched, long-pressed, swiped, or zoomed.|
 | GESTURE_TAP_AND_LONG_PRESS | 1 | The **Web** component applies for the focus only when it is touched and long-pressed. The swipe and zoom gestures do not apply for the focus.|
 
+## WebRotateEffect<sup>21+</sup>
+
+Enumerates the effect of rotation.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name                      | Value| Description          |
+| -------------------------- | -- | ------------- |
+| TOPLEFT_EFFECT                    | 0 | The content area is drawn in top-left of the node.|
+| RESIZE_COVER_EFFECT | 1 | The content area is scaled to completely fill the node.|
+
 ## WebBypassVsyncCondition<sup>20+</sup>
 
 Enumerates whether to allow the rendering process to bypass the vsync scheduling.

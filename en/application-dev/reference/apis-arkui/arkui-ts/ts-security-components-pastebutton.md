@@ -1,6 +1,13 @@
 # PasteButton
 
-The **PasteButton** security component represents a paste button that allows you to obtain temporary pasteboard permissions from users with a simple button touch.
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
+**PasteButton** is a security component that provides paste functionality. When users tap this component, the application temporarily gains pasteboard read permissions.
 
 > **NOTE**
 >
@@ -28,7 +35,7 @@ You may want to learn the [restrictions on security component styles](../../../s
 
 PasteButton(options: PasteButtonOptions)
 
-Creates a **PasteButton** component that contains the specified elements.
+Creates a **PasteButton** component containing the specified element.
 
 You may want to learn the [restrictions on security component styles](../../../security/AccessToken/security-component-overview.md#constraints) to avoid authorization failures caused by incompliant styles.
 
@@ -49,30 +56,32 @@ Describes the icon, text, and other specific elements for the **PasteButton** co
 > **NOTE**
 >
 > - At least one of **icon** or **text** must be provided.<br>
-> - If neither **icon** nor **text** is provided, the **options** parameter in [PasteButton](#pastebutton-1) will not take effect, and the created **PasteButton** component will use the default style:
+> - If neither **icon** nor **text** is provided, the **options** parameter in [PasteButton](#pastebutton-1) will not take effect, and the created **PasteButton** will be in the default style.
 >
->   The default value of **PasteIconStyle** is **LINES**.
+>     - The default value of **PasteIconStyle** is **LINES**.
 >
->   The default style of **PasteDescription** is **PASTE**.
+>     - The default style of **PasteDescription** is **PASTE**.
 >
->   The default value of **ButtonType** is **Capsule**.
+>     - The default value of **ButtonType** is **Capsule**.
 > - The **icon**, **text**, and **buttonType** parameters do not support dynamic modification.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| icon | [PasteIconStyle](#pasteiconstyle) | No| Icon style of the **PasteButton** component.<br>If this parameter is not specified, there is no icon.|
-| text | [PasteDescription](#pastedescription) | No| Text on the **PasteButton** component.<br>If this parameter is not specified, there is no text description.|
-| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | No| Background style of the **PasteButton** component.<br>If this parameter is not specified, the system uses a capsule-type button.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| icon | [PasteIconStyle](#pasteiconstyle) | No| Yes| Icon style of the **PasteButton** component.<br>If this parameter is not specified, there is no icon.|
+| text | [PasteDescription](#pastedescription) | No| Yes| Text on the **PasteButton** component.<br>If this parameter is not specified, there is no text description.|
+| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | No| Yes| Background style of the **PasteButton** component.<br>If this parameter is not specified, the system uses a capsule-type button.|
 
 ## Attributes
 
 This component can only inherit the [universal attributes of security components](ts-securitycomponent-attributes.md).
 
 ## PasteIconStyle
+
+Enumerates icon styles of the **PasteButton** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -84,6 +93,8 @@ This component can only inherit the [universal attributes of security components
 
 ## PasteDescription
 
+Enumerates text descriptions of the **PasteButton** component.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -94,14 +105,16 @@ This component can only inherit the [universal attributes of security components
 
 ## PasteButtonOnClickResult
 
+Enumerates the authorization results after the **PasteButton** component is tapped.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| SUCCESS | 0 | The **PasteButton** component is touched successfully.|
-| TEMPORARY_AUTHORIZATION_FAILED | 1 | Temporary authorization fails after the **PasteButton** component is touched.|
+| SUCCESS | 0 | Authorization is successful.|
+| TEMPORARY_AUTHORIZATION_FAILED | 1 | Authorization fails.|
 
 ## PasteButtonCallback<sup>18+</sup>
 
@@ -113,10 +126,12 @@ Triggered when the **PasteButton** component is clicked.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) |Yes|See **ClickEvent**.|
-| result | [PasteButtononClickResult](#pastebuttononclickresult)| Yes| Authorization result. After the authorization, the pasteboard content can be read.|
+| result | [PasteButtonOnClickResult](#pastebuttononclickresult)| Yes| Authorization result. After the authorization, the pasteboard content can be read.|
 | error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | No| Error code and message when the component is clicked.<br>Error code 0 indicates successful authorization.<br>Error code 1 indicates an internal system error.<br>Error code 2 indicates attribute setting errors, including but not limited to:<br>1. The font or icon size is too small.<br>2. The font or icon color is too similar to the background color.<br>3. The font or icon color is too transparent.<br>4. The padding is negative.<br>5. The component is obscured by other components or windows.<br>6. The text exceeds the background range.<br>7. The component exceeds the window or screen bounds.<br>8. The component size is too large.<br>9. The component text is truncated and not fully displayed.<br>10. Related attribute settings affect the display of security components.|
 
 ## Events
@@ -137,7 +152,7 @@ Called when a click event occurs.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| event | [PasteButtonCallback](#pastebuttoncallback18) |Yes|See **PasteButtonCallback**.<br>In API versions 10 to 17, the parameter type is event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtononClickResult](#pastebuttononclickresult)) => void.<br>Since API version 18, the parameter type changes into PasteButtonCallback.|
+| event | [PasteButtonCallback](#pastebuttoncallback18) |Yes|See **PasteButtonCallback**.<br>In API versions 10 to 17, the parameter type is (event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void.<br>Since API version 18, the parameter type changes into PasteButtonCallback.|
 
 ## Example
 
@@ -149,12 +164,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   handlePasteButtonClick: PasteButtonCallback =
-    (event: ClickEvent, result: PasteButtonOnClickResult, error: BusinessError<void>) => {
-      if (result == PasteButtonOnClickResult.SUCCESS) {
+    (event: ClickEvent, result: PasteButtonOnClickResult, error?: BusinessError<void>) => {
+      if (result === PasteButtonOnClickResult.SUCCESS) {
         console.info("success");
       } else {
-        console.info("errCode: " + error.code);
-        console.info("errMessage: " + error.message);
+        console.error("errCode: " + error?.code);
+        console.error("errMessage: " + error?.message);
       }
     };
 
@@ -165,10 +180,10 @@ struct Index {
         PasteButton().onClick(this.handlePasteButtonClick)
         // Whether an element is contained depends on whether the parameter corresponding to the element is specified. If buttonType is not passed in, the button uses the ButtonType.Capsule settings.
         PasteButton({ icon: PasteIconStyle.LINES })
-        // Create a button with only an icon and background. If the alpha value of the most significant eight bits of the background color is less than 0x1A, the system forcibly adjusts the alpha value to 0xFF.
+        // Create a button with only an icon and background. If the alpha value of the most significant eight bits of the background color is less than 0x1a, the system forcibly adjusts the alpha value to 0xff.
         PasteButton({ icon: PasteIconStyle.LINES, buttonType: ButtonType.Capsule })
           .backgroundColor(0x10007dff)
-        // Create a button with an icon, text, and background. If the alpha value of the most significant eight bits of the background color is less than 0x1A, the system forcibly adjusts the alpha value to 0xFF.
+        // Create a button with an icon, text, and background. If the alpha value of the most significant eight bits of the background color is less than 0x1a, the system forcibly adjusts the alpha value to 0xff.
         PasteButton({ icon: PasteIconStyle.LINES, text: PasteDescription.PASTE, buttonType: ButtonType.Capsule })
         // Create a button with an icon, text, and background. If the set width is less than the minimum allowed, the button's text will wrap to guarantee full text display.
         PasteButton({ icon: PasteIconStyle.LINES, text: PasteDescription.PASTE, buttonType: ButtonType.Capsule })

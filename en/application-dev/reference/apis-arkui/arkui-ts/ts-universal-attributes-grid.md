@@ -1,6 +1,16 @@
 # Grid
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
+
+Grid settings can provide a regular structure for layouts, solve the dynamic layout problem of multiple sizes and devices, and ensure the layout consistency of each module on different devices.
 
 >  **NOTE**
+>
+>  - The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  - This module is deprecated since API version 9. You are advised to use [GridCol](ts-container-gridcol.md) and [GridRow](ts-container-gridrow.md) instead.
 >

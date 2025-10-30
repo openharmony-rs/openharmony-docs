@@ -1,12 +1,21 @@
 # Creating a Grid (Grid/GridItem)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zcdqs; @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
 The grid layout consists of cells formed by rows and columns. You can specify the cells where items are located to create various layouts. The grid layout excels at dividing a page into regions and defining the proportion of child components. It is a key adaptive layout and applies to scenarios such as photo gallery, calendar, and calculator.
 
-ArkUI provides the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) and [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) components for building grid layouts. **Grid** is a container for defining the grid layout, while **GridItem** is a child component in the container. The **Grid** component allows creation of child components using methods such as [if/else](../ui/state-management/arkts-rendering-control-ifelse.md), [ForEach](../ui/state-management/arkts-rendering-control-foreach.md), and [LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md).
+ArkUI provides the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) and [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) components for building grid layouts. **Grid** is a container for defining the grid layout, while **GridItem** is a child component in the container. The **Grid** component allows creation of child components using methods such as [if/else](../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
+> **NOTE**
+>
+> This document only shows key code snippets. For the complete code that can run, see <!--RP2-->[Creating a Grid](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableComponent)<!--RP2End-->.
 
 ## Layout and Constraints
 
@@ -176,7 +185,7 @@ For multiple **GridItem** components with similar content structures, you are ad
 @Entry
 @Component
 struct OfficeService {
-  @State services: Array<string> = ['Conference', 'Vote','Sign-in', 'Print']
+  @State services: Array<string> = ['Conference', 'Vote', 'Sign-in', 'Print'];
 
   build() {
     Column() {
@@ -232,7 +241,7 @@ In the horizontal scrollable grid layout shown in the preceding figure, **rowsTe
 @Entry
 @Component
 struct Shopping {
-  @State services: Array<string> = ['Live', 'Premium']
+  @State services: Array<string> = ['Live', 'Premium'];
 
   build() {
     Column({ space: 5 }) {
@@ -263,7 +272,7 @@ When the **Grid** component is initialized, it can be bound to a [Scroller](../r
 
 
 ```ts
-private scroller: Scroller = new Scroller()
+private scroller: Scroller = new Scroller();
 ```
 
 On the calendar page, when a user clicks the **Next** button, the application responds to the click event by setting the **next** parameter in the **scrollPage** API to **true** to scroll to the next page.
@@ -275,19 +284,19 @@ Column({ space: 5 }) {
   }
   .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
 
-  Row({space: 20}) {
+  Row({ space: 20 }) {
     Button('Previous')
       .onClick(() => {
         this.scroller.scrollPage({
           next: false
-        })
+        });
       })
 
     Button('Next')
       .onClick(() => {
         this.scroller.scrollPage({
           next: true
-        })
+        });
       })
   }
 }
@@ -330,9 +339,9 @@ To add an external scrollbar to a [Grid](../reference/apis-arkui/arkui-ts/ts-con
 
 ## Performance Optimization
 
-Just as [LazyForEach](../ui/state-management/arkts-rendering-control-lazyforeach.md) is recommended for [handling a long list](arkts-layout-development-create-list.md#handling-a-long-list), it is also recommended for a scrolling grid layout when a large number of grid items is involved.
+Just as [LazyForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is recommended for [handling a long list](arkts-layout-development-create-list.md#handling-a-long-list), [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md) is recommended for a scrolling grid layout when a large number of grid items is involved.
 
-For details about the implementation, see the example in [LazyForEach: Lazy Data Loading](../ui/state-management/arkts-rendering-control-lazyforeach.md).
+For details about the implementation of on-demand loading optimization, see the example in [LazyForEach: Lazy Data Loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
 When the grid is rendered in lazy loading mode, to improve the grid scrolling experience and minimize white blocks during grid scrolling, you can use the **cachedCount** parameter of the **Grid** component. This parameter sets the number of grid items preloaded outside of the screen and is valid only in **LazyForEach**.
 

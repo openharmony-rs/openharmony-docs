@@ -1,4 +1,10 @@
 # @ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 The **abilityConnectionManager** module provides APIs for cross-device connection management. After successful networking between devices (login with the same account and enabling of Bluetooth on the devices), a system application and a third-party application can start a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) of the same application across these devices to establish a Bluetooth connection. This way, data (specifically, text) can be transmitted across the devices over the connection.
 
@@ -127,7 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
- 
+    
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
@@ -135,7 +141,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
        this.onCollab(param);
        return 0;
      }
- 
+    
      onCollab(collabParam: Record<string, Object>) {
        const sessionId = this.createSessionFromWant(collabParam);
        if (sessionId == -1) {
@@ -143,14 +149,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          return;
        }
      }
- 
+    
      createSessionFromWant(collabParam: Record<string, Object>): number {
        let sessionId = -1;
        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
        if (peerInfo == undefined) {
          return sessionId;
        }
- 
+    
        const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
@@ -207,8 +213,7 @@ Obtains information about the peer application in the specified session.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| PeerInfo | Information about the peer application.|
-| undefined | Unknown situation.|
+| [PeerInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-distributed-abilityconnectionmanager#peerinfo) \| undefined | Information about the peer application if the corresponding **peerInfo** exists; **undefined** if the session ID is not found.|
 
 **Error codes**
 
@@ -233,7 +238,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
-Sets up a UIAbility connection after a collaboration session is created and the session ID is obtained.
+Sets up a UIAbility connection after a collaboration session is created and the session ID is obtained. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -433,7 +438,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-Enables listening for **connect** events.
+Enables listening for **connect** events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -494,7 +499,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("connect", sessionId);
@@ -815,11 +819,11 @@ Defines the application collaboration information.
 
 | Name                   | Type      |Read Only  | Optional  | Description                |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| deviceId          | string | Yes   |Yes   | Peer device ID.    |
-| bundleName        | string | Yes   |Yes   | Bundle name of the application.|
-| moduleName        | string | Yes   |Yes   | Module name of the peer application.|
-| abilityName       | string | Yes   |Yes    | Ability name of the peer application.|
-| serviceName       | string | Yes   |No    | Service name for the application.|
+| deviceId          | string | No  |No   | Peer device ID.    |
+| bundleName        | string | No  |No   | Bundle name of the application.|
+| moduleName        | string | No  |No   | Module name of the peer application.|
+| abilityName       | string | No  |No    | Ability name of the peer application.|
+| serviceName       | string | No  |Yes    | Service name for the application.|
 
 ## ConnectOptions
 
@@ -829,9 +833,9 @@ Connection options for the application.
 
 | Name         | Type   | Read Only  | Optional  | Description         |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendData    | boolean  | No   | No   | Whether to send data. The value **true** indicates that data needs to be sent, and the value **false** indicates the opposite.    |
-| startOptions | [StartOptionParams](#startoptionparams) | No   | No   | Application startup options.|
-| parameters | Record&lt;string, string&gt;  | No   | No   | Additional configuration for the connection.   |
+| needSendData    | boolean  | No   | Yes  | Whether to send data. The value **true** indicates that data needs to be sent, and the value **false** indicates the opposite.    |
+| startOptions | [StartOptionParams](#startoptionparams) | No   | Yes  | Application startup options.|
+| parameters | Record&lt;string, string&gt;  | No   | Yes  | Additional configuration for the connection.   |
 
 ## ConnectResult
 
@@ -841,9 +845,9 @@ Defines the connection result.
 
 | Name      | Type  | Read Only  | Optional  | Description     |
 | -------- | ------ | ---- | ---- | ------- |
-| isConnected | boolean | Yes   | Yes   | Whether the connection is successful. The value **true** indicates that the connection is successful, and the value **false** indicates the opposite.|
-| errorCode | [ConnectErrorCode](#connecterrorcode) | Yes   | No   | Connection error code.|
-| reason | string | Yes   | No   | Connection rejection reason.|
+| isConnected | boolean | No  | No| Whether the connection is successful. The value **true** indicates that the connection is successful, and the value **false** indicates the opposite.|
+| errorCode | [ConnectErrorCode](#connecterrorcode) | No  | Yes  | Connection error code.|
+| reason | string | No  | Yes  | Connection rejection reason.|
 
 ## EventCallbackInfo
 
@@ -851,12 +855,12 @@ Defines the event callback information.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Name      | Type   | Readable  | Writable  | Description         |
+| Name      | Type   | Read Only| Optional| Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| sessionId | number   | Yes   | Yes   |   Collaboration session ID.|
-| reason | [DisconnectReason](#disconnectreason)     | Yes   | No   |   Disconnection reason.|
-| msg | string   | Yes   | No   |   Received message.|
-| data  | ArrayBuffer | Yes   | No   |   Received byte stream.|
+| sessionId | number   | No  | No  |   Collaboration session ID.|
+| reason | [DisconnectReason](#disconnectreason)     | No  | Yes  |   Disconnection reason.|
+| msg | string   | No  | Yes  |   Received message.|
+| data  | ArrayBuffer | No  | Yes  |   Received byte stream.|
 
 ## CollaborateEventInfo
 
@@ -866,8 +870,8 @@ Collaboration event information.
 
 | Name      | Type  | Read Only  | Optional  | Description     |
 | -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | Yes   | Yes   | Collaboration event type.|
-| eventMsg | string | Yes   | No   | Content of a collaboration event.|
+| eventType | [CollaborateEventType](#collaborateeventtype) | No  | No| Collaboration event type.|
+| eventMsg | string | No  | Yes  | Content of a collaboration event.|
 
 ## ConnectErrorCode
 

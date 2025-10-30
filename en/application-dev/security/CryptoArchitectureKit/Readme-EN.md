@@ -1,5 +1,12 @@
 # Crypto Architecture Kit (Crypto Architecture Kit)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 - [Introduction to Crypto Architecture Kit](crypto-architecture-kit-intro.md)
 - Key Generation and Conversion<!--crypto-key-generation-conversion-->
   - [Key Generation and Conversion Overview](crypto-key-generation-conversion-overview.md)
@@ -102,8 +109,11 @@
   - [Generating an HMAC (C/C++)](crypto-compute-hmac-ndk.md)
   - [Generating a CMAC (ArkTS)](crypto-compute-cmac.md)
   - [Generating a CMAC (C/C++)](crypto-compute-cmac-ndk.md)
-- [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
-- [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+- Random Numbers<!--crypto-compute-rand-->
+  - [Generating Secure Random Numbers (ArkTS)](crypto-generate-random-number.md)
+  - [Generating Secure Random Numbers (C/C++)](crypto-generate-random-number-ndk.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (ArkTS)](crypto-generate-random-number-hardware.md)
+  - [Generating Secure Random Numbers with Hardware Entropy Sources (C/C++)](crypto-generate-random-number-hardware-ndk.md)
 - Key Derivation<!--crypto-key-derivation-->
   - [Key Derivation Overview and Algorithm Specifications](crypto-key-derivation-overview.md)
   - [Key Derivation Using PBKDF2 (ArkTS)](crypto-key-derivation-using-pbkdf2.md)

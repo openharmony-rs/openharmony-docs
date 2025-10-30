@@ -1,4 +1,10 @@
 # Attribute Updater (AttributeUpdater)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -39,7 +45,7 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 After a component is initialized, you can use the **attribute** method of the **AttributeUpdater** instance to obtain the attribute object. Modifying attributes directly through this object will immediately trigger an update to the component's attributes.
 
 ```ts
-import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
   // The initializeModifier method is triggered upon the first binding, initializing the attributes.
@@ -79,7 +85,7 @@ struct updaterDemo {
 You can directly update the constructor parameters of a component using the **updateConstructorParams** method of an **AttributeUpdater** instance.
 
 ```ts
-import { AttributeUpdater } from '@ohos.arkui.modifier'
+import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyTextModifier extends AttributeUpdater<TextAttribute, TextInterface> {
   initializeModifier(instance: TextAttribute): void {

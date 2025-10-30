@@ -1,4 +1,10 @@
-# Overlay
+# Overlay Control
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 The overlay feature allows you to place elements on top of a component.
 
@@ -8,11 +14,15 @@ The overlay feature allows you to place elements on top of a component.
 
 ## overlay
 
-overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions )
+overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions ): T
 
-Adds an overlay to this component, which can be text, a custom component, or **ComponentContent**. The overlay is not rendered through the component tree, meaning some APIs (for example, [getRectangleById](../js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyid)) cannot access components within the overlay.
+Adds an overlay to this component, which can be text, a custom component, or [ComponentContent](#componentcontent12). The overlay is positioned based on the current component. The overlay is not rendered through the component tree, meaning some APIs (for example, [getRectangleById](../js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)) cannot access components within the overlay.
 
-**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
+>**NOTE**
+>
+> The overlay places the floating layer component above the bound component, blocking all user interactions with components beneath it. To enable interaction with underlying components, refer to [Example 2: Setting an Overlay Using a Custom Builder](#example-2-setting-an-overlay-using-a-custom-builder) and apply **.hitTestBehavior(HitTestMode.Transparent)** to the outermost component in the overlay builder. This configuration is particularly crucial for watermark implementations, where the overlay must not interfere with user interaction with the underlying content.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -22,21 +32,35 @@ Adds an overlay to this component, which can be text, a custom component, or **C
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | string \| [CustomBuilder](ts-types.md#custombuilder8)<sup>10+</sup> \| [ComponentContent](../js-apis-arkui-ComponentContent.md)<sup>12+</sup> | Yes  | Content of the overlay, which can be text or a custom component.<br>**NOTE**<br>When the overlay is a custom component, it cannot obtain focus through sequential keyboard navigation. Using **CustomBuilder** will cause the overlay content to be destroyed and recreated on page refresh, which may incur performance overhead. For scenarios with frequent page updates, using **ComponentContent** is recommended.|
-| options | [OverlayOptions](#overlayoptions12) | No  | Options for positioning the overlay.<br>**NOTE**<br>The value must be in JSON format.<br>In versions earlier than API version 12, **options** is defined as follows:<br>{<br>align?: [Alignment](ts-appendix-enums.md#alignment), <br>offset?: {x?: number, y?: number}<br>} |
+| value   | string \| [CustomBuilder](ts-types.md#custombuilder8)<sup>10+</sup> \| [ComponentContent](#componentcontent12)<sup>12+</sup> | Yes  | Content of the overlay, which can be text or a custom component.<br>**NOTE**<br>When the overlay is a custom component, it cannot obtain focus through sequential keyboard navigation. Using **CustomBuilder** will cause the overlay content to be destroyed and recreated on page refresh, which may incur performance overhead. For scenarios with frequent page updates, using **ComponentContent** is recommended.|
+| options | [OverlayOptions](#overlayoptions12) | No  | Options for positioning the overlay.<br>**NOTE**<br>In versions earlier than API version 12, **options** is defined as follows:<br>{<br>align?: [Alignment](ts-appendix-enums.md#alignment), <br>offset?: {x?: number, y?: number}<br>} |
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 >  **NOTE**
 >
->  The overlay node does not support events related to node mounting or unmounting, such as **onAppear** and **onDisappear**.
+>  The overlay node does not support mount/unmount events such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear).
 
 ## OverlayOptions<sup>12+</sup>
 
+>  **NOTE**
+>
+>  To standardize anonymous object definitions, the element definitions here have been revised in API version 12. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                 | Type                                      | Read Only| Optional | Description                                               |
+| Name                 | Type                                      | Read-Only| Optional | Description                                               |
 | --------------------- | -------------------------------------------| --- | -------| --------------------------------------------------- |
-| align<sup>7+</sup>   | [Alignment](ts-appendix-enums.md#alignment) | No | Yes     |Alignment of the overlay relative to the component.<br>Default value: **TopStart**        |
-| offset<sup>7+</sup>  | [OverlayOffset](#overlayoffset12)          | No | Yes    |Offset of the overlay from the upper left corner. By default, the overlay is in the upper left corner of the component.|
+| align<sup>7+</sup>   | [Alignment](ts-appendix-enums.md#alignment) | No | Yes     |Alignment of the overlay relative to the component.<br>Default value: **TopStart**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
+| offset<sup>7+</sup>  | [OverlayOffset](#overlayoffset12)          | No | Yes    |Offset of the overlay from the upper left corner. By default, the overlay is in the upper left corner of the component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 > 
@@ -44,10 +68,34 @@ Adds an overlay to this component, which can be text, a custom component, or **C
 
 ## OverlayOffset<sup>12+</sup>
 
-| Name   | Type                                                     | Read Only| Optional | Description                                               |
+>  **NOTE**
+>
+>  To standardize anonymous object definitions, the element definitions here have been revised in API version 12. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name   | Type                                                     | Read-Only| Optional | Description                                               |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x       | number                                                   | No  | Yes   | Horizontal offset.<br>Unit: vp.                              |
-| y       | number                                                   | No  | Yes   | Vertical offset.<br>Unit: vp.                              |
+| x<sup>7+</sup>        | number                                                   | No  | Yes   | Horizontal offset.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                              |
+| y<sup>7+</sup>        | number                                                   | No  | Yes   | Vertical offset.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                              |
+
+## ComponentContent<sup>12+</sup>
+
+type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+
+A constructor used to create a **ComponentContent** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type|Description|
+| ----- | ----------------- |
+| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | A constructor used to create a **ComponentContent** object.|
 
 ## Example
 
@@ -94,7 +142,11 @@ struct OverlayExample {
     Column() {
       Image($r('app.media.img1'))
       Text("This is overlayNode").fontSize(20).fontColor(Color.White)
-    }.width(180).height(180).alignItems(HorizontalAlign.Center)
+    }
+    .width(180)
+    .height(180)
+    .alignItems(HorizontalAlign.Center)
+    .hitTestBehavior(HitTestMode.Transparent) // Configure the overlay not to block interaction.
   }
 
   build() {

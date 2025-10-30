@@ -1,14 +1,20 @@
 # @ohos.enterprise.adminManager (Enterprise Device Management) (System API)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **adminManager** module provides enterprise device management capabilities so that devices have the custom capabilities required in enterprise settings.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are available only to [device administrator applications](../../mdm/mdm-kit-guide.md#introduction).
+> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application).
 > 
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md).
 
 ## Modules to Import
 
@@ -20,15 +26,15 @@ import { adminManager } from '@kit.MDMKit';
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, callback: AsyncCallback\<void>): void
 
-Enables a device administrator application for the current user. The super device administrator application can be activated only by the administrator. This API uses an asynchronous callback to return the result.
+Enables a device administrator application. The super device administrator application can be activated only by the administrator. After the application is enabled, it cannot be uninstalled. The [EnterpriseAdminExtensionAbility](../../mdm/mdm-kit-term.md#enterpriseadminextensionability) component of the application will automatically start upon device startup and user switching. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -55,16 +61,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
   name: 'enterprise name',
   description: 'enterprise description'
-}
+};
 
 adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_SUPER, (err) => {
   if (err) {
@@ -85,9 +94,9 @@ Enables a device administrator application for the specified user. The super dev
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -115,16 +124,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
   name: 'enterprise name',
   description: 'enterprise description'
-}
+};
 
 adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100, (err) => {
   if (err) {
@@ -145,9 +157,9 @@ Enables a device administrator application for the current or specified user. Th
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -180,17 +192,20 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
   name: 'enterprise name',
   description: 'enterprise description'
-}
+};
 
 adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_TYPE_NORMAL, 100).catch(
   (err: BusinessError) => {
@@ -208,9 +223,9 @@ Disables a common device administrator application for the current user. This AP
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -233,11 +248,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 adminManager.disableAdmin(wantTemp, (err) => {
@@ -259,9 +276,9 @@ Disables a common device administrator application for the user specified by **u
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -285,11 +302,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 adminManager.disableAdmin(wantTemp, 100, (err) => {
@@ -311,9 +330,9 @@ Disables a super device administrator application based on **bundleName**. This 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -336,8 +355,10 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
+// Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
 
 adminManager.disableSuperAdmin(bundleName, (err) => {
@@ -359,9 +380,9 @@ Disables a super device administrator application based on **bundleName**. This 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -389,9 +410,11 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
 
 adminManager.disableSuperAdmin(bundleName).catch((err: BusinessError) => {
@@ -407,9 +430,9 @@ Checks whether a device administrator application of the current user is enabled
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -430,11 +453,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 adminManager.isAdminEnabled(wantTemp, (err, result) => {
@@ -454,9 +479,9 @@ Checks whether a device administrator application of the specified user is enabl
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -478,13 +503,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
+// Replace parameters with actual values.
 adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
   if (err) {
     console.error(`Failed to query admin is enabled. Code: ${err.code}, message: ${err.message}`);
@@ -502,9 +530,9 @@ Checks whether a device administrator application of the current or specified us
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -531,14 +559,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
+// Replace parameters with actual values.
 adminManager.isAdminEnabled(wantTemp, 100).then((result) => {
   console.info(`Succeeded in querying admin is enabled or not, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -554,9 +585,9 @@ Checks whether a super device administrator application is enabled based on **bu
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -577,8 +608,10 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
+// Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
 
 adminManager.isSuperAdmin(bundleName, (err, result) => {
@@ -598,9 +631,9 @@ Checks whether a super device administrator application is enabled based on **bu
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -610,7 +643,7 @@ Checks whether a super device administrator application is enabled based on **bu
 
 **Return value**
 
-| ID          | Error Message              |
+| Type          | Description             |
 | ----------------- | ------------------- |
 | Promise\<boolean> | Promise used to return the result. The value **true** means the super device administrator application is enabled; the value **false** means the opposite.|
 
@@ -626,9 +659,11 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Replace with actual values.
 let bundleName: string = 'com.example.myapplication';
 
 adminManager.isSuperAdmin(bundleName).then((result) => {
@@ -646,9 +681,9 @@ Obtains the super device administrator application of this administrator. This A
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Return value**
 
@@ -667,6 +702,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 adminManager.getSuperAdmin().then((result) => {
@@ -686,9 +722,9 @@ Sets the enterprise information of the device administrator application. This AP
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -712,16 +748,19 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
   name: 'enterprise name',
   description: 'enterprise description'
-}
+};
 
 adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo, (err) => {
   if (err) {
@@ -742,9 +781,9 @@ Sets the enterprise information of the device administrator application. This AP
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -773,17 +812,20 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
   name: 'enterprise name',
   description: 'enterprise description'
-}
+};
 
 adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo).catch((err: BusinessError) => {
   console.error(`Failed to set enterprise info. Code: ${err.code}, message: ${err.message}`);
@@ -798,9 +840,9 @@ Obtains the enterprise information of the device administrator application. This
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -822,11 +864,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
@@ -846,9 +890,9 @@ Obtains the enterprise information of the device administrator application. This
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -875,12 +919,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 adminManager.getEnterpriseInfo(wantTemp).then((result) => {
@@ -900,9 +946,9 @@ Subscribes to system management events. This API uses an asynchronous callback t
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -927,11 +973,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -940,7 +988,7 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
     console.error(`Failed to subscribe managed event. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in subscribe managed event');
+  console.info('Succeeded in subscribing managed event');
 });
 ```
 
@@ -954,9 +1002,9 @@ Subscribes to system management events. This API uses a promise to return the re
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -986,12 +1034,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1011,9 +1061,9 @@ Unsubscribes from system management events. This API uses an asynchronous callba
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -1038,11 +1088,13 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1051,7 +1103,7 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
     console.error(`Failed to unsubscribe managed event. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in unsubscribe managed event');
+  console.info('Succeeded in unsubscribing managed event');
 });
 ```
 
@@ -1065,9 +1117,9 @@ Unsubscribes from system management events. This API uses a promise to return th
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -1097,12 +1149,14 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
@@ -1122,9 +1176,9 @@ Authorizes the administrator permission to a specified application. This API use
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -1150,12 +1204,15 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let bundleName: string = "com.example.application";
 
 adminManager.authorizeAdmin(wantTemp, bundleName, (err) => {
@@ -1177,9 +1234,9 @@ Authorizes the administrator permission to a specified application. This API use
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -1210,13 +1267,16 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
+// Replace with actual values.
 let bundleName: string = "com.example.application";
 
 adminManager.authorizeAdmin(wantTemp, bundleName).then(() => {
@@ -1233,10 +1293,9 @@ Queries all device administrator applications of the current user. This API uses
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
 
 **Return value**
 
@@ -1255,6 +1314,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1275,9 +1335,9 @@ Replaces a specified application with a super device administrator application.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -1302,20 +1362,23 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let oldAdmin: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 let newAdmin: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication_new',
-  abilityName: 'NewEntryAbility',
+  abilityName: 'NewEntryAbility'
 };
 try {
   adminManager.replaceSuperAdmin(oldAdmin, newAdmin, false);
-  console.info(`Succeeded in replace super admin.`);
+  console.info(`Succeeded in replacing super admin.`);
 } catch(err) {
   console.error(`Failed to replace super admin. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1327,15 +1390,15 @@ setAdminRunningMode(admin: Want, mode: RunningMode): void
 
 Sets the running mode of the device management application.
 
-This API takes effect only on 2-in-1 devices.
-
 **Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices and does not work on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -1359,16 +1422,18 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let admin: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 try {
   adminManager.setAdminRunningMode(admin, adminManager.RunningMode.MULTI_USER);
-  console.info(`Succeeded in set admin running mode.`);
+  console.info(`Succeeded in setting admin running mode.`);
 } catch(err) {
   console.error(`Failed to set admin running mode. Code: ${err.code}, message: ${err.message}`);
 }
@@ -1380,7 +1445,7 @@ Represents the enterprise information of a device administrator application.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**System API**: This is a system API.
 
 | Name        | Type    | Read-Only| Optional| Description                           |
 | ----------- | --------| ---- | -----| -------------------------- |
@@ -1393,7 +1458,7 @@ Enumerates the types of device administrator applications.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**System API**: This is a system API.
 
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
@@ -1406,7 +1471,7 @@ Represents the running mode of a device administrator application.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**System API**: This is a system API.
 
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |

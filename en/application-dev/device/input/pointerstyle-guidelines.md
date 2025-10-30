@@ -1,5 +1,12 @@
 # Mouse Pointer Development
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## When to Use
 
 Mouse pointer management provides the functions such as displaying or hiding the mouse pointer as well as querying and setting the pointer style. For example, you can determine whether to display or hide the mouse pointer when a user watches a video in full screen, and can switch the mouse pointer to a color picker when a user attempts color pickup.
@@ -16,7 +23,7 @@ The following table lists the common APIs for mouse pointer management. For deta
 
 | API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |
-| isPointerVisible(callback: AsyncCallback\<boolean>): void | Checks the visible status of the mouse pointer.                                |
+| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the visible status of the mouse pointer.                                |
 | setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the visible status of the mouse pointer. This setting takes effect for the mouse pointer globally.|
 | setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the mouse pointer style. This setting takes effect for the mouse pointer style of a specified window.        |
 | getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the mouse pointer style.                                          |

@@ -1,7 +1,7 @@
 # WLAN Service Development Overview
 
 ## Overview
-A wireless local area network (WLAN) uses the radio, infrared, or other technologies to transmit data between devices that are not physically connected with each other. It is widely used in offices and public places where mobile devices are used.
+Wireless Local Area Network (WLAN) is a technology that transmits and receives data via radio signals, infrared (IR) light signals, or other technologies. It enables network communication between nodes without the need for physical connections. It is widely used in offices and public places where mobile devices are used.
 
 Wireless Fidelity (Wi-Fi) is a communication technology that transmits data between devices through radio waves. It allows users to access the Internet and share data without the need for wired connections. 
 

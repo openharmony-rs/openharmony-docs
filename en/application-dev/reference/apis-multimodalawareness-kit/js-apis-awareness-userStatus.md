@@ -36,23 +36,27 @@ Defines the user age group detection result.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
 
-| Name               | Type  |Readable|Writable| Description                  |
+| Name               | Type  |Read-Only|Optional| Description                  |
 | ------------------- | ---- |----|----| ---------------------- |
-| ageGroup  | [UserAgeGroup](#useragegroup)   |Yes|No| User age group, for example, child or adult.|
-| confidence  | float    |Yes|No| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
+| ageGroup  | [UserAgeGroup](#useragegroup)   |No|Yes| User age group, for example, child or adult.|
+| confidence  | float    |No|Yes| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
 
 
 ## userStatus.on('userAgeGroupDetected')
 
- on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void;
+ on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void
 
 Enables the age group detection function.
 
 When the function is enabled, the application can recommend content based on the age group detection result.
 
-If the device does not support the function, error code 801 is returned.
-
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
+
+**Device behavior differences**: This API can be called on phones. If it is called on other devices, error code **801** is returned.
+
+> **NOTE**
+>
+> This API is supported only on some phones. Error code **801** is returned if it is called on unsupported phones.
 
 **Parameters**
 
@@ -91,11 +95,17 @@ try {
 
 ## userStatus.off('userAgeGroupDetected')
 
-off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void;
+off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void
 
 Disables the age group detection function.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
+
+**Device behavior differences**: This API can be called on phones. If it is called on other devices, error code **33900003** is returned.
+
+> **NOTE**
+>
+> This API is supported only on some phones. Error code **33900003** is returned if it is called on unsupported phones.
 
 **Parameters**
 

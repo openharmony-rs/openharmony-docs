@@ -32,7 +32,7 @@ Provides functions such as event injection and status query.
 | [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | Defines key information, which identifies a key pressing behavior. For example, the Ctrl key information contains the key value and key type.|
 | [Input_KeyEvent](capi-input-input-keyevent.md) | Input_KeyEvent | Key event object.|
 | [Input_MouseEvent](capi-input-input-mouseevent.md) | Input_MouseEvent | Mouse event object.|
-| [Input_TouchEvent](capi-input-input-touchevent.md) | Input_TouchEvent | Touch event object.|
+| [Input_TouchEvent](capi-input-input-touchevent.md) | Input_TouchEvent | **TouchEvent** object.|
 | [Input_AxisEvent](capi-input-input-axisevent.md) | Input_AxisEvent | Axis event object.|
 | [Input_Hotkey](capi-input-input-hotkey.md) | Input_Hotkey | Defines the hotkey structure.|
 | [Input_DeviceInfo](capi-input-input-deviceinfo.md) | Input_DeviceInfo | Defines the input device information.|
@@ -106,8 +106,8 @@ Provides functions such as event injection and status query.
 | [void OH_Input_SetMouseEventWindowId(struct Input_MouseEvent* mouseEvent, int32_t windowId)](#oh_input_setmouseeventwindowid) | - | Sets the window ID of a mouse event.|
 | [int32_t OH_Input_GetMouseEventWindowId(const struct Input_MouseEvent* mouseEvent)](#oh_input_getmouseeventwindowid) | - | Obtains the window ID of a mouse event.|
 | [void OH_Input_SetMouseEventDisplayId(struct Input_MouseEvent* mouseEvent, int32_t displayId)](#oh_input_setmouseeventdisplayid) | - | Sets the screen ID of a mouse event.|
-| [struct Input_TouchEvent* OH_Input_CreateTouchEvent()](#oh_input_createtouchevent) | - | Creates a touch event object.|
-| [void OH_Input_DestroyTouchEvent(struct Input_TouchEvent** touchEvent)](#oh_input_destroytouchevent) | - | Destroys a touch event object.|
+| [struct Input_TouchEvent* OH_Input_CreateTouchEvent()](#oh_input_createtouchevent) | - | Creates a **TouchEvent** object.|
+| [void OH_Input_DestroyTouchEvent(struct Input_TouchEvent** touchEvent)](#oh_input_destroytouchevent) | - | Destroys a **TouchEvent** object.|
 | [void OH_Input_SetTouchEventAction(struct Input_TouchEvent* touchEvent, int32_t action)](#oh_input_settoucheventaction) | - | Sets the action of a touch event.|
 | [int32_t OH_Input_GetTouchEventAction(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventaction) | - | Obtains the action of a touch event.|
 | [void OH_Input_SetTouchEventFingerId(struct Input_TouchEvent* touchEvent, int32_t id)](#oh_input_settoucheventfingerid) | - | Sets the finger ID of a touch event.|
@@ -1563,7 +1563,7 @@ struct Input_TouchEvent* OH_Input_CreateTouchEvent()
 
 **Description**
 
-Creates a touch event object.
+Creates a **TouchEvent** object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -1583,7 +1583,7 @@ void OH_Input_DestroyTouchEvent(struct Input_TouchEvent** touchEvent)
 
 **Description**
 
-Destroys a touch event object.
+Destroys a **TouchEvent** object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -1594,7 +1594,7 @@ Destroys a touch event object.
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_TouchEvent](capi-input-input-touchevent.md)** touchEvent | Touch event|
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)** touchEvent | **TouchEvent** object.|
 
 ### OH_Input_SetTouchEventAction()
 

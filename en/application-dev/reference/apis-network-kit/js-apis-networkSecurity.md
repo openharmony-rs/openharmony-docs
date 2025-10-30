@@ -61,10 +61,10 @@ Defines the certificate data.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name | Type                  | Mandatory     | Description          |
-| ----- | --------------------- | --------- | -------------- |
-| type  | CertType              | Yes     | Certificate type. |
-| data  | string \| ArrayBuffer | Yes      | Certificate data.     |
+| Name | Type                  | Read-Only     |Optional| Description          |
+| ----- | --------------------- | --------- | ----|---------- |
+| type  | CertType              | No   |No|Certificate type. |
+| data  | string \| ArrayBuffer | No   | No|Certificate data.     |
 
 
 ## networkSecurity.certVerification
