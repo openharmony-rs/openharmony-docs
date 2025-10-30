@@ -181,6 +181,88 @@
   在子组件的aboutToReuse中，使用setTimeout，将修改抛出组件复用的作用范围。
 
   <!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
+  
+  ``` TypeScript
+  class BasicDataSource implements IDataSource {
+    private listener: DataChangeListener | undefined = undefined;
+    public dataArray: number[] = [];
+  
+    totalCount(): number {
+      return this.dataArray.length;
+    }
+  
+    getData(index: number): number {
+      return this.dataArray[index];
+    }
+  
+    registerDataChangeListener(listener: DataChangeListener): void {
+      this.listener = listener;
+    }
+  
+    unregisterDataChangeListener(listener: DataChangeListener): void {
+      this.listener = undefined;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct Index {
+    private data: BasicDataSource = new BasicDataSource();
+  
+    aboutToAppear(): void {
+      for (let index = 1; index < 20; index++) { // 循环20次
+        this.data.dataArray.push(index);
+      }
+    }
+  
+    build() {
+      List() {
+        LazyForEach(this.data, (item: number, index: number) => {
+          ListItem() {
+            ReuseComponent({ num: item })
+          }
+        }, (item: number, index: number) => index.toString())
+      }.cachedCount(0)
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReuseComponent {
+    @State num: number = 0;
+  
+    aboutToReuse(params: ESObject): void {
+      this.num = params.num;
+    }
+  
+    build() {
+      Column() {
+        Text('ReuseComponent num:' + this.num.toString())
+        ReuseComponentChild({ num: this.num })
+        Button('plus')
+          .onClick(() => {
+            this.num += 10; // 每次点击增加10
+          })
+      }
+      .height(200)
+    }
+  }
+  
+  @Component
+  struct ReuseComponentChild {
+    @Link num: number;
+  
+    aboutToReuse(params: ESObject): void {
+      setTimeout(() => {
+        this.num = -1 * params.num;
+      }, 1)
+    }
+  
+    build() {
+      Text('ReuseComponentChild num:' + this.num.toString());
+    }
+  }
+  ```
 
 
 - ComponentContent不支持传入\@Reusable装饰器装饰的自定义组件。
