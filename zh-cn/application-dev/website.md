@@ -1718,6 +1718,7 @@
         - [元数据(C/C++)](media/camera/native-camera-metadata.md)
         - [手电筒使用(C/C++)](media/camera/native-camera-torch-use.md)
         - [压力管控(C/C++)](media/camera/native-camera-system-pressure.md)
+        - [微距能力设置(C/C++)](media/camera/native-camera-macro.md)
         - [多摄同开(C/C++)](media/camera/native-camera-concurrent-open.md)
     - DRM Kit（数字版权保护服务）<!--drm-kit-->
       - [DRM Kit 简介](media/drm/drm-overview.md)
