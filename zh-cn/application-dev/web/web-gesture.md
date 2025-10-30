@@ -107,7 +107,7 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 <!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
-import web_webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component

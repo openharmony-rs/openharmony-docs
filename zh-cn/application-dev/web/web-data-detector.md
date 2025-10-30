@@ -50,13 +50,7 @@ struct Index {
       })
         .enableDataDetector(true)
         .dataDetectorConfig({
-          types: [],  // 实体识别类型，为空则识别所有类型
-          color: Color.Red,
-          decoration: {
-            type: TextDecorationType.LineThrough,
-            color: Color.Green,
-            style: TextDecorationStyle.WAVY
-          }
+          types: []  // 实体识别类型，为空则识别所有类型
         })
     }
     .height('100%')
@@ -103,37 +97,15 @@ struct Index {
 <!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) -->
 
 ``` TypeScript
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  webController: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Row() {
-        Button('Refresh')
-          .onClick(() => {
-            this.webController.refresh();
-          })
-      }
-
-      Web({
-        src: $rawfile('index.html'),
-        controller: this.webController
-      })
-        .enableDataDetector(true)
-        .dataDetectorConfig({
-          enablePreviewMenu: true,  // 配置分词长按预览功能
-          types: []
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
+Web({
+src: $rawfile('index.html'),
+controller: this.webController
+})
+.enableDataDetector(true)
+.dataDetectorConfig({
+  enablePreviewMenu: true,  // 配置分词长按预览功能
+  types: []
+})
 ```
 
 在[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
