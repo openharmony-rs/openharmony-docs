@@ -1750,7 +1750,11 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1771,6 +1775,39 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
+## wifiManager.onHotspotStaJoin<sup>22+</sup>
+
+onHotspotStaJoin(callback: Callback&lt;StationInfo&gt;): void
+
+注册wifi热点sta加入事件，在业务退出时，要调用offHotspotStaJoin(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;StationInfo&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
 ## wifiManager.off('hotspotStaJoin')<sup>9+</sup>
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
@@ -1781,7 +1818,11 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1818,6 +1859,39 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 ```
 
+## wifiManager.offHotspotStaJoin<sup>22+</sup>
+
+offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
+
+取消注册wifi热点sta加入事件
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| **错误码ID** | **错误信息** |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
 ## wifiManager.on('hotspotStaLeave')<sup>9+</sup>
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
@@ -1828,14 +1902,18 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1849,6 +1927,39 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
+## wifiManager.onHotspotStaLeave<sup>22+</sup>
+
+onHotspotStaLeave(callback: Callback&lt;StationInfo&gt;): void
+
+注册wifi热点sta离开事件，在业务退出时，要调用offHotspotStaLeave(callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
 ## wifiManager.off('hotspotStaLeave')<sup>9+</sup>
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
@@ -1859,14 +1970,18 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
-| **参数名** | **类型** | **必填** | **说明** |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-| callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
 
 **错误码：**
 
@@ -1896,3 +2011,35 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ```
 
+## wifiManager.offHotspotStaLeave<sup>22+</sup>
+
+offHotspotStaLeave(callback?: Callback&lt;StationInfo&gt;): void
+
+注册wifi热点sta离开事件。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Communication.WiFi.AP.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
