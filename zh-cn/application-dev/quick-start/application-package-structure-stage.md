@@ -51,8 +51,8 @@
 
 > **说明：**
 >
-> - App Pack是发布上架到应用市场的基本单元，但是不能在设备上直接安装和运行。
-> - 在[应用签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)、云端分发、端侧安装时，都是以HAP/HSP为单位进行签名、分发和安装的。
+> - App Pack是发布上架到应用市场的基本单元。
+> - 在[应用签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)时，是以HAP/HSP/APP为单位进行签名的；在云端分发、端侧安装时，是以HAP/HSP为单位进行分发和安装的。
 
 **图3** 编译发布与上架部署流程图
 

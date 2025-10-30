@@ -66,9 +66,9 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 | 参数 | 参数说明 |
 | -------- | -------- |
 | -h | 帮助信息。 |
-| -p | 可选参数，指定HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。 |
-| -r | 可选参数，覆盖安装一个HAP/HSP。默认值为覆盖安装。 |
-| -s | 根据场景判断，安装应用间HSP时为必选参数，其他场景为可选参数。安装应用间共享库， 每个路径目录下只能存在一个同包名的HSP。 |
+| -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
+| -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 
@@ -593,16 +593,17 @@ error: no signature file.
 
 **错误描述**
 
-用户安装未签名的HAP包。
+用户安装未签名的HAP/HSP包。
 
 **可能原因**
 
-HAP包没有签名。
+HAP/HSP包没有签名。
 
 **处理步骤**
 
 1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+3. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置appWithSignedPkg为true，保证APP里的HAP/HSP有签名。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -2945,6 +2946,79 @@ error: Install failed due to the U1Enabled is not same in all haps.
 **处理步骤**
 
 重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
+
+### 9568445 一次仅支持安装一个APP包
+**错误信息**
+
+error: only one app can be installed at a time.
+
+**错误描述**
+
+安装APP时，每次只允许安装一个APP，安装多个APP会导致安装失败，且不允许HAP/HSP和APP一起安装。
+
+**可能原因**
+
+通过bm install -p命令安装应用时，
+1. -p指定了多个APP路径。
+2. -p传入的路径下包含多个APP包。
+3. -p传入的路径下既包含APP包又包含了HAP/HSP。
+4. -p指定了APP包路径的同时，又通过-s指定了应用间HSP路径。
+
+**处理步骤**
+
+每次只指定一个APP路径，或传入路径下仅包含一个APP。如果通过-p指定了APP包路径，不再使用-s。
+
+### 9568446 解压APP失败
+**错误信息**
+
+error: decompress app failed.
+
+**错误描述**
+
+用户安装APP时，解压APP失败。
+
+**可能原因**
+
+APP包的格式不正确。
+
+**处理步骤**
+
+重新[打包APP](./packing-tool.md#app打包指令)。
+
+### 9568447 APP中没有能在当前设备安装的包
+**错误信息**
+
+error: no suitable haps or hsps in the app.
+
+**错误描述**
+
+要安装的APP包不适用于当前设备。
+
+**可能原因**
+
+APP中没有适合当前设备的HAP包或者HSP包。
+
+**处理步骤**
+
+如需要适配当前设备，请在应用设备类型配置中增加当前[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)，然后重新[打包APP](./packing-tool.md#app打包指令)。
+
+### 9568448 验证APP签名失败
+**错误信息**
+
+error: verify app signature failed.
+
+**错误描述**
+
+用户安装APP时签名验证失败。
+
+**可能原因**
+
+APP包签名不正确或没有签名。
+
+**处理步骤**
+
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+2. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
 <!--Del-->
 ## 常见问题
