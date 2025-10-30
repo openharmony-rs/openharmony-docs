@@ -510,6 +510,41 @@ V1：
 
 <!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
 
+``` TypeScript
+@Component
+struct Child15 {
+  @Prop localValue: number = 0;
+
+  build() {
+    Column() {
+      Text(`${this.localValue}`).fontSize(25)
+      Button('Child +100')
+        .onClick(() => {
+          // 改变localValue不会传递给父组件Parent
+          this.localValue += 100;
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent15 {
+  @State value: number = 10;
+
+  build() {
+    Column() {
+      Button('Parent +1')
+        .onClick(() => {
+          // 改变value的值，通知子组件Child value更新
+          this.value += 1;
+        })
+      Child15({ localValue: this.value })
+    }
+  }
+}
+```
+
 V2中，\@Param本地不可写，与\@Once搭配使用时只同步一次。若要实现子组件本地可写，且父组件后续更新仍能通知子组件，可借助\@Monitor实现。
 
 V2实现：
