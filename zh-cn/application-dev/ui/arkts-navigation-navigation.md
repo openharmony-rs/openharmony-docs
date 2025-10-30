@@ -679,7 +679,27 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
 
 为了方便组件跟页面解耦，在NavDestination子页面内部的自定义组件可以通过全局方法监听或查询到页面的一些状态信息。
 
-- 页面信息查询
+  <!-- @[callbackFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template3/Index.ets) -->
+  
+  ``` TypeScript
+  // 在UIAbility中使用
+  import { UIContext, uiObserver } from '@kit.ArkUI';
+  
+  // callbackFunc是开发者定义的监听回调函数
+  function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+  // ···
+  };
+  // ···
+      uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+      // ···
+  
+  // ···
+    // 可以通过窗口的getUIContext()方法获取对应的UIContent
+    uiContext: UIContext | null = null;
+  // ···
+      uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc);
+      // ···
+  ```
 
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
