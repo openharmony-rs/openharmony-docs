@@ -103,6 +103,30 @@ V2迁移策略：使用\@ObservedV2和\@Trace。
 
 <!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Child4 {
+  @Trace public value: number = 10;
+}
+
+@ComponentV2
+@Entry
+struct example2 {
+  @Local child: Child4 = new Child4();
+
+  build() {
+    Column() {
+      Text(this.child.value.toString())
+      // @Local只能观察自身，需要给Child加上@ObservedV2和@Trace
+      Button('value+1')
+        .onClick(() => {
+          this.child.value++;
+        })
+    }
+  }
+}
+```
+
 **外部初始化状态变量**
 
 V1的\@State变量可以从外部初始化，V2的\@Local禁止外部初始化。为实现类似功能，需要用\@Param和\@Once代替\@State，允许外部传入初始值，并确保该值只初始化时同步一次。
