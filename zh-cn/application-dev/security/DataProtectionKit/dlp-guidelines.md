@@ -68,6 +68,48 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 使用该接口的前置条件：链接DLP凭据服务器。  
 
 	<!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+ 
+ ``` TypeScript
+ openDlpFile(dlpUri: string, fileName: string, fd: number) {
+   let want:Want = {
+     'action': 'ohos.want.action.viewData',
+     'uri': dlpUri,
+     'parameters' : {
+       'fileName': {
+         'name': fileName
+       },
+       'keyFd': {
+         'type': 'FD',
+         'value': fd
+       }
+     }
+   }
+ 
+   let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+ 
+   try {
+     console.log('openDLPFile:' + JSON.stringify(want));
+     console.log('openDLPFile: delegator:' + JSON.stringify(context));
+     hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile:' + JSON.stringify(want));
+     hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile: delegator:' + JSON.stringify(context));
+     context.startAbility(want);
+   } catch (err) {
+     console.error('openDLPFile startAbility failed' + (err as BusinessError).code);
+     hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile startAbility failed' + (err as BusinessError).code);
+     this.result = 'openDLPFile startAbility failed' + (err as BusinessError).code;
+     return;
+   }
+ }
+ 
+ prepareForOpenDlpFile() {
+   let file = this.openFile(this.uri);
+   if (!file) {
+     return;
+   }
+   this.openDlpFile(this.uri, this.fileName, file.fd);
+     
+ }
+ ```
 
   	以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
