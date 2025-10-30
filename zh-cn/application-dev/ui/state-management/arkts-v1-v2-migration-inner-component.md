@@ -56,6 +56,18 @@ V2迁移策略：直接替换。
 
 <!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Child2 {
+  @Local val: number = 10;
+
+  build() {
+    Text(this.val.toString())
+  }
+}
+```
+
 **复杂类型**
 
 V1的\@State能够观察复杂对象的第一层属性变化，但V2的\@Local无法观察对象内部变化。为了解决这个问题，需要在类上添加\@ObservedV2，并在需要观察的属性上添加\@Trace。这样，框架就能追踪对象内部的属性变化。
