@@ -362,6 +362,40 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
 4. 抽象混合模式下组件的基类，用于通用逻辑管理。
    <!-- @[arkui_mixed_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedNode.h) -->
+   
+   ``` C
+   // ArkUIMixedNode.h
+   // 混合模式基类。
+   
+   #ifndef MYAPPLICATION_ARKUIMIXEDNODE_H
+   #define MYAPPLICATION_ARKUIMIXEDNODE_H
+   
+   #include <js_native_api.h>
+   #include <js_native_api_types.h>
+   
+   #include "ArkUIBaseNode.h"
+   #include "NativeModule.h"
+   
+   namespace NativeModule {
+   
+   // Wrap ArkTS Node
+   class ArkUIMixedNode : public ArkUIBaseNode {
+   public:
+       ArkUIMixedNode(ArkUI_NodeHandle handle, napi_env env, napi_ref componentContent)
+           : ArkUIBaseNode(handle), env_(env), componentContent_(componentContent) {}
+   
+       // 在基类析构的时候需要把混合模式在ArkTS侧的对象释放掉。
+       ~ArkUIMixedNode() override { napi_delete_reference(env_, componentContent_); }
+   
+   protected:
+       napi_env env_;
+       napi_ref componentContent_;
+   };
+   
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_ARKUIMIXEDNODE_H
+   ```
 
 5. 实现Refresh组件的混合模式封装对象。
    <!-- @[arkui_mixed_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.h) -->
