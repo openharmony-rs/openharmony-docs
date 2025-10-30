@@ -1114,6 +1114,24 @@ SystemMenu() {
 
 <!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+        // $r('app.string.SetAttributes_Text_7')需要替换为开发者所需的资源文件
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
+              {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+          })
+          .maxLines(2)
+```
+
 ![max lines](figures/RichEditor_maxLines.gif)
 
 ## 样式设置
