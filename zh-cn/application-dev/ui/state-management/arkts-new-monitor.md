@@ -1306,6 +1306,39 @@ struct Index {
 
 <!-- @[monitor_problem_param_counter_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  public name: string = 'John';
+  @Trace public age: number = 24;
+
+  get myAge() {
+    return this.age; // age为状态变量
+  }
+
+  @Monitor('myAge')
+  // 监听非@Computed装饰的getter访问器
+  onPropertyChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'age changed');
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change age')
+        .onClick(() => {
+          this.info.age = 25; // 状态变量age改变
+        })
+    }
+  }
+}
+```
+
 上面的代码中，\@Monitor的入参为一个getter访问器的名字，但该getter访问器本身并未被\@Computed装饰，不是一个可被监听的变量。但由于使用了状态变量参与了计算，在状态变量变化后，myAge也被认为发生了变化，因此触发了\@Monitor回调。建议开发者给myAge添加\@Computed装饰器或当getter访问器直接返回状态变量时，不监听getter访问器而是直接监听状态变量本身。
 
 【正例2】
