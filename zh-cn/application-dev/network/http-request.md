@@ -552,7 +552,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 2.  创建HttpRequest对象
 
-    调用createHttp()方法，创建HttpRequest对象。
+    调用[createHttp()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
  <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
@@ -675,4 +675,4 @@ httpRequest.destroy();
 
 * [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
 
-* [HTTP_interceptor_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case)
+* [HTTP_interceptor_case(网络请求拦截器)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case)
