@@ -227,7 +227,7 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 | 类型 | 说明                                                                                                                                                                                                                                  |
 | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_PasteboardObserver_SetData()
 
@@ -255,7 +255,7 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Create()
 
@@ -273,7 +273,7 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nulllptr。 |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_Pasteboard_Destroy()
 
@@ -319,7 +319,7 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Unsubscribe()
 
@@ -346,7 +346,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_IsRemoteData()
 
@@ -391,14 +391,14 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| char* source | 表示用于存放剪贴板数据数据源实例的指针，开发者需在调用接口前申请指针指向的内存。 |
+| char* source | 表示用于存放剪贴板数据源实例的指针，开发者需在调用接口前申请指针指向的内存。 |
 | unsigned int len | 表示source指针对应的内存长度，当内存长度不足时调用接口会失败，建议长度：128。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_HasType()
 
@@ -503,7 +503,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_ClearData()
 
@@ -528,7 +528,7 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br>         若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br>         若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_GetMimeTypes()
 
