@@ -472,6 +472,50 @@ Symbol内容暂不支持手势、复制、拖拽处理。
 
 <!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ···
+          // $r('app.string.xxx')需要替换为开发者所需的资源文件
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_8')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+            })
+            .aboutToIMEInput((value: RichEditorInsertValue) => {
+              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_9')) +
+              JSON.stringify(value), {
+                style: {
+                  fontColor: Color.Gray,
+                  fontSize: 10
+                }
+              })
+              return true;
+            })
+            .onDidIMEInput((value: TextRange) => {
+              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_10')) +
+              JSON.stringify(value), {
+                style: {
+                  fontColor: Color.Gray,
+                  fontSize: 10
+                }
+              })
+            })
+            .width(300)
+            .height(50)
+          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+          RichEditor(this.infoShowOptions)
+            .width(300)
+            .height(70)
+```
+
 ![alt text](figures/richeditor_image_aboutToIMEInput4.gif)
 
 ### 添加完成粘贴前可触发的回调
