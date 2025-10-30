@@ -901,6 +901,33 @@ V1实现：
 
 <!-- @[WatchExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV1.ets) -->
 
+``` TypeScript
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
+@Entry
+@Component
+struct WatchExample1 {
+  @State @Watch('onAppleChange') apple: number = 0;
+
+  onAppleChange(): void {
+    hilog.info(DOMAIN, TAG, 'apple count changed to ' + this.apple);
+  }
+
+  build() {
+    Column() {
+      Text(`apple count: ${this.apple}`)
+      Button('add apple')
+        .onClick(() => {
+          this.apple++;
+        })
+    }
+  }
+}
+```
+
 V2迁移策略：直接替换。
 
 <!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
