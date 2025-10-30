@@ -158,37 +158,33 @@ Repeat组件默认开启节点复用功能。从API version 18开始，可以通
 
 从API version 18开始，Repeat支持L2缓存自定义组件冻结。详细描述见[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
 
-下面通过典型的[滑动场景](#滑动场景)和[数据更新场景](#数据更新场景)示例来展示Repeat子组件的渲染逻辑。图中L1缓存为Repeat有效加载区域，L2缓存为每个循环渲染模板的空闲节点缓存池。
+下面通过典型的[滑动场景](#滑动场景)和[数据更新场景](#数据更新场景)示例来展示Repeat子组件的渲染逻辑。
 
-定义长度为20的数组，数组前5项的template type为`aa`，其余项为`bb`。`aa`缓存池容量为3，`bb`缓存池容量为4。容器组件的预加载区域大小为2。为了便于理解，在`aa`和`bb`缓存池中分别加入一个和两个空闲节点。
+定义长度为20的数组，数组前5项的template type为`aa`，渲染浅蓝色组件，其余项为`bb`，渲染橙色组件。`aa`缓存池容量为3，`bb`缓存池容量为4。容器组件的预加载区域大小为2。为了便于理解，在`aa`和`bb`缓存池中分别加入一个和两个空闲节点。
 
-首次渲染，列表的节点状态如下图所示。
+首次渲染，列表的节点状态如下图所示（template type在图中简写为ttype）。
 
-![Repeat-Start](figures/Repeat-Start.PNG)
+![Repeat-Reuse-1](figures/repeat-reuse-1.svg)
 
 ### 滑动场景
 
-将屏幕向右滑动（屏幕内容右移）一个节点的距离，Repeat将开始复用缓存池中的节点。index=10的节点进入有效加载范围，计算出其template type为`bb`。由于`bb`缓存池非空，Repeat会从`bb`缓存池中取出一个空闲节点进行复用，更新其节点属性，该子组件中涉及数据item和索引index的其他孙子组件会根据V2状态管理的规则做同步更新。其他节点仍在有效加载范围，均只更新索引index。
+将屏幕向下滑动一个节点的距离，Repeat会复用缓存池中的节点。
 
-index=0的节点滑出了有效加载范围。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。
+1）index=10的节点进入有效加载范围，计算出其template type为`bb`。由于`bb`缓存池非空，Repeat会从`bb`缓存池中取出一个空闲节点进行复用，更新其节点属性（数据item和索引index），该子组件中涉及数据item和索引index的其他孙子组件会根据状态管理V2的规则做同步更新。<br/>
+2）index=0的节点滑出了有效加载范围。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。<br/>
+3）其余节点仍在有效加载范围，均只更新索引index。如果对应template type的缓存池已满，Repeat会在UI主线程空闲时销毁掉多余的节点。
 
-如果此时对应template type的缓存池已满，Repeat会销毁掉多余的节点。
-
-![Repeat-Slide](figures/Repeat-Slide.PNG)
+![Repeat-Reuse-2](figures/repeat-reuse-2.svg)
 
 ### 数据更新场景
 
-在上一小节的基础上做如下的数组更新操作，删除index=4的节点，修改节点数据`item_7`为`new_7`。
+在上一小节的基础上做如下的数组更新操作，删除index=4的节点，修改节点数据`07`为`new`。
 
-首先，删除index=4的节点后，失效节点加入`aa`缓存池。后面的列表节点前移，新进入有效加载区域的节点`item_11`会复用`bb`缓存池中的空闲节点，其他节点均只更新索引index。如下图所示。
+1）删除index=4的节点后，节点`05`前移。根据template type的计算规则，新的`05`节点的template type变为`aa`，直接复用旧的`04`节点，更新数据item和索引index，并且将旧的`05`节点加入`bb`缓存池。<br/>
+2）后面的列表节点前移，新进入有效加载区域的节点`11`会复用`bb`缓存池中的空闲节点，其他节点均只更新索引index。<br/>
+3）对于节点数据从`07`变为`new`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据item是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
 
-![Repeat-Update1](figures/Repeat-Update1.PNG)
-
-其次，节点`item_5`前移，索引index更新为4。根据template type的计算规则，节点`item_5`的template type变为`aa`，需要从`aa`缓存池中复用空闲节点，并且将旧节点加入`bb`缓存池。如下图所示。
-
-![Repeat-Update2](figures/Repeat-Update2.PNG)
-
-对于节点数据从`item_7`变为`new_7`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据（即item）是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
+![Repeat-Reuse-3](figures/repeat-reuse-3.svg)
 
 ## 键值生成函数
 
