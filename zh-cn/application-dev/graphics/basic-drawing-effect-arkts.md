@@ -128,6 +128,11 @@
    - 可使用setColor()接口设置画笔颜色，对应为绘制图形轮廓时使用的颜色。
 
       <!-- @[arkts_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // 设置颜色为红色
+      pen.setColor(0xFF, 0xFF, 0x00, 0x00);
+      ```
 
    - 可使用setStrokeWidth()接口设置画笔的线宽。
 
