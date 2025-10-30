@@ -320,6 +320,99 @@
 
 
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
+                  ArkUI_AccessibilityEventType eventType, std::string announcedText)
+   {
+       if (eventInfo == nullptr) {
+           return;
+       }
+       if (elementInfo == nullptr) {
+           return;
+       }
+       OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
+   
+       OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
+       
+       if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
+           OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
+       }
+   }
+   
+   // ···
+   
+   void AccessibilityManager::SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
+                                                          ArkUI_AccessibilityEventType eventType,
+                                                          std::string announcedText)
+   {
+       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+       // 1.填写event内容
+       FillEvent(eventInfo, elementInfo, eventType, announcedText);
+       // 2.callback
+       auto callback = [](int32_t errorCode) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
+       };
+       // 3. 调用接口发送事件给OH侧
+       OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
+   }
+   // [EndExclude abilitycap_one_start]
+   // ···
+   
+   int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
+       ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "ExecuteAccessibilityAction instanceId %{public}s elementId: %{public}ld, "
+                    "action: %{public}d, requestId: %{public}d",
+                    instanceId, elementId, action, requestId);
+       auto object = FakeWidget::Instance().GetChild(elementId);
+       if (!object) {
+           return 0;
+       }
+       auto announcedText = object->GetAnnouncedForAccessibility();
+       auto element = OH_ArkUI_CreateAccessibilityElementInfo();
+       OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
+       const char *actionKey = "some_key";
+       char *actionValue = nullptr;
+       OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, actionKey, &actionValue);
+       switch (action) {
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
+               if (object) {
+                   object->OnClick();
+                   object->fillAccessibilityElement(element);
+               }
+               AccessibilityManager::SendAccessibilityAsyncEvent(element,
+                   ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(true);
+   
+                   object->fillAccessibilityElement(element);
+               }
+               // 向无障碍服务发送指定事件。
+               AccessibilityManager::SendAccessibilityAsyncEvent(element,
+                   ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
+                   announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(false);
+                   object->fillAccessibilityElement(element);
+               }
+               AccessibilityManager::SendAccessibilityAsyncEvent(
+                   element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED,
+                   announcedText);
+               break;
+           default:
+               // 处理不支持的action行为。
+               break;
+       }
+       OH_ArkUI_DestoryAccessibilityElementInfo(element);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 
 
