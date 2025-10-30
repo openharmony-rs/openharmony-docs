@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
 
@@ -24,6 +25,10 @@ getExposureMode(): ExposureMode
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -67,6 +72,10 @@ setExposureMode(aeMode: ExposureMode): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                    |
@@ -107,6 +116,10 @@ getMeteringPoint(): Point
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -152,6 +165,10 @@ setMeteringPoint(point: Point): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名           | 类型                            | 必填 | 说明                 |
@@ -185,7 +202,9 @@ function setMeteringPoint(photoSession: camera.PhotoSession): void {
 
 ## setExposureBias<sup>11+</sup>
 
-setExposureBias(exposureBias: number): void
+ArkTS-Dyn: setExposureBias(exposureBias: number): void
+
+ArkTS-Sta: setExposureBias(exposureBias: double): void
 
 设置曝光补偿，曝光补偿值（EV）。
 
@@ -195,11 +214,15 @@ setExposureBias(exposureBias: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                            | 必填 | 说明                                                                                                                                                                                            |
 | -------- | -------------------------------| ---- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| exposureBias   | number                   | 是   | 曝光补偿，[getExposureBiasRange](arkts-apis-camera-AutoExposureQuery.md#getexposurebiasrange11)查询支持的范围，如果设置超过支持范围的值，自动匹配到就近临界点。<br>曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| exposureBias   | ArkTS-Dyn: number <br>ArkTS-Sta: double        | 是   | 曝光补偿，[getExposureBiasRange](arkts-apis-camera-AutoExposureQuery.md#getexposurebiasrange11)查询支持的范围，如果设置超过支持范围的值，自动匹配到就近临界点。<br>曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -211,6 +234,8 @@ setExposureBias(exposureBias: number): void
 | 7400103                |  Session not config.                                   |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -229,9 +254,30 @@ function setExposureBias(photoSession: camera.PhotoSession, biasRangeArray: Arra
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setExposureBias(photoSession: camera.PhotoSession, biasRangeArray: Array<double>): void {
+  if (biasRangeArray && biasRangeArray.length > 0) {
+    let exposureBias = biasRangeArray[0];
+    try {
+      photoSession.setExposureBias(exposureBias);
+    } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The setExposureBias call failed. error code: ${err.code}`);
+    }
+  }
+}
+```
+
 ## getExposureValue<sup>11+</sup>
 
-getExposureValue(): number
+ArkTS-Dyn: getExposureValue(): number
+
+ArkTS-Sta: getExposureValue(): double
 
 查询当前曝光值。
 
@@ -239,11 +285,15 @@ getExposureValue(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| number    | 获取曝光值。曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 获取曝光值。曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -255,12 +305,33 @@ getExposureValue(): number
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function getExposureValue(photoSession: camera.PhotoSession): number {
   const invalidValue: number = -1;
   let exposureValue: number = invalidValue;
+  try {
+    exposureValue = photoSession.getExposureValue();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getExposureValue call failed. error code: ${err.code}`);
+  }
+  return exposureValue;
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureValue(photoSession: camera.PhotoSession): double {
+  const invalidValue: double = -1;
+  let exposureValue: double = invalidValue;
   try {
     exposureValue = photoSession.getExposureValue();
   } catch (error) {

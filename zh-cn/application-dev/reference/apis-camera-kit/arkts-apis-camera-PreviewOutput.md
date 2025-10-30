@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 预览输出类。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
@@ -24,7 +25,11 @@ on(type: 'frameStart', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -51,6 +56,46 @@ function registerPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): v
 }
 ```
 
+## onFrameStart<sup>22+</sup>
+
+onFrameStart(callback: AsyncCallback\<void\>): void
+
+监听预览帧启动，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                     |
+| -------- | --------------------- | ---- | -------------------------------------------------------- |
+| callback | AsyncCallback\<void\> | 是   | 回调函数，用于获取结果。只要有该事件返回就证明预览开始。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  console.info('Preview frame started');
+}
+
+function registerPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
+  previewOutput.onFrameStart(callback);
+}
+```
+
 ## off('frameStart')
 
 off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
@@ -59,7 +104,11 @@ off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -76,6 +125,32 @@ function unregisterPreviewOutputFrameStart(previewOutput: camera.PreviewOutput):
 }
 ```
 
+## offFrameStart<sup>22+</sup>
+
+off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
+
+注销预览帧启动的监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                         |
+| -------- | --------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<void\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
+  previewOutput.offFrameStart();
+}
+```
+
 ## on('frameEnd')
 
 on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
@@ -88,7 +163,11 @@ on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -115,6 +194,46 @@ function registerPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): voi
 }
 ```
 
+## onFrameEnd<sup>22+</sup>
+
+onFrameEnd(callback: AsyncCallback\<void\>): void
+
+监听预览帧结束，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                     |
+| -------- | --------------------- | ---- | -------------------------------------------------------- |
+| callback | AsyncCallback\<void\> | 是   | 回调函数，用于获取结果。只要有该事件返回就证明预览结束。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info('Preview frame started');
+}
+
+function registerPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
+  previewOutput.onFrameEnd(callback);
+}
+```
+
 ## off('frameEnd')
 
 off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
@@ -123,7 +242,11 @@ off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -140,6 +263,32 @@ function unregisterPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): v
 }
 ```
 
+## offFrameEnd<sup>22+</sup>
+
+offFrameEnd(callback?: AsyncCallback\<void\>): void
+
+注销监听预览帧结束。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                         |
+| -------- | --------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<void\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
+  previewOutput.offFrameEnd();
+}
+```
+
 ## on('error')
 
 on(type: 'error', callback: ErrorCallback): void
@@ -152,7 +301,11 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -175,6 +328,42 @@ function registerPreviewOutputError(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
+## onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听预览输出的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(previewOutputError: BusinessError): void {
+  console.error(`Preview output error code: ${previewOutputError.code}`);
+}
+
+function registerPreviewOutputError(previewOutput: camera.PreviewOutput): void {
+  previewOutput.onError(callback)
+}
+```
+
 ## off('error')
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -183,7 +372,11 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -200,6 +393,32 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 }
 ```
 
+## offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听预览输出的错误事件。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void {
+  previewOutput.offError();
+}
+```
+
 ## getSupportedFrameRates<sup>12+</sup>
 
  getSupportedFrameRates(): Array\<FrameRateRange\>
@@ -209,6 +428,10 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -227,7 +450,9 @@ function getSupportedFrameRates(previewOutput: camera.PreviewOutput): Array<came
 
 ## setFrameRate<sup>12+</sup>
 
-setFrameRate(minFps: number, maxFps: number): void
+ArkTS-Dyn: setFrameRate(minFps: number, maxFps: number): void
+
+ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 设置预览流帧率范围，设置的范围必须在支持的帧率范围内。
 进行设置前，可通过[getSupportedFrameRates](#getsupportedframerates12)接口查询支持的帧率范围。
@@ -239,12 +464,16 @@ setFrameRate(minFps: number, maxFps: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| minFps   | number        | 是   | 最小帧率（单位：fps）。 |
-| maxFps   | number        | 是   | 最大帧率（单位：fps），当传入的最小值大于最大值时，传参异常，接口不生效。|
+| minFps   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 最小帧率（单位：fps）。 |
+| maxFps   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 最大帧率（单位：fps），当传入的最小值大于最大值时，传参异常，接口不生效。|
 
 **错误码：**
 
@@ -257,8 +486,18 @@ setFrameRate(minFps: number, maxFps: number): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<number>): void {
+  previewOutput.setFrameRate(frameRateRange[0], frameRateRange[1]);
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<int>): void {
   previewOutput.setFrameRate(frameRateRange[0], frameRateRange[1]);
 }
 ```
@@ -274,6 +513,10 @@ getActiveFrameRate(): FrameRateRange
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -299,6 +542,10 @@ getActiveProfile(): Profile
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -334,7 +581,9 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 ## getPreviewRotation<sup>12+</sup>
 
-getPreviewRotation(displayRotation: number): ImageRotation
+ArkTS-Dyn: getPreviewRotation(displayRotation: number): ImageRotation
+
+ArkTS-Sta: getPreviewRotation(displayRotation: int): ImageRotation
 
 获取预览旋转角度。
 
@@ -346,11 +595,15 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | number  | 是   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
+| displayRotation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
 
 **返回值：**
 
@@ -396,6 +649,10 @@ setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): v
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
@@ -439,7 +696,11 @@ start(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](arkts-apis-camera-Session.md#start11)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -480,7 +741,11 @@ start(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](arkts-apis-camera-Session.md#start11-1)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -519,7 +784,11 @@ stop(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](arkts-apis-camera-Session.md#stop11)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -552,7 +821,11 @@ stop(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](arkts-apis-camera-Session.md#stop11-1)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 

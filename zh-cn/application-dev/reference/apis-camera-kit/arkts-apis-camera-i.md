@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## CameraDevice
 
@@ -12,15 +13,15 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称                              | 类型                                  | 只读 | 可选 | 说明        |
-|---------------------------------|-------------------------------------| ---- |----|---------- |
-| cameraId                        | string                              | 是   | 否  | 相机ID。|
-| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否  | 相机位置。    |
-| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否  | 相机类型。    |
-| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否  | 相机连接类型。 |
-| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变，取值范围为0°-360°，单位：度。 |
-| hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。 |
-| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。 |
+| 名称                            | 类型                                                      | 只读 | 可选 | 说明                                                         |
+| ------------------------------- | --------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| cameraId                        | string                                                    | 是   | 否   | 相机ID。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否   | 相机位置。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否   | 相机类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否   | 相机连接类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 是   | 否   | 相机安装角度，不会随着屏幕旋转而改变，取值范围为0°-360°，单位：度。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| hostDeviceName<sup>15+</sup>    | string                                                    | 是   | 否   | 远端设备名称。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 20 |
+| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否   | 远端设备类型。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 20 |
 
 ## CameraStatusInfo
 
@@ -29,6 +30,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
@@ -43,6 +48,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
 | supportedCameras | [Array<CameraDevice\>](arkts-apis-camera-i.md#cameradevice) |     否    |       否     | 当前折叠状态所支持的相机信息列表。 |
@@ -55,6 +64,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称      | 类型                          | 只读 | 可选 | 说明         |
 | -------- | ----------------------------- |---- | ---- | ------------- |
@@ -69,10 +82,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
-| min      | number                        |  是  | 否 | 最小帧率。      |
-| max      | number                        |  是  | 否 | 最大帧率。      |
+| min      | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  | 否 | 最小帧率。      |
+| max      | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  | 否 | 最大帧率。      |
 
 ## VideoProfile
 
@@ -81,6 +98,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
@@ -93,6 +114,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
@@ -109,11 +134,15 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称              | 类型       | 只读 | 可选 | 说明        |
 | ---------------- | ---------- | ---- | ---- | ----------- |
 | isTorchAvailable | boolean    | 是   | 否   | 手电筒是否可用。true表示手电筒可用，false表示手电筒不可用。|
 | isTorchActive    | boolean    | 是   | 否   | 手电筒是否被激活。true表示手电筒被激活，false表示手电筒未被激活。 |
-| torchLevel       | number     | 是   | 否   | 手电筒亮度等级，取值范围为[0,1]，越靠近1，亮度越大。  |
+| torchLevel       | ArkTS-Dyn:  number<br/>ArkTS-Sta:  double | 是   | 否   | 手电筒亮度等级，取值范围为[0,1]，越靠近1，亮度越大。  |
 
 ## Size
 
@@ -123,10 +152,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
-| height | number | 否   | 否   | 图像尺寸高(像素)。 |
-| width  | number | 否   | 否   | 图像尺寸宽(像素)。 |
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 图像尺寸高(像素)。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 图像尺寸宽(像素)。 |
 
 ## Point
 
@@ -136,10 +169,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称    | 类型   | 只读   | 可选   | 说明         |
 | ------ | ------ | ------ | ------ | ------------ |
-| x      | number | 否     | 否     | 点的x坐标。   |
-| y      | number | 否     | 否     | 点的y坐标。   |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> | 否     | 否     | 点的x坐标。   |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> | 否     | 否     | 点的y坐标。   |
 
 ## CameraConcurrentInfo<sup>18+</sup>
 
@@ -148,6 +185,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
@@ -164,11 +205,15 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称          | 类型   | 只读 | 可选  |说明         |
 | ------------ | ------ | ---- |-----|------------ |
-| latitude     | number |  否  | 否   |纬度(度)。    |
-| longitude    | number |  否  | 否   |经度(度)。    |
-| altitude     | number |  否  | 否   |海拔(米)。    |
+| latitude     | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |纬度(度)。    |
+| longitude    | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |经度(度)。    |
+| altitude     | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |  否  | 否   |海拔(米)。    |
 
 ## PhotoCaptureSetting
 
@@ -177,6 +222,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
@@ -193,10 +242,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称       | 类型   | 只读 | 可选 | 说明        |
 | --------- | ------ | ---- | ---- | ---------- |
-| captureId | number | 否   | 否   | 拍照的ID。|
-| timestamp | number | 否   | 否   | 快门时间戳。|
+| captureId | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 拍照的ID。|
+| timestamp | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否   | 否   | 快门时间戳。|
 
 ## FrameShutterEndInfo<sup>12+</sup>
 
@@ -206,9 +259,13 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| captureId | number | 否   | 否   | 拍照的ID。|
+| captureId | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 拍照的ID。|
 
 ## CaptureStartInfo<sup>11+</sup>
 
@@ -218,10 +275,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | --------- |
-| captureId  | number | 否   | 否   | 拍照的ID。|
-| time       | number | 否   | 否   | 预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。    |
+| captureId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 拍照的ID。|
+| time       | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否   | 否   | 预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。    |
 
 ## CaptureEndInfo
 
@@ -231,10 +292,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | ---------|
-| captureId  | number | 否   | 否   | 拍照的ID。|
-| frameCount | number | 否   | 否   | 帧数。|
+| captureId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 拍照的ID。|
+| frameCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否   | 否   | 帧数。|
 
 ## AutoDeviceSwitchStatus<sup>13+</sup>
 
@@ -243,6 +308,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称       | 类型      | 只读 | 可选 | 说明                      |
 | ---------- |---------| ---- | ---- |-------------------------|
@@ -257,12 +326,16 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称      | 类型   |  只读  | 可选  |           说明         |
 | -------- | ------ | ------ |-----| --------------------- |
-| topLeftX | number |   否   | 否   | 矩形区域左上角x坐标。   |
-| topLeftY | number |   否   | 否   | 矩形区域左上角y坐标。   |
-| width    | number |   否   | 否   | 矩形宽，相对值，范围[0, 1]。  |
-| height   | number |   否   | 否   | 矩形高，相对值，范围[0, 1]。  |
+| topLeftX | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |   否   | 否   | 矩形区域左上角x坐标。   |
+| topLeftY | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |   否   | 否   | 矩形区域左上角y坐标。   |
+| width    | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |   否   | 否   | 矩形宽，相对值，范围[0, 1]。  |
+| height   | ArkTS-Dyn: number<br/>ArkTS-Sta: double<br/> |   否   | 否   | 矩形高，相对值，范围[0, 1]。  |
 
 ## MetadataObject
 
@@ -272,10 +345,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  是  |  否  | metadata 类型。    |
-| timestamp   | number                                      |  是  |  否  | 当前时间戳（毫秒）。|
+| timestamp   | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> |  是  |  否  | 当前时间戳（毫秒）。|
 | boundingBox | [Rect](#rect)                               |  是  |  否  | metadata 区域框。  |
 
 ## SmoothZoomInfo<sup>11+</sup>
@@ -286,6 +363,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
-| duration |   number   |   否     |    否    | 平滑变焦总时长，单位ms。 |
+| duration |   ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/>   |   否     |    否    | 平滑变焦总时长，单位ms。 |

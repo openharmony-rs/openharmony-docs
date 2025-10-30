@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -29,6 +30,10 @@ addSecureOutput(previewOutput: PreviewOutput): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -73,7 +78,11 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -96,6 +105,42 @@ function registerSessionError(secureSession: camera.SecureSession): void {
 }
 ```
 
+## onError<sup>22+</sup>
+
+on(callback: ErrorCallback): void
+
+监听安全相机会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Video session error code: ${err.code}`);
+}
+
+function registerSessionError(secureSession: camera.SecureSession): void {
+  secureSession.onError(callback);
+}
+```
+
 ## off('error')<sup>12+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -104,7 +149,11 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -121,6 +170,32 @@ function unregisterSessionError(secureSession: camera.SecureSession): void {
 }
 ```
 
+## offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听安全相机会话的错误事件，通过注册回调函数获取结果。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterSessionError(secureSession: camera.SecureSession): void {
+  secureSession.offError();
+}
+```
+
 ## on('focusStateChange')<sup>12+</sup>
 
 on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
@@ -133,7 +208,11 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -160,6 +239,46 @@ function registerFocusStateChange(secureSession: camera.SecureSession): void {
 }
 ```
 
+## onFocusStateChange<sup>22+</sup>
+
+onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
+
+监听相机聚焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 是   | 回调函数，用于获取当前对焦状态。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, focusState: camera.FocusState | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`Focus state: ${focusState}`);
+}
+
+function registerFocusStateChange(secureSession: camera.SecureSession): void {
+  secureSession.onFocusStateChange(callback);
+}
+```
+
 ## off('focusStateChange')<sup>12+</sup>
 
 off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
@@ -168,7 +287,11 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -184,3 +307,30 @@ function unregisterFocusStateChange(secureSession: camera.SecureSession): void {
   secureSession.off('focusStateChange');
 }
 ```
+
+## offFocusStateChange<sup>22+</sup>
+
+offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
+
+注销监听相机聚焦的状态变化。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterFocusStateChange(secureSession: camera.SecureSession): void {
+  secureSession.offFocusStateChange();
+}
+```
+

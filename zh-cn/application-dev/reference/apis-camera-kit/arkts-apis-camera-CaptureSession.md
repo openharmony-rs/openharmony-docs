@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 从 API version 10开始支持，从API version 11开始废弃。建议使用[PhotoSession](arkts-apis-camera-PhotoSession.md)、[VideoSession](arkts-apis-camera-VideoSession.md)替代。
+> - 本模块仅适用于ArkTS-Dyn。
+> - 从 API version 10开始支持，从API version 11开始废弃。建议使用[PhotoSession](arkts-apis-camera-PhotoSession.md)、[VideoSession](arkts-apis-camera-VideoSession.md)替代。
 
 拍照会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)，并向相机设备申请完成相机功能(录像，拍照)。
 
@@ -22,6 +23,8 @@ beginConfig(): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.beginConfig](arkts-apis-camera-Session.md#beginconfig11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **错误码：**
 
@@ -57,6 +60,8 @@ commitConfig(callback: AsyncCallback\<void\>): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -100,6 +105,8 @@ commitConfig(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型            | 说明                |
@@ -140,6 +147,8 @@ addInput(cameraInput: CameraInput): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.addInput](arkts-apis-camera-Session.md#addinput11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -183,6 +192,8 @@ removeInput(cameraInput: CameraInput): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                      |
@@ -224,6 +235,8 @@ addOutput(cameraOutput: CameraOutput): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.addOutput](arkts-apis-camera-Session.md#addoutput11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -267,6 +280,8 @@ removeOutput(cameraOutput: CameraOutput): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名           | 类型                             | 必填 | 说明                      |
@@ -308,6 +323,8 @@ start(callback: AsyncCallback\<void\>): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](arkts-apis-camera-Session.md#start11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -351,6 +368,8 @@ start(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -390,6 +409,8 @@ stop(callback: AsyncCallback\<void\>): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](arkts-apis-camera-Session.md#stop11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -432,6 +453,8 @@ stop(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -470,6 +493,8 @@ release(callback: AsyncCallback\<void\>): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.release](arkts-apis-camera-Session.md#release11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -512,6 +537,8 @@ release(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -550,6 +577,8 @@ hasFlash(): boolean
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -593,6 +622,8 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.isFlashModeSupported](arkts-apis-camera-FlashQuery.md#isflashmodesupported11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -648,6 +679,8 @@ setFlashMode(flashMode: FlashMode): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明                 |
@@ -688,6 +721,8 @@ getFlashMode(): FlashMode
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.getFlashMode](arkts-apis-camera-Flash.md#getflashmode11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -731,6 +766,8 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.isExposureModeSupported](arkts-apis-camera-AutoExposureQuery.md#isexposuremodesupported11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -781,6 +818,8 @@ getExposureMode(): ExposureMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -824,6 +863,8 @@ setExposureMode(aeMode: ExposureMode): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                    |
@@ -864,6 +905,8 @@ getMeteringPoint(): Point
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.getMeteringPoint](arkts-apis-camera-AutoExposure.md#getmeteringpoint11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -911,6 +954,8 @@ setMeteringPoint(point: Point): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名           | 类型                            | 必填 | 说明                 |
@@ -952,6 +997,8 @@ getExposureBiasRange(): Array\<number\>
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.getExposureBiasRange](arkts-apis-camera-AutoExposureQuery.md#getexposurebiasrange11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -998,6 +1045,8 @@ setExposureBias(exposureBias: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型         | 必填  | 说明       |
@@ -1042,6 +1091,8 @@ getExposureValue(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -1085,6 +1136,8 @@ isFocusModeSupported(afMode: FocusMode): boolean
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.isFocusModeSupported](arkts-apis-camera-FocusQuery.md#isfocusmodesupported11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1137,6 +1190,8 @@ setFocusMode(afMode: FocusMode): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名      | 类型                     | 必填 | 说明                 |
@@ -1177,6 +1232,8 @@ getFocusMode(): FocusMode
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.getFocusMode](arkts-apis-camera-Focus.md#getfocusmode11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -1224,6 +1281,8 @@ setFocusPoint(point: Point): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名   | 类型                     | 必填  | 说明                 |
@@ -1265,6 +1324,8 @@ getFocusPoint(): Point
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.getFocusPoint](arkts-apis-camera-Focus.md#getfocuspoint11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -1308,6 +1369,8 @@ getFocalLength(): number
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.getFocalLength](arkts-apis-camera-Focus.md#getfocallength11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -1353,6 +1416,8 @@ getZoomRatioRange(): Array\<number\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -1395,6 +1460,8 @@ setZoomRatio(zoomRatio: number): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Zoom.setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1441,6 +1508,8 @@ getZoomRatio(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -1484,6 +1553,8 @@ isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Stabilization.isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1534,6 +1605,8 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型        | 说明                          |
@@ -1576,6 +1649,8 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Stabilization.setVideoStabilizationMode](arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1620,6 +1695,8 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                       |
@@ -1654,6 +1731,8 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                       |
@@ -1662,6 +1741,8 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 function unregisterFocusStateChange(captureSession: camera.CaptureSession): void {
@@ -1683,6 +1764,8 @@ on(type: 'error', callback: ErrorCallback): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1713,6 +1796,8 @@ off(type: 'error', callback?: ErrorCallback): void
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.off('error')](arkts-apis-camera-VideoSession.md#offerror11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 

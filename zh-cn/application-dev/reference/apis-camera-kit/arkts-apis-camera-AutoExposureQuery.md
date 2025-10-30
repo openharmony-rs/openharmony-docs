@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 > - 本模块接口在API version 12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
@@ -23,6 +24,10 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：**
 
@@ -64,7 +69,9 @@ function isExposureModeSupported(photoSession: camera.PhotoSession): boolean {
 
 ## getExposureBiasRange<sup>11+</sup>
 
-getExposureBiasRange(): Array\<number\>
+ArkTS-Dyn: getExposureBiasRange(): Array\<number\>
+
+ArkTS-Sta: getExposureBiasRange(): Array\<double\>
 
 查询曝光补偿范围。
 
@@ -72,11 +79,15 @@ getExposureBiasRange(): Array\<number\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | 获取补偿范围的数组。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\> | 获取补偿范围的数组。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -87,6 +98,8 @@ getExposureBiasRange(): Array\<number\>
 | 7400103                |  Session not config, only throw in session usage.               |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -103,3 +116,22 @@ function getExposureBiasRange(photoSession: camera.PhotoSession): Array<number> 
   return biasRangeArray;
 }
 ```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureBiasRange(photoSession: camera.PhotoSession): Array<double> {
+  let biasRangeArray: Array<double> = [];
+  try {
+    biasRangeArray = photoSession.getExposureBiasRange();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getExposureBiasRange call failed. error code: ${err.code}`);
+  }
+  return biasRangeArray;
+}
+```
+

@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 录像会话中使用的输出信息，继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
@@ -22,6 +23,10 @@ start(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                 |
@@ -39,12 +44,30 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function startVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.start((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to start the video output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the video output start success.');
+  });
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.start((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to start the video output, error code: ${err.code}.`);
       return;
     }
@@ -63,6 +86,10 @@ start(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -80,6 +107,8 @@ start(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -88,6 +117,21 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
     console.info('Promise returned to indicate that start method execution success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to video output start, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.start().then(() => {
+    console.info('Promise returned to indicate that start method execution success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to video output start, error code: ${err.code}.`);
   });
 }
 ```
@@ -102,6 +146,10 @@ stop(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                     |
@@ -110,12 +158,30 @@ stop(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function stopVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.stop((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to stop the video output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the video output stop success.');
+  });
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.stop((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to stop the video output, error code: ${err.code}.`);
       return;
     }
@@ -134,6 +200,10 @@ stop(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -141,6 +211,8 @@ stop(): Promise\<void\>
 | Promise\<void\> | 无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -150,6 +222,21 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
     console.info('Promise returned to indicate that stop method execution success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to video output stop, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.stop().then(() => {
+    console.info('Promise returned to indicate that stop method execution success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to video output stop, error code: ${err.code}.`);
   });
 }
 ```
@@ -166,7 +253,11 @@ on(type: 'frameStart', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -193,6 +284,46 @@ function registerVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
 }
 ```
 
+## onFrameStart<sup>22+</sup>
+
+onFrameStart(callback: AsyncCallback\<void\>): void
+
+监听录像开始，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                       |
+| -------- | --------------------- | ---- | ---------------------------------------------------------- |
+| callback | AsyncCallback\<void\> | 是   | 回调函数，用于获取结果。  只要有该事件返回就证明录像开始。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info('Video frame started');
+}
+
+function registerVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
+  videoOutput.onFrameStart(callback);
+}
+```
+
 ## off('frameStart')
 
 off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
@@ -205,7 +336,11 @@ off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -223,6 +358,37 @@ function unregisterVideoOutputFrameStart(videoOutput: camera.VideoOutput): void 
 
 ```
 
+## offFrameStart<sup>22+</sup>
+
+offFrameStart(callback?: AsyncCallback\<void\>): void
+
+注销监听录像开始。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                         |
+| -------- | --------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<void\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
+  videoOutput.offFrameStart();
+}
+
+```
+
 ## on('frameEnd')
 
 on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
@@ -231,7 +397,11 @@ on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -258,6 +428,42 @@ function registerVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
 }
 ```
 
+## onFrameEnd<sup>22+</sup>
+
+onFrameEnd(callback: AsyncCallback\<void\>): void
+
+监听录像结束，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                      |
+| -------- | --------------------- | ---- | --------------------------------------------------------- |
+| callback | AsyncCallback\<void\> | 是   | 回调函数，用于获取结果。 只要有该事件返回就证明录像结束。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info('Video frame ended');
+}
+
+function registerVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
+  videoOutput.onFrameEnd(callback);
+}
+```
+
 ## off('frameEnd')
 
 off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
@@ -266,7 +472,11 @@ off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -283,6 +493,32 @@ function unregisterVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
 }
 ```
 
+## offFrameEnd<sup>22+</sup>
+
+offFrameEnd(callback?: AsyncCallback\<void\>): void
+
+注销监听录像结束。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                         |
+| -------- | --------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<void\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
+  videoOutput.offFrameEnd();
+}
+```
+
 ## on('error')
 
 on(type: 'error', callback: ErrorCallback): void
@@ -295,7 +531,11 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -316,6 +556,43 @@ function callback(err: BusinessError): void {
 function registerVideoOutputError(videoOutput: camera.VideoOutput): void {
   videoOutput.on('error', callback);
 }
+
+```
+
+## onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听录像输出发生错误，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Video output error code: ${err.code}`);
+}
+
+function registerVideoOutputError(videoOutput: camera.VideoOutput): void {
+  videoOutput.onError(callback);
+}
 ```
 
 ## off('error')
@@ -326,7 +603,11 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -343,6 +624,32 @@ function unregisterVideoOutputError(videoOutput: camera.VideoOutput): void {
 }
 ```
 
+## offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听录像输出发生错误。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterVideoOutputError(videoOutput: camera.VideoOutput): void {
+  videoOutput.offError();
+}
+```
+
 ## getSupportedFrameRates<sup>12+</sup>
 
 getSupportedFrameRates(): Array\<FrameRateRange\>
@@ -352,6 +659,10 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -370,7 +681,9 @@ function getSupportedFrameRates(videoOutput: camera.VideoOutput): Array<camera.F
 
 ## setFrameRate<sup>12+</sup>
 
-setFrameRate(minFps: number, maxFps: number): void
+ArkTS-Dyn: setFrameRate(minFps: number, maxFps: number): void
+
+ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 设置录像流帧率范围，设置的范围必须在支持的帧率范围内。
 
@@ -383,12 +696,16 @@ setFrameRate(minFps: number, maxFps: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| minFps   | number        | 是   | 最小帧率。 |
-| maxFps   | number        | 是   | 最大帧率。当传入的最小值大于最大值时，传参异常，接口不生效。 |
+| minFps   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 最小帧率。 |
+| maxFps   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 最大帧率。当传入的最小值大于最大值时，传参异常，接口不生效。 |
 
 **错误码：**
 
@@ -401,8 +718,18 @@ setFrameRate(minFps: number, maxFps: number): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<number>): void {
+  videoOutput.setFrameRate(frameRateRange[0], frameRateRange[1]);
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<int>): void {
   videoOutput.setFrameRate(frameRateRange[0], frameRateRange[1]);
 }
 ```
@@ -418,6 +745,10 @@ getActiveFrameRate(): FrameRateRange
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -443,6 +774,10 @@ getActiveProfile(): VideoProfile
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **返回值：**
 
@@ -486,6 +821,10 @@ isMirrorSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型            | 说明                              |
@@ -515,6 +854,10 @@ enableMirror(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型                    | 必填 | 说明                        |
@@ -533,6 +876,8 @@ enableMirror(enabled: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { camera } from '@kit.CameraKit';
 import { media } from '@kit.MediaKit';
@@ -548,9 +893,28 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { media } from '@kit.MediaKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRecorder: media.AVRecorder, deviceDegree : int): void {
+  try {
+    videoOutput.enableMirror(mirrorMode);
+    aVRecorder.updateRotation(videoOutput.getVideoRotation(deviceDegree));
+  } catch (error) {
+    let err = error as BusinessError;
+  }
+}
+```
+
 ## getVideoRotation<sup>12+</sup>
 
-getVideoRotation(deviceDegree: number): ImageRotation
+ArkTS-Dyn: getVideoRotation(deviceDegree: number): ImageRotation
+
+ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 
 获取录像旋转角度。
 
@@ -562,11 +926,15 @@ getVideoRotation(deviceDegree: number): ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 是   | 设备旋转角度（单位：度）。 |
+| deviceDegree | ArkTS1.1: number<br>ArkTS1.2: int | 是   | 设备旋转角度（单位：度）。 |
 
 **返回值：**
 
@@ -584,6 +952,8 @@ getVideoRotation(deviceDegree: number): ImageRotation
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -625,5 +995,50 @@ function getDeviceDegree(): number {
         let err: BusinessError = error as BusinessError;
     }
     return deviceDegree;
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { Decimal } from '@kit.ArkTS';
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getVideoRotation(videoOutput: camera.VideoOutput): camera.ImageRotation {
+  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    videoRotation = videoOutput.getVideoRotation(getDeviceDegree());
+  } catch (error) {
+    let err = error as BusinessError;
+  }
+  return videoRotation;
+}
+
+//获取deviceDegree。
+function getDeviceDegree(): int {
+  let deviceDegree: int = -1;
+  try {
+    sensor.once('gravityChange', (data: sensor.GravityResponse) => {
+      console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
+      console.info('Succeeded in invoking once. Y-coordinate component: ' + data.y);
+      console.info('Succeeded in invoking once. Z-coordinate component: ' + data.z);
+      let x = data.x;
+      let y = data.y;
+      let z = data.z;
+      if ((x * x + y * y) * 3 < z * z) {
+        deviceDegree = -1;
+      } else {
+        let sd: Decimal = Decimal.atan2(y, -x);
+        let sc: Decimal = Decimal.round(sd.toNumber() / 3.141592653589 * 180)
+        deviceDegree = (90 - sc.toNumber()) as int;
+        deviceDegree = deviceDegree >= 0 ? deviceDegree% 360 : deviceDegree% 360 + 360;
+      }
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+  }
+  return deviceDegree;
 }
 ```
