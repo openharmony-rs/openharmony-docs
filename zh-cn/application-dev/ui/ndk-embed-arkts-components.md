@@ -778,6 +778,55 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
 7. 使用[接入ArkTS页面](ndk-access-the-arkts-page.md)章节的页面结构，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)，将Refresh组件作为文本列表的父组件。
    <!-- @[mixed_refresh_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h) -->
+   
+   ``` C
+   // MixedRefreshExample.h
+   // 混合模式示例代码。
+   
+   #ifndef MYAPPLICATION_MIXEDREFRESHEXAMPLE_H
+   #define MYAPPLICATION_MIXEDREFRESHEXAMPLE_H
+   
+   #include "ArkUIBaseNode.h"
+   #include "ArkUIMixedRefresh.h"
+   #include "NormalTextListExample.h"
+   #include "UITimer.h"
+   
+   #include <js_native_api_types.h>
+   
+   namespace NativeModule {
+   
+   std::shared_ptr<ArkUIBaseNode> CreateMixedRefreshList(napi_env env)
+   {
+       auto list = CreateTextListExample();
+       // 混合模式创建Refresh组件并挂载List组件。
+       NativeRefreshAttribute nativeRefreshAttribute{
+           .backgroundColor = 0xFF89CFF0, .refreshOffset = 64, .pullToRefresh = true};
+       auto refresh = ArkUIMixedRefresh::Create(nativeRefreshAttribute);
+       refresh->AddChild(list);
+   
+       // 设置混合模式下的事件。
+       refresh->SetOnOffsetChange(
+           [](float offset) { OH_LOG_INFO(LOG_APP, "on refresh offset changed: %{public}f", offset); });
+       refresh->SetRefreshCallback([refreshPtr = refresh.get(), env]() {
+           OH_LOG_INFO(LOG_APP, "on refreshing");
+           // 启动定时器，模拟数据获取。
+           CreateNativeTimer(env, refreshPtr, 1, [](void *userData, int32_t count) {
+               // 数据获取后关闭刷新。
+               auto refresh = reinterpret_cast<ArkUIMixedRefresh *>(userData);
+               refresh->SetRefreshState(false);
+               refresh->FlushMixedModeCmd();
+           });
+       });
+   
+       // 更新事件到ArkTS侧。
+       refresh->FlushMixedModeCmd();
+       return refresh;
+   }
+   
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_MIXEDREFRESHEXAMPLE_H
+   ```
 
    替换入口组件创建为下拉刷新文本列表。
 
