@@ -719,6 +719,28 @@ V2迁移策略：\@Consumer可以本地初始化。
 
 <!-- @[Parent20_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeInitV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child20 {
+  // @Consumer允许本地初始化，当找不到@Provider的时候使用本地默认值
+  @Consumer() message: string = 'Hello World';
+
+  build() {
+    Text(this.message)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent20 {
+  build() {
+    Column() {
+      Child20()
+    }
+  }
+}
+```
+
 **V1的\@Provide可以从父组件初始化，V2不支持**
 
 在V1中，\@Provide允许从父组件初始化，可以直接通过组件参数传递初始值。在V2中，\@Provider禁止从外部初始化。为实现相同功能，可以在子组件中使用\@Param \@Once接受初始值，然后将其赋值给\@Provider变量。
