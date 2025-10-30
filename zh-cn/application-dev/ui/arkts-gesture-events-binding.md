@@ -66,6 +66,32 @@ priorityGesture是带优先级的手势绑定方法，可以在组件上绑定�
 
 
   <!-- @[priority_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/PriorityGesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct PriorityBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'Text TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
+      // 设置为priorityGesture时，点击文本区域会忽略Text组件的TapGesture手势事件，优先响应父组件Column的TapGesture手势事件
+      .priorityGesture(
+        TapGesture()
+          .onAction(() => {
+            hilog.info(DOMAIN, TAG,'Column TapGesture is onAction');
+          }), GestureMask.IgnoreInternal)
+    }
+  }
+  ```
 
 
 ## parallelGesture（并行手势绑定方法）
