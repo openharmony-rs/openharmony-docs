@@ -79,6 +79,22 @@ export struct Page1 {
 
 <!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Page2 {
+  build() {
+    Column() {
+      Text('This is the page2').fontSize(25)
+      Button('Back')
+        .onClick(() => {
+          this.getUIContext().getRouter().back();
+        })
+    }
+  }
+}
+```
+
 
 在上面的示例中：
 
