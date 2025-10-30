@@ -117,6 +117,181 @@ RenderNode中可以设置渲染相关的属性，包括：[backgroundColor](../r
 
 <!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
+``` TypeScript
+import { RenderNode, FrameNode, NodeController, ShapeMask, ShapeClip } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+const TEST_TAG: string = 'RenderNode';
+const mask = new ShapeMask();
+mask.setRectShape({
+  left: 0,
+  right: 150,
+  top: 0,
+  bottom: 150
+});
+mask.fillColor = 0X55FF0000;
+mask.strokeColor = 0XFFFF0000;
+mask.strokeWidth = 24;
+
+const clip = new ShapeClip();
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
+
+const renderNode = new RenderNode();
+renderNode.backgroundColor = 0xffff0000;
+renderNode.size = { width: 100, height: 100 };
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+export struct RenderingProperties {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    // ···
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Column() {
+          NodeContainer(this.myNodeController);
+        };
+
+        Button('position')
+          .width(300)
+          .onClick(() => {
+            renderNode.position = { x: 10, y: 10 };
+            hilog.info(DOMAIN, TEST_TAG, ' position:' + JSON.stringify(renderNode.position));
+          });
+        Button('pivot')
+          .width(300)
+          .onClick(() => {
+            renderNode.pivot = { x: 0.5, y: 0.6 };
+            hilog.info(DOMAIN, TEST_TAG, ' pivot:' + JSON.stringify(renderNode.pivot));
+          });
+        Button('scale')
+          .width(300)
+          .onClick(() => {
+            renderNode.scale = { x: 0.5, y: 1 };
+            hilog.info(DOMAIN, TEST_TAG, ' scale:' + JSON.stringify(renderNode.scale));
+          });
+        Button('translation')
+          .width(300)
+          .onClick(() => {
+            renderNode.translation = { x: 100, y: 0 };
+            hilog.info(DOMAIN, TEST_TAG, ' translation:' + JSON.stringify(renderNode.translation));
+          });
+        Button('rotation')
+          .width(300)
+          .onClick(() => {
+            renderNode.rotation = { x: 45, y: 0, z: 0 };
+            hilog.info(DOMAIN, TEST_TAG, ' rotation:' + JSON.stringify(renderNode.rotation));
+          });
+        Button('transform')
+          .width(300)
+          .onClick(() => {
+            renderNode.transform = [
+              1, 0, 0, 0,
+              0, 2, 0, 0,
+              0, 0, 1, 0,
+              0, 0, 0, 1
+            ];
+            hilog.info(DOMAIN, TEST_TAG, ' transform:' + JSON.stringify(renderNode.transform));
+          });
+        Button('shadow')
+          .width(300)
+          .onClick(() => {
+            renderNode.shadowElevation = 10;
+            renderNode.shadowColor = 0XFF00FF00;
+            renderNode.shadowOffset = { x: 10, y: 10 };
+            renderNode.shadowAlpha = 0.1;
+            hilog.info(DOMAIN, TEST_TAG, ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowColor:' + JSON.stringify(renderNode.shadowColor));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
+          });
+        Button('shadowRadius')
+          .width(300)
+          .onClick(() => {
+            renderNode.shadowOffset = { x: 10, y: 10 };
+            renderNode.shadowAlpha = 0.7;
+            renderNode.shadowRadius = 30;
+            hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
+          });
+        Button('border')
+          .width(300)
+          .onClick(() => {
+            renderNode.borderWidth = {
+              left: 8,
+              top: 8,
+              right: 8,
+              bottom: 8
+            };
+            renderNode.borderStyle = {
+              left: BorderStyle.Solid,
+              top: BorderStyle.Dotted,
+              right: BorderStyle.Dashed,
+              bottom: BorderStyle.Solid
+            }
+            renderNode.borderColor = {
+              left: 0xFF0000FF,
+              top: 0xFF0000FF,
+              right: 0xFF0000FF,
+              bottom: 0xFF0000FF
+            };
+            renderNode.borderRadius = {
+              topLeft: 32,
+              topRight: 32,
+              bottomLeft: 32,
+              bottomRight: 32
+            };
+            hilog.info(DOMAIN, TEST_TAG, ' borderWidth:' + JSON.stringify(renderNode.borderWidth));
+            hilog.info(DOMAIN, TEST_TAG, ' borderStyle:' + JSON.stringify(renderNode.borderStyle));
+            hilog.info(DOMAIN, TEST_TAG, ' borderColor:' + JSON.stringify(renderNode.borderColor));
+            hilog.info(DOMAIN, TEST_TAG, ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
+          })
+        Button('shapeMask')
+          .width(300)
+          .onClick(() => {
+            renderNode.shapeMask = mask;
+            hilog.info(DOMAIN, TEST_TAG, ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
+          });
+        Button('shapeClip')
+          .width(300)
+          .onClick(() => {
+            renderNode.shapeClip = clip;
+            hilog.info(DOMAIN, TEST_TAG, ' shapeClip:' + JSON.stringify(renderNode.shapeClip));
+          });
+      }
+      .padding({
+        left: 35,
+        right: 35,
+        top: 35,
+        bottom: 35
+      })
+      .width('100%')
+      .height('100%');
+
+    // ···
+  }
+}
+
+```
+
 ## 自定义绘制
 
 通过重写RenderNode中的[draw](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw)方法，可以自定义RenderNode的绘制内容，通过[invalidate](../reference/apis-arkui/js-apis-arkui-renderNode.md#invalidate)接口可以主动触发节点的重新绘制。
