@@ -4407,5 +4407,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-binding.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"ArkUI_Star_binding1",
+						"start_line":30
+					},
+					{
+						"end_line":52,
+						"name":"ArkUI_Star_binding2",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Sys_Binding.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"ArkUI_Sys_binding",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
