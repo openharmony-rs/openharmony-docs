@@ -24,6 +24,13 @@ Navigation组件通过mode属性设置页面的显示模式。
   Navigation组件默认为自适应模式，此时mode属性为NavigationMode.Auto。自适应模式下，当页面宽度大于等于一定阈值( API version 9及以前：520vp，API version 10及以后：600vp )时，Navigation组件采用分栏模式，反之采用单栏模式。
 
   <!-- @[NavigationModeAuto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeAuto.ets) -->
+  
+  ``` TypeScript
+  Navigation() {
+    // ···
+  }
+  .mode(NavigationMode.Auto)
+  ```
 
 - 单栏模式
 
