@@ -75,6 +75,11 @@
 5. 当不需要填充效果时，可以使用detachBrush()接口去除画布中的画刷。
 
    <!-- @[arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // 去除画刷
+   canvas.detachBrush();
+   ```
 
 
 ## 描边效果
