@@ -736,6 +736,56 @@ export struct CustomDrawCanvasNative {
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 
+``` TypeScript
+import { RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    const renderNode: RenderNode | null = this.rootNode.getRenderNode();
+    if (renderNode !== null) {
+      const renderChildNode: RenderNode = new RenderNode();
+      renderChildNode.frame = {
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100
+      };
+      renderChildNode.backgroundColor = 0xffff0000;
+      renderChildNode.label = 'customRenderChildNode';
+      hilog.info(DOMAIN, 'label:', renderChildNode.label);
+      renderNode.appendChild(renderChildNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+export struct SetLabel {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    // ···
+      Column() {
+        NodeContainer(this.myNodeController)
+          .width(300)
+          .height(700)
+          .backgroundColor(Color.Gray);
+      };
+
+    // ···
+  }
+}
+
+```
+
 ## 查询当前RenderNode是否解除引用
 
 前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。
