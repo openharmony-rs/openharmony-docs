@@ -64,6 +64,11 @@
 3. 使用attachBrush()接口给Canvas画布设置画刷。
 
    <!-- @[arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // 为画布设置画刷
+   canvas.attachBrush(brush);
+   ```
 
 4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
 
