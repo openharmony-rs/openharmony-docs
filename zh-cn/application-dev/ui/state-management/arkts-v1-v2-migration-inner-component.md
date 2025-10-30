@@ -161,6 +161,28 @@ V2迁移策略：使用\@Param和\@Once。
 
 <!-- @[Parent6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child6 {
+  @Param @Once value: number = 0;
+
+  build() {
+    Text(this.value.toString())
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent6 {
+  build() {
+    Column() {
+      // @Local禁止从外部初始化，可以用@Param和@Once替代实现
+      Child6({ value: 30 })
+    }
+  }
+}
+```
+
 ### \@Link -> \@Param/\@Event
 
 **迁移规则**
