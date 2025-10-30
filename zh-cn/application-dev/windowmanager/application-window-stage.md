@@ -80,7 +80,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_CCreatMainWindow]';
+const TAG: string = '[Sample_CCreatMainWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -164,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_CreatSubWindow]';
+const TAG: string = '[Sample_CreatSubWindow]';
 
 let windowStage_: window.WindowStage | null = null;
 let sub_windowClass: window.Window | null = null;
@@ -270,7 +270,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_CreatSubWindow2]';
+const TAG: string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -442,7 +442,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_SetWindowSystemBarEnable]';
+const TAG: string = '[Sample_SetWindowSystemBarEnable]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -540,7 +540,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_CreatFloatWindow]';
+const TAG: string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -622,7 +622,7 @@ import { window } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG : string = '[Sample_ListenWindowStage]';
+const TAG: string = '[Sample_ListenWindowStage]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
