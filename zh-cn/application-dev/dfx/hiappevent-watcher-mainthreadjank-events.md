@@ -29,11 +29,16 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | 设置主线程采样栈参数接口。 **现阶段仅提供MAIN_THREAD_JANK事件参数自定义，因此name为MAIN_THREAD_JANK。** |
+| [setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void>](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventconfig15) | 设置主线程采样栈参数接口。 |
 
 ### 参数设置说明
 
-开发者可以使用上述hiappevent提供的接口，在Record&lt;string, ParamType>中自定义配置采集MAIN_THREAD_JANK事件的参数。
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| name | string | 是 | 主线程超时事件名称，此处应为常量hiappevent.event.MAIN_THREAD_JANK。 |
+| config | Record&lt;string, ParamType> | 是 | 主线程超时采样栈配置参数。 |
+
+主线程超时采样栈配置参数的定义。
 
 > **注意：**
 >
@@ -89,7 +94,7 @@
    hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
      hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
    }).catch((err: BusinessError) => {
-   hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+     hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
@@ -119,7 +124,7 @@
 | uid | number | 应用的用户id。 |
 | begin_time | number | 主线程任务开始时间。 |
 | end_time | number | 主线程任务结束时间。 |
-| external_log | string[] | 主线程超时日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
+| external_log | string[] | 主线程超时日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit | boolean | 生成的主线程超时日志文件与已存在的日志文件总大小是否超过10M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
 | app_start_jiffies_time | number | 开发者可以获取主线程超时事件时，任务执行的开始时间。**触发采样栈，打印开始时间信息。** |
 | heaviest_stack | string | 生成的主线程超时日志文件中，打印多次的调用栈。**触发采样栈，打印多次的调用栈信息。** |
