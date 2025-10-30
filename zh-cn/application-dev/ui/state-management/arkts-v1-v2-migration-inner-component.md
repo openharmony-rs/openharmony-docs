@@ -1083,3 +1083,27 @@ V2:
 使用V2中的\@Computed，每次改变`lastName`仅会触发一次计算。
 
 <!-- @[ComputedV2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index2 {
+  @Local firstName: string = 'Li';
+  @Local lastName: string = 'Hua';
+
+  @Computed
+  get fullName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+
+  build() {
+    Column() {
+      Text(this.fullName)
+      Text(this.fullName)
+      Button('changed lastName').onClick(() => {
+        this.lastName += 'a';
+      })
+    }
+  }
+}
+```
