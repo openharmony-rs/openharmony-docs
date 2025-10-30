@@ -222,6 +222,24 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
   <!-- @[Common_MyButtonModifier3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier03.ets) -->
+  
+  ``` TypeScript
+  export class MyButtonModifier3 implements AttributeModifier<ButtonAttribute> {
+    public isDark2: boolean = false
+  
+    constructor(dark?: boolean) {
+      this.isDark2 = dark ? dark : false
+    }
+  
+    applyNormalAttribute(instance: ButtonAttribute): void {
+      if (this.isDark2) {
+        instance.backgroundColor('#2787D9')
+      } else {
+        instance.backgroundColor('#707070')
+      }
+    }
+  }
+  ```
   <!-- @[main_button3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button3.ets) -->
   ![AttributeModifier](figures/AttributeModifier04.gif) 
 
