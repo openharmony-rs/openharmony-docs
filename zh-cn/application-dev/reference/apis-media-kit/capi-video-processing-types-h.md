@@ -97,6 +97,14 @@ enum VideoMetadataGeneratorStyleControl
 | VIDEO_METADATA_GENERATOR_BRIGHT_MODE = 0 | 亮度优先模式。 |
 | VIDEO_METADATA_GENERATOR_CONTRAST_MODE = 1 | 对比度优先模式。 |
 
+**参考：**
+
+[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)
+
+[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)
+
+OH_AVFormat_SetIntValue
+
 ### VideoProcessing_ErrorCode
 
 ```
