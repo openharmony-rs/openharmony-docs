@@ -851,6 +851,39 @@ V2迁移策略：去掉allowOverride。
 
 <!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct GrandParent2 {
+  @Provider('reviewVotes') reviewVotes: number = 40;
+
+  build() {
+    Column() {
+      Parent24()
+    }
+  }
+}
+
+@ComponentV2
+struct Parent24 {
+  // @Provider默认支持重载，@Consumer向上查找最近的@Provider
+  @Provider() reviewVotes: number = 20;
+
+  build() {
+    Child24()
+  }
+}
+
+@ComponentV2
+struct Child24 {
+  @Consumer() reviewVotes: number = 0;
+
+  build() {
+    Text(this.reviewVotes.toString()) // Text显示20
+  }
+}
+```
+
 ### \@Watch -> \@Monitor
 **迁移规则**
 
