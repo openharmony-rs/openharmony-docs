@@ -37,6 +37,66 @@
 
 <!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->
 
+``` TypeScript
+@Observed
+class Region {
+  public x: number;
+  public y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+@Observed
+class Info {
+  public region: Region;
+
+  constructor(x: number, y: number) {
+    this.region = new Region(x, y);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State info: Info = new Info(0, 0);
+
+  build() {
+    Column() {
+      Button('change Info')
+        .onClick(() => {
+          this.info = new Info(100, 100);
+        })
+      Child({
+        region: this.info.region,
+        regionProp: this.info.region,
+        infoProp: this.info,
+        infoLink: this.info,
+        infoState: this.info
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @ObjectLink region: Region;
+  @Prop regionProp: Region;
+  @Prop infoProp: Info;
+  @Link infoLink: Info;
+  @State infoState: Info = new Info(1, 1);
+
+  build() {
+    Column() {
+      Text(`ObjectLink region: ${this.region.x}-${this.region.y}`)
+      Text(`Prop regionProp: ${this.regionProp.x}-${this.regionProp.y}`)
+    }
+  }
+}
+```
+
 在上面的示例中，\@State仅能在初始化时接收info的引用，改变info之后无法同步。\@Prop虽然能够进行单向同步，但是对于较复杂的类型来说，深拷贝性能较差。\@Link能够接受传入的引用进行双向同步，但它必须要求数据源也是状态变量，因此无法接受info中的成员属性region。\@ObjectLink能够接受类成员属性，但是要求该属性类型必须为\@Observed装饰的类。装饰器的不同限制使得父子组件之间的传值规则复杂、不易使用。因此推出\@Param装饰器，表示组件从外部传入的状态。
 
 ## 装饰器说明
@@ -64,10 +124,119 @@
 - 当装饰的变量类型为boolean、string、number类型时，可观察数据源同步变化。
 
  <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) -->
+ 
+ ``` TypeScript
+ @Entry
+ @ComponentV2
+ struct Index {
+   // 点击的次数
+   @Local count: number = 0;
+   @Local message: string = 'Hello';
+   @Local flag: boolean = false;
+ 
+   build() {
+     Column() {
+       Text(`Local ${this.count}`)
+       Text(`Local ${this.message}`)
+       Text(`Local ${this.flag}`)
+       Button('change Local')
+         .onClick(() => {
+           // 对数据源的更改会同步给子组件
+           this.count++;
+           this.message += ' World';
+           this.flag = !this.flag;
+         })
+       Child({
+         count: this.count,
+         message: this.message,
+         flag: this.flag
+       })
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct Child {
+   @Require @Param count: number;
+   @Require @Param message: string;
+   @Require @Param flag: boolean;
+ 
+   build() {
+     Column() {
+       Text(`Param ${this.count}`)
+       Text(`Param ${this.message}`)
+       Text(`Param ${this.flag}`)
+     }
+   }
+ }
+ ```
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。
 
  <!-- @[Param_Observe_Change_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets) -->
+ 
+ ``` TypeScript
+ class RawObject {
+   public name: string;
+ 
+   constructor(name: string) {
+     this.name = name;
+   }
+ }
+ 
+ @ObservedV2
+ class ObservedObject {
+   @Trace public name: string;
+ 
+   constructor(name: string) {
+     this.name = name;
+   }
+ }
+ 
+ @Entry
+ @ComponentV2
+ struct Index {
+   @Local rawObject: RawObject = new RawObject('rawObject');
+   @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+ 
+   build() {
+     Column() {
+       Text(`${this.rawObject.name}`)
+       Text(`${this.observedObject.name}`)
+       Button('change object')
+         .onClick(() => {
+           // 对类对象整体的修改均能观察到
+           this.rawObject = new RawObject('new rawObject');
+           this.observedObject = new ObservedObject('new observedObject');
+         })
+       Button('change name')
+         .onClick(() => {
+           // @Local与@Param均不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
+           this.rawObject.name = 'new rawObject name';
+           // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
+           this.observedObject.name = 'new observedObject name';
+         })
+       Child({
+         rawObject: this.rawObject,
+         observedObject: this.observedObject
+       })
+     }
+   }
+ }
+ 
+ @ComponentV2
+ struct Child {
+   @Require @Param rawObject: RawObject;
+   @Require @Param observedObject: ObservedObject;
+ 
+   build() {
+     Column() {
+       Text(`${this.rawObject.name}`)
+       Text(`${this.observedObject.name}`)
+     }
+   }
+ }
+ ```
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
 
@@ -133,8 +302,84 @@
 
 <!-- @[Param_Use_Scene_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child {
+  @Param message: Set<number> = new Set();
+
+  build() {
+    Column() {
+      ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Divider()
+      })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
+
+  build() {
+    Row() {
+      Column() {
+        Child({ message: this.message })
+        Button('init set').onClick(() => {
+          this.message = new Set([0, 1, 2, 3, 4]);
+        })
+        Button('set new one').onClick(() => {
+          this.message.add(5);
+        })
+        Button('clear').onClick(() => {
+          this.message.clear();
+        })
+        Button('delete the first one').onClick(() => {
+          this.message.delete(0);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 联合类型
 
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | undefined，点击改变count的类型时，UI会自动刷新。
 
 <!-- @[Param_Use_Scene_Unite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct Index {
+  // 点击的数量，用于传给子组件，值可为undefined
+  @Local count: number | undefined = 0;
+
+  build() {
+    Column() {
+      MyComponent({ count: this.count })
+      Button('change')
+        .onClick(() => {
+          this.count = undefined;
+        })
+    }
+  }
+}
+
+@ComponentV2
+struct MyComponent {
+  // 点击的数量，用于接收父组件传入的值，值可为undefined
+  @Param count: number | undefined = 0;
+
+  build() {
+    Column() {
+      Text(`count(${this.count})`)
+    }
+  }
+}
+```
