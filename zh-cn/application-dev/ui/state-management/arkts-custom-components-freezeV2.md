@@ -121,6 +121,51 @@ Trace如下：
 
 <!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct TabContentTest {
+  @Local message: number = 0;
+  @Local data: number[] = [0, 1];
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          this.message++;
+        })
+
+        Tabs() {
+          ForEach(this.data, (item: number) => {
+            TabContent() {
+              FreezeChild({ message: this.message, index: item })
+            }.tabBar(`tab${item}`)
+          }, (item: number) => item.toString())
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+struct FreezeChild {
+  @Param message: number = 0;
+  @Param index: number = 0;
+
+  @Monitor('message') onMessageUpdated(mon: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
+  }
+
+  build() {
+    Text('message' + `${this.message}, index: ${this.index}`)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+```
+
 
 在上面的示例中：
 
