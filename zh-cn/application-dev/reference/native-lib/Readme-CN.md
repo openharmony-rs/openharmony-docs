@@ -28,6 +28,8 @@
     - [JSON](ArkTS-Sta-json.md)
     - [Mutex （互斥锁)](arkts1.2-mutex.md)
     - [RWLock (读写锁)](arkts1.2-rwlock.md)
+    - [Map](arkts-builtin-api-Map.md)
+    - [Set](arkts-builtin-api-Set.md)
 - EAWorker
   - [EAWorker 独占线程任务执行器（ArkTS）](eaworker_managed.md)
   - [EAWorker 独占线程任务执行器（C/C++）](eaworker_native.md)
