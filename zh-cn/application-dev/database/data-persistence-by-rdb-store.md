@@ -79,7 +79,6 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    const DOMAIN = 0x0000;
-   
    let store: relationalStore.RdbStore | undefined = undefined;
    let context = getContext();
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
@@ -101,77 +100,74 @@
      // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
      tokenizer: tokenTypeSupported ? tokenType : relationalStore.Tokenizer.NONE_TOKENIZER,
    };
-
-  // 判断数据库版本，如果不匹配则需进行升降级操作
-  // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
-  // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
-  const SQL_CREATE_TABLE =
-    'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES TEXT, ADDRESS TEXT)';
-  if (store == undefined) {
-    try {
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-    }catch (e) {
-      const err = e as BusinessError;
-      hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-      return;
-    }
-  }
-  hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
-  if (store !== undefined) {
-    let transaction = await store.createTransaction({});
-    let storeVersion = await transaction.execute('PRAGMA user_version');
-    // 当数据库创建时，数据库默认版本为0if (storeVersion === 0) {
-    try {
-      await transaction.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
-      storeVersion = 1;
-      // 设置数据库的版本，入参为大于0的整数
-    } catch (e) {
-      const err = e as BusinessError;
-      await transaction.rollback();
-      hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
-      return;
-    }
-    // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
-    // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
-    if (storeVersion === 1) {
-      // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
-      //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
-      try {
-        await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY TEXT');
-        hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.');
-        storeVersion = 2;
-      } catch (e) {
-        const err = e as BusinessError;
-        await transaction.rollback();
-        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
-        return;
-      }
-    }
-    // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
-    if (storeVersion === 2) {
-      // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
-      //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
-      try {
-        await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
-        storeVersion = 3;
-        hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
-      } catch (e) {
-        const err = e as BusinessError;
-        await transaction.rollback();
-        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
-        return;
-      }
-    }
-    try {
-      await transaction.execute('PRAGMA user_version = 3');
-    }catch (e) {
-      const err = e as BusinessError;
-      await transaction.rollback();
-      hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
-      return;
-    }
-    await transaction.commit();
-    // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
+   // [EndExclude persistence_get_store]
+   // 判断数据库版本，如果不匹配则需进行升降级操作
+   // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+   // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
+   const SQL_CREATE_TABLE =
+     'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES TEXT, ADDRESS TEXT)';
+   if (store === undefined) {
+     try {
+       store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+     }catch (e) {
+       const err = e as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+       return;
+     }
+   }
+   hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
+   if (store !== undefined) {
+     let transaction = await store.createTransaction({});
+     let storeVersion = await transaction.execute("PRAGMA user_version");
+     // 当数据库创建时，数据库默认版本为0
+     if (storeVersion === 0) {
+       try {
+         await transaction.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
+         storeVersion = 1;
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 0 to 1 success.');
+         // 设置数据库的版本，入参为大于0的整数
+       } catch (e) {
+         const err = e as BusinessError;
+         await transaction.rollback();
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+     }
+     // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
+     // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
+     if (storeVersion === 1) {
+       // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
+       //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
+       try {
+         await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY TEXT');
+         storeVersion = 2;
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.');
+       } catch (e) {
+         const err = e as BusinessError;
+         await transaction.rollback();
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+     }
+     // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
+     if (storeVersion === 2) {
+       // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
+       //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+       try {
+         await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
+         storeVersion = 3;
+         await transaction.execute("PRAGMA user_version = 3");
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
+       } catch (e) {
+         const err = e as BusinessError;
+         await transaction.rollback();
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to execute sql. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+     }
+     await transaction.commit();
+     // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
+     // 如果事务中执行过多，建议拆分多个事务执行
    }
    ```
 
@@ -253,7 +249,7 @@
    > 
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
-2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
+1. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
     <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
    // 插入数据
@@ -284,7 +280,7 @@
    >
    > 关系型数据库没有显式的flush操作实现持久化，数据插入即保存在持久化文件。
 
-3. 根据谓词指定的实例对象，对数据进行修改或删除。
+2. 根据谓词指定的实例对象，对数据进行修改或删除。
 
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
     <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -329,7 +325,7 @@
    }
    ```
 
-4. 根据谓词指定的查询条件查找数据。
+3. 根据谓词指定的查询条件查找数据。
 
    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
     <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -396,7 +392,7 @@
     }
    ```
 
-5. 使用事务对象执行数据的插入、删除和更新操作。
+4. 使用事务对象执行数据的插入、删除和更新操作。
    
    调用createTransaction方法创建事务对象并执行相应操作。
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
@@ -460,7 +456,7 @@
    }
    ```
 
-6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
+5. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
 
    此处以手动备份为例：
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -478,7 +474,7 @@
     }
    ```
 
-7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
+6. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
 
    此处以调用[restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
     <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
@@ -495,7 +491,7 @@
     }
    ```
 
-8. 删除数据库。
+7. 删除数据库。
 
    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
