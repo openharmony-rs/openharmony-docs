@@ -668,6 +668,12 @@ target_link_libraries(entry PUBLIC libnative_drawing.so)
 同时在工程中的`src/main/cpp/types/libentry/index.d.ts`文件中，添加自定义绘制函数在ArkTS侧的定义，如：
 <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
+``` TypeScript
+import { DrawContext } from '@kit.ArkUI'
+
+export const nativeOnDraw: (id: number, context: DrawContext, width: number, height: number) => number;
+```
+
 ArkTS侧代码：
 
 <!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) -->
