@@ -974,6 +974,52 @@ export struct DisableSystemServiceMenu {
   
 <!-- @[richEditor_disableMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets) -->
 
+``` TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+
+@Entry
+@Component
+export struct DisableMenuItem {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  aboutToAppear(): void {
+    // 禁用搜索和翻译菜单
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE]);
+  }
+
+  aboutToDisappear(): void {
+    // 恢复系统服务菜单
+    TextMenuController.disableMenuItems([]);
+  }
+
+  build() {
+    // ···
+          RichEditor(this.options)
+            .onReady(() => {
+              // $r('app.string.Demo_richEditor')需要替换为开发者所需的资源文件
+              this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
+                style: {
+                  fontSize: 30
+                }
+              })
+            })
+            .height(60)
+            .editMenuOptions({
+              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                // menuItems不包含搜索和翻译
+                return menuItems;
+              },
+              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                return false;
+              }
+            })
+        // ···
+  }
+}
+```
+
   ![alt text](figures/richEditor_disable_menuItems.gif)
 
 ### 设置自定义选择菜单
