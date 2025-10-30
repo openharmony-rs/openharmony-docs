@@ -278,5 +278,23 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
 使用`AttributeModifier`设置多态样式、事件，实现事件逻辑的复用，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现`applyPressedAttribute`方法完成。
 
   <!-- @[Common_MyButtonModifier4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier04.ets) -->
+  
+  ``` TypeScript
+  export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
+    applyNormalAttribute(instance: ButtonAttribute): void {
+      // instance为Button的属性对象，设置正常状态下属性值
+      instance.backgroundColor('#17A98D')
+        .borderColor('#707070')
+        .borderWidth(2)
+    }
+  
+    applyPressedAttribute(instance: ButtonAttribute): void {
+      // instance为Button的属性对象，设置按压状态下属性值
+      instance.backgroundColor('#2787D9')
+        .borderColor('#FFC000')
+        .borderWidth(5)
+    }
+  }
+  ```
   <!-- @[main_button4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button4.ets) -->
   ![AttributeModifier](figures/AttributeModifier02.gif) 
