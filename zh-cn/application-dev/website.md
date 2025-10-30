@@ -1185,6 +1185,8 @@
           - [使用系统预置CA证书校验证书链](security/DeviceCertificateKit/verify-certchain-by-systemca.md)
           - [证书CMS签名](security/DeviceCertificateKit/create-cms-sign-object.md)
           - [证书CMS封装](security/DeviceCertificateKit/create-cms-enveloped-object.md)
+          - [证书CMS验签](security/DeviceCertificateKit/create-cms-verify-object.md)
+          - [证书CMS解封装](security/DeviceCertificateKit/create-cms-decapsulation-object.md)
           - [证书PKCS12的创建和解析](security/DeviceCertificateKit/create-parse-pkcs12.md)
         - 证书管理<!--certmanager-->
           - [证书管理概述](security/DeviceCertificateKit/certManager-overview.md)
