@@ -13,8 +13,8 @@ The mouse is a key input device, especially for 2-in-1 devices. It can perform a
 >**NOTE**
 >
 >All single-finger touch events and gesture events may be triggered and responded to using the left-click.
-> - For example, if we need to develop the function of clicking a button to jump to a page and support finger tapping and left mouse button tapping, we can bind only one click event (onClick) to achieve this effect.
-> - If different effects need to be implemented for finger tapping and left mouse button tapping, you can use the source field in the callback parameter in the onClick callback to determine whether the source of the event that triggers the current event is a finger or a mouse.
+> - For example, to implement page redirection invoked by clicking a button with support for finger touches and left-clicks, you just need to bind an **onClick** event.
+> - If you want to implement different effects for the finger touch and the left-click, you can use the **source** parameter in the **onClick** callback to determine whether the current event is triggered by a finger or a mouse device.
 
 ## Processing Mouse Movement
 
@@ -26,14 +26,14 @@ Mouse events are handled by registering a callback using the **onMouse** API. Wh
 onMouse(event: (event?: MouseEvent) => void)
 ```
 
-Triggered when a mouse event occurs. When the mouse pointer generates a behavior (MouseAction) in the component bound to the API, the event callback is triggered. The parameter is the [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) object, indicating the mouse event that triggers the event. Event bubbling is supported and can be customized; by default, events bubble between parent and child components. This API is typically used to implement custom mouse interaction logic.
+Triggered when a mouse event occurs. If the mouse pointer performs an action (**MouseAction**) on a component bound to this API, the corresponding callback is triggered. The callback receives a [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) object that encapsulates details about the event. Event bubbling is supported and can be customized; by default, events bubble between parent and child components. This API is typically used to implement custom mouse interaction logic.
 
 
-You can obtain the coordinates (displayX/displayY/windowX/windowY/x/y), button ([MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)), action ([MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)), timestamp ([timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)), interaction component area ([EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)), and event source ([SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype8)) of the triggered event from the MouseEvent object in the callback. The **stopPropagation** callback of **MouseEvent** can be used to prevent the event from bubbling up.
+The MouseEvent object provides the following information: coordinates (displayX, displayY, windowX, windowY, x, y), button ([MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)), action ([MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)), timestamp ([timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)), target area ([EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)), and event source ([SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype8)). The **stopPropagation** callback of **MouseEvent** can be used to prevent the event from bubbling up.
 
 >**NOTE**
 >
->**MouseButton** indicates the physical mouse button being pressed or released that triggers the mouse event. The values are **Left**, **Right**, **Middle**, **Back**, **Forward**, and **None**. **None** indicates that no button is pressed or released, which means that the event is triggered by the mouse pointer moving on the component.
+>**MouseButton** indicates indicates the physical button triggering the event. The values are **Left**, **Right**, **Middle**, **Back**, **Forward**, and **None**. **None** indicates that no button is pressed or released, which means that the event is triggered by the mouse pointer moving on the component.
 
 ```ts
 // xxx.ets
@@ -83,7 +83,7 @@ struct MouseExample {
 }
 ```
 
-In the preceding example, the onMouse API is bound to the button. and display the values of the callback parameters, such as **button** and **action**. Apply the same settings to the outer **Column** container. The entire process can be divided into the following two actions:
+In the preceding example, the **onMouse** API is bound to the **Button** component and its parent **Column** container. The callback displays key event parameters such as **button** and **action**. The entire process can be divided into the following two actions:
 
 1. Moving the mouse pointer: When the mouse pointer moves from outside the **Button** component to inside, only the **onMouse** callback of the **Column** component is triggered. When the mouse pointer enters the button, as the **onMouse** event bubbles up by default, both the **onMouse** callbacks of the **Column** and **Button** components are invoked. Because no mouse button is clicked during this process, the displayed information shows **button** as **0** (enumerated value of **MouseButton.None**) and **action** as **3** (enumerated value of **MouseAction.Move**).
 
@@ -151,7 +151,7 @@ To prevent the mouse event of the child component (**Button**) from bubbling up 
 
 ### onHover
 
-If you need to detect the mouse entering or leaving the control range, you are advised to use the advanced event [onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover) and avoid directly processing the mouse move event to keep the code simple.
+To detect when the mouse pointer enters or exits a component's boundary, use the advanced [onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover) event. This approach simplifies your code and avoids the complexity of manually handling mouse movement events.
 
 ```ts
 onHover(event: (isHover: boolean) => void)
@@ -202,7 +202,7 @@ When the mouse pointer moves from inside the **Button** component to outside, th
 
 ## Processing Mouse Buttons
 
-When a user presses a mouse button, a mouse press event is generated. You can use MouseEvent to access some important information about the event, such as the occurrence time and mouse button (left button/right button). You can also use the getModifierKeyState API to obtain the pressing status of the Ctrl, Alt, and Shift keys on the physical keyboard when the user uses the mouse. You can determine their status by combination to implement some convenient operations.
+When a user presses a mouse button, a mouse press event is triggered. You can access key details about the event through the **MouseEvent** object, such as the timestamp and the specific button pressed (such as left or right). In addition, the **getModifierKeyState** API allows you to detect the state of modifier keys (Ctrl, Alt, and Shift) on the physical keyboard at the time of the mouse interaction. By combining mouse and keyboard input, you can implement advanced interaction patterns like multi-selection.
 
 The following example demonstrates multi-selection functionality using mouse button processing:
 
@@ -301,7 +301,7 @@ struct ListExample {
               if (event.getModifierKeyState) {
                 isCtrlPressing = event.getModifierKeyState(['Ctrl'])
               }
-              //If the Ctrl key is not pressed, forcibly clear other selected items and select only the current item.
+              // If Ctrl is not pressed, clear previous selections.
               if (!isCtrlPressing) {
                 this.allSelectedItems = []
                 for (let i = 0; i < this.isSelected.length; i++) {
@@ -405,7 +405,7 @@ export class ListDataSource implements IDataSource {
     this.notifyDataDelete(index);
   }
 
-  // Insert an element at a specified index.
+  // Insert an element at the specified index.
   public insertItem(index: number, data: number): void {
     this.list.splice(index, 0, data);
     this.notifyDataAdd(index);
@@ -445,7 +445,7 @@ struct ListExample {
               .backgroundColor(0xFFFFFF)
           }
           .margin(20)
-          // Bind a scrolling gesture to ListItem. When the mouse wheel is scrolled on ListItem, the scrolling gesture of ListItem is triggered first.
+          // Bind a pan gesture to the ListItem. When the mouse wheel is scrolled on the ListItem, the ListItem's pan gesture is triggered first.
           .gesture(PanGesture({ direction: PanDirection.Vertical })
             .onActionStart(() => {
               console.info('Vertical PanGesture start is called');

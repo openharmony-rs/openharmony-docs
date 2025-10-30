@@ -345,7 +345,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVDemuxer_ReadSampleBuffer接口本身可能存在耗时久，取决于文件IO，建议以异步方式进行调用。
    ```c++
    // 为每个线程定义处理函数。
-   void ReadTrackSamples(OH_AVFormatDemuxer *demuxer, uint32_t trackIndex, int buffer_size, 
+   void ReadTrackSamples(OH_AVDemuxer *demuxer, uint32_t trackIndex, int32_t buffer_size, 
                          std::atomic<bool>& isEnd, std::atomic<bool>& threadFinished)
    {
       // 创建缓冲区。
@@ -380,8 +380,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    // 根据需求计算合适的缓冲区大小。
-   int audioBufferSize = 4096;  // 典型音频缓冲区大小。
-   int videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
+   int32_t audioBufferSize = 4096;  // 典型音频缓冲区大小。
+   int32_t videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
 
    // 创建原子变量用于线程通信。
    std::atomic<bool> audioIsEnd{false}, videoIsEnd{false}; // 表示流是否结束。

@@ -8,7 +8,7 @@
 
 ## Overview
 
-The Human Interface Device (HID) Driver Development Kit (DDK) is a toolset that helps you develop HID drivers at the application layer based on the user mode. It provides APIs for accessing HID devices on a host, including creating a HID device, sending events to a device, destroying a device, opening or closing a device, reading and writing a report, and obtaining device information.
+Driver Development Kit (DDK) of Human Interface Device (HID) is a toolset that helps you develop HID drivers at the application layer based on the user mode. It provides APIs for accessing HID devices on a host, including creating a HID device, sending events to a device, destroying a device, opening or closing a device, reading and writing a report, and obtaining device information.
 
 The HID DDK can be used to develop drivers for devices that use HID protocol to transfer data over a USB bus, or for devices that use peripheral drivers to create virtual devices to exchange information with non-standard devices.
 
@@ -22,7 +22,7 @@ Before developing the HID DDK, you must understand the following basic concepts:
 
 - **DDK**
 
-  DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
+  A toolkit provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
 
 ### Implementation Principles
 

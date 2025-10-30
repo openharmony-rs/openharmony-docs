@@ -387,8 +387,8 @@ Defines the icon symbol options.
 
 | Name       | Type                                                                  | Read-Only| Optional| Description                                                                                  |
 | :-------- | :------------------------------------------------------------------- |:---|:---|  :----------------------------------------------------------------------------------- |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | No | No | Icon symbol of the toolbar item in normal state.<br>Decorator type: @Trace  |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | No | Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**<br>Decorator type: @Trace|
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | Icon symbol of the toolbar item in normal state.<br>Decorator type: @Trace  |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**<br>Decorator type: @Trace|
 
 ### constructor
 
@@ -420,8 +420,8 @@ Defines the options for initializing a **ToolBarV2SymbolGlyph** object.
 
 | Name       | Type                                                                  | Read-Only| Optional| Description                                                                                  |
 | --------- | -------------------------------------------------------------------- | -- | -- | ------------------------------------------------------------------------------------ |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | No| No | Icon symbol of the toolbar item in normal state.  |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | No| Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**|
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No | Icon symbol of the toolbar item in normal state.  |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**|
 
 ## Example
 

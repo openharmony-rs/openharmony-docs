@@ -65,7 +65,7 @@ Toggle style.
 | -------- | ------------------------------------------------------------ |
 | Checkbox | Check box type.<br>**NOTE**<br>Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br> top: '14px',<br> right: '14px',<br> bottom: '14px',<br> left: '14px'<br> }.<br>Default size:<br>{width:'20vp', height:'20vp'}|
 | Switch   | Switch type.<br>**NOTE**<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br> top: '6px',<br> right: '14px',<br> bottom: '6px',<br> left: '14px'<br> }.<br>Default size:<br>{width:'36vp', height:'20vp'}|
-| Button   | Provides the status button style. If the text is set for the child component, the text content is displayed in the button. The default height is 28 vp, and there is no default width.|
+| Button   | Button style. If the text is set for the child component, the text content is displayed in the button. The default height is 28 vp, and there is no default width.|
 
 ## Attributes
 

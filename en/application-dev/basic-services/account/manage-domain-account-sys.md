@@ -9,7 +9,7 @@
 
 The user can add a domain account to a device so that the domain account user can log in to the system and use the device.
 
-## Before You Start
+## Getting Started
 
 1. Request the following permissions. For details, see [Requesting Permissions for system_basic Applications](../../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
    - ohos.permission.MANAGE_LOCAL_ACCOUNTS
@@ -21,7 +21,7 @@ The user can add a domain account to a device so that the domain account user ca
    import { osAccount, BusinessError } from '@kit.BasicServicesKit';
    ```
 
-3. Obtain an **AccountManager** instance for system accounts.
+3. Obtain an **AccountManager** instance.
 
    ```ts
    let osAccountMgr = osAccount.getAccountManager();
@@ -80,7 +80,8 @@ The user can add a domain account in **Settings** to allow the domain account us
       }
    });
    } catch (e) {
-   console.error(`createOsAccountForDomain exception: code is ${e.code}, message is ${e.message}`);
+      const err = e as BusinessError;
+      console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
 
@@ -101,7 +102,8 @@ The user can remove the domain account that is not required. Since a domain acco
 
    try {
      localId = await osAccountMgr.getOsAccountLocalIdForDomain(domainInfo);
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
@@ -117,7 +119,8 @@ The user can remove the domain account that is not required. Since a domain acco
            console.info('removeOsAccount successfully');
        }
      });
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
    }
    ```
@@ -149,7 +152,8 @@ After passing the authentication, the user can query their own or others' domain
            console.info('getAccountInfo result: ' + result);
        }
      });
-   } catch (err) {
-       console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
+   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
    }
    ```

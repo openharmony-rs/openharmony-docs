@@ -1,4 +1,4 @@
-# LazyForEach迁移Repeat指导文档
+# LazyForEach迁移Repeat指南
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
@@ -12,7 +12,7 @@
 
 ### 数据首次渲染
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 LazyForEach根据数据源循环渲染子组件。
 
@@ -217,7 +217,7 @@ struct MyComponent {
 
 ### 数据更新操作
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用[DataChangeListener](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
 
@@ -427,7 +427,7 @@ struct MyComponent {
 
 ### 修改数据子属性
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 LazyForEach可以使用[@Observed与@ObjectLink](../state-management/arkts-observed-and-objectlink.md)装饰器实现对数据子属性的观测。当有数据子属性发生变化时，仅更新使用了该子属性的组件，从而提高性能。
 
@@ -560,7 +560,7 @@ struct MyComponent {
 
 ### 状态管理V2观测组件内部状态
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 状态管理V2的[@Local](../state-management/arkts-new-local.md)装饰器提供了观测自定义组件内部变量的能力。被@Local装饰的变量发生变化时，会通知LazyForEach更新对应的组件。
 
@@ -714,7 +714,7 @@ struct ChildComponent {
 
 ### 状态管理V2观测组件外部输入
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 状态管理V2的[@Param](../state-management/arkts-new-param.md)装饰器提供了观测自定义组件外部输入变量的能力，可以实现父子组件间的数据同步。将父组件的变量传递给子组件，并用@Param装饰，当父组件变量发生变化时，会通知对应的组件更新。
 
@@ -853,7 +853,7 @@ struct ChildComponent {
 
 ### 拖拽排序
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 LazyForEach的[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)属性提供了拖拽排序能力。
 
@@ -981,7 +981,7 @@ struct Parent {
 
 ### 组件复用
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 LazyForEach自身并不具备组件复用能力，为实现组件复用，需要与[@Reusable](../state-management/arkts-reusable.md)装饰器配合使用（被@Reusable装饰的自定义组件具有复用能力）。
 
@@ -1196,7 +1196,7 @@ struct ChildComponent {
 
 ### 模板渲染
 
-**LazyForEach用例**
+**LazyForEach示例**
 
 LazyForEach自身并不具备模板渲染能力。为实现模板渲染能力，需要开发者自己实现逻辑判断，为不同的数据项选择不同的渲染模板。
 

@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
 
@@ -1868,7 +1868,7 @@ struct ListExample {
 
 ### 示例9（设置折行走焦）
 
-该示例通过focusWrapMode接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](#focuswrapmode20)接口，实现了List组件方向键走焦换行效果。
 
 ```ts
 @Entry

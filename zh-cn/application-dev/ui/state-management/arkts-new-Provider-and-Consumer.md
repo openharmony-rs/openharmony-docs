@@ -671,4 +671,3 @@ struct Child {
 - Index中\@Provider装饰的变量val与Parent中\@Consumer装饰的变量val建立双向数据绑定。Parent中\@Param装饰的变量val2接收Index中数据源val的数据，并同步其变化。Child中\@Param装饰的变量val接收Parent中数据源val的数据，并同步其变化。
 - 点击Parent中的按钮，触发`@Consumer() val`的变化，变化同步给Index中的`@Provider() val`和Child中的`@Param val`，对应UI刷新。
 - Index中`@Provider() val`的变化同步给Parent中的`@Param val2`，对应UI刷新。
-<!--no_check-->

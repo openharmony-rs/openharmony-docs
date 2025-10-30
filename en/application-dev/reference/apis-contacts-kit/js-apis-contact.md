@@ -2226,7 +2226,7 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10-1) instead.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 

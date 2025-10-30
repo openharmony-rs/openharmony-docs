@@ -27,7 +27,6 @@ import { ChildProcessOptions } from '@kit.AbilityKit';
 | Name       | Type     | Read-Only| Optional| Description                                                              |
 | ----------- | --------- | ---- | ----- | ----------------------------------------------- |
 | isolationMode | boolean | No| Yes| Controls the sandbox isolation level and network access permissions of the child process. **true** if the child process runs in an independent sandbox environment and cannot access the network; **false** if the child process shares the sandbox and network environment with the main process. The default value is **false**.|
-| isolationUid<sup>21+<sup> | boolean | No| Yes| Whether the child process uses an independent UID. **true** if the child process uses an independent UID; **false** if the child process and the main process share the same UID. The default value is **false**. This parameter is valid only when **isolationMode** is set to **true**.|
 
 **Example**
 
@@ -69,8 +68,7 @@ struct Index {
             try {
               DemoProcess.toString(); // Call any API of the DemoProcess class to prevent the code from being directly optimized by the compiler because it is not being referenced.
               let options: ChildProcessOptions = {
-                isolationMode: false,
-                isolationUid: false
+                isolationMode: false
               };
               let args: ChildProcessArgs = {
                 entryParams: "testParam",

@@ -315,4 +315,6 @@
   - [包管理子系统通用错误码](errorcode-bundle.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
-  - [应用域名校验错误码](errorcode-appDomainVerify.md)
+  <!--Del-->
+  - [应用域名校验错误码](errorcode-appDomainVerify-sys.md)
+  <!--DelEnd-->

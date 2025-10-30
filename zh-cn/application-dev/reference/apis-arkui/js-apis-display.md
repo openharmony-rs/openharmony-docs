@@ -846,7 +846,7 @@ display.off('foldAngleChange', callback);
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
-开启屏幕截屏、投屏、录屏状态变化的监听。
+开启设备的屏幕显示信息是否被获取的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -856,8 +856,8 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备截屏、投屏或者录屏状态发生变化。|
-| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备截屏、投屏或录屏时状态发生变化。true表示设备开始投屏或者录屏，false表示结束投屏或者录屏；截屏仅返回一次true。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
 
 **错误码：**
 
@@ -883,7 +883,7 @@ display.on('captureStatusChange', callback);
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭屏幕截屏、投屏、录屏状态变化的监听。
+关闭设备的屏幕显示信息是否被获取的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -893,8 +893,8 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备截屏、投屏、录屏状态发生变化。|
-| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备截屏、投屏或录屏状态发生变化。true表示设备开始投屏或者录屏，false表示结束投屏或者录屏；截屏仅返回一次true。若无此参数，则取消注册截屏、投屏、录屏状态变化监听的所有回调函数。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
 
 **错误码：**
 
@@ -922,7 +922,7 @@ display.off('captureStatusChange', callback);
 ## display.isCaptured<sup>12+</sup>
 isCaptured(): boolean
 
-检查设备是否正在截屏、投屏、录屏。
+检查设备的屏幕显示信息是否被获取。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -932,7 +932,7 @@ isCaptured(): boolean
 
 | 类型 | 说明 |
 | ----------------------------------------------- | ------------------------------------------------------- |
-| boolean | boolean值，返回当前设备是否有截屏、投屏或者录屏。true表示有截屏、投屏、录屏，否则返回false。|
+| boolean | boolean值，返回设备的屏幕显示信息是否存在被获取的情况。返回true表示设备的屏幕信息存在被获取的情况，可能为：设备正处于截屏、投屏、录屏状态，或已创建虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)；返回false则表示设备的屏幕信息不存在被获取的情况。|
 
 **错误码：**
 

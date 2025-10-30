@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 The module provides APIs for playing and configuring SMS tones and notification tones and obtaining related information.
 
@@ -29,10 +29,10 @@ Describes the options of system tones.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
-| Name       | Type   | Mandatory| Description                                         |
-| ----------- | ------- | ---- | --------------------------------------------- |
-| muteAudio   | boolean | No  | Whether the sound is muted. **true** if muted, **false** otherwise.  |
-| muteHaptics | boolean | No  | Whether haptics feedback is turned off. **true** if turned off, **false** otherwise.|
+| Name       | Type   | Read-Only| Optional| Description                                         |
+| ----------- | ------- | ---- | ---- | --------------------------------------------- |
+| muteAudio   | boolean | No  | Yes  | Whether to mute the audio. **true** to mute, **false** otherwise.  |
+| muteHaptics | boolean | No  | Yes  | Whether to turn off haptics feedback when a system tone is played. **true** to turn off, **false** otherwise.|
 
 ## SystemTonePlayer
 
@@ -455,6 +455,8 @@ Subscribes to the event indicating that the ringtone playback is finished. This 
 
 The object to listen for is an audio stream specified by **streamId**. If **streamId** is set to **0**, this API subscribes to the playback complete event of all audio streams of the player.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -500,6 +502,8 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 Unsubscribes from the event indicating that the ringtone playback is finished. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -540,6 +544,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to error events that occur during ringtone playback. This API uses an asynchronous callback to return the result.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters**
@@ -573,6 +579,8 @@ systemTonePlayer.on('error', (err: BusinessError) => {
 off(type: 'error', callback?: ErrorCallback): void
 
 Unsubscribes from error events that occur during ringtone playback. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 

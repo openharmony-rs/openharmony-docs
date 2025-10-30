@@ -26,9 +26,11 @@ import { intelligence } from '@kit.ArkData';
 
 getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
-获取文本嵌入模型，使用Promise异步回调。
+获取文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -82,6 +84,8 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
@@ -130,9 +134,11 @@ intelligence.getImageEmbeddingModel(imageConfig)
 
 splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
-获取文本的分块。
+获取文本的分块。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -235,9 +241,11 @@ type Image = string
 
 loadModel(): Promise&lt;void&gt;
 
-加载嵌入模型，使用Promise异步回调。
+加载文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -272,9 +280,11 @@ textEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-释放嵌入模型，使用Promise异步回调。
+释放文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -309,11 +319,13 @@ textEmbedding.releaseModel()
 
 getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
-获取给定文本的嵌入向量。
+获取给定文本的嵌入向量。使用Promise异步回调。
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -358,11 +370,13 @@ textEmbedding.getEmbedding(text)
 
 getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
 
-获取给定批次文本的嵌入向量。
+获取给定批次文本的嵌入向量。使用Promise异步回调。
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -415,9 +429,11 @@ textEmbedding.getEmbedding(batchTexts)
 
 loadModel(): Promise&lt;void&gt;
 
-加载嵌入模型，使用Promise异步回调。
+加载图像嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -452,9 +468,11 @@ imageEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-释放嵌入模型，使用Promise异步回调。
+释放图像嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -489,11 +507,13 @@ imageEmbedding.releaseModel()
 
 getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
-获取给定图像的嵌入向量。
+获取给定图像的嵌入向量。使用Promise异步回调。
 
 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 

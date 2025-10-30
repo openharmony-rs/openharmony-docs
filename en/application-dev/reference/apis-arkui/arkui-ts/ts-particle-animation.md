@@ -55,7 +55,7 @@ interface ParticleInterface {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
-| particles | [Particles](#particles18)<<br>&nbsp;&nbsp;[PARTICLE](#particletype), <br>&nbsp;&nbsp;[COLOR_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[OPACITY_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[SCALE_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[ACC_SPEED_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[ACC_ANGLE_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[SPIN_UPDATER](#particleupdater)<br>><br>| No| No| Particles. For details, see [Particles](#particles18).|
+| particles | [Particles](#particles18)<<br>  [PARTICLE](#particletype), <br>  [COLOR_UPDATER](#particleupdater),<br>  [OPACITY_UPDATER](#particleupdater),<br>  [SCALE_UPDATER](#particleupdater),<br>  [ACC_SPEED_UPDATER](#particleupdater),<br>  [ACC_ANGLE_UPDATER](#particleupdater),<br>  [SPIN_UPDATER](#particleupdater)<br>><br>| No| No| Particles. For details, see [Particles](#particles18).|
 
 ## Attributes
 
@@ -297,7 +297,7 @@ Lifecycle of a particle attribute.
 | to | T | No| No| Target value of the property. If the value is invalid, the default value will be used.|
 |startMillis|number | No| No| Start time of the animation.<br>Unit: ms.<br>Value range: [0, +∞).|
 |endMillis|number | No| No| End time of the animation.<br>Unit: ms.<br>Value range: [0, +∞).|
-|curve|[Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)| No| Yes| Animation curve.<br>Default value: **Curve.Linear**|
+|curve|[Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9)| No| Yes| Animation curve.<br>Default value: **Curve.Linear**|
 
 
 ## ParticleType
@@ -458,7 +458,7 @@ An array of particle options,
 
 | Name   | Type                          | Read-Only| Optional| Description                                                                                                                    |
 | ------ | ------------------------------ | ---- | ------------------------------------------ | ----------------------------------------------------------------------------- |
-| particles<sup>10+</sup>  | Array<<br>&nbsp;&nbsp;ParticleOptions<<br>&nbsp;&nbsp;&nbsp;&nbsp;PARTICLE,<br>&nbsp;&nbsp;&nbsp;&nbsp;COLOR_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;OPACITY_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;SCALE_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;ACC_SPEED_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;ACC_ANGLE_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;SPIN_UPDATER<br>&nbsp;&nbsp;><br>>  | No| No  | An array of particle options, each of which covers the emitter, color, opacity, scale, velocity, acceleration, and spin speed of particles. For details, see [ParticleOptions](#particleoptions).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| particles<sup>10+</sup>  | Array<<br>  ParticleOptions<<br>    PARTICLE,<br>    COLOR_UPDATER,<br>    OPACITY_UPDATER,<br>    SCALE_UPDATER,<br>    ACC_SPEED_UPDATER,<br>    ACC_ANGLE_UPDATER,<br>    SPIN_UPDATER<br>  ><br>>  | No| No  | An array of particle options, each of which covers the emitter, color, opacity, scale, velocity, acceleration, and spin speed of particles. For details, see [ParticleOptions](#particleoptions).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## VelocityOptions<sup>18+</sup>
 

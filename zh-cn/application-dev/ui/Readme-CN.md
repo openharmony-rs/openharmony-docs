@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
@@ -88,7 +88,7 @@
     - [ForEach：循环渲染](rendering-control/arkts-rendering-control-foreach.md)
     - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
     - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
-    - [LazyForEach迁移Repeat指导文档](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
+    - [LazyForEach迁移Repeat指南](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
@@ -118,6 +118,7 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
+    - [管理软键盘](arkts-manage-keyboard.md)
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
@@ -338,7 +339,7 @@
         - [动画动效](ui-js-animate-dynamic-effects.md)
         - [动画帧](ui-js-animate-frame.md)
   - [自定义组件](ui-js-custom-components.md)
-  - [WebGL](../webgl/Readme-CN.md)
+  - [WebGL](../webgl/Readme-CN.md)<!--ui-js-webgl-->
 - UI开发调试调优<!--ui-debug-optimize-->
   - UI稳定性故障调试<!--ui-stability-->
     - [UI稳定性故障分析概述](arkts-stability-guide.md)
@@ -348,5 +349,5 @@
   - [UI预览](ui-ide-previewer.md)
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
-- [窗口管理](../windowmanager/Readme-CN.md)
-- [屏幕管理](../displaymanager/Readme-CN.md)
+- [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-api-->
+- [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-api-->

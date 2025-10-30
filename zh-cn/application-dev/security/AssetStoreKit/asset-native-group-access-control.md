@@ -36,8 +36,8 @@
 在群组中新增密码为demo_pwd、别名为demo_alias、附属信息为demo_label的关键资产。
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value AddAsset(napi_env env, napi_callback_info info)
@@ -70,8 +70,8 @@ static napi_value AddAsset(napi_env env, napi_callback_info info)
 在群组中删除别名为demo_alias的关键资产。
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value RemoveAsset(napi_env env, napi_callback_info info)
@@ -98,8 +98,8 @@ static napi_value RemoveAsset(napi_env env, napi_callback_info info)
 在群组中更新别名为demo_alias的关键资产，将关键资产的明文更新为demo_pwd_new，附属信息更新为demo_label_new。
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value UpdateAsset(napi_env env, napi_callback_info info)
@@ -135,8 +135,8 @@ static napi_value UpdateAsset(napi_env env, napi_callback_info info)
 在群组中查询别名为demo_alias的关键资产明文。
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value QueryAsset(napi_env env, napi_callback_info info)
@@ -173,8 +173,8 @@ static napi_value QueryAsset(napi_env env, napi_callback_info info)
 查询别名为demo_alias的关键资产属性。
 
 ```c
+#include "napi/native_api.h"
 #include <string.h>
-
 #include "asset/asset_api.h"
 
 static napi_value QueryAttributes(napi_env env, napi_callback_info info)

@@ -71,8 +71,8 @@ Provides content configuration options of the sheet.
 | title<sup>11+</sup> | [SheetTitleOptions](#sheettitleoptions11) \| [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Title of the sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableOutsideInteractive<sup>11+</sup> | boolean | No| Yes| Whether to allow users to interact with the underlying page when the sheet is displayed.<br>**NOTE**<br>The value **true** means that interactions are allowed, in which case no mask is not displayed. The value **false** means that interactions are not allowed, in which case a mask is displayed. If this parameter is not set, interactions are allowed for the popup sheet, but not for bottom and center sheets. If this parameter is set to **true**, the setting of **maskColor** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | shouldDismiss<sup>11+</sup> | (sheetDismiss: [SheetDismiss](#sheetdismiss11)) => void | No| Yes| Callback invoked when the user performs an interactive dismiss operation: pulling down, side swiping, or clicking the mask or the close icon.<br>**NOTE**<br>If this callback is registered, the sheet is not dismissed immediately when the user performs the above operations. To dismiss the sheet, you must call **shouldDismiss.dismiss()** in the callback.<br>If this callback is not registered, the sheet is dismissed immediately when the user performs the above operations, without any additional behavior.<br>Side swiping for dismissal refers to any of the following operations: swiping left or right, touching the Back button, and pressing the Esc key.<br>It is recommended that this API be used in scenarios where a [secondary confirmation](../../../ui/arkts-sheet-page.md#secondary-confirmation-capability) is required<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onWillDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[DismissSheetAction](#dismisssheetaction12)> | No| Yes   | Callback invoked when the user performs an interactive dismiss operation: pulling down, side swiping, or clicking the mask or the close icon. Allows developers to register the closure operation type and determine whether to close the semi-modal state.<br>**NOTE**<br>If this callback is registered, the sheet is not dismissed immediately when the user performs the above operations. Instead, you can use the **reason** parameter in the [DismissSheetAction](#dismisssheetaction12) callback to determine the type of dismiss operation and decide whether to dismiss the sheet.<br>If this callback is not registered, the sheet is dismissed immediately when the user performs the above operations, without any additional behavior.<br>Side swiping for dismissal refers to any of the following operations: swiping left or right, touching the Back button, and pressing the Esc key.<br>No further interception with **onWillDismiss** is allowed in an **onWillDismiss** callback.<br>It is recommended that this API be used in scenarios where a [secondary confirmation](../../../ui/arkts-sheet-page.md#secondary-confirmation-capability) is required<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onWillSpringBackWhenDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[SpringBackAction](#springbackaction12)> | No| Yes   | Callback to control the interactive spring back before the sheet is dismissed. Allows developers to register this callback to control the rebound effect when the sheet page is closed interactively.<br>**NOTE**<br>If this callback is registered along with **shouldDismiss** or **onWillDismiss**, you can control whether the sheet bounces back during the pull-down-to-dismiss operation by calling **springBack** in the callback.<br>If this callback is not registered but **shouldDismiss** or **onWillDismiss** is registered, the sheet will bounce back before remaining open or being dismissed based on the callback behavior.<br>If neither this callback nor **shouldDismiss** or **onWillDismiss** is registered, the sheet is dismissed by default during the pull-down-to-dismiss operation.<br>For side-aligned sheets, **springBack** works only side swiping is performed for dismissal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onWillDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[DismissSheetAction](#dismisssheetaction12)> | No| Yes   | Callback invoked when the user performs an interactive dismiss operation: pulling down, side swiping, or clicking the mask or the close icon. Use this callback to determine whether to proceed with dismissal based on the operation type.<br>**NOTE**<br>If this callback is registered, the sheet is not dismissed immediately when the user performs the above operations. Instead, you can use the **reason** parameter in the [DismissSheetAction](#dismisssheetaction12) callback to determine the type of dismiss operation and decide whether to dismiss the sheet.<br>If this callback is not registered, the sheet is dismissed immediately when the user performs the above operations, without any additional behavior.<br>Side swiping for dismissal refers to any of the following operations: swiping left or right, touching the Back button, and pressing the Esc key.<br>No further interception with **onWillDismiss** is allowed in an **onWillDismiss** callback.<br>It is recommended that this API be used in scenarios where a [secondary confirmation](../../../ui/arkts-sheet-page.md#secondary-confirmation-capability) is required<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onWillSpringBackWhenDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[SpringBackAction](#springbackaction12)> | No| Yes   | Callback invoked when the user performs a pull-down-to-dismiss gesture, to control the bounce effect.<br>**NOTE**<br>If this callback is registered along with **shouldDismiss** or **onWillDismiss**, you can control whether the sheet bounces back during the pull-down-to-dismiss operation by calling **springBack** in the callback.<br>If this callback is not registered but **shouldDismiss** or **onWillDismiss** is registered, the sheet will bounce back before remaining open or being dismissed based on the callback behavior.<br>If neither this callback nor **shouldDismiss** or **onWillDismiss** is registered, the sheet is dismissed by default during the pull-down-to-dismiss operation.<br>For side sheets, **springBack** works only side swiping is performed for dismissal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onHeightDidChange<sup>12+</sup> | Callback&lt;number&gt; | No| Yes| Callback for changes in the height of the sheet.<br>**NOTE**<br>For a bottom sheet, the height of each frame is only returned when there are changes in detents or during drag actions. When the sheet is pulled up or making space for the soft keyboard, only the final height is returned. For other types of sheets, the final height is only returned when the sheet is pulled up.<br>The return value is in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onDetentsDidChange<sup>12+</sup> | Callback&lt;number&gt; | No| Yes| Callback for changes in the detents of the sheet.<br>**NOTE**<br>For a bottom sheet, the final height is returned when there are changes in detents.<br>The return value is in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWidthDidChange<sup>12+</sup> | Callback&lt;number&gt; | No| Yes| Callback for changes in the width of the sheet.<br>**NOTE**<br>The final height is returned when there are changes in the width.<br>The return value is in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -94,20 +94,20 @@ Provides content configuration options of the sheet.
 | placementOnTarget<sup>18+</sup> | boolean | No| Yes| Whether the sheet popup can overlap the target if none of the four directions can accommodate the popup.<br> Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | effectEdge<sup>18+</sup> | number | No| Yes| Edge effect used when the boundary of the scrolling area in reached in the sheet. Single-edge activation is supported.<br>Default value: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START \| [EffectEdge](ts-container-scrollable-common.md#effectedge18).END (that is, value **3**)<br>**NOTE**<br>1. Only start edge: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START<br>2. Only end edge: [EffectEdge](ts-container-scrollable-common.md#effectedge18).END<br>3. Both edges: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START \| [EffectEdge](ts-container-scrollable-common.md#effectedge18).END (that is, value **3**)<br>4. Neither edge: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START & [EffectEdge](ts-container-scrollable-common.md#effectedge18).END (that is, value **0**)<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | showInSubWindow<sup>19+</sup> | boolean                                  | No| Yes   | Whether to show the sheet in a separate subwindow.<br>Default value: **false**.<br>**NOTE**<br>1. **true**: The sheet displays in a separate subwindow and can extend beyond application window bounds.<br>2. **false**: The sheet displays only within application window bounds.<br>3. To prevent disruptions to the normal behavior of associated components, do not nest multiple dialog boxes where **showInSubWindow** is set to **true**.<br>4. Avoid using picker components (such as **CalendarPicker**, **CalendarPickerDialog**, **DatePickerDialog**, **TextPickerDialog**, and **TimePickerDialog**) in the dialog box where **showInSubWindow** is set to **true**, as the dialog box may affect the behavior of these components.<br>5. This property cannot be dynamically changed when the sheet is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| enableFloatingDragBar<sup>20+</sup>              | boolean | No| Yes  | Whether to display drag bar in a floating style. **true** to display in a a floating style, **false** otherwise.<br>Default value: **false**.<br> **NOTE**<br>The floating style takes effect only when the drag bar is visible, and the floating drag bar does not occupy layout space.<br> This parameter is fixed at **false** when **title** uses [CustomBuilder](ts-types.md#custombuilder8).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableFloatingDragBar<sup>20+</sup>              | boolean | No| Yes  | Whether to display the drag bar in a floating style. **true** to display in a floating style, **false** otherwise.<br>Default value: **false**.<br> **NOTE**<br>The floating style takes effect only when the drag bar is visible, and the floating drag bar does not occupy layout space.<br> This parameter is fixed at **false** when **title** uses [CustomBuilder](ts-types.md#custombuilder8).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | No| Yes| Transition animation for full-screen sheet style.<br>Default value: **ModalTransition.DEFAULT**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## SheetSize
 
-Enumerates the sheet heights.
+Enumerates the sheet height modes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                     | Value   | Description                        |
 | ------------------------- | ---- | -------------------------------- |
-| MEDIUM                    | 0    | The sheet height is half of the screen height.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| LARGE                     | 1    | The sheet height is almost the screen height.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| FIT_CONTENT<sup>11+</sup> | 2    | The sheet height automatically adapts to the content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**NOTE**<br>**FIT_CONTENT**: The sheet height automatically adapts to the layout of the builder root node of the child component. In this scenario, the height of the root node of the builder cannot use the percentage. The layout of the root node cannot depend on each other.|
+| MEDIUM                    | 0    | The sheet height is 60% of the window height on non-TV devices<br>and 50% on TVs.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| LARGE                     | 1    | The sheet height approximates the full window height.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| FIT_CONTENT<sup>11+</sup> | 2    | The sheet height automatically adapts to the content.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**NOTE**<br>In this mode, the height is determined by the builder's root node layout. Percentage-based heights are not supported for the root node. Circular dependencies between sheet and content height are prohibited.|
 
 ## HoverModeAreaType<sup>14+</sup>
 
@@ -138,7 +138,7 @@ Defines the common configuration for sheets and modals.
 
 ## ModalTransition
 
-Enumeration of full-modal transition modes.
+Enumerates the modal transition types.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -161,94 +161,94 @@ Enumerates the sheet styles.
 | BOTTOM | 0    | Bottom sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | CENTER | 1    | Center sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | POPUP  | 2    | Popup sheet. The popup sheet cannot be dismissed with a pull-down gesture.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| SIDE<sup>20+</sup>   | 3    | Side-aligned sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| SIDE<sup>20+</sup>   | 3    | Side sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | CONTENT_COVER<sup>20+</sup>   | 4    | Full-screen sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
-**Side-aligned sheet behavior**:
+**Side sheet behavior**:
 
 1. Transition animation: By default, the sheet enters from the right and exits to the right. In right-to-left (RTL) locales, it enters from the left and exits to the left. Custom transitions are not supported.
 
-2. No multi-position capability is supported, and the detents and detentSelection APIs are not supported. The APIs related to the control bar, such as the dragBar API, are not supported.
+2. No multi-position capability is supported, and the detents and detentSelection APIs are not supported. The control bar-related capability APIs, such as the dragBar API, are not supported.
 
-3. You can swipe up to interact with the bottom pop-up after the transition ends. However, you can only swipe right to close the side pop-up after the transition ends. In the mirror scenario, the capabilities are opposite.
+3. The bottom dialog box style can be swiped up after the transition ends. However, the side dialog box style cannot be swiped left after the transition ends. It can only be swiped right to close. In the mirroring scenario, the capability is opposite.
 
 4. The height cannot be customized. The default height is full screen.
 
-5. The APIs for specifying other display layers are not supported, such as showInSubWindow = true and mode = SheetMode.EMBEDDED. The layer of the side pop-up is the same as that of SheetMode.OVERLAY. The side pop-up can be displayed only at the top layer of the current UIContext and above all pages. It is displayed at the same level as dialog boxes.
+5. Other display level APIs, such as showInSubWindow = true and mode = SheetMode.EMBEDDED, cannot be specified. The level of the side dialog box is the same as that of the SheetMode.OVERLAY. The side dialog box can be displayed only at the top of the current UIContext and above all pages. It is displayed at the same level as dialog boxes.
 
-6. The capability of avoiding the hover state is not supported.
+6. Hover state avoidance is not supported.
 
-7. Default width specifications of the side style semi-modal pop-up:
-   - If the [breakpoint](../../../../application-dev/ui/arkts-layout-development-grid-layout.md#breakpoints) is md, the default width is half of the window width.
-   - If the [breakpoint](../../../../application-dev/ui/arkts-layout-development-grid-layout.md#breakpoints) is greater than md, the default width is 400 vp.
+7. Default width of the sheet style of the SIDE style:
+   - md [breakpoint](../../../../application-dev/ui/arkts-layout-development-grid-layout.md#breakpoints): 1/2 window width
+   - [Breakpoints](../../../../application-dev/ui/arkts-layout-development-grid-layout.md#breakpoints) larger than md: 400 vp fixed width
 
 
-Interfaces Not Supported by the Side Pop-up Window Style
+**APIs not supported by side sheets**
 | Name            | Description             |
 | --------------- |  --------------- |
-| height          | The height supports only the full-screen height.|
-| detents | No detent capability.| 
+| height          | The height can only be the full screen height.|
+| detents | Snap positions are not supported.| 
 | dragBar         | DragBar is not supported. |
-| onDetentsDidChange | No detent capability.|
+| onDetentsDidChange | Snap positions are not supported.|
 | uiContext | The display level cannot be specified.|
 | mode | The display level cannot be specified.|
-| scrollSizeMode | No detent capability. |
-| enableHoverMode  | The avoidance capability in the hover state is not supported.|
-| hoverModeArea    | The avoidance capability in the hover state is not supported.|
-| detentSelection | No detent capability.|
+| scrollSizeMode | Snap positions are not supported. |
+| enableHoverMode  | Hover state avoidance is not supported.|
+| hoverModeArea    | Hover state avoidance is not supported.|
+| detentSelection | Snap positions are not supported.|
 | placement | Only the bubble style is supported.|
 | placementOnTarget | Only the bubble style is supported.|
 | showInSubWindow | The display level cannot be specified.|
 
-bindSheet full-screen modal style description:
+The bindSheet full-screen modal style is described as follows:
 
-1. The full-screen style covers the entire screen. The border, shadow, title bar, close button, and rounded corners are not supported.
+1. The full-screen style is displayed in full screen. The border, shadow, title bar, close button, and rounded corner are not supported.
 
-2. The builder content is laid out in the secure area by default.
+2. By default, the builder content is laid out in the safe area.
 
-3. The full-screen style supports the system transition mode [ModalTransition](#modaltransition). The default value is ModalTransition.DEFAULT. Custom transition is not supported.
+3. The full-screen style supports the system transition mode [ModalTransition](#modaltransition). The default value is ModalTransition.DEFAULT. Customized transition is not supported.
 
-4. The detent capability is not supported, and the detents and detentSelection APIs are not supported.
+4. The position capability is not supported. The detents and detentSelection interfaces are not supported.
 
-5. Swipe up and down are not supported. Only swipe from the side is supported.
+5. Vertical sliding is not supported. Only horizontal sliding is supported.
 
 6. The width and height cannot be customized. The default width and height are full screen.
 
-7. The APIs for specifying other display levels are not supported, for example, showInSubWindow = true and mode = SheetMode.EMBEDDED. The level of the full-screen pop-up window is the same as that of SheetMode.OVERLAY. The full-screen pop-up window can be displayed only at the top of the current UIContext and is located above all pages. The full-screen pop-up window is displayed at the same level as the pop-up window component.
+7. Other display level interfaces, such as showInSubWindow = true and mode = SheetMode.EMBEDDED, cannot be specified. The level of the full-screen pop-up window is the same as that of the SheetMode.OVERLAY. The full-screen pop-up window can be displayed only at the top of the current UIContext, above all pages, and at the same level as the pop-up window component.
 
-8. By default, the soft keyboard is not avoided. You need to customize the avoidance of the soft keyboard.
+8. By default, the soft keyboard is not avoided. You need to customize the soft keyboard.
 
-9. The mask effect is not supported.
+9. The overlay effect is not supported.
 
 
-APIs not supported by bindSheet full-screen modal style
+Interfaces that do not support the bindSheet full-screen modal style
 | Name            | Description             |
 | --------------- |  --------------- |
-| height          | The height supports only the full-screen height.|
-| width           | The width supports only the full-screen width.|
-| detents | No detent capability.|
-| dragBar         | The scroll bar cannot be dragged. |
-| onDetentsDidChange | No position control capability.|
+| height          | The height can only be the full screen height.|
+| width           | The width can only be the full screen width.|
+| detents | Snap positions are not supported.|
+| dragBar         | The slider bar is not supported. |
+| onDetentsDidChange | Snap positions are not supported.|
 | showClose          | The close button cannot be displayed.|
 | title          | The title bar cannot be displayed.|
 | uiContext | The display level cannot be specified.|
 | mode | The display level cannot be specified.|
-| scrollSizeMode | No position control capability. |
-| keyboardAvoidMode | No capability of avoiding the soft keyboard. You need to customize the avoidance.|
-| enableHoverMode  | No capability of avoiding the soft keyboard in the hover state.|
-| hoverModeArea    | No capability of avoiding the soft keyboard in the hover state.|
-| detentSelection | No position control capability.|
+| scrollSizeMode | Snap positions are not supported. |
+| keyboardAvoidMode | The level capability is not supported. You need to customize the level capability.|
+| enableHoverMode  | Hover state avoidance is not supported.|
+| hoverModeArea    | Hover state avoidance is not supported.|
+| detentSelection | Snap positions are not supported.|
 | showInSubWindow | The display level cannot be specified.|
-| radius         | Rounded corners are not supported. |
+| radius         | The rounded corner is not supported. |
 | borderWidth         | The border width is not supported. |
 | borderColor         | The border color is not supported. |
 | borderStyle         | The border style is not supported. |
 | shadow         | The shadow is not supported. |
 | maskColor      | The overlay color is not supported. |
-| enableOutsideInteractive | The interaction permission cannot be set. |
-| effectEdge     | The edge bounce effect is not supported. |
-| enableFloatingDragBar | The floating scroll bar is not supported. |
-| onWillSpringBackWhenDismiss | No bounce effect. |
+| enableOutsideInteractive | Whether interaction is allowed cannot be set. |
+| effectEdge     | The rebound effect on the edge is not supported. |
+| enableFloatingDragBar | The floating slider bar is not supported. |
+| onWillSpringBackWhenDismiss | The rebound effect is not supported. |
 
 ## SheetDismiss<sup>11+</sup>
 
@@ -312,7 +312,7 @@ Defines the callback triggered when a sheet is about to be dismissed.
 | Name             | Type                                      | Read-Only  | Optional  | Description           |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
 | dismiss | [Callback](./ts-types.md#callback12)\<void> | No   | No   | Callback for dismissing the sheet. Call this API when you need to exit the page.|
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12) | No   | No   | Type of operation that causes the sheet to be dismissed.<br>**NOTE**<br> DismissReason.SLIDE takes effect only for the semi-modal side pop-up window and indicates that the user swipes right to exit. If the mirroring scenario is used, the user swipes left to exit.<br> DismissReason.SLIDE_DOWN takes effect for the semi-modal bottom pop-up window and center pop-up window and indicates that the user swipes down to exit.<br> The semi-modal bubble pop-up window does not support the swiping exit capability.|
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12) | No   | No   | Type of operation that causes the sheet to be dismissed.<br>**NOTE**<br> **DismissReason.SLIDE**: right swipe (left swipe in RTL) to dismiss; only available for side sheets.<br> **DismissReason.SLIDE_DOWN**: downward swipe to dismiss; only available for bottom and center sheets.<br> Bubble-style sheets do not support swipe dismissal.|
 
 ## SpringBackAction<sup>12+</sup>
 
@@ -328,21 +328,21 @@ Controls the interactive spring back of a sheet before it is dismissed.
 
 ## SheetKeyboardAvoidMode<sup>13+</sup>
 
-Method for avoiding the soft keyboard when the semi-modal page activates the input method.
+Defines how the sheet avoids the soft keyboard when it is brought up.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Value  | Description                        |
 | ------------------------- | ---- | -------------------------------- |
 | NONE | 0    | Disables keyboard avoidance for the sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| TRANSLATE_AND_RESIZE    | 1    | Lifts the sheet to avoid the keyboard;<br>if not enough, resizes the content.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| RESIZE_ONLY    | 2    | Resizes the content to avoid the keyboard.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| TRANSLATE_AND_SCROLL    | 3    | Lifts the sheet to avoid the keyboard;<br>if not enough, scrolls the content.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| POPUP_SHEET<sup>20+</sup>    | 4    | Sets the popup style of a semi-modal dialog box to avoid the soft keyboard.<br> 1. When the popup style dialog box cannot be displayed in the current position due to the size of the dialog box, the display position is adjusted according to the following rules: first, the dialog box is vertically flipped to avoid the soft keyboard, and then the dialog box is rotated 90 degrees horizontally to avoid the soft keyboard. The following uses the preset direction as the bottom as an example. The adjustment sequence is as follows: bottom, top, right, and left.<br>2. If the alignment causes the popup to exceed the window bounds, it will be adjusted horizontally or vertically until fully visible.<br>3. If the current popup style dialog box cannot be displayed in any of the four directions when the soft keyboard is avoided, the processing method complies with the placementOnTarget attribute set by the developer.<br>(1) If the property value is **true**, the popup moves in the mirror direction of the specified placement until fully visible.<br>(2) If the property value is **false**, the system selects the direction that can fully display the popup width and has the most remaining height. It then adjusts the sheet height to fit this direction, ensuring that the popup is displayed while maintaining the alignment specified by the **placement** setting.<br>4. If the semi-modal dialog box is not a follow-up style, it cannot avoid the soft keyboard.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| TRANSLATE_AND_RESIZE    | 1    | Translates the sheet upward;<br>resizes content if translation is insufficient.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| RESIZE_ONLY    | 2    | Resizes content to accommodate the keyboard.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| TRANSLATE_AND_SCROLL    | 3    | Translates the sheet upward;<br>scrolls content if translation is insufficient.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| POPUP_SHEET<sup>20+</sup>    | 4    | Repositions popup sheets to avoid the keyboard.<br> 1. When keyboard avoidance is triggered, the popup attempts different positions in this sequence: down, up, right, left.<br>2. If the alignment causes the popup to exceed the window bounds, it will be adjusted horizontally or vertically until fully visible.<br>3. If none of the four directions can accommodate the popup, the behavior depends on the **placementOnTarget** setting:<br>(1) If the property value is **true**, the popup moves in the mirror direction of the specified placement until fully visible.<br>(2) If the property value is **false**, the system selects the direction that can fully display the popup width and has the most remaining height. It then adjusts the sheet height to fit this direction, ensuring that the popup is displayed while maintaining the alignment specified by the **placement** setting.<br>4. Non-popup style sheets do not support keyboard avoidance.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 > **NOTE**
 >
-> When setting the POPUP_SHEET avoidance mode, the semi-modal dialog box avoids only the soft keyboard started by the text box component in the panel. In other scenarios, the semi-modal dialog box does not need to avoid the soft keyboard.
+> When the POPUP_SHEET avoidance mode is set, the sheet avoids only the soft keyboard scenario started by the text box component in the panel.
 >
 
 ## Example
@@ -569,12 +569,12 @@ struct bindSheetExample {
 
           onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
             if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
-              dismissSheetAction.dismiss(); // Register the dismiss behavior.
+              dismissSheetAction.dismiss(); / / Register the dismiss behavior.
             }
           }),
 
           onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
-            // No springBack is registered, so the half-modal will not bounce back when swiped down.
+            // No springBack is registered, so the sheet will not bounce back when swiped down.
             //SpringBackAction.springBack();
           }),
         })
@@ -812,9 +812,9 @@ The following shows how the example is represented with right-to-left scripts.
 
 ![en-us_sheet](figures/en-us_sheet7_rtl.png)
 
-### Example 8: ImplementIng a Side-Style Sheet
+### Example 8: Implementing a Side Sheet
 
-This example implements a side-style sheet.
+This example demonstrates the side sheet style implementation.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -845,7 +845,7 @@ struct SheetSideExample {
       }, (item: number) => item.toString())
       TextInput()
         .margin({ top: 5 })
-      Text('Change the semi-modal interaction mode')
+      Text('Change Sheet Interaction Mode')
         .fontSize(22).fontColor(0xFFFFFF).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
         .width('100%').height(50).backgroundColor('#2ebd82')
       Button("change enableOutsideInteractive = " + this.enableOutsideInteractive)
@@ -868,7 +868,7 @@ struct SheetSideExample {
 
   build() {
     Column({space:3}) {
-      Button("Half-Modal Popover - Side")
+      Button("Side sheet")
         .onClick(() => {
           this.isShowSide = true;
         })
@@ -892,7 +892,7 @@ struct SheetSideExample {
 
           preferType: SheetType.SIDE,  // SheetType.SIDE
           blurStyle: BlurStyle.Regular,
-          maskColor: "#4bffc62d", // Custom mask color
+          maskColor: "#4bffc62d", // Customize the mask color.
           enableOutsideInteractive: this.enableOutsideInteractive,
 
           borderWidth: this.borderWidths,
@@ -913,11 +913,11 @@ struct SheetSideExample {
 }
 ```
 
+![en-us_sheet](figures/en-us_sheet8_side.png)
 
+### Example 9: Implementing a Full-Screen Content Cover Sheet
 
-### Example 9: ImplementIng a ContentCover-Style Sheet
-
-This example demonstrates how to display the sheet in full-screen ContentCover mode.
+This example demonstrates the full-screen sheet implementation using the content cover style.
 
 ```ts
 // xxx.ets
@@ -975,4 +975,4 @@ struct ContentCoverExample {
   }
 }
 ```
-![en-us_sheet](figures/en-us_sheet9_content_cover.gif)
+

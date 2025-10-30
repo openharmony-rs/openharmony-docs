@@ -48,7 +48,7 @@ A maximum of 512 child processes can be started through this module and [childPr
 | -- | -- | -- |
 | [Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs()](#oh_ability_createchildprocessconfigs) | - | Creates a child process configuration object. When this object is no longer needed, call [OH_Ability_DestroyChildProcessConfigs](capi-native-child-process-h.md#oh_ability_destroychildprocessconfigs) to destroy the object to prevent memory leakage.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_DestroyChildProcessConfigs(Ability_ChildProcessConfigs* configs)](#oh_ability_destroychildprocessconfigs) | - | Destroys a child process configuration object and releases its memory. After this function is called, do not use the destroyed object.|
-| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMode(Ability_ChildProcessConfigs* configs, NativeChildProcess_IsolationMode isolationMode)](#oh_ability_childprocessconfigs_setisolationmode) | - | Sets the sharing mode of the data sandbox and network environment for a child process configuration object. For details, see [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode). This setting takes effect only when [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs) or [OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs) is called.|
+| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMode(Ability_ChildProcessConfigs* configs, NativeChildProcess_IsolationMode isolationMode)](#oh_ability_childprocessconfigs_setisolationmode) | - | Sets the sharing mode of the data sandbox and network environment for a child process configuration object. For details, see [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode). This setting takes effect only when [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs) is called.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName(Ability_ChildProcessConfigs* configs,const char* processName)](#oh_ability_childprocessconfigs_setprocessname) | - | Sets the process name in a child process configuration object.|
 | [typedef void (\*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteProxy *remoteProxy)](#oh_ability_onnativechildprocessstarted) | OH_Ability_OnNativeChildProcessStarted | Creates a child process based on a child process configuration object and loads the specified DLL file. The startup result is asynchronously communicated to the caller via a callback. The callback runs in a separate thread. You must ensure thread synchronization and avoid time-consuming operations to prevent delays.|
 | [int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeChildProcessStarted onProcessStarted)](#oh_ability_createnativechildprocess) | - | Creates a child process, loads the specified Dynamic Link Library (DLL) file, and returns the startup result asynchronously through a callback parameter. The callback notification is an independent thread. When implementing the callback function, pay attention to thread synchronization and do not perform time-consuming operations to avoid long-time blocking. The DLL specified must implement and export the following functions:<br>1. OHIPCRemoteStub* NativeChildProcess_OnConnect()<br>2. void NativeChildProcess_MainProc()<br>The processing logic sequence is shown in the following pseudocode:<br>Parent process:<br>1. OH_Ability_CreateNativeChildProcess(libName, onProcessStartedCallback)<br>Child process:<br>2. dlopen(libName)<br>3. dlsym("NativeChildProcess_OnConnect")<br>4. dlsym("NativeChildProcess_MainProc")<br>5. ipcRemote = NativeChildProcess_OnConnect()<br>6. NativeChildProcess_MainProc()<br>Parent process:<br>7. onProcessStartedCallback(ipcRemote, errCode)<br>Child process:<br>8. The child process exits after the NativeChildProcess_MainProc() function is returned.<br>**Device behavior differences**: For API version 13 and earlier, this function can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code [NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode) is returned. Starting from API version 14, this function can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code [NCP_ERR_NOT_SUPPORTED](#ability_nativechildprocess_errcode) is returned.<br>Note: In API version 14 and earlier versions, a single process supports only one native child process. Starting from API version 15, a single process supports a maximum of 50 native child processes.|
@@ -59,7 +59,6 @@ A maximum of 512 child processes can be started through this module and [childPr
 | [typedef void (\*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)](#oh_ability_onnativechildprocessexit) | OH_Ability_OnNativeChildProcessExit | Obtains the exit information of the child process.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | Registers a callback to listen for child process exit. If the same callback function is registered repeatedly, only one of them is kept.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | Unregisters the callback used to listen for child process exit.|
-| [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | Sets whether the child process uses an independent UID. This setting takes effect only when **NativeChildProcess_IsolationMode** is set to **NCP_ISOLATION_MODE_ISOLATED**.|
 
 ## Enum Description
 
@@ -152,7 +151,7 @@ Destroys a child process configuration object and releases its memory. After thi
 
 | Type| Description|
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_ERR_INVALID_PARAM**: An input parameter is nullptr.|
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_NO_ERR_INVALID_PARAM**: An input parameter is nullptr.|
 
 ### OH_Ability_ChildProcessConfigs_SetIsolationMode()
 
@@ -162,7 +161,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMo
 
 **Description**
 
-Sets the sharing mode of the data sandbox and network environment for a child process configuration object. For details, see [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode). This setting takes effect only when [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs) or [OH_Ability_CreateNativeChildProcessWithConfigs](#oh_ability_createnativechildprocesswithconfigs) is called.
+Sets the sharing mode of the data sandbox and network environment for a child process configuration object. For details, see [NativeChildProcess_IsolationMode](capi-native-child-process-h.md#nativechildprocess_isolationmode). This setting takes effect only when [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs) is called.
 
 **Since**: 20
 
@@ -178,35 +177,7 @@ Sets the sharing mode of the data sandbox and network environment for a child pr
 
 | Type| Description|
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_ERR_INVALID_PARAM**: The parameter **configs** is nullptr.|
-
-### OH_Ability_ChildProcessConfigs_SetIsolationUid()
-
-```
-Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)
-```
-
-**Description**
-
-Sets whether the child process uses an independent UID. For example, in browser security hardening scenarios, you can isolate the UIDs of the main process and its child processes.
-
-This setting takes effect only when **NativeChildProcess_IsolationMode** is set to **NCP_ISOLATION_MODE_ISOLATED**. If this function is not called to set **isolationUid**, the default value is **false**, meaning the child process will share the same UID as the main process.
-
-**Since**: 21
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [Ability_ChildProcessConfigs](capi-ability-childprocessconfigs.md)* configs | Pointer to a child process configuration object. The value cannot be nullptr.|
-| bool isolationUid | Whether the child process uses an independent UID. **true** if the child process uses an independent UID; **false** if the child process and the main process share the same UID.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_ERR_INVALID_PARAM**: The parameter **configs** is nullptr.|
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_NO_ERR_INVALID_PARAM**: The parameter **configs** is nullptr.|
 
 ### OH_Ability_ChildProcessConfigs_SetProcessName()
 
@@ -232,7 +203,7 @@ Sets the process name in a child process configuration object.
 
 | Type| Description|
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_ERR_INVALID_PARAM**: The input parameter **configs** is nullptr, or **processName** contains characters other than letters, digits, and underscores (_).|
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_NO_ERR_INVALID_PARAM**: The input parameter **configs** is nullptr, or **processName** contains characters other than letters, digits, and underscores (_).|
 
 ### OH_Ability_OnNativeChildProcessStarted()
 

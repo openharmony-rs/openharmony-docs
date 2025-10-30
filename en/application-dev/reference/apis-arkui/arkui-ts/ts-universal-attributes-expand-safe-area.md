@@ -46,7 +46,7 @@ Sets the safe area to be expanded to.
 
 >  **NOTE**
 >
->  When using **expandSafeArea** to expand the drawing of a component, avoid setting a fixed width or height for the component (except for percentages). If a fixed width or height is set, the edges for the expanded safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after the expansion.
+>  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **"auto"**), the edges for expanding the safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after safe area expansion.
 >
 >  The safe area does not restrict the layout or size of components inside, nor does it clip the components.
 >

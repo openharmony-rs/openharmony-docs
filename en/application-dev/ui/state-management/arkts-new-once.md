@@ -42,13 +42,13 @@ As an auxiliary decorator, the \@Once decorator does not have requirements on th
   ```ts
   @ComponentV2
   struct MyComponent {
-    @Param @Once onceParam: string = "onceParam"; // Correct usage.
-    @Once onceStr: string = "Once"; // Incorrect usage. @Once cannot be used independently.
-    @Local @Once onceLocal: string = "onceLocal"; // Incorrect usage. @Once cannot be used with @Local.
+    @Param @Once onceParam: string = 'onceParam'; // Correct usage.
+    @Once onceStr: string = 'Once'; // Incorrect usage. @Once cannot be used independently.
+    @Local @Once onceLocal: string = 'onceLocal'; // Incorrect usage. @Once cannot be used with @Local.
   }
   @Component
   struct Index {
-    @Once @Param onceParam: string = "onceParam"; // Incorrect usage.
+    @Once @Param onceParam: string = 'onceParam'; // Incorrect usage.
   }
   ```
 

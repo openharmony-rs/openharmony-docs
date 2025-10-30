@@ -921,20 +921,19 @@ Failed to uninstall the HAP because uninstalling the native package failed.
 
 **Solution**<br>Check whether any process occupies the native software package.
 
-## 17700069 Application Clone Is Not Supported
+## 17700069 AppClone Instance Cannot Be Created for an Application in Multi-App Mode Not Set to appClone
 
 **Error Message**<br>
 The app does not support the creation of an appClone instance.
 
 **Description**<br>
-The application does not support creating a clone instance.
+An AppClone instance cannot be created for an application that is not in appClone mode.
 
 **Possible Causes**<br>
-1. The clone mode is not configured for the application.
-2. Enterprise security policies prohibit the creation of application clones.
+The multi-app mode is set to another mode other than appClone.
 
 **Solution**<br>
-1. Check whether the application is configured to support clone mode.
+1. Check whether the application to update supports clones.
 
 ## 17700070 Invalid Shortcut ID
 

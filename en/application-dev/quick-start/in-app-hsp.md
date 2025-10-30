@@ -137,11 +137,11 @@ if you use **Image("../../resources/base/media/example.png")**, the image actual
 
 ```ts
 // library/src/main/ets/pages/Index.ets
-// Correct
+// Correct case
 Image($r('app.media.example'))
   .id('example')
   .borderRadius('48px')
-// Incorrect
+// Incorrect case
 Image("../../resources/base/media/example.png")
   .id('example')
   .borderRadius('48px')

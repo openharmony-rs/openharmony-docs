@@ -41,8 +41,7 @@ You can call [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference
   When SHARE_MEMORY is used, image data needs to be copied to GPU memory through the CPU, increasing the texture upload time. With DMA_ALLOC, data is directly stored in memory that is accessible by the GPU, avoiding the time-consuming copy process.
 
   - SHARE_MEMORY time consumption: Single-frame rendering of a 4K image takes about 20 ms.
-  - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
-
+  - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4 ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
 - **Reduced CPU load**
 
   DMA_ALLOC allows the GPU to directly access decoded data, reducing the load caused by memory copying.

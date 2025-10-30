@@ -21,7 +21,7 @@ The following table lists the video encoding capabilities supported:
 |          Capability                      |                              How to Use                                           |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
 | Layered encoding<br> Setting the LTR frame and reference frame                     | For details, see [Temporally Scalable Video Coding](video-encoding-temporal-scalability.md).       |
-| Repeat encoding of historical frames                   | For details, see [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_frame_after) and<br> [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_max_count).   |
+| Repeat encoding of historical frames                   | For details, see [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_frame_after) and [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/_codec_base.md#oh_md_key_video_encoder_repeat_previous_max_count).   |
 <!--RP4End-->
 
 ## Constraints

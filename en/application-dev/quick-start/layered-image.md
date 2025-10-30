@@ -87,7 +87,7 @@ The display effects are as follows.
   }
   ```
 
-## Configuring the Layered Icon and Label
+## Configuring a Layered Icon and Label
 
 - **Method 1: Configuring app.json5**
 
@@ -177,4 +177,4 @@ The display effects are as follows.
 
 The system strictly controls applications without icons to prevent malicious applications from deliberately displaying no icon on the home screen to block uninstall attempts. Therefore, home screen icons cannot be hidden for applications except pre-installed ones.
 
-If the pre-installed application indeed needs to hide the home screen icon, the **AllowAppDesktopIconHide** [application privilege](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#general-application-privileges) must be configured. For details about the configuration, see "Application Privilege Configuration." After this privilege is granted, the application icon will not be displayed on the home screen.<!--DelEnd-->
+If the pre-installed application indeed needs to hide the home screen icon, the application privilege **AllowAppDesktopIconHide** must be configured. For details about how to configure, see [Application Privilege Configuration](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#general-application-privileges). After this privilege is granted, the application icon will not be displayed on the home screen.<!--DelEnd-->

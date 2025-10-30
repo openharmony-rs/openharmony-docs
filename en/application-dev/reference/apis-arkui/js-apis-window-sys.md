@@ -233,7 +233,7 @@ Describes the window parameters during application startup.
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
-Minimizes all windows on a display. This API uses an asynchronous callback to return the result.
+Minimizes all windows on a display.
 
 **System API**: This is a system API.
 
@@ -289,7 +289,7 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-Minimizes all windows on a display. This API uses a promise to return the result.
+Minimizes all windows on a display.
 
 **System API**: This is a system API.
 
@@ -1576,6 +1576,7 @@ class TestRemoteObject extends rpc.RemoteObject {
     return false;
   }
 }
+
 export default class ServiceExtAbility extends ServiceExtensionAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let token: TestRemoteObject = new TestRemoteObject('testObject');
@@ -2065,7 +2066,7 @@ export default class EntryAbility extends UIAbility {
 
 opacity(opacity: number): void
 
-Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2102,7 +2103,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2145,7 +2146,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -2189,7 +2190,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
 
 **System API**: This is a system API.
 
@@ -3926,7 +3927,7 @@ export default class EntryAbility extends UIAbility {
 
 setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
-Sets the image displayed in the multitasking window. This API uses a promise to return the result.
+Sets the image displayed in the multitasking view. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

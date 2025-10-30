@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @foryourself-->
 
-This module provides common functions related to user key management, including user key uninstallation.
+This module provides common features related to user key management, including user key uninstallation.
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ import { keyManager } from "@kit.CoreFileKit";
 
 deactivateUserKey(userId: number):void
 
-When the screen is locked, the specified user key is uninstalled synchronously. **(Currently, this API is available only to lock screen applications.)**
+Uninstalls the specified user key synchronously when the screen is locked. **(Currently, this API is available only to lock screen applications.)**
 
 **Required permission**: ohos.permission.STORAGE_MANAGER_CRYPT
 

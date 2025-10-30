@@ -3,8 +3,9 @@
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
 <!--Owner: @WALL_EYE-->
-<!--SE: @lichangting518-->
-<!--TSE: @jane_lz-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
 User Authentication Kit provides user authentication based on the lock screen password, facial characteristics, and fingerprints enrolled on a device.
 
@@ -72,7 +73,7 @@ The user authentication framework consists of the following:
 
 If the user authentication is successful, the unified user authentication framework issues an AuthToken in the trusted execution environment (TEE) of the device.
 
-As shown in the left side of the above figure, user authentication can also be used to control the access to the keys in the universal keystore. For the keys that can be accessed only with user authentication, the application must provide a key invocation request with the obtained AuthToken to the [universal keystore service](../UniversalKeystoreKit/huks-overview.md). The AuthToken serves as authentication proof for secondary access control of the key. After verifying the legitimacy and validity of the AuthToken in the TEE, the universal keystore service responds to the service request and performs the related key operation.
+As shown on the left side of the above figure, user authentication can also be used to control the access to the keys in the universal keystore. For the keys that can be accessed only with user authentication, the application must provide a key invocation request with the obtained AuthToken to the [universal keystore service](../UniversalKeystoreKit/huks-overview.md). The AuthToken serves as authentication proof for secondary access control of the key. After verifying the legitimacy and validity of the AuthToken in the TEE, the universal keystore service responds to the service request and performs the related key operation.
 
 ### AuthToken Struct
 

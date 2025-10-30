@@ -33,14 +33,14 @@ import { common } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | abilityInfo | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 否 | 否 | UIAbility的相关信息。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | 当前UIAbility所属HAP的信息。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 与UIAbility相关的配置信息，如语言、颜色模式等。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 应用运行时的环境变量，如语言、颜色模式等。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | windowStage<sup>12+</sup> | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 否 | 否 | 当前WindowStage对象。仅支持在主线程调用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
 
 ### startAbility
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-启动一个Ability。使用callback异步回调。仅支持在主线程调用。
+启动一个UIAbility。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -54,8 +54,8 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的必要信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | callback形式返回启动结果。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的必要信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0，message为空字符串；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-启动一个Ability。使用callback异步回调。仅支持在主线程调用。
+启动一个UIAbility。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -142,9 +142,9 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的必要信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | callback形式返回启动结果。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动UIAbility的必要信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0，message为空字符串；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -223,7 +223,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-启动一个Ability。使用Promise异步回调。仅支持在主线程调用。
+启动一个UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -237,8 +237,8 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的必要信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的必要信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
 
 **返回值：**
 
@@ -327,9 +327,9 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可通过调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止并且返回结果给调用方。
- - 异常情况下比如杀死UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。
- - 如果被启动的UIAbility模式是单实例模式，不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
 >
@@ -344,7 +344,7 @@ UIAbility被启动后，有如下情况：
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want |[Want](js-apis-app-ability-want.md) | 是 | 启动Ability的必要信息。 |
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，包含返回给拉起方的信息。 |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起方退出时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -421,9 +421,9 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可通过调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止并且返回结果给调用方。
- - 异常情况下比如杀死UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。
- - 如果被启动的UIAbility模式是单实例模式，不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
 >
@@ -439,7 +439,7 @@ UIAbility被启动后，有如下情况：
 | -------- | -------- | -------- | -------- |
 | want |[Want](js-apis-app-ability-want.md) | 是 | 启动Ability的必要信息。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，包含返回给拉起方的信息。 |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起方退出时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -518,9 +518,9 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可通过调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止并且返回结果给调用方。
- - 异常情况下比如杀死UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。
- - 如果被启动的UIAbility模式是单实例模式，不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
 >
@@ -632,7 +632,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，包含接口执行结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当销毁UIAbility自身成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -789,7 +789,7 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是 | 返回给startAbilityForResult&nbsp;接口调用方的相关信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | callback形式返回停止结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当销毁UIAbility自身成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -938,7 +938,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 连接ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 连接ServiceExtensionAbility的Want信息。 |
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 回调对象，返回服务连接成功、连接失败、断开的信息。 |
 
 **返回值：**
@@ -1083,7 +1083,7 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<v
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
-| callback | AsyncCallback\<void> | 是 | callback形式返回断开连接的结果。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数。当断开与ServiceExtensionAbility的连接成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -1287,7 +1287,7 @@ setMissionLabel(label: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | label | string | 是 | 任务的名称。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，返回接口调用是否成功的结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当设置UIAbility在多任务界面中显示的名称成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1380,7 +1380,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | state | [AbilityConstant.ContinueState](js-apis-app-ability-abilityConstant.md#continuestate10) | 是 | 流转状态。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，返回接口调用是否成功的结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当设置UIAbility任务的流转状态成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1548,8 +1548,8 @@ requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestR
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
-| result | AsyncCallback&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | 是 | 执行结果回调函数。 |
+| want |[Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
+| result | AsyncCallback&lt;[dialogRequest.RequestResult](js-apis-app-ability-dialogRequest.md#requestresult)&gt; | 是 | 回调函数，当启动一个支持模态弹框的ServiceExtensionAbility成功，err中code为0，data为模态弹框请求结果；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1625,7 +1625,7 @@ requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
 
 
 **返回值：**
@@ -1705,7 +1705,7 @@ reportDrawnCompleted(callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，返回接口调用是否成功的结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当通知系统UIAbility对应的窗口内容已经绘制完成的操作成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1757,7 +1757,7 @@ export default class EntryAbility extends UIAbility {
 startAbilityByType(type: string, wantParam: Record<string, Object>,
     abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
-通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1770,7 +1770,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | type | string | 是 | 启动的UIExtensionAbility类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../application-models/start-intent-panel.md#匹配规则)。 |
 | wantParam | Record&lt;string,&nbsp;Object&gt; | 是 | 表示扩展参数。 |
 | abilityStartCallback | [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md) | 是 | 回调函数，返回启动失败后的详细错误信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，返回接口调用是否成功的结果。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -1816,7 +1816,7 @@ export default class EntryAbility extends UIAbility {
 startAbilityByType(type: string, wantParam: Record<string, Object>,
     abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
-通过type隐式启动UIExtensionAbility。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2144,12 +2144,12 @@ struct Index {
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
-打开一个独立窗口的原子化服务，并返回结果。使用Promise异步回调。仅支持在主线程调用。
+启动一个独立窗口的原子化服务。使用Promise异步回调。仅支持在主线程调用。
 
 原子化服务被启动后，有如下情况：
- - 正常情况下原子化服务可通过[terminateSelfWithResult](#terminateselfwithresult)接口使之终止并且返回结果给调用方。
- - 异常情况下比如杀死原子化服务会返回异常信息给调用方，异常信息中resultCode为-1。
- - 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息，异常信息中resultCode为-1。
+ - 正常情况下原子化服务可以通过[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并且返回结果给调用方。
+ - 异常情况下比如杀死原子化服务会返回异常结果给调用方，异常结果的resultCode为-1。
+ - 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方, 其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
 >
@@ -2229,7 +2229,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 通过<!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End-->或[Deep Linking](../../application-models/deep-linking-startup.md)方式启动UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。
 
-通过在link字段中传入标准格式的URL，基于隐式want匹配规则拉起目标UIAbility。目标方必须具备以下过滤器特征，才能处理App Linking链接：
+通过在link字段中传入标准格式的URL，基于隐式want匹配规则拉起目标UIAbility。目标方必须同时具备以下过滤器特征，才能处理App Linking链接：
 - "actions"列表中包含"ohos.want.action.viewData"。
 - "entities"列表中包含"entity.system.browsable"。
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。
@@ -2834,7 +2834,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap) : Promise&lt;void&gt
 
 | 参数名 | 类型                                                            | 必填 | 说明                                               |
 | ------ | -------------------------------------------------------------- | ---- | -------------------------------------------------- |
-| label  |string                                                          | 是   | 新的标题。标题长度不超过1024字节，标题不可为空字符串。  |
+| label  |string                                                          | 是   | 新的图标标签。标签长度不超过1024字节，且不可为空字符串。  |
 | icon   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 新的图标。建议图标大小为512px*512px。                |
 
 **返回值**：

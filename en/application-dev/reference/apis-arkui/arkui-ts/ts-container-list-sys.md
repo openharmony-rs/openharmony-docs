@@ -1,5 +1,12 @@
 # List (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @HelloCrease-->
+
 The **List** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
 
 > **NOTE**
@@ -22,9 +29,9 @@ Sets chained animation options.
 
 **Parameters**
 
-| Name   | Type                                    | Description                          |
-| ------ | ---------------------------------------- | ---------------------------------- |
-| value  | [ChainAnimationOptions](#chainanimationoptions10) | Chained animation options.|
+| Name   | Type                                    | Mandatory  | Description                          |
+| ------ | ---------------------------------------- | ---- | ---------------------------------- |
+| value  | [ChainAnimationOptions](#chainanimationoptions10) | Yes  | Chained animation options.|
 
 ## ChainEdgeEffect<sup>10+</sup>
 
@@ -39,7 +46,7 @@ Describes the chained animation edge scrolling effect.
 | DEFAULT | 0 | Default effect. After the list is scrolled to the edge, a continued drag of the list will result in reduced spacing between the list items in the drag direction and<br>increased spacing between the list items in the direction opposite to the drag direction.|
 | STRETCH | 1 | After the list is scrolled to the edge, a continued drag of the list result in increased spacing between all the list items.                |
 
-## chainAnimationOptions<sup>10+</sup>
+## ChainAnimationOptions<sup>10+</sup>
 
 Provides the chained animation settings, which cover the maximum spacing, minimum spacing, intensity, conductivity, and edge scrolling effect.
 
@@ -47,12 +54,12 @@ Provides the chained animation settings, which cover the maximum spacing, minimu
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Type                                      | Mandatory  | Description                                      |
-| ------------ | ---------------------------------------- | ---- | ---------------------------------------- |
-| minSpace     | [Length](ts-types.md#length)             | Yes   | Minimum spacing between the chained animations.                           |
-| maxSpace     | [Length](ts-types.md#length)             | Yes   | Maximum spacing between the chained animations.                           |
-| conductivity | number                                   | No   | Conductivity of the chained animations. The value range is [0,1]. A larger value indicates higher conductivity.<br>Default value: **0.7**|
-| intensity    | number                                   | No   | Intensity of the chained animations. The value range is [0,1]. A larger value indicates more obvious animations.<br>Default value: **0.3**|
-| edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10)| No   | Chained animation edge scrolling effect.<br>Default value: **ChainEdgeEffect.DEFAULT**|
-| stiffness    | number                                   | No   | Stiffness of the chained animations.<br>Default value: **228**|
-| damping      | number                                   | No   | Damping of the chained animations.<br>Default value: **30**|
+| Name          | Type                                      | Read-Only  | Optional| Description                                      |
+| ------------ | ---------------------------------------- | ---- | -- | ---------------------------------------- |
+| minSpace     | [Length](ts-types.md#length)             | No   | No| Minimum spacing between the chained animations.                           |
+| maxSpace     | [Length](ts-types.md#length)             | No   | No| Maximum spacing between the chained animations.                           |
+| conductivity | number                                   | No   | Yes| Conductivity of the chained animations. The value range is [0,1]. A larger value indicates higher conductivity.<br>Default value: **0.7**.|
+| intensity    | number                                   | No   | Yes| Intensity of the chained animations. The value range is [0,1]. A larger value indicates more obvious animations.<br>Default value: **0.3**.|
+| edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10)| No   | Yes| Chained animation edge scrolling effect.<br>Default value: **ChainEdgeEffect.DEFAULT**.|
+| stiffness    | number                                   | No   | Yes| Stiffness of the chained animations.<br>Default value: **228**.|
+| damping      | number                                   | No   | Yes| Damping of the chained animations.<br>Default value: **30**.|

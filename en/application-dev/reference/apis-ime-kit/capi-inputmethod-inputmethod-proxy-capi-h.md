@@ -85,7 +85,7 @@ Displays the text box.
 | Name                                                                                               | Description                                                                                                                                                                                                                    |
 |----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) *inputMethodProxy | Pointer to the [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) instance obtained by calling [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach).                                                            |
-| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) *options                                                             | Pointer to the [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance, which is used to obtain the configuration options. The value of **ShowKeyboard** is fixed at **true** and cannot be changed. [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) indicates the reason why the keyboard is requested.|
+| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) *options                                                             | Pointer to the [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance, which is used to obtain the configuration options.<br>In this API, you only need to pay attention to [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason), which indicates the reason for requesting the keyboard.|
 
 **Returns**
 
@@ -219,7 +219,7 @@ Sends a private data command.
 |----------------------------------------------------------------------------------------------------| -- |
 | [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) *inputMethodProxy | Pointer to the [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) instance obtained by calling [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach).|
 | [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) *privateCommand[]                                                    | Private command that is defined in [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). The maximum size is 32 KB.|
-| size_t size                                                                                        | Size of the private command. Maximum size: 5.|
+| size_t size                                                                                        | Size of the private command array. The maximum size is 5.|
 
 **Returns**
 

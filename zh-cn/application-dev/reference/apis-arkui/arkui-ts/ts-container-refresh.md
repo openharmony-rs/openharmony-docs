@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
 
@@ -684,7 +684,7 @@ struct ListRefreshLoad {
 
 ### 示例7（设置最大下拉距离）
 
-通过[maxPullDownDistance](#maxpulldowndistance20)属性设置最大下拉距离。
+从API version 20开始，通过[maxPullDownDistance](#maxpulldowndistance20)属性设置最大下拉距离。
 
 ```ts
 // xxx.ets

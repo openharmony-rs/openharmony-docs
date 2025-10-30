@@ -1227,7 +1227,7 @@ Enumerates the response codes for an HTTP request.
 | BAD_GATEWAY       | 502  | "Bad Gateway." The server acting as a gateway or proxy receives an invalid response from the upstream server.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | UNAVAILABLE       | 503  | "Service Unavailable." The server is currently unable to process the request due to a temporary overload or system maintenance.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
 | GATEWAY_TIMEOUT   | 504  | "Gateway Timeout." The server acting as a gateway or proxy does not receive requests from the remote server within the timeout period.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
-| VERSION           | 505  | "HTTP Version Not Supported." The server does not support the HTTP protocol version used in the request. <br>**Atomic service API**: This API can be used in atomic services since API version 11.                                |
+| VERSION           | 505  | The server does not support the HTTP protocol version used in the client request.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                |
 
 ## HttpResponse
 
@@ -1316,7 +1316,7 @@ Defines the type of multi-form data.
 | contentType | string | No  | No| Data type, for example, **text/plain**, **image/png**, **image/jpeg**, **audio/mpeg**, or **video/mp4**.|
 | remoteFileName | string | No  | Yes| Name of the file uploaded to the server.<br>**Note**: If this field is specified, the **filename** field is added to the request header, indicating the name of the file uploaded to the server.<br>(1) If the data to be uploaded is a file and the file content is specified via the **data** field, the **remoteFileName** field usually needs to be set to specify the name of the file to be uploaded to the server (the actual result depends on the server). If the file path is specified via the **filePath** field, the **filename** field will be automatically added to the request header. Its default value is the file name in the **filePath** field. If a different name is required, it can also be changed via this field.<br>(2) When the data to be uploaded is in binary format, the **remoteFileName** field must be set.                                                 |
 | data | string \| Object \| ArrayBuffer | No  | Yes| Form data content.                                                |
-| filePath | string |No  | Yes| File path. This field is used to configure the MIME body content based on the file content. This field is used as the substitute of **data** to set the file data as data content. If **data** is empty, **filePath** must be set. If **data** is present, **filePath** does not take effect.|
+| filePath | string | No| Yes| File path of the form data. If **data** is not specified, **filePath** must be set.<br>**Note**: The file format supported by the file management module must be passed. You can call [access](../apis-core-file-kit/js-apis-file-fs.md#fsaccess) to check whether the file exists and is accessible.|
 
 ## http.createHttpResponseCache<sup>9+</sup>
 

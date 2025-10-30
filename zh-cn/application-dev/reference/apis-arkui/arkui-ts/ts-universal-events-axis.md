@@ -1,10 +1,10 @@
 # 轴事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 轴事件指组件被鼠标滚轮滚动或触控板双指沿特定方向（轴）滑动时触发的事件。“轴”指二维坐标系中的方向，分为水平（X轴）和垂直（Y轴）。
 

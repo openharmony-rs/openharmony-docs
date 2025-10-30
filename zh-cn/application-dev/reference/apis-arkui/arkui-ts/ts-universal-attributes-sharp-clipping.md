@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于对组件进行裁剪、遮罩处理。
 

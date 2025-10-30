@@ -37,17 +37,17 @@ promise.then((resultSet) => {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| columnNames | Array&lt;string&gt; | 是 | 获取结果集中所有列的名称。 |
-| columnCount | number | 是 | 获取结果集中的列数。 |
-| rowCount | number | 是 | 获取结果集中的行数。 |
-| rowIndex | number | 是 | 获取结果集当前行的索引。 |
-| isAtFirstRow | boolean | 是 | 检查结果集是否位于第一行。 |
-| isAtLastRow | boolean | 是 | 检查结果集是否位于最后一行。 |
-| isEnded | boolean | 是 | 检查结果集是否位于最后一行之后。 |
-| isStarted | boolean | 是 | 检查指针是否移动过。 |
-| isClosed | boolean | 是 | 检查当前结果集是否关闭。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| columnNames | Array&lt;string&gt; | 是 | 否 | 获取结果集中所有列的名称。 |
+| columnCount | number | 是 | 否 | 获取结果集中的列数。 |
+| rowCount | number | 是 | 否 | 获取结果集中的行数。 |
+| rowIndex | number | 是 | 否 | 获取结果集当前行的索引。 |
+| isAtFirstRow | boolean | 是 | 否 | 检查结果集是否位于第一行。 |
+| isAtLastRow | boolean | 是 | 否 | 检查结果集是否位于最后一行。 |
+| isEnded | boolean | 是 | 否 | 检查结果集是否位于最后一行之后。 |
+| isStarted | boolean | 是 | 否 | 检查指针是否移动过。 |
+| isClosed | boolean | 是 | 否 | 检查当前结果集是否关闭。 |
 
 ### getColumnIndex
 

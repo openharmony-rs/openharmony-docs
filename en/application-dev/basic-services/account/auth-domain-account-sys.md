@@ -1,4 +1,4 @@
-# Authenticating a Domain Account (for System Applications Only)
+# Authenticating Domain Accounts (for System Applications Only)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -9,12 +9,12 @@
 
 Authenticate a domain account before unlocking the screen or when the login session fails.
 
-## Before You Start
+## Getting Started
 
 Import the **osAccount** module.
 
 ```ts
-import { osAccount } from '@kit.BasicServicesKit';
+import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## Domain Account Authentication by Password
@@ -23,7 +23,7 @@ The domain account can be authenticated by password. You can use [auth](../../re
 
 **Procedure**
 
-1. Request the ohos.permission.ACCESS_USER_AUTH_INTERNAL permission. For details about how to request the permission, see [Requesting Permissions for system_basic Applications](../../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+1. Request the ohos.permission.ACCESS_USER_AUTH_INTERNAL permission. For details, see [Requesting Permissions for system_basic Applications](../../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
 2. Obtain user input information, including the domain account and its password.
 
@@ -51,7 +51,8 @@ The domain account can be authenticated by password. You can use [auth](../../re
    ```ts
    try {
      osAccount.DomainAccountManager.auth(domainAccountInfo, credential, callback);
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`auth exception = ${err.message}`);
    }
    ```
@@ -78,7 +79,8 @@ If the domain account password is unavailable, display a dialog box to authentic
    ```ts
    try {
      osAccount.DomainAccountManager.authWithPopup(callback)
-   } catch (err) {
+   } catch (e) {
+     const err = e as BusinessError;
      console.error(`authWithPopup exception = ${err.message}`);
    }
    ```

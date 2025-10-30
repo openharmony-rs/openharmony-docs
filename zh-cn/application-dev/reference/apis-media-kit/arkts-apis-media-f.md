@@ -204,7 +204,7 @@ createAVTranscoder(): Promise\<AVTranscoder>
 创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
-
+>
 > 可创建的视频转码实例不能超过2个。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder

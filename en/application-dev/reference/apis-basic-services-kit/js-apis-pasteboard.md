@@ -1081,7 +1081,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getMimeTypes(): Array&lt;string&gt;
 
-Obtains a list of **mimeTypes** objects in [PasteDataProperty](#pastedataproperty7) from this pasteboard. If the pasteboard is empty, the returned list is also empty.
+Obtains MIME types of [PasteDataProperty](#pastedataproperty7) on the pasteboard. If an exception occurs during API invoking, **undefined** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2898,7 +2898,7 @@ Describes the modes supported by the pasteboard.
 
 detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&gt;
 
-Detects patterns on the **local** pasteboard. This API uses a promise to return the result.
+Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 

@@ -767,7 +767,7 @@ struct CustomDialogUser {
   }
 }
 ```
-
+![en-us_image_custom](figures/dialog_consume_or_link.gif)
 
 ### Example 7: Custom Dialog Box with Loading
 
@@ -871,7 +871,7 @@ struct CustomDialogUser {
   }
 }
 ```
-
+![en-us_image_custom](figures/custom_loading_dialog.gif)
 
 ### Example 8: Not Using keyboardAvoidDistance to Adjust the Distance Between the Dialog Box and the Soft Keyboard
 
@@ -1007,7 +1007,7 @@ struct CustomDialogUser {
   }
 }
 ```
-
+![en-us_image_custom](figures/dialog_keyboard_distance.gif)
 
 ### Example 9: Managing the Dialog Box Lifecycle
 
@@ -1102,7 +1102,7 @@ struct Example3 {
 }
 ```
 
-
+![en-us_image_custom_lifecycle](figures/en-us_image_custom_lifecycle.gif)
 
 ### Example 10: Dialog Boxes in Different customStyle Values
 
@@ -1247,7 +1247,7 @@ struct CustomDialogUser {
 }
 ```
 
-
+![en-us_image_custom-backgroundBlurStyleOptions](figures/en-us_image_custom-backgroundBlurStyleOptions.png)
 
 ### Example 12: Customizing the Background Effect
 
@@ -1308,6 +1308,7 @@ struct CustomDialogUser {
 }
 ```
 
+![en-us_image_custom-backgroundEffect](figures/en-us_image_custom-backgroundEffect.png)
 
 ### Example 13: Customizing the Dynamic Width of a Dialog Box
 
@@ -1353,7 +1354,7 @@ struct CustomDialogUser {
     Column() {
 
       Row() {
-        Text("Width Setting:")
+        Text("Width:")
           .height(50)
         Slider({ min: 60, max: 100, step: 5 })
           .showTips(true, this.currentWidth + '%')
@@ -1374,4 +1375,4 @@ struct CustomDialogUser {
 }
 ```
 
-
+![en-us_image_custom-backgroundEffect](figures/en-us_image_dynamicRefreshwidth.gif)

@@ -134,7 +134,7 @@ struct DragControllerPage {
   }
 }
 ```
-  ![zh-cn_executeDrag1](figures/executeDrag1.gif)
+  ![en-us_executeDrag1](figures/executeDrag1.gif)
 ## dragController.executeDrag<sup>(deprecated)</sup>
 
 executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<DragEventParam>
@@ -277,7 +277,7 @@ struct DragControllerPage {
   }
 }
 ```
-  ![zh-cn_executeDrag2](figures/executeDrag2.gif)
+  ![en-us_executeDrag2](figures/executeDrag2.gif)
 ## DragInfo
 
 Defines the attributes required for initiating a drag action and information carried in the dragging process.
@@ -429,7 +429,7 @@ struct DragControllerPage {
   }
 }
 ```
-  ![zh-cn_executeDrag3](figures/executeDrag3.gif)
+  ![en-us_executeDrag3](figures/executeDrag3.gif)
 ## DragAction<sup>11+</sup>
 
 Implements a **DragAction** object to subscribe to drag state changes and start the drag service.
@@ -523,7 +523,7 @@ struct DragControllerPage {
 
 **Example 2**
 
-This example shows how to configure **dataLoadParams** in [DragInfo](#draginfo) to enable deferred data loading from the drag source.
+Since API version 20, you can configure **dataLoadParams** in [DragInfo](#draginfo) to enable deferred data loading from the drag source.
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
@@ -694,7 +694,7 @@ struct ImageExample {
   }
 }
 ```
-![zh-cn_executeDrag5](figures/dragControllerDataLoading.gif)
+![en-us_executeDrag5](figures/dragControllerDataLoading.gif)
 
 ### on('statusChange')<sup>11+</sup>
 
@@ -895,7 +895,7 @@ Defines parameters related to drag-and-drop animation effects.
 | Name       | Type                                                  | Read-Only |  Optional| Description                                    |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
 | duration    | number                                                 | No |  Yes  | Animation duration, in ms.<br>Default value: **1000**<br>**NOTE**<br>- If this parameter is set to a value less than 0, the value **0** is used.<br>- Floating-point values will be rounded down to integers. For example, if the value set is 1.2, **1** will be used.|
-| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|                          |
+| curve       | [Curve](arkui-ts/ts-appendix-enums.md#curve) \| [ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|                          |
 
 ## DragEventParam<sup>12+</sup>
 
@@ -1125,7 +1125,7 @@ struct DragControllerPage {
   }
 }
   ```
-  ![zh-cn_executeDrag5](figures/executeDrag5.gif)
+  ![en-us_executeDrag5](figures/executeDrag5.gif)
 
 ## DragStartRequestStatus<sup>18+</sup>
 

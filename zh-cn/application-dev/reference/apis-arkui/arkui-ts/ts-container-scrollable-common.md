@@ -5,7 +5,7 @@
 <!--Owner: @yylong; @zcdqs-->
 <!--Designer: @yylong; @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 滚动组件通用属性和事件目前只支持[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)组件。
 
@@ -1088,7 +1088,7 @@ struct ScrollExample {
 ![clipContent_scroll](figures/clipContent_scroll.gif)
 
 ### 示例4（设置滚动条边距）
-该示例通过设置scrollBarMargin属性，调整滚动组件的滚动条边距。
+从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
 

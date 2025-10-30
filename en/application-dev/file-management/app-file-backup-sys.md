@@ -1,4 +1,4 @@
-# Backup and Restore Triggered by System Applications
+# Triggering Backup and Restore (for System Applications Only)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
@@ -20,9 +20,9 @@ For details about how to use the APIs, see [Backup and Restore](../reference/api
 
 Before using the APIs, you need to:
 
-1. Apply for the ohos.permission.BACKUP permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+1. Apply for the `ohos.permission.BACKUP` permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
-2. Import **@ohos.file.backup**.
+2. Import `@ohos.file.backup`.
 
    ```js
    import { backup } from '@kit.CoreFileKit';
@@ -193,11 +193,11 @@ When all the data of the application is ready, the service starts to restore the
   // Create a SessionRestore instance for data restoration.
   let g_session: backup.SessionRestore;
   let initMap = new Map<string, number>();
-  testFileNum = 123; // Number of files initialized.
+  let testFileNum = 123; // 123: Number of files to back up.
   let testBundleName = 'com.example.myapplication'; // Test bundle name.
   initMap.set(testBundleName, testFileNum);
   let countMap = new Map<string, number>();
-  countMap.set(testBundleName, 0); // Initialization count.
+  countMap.set(testBundleName, 0); // Count of the files backed up.
   async function publishFile(file: backup.File): Promise<void> {
     let fileMeta: backup.FileMeta = {
       bundleName: file.bundleName,

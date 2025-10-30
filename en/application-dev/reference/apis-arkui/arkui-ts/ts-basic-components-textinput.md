@@ -102,7 +102,7 @@ Sets the placeholder text color.
 
 placeholderFont(value?: Font)
 
-Placeholder text style, including the font size, font weight, font family, and font style.
+Sets the placeholder text style, including the font size, font weight, font family, and font style.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -678,7 +678,7 @@ Sets the content type for autofill.
 
 underlineColor(value: ResourceColor|UnderlineColor|undefined)
 
-Color of the underline.
+Sets the color of the underline.
 
 When [showUnderline](#showunderline10) is enabled, the underline color can be configured.
 
@@ -2562,7 +2562,7 @@ struct TextInputExample {
 
 ### Example 14: Setting Custom Menu Extensions
 
-This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [onPrepareMenu](ts-text-common.md#onpreparemenu20) callback (available since API version 20).
+This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [onPrepareMenu](ts-text-common.md#properties-1) callback (available since API version 20).
 
 ```ts
 // xxx.ets

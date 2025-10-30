@@ -685,61 +685,6 @@ errorManager.on("freeze", freezeCallback);
 errorManager.off("freeze", freezeCallback);
 ```
 
-## errorManager.setDefaultErrorHandler<sup>21+</sup>
-
-setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler
-
-Returns the previously registered handler when a JavaScript crash exception occurs. It can only be used in the main thread.
-
-If an invalid parameter is passed or the API is called from a child thread, an error code is thrown and **undefined** is returned. You are advised to handle it with try-catch logic.
-
-If the API parameter is empty, subsequently registered handlers are not able to establish a connection with previously registered handlers, thereby breaking the chain call mechanism.
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters**
- 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| defaultHandler | [ErrorHandler](#errorhandler21) | No| Newly registered error handler. The default value is empty.|
-
-**Return value**
-
-| Type| Description|
-| -------- | -------- |
-| [ErrorHandler](#errorhandler21) | Previously registered error handler.|
-
-**Error codes**
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 16000205      | The API is not called in the main thread. |
-
-**Example**
-    
-```ts
-import { errorManager } from '@kit.AbilityKit';
-import { process } from '@kit.ArkTS';
-
-let oldHandler: errorManager.ErrorHandler;
-const errorHandler: errorManager.ErrorHandler = (reason: Error) => {
-    // Customize the errorHandler logic.
-    console.info('[Handler]  Uncaught exception handler invoked.');
-    if (oldHandler) {
-        oldHandler(reason);
-    } else {
-        // You are advised to add a null check. If the value is null, use a synchronous exit approach.
-        const processManager = new process.ProcessManager();
-        processManager.exit(0);
-    }
-};
-oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
-```
-
 ## ErrorObserver
 
 type ErrorObserver = _ErrorObserver.default
@@ -839,18 +784,3 @@ Enumerates the VM instance types.
 | WORKER   | 1   | Worker VM instance.|
 | TASKPOOL | 2   | TaskPool VM instance.|
 | CUSTOM   | 3   | VM instance created from the local code using [napi_create_ark_runtime](../native-lib/napi.md#napi_create_ark_runtime).|
-
-
-## ErrorHandler<sup>21+</sup>
-
-type ErrorHandler = (errObject: Error) => void
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters**
-
-| Name | Type         | Mandatory| Description|
-|--------| ------------- | ---- | --- |
-| errObject | Error   | Yes  | Event name, message, and error stack of the exception.|

@@ -5,7 +5,7 @@
 <!--Owner: @zhanghongran-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Starting from API version 20, video encoding in synchronous mode is supported.
 
@@ -100,7 +100,7 @@ The following walks you through how to implement the entire video encoding proce
 
     - **videoEnc**: pointer to the video encoder instance.
     - **capability**: pointer to the encoder's capability.
-    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodec_mimetype_video_avc): video codec in AVC format.
+    - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/_codec_base.md#oh_avcodec_mimetype_video_avc): AVC video codec.
 
     ```c++
     // Create a hardware encoder instance.

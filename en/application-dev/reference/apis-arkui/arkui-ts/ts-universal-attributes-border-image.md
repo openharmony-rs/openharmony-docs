@@ -63,7 +63,7 @@ Sets the border image of the component.
 
 | Name     | Value                             | Description                              |
 | ------- | ----------------------------------- | ----------------------------------- |
-| Repeat  | -        | The cropped image is tiled repeatedly on the image border, and the excess part is clipped.         |
+| Repeat  | -        | The cut image is tiled repeatedly on the image border, and the excess part is clipped.         |
 | Stretch | -              | The cut image is stretched to fill the image border.               |
 | Round   | - | The cut image is tiled on the image border by integer times. If the image cannot be tiled by integer times, the image is compressed.|
 | Space   | - | The cut image is tiled on the image border by integer times. If the image cannot be tiled by integer times, the image is filled with blank.  |

@@ -64,8 +64,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value QueryAsset(napi_env env, napi_callback_info info) 
@@ -107,8 +107,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value QueryAttributes(napi_env env, napi_callback_info info) 
@@ -148,8 +148,8 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    ```c
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
 
    static napi_value BatchQuery(napi_env env, napi_callback_info info) 

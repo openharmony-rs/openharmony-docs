@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)组件提供滑动轮播显示的能力。Swiper本身是一个容器组件，当设置了多个子组件后，可以对这些子组件进行轮播显示。通常，在一些应用首页显示推荐的内容时，需要用到轮播显示的能力。
@@ -120,7 +120,7 @@ Swiper() {
 
 - 自定义导航点样式
 
-导航点直径设为30vp，左边距为0，导航点颜色设为红色。
+选中的导航点，直径设为30vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
 
 ```ts
 Swiper() {

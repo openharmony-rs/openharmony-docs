@@ -24,7 +24,7 @@
 
 ## LayoutManager<sup>12+</sup>
 
-Implements a **LayoutManager** object.
+Implements a layout manager object.
 
 > **NOTE**
 >
@@ -37,7 +37,7 @@ controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-### getLineCount
+### getLineCount<sup>12+</sup>
 
 getLineCount(): number
 
@@ -53,7 +53,7 @@ Obtains the total number of lines in the component.
 | ------ | --------- |
 | number | Total number of lines in the component.|
 
-### getGlyphPositionAtCoordinate
+### getGlyphPositionAtCoordinate<sup>12+</sup>
 
 getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
@@ -76,7 +76,7 @@ Obtains the position of a glyph close to a given coordinate.
 | --------------------------------------------- | ----------- |
 | [PositionWithAffinity](#positionwithaffinity12) | Position of the glyph.|
 
-### getLineMetrics
+### getLineMetrics<sup>12+</sup>
 
 getLineMetrics(lineNumber: number): LineMetrics
 
@@ -226,6 +226,14 @@ Checks whether this **TextMenuItemId** object is the same as another **TextMenuI
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+### Properties
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type  | Read Only| Optional  | Description |
+| ------- | ------ | ---- | ----- | ----- |
+| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | No| Yes | Triggered before the menu is displayed after the text selection area changes. Menu data can be configured within this callback.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+
 ### onCreateMenu<sup>12+</sup>
 
 onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
@@ -270,22 +278,6 @@ Triggered when the specified menu item is clicked.
 | Type             |       Description      |
 | ------- | --------------------------------- |
 | boolean | Execution logic of the menu item.<br>Returns **true** if the default system logic is intercepted and only the custom logic is executed.<br>Returns **false** if the custom logic is executed before the default system logic.|
-
-### onPrepareMenu<sup>20+</sup>
-
-onPrepareMenu?: OnPrepareMenuCallback
-
-Triggered before the menu is displayed after the text selection area changes. Menu data can be configured within this callback.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Return value**
-
-| Type                             | Description  |
-| --------------------------------- | --------------------------------- |
-| [OnPrepareMenuCallback](#onpreparemenucallback20) | Callback triggered before the menu is displayed after the text selection area changes. Menu data can be configured within this callback.|
 
 ## OnPrepareMenuCallback<sup>20+</sup>
 
@@ -570,7 +562,7 @@ On non-2-in-1 devices, when **options** is set to **MenuPolicy.DEFAULT**, the fo
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | Yes   | Start position of the selection.<br>Values less than 0 are treated as **0**.|
 | selectionEnd   | number | Yes   | End position of the selection.<br>If the value exceeds the text length, the current text length is used instead.|
-| options   | [SelectionOptions](ts-universal-attributes-text-style.md) | No   | Configuration of options.|
+| options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration of options.|
 
 ### closeSelectionMenu<sup>12+</sup>
 

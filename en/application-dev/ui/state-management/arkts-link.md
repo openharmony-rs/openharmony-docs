@@ -24,19 +24,20 @@ An \@Link decorated variable in a child component shares the same value with a v
 
 ## Usage Rules
 
-| \@Link Decorator                         | Description                                                  |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| Parameters                               | N/A                                                          |
-| Synchronization type                     | Two-way:<br>The state variable in the parent component can be synchronized with the child component \@Link in a two-way manner. Changes to either will be synchronized to the other. |
-| Allowed variable types                   | Object, class, string, number, Boolean, enum, and array of these types.<br>[Date type](#decorating-variables-of-the-date-type).<br>Union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor).<br>The type must be specified and match the two-way bound state variable type of the parent component.<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).<br>The **any** type is not supported.<br>(Applicable to API version 11 or later) [Map](#decorating-variables-of-the-map-type) and [Set](#decorating-variables-of-the-set-type) types, and union types of the supported types, for example: **string\| number, string \| undefined**, or **ClassA \| null**. For details, see [Union Type Support](#union-type-support).<br>**NOTE**<br>When using **undefined** and **null**, explicitly specify the type to comply with TypeScript type checking. Example: **@Link a: string \| undefined**. |
-| Initial value for the decorated variable | Initialization of the decorated variables is forbidden.      |
+| \@Link Decorator                                            | Description                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Parameters                                                  | N/A                                                          |
+| Synchronization type                                                    | Two-way:<br>The state variable in the parent component can be synchronized with the child component \@Link in a two-way manner. Changes to either will be synchronized to the other.|
+| Allowed variable types                                          |Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).|
+| Disallowed variable types| Function.     |
+| Initial value for the decorated variable                                          | Local initialization is forbidden.                                        |
 
 
 ## Variable Transfer/Access Rules
 
 | Transfer/Access     | Description                                      |
 | ---------- | ---------------------------------------- |
-| Initialization and update from the parent component| Mandatory.<br>- A two-way synchronization relationship can be established with an \@State, \@StorageLink, or \@Link decorated variable in the parent component. An @Link decorated variable can be initialized from an [\@State](./arkts-state.md), @Link, [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), [\@ObjectLink](./arkts-observed-and-objectlink.md), [\@StorageLink](./arkts-appstorage.md#storagelink), [\@StorageProp](./arkts-appstorage.md#storageprop), [\@LocalStorageLink](./arkts-localstorage.md#localstoragelink), or [\@LocalStorageProp](./arkts-localstorage.md#localstorageprop) decorated variable in the parent component.<br>- Since API version 9, the syntax for initializing the child component \@Link from the parent component \@State is **Comp({ aLink: this.aState })**, and **Comp({aLink: $aState})** is also supported.|
+| Initialization and update from the parent component| Mandatory.<br>An @Link decorated variable can be initialized from an [\@State](./arkts-state.md), @Link, [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), [\@ObjectLink](./arkts-observed-and-objectlink.md), [\@StorageLink](./arkts-appstorage.md#storagelink), [\@StorageProp](./arkts-appstorage.md#storageprop), [\@LocalStorageLink](./arkts-localstorage.md#localstoragelink), or [\@LocalStorageProp](./arkts-localstorage.md#localstorageprop) decorated variable in the parent component, thereby establishing two-way binding.<br>- Since API version 9, the syntax for initializing the child component \@Link from the parent component \@State is **Comp({ aLink: this.aState })**, and **Comp({aLink: $aState})** is also supported.|
 | Child component initialization  | Supported; can be used to initialize a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
 | Access from outside the component | Private, accessible only within the component.                          |
 
@@ -56,12 +57,11 @@ An \@Link decorated variable in a child component shares the same value with a v
 
 - When the decorated variable is of the array type, the addition, deletion, and updates of array items can be observed. For details, see [Using \@Link with Array Types](#using-link-with-array-types).
 
-- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
+- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
+- When the decorated object is of the Map type, the following changes can be observed: (1) complete Map object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
-- When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
-
-- When the decorated object is of the **Set** type, the following changes can be observed: (1) complete **Set** object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**. For details, see [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type).
+- When the decorated object is of the Set type, the following changes can be observed: (1) complete Set object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**. For details, see [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type).
 ### Framework Behavior
 
 An \@Link decorated variable shares the lifecycle of its owning component.
@@ -83,7 +83,7 @@ To understand the value initialization and update mechanism of the \@Link decora
 
 ## Constraints
 
-1. The \@Link decorator cannot be used in custom components decorated by [\@Entry](./arkts-create-custom-components.md#entry).
+1. You are not advised to use the \@Link decorator in custom components decorated with [\@Entry](./arkts-create-custom-components.md#entry). Otherwise, a warning will be reported during compilation. If the custom component is used as the root node of a page, a runtime error will be reported.
 
 2. Variables decorated with \@Link do not support local initialization. Any attempt to perform local initialization on them will result in a compilation error.
 
@@ -95,38 +95,47 @@ To understand the value initialization and update mechanism of the \@Link decora
     @Link count: number;
     ```
 
-3. The type of a variable decorated with \@Link must match the type of its data source. The framework throws a runtime error for any type mismatch.
+3. The type of a variable decorated with \@Link must match the type of its data source. The compilation fails if the types do not match. In addition, the data source must be a state variable. Otherwise, the framework throws a runtime error.
 
     **Incorrect Usage**
   
     ```ts
     class Info {
-      info: string = 'Hello';
+      value: string = 'Hello';
     }
-  
+
     class Cousin {
       name: string = 'Hello';
     }
-  
+
     @Component
     struct Child {
-      // Incorrect usage: type mismatch between @Link and the @State data source.
+      // Incorrect usage 1: The type of the @Link decorated variable is different from that of the @State decorated variable.
       @Link test: Cousin;
-  
+      // Incorrect usage 2: non-status variable of the data source
+      @Link testStr: string;
+
       build() {
-        Text(this.test.name)
+        Column() {
+          Text(this.test.name)
+          Text(this.testStr)
+        }
       }
     }
-  
+
     @Entry
     @Component
     struct LinkExample {
       @State info: Info = new Info();
-  
+
       build() {
         Column() {
-          // Incorrect usage: type mismatch between @Link and the @State data source.
-          Child({test: new Cousin()})
+          Child({
+            // Incorrect usage 1: The type of the @Link decorated variable is different from that of the @State decorated variable.
+            test: this.info,
+            // Incorrect usage 2: The data source is not a state variable.
+            testStr: this.info.value
+          })
         }
       }
     }
@@ -136,27 +145,27 @@ To understand the value initialization and update mechanism of the \@Link decora
   
     ```ts
     class Info {
-      info: string = 'Hello';
+      value: string = 'Hello';
     }
-  
+
     @Component
     struct Child {
-      // Correct usage.
+      // In the child component, use @Link to decorate the test variable of the Info type.
       @Link test: Info;
-  
+
       build() {
-        Text(this.test.info)
+        Text(this.test.value)
       }
     }
-  
+
     @Entry
     @Component
     struct LinkExample {
       @State info: Info = new Info();
-  
+
       build() {
         Column() {
-          // Correct usage.
+          //In the parent component, use the info variable decorated with @State to initialize the test variable of the Child component.
           Child({test: this.info})
         }
       }
@@ -410,16 +419,16 @@ struct Child {
         Divider()
       })
       Button('child init map').onClick(() => {
-        this.value = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+        this.value = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
       })
       Button('child set new one').onClick(() => {
-        this.value.set(4, "d");
+        this.value.set(4, 'd');
       })
       Button('child clear').onClick(() => {
         this.value.clear();
       })
       Button('child replace the first one').onClick(() => {
-        this.value.set(0, "aa");
+        this.value.set(0, 'aa');
       })
       Button('child delete the first one').onClick(() => {
         this.value.delete(0);
@@ -432,7 +441,7 @@ struct Child {
 @Entry
 @Component
 struct MapSample {
-  @State message: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]);
+  @State message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
@@ -606,7 +615,7 @@ struct Child {
 }
 ```
 
-## Union Type Support
+### Using Union Types
 
 The \@Link decorator supports union types, including **undefined** and **null**. In the following example, the **name** variable is declared with type **string | undefined**. After the button in the parent **Index** component is clicked to modify either the value or type of **name**, the **Child** component will automatically update to reflect these changes.
 
@@ -620,7 +629,7 @@ struct Child {
 
       Button('Child change name to Bob')
         .onClick(() => {
-          this.name = "Bob";
+          this.name = 'Bob';
         })
 
       Button('Child change name to undefined')
@@ -635,7 +644,7 @@ struct Child {
 @Entry
 @Component
 struct Index {
-  @State name: string | undefined = "mary";
+  @State name: string | undefined = 'mary';
 
   build() {
     Column() {
@@ -645,7 +654,7 @@ struct Index {
 
       Button('Parents change name to Peter')
         .onClick(() => {
-          this.name = "Peter";
+          this.name = 'Peter';
         })
 
       Button('Parents change name to undefined')
@@ -659,92 +668,6 @@ struct Index {
 
 ## Common Issues
 
-### Type Mismatch in \@Link Decorated Variables
-
-When \@Link is used to decorate state variables in child components, the variable type must exactly match its data source type. The data source must be a state variable decorated with \@State or other state decorators.
-
-**Incorrect Usage**
-
-```ts
-@Observed
-class Info {
-  public age: number = 0;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@Component
-struct LinkChild {
-  @Link testNum: number;
-
-  build() {
-    Text(`LinkChild testNum ${this.testNum}`)
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State info: Info = new Info(1);
-
-  build() {
-    Column() {
-      Text(`Parent testNum ${this.info.age}`)
-        .onClick(() => {
-          this.info.age += 1;
-        })
-      // The type of the @Link decorated variable must be the same as that of the @State decorated data source.
-      LinkChild({ testNum: this.info.age })
-    }
-  }
-}
-```
-
-In the example, the type of the \@Link decorated **testNum** variable and the initialization from the parent component **LinkChild({testNum:this.info.age})** are incorrect. The data source of \@Link must be a decorated state variable. The \@Link decorated variables must be of the same type as the data source, for example, \@Link: T and \@State: T. Therefore, **\@Link testNum: number** should be changed to **\@Link testNum: Info**, with initialization from the parent component as **LinkChild({testNum: this.info})**.
-
-**Correct Usage**
-
-```ts
-@Observed
-class Info {
-  public age: number = 0;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@Component
-struct LinkChild {
-  @Link testNum: Info;
-
-  build() {
-    Text(`LinkChild testNum ${this.testNum?.age}`)
-      .onClick(() => {
-        this.testNum.age += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State info: Info = new Info(1);
-
-  build() {
-    Column() {
-      Text(`Parent testNum ${this.info.age}`)
-        .onClick(() => {
-          this.info.age += 1;
-        })
-      // The type of the @Link decorated variable must be the same as that of the @State decorated data source.
-      LinkChild({ testNum: this.info })
-    }
-  }
-}
-```
 
 ### Using the a.b(this.object) Pattern Fails to Trigger UI Re-rendering
 

@@ -32,10 +32,6 @@ import { AppStorageV2, PersistenceV2, UIUtils } from '@kit.ArkUI';
 
 For details about how to use AppStorageV2, see [AppStorageV2: Storing Application-wide UI State](../../ui/state-management/arkts-new-appstoragev2.md).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### connect
 
 static connect\<T extends object\>( <br>
@@ -44,7 +40,7 @@ static connect\<T extends object\>( <br>
       defaultCreator?: StorageDefaultCreator\<T\> <br>
 ): T | undefined
 
-Stores key-value pair data in the application memory. If the given key already exists in [AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md), it returns the corresponding value; otherwise, it constructs a default value using the constructor for obtaining the default value and returns it.
+Stores key-value pair data in the application memory. If the given key already exists in [AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md), the corresponding value is returned. Otherwise, a default value is constructed using the default value constructor and returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -60,7 +56,7 @@ Stores key-value pair data in the application memory. If the given key already e
 
 >**NOTE**
 >
->1. The second parameter is used when no key is specified, and the third parameter is used otherwise.
+>1. The second parameter is used when no **key** is specified, and the third parameter is used otherwise (including when the second parameter is invalid).
 >
 >2. If the data has been stored in AppStorageV2, you can obtain the stored data without using the default constructor. If the data has not been stored, you must specify a default constructor; otherwise, an application exception will be thrown.
 >
@@ -161,10 +157,6 @@ const keys: Array<string> = AppStorageV2.keys();
 ## PersistenceV2
 
 Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Persisting Application State](../../ui/state-management/arkts-new-persistencev2.md).
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### globalConnect<sup>18+</sup>
 
@@ -339,10 +331,6 @@ Defines the parameter type for **globalConnect**.
 
 Provides APIs for handling data transformations related to state management.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### getTarget
 
 static getTarget\<T extends object\>(source: T): T
@@ -370,7 +358,7 @@ Obtains the original object from a proxy object wrapped by the state management 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 class NonObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 let nonObservedClass: NonObservedClass = new NonObservedClass();
 @Entry
@@ -400,7 +388,7 @@ Converts ordinary unobservable data into observable data. For details, see [make
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Source object. It supports classes not decorated by @Observed or @ObserveV2, objects returned by **JSON.parse**, and classes decorated by @Sendable.<br>Array, Map, Set, and Date types are supported.<br>**collection.Array**, **collection.Set**, and **collection.Map** are supported.<br>For details, see [makeObserved API: Changing Unobservable Data to Observable Data](../../ui/state-management/arkts-new-makeObserved.md).|
+| source | T    | Yes  | Source object. The class decorated with @Observed or @ObservedV2, the object returned by JSON.parse, and the class decorated with @Sendable are supported.<br>Array, Map, Set, and Date types are supported.<br>**collection.Array**, **collection.Set**, and **collection.Map** are supported.<br>For details, see [makeObserved API: Changing Unobservable Data to Observable Data](../../ui/state-management/arkts-new-makeObserved.md).|
 
 **Return value**
 
@@ -515,7 +503,7 @@ This API can be used in conjunction with [enableV2Compatibility](#enablev2compat
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common class, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and [\@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common class, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and [@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 
@@ -898,7 +886,7 @@ Obtains the default constructor.
 
 | Type| Description                                            |
 | ---- | ------------------------------------------------ |
-| () => T    | Default constructor.|
+|   T  | Default constructor.|
 
 **Example**
 
@@ -936,10 +924,6 @@ struct SampleComp {
 ## TypeConstructorWithArgs\<T\>
 
 Represents a class constructor that accepts arbitrary arguments.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### new
 
@@ -1059,10 +1043,6 @@ struct Index {
 ## TypeConstructor\<T\>
 
 Class constructor.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### new
 
@@ -1285,8 +1265,6 @@ struct CompV2 {
 
 A generic class for read-only data binding, which can bind data of any type.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### value<sup>20+</sup>
 get value(): T
 
@@ -1342,8 +1320,6 @@ struct CompV2 {
 ## MutableBinding\<T\><sup>20+</sup>
 
 A generic class for variable data binding, which allows read and write operations on the bound value and provides complete get and set accessors.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### value<sup>20+</sup>
 set value(newValue: T)

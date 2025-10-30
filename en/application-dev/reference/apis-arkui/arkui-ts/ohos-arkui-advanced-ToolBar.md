@@ -212,8 +212,8 @@ Defines the icon symbol options.
 
 | Name  | Type      | Read-Only| Optional| Description                                                                                      |
 | ------ | ---------- |---|---|------------------------------------------------------------------------------------------|
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | No| Yes| Icon symbol of the toolbar item in normal state.<br>Default value: **fontColor: $r('sys.color.icon_primary'), fontSize: 24vp** |
-| activated| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier-1) | No| Yes| Icon symbol of the toolbar item in activated state.<br>Default value: **fontColor: $r('sys.color.icon_emphasize'), fontSize: 24vp**|
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Icon symbol of the toolbar item in normal state.<br>Default value: **fontColor: $r('sys.color.icon_primary'), fontSize: 24vp** |
+| activated| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Icon symbol of the toolbar item in activated state.<br>Default value: **fontColor: $r('sys.color.icon_emphasize'), fontSize: 24vp**|
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.

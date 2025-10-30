@@ -78,7 +78,7 @@ const LOG_TAG: string = 'testTag-EntryIntent';
   intentVersion: '1.0.1',
   displayName: 'Play Music',
   displayDescription: 'Intent to play music',
-  icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+  icon: $r('app.media.app_icon'),
   llmDescription: 'Supports passing song names to play music',
   keywords: ['music playback', 'play music', 'PlayMusic'],
   abilityName: 'EntryAbility',

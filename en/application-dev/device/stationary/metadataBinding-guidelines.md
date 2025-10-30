@@ -41,18 +41,18 @@ Third-party applications can use the metadata binding function to map the App Li
    import { Callback } from '@kit.BasicServicesKit';
    ```
 
-2. Define the callback used to return the encoded metadata.
+2. Define the callback used to return the encoded metadata and the bundle name.  
 
    ```
    let callback : Callback<number> = (event: number) => {};
+   let bundleName: string = '';
    ```
 
 3. Subscribe to system events that are used to obtain the encoded metadata.
 
    ```
-   let bundleName: string = '';
    try {
-      metadataBinding.on('operationSubmitMetadata', bundleName, this.callback);  
+      metadataBinding.on('operationSubmitMetadata', bundleName, callback);  
       console.info("on succeeded");
    } catch (err) {
       let error = err as BusinessError;
@@ -76,7 +76,7 @@ Third-party applications can use the metadata binding function to map the App Li
 
    ```
    try {
-     metadataBinding.off('operationSubmitMetadata', bundleName, this.callback);
+     metadataBinding.off('operationSubmitMetadata', bundleName, callback);
      console.info("off succeeded");
    } catch (err) {
      let error = err as BusinessError;

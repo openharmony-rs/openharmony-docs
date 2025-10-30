@@ -214,8 +214,6 @@ export default {
 
 Globally define the canvas (**el**) and brush (**ctx**), and create a rectangle with the border width of 5 upon initialization. Change the border width (**lineWidth**), color (**strokeStyle**), and line dash level (**setLineDash**). Add the **change** event to the **&lt;select&gt;** component. The **change** event will be triggered upon selection and the changed image will be displayed.
 
-
-
 ```html
 <!-- xxx.hml -->
 <div class="container">

@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制。
@@ -412,7 +412,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "折叠态垂直高度度比",
+          label: "折叠态垂直高度比",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -577,7 +577,7 @@ struct Index {
         })
 
         RadioOption({
-          label: "展开态垂直高度度比",
+          label: "展开态垂直高度比",
           value: this.expandedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {

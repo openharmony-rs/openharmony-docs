@@ -1,6 +1,12 @@
-# Sensor Service Kit
+# Sensor Service Kit<!--sensor-service-api-->
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
-- ArkTS APIs
+- ArkTS API<!--sensor-service-arkts-->
   - [@ohos.sensor (Sensor)](js-apis-sensor.md)
   - [@ohos.vibrator (Vibrator)](js-apis-vibrator.md)
   <!--Del-->
@@ -8,19 +14,18 @@
   <!--DelEnd-->
   - [@ohos.sensor (Sensor) (Deprecated API)](js-apis-system-sensor.md)
   - [@ohos.vibrator (Vibrator) (Deprecated API)](js-apis-system-vibrate.md)
-- C APIs
-  - Modules
+- C API<!--sensor-service-c-->
+  - Modules<!--sensor-service-module-->
     - [Sensor](_sensor.md)
     - [Vibrator](_vibrator.md)
-  - Header Files
+  - Header Files<!--sensor-service-headerfile-->
     - [oh_sensor.h](oh_sensor_8h.md)
     - [oh_sensor_type.h](oh_sensor_type_8h.md)
     - [vibrator.h](vibrator_8h.md)
     - [vibrator_type.h](vibrator_type_8h.md)
-  - Structs
+  - Structs<!--sensor-service-struct-->
     - [Vibrator_Attribute](_vibrator_attribute.md)
     - [Vibrator_File_Description](_vibrator_file_description.md)
-- Error Codes
-
+- Error Codes<!--sensor-service-arkts-errcode-->
   - [Sensor Error Codes](errorcode-sensor.md)
   - [Vibrator Error Codes](errorcode-vibrator.md)

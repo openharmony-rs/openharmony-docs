@@ -1,14 +1,14 @@
-# Pushing Files to an Application Sandbox Directory
+# Pushing Files to an Application Sandbox Directory (for System Applications Only)
 
 During the development and debugging process of an application, you may need to push files to the application sandbox directory for intra-application access or for testing purposes. You can use either of the following methods to push files:
 
-- Use DevEco Studio to push the files to the application installation directory. For details, see [Application Installation Resource Access](../quick-start/resource-categories-and-access.md#accessing-resources).
+1. Use DevEco Studio to push the files to the application installation directory. For details, see [Application Installation Resource Access](../quick-start/resource-categories-and-access.md#accessing-resources).
 
-- Use the hdc tool to push files to the application sandbox directory on the device, which is described below.
+2. Use the hdc tool to push files to the application sandbox directory on the device, which is described below.
 
 However, the file paths viewed on the hdc shell are different from the application sandbox paths in the application view. You need to understand the [mappings between application sandbox paths and physical paths](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).
 
-## Development Example
+## How to Develop
 
 The application package **com.ohos.example** is used as an example. If files are read and written in the application sandbox directory **/data/storage/el1/bundle** of **example**, the physical path is **/data/app/el1/bundle/public/&lt;PACKAGENAME&gt;**, that is, **/data/app/el1/bundle/public/com.ohos.example**, according to the [mappings between application sandbox paths and physical paths](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).
 

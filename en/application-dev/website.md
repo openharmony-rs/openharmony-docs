@@ -429,7 +429,7 @@
               - [Overview of Other State Management Features](ui/state-management/arkts-other-state-mgmt-functions-overview.md)
               - [\@Watch Decorator: Getting Notified of State Variable Changes](ui/state-management/arkts-watch.md)
               - [$$ Syntax: Implementing Two-Way Synchronization for Built-in Components](ui/state-management/arkts-two-way-sync.md)
-              - [\@Track Decorator: Class Object Property-level Update](ui/state-management/arkts-track.md)
+              - [\@Track Decorator: Implementing Class Object Property-level Updates](ui/state-management/arkts-track.md)
               - [Freezing a Custom Component](ui/state-management/arkts-custom-components-freeze.md)
             - [MVVM](ui/state-management/arkts-mvvm.md)
             - [Best Practices for State Management](ui/state-management/arkts-state-management-best-practices.md)
@@ -449,7 +449,7 @@
               - [\@ReusableV2 Decorator: Reusing Components](ui/state-management/arkts-new-reusableV2.md)
             - Other State Management Features<!--arkts-new-other-state-mgmt-->
               - [AppStorageV2: Storing Application-wide UI State](ui/state-management/arkts-new-appstoragev2.md)
-              - [PersistenceV2: Persisting Application State](ui/state-management/arkts-new-persistencev2.md)
+              - [PersistenceV2: Persisting UI State](ui/state-management/arkts-new-persistencev2.md)
               - [!! Syntax: Enabling Two-Way Binding](ui/state-management/arkts-new-binding.md)
               - [Freezing a Custom Component](ui/state-management/arkts-custom-components-freezeV2.md)
               - [getTarget API: Obtaining Original Objects](ui/state-management/arkts-new-getTarget.md)
@@ -460,7 +460,7 @@
             - [Mixing Use of Custom Components](ui/state-management/arkts-custom-component-mixed-scenarios.md)
             - [Mixing Use of State Management V1 and V2](ui/state-management/arkts-v1-v2-mixusage.md)
           - Migration from V1 to V2<!--v1v2-migration-->
-            - [Migrating Applications from V1 to V2](ui/state-management/arkts-v1-v2-migration.md)
+            - [V1 to V2 Migration Overview](ui/state-management/arkts-v1-v2-migration.md)
             - [Migration for Component State Variables](ui/state-management/arkts-v1-v2-migration-inner-component.md)
             - [Migration for Data Object State Variables](ui/state-management/arkts-v1-v2-migration-inner-class.md)
             - [Migration for In-Application State Variables and Related Scenarios](ui/state-management/arkts-v1-v2-migration-application-and-others.md)
@@ -736,6 +736,7 @@
         - [Application Window Development (Stage Model)](windowmanager/application-window-stage.md)
         - [Application Window Development (FA Model)](windowmanager/application-window-fa.md)
         - [Window Metadata Configuration](windowmanager/window-config-m.md)
+        - [Window Rotation](windowmanager/window-rotation.md)
         <!--Del-->
         - [System Window Development (Stage Model Only) (for System Applications Only)](windowmanager/system-window-stage-sys.md)
         - [WindowExtensionAbility (for System Applications Only)](windowmanager/windowextensionability-sys.md)
@@ -1358,7 +1359,7 @@
             - [USB Serial Configuration Management](basic-services/usb/usbSerial/usbSerial-configuration.md)
             - [USB Serial Communication Management](basic-services/usb/usbSerial/usbSerial-communication.md)
           - [FAQs](basic-services/usb/faqs-usb.md)
-          - [Glossary](basic-services/usb/usb-glossary.md)
+          - [USB Glossary](basic-services/usb/usb-glossary.md)
           <!--Del-->
           - [USB Service Development](basic-services/usb/usb-guidelines.md)
           - [USB Service Development Overview](basic-services/usb/usb-overview.md)
@@ -1536,7 +1537,8 @@
           - [hisysevent (for System Applications Only)](dfx/hisysevent-sys.md)
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
-        - arkXtest User Guide<!--arkxtest-->
+        - [Test Kit Overview](application-test/test-kit-overview.md)
+        - arkXtest User Guide<!--arkxtest-guidelines-->
           - [JsUnit User Guide](application-test/unittest-guidelines.md)
           - [UITest User Guide](application-test/uitest-guidelines.md)
           - [PerfTest User Guide](application-test/perftest-guideline.md)
@@ -1586,6 +1588,7 @@
         - [Using TonePlayer for Audio Playback (for System Applications Only)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
         - [Using OHAudio for Audio Playback (C/C++)](media/audio/using-ohaudio-for-playback.md)
+        - [Low-Power Audio Playback](media/audio/power-saving-for-playback.md)
         - [Using AudioHaptic for Audio-Haptic Playback](media/audio/using-audiohaptic-for-playback.md)
         - [Volume Management](media/audio/volume-management.md)
         - [Enhancing Audio Performance Experience](media/audio/audio-performance.md)
@@ -1776,7 +1779,7 @@
         - Video Transcoding<!--media-transcoder-arkts-->
           - [Using AVTranscoder to Transcode Videos (ArkTS)](media/media/using-avtranscoder-for-transcodering.md)
           - [Creating an Asynchronous Thread for AVTranscoder Video Transcoding (ArkTS)](media/media/avtranscoder-practice.md)
-          - [FAQs About Transcoding](media/media/avtranscoder-faq.md)
+          - [Transcoding FAQs](media/media/avtranscoder-faq.md)
       - Media Development (C/C++)<!--media-kit-dev--c-->
         - Playback<!--media-playback-c-->
           - [Using AVPlayer to Play Audio (C/C++)](media/media/using-ndk-avplayer-for-playback.md)
@@ -1786,7 +1789,9 @@
           - [Using AVRecorder to Record Audio (C/C++)](media/media/using-ndk-avrecorder-for-audio-recording.md)
           - [Using AVRecorder to Record Videos (C/C++)](media/media/using-ndk-avrecorder-for-video-recording.md)
           - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
-            - [AVScreenCapture Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
+            - [Using AVScreenCapture in Basic Scenarios](media/media/avscreencapture-c-basic-process.md)
+            - [Using AVScreenCapture in Custom Scenarios](media/media/avscreencapture-c-custom-scenarios.md)
+            - [Screen Capture FAQs](media/media/avscreencapture-faqs.md)
           - [Using AVScreenCapture to Capture Screens and Write Them to Files (C/C++)](media/media/using-avscreencapture-for-file.md)
           - [Capturing the Specified Area on a Screen (C/C++)](media/media/video-supports-rectangular-area-recording.md)
         - Media Information Query<!--media-info-c-->
@@ -1918,7 +1923,6 @@
           <!--Del-->
         - [Cross-Device Notification Management (for System Applications Only)](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
-        - [Enabling Quick Reply for Cross-device Notifications](notification/notification-quickreply.md)
         - [Clearing Repeated Notifications Across Devices](notification/notification-distributed-messageid.md)
   - AI<!--ai-->
     - MindSpore Lite Kit<!--mindspore-lite-kit-->
@@ -2070,7 +2074,7 @@
   - API Reference Overview<!--ref-overview-api-->
     - [Development Description](reference/development-intro-api.md)
     - [SystemCapability](reference/syscap.md)
-    	<!--Del-->	
+    <!--Del-->	
     - SystemCapability List<!--syscap-list-->
         - [Phone](reference/phone-syscap-list.md)
         - [Tablet](reference/tablet-syscap-list.md)
@@ -2390,7 +2394,9 @@
         - [Bundle Error Codes](reference/apis-ability-kit/errorcode-bundle.md)
         - [Access Control Error Codes](reference/apis-ability-kit/errorcode-access-token.md)
         - [ohos.screenLockFileManager Error Codes](reference/apis-ability-kit/errorcode-screenLockFileManager.md)
-        - [Application Domain Name Verification Error Codes](reference/apis-ability-kit/errorcode-appDomainVerify.md)
+        <!--Del-->
+        - [Application Domain Name Verification Error Codes](reference/apis-ability-kit/errorcode-appDomainVerify-sys.md)
+        <!--DelEnd-->
     - Accessibility Kit<!--accessibility-api-->
       - ArkTS APIs<!--accessibility-arkts-->
         - [@ohos.accessibility (Accessibility)](reference/apis-accessibility-kit/js-apis-accessibility.md)
@@ -2399,7 +2405,9 @@
         - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility.md)
         - [AccessibilityExtensionContext](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md)
         <!--Del-->
+        - [@ohos.accessibility (Accessibility) (System API)](reference/apis-accessibility-kit/js-apis-accessibility-sys.md)
         - [@ohos.accessibility.config (System Accessibility Configuration) (System API)](reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md)
+        - [@ohos.application.AccessibilityExtensionAbility (AccessibilityExtensionAbility) (System API)](reference/apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility-sys.md)
         - [AccessibilityExtensionContext (System API)](reference/apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext-sys.md)
         <!--DelEnd-->
       - Error Codes<!--accessibility-arkts-errcode-->
@@ -2652,7 +2660,7 @@
           - [postCardAction](reference/apis-arkui/js-apis-postCardAction.md)
           <!--Del-->
           - [@ohos.arkui.drawableDescriptor (DrawableDescriptor) (System API)](reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)
-          - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md)
+          - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) 
           - [@ohos.arkui.uiExtension (uiExtension) (System API)](reference/apis-arkui/js-apis-arkui-uiExtension-sys.md)
           - [@ohos.deviceStatus.dragInteraction (Drag Interaction) (System API)](reference/apis-arkui/js-apis-devicestatus-draginteraction-sys.md)
           - [@ohos.pluginComponent (PluginComponentManager) (System API)](reference/apis-arkui/js-apis-plugincomponent-sys.md)
@@ -2715,7 +2723,7 @@
             - [Focus Axis Event](reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md)
           - Interaction Response Events<!--interaction-events-->
             - [Click Event](reference/apis-arkui/arkui-ts/ts-universal-events-click.md)
-            - [Drag/Drop Event](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)
+            - [Drag Event](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md)
             <!--Del-->
             - [Drag Event (System API)](reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop-sys.md)
             <!--DelEnd-->
@@ -2736,31 +2744,31 @@
         - [Universal Attributes](reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)
           - Basic Attributes<!--basic-property-->
             - [Component ID](reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md)
-            - [restoreId](reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md)
+            - [Distributed Migration Identifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md)
             - [Visibility](reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md)
             - [Background](reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)
-            - [Overlay](reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)
+            - [Overlay Control](reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)
             - [Z-order Control](reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)
             - [Obscuring](reference/apis-arkui/arkui-ts/ts-universal-attributes-obscured.md)
           - Layout and Borders<!--layout-property-->
-            - [Size](reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
+            - [Sizing](reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)
             - [Location](reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)
             - [Layout Constraints](reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md)
             - [Flex Layout](reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md)
             - [Safe Area](reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)
             - [Component-Level Pixel Rounding](reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
             - [Page-Level Pixel Rounding](reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
-            - [Border](reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md)
+            - [Border Styling](reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md)
             - [Border Image](reference/apis-arkui/arkui-ts/ts-universal-attributes-border-image.md)
           - Visual Effects<!--visual-effect-property-->
-            - [Opacity](reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md)
+            - [Opacity Control](reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md)
             - [Transformation](reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md)
-            - [Image Effect Configuration](reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md)
+            - [Image Effect](reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md)
             - [Shape Clipping](reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md)
             - [Gradient Color](reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md)
             - [Foreground Color](reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-color.md)
             - [Foreground Effect](reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-effect.md)
-            - [Outline](reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md)
+            - [Outline Styling](reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md)
             - [Visual Effect](reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md)
             - [Foreground Blur](reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md)
             - [Motion Blur](reference/apis-arkui/arkui-ts/ts-universal-attributes-motionBlur.md)
@@ -2800,7 +2808,7 @@
             - [Drawing Modifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md)
             - [Content Modifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-content-modifier.md)
             - [Custom Property](reference/apis-arkui/arkui-ts/ts-universal-attributes-custom-property.md)
-            - [SymbolGlyphModifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
+            - [Symbol Glyph Modifier](reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
           - Other<!--other-property-->
             - [Reuse ID](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [Reuse Options](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)
@@ -2974,7 +2982,7 @@
           - [Property Animation (animation)](reference/apis-arkui/arkui-ts/ts-animatorproperty.md)
           - [Explicit Animation (animateTo)](reference/apis-arkui/arkui-ts/ts-explicit-animation.md)
           - [Keyframe Animation (keyframeAnimateTo)](reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md)
-          - [Page Transition Animation (Not Recommended)](reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
+          - [Page Transition (pageTransition)](reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
           - [Component Transition (transition)](reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)
           - [Shared Element Transition (sharedTransition)](reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)
           - [Implicit Shared Element Transition (geometryTransition)](reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)
@@ -3463,7 +3471,7 @@
           - [ArkUI_Vector2PropertyHandle](reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md)
       - Error Codes<!--arkui-arkts-errcode-->
         - UI<!--arkui-ui-arkts-errcode-->
-          - [Animator Error Codes](reference/apis-arkui/errorcode-animator.md)
+          - [API Call Error Codes](reference/apis-arkui/errorcode-internal.md)
           - [promptAction Error Codes](reference/apis-arkui/errorcode-promptAction.md)
           - [Router Error Codes](reference/apis-arkui/errorcode-router.md)
           - [Drag Event Error Codes](reference/apis-arkui/errorcode-drag-event.md)
@@ -3486,6 +3494,7 @@
           - [Video Component Error Codes](reference/apis-arkui/errorcode-video.md)
           - [State Management Error Codes](reference/apis-arkui/errorcode-stateManagement.md)
           - [Render Node Error Codes](reference/apis-arkui/errorcode-node-render.md)
+          - [Color Inversion Capability Error Codes](reference/apis-arkui/errorcode-force-dark.md)
         - Graphics<!--arkui-graphics-images-arkts-errcode-->
           - [Display Error Codes](reference/apis-arkui/errorcode-display.md)
           - [Window Error Codes](reference/apis-arkui/errorcode-window.md)
@@ -3643,6 +3652,7 @@
       - ArkTS APIs<!--core-file-arkts-->
         - [@ohos.application.BackupExtensionAbility (BackupExtensionAbility)](reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md)
         - [@ohos.file.cloudSync (Device-Cloud Synchronization)](reference/apis-core-file-kit/js-apis-file-cloudsync.md)
+        - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management)](reference/apis-core-file-kit/js-apis-file-cloudsyncmanager.md)
         - [@ohos.file.environment (Directory Environment Capability)](reference/apis-core-file-kit/js-apis-file-environment.md)
         - [@ohos.file.fileuri (File URI)](reference/apis-core-file-kit/js-apis-file-fileuri.md)
         - [@ohos.file.fs (File Management)](reference/apis-core-file-kit/js-apis-file-fs.md)
@@ -4344,10 +4354,14 @@
           - [Upload and Download Error Codes](reference/apis-basic-services-kit/errorcode-request.md)
           - [Time and Time Zone Error Codes](reference/apis-basic-services-kit/errorcode-time.md)
           - [Event Error Codes](reference/apis-basic-services-kit/errorcode-CommonEventService.md)
+          <!--Del-->
           - [System Parameter Error Codes](reference/apis-basic-services-kit/errorcode-system-parameterV9.md)
+          <!--DelEnd-->
           - [Power Manager Error Codes](reference/apis-basic-services-kit/errorcode-power.md)
           - [Account Management Error Codes](reference/apis-basic-services-kit/errorcode-account.md)
+          <!--Del-->
           - [Update Error Codes](reference/apis-basic-services-kit/errorcode-update.md)
+          <!--DelEnd-->
           - [Print Error Codes](reference/apis-basic-services-kit/errorcode-print.md)
           <!--Del-->
           - [Screen Lock Management Error Codes](reference/apis-basic-services-kit/errorcode-screenlock.md)
@@ -5231,7 +5245,7 @@
           - [OH_MediaAsset](reference/apis-media-library-kit/capi-mediaassetmanager-oh-mediaasset.md)
           - [MediaLibrary_RequestOptions](reference/apis-media-library-kit/capi-mediaassetmanager-medialibrary-requestoptions.md)
       - Error Codes<!--media-library-errcode-->
-        - [Media Library Error Codes](reference/apis-media-library-kit/errcode-medialibrary.md)
+        - [Media Library Error Codes](reference/apis-media-library-kit/errorcode-medialibrary.md)
   - Graphics<!--graphics-api-->
     - ArkGraphics 2D<!--arkgraphics-api-->
       - ArkTS APIs<!--arkgraphics-arkts-->
@@ -5536,7 +5550,7 @@
         - Modules<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
         - Header Files<!--notification-struct-->
-            - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
+          - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - Error Codes<!--notification-arkts-errcode-->
         - [Notification Error Codes](reference/apis-notification-kit/errorcode-notification.md)
   - AI<!--ai-api-->
@@ -5634,13 +5648,16 @@
     - [Node-API](reference/native-lib/napi.md)
     - [libuv](reference/native-lib/libuv.md)
     - [OpenSL ES](reference/native-lib/opensles.md)
-    - [OpenGL ES](reference/native-lib/opengl.md)
-    - [OpenGL](reference/native-lib/opengles.md)
+    - [OpenGL ES](reference/native-lib/opengles.md)
+    - [OpenGL](reference/native-lib/opengl.md)
     - [EGL](reference/native-lib/egl.md)
     - [ICU4C](reference/native-lib/icu4c.md)
     - [Zlib](reference/native-lib/zlib.md)
     - Vulkan<!--vulkan-guide-->
-      - [Vulkan Development](reference/native-lib/vulkan-guidelines.md)
+      - Vulkan Development<!--vulkan-guides-->
+        - [Vulkan Development Overview](reference/native-lib/vulkan-overview.md)
+        - [Vulkan Surface Development](reference/native-lib/vulkan-guidelines.md)
+        - [Vulkan External Memory Development](reference/native-lib/vulkan-oh-external-memory-guidelines.md)
       - [Vulkan Capabilities](reference/native-lib/vulkan.md)
       - Vulkan Extensions<!--vulkan-extensions-->
         - [Vulkan Module](reference/native-lib/capi-vulkan.md)

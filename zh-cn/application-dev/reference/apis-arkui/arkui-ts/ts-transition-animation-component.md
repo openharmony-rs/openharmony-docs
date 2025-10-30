@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。 
 
@@ -45,7 +45,7 @@ transition(value: TransitionOptions | TransitionEffect): T
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-组件插入显示和删除隐藏的过渡效果。
+组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

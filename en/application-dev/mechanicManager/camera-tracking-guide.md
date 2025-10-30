@@ -6,9 +6,9 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @foryourself-->
 
-Mechanic Manager is supported since API version 20. In application scenarios such as video recording and live streaming, you may want to provide users with mechanic devices more enriched photography experiences, including professional photography functions like intelligent camera tracking and automatic composition.
+Mechanic Manager is supported since API version 20, offering richer photography experiences with professional features such as intelligent face tracking and automatic composition for applications (including third-party applications).
 
-The intelligent camera tracking function enables automated tracking of faces and objects through mechanic devices, enhancing photography quality and user experience and helping developers to build smarter, more efficient photography solutions.
+The intelligent camera tracking function enables automated tracking of faces and objects through mechanic devices, enhancing photography quality and user experience and helping developers to build smarter, more efficient tracking photography solutions.
 
 ## Available APIs
 
@@ -32,13 +32,14 @@ For details about how to use the public APIs of Mechanic Manager, see [@ohos.dis
 
 ### Getting Started
 
-1. Prepare a mechanic device that supports MechanicKit.
-
-2. Ensure that the mechanic device is connected to the development device via Bluetooth.
+1. Prepare a mechanic device that supports Mechanic Kit.
+2. To verify the intelligent camera tracking function, check that the camera driver of the main device supports face detection.
+3. Update the SDK to API 20 or later. For details, please refer to https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install.
+4. Ensure that the gimbal is connected to the control device through Bluetooth.
 
 ### Managing the Device Connection Status
 
-Dynamic device connection status management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
+Device connection status management helps to ensure that the application responds promptly when the mechanic device is connected or disconnected.
 
 1. Import the **mechanicManager** module.
 
@@ -75,7 +76,7 @@ Dynamic device connection status management helps to ensure that the application
     }
     ```
 
-3. Listen for device connection state changes.
+3. Listen for the connection state changes of the device.
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
@@ -110,7 +111,7 @@ Dynamic device connection status management helps to ensure that the application
     }
     ```
 
-5. Disable listening for device connection state changes.
+5. Cancel listening for device connection state changes.
 
     ```ts
     // Cancel listening for device connection state changes.
@@ -119,9 +120,9 @@ Dynamic device connection status management helps to ensure that the application
 
 ### Enabling Intelligent Camera Tracking
 
-After the intelligent tracking photography function is enabled, the mechanic device will automatically detect faces and perform tracking photography.
+After the intelligent tracking photography function is enabled, the device will automatically detect faces and perform tracking photography.
 
-1. Enable the intelligent tracking photography function.
+1. Enable the intelligent camera tracking function.
 
     ```ts
     try {
@@ -141,7 +142,7 @@ After the intelligent tracking photography function is enabled, the mechanic dev
     }
     ```
 
-2. Enable listening for tracking state change events.
+2. Enable listening for tracking state changes.
 
     ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
@@ -165,17 +166,17 @@ After the intelligent tracking photography function is enabled, the mechanic dev
     mechanicManager.on('trackingStateChange', trackingStateCallback);
     ```
 
-3. Process the tracking state change events.
+3. Process the tracking state change event.
 
     ```ts
     function handleTrackingEnabled() {
-    console.info('Handling trace enable events');
+    console.info('Handling camera tracking enable events');
     // Update the UI status.
     updateTrackingUI(true);
     }
 
     function handleTrackingDisabled() {
-    console.info('Handling trace disabled events');
+    console.info('Handling camera tracking disabled events');
     // Update the UI status.
     updateTrackingUI(false);
     }
@@ -204,7 +205,7 @@ After the intelligent tracking photography function is enabled, the mechanic dev
     }
     ```
 
-4. Disable listening for tracking state change events.
+4. Cancel listening for tracking state changes.
 
     ```ts
     // Cancel listening for the specified callback of tracking state changes.
@@ -219,7 +220,6 @@ After the intelligent tracking photography function is enabled, the mechanic dev
 To ensure proper functioning of Mechanic Manager, perform the following steps for debugging and verification:
 
 **Connection Setup**
-
 1. Ensure that the mechanic device is paired with and connected to the development device via Bluetooth.
 2. Place the development device on the mechanic device.
 
@@ -231,4 +231,4 @@ To ensure proper functioning of Mechanic Manager, perform the following steps fo
 **Test Result Description**
 
 - If a list containing all mechanic device is returned after `getAttachedMechDevices` is called, the device identification is normal.
-- If `true` is returned after `getCameraTrackingEnabled` is called, the intelligent tracking photography function is successfully enabled.
+- If **true** is returned after `getCameraTrackingEnabled` is called, the intelligent tracking photography function is successfully enabled. After the application opens the camera, when a face appears on the screen, the device will rotate to follow the face.

@@ -142,9 +142,9 @@ Grayscale blur parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       |   Type  |   Mandatory| Description                       |
-| ----        |  ----   |   ---- | --------------------------  |
-| grayscale   |  [number, number]   |   Yes  |  Grayscale blur, with two parameters in the value range of [0, 127]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the brightness of the black color, and the second parameter indicates the darkness of the white color. A larger value indicates a more obvious adjustment effect (the black and white colors become grayer). For example, if the value specified is (20,20), the RGB value [0, 0, 0] (black) is converted to [20, 20, 20], RGB value [255, 255, 255] (white) is converted to [235, 235, 235] (255-20), and the color pixels remain unchanged.|
+| Name       |   Type  |   Read-Only| Optional| Description                       |
+| ----        |  ----   |   ---- | ------- | -------------------  |
+| grayscale   |  [number, number]   |   No| No  |  Grayscale blur, with two parameters in the value range of [0, 127]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the brightness of the black color, and the second parameter indicates the darkness of the white color. A larger value indicates a more obvious adjustment effect (the black and white colors become grayer). For example, if the value specified is (20,20), the RGB value [0, 0, 0] (black) is converted to [20, 20, 20], RGB value [255, 255, 255] (white) is converted to [235, 235, 235] (255-20), and the color pixels remain unchanged.|
 
 
 ## Example

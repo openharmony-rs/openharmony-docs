@@ -1018,7 +1018,7 @@ Sets the translation distance of the tab bar.
 
 > **NOTE**
 >
-> When the Tabs component and scrollable container component are bound by using the [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13) API, the display and hiding of the tab bars bound to the scrollable container component are triggered. If the setTabBarTranslate API is called, the translation distance of the tab bar will become invalid. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarTranslate** simultaneously.
+> When a **Tabs** component is bound to a scrollable container using APIs like [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13), scrolling the container will trigger the display and hide animations of the tab bar for all **Tabs** components bound to it. In this case, calling the **setTabBarTranslate** API has no effect. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarTranslate** simultaneously.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
@@ -1039,7 +1039,7 @@ Sets the opacity of the tab bar.
 
 > **NOTE**
 >
-> When the [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13) API is used to bind the Tabs component to the scrollable container component, the display and hiding of the TabBar of all bound Tabs components are triggered during the sliding of the scrollable container component. The opacity of the TabBar set by calling the setTabBarOpacity API is invalid. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarOpacity** simultaneously.
+> When a **Tabs** component is bound to a scrollable container using APIs like [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13), scrolling the container will trigger the display and hide animations of the tab bar for all **Tabs** components bound to it. In this case, calling the **setTabBarOpacity** API has no effect. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarOpacity** simultaneously.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 13.

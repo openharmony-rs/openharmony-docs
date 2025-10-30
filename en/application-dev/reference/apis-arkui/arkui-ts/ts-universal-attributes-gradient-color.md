@@ -101,7 +101,7 @@ Creates a sweep gradient.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SweepGradientOptions] (#sweepgradientoptions18 object description)| Yes  | Sweep gradient, which can sweep around the specified center point in the 0–360 degree range. If the rotation angle exceeds the range, a monochrome color instead of a gradient will be drawn.|
+| value  | [SweepGradientOptions](#sweepgradientoptions18) | Yes  | Sweep gradient, which can sweep around the specified center point in the 0–360 degree range. If the rotation angle exceeds the range, a monochrome color instead of a gradient will be drawn.|
 
 **Return value**
 

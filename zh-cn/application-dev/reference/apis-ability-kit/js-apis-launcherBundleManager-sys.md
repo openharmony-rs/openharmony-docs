@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块支持launcher应用所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
+本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
 
 > **说明：**
 >
@@ -58,7 +58,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
@@ -118,7 +118,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
@@ -169,7 +169,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100,
@@ -226,7 +226,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100)
@@ -279,7 +279,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo",
@@ -339,7 +339,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo")
@@ -397,7 +397,7 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
@@ -453,7 +453,7 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
@@ -506,7 +506,7 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");

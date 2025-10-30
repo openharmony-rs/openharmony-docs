@@ -2449,7 +2449,7 @@ on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2509,7 +2509,7 @@ off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2572,7 +2572,7 @@ on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2632,7 +2632,7 @@ off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2695,7 +2695,7 @@ on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2755,7 +2755,7 @@ off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2818,7 +2818,7 @@ on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2878,7 +2878,7 @@ off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2948,7 +2948,7 @@ getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3013,7 +3013,7 @@ getPhotoAlbumOrder(orderStyle: number, options?: FetchOptions): Promise&lt;Fetch
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3079,7 +3079,7 @@ setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4902,6 +4902,67 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### convertImageFormat<sup>20+</sup>
+
+convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
+
+复制同一相册（用户创建的相册或应用相册）中的图片，并转换为指定格式。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| title | string | 是    | 转换后的图片标题。|
+| imageFormat | [SupportedImageFormat](#supportedimageformat20) | 是    | 支持的目标格式类型。 |
+
+**返回值：**
+
+| 类型                            | 说明                    |
+| ----------------------------- | --------------------- |
+| Promise\<[PhotoAsset](#photoasset)> | Promise对象，返回转码后文件的PhotoAsset。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied.  | 
+| 202      | Called by non-system application. |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
+| 23800301    | Internal system error. It is recommended to retry and check the kogs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('convertImageFormatDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset = await fetchResult.getFirstObject();
+  try {
+    let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
+    console.error(`convertImageFormat success.`);
+  } catch (err) {
+    console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## SharedPhotoAsset<sup>13+</sup>
 
 共享图片资产。
@@ -6685,7 +6746,7 @@ resetCoverUri(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -7924,7 +7985,7 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -7977,7 +8038,7 @@ setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
@@ -9086,7 +9147,7 @@ isVideoReady(): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -9169,7 +9230,7 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9216,7 +9277,7 @@ createCustomRecords(customRecords: Array&lt;PhotoAssetCustomRecord&gt;): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9267,7 +9328,7 @@ getCustomRecords(optionCheck: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsse
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9323,7 +9384,7 @@ setCustomRecords(customRecords: Array&lt;PhotoAssetCustomRecord&gt;): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9375,7 +9436,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9430,7 +9491,7 @@ addShareCount(ids: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9477,7 +9538,7 @@ addLcdJumpCount(ids: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
@@ -9598,6 +9659,8 @@ async function example(context: Context) {
 | DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | 删除日期（删除文件时间距1970年1月1日的毫秒数值）。**系统接口**：此接口为系统接口。<br>注意：查询照片时，不支持基于该字段排序。 |
 | MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | 动态照片效果模式。**系统接口**：此接口为系统接口。 |
 | CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | 云增强任务标识。**系统接口**：此接口为系统接口。 |
+| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | 缩略图生成标识。**系统接口**：此接口为系统接口。 |
+| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | 缩略图可见标识。**系统接口**：此接口为系统接口。 |
 | SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | 水印可编辑标识。**系统接口**：此接口为系统接口。 |
 | IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | 是否支持自动云增强。**系统接口**：此接口为系统接口。 |
 | OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | 照片所属的相册id。**系统接口**：此接口为系统接口。 |
@@ -9984,6 +10047,18 @@ async function example(context: Context) {
 | LCD         | 1  | 获取LCD缩略图    |
 | THM          | 2 | 获取THM缩略图    |
 
+## SupportedImageFormat<sup>20+</sup>
+
+枚举，支持转换的图片格式。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                           | 值  | 说明       |
+| :---------------------------- | :- | :------- |
+| AVFILE_FORMAT_JPG         | 'jpg'  | jpg格式。    |
+
 ## WatermarkType<sup>14+</sup>
 
 枚举，水印可编辑标识。
@@ -10022,7 +10097,7 @@ async function example(context: Context) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| RETAIN_FORCE |  0 |  删除原文件在云端的本地元数据和缩略图。 |
+| RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 

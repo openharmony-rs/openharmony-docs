@@ -20,10 +20,6 @@ You can use this module to manage and obtain the application [context](../../app
 import { application } from '@kit.AbilityKit';
 ```
 
-
-
-
-
 ## application.createModuleContext<sup>12+</sup>
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>

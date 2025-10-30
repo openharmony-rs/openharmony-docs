@@ -87,7 +87,7 @@ Enumerates call states.
 
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
-| [call.CallState](js-apis-call.md#callstate) | Call state.|
+| [call.CallState](js-apis-call.md#callstate) | Enumerates call states.|
 
 
 ## CardType
@@ -131,7 +131,7 @@ Registers an observer for network status change events. This API uses an asynchr
 | Name  | Type                                                     | Mandatory| Description                                                             |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | Yes  | Network status change event. This field has a fixed value of **networkStateChange**.                |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the result. For details, see [NetworkState](js-apis-radio.md#networkstate).|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the result, which is the [NetworkState](js-apis-radio.md#networkstate) object.|
 
 **Error codes**
 
@@ -965,11 +965,11 @@ Enumerates SIM card types and states.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type               | Mandatory| Description                                                     |
-| ------------------- | ----------------------------------- | ---- | --------------------------------------------------------  |
-| type                | [CardType](js-apis-sim.md#cardtype7) | Yes  | SIM card type.|
-| state               | [SimState](js-apis-sim.md#simstate) | Yes  | SIM card state.|
-| reason<sup>8+</sup> | [LockReason](#lockreason8)          | Yes  | SIM card lock type.                                            |
+|     Name           |                 Type               | Read-Only|Optional| Description  |
+| ------------------- | -----------------------------------|---- | ---- | --------------------------------------------------------  |
+| type                | [CardType](js-apis-sim.md#cardtype7) | No |No| SIM card type.|
+| state               | [SimState](js-apis-sim.md#simstate) | No|  No| SIM card state.|
+| reason<sup>8+</sup> | [LockReason](#lockreason8)          | No | No| SIM card lock type.                                            |
 
 
 ## CallStateInfo<sup>11+</sup>
@@ -978,10 +978,10 @@ Defines information about the call status.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type                   | Mandatory| Description    |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | Yes  | Call type.|
-| number              | string                                 | Yes  | Phone number.|
+|     Name           |                 Type                   | Read-Only| Optional| Description    |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | No  | No  | Call type.|
+| number              | string                                 | No  | No  | Phone number.|
 
 
 ## DataConnectionStateInfo<sup>11+</sup>

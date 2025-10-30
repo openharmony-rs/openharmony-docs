@@ -26,7 +26,7 @@ Defines the native APIs for basic file operations.
 
 | Name| Description|
 | -- | -- |
-| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | Obtains the location of a file.|
+| [FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)](#oh_fileio_getfilelocation) | Obtains the location of a file.|
 
 ## Enum Description
 
@@ -54,7 +54,7 @@ Enumerates the file locations.
 ### OH_FileIO_GetFileLocation()
 
 ```
-FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO_FileLocation *location)
+FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 
 **Description**
@@ -62,7 +62,6 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength,FileIO
 Obtains the location of a file.
 
 **Since**: 12
-
 
 **Parameters**
 

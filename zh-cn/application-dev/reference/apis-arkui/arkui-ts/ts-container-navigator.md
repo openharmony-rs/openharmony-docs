@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 路由容器组件，提供路由跳转能力。
 
@@ -22,6 +22,8 @@
 
 ## 接口
 
+### Navigator
+
 Navigator(value?: {target: string, type?: NavigationType})
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -34,6 +36,14 @@ Navigator(value?: {target: string, type?: NavigationType})
 | ------ | -------------- | ---- | ---------------------------------------------- |
 | target | string         | 是   | 指定跳转目标页面的路径。     |
 | type   | [NavigationType](#navigationtype枚举说明) | 否   | 指定路由方式。<br/>默认值：NavigationType.Push |
+
+### Navigator
+
+Navigator()
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NavigationType枚举说明
 

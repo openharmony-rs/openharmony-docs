@@ -7,7 +7,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-开发者可通过[mediatool工具](#mediatool工具)或[hdc命令](#hdc命令)操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
+开发者可通过[mediatool工具](#mediatool工具)操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
 
 ## mediatool工具
 
@@ -331,95 +331,3 @@ uri是媒体库资产的唯一标识符，每个uri都对应一个媒体资产�
 uri样例：`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`。
 
 在mediatool操作中，需要使用以上uri时，无论使用`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`还是`file://media/Photo/1`都能够正确的定位到目标资产。
-
-## hdc命令
-
-从API version 20开始，支持通过hdc命令可以访问媒体库文件路径。包含：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录。\<uid\>为当前用户的id。
-
-### 媒体库文件查询
-
-支持查询指定路径下未被隐藏的图片和视频。
-
-命令格式如下所示。
-
-```shell
-hdc shell ls -l DEST
-```
-
-**使用示例**：
-
-```shell
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo # 返回相册列表
-drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 其它
-drwxrwxrwx 2 user_data_rw user_data_rw 3440 1970-01-01 00:00 相机
-
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/相机 # 列出相机文件夹下所有未被隐藏的本地图片和视频
-total 32813056
--rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 1.jpg
--rw-rw-rw- 1 user_data_rw user_data_rw 6217442 1970-01-01 00:00 2.jpg
-
-$ hdc shell ls -l /mnt/data/100/media_fuse/Photo/相机/1.jpg # 命令返回1.jpg的详细信息
--rw-rw-rw- 1 user_data_rw user_data_rw 7085591 1970-01-01 00:00 /mnt/data/100/media_fuse/Photo/相机/1.jpg
-```
-
-### 媒体库文件导出
-
-支持导出指定路径下所有未被隐藏的本地文件和目录。
-
-命令格式如下所示。
-
-```shell
-hdc file recv DEST SOURCE
-```
-
-**使用示例**：
-
-```shell
-$ hdc file recv /mnt/data/100/media_fuse/Photo/相机/文件A # 导出文件A
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file recv /mnt/data/100/media_fuse/Photo/相机 # 导出相机目录及里面的文件
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file recv /mnt/data/100/media_fuse/Photo/ # 导出Photo目录及其子文件
-FileTransfer finish, Size:xxx, File...
-```
-
-### 媒体库文件导入
-
-支持导入文件及目录，但不支持创建目录。当目录名称相同时会将内容合并（保留所有不重名的文件）；当文件名称相同时会覆盖目标文件。
-
-```shell
-hdc file send SOURCE DEST
-```
-
-**使用示例**：
-
-```shell
-$ hdc file send D:\dest\相机 /mnt/data/100/media_fuse/Photo/ # 导入“D:\dest\相机”的所有文件到/mnt/data/100/media_fuse/Photo/相机/
-FileTransfer finish, Size:xxx, File...
-
-$ hdc file send D:\dest\新建目录 /mnt/data/100/media_fuse/Photo/相机/ # 不支持创建目录
-[Fail][E005005] Error create directory: operation not permitted, path:/mnt/data/100/media_fuse/Photo/相机//新建目录
-
-$ hdc file send D:\dest\相机\文件A /mnt/data/100/media_fuse/Photo/相机 # 导入文件A到/mnt/data/100/media_fuse/Photo/相机/
-FileTransfer finish, Size:xxx, File...
-```
-
-### 媒体库文件删除
-
-支持删除相册中的指定文件，但不支持删除目录。
-
-```shell
-hdc shell rm DEST
-```
-
-**使用示例**：
-
-```shell
-$ hdc shell rm /mnt/data/100/media_fuse/Photo/相机 # 返回失败
-rm: /mnt/data/100/media_fuse/Photo/相机: Is a directory
-
-$ hdc shell rm /mnt/data/100/media_fuse/Photo/相机/文件A # 无返回信息，删除成功
-```
-

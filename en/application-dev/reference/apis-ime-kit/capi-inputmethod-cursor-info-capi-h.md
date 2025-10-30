@@ -56,10 +56,10 @@ Creates an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) 
 
 | Name| Description|
 | -- | -- |
-| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen.|
-| double top | Absolute value of the distance between the cursor's top vertex and the top edge of the physical screen.|
-| double width | Width.|
-| double height | Height.|
+| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen, in px.|
+| double top | Absolute value of the distance between the cursor's top point and the top edge of the physical screen, in px.|
+| double width | Width, in px.|
+| double height | Height, in px.|
 
 **Returns**
 
@@ -104,10 +104,10 @@ Sets the cursor information.
 | Name| Description|
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | Pointer to the [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.|
-| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen.|
-| double top | Absolute value of the distance between the cursor's top vertex and the top edge of the physical screen.|
-| double width | Width.|
-| double height | Height.|
+| double left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen, in px.|
+| double top | Absolute value of the distance between the cursor's top point and the top edge of the physical screen, in px.|
+| double width | Width, in px.|
+| double height | Height, in px.|
 
 **Returns**
 
@@ -133,10 +133,10 @@ Obtains the cursor information.
 | Name| Description|
 | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) *cursorInfo | Pointer to the [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.|
-| double *left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen.|
-| double *top | Absolute value of the distance between the cursor's top vertex and the top edge of the physical screen.|
-| double *width | Width.|
-| double *height | Height.|
+| double *left | Absolute value of the distance between the cursor's leftmost point and the left edge of the physical screen, in px.|
+| double *top | Absolute value of the distance between the cursor's top point and the top edge of the physical screen, in px.|
+| double *width | Width, in px.|
+| double *height | Height, in px.|
 
 **Returns**
 

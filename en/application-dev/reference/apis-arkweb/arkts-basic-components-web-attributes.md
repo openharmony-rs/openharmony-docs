@@ -2011,7 +2011,7 @@ Sets nested scrolling options.
     build() {
       Scroll(){
         Column() {
-          Text ("Nested Web")
+          Text("Nested Web")
             .height("25%")
             .width("100%")
             .fontSize(30)

@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。
 
@@ -759,7 +759,7 @@ struct ListenKeyboardHeightChange {
 
 此示例为说明镜像场景而设置了不同的圆角半径，通常不建议开发者设置不同的值，会造成视觉体验不佳。
 
-其中，半模态的radius属性值使用LocalizedBorderRadiuses类型。
+其中，从API version 15开始，半模态的radius属性值使用LocalizedBorderRadiuses类型。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -814,7 +814,7 @@ struct SheetTransitionExample {
 
 ### 示例8（半模态Side侧边样式）
 
-此示例实现半模态侧边样式。
+从API version 20开始，此示例实现半模态侧边样式。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -917,7 +917,7 @@ struct SheetSideExample {
 
 ### 示例9（半模态ContentCover全屏样式）
 
-此示例实现半模态的全屏显示效果。
+从API version 20开始，此示例实现半模态的全屏显示效果。
 
 ```ts
 // xxx.ets

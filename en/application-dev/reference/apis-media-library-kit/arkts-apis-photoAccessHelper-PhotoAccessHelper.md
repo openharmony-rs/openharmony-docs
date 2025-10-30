@@ -5,7 +5,7 @@
 <!--Owner: @xuchangda; @yixiaoff-->
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -1108,7 +1108,7 @@ Registers a listener for the **'photoChange'** event to monitor media asset chan
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1165,7 +1165,7 @@ Unregisters the listener for the **'photoChange'** event to stop monitoring medi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1225,7 +1225,7 @@ Registers a listener for the **'photoAlbumChange'** event to monitor album chang
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1282,7 +1282,7 @@ Unregisters a listener for the **'photoAlbumChange'** event to stop monitoring a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
