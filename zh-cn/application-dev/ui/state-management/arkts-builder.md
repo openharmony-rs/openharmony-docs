@@ -304,6 +304,92 @@ struct PrivateBuilder {
 创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 
 <!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) -->
+
+``` TypeScript
+class ChildTmp {
+  public val: number = 1;
+}
+
+class ParamTmp {
+  public strValue: string = 'Hello';
+  public numValue: number = 0;
+  public tmpValue: ChildTmp = new ChildTmp();
+  public arrayTmpValue: Array<ChildTmp> = [];
+}
+
+@Builder
+function overBuilder(param: ParamTmp) {
+  Column() {
+    Text(`strValue: ${param.strValue}`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+    Text(`numValue: ${param.numValue}`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+    Text(`tmpValue: ${param.tmpValue.val}`)
+      .width(230)
+      .height(40)
+      .margin(12)
+      .backgroundColor('#0d000000')
+      .fontColor('#e6000000')
+      .borderRadius(20)
+      .textAlign(TextAlign.Center)
+    ForEach(param.arrayTmpValue, (item: ChildTmp) => {
+      ListItem() {
+        Text(`arrayTmpValue: ${item.val}`)
+          .width(230)
+          .height(40)
+          .margin(12)
+          .backgroundColor('#0d000000')
+          .fontColor('#e6000000')
+          .borderRadius(20)
+          .textAlign(TextAlign.Center)
+      }
+    }, (item: ChildTmp) => JSON.stringify(item))
+  }
+}
+
+@Entry
+@Component
+struct ParentDemo {
+  @State objParam: ParamTmp = new ParamTmp();
+
+  build() {
+    Column() {
+      Text('UI Rendered via @Builder')
+        .fontSize(20)
+        .margin(12)
+      overBuilder({
+        strValue: this.objParam.strValue,
+        numValue: this.objParam.numValue,
+        tmpValue: this.objParam.tmpValue,
+        arrayTmpValue: this.objParam.arrayTmpValue
+      })
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'Hello World';
+        this.objParam.numValue = 1;
+        this.objParam.tmpValue.val = 8;
+        const childValue: ChildTmp = {
+          val: 2
+        }
+        this.objParam.arrayTmpValue.push(childValue);
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 示例效果图
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2.gif)
