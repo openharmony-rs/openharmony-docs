@@ -201,6 +201,26 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
 当一个组件上多次使用`applyNormalAttribute`设置不同的Modifier实例时，每次状态变量刷新均会按顺序执行这些实例的方法属性设置，遵循属性覆盖原则，即后设置的属性生效。
 
   <!-- @[Common_MyButtonModifier2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier02.ets) -->
+  
+  ``` TypeScript
+  export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
+    public isDark: boolean = false
+  
+    constructor(dark?: boolean) {
+      this.isDark = dark ?? false
+    }
+  
+    applyNormalAttribute(instance: ButtonAttribute): void {
+      if (this.isDark) {
+        instance.backgroundColor(Color.Black)
+          .width(200)
+      } else {
+        instance.backgroundColor(Color.Red)
+          .width(100)
+      }
+    }
+  }
+  ```
   <!-- @[Common_MyButtonModifier3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier03.ets) -->
   <!-- @[main_button3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button3.ets) -->
   ![AttributeModifier](figures/AttributeModifier04.gif) 
