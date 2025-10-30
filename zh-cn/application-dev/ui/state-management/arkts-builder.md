@@ -35,6 +35,36 @@ ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，�
 
 <!-- @[private_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/PrivateCustomConstructor.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct BuilderDemo {
+  @Builder
+  showTextBuilder() {
+    // @Builder装饰此函数，使其能以链式调用的方式配置并构建Text组件
+    Text('Hello World')
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+
+  @Builder
+  showTextValueBuilder(param: string) {
+    Text(param)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+
+  build() {
+    Column() {
+      // 无参数
+      this.showTextBuilder()
+      // 有参数
+      this.showTextValueBuilder('Hello @Builder')
+    }
+  }
+}
+```
+
 使用方法：
 
 - 允许在自定义组件内定义一个或多个@Builder函数，该函数被认为是该组件的私有、特殊类型的成员函数。
