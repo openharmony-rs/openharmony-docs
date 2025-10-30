@@ -61,7 +61,7 @@
 
 <!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -296,7 +296,7 @@ export default function abilityTest() {
 
 <!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
@@ -345,7 +345,7 @@ export default function exampleTest() {
 
 <!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, beforeItSpecified, afterItSpecified, it, expect, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
@@ -379,7 +379,7 @@ export default function exampleTest() {
 
 <!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, xit, it, Level } from '@ohos/hypium';
 
 export default function describeExampleTest() {
@@ -430,7 +430,7 @@ export default function describeExampleTest() {
 
 <!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, expect, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
@@ -667,7 +667,7 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 
 <!-- @[afterReturn_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -702,7 +702,7 @@ export default function afterReturnTest() {
 
 <!-- @[argumentMatchersForAny_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -737,7 +737,7 @@ export default function argumentMatchersAnyTest() {
 
 <!-- @[argumentMatchersForString_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -771,7 +771,7 @@ export default function argumentMatchersTest() {
 
 <!-- @[argumentMatchersForRegex_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -804,7 +804,7 @@ export default function matchRegexsTest() {
 
 <!-- @[verify_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, MockKit } from '@ohos/hypium';
 
 class ClassName {
@@ -849,7 +849,7 @@ export default function verifyTest() {
 
 <!-- @[ignoreMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -894,7 +894,7 @@ export default function ignoreMockTest() {
 
 <!-- @[clearMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -940,7 +940,7 @@ export default function clearTest() {
 
 <!-- @[afterThrow_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -977,7 +977,7 @@ export default function afterThrowTest() {
 
 <!-- @[returnPromise_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -1018,7 +1018,7 @@ export default function mockPromiseTest() {
 
 <!-- @[verifyTimes_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -1061,7 +1061,7 @@ export default function verifyTimesTest() {
 
 <!-- @[mockStatic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
 
 class ClassName {
@@ -1150,7 +1150,7 @@ Stage模型在测试工程中的TestAbility目录下TestAbility.ets文件中导�
 
 <!-- @[dataDriverAbility_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets) -->
 
-```TypeScript
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Hypium } from '@ohos/hypium';
@@ -1175,25 +1175,25 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
-
-```TypeScript
- import { describe, it } from '@ohos/hypium';
-
- export default function abilityTest() {
-  describe('AbilityTest', () => {
-    it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
-      done();
-    });
-
-    it('testDataDriver', 0, () => {
-    })
-  })
-}
- interface ParmObj {
-   name: string,
-   value: string
+ 
+ ``` TypeScript
+  import { describe, it } from '@ohos/hypium';
+ 
+  export default function abilityTest() {
+   describe('AbilityTest', () => {
+     it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+       done();
+     });
+ 
+     it('testDataDriver', 0, () => {
+     })
+   })
  }
-```
+  interface ParmObj {
+    name: string,
+    value: string
+  }
+ ```
 >**说明:** 
 >
 >若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
