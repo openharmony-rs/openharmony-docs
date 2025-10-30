@@ -167,7 +167,7 @@
    }
 
    function initFd(): number {
-     let filesDir = getContext().filesDir;
+     let filesDir = getHostContext().filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
      AppStorage.setOrCreate<string>('filePath', filePath);
      let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
