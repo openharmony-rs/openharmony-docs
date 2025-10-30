@@ -593,6 +593,51 @@ struct SubComponent {
 
 <!-- @[Param_Use_Scene_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child {
+  @Require @Param count: number[];
+
+  build() {
+    Column() {
+      ForEach(this.count, (item: number) => {
+        Text(`${item}`).fontSize(30)
+        Divider()
+      })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local count: number[] = [1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        Child({ count: this.count })
+        Button('init array').onClick(() => {
+          this.count = [9, 8, 7];
+        })
+        Button('push').onClick(() => {
+          this.count.push(0);
+        })
+        Button('reverse').onClick(() => {
+          this.count.reverse();
+        })
+        Button('fill').onClick(() => {
+          this.count.fill(6);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Date类型变量
 
 \@Param装饰Date类型变量，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
