@@ -172,6 +172,11 @@
    - 可使用setJoinStyle()接口设置画笔转角样式。
 
       <!-- @[arkts_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // 设置画笔转角样式
+      pen.setJoinStyle(drawing.JoinStyle.ROUND_JOIN);
+      ```
 
       JoinStyle转角样式可选分类对应如下：
 
