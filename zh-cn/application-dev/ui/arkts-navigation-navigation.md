@@ -521,7 +521,12 @@ NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的�
    // 移动栈中name为pageTwo的页面到栈顶
    this.pageStack.moveToTop('pageTwo');
    ```
-   <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 移动栈中索引为1的页面到栈顶
+   this.pageStack.moveIndexToTop(1);
+   ```
 
 ### 移动页面
 
