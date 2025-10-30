@@ -781,6 +781,33 @@ struct on_cut_copy_paste {
 
 <!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+            RichEditor(this.options)
+              .onReady(() => {
+                // $r('app.string.BackplaneHighlighting_Text_1')需要替换为开发者所需的资源文件
+                this.controller.addTextSpan(resource.resourceToString($r('app.string.BackplaneHighlighting_Text_1')), {
+                  style: {
+                    fontColor: Color.Black,
+                    fontSize: 15
+                  }
+                })
+              })
+              .width(300)
+              .height(60)
+            // $r('app.string.BackplaneHighlighting_Button_1')需要替换为开发者所需的资源文件
+            Button($r('app.string.BackplaneHighlighting_Button_1'), {
+              buttonStyle: ButtonStyleMode.NORMAL
+            })
+              .height(30)
+              .fontSize(13)
+              .onClick(() => {
+                this.controller.setSelection(0, 2)
+              })
+```
+
 ![alt text](figures/richeditor_image_set_selection.gif)
 
 ## 菜单配置
