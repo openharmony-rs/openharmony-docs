@@ -279,7 +279,7 @@ async function test(){
 
 setPlaybackStrategy(strategy: PlaybackStrategy): Promise\<void>
 
-设置播放策略，只能在initialized状态下调用。通过Promise获取返回值。
+设置播放策略，只能在initialized状态下调用。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +466,7 @@ async function  test(){
 
 setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 
-设置音频静音/取消音频静音。通过Promise获取返回值。
+设置音频静音/取消音频静音。使用Promise异步回调。
 
 从API 20开始，支持设置关闭视频画面/取消关闭视频画面。
 
@@ -2826,7 +2826,7 @@ async function test(){
 
 setSuperResolution(enabled: boolean) : Promise\<void>
 
-动态开启/关闭超分算法，可以在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态调用。使用Promise方式返回结果。
+动态开启/关闭超分算法，可以在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态调用。使用Promise异步回调。
 
 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
 
@@ -2870,7 +2870,7 @@ async function test(){
 
 setVideoWindowSize(width: number, height: number) : Promise\<void>
 
-动态设置超分算法的输出分辨率，可以在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态调用。使用Promise方式返回结果。输入参数须在 320x320 ~ 1920x1080 范围内，单位为像素。通过Promise获取返回值。
+动态设置超分算法的输出分辨率。使用Promise异步回调。可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。输入参数须在 320x320 ~ 1920x1080 范围内，单位为像素。
 
 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
 
