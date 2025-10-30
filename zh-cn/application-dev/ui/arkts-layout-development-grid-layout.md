@@ -540,6 +540,34 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 
     <!-- @[GridColOrderToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrderToNumber.ets) -->
+    
+    ``` TypeScript
+    GridRow({ columns: 12 }) {
+      GridCol({ order: 4, span: 1 }) {
+        Row() {
+          Text('1')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(213,213,213)')
+    
+      GridCol({ order: 3, span: 1 }) {
+        Row() {
+          Text('2')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(150,150,150)')
+    
+      GridCol({ order: 2, span: 1 }) {
+        Row() {
+          Text('3')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(0,74,175)')
+    
+      GridCol({ order: 1, span: 1 }) {
+        Row() {
+          Text('4')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(39,135,217)')
+    }
+    ```
 
     ![zh-cn_image_0000001511580892](figures/zh-cn_image_0000001511580892.png)
 
