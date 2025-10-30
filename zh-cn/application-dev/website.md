@@ -1547,7 +1547,7 @@
         <!--DelEnd-->
       - Test Kit（应用测试服务）<!--test-kit-->
         - [Test Kit简介](application-test/test-kit-overview.md)
-        - 自动化测试框架使用指导<!--arkxtest-->
+        - 自动化测试框架使用指导<!--arkxtest-guidelines-->
           - [单元测试框架使用指导](application-test/unittest-guidelines.md)
           - [UI测试框架使用指导](application-test/uitest-guidelines.md)
           - [白盒性能测试框架使用指导](application-test/perftest-guideline.md)
