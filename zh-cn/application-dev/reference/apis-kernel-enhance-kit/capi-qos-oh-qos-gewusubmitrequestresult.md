@@ -1,6 +1,13 @@
 # OH_QoS_GewuSubmitRequestResult
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @gatieme-->
+<!--Designer: @tanyihua-->
+<!--Tester: @panny060-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
+OH_QoS_GewuSubmitRequest()接口的返回结果，成功时返回请求的 request，失败时 error 会置为对应的错误码 。
 
 **相关模块：** [QoS](capi-qos.md)
 
