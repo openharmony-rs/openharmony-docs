@@ -2671,6 +2671,7 @@
           - [OH_UdsPixelMap](reference/apis-arkdata/capi-udmf-oh-udspixelmap.md)
           - [OH_UdsArrayBuffer](reference/apis-arkdata/capi-udmf-oh-udsarraybuffer.md)
           - [OH_UdsContentForm](reference/apis-arkdata/capi-udmf-oh-udscontentform.md)
+          - [OH_UdsDetails](reference/apis-arkdata/capi-udmf-oh-udsdetails.md)
           - [OH_Utd](reference/apis-arkdata/capi-udmf-oh-utd.md)
       - 错误码<!--arkdata-arkts-errcode-->
         - [关系型数据库错误码](reference/apis-arkdata/errorcode-data-rdb.md)
