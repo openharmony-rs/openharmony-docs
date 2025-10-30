@@ -242,7 +242,7 @@ sendKeyEvent(event: KeyEvent): boolean
 
 | 类型      | 说明                           |
 | ------- | ------------------------------|
-| boolean | 事件发送失败时时返回false，其余情况返回true。 |
+| boolean | 事件发送失败时返回false，其余情况返回true。 |
 
 ### sendMouseEvent<sup>9+</sup>
 
