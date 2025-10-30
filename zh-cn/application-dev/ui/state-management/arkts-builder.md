@@ -170,6 +170,37 @@ struct ParameterMakeBinding {
 
 <!-- @[by_reference_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterReference.ets) -->
 
+``` TypeScript
+class Tmp {
+  public paramA1: string = '';
+}
+
+@Builder
+function overBuilderByReference(params: Tmp) {
+  Row() {
+    Text(`UseStateVarByReference: ${params.paramA1} `)
+  }
+}
+
+@Entry
+@Component
+struct ParameterReference {
+  @State label: string = 'Hello';
+
+  build() {
+    Column() {
+      // 在父组件中调用overBuilderByReference组件时，
+      // 把this.label通过引用传递的方式传给overBuilderByReference组件。
+      overBuilderByReference({ paramA1: this.label })
+      Button('Click me').onClick(() => {
+        // 单击Click me后，UI文本从Hello更改为ArkUI。
+        this.label = 'ArkUI';
+      })
+    }
+  }
+}
+```
+
 ### 按值传递参数
 
 调用\@Builder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@Builder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
