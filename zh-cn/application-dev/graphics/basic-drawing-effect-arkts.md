@@ -44,29 +44,17 @@
 
    可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
 
-   ```ts
-   // BasicEffect.ets
-   brush.setAntiAlias(true);
-   ```
-   <!-- [arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   <!-- @[arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 3. 使用attachBrush()接口给Canvas画布设置画刷。
 
-   ```ts
-   // BasicEffect.ets
-   canvas.attachBrush(brush);
-   ```
-   <!-- [arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   <!-- @[arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
 
 5. 当不需要填充效果时，可以使用detachBrush()接口去除画布中的画刷。
 
-   ```ts
-   // BasicEffect.ets
-   canvas.detachBrush();
-   ```
-   <!-- [arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   <!-- @[arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
 
 
 ## 描边效果
