@@ -1538,7 +1538,7 @@
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
         - [Test Kit Overview](application-test/test-kit-overview.md)
-        - arkXtest User Guide<!--arkxtest-->
+        - arkXtest User Guide<!--arkxtest-guidelines-->
           - [JsUnit User Guide](application-test/unittest-guidelines.md)
           - [UITest User Guide](application-test/uitest-guidelines.md)
           - [PerfTest User Guide](application-test/perftest-guideline.md)
