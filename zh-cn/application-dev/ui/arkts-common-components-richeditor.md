@@ -820,6 +820,94 @@ struct on_cut_copy_paste {
 
 <!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+@Component
+struct PrepareMenu {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State endIndex: number | undefined = 0;
+  onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+    const idsToFilter = [
+      TextMenuItemId.TRANSLATE,
+      TextMenuItemId.SHARE,
+      TextMenuItemId.SEARCH,
+      TextMenuItemId.AI_WRITER
+    ]
+    const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)));
+    // $r('app.media.xxx')需要替换为开发者所需的资源文件
+    let item1: TextMenuItem = {
+      content: 'create1',
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('create1'),
+    }
+    let item2: TextMenuItem = {
+      content: 'create2',
+      id: TextMenuItemId.of('create2'),
+      icon: $r('app.media.startIcon'),
+    }
+    items.push(item1);
+    items.unshift(item2);
+    return items;
+  }
+
+  onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+    if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.COPY)) {
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+      return false;
+    }
+    return false;
+  }
+
+  onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+    // $r('app.media.xxx')需要替换为开发者所需的资源文件
+    let item1: TextMenuItem = {
+      content: 'prepare1_' + this.endIndex,
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('prepare1'),
+    };
+    menuItems.unshift(item1);
+    return menuItems;
+  }
+
+  @State editMenuOptions: EditMenuOptions = {
+    onCreateMenu: this.onCreateMenu,
+    onMenuItemClick: this.onMenuItemClick,
+    onPrepareMenu: this.onPrepareMenu
+  };
+
+  build() {
+    Column() {
+      // $r('app.string.xxx')需要替换为开发者所需的资源文件
+      ComponentCard({
+        title: $r('app.string.Set_Attributes_title_13'),
+        description: $r('app.string.Set_Attributes_title_13_desc')
+      }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan('RichEditor editMenuOptions');
+          })
+          .editMenuOptions(this.editMenuOptions)
+          .onSelectionChange((range: RichEditorRange) => {
+            this.endIndex = range.end;
+          })
+          .height(50)
+          .margin({ top: 100 })
+          .borderWidth(1)
+          .borderColor(Color.Red)
+      }
+    }
+  }
+}
+```
+
 ![alt text](figures/richeditor_on_prepare_menu.gif)
 
 ### 屏蔽系统服务类菜单项
