@@ -163,9 +163,9 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 | Name                                                                                                               | Description                            |
 | ------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| [submit](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit)     | Submits a task.              |
-| [submit_h](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit_h) | Submits a task, and obtains the task handle.|
-| [wait](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#wait)         | Waits until all tasks in the context are complete.        |
+| [submit](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit)     | Submits a task.              |
+| [submit_h](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit_h) | Submits a task, and obtains the task handle.|
+| [wait](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#wait)         | Waits until all tasks in the context are complete.        |
 
 > **NOTE**
 >
