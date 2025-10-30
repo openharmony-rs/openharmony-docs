@@ -464,7 +464,12 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 将栈顶页面替换为pageTwo
+   this.pageStack.replacePath({ name: 'pageTwo', param: 'PageOne Param' });
+   ```
 
 
 ### 页面替换
