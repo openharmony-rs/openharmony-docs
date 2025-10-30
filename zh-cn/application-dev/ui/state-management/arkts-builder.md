@@ -1634,6 +1634,48 @@ MutableBinding的使用规格详见[状态管理API文档](../../reference/apis-
 【正例】
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
 
+``` TypeScript
+import { UIUtils, Binding, MutableBinding } from '@kit.ArkUI';
+
+@ObservedV2
+class GlobalTmp2 {
+  @Trace public strValue: string = 'Hello';
+}
+
+@Builder
+function builderWithTwoParams2(param1: Binding<GlobalTmp2>, param2: MutableBinding<number>) {
+  Column() {
+    Text(`strValue: ${param1.value.strValue}`)
+    Button(`num: ${param2.value}`)
+      .onClick(() => {
+        param2.value += 1; // 修改了MutableBinding类型参数的value属性
+      })
+  }.borderWidth(1)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest2 {
+  @Local GlobalTmp2: GlobalTmp2 = new GlobalTmp2();
+  @Local num: number = 0;
+
+  build() {
+    Column() {
+      Text(`${this.GlobalTmp2.strValue}`)
+      builderWithTwoParams2(UIUtils.makeBinding(() => this.GlobalTmp2),
+        UIUtils.makeBinding<number>(() => this.num,
+          val => {
+            this.num = val;
+          }))
+      Button('Update Values').onClick(() => {
+        this.GlobalTmp2.strValue = 'Hello World 2025';
+        this.num = 1;
+      })
+    }
+  }
+}
+```
+
 ### 在\@Builder装饰的函数内部修改入参内容
 
 不使用[MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。
