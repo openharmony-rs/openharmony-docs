@@ -303,6 +303,19 @@
 
 
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       // 三方框架需实现基于指定节点获取焦点元素信息的逻辑。
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindFocusedAccessibilityNode start instanceId %{public}s, "
+                    "elementId: %{public}ld, requestId: %{public}d, focusType: %{public}d",
+                    instanceId, elementId, requestId, static_cast<int32_t>(focusType));
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 
 
