@@ -167,6 +167,18 @@ struct Index {
 示例在onWindowStageCreate时预创建Web组件加载blank页面，提前启动Render进程，从index跳转到index2时，优化了Web渲染进程启动和初始化的耗时。
 
 <!-- @[entry_ability_window_stage_created_after_page_loaded](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/entry1ability/Entry1Ability.ets) -->
+
+``` TypeScript
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  windowStage.loadContent('pages/Index', (err, data) => {
+    // 创建空的Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+    createNWeb('about：blank', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
+      return;
+    }
+  });
+}
+```
 <!--  -->
 
 ```ts
