@@ -248,6 +248,53 @@ struct ParameterValue {
 创建私有的`@Builder`函数，在`Column`中使用`this.builder()`调用。通过`aboutToAppear`生命周期函数和按钮的点击事件更新`builder_value`，实现UI的动态渲染。
 
 <!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct PrivateBuilder {
+  @State builderValue: string = 'Hello';
+
+  @Builder
+  builder() {
+    Column() {
+      Text(this.builderValue)
+        .width(230)
+        .height(40)
+        .backgroundColor('#ffeae5e5')
+        .borderRadius(20)
+        .margin(12)
+        .textAlign(TextAlign.Center)
+    }
+  }
+
+  aboutToAppear(): void {
+    setTimeout(() => {
+      this.builderValue = 'Hello World';
+    }, 2000);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.builderValue)
+          .width(230)
+          .height(40)
+          .backgroundColor('#ffeae5e5')
+          .borderRadius(20)
+          .textAlign(TextAlign.Center)
+        this.builder()
+        Button('Click to change the builderValue')
+          .onClick(() => {
+            this.builderValue = 'builderValue was clicked';
+          })
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
+}
+```
 示例效果图
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
