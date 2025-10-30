@@ -460,6 +460,56 @@ struct MyComponent {
 
 <!-- @[Param_Restrict_Modify_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictModifyObject.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info('Tom');
+
+  build() {
+    Column() {
+      Text(`Parent info.name ${this.info.name}`)
+      Button('Parent change info')
+        .onClick(() => {
+          // 父组件更改@Local变量，会同步子组件对应@Param变量
+          this.info = new Info('Lucy');
+        })
+      Child({ info: this.info })
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Require @Param info: Info;
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.info.name}`)
+      Button('change info')
+        .onClick(() => {
+          // 错误用法，不允许在子组件中更改@Param变量，编译时会报错
+          // 错误用法：this.info = new Info('Jack');
+        })
+      Button('Child change info.name')
+        .onClick(() => {
+          // 允许在子组件中更改对象中属性，该修改会同步到父组件数据源上，当属性被@Trace装饰时，可观测到对应UI刷新
+          this.info.name = 'Jack';
+        })
+    }
+  }
+}
+```
+
 ## 使用场景
 
 ### 从父组件到子组件变量传递与同步
