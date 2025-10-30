@@ -127,7 +127,7 @@ conn.unregister((err: BusinessError, data: void) => {
 6. 在蜂窝网络状态差的情况下，默认网络可能会切换到其他蜂窝(存在跨网情况)。
 
 本节旨在介绍监控默认网络的变化后，应用报文能够快速迁移到新默认网络上，具体做法如下。
-### 从@kit.NetworkKit中导入connection命名空间。
+### 导入connection命名空间。
 
 <!-- @[net_Connection_create_connection_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
