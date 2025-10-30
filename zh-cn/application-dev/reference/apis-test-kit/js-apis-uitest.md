@@ -28,12 +28,12 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 
 ## 导入模块
 
-ArkTS-Dyn导入模块：
+ArkTS-Dyn：
 ```ts
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
 
-ArkTS-Sta导入模块：
+ArkTS-Sta：
 ```ts
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 ```
