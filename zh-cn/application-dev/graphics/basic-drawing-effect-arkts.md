@@ -117,6 +117,11 @@
 2. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
    <!-- @[arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // 为画布设置画笔
+   canvas.attachPen(pen);
+   ```
 
 3. 使用画笔设置具体的描边效果（可选以下的一个或者多个效果）。
 
