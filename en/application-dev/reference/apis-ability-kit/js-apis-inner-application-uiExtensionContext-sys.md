@@ -471,12 +471,12 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
   onForeground() {
     // Main window ID of the first UIAbility. Replace it with the actual one.
     let primaryWindowId = 123;
-    let secdonaryWant: Want = {
+    let secondaryWant: Want = {
       bundleName: 'com.example.myapplication1',
       abilityName: 'EntryAbility'
     };
     try {
-      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secdonaryWant).then(() => {
+      this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secondaryWant).then(() => {
         console.info(`TestTag:: start succeeded.`);
       }).catch((error: BusinessError) => {
         console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed: ${JSON.stringify(error)}`);

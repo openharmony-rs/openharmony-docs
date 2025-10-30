@@ -22,6 +22,7 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
 Describes the scene resource parameters (**name** and **uri**), which are used to provide the name of a scene resource and the path of the resource file required in the 3D scene.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name of the scene resource. It is customizable.|
@@ -88,6 +89,7 @@ function createNodePromise() : Promise<Node> {
 Describes a result object from raycasting, containing details about the 3D object hit by the ray.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | No| No| 3D scene node hit by the ray. You can use this node to manipulate the target object (for example, moving, rotating, or hiding the object).|
@@ -342,7 +344,28 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 }
 ```
 
+## CameraParameters<sup>21+</sup>
+
+Describes the camera parameters, which are used to define additional configuration options for camera initialization.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| renderingPipeline | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | No  | Yes  | Initial rendering pipeline type. The default value is **FORWARD_LIGHTWEIGHT**.|
+
+## EffectParameters<sup>21+</sup>
+
+Describes the effect parameters.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name    | Type  | Read Only| Optional| Description                                                        |
+| ---- | ---- | ---- | ---- | ---- |
+| effectId | string | No| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**.|
+
 ## SceneResourceFactory
+
 Provides APIs for creating resources, such as cameras and light sources, used in 3D scenes. This class inherits from [RenderResourceFactory](#renderresourcefactory20).
 
 ### createCamera
@@ -353,6 +376,7 @@ Creates a camera based on scene node parameters. This API uses a promise to retu
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
@@ -384,7 +408,52 @@ function createCameraPromise(): Promise<Camera> {
 }
 ```
 
+### createCamera<sup>21+</sup>
+
+createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise\<Camera>
+
+Creates a camera based on scene node parameters and camera parameters. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
+| cameraParams | [CameraParameters](#cameraparameters21) | Yes| Camera parameters.|
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| Promise\<[Camera](js-apis-inner-scene-nodes.md#camera)> | Promise used to return the Camera object created.|
+
+**Example**
+```ts
+import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, CameraParameters,
+  RenderingPipelineType } from '@kit.ArkGraphics3D';
+
+function createCameraPromise(): Promise<Camera> {
+  return new Promise((resolve, reject) => {
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+    let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+    scene.then(async (result: Scene) => {
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let nodeParameter: SceneNodeParameters = { name: "camera1" };
+      let camParameter: CameraParameters = {renderingPipeline: RenderingPipelineType.FORWARD};
+      // Create a camera.
+      let camera: Camera = await sceneFactory.createCamera(nodeParameter, camParameter);
+      resolve(camera);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
 ### createLight
+
 createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
 Creates a light based on the scene node parameters and light type. This API uses a promise to return the result.
@@ -437,6 +506,7 @@ Creates a node. This API uses a promise to return the result.
 | params | [SceneNodeParameters](#scenenodeparameters) | Yes| Scene node parameters.|
 
 **Return value**
+
 | Type| Description|
 | ---- | ---- |
 | Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise used to return the Node object.|
@@ -563,6 +633,7 @@ Creates a geometry object based on the scene node parameters and mesh data. This
 | Promise\<[Geometry](js-apis-inner-scene-nodes.md#geometry)> | Promise used to return the Geometry object created.|
 
 **Example**
+
 ```ts
 import { SceneResourceFactory, Scene, Geometry, CubeGeometry } from '@kit.ArkGraphics3D';
 
@@ -588,7 +659,52 @@ function createGeometryPromise() : Promise<Geometry> {
 }
 ```
 
+### createEffect<sup>21+</sup>
+
+createEffect(params: EffectParameters): Promise\<Effect>
+
+Creates an effect object based on the effect parameters. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| params | [EffectParameters](#effectparameters21) | Yes| Effect parameters.|
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| Promise\<[Effect](./js-apis-inner-scene-resources.md#effect21)> | Promise used to return the Environment object created.|
+
+**Example**
+```ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function createEffect() : Promise<Effect> {
+  return new Promise((resolve, reject) => {
+    let scene: Promise<Scene> = Scene.load();
+    scene.then(async (result: Scene | undefined) => {
+      if (!result) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
+      let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"}
+      let effect: Effect = await sceneFactory.createEffect(params);
+      resolve(effect);
+    }).catch((error: Error) => {
+      console.error('Scene load failed:', error);
+      reject(error);
+    });
+  });
+}
+```
+
+
 ## SceneComponent<sup>20+</sup>
+
 Represents a basic scene component, which is used to describe the component information of a scene node, including the component name and its properties.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D

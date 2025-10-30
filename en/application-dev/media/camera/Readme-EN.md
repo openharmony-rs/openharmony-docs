@@ -34,10 +34,10 @@
   - [Pressure Management (ArkTS)](camera-system-pressure.md)
   - [Camera Controller (ArkTS)](camera-control-center.md)
   <!--Del-->
-  - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo.md)
-  - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case.md)
-  - [Depth Data (for System Applications Only) (ArkTS)](camera-depth-data.md)
-  - [Performance Optimization Practices (for System Applications Only) (ArkTS)](camera-performance-improvement.md)
+  - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-sys.md)
+  - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case-sys.md)
+  - [Depth Data (for System Applications Only) (ArkTS)](camera-depth-data-sys.md)
+  - [Performance Optimization Practices (for System Applications Only) (ArkTS)](camera-performance-improvement-sys.md)
   <!--DelEnd-->
 - Mandatory Capabilities for Camera Application Development (C/C++)<!--camera-dev-native-mandatory-->
   - [Camera Device Management (C/C++)](native-camera-device-management.md)

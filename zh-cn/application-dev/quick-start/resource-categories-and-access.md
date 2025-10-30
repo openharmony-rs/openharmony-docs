@@ -116,16 +116,16 @@ color.json文件的内容如下：
 标准的十六进制颜色值由八位十六进制数字组成，前两位表示透明度，后六位表示颜色值。
 ```json
 {
-    "color": [
-        {
-            "name": "color_hello",
-            "value": "#ffff0000"
-        },
-        {
-            "name": "color_world",
-            "value": "#ff0000ff"
-        }
-    ]
+  "color": [
+    {
+      "name": "color_hello",
+      "value": "#ffff0000"
+    },
+    {
+      "name": "color_world",
+      "value": "#ff0000ff"
+    }
+  ]
 }
 ```
 
@@ -133,16 +133,16 @@ float.json文件的内容如下：
 
 ```json
 {
-    "float": [
-        {
-            "name": "font_hello",
-            "value": "28.0fp"
-        },
-	    {
-            "name": "font_world",
-            "value": "20.0fp"
-        }
-    ]
+  "float": [
+    {
+      "name": "font_hello",
+      "value": "28.0fp"
+    },
+    {
+      "name": "font_world",
+      "value": "20.0fp"
+    }
+  ]
 }
 ```
 
@@ -150,24 +150,24 @@ string.json文件的内容如下：
 
 ```json
 {
-    "string": [
-        {
-            "name": "string_hello",
-            "value": "Hello"
-        },
-	    {
-            "name": "string_world",
-            "value": "World"
-        },
-	    {
-            "name": "message_arrive",
-            "value": "We will arrive at %1$s."
-        },
-        {
-            "name": "message_notification",
-            "value": "Hello, %1$s!,You have %2$d new messages."
-        }
-    ]
+  "string": [
+    {
+      "name": "string_hello",
+      "value": "Hello"
+    },
+    {
+      "name": "string_world",
+      "value": "World"
+    },
+    {
+      "name": "message_arrive",
+      "value": "We will arrive at %1$s."
+    },
+    {
+      "name": "message_notification",
+      "value": "Hello, %1$s!,You have %2$d new messages."
+    }
+  ]
 }
 ```
 
@@ -175,21 +175,21 @@ plural.json文件的内容如下：
 
 ```json
 {
-    "plural": [
+  "plural": [
+    {
+      "name": "eat_apple",
+      "value": [
         {
-            "name": "eat_apple",
-            "value": [
-                {
-                    "quantity": "one",
-                    "value": "%d apple"
-                },
-                {
-                    "quantity": "other",
-                    "value": "%d apples"
-                }
-            ]
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 
@@ -294,15 +294,19 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
   [资源文件示例](#资源文件示例)中显示了.json文件内容，包含color.json、string.json和plural.json，访问应用资源时需先了解.json文件的使用规范。<br/>资源的具体使用方法如下：
 
-  ```ts
-    //通过$r('app.type.name')访问
-    Text($r('app.string.string_hello'))
+  <!-- @[app_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 通过$r('app.type.name')访问
+  // 资源名仅作示例，请替换为实际使用的资源
+  Text($r('app.string.string_hello'))
+    .id('app_resource')
     .fontColor($r('app.color.color_emphasize'))
     .fontSize($r('app.float.text_size_headline1'))
     .fontFamily($r('app.string.font_family_medium'))
     .backgroundColor($r('app.color.color_palette_aux1'))
-
-    Image($r('app.media.app_icon'))
+  
+  Image($r('app.media.app_icon'))
     .border({
       color: $r('app.color.color_palette_aux1'),
       radius: $r('app.float.corner_radius_button'), width: 2
@@ -311,16 +315,16 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
       top: $r('app.float.elements_margin_horizontal_m'),
       bottom: $r('app.float.elements_margin_horizontal_l')
     })
-    .height(200)
-    .width(300)
-
-    // 对于string.json中name为"message_notification"，value为"Hello, %1$s!,You have %2$d new messages."
-    // 该资源存在%1$s、%2$d两个占位符，需要替代为'LiHua'、2，则采用如下方式访问
-    Text($r('app.string.message_notification', 'LiHua', 2))
-    // 对于plural.json中name为"eat_apple"，单数的value为"%d apple"，复数的value为"%d apples"
-    // 访问plural.json资源，第一个参数控制字符串显示单数形式或复数形式，传递1表示单数，大于1表示复数，且在中文环境下始终为复数
-    // 该资源存在%d一个占位符，需要替代为2，则采用如下方式访问
-    Text($r('app.plural.eat_apple', 2, 2))
+    .height(100)
+    .width(100)
+  
+  // 对于string.json中name为"message_notification"，value为"Hello, %1$s!,You have %2$d new messages."
+  // 该资源存在%1$s、%2$d两个占位符，需要替代为'LiHua'、2，则采用如下方式访问
+  Text($r('app.string.message_notification', 'LiHua', 2)).id('app_string_resource')
+  // 对于plural.json中name为"eat_apple"，单数的value为"%d apple"，复数的value为"%d apples"
+  // 访问plural.json资源，第一个参数控制字符串显示单数形式或复数形式，传递1表示单数，大于1表示复数，且在中文环境下始终为复数
+  // 该资源存在%d一个占位符，需要替代为2，则采用如下方式访问
+  Text($r('app.plural.eat_apple', 2, 2)).id('app_plural_resource')
   ```
 
 - 通过本应用上下文获取ResourceManager后，可调用不同[资源管理接口](../reference/apis-localization-kit/js-apis-resource-manager.md)通过资源ID值或资源名称访问各类资源。例如：<br/>`getContext().resourceManager.getStringByNameSync('test')`可获取字符串资源。<br/>`getContext().resourceManager.getRawFd('rawfilepath')`可获取Rawfile所在hap包的descriptor信息，访问rawfile文件时需{fd, offset, length}一起使用。
@@ -345,36 +349,51 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
   2.使用字面量`[模块名].type.name`或变量获取资源。其中，模块名为hsp模块的名称，type为资源类型，name为资源名称，示例如下：
 
-   ```ts
-    @Entry
-    @Component
-    struct Index {
-      text: string = '[hsp].string.test_string';
-      fontSize: string = '[hsp].float.font_size';
-      fontColor: string = '[hsp].color.font_color';
-      image: string = '[hsp].media.string';
-      rawfile: string = '[hsp].icon.png';
-  
-      build() {
-        Row() {
-          // 使用字面量[模块名].type.name获取资源
-          Text($r('[hsp].string.test_string'))
-            .fontSize($r('[hsp].float.font_size'))
-            .fontColor($r('[hsp].color.font_color'))  
-          Image($rawfile('[hsp].icon.png'))
-
-          // 使用变量获取资源
-          Text($r(this.text))
-            .fontSize($r(this.fontSize))
-            .fontColor($r(this.fontColor))
-  
-          Image($r(this.image))
-  
-          Image($rawfile(this.rawfile))
-        }
-      }
-    }
+   <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Second {
+     // [library]仅为示例模块名，请替换为实际模块名
+     // 资源名仅作示例，请替换为实际使用的资源
+     text: string = '[library].string.test_string';
+     fontSize: string = '[library].float.font_size';
+     fontColor: string = '[library].color.font_color';
+     image: string = '[library].media.image';
+     rawfile: string = '[library].icon.png';
+   
+     build() {
+       Column() {
+         // 使用字面量[模块名].type.name获取资源
+         Text($r('[library].string.test_string'))
+           .id('hsp_resource_one')
+           .fontSize($r('[library].float.font_size'))
+           .fontColor($r('[library].color.font_color'))
+         Image($rawfile('[library].icon.png'))
+           .height(100)
+           .width(100)
+   
+         // 使用变量获取资源
+         Text($r(this.text))
+           .id('hsp_resource_two')
+           .fontSize($r(this.fontSize))
+           .fontColor($r(this.fontColor))
+   
+         Image($r(this.image))
+           .height(100)
+           .width(100)
+   
+         Image($rawfile(this.rawfile))
+           .height(100)
+           .width(100)
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
    ```
+
   > **说明** 
   >
   > hsp包名必须写在[]内，rawfile下有多层目录，需要从rawfile下面第一个目录开始写，如`$rawfile('[hsp].oneDir/twoDir/icon.png')`，使用`$r`和`$rawfile`跨包访问HSP包资源无法提供编译时的资源校验，需要开发者自行保证使用资源存在于对应包中。
@@ -396,7 +415,9 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 >
 > - 当前，界面显示时默认使用的系统字体是鸿蒙黑体（HarmonyOS Sans），支持的字符范围是[中文编码字符集GB18030-2022（级别一/级别二）](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3)。若要显示的字符不在鸿蒙黑体支持的字符范围内，系统会在其他支持该字符的字体中选择优先级最高的字体用来显示。关于系统字体的优先级顺序，可以查看设备上的配置文件`system/etc/fontconfig.json`。
 
-```ts
+<!-- @[system_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 Text('Hello')
   .fontColor($r('sys.color.ohos_id_color_emphasize'))
   .fontSize($r('sys.float.ohos_id_text_size_headline1'))
@@ -412,8 +433,8 @@ Image($r('sys.media.ohos_app_icon'))
     top: $r('sys.float.ohos_id_elements_margin_horizontal_m'),
     bottom: $r('sys.float.ohos_id_elements_margin_horizontal_l')
   })
-  .height(200)
-  .width(300)
+  .height(100)
+  .width(100)
 ```
 
 ## 资源匹配
@@ -495,62 +516,67 @@ Image($r('sys.media.ohos_app_icon'))
 
 在`Index.ets`中，分别获取三种语言的资源并显示在文本框中，运行设备当前系统语言为中文，`entry/src/main/ets/pages/Index.ets`的代码如下：
 
-```ts
-import { common } from '@kit.AbilityKit';
+<!-- @[config_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
-  @State englishString: string = "";
-  @State germanString: string = "";
+  @State englishString: string = '';
+  @State japaneseString: string = '';
+
+  build() {
+    Column() {
+    // ···
+      Text(this.getString())
+        .id('config_resource_one')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text(this.englishString)
+        .id('config_resource_two')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Text(this.japaneseString)
+        .id('config_resource_three')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    // ···
+    }
+    .height('100%')
+    .width('100%')
+  }
 
   getString(): string {
     let resMgr = this.getUIContext().getHostContext()?.resourceManager;
     if (!resMgr) {
-      return "";
+      return '';
     }
-    let currentLanguageString: string = "";
+    let currentLanguageString: string = '';
     try {
       let resId = $r('app.string.greetings').id;
 
-      //获取符合当前系统语言地区、颜色模式、分辨率等配置的资源
+      // 获取符合当前系统语言地区、颜色模式、分辨率等配置的资源
       currentLanguageString = resMgr.getStringSync(resId);
 
-      //获取符合当前系统颜色模式、分辨率等配置的英文资源
+      // 获取符合当前系统颜色模式、分辨率等配置的英文资源
       let overrideConfig = resMgr.getOverrideConfiguration();
-      overrideConfig.locale = "en_US"; //指定资源的语言为英语，地区为美国
+      overrideConfig.locale = 'en_US'; // 指定资源的语言为英语，地区为美国
       let overrideResMgr = resMgr.getOverrideResourceManager(overrideConfig);
       this.englishString = overrideResMgr.getStringSync(resId);
 
-      //获取符合当前系统颜色模式、分辨率等配置的日文资源
-      overrideConfig.locale = "ja_JP"; //指定资源的语言为日文，地区为日本
-      overrideResMgr.updateOverrideConfiguration(overrideConfig); //等效于resMgr.updateOverrideConfiguration(overrideConfig)
-      this.germanString = overrideResMgr.getStringSync(resId);
+      // 获取符合当前系统颜色模式、分辨率等配置的日文资源
+      overrideConfig.locale = 'ja_JP'; // 指定资源的语言为日文，地区为日本
+      // 等效于resMgr.updateOverrideConfiguration(overrideConfig)
+      overrideResMgr.updateOverrideConfiguration(overrideConfig);
+      this.japaneseString = overrideResMgr.getStringSync(resId);
     } catch (err) {
       const code = (err as BusinessError).code;
       const message = (err as BusinessError).message;
       console.error(`get override resource failed, error code: ${code}, error msg: ${message}`);
     }
     return currentLanguageString;
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.getString())
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text(this.englishString)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Text(this.germanString)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
   }
 }
 ```

@@ -4,18 +4,21 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
 The **XComponent** is a rendering component that can be used for EGL/OpenGL ES and media data output. It uses the held [NativeWindow](../graphics/native-window-guidelines.md) to render graphics and is typically employed to meet complex custom rendering needs, such as displaying camera preview streams and rendering game graphics. You can specify different rendering methods through the **type** field, which are [XComponentType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10).SURFACE and XComponentType.TEXTURE. For the SURFACE type, you display the custom drawing content on the screen separately. For the TEXTURE type, you combine custom drawing content with the content of the **XComponent** and display it on the screen.
 
-The **XComponent** provides a surface for custom drawing. To draw custom content on this Surface, you can use the [NativeWindow](../graphics/native-window-guidelines.md) API to allocate and submit graphics buffers. This process pushes your custom content to the surface, and the **XComponent** then integrates the surface into the UI and displays the result. By default, the surface matches the size and position of the **XComponent**. Yet, you can adjust its position and size using the [setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API if needed. The **XComponent** is responsible for creating the surface and notifying the application of surface-related information through callbacks. Applications can set the properties of the surface through dedicated APIs. It should be note that the component itself has no awareness of the actual drawn content and does not provide direct rendering APIs.
+The **XComponent** provides a surface for custom drawing. To draw custom content on this Surface, you can use the [NativeWindow](../graphics/native-window-guidelines.md) API to allocate and submit graphics buffers. This process pushes your custom content to the surface, and the **XComponent** then integrates the surface into the UI and displays the result. By default, the surface matches the size and position of the **XComponent**. Yet, you can adjust its position and size using the [setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API if needed. The **XComponent** is responsible for creating the surface and notifying the application of surface-related information through callbacks. Applications can set the properties of the surface through dedicated APIs. It should be noted that the component itself has no awareness of the actual drawn content and does not provide direct rendering APIs.
 
-The **XComponent** is mainly used in three scenarios:
-1. [Managing the surface lifecycle with XComponentController](#managing-the-surface-lifecycle-with-xcomponentcontroller): In this scenario, the **SurfaceId** is obtained on the ArkTS side; lifecycle callbacks and event callbacks (such as touch, mouse, and key event callbacks) are all triggered on the ArkTS side.
-2. [Managing the surface lifecycle with OH_ArkUI_SurfaceHolder](#managing-the-surface-lifecycle-with-oh_arkui_surfaceholder): In this scenario, the **OH_ArkUI_SurfaceHolder** instance is created based on the **ArkUI_NodeHandle** corresponding to the **XComponent**; lifecycle callbacks, event callbacks, accessibility and variable frame rate callbacks are all triggered on the native side.
-3. [Managing the surface lifecycle with NativeXComponent](#managing-the-surface-lifecycle-with-nativexcomponent): In this scenario, the native **XComponent** instance is obtained at the native layer, and the lifecycle callbacks of **XComponent**, as well as touch, mouse, key and other event callbacks are registered on the native side.
+The **XComponent** is mainly used in three scenarios.
+
+| Scenario               | Description                                     | Use Case                                       |
+|--------------------------------------|-----------------------------------------------|------------------------------------------------|
+| [Managing the surface lifecycle with XComponentController](#managing-the-surface-lifecycle-with-xcomponentcontroller) | The **SurfaceId** is obtained on the ArkTS side, with lifecycle callbacks, touch, mouse, and key event callbacks all being managed and triggered there.| Suitable for video playback and camera preview. Requires obtaining SurfaceId on the ArkTS side and passing it to the corresponding API.|
+| [Managing the surface lifecycle with OH_ArkUI_SurfaceHolder](#managing-the-surface-lifecycle-with-oh_arkui_surfaceholder) | The **OH_ArkUI_SurfaceHolder** instance is created based on the **ArkUI_NodeHandle** corresponding to the **XComponent**; lifecycle callbacks, event callbacks, accessibility and variable frame rate callbacks are all triggered on the native side.|  <br>1. Scenarios with complex interaction logic sensitive to performance loss from frequent cross-language calls.<br>2. Scenarios requiring control over the timing of surface lifecycle triggers.|
+| [Managing the surface lifecycle with NativeXComponent](#managing-the-surface-lifecycle-with-nativexcomponent) | The native layer is responsible for obtaining the native **XComponent** instance and registering the lifecycle callbacks of the **XComponent** along with touch, mouse, and key event callbacks.| Similar to the **OH_ArkUI_SurfaceHolder** scenario, but with less rich interaction event APIs; improper use may cause stability issues. SurfaceHolder APIs are recommended instead.|
 
 ## Constraints
 
@@ -56,7 +59,7 @@ This scenario involves obtaining the **SurfaceId** on the ArkTS side, with layou
 
 - onSurfaceCreated
 
-  Triggered after an XComponent is created and a surface is created.
+  Triggering time: This callback is triggered after an XComponent is created and a surface is created.
 
   ArkTS-side sequence
 
@@ -100,7 +103,7 @@ Native side
 
 The following figure shows the core development process.
 
-![Development process](figures/XComponent development process .png)
+![Development process](figures/XComponent-development-process.png)
 
 The following uses the SURFACE type as an example to describe how to use the **XComponent** to pass in **SurfaceId** on the ArkTS side, create a **NativeWindow** instance on the native side, then create an EGL/GLES environment, implement drawing graphics on the main page, and change the graphics color.
 
@@ -126,18 +129,18 @@ The following uses the SURFACE type as an example to describe how to use the **X
     // Override XComponentController to set lifecycle callbacks.
     class MyXComponentController extends XComponentController {
         onSurfaceCreated(surfaceId: string): void {
-            console.log(`onSurfaceCreated surfaceId: ${surfaceId}`)
+            console.info(`onSurfaceCreated surfaceId: ${surfaceId}`)
             nativeRender.SetSurfaceId(BigInt(surfaceId));
         }
     
         onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-            console.log(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`)
+            console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`)
             // Call ChangeSurface to draw content in onSurfaceChanged.
             nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight)
         }
     
         onSurfaceDestroyed(surfaceId: string): void {
-            console.log(`onSurfaceDestroyed surfaceId: ${surfaceId}`)
+            console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`)
             nativeRender.DestroySurface(BigInt(surfaceId))
         }
     }
@@ -249,7 +252,7 @@ The following uses the SURFACE type as an example to describe how to use the **X
     }
     ```
     
-3. The following describes the implementation of the six registered functions on the native side. ChangeColor and DrawPattern use OpenGL(https://developer.huawei.com/consumer/cn/doc/harmonyos-references/opengl) to draw a five-pointed star. ChangeSurface adjusts the surface size based on the input surfaceId, width, and height. SetSurfaceId initializes the native window based on the surfaceId. DestroySurface destroys resources related to the surface. GetXComponentStatus obtains the xcomponent status and returns it to the ArkTS side.
+3. Implement the preceding six registered functions on the native side: With **ChangeColor** and **DrawPattern**, use [OpenGL](https://developer.huawei.com/consumer/en/doc/harmonyos-references/opengl) to render a five-pointed star. With **ChangeSurface**, adjust the surface size based on the input **surfaceId**, **width**, and **height**. With **SetSurfaceId**, initialize the native window using the provided **surfaceId**. With **DestroySurface**, release resources associated with the surface. With **GetXComponentStatus**, obtain the XComponent status and return it to the ArkTS side.
 
     ```cpp
     // Define the PluginManager class.
@@ -533,11 +536,11 @@ The following uses the SURFACE type as an example to describe how to use the **X
         ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
-For details about the preceding test case, see <!--RP2-->[ArkTSXComponent (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)<!--RP2nd-->.
+For details about the preceding example, see <!--RP2-->[ArkTSXComponent (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)<!--RP2nd-->.
 
 ## Managing the Surface Lifecycle with OH_ArkUI_SurfaceHolder
 
-Unlike the scenario where the surface lifecycle is managed with **XComponentController**, this scenario allows applications to create an **OH_ArkUI_SurfaceHolder** object based on the **ArkUI_NodeHandle** corresponding to the **XComponent** component. Through relevant APIs on the **OH_ArkUI_SurfaceHolder**, you can register surface lifecycle callbacks and implement **XComponent** capabilities such as accessibility and variable frame rate. In addition, basic or gesture events on the XComponent can also be listened through the ArkUI NDK APIs of the ArkUI_NodeHandle object. For details, see [Listening for Component Events](./ndk-listen-to-component-events.md). The development mainly involves the following use cases:
+Unlike the scenario where the surface lifecycle is managed with **XComponentController**, this scenario allows applications to create an **OH_ArkUI_SurfaceHolder** object based on the **ArkUI_NodeHandle** corresponding to the **XComponent** component. Through relevant APIs on the **OH_ArkUI_SurfaceHolder**, you can register surface lifecycle callbacks and implement **XComponent** capabilities such as accessibility and variable frame rate. In addition, listening for basic and gesture events on the **XComponent** component can be achieved using ArkUI NDK APIs through the **ArkUI_NodeHandle** object. For details, see [Listening for Component Events](./ndk-listen-to-component-events.md). The development mainly involves the following use cases:
 - For **XComponent** components created on the ArkTS side, you can pass the corresponding FrameNode to the native side to obtain an **ArkUI_NodeHandle** object. For **XComponent** components created on the native side, you can directly obtain the **ArkUI_NodeHandle** object. Then, call the **OH_ArkUI_SurfaceHolder_Create** API to create an **OH_ArkUI_SurfaceHolder** instance.
 - Register lifecycle and event callbacks using the **OH_ArkUI_SurfaceHolder** instance and obtain a **NativeWindow** instance.
 - Use the **NativeWindow** instance with EGL APIs to develop custom drawing content, and allocate and submit buffers to the graphics queue.

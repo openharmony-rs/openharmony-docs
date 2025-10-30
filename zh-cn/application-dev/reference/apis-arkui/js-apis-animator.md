@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供组件动画效果，包括定义动画、启动动画和以相反的顺序播放动画等。
 
@@ -207,7 +207,7 @@ reset(options: AnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -272,7 +272,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[ohos.animator(动画)](errorcode-animator.md)错误码。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -286,6 +286,7 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 <!--deprecated_code_no_check-->
 ```ts
 import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOptions } from '@kit.ArkUI';
+
 let options: AnimatorOptions = {
   duration: 1500,
   easing: "ease",
@@ -300,7 +301,7 @@ let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
   .delay(1000)
-let animatorResult:AnimatorResult = animator.create(options);
+let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
 

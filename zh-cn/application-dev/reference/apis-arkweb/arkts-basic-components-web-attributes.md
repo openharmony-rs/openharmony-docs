@@ -3695,7 +3695,7 @@ gestureFocusMode(mode: GestureFocusMode)
   </html>
   ```
 
-## rotateRenderEffect<sup>21+</sup>
+## rotateRenderEffect<sup>22+</sup>
 
 rotateRenderEffect(effect: WebRotateEffect)
 
@@ -3707,7 +3707,7 @@ rotateRenderEffect(effect: WebRotateEffect)
 
 | 参数名              | 类型                              | 必填   | 说明          |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect21) | 是     | 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。|
+| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) | 是     | 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。|
 
 **示例：**
 
@@ -3905,9 +3905,9 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
           })
           .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
-            console.log(`Found blank screen on ${event.url}.`);
-            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
-            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
           })
       }
     }

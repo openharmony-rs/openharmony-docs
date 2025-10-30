@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 显示一段文本的组件。
 
@@ -1187,6 +1187,68 @@ textContentAlign(textContentAlign: Optional\<TextContentAlign>)
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | 是   | 文本段落在垂直方向的对齐方式。<br/>默认(undefined和异常值情况下)和align属性设置为Center效果一致。|
 
+### lineHeightMultiple<sup>22+</sup>
+
+lineHeightMultiple(value: number | undefined)
+
+使用倍数模式设置文本的行高。
+
+设置行高为入参（value）与字高（fontHeight）的乘积。
+
+>  **说明：**
+>  
+>  当和[lineHeight](ts-basic-components-text.md#lineheight)同时设置时，仅lineHeightMultiple生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | number&nbsp;\|&nbsp;undefined | 是   | 使用倍数行高的倍数数值。<br>取值范围：不小于0。<br/>设置的值不大于0时按0处理，设置为0时，使用默认行高高度，支持小数输入。 |
+
+### minLineHeight<sup>22+</sup>
+
+minLineHeight(value: LengthMetrics | undefined)
+
+设置文本的最小行高，设置值不大于0时，取默认值0。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最小行高，不支持百分比。<br/>设置的值不大于0时按0处理。 |
+
+### maxLineHeight<sup>22+</sup>
+
+maxLineHeight(value: LengthMetrics | undefined)
+
+设置文本的最大行高，设置值不大于0时，最大行高不受限制。
+
+maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最大行高，不支持百分比。<br/>设置的值不大于0时按0处理，设置为0时，最大行高不受限制。|
+
 ## TextSpanType<sup>11+</sup>枚举说明
 
 [Span](ts-basic-components-span.md)类型信息。
@@ -1425,67 +1487,6 @@ Marquee状态回调的返回值。
 | START  | 0  | 跑马灯滚动开始。                     |
 | BOUNCE | 1  | 完成一次跑马灯滚动，如果循环次数不是1，将会多次返回。 |
 | FINISH | 2  | 跑马灯全部循环次数完成。              |
-
-### lineHeightMultiple<sup>22+</sup>
-
-lineHeightMultiple(value: number | undefined)
-
-使用倍数模式设置文本的行高。
-
-设置行高为入参（value）与字高（fontHeight）的乘积。
-
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明             |
-| ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;undefined | 是   | 使用倍数行高的倍数数值。<br>取值范围：[0, FLOAT64_MAX]<br/>设置的值不大于0时按0处理，设置为0时，使用默认行高高度。 |
->  **说明：**
->  
->  当和lineHeight同时设置时，仅lineHeightMultiple生效。
-
-### minLineHeight<sup>22+</sup>
-
-minLineHeight(value: LengthMetrics | undefined)
-
-设置文本的最小行高，设置值不大于0时，取默认值0。
-
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明             |
-| ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最小行高，不支持百分比。<br>取值范围：[0, FLOAT32_MAX]<br/>设置的值不大于0时按0处理。 |
-
-### maxLineHeight<sup>22+</sup>
-
-maxLineHeight(value: LengthMetrics | undefined)
-
-设置文本的最大行高，设置值不大于0时，最大行高不受限制。
-
-maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
-
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明             |
-| ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最大行高，不支持百分比。<br>取值范围：[0, FLOAT32_MAX]<br/>设置的值不大于0时按0处理，设置为0时，最大行高不受限制。|
 
 ## 示例
 

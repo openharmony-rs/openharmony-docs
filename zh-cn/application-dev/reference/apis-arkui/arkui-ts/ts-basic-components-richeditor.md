@@ -4,7 +4,7 @@
 <!--Owner: @carnivore233-->
 <!--Designer: @pssea-->
 <!--Tester: @mateng_Holtens-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持图文混排和文本交互式编辑的组件。
 
@@ -372,6 +372,10 @@ enableKeyboardOnFocus(isEnabled: boolean)
 barState(state: BarState)
 
 设置RichEditor滚动条的显示模式。
+
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -6097,7 +6101,7 @@ struct SetOnWillAttachIME {
         })
         .onWillAttachIME((value:IMEClient) => {
           // 给输入法传递自定义消息
-          const inputConfig: ExtraConfig = {
+          const inputConfig: InputMethodExtraConfig = {
             customSettings: {
               component: 'RichEditor',
               id: 8 as number,

@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
 
@@ -268,7 +268,7 @@ scrollBarColor(value: Color | number | string)
 
 scrollBarColor(color: Color | number | string | Resource)
 
-设置滚动条的颜色。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比， 参数名改为color，并开始支持Resource类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

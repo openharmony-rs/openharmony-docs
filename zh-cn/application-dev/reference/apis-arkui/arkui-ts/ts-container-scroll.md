@@ -5,7 +5,7 @@
 <!--Owner: @shengu_lancer; @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
 
@@ -100,7 +100,7 @@ scrollBarColor(color: Color | number | string)
 
 scrollBarColor(color: Color | number | string | Resource)
 
-设置滚动条的颜色。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -507,7 +507,7 @@ onScrollEdge(event: OnScrollEdgeCallback)
 | ------ | --------------------------------- | ---- | ------------------ |
 | event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | 是   | 滚动到的边缘位置。<br/>当Scroll设置为水平方向滚动时，上报[Edge.Center](ts-appendix-enums.md#edge)表示水平方向起始位置，上报[Edge.Baseline](ts-appendix-enums.md#edge)表示水平方向末尾位置。由于[Edge.Center](ts-appendix-enums.md#edge)和[Edge.Baseline](ts-appendix-enums.md#edge)枚举值已经废弃，推荐使用[onReachStart](ts-container-scrollable-common.md#onreachstart11)、[onReachEnd](ts-container-scrollable-common.md#onreachend11)事件监听是否滚动到边界。 |
 
-### onScrollEnd<sup>(deprecated) </sup>
+### onScrollEnd<sup>(deprecated)</sup>
 
 onScrollEnd(event: () => void)
 
@@ -1037,9 +1037,12 @@ contentSize(): SizeResult
 >
 >  Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
 >
->  当Scroll组件为自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+>  当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
 >
->  当Scroll组件设置为不可滚动、Grid组件固定行列模板导致不可滚动时，获取到的内容总大小为0。
+>  当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+>
+>  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时，获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
+
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

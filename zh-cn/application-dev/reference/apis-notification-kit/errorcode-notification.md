@@ -409,6 +409,24 @@ The specified bundle is invalid.
 
 检查包信息是否正确。
 
+## 1600023 app NotificationSubscriberExtensionAbility未实现
+
+**错误信息**
+
+The application does not implement the NotificationSubscriberExtensionAbility.
+
+**错误描述**
+
+应用未实现NotificationSubscriberExtensionAbility。
+
+**可能原因**
+
+应用未设置或未正确设置[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)。
+
+**处理步骤**
+
+应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)。
+
 ## 1600024 未配置自定义铃声
 
 **错误信息**

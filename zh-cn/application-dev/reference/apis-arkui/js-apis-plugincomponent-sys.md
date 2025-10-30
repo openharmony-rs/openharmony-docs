@@ -4,7 +4,7 @@
 <!--Owner: @dutie123-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于给插件组件的使用方请求组件与数据，使用方发送组件模板和数据。如需实现插件模板的显示，请参考[PluginComponent](arkui-ts/ts-basic-components-plugincomponent-sys.md)。
 
@@ -20,7 +20,7 @@
 import { pluginComponentManager } from '@kit.ArkUI';
 ```
 
-### PushParameterForStage
+### PushParameterForStage<sup>9+</sup>
 
 用于设置Stage模型下使用PluginManager.Push方法时需要传递的参数。
 
@@ -39,7 +39,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 | extraData | [KVObject](js-apis-plugincomponent.md#kvobject)          | 否    | 否    | 附加数据。                                   |
 | jsonPath  | string                         |  否   | 是    | 存放模板路径的[external.json](#externaljson文件说明)文件的路径。 |
 
-### RequestParameterForStage
+### RequestParameterForStage<sup>9+</sup>
 
 用于设置Stage模型下使用PluginManager.Request方法时需要传递的参数。
 
@@ -57,7 +57,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 | data     | [KVObject](js-apis-plugincomponent.md#kvobject)        |   否    | 否    | 附加数据。                                    |
 | jsonPath | string                         |  否   | 是    | 存放模板路径的[external.json](#externaljson文件说明)文件的路径。当jsonPath字段不为空时不触发Request通信。 |
 
-### push
+### push<sup>9+</sup>
 
 push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 
@@ -67,10 +67,12 @@ push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 
 **模型约束：** 此接口仅适用于[Stage模型](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage模型)。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：**
 | 参数名      | 类型                                       | 必填   | 说明           |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| param    | [PushParameterForStage](#pushparameterforstage) | 是    | 组件提供方要发送的参数。  |
+| param    | [PushParameterForStage](#pushparameterforstage9) | 是    | 组件提供方要发送的参数。  |
 | callback | AsyncCallback&lt;void&gt;                | 是    | 此次接口调用的异步回调。 |
 
 **示例：**
@@ -105,7 +107,7 @@ pluginComponentManager.push(
 )
 ```
 
-### request
+### request<sup>9+</sup>
 
 request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallbackParameters&gt;): void
 
@@ -115,11 +117,13 @@ request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallb
 
 **模型约束：** 此接口仅适用于[Stage模型](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage模型)。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                                  |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
-| param    | [RequestParameterForStage](js-apis-plugincomponent-sys.md#requestparameterforstage) | 是    | 组件模板的详细请求信息。                        |
+| param    | [RequestParameterForStage](js-apis-plugincomponent-sys.md#requestparameterforstage9) | 是    | 组件模板的详细请求信息。                        |
 | callback | AsyncCallback&lt;[RequestCallbackParameters](js-apis-plugincomponent.md#requestcallbackparameters)&nbsp;\|&nbsp;void&gt; | 是    | 此次请求的异步回调，通过回调接口的参数返回接收请求的数据。 |
 
 **示例：**

@@ -18,10 +18,10 @@ Describes the command that can be sent by a cast controller.
 
 **System capability**: SystemCapability.Multimedia.AVSession.AVCast
 
-| Name     | Type                                             | Mandatory| Description          |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)     | Yes  | Command. The parameters carried in each command are different. For details, see [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10).|
-| parameter | [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8) &#124; number &#124; string &#124; [LoopMode](arkts-apis-avsession-e.md#loopmode10) | No  | Parameters carried in the command.|
+| Name     | Type                                             | Read-Only| Optional| Description          |
+| --------- | ------------------------------------------------- | ---- |---- | -------------- |
+| command   | [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)     |No| No | Command. The parameters carried in each command are different. For details, see [AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10).|
+| parameter | [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8) &#124; number &#124; string &#124; [LoopMode](arkts-apis-avsession-e.md#loopmode10) | No| Yes  | Parameters carried in the command.|
 
 ## CastDisplayInfo<sup>12+</sup>
 
@@ -53,7 +53,7 @@ Describes the media metadata.
 | author          | string                  | No  | Yes  | Author.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
 | avQueueName<sup>12+</sup>       | string                  | No  | Yes  | Playlist name.           |
 | avQueueId<sup>11+</sup>       | string                  | No  | Yes  | Unique ID of the playlist.           |
-| avQueueImage<sup>11+</sup>    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) &#124; string | No  | Yes  | Cover image of the playlist, which can be pixel data of an image or an image path (local path or Internet path). Applications call **setAVMetadata** to set the image data.<br>- If the data type is set to **PixelMap**, the data obtained by calling **getAVMetadata** is the pixel data of an image.<br>- If the data type is set to **url**, the data obtained is an image path. |
+| avQueueImage<sup>11+</sup>    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) &#124; string | No  | Yes  | Cover image of the playlist,<br>which can be pixel data of an image or an image path (local path or Internet path). Applications call **setAVMetadata** to set the image data.<br>- If the data type is set to **PixelMap**, the data obtained by calling **getAVMetadata** is the pixel data of an image.<br>- If the data type is set to **url**, the data obtained is an image path. |
 | album           | string                  | No  | Yes  | Album name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
 | writer          | string                  | No  | Yes  | Writer.<br>**Atomic service API**: This API can be used in atomic services since API version 12.            |
 | composer        | string                  | No  | Yes  | composer.            |
@@ -111,10 +111,10 @@ Describes the properties of an item in the playlist.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name        | Type                                       | Mandatory| Description                       |
-| ------------ | ------------------------------------------ | ---- | --------------------------- |
-| itemId       | number                                     | Yes  | ID of an item in the playlist.         |
-| description  | [AVMediaDescription](#avmediadescription10)  | No  | Media metadata of the item in the playlist.  |
+| Name        | Type                                       | Read-Only| Optional| Description                       |
+| ------------ | ------------------------------------------ | ---- | --- |--------------------------- |
+| itemId       | number                                     |  No| No| ID of an item in the playlist.         |
+| description  | [AVMediaDescription](#avmediadescription10)  | No  | Yes| Media metadata of the item in the playlist.  |
 
 ## AVPlaybackState<sup>10+</sup>
 
@@ -122,22 +122,22 @@ Describes the information related to the media playback state.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name        | Type                                 | Mandatory| Description    |
-| ------------ | ------------------------------------- | ---- | ------- |
-| state        | [PlaybackState](arkts-apis-avsession-e.md#playbackstate10)       | No  | Playback state.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| speed        | number                                | No  | Playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| position     | [PlaybackPosition](#playbackposition10) | No  | Playback position.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| bufferedTime | number                                | No  | Buffered time.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| loopMode     | [LoopMode](arkts-apis-avsession-e.md#loopmode10)                 | No  | Loop mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isFavorite   | boolean                               | No  | Whether the media asset is marked as a favorite. **true** if marked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| activeItemId<sup>10+</sup> | number                  | No  | ID of the item that is being played.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| volume<sup>10+</sup> | number                  | No  | Media volume.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| maxVolume<sup>11+</sup> | number                    | No  | Maximum volume.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| muted<sup>11+</sup>     | boolean                   | No  | Mute status. **true** if muted.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| duration<sup>11+</sup>     | number                   | No  | Duration of the media asset.|
-| videoWidth<sup>11+</sup>  | number                  | No  | Video width of the media asset, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| videoHeight<sup>11+</sup> |  number                 | No  | Video height of the media asset, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| extras<sup>10+</sup> | {[key: string]: Object}       | No  | Custom media data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name        | Type                                 | Read-Only| Optional| Description    |
+| ------------ | ------------------------------------- | ---- | ---- | ------- |
+| state        | [PlaybackState](arkts-apis-avsession-e.md#playbackstate10)       | No| Yes | Playback state.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| speed        | number                                | No|Yes  | Playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| position     | [PlaybackPosition](#playbackposition10) | No| Yes  | Playback position.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| bufferedTime | number                                | No | Yes | Buffered time.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| loopMode     | [LoopMode](arkts-apis-avsession-e.md#loopmode10)                 | No | Yes| Loop mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| isFavorite   | boolean                               | No| Yes | Whether the media asset is marked as a favorite. **true** if marked, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| activeItemId | number                  | No|  Yes| ID of the item that is being played.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| volume | number                  | No |  Yes | Media volume.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| maxVolume<sup>11+</sup> | number                    | No | Yes| Maximum volume.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| muted<sup>11+</sup>     | boolean                   | No | Yes| Whether the media asset is muted. **true** if muted, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| duration<sup>11+</sup>     | number                   | No| Yes | Duration of the media asset.|
+| videoWidth<sup>11+</sup>  | number                  | No  | Yes| Video width of the media asset, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| videoHeight<sup>11+</sup> |  number                 | No |Yes | Video height of the media asset, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| extras | Record\<string, Object\>       | No | Yes| Custom media data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## PlaybackPosition<sup>10+</sup>
 
@@ -147,10 +147,10 @@ Describes the information related to the playback position.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name       | Type  | Mandatory| Description              |
-| ----------- | ------ | ---- | ------------------ |
-| elapsedTime | number | Yes  | Elapsed time, in ms.|
-| updateTime  | number | Yes  | Updated time, in ms.|
+| Name       | Type  | Read-Only| Optional| Description              |
+| ----------- | ------ | ---- |---- | ------------------ |
+| elapsedTime | number | No| No  | Elapsed time, in ms.|
+| updateTime  | number | No| No  | Updated time, in ms.|
 
 ## CallMetadata<sup>11+</sup>
 
@@ -160,11 +160,11 @@ Describes the properties related to call metadata.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name           | Type                     | Mandatory| Description              |
-| --------------- |-------------------------| ---- |---------------------------------------------------------------------|
-| name            | string                  | No   | Name (alias) of the caller.   |
-| phoneNumber     | string                  | No   | Phone number of the caller.           |
-| avatar          | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)          | No   | Profile picture of the caller.           |
+| Name           | Type                     |Read-Only| Optional| Description              |
+| --------------- |-------------------------| ---- | ---- |---------------------------------------------------------------------|
+| name            | string                  | No | Yes  | Name (alias) of the caller.   |
+| phoneNumber     | string                  | No | Yes | Phone number of the caller.           |
+| avatar          | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)          | No|Yes  | Profile picture of the caller.           |
 
 ## AVCallState<sup>11+</sup>
 
@@ -174,10 +174,10 @@ Describes the properties related to the call state.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name           | Type                     | Mandatory| Description              |
-| --------------- |-------------------------  | ---- |---------------------------------------------------------------------|
-| state           | [CallState](arkts-apis-avsession-e.md#callstate11)                 | Yes   | Call state.     |
-| muted           | boolean                   | Yes   | Whether the microphone is muted.<br>**true**: The microphone is muted.<br>**false**: The microphone is not muted.|
+| Name           | Type                     |Read-Only| Optional| Description              |
+| --------------- |-------------------------  | ---- | ---- |---------------------------------------------------------------------|
+| state           | [CallState](arkts-apis-avsession-e.md#callstate11)                 | No| No   | Call state.     |
+| muted           | boolean                   | No| No   | Whether the microphone is muted. **true** if muted, **false** otherwise.|
 
 ## DeviceInfo<sup>10+</sup>
 
@@ -204,9 +204,9 @@ Describes the information related to the output device.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
-| Name      | Type          | Mandatory| Description                  |
-| ---------- | -------------- | ---- | ---------------------- |
-| devices | Array\<DeviceInfo\> | Yes  | Output devices.   |
+| Name      | Type          | Read-Only| Optional| Description                  |
+| ---------- | -------------- | ---- | ---- | ---------------------- |
+| devices | Array\<[DeviceInfo](#deviceinfo10)\>|No| No | Output devices.   |
 
 ## AVControlCommand<sup>10+</sup>
 
@@ -229,9 +229,9 @@ Describes the properties related to the semi-modal window that is started for ca
 
 **System capability**: SystemCapability.Multimedia.AVSession.AVCast
 
-| Name           | Type                     | Mandatory| Description              |
-| --------------- |-------------------------| ---- |---------------------------------------------------------------------|
-| sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | No  | Session type. The default value is **'audio'**.<br>Currently, only the **'audio'** and **'video'** session types are supported. If **'voice_call'** and **'video_call'** are passed, they are treated as the default value **'audio'**.           |
+| Name           | Type                     | Read-Only| Optional| Description              |
+| --------------- |-------------------------| ---- |  ---- |---------------------------------------------------------------------|
+| sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | No| Yes | Session type. The default value is **audio**.<br>Currently, only the **audio** and **video** session types are supported. If **voice_call** and **video_call** are passed, they are treated as the default value **audio**.           |
 
 ## AudioCapabilities<sup>20+</sup>
 

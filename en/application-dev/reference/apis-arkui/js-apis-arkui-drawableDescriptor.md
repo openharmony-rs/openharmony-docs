@@ -44,7 +44,7 @@ Represents the result of loading an image resource or URI.
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
 let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($('app.media.gif'), this.options)
+let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options)
 try {
     // You can preload animated image resources into the memory.
     let result: DrawableDescriptorLoadedResult = this.drawable.loadSync()
@@ -519,14 +519,14 @@ Provides the configuration options for animation playback, including the playbac
 | :--------- | :----- | :----| :----| :-------------------------------------- |
 | duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 
 **Example**
 
 ```ts
 import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
-import image from '@kit.ImageKit';
+import { image } from '@kit.ImageKit';
 
 @Entry
 @Component
@@ -542,9 +542,13 @@ struct Example {
   @State animated?: DrawableDescriptor = undefined;
 
   aboutToAppear() {
+    // Replace $r('app.media.png1') with the image resource file you use.
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png1')));
+     // Replace $r('app.media.png2') with the image resource file you use.
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png2')));
+     // Replace $r('app.media.png3') with the image resource file you use.
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png3')));
+     // Replace $r('app.media.png4') with the image resource file you use.
     this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png4')));
     this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
   }
@@ -674,6 +678,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } fro
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Replace $r('app.media.gif') with the image resource file you use.
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -707,6 +712,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor, AnimationController } fro
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Replace $r('app.media.gif') with the image resource file you use.
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -760,6 +766,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1, autoPlay: false };
+  // Replace $r('app.media.gif') with the image resource file you use.
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -796,6 +803,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -832,7 +840,8 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
-  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($('app.media.gif'), this.options);
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
     Column() {
@@ -868,6 +877,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   build() {
@@ -910,6 +920,7 @@ import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 @Component
 struct Example {
   options: AnimationOptions = { duration: 1000, iterations: -1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
   @State animated: AnimatedDrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
 
   statusToString(status: AnimationStatus): string {

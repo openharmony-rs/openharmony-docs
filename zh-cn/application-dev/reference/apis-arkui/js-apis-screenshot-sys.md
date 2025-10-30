@@ -73,7 +73,7 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -133,7 +133,7 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -177,7 +177,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 
@@ -249,7 +249,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**需要权限**：ohos.permission.CAPTURE_SCREEN，仅系统应用可用。
+**需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
 **参数：**
 

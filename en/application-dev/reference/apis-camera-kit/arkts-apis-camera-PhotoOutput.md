@@ -1182,7 +1182,7 @@ function unregisterPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): voi
 
 ## isPhotoQualityPrioritizationSupported<sup>21+</sup>
 
-isPhotoQualityPrioritizationSupported(quality: PhotoQualityPrioritization): boolean
+isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPrioritization): boolean
 
 Checks whether the specified photo quality prioritization strategy is supported.
 
@@ -1194,7 +1194,7 @@ Checks whether the specified photo quality prioritization strategy is supported.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | ----------- | ---------------------- | ---- | ------------------------------------------ |
-| quality | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
+| qualityPrioritization | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
 
 **Return value**
 
@@ -1208,7 +1208,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID     | Error Message    |
 | ------------- | --------------- |
-| 7400201 |  Camera service fatal error. |
+| 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
 **Example**
 
@@ -1217,10 +1217,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import camera from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
-function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrioritization): boolean {
+function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
   let isSupported: boolean = false;
   try {
-    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+    isSupported = photoOutput.isPhotoQualityPrioritizationSupported(qualityPrioritization);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The isPhotoQualityPrioritizationSupported call failed. error code: ${err.code}`);
@@ -1231,13 +1231,11 @@ function isPhotoQualityPrioritizationSupported(quality: camera.PhotoQualityPrior
 
 ## setPhotoQualityPrioritization<sup>21+</sup>
 
-setPhotoQualityPrioritization(quality: PhotoQualityPrioritization): void
+setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization): void
 
 Sets the photo quality prioritization strategy.
 
-Before the setting, do the following checks:
-
-Call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21) to check whether the device supports the specified photo quality prioritization strategy.
+Before setting the strategy, you can call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsupported21) to check whether the device supports the specified photo quality prioritization strategy.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -1247,7 +1245,7 @@ Call [isPhotoQualityPrioritizationSupported](#isphotoqualityprioritizationsuppor
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| quality  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
+| qualityPrioritization  | [PhotoQualityPrioritization](arkts-apis-camera-e.md#photoqualityprioritization21) | Yes | Photo quality prioritization strategy.|
 
 **Error codes**
 
@@ -1256,7 +1254,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID   | Error Message                                          |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
-| 7400201  | Camera service fatal error. |
+| 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
 **Example**
 
@@ -1265,9 +1263,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import camera from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
-function setPhotoQualityPrioritization(quality: camera.PhotoQualityPrioritization): void {
+function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {
   try {
-    photoOutput.setPhotoQualityPrioritization(quality);
+    photoOutput.setPhotoQualityPrioritization(qualityPrioritization);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);

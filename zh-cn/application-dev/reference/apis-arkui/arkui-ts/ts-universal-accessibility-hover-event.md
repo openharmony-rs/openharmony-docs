@@ -4,7 +4,7 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 在开启无障碍模式后，Touch事件会转换为无障碍悬浮事件。
 

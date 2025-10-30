@@ -582,13 +582,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { call } from '@kit.TelephonyKit';
 let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
     console.info("on callStateChangeEx, data:" + JSON.stringify(data));
 }
 observer.on('callStateChangeEx', callback);
 // You can pass the callback of the on method to cancel listening for a certain type of callback. If you do not pass the callback, you will cancel listening for all callbacks.
-observer.off('callStateChange', callback);
-observer.off('callStateChange');
+observer.off('callStateChangeEx', callback);
+observer.off('callStateChangeEx');
 ```
 
 
@@ -1070,11 +1071,11 @@ Enumerates SIM card types and states.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type               | Mandatory| Description                                                     |
-| ------------------- | ----------------------------------- | ---- | --------------------------------------------------------  |
-| type                | [CardType](js-apis-sim.md#cardtype7) | Yes  | SIM card type.|
-| state               | [SimState](js-apis-sim.md#simstate) | Yes  | SIM card state.|
-| reason<sup>8+</sup> | [LockReason](#lockreason8)          | Yes  | SIM card lock type.                                            |
+|     Name           |                 Type               | Read-Only|Optional| Description  |
+| ------------------- | -----------------------------------|---- | ---- | --------------------------------------------------------  |
+| type                | [CardType](js-apis-sim.md#cardtype7) | No |No| SIM card type.|
+| state               | [SimState](js-apis-sim.md#simstate) | No|  No| SIM card state.|
+| reason<sup>8+</sup> | [LockReason](#lockreason8)          | No | No| SIM card lock type.                                            |
 
 
 ## CallStateInfo<sup>11+</sup>
@@ -1083,10 +1084,10 @@ Defines information about the call status.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
-|     Name           |                 Type                   | Mandatory| Description    |
-| ------------------- | -------------------------------------- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | Yes  | Call type.|
-| number              | string                                 | Yes  | Phone number.|
+|     Name           |                 Type                   | Read-Only| Optional| Description    |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CallState](js-apis-call.md#callstate) | No  | No  | Call type.|
+| number              | string                                 | No  | No  | Phone number.|
 
 
 ## DataConnectionStateInfo<sup>11+</sup>

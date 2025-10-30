@@ -180,6 +180,31 @@ import { display } from '@kit.ArkUI';
 | physicalWidth   | number | 是 | 否 | 设备的宽度，单位为px，该参数为大于0的整数。|
 | physicalHeight  | number | 是 | 否 | 设备的高度，单位为px，该参数为大于0的整数。|
 
+## BrightnessInfo<sup>22+</sup>
+屏幕亮度信息。此类型中的信息均来自底层屏幕信息数据。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称                        | 类型      | 只读 | 可选 | 说明               |
+| --------------------------- | -------- | ---- | ---- | ------------------ |
+| currentHeadroom             | number    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。|
+| maxHeadroom                 | number    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。|
+| sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
+
+## BrightnessCallback<sup>22+</sup>
+监听屏幕亮度信息时使用的回调函数类型。
+
+type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 参数名             | 类型 | 必填 | 说明               |
+| ----------------- | ---- | ---- | ------------------|
+| data1             | T1   | 是   | 表示displayId，类型为number。           |
+| data2             | T2   | 是   | 表示brightnessInfo，类型为[BrightnessInfo](#brightnessinfo22)。           |
+
 ## ScreenShape<sup>18+</sup>
 
 显示设备的屏幕形状枚举。
@@ -271,6 +296,51 @@ try {
   displayClass = display.getDisplayByIdSync(displayId);
 } catch (exception) {
   console.error(`Failed to get display. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## display.getBrightnessInfo<sup>22+</sup>
+
+getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+
+获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型                      | 必填 | 说明       |
+| ------ | ------------------------- | ---- |----------|
+| displayId     | number             | 是   | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。|
+
+**返回值：**
+
+| 类型                           | 说明                                           |
+| ------------------------------| ----------------------------------------------|
+| [BrightnessInfo](#brightnessinfo22)  | 返回displayId对应屏幕的亮度信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**示例：**
+
+```ts 
+import { display } from '@kit.ArkUI';
+
+try {
+  let brightNessInfo = display.getBrightnessInfo(0);
+  console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
+} catch (error) {
+  console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -765,6 +835,90 @@ let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
 display.off('foldStatusChange', callback);
 ```
 
+## display.on('brightnessInfoChange')<sup>22+</sup>
+
+on(type: 'brightnessInfoChange', callback: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+
+开启所有屏幕亮度信息变化的监听。如果屏幕不支持HDR，监听到的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number， [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**示例：**
+
+```ts
+import { BrightnessCallback } from '@kit.BasicServicesKit';
+
+let callback = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.on("brightnessInfoChange", callback);
+} catch (error) {
+  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+}
+```
+
+## display.off('brightnessInfoChange')<sup>22+</sup>
+
+off(type: 'brightnessInfoChange', callback?: [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)>): void
+
+关闭所有屏幕亮度信息状态变化的监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。表示brightnessInfo状态发生改变。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。参数1为dispalyId，参数2为屏幕亮度信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**示例：**
+
+```ts
+import { BrightnessCallback } from '@kit.BasicServicesKit';
+
+let callback = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.off("brightnessInfoChange", callback);
+} catch (error) {
+  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.on('foldAngleChange')<sup>12+</sup>
 
 on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
@@ -846,7 +1000,7 @@ display.off('foldAngleChange', callback);
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
-开启屏幕截屏、投屏、录屏状态变化的监听。
+开启设备的屏幕显示信息是否被获取的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -856,8 +1010,8 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备截屏、投屏或者录屏状态发生变化。|
-| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备截屏、投屏或录屏时状态发生变化。true表示设备开始投屏或者录屏，false表示结束投屏或者录屏；截屏仅返回一次true。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
 
 **错误码：**
 
@@ -883,7 +1037,7 @@ display.on('captureStatusChange', callback);
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭屏幕截屏、投屏、录屏状态变化的监听。
+关闭设备的屏幕显示信息是否被获取的监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -893,8 +1047,8 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备截屏、投屏、录屏状态发生变化。|
-| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备截屏、投屏或录屏状态发生变化。true表示设备开始投屏或者录屏，false表示结束投屏或者录屏；截屏仅返回一次true。若无此参数，则取消注册截屏、投屏、录屏状态变化监听的所有回调函数。|
+| type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态发生变化。|
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
 
 **错误码：**
 
@@ -922,7 +1076,7 @@ display.off('captureStatusChange', callback);
 ## display.isCaptured<sup>12+</sup>
 isCaptured(): boolean
 
-检查设备是否正在截屏、投屏、录屏。
+检查设备的屏幕显示信息是否被获取。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -932,7 +1086,7 @@ isCaptured(): boolean
 
 | 类型 | 说明 |
 | ----------------------------------------------- | ------------------------------------------------------- |
-| boolean | boolean值，返回当前设备是否有截屏、投屏或者录屏。true表示有截屏、投屏、录屏，否则返回false。|
+| boolean | boolean值，返回设备的屏幕显示信息是否存在被获取的情况。返回true表示设备的屏幕信息存在被获取的情况，可能为：设备正处于截屏、投屏、录屏状态，或已创建虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)；返回false则表示设备的屏幕信息不存在被获取的情况。|
 
 **错误码：**
 

@@ -26,8 +26,9 @@ Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调�
 >
 > 另外，网页的内容宽度也会限制缩小的比例。
 
-```ts
-// xxx.ets
+<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -50,8 +51,9 @@ ArkWeb默认支持通过`Ctrl`+按键`'-'/'+'` 或者 `Ctrl`+鼠标滚轮进行�
 
 通过拦截键盘事件来阻止按键缩放：
 
-```ts
-// xxx.ets
+<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { KeyCode } from '@kit.InputKit';
 
@@ -65,11 +67,11 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onKeyPreIme((event) => {
-          if (event.type == KeyType.Down &&
-              event.getModifierKeyState &&
-              event.getModifierKeyState(['Ctrl']) &&
-              (event.keyCode == KeyCode.KEYCODE_MINUS || event.keyCode == KeyCode.KEYCODE_EQUALS ||
-               event.keyCode == KeyCode.KEYCODE_NUMPAD_SUBTRACT || event.keyCode == KeyCode.KEYCODE_NUMPAD_ADD)) {
+          if (event.type === KeyType.Down &&
+          event.getModifierKeyState &&
+          event.getModifierKeyState(['Ctrl']) &&
+            (event.keyCode === KeyCode.KEYCODE_MINUS || event.keyCode === KeyCode.KEYCODE_EQUALS ||
+              event.keyCode === KeyCode.KEYCODE_NUMPAD_SUBTRACT || event.keyCode === KeyCode.KEYCODE_NUMPAD_ADD)) {
             return true;
           }
           return false;
@@ -104,10 +106,14 @@ struct WebComponent {
 应用可以通过[onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。
 该接口事件对应手势事件(双指缩放)，`event.newScale`对应网页属性`visualViewport.scale`。
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebManagementZooming]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebManagementZooming_';
 @Entry
 @Component
 struct WebComponent {
@@ -117,7 +123,7 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
         .onScaleChange((event) => {
-          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          hilog.info(DOMAIN, TAG, BUNDLE, 'onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
         })
     }
   }
@@ -138,11 +144,15 @@ struct WebComponent {
 
 `zoomIn`将当前网页进行放大，比例为25%；`zoomOut`将当前网页进行缩小，比例为20%。
 
-```ts
-// xxx.ets
+<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebManagementZooming]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebManagementZooming_';
 @Entry
 @Component
 struct WebComponent {
@@ -154,7 +164,7 @@ struct WebComponent {
           try {
             this.controller.zoomIn();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Button('zoomOut')
@@ -162,7 +172,7 @@ struct WebComponent {
           try {
             this.controller.zoomOut();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -176,11 +186,15 @@ struct WebComponent {
 
 `zoom`基于当前网页比例进行缩放，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。
 
-```ts
-// xxx.ets
+<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebManagementZooming]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebManagementZooming_';
 @Entry
 @Component
 struct WebComponent {
@@ -192,14 +206,14 @@ struct WebComponent {
       TextInput()
         .type(InputType.NUMBER_DECIMAL)
         .onChange((value)=>{
-            this.factor = Number(value);
+          this.factor = Number(value);
         })
       Button('zoom')
         .onClick(() => {
           try {
             this.controller.zoom(this.factor);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -218,17 +232,24 @@ struct WebComponent {
 factor = 100 * targetFactor / pageFactor
 ```
 
-```ts
-// xxx.ets
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebManagementZooming]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebManagementZooming_';
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   @State targetFactor: number = 1;
+  // This represents the page zoom level
   @State pageFactor: number = 100;
+  // Represents the integer 100
+  intNumber: number = 100;
 
   build() {
     Column() {
@@ -240,16 +261,16 @@ struct WebComponent {
       Button('zoom')
         .onClick(() => {
           try {
-            let factor = this.targetFactor * 100 / this.pageFactor;
+            let factor = this.targetFactor * this.intNumber / this.pageFactor;
             this.controller.zoom(factor);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
         .zoomAccess(true)
         .onScaleChange((event) => {
-          console.info('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
+          hilog.error(DOMAIN, TAG, BUNDLE, 'onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale);
           this.pageFactor = event.newScale;
         })
     }

@@ -44,7 +44,9 @@ libudmf.so, libhilog_ndk.z.so
 
 ## 引用头文件
 
-```c
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <cstdio>
 #include <cstring>
 #include <database/udmf/utd.h>
@@ -57,6 +59,7 @@ libudmf.so, libhilog_ndk.z.so
 #undef LOG_TAG
 #define LOG_TAG "MY_LOG"
 ```
+
 ## 通过不同方式获取不同类型数据并且比较它们之间的关系
 
 下面以获取纯文本数据的查询场景为例，说明如何使用UTD。
@@ -69,18 +72,20 @@ libudmf.so, libhilog_ndk.z.so
 7. 比较两种方式获取到的typeIds1[0]是否是typeIds2[0]的高层级类型。
 8. 使用结束后，删除上述步骤中产生的指针。
 
-```c
+<!-- @[uniform_data_type_descriptors_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 1. 通过文件后缀名获取纯文本类型的UTD的typeId
 unsigned int typeIds1Count = 0;
-const char** typeIds1 = OH_Utd_GetTypesByFilenameExtension(".txt", &typeIds1Count);
+const char **typeIds1 = OH_Utd_GetTypesByFilenameExtension(".txt", &typeIds1Count);
 OH_LOG_INFO(LOG_APP, "the count of typeIds1 is %{public}u", typeIds1Count);
 // 2. 通过MIME类型获取typeId
 unsigned int typeIds2Count = 0;
-const char** typeIds2 = OH_Utd_GetTypesByMimeType("text/plain", &typeIds2Count);
+const char **typeIds2 = OH_Utd_GetTypesByMimeType("text/plain", &typeIds2Count);
 OH_LOG_INFO(LOG_APP, "the count of typeIds2 is %{public}u", typeIds2Count);
 // 3. 使用以上两个步骤获取到的typeId创建UTD实例对象。
-OH_Utd* utd1 = OH_Utd_Create(typeIds1[0]);
-OH_Utd* utd2 = OH_Utd_Create(typeIds2[0]);
+OH_Utd *utd1 = OH_Utd_Create(typeIds1[0]);
+OH_Utd *utd2 = OH_Utd_Create(typeIds2[0]);
 // 4. 比较两种方式获取到的typeId对应的UTD是否相同
 bool isEquals = OH_Utd_Equals(utd1, utd2);
 if (isEquals) {
@@ -107,7 +112,7 @@ bool isHigher = OH_Utd_IsHigher(typeIds1[0], typeIds2[0]);
 if (isHigher) {
     OH_LOG_INFO(LOG_APP, "typeIds1[0] is higher typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0]  is not higher typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] is not higher typeIds2[0]");
 }
 // 8. 销毁OH_Utd_GetTypesByFilenameExtension与OH_Utd_GetTypesByMimeType函数获取到的指针，同时销毁UTD指针
 OH_Utd_DestroyStringList(typeIds1, typeIds1Count);

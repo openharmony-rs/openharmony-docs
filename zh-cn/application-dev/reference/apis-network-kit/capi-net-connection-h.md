@@ -633,7 +633,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 **描述**
 
-设置系统级代理自动配置（PAC）脚本地址。
+设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
 
 **需要权限：** ohos.permission.SET_PAC_URL
 

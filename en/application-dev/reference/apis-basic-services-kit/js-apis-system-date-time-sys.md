@@ -429,7 +429,7 @@ For details about the supported system time zones, see API [I18n.SystemLocaleMan
 
 setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
 
-Sets the switch status of the automatic time setting. This API uses a promise to return the result.
+Sets the status of the automatic time setting. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -441,7 +441,7 @@ Sets the switch status of the automatic time setting. This API uses a promise to
 
 | Name  | Type  | Mandatory| Description      |
 | -------- | ------ | ---- | ---------- |
-| status | boolean | Yes  | Whether to turn on the automatic time setting.<br>- **true**: The automatic time setting is on.<br>- **false**: The automatic time setting is off.|
+| status | boolean | Yes  | Whether to enable the automatic time setting.<br>- **true**: Enable the automatic time setting.<br>- **false**: Disable the automatic time setting.|
 
 **Return value**
 

@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 NodeContent是ArkUI提供的[ContentSlot](./arkui-ts/ts-components-contentSlot.md)的管理器。
 

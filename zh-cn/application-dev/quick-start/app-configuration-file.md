@@ -62,7 +62,7 @@
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
-    "startMode": "mainTask",
+    "startMode": "mainTask"
     // [EndExclude app_json5_configuration]
     // [EndExclude app_json5_appEnvironments]
     // [EndExclude app_json5_multiAppMode]

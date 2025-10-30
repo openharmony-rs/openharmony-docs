@@ -64,7 +64,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 let devicesName: string = "1-1";
 let bundleName: string = "com.example.hello";
 if (usbManager.addRight(bundleName, devicesName)) {
-  console.log(`Succeed in adding right`);
+  console.info(`Succeed in adding right`);
 }
 ```
 
@@ -415,7 +415,7 @@ let tokenId: string = "";
       let token = bundleInfo.appInfo.accessTokenId;
       tokenId = token.toString();
       if (usbManager.addDeviceAccessRight(tokenId, devicesName)) {
-        console.log(`Succeed in adding right`);
+        console.info(`Succeed in adding right`);
       }
     }).catch((err : BusinessError) => {
       console.error('testTag getBundleInfoForSelf failed' );

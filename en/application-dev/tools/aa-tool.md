@@ -328,10 +328,6 @@ Starts the test framework based on the carried parameters.
 aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-class>] [-s level <test-level>] [-s size <test-size>] [-s testType <test-testType>] [-s timeout <test-timeout>] [-s <any-key> <any-value>] [-w <wait-time>] -s unittest <testRunner>
 ```
 
-> **NOTE**
-> 
->  
-
   **Parameters**
   | Name| Description|
   | -------- | -------- |

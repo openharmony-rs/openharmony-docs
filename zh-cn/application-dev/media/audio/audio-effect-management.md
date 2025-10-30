@@ -61,15 +61,16 @@
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEffectMode) => {
-    if (err) {
-      console.error(`Failed to get params, code is ${err.code}, message is ${err.message}`);
-      return;    
-    } else {
-      console.info(`getAudioEffectMode: ${effectMode}`);
-    }
-  });
+  if (audioRenderer != undefined) {
+    (audioRenderer as audio.AudioRenderer).getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEffectMode) => {
+      if (err) {
+        console.error(`Failed to get params, code is ${err.code}, message is ${err.message}`);
+        return;    
+      } else {
+        console.info(`getAudioEffectMode: ${effectMode}`);
+      }
+    });
+  }
   ```
 
 ### 设置当前播放实例的音效模式
@@ -79,15 +80,16 @@
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_NONE, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
-      return;
-    } else {
-      console.info('Callback invoked to indicate a successful audio effect mode setting.');
-    }
-  });
+  if (audioRenderer != undefined) {
+    (audioRenderer as audio.AudioRenderer).setAudioEffectMode(audio.AudioEffectMode.EFFECT_NONE, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
+        return;
+      } else {
+        console.info('Callback invoked to indicate a successful audio effect mode setting.');
+      }
+    });
+  }
   ```
 
 开启系统音效默认模式：
@@ -95,15 +97,16 @@
   ```ts
   import { audio } from '@kit.AudioKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
-  audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
-      return;
-    } else {
-      console.info('Callback invoked to indicate a successful audio effect mode setting.');
-    }
-  });
+  if (audioRenderer != undefined) {
+    (audioRenderer as audio.AudioRenderer).setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to set params, code is ${err.code}, message is ${err.message}`);
+        return;
+      } else {
+        console.info('Callback invoked to indicate a successful audio effect mode setting.');
+      }
+    });
+  }
   ```
 
 ## 全局查询音效模式

@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Before developing applications based on the [stage model](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/application-configuration-file-overview-stage.md), you need to have a basic knowledge of application design mechanism and application package structure.
+Before developing applications based on the [stage model](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/application-configuration-file-overview-stage.md), you need to have a basic knowledge of the application design mechanism and application package structure.
 
 ## Application and Application Package
 
@@ -41,8 +41,8 @@ There are two types of modules by usage scenario:
   The table below lists the differences between the HAR and HSP.
   | Shared Package Type| Build and Running | Release and Reference| 
   | --------  | ---- | --- |
-  | HAR | The code and resources in the HAR are built with the invoking module, and if there are multiple invoking modules, the build product contains multiple copies of the same code and resources.<br>Note: When [building a HAR](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/har-package.md#building-a-har), you are advised to enable the obfuscation capability to protect code assets.| The HAR can be referenced inside the application and, by being released independently, can be referenced across applications.| 
-  | HSP  | The code and resources in the HSP are built independently, and the build product contains only one copy of the code and resources.| Generally, the HSP is packaged with the application. Intra-application HSP and [integrated HSP](integrated-hsp.md) are supported. The intra-app HSP can only be referenced in an application; the integrated HSP can be published to the ohpm private repository and referenced in cross-applications.|  
+  | HAR | The code and resources in the HAR are built with the invoking module, and if there are multiple invoking modules, the build product contains multiple copies of the same code and resources.<br>Note: When [building a HAR](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/har-package.md#building-a-har), you are advised to enable the obfuscation capability to protect code assets.| In addition to being referenced within an application, a HAR can be independently packaged and released to the [OHPM central repository](https://ohpm.openharmony.cn/#/en/home) or [OHPM private repository](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-repo) for reference by other applications.| 
+  | HSP  | The code and resources in the HSP are built independently, and the build product contains only one copy of the code and resources.| Generally, the HSP is packaged with the application. Intra-application HSP and [integrated HSP](integrated-hsp.md) are supported. The intra-app HSP can only be referenced in an application; the integrated HSP can be published to the OHPM private repository and referenced in cross-applications.|  
 
  
   **Figure 1** HAR and HSP in the App Pack
@@ -66,7 +66,7 @@ You can select a package type for development based on application requirements.
 | Specifications| HAP | HAR | HSP |
 | -------- | ---------- |----------- |----------- |
 | Declaring the [UIAbility](../application-models/uiability-overview.md) in the configuration file|  √  |  √   |  √   |
-| Declaring the [ExtensionAbility](../application-models/extensionability-overview.md) in the configuration file | √ | × | √ |
+| Declaring the [ExtensionAbility](../application-models/extensionability-overview.md) in the configuration file | √ | √ | √ |
 | Declaring the [pages](./module-configuration-file.md#pages) tag in the configuration file| √  |× |√ |
 | Including resource files and .so files| √  |√ |√|
 | Depending on other HARs| √ |√  |√  |

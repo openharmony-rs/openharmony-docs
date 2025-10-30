@@ -1,5 +1,12 @@
 # Application File Overview
 
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangfenging -->
+<!--Designer: @liveery; @zl_startup-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @foryourself-->
+
 Application files are files of an application, including the application's installation files, resource files, and cache files.
 
 - The data used and saved by an application is stored in files, key-value (KV) pairs, and databases in a dedicated directory on a device. This directory is called application file directory, and the files in the directory are application files.

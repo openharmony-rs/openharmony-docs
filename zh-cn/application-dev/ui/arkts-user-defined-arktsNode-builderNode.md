@@ -5,7 +5,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -1651,6 +1651,12 @@ struct TextBuilder {
 从API version 20开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consume](./state-management/arkts-provide-and-consume.md)支持接收所在页面的[@Provide](./state-management/arkts-provide-and-consume.md)数据。
 
 参见[示例代码](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例5buildernode支持内部consume接收外部的provide数据)。
+
+## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据
+
+从API version 22开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consumer](./state-management/arkts-new-Provider-and-Consumer.md)支持接收所在页面的[@Provider](./state-management/arkts-new-Provider-and-Consumer.md)数据。
+    
+参见[示例代码](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例6buildernode支持内部consumer接收外部的provider数据)。
 
 ## BuilderNode结合ArkWeb组件实现预渲染页面
 

@@ -865,7 +865,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.                      |
 | userId       | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                              |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of ability information obtained. Otherwise, **err** is an error object.|
@@ -931,7 +931,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | -------------------------------------------------------|
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.      |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of ability information obtained. Otherwise, **err** is an error object.|
 
@@ -994,7 +994,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.|
 | userId       | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                      |
 
@@ -1086,7 +1086,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Want   | Yes  | Want containing the bundle name to query.                |
+| want         | [Want](js-apis-app-ability-want.md)  | Yes  | Want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.|
 | userId       | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                      |
 
@@ -1173,7 +1173,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name     | Type  | Mandatory| Description                                                 |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
-| want         | Array\<Want>   | Yes  | List of want containing the bundle name to query.                |
+| want         | Array\<[Want](js-apis-app-ability-want.md)>   | Yes  | List of want containing the bundle name to query.                |
 | abilityFlags | [number](#abilityflag) | Yes  | Type of the ability information to obtain.|
 | userId       | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                      |
 
@@ -1246,7 +1246,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | Yes  | Want containing the bundle name to query.                      |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | Yes  | Want containing the bundle name to query.                      |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | Yes  | Type of the ExtensionAbility.                                |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | Yes  | Type of the ExtensionAbility information to obtain.   |
 | userId                | number                                                       | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                                                |
@@ -1313,7 +1313,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want                  | Want                                                         | Yes  | Want containing the bundle name to query.                      |
+| want                  | [Want](js-apis-app-ability-want.md)                                                        | Yes  | Want containing the bundle name to query.                      |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | Yes  | Type of the ExtensionAbility.                                |
 | extensionAbilityFlags | [number](#extensionabilityflag)                              | Yes  | Type of the ExtensionAbility information to obtain.   |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of ExtensionAbility information obtained. Otherwise, **err** is an error object.|
@@ -1377,7 +1377,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                         | Mandatory| Description                                                     |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | Yes  | Want containing the bundle name to query.                   |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | Yes  | Want containing the bundle name to query.                   |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | Yes  | Type of the ExtensionAbility.                             |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | Yes  | Type of the ExtensionAbility information to obtain.|
 | userId                | number                                        | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                                             |
@@ -1472,7 +1472,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                                         | Mandatory| Description                                                     |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                                          | Yes  | Want containing the bundle name to query.                   |
+| want                  | [Want](js-apis-app-ability-want.md)                                         | Yes  | Want containing the bundle name to query.                   |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | Yes  | Type of the ExtensionAbility.                             |
 | extensionAbilityFlags | [number](#extensionabilityflag)               | Yes  | Type of the ExtensionAbility information to obtain.|
 | userId                | number                                        | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.                                             |
@@ -2250,7 +2250,7 @@ Enables or disables an application or an application clone. This API uses a prom
 | ---------- | ------- | ---- | ------------------------------------- |
 | bundleName | string  | Yes  | Bundle name.           |
 | appIndex   | number  | Yes  | Index of the application clone.<br> The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone.             |
-| isEnabled  | boolean | Yes  | Whether to enable the application or application clone. **true** to enable, **false** otherwise.|
+| isEnabled  | boolean | Yes  | Whether to enable the application. **true** to enable, **false** otherwise.|
 
 **Return value**
 
@@ -3273,7 +3273,7 @@ Obtains the Want used to launch the bundle based on the given bundle name and us
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Want | Want object.|
+| [Want](js-apis-app-ability-want.md)| Want object.|
 
 **Error codes**
 
@@ -4481,7 +4481,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                           | Mandatory| Description                                                     |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
-| want                  | Want                            | Yes  | Want containing the bundle name to query.                   |
+| want                  | [Want](js-apis-app-ability-want.md)      | Yes  | Want containing the bundle name to query.                   |
 | extensionAbilityType  | string                          | Yes  | Type of the custom ExtensionAbility.                       |
 | extensionAbilityFlags | [number](#extensionabilityflag) | Yes  | Information flags to be contained in the returned ExtensionAbilityInfo object.|
 | userId                | number                          | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.|
@@ -6174,6 +6174,130 @@ try {
 } catch (err) {
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'setAbilityFileTypesForSelf failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.recoverBackupBundleData<sup>21+</sup>
+
+recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
+
+Restores the backup data for a specified application under a given user. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.RECOVER_BUNDLE
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                      |
+| ----------- | ------ | ---- | ---------------------------- |
+| bundleName  | string | Yes  | Bundle name of the application.|
+| userId      | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The value is greater than or equal to 0. |
+| appIndex    | number |  Yes | Index of the application. The value ranges from 0 to 5. The value **0** indicates the main application, and the values 1 to 5 indicate the indexes of application clones.  |
+
+**Return value**
+
+| Type                                                       | Description                       |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID| Error Message                           |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found.     |
+| 17700061 | AppIndex not in the valid range. |
+
+**Example**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace the bundle name, user ID, and application index with the actual ones.
+let bundleName: string = 'com.ohos.demo';
+let userId: number = 100;
+let appIndex: number = 0;
+
+try {
+    bundleManager.recoverBackupBundleData(bundleName, userId, appIndex).then(() => {
+        hilog.info(0x0000, 'testTag', 'recoverBackupBundleData successfully');
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'recoverBackupBundleData failed. Cause: %{public}s', err.message);
+    });
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'recoverBackupBundleData failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.removeBackupBundleData<sup>21+</sup>
+
+removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
+
+Removes the backup data for a specified application under a given user. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.CLEAN_APPLICATION_DATA
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                      |
+| ----------- | ------ | ---- | ---------------------------- |
+| bundleName  | string | Yes  | Bundle name of the application.|
+| userId      | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The value is greater than or equal to 0. |
+| appIndex    | number |  Yes | Index of the application. The value ranges from 0 to 5. The value **0** indicates the main application, and the values 1 to 5 indicate the indexes of application clones.  |
+
+**Return value**
+
+| Type                                                       | Description                       |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID| Error Message                           |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found.     |
+| 17700061 | AppIndex not in the valid range. |
+
+**Example**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace the bundle name, user ID, and application index with the actual ones.
+let bundleName: string = 'com.ohos.demo';
+let userId: number = 100;
+let appIndex: number = 0;
+
+try {
+    bundleManager.removeBackupBundleData(bundleName, userId, appIndex).then(() => {
+        hilog.info(0x0000, 'testTag', 'removeBackupBundleData successfully');
+    }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', err.message);
+    });
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', message);
 }
 ```
 
