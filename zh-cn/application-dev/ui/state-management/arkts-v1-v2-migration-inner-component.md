@@ -474,6 +474,34 @@ V2迁移策略：使用\@Param和\@Once。
 
 <!-- @[Parent14_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child14 {
+  // @Param搭配@Once使用，可以在本地修改@Param变量
+  @Param @Once value: number = 0;
+
+  build() {
+    Column() {
+      Text(this.value.toString())
+      Button('+1')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent14 {
+  build() {
+    Column() {
+      Child14({ value: 30 })
+    }
+  }
+}
+```
+
 在V1中，子组件可以修改\@Prop的变量，且只会在本地更新，不会同步回父组件。父组件数据源更新时，会通知子组件更新，并覆写子组件本地\@Prop的值。
 
 V1：
