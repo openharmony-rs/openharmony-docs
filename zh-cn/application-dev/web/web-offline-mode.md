@@ -294,6 +294,28 @@ struct Index1 {
 <!--  -->
 
 <!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->
+
+``` TypeScript
+import web_webview from '@ohos.web.webview';
+
+@Entry
+@Component
+struct index2 {
+  webviewController: web_webview.WebviewController = new web_webview.WebviewController();
+
+  build() {
+    Row() {
+      Column() {
+        Web({src: 'www.example.com', controller: this.webviewController})
+          .width('100%')
+          .height('100%')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 <!--  -->
 
 ## 预渲染Web页面
