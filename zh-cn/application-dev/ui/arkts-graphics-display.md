@@ -37,6 +37,12 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image组件引入本地图片路径，即可显示图片（根目录为ets文件夹）。不支持跨包、跨模块调用该Image组件。
 
   <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  'images/view.jpg' 需要替换为开发者所需的资源文件
+  Image('images/view.jpg')
+    .width(200)
+  ```
 
   加载本地图片过程中，如果对图片进行修改或者替换，可能会引起应用崩溃。因此需要覆盖图片文件时，应该先删除该文件再重新创建一个同名文件。
 
