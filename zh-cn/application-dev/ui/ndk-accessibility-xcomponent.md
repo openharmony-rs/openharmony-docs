@@ -228,6 +228,60 @@
 
 
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
+       ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindNextFocusAccessibilityNode instanceId %{public}s "
+                    "elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
+                    instanceId, elementId, requestId, static_cast<int32_t>(direction));
+       auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "objects.size() %{public}d", objects.size());
+       // object.size 不包含 root节点
+       if ((elementId < 0) || (elementId > objects.size())) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "elementId invalid");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       int64_t nextElementId = -1;
+       if (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_FORWARD) {
+           nextElementId = elementId + 1;
+       } else {
+           nextElementId = elementId - 1;
+       }
+       
+       // 屏幕朗读约束 如果是根节点 然后backward的话需要回到最后一个节点
+       if ((nextElementId == -1) && (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_BACKWARD)) {
+           nextElementId = objects.size();
+       }
+       
+       if (nextElementId >  objects.size()) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "nextElementId invalid");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       
+       if (nextElementId <=  0) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "nextElementId less than zero");
+           return OH_NATIVEXCOMPONENT_RESULT_FAILED;
+       }
+       OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, nextElementId);
+       OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, 0);
+       // id 比object索引大1
+       objects[nextElementId - 1]->fillAccessibilityElement(elementInfo);
+       ArkUI_AccessibleRect rect;
+       rect.leftTopX = nextElementId * NUMBER_FIRST;
+       rect.leftTopY = NUMBER_ZERO;
+       rect.rightBottomX = nextElementId * NUMBER_FIRST + NUMBER_FIRST;
+       rect.rightBottomY = NUMBER_SECOND;
+       OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
+       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+       OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, requestId);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 
 
