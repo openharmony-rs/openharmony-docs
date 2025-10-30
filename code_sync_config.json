@@ -4437,5 +4437,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/mdm/mdm-kit-admin.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"enterprise_admin_extension_ability",
+						"start_line":27
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"extension_abilities",
+						"start_line":51
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/mdm/mdm-kit-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"request_permissions",
+						"start_line":61
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"import_mdm_kit",
+						"start_line":17
+					},
+					{
+						"end_line":113,
+						"name":"set_disallowed_policy_wifi",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
