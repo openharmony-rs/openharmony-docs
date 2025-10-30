@@ -151,7 +151,7 @@
 2. \@Consume装饰的变量不能在构造参数中传入初始化，否则编译时会报错。\@Consume仅能通过key来匹配对应的\@Provide变量或者从API version 20开始设置默认值进行初始化。
 
    【反例】
- 
+  
     ```ts
     @Component
     struct Child {
