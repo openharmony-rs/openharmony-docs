@@ -1119,6 +1119,44 @@ struct Parent1 {
 
 <!-- @[multiple_parameters_in_builder_incorrect_usage_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage2.ets) -->
 
+``` TypeScript
+class GlobalTmp2 {
+  public strValue: string = 'Hello';
+}
+class SecondTmp {
+  public numValue: number = 0;
+}
+@Builder function overBuilder2(param: GlobalTmp2, num: SecondTmp) {
+  Column() {
+    Text(`strValue: ${param.strValue}`)
+    Text(`num: ${num.numValue}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent2 {
+  @State strParam: GlobalTmp2 = new GlobalTmp2();
+  @State numParam: SecondTmp = new SecondTmp();
+  build() {
+    Column() {
+      Text('UI Rendered via @Builder')
+        .fontSize(20)
+      // 使用了两个参数，用法错误。
+      overBuilder2({strValue: this.strParam.strValue}, {numValue: this.numParam.numValue})
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      Button('Update Values').onClick(() => {
+        this.strParam.strValue = 'Hello World';
+        this.numParam.numValue = 1;
+      })
+    }
+  }
+}
+```
+
 \@Builder只接受一个参数。当传入一个参数的时候，通过对象字面量的形式传递，值的改变会引起UI的刷新。
 
 【正例】
