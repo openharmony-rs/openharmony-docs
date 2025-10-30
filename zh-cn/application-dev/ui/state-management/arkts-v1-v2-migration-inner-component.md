@@ -779,6 +779,33 @@ V2迁移策略：使用\@Param接受初始值，再赋值给\@Provider。
 
 <!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct Parent22 {
+  @Local parentValue: number = 42;
+
+  build() {
+    Column() {
+      // @Provider禁止从父组件初始化，替代方案为先用@Param接受，再赋值给@Provider
+      Child22({ initialValue: this.parentValue })
+    }
+  }
+}
+
+@ComponentV2
+struct Child22 {
+  @Param @Once initialValue: number = 0;
+  @Provider() childValue: number = this.initialValue;
+
+  build() {
+    Column() {
+      Text(this.childValue.toString())
+    }
+  }
+}
+```
+
 **V1的\@Provide默认不支持重载，V2默认支持**
 
 在V1中，\@Provide默认不支持重载，无法覆盖上层组件的同名\@Provide。若需支持重载，必须设置allowOverride。在V2中，\@Provider默认支持重载，\@Consumer会向上查找最近的\@Provider，无需额外设置。
