@@ -79,6 +79,24 @@ struct BuilderDemo {
 
 <!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) -->
 
+``` TypeScript
+@Builder
+function showTextBuilder() {
+  Text('Hello World')
+    .fontSize(30)
+    .fontWeight(FontWeight.Bold)
+}
+@Entry
+@Component
+struct BuilderSample {
+  build() {
+    Column() {
+      showTextBuilder()
+    }
+  }
+}
+```
+
 - 如果不涉及组件状态变量变化，建议使用全局的自定义构建函数。
 
 - 全局自定义构建函数允许在build函数和其他自定义构建函数中调用。
