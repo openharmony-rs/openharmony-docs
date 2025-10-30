@@ -30,6 +30,18 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 > 创建Web组件将占用内存（每个Web组件大约200MB）和计算资源，建议避免一次性创建大量离线Web组件，以减少资源消耗。
 
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  windowStage.loadContent('pages/Index', (err, data) => {
+    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
+      return;
+    }
+  });
+}
+```
 <!--  -->
 
 ```ts
