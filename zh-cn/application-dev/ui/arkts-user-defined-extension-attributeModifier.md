@@ -241,6 +241,36 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
   <!-- @[main_button3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button3.ets) -->
+  
+  ``` TypeScript
+  
+  // pages/Button3.ets
+  import { MyButtonModifier2 } from '../Common/ButtonModifier02';
+  import { MyButtonModifier3 } from '../Common/ButtonModifier03';
+  
+  @Entry
+  @Component
+  struct Button3 {
+    @State modifier: MyButtonModifier2 = new MyButtonModifier2(true);
+    @State modifier2: MyButtonModifier3 = new MyButtonModifier3(true);
+  
+    build() {
+      Row() {
+        Column() {
+          Button('Button')
+            .attributeModifier(this.modifier)
+            .attributeModifier(this.modifier2)
+            .onClick(() => {
+              this.modifier.isDark = !this.modifier.isDark
+              this.modifier2.isDark2 = !this.modifier2.isDark2
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
   ![AttributeModifier](figures/AttributeModifier04.gif) 
 
 ## 设置多态样式、事件
