@@ -398,7 +398,14 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
   // ···
   });
   ```
-
+  <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
+  
+  ``` TypeScript
+  pageStack: NavPathStack = new NavPathStack();
+  aboutToAppear(): void {
+    this.pageStack.disableAnimation(true);
+  }
+  ```
 3. 带错误码的跳转，跳转结束会触发异步回调，返回错误码信息。
 
   <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
