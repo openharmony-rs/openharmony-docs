@@ -74,6 +74,41 @@
 
 
   <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Index10 {
+    @State bgColors: ResourceColor[] =
+      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+        'rgb(255,192,0)', 'rgb(170,10,33)'];
+  
+    build() {
+      GridRow({
+        columns: {
+          xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
+          sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
+          md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
+          lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
+          xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
+          xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
+        },
+        breakpoints: {
+          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+          reference: BreakpointsReference.WindowSize
+        }
+      }) {
+        ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+          GridCol({ span: 1 }) { // 所有子组件占一列。
+            Row() {
+              Text(`${index}`)
+            }.width('100%').height('50vp')
+          }.backgroundColor(color)
+        })
+      }
+    }
+  }
+  ```
 
   ![zh-cn_image_0000001511421272](figures/zh-cn_image_0000001511421272.gif)
 
