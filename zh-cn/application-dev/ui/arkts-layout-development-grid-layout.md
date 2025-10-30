@@ -370,6 +370,13 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
     ```
 
     <!-- @[GridColOrder1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrder.ets) -->
+    
+    ``` TypeScript
+    GridCol({ order: 2, span: 1 }){}
+    GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }){}
+    GridCol({ span: 1 }){}.order(2)
+    GridCol({ span: 1 }){}.order(gOrder)
+    ```
 
 
 ### span
