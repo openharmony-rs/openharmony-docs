@@ -1210,7 +1210,7 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 查询当前日历下所有日程，使用callback异步回调。
 
-默认查询字段：id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。
+默认查询字段：API version 20之前，id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime；从API version 20，id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
