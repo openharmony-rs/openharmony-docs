@@ -1146,6 +1146,43 @@ SystemMenu() {
 
 <!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+            RichEditor(this.options)
+              .onReady(() => {
+                // $r('app.string.SetUserPresetTextStyles_Text_1')需要替换为开发者所需的资源文件
+                this.controller.addTextSpan(resource.resourceToString($r('app.string.SetUserPresetTextStyles_Text_1')),
+                  {
+                    style: {
+                      fontColor: Color.Black,
+                      fontSize: 15
+                    }
+                  })
+              })
+              .width(300)
+              .height(60)
+            // $r('app.string.SetUserPresetTextStyles_Button_1')需要替换为开发者所需的资源文件
+            Button($r('app.string.SetUserPresetTextStyles_Button_1'), {
+              buttonStyle: ButtonStyleMode.NORMAL
+            })
+              .height(30)
+              .fontSize(13)
+              .onClick(() => {
+                this.controller.setTypingStyle({
+                  fontWeight: 'medium',
+                  fontColor: Color.Pink,
+                  fontSize: 15,
+                  fontStyle: FontStyle.Italic,
+                  decoration: {
+                    type: TextDecorationType.Underline,
+                    color: Color.Gray
+                  }
+                })
+              })
+```
+
 ![alt text](figures/richeditor_image_setTypingStyle.gif)
 
 ### 设置装饰线
