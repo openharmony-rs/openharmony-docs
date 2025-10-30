@@ -5557,7 +5557,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
 
-允许应用主窗口设置设备自身屏幕的亮度，使用callback异步回调。
+主窗口设置当前设备屏幕亮度，无法设置虚拟屏（如投屏所在的屏幕）的屏幕亮度，使用callback异步回调。
 
 当窗口退至后台时，系统会恢复至设置窗口亮度前的系统控制中心亮度。不建议同时调用此接口，否则可能引发时序问题。
 
@@ -5627,7 +5627,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
-允许应用主窗口设置设备自身屏幕的亮度，使用Promise异步回调。
+主窗口设置当前设备屏幕亮度，无法设置虚拟屏（如投屏所在的屏幕）的屏幕亮度，使用Promise异步回调。
 
 当窗口退至后台时，系统会恢复至设置窗口亮度前的系统控制中心亮度。不建议同时调用此接口，否则可能引发时序问题。
 
