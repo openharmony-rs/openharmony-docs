@@ -554,6 +554,53 @@ V2实现：
 
 <!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
 
+``` TypeScript
+import hilog from '@ohos.hilog';
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
+@ComponentV2
+struct Child16 {
+  @Local localValue: number = 0;
+  @Param value: number = 0;
+
+  @Monitor('value')
+  onValueChange(mon: IMonitor) {
+    hilog.info(DOMAIN,TAG,`value has been changed from ${mon.value()?.before} to ${mon.value()?.now}`);
+    // 父组件value变化时，通知子组件value更新，回调Monitor函数，将更新的值覆写给本地的localValue
+    this.localValue = this.value;
+  }
+
+  build() {
+    Column() {
+      Text(`${this.localValue}`).fontSize(25)
+      Button('Child +100')
+        .onClick(() => {
+          // 改变localValue不会传递给父组件Parent
+          this.localValue += 100;
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent16 {
+  @Local value: number = 10;
+
+  build() {
+    Column() {
+      Button('Parent +1')
+        .onClick(() => {
+          // 改变value的值，通知子组件Child value更新
+          this.value += 1;
+        })
+      Child16({ value: this.value })
+    }
+  }
+}
+```
+
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
 **迁移规则**
 
