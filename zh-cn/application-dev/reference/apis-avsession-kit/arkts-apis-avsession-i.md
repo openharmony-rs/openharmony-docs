@@ -218,7 +218,7 @@
 
 | 名称      | 类型                                              | 只读| 可选 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ---- | -------------- |
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令(不同命令对应不同参数)     |
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令（不同命令对应不同参数）。     |
 | parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number | 否 | 是   | 命令对应的参数。 |
 
 ## AVCastPickerOptions<sup>14+</sup>
