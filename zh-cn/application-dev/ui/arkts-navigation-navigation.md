@@ -498,7 +498,12 @@ NavPathStack通过Replace相关接口去实现页面替换功能。
    // 删除栈中name为pageTwo的所有页面
    this.pageStack.removeByName('pageTwo');
    ```
-   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 删除指定索引的页面
+   this.pageStack.removeByIndexes([1]);
+   ```
 
 ### 页面删除
 
