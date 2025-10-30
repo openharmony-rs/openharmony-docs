@@ -56,7 +56,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
     import hilog from '@ohos.hilog';
@@ -66,7 +66,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
    1. 导入对应数据对象模块。
 
       <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+      
       ``` TypeScript
       import { BusinessError } from '@kit.BasicServicesKit';
       import { image } from '@kit.ImageKit';
@@ -75,7 +75,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
    2. 创建并插入数据。
 
       <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+      
       ``` TypeScript
       // 准备PlainText文本数据内容
       let plainTextObj: uniformDataStruct.PlainText = {
@@ -94,7 +94,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
       // 为该记录增加一种样式，两种样式存储的是同一个数据，为不同表达形式
       record.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
       let unifiedData = new unifiedDataChannel.UnifiedData(record);
-
+      
       // 准备pixelMap数据内容
       let arrayBuffer = new ArrayBuffer(4 * 3 * 3);
       let opt: image.InitializationOptions = {
@@ -131,7 +131,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 3. 更新上一步插入的统一数据对象。
 
     <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
@@ -147,13 +147,13 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
     }
     recordUpdate.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(recordUpdate);
-
+    
     // 指定要更新的统一数据对象的URI
     let optionsUpdate: unifiedDataChannel.Options = {
       // 此处的key值仅为示例，不可直接使用，其值与insertData接口回调函数中key保持一致
       key: 'udmf://DataHub/com.ohos.test/0123456789'
     };
-
+    
     try {
       unifiedDataChannel.updateData(optionsUpdate, unifiedDataUpdate, (err) => {
         if (err === undefined) {
@@ -172,13 +172,13 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 4. 删除存储在UDMF公共数据通路中的统一数据对象。
 
     <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     // 指定要删除数据的数据通路枚举类型
     let optionsDelete: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB
     };
-
+    
     try {
       unifiedDataChannel.deleteData(optionsDelete, (err, data) => {
         if (err === undefined) {
@@ -216,7 +216,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
     import hilog from '@ohos.hilog';
@@ -225,13 +225,13 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 2. 查询存储在UDMF公共数据通路中的全量统一数据对象。
 
     <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     // 指定要查询数据的数据通路枚举类型
     let options: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB
     };
-
+    
     try {
       unifiedDataChannel.queryData(options, (err, data) => {
         if (err === undefined) {
