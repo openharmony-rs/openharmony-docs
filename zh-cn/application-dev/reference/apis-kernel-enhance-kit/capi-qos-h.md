@@ -310,6 +310,6 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 
 | 类型 | 说明 |
 | -- | -- |
-| Result | 格物提交请求结果。<br>         - 提交请求成功，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为`OH_QOS_GEWU_OK`，`request`为请求句柄。<br>         - 提交请求失败，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存处理该请求。 |
+| [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md) | 格物提交请求结果。<br>         - 提交请求成功，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为`OH_QOS_GEWU_OK`，`request`为请求句柄。<br>         - 提交请求失败，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存处理该请求。 |
 
 
