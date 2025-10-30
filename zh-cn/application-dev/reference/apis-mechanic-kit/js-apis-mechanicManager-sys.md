@@ -573,14 +573,14 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 **参数：**
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| target | [TargetType](#targettype) | 是 | 目标人脸信息。 |
-| params | [SearchParams](#searchparams) | 是 | 搜索方向。 |
+| target | [TargetType<sup>21+<sup>](#targettype<sup>21+<sup>) | 是 | 目标人脸信息。 |
+| params | [SearchParams<sup>21+<sup>](#searchparams<sup>21+<sup>) | 是 | 搜索方向。 |
 
 **返回值：**
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise\<[SearchResult](#searchresult)> | Promise对象，返回搜索的结果。 |
+| Promise\<[SearchResult<sup>21+<sup>](#searchresult<sup>21+<sup>)> | Promise对象，返回搜索的结果。 |
 
 **错误码：**
 
@@ -746,9 +746,9 @@ mechanicManager.searchTarget(targetInfo,
 
 **系统接口**：该接口为系统接口。
 
-| 名称         | 值  | 说明              |
-| ----------- | ---- | --------------- |
-| HUMAN_FACE | 0 | 人脸信息。 |
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| HUMAN_FACE | TargetType | 否 | 否 | 搜索目标的人脸信息。 |
 
  ## TargetInfo<sup>21+<sup>
 
