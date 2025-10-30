@@ -577,6 +577,172 @@ export struct Child {
 
 <!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct ChildOfParamComponent {
+  @Require @Param childVal: number;
+
+  @Monitor('childVal') onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Child Param： ${this.childVal}`);
+    }
+  }
+}
+
+@ComponentV2
+struct ParamComponent {
+  @Require @Param val: number;
+
+  @Monitor('val') onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`val： ${this.val}`);
+      ChildOfParamComponent({childVal: this.val});
+    }
+  }
+}
+
+@ComponentV2
+struct DelayComponent {
+  @Require @Param delayVal1: number;
+
+  @Monitor('delayVal1') onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Delay Param： ${this.delayVal1}`);
+    }
+  }
+}
+
+@ComponentV2 ({freezeWhenInactive: true})
+struct TabsComponent {
+  private controller: TabsController = new TabsController();
+  @Local tabState: number = 47;
+
+  @Monitor('tabState') onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  }
+
+  build() {
+    Column({space: 10}) {
+      Button(`Incr state ${this.tabState}`)
+        .fontSize(25)
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', 'Button increment state value');
+          this.tabState = this.tabState + 1;
+        })
+
+      Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller}) {
+        TabContent() {
+          ParamComponent({val: this.tabState});
+        }.tabBar('Update')
+        TabContent() {
+          DelayComponent({delayVal1: this.tabState});
+        }.tabBar('DelayUpdate')
+      }
+      .vertical(false)
+      .scrollable(true)
+      .barMode(BarMode.Fixed)
+      .barWidth(400).barHeight(150).animationDuration(400)
+      .width('100%')
+      .height(200)
+      .backgroundColor(0xF5F5F5)
+    }
+  }
+}
+
+@Entry
+@Component
+struct MyNavigationTestStack1 {
+  @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      PageOneStack1()
+    } else if (name === 'pageTwo') {
+      PageTwoStack2()
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+            })
+        }
+      }.title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+    }
+  }
+}
+
+@Component
+struct PageOneStack1 {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        TabsComponent();
+
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageTwo', null);
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageTwoStack2 {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pop();
+          })
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+```
+
 在API version 17及以下：
 
 点击`Next page`进入下一个页面并返回，会解冻Tabcontent所有的标签。
