@@ -149,10 +149,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
 | bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20                       |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />                     |
-| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br /> |
-| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。   **ArkTS-Dyn起始版本：** 9   <br>从API version 11开始废弃，建议使用active替代。                            |
-| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 20<br />                  |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />                     |
+| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br /> |
+| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>  **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>   **ArkTS-Dyn起始版本：** 9   <br>从API version 11开始废弃，建议使用active替代。                            |
+| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 20<br />                  |
 | displayId<sup>20+</sup> | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 20 |
 
 ## UiDirection<sup>10+</sup>
