@@ -583,6 +583,7 @@ off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
 **示例：**
 
 ```ts
+import { call } from '@kit.TelephonyKit';
 let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
     console.info("on callStateChangeEx, data:" + JSON.stringify(data));
 }
