@@ -94,6 +94,86 @@
   在子组件的aboutToReuse中，直接修改父组件的状态变量。
 
   <!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
+  
+  ``` TypeScript
+  class IncorrectBasicDataSource implements IDataSource {
+    private listener: DataChangeListener | undefined = undefined;
+    public dataArray: number[] = [];
+  
+    totalCount(): number {
+      return this.dataArray.length;
+    }
+  
+    getData(index: number): number {
+      return this.dataArray[index];
+    }
+  
+    registerDataChangeListener(listener: DataChangeListener): void {
+      this.listener = listener;
+    }
+  
+    unregisterDataChangeListener(listener: DataChangeListener): void {
+      this.listener = undefined;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct IncorrectIndex {
+    private data: IncorrectBasicDataSource = new IncorrectBasicDataSource();
+  
+    aboutToAppear(): void {
+      for (let index = 1; index < 20; index++) {
+        this.data.dataArray.push(index);
+      }
+    }
+  
+    build() {
+      List() {
+        LazyForEach(this.data, (item: number, index: number) => {
+          ListItem() {
+            IncorrectReuseComponent({ num: item });
+          }
+        }, (item: number, index: number) => index.toString())
+      }.cachedCount(0)
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct IncorrectReuseComponent {
+    @State num: number = 0;
+  
+    aboutToReuse(params: ESObject): void {
+      this.num = params.num;
+    }
+  
+    build() {
+      Column() {
+        Text('ReuseComponent num:' + this.num.toString())
+        IncorrectReuseComponentChild({ num: this.num })
+        Button('plus')
+          .onClick(() => {
+            this.num += 10;
+          })
+      }
+      .height(200)
+    }
+  }
+  
+  @Component
+  struct IncorrectReuseComponentChild {
+    @Link num: number;
+  
+    aboutToReuse(params: ESObject): void {
+      this.num = -1 * params.num;
+    }
+  
+    build() {
+      Text('ReuseComponentChild num:' + this.num.toString())
+    }
+  }
+  ```
 
 
   【正例】
