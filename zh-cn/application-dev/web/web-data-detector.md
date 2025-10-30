@@ -50,13 +50,7 @@ struct Index {
       })
         .enableDataDetector(true)
         .dataDetectorConfig({
-          types: [],  // 实体识别类型，为空则识别所有类型
-          color: Color.Red,
-          decoration: {
-            type: TextDecorationType.LineThrough,
-            color: Color.Green,
-            style: TextDecorationStyle.WAVY
-          }
+          types: []  // 实体识别类型，为空则识别所有类型
         })
     }
     .height('100%')
