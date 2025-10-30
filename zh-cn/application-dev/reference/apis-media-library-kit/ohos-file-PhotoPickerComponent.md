@@ -336,8 +336,8 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 | height   | number                | 否 | 是   | 图片、视频的高（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
 | duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括movingPhoto、brust等。非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
-| dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR、SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BRUST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1：“TOP-left”，图像未旋转。<br>2：“TOP-right”，镜像水平翻转。<br>3：“Bottom-right”，图像旋转180°。<br>4：“Bottom-left”，镜像垂直翻转。<br>5：“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6：“Right-top”，顺时针旋转90°。<br>7：“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8：“Left-bottom”，顺时针旋转270°。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 ## ItemInfo
