@@ -553,7 +553,21 @@ NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈�
    }.title('FromPage')
    ```
 
-   <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
+   <!-- @[GeometryTransitionToPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+   
+   ``` TypeScript
+   // 目的页配置共享元素id
+   NavDestination() {
+     Column() {
+       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+       Image($r('app.media.startIcon'))
+         .geometryTransition('sharedId')
+         .width(200)
+         .height(200)
+     }
+   }
+   .title('ToPage')
+   ```
 
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
