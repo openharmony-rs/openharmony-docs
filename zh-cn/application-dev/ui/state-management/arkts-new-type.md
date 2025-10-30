@@ -31,11 +31,6 @@
 
 1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-```ts
-    class Sample {
-      data: number = 0;
-    }
-```
 <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
 ``` TypeScript
 class Sample {
