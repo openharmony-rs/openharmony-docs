@@ -746,10 +746,25 @@ mechanicManager.searchTarget(targetInfo,
 
 **系统接口**：该接口为系统接口。
 
-| 名称   | 类型 | 只读 | 可选 | 说明|
-| ----- | ---- | ---- | --- | --- |
-| HUMAN_FACE | TargetType | 否 | 否 | 搜索目标的人脸信息。 |
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| HUMAN_FACE | int | 0 | 目标人脸信息。 |
 
+
+  ## SearchDirection<sup>21+<sup>
+
+系统默认的搜索方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| DEFAULT | int | 0 | 系统默认方向  |
+  | LEFTWARD | int | 1 | 左向，即顺时针方向。 |
+  | RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
+  
  ## TargetInfo<sup>21+<sup>
 
 搜索目标的相关信息。
@@ -760,7 +775,9 @@ mechanicManager.searchTarget(targetInfo,
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| targetType | TargetType | 否 | 否 | 搜索目标的相关信息。 |
+| targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
+  
+  
  
 ## SearchParams<sup>21+<sup>
 
@@ -772,7 +789,7 @@ mechanicManager.searchTarget(targetInfo,
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| direction | SearchDirection | 否 | 否 | 搜索的方向。 |
+| direction | [SearchDirection](#searchdirection21) | 否 | 否 | 搜索的方向。 |
 
   ## SearchResult<sup>21+<sup>
 
