@@ -398,6 +398,83 @@ struct Child {
 - 以下示例代码将CardView自定义组件标记为复用组件，List上下滑动，触发CardView复用。
 
   <!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
+  
+  ``` TypeScript
+  class MyDataSource implements IDataSource {
+    private dataArray: string[] = [];
+    private listener: DataChangeListener | undefined;
+  
+    public totalCount(): number {
+      return this.dataArray.length;
+    }
+  
+    public getData(index: number): string {
+      return this.dataArray[index];
+    }
+  
+    public pushData(data: string): void {
+      this.dataArray.push(data);
+    }
+  
+    public reloadListener(): void {
+      this.listener?.onDataReloaded();
+    }
+  
+    public registerDataChangeListener(listener: DataChangeListener): void {
+      this.listener = listener;
+    }
+  
+    public unregisterDataChangeListener(listener: DataChangeListener): void {
+      this.listener = undefined;
+    }
+  }
+  
+  @Entry
+  @Component
+  struct ReuseDemo {
+    private data: MyDataSource = new MyDataSource();
+  
+    aboutToAppear() {
+      for (let i = 1; i < 1000; i++) { // 循环1000次
+        this.data.pushData(i + '');
+      }
+    }
+  
+    // ...
+    build() {
+      Column() {
+        List() {
+          LazyForEach(this.data, (item: string) => {
+            ListItem() {
+              CardView({ item: item });
+            }
+          }, (item: string) => item)
+        }
+      }
+    }
+  }
+  
+  // 复用组件
+  @Reusable
+  @Component
+  export struct CardView {
+    // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新。
+    @State item: string = '';
+  
+    aboutToReuse(params: Record<string, Object>): void {
+      this.item = params.item as string;
+    }
+  
+    build() {
+      Column() {
+        Text(this.item)
+          .fontSize(30)
+      }
+      .borderWidth(1)
+      .height(100)
+    }
+  }
+  ```
 
 ### 列表滚动-if使用场景
 
