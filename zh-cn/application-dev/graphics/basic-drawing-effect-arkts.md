@@ -146,6 +146,11 @@
    - 可使用setAntiAlias()接口设置画笔抗锯齿，以使图形绘制边缘更平滑。
 
       <!-- @[arkts_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // 设置抗锯齿效果
+      pen.setAntiAlias(true);
+      ```
 
    - 可使用setCapStyle()接口设置画笔线帽样式。
 
