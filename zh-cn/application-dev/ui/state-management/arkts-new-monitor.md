@@ -1312,7 +1312,42 @@ class Info {
   public name: string = 'John';
   @Trace public age: number = 24;
 
+<!-- @[monitor_problem_param_positive_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample2.ets) -->
+
+``` TypeScript
+@ObservedV2
+class Info {
+  public name: string = 'John';
+  @Trace public age: number = 24;
+
+  @Computed
+  // 给myAge添加@Computed成为状态变量
   get myAge() {
+    return this.age;
+  }
+
+  @Monitor('myAge')
+  // 监听@Computed装饰的getter访问器
+  onPropertyChange() {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'age changed');
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change age')
+        .onClick(() => {
+          this.info.age = 25; // 状态变量age改变
+        })
+    }
+  }
+}
+```
     return this.age; // age为状态变量
   }
 
