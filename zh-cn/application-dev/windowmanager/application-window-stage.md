@@ -262,6 +262,79 @@
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁全局悬浮窗。
    
    <!-- @[create_float_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import hilog from '@ohos.hilog';
+   
+   const DOMAIN = 0X0000;
+   const TAG : string = '[Sample_CreatFloatWindow]';
+   
+   export default class EntryAbility extends UIAbility {
+     onWindowStageCreate(windowStage: window.WindowStage) {
+       // 1.创建悬浮窗。
+       let windowClass: window.Window | null = null;
+       let config: window.Configuration = {
+         name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
+       };
+       window.createWindow(config, (err: BusinessError, data) => {
+         let errCode: number = err.code;
+         if (errCode) {
+           hilog.error(DOMAIN, TAG, `Failed to create the floatWindow. Cause: ${JSON.stringify(err)}`);
+           return;
+         }
+         hilog.info(DOMAIN, TAG, `Succeeded in creating the floatWindow. Data: ${JSON.stringify(data)}`);
+         windowClass = data;
+         // 2.悬浮窗窗口创建成功后，设置悬浮窗的位置、大小及相关属性等。
+         windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
+           let errCode: number = err.code;
+           if (errCode) {
+             hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
+             return;
+           }
+           hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
+         });
+         windowClass.resize(500, 500, (err: BusinessError) => {
+           let errCode: number = err.code;
+           if (errCode) {
+             hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
+             return;
+           }
+           hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
+         });
+         // 3.为悬浮窗加载对应的目标页面。
+         windowClass.setUIContent('pages/page4', (err: BusinessError) => {
+           let errCode: number = err.code;
+           if (errCode) {
+             hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
+             return;
+           }
+           hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+           // 3.显示悬浮窗。
+           (windowClass as window.Window).showWindow((err: BusinessError) => {
+             let errCode: number = err.code;
+             if (errCode) {
+               hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
+               return;
+             }
+             hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
+           });
+         });
+         // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
+         windowClass.destroyWindow((err: BusinessError) => {
+           let errCode: number = err.code;
+           if (errCode) {
+             hilog.error(DOMAIN, TAG, `Failed to destroy the window. Cause: ${JSON.stringify(err)}`);
+             return;
+           }
+           hilog.info(DOMAIN, TAG, `Succeeded in destroying the window.`);
+         });
+       });
+     }
+   };
+   ```
 
 ## 监听窗口不可交互与可交互事件
 
