@@ -433,27 +433,27 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 整体或者按域名的明文HTTP是否允许的配置示例如下：
 
 ```
-{	
-  "network-security-config": {	
-    "base-config": {	
-      "cleartextTrafficPermitted": true	
-    },	
-    "domain-config": [	
-      {	
-        "domains": [	
-          {	
-            "include-subdomains": true,	
-            "name": "example.com"	
-          }	
-        ],	
-        "cleartextTrafficPermitted": false	
-      }	
-    ]	
-  }	
-  "component-config": {	
-    "Network Kit": true,	
-    "ArkWeb": true	
-  }	
+{
+  "network-security-config": {
+    "base-config": {
+      "cleartextTrafficPermitted": true
+    },
+    "domain-config": [
+      {
+        "domains": [
+          {
+            "include-subdomains": true,
+            "name": "example.com"
+          }
+        ],
+        "cleartextTrafficPermitted": false
+      }
+    ]
+  }
+  "component-config": {
+    "Network Kit": true,
+    "ArkWeb": true
+  }
 }
 ```
 
