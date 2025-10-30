@@ -103,21 +103,7 @@ struct WebComponent {
   ```
 
 - 跳转页面ProfilePage.ets代码。
-  
-  ```ts
-  @Entry
-  @Component
-  struct ProfilePage {
-    @State message: string = 'Hello World';
-  
-    build() {
-      Column() {
-        Text(this.message)
-          .fontSize(20)
-      }
-    }
-  }
-  ```
+  <!-- @[navigate_to_profile_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/ProfilePage.ets) -->
 
 
 ## 跨应用跳转

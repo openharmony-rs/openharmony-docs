@@ -16,7 +16,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 在下面的示例中，Web组件通过拦截页面请求“https://www.example.com/test.html”， 在应用侧代码构建响应资源，实现自定义页面响应场景。
 
 
-- 前端页面index.html代码。
+- 前端页面index1.html代码。
 
   ```html
   <!DOCTYPE html>
@@ -55,7 +55,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index1.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             if (event) {
               console.info('url:' + event.request.getRequestUrl());
@@ -85,7 +85,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
 在下面的示例中，Web组件通过拦截页面请求“https://www.example.com/test.js”， 应用侧代码构建响应资源，在响应头中添加“ResponseDataID”字段，开启生成CodeCache的功能。
 
-- 前端页面index.html代码。
+- 前端页面index2.html代码。
 
   ```html
   <!DOCTYPE html>
@@ -150,7 +150,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index2.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             // 拦截页面请求
             if (event?.request.getRequestUrl() == 'https://www.example.com/test.js') {

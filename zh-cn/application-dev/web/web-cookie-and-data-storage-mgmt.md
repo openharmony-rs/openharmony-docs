@@ -66,59 +66,11 @@ struct WebComponent {
 
 
 在下面的示例中，缓存设置为None模式。
-
-
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  @State mode: CacheMode = CacheMode.None;
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .cacheMode(this.mode)
-    }
-  }
-}
-```
+<!-- @[configure_the_caching_mode_for_page_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_one.ets) -->
 
 
 为了获取最新资源，开发者可以通过[removeCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache)接口清除已经缓存的资源，示例代码如下：
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  @State mode: CacheMode = CacheMode.None;
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('removeCache')
-        .onClick(() => {
-          try {
-            // 设置为true时同时清除rom和ram中的缓存，设置为false时只清除ram中的缓存
-            this.controller.removeCache(true);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-        .cacheMode(this.mode)
-    }
-  }
-}
-```
+<!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
 
 
 ### Dom Storage
@@ -126,21 +78,4 @@ struct WebComponent {
 Dom Storage包含了Session Storage和Local Storage两类。Session Storage为临时数据，其存储与释放跟随会话生命周期；Local Storage为持久化数据，保存在应用目录下。两者的数据均通过Key-Value的形式存储，在访问需要客户端存储的页面时使用。开发者可以通过Web组件的属性接口[domStorageAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)进行使能配置，示例如下：
 
 
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .domStorageAccess(true)
-    }
-  }
-}
-```
+<!-- @[enable_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/DomStorage.ets) -->
