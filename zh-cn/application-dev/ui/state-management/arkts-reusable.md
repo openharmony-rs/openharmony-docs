@@ -268,6 +268,62 @@
 - ComponentContent不支持传入\@Reusable装饰器装饰的自定义组件。
 
   <!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
+  
+  ``` TypeScript
+  import { ComponentContent } from '@kit.ArkUI';
+  
+  @Builder
+  function buildCreativeLoadingDialog(closedClick: () => void) {
+    Crash();
+  }
+  
+  // 如果注释掉就可以正常弹出弹窗，如果加上@Reusable就直接crash。
+  @Reusable
+  @Component
+  export struct Crash {
+    build() {
+      Column() {
+        Text('Crash')
+          .fontSize(12)
+          .lineHeight(18)
+          .fontColor(Color.Blue)
+          .margin({
+            left: 6
+          })
+      }.width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+  
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'Hello World';
+    private uiContext = this.getUIContext();
+  
+    build() {
+      RelativeContainer() {
+        Text(this.message)
+          .id('Index')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .alignRules({
+            center: { anchor: '__container__', align: VerticalAlign.Center },
+            middle: { anchor: '__container__', align: HorizontalAlign.Center }
+          })
+          .onClick(() => {
+            // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable注解的自定义组件。
+            let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+            });
+            this.uiContext.getPromptAction().openCustomDialog(contentNode);
+          })
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
+  ```
 
 - \@Reusable装饰器不建议嵌套使用，会增加内存，降低复用效率，加大维护难度。嵌套使用会导致额外缓存池的生成，各缓存池拥有相同树状结构，复用效率低下。此外，嵌套使用会使生命周期管理复杂，资源和变量共享困难。
 
