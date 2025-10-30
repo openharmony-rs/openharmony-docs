@@ -539,6 +539,34 @@ export struct Child {
 
 <!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/freeze/template5/PageB.ets
+@Builder
+function pageBBuilder() {
+  PageB();
+}
+
+@ComponentV2
+struct PageB {
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('This is the PageB')
+
+        Button('Back').fontSize(30)
+          .onClick(() => {
+            this.pathStack.pop();
+          })
+      }
+    }.onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
+
 
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 
