@@ -32,6 +32,22 @@
 ## 接口定义
 
   <!-- @[Common_AttributeModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  
+  ``` TypeScript
+  declare interface AttributeModifier<T> {
+  
+    applyNormalAttribute?(instance: T): void;
+  
+    applyPressedAttribute?(instance: T): void;
+  
+    applyFocusedAttribute?(instance: T): void;
+  
+    applyDisabledAttribute?(instance: T): void;
+  
+    applySelectedAttribute?(instance: T): void;
+  
+  }
+  ```
 
 
 `AttributeModifier`是一个接口，开发者需要实现其中的`applyXxxAttribute`方法来实现对应场景的属性设置。`Xxx`表示多态的场景，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。`T`是组件的属性类型，开发者可以在回调中获取到属性对象，通过该对象设置属性。
