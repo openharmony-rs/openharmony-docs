@@ -353,6 +353,12 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
     ```
 
     <!-- @[GridColOffset1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffset.ets) -->
+    
+    ``` TypeScript
+    GridCol({ offset: 2, span: 1 }){}
+    GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 }, span: 1 }){}
+    GridCol({ span: 1 }){}.offset(gOffset)
+    ```
 
 - 设置order。
 
