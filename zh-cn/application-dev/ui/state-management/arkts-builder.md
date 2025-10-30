@@ -953,6 +953,118 @@ struct ReusableChildTwoPage {
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)。
 
 <!-- @[builder_supports_state_variable_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets) -->
+
+``` TypeScript
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@ObservedV2
+class ClassA {
+  @Trace public props: string = 'Hello';
+}
+
+@Builder
+function customButton(num1: Binding<number>, num2: MutableBinding<number>) {
+  Row() {
+    Column() {
+      Text(`number1 === ${num1.value},  number2 === ${num2.value}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+
+      Button(`only change number2`)
+        .onClick(() => {
+          num2.value += 1;
+        })
+    }
+  }
+}
+
+@Builder
+function customButtonObj(obj1: MutableBinding<ClassA>) {
+  Row() {
+    Column() {
+      Text(`props === ${obj1.value.props}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+
+      Button(`change props`)
+        .onClick(() => {
+          obj1.value.props += 'Hi';
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Single {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+  @Local classA: ClassA = new ClassA();
+
+  build() {
+    Column() {
+      Button(`change both number1 and number2`)
+        .onClick(() => {
+          this.number1 += 1;
+          this.number2 += 2;
+        })
+      Text(`number1 === ${this.number1}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      Text(`number2 === ${this.number2}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      customButton(
+        UIUtils.makeBinding<number>(() => this.number1),
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
+      Text(`classA.props === ${this.classA.props}`)
+        .width(300)
+        .height(40)
+        .margin(10)
+        .backgroundColor('#0d000000')
+        .fontColor('#e6000000')
+        .borderRadius(20)
+        .textAlign(TextAlign.Center)
+      customButtonObj(
+        UIUtils.makeBinding<ClassA>(
+          () => this.classA,
+          (val: ClassA) => {
+            this.classA = val;
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 示例效果图
 
 ![arkts-builder-refresh](figures/arkts-builder-refresh.gif)
