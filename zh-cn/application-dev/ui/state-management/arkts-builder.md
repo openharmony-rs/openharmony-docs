@@ -1872,3 +1872,32 @@ Button按钮会出现UI异常的情况，开发者需要避免在\@Watch函数�
 
 【正例】
 <!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Child2 {
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  provideWatch() {
+    console.info(`content value has changed.`);
+  }
+
+  build() {
+    Column() {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
+    }
+  }
+}
+```
