@@ -932,6 +932,34 @@ V2迁移策略：直接替换。
 
 <!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
 
+``` TypeScript
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
+@Entry
+@ComponentV2
+struct MonitorExample1 {
+  @Local apple: number = 0;
+
+  @Monitor('apple')
+  onFruitChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, TAG, `apple changed from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`apple count: ${this.apple}`)
+      Button('add apple')
+        .onClick(() => {
+          this.apple++;
+        })
+    }
+  }
+}
+```
+
 **多变量监听**
 
 在V1中，每个\@Watch回调函数只能监听一个变量，且无法获取变化前的值。迁移到V2后，可以使用一个\@Monitor同时监听多个变量，并获取监听变量变化前后的值。
