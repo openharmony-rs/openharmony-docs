@@ -19,6 +19,10 @@ onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T
 
 给组件绑定自定义事件拦截回调。
 
+> **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -34,9 +38,6 @@ onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
-> **说明：**
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 ## 示例
 
