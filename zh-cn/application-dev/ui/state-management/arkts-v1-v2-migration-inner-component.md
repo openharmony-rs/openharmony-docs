@@ -230,6 +230,38 @@ V2迁移策略：使用\@Param和\@Event。
 
 <!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child8 {
+  // @Param搭配@Event回调实现数据双向同步
+  @Param val: number = 0;
+  @Event addOne: () => void;
+
+  build() {
+    Column() {
+      Text('child: ' + this.val.toString())
+      Button('+1')
+        .onClick(() => {
+          this.addOne();
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent8 {
+  @Local myVal: number = 10;
+
+  build() {
+    Column() {
+      Text('parent: ' + this.myVal.toString())
+      Child8({ val: this.myVal, addOne: () => this.myVal++ })
+    }
+  }
+}
+```
+
 ### \@Prop -> \@Param
 
 **迁移规则**
