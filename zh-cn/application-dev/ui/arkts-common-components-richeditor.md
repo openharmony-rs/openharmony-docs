@@ -1222,6 +1222,52 @@ SystemMenu() {
 
 <!-- @[richEditor_decorationOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+RichEditor({ controller: this.styledStringController });
+// $r('app.string.Demo_SetStyledStringButton')需要替换为开发者所需的资源文件
+Button($r('app.string.Demo_SetStyledStringButton'))
+  .fontSize(20)
+  .onClick(() => {
+    let mutString: MutableStyledString = new MutableStyledString(
+      // $r('app.string.Demo_styledString')需要替换为开发者所需的资源文件
+      resource.resourceToString($r('app.string.Demo_styledString')), [
+      {
+        start: 0,
+        length: 9,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(25) })
+      },
+      {
+        start: 0,
+        length: 5,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.Underline,
+          },
+          {
+            // 开启多装饰线
+            enableMultiType: true
+          })
+      },
+      {
+        start: 2,
+        length: 4,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.LineThrough,
+          },
+          {
+            // 开启多装饰线
+            enableMultiType: true
+          })
+      }
+    ])
+    this.styledStringController.setStyledString(mutString);
+  })
+```
+
 ![RichEditor_decoration_multi_type](figures/RichEditor_decoration_multi_type.jpg)
 
 ### 设置垂直居中
