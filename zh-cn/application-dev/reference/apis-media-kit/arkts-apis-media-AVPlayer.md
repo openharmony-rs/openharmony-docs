@@ -295,7 +295,7 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise\<void>
 
 | 类型           | 说明                                  |
 | -------------- | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -487,7 +487,7 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 准备播放的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2836,7 +2836,7 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<void> | 配置超分目标输出分辨率setVideoWindowSize方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
