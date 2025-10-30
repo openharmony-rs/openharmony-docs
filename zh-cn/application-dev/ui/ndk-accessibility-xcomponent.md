@@ -29,6 +29,58 @@
 2. 获得无障碍接入provider并注册回调函数（以多实例场景为例）。
 
    <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   #include <arkui/native_interface_accessibility.h>
+   #include <string>
+   #include "common/common.h"
+   // 完整实现请参考AccessibilityCapiSample。
+   #include "fakenode/fake_node.h"
+   // 完整实现请参考AccessibilityCapiSample。
+   #include "AccessibilityManager.h"
+   
+   // ···
+   // [StartExclude abilitycap_six_start]
+   AccessibilityManager::AccessibilityManager()
+   {
+   //    多实例场景
+       accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+       accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+       accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+       accessibilityProviderCallbacksWithInstance_.findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+       accessibilityProviderCallbacksWithInstance_.executeAccessibilityAction = ExecuteAccessibilityAction;
+       accessibilityProviderCallbacksWithInstance_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+       accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+   //    单实例场景
+       accessibilityProviderCallbacks_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+       accessibilityProviderCallbacks_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+       accessibilityProviderCallbacks_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+       accessibilityProviderCallbacks_.findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+       accessibilityProviderCallbacks_.executeAccessibilityAction = ExecuteAccessibilityAction;
+       accessibilityProviderCallbacks_.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+       accessibilityProviderCallbacks_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+   }
+   
+   void AccessibilityManager::Initialize(const std::string &id, OH_NativeXComponent *nativeXComponent)
+   {
+       int32_t ret = OH_NativeXComponent_GetNativeAccessibilityProvider(nativeXComponent, &provider);
+       if (provider == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "get provider is null");
+           return;
+       }
+       // 2.注册回调函数
+       ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id.c_str(), provider,
+           &accessibilityProviderCallbacksWithInstance_);
+       if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "InterfaceDesignTest OH_ArkUI_AccessibilityProviderRegisterCallback failed");
+           return;
+       }
+       g_provider = provider;
+   }
+   
+   // ···
+   ```
 
 3. 三方框架需要实现如下回调函数。
 
