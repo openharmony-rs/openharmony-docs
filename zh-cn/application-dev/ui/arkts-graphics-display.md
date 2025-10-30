@@ -61,6 +61,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
   <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  $r('app.string.LoadingResources') 需要替换为开发者所需的资源文件
+  Image($r('app.string.LoadingResources')) // 实际使用时请替换为真实地址
+  ```
 
 - Resource资源
 
