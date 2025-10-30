@@ -46,10 +46,7 @@
 ## 802.1X认证流程中加入自定义的安全校验
 
 1. 从@kit.NetworkKit中导入eap命名空间。
-   
-   ```ts
-   import {eap} from '@kit.NetworkKit';
-   ```
+
 <!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
 
 ``` TypeScript
@@ -217,9 +214,6 @@ const netId: number = 100;
 <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
 
 ``` TypeScript
-// [Start eap_case_start_eth_eap]
-const netId: number = 100;
-// ···
   try{
     eap.logOffEthEap(netId);
     hilog.error(0x0000, 'testTag', 'logOffEthEap success');
