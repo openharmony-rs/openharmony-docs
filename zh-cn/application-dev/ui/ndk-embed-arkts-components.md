@@ -880,3 +880,11 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
 8. 在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。 
    <!-- @[bridge_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const createNativeRoot: (content: Object) => void;
+   export const destroyNativeRoot: () => void;
+   
+   export const registerCreateMixedRefreshNode: (content: Object) => void;
+   export const registerUpdateMixedRefreshNode: (content: Object) => void;
+   ```
