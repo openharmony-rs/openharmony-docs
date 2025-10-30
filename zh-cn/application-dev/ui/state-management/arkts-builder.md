@@ -1409,6 +1409,61 @@ struct ParentPage1 {
 
 <!-- @[builder_parameter_update_propagation_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCorrectUsage.ets) -->
 
+``` TypeScript
+class Tmp5 {
+  public name: string = 'Hello';
+  public age: number = 16;
+}
+
+@Builder
+function parentBuilder2(params: Tmp5) {
+  Row() {
+    Column() {
+      Text(`parentBuilder2===${params.name}===${params.age}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      // 将整个对象拆分开变成简单类型，属于按引用传递方式，更改属性能够触发UI刷新。
+      HelloComponent2({ childName: params.name, childAge: params.age })
+    }
+  }
+}
+
+@Component
+struct HelloComponent2 {
+  @Prop childName: string = '';
+  @Prop childAge: number = 0;
+
+  build() {
+    Row() {
+      Text(`HelloComponent2===${this.childName}===${this.childAge}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+
+@Entry
+@Component
+struct ParentPage2 {
+  @State nameValue: string = 'Zhang San';
+  @State ageValue: number = 18;
+
+  build() {
+    Column() {
+      parentBuilder2({ name: this.nameValue, age: this.ageValue })
+      Button('Click me')
+        .onClick(() => {
+          // 此处修改内容时，会引起HelloComponent2处的变化
+          this.nameValue = 'Li Si';
+          this.ageValue = 20;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### 在UI语句外调用\@Builder函数或方法影响节点正常刷新
 
 当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用，且会造成刷新时节点显示异常。
