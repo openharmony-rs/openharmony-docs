@@ -1384,7 +1384,46 @@ struct Index {
 
 或直接监听状态变量本身：
 
-<!-- @[monitor_problem_param_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamStateVariables.ets) -->
+<!-- @[monitor_problem_state_change_use_addMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemStateChangeUseAddMonitor.ets) -->
+
+``` TypeScript
+@ObservedV2
+class User {
+  @Trace public age: number = 10;
+}
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local user: User | undefined | null = new User();
+
+  @Monitor('user.age')
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `onChange: User property ${path} change from ${mon.value(path)?.before} to ${mon.value(path)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`User age ${this.user?.age}`).fontSize(20)
+      Button('set user to undefined').onClick(() => {
+        // age：可访问 -> 不可访问
+        this.user = undefined;
+      })
+      Button('set user to User').onClick(() => {
+        // age：不可访问 ->可访问
+        this.user = new User();
+      })
+      Button('set user to null').onClick(() => {
+        // age：可访问->不可访问
+        this.user = null;
+      })
+    }
+  }
+}
+```
 
 ``` TypeScript
 @ObservedV2
