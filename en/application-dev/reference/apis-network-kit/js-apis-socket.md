@@ -79,7 +79,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
+  address: '192.168.xx.xxx', // Local IP address
   port: 1234
 }
 udp.bind(bindAddr, (err: BusinessError) => {
@@ -130,7 +130,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
+  address: '192.168.xx.xxx', // Local IP address
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
@@ -788,7 +788,7 @@ Unsubscribes from **message** events of the **UDPSocket** object. This API uses 
 
 | Name  | Type                                                        | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
-| type     | string                                                       | Yes  | Type of the event to unsubscribe from. **message**: message receiving event.|
+| type     | string                                                       | Yes  | Event type.<br/> **message**: message receiving event.|
 | callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.                             |
 
 **Example**
@@ -857,7 +857,7 @@ Unsubscribes from **listening** events or **close** events of the **UDPSocket** 
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | Yes  | Type of the event to unsubscribe from.<br>- **listening**: data packet message event.<br>- **close**: close event.|
+| type     | string           | Yes  | Event type.<br>- **listening**: data packet message event.<br>- **close**: close event.|
 | callback | Callback\<void\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.    |
 
 **Example**
@@ -922,7 +922,7 @@ Unsubscribes from **error** events of the **UDPSocket** object. This API uses an
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: error event.|
+| type     | string        | Yes  | Event type.<br/> **error**: error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.     |
 
 **Example**
@@ -1506,7 +1506,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
 
 setLoopbackMode(flag: boolean): Promise\<void\>
 
-Sets the loopback mode flag for multicast communication. This API uses an asynchronous callback to return the result.
+Sets the loopback mode flag for multicast communication. This API uses a promise to return the result.
 
 > **NOTE**
 > Use this API to enable or disable the loopback mode. By default, the loopback mode is enabled.
@@ -1553,7 +1553,7 @@ multicast.setLoopbackMode(false).then(() => {
 
 getLoopbackMode(callback: AsyncCallback\<boolean\>): void
 
-Obtains the loopback mode flag for multicast communication. This API uses a promise to return the result.
+Obtains the loopback mode flag for multicast communication. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > Use this API to check whether the loopback mode is enabled.
@@ -2701,7 +2701,7 @@ Unsubscribes from **message** events of the **TCPSocket** object. This API uses 
 
 | Name  | Type                                                        | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
-| type     | string                                                       | Yes  | Type of the event to unsubscribe from. **message**: message receiving event.|
+| type     | string                                                       | Yes  | Event type.<br/> **message**: message receiving event.|
 | callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.                            |
 
 **Example**
@@ -2770,7 +2770,7 @@ Unsubscribes from **connect** or **close** events of the **TCPSocket** object. T
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | Yes  | Type of the event to unsubscribe from.<br>- **connect**: connection event.<br>- **close**: close event.|
+| type     | string           | Yes  | Event type.<br/><br>- **connect**: connection event.<br>- **close**: close event.|
 | callback | Callback\<void\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.                       |
 
 **Example**
@@ -2835,7 +2835,7 @@ Unsubscribes from **error** events of the **TCPSocket** object. This API uses an
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: error event.|
+| type     | string        | Yes  | Event type.<br/> **error**: error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.                          |
 
 **Example**
@@ -3408,7 +3408,7 @@ Unsubscribes from **connect** events of the **TCPSocketServer** object. This API
 
 | Name  | Type                           | Mandatory| Description                                 |
 | -------- | ------------------------------- | ---- | ------------------------------------- |
-| type     | string                          | Yes  | Type of the event to unsubscribe from. **connect**: connection event.|
+| type     | string                          | Yes  | Event type.<br/> **connect**: connection event.|
 | callback | Callback\<[TCPSocketConnection](#tcpsocketconnection10)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -3511,7 +3511,7 @@ Unsubscribes from **error** events of the **TCPSocketServer** object. This API u
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: error event.|
+| type     | string        | Yes  | Event type.<br/> **error**: error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.                          |
 
 **Error codes**
@@ -4021,7 +4021,7 @@ Unsubscribes from **message** events of the **TCPSocketConnection** object. This
 
 | Name  | Type                                                        | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
-| type     | string                                                       | Yes  | Type of the event to unsubscribe from. **message**: message receiving event.|
+| type     | string                                                       | Yes  | Event type.<br/> **message**: message receiving event.|
 | callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.       |
 
 **Error codes**
@@ -4107,7 +4107,7 @@ Unsubscribes from **close** events of the **TCPSocketConnection** object. This A
 
 | Name  | Type            | Mandatory| Description                               |
 | -------- | ---------------- | ---- | ----------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from. **close**: close event.|
+| type     | string           | Yes  | Event type.<br/> **close**: close event.|
 | callback | Callback\<void\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.   |
 
 **Error codes**
@@ -4184,7 +4184,7 @@ Unsubscribes from **error** events of the **TCPSocketConnection** object. This A
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: error event.|
+| type     | string        | Yes  | Event type.<br/> **error**: error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Error codes**
@@ -4808,7 +4808,7 @@ Unsubscribes from **message** events of the **LocalSocket** object. This API use
 
 | Name  | Type                                              | Mandatory| Description                                |
 | -------- | ------------------------------------------------ | ---- | ----------------------------------- |
-| type     | string                                           | Yes  | Type of the event to unsubscribe from. **message**: message receiving event.|
+| type     | string                                           | Yes  | Event type.<br/> **message**: message receiving event.|
 | callback | Callback\<[LocalSocketMessageInfo](#localsocketmessageinfo11)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -4885,7 +4885,7 @@ Unsubscribes from **connect** events of the **LocalSocket** object. This API use
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | --------------------------------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from.<br> 'connect': connection event.       |
+| type     | string           | Yes  | Event type.<br/> 'connect': connection event.       |
 | callback | Callback\<void\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.                          |
 
 **Error codes**
@@ -4950,7 +4950,7 @@ client.on('close', callback);
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-Subscribes to **close** events of the **LocalSocket** object. This API uses an asynchronous callback to return the result.
+Unsubscribes from **close** events of the **LocalSocket** object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -4958,7 +4958,7 @@ Subscribes to **close** events of the **LocalSocket** object. This API uses an a
 
 | Name  | Type            | Mandatory| Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string           | Yes  | Type of the event to unsubscribe from.<br> **close**: close event.|
+| type     | string           | Yes  | Event type.<br/> **close**: close event.|
 | callback | Callback\<void\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -5030,7 +5030,7 @@ Unsubscribes from **error** events of the **LocalSocket** object. This API uses 
 
 | Name  | Type         | Mandatory| Description                            |
 | -------- | ------------- | ---- | ----------------------------- |
-| type     | string        | Yes  | Type of the event to unsubscribe from. 'error': error event.|
+| type     | string        | Yes  | Event type.<br/> 'error': error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -5474,7 +5474,7 @@ Unsubscribes from **connect** events of the **LocalSocketServer** object. This A
 
 | Name  | Type                           | Mandatory| Description                                 |
 | -------- | ------------------------------- | ---- | ------------------------------------- |
-| type     | string                          | Yes  | Type of the event to unsubscribe from. 'connect': connection event.|
+| type     | string                          | Yes  | Event type.<br/> 'connect': connection event.|
 | callback | Callback\<[LocalSocketConnection](#localsocketconnection11)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -5551,7 +5551,7 @@ Unsubscribes from **error** events of the **LocalSocketServer** object. This API
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: error event.|
+| type     | string        | Yes  | Event type.<br/> **error**: error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.  |
 
 **Error codes**
@@ -5867,7 +5867,7 @@ Unsubscribes from **message** events of the **LocalSocketConnection** object. Th
 
 | Name  | Type                                             | Mandatory| Description                                |
 | -------- | ----------------------------------------------- | ---- | ----------------------------------- |
-| type     | string                                          | Yes  | Type of the event to unsubscribe from. **message**: message receiving event.|
+| type     | string                                          | Yes  | Event type.<br/> **message**: message receiving event.|
 | callback | Callback\<[LocalSocketMessageInfo](#localsocketmessageinfo11)\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -5949,7 +5949,7 @@ Unsubscribes from **close** events of the **LocalSocketConnection** object. This
 
 | Name  | Type            | Mandatory| Description                               |
 | -------- | ---------------- | ---- | ----------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from. **close**: close event.|
+| type     | string           | Yes  | Event type.<br/> **close**: close event.|
 | callback | Callback\<void\> | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.|
 
 **Error codes**
@@ -6025,7 +6025,7 @@ Unsubscribes from **error** events of the **LocalSocketConnection** object. This
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | ------------- | ---- | ------------------------------------ |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: error event.|
+| type     | string        | Yes  | Event type.<br/> **error**: error event.|
 | callback | ErrorCallback | No  | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.  |
 
 **Error codes**
