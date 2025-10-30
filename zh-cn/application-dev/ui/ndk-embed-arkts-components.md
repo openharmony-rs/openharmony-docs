@@ -831,6 +831,52 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    替换入口组件创建为下拉刷新文本列表。
 
    <!-- @[native_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NativeEntry.cpp) -->
+   
+   ``` C++
+   // NativeEntry.cpp
+   
+   #include "NativeEntry.h"
+   
+   #include "ArkUIMixedRefresh.h"
+   #include "MixedRefreshExample.h"
+   #include "NormalTextListExample.h"
+   
+   #include <arkui/native_node_napi.h>
+   #include <arkui/native_type.h>
+   #include <js_native_api.h>
+   #include <uv.h>
+   
+   namespace NativeModule {
+   
+   napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // 获取NodeContent
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+   
+       // 创建Refresh文本列表
+       auto refresh = CreateMixedRefreshList(env);
+   
+       // 保持Native侧对象到管理类中，维护生命周期。
+       NativeEntry::GetInstance()->SetRootNode(refresh);
+       return nullptr;
+   }
+   
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+   {
+       // 从管理类中释放Native侧对象。
+       NativeEntry::GetInstance()->DisposeRootNode();
+       return nullptr;
+   }
+   
+   } // namespace NativeModule
+   ```
 
 8. 在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。 
    <!-- @[bridge_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/types/libentry/Index.d.ts) -->
