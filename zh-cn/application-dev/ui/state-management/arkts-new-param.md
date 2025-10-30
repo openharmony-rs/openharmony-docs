@@ -518,6 +518,76 @@ struct Child {
 
 <!-- @[Param_Use_Scene_Parent_To_Child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneParentToChild.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Region {
+  @Trace public x: number;
+  @Trace public y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+@ObservedV2
+class Info {
+  @Trace public name: string;
+  @Trace public age: number;
+  @Trace public region: Region;
+
+  constructor(name: string, age: number, x: number, y: number) {
+    this.name = name;
+    this.age = age;
+    this.region = new Region(x, y);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
+
+  build() {
+    Column() {
+      ForEach(this.infoList, (info: Info) => {
+        MiddleComponent({ info: info })
+      })
+      Button('change')
+        .onClick(() => {
+          this.infoList[0] = new Info('Atom', 40, 27, 90);
+          this.infoList[1].name = 'Bob';
+          this.infoList[2].region = new Region(7, 9);
+        })
+    }
+  }
+}
+
+@ComponentV2
+struct MiddleComponent {
+  @Require @Param info: Info;
+
+  build() {
+    Column() {
+      Text(`name: ${this.info.name}`)
+      Text(`age: ${this.info.age}`)
+      SubComponent({ region: this.info.region })
+    }
+  }
+}
+
+@ComponentV2
+struct SubComponent {
+  @Require @Param region: Region;
+
+  build() {
+    Column() {
+      Text(`region: ${this.region.x}-${this.region.y}`)
+    }
+  }
+}
+```
+
 ### 装饰Array类型变量
 \@Param装饰Array类型变量，可以观察到数据源对Array整体的赋值，以及调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`带来的变化。
 
