@@ -644,6 +644,55 @@ struct Index {
 
 <!-- @[Param_Use_Scene_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneDate.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct DateComponent {
+  @Param selectedDate: Date = new Date('2024-01-01');
+
+  build() {
+    Column() {
+      DatePicker({
+        start: new Date('1970-1-1'),
+        end: new Date('2100-1-1'),
+        selected: this.selectedDate
+      })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local parentSelectedDate: Date = new Date('2021-08-08');
+
+  build() {
+    Column() {
+      Button('parent update the new date')
+        .margin(10)
+        .onClick(() => {
+          this.parentSelectedDate = new Date('2023-07-07');
+        })
+      Button('increase the year by 1')
+        .margin(10)
+        .onClick(() => {
+          this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .margin(10)
+        .onClick(() => {
+          this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
+        })
+      Button('parent increase the day by 1')
+        .margin(10)
+        .onClick(() => {
+          this.parentSelectedDate.setDate(this.parentSelectedDate.getDate() + 1);
+        })
+      DateComponent({ selectedDate: this.parentSelectedDate })
+    }
+  }
+}
+```
+
 ### 装饰Map类型变量
 
 \@Param装饰Map类型变量，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
