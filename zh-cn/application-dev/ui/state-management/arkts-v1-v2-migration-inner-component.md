@@ -76,6 +76,29 @@ V1：
 
 <!-- @[example1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV1.ets) -->
 
+``` TypeScript
+class Child3 {
+  public value: number = 10;
+}
+
+@Component
+@Entry
+struct example1 {
+  @State child: Child3 = new Child3();
+
+  build() {
+    Column() {
+      Text(this.child.value.toString())
+      // @State可以观察第一层变化
+      Button('value+1')
+        .onClick(() => {
+          this.child.value++;
+        })
+    }
+  }
+}
+```
+
 V2迁移策略：使用\@ObservedV2和\@Trace。
 
 <!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
