@@ -4392,5 +4392,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-subscriber-extension-ability-development-steps.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
+				"functions":[
+					{
+						"end_line":92,
+						"name":"quick_start",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
