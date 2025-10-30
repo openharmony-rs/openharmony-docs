@@ -1032,6 +1032,74 @@ export struct DisableMenuItem {
 
 <!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+sliderShow: boolean = false;
+private theme: SelectionMenuTheme = defaultTheme;
+
+build() {
+  Column() {
+    // $r('app.string.xxx')需要替换为开发者所需的资源文件
+    ComponentCard({
+      title: $r('app.string.Set_Attributes_title_1'),
+      description: $r('app.string.Set_Attributes_title_1_desc'),
+    }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_4')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 18
+            }
+          })
+        })
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.SystemMenu, ResponseType.LongPress, {
+          onDisappear: () => {
+            this.sliderShow = false
+          }
+        })
+        // 绑定自定义菜单
+        .width(300)
+        .height(300)
+    }
+  }
+}
+
+@Builder
+SystemMenu() {
+  Column() {
+    Menu() {
+      if (this.controller) {
+        // $r('app.string.xxx')需要替换为开发者所需的资源文件
+        MenuItemGroup() {
+          MenuItem({
+            startIcon: this.theme.cutIcon,
+            content: resource.resourceToString($r('app.string.SetAttributes_Text_1')),
+            labelInfo: 'Ctrl+X'
+          })
+          MenuItem({
+            startIcon: this.theme.copyIcon,
+            content: resource.resourceToString($r('app.string.SetAttributes_Text_2')),
+            labelInfo: 'Ctrl+C'
+          })
+          MenuItem({
+            startIcon: this.theme.pasteIcon,
+            content: resource.resourceToString($r('app.string.SetAttributes_Text_3')),
+            labelInfo: 'Ctrl+V'
+          })
+        }
+      }
+    }
+    .radius(this.theme.containerBorderRadius)
+    .clip(true)
+    .backgroundColor(Color.White)
+    .width(this.theme.defaultMenuWidth)
+  }
+  .width(this.theme.defaultMenuWidth)
+}
+```
+
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
 
 ## 布局配置
