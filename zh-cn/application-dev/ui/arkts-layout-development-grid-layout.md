@@ -302,6 +302,10 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 
     <!-- @[GridLayoutGutterToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutGutterToNumber.ets) -->
+    
+    ``` TypeScript
+    GridRow({ gutter: 10 }) { /* ... */ }
+    ```
 
     ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
 
