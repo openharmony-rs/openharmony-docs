@@ -440,7 +440,11 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
    // 返回到索引为0的页面
    this.pathStack.popToIndex(0);
    ```
-### 页面返回
+  <!-- @[PageOnceClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+  
+  ``` TypeScript
+  @Provide('pageStack') pageStack: NavPathStack = new NavPathStack();
+  ```
 
 NavPathStack通过Pop相关接口去实现页面返回功能。
 
