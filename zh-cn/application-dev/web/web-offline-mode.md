@@ -443,6 +443,27 @@ export const getNWeb = (url : string) : myNodeController | undefined => {
 
 <!--  -->
 <!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { getNWeb } from './common'
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
+        // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
+        NodeContainer(getNWeb('www.example.com'))
+          .height('90%')
+          .width('100%')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 <!--  -->
 
 ## 常见白屏问题排查
