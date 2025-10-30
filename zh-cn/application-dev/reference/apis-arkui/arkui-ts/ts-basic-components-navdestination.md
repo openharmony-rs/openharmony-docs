@@ -1063,7 +1063,7 @@ struct NavDest {
   @State name: string = 'NA';
   @State destWidth: string = '100%';
   stack: NavPathStack = new NavPathStack();
-  @State y: string = '0';
+  @State translateY: string = '0';
 
   build() {
     NavDestination() {
@@ -1079,7 +1079,7 @@ struct NavDest {
       .size({ width: '100%', height: '100%' })
     }
     .title(this.name)
-    .translate({ y: this.y })
+    .translate({ y: this.translateY })
     .onReady((context) => {
       this.name = context.pathInfo.name;
       this.stack = context.pathStack;
@@ -1096,34 +1096,34 @@ struct NavDest {
         if (op === NavigationOperation.PUSH) {
           if (isEnter) {
             // ENTER_PUSH
-            this.y = '100%';
+            this.translateY = '100%';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, push & isEnter');
-              this.y = '0';
+              this.translateY = '0';
             }
           } else {
             // EXIT_PUSH
-            this.y = '0';
+            this.translateY = '0';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, push & !isEnter');
-              this.y = '0';
+              this.translateY = '0';
             }
             transitionOneDuration = 450;
           }
         } else if (op === NavigationOperation.POP) {
           if (isEnter) {
             // ENTER_POP
-            this.y = '0';
+            this.translateY = '0';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, pop & isEnter');
-              this.y = '0';
+              this.translateY = '0';
             }
           } else {
             // EXIT_POP
-            this.y = '0';
+            this.translateY = '0';
             transitionOneEvent = () => {
               console.info('[NavDestinationTransition]', 'transitionOne, pop & !isEnter');
-              this.y = '100%';
+              this.translateY = '100%';
             }
           }
         } else {
