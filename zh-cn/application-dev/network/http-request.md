@@ -188,7 +188,7 @@ import { common } from '@kit.AbilityKit';
     
 ```ts
   // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
-  httpRequest.off('headersReceive');  
+  httpRequest.off('headersReceive');
  ```
    
 6. 调用destroy()方法销毁
@@ -197,7 +197,7 @@ import { common } from '@kit.AbilityKit';
 
 ```ts
   // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
-  httpRequest.destroy(); 
+  httpRequest.destroy();
 ```
 
 ## 发起HTTP流式传输请求
@@ -518,7 +518,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
   "trust-current-user-ca" : false // 配置是否信任当前用户安装的CA证书，默认为true
 }
 ```
-### HTTP拦截器
+## HTTP拦截器
 
 HTTP拦截器模块提供了一种强大的、可定制的机制，允许开发者在 HTTP 请求-响应的生命周期中的**关键节点**插入自定义逻辑。通过拦截器，开发者可以无需修改核心网络代码即可实现诸如修改请求头/体、缓存策略、重定向处理、网络监控、响应预处理等全局功能。以下是5个关键拦截点的流程关键点说明：
 
@@ -532,7 +532,7 @@ HTTP拦截器模块提供了一种强大的、可定制的机制，允许开发�
 
 5. 拦截最终响应（FINAL_RESPONSE）
 
-#### 流程关键点说明：
+### 流程关键点说明
 
 **顺序执行**：拦截器严格按照 **INITIAL_REQUEST** -> **CACHE_CHECKED** -> **NETWORK_CONNECT** -> **(REDIRECTION)** -> **FINAL_RESPONSE** 的顺序被触发调用。
 
