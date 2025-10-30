@@ -601,16 +601,17 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
 ```
 
-3. 绑定服务器IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件， 然后上传CA证书并建立连接。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
 	```ts
     // 绑定本地IP地址和端口。
     let ipAddress : socket.NetAddress = {} as socket.NetAddress;
     ipAddress.address = "192.168.xxx.xxx";
     ipAddress.port = 4512;
     
-    // 双向认证上传客户端CA证书及数字证书，并建立连接，连接建立成功后可以发送数据。
-    ipAddress.address = "192.168.xxx.xxx";
-    ipAddress.port = 1234;
+    // 服务器IP地址和端口。
+    let serverAddress : socket.NetAddress = {} as socket.NetAddress;
+    serverAddress.address = "192.168.xxx.xxx";
+    serverAddress.port = 1234;
 
     let tlsSecureOption : socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
     tlsSecureOption.key = "xxxx";
@@ -623,7 +624,7 @@ let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
     tlsSecureOption.cipherSuite = "AES256-SHA256";
 
     let tlsTwoWayConnectOption : socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
-    tlsTwoWayConnectOption.address = ipAddress;
+    tlsTwoWayConnectOption.address = serverAddress;
     tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
     tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
     ```
@@ -719,22 +720,23 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
 ```
 
-3. 绑定服务器IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件， 然后上传CA证书并建立连接。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
 ```ts
   // 绑定本地IP地址和端口。
   let ipAddress : socket.NetAddress = {} as socket.NetAddress;
   ipAddress.address = "192.168.xxx.xxx";
   ipAddress.port = 5445;
   
-  // 建立连接，连接建立成功后，可以发送数据。
-    ipAddress.address = "192.168.xxx.xxx";
-  ipAddress.port = 8789;
+  // 服务器IP地址和端口。
+  let serverAddress : socket.NetAddress = {} as socket.NetAddress;
+  serverAddress.address = "192.168.xxx.xxx";
+  serverAddress.port = 8789;
   let tlsOneWaySecureOption : socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
   tlsOneWaySecureOption.ca = ["xxxx", "xxxx"];
   tlsOneWaySecureOption.cipherSuite = "AES256-SHA256";
 
   let tlsOneWayConnectOptions: socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
-  tlsOneWayConnectOptions.address = ipAddress;
+  tlsOneWayConnectOptions.address = serverAddress;
   tlsOneWayConnectOptions.secureOptions = tlsOneWaySecureOption;
   ```
 <!-- @[tls_worker_bind_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
