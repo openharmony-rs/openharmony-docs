@@ -138,7 +138,7 @@ struct Index {
     private localStorage: LocalStorage = new LocalStorage(this.para);
     private res: boolean = this.localStorage.setOrCreate('PropB', 121);
     private defaultWindowSizeType: number = 1; // 指定画中画第一次拉起窗口为小窗口。
-    private cornerAdsorption : boolean = true;
+    private cornerAdsorption: boolean = true;
     private config: PiPWindow.PiPConfiguration = {
         context: this.getUIContext().getHostContext() as Context,
         componentController: this.mXComponentController,
@@ -150,7 +150,7 @@ struct Index {
         customUIController: this.nodeController, // 可选，如果需要在画中画显示内容上方展示自定义UI，可设置该参数。
         localStorage: this.localStorage, // 可选，如果需要跟踪主窗实例，可设置此参数。
         defaultWindowSizeType: this.defaultWindowSizeType, // 可选，如果需要配置默认启动窗口档位，可设置此参数。
-        cornerAdsorption: this. cornerAdsorption, // 可选，默认为true，如果不需要画中画窗口四角吸附，可设置此参数为false。
+        cornerAdsorption: this.cornerAdsorption, // 可选，默认为true，如果不需要画中画窗口四角吸附，可设置此参数为false。
     };
 
     createPiP() {
