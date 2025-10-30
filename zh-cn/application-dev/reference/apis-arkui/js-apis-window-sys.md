@@ -422,7 +422,7 @@ promise.then(() => {
 ## window.setWindowLayoutMode<sup>9+</sup>
 setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口布局模式。
+设置窗口布局模式，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
