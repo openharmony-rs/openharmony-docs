@@ -699,6 +699,54 @@ struct Index {
 
 <!-- @[Param_Use_Scene_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneMap.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child {
+  @Param value: Map<number, string> = new Map();
+
+  build() {
+    Column() {
+      ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
+        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[1]}`).fontSize(30)
+        Divider()
+      })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+
+  build() {
+    Row() {
+      Column() {
+        Child({ value: this.message })
+        Button('init map').onClick(() => {
+          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+        })
+        Button('set new one').onClick(() => {
+          this.message.set(4, 'd');
+        })
+        Button('clear').onClick(() => {
+          this.message.clear();
+        })
+        Button('replace the first one').onClick(() => {
+          this.message.set(0, 'aa');
+        })
+        Button('delete the first one').onClick(() => {
+          this.message.delete(0);
+        })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Set类型变量
 
 \@Param装饰Set类型变量，可以观察到数据源对Set整体的赋值，以及调用Set的接口`add`, `clear`, `delete`带来的变化。
