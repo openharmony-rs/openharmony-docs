@@ -286,6 +286,19 @@
 
 
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
+       const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       // 三方框架需实现根据文本内容查询无障碍节点的逻辑。
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindAccessibilityNodeInfosByText start,instanceId %{public}s elementId: %{public}ld, "
+                    "requestId: %{public}d, text: %{public}s.", instanceId,
+                    elementId, requestId, text);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 
 
