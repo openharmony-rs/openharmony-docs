@@ -241,6 +241,13 @@ Navigation组件通过mode属性设置页面的显示模式。
   ![free1](figures/free1.jpg)
 
   <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
+  
+  ``` TypeScript
+  Navigation() {
+    // ···
+  }
+  .titleMode(NavigationTitleMode.Full)
+  ```
 
 ## 设置菜单栏
 
