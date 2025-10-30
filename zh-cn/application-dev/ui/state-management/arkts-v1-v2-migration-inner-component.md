@@ -40,6 +40,18 @@ V1：
 
 <!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct Child1 {
+  @State val: number = 10;
+
+  build() {
+    Text(this.val.toString())
+  }
+}
+```
+
 V2迁移策略：直接替换。
 
 <!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
