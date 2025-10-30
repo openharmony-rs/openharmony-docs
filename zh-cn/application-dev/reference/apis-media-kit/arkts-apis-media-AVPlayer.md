@@ -2819,7 +2819,7 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 动态设置超分算法的输出分辨率。可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
-输入参数须在 320x320 ~ 1920x1080 范围内，单位为像素。
+输入参数须在320x320~1920x1080范围内，单位为像素。
 
 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
 
