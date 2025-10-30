@@ -151,7 +151,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20                       |
 | title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br />                     |
 | focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20<br /> |
-| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>从API version 11开始废弃，建议使用active替代。                                                |
+| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。   **ArkTS-Dyn起始版本：** 9   <br>从API version 11开始废弃，建议使用active替代。                            |
 | active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 20<br />                  |
 | displayId<sup>20+</sup> | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 20 |
 
@@ -1968,12 +1968,12 @@ ArkTS-Sta: scrollSearch(on: On): Promise\<Component | null>
 
 **返回值：**
 
-ArkTS-Dyn返回值：
-| 类型                               | 说明                                  |
+ArkTS-Dyn：
+| 类型                               | 说明                                  |s
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
 
-ArkTS-Sta返回值：
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -2031,12 +2031,12 @@ ArkTS-Sta: scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Comp
 
 **返回值：**
 
-ArkTS-Dyn返回值：
+ArkTS-Dyn：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回目标控件对象。 |
 
-ArkTS-Sta返回值：
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -2561,12 +2561,12 @@ ArkTS-Sta: findComponent(on: On): Promise\<Component \| null>
 
 **返回值：**
 
-ArkTS-Dyn返回值：
+ArkTS-Dyn：
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
 
-ArkTS-Sta返回值：
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的目标控件对象。在未找到目标对象时以Promise形式返回null。 |
@@ -2593,7 +2593,7 @@ async function demo() {
 }
 ```
 
-### findComponents
+### findComponents<sup>9+</sup>
 
 ArkTS-Dyn: findComponents(on: On): Promise\<Array\<Component>>
 
@@ -2617,12 +2617,12 @@ ArkTS-Sta: findComponents(on: On): Promise\<Array\<Component> \| null>
 
 **返回值：**
 
-ArkTS-Dyn返回值：
+ArkTS-Dyn：
 | 类型                                       | 说明                                    |
 | ------------------------------------------ | --------------------------------------- |
 | Promise\<Array\<[Component](#component9)>> | Promise对象，返回控件对象的列表。 |
 
-ArkTS-Sta返回值：
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<Array\<[Component](#component9)>\|null\> |  Promise对象，返回找到的控件对象的列表。在未找到目标对象时以Promise形式返回null。 |
@@ -2673,12 +2673,12 @@ ArkTS-Sta: findWindow(filter: WindowFilter): Promise\<UiWindow | null>
 
 **返回值：**
 
-ArkTS-Dyn返回值：
+ArkTS-Dyn：
 | 类型                             | 说明                                  |
 | -------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9)> | Promise对象，返回目标窗口对象。 |
 
-ArkTS-Sta返回值：
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[UiWindow](#uiwindow9) \| null> | Promise对象，返回找到的目标窗口对象，在未找到目标窗口对象时以Promise形式返回null。 |
@@ -2730,12 +2730,12 @@ ArkTS-Sta: waitForComponent(on: On, time: int): Promise\<Component | null>
 
 **返回值：**
 
-ArkTS-Dyn返回值：
+ArkTS-Dyn：
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
 | Promise\<[Component](#component9)> | Promise对象，返回控件对象。 |
 
-ArkTS-Sta返回值：
+ArkTS-Sta：
 | 类型                               | 说明                                  |
 | ---------------------------------- | ------------------------------------- |
 | Promise\<[Component](#component9) \| null> | Promise对象，返回找到的控件对象，在未找到目标对象时以Promise形式返回null。 |
@@ -6317,7 +6317,7 @@ UI事件监听器。
 
 once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
 
-开始监听toast控件出现的事件，使用callback的形式返回结果。
+开始监听toast控件出现的事件，使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6363,7 +6363,7 @@ async function demo() {
 
 once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
 
-开始监听dialog控件出现的事件，使用callback的形式返回结果。
+开始监听dialog控件出现的事件，使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6408,7 +6408,7 @@ async function demo() {
 
 onceToastShow(callback: Callback\<UIElementInfo>): void;
 
-开始监听toast控件出现的事件，使用callback的形式返回结果。
+开始监听toast控件出现的事件，使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -6451,7 +6451,7 @@ async function demo() {
 
 onceDialogShow(callback: Callback\<UIElementInfo>): void;
 
-开始监听dialog控件出现的事件，使用callback的形式返回结果。
+开始监听dialog控件出现的事件，使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
