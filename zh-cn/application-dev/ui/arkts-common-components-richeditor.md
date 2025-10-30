@@ -385,6 +385,16 @@ Symbol内容暂不支持手势、复制、拖拽处理。
 
 <!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+        // $r('app.string.SetAttributes_Text_8')需要替换为开发者所需的资源文件
+        RichEditor(this.options)
+          .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_8')))
+          .maxLength(7)
+```
+
 ![max Length](figures/RichEditor_maxLength.gif)
 
 ## 事件回调
