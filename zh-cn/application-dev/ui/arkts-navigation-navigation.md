@@ -568,7 +568,18 @@ NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈�
    }
    .title('ToPage')
    ```
-
+   <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 获取栈中所有页面name集合
+   this.pageStack.getAllPathName();
+   // 获取索引为1的页面参数
+   this.pageStack.getParamByIndex(1);
+   // 获取PageOne页面的参数
+   this.pageStack.getParamByName('PageOne');
+   // 获取PageOne页面的索引集合
+   this.pageStack.getIndexByName('pageOne');
+   ```
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[GeometryTransitionFromPageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
