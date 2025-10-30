@@ -99,6 +99,69 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 3. CanvasRenderingContext2D绘制文本时，只有符号等文本会对绘制方向生效，英文字母和数字不响应绘制方向的变化。
 
   <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct CustomizeCanvasComponentDrawing {
+    @State message: string = 'Hello world';
+    private settings: RenderingContextSettings = new RenderingContextSettings(true)
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  
+    aboutToAppear(): void {
+      // 监听系统语言切换
+      let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+      let subscribeInfo2: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['usual.event.LOCALE_CHANGED'],
+      }
+      commonEventManager.createSubscriber(subscribeInfo2,
+        (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+          if (err) {
+            console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+  
+          subscriber = data;
+          if (subscriber !== null) {
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              if (err) {
+                return;
+              }
+              // 监听到语言切换后，需要重新绘制Canvas内容
+              this.drawText();
+            })
+          } else {
+            console.error(`MayTest Need create subscriber`);
+          }
+        })
+    }
+  
+    drawText(): void {
+      console.error('MayTest drawText')
+      this.context.reset()
+      this.context.direction = 'inherit'
+      this.context.font = '30px sans-serif'
+      this.context.fillText('ab%123&*@', 50, 50)
+    }
+  
+    build() {
+      Row() {
+        Canvas(this.context)
+          .direction(Direction.Auto)
+          .width('100%')
+          .height('100%')
+          .onReady(() =>{
+            this.drawText()
+          })
+          .backgroundColor(Color.Pink)
+      }
+      .height('100%')
+    }
+  
+  }
+  ```
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
