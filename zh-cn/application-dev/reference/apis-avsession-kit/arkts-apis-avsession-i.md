@@ -217,9 +217,9 @@
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 名称      | 类型                                              | 只读| 可选 | 说明           |
-| --------- | ------------------------------------------------- | ---- | -------------- |
-| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令。每种命令对应的参数不同，具体的对应关系可查阅[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)里的详细介绍。       |
-| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) &#124; string &#124; number | 否 | 是   | 命令对应的参数。 |
+| --------- | ------------------------------------------------- | ---- | ---- | -------------- |
+| command   | [AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)     | 否 | 否   | 命令(不同命令对应不同参数)     |
+| parameter | [LoopMode](arkts-apis-avsession-e.md#loopmode10) \| string \|  number | 否 | 是   | 命令对应的参数。 |
 
 ## AVCastPickerOptions<sup>14+</sup>
 
