@@ -1193,6 +1193,27 @@ SystemMenu() {
 
 <!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+        RichEditor(this.options)
+          .onReady(() => {
+            // $r('app.string.Demo_oneText')需要替换为开发者所需的资源文件
+            this.controller.addTextSpan($r('app.string.Demo_oneText'), {
+              style: {
+                fontSize: 25,
+                decoration: {
+                  type: TextDecorationType.LineThrough,
+                  color: Color.Blue,
+                  // 设置装饰线粗细比例为6
+                  thicknessScale: 6
+                }
+              }
+            })
+          })
+```
+
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
 通过[DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
