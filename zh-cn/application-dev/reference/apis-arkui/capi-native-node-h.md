@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -156,6 +156,7 @@
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float* ratios, int32_t size, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonvisibleareaapproximatechangeevent) | - | 注册限制回调间隔的可见区域变化的基础事件回调。 |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonvisibleareaapproximatechangeevent) | - | 注销限制回调间隔的可见区域变化的基础事件回调。 |
 | [int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_swiper_finishanimation) | - | 停止指定的Swiper节点正在执行的翻页动画。 |
+| [int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (*colorInvertFunc)(uint32_t color))](#oh_arkui_setforcedarkconfig) | - | 为组件和实例设置反色算法。 |
 
 ### 宏定义
 
@@ -220,6 +221,7 @@ enum ArkUI_NodeType
 | ARKUI_NODE_GRID_ITEM | 网格子组件。                               |
 | ARKUI_NODE_CUSTOM_SPAN | 自定义文本段落。                             |
 | ARKUI_NODE_EMBEDDED_COMPONENT | 同应用进程嵌入式组件。 <br>**起始版本：** 20  |
+| ARKUI_NODE_UNDEFINED | 组件类型未定义。在反色接口中代表全部组件类型。 <br>**起始版本：** 20  |
 
 ### ArkUI_NodeAttributeType
 
@@ -278,7 +280,7 @@ enum ArkUI_NodeAttributeType
 | NODE_FOCUSABLE | 获焦属性，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].i32：参数类型为1表示可获焦，为0表示不可获焦。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型为1表示可获焦，为0表示不可获焦。 |
 | NODE_DEFAULT_FOCUS | 默认焦点属性，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> value[0].i32：参数类型为1表示是默认焦点，为0表示不是默认焦点。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> value[0].i32：参数类型为1表示是默认焦点，为0表示不是默认焦点。 |
 | NODE_RESPONSE_REGION | 触摸热区属性，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .data[0].f32：触摸点相对于组件左上角的x轴坐标,单位为vp。 <br> .data[1].f32：触摸点相对于组件左上角的y轴坐标,单位为vp。 <br> .data[2].f32：触摸热区的宽度 ，单位为百分比。 <br> .data[3].f32：触摸热区的高度，单位为百分比。 <br> .data[4...].f32:可以设置多个手势响应区域，顺序和上述一致。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .data[0].f32：触摸点相对于组件左上角的x轴坐标,单位为vp。 <br> .data[1].f32：触摸点相对于组件左上角的y轴坐标,单位为vp。 <br> .data[2].f32：触摸热区的宽度，单位为百分比。 <br> .data[3].f32：触摸热区的高度，单位为百分比。 <br> .data[4...].f32:可以设置多个手势响应区域，顺序和上述一致。  |
-| NODE_OVERLAY | 定义遮罩属性，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .string：遮罩文本；<br> .value[0]?.i32：可选值，浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 <br> .value[1]?.f32：可选值，浮层基于自身左上角的偏移量X，单位为vp，默认值为0vp。 <br> .value[2]?.f32：可选值，浮层基于自身左上角的偏移量Y，单位为vp，默认值为0vp。<br> .value[3]?.i32：可选值，浮层的布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。<br> 在大部分场景下，这个参数都应该被设置成Auto，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。**起始版本：** 21<br>.object：可选值，用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)，默认值为nullptr。 **起始版本：** 21<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .string：遮罩文本； <br> .value[0].i32：浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 <br> .value[1].f32：浮层基于自身左上角的偏移量X，单位为vp。 <br> .value[2].f32：浮层基于自身左上角的偏移量Y，单位为vp。<br>.value[3]?.i32：浮层的布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。 **起始版本：** 21<br>.object：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。**起始版本：** 21<br> |
+| NODE_OVERLAY | 定义遮罩属性，支持属性设置，属性重置和属性获取。开发者可以通过如下.string或.object设置浮层内容，.string有更高的优先级。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .string：遮罩文本；<br> .value[0]?.i32：可选值，浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 <br> .value[1]?.f32：可选值，浮层基于自身左上角的偏移量X，单位为vp，默认值为0vp。 <br> .value[2]?.f32：可选值，浮层基于自身左上角的偏移量Y，单位为vp，默认值为0vp。<br> .value[3]?.i32：可选值，浮层的布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。<br> 在大部分场景下，这个参数都应该被设置成Auto，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。**起始版本：** 21<br>.object：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)，默认值为nullptr。 **起始版本：** 21<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .string：遮罩文本； <br> .value[0].i32：浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。 <br> .value[1].f32：浮层基于自身左上角的偏移量X，单位为vp。 <br> .value[2].f32：浮层基于自身左上角的偏移量Y，单位为vp。<br>.value[3].i32：浮层的布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。 **起始版本：** 21<br>.object：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。**起始版本：** 21<br> |
 | NODE_SWEEP_GRADIENT | 角度渐变效果，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0]?.f32:为角度渐变的中心点，即相对于当前组件左上角的坐标,X轴坐标。 <br> .value[1]?.f32:为角度渐变的中心点，即相对于当前组件左上角的坐标,Y轴坐标。 <br> .value[2]?.f32:角度渐变的起点，默认值0。 <br> .value[3]?.f32:角度渐变的终点，默认值0。 <br> .value[4]?.f32:角度渐变的旋转角度，默认值0。 <br> .value[5]?.i32:为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。 <br> .object: 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： <br> colors：渐变色颜色。 <br> stops：渐变位置。 <br> size：颜色个数。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32:为角度渐变的中心点，即相对于当前组件左上角的坐标,X轴坐标。 <br> .value[1].f32:为角度渐变的中心点，即相对于当前组件左上角的坐标,Y轴坐标。 <br> .value[2].f32:角度渐变的起点，默认值0。 <br> .value[3].f32:角度渐变的终点，默认值0。 <br> .value[4].f32:角度渐变的旋转角度，默认值0。 <br> .value[5].i32:为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。 <br> .object: 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： <br> colors：渐变色颜色。 <br> stops：渐变位置。 <br> size：颜色个数。|
 | NODE_RADIAL_GRADIENT | 径向渐变渐变效果，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0]?.f32:为径向渐变的中心点，即相对于当前组件左上角的坐标,X轴坐标。 <br> .value[1]?.f32:为径向渐变的中心点，即相对于当前组件左上角的坐标,Y轴坐标。 <br> .value[2]?.f32:径向渐变的半径，默认值0。 <br> .value[3]?.i32:为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。 <br> .object: 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： <br> colors：渐变色颜色。 <br> stops：渐变位置。 <br> size：颜色个数。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32:为径向渐变的中心点，即相对于当前组件左上角的坐标,X轴坐标。 <br> .value[1].f32:为径向渐变的中心点，即相对于当前组件左上角的坐标,Y轴坐标。 <br> .value[2].f32:径向渐变的半径，默认值0。 <br> .value[3].i32:为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。 <br> .object: 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： <br> colors：渐变色颜色。 <br> stops：渐变位置。 <br> size：颜色个数。|
 | NODE_MASK | 组件上加上指定形状的遮罩，支持属性设置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式,共有5种类型： <br> 1.rect类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE； <br> .value[4].f32：矩形宽度，单位为vp； <br> .value[5].f32：矩形高度，单位为vp； <br> .value[6].f32：矩形圆角宽度，单位为vp； <br> .value[7].f32：矩形圆角高度，单位为vp； <br> .value[8]?.f32：矩形形状的左上圆角半径，单位为vp； <br> .value[9]?.f32：矩形形状的左下圆角半径，单位为vp； <br> .value[10]?.f32：矩形形状的右上圆角半径，单位为vp； <br> .value[11]?.f32：矩形形状的右下圆角半径，单位为vp； <br> 2.circle类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE； <br> .value[4].f32：圆形宽度，单位为vp； <br> .value[5].f32：圆形高度，单位为vp； <br> 3.ellipse类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE； <br> .value[4].f32：椭圆形宽度，单位为vp； <br> .value[5].f32：椭圆形高度，单位为vp； <br> 4.path类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH； <br> .value[4].f32：路径宽度，单位为vp； <br> .value[5].f32：路径高度，单位为vp； <br> .string：路径绘制的命令字符串； <br> 5.progress类型： <br> .value[0].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PROGRESS； <br> .value[1].f32：进度遮罩的当前值； <br> .value[2].f32：进度遮罩的最大值； <br> .value[3].u32：进度遮罩的颜色； <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式,共有5种类型： <br> 1.rect类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型； <br> .value[4].f32：矩形宽度，单位为vp； <br> .value[5].f32：矩形高度，单位为vp； <br> .value[6].f32：矩形圆角宽度，单位为vp； <br> .value[7].f32：矩形圆角高度，单位为vp； <br> .value[8]?.f32：矩形形状的左上圆角半径，单位为vp； <br> .value[9]?.f32：矩形形状的左下圆角半径，单位为vp； <br> .value[10]?.f32：矩形形状的右上圆角半径，单位为vp； <br> .value[11]?.f32：矩形形状的右下圆角半径，单位为vp； <br> 2.circle类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型； <br> .value[4].f32：圆形宽度，单位为vp； <br> .value[5].f32：圆形高度，单位为vp； <br> 3.ellipse类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型； <br> .value[4].f32：椭圆形宽度，单位为vp； <br> .value[5].f32：椭圆形高度，单位为vp； <br> 4.path类型： <br> .value[0].u32：填充颜色，0xargb类型； <br> .value[1].u32：描边颜色，0xargb类型； <br> .value[2].f32：描边宽度，单位为vp； <br> .value[3].i32：遮罩类型； <br> .value[4].f32：路径宽度，单位为vp； <br> .value[5].f32：路径高度，单位为vp； <br> .string：路径绘制的命令字符串； <br> 5.progress类型： <br> .value[0].i32：遮罩类型； <br> .value[1].f32：进度遮罩的当前值； <br> .value[2].f32：进度遮罩的最大值； <br> .value[3].u32：进度遮罩的颜色； <br> |
@@ -3603,3 +3605,32 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_SetForceDarkConfig()
+
+```
+int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (*colorInvertFunc)(uint32_t color))
+```
+
+**描述：**
+
+
+为组件和实例设置反色算法。详细介绍请参考：[利用反色能力快速适配深色模式](../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uiContext | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
+| forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
+| [ArkUI_NodeType](#arkui_nodetype) | 指定使能反色能力生效组件的类型范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
+| colorInvertFunc | 开发者自定义反色算法函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br> [ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID](capi-native-type-h.md#arkui_errorcode) 反色能力入参错误。 |

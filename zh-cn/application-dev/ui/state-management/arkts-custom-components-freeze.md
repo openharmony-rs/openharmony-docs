@@ -1,4 +1,4 @@
-# 自定义组件冻结功能
+# 自定义组件冻结功能（V1）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->

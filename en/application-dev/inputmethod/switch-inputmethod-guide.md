@@ -18,30 +18,41 @@ You can use the APIs of the input method framework service to easily switch betw
 
 1. In the input method application in use, call [switchCurrentInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodsubtype9) with the target [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype) to switch to another subtype of the current input method.
 
-   ```ts
-   import { InputMethodSubtype, inputMethod } from '@kit.IMEKit';
-   
-   export class KeyboardController {
-     async switchCurrentInputMethodSubtype() {
-       let subTypes = await inputMethod.getSetting().listCurrentInputMethodSubtype(); // Obtain all subtypes of the current input method.
-       let currentSubType = inputMethod.getCurrentInputMethodSubtype(); // Obtain the current subtype of the current input method.
-       for(let i=0;i<subTypes.length;i++) {
-         if(subTypes[i].id != currentSubType.id) { // If the current subtype is not the specified one, switch to the specified one. You can enter a fixed subtype as required.
-           await inputMethod.switchCurrentInputMethodSubtype(subTypes[i]);
-         }
-       }
-     }
-   }
-   ```
+<!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
+
+``` TypeScript
+  async switchInputMethod(item: string) {
+    this.a = await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
+    let currentInputMethod = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
+    console.log('onPageShow22', JSON.stringify(currentInputMethod));
+    for (let i = 0; i < this.a.length; i++) {
+      if (item != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can switch to a fixed input method as required.
+        await inputMethod.switchInputMethod(this.a[i]);
+      }
+    }
+  }
+
+  async switchCurrentInputMethodSubtype(item: InputMethodSubtype) {
+    try {
+      await inputMethod.switchCurrentInputMethodSubtype(item);
+      this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+      console.log('GJ switchCurrentInputMethodSubtype', JSON.stringify(item));
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.log('GJ switchCurrentInputMethodSubtype error', JSON.stringify(error));
+    }
+  }
+```
+
 
 2. Register a listener in the input method application for subtype changes, so as to load a subtype-specific soft keyboard UI.
 
    ```ts
    import { InputMethodSubtype, inputMethodEngine, inputMethod } from '@kit.IMEKit';
-
+   
    export class KeyboardController {
      async switchCurrentInputMethodSubtype() {
-       let panel: inputMethodEngine.Panel;
+       let panel: inputMethodEngine.Panel; // The panel can be used only after a panel instance is created through the createPanel API.
        let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
        // Register a listener in the input method application for subtype changes.
        inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
@@ -54,8 +65,6 @@ You can use the APIs of the input method framework service to easily switch betw
        });
      }
    }
-
-
    ```
 
 ## Switching Between Input Methods
@@ -67,12 +76,19 @@ import { inputMethod } from '@kit.IMEKit';
 
 export class KeyboardController {
   async switchInputMethod(){
-    let inputMethods = await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
-    let currentInputMethod = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
-    for(let i=0;i<inputMethods.length;i++) {
-      if(inputMethods[i].name != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can enter a fixed input method as required.
-        await inputMethod.switchInputMethod(inputMethods[i]);
+    try {
+      let inputMethods: Array<inputMethod.InputMethodProperty> =
+        await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
+      let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
+      for (let i = 0; i < inputMethods.length; i++) {
+        if (inputMethods[i].name != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can enter a fixed input method as required.
+          await inputMethod.switchInputMethod(inputMethods[i]);
+          return;
+        }
       }
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -87,13 +103,22 @@ import { inputMethod } from '@kit.IMEKit';
 
 export class KeyboardController {
   async switchInputMethodAndSubtype() {
-    let inputMethods = await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
-    let currentInputMethod = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
-    for (let i = 0;i < inputMethods.length; i++) {
-      if (inputMethods[i].name != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can enter a fixed input method as required.
-        let subTypes = await inputMethod.getSetting().listInputMethodSubtype(inputMethods[i]); // Obtain the subtypes of the target input method.
-        await inputMethod.switchCurrentInputMethodAndSubtype(inputMethods[i], subTypes[0]); // This example switches to the first obtained subtype.
+    try {
+      let inputMethods: Array<inputMethod.InputMethodProperty> =
+        await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
+      let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
+      for (let i = 0; i < inputMethods.length; i++) {
+        if (inputMethods[i].name != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can enter a fixed input method as required.
+          let subTypes = await inputMethod.getSetting().listInputMethodSubtype(inputMethods[i]); // Obtain the subtypes of the target input method.
+          if (subTypes.length > 0) {
+            await inputMethod.switchCurrentInputMethodAndSubtype(inputMethods[i], subTypes[0]); // This example switches to the first obtained subtype.
+          }
+          return;
+        }
       }
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
     }
   }
 }

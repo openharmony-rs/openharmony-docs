@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif和heif类型的图片格式，不支持apng和svga格式。
 
@@ -461,7 +461,8 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
-颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)
+颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+
 ### draggable<sup>9+</sup>
 
 draggable(value: boolean)
@@ -606,7 +607,7 @@ SVG类型图源不支持该属性。
 
 supportSvg2(enable: boolean)
 
-开启或关闭[SVG新增解析能力](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
 
 Image组件创建后，不支持动态修改该属性的值。
 
@@ -620,7 +621,7 @@ Image组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable | boolean | 是   | 控制是否开启SVG解析新能力。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
+| enable | boolean | 是   | 控制是否开启SVG标签解析能力增强功能。<br>默认值：false<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
 ### contentTransition<sup>21+</sup>
 
@@ -2309,7 +2310,7 @@ struct Index {
 
 ### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
 
-该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG新增解析能力生效。
+该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
 
 ```ts
 @Entry
@@ -2319,7 +2320,7 @@ struct Index {
     Row() {
       Column() {
         Text('supportSvg2参数设置为true')
-        // $r('app.media.cloud1')需要替换为开发者所需的图像资源文件。
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
         Image($rawfile('image.svg'))
           .width(200)
           .height(200)
@@ -2327,7 +2328,7 @@ struct Index {
           .supportSvg2(true)
           .margin({ bottom: 30 })
         Text('supportSvg2参数设置为false（默认值）')
-        // $r('app.media.cloud1')需要替换为开发者所需的图像资源文件。
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
         Image($rawfile('image.svg'))
           .width(200)
           .height(200)

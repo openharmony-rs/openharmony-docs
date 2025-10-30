@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 js标签用于配置实例名称、页面路由和窗口样式信息。
 

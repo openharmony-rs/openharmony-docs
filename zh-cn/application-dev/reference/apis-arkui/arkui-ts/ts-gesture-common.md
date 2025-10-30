@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 为开发者提供手势相关的公共接口。
 
@@ -664,7 +664,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | globalDisplayX<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | globalDisplayY<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
-## GestureType<sup>11+</sup>
+## GestureType
 
 type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | SwipeGesture | RotationGesture | GestureGroup
 

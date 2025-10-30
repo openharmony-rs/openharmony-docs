@@ -71,12 +71,12 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
 
-| 名称        | 类型      | 必填 | 说明                     |
-| ----------- | ------------- | ---- | ------------------------ |
-| columnNames | Array&lt;string&gt; | 是   | 结果集中所有列的名称。   |
-| columnCount | number        | 是   | 结果集中的列数。         |
-| rowCount    | number        | 是   | 结果集中的行数。         |
-| isClosed    | boolean       | 是   | 标识当前结果集是否关闭。如果结果集已关闭，则为true；否则为false。 |
+| 名称        | 类型      | 只读 | 可选 | 说明                     |
+| ----------- | ------------- | ---- | ---- | ------------------------ |
+| columnNames | Array&lt;string&gt; | 否 | 否   | 结果集中所有列的名称。   |
+| columnCount | number        | 否 | 否   | 结果集中的列数。         |
+| rowCount    | number        | 否 | 否   | 结果集中的行数。         |
+| isClosed    | boolean       | 否 | 否   | 标识当前结果集是否关闭。如果结果集已关闭，则为true；否则为false。 |
 
 ### goToFirstRow
 

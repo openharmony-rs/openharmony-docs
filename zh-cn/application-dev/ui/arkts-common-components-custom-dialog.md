@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件更新等与用户交互响应操作。开发者可以通过CustomDialogController类显示自定义弹出框。具体用法请参考[自定义弹出框](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)。
 
 > **说明：**

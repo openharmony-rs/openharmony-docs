@@ -30,13 +30,15 @@ import { MeasureText } from '@kit.ArkUI';
 
 static measureText(options: MeasureOptions): number
 
-Measures the width of the given text.
+Measures the single-line display width of the specified text. For multi-line text (separated by newline characters **\n**), this API returns the width of the longest line.
 
 > **NOTE**
 >
 > This API is deprecated since API version 18. You are advised to use [measureText](arkts-apis-uicontext-measureutils.md#measuretext12) instead on the obtained [MeasureUtils](arkts-apis-uicontext-measureutils.md) object.
 >
 > Since API version 12, you can use the [getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [MeasureUtils](arkts-apis-uicontext-measureutils.md) object associated with the current UI context.
+>
+> **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**, **maxLines**, and more) do not affect results. For layout-constrained width measurement, use [measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -56,7 +58,7 @@ Measures the width of the given text.
 
 > **NOTE**
 >
-> Directly using **MeasureText** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [MeasureUtils](arkts-apis-uicontext-measureutils.md) object associated with the current UI context by using the [getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [[UIContext](arkts-apis-uicontext-uicontext.md).
+> Directly using **MeasureText** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [MeasureUtils](arkts-apis-uicontext-measureutils.md) object associated with the current UI context by using the [getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [UIContext](arkts-apis-uicontext-uicontext.md).
 
 **Example**
 
@@ -114,7 +116,7 @@ Measures the width and height of the given text.
 
 > **NOTE**
 >
-> Directly using **MeasureText** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [MeasureUtils](arkts-apis-uicontext-measureutils.md) object associated with the current UI context by using the [getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [[UIContext](arkts-apis-uicontext-uicontext.md).
+> Directly using **MeasureText** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [MeasureUtils](arkts-apis-uicontext-measureutils.md) object associated with the current UI context by using the [getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [UIContext](arkts-apis-uicontext-uicontext.md).
 
 **Example**
 

@@ -58,8 +58,9 @@ getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 **示例：**
 <!--code_no_check_fa-->
   ```js
-import  resourceManager  from '@ohos.resourceManager';
+import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
+
 export default {
     onCreate() {
         resourceManager.getResourceManager((error, mgr) => {
@@ -101,11 +102,12 @@ getResourceManager(bundleName: string, callback: AsyncCallback&lt;ResourceManage
 **示例：**
 <!--code_no_check_fa-->
   ```js
-import  resourceManager  from '@ohos.resourceManager';
+import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
 
 // 'com.example.testapp'仅作示例，请替换为实际应用包名
 const BUNDLE_NAME = 'com.example.testapp';
+
 export default {
     onCreate() {
         resourceManager.getResourceManager(BUNDLE_NAME, (error, mgr) => {
@@ -147,6 +149,7 @@ getResourceManager(): Promise&lt;ResourceManager&gt;
   ```js
 import resourceManager from '@ohos.resourceManager';
 //FA模型请使用上述方式导入模块
+
 export default {
     onCreate() {
         resourceManager.getResourceManager().then(resMgr => {
@@ -3078,6 +3081,7 @@ getNumber(resId: number): number
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3169,6 +3173,7 @@ getNumberByName(resName: string): number
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3246,6 +3251,7 @@ getColorSync(resId: number) : number
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3311,6 +3317,7 @@ getColorByNameSync(resName: string) : number
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3370,6 +3377,7 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.color.test'仅作示例，请替换为实际使用的资源
@@ -3433,6 +3441,7 @@ getColor(resId: number): Promise&lt;number&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 'app.color.test'仅作示例，请替换为实际使用的资源
@@ -3492,6 +3501,7 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
@@ -3555,6 +3565,7 @@ getColorByName(resName: string): Promise&lt;number&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // "test"仅作示例，请替换为实际使用的资源
@@ -3605,6 +3616,7 @@ getRawFileContentSync(path: string): Uint8Array
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3649,6 +3661,7 @@ getRawFileContent(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;): voi
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3704,6 +3717,7 @@ getRawFileContent(path: string): Promise&lt;Uint8Array&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3761,6 +3775,7 @@ getRawFileListSync(path: string): Array\<string>
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3812,6 +3827,7 @@ getRawFileList(path: string, callback: _AsyncCallback&lt;Array\<string\>&gt;): v
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
@@ -3867,6 +3883,7 @@ getRawFileList(path: string): Promise&lt;Array\<string\>&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 传入""表示获取rawfile根目录下的文件列表，假设rawfile根目录下存在test.txt文件
@@ -3922,6 +3939,7 @@ getRawFdSync(path: string): RawFileDescriptor
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -3971,6 +3989,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4033,6 +4052,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
@@ -4131,6 +4151,7 @@ closeRawFd(path: string, callback: _AsyncCallback&lt;void&gt;): void
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
@@ -4188,6 +4209,7 @@ closeRawFd(path: string): Promise&lt;void&gt;
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
@@ -4224,6 +4246,7 @@ getConfigurationSync(): Configuration
 **示例：**
   ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {

@@ -79,7 +79,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
+  address: '192.168.xx.xxx',  // 本端地址
   port: 1234
 }
 udp.bind(bindAddr, (err: BusinessError) => {
@@ -130,7 +130,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '192.168.xx.xxx',
+  address: '192.168.xx.xxx',  // 本端地址
   port: 8080
 }
 udp.bind(bindAddr).then(() => {
@@ -1506,7 +1506,7 @@ multicast.setLoopbackMode(false, (err: Object) => {
 
 setLoopbackMode(flag: boolean): Promise\<void\>
 
-设置多播通信中的环回模式标志位。使用callback方法作为异步方法。
+设置多播通信中的环回模式标志位。使用Promise异步回调。
 
 > **说明：**
 > 用于设置环回模式，开启或关闭两种状态，默认为开启状态。
@@ -1553,7 +1553,7 @@ multicast.setLoopbackMode(false).then(() => {
 
 getLoopbackMode(callback: AsyncCallback\<boolean\>): void
 
-获取多播通信中的环回模式状态。使用Promise方法作为异步方法。
+获取多播通信中的环回模式状态。使用callback异步回调。
 
 > **说明：**
 > 用于获取当前环回模式开启或关闭的状态。
@@ -4950,7 +4950,7 @@ client.on('close', callback);
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-订阅LocalSocket的关闭事件。使用callback方式作为异步方法。
+取消订阅LocalSocket的关闭事件。使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

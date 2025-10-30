@@ -57,7 +57,7 @@ function certExtensionSample(): void {
       return;
     }
     // The CertExtension object is created.
-    console.log('createCertExtension success');
+    console.info('createCertExtension success');
 
     try {
       // Obtain the certificate extension information based on an OID.
@@ -69,7 +69,7 @@ function certExtensionSample(): void {
 
       // Check whether the certificate is a CA certificate.
       let pathLen = certExtension.checkCA();
-      console.log('test cert extension success');
+      console.info('test cert extension success');
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`operation failed, message:${e.message} ,code:${e.code} `);

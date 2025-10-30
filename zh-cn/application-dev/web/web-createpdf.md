@@ -13,23 +13,31 @@
 ## 需要权限
 若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.INTERNET"
-      }
-    ]
-  ```
+<!-- @[web_createpdf_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/module.json5) -->
 
+``` JSON5
+"requestPermissions": [
+  {
+    "name": "ohos.permission.INTERNET"
+  }
+],
+```
 
 ## callback方式保存PDF
 通过callback方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
-```ts
+
+<!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
+
+``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import hilog from '@ohos.hilog';
 
+const TAG = '[Sample_WebCreatePdf]'
+const DOMAIN = 0xF811
+const BUNDLE = 'WebCreatePdf_'
 
 @Entry
 @Component
@@ -43,8 +51,7 @@ struct Index {
     marginRight: 0,
     marginLeft: 0,
     shouldPrintBackground: true
-  }
-
+  };
 
   build() {
     Column() {
@@ -57,23 +64,25 @@ struct Index {
               try {
                 // 获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                let filePath = context.filesDir + "/test.pdf";
+                let filePath = context.filesDir + '/test.pdf';
                 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                  hilog.info(DOMAIN, TAG, BUNDLE + 'createPDF write data to file succeed and size is:' + writeLen);
                 }).catch((err: BusinessError) => {
-                  console.error("createPDF write data to file failed with error message: " + err.message +
-                    ", error code: " + err.code);
+                  hilog.error(DOMAIN, TAG,
+                    BUNDLE + 'createPDF write data to file failed with error message: ' + err.message +
+                      ', error code: ' + err.code);
                 }).finally(() => {
                   // 关闭file
                   fs.closeSync(file);
                 });
               } catch (resError) {
-                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                hilog.error(DOMAIN, TAG, BUNDLE +
+                  `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
             });
         })
-      Web({ src: "www.example.com", controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }
@@ -81,12 +90,19 @@ struct Index {
 
 ## Promise方式保存PDF
 通过Promise方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
-```ts
+
+<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
+
+``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import hilog from '@ohos.hilog';
 
+const TAG = '[Sample_WebCreatePdf]'
+const DOMAIN = 0xF811
+const BUNDLE = 'WebCreatePdf_'
 
 @Entry
 @Component
@@ -100,8 +116,7 @@ struct Index {
     marginRight: 0,
     marginLeft: 0,
     shouldPrintBackground: true
-  }
-
+  };
 
   build() {
     Column() {
@@ -113,23 +128,25 @@ struct Index {
               try {
                 // 获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                let filePath = context.filesDir + "/test.pdf";
+                let filePath = context.filesDir + '/test.pdf';
                 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                  hilog.info(DOMAIN, TAG, BUNDLE + 'createPDF write data to file succeed and size is:' + writeLen);
                 }).catch((err: BusinessError) => {
-                  console.error("createPDF write data to file failed with error message: " + err.message +
-                    ", error code: " + err.code);
+                  hilog.error(DOMAIN, TAG,
+                    BUNDLE + 'createPDF write data to file failed with error message: ' + err.message +
+                      ', error code: ' + err.code);
                 }).finally(() => {
                   // 关闭file
                   fs.closeSync(file);
                 });
               } catch (resError) {
-                console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+                hilog.error(DOMAIN, TAG, BUNDLE +
+                  `ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
               }
             })
         })
-      Web({ src: "www.example.com", controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }

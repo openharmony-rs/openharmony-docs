@@ -75,23 +75,37 @@
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   ```c++
-   // case1: 获取排版后最长行行宽
-   double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
+   ``` c++
+   double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
+   DRAWING_LOGI("第%{public}d行 longestLine: %{public}f" ,longestLine);
+
    // case2:获取排版后段落行数
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
-   
+   DRAWING_LOGI("lineCnt: %{public}zu", lineCnt);
+
    // case3:获取段落每行的度量信息
-   OH_Drawing_LineMetrics* lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
+   OH_Drawing_LineMetrics *lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
    int lineMetricsSize = OH_Drawing_LineMetricsGetSize(lineMetrics);
    for (int i = 0; i < lineMetricsSize; ++i) {
-       // lineMetrics为经过排版测量的文字度量信息
-       double curLineAscender = lineMetrics[i].ascender;
-       double curLineWidth = lineMetrics[i].width;
+   // lineMetrics为经过排版测量的文字度量信息
+   double curLineAscender = lineMetrics[i].ascender;
+   double curLineWidth = lineMetrics[i].width;
+      DRAWING_LOGI("第%{public}d行 lineMetrics ascender: %{public}f", i + 1, curLineAscender);
+      DRAWING_LOGI("第%{public}d行 lineMetrics width: %{public}f", i + 1, curLineWidth);
    }
-   
-   // case4:获取段落带缩进最长行行宽
-   double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
-   ```
 
+   // case4:获取段落最长行宽度与带缩进最长行行宽
+   double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
+   DRAWING_LOGI("longestLineWithIndent: %{public}f" , longestLineWithIndent);
+
+   OH_Drawing_Font_Metrics fontMetrics;
+   // 获取文本字体属性
+   bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);
+   DRAWING_LOGI("result: %{public}zu, fontMetrics ascent: %{public}f" , result, fontMetrics.ascent);
+   // 获取排版对象的指定行位置信息，该接口需要在OH_Drawing_TypographyLayout接口调用之后调用
+   OH_Drawing_LineMetrics lineMetric;
+   OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);
+   DRAWING_LOGI("第1行 lineMetrics ascender: %{public}f" ,lineMetric.ascender);
+   ```

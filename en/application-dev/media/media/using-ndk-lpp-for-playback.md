@@ -20,6 +20,8 @@ When the player is in the ready, decoding, rendering, paused, or stopped state, 
 
 This topic describes only how to implement the playback of a media asset. In practice, background playback and playback conflicts may be involved. You can refer to the following description to handle the situation based on your service requirements.
 
+- Due to hardware differences, LPP capabilities are only available on certain smartphones. You are advised to use [OH_LowPowerAVSink_GetCapability](../../reference/apis-media-kit/capi-lowpower-avsink-base-h.md#oh_lowpoweravsink_getcapability) to check whether the LPP capabilities are supported. If they are not supported, use [AvCodec](../avcodec/avcodec-kit-intro.md) for playback.
+
 - When an application is playing media data that involves audio, it may be interrupted by other applications according to the system audio management policy. (For details, see [Processing Audio Interruption Events](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).) It is recommended that the application proactively listen for audio interruption events through [OH_LowPowerAudioSinkCallback_SetInterruptListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setinterruptlistener) and handle the events accordingly to avoid inconsistencies between the application status and the expected effect.
 
 - When the device is connected to multiple audio output devices, it is recommended that the application listen for audio output device change events through [OH_LowPowerAudioSinkCallback_SetDeviceChangeListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setdevicechangelistener) and handle the events accordingly.

@@ -220,14 +220,14 @@ Describes the video transcoding parameters.
 
 | Name           | Type                                   | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1 - 500000]. The default value is 48 kbit/s.|
-| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.                  |
-| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.|
-| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.|
-| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.|
-| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240 - 3840]. The default value is the width of the source video frame.|
-| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240 - 2160]. The default value is the height of the source video frame.|
-| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.|
+| audioBitrate | number     | No| Yes| Bit rate of the output audio, in bit/s. The value range is [1, 500000]. The default value is 48 kbit/s.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | No| Yes | Encoding format of the output audio. Currently, only AAC is supported. The default value is **AAC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No| No  | Container format of the output video file. Currently, only MP4 is supported.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoBitrate         | number | No|  Yes | Bit rate of the output video, in bit/s. The default bit rate depends on the resolution of the output video. The default bit rate is 1 Mbit/s for the resolution in the range [240p, 480P], 2 Mbit/s for the range (480P, 720P], 4 Mbit/s for the range (720P, 1080P], and 8 Mbit/s for 1080p or higher.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | No| Yes  | Encoding format of the output video. Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in px. The value range is [240, 3840]. The default value is the width of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in px. The value range is [240, 2160]. The default value is the height of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 
 ## AVMetadata<sup>11+</sup>
@@ -343,18 +343,18 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 let mediaSourceLoader: media.MediaSourceLoader = {
   open: (request: media.MediaSourceLoadingRequest) => {
-    console.log(`Opening resource: ${request.url}`);
+    console.info(`Opening resource: ${request.url}`);
     // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
     uuid += 1;
     requests.set(uuid, request);
     return uuid;
   },
   read: (uuid: number, requestedOffset: number, requestedLength: number) => {
-    console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+    console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
     // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
   },
   close: (uuid: number) => {
-    console.log(`Closing resource with handle ${uuid}`);
+    console.info(`Closing resource with handle ${uuid}`);
     // Clear resources related to the current UUID.
     requests.remove(uuid);
   }

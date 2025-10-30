@@ -96,6 +96,7 @@
      
    > **说明：**
    > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md)ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
+   > 从API 20开始，通常在音频录制启动前调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，判断当前传入的音频采集器信息中音源类型的录制是否可以启动成功。
 
    ```ts
    async function getCurrentAudioCapturerInfoArray(){

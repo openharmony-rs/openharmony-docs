@@ -77,11 +77,15 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 1. requestFocus接口允许应用开发者主动控制让Web组件获焦。
 2. onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-```ts
-// xxx.ets
+<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import hilog from '@ohos.hilog';
+const TAG = '[Sample_WebFocusManagement]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'WebFocusManagement_';
 @Entry
 @Component
 struct WebComponent {
@@ -98,7 +102,7 @@ struct WebComponent {
             try {
               this.controller.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           });
         Button('web2 requestFocus')
@@ -106,7 +110,7 @@ struct WebComponent {
             try {
               this.controller2.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              hilog.error(DOMAIN, TAG, BUNDLE, `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           });
       }
@@ -120,7 +124,7 @@ struct WebComponent {
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
-        .height("45%")
+        .height('45%')
 
       Web({ src: 'www.example.com', controller: this.controller2 })
         .onFocus(() => {
@@ -132,7 +136,7 @@ struct WebComponent {
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor2)
-        .height("45%")
+        .height('45%')
     }
   }
 }
@@ -163,10 +167,11 @@ onblur = (event) => {};
 在文档或对话框中，最多只能有一个元素具有 autofocus 属性。若应用于多个元素，第一个元素将获得焦点。
 
 **示例：**
-```ts
-// xxx.ets
+
+<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -175,13 +180,14 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("test.html"), controller: this.controller })
+      Web({ src: $rawfile('test.html'), controller: this.controller })
     }
   }
 }
 ```
 
-```js
+加载的html文件。
+```html
 // test.html
 <!DOCTYPE html>
 <html>

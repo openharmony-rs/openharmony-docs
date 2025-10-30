@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 方便灵活应用文本样式的对象，可通过TextController中的[setStyledString](./ts-basic-components-text.md#setstyledstring12)方法与Text组件绑定，可通过RichEditorStyledStringController中的[setStyledString](ts-basic-components-richeditor.md#setstyledstring12)方法与RichEditor组件绑定。
 
@@ -129,6 +129,8 @@ subStyledString(start: number, length?: number): StyledString
 getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<SpanStyle>
 
 获取指定范围属性字符串的样式集合。不能超出属性字符串的长度。
+
+该接口仅返回开发者设置的样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -906,7 +908,7 @@ ShadowOptions对象中不支持fill字段。
 | objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  是  |  是  | 获取属性字符串的图片缩放类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 属性字符串是否开启[SVG新增解析能力](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -1010,7 +1012,7 @@ ResourceStr类型图片设置项。
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否  | 是  | 设置图片布局。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br/>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG新增解析能力](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## CustomSpan
 
@@ -2075,7 +2077,7 @@ struct styled_string_set_lineheight_paragraphstyle_demo {
 
 ### 示例6（设置自定义绘制Span）
 
-从API version 12开始，该示例通过[CustomSpan](#customspan)接口实现属性字符串设置自定义绘制Span。
+从API version 12开始，该示例通过[CustomSpan](#customspan)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
 
 ```ts
 // xxx.ets
@@ -2093,7 +2095,14 @@ class MyCustomSpan extends CustomSpan {
   }
 
   onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
-    return { width: this.width, height: this.height };
+    this.setPx(gUIContext.vp2px(2));
+    let textSize = gUIContext.getMeasureUtils().measureTextSize({ textContent: this.word, fontSize: this.wordFontSize })
+    this.width = textSize.width as number;
+    this.height = textSize.height as number;
+    return {
+      width: gUIContext.px2vp(this.width) + (this.paddingLeft + this.paddingRight) * 2,
+      height: gUIContext.px2vp(this.height) + this.paddingTop + this.paddingBottom
+    };
   }
 
   onDraw(context: DrawContext, options: CustomSpanDrawInfo) {
@@ -2107,14 +2116,15 @@ class MyCustomSpan extends CustomSpan {
       blue: 175
     });
     const font = new drawing.Font();
-    font.setSize(25);
+    font.setSize(gUIContext.vp2px(this.wordFontSize));
     const textBlob = drawing.TextBlob.makeFromString(this.word, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.attachBrush(brush);
     canvas.drawRect({
-      left: options.x + 10,
-      right: options.x + gUIContext.vp2px(this.width) - 10,
-      top: options.lineTop + 10,
-      bottom: options.lineBottom - 10
+      // 绘制的矩形在Span占位大小的范围里居中
+      left: options.x + gUIContext.vp2px(this.paddingLeft),
+      right: options.x + this.width + 2 * gUIContext.vp2px(this.paddingLeft) + gUIContext.vp2px(this.paddingRight),
+      top: options.lineTop,
+      bottom: options.baseline
     });
 
     brush.setColor({
@@ -2124,7 +2134,9 @@ class MyCustomSpan extends CustomSpan {
       blue: 141
     });
     canvas.attachBrush(brush);
-    canvas.drawTextBlob(textBlob, options.x + 20, options.lineBottom - 15);
+    // 文字在绘制的矩形里居中
+    canvas.drawTextBlob(textBlob, options.x + 2 * gUIContext.vp2px(this.paddingLeft),
+      options.baseline - gUIContext.vp2px(this.paddingBottom));
     canvas.detachBrush();
   }
 
@@ -2132,9 +2144,21 @@ class MyCustomSpan extends CustomSpan {
     this.word = word;
   }
 
+  setPx(px: number) {
+    this.paddingLeft = px;
+    this.paddingRight = px;
+    this.paddingTop = px;
+    this.paddingBottom = px;
+  }
+
   width: number = 160;
   word: string = "drawing";
   height: number = 10;
+  paddingLeft: number = 0;
+  paddingRight: number = 0;
+  paddingTop: number = 0;
+  paddingBottom: number = 0;
+  wordFontSize: number = 20;
 }
 
 @Entry
@@ -2203,7 +2227,7 @@ struct styled_string_set_customspan_demo {
 }
 ```
 
-![](figures/styledstring_6.gif)
+![](figures/CustomSpan-Hello-2.gif)
 
 ### 示例7（支持存储自定义扩展信息）
 

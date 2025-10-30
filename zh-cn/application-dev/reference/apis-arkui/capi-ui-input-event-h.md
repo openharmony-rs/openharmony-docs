@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
@@ -127,7 +127,7 @@
 | [int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressedtimebyindex) | 获取指定触点的按下时间。仅对触摸事件有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltax) | 获取X轴相对于前一个上报的鼠标事件的鼠标指针位置的偏移量。当鼠标指针位于屏幕边缘时，该值可能小于两次上报的X坐标的差。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | [float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltay) | 获取相对于前一个上报的鼠标事件的鼠标指针位置的Y轴偏移量。当鼠标指针位于屏幕边缘时，该值可能小于两次上报的Y坐标的差。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, int32_t* pressedButtons, int32_t* length)](#oh_arkui_mouseevent_getpressedbuttons) | 从鼠标事件中获取按下的按钮。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, int32_t* pressedButtons, int32_t* length)](#oh_arkui_mouseevent_getpressedbuttons) | 从鼠标事件中获取按下的按键。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_gettargetdisplayid) | 获取发生UI输入事件的屏幕ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)](#oh_arkui_hoverevent_ishovered) | 获取鼠标是否悬浮在当前组件上                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_PointerEvent_CreateClonedEvent(const ArkUI_UIInputEvent* event, ArkUI_UIInputEvent** clonedEvent)](#oh_arkui_pointerevent_createclonedevent) | 基于原始事件指针创建克隆事件指针。仅对触摸事件有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -144,7 +144,7 @@
 | [ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getphase) | 获取惯性滚动轴事件发生时的滚动阶段。  |
 | [float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltay) | 获取惯性滚动轴事件垂直方向的增量值。  |
 | [float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltax) | 获取惯性滚动轴事件水平方向的增量值。  |
-| [int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent event, bool propagation)](#oh_arkui_coastingaxisevent_setpropagation) | 设置是否启用惯性滚动轴事件冒泡。|
+| [int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent event, bool propagation)](#oh_arkui_coastingaxisevent_setpropagation) | 设置惯性滚动轴事件是否启用冒泡，默认禁止冒泡。|
 
 ## 枚举类型说明
 
@@ -2414,7 +2414,7 @@ int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, i
 **描述：**
 
 
-从鼠标事件中获取按下的按钮。
+从鼠标事件中获取按下的按键。
 
 **起始版本：** 15
 
@@ -2424,7 +2424,7 @@ int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, i
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| int32_t* pressedButtons | 指示按下按钮的列表。需要先创建一个int数组，用来储存按下的按钮。 |
+| int32_t* pressedButtons | 指示按下按键的列表。需要先创建一个int数组，用来储存按下的按键，按键的值请参考[anonymous5](#anonymous5)。 |
 | int32_t* length | 指示列表数组的总长度。 |
 
 **返回：**
@@ -2851,7 +2851,7 @@ int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event
 ```
 **描述：**
 
-设置是否启用惯性滚动轴事件冒泡。
+设置惯性滚动轴事件是否启用冒泡，默认禁止冒泡。
 
 **起始版本：** 22
 

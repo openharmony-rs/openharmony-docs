@@ -133,7 +133,7 @@ constructor()
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
-添加同步过程事件监听。
+云盘同步对象添加同步过程事件监听。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -168,7 +168,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
-移除同步过程事件监听。
+云盘同步对象移除'progress'类型的指定callback回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -206,7 +206,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
 start(): Promise&lt;void&gt;
 
-异步方法启动云盘端云同步，以Promise形式返回结果。
+异步方法启动云盘端云同步。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -251,7 +251,7 @@ start(): Promise&lt;void&gt;
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云盘端云同步，以callback形式返回结果。
+异步方法启动云盘端云同步。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -292,7 +292,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 stop(): Promise&lt;void&gt;
 
-异步方法停止云盘端云同步，以Promise形式返回结果。
+异步方法停止云盘端云同步。使用Promise异步回调。
 
 调用stop接口，同步流程会停止。再次调用[start](#start12)接口会继续同步。
 
@@ -330,7 +330,7 @@ stop(): Promise&lt;void&gt;
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云盘端云同步，以callback形式返回结果。
+异步方法停止云盘端云同步。使用callback异步回调。
 
 调用stop接口，同步流程会停止。再次调用[start](#start12)接口会继续同步。
 
@@ -370,7 +370,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 getLastSyncTime(): Promise&lt;number&gt;
 
-异步方法获取上次同步时间，以promise形式返回结果。
+异步方法获取上次同步时间。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -408,7 +408,7 @@ getLastSyncTime(): Promise&lt;number&gt;
 
 getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
-异步方法获取上次同步时间，以callback形式返回结果。
+异步方法获取上次同步时间。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -563,7 +563,7 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
-移除云盘文件缓存过程事件监听。
+云盘文件缓存对象移除'progress'类型的指定callback回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -606,7 +606,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
 off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
-移除由[on](#on20)接口添加的云文件批量缓存过程事件的监听。
+云盘文件缓存对象移除由[on](#on20)接口添加的云文件批量缓存过程事件的监听。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -649,7 +649,7 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云盘文件缓存，以Promise形式返回结果。
+异步方法启动云盘文件缓存。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -706,7 +706,7 @@ start(uri: string): Promise&lt;void&gt;
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云盘文件缓存，以callback形式返回结果。
+异步方法启动云盘文件缓存。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -751,7 +751,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;number&gt;
 
-启动云文件批量缓存，以Promise形式返回结果。
+启动云文件批量缓存。使用Promise异步回调。
 
 不同的批量缓存任务可以通过接口返回的任务ID区分。
 
@@ -808,7 +808,7 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 
 stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
-异步方法停止云盘文件缓存，以Promise形式返回结果。
+异步方法停止云盘文件缓存。使用Promise异步回调。
 
 调用stop接口，当前文件下载流程会终止，默认不删除缓存文件，再次调用start接口重新启动下载。
 
@@ -858,7 +858,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云盘文件缓存，以callback形式返回结果。
+异步方法停止云盘文件缓存。使用callback异步回调。
 
 调用stop接口，当前文件下载流程会终止，不删除缓存文件，再次调用start接口重新启动下载。
 
@@ -904,7 +904,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 
-停止由[startBatch](#startbatch20)启动的云文件批量缓存任务，以Promise形式返回结果。
+停止由[startBatch](#startbatch20)启动的云文件批量缓存任务。使用Promise异步回调。
 
 调用stopBatch接口会终止当前文件批量缓存流程，未下载完成的缓存文件是否删除由needClean参数决定。
 

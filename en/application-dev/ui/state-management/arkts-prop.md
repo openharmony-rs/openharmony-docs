@@ -1,4 +1,4 @@
-# \@Prop Decorator: One-Way Synchronization from the Parent Component to Child Components
+# \@Prop Decorator: Implementing One-Way Synchronization from Parent to Child Components
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -18,11 +18,11 @@ Before reading this topic, you are advised to understand the basic usage of [\@S
 
 ## Overview
 
-Variables decorated by \@Prop have the following features:
+Variables decorated with \@Prop have the following features:
 
-- Variables decorated by \@Prop can be modified locally, but the modification is not synchronized to the parent component.
+- Can be updated within the component, but the changes do not propagate to the parent component.
 
-- Whenever the data source changes, the \@Prop decorated variable gets updated, and any locally made changes are overwritten.
+- Always synchronize with parent data source changes, overwriting any local values.
 
 ## Usage Rules
 
@@ -52,22 +52,22 @@ Variables decorated by \@Prop have the following features:
 
 ### Observed Changes
 
-\@Prop decorated variables can observe the following changes:
+\@Prop decorated variables support observation of the following change types:
 
-- When the supported type is decorated, the value change can be observed.
+- When the decorated variable is of the primitive type, value assignments are observable.
 
   ```ts
-  // Simple type.
+  // Primitive type
   @Prop count: number;
-  // The value change can be observed.
+  // Value assignment observable
   this.count = 1;
   // Complex type
   @Prop title: Model;
-  // The value change can be observed.
+  // Value assignment observable
   this.title = new Model('Hi');
   ```
 
-- When decorating Object or class complex types, it can observe its own assignments and changes to first-level properties, where properties refer to all attributes returned by **object.keys(observedObject)**.
+- When the decorated variable is of the Object or class type, object assignments and top-level property changes are observable. Top-level properties include all properties returned by **Object.keys(observedObject)**.
 
 ```ts
 class Info {
@@ -86,13 +86,13 @@ class Model {
 }
 
 @Prop title: Model;
-// The value changes at the first layer can be observed.
+// Top-level property changes are observable.
 this.title.value = 'Hi';
-// The value changes at the second layer cannot be observed.
+// Nested property changes are observable.
 this.title.info.value = 'ArkUI';
 ```
 
-In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [Nesting \@Prop](#nesting-prop).
+In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [@Prop Nesting Scenario](#prop-nesting-scenario).
 
 - When the decorated variable is of the array type, the value change of the array as well as the addition, deletion, and update of array items can be observed.
 
@@ -124,21 +124,21 @@ For synchronization between \@State and \@Prop decorated variables:
 
 ### Framework Behavior
 
-To understand the \@Prop variable value initialization and update mechanism, you need to understand the rendering and update processes of the parent and child components.
+To understand \@Prop variable initialization and update mechanisms, consider the parent-child component rendering process:
 
 1. Initial rendering:
-   1. Execute the build () function of the parent component to create a new instance of the child component and transfer the data source.
-   2. The @Prop decorated variable is initialized.
+   1. The parent component's **build()** function is executed, creating child component instances with data source propagation.
+   2. \@Prop decorated variables are initialized with parent-provided values.
 
-2. Update
+2. Update:
    1. When the \@Prop decorated variable is modified locally, the change does not propagate back to its parent component.
    2. When the data source of the parent component is updated, the \@Prop decorated variable in the child component is reset, and its local value changes are overwritten.
 
 > **NOTE**
 >
-> \@Prop The data source synchronization depends on the update of the component where the data source is located. However, the update cannot be triggered after the application enters the background. Therefore, @Prop cannot be updated from the data source after the application enters the background. In this scenario, if real-time data synchronization is required, you are advised to use @Link instead.
+> \@Prop synchronization with data sources depends on updates from the source component. However, these updates cannot occur while the application runs in the background. Consequently, @Prop properties won't receive updates from their data sources during background operation. For real-time data synchronization in such scenarios, use @Link instead.
 
-In the following example, the Father component is refreshed when the message variable decorated by @State changes. The Son component uses @Prop to receive the variable. Therefore, the Father component uses the latest value of message to update the value of @Prop. After @Prop is updated, the Son component is updated.
+In this example, the Parent component is re-rendered when the @State decorated **message** variable changes. The Son component receives this variable via @Prop. The Parent component updates the @Prop value with the latest value of **message**, triggering Son component re-rendering.
 
 ```ts
 @Component
@@ -325,7 +325,7 @@ After **replace entire arr** is clicked, the following information is displayed:
 
 In a library with one book and two readers, each reader can mark the book as read, and the marking does not affect the other reader. Technically speaking, local changes to the \@Prop decorated **book** object do not sync back to the @State decorated **book** in the **Library** component.
 
-In this example, the \@Observed decorator can be applied to the **book** class, but it is not mandatory. It is only needed for nested structures. This will be further explained in [Synchronizing from \@State Array Items to \@Prop Class Types](#synchronizing-from-state-array-items-to-prop-class-types).
+In this example, the \@Observed decorator can be applied to the **book** class, but it is not mandatory. It is only needed for nested structures. This will be further explained in [Class Type @Prop Synced from @State Array Item in Parent Component](#class-type-prop-synced-from-state-array-item-in-parent-component).
 
 ```ts
 class Book {
@@ -369,7 +369,7 @@ struct Library {
 
 ### Synchronizing from \@State Array Items to \@Prop Class Types
 
-In the following example, the properties of the Book object in the allBooks array decorated by \@State are changed, but the UI update is not triggered when Mark read for everyone is clicked. This is because the property is nested at the second layer, and the \@State decorator can observe only properties at the first layer. Therefore, the framework does not update **ReaderComp**.
+In this example, clicking **"Mark read for everyone"** modifies properties within the \@State decorated **allBooks** array objects, but fails to trigger UI updates. This is because the property is nested at the second layer, and the \@State decorator can observe only top-level property changes. Therefore, the framework does not update **ReaderComp**.
 
 ```ts
 let nextId: number = 1;
@@ -476,7 +476,7 @@ struct Library {
 }
 ```
 
-Use \@Observed to decorate a class book. The property changes of the book will be observed. Note that the \@Prop decorated state variable in the child component is synchronized from the data source of the parent component in uni-directional manner. This means that, the changes of the \@Prop decorated **book** in **ReaderComp** are not synchronized to the parent **library** component. The parent component triggers UI re-rendering only when the state variable changes.
+To observe the property of the **Book** object, you must use \@Observed to decorate the **Book** class. Note that the \@Prop decorated state variable in the child component is synchronized from the data source of the parent component in uni-directional manner. This means that, the changes of the \@Prop decorated **book** in **ReaderComp** are not synchronized to the parent **library** component. The parent component only triggers UI updates when its own state variables change.
 
 ```ts
 @Observed
@@ -600,7 +600,7 @@ class Father {
 }
 ```
 
-The following component hierarchy shows the data structure in the \@Prop nesting scenario.
+The following component hierarchy presents a data structure of nested \@Prop.
 
 ```ts
 @Entry
