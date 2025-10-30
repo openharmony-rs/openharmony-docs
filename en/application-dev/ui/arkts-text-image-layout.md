@@ -190,7 +190,7 @@ struct styled_string_demo {
           .borderRadius(5)
           .width(210)
 
-        Button ('Click to view product details')
+        Button('Click to view product details')
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {
               this.mutableStr = new MutableStyledString(new ImageAttachment({

@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-A variable decorated by the state variable decorator is called a state variable, which enables common variables to have state attributes. When a state variable changes, the UI component directly bound to it is rendered and updated.
+A variable decorated with a state decorator is called a state variable, enabling regular variables to possess state attributes. When a state variable changes, the UI components bound to it re-render and update accordingly.
 
-Among the decorators related to state variables, @State is the most basic decorator and is the data source of most state variables.
+Among state variable decorators, @State is the most fundamental and serves as the data source for most state management scenarios.
 
 Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the positioning of AppStorage in the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
 
@@ -20,19 +20,19 @@ Before reading this topic, you are advised to read [State Management Overview](.
 
 ## **Overview**
 
-A variable decorated by \@State is private and can be accessed only from the component. The type of the variable must be specified and initialized locally when the variable is declared. If the variable needs to be initialized from the parent component, you can use the named parameter mechanism to assign a value to the variable.
+An \@State decorated variable is private and accessible only within its component. The variable type must be explicitly specified and locally initialized during declaration. For initialization from parent components, use the named parameter mechanism to assign values.
 
 A variable decorated by \@State has the following features:
 
 - The lifecycle of the \@State decorated variable is the same as that of its owning custom component.
 
-## Usage Rules
+## Rules of Use
 
 | \@State Decorator | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
 | Parameters        | None                                                          |
 | Synchronization type          | Does not synchronize with any type of variable in the parent component.                            |
-| Allowed variable types| Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the scenarios where types are supported, see [Observed Changes](#observed-changes).|
+| Allowed variable types| Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the supported scenarios, see [Observed Changes](#observed-changes).|
 | Disallowed variable types| Function.     |
 | Initial value for the decorated variable| Required.     |
 
@@ -40,7 +40,7 @@ A variable decorated by \@State has the following features:
 
 | Transfer/Access         | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Initialization from the parent component    | Can be initialized from the parent component or locally.<br>If the parent component passes a non-undefined value, the local initial value is overwritten. Otherwise, the local initial value of @State is used.<br>Common variables in the parent component and state variables decorated with decorators: \@State, [\@Link](arkts-link.md), [\@Prop](arkts-prop.md), [\@Provide](arkts-provide-and-consume.md), [\@Consume](arkts-provide-and-consume.md), [\@ObjectLink](arkts-observed-and-objectlink.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@StorageProp](arkts-appstorage.md#storageprop), [\@LocalStorageLink](arkts-localstorage.md#localstoragelink), and [\@LocalStorageProp](arkts-localstorage.md#localstorageprop) can be used to initialize @State. Note: When the external variable passed by the parent component is used to initialize \@State, it is used only as the initial value. Subsequent variable changes will not be synchronized to \@State.|
+| Initialization from the parent component    | Supports initialization from the parent component or locally.<br>If the parent component passes a non-undefined value, the local initial value is overridden. Otherwise, the local initial value of \@State is used.<br>Accepts regular variables and decorated state variables from the parent component: \@State, [\@Link](arkts-link.md), [\@Prop](arkts-prop.md), [\@Provide](arkts-provide-and-consume.md), [\@Consume](arkts-provide-and-consume.md), [\@ObjectLink](arkts-observed-and-objectlink.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@StorageProp](arkts-appstorage.md#storageprop), [\@LocalStorageLink](arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](arkts-localstorage.md#localstorageprop). Note: External variables from the parent component are used only as initial values; subsequent changes are not synchronized to \@State.|
 | Child component initialization  | Supported. An \@State decorated variable can be used to initialize a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
 | Access from outside the component| Private, accessible only within the component.                                  |
 
@@ -63,7 +63,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
   this.count = 1;
   ```
 
-- When the decorated data type is class or Object, the value assignment and attribute assignment changes of the decorated data type can be observed, that is, all attributes returned by Object.keys(observedObject). Example:
+- When the decorated variable is of the class or Object type, object assignments and top-level property changes are observable. Top-level properties include all properties returned by **Object.keys(observedObject)**. Example:
   
   Declare the **Person** and **Model** classes.
 
@@ -167,7 +167,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
   this.title[0].value = 6;
   ```
 
-- When the decorated object is a Date, you can observe the assignment of Date and update the properties of Date by calling the setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds interface of Date. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
+- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **Date** APIs **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
 
 - When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
@@ -175,13 +175,13 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
 ### Framework Behavior
 
-- When a state variable is changed, the framework searches for components that depend on this state variable.
+- When a state variable changes, the framework identifies all components that depend on this state variable.
 
-- Execute the component update method that depends on the state variable to implement component update and rendering.
+- The framework executes update methods for dependent components, enabling component updates and re-rendering.
 
 ## Constraints
 
-1. Variables decorated by \@State must be initialized. Otherwise, an error is reported during compilation.
+1. Variables decorated with \@State must be initialized. Otherwise, an error is reported during compilation.
 
     ```ts	
     // Incorrect usage. An error is reported during compilation.
@@ -199,9 +199,9 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
 In this example, \@State is used to decorate the **count** variable of the simple type, turning it into a state variable. The change of **count** causes the update of the **Button** component.
 
-- When the state variable count changes, only the Button component can be queried.
+- When the state variable **count** changes, only the **Button** component is identified as dependent.
 
-- The framework executes the update method of the **Button** component to implement on-demand update.
+- The framework executes the update method of the **Button** component to implement on-demand updates.
 
 ```ts
 @Entry
@@ -505,7 +505,7 @@ struct PlayDetailPage {
 }
 ```
 
-Pass the current this.vm and invoke the attribute value assignment of the proxy state variable.
+Pass the current **this.vm** and assign values to the properties of the proxied state variable.
 
 **Correct Usage**
 
@@ -551,9 +551,9 @@ struct PlayDetailPage {
 
 In state management, classes are wrapped with a proxy. When a member variable of a class is changed in a component, the proxy intercepts the change. When the value in the data source is changed, the proxy notifies the bound component of the change. In this way, the change can be observed and trigger UI re-rendering.
 
-When the arrow function for modifying success is initialized in the constructor, the TestModel instance is not encapsulated by the proxy, and this points to the TestModel instance itself. Therefore, when the query event is triggered, the state management cannot observe the change.
+When the arrow function for modifying **success** is initialized in the constructor, the **TestModel** instance is not yet encapsulated by the proxy, and **this** refers to the **TestModel** instance itself. Therefore, when the **query** event is triggered, state management cannot observe the change.
 
-When you place the arrow function for modifying success in query, the TestModel object has been initialized and encapsulated by the proxy. Call **this.viewModel.query()** and **this** in the function points to the **viewModel** object. In this case, the change of **isSuccess** is observable, so that the change of the query event can be observed by the state management.
+When you place the arrow function for modifying **success** in the **query** method, the **TestModel** object has been initialized and encapsulated by the proxy. Call **this.viewModel.query()** and **this** in the function points to the **viewModel** object. In this case, the change of **isSuccess** is observable, so that the change of the query event can be observed by the state management.
 
 **Incorrect Usage**
 
@@ -606,7 +606,7 @@ export class Model {
 }
 ```
 
-In the preceding example code, the state variable is modified in the constructor. The message "failed" is displayed at the beginning. After you click the message, the log "this.isSuccess: true" is printed, indicating that the modification is successful. However, the message "failed" is still displayed, indicating that the UI is not refreshed.
+In the preceding example, the state variable is modified in the constructor. Initially, **"failed"** is displayed. After the text is clicked, the log **"this.isSuccess: true"** is printed, indicating the modification succeeds. However, **"failed"** remains displayed, indicating the UI is not refreshed.
 
 **Correct Usage**
 
@@ -658,9 +658,9 @@ export class Model {
 
 In the preceding example, the state variable is changed through a method of the class. After the button is clicked, the page content changes from "failed" to "success."
 
-### A state variable causes a re-render of merely the bound UI component.
+### A State Variable Triggers Re-rendering Only for Bound UI Components
 
-Example 1
+**Example 1**
 
 ```ts
 class Info {
@@ -670,7 +670,7 @@ class Info {
 @Entry
 @Component
 struct Test {
-  @State message: string =' Shanghai';
+  @State message: string = 'Shanghai';
   @State info: Info = new Info();
 
   aboutToAppear(): void {
@@ -690,9 +690,9 @@ struct Test {
 }
 ```
 
-Clicking Button('change') triggers the refresh of only the second Text component because message is of the string type. The string is a value type. When you click the button, the address value in info is changed, but the value of this.message is not affected. Therefore, the first Text component is not refreshed.
+Clicking **Button('change')** only refreshes the second **Text** component. Because **message** is a string (value type), modifying **address** in **info** does not affect **this.message**, so the first **Text** component remains unchanged.
 
-Example 2
+**Example 2**
 
 ```ts
 class Info {
@@ -723,16 +723,16 @@ struct Test {
       Text(`${this.user.info.address}`);
       Button('change')
         .onClick(() => {
-          this.user.info.address = 'Beijing'
+          this.user.info.address = 'Beijing';
         })
     }
   }
 }
 ```
 
-In aboutToAppear, the reference of info is assigned to the member attribute info of user. Therefore, when you click the button to change the attribute in info, the first Text component is refreshed. The second Text component cannot detect the change of the level-2 attribute because the observation capability has only one layer. Therefore, the second Text component is not refreshed.
+In **aboutToAppear**, the reference of **info** is assigned to the member property **info** of **user**. When clicking the button modifies properties in **info**, the first **Text** component is updated. The second **Text** component is not updated because \@State observation is limited to one level.
 
-Example 3
+**Example 3**
 
 ```ts
 class Info {
@@ -773,10 +773,10 @@ struct Test {
 
 In the preceding example, after you click the button, the following changes occur:
 
-- The first Text component is not refreshed. This is because this.user.info = new Info ('Guangzhou') is executed in the click event. As a result, this.user.info does not reference this.info, but a new Info instance is assigned. Therefore, the attribute of this.user.info is not observed by this.info, and the first Text component is not refreshed.
-- The second Text component is refreshed. After you click the button, this.user.info = new Info ('Guangzhou') is executed. This change is an assignment at the first layer and can be observed. The current custom component is marked as dirty and the next frame is requested for refresh. Then, this.user.info.address = 'Beijing' is executed. This change is an assignment at the second layer and cannot be observed. However, note that although the current change cannot be observed, the assignment takes effect. When the next frame is refreshed, this.user.info.address has been changed to Beijing. Therefore, the second Text component displays Beijing.
+- The first **Text** component is not updated. This occurs because **this.user.info = new Info('Guangzhou')** in the click event assigns a new **Info** instance to **this.user.info**, breaking the reference to **this.info**. Consequently, changes to **this.user.info** properties are no longer observed by **this.info**, preventing the first **Text** component from updating.
+- The second **Text** component is updated. The assignment **this.user.info = new Info('Guangzhou')** constitutes a first-level property change that is observable. The component is marked for update in the next frame. Although the subsequent assignment **this.user.info.address = 'Beijing'** modifies a second-level property (unobservable), the change takes effect. When the next frame renders, **this.user.info.address** has been updated to **'Beijing'**, causing the second **Text** component to display the new value.
 
-If this.user.info = new Info ('Guangzhou') is commented out in the preceding example, the scenario is the same as that in example 2. Only the first Text component is updated, and the second Text component cannot be updated.
+If **this.user.info = new Info('Guangzhou')** is commented out, the behavior matches Example 2: Only the first **Text** component is updated, while the second **Text** component remains unchanged due to the unobservable nested property modification.
 
 ### Repeated Assignment of Complex Type Constants to State Variables Triggers Re-rendering
 
@@ -826,10 +826,10 @@ struct ConsumerChild {
 }
 ```
 
-In the preceding example, each time the **change to self** button is clicked, the same class constant is assigned to a state variable of the class type. This operation triggers re-render and generates the log **this.dataObj.name change: a**. In state management V1, a proxy is added to the @Observed decorated class objects and the @State decorated objects of the Class, Date, Map, Set, or Array type to observe the changes of top-level properties or API invoking. 
-When list[0] is assigned again, dataObjFromList is of the Proxy type, and list[0] is of the Object type. Therefore, the system determines that the two values are different, triggering value assignment and refresh.
-To avoid unnecessary value changes and re-renders, use \@Observed to decorate the class, or use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original value and determine whether the original and new values are the same. If they are the same, do not perform value changes. 
-Method 1: Add \@Observed decorator.
+In the preceding example, each time the **change to self** button is clicked, the same class constant is assigned to a state variable of the class type. This operation triggers re-rendering and logs **this.dataObj.name change: a**. In state management V1, \@Observed decorated class objects and @State decorated objects of Class, Date, Map, Set, or Array types are wrapped with proxies to observe top-level property changes or API calls. 
+When **list[0]** is reassigned, **dataObjFromList** is a Proxy instance while **list[0]** is a plain Object. The system detects them as different values, triggering assignment and re-rendering.
+To avoid unnecessary value changes and re-renders, use \@Observed to decorate the class, or use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original value and compare it with the new value. If they are the same, skip the assignment. 
+Method 1: Apply the \@Observed decorator.
 
 ```ts
 @Observed
@@ -873,7 +873,7 @@ struct ConsumerChild {
 }
 ```
 
-In the preceding example, the \@Observed decorator is added to decorate the class, **list[0]** is of the **Proxy** type. In this case, when a value is reassigned, the same object will not be re-rendered.
+In the preceding example, the class is decorated with the \@Observed decorator, making **list[0]** a Proxy instance. In this case, when the same value is reassigned, the identical object will not trigger re-rendering.
 
 Method 2: Use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original object.
 
@@ -937,11 +937,11 @@ The rendering process is as follows:
 
     1. Create a **Column** component.
 
-    2. Create a Text component. **This.count++** is triggered when the **Text** component is created.
+    2. Create a **Text** component. **This.count++** is triggered when the **Text** component is created.
 
     3. The value change of **count** triggers the re-render of the **Text** component.
 
-    4. Return value of **Text** is 2.
+    4. The return value of **Text** is 2.
 
 ```ts
 @Entry
@@ -960,17 +960,17 @@ struct Index {
 }
 ```
 
-During the first creation, the Text component is rendered for multiple times, and the final display is 2.
+During the initial creation of the component, the **Text** component is rendered multiple times, with the final display showing "2".
 
-If the framework identifies that the state variable is changed in **build()**, an error log is generated. The error log is as follows:
+When the framework detects that a state variable is modified within the **build()** method, it generates the following error log:
 
 ```ts
 FIX THIS APPLICATION ERROR: @Component 'Index'[4]: State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
 ```
 
-In the preceding example, the Text component is rendered for multiple times. This error does not cause serious consequences. Therefore, many developers ignore this log.
+In the preceding example, even though the **Text** component is rendered multiple times. This error does not cause immediate serious consequences and may be overlooked.
 
-However, this behavior is serious. As the project complexity increases, the potential risks increase gradually. Example:
+However, this behavior poses significant hidden risks that escalate as project complexity increases. Example:
 
 ```ts
 @Entry
@@ -997,15 +997,15 @@ The rendering process of the preceding example is as follows:
 
 3. The re-render of the second **Text** component triggers the change of **this.message**, which again triggers the re-render of the first **Text** component.
 
-4. Cyclic re-rendering.
+4. Repeated re-rendering occurs.
 
-5. The system does not respond for a long time, causing an App Freeze.
+5. The system becomes unresponsive for an extended period, causing an application freeze.
 
-Therefore, it is completely wrong to change the state variable in the build method. When the error "FIX THIS APPLICATION ERROR: @Component ...has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!" log is found, you should be vigilant and correct the incorrect writing even if no serious consequences are caused.
+Therefore, modifying state variables within the build method constitutes a critical error. When the error "FIX THIS APPLICATION ERROR: @Component ...has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!" log is found, immediate correction is required even if no immediate severe consequences are observed.
 
 ### Using the a.b(this.object) Pattern Fails to Trigger UI Re-rendering
 
-In the **build** method, when the variable decorated by \@State is of the object type and is called in the **a.b(this.object)** format, the original object of **this.object** is passed in the b method. If the property of **this.object** is changed, the UI cannot be re-rendered. In the following example, when the static method **Balloon.increaseVolume** or **this.reduceVolume** is used to change the **volume** of **Balloon**, the UI is not re-rendered.
+In the **build** method, when an \@State decorated variable is an object and called in the **a.b(this.object)** format, the original object of **this.object** is passed to method b. Modifying properties of **this.object** within method b does not trigger UI re-rendering. In the following example, when the static method **Balloon.increaseVolume** or **this.reduceVolume** is used to change the **volume** of **Balloon**, the UI fails to update.
 
 **Incorrect Usage**
 
@@ -1051,11 +1051,11 @@ struct Index {
 }
 ```
 
-The state variable observes the attribute change through the proxy. When a.b(this.object) is used, the framework converts the proxy object to the original object. The attributes of the original object cannot be observed. Therefore, the UI is not refreshed. You can use the following methods to modify the attributes:
+State variables observe property changes through proxy objects. When **a.b(this.object)** is used, the framework converts the proxy object to its original form, losing observation capabilities. Consequently, property changes on the original object go undetected, preventing UI re-rendering. Use the following approaches to modify properties:
 
-1. Assign this.balloon to a temporary variable.
-2. Use the temporary variable to complete the original invoking logic.
-For details, see the positive example.
+1. Assign **this.balloon** to a temporary variable.
+2. Use the temporary variable to execute the original invocation logic.
+For details, see the correct usage.
 
 **Correct Usage**
 
@@ -1086,13 +1086,13 @@ struct Index {
         .fontSize(30)
       Button(`increaseVolume`)
         .onClick(()=>{
-          // Assign the value to a temporary variable to retain the proxy.
+          // Preserve the proxy by assigning a value to a temporary variable.
           let balloon1 = this.balloon;
           Balloon.increaseVolume(balloon1);
         })
       Button(`reduceVolume`)
         .onClick(()=>{
-          // Assign the value to a temporary variable to retain the proxy.
+          // Preserve the proxy by assigning a value to a temporary variable.
           let balloon2 = this.balloon;
           this.reduceVolume(balloon2);
         })
@@ -1103,13 +1103,13 @@ struct Index {
 }
 ```
 
-### Unregistration Existing Functions Before Changing State Variables by Registering a Callback
+### Unregistering Existing Functions Before Modifying State Variables via Callback Registration
 
-You can register the arrow function in **aboutToAppear** to change the state variables in the component.
+You can register arrow functions in **aboutToAppear** to modify component state variables.
 
->**Note:**
+>**NOTE**
 >
-> In aboutToDisappear, you need to set the registered function to null. Otherwise, the arrow function captures the this instance of the custom component. As a result, the custom component cannot be released, causing memory leakage.
+> In **aboutToDisappear**, you must unregister the function by setting it to null. Otherwise, the arrow function captures the **this** instance of the custom component, preventing component release and causing memory leaks.
 
 ```ts
 class Model {
@@ -1159,4 +1159,4 @@ struct Test {
 }
 ```
 
-In addition, you can use LocalStorage to change the state variable outside the custom component. (./arkts-localstorage.md#changing-the-status-variable-outside-the-custom-component)
+In addition, you can use LocalStorage to change the state variable outside the custom component. For details, see [Changing State Variables Outside a Custom Component](./arkts-localstorage.md#changing-state-variables-outside-a-custom-component).

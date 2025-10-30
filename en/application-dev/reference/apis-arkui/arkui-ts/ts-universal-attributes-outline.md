@@ -154,7 +154,7 @@ Sets the thickness of the outline.
 
 outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
 
-Sets the thickness of the outline. Compared to [[outlineWidth](#outlinewidth), this API supports the **undefined** type for the **width** parameter.
+Sets the thickness of the outline. Compared with [outlineWidth](#outlinewidth), this API supports the **undefined** type for the **width** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 

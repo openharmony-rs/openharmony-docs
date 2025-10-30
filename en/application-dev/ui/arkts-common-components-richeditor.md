@@ -1,32 +1,39 @@
-# Rich Text (RichEditor)
-**RichEditor** is a component that supports interactive text editing and mixture of text and images. It is typically used in scenarios where mixed-content user input is expected, such as comment sections that accept both image and text submissions. For details, see [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md).
+# Rich Text Editing (RichEditor)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @carnivore233-->
+<!--Designer: @pssea-->
+<!--Tester: @mateng_Holtens-->
+<!--Adviser: @Brilliantry_Rui-->
+
+**RichEditor** is a component that supports interactive text editing and mixing of text and images. It's commonly used in scenarios requiring mixed-content user input, such as comment sections that accept both images and text. For details, see [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md).
+
+For displaying only images and text, use the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component.
+
+For displaying large amounts of HTML content, use the [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) component.
+
+## Component Structure
+
+The following diagram shows the component's element structure.
+
+![alt text](figures/RichEditor_guide_composition.jpg)
+
+| Element      | Description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| Content area | Area where content is displayed.                             |
+| Cursor       | Current input position.                        |
+| Handle       | Left and right handles that can be dragged separately to adjust the text selection range. |
+| Menu         | Displayed after content selection, containing operation buttons like copy and paste. |
 
 ## Creating a RichEditor Component
-You can create a **RichEditor** component with or without a styled string.
 
-### Creating a RichEditor Component Without a Styled String
-Use the **RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditoroptions))** API to generate a **RichEditor** component from scratch. This approach is typically employed when you wish to present straightforward text and image content, for example, contact details. It can also serve in instances where a consistent content format is desired, such as in certain code editors.
+Create a RichEditor component using styled strings or spans. See [Creating a RichEditor Component with Styled Strings](#creating-a-richeditor-component-with-styled-strings) or [Creating a RichEditor Component with Spans](#creating-a-richeditor-component-with-spans).
 
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
+### Creating a RichEditor Component with Styled Strings
 
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Create a RichEditor component without using a styled string.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-```
-![alt text](figures/richeditor_image_options.gif)
+Use the RichEditor(options: [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)) API to create a RichEditor component that manages content using styled strings ([StyledString/MutableStyledString](arkts-styled-string.md)). This approach allows you to manage data by maintaining styled string objects on the application side, modifying their content and style, then passing the updated objects to the component to refresh the rich text content.
 
-### Creating a RichEditor Component with a Styled String
-Alternatively, you can use the **RichEditor(options: [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12))** API to create a **RichEditor** component that is based on a styled string ([StyledString/MutableStyledString](arkts-styled-string.md)). This approach is particularly useful when you aim to enhance the GUI's aesthetics and emphasize the content,
-
-because it allows for a variety of text formatting options, including changing font size, adding font colors, making text interactive, and custom text rendering. In addition, this approach offers an array of style objects that cover a range of common text formatting styles, such as text with decorative lines, line height, and shadow effects.
+Compared to using controller APIs for content style updates, this method offers greater flexibility and convenience. Additionally, styled string objects can be applied to various text components that support styled strings for quick content migration.
 
 ```ts
 fontStyle: TextStyle = new TextStyle({
@@ -51,65 +58,902 @@ RichEditor(this.options)
     this.controller.setStyledString(this.mutableStyledString);
   })
 ```
+
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
 
-## Setting Attributes
+### Creating a RichEditor Component with Spans
 
-### Setting the Custom Context Menu on Text Selection
-You can set a custom context menu on text selection using the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#bindselectionmenu) API.
+Use the RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditoroptions)) API to create a RichEditor component that manages content using spans. This component is typically used in complex content scenarios. Developers can use the APIs provided by RichEditorController to manage content and styles.
 
-By default, the context menu on text selection includes the copy, cut, and select all options. You can offer additional options for enhanced interactions, for example, a translate option for multilingual support or a bold option for emphasizing selected text.
+```ts
+@Entry
+@Component
+struct create_rich_editor {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    Column() {
+      Column() {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan('Create a RichEditor component without using a styled string.', {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
+            })
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+![alt text](figures/richeditor_image_options.gif)
+
+## Adding Content
+
+The rich text component can add various types of content through different APIs.
+
+### Adding Text Spans
+
+In addition to direct input, you can add text spans using the [addTextSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addtextspan) API.
+
+This API enables diverse text styling, such as creating mixed-format text.
+
+If the component is focused and the cursor is blinking, the cursor position updates after adding text via addTextSpan, and the cursor blinks to the right of the newly added text.
+
+```ts
+@Entry
+@Component
+struct add_text_span {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    Column() {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('Click the button to add text here.', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .border({ width: 1, color: Color.Gray })
+        .constraintSize({
+          maxHeight: 100
+        })
+        .width(300)
+        .margin(10)
+      Button('addTextSpan', {
+        buttonStyle: ButtonStyleMode.NORMAL
+      })
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.controller.addTextSpan('Add text.')
+        })
+    }
+  }
+}
+```
+
+![alt text](figures/richeditor_image_add_text.gif)
+
+### Adding Image Spans
+
+Use the [addImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addimagespan) API to add image spans.
+
+This API enriches and visualizes content. For example, you can add images to news articles or data visualization graphics in documents.
+
+If the component is focused and the cursor is blinking, the cursor position updates after adding an image via addImageSpan, and the cursor blinks to the right of the newly added image.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Click the button to add an image here.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .width(300)
+  .height(100)
+Button('addImageSpan', {
+  buttonStyle: ButtonStyleMode.NORMAL
+})
+  .height(30)
+  .fontSize(13)
+  .onClick(() => {
+    this.controller.addImageSpan($r("app.media.startIcon"), {
+      imageStyle: {
+        size: ["57px", "57px"]
+      }
+    })
+  })
+```
+
+![alt text](figures/richeditor_image_add_image.gif)
+
+### Adding @Builder Content
+
+Use [addBuilderSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addbuilderspan11) to add content decorated with @Builder.
+
+This approach is suitable for integrating custom complex components, such as custom charts.
+
+Use [RichEditorBuilderSpanOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorbuilderspanoptions11) to specify the insertion position. If no position is specified or an invalid value is provided, the builder content is appended to the end.
+
+```ts
+private my_builder: CustomBuilder = undefined
+
+@Builder
+TextBuilder() {
+  Row() {
+    Image($r('app.media.startIcon')).width(50).height(50).margin(16)
+    Column() {
+      Text("Text.txt").fontWeight(FontWeight.Bold).fontSize(16)
+      Text("123.45KB").fontColor('#8a8a8a').fontSize(12)
+    }.alignItems(HorizontalAlign.Start)
+  }.backgroundColor('#f4f4f4')
+  .borderRadius("20")
+  .width(220)
+}
+
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+Button('addBuilderSpan', {
+  buttonStyle: ButtonStyleMode.NORMAL
+})
+  .height(30)
+  .fontSize(13)
+  .onClick(() => {
+    this.my_builder = () => {
+      this.TextBuilder()
+    }
+    this.controller.addBuilderSpan(this.my_builder)
+  })
+```
+
+![alt text](figures/richeditor_image_add_builder_span2.0.gif)
+
+### Adding Symbol Spans
+
+Use the [addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11) API to add symbol content. This API can add special symbols, such as mathematical symbols when editing academic papers.
+
+When adding a symbol while the component is focused and the cursor is blinking, the cursor moves to the right of the newly inserted symbol.
+
+Currently, gestures, copying, and dragging are not supported for symbol content.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Click the button to add a symbol here.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .width(300)
+  .height(100)
+Button('addSymbolSpan', {
+  buttonStyle: ButtonStyleMode.NORMAL
+})
+  .height(30)
+  .fontSize(13)
+  .onClick(() => {
+    this.controller.addSymbolSpan($r("sys.symbol.basketball_fill"), {
+      style: {
+        fontSize: 30
+      }
+    })
+  })
+```
+
+![alt text](figures/richeditor_image_add_SymbolSpan.gif)
+
+## Content Management
+
+The rich text component provides APIs for content management, such as retrieving image and text information (see [Retrieving Image and Text Information](#retrieving-image-and-text-information)), setting placeholder text (see [Setting Placeholder Text](#setting-placeholder-text)), or limiting content length (see [Setting Maximum Length](#setting-maximum-length)).
+
+### Retrieving Image and Text Information
+
+Use the [getSpans](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#getspans) API to retrieve information about all images and text in the component, including content, ID, style, and position. After obtaining position information, you can update the style of content within a specified range.
+
+This API is useful for inspecting existing content styles, such as in template use cases, and for content parsing and processing, such as in text analysis applications.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller }
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController }
+// Create two RichEditor components.
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Click the button to obtain the span information.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .width(300)
+  .height(50)
+Text('View the return value of getSpans: ').fontSize(10).fontColor(Color.Gray).width(300)
+RichEditor(this.infoShowOptions)
+  .width(300)
+  .height(50)
+Button('getSpans', {
+  buttonStyle: ButtonStyleMode.NORMAL
+})
+  .height(30)
+  .fontSize(13)
+  .onClick(() => {
+    this.infoShowController.addTextSpan(JSON.stringify(this.controller.getSpans()), {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+  })
+```
+
+![alt text](figures/richeditor_image_getspan.gif)
+
+### Setting Placeholder Text
+
+Use the [placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12) API to set hint text displayed when there is no input.
+
+Placeholder text provides useful guidance, helping users navigate the application UI, especially in scenarios requiring specific input, such as login screens. For example, in a text editor, placeholder text can specify input requirements like "Enter up to 100 characters" to guide user actions.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+RichEditor(this.options)
+  .placeholder("Enter your content here", {
+    fontColor: Color.Gray,
+    font: {
+      size: 15,
+      weight: FontWeight.Normal,
+      family: "HarmonyOS Sans",
+      style: FontStyle.Normal
+    }
+  })
+  .width(300)
+  .height(50)
+```
+
+![alt text](figures/richeditor_image_placeholder.gif)
+
+### Setting Maximum Length
+
+Use [maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18) to set the maximum number of characters allowed in the rich text component.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+RichEditor(this.options)
+  .placeholder('The maximum number of characters that can be entered is 7.')
+  .onReady(() => {})
+  .maxLength(7)
+```
+
+
+
+## Event Callbacks
+
+Register event callbacks to monitor component events.
+
+### Callbacks for Before and After Content Changes
+
+Use the [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12) API to add a callback invoked before text or image changes. This callback is suitable for real-time data validation and notifications. For example, it can enable features like sensitive word detection with immediate alert dialogs, or real-time character counting and limiting.
+
+Use the [onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12) API to add a callback invoked after text or image changes. This callback is suitable for content saving and synchronization. For example, it can automatically save the latest content locally or sync it to a server, and update content status and rendering.
+
+Note: The **RichEditor** component constructed with [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12) does not support these callbacks.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Callback invoked before text or image changes.\nCallback invoked after text or image changes.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .onWillChange((value: RichEditorChangeValue) => {
+    this.infoShowController.addTextSpan('Triggered before content change: \n' + JSON.stringify(value), {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+    return true;
+  })
+  .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
+    this.infoShowController.addTextSpan('\nTriggered after content change: \nrangeBefore:' + JSON.stringify(rangeBefore) +
+      '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+  })
+  .width(300)
+  .height(50)
+Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
+RichEditor(this.infoShowOptions)
+  .width(300)
+  .height(70)
+```
+
+![alt text](figures/richeditor_image_ondid.gif)
+
+### Callbacks for Input Method Input
+
+Callbacks can be triggered before and after input method content is added.
+
+For intelligent input assistance, use [aboutToIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#abouttoimeinput) to trigger a callback before adding input content, and [onDidIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidimeinput12) to trigger a callback after input method content is added.
+
+These callbacks are suitable for business logic processing during text display. For example, before user-entered text appears on screen, the callback can provide word suggestions. After input completion, automatic error correction or format conversion can be performed. The callback sequence is aboutToIMEInput followed by onDidIMEInput.
+
+Components constructed using [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12) do not support these callbacks.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Callback invoked before input method content is added.\nCallback invoked after input method content is added.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .aboutToIMEInput((value: RichEditorInsertValue) => {
+    this.infoShowController.addTextSpan(' Callback triggered before input method starts: \n' + JSON.stringify(value), {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+    return true;
+  })
+  .onDidIMEInput((value: TextRange) => {
+    this.infoShowController.addTextSpan(' Callback triggered after input method finishes: \n' + JSON.stringify(value), {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+        })
+  .width(300)
+  .height(50)
+Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
+RichEditor(this.infoShowOptions)
+  .width(300)
+  .height(70)
+```
+
+
+
+### Callback Before Paste Completion
+
+The [onPaste](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onpaste11) callback is used to add processing logic before pasting.
+
+This is useful for content format processing, such as converting HTML-tagged text to a format supported by the **RichEditor** component, removing unnecessary tags, or retaining only plain text.
+
+You can use this API to override the default paste behavior (limited to plain text) to support pasting both images and text.
+
+```ts
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct on_cut_copy_paste {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller }
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController }
+
+  popDataFromPasteboard() {
+    let selection = this.controller.getSelection();
+    let start = selection.selection[0];
+    let end = selection.selection[1];
+    if (start == end) {
+      start = this.controller.getCaretOffset();
+      end = start;
+    }
+    let moveOffset = 0;
+    let sysBoard = pasteboard.getSystemPasteboard();
+    sysBoard.getData((err, data) => {
+      if (err) {
+        return;
+      }
+      if (start != end) {
+        this.controller.deleteSpans({ start: start, end: end })
+      }
+      let count = data.getRecordCount();
+      for (let i = 0; i < count; i++) {
+        const element = data.getRecord(i);
+        if (element && element.plainText && element.mimeType === pasteboard.MIMETYPE_TEXT_PLAIN) {
+          this.controller.addTextSpan(element.plainText,
+            {
+              style: { fontSize: 26, fontColor: Color.Red },
+              offset: start + moveOffset
+            }
+          )
+          moveOffset += element.plainText.length;
+        }
+      }
+      this.controller.setCaretOffset(start + moveOffset)
+    })
+  }
+
+  build() {
+    Column() {
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan('Copy and paste text to trigger corresponding callbacks.',
+              { style: { fontColor: Color.Black, fontSize: 15 } })
+          })
+          .onPaste((event) => {
+            this.infoShowController.addTextSpan('Triggered onPaste callback\n', { style: { fontColor: Color.Gray, fontSize: 10 } })
+            if (event != undefined && event.preventDefault) {
+              event.preventDefault();
+            }
+            console.info('RichEditor onPaste')
+            this.popDataFromPasteboard()
+          })
+          .width(300)
+          .height(70)
+        Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
+          .width(300)
+          .height(70)
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70) 
+      }.width('100%').alignItems(HorizontalAlign.Start)
+    }.height('100%')
+  }
+}
+```
+
+### Callback Before Cut Completion
+
+Add a callback to process data before the [onCut](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncut12) operation completes.
+
+This callback is suitable for data processing and storage. For example, when a user cuts content from the rich text component, the callback can temporarily store the cut content to ensure accurate restoration during subsequent pasting.
+
+You can use this API to override the default cut behavior (limited to plain text) to support cutting both images and text.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Cut and paste operations on this text trigger corresponding callbacks.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .onCut(() => {
+    this.infoShowController.addTextSpan('Triggered onCut callback.\n', {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+  })
+  .width(300)
+  .height(70)
+RichEditor(this.infoShowOptions)
+  .width(300)
+  .height(70) 
+```
+
+### Callback Before Copy Completion
+
+Use the [onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncopy12) callback to add processing logic before copying.
+
+This callback is suitable for content backup and sharing. For example, the callback can save the copied content and its format information to a local backup folder, or automatically generate copy including the copied content and a product purchase link for users to paste and share.
+
+The component's default copy behavior is limited to plain text and cannot process images. Use this method to implement copying both images and text, replacing the component's default behavior.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Copy and paste operations on this text trigger corresponding callbacks.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .onCopy(() => {
+    this.infoShowController.addTextSpan('Triggered onCopy callback.\n', {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+  })
+  .width(300)
+  .height(70)
+RichEditor(this.infoShowOptions)
+  .width(300)
+  .height(70) 
+```
+
+![alt text](figures/richeditor_image_oncut_paste_copy.gif)
+
+For all available events, see [RichEditor Events](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#events).
+
+## Component Interaction
+
+Configure interactive element attributes through APIs to detect changes.
+
+### Setting Cursor and Handle Color
+
+Use [caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#caretcolor12) to set the cursor and handle color.
+
+Setting distinct cursor and handle colors enhances visual recognition, especially in interfaces with multiple input areas. Unique cursor colors help quickly locate the active input area. This feature also improves user experience by coordinating the cursor color with the application's overall style.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('The component has custom caret and selection handle colors.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .caretColor(Color.Orange)
+  .width(300)
+  .height(300)
+```
+
+![alt text](figures/richeditor_image_caretcolor.gif)
+
+### Callback for Cursor Position Changes
+
+[onSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onselectionchange12) adds a callback triggered when the cursor position changes in the content selection area or during editing.
+
+This callback monitors selection area changes in real time. For example, you can use it to update toolbar status (displaying font and paragraph formats), count selected content length, or generate summaries. Real-time response to selection status and dynamic association of interactive elements improve the rich text editing experience and functionality.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Change the cursor position in the selection area or during editing to trigger the onSelectionChange callback.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .onSelectionChange((value: RichEditorRange) => {
+    this.infoShowController.addTextSpan("\n" + "Triggered onSelectionChange callback, range: (" + value.start + "," +
+    value.end + ")", {
+      style: {
+        fontColor: Color.Gray,
+        fontSize: 10
+      }
+    })
+  })
+  .width(300)
+  .height(50)
+Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
+RichEditor(this.infoShowOptions)
+  .width(300)
+  .height(70)
+```
+
+
+
+### Setting Selection Range
+
+Use the [setSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#setselection11) API to highlight the selected portion of the content.
+
+This API implements text focus effects. For example, when a user taps a text paragraph title or summary, this API can automatically select and highlight the corresponding text content.
+
+If this API is called when the text box is not focused, the selection effect is not displayed.
+
+```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+RichEditor(this.options)
+  .onReady(() => {
+    this.controller.addTextSpan('Click the button to select text from positions 0 to 2.', {
+      style: {
+        fontColor: Color.Black,
+        fontSize: 15
+      }
+    })
+  })
+  .width(300)
+  .height(60)
+Button('setSelection(0,2)', {
+  buttonStyle: ButtonStyleMode.NORMAL
+})
+  .height(30)
+  .fontSize(13)
+  .onClick(() => {
+    this.controller.setSelection(0, 2)
+  })
+```
+
+![alt text](figures/richeditor_image_set_selection.gif)
+
+## Menu Configuration
+
+Configure the text selection menu through APIs.
+
+### Managing Selected Menu Items
+
+The [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered before the menu is displayed after the rich text selection area changes. You can set menu data in this callback.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RichEditorExample {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State endIndex: number | undefined = 0;
+  onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+    const idsToFilter = [
+      TextMenuItemId.TRANSLATE,
+      TextMenuItemId.SHARE,
+      TextMenuItemId.SEARCH,
+      TextMenuItemId.AI_WRITER
+    ]
+    const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
+    let item1: TextMenuItem = {
+      content: 'create1',
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('create1'),
+    };
+    let item2: TextMenuItem = {
+      content: 'create2',
+      id: TextMenuItemId.of('create2'),
+      icon: $r('app.media.startIcon'),
+    };
+    items.push(item1);
+    items.unshift(item2);
+    return items;
+  }
+  onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+    if (menuItem.id.equals(TextMenuItemId.of("create2"))) {
+      console.info("Intercept id: create2 start:" + textRange.start + "; end:" + textRange.end);
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.of("prepare1"))) {
+      console.info("Intercept id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.COPY)) {
+      console.info("Intercept COPY start:" + textRange.start + "; end:" + textRange.end);
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+      console.info("Do not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+      return false;
+    }
+    return false;
+  }
+  onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+    let item1: TextMenuItem = {
+      content: 'prepare1_' + this.endIndex,
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('prepare1'),
+    };
+    menuItems.unshift(item1);
+    return menuItems;
+  }
+  @State editMenuOptions: EditMenuOptions = {
+    onCreateMenu: this.onCreateMenu,
+    onMenuItemClick: this.onMenuItemClick,
+    onPrepareMenu: this.onPrepareMenu
+  };
+
+  build() {
+    Column() {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan("RichEditor editMenuOptions");
+        })
+        .editMenuOptions(this.editMenuOptions)
+        .onSelectionChange((range: RichEditorRange) => {
+          console.info("onSelectionChange, (" + range.start + "," + range.end + ")");
+          this.endIndex = range.end;
+        })
+        .height(50)
+        .margin({ top: 100 })
+        .borderWidth(1)
+        .borderColor(Color.Red)
+    }
+    .width("90%")
+    .margin("5%")
+  }
+}
+```
+
+
+
+### Disabling System Service Menu Items
+
+Use [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) to disable all system service menu items in the rich text selection menu.
+
+This API protects content security and is suitable for scenarios with restricted text operations, such as displaying confidential content or copyrighted text that cannot be copied. Disabling system service menu items prevents users from copying and sharing text through these menus, reducing content leakage risks.
+
+
+  ```ts
+  import { TextMenuController } from '@kit.ArkUI';
+
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    controller: RichEditorController = new RichEditorController();
+    options: RichEditorOptions = { controller: this.controller };
+
+    aboutToAppear(): void {
+    // Disable all system service menus.
+      TextMenuController.disableSystemServiceMenuItems(true);
+    }
+
+    aboutToDisappear(): void {
+    // Restore system service menu items when the page disappears.
+      TextMenuController.disableSystemServiceMenuItems(false);
+    }
+
+    build() {
+      Row() {
+        Column() {
+          RichEditor(this.options).onReady(() => {
+            this.controller.addTextSpan("This is a RichEditor.",
+              {
+                style:
+                {
+                  fontSize: 30
+                }
+              })
+          })
+            .height(60)
+            .editMenuOptions({
+              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                // menuItems no longer contains disabled system menu items.
+                return menuItems;
+              },
+              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                return false;
+              }
+            })
+        }.width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
+
+
+
+Use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specific system service menu items in the rich text selection menu.
+
+This interface precisely disables specified system service menu items while retaining required system menu functions, making the menus more suitable for actual interaction design.
+
+  ```ts
+  import { TextMenuController } from '@kit.ArkUI';
+
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    controller: RichEditorController = new RichEditorController();
+    options: RichEditorOptions = { controller: this.controller };
+
+    aboutToAppear(): void {
+    // Disable search and translation menus.
+      TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
+    }
+
+    aboutToDisappear(): void {
+    // Restore system service menu items.
+      TextMenuController.disableMenuItems([])
+    }
+
+    build() {
+      Row() {
+        Column() {
+          RichEditor(this.options).onReady(() => {
+            this.controller.addTextSpan("This is a RichEditor.",
+              {
+                style:
+                {
+                  fontSize: 30
+                }
+              })
+          })
+            .height(60)
+            .editMenuOptions({
+              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                // menuItems no longer contains search and translation.
+                return menuItems;
+              },
+              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                return false
+              }
+            })
+        }.width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
+
+
+
+### Setting Custom Context Menu on Text Selection
+
+Use the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#bindselectionmenu) API to set a custom context menu on text selection.
+
+By default, the context menu includes copy, cut, and select all options. You can add more options for enhanced interactions, such as translate for multilingual support or bold for emphasizing selected text.
 
 If the custom menu is too long, consider embedding a **Scroll** component to prevent the keyboard from being blocked.
 
 ```ts
-export interface SelectionMenuTheme {
-  imageSize: number;
-  buttonSize: number;
-  menuSpacing: number;
-  editorOptionMargin: number;
-  expandedOptionPadding: number;
-  defaultMenuWidth: number;
-  imageFillColor: Resource;
-  backGroundColor: Resource;
-  iconBorderRadius: Resource;
-  containerBorderRadius: Resource;
-  cutIcon: Resource;
-  copyIcon: Resource;
-  pasteIcon: Resource;
-  selectAllIcon: Resource;
-  shareIcon: Resource;
-  translateIcon: Resource;
-  searchIcon: Resource;
-  arrowDownIcon: Resource;
-  iconPanelShadowStyle: ShadowStyle;
-  iconFocusBorderColor: Resource;
-}
-// Custom SelectionMenuTheme API definition
-
-export const defaultTheme: SelectionMenuTheme = {
-  imageSize: 24,
-  buttonSize: 48,
-  menuSpacing: 8,
-  editorOptionMargin: 1,
-  expandedOptionPadding: 3,
-  defaultMenuWidth: 256,
-  imageFillColor: $r('sys.color.ohos_id_color_primary'),
-  backGroundColor: $r('sys.color.ohos_id_color_dialog_bg'),
-  iconBorderRadius: $r('sys.float.ohos_id_corner_radius_default_m'),
-  containerBorderRadius: $r('sys.float.ohos_id_corner_radius_card'),
-  cutIcon: $r("sys.media.ohos_ic_public_cut"),
-  copyIcon: $r("sys.media.ohos_ic_public_copy"),
-  pasteIcon: $r("sys.media.ohos_ic_public_paste"),
-  selectAllIcon: $r("sys.media.ohos_ic_public_select_all"),
-  shareIcon: $r("sys.media.ohos_ic_public_share"),
-  translateIcon: $r("sys.media.ohos_ic_public_translate_c2e"),
-  searchIcon: $r("sys.media.ohos_ic_public_search_filled"),
-  arrowDownIcon: $r("sys.media.ohos_ic_public_arrow_down"),
-  iconPanelShadowStyle: ShadowStyle.OUTER_DEFAULT_MD,
-  iconFocusBorderColor: $r('sys.color.ohos_id_color_focused_outline'),
-}
-// Define the defaultTheme variable.
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
 RichEditor(this.options)
   .onReady(() => {
@@ -136,17 +980,17 @@ SystemMenu() {
       if (this.controller) {
         MenuItemGroup() {
           MenuItem({
-            startIcon: this.theme.cutIcon,
+            startIcon: $r("sys.media.ohos_ic_public_cut"),
             content: "Cut",
-            labelInfo: "Ctrl+X",
+            labelInfo: "Ctrl+X"
           })
           MenuItem({
-            startIcon: this.theme.copyIcon,
+            startIcon: $r("sys.media.ohos_ic_public_copy"),
             content: "Copy",
             labelInfo: "Ctrl+C"
           })
           MenuItem({
-            startIcon: this.theme.pasteIcon,
+            startIcon: $r("sys.media.ohos_ic_public_paste"),
             content: "Paste",
             labelInfo: "Ctrl+V"
           })
@@ -164,300 +1008,51 @@ SystemMenu() {
 
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
 
-### Setting Caret and Selection Handle Colors in the Text Box
-You can set the caret and selection handle colors in the text box using the [caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#caretcolor12) API.
+## Layout Configuration
 
-This feature allows for a more distinct visual representation of the caret and text selection, which can significantly aid users in navigating through complex UI that incorporate various input fields. It can also be particularly beneficial for text boxes that signify special features or states, such as a password text area.
+Configure component layout rules through APIs. Customize layout rules based on business scenarios.
+
+### Setting Maximum Line Count
+
+Use [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlines18) to set the maximum number of lines displayed in the rich text component.
+
+This API controls the text display range to prevent excessively long text from affecting page layout. It ensures consistent text display across different devices and scenarios, improving interface compatibility and aesthetics.
 
 ```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
 RichEditor(this.options)
   .onReady(() => {
-    this.controller.addTextSpan('The component has the color set for the caret and selection handle.', {
+    this.controller.addTextSpan('Maximum line count is set.\nContent exceeding the limit will scroll.\nExceeds 1 line.\nExceeds 2 lines.\nExceeds 3 lines.\nExceeds 4 lines.', {
       style: {
         fontColor: Color.Black,
         fontSize: 15
       }
     })
   })
-  .caretColor(Color.Orange)
-  .width(300)
-  .height(300)
+  .maxLines(2)
 ```
 
-![alt text](figures/richeditor_image_caretcolor.gif)
 
-### Setting Placeholder Text
-You can set the placeholder text, which is displayed when there is no input, using the [placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12) API.
 
-Placeholder text serves as a useful cue, assisting users in navigating through your application's UI, particularly in scenarios where text areas require specific attention or instructions, such as a login screen, or a text editing box with a character limit.
+## Style Settings
 
-```ts
-RichEditor(this.options)
-  .placeholder("Enter your content here", {
-    fontColor: Color.Gray,
-    font: {
-      size: 15,
-      weight: FontWeight.Normal,
-      family: "HarmonyOS Sans",
-      style: FontStyle.Normal
-    }
-  })
-  .width(300)
-  .height(50)
-```
+Set complex styles for content.
 
-![alt text](figures/richeditor_image_placeholder.gif)
+### Setting Preset Text Style
 
-For details about all available attributes, see [RichEditor Attributes](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#attributes).
+Use [setTypingStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#settypingstyle11) to set the preset text style.
 
-## Adding Events
-
-### Adding a Callback for Component Initialization
-Use the [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onready) API to add a callback that is invoked after the component has been initialized.
-
-This callback can be used to effectively display rich content including images, texts, and emoticons after the component is initialized. When the **RichEditor** component is used to display news, this callback can initiate the process of obtaining image and text data from the server. The obtained data is then populated into the component, ensuring that the complete news content is promptly displayed on the page after initialization.
+This enables personalized writing experiences. For example, you can use this API to automatically apply corresponding formats to different heading levels (like level-1 and level-2 headings) as users type.
 
 ```ts
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
 RichEditor(this.options)
   .onReady(() => {
-    this.controller.addTextSpan('The onReady callback content is preset text within the component.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-```
-
-![alt text](figures/richeditor_image_onReady.gif)
-
-### Adding a Callback for Content Selection
-Use the [onSelect](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onselect) API to add a callback that is invoked when content within the component is selected.
-
-This callback can be used to enhance the user experience following text selection For example, it can be used to trigger a context menu, allowing users to modify text styles, or to perform content analysis and processing on the selected text, providing input suggestions and thereby improving the efficiency and convenience of text editing.
-
-The callback can be triggered in two ways: by pressing and releasing the left mouse button to select content, or by selecting content with a finger touch and releasing the finger.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Select this text to invoke the onSelect callback.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onSelect((value: RichEditorSelection) => {
-    this.controller1.addTextSpan(JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(50)
-Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.options1)
-  .width(300)
-  .height(70)
-```
-
-![alt text](figures/richeditor_image_onSelect.gif)
-
-### Adding Callbacks for Before and After Text and Image Changes
-Use the [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12) API to add a callback invoked before text or image changes. This callback is applicable to real-time data verification and notification. For example, it can be used to enable features such as detecting sensitive words and displaying an alert dialog box immediately, as well as real-time character count statistics and limitation.
-
-Use the [onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12) API to add a callback invoked after text or image changes. This callback applies to content saving and synchronization. For example, it can be used to automatically save the latest content to the local host or synchronizing it to the server, and for updating content status and rendering.
-
-Note that the **RichEditor** component constructed with [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12) does not support these two types of callbacks.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('The callback is invoked before the text or image change.\nThe callback is invoked after the text or image change.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onWillChange((value: RichEditorChangeValue) => {
-    this.controller1.addTextSpan('The callback is invoked before the text or image change: \n' + JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-    return true;
-  })
-  .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-    this.controller1.addTextSpan('\nThe callback is invoked after the text or image change: \nrangeBefore:' + JSON.stringify(rangeBefore) +
-      '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-    return true;
-  })
-  .width(300)
-  .height(50)
-Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.options1)
-  .width(300)
-  .height(70)
-```
-
-![alt text](figures/richeditor_image_ondid.gif)
-
-### Adding Callbacks for Before and After Content Input in the Input Method
-To facilitate intelligent input assistance, use [aboutToIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#abouttoimeinput) to trigger a callback before adding input content, and [onIMEInputComplete](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onimeinputcomplete) to trigger a callback after the input is complete.
-
-These callbacks can be used to provide text prediction before user input and to perform automatic error correction or format conversion after input completion.
-
-Note that the **RichEditor** component constructed with [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12) does not support these two types of callbacks.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan(''The callback is invoked before content input in the input method.\nThe callback is invoked when text input in the input method is complete.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .aboutToIMEInput((value: RichEditorInsertValue) => {
-    this.controller1.addTextSpan('The callback is invoked before content input in the input method: \n' + JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-    return true;
-  })
-  .onIMEInputComplete((value: RichEditorTextSpanResult) => {
-    this.controller1.addTextSpan('The callback is invoked when text input in the input method is complete: \n' + JSON.stringify(value), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-    return true;
-  })
-  .width(300)
-  .height(50)
-Text('View callback content:').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.options1)
-  .width(300)
-  .height(70)
-```
-
-![alt text](figures/richeditor_image_aboutToIMEInput2.0.gif)
-
-### Adding a Callback for Before Paste Completion
-Use the [onPaste](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onpaste11) API to add a callback invoked when the paste is about to be completed.
-
-This is useful for content format processing, such as converting text containing HTML tags to a format supported by the **RichEditor** component and removing unnecessary tags or retaining only plain text content.
-
-You can use this API to override the default pasting behavior, which is limited to plain text, so that both images and text can be pasted.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Copy and paste operations on this text trigger the corresponding callbacks.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onPaste(() => {
-    this.controller1.addTextSpan('The onPaste callback is invoked.\n', {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(70)
-```
-
-### Adding a Callback for Before Cut Completion
-Use the [onCut](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncut12) API to add a callback invoked when text is about to be cut.
-
-This can be used to temporarily store the cut content, ensuring accurate restoration in subsequent pasting operations.
-
-You can use this API to override the default cutting behavior, which is limited to plain text, so that both images and text can be cut.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Copy and paste operations on this text trigger the corresponding callbacks.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onCut(() => {
-    this.controller1.addTextSpan('The onCut callback is invoked.\n', {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(70)
-```
-
-### Adding a Callback for Before Copy Completion
-Use the [onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncopy12) API to add a callback invoked when text is about to be copied.
-
-This callback applies to content backup and sharing. For example, the following operations can be performed in the callback: saving the copied content and its format information to a local backup folder, or automatically generating copywriting that includes the copied content and a product purchase link for users to paste and share.
-
-You can use this API to override the default copying behavior, which is limited to plain text, so that both images and text can be copied.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Copy and paste operations on this text trigger the corresponding callbacks.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .onCopy(() => {
-    this.controller1.addTextSpan('The onCopy callback is invoked.\n', {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-  .width(300)
-  .height(70)
-```
-
-![alt text](figures/richeditor_image_oncut_paste_copy.gif)
-
-
-For details about all available events, see [RichEditor Events](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#events).
-
-## Setting the Typing Style
-Use the [setTypingStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#settypingstyle11) API to set the typing style.
-
-This allows you to deliver a personalized writing experience. For example, you might want to use this API to automatically apply corresponding formats to different levels of headings (such as level-1 and level-2 headings) as users type.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Click the button to change the preset typing style.', {
+    this.controller.addTextSpan('Click the button to change the preset text style.', {
       style: {
         fontColor: Color.Black,
         fontSize: 15
@@ -487,213 +1082,141 @@ Button('setTypingStyle', {
 
 ![alt text](figures/richeditor_image_setTypingStyle.gif)
 
-## Setting Highlight for Selected Content
-Use the [setSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#setselection11) API to configure the component to highlight the background of the selected portion.
+### Setting Text Decoration
 
-This API enables the implementation of text focus effects. For example, clicking a title or abstract can trigger the automatic selection and highlighting of the corresponding text content.
+[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration) sets the style, color, and thickness of text decoration lines.
 
-If this API is called when the text box is not focused, the selection effect is not displayed.
+Text decoration highlights key information, distinguishes text status, and enhances visual hierarchy. For example, add decoration to important titles or keywords to help users quickly identify information.
+
+  ```ts
+  private controller: RichEditorController = new RichEditorController();
+  RichEditor({ controller: this.controller })
+    .onReady(() => {
+      this.controller.addTextSpan('Preset text', {
+        style: {
+          fontSize: 25,
+          decoration: {
+            type: TextDecorationType.LineThrough,
+            color: Color.Blue,
+            // Set decoration line thickness ratio to 6.
+            thicknessScale: 6
+          }
+        }
+      })
+    })
+  ```
+
+
+
+Use enableMultiType in [DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20) to set multiple decoration lines, such as underlines and strikethroughs.
+
+This API suits complex business scenarios and meets diverse text decoration needs. During document collaboration, different decoration combinations can distinguish text status, improving collaboration efficiency.
+
+  ```ts
+  RichEditor({ controller: this.styledStringController })
+  Button('Multi-decoration text')
+    .fontSize(20)
+    .onClick(() => {
+      let mutString: MutableStyledString = new MutableStyledString('Set rich text multi-decoration', [
+        {
+          start: 0,
+          length: 9,
+          styledKey: StyledStringKey.FONT,
+          styledValue: new TextStyle({ fontSize: LengthMetrics.vp(25) })
+        },
+        {
+          start: 0,
+          length: 5,
+          styledKey: StyledStringKey.DECORATION,
+          styledValue: new DecorationStyle(
+            {
+              type: TextDecorationType.Underline,
+            },
+            {
+              // Enable multiple decoration lines.
+              enableMultiType: true
+            }
+          )
+        },
+        {
+          start: 2,
+          length: 4,
+          styledKey: StyledStringKey.DECORATION,
+          styledValue: new DecorationStyle(
+           {
+              type: TextDecorationType.LineThrough,
+            },
+            {
+              // Enable multiple decoration lines.
+              enableMultiType: true
+            }
+          )
+        },
+      ])
+      this.styledStringController.setStyledString(mutString);
+    })
+  ```
+
+
+
+### Setting Vertical Alignment
+
+Use [textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20) to set the vertical alignment of text paragraphs.
+
+This API optimizes multi-element layout, making the overall layout more coordinated when component content is vertically aligned with images and icons.
+
+  ```ts
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  Column({ space: 5 }) {
+    RichEditor(this.options)
+      .onReady(() => {
+        this.controller.addImageSpan($r('app.media.startIcon'), {
+          imageStyle: {
+            size: [100, 100]
+          }
+        })
+        this.controller.addTextSpan("This rich text demonstrates vertical text alignment.", {
+          style: {
+            fontColor: Color.Pink,
+            fontSize: "32"
+          },
+          paragraphStyle: {
+            textAlign: TextAlign.Start,
+            textVerticalAlign: TextVerticalAlign.CENTER,
+            leadingMargin: 16
+          }
+        })
+      })
+  }
+  ```
+
+
+
+### Setting Automatic Spacing Between Chinese and Western Characters
+
+Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to enable automatic spacing between Chinese and Western characters.
+
+This interface optimizes text layout and improves readability. When enabled, appropriate gaps are inserted between Chinese and Western characters, facilitating language differentiation and reducing visual interference.
 
 ```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Click the button to select the text at positions 0 to 2 here.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
+Column() {
+  RichEditor(this.options)
+    .onReady(() => {
+      this.controller.addTextSpan("Automatic Spacing Between Chinese and Western Characters",
+        {
+          style:
+          {
+            fontColor: Color.Orange,
+            fontSize: 20
+          }
+        })
     })
-  })
-  .width(300)
-  .height(60)
-Button('setSelection(0,2)', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.setSelection(0, 2)
-  })
-```
-
-![alt text](figures/richeditor_image_set_selection.gif)
-
-## Adding a Text Span
-In addition to directly entering content into the component, you can add a text span using the [addTextSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addtextspan) API.
-
-This API offers a way to diversify text styles. For example, you can use it to create mixed text styles.
-
-When the component is focused and the cursor is blinking, adding text content through **addTextSpan** updates the cursor position to the right of the newly added text.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Click the button to add text here.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(100)
-Button('addTextSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.addTextSpan('Add text.')
-  })
-```
-
-![alt text](figures/richeditor_image_add_text.gif)
-
-## Adding an Image Span
-Use the [addImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addimagespan) API to add an image span.
-
-This API is useful in enriching and visualizing content. For example, you can use it to add images to news or data visualization graphics to documents.
-
-When the component is focused and the cursor is blinking, adding image content through **addImageSpan** updates the cursor position to the right of the newly added image.
-
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Click the button to add an image here.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(100)
-Button('addImageSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.addImageSpan($r("app.media.startIcon"), {
-      imageStyle: {
-        size: ["57px", "57px"]
-      }
-    })
-  })
-```
-
-![alt text](figures/richeditor_image_add_image.gif)
-
-## Adding @Builder Decorated Content
-Use [addBuilderSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addbuilderspan11) to add the content decorated by the @Builder decorator.
-
-This approach applies when you need to integrate customized complex components, such as custom charts.
-
-With this API, you can specify the addition position using [RichEditorBuilderSpanOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorbuilderspanoptions11). If no position is specified or an abnormal value is provided, the builder is appended to the end of all content.
-
-```ts
-private my_builder: CustomBuilder = undefined
-
-@Builder
-TextBuilder() {
-  Row() {
-    Image($r('app.media.startIcon')).width(50).height(50).margin(16)
-    Column() {
-      Text("Text.txt").fontWeight(FontWeight.Bold).fontSize(16)
-      Text("123.45KB").fontColor('#8a8a8a').fontSize(12)
-    }.alignItems(HorizontalAlign.Start)
-  }.backgroundColor('#f4f4f4')
-  .borderRadius("20")
-  .width(220)
+    .enableAutoSpacing(this.enableAutoSpace)
 }
-
-Button('addBuilderSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.my_builder = () => {
-      this.TextBuilder()
-    }
-    this.controller.addBuilderSpan(this.my_builder)
-  })
 ```
-![alt text](figures/richeditor_image_add_builder_span2.0.gif)   
 
-## Adding a Symbol Span
-Use the [addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11) API to add symbol content. This API enables the addition and display of special characters, such as mathematical symbols in academic papers.
 
-When the component is focused and the cursor is blinking, adding symbol content through **addSymbolSpan** updates the cursor position to the right of the newly added symbol.
-Currently, gestures, copying, and dragging are not supported for the symbol content.
 
-```ts
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Click the button to add a symbol here.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(100)
-Button('addSymbolSpan', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller.addSymbolSpan($r("sys.symbol.basketball_fill"), {
-      style: {
-        fontSize: 30
-      }
-    })
-  })
-```
-![alt text](figures/richeditor_image_add_SymbolSpan.gif)
-
-## Obtaining the Image and Text Information in a Component
-Use the [getSpans](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#getspans) API to obtain information about all images and text in the component, including content, ID, style, and position. After obtaining the position information, you can update the style of the content in the specified range.
-
-This API is useful for obtaining and checking existing content styles, such as in template use cases, and for content parsing and processing, such as in text analysis applications.
-
-```ts
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller }
-controller1: RichEditorController = new RichEditorController();
-options1: RichEditorOptions = { controller: this.controller1 }
-// Create two RichEditor components.
-
-RichEditor(this.options)
-  .onReady(() => {
-    this.controller.addTextSpan('Click the button to obtain the span information.', {
-      style: {
-        fontColor: Color.Black,
-        fontSize: 15
-      }
-    })
-  })
-  .width(300)
-  .height(50)
-Text('View the return value of getSpans: ').fontSize(10).fontColor(Color.Gray).width(300)
-RichEditor(this.options1)
-  .width(300)
-  .height(50)
-Button('getSpans', {
-  buttonStyle: ButtonStyleMode.NORMAL
-})
-  .height(30)
-  .fontSize(13)
-  .onClick(() => {
-    this.controller1.addTextSpan(JSON.stringify(this.controller.getSpans()), {
-      style: {
-        fontColor: Color.Gray,
-        fontSize: 10
-      }
-    })
-  })
-```
-![alt text](figures/richeditor_image_getspan.gif)
 <!--RP1--><!--RP1End-->
