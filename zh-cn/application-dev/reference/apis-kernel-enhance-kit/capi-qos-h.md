@@ -1,4 +1,10 @@
 # qos.h
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @gatieme-->
+<!--Designer: @tanyihua-->
+<!--Tester: @panny060-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
