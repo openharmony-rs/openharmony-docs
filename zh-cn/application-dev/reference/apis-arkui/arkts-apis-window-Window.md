@@ -7301,7 +7301,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002错误码。
+**设备行为差异：** 该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
 
 **参数：**
 
