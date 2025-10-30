@@ -24,27 +24,10 @@ ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还
 
 示例代码和效果如下。
 
+<!-- @[component_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template1/Index.ets) -->
 
-```ts
-@Entry
-@Component
-struct ComponentDemo {
-  build() {
-    Row() {
-      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
-        .select(true)
-        .shape(CheckBoxShape.CIRCLE)
-        .size({ width: 50, height: 50 })
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
 
 ![zh-cn_image_0000001649338585](figures/zh-cn_image_0000001649338585.gif)
-
 
 
 ## 打造组件定制化动效
@@ -59,9 +42,9 @@ struct ComponentDemo {
 
 定制Scroll组件滑动动效示例代码和效果如下。
 
-<!-- @[Component_Scroll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template1/Index.ets) -->
+<!-- @[Component_Scroll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template2/Index.ets) -->
 
-``` TypeScript
+```ts
 import { curves, window, display, mediaquery, UIContext } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 
@@ -69,7 +52,6 @@ export default class GlobalContext extends AppStorage {
   static mainWin: window.Window | undefined = undefined;
   static mainWindowSize: window.Size | undefined = undefined;
 }
-
 /**
  * 窗口、屏幕相关信息管理类
  */
@@ -80,12 +62,12 @@ export class WindowManager {
   private orientationListener: mediaquery.MediaQueryListener;
 
   constructor(uiContext: UIContext) {
-    this.uiContext = uiContext;
+    this.uiContext = uiContext
     this.orientationListener = this.uiContext.getMediaQuery().matchMediaSync('(orientation: landscape)');
     this.orientationListener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-      this.onPortrait(mediaQueryResult);
-    });
-    this.loadDisplayInfo();
+      this.onPortrait(mediaQueryResult)
+    })
+    this.loadDisplayInfo()
   }
 
   /**
@@ -94,41 +76,41 @@ export class WindowManager {
    */
   setMainWin(win: window.Window) {
     if (win == null) {
-      return;
+      return
     }
     GlobalContext.mainWin = win;
-    win.on('windowSizeChange', (data: window.Size) => {
+    win.on("windowSizeChange", (data: window.Size) => {
       if (GlobalContext.mainWindowSize == undefined || GlobalContext.mainWindowSize == null) {
         GlobalContext.mainWindowSize = data;
       } else {
         if (GlobalContext.mainWindowSize.width == data.width && GlobalContext.mainWindowSize.height == data.height) {
-          return;
+          return
         }
         GlobalContext.mainWindowSize = data;
       }
 
       let winWidth = this.getMainWindowWidth();
-      AppStorage.setOrCreate<number>('mainWinWidth', winWidth);
+      AppStorage.setOrCreate<number>('mainWinWidth', winWidth)
       let winHeight = this.getMainWindowHeight();
-      AppStorage.setOrCreate<number>('mainWinHeight', winHeight);
-      let context: UIAbility = new UIAbility();
-      context.context.eventHub.emit('windowSizeChange', winWidth, winHeight);
-    });
+      AppStorage.setOrCreate<number>('mainWinHeight', winHeight)
+      let context: UIAbility = new UIAbility()
+      context.context.eventHub.emit("windowSizeChange", winWidth, winHeight)
+    })
   }
 
   static getInstance(uiContext: UIContext): WindowManager {
     if (WindowManager.instance == null) {
       WindowManager.instance = new WindowManager(uiContext);
     }
-    return WindowManager.instance;
+    return WindowManager.instance
   }
 
   private onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches == AppStorage.get<boolean>('isLandscape')) {
-      return;
+      return
     }
-    AppStorage.setOrCreate<boolean>('isLandscape', mediaQueryResult.matches);
-    this.loadDisplayInfo();
+    AppStorage.setOrCreate<boolean>('isLandscape', mediaQueryResult.matches)
+    this.loadDisplayInfo()
   }
 
   /**
@@ -137,42 +119,42 @@ export class WindowManager {
    */
   changeOrientation(ori: window.Orientation) {
     if (GlobalContext.mainWin != null) {
-      GlobalContext.mainWin.setPreferredOrientation(ori);
+      GlobalContext.mainWin.setPreferredOrientation(ori)
     }
   }
 
   private loadDisplayInfo() {
-    this.displayInfo = display.getDefaultDisplaySync();
-    AppStorage.setOrCreate<number>('displayWidth', this.getDisplayWidth());
-    AppStorage.setOrCreate<number>('displayHeight', this.getDisplayHeight());
+    this.displayInfo = display.getDefaultDisplaySync()
+    AppStorage.setOrCreate<number>('displayWidth', this.getDisplayWidth())
+    AppStorage.setOrCreate<number>('displayHeight', this.getDisplayHeight())
   }
 
   /**
    * 获取main窗口宽度，单位vp
    */
   getMainWindowWidth(): number {
-    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.width) : 0;
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.width) : 0
   }
 
   /**
    * 获取main窗口高度，单位vp
    */
   getMainWindowHeight(): number {
-    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.height) : 0;
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.height) : 0
   }
 
   /**
    * 获取屏幕宽度，单位vp
    */
   getDisplayWidth(): number {
-    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.width) : 0;
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.width) : 0
   }
 
   /**
    * 获取屏幕高度，单位vp
    */
   getDisplayHeight(): number {
-    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.height) : 0;
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.height) : 0
   }
 
   /**
@@ -181,11 +163,11 @@ export class WindowManager {
   release() {
     if (this.orientationListener) {
       this.orientationListener.off('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-        this.onPortrait(mediaQueryResult);
-      });
+        this.onPortrait(mediaQueryResult)
+      })
     }
     if (GlobalContext.mainWin != null) {
-      GlobalContext.mainWin.off('windowSizeChange');
+      GlobalContext.mainWin.off('windowSizeChange')
     }
     WindowManager.instance = null;
   }
@@ -235,7 +217,7 @@ export struct TaskSwitchMainPage {
   @State taskViewOffsetX: number = 0;
   @State cardOffset: number = this.displayWidth / 4;
   lastCardOffset: number = this.cardOffset;
-  startTime: number | undefined = undefined;
+  startTime: number | undefined = undefined
 
   // 每个卡片初始位置
   aboutToAppear() {
@@ -246,9 +228,8 @@ export struct TaskSwitchMainPage {
 
   // 每个卡片位置
   getProgress(index: number): number {
-    let progress = (this.cardOffset + this.cardPosition[index] - this.taskViewOffsetX +
-      this.cardWidth / 2) / this.displayWidth;
-    return progress;
+    let progress = (this.cardOffset + this.cardPosition[index] - this.taskViewOffsetX + this.cardWidth / 2) / this.displayWidth;
+    return progress
   }
 
   build() {
@@ -257,7 +238,7 @@ export struct TaskSwitchMainPage {
       Column()
         .width('100%')
         .height('100%')
-        .backgroundColor(0xF0F0F0);
+        .backgroundColor(0xF0F0F0)
 
       // 滑动组件
       Scroll(this.scroller) {
@@ -271,7 +252,7 @@ export struct TaskSwitchMainPage {
               .borderWidth(1)
               .borderColor(0xAFEEEE)
               .borderRadius(15)
-              // 计算子组件的仿射属性
+                // 计算子组件的仿射属性
               .scale((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ?
                 {
                   x: 1.1 - Math.abs(0.5 - this.getProgress(index)),
@@ -279,14 +260,14 @@ export struct TaskSwitchMainPage {
                 } :
                 { x: 1, y: 1 })
               .animation({ curve: Curve.Smooth })
-              // 滑动动画
+                // 滑动动画
               .translate({ x: this.cardOffset })
               .animation({ curve: curves.springMotion() })
-              .zIndex((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ? 2 : 1);
+              .zIndex((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ? 2 : 1)
           }, (item: TaskData) => item.toString())
         }
         .width((this.cardWidth + this.cardSpace) * (taskDataArr.length + 1))
-        .height('100%');
+        .height('100%')
       }
       .gesture(
         GestureGroup(GestureMode.Parallel,
@@ -303,7 +284,7 @@ export struct TaskSwitchMainPage {
             })
             .onActionEnd((event: GestureEvent | undefined) => {
               if (event) {
-                let time = 0;
+                let time = 0
                 if (this.startTime) {
                   time = event.timestamp - this.startTime;
                 }
@@ -338,7 +319,7 @@ export struct TaskSwitchMainPage {
             })
         ), GestureMask.IgnoreInternal)
       .scrollable(ScrollDirection.Horizontal)
-      .scrollBar(BarState.Off);
+      .scrollBar(BarState.Off)
 
       // 滑动到首尾位置
       Button('Move to first/last')
@@ -353,20 +334,20 @@ export struct TaskSwitchMainPage {
             this.cardOffset = this.displayWidth / 4 - (taskDataArr.length - 1) * this.displayWidth / 2;
           }
           this.lastCardOffset = this.cardOffset;
-        });
+        })
     }
     .width('100%')
-    .height('100%');
+    .height('100%')
   }
 }
 ```
-
 
 ![zh-cn_image_0000001599808406](figures/zh-cn_image_0000001599808406.gif)
 
 通过animateTo可以实现将List中指定的Item替换到首位，List中其余Item依次向下排列。定制List组件动态替换动效的示例代码和效果如下。
 
-<!-- @[Component_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template2/Index.ets) -->
+<!-- @[Component_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template3/Index.ets) -->
+
 
 ![listAnimateDemo](figures/listAnimateDemo.gif)
 <!--RP1--><!--RP1End-->
