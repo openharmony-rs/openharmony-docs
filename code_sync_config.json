@@ -4492,5 +4492,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/unified-data-channels-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":28,
+						"name":"unified_data_channels_c_head_file",
+						"start_line":16
+					},
+					{
+						"end_line":103,
+						"name":"unified_data_channels_c_write_data",
+						"start_line":30
+					},
+					{
+						"end_line":198,
+						"name":"unified_data_channels_c_get_data",
+						"start_line":105
+					},
+					{
+						"end_line":275,
+						"name":"unified_data_channels_c_update_data",
+						"start_line":200
+					},
+					{
+						"end_line":375,
+						"name":"unified_data_channels_c_delete_data",
+						"start_line":277
+					},
+					{
+						"end_line":394,
+						"name":"unified_data_channels_c_define_get_data_callback",
+						"start_line":377
+					},
+					{
+						"end_line":432,
+						"name":"unified_data_channels_c_delay_write_data",
+						"start_line":396
+					}
+				]
+			}
+		]
 	}
 ]
