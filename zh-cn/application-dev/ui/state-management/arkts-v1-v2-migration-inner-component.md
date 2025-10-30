@@ -307,6 +307,27 @@ V2迁移策略：直接替换。
 
 <!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct Child10 {
+  @Param value: number = 0;
+
+  build() {
+    Text(this.value.toString())
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent10 {
+  build() {
+    Column() {
+      Child10({ value: 30 })
+    }
+  }
+}
+```
+
 **复杂类型的单向数据传递**
 
 在V2中，传递复杂类型时，如果希望实现严格的单向数据绑定，防止子组件修改父组件的数据，需要在使用\@Param传递复杂对象时进行深拷贝以避免传递对象的引用。
