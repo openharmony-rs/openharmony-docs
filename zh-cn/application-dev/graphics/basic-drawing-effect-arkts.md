@@ -155,6 +155,11 @@
    - 可使用setCapStyle()接口设置画笔线帽样式。
 
       <!-- @[arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+      
+      ``` TypeScript
+      // 设置画笔线帽样式
+      pen.setCapStyle(drawing.CapStyle.SQUARE_CAP);
+      ```
 
       CapStyle线帽样式可选分类对应如下：
 
