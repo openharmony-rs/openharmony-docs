@@ -1315,6 +1315,25 @@ Button($r('app.string.Demo_SetStyledStringButton'))
 
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ···
+          // $r('app.string.Demo_autoSpacingString')需要替换为开发者所需的资源文件
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
+                {
+                  style:
+                  {
+                    fontColor: Color.Orange,
+                    fontSize: 20
+                  }
+                })
+            })
+            .enableAutoSpacing(this.enableAutoSpace)
+```
+
 ![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
 
 <!--RP1--><!--RP1End-->
