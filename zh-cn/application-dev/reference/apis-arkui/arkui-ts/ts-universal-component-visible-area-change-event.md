@@ -18,6 +18,16 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 组件可见区域变化时触发该回调。
 
+> **说明：**
+>
+>- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+>- 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
+> 
+>- 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](ts-container-stack.md)、[Z序控制](ts-universal-attributes-z-order.md)、[rotate](ts-universal-attributes-transformation.md#rotate)等。
+>
+>- 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](ts-universal-attributes-overlay.md#overlay)能力挂载的自定义节点。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -34,15 +44,6 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
-> **说明：**
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
->- 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
-> 
->- 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如[Stack](ts-container-stack.md)、[Z序控制](ts-universal-attributes-z-order.md)、[rotate](ts-universal-attributes-transformation.md#rotate)等。
->
->- 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](ts-universal-attributes-overlay.md#overlay)能力挂载的自定义节点。
 
 ## onVisibleAreaApproximateChange<sup>17+</sup>
 
