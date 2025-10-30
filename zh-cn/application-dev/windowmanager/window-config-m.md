@@ -27,7 +27,7 @@
     * name取值为ohos.ability.window.left表示主窗口默认左边的位置。value表示配置格式，取值：对齐方式 +/- 偏移量。对齐方式包括center、left和right，默认值为left；当偏移量为0时可以省略。
     * name取值为ohos.ability.window.top表示主窗口顶部的位置。value表示配置格式，取值：对齐方式 +/- 偏移量。对齐方式包括center、top和bottom，默认值为top。如果对齐方式和偏移量同时省略，则按照系统默认的层叠规格处理。
 
-2. 使用metadata标签配置是否使能[应用移除启动页功能](../reference/apis-arkui/arkts-apis-window-WindowStage.md#removeStartingWindow14)。配置项为：name取值为enable.remove.starting.window，value取值为true或false，取值为true表示使能应用移除启动页功能、取值为false表示不使能应用移除启动页功能，未配置时默认为false。
+2. 使用metadata标签配置[removeStartingWindow](../reference/apis-arkui/arkts-apis-window-WindowStage.md#removestartingwindow14)接口的启用状态。配置项为：name取值enable.remove.starting.window，value取值true或false。true表示启用，false表示不启用。未配置时，默认为false。
 
 3. 使用metadata标签配置主窗启动时是否以最大化状态显示。配置项为：name为ohos.ability.window.isMaximize，value取值为true或false，取值为true表示最大化启动、取值为false表示不以最大化状态启动，未配置时默认为false。主窗最大化显示配置存在如下约束与限制：
 
