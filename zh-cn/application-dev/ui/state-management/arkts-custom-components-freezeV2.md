@@ -370,6 +370,72 @@ struct NavigationContentMsgStack {
 
 <!-- @[freeze_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/RepeatVirtualScrollFreeze.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct RepeatVirtualScrollFreeze {
+  @Local simpleList: Array<string> = [];
+  @Local bgColor: Color = Color.Pink;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 7; i++) {
+      this.simpleList.push(`item${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('Reduce length to 5')
+          .onClick(() => {
+            this.simpleList = this.simpleList.slice(0, 5);
+          })
+        Button('Change bgColor')
+          .onClick(() => {
+            this.bgColor = this.bgColor == Color.Pink ? Color.Blue : Color.Pink;
+          })
+      }
+
+      List() {
+        Repeat(this.simpleList)
+          .each((obj: RepeatItem<string>) => {
+          })
+          .key((item: string, index: number) => item)
+          .virtualScroll({ totalCount: this.simpleList.length })
+          .templateId(() => 'a')
+          .template('a', (ri) => {
+            ChildComponent({
+              message: ri.item,
+              bgColor: this.bgColor
+            })
+          }, { cachedCount: 2 })
+      }
+      .cachedCount(0)
+      .height(500)
+    }
+    .height('100%')
+  }
+}
+
+// 开启组件冻结
+@ComponentV2({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Param @Require message: string = '';
+  @Param @Require bgColor: Color = Color.Pink;
+  @Monitor('bgColor')
+  onBgColorChange(monitor: IMonitor) {
+    // bgColor改变时，缓存池中组件不刷新，不会打印日志
+    hilog.info(DOMAIN, 'testTag', `repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  build() {
+    Text(`[a]: ${this.message}`)
+      .fontSize(50)
+      .backgroundColor(this.bgColor)
+  }
+}
+```
+
 在上面的示例中：
 
 点击`Reduce length to 5`后，被移除的两个组件会进入Repeat缓存池，然后点击`Change bgColor`更改bgColor的值触发节点刷新。
