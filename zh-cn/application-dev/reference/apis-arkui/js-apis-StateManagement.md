@@ -357,14 +357,18 @@ static getTarget\<T extends object\>(source: T): T
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
+
 class NonObservedClass {
   name: string = 'Tom';
 }
+
 let nonObservedClass: NonObservedClass = new NonObservedClass();
+
 @Entry
 @Component
 struct Index {
   @State someClass: NonObservedClass = nonObservedClass;
+
   build() {
     Column() {
       Text(`this.someClass === nonObservedClass: ${this.someClass === nonObservedClass}`) // false
@@ -400,6 +404,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
+
 class NonObservedClass {
   name: string = 'Tom';
 }
@@ -409,6 +414,7 @@ class NonObservedClass {
 struct Index {
   observedClass: NonObservedClass = UIUtils.makeObserved(new NonObservedClass());
   nonObservedClass: NonObservedClass = new NonObservedClass();
+
   build() {
     Column() {
       Text(`observedClass: ${this.observedClass.name}`)
