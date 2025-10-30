@@ -722,7 +722,7 @@ Sensor.unsubscribeGyroscope();
 
 ## SubscribeOnBodyStateOptions
 
-当传感器所在设备穿戴状态改变时调用，穿戴状态分为已穿戴和未穿戴。
+当传感器所在设备穿戴状态改变时调用，分为已穿戴和未穿戴。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
