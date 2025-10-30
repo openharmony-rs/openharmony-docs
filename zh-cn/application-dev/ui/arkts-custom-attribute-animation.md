@@ -32,17 +32,16 @@ struct AnimatablePropertyExample {
 
   build() {
     Column() {
-      // $r('app.string.animatableProperty_AnimatableProperty')需要替换为开发者所需的资源文件
-      Text($r('app.string.animatableProperty_AnimatableProperty'))
+      Text('AnimatableProperty')
         .animatableWidth(this.textWidth) // 第二步：将自定义可动画属性接口设置到组件上
-        .animation({ duration: 2000, curve: Curve.Ease }); // 第三步:为自定义可动画属性接口绑定动画，2000: 动画持续时间（毫秒）
-      // $r('app.string.animatableProperty_Play')需要替换为开发者所需的资源文件
-      Button($r('app.string.animatableProperty_Play'))
+        .animation({ duration: 2000, curve: Curve.Ease }) // 第三步:为自定义可动画属性接口绑定动画，2000: 动画持续时间（毫秒）
+      Button('Play')
         .onClick(() => {
           this.textWidth = this.textWidth == 80 ? 160 : 80; // 第四步：改变自定义可动画属性的参数，产生动画，80: 最小宽度，160: 最大宽度
-        });
-    }.width('100%')
-    .padding(10); // 10: 内边距
+        })
+    }
+    .width('100%')
+    .padding(10) // 10: 内边距
   }
 }
 ```
@@ -187,9 +186,9 @@ struct AnimatedShape {
           } else {
             this.polyline1Vec = this.pointVec1;
           }
-        });
+        })
     }
-    .width('100%').height('100%').justifyContent(FlexAlign.Center);
+    .width('100%').height('100%').justifyContent(FlexAlign.Center)
   }
 }
 ```
