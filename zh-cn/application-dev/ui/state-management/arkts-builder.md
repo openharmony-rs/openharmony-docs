@@ -1256,6 +1256,91 @@ struct PageBuilderIncorrectUsage {
 
 <!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) -->
 
+``` TypeScript
+@ObservedV2
+class ParamTmpClass {
+  @Trace public count : number = 0;
+}
+
+@Builder
+function renderText(param: ParamTmpClass) {
+  Column() {
+    Text(`param : ${param.count}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Builder
+function renderMap(paramMap: Map<string,number>) {
+  Text(`paramMap : ${paramMap.get('name')}`)
+    .fontSize(20)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Builder
+function renderSet(paramSet: Set<number>) {
+  Text(`paramSet : ${paramSet.size}`)
+    .fontSize(20)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Builder
+function renderNumberArr(paramNumArr: number[]) {
+  Text(`paramNumArr : ${paramNumArr[0]}`)
+    .fontSize(20)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Entry
+@ComponentV2
+struct PageBuilderCorrectUsage {
+  @Local builderParams: ParamTmpClass = new ParamTmpClass();
+  @Local mapValue: Map<string,number> = new Map();
+  @Local setValue: Set<number> = new Set([0]);
+  @Local numArrValue: number[] = [0];
+  private progressTimer: number = -1;
+
+  aboutToAppear(): void {
+    this.progressTimer = setInterval(() => {
+      if (this.builderParams.count < 100) {
+        this.builderParams.count += 5;
+        this.mapValue.set('name', this.builderParams.count);
+        this.setValue.add(this.builderParams.count);
+        this.numArrValue[0] = this.builderParams.count;
+      } else {
+        clearInterval(this.progressTimer);
+      }
+    }, 500);
+  }
+
+  @Builder
+  localBuilder() {
+    Column() {
+      Text(`localBuilder : ${this.builderParams.count}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      this.localBuilder()
+      Text(`builderParams :${this.builderParams.count}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      renderText(this.builderParams)
+      renderText({ count: this.builderParams.count })
+      renderMap(this.mapValue)
+      renderSet(this.setValue)
+      renderNumberArr(this.numArrValue)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 在\@Builder内创建自定义组件传递参数不刷新问题
 
 在parentBuilder1函数中创建自定义组件HelloComponent1，传递参数为class对象并修改对象内的值时，UI不会触发刷新功能。
