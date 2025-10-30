@@ -14,85 +14,13 @@
 
 【反例】
 
-```ts
-@Observed
-class MyClass {
-  public num: number = 0;
+<!-- @[deep_copy_reverse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyReverse.ets) -->
 
-  constructor(num: number) {
-    this.num = num;
-  }
-}
-
-@Component
-struct PropChild {
-  @Prop testClass: MyClass; // @Prop装饰状态变量会深拷贝。
-
-  build() {
-    Text(`PropChild testNum ${this.testClass.num}`)
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State testClass: MyClass[] = [new MyClass(1)];
-
-  build() {
-    Column() {
-      Text(`Parent testNum ${this.testClass[0].num}`)
-        .onClick(() => {
-          this.testClass[0].num += 1;
-        })
-
-      // PropChild没有改变@Prop testClass: MyClass的值，所以这时最优的选择是使用@ObjectLink。
-      PropChild({ testClass: this.testClass[0] })
-    }
-  }
-}
-```
-
-在以上示例中，PropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Link和\@Prop更优的选择。
+在以上示例中，DeepRePropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据带来性能开销，所以\@ObjectLink是比\@Link和\@Prop更优的选择。
 
 【正例】
 
-```ts
-@Observed
-class MyClass {
-  public num: number = 0;
-
-  constructor(num: number) {
-    this.num = num;
-  }
-}
-
-@Component
-struct PropChild {
-  @ObjectLink testClass: MyClass; // @ObjectLink装饰状态变量不会深拷贝。
-
-  build() {
-    Text(`PropChild testNum ${this.testClass.num}`)
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State testClass: MyClass[] = [new MyClass(1)];
-
-  build() {
-    Column() {
-      Text(`Parent testNum ${this.testClass[0].num}`)
-        .onClick(() => {
-          this.testClass[0].num += 1;
-        })
-
-      // 当子组件不需要本地修改状态时，应优先使用@ObjectLink，因为@Prop会执行深拷贝并带来性能开销，此时@ObjectLink是比@Link和@Prop更优的选择。
-      PropChild({ testClass: this.testClass[0] })
-    }
-  }
-}
-```
+<!-- @[deep_copy_correct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyCorrect.ets) -->
 
 
 ## 不使用状态变量强行更新非状态变量关联组件
@@ -100,49 +28,7 @@ struct Parent {
 【反例】
 
 
-```ts
-@Entry
-@Component
-struct MyComponent {
-  @State needsUpdate: boolean = true;
-  realStateArr: Array<number> = [4, 1, 3, 2]; // 未使用状态变量装饰器。
-  realState: Color = Color.Yellow;
-
-  updateUIArr(param: Array<number>): Array<number> {
-    const triggerAGet = this.needsUpdate;
-    return param;
-  }
-  updateUI(param: Color): Color {
-    const triggerAGet = this.needsUpdate;
-    return param;
-  }
-  build() {
-    Column({ space: 20 }) {
-      ForEach(this.updateUIArr(this.realStateArr),
-        (item: number) => {
-          Text(`${item}`)
-        })
-      Text("add item")
-        .onClick(() => {
-          // 改变realStateArr不会触发UI视图更新。
-          this.realStateArr.push(this.realStateArr[this.realStateArr.length-1] + 1);
-
-          // 触发UI视图更新。
-          this.needsUpdate = !this.needsUpdate;
-        })
-      Text("chg color")
-        .onClick(() => {
-          // 改变realState不会触发UI视图更新。
-          this.realState = this.realState == Color.Yellow ? Color.Red : Color.Yellow;
-
-          // 触发UI视图更新。
-          this.needsUpdate = !this.needsUpdate;
-        })
-    }.backgroundColor(this.updateUI(this.realState))
-    .width(200).height(500)
-  }
-}
-```
+<!-- @[force_update_counterexample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdateCounterexample.ets) -->
 
 上述示例存在以下问题：
 
@@ -156,33 +42,7 @@ struct MyComponent {
 
 解决此问题，需用\@State装饰realStateArr和realState成员变量。解决后就不再需要变量needsUpdate。
 
-```ts
-@Entry
-@Component
-struct CompA {
-  @State realStateArr: Array<number> = [4, 1, 3, 2];
-  @State realState: Color = Color.Yellow;
-  build() {
-    Column({ space: 20 }) {
-      ForEach(this.realStateArr,
-        (item: number) => {
-          Text(`${item}`)
-        })
-      Text("add item")
-        .onClick(() => {
-          // 改变realStateArr触发UI视图更新。
-          this.realStateArr.push(this.realStateArr[this.realStateArr.length-1] + 1);
-        })
-      Text("chg color")
-        .onClick(() => {
-          // 改变realState触发UI视图更新。
-          this.realState = this.realState == Color.Yellow ? Color.Red : Color.Yellow;
-        })
-    }.backgroundColor(this.realState)
-    .width(200).height(500)
-  }
-}
-```
+<!-- @[force_update_positive_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/ForceUpdatePositiveCase.ets) -->
 
 ## 精准控制状态变量关联的组件数
 
@@ -190,115 +50,13 @@ struct CompA {
 
 【反例】
 
-```ts
-@Observed
-class Translate {
-  translateX: number = 20;
-}
-@Component
-struct Title {
-  @ObjectLink translateObj: Translate;
-  build() {
-    Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
-        .width(50)
-        .height(50)
-        .translate({
-          x:this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
-        })
-      Text("Title")
-        .fontSize(20)
-        .translate({
-          x: this.translateObj.translateX
-        })
-    }
-  }
-}
-@Entry
-@Component
-struct Page {
-  @State translateObj: Translate = new Translate();
-
-  build() {
-    Column() {
-      Title({
-        translateObj: this.translateObj
-      })
-      Stack() {
-      }
-      .backgroundColor("black")
-      .width(200)
-      .height(400)
-      .translate({
-        x:this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
-      })
-      Button("move")
-        .translate({
-          x:this.translateObj.translateX
-        })
-        .onClick(() => {
-          this.getUIContext().animateTo({
-            duration: 50
-          },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
-        })
-    }
-  }
-}
-```
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
 
 在上面的示例中，状态变量this.translateObj.translateX被用在多个同级的子组件下，当this.translateObj.translateX变化时，会导致所有关联它的组件一起刷新，但实际上由于这些组件的变化是相同的，因此可以将这个属性绑定到他们共同的父组件上，来实现减少组件的刷新数量。经过分析，所有子组件均位于Page组件的Column下，因此将所有子组件相同的translate属性统一到Column上，来实现精准控制状态变量关联的组件数。
 
 【正例】
 
-```ts
-@Observed
-class Translate {
-  translateX: number = 20;
-}
-@Component
-struct Title {
-  build() {
-    Row() {
-      // 此处'app.media.icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-      Image($r('app.media.icon'))
-        .width(50)
-        .height(50)
-      Text("Title")
-        .fontSize(20)
-    }
-  }
-}
-@Entry
-@Component
-struct Page1 {
-  @State translateObj: Translate = new Translate();
-
-  build() {
-    Column() {
-      Title()
-      Stack() {
-      }
-      .backgroundColor("black")
-      .width(200)
-      .height(400)
-      Button("move")
-        .onClick(() => {
-          this.getUIContext().animateTo({
-            duration: 50
-          },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
-        })
-    }
-    .translate({ // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
-      x: this.translateObj.translateX
-    })
-  }
-}
-```
+<!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) -->
 
 ## 合理控制对象类型状态变量关联的组件数量
 
@@ -314,72 +72,11 @@ struct Page1 {
 
 【反例】
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '';
-
-  build() {
-    Column() {
-      Button('点击打印日志')
-        .onClick(() => {
-          for (let i = 0; i < 10; i++) {
-            hilog.info(0x0000, 'TAG', '%{public}s', this.message);
-          }
-        })
-        .width('90%')
-        .backgroundColor(Color.Blue)
-        .fontColor(Color.White)
-        .margin({
-          top: 10
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .alignItems(HorizontalAlign.Center)
-    .margin({
-      top: 15
-    })
-  }
-}
-```
+<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) -->
 
 【正例】
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '';
-
-  build() {
-    Column() {
-      Button('点击打印日志')
-        .onClick(() => {
-          let logMessage: string = this.message;
-          for (let i = 0; i < 10; i++) {
-            hilog.info(0x0000, 'TAG', '%{public}s', logMessage);
-          }
-        })
-        .width('90%')
-        .backgroundColor(Color.Blue)
-        .fontColor(Color.White)
-        .margin({
-          top: 10
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .alignItems(HorizontalAlign.Center)
-    .margin({
-      top: 15
-    })
-  }
-}
-```
+<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->
 
 ## 建议使用临时变量替换状态变量
 
@@ -389,44 +86,7 @@ struct Index {
 
 【反例】
 
-```ts
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '';
-
-  appendMsg(newMsg: string) {
-    // 性能打点
-    hiTraceMeter.startTrace('StateVariable', 1);
-    this.message += newMsg;
-    this.message += ';';
-    this.message += '<br/>';
-    hiTraceMeter.finishTrace('StateVariable', 1);
-  }
-
-  build() {
-    Column() {
-      Button('点击打印日志')
-        .onClick(() => {
-          this.appendMsg('操作状态变量');
-        })
-        .width('90%')
-        .backgroundColor(Color.Blue)
-        .fontColor(Color.White)
-        .margin({
-          top: 10
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .alignItems(HorizontalAlign.Center)
-    .margin({
-      top: 15
-    })
-  }
-}
-```
+<!-- @[calculation_directState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationDirectState.ets) -->
 
 直接操作状态变量，三次触发计算函数，运行耗时结果如下：
 
@@ -434,46 +94,7 @@ struct Index {
 
 【正例】
 
-```ts
-import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '';
-
-  appendMsg(newMsg: string) {
-    // 性能打点。
-    hiTraceMeter.startTrace('TemporaryVariable', 2);
-    let message = this.message;
-    message += newMsg;
-    message += ';';
-    message += '<br/>';
-    this.message = message;
-    hiTraceMeter.finishTrace('TemporaryVariable', 2);
-  }
-
-  build() {
-    Column() {
-      Button('点击打印日志')
-        .onClick(() => {
-          this.appendMsg('操作临时变量');
-        })
-        .width('90%')
-        .backgroundColor(Color.Blue)
-        .fontColor(Color.White)
-        .margin({
-          top: 10
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .alignItems(HorizontalAlign.Center)
-    .margin({
-      top: 15
-    })
-  }
-}
-```
+<!-- @[calculation_temp_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationTempVariable.ets) -->
 
 使用临时变量取代状态变量的计算，三次触发计算函数，运行耗时结果如下：
 
