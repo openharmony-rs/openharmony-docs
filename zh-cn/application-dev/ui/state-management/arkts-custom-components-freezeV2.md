@@ -477,6 +477,65 @@ struct ChildComponent1 {
 
 <!-- @[freeze_template5_PageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageA.ets) -->
 
+``` TypeScript
+// src/main/ets/pages/freeze/template5/PageA.ets
+@ObservedV2
+class Book {
+  @Trace public name: string = 'TS';
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Entry
+@ComponentV2
+struct PageA {
+  pageInfo: NavPathStack = new NavPathStack();
+
+  build() {
+    Column() {
+      Navigation(this.pageInfo) {
+        Child()
+
+        Button('Go to next page').fontSize(30)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('PageB', null);
+          })
+      }
+    }
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+export struct Child {
+  @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
+
+  @Monitor('bookTest.name')
+  onMessageChange(monitor: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', `The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+  }
+
+  textUpdate(): number {
+    hilog.info(DOMAIN, 'testTag', 'The text is update');
+    return 25;
+  }
+
+  build() {
+    Column() {
+      Text(`The book name is ${this.bookTest.name}`).fontSize(this.textUpdate())
+
+      Button('change BookName')
+        .onClick(() => {
+          setTimeout(() => {
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
+          }, 3000);
+        })
+    }
+  }
+}
+```
+
 
 <!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) -->
 
