@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## renderFit
 
@@ -30,7 +32,9 @@ renderFit(fitMode: RenderFit): T
 
 ## renderFit<sup>18+</sup>
 
-renderFit(fitMode: Optional\<RenderFit>): T
+ArkTS-Dyn: renderFit(fitMode: Optional\<RenderFit>): T
+
+ArkTS-Sta: renderFit(fitMode: RenderFit | undefined): this
 
 设置宽高动画过程中的组件内容填充方式。与[renderFit](#renderfit)相比，fitMode参数新增了对undefined类型的支持。
 
@@ -38,17 +42,21 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                       | 必填 | 说明                                                         |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fitMode | Optional\<[RenderFit](#renderfit枚举说明)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
+| fitMode | ArkTS-Dyn: Optional\<[RenderFit](#renderfit枚举说明)> <br/> ArkTS-Sta: [RenderFit](#renderfit枚举说明) \| undefined | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
 
 >  **说明：**
 >

@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## foregroundEffect
 
-foregroundEffect(options: ForegroundEffectOptions): T
+ArkTS-Dyn: foregroundEffect(options: ForegroundEffectOptions): T
+
+ArkTS-Sta: foregroundEffect(options: ForegroundEffectOptions | undefined): this
 
 设置组件的前景属性。
 
@@ -16,17 +20,21 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景属性包括：模糊半径。 |
+| options | ArkTS-Dyn: [ForegroundEffectOptions](#foregroundeffectoptions12)<br/>  ArkTS-Sta: [ForegroundEffectOptions](#foregroundeffectoptions12) \| undefined| 是   | 设置组件前景属性包括：模糊半径。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this  | 返回当前组件。 |
 
 ## ForegroundEffectOptions<sup>12+</sup>
 前景效果参数。

@@ -4,11 +4,15 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## motionBlur
 
-motionBlur(value: MotionBlurOptions): T
+ArkTS-Dyn: motionBlur(value: MotionBlurOptions): T
+
+ArkTS-Sta: motionBlur(value: MotionBlurOptions | undefined): this
 
 在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
 
@@ -28,17 +32,22 @@ motionBlur(value: MotionBlurOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                            | 必填 | 说明               |
 | ------ | ----------------------------------------------- | ---- | ------------------ |
-| value  | [MotionBlurOptions](#motionbluroptions对象说明) | 是   | 定义运动模糊参数。 |
+| value  | ArkTS-Dyn: [MotionBlurOptions](#motionbluroptions对象说明)<br/>  ArkTS-Sta: [MotionBlurOptions](#motionbluroptions对象说明) \| undefined
+ | 是   | 定义运动模糊参数。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
 
 ## motionBlur<sup>18+</sup>
 

@@ -4,9 +4,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
 
 
 ## 子组件
@@ -69,7 +71,9 @@ Tabs页签位置枚举。
 
 ### vertical
 
-vertical(value: boolean)
+ArkTS-Dyn: vertical(value: boolean)
+
+ArkTS-Sta: vertical(value: boolean | undefined)
 
 设置是否为纵向Tab。
 
@@ -77,15 +81,21 @@ vertical(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否为纵向Tab。<br/>默认值：false，横向Tabs，为true时纵向Tabs。<br/>当横向Tabs设置height为auto时，Tabs组件高度自适应子组件高度，即为tabBar高度+divider线宽+TabContent高度+上下padding值+上下border宽度。<br/>当纵向Tabs设置width为auto时，Tabs组件宽度自适应子组件宽度，即为tabBar宽度+divider线宽+TabContent宽度+左右padding值+左右border宽度。<br/>尽量保持每一个页面中的子组件尺寸大小一致，避免滑动页面时出现页面切换动画跳动现象。 |
+| value  | ArkTS-Dyn: boolean <br > ArkTS-Sta: boolean \| undefined | 是   | 是否为纵向Tab。<br/>默认值：false，横向Tabs，为true时纵向Tabs。<br/>当横向Tabs设置height为auto时，Tabs组件高度自适应子组件高度，即为tabBar高度+divider线宽+TabContent高度+上下padding值+上下border宽度。<br/>当纵向Tabs设置width为auto时，Tabs组件宽度自适应子组件宽度，即为tabBar宽度+divider线宽+TabContent宽度+左右padding值+左右border宽度。<br/>尽量保持每一个页面中的子组件尺寸大小一致，避免滑动页面时出现页面切换动画跳动现象。 |
 
 ### scrollable
 
-scrollable(value: boolean)
+ArkTS-Dyn: scrollable(value: boolean)
+
+ArkTS-Sta: scrollable(value: boolean | undefined)
 
 设置是否可以通过滑动页面进行页面切换。
 
@@ -93,15 +103,21 @@ scrollable(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否可以通过滑动页面进行页面切换。<br/>默认值：true，可以通过滑动页面进行页面切换。为false时不可滑动切换页面。 |
+| value  | ArkTS-Dyn: boolean <br > ArkTS-Sta: boolean \| undefined | 是   | 是否可以通过滑动页面进行页面切换。<br/>默认值：true，可以通过滑动页面进行页面切换。为false时不可滑动切换页面。 |
 
 ### barMode
 
-barMode(value: BarMode, options?: ScrollableBarModeOptions)
+ArkTS-Dyn: barMode(value: BarMode, options?: ScrollableBarModeOptions)
+
+ArkTS-Sta: barMode(value: BarMode | undefined, options?: ScrollableBarModeOptions | undefined)
 
 设置TabBar布局模式。
 
@@ -109,12 +125,16 @@ barMode(value: BarMode, options?: ScrollableBarModeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                 | [BarMode](#barmode枚举说明)                                  | 是   | 布局模式。<br/>默认值：BarMode.Fixed                                                 |
-| options<sup>10+</sup> | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 否   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅Scrollable且水平模式下有效。 |
+| value                 | ArkTS-Dyn: [BarMode](#barmode枚举说明)<br > ArkTS-Sta: [BarMode](#barmode枚举说明) \| undefined                                  | 是   | 布局模式。<br/>默认值：BarMode.Fixed                                                 |
+| options<sup>10+</sup> | ArkTS-Dyn: [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) <br > ArkTS-Sta: [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) \| undefined | 否   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅Scrollable且水平模式下有效。 |
 
 ### barMode<sup>10+</sup>
 
@@ -134,7 +154,9 @@ barMode(value: BarMode.Fixed)
 
 ### barMode<sup>10+</sup>
 
-barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
+ArkTS-Dyn: barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
+
+ArkTS-Sta: barMode(value: BarMode | undefined, options?: ScrollableBarModeOptions | undefined)
 
 设置TabBar布局模式为BarMode.Scrollable。
 
@@ -142,16 +164,22 @@ barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名    | 类型                              | 必填 | 说明                                    |
 | -------- | --------------------------------- | ---- | ------------------------------------- |
-| value    | [BarMode.Scrollable](#barmode枚举说明) | 是   | 所有TabBar都使用实际布局宽度，超过总宽度（横向Tabs的barWidth，纵向Tabs的barHeight）后可滑动。        |
-| options | [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) | 是   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅水平模式下有效。  |
+| value    | ArkTS-Dyn: [BarMode.Scrollable](#barmode枚举说明) <br > ArkTS-Sta: [BarMode](#barmode枚举说明) \| undefined | 是   | 所有TabBar都使用实际布局宽度，超过总宽度（横向Tabs的barWidth，纵向Tabs的barHeight）后可滑动。        |
+| options | ArkTS-Dyn: [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) <br > ArkTS-Sta: [ScrollableBarModeOptions](#scrollablebarmodeoptions10对象说明) \| undefined | 是   | Scrollable模式下的TabBar的布局样式。<br/>**说明：** <br/>仅水平模式下有效。  |
 
 ### barWidth
 
-barWidth(value: Length)
+ArkTS-Dyn: barWidth(value: Length)
+
+ArkTS-Sta: barWidth(value: Length | undefined)
 
 设置TabBar的宽度值。设置为小于0或大于Tabs宽度值时，按默认值显示。
 
@@ -159,11 +187,15 @@ barWidth(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length)<sup>8+</sup> | 是   | TabBar的宽度值。<br/>默认值：<br/>未设置[SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9)和[BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9)的TabBar且vertical属性为false时，默认值为Tabs的宽度。<br/>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，默认值为56vp。<br/>设置SubTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br/>设置SubTabBarStyle样式且vertical属性为true时，默认值为56vp。<br/>设置BottomTabBarStyle样式且vertical属性为true时，默认值为96vp。<br/>设置BottomTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<sup>8+</sup> <br > ArkTS-Sta: [Length](ts-types.md#length)<sup>8+</sup> \| undefined | 是   | TabBar的宽度值。<br/>默认值：<br/>未设置[SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9)和[BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9)的TabBar且vertical属性为false时，默认值为Tabs的宽度。<br/>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，默认值为56vp。<br/>设置SubTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。<br/>设置SubTabBarStyle样式且vertical属性为true时，默认值为56vp。<br/>设置BottomTabBarStyle样式且vertical属性为true时，默认值为96vp。<br/>设置BottomTabBarStyle样式且vertical属性为false时，默认值为Tabs的宽度。 |
 
 ### barHeight
 
@@ -218,7 +250,9 @@ animationCurve(curve: Curve | ICurve)
 
 ### animationDuration
 
-animationDuration(value: number)
+ArkTS-Dyn: animationDuration(value: number)
+
+ArkTS-Sta: animationDuration(value: int | undefined)
 
 设置Tabs翻页动画时长。
 
@@ -230,15 +264,21 @@ animationCurve不设置时，由于滑动TabContent翻页动画曲线interpolati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | Tabs翻页的动画时长。<br/>默认值：<br/>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br/>API version 11及以后，不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br/>单位：ms<br/>取值范围：[0, +∞) |
+| value  | ArkTS-Dyn: number <br > ArkTS-Sta: int \| undefined | 是   | Tabs翻页的动画时长。<br/>默认值：<br/>API version 10及以前，不设置该属性或设置为null时，默认值为0，即Tabs翻页无动画。设置为小于0或undefined时，默认值为300。<br/>API version 11及以后，不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，默认值为0。设置TabBar为其他样式时，默认值为300。<br/>单位：ms<br/>取值范围：[0, +∞) |
 
 ### animationMode<sup>12+</sup>
 
-animationMode(mode: Optional\<AnimationMode\>)
+ArkTS-Dyn: animationMode(mode: Optional\<AnimationMode\>)
+
+ArkTS-Sta: animationMode(mode: AnimationMode | undefined)
 
 设置点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。
 
@@ -246,15 +286,21 @@ animationMode(mode: Optional\<AnimationMode\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[AnimationMode](#animationmode12枚举说明)\> | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。|
+| mode  | ArkTS-Dyn: Optional\<[AnimationMode](#animationmode12枚举说明)\><br > ArkTS-Sta: [AnimationMode](#animationmode12枚举说明) \| undefined | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。|
 
 ### barPosition<sup>9+</sup>
 
-barPosition(value: BarPosition)
+ArkTS-Dyn: barPosition(value: BarPosition)
+
+ArkTS-Sta: barPosition(value: BarPosition | undefined)
 
 设置Tabs的页签位置。
 
@@ -262,15 +308,21 @@ barPosition(value: BarPosition)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                               | 必填 | 说明                  |
 | ----- | ---------------------------------- | ---- | -------------------- |
-| value | [BarPosition](#barposition枚举说明)| 是  | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start   |
+| value | ArkTS-Dyn: [BarPosition](#barposition枚举说明)<br > ArkTS-Sta: [BarPosition](#barposition枚举说明) \| undefined | 是  | 设置Tabs的页签位置。<br/>默认值：BarPosition.Start   |
 
 ### divider<sup>10+</sup>
 
-divider(value: DividerStyle | null)
+ArkTS-Dyn: divider(value: DividerStyle | null)
+
+ArkTS-Sta: divider(value: DividerStyle | null | undefined)
 
 设置区分TabBar和TabContent的分割线样式。
 
@@ -278,15 +330,21 @@ divider(value: DividerStyle | null)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线样式，默认不显示分割线。<br/>DividerStyle：分割线的样式；<br/>null：不显示分割线。 |
+| value  | ArkTS-Dyn: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null <br > ArkTS-Sta: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined | 是   | 分割线样式，默认不显示分割线。<br/>DividerStyle：分割线的样式；<br/>null：不显示分割线。 |
 
 ### fadingEdge<sup>10+</sup>
 
-fadingEdge(value: boolean)
+ArkTS-Dyn: fadingEdge(value: boolean)
+
+ArkTS-Sta: fadingEdge(value: boolean | undefined)
 
 设置页签超过容器宽度时是否渐隐消失。建议配合barBackgroundColor属性一起使用，如果barBackgroundColor属性没有定义，会默认显示页签末端为白色的渐隐效果。
 
@@ -294,15 +352,21 @@ fadingEdge(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                               |
 | ------ | ------- | ---- | -------------------------------------------------- |
-| value  | boolean | 是   | 页签超过容器宽度时是否渐隐消失。<br />默认值：true，页签超过容器宽度时会渐隐消失。设置为false时，页签超过容器宽度直接截断显示，不产生任何渐变效果‌。 |
+| value  | ArkTS-Dyn: boolean <br > ArkTS-Sta: boolean \| undefined | 是   | 页签超过容器宽度时是否渐隐消失。<br />默认值：true，页签超过容器宽度时会渐隐消失。设置为false时，页签超过容器宽度直接截断显示，不产生任何渐变效果‌。 |
 
 ### barOverlap<sup>10+</sup>
 
-barOverlap(value: boolean)
+ArkTS-Dyn: barOverlap(value: boolean)
+
+ArkTS-Sta: barOverlap(value: boolean | undefined)
 
 设置TabBar是否背后变模糊并叠加在TabContent之上。
 
@@ -310,15 +374,21 @@ barOverlap(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | TabBar是否背后变模糊并叠加在TabContent之上。当barOverlap设置为true时，TabBar背后变模糊并叠加在TabContent之上，并且TabBar默认模糊材质的BlurStyle值修改为'BlurStyle.COMPONENT_THICK'。当barOverlap设置为false时，无模糊和叠加效果。<br />默认值：false |
+| value  | ArkTS-Dyn: boolean <br > ArkTS-Sta: boolean \| undefined | 是   | TabBar是否背后变模糊并叠加在TabContent之上。当barOverlap设置为true时，TabBar背后变模糊并叠加在TabContent之上，并且TabBar默认模糊材质的BlurStyle值修改为'BlurStyle.COMPONENT_THICK'。当barOverlap设置为false时，无模糊和叠加效果。<br />默认值：false |
 
 ### barBackgroundColor<sup>10+</sup>
 
-barBackgroundColor(value: ResourceColor)
+ArkTS-Dyn: barBackgroundColor(value: ResourceColor)
+
+ArkTS-Sta: barBackgroundColor(value: ResourceColor | undefined)
 
 设置TabBar的背景颜色。
 
@@ -326,15 +396,21 @@ barBackgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                 |
 | ------ | ------------------------------------------ | ---- | ------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | TabBar的背景颜色。<br />默认值：Color.Transparent，透明 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br > ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | TabBar的背景颜色。<br />默认值：Color.Transparent，透明 |
 
 ### barBackgroundBlurStyle<sup>11+</sup>
 
-barBackgroundBlurStyle(value: BlurStyle)
+ArkTS-Dyn: barBackgroundBlurStyle(value: BlurStyle)
+
+ArkTS-Sta: barBackgroundBlurStyle(value: BlurStyle | undefined)
 
 设置TabBar的背景模糊材质。
 
@@ -342,15 +418,21 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                         | 必填 | 说明                                     |
 | ------ | -------------------------------------------- | ---- | ---------------------------------------- |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 是   | TabBar的背景模糊材质。<br />默认值：BlurStyle.NONE |
+| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)<br > ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined | 是   | TabBar的背景模糊材质。<br />默认值：BlurStyle.NONE |
 
 ### barBackgroundBlurStyle<sup>18+</sup>
 
-barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
+ArkTS-Dyn: barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
+
+ArkTS-Sta: barBackgroundBlurStyle(style: BlurStyle | undefined, options: BackgroundBlurStyleOptions | undefined)
 
 为TabBar提供一种在背景和内容之间的模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。
 
@@ -358,16 +440,22 @@ barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style                 | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
-| options | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 是   | 背景模糊选项。   
+| style                 | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)<br > ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined                 | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。 |
+| options | ArkTS-Dyn: [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) <br > ArkTS-Sta: [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) \| undefined | 是   | 背景模糊选项。   
 
 ### barGridAlign<sup>10+</sup>
 
-barGridAlign(value: BarGridColumnOptions)
+ArkTS-Dyn: barGridAlign(value: BarGridColumnOptions)
+
+ArkTS-Sta: barGridAlign(value: BarGridColumnOptions | undefined)
 
 以栅格化方式设置TabBar的可见区域。具体参见BarGridColumnOptions对象。仅水平模式下有效，[不适用于XS、XL和XXL设备](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)。
 
@@ -375,15 +463,21 @@ barGridAlign(value: BarGridColumnOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                    | 必填 | 说明                               |
 | ------ | ------------------------------------------------------- | ---- | ---------------------------------- |
-| value  | [BarGridColumnOptions](#bargridcolumnoptions10对象说明) | 是   | 以栅格化方式设置TabBar的可见区域。 |
+| value  | ArkTS-Dyn: [BarGridColumnOptions](#bargridcolumnoptions10对象说明) <br > ArkTS-Sta: [BarGridColumnOptions](#bargridcolumnoptions10对象说明) \| undefined | 是   | 以栅格化方式设置TabBar的可见区域。 |
 
 ### edgeEffect<sup>12+</sup>
 
-edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
+ArkTS-Dyn: edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
+
+ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined)
 
 设置边缘回弹效果。
 
@@ -391,15 +485,21 @@ edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                         |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | Optional&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
+| edgeEffect  | ArkTS-Dyn: Optional&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt;<br > ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \| undefined | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
 
 ### barBackgroundEffect<sup>18+</sup>
 
-barBackgroundEffect(options: BackgroundEffectOptions)
+ArkTS-Dyn: barBackgroundEffect(options: BackgroundEffectOptions)
+
+ArkTS-Sta: barBackgroundEffect(options: BackgroundEffectOptions | undefined)
 
 设置TabBar背景属性，包含背景模糊半径，亮度，饱和度，颜色等参数。
 
@@ -407,15 +507,21 @@ barBackgroundEffect(options: BackgroundEffectOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                       |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| options | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 是   | 设置TabBar背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
+| options | ArkTS-Dyn: [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) <br > ArkTS-Sta: [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) \| undefined | 是   | 设置TabBar背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
 
 ### pageFlipMode<sup>15+</sup>
 
-pageFlipMode(mode: Optional\<PageFlipMode>)
+ArkTS-Dyn: pageFlipMode(mode: Optional\<PageFlipMode>)
+
+ArkTS-Sta: pageFlipMode(mode: PageFlipMode | undefined)
 
 设置鼠标滚轮翻页模式。
 
@@ -423,15 +529,21 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
+| mode  | ArkTS-Dyn: Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)><br > ArkTS-Sta: [PageFlipMode](ts-appendix-enums.md#pageflipmode15) \| undefined | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
 
 ### cachedMaxCount<sup>19+</sup>
 
-cachedMaxCount(count: number, mode: TabsCacheMode)
+ArkTS-Dyn: cachedMaxCount(count: number, mode: TabsCacheMode)
+
+ArkTS-Sta: cachedMaxCount(count: int | undefined, mode: TabsCacheMode | undefined)
 
 设置子组件的最大缓存个数和缓存模式。设置该属性后，不会对缓存范围内的子组件进行预加载，仅对缓存范围外的子组件进行释放。
 
@@ -439,12 +551,16 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count  | number                                                      | 是   | 子组件的最大缓存个数。默认所有子组件加载后都不再释放。<br/>取值范围：[0, +∞)。|
-| mode   | [TabsCacheMode](#tabscachemode19枚举说明)                   | 是   | 子组件的缓存模式。<br/>默认值：TabsCacheMode.CACHE_BOTH_SIDE   |
+| count  | ArkTS-Dyn: number<br > ArkTS-Sta: int \| undefined                                                      | 是   | 子组件的最大缓存个数。默认所有子组件加载后都不再释放。<br/>取值范围：[0, +∞)。|
+| mode   | ArkTS-Dyn: [TabsCacheMode](#tabscachemode19枚举说明)<br > ArkTS-Sta: [TabsCacheMode](#tabscachemode19枚举说明) \| undefined                   | 是   | 子组件的缓存模式。<br/>默认值：TabsCacheMode.CACHE_BOTH_SIDE   |
 
 ## DividerStyle<sup>10+</sup>对象说明
 
@@ -564,7 +680,9 @@ type CommonModifier = CommonModifier
 
 ### onChange
 
-onChange(event: Callback\<number>)
+ArkTS-Dyn: onChange(event: Callback\<number>)
+
+ArkTS-Sta: onChange(event: Callback\<int> | undefined)
 
 Tab页签切换后触发的事件。
 
@@ -586,15 +704,21 @@ Tab页签切换后触发的事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的index索引，索引从0开始计算。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number> <br > ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 当前显示的index索引，索引从0开始计算。 |
 
 ### onTabBarClick<sup>10+</sup>
 
-onTabBarClick(event: Callback\<number>)
+ArkTS-Dyn: onTabBarClick(event: Callback\<number>)
+
+ArkTS-Sta: onTabBarClick(event: Callback\<int> | undefined)
 
 Tab页签点击后触发的事件。
 
@@ -602,15 +726,21 @@ Tab页签点击后触发的事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 被点击的index索引，索引从0开始计算。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number> <br > ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 被点击的index索引，索引从0开始计算。 |
 
 ### onAnimationStart<sup>11+</sup>
 
-onAnimationStart(handler: OnTabsAnimationStartCallback)
+ArkTS-Dyn: onAnimationStart(handler: OnTabsAnimationStartCallback)
+
+ArkTS-Sta: onAnimationStart(handler: OnTabsAnimationStartCallback | undefined)
 
 切换动画开始时触发该回调。当[animationDuration](#animationduration)为0时动画关闭，不触发该回调。
 
@@ -618,15 +748,21 @@ onAnimationStart(handler: OnTabsAnimationStartCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| handler  | [OnTabsAnimationStartCallback](#ontabsanimationstartcallback18) | 是   | 切换动画开始时触发的回调。 |
+| handler  | ArkTS-Dyn: [OnTabsAnimationStartCallback](#ontabsanimationstartcallback18) <br > ArkTS-Sta: [OnTabsAnimationStartCallback](#ontabsanimationstartcallback18) \| undefined | 是   | 切换动画开始时触发的回调。 |
 
 ### onAnimationEnd<sup>11+</sup>
 
-onAnimationEnd(handler: OnTabsAnimationEndCallback)
+ArkTS-Dyn: onAnimationEnd(handler: OnTabsAnimationEndCallback)
+
+ArkTS-Sta: onAnimationEnd(handler: OnTabsAnimationEndCallback | undefined)
 
 切换动画结束时触发该回调，包括动画过程中手势中断。当animationDuration为0时动画关闭，不触发该回调。
 
@@ -634,15 +770,21 @@ onAnimationEnd(handler: OnTabsAnimationEndCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| handler  | [OnTabsAnimationEndCallback](#ontabsanimationendcallback18) | 是   | 切换动画结束时触发的回调。 |
+| handler  | ArkTS-Dyn: [OnTabsAnimationEndCallback](#ontabsanimationendcallback18) <br > ArkTS-Sta: [OnTabsAnimationEndCallback](#ontabsanimationendcallback18) \| undefined | 是   | 切换动画结束时触发的回调。 |
 
 ### onGestureSwipe<sup>11+</sup>
 
-onGestureSwipe(handler: OnTabsGestureSwipeCallback)
+ArkTS-Dyn: onGestureSwipe(handler: OnTabsGestureSwipeCallback)
+
+ArkTS-Sta: onGestureSwipe(handler: OnTabsGestureSwipeCallback | undefined)
 
 在页面跟手滑动过程中，逐帧触发该回调。
 
@@ -650,15 +792,21 @@ onGestureSwipe(handler: OnTabsGestureSwipeCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| handler  | [OnTabsGestureSwipeCallback](#ontabsgestureswipecallback18) | 是   | 在页面跟手滑动过程中，逐帧触发的回调。 |
+| handler  | ArkTS-Dyn: [OnTabsGestureSwipeCallback](#ontabsgestureswipecallback18) <br > ArkTS-Sta: [OnTabsGestureSwipeCallback](#ontabsgestureswipecallback18) \| undefined | 是   | 在页面跟手滑动过程中，逐帧触发的回调。 |
 
 ### customContentTransition<sup>11+</sup>
 
-customContentTransition(delegate: TabsCustomContentTransitionCallback)
+ArkTS-Dyn: customContentTransition(delegate: TabsCustomContentTransitionCallback)
+
+ArkTS-Sta: customContentTransition(delegate: TabsCustomContentTransitionCallback | undefined)
 
 自定义Tabs页面切换动画。
 
@@ -670,16 +818,22 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| delegate  | [TabsCustomContentTransitionCallback](#tabscustomcontenttransitioncallback18) | 是   | 自定义Tabs页面切换动画开始时触发的回调。 |
+| delegate  | ArkTS-Dyn: [TabsCustomContentTransitionCallback](#tabscustomcontenttransitioncallback18) <br > ArkTS-Sta: [TabsCustomContentTransitionCallback](#tabscustomcontenttransitioncallback18) \| undefined | 是   | 自定义Tabs页面切换动画开始时触发的回调。 |
 
 
 ### onContentWillChange<sup>12+</sup>
 
-onContentWillChange(handler: OnTabsContentWillChangeCallback)
+ArkTS-Dyn: onContentWillChange(handler: OnTabsContentWillChangeCallback)
+
+ArkTS-Sta: onContentWillChange(handler: OnTabsContentWillChangeCallback | undefined)
 
 自定义Tabs页面切换拦截事件能力，新页面即将显示时触发该回调。
 
@@ -699,15 +853,21 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| handler  | [OnTabsContentWillChangeCallback](#ontabscontentwillchangecallback18) | 是   | 自定义Tabs页面切换拦截事件能力，新页面即将显示时触发的回调。 |
+| handler  | ArkTS-Dyn: [OnTabsContentWillChangeCallback](#ontabscontentwillchangecallback18)<br > ArkTS-Sta: [OnTabsContentWillChangeCallback](#ontabscontentwillchangecallback18) \| undefined | 是   | 自定义Tabs页面切换拦截事件能力，新页面即将显示时触发的回调。 |
 
 ### onSelected<sup>18+</sup>
 
-onSelected(event: Callback\<number>)
+ArkTS-Dyn: onSelected(event: Callback\<number>)
+
+ArkTS-Sta: onSelected(event: Callback\<int> | undefined)
 
 当选中元素改变时触发该回调，返回值为当前选中的元素的索引值。
 
@@ -725,11 +885,15 @@ onSelected(event: Callback\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number> <br > ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 当前选中元素的索引。 |
 
 > **说明：**
 >
@@ -737,7 +901,9 @@ onSelected(event: Callback\<number>)
 
 ### onUnselected<sup>18+</sup>
 
-onUnselected(event: Callback\<number>)
+ArkTS-Dyn: onUnselected(event: Callback\<number>)
+
+ArkTS-Sta: onUnselected(event: Callback\<int> | undefined)
 
 当选中元素改变时触发该回调，返回值为将要隐藏的元素的索引值。
 
@@ -755,11 +921,15 @@ onUnselected(event: Callback\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 将要隐藏元素的索引。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number> <br > ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 将要隐藏元素的索引。 |
 
 > **说明：**
 >
