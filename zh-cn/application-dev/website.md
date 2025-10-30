@@ -1965,6 +1965,9 @@
         - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
+      - 通知订阅拓展能力<!--notification-subscriber-extension-ability-->
+        - [通知订阅拓展能力概述](notification/notification-subscriber-extension-ability.md)
+        - [通知订阅拓展能力开发步骤](notification/notification-subscriber-extension-ability-development-steps.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
       - [MindSpore Lite Kit简介](ai/mindspore/MindSpore-Lite-Kit-Introduction.md)
