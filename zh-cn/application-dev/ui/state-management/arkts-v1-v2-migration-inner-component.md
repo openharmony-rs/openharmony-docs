@@ -1010,6 +1010,43 @@ V2迁移策略：同时监听多个变量，以及获取变化前的值。
 
 <!-- @[MonitorExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets) -->
 
+``` TypeScript
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0xFF00;
+const TAG = '[Sample_StateMigration_App]';
+
+@Entry
+@ComponentV2
+struct MonitorExample2 {
+  @Local apple: number = 0;
+  @Local orange: number = 0;
+
+  // @Monitor回调，支持监听多个变量，可以获取变化前的值
+  @Monitor('apple','orange')
+  onFruitChange(monitor: IMonitor) {
+    monitor.dirty.forEach((name: string) => {
+      hilog.info(DOMAIN, TAG, `${name} changed from ${monitor.value(name)?.before} to ${monitor.value(name)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`apple count: ${this.apple}`)
+      Text(`orange count: ${this.orange}`)
+      Button('add apple')
+        .onClick(() => {
+          this.apple++;
+        })
+      Button('add orange')
+        .onClick(() => {
+          this.orange++;
+        })
+    }
+  }
+}
+```
+
 ### \@Computed
 **迁移规则**
 
