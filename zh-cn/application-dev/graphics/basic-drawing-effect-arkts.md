@@ -55,6 +55,11 @@
    可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
 
    <!-- @[arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
+   
+   ``` TypeScript
+   // 开启抗锯齿效果
+   brush.setAntiAlias(true);
+   ```
 
 3. 使用attachBrush()接口给Canvas画布设置画刷。
 
