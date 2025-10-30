@@ -919,6 +919,52 @@ struct PrepareMenu {
 
 <!-- @[richEditor_disableSystemMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets) -->
 
+``` TypeScript
+import { TextMenuController } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct DisableSystemServiceMenu {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  aboutToAppear(): void {
+    // 禁用所有系统服务菜单
+    TextMenuController.disableSystemServiceMenuItems(true);
+  }
+
+  aboutToDisappear(): void {
+    // 页面消失恢复系统服务菜单
+    TextMenuController.disableSystemServiceMenuItems(false);
+  }
+
+  build() {
+    // ···
+          RichEditor(this.options).onReady(() => {
+            // $r('app.string.Demo_richEditor')需要替换为开发者所需的资源文件
+            this.controller.addTextSpan($r('app.string.Demo_richEditor'),
+              {
+                style:
+                {
+                  fontSize: 30
+                }
+              })
+          })
+            .height(60)
+            .editMenuOptions({
+              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                // menuItems不包含被屏蔽的系统菜单项
+                return menuItems;
+              },
+              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                return false;
+              }
+            })
+        // ···
+  }
+}
+```
+
 ![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
 
 通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)可以屏蔽富文本选择菜单内指定的系统服务菜单项。
