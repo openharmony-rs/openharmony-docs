@@ -103,7 +103,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 PixelMap是图片解码后的像素图，具体用法请参考[图片开发指导](../media/image/image-overview.md)。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
 
 
-<!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
+  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
 
 ### 可绘制描述符
 
@@ -111,7 +111,7 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
 
 通过DrawableDescriptor显示图片及动画的示例如下所示：
 
-<!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->
+  <!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->
 
 ![drawableDescriptor](figures/drawableDescriptor.gif)
 
@@ -125,7 +125,7 @@ Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考
 SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
 
-<!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
 
   **图3** 原始图片  
 
@@ -141,7 +141,7 @@ SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
 Image加载的SVG图源路径设置方法如下所示：
 
-<!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
 SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，本地位图路径设置为跟SVG图源同级的相对路径：
 
 ```
@@ -162,7 +162,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
-<!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->
+  <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->
 
 ![zh-cn_image_0000001622804833](figures/zh-cn_image_0000001622804833.png)
 
@@ -172,7 +172,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用interpolation属性对图片进行插值，以提高显示清晰度。
 
 
-<!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->
+  <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->
 
 ![zh-cn_image_0000001643127365](figures/zh-cn_image_0000001643127365.png)
 
@@ -182,7 +182,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#imagerepeat)枚举说明。
 
 
-<!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->
+  <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->
 
 ![zh-cn_image_0000001593444112](figures/zh-cn_image_0000001593444112.png)
 
@@ -192,7 +192,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过renderMode属性设置图片的渲染模式为原色或黑白。
 
 
-<!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->
+  <!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->
 
 ![zh-cn_image_0000001593293100](figures/zh-cn_image_0000001593293100.png)
 
@@ -204,7 +204,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 原图尺寸为1280×960，该示例将图片解码为40×40和90×90两个尺寸。
 
 
-<!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->
+  <!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->
 
 ![zh-cn_image_0000001593769844](figures/zh-cn_image_0000001593769844.png)
 
@@ -214,7 +214,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过colorFilter调整图片的像素颜色，为图片添加滤镜。
 
 
-<!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->
+  <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->
 
 ![zh-cn_image_0000001643171357](figures/zh-cn_image_0000001643171357.png)
 
@@ -224,7 +224,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 一般情况下，图片加载流程会异步进行，以避免阻塞主线程，影响UI交互。但是特定情况下，图片刷新时会出现闪烁，这时可以使用syncLoad属性，使图片同步加载，从而避免出现闪烁。不建议图片加载较长时间时使用，会导致页面无法响应。
 
 
-<!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
 
 
 ## 事件调用
@@ -232,7 +232,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError回调来获得结果。
 
 
-<!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->
+  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->
 
 ![zh-cn_image_0000001511740460](figures/zh-cn_image_0000001511740460.png)
 
