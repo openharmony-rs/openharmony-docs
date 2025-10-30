@@ -225,6 +225,36 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 - 当columns类型为[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
 
   <!-- @[GridLayoutColumnOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnOption.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Index14 {
+    @State bgColors: ResourceColor[] =
+      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+        'rgb(255,192,0)', 'rgb(170,10,33)'];
+  
+    build() {
+      GridRow({
+        columns: { sm: 4, md: 8 },
+        breakpoints: {
+          value: ['320vp', '600vp', '840vp', '1440vp',
+            '1600vp'] // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+        }
+      }) {
+        ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+          GridCol({ span: 1 }) {
+            Row() {
+              Text(`${index}`)
+            }.width('100%').height('50')
+          }.backgroundColor(item)
+        })
+      }
+      .height(200)
+      .border({ color: 'rgb(39,135,217)', width: 2 })
+    }
+  }
+  ```
 
     API version 20之前布局显示（xs设备未配置栅格列数，取默认列数12）：
 
