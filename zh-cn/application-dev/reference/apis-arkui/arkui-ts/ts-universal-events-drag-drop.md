@@ -196,6 +196,10 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 
 绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
 
+> **说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -211,9 +215,6 @@ onPreDrag(callback: Callback\<PreDragStatus>): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
-
-> **说明：**
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 ## onDragSpringLoading<sup>20+</sup>
 
