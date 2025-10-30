@@ -76,7 +76,7 @@
 - 当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
   | 类型  | 可观测变化的API                                              |
-      | ----- | ------------------------------------------------------------ |
+  | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort |
   | Date  | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |
   | Map   | set, clear, delete                                           |
