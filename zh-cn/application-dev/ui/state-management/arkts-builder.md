@@ -1752,6 +1752,87 @@ struct ParentMod1 {
 【正例】
 <!-- @[changing_input_parameters_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingCorrectUsage.ets) -->
 
+``` TypeScript
+import { UIUtils, MutableBinding } from '@kit.ArkUI';
+
+// 使用MutableBinding在@Builder装饰的函数中修改参数值
+@Builder
+function myGlobalBuilderMod(str: MutableBinding<string>) {
+  Column() {
+    Text(`Mod--MyGlobalBuilder: ${str.value}`)
+      .fontSize(16)
+      .onClick(() => {
+        str.value = 'value change mod';
+      })
+  }
+}
+
+interface TempMod2 {
+  paramA: string;
+}
+
+// 使用MutableBinding在@Builder装饰的函数内部修改参数值
+@Builder
+function overBuilderMod2(param: MutableBinding<TempMod2>) {
+  Column() {
+    Button(`Mod--overBuilder === ${param.value.paramA}`)
+      .onClick(() => {
+        param.value.paramA = 'Yes';
+      })
+    Button(`change`)
+      .onClick(() => {
+        param.value = { paramA: 'trialOne' };
+      })
+  }
+}
+
+@Entry
+@Component
+struct ParentMod2 {
+  @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+  @State objectOne: TempMod2 = {
+    paramA: this.label
+  };
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
+
+  build() {
+    Column() {
+      // 使用MutableBinding时无法传对象字面量，需要先将字面量对象抽出为状态变量
+      overBuilderMod2(
+        UIUtils.makeBinding<TempMod2>(
+          () => this.objectOne,
+          value => {
+            this.objectOne = value; // 必须要传SetterCallback，否则触发时会造成运行时错误
+          }
+        )
+      )
+      this.extendBlank();
+      Button('click me')
+        .onClick(() => {
+          this.objectOne.paramA = 'ArkUI';
+        })
+      this.extendBlank();
+      myGlobalBuilderMod(
+        UIUtils.makeBinding<string>(
+          () => this.message1,
+          value => {
+            this.message1 = value; // 必须要传SetterCallback，否则触发时会造成运行时错误
+          }
+        )
+      );
+    }
+  }
+}
+```
+
 ### 在\@Watch函数中执行\@Builder函数
 
 在\@Watch函数中执行\@Builder函数，会导致UI刷新异常。
