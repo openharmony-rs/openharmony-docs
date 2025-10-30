@@ -138,6 +138,7 @@ struct Index {
     private localStorage: LocalStorage = new LocalStorage(this.para);
     private res: boolean = this.localStorage.setOrCreate('PropB', 121);
     private defaultWindowSizeType: number = 1; // 指定画中画第一次拉起窗口为小窗口。
+    private cornerAdsorption : boolean = true;
     private config: PiPWindow.PiPConfiguration = {
         context: this.getUIContext().getHostContext() as Context,
         componentController: this.mXComponentController,
@@ -149,6 +150,7 @@ struct Index {
         customUIController: this.nodeController, // 可选，如果需要在画中画显示内容上方展示自定义UI，可设置该参数。
         localStorage: this.localStorage, // 可选，如果需要跟踪主窗实例，可设置此参数。
         defaultWindowSizeType: this.defaultWindowSizeType, // 可选，如果需要配置默认启动窗口档位，可设置此参数。
+        cornerAdsorption: this. cornerAdsorption, // 可选，默认为true，如果不需要画中画窗口四角吸附，可设置此参数为false。
     };
 
     createPiP() {
@@ -273,6 +275,7 @@ struct Index {
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | 否  | 是 | 用于实现在画中画界面内容上方展示自定义UI功能，不传值则默认不使用自定义UI功能。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                          |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | 否  | 是 | 页面级别的UI状态存储单元。多实例下可用来跟踪主窗实例的UI状态存储对象，不传值则无法通过画中画窗口获取主窗的UI状态存储对象。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。                                                                          |
 | defaultWindowSizeType<sup>19+</sup>| number                                                                     | 否   | 是  |  应用第一次拉起画中画的窗口大小。<br/>0：代表不设置大小。按照上次画中画关闭前的大小启动；<br/>1：代表小窗；<br/>2：代表大窗；<br/>不传值则为默认值0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                 |
+| cornerAdsorption<sup>22+</sup>| boolean                                                                     | 否   | 是  |  是否开启画中画四角吸附功能。<br/>true：代表开启画中画四角吸附功能；<br/>false：代表关闭画中画四角吸附功能；<br/>不传值则为默认值true。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                                                 |
 
 ## PiPWindowSize<sup>15+</sup>
 
