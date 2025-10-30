@@ -117,6 +117,27 @@
    <!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
    <!-- @[create_sub_window2_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/SubWindow.ets) -->
+   
+   ``` TypeScript
+   // subWindow.ets
+   @Entry
+   @Component
+   struct SubWindow {
+     @State message: string = 'Hello subWindow';
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(20)
+             .fontWeight(FontWeight.Bold)
+         }
+         .width('100%')
+       }
+       .height('100%')
+       .backgroundColor('#0D9FFB')
+     }
+   }
+   ```
 
 ## 体验窗口沉浸式能力
 
