@@ -1079,6 +1079,42 @@ struct Single {
 
 <!-- @[multiple_parameters_in_builder_incorrect_usage_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage1.ets) -->
 
+``` TypeScript
+class GlobalTmp1 {
+  public strValue: string = 'Hello';
+}
+
+@Builder function overBuilder1(param: GlobalTmp1, num: number) {
+  Column() {
+    Text(`strValue: ${param.strValue}`)
+    Text(`num: ${num}`)
+  }
+}
+
+@Entry
+@Component
+struct Parent1 {
+  @State objParam: GlobalTmp1 = new GlobalTmp1();
+  @State num: number = 0;
+  build() {
+    Column() {
+      Text('UI Rendered via @Builder')
+        .fontSize(20)
+      // 使用了两个参数，用法错误。
+      overBuilder1({strValue: this.objParam.strValue}, this.num)
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000').margin(10)
+      Button('Update Values').onClick(() => {
+        this.objParam.strValue = 'Hello World';
+        this.num = 1;
+      })
+    }
+  }
+}
+```
+
 【反例】
 
 <!-- @[multiple_parameters_in_builder_incorrect_usage_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage2.ets) -->
