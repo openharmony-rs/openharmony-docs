@@ -165,6 +165,54 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
 
 2. 将创建和更新函数注册给Native侧。
    <!-- @[page_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   //  Index.ets
+   import nativeNode from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   import { createMixedRefresh, updateMixedRefresh } from './MixedModule';
+   
+   @Entry
+   @Component
+   struct Index {
+     private rootSlot = new NodeContent();
+     @State @Watch('changeNativeFlag') showNative: boolean = false;
+   
+     aboutToAppear(): void {
+       // 设置uiContext;
+       AppStorage.setOrCreate<UIContext>('context', this.getUIContext());
+       // 设置混合模式下的builder函数。
+       nativeNode.registerCreateMixedRefreshNode(createMixedRefresh);
+       nativeNode.registerUpdateMixedRefreshNode(updateMixedRefresh);
+     }
+   
+     changeNativeFlag(): void {
+       if (this.showNative) {
+         // 创建NativeModule组件挂载
+         nativeNode.createNativeRoot(this.rootSlot);
+       } else {
+         // 销毁NativeModule组件
+         nativeNode.destroyNativeRoot();
+       }
+     }
+   
+     build() {
+       Column() {
+         Button(this.showNative ? 'HideNativeUI' : 'ShowNativeUI').onClick(() => {
+           this.showNative = !this.showNative;
+         });
+         Row() {
+           // ArkTS插入Native组件。
+           ContentSlot(this.rootSlot);
+         }.layoutWeight(1)
+         .id('row_');
+       }
+       .width('100%')
+       .height('100%');
+     }
+   }
+   
+   ```
 
    <!-- @[native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NapiInit.cpp) -->
 
