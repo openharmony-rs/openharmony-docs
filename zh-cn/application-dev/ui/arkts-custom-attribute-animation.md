@@ -22,7 +22,7 @@ ArkUI提供[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-
 // 第一步：使用@AnimatableExtend装饰器，自定义可动画属性接口
 @AnimatableExtend(Text)
 function animatableWidth(width: number) {
-  .width(width); // 调用系统属性接口，逐帧回调函数每帧修改可动画属性的值，实现逐帧布局的效果。
+  .width(width) // 调用系统属性接口，逐帧回调函数每帧修改可动画属性的值，实现逐帧布局的效果。
 }
 
 @Entry
