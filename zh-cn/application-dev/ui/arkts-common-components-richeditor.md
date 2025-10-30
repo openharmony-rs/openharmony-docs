@@ -616,6 +616,38 @@ struct on_cut_copy_paste {
 
 <!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ···
+          // $r('app.string.xxx')需要替换为开发者所需的资源文件
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_13')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+            })
+            .onCut(() => {
+              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_14')), {
+                style: {
+                  fontColor: Color.Gray,
+                  fontSize: 10
+                }
+              })
+            })
+            .width(300)
+            .height(70)
+          RichEditor(this.infoShowOptions)
+            .width(300)
+            .height(70)
+```
+
 ### 添加完成复制前可触发的回调
 
 通过[onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#oncopy12)回调，来添加复制前要处理的流程。
