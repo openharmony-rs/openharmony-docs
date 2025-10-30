@@ -21,3 +21,50 @@ Web组件可通过[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-compo
 
 <!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import hilog from '@ohos.hilog';
+
+const TAG = '[Sample_WebFullScreen]'
+const DOMAIN = 0xF811
+const BUNDLE = 'WebFullScreen_'
+
+@Entry
+@Component
+struct ShortWebPage {
+  controller: webview.WebviewController = new webview.WebviewController();
+  CONSTANT_HEIGHT = 100;
+  @State marginTop: number = this.CONSTANT_HEIGHT;
+  @State isVisible: boolean = true; // 自定义标志位isVisible，来控制是否需要显示组件
+
+  build() {
+    Column() {
+      Text('TextTextTextText')
+        .width('100%')
+        .height(this.CONSTANT_HEIGHT)
+        .backgroundColor('#e1dede') // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
+        .visibility(this.isVisible ? Visibility.Visible :
+          Visibility.None)
+      Web({
+        src: $rawfile('FullScreen.html'), // 示例网址
+        controller: this.controller
+      })
+        .onFullScreenEnter((event) => {
+          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenEnter...");
+          // 当全屏的时候，isVisible标志位为false，组件状态为不可见，不参与布局、不进行占位
+          this.isVisible = false;
+        })
+        .onFullScreenExit(() => {
+          hilog.info(DOMAIN, TAG, BUNDLE + "onFullScreenExit...");
+          // 当退出全屏的时候，isVisible标志位为true，组件状态为可见
+          this.isVisible = true;
+        })
+        .width('100%')
+        .height('100%')
+        .zIndex(10)
+        .zoomAccess(true)
+    }.width('100%').height('100%')
+  }
+}
+```
+
