@@ -60,6 +60,66 @@ libchild_process.so
     子进程启动后会先调用NativeChildProcess_OnConnect获取IPC Stub对象，之后再调用NativeChildProcess_MainProc移交主线程控制权，该函数返回后子进程随即退出。
 
     <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+    
+    ``` C++
+    // [Start child_process_head_file]
+    #include <IPCKit/ipc_kit.h>
+    // ···
+    // [End child_process_head_file]
+    #include <IPCKit/ipc_cremote_object.h>
+    #include <IPCKit/ipc_cparcel.h>
+    #include <IPCKit/ipc_error_code.h>
+    
+    class IpcCapiStubTest {
+    public:
+        explicit IpcCapiStubTest();
+        ~IpcCapiStubTest();
+        OHIPCRemoteStub *GetRemoteStub();
+        static int OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData);
+    
+    private:
+        OHIPCRemoteStub *stub_{nullptr};
+    };
+    
+    IpcCapiStubTest::IpcCapiStubTest()
+    {
+        // 创建stub对象
+        stub_ = OH_IPCRemoteStub_Create("testIpc", &IpcCapiStubTest::OnRemoteRequest, nullptr, this);
+    }
+    
+    IpcCapiStubTest::~IpcCapiStubTest()
+    {
+        if (stub_ != nullptr) {
+            OH_IPCRemoteStub_Destroy(stub_);
+        }
+    }
+    
+    OHIPCRemoteStub *IpcCapiStubTest::GetRemoteStub() { return stub_; }
+    
+    int IpcCapiStubTest::OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)
+    {
+        return OH_IPC_SUCCESS;
+    }
+    
+    IpcCapiStubTest g_ipcStubObj;
+    
+    extern "C" {
+    OHIPCRemoteStub *NativeChildProcess_OnConnect()
+    {
+        // ipcRemoteStub指向子进程实现的ipc stub对象，用于接收来自主进程的IPC消息并响应
+        // 子进程根据业务逻辑控制其生命周期
+        return g_ipcStubObj.GetRemoteStub();
+    }
+    
+    void NativeChildProcessMainProc()
+    {
+        // 相当于子进程的Main函数，实现子进程的业务逻辑
+        // ...
+        // 函数返回后子进程随即退出
+    }
+    
+    } // extern "C"
+    ```
 
 2. 子进程-编译为动态链接库。
 
