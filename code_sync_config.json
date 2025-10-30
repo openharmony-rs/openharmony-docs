@@ -5532,5 +5532,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-particle-animation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template1/Index.ets",
+				"functions":[
+					{
+						"end_line":127,
+						"name":"particle_example",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template4/Index.ets",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"particle_example4",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets",
+				"functions":[
+					{
+						"end_line":94,
+						"name":"particle_example5",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-shadow-effect.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/Shadow.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"shadow_option",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
