@@ -431,5 +431,18 @@
 
 
    <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
+       int32_t requestId, int32_t *index)
+   {
+       // 三方框架需要实现获取当前组件中（文本组件）光标位置。
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "GetAccessibilityNodeCursorPosition, instanceId %{public}s "
+                    "elementId: %{public}ld, requestId: %{public}d, index: %{public}d",
+                    instanceId, elementId, requestId, index);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 4. 对接成功后，可开启无障碍功能。
