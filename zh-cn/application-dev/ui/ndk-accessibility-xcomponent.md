@@ -417,6 +417,16 @@
 
 
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
+   {
+       // 三方框架需要实现清除当前获焦的节点的行为。
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "ClearFocusedFocusAccessibilityNode, instanceId %{public}s", instanceId);
+       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+   }
+   ```
 
 
 
