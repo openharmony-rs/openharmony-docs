@@ -4632,5 +4632,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/components-based-on-uniform-data-structure.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/Udmf/ContentForm/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":81,
+						"name":"components_based_on_uniform_data_structure",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/unified-data-channels.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"import_module",
+						"start_line":16
+					},
+					{
+						"end_line":24,
+						"name":"import_unifiedData_object_module",
+						"start_line":21
+					},
+					{
+						"end_line":77,
+						"name":"unified_data_channels_insert_data",
+						"start_line":27
+					},
+					{
+						"end_line":116,
+						"name":"unified_data_channels_update_data",
+						"start_line":81
+					},
+					{
+						"end_line":156,
+						"name":"unified_data_channels_delete_data",
+						"start_line":120
+					},
+					{
+						"end_line":196,
+						"name":"unified_data_channels_query_data",
+						"start_line":160
+					}
+				]
+			}
+		]
 	}
 ]
