@@ -814,6 +814,39 @@ V1实现：
 
 <!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct GrandParent1 {
+  @Provide('reviewVotes') reviewVotes: number = 40;
+
+  build() {
+    Column() {
+      Parent23()
+    }
+  }
+}
+
+@Component
+struct Parent23 {
+  // @Provide默认不支持重载，支持重载需设置allowOverride函数
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
+
+  build() {
+    Child23()
+  }
+}
+
+@Component
+struct Child23 {
+  @Consume('reviewVotes') reviewVotes: number;
+
+  build() {
+    Text(this.reviewVotes.toString()) // Text显示20
+  }
+}
+```
+
 V2迁移策略：去掉allowOverride。
 
 <!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
