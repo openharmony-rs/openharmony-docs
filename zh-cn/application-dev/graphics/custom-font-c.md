@@ -127,7 +127,7 @@
    OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
    ```
 
-7. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
+8. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
 
    <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
