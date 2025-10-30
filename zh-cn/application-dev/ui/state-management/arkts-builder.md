@@ -458,6 +458,61 @@ struct ParentSample {
 全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 
 <!-- @[using_function_decorated_with_builder_as_custom_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AsCustomBuilder.ets) -->
+
+``` TypeScript
+@Builder
+function overBuilderDemo() {
+  Row() {
+    Text('Global Builder')
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@Component
+struct customBuilderDemo {
+  @State arr: number[] = [0, 1, 2, 3, 4];
+
+  @Builder
+  privateBuilder() {
+    Row() {
+      Text('Private Builder')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text(`${item}`)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+          .swipeAction({
+            start: {
+              builder: overBuilderDemo() // 编译工具链会自动绑定this上下文
+            },
+            end: {
+              builder: () => {
+                // 在箭头函数中调用局部@Builder会自动绑定this上下文，无需编译工具链处理
+                this.privateBuilder()
+              }
+            }
+          })
+        }, (item: number) => JSON.stringify(item))
+      }
+    }
+  }
+}
+```
 示例效果图
 
 ![arkts-builder-usage-scenario4](figures/arkts-builder-usage-scenario4.gif)
