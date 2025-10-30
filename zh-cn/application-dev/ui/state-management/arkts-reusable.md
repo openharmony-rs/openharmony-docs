@@ -30,6 +30,61 @@
 - \@Reusable不支持跟[\@ComponentV2](./arkts-new-componentV2.md)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
 
     <!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
+    
+    ``` TypeScript
+    import { ComponentContent } from '@kit.ArkUI';
+    
+    // @Builder不能与@Reusable搭配使用。
+    // @Reusable
+    @Builder
+    function buildCreativeLoadingDialog(closedClick: () => void) {
+      Crash();
+    }
+    
+    @Component
+    export struct Crash {
+      build() {
+        Column() {
+          Text('Crash')
+            .fontSize(12)
+            .lineHeight(18)
+            .fontColor(Color.Blue)
+            .margin({
+              left: 6
+            })
+        }.width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      private uiContext = this.getUIContext();
+    
+      build() {
+        RelativeContainer() {
+          Text(this.message)
+            .id('Index')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+              });
+              this.uiContext.getPromptAction().openCustomDialog(contentNode);
+            })
+        }
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
 
 - 被@Reusable装饰的自定义组件在复用时，会递归调用该自定义组件及其所有子组件的aboutToReuse回调函数。若在子组件的aboutToReuse函数中修改了父组件的状态变量，此次修改将不会生效，请避免此类用法。若需设置父组件的状态变量，可使用setTimeout设置延迟执行，将任务抛出组件复用的作用范围，使修改生效。
 
