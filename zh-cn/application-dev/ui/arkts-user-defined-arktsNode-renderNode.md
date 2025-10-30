@@ -678,6 +678,58 @@ ArkTS侧代码：
 
 <!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) -->
 
+``` TypeScript
+import bridge from 'libentry.so'; // 该 so 由 Node-API 编写并生成
+import { DrawContext, FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+
+class MyRenderNode extends RenderNode {
+  private uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  draw(context: DrawContext) {
+    // 需要将 context 中的宽度和高度从vp转换为px
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height),
+      this.uiContext.vp2px(context.size.width));
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      const renderNode = new MyRenderNode(uiContext);
+      renderNode.size = { width: 100, height: 100 };
+      rootRenderNode.appendChild(renderNode);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+export struct CustomDrawCanvasNative {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    // ···
+      Row() {
+        NodeContainer(this.myNodeController);
+      };
+
+    // ···
+  }
+}
+
+```
+
 ## 设置标签
 
 开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，这有助于在节点Inspector中更清晰地区分各节点。
