@@ -36,8 +36,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | 用于细节增强的质量等级。参数{@link VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL}的具体取值，设置方法详见开发指南。 |
-| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | 视频元数据生成的风格模式。参数的具体取值请参考{@link VIDEO_METADATA_GENERATOR_STYLE_CONTROL}。 |
+| [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | 用于细节增强的质量等级。参数 [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](#变量)的具体取值，设置方法详见开发指南。 |
+| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | 视频元数据生成的风格模式。参数的具体取值请参考 [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](#变量)。 |
 | [VideoProcessing_ErrorCode](#videoprocessing_errorcode) | VideoProcessing_ErrorCode | 视频处理错误码。 |
 | [VideoProcessing_State](#videoprocessing_state) | VideoProcessing_State | 视频处理状态。<br>视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](#oh_videoprocessingcallback_onstate)进行报告。 |
 
@@ -69,7 +69,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 **描述**
 
-用于细节增强的质量等级。参数{@link VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL}的具体取值，设置方法详见开发指南。
+用于细节增强的质量等级。参数[VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](#变量)的具体取值，设置方法详见开发指南。
 
 **起始版本：** 12
 
@@ -88,7 +88,7 @@ enum VideoMetadataGeneratorStyleControl
 
 **描述**
 
-视频元数据生成的风格模式。参数的具体取值请参考{@link VIDEO_METADATA_GENERATOR_STYLE_CONTROL}。
+视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](#变量)。
 
 **起始版本：** 22
 
