@@ -207,6 +207,27 @@ struct ParameterReference {
 
 <!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) -->
 
+``` TypeScript
+@Builder
+function overBuilderByValue(paramA1: string) {
+  Row() {
+    Text(`UseStateVarByValue: ${paramA1} `)
+  }
+}
+
+@Entry
+@Component
+struct ParameterValue {
+  @State label: string = 'Hello';
+
+  build() {
+    Column() {
+      overBuilderByValue(this.label)
+    }
+  }
+}
+```
+
 ## 限制条件
 
 1. \@Builder装饰的函数内部在没有使用[MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)时不允许修改参数值，修改不会触发UI刷新。若[按引用传递参数](#按引用传递参数)且仅传入一个参数时，修改参数内部的属性会抛出运行时错误。使用MutableBinding可以帮助开发者在\@Builder装饰的函数内部修改参数值，请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
