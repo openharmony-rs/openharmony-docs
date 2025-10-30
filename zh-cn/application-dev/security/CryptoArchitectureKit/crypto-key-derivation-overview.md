@@ -15,7 +15,7 @@ PBKDF（Password-Based Key Derivation Function）是具有可变计算成本的�
 
 PBKDF2是将伪随机函数PRF（Pseudo-Random Function，例如基于散列的[HMAC](crypto-compute-hmac.md)），输入密码明文和盐值，重复多次运算来进行密钥派生。
 
-当前支持以字符串参数进行密钥派生，具体的“字符串参数”由“密钥派生函数”和“HMAC函数摘要算法”使用符号“|”拼接而成，用于在创建密钥派生函数生成器时，指定算法规格。
+当前支持以字符串参数进行密钥派生，具体的“字符串参数”由“密钥派生函数”和“HMAC”函数摘要算法”使用符号“|”拼接而成，用于在创建密钥派生函数生成器时，指定算法规格。
 | 密钥派生算法 | HMAC函数摘要算法 | 字符串参数 | API版本 | 
 | -------- | -------- | -------- | -------- |
 | PBKDF2 | SHA1 | PBKDF2\|SHA1 | 11+ | 
@@ -27,7 +27,9 @@ PBKDF2是将伪随机函数PRF（Pseudo-Random Function，例如基于散列的[
 
 ## HKDF算法
 
-HKDF（HMAC-based Extract-and-Expand Key Derivation Function，是基于[HMAC](crypto-compute-hmac.md)）消息身份验证代码的简单密钥派生，输入原始的密钥材料和盐值来提取和输入原始的密钥材料和拓展信息来扩展。它是一种密钥派生函数，用于从较短的输入密钥中派生出更长的输出密钥。
+HKDF（HMAC-based Extract-and-Expand Key Derivation Function，是基于[HMAC](crypto-compute-hmac.md)）消息身份验证代码的简单密钥派生算法。
+
+输入原始的密钥材料和盐值来提取、输入原始的密钥材料和拓展信息来扩展。它是一种密钥派生函数，用于从较短的输入密钥中派生出更长的输出密钥。
 
 HKDF包含三个模式，提取（EXTRACT_ONLY）、拓展（EXPAND_ONLY）、提取和拓展（EXTRACT_AND_EXPAND）。
 
