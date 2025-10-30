@@ -414,15 +414,13 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**需要权限：** ohos.permission.INTERNET
-
 **起始版本：** 13
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>         401 - 参数错误。 2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。<br>        2100002 - 无法连接到服务。   2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
