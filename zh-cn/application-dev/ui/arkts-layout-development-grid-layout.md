@@ -575,6 +575,50 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 
     <!-- @[GridColOrderToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrderToOption.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct GridRowExample1 {
+      @State currentBp: string = 'unknown'
+    
+      build() {
+        Column({ space: 5 }) {
+          GridRow({ columns: 12 }) {
+            GridCol({
+              order: { xs: 1, sm: 5, md: 3, lg: 7 }, span: 1 }) {
+              Row() {
+                Text('1')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(213,213,213)')
+    
+            GridCol({
+              order: { xs: 2, sm: 2, md: 6, lg: 1 }, span: 1 }) {
+              Row() {
+                Text('2')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(150,150,150)')
+    
+            GridCol({ order: { xs: 3, sm: 3, md: 1, lg: 6 }, span: 1 }) {
+              Row() {
+                Text('3')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(0,74,175)')
+    
+            GridCol({ order: { xs: 4, sm: 4, md: 2, lg: 5 }, span: 1 }) {
+              Row() {
+                Text('4')
+              }.width('100%').height('50vp')
+            }.backgroundColor('rgb(39,135,217)')
+          }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp').onBreakpointChange((breakpoint) => {
+            this.currentBp = breakpoint
+          })
+    
+          Text(this.currentBp)
+        }
+      }
+    }
+    ```
 
     ![zh-cn_image_0000001511900444](figures/zh-cn_image_0000001511900444.gif)
 
