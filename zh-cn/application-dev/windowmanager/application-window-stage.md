@@ -74,13 +74,13 @@
    <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
-   import { UIAbility } from '@kit.AbilityKit';
+   import { UIAbility} from '@kit.AbilityKit';
    import { window } from '@kit.ArkUI';
    import { BusinessError } from '@kit.BasicServicesKit';
    import hilog from '@ohos.hilog';
    
    const DOMAIN = 0X0000;
-   const TAG: string = '[Sample_CCreatMainWindow]';
+   const TAG : string = '[Sample_CCreatMainWindow]';
    
    export default class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
