@@ -278,6 +278,98 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 
 2. 创建自定义绘制组件封装对象。
    <!-- @[custom-draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/ArkUICustomNode.h) -->
+   
+   ``` C
+   // ArkUICustomNode.h
+   // 自定义绘制组件示例
+   
+   #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
+   #define MYAPPLICATION_ARKUICUSTOMNODE_H
+   
+   #include <native_drawing/drawing_brush.h>
+   #include <native_drawing/drawing_canvas.h>
+   #include <native_drawing/drawing_path.h>
+   
+   #include "ArkUINode.h"
+   
+   namespace NativeModule {
+   
+       class ArkUICustomNode : public ArkUINode {
+       public:
+           // 使用自定义组件类型ARKUI_NODE_CUSTOM创建组件。
+           ArkUICustomNode()
+               : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM))
+           {
+               // 注册自定义事件监听器。
+               nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+               // 声明自定义事件并传递自身作为自定义数据。
+               nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
+           }
+   
+           ~ArkUICustomNode() override
+           {
+               // 反注册自定义事件监听器。
+               nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+               // 取消声明自定义事件。
+               nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW);
+           }
+   
+           void SetRectColor(uint32_t color)
+           {
+               color_ = color;
+               // 自定义绘制属性变更需要主动通知框架。
+               nativeModule_->markDirty(handle_, NODE_NEED_RENDER);
+           }
+   
+       private:
+           static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
+           {
+               // 获取组件实例对象，调用相关实例方法。
+               auto customNode = reinterpret_cast<ArkUICustomNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
+               auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
+               switch (type) {
+                   case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW:
+                       customNode->OnDraw(event);
+                       break;
+                   default:
+                       break;
+               }
+           }
+   
+           // 自定义绘制逻辑。
+           void OnDraw(ArkUI_NodeCustomEvent *event)
+           {
+               auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+               // 获取图形绘制对象。
+               auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
+               // 获取组件大小。
+               auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
+               // 绘制自定义内容。
+               auto path = OH_Drawing_PathCreate();
+               const float kQuarter = 0.25f;
+               const float kThreeQuarters = 0.75f;
+               OH_Drawing_PathMoveTo(path, size.width * kQuarter, size.height * kQuarter);
+               OH_Drawing_PathLineTo(path, size.width * kThreeQuarters, size.height * kQuarter);
+               OH_Drawing_PathLineTo(path, size.width * kThreeQuarters, size.height * kThreeQuarters);
+               OH_Drawing_PathLineTo(path, size.width * kQuarter, size.height * kThreeQuarters);
+               OH_Drawing_PathLineTo(path, size.width * kQuarter, size.height * kQuarter);
+               OH_Drawing_PathClose(path);
+               auto brush = OH_Drawing_BrushCreate();
+               OH_Drawing_BrushSetColor(brush, color_);
+               OH_Drawing_CanvasAttachBrush(drawCanvas, brush);
+               OH_Drawing_CanvasDrawPath(drawCanvas, path);
+               // 释放资源
+               OH_Drawing_BrushDestroy(brush);
+               OH_Drawing_PathDestroy(path);
+           }
+   
+           uint32_t color_ = 0xFFFFE4B5;
+       };
+   
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_ARKUICUSTOMNODE_H
+   ```
 
 3. 使用自定义绘制组件和自定义容器创建示例界面，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)。
    <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) -->
