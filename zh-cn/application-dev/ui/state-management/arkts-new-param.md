@@ -402,6 +402,23 @@ struct Child {
 
 <!-- @[Param_Restrict_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictV2.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct MyComponent {
+  @Param message: string = 'Hello World'; // 正确用法
+
+  build() {
+  }
+}
+
+@Component
+struct TestComponent {
+  // @Param message: string = 'Hello World'; // 错误用法，编译时报错
+  build() {
+  }
+}
+```
+
 - \@Param装饰的变量表示组件外部输入，需要初始化。支持使用本地初始值或外部传入值进行初始化。当存在外部传入值时，优先使用外部传入值。不允许既不使用本地初始值，也不使用外部传入值。
 
 <!-- @[Param_Restrict_Initialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictInitialize.ets) -->
