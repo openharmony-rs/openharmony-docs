@@ -670,6 +670,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 <!-- @[NavigationExampleTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleTwo.ets) -->
 
+
 ### 创建路由跳转
 实现步骤为：
 
