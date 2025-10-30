@@ -124,6 +124,46 @@ struct BuilderSample {
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
+``` TypeScript
+import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+
+@Builder
+function customButton(num1: Binding<number>, num2: MutableBinding<number>) {
+  Row() {
+    Column() {
+      Text(`number1: ${num1.value}, number2: ${num2.value}`)
+      Button(`only change number2`)
+        .onClick(() => {
+          // 赋值MutableBinding类型传递该修改到父组件中。
+          num2.value += 1;
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParameterMakeBinding {
+  @Local number1: number = 5;
+  @Local number2: number = 12;
+
+  build() {
+    Column() {
+      customButton(
+        // 使用makeBinding传入参数，需要传入读回调，返回Binding类型，支持@Builder内组件UI刷新。
+        UIUtils.makeBinding<number>(() => this.number1),
+        // makeBinding额外传入写回调时返回MutableBinding类型，支持@Builder内组件UI刷新并且同步属性修改。
+        UIUtils.makeBinding<number>(
+          () => this.number2,
+          (val: number) => {
+            this.number2 = val;
+          })
+      )
+    }
+  }
+}
+```
+
 ### 按引用传递参数
 
 按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起\@Builder函数内的UI刷新。
