@@ -419,7 +419,12 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
     hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
   });
   ```
-  <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
+   
+   ``` TypeScript
+   // 返回到上一个temp4-pageOne页面
+   this.pathStack.popToName('temp4-pageOne');
+   ```
   
   ``` TypeScript
   this.pageStack.pushDestinationByName('pageTwo', 'PageOne Param').catch((error: BusinessError) => {
