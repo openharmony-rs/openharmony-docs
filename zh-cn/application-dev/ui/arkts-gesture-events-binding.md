@@ -26,6 +26,27 @@ gesture为通用的一种手势绑定方法，可以将手势绑定到对应的�
 
 
   <!-- @[regular_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct RegularBinding {
+    build() {
+      Column() {
+        Text('Gesture').fontSize(28)
+        // 采用gesture手势绑定方法绑定TapGesture
+          .gesture(
+            TapGesture()
+              .onAction(() => {
+                hilog.info(DOMAIN, TAG,'TapGesture is onAction');
+              }))
+      }
+      .height(200)
+      .width(250)
+    }
+  }
+  ```
 
 ## priorityGesture（带优先级的手势绑定方法）
 
