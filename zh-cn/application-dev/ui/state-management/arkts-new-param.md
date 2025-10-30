@@ -423,6 +423,39 @@ struct TestComponent {
 
 <!-- @[Param_Restrict_Initialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictInitialize.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct ChildComponent {
+  @Param param1: string = 'Initialize local';
+  @Param param2: string = 'Initialize local and put in';
+  @Require @Param param3: string;
+
+  // @Param param4: string; // 错误用法，外部未传入初始化且本地也无初始值，编译报错
+  build() {
+    Column() {
+      Text(`${this.param1}`) // 本地初始化，显示Initialize local
+      Text(`${this.param2}`) // 外部传入初始化，显示Put in
+      Text(`${this.param3}`) // 外部传入初始化，显示Put in
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct MyComponent {
+  @Local message: string = 'Put in';
+
+  build() {
+    Column() {
+      ChildComponent({
+        param2: this.message,
+        param3: this.message
+      })
+    }
+  }
+}
+```
+
 - 使用`@Param`装饰的变量在子组件中无法被直接修改。但是，如果装饰的变量是对象类型，在子组件中可以修改对象的属性。
 
 <!-- @[Param_Restrict_Modify_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamRestrictModifyObject.ets) -->
