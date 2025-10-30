@@ -735,6 +735,40 @@ struct on_cut_copy_paste {
 
 <!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
+``` TypeScript
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ···
+          // $r('app.string.xxx')需要替换为开发者所需的字符串
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_2')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+            })
+            .onSelectionChange((value: RichEditorRange) => {
+              this.infoShowController.addTextSpan('\n' + resource.resourceToString($r('app.string.AddEvent_Text_3')) +
+              value.start + ',' + value.end + ')', {
+                style: {
+                  fontColor: Color.Gray,
+                  fontSize: 10
+                }
+              })
+            })
+            .width(300)
+            .height(50)
+          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+          RichEditor(this.infoShowOptions)
+            .width(300)
+            .height(70)
+```
+
 ![alt text](figures/richeditor_image_onSelectionChange.gif)
 
 ### 设置内容选中区范围
