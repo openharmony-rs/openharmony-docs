@@ -657,6 +657,91 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 <!-- @[reusable_for_limited_variation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForLimitedVariation.ets) -->
 
+``` TypeScript
+class LimitedMyDataSource implements IDataSource {
+  private dataArray: string[] = [];
+  private listener: DataChangeListener | undefined;
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+  }
+
+  public reloadListener(): void {
+    this.listener?.onDataReloaded();
+  }
+
+  public registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  public unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct LimitedIndex {
+  private data: LimitedMyDataSource = new LimitedMyDataSource();
+
+  aboutToAppear() {
+    for (let i = 0; i < 1000; i++) { // 循环1000次
+      this.data.pushData(i + '');
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        LazyForEach(this.data, (item: number) => {
+          ListItem() {
+            ReusableComponent({ item: item })
+            // 设置两种有限变化的reuseId
+              .reuseId(item % 2 === 0 ? 'ReusableComponentOne' : 'ReusableComponentTwo')
+          }
+          .backgroundColor(Color.Orange)
+          .width('100%')
+        }, (item: number) => item.toString())
+      }
+      .cachedCount(2)
+    }
+  }
+}
+
+@Reusable
+@Component
+struct ReusableComponent {
+  @State item: number = 0;
+
+  aboutToReuse(params: ESObject) {
+    this.item = params.item;
+  }
+
+  build() {
+    Column() {
+      // 组件内部根据类型差异渲染
+      if (this.item % 2 === 0) {
+        Text(`Item ${this.item} ReusableComponentOne`)
+          .fontSize(20)
+          .margin({ left: 10 })
+      } else {
+        Text(`Item ${this.item} ReusableComponentTwo`)
+          .fontSize(20)
+          .margin({ left: 10 })
+      }
+    }.margin({ left: 10, right: 10 })
+  }
+}
+```
+
 **组合型**
 
 复用组件间存在多种差异，但通常具备共同的子组件。将三种复用组件以组合型方式转换为Builder函数后，内部的共享子组件将统一置于父组件MyComponent之下。复用这些子组件时，缓存池在父组件层面实现共享，减少组件创建过程中的资源消耗。
