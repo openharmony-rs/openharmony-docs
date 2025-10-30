@@ -382,6 +382,58 @@ V2迁移策略：使用深拷贝。
 
 <!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Fruit2 {
+  @Trace public  apple: number = 5;
+  @Trace public orange: number = 10;
+
+  // 实现深拷贝，子组件不会修改父组件的数据
+  clone(): Fruit2 {
+    let newFruit: Fruit2 = new Fruit2();
+    newFruit.apple = this.apple;
+    newFruit.orange = this.orange;
+    return newFruit;
+  }
+}
+
+@ComponentV2
+struct Child12 {
+  @Param fruit: Fruit2 = new Fruit2();
+
+  build() {
+    Column() {
+      Text('child')
+      Text(this.fruit.apple.toString())
+      Text(this.fruit.orange.toString())
+      Button('apple+1')
+        .onClick(() => {
+          this.fruit.apple++;
+        })
+      Button('orange+1')
+        .onClick(() => {
+          this.fruit.orange++;
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Parent12 {
+  @Local parentFruit: Fruit2 = new Fruit2();
+
+  build() {
+    Column() {
+      Text('parent')
+      Text(this.parentFruit.apple.toString())
+      Text(this.parentFruit.orange.toString())
+      Child12({ fruit: this.parentFruit.clone() })
+    }
+  }
+}
+```
+
 **子组件修改变量**
 
 在V1中，子组件可以修改\@Prop的变量，然而在V2中，\@Param是只读的。如果子组件需要修改传入的值，可以使用\@Param和\@Once允许子组件在本地修改。
