@@ -370,6 +370,10 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 1. 普通跳转，通过页面的name去跳转，并可以携带param。
 
   <!-- @[PushPathParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+  
+  ``` TypeScript
+  this.pageStack.pushPath({ name: 'pageOne', param: 'PageOne Param' });
+  ```
   <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
