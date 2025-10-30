@@ -286,6 +286,10 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
 
     <!-- @[GridLayoutDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutDirectionRowReverse.ets) -->
+    
+    ``` TypeScript
+    GridRow({ direction: GridRowDirection.RowReverse }) { /* ... */ }
+    ```
 
     ![zh-cn_image_0000001562940517](figures/zh-cn_image_0000001562940517.png)
 
