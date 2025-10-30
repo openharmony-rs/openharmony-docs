@@ -331,6 +331,18 @@ struct index2 {
 > 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) 来确定停止时机，该接口适用于http和https网页。
 
 <!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  windowStage.loadContent('pages/Index', (err, data) => {
+    // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
+      return;
+    }
+  });
+}
+```
 <!--  -->
 
 ```ts
