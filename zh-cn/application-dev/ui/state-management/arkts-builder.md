@@ -1207,6 +1207,49 @@ struct Parent3 {
 
 <!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
 
+``` TypeScript
+@ObservedV2
+class ParamTemp {
+  @Trace public count : number = 0;
+}
+
+@Builder
+function renderNumber(paramNum: number) {
+  Text(`paramNum : ${paramNum}`)
+    .fontSize(30)
+    .fontWeight(FontWeight.Bold)
+}
+
+@Entry
+@ComponentV2
+struct PageBuilderIncorrectUsage {
+  @Local classValue: ParamTemp = new ParamTemp();
+  // 此处使用简单数据类型不支持刷新UI的能力。
+  @Local numValue: number = 0;
+  private progressTimer: number = -1;
+
+  aboutToAppear(): void {
+    this.progressTimer = setInterval(() => {
+      if (this.classValue.count < 100) {
+        this.classValue.count += 5;
+        this.numValue += 5;
+      } else {
+        clearInterval(this.progressTimer);
+      }
+    }, 500);
+  }
+
+  build() {
+    Column() {
+      renderNumber(this.numValue)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(50)
+  }
+}
+```
+
 【正例】
 
 在@ComponentV2装饰器装饰的自定义组件中，只有使用@ObservedV2装饰的ParamTmpClass类和使用@Trace装饰的count属性才能触发UI刷新。
