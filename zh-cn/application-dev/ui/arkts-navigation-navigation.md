@@ -43,6 +43,13 @@ Navigation组件通过mode属性设置页面的显示模式。
   将mode属性设置为NavigationMode.Stack，Navigation组件即可设置为单栏显示模式。
 
   <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
+  
+  ``` TypeScript
+  Navigation() {
+    // ···
+  }
+  .mode(NavigationMode.Stack)
+  ```
 
   ![导航单栏模式](figures/导航单栏模式.jpg)
 
