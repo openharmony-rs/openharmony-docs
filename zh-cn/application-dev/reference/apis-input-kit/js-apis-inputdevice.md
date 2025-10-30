@@ -815,7 +815,7 @@ struct Index {
         .onClick(() => {
           // 示例查询设备ID为1的设备键盘类型。
           try {
-            inputDevice.getKeyboardType(1).then((type: Number) => {
+            inputDevice.getKeyboardType(1).then((type: number) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
