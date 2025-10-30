@@ -45,88 +45,28 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
 
-static constexpr int INT_ARG_2 = 2; // 入参索引
-static constexpr int INT_ARG_3 = 3; // 入参索引
 
-static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
-{
-    // 接受四个参数
-    size_t argc = 4;
-    napi_value args[4] = {nullptr};
-    // 从回调信息中获取参数
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // 提取参数中的资源、接收器对象和函数
-    napi_value resource = args[0];
-    napi_value recv = args[1];
-    napi_value func = args[INT_ARG_2];
-    napi_value argv[1] = {nullptr};
-    argv[0] = args[INT_ARG_3];
-    // 获取函数的类型
-    napi_valuetype funcType;
-    napi_typeof(env, func, &funcType);
-    // 创建一个资源名称为"test"的字符串
-    napi_value resourceName = nullptr;
-    napi_create_string_utf8(env, "test", NAPI_AUTO_LENGTH, &resourceName);
-    // 初始化异步上下文
-    napi_async_context context;
-    napi_status status = napi_async_init(env, resource, resourceName, &context);
-    if (status != napi_ok) {
-        napi_throw_error(env, nullptr, "napi_async_init fail");
-        return nullptr;
-    }
-    // 打开回调作用域
-    napi_callback_scope scope = nullptr;
-    status = napi_open_callback_scope(env, resource, context, &scope);
-    if (status != napi_ok) {
-        napi_throw_error(env, nullptr, "napi_open_callback_scope fail");
-        return nullptr;
-    }
-    // 调用回调函数
-    napi_value result = nullptr;
-    if (funcType == napi_function) {
-        napi_make_callback(env, context, recv, func, 1, argv, &result);
-    } else {
-        napi_throw_error(env, nullptr, "Unexpected argument type");
-        return nullptr;
-    }
-    // 关闭回调作用域
-    status = napi_close_callback_scope(env, scope);
-    if (status != napi_ok) {
-        napi_throw_error(env, nullptr, "napi_close_callback_scope fail");
-        return nullptr;
-    }
-    // 销毁异步上下文
-    napi_async_destroy(env, context);
-    return result;
-}
-```
-<!-- [napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
-export const asynchronousWork: (object: Object, obj: Object, fun: Function, num: number) => number | undefined;
-```
-<!-- [napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+index.d.ts
+<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-import { process } from '@kit.ArkTs';
+导入模块
 
-try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API asynchronousWork: %{public}d', testNapi.asynchronousWork({}, process.ProcessManager, (num: number)=>{return num;}, 123));
-} catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API asynchronousWork error: %{public}s', error.message);
-}
-```
-<!-- [ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_async_open_close_callback_scope_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+测试代码
+
+<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+
+
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 
