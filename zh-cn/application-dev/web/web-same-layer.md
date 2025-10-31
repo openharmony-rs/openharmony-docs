@@ -509,6 +509,14 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 <!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/module.json5) -->
 
+``` JSON5
+"requestPermissions":[
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
+```
+
 应用侧代码。
 
   ```ts
