@@ -299,6 +299,17 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
 
 <!-- @[rotate_horizontally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDirection.ets) -->
 
+``` TypeScript
+Swiper(
+// ···
+) {
+// ···
+}
+// ···
+.indicator(true)
+.vertical(false)
+```
+
 
 ![截图2](figures/截图2.PNG)
 
