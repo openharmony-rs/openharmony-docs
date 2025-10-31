@@ -949,7 +949,7 @@ ioctl(fd, VIDIOC_REQBUFS, &reqbuffer)。由此分析出Open Harmony OS上的ioct
 
 从OpenHarmony的issuse得知暂不支持V4L2_MEMORY_MMAP内存映射，映射方式就分析到这里，接下来还是用v4l2_main的V4L2_MEMORY_USERPTR进行调试分析。
 
-参考：[V4L2设备增加MMAP申请内存的方式](https://gitcode.com/openharmony/drivers_peripheral/issues/I4EFWP)和下图
+参考：[V4L2设备增加MMAP申请内存的方式](https://gitee.com/openharmony/drivers_peripheral/issues/I4EFWP)和下图
 
 ![](figures/isoftstone/yangfan-ioctl.png)
 
