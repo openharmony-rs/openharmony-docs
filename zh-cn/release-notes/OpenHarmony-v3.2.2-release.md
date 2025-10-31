@@ -24,9 +24,9 @@
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```
    git config --global user.name "yourname"
@@ -37,7 +37,7 @@
 4. 安装码云repo工具，可以执行如下命令。
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -46,10 +46,10 @@
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
  ```
- repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
+ repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
  repo sync -c
  repo forall -c 'git lfs pull'
  ```
@@ -60,7 +60,7 @@
 
 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
  ```
- repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
+ repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2.2-Release --no-repo-verify
  repo sync -c
  repo forall -c 'git lfs pull'
  ```
@@ -88,7 +88,7 @@
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 ## 修复缺陷issue列表
 
@@ -96,17 +96,17 @@
 
 | ISSUE                                                        | 问题描述                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I70T6E](https://gitee.com/openharmony/web_webview/issues/I70T6E) | 【OpenHarmony 3.2.12.2】【RK3568】【压力测试】【ToC】【低概率1/10】【wukong】出现1次 由进程com.ohos.note下的Chrome_IOThread线程导致libweb_engine.so出现cppcrash |
-| [I76JRL](https://gitee.com/openharmony/drivers_peripheral/issues/I76JRL) | 【OpenHarmony 3.2.11.9】【RK3568】【压力测试】【ToC】【低概率1/10】【wukong】出现1次，camera_host进程下offlinepipeline发生cppcrash，信息为libcamera_pipeline_core.z.so。 |
-| [I7C0LX](https://gitee.com/openharmony/developtools_profiler/issues/I7C0LX) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率6/10】【wukong】出现650次，com.ohos.smartperf应用出现jscrash，内容信息为initDb。 |
-| [I7C0SA](https://gitee.com/openharmony/vendor_hihope/issues/I7C0SA) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率】【wukong】出现27次 由进程com.ohos.systemui下的RSRenderThread线程导致libmali-bifrost-g52-g2p0-ohos.so出现cppcrash |
-| [I7C10M](https://gitee.com/openharmony/security_privacy_center/issues/I7C10M) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率6/10】【wukong】出现39次，com.ohos.certmanager出现jscrash，内容信息为saveAllMaps。 |
-| [I7CA2W](https://gitee.com/openharmony/multimedia_medialibrary_standard/issues/I7CA2W) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率】【wukong】出现358次， 由进程com.ohos.medialibrary.medialibrarydata下com.ohos.medial线程出现cppcrash，崩溃栈显示为libmedialibrary_data_extension.z.so |
-| [I7CA7A](https://gitee.com/openharmony/distributeddatamgr_relational_store/issues/I7CA7A) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率 8/10】【wukong】出现1131次，由进程com.ohos.contactsdataability下的IPC_2_4692线程导致librdb_data_share_adapter.z.so出现cppcrash |
-| [I7CBLV](https://gitee.com/openharmony/bundlemanager_bundle_framework/issues/I7CBLV) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率】【wukong】出现1249次，com.ohos.note下出现jscrash问题，栈名：getFolderText与createRdbStore |
-| [I7CBWQ](https://gitee.com/openharmony/applications_mms/issues/I7CBWQ) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【低概率】【wukong】出现6次关键应用: com.ohos.mms由于STRINGID:APPLICATION_BLOCK_INPUT卡在libeventhandler.z.so |
-| [I7CWA0](https://gitee.com/openharmony/communication_ipc/issues/I7CWA0) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【低概率】【wukong】出现1次 由关键进程com.ohos.contacts下的IPC_3_17363线程导致libipc_core.z.so出现cppcrash |
-| [I7CYM3](https://gitee.com/openharmony/applications_camera/issues/I7CYM3) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率8/10】【wukong】出现1800次，com.ohos.camer出现jscrash问题，栈名：getInstance |
+| [I70T6E](https://gitcode.com/openharmony/web_webview/issues/I70T6E) | 【OpenHarmony 3.2.12.2】【RK3568】【压力测试】【ToC】【低概率1/10】【wukong】出现1次 由进程com.ohos.note下的Chrome_IOThread线程导致libweb_engine.so出现cppcrash |
+| [I76JRL](https://gitcode.com/openharmony/drivers_peripheral/issues/I76JRL) | 【OpenHarmony 3.2.11.9】【RK3568】【压力测试】【ToC】【低概率1/10】【wukong】出现1次，camera_host进程下offlinepipeline发生cppcrash，信息为libcamera_pipeline_core.z.so。 |
+| [I7C0LX](https://gitcode.com/openharmony/developtools_profiler/issues/I7C0LX) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率6/10】【wukong】出现650次，com.ohos.smartperf应用出现jscrash，内容信息为initDb。 |
+| [I7C0SA](https://gitcode.com/openharmony/vendor_hihope/issues/I7C0SA) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率】【wukong】出现27次 由进程com.ohos.systemui下的RSRenderThread线程导致libmali-bifrost-g52-g2p0-ohos.so出现cppcrash |
+| [I7C10M](https://gitcode.com/openharmony/security_privacy_center/issues/I7C10M) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率6/10】【wukong】出现39次，com.ohos.certmanager出现jscrash，内容信息为saveAllMaps。 |
+| [I7CA2W](https://gitcode.com/openharmony/multimedia_medialibrary_standard/issues/I7CA2W) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率】【wukong】出现358次， 由进程com.ohos.medialibrary.medialibrarydata下com.ohos.medial线程出现cppcrash，崩溃栈显示为libmedialibrary_data_extension.z.so |
+| [I7CA7A](https://gitcode.com/openharmony/distributeddatamgr_relational_store/issues/I7CA7A) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率 8/10】【wukong】出现1131次，由进程com.ohos.contactsdataability下的IPC_2_4692线程导致librdb_data_share_adapter.z.so出现cppcrash |
+| [I7CBLV](https://gitcode.com/openharmony/bundlemanager_bundle_framework/issues/I7CBLV) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率】【wukong】出现1249次，com.ohos.note下出现jscrash问题，栈名：getFolderText与createRdbStore |
+| [I7CBWQ](https://gitcode.com/openharmony/applications_mms/issues/I7CBWQ) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【低概率】【wukong】出现6次关键应用: com.ohos.mms由于STRINGID:APPLICATION_BLOCK_INPUT卡在libeventhandler.z.so |
+| [I7CWA0](https://gitcode.com/openharmony/communication_ipc/issues/I7CWA0) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【低概率】【wukong】出现1次 由关键进程com.ohos.contacts下的IPC_3_17363线程导致libipc_core.z.so出现cppcrash |
+| [I7CYM3](https://gitcode.com/openharmony/applications_camera/issues/I7CYM3) | 【OpenHarmony 3.2.13.1】【RK3568】【压力测试】【ToC】【高概率8/10】【wukong】出现1800次，com.ohos.camer出现jscrash问题，栈名：getInstance |
 
 
 ## 修复安全issue列表

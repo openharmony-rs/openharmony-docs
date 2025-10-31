@@ -20,7 +20,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 **适配指导**
 
-在[/system/etc/app/install_list.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list.json)文件中配置相关字段，app_dir表示hap所在的目录，removable表示hap安装后是否可卸载。如下所示：
+在[/system/etc/app/install_list.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list.json)文件中配置相关字段，app_dir表示hap所在的目录，removable表示hap安装后是否可卸载。如下所示：
 
 ```json
 {
@@ -54,7 +54,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 **变更影响**
 
-不涉及js及native接口，如果开发的应用中使用上述特权，那就需要应用开发者申请对应的特权，申请及配置方式可参考[应用配置指南](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md)。
+不涉及js及native接口，如果开发的应用中使用上述特权，那就需要应用开发者申请对应的特权，申请及配置方式可参考[应用配置指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md)。
 
 **关键的接口/组件变更**
 
@@ -62,7 +62,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 **适配指导**
 
-可参考[应用配置指南](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md)
+可参考[应用配置指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md)
 
 ```json
 {
@@ -89,11 +89,11 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 | associatedWakeUp      | bool     | false  | 是否允许FA模型应用被关联唤醒                      |
 | runningResourcesApply | bool     | false  | 是否允许应用运行资源申请（CPU、事件通知、蓝牙等） |
 
-上述特权之前通过config.json或者module.json进行配置，并结合是否为预置应用和系统应用进行区分，本次变更为根据预置白名单[install_list_capability.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json)的方式进行配置，其它方式均无效。
+上述特权之前通过config.json或者module.json进行配置，并结合是否为预置应用和系统应用进行区分，本次变更为根据预置白名单[install_list_capability.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json)的方式进行配置，其它方式均无效。
 
 **变更影响**
 
-不涉及js及native接口，如果开发的应用中使用上述特权，那就需要应用开发者申请对应的特权，可参考[配置方式](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F-1)。
+不涉及js及native接口，如果开发的应用中使用上述特权，那就需要应用开发者申请对应的特权，可参考[配置方式](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F-1)。
 
 **关键的接口/组件变更**
 
@@ -101,7 +101,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 **适配指导**
 
-可参考[配置方式](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F-1)
+可参考[配置方式](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F-1)
 
 ```json
 {
@@ -120,7 +120,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 ### 预授权白名单增加指纹信息校验
 
-预授权文件[install_list_permissions.json](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_permissions.json)在开发板上的路径由system/etc/permission变更为system/etc/app/。新增字段app_signature，表示hap的指纹信息，可以配置多个指纹信息。在授权时，指纹信息匹配成功才能授权。
+预授权文件[install_list_permissions.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_permissions.json)在开发板上的路径由system/etc/permission变更为system/etc/app/。新增字段app_signature，表示hap的指纹信息，可以配置多个指纹信息。在授权时，指纹信息匹配成功才能授权。
 
 **变更影响**
 
