@@ -367,6 +367,13 @@ SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
 
   <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  
+  ``` TypeScript
+  //  $r('app.media.cloud')需要替换为开发者所需的资源文件
+  Image($r('app.media.cloud'))
+    .width(50)
+    .fillColor(Color.Blue)
+  ```
 
   **图3** 原始图片  
 
