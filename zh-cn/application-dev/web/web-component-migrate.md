@@ -151,6 +151,44 @@ export const getWebviewController = (url : string) : webview.WebviewController |
 }
 
 ```
+<!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 使用NodeController的Page页
+// pages/Index.ets
+import { getBuilderNode, MyNodeController, defaultUrl, getWebviewController } from "./common"
+
+@Entry
+@Component
+struct Index {
+  private nodeController : MyNodeController =
+    new MyNodeController(getBuilderNode(defaultUrl), getWebviewController(defaultUrl));
+
+  build() {
+    Row() {
+      Column() {
+        Button("Attach Webview")
+          .onClick(() => {
+            // 注意不要将同一个节点同时挂载在不同的页面上！
+            this.nodeController.attachWeb();
+            this.nodeController.rebuild();
+          })
+        Button("Detach Webview")
+          .onClick(() => {
+            this.nodeController.detachWeb();
+            this.nodeController.rebuild();
+          })
+        // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
+        // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
+        NodeContainer(this.nodeController)
+          .height('80%')
+          .width('80%')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 <!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
 
