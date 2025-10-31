@@ -26,7 +26,7 @@ Trace提供2种工作模式，离线模式和在线模式。
 
 ### 内核态
 
-LiteOS-A内核的Trace模块提供下面几种功能，接口详细信息可以查看[API](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h)参考。
+LiteOS-A内核的Trace模块提供下面几种功能，接口详细信息可以查看[API](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h)参考。
 
   **表1** Trace模块接口说明
 
@@ -88,7 +88,7 @@ LiteOS-A内核的Trace模块提供下面几种功能，接口详细信息可以�
         ```
 
         > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
-        > 预置的Trace事件及参数均可以通过上述方式进行裁剪，参数详见 [kernel\include\los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h)。
+        > 预置的Trace事件及参数均可以通过上述方式进行裁剪，参数详见 [kernel\include\los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h)。
 
 - Trace Mask事件过滤接口LOS_TraceEventMaskSet(UINT32 mask)，其入参mask仅高28位生效（对应LOS_TRACE_MASK中某模块的使能位），仅用于模块的过滤，暂不支持针对某个特定事件的细粒度过滤。例如：LOS_TraceEventMaskSet(0x202)，则实际设置生效的mask为0x200（TRACE_QUE_FLAG），QUE模块的所有事件均会被采集。一般建议使用的方法为： LOS_TraceEventMaskSet(TRACE_EVENT_FLAG | TRACE_MUX_FLAG | TRACE_SEM_FLAG | TRACE_QUE_FLAG);
 
