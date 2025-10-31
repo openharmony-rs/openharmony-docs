@@ -5721,12 +5721,14 @@
           - [@system.geolocation (地理位置)](reference/apis-location-kit/js-apis-system-location.md)
       - C API<!--location-c-->
         - 模块<!--location-module-->
-          - [Location](reference/apis-location-kit/_location.md)
+          - [Location](reference/apis-location-kit/capi-location.md)
         - 头文件<!--location-headerfile-->
-          - [oh_location.h](reference/apis-location-kit/oh__location_8h.md)
-          - [oh_location_type.h](reference/apis-location-kit/oh__location__type_8h.md)
+          - [oh_location.h](reference/apis-location-kit/capi-oh-location-h.md)
+          - [oh_location_type.h](reference/apis-location-kit/capi-oh-location-type-h.md)
         - 结构体<!--location-struct-->
-          - [Location_BasicInfo](reference/apis-location-kit/_location___basic_info.md)
+          - [Location_BasicInfo](reference/apis-location-kit/capi-location-location-basicinfo.md)
+          - [Location_RequestConfig](reference/apis-location-kit/capi-location-location-requestconfig.md)
+          - [Location_Info](reference/apis-location-kit/capi-location-location-info.md)
       - 错误码<!--location-arkts-errcode-->
         - [位置服务错误码](reference/apis-location-kit/errorcode-geoLocationManager.md)
     - Notification Kit（用户通知服务）<!--notification-api-->
