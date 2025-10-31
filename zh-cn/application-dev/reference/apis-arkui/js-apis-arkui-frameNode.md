@@ -279,7 +279,9 @@ clearChildren(): void
 
 ### getChild<sup>12+</sup> 
 
-getChild(index: number): FrameNode | null
+ArkTS-Dyn: getChild(index: number): FrameNode | null
+
+ArkTS-Sta: getChild(index: int): FrameNode | null
 
 获取当前节点指定位置的子节点。
 
@@ -287,11 +289,15 @@ getChild(index: number): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| index  | number | 是   | 需要查询的子节点的序列号。<br/>若当前节点有n个子节点，index取值范围为[0, n-1]。 |
+| index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 需要查询的子节点的序列号。<br/>若当前节点有n个子节点，index取值范围为[0, n-1]。 |
 
 **返回值：**
 
@@ -332,7 +338,9 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 ### getFirstChildIndexWithoutExpand<sup>15+</sup> 
 
-getFirstChildIndexWithoutExpand(): number
+ArkTS-Dyn: getFirstChildIndexWithoutExpand(): number
+
+ArkTS-Sta: getFirstChildIndexWithoutExpand(): int
 
 获取当前节点第一个在主节点树上的子节点的序列号。子节点序列号按所有子节点计算。
 
@@ -340,11 +348,15 @@ getFirstChildIndexWithoutExpand(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                                      |
 | ------ | ---------------------------------------- |
-| number | 当前节点第一个在主节点树上的子节点的序列号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前节点第一个在主节点树上的子节点的序列号。 |
 
 **示例：**
 
@@ -352,7 +364,9 @@ getFirstChildIndexWithoutExpand(): number
 
 ### getLastChildIndexWithoutExpand<sup>15+</sup> 
 
-getLastChildIndexWithoutExpand(): number
+ArkTS-Dyn: getLastChildIndexWithoutExpand(): number
+
+ArkTS-Sta: getLastChildIndexWithoutExpand(): int
 
 获取当前节点最后一个在主节点树上的子节点的序列号。子节点序列号按所有子节点计算。
 
@@ -360,11 +374,15 @@ getLastChildIndexWithoutExpand(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型   | 说明                                        |
 | ------ | ------------------------------------------ |
-| number | 当前节点最后一个在主节点树上的子节点的序列号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前节点最后一个在主节点树上的子节点的序列号。 |
 
 **示例：**
 
@@ -453,7 +471,9 @@ getParent(): FrameNode | null
 
 ### getChildrenCount<sup>12+</sup> 
 
-getChildrenCount(): number
+ArkTS-Dyn: getChildrenCount(): number
+
+ArkTS-Sta: getChildrenCount(): int
 
 获取当前FrameNode的子节点数量。
 
@@ -461,11 +481,15 @@ getChildrenCount(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| number | 获取当前FrameNode的子节点数量。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 获取当前FrameNode的子节点数量。 |
 
 **示例：**
 
@@ -473,7 +497,9 @@ getChildrenCount(): number
 
 ### moveTo<sup>18+</sup>
 
-moveTo(targetParent: FrameNode, index?: number): void
+ArkTS-Dyn: moveTo(targetParent: FrameNode, index?: number): void
+
+ArkTS-Sta: moveTo(targetParent: FrameNode, index?: int): void
 
 将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为[typeNode](#typenode12)时会校验子组件类型或个数，不满足抛出异常信息，限制情况请查看[typeNode](#typenode12)描述。
 
@@ -487,12 +513,16 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名        | 类型                    | 必填 | 说明                  |
 | ------------ | ----------------------- | ---- | --------------------- |
 | targetParent | [FrameNode](#framenode) | 是   | 目标父节点。<br/>**说明：**<br/>targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index        | number                  | 否   | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/>若参数无效或不指定，则添加到目标FrameNode的最后。<br/>默认值：-1 |
+| index     | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否   | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/>若参数无效或不指定，则添加到目标FrameNode的最后。<br/>默认值：-1 |
 
 **错误码：**
 
@@ -1155,7 +1185,9 @@ getId(): string
 
 ### getUniqueId<sup>12+</sup>
 
-getUniqueId(): number
+ArkTS-Dyn: getUniqueId(): number
+
+ArkTS-Sta: getUniqueId(): long
 
 获取系统分配的唯一标识的节点UniqueID。
 
@@ -1163,11 +1195,16 @@ getUniqueId(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| number | 系统分配的唯一标识的节点UniqueID。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: long | 系统分配的唯一标识的节点UniqueID。 |
 
 **示例：**
 
@@ -1195,7 +1232,9 @@ getNodeType(): string
 
 ### getOpacity<sup>12+</sup>
 
-getOpacity(): number
+ArkTS-Dyn: getOpacity(): number
+
+ArkTS-Sta: getOpacity(): double
 
 获取节点的不透明度，最小值为0，最大值为1。
 
@@ -1203,11 +1242,15 @@ getOpacity(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| number | 节点的不透明度。范围是[0, 1]，值越大透明度越低。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double | 节点的不透明度。范围是[0, 1]，值越大透明度越低。 |
 
 **示例：**
 
@@ -4557,7 +4600,9 @@ dispose(): void
 
 ### totalNodeCount<sup>12+</sup>
 
-set totalNodeCount(count: number)
+ArkTS-Dyn: set totalNodeCount(count: number)
+
+ArkTS-Sta: set totalNodeCount(count: int)
 
 设置数据节点总数。
 
@@ -4565,13 +4610,19 @@ set totalNodeCount(count: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| count | number | 是   | 数据节点总数。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 数据节点总数。<br/>取值范围：[0, +∞) |
 
-get totalNodeCount(): number
+ArkTS-Dyn: get totalNodeCount(): number
+
+ArkTS-Sta:  get totalNodeCount(): int
 
 获取数据节点总数。
 
@@ -4583,7 +4634,7 @@ get totalNodeCount(): number
 
 | 类型                     | 说明                 |
 | ----------------- | ------------ |
-| number | 数据节点总数。<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 数据节点总数。<br/>取值范围：[0, +∞) |
 
 ### reloadAllItems<sup>12+</sup>
 
@@ -4597,7 +4648,9 @@ reloadAllItems(): void
 
 ### reloadItem<sup>12+</sup>
 
-reloadItem(start: number, count: number): void
+ArkTS-Dyn: reloadItem(start: number, count: number): void
+
+ArkTS-Sta: reloadItem(start: int, count: int): void
 
 从索引值开始重新加载指定数量的节点数据。
 
@@ -4605,16 +4658,22 @@ reloadItem(start: number, count: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| start | number | 是   | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是   | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 重新加载的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 重新加载数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ### removeItem<sup>12+</sup>
 
-removeItem(start: number, count: number): void
+ArkTS-Dyn: removeItem(start: number, count: number): void
+
+ArkTS-Sta: removeItem(start: int, count: int): void
 
 从索引值开始删除指定数量的节点数据。
 
@@ -4622,16 +4681,22 @@ removeItem(start: number, count: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| start | number | 是   | 删除的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是   | 删除数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 删除的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 删除数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ### insertItem<sup>12+</sup>
 
-insertItem(start: number, count: number): void
+ArkTS-Dyn: insertItem(start: number, count: number): void
+
+ArkTS-Sta: insertItem(start: int, count: int): void
 
 从索引值开始新增指定数量的节点数据。
 
@@ -4639,16 +4704,22 @@ insertItem(start: number, count: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| start | number | 是   | 新增的节点开始索引值。<br/>取值范围：[0, +∞) |
-| count | number | 是   | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
+| start | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 新增的节点开始索引值。<br/>取值范围：[0, +∞) |
+| count | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 新增数据节点的数量。<br/>取值范围：[0, +∞) |
 
 ### moveItem<sup>12+</sup>
 
-moveItem(from: number, to: number): void
+ArkTS-Dyn: moveItem(from: number, to: number): void
+
+ArkTS-Sta: moveItem(from: int, to: int): void
 
 将数据从原始索引移动到目的索引。
 
@@ -4656,12 +4727,16 @@ moveItem(from: number, to: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| from | number | 是   | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
-| to | number | 是   | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
+| from | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 数据移动的原始索引值。<br/>取值范围：[0, +∞) |
+| to | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 数据移动的目的索引值。<br/>取值范围：[0, +∞) |
 
 ### getAllAvailableItems<sup>12+</sup>
 
@@ -4707,7 +4782,9 @@ onDetachFromNode?(): void
 
 ### onGetChildId<sup>12+</sup>
 
-onGetChildId?(index: number): number
+ArkTS-Dyn: onGetChildId?(index: number): number
+
+ArkTS-Sta: onGetChildId?(index: int): int
 
 节点首次加载或新节点滑入时回调。传入的index参数用于自定义生成Id，需要开发者自行保证根据不同index生成Id的唯一性。
 
@@ -4715,21 +4792,27 @@ onGetChildId?(index: number): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| index | number | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型                     | 说明                 |
 | ----------------- | ------------ |
-| number | 返回开发者自定义生成的Id，需要开发者自行保证Id的唯一性。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回开发者自定义生成的Id，需要开发者自行保证Id的唯一性。 |
 
 ### onCreateChild<sup>12+</sup>
 
-onCreateChild?(index: number): FrameNode
+ArkTS-Dyn: onCreateChild?(index: number): FrameNode
+
+ArkTS-Sta: onCreateChild?(index: int): FrameNode
 
 节点首次加载或新节点滑入时回调。建议开发者在添加子组件时，遵循声明式组件中子组件的约束。例如，WaterFlow支持添加FlowItem子节点。父节点根据子节点的索引与key值判断是否触发了节点首次加载或新节点滑入。
 
@@ -4737,11 +4820,15 @@ onCreateChild?(index: number): FrameNode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| index | number | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 加载节点索引值。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -4751,7 +4838,9 @@ onCreateChild?(index: number): FrameNode
 
 ### onDisposeChild<sup>12+</sup>
 
-onDisposeChild?(id: number, node: FrameNode): void
+ArkTS-Dyn: onDisposeChild?(id: number, node: FrameNode): void
+
+ArkTS-Sta: onDisposeChild?(id: int, node: FrameNode): void
 
 子节点即将销毁时回调。既不显示在屏幕上，也不处于预加载范围内的节点都属于即将销毁的节点。
 
@@ -4759,16 +4848,22 @@ onDisposeChild?(id: number, node: FrameNode): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| id | number | 是   | 即将销毁的子节点id。 |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 即将销毁的子节点id。 |
 | node | FrameNode | 是   | 即将销毁的FrameNode节点。 |
 
 ### onUpdateChild<sup>12+</sup>
 
-onUpdateChild?(id: number, node: FrameNode): void
+ArkTS-Dyn: onUpdateChild?(id: number, node: FrameNode): void
+
+ArkTS-Sta: onUpdateChild?(id: int, node: FrameNode): void
 
 重新加载的数据节点被复用时回调。已缓存节点的key值与被复用节点一致时进行节点复用。
 
@@ -4776,11 +4871,15 @@ onUpdateChild?(id: number, node: FrameNode): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| id | number | 是   | 复用节点的id。 |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 复用节点的id。 |
 | node | FrameNode | 是   | 被复用的FrameNode节点。 |
 
 ### attachNodeAdapter<sup>12+</sup>
