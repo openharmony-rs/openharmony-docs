@@ -100,7 +100,6 @@ export struct OperationNodeTree {
     // ···
   }
 }
-
 ```
 
 ## 设置和获取渲染相关属性
@@ -289,7 +288,6 @@ export struct RenderingProperties {
     // ···
   }
 }
-
 ```
 
 ## 自定义绘制
@@ -394,7 +392,6 @@ export struct CustomDraw {
     // ···
   }
 }
-
 ```
 
 ## 调整自定义绘制Canvas的变换矩阵
@@ -551,7 +548,6 @@ export struct CustomDrawCanvas {
     // ···
   }
 }
-
 ```
 
 ![RenderNode-canvas](./figures/renderNode-canvas.png)
@@ -727,7 +723,6 @@ export struct CustomDrawCanvasNative {
     // ···
   }
 }
-
 ```
 
 ## 设置标签
@@ -783,7 +778,6 @@ export struct SetLabel {
     // ···
   }
 }
-
 ```
 
 ## 查询当前RenderNode是否解除引用
@@ -862,5 +856,4 @@ export struct CheckRanderNodeDisposed {
     // ···
   }
 }
-
 ```
