@@ -603,6 +603,24 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 开发者可以在willShow回调中通过修改路由栈来实现路由拦截重定向的能力。
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+   
+   ``` TypeScript
+   this.pageStack.setInterception({
+     willShow: (from: NavDestinationContext | 'navBar', to: NavDestinationContext | 'navBar',
+       operation: NavigationOperation, animated: boolean) => {
+       if (typeof to === 'string') {
+         hilog.info(DOMAIN, 'testTag', 'target page is navigation home');
+         return;
+       }
+       // 将跳转到PageTwo的路由重定向到PageOne
+       let target: NavDestinationContext = to as NavDestinationContext;
+       if (target.pathInfo.name === 'pageTwo') {
+         target.pathStack.pop();
+         target.pathStack.pushPathByName('pageOne', null);
+       }
+     }
+   })
+   ```
 
 ### 单例跳转
 
