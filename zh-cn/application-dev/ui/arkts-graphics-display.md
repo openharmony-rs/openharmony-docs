@@ -733,6 +733,12 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 
   <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  
+  ``` TypeScript
+  //  $r('app.media.icon')需要替换为开发者所需的资源文件
+  Image($r('app.media.icon'))
+    .syncLoad(true)
+  ```
 
 
 ## 事件调用
