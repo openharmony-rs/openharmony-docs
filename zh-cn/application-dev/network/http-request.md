@@ -646,7 +646,7 @@ let options: http.HttpRequestOptions = {
 
 ```typescript
 // 发起请求
-httpRequest.request("https://www.baidu.com/", options, (err: BusinessError, res: http.HttpResponse) => {
+httpRequest.request('https://www.example.com/', options, (err: BusinessError, res: http.HttpResponse) => {
   if (err) {
     hilog.info(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
   } else {
