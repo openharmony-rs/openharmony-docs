@@ -58,7 +58,7 @@
 
 - IPC通信
 
-  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitcode.com/openharmony/communication_ipc/blob/master/README_zh.md)。
+  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitee.com/openharmony/communication_ipc/blob/master/README_zh.md)。
 
 - HDI
 
@@ -137,7 +137,7 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
 
 下面结合DEMO实例介绍驱动开发的具体步骤。
 
-1. 基于HDF驱动框架，按照驱动Driver Entry程序，完成pin_auth驱动开发，主要由Bind、Init、Release、Dispatch函数接口实现，详细代码参见[pin_auth_interface_driver.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/pin_auth/hdi_service/service/src/pin_auth_interface_driver.cpp)文件。
+1. 基于HDF驱动框架，按照驱动Driver Entry程序，完成pin_auth驱动开发，主要由Bind、Init、Release、Dispatch函数接口实现，详细代码参见[pin_auth_interface_driver.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/pin_auth/hdi_service/service/src/pin_auth_interface_driver.cpp)文件。
 
    ```c++
    // 通过自定义的HdfPinAuthInterfaceHost对象包含IoService对象和真正的HDI Service实现PinAuthInterfaceService对象
@@ -239,7 +239,7 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
 
 
 
-2. 完成获取执行器列表接口实现，详细代码参见[pin_auth_interface_service.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/pin_auth/hdi_service/service/src/pin_auth_interface_service.cpp)文件。
+2. 完成获取执行器列表接口实现，详细代码参见[pin_auth_interface_service.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/pin_auth/hdi_service/service/src/pin_auth_interface_service.cpp)文件。
 
    ```c++
    // 执行器实现类
@@ -325,7 +325,7 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
 
 
 
-3. 完成执行器每个功能接口实现，详细代码参见[all_in_one_impl.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/pin_auth/hdi_service/service/src/all_in_one_impl.cpp)文件。
+3. 完成执行器每个功能接口实现，详细代码参见[all_in_one_impl.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/pin_auth/hdi_service/service/src/all_in_one_impl.cpp)文件。
 
    ```c++
    // 实现获取执行器信息接口（仅作示例）
