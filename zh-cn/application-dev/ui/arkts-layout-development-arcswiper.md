@@ -212,6 +212,15 @@ ArcSwiper支持水平和垂直方向上进行轮播，主要通过[vertical](../
 - 设置垂直方向轮播，导航点设为3点钟方向。
 
   <!-- @[vertical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperVertical.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper() {
+    // ···
+  }
+  .indicator(new ArcDotIndicator()
+    .arcDirection(ArcDirection.THREE_CLOCK_DIRECTION))
+  .vertical(true)
+  ```
   ![vertical2](figures/arcswiper_vertical.png)
 
 ## 自定义切换动画
