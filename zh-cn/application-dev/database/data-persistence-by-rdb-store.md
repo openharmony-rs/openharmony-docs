@@ -155,6 +155,32 @@
 
 2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 插入数据
+   let value1 = 'Lisa';
+   let value2 = 18;
+   let value3 = 100.5;
+   let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+   let value5 = BigInt('15822401018187971961171');
+   const valueBucket: relationalStore.ValuesBucket = {
+     NAME: value1,
+     AGE: value2,
+     SALARY: value3,
+     CODES: value4,
+     IDENTITY: value5,
+   };
+   
+   if (store !== undefined) {
+     try {
+       const rowId = await store.insert('EMPLOYEE', valueBucket);
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in inserting data. rowId:${rowId}`);
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to insert data. Code:${err.code}, message:${err.message}`);
+     }
+   }
+   ```
 
    > **说明：**
    >
