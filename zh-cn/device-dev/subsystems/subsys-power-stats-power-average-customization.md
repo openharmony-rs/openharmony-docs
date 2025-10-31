@@ -8,13 +8,13 @@ OpenHarmony默认提供了耗电统计的特性。由于不同产品的硬件规
 
 ### 基本概念 
 
-耗电统计：在用户使用设备的过程中，各种软硬件服务会通过[HiSysEvent](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-dfx-hisysevent-overview.md)上报软硬件的使用事件，根据这些事件可以计算软硬件的使用时长，然后基于硬件的耗电基准，统计所得软硬件的耗电量。
+耗电统计：在用户使用设备的过程中，各种软硬件服务会通过[HiSysEvent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-dfx-hisysevent-overview.md)上报软硬件的使用事件，根据这些事件可以计算软硬件的使用时长，然后基于硬件的耗电基准，统计所得软硬件的耗电量。
 
 耗电基准：产品硬件在各种状态下的基准耗电量（单位：毫安时），如相机打开时的基准耗电量，CPU在各种频率下的基准耗电量等。
 
 ### 约束与限制
 
-按照[配置策略组件介绍](https://gitee.com/openharmony/customization_config_policy)的说明，设定产品定制的配置路径，需要根据配置策略决定。本开发指南中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
+按照[配置策略组件介绍](https://gitcode.com/openharmony/customization_config_policy)的说明，设定产品定制的配置路径，需要根据配置策略决定。本开发指南中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
 
@@ -30,12 +30,12 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤
 
-本文以[DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍耗电统计的定制方法。
+本文以[DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)为例介绍耗电统计的定制方法。
 
-1. 在产品目录[（vendor/hihope/rk3568）](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568)下创建battery_statistics文件夹。
+1. 在产品目录[（vendor/hihope/rk3568）](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568)下创建battery_statistics文件夹。
 
 
-2. 参考[默认耗电统计配置文件夹](https://gitee.com/openharmony/powermgr_battery_statistics/tree/master/services/profile)创建目标文件夹，并安装到`vendor/hihope/rk3568/battery_statistics`目录，文件格式如下：
+2. 参考[默认耗电统计配置文件夹](https://gitcode.com/openharmony/powermgr_battery_statistics/tree/master/services/profile)创建目标文件夹，并安装到`vendor/hihope/rk3568/battery_statistics`目录，文件格式如下：
 
     ```shell
     profile
@@ -43,7 +43,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     └── power_average.json # 耗电统计配置文件，包含硬件的耗电基准
     ```
 
-3. 参考[默认耗电统计配置文件夹中的power_average.json](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/power_average.json)编写定制的power_average.json，包含定制后的耗电基准。详细说明如下：
+3. 参考[默认耗电统计配置文件夹中的power_average.json](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/power_average.json)编写定制的power_average.json，包含定制后的耗电基准。详细说明如下：
 
     **表1** 耗电基准配置项说明
     | 配置项 | 硬件类型 | 数据类型 | 描述 |
@@ -72,7 +72,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     >说明：表格中描述的硬件类型为真实硬件名称，不代表耗电统计类型，具体的耗电统计类型，请参考[ConsumptionType](../../application-dev/reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md#consumptiontype)定义。
 
-4. 参考[默认耗电统计配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/BUILD.gn)编写BUILD.gn文件，将power_average.json打包安装到`/vendor/etc/profile`目录下，例如： 
+4. 参考[默认耗电统计配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/BUILD.gn)编写BUILD.gn文件，将power_average.json打包安装到`/vendor/etc/profile`目录下，例如： 
 
     ```shell
     import("//build/ohos.gni")                  # 引用build/ohos.gni
@@ -86,7 +86,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-5. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的“module_list”中，例如：
+5. 将编译目标添加到`/vendor/hihope/rk3568`目录下[ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build)的“module_list”中，例如：
 
     ```json
     {
@@ -191,11 +191,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 6. 耗电统计配置文件定制成功后，耗电统计会根据定制的耗电基准进行计算。
 
-7. 通过batterystatistics模块提供的[JS API](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.batteryStatistics.d.ts)或[Inner API](https://gitee.com/openharmony/powermgr_battery_statistics/blob/master/interfaces/inner_api/include/battery_stats_client.h)可以获得详细的耗电信息，验证定制的耗电基准。
+7. 通过batterystatistics模块提供的[JS API](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.batteryStatistics.d.ts)或[Inner API](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/interfaces/inner_api/include/battery_stats_client.h)可以获得详细的耗电信息，验证定制的耗电基准。
 
 ## 参考 
 
-开发过程中可参考的配置文件路径：[系统默认耗电统计配置源码路径](https://gitee.com/openharmony/powermgr_battery_statistics/tree/master/services/profile) 
+开发过程中可参考的配置文件路径：[系统默认耗电统计配置源码路径](https://gitcode.com/openharmony/powermgr_battery_statistics/tree/master/services/profile) 
 
 默认打包路径：/system/etc/profile
 

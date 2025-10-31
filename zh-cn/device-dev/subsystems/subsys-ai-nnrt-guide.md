@@ -119,11 +119,11 @@ AI芯片设备HDI服务开发者具体可通过以下步骤实现AI专用加速�
 
 2. 实现设备驱动，无特殊需求可直接使用IDL文件编译生成的```nnrt_device_driver.cpp```文件，否则根据具体驱动开发。
 
-3. 实现服务接口，可参考```nnrt_device_service.cpp```和```prepared_model_service.cpp```实现文件，接口定义可以参考[NNRt的HDI接口定义](https://gitee.com/openharmony/drivers_interface/tree/master/nnrt)。
+3. 实现服务接口，可参考```nnrt_device_service.cpp```和```prepared_model_service.cpp```实现文件，接口定义可以参考[NNRt的HDI接口定义](https://gitcode.com/openharmony/drivers_interface/tree/master/nnrt)。
 
 4. 编译驱动和服务的实现文件为共享库。
 
-    在```drivers/peripheral/nnrt/v2_0/hdi_cpu_service/```下新建```BUILD.gn```文件，文件内容如下所示，相关参数配置内容可参考[Build教程](https://gitee.com/openharmony/build)。
+    在```drivers/peripheral/nnrt/v2_0/hdi_cpu_service/```下新建```BUILD.gn```文件，文件内容如下所示，相关参数配置内容可参考[Build教程](https://gitcode.com/openharmony/build)。
 
     ```shell
     import("//build/ohos.gni")
@@ -358,7 +358,7 @@ OpenHarmony已经开启SELinux特性，需要对新增的进程和服务配置�
     ```
 
 10. 由于SELinux是白名单访问的权限机制，需要根据实际权限需求配置。将服务启动之后，可通过以下dmesg命令查看avc告警，
-avc告警会给出缺少的权限。SELinux的配置也可以参考[OpenHarmony SELinux子系统的说明](https://gitee.com/openharmony/security_selinux/blob/master/README.md)。
+avc告警会给出缺少的权限。SELinux的配置也可以参考[OpenHarmony SELinux子系统的说明](https://gitcode.com/openharmony/security_selinux/blob/master/README.md)。
     ```shell
     hdc_std shell
     dmesg | grep nnrt
@@ -428,7 +428,7 @@ rm -rf ./out
     ```
 
 ### 开发实例
-完整Demo代码可以参考[社区实现](https://gitee.com/openharmony/ai_neural_network_runtime/tree/master/example/drivers)。
+完整Demo代码可以参考[社区实现](https://gitcode.com/openharmony/ai_neural_network_runtime/tree/master/example/drivers)。
 
 1. 进入OpenHarmony源码根目录，在```drivers/peripheral```路径下创建```nnrt```目录，拷贝NNRt源码路径```foundation/ai/neural_network_runtime```下的```example/driver/nnrt/v2_0```目录到```drivers/peripheral/nnrt```路径下。
     ```shell

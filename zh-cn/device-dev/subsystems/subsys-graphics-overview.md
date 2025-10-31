@@ -6,7 +6,7 @@
 ### OpenHarmony 中各 UI 之间的关系
 当前对于 OpenHarmony 应用界面开发，你可能已经了解到几个不同的概念，比如 ArkUI 声明式开发范式、ArkUI 类 Web 开发范式等，那他们和当前小型系统图形图像框架之间是什么关系呢？
 
-当前 [ace_engine](https://gitee.com/openharmony/arkui_ace_engine)  实现了标准系统的 ArkUI 声明式开发范式和 ArkUI 类 Web 开发范式两套开发框架，他们之间的详细对比可以参考 [方舟开发框架（ArkUI）概述](../../application-dev/ui/arkui-overview.md)；根据小型系统的特点 [ace_engine_lite](https://gitee.com/openharmony/arkui_ace_engine_lite) 实现了轻量级的 ArkUI 类 Web 开发范式 lite 版本，其能力是 ArkUI 类 Web 开发范式的子集。
+当前 [ace_engine](https://gitcode.com/openharmony/arkui_ace_engine)  实现了标准系统的 ArkUI 声明式开发范式和 ArkUI 类 Web 开发范式两套开发框架，他们之间的详细对比可以参考 [方舟开发框架（ArkUI）概述](../../application-dev/ui/arkui-overview.md)；根据小型系统的特点 [ace_engine_lite](https://gitcode.com/openharmony/arkui_ace_engine_lite) 实现了轻量级的 ArkUI 类 Web 开发范式 lite 版本，其能力是 ArkUI 类 Web 开发范式的子集。
 
 按照系统类型分类如下：
 - 标准系统：
@@ -16,7 +16,7 @@
   - ArkUI 类 Web 开发范式 Lite
   - C++ (系统应用)
 
-小型系统图形图像框架中的 [ui_lite](https://gitee.com/openharmony/arkui_ui_lite) 和 [ace_engine_lite](https://gitee.com/openharmony/arkui_ace_engine_lite)、 [ace_engine](https://gitee.com/openharmony/arkui_ace_engine) 的代码实现关系如下图：
+小型系统图形图像框架中的 [ui_lite](https://gitcode.com/openharmony/arkui_ui_lite) 和 [ace_engine_lite](https://gitcode.com/openharmony/arkui_ace_engine_lite)、 [ace_engine](https://gitcode.com/openharmony/arkui_ace_engine) 的代码实现关系如下图：
 
 ![UI关系图](figures/openharmony_ui.png)
 

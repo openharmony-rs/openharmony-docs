@@ -84,7 +84,7 @@ SPI通常用于与闪存、实时时钟、传感器以及模数/数模转换器�
 
 ### 接口说明
 
-SPI模块提供的主要接口如表1所示，具体API[详见](https://gitee.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/spi_if.h)。
+SPI模块提供的主要接口如表1所示，具体API[详见](https://gitcode.com/openharmony/drivers_hdf_core/blob/master/framework/include/platform/spi_if.h)。
 
 **表 1** SPI驱动API接口功能介绍
 

@@ -1,6 +1,6 @@
 # 轻量带屏解决方案之恒玄芯片移植案例
 
-本文章基于恒玄科技`BES2600W`芯片的欧智通[Multi-modal V200Z-R开发板](https://gitee.com/openharmony/device_board_fnlink)，进行轻量带屏开发板的标准移植，开发了智能开关面板样例，同时实现了`ace_engine_lite`、`arkui_ui_lite`、`aafwk_lite`、`appexecfwk_lite`、`HDF`等部件基于`OpenHarmony LiteOS-M`内核的适配。移植架构上采用`Board`与`SoC`分离的方案，工具链`Newlib C`库与`Musl C`库可选，`LiteOS-M`内核编译采用`gn`结合`Kconfig`图形化配置等需求。
+本文章基于恒玄科技`BES2600W`芯片的欧智通[Multi-modal V200Z-R开发板](https://gitcode.com/openharmony/device_board_fnlink)，进行轻量带屏开发板的标准移植，开发了智能开关面板样例，同时实现了`ace_engine_lite`、`arkui_ui_lite`、`aafwk_lite`、`appexecfwk_lite`、`HDF`等部件基于`OpenHarmony LiteOS-M`内核的适配。移植架构上采用`Board`与`SoC`分离的方案，工具链`Newlib C`库与`Musl C`库可选，`LiteOS-M`内核编译采用`gn`结合`Kconfig`图形化配置等需求。
 
 ## 编译构建
 
@@ -14,7 +14,7 @@ device
     └── <device_name>
 ```
 
-这样会导致，小熊派`BearPi-HM Nano`开发板与润和的`HiSpark Pegasus`开发板使用小海思的`hi3861`的`SoC`时，需要在这两款开发板里面都放置一份重复的代码。为了解决该问题，本案例将单板厂商与`SoC`厂商进行分离，可以参考[Board和SoC解耦的设计思路](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)，并把芯片适配目录规划为：
+这样会导致，小熊派`BearPi-HM Nano`开发板与润和的`HiSpark Pegasus`开发板使用小海思的`hi3861`的`SoC`时，需要在这两款开发板里面都放置一份重复的代码。为了解决该问题，本案例将单板厂商与`SoC`厂商进行分离，可以参考[Board和SoC解耦的设计思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)，并把芯片适配目录规划为：
 
 ```
 device
@@ -77,7 +77,7 @@ vendor
 
    ![hb env](figures/bes2600_hb_env.png)
 
-   在执行`hb build`之前，需要准备好`LiteOS-M`内核适配，具体适配步骤请参[内核移植](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-bes2600w-on-minisystem-display-demo.md#%E5%86%85%E6%A0%B8%E7%A7%BB%E6%A4%8D)。
+   在执行`hb build`之前，需要准备好`LiteOS-M`内核适配，具体适配步骤请参[内核移植](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-bes2600w-on-minisystem-display-demo.md#%E5%86%85%E6%A0%B8%E7%A7%BB%E6%A4%8D)。
 
 ## 内核移植
 
@@ -267,7 +267,7 @@ update_config menuconfig:
 
 ### gn编译适配
 
-在上一步`Kconfig`的图形化配置后，将其生成的配置结果可以作为`gn`编译的输入，以控制不同模块是否编译。另外为了解决之前`gn`编写时，随意include的问题，内核编译做了模块化编译的设计，使得整个编译逻辑更加清晰，设计思路请参考[LiteOS-M内核BUILD.gn编写指南](https://gitee.com/caoruihong/kernel_liteos_m/wikis/LiteOS-M%E5%86%85%E6%A0%B8BUILD.gn%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97)。
+在上一步`Kconfig`的图形化配置后，将其生成的配置结果可以作为`gn`编译的输入，以控制不同模块是否编译。另外为了解决之前`gn`编写时，随意include的问题，内核编译做了模块化编译的设计，使得整个编译逻辑更加清晰，设计思路请参考[LiteOS-M内核BUILD.gn编写指南](https://gitcode.com/caoruihong/kernel_liteos_m/wikis/LiteOS-M%E5%86%85%E6%A0%B8BUILD.gn%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97)。
 
 在 `kernel/liteos_m/BUILD.gn` 中，指定了`Board`和`SoC`的编译入口为`//device/board/fnlink`和`//device/soc/bestechnic`。
 
@@ -428,7 +428,7 @@ int OhosSystemAdapterHooks(void)
 
 ### C库适配
 
-在轻量系统中，C库适配比较复杂，设计思路请参考[LiteOS-M内核支持musl与newlib平滑切换方案](https://gitee.com/arvinzzz/ohos_kernel_design_specification/blob/master/liteos_m/%E6%94%AF%E6%8C%81newlib/%E5%86%85%E6%A0%B8%E9%80%82%E9%85%8Dnewlib%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF.md)，由于我们的工具链采用 [gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](https://gitee.com/link?target=https%3A%2F%2Fdeveloper.arm.com%2F-%2Fmedia%2FFiles%2Fdownloads%2Fgnu-rm%2F10.3-2021.10%2Fgcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) 自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。那么在内核的`make menuconfig`中选择`newlib`，如下图：
+在轻量系统中，C库适配比较复杂，设计思路请参考[LiteOS-M内核支持musl与newlib平滑切换方案](https://gitcode.com/arvinzzz/ohos_kernel_design_specification/blob/master/liteos_m/%E6%94%AF%E6%8C%81newlib/%E5%86%85%E6%A0%B8%E9%80%82%E9%85%8Dnewlib%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF.md)，由于我们的工具链采用 [gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2](https://gitcode.com/link?target=https%3A%2F%2Fdeveloper.arm.com%2F-%2Fmedia%2FFiles%2Fdownloads%2Fgnu-rm%2F10.3-2021.10%2Fgcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2) 自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。那么在内核的`make menuconfig`中选择`newlib`，如下图：
 
 ![image-20211212191013553](figures/bes2600_newlib_make_menuconfig.png)
 
@@ -558,7 +558,7 @@ static int32_t GpioDriverInit(struct HdfDeviceObject *device)
       ...
 ```
 
-编码规范和设计思想见[bes 驱动适配PR](https://gitee.com/openharmony/drivers_adapter/pulls/278)的评论。
+编码规范和设计思想见[bes 驱动适配PR](https://gitcode.com/openharmony/drivers_adapter/pulls/278)的评论。
 
 #### Board外设器件HDF驱动移植
 
@@ -1417,7 +1417,7 @@ APP_FEATURE_INIT(AppEntry);
 
 ### 产品兼容性规范
 
-产品兼容性规范文档请参考[产品兼容性SIG介绍](https://gitee.com/openharmony-sig/compatibility/tree/master)。
+产品兼容性规范文档请参考[产品兼容性SIG介绍](https://gitcode.com/openharmony-sig/compatibility/tree/master)。
 
 ### XTS用例
 

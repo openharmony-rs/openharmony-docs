@@ -140,7 +140,7 @@
 
   | 名称        | 示例                                                         | 说明                                                         |
   | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | initrd      | 0x84000000,0x292e00                                          | 参考内核文档。<br/>[ramfs-rootfs-initramfs.rst](https://gitee.com/openharmony/kernel_linux_5.10/blob/master/Documentation/filesystems/ramfs-rootfs-initramfs.rst)<br/>[initrd.rst](https://gitee.com/openharmony/kernel_linux_5.10/blob/master/Documentation/admin-guide/initrd.rst) |
+  | initrd      | 0x84000000,0x292e00                                          | 参考内核文档。<br/>[ramfs-rootfs-initramfs.rst](https://gitcode.com/openharmony/kernel_linux_5.10/blob/master/Documentation/filesystems/ramfs-rootfs-initramfs.rst)<br/>[initrd.rst](https://gitcode.com/openharmony/kernel_linux_5.10/blob/master/Documentation/admin-guide/initrd.rst) |
   | init        | /init                                                        |                                                              |
   | blkdevparts | mmcblk0:1M(boot),15M(kernel),200M(system),200M(vendor),<br/>2M(misc),20M(updater),-(userdata) | 分区表信息，kernel会根据此信息创建物理分区                 |
   | hardware    | Hi3516DV300、rk3568等                                                  | （必要信息）硬件平台 |

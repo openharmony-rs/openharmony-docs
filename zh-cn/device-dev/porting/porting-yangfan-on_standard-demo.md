@@ -62,7 +62,7 @@
 
 ### 目录规划
 
-参考[Board和SoC解耦的设计思路](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)，并把芯片适配目录规划为：
+参考[Board和SoC解耦的设计思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)，并把芯片适配目录规划为：
 
 ```
 device
@@ -141,11 +141,11 @@ function make_extlinux_conf()
 genext2fs -B ${blocks} -b ${block_size} -d boot_linux -i 8192 -U boot_linux.img
 ```
 
-调用make-boot.sh的修改请参考[RK3568 适配二级启动]( https://gitee.com/openharmony/build/pulls/569/files )。
+调用make-boot.sh的修改请参考[RK3568 适配二级启动]( https://gitcode.com/openharmony/build/pulls/569/files )。
 
 ### INIT配置
 
-init相关配置请参考[启动恢复子系统]( https://gitee.com/openharmony/docs/blob/master/zh-cn/readme/%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E5%AD%90%E7%B3%BB%E7%BB%9F.md )即可。
+init相关配置请参考[启动恢复子系统]( https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E5%AD%90%E7%B3%BB%E7%BB%9F.md )即可。
 
 ## **音频**
 
@@ -549,7 +549,7 @@ HDF_INIT(g_es8316DriverEntry);
 
 ​                                                                  OpenHarmony HDF Camera驱动模块架构图
 
-![img](https://gitee.com/openharmony/drivers_peripheral/raw/master/camera/figures/logic-view-of-modules-related-to-this-repository_zh.png)
+![img](https://gitcode.com/openharmony/drivers_peripheral/raw/master/camera/figures/logic-view-of-modules-related-to-this-repository_zh.png)
 
 以Camera Host 部分做如下说明：
 
@@ -949,7 +949,7 @@ ioctl(fd, VIDIOC_REQBUFS, &reqbuffer)。由此分析出Open Harmony OS上的ioct
 
 从OpenHarmony的issuse得知暂不支持V4L2_MEMORY_MMAP内存映射，映射方式就分析到这里，接下来还是用v4l2_main的V4L2_MEMORY_USERPTR进行调试分析。
 
-参考：[V4L2设备增加MMAP申请内存的方式](https://gitee.com/openharmony/drivers_peripheral/issues/I4EFWP)和下图
+参考：[V4L2设备增加MMAP申请内存的方式](https://gitcode.com/openharmony/drivers_peripheral/issues/I4EFWP)和下图
 
 ![](figures/isoftstone/yangfan-ioctl.png)
 
@@ -1204,7 +1204,7 @@ index 0842a47c6..8aa60407f 100644
 
 此时怀疑VIDIOC_QUERYBUF不一致是头文件不同所导致（目前没做修改验证同改为linux-4.19是否可行）。对现有问题求助客户，并在OpenHarmony上寻找有无相似问题。
 
-找到了相似的issuse：https://gitee.com/openharmony/drivers_peripheral/issues/I4NI4M?from=project-issue
+找到了相似的issuse：https://gitcode.com/openharmony/drivers_peripheral/issues/I4NI4M?from=project-issue
 
 ![](figures/isoftstone/yangfan-picture-02.png)
 
@@ -1567,7 +1567,7 @@ struct v4l2_buffer {
 │   └── unittest      # input模块的单元测试代码。
 ```
 
-详细请参考input子系统[README](https://gitee.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md)
+详细请参考input子系统[README](https://gitcode.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md)
 
 ### TP HDF驱动适配
 

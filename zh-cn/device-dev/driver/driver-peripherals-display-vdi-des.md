@@ -37,7 +37,7 @@
 
 #### 接口说明
 
-注：以下接口列举的为VDI接口，接口声明见文件`/drivers/peripheral/display/composer/hdi_service/include/idisplay_composer_vdi.h`，获取路径为：[https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer)。
+注：以下接口列举的为VDI接口，接口声明见文件`/drivers/peripheral/display/composer/hdi_service/include/idisplay_composer_vdi.h`，获取路径为：[https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer)。
 - idisplay_composer_vdi.h
 
   | 功能描述                     | 接口名称                                                     |
@@ -143,7 +143,7 @@
 
 2. 编译共享库
 
-实现上述接口后，编译一个名为libdisplay_composer_vdi_impl.z.so的共享库。参考如下编译，BUILD.gn文件见`device/soc/rockchip/rk3568/hardware/display/BUILD.gn`，获取路径为：[https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn)。
+实现上述接口后，编译一个名为libdisplay_composer_vdi_impl.z.so的共享库。参考如下编译，BUILD.gn文件见`device/soc/rockchip/rk3568/hardware/display/BUILD.gn`，获取路径为：[https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn)。
 
 ```
   ohos_shared_library("libdisplay_composer_vdi_impl") {
@@ -182,13 +182,13 @@ BUILD.gn文件编写好后，可以在项目的根目录执行如下命令进行
 
 #### 开发实例
 
-OpenHarmony中有一个默认VDI实现，芯片厂商可参考此实现。见`drivers/peripheral/display/composer/vdi_base`，获取路径为：[https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base)。
+OpenHarmony中有一个默认VDI实现，芯片厂商可参考此实现。见`drivers/peripheral/display/composer/vdi_base`，获取路径为：[https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/composer/vdi_base)。
 
 ### Buffer部分
 
 #### 接口说明
 
-注：以下接口列举的为VDI接口，接口声明见文件`/drivers/peripheral/display/buffer/hdi_service/include/idisplay_buffer_vdi.h`，获取路径为：[https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer)。
+注：以下接口列举的为VDI接口，接口声明见文件`/drivers/peripheral/display/buffer/hdi_service/include/idisplay_buffer_vdi.h`，获取路径为：[https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer)。
 - idisplay_composer_vdi.h
 
   | 功能描述                     | 接口名称                                                     |
@@ -240,7 +240,7 @@ OpenHarmony中有一个默认VDI实现，芯片厂商可参考此实现。见`dr
 
 2. 编译共享库
 
-实现上述接口后，编译一个名为libdisplay_buffer_vdi_impl.z.so的共享库。参考如下编译，BUILD.gn文件见`device/soc/rockchip/rk3568/hardware/display/BUILD.gn`，获取路径为：[https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitee.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn)。
+实现上述接口后，编译一个名为libdisplay_buffer_vdi_impl.z.so的共享库。参考如下编译，BUILD.gn文件见`device/soc/rockchip/rk3568/hardware/display/BUILD.gn`，获取路径为：[https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn](https://gitcode.com/openharmony/device_soc_rockchip/blob/master/rk3568/hardware/display/BUILD.gn)。
 
 ```
   ohos_shared_library("libdisplay_buffer_vdi_impl") {
@@ -290,4 +290,4 @@ BUILD.gn文件编写好后，可以在项目的根目录执行如下命令进行
 
 #### 开发实例
 
-OpenHarmony中有一个默认VDI实现，芯片厂商可参考此实现。见`drivers/peripheral/display/buffer/vdi_base`，获取路径为：[https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base)。
+OpenHarmony中有一个默认VDI实现，芯片厂商可参考此实现。见`drivers/peripheral/display/buffer/vdi_base`，获取路径为：[https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/buffer/vdi_base)。

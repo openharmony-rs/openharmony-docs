@@ -20,7 +20,7 @@ HiTraceMeter系统主要分为三部分：
 
 Trace数据分析可以在图形工具中人工分析，也可以使用分析脚本自动化分析，Trace分析工具以Trace命令行工具的采集结果数据文件为输入。
 
-  HiTraceMeter跟踪数据使用类别分类，类别分类称作Trace Tag或Trace Category，一般一个端侧软件子系统对应一个Tag。该Tag在打点API中以类别Tag参数传入。Trace命令行工具采集跟踪数据时，只采集Tag类别选项指定的跟踪数据。应用程序跟踪数据标签都是属于APP Tag，从而JS接口不需要输入tag参数。目前HiTraceMeter支持的Trace Tag表如下(可在hitrace_meter.h [hitrace_meter.h](https://gitee.com/openharmony/hiviewdfx_hitrace/blob/master/interfaces/native/innerkits/include/hitrace_meter/hitrace_meter.h) 中查看)：
+  HiTraceMeter跟踪数据使用类别分类，类别分类称作Trace Tag或Trace Category，一般一个端侧软件子系统对应一个Tag。该Tag在打点API中以类别Tag参数传入。Trace命令行工具采集跟踪数据时，只采集Tag类别选项指定的跟踪数据。应用程序跟踪数据标签都是属于APP Tag，从而JS接口不需要输入tag参数。目前HiTraceMeter支持的Trace Tag表如下(可在hitrace_meter.h [hitrace_meter.h](https://gitcode.com/openharmony/hiviewdfx_hitrace/blob/master/interfaces/native/innerkits/include/hitrace_meter/hitrace_meter.h) 中查看)：
 
 ```cpp
 constexpr uint64_t HITRACE_TAG_NEVER = 0; // This tag is never enabled.
@@ -103,7 +103,7 @@ HiTraceMeter分为JS/C++应用打点API与数据采集命令行工具hitrace，�
 
 ### 接口说明
 
-C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开发者可以略过本节。标准系统上接口描述如下（hitrace_meter.h  [hitrace_meter.h](https://gitee.com/openharmony/hiviewdfx_hitrace/blob/master/interfaces/native/innerkits/include/hitrace_meter/hitrace_meter.h) ）：
+C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开发者可以略过本节。标准系统上接口描述如下（hitrace_meter.h  [hitrace_meter.h](https://gitcode.com/openharmony/hiviewdfx_hitrace/blob/master/interfaces/native/innerkits/include/hitrace_meter/hitrace_meter.h) ）：
 
 **表 1**  同步接口
 
@@ -178,13 +178,13 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
    hdc_std shell hitrace -t 10 ohos > .\myapp_demo.ftrace
    ```
    
-   抓取之后的数据可以在smartperf中"Open trace file"或者直接拖入图形区打开，关于smartperf的详细介绍可查看 [smartperf](https://toscode.gitee.com/openharmony-sig/smartperf) 。
+   抓取之后的数据可以在smartperf中"Open trace file"或者直接拖入图形区打开，关于smartperf的详细介绍可查看 [smartperf](https://toscode.gitcode.com/openharmony-sig/smartperf) 。
 
 ### 调测验证
 
 以下为一个demo调试过程，该demo使用了同步接口中的StartTrace和FinishTrace。
 
-1. 编写测试代码hitrace_example.cpp（ [hitrace_example.cpp](https://gitee.com/openharmony/hiviewdfx_hitrace/blob/master/example/hitrace_example.cpp)  ），将使用到的接口加入代码：
+1. 编写测试代码hitrace_example.cpp（ [hitrace_example.cpp](https://gitcode.com/openharmony/hiviewdfx_hitrace/blob/master/example/hitrace_example.cpp)  ），将使用到的接口加入代码：
    
    ```cpp
    int main()
@@ -351,4 +351,4 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
 
 ## 参考
 
-更多关于HiTraceMeter的详细内容请参考：[轻量级的分布式调用链跟踪](https://gitee.com/openharmony/hiviewdfx_hitrace) 。
+更多关于HiTraceMeter的详细内容请参考：[轻量级的分布式调用链跟踪](https://gitcode.com/openharmony/hiviewdfx_hitrace) 。

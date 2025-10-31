@@ -696,7 +696,7 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
     >   -   uid、gid、caps等配置项是用户态驱动的启动配置，内核态不用配置。
     >   -   根据进程权限最小化设计原则，业务模块uid、gid不用配置，如上面的sample_host，使用普通用户权限，即uid和gid被定义为hostName的定义值。
     >   -   如果普通用户权限不能满足业务要求，需要把uid、gid定义为system或者root权限时，请找安全专家进行评审。
-    >   -   进程的uid在文件**base/startup/init/services/etc/passwd**中配置，进程的gid在文件**base/startup/init/services/etc/group**中配置，进程uid和gid配置参考：[系统服务用户组添加方法](https://gitee.com/openharmony/startup_init_lite/wikis)。
+    >   -   进程的uid在文件**base/startup/init/services/etc/passwd**中配置，进程的gid在文件**base/startup/init/services/etc/group**中配置，进程uid和gid配置参考：[系统服务用户组添加方法](https://gitcode.com/openharmony/startup_init_lite/wikis)。
     >   -   caps值：格式为caps = ["xxx"]，如果要配置CAP_DAC_OVERRIDE，此处需要填写caps = ["DAC_OVERRIDE"]，不能填写为caps = ["CAP_DAC_OVERRIDE"]。
     >   -   preload：驱动按需加载字段。
 
