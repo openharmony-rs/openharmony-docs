@@ -37,6 +37,12 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   Image组件引入本地图片路径，即可显示图片（根目录为ets文件夹）。不支持跨包、跨模块调用该Image组件。
 
   <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  'images/view.jpg' 需要替换为开发者所需的资源文件
+  Image('images/view.jpg')
+    .width(200)
+  ```
 
   加载本地图片过程中，如果对图片进行修改或者替换，可能会引起应用崩溃。因此需要覆盖图片文件时，应该先删除该文件再重新创建一个同名文件。
 
@@ -55,6 +61,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
   <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  $r('app.string.LoadingResources') 需要替换为开发者所需的资源文件
+  Image($r('app.string.LoadingResources')) // 实际使用时请替换为真实地址
+  ```
 
 - Resource资源
 
@@ -67,6 +78,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   调用方式：
 
   <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  $r('app.media.icon') 需要替换为开发者所需的资源文件
+  Image($r('app.media.icon'))
+  ```
 
   还可以将图片放在rawfile文件夹下。
 
@@ -77,6 +93,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   调用方式：
 
   <!-- @[rawfile_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  $rawfile('example1.png') 需要替换为开发者所需的资源文件
+  Image($rawfile('example1.png'))
+  ```
 
 - 媒体库file://data/storage
 
@@ -85,10 +106,67 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   1. 调用接口获取图库的照片url。
 
   <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->
+  
+  ``` TypeScript
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  // ···
+  @Entry
+  @Component
+  struct MediaLibraryFile {
+    @State imgDatas: string[] = [];
+    // 获取照片url集
+    getAllImg() {
+      try {
+        let photoSelectOptions:photoAccessHelper.PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+        photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+        photoSelectOptions.maxSelectNumber = 5;
+        let photoPicker:photoAccessHelper.PhotoViewPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(photoSelectOptions).then((photoSelectResult:photoAccessHelper.PhotoSelectResult) => {
+          this.imgDatas = photoSelectResult.photoUris;
+          hilog.info(DOMAIN, TAG,'PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
+        }).catch((err:Error) => {
+          let message = (err as BusinessError).message;
+          let code = (err as BusinessError).code;
+          hilog.info(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
+        });
+      } catch (err) {
+        let message = (err as BusinessError).message;
+        let code = (err as BusinessError).code;
+        hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
+      };
+    };
+  
+    // aboutToAppear中调用上述函数，获取图库的所有图片url，存在imgDatas中
+    async aboutToAppear() {
+      this.getAllImg();
+    };
+    // 使用imgDatas的url加载图片。
+    build() {
+      Column() {
+        Grid() {
+          ForEach(this.imgDatas, (item:string) => {
+            GridItem() {
+              Image(item)
+                .width(200)
+            }
+          }, (item:string):string => JSON.stringify(item))
+        }
+      }.width('100%').height('100%')
+    }
+  }
+  ```
 
   2. 从媒体库获取的url格式通常如下。
 
   <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->
+  
+  ``` TypeScript
+  //  'file://media/Photos/5' 需要替换为开发者所需的资源文件
+  Image('file://media/Photos/5')
+    .width(200)
+  ```
 
 
 - base64
