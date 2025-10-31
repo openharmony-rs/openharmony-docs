@@ -7,7 +7,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
 
 
-开源代码仓库地址：[https://openharmony.gitcode.com](https://openharmony.gitcode.com)。
+开源代码仓库地址：[https://openharmony.gitee.com](https://openharmony.gitcode.com)。
 
 
 ## 获取源码概述
