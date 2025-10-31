@@ -3611,7 +3611,7 @@ try {
 
 ## onTouchOutside<sup>22+</sup>
 
-onTouchOutside(callback: Callback&lt;void&gt;): void;
+onTouchOutside(callback: Callback&lt;void&gt;): void
 
 开启本窗口区域范围外的点击事件的监听。
 
@@ -3695,7 +3695,7 @@ try {
 
 ## offTouchOutside<sup>22+</sup>
 
-offTouchOutside(callback?: Callback&lt;void&gt;): void;
+offTouchOutside(callback?: Callback&lt;void&gt;): void
 
 关闭本窗口区域范围外的点击事件的监听。
 
@@ -3936,7 +3936,7 @@ try {
 
 ## onDialogTargetTouch<sup>22+</sup>
 
-onDialogTargetTouch(callback: Callback&lt;void&gt;): void;
+onDialogTargetTouch(callback: Callback&lt;void&gt;): void
 
 开启模态窗口所遮盖窗口的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
 
@@ -4020,7 +4020,7 @@ try {
 
 ## offDialogTargetTouch<sup>22+</sup>
 
-offDialogTargetTouch(callback?: Callback&lt;void&gt;): void;
+offDialogTargetTouch(callback?: Callback&lt;void&gt;): void
 
 关闭模态窗口目标窗口的点击事件的监听。
 
@@ -4530,7 +4530,7 @@ try {
 
 ## onNoInteractionDetected()<sup>22+</sup>
 
-onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void;
+onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void
 
 开启本窗口在指定超时时间内无交互事件的监听，交互事件支持物理键盘输入事件和屏幕触控点击事件，不支持软键盘输入事件。
 
@@ -4628,7 +4628,7 @@ try {
 
 ## offNoInteractionDetected()<sup>22+</sup>
 
-offNoInteractionDetected(callback?: Callback&lt;void&gt;): void;
+offNoInteractionDetected(callback?: Callback&lt;void&gt;): void
 
 关闭本窗口在指定超时时间内无交互事件的监听，交互事件支持物理键盘输入事件和屏幕触控点击事件，不支持软键盘输入事件。
 
@@ -6449,7 +6449,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -6524,7 +6524,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 20
 
@@ -7605,9 +7605,9 @@ try {
 
 ## setWindowMask<sup>12+</sup>
 
-ArkTs-Dyn：setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;;
+ArkTs-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
-ArkTs-Sta：setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;;
+ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
