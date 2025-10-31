@@ -93,8 +93,6 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 | identity | string | 是    | 凭据的关键值。 |
 | credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) 或 string | 是    | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭证类型；类型为string时，与接口[confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm9)<sup>9+</sup>功能一致。 |
 
-支持的证书签名算法以及秘钥长度详见下表。
-
 ## cancel<sup>9+</sup>
 
 cancel(): void
