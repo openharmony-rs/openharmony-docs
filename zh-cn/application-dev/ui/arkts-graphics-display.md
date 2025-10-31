@@ -747,6 +747,45 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 
   <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct EventCall {
+    @State widthValue: number = 0;
+    @State heightValue: number = 0;
+    @State componentWidth: number = 0;
+    @State componentHeight: number = 0;
+  
+    build() {
+      Column() {
+        Row() {
+          //  $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
+          Image($r('app.media.ic_img_2'))
+            .width(200)
+            .height(150)
+            .margin(15)
+            .onComplete(msg => {
+              if(msg){
+                this.widthValue = msg.width;
+                this.heightValue = msg.height;
+                this.componentWidth = msg.componentWidth;
+                this.componentHeight = msg.componentHeight;
+              };
+            })
+              // 图片获取失败，打印结果
+            .onError(() => {
+              hilog.info(DOMAIN, TAG, 'load image fail');
+            })
+            .overlay('\nwidth: ' + String(this.widthValue) + ', height: ' + String(this.heightValue) + '\ncomponentWidth: ' + String(this.componentWidth) + '\ncomponentHeight: ' + String(this.componentHeight), {
+              align: Alignment.Bottom,
+              offset: { x: 0, y: 60 }
+            })
+        }
+      }
+    }
+  }
+  ```
 
 ![zh-cn_image_0000001511740460](figures/zh-cn_image_0000001511740460.png)
 
