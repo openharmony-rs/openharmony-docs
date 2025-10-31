@@ -780,6 +780,26 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   也可以注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听：
   
   <!-- @[callbackFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template3/Index.ets) -->
+  
+  ``` TypeScript
+  // 在UIAbility中使用
+  import { UIContext, uiObserver } from '@kit.ArkUI';
+  
+  // callbackFunc是开发者定义的监听回调函数
+  function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+  // ···
+  };
+  // ···
+      uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+      // ···
+  
+  // ···
+    // 可以通过窗口的getUIContext()方法获取对应的UIContent
+    uiContext: UIContext | null = null;
+  // ···
+      uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc);
+      // ···
+  ```
 
 ## 页面转场
 
