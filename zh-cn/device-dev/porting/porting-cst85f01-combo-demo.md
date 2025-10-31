@@ -6,7 +6,7 @@
 
 ### 目录规划
 
-本方案目录结构使用[Board和SoC解耦的设计思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
+本方案目录结构使用[Board和SoC解耦的设计思路](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)：
 
 ```
 device
@@ -408,7 +408,7 @@ int32_t hal_vfs_init(void)
 
 ### C库适配
 
-在轻量系统中，C库适配比较复杂，设计思路请参考[LiteOS-M内核支持musl与newlib平滑切换方案](https://gitcode.com/arvinzzz/ohos_kernel_design_specification/blob/master/liteos_m/%E6%94%AF%E6%8C%81newlib/%E5%86%85%E6%A0%B8%E9%80%82%E9%85%8Dnewlib%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF.md)，自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。在`vendor/chipsea/iotlink_demo/kernel_configs/debug.config`选中LOSCFG_LIBC_NEWLIB=y即可。
+在轻量系统中，C库适配比较复杂，设计思路请参考[LiteOS-M内核支持musl与newlib平滑切换方案](https://gitee.com/arvinzzz/ohos_kernel_design_specification/blob/master/liteos_m/%E6%94%AF%E6%8C%81newlib/%E5%86%85%E6%A0%B8%E9%80%82%E9%85%8Dnewlib%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF.md)，自带`newlib`的C库，那么系统移植整体采用`newlib`的C库。在`vendor/chipsea/iotlink_demo/kernel_configs/debug.config`选中LOSCFG_LIBC_NEWLIB=y即可。
 
 
 ### printf适配
