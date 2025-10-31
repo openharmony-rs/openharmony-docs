@@ -85,7 +85,6 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```
 
 ## 布局回调
@@ -187,5 +186,4 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```
