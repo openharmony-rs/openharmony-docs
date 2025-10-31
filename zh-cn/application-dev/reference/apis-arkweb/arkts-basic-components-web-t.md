@@ -56,7 +56,7 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
 type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void;
 
-用户加载资源时发生SSL错误时触发的回调。
+需要用户进行PIN码认证时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,7 +64,7 @@ type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void;
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | 是 | 需要用户进行pin码认证时触发的回调详情。 |
+| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | 是 | 需要用户进行PIN码认证时触发的回调详情。 |
 
 ## OnContextMenuHideCallback<sup>11+</sup>
 

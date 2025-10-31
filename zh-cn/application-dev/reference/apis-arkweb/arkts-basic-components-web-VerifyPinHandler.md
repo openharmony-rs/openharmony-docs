@@ -28,7 +28,7 @@ VerifyPinHandler的构造函数。
 
 confirm(result: PinVerifyResult): void;
 
-通知Web组件pin码认证结果。
+通知Web组件PIN码认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,4 +36,4 @@ confirm(result: PinVerifyResult): void;
 
 | 参数名     | 类型   | 必填   | 说明    |
 | ------- | ------ | ---- | ------- |
-| result | [PinVerifyResult](./arkts-basic-components-web-e.md#pinverifyresult22) | 是    | pin码认证结果。 |
+| result | [PinVerifyResult](./arkts-basic-components-web-e.md#pinverifyresult22) | 是    | PIN码认证结果。 |

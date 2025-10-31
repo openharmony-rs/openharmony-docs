@@ -471,7 +471,7 @@ Web布局模式的配置。
 
 ## PinVerifyResult<sup>22+</sup>
 
-pin码认证结果。
+PIN码认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
