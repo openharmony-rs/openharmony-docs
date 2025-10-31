@@ -18,9 +18,9 @@
 
 ### 相关模块
 
-- [Kconfig更新模块](https://gitcode.com/openharmony/build/blob/master/tools/component_tools/generate_kconfig.py)：用于更新Kconfig菜单栏目最新的部件信息列表。
+- [Kconfig更新模块](https://gitee.com/openharmony/build/blob/master/tools/component_tools/generate_kconfig.py)：用于更新Kconfig菜单栏目最新的部件信息列表。
 
-- [config配置格式转换](https://gitcode.com/openharmony/build/blob/master/tools/component_tools/parse_kconf.py)：用于将界面生成的config文件，转化为系统编译构建的标准化格式配置文件。
+- [config配置格式转换](https://gitee.com/openharmony/build/blob/master/tools/component_tools/parse_kconf.py)：用于将界面生成的config文件，转化为系统编译构建的标准化格式配置文件。
 
 ## 操作指导
 
