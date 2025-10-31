@@ -53,6 +53,22 @@
 2. Stack组件设置手势。
 
       <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+      
+      ``` TypeScript
+      Stack() {}
+      .width('200vp')
+      .height('200vp')
+      .hitTestBehavior(HitTestMode.Transparent)
+      .gesture(GestureGroup(GestureMode.Parallel,
+        LongPressGesture()
+          .onAction((event: GestureEvent) => {
+            // ···
+            //  $r('app.string.Stop_dragging_prompt') 需要替换为开发者所需的资源文件
+            promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
+          })
+          .tag('longpress')
+      ))
+      ```
 
 3. Stack组件设置拦截。
 
