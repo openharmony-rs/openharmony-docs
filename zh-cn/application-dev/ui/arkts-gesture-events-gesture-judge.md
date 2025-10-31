@@ -72,7 +72,7 @@
 
 3. Stack组件设置拦截。
 
- <!-- @[set_interception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+   <!-- @[set_interception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
  
  ``` TypeScript
  .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
