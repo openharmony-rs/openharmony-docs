@@ -391,7 +391,7 @@ struct Index {
 <!-- @[create_sub_window2_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/SubWindow.ets) -->
 
 ``` TypeScript
-// SubWindow.ets
+// subWindow.ets
 @Entry
 @Component
 struct SubWindow {
