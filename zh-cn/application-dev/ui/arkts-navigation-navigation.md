@@ -439,6 +439,11 @@ NavPathStack通过Pop相关接口去实现页面返回功能。
    this.pathStack.popToName('temp4-pageOne');
    ```
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
+   
+   ``` TypeScript
+   // 返回到索引为0的页面
+   this.pathStack.popToIndex(0);
+   ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
 
