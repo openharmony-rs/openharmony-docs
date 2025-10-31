@@ -906,6 +906,24 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 2. 将页面路由的操作，放到animateTo动画闭包中，配置对应的动画参数以及关闭系统默认的转场。
 
    <!-- @[GeometryTransitionFromPageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+   
+   ``` TypeScript
+   NavDestination() {
+     Column() {
+       // $r('app.string.ToPage')需要替换为开发者所需的字符串资源文件
+       Button($r('app.string.ToPage'))
+         .width('80%')
+         .height(40)
+         .margin(20)
+         .onClick(() => {
+           this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+             this.navPathStack.pushPath({ name: 'ToPage' }, false)
+           });
+         })
+       // ···
+     }
+   }.title('FromPage')
+   ```
 
 ## 跨包路由
 
