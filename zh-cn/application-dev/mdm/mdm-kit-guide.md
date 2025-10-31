@@ -40,13 +40,13 @@ MDM Kit为企业MDM应用提供设备管理能力，包括企业设备管理与�
 <!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
 
 ``` JSON5
-    "requestPermissions": [
-	// ···
-      {
-        "name": "ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS"
-      },
-	// ···
-    ],
+"requestPermissions": [
+// ···
+  {
+    "name": "ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS"
+  },
+// ···
+],
 ```
 
 
@@ -86,10 +86,10 @@ import { Want } from '@kit.AbilityKit';
     try {
       restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
       console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
-	// ···
+    // ···
     } catch (err) {
       console.error('setDisallowedPolicy fail.');
-	// ···
+    // ···
     }
 ```
 
