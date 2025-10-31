@@ -38,3 +38,23 @@ Web组件提供了两种可配置的渲染模式，能够根据不同的容器�
 
 <!-- @[web_component_rendering_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/RenderMode.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebHeightPage {
+  private webviewController: WebviewController = new webview.WebviewController()
+
+  build() {
+    Column() {
+      Web({
+        src: 'www.example.com',
+        controller: this.webviewController,
+        renderMode: RenderMode.ASYNC_RENDER // 设置渲染模式
+      })
+    }
+  }
+}
+```
+
