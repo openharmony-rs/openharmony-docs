@@ -633,8 +633,8 @@ chain.apply(httpRequest);
 // 创建请求可选项
 let options: http.HttpRequestOptions = {
   method: http.RequestMethod.POST,
-  header: { "content-type": "text/html" } as Record<string, string>,
-  extraData: { "context": "BODY_NO_CHANGE" } as Record<string, string>,
+  header: { 'content-type': 'text/html' } as Record<string, string>,
+  extraData: { 'context': 'BODY_NO_CHANGE' } as Record<string, string>,
 };
 ```
 
@@ -646,7 +646,7 @@ let options: http.HttpRequestOptions = {
 
 ```typescript
 // 发起请求
-httpRequest.request('https://www.example.com/', options, (err: BusinessError, res: http.HttpResponse) => {
+httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
   if (err) {
     hilog.info(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
   } else {
