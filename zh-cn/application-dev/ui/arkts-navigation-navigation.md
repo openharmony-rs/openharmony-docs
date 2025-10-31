@@ -952,6 +952,15 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    // ···
+    "routerMap": "$profile:route_map",
+    // ···
+  }
+```
+
 2. 添加完路由配置文件地址后，需要在工程resources/base/profile中创建route_map.json文件。添加如下配置信息：
    
    ```json
