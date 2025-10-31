@@ -114,6 +114,18 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    <!-- @[napi_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
    
+   ``` C++
+   // 模块初始化
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "asyncWork", nullptr, AsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr }
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   ```
+   
 
    接口对应的.d.ts描述
 
