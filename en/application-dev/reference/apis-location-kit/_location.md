@@ -16,7 +16,7 @@ Provides APIs for querying the location switch status, and starting and stopping
 ## Summary
 
 
-### File
+### Files
 
 | Name| Description| 
 | -------- | -------- |
