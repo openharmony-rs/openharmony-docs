@@ -26,7 +26,7 @@ getCameraManager(context: Context): CameraManager
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -77,7 +77,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                              | 类型                                  | 只读 | 可选 | 说明        |
 |---------------------------------|-------------------------------------| ---- |----|---------- |
@@ -85,7 +85,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 | cameraPosition                  | [CameraPosition](#cameraposition)   | 是   | 否  | 相机位置。    |
 | cameraType                      | [CameraType](#cameratype)           | 是   | 否  | 相机类型。    |
 | connectionType                  | [ConnectionType](#connectiontype)   | 是   | 否  | 相机连接类型。 |
-| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变，取值范围为0°-360°，单位：度。 |
+| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是   | 否  | 相机安装角度，不受屏幕旋转影响，取值范围为0°-360°，单位：度。 |
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](#hostdevicetype15) | 是   | 否  | 远端设备类型。 |
 
@@ -99,9 +99,9 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 | 名称                         | 值   | 说明                                                              |
 | --------------------------- | ---- |-----------------------------------------------------------------|
-| CAMERA_POSITION_UNSPECIFIED | 0    | 相对于设备屏幕没有固定的朝向的相机。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20   |
-| CAMERA_POSITION_BACK        | 1    | 后置相机。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20     |
-| CAMERA_POSITION_FRONT       | 2    | 前置相机。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20      |
+| CAMERA_POSITION_UNSPECIFIED | 0    | 相对于设备屏幕没有固定的朝向的相机。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22   |
+| CAMERA_POSITION_BACK        | 1    | 后置相机。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22     |
+| CAMERA_POSITION_FRONT       | 2    | 前置相机。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22      |
 | CAMERA_POSITION_FOLD_INNER<sup>(deprecated)</sup>  | 3    | 折叠态相机。<br/> 从API version 11开始支持，从API version 12开始废弃。<br />**ArkTS-Dyn起始版本：** 11 |
 
 ## CameraType
@@ -114,7 +114,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                     | 值   | 说明            |
 | ----------------------- | ---- | -------------- |
@@ -134,7 +134,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                          | 值   | 说明           |
 | ---------------------------- | ---- | ------------- |
@@ -152,7 +152,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                          | 值       | 说明      |
 | ---------------------------- | ----     |---------|
@@ -170,7 +170,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
@@ -189,7 +189,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
@@ -207,7 +207,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
@@ -224,7 +224,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
@@ -241,7 +241,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                          | 只读 | 可选 | 说明         |
 | -------- | ----------------------------- |---- | ---- | ------------- |
@@ -258,7 +258,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
@@ -275,7 +275,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
@@ -291,7 +291,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
@@ -310,9 +310,9 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 | 名称                       | 值   | 说明                                                         |
 | -------------------------- | ---- | ------------------------------------------------------------ |
-| NORMAL_PHOTO               | 1    | 普通拍照模式。详情见[PhotoSession](#photosession11)<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
-| NORMAL_VIDEO               | 2    | 普通录像模式。详情见[VideoSession](#videosession11)<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
-| SECURE_PHOTO<sup>12+</sup> | 12   | 安全相机模式。详情见[SecureSession](#securesession12)<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
+| NORMAL_PHOTO               | 1    | 普通拍照模式。详情见[PhotoSession](#photosession11)<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| NORMAL_VIDEO               | 2    | 普通录像模式。详情见[VideoSession](#videosession11)<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| SECURE_PHOTO<sup>12+</sup> | 12   | 安全相机模式。详情见[SecureSession](#securesession12)<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## CameraErrorCode
 
@@ -326,17 +326,17 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 
 | 名称                       | 值          | 说明            |
 | -------------------------  | ----       | ------------    |
-| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 20 |
-| SERVICE_FATAL_ERROR        | 7400201    | 相机服务错误返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
+| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。<br />**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| SERVICE_FATAL_ERROR        | 7400201    | 相机服务错误返回。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## CameraManager
 
@@ -354,7 +354,7 @@ getSupportedCameras(): Array\<CameraDevice\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -391,7 +391,7 @@ getSupportedSceneModes(camera: CameraDevice): Array\<SceneMode\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -431,7 +431,7 @@ getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability
 > **说明：**
 > 从 API version 10开始支持，从API version 11开始废弃。建议使用[getSupportedOutputCapability](#getsupportedoutputcapability11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -470,7 +470,7 @@ getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutpu
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -506,7 +506,7 @@ isCameraMuted(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -539,7 +539,7 @@ createCameraInput(camera: CameraDevice): CameraInput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -597,7 +597,7 @@ createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -654,7 +654,7 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -709,7 +709,7 @@ createPreviewOutput(surfaceId: string): PreviewOutput
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -759,7 +759,7 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 > **说明：**
 > 从 API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -815,7 +815,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -869,7 +869,7 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -924,7 +924,7 @@ createVideoOutput(surfaceId: string): VideoOutput
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -977,7 +977,7 @@ createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): Metadata
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1027,7 +1027,7 @@ createCaptureSession(): CaptureSession
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[createSession](#createsession11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1077,7 +1077,7 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1130,7 +1130,9 @@ on(type: 'cameraStatus', callback: AsyncCallback\<CameraStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraStatus](#oncamerastatus22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1172,7 +1174,9 @@ onCameraStatus(callback: AsyncCallback\<CameraStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("cameraStatus")](#oncamerastatus)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1211,7 +1215,9 @@ off(type: 'cameraStatus', callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCameraStatus](#offcamerastatus22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1238,7 +1244,9 @@ offCameraStatus(callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("cameraStatus")](#offcamerastatus)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1270,7 +1278,9 @@ on(type: 'foldStatusChange', callback: AsyncCallback\<FoldStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFoldStatusChange](#onfoldstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1312,7 +1322,9 @@ onFoldStatusChange(callback: AsyncCallback\<FoldStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("foldStatusChange")](#onfoldstatuschange12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1351,7 +1363,9 @@ off(type: 'foldStatusChange', callback?: AsyncCallback\<FoldStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFoldStatusChange](#offfoldstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1378,7 +1392,9 @@ offFoldStatusChange(callback?: AsyncCallback\<FoldStatusInfo\>): void
 
 关闭折叠设备折叠状态变化的监听。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("foldStatusChange")](#offfoldstatuschange12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1410,7 +1426,7 @@ isTorchSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1439,13 +1455,13 @@ isTorchModeSupported(mode: TorchMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| mode | [TorchMode](#torchmode11) | 是 | 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。 |
+| mode | [TorchMode](#torchmode11) | 是 | ArkTS-Dyn: 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Dyn: 手电筒模式。目前不支持传参为null或者undefined。 |
 
 **返回值：**
 
@@ -1474,7 +1490,7 @@ getTorchMode(): TorchMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1504,13 +1520,13 @@ setTorchMode(mode: TorchMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| mode | [TorchMode](#torchmode11) | 是 | 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。 |
+| mode | [TorchMode](#torchmode11) | 是 | ArkTS-Dyn: 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta: 手电筒模式。目前不支持传参为null或者undefined。 |
 
 **错误码：**
 
@@ -1549,7 +1565,9 @@ on(type: 'torchStatusChange', callback: AsyncCallback\<TorchStatusInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTorchStatusChange](#ontorchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1590,7 +1608,9 @@ onTorchStatusChange(callback: AsyncCallback\<TorchStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("torchStatusChange")](#ontorchStatusChange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1598,9 +1618,9 @@ onTorchStatusChange(callback: AsyncCallback\<TorchStatusInfo\>): void
 
 **参数：**
 
-| 参数名   | 类型                            | 必填 | 说明                                   |
-| -------- | ------------------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<TorchStatusInfo> | 是   | 回调函数，用于获取手电筒状态变化信息。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo)> | 是   | 回调函数，用于获取手电筒状态变化信息。 |
 
 **示例：**
 
@@ -1628,7 +1648,9 @@ off(type: 'torchStatusChange', callback?: AsyncCallback\<TorchStatusInfo\>): voi
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTorchStatusChange](#offtorchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1655,7 +1677,9 @@ offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
 
 手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("torchStatusChange")](#offtorchStatusChange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1663,9 +1687,9 @@ offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
 
 **参数：**
 
-| 参数名   | 类型                            | 必填 | 说明                                                         |
-| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<TorchStatusInfo> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo)> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **示例：**
 
@@ -1687,7 +1711,7 @@ getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1739,7 +1763,7 @@ getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurren
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1788,7 +1812,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                          | 值   | 说明           |
 | ---------------------------- | ---- | ------------- |
@@ -1806,7 +1830,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 类型       | 只读 | 可选 | 说明        |
 | ---------------- | ---------- | ---- | ---- | ----------- |
@@ -1824,7 +1848,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
@@ -1841,7 +1865,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称    | 类型   | 只读   | 可选   | 说明         |
 | ------ | ------ | ------ | ------ | ------------ |
@@ -1858,12 +1882,12 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 20 |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 20 |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br />**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 20 |
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br />**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br />**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br />**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -1875,7 +1899,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 值    | 说明          |
 |------|------|-------------|
@@ -1892,7 +1916,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 值    | 说明          |
 |------|------|-------------|
@@ -1909,7 +1933,7 @@ function getCameraConcurrentInfos(cameraManager: camera.CameraManager, cameraDev
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
@@ -1936,7 +1960,7 @@ open(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -1956,7 +1980,7 @@ open(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1972,7 +1996,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2000,7 +2024,7 @@ open(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2021,7 +2045,7 @@ open(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2035,7 +2059,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function openCameraInput(cameraInput: camera.CameraInput): void {
@@ -2059,7 +2083,7 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2085,7 +2109,7 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2099,7 +2123,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function openCameraInput(cameraInput: camera.CameraInput): void {
@@ -2123,7 +2147,7 @@ open(type: CameraConcurrentType): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2150,7 +2174,7 @@ open(type: CameraConcurrentType): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2164,7 +2188,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function openCameraInput(cameraInput: camera.CameraInput): void {
@@ -2188,7 +2212,7 @@ close(callback: AsyncCallback\<void\>\): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2206,7 +2230,7 @@ close(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2222,7 +2246,7 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2250,7 +2274,7 @@ close(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2268,7 +2292,7 @@ close(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2282,7 +2306,7 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function closeCameraInput(cameraInput: camera.CameraInput): void {
@@ -2306,7 +2330,9 @@ on(type: 'error', camera: CameraDevice, callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2344,7 +2370,9 @@ onError(camera: CameraDevice, callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2379,7 +2407,9 @@ off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2407,7 +2437,9 @@ offError(camera: CameraDevice, callback?: ErrorCallback): void
 
 注销监听CameraInput的错误事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2444,7 +2476,7 @@ release(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2462,7 +2494,7 @@ release(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2488,7 +2520,7 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2526,7 +2558,7 @@ release(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -2544,7 +2576,7 @@ release(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2566,7 +2598,7 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
@@ -2599,7 +2631,7 @@ start(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](#start11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2644,7 +2676,7 @@ start(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](#start11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2687,7 +2719,7 @@ stop(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](#stop11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2724,7 +2756,7 @@ stop(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](#stop11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2762,7 +2794,9 @@ on(type: 'frameStart', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameStart](#onframestart22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2803,7 +2837,9 @@ onFrameStart(callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("frameStart")](#onframestart)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2841,7 +2877,9 @@ off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameStart](#offframestart22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2868,7 +2906,9 @@ offFrameStart(callback?: AsyncCallback\<void\>): void
 
 注销预览帧启动的监听。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("frameStart")](#offframestart)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2900,7 +2940,9 @@ on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameEnd](#onframeend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2941,7 +2983,9 @@ onFrameEnd(callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("frameEnd")](#onframeend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2979,7 +3023,9 @@ off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameEnd](#offframeend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3006,7 +3052,9 @@ offFrameEnd(callback?: AsyncCallback\<void\>): void
 
 注销监听预览帧结束。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("frameEnd")](#offframeend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3038,7 +3086,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3075,7 +3125,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3109,7 +3161,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3136,7 +3190,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听预览输出的错误事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3168,7 +3224,7 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 |      类型      |     说明     |
@@ -3202,7 +3258,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3222,7 +3278,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<number>): void {
@@ -3230,7 +3286,7 @@ function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: 
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<int>): void {
@@ -3252,7 +3308,7 @@ getActiveFrameRate(): FrameRateRange
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3281,7 +3337,7 @@ getActiveProfile(): Profile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3331,7 +3387,7 @@ ArkTS-Sta: getPreviewRotation(displayRotation: int): ImageRotation
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3361,7 +3417,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     previewRotation = previewOutput.getPreviewRotation(imageRotation);
-    console.log(`Preview rotation is: ${previewRotation}`);
+    console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -3382,7 +3438,7 @@ setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): v
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3424,7 +3480,7 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值   | 说明           |
 | ------------ | ---- | ------------- |
@@ -3443,7 +3499,7 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型   | 只读 | 可选  |说明         |
 | ------------ | ------ | ---- |-----|------------ |
@@ -3461,7 +3517,7 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                  | 值   | 说明         |
 | -------------------- | ---- | ------------ |
@@ -3480,7 +3536,7 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
@@ -3501,7 +3557,7 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称   | 类型                            |     必填     | 说明       |
 | ------ | ----------------------------- | -------------- | ---------- |
@@ -3519,7 +3575,7 @@ release(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3551,7 +3607,7 @@ capture(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3570,7 +3626,7 @@ capture(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3586,7 +3642,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3614,7 +3670,7 @@ capture(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -3633,7 +3689,7 @@ capture(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3647,7 +3703,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function capture(photoOutput: camera.PhotoOutput): void {
@@ -3671,7 +3727,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3692,7 +3748,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3719,7 +3775,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function capture(photoOutput: camera.PhotoOutput): void {
@@ -3756,7 +3812,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3782,7 +3838,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3807,7 +3863,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function capture(photoOutput: camera.PhotoOutput): void {
@@ -3842,7 +3898,9 @@ on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAvailable](#onphotoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3884,7 +3942,9 @@ onPhotoAvailable(callback: AsyncCallback\<Photo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("photoAvailable")](#onphotoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3923,7 +3983,9 @@ off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAvailable](#offphotoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3955,13 +4017,15 @@ function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): v
 }
 ```
 
-### offPhotoAvailable<sup>11+</sup>
+### offPhotoAvailable<sup>22+</sup>
 
 offPhotoAvailable(callback?: AsyncCallback\<Photo\>): void
 
 注销监听全质量图上报。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("photoAvailable")](#offphotoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4004,7 +4068,9 @@ on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): v
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureStartWithInfo](#oncapturestartwithInfo22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4045,7 +4111,9 @@ onCaptureStartWithInfo(callback: AsyncCallback\<CaptureStartInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("captureStartWithInfo")](#oncapturestartwithInfo11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4083,7 +4151,9 @@ off(type: 'captureStartWithInfo', callback?: AsyncCallback\<CaptureStartInfo\>):
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureStartWithInfo](#offcapturestartwithInfo22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4112,7 +4182,9 @@ offCaptureStartWithInfo(callback?: AsyncCallback\<CaptureStartInfo\>): void
 
 注销监听拍照。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("captureStartWithInfo")](#offcapturestartwithInfo11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4146,7 +4218,7 @@ isMovingPhotoSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4194,7 +4266,7 @@ enableMovingPhoto(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4240,7 +4312,9 @@ on(type: 'photoAssetAvailable', callback: AsyncCallback\<photoAccessHelper.Photo
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAssetAvailable](#onphotoassetavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4261,7 +4335,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void {
   if (err) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err)}.`);
+    console.error(`photoAssetAvailable error:: ${err.code}`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -4283,7 +4357,9 @@ onPhotoAssetAvailable(callback: AsyncCallback\<photoAccessHelper.PhotoAsset\>): 
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("photoAssetAvailable")](#onphotoassetavailable12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4303,7 +4379,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError | null, photoAsset: photoAccessHelper.PhotoAsset | undefined): void {
   if (err!.code != 0) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err!)}.`);
+    console.error(`photoAssetAvailable error:: ${err.code}`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -4323,7 +4399,9 @@ off(type: 'photoAssetAvailable', callback?: AsyncCallback\<photoAccessHelper.Pho
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAssetAvailable](#offphotoassetavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4350,7 +4428,9 @@ offPhotoAssetAvailable(callback?: AsyncCallback\<photoAccessHelper.PhotoAsset\>)
 
 注销photoAsset上报。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("photoAssetAvailable")](#offphotoassetavailable12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4382,7 +4462,7 @@ isMirrorSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4413,7 +4493,7 @@ enableMirror(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4460,7 +4540,7 @@ getSupportedMovingPhotoVideoCodecTypes(): Array\<VideoCodecType\>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -4497,7 +4577,7 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -4532,7 +4612,7 @@ on(type: 'captureStart', callback: AsyncCallback\<number\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4574,7 +4654,7 @@ off(type: 'captureStart', callback?: AsyncCallback\<number\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4603,7 +4683,9 @@ on(type: 'frameShutter', callback: AsyncCallback\<FrameShutterInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameShutter](#onframeshutter22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4641,7 +4723,9 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 
 监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("frameShutter")](#onframeshutter)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4651,7 +4735,7 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 
 | 参数名   | 类型                                                   | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FrameShutterInfo](#frameshutterinfo)\> | 是   | 回调函数，用于获取相关信息。该回调返回意味着可以再次下发拍照请求。 |
+| callback | AsyncCallback\<[FrameShutterInfo](#frameshutterinfo)\> | 是   | 回调函数，用于获取相关信息。表示可以再次下发拍照请求。 |
 
 **示例：**
 
@@ -4680,7 +4764,9 @@ off(type: 'frameShutter', callback?: AsyncCallback\<FrameShutterInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameShutter](#offframeshutter22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4707,7 +4793,9 @@ offFrameShutter(callback?: AsyncCallback\<FrameShutterInfo\>): void
 
 注销监听拍照帧输出捕获。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("frameShutter")](#offframeshutter)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4739,7 +4827,9 @@ on(type: 'captureEnd', callback: AsyncCallback\<CaptureEndInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureEnd](#oncaptureend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4781,7 +4871,9 @@ onCaptureEnd(callback: AsyncCallback\<CaptureEndInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("captureEnd")](#oncaptureend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4820,7 +4912,9 @@ off(type: 'captureEnd', callback?: AsyncCallback\<CaptureEndInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureEnd](#offcaptureend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4847,7 +4941,9 @@ offCaptureEnd(callback?: AsyncCallback\<CaptureEndInfo\>): void
 
 注销监听拍照结束。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("captureEnd")](#offcaptureend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4879,7 +4975,9 @@ on(type: 'frameShutterEnd', callback: AsyncCallback\<FrameShutterEndInfo\>): voi
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameShutterEnd](#onframeshutterend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4920,7 +5018,9 @@ onFrameShutterEnd(callback: AsyncCallback\<FrameShutterEndInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("frameShutterEnd")](#onframeshutterend12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4958,7 +5058,9 @@ off(type: 'frameShutterEnd', callback?: AsyncCallback\<FrameShutterEndInfo\>): v
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameShutterEnd](#offframeshutterend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -4985,7 +5087,9 @@ offFrameShutterEnd(callback?: AsyncCallback\<FrameShutterEndInfo\>): void
 
 注销监听拍照帧输出捕获。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("frameShutterEnd")](#offframeshutterend12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5017,7 +5121,9 @@ on(type: 'captureReady', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureReady](#oncaptureready22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5058,7 +5164,9 @@ onCaptureReady(callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("captureReady")](#oncaptureready12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5096,7 +5204,9 @@ off(type: 'captureReady', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureReady](#offcaptureready22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5123,7 +5233,9 @@ offCaptureReady(callback?: AsyncCallback\<void\>): void
 
 注销监听可拍下一张。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("captureReady")](#offcaptureready12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5155,7 +5267,9 @@ on(type: 'estimatedCaptureDuration', callback: AsyncCallback\<number\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEstimatedCaptureDuration](#onestimatedcaptureduration22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5196,7 +5310,9 @@ onEstimatedCaptureDuration(callback: AsyncCallback\<double\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("estimatedCaptureDuration")](#onestimatedcaptureduration12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5234,7 +5350,9 @@ off(type: 'estimatedCaptureDuration', callback?: AsyncCallback\<number\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEstimatedCaptureDuration](#offestimatedcaptureduration22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5261,7 +5379,9 @@ offEstimatedCaptureDuration(callback?: AsyncCallback\<double\>): void
 
 注销监听预估的拍照时间。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("estimatedCaptureDuration")](#offestimatedcaptureduration12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5294,7 +5414,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5331,7 +5453,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5365,7 +5489,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5392,7 +5518,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听拍照输出发生错误。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5424,7 +5552,7 @@ getActiveProfile(): Profile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -5473,13 +5601,13 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是   | 设备旋转角度 |
+| deviceDegree | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是   | 设备旋转角度。 |
 
 **返回值：**
 
@@ -5498,14 +5626,14 @@ ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : number): camera.ImageRotation {
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -5515,14 +5643,14 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : int): camera.ImageRotation {
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -5542,7 +5670,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : in
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型   | 只读 | 可选 | 说明        |
 | --------- | ------ | ---- | ---- | ---------- |
@@ -5559,7 +5687,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : in
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
@@ -5575,7 +5703,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : in
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | --------- |
@@ -5592,7 +5720,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : in
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | ---------|
@@ -5609,7 +5737,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : in
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 类型      | 只读 | 可选 | 说明                      |
 | ---------- |---------| ---- | ---- |-------------------------|
@@ -5632,7 +5760,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5651,7 +5779,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5667,7 +5795,7 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5695,7 +5823,7 @@ start(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -5714,7 +5842,7 @@ start(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5728,7 +5856,7 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function startVideoOutput(videoOutput: camera.VideoOutput): void {
@@ -5752,7 +5880,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -5762,7 +5890,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5778,7 +5906,7 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5806,7 +5934,7 @@ stop(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -5816,7 +5944,7 @@ stop(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5830,7 +5958,7 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function stopVideoOutput(videoOutput: camera.VideoOutput): void {
@@ -5854,7 +5982,9 @@ on(type: 'frameStart', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameStart](#onframestart22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5895,7 +6025,9 @@ onFrameStart(callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("frameStart")](#onframestart)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5937,7 +6069,9 @@ off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameStart](#offframestart22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5969,7 +6103,9 @@ offFrameStart(callback?: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("frameStart")](#offframestart)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -5987,7 +6123,6 @@ offFrameStart(callback?: AsyncCallback\<void\>): void
 function unregisterVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
   videoOutput.offFrameStart();
 }
-
 ```
 
 ### on('frameEnd')
@@ -5998,7 +6133,9 @@ on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameEnd](#onframeend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6035,7 +6172,9 @@ onFrameEnd(callback: AsyncCallback\<void\>): void
 
 监听录像结束，通过注册回调函数获取结果。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("frameEnd")](#onframeend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6073,7 +6212,9 @@ off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameEnd](#offframeend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6100,7 +6241,9 @@ offFrameEnd(callback?: AsyncCallback\<void\>): void
 
 注销监听录像结束。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("frameEnd")](#offframeend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6132,7 +6275,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6169,7 +6314,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6203,7 +6350,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6230,7 +6379,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听录像输出发生错误。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6262,7 +6413,7 @@ getSupportedFrameRates(): Array\<FrameRateRange\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6298,7 +6449,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6318,7 +6469,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<number>): void {
@@ -6326,7 +6477,7 @@ function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Arra
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<int>): void {
@@ -6348,7 +6499,7 @@ getActiveFrameRate(): FrameRateRange
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6377,7 +6528,7 @@ getActiveProfile(): VideoProfile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6420,7 +6571,7 @@ isMirrorSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6451,7 +6602,7 @@ enableMirror(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6471,7 +6622,7 @@ enableMirror(enabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -6488,7 +6639,7 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -6523,7 +6674,7 @@ ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6548,7 +6699,7 @@ ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -6593,7 +6744,7 @@ function getDeviceDegree(): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -6615,7 +6766,7 @@ function getVideoRotation(videoOutput: camera.VideoOutput): camera.ImageRotation
 function getDeviceDegree(): int {
   let deviceDegree: int = -1;
   try {
-    sensor.once('gravityChange', (data: sensor.GravityResponse) => {
+    sensor.onceGravityChange((data: sensor.GravityResponse) => {
       console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
       console.info('Succeeded in invoking once. Y-coordinate component: ' + data.y);
       console.info('Succeeded in invoking once. Z-coordinate component: ' + data.z);
@@ -6654,7 +6805,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6673,7 +6824,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6689,7 +6840,7 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6717,7 +6868,7 @@ start(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6736,7 +6887,7 @@ start(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6750,7 +6901,7 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6776,7 +6927,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -6786,7 +6937,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6802,7 +6953,7 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6830,7 +6981,7 @@ stop(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -6840,7 +6991,7 @@ stop(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6854,7 +7005,7 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6880,7 +7031,9 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback\<Array\<MetadataObj
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataObjectsAvailable](#onmetadataobjectsavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6921,7 +7074,9 @@ onMetadataObjectsAvailable(callback: AsyncCallback\<Array\<MetadataObject\>\>): 
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("metadataObjectsAvailable")](#onmetadataobjectsavailable)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6959,7 +7114,9 @@ off(type: 'metadataObjectsAvailable', callback?: AsyncCallback\<Array\<MetadataO
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMetadataObjectsAvailable](#offmetadataobjectsavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -6986,7 +7143,9 @@ offMetadataObjectsAvailable(callback?: AsyncCallback\<Array\<MetadataObject\>\>)
 
 注销监听检测到的metadata对象。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("metadataObjectsAvailable")](#offmetadataobjectsavailable)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -7018,7 +7177,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -7055,7 +7216,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -7089,7 +7252,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -7116,7 +7281,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听metadata流的错误。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -7146,7 +7313,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 值   | 说明              |
 | ------------------------- | ---- | ----------------- |
@@ -7162,7 +7329,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称      | 类型   |  只读  | 可选  |           说明         |
 | -------- | ------ | ------ |-----| --------------------- |
@@ -7181,7 +7348,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
@@ -7199,7 +7366,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                    | 值   | 说明        |
 | ---------------------- | ---- | ---------- |
@@ -7218,7 +7385,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                           | 值   | 说明         |
 | ----------------------------- | ---- | ----------- |
@@ -7236,7 +7403,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                        | 值   | 说明          |
 | -------------------------- | ---- | ------------ |
@@ -7255,7 +7422,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                   | 值   | 说明       |
 | --------------------- | ---- | --------- |
@@ -7273,7 +7440,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称       | 值   | 说明         |
 | --------- | ---- | ------------ |
@@ -7299,7 +7466,7 @@ beginConfig(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -7338,7 +7505,7 @@ commitConfig(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7357,7 +7524,7 @@ commitConfig(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7373,7 +7540,7 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7401,7 +7568,7 @@ commitConfig(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7420,7 +7587,7 @@ commitConfig(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7435,7 +7602,7 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7462,7 +7629,7 @@ canAddInput(cameraInput: CameraInput): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7499,7 +7666,7 @@ addInput(cameraInput: CameraInput): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7545,7 +7712,7 @@ removeInput(cameraInput: CameraInput): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7591,7 +7758,7 @@ canAddOutput(cameraOutput: CameraOutput): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7628,7 +7795,7 @@ addOutput(cameraOutput: CameraOutput): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7674,7 +7841,7 @@ removeOutput(cameraOutput: CameraOutput): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7720,7 +7887,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7740,7 +7907,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7756,7 +7923,7 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7784,7 +7951,7 @@ start(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7804,7 +7971,7 @@ start(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7818,7 +7985,7 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function startCaptureSession(session: camera.Session): void {
@@ -7842,7 +8009,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7860,7 +8027,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7876,7 +8043,7 @@ function stopCaptureSession(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7904,7 +8071,7 @@ stop(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -7922,7 +8089,7 @@ stop(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7936,7 +8103,7 @@ function stopCaptureSession(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function stopCaptureSession(session: camera.Session): void {
@@ -7960,7 +8127,7 @@ release(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -7978,7 +8145,7 @@ release(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7994,7 +8161,7 @@ function releaseCaptureSession(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8022,7 +8189,7 @@ release(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8040,7 +8207,7 @@ release(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8054,7 +8221,7 @@ function releaseCaptureSession(session: camera.Session): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function releaseCaptureSession(session: camera.Session): void {
@@ -8089,13 +8256,13 @@ setFlashMode(flashMode: FlashMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名       | 类型                     | 必填 | 说明                  |
 | --------- | ----------------------- | ---- | --------------------- |
-| flashMode | [FlashMode](#flashmode) | 是   | 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。       |
+| flashMode | [FlashMode](#flashmode) | 是   | ArkTS-Dyn: 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。<br/>ArkTS-Sta: 指定闪光灯模式。目前不支持传参为null或者undefined。 |
 
 **错误码：**
 
@@ -8133,7 +8300,7 @@ getFlashMode(): FlashMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8183,7 +8350,7 @@ hasFlash(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8229,13 +8396,13 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名       | 类型                     | 必填 | 说明                               |
 | --------- | ----------------------- | ---- | --------------------------------- |
-| flashMode | [FlashMode](#flashmode) | 是   | 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。             |
+| flashMode | [FlashMode](#flashmode) | 是   | ArkTS-Dyn: 指定闪光灯模式。传参为null或者undefined，作为0处理，闪光灯关闭。<br/>ArkTS-Sta: 指定闪光灯模式。目前不支持传参为null或者undefined。 |
 
 **返回值：**
 
@@ -8287,7 +8454,7 @@ getExposureMode(): ExposureMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8333,13 +8500,13 @@ setExposureMode(aeMode: ExposureMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                            | 必填 | 说明                    |
 | -------- | -------------------------------| ---- | ----------------------- |
-| aeMode   | [ExposureMode](#exposuremode)  | 是   | 曝光模式。传参为null或者undefined，作为0处理，曝光锁定。                |
+| aeMode   | [ExposureMode](#exposuremode)  | 是   | ArkTS-Dyn: 曝光模式。传参为null或者undefined，作为0处理，曝光锁定。<br/>ArkTS-Sta: 曝光模式。目前不支持传参为null或者undefined。 |
 
 **错误码：**
 
@@ -8378,7 +8545,7 @@ getMeteringPoint(): Point
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8424,7 +8591,7 @@ setMeteringPoint(point: Point): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8473,7 +8640,7 @@ ArkTS-Sta: setExposureBias(exposureBias: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8492,7 +8659,7 @@ ArkTS-Sta: setExposureBias(exposureBias: double): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8511,7 +8678,7 @@ function setExposureBias(photoSession: camera.PhotoSession, biasRangeArray: Arra
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8544,7 +8711,7 @@ ArkTS-Sta: getExposureValue(): double
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8562,7 +8729,7 @@ ArkTS-Sta: getExposureValue(): double
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8581,7 +8748,7 @@ function getExposureValue(photoSession: camera.PhotoSession): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8616,13 +8783,13 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                           | 必填  | 说明                           |
 | -------- | -------------------------------| ---- | ----------------------------- |
-| aeMode   | [ExposureMode](#exposuremode)  | 是   | 曝光模式。传参为null或者undefined，作为0处理，曝光锁定。                 |
+| aeMode   | [ExposureMode](#exposuremode)  | 是   | ArkTS-Dyn: 曝光模式。传参为null或者undefined，作为0处理，曝光锁定。<br/>ArkTS-Sta: 曝光模式。目前不支持传参为null或者undefined。 |
 
 **返回值：**
 
@@ -8670,7 +8837,7 @@ ArkTS-Sta: getExposureBiasRange(): Array\<double\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8688,7 +8855,7 @@ ArkTS-Sta: getExposureBiasRange(): Array\<double\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8706,7 +8873,7 @@ function getExposureBiasRange(photoSession: camera.PhotoSession): Array<number> 
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8744,13 +8911,13 @@ setFocusMode(afMode: FocusMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](#focusmode) | 是   | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。       |
+| afMode   | [FocusMode](#focusmode) | 是   | ArkTS-Dyn: 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。<br/>ArkTS-Sta: 指定的焦距模式。目前不支持传参为null或者undefined。 |
 
 **错误码：**
 
@@ -8788,7 +8955,7 @@ getFocusMode(): FocusMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8834,7 +9001,7 @@ setFocusPoint(point: Point): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8879,7 +9046,7 @@ getFocusPoint(): Point
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8927,7 +9094,7 @@ ArkTS-Sta: getFocalLength(): double
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -8945,7 +9112,7 @@ ArkTS-Sta: getFocalLength(): double
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8964,7 +9131,7 @@ function getFocalLength(photoSession: camera.PhotoSession): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8999,13 +9166,13 @@ isFocusModeSupported(afMode: FocusMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                     | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | -------------------------------- |
-| afMode   | [FocusMode](#focusmode) | 是   | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。                    |
+| afMode   | [FocusMode](#focusmode) | 是   | ArkTS-Dyn: 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。<br/>ArkTS-Sta: 指定的焦距模式。目前不支持传参为null或者undefined。 |
 
 **返回值：**
 
@@ -9055,7 +9222,7 @@ isMacroSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9090,7 +9257,7 @@ enableMacro(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9128,7 +9295,7 @@ function enableMacro(photoSession: camera.PhotoSession): void {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称         | 值   | 说明            |
 | ------------ | ---- | -------------- |
@@ -9144,7 +9311,7 @@ function enableMacro(photoSession: camera.PhotoSession): void {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
@@ -9170,7 +9337,7 @@ ArkTS-Sta: setZoomRatio(zoomRatio: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9188,7 +9355,7 @@ ArkTS-Sta: setZoomRatio(zoomRatio: double): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9208,7 +9375,7 @@ function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<n
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9242,7 +9409,7 @@ ArkTS-Sta: getZoomRatio(): double
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9261,7 +9428,7 @@ ArkTS-Sta: getZoomRatio(): double
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9280,7 +9447,7 @@ function getZoomRatio(photoSession: camera.PhotoSession): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9313,7 +9480,7 @@ ArkTS-Sta: setSmoothZoom(targetRatio: double, mode?: SmoothZoomMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9324,7 +9491,7 @@ ArkTS-Sta: setSmoothZoom(targetRatio: double, mode?: SmoothZoomMode): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9334,7 +9501,7 @@ function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9362,7 +9529,7 @@ ArkTS-Sta: getZoomRatioRange(): Array\<double\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9380,7 +9547,7 @@ ArkTS-Sta: getZoomRatioRange(): Array\<double\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9398,7 +9565,7 @@ function getZoomRatioRange(photoSession: camera.PhotoSession): Array<number> {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9439,7 +9606,7 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -9485,7 +9652,7 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9533,7 +9700,7 @@ isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -9589,7 +9756,7 @@ beginConfig(): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.beginConfig](#beginconfig11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9628,7 +9795,7 @@ commitConfig(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.commitConfig](#commitconfig11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9674,7 +9841,7 @@ commitConfig(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.commitConfig](#commitconfig11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9719,7 +9886,7 @@ addInput(cameraInput: CameraInput): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.addInput](#addinput11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9765,7 +9932,7 @@ removeInput(cameraInput: CameraInput): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.removeInput](#removeinput11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9811,7 +9978,7 @@ addOutput(cameraOutput: CameraOutput): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.addOutput](#addoutput11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9857,7 +10024,7 @@ removeOutput(cameraOutput: CameraOutput): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.removeOutput](#removeoutput11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9903,7 +10070,7 @@ start(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](#start11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9949,7 +10116,7 @@ start(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.start](#start11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -9993,7 +10160,7 @@ stop(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](#stop11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10038,7 +10205,7 @@ stop(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.stop](#stop11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10081,7 +10248,7 @@ release(callback: AsyncCallback\<void\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.release](#release11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10126,7 +10293,7 @@ release(): Promise\<void\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Session.release](#release11-2)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10169,7 +10336,7 @@ hasFlash(): boolean
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.hasFlash](#hasflash11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10216,7 +10383,7 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.isFlashModeSupported](#isflashmodesupported11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10274,7 +10441,7 @@ setFlashMode(flashMode: FlashMode): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.setFlashMode](#setflashmode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10319,7 +10486,7 @@ getFlashMode(): FlashMode
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Flash.getFlashMode](#getflashmode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10366,7 +10533,7 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.isExposureModeSupported](#isexposuremodesupported11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10419,7 +10586,7 @@ getExposureMode(): ExposureMode
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.getExposureMode](#getexposuremode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10466,7 +10633,7 @@ setExposureMode(aeMode: ExposureMode): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.setExposureMode](#setexposuremode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10511,7 +10678,7 @@ getMeteringPoint(): Point
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.getMeteringPoint](#getmeteringpoint11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10561,7 +10728,7 @@ setMeteringPoint(point: Point): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.setMeteringPoint](#setmeteringpoint11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10607,7 +10774,7 @@ getExposureBiasRange(): Array\<number\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.getExposureBiasRange](#getexposurebiasrange11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10656,7 +10823,7 @@ setExposureBias(exposureBias: number): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.setExposureBias](#setexposurebias11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10704,7 +10871,7 @@ getExposureValue(): number
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.getExposureValue](#getexposurevalue11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10752,7 +10919,7 @@ isFocusModeSupported(afMode: FocusMode): boolean
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.isFocusModeSupported](#isfocusmodesupported11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10807,7 +10974,7 @@ setFocusMode(afMode: FocusMode): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.setFocusMode](#setfocusmode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10852,7 +11019,7 @@ getFocusMode(): FocusMode
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.getFocusMode](#getfocusmode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10902,7 +11069,7 @@ setFocusPoint(point: Point): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.setFocusPoint](#setfocuspoint11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10948,7 +11115,7 @@ getFocusPoint(): Point
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.getFocusPoint](#getfocuspoint11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -10995,7 +11162,7 @@ getFocalLength(): number
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.getFocalLength](#getfocallength11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11043,7 +11210,7 @@ getZoomRatioRange(): Array\<number\>
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Zoom.getZoomRatioRange](#getzoomratiorange11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11090,7 +11257,7 @@ setZoomRatio(zoomRatio: number): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Zoom.setZoomRatio](#setzoomratio11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11139,7 +11306,7 @@ getZoomRatio(): number
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Zoom.getZoomRatio](#getzoomratio11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11187,7 +11354,7 @@ isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Stabilization.isVideoStabilizationModeSupported](#isvideostabilizationmodesupported11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11240,7 +11407,7 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Stabilization.getActiveVideoStabilizationMode](#getactivevideostabilizationmode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11287,7 +11454,7 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Stabilization.setVideoStabilizationMode](#setvideostabilizationmode11)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11334,7 +11501,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11372,7 +11539,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.off('focusStateChange')](#offfocusstatechange11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11406,7 +11573,7 @@ on(type: 'error', callback: ErrorCallback): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.on('error')](#onerror11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11440,7 +11607,7 @@ off(type: 'error', callback?: ErrorCallback): void
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[VideoSession.off('error')](#offerror11-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11476,7 +11643,7 @@ getSupportedColorSpaces(): Array\<colorSpaceManager.ColorSpace\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -11535,7 +11702,7 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11585,7 +11752,7 @@ getActiveColorSpace(): colorSpaceManager.ColorSpace
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -11635,7 +11802,7 @@ isAutoDeviceSwitchSupported(): boolean
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -11681,7 +11848,7 @@ enableAutoDeviceSwitch(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11725,7 +11892,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 值 | 说明         |
 |-------------------------|---|------------|
@@ -11744,7 +11911,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称                       | 值 | 说明      |
 |--------------------------|---|---------|
@@ -11774,7 +11941,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11824,7 +11991,7 @@ preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -11868,9 +12035,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11907,7 +12074,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11941,7 +12110,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -11968,7 +12139,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12000,7 +12173,9 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12041,7 +12216,9 @@ onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12079,7 +12256,9 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12106,7 +12285,9 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 注销监听相机聚焦的状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12138,7 +12319,9 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12179,7 +12362,9 @@ onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("smoothZoomInfoAvailable")](#onsmoothzoominfoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12217,7 +12402,9 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12244,7 +12431,9 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 注销监听相机平滑变焦的状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("smoothZoomInfoAvailable")](#offsmoothzoominfoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12276,7 +12465,9 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAutoDeviceSwitchStatusChange](#onautodeviceswitchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12317,7 +12508,9 @@ onAutoDeviceSwitchStatusChange(callback: AsyncCallback\<AutoDeviceSwitchStatus\>
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("autoDeviceSwitchStatusChange")](#onautodeviceswitchstatuschange13)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12355,7 +12548,9 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAutoDeviceSwitchStatusChange](#offautodeviceswitchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12382,7 +12577,9 @@ offAutoDeviceSwitchStatusChange(callback?: AsyncCallback\<AutoDeviceSwitchStatus
 
 注销监听相机自动切换镜头状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("autoDeviceSwitchStatusChange")](#offautodeviceswitchstatuschange13)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12412,7 +12609,7 @@ function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 值  | 说明       |
 | ------------- | --- | ---------- |
@@ -12441,7 +12638,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -12491,7 +12688,7 @@ preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -12535,7 +12732,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12572,7 +12771,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12606,7 +12807,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12633,7 +12836,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听普通录像会话的错误事件，通过注册回调函数获取结果。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12665,7 +12870,9 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12706,7 +12913,9 @@ onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12744,7 +12953,9 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12771,7 +12982,9 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 注销监听相机聚焦的状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12803,7 +13016,9 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12844,7 +13059,9 @@ onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("smoothZoomInfoAvailable")](#onsmoothzoominfoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12882,7 +13099,9 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12909,7 +13128,9 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 注销监听相机平滑变焦的状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("smoothZoomInfoAvailable")](#offsmoothzoominfoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12941,7 +13162,9 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAutoDeviceSwitchStatusChange](#onautodeviceswitchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -12982,7 +13205,9 @@ onAutoDeviceSwitchStatusChange(callback: AsyncCallback\<AutoDeviceSwitchStatus\>
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("autoDeviceSwitchStatusChange")](#onautodeviceswitchstatuschange13)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13021,7 +13246,9 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAutoDeviceSwitchStatusChange](#offautodeviceswitchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13048,7 +13275,9 @@ offAutoDeviceSwitchStatusChange(callback?: AsyncCallback\<AutoDeviceSwitchStatus
 
 注销监听相机自动切换镜头状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("autoDeviceSwitchStatusChange")](#offautodeviceswitchstatuschange13)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13083,7 +13312,7 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -13139,7 +13368,7 @@ addSecureOutput(previewOutput: PreviewOutput): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -13183,7 +13412,9 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13220,7 +13451,9 @@ onError(callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("error")](#onerror12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13254,7 +13487,9 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13281,7 +13516,9 @@ offError(callback?: ErrorCallback): void
 
 注销监听安全相机会话的错误事件，通过注册回调函数获取结果。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("error")](#offerror12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13313,7 +13550,9 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13354,7 +13593,9 @@ onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on("focusStateChange")](#onfocusstatechange12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13392,7 +13633,9 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13419,7 +13662,9 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 注销监听相机聚焦的状态变化。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("focusStateChange")](#offfocusstatechange12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -13449,7 +13694,7 @@ function unregisterFocusStateChange(secureSession: camera.SecureSession): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值 | 说明         |
 |----------------|---| ----------- |
@@ -13470,7 +13715,7 @@ function unregisterFocusStateChange(secureSession: camera.SecureSession): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 ### isWhiteBalanceModeSupported<sup>20+</sup>
 
@@ -13484,7 +13729,7 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -13509,7 +13754,7 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13527,7 +13772,7 @@ function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.Video
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13559,7 +13804,7 @@ ArkTS-Sta: getWhiteBalanceRange(): Array\<int\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -13577,7 +13822,7 @@ ArkTS-Sta: getWhiteBalanceRange(): Array\<int\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13594,7 +13839,7 @@ function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13621,6 +13866,10 @@ WhiteBalance extends [WhiteBalanceQuery](#whitebalancequery20)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 ### setWhiteBalanceMode<sup>20+</sup>
 
 setWhiteBalanceMode(mode: WhiteBalanceMode): void
@@ -13633,7 +13882,7 @@ setWhiteBalanceMode(mode: WhiteBalanceMode): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -13652,7 +13901,7 @@ setWhiteBalanceMode(mode: WhiteBalanceMode): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13667,7 +13916,7 @@ function setWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession)
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13694,7 +13943,7 @@ getWhiteBalanceMode(): WhiteBalanceMode
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -13740,7 +13989,7 @@ ArkTS-Sta: setWhiteBalance(whiteBalance: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -13759,7 +14008,7 @@ ArkTS-Sta: setWhiteBalance(whiteBalance: int): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13775,7 +14024,7 @@ function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): vo
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13805,7 +14054,7 @@ ArkTS-Sta: getWhiteBalance(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -13823,7 +14072,7 @@ ArkTS-Sta: getWhiteBalance(): int
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -13840,7 +14089,7 @@ function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): nu
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -25,7 +25,7 @@ pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: Pick
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -55,7 +55,7 @@ async function demo(context: Context) {
     };
     let pickerResult: picker.PickerResult = await picker.pick(context,
       [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO], pickerProfile);
-    console.log("the pick pickerResult is:" + JSON.stringify(pickerResult));
+    console.info("the pick pickerResult is:" + JSON.stringify(pickerResult));
   } catch (error) {
     let err = error as BusinessError;
     console.error(`the pick call failed. error code: ${err.code}`);
@@ -73,7 +73,7 @@ async function demo(context: Context) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称             | 值    | 说明     |
 | ----------------| ----  | ---------|
@@ -91,7 +91,7 @@ async function demo(context: Context) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 类型                               | 必填   | 说明         |
 | -------------- | --------------------------------- | ----- | ------------ |
@@ -110,7 +110,7 @@ async function demo(context: Context) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 类型                                | 必填  | 说明                            |
 | -------------- | ---------------------------------- | ----- | -------------------------------- |
