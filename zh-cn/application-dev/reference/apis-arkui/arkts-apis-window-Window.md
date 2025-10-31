@@ -3578,6 +3578,8 @@ on(type: 'touchOutside', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -3619,6 +3621,8 @@ onTouchOutside(callback: Callback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
@@ -3630,7 +3634,7 @@ onTouchOutside(callback: Callback&lt;void&gt;): void;
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   windowClass.onTouchOutside(() => {
@@ -3653,6 +3657,8 @@ off(type: 'touchOutside', callback?: Callback&lt;void&gt;): void
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchOutside](#offtouchoutside22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3699,6 +3705,8 @@ offTouchOutside(callback?: Callback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                   |
@@ -3710,7 +3718,7 @@ offTouchOutside(callback?: Callback&lt;void&gt;): void;
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const callback = () => {
   // ...
@@ -3897,6 +3905,8 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                          |
@@ -3936,6 +3946,8 @@ onDialogTargetTouch(callback: Callback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                                          |
@@ -3947,7 +3959,7 @@ onDialogTargetTouch(callback: Callback&lt;void&gt;): void;
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   windowClass.onDialogTargetTouch(() => {
@@ -3972,6 +3984,8 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offDialogTargetTouch](#offdialogtargettouch22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4016,6 +4030,8 @@ offDialogTargetTouch(callback?: Callback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                                          |
@@ -4027,7 +4043,7 @@ offDialogTargetTouch(callback?: Callback&lt;void&gt;): void;
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const callback = () => {
   // ...
@@ -4479,6 +4495,8 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
@@ -4522,6 +4540,8 @@ onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
@@ -4544,7 +4564,7 @@ onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void;
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   windowClass.onNoInteractionDetected(60, () => {
@@ -4569,6 +4589,8 @@ off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offNoInteractionDetected](#offnointeractiondetected22)。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4616,6 +4638,8 @@ offNoInteractionDetected(callback?: Callback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
@@ -4637,7 +4661,7 @@ offNoInteractionDetected(callback?: Callback&lt;void&gt;): void;
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const callback = () => {
   // ...
@@ -6473,7 +6497,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
 try {
@@ -6551,7 +6575,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable: boolean = true;
 try {
@@ -7651,7 +7675,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let rows = windowClass.getWindowProperties().windowRect.width;
@@ -9066,9 +9090,9 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 'use static'
 
-import { UIAbility } from '@ohos.app.ability.UIAbility';
-import window from '@ohos.window';
-import { BusinessError } from '@ohos.base';
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
