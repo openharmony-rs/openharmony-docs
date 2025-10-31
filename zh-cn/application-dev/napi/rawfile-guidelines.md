@@ -54,11 +54,11 @@
     <!-- @[declare_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/types/libentry/Index.d.ts) -->
     
     ``` TypeScript
-    import resourceManager from '@kit.LocalizationKit';
-    export const getFileList: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Array<String>;
-    export const getRawFileContent: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Uint8Array;
-    export const getRawFileDescriptor: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => resourceManager.resourceManager.RawFileDescriptor;
-    export const isRawDir: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => boolean;
+    import { resourceManager } from '@kit.LocalizationKit';
+    export const getFileList: (resMgr: resourceManager.ResourceManager, path: string) => Array<String>;
+    export const getRawFileContent: (resMgr: resourceManager.ResourceManager, path: string) => Uint8Array;
+    export const getRawFileDescriptor: (resMgr: resourceManager.ResourceManager, path: string) => resourceManager.RawFileDescriptor;
+    export const isRawDir: (resMgr: resourceManager.ResourceManager, path: string) => boolean;
     ```
 
 **3. 修改源文件**
