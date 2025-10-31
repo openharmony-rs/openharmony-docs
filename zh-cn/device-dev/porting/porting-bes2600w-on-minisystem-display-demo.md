@@ -558,7 +558,7 @@ static int32_t GpioDriverInit(struct HdfDeviceObject *device)
       ...
 ```
 
-编码规范和设计思想见[bes 驱动适配PR](https://gitcode.com/openharmony/drivers_adapter/pulls/278)的评论。
+编码规范和设计思想见[bes 驱动适配PR](https://gitee.com/openharmony/drivers_adapter/pulls/278)的评论。
 
 #### Board外设器件HDF驱动移植
 
