@@ -358,6 +358,34 @@
 
    以中文关键字检索为例：
    <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 中文关键字检索，查找数据
+   if (store !== undefined) {
+     // 创建全文检索表
+     const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
+     try {
+       await store.execute(SQL_CREATE_TABLE);
+       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
+     }
+   }
+   if (store !== undefined) {
+     try {
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
+       while (resultSet.goToNextRow()) {
+         const name = resultSet.getValue(resultSet.getColumnIndex('name'));
+         hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
+       }
+       resultSet.close();
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Query failed. code: ${err.code}, message: ${err.message}.`);
+     }
+   }
+   ```
 
 5. 使用事务对象执行数据的插入、删除和更新操作。
    
