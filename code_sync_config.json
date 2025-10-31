@@ -7172,5 +7172,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-waterflow.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/FlowItemAdapter.h",
+				"functions":[
+					{
+						"end_line":195,
+						"name":"flow_item_adapter",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h",
+				"functions":[
+					{
+						"end_line":80,
+						"name":"worterflow_section",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/waterflow.h",
+				"functions":[
+					{
+						"end_line":81,
+						"name":"waterflow_define",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/CreateWaterflowExample.h",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"create_waterflow_example",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
