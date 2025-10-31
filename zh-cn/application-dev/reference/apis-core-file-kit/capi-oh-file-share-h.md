@@ -34,7 +34,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [FileShare_OperationMode](#fileshare_operationmode) | FileShare_OperationMode | URI操作模式枚举值。 |
-| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | 授予或使能权限策略失败的URI对应的错误码枚举值。 |
+| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | 授予或使能权限策略失败的URI对应的错误码。 |
 
 ### 函数
 
@@ -74,7 +74,7 @@ enum FileShare_PolicyErrorCode
 
 **描述**
 
-授予或使能权限策略失败的URI对应的错误码枚举值。
+授予或使能权限策略失败的URI对应的错误码。
 
 **起始版本：** 12
 
