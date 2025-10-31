@@ -411,9 +411,9 @@ export default class EntryAbility extends UIAbility {
 
 ## window.shiftAppWindowPointerEvent<sup>15+</sup>
 
-ArkTs-Dyn：shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
+ArkTs-Dyn: shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise&lt;void&gt;
 
-ArkTs-Sta：shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
+ArkTs-Sta: shiftAppWindowPointerEvent(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
 在同应用内窗口分合场景下，需要将输入事件从源窗口转移到目标窗口，使用Promise异步回调，针对主窗和子窗生效。
 
