@@ -263,6 +263,31 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript	
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG : string = '[Sample_CreatSubWindow2]';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+    });
+
+    // 给Index页面传递windowStage
+    AppStorage.setOrCreate('windowStage', windowStage);
+  }
+}
+```
+
 <!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript	
