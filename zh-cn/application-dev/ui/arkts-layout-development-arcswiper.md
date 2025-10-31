@@ -198,6 +198,14 @@ ArcSwiper支持水平和垂直方向上进行轮播，主要通过[vertical](../
 - 设置水平方向上轮播。
 
   <!-- @[horizontal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperHorizontal.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper() {
+    // ···
+  }
+  .indicator(true)
+  .vertical(false)
+  ```
   ![vertical](figures/arcswiper_indicator.png)
 
 
