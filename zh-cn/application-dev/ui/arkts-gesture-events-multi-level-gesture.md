@@ -100,6 +100,20 @@ Column()
 responseRegion属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
 
 <!-- @[response_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+    .responseRegion([rect1, rect2, rect3])
+}
+.id('ComponentA')
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+.responseRegion([rect4])
+```
 当组件A绑定了.responseRegion({Rect4})的属性后，所有落在Rect4区域范围的触摸事件和手势可被组件A对应的回调响应。
 
 当组件B绑定了.responseRegion({Rect1, Rect2, Rect3})的属性后，所有落在Rect1,Rect2和Rect3区域范围的触摸事件和手势可被组件B对应的回调响应。
