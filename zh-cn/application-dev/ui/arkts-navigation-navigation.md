@@ -812,6 +812,13 @@ Navigation默认提供了页面切换的转场动画，通过导航控制器操�
   Navigation通过NavPathStack中提供的[disableAnimation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#disableanimation11)方法可以在当前Navigation中关闭或打开所有转场动画。
 
   <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
+  
+  ``` TypeScript
+  pageStack: NavPathStack = new NavPathStack();
+  aboutToAppear(): void {
+    this.pageStack.disableAnimation(true);
+  }
+  ```
 
 - 单次关闭
   
