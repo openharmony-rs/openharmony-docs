@@ -394,6 +394,61 @@
 
    具体信息请参见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 使用事务对象执行数据的插入、删除和更新操作
+   if (store !== undefined) {
+     // 创建事务对象
+     try {
+       const transaction = await store.createTransaction();
+       try {
+         // 使用事务对象插入数据
+         const rowId = await transaction.insert(
+           'EMPLOYEE',
+           {
+             NAME: 'Lisa',
+             AGE: 18,
+             SALARY: 100.5,
+             CODES: new Uint8Array([1, 2, 3, 4, 5])
+           },
+           relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+         );
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Insert is successful, rowId = ${rowId}`);
+   
+         const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+         predicates.equalTo('NAME', 'Lisa');
+         // 使用事务对象更新数据
+         const rows = await transaction.update(
+           {
+             NAME: 'Rose',
+             AGE: 22,
+             SALARY: 200.5,
+             CODES: new Uint8Array([1, 2, 3, 4, 5])
+           },
+           predicates,
+           relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+         );
+         hilog.info(DOMAIN, 'rdbDataPersistence', `Updated row count: ${rows}`);
+   
+         // 使用事务对象删除数据
+         await transaction.execute('DELETE FROM EMPLOYEE WHERE age = ? OR age = ?', [21, 20]);
+         hilog.info(DOMAIN, 'rdbDataPersistence', `execute delete success`);
+   
+         // 提交事务
+         await transaction.commit();
+         hilog.info(DOMAIN, 'rdbDataPersistence', 'Transaction commit success.');
+       } catch (error) {
+         const err = error as BusinessError;
+         // 执行失败回滚事务
+         await transaction.rollback();
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Transaction execute failed, code is ${err.code}, message is ${err.message}`);
+       }
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `createTransaction failed, code is ${err.code}, message is ${err.message}`);
+     }
+   }
+   ```
 
 6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见[关系型数据库备份](data-backup-and-restore.md#关系型数据库备份)。
 
