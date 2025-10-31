@@ -128,6 +128,26 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
 <!-- @[force_the_page_to_be_configured_to_dark_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_two.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State mode: WebDarkMode = WebDarkMode.Auto;
+  @State access: boolean = true;
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
+        .darkMode(this.mode)
+        .forceDarkAccess(this.access)
+    }
+  }
+}
+```
+
 darkModePage页面代码如下：
 
 ```html
