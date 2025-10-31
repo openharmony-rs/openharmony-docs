@@ -284,6 +284,16 @@ Column() {
 如果以带优先级的方式绑定手势，则可使得父组件所绑定手势的响应优先级高于子组件。
 
 <!-- @[bindingsecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
+    .gesture(TapGesture({count: 1}))
+}
+.id('ComponentA')
+.priorityGesture(TapGesture({count: 1}))
+```
 当父组件以.priorityGesture的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
 此时，单击组件B区域范围，组件A的点击手势会触发，组件B的点击手势不会触发。
 
