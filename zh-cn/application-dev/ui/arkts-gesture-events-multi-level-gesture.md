@@ -157,6 +157,24 @@ HitTestMode.Block自身会响应触摸测试，阻塞子节点和兄弟节点的
 当组件C设置了hitTestBehavior为HitTestMode.Block时，点击组件D区域，组件A和组件C的onTouch事件会触发，组件D的onTouch事件未触发。同时，由于组件D的点击手势因为被阻塞而无法触发，组件C的点击手势会触发。
 
 <!-- @[responseregion_second](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column()
+    .id('ComponentB')
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+
+  Column()
+    .id('ComponentC')
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+    .hitTestBehavior(HitTestMode.Transparent)
+}
+.id('Stack A')
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+```
 HitTestMode.Transparent自身响应触摸测试，不会阻塞兄弟节点的触摸测试。
 
 当组件C未设置hitTestBehavior时，点击组件B和组件C的重叠区域时，Stack A和组件C的onTouch事件会触发，组件C的点击事件会触发，组件B的onTouch事件和点击手势均不触发。
