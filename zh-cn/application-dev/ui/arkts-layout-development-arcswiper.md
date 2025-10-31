@@ -84,6 +84,74 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
 - 控制控制器翻页。
 
   <!-- @[toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  
+  ``` TypeScript
+  // 导入ArcButton和ArcSwiper模块
+  import {
+    ArcButton,
+    ArcButtonOptions,
+    ArcButtonStatus,
+    ArcButtonStyleMode,
+    ArcButtonPosition,
+    ArcSwiper,
+    ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+    ArcSwiperController,
+  // ···
+  } from '@kit.ArkUI';
+  // ···
+  @Entry
+  @Component
+  export struct ArcSwiperToggle {
+    private wearableSwiperController: ArcSwiperController = new ArcSwiperController();
+  
+    build() {
+      // ···
+        Column({ space: 12 }) {
+          // ···
+            Stack() {
+              ArcSwiper(
+                this.wearableSwiperController
+              ) {
+              // ···
+              }
+              .vertical(true)
+              .indicator(false)
+  
+              // ···
+  
+  
+              Column() {
+                ArcButton({
+                  options: new ArcButtonOptions({
+                    label: 'previous',
+                    position: ArcButtonPosition.TOP_EDGE,
+                    styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+                    onClick: () => {
+                      this.wearableSwiperController.showPrevious(); // 通过controller切换到前一页
+                    }
+                  })
+                })
+  
+                Blank()
+  
+                ArcButton({
+                  options: new ArcButtonOptions({
+                    label: 'next',
+                    position: ArcButtonPosition.BOTTOM_EDGE,
+                    styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+                    onClick: () => {
+                      this.wearableSwiperController.showNext(); // 通过controller切换到后一页
+                    }
+                  })
+                })
+              }.width('100%').height('100%')
+            }
+          // ···
+        }
+      // ···
+    }
+  }
+  ```
 
   ![controller](figures/arcswiper_controll.gif)
 
