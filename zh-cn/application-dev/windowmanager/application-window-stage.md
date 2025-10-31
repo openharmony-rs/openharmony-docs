@@ -261,6 +261,8 @@ export default class EntryAbility extends UIAbility {
 
 另外，也可以在某个page页面通过点击按钮创建子窗口，整体示例代码如下：
 
+<!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
 <!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript	
