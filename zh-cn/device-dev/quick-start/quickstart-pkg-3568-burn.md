@@ -8,7 +8,7 @@
 
 - 开发板相关源码已编译完成，已形成烧录文件。
 
-- 客户端（操作平台，例如Windows系统）已下载并安装[RKDevTool工具和USB驱动](https://gitcode.com/hihope_iot/docs/tree/master/HiHope_DAYU200/%E7%83%A7%E5%86%99%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%8C%87%E5%8D%97/windows)。
+- 客户端（操作平台，例如Windows系统）已下载并安装[RKDevTool工具和USB驱动](https://gitee.com/hihope_iot/docs/tree/master/HiHope_DAYU200/%E7%83%A7%E5%86%99%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%8C%87%E5%8D%97/windows)。
 
 
 ## 操作步骤
