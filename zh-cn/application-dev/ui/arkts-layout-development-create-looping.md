@@ -27,6 +27,33 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 <!-- @[loop_with_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->
 
+``` TypeScript
+  Swiper() {
+    Text('0')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+
+    Text('1')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+
+    Text('2')
+      .width('90%')
+      .height('100%')
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+// ···
+  .loop(true)
+```
+
 ![loop_true](figures/loop_true.gif)
 
 - loop为false
