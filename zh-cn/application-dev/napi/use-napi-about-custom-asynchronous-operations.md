@@ -125,6 +125,12 @@ ArkTS侧示例代码
 
 <!-- @[ark_napi_async_open_close_callback_scope_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { process } from '@kit.ArkTS';
+```
+
 测试代码
 
 <!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
