@@ -31,6 +31,31 @@ ArcSwiper提供了默认的弧形导航点样式，导航点默认显示在ArcSw
 - 导航点使用默认样式
 
   <!-- @[styles_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper() {
+    Text('0')
+      .width(233)
+      .height(233)
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  
+    Text('1')
+      .width(233)
+      .height(233)
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  
+    Text('2')
+      .width(233)
+      .height(233)
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+  ```
   ![indicator](figures/arcswiper_indicator.png)
 
 - 自定义导航点样式
