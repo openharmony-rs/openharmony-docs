@@ -12,6 +12,16 @@ ArcSwiper是弧形轮播组件，用于圆形屏幕使用，提供弧形轮播�
 
 <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
 
+``` TypeScript
+import {
+  ArcSwiper,
+  ArcSwiperAttribute,
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+```
+
 ## 设置导航点样式
 
 ArcSwiper提供了默认的弧形导航点样式，导航点默认显示在ArcSwiper下方居中位置，开发者也可以通过[indicator](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md#indicator)属性自定义弧形导航点的样式。
