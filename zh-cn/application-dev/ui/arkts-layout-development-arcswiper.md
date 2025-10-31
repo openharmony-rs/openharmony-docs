@@ -160,6 +160,19 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
   ArcSwiper在获得焦点时能够响应旋转表冠的操作，用户可以通过旋转表冠来滑动ArcSwiper，从而浏览数据。
 
   <!-- @[toggle_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper(
+  // ···
+  ) {
+  // ···
+  }
+  // ···
+  
+  .focusable(true)
+  .focusOnTouch(true)
+  .defaultFocus(true)
+  ```
 
   还可以通过设置[digitalCrownSensitivity](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md#digitalcrownsensitivity)属性来调整表冠对事件响应的灵敏度，以适应不同规模的数据处理。在处理大量数据时，可以提高响应事件的灵敏度；而在处理少量数据时，则可以降低灵敏度设置。
 
