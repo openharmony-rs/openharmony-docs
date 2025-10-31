@@ -229,6 +229,71 @@ ArcSwiper支持通过[customContentTransition](../reference/apis-arkui/arkui-ts/
 
 <!-- @[action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperAction.ets) -->
 
+``` TypeScript
+import { Decimal } from '@kit.ArkTS';
+import {
+  ArcSwiper,
+  ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+// ···
+
+@Entry
+@Component
+export struct ArcSwiperAction {
+  private MIN_SCALE: number = 0.1;
+  @State backgroundColors: Color[] = [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.Gray, Color.Orange];
+  @State opacityList: number[] = [];
+  @State scaleList: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < this.backgroundColors.length; i++) {
+      this.opacityList.push(1.0);
+      this.scaleList.push(1.0);
+    }
+  }
+
+  build() {
+    // ···
+      Column({ space: 12 }) {
+        // ···
+          ArcSwiper() {
+            ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+              Text(index.toString())
+                .width(233)
+                .height(233)
+                .fontSize(50)
+                .textAlign(TextAlign.Center)
+                .backgroundColor(backgroundColor)
+                .opacity(this.opacityList[index])
+                .scale({ x: this.scaleList[index], y: this.scaleList[index] })
+            })
+          }
+          .customContentTransition({
+            timeout: 1000,
+            transition: (proxy: SwiperContentTransitionProxy) => {
+              if (proxy.position <= -1 || proxy.position >= 1) {
+                // 页面完全滑出视窗外时，重置属性值
+                this.opacityList[proxy.index] = 1.0;
+                this.scaleList[proxy.index] = 1.0;
+              } else {
+                let position: number = Decimal.abs(proxy.position).toNumber();
+                this.opacityList[proxy.index] = 1 - position;
+                this.scaleList[proxy.index] =
+                  this.MIN_SCALE + (1 - this.MIN_SCALE) * (1 - position);
+              }
+            }
+          })
+        // ···
+      }
+      .width('100%')
+    // ···
+  }
+}
+```
+
 ![customContentTransition](figures/arcswiper_custom_animation.gif)
 
 ## 实现侧滑返回
