@@ -37,6 +37,18 @@
 1. Image组件设置拖拽。
 
    <!-- @[component_dragging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+   
+   ``` TypeScript
+   //  $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
+   Image($r('sys.media.ohos_app_icon'))
+     .draggable(true)
+     .onDragStart(()=>{
+     // ···
+       //  $r('app.string.Allow_dragging_prompt') 需要替换为开发者所需的资源文件
+       promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
+     })
+     .width('200vp').height('200vp')
+   ```
 
 2. Stack组件设置手势。
 
