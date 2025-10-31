@@ -835,6 +835,10 @@ Navigation默认提供了页面切换的转场动画，通过导航控制器操�
   this.pageStack.pushPath({ name: 'MyComponent' }, false);
   ```
   <!-- @[PageOnceCloseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+  
+  ``` TypeScript
+  this.pageStack.pop(false);
+  ```
 
 ### 自定义转场
 
