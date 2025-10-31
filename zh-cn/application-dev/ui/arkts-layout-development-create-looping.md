@@ -339,6 +339,39 @@ Swiper支持在一个页面内同时显示多个子组件，通过[displayCount]
 
 <!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->
 
+``` TypeScript
+  Swiper() {
+    Text('0')
+      .width(250)
+      .height(250)
+      .backgroundColor(Color.Gray)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+    Text('1')
+      .width(250)
+      .height(250)
+      .backgroundColor(Color.Green)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+    Text('2')
+      .width(250)
+      .height(250)
+      .backgroundColor(Color.Pink)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+    Text('3')
+      .width(250)
+      .height(250)
+      .backgroundColor(Color.Yellow)
+      .textAlign(TextAlign.Center)
+      .fontSize(30)
+  }
+// ···
+  .indicator(true)
+  .displayCount(2)
+}
+```
+
 ![two](figures/two.PNG)
 
 ## 自定义切换动画
