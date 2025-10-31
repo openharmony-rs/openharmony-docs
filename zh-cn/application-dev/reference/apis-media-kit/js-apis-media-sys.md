@@ -526,7 +526,7 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 });
 ```
 
-### setMetadata<sup>18+</sup>
+### setMetadata<sup>19+</sup>
 setMetadata(metadata: Record\<string, string\>): void
 
 给AVRecorder的录制文件中设置自定义meta数据。
