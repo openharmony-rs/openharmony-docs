@@ -145,6 +145,7 @@ struct WebComponent {
   </body>
 </html>
 ```
+<!-- -->
 
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
