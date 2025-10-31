@@ -325,9 +325,9 @@ inum = CONTAINER_IDEX_BASE + (unsigned int)i;
 
 当前LiteOS-A冒烟用例中已包含对应接口的使用示例，请开发者自行编译验证，推荐用例路径如下：
 
-[创建UTS容器](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_001.cpp)
+[创建UTS容器](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_001.cpp)
 
-[Unshare 切换当前进程的UTS容器至一个新容器](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_004.cpp)
+[Unshare 切换当前进程的UTS容器至一个新容器](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_004.cpp)
 
 [setns切换，将当前进程的UTS容器切换至子进程的UTS容器](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_005.cpp)
 
