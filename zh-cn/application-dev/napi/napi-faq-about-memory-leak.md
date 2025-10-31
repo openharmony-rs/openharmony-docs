@@ -132,7 +132,7 @@ static void TsfnCallJs(napi_env env, napi_value func, void *context, void *data)
     MyTsfnContext *ctx = reinterpret_cast<MyTsfnContext *>(context);
     char *str = reinterpret_cast<char *>(data);
     OH_LOG_INFO(LOG_APP, "tsfn is called, data is: \"%{public}s\"", str);
-    // 业务逻辑已省略
+    // 业务逻辑已省略，应该包括开发者额外创建的资源的释放逻辑
 };
 };
 
