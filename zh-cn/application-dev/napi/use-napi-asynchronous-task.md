@@ -90,6 +90,24 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    <!-- @[napi_second_call_back_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
    
+   ``` C++
+   static void CompleteCB(napi_env env, napi_status status, void *data)
+   {
+       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+       napi_value result = nullptr;
+       napi_create_double(env, callbackData->result, &result);
+       if (callbackData->result > 0) {
+           napi_resolve_deferred(env, callbackData->deferred, result);
+       } else {
+           napi_reject_deferred(env, callbackData->deferred, result);
+       }
+   
+       napi_delete_async_work(env, callbackData->asyncWork);
+       delete callbackData;
+       callbackData = nullptr;
+   }
+   ```
+   
 
 
 4. 模块初始化和ArkTS侧调用接口。
