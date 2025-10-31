@@ -948,6 +948,7 @@ import { common, Want } from '@kit.AbilityKit';
 @Component
 struct Index {
   @State message: string = 'restartApp';
+  private context = this.getUIContext().getHostContext()?.getApplicationContext() as common.ApplicationContext;
 
   build() {
     RelativeContainer() {
@@ -964,10 +965,9 @@ struct Index {
             bundleName: 'com.example.myapplication',
             abilityName: 'EntryAbility'
           };
-          let appcontext: common.ApplicationContext = getContext().getApplicationContext() as common.ApplicationContext;
-          if (appcontext) {
+          if (this.context) {
             try {
-              appcontext.restartApp(want);
+              this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }
