@@ -493,6 +493,17 @@
 
    Stage模型示例：
    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 删除数据库
+   relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
+       return;
+     }
+     hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
+   });
+   ```
 
 ## 相关实例
 
