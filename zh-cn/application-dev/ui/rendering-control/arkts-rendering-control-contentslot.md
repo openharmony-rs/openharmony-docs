@@ -145,7 +145,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 注册上下树事件，并通过事件获取对应的Content对象。
 
   <!-- @[contentslot_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
       ArkUI_NodeContentHandle content = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
@@ -165,7 +165,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 添加子组件。
 
   <!-- @[contentslot_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   ArkUI_NodeHandle component;
   // 创建C侧组件
@@ -177,7 +177,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 插入子组件。
 
   <!-- @[contentslot_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   size_t position = 0;
   ArkUI_NodeHandle component1 = CreateNodeHandle();
@@ -188,7 +188,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 删除子组件。
 
   <!-- @[contentslot_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   // 在nodeContent中移除对应组件
   OH_ArkUI_NodeContent_RemoveNode(nodeContentHandle_, component1);
@@ -197,7 +197,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 设置自定义属性。
 
   <!-- @[contentslot_set_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   // 创建需要定义的自定义数据
   void *userData = CreateUserData();
@@ -207,7 +207,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 - 获取自定义属性。
 
   <!-- @[contentslot_get_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
-
+  
   ``` C++
   void *userData = OH_ArkUI_NodeContent_GetUserData(nodeContentHandle_);
   ```
@@ -231,7 +231,7 @@ import { NodeContent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Parent {
-  // ···
+// ···
   private nodeContent_1: Content = new NodeContent();
   private nodeContent_2: Content = new NodeContent();
 
@@ -244,7 +244,7 @@ struct Parent {
 
   build() {
     Column() {
-      // ···
+    // ···
       ContentSlot(this.nodeContent_1);// nodeContent_1将被挂载到下一个Contentslot节点，此处无法显示
       ContentSlot(this.nodeContent_1); // 正常显示
       ContentSlot(this.nodeContent_2); // 正常显示
