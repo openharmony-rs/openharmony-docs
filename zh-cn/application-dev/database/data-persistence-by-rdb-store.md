@@ -276,6 +276,48 @@
 
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
    <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 修改数据、删除数据
+   let value6 = 'Rose';
+   let value7 = 22;
+   let value8 = 200.5;
+   let value9 = new Uint8Array([1, 2, 3, 4, 5]);
+   let value10 = BigInt('15822401018187971967863');
+   const valueBucket2: relationalStore.ValuesBucket = {
+     NAME: value6,
+     AGE: value7,
+     SALARY: value8,
+     CODES: value9,
+     IDENTITY: value10,
+   };
+   
+   // 修改数据
+   let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE'); // 创建表'EMPLOYEE'的predicates
+   predicates1.equalTo('NAME', 'Lisa'); // 匹配表'EMPLOYEE'中'NAME'为'Lisa'的字段
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).update(valueBucket2, predicates1, (err: BusinessError, rows: number) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to update data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in updating data. row count: ${rows}`);
+     })
+   }
+   
+   // 删除数据
+   predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
+   predicates1.equalTo('NAME', 'Lisa');
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).delete(predicates1, (err: BusinessError, rows: number) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Delete rows: ${rows}`);
+     })
+   }
+   ```
 
 4. 根据谓词指定的查询条件查找数据。
 
