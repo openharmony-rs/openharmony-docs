@@ -73,6 +73,14 @@
 
 1. 导入模块。
    <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   
+   ``` TypeScript
+   import { relationalStore } from '@kit.ArkData'; // 导入模块
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   const DOMAIN = 0x0000;
+   ```
 
 2. 请求权限。
 
