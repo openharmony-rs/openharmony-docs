@@ -205,6 +205,27 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 3. 定义异步任务的第二个回调函数，该函数在主线程执行，将结果传递给ArkTS侧。
 
    <!-- @[napi_async_second_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   
+   ``` C++
+   static void CompleteCB(napi_env env, napi_status status, void *data)
+   {
+       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+       napi_value callbackArg[1] = {nullptr};
+       napi_create_double(env, callbackData->result, &callbackArg[0]);
+       napi_value callback = nullptr;
+       napi_get_reference_value(env, callbackData->callbackRef, &callback);
+       // 执行回调函数
+       napi_value result;
+       napi_value undefined;
+       napi_get_undefined(env, &undefined);
+       napi_call_function(env, undefined, callback, 1, callbackArg, &result);
+       // 删除napi_ref对象以及异步任务
+       napi_delete_reference(env, callbackData->callbackRef);
+       napi_delete_async_work(env, callbackData->asyncWork);
+       delete callbackData;
+       callbackData = nullptr;
+   }
+   ```
   
 
 
