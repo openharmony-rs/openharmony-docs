@@ -2167,4 +2167,74 @@ struct ListNodeTest {
   }
 }
  ```
- ![FrameNode-canvas](./figures/invalidateAttributes.png)
+ ![invalidateAttributes](./figures/invalidateAttributes.png)
+
+ ## 判断节点是否处于渲染状态
+
+从API version 23开始，通过使用FrameNode的[isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23)方法，判断FrameNode节点是否处于渲染状态。
+
+```ts
+ //index.ets
+
+ @Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // 监听状态变化后打印是否处于渲染状态
+  change() {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      console.log('is on render tree')
+    } else {
+      console.log('is not no render tree')
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // 修改button的visibility状态
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin(20).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
+      .height("10%")
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          console.log('is hello8 on RenderTree:' + isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          console.log('is hello1 on RenderTree:' + isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+ ```
+ ![isInRenderState](./figures/isInRenderState.png)

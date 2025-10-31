@@ -1535,7 +1535,6 @@ get commonAttribute(): CommonAttribute
 >
 > FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
 >
-> FrameNode的属性支持范围参考[CommonModifier](./arkui-ts/ts-universal-attributes-attribute-modifier.md#attribute支持范围)。
 
 **示例：**
 
@@ -2443,6 +2442,89 @@ struct ConvertPositionTestOnly {
 
   }
 }
+```
+
+ ### isInRenderState<sup>23+</sup>
+
+ isInRenderState(): boolean
+
+ 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                | 说明                                 |
+| ----------------- | ------------------------------------- |
+|    boolean          |   节点是否处于渲染状态。<br/>true：处于渲染状态；false：不处于渲染状态。|
+
+**示例：**
+
+```ts
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // 监听状态变化后打印节点是否处于渲染状态
+  change() {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      console.log('is on render tree')
+    } else {
+      console.log('is not no render tree')
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // 修改button的visibility状态
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin({ top: 20 }).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
+      .height("10%")
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          console.log('is hello8 on RenderTree:' + isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          console.log('is hello1 on RenderTree:' + isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
 ```
 
 ## TypedFrameNode<sup>12+</sup>
