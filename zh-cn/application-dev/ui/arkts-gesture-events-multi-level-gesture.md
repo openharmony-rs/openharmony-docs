@@ -74,6 +74,18 @@ Column() {
 因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
 <!-- @[prioritysecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
+
+``` TypeScript
+Column()
+  .id('ComponentA')
+  .gesture(
+    GestureGroup(
+      GestureMode.Exclusive,
+      TapGesture({count: 1}),
+      PanGesture({distance: 5})
+    )
+  )
+```
 当组件A上绑定了由点击和滑动手势组成的互斥手势组时，先达到触发条件的手势触发对应的回调。
 若使用者做了一次点击操作，则响应点击对应的回调。若使用者进行了一次滑动操作并且滑动距离达到了阈值，则响应滑动对应的回调。
 
