@@ -91,7 +91,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 | 参数名     | 类型   | 必填   | 说明    |
 | ------- | ------ | ---- | ------- |
 | identity | string | 是    | 用于识别凭据的唯一标识值。 |
-| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) 或 string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径，其功能与接口[confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm9)<sup>9+</sup>中的证书链验证功能相同。 |
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) 或 string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径，其功能与接口[confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirmdeprecated)<sup>deprecated</sup>中的证书链验证功能相同。 |
 
 ## cancel<sup>9+</sup>
 
