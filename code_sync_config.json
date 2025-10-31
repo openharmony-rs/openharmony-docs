@@ -6037,5 +6037,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-accessibility-xcomponent.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp",
+				"functions":[
+					{
+						"end_line":470,
+						"name":"abilitycap_one_start",
+						"start_line":16
+					},
+					{
+						"end_line":251,
+						"name":"abilitycap_two_start",
+						"start_line":114
+					},
+					{
+						"end_line":331,
+						"name":"abilitycap_three_start",
+						"start_line":279
+					},
+					{
+						"end_line":264,
+						"name":"abilitycap_four_start",
+						"start_line":253
+					},
+					{
+						"end_line":277,
+						"name":"abilitycap_five_start",
+						"start_line":266
+					},
+					{
+						"end_line":387,
+						"name":"abilitycap_six_start",
+						"start_line":36
+					},
+					{
+						"end_line":397,
+						"name":"abilitycap_seven_start",
+						"start_line":389
+					},
+					{
+						"end_line":410,
+						"name":"abilitycap_eight_start",
+						"start_line":399
+					}
+				]
+			}
+		]
 	}
 ]
