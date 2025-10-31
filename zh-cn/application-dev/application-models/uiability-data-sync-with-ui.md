@@ -23,20 +23,16 @@
 1. 在UIAbility中调用[eventHub.on()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubon)方法注册一个自定义事件“event1”，eventHub.on()有如下两种调用方式，使用其中一种即可。
 
     <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
-    // [Start onDestroy]
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-    // [StartExclude onDestroy]
     // ···
-
+    
     const DOMAIN = 0x0000;
     const TAG: string = '[EventAbility]';
-    // [EndExclude onDestroy]
-
+    
     export default class EntryAbility extends UIAbility {
-      // [StartExclude onDestroy]
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 获取eventHub
         let eventhub = this.context.eventHub;
@@ -47,15 +43,13 @@
         });
         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
       }
-
+    
       eventFunc(argOne: object, argTwo: object): void {
         hilog.info(DOMAIN, TAG, '1. ' + `${argOne}, ${argTwo}`);
         return;
       }
-      // [EndExclude onDestroy]
-
+    
     // ···
-      // [EndExclude onDestroy]
     }
     ```
 
