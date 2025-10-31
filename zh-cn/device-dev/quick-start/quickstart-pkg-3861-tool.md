@@ -124,7 +124,7 @@
 2. 下载riscv-gnu-toolchain交叉编译工具链。
    
    ```
-   git clone --recursive https://gitcode.com/mirrors/riscv-gnu-toolchain.git
+   git clone --recursive https://gitee.com/mirrors/riscv-gnu-toolchain.git
    ```
 
 3. 打开文件夹riscv-gnu-toolchain，先删除空文件夹，以防止下载newlib，binutils，gcc时冲突。
