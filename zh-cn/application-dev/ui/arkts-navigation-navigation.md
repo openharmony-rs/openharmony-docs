@@ -648,6 +648,64 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
   NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。弹窗类型的NavDestination显示和消失时不会影响下层标准类型的NavDestination的显示和生命周期，两者可以同时显示。
 
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
+  
+  ``` TypeScript
+  // Dialog NavDestination
+  @Entry
+  @Component
+  struct PageDisplayType {
+    @Provide('NavPathStack') pageStack: NavPathStack = new NavPathStack();
+  
+    @Builder
+    PagesMap(name: string) {
+      if (name == 'DialogPage') {
+        DialogPage();
+      }
+    }
+  
+    build() {
+      Navigation(this.pageStack) {
+        Button('Push DialogPage')
+          .margin(20)
+          .width('80%')
+          .onClick(() => {
+            this.pageStack.pushPathByName('DialogPage', '');
+          })
+      }
+      .mode(NavigationMode.Stack)
+      .title('Main')
+      .navDestination(this.PagesMap)
+    }
+  }
+  
+  @Component
+  export struct DialogPage {
+    @Consume('NavPathStack') pageStack: NavPathStack;
+  
+    build() {
+      NavDestination() {
+        Stack({ alignContent: Alignment.Center }) {
+          Column() {
+            Text('Dialog NavDestination')
+              .fontSize(20)
+              .margin({ bottom: 100 })
+            Button('Close').onClick(() => {
+              this.pageStack.pop();
+            }).width('30%')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor(Color.White)
+          .borderRadius(10)
+          .height('30%')
+          .width('80%')
+        }.height('100%').width('100%')
+      }
+      .backgroundColor('rgba(0,0,0,0.5)')
+      .hideTitleBar(true)
+      .mode(NavDestinationMode.DIALOG)
+    }
+  }
+  ```
 
   ![dialog_navdestination](figures/dialog_navdestination.png)
 
