@@ -73,6 +73,20 @@
 3. Stack组件设置拦截。
 
  <!-- @[set_interception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+ 
+ ``` TypeScript
+ .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+   // 如果是长按类型手势，判断点击的位置是否在上半区
+   if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+     if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+       return GestureJudgeResult.CONTINUE;
+     } else {
+       return GestureJudgeResult.REJECT;
+     }
+   };
+   return GestureJudgeResult.CONTINUE;
+ })
+ ```
 
 4. 代码完整示例。
 
