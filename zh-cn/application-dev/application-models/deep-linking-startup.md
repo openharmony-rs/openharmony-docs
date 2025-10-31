@@ -29,69 +29,13 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 配置示例如下：
 
-```json
-{
-  "module": {
-    // ...
-    "abilities": [
-      {
-        // ...
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          },
-          {
-            "actions": [
-              // actions不能为空，actions为空会造成目标方匹配失败。
-              "ohos.want.action.viewData"
-            ],
-            "uris": [
-              {
-                // scheme必选，可以自定义，以link为例，需要替换为实际的scheme
-                "scheme": "link",
-                // host必选，配置待匹配的域名
-                "host": "www.example.com"
-              }
-            ]
-          } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
-        ]
-      }
-    ]
-  }
-}
-```
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
 ### 获取并解析拉起方传入的应用链接
 
 在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
 
-```ts
-// 以EntryAbility.ets为例
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { url } from '@kit.ArkTS';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // 从want中获取传入的链接信息。
-    // 如传入的url为：link://www.example.com/programs?action=showall
-    let uri = want?.uri;
-    if (uri) {
-      // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === "showall") {
-         // ...
-      }
-    }
-  }
-}
-```
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
 
 ## 拉起方应用实现应用跳转
 
@@ -104,43 +48,7 @@ export default class EntryAbility extends UIAbility {
 
 示例代码如下：
 
-```ts
-import { common, OpenLinkOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[UIAbilityComponentsOpenLink]';
-const DOMAIN_NUMBER: number = 0xFF00;
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Button('start link', { type: ButtonType.Capsule, stateEffect: true })
-      .width('87%')
-      .height('5%')
-      .margin({ bottom: '12vp' })
-      .onClick(() => {
-        let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "link://www.example.com";
-        let openLinkOptions: OpenLinkOptions = {
-          appLinkingOnly: false
-        };
-
-        try {
-          context.openLink(link, openLinkOptions)
-            .then(() => {
-              hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
-            }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
-            });
-        } catch (paramError) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
-        }
-      })
-  }
-}
-```
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
 
 ### 使用startAbility实现应用跳转
 
@@ -149,41 +57,7 @@ struct Index {
 
 示例代码如下：
 
-```ts
-import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[UIAbilityComponentsOpenLink]';
-const DOMAIN_NUMBER: number = 0xFF00;
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Button('start ability', { type: ButtonType.Capsule, stateEffect: true })
-      .width('87%')
-      .height('5%')
-      .margin({ bottom: '12vp' })
-      .onClick(() => {
-        let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let want: Want = {
-          uri: "link://www.example.com"
-        };
-
-        try {
-          context.startAbility(want).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
-          }).catch((err: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
-          });
-        } catch (paramError) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${paramError.code}, message is ${paramError.message}`);
-        }
-      })
-  }
-}
-```
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
 
 ### 使用Web组件实现应用跳转
 
@@ -191,38 +65,7 @@ Web组件可以在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-compone
 
 示例代码如下：
 
-```ts
-// index.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .onLoadIntercept((event) => {
-          const url: string = event.data.getRequestUrl();
-          if (url === 'link://www.example.com') {
-            (this.getUIContext().getHostContext() as common.UIAbilityContext).openLink(url)
-              .then(() => {
-                console.info('openLink success.');
-              }).catch((err: BusinessError) => {
-                console.error(`openLink failed, err: ${JSON.stringify(err)}.`);
-              });
-            return true;
-          }
-          // 返回true表示阻止此次加载，否则允许此次加载
-          return false;
-        })
-    }
-  }
-}
-```
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
 
 前端页面代码：
 ```html

@@ -37,19 +37,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
 2. 导入ohos.bundle.bundleManager模块。 
 3. 调用canOpenLink接口。
 
-    ```ts
-    import { bundleManager } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    try {
-      let link = 'app1Scheme://test.example.com/home';
-      let canOpen = bundleManager.canOpenLink(link);
-      hilog.info(0x0000, 'testTag', 'canOpenLink successfully: %{public}s', JSON.stringify(canOpen));
-    } catch (err) {
-      let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'canOpenLink failed: %{public}s', message);
-    }
-    ```
+    <!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/OpenAppPage2.ets) -->
 
 ### 目标方操作步骤
 在module.json5文件中配置[uris](../quick-start/module-configuration-file.md#skills标签)属性。
