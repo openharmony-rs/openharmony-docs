@@ -5520,6 +5520,10 @@ let copyOption: fs.CopyOptions = {
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 20
+
 ### 属性
 
 
@@ -6478,6 +6482,10 @@ stream.close();
 由open接口打开的File对象。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
 
 ### 属性
 
