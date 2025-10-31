@@ -36,7 +36,7 @@ let mTop:Record<string,number> = { 'top': 50 }
 
 @Entry
 @Component
-struct StackExample {
+struct StackExample1 {
   build() {
     Column(){
       Stack({ }) {
@@ -67,7 +67,7 @@ Stack组件通过[alignContent参数](../reference/apis-arkui/arkui-ts/ts-contai
 // xxx.ets
 @Entry
 @Component
-struct StackExample {
+struct StackExample2 {
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Text('Stack').width('90%').height('100%').backgroundColor('#e1dede').align(Alignment.BottomEnd)
@@ -144,7 +144,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 ``` TypeScript
 @Entry
 @Component
-struct StackSample {
+struct StackSample3 {
   private arr: string[] = ['APP1', 'APP2', 'APP3', 'APP4', 'APP5', 'APP6', 'APP7', 'APP8'];
 
   build() {

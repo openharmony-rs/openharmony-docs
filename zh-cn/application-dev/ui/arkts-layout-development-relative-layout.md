@@ -76,7 +76,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   
   @Entry
   @Component
-  struct Index {
+  struct Index1 {
     build() {
       RelativeContainer() {
         Row() {
@@ -125,7 +125,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   
   @Entry
   @Component
-  struct Index {
+  struct Index2 {
     build() {
       RelativeContainer() {
         Row() {
@@ -163,7 +163,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct Index3 {
     build() {
       Row() {
         RelativeContainer() {
@@ -235,7 +235,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct Index4 {
     build() {
       Row() {
         RelativeContainer() {
@@ -359,7 +359,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct Index5 {
     @State value: number = 0
   
     build() {
@@ -440,7 +440,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct Index6 {
   build() {
     Row() {
       RelativeContainer() {
@@ -546,7 +546,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct Index7 {
   build() {
     Row() {
       RelativeContainer() {
@@ -705,7 +705,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct Index8 {
   build() {
     Row() {
       RelativeContainer() {
@@ -746,7 +746,7 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct Index {
+struct Index9 {
   build() {
     Row() {
       RelativeContainer() {
