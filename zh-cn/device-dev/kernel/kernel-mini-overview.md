@@ -106,9 +106,9 @@ LiteOS-M内核的编译构建系统是一个基于gn和ninja的组件化构建�
 
 ### 已支持的示例工程
 
-Qemu模拟器: `arm_mps2_an386、esp32、riscv32_virt、SmartL_E802`, 编译运行详见: [Qemu指导](https://gitcode.com/openharmony/device_qemu)。
+Qemu模拟器: `arm_mps2_an386、esp32、riscv32_virt、SmartL_E802`, 编译运行详见: [Qemu指导](https://gitee.com/openharmony/device_qemu)。
 
-恒玄科技: `bes2600`, 编译运行详见: [恒玄开发指导](https://gitcode.com/openharmony/device_soc_bestechnic)。
+恒玄科技: `bes2600`, 编译运行详见: [恒玄开发指导](https://gitee.com/openharmony/device_soc_bestechnic)。
 
 ### 社区移植工程链接
 
@@ -116,13 +116,13 @@ LiteOS-M内核移植的具体开发板的工程由社区开发者提供，可以
 
 -   cortex-m3：
 
-    - STM32F103   https://gitcode.com/rtos_lover/stm32f103_simulator_keil
+    - STM32F103   https://gitee.com/rtos_lover/stm32f103_simulator_keil
 
         该仓包含OpenHarmony LiteOS-M内核基于STM32F103芯片架构构建的Keil工程，支持Keil MDK方式进行编译。
 
 -   cortex-m4：
 
-    - 野火挑战者STM32F429IGTb   https://gitcode.com/harylee/stm32f429ig_firechallenger
+    - 野火挑战者STM32F429IGTb   https://gitee.com/harylee/stm32f429ig_firechallenger
 
         该仓包含OpenHarmony LiteOS-M内核移植支持`野火挑战者STM32F429IGTb`开发板的工程代码，支持Ninja、GCC、IAR等方式进行编译。
 
