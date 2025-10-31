@@ -45,7 +45,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
 2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
 
-3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
   
    ```shell
    git config --global user.name "yourname"
@@ -59,7 +59,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
   
    ```shell
    mkdir ~/bin
-   curl https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
+   curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 -o ~/bin/repo 
    chmod a+x ~/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
@@ -86,10 +86,10 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
 - **OpenHarmony主干代码获取**
   
-  方式一（推荐）：通过repo + ssh下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
+  方式一（推荐）：通过repo + ssh下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
   
   ```shell
-  repo init -u git@gitcode.com:openharmony/manifest.git -b master --no-repo-verify
+  repo init -u git@gitee.com:openharmony/manifest.git -b master --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -98,7 +98,7 @@ OpenHarmony是由开放原子开源基金会（OpenAtom Foundation）孵化及�
 
   
   ```shell
-  repo init -u https://gitcode.com/openharmony/manifest.git -b master --no-repo-verify
+  repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
