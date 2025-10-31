@@ -613,6 +613,17 @@ Swiper(
 
 <!-- @[digit_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDigitIndicatorIgnoreComponentSize.ets) -->
 
+``` TypeScript
+Swiper(
+  // ···
+) {
+  // ···
+}
+.indicator(new DigitIndicator()
+  .bottom(LengthMetrics.vp(0), true)
+)
+```
+
 圆点导航点设置间距及忽略组件大小完整示例代码如下：
 
 <!-- @[dot_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
