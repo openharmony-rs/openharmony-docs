@@ -2419,7 +2419,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
