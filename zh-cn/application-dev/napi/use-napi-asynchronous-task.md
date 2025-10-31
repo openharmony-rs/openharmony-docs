@@ -151,6 +151,41 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    <!-- @[napi_create_queue_async_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
    
+   ``` C++
+   static constexpr int INT_ARGS_2 = 2; // 入参索引
+   
+   // 调用方提供的data context，该数据会传递给execute和complete函数
+   struct CallbackData {
+       napi_async_work asyncWork = nullptr;
+       napi_ref callbackRef = nullptr;
+       double args[2] = {0};
+       double result = 0;
+   };
+   
+   // ···
+   
+   napi_value AsyncWork(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 3;
+       napi_value args[3];
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       auto asyncContext = new CallbackData();
+       // 将接收到的参数保存到callbackData
+       napi_get_value_double(env, args[0], &asyncContext->args[0]);
+       napi_get_value_double(env, args[1], &asyncContext->args[1]);
+       // 将传入的callback转换为napi_ref延长其生命周期，防止被GC掉
+       napi_create_reference(env, args[INT_ARGS_2], 1, &asyncContext->callbackRef);
+       napi_value resourceName = nullptr;
+       napi_create_string_utf8(env, "asyncWorkCallback", NAPI_AUTO_LENGTH, &resourceName);
+       // 创建异步任务
+       napi_create_async_work(env, nullptr, resourceName, ExecuteCB, CompleteCB,
+                              asyncContext, &asyncContext->asyncWork);
+       // 将异步任务加入队列
+       napi_queue_async_work(env, asyncContext->asyncWork);
+       return nullptr;
+   }
+   ```
+   
 
 
 2. 定义异步任务的第一个回调函数，该函数在工作线程中执行，处理具体的业务逻辑。
