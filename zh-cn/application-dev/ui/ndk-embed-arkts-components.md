@@ -160,7 +160,6 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        onOffsetChange: value.onOffsetChange
      });
    }
-   
    ```
 
 2. 将创建和更新函数注册给Native侧。
@@ -211,7 +210,6 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
        .height('100%');
      }
    }
-   
    ```
 
    <!-- @[native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NapiInit.cpp) -->
