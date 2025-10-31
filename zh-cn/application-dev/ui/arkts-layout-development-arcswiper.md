@@ -63,6 +63,18 @@ ArcSwiper提供了默认的弧形导航点样式，导航点默认显示在ArcSw
   导航点位于ArcSwiper组件6点钟方向，导航点颜色设为红色，被选中导航点颜色为蓝色。
 
   <!-- @[styles_customize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+  
+  ``` TypeScript
+  ArcSwiper() {
+    // ···
+  }
+  .indicator(
+    new ArcDotIndicator()
+      .arcDirection(ArcDirection.SIX_CLOCK_DIRECTION) // 设置导航点位于6点钟方向
+      .itemColor(Color.Red) // 设置导航点颜色为红色
+      .selectedItemColor(Color.Blue) // 设置选中导航点颜色为蓝色
+  )
+  ```
   ![indicator2](figures/arcswiper_indicator2.png)
 
 ## 控制页面切换方式
