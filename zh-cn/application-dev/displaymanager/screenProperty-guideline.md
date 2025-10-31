@@ -45,147 +45,43 @@ Display对象，即屏幕实例，提供屏幕相关属性及监听变化的接�
 
 此处，以使用getDefaultDisplaySync()获取当前默认Display对象为例，示例如下：
 
-```ts
-import { display } from '@kit.ArkUI';
-
-let displayClass: display.Display | null = null;
-try {
-  displayClass = display.getDefaultDisplaySync();
-} catch (exception) {
-  console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
-}
-// 确保获取到Display对象，即displayClass，再进行后续相关屏幕属性信息查询和事件/状态变化监听
-```
+<!-- @[get_display_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ## 获取屏幕相关属性
 
 1. 确保获取到Display对象之后（具体可见[获取Display对象](#获取display对象)），可以通过相关属性查询屏幕的一些基础信息。
 
-   ```ts
-   import { display } from '@kit.ArkUI';
-   
-   let displayClass: display.Display | null = null;
-   try {
-    displayClass = display.getDefaultDisplaySync();
-    // 获取屏幕Id
-    console.info(`The screen Id is ${displayClass.id}.`);
-    // 获取屏幕刷新率
-    console.info(`The screen is ${displayClass.refreshRate}.`);
-    // 获取屏幕宽度
-    console.info(`The screen width is ${displayClass.width}.`);
-    // 获取屏幕高度
-    console.info(`The screen height is ${displayClass.height}.`);
-   // ...
-   } catch (exception) {
-    console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
-   }
-   ```
+<!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 还可以通过getCutoutInfo()获取挖孔屏、刘海屏、瀑布屏等不可用的屏幕区域信息，以在UI布局时更好地规避该区域。也可以通过getAvailableArea()获取当前设备屏幕的可用区域。
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   
-   displayClass.getCutoutInfo().then((cutoutInfo: display.CutoutInfo) => {
-     console.info('Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(cutoutInfo));
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
-   });
-   
-   displayClass.getAvailableArea().then((availableArea) => {
-     console.info('Succeeded get the available area in this display. data: ' + JSON.stringify(availableArea));
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+<!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 此外，还可以通过display.isCaptured()判断当前设备是否正在截屏、投屏或录屏。
 
-   ```ts
-   console.info(`The screen is captured or not : ${display.isCaptured()}`);
-   ```
+<!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+
 
 ## 监听屏幕状态变化
 
 1. 可以通过display.on('add'|'remove'|'change')监听设备屏幕变化，支持监听屏幕设备的增加、移除和改变等，可以通过display.off('add'|'remove'|'change')关闭对应的监听。
 
-   ```ts
-   import { display } from '@kit.ArkUI';
-   import { Callback } from '@kit.BasicServicesKit';
-   
-   let callback1: Callback<number> = (data: number) => {
-     console.info('Listening enabled. Data: ' + JSON.stringify(data));
-   };
-   // 此处以监听显示设备的增加为例
-   display.on("add", callback1);
-   
-   // 关闭单个callback监听
-   display.off('add', callback1);
-   // 如果通过on注册多个callback，同时关闭所有callback监听
-   display.off("add");
-   ```
+<!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 可以通过display.on('captureStatusChange')开启屏幕截屏、投屏或录屏状态变化的监听；可以通过display.off('captureStatusChange')关闭对应的监听。
 
-   ```ts
-   let callback2: Callback<boolean> = (captureStatus: boolean) => {
-       // captureStatus为true表示显示设备开始截屏、投屏或录屏，false表示结束截屏、投屏或录屏
-     console.info('Listening capture status: ' + captureStatus);
-   };
-   // 开启屏幕截屏、投屏、录屏状态变化的监听
-   display.on('captureStatusChange', callback2);
-   
-   display.off('captureStatusChange', callback2);
-   ```
+<!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
-   ```ts
-   import { Callback } from '@kit.BasicServicesKit';
-   import { display } from '@kit.ArkUI';
-   
-   let callback3: Callback<display.Rect> = (data: display.Rect) => {
-     console.info('Listening enabled. Data: ' + JSON.stringify(data));
-   };
-   let displayClass: display.Display | null = null;
-   try {
-     displayClass = display.getDefaultDisplaySync();
-     // 开启当前屏幕可用区域变化的监听
-     displayClass.on('availableAreaChange', callback3);
-     // 关闭当前监听
-     displayClass.off('availableAreaChange', callback3);
-   } catch (exception) {
-     console.error(`Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
-   }
-   ```
+<!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ## 监听折叠设备状态变化
 
 1. 可以通过display.isFoldable()接口查询当前设备是不是折叠设备。
 
-   ```ts
-   import { display } from '@kit.ArkUI';
-   
-   let ret: boolean = false;
-   ret = display.isFoldable();
-   ```
+<!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 若当前设备为折叠设备，可以通过display.on('foldStatusChange')开启折叠设备折叠状态变化的监听；可通过display.off('foldStatusChange')关闭对应的监听。
 
-   ```ts
-   import { Callback } from '@kit.BasicServicesKit';
-   
-   /**
-    * 注册监听的callback参数要采用对象传递.
-    * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-   */
-   let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
-     console.info('Listening enabled. Data: ' + JSON.stringify(data));
-   };
-   display.on('foldStatusChange', callback);
-   
-   // 如果通过on注册多个callback，同时关闭所有callback监听
-   display.off('foldStatusChange');
-   // 关闭单个callback监听
-   display.off('foldStatusChange', callback);
-   ```
+<!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->

@@ -39,260 +39,50 @@
 
 ## 在CMake脚本中链接动态库
 
-```
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
-target_link_libraries(entry PUBLIC libnative_display_manager.so )
-```
+<!-- @[add_display_target_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt) -->
 
 ## 添加头文件
 
-```c++
-#include <window_manager/oh_display_info.h>
-#include <window_manager/oh_display_manager.h>
-#include <hilog/log.h>
-```
+<!-- @[import_display_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ## 获取屏幕状态
 
 1. 可以通过OH_NativeDisplayManager_GetDefaultDisplayRotation获取默认屏幕的旋转角度。
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_info.h>
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
-   {
-       NativeDisplayManager_Rotation displayRotation;
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDefaultDisplayRotation(&displayRotation);
-       if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-           napi_value rotation;
-           napi_create_int32(env, displayRotation, &rotation);
-           return rotation;
-       } else {
-           napi_value errorCode;
-           napi_create_int32(env, errCode, &errorCode);
-           return errorCode;  
-       }
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-          {"getDisplayRotation", nullptr, GetDefaultDisplayRotation, nullptr, nullptr, nullptr, napi_default, nullptr},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
+<!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 2. 可以通过OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo获取挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。 可通过OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo销毁挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_info.h>
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
-   {
-       NativeDisplayManager_CutoutInfo *cutOutInfo = NULL;
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(&cutOutInfo);
-       OH_LOG_INFO(LOG_APP, "GetDefaultCutoutInfo errCode=%{public}d", errCode);
-       if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-           if (cutOutInfo != NULL && cutOutInfo->boundingRectsLength != 0) {
-               OH_LOG_INFO(LOG_APP, "GetDefaultCutoutInfo cutOutInfo length=%{public}d", cutOutInfo->boundingRectsLength);
-               for (int i = 0; i < cutOutInfo->boundingRectsLength; i++) {
-                   OH_LOG_INFO(LOG_APP, "cutOutInfo[%{public}d]=[%{public}d %{public}d %{public}d %{public}d]",
-                       i, cutOutInfo->boundingRects[i].left, cutOutInfo->boundingRects[i].top,
-                       cutOutInfo->boundingRects[i].width, cutOutInfo->boundingRects[i].height);
-               }
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall left rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.left.left, cutOutInfo->waterfallDisplayAreaRects.left.top,
-               cutOutInfo->waterfallDisplayAreaRects.left.width, cutOutInfo->waterfallDisplayAreaRects.left.height);
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall top rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.top.left, cutOutInfo->waterfallDisplayAreaRects.top.top,
-               cutOutInfo->waterfallDisplayAreaRects.top.width, cutOutInfo->waterfallDisplayAreaRects.top.height);
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall right rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.right.left, cutOutInfo->waterfallDisplayAreaRects.right.top,
-               cutOutInfo->waterfallDisplayAreaRects.right.width, cutOutInfo->waterfallDisplayAreaRects.right.height);
-               OH_LOG_INFO(LOG_APP, "cutOutInfo waterfall bottom rect=[%{public}d %{public}d %{public}d %{public}d]",
-               cutOutInfo->waterfallDisplayAreaRects.bottom.left, cutOutInfo->waterfallDisplayAreaRects.bottom.top,
-               cutOutInfo->waterfallDisplayAreaRects.bottom.width, cutOutInfo->waterfallDisplayAreaRects.bottom.height);            
-           }
-           napi_value boundingRectsLength;
-           napi_create_int32(env, cutOutInfo->boundingRectsLength, &boundingRectsLength);
-           OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(cutOutInfo);   
-           return boundingRectsLength;
-       } else {
-           napi_value errorCode;
-           napi_create_int32(env, errCode, &errorCode);
-           return errorCode;  
-       }
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-           {"getCutoutInfo", nullptr, CreateDefaultDisplayCutoutInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
-
-
+<!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ## 监听屏幕状态变化
 
 可以通过OH_NativeDisplayManager_RegisterDisplayChangeListener接口注册屏幕变化的监听，包括屏幕旋转、分辨率变化、刷新率变化、DPI变化等。 通过OH_NativeDisplayManager_UnregisterDisplayChangeListener接口取消屏幕状态变化的监听。
 
-```c++
-#include "napi/native_api.h"
-#include <window_manager/oh_display_info.h>
-#include <window_manager/oh_display_manager.h>
-#include <hilog/log.h>
-
-void DisplayChangeCallback(uint64_t displayId)
-{
-    OH_LOG_INFO(LOG_APP, "DisplayChangeCallback displayId=%{public}lu.", displayId);
-}
-
-static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info info)
-{
-    uint32_t listenerIndex;
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayChangeListener(
-        DisplayChangeCallback, &listenerIndex);
-    OH_LOG_INFO(LOG_APP, "RegisterDisplayChangeListener listenerIndex =%{public}d errCode=%{public}d.",
-        listenerIndex, errCode);
-    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-        napi_value registerIndex;
-        napi_create_int32(env, listenerIndex, &registerIndex);
-        return registerIndex;
-    } else {
-        napi_value errorCode;
-        napi_create_int32(env, errCode, &errorCode);
-        return errorCode;  
-    }
-}
-
-static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = { nullptr };
-
-    uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-    napi_get_value_uint32(env, args[0], &listenerIndex);
-    OH_LOG_INFO(LOG_APP, "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayChangeListener(listenerIndex);
-    OH_LOG_INFO(LOG_APP, "UnregisterDisplayChangeListener errCode=%{public}d.", errCode);
-    napi_value errorCode;
-    napi_create_int32(env, errCode, &errorCode);
-    return errorCode;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_property_descriptor desc[] = {
-        {"registerDisplayChange", nullptr, RegisterDisplayChangeListener, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"unregisterDisplayChange", nullptr, UnregisterDisplayChangeListener, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-```
+<!-- @[register_display_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ## 监听折叠设备状态变化
 
 1. 可以通过OH_NativeDisplayManager_IsFoldable接口查询设备是不是折叠设备。
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   static napi_value IsFoldable(napi_env env, napi_callback_info info)
-   {
-       bool isFoldDevice = OH_NativeDisplayManager_IsFoldable();
-       OH_LOG_INFO(LOG_APP, "IsFoldable isFoldDevice =%{public}d.", isFoldDevice);
-       napi_value isFold;
-       napi_get_boolean(env, isFoldDevice, &isFold);
-       return isFold;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-           {"checkIsFoldDevice", nullptr, IsFoldable, nullptr, nullptr, nullptr, napi_default, nullptr},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
+ <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
 2. 可以通过OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener注册屏幕展开/折叠状态变化的监听。 通过OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener接口取消屏幕展开/折叠状态变化的监听。
 
-   ```c++
-   #include "napi/native_api.h"
-   #include <window_manager/oh_display_info.h>
-   #include <window_manager/oh_display_manager.h>
-   #include <hilog/log.h>
-   
-   void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
-   {
-       OH_LOG_INFO(LOG_APP, "displayMode=%{public}d.", displayMode);
-   }
-   
-   static napi_value RegisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
-   {
-       uint32_t listenerIndex = 0;
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(
-           FoldDisplayModeChangeCallback, &listenerIndex);
-       OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d errCode=%{public}d.",
-           listenerIndex, errCode);
-       if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-           napi_value registerIndex;
-           napi_create_int32(env, listenerIndex, &registerIndex);
-           return registerIndex;
-       } else {
-           napi_value errorCode;
-           napi_create_int32(env, errCode, &errorCode);
-           return errorCode;  
-       }
-   }
-   
-   static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
-   {
-       size_t argc = 1;
-       napi_value args[1] = { nullptr };
-       uint32_t listenerIndex;
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-       napi_get_value_uint32(env, args[0], &listenerIndex);
-       OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
-       NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(listenerIndex);
-       OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
-       napi_value errorCode;
-       napi_create_int32(env, errCode, &errorCode);
-       return errorCode;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports) {
-       napi_property_descriptor desc[] = {
-       { "registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener, nullptr, nullptr, nullptr,
-           napi_default, nullptr },
-       { "unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener, nullptr, nullptr,
-           nullptr, napi_default, nullptr },
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   ```
+<!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
+## 注册函数
+
+<!-- @[register_napi_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
+## 注册模块
+
+<!-- @[register_display_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+
+## 在index.d.ts文件中声明函数
+
+<!-- @[add_function_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/types/libnativedisplay/Index.d.ts) -->
+
+## 在index.ets文件中调用函数
+
+<!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
