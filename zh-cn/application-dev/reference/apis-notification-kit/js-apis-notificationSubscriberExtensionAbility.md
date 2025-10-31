@@ -12,7 +12,6 @@ NotificationSubscriberExtensionAbility 是通知订阅者扩展能力的基类�
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块接口仅可在Stage模型下使用。
-> 本模块为系统接口。
 
 ## 导入模块
 
@@ -21,6 +20,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
 import extensionSubscription from '@ohos.notificationExtensionSubscription';
 ```
+
+在module.json5文件中配置
 ```json5
 {
     "name": "NotificationSubscriberExtAbility",
@@ -42,27 +43,20 @@ import extensionSubscription from '@ohos.notificationExtensionSubscription';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [NotificationSubscriberExtensionContext](js-apis-application-NotificationSubscriberExtensionContext.md)  | 否 | 否 | NotificationSubscriberExtensionAbility的上下文环境。|
+| context | [NotificationSubscriberExtensionContext](js-apis-notificationSubscriberExtensionContext.md)  | 否 | 否 | NotificationSubscriberExtensionAbility的上下文环境。|
 
 
 ### onDestroy
 
 onDestroy(): void
 
-xtensionAbility生命周期回调在销毁时执行资源清理等操作。。
+分布式协同扩展被销毁时的回调。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**系统接口**：此接口为系统接口。
-
 
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
-
 const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
@@ -81,25 +75,20 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**系统接口**：此接口为系统接口。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 当前Extension相关的WantAgent信息，包括ability名称、bundle名称等。|
+| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 包括ability名称、bundle名称等。|
+
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
-
-const DOMAIN = 0x0000;
+const DOMAIN = 0x0000;s
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-    onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+  onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
     hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
@@ -113,8 +102,6 @@ onCancelMessages(hashCodes: Array\<string>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**系统能力**：此接口为系统能力。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -124,10 +111,6 @@ onCancelMessages(hashCodes: Array\<string>): void
 **示例：**
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
-
 const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 

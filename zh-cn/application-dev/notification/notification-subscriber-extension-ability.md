@@ -9,7 +9,7 @@
 
 ### 功能简介
 
-[NotificationSubscriberExtensionAbility](../reference/apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md)提供扩展能力，允许第三方应用接收系统通知并将其同步到穿戴设备。该能力主要用于支持手机与第三方穿戴设备之间的通知协同。
+[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)提供扩展能力，允许第三方应用接收系统通知并将其同步到穿戴设备。该能力主要用于支持手机与第三方穿戴设备之间的通知协同。一定时间内无通知发布或通知取消时[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)会被销毁。
 
 ### 前提条件
 - 用户已通过手机中与穿戴设备配套的应用程序连接穿戴设备。
@@ -27,12 +27,13 @@
 - [分布式支持]：false (不支持分布式场景)
 - [设备类型]：手机和平板
 - [版本约束]：API Version 从 22 开始支持
+- [协同设备]：支持将通知协同到已连接的第三方智能手表
 
 ### 核心接口
-- [NotificationSubscriberExtensionAbility](../reference/apis-ability-kit/js-apis-application-NotificationSubscriberExtensionAbility.md) - 扩展能力基类
-- [NotificationSubscriberExtensionContext](../reference/apis-ability-kit/js-apis-application-NotificationSubscriberExtensionContext.md) - 扩展上下文
+- [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) - 扩展能力基类
+- [NotificationSubscriberExtensionContext](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionContext.md) - 扩展上下文
 - [NotificationInfo](../reference/apis-notification-kit/js-apis-inner-notification-notificationInfo.md) - 通知信息
 - [NotificationExtensionContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationExtensionContent.md) - 通知内容
 
 ### 运作机制
-![notification_sibscriber_extension_ability](figures/notification_subscription_extension_ability.png)
+<img src="figures/notification_subscription_extension_ability.png" alt="notification_sibscriber_extension_ability" width="50%" height="50%">

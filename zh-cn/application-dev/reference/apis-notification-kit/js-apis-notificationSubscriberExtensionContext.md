@@ -1,4 +1,4 @@
-#  @ohos.application.NotificationSubscriberExtensionContext(通知订阅扩展上下文)
+# @ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @cheerful_ricky-->
@@ -22,6 +22,6 @@ import NotificationSubscriberExtensionContext from '@kit.NotificationKit';
 
 ## NotificationSubscriberExtensionContext
 
-NotificationSubscriberExtensionContext继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)类，是NotificationSubscriberExtensionAbility的上下文。
+NotificationSubscriberExtensionContext继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)类，是NotificationSubscriberExtensionAbility的上下文。
 
 **系统能力**：SystemCapability.Notification.Notification
