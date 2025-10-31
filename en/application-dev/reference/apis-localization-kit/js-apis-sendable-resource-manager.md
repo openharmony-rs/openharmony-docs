@@ -18,7 +18,7 @@ A **Resource** object can be held by the [Sendable](../../arkts-utils/arkts-send
 ## Modules to Import
 
 ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
+import { sendableResourceManager } from '@kit.LocalizationKit';
 ```
 
 ## sendableResourceManager.resourceToSendableResource
@@ -64,8 +64,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
   ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let sendableResource: sendableResourceManager.SendableResource = sendableResourceManager.resourceToSendableResource($r('app.string.test'));
@@ -119,15 +119,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
   ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let resource: sendableResourceManager.Resource = sendableResourceManager.sendableResourceToResource(sendableResourceManager.resourceToSendableResource($r('app.string.test')));
 } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
-    console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
+    console.error(`sendableResourceToResource failed, error code: ${code}, message: ${message}.`);
 }
   ```
 

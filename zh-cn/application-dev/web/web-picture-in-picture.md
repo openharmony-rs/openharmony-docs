@@ -9,12 +9,13 @@ Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Pic
 
 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-```json
-// src/main/module.json5
+<!-- @[web_picture_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/module.json5) -->
+
+``` JSON5
 "requestPermissions": [
   {
     "name": "ohos.permission.INTERNET"
-  },
+  }
 ]
 ```
 
@@ -99,16 +100,17 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 应用侧ets代码。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
 
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
   @Entry
   @Component
   struct Index {
     @State videoSrc: Resource = $rawfile('PictureInPicture.html');
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Web({src: this.videoSrc, controller: this.controller})

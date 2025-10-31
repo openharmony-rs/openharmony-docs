@@ -266,8 +266,6 @@
           <!--Del-->
           - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
           - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
-          - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](database/share-data-by-datashareextensionability-sys.md)
-          - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [应用间配置共享 (ArkTS)](database/share-config.md)
         - 多对多跨应用数据共享<!--many-to-many-data-share-->
@@ -396,76 +394,83 @@
           - [声明式UI描述](ui/state-management/arkts-declarative-ui-description.md)
           - 自定义组件<!--arkts-custom-components-->
             - [创建自定义组件](ui/state-management/arkts-create-custom-components.md)
-            - [页面和自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
+            - [自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [自定义组件的自定义布局](ui/state-management/arkts-page-custom-components-layout.md)
             - [自定义组件成员属性访问限定符使用限制](ui/state-management/arkts-custom-components-access-restrictions.md)
+            - [自定义组件复用](ui/state-management/arkts-component-reusable.md)
+            - [自定义组件冻结](ui/state-management/arkts-component-freeze-inactive.md)
+          - UI装饰器<!--arkts-ui-decorator-->
+            - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
           - 组件扩展<!--arkts-extend-components-->
             - [组件扩展概述](ui/state-management/arkts-extend-components-overview.md)
             - [\@Builder装饰器：自定义构建函数](ui/state-management/arkts-builder.md)
-            - [\@LocalBuilder装饰器：维持组件父子关系](ui/state-management/arkts-localBuilder.md)
+            - [\@LocalBuilder装饰器：维持组件关系](ui/state-management/arkts-localBuilder.md)
             - [\@BuilderParam装饰器：引用\@Builder函数](ui/state-management/arkts-builderparam.md)
             - [wrapBuilder：封装全局@Builder](ui/state-management/arkts-wrapBuilder.md)
             - [mutableBuilder: 动态全局@Builder封装](ui/state-management/arkts-mutableBuilder.md) 
-          - [\@Styles装饰器：定义组件重用样式](ui/state-management/arkts-style.md)
-          - [\@Extend装饰器：定义扩展组件样式](ui/state-management/arkts-extend.md)
-          - [stateStyles：多态样式](ui/state-management/arkts-statestyles.md)
-          - [@AnimatableExtend装饰器：定义可动画属性](ui/state-management/arkts-animatable-extend.md)
+            - [\@Styles装饰器：定义组件重用样式](ui/state-management/arkts-style.md)
+            - [\@Extend装饰器：定义扩展组件样式](ui/state-management/arkts-extend.md)
+            - [stateStyles：多态样式](ui/state-management/arkts-statestyles.md)
+            - [@AnimatableExtend装饰器：定义可动画属性](ui/state-management/arkts-animatable-extend.md)
           - [@Require装饰器：校验构造传参](ui/state-management/arkts-require.md)
-          - [@Reusable装饰器：组件复用](ui/state-management/arkts-reusable.md)
         - 学习UI范式状态管理<!--arkts-state-management-->
           - [状态管理概述](ui/state-management/arkts-state-management-overview.md)
+          - [状态管理术语](ui/state-management/arkts-state-management-glossary.md)
+          - [状态管理原理介绍](ui/state-management/arkts-state-management-introduce.md)
+          - [状态管理V1和V2更新机制差异](ui/state-management/arkts-v1-v2-update-difference.md)
+          - [MVVM模式（V1）](ui/state-management/arkts-mvvm.md)
+          - [MVVM模式（V2）](ui/state-management/arkts-mvvm-V2.md)
           - 状态管理（V1）<!--arkts-state-management-v1-->
-            - 管理组件拥有的状态<!--arkts-component-state-management-->
+            - 管理组件拥有的状态<!--arkts-v1-component-state-management-->
               - [\@State装饰器：组件内状态](ui/state-management/arkts-state.md)
               - [\@Prop装饰器：父子单向同步](ui/state-management/arkts-prop.md)
               - [\@Link装饰器：父子双向同步](ui/state-management/arkts-link.md)
               - [\@Provide装饰器和\@Consume装饰器：与后代组件双向同步](ui/state-management/arkts-provide-and-consume.md)
               - [\@Observed装饰器和\@ObjectLink装饰器：嵌套类对象属性变化](ui/state-management/arkts-observed-and-objectlink.md)
-            - 管理应用拥有的状态<!--arkts-application-state-management-->
+              - [\@Watch装饰器：状态变量更改通知](ui/state-management/arkts-watch.md)
+            - 管理数据对象的状态<!--arkts-v1-data-object-state-management-->
+              - [\@Track装饰器：class对象属性级更新](ui/state-management/arkts-track.md)
+            - 管理应用拥有的状态<!--arkts-v1-application-state-management-->
               - [管理应用拥有的状态概述](ui/state-management/arkts-application-state-management-overview.md)
               - [LocalStorage：页面级UI状态存储](ui/state-management/arkts-localstorage.md)
               - [AppStorage：应用全局的UI状态存储](ui/state-management/arkts-appstorage.md)
               - [PersistentStorage：持久化存储UI状态](ui/state-management/arkts-persiststorage.md)
               - [Environment：设备环境查询](ui/state-management/arkts-environment.md)
-            - 其他状态管理<!--arkts-other-state-mgmt-functions-->
-              - [其他状态管理概述](ui/state-management/arkts-other-state-mgmt-functions-overview.md)
-              - [\@Watch装饰器：状态变量更改通知](ui/state-management/arkts-watch.md)
-              - [$$语法：系统组件双向同步](ui/state-management/arkts-two-way-sync.md)
-              - [\@Track装饰器：class对象属性级更新](ui/state-management/arkts-track.md)
-              - [自定义组件冻结功能](ui/state-management/arkts-custom-components-freeze.md)
-            - [MVVM模式](ui/state-management/arkts-mvvm.md)
-            - [状态管理优秀实践](ui/state-management/arkts-state-management-best-practices.md)
-            - [状态管理合理使用开发指导](ui/state-management/properly-use-state-management-to-develope.md)
           - 状态管理（V2）<!--arkts-state-management-v2-->
-            - V2所属装饰器<!--arkts-v2-decorators-->
-              - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](ui/state-management/arkts-new-observedV2-and-trace.md)
-              - [\@ComponentV2装饰器：自定义组件](ui/state-management/arkts-new-componentV2.md)
+            - 管理组件拥有的状态<!--arkts-v2-manage-component-state-->
               - [\@Local装饰器：组件内部状态](ui/state-management/arkts-new-local.md)
               - [\@Param装饰器：组件外部输入](ui/state-management/arkts-new-param.md)
               - [\@Once装饰器：初始化同步一次](ui/state-management/arkts-new-once.md)
               - [\@Event装饰器：组件输出](ui/state-management/arkts-new-event.md)
               - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](ui/state-management/arkts-new-Provider-and-Consumer.md)
+            - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
+              - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](ui/state-management/arkts-new-observedV2-and-trace.md)
               - [\@Monitor装饰器：状态变量修改监听](ui/state-management/arkts-new-monitor.md)
               - [\@Computed装饰器：计算属性](ui/state-management/arkts-new-Computed.md)
               - [\@Type装饰器: 标记类属性的类型](ui/state-management/arkts-new-type.md)
-              - [\@ReusableV2装饰器：组件复用](ui/state-management/arkts-new-reusableV2.md)
-            - 其他状态管理<!--arkts-new-other-state-mgmt-->
+            - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
               - [AppStorageV2: 应用全局UI状态存储](ui/state-management/arkts-new-appstoragev2.md)
               - [PersistenceV2: 持久化存储UI状态](ui/state-management/arkts-new-persistencev2.md)
-              - [!!语法：双向绑定](ui/state-management/arkts-new-binding.md)
-              - [自定义组件冻结功能](ui/state-management/arkts-custom-components-freezeV2.md)
-              - [getTarget接口：获取状态管理框架代理前的原始对象](ui/state-management/arkts-new-getTarget.md)
-              - [makeObserved接口：将非观察数据变为可观察数据](ui/state-management/arkts-new-makeObserved.md)
-              - [addMonitor/clearMonitor接口：动态添加/取消监听](ui/state-management/arkts-new-addMonitor-clearMonitor.md)
-            - [MVVM模式（状态管理V2）](ui/state-management/arkts-mvvm-V2.md)
-          - V1V2混用指导<!--v1v2-mixing-->
-            - [自定义组件混用场景指导](ui/state-management/arkts-custom-component-mixed-scenarios.md)
-            - [状态管理V1V2混用文档](ui/state-management/arkts-v1-v2-mixusage.md)
-          - V1->V2迁移指导<!--v1v2-migration-->
+          - 辅助接口<!--arkts-state-management-uiutils-->
+            - [getTarget接口：获取状态管理框架代理前的原始对象](ui/state-management/arkts-new-getTarget.md)
+            - [makeObserved接口：将非观察数据变为可观察数据](ui/state-management/arkts-new-makeObserved.md)
+            - [addMonitor/clearMonitor接口：动态添加/取消监听](ui/state-management/arkts-new-addMonitor-clearMonitor.md)
+          - 语法糖<!--arkts-state-management-syntactic-sugar-->
+            - [$$语法：系统组件双向同步](ui/state-management/arkts-two-way-sync.md)
+            - [!!语法：双向绑定](ui/state-management/arkts-new-binding.md)
+          - 状态管理V1向V2迁移指导<!--arkts-state-management-v1-v2-migration-guide-->
             - [V1->V2迁移指导概述](ui/state-management/arkts-v1-v2-migration.md)
             - [组件内状态变量迁移指导](ui/state-management/arkts-v1-v2-migration-inner-component.md)
             - [数据对象状态变量的迁移指导](ui/state-management/arkts-v1-v2-migration-inner-class.md)
             - [应用内状态变量和其他场景迁移指导](ui/state-management/arkts-v1-v2-migration-application-and-others.md)
+            - [组件复用迁移指导](ui/state-management/arkts-v1-v2-migration-reusable.md)
+          - 状态管理V1和V2混合使用<!--v1v2-mixing-->
+            - [自定义组件混用场景指导](ui/state-management/arkts-custom-component-mixed-scenarios.md)
+            - [状态管理V1V2混用文档](ui/state-management/arkts-v1-v2-mixusage.md)
+          - 状态管理优秀实践<!--arkts-state-management-best-practices-->
+            - [V1状态管理优秀实践](ui/state-management/arkts-state-management-best-practices.md)
+            - [V1状态管理合理使用开发指导](ui/state-management/properly-use-state-management-to-develope.md)
+            - [状态变量改变不触发组件刷新问题常用定位方法](ui/state-management/troubleshooting-state-manange.md)
         - 学习UI范式渲染控制<!--arkts-rendering-control-->
           - [渲染控制概述](ui/rendering-control/arkts-rendering-control-overview.md)
           - [if/else：条件渲染](ui/rendering-control/arkts-rendering-control-ifelse.md)
@@ -1093,6 +1098,10 @@
             - [使用SM4对称密钥（GCM模式）加解密(C/C++)](security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-ndk.md)
             - [使用SM4对称密钥（GCM模式）分段加解密(ArkTS)](security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
             - [使用SM4对称密钥（GCM模式）分段加解密(C/C++)](security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decrypt-gcm-by-segment-ndk.md)
+            - [使用ChaCha20对称密钥加解密(ArkTS)](security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt.md)
+            - [使用ChaCha20对称密钥加解密(C/C++)](security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-ndk.md)
+            - [使用ChaCha20对称密钥（Poly1305模式）加解密(ArkTS)](security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-poly1305.md)
+            - [使用ChaCha20对称密钥（Poly1305模式）加解密(C/C++)](security/CryptoArchitectureKit/crypto-chacha20-encrypt-decrypt-poly1305-ndk.md)
             - [使用RSA非对称密钥（PKCS1模式）加解密(ArkTS)](security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1.md)
             - [使用RSA非对称密钥（PKCS1模式）加解密(C/C++)](security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md)
             - [使用RSA非对称密钥分段加解密(ArkTS)](security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)
@@ -1180,7 +1189,11 @@
           - [使用系统预置CA证书校验证书链](security/DeviceCertificateKit/verify-certchain-by-systemca.md)
           - [证书CMS签名](security/DeviceCertificateKit/create-cms-sign-object.md)
           - [证书CMS封装](security/DeviceCertificateKit/create-cms-enveloped-object.md)
+          - [证书CMS验签](security/DeviceCertificateKit/create-cms-verify-object.md)
+          - [证书CMS解封装](security/DeviceCertificateKit/create-cms-decapsulation-object.md)
           - [证书PKCS12的创建和解析](security/DeviceCertificateKit/create-parse-pkcs12.md)
+          - [支持本地证书链吊销状态校验时仅校验终端实体证书](security/DeviceCertificateKit/create-only-check-leaf-cert-revocate-object.md)
+          - [支持在线校验证书链中的中间CA证书的吊销状态](security/DeviceCertificateKit/create-online-check-intermediate-certificateonly-object.md)
         - 证书管理<!--certmanager-->
           - [证书管理概述](security/DeviceCertificateKit/certManager-overview.md)
           - [应用证书凭据开发指导](security/DeviceCertificateKit/certManager-private-credential-guidelines.md)
@@ -1410,20 +1423,20 @@
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
         - [Function Flow Runtime并发范式](ffrt/ffrt-concurrency-paradigm.md)
         - Function Flow Runtime开发样例(C)<!--ffrt-example-c-->
-          - [串行队列(C)](ffrt/ffrt-concurrency-serial-queue-c.md)
-          - [并发队列(C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
-          - [图依赖并发(C)](ffrt/ffrt-concurrency-graph-c.md)
+          - [Function Flow Runtime串行队列(C)](ffrt/ffrt-concurrency-serial-queue-c.md)
+          - [Function Flow Runtime并发队列(C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
+          - [Function Flow Runtime图依赖并发(C)](ffrt/ffrt-concurrency-graph-c.md)
         - Function Flow Runtime开发样例(C++)<!--ffrt-example-cpp-->
-          - [串行队列(C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
-          - [并发队列(C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
-          - [图依赖并发(C++)](ffrt/ffrt-concurrency-graph-cpp.md)
-          - [任务伙伴(C++)](ffrt/ffrt-concurrency-job-partner-cpp.md)
+          - [Function Flow Runtime串行队列(C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
+          - [Function Flow Runtime并发队列(C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
+          - [Function Flow Runtime图依赖并发(C++)](ffrt/ffrt-concurrency-graph-cpp.md)
+          - [Function Flow Runtime任务伙伴(C++)](ffrt/ffrt-concurrency-job-partner-cpp.md)
         - [Function Flow Runtime开发指导](ffrt/ffrt-development-guideline.md)
         - [Function Flow Runtime C API](ffrt/ffrt-api-guideline-c.md)
       - Input Kit（多模输入服务）<!--input-kit-->
         - [Input Kit简介](device/input/input-overview.md)
         - [输入设备开发指导](device/input/inputdevice-guidelines.md)
-        - [按键拦截监听开发指导](device/input/keypressed-guidelines.md)
+        - [优先响应系统功能键开发指导](device/input/keypressed-guidelines.md)
         - [鼠标光标开发指导](device/input/pointerstyle-guidelines.md)
         <!--Del-->
         - [输入监听开发指导（仅对系统应用开放）](device/input/inputmonitor-guidelines-sys.md)
@@ -1567,7 +1580,7 @@
         <!--DelEnd-->
       - Test Kit（应用测试服务）<!--test-kit-->
         - [Test Kit简介](application-test/test-kit-overview.md)
-        - 自动化测试框架使用指导<!--arkxtest-->
+        - 自动化测试框架使用指导<!--arkxtest-guidelines-->
           - [单元测试框架使用指导](application-test/unittest-guidelines.md)
           - [UI测试框架使用指导](application-test/uitest-guidelines.md)
           - [白盒性能测试框架使用指导](application-test/perftest-guideline.md)
@@ -1614,7 +1627,6 @@
       - 音频播放<!--audio-playback-->
         - [音频播放开发概述](media/audio/audio-playback-overview.md)
         - [使用AudioRenderer开发音频播放功能](media/audio/using-audiorenderer-for-playback.md)
-        - [响应音频流输出设备变更](media/audio/audio-output-device-change.md)
         <!--Del-->
         - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
@@ -1631,7 +1643,6 @@
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
         - [音频播放流管理](media/audio/audio-playback-stream-management.md)
-        - [管理全局音频输出设备](media/audio/audio-output-device-management.md)
         <!--Del-->
         - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
@@ -1641,10 +1652,15 @@
         - [使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
         - [管理麦克风](media/audio/mic-management.md)
         - [音频录制流管理](media/audio/audio-recording-stream-management.md)
-        - [管理全局音频输入设备](media/audio/audio-input-device-management.md)
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
+	  - 音频设备路由管理<!--audio-device-->
+	    - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
+		- [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
+		- [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
+		- [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
+	    - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
@@ -1742,6 +1758,7 @@
         - [元数据(C/C++)](media/camera/native-camera-metadata.md)
         - [手电筒使用(C/C++)](media/camera/native-camera-torch-use.md)
         - [压力管控(C/C++)](media/camera/native-camera-system-pressure.md)
+        - [微距能力设置(C/C++)](media/camera/native-camera-macro.md)
         - [多摄同开(C/C++)](media/camera/native-camera-concurrent-open.md)
     - DRM Kit（数字版权保护服务）<!--drm-kit-->
       - [DRM Kit 简介](media/drm/drm-overview.md)
@@ -1894,8 +1911,10 @@
         - 文本绘制与显示<!--draw-text-display-->
           - [简单文本绘制与显示（ArkTS）](graphics/simple-text-arkts.md)
           - [复杂文本绘制与显示（ArkTS）](graphics/complex-text-arkts.md)
+          - [自定义文本绘制与显示（ArkTS）](graphics/text-custom-arkts.md)
           - [简单文本绘制与显示（C/C++）](graphics/simple-text-c.md)
           - [复杂文本绘制与显示（C/C++）](graphics/complex-text-c.md)
+          - [自定义文本绘制与显示（C/C++）](graphics/text-custom-c.md)
         - [文本开发常见问题](graphics/text-faqs.md)
       - [NativeBuffer开发指导 (C/C++)](graphics/native-buffer-guidelines.md)
       - [NativeImage开发指导 (C/C++)](graphics/native-image-guidelines.md)
@@ -1958,6 +1977,9 @@
         - [通知消息跨设备协同管理（仅对系统应用开放）](notification/notification-distributed-notdistributed-sys.md)
         <!--DelEnd-->
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
+      - 通知订阅拓展能力<!--notification-subscriber-extension-ability-->
+        - [通知订阅拓展能力概述](notification/notification-subscriber-extension-ability.md)
+        - [通知订阅拓展能力开发步骤](notification/notification-subscriber-extension-ability-development-steps.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
       - [MindSpore Lite Kit简介](ai/mindspore/MindSpore-Lite-Kit-Introduction.md)
@@ -2653,6 +2675,7 @@
           - [OH_UdsPixelMap](reference/apis-arkdata/capi-udmf-oh-udspixelmap.md)
           - [OH_UdsArrayBuffer](reference/apis-arkdata/capi-udmf-oh-udsarraybuffer.md)
           - [OH_UdsContentForm](reference/apis-arkdata/capi-udmf-oh-udscontentform.md)
+          - [OH_UdsDetails](reference/apis-arkdata/capi-udmf-oh-udsdetails.md)
           - [OH_Utd](reference/apis-arkdata/capi-udmf-oh-utd.md)
       - 错误码<!--arkdata-arkts-errcode-->
         - [关系型数据库错误码](reference/apis-arkdata/errorcode-data-rdb.md)
@@ -3044,7 +3067,8 @@
           - [ImageAnimator](reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)
           - [Video](reference/apis-arkui/arkui-ts/ts-media-components-video.md)
           - [图像类型定义](reference/apis-arkui/arkui-ts/ts-image-common.md)
-          - [SVG新增解析能力](reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)
+          - [SVG标签说明](reference/apis-arkui/arkui-ts/ts-basic-svg.md)
+          - [SVG标签解析能力增强](reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)
           <!--Del-->
           - [Image (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-image-sys.md)
           - [MediaCachedImage (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-mediacachedimage-sys.md)
@@ -3212,7 +3236,6 @@
           - [像素单位](reference/apis-arkui/arkui-ts/ts-pixel-units.md)
           - [枚举说明](reference/apis-arkui/arkui-ts/ts-appendix-enums.md)
           - [设置事件回调](reference/apis-arkui/arkui-ts/ts-uicommonevent.md)
-          - [SVG标签说明](reference/apis-arkui/arkui-ts/ts-basic-svg.md)
           <!--Del-->
           - [枚举说明 (系统接口)](reference/apis-arkui/arkui-ts/ts-appendix-enums-sys.md)
           <!--DelEnd-->

@@ -336,13 +336,13 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
 }
 ```
 
-## isPhysicalCameraOrientationVariable<sup>21+</sup>
+## isPhysicalCameraOrientationVariable<sup>22+</sup>
 
 isPhysicalCameraOrientationVariable(): boolean
 
-查询不同折叠状态下相机物理镜头角度是否可变。
+查询设备不同折叠状态下，相机物理镜头角度是否可变。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -350,7 +350,7 @@ isPhysicalCameraOrientationVariable(): boolean
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| boolean    | 查询不同折叠状态下相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
+| boolean    | 查询设备不同折叠状态下，相机物理镜头角度是否可变。true表示可变，false表示不可变。若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -361,13 +361,13 @@ function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): b
 }
 ```
 
-## getPhysicalCameraOrientation<sup>21+</sup>
+## getPhysicalCameraOrientation<sup>22+</sup>
 
 getPhysicalCameraOrientation(): number
 
-获取当前折叠状态下的物理镜头角度。
+获取设备当前折叠状态下的物理镜头角度。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -375,7 +375,7 @@ getPhysicalCameraOrientation(): number
 
 | 类型        | 说明                                         |
 | ---------- | -------------------------------------------- |
-| number    | 返回当前折叠状态下的物理镜头角度。 |
+| number    | 返回设备当前折叠状态下的物理镜头角度。 |
 
 **示例：**
 
@@ -386,13 +386,13 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
 }
 ```
 
-## usePhysicalCameraOrientation<sup>21+</sup>
+## usePhysicalCameraOrientation<sup>22+</sup>
 
 usePhysicalCameraOrientation(isUsed: boolean): void
 
 选择是否使用物理镜头角度。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

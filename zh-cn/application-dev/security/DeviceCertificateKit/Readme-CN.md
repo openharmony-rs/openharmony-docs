@@ -20,7 +20,11 @@
   - [使用系统预置CA证书校验证书链](verify-certchain-by-systemca.md)
   - [证书CMS签名](create-cms-sign-object.md)
   - [证书CMS封装](create-cms-enveloped-object.md)
+  - [证书CMS验签](create-cms-verify-object.md)
+  - [证书CMS解封装](create-cms-decapsulation-object.md)
   - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
+  - [支持本地证书链吊销状态校验时仅校验终端实体证书](create-only-check-leaf-cert-revocate-object.md)
+  - [支持在线校验证书链中的中间CA证书的吊销状态](create-online-check-intermediate-certificateonly-object.md)
 - 证书管理<!--certmanager-->
   - [证书管理概述](certManager-overview.md)
   - [应用证书凭据开发指导](certManager-private-credential-guidelines.md)

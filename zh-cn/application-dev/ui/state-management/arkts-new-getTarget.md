@@ -24,7 +24,7 @@
   import { UIUtils } from '@kit.ArkUI';
   ```
 
-- 状态管理V1中，会给\@Observed装饰的类对象以及使用状态变量装饰器如[\@State](./arkts-state.md)装饰的Class、Date、Map、Set、Array添加一层代理用于观测一层属性或API调用产生的变化。
+- 状态管理V1中，会给\@Observed装饰的类对象以及使用状态变量装饰器如[\@State](./arkts-state.md)装饰的class、Date、Map、Set、Array添加一层代理用于观测一层属性或API调用产生的变化。
 - 状态管理V2中，会给使用状态变量装饰器如[\@Trace](./arkts-new-observedV2-and-trace.md)、[\@Local](./arkts-new-local.md)装饰的Date、Map、Set、Array添加一层代理用于观测API调用产生的变化。
 
 使用getTarget接口可以获取这些代理对象的原始对象。
@@ -35,7 +35,7 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // 非对象类型入参，错误用法
+  let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值
   @Observed
   class Info {
     name: string = "Tom";
@@ -44,7 +44,7 @@
   let rawInfo: Info = UIUtils.getTarget(info); // 正确用法
   ```
 
-- 更改getTarget获取的原始对象中的内容不会被观察到变化，也不会触发UI刷新。
+- 更改getTarget获取的原始对象中的属性不会被观察到变化，也不会触发UI刷新。
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
@@ -94,7 +94,7 @@ let observedClass: ObservedClass = new ObservedClass(); // 被代理
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
 ```
 
-【2】状态变量装饰器装饰的复杂类型对象。使用\@State、[\@Prop](./arkts-prop.md)等状态变量装饰器装饰Class、Map、Set、Date、Array时，会添加代理。若该对象已经是代理对象，则不会重复创建代理。
+【2】状态变量装饰器装饰的复杂类型对象。使用\@State、[\@Prop](./arkts-prop.md)等状态变量装饰器装饰class、Map、Set、Date、Array时，会添加代理。若该对象已经是代理对象，则不会重复创建代理。
 
 ```ts
 @Observed

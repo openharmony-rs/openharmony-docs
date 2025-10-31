@@ -846,7 +846,6 @@ struct TodoList {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   async aboutToAppear() {
-    this.taskList = PersistenceV2.connect(TaskList, 'TaskList', () => new TaskList([]))!;
     if (this.taskList.tasks.length === 0) {
       await this.taskList.loadTasks(this.context);
     }

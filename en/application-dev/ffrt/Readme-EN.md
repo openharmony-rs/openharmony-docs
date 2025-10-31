@@ -17,5 +17,6 @@
   - [Serial Queue (C++)](ffrt-concurrency-serial-queue-cpp.md)
   - [Concurrent Queue (C++)](ffrt-concurrency-concurrent-queue-cpp.md)
   - [Task Graph (C++)](ffrt-concurrency-graph-cpp.md)
+  - [Job Partner (C++)](ffrt-concurrency-job-partner-cpp.md)
 - [Function Flow Runtime Development](ffrt-development-guideline.md)
 - [Function Flow Runtime C APIs](ffrt-api-guideline-c.md)

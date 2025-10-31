@@ -4592,22 +4592,22 @@ let contactAttributes: contact.ContactAttributes = {
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
-| 名称                  | 说明                               |
-| --------------------- | ---------------------------------- |
-| ATTR_CONTACT_EVENT    | 联系人的生日、周年纪念等重要日期。 |
-| ATTR_EMAIL            | 联系人的邮箱地址。                 |
-| ATTR_GROUP_MEMBERSHIP | 联系人的群组。                     |
-| ATTR_IM               | 联系人的即时消息地址。             |
-| ATTR_NAME             | 联系人的姓名。                     |
-| ATTR_NICKNAME         | 联系人的昵称。                     |
-| ATTR_NOTE             | 联系人的备注。                     |
-| ATTR_ORGANIZATION     | 联系人的组织信息。                 |
-| ATTR_PHONE            | 联系人的电话号码。                 |
-| ATTR_PORTRAIT         | 联系人的头像。                     |
-| ATTR_POSTAL_ADDRESS   | 联系人的邮政地址。                 |
-| ATTR_RELATION         | 联系人的关系。                     |
-| ATTR_SIP_ADDRESS      | 联系人的会话发起协议(SIP)地址。  |
-| ATTR_WEBSITE          | 联系人的网站。                     |
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| ATTR_CONTACT_EVENT    | 0 | 联系人的生日、周年纪念等重要日期。 |
+| ATTR_EMAIL            | 1 | 联系人的邮箱地址。                 |
+| ATTR_GROUP_MEMBERSHIP | 2 | 联系人的群组。                     |
+| ATTR_IM               | 3 | 联系人的即时消息地址。             |
+| ATTR_NAME             | 4 | 联系人的姓名。                     |
+| ATTR_NICKNAME         | 5 | 联系人的昵称。                     |
+| ATTR_NOTE             | 6 | 联系人的备注。                     |
+| ATTR_ORGANIZATION     | 7 | 联系人的组织信息。                 |
+| ATTR_PHONE            | 8 | 联系人的电话号码。                 |
+| ATTR_PORTRAIT         | 9 | 联系人的头像。                     |
+| ATTR_POSTAL_ADDRESS   | 10 | 联系人的邮政地址。                 |
+| ATTR_RELATION         | 11 | 联系人的关系。                     |
+| ATTR_SIP_ADDRESS      | 12 | 联系人的会话发起协议(SIP)地址。  |
+| ATTR_WEBSITE          | 13 | 联系人的网站。                     |
 
 **对象创建示例：**
 

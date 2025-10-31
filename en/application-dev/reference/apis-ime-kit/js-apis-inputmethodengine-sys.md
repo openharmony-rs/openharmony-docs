@@ -28,6 +28,8 @@ Callback triggered when the size of the input method panel changes.
 
 **System API**: This is a system API.
 
+**Parameters**
+
 | Name      | Type                                                | Mandatory| Description                            |
 | ------------ | ---------------------------------------------------- | ---- | -------------------------------- |
 | size         | [window.Size](../apis-arkui/arkts-apis-window-i.md#size7) | Yes  | Panel size.                  |
@@ -63,13 +65,10 @@ Listens for the panel size change. This API uses an asynchronous callback to ret
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, windowSize: ${JSON.stringify(windowSize)}, keyboardArea: ${JSON.stringify(keyboardArea)}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
-}
+panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize.width}, ${windowSize.height}, ` +
+    `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
+});
 ```
 
 ### off('sizeUpdate')<sup>14+</sup>
@@ -98,13 +97,48 @@ Disables listening for the panel size change. This API uses an asynchronous call
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
-  });
-} catch(err) {
-    console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
-}
+panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
+```
+
+### setShadow<sup>22+</sup>
+
+setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
+
+Sets the shadow effect of the input method window.
+
+> **NOTE**
+>
+> Panels whose [PanelType](./js-apis-inputmethodengine.md#paneltype10) is **SOFT_KEYBOARD** and [PanelFlag](./js-apis-inputmethodengine.md#panelflag10) is **FLG_FIXED** are not supported.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description                                                        |
+| ------- | ------ | ---- | ------------------------------------------------------------ |
+| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.|
+| color   | string | Yes  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, `#000000` or `#FF000000`.|
+| offsetX | number | Yes  | Offset of the shadow along the x-axis, in pixels. The value is a floating-point number.   |
+| offsetY | number | Yes  | Offset of the shadow along the y-axis, in pixels. The value is a floating-point number.   |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
+
+| ID| Error Message                                               |
+| -------- | ------------------------------------------------------- |
+| 202 | not system application. |
+| 12800013  | window manager service error.      |
+| 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
+
+**Example**
+
+```ts
+panel.setShadow(20, '#000000', 20, 20);
 ```
 ## FluidLightMode<sup>20+</sup>
 

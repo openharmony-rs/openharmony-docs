@@ -368,7 +368,7 @@ Enumerates the focus modes.
 | DEFAULT                    | 0 | The **Web** component applies for the focus when it is touched, long-pressed, swiped, or zoomed.|
 | GESTURE_TAP_AND_LONG_PRESS | 1 | The **Web** component applies for the focus only when it is touched and long-pressed. The swipe and zoom gestures do not apply for the focus.|
 
-## WebRotateEffect<sup>21+</sup>
+## WebRotateEffect<sup>22+</sup>
 
 Enumerates the effect of rotation.
 

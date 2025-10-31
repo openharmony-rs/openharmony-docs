@@ -54,6 +54,7 @@ Called when the **InputMethodExtensionAbility** is started to implement initiali
 ```ts
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
+
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
     console.info('onCreate, want:' + want.abilityName);
@@ -73,6 +74,7 @@ Called when this **InputMethodExtensionAbility** is destroyed to clear resources
 
 ```ts
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
+
 class InputMethodExt extends InputMethodExtensionAbility {
   onDestroy(): void {
     console.info('onDestroy');

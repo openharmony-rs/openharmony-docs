@@ -1,10 +1,10 @@
 # Detecting Component Visibility
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 Component visibility refers to the display state of a component on the screen. By detecting visibility, applications can implement the following typical scenarios:
