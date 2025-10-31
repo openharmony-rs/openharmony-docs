@@ -299,7 +299,7 @@ struct Index {
 
 ### 下载文档类文件
 
-开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#config10)的saveas字段值进行下载。
+开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 ```ts
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -380,7 +380,7 @@ struct Index {
 
 ### 下载音频类文件
 
-开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#config10)的saveas字段值进行下载。
+开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 ```ts
 import { BusinessError, request } from '@kit.BasicServicesKit';
@@ -454,7 +454,7 @@ struct Index {
 
 ### 下载图片或视频类文件
 
-开发者可以通过调用[PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#config10)的saveas字段值进行下载。
+开发者可以通过调用[PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 需要权限：[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/permissions-for-all-user.md#ohospermissionwrite_media)
 
