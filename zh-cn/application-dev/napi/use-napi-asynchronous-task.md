@@ -76,6 +76,14 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    <!-- @[napi_first_call_back_work](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
    
+   ``` C++
+   static void ExecuteCB(napi_env env, void *data)
+   {
+       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
+       callbackData->result = callbackData->args;
+   }
+   ```
+   
 
 
 3. 定义异步任务的第二个回调函数，该函数在主线程执行，将结果传递给ArkTS侧。
