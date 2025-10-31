@@ -50,51 +50,7 @@
 
 例如，声明应用关联在域名是www.example.com，则需进行如下配置：
 
-```json
-{
-  "module": {
-    // ...
-    "abilities": [
-      {
-        // ...
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          },
-          {
-            "entities": [
-              // entities须包含"entity.system.browsable"
-              "entity.system.browsable"
-            ],
-            "actions": [
-              // actions须包含"ohos.want.action.viewData"
-              "ohos.want.action.viewData"
-            ],
-            "uris": [
-              {
-                // scheme须配置为https
-                "scheme": "https",
-                // host须配置关联的域名
-                "host": "www.example.com",
-                // path可选，为了避免匹配到多个应用，建议配置该字段
-                "path": "path1"
-              }
-            ],
-            // domainVerify须设置为true
-           "domainVerify": true
-          } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
-        ]
-      }
-    ]
-  }
-}
-```
-
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
 ### 在开发者网站上关联应用
 
@@ -130,29 +86,7 @@
 
 在应用的Ability(如EntryAbility)的onCreate()或者onNewWant()生命周期回调中添加代码，以处理传入的链接。
 
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { url } from '@kit.ArkTS';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // 从want中获取传入的链接信息。
-    // 如传入的url为：https://www.example.com/programs?action=showall
-    let uri = want?.uri 
-    if (uri) {
-      // 从链接中解析query参数，拿到参数后，开发者可根据自己的的务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action')
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === "showall") {
-         // ...
-      }
-    }
-  }
-}
-```
-
-
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
 
 ## 拉起方应用实现应用跳转
 
@@ -168,33 +102,8 @@ openLink接口提供了两种拉起目标应用的方式，开发者可根据业
 
 本文为了方便验证App Linking的配置是否正确，选择方式一，示例如下。
 
-```ts
-import common from '@ohos.app.ability.common';
-import { BusinessError } from '@ohos.base';
+<!-- @[quick_start0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Button('start link', { type: ButtonType.Capsule, stateEffect: true })
-      .width('87%')
-      .height('5%')
-      .margin({ bottom: '12vp' })
-      .onClick(() => {
-        let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "https://www.example.com/programs?action=showall";
-        // 仅以App Linking的方式打开应用
-        context.openLink(link, { appLinkingOnly: true })
-          .then(() => {
-            console.info('openlink success.');
-          })
-          .catch((error: BusinessError) => {
-            console.error(`openlink failed. error:${JSON.stringify(error)}`);
-          });
-      })
-  }
-}
-```
 
 在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
 
