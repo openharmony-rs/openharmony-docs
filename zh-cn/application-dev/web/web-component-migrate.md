@@ -24,8 +24,6 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 // 主窗Ability
 import { createNWeb, defaultUrl } from '../pages/common';
 
-// ···
-
 // ...
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
