@@ -5881,7 +5881,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 是 | 检索选项，限制返回资产数量。 |
-| filter | string | 否 | 过滤选项，要求Json字符串。目前只支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。<br>比如'{"currentFileId":"123"}'。不填时默认从头返回资产，填写则返回currentFileId之后的资产。 |
+| filter | string | 否 | 过滤选项，要求Json字符串。<br>目前只支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。比如:'{"currentFileId":"123"}'。<br>不填时默认从头返回资产，填写则返回currentFileId之后的资产。 |
 
 **返回值：**
 
