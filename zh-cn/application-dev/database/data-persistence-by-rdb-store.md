@@ -79,11 +79,13 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    const DOMAIN = 0x0000;
+ 
    let store: relationalStore.RdbStore | undefined = undefined;
    let context = getContext();
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
    let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
    if (!tokenTypeSupported) {
+     tokenType = relationalStore.Tokenizer.NONE_TOKENIZER;
      hilog.error(DOMAIN, 'rdbDataPersistence', `ICU_TOKENIZER is not supported on this platform.`);
    }
    const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -98,14 +100,13 @@
      // 可选参数，指定数据库是否以只读方式打开。默认为false，表示数据库可读可写。为true时，只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。
      isReadOnly: false,
      // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
-     tokenizer: tokenTypeSupported ? tokenType : relationalStore.Tokenizer.NONE_TOKENIZER,
+     tokenizer: tokenType,
    };
-   // [EndExclude persistence_get_store]
    // 判断数据库版本，如果不匹配则需进行升降级操作
    // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
    // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
    const SQL_CREATE_TABLE =
-     'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES TEXT, ADDRESS TEXT)';
+     'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
    if (store === undefined) {
      try {
        store = await relationalStore.getRdbStore(context, STORE_CONFIG);
@@ -118,8 +119,9 @@
    hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in getting RdbStore.');
    if (store !== undefined) {
      let transaction = await store.createTransaction({});
-     let storeVersion = await transaction.execute("PRAGMA user_version");
+     let storeVersion = await transaction.execute('PRAGMA user_version');
      // 当数据库创建时，数据库默认版本为0
+     // 示例应用升级流程较短，所以使用单个事务。如果实际业务中升级逻辑较多，建议拆分多个独立事务串行执行。
      if (storeVersion === 0) {
        try {
          await transaction.execute(SQL_CREATE_TABLE); // 创建数据表，以便后续调用insert接口插入数据
@@ -139,7 +141,7 @@
        // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
        //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
        try {
-         await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY TEXT');
+         await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
          storeVersion = 2;
          hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 1 to 2 success.');
        } catch (e) {
@@ -156,7 +158,7 @@
        try {
          await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
          storeVersion = 3;
-         await transaction.execute("PRAGMA user_version = 3");
+         await transaction.execute('PRAGMA user_version = 3');
          hilog.info(DOMAIN, 'rdbDataPersistence', 'Upgrade store version from 2 to 3 success.')
        } catch (e) {
          const err = e as BusinessError;
@@ -167,7 +169,6 @@
      }
      await transaction.commit();
      // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
-     // 如果事务中执行过多，建议拆分多个事务执行
    }
    ```
 
@@ -256,8 +257,8 @@
    let value1 = 'Lisa';
    let value2 = 18;
    let value3 = 100.5;
-   let value4 = 'teacher';
-   let value5 = 'school';
+   let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+   let value5 = BigInt('15822401018187971961171');;
    const valueBucket: relationalStore.ValuesBucket = {
      NAME: value1,
      AGE: value2,
@@ -285,11 +286,12 @@
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
     <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
+   // 修改数据、删除数据
    let value6 = 'Rose';
    let value7 = 22;
    let value8 = 200.5;
-   let value9 = 'doctor';
-   let value10 = 'hospital';
+   let value9 = new Uint8Array([1, 2, 3, 4, 5]);
+   let value10 = BigInt('15822401018187971967863');
    const valueBucket2: relationalStore.ValuesBucket = {
      NAME: value6,
      AGE: value7,
@@ -346,9 +348,8 @@
          const name = resultSet.getString(resultSet.getColumnIndex('NAME'));
          const age = resultSet.getLong(resultSet.getColumnIndex('AGE'));
          const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
-         const codes = resultSet.getString(resultSet.getColumnIndex('CODES'));
-         const identity = resultSet.getString(resultSet.getColumnIndex('IDENTITY'));
-         hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, codes=${codes}, identity=${identity}`);
+         const identity = resultSet.getValue(resultSet.getColumnIndex('IDENTITY'));
+         hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
        }
        // 释放数据集的内存
        resultSet.close();
@@ -365,31 +366,31 @@
    以中文关键字检索为例：
     <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    ```ts
-    // 中文关键字检索，查找数据
-    if (store !== undefined) {
-      // 创建全文检索表
-      const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
-      try {
-        await store.execute(SQL_CREATE_TABLE);
-        hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
-      } catch (error) {
-        const err = error as BusinessError;
-        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
-      }
-    }
-    if (store !== undefined) {
-      try {
-        const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
-        while (resultSet.goToNextRow()) {
-          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
-          hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
-        }
-        resultSet.close();
-      } catch (error) {
-        const err = error as BusinessError;
-        hilog.error(DOMAIN, 'rdbDataPersistence', `Query failed. code: ${err.code}, message: ${err.message}.`);
-      }
-    }
+   // 中文关键字检索，查找数据
+   if (store !== undefined && tokenTypeSupported) {
+     // 创建全文检索表
+     const SQL_CREATE_TABLE = 'CREATE VIRTUAL TABLE IF NOT EXISTS example USING fts4(name, content, tokenize=icu zh_CN)';
+     try {
+       await store.execute(SQL_CREATE_TABLE);
+       hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
+     }
+   }
+   if (store !== undefined) {
+     try {
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
+       while (resultSet.goToNextRow()) {
+         const name = resultSet.getValue(resultSet.getColumnIndex('name'));
+         hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
+       }
+       resultSet.close();
+     } catch (error) {
+       const err = error as BusinessError;
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Query failed. code: ${err.code}, message: ${err.message}.`);
+     }
+   }
    ```
 
 4. 使用事务对象执行数据的插入、删除和更新操作。
@@ -413,8 +414,8 @@
              NAME: 'Lisa',
              AGE: 18,
              SALARY: 100.5,
-             CODES: 'student',
-             IDENTITY: 'school'
+             CODES: new Uint8Array([1, 2, 3, 4, 5]),
+             IDENTITY: BigInt('15822401018187971967763')
            },
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
          );
@@ -428,8 +429,8 @@
              NAME: 'Rose',
              AGE: 22,
              SALARY: 200.5,
-             CODES: 'doctor',
-             IDENTITY: 'school'
+             CODES: new Uint8Array([1, 2, 3, 4, 5]),
+             IDENTITY: BigInt('15822401018187971967763')
            },
            predicates,
            relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
