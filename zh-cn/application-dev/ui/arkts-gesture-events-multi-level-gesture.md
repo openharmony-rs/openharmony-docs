@@ -25,6 +25,13 @@
 对于一般的容器组件（例如：Column），父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件根据布局进行触发。
 
 <!-- @[column_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column().id('ComponentB').onTouch(() => {})
+  Column().id('ComponentC').onTouch(() => {})
+}.id('ComponentA').onTouch(() => {})
+```
 组件B和组件C作为组件A的子组件，当触摸到组件B或者组件C时，组件A也会被触摸到。onTouch事件允许多个组件同时触发，
 因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
