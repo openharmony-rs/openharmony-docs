@@ -5,7 +5,7 @@
 ## 适配准备
 
 - 下载[stm32cubemx](https://www.st.com/en/development-tools/stm32cubemx.html)图形工具。
-- 准备ubuntu20.04系统环境，安装[arm-none-eabi-gcc](https://gitcode.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#6%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE)交叉编译工具链。
+- 准备ubuntu20.04系统环境，安装[arm-none-eabi-gcc](https://gitee.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#6%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE)交叉编译工具链。
 ### 生成可用工程
 
 通过stm32cubemx工具生成`STM32F407IGT6`芯片的Makefile工程，在此给出如下配置建议：
@@ -303,7 +303,7 @@ vendor
 
 ### BUILD.gn文件适配
 
-为了快速熟悉gn的编译和适配，建议先阅读 [LiteOS-M内核BUILD.gn编写指南](https://gitcode.com/caoruihong/kernel_liteos_m/wikis/LiteOS-M%E5%86%85%E6%A0%B8BUILD.gn%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97)。
+为了快速熟悉gn的编译和适配，建议先阅读 [LiteOS-M内核BUILD.gn编写指南](https://gitee.com/caoruihong/kernel_liteos_m/wikis/LiteOS-M%E5%86%85%E6%A0%B8BUILD.gn%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97)。
 
 **(注意，BUILD.gn文件中不要出现tab字符，所有tab用空格代替)**
 
