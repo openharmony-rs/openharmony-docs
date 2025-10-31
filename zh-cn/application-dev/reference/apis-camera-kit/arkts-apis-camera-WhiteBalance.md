@@ -47,7 +47,7 @@ setWhiteBalanceMode(mode: WhiteBalanceMode): void
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,7 +62,7 @@ function setWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession)
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -155,7 +155,7 @@ ArkTS-Sta: setWhiteBalance(whiteBalance: int): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +171,7 @@ function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): vo
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -219,7 +219,7 @@ ArkTS-Sta:  getWhiteBalance(): int
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -236,7 +236,7 @@ function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): nu
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

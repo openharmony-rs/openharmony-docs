@@ -83,9 +83,9 @@ onFrameStart(callback: AsyncCallback\<void\>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
+function callback(err: BusinessError | null): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
     return;
   }
   console.info('Preview frame started');
@@ -486,7 +486,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<number>): void {
@@ -494,7 +494,7 @@ function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: 
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function setFrameRateRange(previewOutput: camera.PreviewOutput, frameRateRange: Array<int>): void {

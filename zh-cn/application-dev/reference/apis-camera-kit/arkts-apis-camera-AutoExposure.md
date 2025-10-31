@@ -235,7 +235,7 @@ ArkTS-Sta: setExposureBias(exposureBias: double): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -254,7 +254,7 @@ function setExposureBias(photoSession: camera.PhotoSession, biasRangeArray: Arra
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -305,7 +305,7 @@ ArkTS-Sta: getExposureValue(): double
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -324,7 +324,7 @@ function getExposureValue(photoSession: camera.PhotoSession): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

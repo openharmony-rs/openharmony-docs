@@ -46,7 +46,7 @@ ArkTS-Sta: getZoomRatioRange(): Array\<double>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,7 +64,7 @@ function getZoomRatioRange(photoSession: camera.PhotoSession): Array<number> {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

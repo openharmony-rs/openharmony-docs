@@ -48,7 +48,7 @@ ArkTS-Sta: setZoomRatio(zoomRatio: double): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,7 +68,7 @@ function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<n
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -121,7 +121,7 @@ ArkTS-Sta: getZoomRatio(): double
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,7 +140,7 @@ function getZoomRatio(photoSession: camera.PhotoSession): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -184,7 +184,7 @@ ArkTS-Sta:  setSmoothZoom(targetRatio: double, mode?: SmoothZoomMode): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -194,7 +194,7 @@ function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

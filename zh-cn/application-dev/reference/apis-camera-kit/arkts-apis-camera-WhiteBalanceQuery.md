@@ -101,7 +101,7 @@ ArkTS-Sta: getWhiteBalanceRange(): Array\<int\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -118,7 +118,7 @@ function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

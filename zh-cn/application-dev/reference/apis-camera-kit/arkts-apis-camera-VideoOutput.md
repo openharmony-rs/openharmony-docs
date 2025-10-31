@@ -44,7 +44,7 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -60,7 +60,7 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -107,7 +107,7 @@ start(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -121,7 +121,7 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,7 +158,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -174,7 +174,7 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -212,7 +212,7 @@ stop(): Promise\<void\>
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -226,7 +226,7 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -718,7 +718,7 @@ ArkTS-Sta: setFrameRate(minFps: int, maxFps: int): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<number>): void {
@@ -726,7 +726,7 @@ function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Arra
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Array<int>): void {
@@ -876,7 +876,7 @@ enableMirror(enabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -893,7 +893,7 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -953,7 +953,7 @@ ArkTS-Sta: getVideoRotation(deviceDegree: int): ImageRotation
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -998,7 +998,7 @@ function getDeviceDegree(): number {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { camera } from '@kit.CameraKit';
