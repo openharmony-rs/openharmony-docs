@@ -390,6 +390,13 @@ SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 Image加载的SVG图源路径设置方法如下所示：
 
   <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->
+  
+  ``` TypeScript
+  //  'images/icon.svg' 需要替换为开发者所需的资源文件
+  Image('images/icon.svg')
+    .width(50)
+    .height(50)
+  ```
 SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，本地位图路径设置为跟SVG图源同级的相对路径：
 
 ```
