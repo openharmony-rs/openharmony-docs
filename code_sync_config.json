@@ -7847,5 +7847,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-scope-task.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"runtaskinscopeone_start",
+						"start_line":41
+					},
+					{
+						"end_line":133,
+						"name":"runtaskinscopetwo_start",
+						"start_line":108
+					}
+				]
+			}
+		]
 	}
 ]
