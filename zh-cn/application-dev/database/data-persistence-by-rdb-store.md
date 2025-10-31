@@ -323,6 +323,32 @@
 
    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
    <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 查找数据
+   let predicates2 = new relationalStore.RdbPredicates('EMPLOYEE');
+   predicates2.equalTo('NAME', 'Rose');
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).query(predicates2, ['ID', 'NAME', 'AGE', 'SALARY', 'IDENTITY'], (err: BusinessError, resultSet) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to query data. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+       while (resultSet.goToNextRow()) {
+         const id = resultSet.getLong(resultSet.getColumnIndex('ID'));
+         const name = resultSet.getString(resultSet.getColumnIndex('NAME'));
+         const age = resultSet.getLong(resultSet.getColumnIndex('AGE'));
+         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
+         const identity = resultSet.getValue(resultSet.getColumnIndex('IDENTITY'));
+         hilog.info(DOMAIN, 'rdbDataPersistence', `id=${id}, name=${name}, age=${age}, salary=${salary}, identity=${identity}`);
+       }
+       // 释放数据集的内存
+       resultSet.close();
+     })
+   }
+   ```
 
    > **说明：**
    >
