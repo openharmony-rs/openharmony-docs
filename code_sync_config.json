@@ -6682,5 +6682,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-internationalization.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"Interface_Layout_Border_Settings",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"Customize_Canvas_Component_Drawing",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
