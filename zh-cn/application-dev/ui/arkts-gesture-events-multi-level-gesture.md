@@ -40,6 +40,13 @@ Column() {
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
 <!-- @[stack_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column().id('ComponentB').onTouch(() => {})
+  Column().id('ComponentC').onTouch(() => {})
+}.id('Stack A').onTouch(() => {})
+```
 组件B和组件C作为Stack A的子组件，组件C覆盖在组件B上。当触摸到组件B或者组件C时，Stack A也会被触摸到。onTouch事件允许多个组件同时触发，因此，当触摸组件B和组件C的重叠区域时，会触发Stack A和组件C的onTouch回调，不会触发组件B的onTouch回调（组件B被组件C遮盖）。
 
 ### 手势与事件
