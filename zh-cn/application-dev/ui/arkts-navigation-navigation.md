@@ -525,6 +525,24 @@ NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈�
 NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
+   
+   ``` TypeScript
+   @Component
+   struct Page01 {
+     pathStack: NavPathStack | undefined = undefined;
+   // ···
+     pageParam: string = '';
+     build() {
+       NavDestination() {
+       // ···
+       .title('Page01')
+       .onReady((context: NavDestinationContext) => {
+         this.pathStack = context.pathStack;
+         this.pageParam = context.pathInfo.param as string;
+       })
+     }
+   }
+   ```
 
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
