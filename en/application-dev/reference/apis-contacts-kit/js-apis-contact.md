@@ -2226,7 +2226,7 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10-1) instead.
+> This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10) instead.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
@@ -4554,22 +4554,22 @@ Enumerates contact attributes.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-| Name                 | Description                              |
-| --------------------- | ---------------------------------- |
-| ATTR_CONTACT_EVENT    | Important dates such as birthday and anniversaries of the contact.|
-| ATTR_EMAIL            | Email address of the contact.                |
-| ATTR_GROUP_MEMBERSHIP | Groups of the contact.                    |
-| ATTR_IM               | IM addresses of the contact.            |
-| ATTR_NAME             | Contact name.                    |
-| ATTR_NICKNAME         | Contact nickname.                    |
-| ATTR_NOTE             | Contact notes.                    |
-| ATTR_ORGANIZATION     | Organization of the contact.                |
-| ATTR_PHONE            | Phone number of the contacts.                |
-| ATTR_PORTRAIT         | Contact portrait.                    |
-| ATTR_POSTAL_ADDRESS   | Postal address of the contact.                |
-| ATTR_RELATION         | Relationship with the contact.                    |
-| ATTR_SIP_ADDRESS      | SIP addresses of the contact. |
-| ATTR_WEBSITE          | Website that stores the contact information.                    |
+| Name                 | Value| Description                              |
+| --------------------- | ---- | ---------------------------------- |
+| ATTR_CONTACT_EVENT    | 0 | Important dates such as birthday and anniversaries of the contact.|
+| ATTR_EMAIL            | 1 | Email address of the contact.                |
+| ATTR_GROUP_MEMBERSHIP | 2 | Groups of the contact.                    |
+| ATTR_IM               | 3 | IM addresses of the contact.            |
+| ATTR_NAME             | 4 | Contact name.                    |
+| ATTR_NICKNAME         | 5 | Contact nickname.                    |
+| ATTR_NOTE             | 6 | Contact notes.                    |
+| ATTR_ORGANIZATION     | 7 | Organization of the contact.                |
+| ATTR_PHONE            | 8 | Phone number of the contacts.                |
+| ATTR_PORTRAIT         | 9 | Contact portrait.                    |
+| ATTR_POSTAL_ADDRESS   | 10 | Postal address of the contact.                |
+| ATTR_RELATION         | 11 | Relationship with the contact.                    |
+| ATTR_SIP_ADDRESS      | 12 | SIP addresses of the contact. |
+| ATTR_WEBSITE          | 13 | Website that stores the contact information.                    |
 
 **Example**
 
