@@ -487,7 +487,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 
 **描述**
 
-设置资源的跳转的间隔时间。
+设置资源的跳转间隔时间。
 
 **起始版本：** 13
 
