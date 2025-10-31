@@ -59,7 +59,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。成功返回空，失败返回错误码、错误信息。        |
 
 **错误码：**
@@ -105,7 +105,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **错误码：**
 
@@ -1677,7 +1677,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。失败返回错误、错误信息。                   |
 
 **错误码：**
@@ -1728,7 +1728,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **返回值：**
 
@@ -4260,7 +4260,7 @@ bind(address: LocalAddress): Promise\<void\>;
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [LocalAddress](#localaddress11) | 是   | 目标地址信息，参考[LocalAddress](#localaddress11)。 |
+| address  | [LocalAddress](#localaddress11) | 是   | 本端地址信息，参考[LocalAddress](#localaddress11)。 |
 
 **返回值：**
 
@@ -6164,7 +6164,7 @@ bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                                                   |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address  | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 | callback | AsyncCallback\<void\>              | 是   | 回调函数。成功返回TLSSocket绑定本机的IP地址和端口的结果。失败返回错误码、错误信息。|
 
 **错误码：**
@@ -6215,7 +6215,7 @@ bind(address: NetAddress): Promise\<void\>
 
 | 参数名  | 类型                               | 必填 | 说明                                                   |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress)          | 是   | 目标地址信息，参考[NetAddress](#netaddress)。 |
+| address | [NetAddress](#netaddress)          | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
 **返回值：**
 
