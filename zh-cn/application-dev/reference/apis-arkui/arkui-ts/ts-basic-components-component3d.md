@@ -18,6 +18,10 @@ Component3D(sceneOptions?: SceneOptions)
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名       | 类型                                  | 必填 | 说明                                                         |
@@ -33,6 +37,10 @@ Component3D组件配置选项。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称        | 类型                               | 只读 | 可选   | 说明                                       |
 | --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
 | scene     | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[Scene](#scene12) | 否    | 是    | 3D模型资源文件或场景对象，默认值为undefined。<br/>**说明：** <br/>目前仅支持GLTF格式资源。 |
@@ -43,6 +51,10 @@ Component3D组件配置选项。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称    | 值   | 说明                     |
 | ------- | ---- | ------------------------ |
@@ -58,6 +70,8 @@ type Scene = Scene
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -77,6 +91,10 @@ environment(uri: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明         |
@@ -92,6 +110,10 @@ customRender(uri: ResourceStr, selfRenderUpdate: boolean)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -110,6 +132,10 @@ shader(uri: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明                         |
@@ -126,6 +152,10 @@ shaderImageTexture(uri: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
@@ -141,6 +171,10 @@ shaderInputBuffer(buffer: Array&lt;number&gt;)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
@@ -162,6 +196,10 @@ renderWidth(value: Dimension)
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：** 
 
 | 参数名 | 类型                                 | 必填 | 说明                 |
@@ -181,6 +219,10 @@ renderHeight(value: Dimension)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 **参数：** 
 
