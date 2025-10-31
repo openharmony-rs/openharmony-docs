@@ -20,6 +20,31 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 
 <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
+``` TypeScript
+// 主窗Ability
+import { createNWeb, defaultUrl } from '../pages/common';
+
+// ···
+
+// ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err && err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建，应用仅创建一个Web组件
+      createNWeb(defaultUrl, windowStage.getMainWindowSync().getUIContext());
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+// ...
+```
+
 <!-- -->
 
 ```ts
