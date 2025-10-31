@@ -268,6 +268,16 @@ Stack() {
 当父组件使用.gesture绑定手势，父子组件所绑定手势类型相同时，子组件优先于父组件响应。
 
 <!-- @[bindingfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
+    .gesture(TapGesture({count: 1}))
+}
+.id('ComponentA')
+.gesture(TapGesture({count: 1}))
+```
 当父子组件均正常绑定点击手势时，子组件优先于父组件响应。
 此时，单击组件B区域范围，组件B的点击手势会触发，组件A的点击手势不会触发。
 
