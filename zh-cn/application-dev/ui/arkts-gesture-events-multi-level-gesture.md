@@ -64,6 +64,12 @@ Stack() {
 2.当一个组件绑定多个手势时，先达到手势触发条件的手势优先触发。
 
 <!-- @[priorityfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
+
+``` TypeScript
+Column() {
+  Column().id('ComponentB').gesture(TapGesture({ count: 1 }))
+}.id('ComponentA').gesture(TapGesture({ count: 1 }))
+```
 当父组件和子组件均绑定点击手势时，子组件的优先级高于父组件。
 因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
