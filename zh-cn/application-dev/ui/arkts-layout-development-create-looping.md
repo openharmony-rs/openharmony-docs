@@ -596,6 +596,19 @@ Swiper(
 
 <!-- @[dot_indicator_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
+``` TypeScript
+Swiper(
+  // ···
+) {
+  // ···
+}
+.indicator(new DotIndicator()
+  // ···
+  .bottom(LengthMetrics.vp(0), this.ignoreSize) // true
+  // ···
+)
+```
+
 - 数字导航点忽略组件大小。
 
 <!-- @[digit_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDigitIndicatorIgnoreComponentSize.ets) -->
