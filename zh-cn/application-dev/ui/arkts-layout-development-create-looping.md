@@ -160,6 +160,14 @@ Swiper通过设置[displayArrow](../reference/apis-arkui/arkui-ts/ts-container-s
 
 <!-- @[default_arrow_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
 
+``` TypeScript
+  Swiper() {
+    // ···
+  }
+// ···
+  .displayArrow(true, false)
+```
+
 ![arrow1](figures/arrow1.gif)
 
 - 自定义箭头样式
