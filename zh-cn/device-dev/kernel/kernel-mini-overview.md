@@ -130,9 +130,9 @@ LiteOS-M内核移植的具体开发板的工程由社区开发者提供，可以
 
 [如何贡献](../../contribute/参与贡献.md)
 
-[Commit message规范](https://gitcode.com/openharmony/kernel_liteos_m/wikis/Commit%20message%E8%A7%84%E8%8C%83)
+[Commit message规范](https://gitee.com/openharmony/kernel_liteos_m/wikis/Commit%20message%E8%A7%84%E8%8C%83)
 
-[Liteos-M 内核编码规范](https://gitcode.com/openharmony/kernel_liteos_m/wikis/OpenHarmony%E8%BD%BB%E5%86%85%E6%A0%B8%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83)
+[Liteos-M 内核编码规范](https://gitee.com/openharmony/kernel_liteos_m/wikis/OpenHarmony%E8%BD%BB%E5%86%85%E6%A0%B8%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83)
 
 如何基于Liteos-M内核贡献一款芯片:
 
