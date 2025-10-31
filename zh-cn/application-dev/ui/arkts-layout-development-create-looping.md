@@ -318,6 +318,17 @@ Swiper(
 
 <!-- @[rotate_vertically](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDirection.ets) -->
 
+``` TypeScript
+Swiper(
+// ···
+) {
+// ···
+}
+// ···
+.indicator(true)
+.vertical(true)
+```
+
 
 ![截图3](figures/截图3.PNG)
 
