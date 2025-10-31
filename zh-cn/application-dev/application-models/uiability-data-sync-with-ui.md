@@ -130,8 +130,7 @@
     <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
     ``` TypeScript
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { UIAbility } from '@kit.AbilityKit';
     // ···
 
     export default class EntryAbility extends UIAbility {
@@ -139,7 +138,6 @@
 
       // [StartExclude onCreate]
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
         this.context.eventHub.off('event1');
       }
 
