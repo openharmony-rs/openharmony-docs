@@ -183,6 +183,20 @@
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
    <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+     for (let i = 0; i < others.length; i++) {
+       let target = others[i].getEventTargetInfo();
+       if (target.getId() == 'inner' && others[i].isBuiltIn() && others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+         this.currentRecognizer = current; // 保存当前组件的识别器
+         this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+         return others[i]; // 返回和当前手势将要组成并行手势的识别器
+       };
+     };
+     return undefined;
+   })
+   ```
 
 2. 使用onGestureRecognizerJudgeBegin接口获取到Scroll组件的PanGesture手势识别器，同时根据内外Scroll组件的边界条件，设置内外手势的开闭状态。
 
