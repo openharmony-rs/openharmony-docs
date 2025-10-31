@@ -924,6 +924,8 @@ ReactiveComponentContent的构造函数。
 
 **示例：**
 
+该示例展示了如何使用ReactiveComponentContent构造函数动态创建包含响应式内容的UI组件，实现了Builder函数的嵌套调用和函数参数的灵活传递。
+
 ``` ts
 import { ReactiveComponentContent, NodeContent, typeNode } from '@kit.ArkUI';
 
@@ -957,8 +959,10 @@ struct Index {
       Column({ space: 12 }) {
         Button('addComponentContent')
           .onClick(() => {
+            // 动态创建Column节点
             let column = typeNode.createNode(this.getUIContext(), 'Column');
             column.initialize();
+            // 创建ReactiveComponentContent并添加到Column节点
             column.addComponentContent(new ReactiveComponentContent<[string, Function]>(this.getUIContext(),
               wrapBuilder<[string, Function]>(buildText), { nestingBuilderSupported: true },
               this.message,
@@ -966,9 +970,10 @@ struct Index {
                 return 'FUNCTION'
               }
             ));
+            // 将构建好的节点添加到内容容器
             this.content.addFrameNode(column);
           })
-        ContentSlot(this.content)
+        ContentSlot(this.content) // 显示动态添加的内容
       }
       .id('column')
       .width('100%')
@@ -1204,6 +1209,8 @@ dispose(): void
 
 **示例：**
 
+该示例展示了如何使用dispose接口正确释放ReactiveComponentContent对象，管理节点生命周期。
+
 ```ts
 import {
   ReactiveComponentContent,
@@ -1247,7 +1254,9 @@ class MyNodeController extends NodeController {
   private contentNode: ReactiveComponentContent<[Binding<number>, Binding<string>]> | null = null;
 
   makeNode(context: UIContext): FrameNode | null {
+    // 创建FrameNode作为根容器
     this.rootNode = new FrameNode(context);
+    // 创建ReactiveComponentContent响应式内容
     this.contentNode = new ReactiveComponentContent <[Binding<number>, Binding<string>]>(context,
       wrapBuilder<[Binding<number>, Binding<string>]>(buildText),
       {},
@@ -1261,15 +1270,17 @@ class MyNodeController extends NodeController {
         console.info("NodeTest3 set after", params.message);
       }),
     );
+    // 将响应式内容添加到根节点
     if (this.rootNode !== null) {
       this.rootNode.addComponentContent(this.contentNode);
     }
     return this.rootNode;
   }
 
+  // 释放资源的方法
   dispose() {
     if (this.contentNode !== null) {
-      this.contentNode.dispose();
+      this.contentNode.dispose(); // 释放ReactiveComponentContent资源
     }
   }
 }
@@ -1282,13 +1293,15 @@ struct Index {
   build() {
     Row() {
       Column() {
+        // 显示自定义节点内容
         NodeContainer(this.myNodeController)
           .width('100%')
           .height(100)
           .backgroundColor('#FFF0F0F0')
+        // 触发资源释放
         Button('ReactiveComponentContent dispose')
           .onClick(() => {
-            this.myNodeController.dispose();
+            this.myNodeController.dispose(); // 调用dispose释放资源
           })
       }
       .width('100%')
@@ -1311,6 +1324,9 @@ updateConfiguration(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
+该示例展示了如何使用updateConfiguration接口响应系统环境配置变化，实现ReactiveComponentContent构建的UI节点的动态适配更新。
+
 ```ts
 import { NodeController, FrameNode, ReactiveComponentContent, UIContext, FrameCallback } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
@@ -1426,6 +1442,8 @@ flushState(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
+
+该示例展示了flushState接口在ReactiveComponentContent中的使用场景，通过对比V1和V2装饰器的数据更新机制，演示了不同响应式方案下的状态更新策略。
 
 ```ts
 import {
@@ -1756,6 +1774,9 @@ isDisposed(): boolean
 | boolean | 后端实体节点是否解除引用。<br/>true：节点已与后端实体节点解除引用；false：节点未与后端实体节点解除引用。 |
 
 **示例：**
+
+该示例展示了如何使用isDisposed接口检查ReactiveComponentContent对象是否已解除与后端实体节点的引用关系，提供了节点状态安全检测的完整实现方案。
+
 ```ts
 import {
   ReactiveComponentContent,
