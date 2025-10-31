@@ -741,6 +741,29 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
   <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template1/Index.ets) -->
+  
+  ``` TypeScript
+  import { uiObserver } from '@kit.ArkUI';
+  
+  // NavDestination内的自定义组件
+  @Component
+  struct MyComponent {
+    navDesInfo: uiObserver.NavDestinationInfo | undefined;
+    context = this.getUIContext().getHostContext();
+    aboutToAppear() {
+      this.navDesInfo = this.queryNavDestinationInfo();
+    }
+  
+    build() {
+      // ···
+        Column() {
+          // $r('app.string.onPageName')需要替换为开发者所需的字符串资源文件
+          Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
+        }.width('100%').height('100%')
+      // ···
+    }
+  }
+  ```
 
 - 页面状态监听
   
