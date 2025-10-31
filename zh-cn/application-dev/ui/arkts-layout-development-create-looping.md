@@ -79,6 +79,16 @@ autoPlay为true时，会自动切换播放子组件，子组件与子组件之�
 
 <!-- @[autoplay_loop_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAutoPlay.ets) -->
 
+``` TypeScript
+  Swiper() {
+    // ···
+  }
+// ···
+  .loop(true)
+  .autoPlay(true)
+  .interval(1000)
+```
+
 ![autoPlay](figures/autoPlay.gif)
 
 
