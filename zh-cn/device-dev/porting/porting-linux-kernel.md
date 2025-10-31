@@ -83,7 +83,7 @@ OH内核态层 = OH Linux内核 + OH内核态特性（可选特性或者必选�
      
    ```
    export PROJ_ROOT=[OpenHarmony manifest]
-   git clone https://gitcode.com/xfan1024/oh-rpi3b-kernel.git
+   git clone https://gitee.com/xfan1024/oh-rpi3b-kernel.git
    cp -r oh-rpi3b-kernel $PROJ_ROOT/out/KERNEL_OBJ/kernel/src_tmp/linux-rpi3b
    ```
 
