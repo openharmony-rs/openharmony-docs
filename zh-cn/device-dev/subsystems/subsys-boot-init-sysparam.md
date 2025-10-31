@@ -244,11 +244,11 @@ hilog_param=40960
 
 ### 参数和标签的展示
 
-   目前按照子系统，部件把参数和标签统计的信息已经录入数据库，可以搭建[OpenHarmony实时架构信息收集与分析系统](https://gitee.com/handyohos/ohos_archinfo/tree/master)进行查看。
+   目前按照子系统，部件把参数和标签统计的信息已经录入数据库，可以搭建[OpenHarmony实时架构信息收集与分析系统](https://gitcode.com/handyohos/ohos_archinfo/tree/master)进行查看。
 
-   搭建服务可参考：[OpenHarmony实时架构信息analyser模块说明](https://gitee.com/handyohos/ohos_archinfo/blob/master/analyser/README.md)
+   搭建服务可参考：[OpenHarmony实时架构信息analyser模块说明](https://gitcode.com/handyohos/ohos_archinfo/blob/master/analyser/README.md)
 
-   自行收集数据库信息可参考：[OpenHarmony实时架构信息收集与分析系统](https://gitee.com/handyohos/ohos_archinfo/tree/master#/handyohos/ohos_archinfo/blob/master/collector/README.md)
+   自行收集数据库信息可参考：[OpenHarmony实时架构信息收集与分析系统](https://gitcode.com/handyohos/ohos_archinfo/tree/master#/handyohos/ohos_archinfo/blob/master/collector/README.md)
 
    数据库也可以取每日构建的dayu200-db
 ### 系统参数的基本操作

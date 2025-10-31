@@ -8,7 +8,7 @@
 
 - 开发板相关源码已编译完成，已形成烧录文件。
 
-- 客户端（操作平台，例如Windows系统）已下载并安装[HiBurn工具](https://gitee.com/hihope_iot/docs/tree/master/HiSpark_WiFi_IoT/Software/tools)。
+- 客户端（操作平台，例如Windows系统）已下载并安装[HiBurn工具](https://gitcode.com/hihope_iot/docs/tree/master/HiSpark_WiFi_IoT/Software/tools)。
 
 - 客户端（操作平台，例如Windows系统）已安装USB驱动，可参考[USB驱动安装指导](https://device.harmonyos.com/cn/docs/documentation/guide/hi3861-drivers-0000001058153433)。
 

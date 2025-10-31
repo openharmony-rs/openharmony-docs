@@ -194,4 +194,4 @@ Hiview支持将多个插件编译成为一个独立的插件包，以独立so的
 
 ## 参考
 
-如果您想了解更多关于Hiview特性的源码及使用信息，请参考[Hiview代码仓](https://gitee.com/openharmony/hiviewdfx_hiview)。
+如果您想了解更多关于Hiview特性的源码及使用信息，请参考[Hiview代码仓](https://gitcode.com/openharmony/hiviewdfx_hiview)。

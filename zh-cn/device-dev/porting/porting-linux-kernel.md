@@ -83,7 +83,7 @@ OH内核态层 = OH Linux内核 + OH内核态特性（可选特性或者必选�
      
    ```
    export PROJ_ROOT=[OpenHarmony manifest]
-   git clone https://gitee.com/xfan1024/oh-rpi3b-kernel.git
+   git clone https://gitcode.com/xfan1024/oh-rpi3b-kernel.git
    cp -r oh-rpi3b-kernel $PROJ_ROOT/out/KERNEL_OBJ/kernel/src_tmp/linux-rpi3b
    ```
 
@@ -136,7 +136,7 @@ obj-$(CONFIG_HIEVENT)           += hievent/
 
 在内核config项中打开对应的CONFIG控制宏：CONFIG_HILOG和CONFIG_HIEVENT。
 
-具体日志使用说明请参见：[Hilog_lite组件介绍](https://gitee.com/openharmony/hiviewdfx_hilog_lite/blob/master/README_zh.md)。
+具体日志使用说明请参见：[Hilog_lite组件介绍](https://gitcode.com/openharmony/hiviewdfx_hilog_lite/blob/master/README_zh.md)。
 
 
 ### 移植内核态必选特性HDF

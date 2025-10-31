@@ -57,11 +57,11 @@
 
 - IDL接口
 
-  接口定义语言（Interface Definition Language）通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现Face_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitee.com/openharmony/ability_idl_tool/blob/master/README.md)。
+  接口定义语言（Interface Definition Language）通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现Face_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitcode.com/openharmony/ability_idl_tool/blob/master/README.md)。
 
 - IPC通信
 
-  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitee.com/openharmony/communication_ipc/blob/master/README_zh.md)。
+  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitcode.com/openharmony/communication_ipc/blob/master/README_zh.md)。
 
 - HDI
 
@@ -90,7 +90,7 @@ Face_auth驱动的主要工作是为上层用户认证框架和Face_auth服务�
 
 ### 接口说明
 
-注：以下接口列举的为IDL接口描述生成的对应C++语言函数接口，接口声明见[idl文件](https://gitee.com/fang-jinxu/interface_native_header/tree/master/zh-cn/device_api/hdi/face_auth)。
+注：以下接口列举的为IDL接口描述生成的对应C++语言函数接口，接口声明见[idl文件](https://gitcode.com/fang-jinxu/interface_native_header/tree/master/zh-cn/device_api/hdi/face_auth)。
 
 在本文中，人脸凭据的录入、认证、识别和删除相关的HDI接口如表1所示，表2中的回调函数分别用于人脸执行器返回操作结果给框架和返回操作过程中的提示信息给上层应用。
 
@@ -139,7 +139,7 @@ Face_auth驱动的主要工作是为上层用户认证框架和Face_auth服务�
 
 下面结合DEMO实例介绍驱动开发的具体步骤。
 
-1. 基于HDF驱动框架，按照驱动Driver Entry程序，完成Face_auth驱动开发，主要由Bind、Init、Release、Dispatch函数接口实现，详细代码参见[face_auth_interface_driver.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/face_auth/hdi_service/src/face_auth_interface_driver.cpp)文件。
+1. 基于HDF驱动框架，按照驱动Driver Entry程序，完成Face_auth驱动开发，主要由Bind、Init、Release、Dispatch函数接口实现，详细代码参见[face_auth_interface_driver.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/face_auth/hdi_service/src/face_auth_interface_driver.cpp)文件。
 
    ```c++
    // 通过自定义的HdfFaceAuthInterfaceHost对象包含ioService对象和真正的HDI Service实现IRemoteObject对象
@@ -264,7 +264,7 @@ Face_auth驱动的主要工作是为上层用户认证框架和Face_auth服务�
    HDF_INIT(g_faceAuthInterfaceDriverEntry);
    ```
 
-2. 实现获取执行器列表接口，详细代码参见[face_auth_interface_service.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/face_auth/hdi_service/src/face_auth_interface_service.cpp)文件。
+2. 实现获取执行器列表接口，详细代码参见[face_auth_interface_service.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/face_auth/hdi_service/src/face_auth_interface_service.cpp)文件。
 
    ```c++
    // 执行器实现类
@@ -304,7 +304,7 @@ Face_auth驱动的主要工作是为上层用户认证框架和Face_auth服务�
    }
    ```
 
-3. 实现执行器每个功能接口，详细代码参见[all_in_one_executor_impl.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/face_auth/hdi_service/src/all_in_one_executor_impl.cpp)文件。
+3. 实现执行器每个功能接口，详细代码参见[all_in_one_executor_impl.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/face_auth/hdi_service/src/all_in_one_executor_impl.cpp)文件。
 
    ```c++
    // 实现获取执行器信息接口

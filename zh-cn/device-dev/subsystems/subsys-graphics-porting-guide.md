@@ -8,7 +8,7 @@
 4. 字体初始化
 5. 屏幕刷新对接
 
-具体步骤如下，步骤最后有参考示例代码，具体可参照 [OpenHarmony 小型系统图形 Simulator 适配实现](https://gitee.com/openharmony/arkui_ui_lite/tree/master/tools/qt/simulator)。
+具体步骤如下，步骤最后有参考示例代码，具体可参照 [OpenHarmony 小型系统图形 Simulator 适配实现](https://gitcode.com/openharmony/arkui_ui_lite/tree/master/tools/qt/simulator)。
 
 ### 图形引擎初始化
 主要包括初始化 UI 任务、渲染模块、动画模块、默认样式等。
@@ -21,7 +21,7 @@ GraphicStartUp::Init();
 
 主要包括设置屏幕大小，对接基础图元绘制，获取图形绘制的 buffer，把图形绘制的数据刷到屏幕上显示等。
 
-显示层适配根据硬件绘制和软件绘制不同，需继承实现不同的类。其中 [gfx_engine_manager.h](https://gitee.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/gfx_engine_manager.h) 中的 BaseGfxEngine 类为纯虚实现，只定义了接口，不含任何实现，适合作为自行实现的硬件绘制的父类；[soft_engine.h](https://gitee.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/soft_engine.h) 中的 SoftEngine 继承自 BaseGfxEngine，对 BaseGfxEngine 的接口进行了软件层实现，适合作为软件绘制的父类。
+显示层适配根据硬件绘制和软件绘制不同，需继承实现不同的类。其中 [gfx_engine_manager.h](https://gitcode.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/gfx_engine_manager.h) 中的 BaseGfxEngine 类为纯虚实现，只定义了接口，不含任何实现，适合作为自行实现的硬件绘制的父类；[soft_engine.h](https://gitcode.com/openharmony/arkui_ui_lite/blob/master/interfaces/innerkits/engines/gfx/soft_engine.h) 中的 SoftEngine 继承自 BaseGfxEngine，对 BaseGfxEngine 的接口进行了软件层实现，适合作为软件绘制的父类。
 
 BaseGfxEngine 类中有3类接口：
 

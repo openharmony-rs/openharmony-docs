@@ -88,7 +88,7 @@ bundle.json文件是对当前Part的元数据描述，每个Part中必须包含�
   "author": {"name":"","email":"","url":""},
   "contributors":[{"name":"","email":"","url":""},{"name":"","email":"","url":""}],
   "homepage": "http://www.foo.bar.com",
-  "repository": "https://git@gitee.com:foo/bar.git",
+  "repository": "https://git@gitcode.com:foo/bar.git",
   "private": false,
   "publishAs": "code-segment",
   "segment":{
