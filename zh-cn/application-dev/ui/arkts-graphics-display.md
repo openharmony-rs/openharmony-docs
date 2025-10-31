@@ -696,6 +696,33 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 
   <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct AddFilterEffectsToImages {
+    build() {
+      Column() {
+        Row() {
+          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          Image($r('app.media.example'))
+            .width('40%')
+            .margin(10)
+          //  $r('app.media.example')需要替换为开发者所需的资源文件
+          Image($r('app.media.example'))
+            .width('40%')
+            .colorFilter(
+               [1, 1, 0, 0, 0,
+                0, 1, 0, 0, 0,
+                0, 0, 1, 0, 0,
+                0, 0, 0, 1, 0])
+            .margin(10)
+        }.width('100%')
+        .justifyContent(FlexAlign.Center)
+      }
+    }
+  }
+  ```
 
 ![zh-cn_image_0000001643171357](figures/zh-cn_image_0000001643171357.png)
 
