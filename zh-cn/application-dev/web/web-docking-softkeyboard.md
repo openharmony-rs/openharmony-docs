@@ -194,6 +194,29 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 在应用代码中设置ArkWeb的软键盘避让模式。
 
 <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+
+``` TypeScript
+// Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Row().height('50%').width('100%').backgroundColor(Color.Gray)
+      Web({ src: $rawfile('index.html'),controller: this.controller})
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) //此时ArkWeb组件不会调整任何视口的大小。
+      Text('I can see the bottom of the page')    
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Pink)
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
 ArkWeb组件根据避让模式进行避让，效果见图3。
 
 **图3**  Web组件网页自身软键盘避让模式
