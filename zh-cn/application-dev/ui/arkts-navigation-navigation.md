@@ -497,6 +497,11 @@ NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的�
    this.pageStack.removeByIndexes([1]);
    ```
    <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 删除指定id的页面
+   this.pageStack.removeByNavDestinationId('1');
+   ```
 
 ### 移动页面
 
