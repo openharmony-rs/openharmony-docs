@@ -1009,6 +1009,8 @@ getCaretOffset(): number
 
 返回当前光标所在位置。
 
+当无法获取光标位置时（例如controller未与组件绑定时），该接口返回-1。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
