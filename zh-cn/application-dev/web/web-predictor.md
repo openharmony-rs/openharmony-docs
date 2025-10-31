@@ -43,9 +43,7 @@ struct WebComponent {
 }
 ```
 
-也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)来提前初始化内核，然后在初始化内核后调用
-[prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)对即将要加载的页面进行预解析、预连接。这种方式适合提前对首页进行
-预解析、预连接。
+也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)来提前初始化内核，然后在初始化内核后调用[prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)对即将要加载的页面进行预解析、预连接。这种方式适合提前对首页进行预解析、预连接。
 
   在下面的示例中，Ability的onCreate中提前初始化Web内核并对首页进行预连接。
 
