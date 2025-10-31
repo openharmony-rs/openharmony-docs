@@ -241,7 +241,7 @@
 
      其中，branch表示分支名称，例如master、OpenHarmony-3.2-Beta3等。
      ```shell
-     repo init -u https://gitcode.com/openharmony/manifest -b branch --no-repo-verify
+     repo init -u https://gitee.com/openharmony/manifest -b branch --no-repo-verify
      ```
  
   3. 下载更新源码文件。
