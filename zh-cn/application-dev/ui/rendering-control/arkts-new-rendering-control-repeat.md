@@ -210,8 +210,52 @@ Repeat的`.key()`属性为每个子组件生成一个键值。Repeat通过键值
 
 - 即使数组发生变化，开发者也必须保证键值key唯一。
 - 每次执行`.key()`函数时，使用相同的数据项作为输入，输出必须是一致的。
+为了实现性能最优，建议开发者自定义键值时，键值的生成应与index无关。因为当前item的键值发生变化后，该item就会被销毁，并重新创建新的item来显示当前view。如果定义的键值与index相关，那么与当前item无关的变更（如前面的数据项增加或删除）可能会触发item的销毁和节点创建，造成不必要的刷新。
 - 允许在`.key()`中使用index，但不建议开发者这样做。因为在数据项移动时索引index发生变化的同时key值也会改变，导致Repeat认为数据发生变化，从而触发子组件重新渲染，降低性能表现。
 - 推荐将简单类型数组转换为类对象数组，并添加一个`readonly id`属性，在构造函数中初始化唯一值。
+
+键值生成示例：
+
+```ts
+@ObservedV2
+class ExampleData {
+  @Trace str: string;
+  num: number;
+
+  constructor(s: string, n: number) {
+    this.str = s;
+    this.num = n;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local exampleList: Array<ExampleData> = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.exampleList.push(new ExampleData(`data${i}`, i));
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        Repeat(this.exampleList)
+          .each((obj: RepeatItem<ExampleData>) => {
+            ListItem() {
+              Text(obj.item.str).fontSize(50)
+            }
+          })
+          .key(item => item.str) // UI显示刷新与属性str相关，建议在键值生成函数中设置其为返回值，此处键值生成与index无关
+      }
+    }
+  }
+}
+```
+
+在上述示例代码中，使用`.key()`定义键值生成函数，各子组件的键值为item元素的str属性值。
 
 ## 数据精准懒加载
 
