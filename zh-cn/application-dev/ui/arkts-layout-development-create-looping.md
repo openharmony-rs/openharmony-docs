@@ -135,6 +135,23 @@ Swiper() {
 
 <!-- @[customize_navigation_point_styles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
 
+``` TypeScript
+  Swiper() {
+    // ···
+  }
+// ···
+  .indicator(
+    Indicator.dot()
+      .left(0)
+      .itemWidth(15)
+      .itemHeight(15)
+      .selectedItemWidth(30)
+      .selectedItemHeight(15)
+      .color(Color.Red)
+      .selectedColor(Color.Blue)
+  )
+```
+
 ![ind](figures/ind.PNG)
 
 Swiper通过设置[displayArrow](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#displayarrow10)属性，可以控制导航点箭头的大小、位置、颜色，底板的大小及颜色，以及鼠标悬停时是否显示箭头。
