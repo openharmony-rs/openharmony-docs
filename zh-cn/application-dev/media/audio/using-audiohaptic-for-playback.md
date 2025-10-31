@@ -21,23 +21,51 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ### 开发步骤及注意事项
 
-1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
+1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。应用可根据自身需求，选择使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)或[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口注册资源。
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
 
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
 
+   // 方法1：使用registerSource接口注册资源。
    let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
    let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
-   let id = 0;
+   let idForUri = 0;
 
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
      console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
-     id = value;
+     idForUri = value;
    }).catch((err: BusinessError) => {
      console.error(`Failed to register source ${err}`);
+   });
+
+   // 方法2：使用registerSourceFromFd接口注册资源。
+   let idForFd = 0;
+   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // 需要改成rawfile目录下的对应文件。
+   let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+     fd: audioFile.fd,
+     offset: audioFile.offset,
+     length: audioFile.length,
+   };
+
+   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // 需要改成rawfile目录下的对应文件。
+   let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+     fd: hapticFile.fd,
+     offset: hapticFile.offset,
+     length: hapticFile.length,
+   };
+
+   audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
+     console.info('Succeeded in doing registerSourceFromFd.');
+     idForFd = value;
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
