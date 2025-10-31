@@ -522,7 +522,7 @@ TextInput/TextArea
 
 **适配指导**
 
-使用组件内置方法[`getUIContext`](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)，可直接获取当前组件所在的UIContext，并使用如下[UIContext](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中的API获取与实例绑定的对象。
+使用组件内置方法[`getUIContext`](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)，可直接获取当前组件所在的UIContext，并使用如下[UIContext](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-UIContext.md#uicontext)中的API获取与实例绑定的对象。
 
 | UIContext接口                    | 说明               |
 | -------------------------------- | ------------------ |

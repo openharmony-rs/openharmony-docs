@@ -31,7 +31,7 @@ API version
 
 | 接口文件                                                                                                     |
 |----------------------------------------------------------------------------------------------------------|
-| [ohos.net.http.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
+| [ohos.net.http.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
 
 **适配指导**
 
@@ -72,7 +72,7 @@ API version
 
 | 接口文件                                                                                                     |
 |----------------------------------------------------------------------------------------------------------|
-| [ohos.net.http.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
+| [ohos.net.http.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
 
 **适配指导**
 

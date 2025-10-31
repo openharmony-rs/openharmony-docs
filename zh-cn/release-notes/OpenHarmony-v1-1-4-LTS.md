@@ -20,10 +20,10 @@
 
 ### 通过repo获取
 
-**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.4-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.4-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -31,7 +31,7 @@ repo forall -c 'git lfs pull'
 **方式二**：通过repo + https 下载。
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.4-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.4-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -66,7 +66,7 @@ repo forall -c 'git lfs pull'
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ## 修复缺陷列表
@@ -75,22 +75,22 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 |
 | -------- | -------- |
-| [I4AJEN](https://gitee.com/openharmony/third_party_freetype/issues/I4AJEN) | 修复third_party_freetype组件的CVE-2020-15999安全漏洞 |
-| [I4AJ6T](https://gitee.com/openharmony/third_party_mbedtls/issues/I4AJ6T) | 修复third_party_mbedtls组件的CVE-2020-36475和CVE-2020-36478安全漏洞 |
+| [I4AJEN](https://gitcode.com/openharmony/third_party_freetype/issues/I4AJEN) | 修复third_party_freetype组件的CVE-2020-15999安全漏洞 |
+| [I4AJ6T](https://gitcode.com/openharmony/third_party_mbedtls/issues/I4AJ6T) | 修复third_party_mbedtls组件的CVE-2020-36475和CVE-2020-36478安全漏洞 |
 | I4AIYJ | 修复third_party_uboot组件的CVE-2021-27138和CVE-2021-27097安全漏洞 |
-| [I4HUM6](https://gitee.com/openharmony/third_party_lwip/issues/I4HUM6?from=project-issue) | 修复third_party_lwip组件的CVE-2020-22284安全漏洞 |
+| [I4HUM6](https://gitcode.com/openharmony/third_party_lwip/issues/I4HUM6?from=project-issue) | 修复third_party_lwip组件的CVE-2020-22284安全漏洞 |
 | I4QTVZ | 修复third_party_mbedtls组件的CVE-2021-44732和CVE-2021-45450安全漏洞 |
-| [I46RRM](https://gitee.com/openharmony/third_party_wpa_supplicant/issues/I46RRM?from=project-issue) | 修复P2P客户端的辅助设备类型的复制存在的一个安全漏洞 |
+| [I46RRM](https://gitcode.com/openharmony/third_party_wpa_supplicant/issues/I46RRM?from=project-issue) | 修复P2P客户端的辅助设备类型的复制存在的一个安全漏洞 |
 
 **表4** 已修复的缺陷列表
 
 | ISSUE单号 | 问题描述 |
 | -------- | -------- |
-| [I457ZZ](https://gitee.com/openharmony/kernel_liteos_a/issues/I457ZZ) | 解决OsLockDepCheckIn异常处理中存在锁嵌套调用导致死锁输出异常信息问题 |
-| [I3WU8Y](https://gitee.com/openharmony/kernel_liteos_a/issues/I3WU8Y) | 解决轻内核子系统集成测试中fs模块storage下有失败用例的问题 |
-| [I4AJI2](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/issues/I4AJI2) | 升级ffmpeg版本到4.3.1版本 |
-| [I3HXIX](https://gitee.com/openharmony/third_party_NuttX/issues/I3HXIX?from=project-issue) | 修复多进程情况下，pipe的内核操作节点存在使用脏私有字段dev，导致系统概率异常的问题 |
-| [I4QO9B](https://gitee.com/openharmony/communication_wifi_lite/issues/I4QO9B?from=project-issue) | 修复WLAN从列表退出到桌面卡住的问题 |
+| [I457ZZ](https://gitcode.com/openharmony/kernel_liteos_a/issues/I457ZZ) | 解决OsLockDepCheckIn异常处理中存在锁嵌套调用导致死锁输出异常信息问题 |
+| [I3WU8Y](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3WU8Y) | 解决轻内核子系统集成测试中fs模块storage下有失败用例的问题 |
+| [I4AJI2](https://gitcode.com/openharmony/device_hisilicon_third_party_ffmpeg/issues/I4AJI2) | 升级ffmpeg版本到4.3.1版本 |
+| [I3HXIX](https://gitcode.com/openharmony/third_party_NuttX/issues/I3HXIX?from=project-issue) | 修复多进程情况下，pipe的内核操作节点存在使用脏私有字段dev，导致系统概率异常的问题 |
+| [I4QO9B](https://gitcode.com/openharmony/communication_wifi_lite/issues/I4QO9B?from=project-issue) | 修复WLAN从列表退出到桌面卡住的问题 |
 | [I4EPVL](https://gitcode.com/openharmony/xts_acts/issues/I4EPVL?from=project-issue) | CMSIS的代码与第三方芯片不兼容，暂时下架ActsCMSISTest测试用例 |
 | [I4QQU9](https://gitcode.com/openharmony/xts_acts/issues/I4QQU9) | 小型设备Hi3516&amp;Hi3518执行xts测试套ActsNetTest时串口日志出现板端IP和mac地址 |
 
