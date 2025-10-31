@@ -399,6 +399,20 @@
 
    此处以手动备份为例：
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 在同路径下备份数据库
+   if (store !== undefined) {
+     // 'Backup.db'为备份数据库文件名，默认在RdbStore同路径下备份。也可指定路径：customDir + 'Backup.db'
+     (store as relationalStore.RdbStore).backup('Backup.db', (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in backing up RdbStore.`);
+     })
+   }
+   ```
 
 7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见[关系型数据库数据恢复](data-backup-and-restore.md#关系型数据库数据恢复)。
 
