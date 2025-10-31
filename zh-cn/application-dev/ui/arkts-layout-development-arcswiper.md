@@ -301,3 +301,61 @@ export struct ArcSwiperAction {
 ArcSwiper的滑动事件会与侧滑返回冲突，可以通过[手势拦截](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)去判断ArcSwiper是否滑动到开头去拦截ArcSwiper的滑动手势，实现再次左滑返回上一页的功能。
 
 <!-- @[side_slip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets) -->
+
+``` TypeScript
+import {
+  ArcSwiper,
+  ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+// ···
+
+@Entry
+@Component
+export struct ArcSwiperSideSlip {
+  @State backgroundColors: Color[] = [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.Gray, Color.Orange];
+  innerSelectedIndex: number = 0;
+
+  build() {
+    // ···
+      Column({ space: 12 }) {
+        // ···
+          ArcSwiper() {
+            ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+              Text(index.toString())
+                .width(233)
+                .height(233)
+                .fontSize(50)
+                .textAlign(TextAlign.Center)
+                .backgroundColor(backgroundColor)
+            })
+          }
+          .onAnimationStart((index: number, targetIndex: number) => {
+            this.innerSelectedIndex = targetIndex;
+          })
+          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+            others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+            if (current) {
+              let target = current.getEventTargetInfo();
+              if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+                let swiperTarget = target as ScrollableTargetInfo;
+                if (swiperTarget instanceof ScrollableTargetInfo &&
+                  (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) { // 此处判断swiperTarget.isBegin()或innerSelectedIndex === 0，表明ArcSwiper滑动到开头
+                  let panEvent = event as PanGestureEvent;
+                  if (panEvent && panEvent.offsetX > 0 && (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
+                    return GestureJudgeResult.REJECT;
+                  }
+                }
+              }
+            }
+            return GestureJudgeResult.CONTINUE;
+          })
+        // ···
+      }
+      .width('100%')
+    // ···
+  }
+}
+```
