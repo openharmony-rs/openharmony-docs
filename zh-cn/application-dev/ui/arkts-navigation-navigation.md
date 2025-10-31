@@ -547,6 +547,29 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageTwo.ets) -->
+   
+   ``` TypeScript
+   class NavParam {
+     public desc: string = 'navigationOnResult-param'
+   };
+   // ···
+   @Component
+   struct DemoNavDestination {
+   // ···
+     build() {
+       NavDestination() {
+       // ···
+       }
+       .onResult((param: Object) => {
+         if (param instanceof NavParam) {
+           hilog.info(DOMAIN, 'testTag', 'get NavParam, its desc:', (param as NavParam).desc);
+           return;
+         }
+         hilog.info(DOMAIN, 'testTag', 'param not instance of NavParam');
+       })
+     }
+   }
+   ```
 
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
