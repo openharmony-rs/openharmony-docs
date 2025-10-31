@@ -6,7 +6,7 @@ Smartperf-Host是一款深入挖掘数据、细粒度地展示数据的性能功
 
 该组件整体分为设备端和PC端两部分，设备端和PC端基于gRPC（Remote Procedure Call）通信框架进行数据交互。
 
-设备端内部分为应用程序内嵌组件、命令行工具、性能调优服务、性能调优插件集合、部分系统工具及部分系统内核等模块。设备端提供了插件扩展能力，对外提供了插件接口，基于该扩展能力可以按需定义自己的能力，并集成到框架中来，目前基于插件能力已经完成了native内存插件、trace插件等，详细介绍见[性能调优组件](https://gitcode.com/openharmony/developtools_profiler)。
+设备端内部分为应用程序内嵌组件、命令行工具、性能调优服务、性能调优插件集合、部分系统工具及部分系统内核等模块。设备端提供了插件扩展能力，对外提供了插件接口，基于该扩展能力可以按需定义自己的能力，并集成到框架中来，目前基于插件能力已经完成了native内存插件、trace插件等，详细介绍见[性能调优组件](https://gitee.com/openharmony/developtools_profiler)。
 
 PC端以Smartperf-Host网站的形式进行发布，内部分为Trace Streamer数据解析、SQLite数据存储、hdc设备管理、数据导入、UI绘制、数据分析等模块。下文会重点对Smartperf-Host提供的各项能力进行介绍。
 ## 项目目录
@@ -35,13 +35,13 @@ PC端以Smartperf-Host网站的形式进行发布，内部分为Trace Streamer�
 ## 功能介绍
 - 网页加载trace
 
-  使用Smartperf-Host加载保存在本地的trace文件（htrace、ftrace等）并显示数据到泳道图中，trace数据分析详见《[网页加载trace说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_systemtrace.md)》。
+  使用Smartperf-Host加载保存在本地的trace文件（htrace、ftrace等）并显示数据到泳道图中，trace数据分析详见《[网页加载trace说明](https://gitee.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_systemtrace.md)》。
 - 网页抓取trace
 
-  使用Smartperf-Host在线抓取trace，可以自定义抓取内容、抓取时长、trace保存路径，详见《[网页抓取trace说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_web_record.md)》。
+  使用Smartperf-Host在线抓取trace，可以自定义抓取内容、抓取时长、trace保存路径，详见《[网页抓取trace说明](https://gitee.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_web_record.md)》。
 - 设备抓取trace
 
-  在设备端抓取trace，可以自定义抓取内容、抓取时长、trace保存路径，详见《[设备端抓取trace说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_device_record.md)》。
+  在设备端抓取trace，可以自定义抓取内容、抓取时长、trace保存路径，详见《[设备端抓取trace说明](https://gitee.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_device_record.md)》。
 - Ability Monitor抓取
 
   使用Smartperf-Host抓取应用的CPU、内存、磁盘IO和网络的使用情况，详见《[Ability Monitor抓取和展示说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_ability_monitor.md)》。
