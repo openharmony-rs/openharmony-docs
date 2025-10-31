@@ -73,6 +73,51 @@
    
 <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { UIAbility} from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG : string = '[Sample_CCreatMainWindow]';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 1.获取应用主窗口。
+    let windowClass: window.Window | null = null;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        hilog.error(DOMAIN, TAG, `Failed to obtain the main window. Code:${err.code}, message:${err.message}`);
+        return;
+      }
+      windowClass = data;
+      hilog.info(DOMAIN, TAG, `Succeeded in obtaining the main window. Result:${data}`);
+      // 2.设置主窗口属性。以设置"是否可触"属性为例。
+      let isTouchable: boolean = true;
+      windowClass.setWindowTouchable(isTouchable, (err: BusinessError) => {
+        let errCode: number = err.code;
+        if (errCode) {
+          hilog.error(DOMAIN, TAG, `Failed to set the window to be touchable. Cause: ${JSON.stringify(err)}`);
+          return;
+        }
+        hilog.info(DOMAIN, TAG, `Succeeded in setting the window to be touchable.`);
+      })
+    })
+    // 3.为主窗口加载对应的目标页面。
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+    });
+  }
+};
+```
+
 ## 设置应用子窗口
 
 开发者可以按需创建应用子窗口，如弹窗等，并对其进行属性设置等操作。
