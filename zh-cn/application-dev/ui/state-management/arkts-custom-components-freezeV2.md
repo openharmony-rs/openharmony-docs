@@ -586,8 +586,8 @@ struct PageB {
 ```
 
 在上面的示例中：
-- Page1的子组件Child，设置`freezeWhenInactive: true`, 开启了组件冻结功能。
-- 点击`change BookName`，然后3s内点击`Go to next page`。在更新bookTest的时候，已经跳转到Page2，Page1的组件处于inactive状态，又因为Child组件开启了组件冻结，状态变量`@Local bookTest`将不响应更新，其@Monitor装饰的回调方法不会被调用，状态变量关联的组件不会刷新。
+- PageA的子组件Child，设置`freezeWhenInactive: true`, 开启了组件冻结功能。
+- 点击`change BookName`，然后3s内点击`Go to next page`。在更新bookTest的时候，已经跳转到PageB，PageA的组件处于inactive状态，又因为Child组件开启了组件冻结，状态变量`@Local bookTest`将不响应更新，其@Monitor装饰的回调方法不会被调用，状态变量关联的组件不会刷新。
 - 点击`Back`回到前一个页面，调用@Monitor装饰的回调方法，状态变量关联的组件刷新。
 
 ### 混用场景
