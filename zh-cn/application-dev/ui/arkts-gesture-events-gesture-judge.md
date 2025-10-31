@@ -459,6 +459,18 @@
 根据是否系统内置手势禁用：
 
    <!-- @[builtIn_gestureDisable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   
+   ``` TypeScript
+   .onTouchTestDone((event, recognizers) => {
+     for (let i = 0; i < recognizers.length; i++) {
+       let recognizer = recognizers[i];
+       // 禁用掉所有系统内置的手势
+       if (recognizer.isBuiltIn()) {
+         recognizer.preventBegin();
+       };
+     };
+   })
+   ```
 
 根据具体情况组合使用这些条件。
 
