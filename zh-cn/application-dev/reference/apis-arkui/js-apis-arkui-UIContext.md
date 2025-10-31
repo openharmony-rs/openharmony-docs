@@ -9059,7 +9059,7 @@ import { ComponentContent, FrameNode } from '@ohos.arkui.node';
 import { UIContext } from '@ohos.arkui.UIContext';
 import promptAction from '@ohos.promptAction';
 
-export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+export function doSomething(context: UIContext, uniqueId: int, contentNode: ComponentContent) {
   showMenu(context, uniqueId, contentNode);
 }
 
@@ -9076,7 +9076,7 @@ function MyMenu() {
   .padding('20lpx')
 }
 
-export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+export function showMenu(context: UIContext, uniqueId: int, contentNode: ComponentContent) {
   const promptAction = context.getPromptAction();
   let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
   let frameNodeTarget = frameNode?.getFirstChild();
@@ -9084,7 +9084,7 @@ export function showMenu(context: UIContext, uniqueId: number, contentNode: Comp
   if (frameNodeTarget === null) {
     return;
   }
-  let targetId = frameNodeTarget!.getUniqueId();
+  let targetId = frameNodeTarget!.getUniqueId() as int;
   promptAction.openMenu(contentNode, { id: targetId }, {
     enableArrow: true,
   });
@@ -9232,7 +9232,7 @@ import { ComponentContent, FrameNode } from '@ohos.arkui.node';
 import { UIContext } from '@ohos.arkui.UIContext';
 import promptAction from '@ohos.promptAction';
 
-export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+export function doSomething(context: UIContext, uniqueId: int, contentNode: ComponentContent) {
   showMenu(context, uniqueId, contentNode);
 }
 
@@ -9249,7 +9249,7 @@ function MyMenu() {
   .padding('20lpx')
 }
 
-export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+export function showMenu(context: UIContext, uniqueId: int, contentNode: ComponentContent) {
   const promptAction = context.getPromptAction();
   let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
   let frameNodeTarget = frameNode?.getFirstChild();
@@ -9257,7 +9257,7 @@ export function showMenu(context: UIContext, uniqueId: number, contentNode: Comp
   if (frameNodeTarget === null) {
     return;
   }
-  let targetId = frameNodeTarget!.getUniqueId();
+  let targetId = frameNodeTarget!.getUniqueId() as int;
   promptAction.openMenu(contentNode, { id: targetId }, {
     enableArrow: true,
   });
@@ -9400,7 +9400,7 @@ import { ComponentContent, FrameNode } from '@ohos.arkui.node';
 import { UIContext } from '@ohos.arkui.UIContext';
 import promptAction from '@ohos.promptAction';
 
-export function doSomething(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+export function doSomething(context: UIContext, uniqueId: int, contentNode: ComponentContent) {
   showMenu(context, uniqueId, contentNode);
 }
 
@@ -9417,7 +9417,7 @@ function MyMenu() {
   .padding('20lpx')
 }
 
-export function showMenu(context: UIContext, uniqueId: number, contentNode: ComponentContent) {
+export function showMenu(context: UIContext, uniqueId: int, contentNode: ComponentContent) {
   const promptAction = context.getPromptAction();
   let frameNode: FrameNode | null = context.getFrameNodeByUniqueId(uniqueId);
   let frameNodeTarget = frameNode?.getFirstChild();
@@ -9425,7 +9425,7 @@ export function showMenu(context: UIContext, uniqueId: number, contentNode: Comp
   if (frameNodeTarget === null) {
     return;
   }
-  let targetId = frameNodeTarget!.getUniqueId();
+  let targetId = frameNodeTarget!.getUniqueId() as int;
   promptAction.openMenu(contentNode, { id: targetId }, {
     enableArrow: true,
   });
