@@ -22,10 +22,14 @@ import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| width  | number | 是   | 是   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
-| height | number | 是   | 是   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ## Position
 
@@ -85,12 +89,16 @@ type PositionT\<T> = Vector2T\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称   | 类型   | 只读 | 可选 | 说明                        |
 | ------ | ------ | ---- | ---- | --------------------------- |
-| x      | number | 是   | 是   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| y      | number | 是   | 是   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| width  | number | 是   | 是   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
-| height | number | 是   | 是   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
 
 ## Pivot
 
@@ -164,7 +172,9 @@ type Offset = Vector2
 
 ## Matrix4
 
-type Matrix4 = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
+ArkTS-Dyn: type Matrix4 = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
+
+ArkTS-Sta: type Matrix4 = [double,double,double,double,double,double,double,double,double,double,double,double,double,double,double,double]
 
 设置四阶矩阵。
 
@@ -172,11 +182,16 @@ type Matrix4 = [number,number,number,number,number,number,number,number,number,n
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number] | 参数为长度为16（4\*4）的number数组。<br/>各number取值范围：(-∞, +∞) |
+| ArkTS-Dyn: [number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number] <br> ArkTS-Sta: [double,double,double,double,<br/>double,double,double,double,<br/>double,double,double,double,<br/>double,double,double,double] | ArkTS-Dyn：参数为长度为16（4\*4）的number数组。<br/>各number取值范围：(-∞, +∞) <br> ArkTS-Sta：参数为长度为16（4\*4）的double数组。<br/>各double取值范围：(-∞, +∞) |
 
-用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示，例如：
+ArkTS-Dyn：用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`number[]`进行表示。<br> ArkTS-Sta：用于设置组件的变换信息，该类型为一个 4x4 矩阵，使用一个长度为16的`double[]`进行表示。
+例如：
 ```ts
 const transform: Matrix4 = [
   1, 0, 45, 0,
@@ -194,10 +209,14 @@ const transform: Matrix4 = [
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型   | 只读 | 可选 | 说明              |
 | ---- | ------ | ---- | ---- | ----------------- |
-| x    | number | 否   | 否   | 向量x轴方向的值。<br/>取值范围：(-∞, +∞) |
-| y    | number | 否   | 否   | 向量y轴方向的值。<br/>取值范围：(-∞, +∞) |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 向量x轴方向的值。<br/>取值范围：(-∞, +∞) |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 向量y轴方向的值。<br/>取值范围：(-∞, +∞) |
 
 ## Vector3
 
@@ -207,11 +226,15 @@ const transform: Matrix4 = [
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称 | 类型   | 只读 | 可选 | 说明                |
 | ---- | ------ | ---- | ---- | ------------------- |
-| x    | number | 否   | 否   | x轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
-| y    | number | 否   | 否   | y轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
-| z    | number | 否   | 否   | z轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | x轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | y轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
+| z    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | z轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
 
 ## Vector2T\<T><sup>12+</sup>
 
@@ -421,14 +444,20 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
-| value       | number | 是   | 是   | 长度属性的值。   |
+| value       | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 长度属性的值。   |
 | unit | [LengthUnit](#lengthunit12)                                   | 是   | 是   | 长度属性的单位，默认为VP。|
 
 ### constructor<sup>12+</sup>
 
-constructor(value: number, unit?: LengthUnit)
+ArkTS-Dyn: constructor(value: number, unit?: LengthUnit)
+
+ArkTS-Sta: constructor(value: double, unit?:LengthUnit)
 
 LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返回值使用默认单位VP；若unit传入非LengthUnit类型的值，返回默认值0VP。
 
@@ -436,16 +465,22 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, +∞) |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 长度属性的值。<br/>取值范围：[0, +∞) |
 | unit   | [LengthUnit](#lengthunit12) | 否   | 长度属性的单位。 |
 
 ### px<sup>12+</sup>
 
-static px(value: number): LengthMetrics
+ArkTS-Dyn: static px(value: number): LengthMetrics
+
+ArkTS-Sta: static px(value: double): LengthMetrics
 
 用于生成单位为PX的长度属性。
 
@@ -453,11 +488,15 @@ static px(value: number): LengthMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -467,7 +506,9 @@ static px(value: number): LengthMetrics
 
 ### vp<sup>12+</sup>
 
-static vp(value: number): LengthMetrics
+ArkTS-Dyn: static vp(value: number): LengthMetrics
+
+ArkTS-Sta: static vp(value: double): LengthMetrics
 
 用于生成单位为VP的长度属性。
 
@@ -475,11 +516,15 @@ static vp(value: number): LengthMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -489,7 +534,9 @@ static vp(value: number): LengthMetrics
 
 ### fp<sup>12+</sup>
 
-static fp(value: number): LengthMetrics
+ArkTS-Dyn: static fp(value: number): LengthMetrics
+
+ArkTS-Sta: static fp(value: double): LengthMetrics
 
 用于生成单位为FP的长度属性。
 
@@ -497,11 +544,15 @@ static fp(value: number): LengthMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -511,7 +562,9 @@ static fp(value: number): LengthMetrics
 
 ### percent<sup>12+</sup>
 
-static percent(value: number): LengthMetrics
+ArkTS-Dyn: static percent(value: number): LengthMetrics
+
+ArkTS-Sta: static percent(value: double): LengthMetrics
 
 用于生成单位为PERCENT的长度属性，值为1表示100%。
 
@@ -519,11 +572,15 @@ static percent(value: number): LengthMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, 1] |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 长度属性的值。<br/>取值范围：[0, 1] |
 
 **返回值：**
 
@@ -533,7 +590,9 @@ static percent(value: number): LengthMetrics
 
 ### lpx<sup>12+</sup>
 
-static lpx(value: number): LengthMetrics
+ArkTS-Dyn: static lpx(value: number): LengthMetrics
+
+ArkTS-Sta: static lpx(value: double): LengthMetrics
 
 用于生成单位为LPX的长度属性。
 
@@ -541,11 +600,15 @@ static lpx(value: number): LengthMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -630,7 +693,9 @@ struct SizeExample {
 
 ### numeric<sup>12+</sup>
 
-static numeric(value: number): ColorMetrics
+ArkTS-Dyn: static numeric(value: number): ColorMetrics
+
+ArkTS-Sta: static numeric(value: int): ColorMetrics
 
 使用HEX格式颜色实例化 ColorMetrics 类。
 
@@ -638,11 +703,15 @@ static numeric(value: number): ColorMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | HEX格式颜色。<br/>取值范围：支持rgb或者argb |
+| value   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | HEX格式颜色。<br/>取值范围：支持rgb或者argb |
 
 **返回值：**
 
@@ -652,7 +721,9 @@ static numeric(value: number): ColorMetrics
 
 ### rgba<sup>12+</sup>
 
-static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetrics
+ArkTS-Dyn: static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetrics
+
+ArkTS-Sta: static rgba(red: double, green: double, blue: double, alpha?: double): ColorMetrics
 
 使用rgb或者rgba格式颜色实例化 ColorMetrics 类。
 
@@ -660,14 +731,18 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| red   | number | 是   | 颜色的R分量（红色），值是0~255的整数。 |
-| green | number | 是   | 颜色的G分量（绿色），值是0~255的整数。 |
-| blue  | number | 是   | 颜色的B分量（蓝色），值是0~255的整数。 |
-| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br/> **说明：** alpha小于0为全透明，大于1为不透明。|
+| red   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 颜色的R分量（红色），值是0~255的整数。 |
+| green | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 颜色的G分量（绿色），值是0~255的整数。 |
+| blue  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 颜色的B分量（蓝色），值是0~255的整数。 |
+| alpha | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br/> **说明：** alpha小于0为全透明，大于1为不透明。|
 
 **返回值：**
 
@@ -786,7 +861,9 @@ get color(): string
 
 ### red<sup>12+</sup>
 
-get red(): number
+ArkTS-Dyn: get red(): number
+
+ArkTS-Sta: get red(): int
 
 获取ColorMetrics颜色的R分量（红色）。
 
@@ -794,15 +871,21 @@ get red(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的R分量（红色），值是0~255的整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 颜色的R分量（红色），值是0~255的整数。|
 
 ### green<sup>12+</sup>
 
-get green(): number
+ArkTS-Dyn: get green(): number
+
+ArkTS-Sta: get green(): int
 
 获取ColorMetrics颜色的G分量（绿色）。
 
@@ -810,15 +893,21 @@ get green(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的G分量（绿色），值是0~255的整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 颜色的G分量（绿色），值是0~255的整数。|
 
 ### blue<sup>12+</sup>
 
-get blue(): number
+ArkTS-Dyn: get blue(): number
+
+ArkTS-Sta: get blue(): int
 
 获取ColorMetrics颜色的B分量（蓝色）。
 
@@ -826,15 +915,21 @@ get blue(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的B分量（蓝色），值是0~255的整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 颜色的B分量（蓝色），值是0~255的整数。|
 
 ### alpha<sup>12+</sup>
 
-get alpha(): number
+ArkTS-Dyn: get alpha(): number
+
+ArkTS-Sta: get alpha(): int
 
 获取ColorMetrics颜色的A分量（透明度）。
 
@@ -842,13 +937,19 @@ get alpha(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的A分量（透明度），值是0~255的整数。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 颜色的A分量（透明度），值是0~255的整数。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ColorMetrics } from '@kit.ArkUI';
@@ -905,6 +1006,58 @@ struct ColorMetricsSample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ColorMetrics, ResourceColor, Entry, Component, Flex, FlexDirection, ItemAlign, FlexAlign, Button, Alignment } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getBlendColor(baseColor: ResourceColor): ColorMetrics {
+  let sourceColor: ColorMetrics;
+  try {
+    // 在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
+    // 可能返回的arkui子系统错误码有401和180003
+    sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
+    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
+  } catch (error) {
+    console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
+    (error as BusinessError).message);
+    sourceColor = ColorMetrics.resourceColor("#19000000");
+  }
+  return sourceColor;
+}
+
+@Entry
+@Component
+struct ColorMetricsSample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button("ColorMetrics blendColor")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(getBlendColor("#ff3d9db4").color)
+        .margin(10)
+      Button("ColorMetrics numeric")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.numeric(0xff707070).color)
+        .margin(10)
+      Button("ColorMetrics rgba")
+        .width('80%')
+        .align(Alignment.Center)
+        .height(50)
+        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 ![image](figures/colorMetricsDemo.png)
 
 ## Corners\<T><sup>12+</sup>
@@ -944,11 +1097,31 @@ type BorderRadiuses = Corners\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
 | [Corners\<number>](#cornerst12) | 四个角的圆角度数。 |
+
+## NodeBorderRadiuses<sup>20+</sup>
+
+type BorderRadiuses = Corners\<double>
+
+设置四个角的圆角度数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+| 类型                            | 说明               |
+| ------------------------------- | ------------------ |
+| [Corners\<double>](#cornerst12) | 四个角的圆角度数。 |
 
 ## Rect<sup>12+</sup>
 
@@ -985,11 +1158,15 @@ type Rect = common2D.Rect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | number | 是   | 是   | 圆心x轴的位置，单位为px。 |
-| centerY | number | 是   | 是   | 圆心y轴的位置，单位为px。 |
-| radius  | number | 是   | 是   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
+| centerX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 圆心x轴的位置，单位为px。 |
+| centerY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 圆心y轴的位置，单位为px。 |
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
 
 ## CommandPath<sup>12+</sup>
 
@@ -1013,11 +1190,15 @@ type Rect = common2D.Rect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 | 名称            | 类型    | 只读 | 可选 | 说明                                                |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。  |
-| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。 |
-| strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
+| fillColor       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。  |
+| strokeColor     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。 |
+| strokeWidth     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
 
 ### constructor<sup>12+</sup>
 
@@ -1875,7 +2056,7 @@ struct Index {
 
 ArkTS-Dyn: edgeColors(all: number): Edges\<number>
 
-ArkTS-Sta: edgeColors(all: number): NodeEdges\<number>
+ArkTS-Sta: edgeColors(all: int): NodeEdges\<int>
 
 用于生成边框颜色均设置为传入值的边框颜色对象。
 
@@ -1891,15 +2072,17 @@ ArkTS-Sta: edgeColors(all: number): NodeEdges\<number>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| all    | number | 是   | 边框颜色，ARGB格式，示例：0xffff00ff。<br/>取值范围：[0, 0xffffffff] |
+| all    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 边框颜色，ARGB格式，示例：0xffff00ff。<br/>取值范围：[0, 0xffffffff] |
 
 **返回值：**
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框颜色均设置为传入值的边框颜色对象。 |
+| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<int>](#nodeedgest20) | 边框颜色均设置为传入值的边框颜色对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController, edgeColors } from '@kit.ArkUI';
@@ -1939,11 +2122,52 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { RenderNode, FrameNode, NodeController, edgeColors, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
+renderNode.borderColor = edgeColors(0xFF0000FF);
+
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
 ## edgeWidths<sup>12+</sup>
 
 ArkTS-Dyn: edgeWidths(all: number): Edges\<number>
 
-ArkTS-Sta: edgeWidths(all: number): NodeEdges\<number>
+ArkTS-Sta: edgeWidths(all: double): NodeEdges\<double>
 
 用于生成边框宽度均设置为传入值的边框宽度对象。
 
@@ -1959,15 +2183,17 @@ ArkTS-Sta: edgeWidths(all: number): NodeEdges\<number>
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| all    | number | 是   | 边框宽度，单位为vp。<br/>取值范围：[0, +∞) |
+| all    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 边框宽度，单位为vp。<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<number>](#nodeedgest20) | 边框宽度均设置为传入值的边框宽度对象。 |
+| ArkTS-Dyn: [Edges\<number>](#edgest12) <br> ArkTS-Sta: [NodeEdges\<double>](#nodeedgest20) | 边框宽度均设置为传入值的边框宽度对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController, edgeWidths } from '@kit.ArkUI';
@@ -1986,6 +2212,47 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { RenderNode, FrameNode, NodeController, edgeWidths, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderWidth = edgeWidths(8);
+renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
@@ -2078,7 +2345,9 @@ struct Index {
 
 ## borderRadiuses<sup>12+</sup>
 
-borderRadiuses(all: number): BorderRadiuses
+ArkTS-Dyn: borderRadiuses(all: number): BorderRadiuses
+
+ArkTS-Sta: borderRadiuses(all: double): NodeBorderRadiuses
 
 用于生成边框圆角均设置为传入值的边框圆角对象。
 
@@ -2086,19 +2355,25 @@ borderRadiuses(all: number): BorderRadiuses
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
-| all    | number | 是   | 边框圆角。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| all    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 边框圆角。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型                              | 说明                                   |
 | --------------------------------- | -------------------------------------- |
-| [BorderRadiuses](#borderradiuses12) | 边框圆角均设置为传入值的边框圆角对象。 |
+| ArkTS-Dyn: [BorderRadiuses](#borderradiuses12) <br>ArkTS-Sta: [NodeBorderRadiuses](#nodeborderradiuses20) | 边框圆角均设置为传入值的边框圆角对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode, FrameNode, NodeController, borderRadiuses }  from '@kit.ArkUI';
@@ -2116,6 +2391,46 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const rootRenderNode = this.rootNode.getRenderNode();
+    if (rootRenderNode !== null) {
+      rootRenderNode.appendChild(renderNode);
+    }
+
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Row() {
+      NodeContainer(this.myNodeController)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { RenderNode, FrameNode, NodeController, borderRadiuses, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
+
+const renderNode = new RenderNode();
+renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.backgroundColor = 0XFF00FF00;
+renderNode.borderRadius = borderRadiuses(32);
+
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
