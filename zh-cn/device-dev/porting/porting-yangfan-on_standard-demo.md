@@ -1204,7 +1204,7 @@ index 0842a47c6..8aa60407f 100644
 
 此时怀疑VIDIOC_QUERYBUF不一致是头文件不同所导致（目前没做修改验证同改为linux-4.19是否可行）。对现有问题求助客户，并在OpenHarmony上寻找有无相似问题。
 
-找到了相似的issuse：https://gitcode.com/openharmony/drivers_peripheral/issues/I4NI4M?from=project-issue
+找到了相似的issuse：https://gitee.com/openharmony/drivers_peripheral/issues/I4NI4M?from=project-issue
 
 ![](figures/isoftstone/yangfan-picture-02.png)
 
