@@ -576,6 +576,18 @@ export struct SwiperAndTabsLinkage {
 
 <!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
+``` TypeScript
+Swiper(
+  // ···
+) {
+  // ···
+}
+.indicator(new DotIndicator()
+  .space(this.space)
+  // ···
+)
+```
+
 ## 导航点忽略组件大小
 
 当导航点的bottom设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，可通过调用bottom(bottom, ignoreSize)属性来进行设置。将ignoreSize 设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
