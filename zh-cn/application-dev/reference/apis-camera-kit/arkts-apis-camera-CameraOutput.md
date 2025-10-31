@@ -125,6 +125,8 @@ release(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -144,3 +146,28 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
   });
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.release().then(() => {
+    console.info('Promise returned to indicate that the preview output instance is released successfully.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to preview output release, error code: ${err.code}`);
+  });
+}
+
+function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.release().then(() => {
+    console.info('Promise returned to indicate that the video output instance is released successfully.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to video output release, error code: ${err.code}`);
+  });
+}
+```
+
