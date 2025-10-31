@@ -239,7 +239,7 @@ Enumerates the window modes.
 
 ## WindowStageEventType<sup>9+</sup>
 
-Enumerates the lifecycle events of a WindowStage.
+Enumerates the lifecycle event types of a WindowStage.
 
 **Model restriction**: This API can be used only in the stage model.
 
