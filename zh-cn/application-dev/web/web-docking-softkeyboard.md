@@ -169,6 +169,24 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 <!-- -->
 
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+//Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct KeyboardAvoidExample {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Row().height("50%").width("100%").backgroundColor(Color.Gray)
+      Web({ src: $rawfile("index.html"),controller: this.controller})
+      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
+    }.width('100%').height("100%")
+  }
+}
+```
 ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 **图1**  Web组件网页默认软键盘避让模式
