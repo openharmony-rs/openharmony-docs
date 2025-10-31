@@ -24,25 +24,11 @@ Navigation组件通过mode属性设置页面的显示模式。
   Navigation组件默认为自适应模式，此时mode属性为NavigationMode.Auto。自适应模式下，当页面宽度大于等于一定阈值( API version 9及以前：520vp，API version 10及以后：600vp )时，Navigation组件采用分栏模式，反之采用单栏模式。
 
   <!-- @[NavigationModeAuto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeAuto.ets) -->
-  
-  ``` TypeScript
-  Navigation() {
-    // ···
-  }
-  .mode(NavigationMode.Auto)
-  ```
 
 - 单栏模式
 
   单栏模式适用于窄屏设备，发生路由跳转时，整个页面都会被替换。
-  <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
-  
-  ``` TypeScript
-  Navigation() {
-    // ···
-  }
-  .mode(NavigationMode.Stack)
-  ```
+
     **图1** 单栏布局示意图  
 
   ![zh-cn_image_0000001511740532](figures/zh-cn_image_0000001511740532.png)
@@ -50,13 +36,6 @@ Navigation组件通过mode属性设置页面的显示模式。
   将mode属性设置为NavigationMode.Stack，Navigation组件即可设置为单栏显示模式。
 
   <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
-  
-  ``` TypeScript
-  Navigation() {
-    // ···
-  }
-  .mode(NavigationMode.Stack)
-  ```
 
   ![导航单栏模式](figures/导航单栏模式.jpg)
 
@@ -71,145 +50,6 @@ Navigation组件通过mode属性设置页面的显示模式。
   将mode属性设置为NavigationMode.Split，Navigation组件即可设置为分栏显示模式。
 
   <!-- @[NavigationModeSplit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeSplit.ets) -->
-  
-  ``` TypeScript
-  @Entry
-  @Component
-  struct PageDisplayModeSplit {
-    @State toolTmp: ToolbarItem = {
-      'value': 'func',
-      'icon': 'resources/base/media/ic_public_highlights.svg',  // 当前目录image文件夹下的图标资源
-      'action': () => {}
-    };
-    @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
-    private arr: number[] = [1, 2, 3];
-  
-    @Builder
-    pageMap(name: string) {
-      if (name === 'NavDestinationTitle1') {
-        pageOneTmp();
-      } else if (name === 'NavDestinationTitle2') {
-        pageTwoTmp();
-      } else if (name === 'NavDestinationTitle3') {
-        pageThreeTmp();
-      }
-    }
-  
-    build() {
-      Column() {
-        Navigation(this.pageInfos) {
-          TextInput({ placeholder: 'search...' })
-            .width('90%')
-            .height(40)
-            .backgroundColor('#FFFFFF')
-  
-          List({ space: 12 }) {
-            ForEach(this.arr, (item: number) => {
-              ListItem() {
-                Text('Page' + item)
-                  .width('100%')
-                  .height(72)
-                  .backgroundColor('#FFFFFF')
-                  .borderRadius(24)
-                  .fontSize(16)
-                  .fontWeight(500)
-                  .textAlign(TextAlign.Center)
-                  .onClick(() => {
-                    this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
-                  })
-              }
-            }, (item: number) => item.toString())
-          }
-          .width('90%')
-          .margin({ top: 12 })
-        }
-        .title('主标题')
-        .mode(NavigationMode.Split)
-        .navDestination(this.pageMap)
-        .menus([
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_add.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          },
-          {
-            value: '', icon: 'resources/base/media/ic_public_search.svg', action: () => {
-          }
-          }
-        ])
-        .toolbarConfiguration([this.toolTmp, this.toolTmp, this.toolTmp])
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5')
-    }
-  }
-  
-  @Component
-  export struct pageOneTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-  
-    build() {
-      NavDestination() {
-        Column() {
-          Text('NavDestinationContent1')
-        }.width('100%').height('100%')
-      }.title('NavDestinationTitle1')
-      .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        hilog.info(DOMAIN, 'testTag', 'pop', '返回值', JSON.stringify(popDestinationInfo));
-        return true;
-      })
-    }
-  }
-  
-  @Component
-  export struct pageTwoTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-  
-    build() {
-      NavDestination() {
-        Column() {
-          Text('NavDestinationContent2')
-        }.width('100%').height('100%')
-      }.title('NavDestinationTitle2')
-      .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        hilog.info(DOMAIN, 'testTag', 'pop', '返回值', JSON.stringify(popDestinationInfo));
-        return true;
-      })
-    }
-  }
-  
-  @Component
-  export struct pageThreeTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-  
-    build() {
-      NavDestination() {
-        Column() {
-          Text('NavDestinationContent3')
-        }.width('100%').height('100%')
-      }.title('NavDestinationTitle3')
-      .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        hilog.info(DOMAIN, 'testTag', 'pop', '返回值', JSON.stringify(popDestinationInfo));
-        return true;
-      })
-    }
-  }
-  ```
 
   ![导航分栏模式](figures/导航分栏模式.jpg)
 
@@ -231,13 +71,6 @@ Navigation组件通过mode属性设置页面的显示模式。
 
   <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
   
-  ``` TypeScript
-  Navigation() {
-    // ···
-  }
-  .titleMode(NavigationTitleMode.Mini)
-  ```
-  
 
 - Full模式
 
@@ -248,13 +81,6 @@ Navigation组件通过mode属性设置页面的显示模式。
   ![free1](figures/free1.jpg)
 
   <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
-  
-  ``` TypeScript
-  Navigation() {
-    // ···
-  }
-  .titleMode(NavigationTitleMode.Full)
-  ```
 
 ## 设置菜单栏
 
@@ -265,56 +91,16 @@ Navigation组件通过mode属性设置页面的显示模式。
 ![菜单栏2](figures/菜单栏2.jpg)
 
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
-   
-   ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
-     'value': 'func',
-     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
-     'action': () => {}
-   };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
-         }
-         .menus([toolTmp, toolTmp, toolTmp])
-   ```
 
 图片也可以引用resources中的资源。
 
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
-   
-   ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
-     'value': 'func',
-     'icon': 'resources/base/media/ic_public_add.svg',
-     'action': () => {}
-   };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
-         }
-         .menus([toolTmp, toolTmp, toolTmp])
-   ```
 
 **图6** 设置了4个图标的菜单栏  
 
 ![菜单栏](figures/菜单栏.jpg)
 
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
-   
-   ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
-     'value': 'func',
-     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
-     'action': () => {}
-   };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
-         }
-         // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标。
-         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
-   ```
 
 ## 设置工具栏
 
@@ -326,20 +112,6 @@ Navigation组件通过mode属性设置页面的显示模式。
 ![free3](figures/free3.jpg)
 
    <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
-   
-   ``` TypeScript
-   let toolTmp: ToolbarItem = {
-     'value': 'func',
-     'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
-     'action': () => {}
-   };
-   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
-         }
-         .toolbarConfiguration(tooBar)
-   ```
 
 ## 路由操作
 
@@ -354,21 +126,6 @@ Navigation路由相关的操作都是基于导航控制器[NavPathStack](../refe
 > 2.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
    <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
-   ``` TypeScript
-   @Entry
-   @Component
-   struct Index {
-     // 创建一个导航控制器对象并传入Navigation
-     pageStack: NavPathStack = new NavPathStack();
-   // ···
-     build() {
-       Navigation(this.pageStack) {
-       // ···
-       }.title('Main')
-     }
-   }
-   ```
 
 ### 页面跳转
 
@@ -377,156 +134,42 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 1. 普通跳转，通过页面的name去跳转，并可以携带param。
 
   <!-- @[PushPathParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushPath({ name: 'pageOne', param: 'PageOne Param' });
-  ```
   <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushPathByName('pageTwo', 'PageOne Param');
-  ```
 
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
 
   <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageInfo.pushPathByName('temp4-pageTwo', 'PageOne Param', (popInfo) => {
-    hilog.info(DOMAIN, 'testTag', 'Pop page name is: ', popInfo.info.name, 'result: ',
-      JSON.stringify(popInfo.result));
-  // ···
-  });
-  ```
-  <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
-  
-  ``` TypeScript
-  pageStack: NavPathStack = new NavPathStack();
-  aboutToAppear(): void {
-    this.pageStack.disableAnimation(true);
-  }
-  ```
+
 3. 带错误码的跳转，跳转结束会触发异步回调，返回错误码信息。
 
   <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushDestination({
-    name: 'pageTwo', param: 'PageOne Param'}).catch((error: BusinessError) => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
-      'error.message = ', error.message);
-  }).then(() => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
-  });
-  ```
-   <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
-   ``` TypeScript
-   // 返回到上一个temp4-pageOne页面
-   this.pathStack.popToName('temp4-pageOne');
-   ```
-  
-  ``` TypeScript
-  this.pageStack.pushDestinationByName('pageTwo', 'PageOne Param').catch((error: BusinessError) => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
-      'error.message = ', error.message);
-  }).then(() => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
-  });
-  ```
-   <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
-   ``` TypeScript
-   // 返回到索引为0的页面
-   this.pathStack.popToIndex(0);
-   ```
-  <!-- @[PageOnceClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
-  
-  ``` TypeScript
-  @Provide('pageStack') pageStack: NavPathStack = new NavPathStack();
-  ```
-  <!-- @[PageOnceClose1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushPath({ name: 'MyComponent' }, false);
-  ```
-  <!-- @[PageOnceClose2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pop(false);
-  ```
+  <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+### 页面返回
+
+NavPathStack通过Pop相关接口去实现页面返回功能。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
-   
-   ``` TypeScript
-   // 返回到上一页
-   this.pathStack.pop();
-   ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 将栈顶页面替换为pageTwo
-   this.pageStack.replacePath({ name: 'pageTwo', param: 'PageOne Param' });
-   ```
-   <!-- @[replacePathByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   this.pageStack.replacePathByName('pageTwo', 'PageOne Param');
-   ```
-   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
-   this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageOne Param' })
-     .catch((error: BusinessError) => {
-       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
-         'error.message = ', error.message);
-     }).then(() => {
-     hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
-   })
-   ```
+   <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
+
 ### 页面替换
 
 NavPathStack通过Replace相关接口去实现页面替换功能。
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 删除栈中name为pageTwo的所有页面
-   this.pageStack.removeByName('pageTwo');
-   ```
-   <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 删除指定索引的页面
-   this.pageStack.removeByIndexes([1]);
-   ```
-   <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 删除指定id的页面
-   this.pageStack.removeByNavDestinationId('1');
-   ```
+   <!-- @[replacePathByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+
 ### 页面删除
 
 NavPathStack通过Remove相关接口去实现删除路由栈中特定页面的功能。
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 移动栈中name为pageTwo的页面到栈顶
-   this.pageStack.moveToTop('pageTwo');
-   ```
-   <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 移动栈中索引为1的页面到栈顶
-   this.pageStack.moveIndexToTop(1);
-   ```
+   <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
 ### 移动页面
 
@@ -537,69 +180,13 @@ NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈�
 
 ### 参数获取
 
-   <!-- @[GeometryTransitionFromPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
-   
-   ``` TypeScript
-   // 起始页配置共享元素id
-   NavDestination() {
-     Column() {
-       // ···
-       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
-       Image($r('app.media.startIcon'))
-         .geometryTransition('sharedId')
-         .width(100)
-         .height(100)
-     }
-   }.title('FromPage')
-   ```
+NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
 
-   <!-- @[GeometryTransitionToPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
-   
-   ``` TypeScript
-   // 目的页配置共享元素id
-   NavDestination() {
-     Column() {
-       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
-       Image($r('app.media.startIcon'))
-         .geometryTransition('sharedId')
-         .width(200)
-         .height(200)
-     }
-   }
-   .title('ToPage')
-   ```
-   <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 获取栈中所有页面name集合
-   this.pageStack.getAllPathName();
-   // 获取索引为1的页面参数
-   this.pageStack.getParamByIndex(1);
-   // 获取PageOne页面的参数
-   this.pageStack.getParamByName('PageOne');
-   // 获取PageOne页面的索引集合
-   this.pageStack.getIndexByName('pageOne');
-   ```
+   <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
+
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
-   <!-- @[GeometryTransitionFromPageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
-   
-   ``` TypeScript
-   NavDestination() {
-     Column() {
-       Button('跳转目的页')
-         .width('80%')
-         .height(40)
-         .margin(20)
-         .onClick(() => {
-           this.getUIContext()?.animateTo({ duration: 1000 }, () => {
-             this.navPathStack.pushPath({ name: 'ToPage' }, false)
-           });
-         })
-       // ···
-     }
-   }.title('FromPage')
-   ```
+   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageTwo.ets) -->
 
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
@@ -679,27 +266,7 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
 
 为了方便组件跟页面解耦，在NavDestination子页面内部的自定义组件可以通过全局方法监听或查询到页面的一些状态信息。
 
-  <!-- @[callbackFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template3/Index.ets) -->
-  
-  ``` TypeScript
-  // 在UIAbility中使用
-  import { UIContext, uiObserver } from '@kit.ArkUI';
-  
-  // callbackFunc是开发者定义的监听回调函数
-  function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
-  // ···
-  };
-  // ···
-      uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
-      // ···
-  
-  // ···
-    // 可以通过窗口的getUIContext()方法获取对应的UIContent
-    uiContext: UIContext | null = null;
-  // ···
-      uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc);
-      // ···
-  ```
+- 页面信息查询
 
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
@@ -711,14 +278,7 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
   
   <!-- @[uiObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template2/Index.ets) -->
   
-  <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
-  
-  ``` TypeScript
-  pageStack: NavPathStack = new NavPathStack();
-  aboutToAppear(): void {
-    this.pageStack.disableAnimation(true);
-  }
-  ```
+  也可以注册页面切换的状态回调，能在页面发生路由切换的时候拿到对应的页面信息[NavDestinationSwitchInfo](..//reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12)，并且提供了UIAbilityContext和UIContext不同范围的监听：
   
   <!-- @[callbackFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template3/Index.ets) -->
 
@@ -739,8 +299,8 @@ Navigation默认提供了页面切换的转场动画，通过导航控制器操�
   NavPathStack中提供的Push、Pop、Replace等接口中可以设置animated参数，默认为true表示有转场动画，需要单次关闭转场动画可以置为false，不影响下次转场动画。
 
   <!-- @[PageOnceClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
-  <!-- @[PageOnceClose1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
-  <!-- @[PageOnceClose2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+  <!-- @[PageOnceCloseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
+  <!-- @[PageOnceCloseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOnceClose.ets) -->
 
 ### 自定义转场
 
@@ -889,86 +449,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 3.在List内的组件添加onClick方法，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
 
 <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
-<!-- @[NavigationExampleTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleTwo.ets) -->
 
-``` TypeScript
-@Builder
-export function PageTwoBuilder(name: string) {
-  PageTwo({ name: name });
-}
-
-@Component
-export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
-  name: string = '';
-  private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
-
-  build() {
-    NavDestination() {
-      Column() {
-        List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.listArray, (item: string) => {
-            ListItem() {
-              Row() {
-                Row() {
-                  Text(`${item.slice(0, 1)}`)
-                    .fontColor(Color.White)
-                    .fontSize(14)
-                    .fontWeight(FontWeight.Bold)
-                }
-                .width(30)
-                .height(30)
-                .backgroundColor('#a8a8a8')
-                .margin({ right: 20 })
-                .borderRadius(20)
-                .justifyContent(FlexAlign.Center)
-
-                Column() {
-                  Text(item)
-                    .fontSize(16)
-                    .margin({ bottom: 5 })
-                }
-                .alignItems(HorizontalAlign.Start)
-
-                Blank()
-
-                Row()
-                  .width(12)
-                  .height(12)
-                  .margin({ right: 15 })
-                  .border({
-                    width: { top: 2, right: 2 },
-                    color: 0xcccccc
-                  })
-                  .rotate({ angle: 45 })
-              }
-              .borderRadius(15)
-              .shadow({ radius: 100, color: '#ededed' })
-              .width('90%')
-              .alignItems(VerticalAlign.Center)
-              .padding({ left: 15, top: 15, bottom: 15 })
-              .backgroundColor(Color.White)
-            }
-            .width('100%')
-            .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, '页面设置参数');
-            })
-          }, (item: string): string => item)
-        }
-        .listDirection(Axis.Vertical)
-        .edgeEffect(EdgeEffect.Spring)
-        .sticky(StickyStyle.Header)
-        .width('100%')
-      }
-      .size({ width: '100%', height: '100%' })
-    }.title(`${this.name}`)
-    .onReady((ctx: NavDestinationContext) => {
-      // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
-    })
-  }
-}
-```
 
 ### 创建导航子页
 导航子页1实现步骤为：
