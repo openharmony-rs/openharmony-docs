@@ -27,7 +27,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 在一个Column组件上绑定了translate属性，通过修改该属性可以设置组件的位置移动。然后在该组件上绑定LongPressGesture和PanGesture组合而成的Sequence组合手势。当触发LongPressGesture时，更新显示的数字。当长按后进行拖动时，根据滑动手势的回调函数，实现组件的拖动。
 
-<!-- @[sequence_identification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets) -->
+  <!-- @[sequence_identification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets) -->
 
 ![sequence](figures/sequence.gif)
 
@@ -43,7 +43,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 以在一个Column组件上绑定点击手势和双击手势组成的并行识别手势为例，由于单击手势和双击手势是并行识别，因此两个手势可以同时进行识别，二者互不干涉。
 
-<!-- @[parallel_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets) -->
+  <!-- @[parallel_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets) -->
 
 
 ![parallel](figures/parallel.gif)
@@ -66,7 +66,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 以在一个Column组件上绑定单击手势和双击手势组合而成的互斥识别组合手势为例。若先绑定单击手势后绑定双击手势，由于单击手势只需要一次点击即可触发而双击手势需要两次，每次的点击事件均被单击手势消费而不能积累成双击手势，所以双击手势无法触发。若先绑定双击手势后绑定单击手势，则触发双击手势不触发单击手势。
 
-<!-- @[mutual_exclusion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets) -->
+  <!-- @[mutual_exclusion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets) -->
 
 
 ![exclusive](figures/exclusive.gif)
@@ -84,6 +84,6 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 以下示例实现了子组件绑定长按和滑动手势，长按手势和滑动手势需要可以同时触发，但是在长按手势未成功时，需要让父组件Swiper的内置滑动手势触发的功能。由于子组件的滑动手势和父组件的内置滑动手势是竞争关系，且子组件的滑动手势的优先级更高，因此需要通过动态控制子组件的滑动手势是否触发。
 
-<!-- @[scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets) -->
+  <!-- @[scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets) -->
 
 ![combined-gesture](figures/combined-gesture.gif)
