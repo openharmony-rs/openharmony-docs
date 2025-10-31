@@ -6827,5 +6827,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-extension-attributeUpdater.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/Common.ets",
+				"functions":[
+					{
+						"end_line":26,
+						"name":"att_class",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"att_modifier",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"att_update",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
