@@ -202,6 +202,28 @@ HitTestMode.None自身不响应触摸测试，不会阻塞子节点和兄弟节�
 当组件A设置hitTestBehavior为HitTestMode.None时，点击组件B区域时，组件B的onTouch事件触发，而组件A的onTouch事件无法触发，组件B的点击手势触发。
 
 <!-- @[responseregion_fourth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column()
+    .id('ComponentB')
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+  Column() {
+    Column()
+      .id('ComponentD')
+      .onTouch(() => {})
+      .gesture(TapGesture({count: 1}))
+  }
+  .id('ComponentC')
+  .onTouch(() => {})
+  .gesture(TapGesture({count: 1}))
+  .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
+}
+.id('Stack A')
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+```
 从API version 20开始，HitTestMode.BLOCK_HIERARCHY自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。
 
 当组件C未设置hitTestBehavior时，点击组件B和组件D的重叠区域时，组件A，组件C和组件D的onTouch事件均会触发，组件D的点击手势会触发。
