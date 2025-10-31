@@ -60,6 +60,14 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 <!-- @[loop_with_false](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->
 
+``` TypeScript
+  Swiper() {
+    // ···
+  }
+// ···
+  .loop(false)
+```
+
 ![loop_false](figures/loop_false.gif)
 
 
