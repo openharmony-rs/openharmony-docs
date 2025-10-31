@@ -166,8 +166,6 @@ onWindowStageCreate(windowStage: window.WindowStage) {
   </body>
 </html>
 ```
-<!-- -->
-
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
