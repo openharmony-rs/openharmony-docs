@@ -5,7 +5,7 @@
 Provides C APIs for the multimodal input module.
 
 **Since**: 12
-## File Summary
+## Files
 
 | **Name**| Description|
 | -- | -- |
