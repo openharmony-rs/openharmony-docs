@@ -231,6 +231,28 @@ Stack() {
 当组件C设置hitTestBehavior为BLOCK_HIERARCHY时，点击组件B和组件D的重叠区域时，组件C和组件D的onTouch事件触发，组件A和组件B的onTouch事件无法触发，组件D的点击手势会触发。
 
 <!-- @[responseregion_fifth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Stack() {
+  Column()
+    .id('ComponentB')
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+  Column() {
+    Column()
+      .id('ComponentD')
+      .onTouch(() => {})
+      .gesture(TapGesture({count: 1}))
+  }
+  .id('ComponentC')
+  .onTouch(() => {})
+  .gesture(TapGesture({count: 1}))
+  .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
+}
+.id('Stack A')
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+```
 从API version 20开始，[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).BLOCK_DESCENDANTS自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
 
 若组件C未设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)，点击组件B和组件D的重叠区域时，组件A、组件C和组件D都会触发[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件，同时组件D的点击手势也会被触发。
