@@ -6792,5 +6792,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-place-holder.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/Common.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"place_holder_common",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/CustomNode.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"place_holder_custom_node",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets",
+				"functions":[
+					{
+						"end_line":131,
+						"name":"place_holder_layout_diff",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
