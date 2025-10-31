@@ -176,6 +176,21 @@ Swiper通过设置[displayArrow](../reference/apis-arkui/arkui-ts/ts-container-s
 
 <!-- @[customize_the_arrow_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
 
+``` TypeScript
+  Swiper() {
+    // ···
+  }
+// ···
+  .displayArrow({
+    showBackground: true,
+    isSidebarMiddle: true,
+    backgroundSize: 24,
+    backgroundColor: Color.White,
+    arrowSize: 18,
+    arrowColor: Color.Blue
+  }, false)
+```
+
 ![arrow2](figures/arrow2.gif)
 
 ## 页面切换方式
