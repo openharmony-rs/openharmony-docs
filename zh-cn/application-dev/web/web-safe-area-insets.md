@@ -56,25 +56,26 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
 
 - 通过[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md)设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .width('100%').height('100%')
-          // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
-          .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-      }
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }
   }
-  ```
+}
+```
 
 ## 设置网页在可视窗口中的布局方式
 

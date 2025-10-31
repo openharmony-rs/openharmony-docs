@@ -126,11 +126,12 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
 [forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9)接口仅在Web深色模式开启时生效。在下面的示例中，应用设置Web深色模式跟随系统。系统开启深色模式时，Web进入强制深色模式。
 
-```ts
-// xxx.ets
+<!-- @[force_the_page_to_be_configured_to_dark_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_two.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
-@Entry		
+@Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
@@ -139,7 +140,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
+      Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
         .darkMode(this.mode)
         .forceDarkAccess(this.access)
     }
@@ -147,10 +148,10 @@ struct WebComponent {
 }
 ```
 
-index.html页面代码如下：
+darkModePage页面代码如下：
 
 ```html
-<!-- index.html -->
+<!-- darkModePage.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,7 +172,7 @@ index.html页面代码如下：
 </html>
 ```
 
-index.html页面在深色模式关闭、深色模式开启及强制深色模式开启时的样式如图3所示。关闭深色模式，网页采用默认样式。开启深色模式，input1的配色方案切换为深色，网页应用@media(prefers-color-scheme: dark)中定义的灰色背景、棕色文字样式。开启强制深色模式，input1的配色方案为深色，未被Web转换，而网页背景色、文字颜色及input2背景色均依据(2)中色值转换为(3)所示。
+darkModePage.html页面在深色模式关闭、深色模式开启及强制深色模式开启时的样式如图3所示。关闭深色模式，网页采用默认样式。开启深色模式，input1的配色方案切换为深色，网页应用@media(prefers-color-scheme: dark)中定义的灰色背景、棕色文字样式。开启强制深色模式，input1的配色方案为深色，未被Web转换，而网页背景色、文字颜色及input2背景色均依据(2)中色值转换为(3)所示。
 
 **图3** Web深色模式和强制深色模式效果图
 
@@ -197,7 +198,7 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
           .darkMode(this.isDark ? WebDarkMode.On : WebDarkMode.Off)
           .backgroundColor(this.isDark ? Color.Black : Color.White)
       }
@@ -243,7 +244,7 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
 
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
           .darkMode(WebDarkMode.Auto)
           .backgroundColor(this.bgColor)
       }
