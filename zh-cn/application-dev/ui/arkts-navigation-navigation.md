@@ -353,6 +353,21 @@ Navigation路由相关的操作都是基于导航控制器[NavPathStack](../refe
 > 2.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
    <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Index {
+     // 创建一个导航控制器对象并传入Navigation
+     pageStack: NavPathStack = new NavPathStack();
+   // ···
+     build() {
+       Navigation(this.pageStack) {
+       // ···
+       }.title('Main')
+     }
+   }
+   ```
 
 ### 页面跳转
 
