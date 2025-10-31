@@ -84,7 +84,7 @@ async function switchInputMethodWithSubtype() {
 switchInputMethodWithSubtype();
 ```
 
-## InputMethodSetting<sup>8+</sup>
+## InputMethodSetting<sup>
 
 下列API均需使用[getSetting](./js-apis-inputmethod.md#inputmethodgetsetting9)获取到InputMethodSetting实例后，通过实例调用。
 
@@ -271,7 +271,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
   | 类型           | 说明                     |
   | -------------- | ----------------------- |
-  | Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+  | Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
