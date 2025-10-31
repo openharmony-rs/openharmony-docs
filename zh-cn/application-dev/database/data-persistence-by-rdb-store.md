@@ -473,6 +473,19 @@
 
    此处以调用[restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore)接口恢复手动备份数据为例：
    <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   
+   ``` TypeScript
+   // 备份数据库中恢复数据
+   if (store !== undefined) {
+     (store as relationalStore.RdbStore).restore('Backup.db', (err: BusinessError) => {
+       if (err) {
+         hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to restore RdbStore. Code:${err.code}, message:${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN, 'rdbDataPersistence', `Succeeded in restoring RdbStore.`);
+     })
+   }
+   ```
 
 8. 删除数据库。
 
