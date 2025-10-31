@@ -78,7 +78,7 @@
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct Index10 {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -127,7 +127,7 @@ GridRow中通过columns设置栅格布局的总列数。
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct Index11 {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)', 'rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)'];
@@ -164,7 +164,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct Index12 {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -195,7 +195,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct Index13 {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -229,7 +229,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct Index14 {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -393,7 +393,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     // xxx.ets
     @Entry
     @Component
-    struct Index {
+    struct Index15 {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -423,7 +423,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct Index16 {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -465,7 +465,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct Index17 {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -497,7 +497,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct Index18 {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -579,7 +579,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ``` TypeScript
     @Entry
     @Component
-    struct GridRowExample {
+    struct GridRowExample1 {
       @State currentBp: string = 'unknown'
     
       build() {
@@ -634,7 +634,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 ``` TypeScript
 @Entry
 @Component
-struct GridRowExample {
+struct GridRowExample2 {
   build() {
     GridRow({ columns: 12 }) {
       GridCol({ span: 12 }) {
