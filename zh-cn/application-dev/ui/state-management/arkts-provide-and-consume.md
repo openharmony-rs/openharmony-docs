@@ -178,7 +178,7 @@
 
    【正例】
    <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
-
+   
    ``` TypeScript
    @Component
    struct Child {
