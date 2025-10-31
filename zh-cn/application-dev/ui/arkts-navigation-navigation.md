@@ -1068,6 +1068,99 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 <!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  private arr: number[] = [1, 2];
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      pageOneTmp();
+    } else if (name === 'NavDestinationTitle2') {
+      pageTwoTmp();
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        TextInput({ placeholder: 'search...' })
+          .width('90%')
+          .height(40)
+
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('90%')
+        .margin({ top: 12 })
+      }
+      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+      .title($r('app.string.mainTitle'))
+      .navDestination(this.pageMap)
+      .mode(NavigationMode.Split)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+  context = this.getUIContext().getHostContext();
+  build() {
+    NavDestination() {
+      Column() {
+        Text('NavDestinationContent2')
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+        JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageOneTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+  context = this.getUIContext().getHostContext();
+  build() {
+    NavDestination() {
+      Column() {
+        Text('NavDestinationContent1')
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+        JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
+
 ## 导航示例
 
 ### 创建导航首页
