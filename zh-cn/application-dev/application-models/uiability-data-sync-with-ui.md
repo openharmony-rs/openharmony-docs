@@ -122,22 +122,22 @@
 4. 在自定义事件“event1”使用完成后，可以根据需要调用[eventHub.off()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhuboff)方法取消该事件的订阅。
 
     <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+    
     ``` TypeScript
-    import { UIAbility } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     // ···
-
+    
     export default class EntryAbility extends UIAbility {
     // ···
-
-      // [StartExclude onCreate]
+    
       onDestroy(): void {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
         this.context.eventHub.off('event1');
       }
-
+    
     // ···
     }
-    // [End onCreate]
     ```
 
 ## 使用AppStorage/LocalStorage进行数据同步
