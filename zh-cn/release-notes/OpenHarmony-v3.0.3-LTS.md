@@ -23,11 +23,11 @@
 
 ### 通过repo获取
 
-**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
   
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -36,7 +36,7 @@ repo forall -c 'git lfs pull'
 
   
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -72,7 +72,7 @@ repo forall -c 'git lfs pull'
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ## 修复缺陷列表
@@ -81,14 +81,14 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 | 
 | -------- | -------- |
-| [I4TUSX](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4TUSX) | 轻量系统Hi3516DV300打开系统相机拍照时，图片两端会出现截断。 | 
-| [I4TYOP](https://gitee.com/openharmony/drivers_peripheral/issues/I4TYOP) | 轻量系统Hi3516DV300插入U盘后&nbsp;DMA超时，U盘不可用。 | 
-| [I4SM0J](https://gitee.com/openharmony/third_party_harfbuzz/issues/I4SM0J) | third_party_harfbuzz仓内使用了&nbsp;CC&nbsp;BY-NC-SA-3.0&nbsp;许可证，该许可证限制了内容的商业使用。 | 
-| [I4WPQW](https://gitee.com/openharmony/device_hisilicon_hardware/issues/I4WPQW) | device_hisilicon_hardware仓同步更新libdisplay_layer.so二进制文件。 | 
-| [I4WIVF](https://gitee.com/openharmony/third_party_boost/issues/I4WIVF) | third_party_boost仓下一些文件存在开源协议不兼容的风险。 | 
+| [I4TUSX](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4TUSX) | 轻量系统Hi3516DV300打开系统相机拍照时，图片两端会出现截断。 | 
+| [I4TYOP](https://gitcode.com/openharmony/drivers_peripheral/issues/I4TYOP) | 轻量系统Hi3516DV300插入U盘后&nbsp;DMA超时，U盘不可用。 | 
+| [I4SM0J](https://gitcode.com/openharmony/third_party_harfbuzz/issues/I4SM0J) | third_party_harfbuzz仓内使用了&nbsp;CC&nbsp;BY-NC-SA-3.0&nbsp;许可证，该许可证限制了内容的商业使用。 | 
+| [I4WPQW](https://gitcode.com/openharmony/device_hisilicon_hardware/issues/I4WPQW) | device_hisilicon_hardware仓同步更新libdisplay_layer.so二进制文件。 | 
+| [I4WIVF](https://gitcode.com/openharmony/third_party_boost/issues/I4WIVF) | third_party_boost仓下一些文件存在开源协议不兼容的风险。 | 
 | I4WRWM | aafwk_aafwk_lite仓新增TDD测试用例。 | 
-| [I4VPVY](https://gitee.com/openharmony/applications_sample_camera/issues/I4VPVY) | 轻量系统Hi3516DV300从设置菜单搜索WLAN，然后点击2次返回键返回到桌面后，无法从桌面启动应用。 | 
-| [I4UTY0](https://gitee.com/openharmony/applications_photos/issues/I4UTY0) | demos&nbsp;路径下的&nbsp;1.jpg&nbsp;图片文件元数据中存在HP的版权声明。 | 
+| [I4VPVY](https://gitcode.com/openharmony/applications_sample_camera/issues/I4VPVY) | 轻量系统Hi3516DV300从设置菜单搜索WLAN，然后点击2次返回键返回到桌面后，无法从桌面启动应用。 | 
+| [I4UTY0](https://gitcode.com/openharmony/applications_photos/issues/I4UTY0) | demos&nbsp;路径下的&nbsp;1.jpg&nbsp;图片文件元数据中存在HP的版权声明。 | 
 | [I4TP6D](https://gitcode.com/openharmony/xts_acts/issues/I4TP6D) | 标准系统Hi3516新增acts测试套ActsWorkerJSTest无法正常执行。 | 
 
   **表4** 解决的安全漏洞ISSUE列表
@@ -104,7 +104,7 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 | 影响 | 解决计划 | 
 | -------- | -------- | -------- | -------- |
-| [I4YBB0](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | 小型系统3516DV300-Linux在系统相机拍照录像后，无图片生成，录制的视频无法播放 | 仅针对此开发板，影响相机录像功能 | 2022/4/1 | 
-| [I4YB87](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YB87) | 小型系统3516DV300-Linux在系统相机拍照录像后，图库中无显示 | 仅针对此开发板，影响相机拍照功能 | 2022/4/1 | 
-| [I4YAGS](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | 小型系统3516DV300-Linux进入系统相机，画面蓝屏 | 仅针对此开发板，影响相机预览功能 | 2022/4/1 | 
+| [I4YBB0](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | 小型系统3516DV300-Linux在系统相机拍照录像后，无图片生成，录制的视频无法播放 | 仅针对此开发板，影响相机录像功能 | 2022/4/1 | 
+| [I4YB87](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YB87) | 小型系统3516DV300-Linux在系统相机拍照录像后，图库中无显示 | 仅针对此开发板，影响相机拍照功能 | 2022/4/1 | 
+| [I4YAGS](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | 小型系统3516DV300-Linux进入系统相机，画面蓝屏 | 仅针对此开发板，影响相机预览功能 | 2022/4/1 | 
 | I4WLBU | 标准系统3516DV300在acts测试过程中烧录后找不到设备，报Device&nbsp;not&nbsp;founded&nbsp;or&nbsp;connected | HDC工具导致acts测试概率报错，对实际功能无影响 | 2022/4/10 | 

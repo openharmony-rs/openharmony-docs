@@ -28,7 +28,7 @@ API 9
 
 **变更的接口/组件**
 
-[@ohos.account.distributedAccount.d.ts](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-distributed-account.md)中如下接口:
+[@ohos.account.distributedAccount.d.ts](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-distributed-account.md)中如下接口:
 
 - getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): &lt;void&gt;
 - getOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;

@@ -40,5 +40,5 @@
 
 **适配指导**
 
-安全控件的父组件设置[图像效果属性](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md)后，若导致安全控件UX显示不正常，排查安全控件父组件所设置的属性是否为图像效果属性并调整为无效果，不能对安全控件叠加影响UX显示的图像效果。
+安全控件的父组件设置[图像效果属性](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md)后，若导致安全控件UX显示不正常，排查安全控件父组件所设置的属性是否为图像效果属性并调整为无效果，不能对安全控件叠加影响UX显示的图像效果。
 
