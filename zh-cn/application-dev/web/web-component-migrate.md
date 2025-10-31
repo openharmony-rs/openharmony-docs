@@ -20,7 +20,8 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 
 <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
 
-提供动态挂载Web组件能力：common.ets
+<!-- -->
+
 ```ts
 // 提供动态挂载Web组件能力
 // pages/common.ets
