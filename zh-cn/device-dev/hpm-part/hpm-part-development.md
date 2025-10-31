@@ -208,7 +208,7 @@ hpm init
     "kernel": "liteos-a"
   },
   "keywords": ["hispark", "hi3516"],
-  "repository": "https://gitcode.com/openharmony/your-project",
+  "repository": "https://gitee.com/openharmony/your-project",
   "license": "Apache V2"
 }
 ```
