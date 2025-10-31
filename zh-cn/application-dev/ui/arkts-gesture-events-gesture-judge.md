@@ -443,6 +443,18 @@
 组件需要提前通过通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)配置组件标识。
 
    <!-- @[component_disabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   
+   ``` TypeScript
+   .onTouchTestDone((event, recognizers) => {
+     for (let i = 0; i < recognizers.length; i++) {
+       let recognizer = recognizers[i];
+       // 禁用掉标识为myID的组件上的所有手势
+       if (recognizer.getEventTargetInfo().getId() == 'myID') {
+         recognizer.preventBegin();
+       };
+     };
+   })
+   ```
 
 根据是否系统内置手势禁用：
 
