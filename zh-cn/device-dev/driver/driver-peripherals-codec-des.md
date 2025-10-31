@@ -82,7 +82,7 @@ Codec模块主要完成对视频数据的硬件编解码，将H264等裸流数�
   | int32_t EmptyBufferDone(int64_t appData, const OmxCodecBuffer& buffer) | 上报输入buffer编码或者解码处理完毕 |
   | int32_t FillBufferDone(int64_t appData, const OmxCodecBuffer& buffer) | 上报输出buffer填充完毕             |
 
-更多接口请参考[Codec驱动仓](https://gitcode.com/openharmony/drivers_peripheral/tree/master/codec)。
+更多接口请参考[Codec驱动仓](https://gitee.com/openharmony/drivers_peripheral/tree/master/codec)。
 
 ### 开发步骤
 Codec HDI驱动的开发过程主要包含以下步骤：
@@ -771,4 +771,4 @@ OpenMax对AVCC格式的数据处理，第一帧一定要是extra_data，可能�
 
 # 参考
 
-如果您想了解更多关于Codec特性的源码及使用信息，请参考[Codec驱动代码仓](https://gitcode.com/openharmony/drivers_peripheral/tree/master/codec)。
+如果您想了解更多关于Codec特性的源码及使用信息，请参考[Codec驱动代码仓](https://gitee.com/openharmony/drivers_peripheral/tree/master/codec)。
