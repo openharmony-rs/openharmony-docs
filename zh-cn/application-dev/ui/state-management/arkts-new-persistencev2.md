@@ -715,6 +715,7 @@ struct Page1 {
   }
 }
 ```
+```
 // 使用connect存储数据
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
