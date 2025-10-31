@@ -213,12 +213,6 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 | ------ | ------- | ---- | --------------------------------- |
 | enable  | boolean \| undefined | 是   | 是否启用选择文本识别，true表示启用，false表示不启用。<br>传入undefined或null时属性重置为默认值。 |
 
-> **说明：** 
->
-> 当enableSelectedDataDetector未配置或设置为true，将遵循[dataDetectorConfig](#datadetectorconfig11)中types的配置；若[dataDetectorConfig](#datadetectorconfig11)未配置，则默认识别所有类型。
-> 
-> 当enableSelectedDataDetector设置为false时，不激活实体文本选择AI菜单项。
-
 ### enablePreviewText<sup>12+</sup>
 
 enablePreviewText(enable: boolean)
