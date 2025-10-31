@@ -51,7 +51,7 @@
 
 ### 目录规划
 
-参考[Board和SoC解耦的设计思路](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)，并把芯片适配目录规划为：
+参考[Board和SoC解耦的设计思路](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md)，并把芯片适配目录规划为：
 
 ```
 device
@@ -130,7 +130,7 @@ genext2fs -B ${blocks} -b ${block_size} -d boot_linux -i 8192 -U boot_linux.img
 
 调用make-boot.sh 的修改可以参考如下pr：
 
-https://gitcode.com/openharmony/build/pulls/569/files
+https://gitee.com/openharmony/build/pulls/569/files
 
 ### INIT配置
 
