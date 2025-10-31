@@ -19,7 +19,7 @@
 
 ``` TypeScript
 // [Start onCreate]
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 // [StartExclude onCreate]
 import { window } from '@kit.ArkUI';
 // ···
@@ -31,11 +31,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+     // ...
     });
   }
 
@@ -107,9 +103,6 @@ export default class EntryAbility extends UIAbility {
   ``` TypeScript
   // [Start terminateSelf]
   import { common, Want } from '@kit.AbilityKit';
-  // ···
-
-  const DOMAIN = 0x0000;
 
   @Entry
   @Component
@@ -119,7 +112,6 @@ export default class EntryAbility extends UIAbility {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
         // Want参数信息
-      // ···
       };
       context.startAbility(want);
     }
@@ -138,7 +130,7 @@ export default class EntryAbility extends UIAbility {
   <!-- @[terminateSelf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
 
   ``` TypeScript
-  import { common, Want } from '@kit.AbilityKit';
+  import { common } from '@kit.AbilityKit';
   // [StartExclude basicUsage]
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
