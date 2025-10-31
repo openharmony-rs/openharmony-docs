@@ -201,6 +201,35 @@
 2. 使用onGestureRecognizerJudgeBegin接口获取到Scroll组件的PanGesture手势识别器，同时根据内外Scroll组件的边界条件，设置内外手势的开闭状态。
 
    <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+     others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+     let target = current.getEventTargetInfo();
+     if (target && target.getId() == 'outer' && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+       for (let i = 0; i < others.length; i++) {
+         let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
+         if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+           let panEvent = event as PanGestureEvent;
+           this.childRecognizer.setEnabled(true);
+           this.currentRecognizer.setEnabled(false);
+           if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+             if (panEvent && panEvent.offsetY < 0) {
+               this.childRecognizer.setEnabled(false);
+               this.currentRecognizer.setEnabled(true);
+             };
+           } else if (target.isBegin()) {
+             if (panEvent.offsetY > 0) {
+               this.childRecognizer.setEnabled(false);
+               this.currentRecognizer.setEnabled(true);
+             };
+           };
+         };
+       };
+     };
+     return GestureJudgeResult.CONTINUE;
+   })
+   ```
 
 3. 设置监听手势，监听Scroll组件状态，动态调整手势开闭状态，控制手势回调是否触发，从而控制Scroll是否滚动。
 
