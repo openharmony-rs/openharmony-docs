@@ -197,8 +197,6 @@ function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: double, mode: camera.SmoothZoomMode): void {
   sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
 }

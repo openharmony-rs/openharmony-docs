@@ -1020,7 +1020,7 @@ function getVideoRotation(videoOutput: camera.VideoOutput): camera.ImageRotation
 function getDeviceDegree(): int {
   let deviceDegree: int = -1;
   try {
-    sensor.once('gravityChange', (data: sensor.GravityResponse) => {
+    sensor.onceGravityChange((data: sensor.GravityResponse) => {
       console.info('Succeeded in invoking once. X-coordinate component: ' + data.x);
       console.info('Succeeded in invoking once. Y-coordinate component: ' + data.y);
       console.info('Succeeded in invoking once. Z-coordinate component: ' + data.z);

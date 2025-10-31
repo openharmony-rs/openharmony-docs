@@ -53,6 +53,8 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -60,6 +62,24 @@ function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.Video
   let status: boolean = false;
   try {
   let mode: WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
+    status = session.isWhiteBalanceModeSupported(mode);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+  }
+  return status;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isWhiteBalanceModeSupported(session: camera.PhotoSession): boolean {
+  let status: boolean = false;
+  try {
+    let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
     status = session.isWhiteBalanceModeSupported(mode);
   } catch (error) {
     let err = error as BusinessError;
