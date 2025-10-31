@@ -113,7 +113,7 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
     0 upgraded, 0 newly installed, 0 to remove and 11 not upgraded.
     ```
 
-7. 如果设备支持HDC连接，则需要安装HDC工具，安装流程请参考[HDC-OpenHarmony设备连接器](https://gitcode.com/openharmony/developtools_hdc/blob/master/README_zh.md)。
+7. 如果设备支持HDC连接，则需要安装HDC工具，安装流程请参考[HDC-OpenHarmony设备连接器](https://gitee.com/openharmony/developtools_hdc/blob/master/README_zh.md)。
 
 
 ### 环境依赖检查
@@ -688,12 +688,12 @@ OpenHarmony系统开发人员在新增或修改代码之后，希望可以快速
 
 **Fuzzing安全测试**
 
-[Fuzzing安全测试用例编写规范](https://gitcode.com/openharmony/testfwk_developer_test/blob/master/libs/fuzzlib/README_zh.md)
+[Fuzzing安全测试用例编写规范](https://gitee.com/openharmony/testfwk_developer_test/blob/master/libs/fuzzlib/README_zh.md)
 
 
 **Benchmark测试**
 
-[Benchmark用例编写规范](https://gitcode.com/openharmony/testfwk_developer_test/blob/master/libs/benchmark/README_zh.md)
+[Benchmark用例编写规范](https://gitee.com/openharmony/testfwk_developer_test/blob/master/libs/benchmark/README_zh.md)
 
 ## 编译测试用例
 
@@ -1527,7 +1527,7 @@ test/developertest/reports/xxxx_xx_xx_xx_xx_xx
        C:   cflags = [ "--coverage" ]
        C++: cflags_cc = [ "--coverage" ]
             
-   **推荐：**     也可以参考窗口子系统的方式（推荐这种方式），参考链接：https://gitcode.com/openharmony/window_window_manager/pulls/1274/files
+   **推荐：**     也可以参考窗口子系统的方式（推荐这种方式），参考链接：https://gitee.com/openharmony/window_window_manager/pulls/1274/files
 3. 执行覆盖率用例需要安装以下依赖包：
    
        1）安装lcov, 安装命令：sudo apt install lcov
