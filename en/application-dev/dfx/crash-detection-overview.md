@@ -13,4 +13,4 @@ A process crash refers to an unexpected exit of an application or a system proce
 
 3. An application is freezing and AppFreeze logs are generated. For details, see [Application Freeze Detection](appfreeze-guidelines.md).
 
-4. The system kills the process unexpectedly. For details, see [Application-Killed Detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-runtime-appkilled-detection).
+4. The system kills the process unexpectedly. For details, see Application-Killed Detection.

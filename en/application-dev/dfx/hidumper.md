@@ -53,7 +53,7 @@ For FAQs about hidumper, see [FAQs](#faqs).
 
 ## Querying Memory Information
 
-The hidumper memory information query module is used to view device memory usage and process memory usage. To use this module, you need to understand the [basic memory knowledge](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-memory-basic-knowledge).
+The hidumper memory information query module is used to view device memory usage and process memory usage. To use this module, you need to understand the basic memory knowledge.
 
 ### Querying Device Memory
 
