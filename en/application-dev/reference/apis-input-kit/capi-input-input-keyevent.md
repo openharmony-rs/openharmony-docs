@@ -1,8 +1,15 @@
 # Input_KeyEvent
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## **Overview**
 
-Defines the key event to be injected.
+Defines a key event.
 
 **Since**: 12
 

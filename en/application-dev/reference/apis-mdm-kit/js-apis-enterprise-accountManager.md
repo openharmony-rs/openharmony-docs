@@ -1,4 +1,10 @@
 # @ohos.enterprise.accountManager (Account Management)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **accountManager** module provides APIs for account management of enterprise devices.
 
@@ -26,6 +32,7 @@ Users are not allowed to add accounts.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -50,14 +57,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { accountManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   accountManager.disallowOsAccountAddition(wantTemp, true, 100);
   console.info('Succeeded in disallowing os account addition.');
 } catch (err) {
@@ -75,6 +85,7 @@ Queries whether a user is not allowed to add an account.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -104,14 +115,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { accountManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
 try {
+  // Replace parameters with actual values.
   let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(wantTemp, 100);
   console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
 } catch (err) {
@@ -129,6 +143,7 @@ Adds an account in the background. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 
 **Parameters**
@@ -160,14 +175,17 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 **Example**
 
 ```ts
+import { accountManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EntryAbility'
 };
 
+// Replace parameters with actual values.
 accountManager.addOsAccountAsync(wantTemp, "TestAccountName", osAccount.OsAccountType.NORMAL).then((info) => {
   console.info(`Succeeded in creating os account: ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
@@ -178,11 +196,15 @@ accountManager.addOsAccountAsync(wantTemp, "TestAccountName", osAccount.OsAccoun
 
 setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo, policy: DomainAccountPolicy): void
 
-Sets the domain account policy. This API takes effect only on 2-in-1 devices.
+Sets the domain account policy.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -201,29 +223,33 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
 ```ts
+import { accountManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 
 async function setDomainAccountPolicy() {
   let wantTemp: Want = {
+    // Replace with actual values.
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility',
+    abilityName: 'EntryAbility'
   };
   let policy: accountManager.DomainAccountPolicy = {
+    // Replace with actual values.
     authenticationValidityPeriod: 300,
     passwordValidityPeriod: 420,
-    passwordExpirationNotification: 60,
-  }
+    passwordExpirationNotification: 60
+  };
   // Set the global domain account policy.
   let accountInfo: osAccount.DomainAccountInfo = {
     domain: '',
     accountName: '',
-    serverConfigId: '',
-  }
+    serverConfigId: ''
+  };
   try {
     accountManager.setDomainAccountPolicy(wantTemp, accountInfo, policy);
     console.info('Succeeded in setting global domainAccount policy.');
@@ -234,8 +260,9 @@ async function setDomainAccountPolicy() {
   let accountInfo2: osAccount.DomainAccountInfo = {
     domain: '',
     accountName: '',
-    serverConfigId: '',
-  }
+    serverConfigId: ''
+  };
+  // Replace with actual values.
   let userId: number = 100;
   await osAccount.getAccountManager().getOsAccountDomainInfo(userId)
     .then((domainAccountInfo: osAccount.DomainAccountInfo) => {
@@ -258,11 +285,15 @@ async function setDomainAccountPolicy() {
 
 getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo): DomainAccountPolicy
 
-Obtains the domain account policy. This API takes effect only on 2-in-1 devices.
+Obtains the domain account policy.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -286,25 +317,28 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **Example**
 
 ```ts
+import { accountManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 
 async function getDomainAccountPolicy() {
   let wantTemp: Want = {
+    // Replace with actual values.
     bundleName: 'com.example.myapplication',
-    abilityName: 'EntryAbility',
+    abilityName: 'EntryAbility'
   };
-  let domainAccountPolicy: accountManager.DomainAccountPolicy = {}
+  let domainAccountPolicy: accountManager.DomainAccountPolicy = {};
   // Query the global domain account policy.
   let accountInfo: osAccount.DomainAccountInfo = {
     domain: '',
     accountName: '',
-    serverConfigId: '',
-  }
+    serverConfigId: ''
+  };
   try {
     domainAccountPolicy = accountManager.getDomainAccountPolicy(wantTemp, accountInfo);
     console.info('Succeeded in getting global domain account policy.');
@@ -315,8 +349,9 @@ async function getDomainAccountPolicy() {
   let accountInfo2: osAccount.DomainAccountInfo = {
     domain: '',
     accountName: '',
-    serverConfigId: '',
-  }
+    serverConfigId: ''
+  };
+  // Replace with actual values.
   let userId: number = 100;
   await osAccount.getAccountManager()
     .getOsAccountDomainInfo(userId)

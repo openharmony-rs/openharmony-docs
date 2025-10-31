@@ -1,10 +1,16 @@
 # Modal Transition
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 You can bind a full-screen modal to a component through the **bindContentCover** attribute. Better yet, with the **ModalTransition** parameter, you can apply a transition effect for when the component is inserted or deleted.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  Switching between landscape and portrait modes is not supported.
 >
@@ -12,7 +18,7 @@ You can bind a full-screen modal to a component through the **bindContentCover**
 
 ## bindContentCover
 
-bindContentCover(isShow: Optional\<boolean\>, builder: CustomBuilder, options?: ContentCoverOptions)
+bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T
 
 Binds a modal to the component, which can be displayed when the component is touched. The content of the modal is customizable. The transition type can be set to none, slide-up and slide-down animation, and opacity gradient animation.
 
@@ -24,26 +30,64 @@ Binds a modal to the component, which can be displayed when the component is tou
 
 | Name | Type                                       | Mandatory| Description                                                        |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isShow  | Optional\<boolean\>                         | Yes  | Whether to display the modal.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
+| isShow  | boolean                        | Yes  | Whether to display the modal.<br>- **true**: Display the modal.<br>- **false**: Hide the modal.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the modal.                                      |
+| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No  | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This property has no effect when it is set together with **transition**.                                |
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
+
+## bindContentCover
+
+bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T
+
+Binds a modal to the component, which can be displayed when the component is touched. The content of the modal page can be customized. The transition mode can be customized.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                       | Mandatory| Description                                                        |
+| ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| isShow  | boolean                        | Yes  | Whether to display the modal.<br>- **true**: Display the modal.<br>- **false**: Hide the modal.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the modal.                                      |
 | options | [ContentCoverOptions](#contentcoveroptions) | No  | Optional attributes of the modal.                                |
 
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
+
 ## ContentCoverOptions
 Inherited from [BindOptions](ts-universal-attributes-sheet-transition.md#bindoptions).
-| Name             | Type                                      | Mandatory  | Description           |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| modalTransition | [ModalTransition](ts-types.md#modaltransition10) | No   | Transition mode of the modal.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12)&gt; | No   | Callback invoked to prevent a user attempt to dismiss the modal.<br>**NOTE**<br>After this callback is registered, touching the back button does not immediately dismiss the modal. You can use the **reason** parameter to determine the type of operation that triggers the dismissal and decide whether to dismiss the modal based on the reason. Nesting **onWillDismiss** callbacks is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10) | No   | Transition mode of the modal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+
+Full-screen modal page content options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name             | Type                                      | Read-Only|  Optional  | Description           |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------- |
+| modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No| Yes   | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This property has no effect when it is set together with **transition**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12)&gt; | No| Yes  | Callback invoked to prevent a user attempt to dismiss the modal.<br>**NOTE**<br>After this callback is registered, touching the back button does not immediately dismiss the modal. You can use the **reason** parameter to determine the type of operation that triggers the dismiss and decide whether to dismiss the modal based on the reason. Nesting **onWillDismiss** callbacks is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10) | No| Yes  | Custom transition mode of the modal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| enableSafeArea<sup>20+</sup> | boolean  | No| Yes | Indicates whether the modal page adapts to the safe area. The value true indicates that the modal page adapts to the safe area, and the content is limited in the safe area to avoid the navigation bar and status bar. The value false indicates that the modal page does not adapt to the safe area, and the style is the same as the previous style. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## DismissContentCoverAction<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name             | Type                                      | Mandatory  | Description           |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| dismiss | function | Yes   | Callback invoked when the modal is dismissed. Called when you need to exit the page.|
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12) | Yes   | Type of operation that triggers the dismissal of the modal. |
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name             | Type                                      | Read-Only| Optional  | Description           |
+| --------------- | -------------------- | -------------------- | ---- | ------------- |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | No| No   | Callback invoked when the modal is dismissed. Called when you need to exit the page.|
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12) | No| No   | Type of operation that triggers the dismiss of the modal. |
 
 ## Example
 
@@ -56,8 +100,8 @@ This example demonstrates how to implement a modal transition using the **bindCo
 @Entry
 @Component
 struct ModalTransitionExample {
-  @State isShow: boolean = false
-  @State isShow2: boolean = false
+  @State isShow: boolean = false;
+  @State isShow2: boolean = false;
 
   @Builder
   myBuilder2() {
@@ -85,16 +129,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.")
+          console.info("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.")
+          console.info("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.")
+          console.info("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.")
+          console.info("BindContentCover onDisappear.");
         }
       })
 
@@ -114,7 +158,7 @@ struct ModalTransitionExample {
     Column() {
       Button("transition modal 1")
         .onClick(() => {
-          this.isShow = true
+          this.isShow = true;
         })
         .fontSize(20)
         .margin(10)
@@ -122,16 +166,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.")
+            console.info("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.")
+            console.info("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.")
+            console.info("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.")
+            console.info("BindContentCover onDisappear.");
           }
         })
     }
@@ -156,17 +200,17 @@ import { curves } from '@kit.ArkUI';
 @Entry
 @Component
 struct ModalTransitionExample {
-  @State @Watch("isShow1Change") isShow: boolean = false
-  @State @Watch("isShow2Change") isShow2: boolean = false
+  @State @Watch("isShow1Change") isShow: boolean = false;
+  @State @Watch("isShow2Change") isShow2: boolean = false;
   @State isScale1: number = 1;
   @State isScale2: number = 1;
 
   isShow1Change() {
-    this.isShow ? this.isScale1 = 0.95 : this.isScale1 = 1
+    this.isShow ? this.isScale1 = 0.95 : this.isScale1 = 1;
   }
 
   isShow2Change() {
-    this.isShow2 ? this.isScale2 = 0.95 : this.isScale2 = 1
+    this.isShow2 ? this.isScale2 = 0.95 : this.isScale2 = 1;
   }
 
   @Builder
@@ -195,16 +239,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.NONE,
         backgroundColor: Color.Orange,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.")
+          console.log("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.")
+          console.log("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.")
+          console.log("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.")
+          console.log("BindContentCover onDisappear.");
         }
       })
 
@@ -226,7 +270,7 @@ struct ModalTransitionExample {
     Column() {
       Button("transition modal 1")
         .onClick(() => {
-          this.isShow = true
+          this.isShow = true;
         })
         .fontSize(20)
         .margin(10)
@@ -234,16 +278,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.NONE,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.")
+            console.log("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.")
+            console.log("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.")
+            console.log("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.")
+            console.log("BindContentCover onDisappear.");
           }
         })
     }
@@ -268,8 +312,8 @@ This example shows two modals whose transition type is slide-up and slide-down a
 @Entry
 @Component
 struct ModalTransitionExample {
-  @State isShow: boolean = false
-  @State isShow2: boolean = false
+  @State isShow: boolean = false;
+  @State isShow2: boolean = false;
 
   @Builder
   myBuilder2() {
@@ -297,16 +341,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.DEFAULT,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.")
+          console.log("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.")
+          console.log("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.")
+          console.log("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.")
+          console.log("BindContentCover onDisappear.");
         }
       })
 
@@ -326,7 +370,7 @@ struct ModalTransitionExample {
     Column() {
       Button("transition modal 1")
         .onClick(() => {
-          this.isShow = true
+          this.isShow = true;
         })
         .fontSize(20)
         .margin(10)
@@ -334,16 +378,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.DEFAULT,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.")
+            console.log("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.")
+            console.log("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.")
+            console.log("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.")
+            console.log("BindContentCover onDisappear.");
           }
         })
     }
@@ -366,8 +410,8 @@ This example shows two modals whose transition type is opacity animation.
 @Entry
 @Component
 struct ModalTransitionExample {
-  @State isShow: boolean = false
-  @State isShow2: boolean = false
+  @State isShow: boolean = false;
+  @State isShow2: boolean = false;
 
   @Builder
   myBuilder2() {
@@ -396,16 +440,16 @@ struct ModalTransitionExample {
         modalTransition: ModalTransition.ALPHA,
         backgroundColor: Color.Gray,
         onWillAppear: () => {
-          console.log("BindContentCover onWillAppear.")
+          console.log("BindContentCover onWillAppear.");
         },
         onAppear: () => {
-          console.log("BindContentCover onAppear.")
+          console.log("BindContentCover onAppear.");
         },
         onWillDisappear: () => {
-          console.log("BindContentCover onWillDisappear.")
+          console.log("BindContentCover onWillDisappear.");
         },
         onDisappear: () => {
-          console.log("BindContentCover onDisappear.")
+          console.log("BindContentCover onDisappear.");
         }
       })
 
@@ -425,7 +469,7 @@ struct ModalTransitionExample {
     Column() {
       Button("transition modal 1")
         .onClick(() => {
-          this.isShow = true
+          this.isShow = true;
         })
         .fontSize(20)
         .margin(10)
@@ -433,16 +477,16 @@ struct ModalTransitionExample {
           modalTransition: ModalTransition.ALPHA,
           backgroundColor: Color.Pink,
           onWillAppear: () => {
-            console.log("BindContentCover onWillAppear.")
+            console.log("BindContentCover onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindContentCover onAppear.")
+            console.log("BindContentCover onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindContentCover onWillDisappear.")
+            console.log("BindContentCover onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindContentCover onDisappear.")
+            console.log("BindContentCover onDisappear.");
           }
         })
     }
@@ -465,8 +509,8 @@ This example demonstrates custom transitions for modals, including rotation and 
 @Entry
 @Component
 struct ModalTransitionExample {
-  @State isShow: boolean = false
-  @State isShow2: boolean = false
+  @State isShow: boolean = false;
+  @State isShow2: boolean = false;
 
   @Builder
   myBuilder2() {
@@ -501,16 +545,16 @@ struct ModalTransitionExample {
             transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
             onWillDismiss: ((dismissContentCoverAction: DismissContentCoverAction) => {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
-                console.log("BindContentCover dismiss reason is back pressed")
+                console.log("BindContentCover dismiss reason is back pressed");
               }
-              dismissContentCoverAction.dismiss()
+              dismissContentCoverAction.dismiss();
             }),
             onAppear: () => {
-              console.info("BindContentCover onAppear.")
+              console.info("BindContentCover onAppear.");
             },
             onDisappear: () => {
               this.isShow2 = false;
-              console.info("BindContentCover onDisappear.")
+              console.info("BindContentCover onDisappear.");
             }
           })
 
@@ -530,7 +574,7 @@ struct ModalTransitionExample {
     Column() {
       Button("Transition Modal 1")
         .onClick(() => {
-          this.isShow = true
+          this.isShow = true;
         })
         .fontSize(20)
         .margin(10)
@@ -551,14 +595,14 @@ struct ModalTransitionExample {
               if (dismissContentCoverAction.reason == DismissReason.PRESS_BACK) {
                 console.log("back pressed");
               }
-              dismissContentCoverAction.dismiss()
+              dismissContentCoverAction.dismiss();
             }),
             onAppear: () => {
-              console.log("BindContentCover onAppear.")
+              console.log("BindContentCover onAppear.");
             },
             onDisappear: () => {
               this.isShow = false;
-              console.log("BindContentCover onDisappear.")
+              console.log("BindContentCover onDisappear.");
             }
           })
     }
@@ -571,3 +615,66 @@ struct ModalTransitionExample {
 ```
 
 ![en-us_full_screen_modal_alpha](figures/en-us_full_screen_modal_transition.gif)
+
+### Example 6: Setting the Safe Area for the Modal
+
+This example demonstrates the content effect after the modal mode is adapted to the safe area by setting enableSafeArea to true. The background color of the modal container is light blue, the content color is gray, and the content is laid out in the safe area.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaController {
+  @State isShow: boolean = false;
+  @State SafeArea: boolean | undefined = true;
+  @State heightMode: string = '100%';
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column() {
+        Button("Content")
+          .fontSize(20)
+      }
+      .width('100%')
+      .height('50%')
+      .borderRadius(10)
+      .borderStyle(BorderStyle.Dotted)
+      .borderWidth(2)
+      Column() {
+        Button("Content")
+          .margin({top:340})
+          .fontSize(20)
+      }
+      .width('100%')
+      .height('50%')
+      .borderRadius(10)
+      .borderStyle(BorderStyle.Dotted)
+      .borderWidth(2)
+    }
+    .backgroundColor(Color.Grey)
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height(this.heightMode)
+  }
+  build() {
+    Column() {
+      Button("Open ContentCover")
+        .onClick(() => this.isShow = true)
+        .fontSize(20)
+        .margin(10)
+        .bindContentCover(this.isShow, this.myBuilder(), {
+          modalTransition: ModalTransition.ALPHA,
+          backgroundColor: 0x87CEEB,
+          //Dynamically set the safe area mode.
+          enableSafeArea: this.SafeArea
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![en-us-enableSafeArea](figures/en-us-enablesafearea.png)

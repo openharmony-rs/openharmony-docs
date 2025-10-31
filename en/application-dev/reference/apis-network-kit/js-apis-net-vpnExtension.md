@@ -509,7 +509,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     vpnConnection.destroy(vpnId).then(() => {
       console.info("destroy success");
     }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }
@@ -554,7 +554,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
         console.info("generateVpnId success, vpnId = " + JSON.stringify(data));
       }
     }).catch((error: BusinessError) => {
-      console.error(`generateVpnId fail, Code is ${err.code}, message is ${err.message}`);
+      console.error(`generateVpnId fail, Code is ${error.code}, message is ${error.message}`);
     });
   }
 }

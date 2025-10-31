@@ -1,4 +1,10 @@
 # Compilation Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -604,7 +610,7 @@ Make sure decorators such as @Extend have exactly one parameter.
 
 ## 10903329 Resource Name Verification Exception
 **Error Message**<br>
-Unknown resource name \'xxx\'.
+Unknown resouce name \'xxx\'.
 
 **Description**<br>
 This error code is reported when the resource name fails verification.

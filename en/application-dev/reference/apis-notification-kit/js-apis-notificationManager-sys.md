@@ -5059,7 +5059,7 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** means that the cross-device notifications are supported, and **false** means the opposite.  |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5118,7 +5118,7 @@ Sets whether the device of a specified type enables cross-device notification. T
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise that returns no result.  |
+| Promise\<void\> | Promise that returns no result.|
 
 **Error codes**
 
@@ -5171,7 +5171,7 @@ Obtains the device types that enable cross-device notification. This API uses a 
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | Promise used to return the result.  |
+| Promise\<Array\<string\>\> | Promise used to return the result.|
 
 **Error codes**
 

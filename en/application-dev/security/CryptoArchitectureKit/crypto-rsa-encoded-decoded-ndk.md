@@ -15,7 +15,7 @@
 
 2. Call [OH_CryptoPrivKeyEncodingParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_create) to create a parameter object (**params**), and call [OH_CryptoPrivKeyEncodingParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam) to set the encryption algorithm and password.
 
-3. Call [OH_CryptoPrivKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_encode) and pass **CRYPTO_PEM/CRYPTO_DER**, **PKCS1/PCKS8**, and the parameter object (**params**) to generate the encoded private key string.
+3. Call [OH_CryptoPrivKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_encode) and pass **CRYPTO_PEM/CRYPTO_DER**, **PKCS1/PKCS8**, and the parameter object (**params**) to generate the encoded private key string.
 
 **Decoding**
 

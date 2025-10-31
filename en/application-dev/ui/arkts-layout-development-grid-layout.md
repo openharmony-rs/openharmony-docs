@@ -1,4 +1,10 @@
 # Responsive Grid Layout (GridRow/GridCol)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @HelloCrease-->
 
 
 ## Overview
@@ -19,20 +25,20 @@ The [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md) componen
 ## GridRow
 
 
-### Grid Breakpoints
+### Breakpoints
 
-The grid system defines breakpoints, which are screen width types in effect, based on the horizontal width ([screen density pixels](../reference/apis-arkui/arkui-ts/ts-pixel-units.md), in vp) of the screens. You can use the breakpoints to meet specific layout requirements.
+**GridRow** defines breakpoints, which are screen width types in effect, based on the horizontal width ([screen density pixels](../reference/apis-arkui/arkui-ts/ts-pixel-units.md), in vp) of the screens. You can use the breakpoints to meet specific layout requirements.
 
-By default, the grid system provides four breakpoints: xs, sm, md, and lg.
+By default, the grid container divides the device width into four types: xs, sm, md, and lg. The size ranges are as follows:
 
 | Breakpoint| Value Range (vp)       | Device Description     |
 | ---- | --------------- | --------- |
 | xs   | [0, 320)  | Minimum-width device.|
-| sm   | [320, 520) | Small-width device. |
-| md   | [520, 840) | Medium-width device.|
+| sm   | [320, 600) | Small-width device. |
+| md   | [600, 840) | Medium-width device.|
 | lg   | [840, +∞)  | Large-width device. |
 
-In the **GridRow** component, you can customize the values of breakpoints. A maximum of six breakpoints are supported. In addition to the four default breakpoints, you can also enable the xl and xxl breakpoints for your application window layout.
+In the GridRow component, you can use [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) to customize the breakpoint value range. A maximum of six breakpoints are supported. In addition to the default four breakpoints, the xl and xxl breakpoints can be enabled. The layout of six devices (xs, sm, md, lg, xl, and xxl) can be set.
 
 | Breakpoint| Device Description     |
 | ---- | --------- |
@@ -43,163 +49,209 @@ In the **GridRow** component, you can customize the values of breakpoints. A max
 | xl   | Extra-large-width device.|
 | xxl  | Extra-extra-large-width device.|
 
-- Set **breakpoints** with a monotonically increasing array based on the use case. As **breakpoints** supports a maximum of six breakpoints, the maximum length of the monotonically increasing array is 5.
+- You can set the breakpoint position using a monotonically increasing array based on the actual application scenario. By default, the grid container supports four breakpoints. If no breakpoint position is set, the monotonically increasing array configured for the default breakpoints is ["320vp", "600vp", "840vp"]. You can use [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) to support a maximum of six breakpoints. Therefore, the maximum length of the monotonically increasing array is 5.
+
+  If the input array is [n0, n1, n2, n3, n4], the values of each breakpoint are as follows:
+
+  |Breakpoint|Value Range|
+  |---|-----------|
+  |xs |[0, n0)    |
+  |sm |[n0, n1)   |
+  |md |[n1, n2)   |
+  |lg |[n2, n3)   |
+  |xl |[n3, n4)   |
+  |xxl|[n4, INF)  |
+
+  ```ts
+  breakpoints: {value: ['100vp', '200vp']} // xs, sm, and md breakpoints are used. If the value is less than 100vp, the xs breakpoint is used. If the value is greater than 100vp and less than 200vp, the sm breakpoint is used. If the value is greater than 200vp, the md breakpoint is used.
+  breakpoints: {value: ['320vp', '600vp']} // xs, sm, and md breakpoints are used. If the value is less than 320vp, the xs breakpoint is used. If the value is greater than 320vp and less than 600vp, the sm breakpoint is used. If the value is greater than 600vp, the md breakpoint is used.
+  breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // Five breakpoints are used, which are xs, sm, md, lg, and xl. If the window width is less than 320 vp, the xs breakpoint is used. If the window width is between 320 vp and 600 vp, the sm breakpoint is used. If the window width is between 600 vp and 840 vp, the md breakpoint is used. If the window width is between 840 vp and 1440 vp, the lg breakpoint is used. If the window width is greater than 1440 vp, the xl breakpoint is used.
+  ```
+
+- The grid container listens to the size change of the window or container to determine breakpoints. reference is used to set the reference object for breakpoint switching. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.
+
+  For example, you can set breakpoints to divide the application width into six ranges, and set columns to configure the number of columns in the grid container at each breakpoint.
 
 
-    ```ts
-    breakpoints: {value: ['100vp', '200vp']}
-    ```
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    @State bgColors: ResourceColor[] =
+      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+        'rgb(255,192,0)', 'rgb(170,10,33)'];
+    build() {
+      GridRow({
+        columns: {
+          xs: 2, // If the window width is within the xs breakpoint range, the grid container is divided into two columns.
+          sm: 4, // If the window width is within the sm breakpoint range, the grid container is divided into four columns.
+          md: 8, // If the window width is within the md breakpoint range, the grid container is divided into eight columns.
+          lg: 12, // If the window width is within the lg breakpoint range, the grid container is divided into 12 columns.
+          xl: 12, // If the window width is within the xl breakpoint range, the grid container is divided into 12 columns.
+          xxl: 12 // If the window width is within the xxl breakpoint range, the grid container is divided into 12 columns.
+        },
+        breakpoints: {
+          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // Default breakpoints ['320vp', '600vp', '840vp'] are retained, and breakpoints '1440vp' and '1600vp' are added. In actual development, you need to set breakpoint values based on the actual application scenario to implement multi-device adaptation with one-time development.
+          reference: BreakpointsReference.WindowSize
+        }
+      }) {
+        ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+          GridCol({ span: 1 }) { // All child components occupy one column.
+            Row() {
+              Text(`${index}`)
+            }.width("100%").height('50vp')
+          }.backgroundColor(color)
+        })
+      }
+    }
+  }                                
+  ```
 
-   Enables three breakpoints: xs, sm, and md. If the value is less than 100 vp, the breakpoint is xs. If the value is 100–200 vp, the breakpoint is sm. If the value is greater than 200 vp, the breakpoint is md.
-
-
-    ```ts
-    breakpoints: {value: ['320vp', '520vp', '840vp', '1080vp']}
-    ```
-
-  Enables five breakpoints: xs, sm, md, lg, and xl. If the value is less than 320 vp, the breakpoint is xs. If the value is 320–520 vp, the breakpoint is sm. If the value is 520–840 vp, the breakpoint is md. If the value is 840–1080 vp, the breakpoint is lg. If the value is greater than 1080 vp, the breakpoint is xl.
-
-- The grid system implements breakpoints by listening for the changes in the window or container size, and sets the breakpoint references through **reference**. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.
-
-In the following example, the default number of grid columns is 12. Breakpoints are used to divide the application window width into six ranges. In different ranges, the **GridCol** child component occupies a different number of columns.
-
-
-```ts
-@State bgColors: ResourceColor[] =
-    ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-      'rgb(255,192,0)', 'rgb(170,10,33)'];
-// ...
-GridRow({
-  breakpoints: {
-    value: ['200vp', '300vp', '400vp', '500vp', '600vp'],
-    reference: BreakpointsReference.WindowSize
-  }
-}) {
-   ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-     GridCol({
-       span: {
-         xs: 2, // The GridCol component occupies two grid columns on the minimum-width device.
-         sm: 3, // The GridCol component occupies three grid columns on the small-width device.
-         md: 4, // The GridCol component occupies four grid columns on the medium-width device.
-         lg: 6, // The GridCol component occupies six grid columns on the large-width device.
-         xl: 8, // The GridCol component occupies eight grid columns on the extra-large-width device.
-         xxl: 12 // The GridCol component occupies 12 grid columns on the extra-extra-large-width device.
-       }
-     }) {
-       Row() {
-         Text(`${index}`)
-       }.width("100%").height('50vp')
-     }.backgroundColor(color)
-   })
-}                                                                    
-```
-
-![en-us_image_0000001511421272](figures/en-us_image_0000001511421272.gif)
+  ![en-us_image_0000001511421272](figures/en-us_image_0000001511421272.gif)
 
 
 ### Columns
 
 In the **GridRow**, **columns** is used to set the total number of columns in the responsive grid layout.
 
-- The default value of **columns** is 12. If **columns** is not set, the responsive grid layout is divided into 12 columns at any breakpoint.
+- Before API version 20, the default value of columns is 12. That is, if columns is not set, the grid layout is divided into 12 columns at any breakpoint.
+- For API version 20 and later, the default value of columns is { xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }.
 
-
-    ```ts
-  @State bgColors: ResourceColor[] =
-      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-        'rgb(255,192,0)', 'rgb(170,10,33)', 'rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)'];
-     // ...
-    GridRow() {
-      ForEach(this.bgColors, (item:ResourceColor, index?:number|undefined) => {
-        GridCol() {
-          Row() {
-              Text(`${index}`)
-          }.width('100%').height('50')
-        }.backgroundColor(item)
-      })
-    }           
-    ```
-
-    ![en-us_image_0000001563060709](figures/en-us_image_0000001563060709.png)
-
-- When **columns** is set to a number, the responsive grid layout is divided into the specified number of columns regardless of the screen size. The following example sets the number of grid layout columns to 4 and 8 in sequence, where a child component occupies one column by default.
 
   ```ts
-  class CurrTmp{
-    currentBp: string = 'unknown';
-    set(val:string){
-      this.currentBp = val
-    }
-  }
-  let BorderWH:Record<string,Color|number> = { 'color': Color.Blue, 'width': 2 }
-  @State bgColors: ResourceColor[] =
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-        'rgb(255,192,0)', 'rgb(170,10,33)'];
-  @State currentBp: string = 'unknown';
-  // ...
-  Row() {
-    GridRow({ columns: 4 }) {
-      ForEach(this.bgColors, (item: ResourceColor, index?:number|undefined) => {
-        GridCol() {
-          Row() {
-            Text(`${index}`)
-          }.width('100%').height('50')
-        }.backgroundColor(item)
-      })
-    }
-    .width('100%').height('100%')
-    .onBreakpointChange((breakpoint:string) => {
-      let CurrSet:CurrTmp = new CurrTmp()
-      CurrSet.set(breakpoint)
-    })
-  }
-  .height(160)
-  .border(BorderWH)
-  .width('90%')
-  
-  Row() {
-    GridRow({ columns: 8 }) {
-      ForEach(this.bgColors, (item: ResourceColor, index?:number|undefined) => {
-          GridCol() {
+        'rgb(255,192,0)', 'rgb(170,10,33)', 'rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)'];
+    build() {
+      GridRow() {
+        ForEach(this.bgColors, (item:ResourceColor, index?:number|undefined) => {
+          GridCol({span: 1}) {
             Row() {
               Text(`${index}`)
             }.width('100%').height('50')
           }.backgroundColor(item)
-      })
+        })
+      }
     }
-    .width('100%').height('100%')
-    .onBreakpointChange((breakpoint:string) => {
-      let CurrSet:CurrTmp = new CurrTmp()
-      CurrSet.set(breakpoint)
-    })
   }
-  .height(160)
-  .border(BorderWH)
-  .width('90%')
+  ```
+
+    Layout display before API version 20:
+
+    ![en-us_image_0000001563060709](figures/en-us_image_0000001563060709.png)
+    
+    Layout display in API version 20 or later (using the SM device as an example, the default number of columns is 4):
+    
+    ![en-us_image_0000001563060710](figures/en-us_image_0000001563060710.png)
+
+
+The columns attribute supports two types: number and [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption). You can set the total number of columns in the grid layout in either of the following ways:
+- When the columns attribute is set to number, the grid layout is divided into the same number of columns on devices of any size. The following figures show the effect of setting the number of columns in the grid layout to 4 and 8, respectively, and the subelements occupy one column.
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    @State bgColors: ResourceColor[] =
+      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+        'rgb(255,192,0)', 'rgb(170,10,33)'];
+    @State currentBp: string = 'unknown';
+    build() {
+      Row() {
+        GridRow({ columns: 4 }) {
+          ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+            GridCol({ span: 1 }) {
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50')
+            }.backgroundColor(item)
+          })
+        }
+        .width('100%').height('100%')
+      }
+      .height(160)
+      .border({ color: 'rgb(39,135,217)', width: 2 })
+      .width('90%')
+    }
+  }
+  ```
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    @State bgColors: ResourceColor[] =
+      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+        'rgb(255,192,0)', 'rgb(170,10,33)'];
+    @State currentBp: string = 'unknown';
+    build() {
+      Row() {
+        GridRow({ columns: 8 }) {
+          ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+            GridCol({ span: 1 }) {
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50')
+            }.backgroundColor(item)
+          })
+        }
+        .width('100%').height('100%')
+      }
+      .height(160)
+      .border({ color: 'rgb(39,135,217)', width: 2 })
+      .width('90%')
+    }
+  }
   ```
 
     ![en-us_image_0000001511421268](figures/en-us_image_0000001511421268.png)
 
-- When **columns** is set to a value of the **GridRowColumnOption** type, you can assign values specific to the screen size (xs, sm, md, lg, xl, xxl).
+- When columns is set to [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption), the number of grid columns can be set for devices of the following six sizes (xs, sm, md, lg, xl, and xxl). You can configure different numbers of grid columns for devices of different sizes.
 
   ```ts
-  @State bgColors: ResourceColor[] =
+  // xxx.ets
+  @Entry
+  @Component
+  struct Index {
+    @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-  GridRow({ columns: { sm: 4, md: 8 }, breakpoints: { value: ['200vp', '300vp', '400vp', '500vp', '600vp'] } }) {
-    ForEach(this.bgColors, (item: ResourceColor, index?:number|undefined) => {
-      GridCol() {
-        Row() {
-          Text(`${index}`)
-        }.width('100%').height('50')
-      }.backgroundColor(item)
-    })
+    build() {
+      GridRow({
+        columns: { sm: 4, md: 8 },
+        breakpoints: {
+          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // Keep the default breakpoints ['320vp', '600vp', '840vp'] and add breakpoints '1440vp' and '1600vp'. In actual development, you need to set the breakpoint values based on the actual application scenario to implement multi-device adaptation with one development.
+        }
+      }) {
+        ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+          GridCol({ span: 1 }) {
+            Row() {
+              Text(`${index}`)
+            }.width('100%').height('50')
+          }.backgroundColor(item)
+        })
+      }
+      .height(200)
+      .border({ color: 'rgb(39,135,217)', width: 2 })
+    }
   }
   ```
+    Layout display before API version 20 (if the number of grid columns is not configured for xs devices, the default number of columns 12 is used):
 
     ![en-us_image_0000001563060689](figures/en-us_image_0000001563060689.gif)
 
-If **columns** is only set for the sm and md screen size types, screen sizes smaller than sm use the default value **12**, and screen sizes larger than md (lg, xl, and xxl) use the value of **columns** of the md type.
+    Layout display in API version 20 and later (xs devices inherit the number of grid columns of sm devices):
+
+    ![en-us_image_0000001563060689](figures/en-us_image_0000001563060690.gif)
+
+  If the number of grid columns is set only for sm and md devices, the default values are used for xs, lg, xl, and xxl devices according to [Grid Column Number Completion](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption).
 
 
 ### Alignment
@@ -210,7 +262,7 @@ In the responsive grid layout, you can set the **direction** attribute of **Grid
 
 
     ```ts
-    GridRow({ direction: GridRowDirection.Row }){}
+    GridRow({ direction: GridRowDirection.Row }){ /* ... */ }
     ```
 
     ![en-us_image_0000001511740488](figures/en-us_image_0000001511740488.png)
@@ -219,7 +271,7 @@ In the responsive grid layout, you can set the **direction** attribute of **Grid
 
 
     ```ts
-    GridRow({ direction: GridRowDirection.RowReverse }){}
+    GridRow({ direction: GridRowDirection.RowReverse }){ /* ... */ }
     ```
 
     ![en-us_image_0000001562940517](figures/en-us_image_0000001562940517.png)
@@ -233,7 +285,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
 
 
     ```ts
-    GridRow({ gutter: 10 }){}
+    GridRow({ gutter: 10 }){ /* ... */ }
     ```
 
     ![en-us_image_0000001511740476](figures/en-us_image_0000001511740476.png)
@@ -242,7 +294,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
 
 
     ```ts
-    GridRow({ gutter: { x: 20, y: 50 } }){}
+    GridRow({ gutter: { x: 20, y: 50 } }){ /* ... */ }
     ```
 
     ![en-us_image_0000001511900456](figures/en-us_image_0000001511900456.png)
@@ -268,9 +320,9 @@ The **\GridCol** component is a child component of the **GridRow** component. Yo
 
     ```ts
   let Goffset:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ offset: 2 }){}
-  GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 } }){}
-  GridCol(){}.offset(Goffset) 
+  GridCol({ offset: 2, span: 1 }){}
+  GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 }, span: 1 }){}
+  GridCol({ span: 1 }){}.offset(Goffset) 
     ```
 
 - Setting **order**
@@ -278,10 +330,10 @@ The **\GridCol** component is a child component of the **GridRow** component. Yo
 
     ```ts
   let Gorder:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ order: 2 }){}
-  GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 } }){}
-  GridCol(){}.order(2)
-  GridCol(){}.order(Gorder)
+  GridCol({ order: 2, span: 1 }){}
+  GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }){}
+  GridCol({ span: 1 }){}.order(2)
+  GridCol({ span: 1 }){}.order(Gorder)
     ```
 
 
@@ -289,46 +341,57 @@ The **\GridCol** component is a child component of the **GridRow** component. Yo
 
 Sets the number of columns occupied by a child component in the grid layout, which determines the child component width. The default value is **1**.
 
+The span can be of the number or [GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption) type. You can set the number of columns occupied by a child component in the grid container in either of the following ways:
 - When the value type is number, the number of columns occupied by the child component is the same across screen sizes.
 
 
     ```ts
-  @State bgColors: ResourceColor[] =
-      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-        'rgb(255,192,0)', 'rgb(170,10,33)'];
-    // ...
-    GridRow({ columns: 8 }) {
-      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-        GridCol({ span: 2 }) {      
-          Row() {
-            Text(`${index}`)
-          }.width('100%').height('50vp')          
+    @Entry
+    @Component
+    struct Index {
+      @State bgColors: ResourceColor[] =
+        ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+          'rgb(255,192,0)', 'rgb(170,10,33)'];
+      build() {
+        GridRow({ columns: 8 }) {
+          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+            GridCol({ span: 2 }) {
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50vp')
+            }
+            .backgroundColor(color)
+          })
         }
-        .backgroundColor(color)
-      })
-    }                
+      }
+    }               
     ```
 
     ![en-us_image_0000001511421264](figures/en-us_image_0000001511421264.png)
 
-- When the value type is **GridColColumnOption**, you can assign values specific to the screen size (xs, sm, md, lg, xl, xxl).
+- When span is set to GridColColumnOption, the number of columns occupied by child components can be set on devices of six different sizes (xs, sm, md, lg, xl, and xxl). Child components can be configured with different numbers of columns on devices of different sizes. If the number of columns is set only for sm and md, the default values are used for xs, lg, xl, and xxl devices according to GridColColumnOption.
 
 
     ```ts
-  @State bgColors: ResourceColor[] =
-      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-        'rgb(255,192,0)', 'rgb(170,10,33)'];
-    // ...
-    GridRow({ columns: 8 }) {
-      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-        GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {      
-          Row() {
-            Text(`${index}`)
-          }.width('100%').height('50vp')          
+    @Entry
+    @Component
+    struct Index {
+      @State bgColors: ResourceColor[] =
+        ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+          'rgb(255,192,0)', 'rgb(170,10,33)'];
+      build() {
+        GridRow({ columns: 8 }) {
+          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+            GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50vp')
+            }
+            .backgroundColor(color)
+          })
         }
-        .backgroundColor(color)
-      })
-    }                
+      }
+    }
     ```
 
     ![en-us_image_0000001511740492](figures/en-us_image_0000001511740492.gif)
@@ -342,45 +405,56 @@ Sets the column offset of a child component relative to the previous child compo
 
 
     ```ts
-  @State bgColors: ResourceColor[] =
-      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-        'rgb(255,192,0)', 'rgb(170,10,33)'];
-    // ...
-    GridRow() {
-      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-        GridCol({ offset: 2 }) {      
-          Row() {
-            Text('' + index)
-          }.width('100%').height('50vp')          
+    @Entry
+    @Component
+    struct Index {
+      @State bgColors: ResourceColor[] =
+        ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+          'rgb(255,192,0)', 'rgb(170,10,33)'];
+      build() {
+        GridRow() {
+          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+            GridCol({ offset: 2, span: 1 }) {
+              Row() {
+                Text('' + index)
+              }.width('100%').height('50vp')
+            }
+            .backgroundColor(color)
+          })
         }
-        .backgroundColor(color)
-      })
+      }
     }                
     ```
 
     ![en-us_image_0000001563060705](figures/en-us_image_0000001563060705.png)
 
-  By default, a grid is divided into 12 columns and each child component occupies one column with an offset of two columns. Each row holds four child components, with three columns per child component plus the gutter.
+  A grid is divided into 12 columns. Each child component occupies one column and is offset by two columns. Each child component and spacing occupy three columns. Four child components are placed in one row.
 
 - When the value type is **GridColColumnOption**, you can assign values specific to the screen size (xs, sm, md, lg, xl, xxl).
 
 
     ```ts
-  @State bgColors: ResourceColor[] =
-      ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
-        'rgb(255,192,0)', 'rgb(170,10,33)'];
-    // ...
-  
-    GridRow() {
-      ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-        GridCol({ offset: { xs: 1, sm: 2, md: 3, lg: 4 } }) {      
-          Row() {
-            Text('' + index)
-          }.width('100%').height('50vp')          
+    @Entry
+    @Component
+    struct Index {
+      @State bgColors: ResourceColor[] =
+        ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
+          'rgb(255,192,0)', 'rgb(170,10,33)'];
+      build() {
+        GridRow({ columns: 12 }) {
+          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+            GridCol({ offset: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }) {
+              Row() {
+                Text('' + index)
+              }.width('100%').height('50vp')
+            }
+            .backgroundColor(color)
+          })
         }
-        .backgroundColor(color)
-      })
-    }                 
+        .height(200)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+      }
+    }         
     ```
 
     ![en-us_image_0000001562700433](figures/en-us_image_0000001562700433.gif)
@@ -396,28 +470,28 @@ If **order** is not set for all child components, those that have **order** set 
 
 
     ```ts
-  GridRow() {
-    GridCol({ order: 4 }) {
-      Row() {
-        Text('1')
-      }.width('100%').height('50vp')
-    }.backgroundColor('rgb(213,213,213)')
-    GridCol({ order: 3 }) {
-      Row() {
-        Text('2')
-      }.width('100%').height('50vp')
-    }.backgroundColor('rgb(150,150,150)')
-    GridCol({ order: 2 }) {
-      Row() {
-        Text('3')
-      }.width('100%').height('50vp')
-    }.backgroundColor('rgb(0,74,175)')
-    GridCol({ order: 1 }) {
-      Row() {
-        Text('4')
-      }.width('100%').height('50vp')
-    }.backgroundColor('rgb(39,135,217)')
-  }
+    GridRow({ columns: 12 }) {
+      GridCol({ order: 4, span: 1 }) {
+        Row() {
+          Text('1')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(213,213,213)')
+      GridCol({ order: 3, span: 1 }) {
+        Row() {
+          Text('2')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(150,150,150)')
+      GridCol({ order: 2, span: 1 }) {
+        Row() {
+          Text('3')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(0,74,175)')
+      GridCol({ order: 1, span: 1 }) {
+        Row() {
+          Text('4')
+        }.width('100%').height('50vp')
+      }.backgroundColor('rgb(39,135,217)')
+    }
     ```
 
     ![en-us_image_0000001511580892](figures/en-us_image_0000001511580892.png)
@@ -426,28 +500,28 @@ If **order** is not set for all child components, those that have **order** set 
 
 
     ```ts
-    GridRow() {
-      GridCol({ order: { xs:1, sm:5, md:3, lg:7}}) {
+    GridRow({ columns: 12 }) {
+      GridCol({ order: { xs:1, sm:5, md:3, lg:7}, span: 1 }) {
         Row() {
           Text('1')
         }.width('100%').height('50vp')
       }.backgroundColor(Color.Red)
-      GridCol({ order: { xs:2, sm:2, md:6, lg:1} }) {
+      GridCol({ order: { xs:2, sm:2, md:6, lg:1}, span:1 }) {
         Row() {
           Text('2')
         }.width('100%').height('50vp')
       }.backgroundColor(Color.Orange)
-      GridCol({ order: { xs:3, sm:3, md:1, lg:6} }) {
+      GridCol({ order: { xs:3, sm:3, md:1, lg:6}, span:1 }) {
         Row() {
           Text('3')
         }.width('100%').height('50vp')
       }.backgroundColor(Color.Yellow)
-      GridCol({ order: { xs:4, sm:4, md:2, lg:5} }) {
+      GridCol({ order: { xs:4, sm:4, md:2, lg:5}, span:1 }) {
         Row() {
           Text('4')
         }.width('100%').height('50vp')
       }.backgroundColor(Color.Green)
-    } 
+    }
     ```
 
     ![en-us_image_0000001511900444](figures/en-us_image_0000001511900444.gif)
@@ -464,10 +538,10 @@ In the following example, the responsive grid divides the entire space into 12 p
 @Component
 struct GridRowExample {
   build() {
-    GridRow() {
-      GridCol({ span: { sm: 12 } }) {
-        GridRow() {
-          GridCol({ span: { sm: 2 } }) {
+    GridRow({ columns: 12 }) {
+      GridCol({ span: 12 }) {
+        GridRow({ columns: 12 }) {
+          GridCol({ span: 2 }) {
             Row() {
               Text('left').fontSize(24)
             }
@@ -475,7 +549,7 @@ struct GridRowExample {
             .height('90%')
           }.backgroundColor('#ff41dbaa')
 
-          GridCol({ span: { sm: 10 } }) {
+          GridCol({ span: 10 }) {
             Row() {
               Text('right').fontSize(24)
             }
@@ -486,7 +560,7 @@ struct GridRowExample {
         .backgroundColor('#19000000')
       }
 
-      GridCol({ span: { sm: 12 } }) {
+      GridCol({ span: 12 }) {
         Row() {
           Text('footer').width('100%').textAlign(TextAlign.Center)
         }.width('100%').height('10%').backgroundColor(Color.Pink)

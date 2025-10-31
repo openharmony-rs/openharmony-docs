@@ -1,4 +1,10 @@
 # @ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management) (System API)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 The **abilityConnectionManager** module provides APIs for cross-device connection management. After successful networking between devices (login with the same account and enabling of Bluetooth on the devices), a system application and third-party application can start a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) of the same application across the devices. After a connection is successfully established, data can be transmitted across the devices, including strings, [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) byte streams, images, and transport streams.
 
@@ -30,7 +36,7 @@ Registers a listener for the **collaborateEvent** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **collaborateEvent**. This event is triggered when `collaborateEvent()` is called.  |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#CollaborateEventInfo)&gt; | Yes   | Registered callback.   |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | Yes   | Registered callback.   |
 
 **Error codes**
 
@@ -107,7 +113,7 @@ Unregisters the listener for the **collaborateEvent** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **collaborateEvent**.   |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#CollaborateEventInfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
 
 **Error codes**
 
@@ -122,7 +128,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("collaborateEvent", sessionId);
@@ -159,7 +164,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("receiveImage", sessionId);
@@ -180,7 +184,7 @@ Sends images from one device to another after a connection is successfully estab
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
 | sessionId | number | Yes   | Collaboration session ID.|
-| image | [image.PixelMap](../apis-image-kit/js-apis-image.md#pixelmap7) | Yes   | Image information.|
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image information.|
 | quality | number | No   | Image compression quality. The value ranges from 0 to 100. The default value is **30**.|
 
 **Return value**
@@ -550,10 +554,10 @@ Defines the collaboration event information.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Name      | Type  | Readable  | Writable  | Mandatory  | Description     |
-| -------- | ------ | ---- | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | Yes   | No   | Yes   | Collaboration event type.|
-| eventMsg | string | Yes   | No   | No   | Collaboration event message.|
+| Name      | Type  | Read-Only| Optional| Description     |
+| -------- | ------ | ---- | ---- | ------- |
+| eventType | [CollaborateEventType](#collaborateeventtype) | No   | No  | Collaboration event type.|
+| eventMsg | string | No   | Yes  | Collaboration event message.|
 
 ## StreamParam
 
@@ -561,12 +565,12 @@ Defines stream transmission configuration parameters.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Name      | Type   | Readable  | Writable  | Mandatory  | Description         |
-| -------- | ------ | ---- | ---- | ---- | ----------- |
-| name  | string   | Yes   | No   | Yes   |   Stream name. It must be the same on the TX end and RX end.|
-| role  | [StreamRole](#streamrole)     | Yes   | No   | Yes   |   Stream role, which can be TX stream or RX stream.|
-| bitrate  | number   | Yes   | No   | No   |   Video bit rate. It is valid only for the TX end. The default value is **80000**.|
-| colorSpaceConversionTarget  | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)     | Yes   | No   | No   |  Target color space.|
+| Name      | Type   | Read-Only| Optional| Description         |
+| -------- | ------ | ---- | ---- | ----------- |
+| name  | string   | No   | No|   Stream name. It must be the same on the TX end and RX end.|
+| role  | [StreamRole](#streamrole)     | No   | No  |   Stream role, which can be TX stream or RX stream.|
+| bitrate  | number   | No   | Yes  |   Video bit rate. It is valid only for the TX end. The default value is **80000**.|
+| colorSpaceConversionTarget  | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)     | No   | Yes  |  Target color space.|
 
 ## SurfaceParam
 
@@ -574,13 +578,13 @@ Defines the surface configuration.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Name      | Type  | Readable  | Writable  | Mandatory  | Description     |
-| -------- | ------ | ---- | ---- | ---- | ------- |
-| width | number | Yes   | No   | Yes   | Encoding width. Set this parameter prior to stream transmission. Once stream transmission starts, the setting cannot be updated until the stream transmission ends. If you need to update the setting, stop stream transmission first.|
-| height | number | Yes   | No   | Yes  | Encoding length. Set this parameter prior to stream transmission. Once stream transmission starts, the setting cannot be updated until the stream transmission ends. If you need to update the setting, stop stream transmission first.|
-| format | [VideoPixelFormat](#videopixelformat) | Yes   | No   | No   | Video pixel format (valid only at the TX end).|
-| rotation | number | Yes   | No   | No   | Rotation angle of the video. The value range is {0, 90, 180, 270}. The default value is **0**.|
-| flip | [FlipOptions](#flipoptions) | Yes   | No   | No   | Video flip option.|
+| Name      | Type  | Read-Only| Optional| Description     |
+| -------- | ------ | ---- | ---- | ------- |
+| width | number | No   | No  | Encoding width. Set this parameter prior to stream transmission. Once stream transmission starts, the setting cannot be updated until the stream transmission ends. If you need to update the setting, stop stream transmission first.|
+| height | number | No   | No | Encoding length. Set this parameter prior to stream transmission. Once stream transmission starts, the setting cannot be updated until the stream transmission ends. If you need to update the setting, stop stream transmission first.|
+| format | [VideoPixelFormat](#videopixelformat) | No   | Yes  | Video pixel format (valid only at the TX end).|
+| rotation | number | No   | Yes  | Rotation angle of the video. The value range is {0, 90, 180, 270}. The default value is **0**.|
+| flip | [FlipOptions](#flipoptions) | No   | Yes  | Video flip option.|
 
 ## CollaborateEventType
 
@@ -588,10 +592,10 @@ Enumerates collaboration event types.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| SEND_FAILURE   | Task sending failure.|
-| COLOR_SPACE_CONVERSION_FAILURE | Color space conversion failure.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| SEND_FAILURE | 0 |Task sending failure.|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |Color space conversion failure.|
 
 ## FlipOptions
 
@@ -599,10 +603,10 @@ Enumerates video flip options.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| HORIZONTAL   | Horizontal flip.|
-| VERTICAL | Vertical flip.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| HORIZONTAL | 0 | Horizontal flip.|
+| VERTICAL | 1 | Vertical flip.|
 
 ## StreamRole
 
@@ -610,10 +614,10 @@ Enumerates stream transmission modes.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| SOURCE  | TX stream.|
-| SINK  | RX stream.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| SOURCE  | 0 | TX stream.|
+| SINK  | 1 | RX stream.|
 
 ## VideoPixelFormat
 
@@ -621,11 +625,11 @@ Enumerates video pixel formats.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Value| Description|
-| -------- | -------- |
-| UNKNOWN   | Unknown pixel format.|
-| NV12  | NV12, YUV420 semi-planar format.|
-| NV21  | NV21, YUV420 semi-planar format.|
+| Name|  Value| Description|
+|-------|-------|-------|
+| UNKNOWN   | -1 | Unknown pixel format.|
+| NV12  | 0 | NV12, YUV420 semi-planar format.|
+| NV21  | 1 | NV21, YUV420 semi-planar format.|
 
 ## ConnectOptions
 
@@ -635,8 +639,8 @@ Defines the connection options for the application.
 
 | Name         | Type   | Read-Only  | Optional  | Description         |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendStream    | boolean  | No   | No   | Whether to send streams. The value **true** means to send streams, and the value **false** means the opposite.   |
-| needReceiveStream    | boolean  | No   | No   | Whether to receive streams. The value **true** means to receive streams, and the value **false** means the opposite.    |
+| needSendStream    | boolean  | No   | Yes   | Whether to send streams. The value **true** means to send streams, and the value **false** means the opposite.   |
+| needReceiveStream    | boolean  | No   | Yes   | Whether to receive streams. The value **true** means to receive streams, and the value **false** means the opposite.    |
 
 ## EventCallbackInfo
 
@@ -644,16 +648,16 @@ Defines the event callback information.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
-| Name      | Type   | Readable  | Writable  | Description         |
+| Name      | Type   | Read-Only | Optional | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| image  | image.PixelMap | Yes   | No   |   Received image.|
+| image  | image.PixelMap | No  | Yes  |   Received image.|
 
 ## StartOptionParams
 
 Enumerates application start options.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
- 
+
 | Name|  Value| Description|
 |-------|-------|-------|
 | START_IN_BACKGROUND | 1 |Start of the peer application in the background.|

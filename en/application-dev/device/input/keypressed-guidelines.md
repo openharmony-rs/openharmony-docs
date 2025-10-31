@@ -1,8 +1,15 @@
 # Key Press Event Listening Development
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## When to Use
 
-Key press event listening allows an application to listen for physical key press events when running in the foreground. Currently, this function applies only to the volume up and volume down keys. It enables applications to subscribe to key press events and override default system responses to those events, such as volume adjustments.
+Since API version 16, key press event listening allows an application to listen for physical key press events when running in the foreground. Currently, this function applies only to the volume up and volume down keys. It enables applications to subscribe to key press events and override default system responses to those events, such as volume adjustments.
 
 You can enhance user experience by leveraging volume key listeners to implement context-specific actions, such as binding page-turning functionality in reading apps or triggering the camera shutter in photography apps. Currently, this function is available only for mobile phones and tablets.
 

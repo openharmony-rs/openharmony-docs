@@ -1,4 +1,10 @@
 # QRCode
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **QRCode** component is used to display a QR code.
 
@@ -16,7 +22,7 @@ Not supported
 
 ## APIs
 
-QRCode(value: string)
+QRCode(value: ResourceStr)
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -28,7 +34,7 @@ QRCode(value: string)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | string | Yes| Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>**NOTE**<br>The value must be valid. It cannot be **null**, **undefined**, or empty content, as otherwise the QR code generated will be invalid.|
+| value | [ResourceStr](ts-types.md#resourcestr) | Yes| Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>The Resource type is supported since API version 20.<br>**NOTE**<br>The value must be valid and cannot be **null**, **undefined**, or empty. If any of these invalid values are provided, the generated QR code will be invalid.|
 
 ## Attributes
 
@@ -91,17 +97,18 @@ Sets the opacity of the QR code content. The minimum value is 0, and the maximum
 
 Among the universal events, the [click event](ts-universal-events-click.md), [touch event](ts-universal-events-touch.md), and [show/hide event](ts-universal-events-show-hide.md) are supported.
 
-
 ## Example
 
-This example demonstrates the basic usage of the **QRCode** component. It shows how to set the QR code color using the **color** attribute, the background color using the **backgroundColor** attribute, and the opacity using the **contentOpacity** attribute.
+### Example 1: Setting the Color, Background Color, and Opacity
+
+This example demonstrates the basic usage of the **QRCode** component. It sets the QR code color using the [color](#color) attribute, the background color using the [backgroundColor](#backgroundcolor) attribute, and the opacity using the [contentOpacity](#contentopacity11) attribute.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct QRCodeExample {
-  private value: string = 'hello world'
+  private value: string = 'hello world';
 
   build() {
     Column({ space: 5 }) {
@@ -125,3 +132,29 @@ struct QRCodeExample {
 ```
 
 ![qrcode](figures/qrcode.png)
+
+### Example 2: Setting the Background Color to Transparent
+
+This example shows how to set the QR code background color to transparent using the [backgroundColor](#backgroundcolor) attribute, allowing the QR code content to blend with the background.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct QRCodeExample {
+  private value: string = 'hello world';
+
+  build() {
+    Column({ space: 5 }) {
+      RelativeContainer() {
+        // Replace $r('app.media.ocean') with the image resource file you use.
+        Image($r('app.media.ocean'))
+        // Set the QR code background color to transparent.
+        QRCode(this.value).width(200).height(200).backgroundColor("#00ffffff")
+      }.width(200).height(200)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+![qrcode_transparent](figures/qrcode_transparent.png)

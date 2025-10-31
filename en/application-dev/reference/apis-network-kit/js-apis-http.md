@@ -1402,7 +1402,7 @@ Flushes data in the cache to the file system so that the cached data can be acce
 
 | Name  | Type                                   | Mandatory| Description      |
 | -------- | --------------------------------------- | ---- | ---------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.  If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 

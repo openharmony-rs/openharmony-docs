@@ -1,12 +1,17 @@
 # @ohos.bluetooth.hfp (Bluetooth HFP Module)
 
-The **hfp** module provides APIs for using the Bluetooth Hands-Free Profile (HFP).
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
+The **hfp** module provides the Bluetooth call audio capability based on the [Hands-Free Profile (HFP)](../../connectivity/terminology.md#hfp)), such as obtaining the call audio connection status.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-
 
 ## Modules to Import
 
@@ -14,25 +19,23 @@ The **hfp** module provides APIs for using the Bluetooth Hands-Free Profile (HFP
 import { hfp } from '@kit.ConnectivityKit';
 ```
 
-
 ## BaseProfile
 
 type BaseProfile = baseProfile.BaseProfile
 
-**BaseProfile** API definition.
+**BaseProfile** class, which provides public capabilities such as obtaining the connection status and listening for connection status changes.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md)| **BaseProfile** API definition.|
-
+| [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md#baseprofile) | **BaseProfile** API definition.|
 
 ## hfp.createHfpAgProfile
 
 createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
-Creates an **HfpAgProfile** instance.
+Creates an [HFP AG](../../connectivity/terminology.md#hfp-ag) instance. Through this instance, you can use the local device as the HFP AG and implement functions such as obtaining the Bluetooth call audio connection status.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -40,7 +43,7 @@ Creates an **HfpAgProfile** instance.
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile) | **HfpAgProfile** instance created.|
+| [HandsFreeAudioGatewayProfile](#handsfreeaudiogatewayprofile) | HFP AG instance.|
 
 **Error codes**
 
@@ -54,7 +57,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let hfpAgProfile = hfp.createHfpAgProfile();
     console.info('hfpAg success');
@@ -63,7 +67,9 @@ try {
 }
 ```
 
-
 ## HandsFreeAudioGatewayProfile
 
-Before using any API of **HandsFreeAudioGatewayProfile**, you need to create an instance of this class by using [createHfpAgProfile()](#hfpcreatehfpagprofile).
+Represents the [HFP AG](../../connectivity/terminology.md#hfp-ag) role in Bluetooth call audio.
+- The **HandsFreeAudioGatewayProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
+- Before using the APIs of this class, you need to construct an HFP AG instance by calling [createHfpAgProfile](#hfpcreatehfpagprofile).
+- The counterpart of the HFP AG role is the [HF](../../connectivity/terminology.md#hf) role.

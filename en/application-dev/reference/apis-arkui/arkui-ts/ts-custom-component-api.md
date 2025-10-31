@@ -1,4 +1,10 @@
 # Custom Component Built-in APIs
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 Custom component built-in APIs are APIs predefined on the base class of custom components in the ArkUI framework. You can call these APIs on the instance of a custom component to obtain information, such as the UI context, about the instance.
 
@@ -18,6 +24,18 @@ Obtains the **UIContext** instance.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
+
+| Type                                                     | Description                   |
+| --------------------------------------------------------- | ----------------------- |
+| [UIContext](#uicontext) | **UIContext** instance obtained. If this API is used in an asynchronously called callback method, or if the initial call of this API does not occur in the current page, the API call may occur after the custom component is destroyed, returning **undefined**.|
+
+## UIContext
+
+type UIContext = UIContext
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Type                                                     | Description                   |
 | --------------------------------------------------------- | ----------------------- |
@@ -87,7 +105,7 @@ Queries the **NavDestination** information of this custom component. This API ha
 
 | Type                                                                      | Description     |
 | -------------------------------------------------------------------------- | --------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
+| [NavDestinationInfo](#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
 
 **Example**
 
@@ -110,7 +128,7 @@ struct MyComponent {
   aboutToAppear() {
     // this refers to the custom node MyComponent and searches for the nearest parent node of the NavDestination type from this node upwards.
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.log('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
+    console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {
@@ -118,6 +136,7 @@ struct MyComponent {
   }
 }
 ```
+
 
 ## queryNavDestinationInfo<sup>18+</sup>
 
@@ -139,7 +158,7 @@ Queries the information about the nearest **NavDestination** component in the na
 
 | Type                                                                      | Description     |
 | -------------------------------------------------------------------------- | --------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
+| [NavDestinationInfo](#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
 
 **Example**
 
@@ -245,6 +264,21 @@ struct MyComponent {
 }
 ```
 
+## NavDestinationInfo
+
+type NavDestinationInfo = NavDestinationInfo
+
+Defines a **NavDestinationInfo** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type    | Description      |
+| ------ | ---------- |
+| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | **NavDestinationInfo** instance obtained.|
+
+
 ## queryNavigationInfo<sup>12+</sup>
 
 queryNavigationInfo(): NavigationInfo | undefined
@@ -259,7 +293,7 @@ Queries the **Navigation** information of this custom component.
 
 | Type                                                                      | Description     |
 | -------------------------------------------------------------------------- | --------- |
-| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) \| undefined | **NavigationInfo** instance obtained.|
+| [NavigationInfo](#navigationinfo12) \| undefined | **NavigationInfo** instance obtained.|
 
 **Example**
 
@@ -287,7 +321,7 @@ export struct PageOne {
   aboutToAppear() {
     // this refers to the custom node PageOne and searches for the nearest parent node of the Navigation type from this node upwards.
     let navigationInfo: uiObserver.NavigationInfo | undefined = this.queryNavigationInfo();
-    console.log('get navigationInfo: ' + JSON.stringify(navigationInfo));
+    console.info('get navigationInfo: ' + JSON.stringify(navigationInfo));
     if (navigationInfo !== undefined) {
       this.pathStack = navigationInfo.pathStack;
     }
@@ -300,6 +334,20 @@ export struct PageOne {
   }
 }
 ```
+
+## NavigationInfo<sup>12+</sup>
+
+type NavigationInfo = NavigationInfo
+
+Defines a **NavigationInfo** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type    | Description      |
+| ------ | ---------- |
+| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | **NavigationInfo** instance obtained.|
 
 ## queryRouterPageInfo<sup>12+</sup>
 
@@ -315,7 +363,7 @@ Obtains a **RouterPageInfo** instance.
 
 | Type                                                        | Description                        |
 | ------------------------------------------------------------ | ---------------------------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) \| undefined | **RouterPageInfo** instance obtained.|
+| [RouterPageInfo](#routerpageinfo12) \| undefined | **RouterPageInfo** instance obtained.|
 
 **Example**
 
@@ -334,6 +382,20 @@ struct MyComponent {
   }
 }
 ```
+
+## RouterPageInfo<sup>12+</sup>
+
+type RouterPageInfo = RouterPageInfo
+
+Defines a **RouterPageInfo** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type    | Description      |
+| ------ | ---------- |
+| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | **RouterPageInfo** instance obtained.|
 
 ## getDialogController<sup>18+</sup>
 
