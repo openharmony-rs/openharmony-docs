@@ -425,6 +425,18 @@
 根据手势类型进行禁用：
 
    <!-- @[disable_gesturetype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   
+   ``` TypeScript
+   .onTouchTestDone((event, recognizers) => {
+     for (let i = 0; i < recognizers.length; i++) {
+       let recognizer = recognizers[i];
+       // 根据类型禁用所有滑动手势
+       if (recognizer.getType() == GestureControl.GestureType.PAN_GESTURE) {
+         recognizer.preventBegin();
+       };
+     };
+   })
+   ```
 
 根据手势所归属的组件禁用：
 
