@@ -908,7 +908,7 @@ ShadowOptions对象中不支持fill字段。
 | objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  是  |  是  | 获取属性字符串的图片缩放类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -2315,7 +2315,7 @@ struct styled_string_set_urlstyle_demo {
 ![](figures/styledString_9.gif)
 
 
-### 示例9 (给图片设置colorFilter)
+### 示例9 （给图片设置colorFilter）
 
 从API version 15开始，该示例通过给[ImageAttachment](#imageattachmentinterface对象说明)设置colorFilter实现了给图像设置颜色滤镜效果。
 
@@ -2892,3 +2892,69 @@ struct leadingMarginSpanDemo {
 }
 ```
 ![](figures/styledString_15.gif)
+
+### 示例16（使用supportSvg2属性时，SVG图片的显示效果）
+从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct styled_string_process_demo {
+  controller: TextController = new TextController();
+  controller1: TextController = new TextController();
+  imageAttachment: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: true,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  imageAttachment1: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: false,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  scroller: Scroller = new Scroller();
+  mutableStr: MutableStyledString = new MutableStyledString('');
+  mutableStr1: MutableStyledString = new MutableStyledString('');
+  aboutToAppear() {
+    this.mutableStr = new MutableStyledString(this.imageAttachment);
+    this.controller.setStyledString(this.mutableStr);
+    this.mutableStr1 = new MutableStyledString(this.imageAttachment1);
+    this.controller1.setStyledString(this.mutableStr1);
+  }
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          Text('属性字符串不支持svg2')
+          Text(undefined, { controller: this.controller1 })
+            .draggable(true)
+            .fontSize(30)
+          Text('属性字符串支持svg2')
+          Text(undefined, { controller: this.controller })
+            .draggable(true)
+            .fontSize(30)
+        }.width('100%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)
