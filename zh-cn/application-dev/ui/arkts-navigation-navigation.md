@@ -1016,6 +1016,22 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 4. 通过pushPathByName等路由接口进行页面跳转。(注意：此时Navigation中可以不用配置navDestination属性。)
 
    <!-- @[SystemRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOne.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct SystemRoutingTable {
+     pageStack : NavPathStack = new NavPathStack();
+   
+     build() {
+       Navigation(this.pageStack){
+       }.onAppear(() => {
+         this.pageStack.pushPathByName('PageOne', null, false);
+       })
+       .hideNavBar(true)
+     }
+   }
+   ```
 
 ### 自定义路由表
 
