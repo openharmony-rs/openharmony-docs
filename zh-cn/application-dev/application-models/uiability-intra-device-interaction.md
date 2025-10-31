@@ -37,7 +37,7 @@
     // [Start FuncAbility_Cold]
     // [Start FuncAbility_Hot]
     // [Start FuncAbility_Window]
-    import { AbilityConstant, bundleManager, common, StartOptions, Want } from '@kit.AbilityKit';
+    import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -181,7 +181,7 @@
     // [Start FuncAbility_Cold]
     // [Start FuncAbility_Hot]
     // [Start FuncAbility_Window]
-    import { AbilityConstant, bundleManager, common, StartOptions, Want } from '@kit.AbilityKit';
+    import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -322,7 +322,7 @@
     // [Start FuncAbility_Cold]
     // [Start FuncAbility_Hot]
     // [Start FuncAbility_Window]
-    import { AbilityConstant, bundleManager, common, StartOptions, Want } from '@kit.AbilityKit';
+    import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -422,7 +422,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 ``` TypeScript
 // [Start FuncAbility_Hot]
 // [Start FuncAbility_Window]
-import { AbilityConstant, bundleManager, common, StartOptions, Want } from '@kit.AbilityKit';
+import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -714,7 +714,7 @@ export default class EntryAbility extends UIAbility {
 
     5. 在[module.json5配置文件](../quick-start/module-configuration-file.md#routermap标签)中配置routerMap路由映射。
 
-        <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
+        <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->  
 
 > **说明：**
 >
@@ -749,7 +749,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[FuncAbility_Window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
-import { AbilityConstant, bundleManager, common, StartOptions, Want } from '@kit.AbilityKit';
+import { AbilityConstant, common, StartOptions, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -904,7 +904,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 2. 导入UIAbility模块。
 
-   <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 3. 定义约定的序列化数据。
    调用端及被调用端发送接收的数据格式需协商一致，如下示例约定数据由number和string组成。
@@ -1046,7 +1046,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
 
 1. 导入[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)模块。
 
-    <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 2. 获取[Caller](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)通信接口。
 
