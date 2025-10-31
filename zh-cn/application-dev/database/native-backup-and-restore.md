@@ -28,50 +28,16 @@
 
 <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-#include "database/rdb/relational_store.h"
-```
 
 3. 调用OH_Rdb_Backup接口实现数据库备份。
 
 <!-- @[BackupRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
-OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-OH_Rdb_SetStoreName(config, "RdbTest.db");
-OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
-OH_Rdb_SetBundleName(config, "com.example.nativedemo");
-    
-int errCode = 0;
-OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
-    
-// 备份数据库
-int result =
-  OH_Rdb_Backup(store, "/data/storage/el2/database/RdbTest_bak.db");
-OH_Rdb_CloseStore(store);
-```
 
 4. 调用OH_Rdb_Restore接口实现数据库恢复。
 
 <!-- @[rdb_OH_Rdb_Restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-OH_Rdb_ConfigV2 *config2 = OH_Rdb_CreateConfig();
-OH_Rdb_SetDatabaseDir(config2, "/data/storage/el2/database");
-OH_Rdb_SetArea(config2, RDB_SECURITY_AREA_EL2);
-OH_Rdb_SetStoreName(config2, "RdbRestoreTest.db");
-OH_Rdb_SetSecurityLevel(config2, OH_Rdb_SecurityLevel::S3);
-OH_Rdb_SetBundleName(config2, "com.example.nativedemo");
-int errCode2 = 0;
-OH_Rdb_Store *store2 = OH_Rdb_CreateOrOpen(config2, &errCode2);
-    
-// 恢复数据库
-int result2 =
-  OH_Rdb_Restore(store2, "/data/storage/el2/database/RdbTest_bak.db");
-OH_Rdb_CloseStore(store2);
-```
 
 5. 调用OH_Rdb_RegisterCorruptedHandler接口注册数据库异常处理。
 
