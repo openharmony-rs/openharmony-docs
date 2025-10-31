@@ -127,6 +127,29 @@ Column() {
 hitTestBehavior属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
 <!-- @[hittestbehavior_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
+    .onTouch(() => {})
+    .gesture(TapGesture({count: 1}))
+
+  Column() {
+    Column()
+      .id('ComponentD')
+      .onTouch(() => {})
+      .gesture(TapGesture({count: 1}))
+  }
+  .id('ComponentC')
+  .onTouch(() => {})
+  .gesture(TapGesture({count: 1}))
+  .hitTestBehavior(HitTestMode.Block)
+}
+.id('ComponentA')
+.onTouch(() => {})
+.gesture(TapGesture({count: 1}))
+```
 HitTestMode.Block自身会响应触摸测试，阻塞子节点和兄弟节点的触摸测试，从而导致子节点和兄弟节点的onTouch事件和手势均无法触发。
     
 当组件C未设置hitTestBehavior时，点击组件D区域，组件A、组件C和组件D的onTouch事件会触发，组件D的点击手势会触发。
