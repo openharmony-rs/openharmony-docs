@@ -5909,7 +5909,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : Promise<void> {
   try {
     console.info('getSelectedAssetsDemo');
     let predicatesHomePage: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -5936,13 +5936,22 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       fetchColumns: [],
       predicates: predicates
     };
-
     let fetchResult = await album.getSelectedAssets(fetchOption);
-    if (!fetchResult || fetchResult.getCount() <= 0) {
-      console.error('no assets found in album');
+    let photoAsset = await fetchResult.getFirstObject();
+    if (!fetchResult||fetchResult.getCount() <= 0) {
+      console.error('get selected assets in album with empty dataList');
       return;
     }
-    let photoAssetList = await fetchResult.getAllObjects();
+
+    let uriParts = photoAsset.uri.split('/');
+    let fileId = uriParts[uriParts.length - 3];
+    let filter = `{"currentFileId":"${fileId}"}`;
+    let fetchResult1 = await album.getSelectedAssets(fetchOption, filter);
+    if (!fetchResult1||fetchResult1.getCount() <= 0) {
+      console.error('get selected assets in album with empty dataList');
+      return;
+    }
+    let photoAssetList = fetchResult.getAllObjects();
     console.info('get selected assets in album sucess');
   } catch (err) {
     console.error(`get selected assets in album fail, error: ${err?.code}, ${err?.message}`);
