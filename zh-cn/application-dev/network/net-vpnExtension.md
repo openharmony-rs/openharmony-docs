@@ -133,6 +133,7 @@ struct StartVpn {
 您可参考如下示例：
 
 <!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
+
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
@@ -265,7 +266,6 @@ export class VpnTest extends VpnExtensionAbility {
     // ···
   }
 };
-
 ```
 
 ## 服务生命周期
@@ -294,6 +294,7 @@ export class VpnTest extends VpnExtensionAbility {
 **示例：**
 
 <!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
+
 ``` TypeScript
 import { vpnExtension } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
@@ -346,10 +347,15 @@ let vpnConfig: vpnExtension.VpnConfig = {
 ``` TypeScript
 let context = getContext(this) as common.VpnExtensionContext;
 let vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
-// 创建 VPN 连接并应用配置
-vpnConnection.create(vpnConfig).then((data) => {
-  hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
-})
+
+// ···
+    // 创建 VPN 连接并应用配置
+    vpnConnection.create(vpnConfig).then((data) => {
+      hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
+    // ···
+    })
+    // ···
+  }
 ```
 
 ## VPN Demo示例

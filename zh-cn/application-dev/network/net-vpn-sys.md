@@ -125,6 +125,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
   SetupVpn() {
     hilog.info(0x0000, 'testTag', 'step3');
     hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn SetupVpn');
+
     class Address {
       public address: string;
       public family: number;
