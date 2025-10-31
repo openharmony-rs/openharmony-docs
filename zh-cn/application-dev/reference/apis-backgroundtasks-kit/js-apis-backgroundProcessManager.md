@@ -242,7 +242,7 @@ getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-
+// 请开发者替换为实际的进程号
 let pid = 33333;
 try {
     backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
