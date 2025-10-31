@@ -300,6 +300,16 @@ Column() {
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
 
 <!-- @[bindingthirdly_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
+
+``` TypeScript
+Column() {
+  Column()
+    .id('ComponentB')
+    .gesture(TapGesture({count: 1}))
+}
+.id('ComponentA')
+.parallelGesture(TapGesture({count: 1}))
+```
 当父组件以.parallelGesture的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
