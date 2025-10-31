@@ -281,6 +281,19 @@ Navigation组件通过mode属性设置页面的显示模式。
 图片也可以引用resources中的资源。
 
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
+   
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'resources/base/media/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ···
+         Navigation(this.pageInfos) {
+           // ···
+         }
+         .menus([toolTmp, toolTmp, toolTmp])
+   ```
 
 **图6** 设置了4个图标的菜单栏  
 
