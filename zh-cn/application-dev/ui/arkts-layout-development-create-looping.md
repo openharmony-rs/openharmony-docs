@@ -743,6 +743,98 @@ maintainVisibleContentPosition为true时，显示区域上方或前方插入或�
 
 <!-- @[visible_content_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperVisibleContentPosition.ets) -->
 
+``` TypeScript
+// xxx.ets
+class MyDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private dataArray: string[] = ['0', '1', '2', '3', '4', '5', '6'];
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string | undefined {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  public deleteData(index: number): void {
+    this.dataArray.splice(index, 1);
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      hilog.info(DOMAIN, 'testTag', 'add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      hilog.info(DOMAIN, 'testTag', 'remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+}
+
+@Entry
+@Component
+export struct SwiperVisibleContentPosition {
+  private data: MyDataSource = new MyDataSource();
+  @State index: number = 3;
+
+  build() {
+    // ···
+      Column({ space: 12 }) {
+        // ···
+            Swiper() {
+              LazyForEach(this.data, (item: string) => {
+                Text(item.toString())
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              })
+            }
+            .onChange((index) => {
+              this.index = index;
+            })
+            .index(3)
+            .maintainVisibleContentPosition(true)
+            // ···
+
+            Column({ space: 12 }) {
+              Text('index:' + this.index).fontSize(20)
+              Row() {
+                // 在LazyForEach索引为0的位置添加数据
+                Button('header data add').height(30).onClick(() => {
+                  this.data.addData(0, 'header Data');
+                })
+                // 删除LazyForEach索引为0的位置数据
+                Button('header data delete').height(30).onClick(() => {
+                  this.data.deleteData(0);
+                })
+              }
+            }.margin(5)
+            // ···
+      }.width('100%')
+      .margin({ top: 5 })
+    // ···
+  }
+}
+```
+
 ![controll](figures/maintainVisibleContentPosition_true.gif)
 
 ## 相关实例
