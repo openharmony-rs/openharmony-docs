@@ -495,7 +495,7 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-向目标表中插入一组数据，使用Promise异步回调。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -589,7 +589,7 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-向目标表中插入一组数据。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
