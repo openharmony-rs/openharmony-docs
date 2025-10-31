@@ -87,7 +87,7 @@ try {
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加网络配置，使用Promise异步回调。
+添加网络配置。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -215,7 +215,7 @@ IPv6配置信息。
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加网络配置，使用callback异步回调。
+添加网络配置。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -555,7 +555,7 @@ try {
 
 ## wifi.getDeviceConfigs<sup>7+</sup>
 
-getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
+getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取网络配置。
 
@@ -949,7 +949,7 @@ try {
 
 ## wifi.getStations<sup>7+</sup>
 
-getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
+getStations(): &nbsp;Array&lt;StationInfo&gt;
 
 获取连接的设备。
 
