@@ -234,6 +234,44 @@
 3. 设置监听手势，监听Scroll组件状态，动态调整手势开闭状态，控制手势回调是否触发，从而控制Scroll是否滚动。
 
    <!-- @[listening_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .parallelGesture( // 绑定一个Pan手势作为动态控制器
+     PanGesture()
+       .onActionUpdate((event: GestureEvent)=>{
+         if (this.childRecognizer.getState() != GestureRecognizerState.SUCCESSFUL ||
+           this.currentRecognizer.getState() != GestureRecognizerState.SUCCESSFUL) { // 如果识别器状态不是SUCCESSFUL，则不做控制
+           return;
+         };
+         let target = this.childRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
+         let currentTarget = this.currentRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
+         if (target instanceof ScrollableTargetInfo && currentTarget instanceof ScrollableTargetInfo) {
+           this.childRecognizer.setEnabled(true);
+           this.currentRecognizer.setEnabled(false);
+           if (target.isEnd()) { // 在移动过程中实时根据当前组件状态，控制识别器的开闭状态
+             if ((event.offsetY - this.lastOffset) < 0) {
+               this.childRecognizer.setEnabled(false);
+               if (currentTarget.isEnd()) {
+                 this.currentRecognizer.setEnabled(false);
+               } else {
+                 this.currentRecognizer.setEnabled(true);
+               };
+             };
+           } else if (target.isBegin()) {
+             if ((event.offsetY - this.lastOffset) > 0) {
+               this.childRecognizer.setEnabled(false);
+               if (currentTarget.isBegin()) {
+                 this.currentRecognizer.setEnabled(false);
+               } else {
+                 this.currentRecognizer.setEnabled(true);
+               };
+             };
+           };
+         };
+         this.lastOffset = event.offsetY;
+       })
+   )
+   ```
 
 4. 代码完整示例。
 
