@@ -559,6 +559,46 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 
   <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct ImageRepetitionStyle {
+    build() {
+      Column({ space: 10 }) {
+        Row({ space: 5 }) {
+          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          Image($r('app.media.ic_public_favor_filled_1'))
+            .width(110)
+            .height(115)
+            .border({ width: 1 })
+            .objectRepeat(ImageRepeat.XY)
+            .objectFit(ImageFit.ScaleDown)
+            // 在水平轴和竖直轴上同时重复绘制图片
+            .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          Image($r('app.media.ic_public_favor_filled_1'))
+            .width(110)
+            .height(115)
+            .border({ width: 1 })
+            .objectRepeat(ImageRepeat.Y)
+            .objectFit(ImageFit.ScaleDown)
+            // 只在竖直轴上重复绘制图片
+            .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+          //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
+          Image($r('app.media.ic_public_favor_filled_1'))
+            .width(110)
+            .height(115)
+            .border({ width: 1 })
+            .objectRepeat(ImageRepeat.X)
+            .objectFit(ImageFit.ScaleDown)
+            // 只在水平轴上重复绘制图片
+            .overlay('ImageRepeat.X', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
+        }
+      }.height(150).width('100%').padding(8)
+    }
+  }
+  ```
 
 ![zh-cn_image_0000001593444112](figures/zh-cn_image_0000001593444112.png)
 
