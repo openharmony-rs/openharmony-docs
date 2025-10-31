@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -335,9 +335,18 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
     await resources.avRecorder!.start();
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`avRecorder stop error: ${err}`);
+    console.error(`avRecorder start error: ${err}`);
   }
 
+  // Stop video recording.
+  try {
+    await resources.avRecorder!.stop();
+    await resources.videoOutput!.stop();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`avRecorder stop error: ${err}`);
+  }
+  
   // Stop the session.
   await resources.videoSession.stop();
 

@@ -357,7 +357,7 @@ Obtains the supported frame rates.
 
 |      Type     |     Description    |
 | -------------  | ------------ |
-| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates.|
+| Array<[FrameRateRange](arkts-apis-camera-i.md#frameraterange)> | Array of supported frame rates. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -491,7 +491,7 @@ Checks whether mirror recording is supported.
 
 | Type           | Description                             |
 | -------------- |---------------------------------|
-| boolean | Check result for the support of mirror recording. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of mirror recording. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 

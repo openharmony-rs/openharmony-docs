@@ -289,7 +289,7 @@ try {
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number): Promise&lt;void&gt;
 
-Minimizes all windows on a display.
+Minimizes all windows on a display. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
