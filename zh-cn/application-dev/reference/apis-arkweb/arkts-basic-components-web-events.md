@@ -1860,14 +1860,17 @@ struct Index {
           console.info("extensions onpagebegin url " + event.url);
         })
         .onClientAuthenticationRequest((event) => {
+          // 收到客户端证书请求事件
           console.log(`onClientAuthenticationRequest`);
           try {
             let certTypes: Array<certMgrDialog.CertificateType> = [
               certMgrDialog.CertificateType.CREDENTIAL_UKEY
             ];
+            // 调用证书管理，打开证书选择框
             certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
               .then((data: certMgrDialog.CertIndex) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
+                // 通知web选择的为ukey证书
                 event.handler.confirm(data.index, CredentialType.CREDENTIAL_UKEY);
               }).catch((err: BusinessError) => {
               console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(err)}`);
@@ -1878,12 +1881,16 @@ struct Index {
           return true;
         })
         .onVerifyPin((event) => {
+          // 收到PIN码认证请求事件
           console.log(`onVerifyPin`);
+          // 调用证书管理，打开PIN码输入框
           certMgrDialog.openUkeyAuthDialog(this.context, {ukeyCertIndex: event.identity})
             .then(() => {
+              // 通知webPIN码认证成功
               console.log(`onVerifyPin success`);
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
+            // 通知webPIN码认证失败
             console.log(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
