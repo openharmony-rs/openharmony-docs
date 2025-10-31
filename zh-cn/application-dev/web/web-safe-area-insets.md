@@ -58,6 +58,25 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
 
 <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }
+  }
+}
+```
+
 ## 设置网页在可视窗口中的布局方式
 
 viewport-fit用于设置网页在可视窗口中的布局方式，是`<meta name="viewport">`标签的一个属性。设置方式如下：
