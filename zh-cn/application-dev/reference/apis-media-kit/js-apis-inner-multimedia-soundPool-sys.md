@@ -1,4 +1,3 @@
-
 # SoundPool (音频池)(系统接口)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
