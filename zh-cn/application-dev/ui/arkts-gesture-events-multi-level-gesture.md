@@ -319,3 +319,21 @@ OverlayManager事件机制，默认优先被WrappedBuilder内组件先接收，�
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 
 <!-- @[overlay_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/OverlayManager.ets) -->
+
+``` TypeScript
+@Builder
+function builderOverlay(params: Params) {
+  Component1().hitTestBehavior(HitTestMode.Transparent)
+}
+
+// ···
+
+  aboutToAppear(): void {
+    // ···
+    let componentContent = new ComponentContent(
+      this.context, wrapBuilder<[Params]>(builderOverlay),
+      new Params(uiContext, {x:0, y: 100})
+    );
+    this.overlayManager.addComponentContent(componentContent, 0);
+  }
+```
