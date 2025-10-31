@@ -45,7 +45,6 @@ import { createNWeb, defaultUrl } from '../pages/common';
 // ...
 ```
 
-<!-- -->
 
 ```ts
 // 提供动态挂载Web组件能力
