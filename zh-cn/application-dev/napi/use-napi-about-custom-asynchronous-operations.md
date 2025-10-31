@@ -113,6 +113,10 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
 index.d.ts
 <!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
+``` TypeScript
+export const asynchronousWork: (object: Object, obj: Object, fun: Function, num: number) => number | undefined;
+```
+
 
 
 ArkTS侧示例代码
