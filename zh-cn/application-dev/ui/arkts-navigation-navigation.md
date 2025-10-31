@@ -514,6 +514,11 @@ NavPathStack通过Move相关接口去实现移动路由栈中特定页面到栈�
    this.pageStack.moveToTop('pageTwo');
    ```
    <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 移动栈中索引为1的页面到栈顶
+   this.pageStack.moveIndexToTop(1);
+   ```
 
 ### 参数获取
 
