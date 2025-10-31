@@ -34,7 +34,7 @@
 | [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) | OH_VideoInfo | 视频信息。 |
 | [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md) | OH_RecorderInfo | 录制文件信息。 |
 | [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md) | OH_AVScreenCaptureConfig | 屏幕录制配置参数。 |
-| [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md) | OH_AVScreenCaptureCallback | OH_AVScreenCapture中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVScreenCapture实例中，并处理回调上报的信息，以保证OH_AVScreenCapture的正常运行。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)、[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。 |
+| [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md) | OH_AVScreenCaptureCallback | OH_AVScreenCapture中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVScreenCapture实例中，并处理回调上报的信息，以保证OH_AVScreenCapture的正常运行。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror)、[OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable)替代。 |
 | [OH_Rect](capi-avscreencapture-oh-rect.md) | OH_Rect | 定义录屏界面的宽高以及画面信息。 |
 | [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md) | OH_AudioBuffer | 定义了音频数据的大小、类型、时间戳等配置信息。 |
 | [OH_AVScreenCaptureHighlightConfig](capi-avscreencapture-oh-avscreencapturehighlightconfig.md) | OH_AVScreenCaptureHighlightConfig | 表示高亮边框的样式，包括高亮边框的模式、边框宽度和边框颜色。 |
@@ -67,9 +67,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t errorCode)](#oh_avscreencaptureonerror) | OH_AVScreenCaptureOnError | 当OH_AVScreenCapture实例运行出错时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)替代。 |
-| [typedef void (\*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *capture, bool isReady, OH_AudioCaptureSourceType type)](#oh_avscreencaptureonaudiobufferavailable) | OH_AVScreenCaptureOnAudioBufferAvailable | 当OH_AVScreenCapture实例操作期间音频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。 |
-| [typedef void (\*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *capture, bool isReady)](#oh_avscreencaptureonvideobufferavailable) | OH_AVScreenCaptureOnVideoBufferAvailable | 当OH_AVScreenCapture实例操作期间视频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。 |
+| [typedef void (\*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t errorCode)](#oh_avscreencaptureonerror) | OH_AVScreenCaptureOnError | 当OH_AVScreenCapture实例运行出错时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror)替代。 |
+| [typedef void (\*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *capture, bool isReady, OH_AudioCaptureSourceType type)](#oh_avscreencaptureonaudiobufferavailable) | OH_AVScreenCaptureOnAudioBufferAvailable | 当OH_AVScreenCapture实例操作期间音频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable)替代。 |
+| [typedef void (\*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *capture, bool isReady)](#oh_avscreencaptureonvideobufferavailable) | OH_AVScreenCaptureOnVideoBufferAvailable | 当OH_AVScreenCapture实例操作期间视频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable)替代。 |
 | [typedef void (\*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData)](#oh_avscreencapture_onstatechange) | OH_AVScreenCapture_OnStateChange | 当OH_AVScreenCapture实例操作期间发生状态变更时，将调用函数指针。 |
 | [typedef void (\*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)](#oh_avscreencapture_onerror) | OH_AVScreenCapture_OnError | 当OH_AVScreenCapture实例操作期间发生错误时，将调用函数指针。 |
 | [typedef void (\*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData)](#oh_avscreencapture_onbufferavailable) | OH_AVScreenCapture_OnBufferAvailable | 当OH_AVScreenCapture实例操作期间音频或视频缓存区可用时，将调用该函数指针。 |
@@ -377,7 +377,7 @@ typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t e
 
 **描述**
 
-当OH_AVScreenCapture实例运行出错时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnError](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onerror)替代。
+当OH_AVScreenCapture实例运行出错时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -398,7 +398,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 
 **描述**
 
-当OH_AVScreenCapture实例操作期间音频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。
+当OH_AVScreenCapture实例操作期间音频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -410,7 +410,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 | -- | -- |
 | (OH_AVScreenCapture *capture | 指向OH_AVScreenCapture实例的指针。 |
 |  bool isReady | 音频缓存区是否可用。 |
-| [ OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | 音频源类型。 |
+| [ OH_AudioCaptureSourceType](#oh_audiocapturesourcetype) type | 音频源类型。 |
 
 ### OH_AVScreenCaptureOnVideoBufferAvailable()
 
@@ -420,7 +420,7 @@ typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *cap
 
 **描述**
 
-当OH_AVScreenCapture实例操作期间视频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onbufferavailable)替代。
+当OH_AVScreenCapture实例操作期间视频缓存区可用时，将调用函数指针。<br> 从API 12开始，推荐使用接口[OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -452,7 +452,7 @@ typedef void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capt
 | 参数项 | 描述 |
 | -- | -- |
 | (struct OH_AVScreenCapture *capture | 指向OH_AVScreenCapture实例的指针。 |
-| [ OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode) stateCode | 指定状态码。 |
+| [ OH_AVScreenCaptureStateCode](#oh_avscreencapturestatecode) stateCode | 指定状态码。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
 ### OH_AVScreenCapture_OnError()
@@ -497,7 +497,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 | -- | -- |
 | (OH_AVScreenCapture *capture | 指向OH_AVScreenCapture实例的指针。 |
 |  OH_AVBuffer *buffer | 指向OH_AVBuffer缓存区实例的指针，该回调方法执行结束返回后，数据缓存区不再有效。 |
-| [ OH_AVScreenCaptureBufferType](capi-native-avscreen-capture-base-h.md#oh_avscreencapturebuffertype) bufferType | 可用缓存区的数据类型。 |
+| [ OH_AVScreenCaptureBufferType](#oh_avscreencapturebuffertype) bufferType | 可用缓存区的数据类型。 |
 |  int64_t timestamp | 时间戳，单位纳秒。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
@@ -542,7 +542,7 @@ typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* c
 | 参数项 | 描述 |
 | -- | -- |
 | (OH_AVScreenCapture* capture | 指向OH_AVScreenCapture实例的指针。 |
-| [ OH_AVScreenCaptureContentChangedEvent](capi-native-avscreen-capture-base-h.md#oh_avscreencapturecontentchangedevent) event | 录屏内容变更事件。 |
+| [ OH_AVScreenCaptureContentChangedEvent](#oh_avscreencapturecontentchangedevent) event | 录屏内容变更事件。 |
 | [ OH_Rect](capi-avscreencapture-oh-rect.md)* area | 录屏内容可见时，对应位置信息。 |
 |  void *userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
