@@ -872,6 +872,20 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 1. 为需要实现共享元素转场的组件添加geometryTransition属性，id参数必须在两个NavDestination之间保持一致。
 
    <!-- @[GeometryTransitionFromPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+   
+   ``` TypeScript
+   // 起始页配置共享元素id
+   NavDestination() {
+     Column() {
+       // ···
+       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+       Image($r('app.media.startIcon'))
+         .geometryTransition('sharedId')
+         .width(100)
+         .height(100)
+     }
+   }.title('FromPage')
+   ```
 
    <!-- @[GeometryTransitionToPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
 
