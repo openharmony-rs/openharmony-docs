@@ -13,14 +13,14 @@ ArkCompiler是一种统一编程平台，包含编译器、工具链、运行时
 2. 安装repo工具。
     ```shell
     mkdir ~/bin/
-    curl https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > ~/bin/repo
+    curl https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > ~/bin/repo
     chmod a+x ~/bin/repo
     export PATH=~/bin:$PATH
     pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
     ```
 3. 下载源码。
     ```shell
-    repo init -u https://gitcode.com/ark-standalone-build/manifest.git -b master
+    repo init -u https://gitee.com/ark-standalone-build/manifest.git -b master
     repo sync -c -j8
     repo forall -c 'git lfs pull'
     ```
