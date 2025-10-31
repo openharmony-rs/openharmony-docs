@@ -574,6 +574,17 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 获取栈中所有页面name集合
+   this.pageStack.getAllPathName();
+   // 获取索引为1的页面参数
+   this.pageStack.getParamByIndex(1);
+   // 获取PageOne页面的参数
+   this.pageStack.getParamByName('PageOne');
+   // 获取PageOne页面的索引集合
+   this.pageStack.getIndexByName('pageOne');
+   ```
 
 ### 路由拦截
 
