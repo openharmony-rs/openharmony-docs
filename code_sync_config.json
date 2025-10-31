@@ -7812,5 +7812,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-inspector-overview.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"uiContextTree_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"uiContextInspector_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"componentIdentifier_start",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
