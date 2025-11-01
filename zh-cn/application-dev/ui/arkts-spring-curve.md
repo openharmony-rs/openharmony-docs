@@ -58,6 +58,101 @@ ArkUI提供了四种阻尼弹簧曲线接口。
 
 <!-- @[spring_curve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/springCurve/template1/SpringCurve.ets) -->
 
+``` TypeScript
+import { curves } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+
+class Spring {
+  public title: string;
+  public subTitle: string;
+  public iCurve: ICurve;
+
+  constructor(title: string, subTitle: string, iCurve: ICurve) {
+    this.title = title;
+    this.iCurve = iCurve;
+    this.subTitle = subTitle;
+  }
+}
+
+// 弹簧组件
+@Component
+struct Motion {
+  @Prop dRotate: number = 0;
+  private title: string = '';
+  private subTitle: string = '';
+  private iCurve: ICurve | undefined = undefined;
+
+  build() {
+    Column() {
+      Circle()
+        .translate({ y: this.dRotate })
+        .animation({ curve: this.iCurve, iterations: -1 })
+        .foregroundColor('#317AF7')
+        .width(30)
+        .height(30)
+
+      Column() {
+        Text(this.title)
+          .fontColor(Color.Black)
+          .fontSize(10).height(30)
+        Text(this.subTitle)
+          .fontColor(0xcccccc)
+          .fontSize(10).width(50)
+      }
+      .borderWidth({ top: 1 })
+      .borderColor(0xf5f5f5)
+      .width(80)
+      .alignItems(HorizontalAlign.Center)
+      .height(100)
+
+    }
+    .height(110)
+    .margin({ bottom: 5 })
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+@Entry
+@Component
+export struct SpringCurve {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State dRotate: number = 0;
+  private springs: Spring[] = [
+    new Spring('springMotion', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
+      curves.springMotion(1, 0.25)),
+    new Spring('responsive' + '\n' + 'SpringMotion',
+      this.context.resourceManager.getStringByNameSync('springCurve_text2'),
+      curves.responsiveSpringMotion(1, 0.25)),
+    new Spring('interpolating' + '\n' + 'Spring',
+      this.context.resourceManager.getStringByNameSync('springCurve_text3'),
+      curves.interpolatingSpring(10, 1, 228, 30)),
+    new Spring('springCurve', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
+      curves.springCurve(10, 1, 228, 30))
+  ];
+
+  build() {
+    Row() {
+      ForEach(this.springs, (item: Spring) => {
+        Motion({
+          title: item.title,
+          subTitle: item.subTitle,
+          iCurve: item.iCurve,
+          dRotate: this.dRotate
+        })
+      })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(VerticalAlign.Bottom)
+    .width('100%')
+    .height(437)
+    .margin({ top: 20 })
+    .onClick(() => {
+      this.dRotate = -50;
+    })
+  }
+}
+```
+
 
 
 ![zh-cn_image_0000001649089041](figures/spring_curve.gif)
