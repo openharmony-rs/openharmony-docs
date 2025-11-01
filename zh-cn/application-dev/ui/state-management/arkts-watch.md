@@ -332,6 +332,39 @@ struct ChildComponent {
 
 <!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct UsePropertyName {
+  @State @Watch('countUpdated') apple: number = 0;
+  @State @Watch('countUpdated') cabbage: number = 0;
+  @State fruit: number = 0;
+
+  // @Watch 回调
+  countUpdated(propName: string): void {
+    if (propName === 'apple') {
+      this.fruit = this.apple;
+    }
+  }
+
+  build() {
+    Column() {
+      Text(`Number of apples: ${this.apple.toString()}`).fontSize(30)
+      Text(`Number of cabbages: ${this.cabbage.toString()}`).fontSize(30)
+      Text(`Total number of fruits: ${this.fruit.toString()}`).fontSize(30)
+      Button('Add apples')
+        .onClick(() => {
+          this.apple++;
+        })
+      Button('Add cabbages')
+        .onClick(() => {
+          this.cabbage++;
+        })
+    }
+  }
+}
+```
+
 处理步骤如下：
 
 1. 点击Button('Add apples')时，apple的值发生变化。
