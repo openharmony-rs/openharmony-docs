@@ -277,6 +277,42 @@ struct Page1 {
 ```
 
 <!-- @[Internal_@Trace_setOrCreate_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page2.ets) -->
+
+``` TypeScript
+// Page2.ets
+import { storage } from './Page1'
+
+@Builder
+export function Page2Builder() {
+  Page2()
+}
+
+// Page2组件获得了父亲Page1组件的LocalStorage实例
+@Component
+struct Page2 {
+  @LocalStorageProp('count') count: number = 0;
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(`${this.count}`)
+          .fontSize(50)
+          .onClick(() => {
+            this.count++;
+          })
+        Button('change Storage Count')
+          .onClick(() => {
+            storage.setOrCreate('count', storage.get<number>('count') as number + 100);
+          })
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
 在V2中，可以借助\@Local和\@Monitor实现类似的效果。
 - \@Local装饰的`count`变量为组件本地的值，其改变不会同步回`storage`。
 - \@Monitor监听`storage.count`的变化，当`storage.count`改变时，在\@Monitor的回调里改变本地\@Local的值。
