@@ -100,6 +100,15 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
   通过给组件绑定长按手势可在用户长按组件时触发回调，可指定触发回调需要的手指个数、长按时间（单位毫秒）、是否连续触发。
 
     <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    // 获取手势Native接口集合
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // 创建长按手势
+    // DURATION_NUM_1000 = 1000
+    auto longPressGesture = gestureApi->createLongPressGesture(1, true, DURATION_NUM_1000);
+    ```
 
 
 - 捏合手势
