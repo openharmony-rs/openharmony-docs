@@ -1757,6 +1757,43 @@ V2：
 
 <!-- @[Internal_attribute_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV2.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  public isDark: boolean = false;
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    if (this.isDark) {
+      instance.backgroundColor(Color.Black);
+    } else {
+      instance.backgroundColor(Color.Red);
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct AttributeDemo {
+  // 使用makeObserved的能力观测attributeModifier的属性this.modifier
+  modifier: MyButtonModifier = UIUtils.makeObserved(new MyButtonModifier());
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .onClick(() => {
+            this.modifier.isDark = !this.modifier.isDark;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 **CommonModifier**
 
 动态设置组件的属性类。以[CommonModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
