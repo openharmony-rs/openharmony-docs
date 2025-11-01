@@ -140,6 +140,30 @@ canvas.detachPen();
 
 <!-- @[arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
+let endPt: common2D.Point = { x: VALUE_900, y: VALUE_900 };
+let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
+// 创建线性渐变着色器
+let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, colors, drawing.TileMode.CLAMP);
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置线性着色器
+brush.setShaderEffect(shaderEffect);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+let rect: common2D.Rect = {
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
+// 绘制矩形
+canvas.drawRect(rect);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![zh-cn_image_0000002158744106](figures/zh-cn_image_0000002158744106.png)
 
 
