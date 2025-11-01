@@ -865,6 +865,31 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * ThingViewModel.ets
 
   <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) -->
+  
+  ``` TypeScript
+  import ThingModel from '../model/ThingModel';
+  
+  @Observed
+  export default class ThingViewModel {
+    @Track public thingName: string = 'Todo';
+    @Track public isFinish: boolean = false;
+    public context: Context = AppStorage.get('context')!
+  
+    updateTask(thing: ThingModel) {
+      this.thingName = thing.thingName;
+      this.isFinish = thing.isFinish;
+    }
+  
+    updateIsFinish(): void {
+      this.isFinish = !this.isFinish;
+    }
+  
+    addSuffixes(): void {
+      // $r('app.string.la_la')需要替换为开发者所需的资源文件
+      this.thingName += this.context.resourceManager.getStringSync($r('app.string.la_la').id);
+    }
+  }
+  ```
 
   * TodoListViewModel.ets
 
