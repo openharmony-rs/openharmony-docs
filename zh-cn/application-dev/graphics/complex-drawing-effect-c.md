@@ -135,6 +135,37 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 <!-- @[ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 开始点
+OH_Drawing_Point *startPt = OH_Drawing_PointCreate(20, 20);
+// 结束点
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
+// 颜色数组
+uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
+// 相对位置数组
+float pos[] = {0.0f, 0.5f, 1.0f};
+// 创建线性渐变着色器效果
+OH_Drawing_ShaderEffect *colorShaderEffect =
+    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+// 创建画刷对象
+OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+// 基于画刷设置着色器效果
+OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
+// 在画布上设置画刷，请确保已获取得到画布对象
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // 绘制矩形
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 去除掉画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
+OH_Drawing_PointDestroy(startPt);
+OH_Drawing_PointDestroy(endPt);
+```
+
 此例绘制的具有线性渐变着色器效果的矩形如下所示：
 
 ![zh-cn_image_0000002194110873](figures/zh-cn_image_0000002194110873.png)
