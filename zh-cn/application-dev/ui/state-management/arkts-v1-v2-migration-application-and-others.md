@@ -417,6 +417,153 @@ struct Page2 {
 V1:
 
 <!-- @[Internal_Trace_customize_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/InternalTraceCustomizeV1.ets) -->
+
+``` TypeScript
+let localStorageA: LocalStorage = new LocalStorage();
+localStorageA.setOrCreate('propA', 'propA');
+
+let localStorageB: LocalStorage = new LocalStorage();
+localStorageB.setOrCreate('PropB', 'PropB');
+
+let localStorageC: LocalStorage = new LocalStorage();
+localStorageC.setOrCreate('PropC', 'PropC');
+
+@Entry
+@Component
+struct MyNavigationTestStack {
+  @Provide('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      // 传递不同的LocalStorage实例
+      PageOneStack({}, localStorageA)
+    } else if (name === 'pageTwo') {
+      PageTwoStack({}, localStorageB)
+    } else if (name === 'pageThree') {
+      PageThreeStack({}, localStorageC)
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+            })
+        }
+      }.title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+      .borderWidth(1)
+    }
+  }
+}
+
+@Component
+struct PageOneStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @LocalStorageLink('propA') propA: string = 'Hello World';
+
+  build() {
+    NavDestination() {
+      Column() {
+        // 显示'propA'
+        NavigationContentMsgStack()
+        // 显示'propA'
+        Text(`${this.propA}`)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageTwo', null);
+          })
+      }.width('100%').height('100%')
+    }.title('pageOne')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageTwoStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @LocalStorageLink('PropB') propB: string = 'Hello World';
+
+  build() {
+    NavDestination() {
+      Column() {
+        // 显示'Hello'，当前LocalStorage实例localStorageB没有propA对应的值，使用本地默认值'Hello'
+        NavigationContentMsgStack()
+        // 显示'PropB'
+        Text(`${this.propB}`)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageThree', null);
+          })
+
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct PageThreeStack {
+  @Consume('pageInfo') pageInfo: NavPathStack;
+  @LocalStorageLink('PropC') propC: string = 'pageThreeStack';
+
+  build() {
+    NavDestination() {
+      Column() {
+        // 显示'Hello'，当前LocalStorage实例localStorageC没有propA对应的值，使用本地默认值'Hello'
+        NavigationContentMsgStack()
+        // 显示'PropC'
+        Text(`${this.propC}`)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfo.pushPathByName('pageOne', null);
+          })
+
+      }.width('100%').height('100%')
+    }.title('pageThree')
+    .onBackPressed(() => {
+      this.pageInfo.pop();
+      return true;
+    })
+  }
+}
+
+@Component
+struct NavigationContentMsgStack {
+  @LocalStorageLink('propA') propA: string = 'Hello';
+
+  build() {
+    Column() {
+      Text(`${this.propA}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+```
 V2：
 
 声明\@ObservedV2装饰的class代替LocalStorage。其中LocalStorage的key可以用\@Trace装饰的属性代替。
