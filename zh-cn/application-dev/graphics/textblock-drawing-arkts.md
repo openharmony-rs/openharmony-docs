@@ -39,6 +39,17 @@ Canvas通过drawTextBlob()来绘制字块。函数接受三个参数：TextBlob�
 
 <!-- @[arkts_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 设置字体大小
+font.setSize(100);
+// 创建字块对象
+const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+// 绘制字块
+canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
+```
+
 ![Screenshot_20241225151030139](figures/Screenshot_20241225151030139.jpg)
 
 ## 文字描边
