@@ -288,6 +288,29 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 创建矩形对象
+let rect: common2D.Rect = {
+  left: VALUE_200,
+  top: VALUE_200,
+  right: VALUE_1000,
+  bottom: VALUE_700
+};
+console.info('rect:', rect.right);
+// 创建圆角矩形对象
+let rrect = new drawing.RoundRect(rect, 30, 30);
+// 绘制圆角矩形
+canvas.drawRoundRect(rrect);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![zh-cn_image_0000002158584406](figures/zh-cn_image_0000002158584406.png)
 
 <!--RP1-->
