@@ -725,7 +725,7 @@ writeByte(val: number): void
 
 readByte(): number
 
-从MessageSequence实例读取字节值。
+从MessageSequence实例中读取字节值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -806,7 +806,7 @@ writeShort(val: number): void
 
 readShort(): number
 
-从MessageSequence实例读取短整数值。
+从MessageSequence实例中读取短整数值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -887,7 +887,7 @@ writeInt(val: number): void
 
 readInt(): number
 
-从MessageSequence实例读取整数值。
+从MessageSequence实例中读取整数值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1130,7 +1130,7 @@ writeDouble(val: number): void
 
 readDouble(): number
 
-从MessageSequence实例读取双精度浮点值。
+从MessageSequence实例中读取双精度浮点值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1211,7 +1211,7 @@ writeBoolean(val: boolean): void
 
 readBoolean(): boolean
 
-从MessageSequence实例读取布尔值。
+从MessageSequence实例中读取布尔值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1373,7 +1373,7 @@ writeString(val: string): void
 
 readString(): string
 
-从MessageSequence实例读取字符串值。
+从MessageSequence实例中读取字符串值。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1578,7 +1578,7 @@ writeByteArray(byteArray: number[]): void
 
 readByteArray(dataIn: number[]): void
 
-从MessageSequence实例读取字节数组。
+从MessageSequence实例中读取字节数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1704,7 +1704,7 @@ writeShortArray(shortArray: number[]): void
 
 readShortArray(dataIn: number[]): void
 
-从MessageSequence实例中读取短整数数组。
+从MessageSequence实例中读取短整数数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1828,7 +1828,7 @@ writeIntArray(intArray: number[]): void
 
 readIntArray(dataIn: number[]): void
 
-从MessageSequence实例中读取整数数组。
+从MessageSequence实例中读取整数数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -1952,7 +1952,7 @@ writeLongArray(longArray: number[]): void
 
 readLongArray(dataIn: number[]): void
 
-从MessageSequence实例读取的长整数数组。
+从MessageSequence实例中读取的长整数数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2076,7 +2076,7 @@ writeFloatArray(floatArray: number[]): void
 
 readFloatArray(dataIn: number[]): void
 
-从MessageSequence实例中读取双精度浮点数组。
+从MessageSequence实例中读取双精度浮点数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2200,7 +2200,7 @@ writeDoubleArray(doubleArray: number[]): void
 
 readDoubleArray(dataIn: number[]): void
 
-从MessageSequence实例中读取双精度浮点数组。
+从MessageSequence实例中读取双精度浮点数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2243,7 +2243,7 @@ readDoubleArray(dataIn: number[]): void
 
 readDoubleArray(): number[]
 
-从MessageSequence实例读取所有双精度浮点数组。
+从MessageSequence实例中读取所有双精度浮点数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2324,7 +2324,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 readBooleanArray(dataIn: boolean[]): void
 
-从MessageSequence实例中读取布尔数组。
+从MessageSequence实例中读取布尔数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2448,7 +2448,7 @@ writeCharArray(charArray: number[]): void
 
 readCharArray(dataIn: number[]): void
 
-从MessageSequence实例中读取单个字符数组。
+从MessageSequence实例中读取单个字符数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2491,7 +2491,7 @@ readCharArray(dataIn: number[]): void
 
 readCharArray(): number[]
 
-从MessageSequence实例读取单个字符数组。
+从MessageSequence实例中读取单个字符数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2572,7 +2572,7 @@ writeStringArray(stringArray: string[]): void
 
 readStringArray(dataIn: string[]): void
 
-从MessageSequence实例读取字符串数组。
+从MessageSequence实例中读取字符串数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2615,7 +2615,7 @@ readStringArray(dataIn: string[]): void
 
 readStringArray(): string[]
 
-从MessageSequence实例读取字符串数组。
+从MessageSequence实例中读取字符串数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2861,7 +2861,7 @@ writeParcelableArray(parcelableArray: Parcelable[]): void
 
 readParcelableArray(parcelableArray: Parcelable[]): void
 
-从MessageSequence实例读取可序列化对象数组。
+从MessageSequence实例中读取可序列化对象数组。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -2978,7 +2978,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 readRemoteObjectArray(objects: IRemoteObject[]): void
 
-从MessageSequence读取IRemoteObject对象数组。
+从MessageSequence读取IRemoteObject对象数组，并将其写入到创建的空数组中。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3445,7 +3445,7 @@ writeRawData(rawData: number[], size: number): void
 
 > **说明：**
 >
-> 从API version 11 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
 >
 > 该接口是一次性接口，不允许在一次parcel通信中多次调用该接口。
 > 该接口在传输数据时，当数据量较大时（超过32KB），会使用共享内存传输数据，此时需注意selinux配置。
@@ -3546,7 +3546,7 @@ readRawData(size: number): number[]
 
 > **说明：**
 >
-> 从API version 11 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3755,13 +3755,17 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[MessageSequence](#messagesequence9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[MessageSequence](#messagesequence9)替代。
 
-### create
+### create<sup>(deprecated)</sup>
 
 static create(): MessageParcel
 
 静态方法，创建MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[create](#create9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3788,11 +3792,15 @@ static create(): MessageParcel
   }
   ```
 
-### reclaim
+### reclaim<sup>(deprecated)</sup>
 
 reclaim(): void
 
 释放不再使用的MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[reclaim](#reclaim9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3810,11 +3818,15 @@ reclaim(): void
   }
   ```
 
-### writeRemoteObject
+### writeRemoteObject<sup>(deprecated)</sup>
 
 writeRemoteObject(object: IRemoteObject): boolean
 
 序列化远程对象并将其写入MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeRemoteObject](#writeremoteobject9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3855,11 +3867,15 @@ writeRemoteObject(object: IRemoteObject): boolean
   }
   ```
 
-### readRemoteObject
+### readRemoteObject<sup>(deprecated)</sup>
 
 readRemoteObject(): IRemoteObject
 
 从MessageParcel读取远程对象。此方法用于反序列化MessageParcel对象以生成IRemoteObject。远程对象按写入MessageParcel的顺序读取。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readRemoteObject](#readremoteobject9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3896,11 +3912,15 @@ readRemoteObject(): IRemoteObject
   }
   ```
 
-### writeInterfaceToken
+### writeInterfaceToken<sup>(deprecated)</sup>
 
 writeInterfaceToken(token: string): boolean
 
 将接口描述符写入MessageParcel对象，远端对象可使用该信息校验本次通信。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeInterfaceToken](#writeinterfacetoken9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3931,11 +3951,15 @@ writeInterfaceToken(token: string): boolean
   }
   ```
 
-### readInterfaceToken
+### readInterfaceToken<sup>(deprecated)</sup>
 
 readInterfaceToken(): string
 
 从MessageParcel中读取接口描述符，接口描述符按写入MessageParcel的顺序读取，本地对象可使用该信息检验本次通信。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readInterfaceToken](#readinterfacetoken9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3961,11 +3985,15 @@ readInterfaceToken(): string
   }
   ```
 
-### getSize
+### getSize<sup>(deprecated)</sup>
 
 getSize(): number
 
 获取当前MessageParcel的数据大小。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getSize](#getsize9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -3991,11 +4019,15 @@ getSize(): number
   }
   ```
 
-### getCapacity
+### getCapacity<sup>(deprecated)</sup>
 
 getCapacity(): number
 
 获取当前MessageParcel的容量。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getCapacity](#getcapacity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4021,11 +4053,15 @@ getCapacity(): number
   }
   ```
 
-### setSize
+### setSize<sup>(deprecated)</sup>
 
 setSize(size: number): boolean
 
 设置MessageParcel实例中包含的数据大小。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[setSize](#setsize9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4056,11 +4092,15 @@ setSize(size: number): boolean
   }
   ```
 
-### setCapacity
+### setCapacity<sup>(deprecated)</sup>
 
 setCapacity(size: number): boolean
 
 设置MessageParcel实例的存储容量。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[setCapacity](#setcapacity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4091,11 +4131,15 @@ setCapacity(size: number): boolean
   }
   ```
 
-### getWritableBytes
+### getWritableBytes<sup>(deprecated)</sup>
 
 getWritableBytes(): number
 
 获取MessageParcel的可写字节空间。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getWritableBytes](#getwritablebytes9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4121,11 +4165,15 @@ getWritableBytes(): number
   }
   ```
 
-### getReadableBytes
+### getReadableBytes<sup>(deprecated)</sup>
 
 getReadableBytes(): number
 
 获取MessageParcel的可读字节空间。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getReadableBytes](#getreadablebytes9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4151,11 +4199,15 @@ getReadableBytes(): number
   }
   ```
 
-### getReadPosition
+### getReadPosition<sup>(deprecated)</sup>
 
 getReadPosition(): number
 
 获取MessageParcel的读位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getReadPosition](#getreadposition9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4180,11 +4232,15 @@ getReadPosition(): number
   }
   ```
 
-### getWritePosition
+### getWritePosition<sup>(deprecated)</sup>
 
 getWritePosition(): number
 
 获取MessageParcel的写位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getWritePosition](#getwriteposition9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4210,11 +4266,15 @@ getWritePosition(): number
   }
   ```
 
-### rewindRead
+### rewindRead<sup>(deprecated)</sup>
 
 rewindRead(pos: number): boolean
 
 重新偏移读取位置到指定的位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[rewindRead](#rewindread9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4250,11 +4310,15 @@ rewindRead(pos: number): boolean
   }
   ```
 
-### rewindWrite
+### rewindWrite<sup>(deprecated)</sup>
 
 rewindWrite(pos: number): boolean
 
 重新偏移写位置到指定的位置。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[reWindWrite](#rewindwrite9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4288,11 +4352,15 @@ rewindWrite(pos: number): boolean
   }
   ```
 
-### writeByte
+### writeByte<sup>(deprecated)</sup>
 
 writeByte(val: number): boolean
 
 将字节值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeByte](#writebyte9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4323,11 +4391,15 @@ writeByte(val: number): boolean
   }
   ```
 
-### readByte
+### readByte<sup>(deprecated)</sup>
 
 readByte(): number
 
-从MessageParcel实例读取字节值。
+从MessageParcel实例中读取字节值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByte](#readbyte9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4354,11 +4426,15 @@ readByte(): number
   }
   ```
 
-### writeShort
+### writeShort<sup>(deprecated)</sup>
 
 writeShort(val: number): boolean
 
 将短整数值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeShort](#writeshort9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4389,11 +4465,15 @@ writeShort(val: number): boolean
   }
   ```
 
-### readShort
+### readShort<sup>(deprecated)</sup>
 
 readShort(): number
 
-从MessageParcel实例读取短整数值。
+从MessageParcel实例中读取短整数值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShort](#readshort9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4420,11 +4500,15 @@ readShort(): number
   }
   ```
 
-### writeInt
+### writeInt<sup>(deprecated)</sup>
 
 writeInt(val: number): boolean
 
 将整数值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeInt](#writeint9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4455,11 +4539,15 @@ writeInt(val: number): boolean
   }
   ```
 
-### readInt
+### readInt<sup>(deprecated)</sup>
 
 readInt(): number
 
-从MessageParcel实例读取整数值。
+从MessageParcel实例中读取整数值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readInt](#readint9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4486,11 +4574,15 @@ readInt(): number
   }
   ```
 
-### writeLong
+### writeLong<sup>(deprecated)</sup>
 
 writeLong(val: number): boolean
 
 将长整数值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeLong](#writelong9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4521,11 +4613,15 @@ writeLong(val: number): boolean
   }
   ```
 
-### readLong
+### readLong<sup>(deprecated)</sup>
 
 readLong(): number
 
 从MessageParcel实例中读取长整数值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLong](#readlong9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4552,11 +4648,15 @@ readLong(): number
   }
   ```
 
-### writeFloat
+### writeFloat<sup>(deprecated)</sup>
 
 writeFloat(val: number): boolean
 
 将双精度浮点值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeFloat](#writefloat9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4587,11 +4687,15 @@ writeFloat(val: number): boolean
   }
   ```
 
-### readFloat
+### readFloat<sup>(deprecated)</sup>
 
 readFloat(): number
 
 从MessageParcel实例中读取双精度浮点值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloat](#readfloat9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4618,11 +4722,15 @@ readFloat(): number
   }
   ```
 
-### writeDouble
+### writeDouble<sup>(deprecated)</sup>
 
 writeDouble(val: number): boolean
 
 将双精度浮点值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeDouble](#writedouble9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4653,11 +4761,15 @@ writeDouble(val: number): boolean
   }
   ```
 
-### readDouble
+### readDouble<sup>(deprecated)</sup>
 
 readDouble(): number
 
-从MessageParcel实例读取双精度浮点值。
+从MessageParcel实例中读取双精度浮点值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDouble](#readdouble9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4684,11 +4796,15 @@ readDouble(): number
   }
   ```
 
-### writeBoolean
+### writeBoolean<sup>(deprecated)</sup>
 
 writeBoolean(val: boolean): boolean
 
 将布尔值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeBoolean](#writeboolean9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4719,11 +4835,15 @@ writeBoolean(val: boolean): boolean
   }
   ```
 
-### readBoolean
+### readBoolean<sup>(deprecated)</sup>
 
 readBoolean(): boolean
 
-从MessageParcel实例读取布尔值。
+从MessageParcel实例中读取布尔值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBoolean](#readboolean9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4750,11 +4870,15 @@ readBoolean(): boolean
   }
   ```
 
-### writeChar
+### writeChar<sup>(deprecated)</sup>
 
 writeChar(val: number): boolean
 
 将单个字符值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeChar](#writechar9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4785,11 +4909,15 @@ writeChar(val: number): boolean
   }
   ```
 
-### readChar
+### readChar<sup>(deprecated)</sup>
 
 readChar(): number
 
 从MessageParcel实例中读取单个字符值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readChar](#readchar9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4816,11 +4944,15 @@ readChar(): number
   }
   ```
 
-### writeString
+### writeString<sup>(deprecated)</sup>
 
 writeString(val: string): boolean
 
 将字符串值写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeString](#writestring9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4851,11 +4983,15 @@ writeString(val: string): boolean
   }
   ```
 
-### readString
+### readString<sup>(deprecated)</sup>
 
 readString(): string
 
-从MessageParcel实例读取字符串值。
+从MessageParcel实例中读取字符串值。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readString](#readstring9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4882,11 +5018,15 @@ readString(): string
   }
   ```
 
-### writeSequenceable
+### writeSequenceable<sup>(deprecated)</sup>
 
 writeSequenceable(val: Sequenceable): boolean
 
 将自定义序列化对象写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeParcelable](#writeparcelable9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4937,11 +5077,15 @@ writeSequenceable(val: Sequenceable): boolean
   }
   ```
 
-### readSequenceable
+### readSequenceable<sup>(deprecated)</sup>
 
 readSequenceable(dataIn: Sequenceable): boolean
 
 从MessageParcel实例中读取成员变量到指定的对象（dataIn）。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readParcelable](#readparcelable9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -4995,11 +5139,15 @@ readSequenceable(dataIn: Sequenceable): boolean
   }
   ```
 
-### writeByteArray
+### writeByteArray<sup>(deprecated)</sup>
 
 writeByteArray(byteArray: number[]): boolean
 
 将字节数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeByteArray](#writebytearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5031,11 +5179,15 @@ writeByteArray(byteArray: number[]): boolean
   }
   ```
 
-### readByteArray
+### readByteArray<sup>(deprecated)</sup>
 
 readByteArray(dataIn: number[]): void
 
-从MessageParcel实例读取字节数组。
+从MessageParcel实例中读取字节数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByteArray](#readbytearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5063,11 +5215,15 @@ readByteArray(dataIn: number[]): void
   }
   ```
 
-### readByteArray
+### readByteArray<sup>(deprecated)</sup>
 
 readByteArray(): number[]
 
 从MessageParcel实例中读取字节数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByteArray](#readbytearray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5095,11 +5251,15 @@ readByteArray(): number[]
   }
   ```
 
-### writeShortArray
+### writeShortArray<sup>(deprecated)</sup>
 
 writeShortArray(shortArray: number[]): boolean
 
 将短整数数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeShortArray](#writeshortarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5130,11 +5290,15 @@ writeShortArray(shortArray: number[]): boolean
   }
   ```
 
-### readShortArray
+### readShortArray<sup>(deprecated)</sup>
 
 readShortArray(dataIn: number[]): void
 
-从MessageParcel实例中读取短整数数组。
+从MessageParcel实例中读取短整数数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShortArray](#readshortarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5162,11 +5326,15 @@ readShortArray(dataIn: number[]): void
   }
   ```
 
-### readShortArray
+### readShortArray<sup>(deprecated)</sup>
 
 readShortArray(): number[]
 
 从MessageParcel实例中读取短整数数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShortArray](#readshortarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5193,11 +5361,15 @@ readShortArray(): number[]
   }
   ```
 
-### writeIntArray
+### writeIntArray<sup>(deprecated)</sup>
 
 writeIntArray(intArray: number[]): boolean
 
 将整数数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeIntArray](#writeintarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5228,11 +5400,15 @@ writeIntArray(intArray: number[]): boolean
   }
   ```
 
-### readIntArray
+### readIntArray<sup>(deprecated)</sup>
 
 readIntArray(dataIn: number[]): void
 
-从MessageParcel实例中读取整数数组。
+从MessageParcel实例中读取整数数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readIntArray](#readintarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5260,11 +5436,15 @@ readIntArray(dataIn: number[]): void
   }
   ```
 
-### readIntArray
+### readIntArray<sup>(deprecated)</sup>
 
 readIntArray(): number[]
 
 从MessageParcel实例中读取整数数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readIntArray](#readintarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5291,11 +5471,15 @@ readIntArray(): number[]
   }
   ```
 
-### writeLongArray
+### writeLongArray<sup>(deprecated)</sup>
 
 writeLongArray(longArray: number[]): boolean
 
 将长整数数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeLongArray](#writelongarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5326,11 +5510,15 @@ writeLongArray(longArray: number[]): boolean
   }
   ```
 
-### readLongArray
+### readLongArray<sup>(deprecated)</sup>
 
 readLongArray(dataIn: number[]): void
 
-从MessageParcel实例读取长整数数组。
+从MessageParcel实例中读取长整数数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLongArray](#readlongarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5358,11 +5546,15 @@ readLongArray(dataIn: number[]): void
   }
   ```
 
-### readLongArray
+### readLongArray<sup>(deprecated)</sup>
 
 readLongArray(): number[]
 
 从MessageParcel实例中读取长整数数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLongArray](#readlongarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5389,11 +5581,15 @@ readLongArray(): number[]
   }
   ```
 
-### writeFloatArray
+### writeFloatArray<sup>(deprecated)</sup>
 
 writeFloatArray(floatArray: number[]): boolean
 
 将双精度浮点数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeFloatArray](#writefloatarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5424,11 +5620,15 @@ writeFloatArray(floatArray: number[]): boolean
   }
   ```
 
-### readFloatArray
+### readFloatArray<sup>(deprecated)</sup>
 
 readFloatArray(dataIn: number[]): void
 
-从MessageParcel实例中读取双精度浮点数组。
+从MessageParcel实例中读取双精度浮点数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloatArray](#readfloatarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5456,11 +5656,15 @@ readFloatArray(dataIn: number[]): void
   }
   ```
 
-### readFloatArray
+### readFloatArray<sup>(deprecated)</sup>
 
 readFloatArray(): number[]
 
 从MessageParcel实例中读取双精度浮点数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloatArray](#readfloatarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5487,11 +5691,15 @@ readFloatArray(): number[]
   }
   ```
 
-### writeDoubleArray
+### writeDoubleArray<sup>(deprecated)</sup>
 
 writeDoubleArray(doubleArray: number[]): boolean
 
 将双精度浮点数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeDoubleArray](#writedoublearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5522,11 +5730,15 @@ writeDoubleArray(doubleArray: number[]): boolean
   }
   ```
 
-### readDoubleArray
+### readDoubleArray<sup>(deprecated)</sup>
 
 readDoubleArray(dataIn: number[]): void
 
-从MessageParcel实例中读取双精度浮点数组。
+从MessageParcel实例中读取双精度浮点数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDoubleArray](#readdoublearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5554,11 +5766,15 @@ readDoubleArray(dataIn: number[]): void
   }
   ```
 
-### readDoubleArray
+### readDoubleArray<sup>(deprecated)</sup>
 
 readDoubleArray(): number[]
 
-从MessageParcel实例读取双精度浮点数组。
+从MessageParcel实例中读取双精度浮点数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDoubleArray](#readdoublearray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5585,11 +5801,15 @@ readDoubleArray(): number[]
   }
   ```
 
-### writeBooleanArray
+### writeBooleanArray<sup>(deprecated)</sup>
 
 writeBooleanArray(booleanArray: boolean[]): boolean
 
 将布尔数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeBooleanArray](#writebooleanarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5620,11 +5840,15 @@ writeBooleanArray(booleanArray: boolean[]): boolean
   }
   ```
 
-### readBooleanArray
+### readBooleanArray<sup>(deprecated)</sup>
 
 readBooleanArray(dataIn: boolean[]): void
 
-从MessageParcel实例中读取布尔数组。
+从MessageParcel实例中读取布尔数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBooleanArray](#readbooleanarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5652,11 +5876,15 @@ readBooleanArray(dataIn: boolean[]): void
   }
   ```
 
-### readBooleanArray
+### readBooleanArray<sup>(deprecated)</sup>
 
 readBooleanArray(): boolean[]
 
 从MessageParcel实例中读取布尔数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBooleanArray](#readbooleanarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5683,11 +5911,15 @@ readBooleanArray(): boolean[]
   }
   ```
 
-### writeCharArray
+### writeCharArray<sup>(deprecated)</sup>
 
 writeCharArray(charArray: number[]): boolean
 
 将单个字符数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeCharArray](#writechararray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5718,11 +5950,15 @@ writeCharArray(charArray: number[]): boolean
   }
   ```
 
-### readCharArray
+### readCharArray<sup>(deprecated)</sup>
 
 readCharArray(dataIn: number[]): void
 
-从MessageParcel实例中读取单个字符数组。
+从MessageParcel实例中读取单个字符数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readCharArray](#readchararray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5750,11 +5986,15 @@ readCharArray(dataIn: number[]): void
   }
   ```
 
-### readCharArray
+### readCharArray<sup>(deprecated)</sup>
 
 readCharArray(): number[]
 
-从MessageParcel实例读取单个字符数组。
+从MessageParcel实例中读取单个字符数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readCharArray](#readchararray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5781,11 +6021,15 @@ readCharArray(): number[]
   }
   ```
 
-### writeStringArray
+### writeStringArray<sup>(deprecated)</sup>
 
 writeStringArray(stringArray: string[]): boolean
 
 将字符串数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeStringArray](#writestringarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5816,11 +6060,15 @@ writeStringArray(stringArray: string[]): boolean
   }
   ```
 
-### readStringArray
+### readStringArray<sup>(deprecated)</sup>
 
 readStringArray(dataIn: string[]): void
 
-从MessageParcel实例读取字符串数组。
+从MessageParcel实例中读取字符串数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readStringArray](#readstringarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5848,11 +6096,15 @@ readStringArray(dataIn: string[]): void
   }
   ```
 
-### readStringArray
+### readStringArray<sup>(deprecated)</sup>
 
 readStringArray(): string[]
 
-从MessageParcel实例读取字符串数组。
+从MessageParcel实例中读取字符串数组。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[readStringArray](#readstringarray9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5879,11 +6131,15 @@ readStringArray(): string[]
   }
   ```
 
-### writeNoException<sup>8+</sup>
+### writeNoException<sup>(deprecated)</sup>
 
 writeNoException(): void
 
 向MessageParcel写入“指示未发生异常”的信息。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeNoException](#writenoexception9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -5916,11 +6172,15 @@ writeNoException(): void
   }
   ```
 
-### readException<sup>8+</sup>
+### readException<sup>(deprecated)</sup>
 
 readException(): void
 
 从MessageParcel中读取异常。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readException](#readexception9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6002,11 +6262,15 @@ readException(): void
   }
   ```
 
-### writeSequenceableArray
+### writeSequenceableArray<sup>(deprecated)</sup>
 
 writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
 
 将可序列化对象数组写入MessageParcel实例。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeParcelableArray](#writeparcelablearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6060,11 +6324,15 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
   }
   ```
 
-### readSequenceableArray<sup>8+</sup>
+### readSequenceableArray<sup>(deprecated)</sup>
 
 readSequenceableArray(sequenceableArray: Sequenceable[]): void
 
-从MessageParcel实例读取可序列化对象数组。
+从MessageParcel实例中读取可序列化对象数组。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readParcelableArray](#readparcelablearray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6114,11 +6382,15 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
   }
   ```
 
-### writeRemoteObjectArray<sup>8+</sup>
+### writeRemoteObjectArray<sup>(deprecated)</sup>
 
 writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
 
 将IRemoteObject对象数组写入MessageParcel。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRemoteObjectArray](#writeremoteobjectarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6160,11 +6432,15 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
   }
   ```
 
-### readRemoteObjectArray<sup>8+</sup>
+### readRemoteObjectArray<sup>(deprecated)</sup>
 
 readRemoteObjectArray(objects: IRemoteObject[]): void
 
-从MessageParcel读取IRemoteObject对象数组。
+从MessageParcel读取IRemoteObject对象数组，并将其写入到创建的空数组中。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRemoteObjectArray](#readremoteobjectarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6202,11 +6478,15 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
   }
   ```
 
-### readRemoteObjectArray<sup>8+</sup>
+### readRemoteObjectArray<sup>(deprecated)</sup>
 
 readRemoteObjectArray(): IRemoteObject[]
 
 从MessageParcel读取IRemoteObject对象数组。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRemoteObjectArray](#readremoteobjectarray9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6244,11 +6524,15 @@ readRemoteObjectArray(): IRemoteObject[]
   }
   ```
 
-### closeFileDescriptor<sup>8+</sup>
+### closeFileDescriptor<sup>(deprecated)</sup>
 
 static closeFileDescriptor(fd: number): void
 
 静态方法，关闭给定的文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[closeFileDescriptor](#closefiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6274,11 +6558,15 @@ static closeFileDescriptor(fd: number): void
   }
   ```
 
-### dupFileDescriptor<sup>8+</sup>
+### dupFileDescriptor<sup>(deprecated)</sup>
 
 static dupFileDescriptor(fd: number) :number
 
 静态方法，复制给定的文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[dupFileDescriptor](#dupfiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6310,11 +6598,15 @@ static dupFileDescriptor(fd: number) :number
   }
   ```
 
-### containFileDescriptors<sup>8+</sup>
+### containFileDescriptors<sup>(deprecated)</sup>
 
 containFileDescriptors(): boolean
 
 检查此MessageParcel对象是否包含文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[containFileDescriptors](#containfiledescriptors9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6344,11 +6636,15 @@ containFileDescriptors(): boolean
   }
   ```
 
-### writeFileDescriptor<sup>8+</sup>
+### writeFileDescriptor<sup>(deprecated)</sup>
 
 writeFileDescriptor(fd: number): boolean
 
 写入文件描述符到MessageParcel。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeFileDescriptor](#writefiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6382,11 +6678,15 @@ writeFileDescriptor(fd: number): boolean
   }
   ```
 
-### readFileDescriptor<sup>8+</sup>
+### readFileDescriptor<sup>(deprecated)</sup>
 
 readFileDescriptor(): number
 
 从MessageParcel中读取文件描述符。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readFileDescriptor](#readfiledescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6415,11 +6715,15 @@ readFileDescriptor(): number
   }
   ```
 
-### writeAshmem<sup>8+</sup>
+### writeAshmem<sup>(deprecated)</sup>
 
 writeAshmem(ashmem: Ashmem): boolean
 
 将指定的匿名共享对象写入此MessageParcel。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeAshmem](#writeashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6451,11 +6755,15 @@ writeAshmem(ashmem: Ashmem): boolean
   }
   ```
 
-### readAshmem<sup>8+</sup>
+### readAshmem<sup>(deprecated)</sup>
 
 readAshmem(): Ashmem
 
 从MessageParcel读取匿名共享对象。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readAshmem](#readashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6483,11 +6791,15 @@ readAshmem(): Ashmem
   }
   ```
 
-### getRawDataCapacity<sup>8+</sup>
+### getRawDataCapacity<sup>(deprecated)</sup>
 
 getRawDataCapacity(): number
 
 获取MessageParcel可以容纳的最大原始数据量。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[getRawDataCapacity](#getrawdatacapacity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6512,11 +6824,15 @@ getRawDataCapacity(): number
   }
   ```
 
-### writeRawData<sup>8+</sup>
+### writeRawData<sup>(deprecated)</sup>
 
 writeRawData(rawData: number[], size: number): boolean
 
 将原始数据写入MessageParcel对象。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRawDataBffer](#writerawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6549,11 +6865,15 @@ writeRawData(rawData: number[], size: number): boolean
   }
   ```
 
-### readRawData<sup>8+</sup>
+### readRawData<sup>(deprecated)</sup>
 
 readRawData(size: number): number[]
 
 从MessageParcel读取原始数据。
+
+> **说明：**
+>
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6711,13 +7031,17 @@ unmarshalling(dataIn: MessageSequence): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[Parcelable](#parcelable9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[Parcelable](#parcelable9)替代。
 
-### marshalling
+### marshalling<sup>(deprecated)</sup>
 
 marshalling(dataOut: MessageParcel): boolean
 
 将此可序列对象封送到MessageParcel中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[marshalling](#marshalling9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -6771,11 +7095,15 @@ marshalling(dataOut: MessageParcel): boolean
   }
   ```
 
-### unmarshalling
+### unmarshalling<sup>(deprecated)</sup>
 
 unmarshalling(dataIn: MessageParcel): boolean
 
 从MessageParcel中解封此可序列对象。
+
+> **说明：**
+>
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[unmarshalling](#unmarshalling9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7015,7 +7343,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7039,7 +7367,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 9开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7097,7 +7425,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7150,7 +7478,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-1)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7197,7 +7525,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7247,7 +7575,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7294,7 +7622,7 @@ getInterfaceDescriptor(): string
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7334,7 +7662,6 @@ isObjectDead(): boolean
   | MIN_TRANSACTION_ID    | number | 是    | 否   | 最小有效指令码。                          |
   | MAX_TRANSACTION_ID    | number | 是    | 否   | 最大有效指令码。                          |
 
-
 ### sendRequest<sup>(deprecated)</sup>
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
@@ -7343,7 +7670,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
+> 从API version 7 开始支持，API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7551,7 +7878,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7684,7 +8011,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-3)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-3)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7795,7 +8122,7 @@ queryLocalInterface(interface: string): IRemoteBroker
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-1)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -7961,7 +8288,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9-1)类替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9-1)类替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -8134,7 +8461,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9-1)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -8300,7 +8627,7 @@ getInterfaceDescriptor(): string
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-1)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -8966,7 +9293,7 @@ static flushCommands(object: IRemoteObject): number
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[flushCmdBuffer](#flushcmdbuffer9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[flushCmdBuffer](#flushcmdbuffer9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9091,7 +9418,7 @@ static setCallingIdentity(identity: string): boolean
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[restoreCallingIdentity](#restorecallingidentity9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[restoreCallingIdentity](#restorecallingidentity9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9157,6 +9484,7 @@ RemoteObject构造函数。
     }
   }
   ```
+
 ### sendRequest<sup>(deprecated)</sup>
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
@@ -9165,7 +9493,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
+> 从API version 7 开始支持，API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9303,7 +9631,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9402,7 +9730,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-5)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-5)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9569,7 +9897,7 @@ sendRequest请求的响应处理函数，服务端在该函数里处理请求，
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[onRemoteMessageRequest](#onremotemessagerequest9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[onRemoteMessageRequest](#onremotemessagerequest9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9745,7 +10073,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-2)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9841,7 +10169,7 @@ getInterfaceDescriptor(): string
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-2)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-2)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -9940,7 +10268,7 @@ attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
 > **说明：**
 >
-> 从API version 9 开始废弃，建议使用[modifyLocalInterface](#modifylocalinterface9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[modifyLocalInterface](#modifylocalinterface9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10052,7 +10380,7 @@ static createAshmem(name: string, size: number): Ashmem
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[create](#create9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[create](#create9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10141,7 +10469,7 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[create](#create9-1)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[create](#create9-1)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10298,7 +10626,7 @@ mapAshmem(mapType: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[mapTypedAshmem](#maptypedashmem9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapTypedAshmem](#maptypedashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10370,7 +10698,7 @@ mapReadAndWriteAshmem(): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[mapReadWriteAshmem](#mapreadwriteashmem9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapReadWriteAshmem](#mapreadwriteashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10436,7 +10764,7 @@ mapReadOnlyAshmem(): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[mapReadonlyAshmem](#mapreadonlyashmem9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapReadonlyAshmem](#mapreadonlyashmem9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10509,7 +10837,7 @@ setProtection(protectionType: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[setProtectionType](#setprotectiontype9)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[setProtectionType](#setprotectiontype9)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10602,8 +10930,8 @@ writeAshmem(buf: number[], size: number, offset: number): void
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 11 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
-> 
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
@@ -10652,8 +10980,8 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
-> 
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeDataToAshmem](#writedatatoashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
@@ -10759,10 +11087,9 @@ readAshmem(size: number, offset: number): number[]
 
 > **说明：**
 >
-> 从API version 9 开始支持，从API version 11 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
-> 
+> 从API version 9 开始支持，API version 11 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
-
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 
@@ -10817,8 +11144,8 @@ readFromAshmem(size: number, offset: number): number[]
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
-> 
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[readDataFromAshmem](#readdatafromashmem11)替代。
+>
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
