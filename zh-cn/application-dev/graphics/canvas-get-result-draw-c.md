@@ -59,6 +59,14 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 3. 从XComponent对应的NativeWindow中获取BufferHandle对象。NativeWindow相关的API请参考[_native_window](../reference/apis-arkgraphics2d/capi-nativewindow.md)。
 
    <!-- @[ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 通过 OH_NativeWindow_NativeWindowRequestBuffer 获取 OHNativeWindowBuffer 实例
+   int ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer_, &fenceFd_);
+   SAMPLE_LOGI("request buffer ret = %{public}d", ret);
+   // 通过 OH_NativeWindow_GetBufferHandleFromNative 获取 buffer 的 handle
+   bufferHandle_ = OH_NativeWindow_GetBufferHandleFromNative(buffer_);
+   ```
 
 4. 从BufferHandle中获取对应的内存地址。
 
