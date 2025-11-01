@@ -1582,6 +1582,69 @@ V1：
 
 <!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) -->
 
+``` TypeScript
+import { CommonModifier } from '@ohos.arkui.modifier';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+class MyModifier extends CommonModifier {
+  applyNormalAttribute(instance: CommonAttribute): void {
+    super.applyNormalAttribute?.(instance);
+  }
+
+  public setGroup1(): void {
+    this.borderStyle(BorderStyle.Dotted);
+    this.borderWidth(8);
+  }
+
+  public setGroup2(): void {
+    this.borderStyle(BorderStyle.Dashed);
+    this.borderWidth(8);
+  }
+}
+
+@Component
+struct MyImage1 {
+  @Link modifier: CommonModifier;
+
+  build() {
+    // 此处'app.media.img'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    // $r('app.media.img')需要替换为开发者所需的资源文件
+    Image($r('app.media.img'))
+      .attributeModifier(this.modifier as MyModifier)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State myModifier: CommonModifier = new MyModifier().width(100).height(100).margin(10);
+  index: number = 0;
+
+  build() {
+    Column() {
+      Button($r('app.string.EntryAbility_label'))
+        .margin(10)
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
+          this.index++;
+          if (this.index % 2 === 1) {
+            (this.myModifier as MyModifier).setGroup1();
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
+          } else {
+            (this.myModifier as MyModifier).setGroup2();
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
+          }
+        })
+
+      MyImage1({ modifier: this.myModifier })
+    }
+    .width('100%')
+  }
+}
+```
+
 V2：
 
 在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[CommonModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
