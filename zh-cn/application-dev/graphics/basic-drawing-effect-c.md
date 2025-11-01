@@ -156,6 +156,12 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    - 可使用OH_Drawing_PenSetWidth()接口设置画笔的线宽。
 
       <!-- @[ndk_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔的线宽为50像素
+      float width = 50.0;
+      OH_Drawing_PenSetWidth(pen, width);
+      ```
 
       width表示线宽的像素值。
 
