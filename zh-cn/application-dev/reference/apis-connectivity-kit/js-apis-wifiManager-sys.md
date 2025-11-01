@@ -130,9 +130,6 @@ getScanAlwaysAllowed(): boolean
 | 2501000  | Operation failed.|
 
 **示例：**
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 20
 
 ```ts
 	import { wifiManager } from '@kit.ConnectivityKit';
