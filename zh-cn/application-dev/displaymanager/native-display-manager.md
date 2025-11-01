@@ -81,6 +81,53 @@ static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info inf
 
 <!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
+{
+    NativeDisplayManager_CutoutInfo *cutOutInfo = NULL;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(&cutOutInfo);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "GetDefaultCutoutInfo errCode=%{public}d", errCode);
+    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+        if (cutOutInfo != NULL && cutOutInfo->boundingRectsLength != 0) {
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "GetDefaultCutoutInfo cutOutInfo length=%{public}d", cutOutInfo->boundingRectsLength);
+            for (int i = 0; i < cutOutInfo->boundingRectsLength; i++) {
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                    "cutOutInfo[%{public}d]=[%{public}d %{public}d %{public}d %{public}d]",
+                    i, cutOutInfo->boundingRects[i].left, cutOutInfo->boundingRects[i].top,
+                    cutOutInfo->boundingRects[i].width, cutOutInfo->boundingRects[i].height);
+            }
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "cutOutInfo waterfall left rect=[%{public}d %{public}d %{public}d %{public}d]",
+                cutOutInfo->waterfallDisplayAreaRects.left.left, cutOutInfo->waterfallDisplayAreaRects.left.top,
+                cutOutInfo->waterfallDisplayAreaRects.left.width, cutOutInfo->waterfallDisplayAreaRects.left.height);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "cutOutInfo waterfall top rect=[%{public}d %{public}d %{public}d %{public}d]",
+                cutOutInfo->waterfallDisplayAreaRects.top.left, cutOutInfo->waterfallDisplayAreaRects.top.top,
+                cutOutInfo->waterfallDisplayAreaRects.top.width, cutOutInfo->waterfallDisplayAreaRects.top.height);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "cutOutInfo waterfall right rect=[%{public}d %{public}d %{public}d %{public}d]",
+                cutOutInfo->waterfallDisplayAreaRects.right.left, cutOutInfo->waterfallDisplayAreaRects.right.top,
+                cutOutInfo->waterfallDisplayAreaRects.right.width, cutOutInfo->waterfallDisplayAreaRects.right.height);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+                "cutOutInfo waterfall bottom rect=[%{public}d %{public}d %{public}d %{public}d]",
+                cutOutInfo->waterfallDisplayAreaRects.bottom.left,
+                cutOutInfo->waterfallDisplayAreaRects.bottom.top,
+                cutOutInfo->waterfallDisplayAreaRects.bottom.width,
+                cutOutInfo->waterfallDisplayAreaRects.bottom.height);
+        }
+        napi_value boundingRectsLength;
+        napi_create_int32(env, cutOutInfo->boundingRectsLength, &boundingRectsLength);
+        OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(cutOutInfo);
+        return boundingRectsLength;
+    } else {
+        napi_value errorCode;
+        napi_create_int32(env, errCode, &errorCode);
+        return errorCode;
+    }
+}
+```
+
 ## 监听屏幕状态变化
 
 可以通过OH_NativeDisplayManager_RegisterDisplayChangeListener接口注册屏幕变化的监听，包括屏幕旋转、分辨率变化、刷新率变化、DPI变化等。 通过OH_NativeDisplayManager_UnregisterDisplayChangeListener接口取消屏幕状态变化的监听。
