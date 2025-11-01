@@ -230,6 +230,29 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
+``` TypeScript
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置颜色为红色
+pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
+// 设置描边宽度为20px
+pen.setStrokeWidth(20);
+// 设置画笔描边效果
+canvas.attachPen(pen);
+// 保存操作，当前是不存在放大等操作的，这个原始状态会被保存下来
+canvas.save();
+// x轴和y轴方向分别放大2倍
+canvas.scale(2, 2);
+// 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
+// 恢复操作，恢复到没有放大的原始状态
+canvas.restore();
+// 绘制圆形，因为已经恢复到没有放大的原始状态，所以此时绘制的是小圆
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
+// 去除描边效果
+canvas.detachPen();
+```
+
 ![Screenshot_20241129152510415](figures/Screenshot_20241129152510415.jpg)
 
 <!--RP1-->
