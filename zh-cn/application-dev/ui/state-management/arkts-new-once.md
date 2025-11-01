@@ -52,6 +52,16 @@
 - \@Once与\@Param的先后顺序无关，可以写成\@Param \@Once也可以写成\@Once \@Param。
 
   <!-- @[once_param_order_irrelevant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
+  
+  ``` TypeScript
+  @ComponentV2
+  struct MyComponent {
+  // ···
+    @Param @Once param1: number = 0;
+    @Once @Param param2: number = 0;
+  // ···
+  }
+  ```
 
 ## 使用场景
 
