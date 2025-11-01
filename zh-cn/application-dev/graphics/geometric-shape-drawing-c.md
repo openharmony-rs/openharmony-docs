@@ -327,6 +327,27 @@ OH_Drawing_RectDestroy(rect);
 
 <!-- @[ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷对象
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+// 设置画刷的填充颜色
+OH_Drawing_BrushSetColor(brush, 0xffff0000);
+// 设置画布的画刷
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 创建矩形
+OH_Drawing_Rect* rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value600_);
+// 创建圆角矩形
+OH_Drawing_RoundRect* roundRect = OH_Drawing_RoundRectCreate(rect, 30, 30);
+// 绘制圆角矩形
+OH_Drawing_CanvasDrawRoundRect(canvas, roundRect);
+// 去除掉画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_RoundRectDestroy(roundRect);
+```
+
 
 效果如下：
 
