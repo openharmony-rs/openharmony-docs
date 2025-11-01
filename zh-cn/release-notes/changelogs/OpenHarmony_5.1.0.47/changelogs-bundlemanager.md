@@ -44,8 +44,8 @@ API 12
 
 **变更的接口/组件**
 
-[ApplicationInfo](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)中的installSource字段。
+[ApplicationInfo](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)中的installSource字段。
 
 **适配指导**
 
-预置应用开发者需根据变更后的规格适配，可根据[ApplicationInfo](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)中的installSource字段判断应用是否是预置应用。
+预置应用开发者需根据变更后的规格适配，可根据[ApplicationInfo](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md)中的installSource字段判断应用是否是预置应用。

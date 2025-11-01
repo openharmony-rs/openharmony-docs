@@ -25,14 +25,14 @@
 方式一（推荐）：通过repo下载
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b master --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b master --no-repo-verify
 repo sync -c
 ```
 
 方式二：通过git clone单个代码仓库
 
-进入[代码仓库主页](https://gitee.com/openharmony)，选择需要克隆的代码仓库，执行命令，如：
+进入[代码仓库主页](https://gitcode.com/openharmony)，选择需要克隆的代码仓库，执行命令，如：
 
 ```shell
-git clone https://gitee.com/openharmony/manifest.git -b master
+git clone https://gitcode.com/openharmony/manifest.git -b master
 ```

@@ -2,7 +2,7 @@
 
 ## cl.bundlemanager.1 包管理AbilityInfo.d.ts中新增必选属性orientationId。
 
-包管理[AbilityInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts)中新增必选属性orientationId。
+包管理[AbilityInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts)中新增必选属性orientationId。
 
 **访问级别**
 公开接口

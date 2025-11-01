@@ -59,10 +59,10 @@
 
 **方式** **一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 ```shell
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -72,7 +72,7 @@ repo forall -c 'git lfs pull'
 通过repo + https 下载。
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -89,7 +89,7 @@ repo forall -c 'git lfs pull'
 | Hi3518解决方案（二进制） | 3.0 | [站点](https://repo.huaweicloud.com/harmonyos/os/3.0/hispark_aries.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/harmonyos/os/3.0/hispark_aries.tar.gz.sha256) | 
 | Hi3516解决方案-LiteOS（二进制） | 3.0 | [站点](https://repo.huaweicloud.com/harmonyos/os/3.0/hispark_taurus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/harmonyos/os/3.0/hispark_taurus.tar.gz.sha256) | 
 | Hi3516解决方案-Linux（二进制） | 3.0 | [站点](https://repo.huaweicloud.com/harmonyos/os/3.0/hispark_taurus_linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/harmonyos/os/3.0/hispark_taurus_linux.tar.gz.sha256) | 
-| Release&nbsp;Notes | 3.0 | [站点](https://gitee.com/openharmony/docs/blob/OpenHarmony-3.0-LTS/zh-cn/release-notes/OpenHarmony-v3.0-LTS.md) | - | 
+| Release&nbsp;Notes | 3.0 | [站点](https://gitcode.com/openharmony/docs/blob/OpenHarmony-3.0-LTS/zh-cn/release-notes/OpenHarmony-v3.0-LTS.md) | - | 
 
 
 ## 更新说明
@@ -132,7 +132,7 @@ API变更请参考：[JS API 差异报告](api-diff/v3.0-LTS/js-apidiff-v3.0-lts
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ## 修复缺陷列表
@@ -141,21 +141,21 @@ API变更请参考：[JS API 差异报告](api-diff/v3.0-LTS/js-apidiff-v3.0-lts
 
 | ISSUE单号 | 问题描述 | 
 | -------- | -------- |
-| [I45AVP](https://gitee.com/openharmony/hiviewdfx_hilog/issues/I45AVP) | 执行hilog落盘之后hilog命令执行失败 | 
+| [I45AVP](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/I45AVP) | 执行hilog落盘之后hilog命令执行失败 | 
 | I47EPA | 入参为空或无效时，GetBundleSize接口返回错误 | 
-| [I434AD](https://gitee.com/openharmony/multimedia_camera_lite/issues/I434AD) | Hi3516DV300轻量级系统常驻内存超基线 | 
-| [I434P1](https://gitee.com/openharmony/multimedia_camera_lite/issues/I434P1) | Hi3518EV300轻量级系统常驻内存超基线 | 
-| [I46I6K](https://gitee.com/openharmony/multimedia_media_lite/issues/I46I6K?from=project-issue) | 多媒体子系统相关代码存在安全编码问题 | 
-| [I46E6S](https://gitee.com/openharmony/kernel_liteos_m/issues/I46E6S?from=project-issue) | 轻量级内核模块编译添加-Werror编译选项 | 
+| [I434AD](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I434AD) | Hi3516DV300轻量级系统常驻内存超基线 | 
+| [I434P1](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I434P1) | Hi3518EV300轻量级系统常驻内存超基线 | 
+| [I46I6K](https://gitcode.com/openharmony/multimedia_media_lite/issues/I46I6K?from=project-issue) | 多媒体子系统相关代码存在安全编码问题 | 
+| [I46E6S](https://gitcode.com/openharmony/kernel_liteos_m/issues/I46E6S?from=project-issue) | 轻量级内核模块编译添加-Werror编译选项 | 
 | I47ETO | 权限校验没有生效，使用测试&nbsp;bin&nbsp;直接调用无权限&nbsp;hap，期望查询失败返回&nbsp;0，结果查询成功 | 
-| [I48A2I](https://gitee.com/openharmony/drivers_peripheral/issues/I48A2I) | Hi3516DV300轻量级版本调用AllocMem接口测试，单板挂死 | 
-| [I42LCU](https://gitee.com/openharmony/kernel_liteos_m/issues/I42LCU) | 集成测试开发板移植指导中需增加线程不足的确认方法和配置线程个数的方法 | 
-| [I3IPD7](https://gitee.com/openharmony/kernel_liteos_m/issues/I3IPD7) | 不支持osThreadExit/join函数需要在头文件中说明 | 
-| [I3M12H](https://gitee.com/openharmony/kernel_liteos_a/issues/I3M12H) | 集成测试发送两个不同的信号，sigwait第二次等到的仍是第一个信号 | 
-| [I47X2Z](https://gitee.com/openharmony/kernel_liteos_a/issues/I47X2Z?from=project-issue) | 集成测试&nbsp;在执行ActsIpcShmTest.bin脚本，出现大量未释放的共享内存 | 
-| [I4BL3S](https://gitee.com/openharmony/kernel_liteos_a/issues/I4BL3S) | 集成测试fs_posix模块nfs用例跑多次会出现不停打印申请内存失败问题 | 
-| [I490KZ](https://gitee.com/openharmony/kernel_liteos_a/issues/I490KZ) | FutexTest.testPthreadTimdOutRWlockWR用例执行失败 | 
-| [I44SFO](https://gitee.com/openharmony/third_party_toybox/issues/I44SFO) | 集成测试在某个目录下mv一个文件后，再在此目录下创建同名文件并二次mv该文件失败，提示此文件不存在 | 
+| [I48A2I](https://gitcode.com/openharmony/drivers_peripheral/issues/I48A2I) | Hi3516DV300轻量级版本调用AllocMem接口测试，单板挂死 | 
+| [I42LCU](https://gitcode.com/openharmony/kernel_liteos_m/issues/I42LCU) | 集成测试开发板移植指导中需增加线程不足的确认方法和配置线程个数的方法 | 
+| [I3IPD7](https://gitcode.com/openharmony/kernel_liteos_m/issues/I3IPD7) | 不支持osThreadExit/join函数需要在头文件中说明 | 
+| [I3M12H](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3M12H) | 集成测试发送两个不同的信号，sigwait第二次等到的仍是第一个信号 | 
+| [I47X2Z](https://gitcode.com/openharmony/kernel_liteos_a/issues/I47X2Z?from=project-issue) | 集成测试&nbsp;在执行ActsIpcShmTest.bin脚本，出现大量未释放的共享内存 | 
+| [I4BL3S](https://gitcode.com/openharmony/kernel_liteos_a/issues/I4BL3S) | 集成测试fs_posix模块nfs用例跑多次会出现不停打印申请内存失败问题 | 
+| [I490KZ](https://gitcode.com/openharmony/kernel_liteos_a/issues/I490KZ) | FutexTest.testPthreadTimdOutRWlockWR用例执行失败 | 
+| [I44SFO](https://gitcode.com/openharmony/third_party_toybox/issues/I44SFO) | 集成测试在某个目录下mv一个文件后，再在此目录下创建同名文件并二次mv该文件失败，提示此文件不存在 | 
 
 **表5** 标准系统解决的缺陷ISSUE列表
 
@@ -163,11 +163,11 @@ API变更请参考：[JS API 差异报告](api-diff/v3.0-LTS/js-apidiff-v3.0-lts
 | -------- | -------- |
 | I46A6H | XTS子系统压力测试过程中libace.z.so异常导致ohos.samples.flashlight出现cppcrash异常 | 
 | I48HLN | Demo&amp;应用子系统-&nbsp;[&nbsp;JsCanvas]&nbsp;清除的button功能未生效 | 
-| [I46HH7](https://gitee.com/openharmony/drivers_peripheral/issues/I46HH7) | 驱动子系统-标准系统单板WLAN测试用例失败 | 
-| [I4312A](https://gitee.com/openharmony/communication_dsoftbus/issues/I4312A) | 【2.2&nbsp;Beta2】【软总线】已组网，断1端网络后，自组网失败(GetAllNodeDeviceInfo返回null) | 
-| [I43WIJ](https://gitee.com/openharmony/communication_dsoftbus/issues/I43WIJ) | 【2.2&nbsp;Beta2】【软总线】已组网，一端切换网络再切回，过程中组网未下线(无上下线回调) | 
-| [I43KLC](https://gitee.com/openharmony/communication_dsoftbus/issues/I43KLC) | 【2.2&nbsp;Beta2】【软总线】注册节点状态监听，设备上线，设备再离线，offline回调调用了2次 | 
-| [I47WTY](https://gitee.com/openharmony/communication_dsoftbus/issues/I47WTY) | 【3.0&nbsp;beta1】【软总线-传输】session&nbsp;id范围校验不严谨（有效范围1-16，校验时判断的是&gt;17） | 
+| [I46HH7](https://gitcode.com/openharmony/drivers_peripheral/issues/I46HH7) | 驱动子系统-标准系统单板WLAN测试用例失败 | 
+| [I4312A](https://gitcode.com/openharmony/communication_dsoftbus/issues/I4312A) | 【2.2&nbsp;Beta2】【软总线】已组网，断1端网络后，自组网失败(GetAllNodeDeviceInfo返回null) | 
+| [I43WIJ](https://gitcode.com/openharmony/communication_dsoftbus/issues/I43WIJ) | 【2.2&nbsp;Beta2】【软总线】已组网，一端切换网络再切回，过程中组网未下线(无上下线回调) | 
+| [I43KLC](https://gitcode.com/openharmony/communication_dsoftbus/issues/I43KLC) | 【2.2&nbsp;Beta2】【软总线】注册节点状态监听，设备上线，设备再离线，offline回调调用了2次 | 
+| [I47WTY](https://gitcode.com/openharmony/communication_dsoftbus/issues/I47WTY) | 【3.0&nbsp;beta1】【软总线-传输】session&nbsp;id范围校验不严谨（有效范围1-16，校验时判断的是&gt;17） | 
 
 
 ## 遗留缺陷列表
@@ -176,9 +176,9 @@ API变更请参考：[JS API 差异报告](api-diff/v3.0-LTS/js-apidiff-v3.0-lts
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 | 
 | -------- | -------- | -------- | -------- |
-| [I48IM7](https://gitee.com/openharmony/hiviewdfx_hilog/issues/I48IM7) | 运行hilog压力测试，hilogd异常重启，且hilog命令一直无法使用 | 压力测试下，低概率出现日志输出异常，调测场景可正常使用。 | 10月30日 | 
+| [I48IM7](https://gitcode.com/openharmony/hiviewdfx_hilog/issues/I48IM7) | 运行hilog压力测试，hilogd异常重启，且hilog命令一直无法使用 | 压力测试下，低概率出现日志输出异常，调测场景可正常使用。 | 10月30日 | 
 | I48YPH | 【软总线-组网】测试发现和组网性能(循环离网-发现-组网)110次组网失败3次 | 低概率3/110，失败后重新发起组网即可。 | 10月30日 | 
-| [I4BVVW](https://gitee.com/openharmony/communication_dsoftbus/issues/I4BVVW) | 【软总线-组网】标准系统与手机开关网络自组网成功率97%失败3次需分析失败原因 | 低概率出现组网失败。 | 10月30日 | 
+| [I4BVVW](https://gitcode.com/openharmony/communication_dsoftbus/issues/I4BVVW) | 【软总线-组网】标准系统与手机开关网络自组网成功率97%失败3次需分析失败原因 | 低概率出现组网失败。 | 10月30日 | 
 | I4BXWY | Hi3516音频录制后播放有杂音 | 仅在使用此开发板时，影响录制音频的播放体验效果。 | 10月30日 | 
 | I4BXY1 | 视频录制后前几秒没声音，播放声画不同步，在板子播放会卡顿，音源较远时，有杂音 | 仅在使用此开发板时，影响录制视频的播放体验效果。 | 10月30日 | 
-| [3ZJ1D](https://gitee.com/openharmony/kernel_liteos_a/issues/I3ZJ1D) | XTS权限用例压测用户态概率失败 | 仅在重复创建子进程的XTS压力测试场景，设置子进程uid失败，低概率问题。 | 10月30日 | 
+| [3ZJ1D](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3ZJ1D) | XTS权限用例压测用户态概率失败 | 仅在重复创建子进程的XTS压力测试场景，设置子进程uid失败，低概率问题。 | 10月30日 | 

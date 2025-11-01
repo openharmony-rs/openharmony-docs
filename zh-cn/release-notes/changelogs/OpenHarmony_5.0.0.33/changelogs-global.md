@@ -34,7 +34,7 @@ API 9
 **变更的接口/组件**
 
 SystemCapability.Global.ResourceManager获取资源相关接口。
-相关接口查看[接口文档](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md)
+相关接口查看[接口文档](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md)
 
 **适配指导**
 
