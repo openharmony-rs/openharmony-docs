@@ -979,6 +979,54 @@ V2:
 
 <!-- @[Internal_StorageProp_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2one.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { AppStorageV2 } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@ObservedV2
+export class MyStorage {
+  @Trace public count: number = 0;
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local storage: MyStorage = AppStorageV2.connect(MyStorage, 'storage', () => new MyStorage())!;
+  @Local count: number = this.storage.count;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  @Monitor('storage.count')
+  onCountChange(mon: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    this.count = this.storage.count;
+  }
+
+  build() {
+    Column() {
+      Text(`EntryAbility1 count: ${this.count}`)
+        .fontSize(25)
+        .onClick(() => {
+          this.count++;
+        })
+      Button('change Storage Count')
+        .onClick(() => {
+          this.storage.count += 100;
+        })
+      Button('Jump to EntryAbility1').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.example.myapplication', // 替换成AppScope/app.json5里的bundleName
+          abilityName: 'EntryAbility1'
+        };
+        this.context.startAbility(wantInfo);
+      })
+    }
+  }
+}
+```
+
 <!-- @[Internal_StorageProp_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2two.ets) -->
 
 ### Environment->调用Ability接口直接获取系统环境变量
