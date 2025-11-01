@@ -142,6 +142,30 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
+``` TypeScript
+let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
+let endPt: common2D.Point = { x: VALUE_900, y: VALUE_900 };
+let colors = [0xFFFFFF00, 0xFFFF0000, 0xFF0000FF];
+// 创建线性渐变着色器
+let shaderEffect = drawing.ShaderEffect.createLinearGradient(startPt, endPt, colors, drawing.TileMode.CLAMP);
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置着色器
+brush.setShaderEffect(shaderEffect);
+// 添加画刷填充效果
+canvas.attachBrush(brush);
+// 创建字型
+const font = new drawing.Font();
+// 设置字体大小
+font.setSize(VALUE_200);
+// 创建字块
+const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+// 绘制字块
+canvas.drawTextBlob(textBlob, VALUE_100, VALUE_300);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![Screenshot_20241225155707415](figures/Screenshot_20241225155707415.jpg)
 
 ## 主题字体
