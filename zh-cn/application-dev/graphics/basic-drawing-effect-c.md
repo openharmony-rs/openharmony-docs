@@ -90,6 +90,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 6. 当不再需要画刷进行效果填充时，请及时使用OH_Drawing_BrushDestroy()接口销毁Brush对象。
 
    <!-- @[ndk_graphics_draw_brush_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 销毁各类对象
+   OH_Drawing_BrushDestroy(brush);
+   ```
 
 
 ## 描边效果
