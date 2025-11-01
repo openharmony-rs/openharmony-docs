@@ -106,6 +106,46 @@ OH_Drawing_PenDestroy(pen);
 
 <!-- @[ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+// 创建画笔
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+// 设置画刷抗锯齿
+OH_Drawing_BrushSetAntiAlias(brush, true);
+// 设置画刷描边颜色
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
+// 设置画笔抗锯齿
+OH_Drawing_PenSetAntiAlias(pen, true);
+// 设置描边线宽为3
+OH_Drawing_PenSetWidth(pen, 3);
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+// 设置画笔描边效果
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value150_);
+const char *str = "你好";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 去除描边效果
+OH_Drawing_CanvasDetachPen(canvas);
+// 设置画刷描边效果
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+
+// 销毁各类对象
+OH_Drawing_TextBlobDestroy(textBlob);
+OH_Drawing_FontDestroy(font);
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_BrushDestroy(brush);
+```
+
 ![chinese_stroke_text_c](figures/chinese_stroke_text_c.png)
 
 ## 文字渐变
