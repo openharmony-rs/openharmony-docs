@@ -252,6 +252,16 @@ static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_cal
 
 <!-- @[add_function_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/types/libnativedisplay/Index.d.ts) -->
 
+``` TypeScript
+export const getDisplayRotation: () => number;
+export const getCutoutInfo: () => number;
+export const registerDisplayChange: () => number;
+export const unregisterDisplayChange: (index: number) => number;
+export const checkIsFoldDevice: () => boolean;
+export const registerFoldDisplayModeChange: () => number;
+export const unregisterFoldDisplayModeChange: (index: number) => number;
+```
+
 ## 在index.ets文件中调用函数
 
 <!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
