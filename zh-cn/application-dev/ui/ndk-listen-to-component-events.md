@@ -122,6 +122,75 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
     注册事件监听回调：
     <!-- @[get_event_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    // 注册click事件
+    nodeAPI->registerNodeEvent(button, NODE_ON_CLICK_EVENT, 0, nullptr);
+    // 设置组件事件的全局监听
+    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+        // 从组件事件中获取基础事件对象
+        auto *inputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
+        // 从组件事件获取事件类型
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                     "NdkAddInteractionEvent_eventInfo inputEvent = %{public}p", inputEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                     "NdkAddInteractionEvent_eventInfo eventType = %{public}d", eventType);
+        auto componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        // 获取组件事件中的数字类型数据
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                     "NdkAddInteractionEvent_eventInfo componentEvent = %{public}p", componentEvent);
+        // 获取触发该事件的组件对象
+        auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                     "NdkAddInteractionEvent_eventInfo nodeHandle = %{public}p", nodeHandle);
+        // 根据eventType来区分事件类型，进行差异化处理，其他获取事件信息的接口也可类似方式来进行差异化的处理
+        switch (eventType) {
+            case NODE_ON_CLICK_EVENT: {
+                // 触发点击事件所进行的操作，从基础事件获取事件信息
+                auto x = OH_ArkUI_PointerEvent_GetX(inputEvent);
+                auto y = OH_ArkUI_PointerEvent_GetY(inputEvent);
+                auto displayX = OH_ArkUI_PointerEvent_GetDisplayX(inputEvent);
+                auto displayY = OH_ArkUI_PointerEvent_GetDisplayY(inputEvent);
+                auto windowX = OH_ArkUI_PointerEvent_GetWindowX(inputEvent);
+                auto windowY = OH_ArkUI_PointerEvent_GetWindowY(inputEvent);
+                auto pointerCount = OH_ArkUI_PointerEvent_GetPointerCount(inputEvent);
+                auto xByIndex = OH_ArkUI_PointerEvent_GetXByIndex(inputEvent, 0);
+                auto yByIndex = OH_ArkUI_PointerEvent_GetYByIndex(inputEvent, 0);
+                auto displayXByIndex = OH_ArkUI_PointerEvent_GetDisplayXByIndex(inputEvent, 0);
+                auto displayYByIndex = OH_ArkUI_PointerEvent_GetDisplayYByIndex(inputEvent, 0);
+                auto windowXByIndex = OH_ArkUI_PointerEvent_GetWindowXByIndex(inputEvent, 0);
+                auto windowYByIndex = OH_ArkUI_PointerEvent_GetWindowYByIndex(inputEvent, 0);
+                auto pointerId = OH_ArkUI_PointerEvent_GetPointerId(inputEvent, 0);
+                auto pressure = OH_ArkUI_PointerEvent_GetPressure(inputEvent, 0);
+                auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+                auto eventTime = OH_ArkUI_UIInputEvent_GetEventTime(inputEvent);
+                auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
+                auto type = OH_ArkUI_UIInputEvent_GetType(inputEvent);
+                std::string eventInfo =
+                    "x: " + std::to_string(x) + ", y: " + std::to_string(y) +
+                    ", displayX: " + std::to_string(displayX) + ", displayY: " + std::to_string(displayY) +
+                    ", windowX: " + std::to_string(windowX) + ", windowY: " + std::to_string(windowY) +
+                    ", pointerCount: " + std::to_string(pointerCount) + ", xByIndex: " + std::to_string(xByIndex) +
+                    ", yByIndex: " + std::to_string(yByIndex) +
+                    ", displayXByIndex: " + std::to_string(displayXByIndex) +
+                    ", displayYByIndex: " + std::to_string(displayYByIndex) +
+                    ", windowXByIndex: " + std::to_string(windowXByIndex) +
+                    ", windowYByIndex: " + std::to_string(windowYByIndex) +
+                    ", pointerId: " + std::to_string(pointerId) + ", pressure: " + std::to_string(pressure) +
+                    ", action: " + std::to_string(action) + ", eventTime: " + std::to_string(eventTime) +
+                    ", sourceType: " + std::to_string(sourceType) + ", type: " + std::to_string(type);
+                OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                             "NdkAddInteractionEvent_eventInfoOfCommonEvent eventInfo = %{public}s",
+                             eventInfo.c_str());
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    });
+    ```
 
     解注册事件处理函数：
     <!-- @[unregister_node_event_receicer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
