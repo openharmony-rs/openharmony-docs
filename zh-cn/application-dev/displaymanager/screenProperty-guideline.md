@@ -189,6 +189,18 @@ try {
 
 <!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let isFoldableDevice: boolean = false;
+try {
+  isFoldableDevice = display.isFoldable();
+  // 打印此设备是否为折叠设备
+  hilog.info(DOMAIN, 'DisplayTest', `This device is foldable: ${isFoldableDevice}`);
+} catch (exception) {
+  hilog.error(DOMAIN, 'DisplayTest',
+    `Failed to get foldable message. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 2. 若当前设备为折叠设备，可以通过display.on('foldStatusChange')开启折叠设备折叠状态变化的监听；可通过display.off('foldStatusChange')关闭对应的监听。
 
 <!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
