@@ -1715,6 +1715,40 @@ V1：
 
 <!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) -->
 
+``` TypeScript
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  public isDark: boolean = false;
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    if (this.isDark) {
+      instance.backgroundColor(Color.Black);
+    } else {
+      instance.backgroundColor(Color.Red);
+    }
+  }
+}
+
+@Entry
+@Component
+struct AttributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .onClick(() => {
+            this.modifier.isDark = !this.modifier.isDark;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 V2：
 
 在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，如果要观察attributeModifier的属性变化，可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
