@@ -53,6 +53,33 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[Internal_@ObservedV2_@Trace_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page1.ets) -->
 
+``` TypeScript
+// Page1.ets
+// 预览器上不支持获取页面共享的LocalStorage实例。
+@Entry({ useSharedStorage: true })
+@Component
+struct Page1 {
+  @LocalStorageLink('count') count: number = 0;
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pageStack) {
+      Column() {
+        Text(`${this.count}`)
+          .fontSize(50)
+          .onClick(() => {
+            this.count++;
+          })
+        Button('push to Page2')
+          .onClick(() => {
+            this.pageStack.pushPathByName('Page2', null);
+          })
+      }
+    }
+  }
+}
+```
+
 <!-- @[Internal_@ObservedV2_@Trace_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page2.ets) -->
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
