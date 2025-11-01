@@ -127,6 +127,12 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 1. 导入依赖的相关头文件。
 
    <!-- @[ndk_graphics_draw_include_native_drawing_canvas_and_bitmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   #include <native_drawing/drawing_bitmap.h>
+   // ···
+   #include <native_drawing/drawing_canvas.h>
+   ```
 
 2. 创建基于CPU的Canvas。需要通过OH_Drawing_BitmapCreate()接口创建一个位图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasBind()接口将位图绑定到Canvas中，从而使得Canvas绘制的内容可以输出到位图中。
 
