@@ -81,6 +81,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 5. 当不需要填充效果时，可以使用OH_Drawing_CanvasDetachBrush()去除。入参为画布对象Canvas。
 
    <!-- @[ndk_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 去除画布中的画刷
+   OH_Drawing_CanvasDetachBrush(canvas);
+   ```
 
 6. 当不再需要画刷进行效果填充时，请及时使用OH_Drawing_BrushDestroy()接口销毁Brush对象。
 
