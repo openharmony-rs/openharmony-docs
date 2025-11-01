@@ -614,6 +614,35 @@ AppStorage与应用进程绑定，支持跨Ability数据共享。
 
 <!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
 
+``` TypeScript
+// EntryAbility Index.ets
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @StorageLink('count') count: number = 0;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      Text(`EntryAbility count: ${this.count}`)
+        .fontSize(50)
+        .onClick(() => {
+          this.count++;
+        })
+      Button('Jump to EntryAbility1').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.example.myapplication', // 替换成AppScope/app.json5里的bundleName
+          abilityName: 'EntryAbility1'
+        };
+        this.context.startAbility(wantInfo);
+      })
+    }
+  }
+}
+```
+
 <!-- @[Internal_AppStorage_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1two.ets) -->
 
 ``` TypeScript
