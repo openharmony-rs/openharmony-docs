@@ -40,6 +40,14 @@
 - \@Once仅在[\@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件中与\@Param搭配使用。
 
   <!-- @[once_param_componentV2_pair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
+  
+  ``` TypeScript
+  @ComponentV2
+  struct MyComponent {
+    @Param @Once onceParam: string = 'onceParam'; // 正确用法
+  // ···
+  }
+  ```
 
 - \@Once与\@Param的先后顺序无关，可以写成\@Param \@Once也可以写成\@Once \@Param。
 
