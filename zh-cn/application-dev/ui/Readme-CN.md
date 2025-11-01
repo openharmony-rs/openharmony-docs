@@ -26,6 +26,8 @@
       - [ArkTS-Dyn使用ArkTS-Sta的AppStorageV2进行状态存储](arkts-dyn-interop-sta-storages-v2.md)
       - [ArkTS-Sta使用ArkTS-Dyn @ObservedV2数据和@Trace数据互操作](arkts-sta-interop-dyn-observedv2.md)
       - [ArkTS-Dyn使用ArkTS-Sta @ObservedV2数据和@Trace数据互操作](arkts-dyn-interop-sta-observedv2.md)
+      - [ArkTS-Sta使用ArkTS-Dyn @Builder按引用传递参数V2状态管理互操作](arkts-sta-interop-dyn-builder-v2.md)
+      - [ArkTS-Dyn使用ArkTS-Sta @Builder按引用传递参数V2状态管理互操作](arkts-dyn-interop-sta-builder-v2.md)
     - 状态管理V1V2混用互操作
     - [UI数据互操作](arkts-sta-interop-dyn-ui-data.md)
     - [ArkTS-Dyn部分特性使用ArkTS-Sta开发](arkts-dyn-partial-features-using-sta.md)
