@@ -209,53 +209,7 @@
 
 - 当装饰的变量是嵌套类或对象数组时，\@Local无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
 
-<!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
-
-``` TypeScript
-class RawObject {
-  public name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-@ObservedV2
-class ObservedObject {
-  @Trace public name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local rawObject: RawObject = new RawObject('rawObject');
-  @Local observedObject: ObservedObject = new ObservedObject('observedObject');
-
-  build() {
-    Column() {
-      Text(`${this.rawObject.name}`)
-      Text(`${this.observedObject.name}`)
-      Button('change object')
-        .onClick(() => {
-          // 对类对象整体的修改均能观察到
-          this.rawObject = new RawObject('new rawObject');
-          this.observedObject = new ObservedObject('new observedObject');
-        })
-      Button('change name')
-        .onClick(() => {
-          // @Local不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
-          this.rawObject.name = 'new rawObject name';
-          // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
-          this.observedObject.name = 'new observedObject name';
-        })
-    }
-  }
-}
-```
+<!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
 
  当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
