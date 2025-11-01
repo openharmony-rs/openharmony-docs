@@ -1111,6 +1111,22 @@ V2:
 封装Env类型来传递多个系统环境变量。
 
 <!-- @[Internal_Environment_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/pages/Env.ets) -->
+
+``` TypeScript
+// Env.ets
+import { ConfigurationConstant } from '@kit.AbilityKit';
+
+export class Env {
+  public language: string | undefined;
+  public colorMode: ConfigurationConstant.ColorMode | undefined;
+  // 字体大小缩放的倍数
+  public fontSizeScale: number | undefined;
+  // 字体粗细缩放的倍数
+  public fontWeightScale: number | undefined;
+}
+
+export let env: Env = new Env();
+```
 在`onCreate`里获取需要的系统环境变量：
 <!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
 在页面中获取当前Env的值。
