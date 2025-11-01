@@ -95,6 +95,11 @@ pixelMap = image.createPixelMapSync(color, opts);
    drawImage()函数接受4个参数，第一个就是上文中创建的PixelMap，第二个是绘制图片位置的左上角x轴坐标，第三个是左上角y轴坐标，第四个为采样选项对象，默认为不使用任何参数构造的原始采样选项对象。
 
    <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   
+   ``` TypeScript
+   // 为了使图片完全显示，修改绘制起点参数为（0，0）
+   canvas.drawImage(pixelMap, 0, 0);
+   ```
 
    绘制效果如下：
 
