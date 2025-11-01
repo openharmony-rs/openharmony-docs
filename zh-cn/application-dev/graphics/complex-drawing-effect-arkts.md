@@ -290,6 +290,36 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 <!-- @[arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置颜色矩阵
+let matrix: number[] = [
+  1, 0, 0, 0, 0,
+  0, 1, 0, 0, 0,
+  0, 0, 0.5, 0.5, 0,
+  0, 0, 0.5, 0.5, 0
+];
+// 创建5x4颜色矩阵的颜色滤波器
+let filter = drawing.ColorFilter.createMatrixColorFilter(matrix);
+// 设置颜色滤波器
+brush.setColorFilter(filter);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+let rect: common2D.Rect = {
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
+// 绘制矩形
+canvas.drawRect(rect);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 | 原始图 | 设置5x4颜色矩阵的颜色滤波器后的效果图 |
 | -------- | -------- |
 | ![Screenshot_20241130173415925](figures/Screenshot_20241130173415925.jpg) | ![Screenshot_20241130173354704](figures/Screenshot_20241130173354704.jpg) |
