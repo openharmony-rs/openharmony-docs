@@ -224,6 +224,27 @@ canvas.detachPen();
 
 <!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 创建左上角的region1
+let region1 = new drawing.Region();
+region1.setRect(VALUE_100, VALUE_100, VALUE_600, VALUE_600);
+// 创建右下角的region2
+let region2 = new drawing.Region();
+region2.setRect(VALUE_300, VALUE_300, VALUE_900, VALUE_900);
+// 将两个区域以XOR的方式组合
+region1.op(region2, drawing.RegionOp.XOR);
+// 绘制区域
+canvas.drawRegion(region1);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
 
