@@ -7145,7 +7145,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":50,
 						"name":"image_decodingsize",
 						"start_line":16
 					}
