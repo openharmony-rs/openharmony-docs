@@ -181,6 +181,36 @@ OH_Drawing_PointDestroy(endPt);
 
 <!-- @[ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 圆心坐标
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
+// 半径
+float radius = value600_;
+// 颜色数组
+uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
+// 相对位置数组
+float_t gPos[] = {0.0f, 0.25f, 0.75f};
+// 创建径向渐变着色器效果
+OH_Drawing_ShaderEffect *colorShaderEffect =
+    OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, OH_Drawing_TileMode::REPEAT);
+// 创建画刷对象
+OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+// 基于画刷设置着色器效果
+OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
+// 在画布上设置画刷，请确保已获取得到画布对象
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // 绘制矩形
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 去除掉画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
+OH_Drawing_PointDestroy(centerPt);
+```
+
 此例绘制的具有径向渐变着色器效果的矩形如下所示：
 
 ![zh-cn_image_0000002158744130](figures/zh-cn_image_0000002158744130.png)
