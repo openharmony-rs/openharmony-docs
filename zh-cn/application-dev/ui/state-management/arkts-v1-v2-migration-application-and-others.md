@@ -1484,6 +1484,46 @@ V2：
 
 <!-- @[Internal_Other_Migrations_List_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV2.ets) -->
 
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ListExample {
+  private arr: Array<number> = new Array(10).fill(0);
+  private scroller: ListScroller = new ListScroller();
+  // 子组件主轴方向的间隔
+  listSpace: number = 10;
+  // 使用makeObserved的能力来观测ChildrenMainSize
+  listChildrenSize: ChildrenMainSize = UIUtils.makeObserved(new ChildrenMainSize(100));
+
+  build() {
+    Column() {
+      Button('change Default').onClick(() => {
+        this.listChildrenSize.childDefaultSize += 10;
+      })
+
+      Button('splice 5').onClick(() => {
+        this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+      })
+
+      Button('update 5').onClick(() => {
+        this.listChildrenSize.update(0, 200);
+      })
+
+      List({ space: this.listSpace, scroller: this.scroller }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text(`item-` + item)
+          }.backgroundColor(Color.Pink)
+        })
+      }
+      .childrenMainSize(this.listChildrenSize) // 10
+    }
+  }
+}
+```
+
 **WaterFlow**
 
 开发者可以通过[WaterFlowSections](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)来设置WaterFlow瀑布流分组信息。
