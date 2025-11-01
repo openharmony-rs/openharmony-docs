@@ -104,6 +104,13 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 7. 利用XComponent完成显示。
 
    <!-- @[ndk_graphics_draw_native_window_flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 设置刷新区域，如果Region中的Rect为nullptr,或者rectNumber为0，则认为OHNativeWindowBuffer全部有内容更改。
+   Region region{nullptr, 0};
+   // 通过OH_NativeWindow_NativeWindowFlushBuffer 提交给消费者使用，例如：显示在屏幕上。
+   OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer_, fenceFd_, region);
+   ```
 
 
 ## 离屏Canvas画布的获取与显示
