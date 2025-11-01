@@ -310,6 +310,44 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 <!-- @[ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+// 设置画刷抗锯齿
+OH_Drawing_BrushSetAntiAlias(brush, true);
+// 设置画刷填充颜色
+OH_Drawing_BrushSetColor(brush, 0xffff0000);
+// 设置颜色矩阵
+const float matrix[20] = {
+    1, 0, 0, 0, 0,
+    0, 1, 0, 0, 0,
+    0, 0, 0.5f, 0.5f, 0,
+    0, 0, 0.5f, 0.5f, 0
+};
+    
+// 创建滤波器颜色
+OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
+// 创建一个滤波器对象
+OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+// 为滤波器对象设置颜色滤波器
+OH_Drawing_FilterSetColorFilter(filter, colorFilter);
+// 设置画刷的滤波器效果
+OH_Drawing_BrushSetFilter(brush, filter);
+// 在画布上设置画刷，请确保已获取得到画布对象
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 创建矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+// 绘制矩形
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 去除掉画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_ColorFilterDestroy(colorFilter);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_FilterDestroy(filter);
+```
+
 | 不设置颜色滤波器效果的示意图 | 设置5x4颜色矩阵的颜色滤波器效果的示意图 |
 | -------- | -------- |
 | ![zh-cn_image_0000002194110869](figures/zh-cn_image_0000002194110869.png) | ![zh-cn_image_0000002194025241](figures/zh-cn_image_0000002194025241.png) |
