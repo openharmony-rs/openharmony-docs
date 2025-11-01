@@ -64,6 +64,29 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 <!-- @[arkts_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
+``` TypeScript
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置抗锯齿
+pen.setAntiAlias(true);
+// 设置描边线宽
+pen.setStrokeWidth(3.0);
+// 设置描边颜色
+pen.setColor(0xFF, 0xFF,  0x00, 0x00);
+// 创建字型对象
+const font = new drawing.Font();
+// 设置字体大小
+font.setSize(100);
+// 添加画笔描边效果
+canvas.attachPen(pen);
+// 创建字块对象
+const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+// 绘制字块
+canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
+// 去除描边效果
+canvas.detachPen();
+```
+
 ![Screenshot_20241225152446749](figures/Screenshot_20241225152446749.jpg)
 
 ### 中文文字描边
