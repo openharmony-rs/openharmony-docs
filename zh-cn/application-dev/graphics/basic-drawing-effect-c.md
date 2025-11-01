@@ -194,6 +194,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    - 可使用OH_Drawing_PenSetJoin()接口设置画笔转角样式。
 
       <!-- @[ndk_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔转角样式
+      OH_Drawing_PenSetJoin(pen, OH_Drawing_PenLineJoinStyle::LINE_BEVEL_JOIN);
+      ```
 
       OH_Drawing_PenLineJoinStyle转角样式可选分类对应如下：
       | 转角样式 | 说明 | 示意图 |
