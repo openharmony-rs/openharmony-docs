@@ -56,6 +56,12 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
     创建一个节点，将事件触发回调函数绑定到该节点并进行事件注册：
     <!-- @[create_and_register_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+    nodeAPI->addNodeEventReceiver(button, NodeEventReceiver);
+    nodeAPI->registerNodeEvent(button, NODE_ON_CLICK_EVENT, 0, nullptr);
+    ```
 
   详细的事件类型请参考[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)。
 
