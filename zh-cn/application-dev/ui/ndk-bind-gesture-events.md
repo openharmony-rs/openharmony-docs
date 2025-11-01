@@ -15,6 +15,23 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 1. 创建一个Column节点，用于绑定手势。
     <!-- @[create_column](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    // 创建Column节点
+    auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    // 设置背景色
+    ArkUI_NumberValue value[] = {{.u32 = 0xff112233}};
+    ArkUI_AttributeItem item = {value, 1};
+    nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &item);
+    // 设置宽度
+    ArkUI_NumberValue widthValue[] = {{400}};
+    ArkUI_AttributeItem width = {widthValue, 1};
+    nodeAPI->setAttribute(column, NODE_WIDTH, &width);
+    // 设置高度
+    ArkUI_NumberValue heightValue[] = {{400}};
+    ArkUI_AttributeItem height = {heightValue, 1};
+    nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
+    ```
 
 
 2. 创建一个单指长按1秒并持续响应的长按手势。
