@@ -262,6 +262,18 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 4. 将上一步中创建的像素图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
 
    <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // PixelMap中像素的截取区域
+   OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 600, 400);
+   // 画布中显示的区域
+   OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
+   // 采样选项对象
+   OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
+       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+   // 绘制PixelMap
+   OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
+   ```
 
 
 ### GPU后端Canvas的创建与显示
