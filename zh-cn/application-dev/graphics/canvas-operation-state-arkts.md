@@ -187,6 +187,21 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色为红色
+brush.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 执行放大操作
+canvas.scale(2, 2);
+// 绘制矩形
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
+// 去除填充效果
+canvas.detachBrush();
+```
+
 
 | 原始图 | 缩放后的效果图 |
 | -------- | -------- |
