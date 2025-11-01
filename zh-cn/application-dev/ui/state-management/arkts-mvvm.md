@@ -761,6 +761,54 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * ThingComponent.ets
 
   <!-- @[thing_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/ThingComponent.ets) -->
+  
+  ``` TypeScript
+  import ThingViewModel from '../viewmodel/ThingViewModel';
+  
+  @Component
+  export struct ThingComponent {
+    @ObjectLink thing: ThingViewModel;
+  
+    @Builder
+    displayIcon(icon: Resource) {
+      Image(icon)
+        .width(28)
+        .height(28)
+        .onClick(() => {
+          this.thing.updateIsFinish(); // View层点击事件发生时，调用ViewModel层方法updateIsFinish处理逻辑
+        })
+        .id(this.thing.thingName)
+    }
+  
+    build() {
+      // 待办事项
+      Row({ space: 15 }) {
+        if (this.thing.isFinish) {
+          // $r('app.media.finished')需要替换为开发者所需的资源文件
+          this.displayIcon($r('app.media.finished'));
+        } else {
+          // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+          this.displayIcon($r('app.media.unfinished'));
+        }
+  
+        Text(`${this.thing.thingName}`)
+          .fontSize(24)
+          .decoration({ type: this.thing.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
+          .onClick(() => {
+            this.thing.addSuffixes(); // View层点击事件发生时，调用ViewModel层方法addSuffixes处理逻辑
+          })
+      }
+      .height('8%')
+      .width('90%')
+      .padding({ left: 15 })
+      .opacity(this.thing.isFinish ? 0.3 : 1)
+      .border({ width: 1 })
+      .borderColor(Color.White)
+      .borderRadius(25)
+      .backgroundColor(Color.White)
+    }
+  }
+  ```
 
   * TodoComponent.ets
 
