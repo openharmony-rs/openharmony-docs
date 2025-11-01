@@ -177,6 +177,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    - 可使用OH_Drawing_PenSetCap()接口设置画笔线帽样式。
 
       <!-- @[ndk_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔线帽样式
+      OH_Drawing_PenSetCap(pen, OH_Drawing_PenLineCapStyle::LINE_ROUND_CAP);
+      ```
 
       OH_Drawing_PenLineCapStyle线帽样式可选分类对应如下：
 
