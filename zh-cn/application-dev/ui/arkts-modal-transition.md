@@ -517,6 +517,60 @@ struct BindContextMenuDemo {
 
 <!-- @[bind_popup_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template5/BindPopupDemo.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct BindPopupDemo {
+  // 第一步：定义变量控制弹窗显示
+  @State customPopup: boolean = false;
+
+  // 第二步：popup构造器定义弹框内容
+  @Builder
+  popupBuilder() {
+    Column({ space: 2 }) {
+      Row().width(64)
+        .height(64)
+        .backgroundColor(0x409eff)
+      Text('Popup')
+        .fontSize(10)
+        .fontColor(Color.White)
+    }
+    .justifyContent(FlexAlign.SpaceAround)
+    .width(100)
+    .height(100)
+    .padding(5)
+  }
+
+  build() {
+    Column() {
+
+      Button('click')
+      // 第四步：创建点击事件，控制弹窗显隐
+        .onClick(() => {
+          this.customPopup = !this.customPopup;
+        })
+        .backgroundColor(0xf56c6c)
+        // 第三步：使用bindPopup接口将弹窗内容绑定给元素
+        .bindPopup(this.customPopup, {
+          builder: this.popupBuilder,
+          placement: Placement.Top,
+          maskColor: 0x33000000,
+          popupColor: 0xf56c6c,
+          enableArrow: true,
+          onStateChange: (e) => {
+            if (!e.isVisible) {
+              this.customPopup = false;
+            }
+          }
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height(437)
+  }
+}
+```
+
 
 
 ![zh-cn_image_0000001649282285](figures/zh-cn_image_0000001649282285.gif)
