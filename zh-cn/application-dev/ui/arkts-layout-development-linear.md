@@ -472,6 +472,22 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 
 <!-- @[BlankExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/BlankExample.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column() {
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank()
+        Toggle({ type: ToggleType.Switch, isOn: true })
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 }).width('100%')
+    }.backgroundColor(0xEFEFEF).padding(20).width('100%')
+  }
+}
+```
+
   **图9** 竖屏（自适应屏幕窄边）
 
 ![zh-cn_image_0000001562820881](figures/zh-cn_image_0000001562820881.png)
