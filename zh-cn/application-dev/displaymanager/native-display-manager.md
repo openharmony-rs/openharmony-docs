@@ -305,3 +305,49 @@ export const unregisterFoldDisplayModeChange: (index: number) => number;
 ## 在index.ets文件中调用函数
 
 <!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+private callGetDisplayRotation(): void {
+  this.promptAction.openToast({ message: '调用getDisplayRotation方法' }).catch((error: Error) => {
+    console.error(`callGetDisplayRotation error ${JSON.stringify(error)}`);
+  }).then(() => {
+    console.info(`get rotation value is: ${displayNapi.getDisplayRotation()}`);
+  });
+}
+
+private callFoldableCallback(): void {
+  this.promptAction.openToast({ message: '调用register displayMode方法' }).catch((error: Error) => {
+    console.error(`callFoldableCallback error ${JSON.stringify(error)}`);
+  }).then(() => {
+    let registerIndex = displayNapi.registerFoldDisplayModeChange();
+    console.info(`register foldable value is: ${registerIndex}`);
+    console.info(`unregister foldable value is: ${displayNapi.unregisterFoldDisplayModeChange(registerIndex)}`);
+  });
+}
+
+private callGetCutoutInfo(): void {
+  this.promptAction.openToast({ message: '调用getCutoutInfo方法' }).catch((error: Error) => {
+    console.error(`callGetCutoutInfo error ${JSON.stringify(error)}`);
+  }).then(() => {
+    console.info(`cutoutInfo length is: ${displayNapi.getCutoutInfo()}`);
+  });
+}
+
+private callDealListenCallback(): void {
+  this.promptAction.openToast({ message: '调用regiseter change方法' }).catch((error: Error) => {
+    console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
+  }).then(() => {
+    let registerIndex = displayNapi.registerDisplayChange();
+    console.info(`register display change value is: ${registerIndex}`);
+    console.info(`unregister display change value is: ${displayNapi.unregisterDisplayChange(registerIndex)}`);
+  });
+}
+
+private callDealFoldableDevice(): void {
+  this.promptAction.openToast({ message: '调用dealFoldableDevice方法' }).catch((error: Error) => {
+    console.error(`callDealFoldableDevice error ${JSON.stringify(error)}`);
+  }).then(() => {
+    console.info(`fold device is: ${displayNapi.checkIsFoldDevice()}`);
+  });
+}
+```
