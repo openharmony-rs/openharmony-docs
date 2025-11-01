@@ -156,6 +156,42 @@ OH_Drawing_BrushDestroy(brush);
 
 <!-- @[ndk_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 开始点
+OH_Drawing_Point *startPt = OH_Drawing_PointCreate(value100_, value100_);
+// 结束点
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
+// 颜色数组
+uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
+// 相对位置数组
+float pos[] = {0.0f, 0.5f, 1.0f};
+// 创建线性渐变着色器效果
+OH_Drawing_ShaderEffect *colorShaderEffect =
+    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+// 创建画刷对象
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+// 基于画刷设置着色器效果
+OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
+// 设置画刷填充效果
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value150_);
+const char *str = "Hello world";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 取消填充效果
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_TextBlobDestroy(textBlob);
+OH_Drawing_FontDestroy(font);
+OH_Drawing_BrushDestroy(brush);
+```
+
 ![Screenshot_20241225173900576](figures/Screenshot_20241225173900576.jpg)
 
 ## 主题字体
