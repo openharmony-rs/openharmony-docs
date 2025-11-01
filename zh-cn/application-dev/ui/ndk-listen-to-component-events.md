@@ -47,6 +47,12 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
     定义事件触发回调函数：
     <!-- @[node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    void NodeEventReceiver(ArkUI_NodeEvent *event) {
+      // 设置对应的事件类型触发时进行的操作，如NODE_ON_CLICK_EVENT
+    };
+    ```
 
     创建一个节点，将事件触发回调函数绑定到该节点并进行事件注册：
     <!-- @[create_and_register_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
