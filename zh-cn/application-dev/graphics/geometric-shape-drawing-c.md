@@ -145,6 +145,26 @@ OH_Drawing_RectDestroy(rect);
 
 <!-- @[ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔对象
+OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画笔线宽为20
+OH_Drawing_PenSetWidth(pen, 20);
+// 设置画布的画笔
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建圆心点
+OH_Drawing_Point *point = OH_Drawing_PointCreate(value700_, value700_);
+// 基于圆心点和半径在画布上绘制圆
+OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
+// 去除掉画布中的画笔
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_PointDestroy(point);
+```
+
 效果如下：
 
 ![zh-cn_image_0000002158584390](figures/zh-cn_image_0000002158584390.png)
