@@ -141,6 +141,22 @@ V2:
 
 <!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
 
+``` TypeScript
+@ObservedV2
+export class MyStorage {
+  public static singleton_: MyStorage;
+
+  static instance() {
+    if (!MyStorage.singleton_) {
+      MyStorage.singleton_ = new MyStorage();
+    }
+    return MyStorage.singleton_;
+  }
+  // 页面级UI状态存储的数字
+  @Trace public count: number = 47;
+}
+```
+
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page1.ets) -->
 
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page2.ets) -->
