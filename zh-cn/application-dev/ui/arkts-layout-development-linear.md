@@ -99,6 +99,19 @@ Row({ space: 35 }) {
 - justifyContent(FlexAlign.Start)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
   <!-- @[ColumnLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentStart.ets) -->
+  
+  ``` TypeScript
+  Column({}) {
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
+  ```
 
   ![zh-cn_image_0000001562700501](figures/zh-cn_image_0000001562700501.png)
 
