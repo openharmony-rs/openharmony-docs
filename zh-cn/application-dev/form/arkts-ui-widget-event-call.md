@@ -169,7 +169,6 @@
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
       },
     // ···
-      // [EndExclude jscard_extension_ability]
     ]
     ```
 
