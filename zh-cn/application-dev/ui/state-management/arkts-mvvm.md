@@ -894,6 +894,39 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * TodoListViewModel.ets
 
   <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->
+  
+  ``` TypeScript
+  import ThingViewModel from './ThingViewModel';
+  import { common } from '@kit.AbilityKit';
+  import TodoListModel from '../model/TodoListModel';
+  
+  @Observed
+  export class ThingViewModelArray extends Array<ThingViewModel> {
+  }
+  
+  @Observed
+  export default class TodoListViewModel {
+    @Track public isChoosen: boolean = true;
+    @Track public things: ThingViewModelArray = new ThingViewModelArray();
+  
+    async loadTasks(context: common.UIAbilityContext) {
+      let todoList = new TodoListModel([]);
+      await todoList.loadTasks(context);
+      for (let thing of todoList.things) {
+        let todoListViewModel = new ThingViewModel();
+        todoListViewModel.updateTask(thing);
+        this.things.push(todoListViewModel);
+      }
+    }
+  
+    chooseAll(): void {
+      for (let thing of this.things) {
+        thing.isFinish = this.isChoosen;
+      }
+      this.isChoosen = !this.isChoosen;
+    }
+  }
+  ```
 
   * default_tasks.json
 
