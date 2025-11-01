@@ -35,6 +35,10 @@
 
 <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include "database/rdb/relational_store.h"
+```
+
 
 3. 针对是否配置自定义加密/解密参数，有如下两种场景：
 
