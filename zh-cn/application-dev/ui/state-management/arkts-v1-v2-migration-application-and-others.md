@@ -1129,6 +1129,25 @@ export let env: Env = new Env();
 ```
 在`onCreate`里获取需要的系统环境变量：
 <!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { env } from '../pages/Env';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    env.language = this.context.config.language;
+    env.colorMode = this.context.config.colorMode;
+    env.fontSizeScale = this.context.config.fontSizeScale;
+    env.fontWeightScale = this.context.config.fontWeightScale;
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index');
+  }
+}
+```
 在页面中获取当前Env的值。
 <!-- @[Internal_Environment_V2_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/Index.ets) -->
 
