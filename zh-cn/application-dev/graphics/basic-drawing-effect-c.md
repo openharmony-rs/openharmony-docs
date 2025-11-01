@@ -221,6 +221,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 6. 当不再需要画笔进行描边时，请及时使用OH_Drawing_PenDestroy()接口销毁Pen对象。
 
    <!-- @[ndk_graphics_draw_pen_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 销毁各类对象
+   OH_Drawing_PenDestroy(pen);
+   ```
 
 <!--RP1-->
 ## 相关实例
