@@ -39,6 +39,11 @@
 
 <!-- @[ndk_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷
+OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+```
+
 2. 使用画刷设置基础绘制效果（可选以下的一个或者多个效果）。
 
    - 可使用OH_Drawing_BrushSetColor()接口设置填充颜色。
