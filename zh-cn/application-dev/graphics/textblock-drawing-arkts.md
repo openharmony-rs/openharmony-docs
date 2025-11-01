@@ -206,6 +206,23 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 <!-- @[arkts_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 设置文字大小
+font.setSize(100);
+let startX = 100;
+let startY = 100;
+let text = ['H', 'e', 'l', 'l', 'o'];
+for (let s of text) {
+  // 单字绘制
+  canvas.drawSingleCharacter(s, font, startX, startY);
+  // 测量单个字符的宽度
+  let textWidth = font.measureSingleCharacter(s);
+  startX += textWidth;
+}
+```
+
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
 进阶场景：绘制带字体特征的字符  
