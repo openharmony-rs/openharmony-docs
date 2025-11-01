@@ -30,6 +30,10 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    
    相关文件：
    <!-- @[arkts_graphics_draw_import_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   import { drawing } from '@kit.ArkGraphics2D';
+   ```
 
 2. 添加自定义RenderNode。
 
@@ -114,6 +118,38 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 5. 将自定义NodeController进行显示。
 
    <!-- @[arkts_graphics_draw_direct_and_indirect_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct RenderTest {
+     @State message: string = 'hello';
+     myNodeController_1 = new MyNodeControllerDirectDisplay();
+     myNodeController_2 = new MyNodeControllerIndirectDisplay();
+   
+     build() {
+       Row() {
+         Column() {
+           Column(){
+             Text($r('app.string.DirectCanvas'))
+             // 直接上屏显示画布
+             NodeContainer(this.myNodeController_1)
+               .width('100%')
+               .height('40%')
+           }
+           Column(){
+             Text($r('app.string.OffScreenCanvas'))
+             // 离屏画布
+             NodeContainer(this.myNodeController_2)
+               .width('100%')
+               .height('40%')
+               .margin({ top: 20 })
+           }
+         }
+       }
+     }
+   }
+   ```
 
 
 ## 离屏Canvas画布的获取与显示
@@ -121,6 +157,13 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 1. 导入依赖的相关文件。
 
    <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
+   import { image } from '@kit.ImageKit';
+   import { taskpool } from '@kit.ArkTS';
+   import { drawing } from '@kit.ArkGraphics2D';
+   ```
 
 2. 添加自定义RenderNode。
 
@@ -134,7 +177,39 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    2. 对离屏Canvas进行自定义的绘制操作。
    3. 将离屏Canvas的绘制结果交给RenderNode。
 
-   <!-- @[arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   <!-- @[arkts_graphics_draw_direct_and_indirect_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct RenderTest {
+     @State message: string = 'hello';
+     myNodeController_1 = new MyNodeControllerDirectDisplay();
+     myNodeController_2 = new MyNodeControllerIndirectDisplay();
+   
+     build() {
+       Row() {
+         Column() {
+           Column(){
+             Text($r('app.string.DirectCanvas'))
+             // 直接上屏显示画布
+             NodeContainer(this.myNodeController_1)
+               .width('100%')
+               .height('40%')
+           }
+           Column(){
+             Text($r('app.string.OffScreenCanvas'))
+             // 离屏画布
+             NodeContainer(this.myNodeController_2)
+               .width('100%')
+               .height('40%')
+               .margin({ top: 20 })
+           }
+         }
+       }
+     }
+   }
+   ```
 
 6. 将自定义NodeController进行显示。
    
