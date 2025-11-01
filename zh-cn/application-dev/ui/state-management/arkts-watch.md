@@ -114,37 +114,7 @@ change() {
 以下示例展示组件更新和\@Watch的处理步骤。count在CountModifier中由\@State装饰，在TotalView中由\@Prop装饰。
 
 
-```ts
-@Component
-struct TotalView {
-  @Prop @Watch('onCountUpdated') count: number = 0;
-  @State total: number = 0;
-  // @Watch 回调
-  onCountUpdated(propName: string): void {
-    this.total += this.count;
-  }
-
-  build() {
-    Text(`Total: ${this.total}`)
-  }
-}
-
-@Entry
-@Component
-struct CountModifier {
-  @State count: number = 0;
-
-  build() {
-    Column() {
-      Button('add to basket')
-        .onClick(() => {
-          this.count++
-        })
-      TotalView({ count: this.count })
-    }
-  }
-}
-```
+<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) -->
 
 处理步骤：
 
@@ -160,65 +130,7 @@ struct CountModifier {
 以下示例说明了如何在子组件中观察\@Link变量。
 
 
-```ts
-class PurchaseItem {
-  static NextId: number = 0;
-  public id: number;
-  public price: number;
-
-  constructor(price: number) {
-    this.id = PurchaseItem.NextId++;
-    this.price = price;
-  }
-}
-
-@Component
-struct BasketViewer {
-  @Link @Watch('onBasketUpdated') shopBasket: PurchaseItem[];
-  @State totalPurchase: number = 0;
-
-  updateTotal(): number {
-    let total = this.shopBasket.reduce((sum, i) => sum + i.price, 0);
-    // 超过100欧元可享受折扣
-    if (total >= 100) {
-      total = 0.9 * total;
-    }
-    return total;
-  }
-  // @Watch 回调
-  onBasketUpdated(propName: string): void {
-    this.totalPurchase = this.updateTotal();
-  }
-
-  build() {
-    Column() {
-      ForEach(this.shopBasket,
-        (item: PurchaseItem) => {
-          Text(`Price: ${item.price.toFixed(2)} €`)
-        },
-        (item: PurchaseItem) => item.id.toString()
-      )
-      Text(`Total: ${this.totalPurchase.toFixed(2)} €`)
-    }
-  }
-}
-
-@Entry
-@Component
-struct BasketModifier {
-  @State shopBasket: PurchaseItem[] = [];
-
-  build() {
-    Column() {
-      Button('Add to basket')
-        .onClick(() => {
-          this.shopBasket.push(new PurchaseItem(Math.round(100 * Math.random())))
-        })
-      BasketViewer({ shopBasket: $shopBasket })
-    }
-  }
-}
-```
+<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) -->
 
 处理步骤如下：
 
@@ -234,65 +146,7 @@ struct BasketModifier {
 
 为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明@Watch触发的时机与赋值、同步的关系。
 
-```ts
-@Observed
-class Task {
-  isFinished: boolean = false;
-
-  constructor(isFinished : boolean) {
-    this.isFinished = isFinished;
-  }
-}
-
-@Entry
-@Component
-struct ParentComponent {
-  @State @Watch('onTaskAChanged') taskA: Task = new Task(false);
-  @State @Watch('onTaskBChanged') taskB: Task = new Task(false);
-
-  onTaskAChanged(changedPropertyName: string): void {
-    console.info(`观测到父组件任务属性变化: ${changedPropertyName}`);
-  }
-
-  onTaskBChanged(changedPropertyName: string): void {
-    console.info(`观测到父组件任务属性变化: ${changedPropertyName}`);
-  }
-
-  build() {
-    Column() {
-      Text(`父组件任务A状态: ${this.taskA.isFinished ? '已完成' : '未完成'}`)
-      Text(`父组件任务B状态: ${this.taskB.isFinished ? '已完成' : '未完成'}`)
-      ChildComponent({ taskA: this.taskA, taskB: this.taskB })
-      Button('切换任务状态')
-        .onClick(() => {
-          this.taskB = new Task(!this.taskB.isFinished);
-          this.taskA = new Task(!this.taskA.isFinished);
-        })
-    }
-  }
-}
-
-@Component
-struct ChildComponent {
-  @ObjectLink @Watch('onObjectLinkTaskChanged') taskB: Task;
-  @Link @Watch('onLinkTaskChanged') taskA: Task;
-
-  onObjectLinkTaskChanged(changedPropertyName: string): void {
-    console.info(`观测到子组件@ObjectLink关联的任务属性变化: ${changedPropertyName}`);
-  }
-
-  onLinkTaskChanged(changedPropertyName: string): void {
-    console.info(`观测到子组件@Link关联的任务属性变化: ${changedPropertyName}`);
-  }
-
-  build() {
-    Column() {
-      Text(`子组件任务A状态: ${this.taskA.isFinished ? '已完成' : '未完成'}`)
-      Text(`子组件任务B状态: ${this.taskB.isFinished ? '已完成' : '未完成'}`)
-    }
-  }
-}
-```
+<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
 
 处理步骤如下：
 
@@ -315,37 +169,7 @@ struct ChildComponent {
 以下示例说明了如何在\@Watch函数中使用changedPropertyName进行不同的逻辑处理。
 
 
-```ts
-@Entry
-@Component
-struct UsePropertyName {
-  @State @Watch('countUpdated') apple: number = 0;
-  @State @Watch('countUpdated') cabbage: number = 0;
-  @State fruit: number = 0;
-  // @Watch 回调
-  countUpdated(propName: string): void {
-    if (propName == 'apple') {
-      this.fruit = this.apple;
-    }
-  }
-
-  build() {
-    Column() {
-      Text(`Number of apples: ${this.apple.toString()}`).fontSize(30)
-      Text(`Number of cabbages: ${this.cabbage.toString()}`).fontSize(30)
-      Text(`Total number of fruits: ${this.fruit.toString()}`).fontSize(30)
-      Button('Add apples')
-        .onClick(() => {
-          this.apple++;
-        })
-      Button('Add cabbages')
-        .onClick(() => {
-          this.cabbage++;
-        })
-    }
-  }
-}
-```
+<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) -->
 
 处理步骤如下：
 
