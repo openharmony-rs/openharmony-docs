@@ -319,6 +319,73 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 
    初始化上下文相关配置：
    <!-- @[ndk_graphics_draw_initialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   EGLConfig getConfig(int version, EGLDisplay eglDisplay)
+   {
+       int attribList[] = {EGL_SURFACE_TYPE,
+                           EGL_WINDOW_BIT,
+                           EGL_RED_SIZE,
+                           8,
+                           EGL_GREEN_SIZE,
+                           8,
+                           EGL_BLUE_SIZE,
+                           8,
+                           EGL_ALPHA_SIZE,
+                           8,
+                           EGL_RENDERABLE_TYPE,
+                           EGL_OPENGL_ES2_BIT,
+                           EGL_NONE};
+       EGLConfig configs = NULL;
+       int configsNum;
+   
+       if (!eglChooseConfig(eglDisplay, attribList, &configs, 1, &configsNum)) {
+           SAMPLE_LOGE("eglChooseConfig ERROR");
+           return NULL;
+       }
+   
+       return configs;
+   }
+   
+   int32_t SampleGraphics::InitializeEglContext()
+   {
+       EGLDisplay_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+       if (EGLDisplay_ == EGL_NO_DISPLAY) {
+           SAMPLE_LOGE("unable to get EGL display.");
+           return -1;
+       }
+   
+       EGLint eglMajVers;
+       EGLint eglMinVers;
+       if (!eglInitialize(EGLDisplay_, &eglMajVers, &eglMinVers)) {
+           EGLDisplay_ = EGL_NO_DISPLAY;
+           SAMPLE_LOGE("unable to initialize display");
+           return -1;
+       }
+   
+       int version = 3;
+       EGLConfig_ = getConfig(version, EGLDisplay_);
+       if (EGLConfig_ == nullptr) {
+           SAMPLE_LOGE("GLContextInit config ERROR");
+           return -1;
+       }
+   
+       /* Create EGLContext from */
+       int attribList[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE}; // 2 size
+   
+       EGLContext_ = eglCreateContext(EGLDisplay_, EGLConfig_, EGL_NO_CONTEXT, attribList);
+   
+       EGLint attribs[] = {EGL_WIDTH, 1, EGL_HEIGHT, 1, EGL_NONE};
+       EGLSurface_ = eglCreatePbufferSurface(EGLDisplay_, EGLConfig_, attribs);
+       if (!eglMakeCurrent(EGLDisplay_, EGLSurface_, EGLSurface_, EGLContext_)) {
+           SAMPLE_LOGE("eglMakeCurrent error = %{public}d", eglGetError());
+           return -1;
+       }
+   
+       SAMPLE_LOGE("Init success.");
+       return 0;
+   }
+   ```
 
 4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考[drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md)。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
 
