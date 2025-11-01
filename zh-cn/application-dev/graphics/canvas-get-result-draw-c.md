@@ -309,6 +309,13 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 
    初始化上下文相关参数:
    <!-- @[ndk_graphics_draw_initialize_egl_context_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   EGLDisplay EGLDisplay_ = EGL_NO_DISPLAY;
+   EGLConfig EGLConfig_ = nullptr;
+   EGLContext EGLContext_ = EGL_NO_CONTEXT;
+   EGLSurface EGLSurface_ = nullptr;
+   ```
 
    初始化上下文相关配置：
    <!-- @[ndk_graphics_draw_initialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
