@@ -1540,6 +1540,81 @@ V1：
 
 <!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct WaterFlowSample {
+  @State colors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Blue, Color.Pink];
+  @State sections: WaterFlowSections = new WaterFlowSections();
+  scroller: Scroller = new Scroller();
+  @State private arr: Array<number> = new Array(9).fill(0);
+  oneColumnSection: SectionOptions = {
+    itemsCount: 4,
+    crossCount: 1,
+    columnsGap: '5vp',
+    rowsGap: 10,
+  };
+  twoColumnSection: SectionOptions = {
+    itemsCount: 2,
+    crossCount: 2,
+  };
+  lastSection: SectionOptions = {
+    itemsCount: 3,
+    crossCount: 3,
+  };
+
+  aboutToAppear(): void {
+    let sectionOptions: SectionOptions[] = [this.oneColumnSection, this.twoColumnSection, this.lastSection];
+    this.sections.splice(0, 0, sectionOptions);
+  }
+
+  build() {
+    Column() {
+      Text(`${this.arr.length}`)
+
+      Button('push option').onClick(() => {
+        let section: SectionOptions = {
+          itemsCount: 1,
+          crossCount: 1,
+        };
+        this.sections.push(section);
+        this.arr.push(100);
+      })
+
+      Button('splice option').onClick(() => {
+        let section: SectionOptions = {
+          itemsCount: 8,
+          crossCount: 2,
+        };
+        this.sections.splice(0, this.arr.length, [section]);
+        this.arr = new Array(8).fill(10);
+      })
+
+      Button('update option').onClick(() => {
+        let section: SectionOptions = {
+          itemsCount: 8,
+          crossCount: 2,
+        };
+        this.sections.update(1, section);
+        this.arr = new Array(16).fill(1);
+      })
+
+      WaterFlow({ scroller: this.scroller, sections: this.sections }) {
+        ForEach(this.arr, (item: number) => {
+          FlowItem() {
+            Text(`${item}`)
+              .border({ width: 1 })
+              .backgroundColor(this.colors[item % 6])
+              .height(30)
+              .width(50)
+          }
+        })
+      }
+    }
+  }
+}
+```
+
 V2：
 
 在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
