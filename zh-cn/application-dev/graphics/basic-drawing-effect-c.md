@@ -124,6 +124,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 1. 使用OH_Drawing_PenCreate()接口创建画笔Pen对象。
 
    <!-- @[ndk_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建画笔
+   OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+   ```
 
 2. 使用OH_Drawing_CanvasAttachPen()接口给Canvas画布设置画笔。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要设置的画笔对象。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
