@@ -1352,6 +1352,76 @@ struct Page1 {
 具体示例如下：
 <!-- @[Internal_Gradual_Migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalGradualMigration.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+let storage: LocalStorage = new LocalStorage();
+
+@ObservedV2
+class V1StorageData {
+  @Trace public title: string = 'V1OldComponent'
+
+  @Monitor('title')
+  onStrChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`)
+      if (path === 'title') {
+        storage.setOrCreate('title', this.title);
+      }
+    })
+  }
+}
+
+let v1Data: V1StorageData = new V1StorageData();
+
+@Entry(storage)
+@Component
+struct V1OldComponent {
+  @LocalStorageLink('title') title: string = 'V1OldComponent';
+
+  build() {
+    Column() {
+      Text(`V1OldComponent: ${this.title}`)
+        .fontSize(20)
+        .onClick(() => {
+          this.title = 'new value from V1OldComponent';
+        })
+      // 定义一个桥接的\@Component自定义组件，用于V1和V2的变量相互同步
+      Bridge()
+    }
+  }
+}
+
+
+@Component
+struct Bridge {
+  @LocalStorageLink('title') @Watch('titleWatch') title: string = 'Bridge';
+
+  titleWatch() {
+    v1Data.title = this.title;
+  }
+
+  build() {
+    NewV2Component()
+  }
+}
+
+@ComponentV2
+struct NewV2Component {
+  build() {
+    Column() {
+      Text(`NewV2Component: ${v1Data.title}`)
+        .fontSize(20)
+        .onClick(() => {
+          v1Data.title = 'NewV2Component';
+        })
+    }
+  }
+}
+```
+
 ## 其他迁移场景
 
 ### 滑动组件
