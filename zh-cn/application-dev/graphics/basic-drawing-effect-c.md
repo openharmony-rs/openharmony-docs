@@ -212,6 +212,11 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 5. 当不需要描边效果时，可以使用OH_Drawing_CanvasDetachPen()去除。入参为画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
 
    <!-- @[ndk_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 去除掉画布中的画笔
+   OH_Drawing_CanvasDetachPen(canvas);
+   ```
 
 6. 当不再需要画笔进行描边时，请及时使用OH_Drawing_PenDestroy()接口销毁Pen对象。
 
