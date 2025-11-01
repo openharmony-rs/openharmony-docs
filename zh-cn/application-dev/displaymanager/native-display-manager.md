@@ -45,6 +45,12 @@
 
 <!-- @[import_display_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include <window_manager/oh_display_info.h>
+#include <window_manager/oh_display_manager.h>
+#include <hilog/log.h>
+```
+
 ## 获取屏幕状态
 
 1. 可以通过OH_NativeDisplayManager_GetDefaultDisplayRotation获取默认屏幕的旋转角度。
