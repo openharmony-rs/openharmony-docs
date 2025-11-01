@@ -202,6 +202,26 @@ OH_Drawing_BrushDestroy(brush);
 
 <!-- @[ndk_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置文字大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 设置跟随主题字体
+OH_Drawing_FontSetThemeFontFollowed(font, true);
+// 需要绘制的文字
+const char *str = "Hello World";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 释放字块对象
+OH_Drawing_TextBlobDestroy(textBlob);
+// 释放字型对象
+OH_Drawing_FontDestroy(font);
+```
+
 | 未跟随主题字体的效果图 | 跟随主题字体的效果图（不同主题字体显示效果不同，此处仅示意） |
 | -------- | -------- |
 | ![Snapshot_setThemeFontFollowed_sys](figures/Snapshot_setThemeFontFollowed_sys.jpg) | ![Snapshot_setThemeFontFollowed](figures/Snapshot_setThemeFontFollowed.jpg) |
