@@ -144,6 +144,12 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    - 可使用OH_Drawing_PenSetColor()接口设置画笔颜色，对应为绘制图形轮廓时使用的颜色。
   
       <!-- @[ndk_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置画笔颜色为红色
+      uint32_t color = 0xffff0000;
+      OH_Drawing_PenSetColor(pen, color);
+      ```
 
       color是一个32位（ARGB）的变量，例如0xffff0000。
 
