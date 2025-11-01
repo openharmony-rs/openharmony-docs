@@ -29,6 +29,35 @@
 
 <!-- @[ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷对象
+OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+// 设置目标像素颜色
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 将目标像素的画刷效果设置到Canvas中
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 创建矩形对象
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value600_, value600_);
+// 绘制矩形（目标像素）
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 设置源像素颜色
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MIN, 0xFF));
+// 设置混合模式为叠加模式
+OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
+// 将源像素的画刷效果设置到Canvas中
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 创建圆心的点对象
+OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
+// 绘制圆（源像素）
+OH_Drawing_CanvasDrawCircle(canvas, point, value300_);
+// 去除掉画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_PointDestroy(point);
+```
+
 ![zh-cn_image_0000002158744138](figures/zh-cn_image_0000002158744138.png)
 
 
