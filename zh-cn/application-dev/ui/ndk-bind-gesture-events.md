@@ -668,6 +668,10 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 2. 绑定手势判定和节点。
     <!-- @[bind_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    gestureApi->setGestureInterrupterToNode(column, onInterruptCallback);
+    ```
 
 
 
