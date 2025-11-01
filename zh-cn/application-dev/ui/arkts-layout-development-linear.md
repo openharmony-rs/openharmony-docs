@@ -347,6 +347,19 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 - HorizontalAlign.Start：子元素在水平方向左对齐。
 
   <!-- @[RowLayoutHorizontalAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignStart.ets) -->
+  
+  ``` TypeScript
+  Column({}) {
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
+  ```
 
   ![zh-cn_image_0000001511580964](figures/zh-cn_image_0000001511580964.png)
 
