@@ -49,6 +49,12 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
    - 可使用OH_Drawing_BrushSetColor()接口设置填充颜色。
 
       <!-- @[ndk_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+      
+      ``` C++
+      // 设置填充颜色为红色
+      uint32_t color = 0xffff0000;
+      OH_Drawing_BrushSetColor(brush, color);
+      ```
 
       color是一个32位（ARGB）的变量，例如0xffff0000。
    
