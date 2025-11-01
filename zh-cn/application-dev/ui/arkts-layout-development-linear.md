@@ -175,6 +175,19 @@ Row({ space: 35 }) {
 - justifyContent(FlexAlign.SpaceAround)：垂直方向均匀分配元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。
 
   <!-- @[ColumnLayoutJustifyContentSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentSpaceAround.ets) -->
+  
+  ``` TypeScript
+  Column({}) {
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('80%').height(50).backgroundColor(0xF5DEB3)
+  }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
+  ```
 
   ![zh-cn_image_0000001562700525](figures/zh-cn_image_0000001562700525.png)
 
