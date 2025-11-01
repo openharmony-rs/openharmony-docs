@@ -940,6 +940,39 @@ struct Index {
 
 <!-- @[Internal_StorageProp_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1two.ets) -->
 
+``` TypeScript
+// EntryAbility1 Index1.ets
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index1 {
+  @StorageProp('count') count: number = 0;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      Text(`EntryAbility1 count: ${this.count}`)
+        .fontSize(50)
+        .onClick(() => {
+          this.count++;
+        })
+      Button('change Storage Count')
+        .onClick(() => {
+          AppStorage.setOrCreate('count', AppStorage.get<number>('count') as number + 100);
+        })
+      Button('Jump to EntryAbility').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.example.myapplication', // 替换成AppScope/app.json5里的bundleName
+          abilityName: 'EntryAbility'
+        };
+        this.context.startAbility(wantInfo);
+      })
+    }
+  }
+}
+```
+
 V2:
 
 开发者可以使用\@Monitor和\@Local实现类似效果，示例如下。
