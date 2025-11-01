@@ -230,6 +230,35 @@ OH_Drawing_RectDestroy(rect);
 
 <!-- @[ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔对象
+OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画笔线宽为20
+OH_Drawing_PenSetWidth(pen, 20);
+// 在画布中设置画笔
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 保存当前画布状态，当前是不存在放大等操作的，这个原始状态会被保存下来
+OH_Drawing_CanvasSave(canvas);
+OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(2, 2, 2, 2);
+// 放大画布
+OH_Drawing_CanvasConcatMatrix(canvas, matrix);
+OH_Drawing_Point* point = OH_Drawing_PointCreate(value300_, value300_);
+// 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
+OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
+// 恢复操作，将恢复到没有放大的原始状态
+OH_Drawing_CanvasRestore(canvas);
+// 绘制圆形，因为已经恢复没有放大的原始状态，所以此时绘制的小圆
+OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
+// 去除画布中的画笔
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁画笔对象并收回其占的内存
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_PointDestroy(point);
+OH_Drawing_MatrixDestroy(matrix);
+```
+
 ![zh-cn_image_0000002158744186](figures/zh-cn_image_0000002158744186.png)
 
 <!--RP1-->
