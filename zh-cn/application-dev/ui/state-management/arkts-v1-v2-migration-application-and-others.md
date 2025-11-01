@@ -1235,6 +1235,105 @@ V2:
 - 示例中的move函数和需要显示的组件放在了一个ets中，开发者可以定义自己的move函数，并放入合适的位置进行统一迁移操作。
 <!-- @[Internal_Persistent_Storage_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV2.ets) -->
 
+``` TypeScript
+// 迁移到globalConnect
+import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+// 接受序列化失败的回调
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
+});
+
+class Data {
+  public name: string = 'ZhangSan';
+  public id: number = 0;
+}
+
+@ObservedV2
+class V2Data {
+  @Trace public name: string = '';
+  @Trace public id: number = 1;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功
+  @Type(V2Data)
+  @Trace public num: number = 1;
+  @Trace public V2: V2Data = new V2Data();
+}
+
+// 用于判断是否完成数据迁移的辅助数据
+@ObservedV2
+class StorageState {
+  @Trace public isCompleteMoving: boolean = false;
+}
+
+function move() {
+  let movingState = PersistenceV2.globalConnect({ type: StorageState, defaultCreator: () => new StorageState() })!;
+  if (!movingState.isCompleteMoving) {
+    PersistentStorage.persistProp('numProp', 47);
+    PersistentStorage.persistProp('dataProp', new Data());
+    let num = AppStorage.get<number>('numProp')!;
+    let v1Data = AppStorage.get<Data>('dataProp')!;
+    PersistentStorage.deleteProp('numProp');
+    PersistentStorage.deleteProp('dataProp');
+
+    // V2创建对应数据
+    let migrate = PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'connect2',
+      defaultCreator: () => new Sample()
+    })!; // 使用默认构造函数也可以
+    // 赋值数据，@Trace修饰的会自动保存，对于非@Trace对象，也可以调用save保存，如：PersistenceV2.save('connect2');
+    migrate.num = num;
+    migrate.V2.name = v1Data.name;
+    migrate.V2.id = v1Data.id;
+
+    // 将迁移标志设置为true
+    movingState.isCompleteMoving = true;
+  }
+}
+
+move();
+
+@Entry
+@ComponentV2
+struct Page1 {
+  @Local refresh: number = 0;
+  // 使用key:connect2存入数据
+  @Local p: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'connect2', defaultCreator: () => new Sample() })!;
+
+  build() {
+    Column({ space: 5 }) {
+      // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+      Text(`numProp: ${this.p.num}`)
+        .onClick(() => {
+          this.p.num += 1;
+        })
+        .fontSize(30)
+
+      // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+      Text(`dataProp.name: ${this.p.V2.name}`)
+        .onClick(() => {
+          this.p.V2.name += 'a';
+        })
+        .fontSize(30)
+      // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+      Text(`dataProp.id: ${this.p.V2.id}`)
+        .onClick(() => {
+          this.p.V2.id += 1;
+        })
+        .fontSize(30)
+    }
+    .width('100%')
+  }
+}
+```
+
 ## V1现有功能向V2的逐步迁移场景
 
 对于已经使用V1开发的大型应用，通常难以一次性从V1迁移到V2，而是需要分批次、分组件地逐步迁移，这就必然会带来V1和V2的混用。
