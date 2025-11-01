@@ -375,6 +375,55 @@ struct BindSheetDemo {
 
 <!-- @[bind_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template3/BindMenuDemo.ets) -->
 
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+const TAG = '[Sample_Animation]';
+
+class BMD {
+  public value: ResourceStr = '';
+  public action: () => void = () => {
+  };
+}
+
+@Entry
+@Component
+struct BindMenuDemo {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  // 第一步: 定义一组数据用来表示菜单按钮项
+  @State items: BMD[] = [
+    {
+      value: this.context.resourceManager.getStringByNameSync('modal_transition_text23'),
+      action: () => {
+        hilog.info(DOMAIN, TAG, 'handle Menu1 select');
+      }
+    },
+    {
+      value: this.context.resourceManager.getStringByNameSync('modal_transition_text24'),
+      action: () => {
+        hilog.info(DOMAIN, TAG, 'handle Menu2 select');
+      }
+    },
+  ]
+
+  build() {
+    Column() {
+      Button('click')
+        .backgroundColor(0x409eff)
+        .borderRadius(5)
+        // 第二步: 通过bindMenu接口将菜单数据绑定给元素
+        .bindMenu(this.items)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height(437)
+  }
+}
+```
+
 ![zh-cn_image_0000001599643478](figures/zh-cn_image_0000001599643478.gif)
 
 
