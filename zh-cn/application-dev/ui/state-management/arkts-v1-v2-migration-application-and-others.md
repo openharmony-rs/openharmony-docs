@@ -1129,6 +1129,49 @@ V1:
 
 <!-- @[Internal_Persistent_Storage_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV1.ets) -->
 
+``` TypeScript
+class Data {
+  public name: string = 'ZhangSan';
+  public id: number = 0;
+}
+
+PersistentStorage.persistProp('numProp', 47);
+PersistentStorage.persistProp('DataProp', new Data());
+
+@Entry
+@Component
+struct Index {
+  @StorageLink('numProp') numProp: number = 48;
+  @StorageLink('DataProp') dataProp: Data = new Data();
+
+  build() {
+    Column() {
+      // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+      Text(`numProp: ${this.numProp}`)
+        .onClick(() => {
+          this.numProp += 1;
+        })
+        .fontSize(30)
+
+      // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+      Text(`DataProp.name: ${this.dataProp.name}`)
+        .onClick(() => {
+          this.dataProp.name += 'a';
+        })
+        .fontSize(30)
+      // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+      Text(`DataProp.id: ${this.dataProp.id}`)
+        .onClick(() => {
+          this.dataProp.id += 1;
+        })
+        .fontSize(30)
+
+    }
+    .width('100%')
+  }
+}
+```
+
 V2:
 
 下面的案例展示了：
