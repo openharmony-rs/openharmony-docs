@@ -134,6 +134,50 @@ static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_inf
 
 <!-- @[register_display_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+void DisplayChangeCallback(uint64_t displayId)
+{
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "DisplayChangeCallback displayId=%{public}lu.", displayId);
+}
+
+static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info info)
+{
+    uint32_t listenerIndex;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayChangeListener(
+        DisplayChangeCallback, &listenerIndex);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "RegisterDisplayChangeListener listenerIndex =%{public}d errCode=%{public}d.", listenerIndex, errCode);
+    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+        napi_value registerIndex;
+        napi_create_int32(env, listenerIndex, &registerIndex);
+        return registerIndex;
+    } else {
+        napi_value errorCode;
+        napi_create_int32(env, errCode, &errorCode);
+        return errorCode;
+    }
+}
+
+static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayChangeListener(listenerIndex);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+        "UnregisterDisplayChangeListener errCode=%{public}d.", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+```
+
 ## 监听折叠设备状态变化
 
 1. 可以通过OH_NativeDisplayManager_IsFoldable接口查询设备是不是折叠设备。
