@@ -7972,5 +7972,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-color-effect.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/LinearGradientEffect.ets",
+				"functions":[
+					{
+						"end_line":101,
+						"name":"Linear_Gradient_Effect",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets",
+				"functions":[
+					{
+						"end_line":123,
+						"name":"Direction_Gradient_Effect",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/RadialGradientEffect.ets",
+				"functions":[
+					{
+						"end_line":117,
+						"name":"Radial_Gradient_Effect",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
