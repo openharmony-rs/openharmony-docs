@@ -390,6 +390,23 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 4. 创建GPU后端Canvas。GPU后端Canvas需要借助Surface对象来获取，需先创建surface，surface的API请参考[drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md)。通过OH_Drawing_GpuContextCreateFromGL接口创建绘图上下文，再将这个上下文作为参数创建surface，最后通过OH_Drawing_SurfaceGetCanvas接口从surface中获取到canvas。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 设置宽高（按需设定）
+   int32_t cWidth = 800;
+   int32_t cHeight = 800;
+   // 设置图像，包括宽度、高度、颜色格式和透明度格式
+   OH_Drawing_Image_Info imageInfo = {cWidth, cHeight, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
+   // GPU上下文的选项
+   OH_Drawing_GpuContextOptions options{true};
+       
+   // 创建一个使用OpenGL（GL）作为其GPU后端的绘图上下文
+   OH_Drawing_GpuContext *gpuContext = OH_Drawing_GpuContextCreateFromGL(options);
+   // 创建surface对象
+   OH_Drawing_Surface *surface = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext, true, imageInfo);
+   // 创建一个canvas对象
+   cGPUCanvas_ = OH_Drawing_SurfaceGetCanvas(surface);
+   ```
 
    如果需要将背景设置为白色，需要执行以下步骤：
 
