@@ -1896,6 +1896,79 @@ V2：
 具体示例如下：
 
 <!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+import { TextModifier } from '@ohos.arkui.modifier';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+class MyModifier extends TextModifier {
+  applyNormalAttribute(instance: TextModifier): void {
+    super.applyNormalAttribute?.(instance);
+  }
+
+  public setGroup1(): void {
+    this.fontSize(50);
+    this.fontColor(Color.Pink);
+  }
+
+  public setGroup2(): void {
+    this.fontSize(50);
+    this.fontColor(Color.Gray);
+  }
+}
+
+@ComponentV2
+struct MyImage1 {
+  @Param @Require modifier: TextModifier;
+  index: number = 0;
+
+  build() {
+    Column() {
+      Text('Test')
+        .attributeModifier(this.modifier as MyModifier)
+
+      Button($r('app.string.EntryAbility_label'))
+        .margin(10)
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
+          this.index++;
+          if (this.index % 2 === 1) {
+            (this.modifier as MyModifier).setGroup1();
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
+          } else {
+            (this.modifier as MyModifier).setGroup2();
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
+          }
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // 使用makeObserved的能力观测TextModifier
+  @Local myModifier: TextModifier = UIUtils.makeObserved(new MyModifier().width(100).height(100).margin(10));
+  // 临时存储的index数字
+  index: number = 0;
+
+  build() {
+    Column() {
+      MyImage1({ modifier: this.myModifier })
+
+      Button('replace whole')
+        .margin(10)
+        .onClick(() => {
+          this.myModifier = UIUtils.makeObserved(new MyModifier().backgroundColor(Color.Orange));
+        })
+    }
+    .width('100%')
+  }
+}
+```
 **AttributeUpdater**
 
 [AttributeUpdater](../arkts-user-defined-extension-attributeUpdater.md)可以将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
