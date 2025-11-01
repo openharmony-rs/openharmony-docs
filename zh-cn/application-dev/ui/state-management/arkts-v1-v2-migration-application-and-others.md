@@ -1438,6 +1438,44 @@ V1：
 
 <!-- @[Internal_Other_Migrations_List_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV1.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct ListExample {
+  private arr: Array<number> = new Array(10).fill(0);
+  private scroller: ListScroller = new ListScroller();
+  // list子组件主轴方向的间隔
+  @State listSpace: number = 20;
+  // 设置List组件的子组件在主轴方向的大小信息
+  @State listChildrenSize: ChildrenMainSize = new ChildrenMainSize(100);
+
+  build() {
+    Column() {
+      Button('change Default').onClick(() => {
+        this.listChildrenSize.childDefaultSize += 10;
+      })
+
+      Button('splice 5').onClick(() => {
+        this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+      })
+
+      Button('update 5').onClick(() => {
+        this.listChildrenSize.update(0, 200);
+      })
+
+      List({ space: this.listSpace, scroller: this.scroller }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text(`item-` + item)
+          }.backgroundColor(Color.Pink)
+        })
+      }
+      .childrenMainSize(this.listChildrenSize) // 10
+    }
+  }
+}
+```
+
 V2：
 
 在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize的属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
