@@ -188,6 +188,37 @@ struct Page1 {
 ```
 
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page2.ets) -->
+
+``` TypeScript
+// Page2.ets
+import { MyStorage } from './storage';
+
+@Builder
+export function Page2Builder() {
+  Page2()
+}
+
+@ComponentV2
+struct Page2 {
+  storage: MyStorage = MyStorage.instance();
+  pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(`${this.storage.count}`)
+          .fontSize(50)
+          .onClick(() => {
+            this.storage.count++;
+          })
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+```
 使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
 {
