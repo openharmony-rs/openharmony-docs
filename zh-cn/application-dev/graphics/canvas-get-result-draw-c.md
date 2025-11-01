@@ -166,6 +166,11 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 3. 将上一步中创建的位图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
 
    <!-- @[ndk_graphics_draw_drawing_to_window_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 将离屏bitmap中的内容绘制到屏幕画布，实现上屏操作
+   OH_Drawing_CanvasDrawBitmap(cScreenCanvas_, cOffScreenBitmap_, 0, 0);
+   ```
 
 
 
