@@ -104,7 +104,22 @@ canvas.detachBrush();
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
+<!-- @[arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色为红色
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 执行平移操作
+canvas.translate(VALUE_300, VALUE_300);
+// 绘制矩形
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
+// 去除填充效果
+canvas.detachBrush();
+```
 
 | 接口 | 描述 |
 | -------- | -------- |
