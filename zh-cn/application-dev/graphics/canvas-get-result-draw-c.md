@@ -432,6 +432,30 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 6. 使用完之后需要将EGL上下文销毁。
 
    <!-- @[ndk_graphics_draw_deinitialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   void SampleGraphics::DeInitializeEglContext()
+   {
+       EGLBoolean ret = eglDestroySurface(EGLDisplay_, EGLSurface_);
+       if (!ret) {
+           SAMPLE_LOGE("eglDestroySurface failure.");
+       }
+   
+       ret = eglDestroyContext(EGLDisplay_, EGLContext_);
+       if (!ret) {
+           SAMPLE_LOGE("eglDestroyContext failure.");
+       }
+   
+       ret = eglTerminate(EGLDisplay_);
+       if (!ret) {
+           SAMPLE_LOGE("eglTerminate failure.");
+       }
+   
+       EGLSurface_ = NULL;
+       EGLContext_ = NULL;
+       EGLDisplay_ = NULL;
+   }
+   ```
 
 <!--RP1-->
 ## 相关实例
