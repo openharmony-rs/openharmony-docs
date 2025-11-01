@@ -7855,9 +7855,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":51,
 						"name":"runtaskinscopeone_start",
-						"start_line":41
+						"start_line":29
 					},
 					{
 						"end_line":133,
