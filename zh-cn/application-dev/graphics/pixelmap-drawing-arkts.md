@@ -15,82 +15,13 @@
 
 1. 创建PixelMap。
 
-   有多个API接口可以创建PixelMap，下文以createPixelMapSync()为例。更多创建方式和接口请见[@ohos.multimedia.image (图片处理)](../reference/apis-image-kit/arkts-apis-image.md)模块。
-
-   createPixelMapSync()函数接受两个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数为创建像素的属性，包括透明度、尺寸、缩略值、像素格式和是否可编辑。
-
-   ```ts
-   // PixelMapDrawing.ets
-   // 图片宽高
-   let width = 600;
-   let height = 400;
-   // 字节长度，RGBA_8888每个像素占4字节
-   let byteLength = width * height * 4;
-   const color: ArrayBuffer = new ArrayBuffer(byteLength);
-   let bufferArr = new Uint8Array(color);
-   for (let i = 0; i < bufferArr.length; i += 4) {
-     // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
-     bufferArr[i] = 0x00;
-     bufferArr[i+1] = 0x00;
-     bufferArr[i+2] = 0x00;
-     bufferArr[i+3] = 0xFF;
-     let n = Math.floor(i / 80) % 3;
-     if (n == 0) {
-       bufferArr[i] = 0xFF;
-     } else if (n == 1) {
-       bufferArr[i+1] = 0xFF;
-     } else {
-       bufferArr[i+2] = 0xFF;
-     }
-   }
-   // 设置像素属性
-   let opts: image.InitializationOptions =
-     { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
-   // 创建PixelMap
-   pixelMap = image.createPixelMapSync(color, opts);
-   ```
-<!-- [arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+<!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 2. （可选）编辑PixelMap中的像素。如果没有编辑像素的需求，此步骤可以省略。
 
    有多个API接口可以编辑PixelMap中的像素，下文以writePixelsSync()为例。更多方式和接口的使用可见[PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
-   ```ts
-   // PixelMapDrawing.ets
-   // 设置编辑区域的宽高
-   let innerWidth = 400;
-   let innerHeight = 200;
-   // 编辑区域的字节长度，RGBA_8888每个像素占4字节
-   let innerByteLength = innerWidth * innerHeight * 4;
-   const innerColor: ArrayBuffer = new ArrayBuffer(innerByteLength);
-   let innerBufferArr = new Uint8Array(innerColor);
-   for (let i = 0; i < innerBufferArr.length; i += 4) {
-     // 编辑区域的像素都设置为黑白相间条纹
-     let n = Math.floor(i / 80) % 2;
-     if (n == 0) {
-       innerBufferArr[i] = 0x00;
-       innerBufferArr[i+1] = 0x00;
-       innerBufferArr[i+2] = 0x00;
-     } else {
-       innerBufferArr[i] = 0xFF;
-       innerBufferArr[i+1] = 0xFF;
-       innerBufferArr[i+2] = 0xFF;
-     }
-     innerBufferArr[i+3] = 0xFF;
-   }
-   // 设置编辑区域的像素、宽高、偏移量等
-   const area: image.PositionArea = {
-     pixels: innerColor,
-     offset: 0,
-     stride: innerWidth * 4,
-     region: { size: { height: innerHeight, width: innerWidth }, x: 100, y: 100 }
-   };
-   // 编辑位图，形成中间的黑白相间条纹
-   pixelMap.writePixelsSync(area);
-   // 为了使图片完全显示，修改绘制起点参数为（0，0）
-   canvas.drawImage(pixelMap, 0, 0);
-   ```
-<!-- [arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
 3. 绘制PixelMap。
 
@@ -98,11 +29,7 @@
 
    drawImage()函数接受4个参数，第一个就是上文中创建的PixelMap，第二个是绘制图片位置的左上角x轴坐标，第三个是左上角y轴坐标，第四个为采样选项对象，默认为不使用任何参数构造的原始采样选项对象。
 
-   ```ts
-   // PixelMapDrawing.ets
-   canvas.drawImage(pixelMap, 0, 0);
-   ```
-   <!-- [arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
    绘制效果如下：
 
@@ -113,5 +40,5 @@
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->
