@@ -74,6 +74,15 @@ Column({ space: 20 }) {
 
 <!-- @[RowLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutExample.ets) -->
 
+``` TypeScript
+Row({ space: 35 }) {
+  Text('space: 35').fontSize(15).fontColor(Color.Gray)
+  Row().width('10%').height(150).backgroundColor(0xF5DEB3)
+  Row().width('10%').height(150).backgroundColor(0xD2B48C)
+  Row().width('10%').height(150).backgroundColor(0xF5DEB3)
+}.width('90%')
+```
+
 ![zh-cn_image_0000001562700509](figures/zh-cn_image_0000001562700509.png)
 
 ## 布局子元素在主轴上的排列方式
