@@ -834,6 +834,33 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * TodoListComponent.ets
 
   <!-- @[to_do_list_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/TodoListComponent.ets) -->
+  
+  ``` TypeScript
+  import ThingViewModel from '../viewmodel/ThingViewModel';
+  import { ThingViewModelArray } from '../viewmodel/TodoListViewModel'
+  import { ThingComponent } from './ThingComponent';
+  
+  @Component
+  export struct TodoListComponent {
+    @ObjectLink thingViewModelArray: ThingViewModelArray;
+  
+    build() {
+      Column() {
+        List() {
+          ForEach(this.thingViewModelArray, (item: ThingViewModel) => {
+            // 待办事项
+            ListItem() {
+              ThingComponent({ thing: item })
+                .margin(5)
+            }
+          }, (item: ThingViewModel) => {
+            return item.thingName;
+          })
+        }
+      }
+    }
+  }
+  ```
 
   * ThingViewModel.ets
 
