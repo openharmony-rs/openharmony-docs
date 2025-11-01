@@ -371,6 +371,39 @@ OH_Drawing_FilterDestroy(filter);
 
 <!-- @[ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+// 设置画笔抗锯齿
+OH_Drawing_PenSetAntiAlias(pen, true);
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, 0xffff0000);
+// 设置画笔线宽为20
+OH_Drawing_PenSetWidth(pen, 20);
+// 创建图像滤波器实现模糊效果
+OH_Drawing_ImageFilter *imageFilter =
+    OH_Drawing_ImageFilterCreateBlur(20.0f, 20.0f, OH_Drawing_TileMode::CLAMP, nullptr);
+// 创建一个滤波器对象
+OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+// 为滤波器对象设置图像滤波器
+OH_Drawing_FilterSetImageFilter(filter, imageFilter);
+// 设置画笔的滤波器效果
+OH_Drawing_PenSetFilter(pen, filter);
+// 在画布上设置画笔，请确保已获取得到画布对象
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+// 绘制矩形
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 去除掉画布中的画笔
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_ImageFilterDestroy(imageFilter);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_FilterDestroy(filter);
+```
+
 | 不设置图像滤波器效果的示意图 | 设置图像滤波器效果的示意图 |
 | -------- | -------- |
 | ![zh-cn_image_0000002194025225](figures/zh-cn_image_0000002194025225.png) | ![zh-cn_image_0000002194025245](figures/zh-cn_image_0000002194025245.png) |
