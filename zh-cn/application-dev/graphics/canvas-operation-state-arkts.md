@@ -64,24 +64,7 @@
 - doAntiAlias表示是否需要抗锯齿处理，如果为true则启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理，如果为false则不开启。
 
 
-```ts
-// CanvasOperationState.ets
-// 创建画刷
-let brush = new drawing.Brush();
-// 设置颜色为蓝色
-brush.setColor(0xFF, 0x00,  0x00, 0xFF);
-// 设置画刷填充效果
-canvas.attachBrush(brush);
-// 创建矩形对象
-let rect: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
-// 裁剪矩形区域
-canvas.clipRect(rect);
-// 绘制圆形
-canvas.drawCircle(300, 300, 300);
-// 去除填充效果
-canvas.detachBrush();
-```
-<!-- [arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @[arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 裁剪后的图 |
@@ -121,22 +104,7 @@ canvas.detachBrush();
 简单示例和示意图如下所示：
 
 
-```ts
-// CanvasOperationState.ets
-// 创建画刷
-let brush = new drawing.Brush();
-// 设置颜色为红色
-brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// 设置画刷填充效果
-canvas.attachBrush(brush);
-// 执行平移操作
-canvas.translate(300, 300);
-// 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
-// 去除填充效果
-canvas.detachBrush();
-```
-<!-- [arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @[arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 平移后的效果图 |
@@ -152,22 +120,8 @@ canvas.detachBrush();
 简单示例和示意图如下所示：
 
 
-```ts
-// CanvasOperationState.ets
-// 创建画刷
-let brush = new drawing.Brush();
-// 设置颜色为红色
-brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// 设置画刷填充效果
-canvas.attachBrush(brush);
-// 顺时针旋转45度
-canvas.rotate(45, 200, 200);
-// 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
-// 去除填充效果
-canvas.detachBrush();
-```
-<!-- [arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+<!-- @[arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 旋转后的效果图 |
@@ -183,22 +137,8 @@ canvas.detachBrush();
 简单示例和示意图如下所示：
 
 
-```ts
-// CanvasOperationState.ets
-// 创建画刷
-let brush = new drawing.Brush();
-// 设置颜色为红色
-brush.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
-// 设置画刷填充效果
-canvas.attachBrush(brush);
-// 执行放大操作
-canvas.scale(2, 2);
-// 绘制矩形
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
-// 去除填充效果
-canvas.detachBrush();
-```
-<!-- [arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+<!-- @[arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | 原始图 | 缩放后的效果图 |
@@ -225,30 +165,8 @@ canvas.detachBrush();
 简单示例和示意图如下所示：
 
 
-```ts
-// CanvasOperationState.ets
-// 创建画笔
-let pen = new drawing.Pen();
-// 设置颜色为红色
-pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
-// 设置描边宽度为20px
-pen.setStrokeWidth(20);
-// 设置画笔描边效果
-canvas.attachPen(pen);
-// 保存操作，当前是不存在放大等操作的，这个原始状态会被保存下来
-canvas.save();
-// x轴和y轴方向分别放大2倍
-canvas.scale(2, 2);
-// 绘制圆形，因为执行过放大操作，所以此时绘制的是大圆
-canvas.drawCircle(300, 300, 200);
-// 恢复操作，恢复到没有放大的原始状态
-canvas.restore();
-// 绘制圆形，因为已经恢复到没有放大的原始状态，所以此时绘制的是小圆
-canvas.drawCircle(300, 300, 200);
-// 去除描边效果
-canvas.detachPen();
-```
-<!-- [arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+<!-- @[arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ![Screenshot_20241129152510415](figures/Screenshot_20241129152510415.jpg)
 
@@ -257,5 +175,5 @@ canvas.detachPen();
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->
