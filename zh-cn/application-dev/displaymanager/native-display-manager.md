@@ -244,6 +244,29 @@ static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_cal
 
 <!-- @[register_napi_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        {"getDisplayRotation", nullptr, GetDefaultDisplayRotation, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getCutoutInfo", nullptr, CreateDefaultDisplayCutoutInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerDisplayChange", nullptr, RegisterDisplayChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unregisterDisplayChange", nullptr, UnregisterDisplayChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"checkIsFoldDevice", nullptr, IsFoldable, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+```
+
 ## 注册模块
 
 <!-- @[register_display_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
