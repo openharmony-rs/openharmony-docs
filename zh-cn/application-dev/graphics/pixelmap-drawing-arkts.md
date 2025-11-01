@@ -52,6 +52,41 @@ pixelMap = image.createPixelMapSync(color, opts);
    有多个API接口可以编辑PixelMap中的像素，下文以writePixelsSync()为例。更多方式和接口的使用可见[PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
    <!-- @[arkts_graphics_draw_edit_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
+   
+   ``` TypeScript
+   // 设置编辑区域的宽高
+   let innerWidth = 400;
+   let innerHeight = 200;
+   // 编辑区域的字节长度，RGBA_8888每个像素占4字节
+   let innerByteLength = innerWidth * innerHeight * 4;
+   const innerColor: ArrayBuffer = new ArrayBuffer(innerByteLength);
+   let innerBufferArr = new Uint8Array(innerColor);
+   for (let i = 0; i < innerBufferArr.length; i += 4) {
+     // 编辑区域的像素都设置为黑白相间条纹
+     let n = Math.floor(i / 80) % 2;
+     if (n == 0) {
+       innerBufferArr[i] = 0x00;
+       innerBufferArr[i+1] = 0x00;
+       innerBufferArr[i+2] = 0x00;
+     } else {
+       innerBufferArr[i] = 0xFF;
+       innerBufferArr[i+1] = 0xFF;
+       innerBufferArr[i+2] = 0xFF;
+     }
+     innerBufferArr[i+3] = 0xFF;
+   }
+   // 设置编辑区域的像素、宽高、偏移量等
+   const area: image.PositionArea = {
+     pixels: innerColor,
+     offset: 0,
+     stride: innerWidth * 4,
+     region: { size: { height: innerHeight, width: innerWidth }, x: 100, y: 100 }
+   };
+   // 编辑位图，形成中间的黑白相间条纹
+   pixelMap.writePixelsSync(area);
+   // 为了使图片完全显示，修改绘制起点参数为（0，0）
+   canvas.drawImage(pixelMap, 0, 0);
+   ```
 
 3. 绘制PixelMap。
 
