@@ -211,6 +211,69 @@
 
 <!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Region {
+  @Trace public x: number;
+  @Trace public y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+@ObservedV2
+class Info {
+  @Trace public region: Region;
+  @Trace public name: string;
+
+  constructor(name: string, x: number, y: number) {
+    this.name = name;
+    this.region = new Region(x, y);
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local infoArr: Info[] = [new Info('Ocean', 28, 120), new Info('Mountain', 26, 20)];
+  @Local originInfo: Info = new Info('Origin', 0, 0);
+
+  build() {
+    Column() {
+      ForEach(this.infoArr, (info: Info) => {
+        Row() {
+          Text(`name: ${info.name}`)
+          Text(`region: ${info.region.x}-${info.region.y}`)
+        }
+      })
+      Row() {
+        Text(`Origin name: ${this.originInfo.name}`)
+        Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
+      }
+
+      Button('change infoArr item')
+        .onClick(() => {
+          // 由于属性name被@Trace装饰，所以能够观察到
+          this.infoArr[0].name = 'Win';
+        })
+      Button('change originInfo')
+        .onClick(() => {
+          // 由于变量originInfo被@Local装饰，所以能够观察到
+          this.originInfo = new Info('Origin', 100, 100);
+        })
+      Button('change originInfo region')
+        .onClick(() => {
+          // 由于属性x、y被@Trace装饰，所以能够观察到
+          this.originInfo.region.x = 25;
+          this.originInfo.region.y = 25;
+        })
+    }
+  }
+}
+```
+
  当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
   | 类型   | 可观测变化的API                                              |
