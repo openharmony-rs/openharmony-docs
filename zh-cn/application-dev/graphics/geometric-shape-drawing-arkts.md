@@ -51,6 +51,25 @@
 
 <!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
+``` TypeScript
+// 设置画笔
+let pen = new drawing.Pen();
+// 设置颜色
+pen.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置线宽
+pen.setStrokeWidth(40);
+// 设置画笔描边效果
+canvas.attachPen(pen);
+// 绘制5个点
+canvas.drawPoint(VALUE_200, VALUE_200);
+canvas.drawPoint(VALUE_400, VALUE_400);
+canvas.drawPoint(VALUE_600, VALUE_600);
+canvas.drawPoint(VALUE_800, VALUE_800);
+canvas.drawPoint(VALUE_1000, VALUE_1000);
+// 去除描边效果
+canvas.detachPen();
+```
+
 ![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
 
 
