@@ -87,6 +87,30 @@ try {
 
 <!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.getCutoutInfo().then((cutoutInfo: display.CutoutInfo) => {
+    // 在有挖孔信息的时候进行处理
+    if (cutoutInfo.boundingRects.length > 0) {
+      hilog.info(DOMAIN, 'DisplayTest', `cutoutInfo boundingRects: ${JSON.stringify(cutoutInfo.boundingRects)}`);
+    } else {
+      hilog.info(DOMAIN, 'DisplayTest', 'There is no cutout info on the screen.');
+    }
+    // 处理瀑布屏的区域信息
+    hilog.info(DOMAIN, 'DisplayTest',
+      `cutoutInfo waterfallDisplayAreaRects: ${JSON.stringify(cutoutInfo.waterfallDisplayAreaRects)}`);
+  }).catch((err: BusinessError) => {
+    hilog.error(DOMAIN, 'DisplayTest',
+      `Failed to obtain the cutout info object. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  hilog.error(DOMAIN, 'DisplayTest',
+    `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 3. 此外，还可以通过display.isCaptured()判断当前设备是否正在截屏、投屏或录屏。
 
 <!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
