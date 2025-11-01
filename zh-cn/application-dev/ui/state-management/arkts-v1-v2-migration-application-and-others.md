@@ -319,6 +319,48 @@ struct Page2 {
 
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page1.ets) -->
 
+``` TypeScript
+// Page1.ets
+import { MyStorage } from './storage';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@ComponentV2
+struct Page1 {
+  storage: MyStorage = MyStorage.instance();
+  pageStack: NavPathStack = new NavPathStack();
+  @Local count: number = this.storage.count;
+
+  @Monitor('storage.count')
+  onCountChange(mon: IMonitor) {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Page1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    this.count = this.storage.count;
+  }
+
+  build() {
+    Navigation(this.pageStack) {
+      Column() {
+        Text(`${this.count}`)
+          .fontSize(50)
+          .onClick(() => {
+            this.count++;
+          })
+        Button('change Storage Count')
+          .onClick(() => {
+            this.storage.count += 100;
+          })
+        Button('push to Page2')
+          .onClick(() => {
+            this.pageStack.pushPathByName('Page2', null);
+          })
+      }
+    }
+  }
+}
+```
+
 <!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page2.ets) -->
 
 ``` TypeScript
