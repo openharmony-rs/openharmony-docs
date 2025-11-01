@@ -71,6 +71,37 @@
 
 <!-- @[once_init_sync_noMore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct ChildComponent {
+  @Param @Once onceParam: string = '';
+
+  build() {
+    Column() {
+      Text(`onceParam: ${this.onceParam}`)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct MyComponent {
+// ···
+  @Local message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(`Parent message: ${this.message}`)
+      Button('change message')
+        .onClick(() => {
+          this.message = 'Hello Tomorrow';
+        })
+      ChildComponent({ onceParam: this.message })
+    }
+  }
+}
+```
+
 ### 本地修改\@Param变量
 
 当\@Once与\@Param结合使用时，可以解除\@Param无法在本地修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于[\@Local](arkts-new-local.md)，但\@Param和\@Once还能接收外部传入的初始值。
