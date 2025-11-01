@@ -160,6 +160,57 @@ canvas.detachPen();
 
 <!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
+``` TypeScript
+let height_ = VALUE_1800;
+let width_ = VALUE_1800;
+let len = height_ / 4;
+let aX = width_ / 3;
+let aY = height_ / 6;
+let dX = aX - len * Math.sin(18.0);
+let dY = aY + len * Math.cos(18.0);
+let cX = aX + len * Math.sin(18.0);
+let cY = dY;
+let bX = aX + (len / 2.0);
+let bY = aY + Math.sqrt((cX - dX) * (cX - dX) + (len / 2.0) * (len / 2.0));
+let eX = aX - (len / 2.0);
+let eY = bY;
+
+// 创建一个path对象，然后使用接口连接成一个五角星形状
+let path = new drawing.Path();
+// 指定path的起始位置
+path.moveTo(aX, aY);
+// 用直线连接到目标点
+path.lineTo(bX, bY);
+path.lineTo(cX, cY);
+path.lineTo(dX, dY);
+path.lineTo(eX, eY);
+// 闭合形状，path绘制完毕
+path.close();
+
+// 创建画笔对象
+let pen = new drawing.Pen();
+// 设置抗锯齿
+pen.setAntiAlias(true);
+// 设置描边颜色
+pen.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置线宽
+pen.setStrokeWidth(10.0);
+// 设置画笔描边效果
+canvas.attachPen(pen);
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置填充颜色
+brush.setColor(0xFF, 0x00, 0xFF, 0x00);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 绘制路径
+canvas.drawPath(path);
+// 去除填充效果
+canvas.detachBrush();
+// 去除描边效果
+canvas.detachPen();
+```
+
 ![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
 
