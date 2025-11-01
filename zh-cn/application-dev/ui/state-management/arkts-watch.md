@@ -116,6 +116,39 @@ change() {
 
 <!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) -->
 
+``` TypeScript
+@Component
+struct TotalView {
+  @Prop @Watch('onCountUpdated') count: number = 0;
+  @State total: number = 0;
+
+  // @Watch 回调
+  onCountUpdated(propName: string): void {
+    this.total += this.count;
+  }
+
+  build() {
+    Text(`Total: ${this.total}`)
+  }
+}
+
+@Entry
+@Component
+struct CountModifier {
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Button('add to basket')
+        .onClick(() => {
+          this.count++;
+        })
+      TotalView({ count: this.count })
+    }
+  }
+}
+```
+
 处理步骤：
 
 1. CountModifier自定义组件的Button.onClick点击事件自增count。
