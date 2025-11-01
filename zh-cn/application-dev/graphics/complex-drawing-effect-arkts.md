@@ -36,6 +36,31 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 <!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+function drawRenderNode(canvas: drawing.Canvas) {
+  canvas.saveLayer(null, null);
+  const brushCircle = new drawing.Brush();
+  const colorCircle: common2D.Color = {alpha: 255, red: 0, green: 0, blue: 255};
+  brushCircle.setColor(colorCircle);
+  canvas.attachBrush(brushCircle);
+  canvas.drawCircle(500, 500, 200);
+  const brush = new drawing.Brush();
+  //  设置混合模式
+  brush.setBlendMode(drawing.BlendMode.SRC_IN);
+  canvas.saveLayer(null, brush);
+
+  const brushRect = new drawing.Brush();
+  const colorRect: common2D.Color = {alpha: 255, red: 255, green: 255, blue: 0};
+  brushRect.setColor(colorRect);
+  canvas.attachBrush(brushRect);
+  const rect: common2D.Rect = {left:100, top:100, right:500, bottom:500};
+  canvas.drawRect(rect);
+  canvas.restore();
+  canvas.restore();
+  canvas.detachBrush();
+}
+```
+
 ![zh-ch_image_BlendMode_SrcIn.png](figures/zh-ch_image_BlendMode_SrcIn.png)
 
 
