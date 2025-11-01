@@ -155,6 +155,21 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色为红色
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 顺时针旋转45度
+canvas.rotate(45, VALUE_200, VALUE_200);
+// 绘制矩形
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
+// 去除填充效果
+canvas.detachBrush();
+```
+
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
