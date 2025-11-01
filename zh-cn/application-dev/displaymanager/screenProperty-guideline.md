@@ -131,6 +131,31 @@ try {
 
 <!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+/**
+ * 注册监听的callback参数要采用对象传递.
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+ */
+let callback1: Callback<number> = (displayId: number) => {
+  hilog.info(DOMAIN, 'DisplayTest', `Listening enabled. displayId: ${displayId}`);
+};
+try {
+  // 此处以监听显示设备的增加为例
+  display.on('add', callback1);
+  hilog.info(DOMAIN, 'DisplayTest', `register add success`);
+
+  // 关闭单个callback监听
+  display.off('add', callback1);
+  hilog.info(DOMAIN, 'DisplayTest', `unregister add success`);
+  // 如果通过on注册多个callback，同时关闭所有callback监听
+  display.off('add');
+  hilog.info(DOMAIN, 'DisplayTest', `unregister all add success`);
+} catch (exception) {
+  hilog.error(DOMAIN, 'DisplayTest',
+    `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 2. 可以通过display.on('captureStatusChange')开启屏幕截屏、投屏或录屏状态变化的监听；可以通过display.off('captureStatusChange')关闭对应的监听。
 
 <!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
