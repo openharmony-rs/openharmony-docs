@@ -641,6 +641,29 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 1. 创建自定义手势判定回调。
     <!-- @[create_custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    auto onInterruptCallback = [](ArkUI_GestureInterruptInfo *info) -> ArkUI_GestureInterruptResult {
+        // 获取是否系统手势
+        auto sysTag = OH_ArkUI_GestureInterruptInfo_GetSystemFlag(info);
+        // 获取拦截的手势指针
+        auto recognizer = OH_ArkUI_GestureInterruptInfo_GetRecognizer(info);
+        // 获取系统手势类型
+        auto systemRecognizerType = OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(info);
+        // 获取手势事件
+        auto gestureEvent = OH_ArkUI_GestureInterruptInfo_GetGestureEvent(info);
+        auto inputEvent = OH_ArkUI_GestureEvent_GetRawInputEvent(gestureEvent);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+            "NdkAddInteractionEvent_eventInfo longPressGesture");
+        if (sysTag) {
+            // 如果是系统手势则不拦截
+            return GESTURE_INTERRUPT_RESULT_CONTINUE;
+        } else {
+            // 不是系统手势则拒绝
+            return GESTURE_INTERRUPT_RESULT_REJECT;
+        }
+    };
+    ```
 
 
 2. 绑定手势判定和节点。
