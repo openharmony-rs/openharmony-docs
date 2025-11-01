@@ -97,6 +97,41 @@ canvas.detachPen();
 
 <!-- @[arkts_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
+``` TypeScript
+
+// 创建画刷
+let brush = new drawing.Brush();
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置抗锯齿
+brush.setAntiAlias(true);
+// 设置描边颜色
+brush.setColor(0xFF, 0xFF,  0xFF, 0xFF);
+
+pen.setAntiAlias(true);
+// 设置描边线宽
+pen.setStrokeWidth(3.0);
+// 设置描边颜色
+pen.setColor(0xFF, 0xFF,  0x00, 0x00);
+
+// 创建字型对象
+const font = new drawing.Font();
+// 设置字体大小
+font.setSize(100);
+// 添加画笔描边效果
+canvas.attachPen(pen);
+// 创建字块对象
+const textBlob = drawing.TextBlob.makeFromString(STROKE_SAMPLE, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+// 绘制字块
+canvas.drawTextBlob(textBlob, VALUE_200,  VALUE_300);
+// 去除描边效果
+canvas.detachPen(); 
+
+canvas.attachBrush(brush);
+canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
+canvas.detachBrush();
+```
+
 ![chinese_stroke_text_ark](figures/chinese_stroke_text_ark.png)
 
 ## 文字渐变
