@@ -66,6 +66,23 @@
 
 <!-- @[arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色为蓝色
+brush.setColor(0xFF, 0x00,  0x00, 0xFF);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 创建矩形对象
+let rect: common2D.Rect = { left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 };
+// 裁剪矩形区域
+canvas.clipRect(rect);
+// 绘制圆形
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_300);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
