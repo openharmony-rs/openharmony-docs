@@ -29,6 +29,11 @@
 
 <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+```
+
 <!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ![zh-ch_image_BlendMode_SrcIn.png](figures/zh-ch_image_BlendMode_SrcIn.png)
