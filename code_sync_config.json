@@ -8087,5 +8087,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-attribute-animation-apis.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template2/Index.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"attrAnimateToDemo2",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets",
+				"functions":[
+					{
+						"end_line":70,
+						"name":"attrAnimationDemo3",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template4/Index.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"KeyframeAnimateToDemo",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
