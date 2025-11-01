@@ -49,6 +49,20 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 3. 将创建的手势和步骤一中创建的Column节点绑定。
     <!-- @[bind_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    auto onActionCallBack = [](ArkUI_GestureEvent *event, void *extraParam) {
+        // 回调内容
+        // ···
+    };
+    
+    // 将手势设置到组件上
+    gestureApi->setGestureEventTarget(
+        longPressGesture, GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE | GESTURE_EVENT_ACTION_END, column,
+        onActionCallBack);
+    
+    gestureApi->addGestureToNode(column, longPressGesture, PARALLEL, NORMAL_GESTURE_MASK);
+    ```
 
 
 ## 单一手势
