@@ -389,6 +389,31 @@ canvas.detachPen();
 
 <!-- @[arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置线宽
+pen.setStrokeWidth(10.0);
+// 设置颜色
+pen.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 创建模糊效果的蒙版滤波器
+let filter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.NORMAL, 20);
+// 设置模糊效果
+pen.setMaskFilter(filter);
+// 设置画笔描边效果
+canvas.attachPen(pen);
+let rect: common2D.Rect = {
+  left: VALUE_300,
+  top: VALUE_300,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
+// 绘制矩形
+canvas.drawRect(rect);
+// 去除描边效果
+canvas.detachPen();
+```
+
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |
 | ![Screenshot_20241130170911500](figures/Screenshot_20241130170911500.jpg) | ![Screenshot_20241130170826458](figures/Screenshot_20241130170826458.jpg) |
