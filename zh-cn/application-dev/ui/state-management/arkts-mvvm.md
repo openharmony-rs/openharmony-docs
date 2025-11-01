@@ -643,6 +643,13 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * ThingModel.ets
 
   <!-- @[thing_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/ThingModel.ets) -->
+  
+  ``` TypeScript
+  export default class ThingModel {
+    public thingName: string = 'Todo';
+    public isFinish: boolean = false;
+  }
+  ```
 
   * TodoListModel.ets
 
