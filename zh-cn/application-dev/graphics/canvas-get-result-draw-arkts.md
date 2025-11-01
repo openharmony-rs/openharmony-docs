@@ -98,6 +98,26 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 4. 重写自定义RenderNode的[draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_rewrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   async draw(context: DrawContext) {
+     const canvas = context.canvas;
+     if (canvas === null) {
+       console.error('Canvas is null.');
+       return;
+     }
+     // 4. 自定义的绘制相关操作
+     const brush = new drawing.Brush();
+     if (brush === null) {
+       console.error('Brush is null.');
+       return;
+     } else {
+       brush.setColor({red: 255, blue: 0, green: 0, alpha: 255});
+       canvas.attachBrush(brush);
+       canvas.drawRect({left: 0, right: 300, top: 0, bottom: 300});
+     }
+   }
+   ```
 
 5. 将自定义NodeController进行显示。
 
