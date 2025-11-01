@@ -77,6 +77,32 @@ OH_Drawing_PointDestroy(point);
 
 <!-- @[ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, 0xffff0000);
+// 设置画笔线宽为10
+OH_Drawing_PenSetWidth(pen, 10);
+// 表示10px的实线，5px的间隔，2px的实线，5px的间隔，以此循环
+float intervals[] = {10, 5, 2, 5};
+// 设置虚线路径效果
+OH_Drawing_PathEffect *pathEffect = OH_Drawing_CreateDashPathEffect(intervals, 4, 0.0);
+OH_Drawing_PenSetPathEffect(pen, pathEffect);
+// 在画布上设置画笔，请确保已获取得到画布对象
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+// 绘制矩形
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 去除掉画布中的画笔
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_PathEffectDestroy(pathEffect);
+```
+
 | 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
 | -------- | -------- |
 | ![zh-cn_image_0000002158584342](figures/zh-cn_image_0000002158584342.png) | ![zh-cn_image_0000002194110865](figures/zh-cn_image_0000002194110865.png) |
