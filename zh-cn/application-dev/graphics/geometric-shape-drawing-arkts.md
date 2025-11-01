@@ -256,6 +256,19 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
+``` TypeScript
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置颜色
+brush.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+// 绘制矩形
+canvas.drawRect(VALUE_200, VALUE_200, VALUE_1000, VALUE_700);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![zh-cn_image_0000002194110921](figures/zh-cn_image_0000002194110921.png)
 
 
