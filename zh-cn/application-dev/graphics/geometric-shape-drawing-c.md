@@ -186,6 +186,55 @@ OH_Drawing_PointDestroy(point);
 
 <!-- @[ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔对象
+OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画笔线宽为10
+OH_Drawing_PenSetWidth(pen, 10);
+// 设置 画笔转角样式
+OH_Drawing_PenSetJoin(pen, LINE_ROUND_JOIN);
+// 设置画布中的画笔
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建画刷，此例对闭合路径进行了颜色填充，所以需要使用画刷
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MAX, RGBA_MIN));
+// 设置画布中的画刷
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+int len = value551_;
+float aX = value630_;
+float aY = value551_;
+float dX = aX - len * std::sin(18.0f);
+float dY = aY + len * std::cos(18.0f);
+float cX = aX + len * std::sin(18.0f);
+float cY = dY;
+float bX = aX + (len / 2.0);
+float bY = aY + std::sqrt((cX - dX) * (cX - dX) + (len / 2.0) * (len / 2.0));
+float eX = aX - (len / 2.0);
+float eY = bY;
+// 创建路径
+OH_Drawing_Path* path = OH_Drawing_PathCreate();
+// 到起始点
+OH_Drawing_PathMoveTo(path, aX, aY);
+// 绘制直线
+OH_Drawing_PathLineTo(path, bX, bY);
+OH_Drawing_PathLineTo(path, cX, cY);
+OH_Drawing_PathLineTo(path, dX, dY);
+OH_Drawing_PathLineTo(path, eX, eY);
+// 直线闭合，形成五角星
+OH_Drawing_PathClose(path);
+// 绘制闭合路径
+OH_Drawing_CanvasDrawPath(canvas, path);
+// 去除掉画布中的画笔和画刷
+OH_Drawing_CanvasDetachPen(canvas);
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_PathDestroy(path);
+```
+
 效果如下：
 
 ![zh-cn_image_0000002194025277](figures/zh-cn_image_0000002194025277.png)
