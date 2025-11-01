@@ -47,9 +47,9 @@
 <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-// [Start onSaveState]
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+// ···
 
 const DOMAIN = 0x0000;
 
@@ -61,7 +61,6 @@ export default class EntryAbility extends UIAbility {
   }
 
 // ···
-  // [EndExclude onSaveState]
 }
 ```
 
