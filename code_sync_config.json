@@ -6375,7 +6375,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnOption.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":42,
 						"name":"GridLayoutColumnOption_start",
 						"start_line":15
 					}
@@ -6480,7 +6480,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToOption.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":36,
 						"name":"GridColSpanToOption_start",
 						"start_line":15
 					}
@@ -6500,7 +6500,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":38,
 						"name":"GridColOffsetToOption_start",
 						"start_line":15
 					}
