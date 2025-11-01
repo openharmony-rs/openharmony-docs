@@ -86,6 +86,14 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 - 滑动手势
   通过给组件绑定滑动手势可在用户滑动组件时触发回调，可指定触发回调需要的手指个数、滑动方向、滑动距离。单位为px。
     <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    // 获取手势Native接口集合
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // 创建滑动手势
+    auto panGesture = gestureApi->createPanGesture(1, GESTURE_DIRECTION_ALL, 1);
+    ```
 
 
 - 长按手势
