@@ -291,6 +291,11 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 
    相关文件：
    <!-- @[ndk_graphics_draw_include_egl_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
+   
+   ``` C
+   #include <EGL/egl.h>
+   #include <EGL/eglext.h>
+   ```
 
    相关文件：
    <!-- @[ndk_graphics_draw_include_native_drawing_surface_and_gpu_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
