@@ -88,6 +88,57 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 <!-- @[state_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/StateIndex.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct StateIndex {
+  @State isFinished: boolean = false;
+
+  build() {
+    Column() {
+      Row() {
+        // $r('app.string.all_tasks')需要替换为开发者所需的资源文件
+        Text($r('app.string.all_tasks'))
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+      .margin({ top: 10, bottom: 10 })
+
+      // 待办事项
+      Row({ space: 15 }) {
+        if (this.isFinished) {
+          // $r('app.media.finished')需要替换为开发者所需的资源文件
+          Image($r('app.media.finished'))
+            .width(28)
+            .height(28)
+        } else {
+          // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+          Image($r('app.media.unfinished'))
+            .width(28)
+            .height(28)
+        }
+        // $r('app.string.learn_advanced_math')需要替换为开发者所需的资源文件
+        Text($r('app.string.learn_advanced_math'))
+          .fontSize(24)
+          .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
+      }
+      .height('40%')
+      .width('100%')
+      .border({ width: 5 })
+      .padding({ left: 15 })
+      .onClick(() => {
+        this.isFinished = !this.isFinished;
+      })
+    }
+    .height('100%')
+    .width('100%')
+    .margin({ top: 5, bottom: 5 })
+    .backgroundColor('#90f1f3f5')
+  }
+}
+```
+
 效果图：
 
 ![state](./figures/MVVM_state.gif)
