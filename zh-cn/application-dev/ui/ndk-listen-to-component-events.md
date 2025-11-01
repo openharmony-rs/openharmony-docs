@@ -218,6 +218,37 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
   > - 建议注册在页面内不会被销毁的节点，防止因节点销毁导致的回调失效。
 
     <!-- @[shade_change_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    struct ColorModeInfo {
+        const char* lightMsg;
+        const char* darkMsg;
+    };
+    
+    //注册回调函数
+    void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
+    {
+        ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
+        if (colorMode == ARKUI_SYSTEM_COLOR_MODE_LIGHT) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                         "NdkAddInteractionEvent_Light mode: ", info->lightMsg);
+        } else if (colorMode == ARKUI_SYSTEM_COLOR_MODE_DARK) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+                         "NdkAddInteractionEvent_Dark mode: ", info->darkMsg);
+        }
+    }
+    
+    ArkUI_NodeHandle testColorModeChange(ArkUI_NativeNodeAPI_1 *nodeAPI) {
+        ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
+        static ColorModeInfo info = {"Light mode", "Dark mode"};
+        OH_ArkUI_RegisterSystemColorModeChangeEvent(text, &info, onColorModeChange);
+    
+        ArkUI_AttributeItem itemstring = {nullptr, 0, ("test_light_dark")};
+        nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &itemstring);
+    
+        return text;
+    }
+    ```
 
 
 ## 完整示例
