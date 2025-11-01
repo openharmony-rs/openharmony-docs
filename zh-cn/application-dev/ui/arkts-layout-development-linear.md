@@ -564,6 +564,33 @@ struct BlankExample {
 - 父容器尺寸确定时，使用百分比设置子元素和兄弟元素的宽度，使他们在任意尺寸的设备下保持固定的自适应占比。
 
   <!-- @[WidthExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/WidthExample.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct WidthExample {
+    build() {
+      Column() {
+        Row() {
+          Column() {
+            Text('left width 20%')
+              .textAlign(TextAlign.Center)
+          }.width('20%').backgroundColor(0xF5DEB3).height('100%')
+  
+          Column() {
+            Text('center width 50%')
+              .textAlign(TextAlign.Center)
+          }.width('50%').backgroundColor(0xD2B48C).height('100%')
+  
+          Column() {
+            Text('right width 30%')
+              .textAlign(TextAlign.Center)
+          }.width('30%').backgroundColor(0xF5DEB3).height('100%')
+        }.backgroundColor(0xffd306).height('30%')
+      }
+    }
+  }
+  ```
 
     **图13** 横屏  
 
