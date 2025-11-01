@@ -456,6 +456,42 @@ for (let resultSet of resultSets) {
 
 <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+let STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'RdbTest.db',
+  securityLevel: relationalStore.SecurityLevel.S3,
+  allowRebuild: true
+}
+try {
+  /**
+   * "Backup.db"为备份数据库文件名，默认在当前 store 所在路径下查找备份文件 Backup.db。
+   * 如在备份时指定了绝对路径："/data/storage/el2/database/Backup.db", 需要传入绝对路径。
+   */
+  let backupFilePath = context.databaseDir + '/rdb/Backup.db';
+  const backupExist: boolean = await fileIo.access(backupFilePath);
+  if (!backupExist) {
+    hilog.info(DOMAIN, 'BackupAndRestore', 'Backup is not exist.');
+    // todo 开库建表
+    // todo 自行生成数据
+    return;
+  }
+} catch (e) {
+  hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+}
+
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  // 调用restore接口恢复数据
+  await store.restore('Backup.db');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Restore from backup success.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
+
 
 ### 恢复自动备份数据（仅系统应用可用）
 
