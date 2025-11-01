@@ -4920,7 +4920,7 @@ try {
 
 off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
-取消数据变更的事件监听，支持指定是否本进程取消订阅。
+取消指定的事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
