@@ -505,6 +505,53 @@ struct BlankExample {
 - 父容器尺寸确定时，使用layoutWeight属性设置子元素和兄弟元素在主轴上的权重，忽略元素本身尺寸设置，使它们在任意尺寸的设备下自适应占满剩余空间。
 
   <!-- @[LayoutWeightExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/LayoutWeightExample.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct LayoutWeightExample {
+    build() {
+      Column() {
+        Text('1:2:3').width('100%')
+        Row() {
+          Column() {
+            Text('layoutWeight(1)')
+              .textAlign(TextAlign.Center)
+          }.layoutWeight(1).backgroundColor(0xF5DEB3).height('100%')
+  
+          Column() {
+            Text('layoutWeight(2)')
+              .textAlign(TextAlign.Center)
+          }.layoutWeight(2).backgroundColor(0xD2B48C).height('100%')
+  
+          Column() {
+            Text('layoutWeight(3)')
+              .textAlign(TextAlign.Center)
+          }.layoutWeight(3).backgroundColor(0xF5DEB3).height('100%')
+  
+        }.backgroundColor(0xffd306).height('30%')
+  
+        Text('2:5:3').width('100%')
+        Row() {
+          Column() {
+            Text('layoutWeight(2)')
+              .textAlign(TextAlign.Center)
+          }.layoutWeight(2).backgroundColor(0xF5DEB3).height('100%')
+  
+          Column() {
+            Text('layoutWeight(5)')
+              .textAlign(TextAlign.Center)
+          }.layoutWeight(5).backgroundColor(0xD2B48C).height('100%')
+  
+          Column() {
+            Text('layoutWeight(3)')
+              .textAlign(TextAlign.Center)
+          }.layoutWeight(3).backgroundColor(0xF5DEB3).height('100%')
+        }.backgroundColor(0xffd306).height('30%')
+      }
+    }
+  }
+  ```
 
     **图11** 横屏  
 
