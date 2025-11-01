@@ -40,6 +40,10 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
     调用OH_ArkUI_GetModuleInterface接口给定义的指针赋值：
     <!-- @[get_module_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NativeEntry.cpp) -->
+    
+    ``` C++
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+    ```
 
     定义事件触发回调函数：
     <!-- @[node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
