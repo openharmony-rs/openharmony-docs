@@ -56,6 +56,33 @@
 
 <!-- @[ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔对象
+OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+// 设置画笔颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画笔线宽为40
+OH_Drawing_PenSetWidth(pen, 40);
+// 设置画布的画笔
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 绘制5个点
+AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
+OH_Drawing_Point2D point1 = {value200_, value200_};
+OH_Drawing_CanvasDrawPoint(canvas, &point1);
+OH_Drawing_Point2D point2 = {value400_, value400_};
+OH_Drawing_CanvasDrawPoint(canvas, &point2);
+OH_Drawing_Point2D point3 = {value600_, value600_};
+OH_Drawing_CanvasDrawPoint(canvas, &point3);
+OH_Drawing_Point2D point4 = {value800_, value800_};
+OH_Drawing_CanvasDrawPoint(canvas, &point4);
+OH_Drawing_Point2D point5 = {value1000_, value1000_};
+OH_Drawing_CanvasDrawPoint(canvas, &point5);
+// 去除掉画布中的画笔
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_PenDestroy(pen);
+```
+
 
 效果如下：
 
