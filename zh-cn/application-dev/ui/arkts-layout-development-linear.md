@@ -315,6 +315,19 @@ Row({ space: 35 }) {
 - justifyContent(FlexAlign.SpaceEvenly)：水平方向均匀分配元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距都完全一样。
 
   <!-- @[RowLayoutJustifyContentSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentSpaceEvenly.ets) -->
+  
+  ``` TypeScript
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
+  ```
 
   ![zh-cn_image_0000001511421352](figures/zh-cn_image_0000001511421352.png)
 
