@@ -411,6 +411,11 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
    如果需要将背景设置为白色，需要执行以下步骤：
 
    <!-- @[ndk_graphics_draw_clear_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 将背景设置为白色
+   OH_Drawing_CanvasClear(cGPUCanvas_, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MAX, 0xFF));
+   ```
 
 5. 将上一步中的绘制结果拷贝到[窗口画布](#获取可直接显示的canvas画布)上。
 
