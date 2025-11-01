@@ -88,6 +88,25 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
     注册全局的事件处理函数：
     <!-- @[register_global_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
+        // 从组件事件中获取基础事件对象
+        auto *inputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
+        // 从组件事件获取事件类型
+        auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+        // ···
+        switch (eventType) {
+            case NODE_ON_CLICK_EVENT: {
+                // 触发点击事件所进行的操作，从基础事件获取事件信息
+                // ···
+            }
+            default: {
+                break;
+            }
+        }
+    });
+    ```
 
     解注册全局的事件处理函数：
     <!-- @[unregister_node_event_receicer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
