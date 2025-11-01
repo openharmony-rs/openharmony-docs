@@ -250,6 +250,34 @@ OH_Drawing_PathDestroy(path);
 
 <!-- @[ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷对象
+OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+// 设置画刷填充颜色
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画布的画刷
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 矩形区域1
+OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
+OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(value100_, value100_, value600_, value600_);
+OH_Drawing_RegionSetRect(region1, rect1);
+// 矩形区域2
+OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
+OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
+OH_Drawing_RegionSetRect(region2, rect2);
+// 两个矩形区域组合
+OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
+OH_Drawing_CanvasDrawRegion(canvas, region1);
+// 去除掉画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+// 销毁各类对象
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_RegionDestroy(region1);
+OH_Drawing_RegionDestroy(region2);
+OH_Drawing_RectDestroy(rect1);
+OH_Drawing_RectDestroy(rect2);
+```
+
 效果如下：
 
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
