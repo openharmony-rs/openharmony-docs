@@ -197,7 +197,7 @@ PixelMap是图片解码后的像素图，具体用法请参考[图片开发指�
     @State image: PixelMap | undefined = undefined; //创建PixelMap状态变量。
   
     aboutToAppear(): void {
-      http.createHttp().request('', //请填写一个具体的网络图片地址。
+      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', //请填写一个具体的网络图片地址。
         (error: BusinessError, data: http.HttpResponse) => {
           if (error) {
             hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
@@ -427,8 +427,8 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   
     build() {
       Scroll(this.scroller) {
-        Column() {
-          Row() {
+        Row() {
+          Column() {
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
@@ -436,16 +436,16 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .border({ width: 1 })
               // 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。
               .objectFit(ImageFit.Contain)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Contain', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            //  $r('app.media.ic_img_2')需要替换为开发者所需的资源文件
-            Image($r('app.media.ic_img_2'))
+            //  $r('app.media.img_2')需要替换为开发者所需的资源文件
+            Image($r('app.media.img_2'))
               .width(200)
               .height(150)
               .border({ width: 1 })
               // 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。
               .objectFit(ImageFit.Cover)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Cover', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
@@ -454,11 +454,11 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .border({ width: 1 })
               // 自适应显示。
               .objectFit(ImageFit.Auto)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Auto', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           }
   
-          Row() {
+          Column() {
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
               .width(200)
@@ -466,7 +466,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .border({ width: 1 })
               // 不保持宽高比进行放大缩小，使得图片充满显示边界。
               .objectFit(ImageFit.Fill)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('Fill', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
@@ -475,7 +475,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .border({ width: 1 })
               // 保持宽高比显示，图片缩小或者保持不变。
               .objectFit(ImageFit.ScaleDown)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('ScaleDown', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             //  $r('app.media.img_2')需要替换为开发者所需的资源文件
             Image($r('app.media.img_2'))
@@ -484,7 +484,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .border({ width: 1 })
               // 保持原有尺寸显示。
               .objectFit(ImageFit.None)
-              .margin(15)
+              .margin({bottom:25,left:10})
               .overlay('None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           }
         }
@@ -566,11 +566,11 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
   struct ImageRepetitionStyle {
     build() {
       Column({ space: 10 }) {
-        Row({ space: 5 }) {
+        Column({ space: 25 }) {
           //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
             .objectRepeat(ImageRepeat.XY)
             .objectFit(ImageFit.ScaleDown)
@@ -578,8 +578,8 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
             .objectRepeat(ImageRepeat.Y)
             .objectFit(ImageFit.ScaleDown)
@@ -587,8 +587,8 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           //  $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
-            .width(110)
-            .height(115)
+            .width(160)
+            .height(160)
             .border({ width: 1 })
             .objectRepeat(ImageRepeat.X)
             .objectFit(ImageFit.ScaleDown)
@@ -677,7 +677,8 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               height: 90
             })
             .objectFit(ImageFit.ScaleDown)
-            .width('25%')
+            .width(100)
+            .height(100)
             .aspectRatio(1)
             .border({ width: 1 })
             .overlay('width:90 height:90', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
