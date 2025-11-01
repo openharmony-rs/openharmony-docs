@@ -160,6 +160,25 @@ try {
 
 <!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let callback2: Callback<boolean> = (captureStatus: boolean) => {
+  // captureStatus为true表示显示设备开始截屏、投屏或录屏，false表示结束截屏、投屏或录屏
+  hilog.info(DOMAIN, 'DisplayTest', 'Listening capture status: ' + captureStatus);
+};
+
+try {
+  // 开启屏幕截屏、投屏、录屏状态变化的监听
+  display.on('captureStatusChange', callback2);
+  hilog.info(DOMAIN, 'DisplayTest', `register captureStatusChange success`);
+  // 关闭屏幕截屏、投屏、录屏状态变化的监听
+  display.off('captureStatusChange', callback2);
+  hilog.info(DOMAIN, 'DisplayTest', `unregister captureStatusChange success`);
+} catch (exception) {
+  hilog.error(DOMAIN, 'DisplayTest',
+    `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
 <!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
