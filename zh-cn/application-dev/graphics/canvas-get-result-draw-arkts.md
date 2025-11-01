@@ -69,6 +69,31 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 3. 添加自定义[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)。
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_node_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   // 3. 自定义 NodeController
+   class MyNodeControllerDirectDisplay extends NodeController {
+     private rootNode: FrameNode | null = null;
+     private myRenderNode = new MyRenderNodeDirectDisplay();
+   
+     makeNode(uiContext: UIContext): FrameNode {
+       this.rootNode = new FrameNode(uiContext);
+       if (this.rootNode === null) {
+         return this.rootNode;
+       }
+       const renderNode = this.rootNode.getRenderNode();
+       if (renderNode !== null) {
+         this.myRenderNode.backgroundColor = 0xffffffff;
+         this.myRenderNode.frame = { x: 0, y: 0, width: 4800, height: 4800 };
+         this.myRenderNode.pivot = { x: 0.2, y: 0.8 };
+         this.myRenderNode.scale = { x: 1, y: 1 };
+         renderNode.appendChild(this.myRenderNode);
+         renderNode.clipToFrame = true;
+       }
+       return this.rootNode;
+     }
+   }
+   ```
 
 4. 重写自定义RenderNode的[draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw)函数，获取Canvas进行自定义的绘制操作，即本章下文中的内容。
    
