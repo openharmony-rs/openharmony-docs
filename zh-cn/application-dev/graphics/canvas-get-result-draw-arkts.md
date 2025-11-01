@@ -182,6 +182,75 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    3. 将离屏Canvas的绘制结果交给RenderNode。
 
    <!-- @[arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
+   // 2. 自定义RenderNode
+   export class MyRenderNodeIndirectDisplay extends RenderNode {
+     private pixelMap: image.PixelMap | null = null;
+     setPixelMap(pixelMap: image.PixelMap) {
+       this.pixelMap = pixelMap;
+     }
+   
+     async draw(context: DrawContext) {
+       const canvas = context.canvas;
+       if (this.pixelMap != null) {
+         // 5.1 利用4中创建的PixelMap构造离屏Canvas
+         const canvas_ = new drawing.Canvas(this.pixelMap);
+   
+         // 5.2 离屏绘制
+         const brush = new drawing.Brush();
+         brush.setColor({ alpha: 255, red: 0, green: 0, blue: 255 });
+         canvas_.attachBrush(brush);
+         canvas_.drawRect({ left: 150, right: 575, top: 0, bottom: 600 });
+   
+         // 5.3 将离屏Canvas的绘制结果交给RenderNode
+         canvas.drawImage(this.pixelMap, 0, 0);
+       }
+     }
+   }
+   
+   @Concurrent
+   async function createPixelMapAsync() {
+     // 4000000为需要创建的像素buffer大小，取值为：height * width *4
+     const color : ArrayBuffer = new ArrayBuffer(4000000);
+     let opts : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 1000, width: 1000 } };
+     const pixel = await image.createPixelMap(color, opts);
+     return pixel;
+   }
+   
+   // 3. 自定义NodeController
+   export class MyNodeControllerIndirectDisplay extends NodeController {
+     private rootNode: FrameNode | null = null;
+     private myRenderNode = new MyRenderNodeIndirectDisplay();
+   
+     // 4. 在MyNodeController的aboutToAppear中创建PixeMap
+     aboutToAppear(): void {
+       let task = new taskpool.Task(createPixelMapAsync);
+       taskpool.execute(task).then((pixel:Object)=>{
+         this.myRenderNode.setPixelMap(pixel as image.PixelMap);
+         this.myRenderNode.invalidate();
+       })
+     }
+   
+     makeNode(uiContext: UIContext): FrameNode {
+       this.rootNode = new FrameNode(uiContext);
+       if (this.rootNode === null) {
+         return this.rootNode;
+       }
+   
+       const renderNode = this.rootNode.getRenderNode();
+       if (renderNode !== null) {
+         this.myRenderNode.backgroundColor = 0xffffffff;
+         this.myRenderNode.frame = { x: 0, y: 0, width: 4800, height: 4800 };
+         this.myRenderNode.pivot = { x: 0.2, y: 0.8 };
+         this.myRenderNode.scale = { x: 1, y: 1 };
+         renderNode.appendChild(this.myRenderNode);
+         renderNode.clipToFrame = true;
+       }
+       return this.rootNode;
+     }
+   }
+   ```
 
 6. 将自定义NodeController进行显示。
    
