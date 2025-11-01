@@ -258,6 +258,19 @@ Row({ space: 35 }) {
 - justifyContent(FlexAlign.End)：元素在水平方向尾部对齐，最后一个元素与行尾对齐，其他元素与后一个对齐。
 
   <!-- @[RowLayoutJustifyContentEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentEnd.ets) -->
+  
+  ``` TypeScript
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
+  ```
 
   ![zh-cn_image_0000001562940601](figures/zh-cn_image_0000001562940601.png)
 
