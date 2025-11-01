@@ -177,6 +177,29 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
+let colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+// 创建径向渐变着色器
+let shaderEffect = drawing.ShaderEffect.createRadialGradient(centerPt, VALUE_600, colors, drawing.TileMode.CLAMP);
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置径向渐变着色器
+brush.setShaderEffect(shaderEffect);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+let rect: common2D.Rect = {
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
+// 绘制矩形
+canvas.drawRect(rect);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![Screenshot_20241130164939281](figures/Screenshot_20241130164939281.jpg)
 
 
