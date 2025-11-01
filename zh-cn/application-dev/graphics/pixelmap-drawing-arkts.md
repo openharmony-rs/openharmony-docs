@@ -17,6 +17,36 @@
 
 <!-- @[arkts_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
 
+``` TypeScript
+// 图片宽高
+let width = 600;
+let height = 400;
+// 字节长度，RGBA_8888每个像素占4字节
+let byteLength = width * height * 4;
+const color: ArrayBuffer = new ArrayBuffer(byteLength);
+let bufferArr = new Uint8Array(color);
+for (let i = 0; i < bufferArr.length; i += 4) {
+  // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
+  bufferArr[i] = 0x00;
+  bufferArr[i+1] = 0x00;
+  bufferArr[i+2] = 0x00;
+  bufferArr[i+3] = 0xFF;
+  let n = Math.floor(i / 80) % 3;
+  if (n == 0) {
+    bufferArr[i] = 0xFF;
+  } else if (n == 1) {
+    bufferArr[i+1] = 0xFF;
+  } else {
+    bufferArr[i+2] = 0xFF;
+  }
+}
+// 设置像素属性
+let opts: image.InitializationOptions =
+  { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: height, width: width } };
+// 创建PixelMap
+pixelMap = image.createPixelMapSync(color, opts);
+```
+
 2. （可选）编辑PixelMap中的像素。如果没有编辑像素的需求，此步骤可以省略。
 
    有多个API接口可以编辑PixelMap中的像素，下文以writePixelsSync()为例。更多方式和接口的使用可见[PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
