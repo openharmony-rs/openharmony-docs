@@ -213,6 +213,29 @@ canvas.detachBrush();
 
 <!-- @[arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
+let colors = [0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00];
+// 创建扇形渐变着色器
+let shaderEffect = drawing.ShaderEffect.createSweepGradient(centerPt, colors, drawing.TileMode.CLAMP, 0, 360);
+// 创建画刷
+let brush = new drawing.Brush();
+// 设置扇形渐变着色器
+brush.setShaderEffect(shaderEffect);
+// 设置画刷填充效果
+canvas.attachBrush(brush);
+let rect: common2D.Rect = {
+  left: VALUE_100,
+  top: VALUE_100,
+  right: VALUE_900,
+  bottom: VALUE_900
+};
+// 绘制矩形
+canvas.drawRect(rect);
+// 去除填充效果
+canvas.detachBrush();
+```
+
 ![Screenshot_20241130165741720](figures/Screenshot_20241130165741720.jpg)
 
 
