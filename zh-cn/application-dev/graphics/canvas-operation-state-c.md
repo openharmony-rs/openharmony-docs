@@ -120,6 +120,26 @@ OH_Drawing_BrushDestroy(brush);
 
 <!-- @[ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画刷对象
+OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+// 设置填充颜色
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画布中的画刷
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+// 创建在水平和垂直方向分别平移300px的矩阵对象
+OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(value300_, value300_);
+// 对Canvas进行矩阵变换
+OH_Drawing_CanvasConcatMatrix(canvas, matrix);
+// 绘制矩形
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
+OH_Drawing_CanvasDrawRect(canvas, rect);
+// 去除画布中的画刷
+OH_Drawing_CanvasDetachBrush(canvas);
+OH_Drawing_RectDestroy(rect);
+OH_Drawing_MatrixDestroy(matrix);
+```
+
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
 | ![zh-cn_image_0000002194110929](figures/zh-cn_image_0000002194110929.png) | ![zh-cn_image_0000002194025285](figures/zh-cn_image_0000002194025285.png) |
