@@ -411,6 +411,19 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 - VerticalAlign.Top：子元素在垂直方向顶部对齐。
 
   <!-- @[RowLayoutVerticalAlignTop_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignTop.ets) -->
+  
+  ``` TypeScript
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
+  ```
 
   ![zh-cn_image_0000001563060765](figures/zh-cn_image_0000001563060765.png)
 
