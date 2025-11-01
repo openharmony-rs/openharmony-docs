@@ -431,24 +431,27 @@ WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| bssidType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 否 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bssidType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 否 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | capabilities | string | 否 | 否 | 热点能力。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| securityType | [WifiSecurityType](#wifisecuritytype9) | 否 | 否 | WLAN加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| channelWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth9)。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| centerFrequency0 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| centerFrequency1 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | 否 | 否 | 信息元素。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| timestamp | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 时间戳。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true:支持，&nbsp;false:不支持。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| securityType | [WifiSecurityType](#wifisecuritytype9) | 否 | 否 | WLAN加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
+| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| channelWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth9)。 |
+| centerFrequency0 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。 |
+| centerFrequency1 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 |
+| infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | 否 | 否 | 信息元素。 |
+| timestamp | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 时间戳。 |
+| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true:支持，&nbsp;false:不支持。 |
 
 ## DeviceAddressType<sup>10+</sup>
 
@@ -464,8 +467,8 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| RANDOM_DEVICE_ADDRESS | 0 | 随机设备地址。 |
+| REAL_DEVICE_ADDRESS | 1 | 真实设备地址。 |
 
 ## WifiSecurityType<sup>9+</sup>
 
@@ -480,7 +483,7 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | 无效加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| WIFI_SEC_TYPE_OPEN | 1 | 开放加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WIFI_SEC_TYPE_OPEN | 1 | 开放加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | WIFI_SEC_TYPE_WEP | 2 | Wired&nbsp;Equivalent&nbsp;Privacy&nbsp;(WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | WIFI_SEC_TYPE_PSK | 3 | Pre-shared&nbsp;key&nbsp;(PSK)加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | WIFI_SEC_TYPE_SAE | 4 | Simultaneous&nbsp;Authentication&nbsp;of&nbsp;Equals&nbsp;(SAE)加密类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
@@ -503,11 +506,11 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIFI_BAND_NONE | 0 | 无效频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_2G | 1 | 2.4G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_5G | 2 | 5G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_6G | 3 | 6G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_BAND_60G | 4 | 60G频段类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_BAND_NONE | 0 | 无效频段类型。 |
+| WIFI_BAND_2G | 1 | 2.4G频段类型。 |
+| WIFI_BAND_5G | 2 | 5G频段类型。 |
+| WIFI_BAND_6G | 3 | 6G频段类型。 |
+| WIFI_BAND_60G | 4 | 60G频段类型。 |
 
 ## WifiStandard<sup>10+</sup>
 
@@ -521,14 +524,14 @@ Wi-Fi 设备地址（MAC/bssid）类型。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIFI_STANDARD_UNDEFINED | 0 | 无效WIFI标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11A | 1 | 802.11a WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11B | 2 | 802.11b WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11G | 3 | 802.11g WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11N | 4 | 802.11n WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11AC | 5 | 802.11ac WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11AX | 6 | 802.11ax WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| WIFI_STANDARD_11AD | 7 | 802.11ad WiFi标准类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| WIFI_STANDARD_UNDEFINED | 0 | 无效WIFI标准类型。 |
+| WIFI_STANDARD_11A | 1 | 802.11a WiFi标准类型。 |
+| WIFI_STANDARD_11B | 2 | 802.11b WiFi标准类型。 |
+| WIFI_STANDARD_11G | 3 | 802.11g WiFi标准类型。 |
+| WIFI_STANDARD_11N | 4 | 802.11n WiFi标准类型。 |
+| WIFI_STANDARD_11AC | 5 | 802.11ac WiFi标准类型。 |
+| WIFI_STANDARD_11AX | 6 | 802.11ax WiFi标准类型。 |
+| WIFI_STANDARD_11AD | 7 | 802.11ad WiFi标准类型。 |
 
 ## WifiInfoElem<sup>9+</sup>
 
@@ -542,8 +545,8 @@ WLAN热点信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| eid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 元素ID。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| content | Uint8Array | 否 | 否 | 元素内容。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| eid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 元素ID。 |
+| content | Uint8Array | 否 | 否 | 元素内容。 |
 
 
 ## WifiChannelWidth<sup>9+</sup>
@@ -558,12 +561,12 @@ WLAN热点信息。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WIDTH_20MHZ | 0 | 20MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| WIDTH_40MHZ | 1 | 40MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| WIDTH_80MHZ | 2 | 80MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| WIDTH_160MHZ | 3 | 160MHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| WIDTH_80MHZ_PLUS | 4 | 80MHZ<sup>+</sup>。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| WIDTH_INVALID | 5 | 无效值 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| WIDTH_20MHZ | 0 | 20MHZ。 |
+| WIDTH_40MHZ | 1 | 40MHZ。 |
+| WIDTH_80MHZ | 2 | 80MHZ。 |
+| WIDTH_160MHZ | 3 | 160MHZ。 |
+| WIDTH_80MHZ_PLUS | 4 | 80MHZ<sup>+</sup>。 |
+| WIDTH_INVALID | 5 | 无效值 |
 
 
 ## WifiDeviceConfig<sup>9+</sup>
@@ -578,14 +581,14 @@ WLAN配置信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| bssid | string | 否 | 是 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| bssid | string | 否 | 是 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| preSharedKey | string | 否 | 否 | 热点的密钥，最大长度为64字节。<br>当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，其他加密类型不能为空串。<br>当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。<br>当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。<br>当securityType为WIFI_SEC_TYPE_PSK时，该字段最小长度为8字节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| preSharedKey | string | 否 | 否 | 热点的密钥，最大长度为64字节。<br>当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，其他加密类型不能为空串。<br>当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。<br>当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。<br>当securityType为WIFI_SEC_TYPE_PSK时，该字段最小长度为8字节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | isHiddenSsid | boolean | 否 | 是 | 是否是隐藏网络。true:是隐藏网络，false:不是隐藏网络。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| securityType | [WifiSecurityType](#wifisecuritytype9)| 否 | 否 | 加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| securityType | [WifiSecurityType](#wifisecuritytype9)| 否 | 否 | 加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | 否 | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时需要填写。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 |
 
 ## WifiEapConfig<sup>10+</sup>
 
@@ -599,21 +602,21 @@ WLAN配置信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| eapMethod | [EapMethod](#eapmethod10) | 否 | 否 | EAP认证方式。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| phase2Method | [Phase2Method](#phase2method10) | 否 | 否 | 第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| identity | string | 否 | 否 | 身份信息。当eapMethod为EAP_PEAP、EAP_TLS或EAP_PWD时，该字段不能为空串。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| anonymousIdentity | string | 否 | 否 | 匿名身份。暂未使用。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| password | string | 否 | 否 | 密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| caCertAlias | string | 否 | 否 | CA 证书别名。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| caPath | string | 否 | 否 | CA 证书路径。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| clientCertAlias | string | 否 | 否 | 客户端证书别名。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| certEntry | Uint8Array | 否 | 否 | CA 证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则clientCertAlias不能为空。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| altSubjectMatch | string | 否 | 否 | 替代主题匹配。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| realm | string | 否 | 否 | 通行证凭证的领域。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| eapSubId | number | 否 | 否 | SIM卡的子ID。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| eapMethod | [EapMethod](#eapmethod10) | 否 | 否 | EAP认证方式。 |
+| phase2Method | [Phase2Method](#phase2method10) | 否 | 否 | 第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。 |
+| identity | string | 否 | 否 | 身份信息。当eapMethod为EAP_PEAP、EAP_TLS或EAP_PWD时，该字段不能为空串。 |
+| anonymousIdentity | string | 否 | 否 | 匿名身份。暂未使用。 |
+| password | string | 否 | 否 | 密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。 |
+| caCertAlias | string | 否 | 否 | CA 证书别名。 <br>ArkTS-Dyn起始版本： |
+| caPath | string | 否 | 否 | CA 证书路径。 <br>ArkTS-Dyn起始版本： |
+| clientCertAlias | string | 否 | 否 | 客户端证书别名。 <br>ArkTS-Dyn起始版本： |
+| certEntry | Uint8Array | 否 | 否 | CA 证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则clientCertAlias不能为空。 |
+| certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 <br>ArkTS-Dyn起始版本： |
+| altSubjectMatch | string | 否 | 否 | 替代主题匹配。 <br>ArkTS-Dyn起始版本： |
+| domainSuffixMatch | string | 否 | 否 | 域后缀匹配。 <br>ArkTS-Dyn起始版本： |
+| realm | string | 否 | 否 | 通行证凭证的领域。 <br>ArkTS-Dyn起始版本： |
+| plmn | string | 否 | 否 | 公共陆地移动网的直通凭证提供商。 <br>ArkTS-Dyn起始版本： |
+| eapSubId | number | 否 | 否 | SIM卡的子ID。 <br>ArkTS-Dyn起始版本： |
 
 
 ## WifiWapiConfig<sup>12+</sup>
@@ -628,9 +631,9 @@ WAPI身份验证协议配置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| wapiAsCert | string | 否 | 否 | As证书。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| wapiUserCert | string | 否 | 否 | 用户证书。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 |
+| wapiAsCert | string | 否 | 否 | As证书。 |
+| wapiUserCert | string | 否 | 否 | 用户证书。 |
 
 ## WapiPskType<sup>12+</sup>
 
@@ -644,8 +647,8 @@ WAPI认证方式的枚举。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| WAPI_PSK_ASCII | 0 | ASCII类型。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| WAPI_PSK_HEX | 1 | HEX类型。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| WAPI_PSK_ASCII | 0 | ASCII类型。 |
+| WAPI_PSK_HEX | 1 | HEX类型。 |
 
 ## EapMethod<sup>10+</sup>
 
@@ -659,15 +662,15 @@ WAPI认证方式的枚举。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| EAP_NONE | 0 | 不指定。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_PEAP | 1 | PEAP类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_TLS | 2 | TLS类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_TTLS | 3 | TTLS类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_PWD | 4 | PWD类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_SIM | 5 | SIM类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_AKA | 6 | AKA类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_AKA_PRIME | 7 | AKA Prime类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| EAP_UNAUTH_TLS | 8 | UNAUTH TLS类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| EAP_NONE | 0 | 不指定。 |
+| EAP_PEAP | 1 | PEAP类型。 |
+| EAP_TLS | 2 | TLS类型。 |
+| EAP_TTLS | 3 | TTLS类型。 |
+| EAP_PWD | 4 | PWD类型。 |
+| EAP_SIM | 5 | SIM类型。 |
+| EAP_AKA | 6 | AKA类型。 |
+| EAP_AKA_PRIME | 7 | AKA Prime类型。 |
+| EAP_UNAUTH_TLS | 8 | UNAUTH TLS类型。 |
 
 ## Phase2Method<sup>10+</sup>
 
@@ -681,14 +684,14 @@ WAPI认证方式的枚举。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PHASE2_NONE | 0 | 不指定。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_PAP | 1 | PAP类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_MSCHAP | 2 | MSCHAP类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_MSCHAPV2 | 3 | MSCHAPV2类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_GTC | 4 | GTC类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_SIM | 5 | SIM类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_AKA | 6 | AKA类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| PHASE2_AKA_PRIME | 7 | AKA Prime类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| PHASE2_NONE | 0 | 不指定。 |
+| PHASE2_PAP | 1 | PAP类型。 |
+| PHASE2_MSCHAP | 2 | MSCHAP类型。 |
+| PHASE2_MSCHAPV2 | 3 | MSCHAPV2类型。 |
+| PHASE2_GTC | 4 | GTC类型。 |
+| PHASE2_SIM | 5 | SIM类型。 |
+| PHASE2_AKA | 6 | AKA类型。 |
+| PHASE2_AKA_PRIME | 7 | AKA Prime类型。 |
 
 ## WifiCategory<sup>12+</sup>
 
@@ -702,11 +705,11 @@ WAPI认证方式的枚举。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| WIFI6 | 2 | Wifi6。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| WIFI6_PLUS | 3 | Wifi6+。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| WIFI7<sup>15+</sup> | 4 | Wifi7。 <br>ArkTS-Dyn起始版本： 15<br>ArkTS-Sta起始版本： 20|
-| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 <br>ArkTS-Dyn起始版本： 15<br>ArkTS-Sta起始版本： 20|
+| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 |
+| WIFI6 | 2 | Wifi6。 |
+| WIFI6_PLUS | 3 | Wifi6+。 |
+| WIFI7<sup>15+</sup> | 4 | Wifi7。 |
+| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
 
 ## wifiManager.addCandidateConfig<sup>9+</sup>
 
@@ -1547,14 +1550,14 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 9|
-| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| rssi | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | band | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | linkSpeed | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | rxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 | maxSupportedTxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大上行速率，单位Mbps。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 | maxSupportedRxLinkSpeed<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前支持的最大下行速率，单位Mbps。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| frequency | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络, true：是隐藏网络，false：不是隐藏网络。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true: 限制，false:不限制。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | macType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
@@ -1563,7 +1566,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | connState | [ConnState](#connstate9) | 否 | 否 | WLAN连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth9) | 否 | 否 | 当前连接热点的信道带宽。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前连接热点的Wi-Fi标准。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
+| supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
 | isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true:支持，&nbsp;false:不支持。 <br>ArkTS-Dyn起始版本： 20<br>ArkTS-Sta起始版本： 20|
 | wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。  <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
 
@@ -1580,11 +1583,11 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT_LINK | 0 | 默认连接类型。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
-| WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
-| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路多天线）连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
-| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
-| WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 <br>ArkTS-Dyn起始版本： 18<br>ArkTS-Sta起始版本： 20|
+| DEFAULT_LINK | 0 | 默认连接类型。 |
+| WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 |
+| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路多天线）连接。 |
+| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 |
+| WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 |
 
 ## ConnState<sup>9+</sup>
 
@@ -1598,14 +1601,14 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SCANNING | 0 | 设备正在搜索可用的AP。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| CONNECTING | 1 | 正在建立WLAN连接。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| AUTHENTICATING | 2 | WLAN连接正在认证中。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| OBTAINING_IPADDR | 3 | 正在获取WLAN连接的IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| CONNECTED | 4 | WLAN连接已建立。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| DISCONNECTING | 5 | WLAN连接正在断开。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| DISCONNECTED | 6 | WLAN连接已断开。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| UNKNOWN | 7 | WLAN连接建立失败。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| SCANNING | 0 | 设备正在搜索可用的AP。 |
+| CONNECTING | 1 | 正在建立WLAN连接。 |
+| AUTHENTICATING | 2 | WLAN连接正在认证中。 |
+| OBTAINING_IPADDR | 3 | 正在获取WLAN连接的IP地址。 |
+| CONNECTED | 4 | WLAN连接已建立。 |
+| DISCONNECTING | 5 | WLAN连接正在断开。 |
+| DISCONNECTED | 6 | WLAN连接已断开。 |
+| UNKNOWN | 7 | WLAN连接建立失败。 |
 
 
 ## wifiManager.isConnected<sup>9+</sup>
@@ -1860,13 +1863,13 @@ IPV4信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| gateway | number | 否 | 否 | 网关。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| netmask | number | 否 | 否 | 掩码。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| secondDns | number | 否 | 否 | 备DNS服务器IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| serverIp | number | 否 | 否 | DHCP服务端IP地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| ipAddress | number | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。|
+| gateway | number | 否 | 否 | 网关。 |
+| netmask | number | 否 | 否 | 掩码。 |
+| primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 |
+| secondDns | number | 否 | 否 | 备DNS服务器IP地址。 |
+| serverIp | number | 否 | 否 | DHCP服务端IP地址。 |
+| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 |
 
 
 ## wifiManager.getIpv6Info<sup>10+</sup>
@@ -1922,15 +1925,15 @@ Ipv6信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| randomGlobalIpv6Address | string | 否 | 否 | 随机全局Ipv6地址。 预留字段，暂不支持。<br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地Ipv6地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地Ipv6地址。 <br>ArkTS-Dyn起始版本： 12<br>ArkTS-Sta起始版本： 20|
-| gateway | string | 否 | 否 | 网关。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| netmask | string | 否 | 否 | 网络掩码。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
+| linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 |
+| globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 |
+| randomGlobalIpv6Address | string | 否 | 否 | 随机全局Ipv6地址。 预留字段，暂不支持。|
+| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地Ipv6地址。 |
+| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地Ipv6地址。 |
+| gateway | string | 否 | 否 | 网关。 |
+| netmask | string | 否 | 否 | 网络掩码。 |
+| primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 |
+| secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 |
 
 ## wifiManager.getCountryCode<sup>9+</sup>
 
@@ -2212,9 +2215,9 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| groupOwnerAddr | string | 是 | 否 | 群组IP地址。<br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| connectState | [P2pConnectState](#p2pconnectstate9) | 是 | 否 | P2P连接状态。 |
+| isGroupOwner | boolean | 是 | 否 | true:是群主，false:不是群主。|
+| groupOwnerAddr | string | 是 | 否 | 群组IP地址。|
 
 
 ## P2pConnectState<sup>9+</sup>
@@ -2229,8 +2232,8 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DISCONNECTED | 0 | 断开状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| CONNECTED | 1 | 连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| DISCONNECTED | 0 | 断开状态。 |
+| CONNECTED | 1 | 连接状态。 |
 
 ## wifiManager.getCurrentGroup<sup>9+</sup>
 
@@ -2407,12 +2410,12 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | 否 | 否 | 设备名称。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| deviceAddress | string | 否 | 否 | 设备MAC地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| deviceName | string | 否 | 否 | 设备名称。 |
+| deviceAddress | string | 否 | 否 | 设备MAC地址。 |
 | deviceAddressType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备MAC地址类型。 <br>ArkTS-Dyn起始版本： 10<br>ArkTS-Sta起始版本： 20|
-| primaryDeviceType | string | 否 | 否 | 主设备类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus9) | 否 | 否 | 设备状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| groupCapabilities | number | 否 | 否 | 群组能力。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| primaryDeviceType | string | 否 | 否 | 主设备类型。 |
+| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus9) | 否 | 否 | 设备状态。 |
+| groupCapabilities | number | 否 | 否 | 群组能力。 |
 
 
 ## P2pDeviceStatus<sup>9+</sup>
@@ -2427,11 +2430,11 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CONNECTED | 0 | 连接状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| INVITED | 1 | 邀请状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| FAILED | 2 | 失败状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| AVAILABLE | 3 | 可用状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| UNAVAILABLE | 4 | 不可用状态。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| CONNECTED | 0 | 连接状态。 |
+| INVITED | 1 | 邀请状态。 |
+| FAILED | 2 | 失败状态。 |
+| AVAILABLE | 3 | 可用状态。 |
+| UNAVAILABLE | 4 | 不可用状态。 |
 
 
 ## wifiManager.getP2pLocalDevice<sup>9+</sup>
@@ -2577,12 +2580,12 @@ createGroup(config: WifiP2PConfig): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | 否 | 否 | 设备地址。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| passphrase | string | 否 | 否 | 群组密钥。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| groupName | string | 否 | 否 | 群组名称。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| goBand | [GroupOwnerBand](#groupownerband9) | 否 | 否 | 群组带宽。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| deviceAddress | string | 否 | 否 | 设备地址。 |
+| deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 |
+| netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
+| passphrase | string | 否 | 否 | 群组密钥。 |
+| groupName | string | 否 | 否 | 群组名称。 |
+| goBand | [GroupOwnerBand](#groupownerband9) | 否 | 否 | 群组带宽。 |
 
 
 ## GroupOwnerBand<sup>9+</sup>
@@ -2597,9 +2600,9 @@ createGroup(config: WifiP2PConfig): void
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| GO_BAND_AUTO | 0 | 自动模式。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| GO_BAND_2GHZ | 1 | 2.4GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| GO_BAND_5GHZ | 2 | 5GHZ。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
+| GO_BAND_AUTO | 0 | 自动模式。 |
+| GO_BAND_2GHZ | 1 | 2.4GHZ。 |
+| GO_BAND_5GHZ | 2 | 5GHZ。 |
 
 
 ## wifiManager.removeGroup<sup>9+</sup>
@@ -2904,10 +2907,10 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| passphrase | string | 否 | 否 | 群组密钥。 <br>ArkTS-Dyn起始版本： 9<br>ArkTS-Sta起始版本： 20|
-| interface | string | 否 | 否 | 接口名称。 <br>ArkTS-Dyn起始版本： 9<br>|
+| isP2pGo | boolean | 否 | 否 | 是否是群主。true:是群主，false:不是群主。 |
+| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | 否 | 否 | 群组的设备信息。 |
+| passphrase | string | 否 | 否 | 群组密钥。 |
+| interface | string | 否 | 否 | 接口名称。 <br>ArkTS-Dyn起始版本： 9|
 | groupName | string | 否 | 否 | 群组名称。 |
 | networkId | number | 否 | 否 | 网络ID。 |
 | frequency | number | 否 | 否 | 群组的频率。 |
