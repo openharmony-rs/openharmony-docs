@@ -1151,6 +1151,27 @@ export default class EntryAbility extends UIAbility {
 在页面中获取当前Env的值。
 <!-- @[Internal_Environment_V2_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/Index.ets) -->
 
+``` TypeScript
+// Index.ets
+import { env } from '../pages/Env';
+
+@Entry
+@ComponentV2
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        // 输出当前设备的环境变量
+        Text(`languageCode: ${env.language}`).fontSize(20)
+        Text(`colorMode: ${env.colorMode}`).fontSize(20)
+        Text(`fontSizeScale: ${env.fontSizeScale}`).fontSize(20)
+        Text(`fontWeightScale: ${env.fontWeightScale}`).fontSize(20)
+      }
+    }
+  }
+}
+```
+
 ### PersistentStorage->PersistenceV2
 V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更加方便使用的PersistenceV2接口来替代它。
 - PersistentStorage持久化的触发时机依赖AppStorage的观察能力，且与AppStorage耦合，开发者无法自主选择写入或读取持久化数据的时机。
