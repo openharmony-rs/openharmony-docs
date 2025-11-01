@@ -78,6 +78,33 @@ function drawRenderNode(canvas: drawing.Canvas) {
 
 <!-- @[arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
+``` TypeScript
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置线宽
+pen.setStrokeWidth(10.0);
+// 设置颜色
+pen.setColor(0xFF, 0xFF, 0x00, 0x00);
+// 表示10px的实线，5px的间隔，2px的实线，5px的间隔，以此循环
+let intervals = [10, 5, 2, 5];
+// 设置虚线路径效果
+let effect = drawing.PathEffect.createDashPathEffect(intervals, 0);
+pen.setPathEffect(effect);
+// 设置画笔描边效果
+canvas.attachPen(pen);
+// 创建矩形
+let rect: common2D.Rect = {
+  left: VALUE_200,
+  top: VALUE_200,
+  right: VALUE_1000,
+  bottom: VALUE_700
+};
+// 绘制矩形
+canvas.drawRect(rect);
+// 去除描边效果
+canvas.detachPen();
+```
+
 | 原始图 | 设置虚线效果后的效果图 |
 | -------- | -------- |
 | ![Screenshot_20241130160231398](figures/Screenshot_20241130160231398.jpg) | ![Screenshot_20241130160433593](figures/Screenshot_20241130160433593.jpg) |
