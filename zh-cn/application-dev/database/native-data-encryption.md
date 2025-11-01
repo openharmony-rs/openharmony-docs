@@ -46,6 +46,22 @@
 
 <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
+OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+OH_Rdb_SetStoreName(config, "RdbTest.db");
+OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+// 设置为使用加密方式创建或打开数据库
+OH_Rdb_SetEncrypted(config, true);
+    
+int errCode = 0;
+    
+// 获取OH_Rdb_Store实例
+OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+```
+
 
     * 场景2：使用OH_Rdb_SetCryptoParam接口配置加密参数，此时会使用开发者自定义的密钥和算法参数进行数据库的加密/解密。
     
