@@ -420,6 +420,14 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
 5. 将上一步中的绘制结果拷贝到[窗口画布](#获取可直接显示的canvas画布)上。
 
    <!-- @[ndk_graphics_draw_drawing_to_window_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   void* dstPixels = malloc(cWidth * cHeight * RGBA_SIZE); // 4 for rgba
+   OH_Drawing_CanvasReadPixels(cGPUCanvas_, &imageInfo, dstPixels, RGBA_SIZE * cWidth, 0, 0);
+   OH_Drawing_Bitmap* cOffScreenBitmap_ = OH_Drawing_BitmapCreateFromPixels(&imageInfo, dstPixels,
+       RGBA_SIZE * cWidth);
+   OH_Drawing_CanvasDrawBitmap(cScreenCanvas_, cOffScreenBitmap_, 0, 0);
+   ```
 
 6. 使用完之后需要将EGL上下文销毁。
 
