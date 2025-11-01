@@ -84,6 +84,20 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 5. 创建窗口画布。
 
    <!-- @[ndk_graphics_draw_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建一个bitmap对象
+   cScreenBitmap_ = OH_Drawing_BitmapCreate();
+   // 定义bitmap的像素格式
+   OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+   // 构造对应格式的bitmap
+   OH_Drawing_BitmapBuild(cScreenBitmap_, width, height_, &cFormat);
+   
+   // 创建一个canvas对象
+   cScreenCanvas_ = OH_Drawing_CanvasCreate();
+   // 将画布与bitmap绑定，画布画的内容会输出到绑定的bitmap内存中
+   OH_Drawing_CanvasBind(cScreenCanvas_, cScreenBitmap_);
+   ```
 
 6. 利用上一步中得到的Canvas进行自定义的绘制操作，即本章下文中的内容。
 
