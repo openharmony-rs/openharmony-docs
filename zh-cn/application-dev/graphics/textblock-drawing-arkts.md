@@ -230,6 +230,25 @@ for (let s of text) {
 
 <!-- @[arkts_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 设置文字大小
+font.setSize(100);
+let startX = 100;
+let startY = 100;
+let text = ['a', '2', '+', 'b', '2'];
+// 创建字体特征对象数组
+let fontFeatures: drawing.FontFeature[] = [{name: 'frac', value: 1}];
+for (let s of text) {
+  // 单字绘制
+  canvas.drawSingleCharacterWithFeatures(s, font, startX, startY, fontFeatures);
+  // 测量单个字符的宽度
+  let textWidth = font.measureSingleCharacterWithFeatures(s, fontFeatures);
+  startX += textWidth;
+}
+```
+
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 
 > **说明**
