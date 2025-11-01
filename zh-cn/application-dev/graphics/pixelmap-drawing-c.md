@@ -38,6 +38,10 @@
 2. 导入依赖的相关头文件。
 
    <!-- @[ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   ```
 
 3. 创建OH_PixelmapNative像素图对象。
 
