@@ -67,6 +67,35 @@ OH_Drawing_FontDestroy(font);
 
 <!-- @[ndk_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+// 设置抗锯齿
+OH_Drawing_PenSetAntiAlias(pen, true);
+// 设置描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置描边线宽为3
+OH_Drawing_PenSetWidth(pen, 3);
+// 设置画笔描边效果
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value150_);
+const char *str = "Hello world";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 去除描边效果
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_TextBlobDestroy(textBlob);
+OH_Drawing_FontDestroy(font);
+OH_Drawing_PenDestroy(pen);
+```
+
 ![Screenshot_20241225171259621](figures/Screenshot_20241225171259621.jpg)
 
 ### 中文文字描边
