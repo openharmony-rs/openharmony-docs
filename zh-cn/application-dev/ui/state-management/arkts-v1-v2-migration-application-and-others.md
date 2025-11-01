@@ -422,6 +422,37 @@ V2：
 声明\@ObservedV2装饰的class代替LocalStorage。其中LocalStorage的key可以用\@Trace装饰的属性代替。
 <!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) -->
 
+``` TypeScript
+@ObservedV2
+export class MyStorageA {
+  @Trace public propA: string = 'Hello';
+
+  constructor(propA?: string) {
+    this.propA = propA ? propA : this.propA;
+  }
+}
+
+@ObservedV2
+export class MyStorageB extends MyStorageA {
+  @Trace public propB: string = 'Hello';
+
+  constructor(propB: string) {
+    super();
+    this.propB = propB;
+  }
+}
+
+@ObservedV2
+export class MyStorageC extends MyStorageA {
+  @Trace public propC: string = 'Hello';
+
+  constructor(propC: string) {
+    super();
+    this.propC = propC;
+  }
+}
+```
+
 在`pageOneStack`、`pageTwoStack`和`pageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
 
 <!-- @[Internal_Trace_Customize_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/Index.ets) -->
