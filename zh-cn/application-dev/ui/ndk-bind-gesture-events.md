@@ -130,6 +130,15 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
   通过给组件绑定旋转手势可在用户旋转组件时触发回调，可指定触发回调需要的手指个数（最小为2）、旋转角度。
 
     <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    // 获取手势Native接口集合
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    // 创建旋转手势
+    // NUMBER_10 = 10
+    auto rotationGesture = gestureApi->createRotationGesture(1, NUMBER_10);
+    ```
 
 
 - 快滑手势
