@@ -22,6 +22,46 @@ Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚
 
 <!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@ComponentV2
+struct NestedScroll {
+  private scrollerForScroll: Scroller = new Scroller();
+  private listScroller: Scroller = new Scroller();
+  controller: webview.WebviewController = new webview.WebviewController();
+  @Local arr: Array<number> = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 10; i++) {
+    this.arr.push(i);
+  }
+}
+
+build() {
+  Scroll(this.scrollerForScroll) {
+    Column() {
+      Web({ src: $rawfile('scroll.html'), controller: this.controller })
+        .nestedScroll({
+          scrollUp: NestedScrollMode.PARENT_FIRST,//向上滚动父组件优先
+          scrollDown: NestedScrollMode.SELF_FIRST,//向下滚动子组件优先
+        }).height('100%')
+      Repeat<number>(this.arr)
+        .each((item: RepeatItem<number>) => {
+          Text('Scroll Area')
+            .width('100%')
+            .height('40%')
+            .backgroundColor(0X330000FF)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+        })
+    }
+  }
+}
+}
+```
+
 加载的html文件。
 
 ```html
