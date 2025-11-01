@@ -201,6 +201,10 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
     解注册对应的事件类型：
     <!-- @[unregister_node_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    
+    ``` C
+    nodeAPI->unregisterNodeEvent(button, NODE_ON_CLICK_EVENT);
+    ```
 
 
 
