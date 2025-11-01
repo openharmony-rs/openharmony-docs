@@ -190,6 +190,10 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
    相关文件：
    <!-- @[ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   ```
 
    相关文件：
    <!-- @[ndk_graphics_draw_include_drawing_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
