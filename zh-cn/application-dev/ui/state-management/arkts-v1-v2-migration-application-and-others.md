@@ -1086,6 +1086,26 @@ V1:
 以`languageCode`为例。
 <!-- @[Internal_Environment_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV1.ets) -->
 
+``` TypeScript
+// 将设备languageCode存入AppStorage中
+Environment.envProp('languageCode', 'en');
+
+@Entry
+@Component
+struct Index {
+  @StorageProp('languageCode') languageCode: string = 'en';
+
+  build() {
+    Row() {
+      Column() {
+        // 输出当前设备的languageCode
+        Text(this.languageCode)
+      }
+    }
+  }
+}
+```
+
 V2:
 
 封装Env类型来传递多个系统环境变量。
