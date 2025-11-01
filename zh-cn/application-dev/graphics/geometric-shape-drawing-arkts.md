@@ -51,51 +51,7 @@
 
 <!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
-``` TypeScript
-// 设置画笔
-let pen = new drawing.Pen();
-// 设置颜色
-pen.setColor(0xFF, 0xFF, 0x00, 0x00);
-// 设置线宽
-pen.setStrokeWidth(40);
-// 设置画笔描边效果
-canvas.attachPen(pen);
-// 绘制5个点
-<!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
-
-``` TypeScript
-// 创建画笔
-let pen = new drawing.Pen();
-// 设置颜色
-pen.setColor({
-  alpha: 0xFF,
-  red: 0xFF,
-  green: 0x00,
-  blue: 0x00
-});
-// 设置线宽
-pen.setStrokeWidth(20);
-// 设置画笔描边效果
-canvas.attachPen(pen);
-// 创建矩形对象
-const rect: common2D.Rect = {
-  left: VALUE_100,
-  top: VALUE_200,
-  right: VALUE_1000,
-  bottom: VALUE_600
-};
-// 绘制矩形
-canvas.drawArc(rect, 0, 180);
-// 去除描边效果
-canvas.detachPen();
-```
-canvas.drawPoint(VALUE_400, VALUE_400);
-canvas.drawPoint(VALUE_600, VALUE_600);
-canvas.drawPoint(VALUE_800, VALUE_800);
-canvas.drawPoint(VALUE_1000, VALUE_1000);
-// 去除描边效果
-canvas.detachPen();
-```
+效果如下：
 
 ![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
 
@@ -107,7 +63,10 @@ canvas.detachPen();
 绘制圆弧需要一个矩形（[common2D.Rect](../reference/apis-arkgraphics2d/js-apis-graphics-common2D.md#rect)），以矩形的边为轮廓进行绘制，还需要两个参数，分别表示弧形的起始角度（startAngle）和扫描角度（sweepAngle）。
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
+
 <!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+
+效果如下：
 
 ![zh-cn_image_0000002194025289](figures/zh-cn_image_0000002194025289.png)
 
@@ -140,6 +99,8 @@ canvas.drawCircle(VALUE_630, VALUE_630, VALUE_500);
 // 去除描边效果
 canvas.detachPen();
 ```
+
+效果如下：
 
 ![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
@@ -211,6 +172,8 @@ canvas.detachBrush();
 canvas.detachPen();
 ```
 
+效果如下：
+
 ![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
 
@@ -245,6 +208,8 @@ canvas.drawRegion(region1);
 canvas.detachBrush();
 ```
 
+效果如下：
+
 ![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
 
@@ -268,6 +233,8 @@ canvas.drawRect(VALUE_200, VALUE_200, VALUE_1000, VALUE_700);
 // 去除填充效果
 canvas.detachBrush();
 ```
+
+效果如下：
 
 ![zh-cn_image_0000002194110921](figures/zh-cn_image_0000002194110921.png)
 
@@ -310,6 +277,8 @@ canvas.drawRoundRect(rrect);
 // 去除填充效果
 canvas.detachBrush();
 ```
+
+效果如下：
 
 ![zh-cn_image_0000002158584406](figures/zh-cn_image_0000002158584406.png)
 
