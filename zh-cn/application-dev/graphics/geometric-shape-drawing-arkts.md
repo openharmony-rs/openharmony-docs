@@ -121,6 +121,26 @@ canvas.detachPen();
 此处以使用画笔绘制圆为例，简单示例如下：
 <!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
+``` TypeScript
+// 创建画笔
+let pen = new drawing.Pen();
+// 设置颜色
+pen.setColor({
+  alpha: 0xFF,
+  red: 0xFF,
+  green: 0x00,
+  blue: 0x00
+});
+// 设置线宽
+pen.setStrokeWidth(20);
+// 设置画笔描边效果
+canvas.attachPen(pen);
+// 绘制圆
+canvas.drawCircle(VALUE_630, VALUE_630, VALUE_500);
+// 去除描边效果
+canvas.detachPen();
+```
+
 ![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
 
