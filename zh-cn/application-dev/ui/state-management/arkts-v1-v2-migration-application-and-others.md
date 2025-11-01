@@ -905,6 +905,39 @@ V1：
 
 <!-- @[Internal_StorageProp_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1one.ets) -->
 
+``` TypeScript
+// EntryAbility Index.ets
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @StorageProp('count') count: number = 0;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      Text(`EntryAbility count: ${this.count}`)
+        .fontSize(25)
+        .onClick(() => {
+          this.count++;
+        })
+      Button('change Storage Count')
+        .onClick(() => {
+          AppStorage.setOrCreate('count', AppStorage.get<number>('count') as number + 100);
+        })
+      Button('Jump to EntryAbility1').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.example.myapplication', // 替换成AppScope/app.json5里的bundleName
+          abilityName: 'EntryAbility1'
+        };
+        this.context.startAbility(wantInfo);
+      })
+    }
+  }
+}
+```
+
 <!-- @[Internal_StorageProp_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1two.ets) -->
 
 V2:
