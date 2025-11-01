@@ -680,6 +680,47 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   * Index.ets
 
   <!-- @[mvvm_model_main_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  // import ViewModel
+  import TodoListViewModel from '../viewmodel/TodoListViewModel';
+  
+  // import View
+  import { TodoComponent } from '../views/TodoComponent';
+  import { AllChooseComponent } from '../views/AllChooseComponent';
+  import { TodoListComponent } from '../views/TodoListComponent';
+  
+  @Entry
+  @Component
+  struct TodoList {
+    @State todoListViewModel: TodoListViewModel = new TodoListViewModel(); // View绑定ViewModel的数据
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  
+    async aboutToAppear() {
+      await this.todoListViewModel.loadTasks(this.context);
+    }
+  
+    build() {
+      Column() {
+        Row({ space: 40 }) {
+          // 全部待办
+          TodoComponent()
+          // 全选
+          AllChooseComponent({ todoListViewModel: this.todoListViewModel })
+        }
+  
+        Column() {
+          TodoListComponent({ thingViewModelArray: this.todoListViewModel.things })
+        }
+      }
+      .height('100%')
+      .width('100%')
+      .margin({ top: 5, bottom: 5 })
+      .backgroundColor('#90f1f3f5')
+    }
+  }
+  ```
 
   * AllChooseComponent.ets
 
