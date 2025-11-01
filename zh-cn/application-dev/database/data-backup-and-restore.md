@@ -285,6 +285,39 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 
 <!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
+``` TypeScript
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: 'RdbTest.db',
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+  await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+  hilog.info(DOMAIN, 'BackupAndRestore', 'Succeeded in getting RdbStore.');
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to get RdbStore. Code:${err.code},message:${err.message}`);
+}
+
+if (!store) {
+  return;
+}
+
+try {
+  /**
+   * "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。
+   * 也可指定绝对路径："/data/storage/el2/database/Backup.db"，文件路径需要存在，不会自动创建目录。
+   */
+  await store.backup('Backup.db');
+  hilog.info(DOMAIN, 'BackupAndRestore', `Succeeded in backing up RdbStore.`);
+} catch (e) {
+  const err = e as BusinessError;
+  hilog.error(DOMAIN, 'BackupAndRestore', `Failed to backup RdbStore. Code:${err.code}, message:${err.message}`);
+}
+```
+
 
 ### 自动备份（仅系统应用可用）
 
