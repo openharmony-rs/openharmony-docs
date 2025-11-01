@@ -157,6 +157,11 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    如果需要将背景设置为白色，需要执行以下步骤：
 
    <!-- @[ndk_graphics_draw_clear_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 将背景设置为白色
+   OH_Drawing_CanvasClear(cCPUCanvas_, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MAX, 0xFF));
+   ```
 
 3. 将上一步中创建的位图绘制到[窗口画布](#获取可直接显示的canvas画布)上。
 
