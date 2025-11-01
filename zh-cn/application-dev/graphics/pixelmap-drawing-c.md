@@ -48,6 +48,40 @@
    PixelMap需要从图像框架定义的像素图对象（OH_PixelmapNative）中获取，所以需要先通过OH_PixelmapNative_CreatePixelmap()创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
 
    <!-- @[ndk_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 图片宽高分别为 600 * 400
+   uint32_t width = 600;
+   uint32_t height = 400;
+   // 字节长度，RGBA_8888每个像素占4字节
+   size_t bufferSize = width * height * 4;
+   uint8_t *pixels = new uint8_t[bufferSize];
+   for (uint32_t i = 0; i < width * height; ++i) {
+       // 遍历并编辑每个像素，从而形成红绿蓝相间的条纹
+       uint32_t n = i / 20 % 3;
+       pixels[i * RGBA_SIZE] = RGBA_MIN; // 红色通道
+       pixels[i * RGBA_SIZE + 1] = RGBA_MIN; // +1表示绿色通道
+       pixels[i * RGBA_SIZE + 2] = RGBA_MIN; // +2表示蓝色通道
+       pixels[i * RGBA_SIZE + 3] = 0xFF; // +3表示不透明度通道
+       if (n == 0) {
+           pixels[i * RGBA_SIZE] = 0xFF; // 红色通道赋值，颜色显红色
+       } else if (n == 1) {
+           pixels[i * RGBA_SIZE + 1] = 0xFF; // +1表示绿色通道赋值，其余通道为0，颜色显绿色
+       } else {
+           pixels[i * RGBA_SIZE + 2] = 0xFF; // +2表示蓝色通道赋值，其余通道为0，颜色显蓝色
+       }
+   }
+   // 设置位图格式（长、宽、颜色类型、透明度类型）
+   OH_Pixelmap_InitializationOptions *createOps = nullptr;
+   OH_PixelmapInitializationOptions_Create(&createOps);
+   OH_PixelmapInitializationOptions_SetWidth(createOps, width);
+   OH_PixelmapInitializationOptions_SetHeight(createOps, height);
+   OH_PixelmapInitializationOptions_SetPixelFormat(createOps, PIXEL_FORMAT_RGBA_8888);
+   OH_PixelmapInitializationOptions_SetAlphaType(createOps, PIXELMAP_ALPHA_TYPE_UNKNOWN);
+   // 创建OH_PixelmapNative对象
+   OH_PixelmapNative *pixelMapNative = nullptr;
+   OH_PixelmapNative_CreatePixelmap(pixels, bufferSize, createOps, &pixelMapNative);
+   ```
 
 4. 创建PixelMap。
 
