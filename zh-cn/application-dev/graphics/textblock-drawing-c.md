@@ -35,6 +35,24 @@
 
 <!-- @[ndk_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建字体对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要绘制的文字
+const char *str = "Hello world";
+// 创建字块对象
+OH_Drawing_TextBlob *textBlob =
+    OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+// 绘制字块
+OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
+// 释放字块对象
+OH_Drawing_TextBlobDestroy(textBlob);
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
 ![Screenshot_20241225164926098](figures/Screenshot_20241225164926098.jpg)
 
 ## 文字描边
