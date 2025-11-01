@@ -116,6 +116,11 @@
 6. 绘制完成后释放相关对象。
 
    <!-- @[ndk_graphics_draw_release_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   OH_PixelmapNative_Release(pixelMapNative);
+   delete[] pixels;
+   ```
 
    绘制效果如下：
 
