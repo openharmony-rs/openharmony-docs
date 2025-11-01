@@ -106,6 +106,26 @@ OH_Drawing_PenDestroy(pen);
 
 <!-- @[ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建画笔对象
+OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+// 设置画笔描边颜色
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 设置画笔线宽为20
+OH_Drawing_PenSetWidth(pen, 20);
+// 设置画布的画笔
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 创建矩形对象，左上坐标为（100，200）右下坐标为（500，300）
+OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 200, 500, 300);
+// 基于矩形对象绘制圆弧，其实角度10°，扫描角度200°
+OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
+// 去除掉画布中的画笔
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_PenDestroy(pen);
+OH_Drawing_RectDestroy(rect);
+```
+
 效果如下：
 
 ![zh-cn_image_0000002158744174](figures/zh-cn_image_0000002158744174.png)
