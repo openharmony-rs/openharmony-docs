@@ -71,6 +71,15 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 4. 从BufferHandle中获取对应的内存地址。
 
    <!-- @[ndk_graphics_draw_get_mapped_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 使用系统mmap接口拿到bufferHandle的内存虚拟地址
+   mappedAddr_ = static_cast<uint32_t *>(
+       mmap(bufferHandle_->virAddr, bufferHandle_->size, PROT_READ | PROT_WRITE, MAP_SHARED, bufferHandle_->fd, 0));
+   if (mappedAddr_ == MAP_FAILED) {
+       SAMPLE_LOGE("mmap failed");
+   }
+   ```
 
 5. 创建窗口画布。
 
