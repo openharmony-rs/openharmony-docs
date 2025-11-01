@@ -137,6 +137,22 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 2. 创建基于CPU的Canvas。需要通过OH_Drawing_BitmapCreate()接口创建一个位图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasBind()接口将位图绑定到Canvas中，从而使得Canvas绘制的内容可以输出到位图中。
 
    <!-- @[ndk_graphics_draw_create_canvas_by_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+   
+   ``` C++
+   // 创建一个离屏位图对象
+   cOffScreenBitmap_ = OH_Drawing_BitmapCreate();
+   // 设置位图属性
+   OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
+   // 设置位图长宽（按需设置）
+   uint32_t width = 800;
+   uint32_t height = 800;
+   // 初始化位图
+   OH_Drawing_BitmapBuild(cOffScreenBitmap_, width, height, &cFormat);
+   // 创建一个离屏Canvas对象
+   cCPUCanvas_ = OH_Drawing_CanvasCreate();
+   // 将离屏Canvas与离屏bitmap绑定，离屏Canvas绘制的内容会输出到绑定的离屏bitmap内存中
+   OH_Drawing_CanvasBind(cCPUCanvas_, cOffScreenBitmap_);
+   ```
 
    如果需要将背景设置为白色，需要执行以下步骤：
 
