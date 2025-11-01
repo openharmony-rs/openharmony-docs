@@ -430,6 +430,19 @@ alignSelf属性用于控制单个子元素在容器交叉轴上的对齐方式�
 - VerticalAlign.Center：子元素在垂直方向居中对齐。
 
   <!-- @[RowLayoutVerticalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignCenter.ets) -->
+  
+  ``` TypeScript
+  Row({}) {
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xD2B48C)
+  
+    Column() {
+    }.width('20%').height(30).backgroundColor(0xF5DEB3)
+  }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
+  ```
 
   ![zh-cn_image_0000001562700505](figures/zh-cn_image_0000001562700505.png)
 
