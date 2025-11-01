@@ -239,6 +239,27 @@ OH_Drawing_FontDestroy(font);
 
 <!-- @[ndk_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置文字大小
+OH_Drawing_FontSetTextSize(font, value100_);
+float startX = 100;
+float startY = 100;
+int strLen = 5;
+const char* str = "Hello";
+for (int i = 0; i < strLen; ++i) {
+    // 单字绘制
+    OH_Drawing_CanvasDrawSingleCharacter(canvas, &str[i], font, startX, startY);
+    float textWidth = 0.f;
+    // 测量单个字符的宽度
+    OH_Drawing_FontMeasureSingleCharacter(font, &str[i], &textWidth);
+    startX += textWidth;
+}
+// 释放字型对象
+OH_Drawing_FontDestroy(font);
+```
+
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
 进阶场景：绘制带字体特征的字符  
