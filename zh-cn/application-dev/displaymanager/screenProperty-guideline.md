@@ -64,6 +64,25 @@ try {
 
 <!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  // 获取屏幕Id
+  hilog.info(DOMAIN, 'DisplayTest', `The screen Id is ${displayClass.id}.`);
+  // 获取屏幕刷新率
+  hilog.info(DOMAIN, 'DisplayTest', `The screen is ${displayClass.refreshRate}.`);
+  // 获取屏幕宽度
+  hilog.info(DOMAIN, 'DisplayTest', `The screen width is ${displayClass.width}.`);
+  // 获取屏幕高度
+  hilog.info(DOMAIN, 'DisplayTest', `The screen height is ${displayClass.height}.`);
+  // ...
+} catch (exception) {
+  hilog.error(DOMAIN, 'DisplayTest',
+    `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 2. 还可以通过getCutoutInfo()获取挖孔屏、刘海屏、瀑布屏等不可用的屏幕区域信息，以在UI布局时更好地规避该区域。也可以通过getAvailableArea()获取当前设备屏幕的可用区域。
 
 <!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
