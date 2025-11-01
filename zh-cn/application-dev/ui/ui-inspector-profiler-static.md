@@ -9,6 +9,8 @@
 具体例子如下：下面的例子为嵌套两层子组件的典型示例，使用了装饰器[\@State](./state-management-static/arkts-static-state.md)和[\@Link](./state-management-static/arkts-static-link.md)。开发者可组合使用上述命令，展示前端组件树、自定义组件和状态变量等信息。
 
 ```ts
+'use static'
+
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State, Link } from '@ohos.arkui.stateManagement';
 
