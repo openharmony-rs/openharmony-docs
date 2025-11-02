@@ -894,6 +894,16 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 }
 ```
 
+``` JSON5
+{
+  "module": {
+    // ···
+    "routerMap": "$profile:route_map",
+    // ···
+  }
+}
+```
+
 2. 添加完路由配置文件地址后，需要在工程resources/base/profile中创建route_map.json文件。添加如下配置信息：
    
    ```json
