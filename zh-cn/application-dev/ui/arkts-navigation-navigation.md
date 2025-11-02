@@ -45,7 +45,6 @@ Navigation组件通过mode属性设置页面的显示模式。
 
   <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
   
-
   ``` TypeScript
   Navigation() {
     // ···
@@ -242,7 +241,7 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
   <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
   
   ``` TypeScript
-  this.pageStack.pushPathByName('pageTwo', 'PageOne Param');
+  this.pageStack.pushPathByName('pageTwo', 'PageTwo Param');
   ```
 
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
