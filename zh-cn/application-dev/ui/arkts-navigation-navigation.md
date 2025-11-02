@@ -406,29 +406,6 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageTwo.ets) -->
-   
-   ``` TypeScript
-   class NavParam {
-     public desc: string = 'navigationOnResult-param'
-   };
-   // ···
-   @Component
-   struct DemoNavDestination {
-   // ···
-     build() {
-       NavDestination() {
-       // ···
-       }
-       .onResult((param: Object) => {
-         if (param instanceof NavParam) {
-           hilog.info(DOMAIN, 'testTag', 'get NavParam, its desc:', (param as NavParam).desc);
-           return;
-         }
-         hilog.info(DOMAIN, 'testTag', 'param not instance of NavParam');
-       })
-     }
-   }
-   ```
 
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
@@ -810,15 +787,6 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 1. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置：
 
 <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ···
-    "routerMap": "$profile:route_map",
-    // ···
-  }
-```
 
 2. 添加完路由配置文件地址后，需要在工程resources/base/profile中创建route_map.json文件。添加如下配置信息：
    
