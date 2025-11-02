@@ -247,38 +247,11 @@ NavPathStack通过Push相关的接口去实现页面跳转的功能，主要分�
 2. 带返回回调的跳转，跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
 
   <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageInfo.pushPathByName('temp4-pageTwo', 'PageOne Param', (popInfo) => {
-    hilog.info(DOMAIN, 'testTag', 'Pop page name is: ', popInfo.info.name, 'result: ',
-      JSON.stringify(popInfo.result));
-  // ···
-  });
-  ```
 
 3. 带错误码的跳转，跳转结束会触发异步回调，返回错误码信息。
 
   <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushDestination({
-    name: 'pageTwo', param: 'PageOne Param'}).catch((error: BusinessError) => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
-      'error.message = ', error.message);
-  }).then(() => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
-  });
-  ```
   <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-  
-  ``` TypeScript
-  this.pageStack.pushDestinationByName('pageTwo', 'PageOne Param').catch((error: BusinessError) => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
-      'error.message = ', error.message);
-  }).then(() => {
-    hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
-  });
-  ```
 
 ### 页面返回
 
@@ -315,28 +288,8 @@ NavPathStack通过Pop相关接口去实现页面返回功能。
 NavPathStack通过Replace相关接口去实现页面替换功能。
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 将栈顶页面替换为pageTwo
-   this.pageStack.replacePath({ name: 'pageTwo', param: 'PageOne Param' });
-   ```
    <!-- @[replacePathByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   this.pageStack.replacePathByName('pageTwo', 'PageOne Param');
-   ```
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
-   this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageOne Param' })
-     .catch((error: BusinessError) => {
-       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
-         'error.message = ', error.message);
-     }).then(() => {
-     hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
-   })
-   ```
 
 ### 页面删除
 
