@@ -287,7 +287,12 @@ Navigation组件通过mode属性设置页面的显示模式。
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 将栈顶页面替换为pageTwo
+   this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
+   ```
      'value': 'func',
      'icon': 'resources/base/media/ic_public_add.svg',
      'action': () => {}
