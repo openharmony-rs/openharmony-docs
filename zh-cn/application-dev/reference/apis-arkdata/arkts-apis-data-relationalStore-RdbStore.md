@@ -4859,7 +4859,7 @@ try {
 
 off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;string&gt;&gt;\| Callback&lt;Array&lt;ChangeInfo&gt;&gt;): void
 
-取消指数据变更的事件监听，当分布式数据库或本地数据库中的数据发生更改时，将不会调用回调。
+取消数据变更的事件监听，当分布式数据库或本地数据库中的数据发生更改时，将不会调用回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
