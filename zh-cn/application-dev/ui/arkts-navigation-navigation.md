@@ -45,7 +45,6 @@ Navigation组件通过mode属性设置页面的显示模式。
 
   <!-- @[NavigationModeStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeStack.ets) -->
   
-
   ``` TypeScript
   Navigation() {
     // ···
