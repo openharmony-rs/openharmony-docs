@@ -513,7 +513,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
-   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageTwo.ets) -->
+   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
 
 其他业务场景，可以通过主动调用NavPathStack的Get相关接口去获取指定页面的参数。
 
