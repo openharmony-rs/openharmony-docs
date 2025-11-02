@@ -275,11 +275,11 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
-         }
-         .menus([toolTmp, toolTmp, toolTmp])
+   <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 返回到根首页（清除栈中所有页面）
+   this.pageStack.clear();
    ```
 
 图片也可以引用resources中的资源。
