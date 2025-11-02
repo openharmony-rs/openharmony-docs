@@ -329,6 +329,20 @@ Navigation组件通过mode属性设置页面的显示模式。
 ![free3](figures/free3.jpg)
 
    <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
+   
+   ``` TypeScript
+   let toolTmp: ToolbarItem = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
+     'action': () => {}
+   };
+   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+   // ···
+         Navigation(this.pageInfos) {
+           // ···
+         }
+         .toolbarConfiguration(tooBar)
+   ```
 
 ## 路由操作
 
