@@ -400,7 +400,6 @@ NavPathStack通过Pop相关接口去实现页面返回功能。
    this.pageStack.clear();
    ```
 
-
 ### 页面替换
 
 NavPathStack通过Replace相关接口去实现页面替换功能。
