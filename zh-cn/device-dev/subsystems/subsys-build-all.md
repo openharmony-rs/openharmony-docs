@@ -105,10 +105,10 @@ OpenHarmony编译子系统是以GN和Ninja构建为基座，对构建和配置�
 - [子系统配置规则](subsys-build-subsystem.md#子系统配置规则)
 - [部件配置规则](subsys-build-component.md#部件配置规则)
 - [模块配置规则](subsys-build-module.md#模块配置规则)
-- [Rust模块配置规则](subsys-build-rust-compilation.md#Rust模块配置规则)
+- [Rust模块配置规则](subsys-build-rust-compilation.md)
 - [芯片解决方案配置规则](subsys-build-chip_solution.md#芯片解决方案配置规则)
 - [特性配置规则](subsys-build-feature.md#特性配置规则)
-- [系统能力配置规则](subsys-build-syscap.md#如何按需配置部件的系统能力)
+- [系统能力配置规则](subsys-build-syscap.md)
 
 ## 编译构建使用指导
 
@@ -349,8 +349,8 @@ optional arguments:
 
 ## 参考信息
 
-- [关于deps、external_deps的使用](subsys-build-reference.md#关于deps、external_deps的使用)
-- [Sanitizer使用说明](subsys-build-reference.md#Sanitizer使用说明)
+- [关于deps、external_deps的使用](subsys-build-reference.md)
+- [Sanitizer使用说明](subsys-build-reference.md)
 - [开源软件Notice收集策略说明](subsys-build-reference.md#开源软件notice收集策略说明)
 - [加快本地编译的一些参数](subsys-build-reference.md#加快本地编译的一些参数)
 - [查看NinjaTrace](subsys-build-reference.md#查看ninjatrace)
