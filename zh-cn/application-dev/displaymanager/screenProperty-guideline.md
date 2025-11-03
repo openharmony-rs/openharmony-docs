@@ -62,7 +62,7 @@ try {
 
 1. 确保获取到Display对象之后（具体可见[获取Display对象](#获取display对象)），可以通过相关属性查询屏幕的一些基础信息。
 
-<!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let displayClass: display.Display | null = null;
@@ -85,7 +85,7 @@ try {
 
 2. 还可以通过getCutoutInfo()获取挖孔屏、刘海屏、瀑布屏等不可用的屏幕区域信息，以在UI布局时更好地规避该区域。也可以通过getAvailableArea()获取当前设备屏幕的可用区域。
 
-<!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let displayClass: display.Display | null = null;
@@ -113,7 +113,7 @@ try {
 
 3. 此外，还可以通过display.isCaptured()判断当前设备是否正在截屏、投屏或录屏。
 
-<!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 try {
@@ -129,7 +129,7 @@ try {
 
 1. 可以通过display.on('add'|'remove'|'change')监听设备屏幕变化，支持监听屏幕设备的增加、移除和改变等，可以通过display.off('add'|'remove'|'change')关闭对应的监听。
 
-<!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 /**
@@ -158,7 +158,7 @@ try {
 
 2. 可以通过display.on('captureStatusChange')开启屏幕截屏、投屏或录屏状态变化的监听；可以通过display.off('captureStatusChange')关闭对应的监听。
 
-<!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let callback2: Callback<boolean> = (captureStatus: boolean) => {
@@ -181,7 +181,7 @@ try {
 
 3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
-<!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 /**
@@ -210,7 +210,7 @@ try {
 
 1. 可以通过display.isFoldable()接口查询当前设备是不是折叠设备。
 
-<!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let isFoldableDevice: boolean = false;
@@ -226,7 +226,7 @@ try {
 
 2. 若当前设备为折叠设备，可以通过display.on('foldStatusChange')开启折叠设备折叠状态变化的监听；可通过display.off('foldStatusChange')关闭对应的监听。
 
-<!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 /**

@@ -39,7 +39,10 @@
 
 ## 在CMake脚本中链接动态库
 
-<!-- @[add_display_target_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt) -->
+```
+target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
+target_link_libraries(entry PUBLIC libnative_display_manager.so )
+```
 
 ## 添加头文件
 
@@ -55,7 +58,7 @@
 
 1. 可以通过OH_NativeDisplayManager_GetDefaultDisplayRotation获取默认屏幕的旋转角度。
 
-<!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
@@ -79,7 +82,7 @@ static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info inf
 
 2. 可以通过OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo获取挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。 可通过OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo销毁挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
-<!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
@@ -182,7 +185,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 
 1. 可以通过OH_NativeDisplayManager_IsFoldable接口查询设备是不是折叠设备。
 
- <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
  
  ``` C++
  static napi_value IsFoldable(napi_env env, napi_callback_info info)
@@ -197,7 +200,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 
 2. 可以通过OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener注册屏幕展开/折叠状态变化的监听。 通过OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener接口取消屏幕展开/折叠状态变化的监听。
 
-<!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
