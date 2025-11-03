@@ -585,3 +585,88 @@ export default class LifecycleAbility extends UIAbility {
 每次注册回调函数时，都会返回一个监听生命周期的ID，此ID会自增1。以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
 
 <!-- @[entry_lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrylifecycleability/EntryLifecycleAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, AbilityLifecycleCallback, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import  { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[EntryLifecycleAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+export default class EntryLifecycleAbility extends UIAbility {
+  // 定义生命周期ID
+  private lifecycleId: number = -1;
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 定义生命周期回调对象
+    let abilityLifecycleCallback: AbilityLifecycleCallback = {
+      // 当UIAbility创建时被调用
+      onAbilityCreate(uiAbility) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onAbilityCreate uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+      },
+      // 当窗口创建时被调用
+      onWindowStageCreate(uiAbility, windowStage: window.WindowStage) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageCreate uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageCreate windowStage: ${JSON.stringify(windowStage)}`);
+      },
+      // 当窗口处于活动状态时被调用
+      onWindowStageActive(uiAbility, windowStage: window.WindowStage) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageActive uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageActive windowStage: ${JSON.stringify(windowStage)}`);
+      },
+      // 当窗口处于非活动状态时被调用
+      onWindowStageInactive(uiAbility, windowStage: window.WindowStage) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageInactive uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageInactive windowStage: ${JSON.stringify(windowStage)}`);
+      },
+      // 当窗口被销毁时被调用
+      onWindowStageDestroy(uiAbility, windowStage: window.WindowStage) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageDestroy uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `onWindowStageDestroy windowStage: ${JSON.stringify(windowStage)}`);
+      },
+      // 当UIAbility被销毁时被调用
+      onAbilityDestroy(uiAbility) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onAbilityDestroy uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+      },
+      // 当UIAbility从后台转到前台时触发回调
+      onAbilityForeground(uiAbility) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onAbilityForeground uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+      },
+      // 当UIAbility从前台转到后台时触发回调
+      onAbilityBackground(uiAbility) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onAbilityBackground uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+      },
+      // 当UIAbility迁移时被调用
+      onAbilityContinue(uiAbility) {
+        hilog.info(DOMAIN_NUMBER, TAG, `onAbilityContinue uiAbility.launchWant: ${JSON.stringify(uiAbility.launchWant)}`);
+      }
+    };
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 注册应用内生命周期回调
+      this.lifecycleId = applicationContext.on('abilityLifecycle', abilityLifecycleCallback);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to register applicationContext. Code is ${code}, message is ${message}`);
+    }
+
+    hilog.info(DOMAIN_NUMBER, TAG, `register callback number: ${this.lifecycleId}`);
+  }
+  onDestroy(): void {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 取消应用内生命周期回调
+      applicationContext.off('abilityLifecycle', this.lifecycleId);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister applicationContext. Code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
