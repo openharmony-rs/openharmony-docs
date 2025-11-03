@@ -169,7 +169,7 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。  |
+| pid         | number    | 是        | 进程号。<br>取值范围大于0。 |
 
 **返回值**：
 
@@ -205,29 +205,29 @@ try {
 
 ## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
 
-getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
+getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
-获取进程能效模式，使用Promise异步回调。
+获取进程能效模式。使用Promise异步回调。
 
-**设备行为差异**：该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：**该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
-**需要权限**： ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
+**需要权限：**ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
-**系统能力**： SystemCapability.Resourceschedule.BackgroundProcessManager
+**系统能力：**SystemCapability.Resourceschedule.BackgroundProcessManager
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | int    | 是        | 进程号。  |
+| pid         | number    | 是        | 进程号。  |
 
-**返回值**：
+**返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
 | Promise\<[PowerSaveMode](#powersavemode20) > | Promise对象。返回进程能效模式，EFFICIENCY_MODE表示非能效模式，DEFAULT_MODE表示进入了能效模式。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[backgroundProcessManager错误码](errorcode-backgroundProcessManager.md)和[通用错误码](../errorcode-universal.md)。
 
@@ -237,7 +237,7 @@ getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 | 801      | Capability not supported. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
