@@ -622,6 +622,37 @@ struct Index {
 
 <!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct CalendarPickerDialogPage {
+  private selectedDate: Date = new Date('2025-10-01');
+
+  build() {
+    RelativeContainer() {
+      Button('Show CalendarPicker Dialog')
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let uiContext = this.getUIContext();
+          uiContext.runScopedTask(() => {
+            CalendarPickerDialog.show({
+              selected: this.selectedDate,
+              backgroundColor: Color.White,
+              backgroundBlurStyle: BlurStyle.NONE,
+              shadow: ShadowStyle.OUTER_FLOATING_SM
+            });
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## 特殊全局接口替换示例
 
 部分全局接口在替换为UIContext接口时，需要考虑一些特殊的调用场景。
