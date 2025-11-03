@@ -41,6 +41,16 @@
 
 <!-- @[application_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryexampleability/EntryAbility.ets) -->
 
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let applicationContext = this.context.getApplicationContext();
+  }
+}
+```
+
 
 ### 获取AbilityStageContext（模块级别的上下文）
 
