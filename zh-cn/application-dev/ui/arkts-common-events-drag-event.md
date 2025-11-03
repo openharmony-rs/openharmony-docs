@@ -128,6 +128,14 @@
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下：
 
     <!-- @[bind_parallel_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+    
+    ``` TypeScript
+    .parallelGesture(LongPressGesture().onAction(() => {
+      this.getUIContext()
+        .getPromptAction()
+        .showToast({ duration: 100, message: 'Long press gesture trigger' });
+    }))
+    ```
 
 2. 自定义拖拽背板图。
    
