@@ -2905,6 +2905,41 @@
 						"start_line":223
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"backuprestore_TS_IncludeSupported",
+						"start_line":17
+					},
+					{
+						"end_line":66,
+						"name":"backupManually",
+						"start_line":35
+					},
+					{
+						"end_line":162,
+						"name":"rebuildingRelationalDatabaseAbnormally",
+						"start_line":146
+					},
+					{
+						"end_line":111,
+						"name":"databaseExceptionErrorCodeThrown",
+						"start_line":83
+					},
+					{
+						"end_line":126,
+						"name":"closeAllOpenResultSets",
+						"start_line":114
+					},
+					{
+						"end_line":203,
+						"name":"invokeTheRestoreInterfaceToRestoreData",
+						"start_line":169
+					}
+				]
 			}
 		]
 	},
@@ -3168,6 +3203,26 @@
 						"end_line":104,
 						"name":"kv_store3",
 						"start_line":50
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"encryption_TS_IncludeSupported",
+						"start_line":17
+					},
+					{
+						"end_line":44,
+						"name":"defaultConfigRdbStoreTs",
+						"start_line":28
+					},
+					{
+						"end_line":90,
+						"name":"customizedConfigRdbStoreTs",
+						"start_line":51
 					}
 				]
 			}
@@ -8488,6 +8543,76 @@
 						"end_line":37,
 						"name":"soft_keyboard_setmode",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-access-control-by-device-and-data-level.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"encryption_include",
+						"start_line":18
+					},
+					{
+						"end_line":176,
+						"name":"SetSecurityLevelForRdbStore",
+						"start_line":159
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-backup-and-restore.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"encryption_include",
+						"start_line":18
+					},
+					{
+						"end_line":120,
+						"name":"BackupRdbStore",
+						"start_line":105
+					},
+					{
+						"end_line":145,
+						"name":"rdb_OH_Rdb_Restore",
+						"start_line":129
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-data-encryption.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"encryption_include",
+						"start_line":18
+					},
+					{
+						"end_line":41,
+						"name":"DefaultConfigRdbStore",
+						"start_line":25
+					},
+					{
+						"end_line":96,
+						"name":"CustomizedConfigRdbStore",
+						"start_line":51
 					}
 				]
 			}
