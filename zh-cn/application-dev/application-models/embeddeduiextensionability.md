@@ -52,99 +52,99 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 3. 打开EmbeddedUIExtAbility.ets文件，导入EmbeddedUIExtensionAbility的依赖包，自定义类继承EmbeddedUIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 
-<!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
+    <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
 
-``` TypeScript
-import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+    ``` TypeScript
+    import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
-const TAG: string = '[EmbeddedUIExtAbility]';
+    const TAG: string = '[EmbeddedUIExtAbility]';
 
-export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
-  onCreate() {
-    console.info(TAG, `onCreate`);
-  }
+    export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
+      onCreate() {
+        console.info(TAG, `onCreate`);
+      }
 
-  onForeground() {
-    console.info(TAG, `onForeground`);
-  }
+      onForeground() {
+        console.info(TAG, `onForeground`);
+      }
 
-  onBackground() {
-    console.info(TAG, `onBackground`);
-  }
+      onBackground() {
+        console.info(TAG, `onBackground`);
+      }
 
-  onDestroy() {
-    console.info(TAG, `onDestroy`);
-  }
+      onDestroy() {
+        console.info(TAG, `onDestroy`);
+      }
 
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-    let param: Record<string, UIExtensionContentSession> = {
-      'session': session
-    };
-    let storage: LocalStorage = new LocalStorage(param);
-    session.loadContent('pages/extension', storage);
-  }
+      onSessionCreate(want: Want, session: UIExtensionContentSession) {
+        console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+        let param: Record<string, UIExtensionContentSession> = {
+          'session': session
+        };
+        let storage: LocalStorage = new LocalStorage(param);
+        session.loadContent('pages/extension', storage);
+      }
 
-  onSessionDestroy(session: UIExtensionContentSession) {
-    console.info(TAG, `onSessionDestroy`);
-  }
-}
-```
+      onSessionDestroy(session: UIExtensionContentSession) {
+        console.info(TAG, `onSessionDestroy`);
+      }
+    }
+    ```
 
 
 4. EmbeddedUIExtensionAbility的onSessionCreate中加载了入口页面文件pages/extension.ets内容如下：
 
-<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
+    <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
 
-``` TypeScript
-import { UIExtensionContentSession } from '@kit.AbilityKit';
+    ``` TypeScript
+    import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-@Entry()
-@Component
-struct Extension {
-  @State message: string = 'EmbeddedUIExtensionAbility Index';
-  localStorage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
+    @Entry()
+    @Component
+    struct Extension {
+      @State message: string = 'EmbeddedUIExtensionAbility Index';
+      localStorage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+      private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
 
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
-        this.session?.terminateSelfWithResult({
-          resultCode: 1,
-          want: {
-            bundleName: 'com.samples.embeddeduiextensionability',
-            abilityName: 'ExampleEmbeddedAbility'
-          }});
-      })
-    }.width('100%').height('100%')
-  }
-}
-```
+      build() {
+        Column() {
+          Text(this.message)
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+          Button('terminateSelfWithResult').fontSize(20).onClick(() => {
+            this.session?.terminateSelfWithResult({
+              resultCode: 1,
+              want: {
+                bundleName: 'com.samples.embeddeduiextensionability',
+                abilityName: 'ExampleEmbeddedAbility'
+              }});
+          })
+        }.width('100%').height('100%')
+      }
+    }
+    ```
 
 5. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册EmbeddedUIExtensionAbility，type标签需要设置为“embeddedUI”，srcEntry标签表示当前EmbeddedUIExtensionAbility组件所对应的代码路径。
 
-<!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
+    <!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
 
-``` JSON5
-{
-  "module": {
-    // ···
-    "extensionAbilities": [
-    // ···
-      {
-        "name": "EmbeddedUIExtAbility",
-        "icon": "$media:startIcon",
-        "description": "EmbeddedUIExtAbility",
-        "type": "embeddedUI",
-        "srcEntry": "./ets/embeddeduiextability/EmbeddedUIExtAbility.ets"
+    ``` JSON5
+    {
+      "module": {
+        // ···
+        "extensionAbilities": [
+        // ···
+          {
+            "name": "EmbeddedUIExtAbility",
+            "icon": "$media:startIcon",
+            "description": "EmbeddedUIExtAbility",
+            "type": "embeddedUI",
+            "srcEntry": "./ets/embeddeduiextability/EmbeddedUIExtAbility.ets"
+          }
+        ]
       }
-    ]
-  }
-}
-```
+    }
+    ```
 
 
 
