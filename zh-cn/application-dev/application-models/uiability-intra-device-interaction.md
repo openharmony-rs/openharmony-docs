@@ -524,6 +524,23 @@ export default class ColdStartAbility extends UIAbility {
     1. 导入相关模块，并在onNewWant()生命周期回调中设置全局变量nameForNavi的值。
 
         <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+        
+        ``` TypeScript
+        import { hilog } from '@kit.PerformanceAnalysisKit';
+        import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+        // ···
+        const DOMAIN_NUMBER: number = 0xFF00;
+        const TAG: string = '[HotStartAbility]';
+        
+        export default class HotStartAbility extends UIAbility {
+        // ···
+        
+          onNewWant(want: Want, launchParam: AbilityConstant.   LaunchParam): void {
+            hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'onNewWant');
+            AppStorage.setOrCreate<string>('nameForNavi', 'pageOne');
+          }
+        }
+        ```
 
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
