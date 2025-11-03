@@ -233,6 +233,36 @@
    数据的传递是通过UDMF实现的，在数据较大时可能存在时延，因此在首次获取数据失败时建议加1500ms的延迟重试机制。
 
     <!-- @[data_delayed_retry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+    
+    ``` TypeScript
+    getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
+      try {
+        let data: UnifiedData = event.getData();
+        if (!data) {
+          return false;
+        }
+        let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+        if (!records || records.length <= 0) {
+          return false;
+        }
+        callback(event);
+        return true;
+      } catch (e) {
+        console.error('getData failed, code: ' + (e as BusinessError).code + ', message: ' +
+          (e as BusinessError).message);
+        return false;
+      }
+    }
+    
+    getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
+      if (this.getDataFromUdmfRetry(event, callback)) {
+        return;
+      }
+      setTimeout(() => {
+        this.getDataFromUdmfRetry(event, callback);
+      }, 1500);
+    }
+    ```
 
 6. 拖拽发起方可以通过设置onDragEnd回调感知拖拽结果。
 
