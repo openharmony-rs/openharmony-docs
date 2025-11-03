@@ -255,6 +255,14 @@ struct Extension {
 },
 ```
 
+``` JSON5
+{
+  "name": "ExampleEmbeddedAbility",
+  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
+  "type": "embeddedUI"
+},
+```
+
 **预期效果**
 
 1. 在支持EmbeddedUIExtensionAbility的设备上启动应用；
