@@ -381,6 +381,50 @@ struct Index {
 
 <!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
 
+``` TypeScript
+// 以@State装饰器为例
+@ObservedV2
+class Job {
+  @Trace public jobName: string = 'Teacher';
+}
+
+@ObservedV2
+class Info {
+  @Trace public name: string = 'Tom';
+  @Trace public age: number = 25;
+  public job: Job = new Job();
+}
+
+class Message extends Info {
+  constructor() {
+    super();
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // @State message: Message = new Message();  无法混用，编译时报错
+  @Local message: Message = new Message();
+
+  build() {
+    Column() {
+      Text(`name: ${this.message.name}`)
+      Text(`age: ${this.message.age}`)
+      Text(`jobName: ${this.message.job.jobName}`)
+      Button('change age')
+        .onClick(() => {
+          this.message.age++;
+        })
+      Button('Change job')
+        .onClick(() => {
+          this.message.job.jobName = 'Doctor';
+        })
+    }
+  }
+}
+```
+
 - \@ObservedV2的类实例目前不支持使用JSON.stringify进行序列化。
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
 
