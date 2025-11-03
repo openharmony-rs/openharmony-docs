@@ -135,7 +135,7 @@ Table Name: Audios
 mediatool delete <resource-uri>
 ```
 
-该命令能够彻底删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
+该命令能够删除`<resource-uri>`指定uri的媒体库资源。被删除的资源无法恢复，请谨慎执行。
 
 媒体库资源uri的获取可参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)。
 
@@ -314,7 +314,7 @@ uri
 
 ### 媒体库uri介绍/获取方式
 
-uri是媒体库资产的唯一标识符，每个uri都对应一个媒体资产。mediatool使用uri来判断需要操作的媒体资产对象。
+uri是媒体库资产的唯一标识符。mediatool使用uri来判断需要操作的媒体资产对象。
 
 可使用以下方式获取uri：
 
