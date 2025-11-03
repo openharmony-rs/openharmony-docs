@@ -657,7 +657,7 @@ NavDestination返回时触发该回调。
 
 onActive(callback:&nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
 
-NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。
+NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见[示例5](#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：**
 >
@@ -676,7 +676,7 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 
 onInactive(callback: &nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
 
-NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。
+NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见[示例5](#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：**
 >
@@ -1126,8 +1126,6 @@ struct NavDest {
               this.y = '100%';
             }
           }
-        } else {
-          console.info('[NavDestinationTransition]', '----- NOT-IMPL BRANCH of NAV-DESTINATION CUSTOM TRANSITION -----');
         }
 
         let transitionOne: NavDestinationTransition = {
@@ -1494,5 +1492,217 @@ struct ExamplePage {
 }
 ```
 ![navdestination_orientation](figures/navdestination_orientation.gif)
+
+### 示例5（NavDestination的onActive与onInActive生命周期）
+
+从API version 17开始，NavDestination新增[onActive](#onactive17)、[onInactive](#oninactive17)属性。该示例演示onActive与onInactive生命周期的各种触发场景。
+
+```ts
+import { promptAction, ComponentContent, OverlayManager } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+  offset: Position;
+
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+
+let overlayShownTag: boolean = false;
+
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text('I am ' + params.text)
+      .fontWeight(FontWeight.Bolder)
+      .align(Alignment.Center)
+      .fontSize(25)
+      .offset({ y: '10%' })
+  }
+  .backgroundColor(params.text === 'overlay' ? '#ffc' : '#ccf')
+  .width('100%')
+  .height('100%')
+  .offset(params.offset)
+}
+
+@Entry
+@Component
+struct Index {
+  stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'standard' || name === 'Home') {
+      NavDest({
+        name: name
+      })
+    }
+    else if (name === 'dialog') {
+      NavDest({
+        name: name,
+        mode: NavDestinationMode.DIALOG,
+        positionY: '40%'
+      })
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'Home'});
+  }
+
+  build() {
+    Navigation(this.stack) {
+
+    }
+    .hideNavBar(true)
+    .navDestination(this.pageMap)
+  }
+}
+
+@Component
+struct NavDest {
+  @State positionY: string = '0%';
+  name: string = 'NA';
+  mode: NavDestinationMode = NavDestinationMode.STANDARD;
+
+  build() {
+    NavDestination() {
+      NavBody()
+    }
+    .backgroundColor(this.mode === NavDestinationMode.DIALOG ? Color.Pink : undefined)
+    .height(this.mode === NavDestinationMode.DIALOG ? '65%' : '100%')
+    .mode(this.mode)
+    .title(this.name)
+    .position({ y: this.positionY })
+    .onActive((reason: NavDestinationActiveReason) => {
+      let onActiveMsg: string = `[activeTest] ${this.name} onActive, reason: ${reason}`;
+      console.info(onActiveMsg);
+      // API version 17之后，使用promptAction.openToast接口代替promptAction.showToast。
+      promptAction.showToast({ message: onActiveMsg });
+    })
+    .onInactive((reason: NavDestinationActiveReason) => {
+      let onInActiveMsg: string = `[activeTest] ${this.name} onInactive, reason: ${reason}`;
+      console.info(onInActiveMsg);
+      // API version 17之后，使用promptAction.openToast接口代替promptAction.showToast。
+      promptAction.showToast({ message: onInActiveMsg });
+    })
+    .onBackPressed(() => {
+      if (overlayShownTag) {
+        overlayShownTag = false;
+        this.getUIContext().getOverlayManager().hideAllComponentContents();
+        return true;
+      }
+      return false;
+    })
+  }
+}
+
+@Component
+struct NavBody {
+  @State isShow: boolean = false;
+  @State isBindSheetShow: boolean = false;
+  stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack = this.queryNavigationInfo()?.pathStack!;
+  }
+
+  @Builder
+  myBuilder(id: string) {
+    Column() {
+      Text('I am ' + id)
+        .fontWeight(FontWeight.Bolder)
+        .align(Alignment.Center)
+        .fontSize(25)
+        .offset({ y: '10%' })
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('pushPath standard')
+          .margin(5)
+          .onClick(() => {
+            this.stack.pushPath({name: 'standard'});
+          })
+        Button('pushPath dialog')
+          .margin(5)
+          .onClick(() => {
+            this.stack.pushPath({name: 'dialog'});
+          })
+      }
+      Column() {
+        Row() {
+          Button("open Modal")
+            .onClick(() => {
+              this.isShow = true;
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+            .bindContentCover(
+              this.isShow,
+              this.myBuilder('modal'), {
+                backgroundColor: '#fcf',
+                onDisappear: () => {
+                  this.isShow = false;
+                }
+              })
+          Button("open BindSheet")
+            .onClick(() => {
+              this.isBindSheetShow = true;
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+            .bindSheet($$this.isBindSheetShow, this.myBuilder('bindSheet'), {
+              height: '60%',
+              backgroundColor: '#cfc'
+            })
+        }
+        Row() {
+          Button("open Dialog")
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.getUIContext(), wrapBuilder<[Params]>(builderText),
+                new Params('dialog', {y: '10%'}));
+              this.getUIContext().getPromptAction().openCustomDialog(componentContent)
+                .then(() => {
+                  console.info('[activeTest] open custom dialog success');
+                })
+                .catch(() => {
+                  console.info('[activeTest] open custom dialog failed');
+                })
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+          Button("open Overlay")
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.getUIContext(), wrapBuilder<[Params]>(builderText),
+                new Params('overlay', {y: '10%'}));
+              this.getUIContext().getOverlayManager().addComponentContent(componentContent);
+              this.getUIContext().getOverlayManager().showComponentContent(componentContent);
+              overlayShownTag = true;
+            })
+            .fontColor(Color.Black)
+            .backgroundColor('#ccc')
+            .margin(5)
+        }
+      }
+      .width('95%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![navdestination_active_inactive_demo](figures/navdestination_active_inactive_demo.gif)
 
 NavDestination其他用法可参考[Navigation示例](ts-basic-components-navigation.md#示例)。
