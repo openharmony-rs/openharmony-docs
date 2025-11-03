@@ -3605,7 +3605,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets",
 				"functions":[
 					{
-						"end_line":89,
+						"end_line":129,
 						"name":"arkts_independent_shaping_text",
 						"start_line":16
 					}
