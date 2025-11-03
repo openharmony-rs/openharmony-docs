@@ -204,6 +204,45 @@ struct UIAbilityComponentsBasicUsage {
 
 <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
 
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[UIAbilityComponentsUsage]';
+const DOMAIN = 0xF811;
+@Entry
+@Component
+struct UIAbilityComponentsUsage {
+  // 页面展示
+  build() {
+    Column() {
+    // ···
+      Button('FuncAbilityB')
+        .onClick(() => {
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          try {
+            context.terminateSelf((err: BusinessError) => {
+              if (err.code) {
+                // 处理业务逻辑错误
+                hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${err.code}, message is ${err.message}.`);
+                return;
+              }
+              // 执行正常业务
+              hilog.info(DOMAIN, TAG, `terminateSelf succeed.`);
+            });
+          } catch (err) {
+            // 捕获同步的参数错误
+            let code = (err as BusinessError).code;
+            let message = (err as BusinessError).message;
+            hilog.error(DOMAIN, TAG, `terminateSelf failed, code is ${code}, message is ${message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ### 获取ExtensionAbilityContext (ExtensionAbility组件的上下文)
 
