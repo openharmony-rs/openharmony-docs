@@ -273,6 +273,14 @@
 7. 在"EntryAbility.ets"文件的onCreate()函数中添加接口调用。
 
     <!-- @[Sys_Crash_Event_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // 在onCreate()函数中添加C API接口调用
+    // 启动时，注册崩溃事件观察者
+    testNapi.registerWatcherClickCrash();
+    // 启动时，注册按钮点击事件观察者
+    testNapi.registerWatcherCrashEvent();
+    ```
 
 
 8. 在"Index.ets"文件中，新增按钮触发崩溃事件。
