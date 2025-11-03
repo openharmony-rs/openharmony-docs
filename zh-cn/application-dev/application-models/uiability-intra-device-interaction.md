@@ -635,6 +635,16 @@ export default class ColdStartAbility extends UIAbility {
     5. 在[module.json5配置文件](../quick-start/module-configuration-file.md#routermap标签)中配置routerMap路由映射。
 
         <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
+        
+        ``` JSON5
+        {
+          "module": {
+            // ···
+            "routerMap": "$profile:router_map",
+            // ···
+          }
+        }
+        ```
 
 > **说明：**
 >
