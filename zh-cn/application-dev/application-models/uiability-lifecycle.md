@@ -226,6 +226,21 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[onForeground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
+
+export default class EntryAbility extends UIAbility {
+// ···
+
+  onForeground(): void {
+    // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
+  }
+
+// ···
+}
+```
+
 
 ### onBackground()
 
