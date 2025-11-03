@@ -1742,8 +1742,6 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 function unregisterFocusStateChange(captureSession: camera.CaptureSession): void {
   captureSession.off('focusStateChange');
