@@ -271,7 +271,7 @@ this.getUIContext().getRouter().back();
   返回普通页面。
 
   <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome'
