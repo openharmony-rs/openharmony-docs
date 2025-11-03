@@ -355,6 +355,21 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
+
+export default class EntryAbility extends UIAbility {
+// ···
+
+  onDestroy(): void {
+    // 系统资源的释放、数据的保存等
+  }
+
+// ···
+}
+```
+
 ### onNewWant()
 
 当应用的UIAbility实例已创建，再次调用方法启动该UIAbility实例时，系统触发该UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调。开发者可以在该回调中更新要加载的资源和数据等，用于后续的UI展示。
