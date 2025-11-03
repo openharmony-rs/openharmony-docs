@@ -159,8 +159,6 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
@@ -4723,8 +4721,6 @@ BLE扫描的配置参数。
 ## BleProfile<sup>21+</sup>
 
 枚举，指定当前设备的Profile协议类型。
-
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
