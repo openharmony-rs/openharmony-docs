@@ -412,9 +412,9 @@ mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel : mindSporeL
 ```
 ## mindSporeLite.loadModelFromFd
 
-ArkTS-Dyn: loadModelFromFd(model: number, context?: Context): Promise&lt;Model>
+ArkTS-Dyn: loadModelFromFd(model: number, context?: Context): Promise&lt;Model&gt;
 
-ArkTS-Sta: loadModelFromFd(model: int, context?: Context): Promise&lt;Model>
+ArkTS-Sta: loadModelFromFd(model: int, context?: Context): Promise&lt;Model&gt;
 
 从文件描述符加载输入模型用于推理。使用Promise异步函数。
 
