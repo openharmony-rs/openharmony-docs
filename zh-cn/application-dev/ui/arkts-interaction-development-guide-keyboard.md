@@ -229,6 +229,48 @@ export struct PreIme {
 
 <!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+export struct OnKeyDistributeEvent {
+  build() {
+    // ···
+        Row() {
+          Row() {
+            Button('button1').id('button1').onKeyEvent((event) => {
+              hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
+              return true
+            })
+            Button('button2').id('button2').onKeyEvent((event) => {
+              hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
+              return true
+            })
+          }
+          .width('100%')
+          .height('100%')
+          .id('Row1')
+          .onKeyEventDispatch((event) => {
+            let context = this.getUIContext();
+            context.getFocusController().requestFocus('button1');
+            return context.dispatchKeyEvent('button1', event);
+          })
+
+        }
+        .height('100%')
+        .width('100%')
+        .onKeyEventDispatch((event) => {
+          if (event.type == KeyType.Down) {
+            let context = this.getUIContext();
+            context.getFocusController().requestFocus('Row1');
+            return context.dispatchKeyEvent('Row1', event);
+          }
+          return true;
+        })
+        // ···
+  }
+}
+```
+
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 <!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
 
