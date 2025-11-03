@@ -159,3 +159,40 @@ ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstan
 
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/BasicClass.ets) -->
 
+``` TypeScript
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct BasicClass {
+  @State message: string = 'Message: ';
+  private want: Want = {
+    bundleName: 'com.samples.embeddeduiextensionability',
+    abilityName: 'EmbeddedUIExtAbility',
+    parameters: {
+      'ohos.extension.processMode.hostInstance': 'true'
+    }
+  };
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message).fontSize(30)
+        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+          .width('100%')
+          .height('90%')
+          .onTerminated((info: TerminationInfo) => {
+            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
+          })
+          .onError((error: BusinessError) => {
+            this.message = 'Error: code = ' + error.code;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
