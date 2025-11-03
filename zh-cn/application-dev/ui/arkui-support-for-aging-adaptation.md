@@ -52,8 +52,6 @@ SideBarContainer组件通过长按控制按钮触发适老化弹窗。在系统�
 <!-- @[trigger_aging_friendly_by_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets) -->
 
 ``` TypeScript
-import { abilityManager, Configuration } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = '[Sample_SupportingAgingFriendly]';
@@ -72,22 +70,6 @@ struct SideBarContainerExample {
   @State arr: number[] = [NUMBER1, NUMBER2, NUMBER3];
   @State current: number = NUMBER1;
   @State title: string = 'Index01';
-  // 设置字体大小
-  async setFontScale(scale: number): Promise<void> {
-    let configInit: Configuration = {
-      language: 'zh-Ch',
-      fontSizeScale: scale,
-    };
-    // 更新配置-字体大小
-    abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
-      if (err) {
-        hilog.info(DOMAIN, TAG, BUNDLE + `updateConfiguration fail, err: ${JSON.stringify(err)}`);
-      } else {
-        this.currentFontSizeScale = scale;
-        hilog.info(DOMAIN, TAG, BUNDLE + 'updateConfiguration success.');
-      }
-    });
-  }
 
   build() {
     SideBarContainer(SideBarContainerType.Embed) {
@@ -109,30 +91,6 @@ struct SideBarContainerExample {
       .justifyContent(FlexAlign.SpaceEvenly)
       // $r('sys.color.mask_fifth')需要替换为开发者所需的资源文件
       .backgroundColor($r('sys.color.mask_fifth'))
-
-      Column() {
-        Text(this.title);
-        // $r('app.string.one_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.one_multiple')).onClick(() => {
-          this.setFontScale(1)
-        }).margin(10);
-
-        // $r('app.string.one_point_seven_five_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.one_point_seven_five_multiple')).onClick(() => {
-          this.setFontScale(1.75)
-        }).margin(10);
-
-        // $r('app.string.two_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.two_multiple')).onClick(() => {
-          this.setFontScale(2)
-        }).margin(10);
-
-        // $r('app.string.three_point_two_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.three_point_two_multiple')).onClick(() => {
-          this.setFontScale(3.2)
-        }).margin(10);
-      }
-      .margin({ top: 50, left: 20, right: 30 });
     }
     .controlButton({
       icons: {
@@ -158,15 +116,13 @@ struct SideBarContainerExample {
 
 | 系统字体为一倍（适老化能力开启前） | 系统字体为1.75倍（适老化能力开启后） |
 | ---------------------------------- | ------------------------------------ |
-| ![](figures/aging_01.png)          | ![](figures/aging_02.png)            |
+| ![](figures/aging_01_replace.png)          | ![](figures/aging_02_replace.png)            |
 
 [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
 
 <!-- @[trigger_aging_friendly_by_set_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets) -->
 
 ``` TypeScript
-import { abilityManager, Configuration } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = '[Sample_SupportingAgingFriendly]';
@@ -207,20 +163,6 @@ struct TextPickerExample {
   @State showTriggered: string = '';
   private triggered: string = '';
   private maxLines: number = 3; // 最大的行数为3
-  // 设置字体大小
-  async setFontScale(scale: number): Promise<void> {
-    let configInit: Configuration = {
-      fontSizeScale: scale,
-    };
-
-    abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
-      if (err) {
-        hilog.info(DOMAIN, TAG, BUNDLE + `updateConfiguration fail, err: ${JSON.stringify(err)}`);
-      } else {
-        hilog.info(DOMAIN, TAG, BUNDLE + 'updateConfiguration success.');
-      }
-    });
-  }
 
   linesNum(max: number): void {
     let items: string[] = this.triggered.split('\n').filter(item => item != '');
@@ -271,35 +213,12 @@ struct TextPickerExample {
           })
         })
         .margin({ top: 60 });
-
-      Row() {
-        // $r('app.string.one_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.one_multiple')).onClick(() => {
-          this.setFontScale(1)
-        }).margin(10);
-
-        // $r('app.string.one_point_seven_five_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.one_point_seven_five_multiple')).onClick(() => {
-          this.setFontScale(1.75)
-        }).margin(10);
-
-        // $r('app.string.two_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.two_multiple')).onClick(() => {
-          this.setFontScale(2)
-        }).margin(10);
-
-        // $r('app.string.three_point_two_multiple')需要替换为开发者所需的资源文件
-        Button($r('app.string.three_point_two_multiple')).onClick(() => {
-          this.setFontScale(3.2)
-        }).margin(10);
-      }.margin({ top: 50 });
     }
-
   }
 }
 ```
 
 | 系统字体为一倍（适老化能力开启前） | 系统字体为1.75倍（适老化能力开启后） |
 | ---------------------------------- | ------------------------------------ |
-| ![](figures/aging_03.png)          | ![](figures/aging_04.png)            |
+| ![](figures/aging_03_replace.png)          | ![](figures/aging_04_replace.png)            |
 <!--RP1End-->
