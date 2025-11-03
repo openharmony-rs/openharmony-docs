@@ -266,8 +266,6 @@
           <!--Del-->
           - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability-sys.md)
           - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access-sys.md)
-          - [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](database/share-data-by-datashareextensionability-sys.md)
-          - [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](database/share-data-by-silent-access-sys.md)
           <!--DelEnd-->
           - [Sharing Configurations Between Applications (ArkTS)](database/share-config.md)
         - Many-to-Many Data Sharing<!--many-to-many-data-share-->
@@ -930,6 +928,7 @@
       - [Custom Edit Box Development Guide (C/C++)](inputmethod/use-inputmethod-in-custom-edit-box-ndk.md)
       - [Immersive Mode of the Input Method Application](inputmethod/inputmethod-immersive-mode-guide.md)
       - [Managing the Input Method Using hdc Commands](inputmethod/inputmethod-hdc-commands-guide.md)
+      - [Input Box and Input Method Interaction in Non-Focusable Windows](inputmethod/use-inputmethod-in-not-focusable-window.md)
     - IPC Kit<!--ipc-kit-->
       - [Introduction to IPC Kit](ipc/ipc-rpc-overview.md)
       - [IPC and RPC Development (ArkTS)](ipc/ipc-rpc-development-guideline.md)
@@ -1387,19 +1386,20 @@
         - [Introduction to Function Flow Runtime Kit](ffrt/ffrt-overview.md)
         - [Function Flow Runtime Paradigms](ffrt/ffrt-concurrency-paradigm.md)
         - Function Flow Runtime Development Samples (C)<!--ffrt-example-c-->
-          - [Serial Queue (C)](ffrt/ffrt-concurrency-serial-queue-c.md)
-          - [Concurrent Queue (C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
-          - [Task Graph (C)](ffrt/ffrt-concurrency-graph-c.md)
+          - [Function Flow Runtime Serial Queue (C)](ffrt/ffrt-concurrency-serial-queue-c.md)
+          - [Function Flow Runtime Concurrent Queue (C)](ffrt/ffrt-concurrency-concurrent-queue-c.md)
+          - [Function Flow Runtime Task Graph (C)](ffrt/ffrt-concurrency-graph-c.md)
         - Function Flow Runtime Development Samples (C++)<!--ffrt-example-cpp-->
-          - [Serial Queue (C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
-          - [Concurrent Queue (C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
-          - [Task Graph (C++)](ffrt/ffrt-concurrency-graph-cpp.md)
+          - [Function Flow Runtime Serial Queue (C++)](ffrt/ffrt-concurrency-serial-queue-cpp.md)
+          - [Function Flow Runtime Concurrent Queue (C++)](ffrt/ffrt-concurrency-concurrent-queue-cpp.md)
+          - [Function Flow Runtime Task Graph (C++)](ffrt/ffrt-concurrency-graph-cpp.md)
+          - [Function Flow Runtime Job Partner (C++)](ffrt/ffrt-concurrency-job-partner-cpp.md)
         - [Function Flow Runtime Development](ffrt/ffrt-development-guideline.md)
         - [Function Flow Runtime C API](ffrt/ffrt-api-guideline-c.md)
       - Input Kit<!--input-kit-->
         - [Introduction to Input Kit](device/input/input-overview.md)
         - [Input Device Development](device/input/inputdevice-guidelines.md)
-        - [Key Press Event Listening Development](device/input/keypressed-guidelines.md)
+        - [Preferential Response of System Function Keys](device/input/keypressed-guidelines.md)
         - [Mouse Pointer Development](device/input/pointerstyle-guidelines.md)<!--Del-->
         - [Input Monitor Development (for System Applications Only)](device/input/inputmonitor-guidelines-sys.md)
         - [Event Injection Development (for System Applications Only)](device/input/inputeventclient-guidelines-sys.md)
@@ -1538,7 +1538,7 @@
           <!--DelEnd-->
       - Test Kit<!--test-kit-->
         - [Test Kit Overview](application-test/test-kit-overview.md)
-        - arkXtest User Guide<!--arkxtest-guidelines-->
+        - Automated Test Framework User Guides<!--arkxtest-guidelines-->
           - [JsUnit User Guide](application-test/unittest-guidelines.md)
           - [UITest User Guide](application-test/uitest-guidelines.md)
           - [PerfTest User Guide](application-test/perftest-guideline.md)
@@ -1583,7 +1583,6 @@
       - Audio Playback<!--audio-playback-->
         - [Audio Playback Overview](media/audio/audio-playback-overview.md)
         - [Using AudioRenderer for Audio Playback](media/audio/using-audiorenderer-for-playback.md)
-        - [Responding to Audio Output Device Changes](media/audio/audio-output-device-change.md)
         <!--Del-->
         - [Using TonePlayer for Audio Playback (for System Applications Only)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
@@ -1600,7 +1599,6 @@
         - [Spatial Audio Management (for System Applications Only)](media/audio/audio-spatialization-management-sys.md)
         <!--DelEnd-->
         - [Audio Playback Stream Management](media/audio/audio-playback-stream-management.md)
-        - [Global Audio Output Device Management](media/audio/audio-output-device-management.md)
         <!--Del-->
         - [Distributed Audio Playback (for System Applications Only)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
@@ -1610,7 +1608,6 @@
         - [Using OHAudio for Audio Recording (C/C++)](media/audio/using-ohaudio-for-recording.md)
         - [Microphone Management](media/audio/mic-management.md)
         - [Audio Recording Stream Management](media/audio/audio-recording-stream-management.md)
-        - [Global Audio Input Device Management](media/audio/audio-input-device-management.md)
         - [Shared Audio Input](media/audio/audio-recording-concurrency.md)
         - [Audio Monitoring](media/audio/audio-ear-monitor.md)
         - [Low-Latency Audio Monitoring](media/audio/audio-ear-monitor-loopback.md)
@@ -1688,6 +1685,8 @@
         - [White Balance Settings (ArkTS)](media/camera/camera-whitebalance.md)
         - [Pressure Management (ArkTS)](media/camera/camera-system-pressure.md)
         - [Camera Controller (ArkTS)](media/camera/camera-control-center.md)
+        - [Macro Photography Settings (ArkTS)](media/camera/camera-macro.md)
+        - [Multi-Camera Concurrent Mode (ArkTS)](media/camera/camera-concurrent-open.md)
         <!--Del-->
         - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-sys.md)
         - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](media/camera/camera-deferred-photo-case-sys.md)
@@ -1709,6 +1708,8 @@
         - [Camera Metadata (C/C++)](media/camera/native-camera-metadata.md)
         - [Using the Flashlight (C/C++)](media/camera/native-camera-torch-use.md)
         - [Pressure Management (C/C++)](media/camera/native-camera-system-pressure.md)
+        - [Macro Photography Settings (C/C++)](media/camera/native-camera-macro.md)
+        - [Multi-Camera Concurrent Mode (C/C++)](media/camera/native-camera-concurrent-open.md)
     - DRM Kit<!--drm-kit-->
       - [Introduction to DRM Kit](media/drm/drm-overview.md)
       - [DRM Development (ArkTS)](media/drm/drm-arkts-dev-guide.md)
@@ -5549,7 +5550,7 @@
       - C APIs<!--notification-c-->
         - Modules<!--notification-module-->
           - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
-        - Header Files<!--notification-struct-->
+        - Header Files<!--notification-headerfile-->
           - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
       - Error Codes<!--notification-arkts-errcode-->
         - [Notification Error Codes](reference/apis-notification-kit/errorcode-notification.md)

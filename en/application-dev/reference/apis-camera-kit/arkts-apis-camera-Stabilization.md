@@ -40,7 +40,7 @@ Obtains the video stabilization mode in use.
 
 | Type       | Description         |
 | ---------- |-------------|
-| [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)    | Video stabilization mode obtained.|
+| [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)    | Video stabilization mode obtained. If the API call fails, undefined is returned.|
 
 **Error codes**
 

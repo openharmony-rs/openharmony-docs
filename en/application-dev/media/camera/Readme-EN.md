@@ -33,6 +33,8 @@
   - [White Balance Settings (ArkTS)](camera-whitebalance.md)
   - [Pressure Management (ArkTS)](camera-system-pressure.md)
   - [Camera Controller (ArkTS)](camera-control-center.md)
+  - [Macro Photography Settings (ArkTS)](camera-macro.md)
+  - [Multi-Camera Concurrent Mode (ArkTS)](camera-concurrent-open.md)
   <!--Del-->
   - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-sys.md)
   - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case-sys.md)
@@ -54,3 +56,5 @@
   - [Camera Metadata (C/C++)](native-camera-metadata.md)
   - [Using the Flashlight (C/C++)](native-camera-torch-use.md)
   - [Pressure Management (C/C++)](native-camera-system-pressure.md)
+  - [Macro Photography Settings (C/C++)](native-camera-macro.md)
+  - [Multi-Camera Concurrent Mode (C/C++)](native-camera-concurrent-open.md)
