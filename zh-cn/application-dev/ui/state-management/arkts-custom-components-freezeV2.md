@@ -568,7 +568,7 @@ struct PageB {
 ```
 
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageB页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
 
 ```json
 {
