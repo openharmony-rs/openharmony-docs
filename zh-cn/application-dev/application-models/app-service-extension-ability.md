@@ -283,9 +283,7 @@ struct StopAppServiceExt {
 ``` TypeScript
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
-// [StartExclude ability_app_service_one]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [EndExclude  ability_app_service_one]
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[MyAppServiceExtAbility]';
@@ -296,14 +294,12 @@ const TAG: string = '[MyAppServiceExtAbility]';
 export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
   onCreate(want: Want): void {
     // ···
-    // [StartExclude ability_app_service_one]
     // 执行业务逻辑
     this.context.terminateSelf().then(() => {
       hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
     }).catch((error: BusinessError) => {
       hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
     });
-    // [EndExclude ability_app_service_one]
   }
 
 // ···
