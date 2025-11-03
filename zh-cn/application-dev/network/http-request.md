@@ -522,15 +522,15 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 HTTP拦截器模块提供了一种强大的、可定制的机制，允许开发者在 HTTP 请求-响应的生命周期中的关键节点插入自定义逻辑。通过拦截器，开发者可以无需修改核心网络代码即可实现诸如修改请求头/体、缓存策略、重定向处理、网络监控、响应预处理等全局功能。以下是5个关键拦截点的流程关键点说明：
 
-1. 拦截初始请求（INITIAL_REQUEST）
 
-2. 网络连接拦截点（CONNECT_NETWORK）
 
-3. 缓存拦截点（CACHE_CHECKED）
-
-4. 重定向拦截点（REDIRECTION）
-
-5. 拦截最终响应（FINAL_RESPONSE）
+| 拦截点名称                        | 位置说明                                                     | 入参与出参                                                   |
+| :-------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 拦截初始请求（INITIAL_REQUEST）   | 初始请求组装完成后这是第一个拦截点，适合用于添加全局参数、签名、加密请求体。 | 当出参为ture时，此时入参中的request中的值为原始值，可以修改，response为空值，修改无效。<br />当出参为false时，此时入参中的request中的值为原始值，修改无效，response为空值，可以修改。 |
+| 网络连接拦截点（CONNECT_NETWORK） | 即将进行网络连接之前如建立TCP/TLS连接）。适合进行网络链路相关的操作，如记录网络开始时间。 | 当出参为ture时，此时入参中的request中的值为原始值，可以修改，response为空值，修改无效。<br />当出参为false时，此时入参中的request中的值为原始值，修改无效，response为空值，可以修改。 |
+| 缓存拦截点（CACHE_CHECKED）       | 缓存检查逻辑命中缓存之后。此时已判断有可用缓存，拦截器可决定是否直接返回缓存结果或强制刷新。 | 当出参为ture时，此时入参中的request中的值为原始值，修改无效，response为原始值，修改无效。<br />当出参为false时，此时入参中的request中的值为原始值，修改无效，response为空值，可以修改。 |
+| 重定向拦截点（REDIRECTION）       | 收到重定向响应并准备发送新请求之前。允许修改重定向的目标URL或请求信息。 | 当出参为ture时，此时入参中的request中的值为原始值，可以修改URL，response为原始值，修改无效。<br />当出参为false时，此时入参中的request中的值为原始值，修改无效，response为原始值，可以修改。 |
+| 拦截最终响应（FINAL_RESPONSE）    | 获得最终响应之后。最后一个拦截点，适合对响应进行统一解密、解析、日志记录、错误处理。 | 当出参为ture时，此时入参中的request中的值为原始值，修改无效，response为原始值，修改无效。<br />当出参为false时，此时入参中的request中的值为原始值，修改无效，response为空值，可以修改。 |
 
 ### 流程关键点说明
 
@@ -585,16 +585,90 @@ enum InterceptorType {
   FINAL_RESPONSE = 'FINAL_RESPONSE'
 }
 
-class TestHttpInterceptor implements http.HttpInterceptor {
+class InitialHttpInterceptor implements http.HttpInterceptor {
   interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
 
-  constructor(interceptorType: InterceptorType) {
+  constructor(interceptorType: InterceptorType, result: boolean) {
     this.interceptorType = interceptorType;
+    this.result = result;
   }
 
   interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
     // 命中拦截器后对请求报文与请求响应操作
-    return Promise.resolve(true);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_INITIAL_URL;
+    reqContext.head = { 'content-type': 'text/plain' };
+    reqContext.body = { 'context': 'INITIAL_REQUEST' };
+
+    rspContext.result = 'INITIAL_REQUEST';
+    rspContext.responseCode = 200;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+
+class NetworkHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 命中拦截器后对请求报文与请求响应操作
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_NETWORK_URL;
+    reqContext.head = { 'content-type': 'text/xml' };
+    reqContext.body = { 'context': 'NETWORK_CONNECT' };
+
+    rspContext.result = 'NETWORK_CONNECT';
+    rspContext.responseCode = 300;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+
+class FinalHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // 命中拦截器后对请求报文与请求响应操作
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_INITIAL_URL;
+    reqContext.head = { 'content-type': 'text/html' };
+    reqContext.body = { 'context': 'FINAL_RESPONSE' };
+
+    rspContext.result = 'FINAL_RESPONSE';
+    rspContext.responseCode = 200;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
   }
 }
 ```
@@ -608,9 +682,9 @@ class TestHttpInterceptor implements http.HttpInterceptor {
 ```typescript
 // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
 chain.addChain([
-  new TestHttpInterceptor(InterceptorType.INITIAL_REQUEST),
-  new TestHttpInterceptor(InterceptorType.NETWORK_CONNECT),
-  new TestHttpInterceptor(InterceptorType.FINAL_RESPONSE)
+	new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
+	new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
+	new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
 ]);
 ```
 
@@ -621,7 +695,7 @@ chain.addChain([
 <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
 
 ```typescript
-// 将请求应用到拦截器链中
+// 将当前配置好的拦截器链附加到httpRequest中
 chain.apply(httpRequest);
 ```
 
@@ -634,7 +708,7 @@ chain.apply(httpRequest);
 let options: http.HttpRequestOptions = {
   method: http.RequestMethod.POST,
   header: { 'content-type': 'text/html' } as Record<string, string>,
-  extraData: { 'context': 'BODY_NO_CHANGE' } as Record<string, string>,
+  extraData: { 'context': 'BODY' } as Record<string, string>,
 };
 ```
 
