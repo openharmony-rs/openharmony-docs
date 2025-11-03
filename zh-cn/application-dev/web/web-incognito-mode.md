@@ -92,6 +92,34 @@
 
 - 通过[deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)清除隐私模式下指定来源的地理位置权限状态。
   <!-- @[clear_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteGeolocation.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    origin: string = 'file:///';
+  
+    build() {
+      Column() {
+        Button('deleteGeolocation')
+          .onClick(() => {
+            try {
+              // deleteGeolocation第二个参数表示隐私模式（true）或非隐私模式（false）下，清除指定来源的地理位置权限状态。
+              webview.GeolocationPermissions.deleteGeolocation(this.origin, true);
+            } catch (error) {
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+          })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
+      }
+    }
+  }
+  ```
 
 - 通过[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)以回调方式异步获取隐私模式下指定源的地理位置权限状态。
 
