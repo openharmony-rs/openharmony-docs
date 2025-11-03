@@ -109,6 +109,34 @@ struct Index {
 
 <!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) --> 
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('Calculate 20vp to px')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let uiContext = this.getUIContext();
+          let pxValue = uiContext.vp2px(20);
+          hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### 通过窗口对象获取UIContext对象
 
 开发者可以通过窗口对象的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext对象。
