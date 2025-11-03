@@ -1,12 +1,10 @@
+# OpenGL
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-
-# OpenGL
-
 [OpenGL](https://www.khronos.org/opengl/)是一种跨平台的图形API，用于为3D图形处理硬件指定标准的软件接口。OpenHarmony现已支持OpenGL 3.0。
 
 ## 支持的能力

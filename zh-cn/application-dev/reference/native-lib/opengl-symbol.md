@@ -1,10 +1,11 @@
-# Native api中导出的OpenGL 3.0符号列表
+# OpenGL
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+## Native api中导出的OpenGL 3.0符号列表
 
 |符号类型|符号名|
 | --- | --- |
@@ -233,7 +234,7 @@
 |FUNC|glVertexAttribPointer                
 |FUNC|glViewport
 
-# API22 OpenGL4.2将要开放的功能函数
+## API22 OpenGL4.2将要开放的功能函数
 
 |符号类型|符号名|
 | --- | --- |
