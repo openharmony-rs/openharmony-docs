@@ -339,6 +339,44 @@ class Person {
 
 <!-- @[Use_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UseMixture.ets) -->
 
+``` TypeScript
+// 以@State装饰器为例
+@ObservedV2
+class Job {
+  @Trace public jobName: string = 'Teacher';
+}
+
+@ObservedV2
+class Info {
+  @Trace public name: string = 'Tom';
+  @Trace public age: number = 25;
+  public job: Job = new Job();
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // @State info: Info = new Info(); 无法混用，编译时报错
+  @Local info: Info = new Info();
+
+  build() {
+    Column() {
+      Text(`name: ${this.info.name}`)
+      Text(`age: ${this.info.age}`)
+      Text(`jobName: ${this.info.job.jobName}`)
+      Button('change age')
+        .onClick(() => {
+          this.info.age++;
+        })
+      Button('Change job')
+        .onClick(() => {
+          this.info.job.jobName = 'Doctor';
+        })
+    }
+  }
+}
+```
+
 - 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，编译时报错。
 
 <!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
