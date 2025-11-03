@@ -326,6 +326,8 @@ on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAvailable](#onphotoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 11
@@ -368,6 +370,8 @@ onPhotoAvailable(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onPhotoAvailable')](#onphotoavailable11)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -404,6 +408,8 @@ off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 注销监听全质量图上报。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAvailable](#offphotoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -442,6 +448,8 @@ offPhotoAvailable(callback?: AsyncCallback\<Photo\>): void
 注销监听全质量图上报。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('photoAvailable')](#offphotoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -486,6 +494,8 @@ on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): v
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureStartWithInfo](#oncapturestartwithinfo22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 11
@@ -527,6 +537,8 @@ onCaptureStartWithInfo(callback: AsyncCallback\<CaptureStartInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('captureStartWithInfo')](#oncapturestartwithinfo11)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -565,6 +577,8 @@ off(type: 'captureStartWithInfo', callback?: AsyncCallback\<CaptureStartInfo\>):
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureStartWithInfo](#offCaptureStartWithInfo22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 11
@@ -593,6 +607,8 @@ offCaptureStartWithInfo( callback?: AsyncCallback\<CaptureStartInfo\>): void
 注销监听拍照。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('captureStartWithInfo')](#offcapturestartwithinfo11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -722,6 +738,8 @@ on(type: 'photoAssetAvailable', callback: AsyncCallback\<photoAccessHelper.Photo
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAssetAvailable](#onphotoassetavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -765,6 +783,8 @@ onPhotoAssetAvailable(callback: AsyncCallback\<photoAccessHelper.PhotoAsset\>): 
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('photoAssetAvailable')](#onphotoassetavailable12)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -805,6 +825,8 @@ off(type: 'photoAssetAvailable', callback?: AsyncCallback\<photoAccessHelper.Pho
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAssetAvailable](#offphotoassetavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -831,6 +853,8 @@ offPhotoAssetAvailable(callback?: AsyncCallback\<photoAccessHelper.PhotoAsset\>)
 注销photoAsset上报。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('photoAssetAvailable')](#offPhotoAssetAvailable12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1011,6 +1035,8 @@ on(type: 'frameShutter', callback: AsyncCallback\<FrameShutterInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameShutter](#onframeshutter22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -1048,6 +1074,8 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameShutter')](#onframeshutter)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1088,6 +1116,8 @@ off(type: 'frameShutter', callback?: AsyncCallback\<FrameShutterInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameShutter](#offFrameShutter22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -1114,6 +1144,8 @@ offFrameShutter(callback?: AsyncCallback\<FrameShutterInfo\>): void
 注销监听拍照帧输出捕获。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameShutter')](#offframeshutter)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1146,6 +1178,8 @@ on(type: 'captureEnd', callback: AsyncCallback\<CaptureEndInfo\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureEnd](#oncaptureend22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1189,6 +1223,8 @@ onCaptureEnd(callback: AsyncCallback\<CaptureEndInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('captureEnd')](#oncaptureend)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -1228,6 +1264,8 @@ off(type: 'captureEnd', callback?: AsyncCallback\<CaptureEndInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureEnd](#offcaptureend22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -1254,6 +1292,8 @@ offCaptureEnd(callback?: AsyncCallback\<CaptureEndInfo\>): void
 注销监听拍照结束。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('captureEnd')](#offcaptureend)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1286,6 +1326,8 @@ on(type: 'frameShutterEnd', callback: AsyncCallback\<FrameShutterEndInfo\>): voi
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameShutterEnd](#onFrameShutterEnd22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1328,6 +1370,8 @@ onFrameShutterEnd(callback: AsyncCallback\<FrameShutterEndInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameShutterEnd')](#onframeshutterend12)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -1366,6 +1410,8 @@ off(type: 'frameShutterEnd', callback?: AsyncCallback\<FrameShutterEndInfo\>): v
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameShutterEnd](#offFrameShutterEnd22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -1392,6 +1438,8 @@ offFrameShutterEnd(callback?: AsyncCallback\<FrameShutterEndInfo\>): void
 注销监听拍照帧输出捕获。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameShutterEnd')](#offframeshutterend12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1424,6 +1472,8 @@ on(type: 'captureReady', callback: AsyncCallback\<void\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureReady](#onCaptureReady22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1466,6 +1516,8 @@ onCaptureReady(callback: AsyncCallback\<void\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('captureReady')](#oncaptureready12)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -1504,6 +1556,8 @@ off(type: 'captureReady', callback?: AsyncCallback\<void\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureReady](#offCaptureReady22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -1530,6 +1584,8 @@ offCaptureReady(callback?: AsyncCallback\<void\>): void
 注销监听可拍下一张。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('captureReady')](#offcaptureready12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1562,6 +1618,8 @@ on(type: 'estimatedCaptureDuration', callback: AsyncCallback\<number\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEstimatedCaptureDuration](#onEstimatedCaptureDuration22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1604,6 +1662,8 @@ onEstimatedCaptureDuration(callback: AsyncCallback\<double\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('estimatedCaptureDuration')](#onestimatedcaptureduration12)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -1642,6 +1702,8 @@ off(type: 'estimatedCaptureDuration', callback?: AsyncCallback\<number\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEstimatedCaptureDuration](#offestimatedcaptureduration22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -1668,6 +1730,8 @@ offEstimatedCaptureDuration(callback?: AsyncCallback\<double\>): void
 注销监听预估的拍照时间。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('estimatedCaptureDuration')](#offestimatedcaptureduration12)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1700,6 +1764,8 @@ on(type: 'error', callback: ErrorCallback): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1738,6 +1804,8 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -1772,6 +1840,8 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -1798,6 +1868,8 @@ offError(callback?: ErrorCallback): void
 注销监听拍照输出发生错误。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

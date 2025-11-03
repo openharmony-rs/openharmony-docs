@@ -166,6 +166,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本**：11
@@ -203,6 +205,8 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror11)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -237,6 +241,8 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本**：11
@@ -263,6 +269,8 @@ offError(callback?: ErrorCallback): void
 注销监听普通录像会话的错误事件，通过注册回调函数获取结果。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -295,6 +303,8 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFocusStateChange](#onfocusstatechange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -337,6 +347,8 @@ onFocusStateChange(callback: AsyncCallback\<FocusState\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('focusStateChange')](#onfocusstatechange11)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -375,6 +387,8 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFocusStateChange](#offfocusstatechange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本**：11
@@ -401,6 +415,8 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 注销监听相机聚焦的状态变化。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('focusStateChange')](#offfocusstatechange11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -433,6 +449,8 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSmoothZoomInfoAvailable](#onsmoothzoominfoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -475,6 +493,8 @@ onSmoothZoomInfoAvailable(callback: AsyncCallback\<SmoothZoomInfo\>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('smoothZoomInfoAvailable')](#onsmoothzoominfoavailable11)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -513,6 +533,8 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSmoothZoomInfoAvailable](#offsmoothzoominfoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本**：11
@@ -539,6 +561,8 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 注销监听相机平滑变焦的状态变化。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('smoothZoomInfoAvailable')](#offsmoothzoominfoavailable11)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -571,6 +595,8 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAutoDeviceSwitchStatusChange](#onautodeviceswitchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -613,6 +639,8 @@ onAutoDeviceSwitchStatusChange(callback: AsyncCallback\<AutoDeviceSwitchStatus\>
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('autoDeviceSwitchStatusChange')](#onautodeviceswitchstatuschange13)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -651,6 +679,8 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAutoDeviceSwitchStatusChange](#offautodeviceswitchstatuschange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本**：13
@@ -677,6 +707,8 @@ offAutoDeviceSwitchStatusChange(callback?: AsyncCallback\<AutoDeviceSwitchStatus
 注销监听相机自动切换镜头状态变化。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('autoDeviceSwitchStatusChange')](#offautodeviceswitchstatuschange13)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

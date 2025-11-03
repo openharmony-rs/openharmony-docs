@@ -257,6 +257,8 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback\<Array\<MetadataObj
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataObjectsAvailable](#onmetadataobjectsavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -298,6 +300,8 @@ onMetadataObjectsAvailable(callback: AsyncCallback\<Array\<MetadataObject\>\>): 
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('metadataObjectsAvailable')](#onmetadataobjectsavailable)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -336,6 +340,8 @@ off(type: 'metadataObjectsAvailable', callback?: AsyncCallback\<Array\<MetadataO
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMetadataObjectsAvailable](#offmetadataobjectsavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -362,6 +368,8 @@ offMetadataObjectsAvailable(callback?: AsyncCallback\<Array\<MetadataObject\>\>)
 注销监听检测到的metadata对象。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('metadataObjectsAvailable')](#offMetadataObjectsAvailable)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -394,6 +402,8 @@ on(type: 'error', callback: ErrorCallback): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -432,6 +442,8 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -466,6 +478,8 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -492,6 +506,8 @@ offError(callback?: ErrorCallback): void
 注销监听metadata流的错误。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

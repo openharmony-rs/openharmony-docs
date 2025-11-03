@@ -414,6 +414,8 @@ on(type: 'error', camera: CameraDevice, callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -452,6 +454,8 @@ onError(camera: CameraDevice, callback: ErrorCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
@@ -487,6 +491,8 @@ off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
@@ -514,6 +520,8 @@ offError(camera: CameraDevice, callback?: ErrorCallback): void
 注销监听CameraInput的错误事件。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
