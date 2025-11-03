@@ -472,6 +472,17 @@ NavPathStack通过Replace相关接口去实现页面替换功能。
    ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   
+   ``` TypeScript
+   // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
+   this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageTwo Param' })
+     .catch((error: BusinessError) => {
+       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
+         'error.message = ', error.message);
+     }).then(() => {
+     hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
+   })
+   ```
 
 
 ### 页面删除
