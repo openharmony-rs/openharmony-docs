@@ -1611,6 +1611,10 @@
         - [Shared Audio Input](media/audio/audio-recording-concurrency.md)
         - [Audio Monitoring](media/audio/audio-ear-monitor.md)
         - [Low-Latency Audio Monitoring](media/audio/audio-ear-monitor-loopback.md)
+	  - Audio Device Routing Management<!--audio-device-->
+	    - [Global Audio Input Device Management](media/audio/audio-input-device-management.md)
+		- [Global Audio Output Device Management](media/audio/audio-output-device-management.md)
+	    - [Responding to Audio Output Device Changes](media/audio/audio-output-device-change.md)
       - Audio Call<!--audio-call-->
         - [Audio Call Overview](media/audio/audio-call-overview.md)
         - [Developing Audio Call](media/audio/audio-call-development.md)
