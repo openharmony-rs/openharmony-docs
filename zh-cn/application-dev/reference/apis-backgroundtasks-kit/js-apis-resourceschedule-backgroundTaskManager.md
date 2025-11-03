@@ -585,7 +585,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -718,7 +718,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
