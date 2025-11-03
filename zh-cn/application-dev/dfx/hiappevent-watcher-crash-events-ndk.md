@@ -87,6 +87,76 @@
       在"napi_init.cpp"文件中，定义onReceive类型观察者的方法：
 
       <!-- @[Sys_Crash_Crash_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      static void OnReceiveCrashEvent(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
+          uint32_t groupLen)
+      {
+          for (int i = 0; i < groupLen; ++i) {
+              for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s",
+                      appEventGroups[i].appEventInfos[j].domain);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s",
+                      appEventGroups[i].appEventInfos[j].name);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d",
+                      appEventGroups[i].appEventInfos[j].type);
+                  if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) != 0 ||
+                      strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_CRASH) != 0) {
+                      continue;
+                  }
+                  Json::Value params;
+                  Json::Reader reader(Json::Features::strictMode());
+                  Json::FastWriter writer;
+                  if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld",
+                          params["time"].asInt64());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.crash_type=%{public}s",
+                          params["crash_type"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
+                          params["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                          params["bundle_version"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
+                          params["bundle_name"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", params["pid"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", params["uid"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s",
+                          params["uuid"].asString().c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s",
+                          writer.write(params["exception"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d",
+                          params["hilog"].size());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}d",
+                          params["process_life_time"].asInt());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s",
+                          writer.write(params["memory"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
+                          writer.write(params["external_log"]).c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d",
+                          params["log_over_limit"].asBool());
+                  }
+              }
+          }
+      }
+      
+      // 定义变量，用来缓存创建的观察者的指针。
+      static HiAppEvent_Watcher *systemEventWatcherR;
+      
+      static napi_value RegisterWatcherCrashEvent(napi_env env, napi_callback_info info)
+      {
+          // 开发者自定义观察者名称，系统根据不同的名称来识别不同的观察者。
+          systemEventWatcherR = OH_HiAppEvent_CreateWatcher("AppCrashWatcherCrash");
+          // 设置订阅的事件名称为EVENT_APP_CRASH，即崩溃事件。
+          const char *names[] = {EVENT_APP_CRASH};
+          // 开发者订阅感兴趣的事件，此处订阅了系统事件。
+          OH_HiAppEvent_SetAppEventFilter(systemEventWatcherR, DOMAIN_OS, 0, names, 1);
+          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive1回调。
+          OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcherR, OnReceiveCrashEvent);
+          // 使观察者开始监听订阅的事件。
+          OH_HiAppEvent_AddWatcher(systemEventWatcherR);
+          return {};
+      }
+      ```
 
    - onTrigger类型观察者
 
