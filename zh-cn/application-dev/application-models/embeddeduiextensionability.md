@@ -54,6 +54,43 @@ EmbeddedUIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-k
 
 <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
 
+``` TypeScript
+import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+const TAG: string = '[EmbeddedUIExtAbility]';
+
+export default class EmbeddedUIExtAbility extends EmbeddedUIExtensionAbility {
+  onCreate() {
+    console.info(TAG, `onCreate`);
+  }
+
+  onForeground() {
+    console.info(TAG, `onForeground`);
+  }
+
+  onBackground() {
+    console.info(TAG, `onBackground`);
+  }
+
+  onDestroy() {
+    console.info(TAG, `onDestroy`);
+  }
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    let param: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(param);
+    session.loadContent('pages/extension', storage);
+  }
+
+  onSessionDestroy(session: UIExtensionContentSession) {
+    console.info(TAG, `onSessionDestroy`);
+  }
+}
+```
+
 
 4. EmbeddedUIExtensionAbility的onSessionCreate中加载了入口页面文件pages/extension.ets内容如下：
 
