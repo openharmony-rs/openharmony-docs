@@ -442,6 +442,54 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 使用UIContext接口替换：
 
 <!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->
+
+``` TypeScript
+// common/WindowUtils.ets
+import { display, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+export class WindowUIContextUtils {
+  public static activeUIContext: UIContext | undefined;
+
+  static registerWindowCallback(windowClass: window.Window): void {
+    try {
+      windowClass.on('windowEvent', (event: window.WindowEventType) => {
+        if (event === window.WindowEventType.WINDOW_ACTIVE) {
+          try {
+            let uiContext = windowClass.getUIContext();
+            WindowUIContextUtils.activeUIContext = uiContext;
+          } catch (exception) {
+            hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${exception}`);
+          }
+        }
+      });
+    } catch (exception) {
+      console.error(`Failed to unregister callback. Cause: ${exception}`);
+    }
+  }
+
+  static unregisterWindowCallback(windowClass: window.Window): void {
+    windowClass.off('windowEvent');
+  }
+
+  static setActiveUIContext(uiContext: UIContext): void {
+    WindowUIContextUtils.activeUIContext = uiContext;
+  }
+
+  static vp2px(vpValue: number, uiContext?: UIContext): number {
+    let _uiContext = uiContext ?? WindowUIContextUtils.activeUIContext;
+    if (!_uiContext || !_uiContext.isAvailable()) {
+      let displayClass = display.getDefaultDisplaySync();
+      let density = displayClass.densityPixels;
+      return vpValue * density;
+    }
+
+    return _uiContext.vp2px(vpValue);
+  }
+}
+```
 <!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 <!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
 
