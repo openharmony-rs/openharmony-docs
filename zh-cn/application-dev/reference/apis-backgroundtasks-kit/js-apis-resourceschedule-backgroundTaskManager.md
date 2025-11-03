@@ -585,7 +585,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -723,7 +723,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
 **错误码**：
 
@@ -1189,7 +1189,7 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回长时任务通知信息，包括长时任务Id等。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回长时任务通知信息，包括长时任务Id等。 |
 
 **错误码**：
 
@@ -1289,7 +1289,7 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<ContinuousTaskNotification> | Promise对象，返回更新后的长时任务通知信息，包括长时任务Id等。 |
+| Promise\<[ContinuousTaskNotification](#continuoustasknotification12)> | Promise对象，返回更新后的长时任务通知信息，包括长时任务Id等。 |
 
 **错误码**：
 
