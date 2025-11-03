@@ -72,7 +72,7 @@ export default class EntryAbility extends UIAbility {
   <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
   
   ``` TypeScript
-  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { UIAbility } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   // ···
@@ -142,7 +142,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onForeground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
@@ -166,7 +166,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onBackground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
@@ -187,7 +187,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onWindowStageWillDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -229,7 +229,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onWindowStageDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 // ···
 
@@ -246,18 +246,6 @@ export default class EntryAbility extends UIAbility {
   onWindowStageDestroy(): void {
     // 释放UI资源
   }
-
-  onForeground(): void {
-    // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
-  }
-
-  onBackground(): void {
-    // 释放UI不可见时无用的资源
-  }
-
-  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    // 更新资源、数据
-  }
 }
 ```
 
@@ -271,7 +259,7 @@ export default class EntryAbility extends UIAbility {
 <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 // ···
 
 export default class EntryAbility extends UIAbility {
