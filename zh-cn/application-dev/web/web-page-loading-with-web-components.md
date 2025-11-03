@@ -138,6 +138,29 @@ struct WebComponent {
 
 1. 通过构造的单例对象GlobalContext获取沙箱路径。需要开启应用中文件系统的访问[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)权限。
    <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
+   
+   ``` TypeScript
+   export class GlobalContext {
+     private constructor() {}
+     private static instance: GlobalContext;
+     private _objects = new Map<string, Object>();
+   
+     public static getContext(): GlobalContext {
+       if (!GlobalContext.instance) {
+         GlobalContext.instance = new GlobalContext();
+       }
+       return GlobalContext.instance;
+     }
+   
+     getObject(value: string): Object | undefined {
+       return this._objects.get(value);
+     }
+   
+     setObject(key: string, objectClass: Object): void {
+       this._objects.set(key, objectClass);
+     }
+   }
+   ```
    <!-- -->
    
    <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
