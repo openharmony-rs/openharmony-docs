@@ -36,7 +36,7 @@ type NetBearType = connection.NetBearType
 
 showAppNetPolicySettings(context: Context): Promise\<void>
 
-打开当前应用的联网设置界面。使用Promise异步回调。
+当想要设置当前应用的联网权限时，调用该接口可以打开当前应用的联网设置界面，来对应用的联网权限进行设置。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
