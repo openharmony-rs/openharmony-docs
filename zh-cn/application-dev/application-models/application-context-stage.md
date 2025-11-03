@@ -454,6 +454,34 @@ struct ApplicationContextFile {
 
 <!-- @[ability_area_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryareaability/EntryAbility.ets) -->
 
+``` TypeScript
+import { UIAbility, contextConstant, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 存储普通信息前，切换到EL1设备级加密
+    this.context.area = contextConstant.AreaMode.EL1; // 切换area
+    // 存储普通信息
+
+    // 存储敏感信息前，切换到EL2用户级加密
+    this.context.area = contextConstant.AreaMode.EL2; // 切换area
+    // 存储敏感信息
+
+    // 存储敏感信息前，切换到EL3用户级加密
+    this.context.area = contextConstant.AreaMode.EL3; // 切换area
+    // 存储敏感信息
+
+    // 存储敏感信息前，切换到EL4用户级加密
+    this.context.area = contextConstant.AreaMode.EL4; // 切换area
+    // 存储敏感信息
+
+    // 存储敏感信息前，切换到EL5应用级加密
+    this.context.area = contextConstant.AreaMode.EL5; // 切换area
+    // 存储敏感信息
+  }
+}
+```
+
 <!-- @[scene_area_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/AreaContext.ets) -->
 
 
