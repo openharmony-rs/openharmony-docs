@@ -176,6 +176,31 @@ struct ParentPage {
 
 <!-- @[page_one_require_tart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
 
+``` TypeScript
+@Entry
+@Component
+struct PageOne {
+  message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Child_V1({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child_V1 {
+  @Require @State message: string;
+
+  build() {
+    Column() {
+      Text(this.message) // 从API version 18开始，可以编译通过。
+    }
+  }
+}
+```
+
 
 ## 常见问题
 
