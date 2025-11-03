@@ -170,6 +170,56 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 <!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[StartAppServiceExt]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct StartAppServiceExt {
+  build() {
+    Column() {
+    // ···
+      List({ initialIndex: 0 }) {
+        ListItem() {
+          Row() {
+            // ···
+          }
+        // ···
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+            let want: Want = {
+              deviceId: '',
+              bundleName: 'com.samples.appserviceextensionability',
+              abilityName: 'MyAppServiceExtAbility'
+            };
+            context.startAppServiceExtensionAbility(want).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting AppServiceExtensionAbility.');
+              // 成功启动后台服务
+              this.getUIContext().getPromptAction().showToast({
+                message: 'SuccessfullyStartBackendService'
+              });
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                `Failed to start AppServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
+            });
+          })
+        }
+
+        // ···
+      }
+    // ···
+    }
+
+    // ···
+  }
+}
+```
+
 
 - 在应用中停止一个已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。
 
