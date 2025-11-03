@@ -185,6 +185,37 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    C API的事件通过统一的回调来接收，当收到事件时通过[eventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)进行区分。
 
    <!-- @[event_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
+   
+   ``` C
+   nodeAPI->addNodeEventReceiver(dragNode, [](ArkUI_NodeEvent *event) {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "RegisterNodeEventFirstReceiver called");
+       auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
+       auto preDragStatus = OH_ArkUI_NodeEvent_GetPreDragStatus(event);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "eventType = %{public}d, preDragStatus = %{public}d", eventType, preDragStatus);
+       auto *dragEvent = OH_ArkUI_NodeEvent_GetDragEvent(event);
+       switch (eventType) {
+           case NODE_ON_PRE_DRAG: {
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_PRE_DRAG EventReceiver");
+               break;
+           }
+           case NODE_ON_DRAG_START: {
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DRAG_START EventReceiver");
+               // ···
+               break;
+           }
+           case NODE_ON_DRAG_END: {
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DRAG_END EventReceiver");
+               // ···
+               break;
+           }
+           default: {
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "UNKOWN EventReceiver");
+               break;
+           }
+       }
+   });
+   ```
 
 4. 处理NODE_ON_DRAG_START事件。
 
