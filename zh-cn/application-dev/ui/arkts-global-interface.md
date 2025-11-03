@@ -952,3 +952,55 @@ struct LocalStoragePage {
 使用共享的LocalStorage对象需要在loadContent时传入LocalStorage，详细可参考[LocalStorage：页面级UI状态存储](./state-management/arkts-localstorage.md)。
 
 <!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { ContextUtils } from '../Common/ContextUtils';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+import { PixelUtils } from '../Common/UIContext';
+import { PixelUtil } from '../Common/Utils';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+    let localStorage = new LocalStorage();
+    localStorage.setOrCreate('message', 'Message from Storage')
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'success localStorage');
+    let window = windowStage.getMainWindowSync();
+    // 注册主窗的回调。
+    WindowUIContextUtils.registerWindowCallback(window);
+    // 在loadContent前调用getUIContext时，UI实例未创建，存在异常。
+    windowStage.loadContent('pages/Index', localStorage, (err) => {
+      // 需要在loadContent完成后获取UIContext。
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      // 需要在回调中调用。
+      try {
+        let uiContext = window.getUIContext();
+        PixelUtils.setUIContext(uiContext);
+        // 主窗获焦可能早于loadContent完成，需要在成功后设置保证有效。
+        WindowUIContextUtils.setActiveUIContext(uiContext)
+        if (!uiContext) {
+          hilog.error(DOMAIN, 'testTag', `Can't get UIContext`);
+          return;
+        }
+        let pxValue = uiContext.vp2px(20);
+        hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
+      }
+      // loadContent是异步接口，在此处调用不能保证UI实例已经创建成功。
+      hilog.info(DOMAIN, 'testTag', `loadContent success.`);
+    });
+  }
+
+// ···
+}
+```
