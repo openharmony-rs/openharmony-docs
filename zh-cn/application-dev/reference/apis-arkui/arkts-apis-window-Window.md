@@ -3633,8 +3633,6 @@ onTouchOutside(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -3717,8 +3715,6 @@ offTouchOutside(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const callback = () => {
@@ -3958,8 +3954,6 @@ onDialogTargetTouch(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -4042,8 +4036,6 @@ offDialogTargetTouch(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const callback = () => {
@@ -4563,8 +4555,6 @@ onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -4660,8 +4650,6 @@ offNoInteractionDetected(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const callback = () => {
@@ -6496,8 +6484,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
@@ -6574,8 +6560,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable: boolean = true;
@@ -7674,8 +7658,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -9089,8 +9071,6 @@ ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
-'use static'
-
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9131,8 +9111,6 @@ class EntryAbility extends UIAbility {
 
 ```ts
 // ets/pages/Index.ets
-'use static'
-
 @Entry
 @Component
 struct Index {

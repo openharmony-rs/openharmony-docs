@@ -2496,8 +2496,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-'use static'
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {

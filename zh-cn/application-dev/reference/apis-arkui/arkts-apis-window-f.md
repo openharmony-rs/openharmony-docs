@@ -543,8 +543,6 @@ ArkTS-Sta示例：
 
 ```ts
 // ets/pages/Index.ets
-'use static'
-
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
