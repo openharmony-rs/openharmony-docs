@@ -85,6 +85,60 @@ struct Index {
 
 <!-- @[Realize_Observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets) -->
 
+``` TypeScript
+@Observed
+class Father {
+  public son: Son;
+
+  constructor(name: string, age: number) {
+    this.son = new Son(name, age);
+  }
+}
+
+@Observed
+class Son {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Component
+struct Child {
+  @ObjectLink son: Son;
+
+  build() {
+    Row() {
+      Column() {
+        Text(`name: ${this.son.name} age: ${this.son.age}`)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.son.age++;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State father: Father = new Father('John', 8);
+
+  build() {
+    Column() {
+      Child({ son: this.father.son })
+    }
+  }
+}
+```
+
 
 通过这种方式虽然能够实现对嵌套类中属性变化的观测，但是当嵌套层级较深时，代码将会变得十分复杂，易用性差。因此推出类装饰器\@ObservedV2与成员变量装饰器\@Trace，增强对嵌套类中属性变化的观测能力。
 
