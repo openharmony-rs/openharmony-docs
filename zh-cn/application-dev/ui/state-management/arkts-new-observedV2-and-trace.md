@@ -762,6 +762,55 @@ struct Index {
 
 <!-- @[Decoration_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public memberMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+}
+
+@Entry
+@ComponentV2
+struct MapSample {
+  info: Info = new Info();
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.info.memberMap.entries()), (item: [number, string]) => {
+          Text(`${item[0]}`)
+            .fontSize(30)
+          Text(`${item[1]}`)
+            .fontSize(30)
+          Divider()
+        })
+        Button('init map')
+          .onClick(() => {
+            this.info.memberMap = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+          })
+        Button('set new one')
+          .onClick(() => {
+            this.info.memberMap.set(4, 'd');
+          })
+        Button('clear')
+          .onClick(() => {
+            this.info.memberMap.clear();
+          })
+        Button('set the key: 0')
+          .onClick(() => {
+            this.info.memberMap.set(0, 'aa');
+          })
+        Button('delete the first one')
+          .onClick(() => {
+            this.info.memberMap.delete(0);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### \@Trace装饰Set类型
 
 * 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear和delete。
