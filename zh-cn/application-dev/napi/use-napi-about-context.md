@@ -84,6 +84,8 @@ node_api_get_module_file_name | 否 |
 |napi_create_string_latin1 | 否 |
 |napi_create_string_utf8 | 否 |
 |napi_create_string_utf16 | 否 |
+|napi_create_external_string_ascii | 是 |
+|napi_create_external_string_utf16 | 是 |
 |napi_create_symbol | 否 |
 |napi_create_function | 是 |
 |napi_create_error | 是 |

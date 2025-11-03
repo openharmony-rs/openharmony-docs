@@ -306,6 +306,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_string_utf8 | 通过UTF8编码的C字符串数据创建ArkTS String。 |
 | napi_get_value_string_latin1 | 获取给定ArkTS value对应的ISO-8859-1编码的字符串。 |
 | napi_get_value_string_utf8 | 获取给定ArkTS value对应的UTF8编码的字符串。 |
+| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
+| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
 
 ### date相关
 

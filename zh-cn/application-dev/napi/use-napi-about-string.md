@@ -8,7 +8,7 @@
 
 ## 简介
 
-使用Node-API的六个关于string的接口，可以实现Node-API模块与ArkTS字符串的交互。
+使用Node-API的八个关于string的接口，可以实现Node-API模块与ArkTS字符串的交互。
 
 ## 基本概念
 
@@ -31,6 +31,8 @@
 | napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 |
 | napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 |
 | napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 |
+| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
+| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
 
 ## 使用示例
 
@@ -338,6 +340,40 @@ import testNapi from 'libentry.so';
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s', testNapi.createStringLatin1());
 ```
 <!-- @[ark_napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+### napi_create_external_string_utf16
+
+创建一个引用外部资源的UTF-16编码的ArkTS字符串。
+
+cpp部分代码
+
+<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+
+接口声明
+
+<!-- @[napi_create_external_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+ArkTS侧示例代码
+
+<!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+如果创建出来的external_string对象被其他对象所引用，则所有引用结束后才会被GC回收，从而调用StringFinalizerUTF16函数
+
+### napi_create_external_string_ascii
+
+创建一个引用外部资源的ASCII编码的ArkTS字符串。
+
+cpp部分代码
+
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+
+接口声明
+
+<!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+ArkTS侧示例代码
+
+<!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+如果创建出来的external_string对象被其他对象所引用，则所有引用结束后才会被GC回收，从而调用StringFinalizerASCII函数
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 
