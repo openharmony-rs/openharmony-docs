@@ -340,6 +340,16 @@ HiAppEvent eventInfo.params.log_over_limit=0
 1. 移除事件观察者。
 
     <!-- @[Sys_Crash_Event_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value RemoveWatcherCrash(napi_env env, napi_callback_info info)
+    {
+        // 使观察者停止监听crash事件
+        OH_HiAppEvent_RemoveWatcher(systemEventWatcherR);
+        OH_HiAppEvent_RemoveWatcher(systemEventWatcherT);
+        return {};
+    }
+    ```
 
 2. 销毁事件观察者。
 
