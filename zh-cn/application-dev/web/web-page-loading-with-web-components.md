@@ -257,6 +257,25 @@ struct WebComponent {
 Web组件可以通过data url方式直接加载HTML字符串。
 <!-- @[web_components_load_html_strings_by_data_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_two.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  htmlStr: string = 'data:text/html, <html><body bgcolor=\'white\'>Source:<pre>source</pre></body></html>';
+
+  build() {
+    Column() {
+      // 组件创建时，加载htmlStr
+      Web({ src: this.htmlStr, controller: this.controller });
+    }
+  }
+}
+```
+
 ## resource协议加载本地资源
 
 resource协议允许访问应用资源目录中的文件。
