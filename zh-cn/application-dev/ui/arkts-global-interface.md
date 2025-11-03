@@ -845,6 +845,29 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->
 
+``` TypeScript
+import { ContextUtils } from '../Common/ContextUtils';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('getContext')
+        .onClick(() => {
+          let context = ContextUtils.getContext(this.getUIContext());
+          hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 无UI场景直接返回窗口创建时设置的默认返回值。
 
 <!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
