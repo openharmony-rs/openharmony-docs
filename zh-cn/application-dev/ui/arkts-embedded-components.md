@@ -216,6 +216,14 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 <!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "name": "ExampleEmbeddedAbility",
+  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
+  "type": "embeddedUI"
+},
+```
+
 **预期效果**
 
 1. 在支持EmbeddedUIExtensionAbility的设备上启动应用；
