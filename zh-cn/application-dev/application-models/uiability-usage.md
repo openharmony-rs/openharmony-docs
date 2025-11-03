@@ -137,6 +137,60 @@ export default class EntryAbility extends UIAbility {
 1. 通过点击UIAbilityA中的"拉起UIAbilityB"按钮，拉起UIAbilityB。
 
     <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/pages/Index.ets) -->  
+    
+    ``` TypeScript
+    import { common, Want } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const DOMAIN = 0x0000;
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    
+      build() {
+        Scroll() {
+          Column() {
+            Text(this.message)
+              .id('HelloWorld')
+              .fontSize(30)
+              .fontWeight(FontWeight.Bold)
+              .alignRules({
+                center: { anchor: '__container__', align: VerticalAlign.Center },
+                middle: { anchor: '__container__', align: HorizontalAlign.Center }
+              })
+              .onClick(() => {
+                this.message = 'Welcome';
+              })
+    
+            Button('terminateSelf').onClick(() => {
+              this.context.terminateSelf();
+            })
+              .width('60%')
+              .margin({top: 8})
+    
+            Button($r('app.string.Start_UIAbilityB')).onClick((event: ClickEvent) => {
+              let want: Want = {
+                bundleName: this.context.abilityInfo.bundleName,
+                abilityName: 'UIAbilityB',
+              };
+              this.context.startAbility(want, (err: BusinessError) => {
+                if (err.code) {
+                  hilog.error(DOMAIN, 'Index', `Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
+                }
+              });
+            })
+              .width('60%')
+              .margin({top: 8})
+          }
+        // ···
+        }
+      }
+    }
+    ```
 
 2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取并打印UIAbilityA的Pid、BundleName和AbilityName。
 
