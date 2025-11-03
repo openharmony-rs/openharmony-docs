@@ -37,12 +37,12 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    const TAG: string = '[Page_UIAbilityComponentsInteractive]';
+    const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
 
     @Entry
     @Component
-    struct Page_UIAbilityComponentsInteractive {
+    struct MainPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       build() {
