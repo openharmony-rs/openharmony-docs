@@ -33,20 +33,16 @@
 
 <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
 
-   ```ts
-    @Observed
-    class Info2 {
-      @Type(Sample)
-      sample: Sample = new Sample(); // 错误用法，不能用在@Observed装饰的类中，编译时报错
-    }
-    @ComponentV2
-    struct Index {
-      @Type(Sample)
-      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中，编译时报错
-      build() {
-      }
-    }
-   ```
+``` TypeScript
+class Sample {
+  private data: number = 0;
+}
+@ObservedV2
+class Info {
+  @Type(Sample)
+  @Trace public sample: Sample = new Sample(); // 正确用法
+}
+```
 
 
 
