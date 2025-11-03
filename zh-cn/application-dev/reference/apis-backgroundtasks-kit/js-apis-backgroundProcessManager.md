@@ -207,7 +207,7 @@ try {
 
 getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
-获取进程能效模式。使用Promise异步回调。
+获取进程能效模式。该方法返回一个Promise对象，用于异步获取结果。
 
 **设备行为差异：** 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
@@ -219,13 +219,13 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。<br>取值范围大于0。  |
+| pid         | number    | 是        | 进程号。<br>取值范围：正整数（1~2147483647）。  |
 
 **返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise\<[PowerSaveMode](#powersavemode20) > | Promise对象。返回进程能效模式，EFFICIENCY_MODE表示非能效模式，DEFAULT_MODE表示进入了能效模式。 |
+| Promise<[PowerSaveMode](#powersavemode20) > | Promise对象。返回进程能效模式状态，EFFICIENCY_MODE表示高效能模式(非节能模式)，DEFAULT_MODE表示默认节能模式。 |
 
 **错误码：**
 
