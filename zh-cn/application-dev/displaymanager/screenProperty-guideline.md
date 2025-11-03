@@ -181,6 +181,29 @@ try {
 3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
     <!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    /**
+     * 注册监听的callback参数要采用对象传递.
+     * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+     */
+    let callback3: Callback<display.Rect> = (data: display.Rect) => {
+      hilog.info(DOMAIN, 'DisplayTest', 'Listening enabled. Data: ' + JSON.stringify(data));
+    };
+    let displayClass: display.Display | null = null;
+    try {
+      displayClass = display.getDefaultDisplaySync();
+      // 开启当前屏幕可用区域变化的监听
+      displayClass.on('availableAreaChange', callback3);
+      hilog.info(DOMAIN, 'DisplayTest', `register availableAreaChange success`);
+      // 关闭当前屏幕可用区域变化的监听
+      displayClass.off('availableAreaChange', callback3);
+      hilog.info(DOMAIN, 'DisplayTest', `unregister availableAreaChange success`);
+    } catch (exception) {
+      hilog.error(DOMAIN, 'DisplayTest',
+        `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    ```
 
 ## 监听折叠设备状态变化
 
