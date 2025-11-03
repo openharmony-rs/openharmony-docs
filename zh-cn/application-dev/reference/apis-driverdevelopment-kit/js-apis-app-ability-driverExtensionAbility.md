@@ -21,6 +21,9 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 
 **系统能力**：SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -83,6 +86,10 @@ Extension生命周期回调，如果是connectAbility拉起的服务，会在onC
 **模型约束**：此接口仅在Stage模型下使用。
 
 **系统能力**：SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 
@@ -157,6 +164,10 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 
 **系统能力**：SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -204,6 +215,10 @@ onDump(params: Array\<string>): Array\<string>
 **模型约束**：此接口仅在Stage模型下使用。
 
 **系统能力**：SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
 
 **参数：**
 

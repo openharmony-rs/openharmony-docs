@@ -21,6 +21,10 @@ queryDeviceInfo(deviceId?: longr): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：**  SystemCapability.Driver.ExternalDevice
@@ -31,7 +35,7 @@ queryDeviceInfo(deviceId?: longr): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 |----------|--------|-----|------------------------|
 | deviceId | long | 否   | 设备ID，通过[queryDevices](js-apis-driver-deviceManager.md#devicemanagerquerydevices)获得。如果不传入设备ID，则默认获取所有的设备信息；如果没有外接设备，且没有传入设备ID则会返回空数组。 |
 
-**返回值：**
+**参数：**
 
 | 类型                                                     | 说明          |
 |--------------------------------------------------------|-------------|
@@ -41,10 +45,10 @@ queryDeviceInfo(deviceId?: longr): Array&lt;Readonly&lt;DeviceInfo&gt;&gt;
 
 | 错误码ID    | 错误信息                                                                  |
 |----------|-----------------------------------------------------------------------|
-| 201      | The permission check failed.                                          |
-| 202      | Permission denied. A non-system application cannot call a system API. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
-| 26300001 | ExternalDeviceManager service exception.                              |
+| 201      | The permission check failed.  <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. A non-system application cannot call a system API. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.      <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 26300001 | ExternalDeviceManager service exception.    <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -71,6 +75,10 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
 **系统能力：**  SystemCapability.Driver.ExternalDevice
@@ -81,7 +89,7 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 |-----------|--------|-----|----------------------------|
 | driverUid | string | 否   | 驱动UID，通过queryDeviceInfo获得。 |
 
-**返回值：**
+**参数：**
 
 | 类型                                                     | 说明            |
 |--------------------------------------------------------|---------------|
@@ -91,10 +99,10 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 
 | 错误码ID    | 错误信息                                                                  |
 |----------|-----------------------------------------------------------------------|
-| 201      | The permission check failed.                                          |
-| 202      | Permission denied. A non-system application cannot call a system API. |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.        |
-| 26300001 | ExternalDeviceManager service exception.                              |
+| 201      | The permission check failed.   <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 202      | Permission denied. A non-system application cannot call a system API. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 401      | Parameter error. Possible causes: 1.Incorrect parameter types.  <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
+| 26300001 | ExternalDeviceManager service exception. <br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：20|
 
 **示例：**
 
@@ -122,9 +130,14 @@ try {
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 | 名称              | 类型      | 必填  | 说明          |
 |-----------------|---------|-----|-------------|
-| deviceId        | long   | 是   | 设备ID。       |
+| deviceId        | number   | 是   | 设备ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| deviceId        | long   | 是   | 设备ID。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 | isDriverMatched | boolean | 是   | 设备是否匹配到驱动。  |
 | driverUid       | string  | 否   | 设备匹配的驱动UID。 |
 
@@ -136,8 +149,13 @@ USB设备详细信息，继承自[DeviceInfo](#deviceinfo)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 | 名称                | 类型                                                                 | 必填  | 说明               |
 |-------------------|--------------------------------------------------------------------|-----|------------------|
+| vendorId          | number                                                             | 是   | USB设备Vendor ID。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn| productId         | number                                                             | 是   | USB设备Vendor ID。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|                                                     
 | vendorId          | int                                                             | 是   | USB设备Vendor ID。  |
 | productId         | int                                                             | 是   | USB设备Product ID。 |
 | interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 是   | USB设备接口描述符列表。    |
@@ -150,12 +168,20 @@ USB设备接口描述符。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 | 名称               | 类型     | 必填  | 说明     |
 |------------------|--------|-----|--------|
-| bInterfaceNumber | int | 是   | 接口编号。  |
-| bClass           | int | 是   | 类型代码。  |
-| bSubClass        | int | 是   | 子类型代码。 |
-| bProtocol        | int | 是   | 协议代码。  |
+| bInterfaceNumber | number | 是   | 接口编号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| bClass           | number | 是   | 类型代码。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| bSubClass        | number | 是   | 子类型代码。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| bProtocol        | number | 是   | 协议代码。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| bInterfaceNumber | int | 是   | 接口编号。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| bClass           | int | 是   | 类型代码。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| bSubClass        | int | 是   | 子类型代码。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| bProtocol        | int | 是   | 协议代码。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
 
 ## DriverInfo
 
@@ -164,6 +190,10 @@ USB设备接口描述符。
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
 
 | 名称            | 类型                                                 | 必填  | 说明             |
 |---------------|----------------------------------------------------|-----|----------------|
@@ -182,7 +212,13 @@ USB设备驱动详细信息，继承自[DriverInfo](#driverinfo)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：20
+
 | 名称            | 类型                  | 必填  | 说明                      |
 |---------------|---------------------|-----|-------------------------|
-| productIdList | Array&lt;int&gt; | 是   | 驱动支持的USB设备product ID列表。 |
-| vendorIdList  | Array&lt;int&gt; | 是   | 驱动支持的USB设备vendor ID列表。  |
+| productIdList | Array&lt;number&gt; | 是   | 驱动支持的USB设备product ID列表。<br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| vendorIdList  | Array&lt;number&gt; | 是   | 驱动支持的USB设备vendor ID列表。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Dyn|
+| productIdList | Array&lt;int&gt; | 是   | 驱动支持的USB设备product ID列表。<br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
+| vendorIdList  | Array&lt;int&gt; | 是   | 驱动支持的USB设备vendor ID列表。 <br>**ArkTs模式**：该参数仅适用于ArkTs-Sta|
