@@ -44,7 +44,20 @@ class Info {
 }
 ```
 
-
+   ```ts
+    @Observed
+    class Info2 {
+      @Type(Sample)
+      sample: Sample = new Sample(); // 错误用法，不能用在@Observed装饰的类中，编译时报错
+    }
+    @ComponentV2
+    struct Index {
+      @Type(Sample)
+      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中，编译时报错
+      build() {
+      }
+    }
+   ```
 
 2. 不支持collections.Set、collections.Map等类型。
 
