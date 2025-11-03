@@ -2614,7 +2614,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | 是   | 需要解析的主机名。                                           |
+| host     | string                                            | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | 是   | 回调函数。当使用对应网络解析主机名成功获取所有IP地址，error为undefined，data为获取到的所有IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2667,7 +2667,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
@@ -2718,7 +2718,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | 是   | 需要解析的主机名。                                           |
+| host     | string                                    | 是   | 需要解析的主机名。例如："www.example.com"。                                           |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | 是   | 回调函数。当使用对应网络解析主机名获取第一个IP地址成功，error为undefined，data为获取的第一个IP地址；否则为错误对象。 |
 
 **错误码：**
@@ -2769,7 +2769,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 
 **返回值：**
 
