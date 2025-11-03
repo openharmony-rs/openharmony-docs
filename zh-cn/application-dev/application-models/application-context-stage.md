@@ -290,6 +290,19 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 <!-- @[scene_entry_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrysceneability/EntryAbility.ets) -->
 
+``` TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 获取ResourceManager（资源管理）
+    let resourceManager = this.context.getApplicationContext().resourceManager;
+    // 获取applicationInfo（当前应用信息）
+    let applicationInfo = this.context.getApplicationContext().applicationInfo;
+  }
+}
+```
+
 
 ### 获取应用文件路径
 
