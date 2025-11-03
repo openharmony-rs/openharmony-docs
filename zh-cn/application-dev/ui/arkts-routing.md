@@ -45,6 +45,8 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
   
   ``` TypeScript
   import { router } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { DOMAIN, TAG } from '../../common/Common';
   
   @Entry
   @Component
