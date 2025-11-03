@@ -48,12 +48,6 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
 <!-- @[import_display_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-#include <window_manager/oh_display_info.h>
-#include <window_manager/oh_display_manager.h>
-#include <hilog/log.h>
-```
-
 ## 获取屏幕状态
 
 1. 可以通过OH_NativeDisplayManager_GetDefaultDisplayRotation获取默认屏幕的旋转角度。
@@ -70,50 +64,6 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
 <!-- @[register_display_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-void DisplayChangeCallback(uint64_t displayId)
-{
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-        "DisplayChangeCallback displayId=%{public}lu.", displayId);
-}
-
-static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info info)
-{
-    uint32_t listenerIndex;
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayChangeListener(
-        DisplayChangeCallback, &listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-        "RegisterDisplayChangeListener listenerIndex =%{public}d errCode=%{public}d.", listenerIndex, errCode);
-    if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
-        napi_value registerIndex;
-        napi_create_int32(env, listenerIndex, &registerIndex);
-        return registerIndex;
-    } else {
-        napi_value errorCode;
-        napi_create_int32(env, errCode, &errorCode);
-        return errorCode;
-    }
-}
-
-static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = { nullptr };
-
-    uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    napi_get_value_uint32(env, args[0], &listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-        "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayChangeListener(listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
-        "UnregisterDisplayChangeListener errCode=%{public}d.", errCode);
-    napi_value errorCode;
-    napi_create_int32(env, errCode, &errorCode);
-    return errorCode;
-}
-```
-
 ## 监听折叠设备状态变化
 
 1. 可以通过OH_NativeDisplayManager_IsFoldable接口查询设备是不是折叠设备。
@@ -129,110 +79,10 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 
 <!-- @[register_napi_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        {"getDisplayRotation", nullptr, GetDefaultDisplayRotation, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getCutoutInfo", nullptr, CreateDefaultDisplayCutoutInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"registerDisplayChange", nullptr, RegisterDisplayChangeListener,
-            nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"unregisterDisplayChange", nullptr, UnregisterDisplayChangeListener,
-            nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"checkIsFoldDevice", nullptr, IsFoldable, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener,
-            nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener,
-            nullptr, nullptr, nullptr, napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-```
-
 ## 注册模块
 
 <!-- @[register_display_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
-static napi_module displayModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "nativedisplay",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&displayModule);
-}
-```
-
-## 在index.d.ts文件中声明函数
-
-<!-- @[add_function_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/types/libnativedisplay/Index.d.ts) -->
-
-``` TypeScript
-export const getDisplayRotation: () => number;
-export const getCutoutInfo: () => number;
-export const registerDisplayChange: () => number;
-export const unregisterDisplayChange: (index: number) => number;
-export const checkIsFoldDevice: () => boolean;
-export const registerFoldDisplayModeChange: () => number;
-export const unregisterFoldDisplayModeChange: (index: number) => number;
-```
-
 ## 在index.ets文件中调用函数
 
 <!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-private callGetDisplayRotation(): void {
-  this.promptAction.openToast({ message: '调用getDisplayRotation方法' }).catch((error: Error) => {
-    console.error(`callGetDisplayRotation error ${JSON.stringify(error)}`);
-  }).then(() => {
-    console.info(`get rotation value is: ${displayNapi.getDisplayRotation()}`);
-  });
-}
-
-private callFoldableCallback(): void {
-  this.promptAction.openToast({ message: '调用register displayMode方法' }).catch((error: Error) => {
-    console.error(`callFoldableCallback error ${JSON.stringify(error)}`);
-  }).then(() => {
-    let registerIndex = displayNapi.registerFoldDisplayModeChange();
-    console.info(`register foldable value is: ${registerIndex}`);
-    console.info(`unregister foldable value is: ${displayNapi.unregisterFoldDisplayModeChange(registerIndex)}`);
-  });
-}
-
-private callGetCutoutInfo(): void {
-  this.promptAction.openToast({ message: '调用getCutoutInfo方法' }).catch((error: Error) => {
-    console.error(`callGetCutoutInfo error ${JSON.stringify(error)}`);
-  }).then(() => {
-    console.info(`cutoutInfo length is: ${displayNapi.getCutoutInfo()}`);
-  });
-}
-
-private callDealListenCallback(): void {
-  this.promptAction.openToast({ message: '调用regiseter change方法' }).catch((error: Error) => {
-    console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
-  }).then(() => {
-    let registerIndex = displayNapi.registerDisplayChange();
-    console.info(`register display change value is: ${registerIndex}`);
-    console.info(`unregister display change value is: ${displayNapi.unregisterDisplayChange(registerIndex)}`);
-  });
-}
-
-private callDealFoldableDevice(): void {
-  this.promptAction.openToast({ message: '调用dealFoldableDevice方法' }).catch((error: Error) => {
-    console.error(`callDealFoldableDevice error ${JSON.stringify(error)}`);
-  }).then(() => {
-    console.info(`fold device is: ${displayNapi.checkIsFoldDevice()}`);
-  });
-}
-```

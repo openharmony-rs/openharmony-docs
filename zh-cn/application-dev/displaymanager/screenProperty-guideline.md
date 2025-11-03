@@ -47,17 +47,6 @@ Display对象，即屏幕实例，提供屏幕相关属性及监听变化的接�
 
 <!-- @[get_display_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-let displayClass: display.Display | null = null;
-try {
-  displayClass = display.getDefaultDisplaySync();
-  hilog.info(DOMAIN, 'DisplayTest', `The display info is: ${JSON.stringify(displayClass)}`);
-} catch (exception) {
-  hilog.error(DOMAIN, 'DisplayTest',
-    `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 ## 获取屏幕相关属性
 
 1. 确保获取到Display对象之后（具体可见[获取Display对象](#获取display对象)），可以通过相关属性查询屏幕的一些基础信息。
