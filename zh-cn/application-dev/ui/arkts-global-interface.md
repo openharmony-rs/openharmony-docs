@@ -553,6 +553,67 @@ export default class EntryAbility extends UIAbility {
 ```
 <!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->
 
+``` TypeScript
+// pages/WindowTestPage.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { WindowUIContextUtils } from '../Common/WindowUtils';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  private subWindow: window.Window | undefined;
+
+  build() {
+    Column() {
+      Text('Create SubWindow')
+        .onClick(() => {
+          let config: window.Configuration = {
+            name: 'test',
+            windowType: window.WindowType.TYPE_DIALOG,
+            ctx: this.getUIContext().getHostContext()
+          };
+          try {
+            window.createWindow(config, (err: BusinessError, windowClass: window.Window) => {
+              const errCode: number = err.code;
+              if (errCode) {
+                hilog.error(DOMAIN, 'testTag', `Failed to create the window. Cause: ${errCode}`);
+                return;
+              }
+              // 在窗口创建后注册回调。
+              this.subWindow = windowClass;
+              try {
+                windowClass.setUIContent('pages/Index', () => {
+                  WindowUIContextUtils.registerWindowCallback(windowClass);
+                  windowClass.resize(500, 1000);
+                  windowClass.showWindow();
+                });
+              } catch (exception) {
+                hilog.error(DOMAIN, 'testTag', `Failed to setUIContent. Cause : ${exception}`);
+              }
+            });
+          } catch (exception) {
+            hilog.error(DOMAIN, 'testTag', `Failed to create the window. Cause : ${exception}`);
+          }
+        })
+      Text('Destroy SubWindow')
+        .onClick(() => {
+          if (this.subWindow) {
+            // 在窗口销毁前注销回调。
+            WindowUIContextUtils.unregisterWindowCallback(this.subWindow);
+            this.subWindow.destroyWindow();
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### 执行绑定UI实例的闭包
 
 对于UIContext中没有提供替代的接口（例如CalendarPickerDialog），或者开发者自定义实现的业务行为与多实例相关，需要和实例绑定时（例如，一个代码段），可以使用UIContext对象[runScopedTask](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)方法执行闭包。
