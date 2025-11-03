@@ -271,6 +271,43 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[onWindowStageWillDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
+``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  public windowStage: window.WindowStage | undefined = undefined;
+
+// ···
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 加载UI资源
+    this.windowStage = windowStage;
+    // ···
+  }
+
+  onWindowStageWillDestroy(windowStage: window.WindowStage): void {
+    // 释放通过windowStage对象获取的资源
+    // 在onWindowStageWillDestroy()中注销WindowStage事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
+    try {
+      if (this.windowStage) {
+        this.windowStage.off('windowStageEvent');
+      }
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(DOMAIN, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
+    }
+  }
+
+// ···
+}
+```
+
 ### onWindowStageDestroy()
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onWindowStageDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)回调，开发者可以在该回调中释放UI资源。该回调在WindowStage销毁后执行，此时WindowStage不可以使用。
 
