@@ -7,8 +7,10 @@
   - [@ohos.multimodalAwareness.deviceStatus (Device Status Awareness)](js-apis-awareness-deviceStatus.md)
   <!--Del-->
   - [@js-apis-awareness-metadataBinding (Metadata Binding) (System API)](js-apis-awareness-metadataBinding-sys.md)
+  - [@ohos.multimodalawareness.roomLocation (Room Location) (System API)](js-apis-awareness-roomLocation.md)
   <!--DelEnd-->
 - Error Codes<!--multimodal-awareness-arkts-errcode-->
   - [Motion Awareness Error Codes](errorcode-motion.md)
   - [Metadata Binding Error Codes](errorcode-metadataBinding.md)
   - [Device Status Awareness Error Codes] (errorcode-deviceStatus.md)
+  - [Room Location Error Codes](errorcode-roomLocation.md)
