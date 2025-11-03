@@ -576,7 +576,7 @@ struct PageB {
     {
       "name": "PageB",
       "pageSourceFile": "src/main/ets/pages/freeze/template5/PageB.ets",
-      "buildFunction": "page2Builder",
+      "buildFunction": "pageBBuilder",
       "data": {
         "description" : "This is the PageB"
       }
