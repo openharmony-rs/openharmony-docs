@@ -11943,3 +11943,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ---- | ------- | ---- |  ---- | ----- |
 | taskInfos | string[]  | 是 | 否 | 批量下载任务信息。 |
 
+## HdrMode<sup>22+</sup>
+
+枚举，图片的HDR类型。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。|
+| HDR_ISO_SINGLE |  1 |  单层HDR技术。  |
+| HDR_ISO_DUAL |  2 |  单层HDR技术。  |
+| HDR_CUVA |  3 |  中国超高清视频产业联盟HDR标准。  |
+| HDR_VIVID_SINGLE |  4 |  单层HDR VIVID技术。  |
+| HDR_VIVID_DUAL |  5 |  单层HDR VIVID技术。  |
