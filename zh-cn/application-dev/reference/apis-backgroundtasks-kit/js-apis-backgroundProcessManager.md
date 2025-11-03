@@ -169,7 +169,7 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。<br>取值范围大于0。 |
+| pid         | number    | 是        | 进程号。 |
 
 **返回值**：
 
@@ -219,7 +219,7 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | 是        | 进程号。  |
+| pid         | number    | 是        | 进程号。<br>取值范围大于0。 |
 
 **返回值：**
 
