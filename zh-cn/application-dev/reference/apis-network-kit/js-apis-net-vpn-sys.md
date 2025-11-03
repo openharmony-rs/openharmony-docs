@@ -518,5 +518,5 @@ VPN 配置参数。
 | isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持IPv6。true表示支持IPv6，false表示不支持IPv6。默认值为false。     |
 | isLegacy            | boolean                                                        | 否   |是 |是否支持内置VPN。true表示支持内置VPN，false表示不支持内置VPN。默认值为false。   |
 | isBlocking          | boolean                                                        | 否   |是 |是否阻塞模式。true表示是阻塞模式，false表示不是阻塞模式。默认值为false。       |
-| trustedApplications | Array\<string\>                                                | 否   |是 |白名单信息，string类型表示的包名。  |
-| blockedApplications | Array\<string\>                                                | 否   |是 |黑名单信息，string类型表示的包名。  |
+| trustedApplications | Array\<string\>                                                | 否   |是 | 可以接入VPN网络，string类型表示的包名。  |
+| blockedApplications | Array\<string\>                                                | 否   |是 | 不能接入VPN网络，string类型表示的包名。  |
