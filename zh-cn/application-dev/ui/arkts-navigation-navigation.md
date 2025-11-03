@@ -419,12 +419,7 @@ NavPathStack通过Pop相关接口去实现页面返回功能。
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
    
    ``` TypeScript
-   <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
-   ``` TypeScript
-   // 将栈顶页面替换为pageTwo
-   this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
-   ```
+   // 返回到索引为0的页面
    this.pathStack.popToIndex(0);
    ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
@@ -920,16 +915,6 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 1. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置：
 
 <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ···
-    "routerMap": "$profile:route_map",
-    // ···
-  }
-}
-```
 
 ``` JSON5
 {
