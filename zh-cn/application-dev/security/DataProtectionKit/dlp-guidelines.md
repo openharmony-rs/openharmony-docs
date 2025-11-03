@@ -111,7 +111,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 
- 2. 以上代码需要在module.json5文件中增加ohos.want.action.viewData：
+ 3. 以上代码需要在module.json5文件中增加ohos.want.action.viewData：
 
     <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/module.json5) -->
    
@@ -130,7 +130,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ]
     ```
   
-3. 2B生成dlp加密文件。  
+4. 2B生成dlp加密文件。  
 使用该接口的前置条件：链接DLP凭据服务器。
 
    [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
@@ -169,7 +169,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 
-4. 查询当前应用是否在沙箱中。  
+5. 查询当前应用是否在沙箱中。  
 使用该接口的前置条件：由demo应用打开DLP文件。
 
     <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -189,7 +189,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ```
 
 
-5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。  
+6. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。  
 使用该接口的前置条件：由demo应用打开DLP文件。
     <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -428,23 +428,23 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       });
     }
     ```
-16. 设置企业应用防护策略。   
+17. 设置企业应用防护策略。   
 使用该接口的前置条件：链接DLP凭据服务器。
     
-    16.1 策略格式。
+    17.1 策略格式。
     | 字段名 | 类型 | 说明 |
     | -------- | -------- | -------- |
     | rules | Array&lt;Rule&gt; | 具体规则列表，一条策略可以设置多条规则，最多32条。 |
     | policyId |string | 策略名称。长度不超过64字节，只允许由字母（包括大写和小写）、数字（0-9）、下划线（_）组成。 |
     | ruleConflictAlg | number | 规则冲突解决算法，0表示首次匹配，1表示完全匹配。 |
 
-    16.2 规则格式。
+    17.2 规则格式。
     | 字段名 | 类型 | 说明 |
     | -------- | -------- | -------- |
       | ruleId |string | 规则名称，长度不超过64字节，只允许由字母（包括大写和小写）、数字（0-9）、下划线（_）组成。 |
     | attributes | Array&lt;Attribute&gt; | 具体属性信息列表，一条规则可以设置多条规则，最多32条。 |
 
-    16.3 属性信息格式。
+    17.3 属性信息格式。
     | 字段名 | 类型 | 说明 |
     | -------- | -------- | -------- |
       | attributeId |string | 属性信息名称。 |
@@ -452,7 +452,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     | valueType | number | 属性值类型，0表示整型，1代表字符串。 |
     | opt | number | 判断方法，用于真实属性信息与策略属性信息作比较。 |
 
-    16.4 当前支持的属性信息。
+    17.4 当前支持的属性信息。
     | 属性信息名称 | 属性值 | 属性值类型 | 场景 |
     | -------- | -------- | -------- | -------- |
      | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | 整型 | 1：设备健康报告显示正常。 <br>2：设备有健康风险，但风险因子和root无关。 <br> 3：设备有健康风险，且风险因子和root相关。 <br> 4：异常场景。 |
@@ -495,7 +495,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       }
     }
     ```
-17. （API 21开始支持）识别指定文件中的敏感内容。  
+18. （API 21开始支持）识别指定文件中的敏感内容。  
 使用该接口的前置条件：链接DLP凭据服务器。
     <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
