@@ -169,6 +169,10 @@ type OnSafeBrowsingCheckResultCallback = (threatType: ThreatType) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
