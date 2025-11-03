@@ -103,8 +103,9 @@ struct WebComponent {
   ```
 
 - 跳转页面ProfilePage.ets代码。
+  <!-- @[navigate_to_profile_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/ProfilePage.ets) -->
   
-  ```ts
+  ``` TypeScript
   @Entry
   @Component
   struct ProfilePage {
