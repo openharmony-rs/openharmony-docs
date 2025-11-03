@@ -286,6 +286,21 @@
 8. 在"Index.ets"文件中，新增按钮触发崩溃事件。
 
     <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    Button('JsError')
+      .type(ButtonType.Capsule)
+      .margin({
+        top: 20
+      })
+      .backgroundColor('#0D9FFB')
+      .width('80%')
+      .height('5%')
+      .onClick(() => {
+        // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
+        JSON.parse('');
+      })
+    ```
 
 9. 点击运行按钮，启动应用工程。在应用界面中点击“JsError”按钮，触发崩溃事件。系统生成相应的崩溃日志并进行回调。
 
