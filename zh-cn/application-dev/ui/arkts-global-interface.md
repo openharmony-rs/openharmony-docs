@@ -425,6 +425,11 @@ struct Index {
 
 <!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+let pxValue = PixelUtils.vp2px(20);
+hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+```
+
 
 ### 应用存在多窗时，通过最近获焦窗口获取UIContext
 
