@@ -393,6 +393,34 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { PixelUtil } from '../Common/Utils';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text('Caculate 20vp to px')
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let pxValue = PixelUtil.vp2px(20, this.getUIContext());
+          hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 无法获取UIContext时，可考虑直接调用。
 
 <!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
