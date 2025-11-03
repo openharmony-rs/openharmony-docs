@@ -12,7 +12,7 @@
 
 ## 开发准备<a name="section6592121861218"></a>
 
-首先需要下载和配置DevEco Studio，具体操作请参考[DevEco Studio 使用指南](../../application-dev/quick-start/deveco-studio-user-guide-for-openharmony.md)。
+首先需要下载和配置DevEco Studio，具体操作请参考DevEco Studio 使用指南。
 
 ## 开发步骤<a name="section19901741111312"></a>
 
