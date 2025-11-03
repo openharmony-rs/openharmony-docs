@@ -318,3 +318,24 @@
 
 - 通过[clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11)清除隐私模式下所有cookie。 
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Button('clearAllCookiesSync')
+          .onClick(() => {
+            // clearAllCookiesSync参数表示清除隐私模式（true）或非隐私模式（false）下，webview的所有内存cookies。
+            webview.WebCookieManager.clearAllCookiesSync(true);
+          })
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
+      }
+    }
+  }
+  ```
