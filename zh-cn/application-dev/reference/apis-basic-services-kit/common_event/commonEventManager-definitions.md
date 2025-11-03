@@ -1275,6 +1275,20 @@ AppGallery Kit面向应用发布如下系统公共事件。
 **取值：** "usual.event.PRIVACY_STATE_CHANGED"
 
 
+## Multimodalinput Kit
+Multimodalinput Kit面向应用发布如下系统公共事件。
+
+### COMMON_EVENT_LID_MODE_CHANGED 
+表示PC合盖模式状态发生改变时。
+将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.LID_MODE_CHANGED"
+
+
 
 ## 预留公共事件
 
