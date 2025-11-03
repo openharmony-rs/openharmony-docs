@@ -42,7 +42,6 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_AUDIO_APE | APE音频解码器的MIME类型。                         |
 | OH_AVCODEC_MIMETYPE_AUDIO_ALAC | ALAC（Apple Lossless Audio Codec）音频解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_AC3 | AC3音频解码器的MIME类型。                         |
-| OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | EAC3音频解码器的MIME类型。（此规格暂未开放）   |
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | WMA（Windows Media Audio）V1音频解码器的MIME类型。|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | WMA（Windows Media Audio）V2音频解码器的MIME类型。|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | WMA（Windows Media Audio）Pro音频解码器的MIME类型。|
