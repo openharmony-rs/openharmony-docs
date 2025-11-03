@@ -178,6 +178,27 @@ struct EventHub {
 
 <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
 
+``` TypeScript
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct UIAbilityComponentsBasicUsage {
+  startAbilityTest(): void {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let want: Want = {
+      // Want参数信息
+    };
+    context.startAbility(want);
+  }
+
+  // 页面展示
+  build() {
+    // ···
+  }
+}
+```
+
 
 - 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
