@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。<br>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -18,6 +19,9 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Sta起始版本:** 20
+
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
 | STARTUP | 0    | 自系统启动以来经过的毫秒数，包括深度睡眠时间。   |
@@ -25,13 +29,17 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 ## systemDateTime.setTime
 
-setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
+ArkTS-Dyn: setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void<br>
+ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 设置系统时间，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Sta起始版本:** 20
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -54,6 +62,7 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -72,10 +81,30 @@ try {
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
+ArkTS-Sta:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// time对应的时间为2021-01-20 02:36:25。
+let time = 1611081385000;
+try {
+  systemDateTime.setTime(time, (error: BusinessError<void> | null) => {
+    if (error) {
+      console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.info(`Succeeded in setting time`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+}
+```
 
 ## systemDateTime.setTime
 
-setTime(time : number) : Promise&lt;void&gt;
+ArkTS-Dyn: setTime(time : number) : Promise&lt;void&gt;<br>
+ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 设置系统时间，使用Promise异步回调。
 
@@ -83,13 +112,16 @@ setTime(time : number) : Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Sta起始版本:** 20
+
 **需要权限：** ohos.permission.SET_TIME
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| time   | number | 是   | 目标时间戳(ms)。 |
+| time   | ArkTS-Dyn: AsyncCallback&lt;number><br>ArkTS-Sta: AsyncCallback&lt;long>   | 是   | 目标时间戳(ms)。 |
 
 **返回值：**
 
@@ -109,6 +141,7 @@ setTime(time : number) : Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -118,6 +151,24 @@ try {
   systemDateTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
   }).catch((error: BusinessError) => {
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+}
+```
+
+ArkTS-Sta:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// time对应的时间为2021-01-20 02:36:25。
+let time = 1611081385000;
+try {
+  systemDateTime.setTime(time).then(() => {
+    console.info(`Succeeded in setting time.`);
+  }).catch((error: Error) => {
     console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {

@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。<br>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -17,6 +18,9 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 定义获取时间的枚举类型。
 
 **系统能力**: SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Sta起始版本:** 20
 
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
@@ -445,11 +449,15 @@ try {
 
 ## systemDateTime.getTime<sup>10+</sup>
 
-getTime(isNanoseconds?: boolean): number
+ArkTS-Dyn: getTime(isNanoseconds?: boolean): number<br>
+ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 使用同步方式获取自Unix纪元以来到当前系统时间所经过的时间。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Sta起始版本:** 20
 
 **参数：**
 
@@ -461,7 +469,7 @@ getTime(isNanoseconds?: boolean): number
 
 | 类型   | 说明                       |
 | ------ | -------------------------- |
-| number | 自Unix纪元以来到当前系统时间所经过的时间。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 自Unix纪元以来到当前系统时间所经过的时间。 |
 
 **示例：**
 
@@ -478,11 +486,15 @@ try {
 
 ## systemDateTime.getUptime<sup>10+</sup>
 
-getUptime(timeType: TimeType, isNanoseconds?: boolean): number
+ArkTS-Dyn: getUptime(timeType: TimeType, isNanoseconds?: boolean): number<br>
+ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 使用同步方式获取自系统启动以来经过的时间。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Sta起始版本:** 20
 
 **参数：**
 
@@ -495,7 +507,7 @@ getUptime(timeType: TimeType, isNanoseconds?: boolean): number
 
 | 类型   | 说明                       |
 | ------ | -------------------------- |
-| number | 自系统启动以来经过的时间。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 自系统启动以来经过的时间。 |
 
 **错误码：**
 
@@ -614,6 +626,9 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Sta起始版本:** 20
+
 **参数：**
 
 | 参数名   | 类型              | 必填 | 说明                 |
@@ -622,11 +637,29 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   systemDateTime.getTimezone((error: BusinessError, data: string) => {
+    if (error) {
+      console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.info(`Succeeded in get timezone : ${data}`);;
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.getTimezone((error: BusinessError<void> | null, data: string | undefined) => {
     if (error) {
       console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
       return;
@@ -647,6 +680,9 @@ getTimezone(): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 7<br>
+**ArkTS-Sta起始版本:** 20
+
 **返回值：**
 
 | 类型                  | 说明                                  |
@@ -655,6 +691,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -662,6 +699,21 @@ try {
   systemDateTime.getTimezone().then((data: string) => {
     console.info(`Succeeded in getting timezone: ${data}`);
   }).catch((error: BusinessError) => {
+    console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.getTimezone().then((data: string) => {
+    console.info(`Succeeded in getting timezone: ${data}`);
+  }).catch((error: Error) => {
     console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
@@ -677,6 +729,9 @@ getTimezoneSync(): string
 获取系统时区，使用同步方式。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 10<br>
+**ArkTS-Sta起始版本:** 20
 
 **返回值：**
 
