@@ -143,6 +143,32 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
 
   <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { DOMAIN, TAG } from '../../common/Common';
+  import { router } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SearchResult {
+    // 在SearchResult页面中
+    onJumpClick(): void {
+      this.getUIContext().getRouter().replaceUrl({
+        url: 'pages/pageRouter/jumpPage/SearchDetail' // 目标url
+      }, router.RouterMode.Single, (err) => {
+        if (err) {
+          hilog.error(DOMAIN, TAG, `Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+      })
+    }
+  
+    build() {
+      // ···
+  }
+  ```
     
 以上是不带参数传递的场景。
 
