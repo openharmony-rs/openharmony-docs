@@ -818,6 +818,49 @@ struct MapSample {
 
 <!-- @[Decoration_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets) -->
 
+``` TypeScript
+@ObservedV2
+class Info {
+  @Trace public memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
+}
+
+@Entry
+@ComponentV2
+struct SetSample {
+  info: Info = new Info();
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.info.memberSet.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`)
+            .fontSize(30)
+          Divider()
+        })
+        Button('init set')
+          .onClick(() => {
+            this.info.memberSet = new Set([0, 1, 2, 3, 4]);
+          })
+        Button('set new one')
+          .onClick(() => {
+            this.info.memberSet.add(5);
+          })
+        Button('clear')
+          .onClick(() => {
+            this.info.memberSet.clear();
+          })
+        Button('delete the first one')
+          .onClick(() => {
+            this.info.memberSet.delete(0);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 
 ### \@Trace装饰Date类型
 
