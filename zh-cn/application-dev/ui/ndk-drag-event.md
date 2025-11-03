@@ -574,3 +574,54 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作。通常情况下，需要从DragEvent中获取拖拽过程中传递的数据，DragAction中的拖拽数据也需要通过DragEvent获取。
 
    <!-- @[get_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
+   
+   ``` C
+               case NODE_ON_DROP: {
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest", "NODE_ON_DROP EventReceiver");
+                   GetUdmfDataText(dragEvent);
+                   OH_ArkUI_DragAction_UnregisterStatusListener(action);
+                   break;
+               }
+               // ···
+   void GetUdmfDataText(ArkUI_DragEvent* dragEvent)
+   {
+       // 获取UDMF data
+       int returnValue;
+       // 创建OH_UdmfData对象
+       OH_UdmfData *data = OH_UdmfData_Create();
+       returnValue = OH_ArkUI_DragEvent_GetUdmfData(dragEvent, data);
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+           "OH_ArkUI_DragEvent_GetUdmfData returnValue = %{public}d", returnValue);
+       // 判断OH_UdmfData是否有对应的类型
+       bool resultUdmf = OH_UdmfData_HasType(data, UDMF_META_PLAIN_TEXT);
+       if (resultUdmf) {
+           // 获取OH_UdmfData的记录
+           unsigned int recordsCount = 0;
+           OH_UdmfRecord **records = OH_UdmfData_GetRecords(data, &recordsCount);
+           // 获取records中的元素
+           int returnStatus;
+           for (int i = 0; i < recordsCount; i++) {
+               // 从OH_UdmfRecord中获取纯文本类型数据
+               OH_UdsPlainText *plainTextValue = OH_UdsPlainText_Create();
+               returnStatus = OH_UdmfRecord_GetPlainText(records[i], plainTextValue);
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                   "dragTest OH_UdmfRecord_GetPlainText "
+                   "returnStatus= %{public}d",
+                   returnStatus);
+               auto getAbstract = OH_UdsPlainText_GetAbstract(plainTextValue);
+               auto getContent = OH_UdsPlainText_GetContent(plainTextValue);
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+                   "OH_UdsPlainText_GetAbstract = "
+                   "%{public}s, OH_UdsPlainText_GetContent = "
+                   "%{public}s",
+                   getAbstract, getContent);
+               // 使用结束后销毁指针
+               OH_UdsPlainText_Destroy(plainTextValue);
+           }
+       } else {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "dragTest",
+               "OH_UdmfData_HasType not contain UDMF_META_PLAIN_TEXT");
+       }
+       OH_UdmfData_Destroy(data);
+   }
+   ```
