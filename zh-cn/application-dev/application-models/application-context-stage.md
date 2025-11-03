@@ -339,6 +339,41 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[app_context_cache_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextCache.ets) -->
 
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
+const TAG: string = '[ApplicationContextCache]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct ApplicationContextCache {
+  @State message: string = 'Hello World';
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+        // ···
+        Button() {
+          Text('create file')
+        // ···
+            .onClick(() => {
+              let applicationContext = this.context.getApplicationContext();
+              // 获取应用缓存路径
+              let cacheDir = applicationContext.cacheDir;
+            })
+        }
+        // ···
+      }
+    // ···
+    }
+    // ···
+  }
+}
+```
+
 
 - **获取应用文件目录**
 
