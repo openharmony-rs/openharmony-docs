@@ -310,7 +310,7 @@ this.getUIContext().getRouter().back();
   返回命名路由页面。
 
   <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage为返回的命名路由页面别名
