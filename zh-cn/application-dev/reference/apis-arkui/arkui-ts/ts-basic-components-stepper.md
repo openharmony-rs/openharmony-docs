@@ -130,7 +130,7 @@ onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&n
 
 ## 示例
 
-### 示例1（Stepper基础使用）
+### 示例1（使用Stepper）
 该示例主要演示如何使用步骤导航器组件。
 
 ```ts
