@@ -202,6 +202,47 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 2. 可以通过OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener注册屏幕展开/折叠状态变化的监听。 通过OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener接口取消屏幕展开/折叠状态变化的监听。
 
     <!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
+    {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "displayMode=%{public}d.", displayMode);
+    }
+    
+    static napi_value RegisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
+    {
+        uint32_t listenerIndex = 0;
+        NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(
+            FoldDisplayModeChangeCallback, &listenerIndex);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d errCode=%{public}d.",
+            listenerIndex, errCode);
+        if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
+            napi_value registerIndex;
+            napi_create_int32(env, listenerIndex, &registerIndex);
+            return registerIndex;
+        } else {
+            napi_value errorCode;
+            napi_create_int32(env, errCode, &errorCode);
+            return errorCode;
+        }
+    }
+    
+    static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = { nullptr };
+        uint32_t listenerIndex;
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+        napi_get_value_uint32(env, args[0], &listenerIndex);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d.", listenerIndex);
+        NativeDisplayManager_ErrorCode errCode =
+            OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(listenerIndex);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "errorCode=%{public}d", errCode);
+        napi_value errorCode;
+        napi_create_int32(env, errCode, &errorCode);
+        return errorCode;
+    }
+    ```
 
 ## 注册函数
 
